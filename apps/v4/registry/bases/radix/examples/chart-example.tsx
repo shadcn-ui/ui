@@ -121,6 +121,8 @@ function ChartAreaExample() {
                   lucide="TrendingUpIcon"
                   tabler="IconTrendingUp"
                   hugeicons="ChartUpIcon"
+                  phosphor="TrendUpIcon"
+                  remixicon="RiLineChartLine"
                   className="size-4"
                 />
               </div>
@@ -190,6 +192,8 @@ function ChartBarExample() {
               lucide="TrendingUpIcon"
               tabler="IconTrendingUp"
               hugeicons="ChartUpIcon"
+              phosphor="TrendUpIcon"
+              remixicon="RiLineChartLine"
               className="size-4"
             />
           </div>
@@ -275,6 +279,8 @@ function ChartLineExample() {
                   lucide="TrendingUpIcon"
                   tabler="IconTrendingUp"
                   hugeicons="ChartUpIcon"
+                  phosphor="TrendUpIcon"
+                  remixicon="RiLineChartLine"
                   className="size-4"
                 />
               </div>
@@ -392,6 +398,8 @@ function ChartPieExample() {
               lucide="TrendingUpIcon"
               tabler="IconTrendingUp"
               hugeicons="ChartUpIcon"
+              phosphor="TrendUpIcon"
+              remixicon="RiLineChartLine"
               className="size-4"
             />
           </div>
@@ -462,6 +470,8 @@ function ChartRadarExample() {
               lucide="TrendingUpIcon"
               tabler="IconTrendingUp"
               hugeicons="ChartUpIcon"
+              phosphor="TrendUpIcon"
+              remixicon="RiLineChartLine"
               className="size-4"
             />
           </div>
@@ -556,6 +566,8 @@ function ChartRadialExample() {
               lucide="TrendingUpIcon"
               tabler="IconTrendingUp"
               hugeicons="ChartUpIcon"
+              phosphor="TrendUpIcon"
+              remixicon="RiLineChartLine"
               className="size-4"
             />
           </div>

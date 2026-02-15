@@ -3,7 +3,6 @@
 import * as React from "react"
 import { Share03Icon, Tick02Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
-import { useQueryStates } from "nuqs"
 
 import { copyToClipboardWithMeta } from "@/components/copy-button"
 import { Button } from "@/registry/new-york-v4/ui/button"
@@ -12,12 +11,10 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/registry/new-york-v4/ui/tooltip"
-import { designSystemSearchParams } from "@/app/(create)/lib/search-params"
+import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
 
 export function ShareButton() {
-  const [params] = useQueryStates(designSystemSearchParams, {
-    shallow: false,
-  })
+  const [params] = useDesignSystemSearchParams()
   const [hasCopied, setHasCopied] = React.useState(false)
 
   const shareUrl = React.useMemo(() => {
@@ -59,7 +56,7 @@ export function ShareButton() {
         <Button
           size="sm"
           variant="outline"
-          className="rounded-lg shadow-none"
+          className="rounded-lg shadow-none lg:w-8 xl:w-fit"
           onClick={handleCopy}
         >
           {hasCopied ? (
@@ -67,7 +64,7 @@ export function ShareButton() {
           ) : (
             <HugeiconsIcon icon={Share03Icon} strokeWidth={2} />
           )}
-          Share
+          <span className="lg:hidden xl:block">Share</span>
         </Button>
       </TooltipTrigger>
       <TooltipContent>Copy Link</TooltipContent>

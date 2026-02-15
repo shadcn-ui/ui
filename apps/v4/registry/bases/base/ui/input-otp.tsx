@@ -63,7 +63,7 @@ function InputOTPSlot({
       {char}
       {hasFakeCaret && (
         <div className="cn-input-otp-caret pointer-events-none absolute inset-0 flex items-center justify-center">
-          <div className="cn-input-otp-caret-line bg-foreground h-4 w-px" />
+          <div className="cn-input-otp-caret-line" />
         </div>
       )}
     </div>
@@ -82,6 +82,8 @@ function InputOTPSeparator({ ...props }: React.ComponentProps<"div">) {
         lucide="MinusIcon"
         tabler="IconMinus"
         hugeicons="MinusSignIcon"
+        phosphor="MinusIcon"
+        remixicon="RiSubtractLine"
       />
     </div>
   )

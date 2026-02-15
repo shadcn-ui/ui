@@ -40,7 +40,46 @@ export default function CalendarExample() {
       <DatePickerSimple />
       <DataPickerWithDropdowns />
       <DatePickerWithRange />
+      <CalendarInCard />
+      <CalendarInPopover />
     </ExampleWrapper>
+  )
+}
+
+function CalendarInCard() {
+  return (
+    <Example title="In Card">
+      <Card className="mx-auto w-fit p-0">
+        <CardContent className="p-0">
+          <Calendar mode="single" />
+        </CardContent>
+      </Card>
+    </Example>
+  )
+}
+
+function CalendarInPopover() {
+  return (
+    <Example title="In Popover">
+      <Popover>
+        <PopoverTrigger asChild>
+          <Button variant="outline" className="px-2.5 font-normal">
+            <IconPlaceholder
+              lucide="CalendarIcon"
+              tabler="IconCalendar"
+              hugeicons="CalendarIcon"
+              phosphor="CalendarBlankIcon"
+              remixicon="RiCalendarLine"
+              data-icon="inline-start"
+            />
+            Open Calendar
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent className="w-auto p-0" align="start">
+          <Calendar mode="single" />
+        </PopoverContent>
+      </Popover>
+    </Example>
   )
 }
 
@@ -200,6 +239,8 @@ function CalendarWithTime() {
                     lucide="Clock2Icon"
                     tabler="IconClockHour2"
                     hugeicons="Clock03Icon"
+                    phosphor="ClockIcon"
+                    remixicon="RiTimeLine"
                     className="text-muted-foreground"
                   />
                 </InputGroupAddon>
@@ -220,6 +261,8 @@ function CalendarWithTime() {
                     lucide="Clock2Icon"
                     tabler="IconClockHour2"
                     hugeicons="Clock03Icon"
+                    phosphor="ClockIcon"
+                    remixicon="RiTimeLine"
                     className="text-muted-foreground"
                   />
                 </InputGroupAddon>
@@ -347,6 +390,8 @@ function DatePickerSimple() {
                 lucide="CalendarIcon"
                 tabler="IconCalendar"
                 hugeicons="CalendarIcon"
+                phosphor="CalendarBlankIcon"
+                remixicon="RiCalendarLine"
                 data-icon="inline-start"
               />
               {date ? format(date, "PPP") : <span>Pick a date</span>}
@@ -382,6 +427,8 @@ function DatePickerWithRange() {
                 lucide="CalendarIcon"
                 tabler="IconCalendar"
                 hugeicons="CalendarIcon"
+                phosphor="CalendarBlankIcon"
+                remixicon="RiCalendarLine"
                 data-icon="inline-start"
               />
               {date?.from ? (
@@ -435,6 +482,8 @@ function DataPickerWithDropdowns() {
                 lucide="ChevronDownIcon"
                 tabler="IconChevronDown"
                 hugeicons="ArrowDownIcon"
+                phosphor="CaretDownIcon"
+                remixicon="RiArrowDownSLine"
                 data-icon="inline-start"
                 className="ml-auto"
               />

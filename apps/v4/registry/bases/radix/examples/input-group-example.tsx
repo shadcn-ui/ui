@@ -131,6 +131,8 @@ function InputGroupWithAddons() {
                 lucide="SearchIcon"
                 tabler="IconSearch"
                 hugeicons="SearchIcon"
+                phosphor="MagnifyingGlassIcon"
+                remixicon="RiSearchLine"
                 className="text-muted-foreground"
               />
             </InputGroupAddon>
@@ -147,6 +149,8 @@ function InputGroupWithAddons() {
                 lucide="EyeOffIcon"
                 tabler="IconEyeClosed"
                 hugeicons="ViewOffIcon"
+                phosphor="EyeSlashIcon"
+                remixicon="RiEyeOffLine"
               />
             </InputGroupAddon>
           </InputGroup>
@@ -162,6 +166,8 @@ function InputGroupWithAddons() {
                 lucide="MicIcon"
                 tabler="IconMicrophone"
                 hugeicons="VoiceIcon"
+                phosphor="MicrophoneIcon"
+                remixicon="RiMicLine"
                 className="text-muted-foreground"
               />
             </InputGroupAddon>
@@ -170,6 +176,8 @@ function InputGroupWithAddons() {
                 lucide="RadioIcon"
                 tabler="IconPlayerRecordFilled"
                 hugeicons="RecordIcon"
+                phosphor="RecordIcon"
+                remixicon="RiRecordCircleLine"
                 className="animate-pulse text-red-500"
               />
             </InputGroupAddon>
@@ -185,6 +193,8 @@ function InputGroupWithAddons() {
                 lucide="InfoIcon"
                 tabler="IconInfoCircle"
                 hugeicons="AlertCircleIcon"
+                phosphor="InfoIcon"
+                remixicon="RiInformationLine"
                 className="text-muted-foreground ml-auto"
               />
             </InputGroupAddon>
@@ -200,6 +210,8 @@ function InputGroupWithAddons() {
                 lucide="InfoIcon"
                 tabler="IconInfoCircle"
                 hugeicons="AlertCircleIcon"
+                phosphor="InfoIcon"
+                remixicon="RiInformationLine"
                 className="text-muted-foreground ml-auto"
               />
             </InputGroupAddon>
@@ -214,6 +226,8 @@ function InputGroupWithAddons() {
                 lucide="StarIcon"
                 tabler="IconStar"
                 hugeicons="StarIcon"
+                phosphor="StarIcon"
+                remixicon="RiStarLine"
               />
               <InputGroupButton
                 size="icon-xs"
@@ -223,6 +237,8 @@ function InputGroupWithAddons() {
                   lucide="CopyIcon"
                   tabler="IconCopy"
                   hugeicons="CopyIcon"
+                  phosphor="CopyIcon"
+                  remixicon="RiFileCopyLine"
                 />
               </InputGroupButton>
             </InputGroupAddon>
@@ -231,6 +247,8 @@ function InputGroupWithAddons() {
                 lucide="RadioIcon"
                 tabler="IconPlayerRecordFilled"
                 hugeicons="RecordIcon"
+                phosphor="RecordIcon"
+                remixicon="RiRecordCircleLine"
                 className="animate-pulse text-red-500"
               />
             </InputGroupAddon>
@@ -245,6 +263,8 @@ function InputGroupWithAddons() {
                 lucide="InfoIcon"
                 tabler="IconInfoCircle"
                 hugeicons="AlertCircleIcon"
+                phosphor="InfoIcon"
+                remixicon="RiInformationLine"
               />
             </InputGroupAddon>
           </InputGroup>
@@ -310,6 +330,8 @@ function InputGroupWithButtons() {
                   lucide="CopyIcon"
                   tabler="IconCopy"
                   hugeicons="CopyIcon"
+                  phosphor="CopyIcon"
+                  remixicon="RiFileCopyLine"
                 />
               </InputGroupButton>
             </InputGroupAddon>
@@ -322,6 +344,8 @@ function InputGroupWithButtons() {
                   lucide="TrashIcon"
                   tabler="IconTrash"
                   hugeicons="DeleteIcon"
+                  phosphor="TrashIcon"
+                  remixicon="RiDeleteBinLine"
                 />
               </InputGroupButton>
             </InputGroupAddon>
@@ -354,6 +378,8 @@ function InputGroupWithTooltip({
                       lucide="InfoIcon"
                       tabler="IconInfoCircle"
                       hugeicons="AlertCircleIcon"
+                      phosphor="InfoIcon"
+                      remixicon="RiInformationLine"
                     />
                   </InputGroupButton>
                 </TooltipTrigger>
@@ -378,6 +404,8 @@ function InputGroupWithTooltip({
                       lucide="ChevronDownIcon"
                       tabler="IconChevronDown"
                       hugeicons="ArrowDownIcon"
+                      phosphor="CaretDownIcon"
+                      remixicon="RiArrowDownSLine"
                     />
                   </InputGroupButton>
                 </DropdownMenuTrigger>
@@ -415,6 +443,8 @@ function InputGroupWithTooltip({
                       lucide="InfoIcon"
                       tabler="IconInfoCircle"
                       hugeicons="AlertCircleIcon"
+                      phosphor="InfoIcon"
+                      remixicon="RiInformationLine"
                     />
                   </InputGroupButton>
                 </InputGroupAddon>
@@ -441,6 +471,8 @@ function InputGroupWithTooltip({
                   lucide="StarIcon"
                   tabler="IconStar"
                   hugeicons="StarIcon"
+                  phosphor="StarIcon"
+                  remixicon="RiStarLine"
                 />
               </InputGroupButton>
             </InputGroupAddon>
@@ -460,6 +492,8 @@ function InputGroupWithTooltip({
                   lucide="InfoIcon"
                   tabler="IconInfoCircle"
                   hugeicons="AlertCircleIcon"
+                  phosphor="InfoIcon"
+                  remixicon="RiInformationLine"
                 />
               </InputGroupAddon>
             </InputGroup>
@@ -512,6 +546,8 @@ function InputGroupWithKbd() {
                 lucide="SparklesIcon"
                 tabler="IconServerSpark"
                 hugeicons="SparklesIcon"
+                phosphor="SparkleIcon"
+                remixicon="RiSparklingLine"
               />
             </InputGroupAddon>
             <InputGroupAddon align="inline-end">
@@ -532,6 +568,8 @@ function InputGroupWithKbd() {
                   lucide="CheckIcon"
                   tabler="IconCheck"
                   hugeicons="Tick02Icon"
+                  phosphor="CheckIcon"
+                  remixicon="RiCheckLine"
                   className="size-3 text-white"
                 />
               </div>
@@ -551,6 +589,8 @@ function InputGroupWithKbd() {
               lucide="SearchIcon"
               tabler="IconSearch"
               hugeicons="SearchIcon"
+              phosphor="MagnifyingGlassIcon"
+              remixicon="RiSearchLine"
             />
           </InputGroupAddon>
           <InputGroupAddon align="inline-end">12 results</InputGroupAddon>
@@ -566,6 +606,8 @@ function InputGroupWithKbd() {
               lucide="SearchIcon"
               tabler="IconSearch"
               hugeicons="SearchIcon"
+              phosphor="MagnifyingGlassIcon"
+              remixicon="RiSearchLine"
             />
           </InputGroupAddon>
           <InputGroupAddon align="inline-end">Disabled</InputGroupAddon>
@@ -580,6 +622,8 @@ function InputGroupWithKbd() {
                   lucide="InfoIcon"
                   tabler="IconInfoCircle"
                   hugeicons="AlertCircleIcon"
+                  phosphor="InfoIcon"
+                  remixicon="RiInformationLine"
                 />
               </InputGroupAddon>
             </InputGroup>
@@ -593,6 +637,8 @@ function InputGroupWithKbd() {
                   lucide="InfoIcon"
                   tabler="IconInfoCircle"
                   hugeicons="AlertCircleIcon"
+                  phosphor="InfoIcon"
+                  remixicon="RiInformationLine"
                 />
               </InputGroupAddon>
             </InputGroup>
@@ -644,6 +690,8 @@ function InputGroupInCard() {
                     lucide="MailIcon"
                     tabler="IconMail"
                     hugeicons="MailIcon"
+                    phosphor="EnvelopeIcon"
+                    remixicon="RiMailLine"
                   />
                 </InputGroupAddon>
               </InputGroup>
@@ -660,6 +708,8 @@ function InputGroupInCard() {
                     lucide="ExternalLinkIcon"
                     tabler="IconExternalLink"
                     hugeicons="LinkSquare02Icon"
+                    phosphor="ArrowSquareOutIcon"
+                    remixicon="RiExternalLinkLine"
                   />
                 </InputGroupAddon>
               </InputGroup>
@@ -753,6 +803,8 @@ function InputGroupTextareaExamples() {
                 lucide="InfoIcon"
                 tabler="IconInfoCircle"
                 hugeicons="AlertCircleIcon"
+                phosphor="InfoIcon"
+                remixicon="RiInformationLine"
                 className="text-muted-foreground ml-auto"
               />
             </InputGroupAddon>
@@ -781,6 +833,8 @@ function InputGroupTextareaExamples() {
                   lucide="ArrowUpIcon"
                   tabler="IconArrowUp"
                   hugeicons="ArrowUpIcon"
+                  phosphor="ArrowUpIcon"
+                  remixicon="RiArrowUpLine"
                 />
                 <span className="sr-only">Send</span>
               </InputGroupButton>
@@ -819,6 +873,8 @@ function InputGroupTextareaExamples() {
                   lucide="CodeIcon"
                   tabler="IconBrandJavascript"
                   hugeicons="CodeIcon"
+                  phosphor="CodeIcon"
+                  remixicon="RiCodeLine"
                 />
                 script.js
               </InputGroupText>
@@ -827,6 +883,8 @@ function InputGroupTextareaExamples() {
                   lucide="RefreshCwIcon"
                   tabler="IconRefresh"
                   hugeicons="RefreshIcon"
+                  phosphor="ArrowClockwiseIcon"
+                  remixicon="RiRefreshLine"
                 />
               </InputGroupButton>
               <InputGroupButton size="icon-xs" variant="ghost">
@@ -834,6 +892,8 @@ function InputGroupTextareaExamples() {
                   lucide="CopyIcon"
                   tabler="IconCopy"
                   hugeicons="CopyIcon"
+                  phosphor="CopyIcon"
+                  remixicon="RiFileCopyLine"
                 />
               </InputGroupButton>
             </InputGroupAddon>

@@ -246,6 +246,8 @@ function InputOTPForm() {
                     lucide="RefreshCwIcon"
                     hugeicons="RefreshIcon"
                     tabler="IconRefresh"
+                    phosphor="ArrowClockwiseIcon"
+                    remixicon="RiRefreshLine"
                     data-icon="inline-start"
                   />
                   Resend Code

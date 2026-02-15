@@ -1188,7 +1188,7 @@ describe("registries", () => {
 
 describe("registries:init", () => {
   beforeEach(async () => {
-    process.env.REGISTRY_URL = "http://localhost:4000/r"
+    process.env.REGISTRY_URL = "http://localhost:4040/r"
   })
 
   it("should error when init with unconfigured registries", async () => {

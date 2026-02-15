@@ -86,6 +86,7 @@ export default function ComboboxExample() {
       <ComboboxWithCustomItems />
       <ComboboxInDialog />
       <ComboboxWithOtherInputs />
+      <ComboboxDisabledItems />
     </ExampleWrapper>
   )
 }
@@ -585,6 +586,32 @@ function ComboboxDisabled() {
   )
 }
 
+const disabledFrameworks = ["Nuxt.js", "Remix"]
+
+function ComboboxDisabledItems() {
+  return (
+    <Example title="Disabled Items">
+      <Combobox items={frameworks}>
+        <ComboboxInput placeholder="Select a framework" />
+        <ComboboxContent>
+          <ComboboxEmpty>No items found.</ComboboxEmpty>
+          <ComboboxList>
+            {(item) => (
+              <ComboboxItem
+                key={item}
+                value={item}
+                disabled={disabledFrameworks.includes(item)}
+              >
+                {item}
+              </ComboboxItem>
+            )}
+          </ComboboxList>
+        </ComboboxContent>
+      </Combobox>
+    </Example>
+  )
+}
+
 function ComboboxInvalid() {
   return (
     <Example title="Invalid">
@@ -810,6 +837,8 @@ function ComboxboxInputAddon() {
               lucide="GlobeIcon"
               tabler="IconGlobe"
               hugeicons="Globe02Icon"
+              phosphor="GlobeIcon"
+              remixicon="RiGlobeLine"
             />
           </InputGroupAddon>
         </ComboboxInput>
@@ -1198,6 +1227,8 @@ function ComboboxWithOtherInputs() {
           lucide="ChevronDownIcon"
           tabler="IconSelector"
           hugeicons="UnfoldMoreIcon"
+          phosphor="CaretDownIcon"
+          remixicon="RiArrowDownSLine"
         />
       </Button>
       <Input placeholder="Select a framework" className="w-52" />
@@ -1208,6 +1239,8 @@ function ComboboxWithOtherInputs() {
             lucide="ChevronDownIcon"
             tabler="IconSelector"
             hugeicons="UnfoldMoreIcon"
+            phosphor="CaretDownIcon"
+            remixicon="RiArrowDownSLine"
           />
         </InputGroupAddon>
       </InputGroup>

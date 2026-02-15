@@ -58,7 +58,7 @@ function DialogContent({
       <DialogPrimitive.Content
         data-slot="dialog-content"
         className={cn(
-          "cn-dialog-content fixed top-1/2 left-1/2 z-50 w-full -translate-x-1/2 -translate-y-1/2",
+          "cn-dialog-content fixed top-1/2 left-1/2 z-50 w-full -translate-x-1/2 -translate-y-1/2 outline-none",
           className
         )}
         {...props}
@@ -71,6 +71,8 @@ function DialogContent({
                 lucide="XIcon"
                 tabler="IconX"
                 hugeicons="Cancel01Icon"
+                phosphor="XIcon"
+                remixicon="RiCloseLine"
               />
               <span className="sr-only">Close</span>
             </Button>

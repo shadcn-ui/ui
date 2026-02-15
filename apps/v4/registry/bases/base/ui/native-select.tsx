@@ -31,6 +31,8 @@ function NativeSelect({
         lucide="ChevronDownIcon"
         tabler="IconSelector"
         hugeicons="UnfoldMoreIcon"
+        phosphor="CaretDownIcon"
+        remixicon="RiArrowDownSLine"
         className="cn-native-select-icon pointer-events-none absolute select-none"
         aria-hidden="true"
         data-slot="native-select-icon"

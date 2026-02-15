@@ -134,10 +134,8 @@ export default function GithubBlock() {
     </ExampleWrapper>
   )
 }
-
 function CodespacesCard() {
   const [isCreatingCodespace, setIsCreatingCodespace] = React.useState(false)
-
   return (
     <Example title="Codespaces" className="min-h-[550px] lg:p-12">
       <Card className="mx-auto w-full max-w-sm" size="sm">
@@ -164,6 +162,8 @@ function CodespacesCard() {
                         lucide="PlusIcon"
                         tabler="IconPlus"
                         hugeicons="PlusSignIcon"
+                        phosphor="PlusIcon"
+                        remixicon="RiAddLine"
                       />
                     </TooltipTrigger>
                     <TooltipContent side="bottom">
@@ -183,6 +183,8 @@ function CodespacesCard() {
                           lucide="MoreHorizontalIcon"
                           tabler="IconDots"
                           hugeicons="MoreHorizontalCircle01Icon"
+                          phosphor="DotsThreeOutlineIcon"
+                          remixicon="RiMoreLine"
                         />
                       </TooltipTrigger>
                       <TooltipContent side="bottom">
@@ -196,6 +198,8 @@ function CodespacesCard() {
                             lucide="PlusIcon"
                             tabler="IconPlus"
                             hugeicons="PlusSignIcon"
+                            phosphor="PlusIcon"
+                            remixicon="RiAddLine"
                           />
                           New with options...
                         </DropdownMenuItem>
@@ -204,6 +208,8 @@ function CodespacesCard() {
                             lucide="ContainerIcon"
                             tabler="IconBox"
                             hugeicons="CubeIcon"
+                            phosphor="CubeIcon"
+                            remixicon="RiBox1Line"
                           />
                           Configure dev container
                         </DropdownMenuItem>
@@ -212,6 +218,8 @@ function CodespacesCard() {
                             lucide="ZapIcon"
                             tabler="IconBolt"
                             hugeicons="ZapIcon"
+                            phosphor="LightningIcon"
+                            remixicon="RiFlashlightLine"
                           />
                           Set up prebuilds
                         </DropdownMenuItem>
@@ -223,6 +231,8 @@ function CodespacesCard() {
                             lucide="ServerIcon"
                             tabler="IconServer"
                             hugeicons="ServerStackIcon"
+                            phosphor="HardDrivesIcon"
+                            remixicon="RiHardDriveLine"
                           />
                           Manage codespaces
                         </DropdownMenuItem>
@@ -231,6 +241,8 @@ function CodespacesCard() {
                             lucide="ShareIcon"
                             tabler="IconShare2"
                             hugeicons="Share03Icon"
+                            phosphor="ShareIcon"
+                            remixicon="RiShareLine"
                           />
                           Share deep link
                         </DropdownMenuItem>
@@ -239,6 +251,8 @@ function CodespacesCard() {
                             lucide="InfoIcon"
                             tabler="IconInfoCircle"
                             hugeicons="AlertCircleIcon"
+                            phosphor="InfoIcon"
+                            remixicon="RiInformationLine"
                           />
                           What are codespaces?
                         </DropdownMenuItem>
@@ -255,6 +269,8 @@ function CodespacesCard() {
                       lucide="ServerIcon"
                       tabler="IconServer"
                       hugeicons="ServerStackIcon"
+                      phosphor="HardDrivesIcon"
+                      remixicon="RiHardDriveLine"
                     />
                   </EmptyMedia>
                   <EmptyTitle>No codespaces</EmptyTitle>
@@ -303,6 +319,8 @@ function CodespacesCard() {
                       lucide="TerminalIcon"
                       tabler="IconTerminal"
                       hugeicons="ComputerTerminal01Icon"
+                      phosphor="TerminalIcon"
+                      remixicon="RiTerminalBoxLine"
                       className="size-4"
                     />
                     Clone
@@ -317,6 +335,8 @@ function CodespacesCard() {
                         lucide="InfoIcon"
                         tabler="IconInfoCircle"
                         hugeicons="AlertCircleIcon"
+                        phosphor="InfoIcon"
+                        remixicon="RiInformationLine"
                       />
                     </TooltipTrigger>
                     <TooltipContent side="left">
@@ -347,6 +367,8 @@ function CodespacesCard() {
                               lucide="CopyIcon"
                               tabler="IconCopy"
                               hugeicons="Copy01Icon"
+                              phosphor="CopyIcon"
+                              remixicon="RiFileCopyLine"
                             />
                           </InputGroupButton>
                         </InputGroupAddon>
@@ -373,6 +395,8 @@ function CodespacesCard() {
                               lucide="CopyIcon"
                               tabler="IconCopy"
                               hugeicons="Copy01Icon"
+                              phosphor="CopyIcon"
+                              remixicon="RiFileCopyLine"
                             />
                           </InputGroupButton>
                         </InputGroupAddon>
@@ -399,6 +423,8 @@ function CodespacesCard() {
                               lucide="CopyIcon"
                               tabler="IconCopy"
                               hugeicons="Copy01Icon"
+                              phosphor="CopyIcon"
+                              remixicon="RiFileCopyLine"
                             />
                           </InputGroupButton>
                         </InputGroupAddon>
@@ -427,6 +453,8 @@ function CodespacesCard() {
                     lucide="MonitorIcon"
                     tabler="IconDeviceDesktop"
                     hugeicons="ComputerIcon"
+                    phosphor="MonitorIcon"
+                    remixicon="RiComputerLine"
                     data-icon="inline-start"
                   />
                   Open with GitHub Desktop
@@ -440,6 +468,8 @@ function CodespacesCard() {
                     lucide="DownloadIcon"
                     tabler="IconDownload"
                     hugeicons="DownloadIcon"
+                    phosphor="DownloadIcon"
+                    remixicon="RiDownloadLine"
                     data-icon="inline-start"
                   />
                   Download ZIP
@@ -452,7 +482,6 @@ function CodespacesCard() {
     </Example>
   )
 }
-
 function RepositoryToolbar() {
   const [selectedBranch, setSelectedBranch] = React.useState("main")
   return (
@@ -466,6 +495,8 @@ function RepositoryToolbar() {
                 lucide="SearchIcon"
                 tabler="IconSearch"
                 hugeicons="SearchIcon"
+                phosphor="MagnifyingGlassIcon"
+                remixicon="RiSearchLine"
               />
             </InputGroupButton>
           </InputGroupAddon>
@@ -480,6 +511,8 @@ function RepositoryToolbar() {
               lucide="ChevronDownIcon"
               tabler="IconChevronDown"
               hugeicons="ArrowDown01Icon"
+              phosphor="CaretDownIcon"
+              remixicon="RiArrowDownSLine"
               data-icon="inline-end"
             />
           </DropdownMenuTrigger>
@@ -490,6 +523,8 @@ function RepositoryToolbar() {
                   lucide="PlusIcon"
                   tabler="IconPlus"
                   hugeicons="PlusSignIcon"
+                  phosphor="PlusIcon"
+                  remixicon="RiAddLine"
                 />
                 Create new file
               </DropdownMenuItem>
@@ -498,6 +533,8 @@ function RepositoryToolbar() {
                   lucide="UploadIcon"
                   hugeicons="Upload01Icon"
                   tabler="IconUpload"
+                  phosphor="UploadIcon"
+                  remixicon="RiUploadLine"
                 />
                 Upload files
               </DropdownMenuItem>
@@ -517,6 +554,8 @@ function RepositoryToolbar() {
                 lucide="CloudCogIcon"
                 hugeicons="AiCloud01Icon"
                 tabler="IconCloudCog"
+                phosphor="CloudArrowUpIcon"
+                remixicon="RiUploadCloudLine"
               />
             </TooltipTrigger>
             <TooltipContent>New Agent Task</TooltipContent>
@@ -545,6 +584,8 @@ function RepositoryToolbar() {
                           lucide="GitBranchIcon"
                           hugeicons="GitBranchIcon"
                           tabler="IconGitBranch"
+                          phosphor="GitBranchIcon"
+                          remixicon="RiGitBranchLine"
                         />
                       </PopoverTrigger>
                       <TooltipContent>Select a branch</TooltipContent>
@@ -620,6 +661,8 @@ function RepositoryToolbar() {
                           lucide="BotIcon"
                           hugeicons="RoboticIcon"
                           tabler="IconRobot"
+                          phosphor="RobotIcon"
+                          remixicon="RiRobotLine"
                         />
                       </PopoverTrigger>
                       <TooltipContent>Select Agent</TooltipContent>
@@ -657,6 +700,8 @@ function RepositoryToolbar() {
                         lucide="SendIcon"
                         hugeicons="SentIcon"
                         tabler="IconSend"
+                        phosphor="PaperPlaneTiltIcon"
+                        remixicon="RiSendPlaneLine"
                       />
                     </TooltipTrigger>
                     <TooltipContent className="flex items-center gap-2 pr-2">
@@ -672,7 +717,6 @@ function RepositoryToolbar() {
     </Example>
   )
 }
-
 function Navbar() {
   return (
     <Example title="Account Menu">
@@ -684,6 +728,8 @@ function Navbar() {
                 lucide="MenuIcon"
                 hugeicons="Menu09Icon"
                 tabler="IconMenu"
+                phosphor="ListIcon"
+                remixicon="RiListUnordered"
               />
               <span className="sr-only">Open menu</span>
             </Button>
@@ -697,6 +743,8 @@ function Navbar() {
                     lucide="XIcon"
                     tabler="IconX"
                     hugeicons="Cancel01Icon"
+                    phosphor="XIcon"
+                    remixicon="RiCloseLine"
                   />
                   <span className="sr-only">Close</span>
                 </Button>
@@ -710,6 +758,8 @@ function Navbar() {
                       lucide="HomeIcon"
                       tabler="IconHome"
                       hugeicons="HomeIcon"
+                      phosphor="HouseIcon"
+                      remixicon="RiHomeLine"
                     />
                   </ItemMedia>
                   <ItemContent>
@@ -722,6 +772,8 @@ function Navbar() {
                       lucide="CircleIcon"
                       tabler="IconCircle"
                       hugeicons="CircleIcon"
+                      phosphor="CircleIcon"
+                      remixicon="RiCircleLine"
                     />
                   </ItemMedia>
                   <ItemContent>
@@ -734,6 +786,8 @@ function Navbar() {
                       lucide="GitBranchIcon"
                       tabler="IconGitBranch"
                       hugeicons="GitBranchIcon"
+                      phosphor="GitBranchIcon"
+                      remixicon="RiGitBranchLine"
                     />
                   </ItemMedia>
                   <ItemContent>
@@ -746,6 +800,8 @@ function Navbar() {
                       lucide="LayoutGridIcon"
                       tabler="IconLayoutGrid"
                       hugeicons="GridIcon"
+                      phosphor="GridFourIcon"
+                      remixicon="RiGridLine"
                     />
                   </ItemMedia>
                   <ItemContent>
@@ -758,6 +814,8 @@ function Navbar() {
                       lucide="MailIcon"
                       tabler="IconMail"
                       hugeicons="MailIcon"
+                      phosphor="EnvelopeIcon"
+                      remixicon="RiMailLine"
                     />
                   </ItemMedia>
                   <ItemContent>
@@ -770,6 +828,8 @@ function Navbar() {
                       lucide="ServerIcon"
                       tabler="IconServer"
                       hugeicons="ServerStackIcon"
+                      phosphor="HardDrivesIcon"
+                      remixicon="RiHardDriveLine"
                     />
                   </ItemMedia>
                   <ItemContent>
@@ -782,6 +842,8 @@ function Navbar() {
                       lucide="BotIcon"
                       tabler="IconRobot"
                       hugeicons="RoboticIcon"
+                      phosphor="RobotIcon"
+                      remixicon="RiRobotLine"
                     />
                   </ItemMedia>
                   <ItemContent>
@@ -794,6 +856,8 @@ function Navbar() {
                       lucide="SparklesIcon"
                       tabler="IconSparkles"
                       hugeicons="SparklesIcon"
+                      phosphor="SparkleIcon"
+                      remixicon="RiSparklingLine"
                     />
                   </ItemMedia>
                   <ItemContent>
@@ -807,6 +871,8 @@ function Navbar() {
                       lucide="SearchIcon"
                       tabler="IconSearch"
                       hugeicons="SearchIcon"
+                      phosphor="MagnifyingGlassIcon"
+                      remixicon="RiSearchLine"
                     />
                   </ItemMedia>
                   <ItemContent>
@@ -819,6 +885,8 @@ function Navbar() {
                       lucide="ShoppingBagIcon"
                       tabler="IconShoppingBag"
                       hugeicons="ShoppingBasket01Icon"
+                      phosphor="BagIcon"
+                      remixicon="RiShoppingBagLine"
                     />
                   </ItemMedia>
                   <ItemContent>
@@ -831,6 +899,8 @@ function Navbar() {
                       lucide="LinkIcon"
                       tabler="IconLink"
                       hugeicons="LinkIcon"
+                      phosphor="LinkIcon"
+                      remixicon="RiLinksLine"
                     />
                   </ItemMedia>
                   <ItemContent>
@@ -887,6 +957,8 @@ function Navbar() {
                   lucide="SmileIcon"
                   tabler="IconMoodSmile"
                   hugeicons="SmileIcon"
+                  phosphor="SmileyIcon"
+                  remixicon="RiEmotionLine"
                 />
                 Set status
               </DropdownMenuItem>
@@ -895,6 +967,8 @@ function Navbar() {
                   lucide="CircleAlertIcon"
                   tabler="IconExclamationCircle"
                   hugeicons="AlertCircleIcon"
+                  phosphor="WarningCircleIcon"
+                  remixicon="RiErrorWarningLine"
                 />
                 Single sign-on
               </DropdownMenuItem>
@@ -906,6 +980,8 @@ function Navbar() {
                   lucide="UserIcon"
                   tabler="IconUser"
                   hugeicons="UserIcon"
+                  phosphor="UserIcon"
+                  remixicon="RiUserLine"
                 />
                 Profile
               </DropdownMenuItem>
@@ -914,6 +990,8 @@ function Navbar() {
                   lucide="FolderIcon"
                   tabler="IconFolder"
                   hugeicons="FolderIcon"
+                  phosphor="FolderIcon"
+                  remixicon="RiFolderLine"
                 />
                 Repositories
               </DropdownMenuItem>
@@ -922,6 +1000,8 @@ function Navbar() {
                   lucide="StarIcon"
                   tabler="IconStar"
                   hugeicons="StarIcon"
+                  phosphor="StarIcon"
+                  remixicon="RiStarLine"
                 />
                 Stars
               </DropdownMenuItem>
@@ -930,6 +1010,8 @@ function Navbar() {
                   lucide="CodeIcon"
                   tabler="IconCode"
                   hugeicons="CodeIcon"
+                  phosphor="CodeIcon"
+                  remixicon="RiCodeLine"
                 />
                 Gists
               </DropdownMenuItem>
@@ -938,6 +1020,8 @@ function Navbar() {
                   lucide="FolderIcon"
                   tabler="IconFolder"
                   hugeicons="FolderIcon"
+                  phosphor="FolderIcon"
+                  remixicon="RiFolderLine"
                 />
                 Organizations
               </DropdownMenuItem>
@@ -946,6 +1030,8 @@ function Navbar() {
                   lucide="ServerIcon"
                   tabler="IconServer"
                   hugeicons="ServerStackIcon"
+                  phosphor="HardDrivesIcon"
+                  remixicon="RiHardDriveLine"
                 />
                 Enterprises
               </DropdownMenuItem>
@@ -954,6 +1040,8 @@ function Navbar() {
                   lucide="HeartIcon"
                   tabler="IconHeart"
                   hugeicons="FavouriteIcon"
+                  phosphor="HeartIcon"
+                  remixicon="RiHeartLine"
                 />
                 Sponsors
               </DropdownMenuItem>
@@ -965,6 +1053,8 @@ function Navbar() {
                   lucide="SettingsIcon"
                   tabler="IconSettings"
                   hugeicons="SettingsIcon"
+                  phosphor="GearIcon"
+                  remixicon="RiSettingsLine"
                 />
                 Settings
               </DropdownMenuItem>
@@ -973,6 +1063,8 @@ function Navbar() {
                   lucide="BotIcon"
                   tabler="IconRobot"
                   hugeicons="RoboticIcon"
+                  phosphor="RobotIcon"
+                  remixicon="RiRobotLine"
                 />
                 Copilot settings
               </DropdownMenuItem>
@@ -981,6 +1073,8 @@ function Navbar() {
                   lucide="SparklesIcon"
                   tabler="IconSparkles"
                   hugeicons="SparklesIcon"
+                  phosphor="SparkleIcon"
+                  remixicon="RiSparklingLine"
                 />
                 Feature preview
               </DropdownMenuItem>
@@ -989,6 +1083,8 @@ function Navbar() {
                   lucide="MonitorIcon"
                   tabler="IconDeviceDesktop"
                   hugeicons="ComputerIcon"
+                  phosphor="MonitorIcon"
+                  remixicon="RiComputerLine"
                 />
                 Appearance
               </DropdownMenuItem>
@@ -997,6 +1093,8 @@ function Navbar() {
                   lucide="UserIcon"
                   tabler="IconUser"
                   hugeicons="UserIcon"
+                  phosphor="UserIcon"
+                  remixicon="RiUserLine"
                 />
                 Accessibility
               </DropdownMenuItem>
@@ -1005,6 +1103,8 @@ function Navbar() {
                   lucide="ArrowUpIcon"
                   tabler="IconArrowUp"
                   hugeicons="ArrowUpIcon"
+                  phosphor="ArrowUpIcon"
+                  remixicon="RiArrowUpLine"
                 />
                 Upgrade
               </DropdownMenuItem>
@@ -1016,6 +1116,8 @@ function Navbar() {
                   lucide="LogOutIcon"
                   tabler="IconLogout"
                   hugeicons="LogoutIcon"
+                  phosphor="SignOutIcon"
+                  remixicon="RiLogoutBoxLine"
                 />
                 Sign out
               </DropdownMenuItem>
@@ -1026,7 +1128,6 @@ function Navbar() {
     </Example>
   )
 }
-
 const usernames = [
   "shadcn",
   "vercel",
@@ -1045,7 +1146,6 @@ const usernames = [
   "angular",
   "solid",
 ]
-
 function Contributors() {
   return (
     <Example title="Contributors" className="items-center lg:p-16">
@@ -1077,7 +1177,6 @@ function Contributors() {
     </Example>
   )
 }
-
 function Profile() {
   return (
     <Example title="Profile" className="items-center justify-center">
@@ -1133,7 +1232,6 @@ function Profile() {
     </Example>
   )
 }
-
 function ContributionsActivity() {
   return (
     <Example title="Contributions Activity" className="justify-center">
@@ -1197,7 +1295,6 @@ function ContributionsActivity() {
     </Example>
   )
 }
-
 const users = [
   "shadcn",
   "maxleiter",
@@ -1207,10 +1304,8 @@ const users = [
   "shuding",
   "rauchg",
 ]
-
 function AssignIssue() {
   const anchor = useComboboxAnchor()
-
   return (
     <Example title="User Select" className="items-center justify-center">
       <Card className="w-full max-w-sm" size="sm">
@@ -1228,6 +1323,8 @@ function AssignIssue() {
                   lucide="PlusIcon"
                   tabler="IconPlus"
                   hugeicons="PlusSignIcon"
+                  phosphor="PlusIcon"
+                  remixicon="RiAddLine"
                 />
               </TooltipTrigger>
               <TooltipContent>Add user</TooltipContent>

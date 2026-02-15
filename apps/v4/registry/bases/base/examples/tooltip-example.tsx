@@ -47,12 +47,21 @@ function TooltipSides() {
   return (
     <Example title="Sides">
       <div className="flex flex-wrap gap-2">
-        {(["top", "right", "bottom", "left"] as const).map((side) => (
+        {(
+          [
+            "inline-start",
+            "left",
+            "top",
+            "bottom",
+            "right",
+            "inline-end",
+          ] as const
+        ).map((side) => (
           <Tooltip key={side}>
             <TooltipTrigger
               render={<Button variant="outline" className="w-fit capitalize" />}
             >
-              {side}
+              {side.replace("-", " ")}
             </TooltipTrigger>
             <TooltipContent side={side}>
               <p>Add to library</p>
@@ -73,6 +82,8 @@ function TooltipWithIcon() {
             lucide="InfoIcon"
             tabler="IconInfoCircle"
             hugeicons="AlertCircleIcon"
+            phosphor="InfoIcon"
+            remixicon="RiInformationLine"
           />
           <span className="sr-only">Info</span>
         </TooltipTrigger>
@@ -126,6 +137,8 @@ function TooltipWithKeyboard() {
             lucide="SaveIcon"
             tabler="IconDeviceFloppy"
             hugeicons="FloppyDiskIcon"
+            phosphor="FloppyDiskIcon"
+            remixicon="RiSaveLine"
           />
         </TooltipTrigger>
         <TooltipContent className="pr-1.5">
