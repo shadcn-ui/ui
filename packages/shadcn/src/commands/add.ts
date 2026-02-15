@@ -1,5 +1,8 @@
 import path from "path"
-import { runInit } from "@/src/commands/init"
+import {
+  getTemplateFromFrameworkName,
+  runInit,
+} from "@/src/commands/init"
 import { preFlightAdd } from "@/src/preflights/preflight-add"
 import { getRegistryItems, getShadcnRegistryIndex } from "@/src/registry/api"
 import { DEPRECATED_COMPONENTS } from "@/src/registry/constants"
@@ -13,6 +16,10 @@ import * as ERRORS from "@/src/utils/errors"
 import { createConfig, getConfig } from "@/src/utils/get-config"
 import { getProjectInfo } from "@/src/utils/get-project-info"
 import { handleError } from "@/src/utils/handle-error"
+import {
+  promptForPreset,
+  resolveRegistryBaseConfig,
+} from "@/src/utils/presets"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import { ensureRegistriesInConfig } from "@/src/utils/registries"
@@ -52,8 +59,8 @@ export const add = new Command()
     try {
       const options = addOptionsSchema.parse({
         components,
-        cwd: path.resolve(opts.cwd),
         ...opts,
+        cwd: path.resolve(opts.cwd),
       })
 
       await loadEnvFiles(options.cwd)
@@ -159,6 +166,21 @@ export const add = new Command()
           process.exit(1)
         }
 
+        // Infer template from project framework.
+        const inferredTemplate = getTemplateFromFrameworkName(
+          projectInfo?.framework.name
+        )
+
+        // Prompt for preset.
+        const initUrl = await promptForPreset({
+          rtl: false,
+          template: inferredTemplate,
+        })
+
+        // Resolve registry:base config.
+        const { registryBaseConfig, installStyleIndex } =
+          await resolveRegistryBaseConfig(initUrl, options.cwd)
+
         config = await runInit({
           cwd: options.cwd,
           yes: true,
@@ -169,8 +191,9 @@ export const add = new Command()
           isNewProject: false,
           cssVariables: options.cssVariables,
           rtl: false,
-          installStyleIndex: shouldInstallStyleIndex,
-          components: options.components,
+          installStyleIndex,
+          components: [initUrl, ...(options.components ?? [])],
+          registryBaseConfig,
         })
         initHasRun = true
       }
@@ -193,6 +216,11 @@ export const add = new Command()
           options.cwd = path.resolve(options.cwd, "apps/web")
           config = await getConfig(options.cwd)
         } else {
+          // Prompt for preset.
+          const initUrl = await promptForPreset({ rtl: false, template })
+          const { registryBaseConfig, installStyleIndex } =
+            await resolveRegistryBaseConfig(initUrl, options.cwd)
+
           config = await runInit({
             cwd: options.cwd,
             yes: true,
@@ -203,8 +231,9 @@ export const add = new Command()
             isNewProject: true,
             cssVariables: options.cssVariables,
             rtl: false,
-            installStyleIndex: shouldInstallStyleIndex,
-            components: options.components,
+            installStyleIndex,
+            components: [initUrl, ...(options.components ?? [])],
+            registryBaseConfig,
           })
           initHasRun = true
 

@@ -3,11 +3,8 @@ import path from "path"
 import { preFlightInit } from "@/src/preflights/preflight-init"
 import {
   getRegistryBaseColors,
-  getRegistryItems,
   getRegistryStyles,
 } from "@/src/registry/api"
-import { buildUrlAndHeadersForRegistryItem } from "@/src/registry/builder"
-import { configWithDefaults } from "@/src/registry/config"
 import { BUILTIN_REGISTRIES } from "@/src/registry/constants"
 import { clearRegistryContext } from "@/src/registry/context"
 import { isUrl } from "@/src/registry/utils"
@@ -43,15 +40,15 @@ import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import {
   DEFAULT_PRESETS,
-  resolveCreateUrl,
+  promptForPreset,
   resolveInitUrl,
+  resolveRegistryBaseConfig,
 } from "@/src/utils/presets"
 import { ensureRegistriesInConfig } from "@/src/utils/registries"
 import { spinner } from "@/src/utils/spinner"
 import { Command } from "commander"
 import deepmerge from "deepmerge"
 import fsExtra from "fs-extra"
-import open from "open"
 import prompts from "prompts"
 import { z } from "zod"
 
@@ -212,68 +209,9 @@ export const init = new Command()
         const presetArg = options.preset === true ? true : options.preset
 
         if (presetArg === true) {
-          const { selectedPreset } = await prompts({
-            type: "select",
-            name: "selectedPreset",
-            message: `Which ${highlighter.info(
-              "preset"
-            )} would you like to use?`,
-            choices: [
-              ...presets.map((preset) => ({
-                title: preset.title,
-                description: preset.description,
-                value: preset.name,
-              })),
-              {
-                title: "Custom",
-                description: "Build your own on https://ui.shadcn.com",
-                value: "custom",
-              },
-            ],
-          })
-
-          if (!selectedPreset) {
-            process.exit(0)
-          }
-
-          if (selectedPreset === "custom") {
-            const createUrl = resolveCreateUrl({
-              command: "init",
-              rtl: options.rtl,
-              ...(options.template && { template: options.template }),
-            })
-            logger.break()
-            logger.log(
-              `  Build your custom preset on ${highlighter.info(createUrl)}`
-            )
-            logger.log(
-              `  Then ${highlighter.info(
-                "copy and run the command"
-              )} from ui.shadcn.com.`
-            )
-            logger.break()
-
-            const { proceed } = await prompts({
-              type: "confirm",
-              name: "proceed",
-              message: "Open in browser?",
-              initial: true,
-            })
-
-            if (proceed) {
-              await open(createUrl)
-            }
-
-            process.exit(0)
-          }
-
-          const preset = presets.find((p) => p.name === selectedPreset)
-          if (!preset) {
-            process.exit(0)
-          }
-          const initUrl = resolveInitUrl({
-            ...preset,
+          const initUrl = await promptForPreset({
             rtl: options.rtl,
+            template: options.template,
           })
           components = [initUrl, ...components]
         }
@@ -310,41 +248,14 @@ export const init = new Command()
       // We need to check if we're initializing with a new style.
       // This will allow us to determine if we need to install the base style.
       if (components.length > 0) {
-        // We don't know the full config at this point.
-        // So we'll use a shadow config to fetch the first item.
-        let shadowConfig = configWithDefaults(
-          createConfig({
-            resolvedPaths: {
-              cwd: parsedOptions.cwd,
-            },
-          })
-        )
-
-        // Check if there's a components.json file.
-        // If so, we'll merge with our shadow config.
+        // Back up existing components.json if it exists.
+        // Since components.json might not be valid at this point,
+        // temporarily rename it to allow preflight to run.
         const componentsJsonPath = path.resolve(
           parsedOptions.cwd,
           "components.json"
         )
         if (fsExtra.existsSync(componentsJsonPath)) {
-          const existingConfig = await fsExtra.readJson(componentsJsonPath)
-          const config = rawConfigSchema.partial().parse(existingConfig)
-          const baseConfig = createConfig({
-            resolvedPaths: {
-              cwd: parsedOptions.cwd,
-            },
-          })
-          shadowConfig = configWithDefaults({
-            ...config,
-            resolvedPaths: {
-              ...baseConfig.resolvedPaths,
-              cwd: parsedOptions.cwd,
-            },
-          })
-
-          // Since components.json might not be valid at this point.
-          // Temporarily rename components.json to allow preflight to run.
-          // We'll rename it back after preflight.
           componentsJsonBackupPath =
             createFileBackup(componentsJsonPath) ?? undefined
           if (!componentsJsonBackupPath) {
@@ -354,37 +265,16 @@ export const init = new Command()
           }
         }
 
-        // Ensure all registries used in components are configured.
-        const { config: updatedConfig } = await ensureRegistriesInConfig(
-          components,
-          shadowConfig,
-          {
-            silent: true,
-            writeFile: false,
-          }
-        )
-        shadowConfig = updatedConfig
+        // Resolve registry:base config from the first component.
+        const { registryBaseConfig, installStyleIndex } =
+          await resolveRegistryBaseConfig(components[0], parsedOptions.cwd)
 
-        // This forces a shadowConfig validation early in the process.
-        buildUrlAndHeadersForRegistryItem(components[0], shadowConfig)
-
-        const [item] = await getRegistryItems([components[0]], {
-          config: shadowConfig,
-        })
-
-        if (item?.extends === "none") {
+        if (!installStyleIndex) {
           parsedOptions.installStyleIndex = false
         }
 
-        if (item?.type === "registry:base") {
-          if (item.config) {
-            // Merge config values into shadowConfig.
-            shadowConfig = configWithDefaults(
-              deepmerge(shadowConfig, item.config)
-            )
-            // Store config to be merged into components.json later.
-            parsedOptions.registryBaseConfig = item.config
-          }
+        if (registryBaseConfig) {
+          parsedOptions.registryBaseConfig = registryBaseConfig
         }
       }
 
@@ -730,7 +620,7 @@ async function promptForMinimalConfig(
   })
 }
 
-function getTemplateFromFrameworkName(frameworkName?: string) {
+export function getTemplateFromFrameworkName(frameworkName?: string) {
   if (frameworkName === "next-app" || frameworkName === "next-pages") {
     return "next"
   }
