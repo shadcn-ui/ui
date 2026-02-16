@@ -130,7 +130,7 @@ export const nextMonorepo = createTemplate({
     await fs.writeJson(appsWebConfigPath, appsWebConfig, { spaces: 2 })
 
     // Apply preset CSS/style to packages/ui directly.
-    // We use the packages/ui config (not apps/web) so addProjectComponents runs
+    // We use the packages/ui config (not apps/web) so addProjectComponents runs.
     // instead of addWorkspaceComponents. This keeps CSS/deps in packages/ui.
     const resolvedPackagesUiConfig = await resolveConfigPaths(
       packagesUiPath,
@@ -156,7 +156,7 @@ export const nextMonorepo = createTemplate({
 
     // Handle fonts at the apps/web level.
     // packages/ui has no next.config so massageTreeForFonts can't detect Next.js.
-    // We resolve the tree to get fonts, then apply them using the apps/web config
+    // We resolve the tree to get fonts, then apply them using the apps/web config.
     // which has next.config and layout.tsx.
     const tree = await resolveRegistryTree(
       options.components,
