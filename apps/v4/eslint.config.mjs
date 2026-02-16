@@ -2,6 +2,8 @@ import nextVitals from "eslint-config-next/core-web-vitals"
 import tseslint from "typescript-eslint"
 
 const eslintConfig = tseslint.config(
+  // Remove the @typescript-eslint plugin from next/typescript to prevent
+  // duplicate registration with tseslint.configs.recommended.
   ...nextVitals.map((config) =>
     config.name === "next/typescript"
       ? { ...config, plugins: {} }
