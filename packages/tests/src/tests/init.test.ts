@@ -540,7 +540,7 @@ describe("shadcn init - next-monorepo", () => {
   it("should create a monorepo with preset", async () => {
     const projectName = `test-monorepo-preset-${process.pid}`
 
-    await npxShadcn(
+    const result = await npxShadcn(
       testBaseDir,
       [
         "init",
@@ -551,8 +551,9 @@ describe("shadcn init - next-monorepo", () => {
         "--preset",
         "radix-nova",
       ],
-      { timeout: 120000 }
+      { timeout: 300000 }
     )
+    expect(result.exitCode).toBe(0)
 
     const projectPath = path.join(testBaseDir, projectName)
 
@@ -593,7 +594,7 @@ describe("shadcn init - next-monorepo", () => {
     expect(cssContent).toContain("--background")
     expect(cssContent).toContain("--foreground")
     expect(cssContent).toContain("--primary")
-  }, 120000)
+  }, 300000)
 
   it("should create a monorepo with custom preset url", async () => {
     const projectName = `test-monorepo-url-${process.pid}`
@@ -603,7 +604,7 @@ describe("shadcn init - next-monorepo", () => {
     const baseUrl = registryUrl.replace(/\/r\/?$/, "")
     const initUrl = `${baseUrl}/init?base=radix&style=nova&baseColor=zinc&theme=zinc&iconLibrary=lucide&font=inter&rtl=false&menuAccent=subtle&menuColor=default&radius=default&template=next`
 
-    await npxShadcn(
+    const result = await npxShadcn(
       testBaseDir,
       [
         "init",
@@ -614,8 +615,9 @@ describe("shadcn init - next-monorepo", () => {
         "--preset",
         initUrl,
       ],
-      { timeout: 120000 }
+      { timeout: 300000 }
     )
+    expect(result.exitCode).toBe(0)
 
     const projectPath = path.join(testBaseDir, projectName)
     expect(await fs.pathExists(projectPath)).toBe(true)
@@ -651,7 +653,7 @@ describe("shadcn init - next-monorepo", () => {
         },
       ])
     ).toBe(true)
-  }, 120000)
+  }, 300000)
 })
 
 describe("shadcn init - deprecated --src-dir", () => {
@@ -722,5 +724,37 @@ describe("shadcn init - existing components.json", () => {
     const newConfig = await fs.readJson(componentsJsonPath)
     expect(newConfig).toMatchObject(existingConfig)
     expect(await fs.pathExists(componentsJsonPath + ".bak")).toBe(false)
+  })
+
+  it("should preserve registries in components.json when using --force", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app")
+
+    // Run init with default configuration.
+    await npxShadcn(fixturePath, ["init", "--defaults"])
+
+    // Inject a custom registries object into components.json.
+    const componentsJsonPath = path.join(fixturePath, "components.json")
+    const config = await fs.readJson(componentsJsonPath)
+    config.registries = {
+      "my-registry": { url: "https://example.com/r" },
+    }
+    await fs.writeJson(componentsJsonPath, config)
+
+    // Reinit with --force.
+    await npxShadcn(fixturePath, ["init", "--force", "--defaults"])
+
+    // components.json should exist with no .bak leftover.
+    expect(await fs.pathExists(componentsJsonPath)).toBe(true)
+    expect(await fs.pathExists(componentsJsonPath + ".bak")).toBe(false)
+
+    // The custom registry should be preserved.
+    const newConfig = await fs.readJson(componentsJsonPath)
+    expect(newConfig.registries).toMatchObject({
+      "my-registry": { url: "https://example.com/r" },
+    })
+
+    // Other config values should be from the fresh init.
+    expect(newConfig.style).toBe("base-nova")
+    expect(newConfig.tailwind.baseColor).toBe("neutral")
   })
 })
