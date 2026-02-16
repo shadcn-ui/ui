@@ -31,7 +31,6 @@ export const addOptionsSchema = z.object({
   all: z.boolean(),
   path: z.string().optional(),
   silent: z.boolean(),
-  cssVariables: z.boolean(),
 })
 
 export const add = new Command()
@@ -48,8 +47,6 @@ export const add = new Command()
   .option("-a, --all", "add all available components", false)
   .option("-p, --path <path>", "the path to add the component to.")
   .option("-s, --silent", "mute output.", false)
-  .option("--css-variables", "use css variables for theming.", true)
-  .option("--no-css-variables", "do not use css variables for theming.")
   .action(async (components, opts) => {
     try {
       const options = addOptionsSchema.parse({
@@ -184,7 +181,7 @@ export const add = new Command()
           skipPreflight: false,
           silent: options.silent && !hasNewRegistries,
           isNewProject: false,
-          cssVariables: options.cssVariables,
+          cssVariables: true,
           rtl: false,
           installStyleIndex,
           components: [initUrl, ...(options.components ?? [])],
@@ -224,7 +221,7 @@ export const add = new Command()
             skipPreflight: true,
             silent: !hasNewRegistries && options.silent,
             isNewProject: true,
-            cssVariables: options.cssVariables,
+            cssVariables: true,
             rtl: false,
             installStyleIndex,
             components: [initUrl, ...(options.components ?? [])],
