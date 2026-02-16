@@ -251,7 +251,17 @@ export const init = new Command()
           parsedOptions.cwd,
           "components.json"
         )
+
+        // Read existing registries before backing up.
+        let existingRegistries
         if (fsExtra.existsSync(componentsJsonPath)) {
+          try {
+            const existingConfig = await fsExtra.readJson(componentsJsonPath)
+            existingRegistries = existingConfig.registries
+          } catch {
+            // Ignore read errors.
+          }
+
           componentsJsonBackupPath =
             createFileBackup(componentsJsonPath) ?? undefined
           if (!componentsJsonBackupPath) {
@@ -263,7 +273,9 @@ export const init = new Command()
 
         // Resolve registry:base config from the first component.
         const { registryBaseConfig, installStyleIndex } =
-          await resolveRegistryBaseConfig(components[0], parsedOptions.cwd)
+          await resolveRegistryBaseConfig(components[0], parsedOptions.cwd, {
+            registries: existingRegistries,
+          })
 
         if (!installStyleIndex) {
           parsedOptions.installStyleIndex = false

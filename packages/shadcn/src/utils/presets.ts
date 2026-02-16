@@ -2,6 +2,7 @@ import { getRegistryItems } from "@/src/registry/api"
 import { buildUrlAndHeadersForRegistryItem } from "@/src/registry/builder"
 import { configWithDefaults } from "@/src/registry/config"
 import { REGISTRY_URL } from "@/src/registry/constants"
+import { type registryConfigSchema } from "@/src/registry/schema"
 import { type Preset } from "@/src/schema"
 import { createConfig } from "@/src/utils/get-config"
 import { highlighter } from "@/src/utils/highlighter"
@@ -9,6 +10,7 @@ import { logger } from "@/src/utils/logger"
 import { ensureRegistriesInConfig } from "@/src/utils/registries"
 import open from "open"
 import prompts from "prompts"
+import { type z } from "zod"
 
 const SHADCN_URL = REGISTRY_URL.replace(/\/r\/?$/, "")
 
@@ -154,13 +156,20 @@ export async function promptForPreset(options: {
   return resolveInitUrl({ ...preset, rtl: options.rtl })
 }
 
-export async function resolveRegistryBaseConfig(initUrl: string, cwd: string) {
+export async function resolveRegistryBaseConfig(
+  initUrl: string,
+  cwd: string,
+  options?: {
+    registries?: z.infer<typeof registryConfigSchema>
+  }
+) {
   // Use a shadow config to fetch the registry:base item.
   let shadowConfig = configWithDefaults(
     createConfig({
       resolvedPaths: {
         cwd,
       },
+      ...(options?.registries && { registries: options.registries }),
     })
   )
 
@@ -182,9 +191,11 @@ export async function resolveRegistryBaseConfig(initUrl: string, cwd: string) {
     config: shadowConfig,
   })
 
+  const registryBaseConfig =
+    item?.type === "registry:base" && item.config ? item.config : undefined
+
   return {
-    registryBaseConfig:
-      item?.type === "registry:base" && item.config ? item.config : undefined,
+    registryBaseConfig,
     installStyleIndex: item?.extends !== "none",
   }
 }

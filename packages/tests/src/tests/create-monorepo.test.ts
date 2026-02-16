@@ -40,7 +40,7 @@ describe("shadcn create - next-monorepo", () => {
       path.join(projectPath, "packages/ui/components.json")
     )
     expect(uiConfig.style).toBe("radix-nova")
-    expect(uiConfig.iconLibrary).toBe("hugeicons")
+    expect(uiConfig.iconLibrary).toBe("lucide")
     expect(uiConfig.tailwind.css).toBe("src/styles/globals.css")
     expect(uiConfig.tailwind.baseColor).toBe("neutral")
     expect(uiConfig.tailwind.cssVariables).toBe(true)
@@ -52,7 +52,7 @@ describe("shadcn create - next-monorepo", () => {
       path.join(projectPath, "apps/web/components.json")
     )
     expect(webConfig.style).toBe("radix-nova")
-    expect(webConfig.iconLibrary).toBe("hugeicons")
+    expect(webConfig.iconLibrary).toBe("lucide")
     expect(webConfig.tailwind.css).toBe(
       "../../packages/ui/src/styles/globals.css"
     )
@@ -168,13 +168,13 @@ describe("shadcn create - next-monorepo", () => {
     )
     expect(uiConfig.style).toBe("radix-nova")
     expect(uiConfig.iconLibrary).toBe("lucide")
-    expect(uiConfig.tailwind.baseColor).toBe("zinc")
+    expect(uiConfig.tailwind.baseColor).toBe("neutral")
 
     const webConfig = await fs.readJson(
       path.join(projectPath, "apps/web/components.json")
     )
     expect(webConfig.style).toBe("radix-nova")
-    expect(webConfig.tailwind.baseColor).toBe("zinc")
+    expect(webConfig.tailwind.baseColor).toBe("neutral")
 
     // Verify CSS has zinc color theme applied.
     const cssPath = path.join(projectPath, "packages/ui/src/styles/globals.css")
