@@ -777,6 +777,6 @@
     "name": "@code-blocks",
     "homepage": "https://code-blocks.pheralb.dev",
     "url": "https://code-blocks.pheralb.dev/r/{name}.json",
-    "description": "A set of UI components & utilities to show your code beautifully"
+    "description": "A set of UI components & utilities to show your code beautifully."
   }
 ]
