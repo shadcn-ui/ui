@@ -1,25 +1,25 @@
 module Root = {
   @module("@base-ui/react/scroll-area")
   @scope("ScrollArea")
-  external make: React.component<Types.props<'value, 'checked>> = "Root"
+  external make: React.component<Types.propsWithChildren<'value, 'checked>> = "Root"
 }
 
 module Viewport = {
   @module("@base-ui/react/scroll-area")
   @scope("ScrollArea")
-  external make: React.component<Types.props<'value, 'checked>> = "Viewport"
+  external make: React.component<Types.propsWithChildren<'value, 'checked>> = "Viewport"
 }
 
 module Scrollbar = {
   @module("@base-ui/react/scroll-area")
   @scope("ScrollArea")
-  external make: React.component<Types.props<'value, 'checked>> = "Scrollbar"
+  external make: React.component<Types.propsWithChildren<'value, 'checked>> = "Scrollbar"
 }
 
 module Content = {
   @module("@base-ui/react/scroll-area")
   @scope("ScrollArea")
-  external make: React.component<Types.props<'value, 'checked>> = "Content"
+  external make: React.component<Types.propsWithOptionalChildren<'value, 'checked>> = "Content"
 }
 
 module Thumb = {

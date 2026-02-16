@@ -10,5 +10,8 @@
     "in-source": true
   },
   "suffix": ".res.mjs",
-  "dependencies": ["@rescript-shadcn-ui/base-ui"]
+  "dependencies": [
+    "@rescript-shadcn-ui/base-ui",
+    "shadcn"
+  ]
 }

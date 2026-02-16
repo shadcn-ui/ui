@@ -1,8 +1,9 @@
-type props<'value, 'checked> = BaseUi.Types.props<'value, 'checked>
-external toDomProps: props<'value, 'checked> => JsxDOM.domProps = "%identity"
+open BaseUi.Types
+
+external toDomProps: 'a => JsxDOM.domProps = "%identity"
 
 @react.componentWithProps
-let make = (props: props<'value, 'checked>) => {
+let make = (props: propsWithChildren<'value, 'checked>) => {
   let props = {...props, dataSlot: "textarea"}
   <textarea
     {...toDomProps(props)}

@@ -29,26 +29,32 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
       "default": "./dist/index.js"
     },
     "./registry": {
       "types": "./dist/registry/index.d.ts",
+      "import": "./dist/registry/index.js",
       "default": "./dist/registry/index.js"
     },
     "./schema": {
       "types": "./dist/schema/index.d.ts",
+      "import": "./dist/schema/index.js",
       "default": "./dist/schema/index.js"
     },
     "./mcp": {
       "types": "./dist/mcp/index.d.ts",
+      "import": "./dist/mcp/index.js",
       "default": "./dist/mcp/index.js"
     },
     "./utils": {
       "types": "./dist/utils/index.d.ts",
+      "import": "./dist/utils/index.js",
       "default": "./dist/utils/index.js"
     },
     "./icons": {
       "types": "./dist/icons/index.d.ts",
+      "import": "./dist/icons/index.js",
       "default": "./dist/icons/index.js"
     },
     "./tailwind.css": {
@@ -70,7 +76,7 @@
     "pub:beta": "pnpm build && pnpm publish --no-git-checks --access public --tag beta",
     "pub:next": "pnpm build && pnpm publish --no-git-checks --access public --tag next",
     "pub:release": "pnpm build && pnpm publish --access public",
-    "test": "vitest run",
+    "test": "vitest run --exclude test/visual/**",
     "test:pixel": "vitest run test/visual/pixel-perfect.test.ts",
     "test:dev": "REGISTRY_URL=http://localhost:4000/r vitest run",
     "mcp:inspect": "pnpm dlx @modelcontextprotocol/inspector node dist/index.js mcp"

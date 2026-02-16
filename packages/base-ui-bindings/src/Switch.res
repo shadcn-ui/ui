@@ -1,7 +1,7 @@
 module Root = {
   @module("@base-ui/react/switch")
   @scope("Switch")
-  external make: React.component<Types.props<'value, 'checked>> = "Root"
+  external make: React.component<Types.propsWithChildren<'value, 'checked>> = "Root"
 }
 
 module Thumb = {

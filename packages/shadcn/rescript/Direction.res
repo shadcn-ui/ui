@@ -1,8 +1,8 @@
-type props<'value, 'checked> = BaseUi.Types.props<'value, 'checked>
+open BaseUi.Types
 
 module DirectionProvider = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.DirectionProvider {...props} />
 }
 

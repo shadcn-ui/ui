@@ -1,18 +1,18 @@
-type props<'value, 'checked> = BaseUi.Types.props<'value, 'checked>
+open BaseUi.Types
 
 @react.componentWithProps
-let make = (props: props<'value, 'checked>) =>
+let make = (props: propsWithChildren<'value, 'checked>) =>
   <BaseUi.ContextMenu.Root {...props} dataSlot="context-menu" />
 
 module Portal = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.ContextMenu.Portal {...props} dataSlot="context-menu-portal" />
 }
 
 module Trigger = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.ContextMenu.Trigger
       {...props}
       dataSlot="context-menu-trigger"
@@ -22,13 +22,13 @@ module Trigger = {
 
 module Content = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.ContextMenu.Portal>
       <BaseUi.ContextMenu.Positioner
         className="isolate z-50 outline-none"
-        align={props.align->Option.getOr(BaseUi.Types.Align.Start)}
+        align={props.align->Option.getOr(Align.Start)}
         alignOffset={props.alignOffset->Option.getOr(4.)}
-        side={props.side->Option.getOr(BaseUi.Types.Side.Right)}
+        side={props.side->Option.getOr(Side.Right)}
         sideOffset={props.sideOffset->Option.getOr(0.)}
       >
         <BaseUi.ContextMenu.Popup
@@ -42,13 +42,13 @@ module Content = {
 
 module Group = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.ContextMenu.Group {...props} dataSlot="context-menu-group" />
 }
 
 module Label = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.ContextMenu.GroupLabel
       {...props}
       dataSlot="context-menu-label"
@@ -58,8 +58,8 @@ module Label = {
 
 module Item = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) => {
-    let variant = props.dataVariant->Option.getOr(BaseUi.Types.Variant.Default)
+  let make = (props: propsWithChildren<'value, 'checked>) => {
+    let variant = props.dataVariant->Option.getOr(Variant.Default)
     <BaseUi.ContextMenu.Item
       {...props}
       dataSlot="context-menu-item"
@@ -71,7 +71,7 @@ module Item = {
 
 module CheckboxItem = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.ContextMenu.CheckboxItem
       {...props}
       dataSlot="context-menu-checkbox-item"
@@ -80,19 +80,19 @@ module CheckboxItem = {
       <span className="pointer-events-none absolute right-2">
         <BaseUi.ContextMenu.CheckboxItemIndicator>{"✓"->React.string}</BaseUi.ContextMenu.CheckboxItemIndicator>
       </span>
-      {props.children->Option.getOr(React.null)}
+      {props.children}
     </BaseUi.ContextMenu.CheckboxItem>
 }
 
 module RadioGroup = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.ContextMenu.RadioGroup {...props} dataSlot="context-menu-radio-group" />
 }
 
 module RadioItem = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.ContextMenu.RadioItem
       {...props}
       dataSlot="context-menu-radio-item"
@@ -101,13 +101,13 @@ module RadioItem = {
       <span className="pointer-events-none absolute right-2">
         <BaseUi.ContextMenu.RadioItemIndicator>{"✓"->React.string}</BaseUi.ContextMenu.RadioItemIndicator>
       </span>
-      {props.children->Option.getOr(React.null)}
+      {props.children}
     </BaseUi.ContextMenu.RadioItem>
 }
 
 module Separator = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.ContextMenu.Separator
       {...props}
       dataSlot="context-menu-separator"
@@ -117,41 +117,41 @@ module Separator = {
 
 module Shortcut = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <span
 
       className={`text-muted-foreground group-focus/context-menu-item:text-accent-foreground ml-auto text-xs tracking-widest ${props.className->Option.getOr("")}`}
     >
-      {props.children->Option.getOr(React.null)}
+      {props.children}
     </span>
 }
 
 module Sub = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.ContextMenu.SubmenuRoot {...props} dataSlot="context-menu-sub" />
 }
 
 module SubContent = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <Content
       {...props}
       dataSlot="context-menu-sub-content"
       className={`shadow-lg ${props.className->Option.getOr("")}`}
-      side={BaseUi.Types.Side.Right}
+      side={Side.Right}
     />
 }
 
 module SubTrigger = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.ContextMenu.SubmenuTrigger
       {...props}
       dataSlot="context-menu-sub-trigger"
       className={`focus:bg-accent focus:text-accent-foreground data-open:bg-accent data-open:text-accent-foreground flex cursor-default items-center gap-1.5 rounded-md px-1.5 py-1 text-sm outline-hidden select-none data-inset:pl-7 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 ${props.className->Option.getOr("")}`}
     >
-      {props.children->Option.getOr(React.null)}
+      {props.children}
       <span className="cn-rtl-flip ml-auto">{">"->React.string}</span>
     </BaseUi.ContextMenu.SubmenuTrigger>
 }

@@ -1,7 +1,7 @@
-type props<'value, 'checked> = BaseUi.Types.props<'value, 'checked>
+open BaseUi.Types
 
 @react.componentWithProps
-let make = (props: props<'value, 'checked>) =>
+let make = (props: propsWithChildren<'value, 'checked>) =>
   <BaseUi.RadioGroup
     {...props}
     dataSlot="radio-group"
@@ -10,7 +10,7 @@ let make = (props: props<'value, 'checked>) =>
 
 module Item = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.Radio.Root
       {...props}
       dataSlot="radio-group-item"

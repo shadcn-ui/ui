@@ -1,7 +1,7 @@
-type props<'value, 'checked> = BaseUi.Types.props<'value, 'checked>
+open BaseUi.Types
 
 @react.componentWithProps
-let make = (props: props<'value, 'checked>) =>
+let make = (props: propsWithChildren<'value, 'checked>) =>
   <BaseUi.Accordion.Root
     {...props}
     dataSlot="accordion"
@@ -10,7 +10,7 @@ let make = (props: props<'value, 'checked>) =>
 
 module Item = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.Accordion.Item
       {...props}
       dataSlot="accordion-item"
@@ -20,14 +20,14 @@ module Item = {
 
 module Trigger = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.Accordion.Header className="flex">
       <BaseUi.Accordion.Trigger
         {...props}
         dataSlot="accordion-trigger"
         className={`focus-visible:ring-ring/50 focus-visible:border-ring focus-visible:after:border-ring **:data-[slot=accordion-trigger-icon]:text-muted-foreground group/accordion-trigger relative flex flex-1 items-start justify-between rounded-lg border border-transparent py-2.5 text-left text-sm font-medium transition-all outline-none hover:underline focus-visible:ring-3 disabled:pointer-events-none disabled:opacity-50 **:data-[slot=accordion-trigger-icon]:ml-auto **:data-[slot=accordion-trigger-icon]:size-4 ${props.className->Option.getOr("")}`}
       >
-        {props.children->Option.getOr(React.null)}
+        {props.children}
         <Icons.chevronDown
           dataSlot="accordion-trigger-icon"
           className="pointer-events-none shrink-0 group-aria-expanded/accordion-trigger:hidden"
@@ -42,14 +42,14 @@ module Trigger = {
 
 module Content = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.Accordion.Panel
       {...props}
       dataSlot="accordion-content"
       className={`data-open:animate-accordion-down data-closed:animate-accordion-up overflow-hidden text-sm ${props.className->Option.getOr("")}`}
     >
       <div className="[&_a]:hover:text-foreground h-(--accordion-panel-height) pt-0 pb-2.5 data-ending-style:h-0 data-starting-style:h-0 [&_a]:underline [&_a]:underline-offset-3 [&_p:not(:last-child)]:mb-4">
-        {props.children->Option.getOr(React.null)}
+        {props.children}
       </div>
     </BaseUi.Accordion.Panel>
 }

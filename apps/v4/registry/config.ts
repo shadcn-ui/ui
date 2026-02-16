@@ -2,7 +2,7 @@ import {
   iconLibraries,
   type IconLibrary,
   type IconLibraryName,
-} from "shadcn/icons"
+} from "../../../packages/shadcn/src/icons"
 import { z } from "zod"
 
 import { BASE_COLORS, type BaseColor } from "@/registry/base-colors"

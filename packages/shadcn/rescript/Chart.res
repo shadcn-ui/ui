@@ -1,20 +1,20 @@
-type props<'value, 'checked> = BaseUi.Types.props<'value, 'checked>
-type primitiveProps = props<string, bool>
-external toDomProps: props<'value, 'checked> => JsxDOM.domProps = "%identity"
+open BaseUi.Types
+
+external toDomProps: 'a => JsxDOM.domProps = "%identity"
 
 module RechartsPrimitive = {
   @module("recharts")
-  external responsiveContainer: React.component<primitiveProps> = "ResponsiveContainer"
+  external responsiveContainer: React.component<propsWithChildren<string, bool>> = "ResponsiveContainer"
 
   @module("recharts")
-  external tooltip: React.component<primitiveProps> = "Tooltip"
+  external tooltip: React.component<props<string, bool>> = "Tooltip"
 
   @module("recharts")
-  external legend: React.component<primitiveProps> = "Legend"
+  external legend: React.component<props<string, bool>> = "Legend"
 }
 
 @react.componentWithProps
-let make = (props: primitiveProps) => {
+let make = (props: propsWithChildren<string, bool>) => {
   let uniqueId = React.useId()
   let chartId = `chart-${props.id->Option.getOr(uniqueId)}`
   let wrapperProps = {...props, dataSlot: "chart", dataChart: chartId}
@@ -24,44 +24,44 @@ let make = (props: primitiveProps) => {
     id={props.id->Option.getOr("")}
   >
     <RechartsPrimitive.responsiveContainer>
-      {props.children->Option.getOr(React.null)}
+      {props.children}
     </RechartsPrimitive.responsiveContainer>
   </div>
 }
 
 module Tooltip = {
   @react.componentWithProps
-  let make = (props: primitiveProps) => <RechartsPrimitive.tooltip {...props} />
+  let make = (props: props<string, bool>) => <RechartsPrimitive.tooltip {...props} />
 }
 
 module TooltipContent = {
   @react.componentWithProps
-  let make = (props: primitiveProps) =>
+  let make = (props: propsWithChildren<string, bool>) =>
     <div
       {...toDomProps(props)}
       className={`border-border/50 bg-background grid min-w-32 items-start gap-1.5 rounded-lg border px-2.5 py-1.5 text-xs shadow-xl ${props.className->Option.getOr("")}`}
     >
-      {props.children->Option.getOr(React.null)}
+      {props.children}
     </div>
 }
 
 module Legend = {
   @react.componentWithProps
-  let make = (props: primitiveProps) => <RechartsPrimitive.legend {...props} />
+  let make = (props: props<string, bool>) => <RechartsPrimitive.legend {...props} />
 }
 
 module LegendContent = {
   @react.componentWithProps
-  let make = (props: primitiveProps) =>
+  let make = (props: propsWithChildren<string, bool>) =>
     <div
       {...toDomProps(props)}
       className={`flex items-center justify-center gap-4 ${props.className->Option.getOr("")}`}
     >
-      {props.children->Option.getOr(React.null)}
+      {props.children}
     </div>
 }
 
 module Style = {
   @react.componentWithProps
-  let make = (props: primitiveProps) => <style {...toDomProps(props)} />
+  let make = (props: props<string, bool>) => <style {...toDomProps(props)} />
 }

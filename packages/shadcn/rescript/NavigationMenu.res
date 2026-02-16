@@ -1,20 +1,20 @@
-type props<'value, 'checked> = BaseUi.Types.props<'value, 'checked>
+open BaseUi.Types
 
 let navigationMenuTriggerStyle = () =>
   "bg-background hover:bg-muted focus:bg-muted data-open:hover:bg-muted data-open:focus:bg-muted data-open:bg-muted/50 focus-visible:ring-ring/50 data-popup-open:bg-muted/50 data-popup-open:hover:bg-muted rounded-lg px-2.5 py-1.5 text-sm font-medium transition-all focus-visible:ring-3 focus-visible:outline-1 disabled:opacity-50 group/navigation-menu-trigger inline-flex h-9 w-max items-center justify-center disabled:pointer-events-none outline-none"
 
 @react.componentWithProps
-let make = (props: props<'value, 'checked>) => {
-  let align = props.align->Option.getOr(BaseUi.Types.Align.Start)
+let make = (props: propsWithChildren<'value, 'checked>) => {
+  let align = props.align->Option.getOr(Align.Start)
   <BaseUi.NavigationMenu.Root
     {...props}
     dataSlot="navigation-menu"
     className={`group/navigation-menu relative flex max-w-max flex-1 items-center justify-center ${props.className->Option.getOr("")}`}
   >
-    {props.children->Option.getOr(React.null)}
+    {props.children}
     <BaseUi.NavigationMenu.Portal>
       <BaseUi.NavigationMenu.Positioner
-        side={BaseUi.Types.Side.Bottom}
+        side={Side.Bottom}
         sideOffset={8.}
         align
         alignOffset={0.}
@@ -30,7 +30,7 @@ let make = (props: props<'value, 'checked>) => {
 
 module List = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.NavigationMenu.List
       {...props}
       dataSlot="navigation-menu-list"
@@ -40,7 +40,7 @@ module List = {
 
 module Item = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.NavigationMenu.Item
       {...props}
       dataSlot="navigation-menu-item"
@@ -50,13 +50,13 @@ module Item = {
 
 module Trigger = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.NavigationMenu.Trigger
       {...props}
       dataSlot="navigation-menu-trigger"
       className={`${navigationMenuTriggerStyle()} group ${props.className->Option.getOr("")}`}
     >
-      {props.children->Option.getOr(React.null)}
+      {props.children}
       <Icons.chevronDown
         ariaHidden=true
         className="relative top-px ml-1 size-3 transition duration-300 group-data-open/navigation-menu-trigger:rotate-180 group-data-popup-open/navigation-menu-trigger:rotate-180"
@@ -66,7 +66,7 @@ module Trigger = {
 
 module Content = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.NavigationMenu.Content
       {...props}
       dataSlot="navigation-menu-content"
@@ -76,13 +76,13 @@ module Content = {
 
 module Positioner = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.NavigationMenu.Portal>
       <BaseUi.NavigationMenu.Positioner
         {...props}
-        side={props.side->Option.getOr(BaseUi.Types.Side.Bottom)}
+        side={props.side->Option.getOr(Side.Bottom)}
         sideOffset={props.sideOffset->Option.getOr(8.)}
-        align={props.align->Option.getOr(BaseUi.Types.Align.Start)}
+        align={props.align->Option.getOr(Align.Start)}
         alignOffset={props.alignOffset->Option.getOr(0.)}
         className={`isolate z-50 h-(--positioner-height) w-(--positioner-width) max-w-(--available-width) transition-[top,left,right,bottom] duration-[0.35s] ease-[cubic-bezier(0.22,1,0.36,1)] data-instant:transition-none data-[side=bottom]:before:top-[-10px] data-[side=bottom]:before:right-0 data-[side=bottom]:before:left-0 ${props.className->Option.getOr("")}`}
       >
@@ -95,7 +95,7 @@ module Positioner = {
 
 module Link = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.NavigationMenu.Link
       {...props}
       dataSlot="navigation-menu-link"
@@ -105,7 +105,7 @@ module Link = {
 
 module Indicator = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.NavigationMenu.Icon
       {...props}
       dataSlot="navigation-menu-indicator"

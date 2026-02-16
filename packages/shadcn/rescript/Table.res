@@ -1,8 +1,9 @@
-type props<'value, 'checked> = BaseUi.Types.props<'value, 'checked>
-external toDomProps: props<'value, 'checked> => JsxDOM.domProps = "%identity"
+open BaseUi.Types
+
+external toDomProps: 'a => JsxDOM.domProps = "%identity"
 
 @react.componentWithProps
-let make = (props: props<'value, 'checked>) => {
+let make = (props: propsWithChildren<'value, 'checked>) => {
   let containerProps = {
     ...props,
     className: "",
@@ -26,7 +27,7 @@ let make = (props: props<'value, 'checked>) => {
 
 module Header = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) => {
+  let make = (props: propsWithChildren<'value, 'checked>) => {
     let props = {...props, dataSlot: "table-header"}
     <thead
       {...toDomProps(props)}
@@ -37,7 +38,7 @@ module Header = {
 
 module Body = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) => {
+  let make = (props: propsWithChildren<'value, 'checked>) => {
     let props = {...props, dataSlot: "table-body"}
     <tbody
       {...toDomProps(props)}
@@ -48,7 +49,7 @@ module Body = {
 
 module Footer = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) => {
+  let make = (props: propsWithChildren<'value, 'checked>) => {
     let props = {...props, dataSlot: "table-footer"}
     <tfoot
       {...toDomProps(props)}
@@ -59,7 +60,7 @@ module Footer = {
 
 module Row = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) => {
+  let make = (props: propsWithChildren<'value, 'checked>) => {
     let props = {...props, dataSlot: "table-row"}
     <tr
       {...toDomProps(props)}
@@ -70,7 +71,7 @@ module Row = {
 
 module Head = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) => {
+  let make = (props: propsWithChildren<'value, 'checked>) => {
     let props = {...props, dataSlot: "table-head"}
     <th
       {...toDomProps(props)}
@@ -81,7 +82,7 @@ module Head = {
 
 module Cell = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) => {
+  let make = (props: propsWithChildren<'value, 'checked>) => {
     let props = {...props, dataSlot: "table-cell"}
     <td
       {...toDomProps(props)}
@@ -92,7 +93,7 @@ module Cell = {
 
 module Caption = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) => {
+  let make = (props: propsWithChildren<'value, 'checked>) => {
     let props = {...props, dataSlot: "table-caption"}
     <caption
       {...toDomProps(props)}

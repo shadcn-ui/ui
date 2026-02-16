@@ -1,60 +1,61 @@
-type props<'value, 'checked> = BaseUi.Types.props<'value, 'checked>
-external toDomProps: props<'value, 'checked> => JsxDOM.domProps = "%identity"
+open BaseUi.Types
+
+external toDomProps: 'a => JsxDOM.domProps = "%identity"
 
 @react.componentWithProps
-let make = (props: props<'value, 'checked>) => {
+let make = (props: propsWithChildren<'value, 'checked>) => {
   let props = {...props, dataSlot: "breadcrumb"}
   <nav
     {...toDomProps(props)}
     ariaLabel="breadcrumb"
     className={`${props.className->Option.getOr("")}`}
   >
-    {props.children->Option.getOr(React.null)}
+    {props.children}
   </nav>
 }
 
 module List = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) => {
+  let make = (props: propsWithChildren<'value, 'checked>) => {
     let props = {...props, dataSlot: "breadcrumb-list"}
     <ol
       {...toDomProps(props)}
       className={`text-muted-foreground flex flex-wrap items-center gap-1.5 text-sm wrap-break-word ${props.className->Option.getOr("")}`}
     >
-      {props.children->Option.getOr(React.null)}
+      {props.children}
     </ol>
   }
 }
 
 module Item = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) => {
+  let make = (props: propsWithChildren<'value, 'checked>) => {
     let props = {...props, dataSlot: "breadcrumb-item"}
     <li
       {...toDomProps(props)}
       className={`inline-flex items-center gap-1 ${props.className->Option.getOr("")}`}
     >
-      {props.children->Option.getOr(React.null)}
+      {props.children}
     </li>
   }
 }
 
 module Link = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) => {
+  let make = (props: propsWithChildren<'value, 'checked>) => {
     let props = {...props, dataSlot: "breadcrumb-link"}
     <a
       {...toDomProps(props)}
       className={`hover:text-foreground transition-colors ${props.className->Option.getOr("")}`}
     >
-      {props.children->Option.getOr(React.null)}
+      {props.children}
     </a>
   }
 }
 
 module Page = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) => {
+  let make = (props: propsWithChildren<'value, 'checked>) => {
     let props = {...props, dataSlot: "breadcrumb-page"}
     <span
       {...toDomProps(props)}
@@ -63,14 +64,14 @@ module Page = {
       role="link"
       className={`text-foreground font-normal ${props.className->Option.getOr("")}`}
     >
-      {props.children->Option.getOr(React.null)}
+      {props.children}
     </span>
   }
 }
 
 module Separator = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) => {
+  let make = (props: propsWithOptionalChildren<'value, 'checked>) => {
     let props = {...props, dataSlot: "breadcrumb-separator"}
     let content =
       switch props.children {
@@ -91,7 +92,7 @@ module Separator = {
 
 module Ellipsis = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) => {
+  let make = (props: propsWithChildren<'value, 'checked>) => {
     let props = {...props, dataSlot: "breadcrumb-ellipsis"}
     <span
       {...toDomProps(props)}

@@ -1,11 +1,9 @@
-type props<'value, 'checked> = BaseUi.Types.props<'value, 'checked>
-external toDomProps: props<'value, 'checked> => JsxDOM.domProps = "%identity"
+external toDomProps: 'a => JsxDOM.domProps = "%identity"
 
-module UiButton = Button
-module UiInput = Input
-module UiTextarea = Textarea
 
-let inputGroupAddonAlignClass = (~align: BaseUi.Types.DataAlign.t) =>
+open BaseUi.Types
+
+let inputGroupAddonAlignClass = (~align: DataAlign.t) =>
   switch align {
   | InlineEnd =>
     "pr-2 has-[>button]:mr-[-0.3rem] has-[>kbd]:mr-[-0.15rem] order-last"
@@ -17,13 +15,13 @@ let inputGroupAddonAlignClass = (~align: BaseUi.Types.DataAlign.t) =>
     "pl-2 has-[>button]:ml-[-0.3rem] has-[>kbd]:ml-[-0.15rem] order-first"
   }
 
-let inputGroupAddonVariants = (~align=BaseUi.Types.DataAlign.InlineStart) => {
+let inputGroupAddonVariants = (~align=DataAlign.InlineStart) => {
   let base =
     "text-muted-foreground h-auto gap-2 py-1.5 text-sm font-medium group-data-[disabled=true]/input-group:opacity-50 [&>kbd]:rounded-[calc(var(--radius)-5px)] [&>svg:not([class*='size-'])]:size-4 flex cursor-text items-center justify-center select-none"
   `${base} ${inputGroupAddonAlignClass(~align)}`
 }
 
-let inputGroupButtonSizeClass = (~size: BaseUi.Types.Size.t) =>
+let inputGroupButtonSizeClass = (~size: Size.t) =>
   switch size {
   | Sm => ""
   | IconXs => "size-6 rounded-[calc(var(--radius)-3px)] p-0 has-[>svg]:p-0"
@@ -37,13 +35,13 @@ let inputGroupButtonSizeClass = (~size: BaseUi.Types.Size.t) =>
     "h-6 gap-1 rounded-[calc(var(--radius)-3px)] px-1.5 [&>svg:not([class*='size-'])]:size-3.5"
   }
 
-let inputGroupButtonVariants = (~size=BaseUi.Types.Size.Xs) => {
+let inputGroupButtonVariants = (~size=Size.Xs) => {
   let base = "gap-2 text-sm shadow-none flex items-center"
   `${base} ${inputGroupButtonSizeClass(~size)}`
 }
 
 @react.componentWithProps
-let make = (props: props<'value, 'checked>) => {
+let make = (props: propsWithChildren<'value, 'checked>) => {
   let props = {...props, dataSlot: "input-group"}
   <div
     {...toDomProps(props)}
@@ -54,8 +52,8 @@ let make = (props: props<'value, 'checked>) => {
 
 module Addon = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) => {
-    let align = props.dataAlign->Option.getOr(BaseUi.Types.DataAlign.InlineStart)
+  let make = (props: propsWithChildren<'value, 'checked>) => {
+    let align = props.dataAlign->Option.getOr(DataAlign.InlineStart)
     let props = {...props, dataSlot: "input-group-addon", dataAlign: align}
     <div
       {...toDomProps(props)}
@@ -67,11 +65,11 @@ module Addon = {
 
 module Button = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) => {
-    let size = props.dataSize->Option.getOr(BaseUi.Types.Size.Xs)
-    let variant = props.dataVariant->Option.getOr(BaseUi.Types.Variant.Ghost)
+  let make = (props: propsWithOptionalChildren<'value, 'checked>) => {
+    let size = props.dataSize->Option.getOr(Size.Xs)
+    let variant = props.dataVariant->Option.getOr(Variant.Ghost)
     let type_ = props.type_->Option.getOr("button")
-    <UiButton.make
+    <BaseUi.Button
       {...props}
       type_
       dataSize={size}
@@ -83,7 +81,7 @@ module Button = {
 
 module Text = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) => {
+  let make = (props: propsWithChildren<'value, 'checked>) => {
     <span
       {...toDomProps(props)}
       className={`text-muted-foreground flex items-center gap-2 text-sm [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 ${props.className->Option.getOr("")}`}
@@ -93,8 +91,8 @@ module Text = {
 
 module Input = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
-    <UiInput.make
+  let make = (props: propsWithChildren<'value, 'checked>) =>
+    <BaseUi.Input
       {...props}
       dataSlot="input-group-control"
       className={`flex-1 rounded-none border-0 bg-transparent shadow-none ring-0 focus-visible:ring-0 disabled:bg-transparent aria-invalid:ring-0 dark:bg-transparent dark:disabled:bg-transparent ${props.className->Option.getOr("")}`}
@@ -103,10 +101,11 @@ module Input = {
 
 module Textarea = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
-    <UiTextarea.make
-      {...props}
-      dataSlot="input-group-control"
+  let make = (props: propsWithChildren<'value, 'checked>) => {
+    let props = {...props, dataSlot: "input-group-control"}
+    <textarea
+      {...toDomProps(props)}
       className={`flex-1 resize-none rounded-none border-0 bg-transparent py-2 shadow-none ring-0 focus-visible:ring-0 disabled:bg-transparent aria-invalid:ring-0 dark:bg-transparent dark:disabled:bg-transparent ${props.className->Option.getOr("")}`}
     />
+  }
 }

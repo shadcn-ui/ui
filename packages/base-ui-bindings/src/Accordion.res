@@ -1,29 +1,29 @@
 module Root = {
   @module("@base-ui/react/accordion")
   @scope("Accordion")
-  external make: React.component<Types.props<'value, 'checked>> = "Root"
+  external make: React.component<Types.propsWithChildren<'value, 'checked>> = "Root"
 }
 
 module Item = {
   @module("@base-ui/react/accordion")
   @scope("Accordion")
-  external make: React.component<Types.props<'value, 'checked>> = "Item"
+  external make: React.component<Types.propsWithChildren<'value, 'checked>> = "Item"
 }
 
 module Header = {
   @module("@base-ui/react/accordion")
   @scope("Accordion")
-  external make: React.component<Types.props<'value, 'checked>> = "Header"
+  external make: React.component<Types.propsWithChildren<'value, 'checked>> = "Header"
 }
 
 module Trigger = {
   @module("@base-ui/react/accordion")
   @scope("Accordion")
-  external make: React.component<Types.props<'value, 'checked>> = "Trigger"
+  external make: React.component<Types.propsWithChildren<'value, 'checked>> = "Trigger"
 }
 
 module Panel = {
   @module("@base-ui/react/accordion")
   @scope("Accordion")
-  external make: React.component<Types.props<'value, 'checked>> = "Panel"
+  external make: React.component<Types.propsWithChildren<'value, 'checked>> = "Panel"
 }

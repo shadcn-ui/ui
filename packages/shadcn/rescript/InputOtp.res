@@ -1,10 +1,10 @@
-type props<'value, 'checked> = BaseUi.Types.props<'value, 'checked>
-type primitiveProps = props<string, bool>
-external toDomProps: props<'value, 'checked> => JsxDOM.domProps = "%identity"
+open BaseUi.Types
+
+external toDomProps: 'a => JsxDOM.domProps = "%identity"
 
 module InputOtpPrimitive = {
   @module("input-otp")
-  external make: React.component<primitiveProps> = "OTPInput"
+  external make: React.component<props<string, bool>> = "OTPInput"
 
   type slot = {
     isActive: bool,
@@ -24,9 +24,9 @@ module InputOtpPrimitive = {
 }
 
 @react.componentWithProps
-let make = (props: primitiveProps) => {
+let make = (props: props<string, bool>) => {
   let containerClassName = props.containerClassName->Option.getOr("")
-  <InputOtpPrimitive.make
+  <InputOtpPrimitive
     {...props}
     dataSlot="input-otp"
     containerClassName={`cn-input-otp flex items-center has-disabled:opacity-50 ${containerClassName}`}
@@ -37,7 +37,7 @@ let make = (props: primitiveProps) => {
 
 module Group = {
   @react.componentWithProps
-  let make = (props: primitiveProps) => {
+  let make = (props: props<string, bool>) => {
     let props = {...props, dataSlot: "input-otp-group"}
     <div
       {...toDomProps(props)}
@@ -48,7 +48,7 @@ module Group = {
 
 module Slot = {
   @react.componentWithProps
-  let make = (props: primitiveProps) => {
+  let make = (props: props<string, bool>) => {
     let index = props.index->Option.getOr(0)
     let inputOtpContext = React.useContext(InputOtpPrimitive.context)
     let slot = inputOtpContext.slots->Belt.Array.get(index)
@@ -79,7 +79,7 @@ module Slot = {
 
 module Separator = {
   @react.componentWithProps
-  let make = (props: primitiveProps) => {
+  let make = (props: props<string, bool>) => {
     let props = {...props, dataSlot: "input-otp-separator"}
     <div
       {...toDomProps(props)}

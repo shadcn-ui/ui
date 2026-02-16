@@ -1,9 +1,10 @@
-type props<'value, 'checked> = BaseUi.Types.props<'value, 'checked>
-external toDomProps: props<'value, 'checked> => JsxDOM.domProps = "%identity"
+open BaseUi.Types
+
+external toDomProps: 'a => JsxDOM.domProps = "%identity"
 
 @react.componentWithProps
-let make = (props: props<'value, 'checked>) => {
-  let size = props.dataSize->Belt.Option.getWithDefault(BaseUi.Types.Size.Default)
+let make = (props: propsWithChildren<'value, 'checked>) => {
+  let size = props.dataSize->Belt.Option.getWithDefault(Size.Default)
   let wrapperProps = {
     ...props,
     className: "",
@@ -34,7 +35,7 @@ let make = (props: props<'value, 'checked>) => {
 
 module Option = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) => {
+  let make = (props: propsWithChildren<'value, 'checked>) => {
     let props = {...props, dataSlot: "native-select-option"}
     <option {...toDomProps(props)} />
   }
@@ -42,7 +43,7 @@ module Option = {
 
 module OptGroup = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) => {
+  let make = (props: propsWithChildren<'value, 'checked>) => {
     let props = {...props, dataSlot: "native-select-optgroup"}
     <optgroup
       {...toDomProps(props)}

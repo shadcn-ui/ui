@@ -1,9 +1,10 @@
-type props<'value, 'checked> = BaseUi.Types.props<'value, 'checked>
-external toDomProps: props<'value, 'checked> => JsxDOM.domProps = "%identity"
+open BaseUi.Types
+
+external toDomProps: 'a => JsxDOM.domProps = "%identity"
 
 @react.componentWithProps
-let make = (props: props<'value, 'checked>) => {
-  let size = props.dataSize->Option.getOr(BaseUi.Types.Size.Default)
+let make = (props: propsWithChildren<'value, 'checked>) => {
+  let size = props.dataSize->Option.getOr(Size.Default)
   let props = {...props, dataSlot: "card", dataSize: size}
   <div
     {...toDomProps(props)}
@@ -13,7 +14,7 @@ let make = (props: props<'value, 'checked>) => {
 
 module Header = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) => {
+  let make = (props: propsWithChildren<'value, 'checked>) => {
     let props = {...props, dataSlot: "card-header"}
     <div
       {...toDomProps(props)}
@@ -24,7 +25,7 @@ module Header = {
 
 module Title = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) => {
+  let make = (props: propsWithChildren<'value, 'checked>) => {
     let props = {...props, dataSlot: "card-title"}
     <div
       {...toDomProps(props)}
@@ -35,7 +36,7 @@ module Title = {
 
 module Description = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) => {
+  let make = (props: propsWithChildren<'value, 'checked>) => {
     let props = {...props, dataSlot: "card-description"}
     <div
       {...toDomProps(props)}
@@ -46,7 +47,7 @@ module Description = {
 
 module Action = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) => {
+  let make = (props: propsWithChildren<'value, 'checked>) => {
     let props = {...props, dataSlot: "card-action"}
     <div
       {...toDomProps(props)}
@@ -57,7 +58,7 @@ module Action = {
 
 module Content = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) => {
+  let make = (props: propsWithChildren<'value, 'checked>) => {
     let props = {...props, dataSlot: "card-content"}
     <div
       {...toDomProps(props)}
@@ -68,7 +69,7 @@ module Content = {
 
 module Footer = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) => {
+  let make = (props: propsWithChildren<'value, 'checked>) => {
     let props = {...props, dataSlot: "card-footer"}
     <div
       {...toDomProps(props)}

@@ -1,2 +1,2 @@
 @module("@base-ui/react/button")
-external make: React.component<Types.props<'value, 'checked>> = "Button"
+external make: React.component<Types.propsWithOptionalChildren<'value, 'checked>> = "Button"

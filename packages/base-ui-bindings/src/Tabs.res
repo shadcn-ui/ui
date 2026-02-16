@@ -1,29 +1,29 @@
 module Root = {
   @module("@base-ui/react/tabs")
   @scope("Tabs")
-  external make: React.component<Types.props<'value, 'checked>> = "Root"
+  external make: React.component<Types.propsWithChildren<'value, 'checked>> = "Root"
 }
 
 module List = {
   @module("@base-ui/react/tabs")
   @scope("Tabs")
-  external make: React.component<Types.props<'value, 'checked>> = "List"
+  external make: React.component<Types.propsWithChildren<'value, 'checked>> = "List"
 }
 
 module Tab = {
   @module("@base-ui/react/tabs")
   @scope("Tabs")
-  external make: React.component<Types.props<'value, 'checked>> = "Tab"
+  external make: React.component<Types.propsWithChildren<'value, 'checked>> = "Tab"
 }
 
 module Panel = {
   @module("@base-ui/react/tabs")
   @scope("Tabs")
-  external make: React.component<Types.props<'value, 'checked>> = "Panel"
+  external make: React.component<Types.propsWithChildren<'value, 'checked>> = "Panel"
 }
 
 module Indicator = {
   @module("@base-ui/react/tabs")
   @scope("Tabs")
-  external make: React.component<Types.props<'value, 'checked>> = "Indicator"
+  external make: React.component<Types.propsWithOptionalChildren<'value, 'checked>> = "Indicator"
 }

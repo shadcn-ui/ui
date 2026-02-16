@@ -121,7 +121,6 @@ module DataOrientation = {
 }
 
 type props<'value, 'checked> = {
-  children?: React.element,
   className?: string,
   style?: ReactDOM.Style.t,
   ratio?: float,
@@ -231,3 +230,16 @@ type props<'value, 'checked> = {
   @as("data-spacing") dataSpacing?: float,
   @as("data-inset") dataInset?: bool,
 }
+
+type propsWithChildren<'value, 'checked> = {
+  ...props<'value, 'checked>,
+  children: React.element,
+}
+
+type propsWithOptionalChildren<'value, 'checked> = {
+  ...props<'value, 'checked>,
+  children?: React.element,
+}
+
+external toPropsWithOptionalChildren: 'a => propsWithOptionalChildren<'value, 'checked> = "%identity"
+external toPropsWithChildren: 'a => propsWithChildren<'value, 'checked> = "%identity"

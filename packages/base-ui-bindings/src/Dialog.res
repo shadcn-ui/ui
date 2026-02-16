@@ -1,25 +1,25 @@
 module Root = {
   @module("@base-ui/react/dialog")
   @scope("Dialog")
-  external make: React.component<Types.props<'value, 'checked>> = "Root"
+  external make: React.component<Types.propsWithChildren<'value, 'checked>> = "Root"
 }
 
 module Trigger = {
   @module("@base-ui/react/dialog")
   @scope("Dialog")
-  external make: React.component<Types.props<'value, 'checked>> = "Trigger"
+  external make: React.component<Types.propsWithChildren<'value, 'checked>> = "Trigger"
 }
 
 module Portal = {
   @module("@base-ui/react/dialog")
   @scope("Dialog")
-  external make: React.component<Types.props<'value, 'checked>> = "Portal"
+  external make: React.component<Types.propsWithChildren<'value, 'checked>> = "Portal"
 }
 
 module Popup = {
   @module("@base-ui/react/dialog")
   @scope("Dialog")
-  external make: React.component<Types.props<'value, 'checked>> = "Popup"
+  external make: React.component<Types.propsWithChildren<'value, 'checked>> = "Popup"
 }
 
 module Backdrop = {
@@ -31,23 +31,23 @@ module Backdrop = {
 module Title = {
   @module("@base-ui/react/dialog")
   @scope("Dialog")
-  external make: React.component<Types.props<'value, 'checked>> = "Title"
+  external make: React.component<Types.propsWithChildren<'value, 'checked>> = "Title"
 }
 
 module Description = {
   @module("@base-ui/react/dialog")
   @scope("Dialog")
-  external make: React.component<Types.props<'value, 'checked>> = "Description"
+  external make: React.component<Types.propsWithChildren<'value, 'checked>> = "Description"
 }
 
 module Close = {
   @module("@base-ui/react/dialog")
   @scope("Dialog")
-  external make: React.component<Types.props<'value, 'checked>> = "Close"
+  external make: React.component<Types.propsWithOptionalChildren<'value, 'checked>> = "Close"
 }
 
 module Viewport = {
   @module("@base-ui/react/dialog")
   @scope("Dialog")
-  external make: React.component<Types.props<'value, 'checked>> = "Viewport"
+  external make: React.component<Types.propsWithOptionalChildren<'value, 'checked>> = "Viewport"
 }

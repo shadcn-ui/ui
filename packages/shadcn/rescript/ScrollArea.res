@@ -1,7 +1,7 @@
-type props<'value, 'checked> = BaseUi.Types.props<'value, 'checked>
+open BaseUi.Types
 
 @react.componentWithProps
-let make = (props: props<'value, 'checked>) =>
+let make = (props: propsWithChildren<'value, 'checked>) =>
   <BaseUi.ScrollArea.Root
     {...props}
     dataSlot="scroll-area"
@@ -11,11 +11,11 @@ let make = (props: props<'value, 'checked>) =>
       dataSlot="scroll-area-viewport"
       className="focus-visible:ring-ring/50 size-full rounded-[inherit] transition-[color,box-shadow] outline-none focus-visible:ring-[3px] focus-visible:outline-1"
     >
-      {props.children->Option.getOr(React.null)}
+      {props.children}
     </BaseUi.ScrollArea.Viewport>
     <BaseUi.ScrollArea.Scrollbar
       dataSlot="scroll-area-scrollbar"
-      orientation={BaseUi.Types.Orientation.Vertical}
+      orientation={Orientation.Vertical}
       className="flex touch-none p-px transition-colors select-none data-horizontal:h-2.5 data-horizontal:flex-col data-horizontal:border-t data-horizontal:border-t-transparent data-vertical:h-full data-vertical:w-2.5 data-vertical:border-l data-vertical:border-l-transparent"
     >
       <BaseUi.ScrollArea.Thumb
@@ -28,11 +28,11 @@ let make = (props: props<'value, 'checked>) =>
 
 module ScrollBar = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.ScrollArea.Scrollbar
       {...props}
       dataSlot="scroll-area-scrollbar"
-      orientation={props.orientation->Option.getOr(BaseUi.Types.Orientation.Vertical)}
+      orientation={props.orientation->Option.getOr(Orientation.Vertical)}
       className={`flex touch-none p-px transition-colors select-none data-horizontal:h-2.5 data-horizontal:flex-col data-horizontal:border-t data-horizontal:border-t-transparent data-vertical:h-full data-vertical:w-2.5 data-vertical:border-l data-vertical:border-l-transparent ${props.className->Option.getOr("")}`}
     >
       <BaseUi.ScrollArea.Thumb

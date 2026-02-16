@@ -1,65 +1,65 @@
-type props<'value, 'checked> = BaseUi.Types.props<'value, 'checked>
-type primitiveProps = props<string, bool>
-external toDomProps: props<'value, 'checked> => JsxDOM.domProps = "%identity"
+open BaseUi.Types
+
+external toDomProps: 'a => JsxDOM.domProps = "%identity"
 
 module DrawerPrimitive = {
   @module("vaul")
   @scope("Drawer")
-  external root: React.component<primitiveProps> = "Root"
+  external root: React.component<props<string, bool>> = "Root"
 
   @module("vaul")
   @scope("Drawer")
-  external trigger: React.component<primitiveProps> = "Trigger"
+  external trigger: React.component<props<string, bool>> = "Trigger"
 
   @module("vaul")
   @scope("Drawer")
-  external portal: React.component<primitiveProps> = "Portal"
+  external portal: React.component<propsWithChildren<string, bool>> = "Portal"
 
   @module("vaul")
   @scope("Drawer")
-  external close: React.component<primitiveProps> = "Close"
+  external close: React.component<props<string, bool>> = "Close"
 
   @module("vaul")
   @scope("Drawer")
-  external overlay: React.component<primitiveProps> = "Overlay"
+  external overlay: React.component<props<string, bool>> = "Overlay"
 
   @module("vaul")
   @scope("Drawer")
-  external content: React.component<primitiveProps> = "Content"
+  external content: React.component<propsWithChildren<string, bool>> = "Content"
 
   @module("vaul")
   @scope("Drawer")
-  external title: React.component<primitiveProps> = "Title"
+  external title: React.component<props<string, bool>> = "Title"
 
   @module("vaul")
   @scope("Drawer")
-  external description: React.component<primitiveProps> = "Description"
+  external description: React.component<props<string, bool>> = "Description"
 }
 
 @react.componentWithProps
-let make = (props: primitiveProps) => <DrawerPrimitive.root {...props} dataSlot="drawer" />
+let make = (props: props<string, bool>) => <DrawerPrimitive.root {...props} dataSlot="drawer" />
 
 module Trigger = {
   @react.componentWithProps
-  let make = (props: primitiveProps) =>
+  let make = (props: props<string, bool>) =>
     <DrawerPrimitive.trigger {...props} dataSlot="drawer-trigger" />
 }
 
 module Portal = {
   @react.componentWithProps
-  let make = (props: primitiveProps) =>
+  let make = (props: propsWithChildren<string, bool>) =>
     <DrawerPrimitive.portal {...props} dataSlot="drawer-portal" />
 }
 
 module Close = {
   @react.componentWithProps
-  let make = (props: primitiveProps) =>
+  let make = (props: props<string, bool>) =>
     <DrawerPrimitive.close {...props} dataSlot="drawer-close" />
 }
 
 module Overlay = {
   @react.componentWithProps
-  let make = (props: primitiveProps) =>
+  let make = (props: props<string, bool>) =>
     <DrawerPrimitive.overlay
       {...props}
       dataSlot="drawer-overlay"
@@ -69,23 +69,23 @@ module Overlay = {
 
 module Content = {
   @react.componentWithProps
-  let make = (props: primitiveProps) =>
-    <Portal.make dataSlot="drawer-portal">
-      <Overlay.make />
+  let make = (props: propsWithChildren<string, bool>) =>
+    <Portal dataSlot="drawer-portal">
+      <Overlay />
       <DrawerPrimitive.content
         {...props}
         dataSlot="drawer-content"
         className={`bg-background group/drawer-content fixed z-50 flex h-auto flex-col text-sm data-[vaul-drawer-direction=bottom]:inset-x-0 data-[vaul-drawer-direction=bottom]:bottom-0 data-[vaul-drawer-direction=bottom]:mt-24 data-[vaul-drawer-direction=bottom]:max-h-[80vh] data-[vaul-drawer-direction=bottom]:rounded-t-xl data-[vaul-drawer-direction=bottom]:border-t data-[vaul-drawer-direction=left]:inset-y-0 data-[vaul-drawer-direction=left]:left-0 data-[vaul-drawer-direction=left]:w-3/4 data-[vaul-drawer-direction=left]:rounded-r-xl data-[vaul-drawer-direction=left]:border-r data-[vaul-drawer-direction=right]:inset-y-0 data-[vaul-drawer-direction=right]:right-0 data-[vaul-drawer-direction=right]:w-3/4 data-[vaul-drawer-direction=right]:rounded-l-xl data-[vaul-drawer-direction=right]:border-l data-[vaul-drawer-direction=top]:inset-x-0 data-[vaul-drawer-direction=top]:top-0 data-[vaul-drawer-direction=top]:mb-24 data-[vaul-drawer-direction=top]:max-h-[80vh] data-[vaul-drawer-direction=top]:rounded-b-xl data-[vaul-drawer-direction=top]:border-b data-[vaul-drawer-direction=left]:sm:max-w-sm data-[vaul-drawer-direction=right]:sm:max-w-sm ${props.className->Option.getOr("")}`}
       >
         <div className="bg-muted mx-auto mt-4 hidden h-1 w-[100px] shrink-0 rounded-full group-data-[vaul-drawer-direction=bottom]/drawer-content:block" />
-        {props.children->Option.getOr(React.null)}
+        {props.children}
       </DrawerPrimitive.content>
-    </Portal.make>
+    </Portal>
 }
 
 module Header = {
   @react.componentWithProps
-  let make = (props: primitiveProps) => {
+  let make = (props: props<string, bool>) => {
     let props = {...props, dataSlot: "drawer-header"}
     <div
       {...toDomProps(props)}
@@ -96,7 +96,7 @@ module Header = {
 
 module Footer = {
   @react.componentWithProps
-  let make = (props: primitiveProps) => {
+  let make = (props: props<string, bool>) => {
     let props = {...props, dataSlot: "drawer-footer"}
     <div
       {...toDomProps(props)}
@@ -107,7 +107,7 @@ module Footer = {
 
 module Title = {
   @react.componentWithProps
-  let make = (props: primitiveProps) =>
+  let make = (props: props<string, bool>) =>
     <DrawerPrimitive.title
       {...props}
       dataSlot="drawer-title"
@@ -117,7 +117,7 @@ module Title = {
 
 module Description = {
   @react.componentWithProps
-  let make = (props: primitiveProps) =>
+  let make = (props: props<string, bool>) =>
     <DrawerPrimitive.description
       {...props}
       dataSlot="drawer-description"

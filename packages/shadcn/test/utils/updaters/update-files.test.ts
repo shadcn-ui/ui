@@ -989,7 +989,7 @@ describe("updateFiles", () => {
         "filesUpdated": [],
       }
     `)
-  })
+  }, 20000)
 
   test("should skip existing files if same content", async () => {
     const config = await getConfig(

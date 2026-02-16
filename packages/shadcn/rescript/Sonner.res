@@ -1,5 +1,5 @@
-type props<'value, 'checked> = BaseUi.Types.props<'value, 'checked>
-type primitiveProps = props<string, bool>
+open BaseUi.Types
+
 
 module NextThemes = {
   type themeState = {theme?: string}
@@ -42,7 +42,7 @@ module SonnerPrimitive = {
 }
 
 @react.componentWithProps
-let make = (props: primitiveProps) => {
+let make = (props: props<string, bool>) => {
   let theme = NextThemes.useTheme().theme->Option.getOr("system")
   let className = `toaster group ${props.className->Option.getOr("")}`
   let icons: toasterIcons = {
@@ -60,5 +60,5 @@ let make = (props: primitiveProps) => {
       borderRadius: "var(--radius)",
     })
   let toastOptions = {classNames: {toast: "cn-toast"}}
-  <SonnerPrimitive.make theme className style icons toastOptions />
+  <SonnerPrimitive theme className style icons toastOptions />
 }

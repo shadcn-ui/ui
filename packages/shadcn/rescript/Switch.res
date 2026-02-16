@@ -1,8 +1,8 @@
-type props<'value, 'checked> = BaseUi.Types.props<'value, 'checked>
+open BaseUi.Types
 
 @react.componentWithProps
-let make = (props: props<'value, 'checked>) => {
-  let size = props.dataSize->Option.getOr(BaseUi.Types.Size.Default)
+let make = (props: propsWithChildren<'value, 'checked>) => {
+  let size = props.dataSize->Option.getOr(Size.Default)
   <BaseUi.Switch.Root
     {...props}
     dataSlot="switch"

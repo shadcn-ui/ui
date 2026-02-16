@@ -1,7 +1,8 @@
-type props<'value, 'checked> = BaseUi.Types.props<'value, 'checked>
-external toDomProps: props<'value, 'checked> => JsxDOM.domProps = "%identity"
+open BaseUi.Types
 
-let alertVariantClass = (~variant: BaseUi.Types.Variant.t) =>
+external toDomProps: 'a => JsxDOM.domProps = "%identity"
+
+let alertVariantClass = (~variant: Variant.t) =>
   switch variant {
     | Destructive =>
       "text-destructive bg-card *:data-[slot=alert-description]:text-destructive/90 *:[svg]:text-current"
@@ -18,15 +19,15 @@ let alertVariantClass = (~variant: BaseUi.Types.Variant.t) =>
     | Label => "bg-card text-card-foreground"
     }
 
-let alertVariants = (~variant=BaseUi.Types.Variant.Default) => {
+let alertVariants = (~variant=Variant.Default) => {
   let base =
     "grid gap-0.5 rounded-lg border px-2.5 py-2 text-left text-sm has-data-[slot=alert-action]:relative has-data-[slot=alert-action]:pr-18 has-[>svg]:grid-cols-[auto_1fr] has-[>svg]:gap-x-2 *:[svg]:row-span-2 *:[svg]:translate-y-0.5 *:[svg]:text-current *:[svg:not([class*='size-'])]:size-4 w-full relative group/alert"
   `${base} ${alertVariantClass(~variant)}`
 }
 
 @react.componentWithProps
-let make = (props: props<'value, 'checked>) => {
-  let variant = props.dataVariant->Option.getOr(BaseUi.Types.Variant.Default)
+let make = (props: propsWithChildren<'value, 'checked>) => {
+  let variant = props.dataVariant->Option.getOr(Variant.Default)
   let props = {...props, dataSlot: "alert", dataVariant: variant}
   <div
     {...toDomProps(props)}
@@ -37,7 +38,7 @@ let make = (props: props<'value, 'checked>) => {
 
 module Title = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) => {
+  let make = (props: propsWithChildren<'value, 'checked>) => {
     let props = {...props, dataSlot: "alert-title"}
     <div
       {...toDomProps(props)}
@@ -48,7 +49,7 @@ module Title = {
 
 module Description = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) => {
+  let make = (props: propsWithChildren<'value, 'checked>) => {
     let props = {...props, dataSlot: "alert-description"}
     <div
       {...toDomProps(props)}
@@ -59,7 +60,7 @@ module Description = {
 
 module Action = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) => {
+  let make = (props: propsWithChildren<'value, 'checked>) => {
     let props = {...props, dataSlot: "alert-action"}
     <div
       {...toDomProps(props)}

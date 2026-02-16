@@ -1,23 +1,23 @@
-type props<'value, 'checked> = BaseUi.Types.props<'value, 'checked>
+open BaseUi.Types
 
 @react.componentWithProps
-let make = (props: props<'value, 'checked>) =>
+let make = (props: propsWithChildren<'value, 'checked>) =>
   <BaseUi.Popover.Root {...props} dataSlot="popover" />
 
 module Trigger = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.Popover.Trigger {...props} dataSlot="popover-trigger" />
 }
 
 module Content = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.Popover.Portal>
       <BaseUi.Popover.Positioner
-        align={props.align->Option.getOr(BaseUi.Types.Align.Center)}
+        align={props.align->Option.getOr(Align.Center)}
         alignOffset={props.alignOffset->Option.getOr(0.)}
-        side={props.side->Option.getOr(BaseUi.Types.Side.Bottom)}
+        side={props.side->Option.getOr(Side.Bottom)}
         sideOffset={props.sideOffset->Option.getOr(4.)}
         className="isolate z-50"
       >
@@ -32,18 +32,18 @@ module Content = {
 
 module Header = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <div
 
       className={`flex flex-col gap-0.5 text-sm ${props.className->Option.getOr("")}`}
     >
-      {props.children->Option.getOr(React.null)}
+      {props.children}
     </div>
 }
 
 module Title = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.Popover.Title
       {...props}
       dataSlot="popover-title"
@@ -53,7 +53,7 @@ module Title = {
 
 module Description = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.Popover.Description
       {...props}
       dataSlot="popover-description"

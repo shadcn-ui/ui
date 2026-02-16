@@ -1,11 +1,12 @@
 import { createHash } from "node:crypto"
-import { spawn, type ChildProcessWithoutNullStreams } from "node:child_process"
+import { ChildProcessByStdio, spawn, type ChildProcessWithoutNullStreams } from "node:child_process"
 import { promises as fs } from "node:fs"
 import path from "node:path"
 import { fileURLToPath } from "node:url"
 
 import puppeteer, { type Browser } from "puppeteer"
 import { afterAll, beforeAll, describe, expect, it } from "vitest"
+import Stream from "node:stream"
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const packageRoot = path.resolve(__dirname, "../..")
@@ -77,7 +78,7 @@ const COMPONENT_IDS = [
   "tooltip",
 ] as const
 
-let serverProcess: ChildProcessWithoutNullStreams | null = null
+let serverProcess: ChildProcessByStdio<null, Stream.Readable, Stream.Readable> | null = null
 let serverLogs = ""
 let browser: Browser | null = null
 
@@ -404,7 +405,7 @@ async function captureBundle(component: string, impl: Impl): Promise<SnapshotBun
         let current: Element | null = element
 
         while (current && current !== root) {
-          const parent = current.parentElement
+          const parent: Element | null = current.parentElement
           if (!parent) {
             break
           }

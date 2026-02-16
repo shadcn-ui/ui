@@ -1,23 +1,23 @@
-type props<'value, 'checked> = BaseUi.Types.props<'value, 'checked>
+open BaseUi.Types
 
 @react.componentWithProps
-let make = (props: props<'value, 'checked>) =>
+let make = (props: propsWithChildren<'value, 'checked>) =>
   <BaseUi.PreviewCard.Root {...props} dataSlot="hover-card" />
 
 module Trigger = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.PreviewCard.Trigger {...props} dataSlot="hover-card-trigger" />
 }
 
 module Content = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.PreviewCard.Portal dataSlot="hover-card-portal">
       <BaseUi.PreviewCard.Positioner
-        align={props.align->Option.getOr(BaseUi.Types.Align.Center)}
+        align={props.align->Option.getOr(Align.Center)}
         alignOffset={props.alignOffset->Option.getOr(4.)}
-        side={props.side->Option.getOr(BaseUi.Types.Side.Bottom)}
+        side={props.side->Option.getOr(Side.Bottom)}
         sideOffset={props.sideOffset->Option.getOr(4.)}
         className="isolate z-50"
       >

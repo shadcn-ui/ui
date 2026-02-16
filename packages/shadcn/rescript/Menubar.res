@@ -1,7 +1,7 @@
-type props<'value, 'checked> = BaseUi.Types.props<'value, 'checked>
+open BaseUi.Types
 
 @react.componentWithProps
-let make = (props: props<'value, 'checked>) =>
+let make = (props: propsWithChildren<'value, 'checked>) =>
   <BaseUi.Menubar
     {...props}
     dataSlot="menubar"
@@ -10,25 +10,25 @@ let make = (props: props<'value, 'checked>) =>
 
 module Menu = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.Menu.Root {...props} dataSlot="menubar-menu" />
 }
 
 module Group = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.Menu.Group {...props} dataSlot="menubar-group" />
 }
 
 module Portal = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.Menu.Portal {...props} dataSlot="menubar-portal" />
 }
 
 module Trigger = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.Menu.Trigger
       {...props}
       dataSlot="menubar-trigger"
@@ -38,13 +38,13 @@ module Trigger = {
 
 module Content = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.Menu.Portal>
       <BaseUi.Menu.Positioner
         className="isolate z-50 outline-none"
-        align={props.align->Option.getOr(BaseUi.Types.Align.Start)}
+        align={props.align->Option.getOr(Align.Start)}
         alignOffset={props.alignOffset->Option.getOr(-4.)}
-        side={props.side->Option.getOr(BaseUi.Types.Side.Bottom)}
+        side={props.side->Option.getOr(Side.Bottom)}
         sideOffset={props.sideOffset->Option.getOr(8.)}
       >
         <BaseUi.Menu.Popup
@@ -58,8 +58,8 @@ module Content = {
 
 module Item = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) => {
-    let variant = props.dataVariant->Option.getOr(BaseUi.Types.Variant.Default)
+  let make = (props: propsWithChildren<'value, 'checked>) => {
+    let variant = props.dataVariant->Option.getOr(Variant.Default)
     <BaseUi.Menu.Item
       {...props}
       dataSlot="menubar-item"
@@ -71,7 +71,7 @@ module Item = {
 
 module CheckboxItem = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.Menu.CheckboxItem
       {...props}
       dataSlot="menubar-checkbox-item"
@@ -80,19 +80,19 @@ module CheckboxItem = {
       <span className="pointer-events-none absolute left-1.5 flex size-4 items-center justify-center [&_svg:not([class*='size-'])]:size-4">
         <BaseUi.Menu.CheckboxItemIndicator>{"✓"->React.string}</BaseUi.Menu.CheckboxItemIndicator>
       </span>
-      {props.children->Option.getOr(React.null)}
+      {props.children}
     </BaseUi.Menu.CheckboxItem>
 }
 
 module RadioGroup = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.Menu.RadioGroup {...props} dataSlot="menubar-radio-group" />
 }
 
 module RadioItem = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.Menu.RadioItem
       {...props}
       dataSlot="menubar-radio-item"
@@ -101,13 +101,13 @@ module RadioItem = {
       <span className="pointer-events-none absolute left-1.5 flex size-4 items-center justify-center [&_svg:not([class*='size-'])]:size-4">
         <BaseUi.Menu.RadioItemIndicator>{"✓"->React.string}</BaseUi.Menu.RadioItemIndicator>
       </span>
-      {props.children->Option.getOr(React.null)}
+      {props.children}
     </BaseUi.Menu.RadioItem>
 }
 
 module Label = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.Menu.GroupLabel
       {...props}
       dataSlot="menubar-label"
@@ -117,7 +117,7 @@ module Label = {
 
 module Separator = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.Menu.Separator
       {...props}
       dataSlot="menubar-separator"
@@ -127,43 +127,43 @@ module Separator = {
 
 module Shortcut = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <span
 
       className={`text-muted-foreground group-focus/menubar-item:text-accent-foreground ml-auto text-xs tracking-widest ${props.className->Option.getOr("")}`}
     >
-      {props.children->Option.getOr(React.null)}
+      {props.children}
     </span>
 }
 
 module Sub = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.Menu.SubmenuRoot {...props} dataSlot="menubar-sub" />
 }
 
 module SubTrigger = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.Menu.SubmenuTrigger
       {...props}
       dataSlot="menubar-sub-trigger"
       className={`focus:bg-accent focus:text-accent-foreground data-open:bg-accent data-open:text-accent-foreground gap-1.5 rounded-md px-1.5 py-1 text-sm data-inset:pl-7 [&_svg:not([class*='size-'])]:size-4 ${props.className->Option.getOr("")}`}
     >
-      {props.children->Option.getOr(React.null)}
+      {props.children}
       <span className="cn-rtl-flip ml-auto">{">"->React.string}</span>
     </BaseUi.Menu.SubmenuTrigger>
 }
 
 module SubContent = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.Menu.Portal>
       <BaseUi.Menu.Positioner
         className="isolate z-50 outline-none"
-        align={props.align->Option.getOr(BaseUi.Types.Align.Start)}
+        align={props.align->Option.getOr(Align.Start)}
         alignOffset={props.alignOffset->Option.getOr(-3.)}
-        side={props.side->Option.getOr(BaseUi.Types.Side.Right)}
+        side={props.side->Option.getOr(Side.Right)}
         sideOffset={props.sideOffset->Option.getOr(0.)}
       >
         <BaseUi.Menu.Popup

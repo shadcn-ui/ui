@@ -1,7 +1,8 @@
-type props<'value, 'checked> = BaseUi.Types.props<'value, 'checked>
-external toDomProps: props<'value, 'checked> => JsxDOM.domProps = "%identity"
+open BaseUi.Types
 
-let emptyMediaVariantClass = (~variant: BaseUi.Types.Variant.t) =>
+external toDomProps: 'a => JsxDOM.domProps = "%identity"
+
+let emptyMediaVariantClass = (~variant: Variant.t) =>
   switch variant {
   | Icon =>
     "bg-muted text-foreground flex size-8 shrink-0 items-center justify-center rounded-lg [&_svg:not([class*='size-'])]:size-4"
@@ -18,14 +19,14 @@ let emptyMediaVariantClass = (~variant: BaseUi.Types.Variant.t) =>
   | Label => "bg-transparent"
   }
 
-let emptyMediaVariants = (~variant=BaseUi.Types.Variant.Default) => {
+let emptyMediaVariants = (~variant=Variant.Default) => {
   let base =
     "mb-2 flex shrink-0 items-center justify-center [&_svg]:pointer-events-none [&_svg]:shrink-0"
   `${base} ${emptyMediaVariantClass(~variant)}`
 }
 
 @react.componentWithProps
-let make = (props: props<'value, 'checked>) => {
+let make = (props: propsWithChildren<'value, 'checked>) => {
   let props = {...props, dataSlot: "empty"}
   <div
     {...toDomProps(props)}
@@ -35,7 +36,7 @@ let make = (props: props<'value, 'checked>) => {
 
 module Header = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) => {
+  let make = (props: propsWithChildren<'value, 'checked>) => {
     let props = {...props, dataSlot: "empty-header"}
     <div
       {...toDomProps(props)}
@@ -46,8 +47,8 @@ module Header = {
 
 module Media = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) => {
-    let variant = props.dataVariant->Option.getOr(BaseUi.Types.Variant.Default)
+  let make = (props: propsWithChildren<'value, 'checked>) => {
+    let variant = props.dataVariant->Option.getOr(Variant.Default)
     let props = {...props, dataSlot: "empty-icon", dataVariant: variant}
     <div
       {...toDomProps(props)}
@@ -58,7 +59,7 @@ module Media = {
 
 module Title = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) => {
+  let make = (props: propsWithChildren<'value, 'checked>) => {
     let props = {...props, dataSlot: "empty-title"}
     <div
       {...toDomProps(props)}
@@ -69,7 +70,7 @@ module Title = {
 
 module Description = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) => {
+  let make = (props: propsWithChildren<'value, 'checked>) => {
     let props = {...props, dataSlot: "empty-description"}
     <div
       {...toDomProps(props)}
@@ -80,7 +81,7 @@ module Description = {
 
 module Content = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) => {
+  let make = (props: propsWithChildren<'value, 'checked>) => {
     let props = {...props, dataSlot: "empty-content"}
     <div
       {...toDomProps(props)}

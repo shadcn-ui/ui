@@ -1,7 +1,7 @@
 module Root = {
   @module("@base-ui/react/alert-dialog")
   @scope("AlertDialog")
-  external make: React.component<Types.props<'value, 'checked>> = "Root"
+  external make: React.component<Types.propsWithChildren<'value, 'checked>> = "Root"
 }
 
 module Backdrop = {
@@ -13,41 +13,41 @@ module Backdrop = {
 module Close = {
   @module("@base-ui/react/alert-dialog")
   @scope("AlertDialog")
-  external make: React.component<Types.props<'value, 'checked>> = "Close"
+  external make: React.component<Types.propsWithChildren<'value, 'checked>> = "Close"
 }
 
 module Description = {
   @module("@base-ui/react/alert-dialog")
   @scope("AlertDialog")
-  external make: React.component<Types.props<'value, 'checked>> = "Description"
+  external make: React.component<Types.propsWithChildren<'value, 'checked>> = "Description"
 }
 
 module Popup = {
   @module("@base-ui/react/alert-dialog")
   @scope("AlertDialog")
-  external make: React.component<Types.props<'value, 'checked>> = "Popup"
+  external make: React.component<Types.propsWithChildren<'value, 'checked>> = "Popup"
 }
 
 module Portal = {
   @module("@base-ui/react/alert-dialog")
   @scope("AlertDialog")
-  external make: React.component<Types.props<'value, 'checked>> = "Portal"
+  external make: React.component<Types.propsWithChildren<'value, 'checked>> = "Portal"
 }
 
 module Title = {
   @module("@base-ui/react/alert-dialog")
   @scope("AlertDialog")
-  external make: React.component<Types.props<'value, 'checked>> = "Title"
+  external make: React.component<Types.propsWithChildren<'value, 'checked>> = "Title"
 }
 
 module Trigger = {
   @module("@base-ui/react/alert-dialog")
   @scope("AlertDialog")
-  external make: React.component<Types.props<'value, 'checked>> = "Trigger"
+  external make: React.component<Types.propsWithChildren<'value, 'checked>> = "Trigger"
 }
 
 module Viewport = {
   @module("@base-ui/react/alert-dialog")
   @scope("AlertDialog")
-  external make: React.component<Types.props<'value, 'checked>> = "Viewport"
+  external make: React.component<Types.propsWithOptionalChildren<'value, 'checked>> = "Viewport"
 }

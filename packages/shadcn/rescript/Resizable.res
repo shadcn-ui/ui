@@ -1,19 +1,19 @@
-type props<'value, 'checked> = BaseUi.Types.props<'value, 'checked>
-type primitiveProps = props<string, bool>
+open BaseUi.Types
+
 
 module ResizablePrimitive = {
   @module("react-resizable-panels")
-  external group: React.component<primitiveProps> = "Group"
+  external group: React.component<props<string, bool>> = "Group"
 
   @module("react-resizable-panels")
-  external panel: React.component<primitiveProps> = "Panel"
+  external panel: React.component<props<string, bool>> = "Panel"
 
   @module("react-resizable-panels")
-  external separator: React.component<primitiveProps> = "Separator"
+  external separator: React.component<propsWithOptionalChildren<string, bool>> = "Separator"
 }
 
 @react.componentWithProps
-let make = (props: primitiveProps) =>
+let make = (props: props<string, bool>) =>
   <ResizablePrimitive.group
     {...props}
     dataSlot="resizable-panel-group"
@@ -22,13 +22,13 @@ let make = (props: primitiveProps) =>
 
 module Panel = {
   @react.componentWithProps
-  let make = (props: primitiveProps) =>
+  let make = (props: props<string, bool>) =>
     <ResizablePrimitive.panel {...props} dataSlot="resizable-panel" />
 }
 
 module Handle = {
   @react.componentWithProps
-  let make = (props: primitiveProps) => {
+  let make = (props: propsWithOptionalChildren<string, bool>) => {
     let withHandle = props.withHandle->Option.getOr(false)
     <ResizablePrimitive.separator
       {...props}

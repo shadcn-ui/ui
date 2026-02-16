@@ -1,36 +1,38 @@
-type props<'value, 'checked> = BaseUi.Types.props<'value, 'checked>
-external toDomProps: props<'value, 'checked> => JsxDOM.domProps = "%identity"
+
+open BaseUi.Types
+
+external toDomProps: 'a => JsxDOM.domProps = "%identity"
 
 @react.componentWithProps
-let make = (props: props<'value, 'checked>) =>
+let make = (props: propsWithChildren<'value, 'checked>) =>
   <BaseUi.Combobox.Root {...props} />
 
 module Value = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.Combobox.Value {...props} dataSlot="combobox-value" />
 }
 
 module Trigger = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.Combobox.Trigger
       {...props}
       dataSlot="combobox-trigger"
       className={`[&_svg:not([class*='size-'])]:size-4 ${props.className->Option.getOr("")}`}
     >
-      {props.children->Option.getOr(React.null)}
+      {props.children}
       <Icons.chevronDown className="text-muted-foreground pointer-events-none size-4" />
     </BaseUi.Combobox.Trigger>
 }
 
 module Clear = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.Combobox.Clear
       {...props}
       dataSlot="combobox-clear"
-      render={<Button dataVariant=BaseUi.Types.Variant.Ghost dataSize=BaseUi.Types.Size.IconXs />}
+      render={<Button dataVariant=Variant.Ghost dataSize=Size.IconXs />}
       className={`${props.className->Option.getOr("")}`}
     >
       <Icons.x className="pointer-events-none" />
@@ -39,13 +41,13 @@ module Clear = {
 
 module Input = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) => {
+  let make = (props: propsWithChildren<'value, 'checked>) => {
     let disabled = props.disabled->Option.getOr(false)
     let rootProps: props<'value, 'checked> = {dataSlot: "input-group"}
     let controlProps: props<'value, 'checked> = {dataSlot: "input-group-control"}
     let addonProps: props<'value, 'checked> = {
       dataSlot: "input-group-addon",
-      dataAlign: BaseUi.Types.DataAlign.InlineEnd,
+      dataAlign: DataAlign.InlineEnd,
     }
     <div
       {...toDomProps(rootProps)}
@@ -68,7 +70,7 @@ module Input = {
         className="[&>kbd]:rounded-[calc(var(--radius)-5px)] [&>svg:not([class*='size-'])]:size-4 cursor-text flex font-medium gap-2 group-data-[disabled=true]/input-group:opacity-50 h-auto has-[>button]:mr-[-0.3rem] has-[>kbd]:mr-[-0.15rem] items-center justify-center order-last pr-2 py-1.5 select-none text-muted-foreground text-sm"
       >
         <BaseUi.Combobox.Trigger
-          dataSize=BaseUi.Types.Size.IconXs
+          dataSize=Size.IconXs
           dataSlot="input-group-button"
           tabIndex={0}
           disabled={disabled}
@@ -77,20 +79,20 @@ module Input = {
           <Icons.chevronDown className="text-muted-foreground pointer-events-none size-4" />
         </BaseUi.Combobox.Trigger>
       </div>
-      {props.children->Option.getOr(React.null)}
+      {props.children}
     </div>
   }
 }
 
 module Content = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) => {
+  let make = (props: propsWithChildren<'value, 'checked>) => {
     let hasAnchor = props.anchor->Option.isSome
     <BaseUi.Combobox.Portal>
       <BaseUi.Combobox.Positioner
-        side={props.side->Option.getOr(BaseUi.Types.Side.Bottom)}
+        side={props.side->Option.getOr(Side.Bottom)}
         sideOffset={props.sideOffset->Option.getOr(6.)}
-        align={props.align->Option.getOr(BaseUi.Types.Align.Start)}
+        align={props.align->Option.getOr(Align.Start)}
         alignOffset={props.alignOffset->Option.getOr(0.)}
         className="isolate z-50"
       >
@@ -100,7 +102,7 @@ module Content = {
           dataChips=hasAnchor
           className={`bg-popover text-popover-foreground data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 ring-foreground/10 *:data-[slot=input-group]:bg-input/30 *:data-[slot=input-group]:border-input/30 data-[side=inline-start]:slide-in-from-right-2 data-[side=inline-end]:slide-in-from-left-2 cn-menu-target group/combobox-content relative max-h-(--available-height) w-(--anchor-width) max-w-(--available-width) min-w-[calc(var(--anchor-width)+--spacing(7))] origin-(--transform-origin) overflow-hidden rounded-lg shadow-md ring-1 duration-100 data-[chips=true]:min-w-(--anchor-width) *:data-[slot=input-group]:m-1 *:data-[slot=input-group]:mb-0 *:data-[slot=input-group]:h-8 *:data-[slot=input-group]:shadow-none ${props.className->Option.getOr("")}`}
         >
-          {props.children->Option.getOr(React.null)}
+          {props.children}
         </BaseUi.Combobox.Popup>
       </BaseUi.Combobox.Positioner>
     </BaseUi.Combobox.Portal>
@@ -109,7 +111,7 @@ module Content = {
 
 module List = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.Combobox.List
       {...props}
       dataSlot="combobox-list"
@@ -119,24 +121,26 @@ module List = {
 
 module Item = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.Combobox.Item
       {...props}
       dataSlot="combobox-item"
       className={`data-highlighted:bg-accent data-highlighted:text-accent-foreground not-data-[variant=destructive]:data-highlighted:**:text-accent-foreground relative flex w-full cursor-default items-center gap-2 rounded-md py-1 pr-8 pl-1.5 text-sm outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 ${props.className->Option.getOr("")}`}
     >
-      {props.children->Option.getOr(React.null)}
+      {props.children}
       <BaseUi.Combobox.ItemIndicator
-        render={<span className="pointer-events-none absolute right-2 flex size-4 items-center justify-center" />}
-      >
-        <Icons.check className="pointer-events-none" />
-      </BaseUi.Combobox.ItemIndicator>
+        render={
+          <span className="pointer-events-none absolute right-2 flex size-4 items-center justify-center">
+            <Icons.check className="pointer-events-none" />
+          </span>
+        }
+      />
     </BaseUi.Combobox.Item>
 }
 
 module Group = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.Combobox.Group
       {...props}
       dataSlot="combobox-group"
@@ -146,7 +150,7 @@ module Group = {
 
 module Label = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.Combobox.GroupLabel
       {...props}
       dataSlot="combobox-label"
@@ -156,13 +160,13 @@ module Label = {
 
 module Collection = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.Combobox.Collection {...props} dataSlot="combobox-collection" />
 }
 
 module Empty = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.Combobox.Empty
       {...props}
       dataSlot="combobox-empty"
@@ -172,7 +176,7 @@ module Empty = {
 
 module Separator = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.Combobox.Separator
       {...props}
       dataSlot="combobox-separator"
@@ -182,7 +186,7 @@ module Separator = {
 
 module Chips = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.Combobox.Chips
       {...props}
       dataSlot="combobox-chips"
@@ -192,26 +196,28 @@ module Chips = {
 
 module Chip = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.Combobox.Chip
       {...props}
       dataSlot="combobox-chip"
       className={`bg-muted text-foreground flex h-[calc(--spacing(5.25))] w-fit items-center justify-center gap-1 rounded-sm px-1.5 text-xs font-medium whitespace-nowrap has-disabled:pointer-events-none has-disabled:cursor-not-allowed has-disabled:opacity-50 has-data-[slot=combobox-chip-remove]:pr-0 ${props.className->Option.getOr("")}`}
     >
-      {props.children->Option.getOr(React.null)}
+      {props.children}
       <BaseUi.Combobox.ChipRemove
-        render={<Button dataVariant=BaseUi.Types.Variant.Ghost dataSize=BaseUi.Types.Size.IconXs />}
+        render={
+          <Button dataVariant=Variant.Ghost dataSize=Size.IconXs>
+            <Icons.x className="pointer-events-none" />
+          </Button>
+        }
         className="-ml-1 opacity-50 hover:opacity-100"
         dataSlot="combobox-chip-remove"
-      >
-        <Icons.x className="pointer-events-none" />
-      </BaseUi.Combobox.ChipRemove>
+      />
     </BaseUi.Combobox.Chip>
 }
 
 module ChipsInput = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.Combobox.Input
       {...props}
       dataSlot="combobox-chip-input"

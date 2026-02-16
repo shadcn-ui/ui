@@ -1,6 +1,6 @@
-type props<'value, 'checked> = BaseUi.Types.props<'value, 'checked>
+open BaseUi.Types
 
-let tabsListVariants = (~variant=BaseUi.Types.Variant.Default) => {
+let tabsListVariants = (~variant=Variant.Default) => {
   let base =
     "rounded-lg p-[3px] group-data-horizontal/tabs:h-8 data-[variant=line]:rounded-none group/tabs-list text-muted-foreground inline-flex w-fit items-center justify-center group-data-vertical/tabs:h-fit group-data-vertical/tabs:flex-col"
   let variantClass =
@@ -22,18 +22,18 @@ let tabsListVariants = (~variant=BaseUi.Types.Variant.Default) => {
 }
 
 @react.componentWithProps
-let make = (props: props<'value, 'checked>) =>
+let make = (props: propsWithChildren<'value, 'checked>) =>
   <BaseUi.Tabs.Root
     {...props}
-    orientation={props.orientation->Option.getOr(BaseUi.Types.Orientation.Horizontal)}
+    orientation={props.orientation->Option.getOr(Orientation.Horizontal)}
     dataSlot="tabs"
     className={`group/tabs flex gap-2 data-horizontal:flex-col ${props.className->Option.getOr("")}`}
   />
 
 module List = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) => {
-    let variant = props.dataVariant->Option.getOr(BaseUi.Types.Variant.Default)
+  let make = (props: propsWithChildren<'value, 'checked>) => {
+    let variant = props.dataVariant->Option.getOr(Variant.Default)
     <BaseUi.Tabs.List
       {...props}
       dataSlot="tabs-list"
@@ -45,7 +45,7 @@ module List = {
 
 module Trigger = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.Tabs.Tab
       {...props}
       dataSlot="tabs-trigger"
@@ -55,7 +55,7 @@ module Trigger = {
 
 module Content = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.Tabs.Panel
       {...props}
       dataSlot="tabs-content"

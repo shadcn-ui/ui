@@ -1,13 +1,13 @@
-type props<'value, 'checked> = BaseUi.Types.props<'value, 'checked>
+open BaseUi.Types
 
 @react.componentWithProps
-let make = (props: props<'value, 'checked>) =>
+let make = (props: propsWithChildren<'value, 'checked>) =>
   <BaseUi.Progress.Root
     {...props}
     dataSlot="progress"
     className={`flex flex-wrap gap-3 ${props.className->Option.getOr("")}`}
   >
-    {props.children->Option.getOr(React.null)}
+    {props.children}
     <BaseUi.Progress.Track
       dataSlot="progress-track"
       className="bg-muted relative flex h-1 w-full items-center overflow-x-hidden rounded-full"
@@ -21,13 +21,13 @@ let make = (props: props<'value, 'checked>) =>
 
 module Track = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.Progress.Track
       {...props}
       dataSlot="progress-track"
       className={`bg-muted relative flex h-1 w-full items-center overflow-x-hidden rounded-full ${props.className->Option.getOr("")}`}
     >
-      {props.children->Option.getOr(React.null)}
+      {props.children}
     </BaseUi.Progress.Track>
 }
 
@@ -43,7 +43,7 @@ module Indicator = {
 
 module Label = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.Progress.Label
       {...props}
       dataSlot="progress-label"
@@ -53,7 +53,7 @@ module Label = {
 
 module Value = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.Progress.Value
       {...props}
       dataSlot="progress-value"

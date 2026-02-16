@@ -1,12 +1,12 @@
-type props<'value, 'checked> = BaseUi.Types.props<'value, 'checked>
+open BaseUi.Types
 
 @react.componentWithProps
-let make = (props: props<'value, 'checked>) =>
+let make = (props: propsWithChildren<'value, 'checked>) =>
   <BaseUi.Select.Root {...props} />
 
 module Group = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.Select.Group
       {...props}
       dataSlot="select-group"
@@ -16,7 +16,7 @@ module Group = {
 
 module Value = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.Select.Value
       {...props}
       dataSlot="select-value"
@@ -26,8 +26,8 @@ module Value = {
 
 module Trigger = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) => {
-    let size = props.dataSize->Option.getOr(BaseUi.Types.Size.Default)
+  let make = (props: propsWithChildren<'value, 'checked>) => {
+    let size = props.dataSize->Option.getOr(Size.Default)
     let hasWidthOverride =
       switch props.className {
       | Some(className) => String.includes(className, "w-")
@@ -40,7 +40,7 @@ module Trigger = {
       dataSize={size}
       className={`border-input data-placeholder:text-muted-foreground dark:bg-input/30 dark:hover:bg-input/50 focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 flex ${widthClass} items-center justify-between gap-1.5 rounded-lg border bg-transparent py-2 pr-2 pl-2.5 text-sm whitespace-nowrap transition-colors outline-none select-none focus-visible:ring-3 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:ring-3 data-[size=default]:h-8 data-[size=sm]:h-7 data-[size=sm]:rounded-[min(var(--radius-md),10px)] *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-1.5 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 ${props.className->Option.getOr("")}`}
     >
-      {props.children->Option.getOr(React.null)}
+      {props.children}
       <BaseUi.Select.Icon render={<Icons.chevronDown className="text-muted-foreground pointer-events-none size-4" />} />
     </BaseUi.Select.Trigger>
   }
@@ -48,13 +48,13 @@ module Trigger = {
 
 module Content = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) => {
+  let make = (props: propsWithChildren<'value, 'checked>) => {
     let alignItemWithTrigger = props.dataAlignTrigger->Option.getOr(true)
     <BaseUi.Select.Portal>
       <BaseUi.Select.Positioner
-        side={props.side->Option.getOr(BaseUi.Types.Side.Bottom)}
+        side={props.side->Option.getOr(Side.Bottom)}
         sideOffset={props.sideOffset->Option.getOr(4.)}
-        align={props.align->Option.getOr(BaseUi.Types.Align.Center)}
+        align={props.align->Option.getOr(Align.Center)}
         alignOffset={props.alignOffset->Option.getOr(0.)}
         alignItemWithTrigger
         className="isolate z-50"
@@ -71,7 +71,7 @@ module Content = {
           >
             <Icons.chevronUp />
           </BaseUi.Select.ScrollUpArrow>
-          <BaseUi.Select.List>{props.children->Option.getOr(React.null)}</BaseUi.Select.List>
+          <BaseUi.Select.List>{props.children}</BaseUi.Select.List>
           <BaseUi.Select.ScrollDownArrow
             dataSlot="select-scroll-down-button"
             className="bg-popover bottom-0 z-10 flex w-full cursor-default items-center justify-center py-1 [&_svg:not([class*='size-'])]:size-4"
@@ -86,7 +86,7 @@ module Content = {
 
 module Label = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.Select.GroupLabel
       {...props}
       dataSlot="select-label"
@@ -96,14 +96,14 @@ module Label = {
 
 module Item = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.Select.Item
       {...props}
       dataSlot="select-item"
       className={`focus:bg-accent focus:text-accent-foreground not-data-[variant=destructive]:focus:**:text-accent-foreground relative flex w-full cursor-default items-center gap-1.5 rounded-md py-1 pr-8 pl-1.5 text-sm outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2 ${props.className->Option.getOr("")}`}
     >
       <BaseUi.Select.ItemText className="flex flex-1 shrink-0 gap-2 whitespace-nowrap">
-        {props.children->Option.getOr(React.null)}
+        {props.children}
       </BaseUi.Select.ItemText>
       <BaseUi.Select.ItemIndicator
         render={<span className="pointer-events-none absolute right-2 flex size-4 items-center justify-center" />}
@@ -115,7 +115,7 @@ module Item = {
 
 module Separator = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.Select.Separator
       {...props}
       dataSlot="select-separator"
@@ -125,7 +125,7 @@ module Separator = {
 
 module ScrollUpButton = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.Select.ScrollUpArrow
       {...props}
       dataSlot="select-scroll-up-button"
@@ -137,7 +137,7 @@ module ScrollUpButton = {
 
 module ScrollDownButton = {
   @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  let make = (props: propsWithChildren<'value, 'checked>) =>
     <BaseUi.Select.ScrollDownArrow
       {...props}
       dataSlot="select-scroll-down-button"

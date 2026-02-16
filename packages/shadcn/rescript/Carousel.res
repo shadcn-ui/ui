@@ -1,6 +1,6 @@
-type props<'value, 'checked> = BaseUi.Types.props<'value, 'checked>
-type primitiveProps = props<string, bool>
-external toDomProps: props<'value, 'checked> => JsxDOM.domProps = "%identity"
+open BaseUi.Types
+
+external toDomProps: 'a => JsxDOM.domProps = "%identity"
 
 type carouselApi
 type carouselRef = Nullable.t<Dom.htmlElement> => unit
@@ -25,7 +25,7 @@ external toJsxDomRef: ReactDOM.Ref.callbackDomRef => JsxDOM.domRef = "%identity"
 type carouselContext = {
   carouselRef: carouselRef,
   api: option<carouselApi>,
-  orientation: BaseUi.Types.DataOrientation.t,
+  orientation: DataOrientation.t,
   scrollPrev: unit => unit,
   scrollNext: unit => unit,
   canScrollPrev: bool,
@@ -41,9 +41,9 @@ let useCarousel = () =>
   }
 
 @react.componentWithProps
-let make = (props: primitiveProps) => {
-  let orientation = props.dataOrientation->Option.getOr(BaseUi.Types.DataOrientation.Horizontal)
-  let axis = if orientation == BaseUi.Types.DataOrientation.Horizontal {"x"} else {"y"}
+let make = (props: propsWithChildren<string, bool>) => {
+  let orientation = props.dataOrientation->Option.getOr(DataOrientation.Horizontal)
+  let axis = if orientation == DataOrientation.Horizontal {"x"} else {"y"}
   let (carouselRef, api) = useEmblaCarousel(~options={axis: axis})
   let (canScrollPrev, setCanScrollPrev) = React.useState(() => false)
   let (canScrollNext, setCanScrollNext) = React.useState(() => false)
@@ -80,7 +80,7 @@ let make = (props: primitiveProps) => {
     canScrollPrev: canScrollPrev,
     canScrollNext: canScrollNext,
   })
-  let rootProps: primitiveProps = {
+  let rootProps: propsWithOptionalChildren<string, bool> = {
     className: "",
     children: React.null,
     dataSlot: "carousel",
@@ -88,23 +88,23 @@ let make = (props: primitiveProps) => {
   module Provider = {
     let make = React.Context.provider(context)
   }
-  <Provider.make value={providerValue}>
+  <Provider value={providerValue}>
     <div
       {...toDomProps(rootProps)}
       className={`relative ${props.className->Option.getOr("")}`}
       role="region"
       ariaLabel="carousel"
     >
-      {props.children->Option.getOr(React.null)}
+      {props.children}
     </div>
-  </Provider.make>
+  </Provider>
 }
 
 module Content = {
   @react.componentWithProps
-  let make = (props: primitiveProps) => {
+  let make = (props: propsWithOptionalChildren<string, bool>) => {
     let {carouselRef, orientation} = useCarousel()
-    let outerProps: primitiveProps = {
+    let outerProps: propsWithOptionalChildren<string, bool> = {
       className: "",
       children: React.null,
       dataSlot: "carousel-content",
@@ -116,7 +116,7 @@ module Content = {
     >
       <div
         {...toDomProps(props)}
-        className={`flex ${if orientation == BaseUi.Types.DataOrientation.Horizontal {"-ml-4"} else {"-mt-4 flex-col"}} ${props.className->Option.getOr("")}`}
+        className={`flex ${if orientation == DataOrientation.Horizontal {"-ml-4"} else {"-mt-4 flex-col"}} ${props.className->Option.getOr("")}`}
       />
     </div>
   }
@@ -124,28 +124,28 @@ module Content = {
 
 module Item = {
   @react.componentWithProps
-  let make = (props: primitiveProps) => {
+  let make = (props: propsWithOptionalChildren<string, bool>) => {
     let {orientation} = useCarousel()
     let props = {...props, dataSlot: "carousel-item"}
     <div
       {...toDomProps(props)}
       role="group"
       ariaLabel="slide"
-      className={`min-w-0 shrink-0 grow-0 basis-full ${if orientation == BaseUi.Types.DataOrientation.Horizontal {"pl-4"} else {"pt-4"}} ${props.className->Option.getOr("")}`}
+      className={`min-w-0 shrink-0 grow-0 basis-full ${if orientation == DataOrientation.Horizontal {"pl-4"} else {"pt-4"}} ${props.className->Option.getOr("")}`}
     />
   }
 }
 
 module Previous = {
   @react.componentWithProps
-  let make = (props: primitiveProps) => {
+  let make = (props: propsWithOptionalChildren<string, bool>) => {
     let {orientation, scrollPrev, canScrollPrev} = useCarousel()
     <Button
       {...props}
       dataSlot="carousel-previous"
-      dataVariant={props.dataVariant->Option.getOr(BaseUi.Types.Variant.Outline)}
-      dataSize={props.dataSize->Option.getOr(BaseUi.Types.Size.IconSm)}
-      className={`absolute touch-manipulation rounded-full ${if orientation == BaseUi.Types.DataOrientation.Horizontal {"top-1/2 -left-12 -translate-y-1/2"} else {"-top-12 left-1/2 -translate-x-1/2 rotate-90"}} ${props.className->Option.getOr("")}`}
+      dataVariant={props.dataVariant->Option.getOr(Variant.Outline)}
+      dataSize={props.dataSize->Option.getOr(Size.IconSm)}
+      className={`absolute touch-manipulation rounded-full ${if orientation == DataOrientation.Horizontal {"top-1/2 -left-12 -translate-y-1/2"} else {"-top-12 left-1/2 -translate-x-1/2 rotate-90"}} ${props.className->Option.getOr("")}`}
       disabled={!canScrollPrev}
       onClick={_ => scrollPrev()}
     >
@@ -157,14 +157,14 @@ module Previous = {
 
 module Next = {
   @react.componentWithProps
-  let make = (props: primitiveProps) => {
+  let make = (props: propsWithOptionalChildren<string, bool>) => {
     let {orientation, scrollNext, canScrollNext} = useCarousel()
     <Button
       {...props}
       dataSlot="carousel-next"
-      dataVariant={props.dataVariant->Option.getOr(BaseUi.Types.Variant.Outline)}
-      dataSize={props.dataSize->Option.getOr(BaseUi.Types.Size.IconSm)}
-      className={`absolute touch-manipulation rounded-full ${if orientation == BaseUi.Types.DataOrientation.Horizontal {"top-1/2 -right-12 -translate-y-1/2"} else {"-bottom-12 left-1/2 -translate-x-1/2 rotate-90"}} ${props.className->Option.getOr("")}`}
+      dataVariant={props.dataVariant->Option.getOr(Variant.Outline)}
+      dataSize={props.dataSize->Option.getOr(Size.IconSm)}
+      className={`absolute touch-manipulation rounded-full ${if orientation == DataOrientation.Horizontal {"top-1/2 -right-12 -translate-y-1/2"} else {"-bottom-12 left-1/2 -translate-x-1/2 rotate-90"}} ${props.className->Option.getOr("")}`}
       disabled={!canScrollNext}
       onClick={_ => scrollNext()}
     >
