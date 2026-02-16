@@ -37,20 +37,16 @@ module Link = {
   let make = (props: propsWithChildren<'value, 'checked>) => {
     let isActive = props.dataActive->Option.getOr(false)
     let size = props.dataSize->Option.getOr(Size.Icon)
-    let variant =
-      if isActive {Variant.Outline} else {Variant.Ghost}
+    let variant = isActive ? Variant.Outline : Variant.Ghost
     let anchorProps = {
       ...props,
-      className: "",
-      children: React.null,
       dataSlot: "pagination-link",
-      dataActive: isActive,
-      ariaCurrent: if isActive {"page"} else {""},
+      ariaCurrent: ?(isActive ? Some("page") : None),
     }
     <Button
       dataVariant={variant}
       dataSize={size}
-      className={`${props.className->Option.getOr("")}`}
+      className=?props.className
       nativeButton={false}
       disabled={props.disabled->Option.getOr(false)}
       render={<a {...toDomProps(anchorProps)} />}
@@ -62,31 +58,31 @@ module Link = {
 
 module Previous = {
   @react.componentWithProps
-let make = (props: propsWithChildren<'value, 'checked>) => {
+  let make = (props: propsWithChildren<'value, 'checked>) => {
     let text = props.label->Option.getOr("Previous")
     <Link
       {...props}
       ariaLabel="Go to previous page"
-      dataSize=Size.Default
+      dataSize=Default
       className={`pl-1.5! ${props.className->Option.getOr("")}`}
     >
       <Icons.chevronLeft dataIcon="inline-start" className="cn-rtl-flip" />
-      <span className="hidden sm:block">{text->React.string}</span>
+      <span className="hidden sm:block"> {text->React.string} </span>
     </Link>
   }
 }
 
 module Next = {
   @react.componentWithProps
-let make = (props: propsWithChildren<'value, 'checked>) => {
+  let make = (props: propsWithChildren<'value, 'checked>) => {
     let text = props.label->Option.getOr("Next")
     <Link
       {...props}
       ariaLabel="Go to next page"
-      dataSize=Size.Default
+      dataSize=Default
       className={`pr-1.5! ${props.className->Option.getOr("")}`}
     >
-      <span className="hidden sm:block">{text->React.string}</span>
+      <span className="hidden sm:block"> {text->React.string} </span>
       <Icons.chevronRight dataIcon="inline-end" className="cn-rtl-flip" />
     </Link>
   }
@@ -99,10 +95,12 @@ module Ellipsis = {
     <span
       {...toDomProps(props)}
       ariaHidden={true}
-      className={`flex size-8 items-center justify-center [&_svg:not([class*='size-'])]:size-4 ${props.className->Option.getOr("")}`}
+      className={`flex size-8 items-center justify-center [&_svg:not([class*='size-'])]:size-4 ${props.className->Option.getOr(
+          "",
+        )}`}
     >
       <Icons.moreHorizontal />
-      <span className="sr-only">{"More pages"->React.string}</span>
+      <span className="sr-only"> {"More pages"->React.string} </span>
     </span>
   }
 }

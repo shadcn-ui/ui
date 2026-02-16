@@ -33,7 +33,7 @@ module Trigger = {
       | Some(className) => String.includes(className, "w-")
       | None => false
       }
-    let widthClass = if hasWidthOverride {""} else {"w-fit"}
+    let widthClass = hasWidthOverride ? "" : "w-fit"
     <BaseUi.Select.Trigger
       {...props}
       dataSlot="select-trigger"

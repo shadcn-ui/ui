@@ -6,9 +6,7 @@ external toDomProps: 'a => JsxDOM.domProps = "%identity"
 let make = (props: propsWithChildren<'value, 'checked>) => {
   let props = {...props, dataSlot: "breadcrumb"}
   <nav
-    {...toDomProps(props)}
-    ariaLabel="breadcrumb"
-    className={`${props.className->Option.getOr("")}`}
+    {...toDomProps(props)} ariaLabel="breadcrumb" className={`${props.className->Option.getOr("")}`}
   >
     {props.children}
   </nav>
@@ -20,7 +18,9 @@ module List = {
     let props = {...props, dataSlot: "breadcrumb-list"}
     <ol
       {...toDomProps(props)}
-      className={`text-muted-foreground flex flex-wrap items-center gap-1.5 text-sm wrap-break-word ${props.className->Option.getOr("")}`}
+      className={`text-muted-foreground flex flex-wrap items-center gap-1.5 text-sm wrap-break-word ${props.className->Option.getOr(
+          "",
+        )}`}
     >
       {props.children}
     </ol>
@@ -73,11 +73,10 @@ module Separator = {
   @react.componentWithProps
   let make = (props: propsWithOptionalChildren<'value, 'checked>) => {
     let props = {...props, dataSlot: "breadcrumb-separator"}
-    let content =
-      switch props.children {
-      | Some(children) => children
-      | None => <Icons.chevronRight className="cn-rtl-flip" />
-      }
+    let content = switch props.children {
+    | Some(children) => children
+    | None => <Icons.chevronRight className="cn-rtl-flip" />
+    }
 
     <li
       {...toDomProps(props)}
@@ -98,10 +97,12 @@ module Ellipsis = {
       {...toDomProps(props)}
       ariaHidden=true
       role="presentation"
-      className={`flex size-5 items-center justify-center [&>svg]:size-4 ${props.className->Option.getOr("")}`}
+      className={`flex size-5 items-center justify-center [&>svg]:size-4 ${props.className->Option.getOr(
+          "",
+        )}`}
     >
       <Icons.moreHorizontal />
-      <span className="sr-only">{"More"->React.string}</span>
+      <span className="sr-only"> {"More"->React.string} </span>
     </span>
   }
 }
