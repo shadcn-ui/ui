@@ -299,77 +299,83 @@ function updateCssVarsPluginV4(
   return {
     postcssPlugin: "update-css-vars-v4",
     Once(root: Root) {
-      Object.entries(cssVars).forEach(([key, vars]) => {
-        let selector = key === "light" ? ":root" : `.${key}`
+      let newCssVars = new Map<
+        string,
+        { light?: string; dark?: string; color: boolean }
+      >()
 
-        if (key === "theme") {
-          selector = "@theme"
-          const themeNode = upsertThemeNode(root)
-          Object.entries(vars).forEach(([key, value]) => {
-            const prop = `--${key.replace(/^--/, "")}`
-            const newDecl = postcss.decl({
-              prop,
-              value,
-              raws: { semicolon: true },
-            })
-
-            const existingDecl = themeNode?.nodes?.find(
-              (node): node is postcss.Declaration =>
-                node.type === "decl" && node.prop === prop
-            )
-
-            // Only overwrite if overwriteCssVars is true
-            // i.e for registry:theme and registry:style
-            // We do not want new components to overwrite existing vars.
-            // Keep user defined vars.
-            if (options.overwriteCssVars) {
-              if (existingDecl) {
-                existingDecl.replaceWith(newDecl)
-              } else {
-                themeNode?.append(newDecl)
-              }
-            } else {
-              if (!existingDecl) {
-                themeNode?.append(newDecl)
-              }
+      function extractVars(selector: string, variant: "light" | "dark") {
+        root.walkRules(selector, (rule) => {
+          rule.walkDecls((decl) => {
+            if (!decl.prop.startsWith("--") || !isColorValue(decl.value)) return
+            const name = decl.prop.substring(2)
+            if (!newCssVars.has(name)) {
+              newCssVars.set(name, { color: true })
             }
+            newCssVars.get(name)![variant] = decl.value
           })
-          return
-        }
+        })
+      }
 
-        let ruleNode = root.nodes?.find(
+      // Extract existing CSS variables
+      extractVars(":root", "light")
+      extractVars(".dark", "dark")
+
+      // Add new variables
+      for (const [variant, vars] of Object.entries(cssVars)) {
+        // skip theme variables, updated later with no light-dark,
+        // since there aren't variants
+        if (variant === "theme") continue
+        for (const [cssVarName, value] of Object.entries(vars)) {
+          const isColor = isColorValue(value) || isLocalHSLValue(value)
+          if (!newCssVars.has(cssVarName)) {
+            newCssVars.set(cssVarName, { color: isColor })
+          }
+          // Only overwrite if overwriteCssVars is true
+          // i.e for registry:theme and registry:style
+          // We do not want new components to overwrite existing vars.
+          // Keep user defined vars.
+          if (
+            options.overwriteCssVars ||
+            !(variant in newCssVars.get(cssVarName)!)
+          ) {
+            newCssVars.get(cssVarName)![variant as "light" | "dark"] = value
+          }
+        }
+      }
+
+      function getOrCreateRule(selector: string) {
+        let rule = root.nodes?.find(
           (node): node is Rule =>
             node.type === "rule" && node.selector === selector
         )
-
-        if (!ruleNode && Object.keys(vars).length > 0) {
-          ruleNode = postcss.rule({
+        if (!rule && newCssVars.size > 0) {
+          rule = postcss.rule({
             selector,
             nodes: [],
             raws: { semicolon: true, between: " ", before: "\n" },
           })
-          root.append(ruleNode)
-          root.insertBefore(ruleNode, postcss.comment({ text: "---break---" }))
+          root.append(rule)
+          root.insertBefore(rule, postcss.comment({ text: "---break---" }))
         }
+        return rule
+      }
 
-        Object.entries(vars).forEach(([key, value]) => {
-          let prop = `--${key.replace(/^--/, "")}`
+      // Ensure root and dark rules exist if needed
+      const rootRuleNode = getOrCreateRule(":root")
+      const darkRuleNode = getOrCreateRule(".dark")
 
-          // Special case for sidebar-background.
-          if (prop === "--sidebar-background") {
-            prop = "--sidebar"
-          }
-
-          if (isLocalHSLValue(value)) {
-            value = `hsl(${value})`
-          }
-
+      if (cssVars.theme) {
+        const themeNode = upsertThemeNode(root)
+        Object.entries(cssVars.theme).forEach(([key, value]) => {
+          const prop = `--${key.replace(/^--/, "")}`
           const newDecl = postcss.decl({
             prop,
             value,
             raws: { semicolon: true },
           })
-          const existingDecl = ruleNode?.nodes.find(
+
+          const existingDecl = themeNode?.nodes?.find(
             (node): node is postcss.Declaration =>
               node.type === "decl" && node.prop === prop
           )
@@ -382,15 +388,99 @@ function updateCssVarsPluginV4(
             if (existingDecl) {
               existingDecl.replaceWith(newDecl)
             } else {
-              ruleNode?.append(newDecl)
+              themeNode?.append(newDecl)
             }
           } else {
             if (!existingDecl) {
-              ruleNode?.append(newDecl)
+              themeNode?.append(newDecl)
             }
           }
         })
+      }
+
+      // Insert CSS variables
+      newCssVars.forEach((cssVar, cssVarName) => {
+        let prop = `--${cssVarName.replace(/^--/, "")}`
+
+        // Special case for sidebar-background.
+        if (prop === "--sidebar-background") {
+          prop = "--sidebar"
+        }
+
+        const formatValue = (val: string) =>
+          isLocalHSLValue(val) ? `hsl(${val})` : val
+
+        const createDecl = (val: string) =>
+          postcss.decl({
+            prop,
+            value: formatValue(val),
+            raws: { semicolon: true },
+          })
+
+        if (cssVar.light && cssVar.dark) {
+          if (cssVar.color) {
+            // if css var has both a light and dark value and is a color
+            // use light-dark() function
+
+            const newDecl = createDecl(
+              `light-dark(${formatValue(cssVar.light)}, ${formatValue(
+                cssVar.dark
+              )})`
+            )
+
+            const existingDecl = rootRuleNode?.nodes.find(
+              (n) => n.type === "decl" && n.prop === prop
+            )
+
+            existingDecl
+              ? existingDecl.replaceWith(newDecl)
+              : rootRuleNode?.append(newDecl)
+
+            darkRuleNode?.nodes
+              .find((n) => n.type === "decl" && n.prop === prop)
+              ?.remove()
+          } else {
+            // if not a color, but a light and dark variant exist,
+            // light-dark() cannot be used on non-colors and the
+            // dark variant must be put in the .dark class
+
+            const lightDecl = createDecl(cssVar.light)
+            const darkDecl = createDecl(cssVar.dark)
+
+            const existingRootDecl = rootRuleNode?.nodes.find(
+              (n) => n.type === "decl" && n.prop === prop
+            )
+
+            existingRootDecl
+              ? existingRootDecl.replaceWith(lightDecl)
+              : rootRuleNode?.append(lightDecl)
+
+            const existingDarkDecl = darkRuleNode?.nodes.find(
+              (n) => n.type === "decl" && n.prop === prop
+            )
+
+            existingDarkDecl
+              ? existingDarkDecl.replaceWith(darkDecl)
+              : darkRuleNode?.append(darkDecl)
+          }
+        } else {
+          // if only one of the two variants is present,
+          // just use that single value in the :root block
+
+          const val = cssVar.light || cssVar.dark
+          const newDecl = createDecl(val!)
+          const targetRule = cssVar.light ? rootRuleNode : darkRuleNode
+          const existingDecl = targetRule?.nodes.find(
+            (n) => n.type === "decl" && n.prop === prop
+          )
+          existingDecl
+            ? existingDecl.replaceWith(newDecl)
+            : targetRule?.append(newDecl)
+        }
       })
+
+      // Remove empty .dark rule
+      if (darkRuleNode?.nodes.length === 0) darkRuleNode.remove()
     },
   }
 }
