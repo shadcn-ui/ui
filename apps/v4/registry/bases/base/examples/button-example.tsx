@@ -2,7 +2,7 @@ import {
   Example,
   ExampleWrapper,
 } from "@/registry/bases/base/components/example"
-import { Button } from "@/registry/bases/base/ui/button"
+import { Button, buttonVariants } from "@/registry/bases/base/ui/button"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function ButtonExample() {
@@ -906,9 +906,9 @@ function ButtonExamples() {
             />
           </Button>
         </div>
-        <Button render={<a href="#" />} nativeButton={false}>
+        <a href="#" className={buttonVariants()}>
           Link
-        </Button>
+        </a>
       </div>
     </Example>
   )
