@@ -67,12 +67,17 @@ export const nextMonorepo = createTemplate({
         await fs.remove(templatePath)
       }
 
-      // Run install. Disable frozen lockfile since the template's lockfile may not match.
-      await execa(packageManager, ["install"], {
+      // Run install. pnpm enables frozen lockfile in CI by default.
+      // The template lockfile may drift, so force-disable it explicitly.
+      const installArgs = ["install"]
+      if (packageManager === "pnpm") {
+        installArgs.push("--no-frozen-lockfile")
+      }
+
+      await execa(packageManager, installArgs, {
         cwd: projectPath,
         env: {
           ...process.env,
-          CI: "",
         },
       })
 
