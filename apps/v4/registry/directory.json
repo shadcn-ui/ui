@@ -126,6 +126,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='var(--foreground)'><path stroke='none' d='M0 0h24v24H0z' fill='none'/><path d='M12 2c-.218 0 -.432 .002 -.642 .005l-.616 .017l-.299 .013l-.579 .034l-.553 .046c-4.785 .464 -6.732 2.411 -7.196 7.196l-.046 .553l-.034 .579c-.005 .098 -.01 .198 -.013 .299l-.017 .616l-.004 .318l-.001 .324c0 .218 .002 .432 .005 .642l.017 .616l.013 .299l.034 .579l.046 .553c.464 4.785 2.411 6.732 7.196 7.196l.553 .046l.579 .034c.098 .005 .198 .01 .299 .013l.616 .017l.642 .005l.642 -.005l.616 -.017l.299 -.013l.579 -.034l.553 -.046c4.785 -.464 6.732 -2.411 7.196 -7.196l.046 -.553l.034 -.579c.005 -.098 .01 -.198 .013 -.299l.017 -.616l.005 -.642l-.005 -.642l-.017 -.616l-.013 -.299l-.034 -.579l-.046 -.553c-.464 -4.785 -2.411 -6.732 -7.196 -7.196l-.553 -.046l-.579 -.034a28.058 28.058 0 0 0 -.299 -.013l-.616 -.017l-.318 -.004l-.324 -.001z'/></svg>"
   },
   {
+    "name": "@boldkit",
+    "homepage": "https://boldkit.dev",
+    "url": "https://boldkit.dev/r/{name}.json",
+    "description": "Neubrutalism component library with 43 components, 42 SVG shapes, thick borders, and hard shadows. Supports React, Vue, and Nuxt. Built on shadcn/ui.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none'><rect x='5' y='5' width='90' height='90' fill='var(--background)' stroke='var(--foreground)' stroke-width='6'/><rect x='20' y='20' width='25' height='25' fill='var(--foreground)'/><rect x='55' y='20' width='25' height='25' fill='var(--foreground)'/><rect x='20' y='55' width='25' height='25' fill='var(--foreground)'/><rect x='55' y='55' width='25' height='25' fill='var(--foreground)'/></svg>"
+  },
+  {
     "name": "@bundui",
     "homepage": "https://bundui.io",
     "url": "https://bundui.io/r/{name}.json",
@@ -887,5 +894,12 @@
     "url": "https://sona-ui.vercel.app/r/{name}.json",
     "description": "A modern UI component library built with React and TailwindCSS to help you build beautiful and accessible web applications faster.",
     "logo": "<svg width='256' height='256' viewBox='0 0 256 256' fill='none' xmlns='http://www.w3.org/2000/svg'> <path d='M0 18.5887C0 8.32245 8.32244 0 18.5887 0H237.411C247.678 0 256 8.32244 256 18.5887V237.411C256 247.678 247.678 256 237.411 256H18.5887C8.32245 256 0 247.678 0 237.411V18.5887Z' fill='black'/> <path d='M128.001 30.0059C128.001 83.7034 171.192 127.313 224.728 127.991L225.994 128L224.728 128.008C171.192 128.686 128.001 172.296 128.001 225.994V256H128V225.994C128 171.873 84.1271 128 30.0068 128L31.273 127.991C84.8099 127.314 128 83.7036 128 30.0059V0.000488281H128.001V30.0059Z' fill='#D9D9D9'/></svg>"
+  },
+  {
+    "name": "@soundcn",
+    "homepage": "https://soundcn.xyz",
+    "url": "https://soundcn.xyz/r/{name}.json",
+    "description": "Large collection of game, interface, retro, and voice sound effects for web applications",
+    "logo": "<svg width='18' height='18' viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg'><rect x='0' y='8.1' width='3' height='9.9' rx='1.5' fill='currentColor'/><rect x='3.75' y='1.8' width='3' height='16.2' rx='1.5' fill='currentColor'/><rect x='7.5' y='11.7' width='3' height='6.3' rx='1.5' fill='currentColor'/><rect x='11.25' y='4.5' width='3' height='13.5' rx='1.5' fill='currentColor'/><rect x='15' y='9.9' width='3' height='8.1' rx='1.5' fill='currentColor'/></svg>"
   }
 ]
