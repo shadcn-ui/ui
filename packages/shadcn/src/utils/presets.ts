@@ -124,9 +124,7 @@ export async function promptForPreset(options: {
       ...(options.template && { template: options.template }),
     })
     logger.break()
-    logger.log(
-      `  Build your custom preset on ${highlighter.info(createUrl)}`
-    )
+    logger.log(`  Build your custom preset on ${highlighter.info(createUrl)}`)
     logger.log(
       `  Then ${highlighter.info(
         "copy and run the command"
@@ -156,10 +154,7 @@ export async function promptForPreset(options: {
   return resolveInitUrl({ ...preset, rtl: options.rtl })
 }
 
-export async function resolveRegistryBaseConfig(
-  initUrl: string,
-  cwd: string
-) {
+export async function resolveRegistryBaseConfig(initUrl: string, cwd: string) {
   // Use a shadow config to fetch the registry:base item.
   let shadowConfig = configWithDefaults(
     createConfig({
@@ -189,9 +184,7 @@ export async function resolveRegistryBaseConfig(
 
   return {
     registryBaseConfig:
-      item?.type === "registry:base" && item.config
-        ? item.config
-        : undefined,
+      item?.type === "registry:base" && item.config ? item.config : undefined,
     installStyleIndex: item?.extends !== "none",
   }
 }

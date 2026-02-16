@@ -20,6 +20,8 @@ export function createTemplate(config: {
   name: string
   title: string
   defaultProjectName: string
+  // Framework names that map to this template.
+  frameworks?: string[]
   scaffold: (options: TemplateOptions) => Promise<void>
   create: (options: TemplateOptions) => Promise<void>
   init?: (options: TemplateInitOptions) => Promise<Config>
@@ -28,6 +30,7 @@ export function createTemplate(config: {
 }) {
   return {
     ...config,
+    frameworks: config.frameworks ?? [],
     postInit: config.postInit ?? defaultPostInit,
   }
 }
@@ -38,7 +41,7 @@ async function defaultPostInit({ projectPath }: { projectPath: string }) {
   try {
     await execa("git", ["init"], { cwd: projectPath })
     await execa("git", ["add", "-A"], { cwd: projectPath })
-    await execa("git", ["commit", "-m", "Initial commit"], {
+    await execa("git", ["commit", "-m", "feat: initial commit"], {
       cwd: projectPath,
     })
   } catch {}

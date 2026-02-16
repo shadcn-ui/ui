@@ -1,14 +1,12 @@
 import path from "path"
-import {
-  getTemplateFromFrameworkName,
-  runInit,
-} from "@/src/commands/init"
+import { runInit } from "@/src/commands/init"
 import { preFlightAdd } from "@/src/preflights/preflight-add"
 import { getRegistryItems, getShadcnRegistryIndex } from "@/src/registry/api"
 import { DEPRECATED_COMPONENTS } from "@/src/registry/constants"
 import { clearRegistryContext } from "@/src/registry/context"
 import { registryItemTypeSchema } from "@/src/registry/schema"
 import { isUniversalRegistryItem } from "@/src/registry/utils"
+import { getTemplateForFramework } from "@/src/templates/index"
 import { addComponents } from "@/src/utils/add-components"
 import { createProject } from "@/src/utils/create-project"
 import { loadEnvFiles } from "@/src/utils/env-loader"
@@ -16,12 +14,9 @@ import * as ERRORS from "@/src/utils/errors"
 import { createConfig, getConfig } from "@/src/utils/get-config"
 import { getProjectInfo } from "@/src/utils/get-project-info"
 import { handleError } from "@/src/utils/handle-error"
-import {
-  promptForPreset,
-  resolveRegistryBaseConfig,
-} from "@/src/utils/presets"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
+import { promptForPreset, resolveRegistryBaseConfig } from "@/src/utils/presets"
 import { ensureRegistriesInConfig } from "@/src/utils/registries"
 import { updateAppIndex } from "@/src/utils/update-app-index"
 import { Command } from "commander"
@@ -167,7 +162,7 @@ export const add = new Command()
         }
 
         // Infer template from project framework.
-        const inferredTemplate = getTemplateFromFrameworkName(
+        const inferredTemplate = getTemplateForFramework(
           projectInfo?.framework.name
         )
 

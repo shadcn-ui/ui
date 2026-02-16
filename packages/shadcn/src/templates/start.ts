@@ -12,6 +12,7 @@ export const start = createTemplate({
   name: "start",
   title: "TanStack Start",
   defaultProjectName: "start-app",
+  frameworks: ["tanstack-start"],
   scaffold: async ({ projectPath, packageManager }) => {
     const createSpinner = spinner(
       `Creating a new TanStack Start project. This may take a few minutes.`

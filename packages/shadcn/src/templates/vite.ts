@@ -12,6 +12,7 @@ export const vite = createTemplate({
   name: "vite",
   title: "Vite",
   defaultProjectName: "vite-app",
+  frameworks: ["vite"],
   scaffold: async ({ projectPath, packageManager }) => {
     const createSpinner = spinner(
       `Creating a new Vite project. This may take a few minutes.`

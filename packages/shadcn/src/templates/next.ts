@@ -12,6 +12,7 @@ export const next = createTemplate({
   name: "next",
   title: "Next.js",
   defaultProjectName: "next-app",
+  frameworks: ["next-app", "next-pages"],
   scaffold: async ({ projectPath, packageManager }) => {
     const createSpinner = spinner(
       `Creating a new Next.js project. This may take a few minutes.`

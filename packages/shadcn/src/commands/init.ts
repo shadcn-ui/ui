@@ -1,15 +1,12 @@
 import { promises as fs } from "fs"
 import path from "path"
 import { preFlightInit } from "@/src/preflights/preflight-init"
-import {
-  getRegistryBaseColors,
-  getRegistryStyles,
-} from "@/src/registry/api"
+import { getRegistryBaseColors, getRegistryStyles } from "@/src/registry/api"
 import { BUILTIN_REGISTRIES } from "@/src/registry/constants"
 import { clearRegistryContext } from "@/src/registry/context"
 import { isUrl } from "@/src/registry/utils"
 import { rawConfigSchema } from "@/src/schema"
-import { templates } from "@/src/templates/index"
+import { getTemplateForFramework, templates } from "@/src/templates/index"
 import { addComponents } from "@/src/utils/add-components"
 import { createProject } from "@/src/utils/create-project"
 import { loadEnvFiles } from "@/src/utils/env-loader"
@@ -25,7 +22,6 @@ import {
   DEFAULT_TAILWIND_CONFIG,
   DEFAULT_TAILWIND_CSS,
   DEFAULT_UTILS,
-  createConfig,
   getConfig,
   resolveConfigPaths,
   type Config,
@@ -193,7 +189,7 @@ export const init = new Command()
         // Try to infer template for existing projects.
         if (!options.template && hasPackageJson) {
           const projectInfo = await getProjectInfo(cwd)
-          const detectedTemplate = getTemplateFromFrameworkName(
+          const detectedTemplate = getTemplateForFramework(
             projectInfo?.framework.name
           )
           if (detectedTemplate) {
@@ -618,20 +614,4 @@ async function promptForMinimalConfig(
     rtl: opts.rtl ?? defaultConfig?.rtl ?? false,
     aliases: defaultConfig?.aliases,
   })
-}
-
-export function getTemplateFromFrameworkName(frameworkName?: string) {
-  if (frameworkName === "next-app" || frameworkName === "next-pages") {
-    return "next"
-  }
-
-  if (frameworkName === "vite") {
-    return "vite"
-  }
-
-  if (frameworkName === "tanstack-start" || frameworkName === "react-router") {
-    return "start"
-  }
-
-  return undefined
 }

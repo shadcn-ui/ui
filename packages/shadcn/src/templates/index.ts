@@ -12,3 +12,18 @@ export const templates = {
   start,
   "next-monorepo": nextMonorepo,
 }
+
+// Resolve a template key from a detected framework name.
+export function getTemplateForFramework(frameworkName?: string) {
+  if (!frameworkName) {
+    return undefined
+  }
+
+  for (const [key, template] of Object.entries(templates)) {
+    if (template.frameworks.includes(frameworkName)) {
+      return key
+    }
+  }
+
+  return undefined
+}
