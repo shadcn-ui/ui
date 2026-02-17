@@ -76,7 +76,7 @@ export const init = new Command()
   .option("-p, --preset [name]", "use a preset configuration")
   .option("-y, --yes", "skip confirmation prompt.", true)
   .option(
-    "-d, --defaults,",
+    "-d, --defaults",
     "use default configuration: --template=next --preset=base-nova",
     false
   )

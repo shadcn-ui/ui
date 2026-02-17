@@ -45,7 +45,4 @@ jobs:
       - name: Build packages
         run: pnpm build --filter=shadcn
 
-      - name: Build v4 registry
-        run: pnpm --filter=v4 registry:build
-
       - run: pnpm test
