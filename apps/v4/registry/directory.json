@@ -901,7 +901,7 @@
     "url": "https://soundcn.xyz/r/{name}.json",
     "description": "Large collection of game, interface, retro, and voice sound effects for web applications",
     "logo": "<svg width='18' height='18' viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg'><rect x='0' y='8.1' width='3' height='9.9' rx='1.5' fill='currentColor'/><rect x='3.75' y='1.8' width='3' height='16.2' rx='1.5' fill='currentColor'/><rect x='7.5' y='11.7' width='3' height='6.3' rx='1.5' fill='currentColor'/><rect x='11.25' y='4.5' width='3' height='13.5' rx='1.5' fill='currentColor'/><rect x='15' y='9.9' width='3' height='8.1' rx='1.5' fill='currentColor'/></svg>"
-  }
+  },
   {
     "name": "@pixelact-ui",
     "homepage": "https://pixelactui.com",
