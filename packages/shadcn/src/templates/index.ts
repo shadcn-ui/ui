@@ -1,5 +1,6 @@
 import { next } from "./next"
 import { nextMonorepo } from "./next-monorepo"
+import { reactRouter } from "./react-router"
 import { start } from "./start"
 import { vite } from "./vite"
 
@@ -10,6 +11,7 @@ export const templates = {
   next,
   vite,
   start,
+  "react-router": reactRouter,
   "next-monorepo": nextMonorepo,
 }
 

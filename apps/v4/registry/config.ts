@@ -95,7 +95,7 @@ export const designSystemConfigSchema = z
       .enum(RADII.map((r) => r.name) as [RadiusValue, ...RadiusValue[]])
       .default("default"),
     template: z
-      .enum(["next", "next-monorepo", "start", "vite"])
+      .enum(["next", "next-monorepo", "start", "react-router", "vite"])
       .default("next")
       .optional(),
   })

@@ -65,6 +65,7 @@ const designSystemSearchParams = {
     "next",
     "next-monorepo",
     "start",
+    "react-router",
     "vite",
   ] as const).withDefault("next"),
   rtl: parseAsBoolean.withDefault(false),
