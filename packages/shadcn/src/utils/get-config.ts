@@ -127,7 +127,7 @@ export async function getRawConfig(
     return config
   } catch (error) {
     const componentPath = `${cwd}/components.json`
-    if (error instanceof Error && error.message.includes("reserved registry")) {
+    if (error instanceof Error && error.message.includes("built-in registry")) {
       throw error
     }
     throw new Error(
