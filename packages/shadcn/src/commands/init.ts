@@ -27,6 +27,7 @@ import {
   type Config,
 } from "@/src/utils/get-config"
 import {
+  getProjectComponents,
   getProjectConfig,
   getProjectInfo,
   getProjectTailwindVersionFromConfig,
@@ -56,6 +57,7 @@ export const initOptionsSchema = z.object({
   yes: z.boolean(),
   defaults: z.boolean(),
   force: z.boolean(),
+  reinstall: z.boolean(),
   silent: z.boolean(),
   isNewProject: z.boolean().default(false),
   cssVariables: z.boolean().default(true),
@@ -91,8 +93,10 @@ export const init = new Command()
   .option("--css-variables", "use css variables for theming.", true)
   .option("--no-css-variables", "do not use css variables for theming.")
   .option("--rtl", "enable RTL support.", false)
+  .option("--reinstall", "re-install existing UI components.", false)
   .action(async (components, opts) => {
     let componentsJsonBackupPath: string | undefined
+    let reinstallComponents: string[] = []
 
     try {
       const options = initOptionsSchema.parse({
@@ -106,10 +110,13 @@ export const init = new Command()
 
       if (options.defaults) {
         options.template = options.template || "next"
-        const initUrl = resolveInitUrl({
-          ...DEFAULT_PRESETS["base-nova"],
-          rtl: options.rtl,
-        })
+        const initUrl = resolveInitUrl(
+          {
+            ...DEFAULT_PRESETS["base-nova"],
+            rtl: options.rtl,
+          },
+          { template: options.template }
+        )
         components = [initUrl, ...components]
       }
 
@@ -140,21 +147,70 @@ export const init = new Command()
       }
 
       const cwd = options.cwd
-      if (
-        fsExtra.existsSync(path.resolve(cwd, "components.json")) &&
-        !options.force
-      ) {
-        logger.error(
-          `A ${highlighter.info(
+      const hasExistingConfig = fsExtra.existsSync(
+        path.resolve(cwd, "components.json")
+      )
+
+      if (hasExistingConfig && !options.force) {
+        const { overwrite } = await prompts({
+          type: "confirm",
+          name: "overwrite",
+          message: `A ${highlighter.info(
             "components.json"
-          )} file already exists at ${highlighter.info(
-            cwd
-          )}.\nTo start over, remove the ${highlighter.info(
-            "components.json"
-          )} file and run ${highlighter.info("init")} again.`
-        )
-        logger.break()
-        process.exit(1)
+          )} file already exists. Would you like to overwrite it?`,
+          initial: false,
+        })
+
+        if (!overwrite) {
+          logger.info(
+            `  To start over, remove the ${highlighter.info(
+              "components.json"
+            )} file and run ${highlighter.info("init")} again.`
+          )
+          logger.break()
+          process.exit(0)
+        }
+
+        options.force = true
+      }
+
+      let existingConfig: Record<string, unknown> | undefined
+      if (hasExistingConfig) {
+        try {
+          existingConfig = await fsExtra.readJson(
+            path.resolve(cwd, "components.json")
+          )
+        } catch {
+          // Ignore read errors.
+        }
+
+        let shouldReinstall = options.reinstall
+
+        if (!shouldReinstall) {
+          const { reinstall } = await prompts({
+            type: "confirm",
+            name: "reinstall",
+            message: `Would you like to re-install existing UI components?`,
+            initial: false,
+          })
+          shouldReinstall = reinstall
+        }
+
+        if (shouldReinstall) {
+          reinstallComponents = await getProjectComponents(cwd)
+          if (reinstallComponents.length) {
+            logger.break()
+            logger.log(
+              "  The following components will be re-installed and overwritten:"
+            )
+            for (let i = 0; i < reinstallComponents.length; i += 8) {
+              logger.log(
+                `  - ${reinstallComponents.slice(i, i + 8).join(", ")}`
+              )
+            }
+            logger.break()
+          }
+        }
       }
 
       if (
@@ -223,23 +279,36 @@ export const init = new Command()
             initUrl = url.toString()
           } else {
             const preset = presetsByName.get(presetArg)!
-            initUrl = resolveInitUrl({
-              ...preset,
-              rtl: options.rtl || preset.rtl,
-            })
+            initUrl = resolveInitUrl(
+              {
+                ...preset,
+                rtl: options.rtl || preset.rtl,
+              },
+              { template: options.template }
+            )
           }
 
           components = [initUrl, ...components]
         }
       }
 
-      const parsedOptions = initOptionsSchema.parse({
-        components,
-        ...options,
-        cwd: options.cwd,
-      })
+      // Add re-install components after preset selection.
+      if (reinstallComponents.length) {
+        components = [...components, ...reinstallComponents]
+      }
 
-      await loadEnvFiles(parsedOptions.cwd)
+      // Warn if the user is switching bases during reinit.
+      if (
+        reinstallComponents.length &&
+        existingConfig?.style &&
+        components.length > 0
+      ) {
+        warnOnBaseSwitch(existingConfig.style as string, components[0])
+      }
+
+      options.components = components
+
+      await loadEnvFiles(options.cwd)
 
       // We need to check if we're initializing with a new style.
       // This will allow us to determine if we need to install the base style.
@@ -247,21 +316,9 @@ export const init = new Command()
         // Back up existing components.json if it exists.
         // Since components.json might not be valid at this point,
         // temporarily rename it to allow preflight to run.
-        const componentsJsonPath = path.resolve(
-          parsedOptions.cwd,
-          "components.json"
-        )
+        const componentsJsonPath = path.resolve(cwd, "components.json")
 
-        // Read existing registries before backing up.
-        let existingRegistries
-        if (fsExtra.existsSync(componentsJsonPath)) {
-          try {
-            const existingConfig = await fsExtra.readJson(componentsJsonPath)
-            existingRegistries = existingConfig.registries
-          } catch {
-            // Ignore read errors.
-          }
-
+        if (hasExistingConfig) {
           componentsJsonBackupPath =
             createFileBackup(componentsJsonPath) ?? undefined
           if (!componentsJsonBackupPath) {
@@ -273,27 +330,29 @@ export const init = new Command()
 
         // Resolve registry:base config from the first component.
         const { registryBaseConfig, installStyleIndex } =
-          await resolveRegistryBaseConfig(components[0], parsedOptions.cwd, {
-            registries: existingRegistries,
+          await resolveRegistryBaseConfig(components[0], cwd, {
+            registries: existingConfig?.registries as
+              | Record<string, unknown>
+              | undefined,
           })
 
         if (!installStyleIndex) {
-          parsedOptions.installStyleIndex = false
+          options.installStyleIndex = false
         }
 
         if (registryBaseConfig) {
-          parsedOptions.registryBaseConfig = registryBaseConfig
+          options.registryBaseConfig = registryBaseConfig
         }
       }
 
-      await runInit(parsedOptions)
+      await runInit(options)
 
       logger.log(
         `Project initialization completed.\nYou may now add components.`
       )
 
       // We need when running with custom cwd.
-      deleteFileBackup(path.resolve(parsedOptions.cwd, "components.json"))
+      deleteFileBackup(path.resolve(cwd, "components.json"))
       logger.break()
     } catch (error) {
       if (componentsJsonBackupPath) {
@@ -631,4 +690,30 @@ async function promptForMinimalConfig(
     rtl: opts.rtl ?? defaultConfig?.rtl ?? false,
     aliases: defaultConfig?.aliases,
   })
+}
+
+function warnOnBaseSwitch(existingStyle: string, initUrl: string) {
+  try {
+    const url = new URL(initUrl)
+    const newBase = url.searchParams.get("base")
+    // Styles prefixed with "base-" use Base UI. Everything else is Radix.
+    const oldBase = existingStyle.startsWith("base-") ? "base" : "radix"
+    if (newBase && newBase !== oldBase) {
+      logger.warn(
+        `  You are switching from ${highlighter.info(
+          oldBase
+        )} to ${highlighter.info(newBase)}.`
+      )
+      logger.warn(
+        `  Components outside the ${highlighter.info(
+          "ui"
+        )} directory that depend on ${highlighter.info(
+          oldBase
+        )} primitives may need manual updates.`
+      )
+      logger.break()
+    }
+  } catch {
+    // Not a valid URL, skip warning.
+  }
 }

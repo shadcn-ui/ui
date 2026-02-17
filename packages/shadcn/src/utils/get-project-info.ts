@@ -1,4 +1,6 @@
+import { promises as fsPromises } from "fs"
 import path from "path"
+import { getShadcnRegistryIndex } from "@/src/registry/api"
 import { rawConfigSchema } from "@/src/schema"
 import { FRAMEWORKS, Framework } from "@/src/utils/frameworks"
 import { Config, getConfig, resolveConfigPaths } from "@/src/utils/get-config"
@@ -409,4 +411,26 @@ export async function getProjectTailwindVersionFromConfig(config: {
   }
 
   return projectInfo.tailwindVersion
+}
+
+export async function getProjectComponents(cwd: string) {
+  const existingConfig = await getConfig(cwd)
+  if (!existingConfig) {
+    return []
+  }
+
+  const resolvedConfig = await resolveConfigPaths(cwd, existingConfig)
+  const uiDir = resolvedConfig.resolvedPaths.ui
+  if (!fs.existsSync(uiDir)) {
+    return []
+  }
+
+  const registryIndex = await getShadcnRegistryIndex()
+  const registryNames = new Set(registryIndex?.map((item) => item.name) ?? [])
+
+  const files = await fsPromises.readdir(uiDir)
+  return files
+    .filter((f) => /\.(tsx|jsx)$/.test(f))
+    .map((f) => path.basename(f, path.extname(f)))
+    .filter((name) => registryNames.has(name))
 }

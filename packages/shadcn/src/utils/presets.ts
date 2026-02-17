@@ -73,7 +73,8 @@ export function resolveCreateUrl(
 }
 
 export function resolveInitUrl(
-  preset: Omit<Preset, "name" | "title" | "description">
+  preset: Omit<Preset, "name" | "title" | "description">,
+  options?: { template?: string }
 ) {
   const params = new URLSearchParams({
     base: preset.base,
@@ -87,6 +88,10 @@ export function resolveInitUrl(
     menuColor: preset.menuColor,
     radius: preset.radius,
   })
+
+  if (options?.template) {
+    params.set("template", options.template)
+  }
 
   return `${SHADCN_URL}/init?${params.toString()}`
 }
@@ -109,7 +114,7 @@ export async function promptForPreset(options: {
       })),
       {
         title: "Custom",
-        description: "Build your own on https://ui.shadcn.com",
+        description: "Build your own on https://ui.shadcn.com/create",
         value: "custom",
       },
     ],
@@ -153,7 +158,12 @@ export async function promptForPreset(options: {
     process.exit(0)
   }
 
-  return resolveInitUrl({ ...preset, rtl: options.rtl })
+  return resolveInitUrl(
+    { ...preset, rtl: options.rtl },
+    {
+      template: options.template,
+    }
+  )
 }
 
 export async function resolveRegistryBaseConfig(

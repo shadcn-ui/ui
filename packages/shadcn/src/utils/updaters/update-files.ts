@@ -117,6 +117,17 @@ export async function updateFiles(
 
     const existingFile = existsSync(filePath)
 
+    // TODO: revisit this when we implement utils transform instead of override.
+    if (
+      file.type === "registry:lib" &&
+      basename(file.path) === "utils.ts" &&
+      projectInfo?.framework.name === "laravel" &&
+      existingFile
+    ) {
+      filesSkipped.push(path.relative(config.resolvedPaths.cwd, filePath))
+      continue
+    }
+
     // Check if the path exists and is a directory - we can't write to directories.
     if (existingFile && statSync(filePath).isDirectory()) {
       throw new Error(

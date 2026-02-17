@@ -59,4 +59,16 @@ describe("buildInitUrl", () => {
     const parsed = new URL(url)
     expect(parsed.searchParams.get("rtl")).toBe("true")
   })
+
+  it("should include template when provided", () => {
+    const url = resolveInitUrl(mockPreset, { template: "next" })
+    const parsed = new URL(url)
+    expect(parsed.searchParams.get("template")).toBe("next")
+  })
+
+  it("should not include template when not provided", () => {
+    const url = resolveInitUrl(mockPreset)
+    const parsed = new URL(url)
+    expect(parsed.searchParams.has("template")).toBe(false)
+  })
 })

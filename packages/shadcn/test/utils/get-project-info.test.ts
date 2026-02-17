@@ -1,11 +1,22 @@
+import { promises as fs } from "fs"
 import path from "path"
-import { describe, expect, test } from "vitest"
+import { afterEach, beforeEach, describe, expect, test, vi } from "vitest"
 
 import { FRAMEWORKS } from "../../src/utils/frameworks"
 import {
   getFrameworkVersion,
+  getProjectComponents,
   getProjectInfo,
 } from "../../src/utils/get-project-info"
+
+vi.mock("../../src/utils/get-config", () => ({
+  getConfig: vi.fn(),
+  resolveConfigPaths: vi.fn(),
+}))
+
+vi.mock("../../src/registry/api", () => ({
+  getShadcnRegistryIndex: vi.fn(),
+}))
 
 describe("get project info", async () => {
   test.each([
@@ -272,5 +283,136 @@ describe("getFrameworkVersion", () => {
         expect(version).toBe(null)
       }
     )
+  })
+})
+
+import { getShadcnRegistryIndex } from "../../src/registry/api"
+import { getConfig, resolveConfigPaths } from "../../src/utils/get-config"
+
+describe("getProjectComponents", () => {
+  let tmpDir: string
+
+  beforeEach(async () => {
+    tmpDir = await fs.mkdtemp(
+      path.join(process.env.TMPDIR || "/tmp", "test-")
+    )
+  })
+
+  afterEach(async () => {
+    vi.resetAllMocks()
+    await fs.rm(tmpDir, { recursive: true, force: true })
+  })
+
+  test("should return empty array when no config exists", async () => {
+    vi.mocked(getConfig).mockResolvedValue(null)
+
+    const result = await getProjectComponents(tmpDir)
+
+    expect(result).toEqual([])
+  })
+
+  test("should return empty array when ui directory does not exist", async () => {
+    vi.mocked(getConfig).mockResolvedValue({} as any)
+    vi.mocked(resolveConfigPaths).mockResolvedValue({
+      resolvedPaths: { ui: path.join(tmpDir, "ui") },
+    } as any)
+
+    const result = await getProjectComponents(tmpDir)
+
+    expect(result).toEqual([])
+  })
+
+  test("should return only components that exist in the registry", async () => {
+    const uiDir = path.join(tmpDir, "ui")
+    await fs.mkdir(uiDir, { recursive: true })
+    await fs.writeFile(path.join(uiDir, "button.tsx"), "")
+    await fs.writeFile(path.join(uiDir, "card.tsx"), "")
+    await fs.writeFile(path.join(uiDir, "my-custom-component.tsx"), "")
+
+    vi.mocked(getConfig).mockResolvedValue({} as any)
+    vi.mocked(resolveConfigPaths).mockResolvedValue({
+      resolvedPaths: { ui: uiDir },
+    } as any)
+    vi.mocked(getShadcnRegistryIndex).mockResolvedValue([
+      { name: "button" },
+      { name: "card" },
+      { name: "dialog" },
+    ] as any)
+
+    const result = await getProjectComponents(tmpDir)
+
+    expect(result).toEqual(["button", "card"])
+  })
+
+  test("should handle jsx files", async () => {
+    const uiDir = path.join(tmpDir, "ui")
+    await fs.mkdir(uiDir, { recursive: true })
+    await fs.writeFile(path.join(uiDir, "button.jsx"), "")
+
+    vi.mocked(getConfig).mockResolvedValue({} as any)
+    vi.mocked(resolveConfigPaths).mockResolvedValue({
+      resolvedPaths: { ui: uiDir },
+    } as any)
+    vi.mocked(getShadcnRegistryIndex).mockResolvedValue([
+      { name: "button" },
+    ] as any)
+
+    const result = await getProjectComponents(tmpDir)
+
+    expect(result).toEqual(["button"])
+  })
+
+  test("should ignore non-tsx/jsx files", async () => {
+    const uiDir = path.join(tmpDir, "ui")
+    await fs.mkdir(uiDir, { recursive: true })
+    await fs.writeFile(path.join(uiDir, "button.tsx"), "")
+    await fs.writeFile(path.join(uiDir, "utils.ts"), "")
+    await fs.writeFile(path.join(uiDir, "styles.css"), "")
+    await fs.writeFile(path.join(uiDir, "README.md"), "")
+
+    vi.mocked(getConfig).mockResolvedValue({} as any)
+    vi.mocked(resolveConfigPaths).mockResolvedValue({
+      resolvedPaths: { ui: uiDir },
+    } as any)
+    vi.mocked(getShadcnRegistryIndex).mockResolvedValue([
+      { name: "button" },
+    ] as any)
+
+    const result = await getProjectComponents(tmpDir)
+
+    expect(result).toEqual(["button"])
+  })
+
+  test("should return empty array when registry index returns undefined", async () => {
+    const uiDir = path.join(tmpDir, "ui")
+    await fs.mkdir(uiDir, { recursive: true })
+    await fs.writeFile(path.join(uiDir, "button.tsx"), "")
+
+    vi.mocked(getConfig).mockResolvedValue({} as any)
+    vi.mocked(resolveConfigPaths).mockResolvedValue({
+      resolvedPaths: { ui: uiDir },
+    } as any)
+    vi.mocked(getShadcnRegistryIndex).mockResolvedValue(undefined)
+
+    const result = await getProjectComponents(tmpDir)
+
+    expect(result).toEqual([])
+  })
+
+  test("should return empty array when ui directory is empty", async () => {
+    const uiDir = path.join(tmpDir, "ui")
+    await fs.mkdir(uiDir, { recursive: true })
+
+    vi.mocked(getConfig).mockResolvedValue({} as any)
+    vi.mocked(resolveConfigPaths).mockResolvedValue({
+      resolvedPaths: { ui: uiDir },
+    } as any)
+    vi.mocked(getShadcnRegistryIndex).mockResolvedValue([
+      { name: "button" },
+    ] as any)
+
+    const result = await getProjectComponents(tmpDir)
+
+    expect(result).toEqual([])
   })
 })
