@@ -795,6 +795,13 @@
     "name": "@pixelact-ui",
     "homepage": "https://pixelactui.com",
     "url": "https://pixelactui.com/r/{name}.json",
+
     "description": "Playful pixel art style components library built on top of shadcn. Perfect for retro style projects and games."
+  },
+  {
+    "name": "@animateicons",
+    "homepage": "https://animateicons.in",
+    "url": "https://animateicons.in/r/{name}.json",
+    "description": "Free and open-source animated SVG icons for React, built for smooth micro-interactions, easy customization, and lightweight performance."
   }
 ]
