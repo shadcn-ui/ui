@@ -298,11 +298,7 @@ export const init = new Command()
       }
 
       // Warn if the user is switching bases during reinit.
-      if (
-        reinstallComponents.length &&
-        existingConfig?.style &&
-        components.length > 0
-      ) {
+      if (existingConfig?.style && components.length > 0) {
         warnOnBaseSwitch(existingConfig.style as string, components[0])
       }
 
