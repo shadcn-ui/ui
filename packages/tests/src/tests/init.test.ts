@@ -587,7 +587,14 @@ describe("shadcn init - next-monorepo", () => {
         "--preset",
         "radix-nova",
       ],
-      { timeout: 300000, env: MOCK_ENV }
+      {
+        timeout: 300000,
+        env: {
+          ...MOCK_ENV,
+          // Force pnpm detection since the monorepo template uses workspace:* deps.
+          npm_config_user_agent: "pnpm/9.0.0 node/v20.0.0",
+        },
+      }
     )
     expect(result.exitCode).toBe(0)
 
@@ -650,7 +657,14 @@ describe("shadcn init - next-monorepo", () => {
         "--preset",
         initUrl,
       ],
-      { timeout: 300000, env: MOCK_ENV }
+      {
+        timeout: 300000,
+        env: {
+          ...MOCK_ENV,
+          // Force pnpm detection since the monorepo template uses workspace:* deps.
+          npm_config_user_agent: "pnpm/9.0.0 node/v20.0.0",
+        },
+      }
     )
     expect(result.exitCode).toBe(0)
 
