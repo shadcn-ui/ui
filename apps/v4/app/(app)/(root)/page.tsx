@@ -1,4 +1,4 @@
-import { Metadata } from "next"
+import { type Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -55,10 +55,10 @@ export default function IndexPage() {
         <PageHeaderHeading className="max-w-4xl">{title}</PageHeaderHeading>
         <PageHeaderDescription>{description}</PageHeaderDescription>
         <PageActions>
-          <Button asChild size="sm">
+          <Button asChild size="sm" className="h-[31px] rounded-lg">
             <Link href="/docs/installation">Get Started</Link>
           </Button>
-          <Button asChild size="sm" variant="ghost">
+          <Button asChild size="sm" variant="ghost" className="rounded-lg">
             <Link href="/docs/components">View Components</Link>
           </Button>
         </PageActions>

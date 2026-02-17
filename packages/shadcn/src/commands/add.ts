@@ -4,6 +4,7 @@ import { preFlightAdd } from "@/src/preflights/preflight-add"
 import { getRegistryItems, getShadcnRegistryIndex } from "@/src/registry/api"
 import { DEPRECATED_COMPONENTS } from "@/src/registry/constants"
 import { clearRegistryContext } from "@/src/registry/context"
+import { registryItemTypeSchema } from "@/src/registry/schema"
 import { isUniversalRegistryItem } from "@/src/registry/utils"
 import { addComponents } from "@/src/utils/add-components"
 import { createProject } from "@/src/utils/create-project"
@@ -88,11 +89,17 @@ export const add = new Command()
         hasNewRegistries = newRegistries.length > 0
       }
 
+      let itemType: z.infer<typeof registryItemTypeSchema> | undefined
+      let shouldInstallStyleIndex = true
       if (components.length > 0) {
         const [registryItem] = await getRegistryItems([components[0]], {
           config: initialConfig,
         })
-        const itemType = registryItem?.type
+        itemType = registryItem?.type
+        shouldInstallStyleIndex =
+          itemType !== "registry:theme" &&
+          itemType !== "registry:style" &&
+          itemType !== "registry:base"
 
         if (isUniversalRegistryItem(registryItem)) {
           await addComponents(components, initialConfig, options)
@@ -168,11 +175,12 @@ export const add = new Command()
           force: true,
           defaults: false,
           skipPreflight: false,
-          silent: options.silent || !hasNewRegistries,
+          silent: options.silent && !hasNewRegistries,
           isNewProject: false,
           srcDir: options.srcDir,
           cssVariables: options.cssVariables,
-          baseStyle: true,
+          installStyleIndex: shouldInstallStyleIndex,
+          baseColor: shouldInstallStyleIndex ? undefined : "neutral",
           components: options.components,
         })
         initHasRun = true
@@ -207,7 +215,8 @@ export const add = new Command()
             isNewProject: true,
             srcDir: options.srcDir,
             cssVariables: options.cssVariables,
-            baseStyle: true,
+            installStyleIndex: shouldInstallStyleIndex,
+            baseColor: shouldInstallStyleIndex ? undefined : "neutral",
             components: options.components,
           })
           initHasRun = true

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aspect-ratio",
+  "files": [
+    {
+      "path": "registry/base-mira/ui/aspect-ratio.tsx",
+      "content": "import { cn } from \"@/registry/base-mira/lib/utils\"\n\nfunction AspectRatio({\n  ratio,\n  className,\n  ...props\n}: React.ComponentProps<\"div\"> & { ratio: number }) {\n  return (\n    <div\n      data-slot=\"aspect-ratio\"\n      style={\n        {\n          \"--ratio\": ratio,\n        } as React.CSSProperties\n      }\n      className={cn(\"relative aspect-(--ratio)\", className)}\n      {...props}\n    />\n  )\n}\n\nexport { AspectRatio }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -852,4 +852,112 @@ describe("transformCss", () => {
       }"
     `)
   })
+
+  test("should add base layer styles from registry:style css field", async () => {
+    const input = `@import "tailwindcss";`
+
+    // This is the exact shape from the registry:style index item.
+    const result = await transformCss(input, {
+      '@import "tw-animate-css"': {},
+      '@import "shadcn/tailwind.css"': {},
+      "@layer base": {
+        "*": {
+          "@apply border-border outline-ring/50": {},
+        },
+        body: {
+          "@apply bg-background text-foreground": {},
+        },
+      },
+    })
+
+    expect(result).toMatchInlineSnapshot(`
+      "@import "tailwindcss";
+      @import "tw-animate-css";
+      @import "shadcn/tailwind.css";
+
+      @layer base {
+        * {
+          @apply border-border outline-ring/50;
+        }
+        body {
+          @apply bg-background text-foreground;
+        }
+      }"
+    `)
+  })
+
+  test("should not duplicate base layer styles if already present", async () => {
+    const input = `@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}`
+
+    const result = await transformCss(input, {
+      '@import "tw-animate-css"': {},
+      '@import "shadcn/tailwind.css"': {},
+      "@layer base": {
+        "*": {
+          "@apply border-border outline-ring/50": {},
+        },
+        body: {
+          "@apply bg-background text-foreground": {},
+        },
+      },
+    })
+
+    expect(result).toMatchInlineSnapshot(`
+      "@import "tailwindcss";
+      @import "tw-animate-css";
+      @import "shadcn/tailwind.css";
+
+      @layer base {
+        * {
+          @apply border-border outline-ring/50;
+        }
+        body {
+          @apply bg-background text-foreground;
+        }
+      }"
+    `)
+  })
+
+  test("should replace existing keyframes instead of duplicating", async () => {
+    const input = `@import "tailwindcss";
+
+@theme inline {
+  @keyframes skeleton {
+    to {
+      background-position: "-100% 0";
+    }
+  }
+}`
+
+    const result = await transformCss(input, {
+      "@keyframes skeleton": {
+        "to": {
+          "background-position": "-200% 0",
+        },
+      },
+    })
+
+    expect(result).toMatchInlineSnapshot(`
+      "@import "tailwindcss";
+
+      @theme inline {
+        @keyframes skeleton {
+        to {
+          background-position: -200% 0;
+          }
+        }
+      }"
+    `)
+  })
 })

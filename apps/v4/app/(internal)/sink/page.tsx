@@ -1,4 +1,4 @@
-import { Metadata } from "next"
+import { type Metadata } from "next"
 
 import { componentRegistry } from "@/app/(internal)/sink/component-registry"
 import { ComponentWrapper } from "@/app/(internal)/sink/components/component-wrapper"

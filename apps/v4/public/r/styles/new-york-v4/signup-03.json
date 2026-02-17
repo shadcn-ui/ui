@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "signup-03",
-  "type": "registry:block",
   "description": "A signup page with a muted background color.",
   "registryDependencies": [
     "button",
@@ -26,5 +25,6 @@
   "categories": [
     "authentication",
     "signup"
-  ]
+  ],
+  "type": "registry:block"
 }

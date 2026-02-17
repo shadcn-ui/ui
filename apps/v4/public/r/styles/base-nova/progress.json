@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "progress",
+  "files": [
+    {
+      "path": "registry/base-nova/ui/progress.tsx",
+      "content": "\"use client\"\n\nimport { Progress as ProgressPrimitive } from \"@base-ui/react/progress\"\n\nimport { cn } from \"@/registry/base-nova/lib/utils\"\n\nfunction Progress({\n  className,\n  children,\n  value,\n  ...props\n}: ProgressPrimitive.Root.Props) {\n  return (\n    <ProgressPrimitive.Root\n      value={value}\n      data-slot=\"progress\"\n      className={cn(\"flex flex-wrap gap-3\", className)}\n      {...props}\n    >\n      {children}\n      <ProgressTrack>\n        <ProgressIndicator />\n      </ProgressTrack>\n    </ProgressPrimitive.Root>\n  )\n}\n\nfunction ProgressTrack({ className, ...props }: ProgressPrimitive.Track.Props) {\n  return (\n    <ProgressPrimitive.Track\n      className={cn(\n        \"bg-muted h-1 rounded-full relative flex w-full items-center overflow-x-hidden\",\n        className\n      )}\n      data-slot=\"progress-track\"\n      {...props}\n    />\n  )\n}\n\nfunction ProgressIndicator({\n  className,\n  ...props\n}: ProgressPrimitive.Indicator.Props) {\n  return (\n    <ProgressPrimitive.Indicator\n      data-slot=\"progress-indicator\"\n      className={cn(\"bg-primary h-full transition-all\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction ProgressLabel({ className, ...props }: ProgressPrimitive.Label.Props) {\n  return (\n    <ProgressPrimitive.Label\n      className={cn(\"text-sm font-medium\", className)}\n      data-slot=\"progress-label\"\n      {...props}\n    />\n  )\n}\n\nfunction ProgressValue({ className, ...props }: ProgressPrimitive.Value.Props) {\n  return (\n    <ProgressPrimitive.Value\n      className={cn(\"text-muted-foreground ml-auto text-sm tabular-nums\", className)}\n      data-slot=\"progress-value\"\n      {...props}\n    />\n  )\n}\n\nexport {\n  Progress,\n  ProgressTrack,\n  ProgressIndicator,\n  ProgressLabel,\n  ProgressValue,\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

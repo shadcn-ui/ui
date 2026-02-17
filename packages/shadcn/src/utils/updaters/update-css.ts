@@ -262,13 +262,32 @@ function updateCssPlugin(css: z.infer<typeof registryItemCssSchema>) {
               )
             }
 
-            const keyframesRule = postcss.atRule({
-              name: "keyframes",
-              params,
-              raws: { semicolon: true, between: " ", before: "\n  " },
-            })
+            // Check if a keyframe with the same name already exists
+            const existingKeyframesRule = themeInline.nodes?.find(
+              (node): node is AtRule =>
+                node.type === "atrule" &&
+                node.name === "keyframes" &&
+                node.params === params
+            )
 
-            themeInline.append(keyframesRule)
+            let keyframesRule: AtRule
+            if (existingKeyframesRule) {
+              // Replace existing keyframe
+              keyframesRule = postcss.atRule({
+                name: "keyframes",
+                params,
+                raws: { semicolon: true, between: " ", before: "\n  " },
+              })
+              existingKeyframesRule.replaceWith(keyframesRule)
+            } else {
+              // Create new keyframe
+              keyframesRule = postcss.atRule({
+                name: "keyframes",
+                params,
+                raws: { semicolon: true, between: " ", before: "\n  " },
+              })
+              themeInline.append(keyframesRule)
+            }
 
             if (typeof properties === "object") {
               for (const [step, stepProps] of Object.entries(properties)) {
@@ -453,12 +472,23 @@ function processRule(parent: Root | AtRule, selector: string, properties: any) {
         const atRuleMatch = prop.match(/@([a-zA-Z-]+)\s*(.*)/)
         if (atRuleMatch) {
           const [, atRuleName, atRuleParams] = atRuleMatch
-          const atRule = postcss.atRule({
-            name: atRuleName,
-            params: atRuleParams,
-            raws: { semicolon: true, before: "\n    " },
-          })
-          rule.append(atRule)
+
+          // Check if this at-rule already exists in the rule.
+          const existingAtRule = rule.nodes?.find(
+            (node): node is AtRule =>
+              node.type === "atrule" &&
+              node.name === atRuleName &&
+              node.params === atRuleParams
+          )
+
+          if (!existingAtRule) {
+            const atRule = postcss.atRule({
+              name: atRuleName,
+              params: atRuleParams,
+              raws: { semicolon: true, before: "\n    " },
+            })
+            rule.append(atRule)
+          }
         }
       } else if (typeof value === "string") {
         const decl = postcss.decl({

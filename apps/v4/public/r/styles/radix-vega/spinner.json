@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spinner",
+  "files": [
+    {
+      "path": "registry/radix-vega/ui/spinner.tsx",
+      "content": "import { cn } from \"@/registry/radix-vega/lib/utils\"\nimport { IconPlaceholder } from \"@/app/(create)/components/icon-placeholder\"\n\nfunction Spinner({ className, ...props }: React.ComponentProps<\"svg\">) {\n  return (\n    <IconPlaceholder\n      lucide=\"Loader2Icon\"\n      tabler=\"IconLoader\"\n      hugeicons=\"Loading03Icon\"\n      phosphor=\"SpinnerIcon\"\n      remixicon=\"RiLoaderLine\"\n      role=\"status\"\n      aria-label=\"Loading\"\n      className={cn(\"size-4 animate-spin\", className)}\n      {...props}\n    />\n  )\n}\n\nexport { Spinner }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

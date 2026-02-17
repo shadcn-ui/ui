@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "separator-example",
+  "title": "Separator",
+  "registryDependencies": [
+    "separator",
+    "example"
+  ],
+  "files": [
+    {
+      "path": "registry/radix-nova/examples/separator-example.tsx",
+      "content": "import {\n  Example,\n  ExampleWrapper,\n} from \"@/registry/radix-nova/components/example\"\nimport { Separator } from \"@/registry/radix-nova/ui/separator\"\n\nexport default function SeparatorExample() {\n  return (\n    <ExampleWrapper>\n      <SeparatorHorizontal />\n      <SeparatorVertical />\n      <SeparatorVerticalMenu />\n      <SeparatorInList />\n    </ExampleWrapper>\n  )\n}\n\nfunction SeparatorHorizontal() {\n  return (\n    <Example title=\"Horizontal\">\n      <div className=\"style-lyra:text-xs/relaxed flex flex-col gap-4 text-sm\">\n        <div className=\"flex flex-col gap-1\">\n          <div className=\"leading-none font-medium\">shadcn/ui</div>\n          <div className=\"text-muted-foreground\">\n            The Foundation for your Design System\n          </div>\n        </div>\n        <Separator />\n        <div>\n          A set of beautifully designed components that you can customize,\n          extend, and build on.\n        </div>\n      </div>\n    </Example>\n  )\n}\n\nfunction SeparatorVertical() {\n  return (\n    <Example title=\"Vertical\">\n      <div className=\"style-lyra:text-xs/relaxed flex h-5 items-center gap-4 text-sm\">\n        <div>Blog</div>\n        <Separator orientation=\"vertical\" />\n        <div>Docs</div>\n        <Separator orientation=\"vertical\" />\n        <div>Source</div>\n      </div>\n    </Example>\n  )\n}\n\nfunction SeparatorVerticalMenu() {\n  return (\n    <Example title=\"Vertical Menu\">\n      <div className=\"style-lyra:text-xs/relaxed flex items-center gap-2 text-sm md:gap-4\">\n        <div className=\"flex flex-col gap-1\">\n          <span className=\"font-medium\">Settings</span>\n          <span className=\"text-muted-foreground text-xs\">\n            Manage preferences\n          </span>\n        </div>\n        <Separator orientation=\"vertical\" />\n        <div className=\"flex flex-col gap-1\">\n          <span className=\"font-medium\">Account</span>\n          <span className=\"text-muted-foreground text-xs\">\n            Profile & security\n          </span>\n        </div>\n        <Separator orientation=\"vertical\" />\n        <div className=\"flex flex-col gap-1\">\n          <span className=\"font-medium\">Help</span>\n          <span className=\"text-muted-foreground text-xs\">Support & docs</span>\n        </div>\n      </div>\n    </Example>\n  )\n}\n\nfunction SeparatorInList() {\n  return (\n    <Example title=\"In List\">\n      <div className=\"style-lyra:text-xs/relaxed flex flex-col gap-2 text-sm\">\n        <dl className=\"flex items-center justify-between\">\n          <dt>Item 1</dt>\n          <dd className=\"text-muted-foreground\">Value 1</dd>\n        </dl>\n        <Separator />\n        <dl className=\"flex items-center justify-between\">\n          <dt>Item 2</dt>\n          <dd className=\"text-muted-foreground\">Value 2</dd>\n        </dl>\n        <Separator />\n        <dl className=\"flex items-center justify-between\">\n          <dt>Item 3</dt>\n          <dd className=\"text-muted-foreground\">Value 3</dd>\n        </dl>\n      </div>\n    </Example>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}
