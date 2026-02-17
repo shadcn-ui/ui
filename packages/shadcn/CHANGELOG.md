@@ -1,5 +1,11 @@
 # @shadcn/ui
 
+## 3.8.5
+
+### Patch Changes
+
+- [#9599](https://github.com/shadcn-ui/ui/pull/9599) [`bbb59c9fe1b3517db01d3a80cb7559da142ad14b`](https://github.com/shadcn-ui/ui/commit/bbb59c9fe1b3517db01d3a80cb7559da142ad14b) Thanks [@shadcn](https://github.com/shadcn)! - fix handling of nested aschild transforms
+
 ## 3.8.4
 
 ### Patch Changes
