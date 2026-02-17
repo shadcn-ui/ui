@@ -551,7 +551,7 @@ describe("shadcn init - next-monorepo", () => {
         "--preset",
         "radix-nova",
       ],
-      { timeout: 300000 }
+      { timeout: 300000, debug: true }
     )
     expect(result.exitCode).toBe(0)
 

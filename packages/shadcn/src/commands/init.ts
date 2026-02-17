@@ -453,6 +453,11 @@ export async function runInit(
       options.isNewProject || projectInfo?.framework.name === "next-app",
   })
 
+  // Run postInit for new projects without a custom init (e.g. git init).
+  if (selectedTemplate) {
+    await selectedTemplate.postInit({ projectPath: options.cwd })
+  }
+
   return fullConfig
 }
 
