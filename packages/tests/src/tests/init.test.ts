@@ -1,5 +1,6 @@
 import os from "os"
 import path from "path"
+import { fileURLToPath } from "url"
 import fs from "fs-extra"
 import { afterAll, beforeAll, describe, expect, it } from "vitest"
 
@@ -10,13 +11,29 @@ import {
 } from "../utils/helpers"
 import { createRegistryServer } from "../utils/registry"
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+const PUBLIC_R_DIR = path.join(__dirname, "../../../../apps/v4/public/r")
+const MOCK_PORT = 4001
+const MOCK_ENV = { REGISTRY_URL: `http://localhost:${MOCK_PORT}/r` }
+
+// Mock registry server that handles /init requests and serves static files.
+const mockRegistry = await createRegistryServer([], {
+  port: MOCK_PORT,
+  publicDir: PUBLIC_R_DIR,
+})
+
+beforeAll(async () => {
+  await mockRegistry.start()
+})
+
+afterAll(async () => {
+  await mockRegistry.stop()
+})
+
 describe("shadcn init - next-app", () => {
   it("should init with default configuration", async () => {
-    // Sleep for 1 second to avoid race condition with the registry server.
-    await new Promise((resolve) => setTimeout(resolve, 2000))
-
     const fixturePath = await createFixtureTestDirectory("next-app")
-    await npxShadcn(fixturePath, ["init", "--defaults"])
+    await npxShadcn(fixturePath, ["init", "--defaults"], { env: MOCK_ENV })
 
     const componentsJsonPath = path.join(fixturePath, "components.json")
     expect(await fs.pathExists(componentsJsonPath)).toBe(true)
@@ -57,7 +74,9 @@ describe("shadcn init - next-app", () => {
 
   it("should init without CSS variables", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
-    await npxShadcn(fixturePath, ["init", "--defaults", "--no-css-variables"])
+    await npxShadcn(fixturePath, ["init", "--defaults", "--no-css-variables"], {
+      env: MOCK_ENV,
+    })
 
     const componentsJson = await fs.readJson(
       path.join(fixturePath, "components.json")
@@ -67,7 +86,9 @@ describe("shadcn init - next-app", () => {
 
   it("should init with components", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
-    await npxShadcn(fixturePath, ["init", "--defaults", "button"])
+    await npxShadcn(fixturePath, ["init", "--defaults", "button"], {
+      env: MOCK_ENV,
+    })
 
     expect(
       await fs.pathExists(path.join(fixturePath, "components/ui/button.tsx"))
@@ -78,7 +99,9 @@ describe("shadcn init - next-app", () => {
 describe("shadcn init - vite-app", () => {
   it("should init with custom alias and src", async () => {
     const fixturePath = await createFixtureTestDirectory("vite-app")
-    await npxShadcn(fixturePath, ["init", "--defaults", "alert-dialog"])
+    await npxShadcn(fixturePath, ["init", "--defaults", "alert-dialog"], {
+      env: MOCK_ENV,
+    })
 
     const componentsJson = await fs.readJson(
       path.join(fixturePath, "components.json")
@@ -212,7 +235,13 @@ describe("shadcn init - custom style", async () => {
 
   it("should init with style that extends shadcn", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
-    await npxShadcn(fixturePath, ["init", "http://localhost:4445/r/style.json"])
+    await npxShadcn(
+      fixturePath,
+      ["init", "http://localhost:4445/r/style.json"],
+      {
+        env: MOCK_ENV,
+      }
+    )
 
     const componentsJson = await fs.readJson(
       path.join(fixturePath, "components.json")
@@ -273,10 +302,11 @@ describe("shadcn init - custom style", async () => {
 
   it("should init with style that extends another style", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
-    await npxShadcn(fixturePath, [
-      "init",
-      "http://localhost:4445/r/style-extended.json",
-    ])
+    await npxShadcn(
+      fixturePath,
+      ["init", "http://localhost:4445/r/style-extended.json"],
+      { env: MOCK_ENV }
+    )
 
     const componentsJson = await fs.readJson(
       path.join(fixturePath, "components.json")
@@ -341,10 +371,11 @@ describe("shadcn init - custom style", async () => {
 
   it("should init with custom style extended none", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
-    await npxShadcn(fixturePath, [
-      "init",
-      "http://localhost:4445/r/style-extend-none.json",
-    ])
+    await npxShadcn(
+      fixturePath,
+      ["init", "http://localhost:4445/r/style-extend-none.json"],
+      { env: MOCK_ENV }
+    )
 
     // We still expect components.json to be created.
     // With some defaults.
@@ -398,7 +429,7 @@ describe("shadcn init - custom style", async () => {
 describe("shadcn init - unsupported framework", () => {
   it("should init with --defaults on unsupported framework", async () => {
     const fixturePath = await createFixtureTestDirectory("remix-app")
-    await npxShadcn(fixturePath, ["init", "--defaults"])
+    await npxShadcn(fixturePath, ["init", "--defaults"], { env: MOCK_ENV })
 
     const componentsJsonPath = path.join(fixturePath, "components.json")
     expect(await fs.pathExists(componentsJsonPath)).toBe(true)
@@ -419,7 +450,9 @@ describe("shadcn init - unsupported framework", () => {
 
   it("should init with --defaults and components on unsupported framework", async () => {
     const fixturePath = await createFixtureTestDirectory("remix-app")
-    await npxShadcn(fixturePath, ["init", "--defaults", "button"])
+    await npxShadcn(fixturePath, ["init", "--defaults", "button"], {
+      env: MOCK_ENV,
+    })
 
     expect(
       await fs.pathExists(path.join(fixturePath, "components/ui/button.tsx"))
@@ -444,7 +477,9 @@ describe("shadcn init - template flag", () => {
 
   it("should accept valid template with --defaults", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
-    await npxShadcn(fixturePath, ["init", "-t", "next", "--defaults"])
+    await npxShadcn(fixturePath, ["init", "-t", "next", "--defaults"], {
+      env: MOCK_ENV,
+    })
 
     const componentsJsonPath = path.join(fixturePath, "components.json")
     expect(await fs.pathExists(componentsJsonPath)).toBe(true)
@@ -476,6 +511,7 @@ describe("shadcn init - --name flag", () => {
 
     await npxShadcn(emptyDir, ["init", "--defaults", "--name", projectName], {
       timeout: 120000,
+      env: MOCK_ENV,
     })
 
     const projectPath = path.join(emptyDir, projectName)
@@ -506,7 +542,7 @@ describe("shadcn init - --name flag", () => {
     await npxShadcn(
       emptyDir,
       ["init", "--defaults", "--name", projectName, "-t", "vite"],
-      { timeout: 120000 }
+      { timeout: 120000, env: MOCK_ENV }
     )
 
     const projectPath = path.join(emptyDir, projectName)
@@ -551,7 +587,7 @@ describe("shadcn init - next-monorepo", () => {
         "--preset",
         "radix-nova",
       ],
-      { timeout: 300000 }
+      { timeout: 300000, env: MOCK_ENV }
     )
     expect(result.exitCode).toBe(0)
 
@@ -599,10 +635,9 @@ describe("shadcn init - next-monorepo", () => {
   it("should create a monorepo with custom preset url", async () => {
     const projectName = `test-monorepo-url-${process.pid}`
 
-    // Build a custom init URL with specific options.
-    const registryUrl = process.env.REGISTRY_URL || "http://localhost:4000/r"
-    const baseUrl = registryUrl.replace(/\/r\/?$/, "")
-    const initUrl = `${baseUrl}/init?base=radix&style=nova&baseColor=zinc&theme=zinc&iconLibrary=lucide&font=inter&rtl=false&menuAccent=subtle&menuColor=default&radius=default&template=next`
+    // Build a custom init URL with specific options using the mock server.
+    const mockBaseUrl = `http://localhost:${MOCK_PORT}`
+    const initUrl = `${mockBaseUrl}/init?base=radix&style=nova&baseColor=zinc&theme=zinc&iconLibrary=lucide&font=inter&rtl=false&menuAccent=subtle&menuColor=default&radius=default&template=next`
 
     const result = await npxShadcn(
       testBaseDir,
@@ -615,7 +650,7 @@ describe("shadcn init - next-monorepo", () => {
         "--preset",
         initUrl,
       ],
-      { timeout: 300000 }
+      { timeout: 300000, env: MOCK_ENV }
     )
     expect(result.exitCode).toBe(0)
 
@@ -659,11 +694,11 @@ describe("shadcn init - next-monorepo", () => {
 describe("shadcn init - deprecated --src-dir", () => {
   it("should reject --src-dir as unknown option", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
-    const result = await npxShadcn(fixturePath, [
-      "init",
-      "--defaults",
-      "--src-dir",
-    ])
+    const result = await npxShadcn(
+      fixturePath,
+      ["init", "--defaults", "--src-dir"],
+      { env: MOCK_ENV }
+    )
 
     expect(result.exitCode).toBe(1)
   })
@@ -676,7 +711,7 @@ describe("shadcn init - existing components.json", () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
 
     // Run init with default configuration.
-    await npxShadcn(fixturePath, ["init", "--defaults"])
+    await npxShadcn(fixturePath, ["init", "--defaults"], { env: MOCK_ENV })
 
     // Override style in components.json.
     const componentsJsonPath = path.join(fixturePath, "components.json")
@@ -685,7 +720,9 @@ describe("shadcn init - existing components.json", () => {
     await fs.writeJson(componentsJsonPath, config)
 
     // Reinit with --force.
-    await npxShadcn(fixturePath, ["init", "--force", "--defaults"])
+    await npxShadcn(fixturePath, ["init", "--force", "--defaults"], {
+      env: MOCK_ENV,
+    })
 
     const newConfig = await fs.readJson(componentsJsonPath)
     expect(newConfig.style).toBe("new-york")
@@ -730,7 +767,7 @@ describe("shadcn init - existing components.json", () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
 
     // Run init with default configuration.
-    await npxShadcn(fixturePath, ["init", "--defaults"])
+    await npxShadcn(fixturePath, ["init", "--defaults"], { env: MOCK_ENV })
 
     // Inject a custom registries object into components.json.
     const componentsJsonPath = path.join(fixturePath, "components.json")
@@ -741,7 +778,9 @@ describe("shadcn init - existing components.json", () => {
     await fs.writeJson(componentsJsonPath, config)
 
     // Reinit with --force.
-    await npxShadcn(fixturePath, ["init", "--force", "--defaults"])
+    await npxShadcn(fixturePath, ["init", "--force", "--defaults"], {
+      env: MOCK_ENV,
+    })
 
     // components.json should exist with no .bak leftover.
     expect(await fs.pathExists(componentsJsonPath)).toBe(true)
