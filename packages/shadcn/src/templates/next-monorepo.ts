@@ -23,6 +23,7 @@ export const nextMonorepo = createTemplate({
   name: "next-monorepo",
   title: "Next.js (Monorepo)",
   defaultProjectName: "next-monorepo",
+  packageManager: "pnpm",
   scaffold: async ({ projectPath, packageManager }) => {
     const createSpinner = spinner(
       `Creating a new Next.js monorepo. This may take a few minutes.`

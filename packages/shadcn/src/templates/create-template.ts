@@ -20,6 +20,8 @@ export function createTemplate(config: {
   name: string
   title: string
   defaultProjectName: string
+  // Force a specific package manager for this template.
+  packageManager?: string
   // Framework names that map to this template.
   frameworks?: string[]
   scaffold: (options: TemplateOptions) => Promise<void>

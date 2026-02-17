@@ -61,9 +61,11 @@ export async function createProject(
     projectName = name ?? projectName
   }
 
-  const packageManager = await getPackageManager(options.cwd, {
-    withFallback: true,
-  })
+  const packageManager =
+    templates[template].packageManager ??
+    (await getPackageManager(options.cwd, {
+      withFallback: true,
+    }))
 
   const projectPath = `${options.cwd}/${projectName}`
 
