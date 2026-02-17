@@ -772,5 +772,11 @@
     "homepage": "https://soundcn.xyz",
     "url": "https://soundcn.xyz/r/{name}.json",
     "description": "Large collection of game, interface, retro, and voice sound effects for web applications"
+  },
+  {
+    "name": "@animateicons",
+    "homepage": "https://animateicons.in",
+    "url": "https://animateicons.in/r/{name}.json",
+    "description": "Free and open-source animated SVG icons for React, built for smooth micro-interactions, easy customization, and lightweight performance."
   }
 ]
