@@ -72,18 +72,15 @@ export async function npxShadcn(
   {
     debug = false,
     timeout,
-    env,
   }: {
     debug?: boolean
     timeout?: number
-    env?: Record<string, string>
   } = {}
 ) {
   const result = await runCommand(cwd, args, {
     env: {
       REGISTRY_URL: getRegistryUrl(),
       SHADCN_TEMPLATE_DIR: TEMPLATES_DIR,
-      ...env,
     },
     timeout,
   })
