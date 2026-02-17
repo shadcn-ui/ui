@@ -164,7 +164,7 @@ export const add = new Command()
         )
 
         // Prompt for preset.
-        const initUrl = await promptForPreset({
+        const { url: initUrl } = await promptForPreset({
           rtl: false,
           template: inferredTemplate,
         })
@@ -209,7 +209,10 @@ export const add = new Command()
           config = await getConfig(options.cwd)
         } else {
           // Prompt for preset.
-          const initUrl = await promptForPreset({ rtl: false, template })
+          const { url: initUrl } = await promptForPreset({
+            rtl: false,
+            template,
+          })
           const { registryBaseConfig, installStyleIndex } =
             await resolveRegistryBaseConfig(initUrl, options.cwd)
 

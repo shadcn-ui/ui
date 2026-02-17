@@ -108,6 +108,7 @@ export const init = new Command()
         presets.map((preset) => [preset.name, preset])
       )
 
+      let newBase: string | undefined
       if (options.defaults) {
         options.template = options.template || "next"
         const initUrl = resolveInitUrl(
@@ -118,6 +119,7 @@ export const init = new Command()
           { template: options.template }
         )
         components = [initUrl, ...components]
+        newBase = DEFAULT_PRESETS["base-nova"].base
       }
 
       if (options.template && !(options.template in templates)) {
@@ -261,11 +263,12 @@ export const init = new Command()
         const presetArg = options.preset === true ? true : options.preset
 
         if (presetArg === true) {
-          const initUrl = await promptForPreset({
+          const result = await promptForPreset({
             rtl: options.rtl,
             template: options.template,
           })
-          components = [initUrl, ...components]
+          components = [result.url, ...components]
+          newBase = result.base
         }
 
         if (typeof presetArg === "string") {
@@ -277,6 +280,7 @@ export const init = new Command()
               url.searchParams.set("rtl", "true")
             }
             initUrl = url.toString()
+            newBase = url.searchParams.get("base") ?? undefined
           } else {
             const preset = presetsByName.get(presetArg)!
             initUrl = resolveInitUrl(
@@ -286,6 +290,7 @@ export const init = new Command()
               },
               { template: options.template }
             )
+            newBase = preset.base
           }
 
           components = [initUrl, ...components]
@@ -298,8 +303,8 @@ export const init = new Command()
       }
 
       // Warn if the user is switching bases during reinit.
-      if (existingConfig?.style && components.length > 0) {
-        warnOnBaseSwitch(existingConfig.style as string, components[0])
+      if (existingConfig?.style && newBase) {
+        warnOnBaseSwitch(existingConfig.style as string, newBase)
       }
 
       options.components = components
@@ -688,28 +693,22 @@ async function promptForMinimalConfig(
   })
 }
 
-function warnOnBaseSwitch(existingStyle: string, initUrl: string) {
-  try {
-    const url = new URL(initUrl)
-    const newBase = url.searchParams.get("base")
-    // Styles prefixed with "base-" use Base UI. Everything else is Radix.
-    const oldBase = existingStyle.startsWith("base-") ? "base" : "radix"
-    if (newBase && newBase !== oldBase) {
-      logger.warn(
-        `  You are switching from ${highlighter.info(
-          oldBase
-        )} to ${highlighter.info(newBase)}.`
-      )
-      logger.warn(
-        `  Components outside the ${highlighter.info(
-          "ui"
-        )} directory that depend on ${highlighter.info(
-          oldBase
-        )} primitives may need manual updates.`
-      )
-      logger.break()
-    }
-  } catch {
-    // Not a valid URL, skip warning.
+function warnOnBaseSwitch(existingStyle: string, newBase: string) {
+  // Styles prefixed with "base-" use Base UI. Everything else is Radix.
+  const oldBase = existingStyle.startsWith("base-") ? "base" : "radix"
+  if (newBase !== oldBase) {
+    logger.warn(
+      `  You are switching from ${highlighter.info(
+        oldBase
+      )} to ${highlighter.info(newBase)}.`
+    )
+    logger.warn(
+      `  Components outside the ${highlighter.info(
+        "ui"
+      )} directory that depend on ${highlighter.info(
+        oldBase
+      )} primitives may need manual updates.`
+    )
+    logger.break()
   }
 }

@@ -158,12 +158,15 @@ export async function promptForPreset(options: {
     process.exit(0)
   }
 
-  return resolveInitUrl(
-    { ...preset, rtl: options.rtl },
-    {
-      template: options.template,
-    }
-  )
+  return {
+    url: resolveInitUrl(
+      { ...preset, rtl: options.rtl },
+      {
+        template: options.template,
+      }
+    ),
+    base: preset.base,
+  }
 }
 
 export async function resolveRegistryBaseConfig(
