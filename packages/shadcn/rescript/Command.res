@@ -3,7 +3,7 @@ external toDomProps: 'a => JsxDOM.domProps = "%identity"
 
 module CommandPrimitive = {
   @module("cmdk")
-  external make: React.component<props<string, bool>> = "Command"
+  external make: React.component<propsWithChildren<string, bool>> = "Command"
 
   module Input = {
     @module("cmdk") @scope("Command")
@@ -12,17 +12,17 @@ module CommandPrimitive = {
 
   module List = {
     @module("cmdk") @scope("Command")
-    external make: React.component<props<string, bool>> = "List"
+    external make: React.component<propsWithChildren<string, bool>> = "List"
   }
 
   module Empty = {
     @module("cmdk") @scope("Command")
-    external make: React.component<props<string, bool>> = "Empty"
+    external make: React.component<propsWithChildren<string, bool>> = "Empty"
   }
 
   module Group = {
     @module("cmdk") @scope("Command")
-    external make: React.component<props<string, bool>> = "Group"
+    external make: React.component<propsWithChildren<string, bool>> = "Group"
   }
 
   module Separator = {
@@ -37,14 +37,16 @@ module CommandPrimitive = {
 }
 
 @react.componentWithProps
-let make = (props: props<string, bool>) =>
+let make = (props: propsWithChildren<string, bool>) =>
   <CommandPrimitive
     {...props}
     dataSlot="command"
     className={`bg-popover text-popover-foreground flex size-full flex-col overflow-hidden rounded-xl! p-1 ${props.className->Option.getOr(
         "",
       )}`}
-  />
+  >
+    {props.children}
+  </CommandPrimitive>
 
 module Dialog = {
   @react.componentWithProps
@@ -76,7 +78,7 @@ module Dialog = {
                   className="focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 border border-transparent bg-clip-padding text-sm font-medium focus-visible:ring-3 aria-invalid:ring-3 [&_svg:not([class*='size-'])]:size-4 inline-flex items-center justify-center whitespace-nowrap transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none shrink-0 [&_svg]:shrink-0 outline-none group/button select-none hover:bg-muted hover:text-foreground dark:hover:bg-muted/50 aria-expanded:bg-muted aria-expanded:text-foreground size-7 rounded-[min(var(--radius-md),12px)] in-data-[slot=button-group]:rounded-lg absolute top-2 right-2"
                 />}
               >
-                <Icons.x />
+                <Icons.X />
                 <span className="sr-only"> {"Close"->React.string} </span>
               </BaseUi.Dialog.Close>
             : React.null}
@@ -105,7 +107,7 @@ module Input = {
             )}`}
         />
         <InputGroup.Addon>
-          <Icons.search className="size-4 shrink-0 opacity-50" />
+          <Icons.Search className="size-4 shrink-0 opacity-50" />
         </InputGroup.Addon>
       </InputGroup>
     </div>
@@ -114,36 +116,42 @@ module Input = {
 
 module List = {
   @react.componentWithProps
-  let make = (props: props<string, bool>) =>
+  let make = (props: propsWithChildren<string, bool>) =>
     <CommandPrimitive.List
       {...props}
       dataSlot="command-list"
       className={`no-scrollbar max-h-72 scroll-py-1 overflow-x-hidden overflow-y-auto outline-none ${props.className->Option.getOr(
           "",
         )}`}
-    />
+    >
+      {props.children}
+    </CommandPrimitive.List>
 }
 
 module Empty = {
   @react.componentWithProps
-  let make = (props: props<string, bool>) =>
+  let make = (props: propsWithChildren<string, bool>) =>
     <CommandPrimitive.Empty
       {...props}
       dataSlot="command-empty"
       className={`py-6 text-center text-sm ${props.className->Option.getOr("")}`}
-    />
+    >
+      {props.children}
+    </CommandPrimitive.Empty>
 }
 
 module Group = {
   @react.componentWithProps
-  let make = (props: props<string, bool>) =>
+  let make = (props: propsWithChildren<string, bool>) =>
     <CommandPrimitive.Group
       {...props}
       dataSlot="command-group"
       className={`text-foreground **:[[cmdk-group-heading]]:text-muted-foreground overflow-hidden p-1 **:[[cmdk-group-heading]]:px-2 **:[[cmdk-group-heading]]:py-1.5 **:[[cmdk-group-heading]]:text-xs **:[[cmdk-group-heading]]:font-medium ${props.className->Option.getOr(
           "",
         )}`}
-    />
+    >
+      {props.children}
+    </CommandPrimitive.Group>
 }
 
 module Separator = {
@@ -167,7 +175,7 @@ module Item = {
         )}`}
     >
       {props.children}
-      <Icons.check
+      <Icons.Check
         className="ml-auto opacity-0 group-has-data-[slot=command-shortcut]/command-item:hidden group-data-[checked=true]/command-item:opacity-100"
       />
     </CommandPrimitive.Item>
@@ -175,13 +183,15 @@ module Item = {
 
 module Shortcut = {
   @react.componentWithProps
-  let make = (props: props<string, bool>) => {
+  let make = (props: propsWithChildren<string, bool>) => {
     let props = {...props, dataSlot: "command-shortcut"}
     <span
       {...toDomProps(props)}
       className={`text-muted-foreground group-data-selected/command-item:text-foreground ml-auto text-xs tracking-widest ${props.className->Option.getOr(
           "",
         )}`}
-    />
+    >
+      {props.children}
+    </span>
   }
 }

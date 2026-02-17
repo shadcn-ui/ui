@@ -46,11 +46,11 @@ let make = (props: props<string, bool>) => {
   let theme = NextThemes.useTheme().theme->Option.getOr("system")
   let className = `toaster group ${props.className->Option.getOr("")}`
   let icons: toasterIcons = {
-    success: <Icons.circleCheck className="size-4" />,
-    info: <Icons.info className="size-4" />,
-    warning: <Icons.triangleAlert className="size-4" />,
-    error: <Icons.octagonX className="size-4" />,
-    loading: <Icons.loader2 className="size-4 animate-spin" />,
+    success: <Icons.CircleCheck className="size-4" />,
+    info: <Icons.Info className="size-4" />,
+    warning: <Icons.TriangleAlert className="size-4" />,
+    error: <Icons.OctagonX className="size-4" />,
+    loading: <Icons.Loader2 className="size-4 animate-spin" />,
   }
   let style =
     toStyle({

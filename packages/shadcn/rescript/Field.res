@@ -57,8 +57,17 @@ module Group = {
 
 @react.componentWithProps
 let make = (props: propsWithChildren<'value, 'checked>) => {
-  let orientation = props.dataOrientation->Option.getOr(DataOrientation.Vertical)
-  let props = {...props, dataSlot: "field", dataOrientation: orientation}
+  let orientation =
+    switch props.dataOrientation {
+    | Some(orientation) => orientation
+    | None =>
+      switch props.orientation {
+      | Some(Orientation.Horizontal) => DataOrientation.Horizontal
+      | Some(Orientation.Vertical) => DataOrientation.Vertical
+      | None => DataOrientation.Vertical
+      }
+    }
+  let props = {...props, orientation: ?None, dataSlot: "field", dataOrientation: orientation}
   <div
     {...toDomProps(props)}
     role="group"
@@ -128,7 +137,10 @@ module Separator = {
           "",
         )}`}
     >
-      <BaseUi.Separator className="absolute inset-0 top-1/2" />
+      <BaseUi.Separator
+        orientation=Orientation.Horizontal
+        className="absolute inset-0 top-1/2 bg-border shrink-0 data-horizontal:h-px data-horizontal:w-full data-vertical:w-px data-vertical:self-stretch"
+      />
       {switch props.children {
       | Some(children) =>
         <span className="text-muted-foreground bg-background relative mx-auto block w-fit px-2">

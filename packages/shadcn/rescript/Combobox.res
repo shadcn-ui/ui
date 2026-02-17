@@ -20,7 +20,7 @@ module Trigger = {
       className={`[&_svg:not([class*='size-'])]:size-4 ${props.className->Option.getOr("")}`}
     >
       {props.children}
-      <Icons.chevronDown className="text-muted-foreground pointer-events-none size-4" />
+      <Icons.ChevronDown className="text-muted-foreground pointer-events-none size-4" />
     </BaseUi.Combobox.Trigger>
 }
 
@@ -30,7 +30,7 @@ module Clear = {
     <BaseUi.Combobox.Clear
       {...props} dataSlot="combobox-clear" render={<Button dataVariant=Ghost dataSize=IconXs />}
     >
-      <Icons.x className="pointer-events-none" />
+      <Icons.X className="pointer-events-none" />
     </BaseUi.Combobox.Clear>
 }
 
@@ -71,7 +71,7 @@ module Input = {
           disabled={disabled}
           className="[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0 aria-expanded:bg-muted aria-expanded:text-foreground aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 bg-clip-padding border border-transparent dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 dark:hover:bg-muted/50 data-pressed:bg-transparent disabled:opacity-50 disabled:pointer-events-none flex focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 font-medium gap-2 group-has-data-[slot=combobox-clear]/input-group:hidden group/button has-[>svg]:p-0 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2 hover:bg-muted hover:text-foreground items-center justify-center outline-none p-0 rounded-[calc(var(--radius)-3px)] select-none shadow-none shrink-0 size-6 text-sm transition-all whitespace-nowrap"
         >
-          <Icons.chevronDown className="text-muted-foreground pointer-events-none size-4" />
+          <Icons.ChevronDown className="text-muted-foreground pointer-events-none size-4" />
         </BaseUi.Combobox.Trigger>
       </div>
       {props.children}
@@ -133,7 +133,7 @@ module Item = {
         render={<span
           className="pointer-events-none absolute right-2 flex size-4 items-center justify-center"
         >
-          <Icons.check className="pointer-events-none" />
+          <Icons.Check className="pointer-events-none" />
         </span>}
       />
     </BaseUi.Combobox.Item>
@@ -208,7 +208,7 @@ module Chip = {
       {props.children}
       <BaseUi.Combobox.ChipRemove
         render={<Button dataVariant=Ghost dataSize=IconXs>
-          <Icons.x className="pointer-events-none" />
+          <Icons.X className="pointer-events-none" />
         </Button>}
         className="-ml-1 opacity-50 hover:opacity-100"
         dataSlot="combobox-chip-remove"

@@ -69,7 +69,7 @@ module Content = {
                 />
               }
             >
-              <Icons.x />
+              <Icons.X />
               <span className="sr-only">{"Close"->React.string}</span>
             </BaseUi.Dialog.Close>
           : React.null}

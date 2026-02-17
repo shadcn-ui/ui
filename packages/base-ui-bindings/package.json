@@ -26,6 +26,7 @@
   ],
   "dependencies": {
     "@rescript/react": "0.14.1",
+    "@rescript/runtime": "^12.1.0",
     "rescript": "12.1.0"
   },
   "peerDependencies": {

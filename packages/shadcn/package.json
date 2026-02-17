@@ -64,7 +64,7 @@
   "bin": "./dist/index.js",
   "scripts": {
     "dev": "tsup --watch",
-    "build": "tsup",
+    "build": "rescript && tsup",
     "typecheck": "tsc --noEmit",
     "clean": "rimraf dist && rimraf components",
     "start:dev": "cross-env REGISTRY_URL=http://localhost:4000/r node dist/index.js",
@@ -77,7 +77,7 @@
     "pub:next": "pnpm build && pnpm publish --no-git-checks --access public --tag next",
     "pub:release": "pnpm build && pnpm publish --access public",
     "test": "vitest run --exclude test/visual/**",
-    "test:pixel": "vitest run test/visual/pixel-perfect.test.ts",
+    "test:pixel": "vitest run test/visual/pixel-perfect.test.ts --maxConcurrency=8",
     "test:dev": "REGISTRY_URL=http://localhost:4000/r vitest run",
     "mcp:inspect": "pnpm dlx @modelcontextprotocol/inspector node dist/index.js mcp"
   },
@@ -91,6 +91,7 @@
     "@dotenvx/dotenvx": "^1.48.4",
     "@modelcontextprotocol/sdk": "^1.26.0",
     "@rescript/runtime": "^12.1.0",
+    "@tabler/icons-react": "^3.31.0",
     "@types/validate-npm-package-name": "^4.0.2",
     "browserslist": "^4.26.2",
     "commander": "^14.0.0",

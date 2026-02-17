@@ -7,7 +7,7 @@ module Root = {
 module Image = {
   @module("@base-ui/react/avatar")
   @scope("Avatar")
-  external make: React.component<Types.propsWithChildren<'value, 'checked>> = "Image"
+  external make: React.component<Types.props<'value, 'checked>> = "Image"
 }
 
 module Fallback = {

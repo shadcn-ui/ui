@@ -3,14 +3,20 @@ open BaseUi.Types
 external toDomProps: 'a => JsxDOM.domProps = "%identity"
 
 module RechartsPrimitive = {
-  @module("recharts")
-  external responsiveContainer: React.component<propsWithChildren<string, bool>> = "ResponsiveContainer"
+  module ResponsiveContainer = {
+    @module("recharts")
+    external make: React.component<propsWithChildren<string, bool>> = "ResponsiveContainer"
+  }
 
-  @module("recharts")
-  external tooltip: React.component<props<string, bool>> = "Tooltip"
+  module Tooltip = {
+    @module("recharts")
+    external make: React.component<props<string, bool>> = "Tooltip"
+  }
 
-  @module("recharts")
-  external legend: React.component<props<string, bool>> = "Legend"
+  module Legend = {
+    @module("recharts")
+    external make: React.component<props<string, bool>> = "Legend"
+  }
 }
 
 @react.componentWithProps
@@ -23,15 +29,15 @@ let make = (props: propsWithChildren<string, bool>) => {
     className={`[&_.recharts-cartesian-axis-tick_text]:fill-muted-foreground [&_.recharts-cartesian-grid_line[stroke='#ccc']]:stroke-border/50 [&_.recharts-curve.recharts-tooltip-cursor]:stroke-border [&_.recharts-polar-grid_[stroke='#ccc']]:stroke-border [&_.recharts-radial-bar-background-sector]:fill-muted [&_.recharts-rectangle.recharts-tooltip-cursor]:fill-muted [&_.recharts-reference-line_[stroke='#ccc']]:stroke-border flex aspect-video justify-center text-xs [&_.recharts-dot[stroke='#fff']]:stroke-transparent [&_.recharts-layer]:outline-hidden [&_.recharts-sector]:outline-hidden [&_.recharts-sector[stroke='#fff']]:stroke-transparent [&_.recharts-surface]:outline-hidden ${props.className->Option.getOr("")}`}
     id={props.id->Option.getOr("")}
   >
-    <RechartsPrimitive.responsiveContainer>
+    <RechartsPrimitive.ResponsiveContainer>
       {props.children}
-    </RechartsPrimitive.responsiveContainer>
+    </RechartsPrimitive.ResponsiveContainer>
   </div>
 }
 
 module Tooltip = {
   @react.componentWithProps
-  let make = (props: props<string, bool>) => <RechartsPrimitive.tooltip {...props} />
+  let make = (props: props<string, bool>) => <RechartsPrimitive.Tooltip {...props} />
 }
 
 module TooltipContent = {
@@ -47,7 +53,7 @@ module TooltipContent = {
 
 module Legend = {
   @react.componentWithProps
-  let make = (props: props<string, bool>) => <RechartsPrimitive.legend {...props} />
+  let make = (props: props<string, bool>) => <RechartsPrimitive.Legend {...props} />
 }
 
 module LegendContent = {

@@ -93,7 +93,7 @@ let make = (props: propsWithChildren<string, bool>) => {
       {...toDomProps(rootProps)}
       className={`relative ${props.className->Option.getOr("")}`}
       role="region"
-      ariaLabel="carousel"
+      ariaRoledescription="carousel"
     >
       {props.children}
     </div>
@@ -130,7 +130,7 @@ module Item = {
     <div
       {...toDomProps(props)}
       role="group"
-      ariaLabel="slide"
+      ariaRoledescription="slide"
       className={`min-w-0 shrink-0 grow-0 basis-full ${orientation == DataOrientation.Horizontal ? "pl-4" : "pt-4"} ${props.className->Option.getOr("")}`}
     />
   }
@@ -140,16 +140,22 @@ module Previous = {
   @react.componentWithProps
   let make = (props: propsWithOptionalChildren<string, bool>) => {
     let {orientation, scrollPrev, canScrollPrev} = useCarousel()
+    let disabled = props.disabled->Option.getOr(!canScrollPrev)
+    let style = switch props.style {
+    | Some(style) => {...style, borderColor: "hsl(var(--border))"}
+    | None => {borderColor: "hsl(var(--border))"}
+    }
     <Button
       {...props}
       dataSlot="carousel-previous"
       dataVariant={props.dataVariant->Option.getOr(Variant.Outline)}
       dataSize={props.dataSize->Option.getOr(Size.IconSm)}
       className={`absolute touch-manipulation rounded-full ${orientation == DataOrientation.Horizontal ? "top-1/2 -left-12 -translate-y-1/2" : "-top-12 left-1/2 -translate-x-1/2 rotate-90"} ${props.className->Option.getOr("")}`}
-      disabled={!canScrollPrev}
+      disabled
+      style
       onClick={_ => scrollPrev()}
     >
-      <Icons.chevronLeft className="cn-rtl-flip" />
+      <Icons.ChevronLeft className="cn-rtl-flip" />
       <span className="sr-only">{"Previous slide"->React.string}</span>
     </Button>
   }
@@ -159,16 +165,22 @@ module Next = {
   @react.componentWithProps
   let make = (props: propsWithOptionalChildren<string, bool>) => {
     let {orientation, scrollNext, canScrollNext} = useCarousel()
+    let disabled = props.disabled->Option.getOr(!canScrollNext)
+    let style = switch props.style {
+    | Some(style) => {...style, borderColor: "hsl(var(--border))"}
+    | None => {borderColor: "hsl(var(--border))"}
+    }
     <Button
       {...props}
       dataSlot="carousel-next"
       dataVariant={props.dataVariant->Option.getOr(Variant.Outline)}
       dataSize={props.dataSize->Option.getOr(Size.IconSm)}
       className={`absolute touch-manipulation rounded-full ${orientation == DataOrientation.Horizontal ? "top-1/2 -right-12 -translate-y-1/2" : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90"} ${props.className->Option.getOr("")}`}
-      disabled={!canScrollNext}
+      disabled
+      style
       onClick={_ => scrollNext()}
     >
-      <Icons.chevronRight className="cn-rtl-flip" />
+      <Icons.ChevronRight className="cn-rtl-flip" />
       <span className="sr-only">{"Next slide"->React.string}</span>
     </Button>
   }

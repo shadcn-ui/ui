@@ -1,6 +1,7 @@
 open BaseUi.Types
 
 external toDomProps: 'a => JsxDOM.domProps = "%identity"
+external toHtmlProps: 'a => BaseUi.Types.htmlProps = "%identity"
 
 let itemVariants = (~variant=Variant.Default, ~size=Size.Default) => {
   let base = "[a]:hover:bg-muted rounded-lg border text-sm w-full group/item focus-visible:border-ring focus-visible:ring-ring/50 flex items-center flex-wrap outline-none transition-colors duration-100 focus-visible:ring-[3px] [a]:transition-colors"
@@ -53,15 +54,23 @@ let itemMediaVariants = (~variant=Variant.Default) => {
 
 @react.componentWithProps
 let make = (props: propsWithChildren<'value, 'checked>) => {
+  let render = props.render
   let variant = props.dataVariant->Option.getOr(Variant.Default)
   let size = props.dataSize->Option.getOr(Size.Default)
-  let props = {...props, dataSlot: "item", dataVariant: variant, dataSize: size}
-  <div
-    {...toDomProps(props)}
-    className={`${itemVariants(~variant, ~size)} ${props.className->Option.getOr("")}`}
-  >
-    {props.children}
-  </div>
+  let props = {
+    ...props,
+    render: React.null,
+    dataSlot: "item",
+    dataVariant: variant,
+    dataSize: size,
+    className: `${itemVariants(~variant, ~size)} ${props.className->Option.getOr("")}`,
+  }
+  BaseUi.UseRender.useRender(
+    ~defaultTagName="div",
+    ~render=?render,
+    ~props=toHtmlProps(props),
+    (),
+  )
 }
 
 module Media = {

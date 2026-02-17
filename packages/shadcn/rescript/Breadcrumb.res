@@ -1,6 +1,7 @@
 open BaseUi.Types
 
 external toDomProps: 'a => JsxDOM.domProps = "%identity"
+external toHtmlProps: 'a => BaseUi.Types.htmlProps = "%identity"
 
 @react.componentWithProps
 let make = (props: propsWithChildren<'value, 'checked>) => {
@@ -43,13 +44,19 @@ module Item = {
 module Link = {
   @react.componentWithProps
   let make = (props: propsWithChildren<'value, 'checked>) => {
-    let props = {...props, dataSlot: "breadcrumb-link"}
-    <a
-      {...toDomProps(props)}
-      className={`hover:text-foreground transition-colors ${props.className->Option.getOr("")}`}
-    >
-      {props.children}
-    </a>
+    let render = props.render
+    let props = {
+      ...props,
+      render: React.null,
+      dataSlot: "breadcrumb-link",
+      className: `hover:text-foreground transition-colors ${props.className->Option.getOr("")}`,
+    }
+    BaseUi.UseRender.useRender(
+      ~defaultTagName="a",
+      ~render=?render,
+      ~props=toHtmlProps(props),
+      (),
+    )
   }
 }
 
@@ -75,7 +82,7 @@ module Separator = {
     let props = {...props, dataSlot: "breadcrumb-separator"}
     let content = switch props.children {
     | Some(children) => children
-    | None => <Icons.chevronRight className="cn-rtl-flip" />
+    | None => <Icons.ChevronRight className="cn-rtl-flip" />
     }
 
     <li
@@ -101,7 +108,7 @@ module Ellipsis = {
           "",
         )}`}
     >
-      <Icons.moreHorizontal />
+      <Icons.MoreHorizontal />
       <span className="sr-only"> {"More"->React.string} </span>
     </span>
   }

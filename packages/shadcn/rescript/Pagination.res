@@ -66,7 +66,7 @@ module Previous = {
       dataSize=Default
       className={`pl-1.5! ${props.className->Option.getOr("")}`}
     >
-      <Icons.chevronLeft dataIcon="inline-start" className="cn-rtl-flip" />
+      <Icons.ChevronLeft dataIcon="inline-start" className="cn-rtl-flip" />
       <span className="hidden sm:block"> {text->React.string} </span>
     </Link>
   }
@@ -83,7 +83,7 @@ module Next = {
       className={`pr-1.5! ${props.className->Option.getOr("")}`}
     >
       <span className="hidden sm:block"> {text->React.string} </span>
-      <Icons.chevronRight dataIcon="inline-end" className="cn-rtl-flip" />
+      <Icons.ChevronRight dataIcon="inline-end" className="cn-rtl-flip" />
     </Link>
   }
 }
@@ -99,7 +99,7 @@ module Ellipsis = {
           "",
         )}`}
     >
-      <Icons.moreHorizontal />
+      <Icons.MoreHorizontal />
       <span className="sr-only"> {"More pages"->React.string} </span>
     </span>
   }

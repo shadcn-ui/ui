@@ -4,7 +4,7 @@ external toDomProps: 'a => JsxDOM.domProps = "%identity"
 
 module InputOtpPrimitive = {
   @module("input-otp")
-  external make: React.component<props<string, bool>> = "OTPInput"
+  external make: React.component<propsWithChildren<string, bool>> = "OTPInput"
 
   type slot = {
     isActive: bool,
@@ -24,7 +24,7 @@ module InputOtpPrimitive = {
 }
 
 @react.componentWithProps
-let make = (props: props<string, bool>) => {
+let make = (props: propsWithChildren<string, bool>) => {
   let containerClassName = props.containerClassName->Option.getOr("")
   <InputOtpPrimitive
     {...props}
@@ -37,12 +37,14 @@ let make = (props: props<string, bool>) => {
 
 module Group = {
   @react.componentWithProps
-  let make = (props: props<string, bool>) => {
+  let make = (props: propsWithChildren<string, bool>) => {
     let props = {...props, dataSlot: "input-otp-group"}
     <div
       {...toDomProps(props)}
       className={`has-aria-invalid:ring-destructive/20 dark:has-aria-invalid:ring-destructive/40 has-aria-invalid:border-destructive flex items-center rounded-lg has-aria-invalid:ring-3 ${props.className->Option.getOr("")}`}
-    />
+    >
+      {props.children}
+    </div>
   }
 }
 
@@ -82,7 +84,7 @@ module Separator = {
       role="separator"
       className={`flex items-center [&_svg:not([class*='size-'])]:size-4 ${props.className->Option.getOr("")}`}
     >
-      <Icons.minus />
+      <Icons.Minus />
     </div>
   }
 }

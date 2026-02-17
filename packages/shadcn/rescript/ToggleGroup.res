@@ -1,13 +1,36 @@
 
 open BaseUi.Types
 
+type context = {
+  variant: option<Variant.t>,
+  size: option<Size.t>,
+  spacing: float,
+  orientation: DataOrientation.t,
+}
+
+let toggleGroupContext = React.createContext({
+  variant: None,
+  size: None,
+  spacing: 0.,
+  orientation: DataOrientation.Horizontal,
+})
+
 @react.componentWithProps
 let make = (props: propsWithChildren<'value, 'checked>) => {
   let spacing = props.dataSpacing->Option.getOr(0.)
   let orientation = props.dataOrientation->Option.getOr(DataOrientation.Horizontal)
+  let context: context = {
+    variant: props.dataVariant,
+    size: props.dataSize,
+    spacing,
+    orientation,
+  }
   let style =
     ReactDOM.Style._dictToStyle(Dict.make())
     ->ReactDOM.Style.unsafeAddProp("--gap", Float.toString(spacing))
+  module Provider = {
+    let make = React.Context.provider(toggleGroupContext)
+  }
   <BaseUi.ToggleGroup
     {...props}
     dataSlot="toggle-group"
@@ -15,15 +38,20 @@ let make = (props: propsWithChildren<'value, 'checked>) => {
     dataSpacing={spacing}
     style
     className={`group/toggle-group flex w-fit flex-row items-center gap-[--spacing(var(--gap))] rounded-lg data-vertical:flex-col data-vertical:items-stretch data-[size=sm]:rounded-[min(var(--radius-md),10px)] ${props.className->Option.getOr("")}`}
-  />
+  >
+    <Provider value=context>
+      {props.children}
+    </Provider>
+  </BaseUi.ToggleGroup>
 }
 
 module Item = {
   @react.componentWithProps
   let make = (props: propsWithChildren<'value, 'checked>) => {
-    let variant = props.dataVariant->Option.getOr(Variant.Default)
-    let size = props.dataSize->Option.getOr(Size.Default)
-    let spacing = props.dataSpacing->Option.getOr(0.)
+    let context = React.useContext(toggleGroupContext)
+    let variant = context.variant->Option.getOr(props.dataVariant->Option.getOr(Variant.Default))
+    let size = context.size->Option.getOr(props.dataSize->Option.getOr(Size.Default))
+    let spacing = context.spacing
     <BaseUi.Toggle
       {...props}
       dataSlot="toggle-group-item"

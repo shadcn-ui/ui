@@ -20,7 +20,7 @@ module Item = {
       dataSlot="radio-group-indicator"
       className="group-aria-invalid/radio-group-item:text-destructive text-primary flex size-4 items-center justify-center"
     >
-      <Icons.circle className="absolute top-1/2 left-1/2 size-2 -translate-x-1/2 -translate-y-1/2 fill-current" />
+      <Icons.Circle className="absolute top-1/2 left-1/2 size-2 -translate-x-1/2 -translate-y-1/2 fill-current" />
     </BaseUi.Radio.Indicator>
   </BaseUi.Radio.Root>
 }

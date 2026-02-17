@@ -1,6 +1,7 @@
 open BaseUi.Types
 
 external toDomProps: 'a => JsxDOM.domProps = "%identity"
+external toHtmlProps: 'a => BaseUi.Types.htmlProps = "%identity"
 
 @get
 external getCollapsible: propsWithChildren<'value, 'checked> => option<string> = "collapsible"
@@ -57,7 +58,8 @@ let sidebarMenuButtonVariants = (~variant=Variant.Default, ~size=Size.Default) =
 
 @react.componentWithProps
 let make = (props: propsWithChildren<'value, 'checked>) => {
-  getCollapsible(props)->Option.getOr("offcanvas") == "none"
+  let collapsible = getCollapsible(props)->Option.getOr("offcanvas")
+  collapsible == "none"
     ? {
         let sidebarProps: props<'value, 'checked> = {dataSlot: "sidebar"}
         <div
@@ -70,17 +72,37 @@ let make = (props: propsWithChildren<'value, 'checked>) => {
         </div>
       }
     : {
-        let _sidebar = useSidebar()
+        let sidebar = useSidebar()
+        let side = props.dataSide->Option.getOr("left")
+        let dataCollapsible = sidebar.state == "collapsed" ? collapsible : ""
+        let rootProps: props<'value, 'checked> = {
+          dataState: sidebar.state,
+          dataCollapsible: dataCollapsible,
+          dataSide: side,
+          dataSlot: "sidebar",
+        }
+        let gapProps: props<'value, 'checked> = {dataSlot: "sidebar-gap"}
+        let containerProps: props<'value, 'checked> = {dataSlot: "sidebar-container", dataSide: side}
+        let innerProps: props<'value, 'checked> = {
+          dataSidebar: "sidebar",
+          dataSlot: "sidebar-inner",
+        }
         <div
-          className={`group peer text-sidebar-foreground hidden md:block ${props.className->Option.getOr(
-              "",
-            )}`}
+          {...toDomProps(rootProps)}
+          className="group peer text-sidebar-foreground hidden md:block"
         >
           <div
-            className="relative w-(--sidebar-width) bg-transparent transition-[width] duration-200 ease-linear group-data-[collapsible=offcanvas]:w-0"
+            {...toDomProps(gapProps)}
+            className="relative w-(--sidebar-width) bg-transparent transition-[width] duration-200 ease-linear group-data-[collapsible=offcanvas]:w-0 group-data-[side=right]:rotate-180 group-data-[collapsible=icon]:w-(--sidebar-width-icon)"
           />
-          <div className="fixed inset-y-0 z-10 hidden h-svh w-(--sidebar-width) md:flex">
+          <div
+            {...toDomProps(containerProps)}
+            className={`fixed inset-y-0 z-10 hidden h-svh w-(--sidebar-width) transition-[left,right,width] duration-200 ease-linear data-[side=left]:left-0 data-[side=left]:group-data-[collapsible=offcanvas]:left-[calc(var(--sidebar-width)*-1)] data-[side=right]:right-0 data-[side=right]:group-data-[collapsible=offcanvas]:right-[calc(var(--sidebar-width)*-1)] md:flex group-data-[collapsible=icon]:w-(--sidebar-width-icon) group-data-[side=left]:border-r group-data-[side=right]:border-l ${props.className->Option.getOr(
+                "",
+              )}`}
+          >
             <div
+              {...toDomProps(innerProps)}
               className="bg-sidebar group-data-[variant=floating]:ring-sidebar-border flex size-full flex-col group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:shadow-sm group-data-[variant=floating]:ring-1"
             >
               {props.children}
@@ -116,14 +138,14 @@ module Trigger = {
     <Button
       {...props} dataSidebar="trigger" dataSlot="sidebar-trigger" dataVariant=Ghost dataSize=IconSm
     >
-      <Icons.panelLeft className="cn-rtl-flip" />
+      <Icons.PanelLeft className="cn-rtl-flip" />
       <span className="sr-only"> {"Toggle Sidebar"->React.string} </span>
     </Button>
 }
 
 module Rail = {
   @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) => {
+  let make = (props: props<'value, 'checked>) => {
     let props = {...props, dataSidebar: "rail", dataSlot: "sidebar-rail"}
     <button
       {...toDomProps(props)}
@@ -133,9 +155,7 @@ module Rail = {
           "",
         )}`}
       title="Toggle Sidebar"
-    >
-      {props.children}
-    </button>
+    />
   }
 }
 
@@ -298,38 +318,43 @@ module MenuItem = {
 
 module MenuButton = {
   @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) => {
+  let make = (props: propsWithOptionalChildren<'value, 'checked>) => {
+    let render = props.render
     let variant = props.dataVariant->Option.getOr(Variant.Default)
     let size = props.dataSize->Option.getOr(Size.Default)
-    let props = {
+    let props: propsWithOptionalChildren<'value, 'checked> = {
       ...props,
+      render: React.null,
       dataSlot: "sidebar-menu-button",
       dataSidebar: "menu-button",
       dataSize: size,
+      className: `${sidebarMenuButtonVariants(~variant, ~size)} ${props.className->Option.getOr("")}`,
     }
-    <button
-      {...toDomProps(props)}
-      type_="button"
-      className={`${sidebarMenuButtonVariants(~variant, ~size)} ${props.className->Option.getOr(
-          "",
-        )}`}
-    >
-      {props.children}
-    </button>
+    let props = props.render->Option.isSome ? props : {...props, type_: "button"}
+    BaseUi.UseRender.useRender(
+      ~defaultTagName="button",
+      ~render=?render,
+      ~props=toHtmlProps(props),
+      (),
+    )
   }
 }
 
 module MenuAction = {
   @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) => {
+  let make = (props: propsWithOptionalChildren<'value, 'checked>) => {
+    let showOnHover = props.showOnHover->Option.getOr(false)
     let props = {...props, dataSlot: "sidebar-menu-action", dataSidebar: "menu-action"}
     <button
       {...toDomProps(props)}
-      className={`text-sidebar-foreground ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground peer-hover/menu-button:text-sidebar-accent-foreground absolute top-1.5 right-1 aspect-square w-5 rounded-md p-0 peer-data-[size=default]/menu-button:top-1.5 peer-data-[size=lg]/menu-button:top-2.5 peer-data-[size=sm]/menu-button:top-1 focus-visible:ring-2 [&>svg]:size-4 flex items-center justify-center outline-hidden transition-transform group-data-[collapsible=icon]:hidden after:absolute after:-inset-2 md:after:hidden [&>svg]:shrink-0 ${props.className->Option.getOr(
+      className={`text-sidebar-foreground ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground peer-hover/menu-button:text-sidebar-accent-foreground peer-data-active/menu-button:text-sidebar-accent-foreground aria-expanded:opacity-100 group-focus-within/menu-item:opacity-100 group-hover/menu-item:opacity-100 absolute top-1.5 right-1 aspect-square w-5 rounded-md p-0 peer-data-[size=default]/menu-button:top-1.5 peer-data-[size=lg]/menu-button:top-2.5 peer-data-[size=sm]/menu-button:top-1 focus-visible:ring-2 [&>svg]:size-4 flex items-center justify-center outline-hidden transition-transform group-data-[collapsible=icon]:hidden after:absolute after:-inset-2 md:after:hidden ${showOnHover ? "md:opacity-0" : ""} [&>svg]:shrink-0 ${props.className->Option.getOr(
           "",
         )}`}
     >
-      {props.children}
+      {switch props.children {
+      | Some(children) => children
+      | None => React.null
+      }}
     </button>
   }
 }
@@ -395,20 +420,23 @@ module MenuSubItem = {
 module MenuSubButton = {
   @react.componentWithProps
   let make = (props: propsWithChildren<'value, 'checked>) => {
+    let render = props.render
     let size = props.dataSize->Option.getOr(Size.Md)
-    let props = {
+    let props: propsWithChildren<'value, 'checked> = {
       ...props,
+      render: React.null,
       dataSlot: "sidebar-menu-sub-button",
       dataSidebar: "menu-sub-button",
       dataSize: size,
+      className: `text-sidebar-foreground ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground active:bg-sidebar-accent active:text-sidebar-accent-foreground [&>svg]:text-sidebar-accent-foreground data-active:bg-sidebar-accent data-active:text-sidebar-accent-foreground h-7 gap-2 rounded-md px-2 focus-visible:ring-2 data-[size=md]:text-sm data-[size=sm]:text-xs [&>svg]:size-4 flex min-w-0 -translate-x-px items-center overflow-hidden outline-hidden group-data-[collapsible=icon]:hidden disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 [&>span:last-child]:truncate [&>svg]:shrink-0 ${props.className->Option.getOr(
+            "",
+          )}`,
     }
-    <a
-      {...toDomProps(props)}
-      className={`text-sidebar-foreground ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground active:bg-sidebar-accent active:text-sidebar-accent-foreground [&>svg]:text-sidebar-accent-foreground data-active:bg-sidebar-accent data-active:text-sidebar-accent-foreground h-7 gap-2 rounded-md px-2 focus-visible:ring-2 data-[size=md]:text-sm data-[size=sm]:text-xs [&>svg]:size-4 flex min-w-0 -translate-x-px items-center overflow-hidden outline-hidden group-data-[collapsible=icon]:hidden disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 [&>span:last-child]:truncate [&>svg]:shrink-0 ${props.className->Option.getOr(
-          "",
-        )}`}
-    >
-      {props.children}
-    </a>
+    BaseUi.UseRender.useRender(
+      ~defaultTagName="a",
+      ~render=?render,
+      ~props=toHtmlProps(props),
+      (),
+    )
   }
 }

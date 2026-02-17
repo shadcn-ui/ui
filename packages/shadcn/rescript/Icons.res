@@ -7,50 +7,287 @@ type props = {
   @as("data-slot") dataSlot?: string,
 }
 
-@module("lucide-react")
-external chevronDown: React.component<props> = "ChevronDownIcon"
+module ChevronDown = {
+  @module("lucide-react")
+  external make: React.component<props> = "ChevronDownIcon"
+}
 
-@module("lucide-react")
-external chevronLeft: React.component<props> = "ChevronLeftIcon"
+module ChevronLeft = {
+  @module("lucide-react")
+  external make: React.component<props> = "ChevronLeftIcon"
+}
 
-@module("lucide-react")
-external chevronUp: React.component<props> = "ChevronUpIcon"
+module ChevronUp = {
+  @module("lucide-react")
+  external make: React.component<props> = "ChevronUpIcon"
+}
 
-@module("lucide-react")
-external chevronRight: React.component<props> = "ChevronRightIcon"
+module ChevronRight = {
+  @module("lucide-react")
+  external make: React.component<props> = "ChevronRightIcon"
+}
 
-@module("lucide-react")
-external moreHorizontal: React.component<props> = "MoreHorizontalIcon"
+module MoreHorizontal = {
+  @module("lucide-react")
+  external make: React.component<props> = "MoreHorizontalIcon"
+}
 
-@module("lucide-react")
-external check: React.component<props> = "CheckIcon"
+module Check = {
+  @module("lucide-react")
+  external make: React.component<props> = "CheckIcon"
+}
 
-@module("lucide-react")
-external circleCheck: React.component<props> = "CircleCheckIcon"
+module CircleCheck = {
+  @module("lucide-react")
+  external make: React.component<props> = "CircleCheckIcon"
+}
 
-@module("lucide-react")
-external info: React.component<props> = "InfoIcon"
+module Info = {
+  @module("lucide-react")
+  external make: React.component<props> = "InfoIcon"
+}
 
-@module("lucide-react")
-external loader2: React.component<props> = "Loader2Icon"
+module Loader2 = {
+  @module("lucide-react")
+  external make: React.component<props> = "Loader2Icon"
+}
 
-@module("lucide-react")
-external minus: React.component<props> = "MinusIcon"
+module Minus = {
+  @module("lucide-react")
+  external make: React.component<props> = "MinusIcon"
+}
 
-@module("lucide-react")
-external octagonX: React.component<props> = "OctagonXIcon"
+module OctagonX = {
+  @module("lucide-react")
+  external make: React.component<props> = "OctagonXIcon"
+}
 
-@module("lucide-react")
-external x: React.component<props> = "XIcon"
+module X = {
+  @module("lucide-react")
+  external make: React.component<props> = "XIcon"
+}
 
-@module("lucide-react")
-external circle: React.component<props> = "CircleIcon"
+module Circle = {
+  @module("lucide-react")
+  external make: React.component<props> = "CircleIcon"
+}
 
-@module("lucide-react")
-external panelLeft: React.component<props> = "PanelLeftIcon"
+module PanelLeft = {
+  @module("lucide-react")
+  external make: React.component<props> = "PanelLeftIcon"
+}
 
-@module("lucide-react")
-external search: React.component<props> = "SearchIcon"
+module Search = {
+  @module("lucide-react")
+  external make: React.component<props> = "SearchIcon"
+}
 
-@module("lucide-react")
-external triangleAlert: React.component<props> = "TriangleAlertIcon"
+module TriangleAlert = {
+  @module("lucide-react")
+  external make: React.component<props> = "TriangleAlertIcon"
+}
+
+module CheckCircle2 = {
+  @module("lucide-react")
+  external make: React.component<props> = "CheckCircle2Icon"
+}
+
+module Calendar = {
+  @module("lucide-react")
+  external make: React.component<props> = "CalendarIcon"
+}
+
+module Calculator = {
+  @module("lucide-react")
+  external make: React.component<props> = "CalculatorIcon"
+}
+
+module CreditCard = {
+  @module("lucide-react")
+  external make: React.component<props> = "CreditCardIcon"
+}
+
+module Settings = {
+  @module("lucide-react")
+  external make: React.component<props> = "SettingsIcon"
+}
+
+module Smile = {
+  @module("lucide-react")
+  external make: React.component<props> = "SmileIcon"
+}
+
+module User = {
+  @module("lucide-react")
+  external make: React.component<props> = "UserIcon"
+}
+
+module Plus = {
+  @module("lucide-react")
+  external make: React.component<props> = "PlusIcon"
+}
+
+module ArrowUpRight = {
+  @module("lucide-react")
+  external make: React.component<props> = "ArrowUpRightIcon"
+}
+
+module ArrowUp = {
+  @module("lucide-react")
+  external make: React.component<props> = "ArrowUpIcon"
+}
+
+module ArrowLeft = {
+  @module("lucide-react")
+  external make: React.component<props> = "ArrowLeftIcon"
+}
+
+module Archive = {
+  @module("lucide-react")
+  external make: React.component<props> = "ArchiveIcon"
+}
+
+module CalendarPlus = {
+  @module("lucide-react")
+  external make: React.component<props> = "CalendarPlusIcon"
+}
+
+module Clock = {
+  @module("lucide-react")
+  external make: React.component<props> = "ClockIcon"
+}
+
+module ListFilter = {
+  @module("lucide-react")
+  external make: React.component<props> = "ListFilterIcon"
+}
+
+module MailCheck = {
+  @module("lucide-react")
+  external make: React.component<props> = "MailCheckIcon"
+}
+
+module Tag = {
+  @module("lucide-react")
+  external make: React.component<props> = "TagIcon"
+}
+
+module Trash2 = {
+  @module("lucide-react")
+  external make: React.component<props> = "Trash2Icon"
+}
+
+module ChevronsUpDown = {
+  @module("lucide-react")
+  external make: React.component<props> = "ChevronsUpDownIcon"
+}
+
+module BadgeCheck = {
+  @module("lucide-react")
+  external make: React.component<props> = "BadgeCheckIcon"
+}
+
+module AudioWaveform = {
+  @module("lucide-react")
+  external make: React.component<props> = "AudioWaveformIcon"
+}
+
+module Bell = {
+  @module("lucide-react")
+  external make: React.component<props> = "BellIcon"
+}
+
+module BookOpen = {
+  @module("lucide-react")
+  external make: React.component<props> = "BookOpenIcon"
+}
+
+module Bot = {
+  @module("lucide-react")
+  external make: React.component<props> = "BotIcon"
+}
+
+module Command = {
+  @module("lucide-react")
+  external make: React.component<props> = "CommandIcon"
+}
+
+module Folder = {
+  @module("lucide-react")
+  external make: React.component<props> = "FolderIcon"
+}
+
+module Forward = {
+  @module("lucide-react")
+  external make: React.component<props> = "ForwardIcon"
+}
+
+module Frame = {
+  @module("lucide-react")
+  external make: React.component<props> = "FrameIcon"
+}
+
+module GalleryVerticalEnd = {
+  @module("lucide-react")
+  external make: React.component<props> = "GalleryVerticalEndIcon"
+}
+
+module LogOut = {
+  @module("lucide-react")
+  external make: React.component<props> = "LogOutIcon"
+}
+
+module Map = {
+  @module("lucide-react")
+  external make: React.component<props> = "MapIcon"
+}
+
+module PieChart = {
+  @module("lucide-react")
+  external make: React.component<props> = "PieChartIcon"
+}
+
+module Settings2 = {
+  @module("lucide-react")
+  external make: React.component<props> = "Settings2Icon"
+}
+
+module Sparkles = {
+  @module("lucide-react")
+  external make: React.component<props> = "SparklesIcon"
+}
+
+module SquareTerminal = {
+  @module("lucide-react")
+  external make: React.component<props> = "SquareTerminalIcon"
+}
+
+module Bookmark = {
+  @module("lucide-react")
+  external make: React.component<props> = "BookmarkIcon"
+}
+
+module CircleAlert = {
+  @module("lucide-react")
+  external make: React.component<props> = "CircleAlertIcon"
+}
+
+module CircleDashed = {
+  @module("lucide-react")
+  external make: React.component<props> = "CircleDashedIcon"
+}
+
+module Bold = {
+  @module("lucide-react")
+  external make: React.component<props> = "BoldIcon"
+}
+
+module Italic = {
+  @module("lucide-react")
+  external make: React.component<props> = "ItalicIcon"
+}
+
+module Underline = {
+  @module("lucide-react")
+  external make: React.component<props> = "UnderlineIcon"
+}

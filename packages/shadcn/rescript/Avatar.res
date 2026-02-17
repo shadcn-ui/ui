@@ -13,7 +13,7 @@ let make = (props: propsWithChildren<'value, 'checked>) => {
 
 module Image = {
   @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) =>
+  let make = (props: props<'value, 'checked>) =>
     <BaseUi.Avatar.Image
       {...props}
       dataSlot="avatar-image"

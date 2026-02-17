@@ -28,7 +28,7 @@ let alertVariants = (~variant=Variant.Default) => {
 @react.componentWithProps
 let make = (props: propsWithChildren<'value, 'checked>) => {
   let variant = props.dataVariant->Option.getOr(Variant.Default)
-  let props = {...props, dataSlot: "alert", dataVariant: variant}
+  let props = {...props, dataSlot: "alert"}
   <div
     {...toDomProps(props)}
     role="alert"

@@ -5,7 +5,11 @@ export function TailwindIndicator({
 }: {
   forceMount?: boolean
 }) {
-  if (process.env.NODE_ENV === "production" || (!SHOW && !forceMount)) {
+  if (
+    process.env.NODE_ENV === "production" ||
+    process.env.NEXT_PUBLIC_PARITY_TEST === "1" ||
+    (!SHOW && !forceMount)
+  ) {
     return null
   }
 
