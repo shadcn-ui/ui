@@ -1,3 +1,5 @@
+@@directive("'use client'")
+
 type icon =
   | IconAudioWaveform
   | IconBadgeCheck

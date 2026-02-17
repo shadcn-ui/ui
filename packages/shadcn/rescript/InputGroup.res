@@ -1,3 +1,5 @@
+@@directive("'use client'")
+
 external toDomProps: 'a => JsxDOM.domProps = "%identity"
 
 

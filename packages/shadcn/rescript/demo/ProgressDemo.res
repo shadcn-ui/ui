@@ -1,3 +1,5 @@
+@@directive("'use client'")
+
 @react.component
 let make = () => {
   let (progress, setProgress) = React.useState(() => 13.)

@@ -1,3 +1,5 @@
+@@directive("'use client'")
+
 @module("react-day-picker/locale")
 external enUS: JSON.t = "enUS"
 

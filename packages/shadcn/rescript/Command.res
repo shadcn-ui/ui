@@ -1,3 +1,5 @@
+@@directive("'use client'")
+
 open BaseUi.Types
 external toDomProps: 'a => JsxDOM.domProps = "%identity"
 

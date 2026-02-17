@@ -1,3 +1,5 @@
+@@directive("'use client'")
+
 type drawerDatum = {goal: int}
 
 module Recharts = {

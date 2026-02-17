@@ -1,3 +1,5 @@
+@@directive("'use client'")
+
 @react.component
 let make = () => {
   let (isOpen, setIsOpen) = React.useState(() => false)

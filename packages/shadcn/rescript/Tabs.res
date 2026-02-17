@@ -1,3 +1,5 @@
+@@directive("'use client'")
+
 open BaseUi.Types
 
 let tabsListVariants = (~variant=Variant.Default) => {

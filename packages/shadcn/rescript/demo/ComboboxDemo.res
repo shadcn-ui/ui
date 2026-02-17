@@ -1,3 +1,5 @@
+@@directive("'use client'")
+
 let frameworks = ["Next.js", "SvelteKit", "Nuxt.js", "Remix", "Astro"]
 
 @react.component
