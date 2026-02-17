@@ -1,5 +1,6 @@
 import os from "os"
 import path from "path"
+import { execa } from "execa"
 import fs from "fs-extra"
 import { afterAll, beforeAll, describe, expect, it } from "vitest"
 
@@ -654,6 +655,64 @@ describe("shadcn init - next-monorepo", () => {
       ])
     ).toBe(true)
   }, 300000)
+})
+
+describe("shadcn init - postInit git commit", () => {
+  // Use os.tmpdir() to create projects outside the monorepo tree.
+  let testBaseDir: string
+
+  beforeAll(async () => {
+    testBaseDir = path.join(os.tmpdir(), `shadcn-postinit-test-${process.pid}`)
+    await fs.ensureDir(testBaseDir)
+  })
+
+  afterAll(async () => {
+    await fs.remove(testBaseDir)
+  })
+
+  it("should create a git repo with initial commit for next template", async () => {
+    const projectName = "postinit-next-app"
+    const emptyDir = path.join(testBaseDir, "empty-next")
+    await fs.ensureDir(emptyDir)
+
+    await npxShadcn(emptyDir, ["init", "--defaults", "--name", projectName], {
+      timeout: 120000,
+    })
+
+    const projectPath = path.join(emptyDir, projectName)
+
+    // Verify .git directory was created.
+    expect(await fs.pathExists(path.join(projectPath, ".git"))).toBe(true)
+
+    // Verify initial commit exists.
+    const { stdout } = await execa("git", ["log", "--oneline", "-1"], {
+      cwd: projectPath,
+    })
+    expect(stdout).toContain("initial commit")
+  })
+
+  it("should create a git repo with initial commit for vite template", async () => {
+    const projectName = "postinit-vite-app"
+    const emptyDir = path.join(testBaseDir, "empty-vite")
+    await fs.ensureDir(emptyDir)
+
+    await npxShadcn(
+      emptyDir,
+      ["init", "--defaults", "--name", projectName, "-t", "vite"],
+      { timeout: 120000 }
+    )
+
+    const projectPath = path.join(emptyDir, projectName)
+
+    // Verify .git directory was created.
+    expect(await fs.pathExists(path.join(projectPath, ".git"))).toBe(true)
+
+    // Verify initial commit exists.
+    const { stdout } = await execa("git", ["log", "--oneline", "-1"], {
+      cwd: projectPath,
+    })
+    expect(stdout).toContain("initial commit")
+  })
 })
 
 describe("shadcn init - deprecated --src-dir", () => {
