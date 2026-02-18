@@ -6,7 +6,7 @@ let navigationMenuTriggerStyle = () =>
 @react.component
 let make = (
   ~className="",
-  ~children=?,
+  ~children=React.null,
   ~id=?,
   ~style=?,
   ~onClick=?,
@@ -29,7 +29,7 @@ let make = (
     dataSlot="navigation-menu"
     className={`group/navigation-menu relative flex max-w-max flex-1 items-center justify-center ${className}`}
   >
-    {children->Option.getOr(React.null)}
+    {children}
     <BaseUi.NavigationMenu.Portal>
       <BaseUi.NavigationMenu.Positioner
         side={Side.Bottom}
@@ -97,7 +97,7 @@ module Trigger = {
   @react.component
   let make = (
     ~className="",
-    ~children=?,
+    ~children=React.null,
     ~id=?,
     ~style=?,
     ~onClick=?,
@@ -117,7 +117,7 @@ module Trigger = {
     }
     let content =
       <>
-        {children->Option.getOr(React.null)}
+        {children}
         <Icons.ChevronDown
           ariaHidden=true
           className="relative top-px ml-1 size-3 transition duration-300 group-data-open/navigation-menu-trigger:rotate-180 group-data-popup-open/navigation-menu-trigger:rotate-180"

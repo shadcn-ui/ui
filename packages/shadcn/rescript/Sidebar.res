@@ -586,13 +586,13 @@ module MenuButton = {
     ~variant=Variant.Default,
     ~size=Size.Default,
     ~render=?,
-    ~children=?,
+    ~children=React.null,
     ~type_=?,
     ~ariaDisabled=?,
   ) => {
     let props: BaseUi.Types.props<string, bool> = {
       render: React.null,
-      children: children->Option.getOr(React.null),
+      children: children,
       dataSlot: "sidebar-menu-button",
       dataSidebar: "menu-button",
       dataSize: size,
@@ -674,7 +674,7 @@ module MenuSkeleton = {
   @react.component
   let make = (
     ~className="",
-    ~children=?,
+    ~children=React.null,
     ~id=?,
     ~style=?,
     ~onClick=?,
@@ -687,7 +687,6 @@ module MenuSkeleton = {
       ?onClick,
       ?onKeyDown,
       ?onKeyDownCapture,
-      ?children,
       className,
       dataSlot: "sidebar-menu-skeleton",
       dataSidebar: "menu-skeleton",
@@ -695,7 +694,7 @@ module MenuSkeleton = {
     <div {...props} className={`flex h-8 items-center gap-2 rounded-md px-2 ${className}`}>
       <div className="bg-muted size-4 rounded-md" />
       <div className="bg-muted h-4 max-w-(--skeleton-width) flex-1" />
-      {children->Option.getOr(React.null)}
+      {children}
     </div>
   }
 }

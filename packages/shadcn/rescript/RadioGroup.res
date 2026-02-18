@@ -43,7 +43,7 @@ module Item = {
   @react.component
   let make = (
     ~className="",
-    ~children=?,
+    ~children=React.null,
     ~id=?,
     ~name=?,
     ~value=?,
@@ -85,6 +85,6 @@ module Item = {
           className="absolute top-1/2 left-1/2 size-2 -translate-x-1/2 -translate-y-1/2 fill-current"
         />
       </BaseUi.Radio.Indicator>
-      {children->Option.getOr(React.null)}
+      {children}
     </BaseUi.Radio.Root>
 }

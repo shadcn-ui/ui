@@ -5,7 +5,7 @@ open BaseUi.Types
 @react.component
 let make = (
   ~className="",
-  ~children=?,
+  ~children=React.null,
   ~id=?,
   ~name=?,
   ~checked=?,
@@ -48,6 +48,6 @@ let make = (
       dataSlot="switch-thumb"
       className="bg-background dark:data-unchecked:bg-foreground dark:data-checked:bg-primary-foreground pointer-events-none block rounded-full ring-0 transition-transform group-data-[size=default]/switch:size-4 group-data-[size=sm]/switch:size-3 group-data-[size=default]/switch:data-checked:translate-x-[calc(100%-2px)] group-data-[size=sm]/switch:data-checked:translate-x-[calc(100%-2px)] group-data-[size=default]/switch:data-unchecked:translate-x-0 group-data-[size=sm]/switch:data-unchecked:translate-x-0"
     />
-    {children->Option.getOr(React.null)}
+    {children}
   </BaseUi.Switch.Root>
 }

@@ -5,7 +5,7 @@ open BaseUi.Types
 @react.component
 let make = (
   ~className="",
-  ~children=?,
+  ~children=React.null,
   ~id=?,
   ~value=?,
   ~max=?,
@@ -27,7 +27,7 @@ let make = (
     dataSlot="progress"
     className={`flex flex-wrap gap-3 ${className}`}
   >
-    {children->Option.getOr(React.null)}
+    {children}
     <BaseUi.Progress.Track
       dataSlot="progress-track"
       className="bg-muted relative flex h-1 w-full items-center overflow-x-hidden rounded-full"

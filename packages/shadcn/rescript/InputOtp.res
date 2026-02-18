@@ -101,7 +101,7 @@ module Slot = {
   @react.component
   let make = (
     ~className="",
-    ~children=?,
+    ~children=React.null,
     ~id=?,
     ~index=0,
     ~style=?,
@@ -124,7 +124,6 @@ module Slot = {
       ?onClick,
       ?onKeyDown,
       ?onKeyDownCapture,
-      ?children,
       className,
       dataSlot: "input-otp-slot",
       dataActive: isActive,
@@ -139,7 +138,7 @@ module Slot = {
             <div className="animate-caret-blink bg-foreground h-4 w-px duration-1000" />
           </div>
         : React.null}
-      {children->Option.getOr(React.null)}
+      {children}
     </div>
   }
 }
@@ -148,7 +147,7 @@ module Separator = {
   @react.component
   let make = (
     ~className="",
-    ~children=?,
+    ~children=React.null,
     ~id=?,
     ~style=?,
     ~onClick=?,
@@ -161,7 +160,6 @@ module Separator = {
       ?onClick,
       ?onKeyDown,
       ?onKeyDownCapture,
-      ?children,
       className,
       dataSlot: "input-otp-separator",
     }
@@ -171,7 +169,7 @@ module Separator = {
       className={`flex items-center [&_svg:not([class*='size-'])]:size-4 ${className}`}
     >
       <Icons.Minus />
-      {children->Option.getOr(React.null)}
+      {children}
     </div>
   }
 }

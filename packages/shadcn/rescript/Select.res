@@ -82,7 +82,7 @@ module Trigger = {
   @react.component
   let make = (
     ~className="",
-    ~children=?,
+    ~children=React.null,
     ~id=?,
     ~style=?,
     ~onClick=?,
@@ -100,7 +100,7 @@ module Trigger = {
     let widthClass = hasWidthOverride ? "" : "w-fit"
     let content =
       <>
-        {children->Option.getOr(React.null)}
+        {children}
         <BaseUi.Select.Icon
           render={<Icons.ChevronDown
             className="text-muted-foreground pointer-events-none size-4"

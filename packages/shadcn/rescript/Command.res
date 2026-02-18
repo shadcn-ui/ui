@@ -68,7 +68,7 @@ module Dialog = {
   @react.component
   let make = (
     ~className="",
-    ~children=?,
+    ~children=React.null,
     ~open_=?,
     ~defaultOpen=?,
     ~onOpenChange=?,
@@ -94,7 +94,7 @@ module Dialog = {
           dataSlot="dialog-content"
           className={`bg-background data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 ring-foreground/10 fixed top-1/2 left-1/2 z-50 grid w-full max-w-[calc(100%-2rem)] -translate-x-1/2 -translate-y-1/2 gap-4 rounded-xl p-4 text-sm ring-1 duration-100 outline-none sm:max-w-sm top-1/3 translate-y-0 overflow-hidden rounded-xl! p-0 ${className}`}
         >
-          {children->Option.getOr(React.null)}
+          {children}
           {showCloseButton
             ? <BaseUi.Dialog.Close
                 dataSlot="dialog-close"
@@ -214,7 +214,7 @@ module Item = {
   @react.component
   let make = (
     ~className="",
-    ~children=?,
+    ~children=React.null,
     ~id=?,
     ~style=?,
     ~value=?,
@@ -236,7 +236,7 @@ module Item = {
       dataSlot="command-item"
       className={`data-selected:bg-muted data-selected:text-foreground data-selected:*:[svg]:text-foreground group/command-item relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none in-data-[slot=dialog-content]:rounded-lg! data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 ${className}`}
     >
-      {children->Option.getOr(React.null)}
+      {children}
       <Icons.Check
         className="ml-auto opacity-0 group-has-data-[slot=command-shortcut]/command-item:hidden group-data-[checked=true]/command-item:opacity-100"
       />

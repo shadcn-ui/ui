@@ -162,7 +162,7 @@ module Content = {
   @react.component
   let make = (
     ~className="",
-    ~children=?,
+    ~children=React.null,
     ~id=?,
     ~style=?,
     ~onClick=?,
@@ -185,7 +185,7 @@ module Content = {
         <div
           className="bg-muted mx-auto mt-4 hidden h-1 w-[100px] shrink-0 rounded-full group-data-[vaul-drawer-direction=bottom]/drawer-content:block"
         />
-        {children->Option.getOr(React.null)}
+        {children}
       </DrawerPrimitive.Content>
     </Portal>
 }

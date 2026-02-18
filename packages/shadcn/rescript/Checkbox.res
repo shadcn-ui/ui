@@ -5,7 +5,7 @@ open BaseUi.Types
 @react.component
 let make = (
   ~className="",
-  ~children=?,
+  ~children=React.null,
   ~id=?,
   ~name=?,
   ~checked=?,
@@ -47,5 +47,5 @@ let make = (
     >
       <Icons.Check />
     </BaseUi.Checkbox.Indicator>
-    {children->Option.getOr(React.null)}
+    {children}
   </BaseUi.Checkbox.Root>

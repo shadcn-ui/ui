@@ -60,7 +60,7 @@ module Trigger = {
   @react.component
   let make = (
     ~className="",
-    ~children=?,
+    ~children=React.null,
     ~id=?,
     ~style=?,
     ~onClick=?,
@@ -88,7 +88,7 @@ module Trigger = {
       dataSlot="combobox-trigger"
       className={`[&_svg:not([class*='size-'])]:size-4 ${className}`}
     >
-      {children->Option.getOr(React.null)}
+      {children}
       <Icons.ChevronDown className="text-muted-foreground pointer-events-none size-4" />
     </BaseUi.Combobox.Trigger>
 }
@@ -133,7 +133,7 @@ module Input = {
   @react.component
   let make = (
     ~className="",
-    ~children=?,
+    ~children=React.null,
     ~id=?,
     ~style=?,
     ~name=?,
@@ -201,7 +201,7 @@ module Input = {
           <Icons.ChevronDown className="text-muted-foreground pointer-events-none size-4" />
         </BaseUi.Combobox.Trigger>
       </div>
-      {children->Option.getOr(React.null)}
+      {children}
     </div>
   }
 }
@@ -273,7 +273,7 @@ module Item = {
   @react.component
   let make = (
     ~className="",
-    ~children=?,
+    ~children=React.null,
     ~id=?,
     ~style=?,
     ~value=?,
@@ -295,7 +295,7 @@ module Item = {
       dataSlot="combobox-item"
       className={`data-highlighted:bg-accent data-highlighted:text-accent-foreground not-data-[variant=destructive]:data-highlighted:**:text-accent-foreground relative flex w-full cursor-default items-center gap-2 rounded-md py-1 pr-8 pl-1.5 text-sm outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 ${className}`}
     >
-      {children->Option.getOr(React.null)}
+      {children}
       <BaseUi.Combobox.ItemIndicator
         render={<span
           className="pointer-events-none absolute right-2 flex size-4 items-center justify-center"
@@ -392,7 +392,7 @@ module Chip = {
   @react.component
   let make = (
     ~className="",
-    ~children=?,
+    ~children=React.null,
     ~id=?,
     ~style=?,
     ~onClick=?,
@@ -410,7 +410,7 @@ module Chip = {
       dataSlot="combobox-chip"
       className={`bg-muted text-foreground flex h-[calc(--spacing(5.25))] w-fit items-center justify-center gap-1 rounded-sm px-1.5 text-xs font-medium whitespace-nowrap has-disabled:pointer-events-none has-disabled:cursor-not-allowed has-disabled:opacity-50 has-data-[slot=combobox-chip-remove]:pr-0 ${className}`}
     >
-      {children->Option.getOr(React.null)}
+      {children}
       <BaseUi.Combobox.ChipRemove
         render={<Button variant=Ghost size=IconXs>
           <Icons.X className="pointer-events-none" />

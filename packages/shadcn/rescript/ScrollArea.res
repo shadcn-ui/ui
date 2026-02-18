@@ -47,7 +47,7 @@ module ScrollBar = {
   @react.component
   let make = (
     ~className="",
-    ~children=?,
+    ~children=React.null,
     ~id=?,
     ~style=?,
     ~onClick=?,
@@ -68,6 +68,6 @@ module ScrollBar = {
       <BaseUi.ScrollArea.Thumb
         dataSlot="scroll-area-thumb" className="bg-border relative flex-1 rounded-full"
       />
-      {children->Option.getOr(React.null)}
+      {children}
     </BaseUi.ScrollArea.Scrollbar>
 }

@@ -149,7 +149,7 @@ module CheckboxItem = {
   @react.component
   let make = (
     ~className="",
-    ~children=?,
+    ~children=React.null,
     ~id=?,
     ~style=?,
     ~checked=?,
@@ -182,7 +182,7 @@ module CheckboxItem = {
           {"✓"->React.string}
         </BaseUi.ContextMenu.CheckboxItemIndicator>
       </span>
-      {children->Option.getOr(React.null)}
+      {children}
     </BaseUi.ContextMenu.CheckboxItem>
 }
 
@@ -198,7 +198,7 @@ module RadioItem = {
   @react.component
   let make = (
     ~className="",
-    ~children=?,
+    ~children=React.null,
     ~id=?,
     ~style=?,
     ~value=?,
@@ -227,7 +227,7 @@ module RadioItem = {
           {"✓"->React.string}
         </BaseUi.ContextMenu.RadioItemIndicator>
       </span>
-      {children->Option.getOr(React.null)}
+      {children}
     </BaseUi.ContextMenu.RadioItem>
 }
 
@@ -298,7 +298,7 @@ module SubTrigger = {
   @react.component
   let make = (
     ~className="",
-    ~children=?,
+    ~children=React.null,
     ~id=?,
     ~style=?,
     ~onClick=?,
@@ -318,7 +318,7 @@ module SubTrigger = {
       dataSlot="context-menu-sub-trigger"
       className={`focus:bg-accent focus:text-accent-foreground data-open:bg-accent data-open:text-accent-foreground flex cursor-default items-center gap-1.5 rounded-md px-1.5 py-1 text-sm outline-hidden select-none data-inset:pl-7 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 ${className}`}
     >
-      {children->Option.getOr(React.null)}
+      {children}
       <span className="cn-rtl-flip ml-auto"> {">"->React.string} </span>
     </BaseUi.ContextMenu.SubmenuTrigger>
 }
