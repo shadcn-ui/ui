@@ -79,17 +79,12 @@ let make = (~className="", ~children=?, ~dataOrientation=DataOrientation.Horizon
     canScrollPrev,
     canScrollNext,
   })
-  let rootProps: BaseUi.Types.props<string, bool> = {
-    className: "",
-    children: React.null,
-    dataSlot: "carousel",
-  }
   module Provider = {
     let make = React.Context.provider(context)
   }
   <Provider value={providerValue}>
     <div
-      {...rootProps}
+      dataSlot="carousel"
       className={`relative ${className}`}
       role="region"
       ariaRoledescription="carousel"
@@ -110,23 +105,14 @@ module Content = {
     ~onKeyDownCapture=?,
   ) => {
     let {carouselRef, orientation} = useCarousel()
-    let outerProps: BaseUi.Types.props<string, bool> = {
-      className: "",
-      children: React.null,
-      dataSlot: "carousel-content",
-    }
-    let props: BaseUi.Types.props<string, bool> = {
-      ?id,
-      ?style,
-      ?onClick,
-      ?onKeyDown,
-      ?onKeyDownCapture,
-      className,
-      ?children,
-    }
-    <div {...outerProps} ref={carouselRef} className="overflow-hidden">
+    <div dataSlot="carousel-content" ref={carouselRef} className="overflow-hidden">
       <div
-        {...props}
+        ?id
+        ?style
+        ?onClick
+        ?onKeyDown
+        ?onKeyDownCapture
+        ?children
         className={`flex ${orientation == DataOrientation.Horizontal
             ? "-ml-4"
             : "-mt-4 flex-col"} ${className}`}
@@ -147,20 +133,16 @@ module Item = {
     ~onKeyDownCapture=?,
   ) => {
     let {orientation} = useCarousel()
-    let props: BaseUi.Types.props<string, bool> = {
-      ?id,
-      ?style,
-      ?onClick,
-      ?onKeyDown,
-      ?onKeyDownCapture,
-      className,
-      ?children,
-      dataSlot: "carousel-item",
-    }
     <div
-      {...props}
+      ?id
+      ?style
+      ?onClick
+      ?onKeyDown
+      ?onKeyDownCapture
+      ?children
       role="group"
       ariaRoledescription="slide"
+      dataSlot="carousel-item"
       className={`min-w-0 shrink-0 grow-0 basis-full ${orientation == DataOrientation.Horizontal
           ? "pl-4"
           : "pt-4"} ${className}`}

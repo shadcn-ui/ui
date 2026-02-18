@@ -126,11 +126,7 @@ module Input = {
     ~onKeyDownCapture=?,
     ~placeholder=?,
   ) => {
-    let wrapperProps: BaseUi.Types.props<string, bool> = {
-      className: "",
-      dataSlot: "command-input-wrapper",
-    }
-    <div {...wrapperProps} className="p-1 pb-0">
+    <div dataSlot="command-input-wrapper" className="p-1 pb-0">
       <InputGroup
         className="bg-input/30 border-input/30 h-8! rounded-lg! shadow-none! *:data-[slot=input-group-addon]:pl-2!"
       >
@@ -253,20 +249,15 @@ module Shortcut = {
     ~onClick=?,
     ~onKeyDown=?,
     ~onKeyDownCapture=?,
-  ) => {
-    let props: BaseUi.Types.props<string, bool> = {
-      ?id,
-      ?style,
-      ?children,
-      ?onClick,
-      ?onKeyDown,
-      ?onKeyDownCapture,
-      className,
-      dataSlot: "command-shortcut",
-    }
+  ) =>
     <span
-      {...props}
+      ?id
+      ?style
+      ?children
+      ?onClick
+      ?onKeyDown
+      ?onKeyDownCapture
+      dataSlot="command-shortcut"
       className={`text-muted-foreground group-data-selected/command-item:text-foreground ml-auto text-xs tracking-widest ${className}`}
-     ?children />
-  }
+    />
 }

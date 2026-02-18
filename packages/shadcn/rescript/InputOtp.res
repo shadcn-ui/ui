@@ -79,22 +79,17 @@ module Group = {
     ~onClick=?,
     ~onKeyDown=?,
     ~onKeyDownCapture=?,
-  ) => {
-    let props: BaseUi.Types.props<string, bool> = {
-      ?id,
-      ?style,
-      ?onClick,
-      ?onKeyDown,
-      ?onKeyDownCapture,
-      ?children,
-      className,
-      dataSlot: "input-otp-group",
-    }
+  ) =>
     <div
-      {...props}
+      ?id
+      ?style
+      ?onClick
+      ?onKeyDown
+      ?onKeyDownCapture
+      ?children
+      dataSlot="input-otp-group"
       className={`has-aria-invalid:ring-destructive/20 dark:has-aria-invalid:ring-destructive/40 has-aria-invalid:border-destructive flex items-center rounded-lg has-aria-invalid:ring-3 ${className}`}
-     ?children />
-  }
+    />
 }
 
 module Slot = {
@@ -117,19 +112,15 @@ module Slot = {
       slot
       ->Belt.Option.flatMap(slot => slot.char->Nullable.toOption)
       ->Belt.Option.mapWithDefault(React.null, value => value->React.string)
-    let props: BaseUi.Types.props<string, bool> = {
-      ?id,
-      index,
-      ?style,
-      ?onClick,
-      ?onKeyDown,
-      ?onKeyDownCapture,
-      className,
-      dataSlot: "input-otp-slot",
-      dataActive: isActive,
-    }
     <div
-      {...props}
+      ?id
+      ?style
+      ?onClick
+      ?onKeyDown
+      ?onKeyDownCapture
+      dataSlot="input-otp-slot"
+      dataActive={isActive}
+      index
       className={`dark:bg-input/30 border-input data-[active=true]:border-ring data-[active=true]:ring-ring/50 data-[active=true]:aria-invalid:ring-destructive/20 dark:data-[active=true]:aria-invalid:ring-destructive/40 aria-invalid:border-destructive data-[active=true]:aria-invalid:border-destructive relative flex size-8 items-center justify-center border-y border-r text-sm transition-all outline-none first:rounded-l-lg first:border-l last:rounded-r-lg data-[active=true]:z-10 data-[active=true]:ring-3 ${className}`}
     >
       {char}
@@ -153,23 +144,18 @@ module Separator = {
     ~onClick=?,
     ~onKeyDown=?,
     ~onKeyDownCapture=?,
-  ) => {
-    let props: BaseUi.Types.props<string, bool> = {
-      ?id,
-      ?style,
-      ?onClick,
-      ?onKeyDown,
-      ?onKeyDownCapture,
-      className,
-      dataSlot: "input-otp-separator",
-    }
+  ) =>
     <div
-      {...props}
+      ?id
+      ?style
+      ?onClick
+      ?onKeyDown
+      ?onKeyDownCapture
       role="separator"
+      dataSlot="input-otp-separator"
       className={`flex items-center [&_svg:not([class*='size-'])]:size-4 ${className}`}
     >
       <Icons.Minus />
       {children}
     </div>
-  }
 }

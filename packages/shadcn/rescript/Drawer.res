@@ -200,22 +200,17 @@ module Header = {
     ~onClick=?,
     ~onKeyDown=?,
     ~onKeyDownCapture=?,
-  ) => {
-    let props: BaseUi.Types.props<string, bool> = {
-      ?id,
-      ?style,
-      ?children,
-      ?onClick,
-      ?onKeyDown,
-      ?onKeyDownCapture,
-      className,
-      dataSlot: "drawer-header",
-    }
+  ) =>
     <div
-      {...props}
+      ?id
+      ?style
+      ?children
+      ?onClick
+      ?onKeyDown
+      ?onKeyDownCapture
+      dataSlot="drawer-header"
       className={`flex flex-col gap-0.5 p-4 group-data-[vaul-drawer-direction=bottom]/drawer-content:text-center group-data-[vaul-drawer-direction=top]/drawer-content:text-center md:gap-0.5 md:text-left ${className}`}
-     ?children />
-  }
+    />
 }
 
 module Footer = {
@@ -228,19 +223,17 @@ module Footer = {
     ~onClick=?,
     ~onKeyDown=?,
     ~onKeyDownCapture=?,
-  ) => {
-    let props: BaseUi.Types.props<string, bool> = {
-      ?id,
-      ?style,
-      ?children,
-      ?onClick,
-      ?onKeyDown,
-      ?onKeyDownCapture,
-      className,
-      dataSlot: "drawer-footer",
-    }
-    <div {...props} className={`mt-auto flex flex-col gap-2 p-4 ${className}`} ?children />
-  }
+  ) =>
+    <div
+      ?id
+      ?style
+      ?children
+      ?onClick
+      ?onKeyDown
+      ?onKeyDownCapture
+      dataSlot="drawer-footer"
+      className={`mt-auto flex flex-col gap-2 p-4 ${className}`}
+    />
 }
 
 module Title = {

@@ -26,22 +26,17 @@ module Set = {
     ~onClick=?,
     ~onKeyDown=?,
     ~onKeyDownCapture=?,
-  ) => {
-    let props: BaseUi.Types.props<string, bool> = {
-      ?id,
-      ?children,
-      ?style,
-      ?onClick,
-      ?onKeyDown,
-      ?onKeyDownCapture,
-      className,
-      dataSlot: "field-set",
-    }
+  ) =>
     <fieldset
-      {...props}
+      ?id
+      ?children
+      ?style
+      ?onClick
+      ?onKeyDown
+      ?onKeyDownCapture
+      dataSlot="field-set"
       className={`flex flex-col gap-4 has-[>[data-slot=checkbox-group]]:gap-3 has-[>[data-slot=radio-group]]:gap-3 ${className}`}
     />
-  }
 }
 
 module Legend = {
@@ -57,19 +52,15 @@ module Legend = {
     ~dataVariant=Variant.Legend,
   ) => {
     let variant = dataVariant
-    let props: BaseUi.Types.props<string, bool> = {
-      ?id,
-      ?children,
-      ?style,
-      ?onClick,
-      ?onKeyDown,
-      ?onKeyDownCapture,
-      className,
-      dataSlot: "field-legend",
-      dataVariant: variant,
-    }
     <legend
-      {...props}
+      ?id
+      ?children
+      ?style
+      ?onClick
+      ?onKeyDown
+      ?onKeyDownCapture
+      dataSlot="field-legend"
+      dataVariant={variant}
       className={`mb-1.5 font-medium data-[variant=label]:text-sm data-[variant=legend]:text-base ${className}`}
     />
   }
@@ -85,22 +76,17 @@ module Group = {
     ~onClick=?,
     ~onKeyDown=?,
     ~onKeyDownCapture=?,
-  ) => {
-    let props: BaseUi.Types.props<string, bool> = {
-      ?id,
-      ?children,
-      ?style,
-      ?onClick,
-      ?onKeyDown,
-      ?onKeyDownCapture,
-      className,
-      dataSlot: "field-group",
-    }
+  ) =>
     <div
-      {...props}
+      ?id
+      ?children
+      ?style
+      ?onClick
+      ?onKeyDown
+      ?onKeyDownCapture
+      dataSlot="field-group"
       className={`group/field-group @container/field-group flex w-full flex-col gap-5 data-[slot=checkbox-group]:gap-3 *:data-[slot=field-group]:gap-4 ${className}`}
     />
-  }
 }
 
 @react.component
@@ -126,23 +112,18 @@ let make = (
     | None => DataOrientation.Vertical
     }
   }
-  let props: BaseUi.Types.props<string, bool> = {
-    ?id,
-    ?children,
-    ?style,
-    ?onClick,
-    ?onKeyDown,
-    ?onKeyDownCapture,
-    orientation: ?None,
-    className,
-    ?disabled,
-    ?dataDisabled,
-    dataSlot: "field",
-    dataOrientation: resolvedOrientation,
-  }
   <div
-    {...props}
+    ?id
+    ?children
+    ?style
+    ?onClick
+    ?onKeyDown
+    ?onKeyDownCapture
+    ?disabled
+    ?dataDisabled
     role="group"
+    dataSlot="field"
+    dataOrientation={resolvedOrientation}
     className={`${fieldVariants(~orientation=resolvedOrientation)} ${className}`}
   />
 }
@@ -157,22 +138,17 @@ module Content = {
     ~onClick=?,
     ~onKeyDown=?,
     ~onKeyDownCapture=?,
-  ) => {
-    let props: BaseUi.Types.props<string, bool> = {
-      ?id,
-      ?children,
-      ?style,
-      ?onClick,
-      ?onKeyDown,
-      ?onKeyDownCapture,
-      className,
-      dataSlot: "field-content",
-    }
+  ) =>
     <div
-      {...props}
+      ?id
+      ?children
+      ?style
+      ?onClick
+      ?onKeyDown
+      ?onKeyDownCapture
+      dataSlot="field-content"
       className={`group/field-content flex flex-1 flex-col gap-0.5 leading-snug ${className}`}
     />
-  }
 }
 
 module Label = {
@@ -209,22 +185,17 @@ module Title = {
     ~onClick=?,
     ~onKeyDown=?,
     ~onKeyDownCapture=?,
-  ) => {
-    let props: BaseUi.Types.props<string, bool> = {
-      ?id,
-      ?children,
-      ?style,
-      ?onClick,
-      ?onKeyDown,
-      ?onKeyDownCapture,
-      className,
-      dataSlot: "field-label",
-    }
+  ) =>
     <div
-      {...props}
+      ?id
+      ?children
+      ?style
+      ?onClick
+      ?onKeyDown
+      ?onKeyDownCapture
+      dataSlot="field-label"
       className={`flex w-fit items-center gap-2 text-sm leading-snug font-medium group-data-[disabled=true]/field:opacity-50 ${className}`}
     />
-  }
 }
 
 module Description = {
@@ -237,22 +208,17 @@ module Description = {
     ~onClick=?,
     ~onKeyDown=?,
     ~onKeyDownCapture=?,
-  ) => {
-    let props: BaseUi.Types.props<string, bool> = {
-      ?id,
-      ?children,
-      ?style,
-      ?onClick,
-      ?onKeyDown,
-      ?onKeyDownCapture,
-      className,
-      dataSlot: "field-description",
-    }
+  ) =>
     <p
-      {...props}
+      ?id
+      ?children
+      ?style
+      ?onClick
+      ?onKeyDown
+      ?onKeyDownCapture
+      dataSlot="field-description"
       className={`text-muted-foreground text-left text-sm leading-normal font-normal group-has-data-horizontal/field:text-balance [[data-variant=legend]+&]:-mt-1.5 last:mt-0 nth-last-2:-mt-1 [&>a:hover]:text-primary [&>a]:underline [&>a]:underline-offset-4 ${className}`}
     />
-  }
 }
 
 module Separator = {
@@ -267,19 +233,14 @@ module Separator = {
     ~onKeyDownCapture=?,
   ) => {
     let hasContent = children->Option.isSome
-    let props: BaseUi.Types.props<string, bool> = {
-      ?id,
-      ?children,
-      ?style,
-      ?onClick,
-      ?onKeyDown,
-      ?onKeyDownCapture,
-      className,
-      dataSlot: "field-separator",
-      dataContent: hasContent,
-    }
     <div
-      {...props}
+      ?id
+      ?style
+      ?onClick
+      ?onKeyDown
+      ?onKeyDownCapture
+      dataSlot="field-separator"
+      dataContent={hasContent}
       className={`relative -my-2 h-5 text-sm group-data-[variant=outline]/field-group:-mb-2 ${className}`}
     >
       <BaseUi.Separator
@@ -307,21 +268,16 @@ module Error = {
     ~onClick=?,
     ~onKeyDown=?,
     ~onKeyDownCapture=?,
-  ) => {
-    let props: BaseUi.Types.props<string, bool> = {
-      ?id,
-      ?children,
-      ?style,
-      ?onClick,
-      ?onKeyDown,
-      ?onKeyDownCapture,
-      className,
-      dataSlot: "field-error",
-    }
+  ) =>
     <div
-      {...props}
+      ?id
+      ?children
+      ?style
+      ?onClick
+      ?onKeyDown
+      ?onKeyDownCapture
       role="alert"
+      dataSlot="field-error"
       className={`text-destructive text-sm font-normal ${className}`}
-     ?children />
-  }
+    />
 }

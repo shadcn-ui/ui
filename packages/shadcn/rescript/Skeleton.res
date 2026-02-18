@@ -12,15 +12,14 @@ let make = (
   ~onKeyDown=?,
   ~onKeyDownCapture=?,
 ) => {
-  let props: BaseUi.Types.props<string, bool> = {
-    ?id,
-    ?children,
-    ?style,
-    ?onClick,
-    ?onKeyDown,
-    ?onKeyDownCapture,
-    className,
-    dataSlot: "skeleton",
-  }
-  <div {...props} className={`bg-muted animate-pulse rounded-md ${className}`} />
+  <div
+    ?id
+    ?children
+    ?style
+    ?onClick
+    ?onKeyDown
+    ?onKeyDownCapture
+    dataSlot="skeleton"
+    className={`bg-muted animate-pulse rounded-md ${className}`}
+  />
 }

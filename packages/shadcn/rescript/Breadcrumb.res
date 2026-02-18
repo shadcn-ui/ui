@@ -12,17 +12,17 @@ let make = (
   ~onKeyDown=?,
   ~onKeyDownCapture=?,
 ) => {
-  let props: BaseUi.Types.props<string, bool> = {
-    ?id,
-    ?style,
-    ?children,
-    ?onClick,
-    ?onKeyDown,
-    ?onKeyDownCapture,
-    className,
-    dataSlot: "breadcrumb",
-  }
-  <nav {...props} ariaLabel="breadcrumb" className ?children />
+  <nav
+    ?id
+    ?style
+    ?children
+    ?onClick
+    ?onKeyDown
+    ?onKeyDownCapture
+    ariaLabel="breadcrumb"
+    dataSlot="breadcrumb"
+    className
+  />
 }
 
 module List = {
@@ -35,23 +35,17 @@ module List = {
     ~onClick=?,
     ~onKeyDown=?,
     ~onKeyDownCapture=?,
-  ) => {
-    let props: BaseUi.Types.props<string, bool> = {
-      ?id,
-      ?style,
-      ?children,
-      ?onClick,
-      ?onKeyDown,
-      ?onKeyDownCapture,
-      className,
-      dataSlot: "breadcrumb-list",
-    }
+  ) =>
     <ol
-      {...props}
-      className={`text-muted-foreground flex flex-wrap items-center gap-1.5 text-sm wrap-break-word ${className}`}
+      ?id
+      ?style
       ?children
+      ?onClick
+      ?onKeyDown
+      ?onKeyDownCapture
+      dataSlot="breadcrumb-list"
+      className={`text-muted-foreground flex flex-wrap items-center gap-1.5 text-sm wrap-break-word ${className}`}
     />
-  }
 }
 
 module Item = {
@@ -64,19 +58,17 @@ module Item = {
     ~onClick=?,
     ~onKeyDown=?,
     ~onKeyDownCapture=?,
-  ) => {
-    let props: BaseUi.Types.props<string, bool> = {
-      ?id,
-      ?style,
-      ?children,
-      ?onClick,
-      ?onKeyDown,
-      ?onKeyDownCapture,
-      className,
-      dataSlot: "breadcrumb-item",
-    }
-    <li {...props} className={`inline-flex items-center gap-1 ${className}`} ?children />
-  }
+  ) =>
+    <li
+      ?id
+      ?style
+      ?children
+      ?onClick
+      ?onKeyDown
+      ?onKeyDownCapture
+      dataSlot="breadcrumb-item"
+      className={`inline-flex items-center gap-1 ${className}`}
+    />
 }
 
 module Link = {
@@ -93,20 +85,23 @@ module Link = {
     ~onKeyDownCapture=?,
     ~render=?,
   ) => {
-    let props: BaseUi.Types.props<string, bool> = {
-      ?id,
-      ?style,
-      ?children,
-      ?onClick,
-      ?onKeyDown,
-      ?onKeyDownCapture,
-      ?href,
-      ?target,
-      render: React.null,
-      dataSlot: "breadcrumb-link",
-      className: `hover:text-foreground transition-colors ${className}`,
-    }
-    BaseUi.Render.use({defaultTagName: "a", ?render, props})
+    BaseUi.Render.use({
+      defaultTagName: "a",
+      ?render,
+      props: {
+        ?id,
+        ?style,
+        ?children,
+        ?onClick,
+        ?onKeyDown,
+        ?onKeyDownCapture,
+        ?href,
+        ?target,
+        render: React.null,
+        dataSlot: "breadcrumb-link",
+        className: `hover:text-foreground transition-colors ${className}`,
+      },
+    })
   }
 }
 
@@ -120,26 +115,20 @@ module Page = {
     ~onClick=?,
     ~onKeyDown=?,
     ~onKeyDownCapture=?,
-  ) => {
-    let props: BaseUi.Types.props<string, bool> = {
-      ?id,
-      ?style,
-      ?children,
-      ?onClick,
-      ?onKeyDown,
-      ?onKeyDownCapture,
-      className,
-      dataSlot: "breadcrumb-page",
-    }
+  ) =>
     <span
-      {...props}
+      ?id
+      ?style
+      ?children
+      ?onClick
+      ?onKeyDown
+      ?onKeyDownCapture
       ariaCurrent="page"
       ariaDisabled=true
       role="link"
+      dataSlot="breadcrumb-page"
       className={`text-foreground font-normal ${className}`}
-      ?children
     />
-  }
 }
 
 module Separator = {
@@ -157,18 +146,17 @@ module Separator = {
     | Some(content) => content
     | None => <Icons.ChevronRight className="cn-rtl-flip" />
     }
-    let props: BaseUi.Types.props<string, bool> = {
-      ?id,
-      ?style,
-      ?children,
-      ?onClick,
-      ?onKeyDown,
-      ?onKeyDownCapture,
-      className,
-      dataSlot: "breadcrumb-separator",
-    }
-
-    <li {...props} ariaHidden=true role="presentation" className={`[&>svg]:size-3.5 ${className}`}>
+    <li
+      ?id
+      ?style
+      ?onClick
+      ?onKeyDown
+      ?onKeyDownCapture
+      ariaHidden=true
+      role="presentation"
+      dataSlot="breadcrumb-separator"
+      className={`[&>svg]:size-3.5 ${className}`}
+    >
       {content}
     </li>
   }
@@ -176,24 +164,19 @@ module Separator = {
 
 module Ellipsis = {
   @react.component
-  let make = (~className="", ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?, ~onKeyDownCapture=?) => {
-    let props: BaseUi.Types.props<string, bool> = {
-      ?id,
-      ?style,
-      ?onClick,
-      ?onKeyDown,
-      ?onKeyDownCapture,
-      className,
-      dataSlot: "breadcrumb-ellipsis",
-    }
+  let make = (~className="", ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?, ~onKeyDownCapture=?) =>
     <span
-      {...props}
+      ?id
+      ?style
+      ?onClick
+      ?onKeyDown
+      ?onKeyDownCapture
       ariaHidden=true
       role="presentation"
+      dataSlot="breadcrumb-ellipsis"
       className={`flex size-5 items-center justify-center [&>svg]:size-4 ${className}`}
     >
       <Icons.MoreHorizontal />
       <span className="sr-only"> {"More"->React.string} </span>
     </span>
-  }
 }

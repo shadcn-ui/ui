@@ -35,18 +35,18 @@ let make = (
   ~dataVariant=Variant.Default,
 ) => {
   let variant = dataVariant
-  let props: BaseUi.Types.props<string, bool> = {
-    ?id,
-    ?style,
-    ?onClick,
-    ?onKeyDown,
-    ?onKeyDownCapture,
-    ?children,
-    className,
-    dataSlot: "alert",
-    dataVariant: variant,
-  }
-  <div {...props} role="alert" className={`${alertVariants(~variant)} ${className}`} />
+  <div
+    ?id
+    ?style
+    ?onClick
+    ?onKeyDown
+    ?onKeyDownCapture
+    ?children
+    role="alert"
+    dataSlot="alert"
+    dataVariant={variant}
+    className={`${alertVariants(~variant)} ${className}`}
+  />
 }
 
 module Title = {
@@ -59,22 +59,17 @@ module Title = {
     ~onClick=?,
     ~onKeyDown=?,
     ~onKeyDownCapture=?,
-  ) => {
-    let props: BaseUi.Types.props<string, bool> = {
-      ?id,
-      ?style,
-      ?onClick,
-      ?onKeyDown,
-      ?onKeyDownCapture,
-      ?children,
-      className,
-      dataSlot: "alert-title",
-    }
+  ) =>
     <div
-      {...props}
+      ?id
+      ?style
+      ?onClick
+      ?onKeyDown
+      ?onKeyDownCapture
+      ?children
+      dataSlot="alert-title"
       className={`[&_a]:hover:text-foreground font-medium group-has-[>svg]/alert:col-start-2 [&_a]:underline [&_a]:underline-offset-3 ${className}`}
     />
-  }
 }
 
 module Description = {
@@ -87,22 +82,17 @@ module Description = {
     ~onClick=?,
     ~onKeyDown=?,
     ~onKeyDownCapture=?,
-  ) => {
-    let props: BaseUi.Types.props<string, bool> = {
-      ?id,
-      ?style,
-      ?onClick,
-      ?onKeyDown,
-      ?onKeyDownCapture,
-      ?children,
-      className,
-      dataSlot: "alert-description",
-    }
+  ) =>
     <div
-      {...props}
+      ?id
+      ?style
+      ?onClick
+      ?onKeyDown
+      ?onKeyDownCapture
+      ?children
+      dataSlot="alert-description"
       className={`text-muted-foreground [&_a]:hover:text-foreground text-sm text-balance md:text-pretty [&_a]:underline [&_a]:underline-offset-3 [&_p:not(:last-child)]:mb-4 ${className}`}
     />
-  }
 }
 
 module Action = {
@@ -115,17 +105,15 @@ module Action = {
     ~onClick=?,
     ~onKeyDown=?,
     ~onKeyDownCapture=?,
-  ) => {
-    let props: BaseUi.Types.props<string, bool> = {
-      ?id,
-      ?style,
-      ?onClick,
-      ?onKeyDown,
-      ?onKeyDownCapture,
-      ?children,
-      className,
-      dataSlot: "alert-action",
-    }
-    <div {...props} className={`absolute top-2 right-2 ${className}`} />
-  }
+  ) =>
+    <div
+      ?id
+      ?style
+      ?onClick
+      ?onKeyDown
+      ?onKeyDownCapture
+      ?children
+      dataSlot="alert-action"
+      className={`absolute top-2 right-2 ${className}`}
+    />
 }

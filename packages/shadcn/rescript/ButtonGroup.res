@@ -24,22 +24,18 @@ let make = (
   ~dataOrientation=DataOrientation.Horizontal,
 ) => {
   let orientation = dataOrientation
-  let props: BaseUi.Types.props<string, bool> = {
-    ?id,
-    ?style,
-    ?onClick,
-    ?onKeyDown,
-    ?onKeyDownCapture,
-    ?children,
-    className,
-    dataOrientation: orientation,
-    dataSlot: "button-group",
-  }
   <div
-    {...props}
+    ?id
+    ?style
+    ?onClick
+    ?onKeyDown
+    ?onKeyDownCapture
+    ?children
     role="group"
+    dataOrientation={orientation}
+    dataSlot="button-group"
     className={`${buttonGroupVariants(~orientation)} ${className}`}
-   ?children />
+  />
 }
 
 module Text = {
@@ -52,21 +48,16 @@ module Text = {
     ~onClick=?,
     ~onKeyDown=?,
     ~onKeyDownCapture=?,
-  ) => {
-    let props: BaseUi.Types.props<string, bool> = {
-      ?id,
-      ?style,
-      ?onClick,
-      ?onKeyDown,
-      ?onKeyDownCapture,
-      ?children,
-      className,
-    }
+  ) =>
     <div
-      {...props}
+      ?id
+      ?style
+      ?onClick
+      ?onKeyDown
+      ?onKeyDownCapture
+      ?children
       className={`bg-muted gap-2 rounded-lg border px-2.5 text-sm font-medium [&_svg:not([class*='size-'])]:size-4 flex items-center [&_svg]:pointer-events-none ${className}`}
-     ?children />
-  }
+    />
 }
 
 module Separator = {

@@ -35,16 +35,15 @@ let make = (
   ~dataVariant=Variant.Default,
 ) => {
   let variant = dataVariant
-  let props: BaseUi.Types.props<string, bool> = {
-    ?id,
-    ?children,
-    ?onClick,
-    ?onKeyDown,
-    ?onKeyDownCapture,
-    ?style,
-    className,
-    dataSlot: "badge",
-    dataVariant: variant,
-  }
-  <span {...props} className={`${badgeVariants(~variant)} ${className}`} ?children />
+  <span
+    ?id
+    ?children
+    ?onClick
+    ?onKeyDown
+    ?onKeyDownCapture
+    ?style
+    dataSlot="badge"
+    dataVariant={variant}
+    className={`${badgeVariants(~variant)} ${className}`}
+  />
 }

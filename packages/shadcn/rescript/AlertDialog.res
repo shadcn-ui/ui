@@ -114,22 +114,17 @@ module Header = {
     ~onClick=?,
     ~onKeyDown=?,
     ~onKeyDownCapture=?,
-  ) => {
-    let props: BaseUi.Types.props<string, bool> = {
-      ?id,
-      ?style,
-      ?children,
-      ?onClick,
-      ?onKeyDown,
-      ?onKeyDownCapture,
-      className,
-      dataSlot: "alert-dialog-header",
-    }
+  ) =>
     <div
-      {...props}
+      ?id
+      ?style
+      ?children
+      ?onClick
+      ?onKeyDown
+      ?onKeyDownCapture
+      dataSlot="alert-dialog-header"
       className={`grid grid-rows-[auto_1fr] place-items-center gap-1.5 text-center has-data-[slot=alert-dialog-media]:grid-rows-[auto_auto_1fr] has-data-[slot=alert-dialog-media]:gap-x-4 sm:group-data-[size=default]/alert-dialog-content:place-items-start sm:group-data-[size=default]/alert-dialog-content:text-left sm:group-data-[size=default]/alert-dialog-content:has-data-[slot=alert-dialog-media]:grid-rows-[auto_1fr] ${className}`}
-     ?children />
-  }
+    />
 }
 
 module Footer = {
@@ -142,22 +137,17 @@ module Footer = {
     ~onClick=?,
     ~onKeyDown=?,
     ~onKeyDownCapture=?,
-  ) => {
-    let props: BaseUi.Types.props<string, bool> = {
-      ?id,
-      ?style,
-      ?children,
-      ?onClick,
-      ?onKeyDown,
-      ?onKeyDownCapture,
-      className,
-      dataSlot: "alert-dialog-footer",
-    }
+  ) =>
     <div
-      {...props}
+      ?id
+      ?style
+      ?children
+      ?onClick
+      ?onKeyDown
+      ?onKeyDownCapture
+      dataSlot="alert-dialog-footer"
       className={`bg-muted/50 -mx-4 -mb-4 flex flex-col-reverse gap-2 rounded-b-xl border-t p-4 group-data-[size=sm]/alert-dialog-content:grid group-data-[size=sm]/alert-dialog-content:grid-cols-2 sm:flex-row sm:justify-end ${className}`}
-     ?children />
-  }
+    />
 }
 
 module Media = {
@@ -170,22 +160,17 @@ module Media = {
     ~onClick=?,
     ~onKeyDown=?,
     ~onKeyDownCapture=?,
-  ) => {
-    let props: BaseUi.Types.props<string, bool> = {
-      ?id,
-      ?style,
-      ?children,
-      ?onClick,
-      ?onKeyDown,
-      ?onKeyDownCapture,
-      className,
-      dataSlot: "alert-dialog-media",
-    }
+  ) =>
     <div
-      {...props}
+      ?id
+      ?style
+      ?children
+      ?onClick
+      ?onKeyDown
+      ?onKeyDownCapture
+      dataSlot="alert-dialog-media"
       className={`bg-muted mb-2 inline-flex size-10 items-center justify-center rounded-md sm:group-data-[size=default]/alert-dialog-content:row-span-2 *:[svg:not([class*='size-'])]:size-6 ${className}`}
-     ?children />
-  }
+    />
 }
 
 module Title = {

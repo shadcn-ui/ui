@@ -161,19 +161,17 @@ module Header = {
     ~onClick=?,
     ~onKeyDown=?,
     ~onKeyDownCapture=?,
-  ) => {
-    let props: BaseUi.Types.props<string, bool> = {
-      ?id,
-      ?style,
-      ?children,
-      ?onClick,
-      ?onKeyDown,
-      ?onKeyDownCapture,
-      className,
-      dataSlot: "dialog-header",
-    }
-    <div {...props} className={`flex flex-col gap-2 ${className}`} ?children />
-  }
+  ) =>
+    <div
+      ?id
+      ?style
+      ?children
+      ?onClick
+      ?onKeyDown
+      ?onKeyDownCapture
+      dataSlot="dialog-header"
+      className={`flex flex-col gap-2 ${className}`}
+    />
 }
 
 module Footer = {
@@ -186,22 +184,17 @@ module Footer = {
     ~onClick=?,
     ~onKeyDown=?,
     ~onKeyDownCapture=?,
-  ) => {
-    let props: BaseUi.Types.props<string, bool> = {
-      ?id,
-      ?style,
-      ?children,
-      ?onClick,
-      ?onKeyDown,
-      ?onKeyDownCapture,
-      className,
-      dataSlot: "dialog-footer",
-    }
+  ) =>
     <div
-      {...props}
+      ?id
+      ?style
+      ?children
+      ?onClick
+      ?onKeyDown
+      ?onKeyDownCapture
+      dataSlot="dialog-footer"
       className={`bg-muted/50 -mx-4 -mb-4 flex flex-col-reverse gap-2 rounded-b-xl border-t p-4 sm:flex-row sm:justify-end ${className}`}
-     ?children />
-  }
+    />
 }
 
 module Title = {

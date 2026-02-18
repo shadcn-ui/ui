@@ -14,28 +14,25 @@ let make = (
   ~onKeyDown=?,
   ~onKeyDownCapture=?,
 ) => {
-  let containerProps: BaseUi.Types.props<string, bool> = {
-    ?id,
-    ?style,
-    ?onClick,
-    ?onKeyDown,
-    ?onKeyDownCapture,
-    className: "",
-    children: React.null,
-    dataSlot: "table-container",
-  }
-  let tableProps: BaseUi.Types.props<string, bool> = {
-    ?id,
-    ?style,
-    ?onClick,
-    ?onKeyDown,
-    ?onKeyDownCapture,
-    ?children,
-    className,
-    dataSlot: "table",
-  }
-  <div {...containerProps} className="relative w-full overflow-x-auto">
-    <table {...tableProps} className={`w-full caption-bottom text-sm ${className}`} />
+  <div
+    ?id
+    ?style
+    ?onClick
+    ?onKeyDown
+    ?onKeyDownCapture
+    dataSlot="table-container"
+    className="relative w-full overflow-x-auto"
+  >
+    <table
+      ?id
+      ?style
+      ?onClick
+      ?onKeyDown
+      ?onKeyDownCapture
+      ?children
+      dataSlot="table"
+      className={`w-full caption-bottom text-sm ${className}`}
+    />
   </div>
 }
 
@@ -49,19 +46,17 @@ module Header = {
     ~onClick=?,
     ~onKeyDown=?,
     ~onKeyDownCapture=?,
-  ) => {
-    let props: BaseUi.Types.props<string, bool> = {
-      ?id,
-      ?children,
-      ?style,
-      ?onClick,
-      ?onKeyDown,
-      ?onKeyDownCapture,
-      className,
-      dataSlot: "table-header",
-    }
-    <thead {...props} className={`[&_tr]:border-b ${className}`} />
-  }
+  ) =>
+    <thead
+      ?id
+      ?children
+      ?style
+      ?onClick
+      ?onKeyDown
+      ?onKeyDownCapture
+      dataSlot="table-header"
+      className={`[&_tr]:border-b ${className}`}
+    />
 }
 
 module Body = {
@@ -74,19 +69,17 @@ module Body = {
     ~onClick=?,
     ~onKeyDown=?,
     ~onKeyDownCapture=?,
-  ) => {
-    let props: BaseUi.Types.props<string, bool> = {
-      ?id,
-      ?children,
-      ?style,
-      ?onClick,
-      ?onKeyDown,
-      ?onKeyDownCapture,
-      className,
-      dataSlot: "table-body",
-    }
-    <tbody {...props} className={`[&_tr:last-child]:border-0 ${className}`} />
-  }
+  ) =>
+    <tbody
+      ?id
+      ?children
+      ?style
+      ?onClick
+      ?onKeyDown
+      ?onKeyDownCapture
+      dataSlot="table-body"
+      className={`[&_tr:last-child]:border-0 ${className}`}
+    />
 }
 
 module Footer = {
@@ -99,22 +92,17 @@ module Footer = {
     ~onClick=?,
     ~onKeyDown=?,
     ~onKeyDownCapture=?,
-  ) => {
-    let props: BaseUi.Types.props<string, bool> = {
-      ?id,
-      ?children,
-      ?style,
-      ?onClick,
-      ?onKeyDown,
-      ?onKeyDownCapture,
-      className,
-      dataSlot: "table-footer",
-    }
+  ) =>
     <tfoot
-      {...props}
+      ?id
+      ?children
+      ?style
+      ?onClick
+      ?onKeyDown
+      ?onKeyDownCapture
+      dataSlot="table-footer"
       className={`bg-muted/50 border-t font-medium [&>tr]:last:border-b-0 ${className}`}
     />
-  }
 }
 
 module Row = {
@@ -127,22 +115,17 @@ module Row = {
     ~onClick=?,
     ~onKeyDown=?,
     ~onKeyDownCapture=?,
-  ) => {
-    let props: BaseUi.Types.props<string, bool> = {
-      ?id,
-      ?children,
-      ?style,
-      ?onClick,
-      ?onKeyDown,
-      ?onKeyDownCapture,
-      className,
-      dataSlot: "table-row",
-    }
+  ) =>
     <tr
-      {...props}
+      ?id
+      ?children
+      ?style
+      ?onClick
+      ?onKeyDown
+      ?onKeyDownCapture
+      dataSlot="table-row"
       className={`hover:bg-muted/50 data-[state=selected]:bg-muted border-b transition-colors ${className}`}
     />
-  }
 }
 
 module Head = {
@@ -156,23 +139,18 @@ module Head = {
     ~onClick=?,
     ~onKeyDown=?,
     ~onKeyDownCapture=?,
-  ) => {
-    let props: BaseUi.Types.props<string, bool> = {
-      ?id,
-      ?children,
-      ?style,
-      ?colSpan,
-      ?onClick,
-      ?onKeyDown,
-      ?onKeyDownCapture,
-      className,
-      dataSlot: "table-head",
-    }
+  ) =>
     <th
-      {...props}
+      ?id
+      ?children
+      ?style
+      ?colSpan
+      ?onClick
+      ?onKeyDown
+      ?onKeyDownCapture
+      dataSlot="table-head"
       className={`text-foreground h-10 px-2 text-left align-middle font-medium whitespace-nowrap [&:has([role=checkbox])]:pr-0 ${className}`}
     />
-  }
 }
 
 module Cell = {
@@ -186,23 +164,18 @@ module Cell = {
     ~onClick=?,
     ~onKeyDown=?,
     ~onKeyDownCapture=?,
-  ) => {
-    let props: BaseUi.Types.props<string, bool> = {
-      ?id,
-      ?children,
-      ?style,
-      ?colSpan,
-      ?onClick,
-      ?onKeyDown,
-      ?onKeyDownCapture,
-      className,
-      dataSlot: "table-cell",
-    }
+  ) =>
     <td
-      {...props}
+      ?id
+      ?children
+      ?style
+      ?colSpan
+      ?onClick
+      ?onKeyDown
+      ?onKeyDownCapture
+      dataSlot="table-cell"
       className={`p-2 align-middle whitespace-nowrap [&:has([role=checkbox])]:pr-0 ${className}`}
     />
-  }
 }
 
 module Caption = {
@@ -215,17 +188,15 @@ module Caption = {
     ~onClick=?,
     ~onKeyDown=?,
     ~onKeyDownCapture=?,
-  ) => {
-    let props: BaseUi.Types.props<string, bool> = {
-      ?id,
-      ?children,
-      ?style,
-      ?onClick,
-      ?onKeyDown,
-      ?onKeyDownCapture,
-      className,
-      dataSlot: "table-caption",
-    }
-    <caption {...props} className={`text-muted-foreground mt-4 text-sm ${className}`} />
-  }
+  ) =>
+    <caption
+      ?id
+      ?children
+      ?style
+      ?onClick
+      ?onKeyDown
+      ?onKeyDownCapture
+      dataSlot="table-caption"
+      className={`text-muted-foreground mt-4 text-sm ${className}`}
+    />
 }
