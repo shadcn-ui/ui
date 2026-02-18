@@ -1,9 +1,5 @@
-open BaseUi.Types
-
-@react.componentWithProps
-let make = (props: propsWithChildren<'value, 'checked>) =>
-  <Icons.Loader2
-    role="status"
-    ariaLabel="Loading"
-    className={`size-4 animate-spin ${props.className->Option.getOr("")}`}
-  />
+@react.component
+let make = (~className="", ~role="status", ~ariaLabel="Loading", ~children=?) => {
+  let _ignoredChildren = children
+  <Icons.Loader2 role ariaLabel className={`size-4 animate-spin ${className}`} />
+}

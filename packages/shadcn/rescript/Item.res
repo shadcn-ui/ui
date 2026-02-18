@@ -1,7 +1,6 @@
-open BaseUi.Types
+@@jsxConfig({version: 4, mode: "automatic", module_: "BaseUi.BaseUiJsxDOM"})
 
-external toDomProps: 'a => JsxDOM.domProps = "%identity"
-external toHtmlProps: 'a => BaseUi.Types.htmlProps = "%identity"
+open BaseUi.Types
 
 let itemVariants = (~variant=Variant.Default, ~size=Size.Default) => {
   let base = "[a]:hover:bg-muted rounded-lg border text-sm w-full group/item focus-visible:border-ring focus-visible:ring-ring/50 flex items-center flex-wrap outline-none transition-colors duration-100 focus-visible:ring-[3px] [a]:transition-colors"
@@ -52,152 +51,280 @@ let itemMediaVariants = (~variant=Variant.Default) => {
   `${base} ${variantClass}`
 }
 
-@react.componentWithProps
-let make = (props: propsWithChildren<'value, 'checked>) => {
-  let render = props.render
-  let variant = props.dataVariant->Option.getOr(Variant.Default)
-  let size = props.dataSize->Option.getOr(Size.Default)
-  let props = {
-    ...props,
-    render: React.null,
-    dataSlot: "item",
-    dataVariant: variant,
-    dataSize: size,
-    className: `${itemVariants(~variant, ~size)} ${props.className->Option.getOr("")}`,
-  }
-  BaseUi.UseRender.useRender(
-    ~defaultTagName="div",
-    ~render=?render,
-    ~props=toHtmlProps(props),
-    (),
-  )
+type state = {
+  slot: string,
+  variant: Variant.t,
+  size: Size.t,
+}
+
+@react.component
+let make = (
+  ~className="",
+  ~variant=Variant.Default,
+  ~size=Size.Default,
+  ~children=?,
+  ~id=?,
+  ~style=?,
+  ~onClick=?,
+  ~render=?,
+) => {
+  BaseUi.Render.use({
+    defaultTagName: "div",
+    props: {
+      className: `${itemVariants(~variant, ~size)} ${className}`,
+      ?id,
+      ?style,
+      ?children,
+      ?onClick,
+    },
+    ?render,
+    state: {
+      slot: "item",
+      variant,
+      size,
+    },
+  })
 }
 
 module Media = {
-  @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) => {
-    let variant = props.dataVariant->Option.getOr(Variant.Default)
-    let props = {...props, dataSlot: "item-media", dataVariant: variant}
-    <div
-      {...toDomProps(props)}
-      className={`${itemMediaVariants(~variant)} ${props.className->Option.getOr("")}`}
-    >
-      {props.children}
-    </div>
+  @react.component
+  let make = (
+    ~className="",
+    ~children=?,
+    ~id=?,
+    ~style=?,
+    ~onClick=?,
+    ~onKeyDown=?,
+    ~onKeyDownCapture=?,
+    ~dataVariant=Variant.Default,
+  ) => {
+    let variant = dataVariant
+    let props: BaseUi.Types.props<string, bool> = {
+      ?id,
+      ?style,
+      ?children,
+      ?onClick,
+      ?onKeyDown,
+      ?onKeyDownCapture,
+      className,
+      dataSlot: "item-media",
+      dataVariant: variant,
+    }
+    <div {...props} className={`${itemMediaVariants(~variant)} ${className}`} ?children />
   }
 }
 
 module Content = {
-  @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) => {
-    let props = {...props, dataSlot: "item-content"}
+  @react.component
+  let make = (
+    ~className="",
+    ~children=?,
+    ~id=?,
+    ~style=?,
+    ~onClick=?,
+    ~onKeyDown=?,
+    ~onKeyDownCapture=?,
+  ) => {
+    let props: BaseUi.Types.props<string, bool> = {
+      ?id,
+      ?style,
+      ?children,
+      ?onClick,
+      ?onKeyDown,
+      ?onKeyDownCapture,
+      className,
+      dataSlot: "item-content",
+    }
     <div
-      {...toDomProps(props)}
-      className={`flex flex-1 flex-col gap-1 group-data-[size=xs]/item:gap-0 [&+[data-slot=item-content]]:flex-none ${props.className->Option.getOr(
-          "",
-        )}`}
-    >
-      {props.children}
-    </div>
+      {...props}
+      className={`flex flex-1 flex-col gap-1 group-data-[size=xs]/item:gap-0 [&+[data-slot=item-content]]:flex-none ${className}`}
+      ?children
+    />
   }
 }
 
 module Actions = {
-  @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) => {
-    let props = {...props, dataSlot: "item-actions"}
-    <div
-      {...toDomProps(props)}
-      className={`flex items-center gap-2 ${props.className->Option.getOr("")}`}
-    >
-      {props.children}
-    </div>
+  @react.component
+  let make = (
+    ~className="",
+    ~children=?,
+    ~id=?,
+    ~style=?,
+    ~onClick=?,
+    ~onKeyDown=?,
+    ~onKeyDownCapture=?,
+  ) => {
+    let props: BaseUi.Types.props<string, bool> = {
+      ?id,
+      ?style,
+      ?children,
+      ?onClick,
+      ?onKeyDown,
+      ?onKeyDownCapture,
+      className,
+      dataSlot: "item-actions",
+    }
+    <div {...props} className={`flex items-center gap-2 ${className}`} ?children />
   }
 }
 
 module Group = {
-  @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) => {
-    let props = {...props, dataSlot: "item-group"}
+  @react.component
+  let make = (
+    ~className="",
+    ~children=?,
+    ~id=?,
+    ~style=?,
+    ~onClick=?,
+    ~onKeyDown=?,
+    ~onKeyDownCapture=?,
+  ) => {
+    let props: BaseUi.Types.props<string, bool> = {
+      ?id,
+      ?style,
+      ?children,
+      ?onClick,
+      ?onKeyDown,
+      ?onKeyDownCapture,
+      className,
+      dataSlot: "item-group",
+    }
     <div
-      {...toDomProps(props)}
+      {...props}
       role="list"
-      className={`group/item-group flex w-full flex-col gap-4 has-data-[size=sm]:gap-2.5 has-data-[size=xs]:gap-2 ${props.className->Option.getOr(
-          "",
-        )}`}
-    >
-      {props.children}
-    </div>
+      className={`group/item-group flex w-full flex-col gap-4 has-data-[size=sm]:gap-2.5 has-data-[size=xs]:gap-2 ${className}`}
+      ?children
+    />
   }
 }
 
 module Separator = {
-  @react.componentWithProps
-  let make = (props: propsWithOptionalChildren<'value, 'checked>) =>
+  @react.component
+  let make = (~className="", ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?, ~onKeyDownCapture=?) =>
     <BaseUi.Separator
-      {...props}
+      ?id
+      ?style
+      ?onClick
+      ?onKeyDown
+      ?onKeyDownCapture
       dataSlot="item-separator"
       orientation={Orientation.Horizontal}
-      className={`my-2 ${props.className->Option.getOr("")}`}
+      className={`my-2 ${className}`}
     />
 }
 
 module Title = {
-  @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) => {
-    let props = {...props, dataSlot: "item-title"}
+  @react.component
+  let make = (
+    ~className="",
+    ~children=?,
+    ~id=?,
+    ~style=?,
+    ~onClick=?,
+    ~onKeyDown=?,
+    ~onKeyDownCapture=?,
+  ) => {
+    let props: BaseUi.Types.props<string, bool> = {
+      ?id,
+      ?style,
+      ?children,
+      ?onClick,
+      ?onKeyDown,
+      ?onKeyDownCapture,
+      className,
+      dataSlot: "item-title",
+    }
     <div
-      {...toDomProps(props)}
-      className={`line-clamp-1 flex w-fit items-center gap-2 text-sm leading-snug font-medium underline-offset-4 ${props.className->Option.getOr(
-          "",
-        )}`}
-    >
-      {props.children}
-    </div>
+      {...props}
+      className={`line-clamp-1 flex w-fit items-center gap-2 text-sm leading-snug font-medium underline-offset-4 ${className}`}
+      ?children
+    />
   }
 }
 
 module Description = {
-  @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) => {
-    let props = {...props, dataSlot: "item-description"}
+  @react.component
+  let make = (
+    ~className="",
+    ~children=?,
+    ~id=?,
+    ~style=?,
+    ~onClick=?,
+    ~onKeyDown=?,
+    ~onKeyDownCapture=?,
+  ) => {
+    let props: BaseUi.Types.props<string, bool> = {
+      ?id,
+      ?style,
+      ?children,
+      ?onClick,
+      ?onKeyDown,
+      ?onKeyDownCapture,
+      className,
+      dataSlot: "item-description",
+    }
     <p
-      {...toDomProps(props)}
-      className={`text-muted-foreground [&>a:hover]:text-primary line-clamp-2 text-left text-sm leading-normal font-normal group-data-[size=xs]/item:text-xs [&>a]:underline [&>a]:underline-offset-4 ${props.className->Option.getOr(
-          "",
-        )}`}
-    >
-      {props.children}
-    </p>
+      {...props}
+      className={`text-muted-foreground [&>a:hover]:text-primary line-clamp-2 text-left text-sm leading-normal font-normal group-data-[size=xs]/item:text-xs [&>a]:underline [&>a]:underline-offset-4 ${className}`}
+      ?children
+    />
   }
 }
 
 module Header = {
-  @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) => {
-    let props = {...props, dataSlot: "item-header"}
+  @react.component
+  let make = (
+    ~className="",
+    ~children=?,
+    ~id=?,
+    ~style=?,
+    ~onClick=?,
+    ~onKeyDown=?,
+    ~onKeyDownCapture=?,
+  ) => {
+    let props: BaseUi.Types.props<string, bool> = {
+      ?id,
+      ?style,
+      ?children,
+      ?onClick,
+      ?onKeyDown,
+      ?onKeyDownCapture,
+      className,
+      dataSlot: "item-header",
+    }
     <div
-      {...toDomProps(props)}
-      className={`flex basis-full items-center justify-between gap-2 ${props.className->Option.getOr(
-          "",
-        )}`}
-    >
-      {props.children}
-    </div>
+      {...props}
+      className={`flex basis-full items-center justify-between gap-2 ${className}`}
+      ?children
+    />
   }
 }
 
 module Footer = {
-  @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) => {
-    let props = {...props, dataSlot: "item-footer"}
+  @react.component
+  let make = (
+    ~className="",
+    ~children=?,
+    ~id=?,
+    ~style=?,
+    ~onClick=?,
+    ~onKeyDown=?,
+    ~onKeyDownCapture=?,
+  ) => {
+    let props: BaseUi.Types.props<string, bool> = {
+      ?id,
+      ?style,
+      ?children,
+      ?onClick,
+      ?onKeyDown,
+      ?onKeyDownCapture,
+      className,
+      dataSlot: "item-footer",
+    }
     <div
-      {...toDomProps(props)}
-      className={`flex basis-full items-center justify-between gap-2 ${props.className->Option.getOr(
-          "",
-        )}`}
-    >
-      {props.children}
-    </div>
+      {...props}
+      className={`flex basis-full items-center justify-between gap-2 ${className}`}
+      ?children
+    />
   }
 }

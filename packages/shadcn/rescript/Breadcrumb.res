@@ -1,112 +1,196 @@
+@@jsxConfig({version: 4, mode: "automatic", module_: "BaseUi.BaseUiJsxDOM"})
+
 open BaseUi.Types
 
-external toDomProps: 'a => JsxDOM.domProps = "%identity"
-external toHtmlProps: 'a => BaseUi.Types.htmlProps = "%identity"
-
-@react.componentWithProps
-let make = (props: propsWithChildren<'value, 'checked>) => {
-  let props = {...props, dataSlot: "breadcrumb"}
-  <nav
-    {...toDomProps(props)} ariaLabel="breadcrumb" className={`${props.className->Option.getOr("")}`}
-  >
-    {props.children}
-  </nav>
+@react.component
+let make = (
+  ~className="",
+  ~children=?,
+  ~id=?,
+  ~style=?,
+  ~onClick=?,
+  ~onKeyDown=?,
+  ~onKeyDownCapture=?,
+) => {
+  let props: BaseUi.Types.props<string, bool> = {
+    ?id,
+    ?style,
+    ?children,
+    ?onClick,
+    ?onKeyDown,
+    ?onKeyDownCapture,
+    className,
+    dataSlot: "breadcrumb",
+  }
+  <nav {...props} ariaLabel="breadcrumb" className ?children />
 }
 
 module List = {
-  @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) => {
-    let props = {...props, dataSlot: "breadcrumb-list"}
+  @react.component
+  let make = (
+    ~className="",
+    ~children=?,
+    ~id=?,
+    ~style=?,
+    ~onClick=?,
+    ~onKeyDown=?,
+    ~onKeyDownCapture=?,
+  ) => {
+    let props: BaseUi.Types.props<string, bool> = {
+      ?id,
+      ?style,
+      ?children,
+      ?onClick,
+      ?onKeyDown,
+      ?onKeyDownCapture,
+      className,
+      dataSlot: "breadcrumb-list",
+    }
     <ol
-      {...toDomProps(props)}
-      className={`text-muted-foreground flex flex-wrap items-center gap-1.5 text-sm wrap-break-word ${props.className->Option.getOr(
-          "",
-        )}`}
-    >
-      {props.children}
-    </ol>
+      {...props}
+      className={`text-muted-foreground flex flex-wrap items-center gap-1.5 text-sm wrap-break-word ${className}`}
+      ?children
+    />
   }
 }
 
 module Item = {
-  @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) => {
-    let props = {...props, dataSlot: "breadcrumb-item"}
-    <li
-      {...toDomProps(props)}
-      className={`inline-flex items-center gap-1 ${props.className->Option.getOr("")}`}
-    >
-      {props.children}
-    </li>
+  @react.component
+  let make = (
+    ~className="",
+    ~children=?,
+    ~id=?,
+    ~style=?,
+    ~onClick=?,
+    ~onKeyDown=?,
+    ~onKeyDownCapture=?,
+  ) => {
+    let props: BaseUi.Types.props<string, bool> = {
+      ?id,
+      ?style,
+      ?children,
+      ?onClick,
+      ?onKeyDown,
+      ?onKeyDownCapture,
+      className,
+      dataSlot: "breadcrumb-item",
+    }
+    <li {...props} className={`inline-flex items-center gap-1 ${className}`} ?children />
   }
 }
 
 module Link = {
-  @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) => {
-    let render = props.render
-    let props = {
-      ...props,
+  @react.component
+  let make = (
+    ~className="",
+    ~children=?,
+    ~id=?,
+    ~href=?,
+    ~target=?,
+    ~style=?,
+    ~onClick=?,
+    ~onKeyDown=?,
+    ~onKeyDownCapture=?,
+    ~render=?,
+  ) => {
+    let props: BaseUi.Types.props<string, bool> = {
+      ?id,
+      ?style,
+      ?children,
+      ?onClick,
+      ?onKeyDown,
+      ?onKeyDownCapture,
+      ?href,
+      ?target,
       render: React.null,
       dataSlot: "breadcrumb-link",
-      className: `hover:text-foreground transition-colors ${props.className->Option.getOr("")}`,
+      className: `hover:text-foreground transition-colors ${className}`,
     }
-    BaseUi.UseRender.useRender(
-      ~defaultTagName="a",
-      ~render=?render,
-      ~props=toHtmlProps(props),
-      (),
-    )
+    BaseUi.Render.use({defaultTagName: "a", ?render, props})
   }
 }
 
 module Page = {
-  @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) => {
-    let props = {...props, dataSlot: "breadcrumb-page"}
+  @react.component
+  let make = (
+    ~className="",
+    ~children=?,
+    ~id=?,
+    ~style=?,
+    ~onClick=?,
+    ~onKeyDown=?,
+    ~onKeyDownCapture=?,
+  ) => {
+    let props: BaseUi.Types.props<string, bool> = {
+      ?id,
+      ?style,
+      ?children,
+      ?onClick,
+      ?onKeyDown,
+      ?onKeyDownCapture,
+      className,
+      dataSlot: "breadcrumb-page",
+    }
     <span
-      {...toDomProps(props)}
-      ariaCurrent=#page
+      {...props}
+      ariaCurrent="page"
       ariaDisabled=true
       role="link"
-      className={`text-foreground font-normal ${props.className->Option.getOr("")}`}
-    >
-      {props.children}
-    </span>
+      className={`text-foreground font-normal ${className}`}
+      ?children
+    />
   }
 }
 
 module Separator = {
-  @react.componentWithProps
-  let make = (props: propsWithOptionalChildren<'value, 'checked>) => {
-    let props = {...props, dataSlot: "breadcrumb-separator"}
-    let content = switch props.children {
-    | Some(children) => children
+  @react.component
+  let make = (
+    ~className="",
+    ~children=?,
+    ~id=?,
+    ~style=?,
+    ~onClick=?,
+    ~onKeyDown=?,
+    ~onKeyDownCapture=?,
+  ) => {
+    let content = switch children {
+    | Some(content) => content
     | None => <Icons.ChevronRight className="cn-rtl-flip" />
     }
+    let props: BaseUi.Types.props<string, bool> = {
+      ?id,
+      ?style,
+      ?children,
+      ?onClick,
+      ?onKeyDown,
+      ?onKeyDownCapture,
+      className,
+      dataSlot: "breadcrumb-separator",
+    }
 
-    <li
-      {...toDomProps(props)}
-      ariaHidden=true
-      role="presentation"
-      className={`[&>svg]:size-3.5 ${props.className->Option.getOr("")}`}
-    >
+    <li {...props} ariaHidden=true role="presentation" className={`[&>svg]:size-3.5 ${className}`}>
       {content}
     </li>
   }
 }
 
 module Ellipsis = {
-  @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) => {
-    let props = {...props, dataSlot: "breadcrumb-ellipsis"}
+  @react.component
+  let make = (~className="", ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?, ~onKeyDownCapture=?) => {
+    let props: BaseUi.Types.props<string, bool> = {
+      ?id,
+      ?style,
+      ?onClick,
+      ?onKeyDown,
+      ?onKeyDownCapture,
+      className,
+      dataSlot: "breadcrumb-ellipsis",
+    }
     <span
-      {...toDomProps(props)}
+      {...props}
       ariaHidden=true
       role="presentation"
-      className={`flex size-5 items-center justify-center [&>svg]:size-4 ${props.className->Option.getOr(
-          "",
-        )}`}
+      className={`flex size-5 items-center justify-center [&>svg]:size-4 ${className}`}
     >
       <Icons.MoreHorizontal />
       <span className="sr-only"> {"More"->React.string} </span>

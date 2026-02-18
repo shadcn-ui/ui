@@ -1,6 +1,6 @@
 @react.component
 let make = () =>
-  <ToggleGroup dataVariant=BaseUi.Types.Variant.Outline multiple=true>
+  <ToggleGroup variant=BaseUi.Types.Variant.Outline multiple=true>
     <ToggleGroup.Item value="bold" ariaLabel="Toggle bold">
       <Icons.Bold />
     </ToggleGroup.Item>

@@ -47,18 +47,38 @@ let buttonVariants = (~variant=Variant.Default, ~size=Size.Default) => {
   `${base} ${radiusClass} ${buttonVariantClass(~variant)} ${buttonSizeClass(~size)}`
 }
 
-@react.componentWithProps
-let make = (props: propsWithOptionalChildren<'value, 'checked>) => {
-  let variant = props.dataVariant->Option.getOr(Variant.Default)
-  let size = props.dataSize->Option.getOr(Size.Default)
-  let className = switch props.className {
-  | Some(className) => `${buttonVariants(~variant, ~size)} ${className}`
-  | None => buttonVariants(~variant, ~size)
-  }
-  let props = {
-    ...props,
-    dataSlot: props.dataSlot->Option.getOr("button"),
-    className,
-  }
-  <BaseUi.Button {...props} />
+@react.component
+let make = (
+  ~className="",
+  ~variant=Variant.Default,
+  ~size=Size.Default,
+  ~nativeButton=?,
+  ~disabled=?,
+  ~style=?,
+  ~children=?,
+  ~onClick=?,
+  ~type_=?,
+  ~ariaLabel=?,
+  ~ariaDisabled=?,
+  ~dataSidebar=?,
+  ~render=?,
+  ~dataSlot="button",
+) => {
+  <BaseUi.Button
+    dataSlot
+    className={`${buttonVariants(~variant, ~size)} ${className}`}
+    ?nativeButton
+    ?disabled
+    ?style
+    ?children
+    ?onClick
+    type_=?{switch (type_, nativeButton, render) {
+    | (None, None, None) => Some("button")
+    | _ => type_
+    }}
+    ?ariaLabel
+    ?ariaDisabled
+    ?dataSidebar
+    ?render
+  />
 }

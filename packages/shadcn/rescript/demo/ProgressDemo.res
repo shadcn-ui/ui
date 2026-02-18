@@ -9,5 +9,5 @@ let make = () => {
     Some(() => clearTimeout(timer))
   })
 
-  <Progress value=progress className="w-[60%]">{React.null}</Progress>
+  <Progress value=progress className="w-[60%]"> {React.null} </Progress>
 }

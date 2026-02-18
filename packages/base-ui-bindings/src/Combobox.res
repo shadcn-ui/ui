@@ -1,143 +1,119 @@
 module Root = {
-  @module("@base-ui/react/combobox")
-  @scope("Combobox")
-  external make: React.component<Types.propsWithChildren<'value, 'checked>> = "Root"
+  @module("@base-ui/react/combobox") @scope("Combobox")
+  external make: React.component<Types.props<'value, 'checked>> = "Root"
 }
 
 module Value = {
-  @module("@base-ui/react/combobox")
-  @scope("Combobox")
-  external make: React.component<Types.propsWithChildren<'value, 'checked>> = "Value"
+  @module("@base-ui/react/combobox") @scope("Combobox")
+  external make: React.component<Types.props<'value, 'checked>> = "Value"
 }
 
 module Input = {
-  @module("@base-ui/react/combobox")
-  @scope("Combobox")
-  external make: React.component<Types.propsWithChildren<'value, 'checked>> = "Input"
+  @module("@base-ui/react/combobox") @scope("Combobox")
+  external make: React.component<Types.props<'value, 'checked>> = "Input"
 }
 
 module Trigger = {
-  @module("@base-ui/react/combobox")
-  @scope("Combobox")
-  external make: React.component<Types.propsWithChildren<'value, 'checked>> = "Trigger"
+  @module("@base-ui/react/combobox") @scope("Combobox")
+  external make: React.component<Types.props<'value, 'checked>> = "Trigger"
 }
 
 module List = {
-  @module("@base-ui/react/combobox")
-  @scope("Combobox")
-  external make: React.component<Types.propsWithChildren<'value, 'checked>> = "List"
+  @module("@base-ui/react/combobox") @scope("Combobox")
+  external make: React.component<Types.props<'value, 'checked>> = "List"
 }
 
 module Status = {
-  @module("@base-ui/react/combobox")
-  @scope("Combobox")
-  external make: React.component<Types.propsWithOptionalChildren<'value, 'checked>> = "Status"
+  @module("@base-ui/react/combobox") @scope("Combobox")
+  external make: React.component<Types.props<'value, 'checked>> = "Status"
 }
 
 module Portal = {
-  @module("@base-ui/react/combobox")
-  @scope("Combobox")
-  external make: React.component<Types.propsWithChildren<'value, 'checked>> = "Portal"
+  @module("@base-ui/react/combobox") @scope("Combobox")
+  external make: React.component<Types.props<'value, 'checked>> = "Portal"
 }
 
 module Backdrop = {
-  @module("@base-ui/react/combobox")
-  @scope("Combobox")
-  external make: React.component<Types.propsWithOptionalChildren<'value, 'checked>> = "Backdrop"
+  @module("@base-ui/react/combobox") @scope("Combobox")
+  external make: React.component<Types.props<'value, 'checked>> = "Backdrop"
 }
 
 module Positioner = {
-  @module("@base-ui/react/combobox")
-  @scope("Combobox")
-  external make: React.component<Types.propsWithChildren<'value, 'checked>> = "Positioner"
+  @module("@base-ui/react/combobox") @scope("Combobox")
+  external make: React.component<Types.props<'value, 'checked>> = "Positioner"
 }
 
 module Popup = {
-  @module("@base-ui/react/combobox")
-  @scope("Combobox")
-  external make: React.component<Types.propsWithChildren<'value, 'checked>> = "Popup"
+  @module("@base-ui/react/combobox") @scope("Combobox")
+  external make: React.component<Types.props<'value, 'checked>> = "Popup"
 }
 
 module Arrow = {
-  @module("@base-ui/react/combobox")
-  @scope("Combobox")
-  external make: React.component<Types.propsWithOptionalChildren<'value, 'checked>> = "Arrow"
+  @module("@base-ui/react/combobox") @scope("Combobox")
+  external make: React.component<Types.props<'value, 'checked>> = "Arrow"
 }
 
 module Icon = {
-  @module("@base-ui/react/combobox")
-  @scope("Combobox")
-  external make: React.component<Types.propsWithOptionalChildren<'value, 'checked>> = "Icon"
+  @module("@base-ui/react/combobox") @scope("Combobox")
+  external make: React.component<Types.props<'value, 'checked>> = "Icon"
 }
 
 module Group = {
-  @module("@base-ui/react/combobox")
-  @scope("Combobox")
-  external make: React.component<Types.propsWithChildren<'value, 'checked>> = "Group"
+  @module("@base-ui/react/combobox") @scope("Combobox")
+  external make: React.component<Types.props<'value, 'checked>> = "Group"
 }
 
 module GroupLabel = {
-  @module("@base-ui/react/combobox")
-  @scope("Combobox")
-  external make: React.component<Types.propsWithChildren<'value, 'checked>> = "GroupLabel"
+  @module("@base-ui/react/combobox") @scope("Combobox")
+  external make: React.component<Types.props<'value, 'checked>> = "GroupLabel"
 }
 
 module Item = {
-  @module("@base-ui/react/combobox")
-  @scope("Combobox")
-  external make: React.component<Types.propsWithChildren<'value, 'checked>> = "Item"
+  @module("@base-ui/react/combobox") @scope("Combobox")
+  external make: React.component<Types.props<'value, 'checked>> = "Item"
 }
 
 module ItemIndicator = {
-  @module("@base-ui/react/combobox")
-  @scope("Combobox")
+  @module("@base-ui/react/combobox") @scope("Combobox")
   external make: React.component<Types.props<'value, 'checked>> = "ItemIndicator"
 }
 
 module Chips = {
-  @module("@base-ui/react/combobox")
-  @scope("Combobox")
-  external make: React.component<Types.propsWithChildren<'value, 'checked>> = "Chips"
+  @module("@base-ui/react/combobox") @scope("Combobox")
+  external make: React.component<Types.props<'value, 'checked>> = "Chips"
 }
 
 module Chip = {
-  @module("@base-ui/react/combobox")
-  @scope("Combobox")
-  external make: React.component<Types.propsWithChildren<'value, 'checked>> = "Chip"
+  @module("@base-ui/react/combobox") @scope("Combobox")
+  external make: React.component<Types.props<'value, 'checked>> = "Chip"
 }
 
 module ChipRemove = {
-  @module("@base-ui/react/combobox")
-  @scope("Combobox")
+  @module("@base-ui/react/combobox") @scope("Combobox")
   external make: React.component<Types.props<'value, 'checked>> = "ChipRemove"
 }
 
 module Row = {
-  @module("@base-ui/react/combobox")
-  @scope("Combobox")
-  external make: React.component<Types.propsWithOptionalChildren<'value, 'checked>> = "Row"
+  @module("@base-ui/react/combobox") @scope("Combobox")
+  external make: React.component<Types.props<'value, 'checked>> = "Row"
 }
 
 module Collection = {
-  @module("@base-ui/react/combobox")
-  @scope("Combobox")
-  external make: React.component<Types.propsWithChildren<'value, 'checked>> = "Collection"
+  @module("@base-ui/react/combobox") @scope("Combobox")
+  external make: React.component<Types.props<'value, 'checked>> = "Collection"
 }
 
 module Empty = {
-  @module("@base-ui/react/combobox")
-  @scope("Combobox")
-  external make: React.component<Types.propsWithChildren<'value, 'checked>> = "Empty"
+  @module("@base-ui/react/combobox") @scope("Combobox")
+  external make: React.component<Types.props<'value, 'checked>> = "Empty"
 }
 
 module Clear = {
-  @module("@base-ui/react/combobox")
-  @scope("Combobox")
-  external make: React.component<Types.propsWithChildren<'value, 'checked>> = "Clear"
+  @module("@base-ui/react/combobox") @scope("Combobox")
+  external make: React.component<Types.props<'value, 'checked>> = "Clear"
 }
 
 module Separator = {
-  @module("@base-ui/react/combobox")
-  @scope("Combobox")
-  external make: React.component<Types.propsWithChildren<'value, 'checked>> = "Separator"
+  @module("@base-ui/react/combobox") @scope("Combobox")
+  external make: React.component<Types.props<'value, 'checked>> = "Separator"
 }

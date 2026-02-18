@@ -1,6 +1,5 @@
 /** Shared types for Base UI ReScript bindings. */
 type eventDetails = JSON.t
-type htmlProps = JSON.t
 
 module Side = {
   @unboxed
@@ -121,6 +120,7 @@ module DataOrientation = {
 }
 
 type props<'value, 'checked> = {
+  children?: React.element,
   className?: string,
   style?: ReactDOM.Style.t,
   ratio?: float,
@@ -131,6 +131,7 @@ type props<'value, 'checked> = {
   label?: string,
   heading?: string,
   title?: string,
+  role?: string,
   description?: string,
   placeholder?: string,
   locale?: JSON.t,
@@ -145,6 +146,7 @@ type props<'value, 'checked> = {
   onClick?: JsxEvent.Mouse.t => unit,
   onKeyDown?: JsxEvent.Keyboard.t => unit,
   onKeyDownCapture?: JsxEvent.Keyboard.t => unit,
+  ref?: ReactDOM.Ref.t,
   errors?: array<{message?: string}>,
   @as("open") open_?: bool,
   defaultOpen?: bool,
@@ -180,10 +182,8 @@ type props<'value, 'checked> = {
   focusableWhenDisabled?: bool,
   nativeButton?: bool,
   asChild?: bool,
-  initialFocus?: htmlProps,
-  finalFocus?: htmlProps,
   container?: Dom.element,
-  anchor?: htmlProps,
+  anchor?: ReactDOM.domRef,
   positionMethod?: PositionMethod.t,
   href?: string,
   target?: string,
@@ -220,6 +220,7 @@ type props<'value, 'checked> = {
   thumbCollisionBehavior?: ThumbCollisionBehavior.t,
   @as("type") type_?: string,
   @as("aria-label") ariaLabel?: string,
+  @as("aria-disabled") ariaDisabled?: bool,
   @as("aria-roledescription") ariaRoledescription?: string,
   @as("aria-current") ariaCurrent?: string,
   @as("aria-hidden") ariaHidden?: bool,
@@ -248,16 +249,3 @@ type props<'value, 'checked> = {
   @as("data-spacing") dataSpacing?: float,
   @as("data-inset") dataInset?: bool,
 }
-
-type propsWithChildren<'value, 'checked> = {
-  ...props<'value, 'checked>,
-  children: React.element,
-}
-
-type propsWithOptionalChildren<'value, 'checked> = {
-  ...props<'value, 'checked>,
-  children?: React.element,
-}
-
-external toPropsWithOptionalChildren: 'a => propsWithOptionalChildren<'value, 'checked> = "%identity"
-external toPropsWithChildren: 'a => propsWithChildren<'value, 'checked> = "%identity"

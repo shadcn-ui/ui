@@ -1,6 +1,6 @@
-open BaseUi.Types
+@@jsxConfig({version: 4, mode: "automatic", module_: "BaseUi.BaseUiJsxDOM"})
 
-external toDomProps: 'a => JsxDOM.domProps = "%identity"
+open BaseUi.Types
 
 let buttonGroupVariants = (~orientation=DataOrientation.Horizontal) => {
   let base = "has-[>[data-slot=button-group]]:gap-2 has-[select[aria-hidden=true]:last-child]:[&>[data-slot=select-trigger]:last-of-type]:rounded-r-lg flex w-fit items-stretch *:focus-visible:z-10 *:focus-visible:relative [&>[data-slot=select-trigger]:not([class*='w-'])]:w-fit [&>input]:flex-1"
@@ -12,41 +12,72 @@ let buttonGroupVariants = (~orientation=DataOrientation.Horizontal) => {
   `${base} ${orientationClass}`
 }
 
-@react.componentWithProps
-let make = (props: propsWithChildren<'value, 'checked>) => {
-  let orientation = props.dataOrientation->Option.getOr(DataOrientation.Horizontal)
-  let props = {...props, dataSlot: "button-group"}
+@react.component
+let make = (
+  ~className="",
+  ~children=?,
+  ~id=?,
+  ~style=?,
+  ~onClick=?,
+  ~onKeyDown=?,
+  ~onKeyDownCapture=?,
+  ~dataOrientation=DataOrientation.Horizontal,
+) => {
+  let orientation = dataOrientation
+  let props: BaseUi.Types.props<string, bool> = {
+    ?id,
+    ?style,
+    ?onClick,
+    ?onKeyDown,
+    ?onKeyDownCapture,
+    ?children,
+    className,
+    dataOrientation: orientation,
+    dataSlot: "button-group",
+  }
   <div
-    {...toDomProps(props)}
+    {...props}
     role="group"
-    className={`${buttonGroupVariants(~orientation)} ${props.className->Option.getOr("")}`}
-  >
-    {props.children}
-  </div>
+    className={`${buttonGroupVariants(~orientation)} ${className}`}
+   ?children />
 }
 
 module Text = {
-  @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) =>
+  @react.component
+  let make = (
+    ~className="",
+    ~children=?,
+    ~id=?,
+    ~style=?,
+    ~onClick=?,
+    ~onKeyDown=?,
+    ~onKeyDownCapture=?,
+  ) => {
+    let props: BaseUi.Types.props<string, bool> = {
+      ?id,
+      ?style,
+      ?onClick,
+      ?onKeyDown,
+      ?onKeyDownCapture,
+      ?children,
+      className,
+    }
     <div
-      {...toDomProps(props)}
-      className={`bg-muted gap-2 rounded-lg border px-2.5 text-sm font-medium [&_svg:not([class*='size-'])]:size-4 flex items-center [&_svg]:pointer-events-none ${props.className->Option.getOr(
-          "",
-        )}`}
-    >
-      {props.children}
-    </div>
+      {...props}
+      className={`bg-muted gap-2 rounded-lg border px-2.5 text-sm font-medium [&_svg:not([class*='size-'])]:size-4 flex items-center [&_svg]:pointer-events-none ${className}`}
+     ?children />
+  }
 }
 
 module Separator = {
-  @react.componentWithProps
-  let make = (props: propsWithOptionalChildren<'value, 'checked>) =>
+  @react.component
+  let make = (~className="", ~id=?, ~style=?, ~orientation=Orientation.Vertical, ~children=?) =>
     <BaseUi.Separator
-      {...props}
+      ?id
+      ?style
+      ?children
       dataSlot="button-group-separator"
-      orientation={props.orientation->Option.getOr(Orientation.Vertical)}
-      className={`bg-input relative self-stretch shrink-0 data-horizontal:mx-px data-horizontal:h-px data-horizontal:w-auto data-vertical:my-px data-vertical:h-auto data-vertical:w-px data-vertical:self-stretch ${props.className->Option.getOr(
-          "",
-        )}`}
+      orientation
+      className={`bg-input relative self-stretch shrink-0 data-horizontal:mx-px data-horizontal:h-px data-horizontal:w-auto data-vertical:my-px data-vertical:h-auto data-vertical:w-px data-vertical:self-stretch ${className}`}
     />
 }

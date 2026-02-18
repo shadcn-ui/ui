@@ -16,11 +16,11 @@ let items: array<item> = [
 let make = () =>
   <Select items>
     <Select.Trigger className="w-full max-w-48">
-      <Select.Value>{React.null}</Select.Value>
+      <Select.Value> {React.null} </Select.Value>
     </Select.Trigger>
     <Select.Content>
       <Select.Group>
-        <Select.Label>{"Fruits"->React.string}</Select.Label>
+        <Select.Label> {"Fruits"->React.string} </Select.Label>
         {items
         ->Belt.Array.map(item =>
           <Select.Item key={item.label} value={item.value}>

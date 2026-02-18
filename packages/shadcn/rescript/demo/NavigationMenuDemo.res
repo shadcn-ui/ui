@@ -10,8 +10,7 @@ let components: array<componentInfo> = [
   {
     title: "Alert Dialog",
     href: "/docs/primitives/alert-dialog",
-    description:
-      "A modal dialog that interrupts the user with important content and expects a response.",
+    description: "A modal dialog that interrupts the user with important content and expects a response.",
   },
   {
     title: "Hover Card",
@@ -21,8 +20,7 @@ let components: array<componentInfo> = [
   {
     title: "Progress",
     href: "/docs/primitives/progress",
-    description:
-      "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
+    description: "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
   },
   {
     title: "Scroll-area",
@@ -32,14 +30,12 @@ let components: array<componentInfo> = [
   {
     title: "Tabs",
     href: "/docs/primitives/tabs",
-    description:
-      "A set of layered sections of content-known as tab panels-that are displayed one at a time.",
+    description: "A set of layered sections of content-known as tab panels-that are displayed one at a time.",
   },
   {
     title: "Tooltip",
     href: "/docs/primitives/tooltip",
-    description:
-      "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
+    description: "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
   },
 ]
 
@@ -49,8 +45,8 @@ module ListItem = {
     <li>
       <NavigationMenu.Link render={<a href />}>
         <div className="flex flex-col gap-1 text-sm">
-          <div className="leading-none font-medium">{title->React.string}</div>
-          <div className="text-muted-foreground line-clamp-2">{description->React.string}</div>
+          <div className="leading-none font-medium"> {title->React.string} </div>
+          <div className="text-muted-foreground line-clamp-2"> {description->React.string} </div>
         </div>
       </NavigationMenu.Link>
     </li>
@@ -61,7 +57,7 @@ let make = () =>
   <NavigationMenu>
     <NavigationMenu.List>
       <NavigationMenu.Item>
-        <NavigationMenu.Trigger>{"Getting started"->React.string}</NavigationMenu.Trigger>
+        <NavigationMenu.Trigger> {"Getting started"->React.string} </NavigationMenu.Trigger>
         <NavigationMenu.Content>
           <ul className="w-96">
             <ListItem
@@ -83,7 +79,7 @@ let make = () =>
         </NavigationMenu.Content>
       </NavigationMenu.Item>
       <NavigationMenu.Item className="hidden md:flex">
-        <NavigationMenu.Trigger>{"Components"->React.string}</NavigationMenu.Trigger>
+        <NavigationMenu.Trigger> {"Components"->React.string} </NavigationMenu.Trigger>
         <NavigationMenu.Content>
           <ul className="grid w-[400px] gap-2 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
             {components
@@ -100,7 +96,7 @@ let make = () =>
         </NavigationMenu.Content>
       </NavigationMenu.Item>
       <NavigationMenu.Item>
-        <NavigationMenu.Trigger>{"With Icon"->React.string}</NavigationMenu.Trigger>
+        <NavigationMenu.Trigger> {"With Icon"->React.string} </NavigationMenu.Trigger>
         <NavigationMenu.Content>
           <ul className="grid w-[200px]">
             <li>
@@ -122,8 +118,7 @@ let make = () =>
       </NavigationMenu.Item>
       <NavigationMenu.Item>
         <NavigationMenu.Link
-          render={<a href="/docs" />}
-          className={NavigationMenu.navigationMenuTriggerStyle()}
+          render={<a href="/docs" />} className={NavigationMenu.navigationMenuTriggerStyle()}
         >
           {"Docs"->React.string}
         </NavigationMenu.Link>

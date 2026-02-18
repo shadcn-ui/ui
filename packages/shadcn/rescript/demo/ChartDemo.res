@@ -1,8 +1,8 @@
+@@jsxConfig({version: 4, mode: "automatic", module_: "BaseUi.BaseUiJsxDOM"})
+
 @@directive("'use client'")
 
 open BaseUi.Types
-
-external toDomProps: 'a => JsxDOM.domProps = "%identity"
 
 @send external replaceAll: (string, string, string) => string = "replaceAll"
 @send external toLocaleString: int => string = "toLocaleString"
@@ -111,8 +111,8 @@ let chartStyleText = chartId =>
   `[data-chart=${chartId}] {\n  --color-desktop: var(--chart-2);\n  --color-mobile: var(--chart-1);\n}\n\n.dark [data-chart=${chartId}] {\n  --color-desktop: var(--chart-2);\n  --color-mobile: var(--chart-1);\n}`
 
 module TooltipContent = {
-  @react.componentWithProps
-  let make = (_props: propsWithOptionalChildren<string, bool>) => React.null
+  @react.component
+  let make = () => React.null
 }
 
 @react.component
@@ -142,7 +142,7 @@ let make = () => {
       </div>
       <div className="flex">
         <button
-          {...toDomProps(desktopButtonProps)}
+          {...desktopButtonProps}
           className="data-[active=true]:bg-muted/50 relative z-30 flex flex-1 flex-col justify-center gap-1 border-t px-6 py-4 text-left even:border-l sm:border-t-0 sm:border-l sm:px-8 sm:py-6"
         >
           <span className="text-muted-foreground text-xs"> {"Desktop"->React.string} </span>
@@ -151,7 +151,7 @@ let make = () => {
           </span>
         </button>
         <button
-          {...toDomProps(mobileButtonProps)}
+          {...mobileButtonProps}
           className="data-[active=true]:bg-muted/50 relative z-30 flex flex-1 flex-col justify-center gap-1 border-t px-6 py-4 text-left even:border-l sm:border-t-0 sm:border-l sm:px-8 sm:py-6"
         >
           <span className="text-muted-foreground text-xs"> {"Mobile"->React.string} </span>
@@ -163,7 +163,7 @@ let make = () => {
     </div>
     <div className="px-2 sm:p-6">
       <div
-        {...toDomProps(chartProps)}
+        {...chartProps}
         className="[&_.recharts-cartesian-axis-tick_text]:fill-muted-foreground [&_.recharts-cartesian-grid_line[stroke='#ccc']]:stroke-border/50 [&_.recharts-curve.recharts-tooltip-cursor]:stroke-border [&_.recharts-polar-grid_[stroke='#ccc']]:stroke-border [&_.recharts-radial-bar-background-sector]:fill-muted [&_.recharts-rectangle.recharts-tooltip-cursor]:fill-muted [&_.recharts-reference-line_[stroke='#ccc']]:stroke-border flex aspect-video justify-center text-xs [&_.recharts-dot[stroke='#fff']]:stroke-transparent [&_.recharts-layer]:outline-hidden [&_.recharts-sector]:outline-hidden [&_.recharts-sector[stroke='#fff']]:stroke-transparent [&_.recharts-surface]:outline-hidden aspect-auto h-[250px] w-full"
       >
         <style> {chartStyleText(chartId)->React.string} </style>

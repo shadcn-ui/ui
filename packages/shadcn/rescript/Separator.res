@@ -2,13 +2,13 @@
 
 open BaseUi.Types
 
-@react.componentWithProps
-let make = (props: propsWithOptionalChildren<'value, 'checked>) =>
+@react.component
+let make = (~className="", ~id=?, ~style=?, ~orientation=Orientation.Horizontal, ~children=?) =>
   <BaseUi.Separator
-    {...props}
-    orientation={props.orientation->Option.getOr(Orientation.Horizontal)}
+    ?id
+    ?style
+    ?children
+    orientation
     dataSlot="separator"
-    className={`bg-border shrink-0 data-horizontal:h-px data-horizontal:w-full data-vertical:w-px data-vertical:self-stretch ${props.className->Option.getOr(
-        "",
-      )}`}
+    className={`bg-border shrink-0 data-horizontal:h-px data-horizontal:w-full data-vertical:w-px data-vertical:self-stretch ${className}`}
   />

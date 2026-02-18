@@ -143,71 +143,252 @@ let projects: array<project> = [
 module TeamSwitcher = {
   @react.component
   let make = (~teams: array<team>) => {
-  let sidebar = Sidebar.useSidebar()
-  let isMobile = sidebar.isMobile
-  let (activeTeamIndex, setActiveTeamIndex) = React.useState(() => 0)
+    let sidebar = Sidebar.useSidebar()
+    let isMobile = sidebar.isMobile
+    let (activeTeamIndex, setActiveTeamIndex) = React.useState(() => 0)
 
-  switch teams->Belt.Array.get(activeTeamIndex) {
-  | None => React.null
-  | Some(activeTeam) =>
+    switch teams->Belt.Array.get(activeTeamIndex) {
+    | None => React.null
+    | Some(activeTeam) =>
+      <Sidebar.Group>
+        <Sidebar.Menu>
+          <Sidebar.MenuItem>
+            <DropdownMenu>
+              <DropdownMenu.Trigger
+                render={<Sidebar.MenuButton
+                  size=BaseUi.Types.Size.Lg
+                  className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+                />}
+              >
+                <div
+                  className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg"
+                >
+                  {renderIcon(~icon=activeTeam.logo, ~className="size-4")}
+                </div>
+                <div className="grid flex-1 text-left text-sm leading-tight">
+                  <span className="truncate font-medium"> {activeTeam.name->React.string} </span>
+                  <span className="truncate text-xs"> {activeTeam.plan->React.string} </span>
+                </div>
+                <Icons.ChevronsUpDown className="ml-auto" />
+              </DropdownMenu.Trigger>
+              <DropdownMenu.Content
+                className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
+                align=BaseUi.Types.Align.Start
+                side={isMobile ? BaseUi.Types.Side.Bottom : BaseUi.Types.Side.Right}
+                sideOffset={4.}
+              >
+                <DropdownMenu.Group>
+                  <DropdownMenu.Label className="text-muted-foreground text-xs">
+                    {"Teams"->React.string}
+                  </DropdownMenu.Label>
+                  {teams
+                  ->Belt.Array.mapWithIndex((index, team) =>
+                    <DropdownMenu.Item
+                      key={team.name}
+                      onClick={_ => setActiveTeamIndex(_ => index)}
+                      className="gap-2 p-2"
+                    >
+                      <div className="flex size-6 items-center justify-center rounded-md border">
+                        {renderIcon(~icon=team.logo, ~className="size-3.5 shrink-0")}
+                      </div>
+                      {team.name->React.string}
+                      <DropdownMenu.Shortcut>
+                        {`⌘${Int.toString(index + 1)}`->React.string}
+                      </DropdownMenu.Shortcut>
+                    </DropdownMenu.Item>
+                  )
+                  ->React.array}
+                </DropdownMenu.Group>
+                <DropdownMenu.Separator> {React.null} </DropdownMenu.Separator>
+                <DropdownMenu.Group>
+                  <DropdownMenu.Item className="gap-2 p-2">
+                    <div
+                      className="flex size-6 items-center justify-center rounded-md border bg-transparent"
+                    >
+                      {renderIcon(~icon=IconPlus, ~className="size-4")}
+                    </div>
+                    <div className="text-muted-foreground font-medium">
+                      {"Add team"->React.string}
+                    </div>
+                  </DropdownMenu.Item>
+                </DropdownMenu.Group>
+              </DropdownMenu.Content>
+            </DropdownMenu>
+          </Sidebar.MenuItem>
+        </Sidebar.Menu>
+      </Sidebar.Group>
+    }
+  }
+}
+
+module NavMainSection = {
+  @react.component
+  let make = (~items: array<navMainItem>) =>
+    <Sidebar.Group>
+      <Sidebar.GroupLabel> {"Platform"->React.string} </Sidebar.GroupLabel>
+      <Sidebar.Menu>
+        {items
+        ->Belt.Array.map(item =>
+          <Collapsible key={item.title} defaultOpen={item.isActive} className="group/collapsible">
+            <Sidebar.MenuItem>
+              <Collapsible.Trigger render={<Sidebar.MenuButton ariaDisabled={false} />}>
+                {renderIcon(~icon=item.icon)}
+                <span> {item.title->React.string} </span>
+                <Icons.ChevronRight
+                  className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90"
+                />
+              </Collapsible.Trigger>
+              <Collapsible.Content>
+                <Sidebar.MenuSub>
+                  {item.items
+                  ->Belt.Array.map(subItem =>
+                    <Sidebar.MenuSubItem key={subItem.title}>
+                      <Sidebar.MenuSubButton render={<a href={subItem.url} />}>
+                        <span> {subItem.title->React.string} </span>
+                      </Sidebar.MenuSubButton>
+                    </Sidebar.MenuSubItem>
+                  )
+                  ->React.array}
+                </Sidebar.MenuSub>
+              </Collapsible.Content>
+            </Sidebar.MenuItem>
+          </Collapsible>
+        )
+        ->React.array}
+      </Sidebar.Menu>
+    </Sidebar.Group>
+}
+
+module NavProjectsSection = {
+  @react.component
+  let make = (~projects: array<project>) => {
+    let sidebar = Sidebar.useSidebar()
+    let isMobile = sidebar.isMobile
+
+    <Sidebar.Group className="group-data-[collapsible=icon]:hidden">
+      <Sidebar.GroupLabel> {"Projects"->React.string} </Sidebar.GroupLabel>
+      <Sidebar.Menu>
+        {projects
+        ->Belt.Array.map(project =>
+          <Sidebar.MenuItem key={project.name}>
+            <Sidebar.MenuButton render={<a href={project.url} />}>
+              {renderIcon(~icon=project.icon)}
+              <span> {project.name->React.string} </span>
+            </Sidebar.MenuButton>
+            <DropdownMenu>
+              <DropdownMenu.Trigger render={<Sidebar.MenuAction showOnHover=true />}>
+                <Icons.MoreHorizontal />
+                <span className="sr-only"> {"More"->React.string} </span>
+              </DropdownMenu.Trigger>
+              <DropdownMenu.Content
+                className="w-48 rounded-lg"
+                side={isMobile ? BaseUi.Types.Side.Bottom : BaseUi.Types.Side.Right}
+                align={isMobile ? BaseUi.Types.Align.End : BaseUi.Types.Align.Start}
+              >
+                <DropdownMenu.Item>
+                  {renderIcon(~icon=IconFolder, ~className="text-muted-foreground")}
+                  <span> {"View Project"->React.string} </span>
+                </DropdownMenu.Item>
+                <DropdownMenu.Item>
+                  {renderIcon(~icon=IconForward, ~className="text-muted-foreground")}
+                  <span> {"Share Project"->React.string} </span>
+                </DropdownMenu.Item>
+                <DropdownMenu.Separator> {React.null} </DropdownMenu.Separator>
+                <DropdownMenu.Item>
+                  {renderIcon(~icon=IconTrash2, ~className="text-muted-foreground")}
+                  <span> {"Delete Project"->React.string} </span>
+                </DropdownMenu.Item>
+              </DropdownMenu.Content>
+            </DropdownMenu>
+          </Sidebar.MenuItem>
+        )
+        ->React.array}
+        <Sidebar.MenuItem>
+          <Sidebar.MenuButton className="text-sidebar-foreground/70">
+            {renderIcon(~icon=IconMoreHorizontal, ~className="text-sidebar-foreground/70")}
+            <span> {"More"->React.string} </span>
+          </Sidebar.MenuButton>
+        </Sidebar.MenuItem>
+      </Sidebar.Menu>
+    </Sidebar.Group>
+  }
+}
+
+module NavUserSection = {
+  @react.component
+  let make = (~user: user) => {
+    let sidebar = Sidebar.useSidebar()
+    let isMobile = sidebar.isMobile
+
     <Sidebar.Group>
       <Sidebar.Menu>
         <Sidebar.MenuItem>
           <DropdownMenu>
             <DropdownMenu.Trigger
-              render={
-                <Sidebar.MenuButton
-                  dataSize=BaseUi.Types.Size.Lg
-                  className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
-                />
-              }
+              render={<Sidebar.MenuButton
+                size=BaseUi.Types.Size.Lg
+                className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+              />}
             >
-              <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
-                {renderIcon(~icon=activeTeam.logo, ~className="size-4")}
-              </div>
+              <Avatar className="h-8 w-8 rounded-lg">
+                <Avatar.Image src={user.avatar} alt={user.name} />
+                <Avatar.Fallback className="rounded-lg"> {"CN"->React.string} </Avatar.Fallback>
+              </Avatar>
               <div className="grid flex-1 text-left text-sm leading-tight">
-                <span className="truncate font-medium">{activeTeam.name->React.string}</span>
-                <span className="truncate text-xs">{activeTeam.plan->React.string}</span>
+                <span className="truncate font-medium"> {user.name->React.string} </span>
+                <span className="truncate text-xs"> {user.email->React.string} </span>
               </div>
-              <Icons.ChevronsUpDown className="ml-auto" />
+              <Icons.ChevronsUpDown className="ml-auto size-4" />
             </DropdownMenu.Trigger>
             <DropdownMenu.Content
               className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
-              align=BaseUi.Types.Align.Start
               side={isMobile ? BaseUi.Types.Side.Bottom : BaseUi.Types.Side.Right}
+              align=BaseUi.Types.Align.End
               sideOffset={4.}
             >
               <DropdownMenu.Group>
-                <DropdownMenu.Label className="text-muted-foreground text-xs">
-                  {"Teams"->React.string}
-                </DropdownMenu.Label>
-                {teams
-                ->Belt.Array.mapWithIndex((index, team) =>
-                  <DropdownMenu.Item
-                    key={team.name}
-                    onClick={_ => setActiveTeamIndex(_ => index)}
-                    className="gap-2 p-2"
-                  >
-                    <div className="flex size-6 items-center justify-center rounded-md border">
-                      {renderIcon(~icon=team.logo, ~className="size-3.5 shrink-0")}
+                <DropdownMenu.Label className="p-0 font-normal">
+                  <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
+                    <Avatar className="h-8 w-8 rounded-lg">
+                      <Avatar.Image src={user.avatar} alt={user.name} />
+                      <Avatar.Fallback className="rounded-lg">
+                        {"CN"->React.string}
+                      </Avatar.Fallback>
+                    </Avatar>
+                    <div className="grid flex-1 text-left text-sm leading-tight">
+                      <span className="truncate font-medium"> {user.name->React.string} </span>
+                      <span className="truncate text-xs"> {user.email->React.string} </span>
                     </div>
-                    {team.name->React.string}
-                    <DropdownMenu.Shortcut>
-                      {`⌘${Int.toString(index + 1)}`->React.string}
-                    </DropdownMenu.Shortcut>
-                  </DropdownMenu.Item>
-                )
-                ->React.array}
+                  </div>
+                </DropdownMenu.Label>
               </DropdownMenu.Group>
-              <DropdownMenu.Separator>{React.null}</DropdownMenu.Separator>
+              <DropdownMenu.Separator> {React.null} </DropdownMenu.Separator>
               <DropdownMenu.Group>
-                <DropdownMenu.Item className="gap-2 p-2">
-                  <div className="flex size-6 items-center justify-center rounded-md border bg-transparent">
-                    {renderIcon(~icon=IconPlus, ~className="size-4")}
-                  </div>
-                  <div className="text-muted-foreground font-medium">
-                    {"Add team"->React.string}
-                  </div>
+                <DropdownMenu.Item>
+                  {renderIcon(~icon=IconSparkles)}
+                  {"Upgrade to Pro"->React.string}
+                </DropdownMenu.Item>
+              </DropdownMenu.Group>
+              <DropdownMenu.Separator> {React.null} </DropdownMenu.Separator>
+              <DropdownMenu.Group>
+                <DropdownMenu.Item>
+                  {renderIcon(~icon=IconBadgeCheck)}
+                  {"Account"->React.string}
+                </DropdownMenu.Item>
+                <DropdownMenu.Item>
+                  <Icons.CreditCard />
+                  {"Billing"->React.string}
+                </DropdownMenu.Item>
+                <DropdownMenu.Item>
+                  {renderIcon(~icon=IconBell)}
+                  {"Notifications"->React.string}
+                </DropdownMenu.Item>
+              </DropdownMenu.Group>
+              <DropdownMenu.Separator> {React.null} </DropdownMenu.Separator>
+              <DropdownMenu.Group>
+                <DropdownMenu.Item>
+                  <Icons.LogOut />
+                  {"Log out"->React.string}
                 </DropdownMenu.Item>
               </DropdownMenu.Group>
             </DropdownMenu.Content>
@@ -216,187 +397,6 @@ module TeamSwitcher = {
       </Sidebar.Menu>
     </Sidebar.Group>
   }
-}
-}
-
-module NavMainSection = {
-  @react.component
-  let make = (~items: array<navMainItem>) =>
-  <Sidebar.Group>
-    <Sidebar.GroupLabel>{"Platform"->React.string}</Sidebar.GroupLabel>
-    <Sidebar.Menu>
-      {items
-      ->Belt.Array.map(item =>
-        <Collapsible key={item.title} defaultOpen={item.isActive} className="group/collapsible">
-          <Sidebar.MenuItem>
-            <Collapsible.Trigger
-              render={<Sidebar.MenuButton />}
-            >
-              {renderIcon(~icon=item.icon)}
-              <span>{item.title->React.string}</span>
-              <Icons.ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
-            </Collapsible.Trigger>
-            <Collapsible.Content>
-              <Sidebar.MenuSub>
-                {item.items
-                ->Belt.Array.map(subItem =>
-                  <Sidebar.MenuSubItem key={subItem.title}>
-                    <Sidebar.MenuSubButton render={<a href={subItem.url} />}>
-                      <span>{subItem.title->React.string}</span>
-                    </Sidebar.MenuSubButton>
-                  </Sidebar.MenuSubItem>
-                )
-                ->React.array}
-              </Sidebar.MenuSub>
-            </Collapsible.Content>
-          </Sidebar.MenuItem>
-        </Collapsible>
-      )
-      ->React.array}
-    </Sidebar.Menu>
-  </Sidebar.Group>
-}
-
-module NavProjectsSection = {
-  @react.component
-  let make = (~projects: array<project>) => {
-  let sidebar = Sidebar.useSidebar()
-  let isMobile = sidebar.isMobile
-
-  <Sidebar.Group className="group-data-[collapsible=icon]:hidden">
-    <Sidebar.GroupLabel>{"Projects"->React.string}</Sidebar.GroupLabel>
-    <Sidebar.Menu>
-      {projects
-      ->Belt.Array.map(project =>
-        <Sidebar.MenuItem key={project.name}>
-          <Sidebar.MenuButton render={<a href={project.url} />}>
-            {renderIcon(~icon=project.icon)}
-            <span>{project.name->React.string}</span>
-          </Sidebar.MenuButton>
-          <DropdownMenu>
-            <DropdownMenu.Trigger
-              render={<Sidebar.MenuAction showOnHover=true />}
-            >
-              <Icons.MoreHorizontal />
-              <span className="sr-only">{"More"->React.string}</span>
-            </DropdownMenu.Trigger>
-            <DropdownMenu.Content
-              className="w-48 rounded-lg"
-              side={isMobile ? BaseUi.Types.Side.Bottom : BaseUi.Types.Side.Right}
-              align={isMobile ? BaseUi.Types.Align.End : BaseUi.Types.Align.Start}
-            >
-              <DropdownMenu.Item>
-                {renderIcon(~icon=IconFolder, ~className="text-muted-foreground")}
-                <span>{"View Project"->React.string}</span>
-              </DropdownMenu.Item>
-              <DropdownMenu.Item>
-                {renderIcon(~icon=IconForward, ~className="text-muted-foreground")}
-                <span>{"Share Project"->React.string}</span>
-              </DropdownMenu.Item>
-              <DropdownMenu.Separator>{React.null}</DropdownMenu.Separator>
-              <DropdownMenu.Item>
-                {renderIcon(~icon=IconTrash2, ~className="text-muted-foreground")}
-                <span>{"Delete Project"->React.string}</span>
-              </DropdownMenu.Item>
-            </DropdownMenu.Content>
-          </DropdownMenu>
-        </Sidebar.MenuItem>
-      )
-      ->React.array}
-      <Sidebar.MenuItem>
-        <Sidebar.MenuButton className="text-sidebar-foreground/70">
-          {renderIcon(~icon=IconMoreHorizontal, ~className="text-sidebar-foreground/70")}
-          <span>{"More"->React.string}</span>
-        </Sidebar.MenuButton>
-      </Sidebar.MenuItem>
-    </Sidebar.Menu>
-  </Sidebar.Group>
-}
-}
-
-module NavUserSection = {
-  @react.component
-  let make = (~user: user) => {
-  let sidebar = Sidebar.useSidebar()
-  let isMobile = sidebar.isMobile
-
-  <Sidebar.Group>
-    <Sidebar.Menu>
-      <Sidebar.MenuItem>
-        <DropdownMenu>
-          <DropdownMenu.Trigger
-            render={
-              <Sidebar.MenuButton
-                dataSize=BaseUi.Types.Size.Lg
-                className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
-              />
-            }
-          >
-            <Avatar className="h-8 w-8 rounded-lg">
-              <Avatar.Image src={user.avatar} alt={user.name} />
-              <Avatar.Fallback className="rounded-lg">{"CN"->React.string}</Avatar.Fallback>
-            </Avatar>
-            <div className="grid flex-1 text-left text-sm leading-tight">
-              <span className="truncate font-medium">{user.name->React.string}</span>
-              <span className="truncate text-xs">{user.email->React.string}</span>
-            </div>
-            <Icons.ChevronsUpDown className="ml-auto size-4" />
-          </DropdownMenu.Trigger>
-          <DropdownMenu.Content
-            className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
-            side={isMobile ? BaseUi.Types.Side.Bottom : BaseUi.Types.Side.Right}
-            align=BaseUi.Types.Align.End
-            sideOffset={4.}
-          >
-            <DropdownMenu.Group>
-              <DropdownMenu.Label className="p-0 font-normal">
-                <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
-                  <Avatar className="h-8 w-8 rounded-lg">
-                    <Avatar.Image src={user.avatar} alt={user.name} />
-                    <Avatar.Fallback className="rounded-lg">{"CN"->React.string}</Avatar.Fallback>
-                  </Avatar>
-                  <div className="grid flex-1 text-left text-sm leading-tight">
-                    <span className="truncate font-medium">{user.name->React.string}</span>
-                    <span className="truncate text-xs">{user.email->React.string}</span>
-                  </div>
-                </div>
-              </DropdownMenu.Label>
-            </DropdownMenu.Group>
-            <DropdownMenu.Separator>{React.null}</DropdownMenu.Separator>
-            <DropdownMenu.Group>
-              <DropdownMenu.Item>
-                {renderIcon(~icon=IconSparkles)}
-                {"Upgrade to Pro"->React.string}
-              </DropdownMenu.Item>
-            </DropdownMenu.Group>
-            <DropdownMenu.Separator>{React.null}</DropdownMenu.Separator>
-            <DropdownMenu.Group>
-              <DropdownMenu.Item>
-                {renderIcon(~icon=IconBadgeCheck)}
-                {"Account"->React.string}
-              </DropdownMenu.Item>
-              <DropdownMenu.Item>
-                <Icons.CreditCard />
-                {"Billing"->React.string}
-              </DropdownMenu.Item>
-              <DropdownMenu.Item>
-                {renderIcon(~icon=IconBell)}
-                {"Notifications"->React.string}
-              </DropdownMenu.Item>
-            </DropdownMenu.Group>
-            <DropdownMenu.Separator>{React.null}</DropdownMenu.Separator>
-            <DropdownMenu.Group>
-              <DropdownMenu.Item>
-                <Icons.LogOut />
-                {"Log out"->React.string}
-              </DropdownMenu.Item>
-            </DropdownMenu.Group>
-          </DropdownMenu.Content>
-        </DropdownMenu>
-      </Sidebar.MenuItem>
-    </Sidebar.Menu>
-  </Sidebar.Group>
-}
 }
 
 @react.component
@@ -416,7 +416,9 @@ let make = () =>
       <Sidebar.Rail />
     </Sidebar>
     <Sidebar.Inset>
-      <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
+      <header
+        className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12"
+      >
         <div className="flex items-center gap-2 px-4">
           <Sidebar.Trigger className="-ml-1" />
         </div>

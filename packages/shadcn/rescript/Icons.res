@@ -1,5 +1,6 @@
 type props = {
   className?: string,
+  size?: int,
   role?: string,
   @as("aria-label") ariaLabel?: string,
   @as("aria-hidden") ariaHidden?: bool,

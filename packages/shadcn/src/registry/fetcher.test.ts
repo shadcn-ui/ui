@@ -35,6 +35,34 @@ const server = setupServer(
       name: "external",
       type: "registry:ui",
     })
+  }),
+  http.get(`${REGISTRY_URL}/styles/new-york/button.json`, () => {
+    return HttpResponse.json({
+      name: "button",
+      type: "registry:ui",
+      dependencies: ["@radix-ui/react-slot"],
+      files: [
+        {
+          path: "registry/new-york/ui/button.tsx",
+          content: "// button component content",
+          type: "registry:ui",
+        },
+      ],
+    })
+  }),
+  http.get(`${REGISTRY_URL}/styles/new-york/card.json`, () => {
+    return HttpResponse.json({
+      name: "card",
+      type: "registry:ui",
+      dependencies: [],
+      files: [
+        {
+          path: "registry/new-york/ui/card.tsx",
+          content: "// card component content",
+          type: "registry:ui",
+        },
+      ],
+    })
   })
 )
 

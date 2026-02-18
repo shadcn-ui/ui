@@ -65,9 +65,22 @@ export async function updateFiles(
     silent: options.silent,
   })?.start()
 
+  const shouldFetchBaseColor =
+    Boolean(config.tailwind.baseColor) &&
+    !config.tailwind.cssVariables &&
+    files.some((file) => {
+      if (!file.content) return false
+      if (file.type === "registry:file" || file.type === "registry:item") {
+        return false
+      }
+
+      const probablePath = file.target ?? file.path
+      return !isEnvFile(probablePath)
+    })
+
   const [projectInfo, baseColor] = await Promise.all([
     getProjectInfo(config.resolvedPaths.cwd),
-    config.tailwind.baseColor
+    shouldFetchBaseColor && config.tailwind.baseColor
       ? getRegistryBaseColor(config.tailwind.baseColor)
       : Promise.resolve(undefined),
   ])

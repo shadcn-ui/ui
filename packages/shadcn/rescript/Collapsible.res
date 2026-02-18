@@ -2,18 +2,81 @@
 
 open BaseUi.Types
 
-@react.componentWithProps
-let make = (props: propsWithChildren<'value, 'checked>) =>
-  <BaseUi.Collapsible.Root {...props} dataSlot="collapsible" />
+@react.component
+let make = (
+  ~className=?,
+  ~children=?,
+  ~id=?,
+  ~open_=?,
+  ~defaultOpen=?,
+  ~onOpenChange=?,
+  ~disabled=?,
+  ~style=?,
+) =>
+  <BaseUi.Collapsible.Root
+    ?className
+    ?children
+    ?id
+    ?open_
+    ?defaultOpen
+    ?onOpenChange
+    ?disabled
+    ?style
+    dataSlot="collapsible"
+  />
 
 module Trigger = {
-  @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) =>
-    <BaseUi.Collapsible.Trigger {...props} dataSlot="collapsible-trigger" />
+  @react.component
+  let make = (
+    ~className=?,
+    ~children=?,
+    ~id=?,
+    ~disabled=false,
+    ~onClick=?,
+    ~onKeyDown=?,
+    ~onKeyDownCapture=?,
+    ~ariaLabel=?,
+    ~render=?,
+    ~style=?,
+  ) => {
+    <BaseUi.Collapsible.Trigger
+      ?className
+      ?children
+      ?id
+      disabled
+      ?onClick
+      ?onKeyDown
+      ?onKeyDownCapture
+      ?ariaLabel
+      ariaDisabled={disabled}
+      ?render
+      ?style
+      dataSlot="collapsible-trigger"
+    />
+  }
 }
 
 module Content = {
-  @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) =>
-    <BaseUi.Collapsible.Panel {...props} dataSlot="collapsible-content" />
+  @react.component
+  let make = (
+    ~className=?,
+    ~children=?,
+    ~id=?,
+    ~keepMounted=?,
+    ~style=?,
+    ~onClick=?,
+    ~onKeyDown=?,
+    ~onKeyDownCapture=?,
+  ) =>
+    <BaseUi.Collapsible.Panel
+      ?className
+      ?children
+      ?id
+      ?keepMounted
+      ?style
+      ?onClick
+      ?onKeyDown
+      ?onKeyDownCapture
+      dataSlot="collapsible-content"
+    />
 }

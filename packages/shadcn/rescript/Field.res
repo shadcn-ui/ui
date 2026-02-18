@@ -1,9 +1,8 @@
+@@jsxConfig({version: 4, mode: "automatic", module_: "BaseUi.BaseUiJsxDOM"})
+
 @@directive("'use client'")
 
-
 open BaseUi.Types
-
-external toDomProps: 'a => JsxDOM.domProps = "%identity"
 
 let fieldOrientationClass = (~orientation: DataOrientation.t) =>
   switch orientation {
@@ -18,135 +17,279 @@ let fieldVariants = (~orientation=DataOrientation.Vertical) => {
 }
 
 module Set = {
-  @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) => {
-    let props = {...props, dataSlot: "field-set"}
+  @react.component
+  let make = (
+    ~className="",
+    ~children=?,
+    ~id=?,
+    ~style=?,
+    ~onClick=?,
+    ~onKeyDown=?,
+    ~onKeyDownCapture=?,
+  ) => {
+    let props: BaseUi.Types.props<string, bool> = {
+      ?id,
+      ?children,
+      ?style,
+      ?onClick,
+      ?onKeyDown,
+      ?onKeyDownCapture,
+      className,
+      dataSlot: "field-set",
+    }
     <fieldset
-      {...toDomProps(props)}
-      className={`flex flex-col gap-4 has-[>[data-slot=checkbox-group]]:gap-3 has-[>[data-slot=radio-group]]:gap-3 ${props.className->Option.getOr(
-          "",
-        )}`}
+      {...props}
+      className={`flex flex-col gap-4 has-[>[data-slot=checkbox-group]]:gap-3 has-[>[data-slot=radio-group]]:gap-3 ${className}`}
     />
   }
 }
 
 module Legend = {
-  @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) => {
-    let variant = props.dataVariant->Option.getOr(Variant.Legend)
-    let props = {...props, dataSlot: "field-legend", dataVariant: variant}
+  @react.component
+  let make = (
+    ~className="",
+    ~children=?,
+    ~id=?,
+    ~style=?,
+    ~onClick=?,
+    ~onKeyDown=?,
+    ~onKeyDownCapture=?,
+    ~dataVariant=Variant.Legend,
+  ) => {
+    let variant = dataVariant
+    let props: BaseUi.Types.props<string, bool> = {
+      ?id,
+      ?children,
+      ?style,
+      ?onClick,
+      ?onKeyDown,
+      ?onKeyDownCapture,
+      className,
+      dataSlot: "field-legend",
+      dataVariant: variant,
+    }
     <legend
-      {...toDomProps(props)}
-      className={`mb-1.5 font-medium data-[variant=label]:text-sm data-[variant=legend]:text-base ${props.className->Option.getOr(
-          "",
-        )}`}
+      {...props}
+      className={`mb-1.5 font-medium data-[variant=label]:text-sm data-[variant=legend]:text-base ${className}`}
     />
   }
 }
 
 module Group = {
-  @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) => {
-    let props = {...props, dataSlot: "field-group"}
+  @react.component
+  let make = (
+    ~className="",
+    ~children=?,
+    ~id=?,
+    ~style=?,
+    ~onClick=?,
+    ~onKeyDown=?,
+    ~onKeyDownCapture=?,
+  ) => {
+    let props: BaseUi.Types.props<string, bool> = {
+      ?id,
+      ?children,
+      ?style,
+      ?onClick,
+      ?onKeyDown,
+      ?onKeyDownCapture,
+      className,
+      dataSlot: "field-group",
+    }
     <div
-      {...toDomProps(props)}
-      className={`group/field-group @container/field-group flex w-full flex-col gap-5 data-[slot=checkbox-group]:gap-3 *:data-[slot=field-group]:gap-4 ${props.className->Option.getOr(
-          "",
-        )}`}
+      {...props}
+      className={`group/field-group @container/field-group flex w-full flex-col gap-5 data-[slot=checkbox-group]:gap-3 *:data-[slot=field-group]:gap-4 ${className}`}
     />
   }
 }
 
-@react.componentWithProps
-let make = (props: propsWithChildren<'value, 'checked>) => {
-  let orientation =
-    switch props.dataOrientation {
-    | Some(orientation) => orientation
-    | None =>
-      switch props.orientation {
-      | Some(Orientation.Horizontal) => DataOrientation.Horizontal
-      | Some(Orientation.Vertical) => DataOrientation.Vertical
-      | None => DataOrientation.Vertical
-      }
+@react.component
+let make = (
+  ~className="",
+  ~children=?,
+  ~id=?,
+  ~style=?,
+  ~onClick=?,
+  ~onKeyDown=?,
+  ~onKeyDownCapture=?,
+  ~orientation=?,
+  ~dataOrientation=?,
+  ~disabled=?,
+  ~dataDisabled=?,
+) => {
+  let resolvedOrientation = switch dataOrientation {
+  | Some(value) => value
+  | None =>
+    switch orientation {
+    | Some(Orientation.Horizontal) => DataOrientation.Horizontal
+    | Some(Orientation.Vertical) => DataOrientation.Vertical
+    | None => DataOrientation.Vertical
     }
-  let props = {...props, orientation: ?None, dataSlot: "field", dataOrientation: orientation}
+  }
+  let props: BaseUi.Types.props<string, bool> = {
+    ?id,
+    ?children,
+    ?style,
+    ?onClick,
+    ?onKeyDown,
+    ?onKeyDownCapture,
+    orientation: ?None,
+    className,
+    ?disabled,
+    ?dataDisabled,
+    dataSlot: "field",
+    dataOrientation: resolvedOrientation,
+  }
   <div
-    {...toDomProps(props)}
+    {...props}
     role="group"
-    className={`${fieldVariants(~orientation)} ${props.className->Option.getOr("")}`}
+    className={`${fieldVariants(~orientation=resolvedOrientation)} ${className}`}
   />
 }
 
 module Content = {
-  @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) => {
-    let props = {...props, dataSlot: "field-content"}
+  @react.component
+  let make = (
+    ~className="",
+    ~children=?,
+    ~id=?,
+    ~style=?,
+    ~onClick=?,
+    ~onKeyDown=?,
+    ~onKeyDownCapture=?,
+  ) => {
+    let props: BaseUi.Types.props<string, bool> = {
+      ?id,
+      ?children,
+      ?style,
+      ?onClick,
+      ?onKeyDown,
+      ?onKeyDownCapture,
+      className,
+      dataSlot: "field-content",
+    }
     <div
-      {...toDomProps(props)}
-      className={`group/field-content flex flex-1 flex-col gap-0.5 leading-snug ${props.className->Option.getOr(
-          "",
-        )}`}
+      {...props}
+      className={`group/field-content flex flex-1 flex-col gap-0.5 leading-snug ${className}`}
     />
   }
 }
 
 module Label = {
-  @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) =>
+  @react.component
+  let make = (
+    ~className="",
+    ~children=?,
+    ~id=?,
+    ~htmlFor=?,
+    ~onClick=?,
+    ~onKeyDown=?,
+    ~onKeyDownCapture=?,
+    ~style=?,
+  ) =>
     <Label
-      {...props}
+      ?id
+      ?htmlFor
+      ?onClick
+      ?onKeyDown
+      ?onKeyDownCapture
+      ?style
       dataSlot="field-label"
-      className={`has-data-checked:bg-primary/5 has-data-checked:border-primary/30 dark:has-data-checked:border-primary/20 dark:has-data-checked:bg-primary/10 group/field-label peer/field-label flex w-fit gap-2 leading-snug group-data-[disabled=true]/field:opacity-50 has-[>[data-slot=field]]:rounded-lg has-[>[data-slot=field]]:border *:data-[slot=field]:p-2.5 has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col ${props.className->Option.getOr(
-          "",
-        )}`}
-    />
+      className={`has-data-checked:bg-primary/5 has-data-checked:border-primary/30 dark:has-data-checked:border-primary/20 dark:has-data-checked:bg-primary/10 group/field-label peer/field-label flex w-fit gap-2 leading-snug group-data-[disabled=true]/field:opacity-50 has-[>[data-slot=field]]:rounded-lg has-[>[data-slot=field]]:border *:data-[slot=field]:p-2.5 has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col ${className}`}
+     ?children />
 }
 
 module Title = {
-  @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) => {
-    let props = {...props, dataSlot: "field-label"}
+  @react.component
+  let make = (
+    ~className="",
+    ~children=?,
+    ~id=?,
+    ~style=?,
+    ~onClick=?,
+    ~onKeyDown=?,
+    ~onKeyDownCapture=?,
+  ) => {
+    let props: BaseUi.Types.props<string, bool> = {
+      ?id,
+      ?children,
+      ?style,
+      ?onClick,
+      ?onKeyDown,
+      ?onKeyDownCapture,
+      className,
+      dataSlot: "field-label",
+    }
     <div
-      {...toDomProps(props)}
-      className={`flex w-fit items-center gap-2 text-sm leading-snug font-medium group-data-[disabled=true]/field:opacity-50 ${props.className->Option.getOr(
-          "",
-        )}`}
+      {...props}
+      className={`flex w-fit items-center gap-2 text-sm leading-snug font-medium group-data-[disabled=true]/field:opacity-50 ${className}`}
     />
   }
 }
 
 module Description = {
-  @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) => {
-    let props = {...props, dataSlot: "field-description"}
+  @react.component
+  let make = (
+    ~className="",
+    ~children=?,
+    ~id=?,
+    ~style=?,
+    ~onClick=?,
+    ~onKeyDown=?,
+    ~onKeyDownCapture=?,
+  ) => {
+    let props: BaseUi.Types.props<string, bool> = {
+      ?id,
+      ?children,
+      ?style,
+      ?onClick,
+      ?onKeyDown,
+      ?onKeyDownCapture,
+      className,
+      dataSlot: "field-description",
+    }
     <p
-      {...toDomProps(props)}
-      className={`text-muted-foreground text-left text-sm leading-normal font-normal group-has-data-horizontal/field:text-balance [[data-variant=legend]+&]:-mt-1.5 last:mt-0 nth-last-2:-mt-1 [&>a:hover]:text-primary [&>a]:underline [&>a]:underline-offset-4 ${props.className->Option.getOr(
-          "",
-        )}`}
+      {...props}
+      className={`text-muted-foreground text-left text-sm leading-normal font-normal group-has-data-horizontal/field:text-balance [[data-variant=legend]+&]:-mt-1.5 last:mt-0 nth-last-2:-mt-1 [&>a:hover]:text-primary [&>a]:underline [&>a]:underline-offset-4 ${className}`}
     />
   }
 }
 
 module Separator = {
-  @react.componentWithProps
-  let make = (props: propsWithOptionalChildren<'value, 'checked>) => {
-    let hasContent = props.children->Option.isSome
-    let props = {...props, dataSlot: "field-separator", dataContent: hasContent}
+  @react.component
+  let make = (
+    ~className="",
+    ~children=?,
+    ~id=?,
+    ~style=?,
+    ~onClick=?,
+    ~onKeyDown=?,
+    ~onKeyDownCapture=?,
+  ) => {
+    let hasContent = children->Option.isSome
+    let props: BaseUi.Types.props<string, bool> = {
+      ?id,
+      ?children,
+      ?style,
+      ?onClick,
+      ?onKeyDown,
+      ?onKeyDownCapture,
+      className,
+      dataSlot: "field-separator",
+      dataContent: hasContent,
+    }
     <div
-      {...toDomProps(props)}
-      className={`relative -my-2 h-5 text-sm group-data-[variant=outline]/field-group:-mb-2 ${props.className->Option.getOr(
-          "",
-        )}`}
+      {...props}
+      className={`relative -my-2 h-5 text-sm group-data-[variant=outline]/field-group:-mb-2 ${className}`}
     >
       <BaseUi.Separator
         orientation=Orientation.Horizontal
         className="absolute inset-0 top-1/2 bg-border shrink-0 data-horizontal:h-px data-horizontal:w-full data-vertical:w-px data-vertical:self-stretch"
       />
-      {switch props.children {
-      | Some(children) =>
+      {switch children {
+      | Some(value) =>
         <span className="text-muted-foreground bg-background relative mx-auto block w-fit px-2">
-          {children}
+          {value}
         </span>
       | None => React.null
       }}
@@ -155,15 +298,30 @@ module Separator = {
 }
 
 module Error = {
-  @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) => {
-    let props = {...props, dataSlot: "field-error"}
+  @react.component
+  let make = (
+    ~className="",
+    ~children=?,
+    ~id=?,
+    ~style=?,
+    ~onClick=?,
+    ~onKeyDown=?,
+    ~onKeyDownCapture=?,
+  ) => {
+    let props: BaseUi.Types.props<string, bool> = {
+      ?id,
+      ?children,
+      ?style,
+      ?onClick,
+      ?onKeyDown,
+      ?onKeyDownCapture,
+      className,
+      dataSlot: "field-error",
+    }
     <div
-      {...toDomProps(props)}
+      {...props}
       role="alert"
-      className={`text-destructive text-sm font-normal ${props.className->Option.getOr("")}`}
-    >
-      {props.children}
-    </div>
+      className={`text-destructive text-sm font-normal ${className}`}
+     ?children />
   }
 }

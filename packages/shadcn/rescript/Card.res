@@ -1,79 +1,194 @@
+@@jsxConfig({version: 4, mode: "automatic", module_: "BaseUi.BaseUiJsxDOM"})
+
 open BaseUi.Types
 
-external toDomProps: 'a => JsxDOM.domProps = "%identity"
-
-@react.componentWithProps
-let make = (props: propsWithChildren<'value, 'checked>) => {
-  let size = props.dataSize->Option.getOr(Size.Default)
-  let props = {...props, dataSlot: "card", dataSize: size}
+@react.component
+let make = (
+  ~className="",
+  ~children=?,
+  ~id=?,
+  ~style=?,
+  ~onClick=?,
+  ~onKeyDown=?,
+  ~onKeyDownCapture=?,
+  ~dataSize=Size.Default,
+) => {
+  let size = dataSize
+  let props: BaseUi.Types.props<string, bool> = {
+    ?id,
+    ?children,
+    ?style,
+    ?onClick,
+    ?onKeyDown,
+    ?onKeyDownCapture,
+    className,
+    dataSlot: "card",
+    dataSize: size,
+  }
   <div
-    {...toDomProps(props)}
-    className={`ring-foreground/10 bg-card text-card-foreground group/card flex flex-col gap-4 overflow-hidden rounded-xl py-4 text-sm ring-1 has-data-[slot=card-footer]:pb-0 has-[>img:first-child]:pt-0 data-[size=sm]:gap-3 data-[size=sm]:py-3 data-[size=sm]:has-data-[slot=card-footer]:pb-0 *:[img:first-child]:rounded-t-xl *:[img:last-child]:rounded-b-xl ${props.className->Option.getOr("")}`}
+    {...props}
+    className={`ring-foreground/10 bg-card text-card-foreground group/card flex flex-col gap-4 overflow-hidden rounded-xl py-4 text-sm ring-1 has-data-[slot=card-footer]:pb-0 has-[>img:first-child]:pt-0 data-[size=sm]:gap-3 data-[size=sm]:py-3 data-[size=sm]:has-data-[slot=card-footer]:pb-0 *:[img:first-child]:rounded-t-xl *:[img:last-child]:rounded-b-xl ${className}`}
   />
 }
 
 module Header = {
-  @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) => {
-    let props = {...props, dataSlot: "card-header"}
+  @react.component
+  let make = (
+    ~className="",
+    ~children=?,
+    ~id=?,
+    ~style=?,
+    ~onClick=?,
+    ~onKeyDown=?,
+    ~onKeyDownCapture=?,
+  ) => {
+    let props: BaseUi.Types.props<string, bool> = {
+      ?id,
+      ?children,
+      ?style,
+      ?onClick,
+      ?onKeyDown,
+      ?onKeyDownCapture,
+      className,
+      dataSlot: "card-header",
+    }
     <div
-      {...toDomProps(props)}
-      className={`group/card-header @container/card-header grid auto-rows-min items-start gap-1 rounded-t-xl px-4 group-data-[size=sm]/card:px-3 has-data-[slot=card-action]:grid-cols-[1fr_auto] has-data-[slot=card-description]:grid-rows-[auto_auto] [.border-b]:pb-4 group-data-[size=sm]/card:[.border-b]:pb-3 ${props.className->Option.getOr("")}`}
+      {...props}
+      className={`group/card-header @container/card-header grid auto-rows-min items-start gap-1 rounded-t-xl px-4 group-data-[size=sm]/card:px-3 has-data-[slot=card-action]:grid-cols-[1fr_auto] has-data-[slot=card-description]:grid-rows-[auto_auto] [.border-b]:pb-4 group-data-[size=sm]/card:[.border-b]:pb-3 ${className}`}
     />
   }
 }
 
 module Title = {
-  @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) => {
-    let props = {...props, dataSlot: "card-title"}
+  @react.component
+  let make = (
+    ~className="",
+    ~children=?,
+    ~id=?,
+    ~style=?,
+    ~onClick=?,
+    ~onKeyDown=?,
+    ~onKeyDownCapture=?,
+  ) => {
+    let props: BaseUi.Types.props<string, bool> = {
+      ?id,
+      ?children,
+      ?style,
+      ?onClick,
+      ?onKeyDown,
+      ?onKeyDownCapture,
+      className,
+      dataSlot: "card-title",
+    }
     <div
-      {...toDomProps(props)}
-      className={`text-base leading-snug font-medium group-data-[size=sm]/card:text-sm ${props.className->Option.getOr("")}`}
+      {...props}
+      className={`text-base leading-snug font-medium group-data-[size=sm]/card:text-sm ${className}`}
     />
   }
 }
 
 module Description = {
-  @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) => {
-    let props = {...props, dataSlot: "card-description"}
-    <div
-      {...toDomProps(props)}
-      className={`text-muted-foreground text-sm ${props.className->Option.getOr("")}`}
-    />
+  @react.component
+  let make = (
+    ~className="",
+    ~children=?,
+    ~id=?,
+    ~style=?,
+    ~onClick=?,
+    ~onKeyDown=?,
+    ~onKeyDownCapture=?,
+  ) => {
+    let props: BaseUi.Types.props<string, bool> = {
+      ?id,
+      ?children,
+      ?style,
+      ?onClick,
+      ?onKeyDown,
+      ?onKeyDownCapture,
+      className,
+      dataSlot: "card-description",
+    }
+    <div {...props} className={`text-muted-foreground text-sm ${className}`} />
   }
 }
 
 module Action = {
-  @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) => {
-    let props = {...props, dataSlot: "card-action"}
+  @react.component
+  let make = (
+    ~className="",
+    ~children=?,
+    ~id=?,
+    ~style=?,
+    ~onClick=?,
+    ~onKeyDown=?,
+    ~onKeyDownCapture=?,
+  ) => {
+    let props: BaseUi.Types.props<string, bool> = {
+      ?id,
+      ?children,
+      ?style,
+      ?onClick,
+      ?onKeyDown,
+      ?onKeyDownCapture,
+      className,
+      dataSlot: "card-action",
+    }
     <div
-      {...toDomProps(props)}
-      className={`col-start-2 row-span-2 row-start-1 self-start justify-self-end ${props.className->Option.getOr("")}`}
+      {...props}
+      className={`col-start-2 row-span-2 row-start-1 self-start justify-self-end ${className}`}
     />
   }
 }
 
 module Content = {
-  @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) => {
-    let props = {...props, dataSlot: "card-content"}
-    <div
-      {...toDomProps(props)}
-      className={`px-4 group-data-[size=sm]/card:px-3 ${props.className->Option.getOr("")}`}
-    />
+  @react.component
+  let make = (
+    ~className="",
+    ~children=?,
+    ~id=?,
+    ~style=?,
+    ~onClick=?,
+    ~onKeyDown=?,
+    ~onKeyDownCapture=?,
+  ) => {
+    let props: BaseUi.Types.props<string, bool> = {
+      ?id,
+      ?children,
+      ?style,
+      ?onClick,
+      ?onKeyDown,
+      ?onKeyDownCapture,
+      className,
+      dataSlot: "card-content",
+    }
+    <div {...props} className={`px-4 group-data-[size=sm]/card:px-3 ${className}`} />
   }
 }
 
 module Footer = {
-  @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) => {
-    let props = {...props, dataSlot: "card-footer"}
+  @react.component
+  let make = (
+    ~className="",
+    ~children=?,
+    ~id=?,
+    ~style=?,
+    ~onClick=?,
+    ~onKeyDown=?,
+    ~onKeyDownCapture=?,
+  ) => {
+    let props: BaseUi.Types.props<string, bool> = {
+      ?id,
+      ?children,
+      ?style,
+      ?onClick,
+      ?onKeyDown,
+      ?onKeyDownCapture,
+      className,
+      dataSlot: "card-footer",
+    }
     <div
-      {...toDomProps(props)}
-      className={`bg-muted/50 flex items-center rounded-b-xl border-t p-4 group-data-[size=sm]/card:p-3 ${props.className->Option.getOr("")}`}
+      {...props}
+      className={`bg-muted/50 flex items-center rounded-b-xl border-t p-4 group-data-[size=sm]/card:p-3 ${className}`}
     />
   }
 }

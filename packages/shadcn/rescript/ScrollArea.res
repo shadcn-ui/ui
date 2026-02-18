@@ -2,44 +2,72 @@
 
 open BaseUi.Types
 
-@react.componentWithProps
-let make = (props: propsWithChildren<'value, 'checked>) =>
+@react.component
+let make = (
+  ~className="",
+  ~children=?,
+  ~id=?,
+  ~style=?,
+  ~onClick=?,
+  ~onKeyDown=?,
+  ~onKeyDownCapture=?,
+  ~tabIndex=?,
+  ~ariaLabel=?,
+  ~orientation=?,
+) =>
   <BaseUi.ScrollArea.Root
-    {...props}
+    ?id
+    ?style
+    ?onClick
+    ?onKeyDown
+    ?onKeyDownCapture
+    ?tabIndex
+    ?ariaLabel
+    ?orientation
     dataSlot="scroll-area"
-    className={`relative ${props.className->Option.getOr("")}`}
+    className={`relative ${className}`}
   >
     <BaseUi.ScrollArea.Viewport
       dataSlot="scroll-area-viewport"
       className="focus-visible:ring-ring/50 size-full rounded-[inherit] transition-[color,box-shadow] outline-none focus-visible:ring-[3px] focus-visible:outline-1"
-    >
-      {props.children}
-    </BaseUi.ScrollArea.Viewport>
+     ?children />
     <BaseUi.ScrollArea.Scrollbar
       dataSlot="scroll-area-scrollbar"
       orientation={Orientation.Vertical}
       className="flex touch-none p-px transition-colors select-none data-horizontal:h-2.5 data-horizontal:flex-col data-horizontal:border-t data-horizontal:border-t-transparent data-vertical:h-full data-vertical:w-2.5 data-vertical:border-l data-vertical:border-l-transparent"
     >
       <BaseUi.ScrollArea.Thumb
-        dataSlot="scroll-area-thumb"
-        className="bg-border relative flex-1 rounded-full"
+        dataSlot="scroll-area-thumb" className="bg-border relative flex-1 rounded-full"
       />
     </BaseUi.ScrollArea.Scrollbar>
     <BaseUi.ScrollArea.Corner />
   </BaseUi.ScrollArea.Root>
 
 module ScrollBar = {
-  @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) =>
+  @react.component
+  let make = (
+    ~className="",
+    ~children=?,
+    ~id=?,
+    ~style=?,
+    ~onClick=?,
+    ~onKeyDown=?,
+    ~onKeyDownCapture=?,
+    ~orientation=Orientation.Vertical,
+  ) =>
     <BaseUi.ScrollArea.Scrollbar
-      {...props}
+      ?id
+      ?style
+      ?onClick
+      ?onKeyDown
+      ?onKeyDownCapture
       dataSlot="scroll-area-scrollbar"
-      orientation={props.orientation->Option.getOr(Orientation.Vertical)}
-      className={`flex touch-none p-px transition-colors select-none data-horizontal:h-2.5 data-horizontal:flex-col data-horizontal:border-t data-horizontal:border-t-transparent data-vertical:h-full data-vertical:w-2.5 data-vertical:border-l data-vertical:border-l-transparent ${props.className->Option.getOr("")}`}
+      orientation
+      className={`flex touch-none p-px transition-colors select-none data-horizontal:h-2.5 data-horizontal:flex-col data-horizontal:border-t data-horizontal:border-t-transparent data-vertical:h-full data-vertical:w-2.5 data-vertical:border-l data-vertical:border-l-transparent ${className}`}
     >
       <BaseUi.ScrollArea.Thumb
-        dataSlot="scroll-area-thumb"
-        className="bg-border relative flex-1 rounded-full"
+        dataSlot="scroll-area-thumb" className="bg-border relative flex-1 rounded-full"
       />
+      {children->Option.getOr(React.null)}
     </BaseUi.ScrollArea.Scrollbar>
 }

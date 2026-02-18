@@ -2,34 +2,94 @@
 
 open BaseUi.Types
 
-@react.componentWithProps
-let make = (props: propsWithChildren<'value, 'checked>) =>
+@react.component
+let make = (
+  ~className="",
+  ~children=?,
+  ~id=?,
+  ~value=?,
+  ~defaultValue=?,
+  ~onValueChange=?,
+  ~disabled=?,
+  ~multiple=?,
+  ~orientation=?,
+  ~onClick=?,
+  ~onKeyDown=?,
+  ~onKeyDownCapture=?,
+  ~style=?,
+) =>
   <BaseUi.Accordion.Root
-    {...props}
+    ?id
+    ?value
+    ?defaultValue
+    ?onValueChange
+    ?disabled
+    ?multiple
+    ?orientation
+    ?onClick
+    ?onKeyDown
+    ?onKeyDownCapture
+    ?style
+    ?children
     dataSlot="accordion"
-    className={`flex w-full flex-col ${props.className->Option.getOr("")}`}
+    className={`flex w-full flex-col ${className}`}
   />
 
 module Item = {
-  @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) =>
+  @react.component
+  let make = (
+    ~className="",
+    ~children=?,
+    ~id=?,
+    ~value=?,
+    ~disabled=?,
+    ~onClick=?,
+    ~onKeyDown=?,
+    ~onKeyDownCapture=?,
+    ~style=?,
+  ) =>
     <BaseUi.Accordion.Item
-      {...props}
+      ?id
+      ?value
+      ?disabled
+      ?onClick
+      ?onKeyDown
+      ?onKeyDownCapture
+      ?style
+      ?children
       dataSlot="accordion-item"
-      className={`not-last:border-b ${props.className->Option.getOr("")}`}
+      className={`not-last:border-b ${className}`}
     />
 }
 
 module Trigger = {
-  @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) =>
+  @react.component
+  let make = (
+    ~className="",
+    ~children=?,
+    ~id=?,
+    ~disabled=?,
+    ~onClick=?,
+    ~onKeyDown=?,
+    ~onKeyDownCapture=?,
+    ~ariaLabel=?,
+    ~render=?,
+    ~style=?,
+  ) =>
     <BaseUi.Accordion.Header className="flex">
       <BaseUi.Accordion.Trigger
-        {...props}
+        ?id
+        ?disabled
+        ?onClick
+        ?onKeyDown
+        ?onKeyDownCapture
+        ?ariaLabel
+        ?render
+        ?style
         dataSlot="accordion-trigger"
-        className={`focus-visible:ring-ring/50 focus-visible:border-ring focus-visible:after:border-ring **:data-[slot=accordion-trigger-icon]:text-muted-foreground group/accordion-trigger relative flex flex-1 items-start justify-between rounded-lg border border-transparent py-2.5 text-left text-sm font-medium transition-all outline-none hover:underline focus-visible:ring-3 disabled:pointer-events-none disabled:opacity-50 **:data-[slot=accordion-trigger-icon]:ml-auto **:data-[slot=accordion-trigger-icon]:size-4 ${props.className->Option.getOr("")}`}
+        className={`focus-visible:ring-ring/50 focus-visible:border-ring focus-visible:after:border-ring **:data-[slot=accordion-trigger-icon]:text-muted-foreground group/accordion-trigger relative flex flex-1 items-start justify-between rounded-lg border border-transparent py-2.5 text-left text-sm font-medium transition-all outline-none hover:underline focus-visible:ring-3 disabled:pointer-events-none disabled:opacity-50 **:data-[slot=accordion-trigger-icon]:ml-auto **:data-[slot=accordion-trigger-icon]:size-4 ${className}`}
       >
-        {props.children}
+        {children->Option.getOr(React.null)}
         <Icons.ChevronDown
           dataSlot="accordion-trigger-icon"
           className="pointer-events-none shrink-0 group-aria-expanded/accordion-trigger:hidden"
@@ -43,15 +103,29 @@ module Trigger = {
 }
 
 module Content = {
-  @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) =>
+  @react.component
+  let make = (
+    ~className="",
+    ~children=?,
+    ~id=?,
+    ~style=?,
+    ~onClick=?,
+    ~onKeyDown=?,
+    ~onKeyDownCapture=?,
+    ~keepMounted=?,
+  ) =>
     <BaseUi.Accordion.Panel
-      {...props}
+      ?id
+      ?style
+      ?onClick
+      ?onKeyDown
+      ?onKeyDownCapture
+      ?keepMounted
       dataSlot="accordion-content"
-      className={`data-open:animate-accordion-down data-closed:animate-accordion-up overflow-hidden text-sm ${props.className->Option.getOr("")}`}
+      className={`data-open:animate-accordion-down data-closed:animate-accordion-up overflow-hidden text-sm ${className}`}
     >
-      <div className="[&_a]:hover:text-foreground h-(--accordion-panel-height) pt-0 pb-2.5 data-ending-style:h-0 data-starting-style:h-0 [&_a]:underline [&_a]:underline-offset-3 [&_p:not(:last-child)]:mb-4">
-        {props.children}
-      </div>
+      <div
+        className="[&_a]:hover:text-foreground h-(--accordion-panel-height) pt-0 pb-2.5 data-ending-style:h-0 data-starting-style:h-0 [&_a]:underline [&_a]:underline-offset-3 [&_p:not(:last-child)]:mb-4"
+       ?children />
     </BaseUi.Accordion.Panel>
 }

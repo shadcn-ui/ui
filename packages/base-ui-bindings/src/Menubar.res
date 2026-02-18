@@ -1,2 +1,2 @@
 @module("@base-ui/react/menubar")
-external make: React.component<Types.propsWithChildren<'value, 'checked>> = "Menubar"
+external make: React.component<Types.props<'value, 'checked>> = "Menubar"

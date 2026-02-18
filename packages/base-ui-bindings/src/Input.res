@@ -1,2 +1,2 @@
 @module("@base-ui/react/input")
-external make: React.component<Types.propsWithChildren<'value, 'checked>> = "Input"
+external make: React.component<Types.props<'value, 'checked>> = "Input"

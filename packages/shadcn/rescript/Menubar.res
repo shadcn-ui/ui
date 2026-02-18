@@ -2,176 +2,385 @@
 
 open BaseUi.Types
 
-@react.componentWithProps
-let make = (props: propsWithChildren<'value, 'checked>) =>
+@react.component
+let make = (
+  ~className="",
+  ~children=?,
+  ~id=?,
+  ~style=?,
+  ~onClick=?,
+  ~onKeyDown=?,
+  ~onKeyDownCapture=?,
+) =>
   <BaseUi.Menubar
-    {...props}
+    ?id
+    ?style
+    ?onClick
+    ?onKeyDown
+    ?onKeyDownCapture
+    ?children
     dataSlot="menubar"
-    className={`bg-background flex h-8 items-center gap-0.5 rounded-lg border p-[3px] ${props.className->Option.getOr("")}`}
+    className={`bg-background flex h-8 items-center gap-0.5 rounded-lg border p-[3px] ${className}`}
   />
 
 module Menu = {
-  @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) =>
-    <BaseUi.Menu.Root {...props} dataSlot="menubar-menu" />
-}
-
-module Group = {
-  @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) =>
-    <BaseUi.Menu.Group {...props} dataSlot="menubar-group" />
-}
-
-module Portal = {
-  @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) =>
-    <BaseUi.Menu.Portal {...props} dataSlot="menubar-portal" />
-}
-
-module Trigger = {
-  @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) =>
-    <BaseUi.Menu.Trigger
-      {...props}
-      dataSlot="menubar-trigger"
-      className={`hover:bg-muted aria-expanded:bg-muted flex items-center rounded-sm px-1.5 py-[2px] text-sm font-medium outline-hidden select-none ${props.className->Option.getOr("")}`}
+  @react.component
+  let make = (
+    ~children=?,
+    ~open_=?,
+    ~defaultOpen=?,
+    ~onOpenChange=?,
+    ~onOpenChangeComplete=?,
+    ~modal=?,
+  ) =>
+    <BaseUi.Menu.Root
+      ?children
+      ?open_
+      ?defaultOpen
+      ?onOpenChange
+      ?onOpenChangeComplete
+      ?modal
+      dataSlot="menubar-menu"
     />
 }
 
+module Group = {
+  @react.component
+  let make = (~className="", ~children=?, ~id=?, ~style=?) =>
+    <BaseUi.Menu.Group ?id ?style ?children dataSlot="menubar-group" className />
+}
+
+module Portal = {
+  @react.component
+  let make = (~children=?, ~container=?) =>
+    <BaseUi.Menu.Portal ?children ?container dataSlot="menubar-portal" />
+}
+
+module Trigger = {
+  @react.component
+  let make = (
+    ~className="",
+    ~children=?,
+    ~id=?,
+    ~style=?,
+    ~onClick=?,
+    ~onKeyDown=?,
+    ~onKeyDownCapture=?,
+    ~disabled=?,
+    ~render=?,
+    ~nativeButton=?,
+    ~type_=?,
+    ~ariaLabel=?,
+  ) => {
+    let shouldSetDefaultType = switch (type_, nativeButton, render) {
+    | (None, Some(false), _)
+    | (None, _, Some(_))
+    | (Some(_), _, _) => false
+    | (None, _, _) => true
+    }
+    if shouldSetDefaultType {
+      <BaseUi.Menu.Trigger
+        ?id
+        ?style
+        ?onClick
+        ?onKeyDown
+        ?onKeyDownCapture
+        ?disabled
+        ?render
+        ?nativeButton
+        type_="button"
+        ?ariaLabel
+        ?children
+        dataSlot="menubar-trigger"
+        className={`hover:bg-muted aria-expanded:bg-muted flex items-center rounded-sm px-1.5 py-[2px] text-sm font-medium outline-hidden select-none ${className}`}
+      />
+    } else {
+      <BaseUi.Menu.Trigger
+        ?id
+        ?style
+        ?onClick
+        ?onKeyDown
+        ?onKeyDownCapture
+        ?disabled
+        ?render
+        ?nativeButton
+        ?type_
+        ?ariaLabel
+        ?children
+        dataSlot="menubar-trigger"
+        className={`hover:bg-muted aria-expanded:bg-muted flex items-center rounded-sm px-1.5 py-[2px] text-sm font-medium outline-hidden select-none ${className}`}
+      />
+    }
+  }
+}
+
 module Content = {
-  @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) =>
+  @react.component
+  let make = (
+    ~className="",
+    ~children=?,
+    ~id=?,
+    ~style=?,
+    ~onClick=?,
+    ~onKeyDown=?,
+    ~onKeyDownCapture=?,
+    ~align=Align.Start,
+    ~alignOffset=-4.,
+    ~side=Side.Bottom,
+    ~sideOffset=8.,
+  ) =>
     <BaseUi.Menu.Portal>
       <BaseUi.Menu.Positioner
-        className="isolate z-50 outline-none"
-        align={props.align->Option.getOr(Align.Start)}
-        alignOffset={props.alignOffset->Option.getOr(-4.)}
-        side={props.side->Option.getOr(Side.Bottom)}
-        sideOffset={props.sideOffset->Option.getOr(8.)}
+        className="isolate z-50 outline-none" align alignOffset side sideOffset
       >
         <BaseUi.Menu.Popup
-          {...props}
+          ?id
+          ?style
+          ?onClick
+          ?onKeyDown
+          ?onKeyDownCapture
+          ?children
           dataSlot="menubar-content"
-          className={`bg-popover text-popover-foreground data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 ring-foreground/10 data-[side=inline-start]:slide-in-from-right-2 data-[side=inline-end]:slide-in-from-left-2 cn-menu-target min-w-36 rounded-lg p-1 shadow-md ring-1 duration-100 ${props.className->Option.getOr("")}`}
+          className={`bg-popover text-popover-foreground data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 ring-foreground/10 data-[side=inline-start]:slide-in-from-right-2 data-[side=inline-end]:slide-in-from-left-2 cn-menu-target min-w-36 rounded-lg p-1 shadow-md ring-1 duration-100 ${className}`}
         />
       </BaseUi.Menu.Positioner>
     </BaseUi.Menu.Portal>
 }
 
 module Item = {
-  @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) => {
-    let variant = props.dataVariant->Option.getOr(Variant.Default)
+  @react.component
+  let make = (
+    ~className="",
+    ~children=?,
+    ~id=?,
+    ~style=?,
+    ~onClick=?,
+    ~onKeyDown=?,
+    ~onKeyDownCapture=?,
+    ~disabled=?,
+    ~closeOnClick=?,
+    ~dataInset=?,
+    ~dataVariant=Variant.Default,
+  ) => {
+    let variant = dataVariant
     <BaseUi.Menu.Item
-      {...props}
+      ?id
+      ?style
+      ?onClick
+      ?onKeyDown
+      ?onKeyDownCapture
+      ?disabled
+      ?closeOnClick
+      ?dataInset
+      ?children
       dataSlot="menubar-item"
       dataVariant={variant}
-      className={`focus:bg-accent focus:text-accent-foreground data-[variant=destructive]:text-destructive data-[variant=destructive]:focus:bg-destructive/10 dark:data-[variant=destructive]:focus:bg-destructive/20 data-[variant=destructive]:focus:text-destructive data-[variant=destructive]:*:[svg]:text-destructive! not-data-[variant=destructive]:focus:**:text-accent-foreground group/menubar-item gap-1.5 rounded-md px-1.5 py-1 text-sm data-disabled:opacity-50 data-inset:pl-7 [&_svg:not([class*='size-'])]:size-4 ${props.className->Option.getOr("")}`}
+      className={`focus:bg-accent focus:text-accent-foreground data-[variant=destructive]:text-destructive data-[variant=destructive]:focus:bg-destructive/10 dark:data-[variant=destructive]:focus:bg-destructive/20 data-[variant=destructive]:focus:text-destructive data-[variant=destructive]:*:[svg]:text-destructive! not-data-[variant=destructive]:focus:**:text-accent-foreground group/menubar-item gap-1.5 rounded-md px-1.5 py-1 text-sm data-disabled:opacity-50 data-inset:pl-7 [&_svg:not([class*='size-'])]:size-4 ${className}`}
     />
   }
 }
 
 module CheckboxItem = {
-  @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) =>
+  @react.component
+  let make = (
+    ~className="",
+    ~children=?,
+    ~id=?,
+    ~style=?,
+    ~checked=?,
+    ~defaultChecked=?,
+    ~onCheckedChange=?,
+    ~disabled=?,
+    ~closeOnClick=?,
+    ~dataInset=?,
+    ~onClick=?,
+    ~onKeyDown=?,
+    ~onKeyDownCapture=?,
+  ) =>
     <BaseUi.Menu.CheckboxItem
-      {...props}
+      ?id
+      ?style
+      ?checked
+      ?defaultChecked
+      ?onCheckedChange
+      ?disabled
+      ?closeOnClick
+      ?dataInset
+      ?onClick
+      ?onKeyDown
+      ?onKeyDownCapture
       dataSlot="menubar-checkbox-item"
-      className={`focus:bg-accent focus:text-accent-foreground focus:**:text-accent-foreground relative flex cursor-default items-center gap-1.5 rounded-md py-1 pr-1.5 pl-7 text-sm outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 data-inset:pl-7 [&_svg]:pointer-events-none [&_svg]:shrink-0 ${props.className->Option.getOr("")}`}
+      className={`focus:bg-accent focus:text-accent-foreground focus:**:text-accent-foreground relative flex cursor-default items-center gap-1.5 rounded-md py-1 pr-1.5 pl-7 text-sm outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 data-inset:pl-7 [&_svg]:pointer-events-none [&_svg]:shrink-0 ${className}`}
     >
-      <span className="pointer-events-none absolute left-1.5 flex size-4 items-center justify-center [&_svg:not([class*='size-'])]:size-4">
-        <BaseUi.Menu.CheckboxItemIndicator>{"✓"->React.string}</BaseUi.Menu.CheckboxItemIndicator>
+      <span
+        className="pointer-events-none absolute left-1.5 flex size-4 items-center justify-center [&_svg:not([class*='size-'])]:size-4"
+      >
+        <BaseUi.Menu.CheckboxItemIndicator>
+          {"✓"->React.string}
+        </BaseUi.Menu.CheckboxItemIndicator>
       </span>
-      {props.children}
+      {children->Option.getOr(React.null)}
     </BaseUi.Menu.CheckboxItem>
 }
 
 module RadioGroup = {
-  @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) =>
-    <BaseUi.Menu.RadioGroup {...props} dataSlot="menubar-radio-group" />
+  @react.component
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~value=?, ~onValueChange=?) =>
+    <BaseUi.Menu.RadioGroup
+      ?id ?style ?value ?onValueChange ?children dataSlot="menubar-radio-group" className
+    />
 }
 
 module RadioItem = {
-  @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) =>
+  @react.component
+  let make = (
+    ~className="",
+    ~children=?,
+    ~id=?,
+    ~style=?,
+    ~value=?,
+    ~disabled=?,
+    ~closeOnClick=?,
+    ~dataInset=?,
+    ~onClick=?,
+    ~onKeyDown=?,
+    ~onKeyDownCapture=?,
+  ) =>
     <BaseUi.Menu.RadioItem
-      {...props}
+      ?id
+      ?style
+      ?value
+      ?disabled
+      ?closeOnClick
+      ?dataInset
+      ?onClick
+      ?onKeyDown
+      ?onKeyDownCapture
       dataSlot="menubar-radio-item"
-      className={`focus:bg-accent focus:text-accent-foreground focus:**:text-accent-foreground relative flex cursor-default items-center gap-1.5 rounded-md py-1 pr-1.5 pl-7 text-sm outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 data-inset:pl-7 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 ${props.className->Option.getOr("")}`}
+      className={`focus:bg-accent focus:text-accent-foreground focus:**:text-accent-foreground relative flex cursor-default items-center gap-1.5 rounded-md py-1 pr-1.5 pl-7 text-sm outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 data-inset:pl-7 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 ${className}`}
     >
-      <span className="pointer-events-none absolute left-1.5 flex size-4 items-center justify-center [&_svg:not([class*='size-'])]:size-4">
-        <BaseUi.Menu.RadioItemIndicator>{"✓"->React.string}</BaseUi.Menu.RadioItemIndicator>
+      <span
+        className="pointer-events-none absolute left-1.5 flex size-4 items-center justify-center [&_svg:not([class*='size-'])]:size-4"
+      >
+        <BaseUi.Menu.RadioItemIndicator> {"✓"->React.string} </BaseUi.Menu.RadioItemIndicator>
       </span>
-      {props.children}
+      {children->Option.getOr(React.null)}
     </BaseUi.Menu.RadioItem>
 }
 
 module Label = {
-  @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) =>
+  @react.component
+  let make = (
+    ~className="",
+    ~children=?,
+    ~id=?,
+    ~style=?,
+    ~onClick=?,
+    ~onKeyDown=?,
+    ~onKeyDownCapture=?,
+    ~dataInset=?,
+  ) =>
     <BaseUi.Menu.GroupLabel
-      {...props}
+      ?id
+      ?style
+      ?onClick
+      ?onKeyDown
+      ?onKeyDownCapture
+      ?dataInset
+      ?children
       dataSlot="menubar-label"
-      className={`px-1.5 py-1 text-sm font-medium data-inset:pl-7 ${props.className->Option.getOr("")}`}
+      className={`px-1.5 py-1 text-sm font-medium data-inset:pl-7 ${className}`}
     />
 }
 
 module Separator = {
-  @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) =>
+  @react.component
+  let make = (~className="", ~children=?, ~id=?, ~style=?) =>
     <BaseUi.Menu.Separator
-      {...props}
+      ?id
+      ?style
+      ?children
       dataSlot="menubar-separator"
-      className={`bg-border -mx-1 my-1 h-px ${props.className->Option.getOr("")}`}
+      className={`bg-border -mx-1 my-1 h-px ${className}`}
     />
 }
 
 module Shortcut = {
-  @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) =>
+  @react.component
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <span
-
-      className={`text-muted-foreground group-focus/menubar-item:text-accent-foreground ml-auto text-xs tracking-widest ${props.className->Option.getOr("")}`}
-    >
-      {props.children}
-    </span>
+      ?id
+      ?style
+      ?onClick
+      ?onKeyDown
+      className={`text-muted-foreground group-focus/menubar-item:text-accent-foreground ml-auto text-xs tracking-widest ${className}`}
+      ?children
+    />
 }
 
 module Sub = {
-  @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) =>
-    <BaseUi.Menu.SubmenuRoot {...props} dataSlot="menubar-sub" />
+  @react.component
+  let make = (~children=?, ~open_=?, ~defaultOpen=?, ~onOpenChange=?) =>
+    <BaseUi.Menu.SubmenuRoot ?children ?open_ ?defaultOpen ?onOpenChange dataSlot="menubar-sub" />
 }
 
 module SubTrigger = {
-  @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) =>
+  @react.component
+  let make = (
+    ~className="",
+    ~children=?,
+    ~id=?,
+    ~style=?,
+    ~onClick=?,
+    ~onKeyDown=?,
+    ~onKeyDownCapture=?,
+    ~disabled=?,
+    ~dataInset=?,
+  ) =>
     <BaseUi.Menu.SubmenuTrigger
-      {...props}
+      ?id
+      ?style
+      ?onClick
+      ?onKeyDown
+      ?onKeyDownCapture
+      ?disabled
+      ?dataInset
       dataSlot="menubar-sub-trigger"
-      className={`focus:bg-accent focus:text-accent-foreground data-open:bg-accent data-open:text-accent-foreground gap-1.5 rounded-md px-1.5 py-1 text-sm data-inset:pl-7 [&_svg:not([class*='size-'])]:size-4 ${props.className->Option.getOr("")}`}
+      className={`focus:bg-accent focus:text-accent-foreground data-open:bg-accent data-open:text-accent-foreground gap-1.5 rounded-md px-1.5 py-1 text-sm data-inset:pl-7 [&_svg:not([class*='size-'])]:size-4 ${className}`}
     >
-      {props.children}
-      <span className="cn-rtl-flip ml-auto">{">"->React.string}</span>
+      {children->Option.getOr(React.null)}
+      <span className="cn-rtl-flip ml-auto"> {">"->React.string} </span>
     </BaseUi.Menu.SubmenuTrigger>
 }
 
 module SubContent = {
-  @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) =>
+  @react.component
+  let make = (
+    ~className="",
+    ~children=?,
+    ~id=?,
+    ~style=?,
+    ~onClick=?,
+    ~onKeyDown=?,
+    ~onKeyDownCapture=?,
+    ~align=Align.Start,
+    ~alignOffset=-3.,
+    ~side=Side.Right,
+    ~sideOffset=0.,
+  ) =>
     <BaseUi.Menu.Portal>
       <BaseUi.Menu.Positioner
-        className="isolate z-50 outline-none"
-        align={props.align->Option.getOr(Align.Start)}
-        alignOffset={props.alignOffset->Option.getOr(-3.)}
-        side={props.side->Option.getOr(Side.Right)}
-        sideOffset={props.sideOffset->Option.getOr(0.)}
+        className="isolate z-50 outline-none" align alignOffset side sideOffset
       >
         <BaseUi.Menu.Popup
-          {...props}
+          ?id
+          ?style
+          ?onClick
+          ?onKeyDown
+          ?onKeyDownCapture
+          ?children
           dataSlot="menubar-sub-content"
-          className={`bg-popover text-popover-foreground data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 ring-foreground/10 min-w-32 rounded-lg p-1 shadow-lg ring-1 duration-100 ${props.className->Option.getOr("")}`}
+          className={`bg-popover text-popover-foreground data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 ring-foreground/10 min-w-32 rounded-lg p-1 shadow-lg ring-1 duration-100 ${className}`}
         />
       </BaseUi.Menu.Positioner>
     </BaseUi.Menu.Portal>

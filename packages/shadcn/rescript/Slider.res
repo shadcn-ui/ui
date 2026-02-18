@@ -2,15 +2,59 @@
 
 open BaseUi.Types
 
-@react.componentWithProps
-let make = (props: propsWithChildren<'value, 'checked>) =>
+@react.component
+let make = (
+  ~className="",
+  ~children=?,
+  ~id=?,
+  ~name=?,
+  ~value=?,
+  ~defaultValue=?,
+  ~onValueChange=?,
+  ~min=?,
+  ~max=?,
+  ~step=?,
+  ~largeStep=?,
+  ~disabled=?,
+  ~required=?,
+  ~readOnly=?,
+  ~onClick=?,
+  ~onKeyDown=?,
+  ~onKeyDownCapture=?,
+  ~tabIndex=?,
+  ~ariaLabel=?,
+  ~style=?,
+  ~render=?,
+  ~orientation=?,
+) =>
   <BaseUi.Slider.Root
-    {...props}
+    ?id
+    ?name
+    ?value
+    ?defaultValue
+    ?onValueChange
+    ?min
+    ?max
+    ?step
+    ?largeStep
+    ?disabled
+    ?required
+    ?readOnly
+    ?onClick
+    ?onKeyDown
+    ?onKeyDownCapture
+    ?tabIndex
+    ?ariaLabel
+    ?style
+    ?render
+    ?orientation
     dataSlot="slider"
     thumbAlignment={ThumbAlignment.Edge}
-    className={`data-horizontal:w-full data-vertical:h-full ${props.className->Option.getOr("")}`}
+    className={`data-horizontal:w-full data-vertical:h-full ${className}`}
   >
-    <BaseUi.Slider.Control className="relative flex w-full touch-none items-center select-none data-disabled:opacity-50 data-vertical:h-full data-vertical:min-h-40 data-vertical:w-auto data-vertical:flex-col">
+    <BaseUi.Slider.Control
+      className="relative flex w-full touch-none items-center select-none data-disabled:opacity-50 data-vertical:h-full data-vertical:min-h-40 data-vertical:w-auto data-vertical:flex-col"
+    >
       <BaseUi.Slider.Track
         dataSlot="slider-track"
         className="bg-muted relative grow overflow-hidden rounded-full select-none data-horizontal:h-1 data-horizontal:w-full data-vertical:h-full data-vertical:w-1"
@@ -25,4 +69,5 @@ let make = (props: propsWithChildren<'value, 'checked>) =>
         className="border-ring ring-ring/50 relative block size-3 shrink-0 rounded-full border bg-white transition-[color,box-shadow] select-none after:absolute after:-inset-2 hover:ring-3 focus-visible:ring-3 focus-visible:outline-hidden active:ring-3 disabled:pointer-events-none disabled:opacity-50"
       />
     </BaseUi.Slider.Control>
+    {children->Option.getOr(React.null)}
   </BaseUi.Slider.Root>

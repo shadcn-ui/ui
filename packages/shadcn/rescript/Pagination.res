@@ -1,103 +1,185 @@
 open BaseUi.Types
 
-external toDomProps: 'a => JsxDOM.domProps = "%identity"
+@@jsxConfig({version: 4, mode: "automatic", module_: "BaseUi.BaseUiJsxDOM"})
 
-@react.componentWithProps
-let make = (props: propsWithChildren<'value, 'checked>) => {
-  let props = {...props, dataSlot: "pagination"}
+@react.component
+let make = (
+  ~className="",
+  ~children=?,
+  ~id=?,
+  ~style=?,
+  ~onClick=?,
+  ~onKeyDown=?,
+  ~onKeyDownCapture=?,
+) => {
   <nav
-    {...toDomProps(props)}
+    dataSlot="pagination"
+    ?id
+    ?style
+    ?onClick
+    ?onKeyDown
+    ?onKeyDownCapture
     role="navigation"
     ariaLabel="pagination"
-    className={`mx-auto flex w-full justify-center ${props.className->Option.getOr("")}`}
-  />
+    className={`mx-auto flex w-full justify-center ${className}`}
+   ?children />
 }
 
 module Content = {
-  @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) => {
-    let props = {...props, dataSlot: "pagination-content"}
+  @react.component
+  let make = (
+    ~className="",
+    ~children=?,
+    ~id=?,
+    ~style=?,
+    ~onClick=?,
+    ~onKeyDown=?,
+    ~onKeyDownCapture=?,
+  ) => {
     <ul
-      {...toDomProps(props)}
-      className={`flex items-center gap-0.5 ${props.className->Option.getOr("")}`}
-    />
+      dataSlot="pagination-content"
+      ?id
+      ?style
+      ?onClick
+      ?onKeyDown
+      ?onKeyDownCapture
+      className={`flex items-center gap-0.5 ${className}`}
+     ?children />
   }
 }
 
 module Item = {
-  @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) => {
-    let props = {...props, dataSlot: "pagination-item"}
-    <li {...toDomProps(props)} />
-  }
+  @react.component
+  let make = (~className=?, ~children=?, ~id=?, ~style=?) =>
+    <li dataSlot="pagination-item" ?id ?style ?className ?children />
 }
 
 module Link = {
-  @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) => {
-    let isActive = props.dataActive->Option.getOr(false)
-    let size = props.dataSize->Option.getOr(Size.Icon)
-    let variant = isActive ? Variant.Outline : Variant.Ghost
-    let anchorProps = {
-      ...props,
-      dataSlot: "pagination-link",
-      ariaCurrent: ?(isActive ? Some("page") : None),
-    }
+  @react.component
+  let make = (
+    ~className="",
+    ~isActive=false,
+    ~size=BaseUi.Types.Size.Icon,
+    ~children=?,
+    ~href=?,
+    ~target=?,
+    ~id=?,
+    ~style=?,
+    ~ariaLabel=?,
+    ~onClick=?,
+    ~onKeyDown=?,
+    ~onKeyDownCapture=?,
+    ~dataActive=isActive,
+  ) =>
     <Button
-      dataVariant={variant}
-      dataSize={size}
-      className=?props.className
+      variant={isActive ? Outline : Ghost}
+      size
+      className
       nativeButton={false}
-      disabled={props.disabled->Option.getOr(false)}
-      render={<a {...toDomProps(anchorProps)} />}
-    >
-      {props.children}
-    </Button>
-  }
+      render={<a
+        ?id
+        ?style
+        ?href
+        ?target
+        ?ariaLabel
+        ?onClick
+        ?onKeyDown
+        ?onKeyDownCapture
+        ariaCurrent=?{isActive ? Some("page") : None}
+        dataSlot="pagination-link"
+        dataActive
+      />}
+      ?children
+    />
 }
 
 module Previous = {
-  @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) => {
-    let text = props.label->Option.getOr("Previous")
+  @react.component
+  let make = (
+    ~className="",
+    ~text="Previous",
+    ~children=?,
+    ~href=?,
+    ~target=?,
+    ~id=?,
+    ~style=?,
+    ~onClick=?,
+    ~onKeyDown=?,
+    ~onKeyDownCapture=?,
+    ~dataActive=?,
+  ) => {
+    let content = children->Option.getOr(
+      <>
+        <Icons.ChevronLeft dataIcon="inline-start" className="cn-rtl-flip" />
+        <span className="hidden sm:block"> {text->React.string} </span>
+      </>,
+    )
     <Link
-      {...props}
       ariaLabel="Go to previous page"
-      dataSize=Default
-      className={`pl-1.5! ${props.className->Option.getOr("")}`}
+      size={Size.Default}
+      className={`pl-1.5! ${className}`}
+      ?href
+      ?target
+      ?id
+      ?style
+      ?onClick
+      ?onKeyDown
+      ?onKeyDownCapture
+      ?dataActive
     >
-      <Icons.ChevronLeft dataIcon="inline-start" className="cn-rtl-flip" />
-      <span className="hidden sm:block"> {text->React.string} </span>
+      {content}
     </Link>
   }
 }
 
 module Next = {
-  @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) => {
-    let text = props.label->Option.getOr("Next")
+  @react.component
+  let make = (
+    ~className="",
+    ~text="Next",
+    ~children=?,
+    ~href=?,
+    ~target=?,
+    ~id=?,
+    ~style=?,
+    ~onClick=?,
+    ~onKeyDown=?,
+    ~onKeyDownCapture=?,
+    ~dataActive=?,
+  ) => {
+    let content = children->Option.getOr(
+      <>
+        <span className="hidden sm:block"> {text->React.string} </span>
+        <Icons.ChevronRight dataIcon="inline-end" className="cn-rtl-flip" />
+      </>,
+    )
     <Link
-      {...props}
       ariaLabel="Go to next page"
-      dataSize=Default
-      className={`pr-1.5! ${props.className->Option.getOr("")}`}
+      size={Size.Default}
+      className={`pr-1.5! ${className}`}
+      ?href
+      ?target
+      ?id
+      ?style
+      ?onClick
+      ?onKeyDown
+      ?onKeyDownCapture
+      ?dataActive
     >
-      <span className="hidden sm:block"> {text->React.string} </span>
-      <Icons.ChevronRight dataIcon="inline-end" className="cn-rtl-flip" />
+      {content}
     </Link>
   }
 }
 
 module Ellipsis = {
-  @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) => {
-    let props = {...props, dataSlot: "pagination-ellipsis"}
+  @react.component
+  let make = (~className="", ~id=?, ~style=?) => {
     <span
-      {...toDomProps(props)}
+      dataSlot="pagination-ellipsis"
+      ?id
+      ?style
       ariaHidden={true}
-      className={`flex size-8 items-center justify-center [&_svg:not([class*='size-'])]:size-4 ${props.className->Option.getOr(
-          "",
-        )}`}
+      className={`flex size-8 items-center justify-center [&_svg:not([class*='size-'])]:size-4 ${className}`}
     >
       <Icons.MoreHorizontal />
       <span className="sr-only"> {"More pages"->React.string} </span>

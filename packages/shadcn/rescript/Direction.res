@@ -3,9 +3,9 @@
 open BaseUi.Types
 
 module DirectionProvider = {
-  @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) =>
-    <BaseUi.DirectionProvider {...props} />
+  @react.component
+  let make = (~children=?, ~className=?, ~style=?) =>
+    <BaseUi.DirectionProvider ?children ?className ?style />
 }
 
 let useDirection = BaseUi.DirectionProvider.useDirection

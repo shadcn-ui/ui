@@ -2,63 +2,129 @@
 
 open BaseUi.Types
 
-@react.componentWithProps
-let make = (props: propsWithChildren<'value, 'checked>) =>
+@react.component
+let make = (
+  ~className="",
+  ~children=?,
+  ~id=?,
+  ~value=?,
+  ~max=?,
+  ~min=?,
+  ~style=?,
+  ~onClick=?,
+  ~onKeyDown=?,
+  ~onKeyDownCapture=?,
+) =>
   <BaseUi.Progress.Root
-    {...props}
+    ?id
+    ?value
+    ?max
+    ?min
+    ?style
+    ?onClick
+    ?onKeyDown
+    ?onKeyDownCapture
     dataSlot="progress"
-    className={`flex flex-wrap gap-3 ${props.className->Option.getOr("")}`}
+    className={`flex flex-wrap gap-3 ${className}`}
   >
-    {props.children}
+    {children->Option.getOr(React.null)}
     <BaseUi.Progress.Track
       dataSlot="progress-track"
       className="bg-muted relative flex h-1 w-full items-center overflow-x-hidden rounded-full"
     >
       <BaseUi.Progress.Indicator
-        dataSlot="progress-indicator"
-        className="bg-primary h-full transition-all"
+        dataSlot="progress-indicator" className="bg-primary h-full transition-all"
       />
     </BaseUi.Progress.Track>
   </BaseUi.Progress.Root>
 
 module Track = {
-  @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) =>
+  @react.component
+  let make = (
+    ~className="",
+    ~children=?,
+    ~id=?,
+    ~style=?,
+    ~onClick=?,
+    ~onKeyDown=?,
+    ~onKeyDownCapture=?,
+  ) =>
     <BaseUi.Progress.Track
-      {...props}
+      ?id
+      ?style
+      ?onClick
+      ?onKeyDown
+      ?onKeyDownCapture
       dataSlot="progress-track"
-      className={`bg-muted relative flex h-1 w-full items-center overflow-x-hidden rounded-full ${props.className->Option.getOr("")}`}
-    >
-      {props.children}
-    </BaseUi.Progress.Track>
+      className={`bg-muted relative flex h-1 w-full items-center overflow-x-hidden rounded-full ${className}`}
+     ?children />
 }
 
 module Indicator = {
-  @react.componentWithProps
-  let make = (props: props<'value, 'checked>) =>
+  @react.component
+  let make = (
+    ~className="",
+    ~children=?,
+    ~id=?,
+    ~style=?,
+    ~onClick=?,
+    ~onKeyDown=?,
+    ~onKeyDownCapture=?,
+  ) =>
     <BaseUi.Progress.Indicator
-      {...props}
+      ?id
+      ?style
+      ?onClick
+      ?onKeyDown
+      ?onKeyDownCapture
+      ?children
       dataSlot="progress-indicator"
-      className={`bg-primary h-full transition-all ${props.className->Option.getOr("")}`}
+      className={`bg-primary h-full transition-all ${className}`}
     />
 }
 
 module Label = {
-  @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) =>
+  @react.component
+  let make = (
+    ~className="",
+    ~children=?,
+    ~id=?,
+    ~style=?,
+    ~onClick=?,
+    ~onKeyDown=?,
+    ~onKeyDownCapture=?,
+  ) =>
     <BaseUi.Progress.Label
-      {...props}
+      ?id
+      ?style
+      ?onClick
+      ?onKeyDown
+      ?onKeyDownCapture
+      ?children
       dataSlot="progress-label"
-      className={`text-sm font-medium ${props.className->Option.getOr("")}`}
+      className={`text-sm font-medium ${className}`}
     />
 }
 
 module Value = {
-  @react.componentWithProps
-  let make = (props: propsWithChildren<'value, 'checked>) =>
+  @react.component
+  let make = (
+    ~className="",
+    ~children=?,
+    ~id=?,
+    ~style=?,
+    ~onClick=?,
+    ~onKeyDown=?,
+    ~onKeyDownCapture=?,
+  ) =>
     <BaseUi.Progress.Value
-      {...props}
+      ?id
+      ?style
+      ?onClick
+      ?onKeyDown
+      ?onKeyDownCapture
+      ?children
       dataSlot="progress-value"
-      className={`text-muted-foreground ml-auto text-sm tabular-nums ${props.className->Option.getOr("")}`}
+      className={`text-muted-foreground ml-auto text-sm tabular-nums ${className}`}
     />
 }

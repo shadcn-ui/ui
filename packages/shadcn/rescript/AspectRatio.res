@@ -1,20 +1,25 @@
+@@jsxConfig({version: 4, mode: "automatic", module_: "BaseUi.BaseUiJsxDOM"})
+
 open BaseUi.Types
 
-external toDomProps: 'a => JsxDOM.domProps = "%identity"
-
-type ratioStyle = {@as("--ratio") ratio: float}
-external toStyle: ratioStyle => ReactDOM.Style.t = "%identity"
-
-@react.componentWithProps
-let make = (props: propsWithChildren<'value, 'checked>) => {
-  let ratio = props.ratio->Option.getOr(1.)
-  let props = {
-    ...props,
-    dataSlot: "aspect-ratio",
-    style: toStyle({ratio: ratio}),
-  }
+@react.component
+let make = (
+  ~className="",
+  ~children=?,
+  ~id=?,
+  ~ratio=1.,
+  ~onClick=?,
+  ~onKeyDown=?,
+  ~onKeyDownCapture=?,
+) => {
   <div
-    {...toDomProps(props)}
-    className={`relative aspect-(--ratio) ${props.className->Option.getOr("")}`}
+    ?id
+    ?children
+    ?onClick
+    ?onKeyDown
+    ?onKeyDownCapture
+    dataSlot="aspect-ratio"
+    style={ReactDOM.Style.unsafeAddStyle({}, {"--ratio": ratio})}
+    className={`relative aspect-(--ratio) ${className}`}
   />
 }

@@ -6,29 +6,23 @@ let make = () => {
 
   <ButtonGroup>
     <ButtonGroup className="hidden sm:flex">
-      <Button
-        dataVariant=BaseUi.Types.Variant.Outline
-        dataSize=BaseUi.Types.Size.Icon
-        ariaLabel="Go Back"
-      >
+      <Button variant=BaseUi.Types.Variant.Outline size=BaseUi.Types.Size.Icon ariaLabel="Go Back">
         <Icons.ArrowLeft />
       </Button>
     </ButtonGroup>
     <ButtonGroup>
-      <Button dataVariant=BaseUi.Types.Variant.Outline>{"Archive"->React.string}</Button>
-      <Button dataVariant=BaseUi.Types.Variant.Outline>{"Report"->React.string}</Button>
+      <Button variant=BaseUi.Types.Variant.Outline> {"Archive"->React.string} </Button>
+      <Button variant=BaseUi.Types.Variant.Outline> {"Report"->React.string} </Button>
     </ButtonGroup>
     <ButtonGroup>
-      <Button dataVariant=BaseUi.Types.Variant.Outline>{"Snooze"->React.string}</Button>
+      <Button variant=BaseUi.Types.Variant.Outline> {"Snooze"->React.string} </Button>
       <DropdownMenu>
         <DropdownMenu.Trigger
-          render={
-            <Button
-              dataVariant=BaseUi.Types.Variant.Outline
-              dataSize=BaseUi.Types.Size.Icon
-              ariaLabel="More Options"
-            />
-          }
+          render={<Button
+            variant=BaseUi.Types.Variant.Outline
+            size=BaseUi.Types.Size.Icon
+            ariaLabel="More Options"
+          />}
         >
           <Icons.MoreHorizontal />
         </DropdownMenu.Trigger>
@@ -43,7 +37,7 @@ let make = () => {
               {"Archive"->React.string}
             </DropdownMenu.Item>
           </DropdownMenu.Group>
-          <DropdownMenu.Separator>{React.null}</DropdownMenu.Separator>
+          <DropdownMenu.Separator> {React.null} </DropdownMenu.Separator>
           <DropdownMenu.Group>
             <DropdownMenu.Item>
               <Icons.Clock />
@@ -64,17 +58,22 @@ let make = () => {
               </DropdownMenu.SubTrigger>
               <DropdownMenu.SubContent>
                 <DropdownMenu.RadioGroup
-                  value=label
-                  onValueChange={(nextLabel, _) => setLabel(_ => nextLabel)}
+                  value=label onValueChange={(nextLabel, _) => setLabel(_ => nextLabel)}
                 >
-                  <DropdownMenu.RadioItem value="personal">{"Personal"->React.string}</DropdownMenu.RadioItem>
-                  <DropdownMenu.RadioItem value="work">{"Work"->React.string}</DropdownMenu.RadioItem>
-                  <DropdownMenu.RadioItem value="other">{"Other"->React.string}</DropdownMenu.RadioItem>
+                  <DropdownMenu.RadioItem value="personal">
+                    {"Personal"->React.string}
+                  </DropdownMenu.RadioItem>
+                  <DropdownMenu.RadioItem value="work">
+                    {"Work"->React.string}
+                  </DropdownMenu.RadioItem>
+                  <DropdownMenu.RadioItem value="other">
+                    {"Other"->React.string}
+                  </DropdownMenu.RadioItem>
                 </DropdownMenu.RadioGroup>
               </DropdownMenu.SubContent>
             </DropdownMenu.Sub>
           </DropdownMenu.Group>
-          <DropdownMenu.Separator>{React.null}</DropdownMenu.Separator>
+          <DropdownMenu.Separator> {React.null} </DropdownMenu.Separator>
           <DropdownMenu.Group>
             <DropdownMenu.Item dataVariant=BaseUi.Types.Variant.Destructive>
               <Icons.Trash2 />
