@@ -270,6 +270,12 @@
     "description": "A set of perfect-designed components built on top of React Aria and Motion."
   },
   {
+    "name": "@kapwa",
+    "homepage": "https://kapwa-two.vercel.app",
+    "url": "https://kapwa-two.vercel.app/r/{name}.json",
+    "description": "Cleanly designed components purposely built for open-source government portals."
+  },
+  {
     "name": "@kokonutui",
     "homepage": "https://kokonutui.com",
     "url": "https://kokonutui.com/r/{name}.json",
