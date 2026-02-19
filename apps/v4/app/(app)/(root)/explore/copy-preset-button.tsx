@@ -1,8 +1,8 @@
 "use client"
 
 import * as React from "react"
-
 import { Badge } from "@/examples/radix/ui/badge"
+
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard"
 
 export function CopyPresetButton({ code }: { code: string }) {
@@ -10,10 +10,7 @@ export function CopyPresetButton({ code }: { code: string }) {
   const presetValue = `--preset ${code}`
 
   return (
-    <Badge
-      asChild
-      className="cursor-pointer"
-    >
+    <Badge asChild className="cursor-pointer">
       <button
         type="button"
         onClick={(e) => {

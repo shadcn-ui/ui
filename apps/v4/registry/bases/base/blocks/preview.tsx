@@ -202,7 +202,7 @@ export default function PreviewExample() {
   }, [params.radius])
 
   return (
-    <ExampleWrapper className="w-full max-w-none lg:p-0">
+    <ExampleWrapper className="w-full max-w-none! lg:p-0">
       <Example
         containerClassName="col-span-2 max-w-none"
         className="bg-muted dark:bg-background flex min-h-svh flex-col items-center justify-center border-none sm:p-16"
@@ -406,11 +406,11 @@ export default function PreviewExample() {
                         render={<Button variant="outline" size="icon" />}
                       >
                         <IconPlaceholder
-                          lucide="ChevronDownIcon"
-                          tabler="IconChevronDown"
-                          hugeicons="ArrowDown01Icon"
-                          phosphor="CaretDownIcon"
-                          remixicon="RiArrowDownSLine"
+                          lucide="ChevronUpIcon"
+                          tabler="IconChevronUp"
+                          hugeicons="ArrowUp01Icon"
+                          phosphor="CaretUpIcon"
+                          remixicon="RiArrowUpSLine"
                         />
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end" className="w-52">
@@ -496,26 +496,6 @@ export default function PreviewExample() {
                         </DropdownMenuGroup>
                       </DropdownMenuContent>
                     </DropdownMenu>
-                  </ButtonGroup>
-                  <ButtonGroup className="ml-auto hidden md:flex">
-                    <Button variant="outline" size="icon" aria-label="Previous">
-                      <IconPlaceholder
-                        lucide="ArrowLeftIcon"
-                        tabler="IconArrowLeft"
-                        hugeicons="ArrowLeft01Icon"
-                        phosphor="ArrowLeftIcon"
-                        remixicon="RiArrowLeftLine"
-                      />
-                    </Button>
-                    <Button variant="outline" size="icon" aria-label="Next">
-                      <IconPlaceholder
-                        lucide="ArrowRightIcon"
-                        tabler="IconArrowRight"
-                        hugeicons="ArrowRight01Icon"
-                        phosphor="ArrowRightIcon"
-                        remixicon="RiArrowRightLine"
-                      />
-                    </Button>
                   </ButtonGroup>
                 </div>
               </CardContent>

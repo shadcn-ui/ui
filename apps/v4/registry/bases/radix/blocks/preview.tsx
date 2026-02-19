@@ -20,24 +20,10 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/registry/bases/radix/ui/alert-dialog"
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarGroup,
-  AvatarImage,
-} from "@/registry/bases/radix/ui/avatar"
 import { Badge } from "@/registry/bases/radix/ui/badge"
 import { Button } from "@/registry/bases/radix/ui/button"
 import { ButtonGroup } from "@/registry/bases/radix/ui/button-group"
-import {
-  Card,
-  CardAction,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/registry/bases/radix/ui/card"
+import { Card, CardContent } from "@/registry/bases/radix/ui/card"
 import {
   ChartContainer,
   ChartTooltip,
@@ -46,109 +32,30 @@ import {
 } from "@/registry/bases/radix/ui/chart"
 import { Checkbox } from "@/registry/bases/radix/ui/checkbox"
 import {
-  Combobox,
-  ComboboxContent,
-  ComboboxEmpty,
-  ComboboxInput,
-  ComboboxItem,
-  ComboboxList,
-} from "@/registry/bases/radix/ui/combobox"
-import {
   DropdownMenu,
-  DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuPortal,
-  DropdownMenuRadioGroup,
-  DropdownMenuRadioItem,
   DropdownMenuSeparator,
-  DropdownMenuShortcut,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/registry/bases/radix/ui/dropdown-menu"
-import {
-  Empty,
-  EmptyContent,
-  EmptyDescription,
-  EmptyHeader,
-  EmptyMedia,
-  EmptyTitle,
-} from "@/registry/bases/radix/ui/empty"
-import {
-  Field,
-  FieldContent,
-  FieldDescription,
-  FieldGroup,
-  FieldLabel,
-  FieldLegend,
-  FieldSeparator,
-  FieldSet,
-  FieldTitle,
-} from "@/registry/bases/radix/ui/field"
+import { Field } from "@/registry/bases/radix/ui/field"
 import { Input } from "@/registry/bases/radix/ui/input"
-import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupButton,
-  InputGroupInput,
-  InputGroupText,
-  InputGroupTextarea,
-} from "@/registry/bases/radix/ui/input-group"
 import {
   Item,
   ItemActions,
   ItemContent,
   ItemDescription,
-  ItemMedia,
   ItemTitle,
 } from "@/registry/bases/radix/ui/item"
-import { Label } from "@/registry/bases/radix/ui/label"
-import {
-  Popover,
-  PopoverContent,
-  PopoverDescription,
-  PopoverHeader,
-  PopoverTitle,
-  PopoverTrigger,
-} from "@/registry/bases/radix/ui/popover"
 import {
   RadioGroup,
   RadioGroupItem,
 } from "@/registry/bases/radix/ui/radio-group"
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectSeparator,
-  SelectTrigger,
-  SelectValue,
-} from "@/registry/bases/radix/ui/select"
-import { Separator } from "@/registry/bases/radix/ui/separator"
-import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetDescription,
-  SheetFooter,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/registry/bases/radix/ui/sheet"
 import { Slider } from "@/registry/bases/radix/ui/slider"
-import { Spinner } from "@/registry/bases/radix/ui/spinner"
 import { Switch } from "@/registry/bases/radix/ui/switch"
 import { Textarea } from "@/registry/bases/radix/ui/textarea"
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/registry/bases/radix/ui/tooltip"
 import { RADII } from "@/registry/config"
 import { STYLES } from "@/registry/styles"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
@@ -295,7 +202,7 @@ export default function PreviewExample() {
   }, [params.radius])
 
   return (
-    <ExampleWrapper className="w-full max-w-none lg:p-0">
+    <ExampleWrapper className="w-full max-w-none! lg:p-0">
       <Example
         containerClassName="col-span-2 max-w-none"
         className="bg-muted dark:bg-background flex min-h-svh flex-col items-center justify-center border-none sm:p-16"
@@ -500,11 +407,11 @@ export default function PreviewExample() {
                       <DropdownMenuTrigger asChild>
                         <Button variant="outline" size="icon">
                           <IconPlaceholder
-                            lucide="ChevronDownIcon"
-                            tabler="IconChevronDown"
-                            hugeicons="ArrowDown01Icon"
-                            phosphor="CaretDownIcon"
-                            remixicon="RiArrowDownSLine"
+                            lucide="ChevronUpIcon"
+                            tabler="IconChevronUp"
+                            hugeicons="ArrowUp01Icon"
+                            phosphor="CaretUpIcon"
+                            remixicon="RiArrowUpSLine"
                           />
                         </Button>
                       </DropdownMenuTrigger>
@@ -591,26 +498,6 @@ export default function PreviewExample() {
                         </DropdownMenuGroup>
                       </DropdownMenuContent>
                     </DropdownMenu>
-                  </ButtonGroup>
-                  <ButtonGroup className="ml-auto hidden md:flex">
-                    <Button variant="outline" size="icon" aria-label="Previous">
-                      <IconPlaceholder
-                        lucide="ArrowLeftIcon"
-                        tabler="IconArrowLeft"
-                        hugeicons="ArrowLeft01Icon"
-                        phosphor="ArrowLeftIcon"
-                        remixicon="RiArrowLeftLine"
-                      />
-                    </Button>
-                    <Button variant="outline" size="icon" aria-label="Next">
-                      <IconPlaceholder
-                        lucide="ArrowRightIcon"
-                        tabler="IconArrowRight"
-                        hugeicons="ArrowRight01Icon"
-                        phosphor="ArrowRightIcon"
-                        remixicon="RiArrowRightLine"
-                      />
-                    </Button>
                   </ButtonGroup>
                 </div>
               </CardContent>

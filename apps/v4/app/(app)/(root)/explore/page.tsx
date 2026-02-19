@@ -1,10 +1,11 @@
 import { type Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
-import { CopyPresetButton } from "./copy-preset-button"
 import { decodePreset } from "shadcn/preset"
 
 import { EXPLORE_PRESETS } from "@/lib/explore"
+
+import { CopyPresetButton } from "./copy-preset-button"
 
 export const dynamic = "force-static"
 export const revalidate = false
@@ -30,7 +31,7 @@ export default function ExplorePage() {
   return (
     <div className="container-wrapper section-soft flex-1 py-16">
       <div className="container">
-        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-16 sm:grid-cols-2 lg:grid-cols-3">
           {presets.map(({ code, config }) => (
             <Link
               key={code}
