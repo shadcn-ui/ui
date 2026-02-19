@@ -70,6 +70,7 @@ export const initOptionsSchema = z.object({
 
 export const init = new Command()
   .name("init")
+  .alias("create")
   .description("initialize your project and install dependencies")
   .argument("[components...]", "names, url or local path to component")
   .option(
