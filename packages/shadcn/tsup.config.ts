@@ -11,6 +11,7 @@ export default defineConfig({
     "src/mcp/index.ts",
     "src/utils/index.ts",
     "src/icons/index.ts",
+    "src/preset/index.ts",
   ],
   format: ["esm"],
   sourcemap: true,

@@ -8,6 +8,7 @@ import { addComponents } from "@/src/utils/add-components"
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
+import { decodePreset, isPresetCode } from "@/src/utils/preset"
 import { resolveCreateUrl, resolveInitUrl } from "@/src/utils/presets"
 import { ensureRegistriesInConfig } from "@/src/utils/registries"
 import { updateFiles } from "@/src/utils/updaters/update-files"
@@ -33,7 +34,8 @@ export const create = new Command()
     process.cwd()
   )
   .option("-y, --yes", "skip confirmation prompt.", true)
-  .option("--rtl", "enable RTL support.", false)
+  .option("--rtl", "enable RTL support.")
+  .option("--no-rtl", "disable RTL support.")
   .action(async (name, opts) => {
     try {
       // If no preset provided, open create URL with template and rtl params.
@@ -176,15 +178,31 @@ export const create = new Command()
         }
         initUrl = resolveInitUrl({
           ...preset,
-          rtl: opts.rtl || preset.rtl,
+          rtl: opts.rtl ?? preset.rtl,
         })
       } else if (isUrl(presetArg)) {
         // Direct URL.
         const url = new URL(presetArg)
         if (opts.rtl) {
           url.searchParams.set("rtl", "true")
+        } else if (opts.rtl === false) {
+          url.searchParams.delete("rtl")
         }
         initUrl = url.toString()
+      } else if (isPresetCode(presetArg)) {
+        // Preset code.
+        const decoded = decodePreset(presetArg)
+        if (!decoded) {
+          logger.error(`Invalid preset code: ${presetArg}`)
+          process.exit(1)
+        }
+        initUrl = resolveInitUrl(
+          {
+            ...decoded,
+            rtl: opts.rtl ?? false,
+          },
+          { template }
+        )
       } else {
         // Preset name.
         const preset = await getPreset(presetArg)
@@ -198,7 +216,7 @@ export const create = new Command()
         }
         initUrl = resolveInitUrl({
           ...preset,
-          rtl: opts.rtl || preset.rtl,
+          rtl: opts.rtl ?? preset.rtl,
         })
       }
 

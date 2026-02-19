@@ -3,7 +3,7 @@ import { type Registry } from "shadcn/schema"
 export const blocks: Registry["items"] = [
   {
     name: "preview",
-    title: "Home",
+    title: "Preview",
     type: "registry:block",
     registryDependencies: [
       "alert-dialog",
@@ -36,6 +36,45 @@ export const blocks: Registry["items"] = [
     files: [
       {
         path: "blocks/preview.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
+    name: "cards",
+    title: "Cards",
+    type: "registry:block",
+    registryDependencies: [
+      "alert-dialog",
+      "avatar",
+      "badge",
+      "button",
+      "button-group",
+      "card",
+      "checkbox",
+      "combobox",
+      "dropdown-menu",
+      "empty",
+      "field",
+      "input",
+      "input-group",
+      "item",
+      "label",
+      "popover",
+      "radio-group",
+      "select",
+      "separator",
+      "sheet",
+      "slider",
+      "spinner",
+      "switch",
+      "textarea",
+      "tooltip",
+      "example",
+    ],
+    files: [
+      {
+        path: "blocks/cards.tsx",
         type: "registry:block",
       },
     ],

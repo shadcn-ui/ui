@@ -18,6 +18,7 @@ import { SidebarProvider } from "@/registry/new-york-v4/ui/sidebar"
 import { Customizer } from "@/app/(create)/components/customizer"
 import { ItemExplorer } from "@/app/(create)/components/item-explorer"
 import { ItemPicker } from "@/app/(create)/components/item-picker"
+import { PresetHandler } from "@/app/(create)/components/preset-handler"
 import { Preview } from "@/app/(create)/components/preview"
 import { ProjectForm } from "@/app/(create)/components/project-form"
 import { RandomButton } from "@/app/(create)/components/random-button"
@@ -136,11 +137,11 @@ export default async function CreatePage({
             data-slot="designer"
             className="3xl:fixed:container flex w-full flex-1 flex-col gap-2 p-6 pt-1 pb-4 [--sidebar-width:--spacing(40)] sm:gap-2 sm:pt-2 md:flex-row md:pb-6 2xl:gap-6"
           >
-            <ItemExplorer base={base.name} items={filteredItems} />
             <Preview />
             <Customizer />
           </div>
         </SidebarProvider>
+        <PresetHandler />
         <WelcomeDialog />
       </main>
     </div>

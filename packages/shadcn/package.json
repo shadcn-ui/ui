@@ -51,6 +51,10 @@
       "types": "./dist/icons/index.d.ts",
       "default": "./dist/icons/index.js"
     },
+    "./preset": {
+      "types": "./dist/preset/index.d.ts",
+      "default": "./dist/preset/index.js"
+    },
     "./tailwind.css": {
       "style": "./dist/tailwind.css"
     }

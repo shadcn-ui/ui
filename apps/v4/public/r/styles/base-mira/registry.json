@@ -1777,7 +1777,87 @@
     },
     {
       "name": "preview",
-      "title": "Home",
+      "title": "Preview",
+      "registryDependencies": [
+        "alert-dialog",
+        "avatar",
+        "badge",
+        "button",
+        "button-group",
+        "card",
+        "chart",
+        "checkbox",
+        "combobox",
+        "dropdown-menu",
+        "empty",
+        "field",
+        "input",
+        "input-group",
+        "item",
+        "label",
+        "popover",
+        "radio-group",
+        "select",
+        "separator",
+        "sheet",
+        "slider",
+        "spinner",
+        "switch",
+        "textarea",
+        "tooltip",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/blocks/preview/index.tsx",
+          "type": "registry:block"
+        },
+        {
+          "path": "registry/base-mira/blocks/preview/components/observability-card.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/base-mira/blocks/preview/components/small-form.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/base-mira/blocks/preview/components/form.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/base-mira/blocks/preview/components/field-examples.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/base-mira/blocks/preview/components/item-example.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/base-mira/blocks/preview/components/button-group-examples.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/base-mira/blocks/preview/components/empty-avatar-group.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/base-mira/blocks/preview/components/input-group-examples.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/base-mira/blocks/preview/components/sheet-example.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/base-mira/blocks/preview/components/badge-examples.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "type": "registry:block"
+    },
+    {
+      "name": "cards",
+      "title": "Cards",
       "registryDependencies": [
         "alert-dialog",
         "avatar",
@@ -1808,7 +1888,7 @@
       ],
       "files": [
         {
-          "path": "registry/base-mira/blocks/preview.tsx",
+          "path": "registry/base-mira/blocks/cards.tsx",
           "type": "registry:block"
         }
       ],

@@ -656,6 +656,35 @@ describe("shadcn init - next-monorepo", () => {
   }, 300000)
 })
 
+describe("shadcn init - rtl flags", () => {
+  it("should set rtl to true with --rtl", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app")
+    await npxShadcn(fixturePath, ["init", "--defaults", "--rtl"])
+
+    const componentsJsonPath = path.join(fixturePath, "components.json")
+    const componentsJson = await fs.readJson(componentsJsonPath)
+    expect(componentsJson.rtl).toBe(true)
+  })
+
+  it("should set rtl to false with --no-rtl", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app")
+    await npxShadcn(fixturePath, ["init", "--defaults", "--no-rtl"])
+
+    const componentsJsonPath = path.join(fixturePath, "components.json")
+    const componentsJson = await fs.readJson(componentsJsonPath)
+    expect(componentsJson.rtl).toBe(false)
+  })
+
+  it("should default rtl to false when no flag is passed", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app")
+    await npxShadcn(fixturePath, ["init", "--defaults"])
+
+    const componentsJsonPath = path.join(fixturePath, "components.json")
+    const componentsJson = await fs.readJson(componentsJsonPath)
+    expect(componentsJson.rtl).toBe(false)
+  })
+})
+
 describe("shadcn init - deprecated --src-dir", () => {
   it("should reject --src-dir as unknown option", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")

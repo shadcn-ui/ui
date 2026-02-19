@@ -44,6 +44,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/registry/new-york-v4/ui/tabs"
+import { usePresetCode } from "@/app/(create)/hooks/use-design-system"
 import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
 
 const TEMPLATES = [
@@ -77,6 +78,7 @@ const TEMPLATES = [
 export function ProjectForm() {
   const [open, setOpen] = React.useState(false)
   const [params, setParams] = useDesignSystemSearchParams()
+  const presetCode = usePresetCode()
   const [config, setConfig] = useConfig()
   const [hasCopied, setHasCopied] = React.useState(false)
 
@@ -84,37 +86,24 @@ export function ProjectForm() {
 
   const commands = React.useMemo(() => {
     const origin = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:4000"
-    const url = `${origin}/init?base=${params.base}&style=${params.style}&baseColor=${params.baseColor}&theme=${params.theme}&iconLibrary=${params.iconLibrary}&font=${params.font}&menuAccent=${params.menuAccent}&menuColor=${params.menuColor}&radius=${params.radius}&template=${params.template}&rtl=${params.rtl}`
+    const isLocalDev = origin.includes("localhost")
     const rtlFlag = params.rtl ? " --rtl" : ""
     const templateFlag = params.template ? ` --template ${params.template}` : ""
-    const isLocalDev = origin.includes("localhost")
 
     return isLocalDev
       ? {
-          pnpm: `pnpm shadcn init${rtlFlag} --preset "${url}"${templateFlag}`,
-          npm: `pnpm shadcn init${rtlFlag} --preset "${url}"${templateFlag}`,
-          yarn: `pnpm shadcn init${rtlFlag} --preset "${url}"${templateFlag}`,
-          bun: `pnpm shadcn init${rtlFlag} --preset "${url}"${templateFlag}`,
+          pnpm: `pnpm shadcn init${rtlFlag} --preset ${presetCode}${templateFlag}`,
+          npm: `pnpm shadcn init${rtlFlag} --preset ${presetCode}${templateFlag}`,
+          yarn: `pnpm shadcn init${rtlFlag} --preset ${presetCode}${templateFlag}`,
+          bun: `pnpm shadcn init${rtlFlag} --preset ${presetCode}${templateFlag}`,
         }
       : {
-          pnpm: `pnpm dlx shadcn@latest init${rtlFlag} --preset "${url}"${templateFlag}`,
-          npm: `npx shadcn@latest init${rtlFlag} --preset "${url}"${templateFlag}`,
-          yarn: `yarn dlx shadcn@latest init${rtlFlag} --preset "${url}"${templateFlag}`,
-          bun: `bunx --bun shadcn@latest init${rtlFlag} --preset "${url}"${templateFlag}`,
+          pnpm: `pnpm dlx shadcn@latest init${rtlFlag} --preset ${presetCode}${templateFlag}`,
+          npm: `npx shadcn@latest init${rtlFlag} --preset ${presetCode}${templateFlag}`,
+          yarn: `yarn dlx shadcn@latest init${rtlFlag} --preset ${presetCode}${templateFlag}`,
+          bun: `bunx --bun shadcn@latest init${rtlFlag} --preset ${presetCode}${templateFlag}`,
         }
-  }, [
-    params.base,
-    params.style,
-    params.baseColor,
-    params.theme,
-    params.iconLibrary,
-    params.font,
-    params.menuAccent,
-    params.menuColor,
-    params.radius,
-    params.template,
-    params.rtl,
-  ])
+  }, [presetCode, params.rtl, params.template])
 
   const command = commands[packageManager]
 

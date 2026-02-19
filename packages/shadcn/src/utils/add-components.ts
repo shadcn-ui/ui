@@ -36,6 +36,7 @@ export async function addComponents(
   config: Config,
   options: {
     overwrite?: boolean
+    overwriteCssVars?: boolean
     silent?: boolean
     isNewProject?: boolean
     skipFonts?: boolean
@@ -114,7 +115,9 @@ async function addProjectComponents(
     tailwindVersion,
   })
 
-  const overwriteCssVars = await shouldOverwriteCssVars(components, config)
+  const overwriteCssVars =
+    options.overwriteCssVars ??
+    (await shouldOverwriteCssVars(components, config))
   await updateCssVars(tree.cssVars, config, {
     cleanupDefaultNextStyles: options.isNewProject,
     silent: options.silent,
@@ -221,7 +224,9 @@ async function addWorkspaceComponents(
 
   // 2. Update css vars.
   if (tree.cssVars) {
-    const overwriteCssVars = await shouldOverwriteCssVars(components, config)
+    const overwriteCssVars =
+      options.overwriteCssVars ??
+      (await shouldOverwriteCssVars(components, config))
     await updateCssVars(tree.cssVars, mainTargetConfig, {
       silent: true,
       tailwindVersion,

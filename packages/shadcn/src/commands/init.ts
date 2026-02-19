@@ -35,6 +35,7 @@ import {
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
+import { decodePreset, isPresetCode } from "@/src/utils/preset"
 import {
   DEFAULT_PRESETS,
   promptForPreset,
@@ -61,7 +62,7 @@ export const initOptionsSchema = z.object({
   silent: z.boolean(),
   isNewProject: z.boolean().default(false),
   cssVariables: z.boolean().default(true),
-  rtl: z.boolean().default(false),
+  rtl: z.boolean().optional(),
   template: z.string().optional(),
   installStyleIndex: z.boolean().default(true),
   registryBaseConfig: rawConfigSchema.deepPartial().optional(),
@@ -92,7 +93,8 @@ export const init = new Command()
   .option("-s, --silent", "mute output.", false)
   .option("--css-variables", "use css variables for theming.", true)
   .option("--no-css-variables", "do not use css variables for theming.")
-  .option("--rtl", "enable RTL support.", false)
+  .option("--rtl", "enable RTL support.")
+  .option("--no-rtl", "disable RTL support.")
   .option("--reinstall", "re-install existing UI components.", false)
   .action(async (components, opts) => {
     let componentsJsonBackupPath: string | undefined
@@ -114,7 +116,7 @@ export const init = new Command()
         const initUrl = resolveInitUrl(
           {
             ...DEFAULT_PRESETS["base-nova"],
-            rtl: options.rtl,
+            rtl: options.rtl ?? false,
           },
           { template: options.template }
         )
@@ -134,7 +136,11 @@ export const init = new Command()
         process.exit(1)
       }
 
-      if (typeof options.preset === "string" && !isUrl(options.preset)) {
+      if (
+        typeof options.preset === "string" &&
+        !isUrl(options.preset) &&
+        !isPresetCode(options.preset)
+      ) {
         const knownPresetNames = presets.map((preset) => preset.name)
 
         if (!presetsByName.has(options.preset)) {
@@ -264,7 +270,7 @@ export const init = new Command()
 
         if (presetArg === true) {
           const result = await promptForPreset({
-            rtl: options.rtl,
+            rtl: options.rtl ?? false,
             template: options.template,
           })
           components = [result.url, ...components]
@@ -278,15 +284,34 @@ export const init = new Command()
             const url = new URL(presetArg)
             if (options.rtl) {
               url.searchParams.set("rtl", "true")
+            } else if (options.rtl === false) {
+              url.searchParams.delete("rtl")
             }
             initUrl = url.toString()
             newBase = url.searchParams.get("base") ?? undefined
+          } else if (isPresetCode(presetArg)) {
+            const decoded = decodePreset(presetArg)
+            if (!decoded) {
+              logger.error(
+                `Invalid preset code: ${highlighter.info(presetArg)}`
+              )
+              logger.break()
+              process.exit(1)
+            }
+            initUrl = resolveInitUrl(
+              {
+                ...decoded,
+                rtl: options.rtl ?? false,
+              },
+              { template: options.template }
+            )
+            newBase = decoded.base
           } else {
             const preset = presetsByName.get(presetArg)!
             initUrl = resolveInitUrl(
               {
                 ...preset,
-                rtl: options.rtl || preset.rtl,
+                rtl: options.rtl ?? preset.rtl,
               },
               { template: options.template }
             )
@@ -508,6 +533,8 @@ export async function runInit(
   await addComponents(components, fullConfig, {
     // Init will always overwrite files.
     overwrite: true,
+    // Reinstall should overwrite existing CSS variables.
+    overwriteCssVars: options.reinstall || undefined,
     silent: options.silent,
     isNewProject:
       options.isNewProject || projectInfo?.framework.name === "next-app",

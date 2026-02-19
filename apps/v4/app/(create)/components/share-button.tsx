@@ -11,27 +11,18 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/registry/new-york-v4/ui/tooltip"
+import { usePresetCode } from "@/app/(create)/hooks/use-design-system"
 import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
 
 export function ShareButton() {
   const [params] = useDesignSystemSearchParams()
+  const presetCode = usePresetCode()
   const [hasCopied, setHasCopied] = React.useState(false)
 
   const shareUrl = React.useMemo(() => {
     const origin = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"
-    return `${origin}/create?base=${params.base}&style=${params.style}&baseColor=${params.baseColor}&theme=${params.theme}&iconLibrary=${params.iconLibrary}&font=${params.font}&menuAccent=${params.menuAccent}&menuColor=${params.menuColor}&radius=${params.radius}&item=${params.item}`
-  }, [
-    params.base,
-    params.style,
-    params.baseColor,
-    params.theme,
-    params.iconLibrary,
-    params.font,
-    params.menuAccent,
-    params.menuColor,
-    params.radius,
-    params.item,
-  ])
+    return `${origin}/create?preset=${presetCode}&item=${params.item}`
+  }, [presetCode, params.item])
 
   React.useEffect(() => {
     if (hasCopied) {

@@ -1,20 +1,16 @@
 "use client"
 
 import * as React from "react"
-import { Settings05Icon } from "@hugeicons/core-free-icons"
-import { HugeiconsIcon } from "@hugeicons/react"
 
 import { useIsMobile } from "@/hooks/use-mobile"
-import { getThemesForBaseColor, PRESETS, STYLES } from "@/registry/config"
+import { getThemesForBaseColor, STYLES } from "@/registry/config"
 import { FieldGroup } from "@/registry/new-york-v4/ui/field"
-import { Separator } from "@/registry/new-york-v4/ui/separator"
 import { MenuAccentPicker } from "@/app/(create)/components/accent-picker"
 import { BaseColorPicker } from "@/app/(create)/components/base-color-picker"
 import { BasePicker } from "@/app/(create)/components/base-picker"
 import { FontPicker } from "@/app/(create)/components/font-picker"
 import { IconLibraryPicker } from "@/app/(create)/components/icon-library-picker"
 import { MenuColorPicker } from "@/app/(create)/components/menu-picker"
-import { PresetPicker } from "@/app/(create)/components/preset-picker"
 import { RadiusPicker } from "@/app/(create)/components/radius-picker"
 import { RandomButton } from "@/app/(create)/components/random-button"
 import { ResetButton } from "@/app/(create)/components/reset-button"
@@ -40,11 +36,6 @@ export function Customizer() {
     >
       <div className="no-scrollbar h-14 overflow-x-auto overflow-y-hidden p-px md:h-full md:overflow-x-hidden md:overflow-y-auto">
         <FieldGroup className="flex h-full flex-1 flex-row gap-2 md:flex-col md:gap-0">
-          <PresetPicker
-            presets={PRESETS}
-            isMobile={isMobile}
-            anchorRef={anchorRef}
-          />
           <BasePicker isMobile={isMobile} anchorRef={anchorRef} />
           <StylePicker
             styles={STYLES}
