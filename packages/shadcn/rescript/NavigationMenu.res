@@ -47,14 +47,7 @@ let make = (
 
 module List = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-  ) =>
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <BaseUi.NavigationMenu.List
       ?id
       ?style
@@ -68,14 +61,7 @@ module List = {
 
 module Item = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-  ) =>
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <BaseUi.NavigationMenu.Item
       ?id
       ?style
@@ -239,15 +225,13 @@ module Link = {
 
 module Indicator = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?) =>
+  let make = (~className="", ~id=?, ~style=?) =>
     <BaseUi.NavigationMenu.Icon
       ?id
       ?style
       dataSlot="navigation-menu-indicator"
       className={`data-[state=visible]:animate-in data-[state=hidden]:animate-out data-[state=hidden]:fade-out data-[state=visible]:fade-in top-full z-1 flex h-1.5 items-end justify-center overflow-hidden ${className}`}
     >
-      {children->Option.getOr(
-        <div className="bg-border relative top-[60%] h-2 w-2 rotate-45 rounded-tl-sm shadow-md" />,
-      )}
+      <div className="bg-border relative top-[60%] h-2 w-2 rotate-45 rounded-tl-sm shadow-md" />
     </BaseUi.NavigationMenu.Icon>
 }

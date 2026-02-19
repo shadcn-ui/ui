@@ -95,14 +95,7 @@ let make = (~className="", ~children=?, ~dataOrientation=DataOrientation.Horizon
 
 module Content = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-  ) => {
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) => {
     let {carouselRef, orientation} = useCarousel()
     <div dataSlot="carousel-content" ref={carouselRef} className="overflow-hidden">
       <div
@@ -121,14 +114,7 @@ module Content = {
 
 module Item = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-  ) => {
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) => {
     let {orientation} = useCarousel()
     <div
       ?id
@@ -150,27 +136,19 @@ module Previous = {
   @react.component
   let make = (
     ~className="",
-    ~disabled=?,
     ~style: option<ReactDOM.Style.t>=?,
     ~variant=Variant.Outline,
     ~size=Size.IconSm,
     ~nativeButton=?,
     ~type_=?,
     ~ariaLabel=?,
-    ~children=?,
-    ~onClick=?,
+    ~onClick=_ => (),
   ) => {
     let {orientation, scrollPrev, canScrollPrev} = useCarousel()
-    let disabled = disabled->Option.getOr(!canScrollPrev)
     let style: ReactDOM.Style.t = switch style {
     | Some(style) => {...style, borderColor: "hsl(var(--border))"}
     | None => {borderColor: "hsl(var(--border))"}
     }
-    let defaultChildren =
-      <>
-        <Icons.ChevronLeft className="cn-rtl-flip" />
-        <span className="sr-only"> {"Previous slide"->React.string} </span>
-      </>
     <Button
       className={`absolute touch-manipulation rounded-full ${orientation ==
           DataOrientation.Horizontal
@@ -182,14 +160,15 @@ module Previous = {
       ?type_
       ?ariaLabel
       dataSlot="carousel-previous"
-      disabled
+      disabled={!canScrollPrev}
       style
       onClick={event => {
-        onClick->Option.forEach(fn => fn(event))
+        onClick(event)
         scrollPrev()
       }}
     >
-      {children->Option.getOr(defaultChildren)}
+      <Icons.ChevronLeft className="cn-rtl-flip" />
+      <span className="sr-only"> {"Previous slide"->React.string} </span>
     </Button>
   }
 }
@@ -198,27 +177,15 @@ module Next = {
   @react.component
   let make = (
     ~className="",
-    ~disabled=?,
-    ~style: option<ReactDOM.Style.t>=?,
+    ~style=?,
     ~variant=Variant.Outline,
     ~size=Size.IconSm,
     ~nativeButton=?,
     ~type_=?,
     ~ariaLabel=?,
-    ~children=?,
-    ~onClick=?,
+    ~onClick=_ => (),
   ) => {
     let {orientation, scrollNext, canScrollNext} = useCarousel()
-    let disabled = disabled->Option.getOr(!canScrollNext)
-    let style: ReactDOM.Style.t = switch style {
-    | Some(style) => {...style, borderColor: "hsl(var(--border))"}
-    | None => {borderColor: "hsl(var(--border))"}
-    }
-    let defaultChildren =
-      <>
-        <Icons.ChevronRight className="cn-rtl-flip" />
-        <span className="sr-only"> {"Next slide"->React.string} </span>
-      </>
     <Button
       className={`absolute touch-manipulation rounded-full ${orientation ==
           DataOrientation.Horizontal
@@ -226,18 +193,19 @@ module Next = {
           : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90"} ${className}`}
       variant
       size
+      ?style
       ?nativeButton
       ?type_
       ?ariaLabel
       dataSlot="carousel-next"
-      disabled
-      style
+      disabled={!canScrollNext}
       onClick={event => {
-        onClick->Option.forEach(fn => fn(event))
+        onClick(event)
         scrollNext()
       }}
     >
-      {children->Option.getOr(defaultChildren)}
+      <Icons.ChevronRight className="cn-rtl-flip" />
+      <span className="sr-only"> {"Next slide"->React.string} </span>
     </Button>
   }
 }

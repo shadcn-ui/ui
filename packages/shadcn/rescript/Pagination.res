@@ -3,14 +3,7 @@ open BaseUi.Types
 @@jsxConfig({version: 4, mode: "automatic", module_: "BaseUi.BaseUiJsxDOM"})
 
 @react.component
-let make = (
-  ~className="",
-  ~children=?,
-  ~id=?,
-  ~style=?,
-  ~onClick=?,
-  ~onKeyDown=?,
-) => {
+let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) => {
   <nav
     dataSlot="pagination"
     ?id
@@ -20,19 +13,13 @@ let make = (
     role="navigation"
     ariaLabel="pagination"
     className={`mx-auto flex w-full justify-center ${className}`}
-   ?children />
+    ?children
+  />
 }
 
 module Content = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-  ) => {
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) => {
     <ul
       dataSlot="pagination-content"
       ?id
@@ -40,7 +27,8 @@ module Content = {
       ?onClick
       ?onKeyDown
       className={`flex items-center gap-0.5 ${className}`}
-     ?children />
+      ?children
+    />
   }
 }
 
@@ -92,7 +80,6 @@ module Previous = {
   let make = (
     ~className="",
     ~text="Previous",
-    ~children=?,
     ~href=?,
     ~target=?,
     ~id=?,
@@ -101,12 +88,6 @@ module Previous = {
     ~onKeyDown=?,
     ~dataActive=?,
   ) => {
-    let content = children->Option.getOr(
-      <>
-        <Icons.ChevronLeft dataIcon="inline-start" className="cn-rtl-flip" />
-        <span className="hidden sm:block"> {text->React.string} </span>
-      </>,
-    )
     <Link
       ariaLabel="Go to previous page"
       size={Size.Default}
@@ -119,7 +100,8 @@ module Previous = {
       ?onKeyDown
       ?dataActive
     >
-      {content}
+      <Icons.ChevronLeft dataIcon="inline-start" className="cn-rtl-flip" />
+      <span className="hidden sm:block"> {text->React.string} </span>
     </Link>
   }
 }
@@ -129,7 +111,6 @@ module Next = {
   let make = (
     ~className="",
     ~text="Next",
-    ~children=?,
     ~href=?,
     ~target=?,
     ~id=?,
@@ -138,12 +119,6 @@ module Next = {
     ~onKeyDown=?,
     ~dataActive=?,
   ) => {
-    let content = children->Option.getOr(
-      <>
-        <span className="hidden sm:block"> {text->React.string} </span>
-        <Icons.ChevronRight dataIcon="inline-end" className="cn-rtl-flip" />
-      </>,
-    )
     <Link
       ariaLabel="Go to next page"
       size={Size.Default}
@@ -156,7 +131,8 @@ module Next = {
       ?onKeyDown
       ?dataActive
     >
-      {content}
+      <span className="hidden sm:block"> {text->React.string} </span>
+      <Icons.ChevronRight dataIcon="inline-end" className="cn-rtl-flip" />
     </Link>
   }
 }

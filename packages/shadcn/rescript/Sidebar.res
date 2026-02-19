@@ -119,14 +119,7 @@ let make = (
 
 module Provider = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-    ~style=?,
-  ) => {
+  let make = (~className="", ~children=?, ~id=?, ~onClick=?, ~onKeyDown=?, ~style=?) => {
     let style = switch style {
     | Some(value) => value
     | None => ReactDOM.Style._dictToStyle(Dict.make())
@@ -156,18 +149,12 @@ module Trigger = {
     ~nativeButton=?,
     ~disabled=?,
     ~style=?,
-    ~children=?,
-    ~onClick=?,
+    ~onClick=_ => (),
     ~type_=?,
     ~ariaLabel=?,
     ~render=?,
   ) => {
-    let sidebar = useSidebar()
-    let defaultChildren =
-      <>
-        <Icons.PanelLeft className="cn-rtl-flip" />
-        <span className="sr-only"> {"Toggle Sidebar"->React.string} </span>
-      </>
+    let {toggleSidebar} = useSidebar()
     <Button
       className
       variant
@@ -181,11 +168,12 @@ module Trigger = {
       dataSidebar="trigger"
       dataSlot="sidebar-trigger"
       onClick={event => {
-        onClick->Option.forEach(fn => fn(event))
-        sidebar.toggleSidebar()
+        onClick(event)
+        toggleSidebar()
       }}
     >
-      {children->Option.getOr(defaultChildren)}
+      <Icons.PanelLeft className="cn-rtl-flip" />
+      <span className="sr-only"> {"Toggle Sidebar"->React.string} </span>
     </Button>
   }
 }
@@ -210,14 +198,7 @@ module Rail = {
 
 module Inset = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-  ) =>
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <main
       ?id
       ?style
@@ -279,14 +260,7 @@ module Input = {
 
 module Header = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-  ) =>
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <div
       ?id
       ?style
@@ -301,14 +275,7 @@ module Header = {
 
 module Footer = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-  ) =>
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <div
       ?id
       ?style
@@ -323,14 +290,7 @@ module Footer = {
 
 module Separator = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-  ) =>
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <BaseUi.Separator
       ?id
       ?style
@@ -345,14 +305,7 @@ module Separator = {
 
 module Content = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-  ) =>
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <div
       ?id
       ?style
@@ -367,14 +320,7 @@ module Content = {
 
 module Group = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-  ) =>
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <div
       ?id
       ?style
@@ -389,14 +335,7 @@ module Group = {
 
 module GroupLabel = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-  ) =>
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <div
       ?id
       ?style
@@ -427,14 +366,7 @@ module GroupAction = {
 
 module GroupContent = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-  ) =>
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <div
       ?id
       ?style
@@ -449,14 +381,7 @@ module GroupContent = {
 
 module Menu = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-  ) =>
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <ul
       ?id
       ?style
@@ -471,14 +396,7 @@ module Menu = {
 
 module MenuItem = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-  ) =>
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <li
       ?id
       ?style
@@ -504,7 +422,7 @@ module MenuButton = {
   ) => {
     let props: BaseUi.Types.props<string, bool> = {
       render: React.null,
-      children: children,
+      children,
       dataSlot: "sidebar-menu-button",
       dataSidebar: "menu-button",
       dataSize: size,
@@ -548,14 +466,7 @@ module MenuAction = {
 
 module MenuBadge = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-  ) =>
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <div
       ?id
       ?style
@@ -570,14 +481,7 @@ module MenuBadge = {
 
 module MenuSkeleton = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=React.null,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-  ) => {
+  let make = (~className="", ~children=React.null, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) => {
     <div
       ?id
       ?style
@@ -596,14 +500,7 @@ module MenuSkeleton = {
 
 module MenuSub = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-  ) =>
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <ul
       ?id
       ?style
@@ -618,14 +515,7 @@ module MenuSub = {
 
 module MenuSubItem = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-  ) =>
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <li
       ?id
       ?style

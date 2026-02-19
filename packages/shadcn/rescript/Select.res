@@ -44,14 +44,7 @@ let make = (
 
 module Group = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-  ) =>
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <BaseUi.Select.Group
       ?id
       ?style
@@ -198,14 +191,7 @@ module Content = {
 
 module Label = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-  ) =>
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <BaseUi.Select.GroupLabel
       ?id
       ?style
@@ -267,14 +253,7 @@ module Separator = {
 
 module ScrollUpButton = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-  ) =>
+  let make = (~className="", ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <BaseUi.Select.ScrollUpArrow
       ?id
       ?style
@@ -283,20 +262,13 @@ module ScrollUpButton = {
       dataSlot="select-scroll-up-button"
       className={`bg-popover top-0 z-10 flex w-full cursor-default items-center justify-center py-1 [&_svg:not([class*='size-'])]:size-4 ${className}`}
     >
-      {children->Option.getOr(<Icons.ChevronUp />)}
+      <Icons.ChevronUp />
     </BaseUi.Select.ScrollUpArrow>
 }
 
 module ScrollDownButton = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-  ) =>
+  let make = (~className="", ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <BaseUi.Select.ScrollDownArrow
       ?id
       ?style
@@ -305,6 +277,6 @@ module ScrollDownButton = {
       dataSlot="select-scroll-down-button"
       className={`bg-popover bottom-0 z-10 flex w-full cursor-default items-center justify-center py-1 [&_svg:not([class*='size-'])]:size-4 ${className}`}
     >
-      {children->Option.getOr(<Icons.ChevronDown />)}
+      <Icons.ChevronDown />
     </BaseUi.Select.ScrollDownArrow>
 }
