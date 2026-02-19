@@ -1839,48 +1839,8 @@
       ],
       "files": [
         {
-          "path": "registry/radix-nova/blocks/cards/index.tsx",
+          "path": "registry/radix-nova/blocks/cards.tsx",
           "type": "registry:block"
-        },
-        {
-          "path": "registry/radix-nova/blocks/cards/components/observability-card.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/radix-nova/blocks/cards/components/small-form.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/radix-nova/blocks/cards/components/form.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/radix-nova/blocks/cards/components/field-examples.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/radix-nova/blocks/cards/components/item-example.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/radix-nova/blocks/cards/components/button-group-examples.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/radix-nova/blocks/cards/components/empty-avatar-group.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/radix-nova/blocks/cards/components/input-group-examples.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/radix-nova/blocks/cards/components/sheet-example.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/radix-nova/blocks/cards/components/badge-examples.tsx",
-          "type": "registry:component"
         }
       ],
       "type": "registry:block"
