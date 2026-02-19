@@ -20,7 +20,6 @@ let make = (
   ~style=?,
   ~onClick=?,
   ~onKeyDown=?,
-  ~onKeyDownCapture=?,
   ~dataOrientation=DataOrientation.Horizontal,
 ) => {
   let orientation = dataOrientation
@@ -29,7 +28,6 @@ let make = (
     ?style
     ?onClick
     ?onKeyDown
-    ?onKeyDownCapture
     ?children
     role="group"
     dataOrientation={orientation}
@@ -40,21 +38,12 @@ let make = (
 
 module Text = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-    ~onKeyDownCapture=?,
-  ) =>
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <div
       ?id
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?children
       className={`bg-muted gap-2 rounded-lg border px-2.5 text-sm font-medium [&_svg:not([class*='size-'])]:size-4 flex items-center [&_svg]:pointer-events-none ${className}`}
     />

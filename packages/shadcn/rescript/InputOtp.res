@@ -40,7 +40,6 @@ let make = (
   ~onValueChange=?,
   ~onClick=?,
   ~onKeyDown=?,
-  ~onKeyDownCapture=?,
   ~tabIndex=?,
   ~ariaLabel=?,
   ~style=?,
@@ -57,7 +56,6 @@ let make = (
     ?onValueChange
     ?onClick
     ?onKeyDown
-    ?onKeyDownCapture
     ?tabIndex
     ?ariaLabel
     ?style
@@ -71,21 +69,12 @@ let make = (
 
 module Group = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-    ~onKeyDownCapture=?,
-  ) =>
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <div
       ?id
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?children
       dataSlot="input-otp-group"
       className={`has-aria-invalid:ring-destructive/20 dark:has-aria-invalid:ring-destructive/40 has-aria-invalid:border-destructive flex items-center rounded-lg has-aria-invalid:ring-3 ${className}`}
@@ -95,32 +84,30 @@ module Group = {
 module Slot = {
   @react.component
   let make = (
+    ~index,
     ~className="",
     ~children=React.null,
     ~id=?,
-    ~index=0,
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
   ) => {
     let inputOtpContext = React.useContext(InputOtpPrimitive.context)
-    let slot = inputOtpContext.slots->Belt.Array.get(index)
-    let isActive = slot->Belt.Option.mapWithDefault(false, slot => slot.isActive)
-    let hasFakeCaret = slot->Belt.Option.mapWithDefault(false, slot => slot.hasFakeCaret)
-    let char =
-      slot
-      ->Belt.Option.flatMap(slot => slot.char->Nullable.toOption)
-      ->Belt.Option.mapWithDefault(React.null, value => value->React.string)
+    let (char, hasFakeCaret, isActive) = switch inputOtpContext.slots[index] {
+    | Some(slot) => (
+        slot.char->Nullable.map(React.string)->Nullable.getOr(React.null),
+        slot.hasFakeCaret,
+        slot.isActive,
+      )
+    | None => (React.null, false, false)
+    }
     <div
       ?id
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       dataSlot="input-otp-slot"
       dataActive={isActive}
-      index
       className={`dark:bg-input/30 border-input data-[active=true]:border-ring data-[active=true]:ring-ring/50 data-[active=true]:aria-invalid:ring-destructive/20 dark:data-[active=true]:aria-invalid:ring-destructive/40 aria-invalid:border-destructive data-[active=true]:aria-invalid:border-destructive relative flex size-8 items-center justify-center border-y border-r text-sm transition-all outline-none first:rounded-l-lg first:border-l last:rounded-r-lg data-[active=true]:z-10 data-[active=true]:ring-3 ${className}`}
     >
       {char}
@@ -136,21 +123,12 @@ module Slot = {
 
 module Separator = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=React.null,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-    ~onKeyDownCapture=?,
-  ) =>
+  let make = (~className="", ~children=React.null, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <div
       ?id
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       role="separator"
       dataSlot="input-otp-separator"
       className={`flex items-center [&_svg:not([class*='size-'])]:size-4 ${className}`}

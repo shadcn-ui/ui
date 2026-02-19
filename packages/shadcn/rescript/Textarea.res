@@ -1,7 +1,5 @@
 @@jsxConfig({version: 4, mode: "automatic", module_: "BaseUi.BaseUiJsxDOM"})
 
-open BaseUi.Types
-
 @react.component
 let make = (
   ~className="",
@@ -16,7 +14,6 @@ let make = (
   ~placeholder=?,
   ~onClick=?,
   ~onKeyDown=?,
-  ~onKeyDownCapture=?,
   ~ariaLabel=?,
   ~style=?,
   ~maxLength=?,
@@ -34,7 +31,6 @@ let make = (
     ?placeholder
     ?onClick
     ?onKeyDown
-    ?onKeyDownCapture
     ?ariaLabel
     ?style
     ?maxLength

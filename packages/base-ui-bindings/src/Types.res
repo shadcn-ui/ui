@@ -119,6 +119,42 @@ module DataOrientation = {
     | @as("responsive") Responsive
 }
 
+module ExtraDomProps = {
+  type t = {
+    @as("data-slot") dataSlot?: string,
+    @as("data-sidebar") dataSidebar?: string,
+    @as("data-side") dataSide?: string,
+    @as("data-align") dataAlign?: DataAlign.t,
+    @as("data-icon") dataIcon?: string,
+    @as("data-mobile") dataMobile?: string,
+    @as("data-chips") dataChips?: bool,
+    @as("data-collapsible") dataCollapsible?: string,
+    @as("data-content") dataContent?: bool,
+    @as("data-disabled") dataDisabled?: bool,
+    @as("data-chart") dataChart?: string,
+    @as("data-day") dataDay?: string,
+    @as("data-active") dataActive?: bool,
+    @as("data-selected-single") dataSelectedSingle?: bool,
+    @as("data-range-start") dataRangeStart?: bool,
+    @as("data-range-end") dataRangeEnd?: bool,
+    @as("data-range-middle") dataRangeMiddle?: bool,
+    @as("data-size") dataSize?: Size.t,
+    @as("data-variant") dataVariant?: Variant.t,
+    @as("data-state") dataState?: string,
+    @as("data-orientation") dataOrientation?: DataOrientation.t,
+    @as("data-align-trigger") dataAlignTrigger?: bool,
+    @as("data-spacing") dataSpacing?: float,
+    @as("data-inset") dataInset?: bool,
+  }
+}
+
+module DomProps = {
+  type t = {
+    ...JsxDOM.domProps,
+    ...ExtraDomProps.t,
+  }
+}
+
 type props<'value, 'checked> = {
   children?: React.element,
   className?: string,
@@ -220,32 +256,15 @@ type props<'value, 'checked> = {
   thumbCollisionBehavior?: ThumbCollisionBehavior.t,
   @as("type") type_?: string,
   @as("aria-label") ariaLabel?: string,
-  @as("aria-disabled") ariaDisabled?: bool,
-  @as("aria-roledescription") ariaRoledescription?: string,
-  @as("aria-current") ariaCurrent?: string,
-  @as("aria-hidden") ariaHidden?: bool,
-  @as("data-slot") dataSlot?: string,
-  @as("data-sidebar") dataSidebar?: string,
-  @as("data-side") dataSide?: string,
-  @as("data-align") dataAlign?: DataAlign.t,
-  @as("data-icon") dataIcon?: string,
-  @as("data-mobile") dataMobile?: string,
-  @as("data-chips") dataChips?: bool,
-  @as("data-collapsible") dataCollapsible?: string,
-  @as("data-content") dataContent?: bool,
-  @as("data-disabled") dataDisabled?: bool,
-  @as("data-chart") dataChart?: string,
-  @as("data-day") dataDay?: string,
-  @as("data-active") dataActive?: bool,
-  @as("data-selected-single") dataSelectedSingle?: bool,
-  @as("data-range-start") dataRangeStart?: bool,
-  @as("data-range-end") dataRangeEnd?: bool,
-  @as("data-range-middle") dataRangeMiddle?: bool,
-  @as("data-size") dataSize?: Size.t,
-  @as("data-variant") dataVariant?: Variant.t,
-  @as("data-state") dataState?: string,
-  @as("data-orientation") dataOrientation?: DataOrientation.t,
-  @as("data-align-trigger") dataAlignTrigger?: bool,
-  @as("data-spacing") dataSpacing?: float,
-  @as("data-inset") dataInset?: bool,
+  ...ExtraDomProps.t,
+  @as("aria-current")
+  ariaCurrent?: [#page | #step | #location | #date | #time | #"true" | #"false"],
+  @as("aria-details")
+  ariaDetails?: string,
+  @as("aria-disabled")
+  ariaDisabled?: bool,
+  @as("aria-roledescription")
+  ariaRoledescription?: string,
+  @as("aria-hidden")
+  ariaHidden?: bool,
 }

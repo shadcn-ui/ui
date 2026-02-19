@@ -95,7 +95,6 @@ module Media = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
     ~dataVariant=Variant.Default,
   ) => {
     let variant = dataVariant
@@ -105,7 +104,6 @@ module Media = {
       ?children
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       dataSlot="item-media"
       dataVariant={variant}
       className={`${itemMediaVariants(~variant)} ${className}`}
@@ -115,22 +113,13 @@ module Media = {
 
 module Content = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-    ~onKeyDownCapture=?,
-  ) =>
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <div
       ?id
       ?style
       ?children
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       dataSlot="item-content"
       className={`flex flex-1 flex-col gap-1 group-data-[size=xs]/item:gap-0 [&+[data-slot=item-content]]:flex-none ${className}`}
     />
@@ -138,22 +127,13 @@ module Content = {
 
 module Actions = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-    ~onKeyDownCapture=?,
-  ) =>
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <div
       ?id
       ?style
       ?children
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       dataSlot="item-actions"
       className={`flex items-center gap-2 ${className}`}
     />
@@ -161,22 +141,13 @@ module Actions = {
 
 module Group = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-    ~onKeyDownCapture=?,
-  ) =>
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <div
       ?id
       ?style
       ?children
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       role="list"
       dataSlot="item-group"
       className={`group/item-group flex w-full flex-col gap-4 has-data-[size=sm]:gap-2.5 has-data-[size=xs]:gap-2 ${className}`}
@@ -185,13 +156,12 @@ module Group = {
 
 module Separator = {
   @react.component
-  let make = (~className="", ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?, ~onKeyDownCapture=?) =>
+  let make = (~className="", ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <BaseUi.Separator
       ?id
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       dataSlot="item-separator"
       orientation={Orientation.Horizontal}
       className={`my-2 ${className}`}
@@ -200,22 +170,13 @@ module Separator = {
 
 module Title = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-    ~onKeyDownCapture=?,
-  ) =>
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <div
       ?id
       ?style
       ?children
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       dataSlot="item-title"
       className={`line-clamp-1 flex w-fit items-center gap-2 text-sm leading-snug font-medium underline-offset-4 ${className}`}
     />
@@ -223,22 +184,13 @@ module Title = {
 
 module Description = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-    ~onKeyDownCapture=?,
-  ) =>
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <p
       ?id
       ?style
       ?children
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       dataSlot="item-description"
       className={`text-muted-foreground [&>a:hover]:text-primary line-clamp-2 text-left text-sm leading-normal font-normal group-data-[size=xs]/item:text-xs [&>a]:underline [&>a]:underline-offset-4 ${className}`}
     />
@@ -246,22 +198,13 @@ module Description = {
 
 module Header = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-    ~onKeyDownCapture=?,
-  ) =>
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <div
       ?id
       ?style
       ?children
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       dataSlot="item-header"
       className={`flex basis-full items-center justify-between gap-2 ${className}`}
     />
@@ -269,22 +212,13 @@ module Header = {
 
 module Footer = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-    ~onKeyDownCapture=?,
-  ) =>
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <div
       ?id
       ?style
       ?children
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       dataSlot="item-footer"
       className={`flex basis-full items-center justify-between gap-2 ${className}`}
     />

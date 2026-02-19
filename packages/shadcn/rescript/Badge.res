@@ -30,7 +30,6 @@ let make = (
   ~id=?,
   ~onClick=?,
   ~onKeyDown=?,
-  ~onKeyDownCapture=?,
   ~style=?,
   ~dataVariant=Variant.Default,
 ) => {
@@ -40,7 +39,6 @@ let make = (
     ?children
     ?onClick
     ?onKeyDown
-    ?onKeyDownCapture
     ?style
     dataSlot="badge"
     dataVariant={variant}

@@ -10,7 +10,6 @@ let make = (
   ~style=?,
   ~onClick=?,
   ~onKeyDown=?,
-  ~onKeyDownCapture=?,
 ) => {
   <nav
     dataSlot="pagination"
@@ -18,7 +17,6 @@ let make = (
     ?style
     ?onClick
     ?onKeyDown
-    ?onKeyDownCapture
     role="navigation"
     ariaLabel="pagination"
     className={`mx-auto flex w-full justify-center ${className}`}
@@ -34,7 +32,6 @@ module Content = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
   ) => {
     <ul
       dataSlot="pagination-content"
@@ -42,7 +39,6 @@ module Content = {
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       className={`flex items-center gap-0.5 ${className}`}
      ?children />
   }
@@ -68,7 +64,6 @@ module Link = {
     ~ariaLabel=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
     ~dataActive=isActive,
   ) =>
     <Button
@@ -84,8 +79,7 @@ module Link = {
         ?ariaLabel
         ?onClick
         ?onKeyDown
-        ?onKeyDownCapture
-        ariaCurrent=?{isActive ? Some("page") : None}
+        ariaCurrent=?{isActive ? Some(#page) : None}
         dataSlot="pagination-link"
         dataActive
       />}
@@ -105,7 +99,6 @@ module Previous = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
     ~dataActive=?,
   ) => {
     let content = children->Option.getOr(
@@ -124,7 +117,6 @@ module Previous = {
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?dataActive
     >
       {content}
@@ -144,7 +136,6 @@ module Next = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
     ~dataActive=?,
   ) => {
     let content = children->Option.getOr(
@@ -163,7 +154,6 @@ module Next = {
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?dataActive
     >
       {content}

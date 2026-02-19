@@ -65,7 +65,6 @@ module Trigger = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
     ~disabled=?,
     ~render=?,
     ~nativeButton=?,
@@ -78,7 +77,6 @@ module Trigger = {
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?disabled
       ?render
       ?nativeButton
@@ -102,7 +100,6 @@ module Clear = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
     ~disabled=?,
     ~render=?,
     ~nativeButton=?,
@@ -114,7 +111,6 @@ module Clear = {
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?disabled
       ?nativeButton
       ?type_
@@ -149,7 +145,6 @@ module Input = {
     ~spellCheck=false,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
     ~ariaLabel=?,
     ~ariaRoledescription=?,
   ) => {
@@ -174,7 +169,6 @@ module Input = {
         spellCheck
         ?onClick
         ?onKeyDown
-        ?onKeyDownCapture
         ?ariaLabel
         ?ariaRoledescription
         render={<input
@@ -215,7 +209,6 @@ module Content = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
     ~side=Side.Bottom,
     ~sideOffset=6.,
     ~align=Align.Start,
@@ -234,7 +227,6 @@ module Content = {
           ?style
           ?onClick
           ?onKeyDown
-          ?onKeyDownCapture
           ?keepMounted
           ?anchor
           dataSlot="combobox-content"
@@ -255,14 +247,12 @@ module List = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
   ) =>
     <BaseUi.Combobox.List
       ?id
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?children
       dataSlot="combobox-list"
       className={`no-scrollbar max-h-[min(calc(--spacing(72)---spacing(9)),calc(var(--available-height)---spacing(9)))] scroll-py-1 overflow-y-auto overscroll-contain p-1 data-empty:p-0 ${className}`}
@@ -281,7 +271,6 @@ module Item = {
     ~disabled=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
   ) =>
     <BaseUi.Combobox.Item
       ?id
@@ -291,7 +280,6 @@ module Item = {
       ?disabled
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       dataSlot="combobox-item"
       className={`data-highlighted:bg-accent data-highlighted:text-accent-foreground not-data-[variant=destructive]:data-highlighted:**:text-accent-foreground relative flex w-full cursor-default items-center gap-2 rounded-md py-1 pr-8 pl-1.5 text-sm outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 ${className}`}
     >
@@ -321,14 +309,12 @@ module Label = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
   ) =>
     <BaseUi.Combobox.GroupLabel
       ?id
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?children
       dataSlot="combobox-label"
       className={`text-muted-foreground px-2 py-1.5 text-xs ${className}`}
@@ -374,14 +360,12 @@ module Chips = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
   ) =>
     <BaseUi.Combobox.Chips
       ?id
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?children
       dataSlot="combobox-chips"
       className={`dark:bg-input/30 border-input focus-within:border-ring focus-within:ring-ring/50 has-aria-invalid:ring-destructive/20 dark:has-aria-invalid:ring-destructive/40 has-aria-invalid:border-destructive dark:has-aria-invalid:border-destructive/50 flex min-h-8 flex-wrap items-center gap-1 rounded-lg border bg-transparent bg-clip-padding px-2.5 py-1 text-sm transition-colors focus-within:ring-3 has-aria-invalid:ring-3 has-data-[slot=combobox-chip]:px-1 ${className}`}
@@ -397,7 +381,6 @@ module Chip = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
     ~disabled=?,
   ) =>
     <BaseUi.Combobox.Chip
@@ -405,7 +388,6 @@ module Chip = {
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?disabled
       dataSlot="combobox-chip"
       className={`bg-muted text-foreground flex h-[calc(--spacing(5.25))] w-fit items-center justify-center gap-1 rounded-sm px-1.5 text-xs font-medium whitespace-nowrap has-disabled:pointer-events-none has-disabled:cursor-not-allowed has-disabled:opacity-50 has-data-[slot=combobox-chip-remove]:pr-0 ${className}`}
@@ -441,7 +423,6 @@ module ChipsInput = {
     ~spellCheck=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
     ~ariaLabel=?,
     ~ariaRoledescription=?,
   ) =>
@@ -461,7 +442,6 @@ module ChipsInput = {
       ?spellCheck
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?ariaLabel
       ?ariaRoledescription
       ?children

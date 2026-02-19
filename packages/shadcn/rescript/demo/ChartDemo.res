@@ -2,8 +2,6 @@
 
 @@directive("'use client'")
 
-open BaseUi.Types
-
 @send external replaceAll: (string, string, string) => string = "replaceAll"
 @send external toLocaleString: int => string = "toLocaleString"
 
@@ -117,12 +115,8 @@ module TooltipContent = {
 
 @react.component
 let make = () => {
-  let uniqueId = React.useId()
-  let chartId = `chart-${uniqueId->replaceAll(":", "")}`
+  let chartId = `chart-${React.useId()->replaceAll(":", "")}`
   let activeChart = "desktop"
-  let desktopButtonProps = {dataActive: true}
-  let mobileButtonProps = {dataActive: false}
-  let chartProps = {dataSlot: "chart", dataChart: chartId}
   let desktopTotal = 7324
   let mobileTotal = 7250
 
@@ -142,7 +136,7 @@ let make = () => {
       </div>
       <div className="flex">
         <button
-          {...desktopButtonProps}
+          dataActive={true}
           className="data-[active=true]:bg-muted/50 relative z-30 flex flex-1 flex-col justify-center gap-1 border-t px-6 py-4 text-left even:border-l sm:border-t-0 sm:border-l sm:px-8 sm:py-6"
         >
           <span className="text-muted-foreground text-xs"> {"Desktop"->React.string} </span>
@@ -151,7 +145,7 @@ let make = () => {
           </span>
         </button>
         <button
-          {...mobileButtonProps}
+          dataActive={false}
           className="data-[active=true]:bg-muted/50 relative z-30 flex flex-1 flex-col justify-center gap-1 border-t px-6 py-4 text-left even:border-l sm:border-t-0 sm:border-l sm:px-8 sm:py-6"
         >
           <span className="text-muted-foreground text-xs"> {"Mobile"->React.string} </span>
@@ -163,7 +157,8 @@ let make = () => {
     </div>
     <div className="px-2 sm:p-6">
       <div
-        {...chartProps}
+        dataSlot="chart"
+        dataChart={chartId}
         className="[&_.recharts-cartesian-axis-tick_text]:fill-muted-foreground [&_.recharts-cartesian-grid_line[stroke='#ccc']]:stroke-border/50 [&_.recharts-curve.recharts-tooltip-cursor]:stroke-border [&_.recharts-polar-grid_[stroke='#ccc']]:stroke-border [&_.recharts-radial-bar-background-sector]:fill-muted [&_.recharts-rectangle.recharts-tooltip-cursor]:fill-muted [&_.recharts-reference-line_[stroke='#ccc']]:stroke-border flex aspect-video justify-center text-xs [&_.recharts-dot[stroke='#fff']]:stroke-transparent [&_.recharts-layer]:outline-hidden [&_.recharts-sector]:outline-hidden [&_.recharts-sector[stroke='#fff']]:stroke-transparent [&_.recharts-surface]:outline-hidden aspect-auto h-[250px] w-full"
       >
         <style> {chartStyleText(chartId)->React.string} </style>

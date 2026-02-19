@@ -37,7 +37,7 @@ module Elements = {
   A base that the React JSX transform uses is provided via JsxDOM.domProps, 
   but you can make this anything. The editor tooling will support 
   autocompletion etc for your specific type. */
-  type props = Types.props<string, bool>
+  type props = Types.DomProps.t
 
   @module("react/jsx-runtime")
   external jsx: (string, props) => Jsx.element = "jsx"

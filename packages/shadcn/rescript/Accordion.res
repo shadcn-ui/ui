@@ -15,7 +15,6 @@ let make = (
   ~orientation=?,
   ~onClick=?,
   ~onKeyDown=?,
-  ~onKeyDownCapture=?,
   ~style=?,
 ) =>
   <BaseUi.Accordion.Root
@@ -28,7 +27,6 @@ let make = (
     ?orientation
     ?onClick
     ?onKeyDown
-    ?onKeyDownCapture
     ?style
     ?children
     dataSlot="accordion"
@@ -45,7 +43,6 @@ module Item = {
     ~disabled=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
     ~style=?,
   ) =>
     <BaseUi.Accordion.Item
@@ -54,7 +51,6 @@ module Item = {
       ?disabled
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?style
       ?children
       dataSlot="accordion-item"
@@ -71,7 +67,6 @@ module Trigger = {
     ~disabled=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
     ~ariaLabel=?,
     ~render=?,
     ~style=?,
@@ -82,7 +77,6 @@ module Trigger = {
         ?disabled
         ?onClick
         ?onKeyDown
-        ?onKeyDownCapture
         ?ariaLabel
         ?render
         ?style
@@ -111,7 +105,6 @@ module Content = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
     ~keepMounted=?,
   ) =>
     <BaseUi.Accordion.Panel
@@ -119,7 +112,6 @@ module Content = {
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?keepMounted
       dataSlot="accordion-content"
       className={`data-open:animate-accordion-down data-closed:animate-accordion-up overflow-hidden text-sm ${className}`}

@@ -11,7 +11,6 @@ let make = (
   ~style=?,
   ~onClick=?,
   ~onKeyDown=?,
-  ~onKeyDownCapture=?,
   ~value=?,
   ~defaultValue=?,
   ~onValueChange=?,
@@ -22,7 +21,6 @@ let make = (
     ?style
     ?onClick
     ?onKeyDown
-    ?onKeyDownCapture
     ?value
     ?defaultValue
     ?onValueChange
@@ -56,14 +54,12 @@ module List = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
   ) =>
     <BaseUi.NavigationMenu.List
       ?id
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?children
       dataSlot="navigation-menu-list"
       className={`group flex flex-1 list-none items-center justify-center gap-0 ${className}`}
@@ -79,14 +75,12 @@ module Item = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
   ) =>
     <BaseUi.NavigationMenu.Item
       ?id
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?children
       dataSlot="navigation-menu-item"
       className={`relative ${className}`}
@@ -102,7 +96,6 @@ module Trigger = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
     ~disabled=?,
     ~render=?,
     ~nativeButton=?,
@@ -129,7 +122,6 @@ module Trigger = {
         ?style
         ?onClick
         ?onKeyDown
-        ?onKeyDownCapture
         ?disabled
         ?render
         ?nativeButton
@@ -146,7 +138,6 @@ module Trigger = {
         ?style
         ?onClick
         ?onKeyDown
-        ?onKeyDownCapture
         ?disabled
         ?render
         ?nativeButton
@@ -170,7 +161,6 @@ module Content = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
     ~keepMounted=?,
   ) =>
     <BaseUi.NavigationMenu.Content
@@ -178,7 +168,6 @@ module Content = {
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?keepMounted
       ?children
       dataSlot="navigation-menu-content"
@@ -228,7 +217,6 @@ module Link = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
     ~href=?,
     ~target=?,
     ~render=?,
@@ -239,7 +227,6 @@ module Link = {
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?href
       ?target
       ?render

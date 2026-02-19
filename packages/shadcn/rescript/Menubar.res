@@ -10,14 +10,12 @@ let make = (
   ~style=?,
   ~onClick=?,
   ~onKeyDown=?,
-  ~onKeyDownCapture=?,
 ) =>
   <BaseUi.Menubar
     ?id
     ?style
     ?onClick
     ?onKeyDown
-    ?onKeyDownCapture
     ?children
     dataSlot="menubar"
     className={`bg-background flex h-8 items-center gap-0.5 rounded-lg border p-[3px] ${className}`}
@@ -65,7 +63,6 @@ module Trigger = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
     ~disabled=?,
     ~render=?,
     ~nativeButton=?,
@@ -84,7 +81,6 @@ module Trigger = {
         ?style
         ?onClick
         ?onKeyDown
-        ?onKeyDownCapture
         ?disabled
         ?render
         ?nativeButton
@@ -100,7 +96,6 @@ module Trigger = {
         ?style
         ?onClick
         ?onKeyDown
-        ?onKeyDownCapture
         ?disabled
         ?render
         ?nativeButton
@@ -123,7 +118,6 @@ module Content = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
     ~align=Align.Start,
     ~alignOffset=-4.,
     ~side=Side.Bottom,
@@ -138,7 +132,6 @@ module Content = {
           ?style
           ?onClick
           ?onKeyDown
-          ?onKeyDownCapture
           ?children
           dataSlot="menubar-content"
           className={`bg-popover text-popover-foreground data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 ring-foreground/10 data-[side=inline-start]:slide-in-from-right-2 data-[side=inline-end]:slide-in-from-left-2 cn-menu-target min-w-36 rounded-lg p-1 shadow-md ring-1 duration-100 ${className}`}
@@ -156,7 +149,6 @@ module Item = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
     ~disabled=?,
     ~closeOnClick=?,
     ~dataInset=?,
@@ -168,7 +160,6 @@ module Item = {
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?disabled
       ?closeOnClick
       ?dataInset
@@ -195,7 +186,6 @@ module CheckboxItem = {
     ~dataInset=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
   ) =>
     <BaseUi.Menu.CheckboxItem
       ?id
@@ -208,7 +198,6 @@ module CheckboxItem = {
       ?dataInset
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       dataSlot="menubar-checkbox-item"
       className={`focus:bg-accent focus:text-accent-foreground focus:**:text-accent-foreground relative flex cursor-default items-center gap-1.5 rounded-md py-1 pr-1.5 pl-7 text-sm outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 data-inset:pl-7 [&_svg]:pointer-events-none [&_svg]:shrink-0 ${className}`}
     >
@@ -244,7 +233,6 @@ module RadioItem = {
     ~dataInset=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
   ) =>
     <BaseUi.Menu.RadioItem
       ?id
@@ -255,7 +243,6 @@ module RadioItem = {
       ?dataInset
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       dataSlot="menubar-radio-item"
       className={`focus:bg-accent focus:text-accent-foreground focus:**:text-accent-foreground relative flex cursor-default items-center gap-1.5 rounded-md py-1 pr-1.5 pl-7 text-sm outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 data-inset:pl-7 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 ${className}`}
     >
@@ -277,7 +264,6 @@ module Label = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
     ~dataInset=?,
   ) =>
     <BaseUi.Menu.GroupLabel
@@ -285,7 +271,6 @@ module Label = {
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?dataInset
       ?children
       dataSlot="menubar-label"
@@ -333,7 +318,6 @@ module SubTrigger = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
     ~disabled=?,
     ~dataInset=?,
   ) =>
@@ -342,7 +326,6 @@ module SubTrigger = {
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?disabled
       ?dataInset
       dataSlot="menubar-sub-trigger"
@@ -362,7 +345,6 @@ module SubContent = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
     ~align=Align.Start,
     ~alignOffset=-3.,
     ~side=Side.Right,
@@ -377,7 +359,6 @@ module SubContent = {
           ?style
           ?onClick
           ?onKeyDown
-          ?onKeyDownCapture
           ?children
           dataSlot="menubar-sub-content"
           className={`bg-popover text-popover-foreground data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 ring-foreground/10 min-w-32 rounded-lg p-1 shadow-lg ring-1 duration-100 ${className}`}

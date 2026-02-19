@@ -10,7 +10,6 @@ let make = (
   ~style=?,
   ~onClick=?,
   ~onKeyDown=?,
-  ~onKeyDownCapture=?,
   ~dataSize=Size.Default,
 ) => {
   let size = dataSize
@@ -19,7 +18,6 @@ let make = (
     ?style
     ?onClick
     ?onKeyDown
-    ?onKeyDownCapture
     ?children
     dataSlot="avatar"
     dataSize={size}
@@ -38,7 +36,6 @@ module Image = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
   ) =>
     <BaseUi.Avatar.Image
       ?id
@@ -47,7 +44,6 @@ module Image = {
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?children
       dataSlot="avatar-image"
       className={`aspect-square size-full rounded-full object-cover ${className}`}
@@ -63,14 +59,12 @@ module Fallback = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
   ) =>
     <BaseUi.Avatar.Fallback
       ?id
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?children
       dataSlot="avatar-fallback"
       className={`bg-muted text-muted-foreground flex size-full items-center justify-center rounded-full text-sm group-data-[size=sm]/avatar:text-xs ${className}`}

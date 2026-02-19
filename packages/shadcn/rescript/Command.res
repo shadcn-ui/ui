@@ -46,7 +46,6 @@ let make = (
   ~style=?,
   ~onClick=?,
   ~onKeyDown=?,
-  ~onKeyDownCapture=?,
   ~value=?,
   ~defaultValue=?,
   ~onValueChange=?,
@@ -56,7 +55,6 @@ let make = (
     ?style
     ?onClick
     ?onKeyDown
-    ?onKeyDownCapture
     ?value
     ?defaultValue
     ?onValueChange
@@ -123,7 +121,6 @@ module Input = {
     ~onValueChange=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
     ~placeholder=?,
   ) => {
     <div dataSlot="command-input-wrapper" className="p-1 pb-0">
@@ -138,7 +135,6 @@ module Input = {
           ?onValueChange
           ?onClick
           ?onKeyDown
-          ?onKeyDownCapture
           ?placeholder
           ?children
           dataSlot="command-input"
@@ -161,14 +157,12 @@ module List = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
   ) =>
     <CommandPrimitive.List
       ?id
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       dataSlot="command-list"
       className={`no-scrollbar max-h-72 scroll-py-1 overflow-x-hidden overflow-y-auto outline-none ${className}`}
      ?children />
@@ -218,7 +212,6 @@ module Item = {
     ~disabled=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
   ) =>
     <CommandPrimitive.Item
       ?id
@@ -228,7 +221,6 @@ module Item = {
       ?disabled
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       dataSlot="command-item"
       className={`data-selected:bg-muted data-selected:text-foreground data-selected:*:[svg]:text-foreground group/command-item relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none in-data-[slot=dialog-content]:rounded-lg! data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 ${className}`}
     >
@@ -248,7 +240,6 @@ module Shortcut = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
   ) =>
     <span
       ?id
@@ -256,7 +247,6 @@ module Shortcut = {
       ?children
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       dataSlot="command-shortcut"
       className={`text-muted-foreground group-data-selected/command-item:text-foreground ml-auto text-xs tracking-widest ${className}`}
     />

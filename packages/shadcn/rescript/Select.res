@@ -51,14 +51,12 @@ module Group = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
   ) =>
     <BaseUi.Select.Group
       ?id
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?children
       dataSlot="select-group"
       className={`scroll-my-1 p-1 ${className}`}
@@ -87,7 +85,6 @@ module Trigger = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
     ~disabled=?,
     ~render=?,
     ~nativeButton=?,
@@ -119,7 +116,6 @@ module Trigger = {
         ?style
         ?onClick
         ?onKeyDown
-        ?onKeyDownCapture
         ?disabled
         ?render
         ?nativeButton
@@ -137,7 +133,6 @@ module Trigger = {
         ?style
         ?onClick
         ?onKeyDown
-        ?onKeyDownCapture
         ?disabled
         ?render
         ?nativeButton
@@ -162,7 +157,6 @@ module Content = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
     ~side=Side.Bottom,
     ~sideOffset=4.,
     ~align=Align.Center,
@@ -179,7 +173,6 @@ module Content = {
           ?style
           ?onClick
           ?onKeyDown
-          ?onKeyDownCapture
           dataSlot="select-content"
           dataAlignTrigger={alignItemWithTrigger}
           className={`bg-popover text-popover-foreground data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 ring-foreground/10 data-[side=inline-start]:slide-in-from-right-2 data-[side=inline-end]:slide-in-from-left-2 cn-menu-target relative isolate z-50 max-h-(--available-height) w-(--anchor-width) min-w-36 origin-(--transform-origin) overflow-x-hidden overflow-y-auto rounded-lg shadow-md ring-1 duration-100 data-[align-trigger=true]:animate-none ${className}`}
@@ -212,14 +205,12 @@ module Label = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
   ) =>
     <BaseUi.Select.GroupLabel
       ?id
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?children
       dataSlot="select-label"
       className={`text-muted-foreground px-1.5 py-1 text-xs ${className}`}
@@ -235,7 +226,6 @@ module Item = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
     ~disabled=?,
     ~value=?,
     ~label=?,
@@ -245,7 +235,6 @@ module Item = {
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?disabled
       ?value
       ?label
@@ -265,13 +254,12 @@ module Item = {
 
 module Separator = {
   @react.component
-  let make = (~className="", ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?, ~onKeyDownCapture=?) =>
+  let make = (~className="", ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <BaseUi.Select.Separator
       ?id
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       dataSlot="select-separator"
       className={`bg-border pointer-events-none -mx-1 my-1 h-px ${className}`}
     />
@@ -286,14 +274,12 @@ module ScrollUpButton = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
   ) =>
     <BaseUi.Select.ScrollUpArrow
       ?id
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       dataSlot="select-scroll-up-button"
       className={`bg-popover top-0 z-10 flex w-full cursor-default items-center justify-center py-1 [&_svg:not([class*='size-'])]:size-4 ${className}`}
     >
@@ -310,14 +296,12 @@ module ScrollDownButton = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
   ) =>
     <BaseUi.Select.ScrollDownArrow
       ?id
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       dataSlot="select-scroll-down-button"
       className={`bg-popover bottom-0 z-10 flex w-full cursor-default items-center justify-center py-1 [&_svg:not([class*='size-'])]:size-4 ${className}`}
     >

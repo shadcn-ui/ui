@@ -3,46 +3,21 @@
 open BaseUi.Types
 
 @react.component
-let make = (
-  ~className="",
-  ~children=?,
-  ~id=?,
-  ~style=?,
-  ~onClick=?,
-  ~onKeyDown=?,
-  ~onKeyDownCapture=?,
-) => {
+let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) => {
   <nav
-    ?id
-    ?style
-    ?children
-    ?onClick
-    ?onKeyDown
-    ?onKeyDownCapture
-    ariaLabel="breadcrumb"
-    dataSlot="breadcrumb"
-    className
+    ?id ?style ?children ?onClick ?onKeyDown ariaLabel="breadcrumb" dataSlot="breadcrumb" className
   />
 }
 
 module List = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-    ~onKeyDownCapture=?,
-  ) =>
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <ol
       ?id
       ?style
       ?children
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       dataSlot="breadcrumb-list"
       className={`text-muted-foreground flex flex-wrap items-center gap-1.5 text-sm wrap-break-word ${className}`}
     />
@@ -50,22 +25,13 @@ module List = {
 
 module Item = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-    ~onKeyDownCapture=?,
-  ) =>
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <li
       ?id
       ?style
       ?children
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       dataSlot="breadcrumb-item"
       className={`inline-flex items-center gap-1 ${className}`}
     />
@@ -82,7 +48,6 @@ module Link = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
     ~render=?,
   ) => {
     BaseUi.Render.use({
@@ -94,7 +59,6 @@ module Link = {
         ?children,
         ?onClick,
         ?onKeyDown,
-        ?onKeyDownCapture,
         ?href,
         ?target,
         render: React.null,
@@ -107,23 +71,14 @@ module Link = {
 
 module Page = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-    ~onKeyDownCapture=?,
-  ) =>
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <span
       ?id
       ?style
       ?children
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
-      ariaCurrent="page"
+      ariaCurrent=#page
       ariaDisabled=true
       role="link"
       dataSlot="breadcrumb-page"
@@ -133,15 +88,7 @@ module Page = {
 
 module Separator = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-    ~onKeyDownCapture=?,
-  ) => {
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) => {
     let content = switch children {
     | Some(content) => content
     | None => <Icons.ChevronRight className="cn-rtl-flip" />
@@ -151,7 +98,6 @@ module Separator = {
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ariaHidden=true
       role="presentation"
       dataSlot="breadcrumb-separator"
@@ -164,13 +110,12 @@ module Separator = {
 
 module Ellipsis = {
   @react.component
-  let make = (~className="", ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?, ~onKeyDownCapture=?) =>
+  let make = (~className="", ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <span
       ?id
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ariaHidden=true
       role="presentation"
       dataSlot="breadcrumb-ellipsis"

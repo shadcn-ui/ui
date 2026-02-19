@@ -39,7 +39,6 @@ let make = (
   ~multiple=?,
   ~onClick=?,
   ~onKeyDown=?,
-  ~onKeyDownCapture=?,
   ~tabIndex=?,
   ~ariaLabel=?,
 ) => {
@@ -62,7 +61,6 @@ let make = (
     ?multiple
     ?onClick
     ?onKeyDown
-    ?onKeyDownCapture
     ?tabIndex
     ?ariaLabel
   >
@@ -90,7 +88,6 @@ module Item = {
     ~readOnly=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
     ~tabIndex=?,
     ~ariaLabel=?,
     ~type_=?,
@@ -122,7 +119,6 @@ module Item = {
       ?readOnly
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?tabIndex
       ?ariaLabel
       ?type_

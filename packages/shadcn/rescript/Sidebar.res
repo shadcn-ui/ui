@@ -66,7 +66,6 @@ let make = (
   ~style=?,
   ~onClick=?,
   ~onKeyDown=?,
-  ~onKeyDownCapture=?,
 ) => {
   dataCollapsible == "none"
     ? {
@@ -75,7 +74,6 @@ let make = (
           ?style
           ?onClick
           ?onKeyDown
-          ?onKeyDownCapture
           ?children
           dataSlot="sidebar"
           ?dataVariant
@@ -91,7 +89,6 @@ let make = (
           ?style
           ?onClick
           ?onKeyDown
-          ?onKeyDownCapture
           dataState={sidebar.state}
           dataCollapsible={collapsibleState}
           dataSide={side}
@@ -128,7 +125,6 @@ module Provider = {
     ~id=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
     ~style=?,
   ) => {
     let style = switch style {
@@ -143,7 +139,6 @@ module Provider = {
       ?id
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?children
       style
       dataSlot="sidebar-wrapper"
@@ -222,14 +217,12 @@ module Inset = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
   ) =>
     <main
       ?id
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?children
       dataSlot="sidebar-inset"
       className={`bg-background relative flex w-full flex-1 flex-col md:peer-data-[variant=inset]:m-2 md:peer-data-[variant=inset]:ml-0 md:peer-data-[variant=inset]:rounded-xl md:peer-data-[variant=inset]:shadow-sm md:peer-data-[variant=inset]:peer-data-[state=collapsed]:ml-2 ${className}`}
@@ -256,7 +249,6 @@ module Input = {
     ~spellCheck=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
     ~ariaLabel=?,
     ~ariaRoledescription=?,
   ) =>
@@ -276,7 +268,6 @@ module Input = {
       ?spellCheck
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?ariaLabel
       ?ariaRoledescription
       ?children
@@ -295,14 +286,12 @@ module Header = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
   ) =>
     <div
       ?id
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?children
       dataSlot="sidebar-header"
       dataSidebar="header"
@@ -319,14 +308,12 @@ module Footer = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
   ) =>
     <div
       ?id
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?children
       dataSlot="sidebar-footer"
       dataSidebar="footer"
@@ -343,14 +330,12 @@ module Separator = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
   ) =>
     <BaseUi.Separator
       ?id
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?children
       dataSlot="sidebar-separator"
       dataSidebar="separator"
@@ -367,14 +352,12 @@ module Content = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
   ) =>
     <div
       ?id
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?children
       dataSlot="sidebar-content"
       dataSidebar="content"
@@ -391,14 +374,12 @@ module Group = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
   ) =>
     <div
       ?id
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?children
       dataSlot="sidebar-group"
       dataSidebar="group"
@@ -415,14 +396,12 @@ module GroupLabel = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
   ) =>
     <div
       ?id
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?children
       dataSlot="sidebar-group-label"
       dataSidebar="group-label"
@@ -455,14 +434,12 @@ module GroupContent = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
   ) =>
     <div
       ?id
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?children
       dataSlot="sidebar-group-content"
       dataSidebar="group-content"
@@ -479,14 +456,12 @@ module Menu = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
   ) =>
     <ul
       ?id
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?children
       dataSlot="sidebar-menu"
       dataSidebar="menu"
@@ -503,14 +478,12 @@ module MenuItem = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
   ) =>
     <li
       ?id
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?children
       dataSlot="sidebar-menu-item"
       dataSidebar="menu-item"
@@ -582,14 +555,12 @@ module MenuBadge = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
   ) =>
     <div
       ?id
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?children
       dataSlot="sidebar-menu-badge"
       dataSidebar="menu-badge"
@@ -606,14 +577,12 @@ module MenuSkeleton = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
   ) => {
     <div
       ?id
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       dataSlot="sidebar-menu-skeleton"
       dataSidebar="menu-skeleton"
       className={`flex h-8 items-center gap-2 rounded-md px-2 ${className}`}
@@ -634,14 +603,12 @@ module MenuSub = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
   ) =>
     <ul
       ?id
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?children
       dataSlot="sidebar-menu-sub"
       dataSidebar="menu-sub"
@@ -658,14 +625,12 @@ module MenuSubItem = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
   ) =>
     <li
       ?id
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?children
       dataSlot="sidebar-menu-sub-item"
       dataSidebar="menu-sub-item"
@@ -682,7 +647,6 @@ module MenuSubButton = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
     ~href=?,
     ~target=?,
     ~render=?,
@@ -696,7 +660,6 @@ module MenuSubButton = {
       ?style,
       ?onClick,
       ?onKeyDown,
-      ?onKeyDownCapture,
       ?href,
       ?target,
       render: React.null,

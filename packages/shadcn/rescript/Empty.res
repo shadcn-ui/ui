@@ -24,22 +24,13 @@ let emptyMediaVariants = (~variant=Variant.Default) => {
 }
 
 @react.component
-let make = (
-  ~className="",
-  ~children=?,
-  ~id=?,
-  ~style=?,
-  ~onClick=?,
-  ~onKeyDown=?,
-  ~onKeyDownCapture=?,
-) => {
+let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) => {
   <div
     ?id
     ?children
     ?style
     ?onClick
     ?onKeyDown
-    ?onKeyDownCapture
     dataSlot="empty"
     className={`flex w-full min-w-0 flex-1 flex-col items-center justify-center gap-4 rounded-xl border-dashed p-6 text-center text-balance ${className}`}
   />
@@ -47,22 +38,13 @@ let make = (
 
 module Header = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-    ~onKeyDownCapture=?,
-  ) =>
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <div
       ?id
       ?children
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       dataSlot="empty-header"
       className={`flex max-w-sm flex-col items-center gap-2 ${className}`}
     />
@@ -77,7 +59,6 @@ module Media = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
     ~dataVariant=Variant.Default,
   ) => {
     let variant = dataVariant
@@ -87,7 +68,6 @@ module Media = {
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       dataSlot="empty-icon"
       dataVariant={variant}
       className={`${emptyMediaVariants(~variant)} ${className}`}
@@ -97,22 +77,13 @@ module Media = {
 
 module Title = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-    ~onKeyDownCapture=?,
-  ) =>
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <div
       ?id
       ?children
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       dataSlot="empty-title"
       className={`text-sm font-medium tracking-tight ${className}`}
     />
@@ -120,22 +91,13 @@ module Title = {
 
 module Description = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-    ~onKeyDownCapture=?,
-  ) =>
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <div
       ?id
       ?children
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       dataSlot="empty-description"
       className={`text-muted-foreground [&>a:hover]:text-primary text-sm/relaxed [&>a]:underline [&>a]:underline-offset-4 ${className}`}
     />
@@ -143,22 +105,13 @@ module Description = {
 
 module Content = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-    ~onKeyDownCapture=?,
-  ) =>
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <div
       ?id
       ?children
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       dataSlot="empty-content"
       className={`flex w-full max-w-sm min-w-0 flex-col items-center gap-2.5 text-sm text-balance ${className}`}
     />

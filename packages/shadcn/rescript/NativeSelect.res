@@ -14,7 +14,6 @@ let make = (
   ~required=?,
   ~onClick=?,
   ~onKeyDown=?,
-  ~onKeyDownCapture=?,
   ~tabIndex=?,
   ~ariaLabel=?,
   ~style=?,
@@ -26,7 +25,6 @@ let make = (
     ?style
     ?onClick
     ?onKeyDown
-    ?onKeyDownCapture
     dataSlot="native-select-wrapper"
     dataSize={size}
     className={`group/native-select relative w-fit has-[select:disabled]:opacity-50 ${className}`}
@@ -40,7 +38,6 @@ let make = (
       ?required
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?tabIndex
       ?ariaLabel
       ?style
@@ -67,7 +64,6 @@ module Option = {
     ~disabled=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
     ~style=?,
   ) =>
     <option
@@ -76,7 +72,6 @@ module Option = {
       ?disabled
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?style
       ?children
       ?className

@@ -15,7 +15,6 @@ let make = (
   ~onValueChange=?,
   ~onClick=?,
   ~onKeyDown=?,
-  ~onKeyDownCapture=?,
   ~type_=?,
   ~ariaLabel=?,
   ~maxLength=?,
@@ -36,7 +35,6 @@ let make = (
     ?onValueChange
     ?onClick
     ?onKeyDown
-    ?onKeyDownCapture
     ?type_
     ?ariaLabel
     ?maxLength

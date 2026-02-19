@@ -10,7 +10,6 @@ let make = (
   ~style=?,
   ~onClick=?,
   ~onKeyDown=?,
-  ~onKeyDownCapture=?,
   ~tabIndex=?,
   ~ariaLabel=?,
   ~orientation=?,
@@ -20,7 +19,6 @@ let make = (
     ?style
     ?onClick
     ?onKeyDown
-    ?onKeyDownCapture
     ?tabIndex
     ?ariaLabel
     ?orientation
@@ -52,7 +50,6 @@ module ScrollBar = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
     ~orientation=Orientation.Vertical,
   ) =>
     <BaseUi.ScrollArea.Scrollbar
@@ -60,7 +57,6 @@ module ScrollBar = {
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       dataSlot="scroll-area-scrollbar"
       orientation
       className={`flex touch-none p-px transition-colors select-none data-horizontal:h-2.5 data-horizontal:flex-col data-horizontal:border-t data-horizontal:border-t-transparent data-vertical:h-full data-vertical:w-2.5 data-vertical:border-l data-vertical:border-l-transparent ${className}`}

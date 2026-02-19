@@ -26,7 +26,6 @@ module Trigger = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
     ~disabled=?,
     ~render=?,
     ~nativeButton=?,
@@ -38,7 +37,6 @@ module Trigger = {
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?disabled
       ?render
       ?nativeButton
@@ -59,7 +57,6 @@ module Close = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
     ~disabled=?,
     ~render=?,
     ~nativeButton=?,
@@ -71,7 +68,6 @@ module Close = {
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?disabled
       ?render
       ?nativeButton
@@ -97,7 +93,6 @@ module Overlay = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
     ~keepMounted=?,
   ) =>
     <BaseUi.Dialog.Backdrop
@@ -105,7 +100,6 @@ module Overlay = {
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?keepMounted
       dataSlot="sheet-overlay"
       className={`data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 fixed inset-0 z-50 bg-black/10 duration-100 data-ending-style:opacity-0 data-starting-style:opacity-0 supports-backdrop-filter:backdrop-blur-xs ${className}`}
@@ -131,7 +125,6 @@ module Content = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
     ~side=Side.Right,
     ~showCloseButton=true,
     ~keepMounted=?,
@@ -143,7 +136,6 @@ module Content = {
         ?style
         ?onClick
         ?onKeyDown
-        ?onKeyDownCapture
         ?keepMounted
         dataSlot="sheet-content"
         dataSide={sideToString(side)}
@@ -172,7 +164,6 @@ module Header = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
   ) =>
     <div
       ?id
@@ -180,7 +171,6 @@ module Header = {
       ?children
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       dataSlot="sheet-header"
       className={`flex flex-col gap-0.5 p-4 ${className}`}
     />
@@ -195,7 +185,6 @@ module Footer = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
   ) =>
     <div
       ?id
@@ -203,7 +192,6 @@ module Footer = {
       ?children
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       dataSlot="sheet-footer"
       className={`mt-auto flex flex-col gap-2 p-4 ${className}`}
     />
@@ -218,14 +206,12 @@ module Title = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
   ) =>
     <BaseUi.Dialog.Title
       ?id
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?children
       dataSlot="sheet-title"
       className={`text-foreground text-base font-medium ${className}`}
@@ -241,14 +227,12 @@ module Description = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
   ) =>
     <BaseUi.Dialog.Description
       ?id
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?children
       dataSlot="sheet-description"
       className={`text-muted-foreground text-sm ${className}`}

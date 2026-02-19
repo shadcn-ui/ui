@@ -48,7 +48,6 @@ let make = (
   ~onCheckedChange=?,
   ~onClick=?,
   ~onKeyDown=?,
-  ~onKeyDownCapture=?,
   ~tabIndex=?,
   ~ariaLabel=?,
   ~type_=?,
@@ -67,7 +66,6 @@ let make = (
     ?onCheckedChange
     ?onClick
     ?onKeyDown
-    ?onKeyDownCapture
     ?tabIndex
     ?ariaLabel
     ?type_

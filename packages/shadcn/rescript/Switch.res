@@ -16,7 +16,6 @@ let make = (
   ~readOnly=?,
   ~onClick=?,
   ~onKeyDown=?,
-  ~onKeyDownCapture=?,
   ~tabIndex=?,
   ~ariaLabel=?,
   ~style=?,
@@ -35,7 +34,6 @@ let make = (
     ?readOnly
     ?onClick
     ?onKeyDown
-    ?onKeyDownCapture
     ?tabIndex
     ?ariaLabel
     ?style

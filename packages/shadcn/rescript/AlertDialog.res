@@ -19,7 +19,6 @@ module Trigger = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
     ~disabled=?,
     ~render=?,
     ~nativeButton=?,
@@ -31,7 +30,6 @@ module Trigger = {
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?disabled
       ?render
       ?nativeButton
@@ -57,7 +55,6 @@ module Overlay = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
     ~keepMounted=?,
   ) =>
     <BaseUi.AlertDialog.Backdrop
@@ -65,7 +62,6 @@ module Overlay = {
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?keepMounted
       dataSlot="alert-dialog-overlay"
       className={`data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 fixed inset-0 isolate z-50 bg-black/10 duration-100 supports-backdrop-filter:backdrop-blur-xs ${className}`}
@@ -81,7 +77,6 @@ module Content = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
     ~keepMounted=?,
     ~dataSize=Size.Default,
   ) => {
@@ -93,7 +88,6 @@ module Content = {
         ?style
         ?onClick
         ?onKeyDown
-        ?onKeyDownCapture
         ?keepMounted
         ?children
         dataSlot="alert-dialog-content"
@@ -113,7 +107,6 @@ module Header = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
   ) =>
     <div
       ?id
@@ -121,7 +114,6 @@ module Header = {
       ?children
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       dataSlot="alert-dialog-header"
       className={`grid grid-rows-[auto_1fr] place-items-center gap-1.5 text-center has-data-[slot=alert-dialog-media]:grid-rows-[auto_auto_1fr] has-data-[slot=alert-dialog-media]:gap-x-4 sm:group-data-[size=default]/alert-dialog-content:place-items-start sm:group-data-[size=default]/alert-dialog-content:text-left sm:group-data-[size=default]/alert-dialog-content:has-data-[slot=alert-dialog-media]:grid-rows-[auto_1fr] ${className}`}
     />
@@ -136,7 +128,6 @@ module Footer = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
   ) =>
     <div
       ?id
@@ -144,7 +135,6 @@ module Footer = {
       ?children
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       dataSlot="alert-dialog-footer"
       className={`bg-muted/50 -mx-4 -mb-4 flex flex-col-reverse gap-2 rounded-b-xl border-t p-4 group-data-[size=sm]/alert-dialog-content:grid group-data-[size=sm]/alert-dialog-content:grid-cols-2 sm:flex-row sm:justify-end ${className}`}
     />
@@ -159,7 +149,6 @@ module Media = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
   ) =>
     <div
       ?id
@@ -167,7 +156,6 @@ module Media = {
       ?children
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       dataSlot="alert-dialog-media"
       className={`bg-muted mb-2 inline-flex size-10 items-center justify-center rounded-md sm:group-data-[size=default]/alert-dialog-content:row-span-2 *:[svg:not([class*='size-'])]:size-6 ${className}`}
     />
@@ -182,14 +170,12 @@ module Title = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
   ) =>
     <BaseUi.AlertDialog.Title
       ?id
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?children
       dataSlot="alert-dialog-title"
       className={`text-base font-medium sm:group-data-[size=default]/alert-dialog-content:group-has-data-[slot=alert-dialog-media]/alert-dialog-content:col-start-2 ${className}`}
@@ -205,14 +191,12 @@ module Description = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
   ) =>
     <BaseUi.AlertDialog.Description
       ?id
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?children
       dataSlot="alert-dialog-description"
       className={`text-muted-foreground *:[a]:hover:text-foreground text-sm text-balance md:text-pretty *:[a]:underline *:[a]:underline-offset-3 ${className}`}
@@ -257,7 +241,6 @@ module Cancel = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
     ~disabled=?,
     ~render=?,
     ~nativeButton=?,
@@ -273,7 +256,6 @@ module Cancel = {
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?disabled
       ?nativeButton
       ?type_

@@ -34,7 +34,6 @@ module Trigger = {
     ~disabled=false,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
     ~ariaLabel=?,
     ~render=?,
     ~style=?,
@@ -46,9 +45,7 @@ module Trigger = {
       disabled
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?ariaLabel
-      ariaDisabled={disabled}
       ?render
       ?style
       dataSlot="collapsible-trigger"
@@ -66,7 +63,6 @@ module Content = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
   ) =>
     <BaseUi.Collapsible.Panel
       ?className
@@ -76,7 +72,6 @@ module Content = {
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       dataSlot="collapsible-content"
     />
 }

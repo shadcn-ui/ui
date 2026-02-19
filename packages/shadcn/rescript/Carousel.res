@@ -60,7 +60,7 @@ let make = (~className="", ~children=?, ~dataOrientation=DataOrientation.Horizon
     | Some(api) => api->scrollNextApi
     | None => ()
     }
-  React.useEffect1(() => {
+  React.useEffect(() => {
     switch api {
     | Some(api) =>
       onSelect(api)
@@ -102,7 +102,6 @@ module Content = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
   ) => {
     let {carouselRef, orientation} = useCarousel()
     <div dataSlot="carousel-content" ref={carouselRef} className="overflow-hidden">
@@ -111,7 +110,6 @@ module Content = {
         ?style
         ?onClick
         ?onKeyDown
-        ?onKeyDownCapture
         ?children
         className={`flex ${orientation == DataOrientation.Horizontal
             ? "-ml-4"
@@ -130,7 +128,6 @@ module Item = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
   ) => {
     let {orientation} = useCarousel()
     <div
@@ -138,7 +135,6 @@ module Item = {
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?children
       role="group"
       ariaRoledescription="slide"

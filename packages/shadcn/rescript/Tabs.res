@@ -33,7 +33,6 @@ let make = (
   ~disabled=?,
   ~onClick=?,
   ~onKeyDown=?,
-  ~onKeyDownCapture=?,
   ~style=?,
 ) =>
   <BaseUi.Tabs.Root
@@ -44,7 +43,6 @@ let make = (
     ?disabled
     ?onClick
     ?onKeyDown
-    ?onKeyDownCapture
     ?style
     ?children
     orientation
@@ -61,7 +59,6 @@ module List = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
     ~dataVariant=Variant.Default,
   ) => {
     let variant = dataVariant
@@ -70,7 +67,6 @@ module List = {
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?children
       dataSlot="tabs-list"
       dataVariant={variant}
@@ -89,7 +85,6 @@ module Trigger = {
     ~disabled=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
     ~ariaLabel=?,
     ~style=?,
   ) =>
@@ -99,7 +94,6 @@ module Trigger = {
       ?disabled
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?ariaLabel
       ?style
       ?children
@@ -117,7 +111,6 @@ module Content = {
     ~value=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
     ~style=?,
   ) =>
     <BaseUi.Tabs.Panel
@@ -125,7 +118,6 @@ module Content = {
       ?value
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?style
       ?children
       dataSlot="tabs-content"

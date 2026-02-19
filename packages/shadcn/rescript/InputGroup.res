@@ -43,7 +43,6 @@ let make = (
   ~style=?,
   ~onClick=?,
   ~onKeyDown=?,
-  ~onKeyDownCapture=?,
   ~disabled=?,
   ~dataDisabled=?,
 ) => {
@@ -53,7 +52,6 @@ let make = (
     ?style
     ?onClick
     ?onKeyDown
-    ?onKeyDownCapture
     ?disabled
     ?dataDisabled
     dataSlot="input-group"
@@ -71,7 +69,6 @@ module Addon = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
     ~dataAlign=DataAlign.InlineStart,
   ) => {
     let align = dataAlign
@@ -81,7 +78,6 @@ module Addon = {
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       dataSlot="input-group-addon"
       dataAlign={align}
       role="group"
@@ -99,7 +95,6 @@ module Button = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
     ~disabled=?,
     ~type_="button",
     ~dataSize=Size.Xs,
@@ -113,7 +108,6 @@ module Button = {
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?disabled
       type_
       dataSize={size}
@@ -125,22 +119,13 @@ module Button = {
 
 module Text = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-    ~onKeyDownCapture=?,
-  ) =>
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
     <span
       ?id
       ?children
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       className={`text-muted-foreground flex items-center gap-2 text-sm [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 ${className}`}
     />
 }
@@ -165,7 +150,6 @@ module Input = {
     ~spellCheck=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
     ~ariaLabel=?,
     ~ariaRoledescription=?,
   ) =>
@@ -185,7 +169,6 @@ module Input = {
       ?style
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       ?ariaLabel
       ?ariaRoledescription
       ?children
@@ -212,7 +195,6 @@ module Textarea = {
     ~spellCheck=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~onKeyDownCapture=?,
   ) =>
     <textarea
       ?id
@@ -229,7 +211,6 @@ module Textarea = {
       ?spellCheck
       ?onClick
       ?onKeyDown
-      ?onKeyDownCapture
       dataSlot="input-group-control"
       className={`border-input dark:bg-input/30 focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 disabled:bg-input/50 dark:disabled:bg-input/80 placeholder:text-muted-foreground flex field-sizing-content min-h-16 w-full rounded-lg border bg-transparent px-2.5 py-2 text-base transition-colors outline-none focus-visible:ring-3 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:ring-3 md:text-sm flex-1 resize-none rounded-none border-0 bg-transparent py-2 shadow-none ring-0 focus-visible:ring-0 disabled:bg-transparent aria-invalid:ring-0 dark:bg-transparent dark:disabled:bg-transparent ${className}`}
     />
