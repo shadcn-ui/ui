@@ -1,5 +1,7 @@
 @@directive("'use client'")
 
+@@jsxConfig({version: 4, mode: "automatic", module_: "BaseUi.BaseUiJsxDOM"})
+
 open BaseUi.Types
 
 @react.component
@@ -77,12 +79,13 @@ module Content = {
 
 module Header = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?, ~dataSlot) =>
     <div
       ?id
       ?style
       ?onClick
       ?onKeyDown
+      dataSlot
       className={`flex flex-col gap-0.5 text-sm ${className}`}
       ?children
     />
@@ -97,15 +100,10 @@ module Title = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
+    ~dataSlot="popover-title",
   ) =>
     <BaseUi.Popover.Title
-      ?id
-      ?style
-      ?onClick
-      ?onKeyDown
-      ?children
-      dataSlot="popover-title"
-      className={`font-medium ${className}`}
+      ?id ?style ?onClick ?onKeyDown ?children dataSlot className={`font-medium ${className}`}
     />
 }
 
@@ -118,6 +116,7 @@ module Description = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
+    ~dataSlot="popover-description",
   ) =>
     <BaseUi.Popover.Description
       ?id
@@ -125,7 +124,7 @@ module Description = {
       ?onClick
       ?onKeyDown
       ?children
-      dataSlot="popover-description"
+      dataSlot
       className={`text-muted-foreground ${className}`}
     />
 }

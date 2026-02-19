@@ -146,6 +146,8 @@ module Input = {
     ~onKeyDown=?,
     ~ariaLabel=?,
     ~ariaRoledescription=?,
+    ~showTrigger=true,
+    ~showClear=false,
   ) => {
     <div
       dataSlot="input-group"
@@ -184,15 +186,18 @@ module Input = {
         role="group"
         className="[&>kbd]:rounded-[calc(var(--radius)-5px)] [&>svg:not([class*='size-'])]:size-4 cursor-text flex font-medium gap-2 group-data-[disabled=true]/input-group:opacity-50 h-auto has-[>button]:mr-[-0.3rem] has-[>kbd]:mr-[-0.15rem] items-center justify-center order-last pr-2 py-1.5 select-none text-muted-foreground text-sm"
       >
-        <BaseUi.Combobox.Trigger
-          dataSize=IconXs
-          dataSlot="input-group-button"
-          tabIndex={0}
-          disabled
-          className="[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0 aria-expanded:bg-muted aria-expanded:text-foreground aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 bg-clip-padding border border-transparent dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 dark:hover:bg-muted/50 data-pressed:bg-transparent disabled:opacity-50 disabled:pointer-events-none flex focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 font-medium gap-2 group-has-data-[slot=combobox-clear]/input-group:hidden group/button has-[>svg]:p-0 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2 hover:bg-muted hover:text-foreground items-center justify-center outline-none p-0 rounded-[calc(var(--radius)-3px)] select-none shadow-none shrink-0 size-6 text-sm transition-all whitespace-nowrap"
-        >
-          <Icons.ChevronDown className="text-muted-foreground pointer-events-none size-4" />
-        </BaseUi.Combobox.Trigger>
+        {showTrigger
+          ? <BaseUi.Combobox.Trigger
+              dataSize=IconXs
+              dataSlot="input-group-button"
+              tabIndex={0}
+              disabled
+              className="[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0 aria-expanded:bg-muted aria-expanded:text-foreground aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 bg-clip-padding border border-transparent dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 dark:hover:bg-muted/50 data-pressed:bg-transparent disabled:opacity-50 disabled:pointer-events-none flex focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 font-medium gap-2 group-has-data-[slot=combobox-clear]/input-group:hidden group/button has-[>svg]:p-0 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2 hover:bg-muted hover:text-foreground items-center justify-center outline-none p-0 rounded-[calc(var(--radius)-3px)] select-none shadow-none shrink-0 size-6 text-sm transition-all whitespace-nowrap"
+            >
+              <Icons.ChevronDown className="text-muted-foreground pointer-events-none size-4" />
+            </BaseUi.Combobox.Trigger>
+          : React.null}
+        {showClear ? <Clear disabled /> : React.null}
       </div>
       {children}
     </div>
@@ -356,6 +361,7 @@ module Chip = {
   let make = (
     ~className="",
     ~children=React.null,
+    ~showRemove=true,
     ~id=?,
     ~style=?,
     ~onClick=?,
@@ -372,13 +378,15 @@ module Chip = {
       className={`bg-muted text-foreground flex h-[calc(--spacing(5.25))] w-fit items-center justify-center gap-1 rounded-sm px-1.5 text-xs font-medium whitespace-nowrap has-disabled:pointer-events-none has-disabled:cursor-not-allowed has-disabled:opacity-50 has-data-[slot=combobox-chip-remove]:pr-0 ${className}`}
     >
       {children}
-      <BaseUi.Combobox.ChipRemove
-        render={<Button variant=Ghost size=IconXs>
-          <Icons.X className="pointer-events-none" />
-        </Button>}
-        className="-ml-1 opacity-50 hover:opacity-100"
-        dataSlot="combobox-chip-remove"
-      />
+      {showRemove
+        ? <BaseUi.Combobox.ChipRemove
+            render={<Button variant=Ghost size=IconXs>
+              <Icons.X className="pointer-events-none" />
+            </Button>}
+            className="-ml-1 opacity-50 hover:opacity-100"
+            dataSlot="combobox-chip-remove"
+          />
+        : React.null}
     </BaseUi.Combobox.Chip>
 }
 

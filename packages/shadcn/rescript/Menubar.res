@@ -1,16 +1,11 @@
 @@directive("'use client'")
 
+@@jsxConfig({version: 4, mode: "automatic", module_: "BaseUi.BaseUiJsxDOM"})
+
 open BaseUi.Types
 
 @react.component
-let make = (
-  ~className="",
-  ~children=?,
-  ~id=?,
-  ~style=?,
-  ~onClick=?,
-  ~onKeyDown=?,
-) =>
+let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
   <BaseUi.Menubar
     ?id
     ?style
@@ -205,7 +200,7 @@ module CheckboxItem = {
         className="pointer-events-none absolute left-1.5 flex size-4 items-center justify-center [&_svg:not([class*='size-'])]:size-4"
       >
         <BaseUi.Menu.CheckboxItemIndicator>
-          {"✓"->React.string}
+          <Icons.Check />
         </BaseUi.Menu.CheckboxItemIndicator>
       </span>
       {children}
@@ -249,7 +244,9 @@ module RadioItem = {
       <span
         className="pointer-events-none absolute left-1.5 flex size-4 items-center justify-center [&_svg:not([class*='size-'])]:size-4"
       >
-        <BaseUi.Menu.RadioItemIndicator> {"✓"->React.string} </BaseUi.Menu.RadioItemIndicator>
+        <BaseUi.Menu.RadioItemIndicator>
+          <Icons.Check />
+        </BaseUi.Menu.RadioItemIndicator>
       </span>
       {children}
     </BaseUi.Menu.RadioItem>
@@ -292,12 +289,21 @@ module Separator = {
 
 module Shortcut = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
+  let make = (
+    ~className="",
+    ~children=?,
+    ~id=?,
+    ~style=?,
+    ~onClick=?,
+    ~onKeyDown=?,
+    ~dataSlot="menubar-shortcut",
+  ) =>
     <span
       ?id
       ?style
       ?onClick
       ?onKeyDown
+      dataSlot
       className={`text-muted-foreground group-focus/menubar-item:text-accent-foreground ml-auto text-xs tracking-widest ${className}`}
       ?children
     />
@@ -332,7 +338,7 @@ module SubTrigger = {
       className={`focus:bg-accent focus:text-accent-foreground data-open:bg-accent data-open:text-accent-foreground gap-1.5 rounded-md px-1.5 py-1 text-sm data-inset:pl-7 [&_svg:not([class*='size-'])]:size-4 ${className}`}
     >
       {children}
-      <span className="cn-rtl-flip ml-auto"> {">"->React.string} </span>
+      <Icons.ChevronRight className="cn-rtl-flip ml-auto" />
     </BaseUi.Menu.SubmenuTrigger>
 }
 

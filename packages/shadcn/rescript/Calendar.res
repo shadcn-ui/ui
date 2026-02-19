@@ -43,9 +43,25 @@ type chevronProps = {
   orientation?: string,
 }
 
+type rootProps = {
+  className?: string,
+  children?: React.element,
+  id?: string,
+  style?: ReactDOM.Style.t,
+  onClick?: JsxEvent.Mouse.t => unit,
+  onKeyDown?: JsxEvent.Keyboard.t => unit,
+}
+
+type weekNumberProps = {
+  className?: string,
+  children?: React.element,
+}
+
 type dayPickerComponents = {
+  @as("Root") root: rootProps => React.element,
   @as("Chevron") chevron: chevronProps => React.element,
   @as("DayButton") dayButton: dayButtonProps => React.element,
+  @as("WeekNumber") weekNumber: weekNumberProps => React.element,
 }
 
 type dayPickerClassNames = {
@@ -298,9 +314,27 @@ let make = (
       type_={props.type_->Option.getOr("button")}
       ariaLabel=?props.ariaLabel
     />
+  let renderRoot = (props: rootProps) =>
+    <div
+      id=?props.id
+      style=?props.style
+      onClick=?props.onClick
+      onKeyDown=?props.onKeyDown
+      dataSlot="calendar"
+      className={props.className->Option.getOr("")}
+      children=?props.children
+    />
+  let renderWeekNumber = (props: weekNumberProps) =>
+    <td className=?props.className>
+      <div className="flex size-(--cell-size) items-center justify-center text-center">
+        {props.children->Option.getOr(React.null)}
+      </div>
+    </td>
   let components: dayPickerComponents = {
+    root: renderRoot,
     chevron: renderChevron,
     dayButton: renderDayButton,
+    weekNumber: renderWeekNumber,
   }
   <DayPicker
     showOutsideDays

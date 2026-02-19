@@ -182,7 +182,10 @@ module Separator = {
       />
       {switch children {
       | Some(value) =>
-        <span className="text-muted-foreground bg-background relative mx-auto block w-fit px-2">
+        <span
+          className="text-muted-foreground bg-background relative mx-auto block w-fit px-2"
+          dataSlot="field-separator-content"
+        >
           {value}
         </span>
       | None => React.null

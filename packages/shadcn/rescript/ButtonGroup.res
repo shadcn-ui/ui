@@ -45,6 +45,7 @@ module Text = {
       ?onClick
       ?onKeyDown
       ?children
+      dataSlot="button-group-text"
       className={`bg-muted gap-2 rounded-lg border px-2.5 text-sm font-medium [&_svg:not([class*='size-'])]:size-4 flex items-center [&_svg]:pointer-events-none ${className}`}
     />
 }

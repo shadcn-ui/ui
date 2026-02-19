@@ -32,17 +32,20 @@ module SonnerPrimitive = {
 }
 
 @react.component
-let make = (~className="") => {
-  let theme = NextThemes.useTheme().theme->Option.getOr("system")
-  let className = `toaster group ${className}`
-  let icons: toasterIcons = {
+let make = (~theme=?, ~className=?, ~style=?, ~icons=?, ~toastOptions=?) => {
+  let theme = switch theme {
+  | Some(value) => value
+  | None => NextThemes.useTheme().theme->Option.getOr("system")
+  }
+  let className = className->Option.getOr("toaster group")
+  let defaultIcons: toasterIcons = {
     success: <Icons.CircleCheck className="size-4" />,
     info: <Icons.Info className="size-4" />,
     warning: <Icons.TriangleAlert className="size-4" />,
     error: <Icons.OctagonX className="size-4" />,
     loading: <Icons.Loader2 className="size-4 animate-spin" />,
   }
-  let style = ReactDOM.Style.unsafeAddStyle(
+  let defaultStyle = ReactDOM.Style.unsafeAddStyle(
     {},
     {
       "--normal-bg": "var(--popover)",
@@ -51,6 +54,8 @@ let make = (~className="") => {
       "--border-radius": "var(--radius)",
     },
   )
-  let toastOptions = {classNames: {toast: "cn-toast"}}
+  let icons = icons->Option.getOr(defaultIcons)
+  let style = style->Option.getOr(defaultStyle)
+  let toastOptions = toastOptions->Option.getOr({classNames: {toast: "cn-toast"}})
   <SonnerPrimitive theme className style icons toastOptions />
 }
