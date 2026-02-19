@@ -202,14 +202,14 @@ export default function PreviewExample() {
   }, [params.radius])
 
   return (
-    <ExampleWrapper className="w-full max-w-none! lg:p-0">
+    <div>
       <Example
         containerClassName="col-span-2 max-w-none"
-        className="bg-muted dark:bg-background flex min-h-svh flex-col items-center justify-center border-none sm:p-16"
+        className="bg-muted dark:bg-background flex min-h-svh flex-col items-center justify-center border-none p-0 sm:p-0"
       >
         <div
           data-slot="capture-target"
-          className="grid max-w-4xl gap-6 p-6 lg:grid-cols-2"
+          className="grid max-w-4xl gap-6 p-8 lg:grid-cols-2"
           style={
             {
               "--radius": radiusValue,
@@ -241,7 +241,7 @@ export default function PreviewExample() {
                       key={variant}
                       className="flex flex-col flex-wrap items-center gap-2"
                     >
-                      <Card
+                      <Item
                         className="ring-border aspect-square w-full bg-(--color) ring"
                         style={
                           {
@@ -294,7 +294,7 @@ export default function PreviewExample() {
           <div className="flex flex-col gap-6">
             <Card className="hidden md:flex">
               <CardContent>
-                <div className="grid grid-cols-4 place-items-center gap-6 md:grid-cols-7">
+                <div className="grid grid-cols-4 place-items-center gap-4 md:grid-cols-7">
                   {PREVIEW_ICONS.map((icon, index) => (
                     <Card
                       key={index}
@@ -313,7 +313,7 @@ export default function PreviewExample() {
               </CardContent>
             </Card>
             <Card className="flex-1">
-              <CardContent className="flex flex-col gap-6">
+              <CardContent className="flex flex-1 flex-col gap-6">
                 <div className="flex flex-col gap-4">
                   <div className="flex flex-wrap gap-2">
                     <Button>Default</Button>
@@ -357,7 +357,7 @@ export default function PreviewExample() {
                 <Field className="flex-row">
                   <Input placeholder="Name" />
                 </Field>
-                <Field className="flex-row">
+                <Field className="flex-1 flex-row">
                   <Textarea placeholder="Message" className="resize-none" />
                 </Field>
                 <Slider
@@ -505,6 +505,6 @@ export default function PreviewExample() {
           </div>
         </div>
       </Example>
-    </ExampleWrapper>
+    </div>
   )
 }

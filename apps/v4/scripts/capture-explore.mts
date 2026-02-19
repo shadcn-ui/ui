@@ -6,6 +6,7 @@ import { decodePreset } from "shadcn/preset"
 import { EXPLORE_PRESETS } from "../lib/explore"
 
 const PRESETS_PATH = path.join(process.cwd(), "public/presets")
+const force = process.argv.includes("--force")
 
 // ----------------------------------------------------------------------------
 // Capture explore preset screenshots.
@@ -16,11 +17,13 @@ async function captureScreenshots() {
     mkdirSync(PRESETS_PATH, { recursive: true })
   }
 
-  const presets = EXPLORE_PRESETS.filter((code) => {
-    const lightPath = path.join(PRESETS_PATH, `${code}-light.png`)
-    const darkPath = path.join(PRESETS_PATH, `${code}-dark.png`)
-    return !existsSync(lightPath) || !existsSync(darkPath)
-  })
+  const presets = force
+    ? EXPLORE_PRESETS
+    : EXPLORE_PRESETS.filter((code) => {
+        const lightPath = path.join(PRESETS_PATH, `${code}-light.png`)
+        const darkPath = path.join(PRESETS_PATH, `${code}-dark.png`)
+        return !existsSync(lightPath) || !existsSync(darkPath)
+      })
 
   if (presets.length === 0) {
     console.log("✨ All screenshots exist, nothing to capture")
@@ -57,7 +60,7 @@ async function captureScreenshots() {
         `${code}-${theme}.png`
       )
 
-      if (existsSync(screenshotPath)) {
+      if (!force && existsSync(screenshotPath)) {
         continue
       }
 

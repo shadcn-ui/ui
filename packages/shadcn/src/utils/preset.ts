@@ -100,7 +100,7 @@ export const DEFAULT_PRESET_CONFIG: PresetConfig = Object.fromEntries(
 const BASE62 = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
 
 // Version prefix — 'A' = version 1.
-const VERSION_CHAR = "A"
+const VERSION_CHAR = "a"
 
 export function toBase62(num: number) {
   if (num === 0) return "0"

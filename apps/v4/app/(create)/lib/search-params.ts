@@ -133,7 +133,11 @@ export function useDesignSystemSearchParams(options: Options = {}) {
 
   // Use ref so setParams callback stays stable across renders.
   const paramsRef = React.useRef(params)
-  paramsRef.current = params
+  React.useEffect(() => {
+    paramsRef.current = params
+  }, [params])
+
+  type RawSetParamsInput = Parameters<typeof rawSetParams>[0]
 
   const setParams = React.useCallback(
     (
@@ -153,7 +157,7 @@ export function useDesignSystemSearchParams(options: Options = {}) {
 
       if (!hasDesignSystemUpdate) {
         // No design system change, pass through directly.
-        return rawSetParams(resolvedUpdates as any, setOptions)
+        return rawSetParams(resolvedUpdates as RawSetParamsInput, setOptions)
       }
 
       // Merge current decoded values with updates.
@@ -187,7 +191,7 @@ export function useDesignSystemSearchParams(options: Options = {}) {
         }
       }
 
-      return rawSetParams(rawUpdate as any, setOptions)
+      return rawSetParams(rawUpdate as RawSetParamsInput, setOptions)
     },
     [rawSetParams]
   )
