@@ -55,6 +55,8 @@ import {
 } from "@/registry/bases/base/ui/radio-group"
 import { Slider } from "@/registry/bases/base/ui/slider"
 import { Switch } from "@/registry/bases/base/ui/switch"
+import { Textarea } from "@/registry/bases/base/ui/textarea"
+import { RADII } from "@/registry/config"
 import { STYLES } from "@/registry/styles"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 import { FONTS } from "@/app/(create)/lib/fonts"
@@ -194,13 +196,26 @@ export default function PreviewExample() {
     [params.style]
   )
 
+  const radiusValue = React.useMemo(() => {
+    const radius = RADII.find((r) => r.name === params.radius)
+    return radius?.value ?? ""
+  }, [params.radius])
+
   return (
     <ExampleWrapper className="w-full max-w-none lg:p-0">
       <Example
         containerClassName="col-span-2 max-w-none"
         className="bg-muted dark:bg-background flex min-h-svh flex-col items-center justify-center border-none sm:p-16"
       >
-        <div className="grid max-w-4xl gap-6 lg:grid-cols-2">
+        <div
+          data-slot="capture-target"
+          className="grid max-w-4xl gap-6 p-6 lg:grid-cols-2"
+          style={
+            {
+              "--radius": radiusValue,
+            } as React.CSSProperties
+          }
+        >
           <div className="flex flex-col gap-6">
             <Card>
               <CardContent className="flex flex-col gap-6">
@@ -226,8 +241,8 @@ export default function PreviewExample() {
                       key={variant}
                       className="flex flex-col flex-wrap items-center gap-2"
                     >
-                      <div
-                        className="ring-border aspect-square w-full rounded-md bg-(--color) ring"
+                      <Card
+                        className="ring-border aspect-square w-full bg-(--color) ring"
                         style={
                           {
                             "--color": `var(--${variant.toLowerCase()})`,
@@ -281,9 +296,9 @@ export default function PreviewExample() {
               <CardContent>
                 <div className="grid grid-cols-4 place-items-center gap-6 md:grid-cols-7">
                   {PREVIEW_ICONS.map((icon, index) => (
-                    <div
+                    <Card
                       key={index}
-                      className="ring-border flex size-8 items-center justify-center rounded-md ring *:[svg]:size-4"
+                      className="ring-border flex size-8 items-center justify-center rounded-md p-0 ring *:[svg]:size-4"
                     >
                       <IconPlaceholder
                         lucide={icon.lucide}
@@ -292,7 +307,7 @@ export default function PreviewExample() {
                         phosphor={icon.phosphor}
                         remixicon={icon.remixicon}
                       />
-                    </div>
+                    </Card>
                   ))}
                 </div>
               </CardContent>
@@ -306,7 +321,7 @@ export default function PreviewExample() {
                     <Button variant="outline">Outline</Button>
                     <Button variant="destructive">Destructive</Button>
                   </div>
-                  <Item variant="muted">
+                  <Item variant="outline">
                     <ItemContent>
                       <ItemTitle>Two-factor authentication</ItemTitle>
                       <ItemDescription className="text-pretty xl:hidden 2xl:block">
@@ -319,11 +334,11 @@ export default function PreviewExample() {
                       </Button>
                     </ItemActions>
                   </Item>
-                  <div className="flex flex-wrap items-center gap-2">
+                  <div className="flex flex-wrap items-center gap-1.5">
                     <Badge>Badge</Badge>
                     <Badge variant="secondary">Secondary</Badge>
                     <Badge variant="outline">Outline</Badge>
-                    <div className="mt-2 flex gap-6 md:mt-0 md:ml-auto">
+                    <div className="mt-2 flex gap-3 md:mt-0 md:ml-auto">
                       <Switch defaultChecked />
                       <RadioGroup
                         defaultValue="apple"
@@ -341,6 +356,9 @@ export default function PreviewExample() {
                 </div>
                 <Field className="flex-row">
                   <Input placeholder="Name" />
+                </Field>
+                <Field className="flex-row">
+                  <Textarea placeholder="Message" className="resize-none" />
                 </Field>
                 <Slider
                   value={[500]}

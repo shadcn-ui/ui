@@ -30,6 +30,10 @@ export const siteConfig = {
       label: "Directory",
     },
     {
+      href: "/explore",
+      label: "Explore",
+    },
+    {
       href: "/create",
       label: "Create",
     },

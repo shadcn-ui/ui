@@ -938,7 +938,7 @@
   }
 
   .cn-radio-group-indicator-icon {
-    @apply absolute top-1/2 left-1/2 size-2 -translate-x-1/2 -translate-y-1/2 fill-current;
+    @apply absolute top-1/2 left-1/2 size-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-current group-aria-invalid/radio-group-item:bg-white;
   }
 
   /* MARK: Resizable */

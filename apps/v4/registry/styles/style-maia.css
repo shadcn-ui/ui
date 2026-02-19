@@ -930,15 +930,15 @@
   }
 
   .cn-radio-group-item {
-    @apply border-input text-primary dark:bg-input/30 focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 data-checked:bg-primary data-checked:border-primary flex size-4 rounded-full transition-none focus-visible:ring-[3px] aria-invalid:ring-[3px];
+    @apply border-input text-primary focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 data-checked:bg-primary data-checked:border-primary flex size-4 rounded-full transition-none focus-visible:ring-[3px] aria-invalid:ring-[3px];
   }
 
   .cn-radio-group-indicator {
-    @apply group-aria-invalid/radio-group-item:text-destructive flex size-4 items-center justify-center text-white;
+    @apply group-aria-invalid/radio-group-item:text-destructive text-primary-foreground flex size-4 items-center justify-center;
   }
 
   .cn-radio-group-indicator-icon {
-    @apply absolute top-1/2 left-1/2 size-2 -translate-x-1/2 -translate-y-1/2 fill-current;
+    @apply absolute top-1/2 left-1/2 size-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-current group-aria-invalid/radio-group-item:bg-white;
   }
 
   /* MARK: Resizable */

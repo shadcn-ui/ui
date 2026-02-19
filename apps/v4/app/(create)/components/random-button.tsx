@@ -41,10 +41,6 @@ export function RandomButton() {
   const [params, setParams] = useDesignSystemSearchParams()
 
   const handleRandomize = React.useCallback(() => {
-    // Use current value if locked, otherwise randomize.
-    const baseColor = locks.has("baseColor")
-      ? params.baseColor
-      : randomItem(BASE_COLORS).name
     const selectedStyle = locks.has("style")
       ? params.style
       : randomItem(STYLES).name
@@ -52,8 +48,17 @@ export function RandomButton() {
     // Build context for bias application.
     const context: RandomizeContext = {
       style: selectedStyle,
-      baseColor,
     }
+
+    const availableBaseColors = applyBias(
+      BASE_COLORS,
+      context,
+      RANDOMIZE_BIASES.baseColors
+    )
+    const baseColor = locks.has("baseColor")
+      ? params.baseColor
+      : randomItem(availableBaseColors).name
+    context.baseColor = baseColor
 
     const availableThemes = getThemesForBaseColor(baseColor)
     const availableFonts = applyBias(FONTS, context, RANDOMIZE_BIASES.fonts)
