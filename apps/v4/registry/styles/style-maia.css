@@ -865,6 +865,14 @@
     @apply text-muted-foreground top-1/2 right-3.5 size-4 -translate-y-1/2;
   }
 
+  .cn-native-select-option {
+    @apply bg-background text-foreground;
+  }
+
+  .cn-native-select-optgroup {
+    @apply bg-background text-foreground;
+  }
+
   /* MARK: Pagination */
   .cn-pagination-content {
     @apply gap-1;

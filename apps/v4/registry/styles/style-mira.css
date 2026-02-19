@@ -865,6 +865,14 @@
     @apply text-muted-foreground top-1/2 right-1.5 size-3.5 -translate-y-1/2 group-data-[size=sm]/native-select:size-3 group-data-[size=sm]/native-select:-translate-y-[calc(--spacing(1.25))];
   }
 
+  .cn-native-select-option {
+    @apply bg-background text-foreground;
+  }
+
+  .cn-native-select-optgroup {
+    @apply bg-background text-foreground;
+  }
+
   /* MARK: Pagination */
   .cn-pagination-content {
     @apply gap-0.5;
