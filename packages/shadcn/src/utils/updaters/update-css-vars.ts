@@ -55,6 +55,9 @@ export async function updateCssVars(
     overwriteCssVars: options.overwriteCssVars,
   })
   await fs.writeFile(cssFilepath, output, "utf8")
+  // Touch the file to ensure dev server file watchers detect the change.
+  const now = new Date()
+  await fs.utimes(cssFilepath, now, now)
   cssVarsSpinner.succeed()
 }
 

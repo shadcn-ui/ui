@@ -237,11 +237,17 @@ export async function updateFiles(
       }
 
       await fs.writeFile(filePath, mergedContent, "utf-8")
+      // Touch the file to ensure dev server file watchers detect the change.
+      const now = new Date()
+      await fs.utimes(filePath, now, now)
       filesUpdated.push(path.relative(config.resolvedPaths.cwd, filePath))
       continue
     }
 
     await fs.writeFile(filePath, content, "utf-8")
+    // Touch the file to ensure dev server file watchers detect the change.
+    const now = new Date()
+    await fs.utimes(filePath, now, now)
 
     // Handle file creation logging
     if (!existingFile) {
@@ -605,6 +611,9 @@ async function resolveImports(filePaths: string[], config: Config) {
 
       // Write the updated content to the file.
       await fs.writeFile(resolvedPath, sourceFile.getFullText(), "utf-8")
+      // Touch the file to ensure dev server file watchers detect the change.
+      const now = new Date()
+      await fs.utimes(resolvedPath, now, now)
 
       // Track the updated file.
       updatedFiles.push(filepath)
