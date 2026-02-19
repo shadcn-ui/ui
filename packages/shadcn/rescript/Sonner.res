@@ -1,7 +1,11 @@
 @@directive("'use client'")
 
 module NextThemes = {
-  type themeState = {theme?: string}
+  type theme =
+    | @as("system") System
+    | @as("light") Light
+    | @as("dark") Dark
+  type themeState = {theme: option<theme>}
 
   @module("next-themes")
   external useTheme: unit => themeState = "useTheme"
@@ -19,7 +23,7 @@ type toastClassNames = {toast: string}
 type toastOptions = {classNames: toastClassNames}
 
 type toasterProps = {
-  theme?: string,
+  theme?: NextThemes.theme,
   className?: string,
   style?: ReactDOM.Style.t,
   icons?: toasterIcons,
@@ -32,20 +36,10 @@ module SonnerPrimitive = {
 }
 
 @react.component
-let make = (~theme=?, ~className=?, ~style=?, ~icons=?, ~toastOptions=?) => {
-  let theme = switch theme {
-  | Some(value) => value
-  | None => NextThemes.useTheme().theme->Option.getOr("system")
-  }
-  let className = className->Option.getOr("toaster group")
-  let defaultIcons: toasterIcons = {
-    success: <Icons.CircleCheck className="size-4" />,
-    info: <Icons.Info className="size-4" />,
-    warning: <Icons.TriangleAlert className="size-4" />,
-    error: <Icons.OctagonX className="size-4" />,
-    loading: <Icons.Loader2 className="size-4 animate-spin" />,
-  }
-  let defaultStyle = ReactDOM.Style.unsafeAddStyle(
+let make = (
+  ~theme=?,
+  ~className="toaster group",
+  ~style=ReactDOM.Style.unsafeAddStyle(
     {},
     {
       "--normal-bg": "var(--popover)",
@@ -53,9 +47,18 @@ let make = (~theme=?, ~className=?, ~style=?, ~icons=?, ~toastOptions=?) => {
       "--normal-border": "var(--border)",
       "--border-radius": "var(--radius)",
     },
-  )
-  let icons = icons->Option.getOr(defaultIcons)
-  let style = style->Option.getOr(defaultStyle)
-  let toastOptions = toastOptions->Option.getOr({classNames: {toast: "cn-toast"}})
+  ),
+  ~icons={
+    success: <Icons.CircleCheck className="size-4" />,
+    info: <Icons.Info className="size-4" />,
+    warning: <Icons.TriangleAlert className="size-4" />,
+    error: <Icons.OctagonX className="size-4" />,
+    loading: <Icons.Loader2 className="size-4 animate-spin" />,
+  },
+  ~toastOptions={classNames: {toast: "cn-toast"}},
+) => {
+  let {theme: defaultTheme} = NextThemes.useTheme()
+  let theme = theme->Option.getOr(defaultTheme)->Option.getOr(System)
+
   <SonnerPrimitive theme className style icons toastOptions />
 }
