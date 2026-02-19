@@ -5166,6 +5166,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "textarea-counter": {
+      name: "textarea-counter",
+      filePath: "examples/radix/textarea-counter.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/textarea-counter")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "textarea-counter"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "textarea-invalid": {
       name: "textarea-invalid",
       filePath: "examples/radix/textarea-invalid.tsx",
@@ -10794,6 +10807,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "textarea-field"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "textarea-counter": {
+      name: "textarea-counter",
+      filePath: "examples/base/textarea-counter.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/textarea-counter")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "textarea-counter"
         return { default: mod.default || mod[exportName] }
       }),
     },
