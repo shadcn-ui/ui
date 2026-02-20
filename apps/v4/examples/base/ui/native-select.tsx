@@ -42,7 +42,7 @@ function NativeSelectOption({
   return (
     <option
       data-slot="native-select-option"
-      className={cn("cn-native-select-option", className)}
+      className={cn("bg-background text-foreground", className)}
       {...props}
     />
   )
@@ -55,7 +55,7 @@ function NativeSelectOptGroup({
   return (
     <optgroup
       data-slot="native-select-optgroup"
-      className={cn("cn-native-select-optgroup", className)}
+      className={cn("bg-background text-foreground", className)}
       {...props}
     />
   )
