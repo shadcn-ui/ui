@@ -23,6 +23,7 @@ export function CodeCollapsibleWrapper({
       open={isOpened}
       onOpenChange={setIsOpened}
       className={cn("group/collapsible relative md:-mx-1", className)}
+      suppressHydrationWarning
       {...props}
     >
       <CollapsibleTrigger asChild>

@@ -55,6 +55,7 @@ export function ComponentPreviewTabs({
         "group relative mt-4 mb-12 flex flex-col overflow-hidden rounded-xl border",
         className
       )}
+      suppressHydrationWarning
       {...props}
     >
       {direction === "rtl" ? (
@@ -143,11 +144,11 @@ export function ComponentPreviewTabs({
                   </span>
                 </div>
               )}
-              {source}
+              {source || null}
             </>
           ) : (
             <div className="relative">
-              {sourcePreview}
+              {sourcePreview || null}
               <div className="absolute inset-0 flex items-center justify-center pb-4">
                 <div
                   className="absolute inset-0"

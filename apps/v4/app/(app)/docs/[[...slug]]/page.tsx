@@ -6,7 +6,6 @@ import { findNeighbour } from "fumadocs-core/page-tree"
 
 import { source } from "@/lib/source"
 import { absoluteUrl } from "@/lib/utils"
-import { DocsBaseSwitcher } from "@/components/docs-base-switcher"
 import { DocsCopyPage } from "@/components/docs-copy-page"
 import { DocsTableOfContents } from "@/components/docs-toc"
 import { OpenInV0Cta } from "@/components/open-in-v0-cta"
@@ -141,16 +140,6 @@ export default async function Page(props: {
             </div>
           </div>
           <div className="w-full flex-1 pb-16 *:data-[slot=alert]:first:mt-0 sm:pb-0">
-            {params.slug &&
-              params.slug[0] === "components" &&
-              params.slug[1] &&
-              params.slug[2] && (
-                <DocsBaseSwitcher
-                  base={params.slug[1]}
-                  component={params.slug[2]}
-                  className="mb-4"
-                />
-              )}
             <MDX components={mdxComponents} />
           </div>
           <div className="hidden h-16 w-full items-center gap-2 px-4 sm:flex sm:px-0">

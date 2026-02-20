@@ -1,7 +1,15 @@
 import { createHash } from "crypto"
 import { LRUCache } from "lru-cache"
-import { codeToHtml } from "shiki"
-import type { ShikiTransformer } from "shiki"
+import type { Element as HastElement } from "hast"
+import {
+  type CodeToHastOptions,
+  createHighlighter,
+  type Highlighter,
+  type LanguageRegistration,
+  type ShikiTransformer,
+} from "shiki"
+
+import rescriptTmLanguage from "@/grammars/rescript.tmLanguage.json"
 
 // LRU cache for cross-request caching of highlighted code.
 // Shiki highlighting is CPU-intensive and deterministic, so caching is safe.
@@ -9,6 +17,58 @@ const highlightCache = new LRUCache<string, string>({
   max: 500,
   ttl: 1000 * 60 * 60, // 1 hour.
 })
+
+const rescriptLanguage: LanguageRegistration = {
+  ...(rescriptTmLanguage as LanguageRegistration),
+  name: "rescript",
+  displayName: "ReScript",
+  aliases: ["rescript", "res"],
+  embeddedLangs: ["javascript"],
+}
+
+type HighlightOptions = CodeToHastOptions<string, string>
+
+const highlighterThemeNames = ["github-dark", "github-light"] as const
+
+const codeThemes: Record<string, string> = {
+  dark: "github-dark",
+  light: "github-light",
+}
+
+let highlighterPromise: Promise<Highlighter> | null = null
+
+async function getHighlighter() {
+  if (!highlighterPromise) {
+    highlighterPromise = createHighlighter({
+      themes: [...highlighterThemeNames],
+      langs: [
+        "tsx",
+        "typescript",
+        "ts",
+        "jsx",
+        "javascript",
+        "js",
+        "css",
+        "json",
+        "bash",
+        "html",
+        "mdx",
+        "text",
+        rescriptLanguage,
+      ],
+    })
+  }
+
+  return highlighterPromise
+}
+
+function normalizeLanguage(language: string) {
+  const normalized = language.toLowerCase()
+  if (normalized === "res" || normalized === "rescript") {
+    return "rescript"
+  }
+  return language
+}
 
 export const transformers = [
   {
@@ -65,10 +125,27 @@ export const transformers = [
   },
 ] as ShikiTransformer[]
 
+const renderTransformers: ShikiTransformer[] = [
+  {
+    pre(node: HastElement) {
+      node.properties["class"] =
+        "no-scrollbar min-w-0 overflow-x-auto overflow-y-auto overscroll-x-contain overscroll-y-auto px-4 py-3.5 outline-none has-[[data-highlighted-line]]:px-0 has-[[data-line-numbers]]:px-0 has-[[data-slot=tabs]]:p-0 !bg-transparent"
+    },
+    code(node: HastElement) {
+      node.properties["data-line-numbers"] = ""
+    },
+    line(node: HastElement) {
+      node.properties["data-line"] = ""
+    },
+  },
+]
+
 export async function highlightCode(code: string, language: string = "tsx") {
+  const normalizedLanguage = normalizeLanguage(language)
+
   // Create cache key from code content and language.
   const cacheKey = createHash("sha256")
-    .update(`${language}:${code}`)
+    .update(`${normalizedLanguage}:${code}`)
     .digest("hex")
 
   // Check cache first.
@@ -77,27 +154,22 @@ export async function highlightCode(code: string, language: string = "tsx") {
     return cached
   }
 
-  const html = await codeToHtml(code, {
-    lang: language,
-    themes: {
-      dark: "github-dark",
-      light: "github-light",
-    },
-    transformers: [
-      {
-        pre(node) {
-          node.properties["class"] =
-            "no-scrollbar min-w-0 overflow-x-auto overflow-y-auto overscroll-x-contain overscroll-y-auto px-4 py-3.5 outline-none has-[[data-highlighted-line]]:px-0 has-[[data-line-numbers]]:px-0 has-[[data-slot=tabs]]:p-0 !bg-transparent"
-        },
-        code(node) {
-          node.properties["data-line-numbers"] = ""
-        },
-        line(node) {
-          node.properties["data-line"] = ""
-        },
-      },
-    ],
-  })
+  const highlighter = await getHighlighter()
+
+  let html: string
+  try {
+    html = highlighter.codeToHtml(code, {
+      lang: normalizedLanguage as HighlightOptions["lang"],
+      themes: codeThemes,
+      transformers: renderTransformers,
+    })
+  } catch {
+    html = highlighter.codeToHtml(code, {
+      lang: "text",
+      themes: codeThemes,
+      transformers: renderTransformers,
+    })
+  }
 
   // Cache the result.
   highlightCache.set(cacheKey, html)

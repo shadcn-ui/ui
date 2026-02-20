@@ -368,6 +368,27 @@
     font-family: var(--font-mono);
     font-size: 0.8rem;
   }
+
+  /* Override Shiki's inline styles to ensure dark theme is applied */
+  [data-rehype-pretty-code-figure] pre[data-theme="github-light"] {
+    display: none !important;
+  }
+
+  [data-rehype-pretty-code-figure] pre[data-theme="github-dark"] {
+    display: block !important;
+    background-color: var(--color-code) !important;
+    color: var(--color-code-foreground) !important;
+  }
+
+  .dark [data-rehype-pretty-code-figure] pre[data-theme="github-light"] {
+    display: none !important;
+  }
+
+  .dark [data-rehype-pretty-code-figure] pre[data-theme="github-dark"] {
+    display: block !important;
+    background-color: var(--color-code) !important;
+    color: var(--color-code-foreground) !important;
+  }
 }
 
 @layer components {
