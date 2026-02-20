@@ -24,6 +24,12 @@
     "description": "A collection of React components for the most common crypto patterns"
   },
   {
+    "name": "@arc",
+    "homepage": "https://witharc.co/components",
+    "url": "https://witharc.co/r/{name}.json",
+    "description": "Animated, accessible UI components built with React and Tailwind CSS."
+  },
+  {
     "name": "@aceternity",
     "homepage": "https://ui.aceternity.com",
     "url": "https://ui.aceternity.com/registry/{name}.json",
