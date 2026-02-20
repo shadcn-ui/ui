@@ -67,7 +67,9 @@ export const PRESET_RADII = [
 export const PRESET_MENU_ACCENTS = ["subtle", "bold"] as const
 export const PRESET_MENU_COLORS = ["default", "inverted"] as const
 
-// Field definitions in pack order. Total: 43 bits, 10 bits headroom.
+// Field definitions in pack order. Total: 40 bits, 13 bits headroom.
+// Note: `base` was removed (was bits 40-42). Old codes are backward-compatible
+// because `base` was the last field — decoder stops at bit 40 and ignores the rest.
 const PRESET_FIELDS = [
   { key: "menuColor", values: PRESET_MENU_COLORS, bits: 3 },
   { key: "menuAccent", values: PRESET_MENU_ACCENTS, bits: 3 },
@@ -77,11 +79,9 @@ const PRESET_FIELDS = [
   { key: "theme", values: PRESET_THEMES, bits: 6 },
   { key: "baseColor", values: PRESET_BASE_COLORS, bits: 6 },
   { key: "style", values: PRESET_STYLES, bits: 6 },
-  { key: "base", values: PRESET_BASES, bits: 3 },
 ] as const
 
 export type PresetConfig = {
-  base: (typeof PRESET_BASES)[number]
   style: (typeof PRESET_STYLES)[number]
   baseColor: (typeof PRESET_BASE_COLORS)[number]
   theme: (typeof PRESET_THEMES)[number]

@@ -20,7 +20,6 @@ import { isSafeTarget } from "@/src/utils/is-safe-target"
 import { logger } from "@/src/utils/logger"
 import { spinner } from "@/src/utils/spinner"
 import { updateCss } from "@/src/utils/updaters/update-css"
-import { updateCssVars } from "@/src/utils/updaters/update-css-vars"
 import { updateDependencies } from "@/src/utils/updaters/update-dependencies"
 import { updateEnvVars } from "@/src/utils/updaters/update-env-vars"
 import { updateFiles } from "@/src/utils/updaters/update-files"
@@ -110,32 +109,16 @@ async function addProjectComponents(
     tree = await massageTreeForFonts(tree, config)
   }
 
+  await updateDependencies(tree.dependencies, tree.devDependencies, config, {
+    silent: options.silent,
+  })
+
   await updateTailwindConfig(tree.tailwind?.config, config, {
     silent: options.silent,
     tailwindVersion,
   })
 
-  const overwriteCssVars =
-    options.overwriteCssVars ??
-    (await shouldOverwriteCssVars(components, config))
-  await updateCssVars(tree.cssVars, config, {
-    cleanupDefaultNextStyles: options.isNewProject,
-    silent: options.silent,
-    tailwindVersion,
-    tailwindConfig: tree.tailwind?.config,
-    overwriteCssVars,
-  })
-
-  // Add CSS updater
-  await updateCss(tree.css, config, {
-    silent: options.silent,
-  })
-
   await updateEnvVars(tree.envVars, config, {
-    silent: options.silent,
-  })
-
-  await updateDependencies(tree.dependencies, tree.devDependencies, config, {
     silent: options.silent,
   })
 
@@ -149,6 +132,21 @@ async function addProjectComponents(
     overwrite: options.overwrite,
     silent: options.silent,
     path: options.path,
+  })
+
+  // Write CSS last so the file watcher triggers a rebuild
+  // after all component files and dependencies are in place.
+  const overwriteCssVars = tree.cssVars
+    ? (options.overwriteCssVars ??
+      (await shouldOverwriteCssVars(components, config)))
+    : undefined
+  await updateCss(tree.css, config, {
+    silent: options.silent,
+    cssVars: tree.cssVars,
+    cleanupDefaultNextStyles: options.isNewProject,
+    overwriteCssVars,
+    tailwindVersion,
+    tailwindConfig: tree.tailwind?.config,
   })
 
   if (tree.docs) {
@@ -197,7 +195,7 @@ async function addWorkspaceComponents(
 
   const rootSpinner = spinner(`Installing components.`)?.start()
 
-  // Process global updates (tailwind, css vars, dependencies) first for the main target.
+  // Process global updates for the main target.
   // These should typically go to the UI package in a workspace.
   const mainTargetConfig = workspaceConfig.ui
   const tailwindVersion = await getProjectTailwindVersionFromConfig(
@@ -208,7 +206,17 @@ async function addWorkspaceComponents(
     mainTargetConfig.resolvedPaths.ui
   )
 
-  // 1. Update tailwind config.
+  // 1. Update dependencies.
+  await updateDependencies(
+    tree.dependencies,
+    tree.devDependencies,
+    mainTargetConfig,
+    {
+      silent: true,
+    }
+  )
+
+  // 2. Update tailwind config.
   if (tree.tailwind?.config) {
     await updateTailwindConfig(tree.tailwind?.config, mainTargetConfig, {
       silent: true,
@@ -222,55 +230,21 @@ async function addWorkspaceComponents(
     )
   }
 
-  // 2. Update css vars.
-  if (tree.cssVars) {
-    const overwriteCssVars =
-      options.overwriteCssVars ??
-      (await shouldOverwriteCssVars(components, config))
-    await updateCssVars(tree.cssVars, mainTargetConfig, {
-      silent: true,
-      tailwindVersion,
-      tailwindConfig: tree.tailwind?.config,
-      overwriteCssVars,
-    })
-    filesUpdated.push(
-      path.relative(workspaceRoot, mainTargetConfig.resolvedPaths.tailwindCss)
-    )
-  }
-
-  // 3. Update CSS
-  if (tree.css) {
-    await updateCss(tree.css, mainTargetConfig, {
-      silent: true,
-    })
-    filesUpdated.push(
-      path.relative(workspaceRoot, mainTargetConfig.resolvedPaths.tailwindCss)
-    )
-  }
-
-  // 4. Update environment variables
+  // 3. Update environment variables.
   if (tree.envVars) {
     await updateEnvVars(tree.envVars, mainTargetConfig, {
       silent: true,
     })
   }
 
-  // 5. Update dependencies.
-  await updateDependencies(
-    tree.dependencies,
-    tree.devDependencies,
-    mainTargetConfig,
-    {
-      silent: true,
-    }
-  )
-
-  // 6. Update fonts.
-  await updateFonts(tree.fonts, mainTargetConfig, {
+  // 4. Update fonts.
+  // Fonts modify the app's layout file (e.g. app/layout.tsx),
+  // so we use the app config, not the UI workspace config.
+  await updateFonts(tree.fonts, config, {
     silent: true,
   })
 
-  // 7. Group files by their type to determine target config and update files.
+  // 5. Group files by their type to determine target config and update files.
   const filesByType = new Map<string, typeof tree.files>()
 
   for (const file of tree.files ?? []) {
@@ -281,11 +255,19 @@ async function addWorkspaceComponents(
     filesByType.get(type)!.push(file)
   }
 
+  const FILE_TYPE_TO_CONFIG_KEY: Record<string, string> = {
+    "registry:ui": "ui",
+    "registry:hook": "hooks",
+    "registry:lib": "lib",
+  }
+
   // Process each type of component with its appropriate target config.
   for (const type of Array.from(filesByType.keys())) {
     const typeFiles = filesByType.get(type)!
 
-    let targetConfig = type === "registry:ui" ? workspaceConfig.ui : config
+    const configKey = FILE_TYPE_TO_CONFIG_KEY[type]
+    const targetConfig =
+      configKey && workspaceConfig[configKey] ? workspaceConfig[configKey] : config
 
     const typeWorkspaceRoot = findCommonRoot(
       config.resolvedPaths.cwd,
@@ -321,6 +303,25 @@ async function addWorkspaceComponents(
       ...files.filesSkipped.map((file) =>
         path.relative(typeWorkspaceRoot, path.join(packageRoot, file))
       )
+    )
+  }
+
+  // 6. Write CSS last so the file watcher triggers a rebuild
+  // after all component files and dependencies are in place.
+  const overwriteCssVars = tree.cssVars
+    ? (options.overwriteCssVars ??
+      (await shouldOverwriteCssVars(components, config)))
+    : undefined
+  await updateCss(tree.css, mainTargetConfig, {
+    silent: true,
+    cssVars: tree.cssVars,
+    overwriteCssVars,
+    tailwindVersion,
+    tailwindConfig: tree.tailwind?.config,
+  })
+  if (tree.cssVars || tree.css) {
+    filesUpdated.push(
+      path.relative(workspaceRoot, mainTargetConfig.resolvedPaths.tailwindCss)
     )
   }
 

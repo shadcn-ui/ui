@@ -38,7 +38,10 @@ const TS_CONFIG_SCHEMA = z.object({
   }),
 })
 
-export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
+export async function getProjectInfo(
+  cwd: string,
+  opts?: { configCssFile?: string }
+): Promise<ProjectInfo | null> {
   const [
     configFiles,
     isSrcDir,
@@ -60,7 +63,7 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
     fs.pathExists(path.resolve(cwd, "src")),
     isTypeScriptProject(cwd),
     getTailwindConfigFile(cwd),
-    getTailwindCssFile(cwd),
+    getTailwindCssFile(cwd, opts?.configCssFile),
     getTailwindVersion(cwd),
     getTsConfigAliasPrefix(cwd),
     getPackageInfo(cwd, false),
@@ -242,7 +245,18 @@ export async function getTailwindVersion(
   return "v4"
 }
 
-export async function getTailwindCssFile(cwd: string) {
+export async function getTailwindCssFile(
+  cwd: string,
+  configCssFile?: string
+) {
+  // If the existing config has a known CSS file, check it first.
+  if (configCssFile) {
+    const resolvedPath = path.resolve(cwd, configCssFile)
+    if (await fs.pathExists(resolvedPath)) {
+      return configCssFile
+    }
+  }
+
   const [files, tailwindVersion] = await Promise.all([
     fg.glob(["**/*.css", "**/*.scss"], {
       cwd,

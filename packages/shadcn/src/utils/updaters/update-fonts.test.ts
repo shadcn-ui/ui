@@ -167,6 +167,124 @@ export default function RootLayout({
     `)
   })
 
+  it("should use configured utils alias when adding cn import", async () => {
+    const configWithCustomUtilsAlias = {
+      ...mockConfig,
+      aliases: {
+        ...mockConfig.aliases,
+        utils: "~/lib/utils",
+      },
+    }
+    const input = `
+import type { Metadata } from "next"
+import "./globals.css"
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  )
+}
+`
+    const fonts = [
+      {
+        name: "inter",
+        type: "registry:font" as const,
+        font: {
+          family: "Inter",
+          provider: "google" as const,
+          import: "Inter",
+          variable: "--font-sans",
+          subsets: ["latin"],
+        },
+      },
+      {
+        name: "jetbrains-mono",
+        type: "registry:font" as const,
+        font: {
+          family: "JetBrains Mono",
+          provider: "google" as const,
+          import: "JetBrains_Mono",
+          variable: "--font-mono",
+          subsets: ["latin"],
+        },
+      },
+    ]
+
+    const firstRun = await transformLayoutFonts(
+      input,
+      fonts,
+      configWithCustomUtilsAlias
+    )
+    const secondRun = await transformLayoutFonts(
+      firstRun,
+      fonts,
+      configWithCustomUtilsAlias
+    )
+
+    expect(firstRun).toContain(`import { cn } from "~/lib/utils";`)
+    expect(secondRun).toBe(firstRun)
+  })
+
+  it("should use monorepo utils alias when adding cn import", async () => {
+    const monorepoConfig = {
+      ...mockConfig,
+      aliases: {
+        ...mockConfig.aliases,
+        utils: "@workspace/ui/lib/utils",
+      },
+    }
+    const input = `
+import type { Metadata } from "next"
+import "./globals.css"
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  )
+}
+`
+    const fonts = [
+      {
+        name: "inter",
+        type: "registry:font" as const,
+        font: {
+          family: "Inter",
+          provider: "google" as const,
+          import: "Inter",
+          variable: "--font-sans",
+          subsets: ["latin"],
+        },
+      },
+      {
+        name: "jetbrains-mono",
+        type: "registry:font" as const,
+        font: {
+          family: "JetBrains Mono",
+          provider: "google" as const,
+          import: "JetBrains_Mono",
+          variable: "--font-mono",
+          subsets: ["latin"],
+        },
+      },
+    ]
+
+    const result = await transformLayoutFonts(input, fonts, monorepoConfig)
+
+    expect(result).toContain(`import { cn } from "@workspace/ui/lib/utils";`)
+  })
+
   it("should preserve existing string className", async () => {
     const input = `
 import type { Metadata } from "next"

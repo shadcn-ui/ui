@@ -199,6 +199,7 @@ export const create = new Command()
         initUrl = resolveInitUrl(
           {
             ...decoded,
+            base: "radix",
             rtl: opts.rtl ?? false,
           },
           { template }

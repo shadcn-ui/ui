@@ -58,12 +58,14 @@ export const initOptionsSchema = z.object({
   yes: z.boolean(),
   defaults: z.boolean(),
   force: z.boolean(),
-  reinstall: z.boolean(),
+  reinstall: z.boolean().optional(),
   silent: z.boolean(),
   isNewProject: z.boolean().default(false),
   cssVariables: z.boolean().default(true),
   rtl: z.boolean().optional(),
+  base: z.enum(["radix", "base"]).optional(),
   template: z.string().optional(),
+  existingConfig: z.record(z.unknown()).optional(),
   installStyleIndex: z.boolean().default(true),
   registryBaseConfig: rawConfigSchema.deepPartial().optional(),
 })
@@ -77,6 +79,7 @@ export const init = new Command()
     "-t, --template <template>",
     "the template to use. (next, start, vite, next-monorepo, react-router)"
   )
+  .option("-b, --base <base>", "the primitive library to use. (radix, base)")
   .option("-p, --preset [name]", "use a preset configuration")
   .option("-y, --yes", "skip confirmation prompt.", true)
   .option(
@@ -96,14 +99,26 @@ export const init = new Command()
   .option("--no-css-variables", "do not use css variables for theming.")
   .option("--rtl", "enable RTL support.")
   .option("--no-rtl", "disable RTL support.")
-  .option("--reinstall", "re-install existing UI components.", false)
+  .option("--reinstall", "re-install existing UI components.")
+  .option("--no-reinstall", "do not re-install existing UI components.")
   .action(async (components, opts) => {
     let componentsJsonBackupPath: string | undefined
     let reinstallComponents: string[] = []
 
+    // Restore components.json backup on unexpected exit (e.g. process.exit in preflight).
+    const restoreBackupOnExit = () => {
+      if (componentsJsonBackupPath) {
+        restoreFileBackup(
+          componentsJsonBackupPath.replace(FILE_BACKUP_SUFFIX, "")
+        )
+      }
+    }
+    process.on("exit", restoreBackupOnExit)
+
     try {
       const options = initOptionsSchema.parse({
         ...opts,
+        reinstall: opts.reinstall,
         cwd: path.resolve(opts.cwd),
       })
       const presets = Object.values(DEFAULT_PRESETS)
@@ -111,18 +126,11 @@ export const init = new Command()
         presets.map((preset) => [preset.name, preset])
       )
 
-      let newBase: string | undefined
+      let presetBase: string | undefined
+
       if (options.defaults) {
         options.template = options.template || "next"
-        const initUrl = resolveInitUrl(
-          {
-            ...DEFAULT_PRESETS["base-nova"],
-            rtl: options.rtl ?? false,
-          },
-          { template: options.template }
-        )
-        components = [initUrl, ...components]
-        newBase = DEFAULT_PRESETS["base-nova"].base
+        // Base resolution happens below — just mark presetBase as undefined.
       }
 
       if (options.template && !(options.template in templates)) {
@@ -191,6 +199,11 @@ export const init = new Command()
           )
         } catch {
           // Ignore read errors.
+        }
+
+        // Pass existing config so preflight can use it (e.g. tailwind.css path in monorepos).
+        if (existingConfig) {
+          options.existingConfig = existingConfig
         }
 
         let shouldReinstall = options.reinstall
@@ -275,7 +288,7 @@ export const init = new Command()
             template: options.template,
           })
           components = [result.url, ...components]
-          newBase = result.base
+          presetBase = result.base
         }
 
         if (typeof presetArg === "string") {
@@ -289,7 +302,7 @@ export const init = new Command()
               url.searchParams.delete("rtl")
             }
             initUrl = url.toString()
-            newBase = url.searchParams.get("base") ?? undefined
+            presetBase = url.searchParams.get("base") ?? undefined
           } else if (isPresetCode(presetArg)) {
             const decoded = decodePreset(presetArg)
             if (!decoded) {
@@ -299,14 +312,17 @@ export const init = new Command()
               logger.break()
               process.exit(1)
             }
+            // Preset codes no longer carry base — use "radix" as placeholder.
+            // The correct base is set in the URL after resolution below.
             initUrl = resolveInitUrl(
               {
                 ...decoded,
+                base: "radix",
                 rtl: options.rtl ?? false,
               },
               { template: options.template }
             )
-            newBase = decoded.base
+            presetBase = undefined
           } else {
             const preset = presetsByName.get(presetArg)!
             initUrl = resolveInitUrl(
@@ -316,21 +332,78 @@ export const init = new Command()
               },
               { template: options.template }
             )
-            newBase = preset.base
+            presetBase = preset.base
           }
 
           components = [initUrl, ...components]
         }
       }
 
+      // Resolve base: --base flag > preset/prompt/URL > existing config > prompt.
+      let resolvedBase: string =
+        options.base ??
+        presetBase ??
+        (existingConfig?.style
+          ? (existingConfig.style as string).startsWith("base-")
+            ? "base"
+            : "radix"
+          : "")
+
+      if (!resolvedBase) {
+        const { base } = await prompts({
+          type: "select",
+          name: "base",
+          message: `Which ${highlighter.info(
+            "primitive library"
+          )} would you like to use?`,
+          choices: [
+            { title: "Radix", value: "radix" },
+            { title: "Base", value: "base" },
+          ],
+        })
+        if (!base) process.exit(0)
+        resolvedBase = base
+      }
+
+      // Build the --defaults URL now that base is resolved.
+      if (options.defaults && components.length === 0) {
+        const presetName = resolvedBase === "base" ? "base-nova" : "radix-nova"
+        const initUrl = resolveInitUrl(
+          {
+            ...DEFAULT_PRESETS[presetName],
+            rtl: options.rtl ?? false,
+          },
+          { template: options.template }
+        )
+        components = [initUrl, ...components]
+      }
+
+      // Ensure the init URL has the correct base.
+      if (components.length > 0 && isUrl(components[0])) {
+        const url = new URL(components[0])
+        url.searchParams.set("base", resolvedBase)
+        components[0] = url.toString()
+      }
+
+      // Confirm if the user is switching bases during reinit.
+      if (existingConfig?.style) {
+        const confirmedBase = await confirmBaseSwitch(
+          existingConfig.style as string,
+          resolvedBase
+        )
+        if (confirmedBase !== resolvedBase) {
+          resolvedBase = confirmedBase
+          if (components.length > 0 && isUrl(components[0])) {
+            const url = new URL(components[0])
+            url.searchParams.set("base", confirmedBase)
+            components[0] = url.toString()
+          }
+        }
+      }
+
       // Add re-install components after preset selection.
       if (reinstallComponents.length) {
         components = [...components, ...reinstallComponents]
-      }
-
-      // Warn if the user is switching bases during reinit.
-      if (existingConfig?.style && newBase) {
-        warnOnBaseSwitch(existingConfig.style as string, newBase)
       }
 
       options.components = components
@@ -378,15 +451,14 @@ export const init = new Command()
         `Project initialization completed.\nYou may now add components.`
       )
 
-      // We need when running with custom cwd.
+      // Success — remove the backup and exit listener.
+      process.removeListener("exit", restoreBackupOnExit)
       deleteFileBackup(path.resolve(cwd, "components.json"))
       logger.break()
     } catch (error) {
-      if (componentsJsonBackupPath) {
-        restoreFileBackup(
-          componentsJsonBackupPath.replace(FILE_BACKUP_SUFFIX, "")
-        )
-      }
+      // Restore handled by exit listener, but also do it here for non-exit errors.
+      process.removeListener("exit", restoreBackupOnExit)
+      restoreBackupOnExit()
       logger.break()
       handleError(error)
     } finally {
@@ -721,22 +793,31 @@ async function promptForMinimalConfig(
   })
 }
 
-function warnOnBaseSwitch(existingStyle: string, newBase: string) {
+async function confirmBaseSwitch(existingStyle: string, resolvedBase: string) {
   // Styles prefixed with "base-" use Base UI. Everything else is Radix.
   const oldBase = existingStyle.startsWith("base-") ? "base" : "radix"
-  if (newBase !== oldBase) {
-    logger.warn(
-      `  You are switching from ${highlighter.info(
-        oldBase
-      )} to ${highlighter.info(newBase)}.`
-    )
-    logger.warn(
-      `  Components outside the ${highlighter.info(
-        "ui"
-      )} directory that depend on ${highlighter.info(
-        oldBase
-      )} primitives may need manual updates.`
-    )
-    logger.break()
-  }
+  if (resolvedBase === oldBase) return resolvedBase
+
+  logger.warn(
+    `  You are switching from ${highlighter.info(
+      oldBase
+    )} to ${highlighter.info(resolvedBase)}.`
+  )
+  logger.warn(
+    `  Components outside the ${highlighter.info(
+      "ui"
+    )} directory that depend on ${highlighter.info(
+      oldBase
+    )} primitives may need manual updates.`
+  )
+  logger.break()
+
+  const { proceed } = await prompts({
+    type: "confirm",
+    name: "proceed",
+    message: "Would you like to continue?",
+    initial: false,
+  })
+
+  return proceed ? resolvedBase : oldBase
 }

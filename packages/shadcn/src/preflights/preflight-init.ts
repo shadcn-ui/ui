@@ -54,7 +54,13 @@ export async function preFlightInit(
   const frameworkSpinner = spinner(`Verifying framework.`, {
     silent: options.silent,
   }).start()
-  const projectInfo = await getProjectInfo(options.cwd)
+  const tailwind = options.existingConfig?.tailwind as
+    | Record<string, unknown>
+    | undefined
+  const projectInfo = await getProjectInfo(options.cwd, {
+    configCssFile:
+      typeof tailwind?.css === "string" ? tailwind.css : undefined,
+  })
   if (!projectInfo || projectInfo?.framework.name === "manual") {
     errors[ERRORS.UNSUPPORTED_FRAMEWORK] = true
     frameworkSpinner?.fail()

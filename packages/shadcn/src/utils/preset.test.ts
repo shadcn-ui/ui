@@ -2,7 +2,6 @@ import { describe, expect, it } from "vitest"
 
 import {
   DEFAULT_PRESET_CONFIG,
-  PRESET_BASES,
   PRESET_BASE_COLORS,
   PRESET_FONTS,
   PRESET_ICON_LIBRARIES,
@@ -46,7 +45,6 @@ describe("encodePreset / decodePreset", () => {
 
   it("should round-trip a custom config", () => {
     const config: PresetConfig = {
-      base: "base",
       style: "lyra",
       baseColor: "zinc",
       theme: "blue",
@@ -72,22 +70,19 @@ describe("encodePreset / decodePreset", () => {
   })
 
   it("should handle partial config by filling defaults", () => {
-    const code = encodePreset({ base: "base" })
+    const code = encodePreset({ style: "lyra" })
     const decoded = decodePreset(code)
     expect(decoded).not.toBeNull()
-    expect(decoded!.base).toBe("base")
-    expect(decoded!.style).toBe(DEFAULT_PRESET_CONFIG.style)
+    expect(decoded!.style).toBe("lyra")
+    expect(decoded!.theme).toBe(DEFAULT_PRESET_CONFIG.theme)
   })
 
-  it("should round-trip all combinations of base and style", () => {
-    for (const base of PRESET_BASES) {
-      for (const style of PRESET_STYLES) {
-        const code = encodePreset({ base, style })
-        const decoded = decodePreset(code)
-        expect(decoded).not.toBeNull()
-        expect(decoded!.base).toBe(base)
-        expect(decoded!.style).toBe(style)
-      }
+  it("should round-trip all styles", () => {
+    for (const style of PRESET_STYLES) {
+      const code = encodePreset({ style })
+      const decoded = decodePreset(code)
+      expect(decoded).not.toBeNull()
+      expect(decoded!.style).toBe(style)
     }
   })
 

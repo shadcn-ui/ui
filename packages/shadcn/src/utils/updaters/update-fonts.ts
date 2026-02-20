@@ -162,7 +162,7 @@ async function findLayoutFile(
 export async function transformLayoutFonts(
   input: string,
   fonts: RegistryFontItem[],
-  _config: Config
+  config: Config
 ) {
   const project = new Project({
     compilerOptions: {},
@@ -254,7 +254,7 @@ export async function transformLayoutFonts(
 
   // Update html className to include font variables.
   if (fontVariableNames.length > 0) {
-    updateHtmlClassName(sourceFile, fontVariableNames)
+    updateHtmlClassName(sourceFile, fontVariableNames, config)
   }
 
   return sourceFile.getFullText()
@@ -335,7 +335,8 @@ function findInsertPosition(
 
 function updateHtmlClassName(
   sourceFile: ReturnType<Project["createSourceFile"]>,
-  fontVariableNames: string[]
+  fontVariableNames: string[],
+  config: Config
 ) {
   // Find the <html> JSX element.
   const jsxElements = sourceFile.getDescendantsOfKind(
@@ -360,7 +361,7 @@ function updateHtmlClassName(
         })
       } else {
         // Need to use cn() for multiple fonts.
-        ensureCnImport(sourceFile)
+        ensureCnImport(sourceFile, config)
         element.addAttribute({
           name: "className",
           initializer: `{cn(${variableExpressions})}`,
@@ -387,7 +388,7 @@ function updateHtmlClassName(
     if (initializer.getKind() === SyntaxKind.StringLiteral) {
       // className="some-class" -> className={cn("some-class", font.variable)}
       const currentValue = initializer.getText().slice(1, -1) // Remove quotes.
-      ensureCnImport(sourceFile)
+      ensureCnImport(sourceFile, config)
       jsxAttr.setInitializer(
         `{cn("${currentValue}", ${newVarExpressions.join(", ")})}`
       )
@@ -428,19 +429,19 @@ function updateHtmlClassName(
         if (newVarExpressions.length === 1) {
           jsxExpr.replaceWithText(`{${newVarExpressions[0]}}`)
         } else {
-          ensureCnImport(sourceFile)
+          ensureCnImport(sourceFile, config)
           jsxExpr.replaceWithText(`{cn(${newVarExpressions.join(", ")})}`)
         }
       } else if (exprText.startsWith("`") && exprText.endsWith("`")) {
         // Template literal - parse and convert to cn() arguments.
         const cnArgs = parseTemplateLiteralToCnArgs(exprText)
-        ensureCnImport(sourceFile)
+        ensureCnImport(sourceFile, config)
         jsxExpr.replaceWithText(
           `{cn(${[...cnArgs, ...newVarExpressions].join(", ")})}`
         )
       } else {
         // Some other expression (variable, etc.), wrap with cn().
-        ensureCnImport(sourceFile)
+        ensureCnImport(sourceFile, config)
         jsxExpr.replaceWithText(
           `{cn(${exprText}, ${newVarExpressions.join(", ")})}`
         )
@@ -449,7 +450,10 @@ function updateHtmlClassName(
   }
 }
 
-function ensureCnImport(sourceFile: ReturnType<Project["createSourceFile"]>) {
+function ensureCnImport(
+  sourceFile: ReturnType<Project["createSourceFile"]>,
+  config: Config
+) {
   const existingImport = sourceFile.getImportDeclaration((decl) => {
     const namedImports = decl.getNamedImports()
     return namedImports.some((imp) => imp.getName() === "cn")
@@ -470,7 +474,7 @@ function ensureCnImport(sourceFile: ReturnType<Project["createSourceFile"]>) {
     } else {
       // Add a new import for cn.
       sourceFile.addImportDeclaration({
-        moduleSpecifier: "@/lib/utils",
+        moduleSpecifier: config.aliases.utils,
         namedImports: ["cn"],
       })
     }
