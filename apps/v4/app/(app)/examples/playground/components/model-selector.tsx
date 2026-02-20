@@ -62,6 +62,7 @@ export function ModelSelector({ models, types, ...props }: ModelSelectorProps) {
             role="combobox"
             aria-expanded={open}
             aria-label="Select a model"
+            aria-controls="model-selector-content"
             className="w-full justify-between"
           >
             {selectedModel ? selectedModel.name : "Select a model..."}
