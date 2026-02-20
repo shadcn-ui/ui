@@ -832,5 +832,11 @@
     "homepage": "https://iconiqs.vercel.app",
     "url": "https://iconiqs.vercel.app/r/{name}.json",
     "description": "Iconiq is a collection of icons designed for web applications. It is a modern, clean, and minimalistic icon set that is perfect for web applications."
+  },
+  {
+    "name": "@fluid",
+    "homepage": "https://www.fluidfunctionalism.com",
+    "url": "https://www.fluidfunctionalism.com/r/{name}.json",
+    "description": "Fluid components used exclusively in service of functional clarity. Proximity hover, spring animations, font-weight transitions, and animated focus rings."
   }
 ]
