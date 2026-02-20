@@ -208,7 +208,7 @@ export const init = new Command()
 
         let shouldReinstall = options.reinstall
 
-        if (!shouldReinstall) {
+        if (shouldReinstall === undefined) {
           const { reinstall } = await prompts({
             type: "confirm",
             name: "reinstall",
