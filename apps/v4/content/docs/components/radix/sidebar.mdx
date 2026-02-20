@@ -148,10 +148,12 @@ For multiple sidebars in your application, you can use the `--sidebar-width` and
 
 ```tsx showLineNumbers
 <SidebarProvider
-  style={{
-    "--sidebar-width": "20rem",
-    "--sidebar-width-mobile": "20rem",
-  } as React.CSSProperties}
+  style={
+    {
+      "--sidebar-width": "20rem",
+      "--sidebar-width-mobile": "20rem",
+    } as React.CSSProperties
+  }
 >
   <Sidebar />
 </SidebarProvider>
