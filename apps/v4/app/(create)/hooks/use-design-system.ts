@@ -17,7 +17,6 @@ export function usePresetCode() {
 
     // Otherwise encode current params (e.g. on initial load before first interaction).
     return encodePreset({
-      base: params.base ?? undefined,
       style: params.style ?? undefined,
       baseColor: params.baseColor ?? undefined,
       theme: params.theme ?? undefined,
@@ -29,7 +28,6 @@ export function usePresetCode() {
     } as Parameters<typeof encodePreset>[0])
   }, [
     params.preset,
-    params.base,
     params.style,
     params.baseColor,
     params.theme,

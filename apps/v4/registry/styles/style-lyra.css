@@ -1317,8 +1317,12 @@
     @apply size-6 rounded-none p-0 has-[>svg]:p-0;
   }
 
+  .cn-input-group-button-size-sm {
+    @apply gap-1;
+  }
+
   .cn-input-group-button-size-icon-sm {
-    @apply size-8 p-0 has-[>svg]:p-0;
+    @apply size-7 p-0 has-[>svg]:p-0;
   }
 
   .cn-input-group-text {

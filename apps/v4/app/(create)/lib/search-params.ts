@@ -78,7 +78,6 @@ const designSystemSearchParams = {
 
 // Design system param keys that get encoded into the preset code.
 const DESIGN_SYSTEM_KEYS = [
-  "base",
   "style",
   "baseColor",
   "theme",
@@ -90,7 +89,9 @@ const DESIGN_SYSTEM_KEYS = [
 ] as const
 
 // Non-design-system keys that get passed through as-is.
+// `base` is not encoded in preset codes — it's an architectural choice, not visual.
 const NON_DESIGN_SYSTEM_KEYS = [
+  "base",
   "item",
   "template",
   "rtl",
@@ -167,7 +168,6 @@ export function useDesignSystemSearchParams(options: Options = {}) {
       // Cast needed: merged values may include null from nuqs resets,
       // but encodePreset handles missing values by falling back to defaults.
       const code = encodePreset({
-        base: merged.base ?? undefined,
         style: merged.style ?? undefined,
         baseColor: merged.baseColor ?? undefined,
         theme: merged.theme ?? undefined,

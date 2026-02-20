@@ -245,10 +245,7 @@ export async function getTailwindVersion(
   return "v4"
 }
 
-export async function getTailwindCssFile(
-  cwd: string,
-  configCssFile?: string
-) {
+export async function getTailwindCssFile(cwd: string, configCssFile?: string) {
   // If the existing config has a known CSS file, check it first.
   if (configCssFile) {
     const resolvedPath = path.resolve(cwd, configCssFile)

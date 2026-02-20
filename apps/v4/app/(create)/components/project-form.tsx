@@ -10,6 +10,7 @@ import { HugeiconsIcon } from "@hugeicons/react"
 
 import { useConfig } from "@/hooks/use-config"
 import { copyToClipboardWithMeta } from "@/components/copy-button"
+import { BASES } from "@/registry/config"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import {
   Collapsible,
@@ -87,23 +88,25 @@ export function ProjectForm() {
   const commands = React.useMemo(() => {
     const origin = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:4000"
     const isLocalDev = origin.includes("localhost")
+    const baseFlag = params.base ? ` --base ${params.base}` : ""
     const rtlFlag = params.rtl ? " --rtl" : ""
     const templateFlag = params.template ? ` --template ${params.template}` : ""
+    const flags = `${baseFlag}${rtlFlag}`
 
     return isLocalDev
       ? {
-          pnpm: `pnpm shadcn init${rtlFlag} --preset ${presetCode}${templateFlag}`,
-          npm: `pnpm shadcn init${rtlFlag} --preset ${presetCode}${templateFlag}`,
-          yarn: `pnpm shadcn init${rtlFlag} --preset ${presetCode}${templateFlag}`,
-          bun: `pnpm shadcn init${rtlFlag} --preset ${presetCode}${templateFlag}`,
+          pnpm: `pnpm shadcn init${flags} --preset ${presetCode}${templateFlag}`,
+          npm: `pnpm shadcn init${flags} --preset ${presetCode}${templateFlag}`,
+          yarn: `pnpm shadcn init${flags} --preset ${presetCode}${templateFlag}`,
+          bun: `pnpm shadcn init${flags} --preset ${presetCode}${templateFlag}`,
         }
       : {
-          pnpm: `pnpm dlx shadcn@latest init${rtlFlag} --preset ${presetCode}${templateFlag}`,
-          npm: `npx shadcn@latest init${rtlFlag} --preset ${presetCode}${templateFlag}`,
-          yarn: `yarn dlx shadcn@latest init${rtlFlag} --preset ${presetCode}${templateFlag}`,
-          bun: `bunx --bun shadcn@latest init${rtlFlag} --preset ${presetCode}${templateFlag}`,
+          pnpm: `pnpm dlx shadcn@latest init${flags} --preset ${presetCode}${templateFlag}`,
+          npm: `npx shadcn@latest init${flags} --preset ${presetCode}${templateFlag}`,
+          yarn: `yarn dlx shadcn@latest init${flags} --preset ${presetCode}${templateFlag}`,
+          bun: `bunx --bun shadcn@latest init${flags} --preset ${presetCode}${templateFlag}`,
         }
-  }, [presetCode, params.rtl, params.template])
+  }, [presetCode, params.base, params.rtl, params.template])
 
   const command = commands[packageManager]
 
@@ -222,7 +225,40 @@ export function ProjectForm() {
                 <path d="m6 9 6 6 6-6" />
               </svg>
             </CollapsibleTrigger>
-            <CollapsibleContent className="border-t px-3 py-3">
+            <CollapsibleContent className="space-y-4 border-t px-3 py-3">
+              <Field>
+                <FieldLabel className="text-sm">Component Library</FieldLabel>
+                <RadioGroup
+                  value={params.base}
+                  onValueChange={(value) => {
+                    setParams({
+                      base: value as "radix" | "base",
+                    })
+                  }}
+                  className="grid grid-cols-2 gap-2"
+                >
+                  {BASES.map((base) => (
+                    <FieldLabel key={base.name} htmlFor={`base-${base.name}`}>
+                      <Field className="flex min-w-0 flex-row items-center gap-2 p-3! *:w-auto!">
+                        <RadioGroupItem
+                          value={base.name}
+                          id={`base-${base.name}`}
+                          className="sr-only"
+                        />
+                        {base.meta?.logo && (
+                          <div
+                            className="text-foreground *:[svg]:text-foreground! size-4 shrink-0 [&_svg]:size-4"
+                            dangerouslySetInnerHTML={{
+                              __html: base.meta.logo,
+                            }}
+                          />
+                        )}
+                        <FieldTitle>{base.title}</FieldTitle>
+                      </Field>
+                    </FieldLabel>
+                  ))}
+                </RadioGroup>
+              </Field>
               <Field orientation="horizontal" className="items-center">
                 <FieldContent className="gap-0.5">
                   <FieldLabel htmlFor="rtl" className="text-sm">

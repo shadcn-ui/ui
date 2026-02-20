@@ -45,7 +45,7 @@ async function captureScreenshots() {
       continue
     }
 
-    const pageUrl = `http://localhost:4000/preview/${decoded.base}/preview?preset=${code}`
+    const pageUrl = `http://localhost:4000/preview/radix/preview?preset=${code}`
 
     const page = await browser.newPage()
     await page.goto(pageUrl, {

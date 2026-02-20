@@ -58,8 +58,7 @@ export async function preFlightInit(
     | Record<string, unknown>
     | undefined
   const projectInfo = await getProjectInfo(options.cwd, {
-    configCssFile:
-      typeof tailwind?.css === "string" ? tailwind.css : undefined,
+    configCssFile: typeof tailwind?.css === "string" ? tailwind.css : undefined,
   })
   if (!projectInfo || projectInfo?.framework.name === "manual") {
     errors[ERRORS.UNSUPPORTED_FRAMEWORK] = true
