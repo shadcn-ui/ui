@@ -20,7 +20,9 @@ export const metadata: Metadata = {
     default: siteConfig.name,
     template: `%s - ${siteConfig.name}`,
   },
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL!),
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_APP_URL || "http://localhost:4000"
+  ),
   description: siteConfig.description,
   keywords: ["Next.js", "React", "Tailwind CSS", "Components", "shadcn"],
   authors: [
@@ -33,7 +35,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: process.env.NEXT_PUBLIC_APP_URL!,
+    url: process.env.NEXT_PUBLIC_APP_URL || "http://localhost:4000",
     title: siteConfig.name,
     description: siteConfig.description,
     siteName: siteConfig.name,
