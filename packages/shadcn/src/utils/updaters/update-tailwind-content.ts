@@ -69,7 +69,10 @@ export async function transformTailwindContent(
 
   addTailwindConfigContent(configObject, content)
 
-  return sourceFile.getFullText()
+  const output = sourceFile.getFullText()
+
+  // Preserve trailing newline if it exists in the input.
+  return input.endsWith("\n") ? output.trimEnd() + "\n" : output
 }
 
 async function addTailwindConfigContent(

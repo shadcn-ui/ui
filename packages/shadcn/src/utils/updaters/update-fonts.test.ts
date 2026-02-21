@@ -758,3 +758,158 @@ export default function RootLayout({
     expect(secondRun).toBe(firstRun)
   })
 })
+
+describe("transformLayoutFonts -> newline preservation", () => {
+  it("should preserve trailing newline when present", async () => {
+    const input = `import type { Metadata } from "next"
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  )
+}
+`
+    const fonts = [
+      {
+        name: "inter",
+        type: "registry:font" as const,
+        font: {
+          family: "Inter",
+          provider: "google" as const,
+          import: "Inter",
+          variable: "--font-sans",
+          subsets: ["latin"],
+        },
+      },
+    ]
+
+    const result = await transformLayoutFonts(input, fonts, mockConfig)
+
+    expect(result.endsWith("\n")).toBe(true)
+    expect(result.endsWith("\n\n")).toBe(false)
+  })
+
+  it("should not add trailing newline when not present", async () => {
+    const input = `import type { Metadata } from "next"
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  )
+}`
+
+    const fonts = [
+      {
+        name: "inter",
+        type: "registry:font" as const,
+        font: {
+          family: "Inter",
+          provider: "google" as const,
+          import: "Inter",
+          variable: "--font-sans",
+          subsets: ["latin"],
+        },
+      },
+    ]
+
+    const result = await transformLayoutFonts(input, fonts, mockConfig)
+
+    expect(result.endsWith("\n")).toBe(false)
+  })
+
+  it("should handle multiple trailing newlines correctly", async () => {
+    const input = `import type { Metadata } from "next"
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  )
+}
+
+
+`
+    const fonts = [
+      {
+        name: "inter",
+        type: "registry:font" as const,
+        font: {
+          family: "Inter",
+          provider: "google" as const,
+          import: "Inter",
+          variable: "--font-sans",
+          subsets: ["latin"],
+        },
+      },
+    ]
+
+    const result = await transformLayoutFonts(input, fonts, mockConfig)
+
+    // Should normalize to single trailing newline
+    expect(result.endsWith("\n")).toBe(true)
+    expect(result.match(/\n+$/)?.[0]).toBe("\n")
+  })
+
+  it("should preserve newline with multiple fonts", async () => {
+    const input = `import type { Metadata } from "next"
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  )
+}
+`
+    const fonts = [
+      {
+        name: "inter",
+        type: "registry:font" as const,
+        font: {
+          family: "Inter",
+          provider: "google" as const,
+          import: "Inter",
+          variable: "--font-sans",
+          subsets: ["latin"],
+        },
+      },
+      {
+        name: "jetbrains-mono",
+        type: "registry:font" as const,
+        font: {
+          family: "JetBrains Mono",
+          provider: "google" as const,
+          import: "JetBrains_Mono",
+          variable: "--font-mono",
+          subsets: ["latin"],
+        },
+      },
+    ]
+
+    const result = await transformLayoutFonts(input, fonts, mockConfig)
+
+    expect(result.endsWith("\n")).toBe(true)
+    expect(result.endsWith("\n\n")).toBe(false)
+  })
+})
