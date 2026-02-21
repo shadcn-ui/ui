@@ -2,7 +2,7 @@ import { spawn } from "child_process"
 import { promises as fs } from "fs"
 import path from "path"
 import { rimraf } from "rimraf"
-import { registrySchema } from "shadcn/schema"
+import { registrySchema, type RegistryItem } from "shadcn/schema"
 import {
   createStyleMap,
   transformDirection,
@@ -84,6 +84,9 @@ try {
   // Build RTL variants of examples.
   console.log("\n🔄 Building RTL examples...")
   await buildRtlExamples()
+
+  console.log("\n📦 Building public/r/index.json...")
+  await buildIndex()
 
   console.log("\n📋 Building public/r/registries.json...")
   await buildRegistriesJson()
@@ -588,6 +591,51 @@ async function copyUIToExamples() {
       )
     })
   )
+}
+
+async function buildIndex() {
+  // Import ui/_registry.ts from each base.
+  const baseUiRegistries = await Promise.all(
+    Array.from(BASES).map(async (base) => {
+      const { ui } = await import(
+        `../registry/bases/${base.name}/ui/_registry.ts`
+      )
+      return { baseName: base.name, items: ui as RegistryItem[] }
+    })
+  )
+
+  // Dedupe components by name and merge links across bases.
+  type IndexItem = Omit<RegistryItem, "meta"> & {
+    meta?: { links?: Record<string, RegistryItem["meta"]> }
+  }
+  const componentMap = new Map<string, IndexItem>()
+  for (const { baseName, items } of baseUiRegistries) {
+    for (const item of items) {
+      if (!componentMap.has(item.name)) {
+        const { meta, ...rest } = item
+        componentMap.set(item.name, {
+          ...rest,
+          ...(meta?.links
+            ? { meta: { links: { [baseName]: meta.links } } }
+            : {}),
+        })
+      } else if (item.meta?.links) {
+        const existing = componentMap.get(item.name)!
+        existing.meta = existing.meta || {}
+        existing.meta.links = existing.meta.links || {}
+        existing.meta.links[baseName] = item.meta.links
+      }
+    }
+  }
+
+  // Sort alphabetically by name.
+  const index = Array.from(componentMap.values()).sort((a, b) =>
+    a.name.localeCompare(b.name)
+  )
+
+  const outputPath = path.join(process.cwd(), "public/r/index.json")
+  await fs.writeFile(outputPath, JSON.stringify(index, null, 2))
+  prettierPaths.push(outputPath)
 }
 
 async function buildRegistriesJson() {
