@@ -210,10 +210,24 @@ export function findCommonRoot(cwd: string, resolvedPath: string) {
   return commonParts.join(path.sep)
 }
 
-// TODO: Cache this call.
+const styleCache = new Map<string, string>()
+
 export async function getTargetStyleFromConfig(cwd: string, fallback: string) {
+  const cacheKey = `${cwd}:${fallback}`
+
+  if (styleCache.has(cacheKey)) {
+    return styleCache.get(cacheKey)!
+  }
+
   const projectInfo = await getProjectInfo(cwd)
-  return projectInfo?.tailwindVersion === "v4" ? "new-york-v4" : fallback
+  const style = projectInfo?.tailwindVersion === "v4" ? "new-york-v4" : fallback
+  styleCache.set(cacheKey, style)
+
+  return style
+}
+
+export function clearStyleCache() {
+  return styleCache.clear()
 }
 
 export type DeepPartial<T> = {
