@@ -68,6 +68,8 @@ export function CommandMenu({
   // Track search queries with debouncing to avoid excessive tracking.
   const searchTimeoutRef = React.useRef<NodeJS.Timeout | undefined>(undefined)
   const lastTrackedQueryRef = React.useRef<string>("")
+  // Track the open state in a ref to check if dialog is currently open
+  const openRef = React.useRef(open)
 
   const trackSearchQuery = React.useCallback((query: string) => {
     const trimmedQuery = query.trim()
@@ -340,7 +342,13 @@ export function CommandMenu({
   }, [blocks, handleBlockHighlight, runCommand, router])
 
   React.useEffect(() => {
+    // Update the ref whenever the dialog open state changes
+    openRef.current = open
+  }, [open])
+
+  React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
+      // Only handle copy commands when the dialog is actually open
       if ((e.key === "k" && (e.metaKey || e.ctrlKey)) || e.key === "/") {
         if (
           (e.target instanceof HTMLElement && e.target.isContentEditable) ||
@@ -355,7 +363,7 @@ export function CommandMenu({
         setOpen((open) => !open)
       }
 
-      if (e.key === "c" && (e.metaKey || e.ctrlKey)) {
+      if (e.key === "c" && (e.metaKey || e.ctrlKey) && openRef.current) {
         runCommand(() => {
           if (selectedType === "color") {
             copyToClipboardWithMeta(copyPayload, {
