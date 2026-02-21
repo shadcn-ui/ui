@@ -271,7 +271,13 @@ async function addWorkspaceComponents(
   for (const type of Array.from(filesByType.keys())) {
     const typeFiles = filesByType.get(type)!
 
-    let targetConfig = type === "registry:ui" ? workspaceConfig.ui : config
+    // Use the UI package config for UI components, hooks, and lib files
+    // since they typically co-locate in workspace setups
+    const shouldUseUiConfig =
+      type === "registry:ui" ||
+      type === "registry:hook" ||
+      type === "registry:lib"
+    let targetConfig = shouldUseUiConfig ? workspaceConfig.ui : config
 
     const typeWorkspaceRoot = findCommonRoot(
       config.resolvedPaths.cwd,
