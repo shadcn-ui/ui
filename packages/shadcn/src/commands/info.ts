@@ -1,6 +1,6 @@
 import { existsSync } from "fs"
 import path from "path"
-import { getConfig } from "@/src/utils/get-config"
+import { getBase, getConfig } from "@/src/utils/get-config"
 import {
   formatMonorepoMessage,
   getMonorepoTargets,
@@ -75,10 +75,6 @@ export const info = new Command()
       handleError(error)
     }
   })
-
-function getBase(style: string | undefined) {
-  return style?.startsWith("base-") ? "base" : "radix"
-}
 
 function getRegistries(
   registries: Record<string, string | { url: string }> | undefined

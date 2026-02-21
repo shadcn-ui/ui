@@ -3,7 +3,6 @@ import { buildUrlAndHeadersForRegistryItem } from "@/src/registry/builder"
 import { configWithDefaults } from "@/src/registry/config"
 import { REGISTRY_URL } from "@/src/registry/constants"
 import { type registryConfigSchema } from "@/src/registry/schema"
-import { type Preset } from "@/src/schema"
 import { createConfig } from "@/src/utils/get-config"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
@@ -15,37 +14,72 @@ import { type z } from "zod"
 const SHADCN_URL = REGISTRY_URL.replace(/\/r\/?$/, "")
 
 export const DEFAULT_PRESETS = {
-  "radix-nova": {
-    name: "radix-nova",
-    title: "Radix",
-    description: "Nova / Lucide / Geist",
-    base: "radix",
+  nova: {
+    title: "Nova",
+    description: "Lucide / Geist",
     style: "nova",
     baseColor: "neutral",
     theme: "neutral",
     iconLibrary: "lucide",
     font: "geist",
-    menuAccent: "subtle",
-    menuColor: "default",
+    menuAccent: "subtle" as const,
+    menuColor: "default" as const,
     radius: "default",
     rtl: false,
   },
-  "base-nova": {
-    name: "base-nova",
-    title: "Base",
-    description: "Nova / Lucide / Geist",
-    base: "base",
-    style: "nova",
+  vega: {
+    title: "Vega",
+    description: "Lucide / Inter",
+    style: "vega",
     baseColor: "neutral",
     theme: "neutral",
     iconLibrary: "lucide",
-    font: "geist",
-    menuAccent: "subtle",
-    menuColor: "default",
+    font: "inter",
+    menuAccent: "subtle" as const,
+    menuColor: "default" as const,
     radius: "default",
     rtl: false,
   },
-} satisfies Record<string, Preset>
+  maia: {
+    title: "Maia",
+    description: "Hugeicons / Figtree",
+    style: "maia",
+    baseColor: "neutral",
+    theme: "neutral",
+    iconLibrary: "hugeicons",
+    font: "figtree",
+    menuAccent: "subtle" as const,
+    menuColor: "default" as const,
+    radius: "default",
+    rtl: false,
+  },
+  lyra: {
+    title: "Lyra",
+    description: "Tabler / JetBrains Mono",
+    style: "lyra",
+    baseColor: "neutral",
+    theme: "neutral",
+    iconLibrary: "hugeicons",
+    font: "jetbrains-mono",
+    menuAccent: "subtle" as const,
+    menuColor: "default" as const,
+    radius: "default",
+    rtl: false,
+  },
+  mira: {
+    title: "Mira",
+    description: "Hugeicons / Inter",
+    style: "mira",
+    baseColor: "neutral",
+    theme: "neutral",
+    iconLibrary: "hugeicons",
+    font: "inter",
+    menuAccent: "subtle" as const,
+    menuColor: "default" as const,
+    radius: "default",
+    rtl: false,
+  },
+}
 
 export function resolveCreateUrl(
   searchParams?: Partial<{
@@ -73,7 +107,18 @@ export function resolveCreateUrl(
 }
 
 export function resolveInitUrl(
-  preset: Omit<Preset, "name" | "title" | "description">,
+  preset: {
+    base: string
+    style: string
+    baseColor: string
+    theme: string
+    iconLibrary: string
+    font: string
+    rtl: boolean
+    menuAccent: string
+    menuColor: string
+    radius: string
+  },
   options?: { template?: string }
 ) {
   const params = new URLSearchParams({
@@ -96,24 +141,36 @@ export function resolveInitUrl(
   return `${SHADCN_URL}/init?${params.toString()}`
 }
 
+export async function promptForBase() {
+  const { base } = await prompts({
+    type: "select",
+    name: "base",
+    message: `Select a ${highlighter.info("component library")}`,
+    choices: [
+      { title: "Radix", value: "radix" },
+      { title: "Base", value: "base" },
+    ],
+  })
+  if (!base) process.exit(0)
+  return base as "radix" | "base"
+}
+
 export async function promptForPreset(options: {
   rtl: boolean
+  base: string
   template?: string
-  base?: string
 }) {
-  const presets = Object.values(DEFAULT_PRESETS).filter(
-    (preset) => !options.base || preset.base === options.base
-  )
+  const presets = Object.entries(DEFAULT_PRESETS)
 
   const { selectedPreset } = await prompts({
     type: "select",
     name: "selectedPreset",
     message: `Which ${highlighter.info("preset")} would you like to use?`,
     choices: [
-      ...presets.map((preset) => ({
+      ...presets.map(([name, preset]) => ({
         title: preset.title,
         description: preset.description,
-        value: preset.name,
+        value: name,
       })),
       {
         title: "Custom",
@@ -131,6 +188,7 @@ export async function promptForPreset(options: {
     const createUrl = resolveCreateUrl({
       command: "init",
       rtl: options.rtl,
+      base: options.base,
       ...(options.template && { template: options.template }),
     })
     logger.break()
@@ -156,19 +214,19 @@ export async function promptForPreset(options: {
     process.exit(0)
   }
 
-  const preset = presets.find((p) => p.name === selectedPreset)
+  const preset = DEFAULT_PRESETS[selectedPreset as keyof typeof DEFAULT_PRESETS]
   if (!preset) {
     process.exit(0)
   }
 
   return {
     url: resolveInitUrl(
-      { ...preset, rtl: options.rtl },
+      { ...preset, base: options.base, rtl: options.rtl },
       {
         template: options.template,
       }
     ),
-    base: preset.base,
+    base: options.base,
   }
 }
 

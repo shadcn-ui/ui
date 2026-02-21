@@ -16,7 +16,11 @@ import { getProjectInfo } from "@/src/utils/get-project-info"
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
-import { promptForPreset, resolveRegistryBaseConfig } from "@/src/utils/presets"
+import {
+  promptForBase,
+  promptForPreset,
+  resolveRegistryBaseConfig,
+} from "@/src/utils/presets"
 import { ensureRegistriesInConfig } from "@/src/utils/registries"
 import { updateAppIndex } from "@/src/utils/update-app-index"
 import { Command } from "commander"
@@ -163,9 +167,11 @@ export const add = new Command()
           projectInfo?.framework.name
         )
 
-        // Prompt for preset.
+        // Prompt for base and preset.
+        const base = await promptForBase()
         const { url: initUrl } = await promptForPreset({
           rtl: false,
+          base,
           template: inferredTemplate,
         })
 
@@ -208,9 +214,11 @@ export const add = new Command()
           options.cwd = path.resolve(options.cwd, "apps/web")
           config = await getConfig(options.cwd)
         } else {
-          // Prompt for preset.
+          // Prompt for base and preset.
+          const selectedBase = await promptForBase()
           const { url: initUrl } = await promptForPreset({
             rtl: false,
+            base: selectedBase,
             template,
           })
           const { registryBaseConfig, installStyleIndex } =

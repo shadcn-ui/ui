@@ -4,6 +4,7 @@ import { preFlightInit } from "@/src/preflights/preflight-init"
 import { getRegistryBaseColors, getRegistryStyles } from "@/src/registry/api"
 import { BUILTIN_REGISTRIES } from "@/src/registry/constants"
 import { clearRegistryContext } from "@/src/registry/context"
+import { registryConfigSchema } from "@/src/registry/schema"
 import { isUrl } from "@/src/registry/utils"
 import { rawConfigSchema } from "@/src/schema"
 import { getTemplateForFramework, templates } from "@/src/templates/index"
@@ -43,6 +44,7 @@ import { logger } from "@/src/utils/logger"
 import { decodePreset, isPresetCode } from "@/src/utils/preset"
 import {
   DEFAULT_PRESETS,
+  promptForBase,
   promptForPreset,
   resolveInitUrl,
   resolveRegistryBaseConfig,
@@ -84,7 +86,7 @@ export const init = new Command()
     "-t, --template <template>",
     "the template to use. (next, start, vite, next-monorepo, react-router)"
   )
-  .option("-b, --base <base>", "the primitive library to use. (radix, base)")
+  .option("-b, --base <base>", "the component library to use. (radix, base)")
   .option("-p, --preset [name]", "use a preset configuration")
   .option("-y, --yes", "skip confirmation prompt.", true)
   .option(
@@ -126,10 +128,7 @@ export const init = new Command()
         reinstall: opts.reinstall,
         cwd: path.resolve(opts.cwd),
       })
-      const presets = Object.values(DEFAULT_PRESETS)
-      const presetsByName = new Map(
-        presets.map((preset) => [preset.name, preset])
-      )
+      const presetsByName = new Map(Object.entries(DEFAULT_PRESETS))
 
       let presetBase: string | undefined
 
@@ -155,7 +154,7 @@ export const init = new Command()
         !isUrl(options.preset) &&
         !isPresetCode(options.preset)
       ) {
-        const knownPresetNames = presets.map((preset) => preset.name)
+        const knownPresetNames = Array.from(presetsByName.keys())
 
         if (!presetsByName.has(options.preset)) {
           logger.error(
@@ -292,6 +291,11 @@ export const init = new Command()
           }
         }
 
+        // Prompt for base if not provided.
+        if (!options.base) {
+          options.base = await promptForBase()
+        }
+
         // Show interactive preset list.
         options.preset = true
       }
@@ -303,7 +307,7 @@ export const init = new Command()
           const result = await promptForPreset({
             rtl: options.rtl ?? false,
             template: options.template,
-            base: options.base,
+            base: options.base!,
           })
           components = [result.url, ...components]
           presetBase = result.base
@@ -346,11 +350,12 @@ export const init = new Command()
             initUrl = resolveInitUrl(
               {
                 ...preset,
+                base: options.base ?? "radix",
                 rtl: options.rtl ?? preset.rtl,
               },
               { template: options.template }
             )
-            presetBase = preset.base
+            presetBase = undefined
           }
 
           components = [initUrl, ...components]
@@ -368,27 +373,17 @@ export const init = new Command()
           : "")
 
       if (!resolvedBase) {
-        const { base } = await prompts({
-          type: "select",
-          name: "base",
-          message: `Which ${highlighter.info(
-            "primitive library"
-          )} would you like to use?`,
-          choices: [
-            { title: "Radix", value: "radix" },
-            { title: "Base", value: "base" },
-          ],
-        })
-        if (!base) process.exit(0)
+        const base = await promptForBase()
         resolvedBase = base
+        options.base = base
       }
 
       // Build the --defaults URL now that base is resolved.
       if (options.defaults && components.length === 0) {
-        const presetName = resolvedBase === "base" ? "base-nova" : "radix-nova"
         const initUrl = resolveInitUrl(
           {
-            ...DEFAULT_PRESETS[presetName],
+            ...DEFAULT_PRESETS.nova,
+            base: resolvedBase,
             rtl: options.rtl ?? false,
           },
           { template: options.template }
@@ -450,7 +445,7 @@ export const init = new Command()
         const { registryBaseConfig, installStyleIndex } =
           await resolveRegistryBaseConfig(components[0], cwd, {
             registries: existingConfig?.registries as
-              | Record<string, unknown>
+              | z.infer<typeof registryConfigSchema>
               | undefined,
           })
 
