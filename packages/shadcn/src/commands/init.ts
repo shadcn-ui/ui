@@ -123,7 +123,7 @@ export const init = new Command()
     undefined
   )
   .option("-y, --yes", "skip confirmation prompt.", true)
-  .option("-d, --defaults,", "use default configuration.", false)
+  .option("-d, --defaults", "use default configuration.", false)
   .option("-f, --force", "force overwrite of existing configuration.", false)
   .option(
     "-c, --cwd <cwd>",
@@ -517,9 +517,8 @@ async function promptForConfig(defaultConfig: Config | null = null) {
     aliases: {
       utils: options.utils,
       components: options.components,
-      // TODO: fix this.
-      lib: options.components.replace(/\/components$/, "lib"),
-      hooks: options.components.replace(/\/components$/, "hooks"),
+      lib: options.components.replace(/\/components$/, "/lib"),
+      hooks: options.components.replace(/\/components$/, "/hooks"),
     },
   })
 }
