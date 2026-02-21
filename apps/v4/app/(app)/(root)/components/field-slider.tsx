@@ -1,13 +1,8 @@
 "use client"
 
 import { useState } from "react"
-
-import {
-  Field,
-  FieldDescription,
-  FieldTitle,
-} from "@/registry/new-york-v4/ui/field"
-import { Slider } from "@/registry/new-york-v4/ui/slider"
+import { Field, FieldDescription, FieldTitle } from "@/examples/radix/ui/field"
+import { Slider } from "@/examples/radix/ui/slider"
 
 export function FieldSlider() {
   const [value, setValue] = useState([200, 800])

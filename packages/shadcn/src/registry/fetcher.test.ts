@@ -2,6 +2,7 @@ import { REGISTRY_URL } from "@/src/registry/constants"
 import {
   RegistryFetchError,
   RegistryForbiddenError,
+  RegistryGoneError,
   RegistryNotFoundError,
   RegistryUnauthorizedError,
 } from "@/src/registry/errors"
@@ -29,6 +30,9 @@ const server = setupServer(
   }),
   http.get(`${REGISTRY_URL}/forbidden.json`, () => {
     return new HttpResponse(null, { status: 403 })
+  }),
+  http.get(`${REGISTRY_URL}/gone.json`, () => {
+    return new HttpResponse(null, { status: 410 })
   }),
   http.get("https://external.com/component.json", () => {
     return HttpResponse.json({
@@ -121,6 +125,10 @@ describe("fetchRegistry", () => {
     await expect(fetchRegistry(["forbidden.json"])).rejects.toThrow(
       RegistryForbiddenError
     )
+  })
+
+  it("should handle 410 errors", async () => {
+    await expect(fetchRegistry(["gone.json"])).rejects.toThrow(RegistryGoneError)
   })
 
   it("should handle network errors", async () => {

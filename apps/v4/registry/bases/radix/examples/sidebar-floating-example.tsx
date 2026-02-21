@@ -60,7 +60,7 @@ export default function SidebarFloatingExample() {
         ],
       },
       {
-        title: "Building Your Application",
+        title: "Build Your Application",
         url: "#",
         items: [
           {
@@ -206,6 +206,7 @@ export default function SidebarFloatingExample() {
                           tabler="IconDots"
                           hugeicons="MoreHorizontalCircle01Icon"
                           phosphor="DotsThreeOutlineIcon"
+                          remixicon="RiMoreLine"
                           className="ml-auto"
                         />
                       </SidebarMenuButton>

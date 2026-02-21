@@ -4,11 +4,13 @@ on:
   pull_request:
     paths:
       - "apps/v4/public/r/registries.json"
+      - "apps/v4/registry/directory.json"
   push:
     branches:
       - main
     paths:
       - "apps/v4/public/r/registries.json"
+      - "apps/v4/registry/directory.json"
 
 jobs:
   validate:
@@ -46,9 +48,6 @@ jobs:
             ${{ runner.os }}-pnpm-store-
       - name: Install dependencies
         run: pnpm install
-
-      - name: Build packages
-        run: pnpm build --filter=shadcn
 
       - name: Validate registries
         run: pnpm --filter=v4 validate:registries

@@ -14,7 +14,7 @@ import {
 import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
 
 export function V0Button({ className }: { className?: string }) {
-  const [params, setParams] = useDesignSystemSearchParams()
+  const [params] = useDesignSystemSearchParams()
   const isMobile = useIsMobile()
   const isMounted = useMounted()
 
@@ -32,7 +32,7 @@ export function V0Button({ className }: { className?: string }) {
             size="sm"
             variant={isMobile ? "default" : "outline"}
             className={cn(
-              "w-24 rounded-lg shadow-none data-[variant=default]:h-[31px]",
+              "w-24 rounded-lg shadow-none data-[variant=default]:h-[31px] lg:w-8 xl:w-24",
               className
             )}
             asChild
@@ -41,7 +41,8 @@ export function V0Button({ className }: { className?: string }) {
               href={`${process.env.NEXT_PUBLIC_V0_URL}/chat/api/open?url=${encodeURIComponent(url)}&title=${params.item}`}
               target="_blank"
             >
-              Open in <Icons.v0 className="size-5" />
+              <span className="lg:hidden xl:block">Open in</span>
+              <Icons.v0 className="size-5" />
             </a>
           </Button>
         </TooltipTrigger>

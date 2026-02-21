@@ -200,6 +200,8 @@ function CarouselPrevious({
         tabler="IconChevronLeft"
         hugeicons="ArrowLeft01Icon"
         phosphor="CaretLeftIcon"
+        remixicon="RiArrowLeftSLine"
+        className="cn-rtl-flip"
       />
       <span className="sr-only">Previous slide</span>
     </Button>
@@ -235,6 +237,8 @@ function CarouselNext({
         tabler="IconChevronRight"
         hugeicons="ArrowRight01Icon"
         phosphor="CaretRightIcon"
+        remixicon="RiArrowRightSLine"
+        className="cn-rtl-flip"
       />
       <span className="sr-only">Next slide</span>
     </Button>

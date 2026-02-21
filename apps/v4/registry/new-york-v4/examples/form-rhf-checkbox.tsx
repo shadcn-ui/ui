@@ -90,33 +90,35 @@ export default function FormRhfCheckbox() {
               name="responses"
               control={form.control}
               render={({ field, fieldState }) => (
-                <FieldSet data-invalid={fieldState.invalid}>
-                  <FieldLegend variant="label">Responses</FieldLegend>
-                  <FieldDescription>
-                    Get notified for requests that take time, like research or
-                    image generation.
-                  </FieldDescription>
-                  <FieldGroup data-slot="checkbox-group">
-                    <Field orientation="horizontal">
-                      <Checkbox
-                        id="form-rhf-checkbox-responses"
-                        name={field.name}
-                        checked={field.value}
-                        onCheckedChange={field.onChange}
-                        disabled
-                      />
-                      <FieldLabel
-                        htmlFor="form-rhf-checkbox-responses"
-                        className="font-normal"
-                      >
-                        Push notifications
-                      </FieldLabel>
-                    </Field>
-                  </FieldGroup>
+                <div>
+                  <FieldSet data-invalid={fieldState.invalid}>
+                    <FieldLegend variant="label">Responses</FieldLegend>
+                    <FieldDescription>
+                      Get notified for requests that take time, like research or
+                      image generation.
+                    </FieldDescription>
+                    <FieldGroup data-slot="checkbox-group">
+                      <Field orientation="horizontal">
+                        <Checkbox
+                          id="form-rhf-checkbox-responses"
+                          name={field.name}
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                          disabled
+                        />
+                        <FieldLabel
+                          htmlFor="form-rhf-checkbox-responses"
+                          className="font-normal"
+                        >
+                          Push notifications
+                        </FieldLabel>
+                      </Field>
+                    </FieldGroup>
+                  </FieldSet>
                   {fieldState.invalid && (
                     <FieldError errors={[fieldState.error]} />
                   )}
-                </FieldSet>
+                </div>
               )}
             />
             <FieldSeparator />
@@ -124,43 +126,47 @@ export default function FormRhfCheckbox() {
               name="tasks"
               control={form.control}
               render={({ field, fieldState }) => (
-                <FieldSet data-invalid={fieldState.invalid}>
-                  <FieldLegend variant="label">Tasks</FieldLegend>
-                  <FieldDescription>
-                    Get notified when tasks you&apos;ve created have updates.
-                  </FieldDescription>
-                  <FieldGroup data-slot="checkbox-group">
-                    {tasks.map((task) => (
-                      <Field
-                        key={task.id}
-                        orientation="horizontal"
-                        data-invalid={fieldState.invalid}
-                      >
-                        <Checkbox
-                          id={`form-rhf-checkbox-${task.id}`}
-                          name={field.name}
-                          aria-invalid={fieldState.invalid}
-                          checked={field.value.includes(task.id)}
-                          onCheckedChange={(checked) => {
-                            const newValue = checked
-                              ? [...field.value, task.id]
-                              : field.value.filter((value) => value !== task.id)
-                            field.onChange(newValue)
-                          }}
-                        />
-                        <FieldLabel
-                          htmlFor={`form-rhf-checkbox-${task.id}`}
-                          className="font-normal"
+                <FieldGroup>
+                  <FieldSet data-invalid={fieldState.invalid}>
+                    <FieldLegend variant="label">Tasks</FieldLegend>
+                    <FieldDescription>
+                      Get notified when tasks you&apos;ve created have updates.
+                    </FieldDescription>
+                    <FieldGroup data-slot="checkbox-group">
+                      {tasks.map((task) => (
+                        <Field
+                          key={task.id}
+                          orientation="horizontal"
+                          data-invalid={fieldState.invalid}
                         >
-                          {task.label}
-                        </FieldLabel>
-                      </Field>
-                    ))}
-                  </FieldGroup>
+                          <Checkbox
+                            id={`form-rhf-checkbox-${task.id}`}
+                            name={field.name}
+                            aria-invalid={fieldState.invalid}
+                            checked={field.value.includes(task.id)}
+                            onCheckedChange={(checked) => {
+                              const newValue = checked
+                                ? [...field.value, task.id]
+                                : field.value.filter(
+                                    (value) => value !== task.id
+                                  )
+                              field.onChange(newValue)
+                            }}
+                          />
+                          <FieldLabel
+                            htmlFor={`form-rhf-checkbox-${task.id}`}
+                            className="font-normal"
+                          >
+                            {task.label}
+                          </FieldLabel>
+                        </Field>
+                      ))}
+                    </FieldGroup>
+                  </FieldSet>
                   {fieldState.invalid && (
                     <FieldError errors={[fieldState.error]} />
                   )}
-                </FieldSet>
+                </FieldGroup>
               )}
             />
           </FieldGroup>

@@ -5,10 +5,12 @@ import { cn } from "@/registry/bases/base/lib/utils"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 function NavigationMenu({
+  align = "start",
   className,
   children,
   ...props
-}: NavigationMenuPrimitive.Root.Props) {
+}: NavigationMenuPrimitive.Root.Props &
+  Pick<NavigationMenuPrimitive.Positioner.Props, "align">) {
   return (
     <NavigationMenuPrimitive.Root
       data-slot="navigation-menu"
@@ -19,7 +21,7 @@ function NavigationMenu({
       {...props}
     >
       {children}
-      <NavigationMenuPositioner />
+      <NavigationMenuPositioner align={align} />
     </NavigationMenuPrimitive.Root>
   )
 }
@@ -27,7 +29,7 @@ function NavigationMenu({
 function NavigationMenuList({
   className,
   ...props
-}: NavigationMenuPrimitive.List.Props) {
+}: React.ComponentPropsWithRef<typeof NavigationMenuPrimitive.List>) {
   return (
     <NavigationMenuPrimitive.List
       data-slot="navigation-menu-list"
@@ -43,7 +45,7 @@ function NavigationMenuList({
 function NavigationMenuItem({
   className,
   ...props
-}: NavigationMenuPrimitive.Item.Props) {
+}: React.ComponentPropsWithRef<typeof NavigationMenuPrimitive.Item>) {
   return (
     <NavigationMenuPrimitive.Item
       data-slot="navigation-menu-item"
@@ -74,6 +76,7 @@ function NavigationMenuTrigger({
         tabler="IconChevronDown"
         hugeicons="ArrowDown01Icon"
         phosphor="CaretDownIcon"
+        remixicon="RiArrowDownSLine"
         className="cn-navigation-menu-trigger-icon"
         aria-hidden="true"
       />
@@ -89,7 +92,7 @@ function NavigationMenuContent({
     <NavigationMenuPrimitive.Content
       data-slot="navigation-menu-content"
       className={cn(
-        "cn-navigation-menu-content h-full w-auto **:data-[slot=navigation-menu-link]:focus:ring-0 **:data-[slot=navigation-menu-link]:focus:outline-none",
+        "cn-navigation-menu-content data-ending-style:data-activation-direction=left:translate-x-[50%] data-ending-style:data-activation-direction=right:translate-x-[-50%] data-starting-style:data-activation-direction=left:translate-x-[-50%] data-starting-style:data-activation-direction=right:translate-x-[50%] h-full w-auto transition-[opacity,transform,translate] duration-[0.35s] data-ending-style:opacity-0 data-starting-style:opacity-0 **:data-[slot=navigation-menu-link]:focus:ring-0 **:data-[slot=navigation-menu-link]:focus:outline-none",
         className
       )}
       {...props}
@@ -113,12 +116,12 @@ function NavigationMenuPositioner({
         align={align}
         alignOffset={alignOffset}
         className={cn(
-          "cn-navigation-menu-positioner isolate z-50 h-[var(--positioner-height)] w-[var(--positioner-width)] max-w-[var(--available-width)] data-[instant]:transition-none",
+          "cn-navigation-menu-positioner isolate z-50 h-(--positioner-height) w-(--positioner-width) max-w-(--available-width) transition-[top,left,right,bottom] duration-[0.35s] data-instant:transition-none",
           className
         )}
         {...props}
       >
-        <NavigationMenuPrimitive.Popup className="cn-navigation-menu-popup xs:w-(--popup-width) relative h-(--popup-height) w-(--popup-width) origin-(--transform-origin)">
+        <NavigationMenuPrimitive.Popup className="cn-navigation-menu-popup data-[ending-style]:easing-[ease] xs:w-(--popup-width) relative h-(--popup-height) w-(--popup-width) origin-(--transform-origin) transition-[opacity,transform,width,height,scale,translate] duration-[0.35s] ease-[cubic-bezier(0.22,1,0.36,1)]">
           <NavigationMenuPrimitive.Viewport className="relative size-full overflow-hidden" />
         </NavigationMenuPrimitive.Popup>
       </NavigationMenuPrimitive.Positioner>
@@ -142,12 +145,12 @@ function NavigationMenuLink({
 function NavigationMenuIndicator({
   className,
   ...props
-}: NavigationMenuPrimitive.Icon.Props) {
+}: React.ComponentPropsWithRef<typeof NavigationMenuPrimitive.Icon>) {
   return (
     <NavigationMenuPrimitive.Icon
       data-slot="navigation-menu-indicator"
       className={cn(
-        "cn-navigation-menu-indicator top-full z-[1] flex h-1.5 items-end justify-center overflow-hidden",
+        "cn-navigation-menu-indicator top-full z-1 flex h-1.5 items-end justify-center overflow-hidden",
         className
       )}
       {...props}

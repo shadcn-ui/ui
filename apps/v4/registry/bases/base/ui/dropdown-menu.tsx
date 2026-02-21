@@ -42,7 +42,7 @@ function DropdownMenuContent({
         <MenuPrimitive.Popup
           data-slot="dropdown-menu-content"
           className={cn(
-            "cn-dropdown-menu-content cn-menu-target z-50 max-h-(--available-height) w-(--anchor-width) origin-(--transform-origin) overflow-x-hidden overflow-y-auto outline-none data-closed:overflow-hidden",
+            "cn-dropdown-menu-content cn-dropdown-menu-content-logical cn-menu-target z-50 max-h-(--available-height) w-(--anchor-width) origin-(--transform-origin) overflow-x-hidden overflow-y-auto outline-none data-closed:overflow-hidden",
             className
           )}
           {...props}
@@ -67,7 +67,7 @@ function DropdownMenuLabel({
     <MenuPrimitive.GroupLabel
       data-slot="dropdown-menu-label"
       data-inset={inset}
-      className={cn("cn-dropdown-menu-label data-[inset]:pl-8", className)}
+      className={cn("cn-dropdown-menu-label", className)}
       {...props}
     />
   )
@@ -88,7 +88,7 @@ function DropdownMenuItem({
       data-inset={inset}
       data-variant={variant}
       className={cn(
-        "cn-dropdown-menu-item group/dropdown-menu-item relative flex cursor-default items-center outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 data-[inset]:pl-8 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+        "cn-dropdown-menu-item group/dropdown-menu-item relative flex cursor-default items-center outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
         className
       )}
       {...props}
@@ -113,7 +113,7 @@ function DropdownMenuSubTrigger({
       data-slot="dropdown-menu-sub-trigger"
       data-inset={inset}
       className={cn(
-        "cn-dropdown-menu-sub-trigger flex cursor-default items-center outline-hidden select-none data-[inset]:pl-8 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+        "cn-dropdown-menu-sub-trigger data-popup-open:bg-accent data-popup-open:text-accent-foreground flex cursor-default items-center outline-hidden select-none [&_svg]:pointer-events-none [&_svg]:shrink-0",
         className
       )}
       {...props}
@@ -124,7 +124,8 @@ function DropdownMenuSubTrigger({
         tabler="IconChevronRight"
         hugeicons="ArrowRight01Icon"
         phosphor="CaretRightIcon"
-        className="ml-auto"
+        remixicon="RiArrowRightSLine"
+        className="cn-rtl-flip ml-auto"
       />
     </MenuPrimitive.SubmenuTrigger>
   )
@@ -155,13 +156,17 @@ function DropdownMenuCheckboxItem({
   className,
   children,
   checked,
+  inset,
   ...props
-}: MenuPrimitive.CheckboxItem.Props) {
+}: MenuPrimitive.CheckboxItem.Props & {
+  inset?: boolean
+}) {
   return (
     <MenuPrimitive.CheckboxItem
       data-slot="dropdown-menu-checkbox-item"
+      data-inset={inset}
       className={cn(
-        "cn-dropdown-menu-checkbox-item relative flex cursor-default items-center outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+        "cn-dropdown-menu-checkbox-item relative flex cursor-default items-center outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
         className
       )}
       checked={checked}
@@ -177,6 +182,7 @@ function DropdownMenuCheckboxItem({
             tabler="IconCheck"
             hugeicons="Tick02Icon"
             phosphor="CheckIcon"
+            remixicon="RiCheckLine"
           />
         </MenuPrimitive.CheckboxItemIndicator>
       </span>
@@ -197,13 +203,17 @@ function DropdownMenuRadioGroup({ ...props }: MenuPrimitive.RadioGroup.Props) {
 function DropdownMenuRadioItem({
   className,
   children,
+  inset,
   ...props
-}: MenuPrimitive.RadioItem.Props) {
+}: MenuPrimitive.RadioItem.Props & {
+  inset?: boolean
+}) {
   return (
     <MenuPrimitive.RadioItem
       data-slot="dropdown-menu-radio-item"
+      data-inset={inset}
       className={cn(
-        "cn-dropdown-menu-radio-item relative flex cursor-default items-center outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+        "cn-dropdown-menu-radio-item relative flex cursor-default items-center outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
         className
       )}
       {...props}
@@ -218,6 +228,7 @@ function DropdownMenuRadioItem({
             tabler="IconCheck"
             hugeicons="Tick02Icon"
             phosphor="CheckIcon"
+            remixicon="RiCheckLine"
           />
         </MenuPrimitive.RadioItemIndicator>
       </span>

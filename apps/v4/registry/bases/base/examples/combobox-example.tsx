@@ -70,6 +70,7 @@ export default function ComboboxExample() {
     <ExampleWrapper>
       <ComboboxBasic />
       <ComboboxDisabled />
+      <ComboboxSides />
       <ComboboxInvalid />
       <ComboboxWithClear />
       <ComboboxAutoHighlight />
@@ -86,6 +87,7 @@ export default function ComboboxExample() {
       <ComboboxWithCustomItems />
       <ComboboxInDialog />
       <ComboboxWithOtherInputs />
+      <ComboboxDisabledItems />
     </ExampleWrapper>
   )
 }
@@ -565,6 +567,42 @@ function ComboboxBasic() {
   )
 }
 
+function ComboboxSides() {
+  return (
+    <Example title="Sides" containerClassName="col-span-2">
+      <div className="flex flex-wrap justify-center gap-2">
+        {(
+          [
+            "inline-start",
+            "left",
+            "top",
+            "bottom",
+            "right",
+            "inline-end",
+          ] as const
+        ).map((side) => (
+          <Combobox key={side} items={frameworks}>
+            <ComboboxInput
+              placeholder={side.replace("-", " ")}
+              className="w-32 **:data-[slot=input-group-control]:capitalize"
+            />
+            <ComboboxContent side={side}>
+              <ComboboxEmpty>No items found.</ComboboxEmpty>
+              <ComboboxList>
+                {(item) => (
+                  <ComboboxItem key={item} value={item}>
+                    {item}
+                  </ComboboxItem>
+                )}
+              </ComboboxList>
+            </ComboboxContent>
+          </Combobox>
+        ))}
+      </div>
+    </Example>
+  )
+}
+
 function ComboboxDisabled() {
   return (
     <Example title="Disabled">
@@ -575,6 +613,32 @@ function ComboboxDisabled() {
           <ComboboxList>
             {(item) => (
               <ComboboxItem key={item} value={item}>
+                {item}
+              </ComboboxItem>
+            )}
+          </ComboboxList>
+        </ComboboxContent>
+      </Combobox>
+    </Example>
+  )
+}
+
+const disabledFrameworks = ["Nuxt.js", "Remix"]
+
+function ComboboxDisabledItems() {
+  return (
+    <Example title="Disabled Items">
+      <Combobox items={frameworks}>
+        <ComboboxInput placeholder="Select a framework" />
+        <ComboboxContent>
+          <ComboboxEmpty>No items found.</ComboboxEmpty>
+          <ComboboxList>
+            {(item) => (
+              <ComboboxItem
+                key={item}
+                value={item}
+                disabled={disabledFrameworks.includes(item)}
+              >
                 {item}
               </ComboboxItem>
             )}
@@ -811,6 +875,7 @@ function ComboxboxInputAddon() {
               tabler="IconGlobe"
               hugeicons="Globe02Icon"
               phosphor="GlobeIcon"
+              remixicon="RiGlobeLine"
             />
           </InputGroupAddon>
         </ComboboxInput>
@@ -1235,6 +1300,7 @@ function ComboboxWithOtherInputs() {
           tabler="IconSelector"
           hugeicons="UnfoldMoreIcon"
           phosphor="CaretDownIcon"
+          remixicon="RiArrowDownSLine"
         />
       </Button>
       <Input placeholder="Select a framework" className="w-52" />
@@ -1246,6 +1312,7 @@ function ComboboxWithOtherInputs() {
             tabler="IconSelector"
             hugeicons="UnfoldMoreIcon"
             phosphor="CaretDownIcon"
+            remixicon="RiArrowDownSLine"
           />
         </InputGroupAddon>
       </InputGroup>

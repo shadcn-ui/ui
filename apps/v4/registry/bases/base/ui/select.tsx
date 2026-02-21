@@ -54,6 +54,7 @@ function SelectTrigger({
             tabler="IconSelector"
             hugeicons="UnfoldMoreIcon"
             phosphor="CaretDownIcon"
+            remixicon="RiArrowDownSLine"
             className="cn-select-trigger-icon pointer-events-none"
           />
         }
@@ -88,8 +89,9 @@ function SelectContent({
       >
         <SelectPrimitive.Popup
           data-slot="select-content"
+          data-align-trigger={alignItemWithTrigger}
           className={cn(
-            "cn-select-content cn-menu-target relative isolate z-50 max-h-(--available-height) w-(--anchor-width) origin-(--transform-origin) overflow-x-hidden overflow-y-auto",
+            "cn-select-content cn-select-content-logical cn-menu-target relative isolate z-50 max-h-(--available-height) w-(--anchor-width) origin-(--transform-origin) overflow-x-hidden overflow-y-auto data-[align-trigger=true]:animate-none",
             className
           )}
           {...props}
@@ -125,7 +127,7 @@ function SelectItem({
     <SelectPrimitive.Item
       data-slot="select-item"
       className={cn(
-        "cn-select-item relative flex w-full cursor-default items-center outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+        "cn-select-item relative flex w-full cursor-default items-center outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
         className
       )}
       {...props}
@@ -141,6 +143,7 @@ function SelectItem({
           tabler="IconCheck"
           hugeicons="Tick02Icon"
           phosphor="CheckIcon"
+          remixicon="RiCheckLine"
           className="cn-select-item-indicator-icon pointer-events-none"
         />
       </SelectPrimitive.ItemIndicator>
@@ -176,6 +179,7 @@ function SelectScrollUpButton({
         tabler="IconChevronUp"
         hugeicons="ArrowUp01Icon"
         phosphor="CaretUpIcon"
+        remixicon="RiArrowUpSLine"
       />
     </SelectPrimitive.ScrollUpArrow>
   )
@@ -196,6 +200,7 @@ function SelectScrollDownButton({
         tabler="IconChevronDown"
         hugeicons="ArrowDown01Icon"
         phosphor="CaretDownIcon"
+        remixicon="RiArrowDownSLine"
       />
     </SelectPrimitive.ScrollDownArrow>
   )
