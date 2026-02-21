@@ -1,6 +1,11 @@
 import path from "path"
 import { initOptionsSchema } from "@/src/commands/init"
 import * as ERRORS from "@/src/utils/errors"
+import {
+  formatMonorepoMessage,
+  getMonorepoTargets,
+  isMonorepoRoot,
+} from "@/src/utils/get-monorepo-info"
 import { getProjectInfo } from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
@@ -63,6 +68,16 @@ export async function preFlightInit(
   if (!projectInfo || projectInfo?.framework.name === "manual") {
     errors[ERRORS.UNSUPPORTED_FRAMEWORK] = true
     frameworkSpinner?.fail()
+
+    // Check if we're in a monorepo root.
+    if (await isMonorepoRoot(options.cwd)) {
+      const targets = await getMonorepoTargets(options.cwd)
+      if (targets.length > 0) {
+        formatMonorepoMessage("init", targets)
+        process.exit(1)
+      }
+    }
+
     logger.break()
     if (projectInfo?.framework.links.installation) {
       logger.error(

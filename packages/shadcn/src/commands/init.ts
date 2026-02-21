@@ -27,6 +27,11 @@ import {
   type Config,
 } from "@/src/utils/get-config"
 import {
+  formatMonorepoMessage,
+  getMonorepoTargets,
+  isMonorepoRoot,
+} from "@/src/utils/get-monorepo-info"
+import {
   getProjectComponents,
   getProjectConfig,
   getProjectInfo,
@@ -168,6 +173,18 @@ export const init = new Command()
         path.resolve(cwd, "components.json")
       )
 
+      // Check if we're in a monorepo root before proceeding.
+      if (!hasExistingConfig && (await isMonorepoRoot(cwd))) {
+        const projectInfo = await getProjectInfo(cwd)
+        if (!projectInfo || projectInfo.framework.name === "manual") {
+          const targets = await getMonorepoTargets(cwd)
+          if (targets.length > 0) {
+            formatMonorepoMessage("init", targets)
+            process.exit(1)
+          }
+        }
+      }
+
       if (hasExistingConfig && !options.force) {
         const { overwrite } = await prompts({
           type: "confirm",
@@ -286,6 +303,7 @@ export const init = new Command()
           const result = await promptForPreset({
             rtl: options.rtl ?? false,
             template: options.template,
+            base: options.base,
           })
           components = [result.url, ...components]
           presetBase = result.base

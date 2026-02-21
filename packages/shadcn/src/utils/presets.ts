@@ -99,8 +99,11 @@ export function resolveInitUrl(
 export async function promptForPreset(options: {
   rtl: boolean
   template?: string
+  base?: string
 }) {
-  const presets = Object.values(DEFAULT_PRESETS)
+  const presets = Object.values(DEFAULT_PRESETS).filter(
+    (preset) => !options.base || preset.base === options.base
+  )
 
   const { selectedPreset } = await prompts({
     type: "select",
