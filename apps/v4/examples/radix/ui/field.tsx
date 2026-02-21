@@ -178,7 +178,7 @@ function FieldError({
   errors,
   ...props
 }: React.ComponentProps<"div"> & {
-  errors?: Array<{ message?: string } | undefined>
+  errors?: any
 }) {
   const content = useMemo(() => {
     if (children) {
@@ -189,8 +189,12 @@ function FieldError({
       return null
     }
 
+    const flattenedErrors = errors.flat(Infinity) as Array<{ message: string }>
+
     const uniqueErrors = [
-      ...new Map(errors.map((error) => [error?.message, error])).values(),
+      ...new Map(
+        flattenedErrors.map((error) => [error?.message, error])
+      ).values(),
     ]
 
     if (uniqueErrors?.length == 1) {
