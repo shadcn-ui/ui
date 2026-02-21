@@ -53,6 +53,7 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
         cwd,
         deep: 3,
         ignore: PROJECT_SHARED_IGNORE,
+        suppressErrors: true,
       }
     ),
     fs.pathExists(path.resolve(cwd, "src")),
@@ -246,6 +247,7 @@ export async function getTailwindCssFile(cwd: string) {
       cwd,
       deep: 5,
       ignore: PROJECT_SHARED_IGNORE,
+      suppressErrors: true,
     }),
     getTailwindVersion(cwd),
   ])
