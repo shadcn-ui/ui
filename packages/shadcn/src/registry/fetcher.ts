@@ -6,6 +6,7 @@ import { getRegistryHeadersFromContext } from "@/src/registry/context"
 import {
   RegistryFetchError,
   RegistryForbiddenError,
+  RegistryGoneError,
   RegistryLocalFileError,
   RegistryNotFoundError,
   RegistryParseError,
@@ -91,6 +92,10 @@ export async function fetchRegistry(
 
             if (response.status === 404) {
               throw new RegistryNotFoundError(url, messageFromServer)
+            }
+
+            if (response.status === 410) {
+              throw new RegistryGoneError(url, messageFromServer)
             }
 
             if (response.status === 403) {
