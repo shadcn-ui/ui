@@ -985,7 +985,8 @@
         "breadcrumb",
         "separator",
         "label",
-        "dropdown-menu"
+        "dropdown-menu",
+        "collapsible"
       ],
       "files": [
         {
