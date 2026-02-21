@@ -68,12 +68,14 @@ export function ChartCodeViewer({
               <OpenInV0Button name={chart.name} className="rounded-sm" />
             </div>
           </figcaption>
-          <div
-            dangerouslySetInnerHTML={{
-              __html: chart.highlightedCode,
-            }}
-            className="no-scrollbar overflow-y-auto"
-          />
+          <div className="no-scrollbar overflow-y-auto">
+            <div
+              dangerouslySetInnerHTML={{
+                __html: chart.highlightedCode,
+              }}
+              className="overflow-y-auto overscroll-contain pointer-events-none"
+            />
+          </div>
         </figure>
       </div>
     </div>
