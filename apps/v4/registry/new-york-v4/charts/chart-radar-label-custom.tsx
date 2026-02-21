@@ -81,9 +81,9 @@ export function ChartRadarLabelCustom() {
                     fontWeight={500}
                     {...props}
                   >
-                    <tspan>{data.desktop}</tspan>
+                    <tspan className="fill-foreground">{data.desktop}</tspan>
                     <tspan className="fill-muted-foreground">/</tspan>
-                    <tspan>{data.mobile}</tspan>
+                    <tspan className="fill-foreground">{data.mobile}</tspan>
                     <tspan
                       x={x}
                       dy={"1rem"}
