@@ -1,11 +1,11 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router"
 
-export const Route = createFileRoute("/")({ component: App });
+export const Route = createFileRoute("/")({ component: App })
 
 function App() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center">
-      <div className="font-medium">Hello World</div>
+    <div className="flex min-h-svh flex-col items-center justify-center gap-4 p-6">
+      <p>Hello World</p>
     </div>
-  );
+  )
 }

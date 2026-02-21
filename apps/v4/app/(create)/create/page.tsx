@@ -19,10 +19,10 @@ import { Customizer } from "@/app/(create)/components/customizer"
 import { ItemExplorer } from "@/app/(create)/components/item-explorer"
 import { ItemPicker } from "@/app/(create)/components/item-picker"
 import { Preview } from "@/app/(create)/components/preview"
+import { ProjectForm } from "@/app/(create)/components/project-form"
 import { RandomButton } from "@/app/(create)/components/random-button"
 import { ResetButton } from "@/app/(create)/components/reset-button"
 import { ShareButton } from "@/app/(create)/components/share-button"
-import { ToolbarControls } from "@/app/(create)/components/toolbar-controls"
 import { V0Button } from "@/app/(create)/components/v0-button"
 import { WelcomeDialog } from "@/app/(create)/components/welcome-dialog"
 import { getItemsForBase } from "@/app/(create)/lib/api"
@@ -125,7 +125,7 @@ export default async function CreatePage({
               />
               <ShareButton />
               <V0Button />
-              <ToolbarControls />
+              <ProjectForm />
             </div>
           </div>
         </div>

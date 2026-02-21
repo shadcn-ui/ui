@@ -1,33 +1,22 @@
 import path from "path"
 import { getPreset, getPresets, getRegistryItems } from "@/src/registry/api"
 import { configWithDefaults } from "@/src/registry/config"
-import { REGISTRY_URL } from "@/src/registry/constants"
 import { clearRegistryContext } from "@/src/registry/context"
 import { isUrl } from "@/src/registry/utils"
-import { Preset } from "@/src/schema"
+import { templates } from "@/src/templates/index"
 import { addComponents } from "@/src/utils/add-components"
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
+import { resolveCreateUrl, resolveInitUrl } from "@/src/utils/presets"
 import { ensureRegistriesInConfig } from "@/src/utils/registries"
 import { updateFiles } from "@/src/utils/updaters/update-files"
 import { Command } from "commander"
-import dedent from "dedent"
 import open from "open"
 import prompts from "prompts"
 import validateProjectName from "validate-npm-package-name"
 
 import { initOptionsSchema, runInit } from "./init"
-
-const SHADCN_URL = REGISTRY_URL.replace(/\/r\/?$/, "")
-
-const CREATE_TEMPLATES = {
-  next: "Next.js",
-  vite: "Vite",
-  start: "TanStack Start",
-} as const
-
-type Template = keyof typeof CREATE_TEMPLATES
 
 export const create = new Command()
   .name("create")
@@ -35,22 +24,13 @@ export const create = new Command()
   .argument("[name]", "the name of your project")
   .option(
     "-t, --template <template>",
-    "the template to use. e.g. next, start or vite"
+    "the template to use. e.g. next, next-monorepo, start or vite"
   )
   .option("-p, --preset [name]", "use a preset configuration")
   .option(
     "-c, --cwd <cwd>",
     "the working directory. defaults to the current directory.",
     process.cwd()
-  )
-  .option(
-    "--src-dir",
-    "use the src directory when creating a new project.",
-    false
-  )
-  .option(
-    "--no-src-dir",
-    "do not use the src directory when creating a new project."
   )
   .option("-y, --yes", "skip confirmation prompt.", true)
   .option("--rtl", "enable RTL support.", false)
@@ -59,17 +39,21 @@ export const create = new Command()
       // If no preset provided, open create URL with template and rtl params.
       const hasNoPreset = !name && !opts.preset
       if (hasNoPreset) {
-        const searchParams: Record<string, string> = {}
+        const searchParams: {
+          template?: string
+          rtl?: boolean
+          base?: string
+        } = {}
         if (opts.template) {
           searchParams.template = opts.template
         }
         if (opts.rtl) {
-          searchParams.rtl = "true"
+          searchParams.rtl = true
 
           // Recommend base-ui in RTL.
           searchParams.base = "base"
         }
-        const createUrl = getShadcnCreateUrl(
+        const createUrl = resolveCreateUrl(
           Object.keys(searchParams).length > 0 ? searchParams : undefined
         )
         logger.log("Build your own shadcn/ui.")
@@ -130,8 +114,8 @@ export const create = new Command()
           message: `Which ${highlighter.info(
             "template"
           )} would you like to use?`,
-          choices: Object.entries(CREATE_TEMPLATES).map(([key, value]) => ({
-            title: value,
+          choices: Object.entries(templates).map(([key, t]) => ({
+            title: t.title,
             value: key,
           })),
         })
@@ -144,31 +128,78 @@ export const create = new Command()
       }
 
       // Handle preset selection.
-      const presetResult = await handlePresetOption(
-        opts.preset ?? true,
-        opts.rtl
-      )
-
-      if (!presetResult) {
-        process.exit(0)
-      }
-
-      // Determine initUrl and baseColor based on preset type.
       let initUrl: string
-      let baseColor: string
+      const presetArg = opts.preset ?? true
 
-      if ("_isUrl" in presetResult) {
-        // User provided a URL directly.
-        const url = new URL(presetResult.url)
+      if (presetArg === true) {
+        // Show interactive preset list.
+        const presets = await getPresets()
+
+        const { selectedPreset } = await prompts({
+          type: "select",
+          name: "selectedPreset",
+          message: `Which ${highlighter.info("preset")} would you like to use?`,
+          choices: [
+            ...presets.map((preset) => ({
+              title: preset.title,
+              description: preset.description,
+              value: preset.name,
+            })),
+            {
+              title: "Custom",
+              description: "Build your own on https://ui.shadcn.com",
+              value: "custom",
+            },
+          ],
+        })
+
+        if (!selectedPreset) {
+          process.exit(0)
+        }
+
+        if (selectedPreset === "custom") {
+          const createUrl = resolveCreateUrl({
+            command: "create",
+            ...(opts.rtl && { rtl: true }),
+            ...(template && { template }),
+          })
+          logger.info(
+            `\nOpening ${highlighter.info(createUrl)} in your browser...\n`
+          )
+          await open(createUrl)
+          process.exit(0)
+        }
+
+        const preset = presets.find((p) => p.name === selectedPreset)
+        if (!preset) {
+          process.exit(0)
+        }
+        initUrl = resolveInitUrl({
+          ...preset,
+          rtl: opts.rtl || preset.rtl,
+        })
+      } else if (isUrl(presetArg)) {
+        // Direct URL.
+        const url = new URL(presetArg)
         if (opts.rtl) {
           url.searchParams.set("rtl", "true")
         }
         initUrl = url.toString()
-        baseColor = url.searchParams.get("baseColor") ?? "neutral"
       } else {
-        // User selected a preset by name.
-        initUrl = buildInitUrl(presetResult, opts.rtl)
-        baseColor = presetResult.baseColor
+        // Preset name.
+        const preset = await getPreset(presetArg)
+        if (!preset) {
+          const presets = await getPresets()
+          const presetNames = presets.map((p) => p.name).join(", ")
+          logger.error(
+            `Preset "${presetArg}" not found. Available presets: ${presetNames}`
+          )
+          process.exit(1)
+        }
+        initUrl = resolveInitUrl({
+          ...preset,
+          rtl: opts.rtl || preset.rtl,
+        })
       }
 
       // Fetch the registry:base item to get its config.
@@ -199,11 +230,9 @@ export const create = new Command()
         force: false,
         silent: false,
         isNewProject: true,
-        srcDir: opts.srcDir,
         cssVariables: true,
         rtl: opts.rtl,
         template,
-        baseColor,
         installStyleIndex: false,
         registryBaseConfig,
         skipPreflight: false,
@@ -222,9 +251,10 @@ export const create = new Command()
           overwrite: true,
         })
 
-        const templateFiles = getTemplateFiles(template as Template)
-        if (templateFiles.length > 0) {
-          await updateFiles(templateFiles, config, {
+        const selectedTemplate = templates[template as keyof typeof templates]
+
+        if (selectedTemplate?.files?.length) {
+          await updateFiles(selectedTemplate.files, config, {
             overwrite: true,
             silent: true,
           })
@@ -232,9 +262,7 @@ export const create = new Command()
       }
 
       logger.log(
-        `${highlighter.success(
-          "Success!"
-        )} Project initialization completed.\nYou may now add components.`
+        `Project initialization completed.\nYou may now add components.`
       )
       logger.break()
     } catch (error) {
@@ -244,152 +272,3 @@ export const create = new Command()
       clearRegistryContext()
     }
   })
-
-function buildInitUrl(preset: Preset, rtl: boolean) {
-  const params = new URLSearchParams({
-    base: preset.base,
-    style: preset.style,
-    baseColor: preset.baseColor,
-    theme: preset.theme,
-    iconLibrary: preset.iconLibrary,
-    font: preset.font,
-    rtl: String(rtl || preset.rtl),
-    menuAccent: preset.menuAccent,
-    menuColor: preset.menuColor,
-    radius: preset.radius,
-  })
-
-  return `${getShadcnInitUrl()}?${params.toString()}`
-}
-
-async function handlePresetOption(presetArg: string | boolean, rtl: boolean) {
-  // If --preset is used without a name, show interactive list.
-  if (presetArg === true) {
-    const presets = await getPresets()
-
-    const { selectedPreset } = await prompts({
-      type: "select",
-      name: "selectedPreset",
-      message: `Which ${highlighter.info("preset")} would you like to use?`,
-      choices: [
-        ...presets.map((preset) => ({
-          title: preset.title,
-          description: preset.description,
-          value: preset.name,
-        })),
-        {
-          title: "Custom",
-          description: "Build your own on https://ui.shadcn.com",
-          value: "custom",
-        },
-      ],
-    })
-
-    if (!selectedPreset) {
-      return null
-    }
-
-    if (selectedPreset === "custom") {
-      const url = getShadcnCreateUrl(rtl ? { rtl: "true" } : undefined)
-      logger.info(`\nOpening ${highlighter.info(url)} in your browser...\n`)
-      await open(url)
-      return null
-    }
-
-    return presets.find((p) => p.name === selectedPreset) ?? null
-  }
-
-  // If --preset NAME or URL is provided.
-  if (typeof presetArg === "string") {
-    // Check if it's a URL.
-    if (isUrl(presetArg)) {
-      return { _isUrl: true, url: presetArg } as const
-    }
-
-    // Otherwise, fetch that preset by name.
-    const preset = await getPreset(presetArg)
-
-    if (!preset) {
-      const presets = await getPresets()
-      const presetNames = presets.map((p) => p.name).join(", ")
-      logger.error(
-        `Preset "${presetArg}" not found. Available presets: ${presetNames}`
-      )
-      process.exit(1)
-    }
-
-    return preset
-  }
-
-  return null
-}
-
-function getTemplateFiles(template: Template) {
-  switch (template) {
-    case "vite":
-      return [
-        {
-          type: "registry:file" as const,
-          path: "src/App.tsx",
-          target: "src/App.tsx",
-          content: dedent`import { ComponentExample } from "@/components/component-example";
-
-export function App() {
-  return <ComponentExample />;
-}
-
-export default App;
-`,
-        },
-      ]
-    case "next":
-      return [
-        {
-          type: "registry:page" as const,
-          path: "app/page.tsx",
-          target: "app/page.tsx",
-          content: dedent`import { ComponentExample } from "@/components/component-example";
-
-export default function Page() {
-  return <ComponentExample />;
-}
-`,
-        },
-      ]
-    case "start":
-      return [
-        {
-          type: "registry:file" as const,
-          path: "src/routes/index.tsx",
-          target: "src/routes/index.tsx",
-          content: dedent`import { createFileRoute } from "@tanstack/react-router";
-import { ComponentExample } from "@/components/component-example";
-
-export const Route = createFileRoute("/")({ component: App });
-
-function App() {
-  return (
-    <ComponentExample />
-  );
-}
-`,
-        },
-      ]
-    default:
-      return []
-  }
-}
-
-function getShadcnCreateUrl(searchParams?: Record<string, string>) {
-  const url = new URL(`${SHADCN_URL}/create`)
-  if (searchParams) {
-    for (const [key, value] of Object.entries(searchParams)) {
-      url.searchParams.set(key, value)
-    }
-  }
-  return url.toString()
-}
-
-function getShadcnInitUrl() {
-  return `${SHADCN_URL}/init`
-}

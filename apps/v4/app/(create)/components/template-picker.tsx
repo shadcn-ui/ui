@@ -68,7 +68,7 @@ export function TemplatePicker({
           value={params.template}
           onValueChange={(value) => {
             setParams({
-              template: value as "next" | "start" | "vite",
+              template: value as "next" | "next-monorepo" | "start" | "vite",
             })
           }}
         >

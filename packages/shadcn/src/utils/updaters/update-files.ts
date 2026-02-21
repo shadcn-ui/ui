@@ -251,18 +251,17 @@ export async function updateFiles(
   // Let's update filesUpdated with the updated files.
   filesUpdated.push(...updatedFiles)
 
-  // If a file is in filesCreated and filesUpdated, we should remove it from filesUpdated.
-  filesUpdated = filesUpdated.filter((file) => !filesCreated.includes(file))
+  // Remove duplicates and filter out files already in filesCreated.
+  filesCreated = Array.from(new Set(filesCreated))
+  filesUpdated = Array.from(
+    new Set(filesUpdated.filter((file) => !filesCreated.includes(file)))
+  )
+  filesSkipped = Array.from(new Set(filesSkipped))
 
   const hasUpdatedFiles = filesCreated.length || filesUpdated.length
   if (!hasUpdatedFiles && !filesSkipped.length) {
     filesCreatedSpinner?.info("No files updated.")
   }
-
-  // Remove duplicates.
-  filesCreated = Array.from(new Set(filesCreated))
-  filesUpdated = Array.from(new Set(filesUpdated))
-  filesSkipped = Array.from(new Set(filesSkipped))
 
   if (filesCreated.length) {
     filesCreatedSpinner?.succeed(

@@ -61,7 +61,7 @@
     "build": "tsup",
     "typecheck": "tsc --noEmit",
     "clean": "rimraf dist && rimraf components",
-    "start:dev": "cross-env REGISTRY_URL=http://localhost:4000/r node dist/index.js",
+    "start:dev": "cross-env REGISTRY_URL=http://localhost:4000/r SHADCN_TEMPLATE_DIR=../../templates node dist/index.js",
     "start:prod": "cross-env REGISTRY_URL=https://ui.shadcn.com/r node dist/index.js",
     "start": "node dist/index.js",
     "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
@@ -71,7 +71,7 @@
     "pub:next": "pnpm build && pnpm publish --no-git-checks --access public --tag next",
     "pub:release": "pnpm build && pnpm publish --access public",
     "test": "vitest run",
-    "test:dev": "REGISTRY_URL=http://localhost:4000/r vitest run",
+    "test:dev": "REGISTRY_URL=http://localhost:4000/r SHADCN_TEMPLATE_DIR=../../templates vitest run",
     "mcp:inspect": "pnpm dlx @modelcontextprotocol/inspector node dist/index.js mcp"
   },
   "dependencies": {

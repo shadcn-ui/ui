@@ -38,6 +38,7 @@ export async function addComponents(
     overwrite?: boolean
     silent?: boolean
     isNewProject?: boolean
+    skipFonts?: boolean
     registryHeaders?: Record<string, Record<string, string>>
     path?: string
   }
@@ -62,7 +63,10 @@ export async function addComponents(
     })
   }
 
-  return await addProjectComponents(components, config, options)
+  return await addProjectComponents(components, config, {
+    ...options,
+    skipFonts: options.skipFonts,
+  })
 }
 
 async function addProjectComponents(
@@ -72,6 +76,7 @@ async function addProjectComponents(
     overwrite?: boolean
     silent?: boolean
     isNewProject?: boolean
+    skipFonts?: boolean
     path?: string
   }
 ) {
@@ -100,7 +105,9 @@ async function addProjectComponents(
 
   const tailwindVersion = await getProjectTailwindVersionFromConfig(config)
 
-  tree = await massageTreeForFonts(tree, config)
+  if (!options.skipFonts) {
+    tree = await massageTreeForFonts(tree, config)
+  }
 
   await updateTailwindConfig(tree.tailwind?.config, config, {
     silent: options.silent,
@@ -129,9 +136,11 @@ async function addProjectComponents(
     silent: options.silent,
   })
 
-  await updateFonts(tree.fonts, config, {
-    silent: options.silent,
-  })
+  if (!options.skipFonts) {
+    await updateFonts(tree.fonts, config, {
+      silent: options.silent,
+    })
+  }
 
   await updateFiles(tree.files, config, {
     overwrite: options.overwrite,
@@ -312,56 +321,58 @@ async function addWorkspaceComponents(
 
   rootSpinner?.succeed()
 
-  // Sort files.
-  filesCreated.sort()
-  filesUpdated.sort()
-  filesSkipped.sort()
+  // Deduplicate and sort files.
+  const dedupedCreated = Array.from(new Set(filesCreated)).sort()
+  const dedupedUpdated = Array.from(
+    new Set(filesUpdated.filter((file) => !filesCreated.includes(file)))
+  ).sort()
+  const dedupedSkipped = Array.from(new Set(filesSkipped)).sort()
 
-  const hasUpdatedFiles = filesCreated.length || filesUpdated.length
-  if (!hasUpdatedFiles && !filesSkipped.length) {
+  const hasUpdatedFiles = dedupedCreated.length || dedupedUpdated.length
+  if (!hasUpdatedFiles && !dedupedSkipped.length) {
     spinner(`No files updated.`, {
       silent: options.silent,
     })?.info()
   }
 
-  if (filesCreated.length) {
+  if (dedupedCreated.length) {
     spinner(
-      `Created ${filesCreated.length} ${
-        filesCreated.length === 1 ? "file" : "files"
+      `Created ${dedupedCreated.length} ${
+        dedupedCreated.length === 1 ? "file" : "files"
       }:`,
       {
         silent: options.silent,
       }
     )?.succeed()
-    for (const file of filesCreated) {
+    for (const file of dedupedCreated) {
       logger.log(`  - ${file}`)
     }
   }
 
-  if (filesUpdated.length) {
+  if (dedupedUpdated.length) {
     spinner(
-      `Updated ${filesUpdated.length} ${
-        filesUpdated.length === 1 ? "file" : "files"
+      `Updated ${dedupedUpdated.length} ${
+        dedupedUpdated.length === 1 ? "file" : "files"
       }:`,
       {
         silent: options.silent,
       }
     )?.info()
-    for (const file of filesUpdated) {
+    for (const file of dedupedUpdated) {
       logger.log(`  - ${file}`)
     }
   }
 
-  if (filesSkipped.length) {
+  if (dedupedSkipped.length) {
     spinner(
-      `Skipped ${filesSkipped.length} ${
-        filesUpdated.length === 1 ? "file" : "files"
+      `Skipped ${dedupedSkipped.length} ${
+        dedupedSkipped.length === 1 ? "file" : "files"
       }: (use --overwrite to overwrite)`,
       {
         silent: options.silent,
       }
     )?.info()
-    for (const file of filesSkipped) {
+    for (const file of dedupedSkipped) {
       logger.log(`  - ${file}`)
     }
   }
