@@ -75,6 +75,26 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 ## Examples
 
+### Controlled vs Uncontrolled
+
+Use `defaultValue` when you do not need to control the active tab state.
+
+If you need to control the active tab (for example, syncing it with URL
+state or external logic), use `value` and `onValueChange` instead.
+
+```tsx
+const [tab, setTab] = React.useState("account")
+
+<Tabs value={tab} onValueChange={setTab}>
+  <TabsList>
+    <TabsTrigger value="account">Account</TabsTrigger>
+    <TabsTrigger value="password">Password</TabsTrigger>
+  </TabsList>
+  <TabsContent value="account">Account content</TabsContent>
+  <TabsContent value="password">Password content</TabsContent>
+</Tabs>
+
+
 ### Line
 
 Use the `variant="line"` prop on `TabsList` for a line style.
