@@ -202,7 +202,7 @@ export const init = new Command()
             )} file and run ${highlighter.info("init")} again.`
           )
           logger.break()
-          process.exit(0)
+          process.exit(1)
         }
 
         options.force = true
@@ -275,7 +275,7 @@ export const init = new Command()
           })
 
           if (!template) {
-            process.exit(0)
+            process.exit(1)
           }
 
           options.template = template
@@ -554,7 +554,7 @@ export async function runInit(
     })
 
     if (!proceed) {
-      process.exit(0)
+      process.exit(1)
     }
   }
 
@@ -736,7 +736,7 @@ async function promptForConfig(defaultConfig: Config | null = null) {
   ])
 
   if (!options.style) {
-    process.exit(0)
+    process.exit(1)
   }
 
   return rawConfigSchema.parse({

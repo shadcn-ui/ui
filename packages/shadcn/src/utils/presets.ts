@@ -151,7 +151,7 @@ export async function promptForBase() {
       { title: "Base", value: "base" },
     ],
   })
-  if (!base) process.exit(0)
+  if (!base) process.exit(1)
   return base as "radix" | "base"
 }
 
@@ -181,7 +181,7 @@ export async function promptForPreset(options: {
   })
 
   if (!selectedPreset) {
-    process.exit(0)
+    process.exit(1)
   }
 
   if (selectedPreset === "custom") {
@@ -216,7 +216,7 @@ export async function promptForPreset(options: {
 
   const preset = DEFAULT_PRESETS[selectedPreset as keyof typeof DEFAULT_PRESETS]
   if (!preset) {
-    process.exit(0)
+    process.exit(1)
   }
 
   return {
