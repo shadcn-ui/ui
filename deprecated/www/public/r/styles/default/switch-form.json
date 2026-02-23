@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "switch-form",
+  "type": "registry:example",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "registryDependencies": [
+    "switch",
+    "form"
+  ],
+  "files": [
+    {
+      "path": "examples/switch-form.tsx",
+      "content": "\"use client\"\n\nimport { zodResolver } from \"@hookform/resolvers/zod\"\nimport { useForm } from \"react-hook-form\"\nimport { z } from \"zod\"\n\nimport { toast } from \"@/registry/default/hooks/use-toast\"\nimport { Button } from \"@/registry/default/ui/button\"\nimport {\n  Form,\n  FormControl,\n  FormDescription,\n  FormField,\n  FormItem,\n  FormLabel,\n} from \"@/registry/default/ui/form\"\nimport { Switch } from \"@/registry/default/ui/switch\"\n\nconst FormSchema = z.object({\n  marketing_emails: z.boolean().default(false).optional(),\n  security_emails: z.boolean(),\n})\n\nexport default function SwitchForm() {\n  const form = useForm<z.infer<typeof FormSchema>>({\n    resolver: zodResolver(FormSchema),\n    defaultValues: {\n      security_emails: true,\n    },\n  })\n\n  function onSubmit(data: z.infer<typeof FormSchema>) {\n    toast({\n      title: \"You submitted the following values:\",\n      description: (\n        <pre className=\"mt-2 w-[340px] rounded-md bg-slate-950 p-4\">\n          <code className=\"text-white\">{JSON.stringify(data, null, 2)}</code>\n        </pre>\n      ),\n    })\n  }\n\n  return (\n    <Form {...form}>\n      <form onSubmit={form.handleSubmit(onSubmit)} className=\"w-full space-y-6\">\n        <div>\n          <h3 className=\"mb-4 text-lg font-medium\">Email Notifications</h3>\n          <div className=\"space-y-4\">\n            <FormField\n              control={form.control}\n              name=\"marketing_emails\"\n              render={({ field }) => (\n                <FormItem className=\"flex flex-row items-center justify-between rounded-lg border p-4\">\n                  <div className=\"space-y-0.5\">\n                    <FormLabel className=\"text-base\">\n                      Marketing emails\n                    </FormLabel>\n                    <FormDescription>\n                      Receive emails about new products, features, and more.\n                    </FormDescription>\n                  </div>\n                  <FormControl>\n                    <Switch\n                      checked={field.value}\n                      onCheckedChange={field.onChange}\n                    />\n                  </FormControl>\n                </FormItem>\n              )}\n            />\n            <FormField\n              control={form.control}\n              name=\"security_emails\"\n              render={({ field }) => (\n                <FormItem className=\"flex flex-row items-center justify-between rounded-lg border p-4\">\n                  <div className=\"space-y-0.5\">\n                    <FormLabel className=\"text-base\">Security emails</FormLabel>\n                    <FormDescription>\n                      Receive emails about your account security.\n                    </FormDescription>\n                  </div>\n                  <FormControl>\n                    <Switch\n                      checked={field.value}\n                      onCheckedChange={field.onChange}\n                      disabled\n                      aria-readonly\n                    />\n                  </FormControl>\n                </FormItem>\n              )}\n            />\n          </div>\n        </div>\n        <Button type=\"submit\">Submit</Button>\n      </form>\n    </Form>\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

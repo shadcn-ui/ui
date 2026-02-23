@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-group-tooltip",
+  "type": "registry:example",
+  "registryDependencies": [
+    "input-group",
+    "tooltip"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/input-group-tooltip.tsx",
+      "content": "import { HelpCircle, InfoIcon } from \"lucide-react\"\n\nimport {\n  InputGroup,\n  InputGroupAddon,\n  InputGroupButton,\n  InputGroupInput,\n} from \"@/registry/new-york-v4/ui/input-group\"\nimport {\n  Tooltip,\n  TooltipContent,\n  TooltipTrigger,\n} from \"@/registry/new-york-v4/ui/tooltip\"\n\nexport default function InputGroupTooltip() {\n  return (\n    <div className=\"grid w-full max-w-sm gap-4\">\n      <InputGroup>\n        <InputGroupInput placeholder=\"Enter password\" type=\"password\" />\n        <InputGroupAddon align=\"inline-end\">\n          <Tooltip>\n            <TooltipTrigger asChild>\n              <InputGroupButton\n                variant=\"ghost\"\n                aria-label=\"Info\"\n                size=\"icon-xs\"\n              >\n                <InfoIcon />\n              </InputGroupButton>\n            </TooltipTrigger>\n            <TooltipContent>\n              <p>Password must be at least 8 characters</p>\n            </TooltipContent>\n          </Tooltip>\n        </InputGroupAddon>\n      </InputGroup>\n      <InputGroup>\n        <InputGroupInput placeholder=\"Your email address\" />\n        <InputGroupAddon align=\"inline-end\">\n          <Tooltip>\n            <TooltipTrigger asChild>\n              <InputGroupButton\n                variant=\"ghost\"\n                aria-label=\"Help\"\n                size=\"icon-xs\"\n              >\n                <HelpCircle />\n              </InputGroupButton>\n            </TooltipTrigger>\n            <TooltipContent>\n              <p>We&apos;ll use this to send you notifications</p>\n            </TooltipContent>\n          </Tooltip>\n        </InputGroupAddon>\n      </InputGroup>\n      <InputGroup>\n        <InputGroupInput placeholder=\"Enter API key\" />\n        <Tooltip>\n          <TooltipTrigger asChild>\n            <InputGroupAddon>\n              <InputGroupButton\n                variant=\"ghost\"\n                aria-label=\"Help\"\n                size=\"icon-xs\"\n              >\n                <HelpCircle />\n              </InputGroupButton>\n            </InputGroupAddon>\n          </TooltipTrigger>\n          <TooltipContent side=\"left\">\n            <p>Click for help with API keys</p>\n          </TooltipContent>\n        </Tooltip>\n      </InputGroup>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

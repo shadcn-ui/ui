@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "collapsible-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "collapsible"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/collapsible-demo.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { ChevronsUpDown } from \"lucide-react\"\n\nimport { Button } from \"@/registry/new-york-v4/ui/button\"\nimport {\n  Collapsible,\n  CollapsibleContent,\n  CollapsibleTrigger,\n} from \"@/registry/new-york-v4/ui/collapsible\"\n\nexport default function CollapsibleDemo() {\n  const [isOpen, setIsOpen] = React.useState(false)\n\n  return (\n    <Collapsible\n      open={isOpen}\n      onOpenChange={setIsOpen}\n      className=\"flex w-[350px] flex-col gap-2\"\n    >\n      <div className=\"flex items-center justify-between gap-4 px-4\">\n        <h4 className=\"text-sm font-semibold\">\n          @peduarte starred 3 repositories\n        </h4>\n        <CollapsibleTrigger asChild>\n          <Button variant=\"ghost\" size=\"icon\" className=\"size-8\">\n            <ChevronsUpDown />\n            <span className=\"sr-only\">Toggle</span>\n          </Button>\n        </CollapsibleTrigger>\n      </div>\n      <div className=\"rounded-md border px-4 py-2 font-mono text-sm\">\n        @radix-ui/primitives\n      </div>\n      <CollapsibleContent className=\"flex flex-col gap-2\">\n        <div className=\"rounded-md border px-4 py-2 font-mono text-sm\">\n          @radix-ui/colors\n        </div>\n        <div className=\"rounded-md border px-4 py-2 font-mono text-sm\">\n          @stitches/react\n        </div>\n      </CollapsibleContent>\n    </Collapsible>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

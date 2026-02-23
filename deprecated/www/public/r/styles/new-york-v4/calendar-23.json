@@ -1,0 +1,28 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "calendar-23",
+  "type": "registry:block",
+  "description": "Date range picker",
+  "registryDependencies": [
+    "calendar",
+    "popover",
+    "button",
+    "label"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/blocks/calendar-23.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { ChevronDownIcon } from \"lucide-react\"\nimport { type DateRange } from \"react-day-picker\"\n\nimport { Button } from \"@/registry/new-york-v4/ui/button\"\nimport { Calendar } from \"@/registry/new-york-v4/ui/calendar\"\nimport { Label } from \"@/registry/new-york-v4/ui/label\"\nimport {\n  Popover,\n  PopoverContent,\n  PopoverTrigger,\n} from \"@/registry/new-york-v4/ui/popover\"\n\nexport default function Calendar23() {\n  const [range, setRange] = React.useState<DateRange | undefined>(undefined)\n\n  return (\n    <div className=\"flex flex-col gap-3\">\n      <Label htmlFor=\"dates\" className=\"px-1\">\n        Select your stay\n      </Label>\n      <Popover>\n        <PopoverTrigger asChild>\n          <Button\n            variant=\"outline\"\n            id=\"dates\"\n            className=\"w-56 justify-between font-normal\"\n          >\n            {range?.from && range?.to\n              ? `${range.from.toLocaleDateString()} - ${range.to.toLocaleDateString()}`\n              : \"Select date\"}\n            <ChevronDownIcon />\n          </Button>\n        </PopoverTrigger>\n        <PopoverContent className=\"w-auto overflow-hidden p-0\" align=\"start\">\n          <Calendar\n            mode=\"range\"\n            selected={range}\n            captionLayout=\"dropdown\"\n            onSelect={(range) => {\n              setRange(range)\n            }}\n          />\n        </PopoverContent>\n      </Popover>\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "iframeHeight": "600px",
+    "container": "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+    "mobile": "component"
+  },
+  "categories": [
+    "calendar",
+    "date"
+  ]
+}

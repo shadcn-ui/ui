@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "progress-demo",
+  "type": "registry:example",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "registryDependencies": [
+    "progress"
+  ],
+  "files": [
+    {
+      "path": "examples/progress-demo.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { Progress } from \"@/registry/default/ui/progress\"\n\nexport default function ProgressDemo() {\n  const [progress, setProgress] = React.useState(13)\n\n  React.useEffect(() => {\n    const timer = setTimeout(() => setProgress(66), 500)\n    return () => clearTimeout(timer)\n  }, [])\n\n  return <Progress value={progress} className=\"w-[60%]\" />\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

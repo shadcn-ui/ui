@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "alert-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "alert"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/alert-demo.tsx",
+      "content": "import { AlertCircleIcon, CheckCircle2Icon, PopcornIcon } from \"lucide-react\"\n\nimport {\n  Alert,\n  AlertDescription,\n  AlertTitle,\n} from \"@/registry/new-york-v4/ui/alert\"\n\nexport default function AlertDemo() {\n  return (\n    <div className=\"grid w-full max-w-xl items-start gap-4\">\n      <Alert>\n        <CheckCircle2Icon />\n        <AlertTitle>Success! Your changes have been saved</AlertTitle>\n        <AlertDescription>\n          This is an alert with icon, title and description.\n        </AlertDescription>\n      </Alert>\n      <Alert>\n        <PopcornIcon />\n        <AlertTitle>\n          This Alert has a title and an icon. No description.\n        </AlertTitle>\n      </Alert>\n      <Alert variant=\"destructive\">\n        <AlertCircleIcon />\n        <AlertTitle>Unable to process your payment.</AlertTitle>\n        <AlertDescription>\n          <p>Please verify your billing information and try again.</p>\n          <ul className=\"list-inside list-disc text-sm\">\n            <li>Check your card details</li>\n            <li>Ensure sufficient funds</li>\n            <li>Verify billing address</li>\n          </ul>\n        </AlertDescription>\n      </Alert>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

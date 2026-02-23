@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "login-03",
+  "type": "registry:block",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "description": "A login page with a muted background color.",
+  "registryDependencies": [
+    "button",
+    "card",
+    "input",
+    "label"
+  ],
+  "files": [
+    {
+      "path": "blocks/login-03/page.tsx",
+      "content": "import { GalleryVerticalEnd } from \"lucide-react\"\n\nimport { LoginForm } from \"@/registry/new-york/blocks/login-03/components/login-form\"\n\nexport default function LoginPage() {\n  return (\n    <div className=\"flex min-h-svh flex-col items-center justify-center gap-6 bg-muted p-6 md:p-10\">\n      <div className=\"flex w-full max-w-sm flex-col gap-6\">\n        <a href=\"#\" className=\"flex items-center gap-2 self-center font-medium\">\n          <div className=\"flex h-6 w-6 items-center justify-center rounded-md bg-primary text-primary-foreground\">\n            <GalleryVerticalEnd className=\"size-4\" />\n          </div>\n          Acme Inc.\n        </a>\n        <LoginForm />\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:page",
+      "target": "app/login/page.tsx"
+    },
+    {
+      "path": "blocks/login-03/components/login-form.tsx",
+      "content": "import { cn } from \"@/registry/new-york/lib/utils\"\nimport { Button } from \"@/registry/new-york/ui/button\"\nimport {\n  Card,\n  CardContent,\n  CardDescription,\n  CardHeader,\n  CardTitle,\n} from \"@/registry/new-york/ui/card\"\nimport { Input } from \"@/registry/new-york/ui/input\"\nimport { Label } from \"@/registry/new-york/ui/label\"\n\nexport function LoginForm({\n  className,\n  ...props\n}: React.ComponentPropsWithoutRef<\"div\">) {\n  return (\n    <div className={cn(\"flex flex-col gap-6\", className)} {...props}>\n      <Card>\n        <CardHeader className=\"text-center\">\n          <CardTitle className=\"text-xl\">Welcome back</CardTitle>\n          <CardDescription>\n            Login with your Apple or Google account\n          </CardDescription>\n        </CardHeader>\n        <CardContent>\n          <form>\n            <div className=\"grid gap-6\">\n              <div className=\"flex flex-col gap-4\">\n                <Button variant=\"outline\" className=\"w-full\">\n                  <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\">\n                    <path\n                      d=\"M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701\"\n                      fill=\"currentColor\"\n                    />\n                  </svg>\n                  Login with Apple\n                </Button>\n                <Button variant=\"outline\" className=\"w-full\">\n                  <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\">\n                    <path\n                      d=\"M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z\"\n                      fill=\"currentColor\"\n                    />\n                  </svg>\n                  Login with Google\n                </Button>\n              </div>\n              <div className=\"relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t after:border-border\">\n                <span className=\"relative z-10 bg-background px-2 text-muted-foreground\">\n                  Or continue with\n                </span>\n              </div>\n              <div className=\"grid gap-6\">\n                <div className=\"grid gap-2\">\n                  <Label htmlFor=\"email\">Email</Label>\n                  <Input\n                    id=\"email\"\n                    type=\"email\"\n                    placeholder=\"m@example.com\"\n                    required\n                  />\n                </div>\n                <div className=\"grid gap-2\">\n                  <div className=\"flex items-center\">\n                    <Label htmlFor=\"password\">Password</Label>\n                    <a\n                      href=\"#\"\n                      className=\"ml-auto text-sm underline-offset-4 hover:underline\"\n                    >\n                      Forgot your password?\n                    </a>\n                  </div>\n                  <Input id=\"password\" type=\"password\" required />\n                </div>\n                <Button type=\"submit\" className=\"w-full\">\n                  Login\n                </Button>\n              </div>\n              <div className=\"text-center text-sm\">\n                Don&apos;t have an account?{\" \"}\n                <a href=\"#\" className=\"underline underline-offset-4\">\n                  Sign up\n                </a>\n              </div>\n            </div>\n          </form>\n        </CardContent>\n      </Card>\n      <div className=\"text-balance text-center text-xs text-muted-foreground [&_a]:underline [&_a]:underline-offset-4 [&_a]:hover:text-primary  \">\n        By clicking continue, you agree to our <a href=\"#\">Terms of Service</a>{\" \"}\n        and <a href=\"#\">Privacy Policy</a>.\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:component",
+      "target": ""
+    }
+  ],
+  "categories": [
+    "authentication",
+    "login"
+  ]
+}

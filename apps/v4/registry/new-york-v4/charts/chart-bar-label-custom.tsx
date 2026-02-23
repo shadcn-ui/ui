@@ -12,10 +12,10 @@ import {
   CardTitle,
 } from "@/registry/new-york-v4/ui/card"
 import {
-  ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
+  type ChartConfig,
 } from "@/registry/new-york-v4/ui/chart"
 
 export const description = "A bar chart with a custom label"
@@ -32,7 +32,7 @@ const chartData = [
 const chartConfig = {
   desktop: {
     label: "Desktop",
-    color: "var(--chart-1)",
+    color: "var(--chart-2)",
   },
   mobile: {
     label: "Mobile",

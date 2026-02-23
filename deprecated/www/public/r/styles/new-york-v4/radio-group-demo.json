@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radio-group-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "radio-group"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/radio-group-demo.tsx",
+      "content": "import { Label } from \"@/registry/new-york-v4/ui/label\"\nimport {\n  RadioGroup,\n  RadioGroupItem,\n} from \"@/registry/new-york-v4/ui/radio-group\"\n\nexport default function RadioGroupDemo() {\n  return (\n    <RadioGroup defaultValue=\"comfortable\">\n      <div className=\"flex items-center gap-3\">\n        <RadioGroupItem value=\"default\" id=\"r1\" />\n        <Label htmlFor=\"r1\">Default</Label>\n      </div>\n      <div className=\"flex items-center gap-3\">\n        <RadioGroupItem value=\"comfortable\" id=\"r2\" />\n        <Label htmlFor=\"r2\">Comfortable</Label>\n      </div>\n      <div className=\"flex items-center gap-3\">\n        <RadioGroupItem value=\"compact\" id=\"r3\" />\n        <Label htmlFor=\"r3\">Compact</Label>\n      </div>\n    </RadioGroup>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

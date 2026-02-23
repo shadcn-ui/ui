@@ -2,3 +2,7 @@ packages:
   - "apps/*"
   - "packages/*"
   - "!**/test/**"
+  - "!**/fixtures/**"
+  - "!**/temp/**"
+  - "!packages/tests/temp/**"
+  - "!deprecated/**"

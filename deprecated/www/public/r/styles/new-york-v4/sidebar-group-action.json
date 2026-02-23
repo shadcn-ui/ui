@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sidebar-group-action",
+  "type": "registry:internal",
+  "files": [
+    {
+      "path": "registry/new-york-v4/internal/sidebar-group-action.tsx",
+      "content": "\"use client\"\n\nimport { FrameIcon, MapIcon, PieChartIcon, PlusIcon } from \"lucide-react\"\nimport { toast, Toaster } from \"sonner\"\n\nimport {\n  Sidebar,\n  SidebarContent,\n  SidebarGroup,\n  SidebarGroupAction,\n  SidebarGroupContent,\n  SidebarGroupLabel,\n  SidebarMenu,\n  SidebarMenuButton,\n  SidebarMenuItem,\n  SidebarProvider,\n} from \"@/registry/new-york-v4/ui/sidebar\"\n\nexport default function AppSidebar() {\n  return (\n    <SidebarProvider>\n      <Toaster\n        position=\"bottom-left\"\n        toastOptions={{\n          className: \"ml-[160px]\",\n        }}\n      />\n      <Sidebar>\n        <SidebarContent>\n          <SidebarGroup>\n            <SidebarGroupLabel>Projects</SidebarGroupLabel>\n            <SidebarGroupAction\n              title=\"Add Project\"\n              onClick={() => toast(\"You clicked the group action!\")}\n            >\n              <PlusIcon /> <span className=\"sr-only\">Add Project</span>\n            </SidebarGroupAction>\n            <SidebarGroupContent>\n              <SidebarMenu>\n                <SidebarMenuItem>\n                  <SidebarMenuButton asChild>\n                    <a href=\"#\">\n                      <FrameIcon />\n                      <span>Design Engineering</span>\n                    </a>\n                  </SidebarMenuButton>\n                </SidebarMenuItem>\n                <SidebarMenuItem>\n                  <SidebarMenuButton asChild>\n                    <a href=\"#\">\n                      <PieChartIcon />\n                      <span>Sales & Marketing</span>\n                    </a>\n                  </SidebarMenuButton>\n                </SidebarMenuItem>\n                <SidebarMenuItem>\n                  <SidebarMenuButton asChild>\n                    <a href=\"#\">\n                      <MapIcon />\n                      <span>Travel</span>\n                    </a>\n                  </SidebarMenuButton>\n                </SidebarMenuItem>\n              </SidebarMenu>\n            </SidebarGroupContent>\n          </SidebarGroup>\n        </SidebarContent>\n      </Sidebar>\n    </SidebarProvider>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

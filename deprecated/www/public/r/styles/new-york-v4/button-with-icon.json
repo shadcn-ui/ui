@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-with-icon",
+  "type": "registry:example",
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/button-with-icon.tsx",
+      "content": "import { IconGitBranch } from \"@tabler/icons-react\"\n\nimport { Button } from \"@/registry/new-york-v4/ui/button\"\n\nexport default function ButtonWithIcon() {\n  return (\n    <Button variant=\"outline\" size=\"sm\">\n      <IconGitBranch /> New Branch\n    </Button>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

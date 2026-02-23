@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "kbd-tooltip",
+  "type": "registry:example",
+  "registryDependencies": [
+    "kbd",
+    "tooltip",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/kbd-tooltip.tsx",
+      "content": "import { Button } from \"@/registry/new-york-v4/ui/button\"\nimport { ButtonGroup } from \"@/registry/new-york-v4/ui/button-group\"\nimport { Kbd, KbdGroup } from \"@/registry/new-york-v4/ui/kbd\"\nimport {\n  Tooltip,\n  TooltipContent,\n  TooltipTrigger,\n} from \"@/registry/new-york-v4/ui/tooltip\"\n\nexport default function KbdTooltip() {\n  return (\n    <div className=\"flex flex-wrap gap-4\">\n      <ButtonGroup>\n        <Tooltip>\n          <TooltipTrigger asChild>\n            <Button size=\"sm\" variant=\"outline\">\n              Save\n            </Button>\n          </TooltipTrigger>\n          <TooltipContent>\n            <div className=\"flex items-center gap-2\">\n              Save Changes <Kbd>S</Kbd>\n            </div>\n          </TooltipContent>\n        </Tooltip>\n        <Tooltip>\n          <TooltipTrigger asChild>\n            <Button size=\"sm\" variant=\"outline\">\n              Print\n            </Button>\n          </TooltipTrigger>\n          <TooltipContent>\n            <div className=\"flex items-center gap-2\">\n              Print Document{\" \"}\n              <KbdGroup>\n                <Kbd>Ctrl</Kbd>\n                <Kbd>P</Kbd>\n              </KbdGroup>\n            </div>\n          </TooltipContent>\n        </Tooltip>\n      </ButtonGroup>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

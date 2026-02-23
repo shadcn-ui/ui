@@ -1,0 +1,40 @@
+---
+title: Laravel
+description: Install and configure shadcn/ui for Laravel
+---
+
+<Steps>
+
+### Create project
+
+Start by creating a new Laravel project with Inertia and React using the laravel installer `laravel new my-app`:
+
+```bash
+laravel new my-app --react
+```
+
+### Add Components
+
+You can now start adding components to your project.
+
+```bash
+npx shadcn@latest add switch
+```
+
+The command above will add the `Switch` component to `resources/js/components/ui/switch.tsx`. You can then import it like this:
+
+```tsx title="resources/js/pages/index.tsx" {1,6} showLineNumbers
+import { Switch } from "@/components/ui/switch"
+
+const MyPage = () => {
+  return (
+    <div>
+      <Switch />
+    </div>
+  )
+}
+
+export default MyPage
+```
+
+</Steps>

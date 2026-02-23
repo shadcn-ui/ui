@@ -1,74 +1,202 @@
-import { getRegistryIcons } from "@/src/registry/api"
-import { ICON_LIBRARIES } from "@/src/utils/icon-libraries"
+import { iconLibraries, type IconLibraryName } from "@/src/icons/libraries"
 import { Transformer } from "@/src/utils/transformers"
 import { SourceFile, SyntaxKind } from "ts-morph"
 
-// Lucide is the default icon library in the registry.
-const SOURCE_LIBRARY = "lucide"
-
 export const transformIcons: Transformer = async ({ sourceFile, config }) => {
-  // No transform if we cannot read the icon library.
-  if (!config.iconLibrary || !(config.iconLibrary in ICON_LIBRARIES)) {
+  const iconLibrary = config.iconLibrary
+
+  // Fail silently if the icon library is not supported.
+  // This is for legacy icon libraries.
+  if (!iconLibrary || !(iconLibrary in iconLibraries)) {
     return sourceFile
   }
 
-  const registryIcons = await getRegistryIcons()
-  const sourceLibrary = SOURCE_LIBRARY
-  const targetLibrary = config.iconLibrary
+  const targetLibrary = iconLibrary as IconLibraryName
+  const libraryConfig = iconLibraries[targetLibrary]
+  let transformedIcons: string[] = []
 
-  if (sourceLibrary === targetLibrary) {
-    return sourceFile
-  }
-
-  let targetedIcons: string[] = []
-  for (const importDeclaration of sourceFile.getImportDeclarations() ?? []) {
-    if (
-      importDeclaration.getModuleSpecifier()?.getText() !==
-      `"${ICON_LIBRARIES[SOURCE_LIBRARY].import}"`
-    ) {
+  for (const element of sourceFile.getDescendantsOfKind(
+    SyntaxKind.JsxSelfClosingElement
+  )) {
+    if (element.getTagNameNode()?.getText() !== "IconPlaceholder") {
       continue
     }
 
-    for (const specifier of importDeclaration.getNamedImports() ?? []) {
-      const iconName = specifier.getName()
-
-      const targetedIcon = registryIcons[iconName]?.[targetLibrary]
-
-      if (!targetedIcon || targetedIcons.includes(targetedIcon)) {
-        continue
+    // Find the library-specific prop (e.g., "lucide", "tabler", "hugeicons")
+    const libraryPropAttr = element.getAttributes().find((attr) => {
+      if (attr.getKind() !== SyntaxKind.JsxAttribute) {
+        return false
       }
+      const jsxAttr = attr.asKindOrThrow(SyntaxKind.JsxAttribute)
+      return jsxAttr.getNameNode().getText() === targetLibrary
+    })
 
-      targetedIcons.push(targetedIcon)
-
-      // Remove the named import.
-      specifier.remove()
-
-      // Replace with the targeted icon.
-      sourceFile
-        .getDescendantsOfKind(SyntaxKind.JsxSelfClosingElement)
-        .filter((node) => node.getTagNameNode()?.getText() === iconName)
-        .forEach((node) => node.getTagNameNode()?.replaceWithText(targetedIcon))
+    if (!libraryPropAttr) {
+      continue // No icon specified for this library
     }
 
-    // If the named import is empty, remove the import declaration.
-    if (importDeclaration.getNamedImports()?.length === 0) {
-      importDeclaration.remove()
+    const jsxIconAttr = libraryPropAttr.asKindOrThrow(SyntaxKind.JsxAttribute)
+    const targetIconName = jsxIconAttr
+      .getInitializer()
+      ?.getText()
+      .replace(/^["']|["']$/g, "")
+
+    if (!targetIconName) {
+      continue
+    }
+
+    if (!transformedIcons.includes(targetIconName)) {
+      transformedIcons.push(targetIconName)
+    }
+
+    const usage = libraryConfig.usage
+    const usageMatch = usage.match(/<(\w+)([^>]*)\s*\/>/)
+
+    // Remove the library-specific prop
+    jsxIconAttr.remove()
+
+    // Remove all other library-specific props
+    for (const attr of element.getAttributes()) {
+      if (attr.getKind() !== SyntaxKind.JsxAttribute) {
+        continue
+      }
+      const jsxAttr = attr.asKindOrThrow(SyntaxKind.JsxAttribute)
+      const attrName = jsxAttr.getNameNode().getText()
+      // Filter out library-specific props (lucide, tabler, hugeicons, etc.)
+      if (attrName in iconLibraries) {
+        jsxAttr.remove()
+      }
+    }
+
+    if (!usageMatch) {
+      element.getTagNameNode()?.replaceWithText(targetIconName)
+      continue
+    }
+
+    const [, componentName, defaultPropsStr] = usageMatch
+
+    if (componentName === "ICON") {
+      // Get remaining user attributes (non-library props)
+      const userAttributes = element
+        .getAttributes()
+        .filter((attr) => {
+          if (attr.getKind() !== SyntaxKind.JsxAttribute) {
+            return true
+          }
+          const jsxAttr = attr.asKindOrThrow(SyntaxKind.JsxAttribute)
+          const attrName = jsxAttr.getNameNode().getText()
+          // Filter out library-specific props (lucide, tabler, hugeicons, etc.)
+          return !(attrName in iconLibraries)
+        })
+        .map((attr) => attr.getText())
+        .join(" ")
+
+      if (userAttributes.trim()) {
+        element.replaceWithText(`<${targetIconName} ${userAttributes} />`)
+      } else {
+        element.getTagNameNode()?.replaceWithText(targetIconName)
+      }
+    } else {
+      const existingPropNames = new Set(
+        element
+          .getAttributes()
+          .filter((attr) => attr.getKind() === SyntaxKind.JsxAttribute)
+          .map((attr) =>
+            attr.asKindOrThrow(SyntaxKind.JsxAttribute).getNameNode().getText()
+          )
+      )
+
+      // Replace ICON placeholder in defaultPropsStr with actual icon name
+      const defaultPropsWithIcon = defaultPropsStr.replace(
+        /\{ICON\}/g,
+        `{${targetIconName}}`
+      )
+
+      const defaultPropsToAdd = defaultPropsWithIcon
+        .trim()
+        .split(/\s+(?=\w+=)/)
+        .filter((prop) => prop)
+        .map((prop) => {
+          const propName = prop.split("=")[0]
+          return propName && !existingPropNames.has(propName) ? prop : null
+        })
+        .filter(Boolean)
+
+      const userAttributes = element
+        .getAttributes()
+        .filter((attr) => {
+          if (attr.getKind() !== SyntaxKind.JsxAttribute) {
+            return true
+          }
+          const jsxAttr = attr.asKindOrThrow(SyntaxKind.JsxAttribute)
+          const attrName = jsxAttr.getNameNode().getText()
+          // Filter out library-specific props (lucide, tabler, hugeicons, etc.)
+          return !(attrName in iconLibraries)
+        })
+        .map((attr) => attr.getText())
+        .join(" ")
+
+      const allProps = [...defaultPropsToAdd, userAttributes]
+        .filter(Boolean)
+        .join(" ")
+
+      element.replaceWithText(`<${componentName} ${allProps} />`)
     }
   }
 
-  if (targetedIcons.length > 0) {
-    const iconImportDeclaration = sourceFile.addImportDeclaration({
-      moduleSpecifier:
-        ICON_LIBRARIES[targetLibrary as keyof typeof ICON_LIBRARIES]?.import,
-      namedImports: targetedIcons.map((icon) => ({
-        name: icon,
-      })),
-    })
+  for (const importDeclaration of sourceFile.getImportDeclarations() ?? []) {
+    const moduleSpecifier = importDeclaration.getModuleSpecifier()?.getText()
+    if (moduleSpecifier?.includes("icon-placeholder")) {
+      const namedImports = importDeclaration.getNamedImports() ?? []
+      const iconPlaceholderImport = namedImports.find(
+        (specifier) => specifier.getName() === "IconPlaceholder"
+      )
+
+      if (iconPlaceholderImport) {
+        iconPlaceholderImport.remove()
+      }
+
+      if (importDeclaration.getNamedImports()?.length === 0) {
+        importDeclaration.remove()
+      }
+    }
+  }
+
+  if (transformedIcons.length > 0) {
+    const importStatements = libraryConfig.import.split("\n")
+    const addedImports = []
+
+    for (const importStmt of importStatements) {
+      const importMatch = importStmt.match(
+        /import\s+{([^}]+)}\s+from\s+['"]([^'"]+)['"]/
+      )
+
+      if (!importMatch) continue
+
+      const [, importedNames, modulePath] = importMatch
+      const namedImports = importedNames
+        .split(",")
+        .map((name) => name.trim())
+        .map((name) => {
+          if (name === "ICON") {
+            return transformedIcons.map((icon) => ({ name: icon }))
+          }
+          return { name }
+        })
+        .flat()
+
+      const newImport = sourceFile.addImportDeclaration({
+        moduleSpecifier: modulePath,
+        namedImports,
+      })
+
+      addedImports.push(newImport)
+    }
 
     if (!_useSemicolon(sourceFile)) {
-      iconImportDeclaration.replaceWithText(
-        iconImportDeclaration.getText().replace(";", "")
-      )
+      for (const importDecl of addedImports) {
+        importDecl.replaceWithText(importDecl.getText().replace(";", ""))
+      }
     }
   }
 

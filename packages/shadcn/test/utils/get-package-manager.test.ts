@@ -21,6 +21,12 @@ test("get package manager", async () => {
   ).toBe("bun")
 
   expect(
+    await getPackageManager(
+      path.resolve(__dirname, "../fixtures/project-bun-lock")
+    )
+  ).toBe("bun")
+
+  expect(
     await getPackageManager(path.resolve(__dirname, "../fixtures/next"))
   ).toBe("pnpm")
 })

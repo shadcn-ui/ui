@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "context-menu-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "context-menu"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/context-menu-demo.tsx",
+      "content": "import {\n  ContextMenu,\n  ContextMenuCheckboxItem,\n  ContextMenuContent,\n  ContextMenuItem,\n  ContextMenuLabel,\n  ContextMenuRadioGroup,\n  ContextMenuRadioItem,\n  ContextMenuSeparator,\n  ContextMenuShortcut,\n  ContextMenuSub,\n  ContextMenuSubContent,\n  ContextMenuSubTrigger,\n  ContextMenuTrigger,\n} from \"@/registry/new-york-v4/ui/context-menu\"\n\nexport default function ContextMenuDemo() {\n  return (\n    <ContextMenu>\n      <ContextMenuTrigger className=\"flex h-[150px] w-[300px] items-center justify-center rounded-md border border-dashed text-sm\">\n        Right click here\n      </ContextMenuTrigger>\n      <ContextMenuContent className=\"w-52\">\n        <ContextMenuItem inset>\n          Back\n          <ContextMenuShortcut>⌘[</ContextMenuShortcut>\n        </ContextMenuItem>\n        <ContextMenuItem inset disabled>\n          Forward\n          <ContextMenuShortcut>⌘]</ContextMenuShortcut>\n        </ContextMenuItem>\n        <ContextMenuItem inset>\n          Reload\n          <ContextMenuShortcut>⌘R</ContextMenuShortcut>\n        </ContextMenuItem>\n        <ContextMenuSub>\n          <ContextMenuSubTrigger inset>More Tools</ContextMenuSubTrigger>\n          <ContextMenuSubContent className=\"w-44\">\n            <ContextMenuItem>Save Page...</ContextMenuItem>\n            <ContextMenuItem>Create Shortcut...</ContextMenuItem>\n            <ContextMenuItem>Name Window...</ContextMenuItem>\n            <ContextMenuSeparator />\n            <ContextMenuItem>Developer Tools</ContextMenuItem>\n            <ContextMenuSeparator />\n            <ContextMenuItem variant=\"destructive\">Delete</ContextMenuItem>\n          </ContextMenuSubContent>\n        </ContextMenuSub>\n        <ContextMenuSeparator />\n        <ContextMenuCheckboxItem checked>\n          Show Bookmarks\n        </ContextMenuCheckboxItem>\n        <ContextMenuCheckboxItem>Show Full URLs</ContextMenuCheckboxItem>\n        <ContextMenuSeparator />\n        <ContextMenuRadioGroup value=\"pedro\">\n          <ContextMenuLabel inset>People</ContextMenuLabel>\n          <ContextMenuRadioItem value=\"pedro\">\n            Pedro Duarte\n          </ContextMenuRadioItem>\n          <ContextMenuRadioItem value=\"colm\">Colm Tuite</ContextMenuRadioItem>\n        </ContextMenuRadioGroup>\n      </ContextMenuContent>\n    </ContextMenu>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}
