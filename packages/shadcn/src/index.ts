@@ -41,8 +41,6 @@ async function main() {
     .addCommand(build)
     .addCommand(mcp)
     .addCommand(registry)
-  // Legacy registry commands.
-  program.addCommand(registryBuild).addCommand(registryMcp)
 
   program.parse()
 }
