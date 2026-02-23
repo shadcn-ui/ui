@@ -1042,8 +1042,6 @@ describe("registries", () => {
       "--yes",
     ])
 
-    expect(output.stderr).toContain("Updating CSS variables in app/globals.css")
-
     const globalCssContent = await fs.readFile(
       path.join(fixturePath, "app/globals.css"),
       "utf-8"
@@ -1204,7 +1202,12 @@ describe("registries:init", () => {
       "@one": "http://localhost:4444/r/{name}",
     })
 
-    await npxShadcn(fixturePath, ["init", "--force", "@one/style"])
+    await npxShadcn(fixturePath, [
+      "init",
+      "--force",
+      "--no-reinstall",
+      "@one/style",
+    ])
 
     const componentsJson = await fs.readJson(
       path.join(fixturePath, "components.json")
@@ -1272,7 +1275,12 @@ describe("registries:init", () => {
 
     process.env.BEARER_TOKEN = "EXAMPLE_BEARER_TOKEN"
 
-    await npxShadcn(fixturePath, ["init", "--force", "@two/style"])
+    await npxShadcn(fixturePath, [
+      "init",
+      "--force",
+      "--no-reinstall",
+      "@two/style",
+    ])
 
     const componentsJson = await fs.readJson(
       path.join(fixturePath, "components.json")

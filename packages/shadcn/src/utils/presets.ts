@@ -55,7 +55,7 @@ export const DEFAULT_PRESETS = {
   },
   lyra: {
     title: "Lyra",
-    description: "Tabler / JetBrains Mono",
+    description: "Hugeicons / JetBrains Mono",
     style: "lyra",
     baseColor: "neutral",
     theme: "neutral",

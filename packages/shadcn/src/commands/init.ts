@@ -134,7 +134,8 @@ export const init = new Command()
 
       if (options.defaults) {
         options.template = options.template || "next"
-        // Base resolution happens below — just mark presetBase as undefined.
+        options.base = options.base || "base"
+        options.reinstall = options.reinstall ?? false
       }
 
       if (options.template && !(options.template in templates)) {
@@ -373,13 +374,19 @@ export const init = new Command()
           : "")
 
       if (!resolvedBase) {
-        const base = await promptForBase()
-        resolvedBase = base
-        options.base = base
+        if (components.length > 0) {
+          // When initializing from a registry item, default to radix.
+          // The registry:base config will override this.
+          resolvedBase = "radix"
+        } else {
+          const base = await promptForBase()
+          resolvedBase = base
+          options.base = base
+        }
       }
 
       // Build the --defaults URL now that base is resolved.
-      if (options.defaults && components.length === 0) {
+      if (options.defaults && !components.some(isUrl)) {
         const initUrl = resolveInitUrl(
           {
             ...DEFAULT_PRESETS.nova,

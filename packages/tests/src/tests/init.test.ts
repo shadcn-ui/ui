@@ -549,7 +549,9 @@ describe("shadcn init - next-monorepo", () => {
         "-t",
         "next-monorepo",
         "--preset",
-        "radix-nova",
+        "nova",
+        "--base",
+        "radix",
       ],
       { timeout: 300000, debug: true }
     )

@@ -214,7 +214,7 @@ function printInfo(data: ReturnType<typeof collectInfo>) {
     // Registries.
     if (Object.keys(data.config.registries).length > 0) {
       logger.break()
-      logger.log(highlighter.info("Registries"))
+      logger.log("registries:")
       printEntries(data.config.registries)
     }
   } else {
