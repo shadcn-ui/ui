@@ -15,7 +15,6 @@ import {
   STYLES,
 } from "@/registry/config"
 import { Button } from "@/registry/new-york-v4/ui/button"
-import { Kbd } from "@/registry/new-york-v4/ui/kbd"
 import {
   Tooltip,
   TooltipContent,
@@ -122,30 +121,29 @@ export function RandomButton() {
   }, [handleRandomize])
 
   return (
-    <Tooltip>
-      <TooltipTrigger asChild>
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={handleRandomize}
-          className="border-foreground/10 bg-muted/50 h-[calc(--spacing(13.5))] w-[140px] touch-manipulation justify-between rounded-xl border select-none focus-visible:border-transparent focus-visible:ring-1 sm:rounded-lg md:w-full md:rounded-lg md:border-transparent md:bg-transparent md:pr-3.5! md:pl-2!"
-        >
-          <div className="flex flex-col justify-start text-left">
-            <div className="text-muted-foreground text-xs">Shuffle</div>
-            <div className="text-foreground text-sm font-medium">
-              Try Random
-            </div>
-          </div>
-          <HugeiconsIcon icon={DiceFaces05Icon} className="size-5 md:hidden" />
-          <Kbd className="bg-foreground/10 text-foreground hidden md:flex">
-            R
-          </Kbd>
-        </Button>
-      </TooltipTrigger>
-      <TooltipContent side="left">
-        Use browser back/forward to navigate history
-      </TooltipContent>
-    </Tooltip>
+    <>
+      <Button
+        variant="ghost"
+        size="sm"
+        onClick={handleRandomize}
+        className="border-foreground/10 bg-muted/50 flex h-[calc(--spacing(13.5))] w-[140px] touch-manipulation justify-between rounded-xl border select-none focus-visible:border-transparent focus-visible:ring-1 sm:hidden"
+      >
+        <div className="flex flex-col justify-start text-left">
+          <div className="text-muted-foreground text-xs">Shuffle</div>
+          <div className="text-foreground text-sm font-medium">Try Random</div>
+        </div>
+        <HugeiconsIcon icon={DiceFaces05Icon} className="size-5" />
+      </Button>
+      <Button
+        variant="outline"
+        size="sm"
+        onClick={handleRandomize}
+        className="hidden rounded-lg shadow-none sm:flex"
+      >
+        <HugeiconsIcon icon={DiceFaces05Icon} />
+        Shuffle
+      </Button>
+    </>
   )
 }
 

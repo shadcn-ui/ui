@@ -2172,7 +2172,7 @@
       ],
       "files": [
         {
-          "path": "registry/base-nova/blocks/preview.tsx",
+          "path": "registry/base-nova/blocks/preview/index.tsx",
           "type": "registry:block"
         }
       ],

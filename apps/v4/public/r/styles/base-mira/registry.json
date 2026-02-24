@@ -2172,7 +2172,7 @@
       ],
       "files": [
         {
-          "path": "registry/base-mira/blocks/preview.tsx",
+          "path": "registry/base-mira/blocks/preview/index.tsx",
           "type": "registry:block"
         }
       ],

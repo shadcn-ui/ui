@@ -8644,13 +8644,15 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
-          path: "registry/bases/base/blocks/preview.tsx",
+          path: "registry/bases/base/blocks/preview/index.tsx",
           type: "registry:block",
           target: "",
         },
       ],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/bases/base/blocks/preview.tsx")
+        const mod = await import(
+          "@/registry/bases/base/blocks/preview/index.tsx"
+        )
         const exportName =
           Object.keys(mod).find(
             (key) =>

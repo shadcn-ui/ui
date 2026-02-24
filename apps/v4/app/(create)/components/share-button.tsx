@@ -42,23 +42,18 @@ export function ShareButton() {
   }, [shareUrl])
 
   return (
-    <Tooltip>
-      <TooltipTrigger asChild>
-        <Button
-          size="sm"
-          variant="outline"
-          className="rounded-lg shadow-none lg:w-8 xl:w-fit"
-          onClick={handleCopy}
-        >
-          {hasCopied ? (
-            <HugeiconsIcon icon={Tick02Icon} strokeWidth={2} />
-          ) : (
-            <HugeiconsIcon icon={Share03Icon} strokeWidth={2} />
-          )}
-          <span className="lg:hidden xl:block">Share</span>
-        </Button>
-      </TooltipTrigger>
-      <TooltipContent>Copy Link</TooltipContent>
-    </Tooltip>
+    <Button
+      size="sm"
+      variant="outline"
+      className="rounded-lg shadow-none"
+      onClick={handleCopy}
+    >
+      {hasCopied ? (
+        <HugeiconsIcon icon={Tick02Icon} strokeWidth={2} />
+      ) : (
+        <HugeiconsIcon icon={Share03Icon} strokeWidth={2} />
+      )}
+      Share
+    </Button>
   )
 }

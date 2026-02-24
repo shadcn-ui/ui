@@ -18,6 +18,16 @@ export const revalidate = false
 export const dynamic = "force-static"
 export const dynamicParams = false
 
+function PreventScrollOnFocusScript() {
+  return (
+    <script
+      dangerouslySetInnerHTML={{
+        __html: `(function(){var f=HTMLElement.prototype.focus;HTMLElement.prototype.focus=function(o){f.call(this,Object.assign({},o,{preventScroll:true}))};})();`,
+      }}
+    />
+  )
+}
+
 const getCacheRegistryItem = React.cache(
   async (name: string, base: Base["name"]) => {
     return await getBaseItem(name, base)
@@ -130,6 +140,7 @@ export default async function BlockPage({
 
   return (
     <div className="relative">
+      <PreventScrollOnFocusScript />
       <PreviewStyle />
       <ItemPickerScript />
       <RandomizeScript />

@@ -2172,7 +2172,7 @@
       ],
       "files": [
         {
-          "path": "registry/base-vega/blocks/preview.tsx",
+          "path": "registry/base-vega/blocks/preview/index.tsx",
           "type": "registry:block"
         }
       ],

@@ -25,31 +25,22 @@ export function V0Button({ className }: { className?: string }) {
   }
 
   return (
-    <>
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <Button
-            size="sm"
-            variant={isMobile ? "default" : "outline"}
-            className={cn(
-              "w-24 rounded-lg shadow-none data-[variant=default]:h-[31px] lg:w-8 xl:w-24",
-              className
-            )}
-            asChild
-          >
-            <a
-              href={`${process.env.NEXT_PUBLIC_V0_URL}/chat/api/open?url=${encodeURIComponent(url)}&title=${params.item}`}
-              target="_blank"
-            >
-              <span className="lg:hidden xl:block">Open in</span>
-              <Icons.v0 className="size-5" />
-            </a>
-          </Button>
-        </TooltipTrigger>
-        <TooltipContent>
-          <p>Open current design in v0</p>
-        </TooltipContent>
-      </Tooltip>
-    </>
+    <Button
+      size="sm"
+      variant={isMobile ? "default" : "outline"}
+      className={cn(
+        "w-24 gap-1 rounded-lg shadow-none data-[variant=default]:h-[31px] lg:w-8 xl:w-24",
+        className
+      )}
+      asChild
+    >
+      <a
+        href={`${process.env.NEXT_PUBLIC_V0_URL}/chat/api/open?url=${encodeURIComponent(url)}&title=${params.item}`}
+        target="_blank"
+      >
+        <span className="lg:hidden xl:block">Open in</span>
+        <Icons.v0 className="size-5" />
+      </a>
+    </Button>
   )
 }

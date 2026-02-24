@@ -15,8 +15,8 @@ import { BASES } from "@/registry/config"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import { Separator } from "@/registry/new-york-v4/ui/separator"
 import { SidebarProvider } from "@/registry/new-york-v4/ui/sidebar"
+import { CopyPreset } from "@/app/(create)/components/copy-preset"
 import { Customizer } from "@/app/(create)/components/customizer"
-import { ItemExplorer } from "@/app/(create)/components/item-explorer"
 import { ItemPicker } from "@/app/(create)/components/item-picker"
 import { PresetHandler } from "@/app/(create)/components/preset-handler"
 import { Preview } from "@/app/(create)/components/preview"
@@ -89,7 +89,7 @@ export default async function CreatePage({
       <header className="sticky top-0 z-50 w-full">
         <div className="container-wrapper 3xl:fixed:px-0 px-6">
           <div className="3xl:fixed:container flex h-(--header-height) items-center **:data-[slot=separator]:h-4!">
-            <div className="3xl:fixed:container flex h-(--header-height) items-center **:data-[slot=separator]:h-4!">
+            <div className="3xl:fixed:container hidden h-(--header-height) items-center **:data-[slot=separator]:h-4!">
               <MobileNav
                 tree={pageTree}
                 items={siteConfig.navItems}
@@ -108,24 +108,47 @@ export default async function CreatePage({
               </Button>
               <MainNav items={siteConfig.navItems} className="hidden lg:flex" />
             </div>
-            <div className="fixed inset-x-0 bottom-0 ml-auto flex flex-1 items-center justify-end gap-2 px-4.5 pb-4 sm:static sm:p-0 lg:ml-0">
-              <ItemPicker items={filteredItems} />
-              <div className="items-center gap-0 sm:hidden">
-                <RandomButton />
-                <ResetButton />
-              </div>
-              <Separator orientation="vertical" className="mr-2 flex" />
-            </div>
-            <div className="ml-auto flex items-center gap-2 sm:ml-0 md:justify-end">
-              <SiteConfig className="3xl:flex hidden" />
-              <Separator orientation="vertical" className="3xl:flex hidden" />
-              <ModeSwitcher />
+            <div className="flex flex-1 items-center gap-2">
+              <Button
+                asChild
+                variant="outline"
+                size="sm"
+                className="rounded-lg shadow-none"
+              >
+                <Link href="/">
+                  <ArrowLeftIcon />
+                  Back
+                </Link>
+              </Button>
               <Separator
                 orientation="vertical"
                 className="mr-0 -ml-2 sm:ml-0"
               />
+              <ItemPicker items={filteredItems} />
+            </div>
+            <div className="fixed inset-x-0 bottom-0 ml-auto flex flex-1 items-center justify-end gap-2 px-4.5 pb-4 sm:static sm:p-0 lg:ml-0">
+              <RandomButton />
+              <ResetButton />
+              <Separator orientation="vertical" className="mr-2 flex" />
+            </div>
+            <div className="ml-auto flex items-center gap-2 sm:ml-0 md:justify-end">
               <ShareButton />
               <V0Button />
+              <Separator orientation="vertical" className="3xl:flex hidden" />
+              <SiteConfig className="3xl:flex hidden" />
+              <Separator
+                orientation="vertical"
+                className="mr-0 -ml-2 sm:ml-0"
+              />
+              <ModeSwitcher
+                variant="outline"
+                className="rounded-lg shadow-none"
+              />
+              <Separator
+                orientation="vertical"
+                className="mr-0 -ml-2 sm:ml-0"
+              />
+              <CopyPreset />
               <ProjectForm />
             </div>
           </div>
@@ -135,7 +158,7 @@ export default async function CreatePage({
         <SidebarProvider className="flex h-auto min-h-min flex-1 flex-col items-start overflow-hidden px-0">
           <div
             data-slot="designer"
-            className="3xl:fixed:container flex w-full flex-1 flex-col gap-2 p-6 pt-1 pb-4 [--sidebar-width:--spacing(40)] sm:gap-2 sm:pt-2 md:flex-row md:pb-6 2xl:gap-6"
+            className="3xl:fixed:container flex w-full flex-1 flex-col gap-2 p-6 pt-1 pb-4 sm:gap-2 sm:pt-2 md:flex-row md:pb-6 lg:gap-6"
           >
             <Preview />
             <Customizer />

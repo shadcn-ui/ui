@@ -7,13 +7,10 @@ import { getThemesForBaseColor, STYLES } from "@/registry/config"
 import { FieldGroup } from "@/registry/new-york-v4/ui/field"
 import { MenuAccentPicker } from "@/app/(create)/components/accent-picker"
 import { BaseColorPicker } from "@/app/(create)/components/base-color-picker"
-import { BasePicker } from "@/app/(create)/components/base-picker"
 import { FontPicker } from "@/app/(create)/components/font-picker"
 import { IconLibraryPicker } from "@/app/(create)/components/icon-library-picker"
 import { MenuColorPicker } from "@/app/(create)/components/menu-picker"
 import { RadiusPicker } from "@/app/(create)/components/radius-picker"
-import { RandomButton } from "@/app/(create)/components/random-button"
-import { ResetButton } from "@/app/(create)/components/reset-button"
 import { StylePicker } from "@/app/(create)/components/style-picker"
 import { ThemePicker } from "@/app/(create)/components/theme-picker"
 import { FONTS } from "@/app/(create)/lib/fonts"
@@ -35,8 +32,7 @@ export function Customizer() {
       ref={anchorRef}
     >
       <div className="no-scrollbar h-14 overflow-x-auto overflow-y-hidden p-px md:h-full md:overflow-x-hidden md:overflow-y-auto">
-        <FieldGroup className="flex h-full flex-1 flex-row gap-2 md:flex-col md:gap-0">
-          <BasePicker isMobile={isMobile} anchorRef={anchorRef} />
+        <FieldGroup className="flex h-full flex-1 flex-row gap-2 md:flex-col md:gap-1">
           <StylePicker
             styles={STYLES}
             isMobile={isMobile}
@@ -53,10 +49,6 @@ export function Customizer() {
           <RadiusPicker isMobile={isMobile} anchorRef={anchorRef} />
           <MenuColorPicker isMobile={isMobile} anchorRef={anchorRef} />
           <MenuAccentPicker isMobile={isMobile} anchorRef={anchorRef} />
-          <div className="mt-auto hidden w-full flex-col items-center gap-0 md:flex">
-            <RandomButton />
-            <ResetButton />
-          </div>
         </FieldGroup>
       </div>
     </div>

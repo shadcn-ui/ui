@@ -70,6 +70,7 @@ const designSystemSearchParams = {
     "start",
     "react-router",
     "vite",
+    "existing",
   ] as const).withDefault("next"),
   rtl: parseAsBoolean.withDefault(false),
   size: parseAsInteger.withDefault(100),
