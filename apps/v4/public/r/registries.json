@@ -12,6 +12,12 @@
     "description": "A set of beautifully designed components designed for developers who want niche, high-utility UI elements that you won't find in standard libraries."
   },
   {
+    "name": "@auth0",
+    "homepage": "https://auth0.com",
+    "url": "https://ui.auth0.com/r/{name}.json",
+    "description": "Official Auth0 Universal Components for Web. Accelerate development with pre-built, embeddable UI for enterprise SSO, MFA, and organization management"
+  },
+  {
     "name": "@abui",
     "homepage": "https://abui.io",
     "url": "https://abui.io/r/{name}.json",
@@ -22,6 +28,12 @@
     "homepage": "https://build.abs.xyz",
     "url": "https://build.abs.xyz/r/{name}/json",
     "description": "A collection of React components for the most common crypto patterns"
+  },
+  {
+    "name": "@arc",
+    "homepage": "https://witharc.co/components",
+    "url": "https://witharc.co/r/{name}.json",
+    "description": "Animated, accessible UI components built with React and Tailwind CSS."
   },
   {
     "name": "@aceternity",
@@ -106,6 +118,12 @@
     "homepage": "https://blocks.so",
     "url": "https://blocks.so/r/{name}.json",
     "description": "A set of clean, modern application building blocks for you in your applications. Free and Open Source"
+  },
+  {
+    "name": "@boldkit",
+    "homepage": "https://boldkit.dev",
+    "url": "https://boldkit.dev/r/{name}.json",
+    "description": "Neubrutalism component library with 43 components, 42 SVG shapes, thick borders, and hard shadows. Supports React, Vue, and Nuxt. Built on shadcn/ui."
   },
   {
     "name": "@bundui",
@@ -760,5 +778,17 @@
     "homepage": "https://sona-ui.vercel.app",
     "url": "https://sona-ui.vercel.app/r/{name}.json",
     "description": "A modern UI component library built with React and TailwindCSS to help you build beautiful and accessible web applications faster."
+  },
+  {
+    "name": "@soundcn",
+    "homepage": "https://soundcn.xyz",
+    "url": "https://soundcn.xyz/r/{name}.json",
+    "description": "Large collection of game, interface, retro, and voice sound effects for web applications"
+  },
+  {
+    "name": "@pixelact-ui",
+    "homepage": "https://pixelactui.com",
+    "url": "https://pixelactui.com/r/{name}.json",
+    "description": "Playful pixel-art style components library built on top of shadcn"
   }
 ]
