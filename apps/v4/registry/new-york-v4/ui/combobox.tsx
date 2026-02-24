@@ -13,7 +13,21 @@ import {
   InputGroupInput,
 } from "@/registry/new-york-v4/ui/input-group"
 
-const Combobox = ComboboxPrimitive.Root
+const ComboboxAnchorContext = React.createContext<React.RefObject<HTMLDivElement | null> | null>(
+  null
+)
+
+function Combobox<Value, Multiple extends boolean | undefined = false>(
+  props: ComboboxPrimitive.Root.Props<Value, Multiple>
+) {
+  const anchorRef = React.useRef<HTMLDivElement | null>(null)
+
+  return (
+    <ComboboxAnchorContext.Provider value={anchorRef}>
+      <ComboboxPrimitive.Root {...props} />
+    </ComboboxAnchorContext.Provider>
+  )
+}
 
 function ComboboxValue({ ...props }: ComboboxPrimitive.Value.Props) {
   return <ComboboxPrimitive.Value data-slot="combobox-value" {...props} />
@@ -58,13 +72,13 @@ function ComboboxInput({
   disabled = false,
   showTrigger = true,
   showClear = false,
-  anchorRef,
   ...props
 }: ComboboxPrimitive.Input.Props & {
   showTrigger?: boolean
   showClear?: boolean
-  anchorRef?: React.RefObject<HTMLDivElement | null>
 }) {
+  const anchorRef = React.useContext(ComboboxAnchorContext)
+
   return (
     <InputGroup ref={anchorRef} className={cn("w-auto", className)}>
       <ComboboxPrimitive.Input
@@ -104,6 +118,8 @@ function ComboboxContent({
     ComboboxPrimitive.Positioner.Props,
     "side" | "align" | "sideOffset" | "alignOffset" | "anchor"
   >) {
+  const defaultAnchor = React.useContext(ComboboxAnchorContext)
+
   return (
     <ComboboxPrimitive.Portal>
       <ComboboxPrimitive.Positioner
@@ -111,7 +127,7 @@ function ComboboxContent({
         sideOffset={sideOffset}
         align={align}
         alignOffset={alignOffset}
-        anchor={anchor}
+        anchor={anchor ?? defaultAnchor ?? undefined}
         className="isolate z-50"
       >
         <ComboboxPrimitive.Popup
@@ -288,10 +304,6 @@ function ComboboxChipsInput({
   )
 }
 
-function useComboboxAnchor() {
-  return React.useRef<HTMLDivElement | null>(null)
-}
-
 export {
   Combobox,
   ComboboxInput,
@@ -308,5 +320,4 @@ export {
   ComboboxChipsInput,
   ComboboxTrigger,
   ComboboxValue,
-  useComboboxAnchor,
 }
