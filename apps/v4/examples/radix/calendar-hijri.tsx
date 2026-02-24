@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { Vazirmatn } from "next/font/google"
 import { Button, buttonVariants } from "@/examples/radix/ui/button"
 import {
   ChevronDownIcon,
@@ -12,19 +13,23 @@ import { DayPicker } from "react-day-picker/persian"
 
 import { cn } from "@/lib/utils"
 
+const vazirmatn = Vazirmatn({ subsets: ["arabic"] })
+
 export default function CalendarHijri() {
   const [date, setDate] = React.useState<Date | undefined>(
     new Date(2025, 5, 12)
   )
 
   return (
-    <Calendar
-      mode="single"
-      defaultMonth={date}
-      selected={date}
-      onSelect={setDate}
-      className="rounded-lg border"
-    />
+    <div className={vazirmatn.className}>
+      <Calendar
+        mode="single"
+        defaultMonth={date}
+        selected={date}
+        onSelect={setDate}
+        className="rounded-lg border"
+      />
+    </div>
   )
 }
 
