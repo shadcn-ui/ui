@@ -2171,45 +2171,6 @@
       "type": "registry:block"
     },
     {
-      "name": "cards",
-      "title": "Cards",
-      "registryDependencies": [
-        "alert-dialog",
-        "avatar",
-        "badge",
-        "button",
-        "button-group",
-        "card",
-        "checkbox",
-        "combobox",
-        "dropdown-menu",
-        "empty",
-        "field",
-        "input",
-        "input-group",
-        "item",
-        "label",
-        "popover",
-        "radio-group",
-        "select",
-        "separator",
-        "sheet",
-        "slider",
-        "spinner",
-        "switch",
-        "textarea",
-        "tooltip",
-        "example"
-      ],
-      "files": [
-        {
-          "path": "registry/radix-lyra/blocks/cards.tsx",
-          "type": "registry:block"
-        }
-      ],
-      "type": "registry:block"
-    },
-    {
       "name": "login-01",
       "title": "Login 01",
       "description": "A simple login form.",

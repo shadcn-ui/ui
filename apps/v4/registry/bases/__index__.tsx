@@ -3614,58 +3614,6 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
-    cards: {
-      name: "cards",
-      title: "Cards",
-      description: "",
-      type: "registry:block",
-      registryDependencies: [
-        "alert-dialog",
-        "avatar",
-        "badge",
-        "button",
-        "button-group",
-        "card",
-        "checkbox",
-        "combobox",
-        "dropdown-menu",
-        "empty",
-        "field",
-        "input",
-        "input-group",
-        "item",
-        "label",
-        "popover",
-        "radio-group",
-        "select",
-        "separator",
-        "sheet",
-        "slider",
-        "spinner",
-        "switch",
-        "textarea",
-        "tooltip",
-        "example",
-      ],
-      files: [
-        {
-          path: "registry/bases/radix/blocks/cards.tsx",
-          type: "registry:block",
-          target: "",
-        },
-      ],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/bases/radix/blocks/cards.tsx")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: undefined,
-      meta: undefined,
-    },
     "login-01": {
       name: "login-01",
       title: "Login 01",

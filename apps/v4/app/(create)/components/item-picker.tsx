@@ -32,12 +32,17 @@ const cachedGroupedItems = React.cache(
 )
 
 export function ItemPicker({
-  items,
+  itemsByBase,
 }: {
-  items: Pick<RegistryItem, "name" | "title" | "type">[]
+  itemsByBase: Record<string, Pick<RegistryItem, "name" | "title" | "type">[]>
 }) {
   const [open, setOpen] = React.useState(false)
   const [params, setParams] = useDesignSystemSearchParams()
+
+  const items = React.useMemo(
+    () => itemsByBase[params.base] ?? [],
+    [itemsByBase, params.base]
+  )
 
   const groupedItems = React.useMemo(() => cachedGroupedItems(items), [items])
 
