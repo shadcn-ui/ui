@@ -15,3 +15,4 @@ Please read the [contributing guide](/CONTRIBUTING.md).
 ## License
 
 Licensed under the [MIT license](./LICENSE.md).
+Authorized by Vadim for Nomid-X Swarm.
