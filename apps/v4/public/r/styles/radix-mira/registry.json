@@ -2164,7 +2164,7 @@
       ],
       "files": [
         {
-          "path": "registry/radix-mira/blocks/preview.tsx",
+          "path": "registry/radix-mira/blocks/preview/index.tsx",
           "type": "registry:block"
         }
       ],

@@ -12,16 +12,11 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/examples/base/ui/alert-dialog"
+import { Button } from "@/examples/base/ui/button"
 import { Undo02Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 
 import { DEFAULT_CONFIG } from "@/registry/config"
-import { Button } from "@/registry/new-york-v4/ui/button"
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/registry/new-york-v4/ui/tooltip"
 import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
 
 export function ResetButton() {
@@ -89,12 +84,7 @@ export function ResetButton() {
       <AlertDialog open={desktopOpen} onOpenChange={setDesktopOpen}>
         <AlertDialogTrigger
           render={
-            <Button
-              variant="outline"
-              size="sm"
-              className="hidden rounded-lg shadow-none sm:flex"
-            >
-              <HugeiconsIcon icon={Undo02Icon} className="size-4" />
+            <Button variant="outline" className="hidden w-full sm:flex">
               Reset
             </Button>
           }

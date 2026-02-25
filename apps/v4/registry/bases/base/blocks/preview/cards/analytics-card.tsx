@@ -62,7 +62,6 @@ export function AnalyticsCard() {
           <ChartTooltip
             cursor={false}
             content={<ChartTooltipContent indicator="line" hideLabel />}
-            defaultIndex={2}
           />
           <Area
             dataKey="visitors"

@@ -2164,7 +2164,7 @@
       ],
       "files": [
         {
-          "path": "registry/radix-nova/blocks/preview.tsx",
+          "path": "registry/radix-nova/blocks/preview/index.tsx",
           "type": "registry:block"
         }
       ],

@@ -35,7 +35,7 @@ export const blocks: Registry["items"] = [
     ],
     files: [
       {
-        path: "blocks/preview.tsx",
+        path: "blocks/preview/index.tsx",
         type: "registry:block",
       },
     ],

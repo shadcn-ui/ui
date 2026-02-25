@@ -6,11 +6,6 @@ import { HugeiconsIcon } from "@hugeicons/react"
 
 import { copyToClipboardWithMeta } from "@/components/copy-button"
 import { Button } from "@/registry/new-york-v4/ui/button"
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/registry/new-york-v4/ui/tooltip"
 import { usePresetCode } from "@/app/(create)/hooks/use-design-system"
 
 export function CopyPreset() {
@@ -37,11 +32,17 @@ export function CopyPreset() {
   return (
     <Button
       size="sm"
-      variant="outline"
-      className="rounded-lg shadow-none"
+      variant="ghost"
       onClick={handleCopy}
+      className="group/button"
     >
-      Copy Preset
+      --preset {presetCode}
+      <HugeiconsIcon
+        icon={hasCopied ? Tick02Icon : Copy01Icon}
+        strokeWidth={2}
+        className="opacity-0 group-hover/button:opacity-100"
+        data-icon="inline-end"
+      />
     </Button>
   )
 }

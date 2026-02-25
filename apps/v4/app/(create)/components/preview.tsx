@@ -105,8 +105,8 @@ export function Preview() {
 
   return (
     <div className="relative -mx-1 flex flex-1 flex-col justify-center sm:mx-0">
-      <div className="ring-foreground/10 relative z-0 mx-auto flex w-full flex-1 flex-col overflow-hidden rounded-2xl ring-1">
-        <div className="bg-muted dark:bg-muted/30 absolute inset-0 rounded-2xl" />
+      <div className="relative z-0 mx-auto flex w-full flex-1 flex-col overflow-hidden">
+        <div className="bg-muted dark:bg-muted/30 absolute inset-0" />
         <iframe
           key={params.base + params.item}
           ref={iframeRef}

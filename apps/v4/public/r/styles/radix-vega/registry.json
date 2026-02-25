@@ -2164,7 +2164,7 @@
       ],
       "files": [
         {
-          "path": "registry/radix-vega/blocks/preview.tsx",
+          "path": "registry/radix-vega/blocks/preview/index.tsx",
           "type": "registry:block"
         }
       ],

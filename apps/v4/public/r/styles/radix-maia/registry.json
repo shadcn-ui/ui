@@ -2164,7 +2164,7 @@
       ],
       "files": [
         {
-          "path": "registry/radix-maia/blocks/preview.tsx",
+          "path": "registry/radix-maia/blocks/preview/index.tsx",
           "type": "registry:block"
         }
       ],

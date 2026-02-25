@@ -2164,7 +2164,7 @@
       ],
       "files": [
         {
-          "path": "registry/radix-lyra/blocks/preview.tsx",
+          "path": "registry/radix-lyra/blocks/preview/index.tsx",
           "type": "registry:block"
         }
       ],

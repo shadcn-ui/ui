@@ -66,26 +66,27 @@ export function ProjectForm() {
   const commands = React.useMemo(() => {
     const origin = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:4000"
     const isLocalDev = origin.includes("localhost")
-    const baseFlag = params.base ? ` --base ${params.base}` : ""
-    const rtlFlag = params.rtl ? " --rtl" : ""
+    const presetFlag = ` --preset ${presetCode}`
     const templateFlag =
       params.template && params.template !== "existing"
         ? ` --template ${params.template}`
         : ""
-    const flags = `${baseFlag}${rtlFlag}`
+    const baseFlag = params.base ? ` --base ${params.base}` : ""
+    const rtlFlag = params.rtl ? " --rtl" : ""
+    const flags = `${presetFlag}${templateFlag}${baseFlag}${rtlFlag}`
 
     return isLocalDev
       ? {
-          pnpm: `shadcn init${flags} --preset ${presetCode}${templateFlag}`,
-          npm: `shadcn init${flags} --preset ${presetCode}${templateFlag}`,
-          yarn: `shadcn init${flags} --preset ${presetCode}${templateFlag}`,
-          bun: `shadcn init${flags} --preset ${presetCode}${templateFlag}`,
+          pnpm: `shadcn init${flags}`,
+          npm: `shadcn init${flags}`,
+          yarn: `shadcn init${flags}`,
+          bun: `shadcn init${flags}`,
         }
       : {
-          pnpm: `pnpm dlx shadcn@latest init${flags} --preset ${presetCode}${templateFlag}`,
-          npm: `npx shadcn@latest init${flags} --preset ${presetCode}${templateFlag}`,
-          yarn: `yarn dlx shadcn@latest init${flags} --preset ${presetCode}${templateFlag}`,
-          bun: `bunx --bun shadcn@latest init${flags} --preset ${presetCode}${templateFlag}`,
+          pnpm: `pnpm dlx shadcn@latest init${flags}`,
+          npm: `npx shadcn@latest init${flags}`,
+          yarn: `yarn dlx shadcn@latest init${flags}`,
+          bun: `bunx --bun shadcn@latest init${flags}`,
         }
   }, [presetCode, params.base, params.rtl, params.template])
 

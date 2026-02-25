@@ -46,10 +46,7 @@ const agentFeatures = [
       <>
         <strong>Root-cause analysis</strong> for production issues with
         deployment context.{" "}
-        <Badge
-          variant="secondary"
-          className="bg-blue-100 text-blue-700 hover:bg-blue-100"
-        >
+        <Badge variant="secondary" className="bg-chart-1 text-chart-5">
           Requires Observability Plus
         </Badge>
       </>

@@ -6,11 +6,6 @@ import { HugeiconsIcon } from "@hugeicons/react"
 
 import { copyToClipboardWithMeta } from "@/components/copy-button"
 import { Button } from "@/registry/new-york-v4/ui/button"
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/registry/new-york-v4/ui/tooltip"
 import { usePresetCode } from "@/app/(create)/hooks/use-design-system"
 import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
 

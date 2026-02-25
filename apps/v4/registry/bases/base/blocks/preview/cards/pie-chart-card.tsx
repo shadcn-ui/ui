@@ -67,7 +67,9 @@ export function PieChartCard() {
   const topBrowserShare = Math.round(
     (topBrowser.visitors / totalVisitors) * 100
   )
-  const topBrowserLabel = pieChartConfig[topBrowser.browser]?.label ?? "Top"
+  const topBrowserLabel =
+    pieChartConfig[topBrowser.browser as keyof typeof pieChartConfig]?.label ??
+    "Top"
 
   return (
     <Card>
@@ -141,7 +143,7 @@ export function PieChartCard() {
         </div>
         <Progress
           value={topBrowserShare}
-          className="[&_[data-slot=progress-indicator]]:bg-[var(--chart-3)]"
+          className="**:data-[slot=progress-indicator]:bg-chart-3"
         />
       </CardFooter>
     </Card>

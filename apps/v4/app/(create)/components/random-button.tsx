@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import Script from "next/script"
+import { Button } from "@/examples/base/ui/button"
 import { DiceFaces05Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 
@@ -14,12 +15,6 @@ import {
   RADII,
   STYLES,
 } from "@/registry/config"
-import { Button } from "@/registry/new-york-v4/ui/button"
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/registry/new-york-v4/ui/tooltip"
 import { useLocks } from "@/app/(create)/hooks/use-locks"
 import { FONTS } from "@/app/(create)/lib/fonts"
 import {
@@ -136,11 +131,9 @@ export function RandomButton() {
       </Button>
       <Button
         variant="outline"
-        size="sm"
         onClick={handleRandomize}
-        className="hidden rounded-lg shadow-none sm:flex"
+        className="hidden w-full sm:flex"
       >
-        <HugeiconsIcon icon={DiceFaces05Icon} />
         Shuffle
       </Button>
     </>
