@@ -130,7 +130,9 @@ async function getWorkspacePatterns(cwd: string) {
   if (fs.existsSync(pnpmWorkspacePath)) {
     const content = await fs.readFile(pnpmWorkspacePath, "utf8")
     // Simple regex parse to extract patterns from packages list.
-    const matches = content.matchAll(/^\s*-\s*["']?([^"'\n#]+)["']?\s*$/gm)
+    const matches = Array.from(
+      content.matchAll(/^\s*-\s*["']?([^"'\n#]+)["']?\s*$/gm)
+    )
     for (const match of matches) {
       patterns.push(match[1].trim())
     }
@@ -153,5 +155,5 @@ async function getWorkspacePatterns(cwd: string) {
     }
   }
 
-  return [...new Set(patterns)]
+  return Array.from(new Set(patterns))
 }

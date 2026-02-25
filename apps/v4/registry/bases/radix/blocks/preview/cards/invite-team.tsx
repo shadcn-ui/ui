@@ -43,18 +43,11 @@ export function InviteTeam() {
           ].map((invite) => (
             <div key={invite.email} className="flex items-center gap-2">
               <Input defaultValue={invite.email} className="flex-1" />
-              <Select
-                items={[
-                  { label: "Admin", value: "admin" },
-                  { label: "Editor", value: "editor" },
-                  { label: "Viewer", value: "viewer" },
-                ]}
-                defaultValue={invite.role.toLowerCase()}
-              >
+              <Select defaultValue={invite.role.toLowerCase()}>
                 <SelectTrigger className="w-24">
                   <SelectValue />
                 </SelectTrigger>
-                <SelectContent alignItemWithTrigger={false} align="end">
+                <SelectContent position="popper" align="end">
                   <SelectGroup>
                     <SelectItem value="admin">Admin</SelectItem>
                     <SelectItem value="editor">Editor</SelectItem>

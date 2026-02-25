@@ -252,7 +252,7 @@ describe("formatMonorepoMessage", () => {
     ])
 
     expect(breakSpy).toHaveBeenCalled()
-    const allLogCalls = logSpy.mock.calls.map((c) => c[0])
+    const allLogCalls = logSpy.mock.calls.map((c) => c[0] as string)
 
     // Should mention monorepo root.
     expect(allLogCalls.some((msg) => msg.includes("monorepo root"))).toBe(true)
@@ -277,7 +277,7 @@ describe("formatMonorepoMessage", () => {
       { name: "apps/web", hasConfig: false },
     ])
 
-    const allLogCalls = logSpy.mock.calls.map((c) => c[0])
+    const allLogCalls = logSpy.mock.calls.map((c) => c[0] as string)
     expect(
       allLogCalls.some((msg) =>
         msg.includes("shadcn add [component] -c apps/web")

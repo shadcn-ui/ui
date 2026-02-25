@@ -74,6 +74,7 @@ async function addProjectComponents(
   config: z.infer<typeof configSchema>,
   options: {
     overwrite?: boolean
+    overwriteCssVars?: boolean
     silent?: boolean
     isNewProject?: boolean
     skipFonts?: boolean
@@ -160,6 +161,7 @@ async function addWorkspaceComponents(
   workspaceConfig: z.infer<typeof workspaceConfigSchema>,
   options: {
     overwrite?: boolean
+    overwriteCssVars?: boolean
     silent?: boolean
     isNewProject?: boolean
     isRemote?: boolean

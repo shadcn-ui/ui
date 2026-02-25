@@ -3,6 +3,7 @@ import type { SearchParams } from "nuqs/server"
 
 import { siteConfig } from "@/lib/config"
 import { absoluteUrl } from "@/lib/utils"
+import { SiteHeader } from "@/components/site-header"
 import { BASES } from "@/registry/config"
 import { SidebarProvider } from "@/registry/new-york-v4/ui/sidebar"
 import { Customizer } from "@/app/(create)/components/customizer"
@@ -13,7 +14,7 @@ import { WelcomeDialog } from "@/app/(create)/components/welcome-dialog"
 import { loadDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
 
 export const revalidate = false
-export const dynamic = "force-static"
+export const dynamic = "force-dynamic"
 
 export const metadata: Metadata = {
   title: "New Project",
