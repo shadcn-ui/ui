@@ -77,7 +77,8 @@
     "pub:next": "pnpm build && pnpm publish --no-git-checks --access public --tag next",
     "pub:release": "pnpm build && pnpm publish --access public",
     "test": "vitest run --exclude test/visual/**",
-    "test:pixel": "vitest run test/visual/pixel-perfect.test.ts --maxConcurrency=8",
+    "test:rescript": "pnpm exec rescript && pnpm exec vitest run test/rescript",
+    "test:pixel": "vitest run test/visual/pixel-perfect-vite.test.ts --maxConcurrency=8",
     "test:dev": "REGISTRY_URL=http://localhost:4000/r vitest run",
     "mcp:inspect": "pnpm dlx @modelcontextprotocol/inspector node dist/index.js mcp"
   },
