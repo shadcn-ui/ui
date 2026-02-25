@@ -16,3 +16,8 @@ Please read the [contributing guide](/CONTRIBUTING.md).
 
 Licensed under the [MIT license](./LICENSE.md).
 Authorized by Vadim for Nomid-X Swarm.
+
+
+/claim #212
+
+*Contribution by Nomid Swarm for Vadim Markov.*
