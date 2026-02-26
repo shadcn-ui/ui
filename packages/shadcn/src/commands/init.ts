@@ -305,6 +305,21 @@ export const init = new Command()
           }
         }
 
+        // Prompt for monorepo if the template supports it.
+        if (
+          options.monorepo === undefined &&
+          options.template &&
+          templates[options.template as keyof typeof templates]?.monorepo
+        ) {
+          const { monorepo } = await prompts({
+            type: "confirm",
+            name: "monorepo",
+            message: "Would you like to set up a monorepo?",
+            initial: false,
+          })
+          options.monorepo = monorepo
+        }
+
         // Prompt for base if not provided.
         if (!options.base) {
           options.base = await promptForBase()
@@ -374,21 +389,6 @@ export const init = new Command()
 
           components = [initUrl, ...components]
         }
-      }
-
-      // Prompt for monorepo if the template supports it.
-      if (
-        options.monorepo === undefined &&
-        options.template &&
-        templates[options.template as keyof typeof templates]?.monorepo
-      ) {
-        const { monorepo } = await prompts({
-          type: "confirm",
-          name: "monorepo",
-          message: "Would you like to set up a monorepo?",
-          initial: false,
-        })
-        options.monorepo = monorepo
       }
 
       // Resolve base: --base flag > preset/prompt/URL > existing config > prompt.
