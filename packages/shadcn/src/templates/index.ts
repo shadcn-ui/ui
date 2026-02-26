@@ -1,3 +1,4 @@
+import { astro } from "./astro"
 import { next } from "./next"
 import { reactRouter } from "./react-router"
 import { start } from "./start"
@@ -15,6 +16,7 @@ export const templates = {
   vite,
   start,
   "react-router": reactRouter,
+  astro,
 }
 
 // Resolve a template key from a detected framework name.

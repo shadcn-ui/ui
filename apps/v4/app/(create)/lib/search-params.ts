@@ -73,6 +73,8 @@ const designSystemSearchParams = {
     "react-router-monorepo",
     "vite",
     "vite-monorepo",
+    "astro",
+    "astro-monorepo",
     "laravel",
   ] as const).withDefault("next"),
   rtl: parseAsBoolean.withDefault(false),

@@ -27,10 +27,12 @@ const TEMPLATE_NAMES = [
   "vite-app",
   "react-router-app",
   "start-app",
+  "astro-app",
   "next-monorepo",
   "vite-monorepo",
   "react-router-monorepo",
   "start-monorepo",
+  "astro-monorepo",
 ]
 
 // Collect paths for batch prettier formatting at the end.

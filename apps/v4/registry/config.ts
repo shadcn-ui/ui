@@ -104,6 +104,8 @@ export const designSystemConfigSchema = z
         "vite-monorepo",
         "react-router-monorepo",
         "start-monorepo",
+        "astro",
+        "astro-monorepo",
       ])
       .default("next")
       .optional(),
