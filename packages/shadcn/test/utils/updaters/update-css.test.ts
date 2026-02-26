@@ -929,6 +929,114 @@ describe("transformCss", () => {
     `)
   })
 
+  test("should handle @apply inside @utility", async () => {
+    const input = `@import "tailwindcss";`
+
+    const result = await transformCss(input, {
+      "@utility custom-btn": {
+        "@apply px-4 py-2 rounded-md": {},
+      },
+    })
+
+    expect(result).toMatchInlineSnapshot(`
+      "@import "tailwindcss";
+
+      @utility custom-btn {
+          @apply px-4 py-2 rounded-md;
+      }"
+    `)
+  })
+
+  test("should handle @apply mixed with declarations inside @utility", async () => {
+    const input = `@import "tailwindcss";`
+
+    const result = await transformCss(input, {
+      "@utility custom-card": {
+        "@apply bg-white shadow-md": {},
+        "border-radius": "0.5rem",
+      },
+    })
+
+    expect(result).toMatchInlineSnapshot(`
+      "@import "tailwindcss";
+
+      @utility custom-card {
+          @apply bg-white shadow-md;
+          border-radius: 0.5rem;
+      }"
+    `)
+  })
+
+  test("should handle multiple @apply inside @utility", async () => {
+    const input = `@import "tailwindcss";`
+
+    const result = await transformCss(input, {
+      "@utility custom-input": {
+        "@apply border border-gray-300 rounded-md": {},
+        "@apply focus:ring-2 focus:ring-blue-500": {},
+        padding: "0.5rem",
+      },
+    })
+
+    expect(result).toMatchInlineSnapshot(`
+      "@import "tailwindcss";
+
+      @utility custom-input {
+          @apply border border-gray-300 rounded-md;
+          @apply focus:ring-2 focus:ring-blue-500;
+          padding: 0.5rem;
+      }"
+    `)
+  })
+
+  test("should add @apply to existing @utility", async () => {
+    const input = `@import "tailwindcss";
+
+@utility custom-alert {
+    font-size: 1rem;
+}`
+
+    const result = await transformCss(input, {
+      "@utility custom-alert": {
+        "@apply font-bold text-red-500": {},
+      },
+    })
+
+    expect(result).toMatchInlineSnapshot(`
+      "@import "tailwindcss";
+
+      @utility custom-alert {
+          font-size: 1rem;
+          @apply font-bold text-red-500;
+      }"
+    `)
+  })
+
+  test("should not duplicate @apply inside existing @utility", async () => {
+    const input = `@import "tailwindcss";
+
+@utility custom-badge {
+    @apply inline-flex items-center;
+    font-size: 0.75rem;
+}`
+
+    const result = await transformCss(input, {
+      "@utility custom-badge": {
+        "@apply inline-flex items-center": {},
+        "font-size": "0.875rem",
+      },
+    })
+
+    expect(result).toMatchInlineSnapshot(`
+      "@import "tailwindcss";
+
+      @utility custom-badge {
+          @apply inline-flex items-center;
+          font-size: 0.875rem;
+      }"
+    `)
+  })
+
   test("should replace existing keyframes instead of duplicating", async () => {
     const input = `@import "tailwindcss";
 
