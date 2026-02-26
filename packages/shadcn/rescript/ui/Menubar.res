@@ -4,6 +4,13 @@
 
 open BaseUi.Types
 
+module Variant = {
+  @unboxed
+  type t =
+    | @as("default") Default
+    | @as("destructive") Destructive
+}
+
 @react.component
 let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
   <BaseUi.Menubar
@@ -146,10 +153,9 @@ module Item = {
     ~onKeyDown=?,
     ~disabled=?,
     ~closeOnClick=?,
-    ~dataInset=?,
-    ~dataVariant=Variant.Default,
+    ~inset=?,
+    ~variant=Variant.Default,
   ) => {
-    let variant = dataVariant
     <BaseUi.Menu.Item
       ?id
       ?style
@@ -157,10 +163,10 @@ module Item = {
       ?onKeyDown
       ?disabled
       ?closeOnClick
-      ?dataInset
+      dataInset=?inset
       ?children
       dataSlot="menubar-item"
-      dataVariant={variant}
+      dataVariant={(variant :> string)}
       className={`focus:bg-accent focus:text-accent-foreground data-[variant=destructive]:text-destructive data-[variant=destructive]:focus:bg-destructive/10 dark:data-[variant=destructive]:focus:bg-destructive/20 data-[variant=destructive]:focus:text-destructive data-[variant=destructive]:*:[svg]:text-destructive! not-data-[variant=destructive]:focus:**:text-accent-foreground group/menubar-item gap-1.5 rounded-md px-1.5 py-1 text-sm data-disabled:opacity-50 data-inset:pl-7 [&_svg:not([class*='size-'])]:size-4 ${className}`}
     />
   }

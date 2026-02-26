@@ -37,7 +37,7 @@ let make = () =>
             </ContextMenu.Group>
             <ContextMenu.Separator> {React.null} </ContextMenu.Separator>
             <ContextMenu.Group>
-              <ContextMenu.Item dataVariant=BaseUi.Types.Variant.Destructive>
+              <ContextMenu.Item variant=ContextMenu.Variant.Destructive>
                 {"Delete"->React.string}
               </ContextMenu.Item>
             </ContextMenu.Group>

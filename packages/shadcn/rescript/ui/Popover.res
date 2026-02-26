@@ -79,7 +79,15 @@ module Content = {
 
 module Header = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?, ~dataSlot) =>
+  let make = (
+    ~className="",
+    ~children=?,
+    ~id=?,
+    ~style=?,
+    ~onClick=?,
+    ~onKeyDown=?,
+    ~dataSlot="popover-header",
+  ) =>
     <div
       ?id
       ?style

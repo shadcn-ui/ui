@@ -4,6 +4,13 @@
 
 open BaseUi.Types
 
+module Variant = {
+  @unboxed
+  type t =
+    | @as("default") Default
+    | @as("destructive") Destructive
+}
+
 @react.component
 let make = (
   ~children=?,
@@ -115,6 +122,8 @@ module Item = {
   @react.component
   let make = (
     ~className="",
+    ~inset=?,
+    ~variant=Variant.Default,
     ~children=?,
     ~id=?,
     ~style=?,
@@ -122,10 +131,7 @@ module Item = {
     ~onKeyDown=?,
     ~disabled=?,
     ~closeOnClick=?,
-    ~dataInset=?,
-    ~dataVariant=Variant.Default,
   ) => {
-    let variant = dataVariant
     <BaseUi.ContextMenu.Item
       ?id
       ?style
@@ -133,10 +139,10 @@ module Item = {
       ?onKeyDown
       ?disabled
       ?closeOnClick
-      ?dataInset
+      dataInset=?inset
       ?children
       dataSlot="context-menu-item"
-      dataVariant={variant}
+      dataVariant={(variant :> string)}
       className={`focus:bg-accent focus:text-accent-foreground data-[variant=destructive]:text-destructive data-[variant=destructive]:focus:bg-destructive/10 dark:data-[variant=destructive]:focus:bg-destructive/20 data-[variant=destructive]:focus:text-destructive data-[variant=destructive]:*:[svg]:text-destructive focus:*:[svg]:text-accent-foreground group/context-menu-item relative flex cursor-default items-center gap-1.5 rounded-md px-1.5 py-1 text-sm outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 data-inset:pl-7 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 ${className}`}
     />
   }
@@ -215,10 +221,7 @@ module RadioItem = {
       dataSlot="context-menu-radio-item"
       className={`focus:bg-accent focus:text-accent-foreground relative flex cursor-default items-center gap-1.5 rounded-md py-1 pr-8 pl-1.5 text-sm outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 data-inset:pl-7 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 ${className}`}
     >
-      <span
-        dataSlot="context-menu-radio-item-indicator"
-        className="pointer-events-none absolute right-2 flex items-center justify-center"
-      >
+      <span className="pointer-events-none absolute right-2 flex items-center justify-center">
         <BaseUi.ContextMenu.RadioItemIndicator>
           <Icons.Check />
         </BaseUi.ContextMenu.RadioItemIndicator>

@@ -2,53 +2,35 @@
 
 open BaseUi.Types
 
+module Variant = {
+  @unboxed
+  type t =
+    | @as("default") Default
+    | @as("outline") Outline
+    | @as("muted") Muted
+}
+
+module Size = {
+  @unboxed
+  type t =
+    | @as("default") Default
+    | @as("sm") Sm
+    | @as("xs") Xs
+}
+
 let itemVariants = (~variant=Variant.Default, ~size=Size.Default) => {
   let base = "[a]:hover:bg-muted rounded-lg border text-sm w-full group/item focus-visible:border-ring focus-visible:ring-ring/50 flex items-center flex-wrap outline-none transition-colors duration-100 focus-visible:ring-[3px] [a]:transition-colors"
   let variantClass = switch variant {
   | Outline => "border-border"
   | Muted => "bg-muted/50 border-transparent"
-  | Default
-  | Secondary
-  | Destructive
-  | Ghost
-  | Line
-  | Link
-  | Icon
-  | Image
-  | Legend
-  | Label => "border-transparent"
+  | Default => "border-transparent"
   }
   let sizeClass = switch size {
   | Sm => "gap-2.5 px-3 py-2.5"
   | Xs => "gap-2 px-2.5 py-2 in-data-[slot=dropdown-menu-content]:p-0"
-  | Default
-  | Md
-  | Lg
-  | Icon
-  | IconXs
-  | IconSm
-  | IconLg => "gap-2.5 px-3 py-2.5"
+  | Default => "gap-2.5 px-3 py-2.5"
   }
   `${base} ${variantClass} ${sizeClass}`
-}
-
-let itemMediaVariants = (~variant=Variant.Default) => {
-  let base = "gap-2 group-has-data-[slot=item-description]/item:translate-y-0.5 group-has-data-[slot=item-description]/item:self-start flex shrink-0 items-center justify-center [&_svg]:pointer-events-none"
-  let variantClass = switch variant {
-  | Icon => "[&_svg:not([class*='size-'])]:size-4"
-  | Image => "size-10 overflow-hidden rounded-sm group-data-[size=sm]/item:size-8 group-data-[size=xs]/item:size-6 [&_img]:size-full [&_img]:object-cover"
-  | Default
-  | Secondary
-  | Destructive
-  | Outline
-  | Ghost
-  | Muted
-  | Line
-  | Link
-  | Legend
-  | Label => "bg-transparent"
-  }
-  `${base} ${variantClass}`
 }
 
 type state = {
@@ -87,17 +69,34 @@ let make = (
 }
 
 module Media = {
+  module Variant = {
+    @unboxed
+    type t =
+      | @as("default") Default
+      | @as("icon") Icon
+      | @as("image") Image
+  }
+
+  let itemMediaVariants = (~variant=Variant.Default) => {
+    let base = "gap-2 group-has-data-[slot=item-description]/item:translate-y-0.5 group-has-data-[slot=item-description]/item:self-start flex shrink-0 items-center justify-center [&_svg]:pointer-events-none"
+    let variantClass = switch variant {
+    | Icon => "[&_svg:not([class*='size-'])]:size-4"
+    | Image => "size-10 overflow-hidden rounded-sm group-data-[size=sm]/item:size-8 group-data-[size=xs]/item:size-6 [&_img]:size-full [&_img]:object-cover"
+    | Default => "bg-transparent"
+    }
+    `${base} ${variantClass}`
+  }
+
   @react.component
   let make = (
     ~className="",
+    ~variant=Variant.Default,
     ~children=?,
     ~id=?,
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~dataVariant=Variant.Default,
   ) => {
-    let variant = dataVariant
     <div
       ?id
       ?style
@@ -105,7 +104,7 @@ module Media = {
       ?onClick
       ?onKeyDown
       dataSlot="item-media"
-      dataVariant={variant}
+      dataVariant={(variant :> string)}
       className={`${itemMediaVariants(~variant)} ${className}`}
     />
   }

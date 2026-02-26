@@ -1,7 +1,7 @@
 @react.component
 let make = () =>
   <Sheet>
-    <Sheet.Trigger render={<Button variant=BaseUi.Types.Variant.Outline />}>
+    <Sheet.Trigger render={<Button variant=Button.Variant.Outline />}>
       {"Open"->React.string}
     </Sheet.Trigger>
     <Sheet.Content>
@@ -23,7 +23,7 @@ let make = () =>
       </div>
       <Sheet.Footer>
         <Button type_="submit"> {"Save changes"->React.string} </Button>
-        <Sheet.Close render={<Button variant=BaseUi.Types.Variant.Outline />}>
+        <Sheet.Close render={<Button variant=Button.Variant.Outline />}>
           {"Close"->React.string}
         </Sheet.Close>
       </Sheet.Footer>

@@ -294,6 +294,22 @@ function normalizeLayoutSnapshot(value: unknown): unknown {
   })
 }
 
+function sortSnapshotKeys(value: unknown): unknown {
+  if (Array.isArray(value)) {
+    return value.map((item) => sortSnapshotKeys(item))
+  }
+
+  if (!value || typeof value !== "object") {
+    return value
+  }
+
+  const sorted: Record<string, unknown> = {}
+  for (const key of Object.keys(value as Record<string, unknown>).sort()) {
+    sorted[key] = sortSnapshotKeys((value as Record<string, unknown>)[key])
+  }
+  return sorted
+}
+
 async function captureBundle(component: string, impl: Impl): Promise<SnapshotBundle> {
   if (!browser) {
     throw new Error("Browser is not initialized")
@@ -391,8 +407,25 @@ async function captureBundle(component: string, impl: Impl): Promise<SnapshotBun
           ])
         }
 
+        const freezeAnimations = () => {
+          if (document.getElementById("__parity-freeze-animations__")) {
+            return
+          }
+
+          const style = document.createElement("style")
+          style.id = "__parity-freeze-animations__"
+          style.textContent = `
+            *, *::before, *::after {
+              animation: none !important;
+              transition: none !important;
+            }
+          `
+          document.head.appendChild(style)
+        }
+
         await waitForFonts()
         await waitForImages()
+        freezeAnimations()
 
         await new Promise<void>((resolve) => {
           requestAnimationFrame(() => {
@@ -493,9 +526,9 @@ async function captureBundle(component: string, impl: Impl): Promise<SnapshotBun
     await page.close()
   }
 
-  const domJson = JSON.stringify(normalizeDomSnapshotClasses(domSnapshot))
-  const layoutJson = JSON.stringify(normalizeLayoutSnapshot(layoutSnapshot))
-  const a11yJson = JSON.stringify(a11ySnapshot)
+  const domJson = JSON.stringify(sortSnapshotKeys(normalizeDomSnapshotClasses(domSnapshot)))
+  const layoutJson = JSON.stringify(sortSnapshotKeys(normalizeLayoutSnapshot(layoutSnapshot)))
+  const a11yJson = JSON.stringify(sortSnapshotKeys(a11ySnapshot))
 
   return {
     impl,

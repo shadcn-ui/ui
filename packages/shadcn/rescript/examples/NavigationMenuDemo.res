@@ -30,7 +30,7 @@ let components: array<componentInfo> = [
   {
     title: "Tabs",
     href: "/docs/primitives/tabs",
-    description: "A set of layered sections of content-known as tab panels-that are displayed one at a time.",
+    description: "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
   },
   {
     title: "Tooltip",
@@ -41,12 +41,21 @@ let components: array<componentInfo> = [
 
 module ListItem = {
   @react.component
-  let make = (~title: string, ~href: string, ~description: string) =>
-    <li>
-      <NavigationMenu.Link render={<a href />}>
+  let make = (
+    ~title: string,
+    ~href: string,
+    ~children: React.element,
+    ~id=?,
+    ~style=?,
+    ~className=?,
+    ~onClick=?,
+    ~onKeyDown=?,
+  ) =>
+    <li ?id ?style ?className ?onClick ?onKeyDown>
+      <NavigationMenu.Link render={<Next.Link href />}>
         <div className="flex flex-col gap-1 text-sm">
           <div className="leading-none font-medium"> {title->React.string} </div>
-          <div className="text-muted-foreground line-clamp-2"> {description->React.string} </div>
+          <div className="text-muted-foreground line-clamp-2"> {children} </div>
         </div>
       </NavigationMenu.Link>
     </li>
@@ -60,21 +69,15 @@ let make = () =>
         <NavigationMenu.Trigger> {"Getting started"->React.string} </NavigationMenu.Trigger>
         <NavigationMenu.Content>
           <ul className="w-96">
-            <ListItem
-              title="Introduction"
-              href="/docs"
-              description="Re-usable components built with Tailwind CSS."
-            />
-            <ListItem
-              title="Installation"
-              href="/docs/installation"
-              description="How to install dependencies and structure your app."
-            />
-            <ListItem
-              title="Typography"
-              href="/docs/primitives/typography"
-              description="Styles for headings, paragraphs, lists...etc"
-            />
+            <ListItem title="Introduction" href="/docs">
+              {"Re-usable components built with Tailwind CSS."->React.string}
+            </ListItem>
+            <ListItem title="Installation" href="/docs/installation">
+              {"How to install dependencies and structure your app."->React.string}
+            </ListItem>
+            <ListItem title="Typography" href="/docs/primitives/typography">
+              {"Styles for headings, paragraphs, lists...etc"->React.string}
+            </ListItem>
           </ul>
         </NavigationMenu.Content>
       </NavigationMenu.Item>
@@ -83,13 +86,10 @@ let make = () =>
         <NavigationMenu.Content>
           <ul className="grid w-[400px] gap-2 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
             {components
-            ->Belt.Array.map(component =>
-              <ListItem
-                key={component.title}
-                title={component.title}
-                href={component.href}
-                description={component.description}
-              />
+            ->Array.map(component =>
+              <ListItem key={component.title} title={component.title} href={component.href}>
+                {component.description->React.string}
+              </ListItem>
             )
             ->React.array}
           </ul>
@@ -100,15 +100,21 @@ let make = () =>
         <NavigationMenu.Content>
           <ul className="grid w-[200px]">
             <li>
-              <NavigationMenu.Link render={<a href="#" className="flex-row items-center gap-2" />}>
+              <NavigationMenu.Link
+                render={<Next.Link href="#" className="flex-row items-center gap-2" />}
+              >
                 <Icons.CircleAlert />
                 {"Backlog"->React.string}
               </NavigationMenu.Link>
-              <NavigationMenu.Link render={<a href="#" className="flex-row items-center gap-2" />}>
+              <NavigationMenu.Link
+                render={<Next.Link href="#" className="flex-row items-center gap-2" />}
+              >
                 <Icons.CircleDashed />
                 {"To Do"->React.string}
               </NavigationMenu.Link>
-              <NavigationMenu.Link render={<a href="#" className="flex-row items-center gap-2" />}>
+              <NavigationMenu.Link
+                render={<Next.Link href="#" className="flex-row items-center gap-2" />}
+              >
                 <Icons.CircleCheck />
                 {"Done"->React.string}
               </NavigationMenu.Link>
@@ -118,7 +124,8 @@ let make = () =>
       </NavigationMenu.Item>
       <NavigationMenu.Item>
         <NavigationMenu.Link
-          render={<a href="/docs" />} className={NavigationMenu.navigationMenuTriggerStyle()}
+          render={<Next.Link href="/docs" />}
+          className={NavigationMenu.navigationMenuTriggerStyle()}
         >
           {"Docs"->React.string}
         </NavigationMenu.Link>

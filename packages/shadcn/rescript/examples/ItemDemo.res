@@ -1,7 +1,7 @@
 @react.component
 let make = () =>
   <div className="flex w-full max-w-md flex-col gap-6">
-    <Item variant=BaseUi.Types.Variant.Outline>
+    <Item variant=Outline>
       <Item.Content>
         <Item.Title> {"Basic Item"->React.string} </Item.Title>
         <Item.Description>
@@ -9,12 +9,10 @@ let make = () =>
         </Item.Description>
       </Item.Content>
       <Item.Actions>
-        <Button variant=BaseUi.Types.Variant.Outline size=BaseUi.Types.Size.Sm>
-          {"Action"->React.string}
-        </Button>
+        <Button variant=Outline size=Sm> {"Action"->React.string} </Button>
       </Item.Actions>
     </Item>
-    <Item variant=BaseUi.Types.Variant.Outline size=BaseUi.Types.Size.Sm render={<a href="#" />}>
+    <Item variant=Outline size=Sm render={<a href="#" />}>
       <Item.Media>
         <Icons.BadgeCheck className="size-5" />
       </Item.Media>

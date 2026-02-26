@@ -2,7 +2,7 @@
 let make = () =>
   <Carousel className="w-full max-w-[12rem] sm:max-w-xs">
     <Carousel.Content>
-      {Belt.Array.makeBy(5, index =>
+      {Array.fromInitializer(~length=5, index =>
         <Carousel.Item key={Int.toString(index)}>
           <div className="p-1">
             <Card>

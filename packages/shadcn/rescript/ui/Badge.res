@@ -1,6 +1,15 @@
 @@jsxConfig({version: 4, mode: "automatic", module_: "BaseUi.BaseUiJsxDOM"})
 
-open BaseUi.Types
+module Variant = {
+  @unboxed
+  type t =
+    | @as("default") Default
+    | @as("secondary") Secondary
+    | @as("destructive") Destructive
+    | @as("outline") Outline
+    | @as("ghost") Ghost
+    | @as("link") Link
+}
 
 let badgeVariantClass = (~variant: Variant.t) =>
   switch variant {
@@ -9,13 +18,7 @@ let badgeVariantClass = (~variant: Variant.t) =>
   | Outline => "border-border text-foreground [a]:hover:bg-muted [a]:hover:text-muted-foreground"
   | Ghost => "hover:bg-muted hover:text-muted-foreground dark:hover:bg-muted/50"
   | Link => "text-primary underline-offset-4 hover:underline"
-  | Default
-  | Muted
-  | Line
-  | Icon
-  | Image
-  | Legend
-  | Label => "bg-primary text-primary-foreground [a]:hover:bg-primary/80"
+  | Default => "bg-primary text-primary-foreground [a]:hover:bg-primary/80"
   }
 
 let badgeVariants = (~variant=Variant.Default) => {
@@ -27,21 +30,22 @@ let badgeVariants = (~variant=Variant.Default) => {
 let make = (
   ~className="",
   ~children=?,
+  ~variant=Variant.Default,
   ~id=?,
   ~onClick=?,
   ~onKeyDown=?,
   ~style=?,
-  ~dataVariant=Variant.Default,
+  ~render=?,
 ) => {
-  let variant = dataVariant
-  <span
-    ?id
-    ?children
-    ?onClick
-    ?onKeyDown
-    ?style
-    dataSlot="badge"
-    dataVariant={variant}
-    className={`${badgeVariants(~variant)} ${className}`}
-  />
+  let props: BaseUi.Types.props<string, bool> = {
+    ?id,
+    ?style,
+    ?onClick,
+    ?onKeyDown,
+    ?children,
+    dataSlot: "badge",
+    dataVariant: (variant :> string),
+    className: `${badgeVariants(~variant)} ${className}`,
+  }
+  BaseUi.Render.use({defaultTagName: "span", props, ?render})
 }

@@ -4,6 +4,21 @@
 
 open BaseUi.Types
 
+module DataOrientation = {
+  @unboxed
+  type t =
+    | @as("horizontal") Horizontal
+    | @as("vertical") Vertical
+    | @as("responsive") Responsive
+}
+
+module Variant = {
+  @unboxed
+  type t =
+    | @as("legend") Legend
+    | @as("label") Label
+}
+
 let fieldOrientationClass = (~orientation: DataOrientation.t) =>
   switch orientation {
   | Horizontal => "flex-row items-center *:data-[slot=field-label]:flex-auto has-[>[data-slot=field-content]]:items-start has-[>[data-slot=field-content]]:[&>[role=checkbox],[role=radio]]:mt-px"
@@ -49,7 +64,7 @@ module Legend = {
       ?onClick
       ?onKeyDown
       dataSlot="field-legend"
-      dataVariant={variant}
+      dataVariant={(variant :> string)}
       className={`mb-1.5 font-medium data-[variant=label]:text-sm data-[variant=legend]:text-base ${className}`}
     />
   }
@@ -101,7 +116,7 @@ let make = (
     ?dataDisabled
     role="group"
     dataSlot="field"
-    dataOrientation={resolvedOrientation}
+    dataOrientation={(resolvedOrientation :> string)}
     className={`${fieldVariants(~orientation=resolvedOrientation)} ${className}`}
   />
 }

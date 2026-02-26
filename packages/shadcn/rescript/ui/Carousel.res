@@ -6,12 +6,42 @@ open BaseUi.Types
 
 type carouselApi
 type carouselRef = ReactDOM.domRef
-type emblaOptions = {axis: string}
+
+module EmblaOptions = {
+  module AxisOptionType = {
+    @unboxed
+    type t =
+      | @as("x") X
+      | @as("y") Y
+  }
+  type t = {
+    active?: bool,
+    axis?: AxisOptionType.t,
+    container?: Dom.element,
+    slides?: array<Dom.element>,
+    containScroll?: string,
+    direction?: string,
+    slidesToScroll?: int,
+    dragFree?: bool,
+    dragThreshold?: float,
+    inViewThreshold?: float,
+    loop?: bool,
+    skipSnaps?: bool,
+    duration?: float,
+    startIndex?: int,
+    watchDrag?: bool,
+    watchResize?: bool,
+    watchSlides?: bool,
+    watchFocus?: bool,
+  }
+}
+
+type emblaPlugin
 
 @module("embla-carousel-react")
 external useEmblaCarousel: (
-  ~options: emblaOptions=?,
-  ~plugins: array<JSON.t>=?,
+  ~options: EmblaOptions.t=?,
+  ~plugins: array<emblaPlugin>=?,
 ) => (carouselRef, option<carouselApi>) = "default"
 
 @send external scrollPrevApi: carouselApi => unit = "scrollPrev"
@@ -24,6 +54,7 @@ external useEmblaCarousel: (
 type carouselContext = {
   carouselRef: carouselRef,
   api: option<carouselApi>,
+  opts: EmblaOptions.t,
   orientation: DataOrientation.t,
   scrollPrev: unit => unit,
   scrollNext: unit => unit,
@@ -40,10 +71,27 @@ let useCarousel = () =>
   }
 
 @react.component
-let make = (~className="", ~children=?, ~dataOrientation=DataOrientation.Horizontal) => {
-  let orientation = dataOrientation
-  let axis = orientation == DataOrientation.Horizontal ? "x" : "y"
-  let (carouselRef, api) = useEmblaCarousel(~options={axis: axis})
+let make = (
+  ~className="",
+  ~children=?,
+  ~id=?,
+  ~style=?,
+  ~onClick=?,
+  ~orientation=DataOrientation.Horizontal,
+  ~opts: EmblaOptions.t={},
+  ~plugins=?,
+  ~setApi=?,
+) => {
+  let (carouselRef, api) = useEmblaCarousel(
+    ~options={
+      ...opts,
+      axis: switch orientation {
+      | Horizontal => X
+      | Vertical | Responsive => Y
+      },
+    },
+    ~plugins?,
+  )
   let (canScrollPrev, setCanScrollPrev) = React.useState(() => false)
   let (canScrollNext, setCanScrollNext) = React.useState(() => false)
   let onSelect = (api: carouselApi) => {
@@ -61,18 +109,44 @@ let make = (~className="", ~children=?, ~dataOrientation=DataOrientation.Horizon
     | None => ()
     }
   React.useEffect(() => {
-    switch api {
-    | Some(api) =>
+    switch (api, setApi) {
+    | (Some(api), Some(setApi)) =>
+      setApi(api)
+      None
+    | _ => None
+    }
+  }, [api])
+  React.useEffect(() => {
+    switch (api, setApi) {
+    | (Some(api), Some(setApi)) =>
+      setApi(api)
+      None
+    | _ => None
+    }
+  }, [setApi])
+  React.useEffect(() => {
+    api->Option.map(api => {
       onSelect(api)
       api->onApi("reInit", onSelect)
       api->onApi("select", onSelect)
-      Some(() => api->offApi("select", onSelect))
-    | None => None
-    }
+      () => api->offApi("select", onSelect)
+    })
   }, [api])
+  let handleKeyDownCapture = React.useCallback(event => {
+    switch event->ReactEvent.Keyboard.key {
+    | "ArrowLeft" =>
+      event->ReactEvent.Keyboard.preventDefault
+      scrollPrev()
+    | "ArrowRight" =>
+      event->ReactEvent.Keyboard.preventDefault
+      scrollNext()
+    | _ => ()
+    }
+  }, [scrollPrev, scrollNext])
   let providerValue = Some({
     carouselRef,
     api,
+    opts,
     orientation,
     scrollPrev,
     scrollNext,
@@ -84,8 +158,12 @@ let make = (~className="", ~children=?, ~dataOrientation=DataOrientation.Horizon
   }
   <Provider value={providerValue}>
     <div
+      ?id
+      ?style
+      ?onClick
+      onKeyDownCapture={handleKeyDownCapture}
       dataSlot="carousel"
-      className={`relative ${className}`}
+      className={className == "" ? "relative" : `relative ${className}`}
       role="region"
       ariaRoledescription="carousel"
       ?children
@@ -95,10 +173,23 @@ let make = (~className="", ~children=?, ~dataOrientation=DataOrientation.Horizon
 
 module Content = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) => {
+  let make = (
+    ~className="",
+    ~children=?,
+    ~id=?,
+    ~style=?,
+    ~onClick=?,
+    ~onKeyDown=?,
+    ~rootProps: option<BaseUi.Types.DomProps.t>=?,
+  ) => {
     let {carouselRef, orientation} = useCarousel()
+    let rootProps: BaseUi.Types.DomProps.t = switch rootProps {
+    | Some(rootProps) => rootProps
+    | None => {}
+    }
     <div dataSlot="carousel-content" ref={carouselRef} className="overflow-hidden">
       <div
+        {...rootProps}
         ?id
         ?style
         ?onClick
@@ -114,9 +205,22 @@ module Content = {
 
 module Item = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) => {
+  let make = (
+    ~className="",
+    ~children=?,
+    ~id=?,
+    ~style=?,
+    ~onClick=?,
+    ~onKeyDown=?,
+    ~rootProps: option<BaseUi.Types.DomProps.t>=?,
+  ) => {
     let {orientation} = useCarousel()
+    let rootProps: BaseUi.Types.DomProps.t = switch rootProps {
+    | Some(rootProps) => rootProps
+    | None => {}
+    }
     <div
+      {...rootProps}
       ?id
       ?style
       ?onClick
@@ -136,18 +240,18 @@ module Previous = {
   @react.component
   let make = (
     ~className="",
-    ~style: option<ReactDOM.Style.t>=?,
-    ~variant=Variant.Outline,
-    ~size=Size.IconSm,
+    ~style=?,
+    ~variant=Button.Variant.Outline,
+    ~size=Button.Size.IconSm,
     ~nativeButton=?,
     ~type_=?,
     ~ariaLabel=?,
-    ~onClick=_ => (),
+    ~onClick: option<JsxEvent.Mouse.t => unit>=?,
   ) => {
     let {orientation, scrollPrev, canScrollPrev} = useCarousel()
-    let style: ReactDOM.Style.t = switch style {
-    | Some(style) => {...style, borderColor: "hsl(var(--border))"}
-    | None => {borderColor: "hsl(var(--border))"}
+    let resolvedOnClick = switch onClick {
+    | Some(handler) => handler
+    | None => _ => scrollPrev()
     }
     <Button
       className={`absolute touch-manipulation rounded-full ${orientation ==
@@ -161,11 +265,8 @@ module Previous = {
       ?ariaLabel
       dataSlot="carousel-previous"
       disabled={!canScrollPrev}
-      style
-      onClick={event => {
-        onClick(event)
-        scrollPrev()
-      }}
+      ?style
+      onClick={resolvedOnClick}
     >
       <Icons.ChevronLeft className="cn-rtl-flip" />
       <span className="sr-only"> {"Previous slide"->React.string} </span>
@@ -178,14 +279,18 @@ module Next = {
   let make = (
     ~className="",
     ~style=?,
-    ~variant=Variant.Outline,
-    ~size=Size.IconSm,
+    ~variant=Button.Variant.Outline,
+    ~size=Button.Size.IconSm,
     ~nativeButton=?,
     ~type_=?,
     ~ariaLabel=?,
-    ~onClick=_ => (),
+    ~onClick: option<JsxEvent.Mouse.t => unit>=?,
   ) => {
     let {orientation, scrollNext, canScrollNext} = useCarousel()
+    let resolvedOnClick = switch onClick {
+    | Some(handler) => handler
+    | None => _ => scrollNext()
+    }
     <Button
       className={`absolute touch-manipulation rounded-full ${orientation ==
           DataOrientation.Horizontal
@@ -199,10 +304,7 @@ module Next = {
       ?ariaLabel
       dataSlot="carousel-next"
       disabled={!canScrollNext}
-      onClick={event => {
-        onClick(event)
-        scrollNext()
-      }}
+      onClick={resolvedOnClick}
     >
       <Icons.ChevronRight className="cn-rtl-flip" />
       <span className="sr-only"> {"Next slide"->React.string} </span>

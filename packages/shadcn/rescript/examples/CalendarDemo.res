@@ -8,6 +8,6 @@ let make = () => {
   let date = Date.make()
 
   <Calendar
-    mode="single" selected=date locale=enUS className="rounded-lg border" captionLayout="dropdown"
+    mode="single" selected=date locale=enUS className="rounded-lg border" captionLayout=Dropdown
   />
 }

@@ -6,16 +6,33 @@ open BaseUi.Types
 
 @react.component
 let make = (
+  ~className="",
   ~children=?,
+  ~id=?,
+  ~style=?,
+  ~onClick=?,
+  ~onKeyDown=?,
   ~open_=?,
   ~defaultOpen=?,
   ~onOpenChange=?,
   ~onOpenChangeComplete=?,
   ~modal=?,
-) =>
+) => {
   <BaseUi.Dialog.Root
-    ?children ?open_ ?defaultOpen ?onOpenChange ?onOpenChangeComplete ?modal dataSlot="sheet"
+    ?id
+    ?style
+    ?onClick
+    ?onKeyDown
+    ?children
+    ?open_
+    ?defaultOpen
+    ?onOpenChange
+    ?onOpenChangeComplete
+    ?modal
+    dataSlot="sheet"
+    className
   />
+}
 
 module Trigger = {
   @react.component
@@ -123,21 +140,34 @@ module Content = {
     ~children=React.null,
     ~id=?,
     ~style=?,
+    ~dir: option<string>=?,
+    ~dataSidebar=?,
+    ~dataSlot="sheet-content",
+    ~dataMobile=?,
     ~onClick=?,
     ~onKeyDown=?,
     ~side=Side.Right,
     ~showCloseButton=true,
     ~keepMounted=?,
-  ) =>
+  ) => {
+    let style = switch (style, dir) {
+    | (Some(style), Some(dir)) => Some(style->ReactDOM.Style.unsafeAddProp("direction", dir))
+    | (None, Some(dir)) =>
+      Some(ReactDOM.Style._dictToStyle(Dict.make())->ReactDOM.Style.unsafeAddProp("direction", dir))
+    | (Some(style), None) => Some(style)
+    | (None, None) => None
+    }
     <Portal>
       <Overlay />
       <BaseUi.Dialog.Popup
         ?id
-        ?style
+        style=?style
         ?onClick
         ?onKeyDown
         ?keepMounted
-        dataSlot="sheet-content"
+        dataSlot
+        ?dataSidebar
+        ?dataMobile
         dataSide={sideToString(side)}
         className={`bg-background data-open:animate-in data-closed:animate-out data-[side=right]:data-closed:slide-out-to-right-10 data-[side=right]:data-open:slide-in-from-right-10 data-[side=left]:data-closed:slide-out-to-left-10 data-[side=left]:data-open:slide-in-from-left-10 data-[side=top]:data-closed:slide-out-to-top-10 data-[side=top]:data-open:slide-in-from-top-10 data-closed:fade-out-0 data-open:fade-in-0 data-[side=bottom]:data-closed:slide-out-to-bottom-10 data-[side=bottom]:data-open:slide-in-from-bottom-10 fixed z-50 flex flex-col gap-4 bg-clip-padding text-sm shadow-lg transition duration-200 ease-in-out data-[side=bottom]:inset-x-0 data-[side=bottom]:bottom-0 data-[side=bottom]:h-auto data-[side=bottom]:border-t data-[side=left]:inset-y-0 data-[side=left]:left-0 data-[side=left]:h-full data-[side=left]:w-3/4 data-[side=left]:border-r data-[side=right]:inset-y-0 data-[side=right]:right-0 data-[side=right]:h-full data-[side=right]:w-3/4 data-[side=right]:border-l data-[side=top]:inset-x-0 data-[side=top]:top-0 data-[side=top]:h-auto data-[side=top]:border-b data-[side=left]:sm:max-w-sm data-[side=right]:sm:max-w-sm ${className}`}
       >
@@ -153,6 +183,7 @@ module Content = {
           : React.null}
       </BaseUi.Dialog.Popup>
     </Portal>
+  }
 }
 
 module Header = {

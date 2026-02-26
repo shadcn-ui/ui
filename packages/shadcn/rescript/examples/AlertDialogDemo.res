@@ -1,7 +1,7 @@
 @react.component
 let make = () =>
   <AlertDialog>
-    <AlertDialog.Trigger render={<Button variant=BaseUi.Types.Variant.Outline />}>
+    <AlertDialog.Trigger render={<Button variant=Button.Variant.Outline />}>
       {"Show Dialog"->React.string}
     </AlertDialog.Trigger>
     <AlertDialog.Content>

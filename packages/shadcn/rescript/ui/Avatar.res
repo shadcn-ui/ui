@@ -2,7 +2,13 @@
 
 @@jsxConfig({version: 4, mode: "automatic", module_: "BaseUi.BaseUiJsxDOM"})
 
-open BaseUi.Types
+module Size = {
+  @unboxed
+  type t =
+    | @as("default") Default
+    | @as("sm") Sm
+    | @as("lg") Lg
+}
 
 @react.component
 let make = (
@@ -22,7 +28,7 @@ let make = (
     ?onKeyDown
     ?children
     dataSlot="avatar"
-    dataSize={size}
+    dataSize={(size :> string)}
     className={`after:border-border group/avatar relative flex size-8 shrink-0 rounded-full select-none after:absolute after:inset-0 after:rounded-full after:border after:mix-blend-darken data-[size=lg]:size-10 data-[size=sm]:size-6 dark:after:mix-blend-lighten ${className}`}
   />
 }

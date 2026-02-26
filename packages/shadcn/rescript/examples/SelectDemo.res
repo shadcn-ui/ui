@@ -22,7 +22,7 @@ let make = () =>
       <Select.Group>
         <Select.Label> {"Fruits"->React.string} </Select.Label>
         {items
-        ->Belt.Array.map(item =>
+        ->Array.map(item =>
           <Select.Item key={item.label} value={item.value}>
             {item.label->React.string}
           </Select.Item>

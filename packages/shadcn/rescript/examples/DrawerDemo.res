@@ -56,7 +56,7 @@ let make = () => {
   let goal = 350
   <Drawer>
     <Drawer.Trigger asChild={true}>
-      <Button variant=BaseUi.Types.Variant.Outline> {"Open Drawer"->React.string} </Button>
+      <Button variant=Button.Variant.Outline> {"Open Drawer"->React.string} </Button>
     </Drawer.Trigger>
     <Drawer.Content>
       <div className="mx-auto w-full max-w-sm">
@@ -67,8 +67,8 @@ let make = () => {
         <div className="p-4 pb-0">
           <div className="flex items-center justify-center space-x-2">
             <Button
-              variant=BaseUi.Types.Variant.Outline
-              size=BaseUi.Types.Size.Icon
+              variant=Button.Variant.Outline
+              size=Button.Size.Icon
               className="h-8 w-8 shrink-0 rounded-full"
               onClick={_ => ()}
               disabled={goal <= 200}
@@ -85,8 +85,8 @@ let make = () => {
               </div>
             </div>
             <Button
-              variant=BaseUi.Types.Variant.Outline
-              size=BaseUi.Types.Size.Icon
+              variant=Button.Variant.Outline
+              size=Button.Size.Icon
               className="h-8 w-8 shrink-0 rounded-full"
               onClick={_ => ()}
               disabled={goal >= 400}
@@ -106,7 +106,7 @@ let make = () => {
         <Drawer.Footer>
           <Button> {"Submit"->React.string} </Button>
           <Drawer.Close asChild={true}>
-            <Button variant=BaseUi.Types.Variant.Outline> {"Cancel"->React.string} </Button>
+            <Button variant=Button.Variant.Outline> {"Cancel"->React.string} </Button>
           </Drawer.Close>
         </Drawer.Footer>
       </div>

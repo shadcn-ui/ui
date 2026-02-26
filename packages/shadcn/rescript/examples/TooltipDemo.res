@@ -1,7 +1,7 @@
 @react.component
 let make = () =>
   <Tooltip>
-    <Tooltip.Trigger render={<Button variant=BaseUi.Types.Variant.Outline />}>
+    <Tooltip.Trigger render={<Button variant=Button.Variant.Outline />}>
       {"Hover"->React.string}
     </Tooltip.Trigger>
     <Tooltip.Content>

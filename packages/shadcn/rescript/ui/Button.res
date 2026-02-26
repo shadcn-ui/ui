@@ -1,6 +1,28 @@
 @@directive("'use client'")
 
-open BaseUi.Types
+module Variant = {
+  @unboxed
+  type t =
+    | @as("default") Default
+    | @as("secondary") Secondary
+    | @as("destructive") Destructive
+    | @as("outline") Outline
+    | @as("ghost") Ghost
+    | @as("link") Link
+}
+
+module Size = {
+  @unboxed
+  type t =
+    | @as("default") Default
+    | @as("xs") Xs
+    | @as("sm") Sm
+    | @as("lg") Lg
+    | @as("icon") Icon
+    | @as("icon-xs") IconXs
+    | @as("icon-sm") IconSm
+    | @as("icon-lg") IconLg
+}
 
 let buttonVariantClass = (~variant: Variant.t) =>
   switch variant {
@@ -9,13 +31,7 @@ let buttonVariantClass = (~variant: Variant.t) =>
   | Ghost => "hover:bg-muted hover:text-foreground dark:hover:bg-muted/50 aria-expanded:bg-muted aria-expanded:text-foreground"
   | Destructive => "bg-destructive/10 hover:bg-destructive/20 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/20 text-destructive focus-visible:border-destructive/40 dark:hover:bg-destructive/30"
   | Link => "text-primary underline-offset-4 hover:underline"
-  | Default
-  | Muted
-  | Line
-  | Icon
-  | Image
-  | Legend
-  | Label => "bg-primary text-primary-foreground [a]:hover:bg-primary/80"
+  | Default => "bg-primary text-primary-foreground [a]:hover:bg-primary/80"
   }
 
 let buttonSizeClass = (~size: Size.t) =>
@@ -27,8 +43,7 @@ let buttonSizeClass = (~size: Size.t) =>
   | IconXs => "size-6 rounded-[min(var(--radius-md),10px)] in-data-[slot=button-group]:rounded-lg [&_svg:not([class*='size-'])]:size-3"
   | IconSm => "size-7 rounded-[min(var(--radius-md),12px)] in-data-[slot=button-group]:rounded-lg"
   | IconLg => "size-9"
-  | Default
-  | Md => "h-8 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2"
+  | Default => "h-8 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2"
   }
 
 let buttonVariants = (~variant=Variant.Default, ~size=Size.Default) => {
@@ -39,7 +54,6 @@ let buttonVariants = (~variant=Variant.Default, ~size=Size.Default) => {
   | IconXs
   | IconSm => ""
   | Default
-  | Md
   | Lg
   | Icon
   | IconLg => "rounded-lg"

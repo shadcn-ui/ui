@@ -11,7 +11,7 @@ module TablerIcons = {
 let make = () =>
   <Empty>
     <Empty.Header>
-      <Empty.Media dataVariant=BaseUi.Types.Variant.Icon>
+      <Empty.Media variant=Empty.Variant.Icon>
         <TablerIcons.FolderCode />
       </Empty.Media>
       <Empty.Title> {"No Projects Yet"->React.string} </Empty.Title>
@@ -21,13 +21,13 @@ let make = () =>
     </Empty.Header>
     <Empty.Content className="flex-row justify-center gap-2">
       <Button> {"Create Project"->React.string} </Button>
-      <Button variant=BaseUi.Types.Variant.Outline> {"Import Project"->React.string} </Button>
+      <Button variant=Button.Variant.Outline> {"Import Project"->React.string} </Button>
     </Empty.Content>
     <Button
-      variant=BaseUi.Types.Variant.Link
+      variant=Button.Variant.Link
       render={<a href="#" />}
       className="text-muted-foreground"
-      size=BaseUi.Types.Size.Sm
+      size=Button.Size.Sm
       nativeButton={false}
     >
       {"Learn More "->React.string}

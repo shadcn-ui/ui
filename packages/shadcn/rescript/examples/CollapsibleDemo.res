@@ -13,8 +13,8 @@ let make = () => {
       <h4 className="text-sm font-semibold"> {"Order #4189"->React.string} </h4>
       <Collapsible.Trigger
         render={<Button
-          variant=BaseUi.Types.Variant.Ghost
-          size=BaseUi.Types.Size.Icon
+          variant=Button.Variant.Ghost
+          size=Button.Size.Icon
           className="size-8"
           ariaDisabled={false}
         />}

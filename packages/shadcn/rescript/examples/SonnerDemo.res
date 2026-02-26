@@ -2,6 +2,6 @@
 
 @react.component
 let make = () =>
-  <Button variant=BaseUi.Types.Variant.Outline onClick={_ => ()}>
+  <Button variant=Button.Variant.Outline onClick={_ => ()}>
     {"Show Toast"->React.string}
   </Button>

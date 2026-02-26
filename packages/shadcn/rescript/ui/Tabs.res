@@ -2,21 +2,18 @@
 
 open BaseUi.Types
 
+module Variant = {
+  @unboxed
+  type t =
+    | @as("default") Default
+    | @as("line") Line
+}
+
 let tabsListVariants = (~variant=Variant.Default) => {
   let base = "rounded-lg p-[3px] group-data-horizontal/tabs:h-8 data-[variant=line]:rounded-none group/tabs-list text-muted-foreground inline-flex w-fit items-center justify-center group-data-vertical/tabs:h-fit group-data-vertical/tabs:flex-col"
   let variantClass = switch variant {
   | Line => "gap-1 bg-transparent"
-  | Default
-  | Secondary
-  | Destructive
-  | Outline
-  | Ghost
-  | Muted
-  | Link
-  | Icon
-  | Image
-  | Legend
-  | Label => "bg-muted"
+  | Default => "bg-muted"
   }
   `${base} ${variantClass}`
 }
@@ -54,14 +51,13 @@ module List = {
   @react.component
   let make = (
     ~className="",
+    ~variant=Variant.Default,
     ~children=?,
     ~id=?,
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~dataVariant=Variant.Default,
   ) => {
-    let variant = dataVariant
     <BaseUi.Tabs.List
       ?id
       ?style
@@ -69,7 +65,7 @@ module List = {
       ?onKeyDown
       ?children
       dataSlot="tabs-list"
-      dataVariant={variant}
+      dataVariant={(variant :> string)}
       className={`${tabsListVariants(~variant)} ${className}`}
     />
   }
@@ -104,15 +100,7 @@ module Trigger = {
 
 module Content = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~value=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-    ~style=?,
-  ) =>
+  let make = (~className="", ~children=?, ~id=?, ~value=?, ~onClick=?, ~onKeyDown=?, ~style=?) =>
     <BaseUi.Tabs.Panel
       ?id
       ?value

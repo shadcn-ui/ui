@@ -182,13 +182,13 @@ module Input = {
       />
       <div
         dataSlot="input-group-addon"
-        dataAlign=DataAlign.InlineEnd
+        dataAlign={(InputGroup.DataAlign.InlineEnd :> string)}
         role="group"
         className="[&>kbd]:rounded-[calc(var(--radius)-5px)] [&>svg:not([class*='size-'])]:size-4 cursor-text flex font-medium gap-2 group-data-[disabled=true]/input-group:opacity-50 h-auto has-[>button]:mr-[-0.3rem] has-[>kbd]:mr-[-0.15rem] items-center justify-center order-last pr-2 py-1.5 select-none text-muted-foreground text-sm"
       >
         {showTrigger
           ? <BaseUi.Combobox.Trigger
-              dataSize=IconXs
+              dataSize={(InputGroup.Size.IconXs :> string)}
               dataSlot="input-group-button"
               tabIndex={0}
               disabled

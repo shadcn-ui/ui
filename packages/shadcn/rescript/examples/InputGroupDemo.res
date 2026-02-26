@@ -5,7 +5,7 @@ let make = () =>
     <InputGroup.Addon>
       <Icons.Search />
     </InputGroup.Addon>
-    <InputGroup.Addon dataAlign=BaseUi.Types.DataAlign.InlineEnd>
+    <InputGroup.Addon dataAlign=InputGroup.DataAlign.InlineEnd>
       {"12 results"->React.string}
     </InputGroup.Addon>
   </InputGroup>

@@ -1,34 +1,31 @@
 @@directive("'use client'")
 
-open BaseUi.Types
+module Variant = {
+  @unboxed
+  type t =
+    | @as("default") Default
+    | @as("outline") Outline
+}
+
+module Size = {
+  @unboxed
+  type t =
+    | @as("default") Default
+    | @as("sm") Sm
+    | @as("lg") Lg
+}
 
 let toggleVariantClass = (~variant: Variant.t) =>
   switch variant {
   | Outline => "border-input hover:bg-muted border bg-transparent"
-  | Default
-  | Secondary
-  | Destructive
-  | Ghost
-  | Muted
-  | Line
-  | Link
-  | Icon
-  | Image
-  | Legend
-  | Label => "bg-transparent"
+  | Default => "bg-transparent"
   }
 
 let toggleSizeClass = (~size: Size.t) =>
   switch size {
   | Sm => "h-7 min-w-7 rounded-[min(var(--radius-md),12px)] px-1.5 text-[0.8rem]"
   | Lg => "h-9 min-w-9 px-2.5"
-  | Default
-  | Xs
-  | Md
-  | Icon
-  | IconXs
-  | IconSm
-  | IconLg => "h-8 min-w-8 px-2"
+  | Default => "h-8 min-w-8 px-2"
   }
 
 let toggleVariants = (~variant=Variant.Default, ~size=Size.Default) => {
@@ -48,30 +45,45 @@ let make = (
   ~onCheckedChange=?,
   ~onClick=?,
   ~onKeyDown=?,
-  ~tabIndex=?,
+  ~tabIndex=0,
   ~ariaLabel=?,
   ~type_=?,
   ~render=?,
-  ~dataVariant=Variant.Default,
-  ~dataSize=Size.Default,
+  ~variant=?,
+  ~dataVariant=?,
+  ~size=?,
+  ~dataSize=?,
 ) => {
-  let variant = dataVariant
-  let size = dataSize
+  let variant = switch (variant, dataVariant) {
+  | (Some(variant), _) => variant
+  | (None, Some(variant)) => variant
+  | (None, None) => Variant.Default
+  }
+  let size = switch (size, dataSize) {
+  | (Some(size), _) => size
+  | (None, Some(size)) => size
+  | (None, None) => Size.Default
+  }
+  let _ignoredOnCheckedChange = onCheckedChange
+  let resolvedClassName = if className == "" {
+    toggleVariants(~variant, ~size)
+  } else {
+    `${toggleVariants(~variant, ~size)} ${className}`
+  }
   <BaseUi.Toggle
     ?id
     ?name
     ?disabled
     ?checked
     ?defaultChecked
-    ?onCheckedChange
     ?onClick
     ?onKeyDown
-    ?tabIndex
+    tabIndex
     ?ariaLabel
     ?type_
     ?render
     ?children
     dataSlot="toggle"
-    className={`${toggleVariants(~variant, ~size)} ${className}`}
+    className={resolvedClassName}
   />
 }

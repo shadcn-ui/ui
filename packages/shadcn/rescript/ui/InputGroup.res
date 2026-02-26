@@ -4,6 +4,39 @@
 
 open BaseUi.Types
 
+module DataAlign = {
+  @unboxed
+  type t =
+    | @as("inline-start") InlineStart
+    | @as("inline-end") InlineEnd
+    | @as("block-start") BlockStart
+    | @as("block-end") BlockEnd
+}
+
+module Size = {
+  @unboxed
+  type t =
+    | @as("xs") Xs
+    | @as("sm") Sm
+    | @as("icon-xs") IconXs
+    | @as("icon-sm") IconSm
+}
+
+module Variant = {
+  @unboxed
+  type t =
+    | @as("ghost") Ghost
+}
+
+module SharedTextarea = Textarea
+
+@get external mouseEventTarget: JsxEvent.Mouse.t => Dom.element = "target"
+@get external mouseEventCurrentTarget: JsxEvent.Mouse.t => Dom.element = "currentTarget"
+@get external parentElement: Dom.element => Nullable.t<Dom.element> = "parentElement"
+@send external closest: (Dom.element, string) => Nullable.t<Dom.element> = "closest"
+@send external querySelector: (Dom.element, string) => Nullable.t<Dom.element> = "querySelector"
+@send external focusElement: Dom.element => unit = "focus"
+
 let inputGroupAddonAlignClass = (~align: DataAlign.t) =>
   switch align {
   | InlineEnd => "pr-2 has-[>button]:mr-[-0.3rem] has-[>kbd]:mr-[-0.15rem] order-last"
@@ -22,12 +55,7 @@ let inputGroupButtonSizeClass = (~size: Size.t) =>
   | Sm => ""
   | IconXs => "size-6 rounded-[calc(var(--radius)-3px)] p-0 has-[>svg]:p-0"
   | IconSm => "size-8 p-0 has-[>svg]:p-0"
-  | Default
-  | Xs
-  | Md
-  | Lg
-  | Icon
-  | IconLg => "h-6 gap-1 rounded-[calc(var(--radius)-3px)] px-1.5 [&>svg:not([class*='size-'])]:size-3.5"
+  | Xs => "h-6 gap-1 rounded-[calc(var(--radius)-3px)] px-1.5 [&>svg:not([class*='size-'])]:size-3.5"
   }
 
 let inputGroupButtonVariants = (~size=Size.Xs) => {
@@ -72,14 +100,31 @@ module Addon = {
     ~dataAlign=DataAlign.InlineStart,
   ) => {
     let align = dataAlign
+    let onClick = switch onClick {
+    | Some(onClick) => onClick
+    | None =>
+      event => {
+        let target = event->mouseEventTarget
+        switch target->closest("button")->Nullable.toOption {
+        | Some(_) => ()
+        | None =>
+          let currentTarget = event->mouseEventCurrentTarget
+          currentTarget
+          ->parentElement
+          ->Nullable.toOption
+          ->Option.flatMap(parent => parent->querySelector("input")->Nullable.toOption)
+          ->Option.forEach(focusElement)
+        }
+      }
+    }
     <div
       ?id
       ?children
       ?style
-      ?onClick
+      onClick
       ?onKeyDown
       dataSlot="input-group-addon"
-      dataAlign={align}
+      dataAlign={(align :> string)}
       role="group"
       className={`${inputGroupAddonVariants(~align)} ${className}`}
     />
@@ -110,8 +155,8 @@ module Button = {
       ?onKeyDown
       ?disabled
       type_
-      dataSize={size}
-      dataVariant={variant}
+      dataSize={(size :> string)}
+      dataVariant={(variant :> string)}
       className={`${inputGroupButtonVariants(~size)} ${className}`}
     />
   }
@@ -196,7 +241,7 @@ module Textarea = {
     ~onClick=?,
     ~onKeyDown=?,
   ) =>
-    <textarea
+    <SharedTextarea
       ?id
       ?children
       ?style
@@ -212,6 +257,6 @@ module Textarea = {
       ?onClick
       ?onKeyDown
       dataSlot="input-group-control"
-      className={`border-input dark:bg-input/30 focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 disabled:bg-input/50 dark:disabled:bg-input/80 placeholder:text-muted-foreground flex field-sizing-content min-h-16 w-full rounded-lg border bg-transparent px-2.5 py-2 text-base transition-colors outline-none focus-visible:ring-3 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:ring-3 md:text-sm flex-1 resize-none rounded-none border-0 bg-transparent py-2 shadow-none ring-0 focus-visible:ring-0 disabled:bg-transparent aria-invalid:ring-0 dark:bg-transparent dark:disabled:bg-transparent ${className}`}
+      className={`flex-1 resize-none rounded-none border-0 bg-transparent py-2 shadow-none ring-0 focus-visible:ring-0 disabled:bg-transparent aria-invalid:ring-0 dark:bg-transparent dark:disabled:bg-transparent ${className}`}
     />
 }

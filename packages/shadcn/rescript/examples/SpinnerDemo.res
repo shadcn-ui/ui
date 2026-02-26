@@ -1,7 +1,7 @@
 @react.component
 let make = () =>
   <div className="flex w-full max-w-xs flex-col gap-4 [--radius:1rem]">
-    <Item variant=BaseUi.Types.Variant.Muted>
+    <Item variant=Item.Variant.Muted>
       <Item.Media>
         <Spinner> {React.null} </Spinner>
       </Item.Media>

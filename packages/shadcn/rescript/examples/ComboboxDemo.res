@@ -10,7 +10,7 @@ let make = () =>
       <Combobox.Empty> {"No items found."->React.string} </Combobox.Empty>
       <Combobox.List>
         {frameworks
-        ->Belt.Array.map(item =>
+        ->Array.map(item =>
           <Combobox.Item key=item value=item> {item->React.string} </Combobox.Item>
         )
         ->React.array}

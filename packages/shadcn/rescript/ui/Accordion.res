@@ -114,10 +114,10 @@ module Content = {
       ?onKeyDown
       ?keepMounted
       dataSlot="accordion-content"
-      className={`data-open:animate-accordion-down data-closed:animate-accordion-up overflow-hidden text-sm ${className}`}
+      className="data-open:animate-accordion-down data-closed:animate-accordion-up overflow-hidden text-sm"
     >
       <div
-        className="[&_a]:hover:text-foreground h-(--accordion-panel-height) pt-0 pb-2.5 data-ending-style:h-0 data-starting-style:h-0 [&_a]:underline [&_a]:underline-offset-3 [&_p:not(:last-child)]:mb-4"
+        className={`[&_a]:hover:text-foreground h-(--accordion-panel-height) pt-0 pb-2.5 data-ending-style:h-0 data-starting-style:h-0 [&_a]:underline [&_a]:underline-offset-3 [&_p:not(:last-child)]:mb-4 ${className}`}
        ?children />
     </BaseUi.Accordion.Panel>
 }

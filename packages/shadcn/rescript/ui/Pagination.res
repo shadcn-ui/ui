@@ -1,6 +1,11 @@
-open BaseUi.Types
-
 @@jsxConfig({version: 4, mode: "automatic", module_: "BaseUi.BaseUiJsxDOM"})
+
+module Size = {
+  @unboxed
+  type t =
+    | @as("icon") Icon
+    | @as("default") Default
+}
 
 @react.component
 let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) => {
@@ -43,7 +48,7 @@ module Link = {
   let make = (
     ~className="",
     ~isActive=false,
-    ~size=BaseUi.Types.Size.Icon,
+    ~size=Size.Icon,
     ~children=?,
     ~href=?,
     ~target=?,
@@ -53,10 +58,14 @@ module Link = {
     ~onClick=?,
     ~onKeyDown=?,
     ~dataActive=isActive,
-  ) =>
+  ) => {
+    let buttonSize = switch size {
+    | Icon => Button.Size.Icon
+    | Default => Button.Size.Default
+    }
     <Button
-      variant={isActive ? Outline : Ghost}
-      size
+      variant={isActive ? Button.Variant.Outline : Button.Variant.Ghost}
+      size={buttonSize}
       className
       nativeButton={false}
       render={<a
@@ -73,6 +82,7 @@ module Link = {
       />}
       ?children
     />
+  }
 }
 
 module Previous = {

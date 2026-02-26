@@ -147,7 +147,7 @@ module TeamSwitcher = {
     let isMobile = sidebar.isMobile
     let (activeTeamIndex, setActiveTeamIndex) = React.useState(() => 0)
 
-    switch teams->Belt.Array.get(activeTeamIndex) {
+    switch teams->Array.get(activeTeamIndex) {
     | None => React.null
     | Some(activeTeam) =>
       <Sidebar.Group>
@@ -156,7 +156,7 @@ module TeamSwitcher = {
             <DropdownMenu>
               <DropdownMenu.Trigger
                 render={<Sidebar.MenuButton
-                  size=BaseUi.Types.Size.Lg
+                  size=Sidebar.MenuButton.Size.Lg
                   className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
                 />}
               >
@@ -182,7 +182,7 @@ module TeamSwitcher = {
                     {"Teams"->React.string}
                   </DropdownMenu.Label>
                   {teams
-                  ->Belt.Array.mapWithIndex((index, team) =>
+                  ->Array.mapWithIndex((team, index) =>
                     <DropdownMenu.Item
                       key={team.name}
                       onClick={_ => setActiveTeamIndex(_ => index)}
@@ -228,7 +228,7 @@ module NavMainSection = {
       <Sidebar.GroupLabel> {"Platform"->React.string} </Sidebar.GroupLabel>
       <Sidebar.Menu>
         {items
-        ->Belt.Array.map(item =>
+        ->Array.map(item =>
           <Collapsible key={item.title} defaultOpen={item.isActive} className="group/collapsible">
             <Sidebar.MenuItem>
               <Collapsible.Trigger render={<Sidebar.MenuButton ariaDisabled={false} />}>
@@ -241,7 +241,7 @@ module NavMainSection = {
               <Collapsible.Content>
                 <Sidebar.MenuSub>
                   {item.items
-                  ->Belt.Array.map(subItem =>
+                  ->Array.map(subItem =>
                     <Sidebar.MenuSubItem key={subItem.title}>
                       <Sidebar.MenuSubButton render={<a href={subItem.url} />}>
                         <span> {subItem.title->React.string} </span>
@@ -269,7 +269,7 @@ module NavProjectsSection = {
       <Sidebar.GroupLabel> {"Projects"->React.string} </Sidebar.GroupLabel>
       <Sidebar.Menu>
         {projects
-        ->Belt.Array.map(project =>
+        ->Array.map(project =>
           <Sidebar.MenuItem key={project.name}>
             <Sidebar.MenuButton render={<a href={project.url} />}>
               {renderIcon(~icon=project.icon)}
@@ -326,7 +326,7 @@ module NavUserSection = {
           <DropdownMenu>
             <DropdownMenu.Trigger
               render={<Sidebar.MenuButton
-                size=BaseUi.Types.Size.Lg
+                size=Sidebar.MenuButton.Size.Lg
                 className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
               />}
             >
@@ -402,7 +402,7 @@ module NavUserSection = {
 @react.component
 let make = () =>
   <Sidebar.Provider>
-    <Sidebar dataCollapsible="icon">
+    <Sidebar collapsible=Icon>
       <Sidebar.Header>
         <TeamSwitcher teams />
       </Sidebar.Header>

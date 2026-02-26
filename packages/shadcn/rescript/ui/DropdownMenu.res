@@ -4,6 +4,13 @@
 
 open BaseUi.Types
 
+module Variant = {
+  @unboxed
+  type t =
+    | @as("default") Default
+    | @as("destructive") Destructive
+}
+
 @react.component
 let make = (
   ~children=?,
@@ -101,21 +108,13 @@ module Group = {
 
 module Label = {
   @react.component
-  let make = (
-    ~className="",
-    ~children=?,
-    ~id=?,
-    ~style=?,
-    ~onClick=?,
-    ~onKeyDown=?,
-    ~dataInset=?,
-  ) =>
+  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?, ~inset=?) =>
     <BaseUi.Menu.GroupLabel
       ?id
       ?style
       ?onClick
       ?onKeyDown
-      ?dataInset
+      dataInset=?inset
       ?children
       dataSlot="dropdown-menu-label"
       className={`text-muted-foreground px-1.5 py-1 text-xs font-medium data-inset:pl-7 ${className}`}
@@ -127,16 +126,15 @@ module Item = {
   let make = (
     ~className="",
     ~children=?,
+    ~inset=?,
+    ~variant=Variant.Default,
     ~id=?,
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
     ~disabled=?,
     ~closeOnClick=?,
-    ~dataInset=?,
-    ~dataVariant=Variant.Default,
   ) => {
-    let variant = dataVariant
     <BaseUi.Menu.Item
       ?id
       ?style
@@ -144,10 +142,10 @@ module Item = {
       ?onKeyDown
       ?disabled
       ?closeOnClick
-      ?dataInset
+      dataInset=?inset
       ?children
       dataSlot="dropdown-menu-item"
-      dataVariant={variant}
+      dataVariant={(variant :> string)}
       className={`focus:bg-accent focus:text-accent-foreground data-[variant=destructive]:text-destructive data-[variant=destructive]:focus:bg-destructive/10 dark:data-[variant=destructive]:focus:bg-destructive/20 data-[variant=destructive]:focus:text-destructive data-[variant=destructive]:*:[svg]:text-destructive not-data-[variant=destructive]:focus:**:text-accent-foreground group/dropdown-menu-item relative flex cursor-default items-center gap-1.5 rounded-md px-1.5 py-1 text-sm outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 data-inset:pl-7 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 ${className}`}
     />
   }

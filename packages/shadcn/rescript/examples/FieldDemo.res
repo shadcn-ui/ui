@@ -148,7 +148,7 @@ let make = () =>
         </Field.Set>
         <Field orientation=BaseUi.Types.Orientation.Horizontal>
           <Button type_="submit"> {"Submit"->React.string} </Button>
-          <Button variant=BaseUi.Types.Variant.Outline type_="button">
+          <Button variant=Button.Variant.Outline type_="button">
             {"Cancel"->React.string}
           </Button>
         </Field>

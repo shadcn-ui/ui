@@ -1,21 +1,16 @@
 @@jsxConfig({version: 4, mode: "automatic", module_: "BaseUi.BaseUiJsxDOM"})
 
-open BaseUi.Types
+module Variant = {
+  @unboxed
+  type t =
+    | @as("default") Default
+    | @as("destructive") Destructive
+}
 
 let alertVariantClass = (~variant: Variant.t) =>
   switch variant {
   | Destructive => "text-destructive bg-card *:data-[slot=alert-description]:text-destructive/90 *:[svg]:text-current"
-  | Default
-  | Secondary
-  | Outline
-  | Ghost
-  | Muted
-  | Line
-  | Link
-  | Icon
-  | Image
-  | Legend
-  | Label => "bg-card text-card-foreground"
+  | Default => "bg-card text-card-foreground"
   }
 
 let alertVariants = (~variant=Variant.Default) => {
@@ -31,9 +26,19 @@ let make = (
   ~style=?,
   ~onClick=?,
   ~onKeyDown=?,
-  ~dataVariant=Variant.Default,
+  ~variant=?,
+  ~dataVariant=?,
 ) => {
-  let variant = dataVariant
+  let variant = switch (variant, dataVariant) {
+  | (Some(variant), _) => variant
+  | (None, Some(variant)) => variant
+  | (None, None) => Variant.Default
+  }
+  let resolvedClassName = if className == "" {
+    alertVariants(~variant)
+  } else {
+    `${alertVariants(~variant)} ${className}`
+  }
   <div
     ?id
     ?style
@@ -42,8 +47,7 @@ let make = (
     ?children
     role="alert"
     dataSlot="alert"
-    dataVariant={variant}
-    className={`${alertVariants(~variant)} ${className}`}
+    className={resolvedClassName}
   />
 }
 

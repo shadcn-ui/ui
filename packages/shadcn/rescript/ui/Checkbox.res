@@ -5,7 +5,7 @@ open BaseUi.Types
 @react.component
 let make = (
   ~className="",
-  ~children=React.null,
+  ~children=?,
   ~id=?,
   ~name=?,
   ~checked=?,
@@ -16,11 +16,12 @@ let make = (
   ~readOnly=?,
   ~onClick=?,
   ~onKeyDown=?,
-  ~tabIndex=?,
+  ~tabIndex=0,
   ~ariaLabel=?,
   ~style=?,
   ~render=?,
-) =>
+) => {
+  let _ignoredChildren = children
   <BaseUi.Checkbox.Root
     ?id
     ?name
@@ -32,7 +33,7 @@ let make = (
     ?readOnly
     ?onClick
     ?onKeyDown
-    ?tabIndex
+    tabIndex
     ?ariaLabel
     ?style
     ?render
@@ -45,5 +46,5 @@ let make = (
     >
       <Icons.Check />
     </BaseUi.Checkbox.Indicator>
-    {children}
   </BaseUi.Checkbox.Root>
+}

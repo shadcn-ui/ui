@@ -86,22 +86,22 @@ let make = () =>
         </Menubar.Group>
         <Menubar.Separator> {React.null} </Menubar.Separator>
         <Menubar.Group>
-          <Menubar.Item dataInset=true>
+          <Menubar.Item inset=true>
             {"Reload"->React.string}
             <Menubar.Shortcut> {"⌘R"->React.string} </Menubar.Shortcut>
           </Menubar.Item>
-          <Menubar.Item disabled=true dataInset=true>
+          <Menubar.Item disabled=true inset=true>
             {"Force Reload"->React.string}
             <Menubar.Shortcut> {"⇧⌘R"->React.string} </Menubar.Shortcut>
           </Menubar.Item>
         </Menubar.Group>
         <Menubar.Separator> {React.null} </Menubar.Separator>
         <Menubar.Group>
-          <Menubar.Item dataInset=true> {"Toggle Fullscreen"->React.string} </Menubar.Item>
+          <Menubar.Item inset=true> {"Toggle Fullscreen"->React.string} </Menubar.Item>
         </Menubar.Group>
         <Menubar.Separator> {React.null} </Menubar.Separator>
         <Menubar.Group>
-          <Menubar.Item dataInset=true> {"Hide Sidebar"->React.string} </Menubar.Item>
+          <Menubar.Item inset=true> {"Hide Sidebar"->React.string} </Menubar.Item>
         </Menubar.Group>
       </Menubar.Content>
     </Menubar.Menu>
@@ -116,11 +116,11 @@ let make = () =>
         </Menubar.RadioGroup>
         <Menubar.Separator> {React.null} </Menubar.Separator>
         <Menubar.Group>
-          <Menubar.Item dataInset=true> {"Edit..."->React.string} </Menubar.Item>
+          <Menubar.Item inset=true> {"Edit..."->React.string} </Menubar.Item>
         </Menubar.Group>
         <Menubar.Separator> {React.null} </Menubar.Separator>
         <Menubar.Group>
-          <Menubar.Item dataInset=true> {"Add Profile..."->React.string} </Menubar.Item>
+          <Menubar.Item inset=true> {"Add Profile..."->React.string} </Menubar.Item>
         </Menubar.Group>
       </Menubar.Content>
     </Menubar.Menu>

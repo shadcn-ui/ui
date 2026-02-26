@@ -6,21 +6,21 @@ let make = () => {
 
   <ButtonGroup>
     <ButtonGroup className="hidden sm:flex">
-      <Button variant=BaseUi.Types.Variant.Outline size=BaseUi.Types.Size.Icon ariaLabel="Go Back">
+      <Button variant=Button.Variant.Outline size=Button.Size.Icon ariaLabel="Go Back">
         <Icons.ArrowLeft />
       </Button>
     </ButtonGroup>
     <ButtonGroup>
-      <Button variant=BaseUi.Types.Variant.Outline> {"Archive"->React.string} </Button>
-      <Button variant=BaseUi.Types.Variant.Outline> {"Report"->React.string} </Button>
+      <Button variant=Button.Variant.Outline> {"Archive"->React.string} </Button>
+      <Button variant=Button.Variant.Outline> {"Report"->React.string} </Button>
     </ButtonGroup>
     <ButtonGroup>
-      <Button variant=BaseUi.Types.Variant.Outline> {"Snooze"->React.string} </Button>
+      <Button variant=Button.Variant.Outline> {"Snooze"->React.string} </Button>
       <DropdownMenu>
         <DropdownMenu.Trigger
           render={<Button
-            variant=BaseUi.Types.Variant.Outline
-            size=BaseUi.Types.Size.Icon
+            variant=Button.Variant.Outline
+            size=Button.Size.Icon
             ariaLabel="More Options"
           />}
         >
@@ -75,7 +75,7 @@ let make = () => {
           </DropdownMenu.Group>
           <DropdownMenu.Separator> {React.null} </DropdownMenu.Separator>
           <DropdownMenu.Group>
-            <DropdownMenu.Item dataVariant=BaseUi.Types.Variant.Destructive>
+            <DropdownMenu.Item variant=DropdownMenu.Variant.Destructive>
               <Icons.Trash2 />
               {"Trash"->React.string}
             </DropdownMenu.Item>

@@ -1,21 +1,16 @@
 @@jsxConfig({version: 4, mode: "automatic", module_: "BaseUi.BaseUiJsxDOM"})
 
-open BaseUi.Types
+module Variant = {
+  @unboxed
+  type t =
+    | @as("default") Default
+    | @as("icon") Icon
+}
 
 let emptyMediaVariantClass = (~variant: Variant.t) =>
   switch variant {
   | Icon => "bg-muted text-foreground flex size-8 shrink-0 items-center justify-center rounded-lg [&_svg:not([class*='size-'])]:size-4"
-  | Default
-  | Secondary
-  | Destructive
-  | Outline
-  | Ghost
-  | Muted
-  | Line
-  | Link
-  | Image
-  | Legend
-  | Label => "bg-transparent"
+  | Default => "bg-transparent"
   }
 
 let emptyMediaVariants = (~variant=Variant.Default) => {
@@ -54,14 +49,13 @@ module Media = {
   @react.component
   let make = (
     ~className="",
+    ~variant=Variant.Default,
     ~children=?,
     ~id=?,
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~dataVariant=Variant.Default,
   ) => {
-    let variant = dataVariant
     <div
       ?id
       ?children
@@ -69,7 +63,7 @@ module Media = {
       ?onClick
       ?onKeyDown
       dataSlot="empty-icon"
-      dataVariant={variant}
+      dataVariant={(variant :> string)}
       className={`${emptyMediaVariants(~variant)} ${className}`}
     />
   }

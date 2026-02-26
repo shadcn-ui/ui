@@ -71,46 +71,6 @@ module TextDirection = {
     | @as("rtl") Rtl
 }
 
-module Variant = {
-  @unboxed
-  type t =
-    | @as("default") Default
-    | @as("secondary") Secondary
-    | @as("destructive") Destructive
-    | @as("outline") Outline
-    | @as("ghost") Ghost
-    | @as("muted") Muted
-    | @as("line") Line
-    | @as("link") Link
-    | @as("icon") Icon
-    | @as("image") Image
-    | @as("legend") Legend
-    | @as("label") Label
-}
-
-module Size = {
-  @unboxed
-  type t =
-    | @as("default") Default
-    | @as("xs") Xs
-    | @as("sm") Sm
-    | @as("md") Md
-    | @as("lg") Lg
-    | @as("icon") Icon
-    | @as("icon-xs") IconXs
-    | @as("icon-sm") IconSm
-    | @as("icon-lg") IconLg
-}
-
-module DataAlign = {
-  @unboxed
-  type t =
-    | @as("inline-start") InlineStart
-    | @as("inline-end") InlineEnd
-    | @as("block-start") BlockStart
-    | @as("block-end") BlockEnd
-}
-
 module DataOrientation = {
   @unboxed
   type t =
@@ -121,10 +81,11 @@ module DataOrientation = {
 
 module ExtraDomProps = {
   type t = {
+    onKeyDownCapture?: JsxEvent.Keyboard.t => unit,
     @as("data-slot") dataSlot?: string,
     @as("data-sidebar") dataSidebar?: string,
     @as("data-side") dataSide?: string,
-    @as("data-align") dataAlign?: DataAlign.t,
+    @as("data-align") dataAlign?: string,
     @as("data-icon") dataIcon?: string,
     @as("data-mobile") dataMobile?: string,
     @as("data-chips") dataChips?: bool,
@@ -138,10 +99,10 @@ module ExtraDomProps = {
     @as("data-range-start") dataRangeStart?: bool,
     @as("data-range-end") dataRangeEnd?: bool,
     @as("data-range-middle") dataRangeMiddle?: bool,
-    @as("data-size") dataSize?: Size.t,
-    @as("data-variant") dataVariant?: Variant.t,
+    @as("data-size") dataSize?: string,
+    @as("data-variant") dataVariant?: string,
     @as("data-state") dataState?: string,
-    @as("data-orientation") dataOrientation?: DataOrientation.t,
+    @as("data-orientation") dataOrientation?: string,
     @as("data-align-trigger") dataAlignTrigger?: bool,
     @as("data-spacing") dataSpacing?: float,
     @as("data-inset") dataInset?: bool,
@@ -170,7 +131,7 @@ type props<'value, 'checked> = {
   role?: string,
   description?: string,
   placeholder?: string,
-  locale?: JSON.t,
+  locale?: string,
   mode?: string,
   captionLayout?: string,
   containerClassName?: string,
@@ -181,7 +142,6 @@ type props<'value, 'checked> = {
   theme?: string,
   onClick?: JsxEvent.Mouse.t => unit,
   onKeyDown?: JsxEvent.Keyboard.t => unit,
-  onKeyDownCapture?: JsxEvent.Keyboard.t => unit,
   ref?: ReactDOM.Ref.t,
   errors?: array<{message?: string}>,
   @as("open") open_?: bool,
@@ -231,6 +191,10 @@ type props<'value, 'checked> = {
   colSpan?: int,
   tabIndex?: int,
   inputValue?: string,
+  onBlur?: ReactEvent.Focus.t => unit,
+  onFocus?: ReactEvent.Focus.t => unit,
+  onMouseEnter?: ReactEvent.Mouse.t => unit,
+  onMouseLeave?: ReactEvent.Mouse.t => unit,
   onInputValueChange?: (string, eventDetails) => unit,
   onItemHighlighted?: ('value, eventDetails) => unit,
   itemToStringLabel?: 'value => string,
@@ -256,7 +220,6 @@ type props<'value, 'checked> = {
   thumbCollisionBehavior?: ThumbCollisionBehavior.t,
   @as("type") type_?: string,
   @as("aria-label") ariaLabel?: string,
-  ...ExtraDomProps.t,
   @as("aria-current")
   ariaCurrent?: [#page | #step | #location | #date | #time | #"true" | #"false"],
   @as("aria-details")
@@ -267,4 +230,5 @@ type props<'value, 'checked> = {
   ariaRoledescription?: string,
   @as("aria-hidden")
   ariaHidden?: bool,
+  ...ExtraDomProps.t,
 }

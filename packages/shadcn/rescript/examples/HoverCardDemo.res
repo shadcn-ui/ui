@@ -2,7 +2,7 @@
 let make = () =>
   <HoverCard>
     <HoverCard.Trigger
-      delay={10.} closeDelay={100.} render={<Button variant=BaseUi.Types.Variant.Link />}
+      delay={10.} closeDelay={100.} render={<Button variant=Button.Variant.Link />}
     >
       {"Hover Here"->React.string}
     </HoverCard.Trigger>
