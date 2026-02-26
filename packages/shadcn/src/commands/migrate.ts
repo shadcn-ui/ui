@@ -100,7 +100,7 @@ export const migrate = new Command()
       }
 
       if (options.migration === "radix") {
-        await migrateRadix(config, { yes: options.yes })
+        await migrateRadix(config, { yes: options.yes, path: options.path })
       }
 
       if (options.migration === "rtl") {

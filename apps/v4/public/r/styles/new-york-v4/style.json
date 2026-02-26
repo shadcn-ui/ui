@@ -3,15 +3,29 @@
   "name": "style",
   "dependencies": [
     "class-variance-authority",
-    "lucide-react"
+    "lucide-react",
+    "radix-ui"
   ],
   "devDependencies": [
-    "tw-animate-css"
+    "tw-animate-css",
+    "shadcn"
   ],
   "registryDependencies": [
     "utils"
   ],
   "files": [],
   "cssVars": {},
+  "css": {
+    "@import \"tw-animate-css\"": {},
+    "@import \"shadcn/tailwind.css\"": {},
+    "@layer base": {
+      "*": {
+        "@apply border-border outline-ring/50": {}
+      },
+      "body": {
+        "@apply bg-background text-foreground": {}
+      }
+    }
+  },
   "type": "registry:style"
 }

@@ -113,23 +113,16 @@ export function CodeBlockCommand({
           })}
         </div>
       </Tabs>
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <Button
-            data-slot="copy-button"
-            size="icon"
-            variant="ghost"
-            className="absolute top-2 right-2 z-10 size-7 opacity-70 hover:opacity-100 focus-visible:opacity-100"
-            onClick={copyCommand}
-          >
-            <span className="sr-only">Copy</span>
-            {hasCopied ? <IconCheck /> : <IconCopy />}
-          </Button>
-        </TooltipTrigger>
-        <TooltipContent>
-          {hasCopied ? "Copied" : "Copy to Clipboard"}
-        </TooltipContent>
-      </Tooltip>
+      <Button
+        data-slot="copy-button"
+        size="icon"
+        variant="ghost"
+        className="absolute top-2 right-2 z-10 size-7 opacity-70 hover:opacity-100 focus-visible:opacity-100"
+        onClick={copyCommand}
+      >
+        <span className="sr-only">Copy</span>
+        {hasCopied ? <IconCheck /> : <IconCopy />}
+      </Button>
     </div>
   )
 }
