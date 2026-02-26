@@ -16,6 +16,7 @@
     "figma",
     "[Changelog](/docs/changelog)",
     "[llms.txt](/llms.txt)",
-    "legacy"
+    "legacy",
+    "new"
   ]
 }

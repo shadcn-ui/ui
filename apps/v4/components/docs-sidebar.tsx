@@ -54,7 +54,7 @@ const TOP_LEVEL_SECTIONS = [
   },
 ]
 const EXCLUDED_SECTIONS = ["installation", "dark-mode", "changelog", "rtl"]
-const EXCLUDED_PAGES = ["/docs", "/docs/changelog", "/docs/rtl"]
+const EXCLUDED_PAGES = ["/docs", "/docs/changelog", "/docs/rtl", "/docs/new"]
 
 export function DocsSidebar({
   tree,

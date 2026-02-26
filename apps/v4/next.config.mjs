@@ -108,6 +108,11 @@ const nextConfig = {
         destination: "/docs/directory",
         permanent: false,
       },
+      {
+        source: "/new",
+        destination: "/docs/new",
+        permanent: false,
+      },
     ]
   },
   rewrites() {
