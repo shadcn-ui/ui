@@ -1,4 +1,4 @@
-import { NextResponse, type NextRequest } from "next/server"
+import { after, NextResponse, type NextRequest } from "next/server"
 import { track } from "@vercel/analytics/server"
 import dedent from "dedent"
 import {
@@ -46,7 +46,10 @@ export async function GET(request: NextRequest) {
 
     const designSystemConfig = parseResult.data
 
-    track("create_open_in_v0", designSystemConfig)
+    // Defer analytics to after response is sent. (server-after-nonblocking)
+    after(() => {
+      track("create_open_in_v0", designSystemConfig)
+    })
 
     const payload = await buildV0Payload(designSystemConfig)
 
@@ -218,11 +221,13 @@ async function buildComponentFiles(designSystemConfig: DesignSystemConfig) {
     )
     .map((item) => item.name)
 
+  // Fetch UI components and the item component in parallel. (async-parallel)
+  const itemComponentPromise = designSystemConfig.item
+    ? getRegistryItemFile(designSystemConfig.item, designSystemConfig)
+    : null
+
   const registryItemFiles = await Promise.all(
-    allItemsForBase.map(async (name) => {
-      const file = await getRegistryItemFile(name, designSystemConfig)
-      return file
-    })
+    allItemsForBase.map((name) => getRegistryItemFile(name, designSystemConfig))
   )
   files.push(...registryItemFiles)
 
@@ -239,11 +244,8 @@ async function buildComponentFiles(designSystemConfig: DesignSystemConfig) {
   }
 
   // Build the actual item component.
-  if (designSystemConfig.item) {
-    const itemComponentFile = await getRegistryItemFile(
-      designSystemConfig.item,
-      designSystemConfig
-    )
+  if (itemComponentPromise) {
+    const itemComponentFile = await itemComponentPromise
     if (itemComponentFile) {
       // Find the export default function from the component file.
       const exportDefault = itemComponentFile.content.match(
@@ -349,16 +351,16 @@ async function getRegistryItemFile(
 
 const transformers = [transformIcons, transformMenu, transformRender]
 
+// Reuse a single ts-morph Project — avoids re-creating the compiler host per file. (js-cache-function-results)
+const project = new Project({ compilerOptions: {} })
+
 async function transformFileContent(
   content: string,
   config: z.infer<typeof configSchema>
 ) {
-  const project = new Project({
-    compilerOptions: {},
-  })
-
   const sourceFile = project.createSourceFile("component.tsx", content, {
     scriptKind: ScriptKind.TSX,
+    overwrite: true,
   })
 
   for (const transformer of transformers) {

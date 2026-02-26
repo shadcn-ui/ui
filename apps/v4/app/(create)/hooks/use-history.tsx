@@ -16,67 +16,117 @@ export function HistoryProvider({ children }: { children: React.ReactNode }) {
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
-  const [currentIndex, setCurrentIndex] = React.useState(0)
+  const preset = searchParams.get("preset") ?? ""
+
+  const entriesRef = React.useRef<string[]>([preset])
+  const indexRef = React.useRef(0)
+  const maxIndexRef = React.useRef(0)
+  const isNavigatingRef = React.useRef(false)
+
+  const [index, setIndex] = React.useState(0)
   const [maxIndex, setMaxIndex] = React.useState(0)
-  const entriesRef = React.useRef<string[]>([])
-  const pendingIndexRef = React.useRef<number | null>(null)
 
   React.useEffect(() => {
-    const query = searchParams.toString()
-    const entries = entriesRef.current
-
-    if (entries.length === 0) {
-      entriesRef.current = [query]
-      setCurrentIndex(0)
-      setMaxIndex(0)
-      pendingIndexRef.current = null
+    if (isNavigatingRef.current) {
+      isNavigatingRef.current = false
       return
     }
 
-    const pendingIndex = pendingIndexRef.current
-    if (pendingIndex !== null) {
-      pendingIndexRef.current = null
-      if (entries[pendingIndex] === query) {
-        setCurrentIndex(pendingIndex)
-        setMaxIndex(entries.length - 1)
-        return
-      }
-    }
-
-    const currentQuery = entries[currentIndex]
-    if (query === currentQuery) {
+    if (preset === entriesRef.current[indexRef.current]) {
       return
     }
 
-    const nextEntries = entries.slice(0, currentIndex + 1)
-    nextEntries.push(query)
+    const nextEntries = entriesRef.current.slice(0, indexRef.current + 1)
+    nextEntries.push(preset)
     entriesRef.current = nextEntries
 
     const nextIndex = nextEntries.length - 1
-    setCurrentIndex(nextIndex)
+    indexRef.current = nextIndex
+    maxIndexRef.current = nextIndex
+    setIndex(nextIndex)
     setMaxIndex(nextIndex)
-  }, [searchParams, currentIndex])
+  }, [preset])
 
-  const canGoBack = currentIndex > 0
-  const canGoForward = currentIndex < maxIndex
+  const canGoBack = index > 0
+  const canGoForward = index < maxIndex
 
   const goBack = React.useCallback(() => {
-    if (currentIndex > 0) {
-      const nextIndex = currentIndex - 1
-      const query = entriesRef.current[nextIndex]
-      pendingIndexRef.current = nextIndex
-      router.replace(query ? `${pathname}?${query}` : pathname)
+    if (indexRef.current <= 0) {
+      return
     }
-  }, [currentIndex, pathname, router])
+
+    isNavigatingRef.current = true
+    const nextIndex = indexRef.current - 1
+    indexRef.current = nextIndex
+    setIndex(nextIndex)
+
+    const targetPreset = entriesRef.current[nextIndex]
+    const params = new URLSearchParams(window.location.search)
+    if (targetPreset) {
+      params.set("preset", targetPreset)
+    } else {
+      params.delete("preset")
+    }
+    const query = params.toString()
+    router.replace(query ? `${pathname}?${query}` : pathname)
+  }, [pathname, router])
 
   const goForward = React.useCallback(() => {
-    if (currentIndex < maxIndex) {
-      const nextIndex = currentIndex + 1
-      const query = entriesRef.current[nextIndex]
-      pendingIndexRef.current = nextIndex
-      router.replace(query ? `${pathname}?${query}` : pathname)
+    if (indexRef.current >= maxIndexRef.current) {
+      return
     }
-  }, [currentIndex, maxIndex, pathname, router])
+
+    isNavigatingRef.current = true
+    const nextIndex = indexRef.current + 1
+    indexRef.current = nextIndex
+    setIndex(nextIndex)
+
+    const targetPreset = entriesRef.current[nextIndex]
+    const params = new URLSearchParams(window.location.search)
+    if (targetPreset) {
+      params.set("preset", targetPreset)
+    } else {
+      params.delete("preset")
+    }
+    const query = params.toString()
+    router.replace(query ? `${pathname}?${query}` : pathname)
+  }, [pathname, router])
+
+  React.useEffect(() => {
+    const down = (e: KeyboardEvent) => {
+      if (!e.metaKey && !e.ctrlKey) {
+        return
+      }
+
+      if (
+        (e.target instanceof HTMLElement && e.target.isContentEditable) ||
+        e.target instanceof HTMLInputElement ||
+        e.target instanceof HTMLTextAreaElement ||
+        e.target instanceof HTMLSelectElement
+      ) {
+        return
+      }
+
+      const key = e.key.toLowerCase()
+
+      if ((key === "z" && e.shiftKey) || (key === "y" && e.ctrlKey)) {
+        e.preventDefault()
+        goForward()
+        return
+      }
+
+      if (key === "z") {
+        e.preventDefault()
+        goBack()
+      }
+    }
+
+    document.addEventListener("keydown", down)
+
+    return () => {
+      document.removeEventListener("keydown", down)
+    }
+  }, [goBack, goForward])
 
   const value = React.useMemo(
     () => ({ canGoBack, canGoForward, goBack, goForward }),

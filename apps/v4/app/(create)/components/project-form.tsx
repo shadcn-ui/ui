@@ -1,17 +1,7 @@
 "use client"
 
 import * as React from "react"
-import {
-  ComputerTerminal01Icon,
-  Copy01Icon,
-  Tick02Icon,
-} from "@hugeicons/core-free-icons"
-import { HugeiconsIcon } from "@hugeicons/react"
-
-import { useConfig } from "@/hooks/use-config"
-import { copyToClipboardWithMeta } from "@/components/copy-button"
-import { BASES } from "@/registry/config"
-import { Button } from "@/registry/new-york-v4/ui/button"
+import { Button } from "@/examples/base/ui/button"
 import {
   Dialog,
   DialogContent,
@@ -20,39 +10,40 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/registry/new-york-v4/ui/dialog"
+} from "@/examples/base/ui/dialog"
 import {
   Field,
   FieldContent,
   FieldDescription,
   FieldGroup,
   FieldLabel,
-} from "@/registry/new-york-v4/ui/field"
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/registry/new-york-v4/ui/select"
-import { Switch } from "@/registry/new-york-v4/ui/switch"
+  FieldTitle,
+} from "@/examples/base/ui/field"
+import { Switch } from "@/examples/base/ui/switch"
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@/registry/new-york-v4/ui/tabs"
-import { usePresetCode } from "@/app/(create)/hooks/use-design-system"
-import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
+} from "@/examples/base/ui/tabs"
+import { Copy01Icon, Tick02Icon } from "@hugeicons/core-free-icons"
+import { HugeiconsIcon } from "@hugeicons/react"
 
-const TEMPLATES = [
-  { value: "next", title: "Next.js" },
-  { value: "start", title: "TanStack Start" },
-  { value: "react-router", title: "React Router" },
-  { value: "vite", title: "Vite" },
-  { value: "next-monorepo", title: "Next.js (Monorepo)" },
-] as const
+import { cn } from "@/lib/utils"
+import { useConfig } from "@/hooks/use-config"
+import { copyToClipboardWithMeta } from "@/components/copy-button"
+import {
+  ALL_TEMPLATES,
+  getFramework,
+  getTemplateValue,
+  NO_MONOREPO_FRAMEWORKS,
+  TEMPLATES,
+} from "@/app/(create)/components/template-picker"
+import { usePresetCode } from "@/app/(create)/hooks/use-design-system"
+import {
+  useDesignSystemSearchParams,
+  type DesignSystemSearchParams,
+} from "@/app/(create)/lib/search-params"
 
 export function ProjectForm() {
   const [open, setOpen] = React.useState(false)
@@ -60,20 +51,24 @@ export function ProjectForm() {
   const presetCode = usePresetCode()
   const [config, setConfig] = useConfig()
   const [hasCopied, setHasCopied] = React.useState(false)
+  const [hasCopiedLaravel, setHasCopiedLaravel] = React.useState(false)
 
   const packageManager = config.packageManager || "pnpm"
+
+  const isLaravel = getFramework(params.template ?? "next") === "laravel"
 
   const commands = React.useMemo(() => {
     const origin = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:4000"
     const isLocalDev = origin.includes("localhost")
     const presetFlag = ` --preset ${presetCode}`
+    const framework = getFramework(params.template ?? "next")
+    const isMonorepo = params.template?.endsWith("-monorepo") ?? false
+    // Laravel doesn't use --template since it has its own scaffolding.
     const templateFlag =
-      params.template && params.template !== "existing"
-        ? ` --template ${params.template}`
-        : ""
-    const baseFlag = params.base ? ` --base ${params.base}` : ""
+      params.template && !isLaravel ? ` --template ${framework}` : ""
+    const monorepoFlag = isMonorepo ? " --monorepo" : ""
     const rtlFlag = params.rtl ? " --rtl" : ""
-    const flags = `${presetFlag}${templateFlag}${baseFlag}${rtlFlag}`
+    const flags = `${presetFlag}${templateFlag}${monorepoFlag}${rtlFlag}`
 
     return isLocalDev
       ? {
@@ -88,7 +83,7 @@ export function ProjectForm() {
           yarn: `yarn dlx shadcn@latest init${flags}`,
           bun: `bunx --bun shadcn@latest init${flags}`,
         }
-  }, [presetCode, params.base, params.rtl, params.template])
+  }, [presetCode, params.rtl, params.template, isLaravel])
 
   const command = commands[packageManager]
 
@@ -98,6 +93,13 @@ export function ProjectForm() {
       return () => clearTimeout(timer)
     }
   }, [hasCopied])
+
+  React.useEffect(() => {
+    if (hasCopiedLaravel) {
+      const timer = setTimeout(() => setHasCopiedLaravel(false), 2000)
+      return () => clearTimeout(timer)
+    }
+  }, [hasCopiedLaravel])
 
   const handleCopy = React.useCallback(() => {
     const properties: Record<string, string> = {
@@ -113,49 +115,20 @@ export function ProjectForm() {
     setHasCopied(true)
   }, [command, params.template])
 
-  const selectedTemplate = TEMPLATES.find(
-    (template) => template.value === params.template
-  )
-
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>
-        <Button size="sm" className="hidden h-[31px] rounded-lg pl-2 md:flex">
-          Create Project
-        </Button>
-      </DialogTrigger>
-      <DialogContent className="dialog-ring min-w-0 overflow-hidden rounded-xl sm:max-w-lg">
+      <DialogTrigger render={<Button />}>Create Project</DialogTrigger>
+      <DialogContent className="min-w-0 sm:max-w-md">
         <DialogHeader>
           <DialogTitle>Create Project</DialogTitle>
-          <DialogDescription className="text-balance">
+          <DialogDescription>
             Configure your project to use shadcn/ui.
           </DialogDescription>
         </DialogHeader>
         <FieldGroup>
           <Field>
-            <FieldLabel htmlFor="template">Template</FieldLabel>
-            <Select
-              value={params.template ?? ""}
-              onValueChange={(value) => {
-                setParams({
-                  template: (value || null) as typeof params.template,
-                })
-              }}
-            >
-              <SelectTrigger id="template">
-                <SelectValue placeholder="Select a template" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                  <SelectItem value="existing">Existing project</SelectItem>
-                  {TEMPLATES.map((template) => (
-                    <SelectItem key={template.value} value={template.value}>
-                      {template.title}
-                    </SelectItem>
-                  ))}
-                </SelectGroup>
-              </SelectContent>
-            </Select>
+            <FieldLabel>Template</FieldLabel>
+            <TemplateGrid params={params} setParams={setParams} />
             <FieldDescription>
               See the{" "}
               <a
@@ -169,62 +142,93 @@ export function ProjectForm() {
               for more templates and frameworks.
             </FieldDescription>
           </Field>
-          <Field>
-            <FieldLabel htmlFor="base">Component Library</FieldLabel>
-            <Select
-              value={params.base}
-              onValueChange={(value) => {
-                setParams({
-                  base: value as "radix" | "base",
-                })
-              }}
-            >
-              <SelectTrigger id="base">
-                <SelectValue placeholder="Select a component library" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                  {BASES.map((base) => (
-                    <SelectItem key={base.name} value={base.name}>
-                      {base.title}
-                    </SelectItem>
-                  ))}
-                </SelectGroup>
-              </SelectContent>
-            </Select>
-          </Field>
-          <Field orientation="horizontal" className="items-center">
-            <FieldContent className="gap-0.5">
-              <FieldLabel htmlFor="rtl">Enable RTL</FieldLabel>
-              <FieldDescription className="text-balance">
-                Enable right-to-left support.
-                {selectedTemplate && (
-                  <>
-                    {" "}
-                    See the{" "}
-                    <a
-                      href={`/docs/rtl/${params.template === "next-monorepo" ? "next" : params.template}`}
-                      className="text-foreground underline"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      RTL setup guide
-                    </a>{" "}
-                    for {selectedTemplate.title}.
-                  </>
-                )}
-              </FieldDescription>
-            </FieldContent>
-            <Switch
-              id="rtl"
-              checked={params.rtl}
-              onCheckedChange={(checked) =>
-                setParams({ rtl: checked === true })
-              }
-            />
-          </Field>
+          {!isLaravel && (
+            <FieldLabel htmlFor="monorepo">
+              <Field orientation="horizontal">
+                <FieldContent>
+                  <FieldTitle>Monorepo</FieldTitle>
+                  <FieldDescription>
+                    Use a Turborepo monorepo with a shared UI package.
+                  </FieldDescription>
+                </FieldContent>
+                <Switch
+                  id="monorepo"
+                  checked={params.template?.endsWith("-monorepo") ?? false}
+                  onCheckedChange={(checked) => {
+                    const framework = getFramework(params.template ?? "next")
+                    setParams({
+                      template: getTemplateValue(
+                        framework,
+                        checked === true
+                      ) as typeof params.template,
+                    })
+                  }}
+                />
+              </Field>
+            </FieldLabel>
+          )}
+          <FieldLabel htmlFor="rtl">
+            <Field orientation="horizontal">
+              <FieldContent>
+                <FieldTitle>Enable RTL</FieldTitle>
+                <FieldDescription>
+                  Add right-to-left support for your project.
+                </FieldDescription>
+              </FieldContent>
+              <Switch
+                id="rtl"
+                checked={params.rtl}
+                onCheckedChange={(checked) =>
+                  setParams({ rtl: checked === true })
+                }
+              />
+            </Field>
+          </FieldLabel>
         </FieldGroup>
         <DialogFooter className="bg-muted/30 -mx-6 mt-2 -mb-6 flex min-w-0 flex-col gap-3 border-t p-6 sm:flex-col">
+          {isLaravel && (
+            <div className="flex flex-col gap-2">
+              <p className="text-muted-foreground text-sm">
+                <a
+                  href="https://laravel.com/docs#creating-a-laravel-project"
+                  className="text-foreground underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Create a new Laravel project
+                </a>
+                , then run the following command.
+              </p>
+              <div className="bg-surface min-w-0 overflow-hidden rounded-lg border">
+                <div className="flex items-center py-1.5 pr-1.5 pl-3">
+                  <div className="no-scrollbar min-w-0 flex-1 overflow-x-auto">
+                    <code className="font-mono text-sm whitespace-nowrap">
+                      laravel new example-app
+                    </code>
+                  </div>
+                  <Button
+                    size="icon-sm"
+                    variant="ghost"
+                    className="ml-2 size-7 shrink-0"
+                    onClick={() => {
+                      copyToClipboardWithMeta("laravel new example-app", {
+                        name: "copy_npm_command",
+                        properties: { command: "laravel new example-app" },
+                      })
+                      setHasCopiedLaravel(true)
+                    }}
+                  >
+                    {hasCopiedLaravel ? (
+                      <HugeiconsIcon icon={Tick02Icon} className="size-4" />
+                    ) : (
+                      <HugeiconsIcon icon={Copy01Icon} className="size-4" />
+                    )}
+                    <span className="sr-only">Copy command</span>
+                  </Button>
+                </div>
+              </div>
+            </div>
+          )}
           <Tabs
             value={packageManager}
             onValueChange={(value) => {
@@ -245,7 +249,7 @@ export function ProjectForm() {
               <Button
                 size="icon-sm"
                 variant="ghost"
-                className="ml-auto size-7 rounded-lg"
+                className="ml-auto size-7"
                 onClick={handleCopy}
               >
                 {hasCopied ? (
@@ -270,15 +274,65 @@ export function ProjectForm() {
               )
             })}
           </Tabs>
-          <Button
-            size="sm"
-            onClick={handleCopy}
-            className="h-9 w-full rounded-lg"
-          >
+          <Button onClick={handleCopy} className="h-9 w-full">
             Copy Command
           </Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>
+  )
+}
+
+function TemplateGrid({
+  params,
+  setParams,
+}: {
+  params: DesignSystemSearchParams
+  setParams: ReturnType<typeof useDesignSystemSearchParams>[1]
+}) {
+  const isMonorepo = params.template?.endsWith("-monorepo") ?? false
+  const framework = getFramework(params.template ?? "next")
+
+  return (
+    <div className="flex flex-col gap-2">
+      {TEMPLATES.map((row, rowIndex) => (
+        <div
+          key={rowIndex}
+          className="grid gap-2"
+          style={{ gridTemplateColumns: `repeat(${row.length}, 1fr)` }}
+        >
+          {row.map((template) => (
+            <button
+              key={template.value}
+              type="button"
+              onClick={() =>
+                setParams({
+                  template: getTemplateValue(
+                    template.value,
+                    isMonorepo
+                  ) as typeof params.template,
+                })
+              }
+              className={cn(
+                "flex flex-col items-center gap-2 rounded-lg border p-3 text-sm transition-colors",
+                framework === template.value
+                  ? "border-foreground bg-muted"
+                  : "border-border hover:bg-muted/50"
+              )}
+            >
+              <div
+                className="text-foreground *:[svg]:text-foreground! size-5 *:[svg]:size-5"
+                dangerouslySetInnerHTML={{
+                  __html: template.logo,
+                }}
+              />
+              <span className="text-foreground text-xs font-medium">
+                {template.title}
+              </span>
+            </button>
+          ))}
+        </div>
+      ))}
+    </div>
   )
 }

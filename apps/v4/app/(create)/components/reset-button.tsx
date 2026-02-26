@@ -16,38 +16,18 @@ import { Button } from "@/examples/base/ui/button"
 import { Undo02Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 
-import { DEFAULT_CONFIG } from "@/registry/config"
-import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
+import { useReset } from "@/app/(create)/hooks/use-reset"
 
 export function ResetButton() {
-  const [params, setParams] = useDesignSystemSearchParams()
-  const [mobileOpen, setMobileOpen] = React.useState(false)
-  const [desktopOpen, setDesktopOpen] = React.useState(false)
-
-  const handleReset = React.useCallback(() => {
-    setParams({
-      base: params.base, // Keep the current base value.
-      style: DEFAULT_CONFIG.style,
-      baseColor: DEFAULT_CONFIG.baseColor,
-      theme: DEFAULT_CONFIG.theme,
-      iconLibrary: DEFAULT_CONFIG.iconLibrary,
-      font: DEFAULT_CONFIG.font,
-      menuAccent: DEFAULT_CONFIG.menuAccent,
-      menuColor: DEFAULT_CONFIG.menuColor,
-      radius: DEFAULT_CONFIG.radius,
-      template: DEFAULT_CONFIG.template,
-      item: "preview",
-    })
-  }, [setParams, params.base])
+  const { showResetDialog, setShowResetDialog, confirmReset } = useReset()
 
   return (
-    <>
-      <AlertDialog open={mobileOpen} onOpenChange={setMobileOpen}>
+    <React.Fragment>
+      <AlertDialog open={showResetDialog} onOpenChange={setShowResetDialog}>
         <AlertDialogTrigger
           render={
             <Button
               variant="ghost"
-              size="sm"
               className="border-foreground/10 bg-muted/50 flex h-[calc(--spacing(13.5))] w-[140px] touch-manipulation justify-between rounded-xl border select-none focus-visible:border-transparent focus-visible:ring-1 sm:hidden"
             >
               <div className="flex flex-col justify-start text-left">
@@ -60,28 +40,6 @@ export function ResetButton() {
             </Button>
           }
         />
-        <AlertDialogContent size="sm">
-          <AlertDialogHeader>
-            <AlertDialogTitle>Reset to defaults?</AlertDialogTitle>
-            <AlertDialogDescription>
-              This will reset all customization options to their default values.
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel className="rounded-lg">Cancel</AlertDialogCancel>
-            <AlertDialogAction
-              className="rounded-lg"
-              onClick={() => {
-                handleReset()
-                setMobileOpen(false)
-              }}
-            >
-              Reset
-            </AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
-      <AlertDialog open={desktopOpen} onOpenChange={setDesktopOpen}>
         <AlertDialogTrigger
           render={
             <Button variant="outline" className="hidden w-full sm:flex">
@@ -97,19 +55,27 @@ export function ResetButton() {
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel className="rounded-lg">Cancel</AlertDialogCancel>
-            <AlertDialogAction
-              className="rounded-lg"
-              onClick={() => {
-                handleReset()
-                setDesktopOpen(false)
-              }}
-            >
-              Reset
-            </AlertDialogAction>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction onClick={confirmReset}>Reset</AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
-    </>
+    </React.Fragment>
+  )
+}
+
+export function ResetIconButton() {
+  const { setShowResetDialog } = useReset()
+
+  return (
+    <Button
+      variant="ghost"
+      size="icon-sm"
+      aria-label="Reset to defaults"
+      onClick={() => setShowResetDialog(true)}
+    >
+      <HugeiconsIcon icon={Undo02Icon} />
+      <span className="sr-only">Reset</span>
+    </Button>
   )
 }

@@ -4,11 +4,12 @@ import { notFound } from "next/navigation"
 
 import { siteConfig } from "@/lib/config"
 import { absoluteUrl } from "@/lib/utils"
-import { DarkModeScript } from "@/components/mode-switcher"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { BASES, type Base } from "@/registry/config"
+import { ActionMenuScript } from "@/app/(create)/components/action-menu"
 import { DesignSystemProvider } from "@/app/(create)/components/design-system-provider"
-import { ItemPickerScript } from "@/app/(create)/components/item-picker"
+import { HistoryScript } from "@/app/(create)/components/history-buttons"
+import { DarkModeScript } from "@/app/(create)/components/mode-switcher"
 import { PreviewStyle } from "@/app/(create)/components/preview-style"
 import { RandomizeScript } from "@/app/(create)/components/random-button"
 import { getBaseComponent, getBaseItem } from "@/app/(create)/lib/api"
@@ -142,8 +143,9 @@ export default async function BlockPage({
     <div className="relative">
       <PreventScrollOnFocusScript />
       <PreviewStyle />
-      <ItemPickerScript />
+      <ActionMenuScript />
       <RandomizeScript />
+      <HistoryScript />
       <DarkModeScript />
       <DesignSystemProvider>
         <Component />

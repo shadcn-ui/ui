@@ -1,9 +1,7 @@
 "use client"
 
 import * as React from "react"
-
-import { Icons } from "@/components/icons"
-import { Button } from "@/registry/new-york-v4/ui/button"
+import { Button } from "@/examples/base/ui/button"
 import {
   Dialog,
   DialogClose,
@@ -12,7 +10,9 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@/registry/new-york-v4/ui/dialog"
+} from "@/examples/base/ui/dialog"
+
+import { Icons } from "@/components/icons"
 
 const STORAGE_KEY = "shadcn-create-welcome-dialog"
 
@@ -26,12 +26,13 @@ export function WelcomeDialog() {
     }
   }, [])
 
-  const handleOpenChange = (open: boolean) => {
+  // Stable callback — avoids re-creation on every render. (rerender-functional-setstate)
+  const handleOpenChange = React.useCallback((open: boolean) => {
     setIsOpen(open)
     if (!open) {
       localStorage.setItem(STORAGE_KEY, "true")
     }
-  }
+  }, [])
 
   return (
     <Dialog open={isOpen} onOpenChange={handleOpenChange}>
@@ -57,10 +58,8 @@ export function WelcomeDialog() {
           </DialogDescription>
         </DialogHeader>
         <DialogFooter className="p-4 pt-0">
-          <DialogClose asChild>
-            <Button className="w-full rounded-lg shadow-none">
-              Get Started
-            </Button>
+          <DialogClose render={<Button className="w-full" />}>
+            Get Started
           </DialogClose>
         </DialogFooter>
       </DialogContent>

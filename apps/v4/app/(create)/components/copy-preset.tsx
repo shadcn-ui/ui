@@ -1,11 +1,11 @@
 "use client"
 
 import * as React from "react"
+import { Button } from "@/examples/base/ui/button"
 import { Copy01Icon, Tick02Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 
 import { copyToClipboardWithMeta } from "@/components/copy-button"
-import { Button } from "@/registry/new-york-v4/ui/button"
 import { usePresetCode } from "@/app/(create)/hooks/use-design-system"
 
 export function CopyPreset() {
@@ -20,7 +20,7 @@ export function CopyPreset() {
   }, [hasCopied])
 
   const handleCopy = React.useCallback(() => {
-    copyToClipboardWithMeta(presetCode, {
+    copyToClipboardWithMeta(`--preset ${presetCode}`, {
       name: "copy_preset_command",
       properties: {
         preset: presetCode,
@@ -30,19 +30,14 @@ export function CopyPreset() {
   }, [presetCode])
 
   return (
-    <Button
-      size="sm"
-      variant="ghost"
-      onClick={handleCopy}
-      className="group/button"
-    >
-      --preset {presetCode}
+    <Button variant="ghost" onClick={handleCopy} className="group/button">
       <HugeiconsIcon
         icon={hasCopied ? Tick02Icon : Copy01Icon}
         strokeWidth={2}
         className="opacity-0 group-hover/button:opacity-100"
-        data-icon="inline-end"
+        data-icon="inline-start"
       />
+      --preset {presetCode}
     </Button>
   )
 }

@@ -1,0 +1,113 @@
+"use client"
+
+import * as React from "react"
+
+import {
+  BASE_COLORS,
+  getThemesForBaseColor,
+  iconLibraries,
+  MENU_ACCENTS,
+  MENU_COLORS,
+  RADII,
+  STYLES,
+} from "@/registry/config"
+import { useLocks } from "@/app/(create)/hooks/use-locks"
+import { FONTS } from "@/app/(create)/lib/fonts"
+import {
+  applyBias,
+  RANDOMIZE_BIASES,
+  type RandomizeContext,
+} from "@/app/(create)/lib/randomize-biases"
+import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
+
+function randomItem<T>(array: readonly T[]): T {
+  return array[Math.floor(Math.random() * array.length)]
+}
+
+export function useRandom() {
+  const { locks } = useLocks()
+  const [params, setParams] = useDesignSystemSearchParams()
+
+  const randomize = React.useCallback(() => {
+    const selectedStyle = locks.has("style")
+      ? params.style
+      : randomItem(STYLES).name
+
+    const context: RandomizeContext = {
+      style: selectedStyle,
+    }
+
+    const availableBaseColors = applyBias(
+      BASE_COLORS,
+      context,
+      RANDOMIZE_BIASES.baseColors
+    )
+    const baseColor = locks.has("baseColor")
+      ? params.baseColor
+      : randomItem(availableBaseColors).name
+    context.baseColor = baseColor
+
+    const availableThemes = getThemesForBaseColor(baseColor)
+    const availableFonts = applyBias(FONTS, context, RANDOMIZE_BIASES.fonts)
+    const availableRadii = applyBias(RADII, context, RANDOMIZE_BIASES.radius)
+
+    const selectedTheme = locks.has("theme")
+      ? params.theme
+      : randomItem(availableThemes).name
+    const selectedFont = locks.has("font")
+      ? params.font
+      : randomItem(availableFonts).value
+    const selectedRadius = locks.has("radius")
+      ? params.radius
+      : randomItem(availableRadii).name
+    const selectedIconLibrary = locks.has("iconLibrary")
+      ? params.iconLibrary
+      : randomItem(Object.values(iconLibraries)).name
+    const selectedMenuAccent = locks.has("menuAccent")
+      ? params.menuAccent
+      : randomItem(MENU_ACCENTS).value
+    const selectedMenuColor = locks.has("menuColor")
+      ? params.menuColor
+      : randomItem(MENU_COLORS).value
+
+    context.theme = selectedTheme
+    context.font = selectedFont
+    context.radius = selectedRadius
+
+    setParams({
+      style: selectedStyle,
+      baseColor,
+      theme: selectedTheme,
+      iconLibrary: selectedIconLibrary,
+      font: selectedFont,
+      menuAccent: selectedMenuAccent,
+      menuColor: selectedMenuColor,
+      radius: selectedRadius,
+    })
+  }, [setParams, locks, params])
+
+  React.useEffect(() => {
+    const down = (e: KeyboardEvent) => {
+      if ((e.key === "r" || e.key === "R") && !e.metaKey && !e.ctrlKey) {
+        if (
+          (e.target instanceof HTMLElement && e.target.isContentEditable) ||
+          e.target instanceof HTMLInputElement ||
+          e.target instanceof HTMLTextAreaElement ||
+          e.target instanceof HTMLSelectElement
+        ) {
+          return
+        }
+
+        e.preventDefault()
+        randomize()
+      }
+    }
+
+    document.addEventListener("keydown", down)
+    return () => {
+      document.removeEventListener("keydown", down)
+    }
+  }, [randomize])
+
+  return { randomize }
+}

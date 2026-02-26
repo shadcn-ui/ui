@@ -1,11 +1,11 @@
 "use client"
 
 import * as React from "react"
+import { Button } from "@/examples/base/ui/button"
 import { Share03Icon, Tick02Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 
 import { copyToClipboardWithMeta } from "@/components/copy-button"
-import { Button } from "@/registry/new-york-v4/ui/button"
 import { usePresetCode } from "@/app/(create)/hooks/use-design-system"
 import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
 
@@ -37,16 +37,19 @@ export function ShareButton() {
   }, [shareUrl])
 
   return (
-    <Button
-      size="sm"
-      variant="outline"
-      className="rounded-lg shadow-none"
-      onClick={handleCopy}
-    >
+    <Button variant="outline" onClick={handleCopy}>
       {hasCopied ? (
-        <HugeiconsIcon icon={Tick02Icon} strokeWidth={2} />
+        <HugeiconsIcon
+          icon={Tick02Icon}
+          strokeWidth={2}
+          data-icon="inline-start"
+        />
       ) : (
-        <HugeiconsIcon icon={Share03Icon} strokeWidth={2} />
+        <HugeiconsIcon
+          icon={Share03Icon}
+          strokeWidth={2}
+          data-icon="inline-start"
+        />
       )}
       Share
     </Button>

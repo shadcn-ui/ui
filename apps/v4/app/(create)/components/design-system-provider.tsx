@@ -34,21 +34,16 @@ export function DesignSystemProvider({
 
     const body = document.body
 
-    // Update style class in place (remove old, add new).
+    // Remove old style/base-color classes in a single pass, then add new ones. (js-combine-iterations)
     body.classList.forEach((className) => {
-      if (className.startsWith("style-")) {
+      if (
+        className.startsWith("style-") ||
+        className.startsWith("base-color-")
+      ) {
         body.classList.remove(className)
       }
     })
-    body.classList.add(`style-${style}`)
-
-    // Update base color class in place.
-    body.classList.forEach((className) => {
-      if (className.startsWith("base-color-")) {
-        body.classList.remove(className)
-      }
-    })
-    body.classList.add(`base-color-${baseColor}`)
+    body.classList.add(`style-${style}`, `base-color-${baseColor}`)
 
     // Update font.
     const selectedFont = FONTS.find((f) => f.value === font)

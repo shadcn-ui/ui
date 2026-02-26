@@ -1,20 +1,17 @@
 "use client"
 
 import * as React from "react"
-import Link from "next/link"
-import { Button } from "@/examples/base/ui/button"
-import { ArrowLeftIcon } from "lucide-react"
+import { FieldGroup } from "@/examples/base/ui/field"
 
 import { useIsMobile } from "@/hooks/use-mobile"
-import { ModeSwitcher } from "@/components/mode-switcher"
 import { getThemesForBaseColor, STYLES } from "@/registry/config"
-import { FieldGroup } from "@/registry/new-york-v4/ui/field"
 import { MenuAccentPicker } from "@/app/(create)/components/accent-picker"
 import { BaseColorPicker } from "@/app/(create)/components/base-color-picker"
 import { BasePicker } from "@/app/(create)/components/base-picker"
 import { FontPicker } from "@/app/(create)/components/font-picker"
 import { IconLibraryPicker } from "@/app/(create)/components/icon-library-picker"
 import { MenuColorPicker } from "@/app/(create)/components/menu-picker"
+import { ModeSwitcher } from "@/app/(create)/components/mode-switcher"
 import { RadiusPicker } from "@/app/(create)/components/radius-picker"
 import { RandomButton } from "@/app/(create)/components/random-button"
 import { ResetButton } from "@/app/(create)/components/reset-button"
@@ -22,6 +19,8 @@ import { StylePicker } from "@/app/(create)/components/style-picker"
 import { ThemePicker } from "@/app/(create)/components/theme-picker"
 import { FONTS } from "@/app/(create)/lib/fonts"
 import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
+
+import { MainMenu } from "./main-menu"
 
 export function Customizer() {
   const [params] = useDesignSystemSearchParams()
@@ -35,18 +34,11 @@ export function Customizer() {
 
   return (
     <div
-      className="no-scrollbar -mx-2.5 flex flex-col gap-4 overflow-y-auto rounded-2xl border p-4 md:mx-0 md:h-[calc(100svh---spacing(12))] md:w-72"
+      className="flex flex-col gap-4 rounded-2xl border p-4 md:h-[calc(100svh---spacing(12))] md:w-64"
       ref={anchorRef}
     >
       <div className="flex items-center gap-2">
-        <Button
-          variant="secondary"
-          render={<Link href="/" />}
-          nativeButton={false}
-          role="link"
-        >
-          Exit
-        </Button>
+        <MainMenu />
         <div className="ml-auto">
           <ModeSwitcher />
         </div>
