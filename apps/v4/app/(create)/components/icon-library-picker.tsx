@@ -2,7 +2,6 @@
 
 import * as React from "react"
 import { lazy, memo, Suspense } from "react"
-import { useQueryStates } from "nuqs"
 
 import { Item, ItemContent, ItemTitle } from "@/registry/bases/radix/ui/item"
 import {
@@ -20,7 +19,7 @@ import {
   PickerSeparator,
   PickerTrigger,
 } from "@/app/(create)/components/picker"
-import { designSystemSearchParams } from "@/app/(create)/lib/search-params"
+import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
 
 const IconLucide = lazy(() =>
   import("@/registry/icons/icon-lucide").then((mod) => ({
@@ -37,6 +36,18 @@ const IconTabler = lazy(() =>
 const IconHugeicons = lazy(() =>
   import("@/registry/icons/icon-hugeicons").then((mod) => ({
     default: mod.IconHugeicons,
+  }))
+)
+
+const IconPhosphor = lazy(() =>
+  import("@/registry/icons/icon-phosphor").then((mod) => ({
+    default: mod.IconPhosphor,
+  }))
+)
+
+const IconRemixicon = lazy(() =>
+  import("@/registry/icons/icon-remixicon").then((mod) => ({
+    default: mod.IconRemixicon,
   }))
 )
 
@@ -79,7 +90,7 @@ const PREVIEW_ICONS = {
     "Delete02Icon",
     "Share03Icon",
     "ShoppingBag01Icon",
-    "MoreHorizontalIcon",
+    "MoreHorizontalCircle01Icon",
     "Loading03Icon",
     "PlusSignIcon",
     "MinusSignIcon",
@@ -88,6 +99,38 @@ const PREVIEW_ICONS = {
     "Tick02Icon",
     "ArrowDown01Icon",
     "ArrowRight01Icon",
+  ],
+  phosphor: [
+    "CopyIcon",
+    "WarningCircleIcon",
+    "TrashIcon",
+    "ShareIcon",
+    "BagIcon",
+    "DotsThreeIcon",
+    "SpinnerIcon",
+    "PlusIcon",
+    "MinusIcon",
+    "ArrowLeftIcon",
+    "ArrowRightIcon",
+    "CheckIcon",
+    "CaretDownIcon",
+    "CaretRightIcon",
+  ],
+  remixicon: [
+    "RiFileCopyLine",
+    "RiErrorWarningLine",
+    "RiDeleteBinLine",
+    "RiShareLine",
+    "RiShoppingBagLine",
+    "RiMoreLine",
+    "RiLoaderLine",
+    "RiAddLine",
+    "RiSubtractLine",
+    "RiArrowLeftLine",
+    "RiArrowRightLine",
+    "RiCheckLine",
+    "RiArrowDownSLine",
+    "RiArrowRightSLine",
   ],
 }
 
@@ -155,6 +198,35 @@ const logos = {
       ></path>
     </svg>
   ),
+  phosphor: (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 32 32"
+      width="32"
+      height="32"
+    >
+      <path fill="none" d="M0 0h32v32H0z" />
+      <path
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        d="M9 5h9v16H9zm9 16v9a9 9 0 0 1-9-9M9 5l9 16m0 0h1a8 8 0 0 0 0-16h-1"
+      />
+    </svg>
+  ),
+  remixicon: (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      width="24"
+      height="24"
+      fill="currentColor"
+    >
+      <path d="M12 2C17.5228 2 22 6.47715 22 12C22 15.3137 19.3137 18 16 18C12.6863 18 10 15.3137 10 12C10 11.4477 9.55228 11 9 11C8.44772 11 8 11.4477 8 12C8 16.4183 11.5817 20 16 20C16.8708 20 17.7084 19.8588 18.4932 19.6016C16.7458 21.0956 14.4792 22 12 22C6.6689 22 2.3127 17.8283 2.0166 12.5713C2.23647 9.45772 4.83048 7 8 7C11.3137 7 14 9.68629 14 13C14 13.5523 14.4477 14 15 14C15.5523 14 16 13.5523 16 13C16 8.58172 12.4183 5 8 5C6.50513 5 5.1062 5.41032 3.90918 6.12402C5.72712 3.62515 8.67334 2 12 2Z" />
+    </svg>
+  ),
 }
 
 export function IconLibraryPicker({
@@ -164,10 +236,7 @@ export function IconLibraryPicker({
   isMobile: boolean
   anchorRef: React.RefObject<HTMLDivElement | null>
 }) {
-  const [params, setParams] = useQueryStates(designSystemSearchParams, {
-    shallow: false,
-    history: "push",
-  })
+  const [params, setParams] = useDesignSystemSearchParams()
 
   const currentIconLibrary = React.useMemo(
     () => iconLibraries[params.iconLibrary as keyof typeof iconLibraries],
@@ -175,8 +244,8 @@ export function IconLibraryPicker({
   )
 
   return (
-    <Picker>
-      <div className="group/picker relative">
+    <div className="group/picker relative">
+      <Picker>
         <PickerTrigger>
           <div className="flex flex-col justify-start text-left">
             <div className="text-muted-foreground text-xs">Icon Library</div>
@@ -184,42 +253,42 @@ export function IconLibraryPicker({
               {currentIconLibrary?.title}
             </div>
           </div>
-          <div className="text-foreground *:[svg]:text-foreground! absolute top-1/2 right-4 flex size-4 -translate-y-1/2 items-center justify-center text-base">
+          <div className="text-foreground *:[svg]:text-foreground! pointer-events-none absolute top-1/2 right-4 flex size-4 -translate-y-1/2 items-center justify-center text-base select-none">
             {logos[currentIconLibrary?.name as keyof typeof logos]}
           </div>
         </PickerTrigger>
-        <LockButton
-          param="iconLibrary"
-          className="absolute top-1/2 right-10 -translate-y-1/2"
-        />
-      </div>
-      <PickerContent
-        anchor={isMobile ? anchorRef : undefined}
-        side={isMobile ? "top" : "right"}
-        align={isMobile ? "center" : "start"}
-      >
-        <PickerRadioGroup
-          value={currentIconLibrary?.name}
-          onValueChange={(value) => {
-            setParams({ iconLibrary: value as IconLibraryName })
-          }}
+        <PickerContent
+          anchor={isMobile ? anchorRef : undefined}
+          side={isMobile ? "top" : "right"}
+          align={isMobile ? "center" : "start"}
         >
-          <PickerGroup>
-            {Object.values(iconLibraries).map((iconLibrary, index) => (
-              <React.Fragment key={iconLibrary.name}>
-                <IconLibraryPickerItem
-                  iconLibrary={iconLibrary}
-                  value={iconLibrary.name}
-                />
-                {index < Object.values(iconLibraries).length - 1 && (
-                  <PickerSeparator className="opacity-50" />
-                )}
-              </React.Fragment>
-            ))}
-          </PickerGroup>
-        </PickerRadioGroup>
-      </PickerContent>
-    </Picker>
+          <PickerRadioGroup
+            value={currentIconLibrary?.name}
+            onValueChange={(value) => {
+              setParams({ iconLibrary: value as IconLibraryName })
+            }}
+          >
+            <PickerGroup>
+              {Object.values(iconLibraries).map((iconLibrary, index) => (
+                <React.Fragment key={iconLibrary.name}>
+                  <IconLibraryPickerItem
+                    iconLibrary={iconLibrary}
+                    value={iconLibrary.name}
+                  />
+                  {index < Object.values(iconLibraries).length - 1 && (
+                    <PickerSeparator className="opacity-50" />
+                  )}
+                </React.Fragment>
+              ))}
+            </PickerGroup>
+          </PickerRadioGroup>
+        </PickerContent>
+      </Picker>
+      <LockButton
+        param="iconLibrary"
+        className="absolute top-1/2 right-10 -translate-y-1/2"
+      />
+    </div>
   )
 }
 
@@ -263,7 +332,11 @@ const IconLibraryPreview = memo(function IconLibraryPreview({
       ? IconLucide
       : iconLibrary === "tabler"
         ? IconTabler
-        : IconHugeicons
+        : iconLibrary === "hugeicons"
+          ? IconHugeicons
+          : iconLibrary === "phosphor"
+            ? IconPhosphor
+            : IconRemixicon
 
   return (
     <Suspense

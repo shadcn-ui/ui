@@ -3,12 +3,12 @@ import path from "node:path"
 import * as React from "react"
 
 import { highlightCode } from "@/lib/highlight-code"
-import { getRegistryItem } from "@/lib/registry"
+import { getDemoItem, getRegistryItem } from "@/lib/registry"
+import { formatCode } from "@/lib/rehype"
 import { cn } from "@/lib/utils"
 import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper"
 import { CopyButton } from "@/components/copy-button"
 import { getIconForLanguageExtension } from "@/components/icons"
-import { type Style } from "@/registry/_legacy-styles"
 
 export async function ComponentSource({
   name,
@@ -18,13 +18,15 @@ export async function ComponentSource({
   collapsible = true,
   className,
   styleName = "new-york-v4",
+  maxLines,
 }: React.ComponentProps<"div"> & {
   name?: string
   src?: string
   title?: string
   language?: string
   collapsible?: boolean
-  styleName?: Style["name"]
+  styleName?: string
+  maxLines?: number
 }) {
   if (!name && !src) {
     return null
@@ -33,7 +35,9 @@ export async function ComponentSource({
   let code: string | undefined
 
   if (name) {
-    const item = await getRegistryItem(name, styleName)
+    const item =
+      (await getDemoItem(name, styleName)) ??
+      (await getRegistryItem(name, styleName))
     code = item?.files?.[0]?.content
   }
 
@@ -46,13 +50,13 @@ export async function ComponentSource({
     return null
   }
 
-  // Fix imports.
-  // Replace @/registry/${style}/ with @/components/.
-  code = code.replaceAll(`@/registry/${styleName}/`, "@/components/")
-
-  // Replace export default with export.
-  code = code.replaceAll("export default", "export")
+  code = await formatCode(code, styleName)
   code = code.replaceAll("/* eslint-disable react/no-children-prop */\n", "")
+
+  // Truncate code if maxLines is set.
+  if (maxLines) {
+    code = code.split("\n").slice(0, maxLines).join("\n")
+  }
 
   const lang = language ?? title?.split(".").pop() ?? "tsx"
   const highlightedCode = await highlightCode(code, lang)

@@ -100,6 +100,8 @@ function SelectWithIcons() {
                     lucide="ChartLineIcon"
                     tabler="IconChartLine"
                     hugeicons="Chart03Icon"
+                    phosphor="ChartLineIcon"
+                    remixicon="RiLineChartLine"
                   />
                   Chart Type
                 </>
@@ -113,6 +115,8 @@ function SelectWithIcons() {
                   lucide="ChartLineIcon"
                   tabler="IconChartLine"
                   hugeicons="Chart03Icon"
+                  phosphor="ChartBarIcon"
+                  remixicon="RiBarChartLine"
                 />
                 Line
               </SelectItem>
@@ -121,6 +125,8 @@ function SelectWithIcons() {
                   lucide="ChartBarIcon"
                   tabler="IconChartBar"
                   hugeicons="Chart03Icon"
+                  phosphor="ChartBarIcon"
+                  remixicon="RiBarChartLine"
                 />
                 Bar
               </SelectItem>
@@ -129,6 +135,8 @@ function SelectWithIcons() {
                   lucide="ChartPieIcon"
                   tabler="IconChartPie"
                   hugeicons="Chart03Icon"
+                  phosphor="ChartPieIcon"
+                  remixicon="RiPieChartLine"
                 />
                 Pie
               </SelectItem>
@@ -144,6 +152,8 @@ function SelectWithIcons() {
                     lucide="ChartLineIcon"
                     tabler="IconChartLine"
                     hugeicons="Chart03Icon"
+                    phosphor="ChartLineIcon"
+                    remixicon="RiLineChartLine"
                   />
                   Chart Type
                 </>
@@ -157,6 +167,8 @@ function SelectWithIcons() {
                   lucide="ChartLineIcon"
                   tabler="IconChartLine"
                   hugeicons="Chart03Icon"
+                  phosphor="ChartLineIcon"
+                  remixicon="RiLineChartLine"
                 />
                 Line
               </SelectItem>
@@ -165,6 +177,8 @@ function SelectWithIcons() {
                   lucide="ChartBarIcon"
                   tabler="IconChartBar"
                   hugeicons="Chart03Icon"
+                  phosphor="ChartBarIcon"
+                  remixicon="RiBarChartLine"
                 />
                 Bar
               </SelectItem>
@@ -173,6 +187,8 @@ function SelectWithIcons() {
                   lucide="ChartPieIcon"
                   tabler="IconChartPie"
                   hugeicons="Chart03Icon"
+                  phosphor="ChartPieIcon"
+                  remixicon="RiPieChartLine"
                 />
                 Pie
               </SelectItem>

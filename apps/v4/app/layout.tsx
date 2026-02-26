@@ -9,7 +9,9 @@ import { ActiveThemeProvider } from "@/components/active-theme"
 import { Analytics } from "@/components/analytics"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
+import { TooltipProvider as BaseTooltipProvider } from "@/registry/bases/base/ui/tooltip"
 import { Toaster } from "@/registry/bases/radix/ui/sonner"
+import { TooltipProvider as RadixTooltipProvider } from "@/registry/bases/radix/ui/tooltip"
 
 import "@/styles/globals.css"
 
@@ -57,6 +59,11 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
   },
   manifest: `${siteConfig.url}/site.webmanifest`,
+  alternates: {
+    types: {
+      "application/rss+xml": `${siteConfig.url}/rss.xml`,
+    },
+  },
 }
 
 export default function RootLayout({
@@ -91,9 +98,15 @@ export default function RootLayout({
         <ThemeProvider>
           <LayoutProvider>
             <ActiveThemeProvider>
-              <NuqsAdapter>{children}</NuqsAdapter>
+              <NuqsAdapter>
+                <BaseTooltipProvider delay={0}>
+                  <RadixTooltipProvider delayDuration={0}>
+                    {children}
+                    <Toaster position="top-center" />
+                  </RadixTooltipProvider>
+                </BaseTooltipProvider>
+              </NuqsAdapter>
               <TailwindIndicator />
-              <Toaster position="top-center" />
               <Analytics />
             </ActiveThemeProvider>
           </LayoutProvider>

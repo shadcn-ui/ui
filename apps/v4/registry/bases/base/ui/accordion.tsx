@@ -35,7 +35,7 @@ function AccordionTrigger({
       <AccordionPrimitive.Trigger
         data-slot="accordion-trigger"
         className={cn(
-          "cn-accordion-trigger group/accordion-trigger relative flex flex-1 items-start justify-between border border-transparent transition-all outline-none disabled:pointer-events-none disabled:opacity-50",
+          "cn-accordion-trigger group/accordion-trigger relative flex flex-1 items-start justify-between border border-transparent transition-all outline-none aria-disabled:pointer-events-none aria-disabled:opacity-50",
           className
         )}
         {...props}
@@ -46,6 +46,8 @@ function AccordionTrigger({
           tabler="IconChevronDown"
           data-slot="accordion-trigger-icon"
           hugeicons="ArrowDown01Icon"
+          phosphor="CaretDownIcon"
+          remixicon="RiArrowDownSLine"
           className="cn-accordion-trigger-icon pointer-events-none shrink-0 group-aria-expanded/accordion-trigger:hidden"
         />
         <IconPlaceholder
@@ -53,6 +55,8 @@ function AccordionTrigger({
           tabler="IconChevronUp"
           data-slot="accordion-trigger-icon"
           hugeicons="ArrowUp01Icon"
+          phosphor="CaretUpIcon"
+          remixicon="RiArrowUpSLine"
           className="cn-accordion-trigger-icon pointer-events-none hidden shrink-0 group-aria-expanded/accordion-trigger:inline"
         />
       </AccordionPrimitive.Trigger>

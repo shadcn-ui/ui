@@ -197,6 +197,8 @@ function NavigationMenuWithoutViewport() {
                         lucide="CircleAlertIcon"
                         tabler="IconExclamationCircle"
                         hugeicons="AlertCircleIcon"
+                        phosphor="WarningCircleIcon"
+                        remixicon="RiErrorWarningLine"
                       />
                       Backlog
                     </Link>
@@ -207,6 +209,8 @@ function NavigationMenuWithoutViewport() {
                         lucide="CircleAlertIcon"
                         tabler="IconExclamationCircle"
                         hugeicons="AlertCircleIcon"
+                        phosphor="WarningCircleIcon"
+                        remixicon="RiErrorWarningLine"
                       />
                       To Do
                     </Link>
@@ -217,6 +221,8 @@ function NavigationMenuWithoutViewport() {
                         lucide="CircleAlertIcon"
                         tabler="IconExclamationCircle"
                         hugeicons="AlertCircleIcon"
+                        phosphor="WarningCircleIcon"
+                        remixicon="RiErrorWarningLine"
                       />
                       Done
                     </Link>

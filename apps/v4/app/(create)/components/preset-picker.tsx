@@ -1,9 +1,8 @@
 "use client"
 
 import * as React from "react"
-import { useQueryStates } from "nuqs"
 
-import { BASES, STYLES, type Preset } from "@/registry/config"
+import { STYLES, type Preset } from "@/registry/config"
 import {
   Picker,
   PickerContent,
@@ -12,7 +11,7 @@ import {
   PickerRadioItem,
   PickerTrigger,
 } from "@/app/(create)/components/picker"
-import { designSystemSearchParams } from "@/app/(create)/lib/search-params"
+import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
 
 export function PresetPicker({
   presets,
@@ -23,10 +22,7 @@ export function PresetPicker({
   isMobile: boolean
   anchorRef: React.RefObject<HTMLDivElement | null>
 }) {
-  const [params, setParams] = useQueryStates(designSystemSearchParams, {
-    shallow: false,
-    history: "push",
-  })
+  const [params, setParams] = useDesignSystemSearchParams()
 
   const currentPreset = React.useMemo(() => {
     return presets.find(

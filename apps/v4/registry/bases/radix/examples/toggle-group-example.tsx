@@ -1,7 +1,16 @@
+"use client"
+
+import * as React from "react"
+
 import {
   Example,
   ExampleWrapper,
 } from "@/registry/bases/radix/components/example"
+import {
+  Field,
+  FieldDescription,
+  FieldLabel,
+} from "@/registry/bases/radix/ui/field"
 import { Input } from "@/registry/bases/radix/ui/input"
 import {
   Select,
@@ -34,6 +43,7 @@ export default function ToggleGroupExample() {
       <ToggleGroupVerticalOutline />
       <ToggleGroupVerticalOutlineWithIcons />
       <ToggleGroupVerticalWithSpacing />
+      <ToggleGroupFontWeightSelector />
     </ExampleWrapper>
   )
 }
@@ -47,6 +57,8 @@ function ToggleGroupBasic() {
             lucide="BoldIcon"
             tabler="IconBold"
             hugeicons="TextBoldIcon"
+            phosphor="TextBIcon"
+            remixicon="RiBold"
           />
         </ToggleGroupItem>
         <ToggleGroupItem value="italic" aria-label="Toggle italic">
@@ -54,6 +66,8 @@ function ToggleGroupBasic() {
             lucide="ItalicIcon"
             tabler="IconItalic"
             hugeicons="TextItalicIcon"
+            phosphor="TextItalicIcon"
+            remixicon="RiItalic"
           />
         </ToggleGroupItem>
         <ToggleGroupItem value="underline" aria-label="Toggle underline">
@@ -61,6 +75,8 @@ function ToggleGroupBasic() {
             lucide="UnderlineIcon"
             tabler="IconUnderline"
             hugeicons="TextUnderlineIcon"
+            phosphor="TextUnderlineIcon"
+            remixicon="RiUnderline"
           />
         </ToggleGroupItem>
       </ToggleGroup>
@@ -92,6 +108,8 @@ function ToggleGroupOutlineWithIcons() {
             lucide="BoldIcon"
             tabler="IconBold"
             hugeicons="TextBoldIcon"
+            phosphor="TextBIcon"
+            remixicon="RiBold"
           />
         </ToggleGroupItem>
         <ToggleGroupItem value="italic" aria-label="Toggle italic">
@@ -99,6 +117,8 @@ function ToggleGroupOutlineWithIcons() {
             lucide="ItalicIcon"
             tabler="IconItalic"
             hugeicons="TextItalicIcon"
+            phosphor="TextItalicIcon"
+            remixicon="RiItalic"
           />
         </ToggleGroupItem>
         <ToggleGroupItem value="underline" aria-label="Toggle underline">
@@ -106,6 +126,8 @@ function ToggleGroupOutlineWithIcons() {
             lucide="UnderlineIcon"
             tabler="IconUnderline"
             hugeicons="TextUnderlineIcon"
+            phosphor="TextUnderlineIcon"
+            remixicon="RiUnderline"
           />
         </ToggleGroupItem>
       </ToggleGroup>
@@ -195,6 +217,8 @@ function ToggleGroupWithIcons() {
             lucide="StarIcon"
             tabler="IconStar"
             hugeicons="StarIcon"
+            phosphor="StarIcon"
+            remixicon="RiStarLine"
           />
           Star
         </ToggleGroupItem>
@@ -207,6 +231,8 @@ function ToggleGroupWithIcons() {
             lucide="HeartIcon"
             tabler="IconHeart"
             hugeicons="FavouriteIcon"
+            phosphor="HeartIcon"
+            remixicon="RiHeartLine"
           />
           Heart
         </ToggleGroupItem>
@@ -219,6 +245,8 @@ function ToggleGroupWithIcons() {
             lucide="BookmarkIcon"
             tabler="IconBookmark"
             hugeicons="BookmarkIcon"
+            phosphor="BookmarkIcon"
+            remixicon="RiBookmarkLine"
           />
           Bookmark
         </ToggleGroupItem>
@@ -289,6 +317,8 @@ function ToggleGroupSort() {
             lucide="ArrowDownIcon"
             tabler="IconArrowDown"
             hugeicons="ArrowDownIcon"
+            phosphor="ArrowDownIcon"
+            remixicon="RiArrowDownLine"
           />
           Newest
         </ToggleGroupItem>
@@ -297,6 +327,8 @@ function ToggleGroupSort() {
             lucide="ArrowUpIcon"
             tabler="IconArrowUp"
             hugeicons="ArrowUpIcon"
+            phosphor="ArrowUpIcon"
+            remixicon="RiArrowUpLine"
           />
           Oldest
         </ToggleGroupItem>
@@ -305,6 +337,8 @@ function ToggleGroupSort() {
             lucide="TrendingUpIcon"
             tabler="IconTrendingUp"
             hugeicons="TradeUpIcon"
+            phosphor="TrendUpIcon"
+            remixicon="RiLineChartLine"
           />
           Popular
         </ToggleGroupItem>
@@ -352,6 +386,8 @@ function ToggleGroupVertical() {
             lucide="BoldIcon"
             tabler="IconBold"
             hugeicons="TextBoldIcon"
+            phosphor="TextBIcon"
+            remixicon="RiBold"
           />
         </ToggleGroupItem>
         <ToggleGroupItem value="italic" aria-label="Toggle italic">
@@ -359,6 +395,8 @@ function ToggleGroupVertical() {
             lucide="ItalicIcon"
             tabler="IconItalic"
             hugeicons="TextItalicIcon"
+            phosphor="TextItalicIcon"
+            remixicon="RiItalic"
           />
         </ToggleGroupItem>
         <ToggleGroupItem value="underline" aria-label="Toggle underline">
@@ -366,6 +404,8 @@ function ToggleGroupVertical() {
             lucide="UnderlineIcon"
             tabler="IconUnderline"
             hugeicons="TextUnderlineIcon"
+            phosphor="TextUnderlineIcon"
+            remixicon="RiUnderline"
           />
         </ToggleGroupItem>
       </ToggleGroup>
@@ -414,6 +454,8 @@ function ToggleGroupVerticalOutlineWithIcons() {
             lucide="BoldIcon"
             tabler="IconBold"
             hugeicons="TextBoldIcon"
+            phosphor="TextBIcon"
+            remixicon="RiBold"
           />
         </ToggleGroupItem>
         <ToggleGroupItem value="italic" aria-label="Toggle italic">
@@ -421,6 +463,8 @@ function ToggleGroupVerticalOutlineWithIcons() {
             lucide="ItalicIcon"
             tabler="IconItalic"
             hugeicons="TextItalicIcon"
+            phosphor="TextItalicIcon"
+            remixicon="RiItalic"
           />
         </ToggleGroupItem>
         <ToggleGroupItem value="underline" aria-label="Toggle underline">
@@ -428,9 +472,70 @@ function ToggleGroupVerticalOutlineWithIcons() {
             lucide="UnderlineIcon"
             tabler="IconUnderline"
             hugeicons="TextUnderlineIcon"
+            phosphor="TextUnderlineIcon"
+            remixicon="RiUnderline"
           />
         </ToggleGroupItem>
       </ToggleGroup>
+    </Example>
+  )
+}
+
+function ToggleGroupFontWeightSelector() {
+  const [fontWeight, setFontWeight] = React.useState("normal")
+  return (
+    <Example title="Font Weight Selector">
+      <Field>
+        <FieldLabel>Font Weight</FieldLabel>
+        <ToggleGroup
+          type="single"
+          value={fontWeight}
+          onValueChange={(value) => setFontWeight(value)}
+          variant="outline"
+          spacing={2}
+          size="lg"
+        >
+          <ToggleGroupItem
+            value="light"
+            aria-label="Light"
+            className="flex size-16 flex-col items-center justify-center rounded-xl"
+          >
+            <span className="text-2xl leading-none font-light">Aa</span>
+            <span className="text-muted-foreground text-xs">Light</span>
+          </ToggleGroupItem>
+          <ToggleGroupItem
+            value="normal"
+            aria-label="Normal"
+            className="flex size-16 flex-col items-center justify-center rounded-xl"
+          >
+            <span className="text-2xl leading-none font-normal">Aa</span>
+            <span className="text-muted-foreground text-xs">Normal</span>
+          </ToggleGroupItem>
+          <ToggleGroupItem
+            value="medium"
+            aria-label="Medium"
+            className="flex size-16 flex-col items-center justify-center rounded-xl"
+          >
+            <span className="text-2xl leading-none font-medium">Aa</span>
+            <span className="text-muted-foreground text-xs">Medium</span>
+          </ToggleGroupItem>
+          <ToggleGroupItem
+            value="bold"
+            aria-label="Bold"
+            className="flex size-16 flex-col items-center justify-center rounded-xl"
+          >
+            <span className="text-2xl leading-none font-bold">Aa</span>
+            <span className="text-muted-foreground text-xs">Bold</span>
+          </ToggleGroupItem>
+        </ToggleGroup>
+        <FieldDescription>
+          Use{" "}
+          <code className="bg-muted rounded-md px-1 py-0.5 font-mono">
+            font-{fontWeight}
+          </code>{" "}
+          to set the font weight.
+        </FieldDescription>
+      </Field>
     </Example>
   )
 }

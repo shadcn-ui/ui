@@ -250,6 +250,8 @@ function FieldExamples() {
                   lucide="MinusIcon"
                   tabler="IconMinus"
                   hugeicons="MinusSignIcon"
+                  phosphor="MinusIcon"
+                  remixicon="RiSubtractLine"
                 />
               </Button>
               <Button
@@ -264,6 +266,8 @@ function FieldExamples() {
                   lucide="PlusIcon"
                   tabler="IconPlus"
                   hugeicons="PlusSignIcon"
+                  phosphor="PlusIcon"
+                  remixicon="RiAddLine"
                 />
               </Button>
             </ButtonGroup>
@@ -332,6 +336,8 @@ function ButtonGroupExamples() {
                 lucide="ArrowLeftIcon"
                 tabler="IconArrowLeft"
                 hugeicons="ArrowLeft01Icon"
+                phosphor="ArrowLeftIcon"
+                remixicon="RiArrowLeftLine"
               />
             </Button>
           </ButtonGroup>
@@ -358,6 +364,8 @@ function ButtonGroupExamples() {
                     lucide="ChevronDownIcon"
                     tabler="IconChevronDown"
                     hugeicons="ArrowDown01Icon"
+                    phosphor="CaretDownIcon"
+                    remixicon="RiArrowDownSLine"
                   />
                 </Button>
               </DropdownMenuTrigger>
@@ -368,6 +376,8 @@ function ButtonGroupExamples() {
                       lucide="MailCheckIcon"
                       tabler="IconMailCheck"
                       hugeicons="MailValidation01Icon"
+                      phosphor="EnvelopeIcon"
+                      remixicon="RiMailLine"
                     />
                     Mark as Read
                   </DropdownMenuItem>
@@ -376,6 +386,8 @@ function ButtonGroupExamples() {
                       lucide="ArchiveIcon"
                       tabler="IconArchive"
                       hugeicons="ArchiveIcon"
+                      phosphor="ArchiveIcon"
+                      remixicon="RiArchiveLine"
                     />
                     Archive
                   </DropdownMenuItem>
@@ -387,6 +399,8 @@ function ButtonGroupExamples() {
                       lucide="ClockIcon"
                       tabler="IconClock"
                       hugeicons="ClockIcon"
+                      phosphor="ClockIcon"
+                      remixicon="RiTimeLine"
                     />
                     Snooze
                   </DropdownMenuItem>
@@ -395,6 +409,8 @@ function ButtonGroupExamples() {
                       lucide="CalendarPlusIcon"
                       tabler="IconCalendarPlus"
                       hugeicons="CalendarAdd01Icon"
+                      phosphor="CalendarPlusIcon"
+                      remixicon="RiCalendarEventLine"
                     />
                     Add to Calendar
                   </DropdownMenuItem>
@@ -403,6 +419,8 @@ function ButtonGroupExamples() {
                       lucide="ListFilterIcon"
                       tabler="IconFilterPlus"
                       hugeicons="AddToListIcon"
+                      phosphor="ListPlusIcon"
+                      remixicon="RiPlayListAddLine"
                     />
                     Add to List
                   </DropdownMenuItem>
@@ -412,6 +430,8 @@ function ButtonGroupExamples() {
                         lucide="TagIcon"
                         tabler="IconTag"
                         hugeicons="TagIcon"
+                        phosphor="TagIcon"
+                        remixicon="RiPriceTagLine"
                       />
                       Label As...
                     </DropdownMenuSubTrigger>
@@ -440,6 +460,8 @@ function ButtonGroupExamples() {
                       lucide="Trash2Icon"
                       tabler="IconTrash"
                       hugeicons="Delete02Icon"
+                      phosphor="TrashIcon"
+                      remixicon="RiDeleteBinLine"
                     />
                     Trash
                   </DropdownMenuItem>
@@ -453,6 +475,8 @@ function ButtonGroupExamples() {
                 lucide="ArrowLeftIcon"
                 tabler="IconArrowLeft"
                 hugeicons="ArrowLeft01Icon"
+                phosphor="ArrowLeftIcon"
+                remixicon="RiArrowLeftLine"
               />
             </Button>
             <Button variant="outline" size="icon-sm" aria-label="Next">
@@ -460,6 +484,8 @@ function ButtonGroupExamples() {
                 lucide="ArrowRightIcon"
                 tabler="IconArrowRight"
                 hugeicons="ArrowRight01Icon"
+                phosphor="ArrowRightIcon"
+                remixicon="RiArrowRightLine"
               />
             </Button>
           </ButtonGroup>
@@ -482,6 +508,8 @@ function ButtonGroupExamples() {
                       lucide="ChevronDownIcon"
                       tabler="IconChevronDown"
                       hugeicons="ArrowDown01Icon"
+                      phosphor="CaretDownIcon"
+                      remixicon="RiArrowDownSLine"
                     />
                   </Button>
                 </DropdownMenuTrigger>
@@ -493,6 +521,8 @@ function ButtonGroupExamples() {
                         lucide="VolumeX"
                         tabler="IconVolume"
                         hugeicons="VolumeOffIcon"
+                        phosphor="SpeakerSlashIcon"
+                        remixicon="RiVolumeMuteLine"
                       />
                       Mute Conversation
                     </DropdownMenuItem>
@@ -501,6 +531,8 @@ function ButtonGroupExamples() {
                         lucide="CheckIcon"
                         tabler="IconCheck"
                         hugeicons="Tick02Icon"
+                        phosphor="CheckIcon"
+                        remixicon="RiCheckLine"
                       />
                       Mark as Read
                     </DropdownMenuItem>
@@ -509,6 +541,8 @@ function ButtonGroupExamples() {
                         lucide="UserRoundXIcon"
                         tabler="IconUserX"
                         hugeicons="UserRemove01Icon"
+                        phosphor="UserMinusIcon"
+                        remixicon="RiUserUnfollowLine"
                       />
                       Block User
                     </DropdownMenuItem>
@@ -521,6 +555,8 @@ function ButtonGroupExamples() {
                         lucide="ShareIcon"
                         tabler="IconShare"
                         hugeicons="Share03Icon"
+                        phosphor="ShareIcon"
+                        remixicon="RiShareLine"
                       />
                       Share Conversation
                     </DropdownMenuItem>
@@ -529,6 +565,8 @@ function ButtonGroupExamples() {
                         lucide="CopyIcon"
                         tabler="IconCopy"
                         hugeicons="Copy01Icon"
+                        phosphor="CopyIcon"
+                        remixicon="RiFileCopyLine"
                       />
                       Copy Conversation
                     </DropdownMenuItem>
@@ -537,6 +575,8 @@ function ButtonGroupExamples() {
                         lucide="AlertTriangleIcon"
                         tabler="IconAlertTriangle"
                         hugeicons="AlertCircleIcon"
+                        phosphor="WarningIcon"
+                        remixicon="RiErrorWarningLine"
                       />
                       Report Conversation
                     </DropdownMenuItem>
@@ -548,6 +588,8 @@ function ButtonGroupExamples() {
                         lucide="TrashIcon"
                         tabler="IconTrash"
                         hugeicons="Delete02Icon"
+                        phosphor="TrashIcon"
+                        remixicon="RiDeleteBinLine"
                       />
                       Delete Conversation
                     </DropdownMenuItem>
@@ -561,6 +603,8 @@ function ButtonGroupExamples() {
                   lucide="BotIcon"
                   tabler="IconRobot"
                   hugeicons="BotIcon"
+                  phosphor="RobotIcon"
+                  remixicon="RiRobotLine"
                 />{" "}
                 Copilot
               </Button>
@@ -575,6 +619,8 @@ function ButtonGroupExamples() {
                       lucide="ChevronDownIcon"
                       tabler="IconChevronDown"
                       hugeicons="ArrowDown01Icon"
+                      phosphor="CaretDownIcon"
+                      remixicon="RiArrowDownSLine"
                     />
                   </Button>
                 </PopoverTrigger>
@@ -616,6 +662,8 @@ function InputGroupExamples() {
               lucide="SearchIcon"
               tabler="IconSearch"
               hugeicons="Search01Icon"
+              phosphor="MagnifyingGlassIcon"
+              remixicon="RiSearchLine"
             />
           </InputGroupAddon>
           <InputGroupAddon align="inline-end">12 results</InputGroupAddon>
@@ -637,6 +685,8 @@ function InputGroupExamples() {
                     lucide="InfoIcon"
                     tabler="IconInfoCircle"
                     hugeicons="AlertCircleIcon"
+                    phosphor="InfoIcon"
+                    remixicon="RiInformationLine"
                   />
                 </InputGroupButton>
               </TooltipTrigger>
@@ -662,6 +712,8 @@ function InputGroupExamples() {
                       lucide="InfoIcon"
                       tabler="IconInfoCircle"
                       hugeicons="AlertCircleIcon"
+                      phosphor="InfoIcon"
+                      remixicon="RiInformationLine"
                     />
                   </InputGroupButton>
                 </InputGroupAddon>
@@ -690,6 +742,8 @@ function InputGroupExamples() {
                   lucide="StarIcon"
                   tabler="IconStar"
                   hugeicons="StarIcon"
+                  phosphor="StarIcon"
+                  remixicon="RiStarLine"
                   data-favorite={isFavorite}
                   className="data-[favorite=true]:fill-primary data-[favorite=true]:stroke-primary"
                 />
@@ -704,6 +758,8 @@ function InputGroupExamples() {
                 lucide="PlusIcon"
                 tabler="IconPlus"
                 hugeicons="PlusSignIcon"
+                phosphor="PlusIcon"
+                remixicon="RiAddLine"
               />
             </Button>
           </ButtonGroup>
@@ -732,6 +788,8 @@ function InputGroupExamples() {
                         lucide="AudioLinesIcon"
                         tabler="IconWaveSine"
                         hugeicons="AudioWave01Icon"
+                        phosphor="MicrophoneIcon"
+                        remixicon="RiMicLine"
                       />
                     </InputGroupButton>
                   </TooltipTrigger>
@@ -754,6 +812,8 @@ function InputGroupExamples() {
                 lucide="PlusIcon"
                 tabler="IconPlus"
                 hugeicons="PlusSignIcon"
+                phosphor="PlusIcon"
+                remixicon="RiAddLine"
               />
             </InputGroupButton>
             <DropdownMenu>
@@ -781,6 +841,8 @@ function InputGroupExamples() {
                 lucide="ArrowUpIcon"
                 tabler="IconArrowUp"
                 hugeicons="ArrowUp01Icon"
+                phosphor="ArrowUpIcon"
+                remixicon="RiArrowUpLine"
               />
               <span className="sr-only">Send</span>
             </InputGroupButton>
@@ -857,6 +919,8 @@ function EmptyAvatarGroup() {
                       lucide="BluetoothIcon"
                       tabler="IconBluetooth"
                       hugeicons="BluetoothIcon"
+                      phosphor="BluetoothIcon"
+                      remixicon="RiBluetoothLine"
                     />
                   </AlertDialogMedia>
                   <AlertDialogTitle>
@@ -1053,6 +1117,8 @@ function SmallFormExample() {
                     lucide="MoreVerticalIcon"
                     tabler="IconDotsVertical"
                     hugeicons="MoreVerticalCircle01Icon"
+                    phosphor="DotsThreeVerticalIcon"
+                    remixicon="RiMore2Line"
                   />
                   <span className="sr-only">More options</span>
                 </Button>
@@ -1068,6 +1134,8 @@ function SmallFormExample() {
                       lucide="FileIcon"
                       tabler="IconFile"
                       hugeicons="FileIcon"
+                      phosphor="FileIcon"
+                      remixicon="RiFileLine"
                     />
                     New File
                     <DropdownMenuShortcut>⌘N</DropdownMenuShortcut>
@@ -1077,6 +1145,8 @@ function SmallFormExample() {
                       lucide="FolderIcon"
                       tabler="IconFolder"
                       hugeicons="FolderIcon"
+                      phosphor="FolderIcon"
+                      remixicon="RiFolderLine"
                     />
                     New Folder
                     <DropdownMenuShortcut>⇧⌘N</DropdownMenuShortcut>
@@ -1087,6 +1157,8 @@ function SmallFormExample() {
                         lucide="FolderOpenIcon"
                         tabler="IconFolderOpen"
                         hugeicons="FolderOpenIcon"
+                        phosphor="FolderOpenIcon"
+                        remixicon="RiFolderOpenLine"
                       />
                       Open Recent
                     </DropdownMenuSubTrigger>
@@ -1099,6 +1171,8 @@ function SmallFormExample() {
                               lucide="FileCodeIcon"
                               tabler="IconFileCode"
                               hugeicons="CodeIcon"
+                              phosphor="CodeIcon"
+                              remixicon="RiCodeLine"
                             />
                             Project Alpha
                           </DropdownMenuItem>
@@ -1107,6 +1181,8 @@ function SmallFormExample() {
                               lucide="FileCodeIcon"
                               tabler="IconFileCode"
                               hugeicons="CodeIcon"
+                              phosphor="CodeIcon"
+                              remixicon="RiCodeLine"
                             />
                             Project Beta
                           </DropdownMenuItem>
@@ -1116,6 +1192,8 @@ function SmallFormExample() {
                                 lucide="MoreHorizontalIcon"
                                 tabler="IconDots"
                                 hugeicons="MoreHorizontalCircle01Icon"
+                                phosphor="DotsThreeOutlineIcon"
+                                remixicon="RiMoreLine"
                               />
                               More Projects
                             </DropdownMenuSubTrigger>
@@ -1126,6 +1204,8 @@ function SmallFormExample() {
                                     lucide="FileCodeIcon"
                                     tabler="IconFileCode"
                                     hugeicons="CodeIcon"
+                                    phosphor="CodeIcon"
+                                    remixicon="RiCodeLine"
                                   />
                                   Project Gamma
                                 </DropdownMenuItem>
@@ -1134,6 +1214,8 @@ function SmallFormExample() {
                                     lucide="FileCodeIcon"
                                     tabler="IconFileCode"
                                     hugeicons="CodeIcon"
+                                    phosphor="CodeIcon"
+                                    remixicon="RiCodeLine"
                                   />
                                   Project Delta
                                 </DropdownMenuItem>
@@ -1148,6 +1230,8 @@ function SmallFormExample() {
                               lucide="FolderSearchIcon"
                               tabler="IconFolderSearch"
                               hugeicons="SearchIcon"
+                              phosphor="MagnifyingGlassIcon"
+                              remixicon="RiSearchLine"
                             />
                             Browse...
                           </DropdownMenuItem>
@@ -1161,6 +1245,8 @@ function SmallFormExample() {
                       lucide="SaveIcon"
                       tabler="IconDeviceFloppy"
                       hugeicons="FloppyDiskIcon"
+                      phosphor="FloppyDiskIcon"
+                      remixicon="RiSaveLine"
                     />
                     Save
                     <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
@@ -1170,6 +1256,8 @@ function SmallFormExample() {
                       lucide="DownloadIcon"
                       tabler="IconDownload"
                       hugeicons="DownloadIcon"
+                      phosphor="DownloadIcon"
+                      remixicon="RiDownloadLine"
                     />
                     Export
                     <DropdownMenuShortcut>⇧⌘E</DropdownMenuShortcut>
@@ -1191,6 +1279,8 @@ function SmallFormExample() {
                       lucide="EyeIcon"
                       tabler="IconEye"
                       hugeicons="EyeIcon"
+                      phosphor="EyeIcon"
+                      remixicon="RiEyeLine"
                     />
                     Show Sidebar
                   </DropdownMenuCheckboxItem>
@@ -1207,6 +1297,8 @@ function SmallFormExample() {
                       lucide="LayoutIcon"
                       tabler="IconLayout"
                       hugeicons="LayoutIcon"
+                      phosphor="LayoutIcon"
+                      remixicon="RiLayoutLine"
                     />
                     Show Status Bar
                   </DropdownMenuCheckboxItem>
@@ -1216,6 +1308,8 @@ function SmallFormExample() {
                         lucide="PaletteIcon"
                         tabler="IconPalette"
                         hugeicons="PaintBoardIcon"
+                        phosphor="PaletteIcon"
+                        remixicon="RiPaletteLine"
                       />
                       Theme
                     </DropdownMenuSubTrigger>
@@ -1232,6 +1326,8 @@ function SmallFormExample() {
                                 lucide="SunIcon"
                                 tabler="IconSun"
                                 hugeicons="SunIcon"
+                                phosphor="SunIcon"
+                                remixicon="RiSunLine"
                               />
                               Light
                             </DropdownMenuRadioItem>
@@ -1240,6 +1336,8 @@ function SmallFormExample() {
                                 lucide="MoonIcon"
                                 tabler="IconMoon"
                                 hugeicons="MoonIcon"
+                                phosphor="MoonIcon"
+                                remixicon="RiMoonLine"
                               />
                               Dark
                             </DropdownMenuRadioItem>
@@ -1248,6 +1346,8 @@ function SmallFormExample() {
                                 lucide="MonitorIcon"
                                 tabler="IconDeviceDesktop"
                                 hugeicons="ComputerIcon"
+                                phosphor="MonitorIcon"
+                                remixicon="RiComputerLine"
                               />
                               System
                             </DropdownMenuRadioItem>
@@ -1264,6 +1364,8 @@ function SmallFormExample() {
                       lucide="HelpCircleIcon"
                       tabler="IconHelpCircle"
                       hugeicons="HelpCircleIcon"
+                      phosphor="QuestionIcon"
+                      remixicon="RiQuestionLine"
                     />
                     Help & Support
                   </DropdownMenuItem>
@@ -1272,6 +1374,8 @@ function SmallFormExample() {
                       lucide="FileTextIcon"
                       tabler="IconFileText"
                       hugeicons="File01Icon"
+                      phosphor="FileTextIcon"
+                      remixicon="RiFileTextLine"
                     />
                     Documentation
                   </DropdownMenuItem>
@@ -1283,6 +1387,8 @@ function SmallFormExample() {
                       lucide="LogOutIcon"
                       tabler="IconLogout"
                       hugeicons="LogoutIcon"
+                      phosphor="SignOutIcon"
+                      remixicon="RiLogoutBoxLine"
                     />
                     Sign Out
                     <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
@@ -1390,6 +1496,8 @@ function ObservabilityCard() {
               lucide="PlusIcon"
               tabler="IconPlus"
               hugeicons="PlusSignIcon"
+              phosphor="PlusIcon"
+              remixicon="RiAddLine"
               data-icon="inline-end"
             />
           </Button>
@@ -1453,6 +1561,8 @@ function ItemExample() {
                 lucide="ShoppingBagIcon"
                 tabler="IconShoppingBag"
                 hugeicons="ShoppingBasket01Icon"
+                phosphor="BagIcon"
+                remixicon="RiShoppingBagLine"
               />
             </ItemMedia>
             <ItemContent>

@@ -56,7 +56,7 @@ export default function SidebarExample() {
         ],
       },
       {
-        title: "Building Your Application",
+        title: "Build Your Application",
         url: "#",
         items: [
           {
@@ -193,6 +193,8 @@ export default function SidebarExample() {
                           lucide="ChevronsUpDownIcon"
                           tabler="IconSelector"
                           hugeicons="UnfoldMoreIcon"
+                          phosphor="CaretUpDownIcon"
+                          remixicon="RiArrowUpDownLine"
                         />
                       </ItemActions>
                     </Item>
@@ -211,6 +213,8 @@ export default function SidebarExample() {
                             lucide="CheckIcon"
                             tabler="IconCheck"
                             hugeicons="Tick02Icon"
+                            phosphor="CheckIcon"
+                            remixicon="RiCheckLine"
                             className="ml-auto"
                           />
                         )}
@@ -236,6 +240,8 @@ export default function SidebarExample() {
                   lucide="SearchIcon"
                   tabler="IconSearch"
                   hugeicons="SearchIcon"
+                  phosphor="MagnifyingGlassIcon"
+                  remixicon="RiSearchLine"
                   className="pointer-events-none absolute top-1/2 left-2 size-4 -translate-y-1/2 opacity-50 select-none"
                 />
               </SidebarGroupContent>

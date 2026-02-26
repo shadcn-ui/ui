@@ -5,6 +5,7 @@ import {
   DayPicker,
   getDefaultClassNames,
   type DayButton,
+  type Locale,
 } from "react-day-picker"
 
 import { cn } from "@/registry/bases/radix/lib/utils"
@@ -17,6 +18,7 @@ function Calendar({
   showOutsideDays = true,
   captionLayout = "label",
   buttonVariant = "ghost",
+  locale,
   formatters,
   components,
   ...props
@@ -29,15 +31,16 @@ function Calendar({
     <DayPicker
       showOutsideDays={showOutsideDays}
       className={cn(
-        "cn-calendar bg-background group/calendar [[data-slot=card-content]_&]:bg-transparent [[data-slot=popover-content]_&]:bg-transparent",
+        "cn-calendar bg-background group/calendar in-data-[slot=card-content]:bg-transparent in-data-[slot=popover-content]:bg-transparent",
         String.raw`rtl:**:[.rdp-button\_next>svg]:rotate-180`,
         String.raw`rtl:**:[.rdp-button\_previous>svg]:rotate-180`,
         className
       )}
       captionLayout={captionLayout}
+      locale={locale}
       formatters={{
         formatMonthDropdown: (date) =>
-          date.toLocaleString("default", { month: "short" }),
+          date.toLocaleString(locale?.code, { month: "short" }),
         ...formatters,
       }}
       classNames={{
@@ -107,12 +110,12 @@ function Calendar({
           defaultClassNames.day
         ),
         range_start: cn(
-          "rounded-l-(--cell-radius) bg-muted elative after:bg-muted after:absolute after:inset-y-0 after:w-4 after:right-0 -z-0 isolate",
+          "rounded-l-(--cell-radius) bg-muted relative after:bg-muted after:absolute after:inset-y-0 after:w-4 after:right-0 z-0 isolate",
           defaultClassNames.range_start
         ),
         range_middle: cn("rounded-none", defaultClassNames.range_middle),
         range_end: cn(
-          "rounded-r-(--cell-radius) bg-muted relative after:bg-muted-200 after:absolute after:inset-y-0 after:w-4 after:left-0 -z-0 isolate",
+          "rounded-r-(--cell-radius) bg-muted relative after:bg-muted after:absolute after:inset-y-0 after:w-4 after:left-0 z-0 isolate",
           defaultClassNames.range_end
         ),
         today: cn(
@@ -148,7 +151,9 @@ function Calendar({
                 lucide="ChevronLeftIcon"
                 tabler="IconChevronLeft"
                 hugeicons="ArrowLeftIcon"
-                className={cn("size-4", className)}
+                phosphor="CaretLeftIcon"
+                remixicon="RiArrowLeftSLine"
+                className={cn("cn-rtl-flip size-4", className)}
                 {...props}
               />
             )
@@ -160,7 +165,9 @@ function Calendar({
                 lucide="ChevronRightIcon"
                 tabler="IconChevronRight"
                 hugeicons="ArrowRightIcon"
-                className={cn("size-4", className)}
+                phosphor="CaretRightIcon"
+                remixicon="RiArrowRightSLine"
+                className={cn("cn-rtl-flip size-4", className)}
                 {...props}
               />
             )
@@ -171,12 +178,16 @@ function Calendar({
               lucide="ChevronDownIcon"
               tabler="IconChevronDown"
               hugeicons="ArrowDownIcon"
+              phosphor="CaretDownIcon"
+              remixicon="RiArrowDownSLine"
               className={cn("size-4", className)}
               {...props}
             />
           )
         },
-        DayButton: CalendarDayButton,
+        DayButton: ({ ...props }) => (
+          <CalendarDayButton locale={locale} {...props} />
+        ),
         WeekNumber: ({ children, ...props }) => {
           return (
             <td {...props}>
@@ -197,8 +208,9 @@ function CalendarDayButton({
   className,
   day,
   modifiers,
+  locale,
   ...props
-}: React.ComponentProps<typeof DayButton>) {
+}: React.ComponentProps<typeof DayButton> & { locale?: Partial<Locale> }) {
   const defaultClassNames = getDefaultClassNames()
 
   const ref = React.useRef<HTMLButtonElement>(null)
@@ -211,7 +223,7 @@ function CalendarDayButton({
       ref={ref}
       variant="ghost"
       size="icon"
-      data-day={day.date.toLocaleDateString()}
+      data-day={day.date.toLocaleDateString(locale?.code)}
       data-selected-single={
         modifiers.selected &&
         !modifiers.range_start &&

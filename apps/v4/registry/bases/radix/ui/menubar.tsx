@@ -100,7 +100,7 @@ function MenubarItem({
       data-inset={inset}
       data-variant={variant}
       className={cn(
-        "cn-menubar-item group/menubar-item relative flex cursor-default items-center outline-hidden select-none data-[disabled]:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0",
+        "cn-menubar-item group/menubar-item relative flex cursor-default items-center outline-hidden select-none data-disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0",
         className
       )}
       {...props}
@@ -112,11 +112,15 @@ function MenubarCheckboxItem({
   className,
   children,
   checked,
+  inset,
   ...props
-}: React.ComponentProps<typeof MenubarPrimitive.CheckboxItem>) {
+}: React.ComponentProps<typeof MenubarPrimitive.CheckboxItem> & {
+  inset?: boolean
+}) {
   return (
     <MenubarPrimitive.CheckboxItem
       data-slot="menubar-checkbox-item"
+      data-inset={inset}
       className={cn(
         "cn-menubar-checkbox-item relative flex cursor-default items-center outline-hidden select-none data-disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0",
         className
@@ -130,6 +134,8 @@ function MenubarCheckboxItem({
             lucide="CheckIcon"
             tabler="IconCheck"
             hugeicons="Tick02Icon"
+            phosphor="CheckIcon"
+            remixicon="RiCheckLine"
           />
         </MenubarPrimitive.ItemIndicator>
       </span>
@@ -141,11 +147,15 @@ function MenubarCheckboxItem({
 function MenubarRadioItem({
   className,
   children,
+  inset,
   ...props
-}: React.ComponentProps<typeof MenubarPrimitive.RadioItem>) {
+}: React.ComponentProps<typeof MenubarPrimitive.RadioItem> & {
+  inset?: boolean
+}) {
   return (
     <MenubarPrimitive.RadioItem
       data-slot="menubar-radio-item"
+      data-inset={inset}
       className={cn(
         "cn-menubar-radio-item relative flex cursor-default items-center outline-hidden select-none data-disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0",
         className
@@ -158,6 +168,8 @@ function MenubarRadioItem({
             lucide="CheckIcon"
             tabler="IconCheck"
             hugeicons="Tick02Icon"
+            phosphor="CheckIcon"
+            remixicon="RiCheckLine"
           />
         </MenubarPrimitive.ItemIndicator>
       </span>
@@ -238,7 +250,9 @@ function MenubarSubTrigger({
         lucide="ChevronRightIcon"
         tabler="IconChevronRight"
         hugeicons="ArrowRight01Icon"
-        className="ml-auto size-4"
+        phosphor="CaretRightIcon"
+        remixicon="RiArrowRightSLine"
+        className="cn-rtl-flip ml-auto size-4"
       />
     </MenubarPrimitive.SubTrigger>
   )

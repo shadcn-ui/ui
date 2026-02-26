@@ -14,6 +14,7 @@
   "@billingsdk": "https://billingsdk.com/r/{name}.json",
   "@blocks": "https://blocks.so/r/{name}.json",
   "@bucharitesh": "https://bucharitesh.in/r/{name}.json",
+  "@bundui": "https://bundui.io/r/{name}.json",
   "@clerk": "https://clerk.com/r/{name}.json",
   "@coss": "https://coss.com/ui/r/{name}.json",
   "@chisom-ui": "https://chisom-ui.netlify.app/r/{name}.json",

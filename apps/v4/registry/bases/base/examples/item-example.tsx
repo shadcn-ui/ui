@@ -91,6 +91,8 @@ function DefaultVariantItems() {
             lucide="InboxIcon"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
+            phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -103,6 +105,8 @@ function DefaultVariantItems() {
             lucide="InboxIcon"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
+            phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -118,6 +122,8 @@ function DefaultVariantItems() {
             lucide="InboxIcon"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
+            phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -133,6 +139,8 @@ function DefaultVariantItems() {
             lucide="InboxIcon"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
+            phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -205,6 +213,8 @@ function OutlineVariantItems() {
             lucide="InboxIcon"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
+            phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -217,6 +227,8 @@ function OutlineVariantItems() {
             lucide="InboxIcon"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
+            phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -232,6 +244,8 @@ function OutlineVariantItems() {
             lucide="InboxIcon"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
+            phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -247,6 +261,8 @@ function OutlineVariantItems() {
             lucide="InboxIcon"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
+            phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -319,6 +335,8 @@ function MutedVariantItems() {
             lucide="InboxIcon"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
+            phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -331,6 +349,8 @@ function MutedVariantItems() {
             lucide="InboxIcon"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
+            phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -346,6 +366,8 @@ function MutedVariantItems() {
             lucide="InboxIcon"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
+            phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -361,6 +383,8 @@ function MutedVariantItems() {
             lucide="InboxIcon"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
+            phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -437,6 +461,8 @@ function DefaultVariantItemsSmall() {
             lucide="InboxIcon"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
+            phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -449,6 +475,8 @@ function DefaultVariantItemsSmall() {
             lucide="InboxIcon"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
+            phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -464,6 +492,8 @@ function DefaultVariantItemsSmall() {
             lucide="InboxIcon"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
+            phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -479,6 +509,8 @@ function DefaultVariantItemsSmall() {
             lucide="InboxIcon"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
+            phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -555,6 +587,8 @@ function OutlineVariantItemsSmall() {
             lucide="InboxIcon"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
+            phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -567,6 +601,8 @@ function OutlineVariantItemsSmall() {
             lucide="InboxIcon"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
+            phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -582,6 +618,8 @@ function OutlineVariantItemsSmall() {
             lucide="InboxIcon"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
+            phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -597,6 +635,8 @@ function OutlineVariantItemsSmall() {
             lucide="InboxIcon"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
+            phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -673,6 +713,8 @@ function MutedVariantItemsSmall() {
             lucide="InboxIcon"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
+            phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -685,6 +727,8 @@ function MutedVariantItemsSmall() {
             lucide="InboxIcon"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
+            phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -700,6 +744,8 @@ function MutedVariantItemsSmall() {
             lucide="InboxIcon"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
+            phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -715,6 +761,8 @@ function MutedVariantItemsSmall() {
             lucide="InboxIcon"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
+            phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -791,6 +839,8 @@ function DefaultVariantItemsExtraSmall() {
             lucide="InboxIcon"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
+            phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -803,6 +853,8 @@ function DefaultVariantItemsExtraSmall() {
             lucide="InboxIcon"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
+            phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -818,6 +870,8 @@ function DefaultVariantItemsExtraSmall() {
             lucide="InboxIcon"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
+            phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -833,6 +887,8 @@ function DefaultVariantItemsExtraSmall() {
             lucide="InboxIcon"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
+            phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -909,6 +965,8 @@ function OutlineVariantItemsExtraSmall() {
             lucide="InboxIcon"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
+            phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -921,6 +979,8 @@ function OutlineVariantItemsExtraSmall() {
             lucide="InboxIcon"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
+            phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -936,6 +996,8 @@ function OutlineVariantItemsExtraSmall() {
             lucide="InboxIcon"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
+            phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -951,6 +1013,8 @@ function OutlineVariantItemsExtraSmall() {
             lucide="InboxIcon"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
+            phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -1027,6 +1091,8 @@ function MutedVariantItemsExtraSmall() {
             lucide="InboxIcon"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
+            phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -1039,6 +1105,8 @@ function MutedVariantItemsExtraSmall() {
             lucide="InboxIcon"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
+            phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -1054,6 +1122,8 @@ function MutedVariantItemsExtraSmall() {
             lucide="InboxIcon"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
+            phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -1069,6 +1139,8 @@ function MutedVariantItemsExtraSmall() {
             lucide="InboxIcon"
             tabler="IconArchive"
             hugeicons="Archive02Icon"
+            phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -1123,6 +1195,8 @@ function DefaultLinkItems() {
               lucide="InboxIcon"
               tabler="IconArchive"
               hugeicons="Archive02Icon"
+              phosphor="ArchiveIcon"
+              remixicon="RiArchiveLine"
             />
           </ItemMedia>
           <ItemContent>
@@ -1135,6 +1209,8 @@ function DefaultLinkItems() {
               lucide="InboxIcon"
               tabler="IconArchive"
               hugeicons="Archive02Icon"
+              phosphor="ArchiveIcon"
+              remixicon="RiArchiveLine"
             />
           </ItemMedia>
           <ItemContent>
@@ -1185,6 +1261,8 @@ function OutlineLinkItems() {
               lucide="InboxIcon"
               tabler="IconArchive"
               hugeicons="Archive02Icon"
+              phosphor="ArchiveIcon"
+              remixicon="RiArchiveLine"
             />
           </ItemMedia>
           <ItemContent>
@@ -1197,6 +1275,8 @@ function OutlineLinkItems() {
               lucide="InboxIcon"
               tabler="IconArchive"
               hugeicons="Archive02Icon"
+              phosphor="ArchiveIcon"
+              remixicon="RiArchiveLine"
             />
           </ItemMedia>
           <ItemContent>
@@ -1247,6 +1327,8 @@ function MutedLinkItems() {
               lucide="InboxIcon"
               tabler="IconArchive"
               hugeicons="Archive02Icon"
+              phosphor="ArchiveIcon"
+              remixicon="RiArchiveLine"
             />
           </ItemMedia>
           <ItemContent>
@@ -1259,6 +1341,8 @@ function MutedLinkItems() {
               lucide="InboxIcon"
               tabler="IconArchive"
               hugeicons="Archive02Icon"
+              phosphor="ArchiveIcon"
+              remixicon="RiArchiveLine"
             />
           </ItemMedia>
           <ItemContent>
@@ -1323,6 +1407,8 @@ function OutlineItemGroup() {
               lucide="InboxIcon"
               tabler="IconArchive"
               hugeicons="Archive02Icon"
+              phosphor="ArchiveIcon"
+              remixicon="RiArchiveLine"
             />
           </ItemMedia>
           <ItemContent>
@@ -1336,6 +1422,8 @@ function OutlineItemGroup() {
               lucide="InboxIcon"
               tabler="IconArchive"
               hugeicons="Archive02Icon"
+              phosphor="ArchiveIcon"
+              remixicon="RiArchiveLine"
             />
           </ItemMedia>
           <ItemContent>
@@ -1349,6 +1437,8 @@ function OutlineItemGroup() {
               lucide="InboxIcon"
               tabler="IconArchive"
               hugeicons="Archive02Icon"
+              phosphor="ArchiveIcon"
+              remixicon="RiArchiveLine"
             />
           </ItemMedia>
           <ItemContent>
@@ -1413,6 +1503,8 @@ function ItemSeparatorExample() {
               lucide="InboxIcon"
               tabler="IconArchive"
               hugeicons="Archive02Icon"
+              phosphor="ArchiveIcon"
+              remixicon="RiArchiveLine"
             />
           </ItemMedia>
           <ItemContent>
@@ -1427,6 +1519,8 @@ function ItemSeparatorExample() {
               lucide="InboxIcon"
               tabler="IconArchive"
               hugeicons="Archive02Icon"
+              phosphor="ArchiveIcon"
+              remixicon="RiArchiveLine"
             />
           </ItemMedia>
           <ItemContent>
@@ -1441,6 +1535,8 @@ function ItemSeparatorExample() {
               lucide="InboxIcon"
               tabler="IconArchive"
               hugeicons="Archive02Icon"
+              phosphor="ArchiveIcon"
+              remixicon="RiArchiveLine"
             />
           </ItemMedia>
           <ItemContent>
@@ -1455,6 +1551,8 @@ function ItemSeparatorExample() {
               lucide="InboxIcon"
               tabler="IconArchive"
               hugeicons="Archive02Icon"
+              phosphor="ArchiveIcon"
+              remixicon="RiArchiveLine"
             />
           </ItemMedia>
           <ItemContent>
