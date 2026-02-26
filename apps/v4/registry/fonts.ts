@@ -64,7 +64,7 @@ export const fonts = [
     title: "Roboto",
     type: "registry:font",
     font: {
-      family: "'Roboto', sans-serif",
+      family: "'Roboto Variable', sans-serif",
       provider: "google",
       variable: "--font-sans",
       subsets: ["latin"],
@@ -76,7 +76,7 @@ export const fonts = [
     title: "Raleway",
     type: "registry:font",
     font: {
-      family: "'Raleway', sans-serif",
+      family: "'Raleway Variable', sans-serif",
       provider: "google",
       variable: "--font-sans",
       subsets: ["latin"],
@@ -88,7 +88,7 @@ export const fonts = [
     title: "DM Sans",
     type: "registry:font",
     font: {
-      family: "'DM Sans', sans-serif",
+      family: "'DM Sans Variable', sans-serif",
       provider: "google",
       variable: "--font-sans",
       subsets: ["latin"],
@@ -100,7 +100,7 @@ export const fonts = [
     title: "Public Sans",
     type: "registry:font",
     font: {
-      family: "'Public Sans', sans-serif",
+      family: "'Public Sans Variable', sans-serif",
       provider: "google",
       variable: "--font-sans",
       subsets: ["latin"],
@@ -112,7 +112,7 @@ export const fonts = [
     title: "Outfit",
     type: "registry:font",
     font: {
-      family: "'Outfit', sans-serif",
+      family: "'Outfit Variable', sans-serif",
       provider: "google",
       variable: "--font-sans",
       subsets: ["latin"],

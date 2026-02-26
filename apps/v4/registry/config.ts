@@ -95,7 +95,16 @@ export const designSystemConfigSchema = z
       .enum(RADII.map((r) => r.name) as [RadiusValue, ...RadiusValue[]])
       .default("default"),
     template: z
-      .enum(["next", "next-monorepo", "start", "react-router", "vite"])
+      .enum([
+        "next",
+        "next-monorepo",
+        "start",
+        "react-router",
+        "vite",
+        "vite-monorepo",
+        "react-router-monorepo",
+        "start-monorepo",
+      ])
       .default("next")
       .optional(),
   })
@@ -191,7 +200,7 @@ export const PRESETS: Preset[] = [
     style: "lyra",
     baseColor: "neutral",
     theme: "neutral",
-    iconLibrary: "hugeicons",
+    iconLibrary: "phosphor",
     font: "jetbrains-mono",
     item: "Item",
     rtl: false,
@@ -256,7 +265,7 @@ export const PRESETS: Preset[] = [
     style: "lyra",
     baseColor: "neutral",
     theme: "neutral",
-    iconLibrary: "hugeicons",
+    iconLibrary: "phosphor",
     font: "jetbrains-mono",
     item: "Item",
     rtl: false,
@@ -357,10 +366,10 @@ export function buildRegistryTheme(config: DesignSystemConfig) {
     lightVars["accent-foreground"] = lightVars["primary-foreground"]
     darkVars.accent = darkVars.primary
     darkVars["accent-foreground"] = darkVars["primary-foreground"]
-    lightVars["sidebar-accent"] = lightVars.primary
-    lightVars["sidebar-accent-foreground"] = lightVars["primary-foreground"]
-    darkVars["sidebar-accent"] = darkVars.primary
-    darkVars["sidebar-accent-foreground"] = darkVars["primary-foreground"]
+    // lightVars["sidebar-accent"] = lightVars.primary
+    // lightVars["sidebar-accent-foreground"] = lightVars["primary-foreground"]
+    // darkVars["sidebar-accent"] = darkVars.primary
+    // darkVars["sidebar-accent-foreground"] = darkVars["primary-foreground"]
   }
 
   // Apply radius transformation.

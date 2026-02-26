@@ -3224,7 +3224,7 @@
       "title": "Roboto",
       "type": "registry:font",
       "font": {
-        "family": "'Roboto', sans-serif",
+        "family": "'Roboto Variable', sans-serif",
         "provider": "google",
         "import": "Roboto",
         "variable": "--font-sans",
@@ -3238,7 +3238,7 @@
       "title": "Raleway",
       "type": "registry:font",
       "font": {
-        "family": "'Raleway', sans-serif",
+        "family": "'Raleway Variable', sans-serif",
         "provider": "google",
         "import": "Raleway",
         "variable": "--font-sans",
@@ -3252,7 +3252,7 @@
       "title": "DM Sans",
       "type": "registry:font",
       "font": {
-        "family": "'DM Sans', sans-serif",
+        "family": "'DM Sans Variable', sans-serif",
         "provider": "google",
         "import": "DM_Sans",
         "variable": "--font-sans",
@@ -3266,7 +3266,7 @@
       "title": "Public Sans",
       "type": "registry:font",
       "font": {
-        "family": "'Public Sans', sans-serif",
+        "family": "'Public Sans Variable', sans-serif",
         "provider": "google",
         "import": "Public_Sans",
         "variable": "--font-sans",
@@ -3280,7 +3280,7 @@
       "title": "Outfit",
       "type": "registry:font",
       "font": {
-        "family": "'Outfit', sans-serif",
+        "family": "'Outfit Variable', sans-serif",
         "provider": "google",
         "import": "Outfit",
         "variable": "--font-sans",
