@@ -175,7 +175,7 @@ async function addWorkspaceComponents(
   const registrySpinner = spinner(`Checking registry.`, {
     silent: options.silent,
   })?.start()
-  const tree = await resolveRegistryTree(components, configWithDefaults(config))
+  let tree = await resolveRegistryTree(components, configWithDefaults(config))
 
   if (!tree) {
     registrySpinner?.fail()
@@ -207,6 +207,10 @@ async function addWorkspaceComponents(
     config.resolvedPaths.cwd,
     mainTargetConfig.resolvedPaths.ui
   )
+
+  // Massage tree for fonts using the app config for framework detection.
+  // This adds fontsource deps + CSS for non-Next, or next/font CSS vars for Next.
+  tree = await massageTreeForFonts(tree, config)
 
   // 1. Update dependencies.
   await updateDependencies(

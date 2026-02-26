@@ -1,6 +1,6 @@
 import path from "path"
 import { initOptionsSchema } from "@/src/commands/init"
-import { templates } from "@/src/templates/index"
+import { resolveTemplate, templates } from "@/src/templates/index"
 import { getPackageManager } from "@/src/utils/get-package-manager"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
@@ -11,15 +11,18 @@ import { z } from "zod"
 export async function createProject(
   options: Pick<
     z.infer<typeof initOptionsSchema>,
-    "cwd" | "name" | "force" | "components" | "template"
+    "cwd" | "name" | "force" | "components" | "template" | "monorepo"
   >
 ) {
   let template: keyof typeof templates =
     options.template && options.template in templates
       ? (options.template as keyof typeof templates)
       : "next"
-  let projectName: string =
-    options.name ?? templates[template].defaultProjectName
+
+  const resolved = resolveTemplate(templates[template], {
+    monorepo: options.monorepo,
+  })
+  let projectName: string = options.name ?? resolved.defaultProjectName
 
   const isRemoteComponent =
     options.components?.length === 1 &&
@@ -61,8 +64,13 @@ export async function createProject(
     projectName = name ?? projectName
   }
 
+  // Re-resolve after potential template change from prompt.
+  const effectiveTemplate = resolveTemplate(templates[template], {
+    monorepo: options.monorepo,
+  })
+
   const packageManager =
-    templates[template].packageManager ??
+    effectiveTemplate.packageManager ??
     (await getPackageManager(options.cwd, {
       withFallback: true,
     }))
@@ -94,7 +102,7 @@ export async function createProject(
     process.exit(1)
   }
 
-  await templates[template].scaffold({
+  await effectiveTemplate.scaffold({
     projectPath,
     packageManager,
     cwd: options.cwd,

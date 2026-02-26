@@ -7,7 +7,11 @@ import { clearRegistryContext } from "@/src/registry/context"
 import { registryConfigSchema } from "@/src/registry/schema"
 import { isUrl } from "@/src/registry/utils"
 import { rawConfigSchema } from "@/src/schema"
-import { getTemplateForFramework, templates } from "@/src/templates/index"
+import {
+  getTemplateForFramework,
+  resolveTemplate,
+  templates,
+} from "@/src/templates/index"
 import { addComponents } from "@/src/utils/add-components"
 import { createProject } from "@/src/utils/create-project"
 import { loadEnvFiles } from "@/src/utils/env-loader"
@@ -72,6 +76,7 @@ export const initOptionsSchema = z.object({
   rtl: z.boolean().optional(),
   base: z.enum(["radix", "base"]).optional(),
   template: z.string().optional(),
+  monorepo: z.boolean().optional(),
   existingConfig: z.record(z.unknown()).optional(),
   installStyleIndex: z.boolean().default(true),
   registryBaseConfig: rawConfigSchema.deepPartial().optional(),
@@ -84,9 +89,11 @@ export const init = new Command()
   .argument("[components...]", "names, url or local path to component")
   .option(
     "-t, --template <template>",
-    "the template to use. (next, start, vite, next-monorepo, react-router)"
+    "the template to use. (next, start, vite, react-router)"
   )
   .option("-b, --base <base>", "the component library to use. (radix, base)")
+  .option("--monorepo", "scaffold a monorepo project.")
+  .option("--no-monorepo", "skip the monorepo prompt.")
   .option("-p, --preset [name]", "use a preset configuration")
   .option("-y, --yes", "skip confirmation prompt.", true)
   .option(
@@ -174,7 +181,13 @@ export const init = new Command()
       )
 
       // Check if we're in a monorepo root before proceeding.
-      if (!hasExistingConfig && (await isMonorepoRoot(cwd))) {
+      // Skip this check when --monorepo is set, since the template
+      // handler knows how to initialize each workspace.
+      if (
+        !options.monorepo &&
+        !hasExistingConfig &&
+        (await isMonorepoRoot(cwd))
+      ) {
         const projectInfo = await getProjectInfo(cwd)
         if (!projectInfo || projectInfo.framework.name === "manual") {
           const targets = await getMonorepoTargets(cwd)
@@ -363,6 +376,21 @@ export const init = new Command()
         }
       }
 
+      // Prompt for monorepo if the template supports it.
+      if (
+        options.monorepo === undefined &&
+        options.template &&
+        templates[options.template as keyof typeof templates]?.monorepo
+      ) {
+        const { monorepo } = await prompts({
+          type: "confirm",
+          name: "monorepo",
+          message: "Would you like to set up a monorepo?",
+          initial: false,
+        })
+        options.monorepo = monorepo
+      }
+
       // Resolve base: --base flag > preset/prompt/URL > existing config > prompt.
       let resolvedBase: string =
         options.base ??
@@ -467,6 +495,7 @@ export const init = new Command()
 
       await runInit(options)
 
+      logger.break()
       logger.log(
         `Project initialization completed.\nYou may now add components.`
       )
@@ -493,7 +522,28 @@ export async function runInit(
 ) {
   let projectInfo
   let newProjectTemplate: keyof typeof templates | undefined
-  if (!options.skipPreflight) {
+
+  // Resolve the effective template if --monorepo is set.
+  const explicitTemplate = options.template as
+    | keyof typeof templates
+    | undefined
+  const resolvedTemplateConfig = explicitTemplate
+    ? resolveTemplate(templates[explicitTemplate], {
+        monorepo: options.monorepo,
+      })
+    : undefined
+
+  // When a monorepo template with an init handler is explicitly provided
+  // and the project already exists, skip the standard preflight
+  // — the template manages each workspace directly.
+  const hasExplicitMonorepoInit =
+    options.monorepo &&
+    resolvedTemplateConfig?.init &&
+    fsExtra.existsSync(path.resolve(options.cwd, "package.json"))
+
+  if (hasExplicitMonorepoInit) {
+    projectInfo = await getProjectInfo(options.cwd)
+  } else if (!options.skipPreflight) {
     const preflight = await preFlightInit(options)
     if (preflight.errors[ERRORS.MISSING_DIR_OR_EMPTY_PROJECT]) {
       const { projectPath, template } = await createProject(options)
@@ -512,8 +562,11 @@ export async function runInit(
     projectInfo = await getProjectInfo(options.cwd)
   }
 
-  const selectedTemplate = newProjectTemplate
-    ? templates[newProjectTemplate]
+  // Use the template from project creation if available,
+  // or fall back to the explicit --template flag.
+  const templateKey = newProjectTemplate ?? explicitTemplate
+  const selectedTemplate = templateKey
+    ? resolveTemplate(templates[templateKey], { monorepo: options.monorepo })
     : undefined
 
   const components = [

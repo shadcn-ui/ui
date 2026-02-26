@@ -308,7 +308,7 @@ export async function updateFiles(
   if (filesSkipped.length) {
     spinner(
       `Skipped ${filesSkipped.length} ${
-        filesUpdated.length === 1 ? "file" : "files"
+        filesSkipped.length === 1 ? "file" : "files"
       }: (files might be identical, use --overwrite to overwrite)`,
       {
         silent: options.silent,
@@ -330,10 +330,6 @@ export async function updateFiles(
         logger.log(`  ${highlighter.success("+")} ${key}`)
       }
     }
-  }
-
-  if (!options.silent) {
-    logger.break()
   }
 
   return {

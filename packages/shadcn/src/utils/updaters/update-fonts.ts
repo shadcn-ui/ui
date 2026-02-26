@@ -3,7 +3,6 @@ import path from "path"
 import { RegistryFontItem, registryResolvedItemsTreeSchema } from "@/src/schema"
 import { Config } from "@/src/utils/get-config"
 import { ProjectInfo, getProjectInfo } from "@/src/utils/get-project-info"
-import { highlighter } from "@/src/utils/highlighter"
 import { spinner } from "@/src/utils/spinner"
 import {
   CallExpression,
@@ -50,27 +49,10 @@ export async function massageTreeForFonts(
   tree.css ??= {}
   tree.css[`@import "${fontSourceDependency}"`] = {}
   tree.css["@layer base"] ??= {}
-  tree.css["@layer base"].html = {
+  tree.css["@layer base"].body = {
     "@apply font-sans": {},
   }
-  tree.css["@layer base"].body = {
-    "@apply font-sans bg-background text-foreground": {},
-  }
   tree.cssVars.theme[fontSans.font.variable] = fontSans.font.family
-
-  //   tree.docs += `## Fonts
-  // The ${highlighter.info(
-  //     fontSans.title ?? ""
-  //   )} font has been added to your project.
-
-  // If you have existing font-family declarations, you may need to update them to use the new ${highlighter.info(
-  //     fontSans.font.variable
-  //   )} variable.
-
-  // @theme inline {
-  //   ${fontSans.font.variable}: ${fontSans.font.family};
-  // }
-  //   `
 
   return tree
 }

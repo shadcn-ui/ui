@@ -55,11 +55,11 @@ export const DEFAULT_PRESETS = {
   },
   lyra: {
     title: "Lyra",
-    description: "Hugeicons / JetBrains Mono",
+    description: "Phosphor / JetBrains Mono",
     style: "lyra",
     baseColor: "neutral",
     theme: "neutral",
-    iconLibrary: "hugeicons",
+    iconLibrary: "phosphor",
     font: "jetbrains-mono",
     menuAccent: "subtle" as const,
     menuColor: "default" as const,

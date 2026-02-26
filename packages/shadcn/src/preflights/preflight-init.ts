@@ -70,7 +70,8 @@ export async function preFlightInit(
     frameworkSpinner?.fail()
 
     // Check if we're in a monorepo root.
-    if (await isMonorepoRoot(options.cwd)) {
+    // Skip when --monorepo is set.
+    if (!options.monorepo && (await isMonorepoRoot(options.cwd))) {
       const targets = await getMonorepoTargets(options.cwd)
       if (targets.length > 0) {
         formatMonorepoMessage("init", targets)

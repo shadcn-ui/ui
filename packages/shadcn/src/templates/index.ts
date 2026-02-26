@@ -1,10 +1,13 @@
 import { next } from "./next"
-import { nextMonorepo } from "./next-monorepo"
 import { reactRouter } from "./react-router"
 import { start } from "./start"
 import { vite } from "./vite"
 
-export { createTemplate, GITHUB_TEMPLATE_URL } from "./create-template"
+export {
+  createTemplate,
+  resolveTemplate,
+  TEMPLATE_BASE_URL,
+} from "./create-template"
 export type { TemplateInitOptions, TemplateOptions } from "./create-template"
 
 export const templates = {
@@ -12,7 +15,6 @@ export const templates = {
   vite,
   start,
   "react-router": reactRouter,
-  "next-monorepo": nextMonorepo,
 }
 
 // Resolve a template key from a detected framework name.

@@ -114,21 +114,22 @@ describe("createProject", () => {
     })
   })
 
-  it("should create a monorepo project when selected", async () => {
+  it("should create a monorepo project with --monorepo flag", async () => {
     vi.mocked(prompts).mockResolvedValue({
-      type: "next-monorepo",
+      type: "next",
       name: "my-monorepo",
     })
 
     const result = await createProject({
       cwd: "/test",
       force: false,
+      monorepo: true,
     })
 
     expect(result).toEqual({
       projectPath: "/test/my-monorepo",
       projectName: "my-monorepo",
-      template: "next-monorepo",
+      template: "next",
     })
   })
 

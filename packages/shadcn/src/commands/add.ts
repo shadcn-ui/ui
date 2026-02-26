@@ -210,40 +210,35 @@ export const add = new Command()
         }
         options.cwd = projectPath
 
-        if (template === "next-monorepo") {
-          options.cwd = path.resolve(options.cwd, "apps/web")
-          config = await getConfig(options.cwd)
-        } else {
-          // Prompt for base and preset.
-          const selectedBase = await promptForBase()
-          const { url: initUrl } = await promptForPreset({
-            rtl: false,
-            base: selectedBase,
-            template,
-          })
-          const { registryBaseConfig, installStyleIndex } =
-            await resolveRegistryBaseConfig(initUrl, options.cwd)
+        // Prompt for base and preset.
+        const selectedBase = await promptForBase()
+        const { url: initUrl } = await promptForPreset({
+          rtl: false,
+          base: selectedBase,
+          template,
+        })
+        const { registryBaseConfig, installStyleIndex } =
+          await resolveRegistryBaseConfig(initUrl, options.cwd)
 
-          config = await runInit({
-            cwd: options.cwd,
-            yes: true,
-            force: true,
-            defaults: false,
-            skipPreflight: true,
-            silent: !hasNewRegistries && options.silent,
-            isNewProject: true,
-            cssVariables: true,
-            rtl: false,
-            installStyleIndex,
-            components: [initUrl, ...(options.components ?? [])],
-            registryBaseConfig,
-          })
-          initHasRun = true
+        config = await runInit({
+          cwd: options.cwd,
+          yes: true,
+          force: true,
+          defaults: false,
+          skipPreflight: true,
+          silent: !hasNewRegistries && options.silent,
+          isNewProject: true,
+          cssVariables: true,
+          rtl: false,
+          installStyleIndex,
+          components: [initUrl, ...(options.components ?? [])],
+          registryBaseConfig,
+        })
+        initHasRun = true
 
-          shouldUpdateAppIndex =
-            options.components?.length === 1 &&
-            !!options.components[0].match(/\/chat\/b\//)
-        }
+        shouldUpdateAppIndex =
+          options.components?.length === 1 &&
+          !!options.components[0].match(/\/chat\/b\//)
       }
 
       if (!config) {
