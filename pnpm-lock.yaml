@@ -323,6 +323,9 @@ importers:
       '@typescript-eslint/parser':
         specifier: ^8.31.0
         version: 8.39.0(eslint@9.26.0(hono@4.11.7)(jiti@2.6.1))(typescript@5.9.2)
+      baseline-browser-mapping:
+        specifier: ^2.10.0
+        version: 2.10.0
       eslint:
         specifier: ^9
         version: 9.26.0(hono@4.11.7)(jiti@2.6.1)
@@ -3639,6 +3642,11 @@ packages:
 
   base64-js@1.5.1:
     resolution: {integrity: sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==}
+
+  baseline-browser-mapping@2.10.0:
+    resolution: {integrity: sha512-lIyg0szRfYbiy67j9KN8IyeD7q7hcmqnJ1ddWmNt19ItGpNN64mnllmxUNFIOdOm6by97jlL6wfpTTJrmnjWAA==}
+    engines: {node: '>=6.0.0'}
+    hasBin: true
 
   baseline-browser-mapping@2.8.4:
     resolution: {integrity: sha512-L+YvJwGAgwJBV1p6ffpSTa2KRc69EeeYGYjRVWKs0GKrK+LON0GC0gV+rKSNtALEDvMDqkvCFq9r1r94/Gjwxw==}
@@ -11231,6 +11239,8 @@ snapshots:
 
   base64-js@1.5.1: {}
 
+  baseline-browser-mapping@2.10.0: {}
+
   baseline-browser-mapping@2.8.4: {}
 
   basic-ftp@5.0.5: {}
@@ -14310,7 +14320,7 @@ snapshots:
     dependencies:
       '@next/env': 16.1.6
       '@swc/helpers': 0.5.15
-      baseline-browser-mapping: 2.8.4
+      baseline-browser-mapping: 2.10.0
       caniuse-lite: 1.0.30001759
       postcss: 8.4.31
       react: 19.2.3

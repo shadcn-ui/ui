@@ -89,7 +89,7 @@ try {
   console.log("\n⚙️ Building public/r/config.json...")
   await buildConfig()
 
-  console.log("\n📦 Building public/templates...")
+  console.log("\n📦 Building public/r/templates...")
   await buildTemplates()
 
   // Copy UI to examples before cleanup.
@@ -732,7 +732,7 @@ async function batchPrettier(paths: string[]) {
 
 async function buildTemplates() {
   const templatesDir = path.resolve(process.cwd(), "../../templates")
-  const outputDir = path.join(process.cwd(), "public/templates")
+  const outputDir = path.join(process.cwd(), "public/r/templates")
   await fs.mkdir(outputDir, { recursive: true })
 
   await Promise.all(
@@ -757,6 +757,10 @@ async function buildTemplates() {
             outputPath,
             "--exclude",
             "node_modules",
+            "--exclude",
+            ".git",
+            "--exclude",
+            "pnpm-lock.yaml",
             "-C",
             templatesDir,
             name,

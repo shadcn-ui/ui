@@ -94,6 +94,7 @@
     "@types/react": "19.2.2",
     "@types/react-dom": "19.2.2",
     "@typescript-eslint/parser": "^8.31.0",
+    "baseline-browser-mapping": "^2.10.0",
     "eslint": "^9",
     "eslint-config-next": "16.0.0",
     "prettier": "^3.4.2",

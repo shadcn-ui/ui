@@ -1,5 +1,6 @@
 import os from "os"
 import path from "path"
+import { REGISTRY_URL } from "@/src/registry/constants"
 import type { RegistryItem } from "@/src/registry/schema"
 import type { Config } from "@/src/utils/get-config"
 import { handleError } from "@/src/utils/handle-error"
@@ -7,7 +8,7 @@ import { spinner } from "@/src/utils/spinner"
 import { execa } from "execa"
 import fs from "fs-extra"
 
-export const TEMPLATE_BASE_URL = "https://ui.shadcn.com/templates"
+export const TEMPLATE_BASE_URL = `${REGISTRY_URL}/templates`
 
 export interface TemplateOptions {
   projectPath: string
