@@ -27,32 +27,39 @@ export async function massageTreeForFonts(
     return tree
   }
 
-  const [fontSans] = tree.fonts
   tree.cssVars ??= {}
   tree.cssVars.theme ??= {}
 
-  if (
+  const isNext =
     projectInfo.framework.name === "next-app" ||
     projectInfo.framework.name === "next-pages"
-  ) {
-    tree.cssVars.theme[
-      fontSans.font.variable
-    ] = `var(${fontSans.font.variable})`
-    return tree
+
+  for (const font of tree.fonts) {
+    if (isNext) {
+      tree.cssVars.theme[font.font.variable] = `var(${font.font.variable})`
+    } else {
+      // Other frameworks will use fontsource for now.
+      const fontName = font.name.replace("font-", "")
+      const fontSourceDependency = `@fontsource-variable/${fontName}`
+      tree.dependencies ??= []
+      tree.dependencies.push(fontSourceDependency)
+      tree.css ??= {}
+      tree.css[`@import "${fontSourceDependency}"`] = {}
+      tree.cssVars.theme[font.font.variable] = font.font.family
+    }
   }
 
-  // Other frameworks will use fontsource for now.
-  const fontName = fontSans.name.replace("font-", "")
-  const fontSourceDependency = `@fontsource-variable/${fontName}`
-  tree.dependencies ??= []
-  tree.dependencies.push(fontSourceDependency)
-  tree.css ??= {}
-  tree.css[`@import "${fontSourceDependency}"`] = {}
-  tree.css["@layer base"] ??= {}
-  tree.css["@layer base"].body = {
-    "@apply font-sans": {},
+  // For non-Next frameworks, apply font utility classes to body.
+  if (!isNext && tree.fonts.length > 0) {
+    const fontClasses = tree.fonts
+      .map((f) => f.font.variable.replace("--", ""))
+      .join(" ")
+    tree.css ??= {}
+    tree.css["@layer base"] ??= {}
+    tree.css["@layer base"].body = {
+      [`@apply ${fontClasses}`]: {},
+    }
   }
-  tree.cssVars.theme[fontSans.font.variable] = fontSans.font.family
 
   return tree
 }

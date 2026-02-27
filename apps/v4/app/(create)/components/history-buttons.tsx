@@ -17,7 +17,7 @@ export function HistoryButtons() {
     <div className="hidden items-center gap-1 sm:flex">
       <Button
         variant="ghost"
-        size="icon"
+        size="icon-sm"
         title="Undo"
         disabled={!canGoBack}
         onClick={goBack}
@@ -27,7 +27,7 @@ export function HistoryButtons() {
       </Button>
       <Button
         variant="ghost"
-        size="icon"
+        size="icon-sm"
         title="Redo"
         disabled={!canGoForward}
         onClick={goForward}

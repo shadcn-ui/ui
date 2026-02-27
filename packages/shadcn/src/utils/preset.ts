@@ -60,6 +60,9 @@ export const PRESET_FONTS = [
   "jetbrains-mono",
   "geist",
   "geist-mono",
+  "lora",
+  "merriweather",
+  "playfair-display",
 ] as const
 export const PRESET_RADII = [
   "default",

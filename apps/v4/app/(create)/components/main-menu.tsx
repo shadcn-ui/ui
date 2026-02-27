@@ -39,7 +39,7 @@ export function MainMenu() {
     <ButtonGroup>
       <DropdownMenu>
         <DropdownMenuTrigger
-          render={<Button variant="secondary" id="menu-button" />}
+          render={<Button variant="secondary" size="sm" id="menu-button" />}
         >
           Menu
           <ChevronDownIcon data-icon="inline-end" />

@@ -28,6 +28,7 @@ export function RandomButton() {
       </Button>
       <Button
         variant="outline"
+        size="sm"
         onClick={randomize}
         className="hidden w-full sm:flex"
       >

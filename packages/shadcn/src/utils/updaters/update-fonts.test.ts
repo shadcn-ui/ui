@@ -827,6 +827,141 @@ export default function RootLayout({
     expect(thirdRun).toBe(firstRun)
   })
 
+  it("should add a single serif font to empty layout", async () => {
+    const input = `
+import type { Metadata } from "next"
+import "./globals.css"
+
+export const metadata: Metadata = {
+  title: "My App",
+}
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  )
+}
+`
+    const fonts = [
+      {
+        name: "font-lora",
+        type: "registry:font" as const,
+        font: {
+          family: "'Lora Variable', serif",
+          provider: "google" as const,
+          import: "Lora",
+          variable: "--font-serif",
+          subsets: ["latin"],
+        },
+      },
+    ]
+
+    const result = await transformLayoutFonts(input, fonts, mockConfig)
+
+    expect(result).toMatchInlineSnapshot(`
+      "
+      import type { Metadata } from "next"
+      import "./globals.css"
+      import { Lora } from "next/font/google";
+
+      const lora = Lora({subsets:['latin'],variable:'--font-serif'});
+
+      export const metadata: Metadata = {
+        title: "My App",
+      }
+
+      export default function RootLayout({
+        children,
+      }: {
+        children: React.ReactNode
+      }) {
+        return (
+          <html lang="en" className={lora.variable}>
+            <body>{children}</body>
+          </html>
+        )
+      }
+      "
+    `)
+  })
+
+  it("should add serif and sans fonts together", async () => {
+    const input = `
+import type { Metadata } from "next"
+import "./globals.css"
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  )
+}
+`
+    const fonts = [
+      {
+        name: "font-inter",
+        type: "registry:font" as const,
+        font: {
+          family: "'Inter Variable', sans-serif",
+          provider: "google" as const,
+          import: "Inter",
+          variable: "--font-sans",
+          subsets: ["latin"],
+        },
+      },
+      {
+        name: "font-lora",
+        type: "registry:font" as const,
+        font: {
+          family: "'Lora Variable', serif",
+          provider: "google" as const,
+          import: "Lora",
+          variable: "--font-serif",
+          subsets: ["latin"],
+        },
+      },
+    ]
+
+    const result = await transformLayoutFonts(input, fonts, mockConfig)
+
+    expect(result).toMatchInlineSnapshot(`
+      "
+      import type { Metadata } from "next"
+      import "./globals.css"
+      import { Inter, Lora } from "next/font/google";
+      import { cn } from "@/lib/utils";
+
+      const lora = Lora({subsets:['latin'],variable:'--font-serif'});
+
+      const inter = Inter({subsets:['latin'],variable:'--font-sans'});
+
+
+      export default function RootLayout({
+        children,
+      }: {
+        children: React.ReactNode
+      }) {
+        return (
+          <html lang="en" className={cn(inter.variable, lora.variable)}>
+            <body>{children}</body>
+          </html>
+        )
+      }
+      "
+    `)
+  })
+
   it("should be idempotent with multiple fonts", async () => {
     const input = `
 export default function RootLayout({

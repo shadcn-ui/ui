@@ -30,7 +30,7 @@ export function CopyPreset() {
   }, [presetCode])
 
   return (
-    <Button variant="ghost" onClick={handleCopy} className="group/button">
+    <Button variant="ghost" size="sm" onClick={handleCopy} className="group/button">
       <HugeiconsIcon
         icon={hasCopied ? Tick02Icon : Copy01Icon}
         strokeWidth={2}

@@ -34,7 +34,7 @@ export function Customizer() {
 
   return (
     <div
-      className="flex flex-col gap-4 rounded-2xl border p-4 md:h-[calc(100svh---spacing(12))] md:w-64"
+      className="flex flex-col gap-4 rounded-2xl border p-4 md:h-[calc(100svh---spacing(8))] md:w-64"
       ref={anchorRef}
     >
       <div className="flex items-center gap-2">

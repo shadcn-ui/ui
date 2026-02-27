@@ -44,7 +44,6 @@ async function getAllItems() {
   const entries = await Promise.all(
     BASES.map(async (base) => {
       const items = await getItemsForBase(base.name as BaseName)
-      // Single pass: filter nulls, strip to {name, title, type}, skip numeric suffixes. (js-combine-iterations)
       const filtered: Pick<
         NonNullable<(typeof items)[number]>,
         "name" | "title" | "type"
@@ -76,7 +75,7 @@ export default async function CreatePage() {
         <SidebarProvider className="flex h-auto min-h-min flex-1 flex-col items-start overflow-hidden px-0">
           <div
             data-slot="designer"
-            className="flex w-full flex-1 flex-col gap-2 p-6 pt-1 pb-4 sm:gap-2 sm:pt-6 md:flex-row md:pb-6 lg:gap-6"
+            className="flex w-full flex-1 flex-col gap-2 p-4 sm:gap-2 md:flex-row lg:gap-4"
           >
             <Customizer />
             <div className="flex flex-1 flex-col overflow-hidden rounded-2xl border">

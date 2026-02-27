@@ -114,15 +114,14 @@ export default function Page() {
         configWithDefaults(packagesUiWithRegistries)
       )
       if (tree?.fonts?.length) {
-        const [fontSans] = tree.fonts
+        // Add font CSS variables to packages/ui CSS (same as massageTreeForFonts for Next.js).
+        const themeCssVars: Record<string, string> = {}
+        for (const font of tree.fonts) {
+          themeCssVars[font.font.variable] = `var(${font.font.variable})`
+        }
 
-        // Add font CSS variable to packages/ui CSS (same as massageTreeForFonts for Next.js).
         await updateCssVars(
-          {
-            theme: {
-              [fontSans.font.variable]: `var(${fontSans.font.variable})`,
-            },
-          },
+          { theme: themeCssVars },
           resolvedPackagesUiConfig,
           {
             silent: options.silent,

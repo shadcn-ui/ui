@@ -5,7 +5,6 @@ export const BASE_COLORS = THEMES.filter((theme) =>
     "neutral",
     "stone",
     "zinc",
-    "gray",
     "mauve",
     "olive",
     "mist",

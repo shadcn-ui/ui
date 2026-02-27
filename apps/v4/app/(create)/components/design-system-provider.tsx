@@ -46,6 +46,8 @@ export function DesignSystemProvider({
     body.classList.add(`style-${style}`, `base-color-${baseColor}`)
 
     // Update font.
+    // Always set --font-sans for the preview so the selected font is visible.
+    // The font type (sans/serif/mono) is metadata for the CLI updater.
     const selectedFont = FONTS.find((f) => f.value === font)
     if (selectedFont) {
       const fontFamily = selectedFont.font.style.fontFamily

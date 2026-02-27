@@ -5,9 +5,12 @@ import {
   Geist_Mono,
   Inter,
   JetBrains_Mono,
+  Lora,
+  Merriweather,
   Noto_Sans,
   Nunito_Sans,
   Outfit,
+  Playfair_Display,
   Public_Sans,
   Raleway,
   Roboto,
@@ -71,6 +74,21 @@ const publicSans = Public_Sans({
 const outfit = Outfit({
   subsets: ["latin"],
   variable: "--font-outfit",
+})
+
+const lora = Lora({
+  subsets: ["latin"],
+  variable: "--font-lora",
+})
+
+const merriweather = Merriweather({
+  subsets: ["latin"],
+  variable: "--font-merriweather",
+})
+
+const playfairDisplay = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-playfair-display",
 })
 
 export const FONTS = [
@@ -145,6 +163,24 @@ export const FONTS = [
     value: "jetbrains-mono",
     font: jetbrainsMono,
     type: "mono",
+  },
+  {
+    name: "Lora",
+    value: "lora",
+    font: lora,
+    type: "serif",
+  },
+  {
+    name: "Merriweather",
+    value: "merriweather",
+    font: merriweather,
+    type: "serif",
+  },
+  {
+    name: "Playfair Display",
+    value: "playfair-display",
+    font: playfairDisplay,
+    type: "serif",
   },
 ] as const
 

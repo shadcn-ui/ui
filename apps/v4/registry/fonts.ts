@@ -143,4 +143,40 @@ export const fonts = [
       import: "Geist_Mono",
     },
   },
+  {
+    name: "font-lora",
+    title: "Lora",
+    type: "registry:font",
+    font: {
+      family: "'Lora Variable', serif",
+      provider: "google",
+      variable: "--font-serif",
+      subsets: ["latin"],
+      import: "Lora",
+    },
+  },
+  {
+    name: "font-merriweather",
+    title: "Merriweather",
+    type: "registry:font",
+    font: {
+      family: "'Merriweather Variable', serif",
+      provider: "google",
+      variable: "--font-serif",
+      subsets: ["latin"],
+      import: "Merriweather",
+    },
+  },
+  {
+    name: "font-playfair-display",
+    title: "Playfair Display",
+    type: "registry:font",
+    font: {
+      family: "'Playfair Display Variable', serif",
+      provider: "google",
+      variable: "--font-serif",
+      subsets: ["latin"],
+      import: "Playfair_Display",
+    },
+  },
 ] satisfies RegistryItem[]

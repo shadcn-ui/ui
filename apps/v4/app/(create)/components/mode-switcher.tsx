@@ -30,8 +30,8 @@ export function ModeSwitcher({
         render={
           <Button
             variant={variant}
-            size="icon"
-            className={cn("group/toggle extend-touch-target size-8", className)}
+            size="icon-sm"
+            className={cn("group/toggle extend-touch-target", className)}
             onClick={toggleTheme}
             id="mode-switcher-button"
           />
