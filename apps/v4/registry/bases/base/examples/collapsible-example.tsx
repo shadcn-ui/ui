@@ -107,7 +107,7 @@ function CollapsibleFileTree() {
               hugeicons="ArrowRight01Icon"
               phosphor="CaretRightIcon"
               remixicon="RiArrowRightSLine"
-              className="transition-transform group-data-[state=open]:rotate-90"
+              className="transition-transform group-data-panel-open:rotate-90"
             />
             <IconPlaceholder
               lucide="FolderIcon"

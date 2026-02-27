@@ -181,11 +181,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             key={item.title}
             title={item.title}
             defaultOpen
-            className="group/collapsible"
           >
             <SidebarGroup>
               <SidebarGroupLabel
-                className="group/label text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground text-sm"
+                className="group group/label text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground text-sm"
                 render={<CollapsibleTrigger />}
               >
                 {item.title}{" "}
@@ -195,7 +194,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                   hugeicons="ArrowRight01Icon"
                   phosphor="CaretRightIcon"
                   remixicon="RiArrowRightSLine"
-                  className="ml-auto transition-transform group-data-open/collapsible:rotate-90"
+                  className="ml-auto transition-transform group-data-panel-open:rotate-90"
                 />
               </SidebarGroupLabel>
               <CollapsibleContent>

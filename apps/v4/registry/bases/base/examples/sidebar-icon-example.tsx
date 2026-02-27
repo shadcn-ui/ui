@@ -325,10 +325,10 @@ export default function SidebarIconExample() {
                 <Collapsible
                   key={item.title}
                   defaultOpen={item.isActive}
-                  className="group/collapsible"
                   render={<SidebarMenuItem />}
                 >
                   <SidebarMenuButton
+                    className="group"
                     tooltip={item.title}
                     render={<CollapsibleTrigger />}
                   >
@@ -340,7 +340,7 @@ export default function SidebarIconExample() {
                       hugeicons="ArrowRight01Icon"
                       phosphor="CaretRightIcon"
                       remixicon="RiArrowRightSLine"
-                      className="ml-auto transition-transform duration-100 group-data-open/collapsible:rotate-90"
+                      className="ml-auto transition-transform duration-100 group-data-panel-open:rotate-90"
                     />
                   </SidebarMenuButton>
                   <CollapsibleContent>
