@@ -8,8 +8,11 @@ import { registryItemTypeSchema } from "@/src/registry/schema"
 import { isUniversalRegistryItem } from "@/src/registry/utils"
 import { getTemplateForFramework } from "@/src/templates/index"
 import { addComponents } from "@/src/utils/add-components"
+import { dryRunComponents } from "@/src/utils/dry-run"
+import { formatDryRunResult } from "@/src/utils/dry-run-formatter"
 import { createProject } from "@/src/utils/create-project"
 import { loadEnvFiles } from "@/src/utils/env-loader"
+import { spinner } from "@/src/utils/spinner"
 import * as ERRORS from "@/src/utils/errors"
 import { createConfig, getConfig } from "@/src/utils/get-config"
 import { getProjectInfo } from "@/src/utils/get-project-info"
@@ -35,6 +38,9 @@ export const addOptionsSchema = z.object({
   all: z.boolean(),
   path: z.string().optional(),
   silent: z.boolean(),
+  dryRun: z.boolean(),
+  diff: z.string().optional(),
+  view: z.string().optional(),
 })
 
 export const add = new Command()
@@ -51,6 +57,9 @@ export const add = new Command()
   .option("-a, --all", "add all available components", false)
   .option("-p, --path <path>", "the path to add the component to.")
   .option("-s, --silent", "mute output.", false)
+  .option("--dry-run", "preview changes without writing files.", false)
+  .option("--diff <path>", "show diff for a file.")
+  .option("--view <path>", "show file contents.")
   .action(async (components, opts) => {
     try {
       const options = addOptionsSchema.parse({
@@ -94,13 +103,15 @@ export const add = new Command()
           itemType !== "registry:style" &&
           itemType !== "registry:base"
 
-        if (isUniversalRegistryItem(registryItem)) {
+        const isDryRun = options.dryRun || options.diff || options.view
+
+        if (isUniversalRegistryItem(registryItem) && !isDryRun) {
           await addComponents(components, initialConfig, options)
           return
         }
-
         if (
           !options.yes &&
+          !isDryRun &&
           (itemType === "registry:style" || itemType === "registry:theme")
         ) {
           logger.break()
@@ -255,6 +266,30 @@ export const add = new Command()
         }
       )
       config = updatedConfig
+
+      // Dry-run mode: preview changes without writing files.
+      // --diff and --view imply --dry-run.
+      if (options.dryRun || options.diff || options.view) {
+        const dryRunSpinner = spinner("Resolving items.", {
+          silent: options.silent,
+        }).start()
+        const dryRunResult = await dryRunComponents(
+          options.components,
+          config,
+          {
+            overwrite: options.overwrite,
+          }
+        )
+        dryRunSpinner.stop()
+
+        logger.log(
+          formatDryRunResult(dryRunResult, options.components, {
+            diff: options.diff,
+            view: options.view,
+          })
+        )
+        return
+      }
 
       if (!initHasRun) {
         await addComponents(options.components, config, options)
