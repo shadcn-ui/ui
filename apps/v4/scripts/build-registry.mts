@@ -795,6 +795,11 @@ async function buildTemplates() {
         proc.on("error", reject)
       })
 
+      // Zero out the gzip mtime header (bytes 4-7) for deterministic output.
+      const buf = await fs.readFile(outputPath)
+      buf[4] = buf[5] = buf[6] = buf[7] = 0
+      await fs.writeFile(outputPath, buf)
+
       console.log(`   ✅ ${name}.tar.gz`)
     })
   )
@@ -802,7 +807,6 @@ async function buildTemplates() {
 
 async function buildColors() {
   const colorsTargetPath = path.join(process.cwd(), "public/r/colors")
-  await rimraf(colorsTargetPath)
   await fs.mkdir(colorsTargetPath, { recursive: true })
 
   await Promise.all(
