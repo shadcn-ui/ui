@@ -239,6 +239,8 @@ Three ways to specify a preset via `--preset`:
 2. **Code:** `--preset a2r6bw` (base62 string, starts with lowercase `a`)
 3. **URL:** `--preset "https://ui.shadcn.com/init?base=radix&style=nova&..."`
 
+> **IMPORTANT:** Never try to decode, fetch, or resolve preset codes manually. Preset codes are opaque — pass them directly to `shadcn init --preset <code>` and let the CLI handle resolution.
+
 ### Named Presets
 
 | Name | Base | Style | Font | Icon Library |
@@ -266,11 +268,8 @@ Both use neutral base color, neutral theme, default radius, subtle menu accent, 
 
 ## Switching Presets
 
-To change an existing project's preset:
+Ask the user first: **reinstall**, **merge**, or **skip** existing components?
 
-```bash
-shadcn init --preset a2r6bw --force
-shadcn init --reinstall  # optional: update existing components
-```
-
-Always confirm with the user before `--reinstall` — it overwrites component files.
+- **Reinstall** → `shadcn init --preset <code> --force --reinstall`. Overwrites all component files with the new preset styles. Use when the user hasn't customized components.
+- **Merge** → `shadcn init --preset <code> --force --no-reinstall`, then run `shadcn info` to get the list of installed components and use the [smart merge workflow](./SKILL.md#updating-components) to update them one by one, preserving local changes. Use when the user has customized components.
+- **Skip** → `shadcn init --preset <code> --force --no-reinstall`. Only updates config and CSS variables, leaves existing components as-is.

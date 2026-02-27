@@ -42,6 +42,7 @@ These rules are **always enforced**. See [patterns.md](./patterns.md) for full e
 11. **Toast via `sonner`.** Use `toast()` from `sonner`. Don't build custom toast/notification markup.
 12. **Pass icons as objects, not string keys.** Use `icon={CheckIcon}`, not a string key to a lookup map.
 13. **Buttons inside inputs use `InputGroup` + `InputGroupAddon`.** Never place a `Button` directly inside or adjacent to an `Input` with custom positioning. Wrap in `InputGroup` and use `InputGroupAddon` for the button.
+14. **Never decode or fetch preset codes manually.** Preset codes are opaque. Pass them directly to `shadcn init --preset <code>` and let the CLI handle resolution.
 
 ## Key Fields
 
@@ -79,7 +80,10 @@ shadcn docs button dialog select
 5. **Install or update** — MCP `shadcn:get_add_command_for_items` or `shadcn add`. When updating existing components, use `--dry-run` and `--diff` to preview changes first (see [Updating Components](#updating-components) below).
 6. **Fix imports in third-party components** — After adding components from community registries (e.g. `@bundui`, `@magicui`), check the added non-UI files for hardcoded import paths like `@/components/ui/...`. These won't match the project's actual aliases. Use `shadcn info` to get the correct `ui` alias (e.g. `@workspace/ui/components`) and rewrite the imports accordingly. The CLI rewrites imports for its own UI files, but third-party registry components may use default paths that don't match the project.
 7. **Verify** — MCP `shadcn:get_audit_checklist`.
-8. **Switching presets** — Before running `shadcn init --preset <code>` in an existing project, always ask the user if they'd like to reinstall existing UI components. If yes, use the `--reinstall` flag to overwrite them with the new preset styles.
+8. **Switching presets** — Ask the user first: **reinstall**, **merge**, or **skip**?
+   - **Reinstall**: `shadcn init --preset <code> --force --reinstall`. Overwrites all components.
+   - **Merge**: `shadcn init --preset <code> --force --no-reinstall`, then `shadcn info` to get installed components, then [smart merge](#updating-components) each one.
+   - **Skip**: `shadcn init --preset <code> --force --no-reinstall`. Only updates config and CSS, leaves components as-is.
 
 If MCP is unavailable, use CLI: `shadcn search`, `shadcn view`, `shadcn add`.
 
@@ -140,5 +144,6 @@ shadcn view @shadcn/button
 - [cli.md](./cli.md) — Commands, flags, presets, templates
 - [mcp.md](./mcp.md) — MCP server setup, tools, registry configuration
 - [patterns.md](./patterns.md) — UI patterns and component composition rules
+- [base-patterns.md](./base-patterns.md) — API differences between base and radix (asChild vs render, Select items, ToggleGroup type, Slider values, Accordion)
 - [customization.md](./customization.md) — Theming, CSS variables, extending components
 - [registry-authoring.md](./registry-authoring.md) — Building and publishing custom registries
