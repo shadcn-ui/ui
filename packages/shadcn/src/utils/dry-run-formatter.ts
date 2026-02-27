@@ -2,6 +2,9 @@ import type { DryRunFile, DryRunResult } from "@/src/utils/dry-run"
 import { diffWords, structuredPatch } from "diff"
 import { bold, cyan, dim, green, red, yellow } from "kleur/colors"
 
+const BOX_TOP = dim("┌" + "─".repeat(46))
+const BOX_BOTTOM = dim("└" + "─".repeat(46))
+
 const ACTION_GLYPHS: Record<DryRunFile["action"], string> = {
   create: "+",
   overwrite: "~",
@@ -12,6 +15,40 @@ const ACTION_LABELS: Record<DryRunFile["action"], string> = {
   create: "create",
   overwrite: "overwrite",
   skip: "skip (identical)",
+}
+
+// Color an action label.
+function colorAction(action: DryRunFile["action"] | "update") {
+  if (action === "create") return green(action)
+  if (action === "overwrite" || action === "update") return yellow(action)
+  return dim(action)
+}
+
+// Format the shared header line.
+function formatHeader(componentNames: string[]) {
+  return `${bold("┌")} ${bold(`shadcn add ${componentNames.join(", ")}`)} ${dim("(dry run)")}`
+}
+
+// Check if a CSS path matches a filter.
+function matchesCssPath(cssPath: string, filterPath: string) {
+  return (
+    cssPath === filterPath ||
+    cssPath.includes(filterPath) ||
+    cssPath.endsWith(filterPath)
+  )
+}
+
+// Push a content box (border + lines + border) into the output.
+function pushContentBox(
+  lines: string[],
+  contentLines: string[],
+  formatLine: (line: string) => string = (l) => l
+) {
+  lines.push(`${dim("│")} ${BOX_TOP}`)
+  for (const line of contentLines) {
+    lines.push(`${dim("│")} ${dim("│")} ${formatLine(line)}`)
+  }
+  lines.push(`${dim("│")} ${BOX_BOTTOM}`)
 }
 
 export function formatDryRunResult(
@@ -38,30 +75,14 @@ export function formatDryRunResult(
 function formatSummaryOutput(result: DryRunResult, componentNames: string[]) {
   const lines: string[] = []
 
-  // Header.
-  lines.push(
-    `${bold("┌")} ${bold(`shadcn add ${componentNames.join(", ")}`)} ${dim(
-      "(dry run)"
-    )}`
-  )
+  lines.push(formatHeader(componentNames))
   lines.push(dim("│"))
 
-  // Files section.
   formatFilesSection(result, lines)
-
-  // Dependencies section.
   formatListSection("Dependencies", result.dependencies, lines)
-
-  // Dev dependencies section.
   formatListSection("Dev Dependencies", result.devDependencies, lines)
-
-  // CSS section.
   formatCssSection(result, lines)
-
-  // Env vars section.
   formatEnvVarsSection(result, lines)
-
-  // Fonts section.
   formatFontsSection(result, lines)
 
   // Overwrite warning.
@@ -71,9 +92,7 @@ function formatSummaryOutput(result: DryRunResult, componentNames: string[]) {
   if (overwriteCount > 0) {
     lines.push(
       yellow(
-        `⚠ ${overwriteCount} ${
-          overwriteCount === 1 ? "file" : "files"
-        } will be overwritten.`
+        `⚠ ${overwriteCount} ${overwriteCount === 1 ? "file" : "files"} will be overwritten.`
       )
     )
     lines.push(dim("│"))
@@ -88,9 +107,7 @@ function formatSummaryOutput(result: DryRunResult, componentNames: string[]) {
   }
   if (result.dependencies.length > 0) {
     summaryParts.push(
-      `${result.dependencies.length} ${
-        result.dependencies.length === 1 ? "dep" : "deps"
-      }`
+      `${result.dependencies.length} ${result.dependencies.length === 1 ? "dep" : "deps"}`
     )
   }
   if (result.css?.cssVarsCount) {
@@ -119,21 +136,11 @@ function formatDiffOutput(
 ) {
   const lines: string[] = []
 
-  lines.push(
-    `${bold("┌")} ${bold(`shadcn add ${componentNames.join(", ")}`)} ${dim(
-      "(dry run)"
-    )}`
-  )
+  lines.push(formatHeader(componentNames))
   lines.push(dim("│"))
 
   const filesToDiff = resolveFilterPath(result.files, filterPath)
-
-  // Check if the filter matches the CSS file.
-  const cssMatch =
-    result.css &&
-    (result.css.path === filterPath ||
-      result.css.path.includes(filterPath) ||
-      result.css.path.endsWith(filterPath))
+  const cssMatch = result.css && matchesCssPath(result.css.path, filterPath)
 
   if (filesToDiff.length === 0 && !cssMatch) {
     lines.push(
@@ -145,35 +152,23 @@ function formatDiffOutput(
       formatFileDiff(file, lines)
     }
 
-    // CSS diff.
     if (cssMatch && result.css) {
-      const actionLabel =
-        result.css.action === "create" ? green("create") : yellow("update")
-
       lines.push(
-        `${dim("├")} ${bold(result.css.path)} ${dim("(")}${actionLabel}${dim(
-          ")"
-        )}`
+        `${dim("├")} ${bold(result.css.path)} ${dim("(")}${colorAction(result.css.action)}${dim(")")}`
       )
 
       if (result.css.action === "create" || !result.css.existingContent) {
-        lines.push(`${dim("│")} ${dim("┌" + "─".repeat(46))}`)
-        for (const line of result.css.content.split("\n")) {
-          lines.push(`${dim("│")} ${dim("│")} ${green(`+${line}`)}`)
-        }
-        lines.push(`${dim("│")} ${dim("└" + "─".repeat(46))}`)
+        pushContentBox(lines, result.css.content.split("\n"), (l) =>
+          green(`+${l}`)
+        )
       } else {
-        lines.push(`${dim("│")} ${dim("┌" + "─".repeat(46))}`)
         const diffLines = computeUnifiedDiff(
           result.css.existingContent,
           result.css.content,
           result.css.path,
           { fullContext: true }
         )
-        for (const line of diffLines) {
-          lines.push(`${dim("│")} ${dim("│")} ${line}`)
-        }
-        lines.push(`${dim("│")} ${dim("└" + "─".repeat(46))}`)
+        pushContentBox(lines, diffLines)
       }
 
       lines.push(dim("│"))
@@ -187,37 +182,21 @@ function formatDiffOutput(
 
 // Format a single file's diff block.
 function formatFileDiff(file: DryRunFile, lines: string[]) {
-  const actionLabel =
-    file.action === "create"
-      ? green("create")
-      : file.action === "overwrite"
-      ? yellow("overwrite")
-      : dim("skip")
-
   lines.push(
-    `${dim("├")} ${bold(file.path)} ${dim("(")}${actionLabel}${dim(")")}`
+    `${dim("├")} ${bold(file.path)} ${dim("(")}${colorAction(file.action)}${dim(")")}`
   )
 
   if (file.action === "skip") {
     lines.push(`${dim("│")} ${dim("No changes.")}`)
   } else if (file.action === "create") {
-    lines.push(`${dim("│")} ${dim("┌" + "─".repeat(46))}`)
-    const contentLines = file.content.split("\n")
-    for (const line of contentLines) {
-      lines.push(`${dim("│")} ${dim("│")} ${green(`+${line}`)}`)
-    }
-    lines.push(`${dim("│")} ${dim("└" + "─".repeat(46))}`)
+    pushContentBox(lines, file.content.split("\n"), (l) => green(`+${l}`))
   } else {
-    lines.push(`${dim("│")} ${dim("┌" + "─".repeat(46))}`)
     const diffLines = computeUnifiedDiff(
       file.existingContent!,
       file.content,
       file.path
     )
-    for (const line of diffLines) {
-      lines.push(`${dim("│")} ${dim("│")} ${line}`)
-    }
-    lines.push(`${dim("│")} ${dim("└" + "─".repeat(46))}`)
+    pushContentBox(lines, diffLines)
   }
 
   lines.push(dim("│"))
@@ -231,21 +210,11 @@ function formatViewOutput(
 ) {
   const lines: string[] = []
 
-  lines.push(
-    `${bold("┌")} ${bold(`shadcn add ${componentNames.join(", ")}`)} ${dim(
-      "(dry run)"
-    )}`
-  )
+  lines.push(formatHeader(componentNames))
   lines.push(dim("│"))
 
   const filesToView = resolveFilterPath(result.files, filterPath)
-
-  // Check if the filter matches the CSS file.
-  const cssMatch =
-    result.css &&
-    (result.css.path === filterPath ||
-      result.css.path.includes(filterPath) ||
-      result.css.path.endsWith(filterPath))
+  const cssMatch = result.css && matchesCssPath(result.css.path, filterPath)
 
   if (filesToView.length === 0 && !cssMatch) {
     lines.push(
@@ -255,46 +224,19 @@ function formatViewOutput(
   } else {
     for (const file of filesToView) {
       const contentLines = file.content.split("\n")
-      const actionLabel =
-        file.action === "create"
-          ? green("create")
-          : file.action === "overwrite"
-          ? yellow("overwrite")
-          : dim("skip")
-
       lines.push(
-        `${dim("├")} ${bold(file.path)} ${dim("(")}${actionLabel}${dim(
-          ")"
-        )} ${dim(`${contentLines.length} lines`)}`
+        `${dim("├")} ${bold(file.path)} ${dim("(")}${colorAction(file.action)}${dim(")")} ${dim(`${contentLines.length} lines`)}`
       )
-      lines.push(`${dim("│")} ${dim("┌" + "─".repeat(46))}`)
-
-      for (const line of contentLines) {
-        lines.push(`${dim("│")} ${dim("│")} ${line}`)
-      }
-
-      lines.push(`${dim("│")} ${dim("└" + "─".repeat(46))}`)
+      pushContentBox(lines, contentLines)
       lines.push(dim("│"))
     }
 
-    // CSS view.
     if (cssMatch && result.css) {
       const contentLines = result.css.content.split("\n")
-      const actionLabel =
-        result.css.action === "create" ? green("create") : yellow("update")
-
       lines.push(
-        `${dim("├")} ${bold(result.css.path)} ${dim("(")}${actionLabel}${dim(
-          ")"
-        )} ${dim(`${contentLines.length} lines`)}`
+        `${dim("├")} ${bold(result.css.path)} ${dim("(")}${colorAction(result.css.action)}${dim(")")} ${dim(`${contentLines.length} lines`)}`
       )
-      lines.push(`${dim("│")} ${dim("┌" + "─".repeat(46))}`)
-
-      for (const line of contentLines) {
-        lines.push(`${dim("│")} ${dim("│")} ${line}`)
-      }
-
-      lines.push(`${dim("│")} ${dim("└" + "─".repeat(46))}`)
+      pushContentBox(lines, contentLines)
       lines.push(dim("│"))
     }
   }
@@ -305,32 +247,31 @@ function formatViewOutput(
 }
 
 function formatFilesSection(result: DryRunResult, lines: string[]) {
-  const totalCount = result.files.length
-
-  if (totalCount === 0) {
+  if (result.files.length === 0) {
     return
   }
 
   // Build summary counts.
-  const createCount = result.files.filter((f) => f.action === "create").length
-  const overwriteCount = result.files.filter(
-    (f) => f.action === "overwrite"
-  ).length
-  const skipCount = result.files.filter((f) => f.action === "skip").length
+  const counts = { create: 0, overwrite: 0, skip: 0 }
+  for (const f of result.files) {
+    counts[f.action]++
+  }
   const summaryParts: string[] = []
-  if (createCount > 0) {
-    summaryParts.push(green(`+${createCount} new`))
+  if (counts.create > 0) {
+    summaryParts.push(green(`+${counts.create} new`))
   }
-  if (overwriteCount > 0) {
-    summaryParts.push(yellow(`~${overwriteCount} overwrite`))
+  if (counts.overwrite > 0) {
+    summaryParts.push(yellow(`~${counts.overwrite} overwrite`))
   }
-  if (skipCount > 0) {
-    summaryParts.push(dim(`=${skipCount} skip`))
+  if (counts.skip > 0) {
+    summaryParts.push(dim(`=${counts.skip} skip`))
   }
   const summary =
     summaryParts.length > 0 ? ` ${summaryParts.join(dim(", "))}` : ""
 
-  lines.push(`${dim("├")} ${bold(`Files`)} ${dim(`(${totalCount})`)}${summary}`)
+  lines.push(
+    `${dim("├")} ${bold("Files")} ${dim(`(${result.files.length})`)}${summary}`
+  )
 
   // Find the longest path for alignment.
   const maxPathLen = Math.max(...result.files.map((f) => f.path.length))
@@ -340,23 +281,18 @@ function formatFilesSection(result: DryRunResult, lines: string[]) {
     const label = ACTION_LABELS[file.action]
     const padding = " ".repeat(Math.max(1, maxPathLen - file.path.length + 2))
 
-    const glyphStr =
+    const colorFn =
       file.action === "create"
-        ? green(glyph)
+        ? green
         : file.action === "overwrite"
-        ? yellow(glyph)
-        : dim(glyph)
+          ? yellow
+          : dim
 
     const pathStr = file.action === "skip" ? dim(file.path) : file.path
 
-    const labelStr =
-      file.action === "create"
-        ? green(label)
-        : file.action === "overwrite"
-        ? yellow(label)
-        : dim(label)
-
-    lines.push(`${dim("│")} ${glyphStr} ${pathStr}${padding}${labelStr}`)
+    lines.push(
+      `${dim("│")} ${colorFn(glyph)} ${pathStr}${padding}${colorFn(label)}`
+    )
   }
 
   lines.push(dim("│"))
@@ -383,9 +319,7 @@ function formatCssSection(result: DryRunResult, lines: string[]) {
 
   if (result.css.cssVarsCount > 0) {
     lines.push(
-      `${dim("│")} ${green("+")} ${
-        result.css.cssVarsCount
-      } CSS variables added to ${cyan(result.css.path)}`
+      `${dim("│")} ${green("+")} ${result.css.cssVarsCount} CSS variables added to ${cyan(result.css.path)}`
     )
   } else {
     lines.push(`${dim("│")} ${green("+")} Updated ${cyan(result.css.path)}`)
@@ -431,14 +365,16 @@ export function resolveFilterPath(files: DryRunFile[], filterPath: string) {
   }
 
   // Partial match: check if the filter appears in the path.
-  const partial = files.filter(
+  return files.filter(
     (f) =>
       f.path.includes(filterPath) ||
-      f.path.endsWith(filterPath) ||
       f.path.replace(/\\/g, "/").includes(filterPath)
   )
+}
 
-  return partial
+type HunkEntry = {
+  kind: "context" | "removed" | "added"
+  formatted: string
 }
 
 // Compute a unified diff using the `diff` package.
@@ -449,12 +385,9 @@ function computeUnifiedDiff(
   filePath: string,
   options: { fullContext?: boolean } = {}
 ) {
-  const output: string[] = []
-
   // Check if the only differences are formatting (whitespace, quotes, semicolons).
   if (isFormattingOnly(oldStr, newStr)) {
-    output.push(dim("  Formatting-only changes (spacing, quotes, semicolons)."))
-    return output
+    return [dim("  Formatting-only changes (spacing, quotes, semicolons).")]
   }
 
   // Normalize both files so structuredPatch only sees real content changes.
@@ -480,133 +413,19 @@ function computeUnifiedDiff(
   )
 
   if (!patch.hunks.length) {
-    output.push(dim("  No changes."))
-    return output
+    return [dim("  No changes.")]
   }
 
-  output.push(dim(`--- a/${filePath}`))
-  output.push(dim(`+++ b/${filePath}`))
+  const output: string[] = [
+    dim(`--- a/${filePath}`),
+    dim(`+++ b/${filePath}`),
+  ]
 
   // Use the actual new file lines for display.
   const newLines = newStr.split("\n")
 
   for (const hunk of patch.hunks) {
-    // Process hunk into typed entries so we can suppress formatting-only
-    // groups and recompute the header with correct line counts.
-    type HunkEntry =
-      | { kind: "context"; formatted: string }
-      | { kind: "removed"; formatted: string }
-      | { kind: "added"; formatted: string }
-
-    const entries: HunkEntry[] = []
-    let newLineIndex = hunk.newStart - 1
-
-    const hunkLines = hunk.lines
-    let i = 0
-
-    while (i < hunkLines.length) {
-      const line = hunkLines[i]
-
-      if (line.startsWith("-")) {
-        // Collect consecutive removed and added lines.
-        const removed: string[] = []
-        while (i < hunkLines.length && hunkLines[i].startsWith("-")) {
-          removed.push(hunkLines[i].slice(1))
-          i++
-        }
-        while (i < hunkLines.length && hunkLines[i].startsWith("\\")) {
-          i++
-        }
-        const added: string[] = []
-        while (i < hunkLines.length && hunkLines[i].startsWith("+")) {
-          added.push(hunkLines[i].slice(1))
-          i++
-        }
-        while (i < hunkLines.length && hunkLines[i].startsWith("\\")) {
-          i++
-        }
-
-        // Check if the entire group is formatting-only (e.g., multi-line to single-line).
-        if (isGroupFormattingOnly(removed, added)) {
-          for (let j = 0; j < added.length; j++) {
-            const actual = newLines[newLineIndex] ?? added[j]
-            entries.push({ kind: "context", formatted: dim(` ${actual}`) })
-            newLineIndex++
-          }
-        } else {
-          // Collapse continuation lines in the removed group so we can
-          // match multi-line removed statements against single-line added ones.
-          // e.g., ["default:", '  "h-8..."'] → ["default: \"h-8...\""].
-          const collapsedRemoved = collapseContLines(removed)
-          const normalizedCollapsed = collapsedRemoved.map((s) =>
-            normalizeLine(s)
-          )
-          const usedCollapsed = new Set<number>()
-
-          for (let j = 0; j < added.length; j++) {
-            const actualNewLine = newLines[newLineIndex] ?? added[j]
-            const normalizedAdded = normalizeLine(added[j])
-
-            // Find a matching collapsed removed statement.
-            const matchIdx = normalizedCollapsed.findIndex(
-              (nr, idx) => !usedCollapsed.has(idx) && nr === normalizedAdded
-            )
-
-            if (matchIdx !== -1) {
-              // Formatting-only change — show as context.
-              usedCollapsed.add(matchIdx)
-              entries.push({
-                kind: "context",
-                formatted: dim(` ${actualNewLine}`),
-              })
-            } else {
-              // Real change — find best unmatched removed statement for inline diff.
-              const unmatchedIdx = normalizedCollapsed.findIndex(
-                (_, idx) => !usedCollapsed.has(idx)
-              )
-              if (unmatchedIdx !== -1) {
-                usedCollapsed.add(unmatchedIdx)
-                const { oldHighlighted, newHighlighted } =
-                  highlightInlineChanges(
-                    collapsedRemoved[unmatchedIdx],
-                    actualNewLine
-                  )
-                entries.push({ kind: "removed", formatted: oldHighlighted })
-                entries.push({ kind: "added", formatted: newHighlighted })
-              } else {
-                entries.push({
-                  kind: "added",
-                  formatted: green(`+${actualNewLine}`),
-                })
-              }
-            }
-            newLineIndex++
-          }
-
-          // Remaining unmatched removed statements.
-          for (let j = 0; j < collapsedRemoved.length; j++) {
-            if (!usedCollapsed.has(j)) {
-              entries.push({
-                kind: "removed",
-                formatted: red(`-${collapsedRemoved[j]}`),
-              })
-            }
-          }
-        }
-      } else if (line.startsWith("+")) {
-        const actual = newLines[newLineIndex] ?? line.slice(1)
-        entries.push({ kind: "added", formatted: green(`+${actual}`) })
-        newLineIndex++
-        i++
-      } else if (line.startsWith("\\")) {
-        i++
-      } else {
-        const actual = newLines[newLineIndex] ?? line.slice(1)
-        entries.push({ kind: "context", formatted: dim(` ${actual}`) })
-        newLineIndex++
-        i++
-      }
-    }
+    const { entries, newLineIndex: _ } = processHunk(hunk, newLines)
 
     // Skip hunks that have no real changes after formatting suppression.
     if (!entries.some((e) => e.kind !== "context")) {
@@ -620,9 +439,7 @@ function computeUnifiedDiff(
 
     output.push(
       cyan(
-        `@@ -${hunk.oldStart},${contextCount + removedCount} +${
-          hunk.newStart
-        },${contextCount + addedCount} @@`
+        `@@ -${hunk.oldStart},${contextCount + removedCount} +${hunk.newStart},${contextCount + addedCount} @@`
       )
     )
 
@@ -632,6 +449,136 @@ function computeUnifiedDiff(
   }
 
   return output
+}
+
+// Process a single hunk into typed entries, suppressing formatting-only changes.
+function processHunk(
+  hunk: { oldStart: number; newStart: number; lines: string[] },
+  newLines: string[]
+) {
+  const entries: HunkEntry[] = []
+  let newLineIndex = hunk.newStart - 1
+  let i = 0
+
+  while (i < hunk.lines.length) {
+    const line = hunk.lines[i]
+
+    if (line.startsWith("-")) {
+      // Collect consecutive removed and added lines.
+      const removed: string[] = []
+      while (i < hunk.lines.length && hunk.lines[i].startsWith("-")) {
+        removed.push(hunk.lines[i].slice(1))
+        i++
+      }
+      while (i < hunk.lines.length && hunk.lines[i].startsWith("\\")) {
+        i++
+      }
+      const added: string[] = []
+      while (i < hunk.lines.length && hunk.lines[i].startsWith("+")) {
+        added.push(hunk.lines[i].slice(1))
+        i++
+      }
+      while (i < hunk.lines.length && hunk.lines[i].startsWith("\\")) {
+        i++
+      }
+
+      newLineIndex = processChangeGroup(
+        removed,
+        added,
+        newLines,
+        newLineIndex,
+        entries
+      )
+    } else if (line.startsWith("+")) {
+      const actual = newLines[newLineIndex] ?? line.slice(1)
+      entries.push({ kind: "added", formatted: green(`+${actual}`) })
+      newLineIndex++
+      i++
+    } else if (line.startsWith("\\")) {
+      i++
+    } else {
+      const actual = newLines[newLineIndex] ?? line.slice(1)
+      entries.push({ kind: "context", formatted: dim(` ${actual}`) })
+      newLineIndex++
+      i++
+    }
+  }
+
+  return { entries, newLineIndex }
+}
+
+// Process a group of removed/added lines, detecting formatting-only changes.
+function processChangeGroup(
+  removed: string[],
+  added: string[],
+  newLines: string[],
+  newLineIndex: number,
+  entries: HunkEntry[]
+) {
+  // Check if the entire group is formatting-only (e.g., multi-line to single-line).
+  if (isGroupFormattingOnly(removed, added)) {
+    for (let j = 0; j < added.length; j++) {
+      const actual = newLines[newLineIndex] ?? added[j]
+      entries.push({ kind: "context", formatted: dim(` ${actual}`) })
+      newLineIndex++
+    }
+    return newLineIndex
+  }
+
+  // Collapse continuation lines in the removed group so we can
+  // match multi-line removed statements against single-line added ones.
+  // e.g., ["default:", '  "h-8..."'] → ["default: \"h-8...\""].
+  const collapsedRemoved = collapseContLines(removed)
+  const normalizedCollapsed = collapsedRemoved.map(normalizeLine)
+  const usedCollapsed = new Set<number>()
+
+  for (let j = 0; j < added.length; j++) {
+    const actualNewLine = newLines[newLineIndex] ?? added[j]
+    const normalizedAdded = normalizeLine(added[j])
+
+    // Find a matching collapsed removed statement.
+    const matchIdx = normalizedCollapsed.findIndex(
+      (nr, idx) => !usedCollapsed.has(idx) && nr === normalizedAdded
+    )
+
+    if (matchIdx !== -1) {
+      // Formatting-only change — show as context.
+      usedCollapsed.add(matchIdx)
+      entries.push({ kind: "context", formatted: dim(` ${actualNewLine}`) })
+    } else {
+      // Real change — find best unmatched removed statement for inline diff.
+      const unmatchedIdx = normalizedCollapsed.findIndex(
+        (_, idx) => !usedCollapsed.has(idx)
+      )
+      if (unmatchedIdx !== -1) {
+        usedCollapsed.add(unmatchedIdx)
+        const { oldHighlighted, newHighlighted } = highlightInlineChanges(
+          collapsedRemoved[unmatchedIdx],
+          actualNewLine
+        )
+        entries.push({ kind: "removed", formatted: oldHighlighted })
+        entries.push({ kind: "added", formatted: newHighlighted })
+      } else {
+        entries.push({
+          kind: "added",
+          formatted: green(`+${actualNewLine}`),
+        })
+      }
+    }
+    newLineIndex++
+  }
+
+  // Remaining unmatched removed statements.
+  for (let j = 0; j < collapsedRemoved.length; j++) {
+    if (!usedCollapsed.has(j)) {
+      entries.push({
+        kind: "removed",
+        formatted: red(`-${collapsedRemoved[j]}`),
+      })
+    }
+  }
+
+  return newLineIndex
 }
 
 // Normalize a file for diffing: apply per-line formatting normalization
@@ -647,8 +594,8 @@ function normalizeFileForDiff(str: string) {
         indent +
         content
           .replace(/['"]/g, '"') // Normalize quotes to double.
-          .replace(/;$/g, "")
-      ) // Remove trailing semicolons.
+          .replace(/;$/g, "") // Remove trailing semicolons.
+      )
     })
     .join("\n")
 }
