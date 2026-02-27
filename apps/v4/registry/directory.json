@@ -679,6 +679,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' class='fill-none!' stroke='var(--foreground)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='size-5'><path d='M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z'></path><path d='M12 22V12'></path><polyline points='3.29 7 12 12 20.71 7'></polyline><path d='m7.5 4.27 9 5.15'></path></svg>"
   },
   {
+    "name": "@terrae",
+    "homepage": "https://www.terrae.dev",
+    "url": "https://www.terrae.dev/{name}.json",
+    "description": "Composable, animated map components for React. Built with TypeScript, Tailwind CSS, Mapbox GL JS, and MapLibre GL. Perfect companion for shadcn/ui.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'><mask id='t-cutout'><rect width='24' height='24' fill='white'/><text x='12' y='18' text-anchor='middle' fill='black' font-size='18' font-weight='600' font-family='system-ui, sans-serif'>t</text></mask><circle cx='12' cy='12' r='11' fill='var(--foreground)' mask='url(#t-cutout)'/></svg>"
+  },
+  {
     "name": "@thegridcn",
     "homepage": "https://thegridcn.com",
     "url": "https://thegridcn.com/r/{name}.json",
