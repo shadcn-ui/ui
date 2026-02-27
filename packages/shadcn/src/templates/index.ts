@@ -1,4 +1,5 @@
 import { astro } from "./astro"
+import { laravel } from "./laravel"
 import { next } from "./next"
 import { reactRouter } from "./react-router"
 import { start } from "./start"
@@ -16,6 +17,7 @@ export const templates = {
   vite,
   start,
   "react-router": reactRouter,
+  laravel,
   astro,
 }
 

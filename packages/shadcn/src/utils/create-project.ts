@@ -44,6 +44,7 @@ export async function createProject(
         choices: Object.entries(templates).map(([key, t]) => ({
           title: t.title,
           value: key,
+          description: t.description,
         })),
         initial: 0,
       },

@@ -102,7 +102,7 @@ export async function preFlightInit(
   let tailwindSpinnerMessage = "Validating Tailwind CSS."
 
   if (projectInfo.tailwindVersion === "v4") {
-    tailwindSpinnerMessage = `Validating Tailwind CSS config. Found ${highlighter.info(
+    tailwindSpinnerMessage = `Validating Tailwind CSS. Found ${highlighter.info(
       "v4"
     )}.`
   }

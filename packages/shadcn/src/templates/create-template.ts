@@ -27,6 +27,7 @@ export interface TemplateInitOptions {
 export interface TemplateConfig {
   name: string
   title: string
+  description?: string
   defaultProjectName: string
   // The template directory name (e.g. "next-app", "vite-app").
   templateDir: string

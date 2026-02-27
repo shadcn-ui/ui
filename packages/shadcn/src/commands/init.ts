@@ -89,7 +89,7 @@ export const init = new Command()
   .argument("[components...]", "names, url or local path to component")
   .option(
     "-t, --template <template>",
-    "the template to use. (next, start, vite, react-router)"
+    "the template to use. (next, start, vite, react-router, laravel)"
   )
   .option("-b, --base <base>", "the component library to use. (radix, base)")
   .option("--monorepo", "scaffold a monorepo project.")
@@ -284,6 +284,7 @@ export const init = new Command()
             choices: Object.entries(templates).map(([value, t]) => ({
               title: t.title,
               value,
+              description: t.description,
             })),
           })
 
@@ -303,6 +304,23 @@ export const init = new Command()
           if (detectedTemplate) {
             options.template = detectedTemplate
           }
+        }
+
+        // Laravel cannot be scaffolded — exit early with instructions.
+        if (options.template === "laravel" && !hasPackageJson) {
+          logger.break()
+          logger.log(
+            `  Please create a new app with ${highlighter.info(
+              "laravel new --react"
+            )} first then run ${highlighter.info("shadcn init")}.`
+          )
+          logger.log(
+            `  See ${highlighter.info(
+              "https://ui.shadcn.com/docs/installation/laravel"
+            )} for more information.`
+          )
+          logger.break()
+          process.exit(0)
         }
 
         // Prompt for monorepo if the template supports it (new projects only).
