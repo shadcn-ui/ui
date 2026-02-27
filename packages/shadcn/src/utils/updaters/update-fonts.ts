@@ -118,7 +118,7 @@ async function updateNextFonts(
   }
 }
 
-async function findLayoutFile(
+export async function findLayoutFile(
   config: Config,
   projectInfo: ProjectInfo
 ): Promise<string | null> {

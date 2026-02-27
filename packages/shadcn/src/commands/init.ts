@@ -305,9 +305,10 @@ export const init = new Command()
           }
         }
 
-        // Prompt for monorepo if the template supports it.
+        // Prompt for monorepo if the template supports it (new projects only).
         if (
           options.monorepo === undefined &&
+          !hasPackageJson &&
           options.template &&
           templates[options.template as keyof typeof templates]?.monorepo
         ) {
