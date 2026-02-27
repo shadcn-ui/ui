@@ -128,7 +128,9 @@ describe("fetchRegistry", () => {
   })
 
   it("should handle 410 errors", async () => {
-    await expect(fetchRegistry(["gone.json"])).rejects.toThrow(RegistryGoneError)
+    await expect(fetchRegistry(["gone.json"])).rejects.toThrow(
+      RegistryGoneError
+    )
   })
 
   it("should handle network errors", async () => {

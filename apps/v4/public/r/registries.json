@@ -12,6 +12,12 @@
     "description": "A set of beautifully designed components designed for developers who want niche, high-utility UI elements that you won't find in standard libraries."
   },
   {
+    "name": "@auth0",
+    "homepage": "https://auth0.com",
+    "url": "https://ui.auth0.com/r/{name}.json",
+    "description": "Official Auth0 Universal Components for Web. Accelerate development with pre-built, embeddable UI for enterprise SSO, MFA, and organization management"
+  },
+  {
     "name": "@abui",
     "homepage": "https://abui.io",
     "url": "https://abui.io/r/{name}.json",
@@ -534,6 +540,12 @@
     "description": "A collection of premium, production-ready shadcn/ui blocks, components and templates."
   },
   {
+    "name": "@shadcnuikit",
+    "homepage": "https://shadcnuikit.com",
+    "url": "https://shadcnuikit.com/r/{name}.json",
+    "description": "Launch your projects faster with admin dashboards, website templates, components, blocks, and pre-built real-world examples."
+  },
+  {
     "name": "@shadcraft",
     "homepage": "https://free.shadcraft.com",
     "url": "https://free.shadcraft.com/r/{name}.json",
@@ -789,6 +801,6 @@
     "name": "@pixelact-ui",
     "homepage": "https://pixelactui.com",
     "url": "https://pixelactui.com/r/{name}.json",
-    "description": "Playful pixel-art style components library built on top of shadcn"
+    "description": "Playful pixel art style components library built on top of shadcn. Perfect for retro style projects and games."
   }
 ]
