@@ -2943,6 +2943,42 @@
         "variable": "--font-mono",
         "subsets": ["latin"]
       }
+    },
+    {
+      "name": "font-lora",
+      "title": "Lora",
+      "type": "registry:font",
+      "font": {
+        "family": "'Lora Variable', serif",
+        "provider": "google",
+        "import": "Lora",
+        "variable": "--font-serif",
+        "subsets": ["latin"]
+      }
+    },
+    {
+      "name": "font-merriweather",
+      "title": "Merriweather",
+      "type": "registry:font",
+      "font": {
+        "family": "'Merriweather Variable', serif",
+        "provider": "google",
+        "import": "Merriweather",
+        "variable": "--font-serif",
+        "subsets": ["latin"]
+      }
+    },
+    {
+      "name": "font-playfair-display",
+      "title": "Playfair Display",
+      "type": "registry:font",
+      "font": {
+        "family": "'Playfair Display Variable', serif",
+        "provider": "google",
+        "import": "Playfair_Display",
+        "variable": "--font-serif",
+        "subsets": ["latin"]
+      }
     }
   ]
 }

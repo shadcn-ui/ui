@@ -13,6 +13,7 @@ import { Project, ScriptKind } from "ts-morph"
 
 import { getAllBlocks } from "@/lib/blocks"
 import { legacyStyles } from "@/registry/_legacy-styles"
+import { BASE_COLORS } from "@/registry/base-colors"
 import { BASES, type Base } from "@/registry/bases"
 import { PRESETS } from "@/registry/config"
 import { STYLES } from "@/registry/styles"
@@ -116,6 +117,9 @@ try {
 
   console.log("\n📋 Building public/r/registries.json...")
   await buildRegistriesJson()
+
+  console.log("\n🎨 Building public/r/colors...")
+  await buildColors()
 
   // Batch format all collected files with prettier at the end.
   if (prettierPaths.length > 0) {
@@ -792,6 +796,45 @@ async function buildTemplates() {
       })
 
       console.log(`   ✅ ${name}.tar.gz`)
+    })
+  )
+}
+
+async function buildColors() {
+  const colorsTargetPath = path.join(process.cwd(), "public/r/colors")
+  await rimraf(colorsTargetPath)
+  await fs.mkdir(colorsTargetPath, { recursive: true })
+
+  await Promise.all(
+    BASE_COLORS.map(async (baseColor) => {
+      const light = (baseColor.cssVars?.light ?? {}) as Record<string, string>
+      const dark = (baseColor.cssVars?.dark ?? {}) as Record<string, string>
+
+      const cssVarKeys = Object.keys(light).filter(
+        (key) => !key.startsWith("sidebar")
+      )
+
+      const rootVars = cssVarKeys
+        .map((key) => `    --${key}: ${light[key]};`)
+        .join("\n")
+      const darkVars = cssVarKeys
+        .filter((key) => dark[key])
+        .map((key) => `    --${key}: ${dark[key]};`)
+        .join("\n")
+
+      const payload = {
+        inlineColors: { light, dark },
+        cssVars: { light, dark },
+        cssVarsV4: baseColor.cssVars,
+        inlineColorsTemplate:
+          "@tailwind base;\n@tailwind components;\n@tailwind utilities;\n  ",
+        cssVarsTemplate: `@tailwind base;\n@tailwind components;\n@tailwind utilities;\n\n@layer base {\n  :root {\n${rootVars}\n  }\n\n  .dark {\n${darkVars}\n  }\n}\n\n@layer base {\n  * {\n    @apply border-border;\n  }\n  body {\n    @apply bg-background text-foreground;\n  }\n}`,
+      }
+
+      const outputPath = path.join(colorsTargetPath, `${baseColor.name}.json`)
+      await fs.writeFile(outputPath, JSON.stringify(payload, null, 2))
+      prettierPaths.push(outputPath)
+      console.log(`   ✅ ${baseColor.name}.json`)
     })
   )
 }
