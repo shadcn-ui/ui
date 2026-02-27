@@ -534,6 +534,12 @@
     "description": "A collection of premium, production-ready shadcn/ui blocks, components and templates."
   },
   {
+    "name": "@shadcnuikit",
+    "homepage": "https://shadcnuikit.com",
+    "url": "https://shadcnuikit.com/r/{name}.json",
+    "description": "Launch your projects faster with admin dashboards, website templates, components, blocks, and pre-built real-world examples."
+  },
+  {
     "name": "@shadcraft",
     "homepage": "https://free.shadcraft.com",
     "url": "https://free.shadcraft.com/r/{name}.json",
@@ -789,6 +795,6 @@
     "name": "@pixelact-ui",
     "homepage": "https://pixelactui.com",
     "url": "https://pixelactui.com/r/{name}.json",
-    "description": "Playful pixel-art style components library built on top of shadcn"
+    "description": "Playful pixel art style components library built on top of shadcn. Perfect for retro style projects and games."
   }
 ]
