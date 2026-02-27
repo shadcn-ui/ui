@@ -75,14 +75,25 @@ shadcn docs button dialog select
 1. **Get project context** — already injected above. Run `shadcn info` again if you need to refresh.
 2. **Check installed components** — look in the `resolvedPaths.ui` directory before importing or adding. Don't import components that haven't been added, and don't re-add ones already installed.
 3. **Find components** — MCP `shadcn:search_items_in_registries` or `shadcn search`.
-4. **Get docs and examples** — run `shadcn docs <component>` to get URLs, then fetch them. Alternatively use MCP `shadcn:view_items_in_registries` or `shadcn view`.
-5. **Install** — MCP `shadcn:get_add_command_for_items` or `shadcn add`.
+4. **Get docs and examples** — run `shadcn docs <component>` to get URLs, then fetch them. Alternatively use MCP `shadcn:view_items_in_registries` or `shadcn view`. Note: `shadcn view` is for browsing registry items you haven't installed. To preview changes to installed components, use `shadcn add --diff`.
+5. **Install or update** — MCP `shadcn:get_add_command_for_items` or `shadcn add`. When updating existing components, use `--dry-run` and `--diff` to preview changes first (see [Updating Components](#updating-components) below).
 6. **Fix imports in third-party components** — After adding components from community registries (e.g. `@bundui`, `@magicui`), check the added non-UI files for hardcoded import paths like `@/components/ui/...`. These won't match the project's actual aliases. Use `shadcn info` to get the correct `ui` alias (e.g. `@workspace/ui/components`) and rewrite the imports accordingly. The CLI rewrites imports for its own UI files, but third-party registry components may use default paths that don't match the project.
 7. **Verify** — MCP `shadcn:get_audit_checklist`.
-
 8. **Switching presets** — Before running `shadcn init --preset <code>` in an existing project, always ask the user if they'd like to reinstall existing UI components. If yes, use the `--reinstall` flag to overwrite them with the new preset styles.
 
 If MCP is unavailable, use CLI: `shadcn search`, `shadcn view`, `shadcn add`.
+
+## Updating Components
+
+When the user asks to update a component from upstream while keeping their local changes, use `--dry-run` and `--diff` to intelligently merge. **NEVER fetch raw files from GitHub manually — always use the CLI.**
+
+1. Run `shadcn add <component> --dry-run` to see all files that would be affected.
+2. For each file, run `shadcn add <component> --diff <file>` to see what changed upstream vs local.
+3. Decide per file based on the diff:
+   - No local changes → safe to overwrite.
+   - Has local changes → read the local file, analyze the diff, and apply upstream updates while preserving local modifications.
+   - User says "just update everything" → use `--overwrite`, but confirm first.
+4. **Never use `--overwrite` without the user's explicit approval.**
 
 ## Quick Reference
 
@@ -104,6 +115,11 @@ shadcn add button card dialog
 shadcn add @magicui/shimmer-button
 shadcn add --all
 
+# Preview changes before adding/updating.
+shadcn add button --dry-run
+shadcn add button --diff button.tsx
+shadcn add button --view button.tsx
+
 # Search registries.
 shadcn search @shadcn -q "sidebar"
 shadcn search @blocks -q "stats"
@@ -111,7 +127,7 @@ shadcn search @blocks -q "stats"
 # Get component docs and example URLs.
 shadcn docs button dialog select
 
-# View item details.
+# View registry item details (for items not yet installed).
 shadcn view @shadcn/button
 ```
 

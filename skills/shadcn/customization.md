@@ -2,6 +2,17 @@
 
 Components reference semantic CSS variable tokens. Change the variables to change every component.
 
+## Contents
+
+- How it works (CSS variables → Tailwind utilities → components)
+- Color variables and OKLCH format
+- Dark mode setup
+- Changing the theme (presets, CSS variables)
+- Adding custom colors (Tailwind v3 and v4)
+- Border radius
+- Customizing components (variants, className, wrappers)
+- Checking for updates
+
 ---
 
 ## How It Works
@@ -178,3 +189,12 @@ export function ConfirmDialog({ title, description, onConfirm, children }) {
 shadcn diff          # all components with available updates
 shadcn diff button   # specific component
 ```
+
+To preview exactly what would change before updating, use `--dry-run` and `--diff`:
+
+```bash
+shadcn add button --dry-run        # see all affected files
+shadcn add button --diff button.tsx # see the diff for a specific file
+```
+
+See [Updating Components in SKILL.md](./SKILL.md#updating-components) for the full smart merge workflow.

@@ -2,6 +2,20 @@
 
 Build and publish your own shadcn/ui-compatible component registry. Registries let you distribute reusable components, blocks, hooks, and utilities that others can install with a single command.
 
+## Contents
+
+- Overview and directory structure
+- registry.json format (required fields, item fields)
+- Item types (registry:ui, registry:block, registry:hook, etc.)
+- File objects and target paths
+- Dependencies (NPM and registry)
+- CSS variables and CSS rules
+- Environment variables
+- Building and hosting
+- User configuration (simple, authenticated)
+- Community registry index
+- Examples (minimal registry, multi-file block)
+
 ---
 
 ## Overview

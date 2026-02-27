@@ -4,6 +4,17 @@ Rules and examples for composing shadcn/ui components.
 
 > **Note:** Examples below use `@/` as the import prefix. Always use the actual `aliasPrefix` from `shadcn info` for the target project. Similarly, icon imports depend on the project's `iconLibrary` — use `lucide-react` for `lucide`, `@tabler/icons-react` for `tabler`, `@phosphor-icons/react` for `phosphor`, etc. Never assume `lucide-react`.
 
+## Contents
+
+- Component selection table
+- Forms (FieldGroup, Field, form controls)
+- Toggle groups
+- Alerts
+- Overlays
+- Empty states
+- Toast notifications
+- Base-specific patterns
+
 ---
 
 ## Component Selection
@@ -190,41 +201,129 @@ toast("File deleted.", {
 })
 ```
 
+
+
 ---
 
-## Composition Rules
+## Base-Specific Patterns
 
-1. **Use `asChild` (radix) or `render` (base) for custom triggers.** Don't wrap triggers in extra elements. Check the `base` field from `shadcn info` to determine which prop to use.
+Check the `base` field from `shadcn info` to determine which patterns to use.
 
-2. **Use `Field` components for forms, not raw divs.** Never use `div` with `space-y-*` or `grid gap-*` for form layout. Use `FieldGroup` for the form container and `Field` for each control. Use `FieldLabel` for labelled inputs, `FieldTitle` for headings, `FieldDescription` for helper text.
+### Composition: asChild (radix) vs render (base)
 
-3. **Use existing UI components before custom markup.** Before writing a styled `div`, check if a component already exists: `Alert` for callouts, `ToggleGroup` for option sets, `Empty` for empty states, etc.
+Radix uses `asChild` to replace the default element. Base UI uses `render` instead.
 
-4. **Use `className` for layout, not styling.** Add layout utilities (`w-full`, `grid`, `flex`, `gap-*`) but avoid overriding component colors or typography.
+```tsx
+// radix.
+<DialogTrigger asChild>
+  <Button>Open</Button>
+</DialogTrigger>
 
-5. **Prefer built-in variants.** Use `variant="outline"`, `variant="ghost"`, `size="sm"` etc. before adding custom classes.
+// base.
+<DialogTrigger render={<Button />}>Open</DialogTrigger>
+```
 
-6. **Compose, don't customize.** Build complex UIs by composing multiple simple components rather than heavily customizing a single one.
+```tsx
+// radix.
+<DropdownMenuTrigger asChild>
+  <Button variant="ghost" size="icon">Menu</Button>
+</DropdownMenuTrigger>
 
-7. **Add `"use client"` at RSC boundaries.** When `isRSC` is `true` (from `shadcn info`), components that use `useState`, `useEffect`, event handlers (`onClick`, `onChange`, etc.), or browser APIs must start with `"use client"`. Keep client boundaries as low in the tree as possible.
+// base.
+<DropdownMenuTrigger render={<Button variant="ghost" size="icon" />}>
+  Menu
+</DropdownMenuTrigger>
+```
 
-8. **Keep components small and focused.** A component should render itself and its own interactions (e.g. a card + its dialog). Page-level layout, data arrays, and loops belong in the page, not the component.
+### Button as a link (base only)
 
-9. **Pass data directly, not keys.** When passing icons or other references through props, pass the actual objects (e.g. `icon={ComputerTerminal01Icon}`), not string keys to a lookup map.
+When `render` changes a `Button` to a non-button element (`<a>`, `<span>`), add `nativeButton={false}` so Base UI doesn't apply button-specific behavior.
 
-10. **Always wrap items and labels in a Group.** For menu-like components, items, labels, and subs must be direct children of their group component. Never place them directly inside the content container.
-   - `DropdownMenuItem`, `DropdownMenuLabel`, `DropdownMenuSub` → inside `DropdownMenuGroup`
-   - `MenubarItem`, `MenubarLabel`, `MenubarSub` → inside `MenubarGroup`
-   - `ContextMenuItem`, `ContextMenuLabel`, `ContextMenuSub` → inside `ContextMenuGroup`
-   - `SelectItem`, `SelectLabel` → inside `SelectGroup`
-   - `CommandItem` → inside `CommandGroup`
+```tsx
+// base.
+<Button render={<a href="/docs" />} nativeButton={false}>
+  Read the docs
+</Button>
 
-11. **Always use `data-icon` on icons inside buttons.** When placing an icon inside a `Button`, add `data-icon="inline-start"` for prefix icons or `data-icon="inline-end"` for suffix icons. This ensures correct spacing. Never add sizing classes to the icon — the button handles sizing automatically.
+// radix equivalent.
+<Button asChild>
+  <a href="/docs">Read the docs</a>
+</Button>
+```
 
-12. **Always use `InputGroupInput` and `InputGroupTextarea` inside an `InputGroup`.** Never use the base `Input` or `Textarea` components directly inside an `InputGroup`. The input-group variants reset borders, backgrounds, and focus rings to compose correctly within the group.
+### Non-button trigger elements (base only)
 
-13. **Buttons inside inputs use `InputGroup` + `InputGroupAddon`.** Never place a `Button` directly inside or adjacent to an `Input` with custom positioning. Wrap in `InputGroup` and use `InputGroupAddon` for the button.
+When a trigger's `render` is not a `Button` (e.g. `InputGroupAddon`), add `nativeButton={false}`.
 
-14. **`InputGroupAddon` must use `InputGroupButton`.** Never place a raw `Button` inside `InputGroupAddon`. Always use `InputGroupButton` instead.
+```tsx
+// base.
+<PopoverTrigger render={<InputGroupAddon />} nativeButton={false}>
+  Pick date
+</PopoverTrigger>
+```
 
-15. **`InputGroupButton` sizing depends on addon alignment.** When `InputGroupAddon` is `align="inline-start"` or `align="inline-end"`, prefer `size="icon-sm"` or `size="icon-xs"` (icon-only buttons). When `align="block-start"` or `align="block-end"`, prefer `size="xs"` or `size="sm"` (buttons with text).
+### Select: items prop (base only)
+
+Base `Select` requires an `items` prop on the root. It also supports `multiple` and `itemToStringValue` props.
+
+```tsx
+// base.
+const items = ["Admin", "Member", "Viewer"]
+
+<Select items={items}>
+  <SelectTrigger>
+    <SelectValue placeholder="Choose a role" />
+  </SelectTrigger>
+  <SelectContent>
+    {items.map((item) => (
+      <SelectItem key={item} value={item}>{item}</SelectItem>
+    ))}
+  </SelectContent>
+</Select>
+```
+
+Radix `Select` uses JSX only — no `items` prop. Use `placeholder` on `SelectValue`.
+
+```tsx
+// radix.
+<Select>
+  <SelectTrigger>
+    <SelectValue placeholder="Choose a role" />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectItem value="admin">Admin</SelectItem>
+    <SelectItem value="member">Member</SelectItem>
+    <SelectItem value="viewer">Viewer</SelectItem>
+  </SelectContent>
+</Select>
+```
+
+### Accordion: type prop (radix only)
+
+Radix requires `type="single"` or `type="multiple"` and supports `collapsible`. The `defaultValue` is a string.
+
+```tsx
+// radix.
+<Accordion type="single" collapsible defaultValue="item-1">
+  <AccordionItem value="item-1">...</AccordionItem>
+</Accordion>
+```
+
+Base uses no `type` prop. Use the `multiple` prop for multi-select. The `defaultValue` is an array.
+
+```tsx
+// base.
+<Accordion defaultValue={["item-1"]}>
+  <AccordionItem value="item-1">...</AccordionItem>
+</Accordion>
+
+// base multi-select.
+<Accordion multiple defaultValue={["item-1", "item-2"]}>
+  <AccordionItem value="item-1">...</AccordionItem>
+  <AccordionItem value="item-2">...</AccordionItem>
+</Accordion>
+```
+
+---
+
+For composition rules (asChild/render, className usage, Groups, data-icon, InputGroup, etc.), see the **Critical Rules** section in [SKILL.md](./SKILL.md#critical-rules).

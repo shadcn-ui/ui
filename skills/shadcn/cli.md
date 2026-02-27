@@ -4,6 +4,13 @@ All commands use `shadcn <command>`. Configuration is read from `components.json
 
 > **IMPORTANT:** Always use the `shadcn` command directly. Never prefix with `npx`, `pnpm dlx`, or any package runner.
 
+## Contents
+
+- Commands: init, add (dry-run, smart merge), search, view, docs, diff, info, build
+- Templates: next, vite, start, react-router, astro
+- Presets: named, code, URL formats and fields
+- Switching presets
+
 ---
 
 ## Commands
@@ -35,6 +42,8 @@ Initializes shadcn/ui in an existing project or creates a new project (when `--n
 
 ### `add` — Add components
 
+> **IMPORTANT:** To compare local components against upstream or to preview changes, ALWAYS use `shadcn add <component> --dry-run`, `--diff`, or `--view`. NEVER fetch raw files from GitHub or other sources manually. The CLI handles registry resolution, file paths, and CSS diffing automatically.
+
 ```bash
 shadcn add [components...] [options]
 ```
@@ -49,6 +58,43 @@ Accepts component names, registry-prefixed names (`@magicui/shimmer-button`), UR
 | `--all` | `-a` | Add all available components | `false` |
 | `--path <path>` | `-p` | Target path for the component | — |
 | `--silent` | `-s` | Mute output | `false` |
+| `--dry-run` | | Preview all changes without writing files | `false` |
+| `--diff <path>` | | Show the diff for a specific file (implies `--dry-run`) | — |
+| `--view <path>` | | Show the full content of a specific file (implies `--dry-run`) | — |
+
+#### Dry-Run Mode
+
+Use `--dry-run` to preview what `add` would do without writing any files. `--diff` and `--view` both imply `--dry-run`.
+
+```bash
+# Preview all changes.
+shadcn add button --dry-run
+
+# Show the diff for a specific file.
+shadcn add button --diff button.tsx
+
+# Show the full content of a specific file.
+shadcn add button --view button.tsx
+
+# Works with URLs too.
+shadcn add https://api.npoint.io/abc123 --dry-run
+
+# CSS diffs.
+shadcn add button --diff globals.css
+```
+
+**When to use dry-run:**
+
+- When the user asks "what files will this add?" or "what will this change?" — use `--dry-run`.
+- Before overwriting existing components — use `--diff` to preview the changes first.
+- When the user wants to inspect component source code without installing — use `--view`.
+- When checking what CSS changes would be made to `globals.css` — use `--diff globals.css`.
+
+> **`shadcn add --dry-run` vs `shadcn view`:** Prefer `shadcn add --dry-run/--diff/--view` over `shadcn view` when the user wants to preview changes to their project. `shadcn view` only shows raw registry metadata. `shadcn add --dry-run` shows exactly what would happen in the user's project: resolved file paths, diffs against existing files, and CSS updates. Use `shadcn view` only when the user wants to browse registry info without a project context.
+
+#### Smart Merge from Upstream
+
+See [Updating Components in SKILL.md](./SKILL.md#updating-components) for the full workflow.
 
 ### `search` — Search registries
 
