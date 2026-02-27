@@ -262,40 +262,157 @@ When a trigger's `render` is not a `Button` (e.g. `InputGroupAddon`), add `nativ
 </PopoverTrigger>
 ```
 
-### Select: items prop (base only)
+### Select (base vs radix)
 
-Base `Select` requires an `items` prop on the root. It also supports `multiple` and `itemToStringValue` props.
+**items prop (base only).** Base `Select` requires an `items` prop on the root. Radix uses JSX only — no `items` prop.
 
 ```tsx
 // base.
-const items = ["Admin", "Member", "Viewer"]
+const items = [
+  { label: "Select a fruit", value: null },
+  { label: "Apple", value: "apple" },
+  { label: "Banana", value: "banana" },
+]
 
 <Select items={items}>
   <SelectTrigger>
-    <SelectValue placeholder="Choose a role" />
+    <SelectValue />
   </SelectTrigger>
   <SelectContent>
-    {items.map((item) => (
-      <SelectItem key={item} value={item}>{item}</SelectItem>
-    ))}
+    <SelectGroup>
+      {items.map((item) => (
+        <SelectItem key={item.value} value={item.value}>{item.label}</SelectItem>
+      ))}
+    </SelectGroup>
+  </SelectContent>
+</Select>
+
+// radix.
+<Select>
+  <SelectTrigger>
+    <SelectValue placeholder="Select a fruit" />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectGroup>
+      <SelectItem value="apple">Apple</SelectItem>
+      <SelectItem value="banana">Banana</SelectItem>
+    </SelectGroup>
   </SelectContent>
 </Select>
 ```
 
-Radix `Select` uses JSX only — no `items` prop. Use `placeholder` on `SelectValue`.
+**Placeholder.** Base uses a `{ value: null }` item in the items array. Radix uses `<SelectValue placeholder="...">`.
+
+**Multiple selection (base only).** Base supports `multiple` and render-function children on `SelectValue`. Radix has no multi-select.
 
 ```tsx
-// radix.
-<Select>
+// base.
+<Select items={items} multiple defaultValue={[]}>
   <SelectTrigger>
-    <SelectValue placeholder="Choose a role" />
+    <SelectValue>
+      {(value: string[]) => {
+        if (value.length === 0) return "Select fruits"
+        return `${value.length} selected`
+      }}
+    </SelectValue>
   </SelectTrigger>
-  <SelectContent>
-    <SelectItem value="admin">Admin</SelectItem>
-    <SelectItem value="member">Member</SelectItem>
-    <SelectItem value="viewer">Viewer</SelectItem>
-  </SelectContent>
+  <SelectContent>...</SelectContent>
 </Select>
+```
+
+**Object values (base only).** Base supports object values with `itemToStringValue` and a render function on `SelectValue`. Radix uses string values only.
+
+```tsx
+// base.
+<Select
+  defaultValue={plans[0]}
+  itemToStringValue={(plan) => plan.name}
+>
+  <SelectTrigger>
+    <SelectValue>{(value) => value.name}</SelectValue>
+  </SelectTrigger>
+  ...
+</Select>
+
+// radix — string values, controlled state.
+const [plan, setPlan] = React.useState<string>("starter")
+<Select value={plan} onValueChange={setPlan}>...</Select>
+```
+
+**Content positioning.** Base uses `alignItemWithTrigger`. Radix uses `position`.
+
+```tsx
+// base.
+<SelectContent alignItemWithTrigger={false} side="bottom">
+
+// radix.
+<SelectContent position="popper">
+```
+
+### ToggleGroup: multiple (base) vs type (radix)
+
+Base uses a `multiple` boolean prop. Radix uses `type="single"` or `type="multiple"`.
+
+```tsx
+// base — single selection (no prop needed).
+<ToggleGroup defaultValue={["daily"]} spacing={2}>
+  <ToggleGroupItem value="daily">Daily</ToggleGroupItem>
+  <ToggleGroupItem value="weekly">Weekly</ToggleGroupItem>
+</ToggleGroup>
+
+// base — multi-selection.
+<ToggleGroup multiple>
+  <ToggleGroupItem value="bold">Bold</ToggleGroupItem>
+  <ToggleGroupItem value="italic">Italic</ToggleGroupItem>
+</ToggleGroup>
+
+// radix — single selection.
+<ToggleGroup type="single" defaultValue="daily" spacing={2}>
+  <ToggleGroupItem value="daily">Daily</ToggleGroupItem>
+  <ToggleGroupItem value="weekly">Weekly</ToggleGroupItem>
+</ToggleGroup>
+
+// radix — multi-selection.
+<ToggleGroup type="multiple">
+  <ToggleGroupItem value="bold">Bold</ToggleGroupItem>
+  <ToggleGroupItem value="italic">Italic</ToggleGroupItem>
+</ToggleGroup>
+```
+
+**defaultValue / value type.** Base always uses arrays. Radix uses string for single, array for multiple.
+
+```tsx
+// base — controlled single.
+const [value, setValue] = React.useState("normal")
+<ToggleGroup value={[value]} onValueChange={(v) => setValue(v[0])}>
+
+// radix — controlled single.
+const [value, setValue] = React.useState("normal")
+<ToggleGroup type="single" value={value} onValueChange={setValue}>
+```
+
+### Slider: defaultValue (base vs radix)
+
+Base accepts a plain number for a single thumb. Radix always requires an array.
+
+```tsx
+// base.
+<Slider defaultValue={50} max={100} step={1} />
+
+// radix.
+<Slider defaultValue={[50]} max={100} step={1} />
+```
+
+Both use arrays for range sliders. Controlled `onValueChange` in base may need a cast.
+
+```tsx
+// base.
+const [value, setValue] = React.useState([0.3, 0.7])
+<Slider value={value} onValueChange={(v) => setValue(v as number[])} />
+
+// radix.
+const [value, setValue] = React.useState([0.3, 0.7])
+<Slider value={value} onValueChange={setValue} />
 ```
 
 ### Accordion: type prop (radix only)

@@ -89,6 +89,7 @@ shadcn add button --diff globals.css
 - Before overwriting existing components — use `--diff` to preview the changes first.
 - When the user wants to inspect component source code without installing — use `--view`.
 - When checking what CSS changes would be made to `globals.css` — use `--diff globals.css`.
+- When the user asks to review or audit third-party registry code before installing — use `--view` to inspect the source.
 
 > **`shadcn add --dry-run` vs `shadcn view`:** Prefer `shadcn add --dry-run/--diff/--view` over `shadcn view` when the user wants to preview changes to their project. `shadcn view` only shows raw registry metadata. `shadcn add --dry-run` shows exactly what would happen in the user's project: resolved file paths, diffs against existing files, and CSS updates. Use `shadcn view` only when the user wants to browse registry info without a project context.
 
