@@ -12,6 +12,7 @@ let make = (
   ~readOnly=?,
   ~required=?,
   ~placeholder=?,
+  ~pattern=?,
   ~onValueChange=?,
   ~onClick=?,
   ~onKeyDown=?,
@@ -32,6 +33,7 @@ let make = (
     ?readOnly
     ?required
     ?placeholder
+    ?pattern
     ?onValueChange
     ?onClick
     ?onKeyDown

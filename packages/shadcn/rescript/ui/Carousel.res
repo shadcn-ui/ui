@@ -4,6 +4,9 @@
 
 open BaseUi.Types
 
+@module("tailwind-merge")
+external twMerge: string => string = "twMerge"
+
 type carouselApi
 type carouselRef = ReactDOM.domRef
 
@@ -22,6 +25,7 @@ module EmblaOptions = {
     containScroll?: string,
     direction?: string,
     slidesToScroll?: int,
+    align?: string,
     dragFree?: bool,
     dragThreshold?: float,
     inViewThreshold?: float,
@@ -48,6 +52,8 @@ external useEmblaCarousel: (
 @send external scrollNextApi: carouselApi => unit = "scrollNext"
 @send external canScrollPrevApi: carouselApi => bool = "canScrollPrev"
 @send external canScrollNextApi: carouselApi => bool = "canScrollNext"
+@send external scrollSnapListApi: carouselApi => array<float> = "scrollSnapList"
+@send external selectedScrollSnapApi: carouselApi => int = "selectedScrollSnap"
 @send external onApi: (carouselApi, string, carouselApi => unit) => unit = "on"
 @send external offApi: (carouselApi, string, carouselApi => unit) => unit = "off"
 
@@ -77,6 +83,8 @@ let make = (
   ~id=?,
   ~style=?,
   ~onClick=?,
+  ~onMouseEnter=?,
+  ~onMouseLeave=?,
   ~orientation=DataOrientation.Horizontal,
   ~opts: EmblaOptions.t={},
   ~plugins=?,
@@ -161,9 +169,11 @@ let make = (
       ?id
       ?style
       ?onClick
+      ?onMouseEnter
+      ?onMouseLeave
       onKeyDownCapture={handleKeyDownCapture}
       dataSlot="carousel"
-      className={className == "" ? "relative" : `relative ${className}`}
+      className={twMerge(`relative ${className}`)}
       role="region"
       ariaRoledescription="carousel"
       ?children
@@ -195,9 +205,11 @@ module Content = {
         ?onClick
         ?onKeyDown
         ?children
-        className={`flex ${orientation == DataOrientation.Horizontal
-            ? "-ml-4"
-            : "-mt-4 flex-col"} ${className}`}
+        className={twMerge(
+          `flex ${orientation == DataOrientation.Horizontal
+              ? "-ml-4"
+              : "-mt-4 flex-col"} ${className}`,
+        )}
       />
     </div>
   }
@@ -229,9 +241,11 @@ module Item = {
       role="group"
       ariaRoledescription="slide"
       dataSlot="carousel-item"
-      className={`min-w-0 shrink-0 grow-0 basis-full ${orientation == DataOrientation.Horizontal
-          ? "pl-4"
-          : "pt-4"} ${className}`}
+      className={twMerge(
+        `min-w-0 shrink-0 grow-0 basis-full ${orientation == DataOrientation.Horizontal
+            ? "pl-4"
+            : "pt-4"} ${className}`,
+      )}
     />
   }
 }
@@ -254,10 +268,12 @@ module Previous = {
     | None => _ => scrollPrev()
     }
     <Button
-      className={`absolute touch-manipulation rounded-full ${orientation ==
-          DataOrientation.Horizontal
-          ? "top-1/2 -left-12 -translate-y-1/2"
-          : "-top-12 left-1/2 -translate-x-1/2 rotate-90"} ${className}`}
+      className={twMerge(
+        `absolute touch-manipulation rounded-full ${orientation ==
+            DataOrientation.Horizontal
+            ? "top-1/2 -left-12 -translate-y-1/2"
+            : "-top-12 left-1/2 -translate-x-1/2 rotate-90"} ${className}`,
+      )}
       variant
       size
       ?nativeButton
@@ -292,10 +308,12 @@ module Next = {
     | None => _ => scrollNext()
     }
     <Button
-      className={`absolute touch-manipulation rounded-full ${orientation ==
-          DataOrientation.Horizontal
-          ? "top-1/2 -right-12 -translate-y-1/2"
-          : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90"} ${className}`}
+      className={twMerge(
+        `absolute touch-manipulation rounded-full ${orientation ==
+            DataOrientation.Horizontal
+            ? "top-1/2 -right-12 -translate-y-1/2"
+            : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90"} ${className}`,
+      )}
       variant
       size
       ?style

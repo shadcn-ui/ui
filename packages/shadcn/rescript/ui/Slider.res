@@ -38,10 +38,10 @@ let make = (
 ) =>
   {
     let valuesLength = switch value {
-    | Some(value) => value->lengthIfArray->Option.getOr(1)
+    | Some(value) => value->lengthIfArray->Option.getOr(2)
     | None =>
       switch defaultValue {
-      | Some(defaultValue) => defaultValue->lengthIfArray->Option.getOr(1)
+      | Some(defaultValue) => defaultValue->lengthIfArray->Option.getOr(2)
       | None => 2
       }
     }

@@ -26,6 +26,7 @@ let make = (
   ~style=?,
   ~onClick=?,
   ~onKeyDown=?,
+  ~ariaLabel=?,
   ~orientation=?,
   ~dataOrientation=?,
 ) => {
@@ -46,6 +47,7 @@ let make = (
     ?style
     ?onClick
     ?onKeyDown
+    ?ariaLabel
     ?children
     role="group"
     ?dataOrientation

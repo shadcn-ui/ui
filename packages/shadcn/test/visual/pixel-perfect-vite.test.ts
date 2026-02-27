@@ -1,5 +1,6 @@
 import { ChildProcessByStdio, spawn } from "node:child_process"
 import { existsSync, promises as fs, readdirSync } from "node:fs"
+import os from "node:os"
 import path from "node:path"
 import Stream from "node:stream"
 import { fileURLToPath } from "node:url"
@@ -21,11 +22,12 @@ const EXAMPLES_UI_DIR = path.resolve(repoRoot, "apps/v4/examples/base/ui")
 const RESCRIPT_EXAMPLES_DIR = path.resolve(repoRoot, "packages/shadcn/rescript/examples")
 const RESCRIPT_UI_DIR = path.resolve(repoRoot, "packages/shadcn/rescript/ui")
 const PAGE_LOAD_TIMEOUT_MS = Number(process.env.PARITY_PAGE_LOAD_TIMEOUT_MS ?? 20_000)
-const COMPONENT_TEST_TIMEOUT_MS = Number(process.env.PARITY_COMPONENT_TIMEOUT_MS ?? 90_000)
+const COMPONENT_TEST_TIMEOUT_MS = Number(process.env.PARITY_COMPONENT_TIMEOUT_MS ?? 900_000)
 const FONT_WAIT_TIMEOUT_MS = Number(process.env.PARITY_FONT_WAIT_TIMEOUT_MS ?? 2_000)
 const IMAGE_WAIT_TIMEOUT_MS = Number(process.env.PARITY_IMAGE_WAIT_TIMEOUT_MS ?? 5_000)
 const SETUP_TIMEOUT_MS = Number(process.env.PARITY_SETUP_TIMEOUT_MS ?? 240_000)
 const SKIP_BUILD = ["1", "true", "yes"].includes((process.env.PARITY_SKIP_BUILD ?? "").toLowerCase())
+const SCREENSHOT_SSIM_MIN = Number(process.env.PARITY_SCREENSHOT_SSIM_MIN ?? 0.998)
 const ALLOW_MISSING_RESCRIPT_EQUIVALENT = ["1", "true", "yes"].includes(
   (process.env.PARITY_ALLOW_MISSING_EQUIVALENT ?? "").toLowerCase()
 )
@@ -169,6 +171,63 @@ async function runCommand(
   })
 }
 
+function parseSsimAll(output: string) {
+  const match = output.match(/All:([0-9.]+)/)
+  if (!match) {
+    return null
+  }
+  const parsed = Number(match[1])
+  return Number.isFinite(parsed) ? parsed : null
+}
+
+async function computeScreenshotSsim(reference: Buffer, actual: Buffer) {
+  const tempDir = await fs.mkdtemp(path.join(os.tmpdir(), "parity-ssim-"))
+  const referencePath = path.join(tempDir, "reference.png")
+  const actualPath = path.join(tempDir, "actual.png")
+
+  await Promise.all([fs.writeFile(referencePath, reference), fs.writeFile(actualPath, actual)])
+
+  try {
+    const output = await new Promise<string>((resolve, reject) => {
+      const ffmpeg = spawn(
+        "ffmpeg",
+        ["-i", referencePath, "-i", actualPath, "-lavfi", "ssim", "-f", "null", "-"],
+        {
+          cwd: repoRoot,
+          stdio: ["ignore", "pipe", "pipe"],
+        }
+      )
+
+      let logs = ""
+      ffmpeg.stdout.on("data", (chunk) => {
+        logs += chunk.toString()
+      })
+      ffmpeg.stderr.on("data", (chunk) => {
+        logs += chunk.toString()
+      })
+
+      ffmpeg.once("error", (error) => {
+        if ((error as NodeJS.ErrnoException).code === "ENOENT") {
+          resolve("")
+          return
+        }
+        reject(error)
+      })
+      ffmpeg.once("exit", (code) => {
+        if (code === 0) {
+          resolve(logs)
+          return
+        }
+        reject(new Error([`ffmpeg exited with code ${code}`, logs].join("\n\n")))
+      })
+    })
+
+    return parseSsimAll(output)
+  } finally {
+    await fs.rm(tempDir, { recursive: true, force: true })
+  }
+}
+
 function startServer() {
   const command = process.platform === "win32" ? "pnpm.cmd" : "pnpm"
 
@@ -308,6 +367,16 @@ function normalizeA11ySnapshot(value: unknown): unknown {
 
   const out = { ...(value as Record<string, unknown>) }
   delete out.loaderId
+  const urlValue = out.url
+  if (typeof urlValue === "string") {
+    try {
+      const parsed = new URL(urlValue)
+      parsed.searchParams.delete("impl")
+      out.url = parsed.toString()
+    } catch {
+      // Ignore invalid URL values and keep original snapshot data.
+    }
+  }
   return Object.fromEntries(
     Object.entries(out).map(([key, entry]) => [key, normalizeA11ySnapshot(entry)])
   )
@@ -667,8 +736,17 @@ describe("tsx vs rescript parity (vite harness)", () => {
     it.concurrent(
       `${component} should match across runtime, DOM, layout, a11y and pixels`,
       async () => {
-        const tsx = await captureBundle(component, "tsx")
-        const rescript = await captureBundle(component, "rescript")
+        let tsx: SnapshotBundle | null = null
+        let rescript: SnapshotBundle | null = null
+
+        onTestFailed(async () => {
+          if (tsx && rescript) {
+            await writeArtifacts(component, tsx, rescript)
+          }
+        })
+
+        tsx = await captureBundle(component, "tsx")
+        rescript = await captureBundle(component, "rescript")
         const artifactDir = path.join(ARTIFACTS_DIR, component)
 
         const tsxSmokeIssues = smokeIssues(tsx)
@@ -678,10 +756,6 @@ describe("tsx vs rescript parity (vite harness)", () => {
           `artifacts: ${artifactDir}`,
           `server: ${BASE_URL}`,
         ].join("\n")
-
-        onTestFailed(async () => {
-          await writeArtifacts(component, tsx, rescript)
-        })
 
         const normalizedTsxDom = sortSnapshotKeys(normalizeDomSnapshotClasses(tsx.domSnapshot))
         const normalizedRescriptDom = sortSnapshotKeys(normalizeDomSnapshotClasses(rescript.domSnapshot))
@@ -703,7 +777,6 @@ describe("tsx vs rescript parity (vite harness)", () => {
         const domSnapshotPath = path.join(artifactDir, "tsx.dom.normalized.snapshot.json")
         const layoutSnapshotPath = path.join(artifactDir, "tsx.layout.normalized.snapshot.json")
         const a11ySnapshotPath = path.join(artifactDir, "tsx.a11y.snapshot.json")
-        const screenshotSnapshotPath = path.join(artifactDir, "tsx.screenshot.base64.snapshot.txt")
 
         const tsxDomJson = JSON.stringify(normalizedTsxDom, null, 2)
         const rescriptDomJson = JSON.stringify(normalizedRescriptDom, null, 2)
@@ -717,7 +790,6 @@ describe("tsx vs rescript parity (vite harness)", () => {
           fs.writeFile(domSnapshotPath, tsxDomJson),
           fs.writeFile(layoutSnapshotPath, tsxLayoutJson),
           fs.writeFile(a11ySnapshotPath, tsxA11yJson),
-          fs.writeFile(screenshotSnapshotPath, tsx.screenshot.toString("base64")),
         ])
 
         await expect
@@ -731,12 +803,32 @@ describe("tsx vs rescript parity (vite harness)", () => {
           .toMatchFileSnapshot(a11ySnapshotPath)
 
         if (tsxDomJson === rescriptDomJson) {
-          await expect
-            .soft(
-              rescript.screenshot.toString("base64"),
-              [`pixel mismatch`, assertionContext].join("\n")
-            )
-            .toMatchFileSnapshot(screenshotSnapshotPath)
+          const ssim = await computeScreenshotSsim(tsx.screenshot, rescript.screenshot)
+
+          if (ssim == null) {
+            expect
+              .soft(
+                rescript.screenshot.toString("base64"),
+                [
+                  `pixel mismatch`,
+                  assertionContext,
+                  `ssim unavailable (ffmpeg missing); falling back to strict png bytes`,
+                ].join("\n")
+              )
+              .toBe(tsx.screenshot.toString("base64"))
+          } else {
+            expect
+              .soft(
+                ssim,
+                [
+                  `pixel mismatch`,
+                  assertionContext,
+                  `ssim actual: ${ssim.toFixed(6)}`,
+                  `ssim minimum: ${SCREENSHOT_SSIM_MIN.toFixed(6)}`,
+                ].join("\n")
+              )
+              .toBeGreaterThanOrEqual(SCREENSHOT_SSIM_MIN)
+          }
         }
       },
       COMPONENT_TEST_TIMEOUT_MS

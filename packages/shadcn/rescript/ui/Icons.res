@@ -88,6 +88,11 @@ module TriangleAlert = {
   external make: React.component<props> = "TriangleAlertIcon"
 }
 
+module AlertTriangle = {
+  @module("lucide-react")
+  external make: React.component<props> = "AlertTriangleIcon"
+}
+
 module CheckCircle2 = {
   @module("lucide-react")
   external make: React.component<props> = "CheckCircle2Icon"
@@ -143,6 +148,11 @@ module ArrowLeft = {
   external make: React.component<props> = "ArrowLeftIcon"
 }
 
+module ArrowRight = {
+  @module("lucide-react")
+  external make: React.component<props> = "ArrowRightIcon"
+}
+
 module Archive = {
   @module("lucide-react")
   external make: React.component<props> = "ArchiveIcon"
@@ -156,6 +166,11 @@ module CalendarPlus = {
 module Clock = {
   @module("lucide-react")
   external make: React.component<props> = "ClockIcon"
+}
+
+module Clock2 = {
+  @module("lucide-react")
+  external make: React.component<props> = "Clock2Icon"
 }
 
 module ListFilter = {
@@ -178,6 +193,21 @@ module Trash2 = {
   external make: React.component<props> = "Trash2Icon"
 }
 
+module AlertCircle = {
+  @module("lucide-react")
+  external make: React.component<props> = "AlertCircleIcon"
+}
+
+module CircleFadingPlus = {
+  @module("lucide-react")
+  external make: React.component<props> = "CircleFadingPlusIcon"
+}
+
+module Bluetooth = {
+  @module("lucide-react")
+  external make: React.component<props> = "BluetoothIcon"
+}
+
 module ChevronsUpDown = {
   @module("lucide-react")
   external make: React.component<props> = "ChevronsUpDownIcon"
@@ -191,6 +221,11 @@ module BadgeCheck = {
 module AudioWaveform = {
   @module("lucide-react")
   external make: React.component<props> = "AudioWaveformIcon"
+}
+
+module AudioLines = {
+  @module("lucide-react")
+  external make: React.component<props> = "AudioLinesIcon"
 }
 
 module Bell = {
@@ -218,6 +253,11 @@ module Folder = {
   external make: React.component<props> = "FolderIcon"
 }
 
+module File = {
+  @module("lucide-react")
+  external make: React.component<props> = "FileIcon"
+}
+
 module Forward = {
   @module("lucide-react")
   external make: React.component<props> = "ForwardIcon"
@@ -243,6 +283,16 @@ module Map = {
   external make: React.component<props> = "MapIcon"
 }
 
+module Maximize = {
+  @module("lucide-react")
+  external make: React.component<props> = "MaximizeIcon"
+}
+
+module Minimize = {
+  @module("lucide-react")
+  external make: React.component<props> = "MinimizeIcon"
+}
+
 module PieChart = {
   @module("lucide-react")
   external make: React.component<props> = "PieChartIcon"
@@ -266,6 +316,11 @@ module SquareTerminal = {
 module Bookmark = {
   @module("lucide-react")
   external make: React.component<props> = "BookmarkIcon"
+}
+
+module Dot = {
+  @module("lucide-react")
+  external make: React.component<props> = "DotIcon"
 }
 
 module CircleAlert = {

@@ -68,13 +68,22 @@ module Footer = {
 
 module Row = {
   @react.component
-  let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) =>
+  let make = (
+    ~className="",
+    ~children=?,
+    ~id=?,
+    ~style=?,
+    ~onClick=?,
+    ~onKeyDown=?,
+    ~dataState=?,
+  ) =>
     <tr
       ?id
       ?children
       ?style
       ?onClick
       ?onKeyDown
+      ?dataState
       dataSlot="table-row"
       className={`hover:bg-muted/50 data-[state=selected]:bg-muted border-b transition-colors ${className}`}
     />

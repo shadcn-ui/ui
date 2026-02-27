@@ -4,6 +4,9 @@
 
 open BaseUi.Types
 
+@module("tailwind-merge")
+external twMerge: string => string = "twMerge"
+
 module DataAlign = {
   @unboxed
   type t =
@@ -27,6 +30,8 @@ module Variant = {
   type t =
     | @as("ghost") Ghost
 }
+
+module UiButton = Button
 
 module SharedTextarea = Textarea
 
@@ -97,6 +102,7 @@ module Addon = {
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
+    ~dataSlot="input-group-addon",
     ~dataAlign=DataAlign.InlineStart,
   ) => {
     let align = dataAlign
@@ -123,7 +129,7 @@ module Addon = {
       ?style
       onClick
       ?onKeyDown
-      dataSlot="input-group-addon"
+      dataSlot
       dataAlign={(align :> string)}
       role="group"
       className={`${inputGroupAddonVariants(~align)} ${className}`}
@@ -141,12 +147,22 @@ module Button = {
     ~onClick=?,
     ~onKeyDown=?,
     ~disabled=?,
+    ~dataActive=?,
+    ~ariaPressed=?,
     ~type_="button",
+    ~dataSlot="button",
     ~dataSize=Size.Xs,
     ~dataVariant=Variant.Ghost,
   ) => {
     let size = dataSize
     let variant = dataVariant
+    let buttonVariant = switch variant {
+    | Ghost => UiButton.Variant.Ghost
+    }
+    let resolvedClassName =
+      twMerge(
+        `${UiButton.buttonVariants(~variant=buttonVariant)} ${inputGroupButtonVariants(~size)} ${className}`,
+      )
     <BaseUi.Button
       ?id
       ?children
@@ -154,10 +170,12 @@ module Button = {
       ?onClick
       ?onKeyDown
       ?disabled
+      ?dataActive
+      ?ariaPressed
       type_
+      dataSlot
       dataSize={(size :> string)}
-      dataVariant={(variant :> string)}
-      className={`${inputGroupButtonVariants(~size)} ${className}`}
+      className=resolvedClassName
     />
   }
 }
@@ -192,6 +210,7 @@ module Input = {
     ~required=?,
     ~type_=?,
     ~maxLength=?,
+    ~step=?,
     ~spellCheck=?,
     ~onClick=?,
     ~onKeyDown=?,
@@ -210,6 +229,7 @@ module Input = {
       ?required
       ?type_
       ?maxLength
+      ?step
       ?spellCheck
       ?style
       ?onClick

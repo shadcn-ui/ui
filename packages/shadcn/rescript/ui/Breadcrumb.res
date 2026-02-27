@@ -3,9 +3,17 @@
 open BaseUi.Types
 
 @react.component
-let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?) => {
+let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=?, ~dir=?) => {
   <nav
-    ?id ?style ?children ?onClick ?onKeyDown ariaLabel="breadcrumb" dataSlot="breadcrumb" className
+    ?id
+    ?style
+    ?children
+    ?onClick
+    ?onKeyDown
+    ?dir
+    ariaLabel="breadcrumb"
+    dataSlot="breadcrumb"
+    className
   />
 }
 

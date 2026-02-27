@@ -92,6 +92,7 @@ module ExtraDomProps = {
     @as("data-collapsible") dataCollapsible?: string,
     @as("data-content") dataContent?: bool,
     @as("data-disabled") dataDisabled?: bool,
+    @as("data-invalid") dataInvalid?: bool,
     @as("data-chart") dataChart?: string,
     @as("data-day") dataDay?: string,
     @as("data-active") dataActive?: bool,
@@ -102,10 +103,15 @@ module ExtraDomProps = {
     @as("data-size") dataSize?: string,
     @as("data-variant") dataVariant?: string,
     @as("data-state") dataState?: string,
+    @as("data-mode") dataMode?: string,
+    @as("data-week-numbers") dataWeekNumbers?: bool,
+    @as("data-multiple-months") dataMultipleMonths?: bool,
     @as("data-orientation") dataOrientation?: string,
     @as("data-align-trigger") dataAlignTrigger?: bool,
     @as("data-spacing") dataSpacing?: float,
     @as("data-inset") dataInset?: bool,
+    @as("data-lang") dataLang?: string,
+    week?: JSON.t,
   }
 }
 
@@ -131,7 +137,9 @@ type props<'value, 'checked> = {
   role?: string,
   description?: string,
   placeholder?: string,
+  pattern?: string,
   locale?: string,
+  dir?: string,
   mode?: string,
   captionLayout?: string,
   containerClassName?: string,
@@ -226,6 +234,10 @@ type props<'value, 'checked> = {
   ariaDetails?: string,
   @as("aria-disabled")
   ariaDisabled?: bool,
+  @as("aria-invalid")
+  ariaInvalid?: bool,
+  @as("aria-pressed")
+  ariaPressed?: bool,
   @as("aria-roledescription")
   ariaRoledescription?: string,
   @as("aria-hidden")

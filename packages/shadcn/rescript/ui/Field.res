@@ -4,6 +4,9 @@
 
 open BaseUi.Types
 
+@module("tailwind-merge")
+external twMerge: string => string = "twMerge"
+
 module DataOrientation = {
   @unboxed
   type t =
@@ -80,7 +83,9 @@ module Group = {
       ?onClick
       ?onKeyDown
       dataSlot="field-group"
-      className={`group/field-group @container/field-group flex w-full flex-col gap-5 data-[slot=checkbox-group]:gap-3 *:data-[slot=field-group]:gap-4 ${className}`}
+      className={twMerge(
+        `group/field-group @container/field-group flex w-full flex-col gap-5 data-[slot=checkbox-group]:gap-3 *:data-[slot=field-group]:gap-4 ${className}`,
+      )}
     />
 }
 
@@ -96,6 +101,7 @@ let make = (
   ~dataOrientation=?,
   ~disabled=?,
   ~dataDisabled=?,
+  ~dataInvalid=?,
 ) => {
   let resolvedOrientation = switch dataOrientation {
   | Some(value) => value
@@ -114,10 +120,11 @@ let make = (
     ?onKeyDown
     ?disabled
     ?dataDisabled
+    ?dataInvalid
     role="group"
     dataSlot="field"
     dataOrientation={(resolvedOrientation :> string)}
-    className={`${fieldVariants(~orientation=resolvedOrientation)} ${className}`}
+    className={twMerge(`${fieldVariants(~orientation=resolvedOrientation)} ${className}`)}
   />
 }
 

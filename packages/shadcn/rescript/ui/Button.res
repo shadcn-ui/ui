@@ -1,5 +1,8 @@
 @@directive("'use client'")
 
+@module("tailwind-merge")
+external twMerge: string => string = "twMerge"
+
 module Variant = {
   @unboxed
   type t =
@@ -78,9 +81,10 @@ let make = (
   ~render=?,
   ~dataSlot="button",
 ) => {
+  let resolvedClassName = twMerge(`${buttonVariants(~variant, ~size)} ${className}`)
   <BaseUi.Button
     dataSlot
-    className={`${buttonVariants(~variant, ~size)} ${className}`}
+    className=resolvedClassName
     ?nativeButton
     ?disabled
     ?style

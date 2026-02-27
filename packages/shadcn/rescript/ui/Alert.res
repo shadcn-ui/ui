@@ -1,5 +1,8 @@
 @@jsxConfig({version: 4, mode: "automatic", module_: "BaseUi.BaseUiJsxDOM"})
 
+@module("tailwind-merge")
+external twMerge: string => string = "twMerge"
+
 module Variant = {
   @unboxed
   type t =
@@ -34,11 +37,7 @@ let make = (
   | (None, Some(variant)) => variant
   | (None, None) => Variant.Default
   }
-  let resolvedClassName = if className == "" {
-    alertVariants(~variant)
-  } else {
-    `${alertVariants(~variant)} ${className}`
-  }
+  let resolvedClassName = twMerge(`${alertVariants(~variant)} ${className}`)
   <div
     ?id
     ?style

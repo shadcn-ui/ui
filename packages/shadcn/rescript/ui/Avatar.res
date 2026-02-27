@@ -41,6 +41,7 @@ module Image = {
     ~id=?,
     ~src=?,
     ~alt=?,
+    ~renderBeforeHydration=?,
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
@@ -49,6 +50,7 @@ module Image = {
       ?id
       ?src
       ?alt
+      ?renderBeforeHydration
       ?style
       ?onClick
       ?onKeyDown

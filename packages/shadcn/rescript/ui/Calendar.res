@@ -54,6 +54,7 @@ module DayModifiers = {
   type t = {
     focused?: bool,
     selected?: bool,
+    outside?: bool,
     @as("range_start") rangeStart?: bool,
     @as("range_end") rangeEnd?: bool,
     @as("range_middle") rangeMiddle?: bool,
@@ -84,6 +85,9 @@ module RootProps = {
     style?: ReactDOM.Style.t,
     onClick?: JsxEvent.Mouse.t => unit,
     onKeyDown?: JsxEvent.Keyboard.t => unit,
+    @as("data-mode") dataMode?: string,
+    @as("data-week-numbers") dataWeekNumbers?: bool,
+    @as("data-multiple-months") dataMultipleMonths?: bool,
   }
 }
 
@@ -91,6 +95,10 @@ module WeekNumberProps = {
   type t = {
     className?: string,
     children?: React.element,
+    @as("aria-label") ariaLabel?: string,
+    role?: string,
+    scope?: string,
+    week?: JSON.t,
   }
 }
 
@@ -119,8 +127,8 @@ module DayButtonProps = {
     onFocus?: ReactEvent.Focus.t => unit,
     onMouseEnter?: ReactEvent.Mouse.t => unit,
     onMouseLeave?: ReactEvent.Mouse.t => unit,
-    type_?: string,
-    ariaLabel?: string,
+    @as("type") type_?: string,
+    @as("aria-label") ariaLabel?: string,
   }
 }
 
@@ -160,6 +168,15 @@ module DayButton = {
       }
       None
     }, [modifiers.focused])
+    let selectedSingle = switch modifiers.selected {
+    | Some(true) =>
+      Some(
+        !(modifiers.rangeStart->Option.getOr(false)) &&
+        !(modifiers.rangeEnd->Option.getOr(false)) &&
+        !(modifiers.rangeMiddle->Option.getOr(false)),
+      )
+    | _ => None
+    }
     <BaseUi.Button
       ?id
       ?style
@@ -171,17 +188,18 @@ module DayButton = {
       ?onFocus
       ?onMouseEnter
       ?onMouseLeave
-      ?type_
+      type_=?{switch type_ {
+      | Some(value) => Some(value)
+      | None => Some("button")
+      }}
       ?ariaLabel
       ref={buttonRef->ReactDOM.Ref.domRef}
+      dataSlot="button"
       dataDay={switch locale {
       | Some({code}) => Date.toLocaleDateStringWithLocale(day.Day.date, code)
       | None => Date.toLocaleDateString(day.Day.date)
       }}
-      dataSelectedSingle={modifiers.selected->Option.getOr(false) &&
-      !(modifiers.rangeStart->Option.getOr(false)) &&
-      !(modifiers.rangeEnd->Option.getOr(false)) &&
-      !(modifiers.rangeMiddle->Option.getOr(false))}
+      dataSelectedSingle=?selectedSingle
       dataRangeStart=?{modifiers.rangeStart}
       dataRangeEnd=?{modifiers.rangeEnd}
       dataRangeMiddle=?{modifiers.rangeMiddle}
@@ -413,7 +431,9 @@ let make = (
 
   <DayPicker
     showOutsideDays
-    className={`bg-background group/calendar p-2 [--cell-radius:var(--radius-md)] [--cell-size:--spacing(7)] in-data-[slot=card-content]:bg-transparent in-data-[slot=popover-content]:bg-transparent rtl:**:[.rdp-button\\_next>svg]:rotate-180 rtl:**:[.rdp-button\\_previous>svg]:rotate-180 ${className}`}
+    className={twMerge(
+      `bg-background group/calendar p-2 [--cell-radius:var(--radius-md)] [--cell-size:--spacing(7)] in-data-[slot=card-content]:bg-transparent in-data-[slot=popover-content]:bg-transparent rtl:**:[.rdp-button\\_next>svg]:rotate-180 rtl:**:[.rdp-button\\_previous>svg]:rotate-180 ${className}`,
+    )}
     captionLayout
     ?dir
     ?locale
@@ -554,6 +574,7 @@ let make = (
     ?modifiers
     ?modifiersClassNames
     components={{
+      ...components,
       root: components.root->Option.getOr(({
         ?className,
         ?children,
@@ -562,10 +583,25 @@ let make = (
         ?style,
         ?onClick,
         ?onKeyDown,
+        ?dataMode,
+        ?dataWeekNumbers,
+        ?dataMultipleMonths,
       }) =>
-        <div dataSlot="calendar" ref=?rootRef ?className ?children ?id ?style ?onClick ?onKeyDown />
+        <div
+          dataSlot="calendar"
+          ref=?rootRef
+          ?className
+          ?children
+          ?id
+          ?style
+          ?onClick
+          ?onKeyDown
+          ?dataMode
+          ?dataWeekNumbers
+          ?dataMultipleMonths
+        />
       ),
-      chevron: (props: ChevronProps.t) => {
+      chevron: components.chevron->Option.getOr((props: ChevronProps.t) => {
         let className = props.className->Option.getOr("")
         let orientation = props.orientation
         let props = ({...props, orientation: ?None} :> Icons.props)
@@ -577,14 +613,24 @@ let make = (
         | Some(Up | Down) | None =>
           <Icons.ChevronDown {...props} className={`size-4 ${className}`} />
         }
-      },
-      dayButton: (props: DayButtonProps.t) => <DayButton {...props} />,
-      weekNumber: ({?children, ?className}) =>
-        <td ?className>
+      }),
+      dayButton: components.dayButton->Option.getOr((props: DayButtonProps.t) =>
+        <DayButton {...props} />
+      ),
+      weekNumber: components.weekNumber->Option.getOr(({
+        ?children,
+        ?className,
+        ?ariaLabel,
+        ?role,
+        ?scope,
+        ?week,
+      }) =>
+        <td ?className ?ariaLabel ?role ?scope ?week>
           <div
             className="flex size-(--cell-size) items-center justify-center text-center" ?children
           />
-        </td>,
+        </td>
+      ),
     }}
   />
 }

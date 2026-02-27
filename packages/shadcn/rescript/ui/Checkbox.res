@@ -16,12 +16,18 @@ let make = (
   ~readOnly=?,
   ~onClick=?,
   ~onKeyDown=?,
-  ~tabIndex=0,
+  ~tabIndex=?,
   ~ariaLabel=?,
+  ~ariaInvalid=?,
   ~style=?,
   ~render=?,
 ) => {
   let _ignoredChildren = children
+  let resolvedTabIndex = switch (tabIndex, disabled) {
+  | (Some(value), _) => Some(value)
+  | (None, Some(true)) => Some(-1)
+  | _ => Some(0)
+  }
   <BaseUi.Checkbox.Root
     ?id
     ?name
@@ -33,8 +39,9 @@ let make = (
     ?readOnly
     ?onClick
     ?onKeyDown
-    tabIndex
+    tabIndex=?resolvedTabIndex
     ?ariaLabel
+    ?ariaInvalid
     ?style
     ?render
     dataSlot="checkbox"

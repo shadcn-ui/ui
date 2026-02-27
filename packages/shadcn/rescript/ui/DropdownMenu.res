@@ -74,6 +74,8 @@ module Content = {
     ~dataSlot="dropdown-menu-content",
     ~children=?,
     ~id=?,
+    ~dir=?,
+    ~dataLang=?,
     ~style=?,
     ~onClick=?,
     ~onKeyDown=?,
@@ -88,6 +90,8 @@ module Content = {
       >
         <BaseUi.Menu.Popup
           ?id
+          ?dir
+          ?dataLang
           ?style
           ?onClick
           ?onKeyDown

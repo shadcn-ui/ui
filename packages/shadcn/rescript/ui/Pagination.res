@@ -1,5 +1,8 @@
 @@jsxConfig({version: 4, mode: "automatic", module_: "BaseUi.BaseUiJsxDOM"})
 
+@module("tailwind-merge")
+external twMerge: string => string = "twMerge"
+
 module Size = {
   @unboxed
   type t =
@@ -17,7 +20,7 @@ let make = (~className="", ~children=?, ~id=?, ~style=?, ~onClick=?, ~onKeyDown=
     ?onKeyDown
     role="navigation"
     ariaLabel="pagination"
-    className={`mx-auto flex w-full justify-center ${className}`}
+    className={twMerge(`mx-auto flex w-full justify-center ${className}`)}
     ?children
   />
 }
@@ -47,7 +50,7 @@ module Link = {
   @react.component
   let make = (
     ~className="",
-    ~isActive=false,
+    ~isActive=?,
     ~size=Size.Icon,
     ~children=?,
     ~href=?,
@@ -57,14 +60,19 @@ module Link = {
     ~ariaLabel=?,
     ~onClick=?,
     ~onKeyDown=?,
-    ~dataActive=isActive,
+    ~dataActive: option<bool>=?,
   ) => {
+    let resolvedIsActive = isActive->Option.getOr(false)
+    let resolvedDataActive = switch dataActive {
+    | Some(value) => Some(value)
+    | None => isActive
+    }
     let buttonSize = switch size {
     | Icon => Button.Size.Icon
     | Default => Button.Size.Default
     }
     <Button
-      variant={isActive ? Button.Variant.Outline : Button.Variant.Ghost}
+      variant={resolvedIsActive ? Button.Variant.Outline : Button.Variant.Ghost}
       size={buttonSize}
       className
       nativeButton={false}
@@ -76,9 +84,9 @@ module Link = {
         ?ariaLabel
         ?onClick
         ?onKeyDown
-        ariaCurrent=?{isActive ? Some(#page) : None}
+        ariaCurrent=?{resolvedIsActive ? Some(#page) : None}
         dataSlot="pagination-link"
-        dataActive
+        dataActive=?resolvedDataActive
       />}
       ?children
     />
