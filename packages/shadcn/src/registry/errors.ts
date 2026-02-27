@@ -5,6 +5,7 @@ export const RegistryErrorCode = {
   // Network errors
   NETWORK_ERROR: "NETWORK_ERROR",
   NOT_FOUND: "NOT_FOUND",
+  GONE: "GONE",
   UNAUTHORIZED: "UNAUTHORIZED",
   FORBIDDEN: "FORBIDDEN",
   FETCH_ERROR: "FETCH_ERROR",
@@ -87,6 +88,22 @@ export class RegistryNotFoundError extends RegistryError {
         "Check if the item name is correct and the registry URL is accessible.",
     })
     this.name = "RegistryNotFoundError"
+  }
+}
+
+export class RegistryGoneError extends RegistryError {
+  constructor(public readonly url: string, cause?: unknown) {
+    const message = `The item at ${url} is no longer available. It may have been removed or expired.`
+
+    super(message, {
+      code: RegistryErrorCode.GONE,
+      statusCode: 410,
+      cause,
+      context: { url },
+      suggestion:
+        "This resource was previously available but has been permanently removed. Check if a newer version exists or contact the registry maintainer.",
+    })
+    this.name = "RegistryGoneError"
   }
 }
 

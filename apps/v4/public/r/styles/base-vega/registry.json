@@ -3,66 +3,6 @@
   "homepage": "https://ui.shadcn.com",
   "items": [
     {
-      "name": "index",
-      "dependencies": [
-        "class-variance-authority",
-        "lucide-react",
-        "@base-ui/react"
-      ],
-      "devDependencies": [
-        "tw-animate-css",
-        "shadcn"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "files": [],
-      "cssVars": {},
-      "css": {
-        "@import \"tw-animate-css\"": {},
-        "@import \"shadcn/tailwind.css\"": {},
-        "@layer base": {
-          "*": {
-            "@apply border-border outline-ring/50": {}
-          },
-          "body": {
-            "@apply bg-background text-foreground": {}
-          }
-        }
-      },
-      "type": "registry:style"
-    },
-    {
-      "name": "style",
-      "dependencies": [
-        "class-variance-authority",
-        "lucide-react",
-        "@base-ui/react"
-      ],
-      "devDependencies": [
-        "tw-animate-css",
-        "shadcn"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "files": [],
-      "cssVars": {},
-      "css": {
-        "@import \"tw-animate-css\"": {},
-        "@import \"shadcn/tailwind.css\"": {},
-        "@layer base": {
-          "*": {
-            "@apply border-border outline-ring/50": {}
-          },
-          "body": {
-            "@apply bg-background text-foreground": {}
-          }
-        }
-      },
-      "type": "registry:style"
-    },
-    {
       "name": "accordion",
       "files": [
         {
@@ -70,13 +10,6 @@
           "type": "registry:ui"
         }
       ],
-      "meta": {
-        "links": {
-          "docs": "https://ui.shadcn.com/docs/components/base/accordion",
-          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/accordion-example.tsx",
-          "api": "https://base-ui.com/react/components/accordion.md"
-        }
-      },
       "type": "registry:ui"
     },
     {
@@ -87,32 +20,17 @@
           "type": "registry:ui"
         }
       ],
-      "meta": {
-        "links": {
-          "docs": "https://ui.shadcn.com/docs/components/base/alert",
-          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/alert-example.tsx"
-        }
-      },
       "type": "registry:ui"
     },
     {
       "name": "alert-dialog",
-      "registryDependencies": [
-        "button"
-      ],
+      "registryDependencies": ["button"],
       "files": [
         {
           "path": "registry/base-vega/ui/alert-dialog.tsx",
           "type": "registry:ui"
         }
       ],
-      "meta": {
-        "links": {
-          "docs": "https://ui.shadcn.com/docs/components/base/alert-dialog",
-          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/alert-dialog-example.tsx",
-          "api": "https://base-ui.com/react/components/alert-dialog.md"
-        }
-      },
       "type": "registry:ui"
     },
     {
@@ -123,12 +41,6 @@
           "type": "registry:ui"
         }
       ],
-      "meta": {
-        "links": {
-          "docs": "https://ui.shadcn.com/docs/components/base/aspect-ratio",
-          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/aspect-ratio-example.tsx"
-        }
-      },
       "type": "registry:ui"
     },
     {
@@ -139,13 +51,6 @@
           "type": "registry:ui"
         }
       ],
-      "meta": {
-        "links": {
-          "docs": "https://ui.shadcn.com/docs/components/base/avatar",
-          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/avatar-example.tsx",
-          "api": "https://base-ui.com/react/components/avatar.md"
-        }
-      },
       "type": "registry:ui"
     },
     {
@@ -156,12 +61,6 @@
           "type": "registry:ui"
         }
       ],
-      "meta": {
-        "links": {
-          "docs": "https://ui.shadcn.com/docs/components/base/badge",
-          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/badge-example.tsx"
-        }
-      },
       "type": "registry:ui"
     },
     {
@@ -172,12 +71,6 @@
           "type": "registry:ui"
         }
       ],
-      "meta": {
-        "links": {
-          "docs": "https://ui.shadcn.com/docs/components/base/breadcrumb",
-          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/breadcrumb-example.tsx"
-        }
-      },
       "type": "registry:ui"
     },
     {
@@ -188,55 +81,29 @@
           "type": "registry:ui"
         }
       ],
-      "meta": {
-        "links": {
-          "docs": "https://ui.shadcn.com/docs/components/base/button",
-          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/button-example.tsx"
-        }
-      },
       "type": "registry:ui"
     },
     {
       "name": "button-group",
-      "registryDependencies": [
-        "separator"
-      ],
+      "registryDependencies": ["separator"],
       "files": [
         {
           "path": "registry/base-vega/ui/button-group.tsx",
           "type": "registry:ui"
         }
       ],
-      "meta": {
-        "links": {
-          "docs": "https://ui.shadcn.com/docs/components/base/button-group",
-          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/button-group-example.tsx"
-        }
-      },
       "type": "registry:ui"
     },
     {
       "name": "calendar",
-      "dependencies": [
-        "react-day-picker@latest",
-        "date-fns"
-      ],
-      "registryDependencies": [
-        "button"
-      ],
+      "dependencies": ["react-day-picker@latest", "date-fns"],
+      "registryDependencies": ["button"],
       "files": [
         {
           "path": "registry/base-vega/ui/calendar.tsx",
           "type": "registry:ui"
         }
       ],
-      "meta": {
-        "links": {
-          "docs": "https://ui.shadcn.com/docs/components/base/calendar",
-          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/calendar-example.tsx",
-          "api": "https://react-day-picker.js.org"
-        }
-      },
       "type": "registry:ui"
     },
     {
@@ -247,57 +114,30 @@
           "type": "registry:ui"
         }
       ],
-      "meta": {
-        "links": {
-          "docs": "https://ui.shadcn.com/docs/components/base/card",
-          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/card-example.tsx"
-        }
-      },
       "type": "registry:ui"
     },
     {
       "name": "carousel",
-      "dependencies": [
-        "embla-carousel-react"
-      ],
-      "registryDependencies": [
-        "button"
-      ],
+      "dependencies": ["embla-carousel-react"],
+      "registryDependencies": ["button"],
       "files": [
         {
           "path": "registry/base-vega/ui/carousel.tsx",
           "type": "registry:ui"
         }
       ],
-      "meta": {
-        "links": {
-          "docs": "https://ui.shadcn.com/docs/components/base/carousel",
-          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/carousel-example.tsx",
-          "api": "https://www.embla-carousel.com/get-started/react"
-        }
-      },
       "type": "registry:ui"
     },
     {
       "name": "chart",
-      "dependencies": [
-        "recharts@2.15.4"
-      ],
-      "registryDependencies": [
-        "card"
-      ],
+      "dependencies": ["recharts@2.15.4"],
+      "registryDependencies": ["card"],
       "files": [
         {
           "path": "registry/base-vega/ui/chart.tsx",
           "type": "registry:ui"
         }
       ],
-      "meta": {
-        "links": {
-          "docs": "https://ui.shadcn.com/docs/components/base/chart",
-          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/chart-example.tsx"
-        }
-      },
       "type": "registry:ui"
     },
     {
@@ -308,13 +148,6 @@
           "type": "registry:ui"
         }
       ],
-      "meta": {
-        "links": {
-          "docs": "https://ui.shadcn.com/docs/components/base/checkbox",
-          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/checkbox-example.tsx",
-          "api": "https://base-ui.com/react/components/checkbox.md"
-        }
-      },
       "type": "registry:ui"
     },
     {
@@ -325,61 +158,30 @@
           "type": "registry:ui"
         }
       ],
-      "meta": {
-        "links": {
-          "docs": "https://ui.shadcn.com/docs/components/base/collapsible",
-          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/collapsible-example.tsx",
-          "api": "https://base-ui.com/react/components/collapsible.md"
-        }
-      },
       "type": "registry:ui"
     },
     {
       "name": "combobox",
-      "dependencies": [
-        "@base-ui/react"
-      ],
-      "registryDependencies": [
-        "button",
-        "input-group"
-      ],
+      "dependencies": ["@base-ui/react"],
+      "registryDependencies": ["button", "input-group"],
       "files": [
         {
           "path": "registry/base-vega/ui/combobox.tsx",
           "type": "registry:ui"
         }
       ],
-      "meta": {
-        "links": {
-          "docs": "https://ui.shadcn.com/docs/components/base/combobox",
-          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/combobox-example.tsx",
-          "api": "https://base-ui.com/react/components/combobox.md"
-        }
-      },
       "type": "registry:ui"
     },
     {
       "name": "command",
-      "dependencies": [
-        "cmdk"
-      ],
-      "registryDependencies": [
-        "dialog",
-        "input-group"
-      ],
+      "dependencies": ["cmdk"],
+      "registryDependencies": ["dialog", "input-group"],
       "files": [
         {
           "path": "registry/base-vega/ui/command.tsx",
           "type": "registry:ui"
         }
       ],
-      "meta": {
-        "links": {
-          "docs": "https://ui.shadcn.com/docs/components/base/command",
-          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/command-example.tsx",
-          "api": "https://github.com/dip/cmdk"
-        }
-      },
       "type": "registry:ui"
     },
     {
@@ -390,53 +192,28 @@
           "type": "registry:ui"
         }
       ],
-      "meta": {
-        "links": {
-          "docs": "https://ui.shadcn.com/docs/components/base/context-menu",
-          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/context-menu-example.tsx",
-          "api": "https://base-ui.com/react/components/context-menu.md"
-        }
-      },
       "type": "registry:ui"
     },
     {
       "name": "dialog",
-      "registryDependencies": [
-        "button"
-      ],
+      "registryDependencies": ["button"],
       "files": [
         {
           "path": "registry/base-vega/ui/dialog.tsx",
           "type": "registry:ui"
         }
       ],
-      "meta": {
-        "links": {
-          "docs": "https://ui.shadcn.com/docs/components/base/dialog",
-          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/dialog-example.tsx",
-          "api": "https://base-ui.com/react/components/dialog.md"
-        }
-      },
       "type": "registry:ui"
     },
     {
       "name": "drawer",
-      "dependencies": [
-        "vaul"
-      ],
+      "dependencies": ["vaul"],
       "files": [
         {
           "path": "registry/base-vega/ui/drawer.tsx",
           "type": "registry:ui"
         }
       ],
-      "meta": {
-        "links": {
-          "docs": "https://ui.shadcn.com/docs/components/base/drawer",
-          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/drawer-example.tsx",
-          "api": "https://vaul.emilkowal.ski/getting-started"
-        }
-      },
       "type": "registry:ui"
     },
     {
@@ -447,13 +224,6 @@
           "type": "registry:ui"
         }
       ],
-      "meta": {
-        "links": {
-          "docs": "https://ui.shadcn.com/docs/components/base/dropdown-menu",
-          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/dropdown-menu-example.tsx",
-          "api": "https://base-ui.com/react/components/menu.md"
-        }
-      },
       "type": "registry:ui"
     },
     {
@@ -464,32 +234,17 @@
           "type": "registry:ui"
         }
       ],
-      "meta": {
-        "links": {
-          "docs": "https://ui.shadcn.com/docs/components/base/empty",
-          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/empty-example.tsx"
-        }
-      },
       "type": "registry:ui"
     },
     {
       "name": "field",
-      "registryDependencies": [
-        "label",
-        "separator"
-      ],
+      "registryDependencies": ["label", "separator"],
       "files": [
         {
           "path": "registry/base-vega/ui/field.tsx",
           "type": "registry:ui"
         }
       ],
-      "meta": {
-        "links": {
-          "docs": "https://ui.shadcn.com/docs/components/base/field",
-          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/field-example.tsx"
-        }
-      },
       "type": "registry:ui"
     },
     {
@@ -504,13 +259,6 @@
           "type": "registry:ui"
         }
       ],
-      "meta": {
-        "links": {
-          "docs": "https://ui.shadcn.com/docs/components/base/hover-card",
-          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/hover-card-example.tsx",
-          "api": "https://base-ui.com/react/components/hover-card.md"
-        }
-      },
       "type": "registry:ui"
     },
     {
@@ -521,72 +269,39 @@
           "type": "registry:ui"
         }
       ],
-      "meta": {
-        "links": {
-          "docs": "https://ui.shadcn.com/docs/components/base/input",
-          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/input-example.tsx"
-        }
-      },
       "type": "registry:ui"
     },
     {
       "name": "input-group",
-      "registryDependencies": [
-        "button",
-        "input",
-        "textarea"
-      ],
+      "registryDependencies": ["button", "input", "textarea"],
       "files": [
         {
           "path": "registry/base-vega/ui/input-group.tsx",
           "type": "registry:ui"
         }
       ],
-      "meta": {
-        "links": {
-          "docs": "https://ui.shadcn.com/docs/components/base/input-group",
-          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/input-group-example.tsx"
-        }
-      },
       "type": "registry:ui"
     },
     {
       "name": "input-otp",
-      "dependencies": [
-        "input-otp"
-      ],
+      "dependencies": ["input-otp"],
       "files": [
         {
           "path": "registry/base-vega/ui/input-otp.tsx",
           "type": "registry:ui"
         }
       ],
-      "meta": {
-        "links": {
-          "docs": "https://ui.shadcn.com/docs/components/base/input-otp",
-          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/input-otp-example.tsx",
-          "api": "https://input-otp.rodz.dev"
-        }
-      },
       "type": "registry:ui"
     },
     {
       "name": "item",
-      "registryDependencies": [
-        "separator"
-      ],
+      "registryDependencies": ["separator"],
       "files": [
         {
           "path": "registry/base-vega/ui/item.tsx",
           "type": "registry:ui"
         }
       ],
-      "meta": {
-        "links": {
-          "docs": "https://ui.shadcn.com/docs/components/base/item",
-          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/item-example.tsx"
-        }
-      },
       "type": "registry:ui"
     },
     {
@@ -597,33 +312,17 @@
           "type": "registry:ui"
         }
       ],
-      "meta": {
-        "links": {
-          "docs": "https://ui.shadcn.com/docs/components/base/label",
-          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/label-example.tsx",
-          "api": "https://base-ui.com/react/components/label.md"
-        }
-      },
       "type": "registry:ui"
     },
     {
       "name": "menubar",
-      "registryDependencies": [
-        "dropdown-menu"
-      ],
+      "registryDependencies": ["dropdown-menu"],
       "files": [
         {
           "path": "registry/base-vega/ui/menubar.tsx",
           "type": "registry:ui"
         }
       ],
-      "meta": {
-        "links": {
-          "docs": "https://ui.shadcn.com/docs/components/base/menubar",
-          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/menubar-example.tsx",
-          "api": "https://base-ui.com/react/components/menubar.md"
-        }
-      },
       "type": "registry:ui"
     },
     {
@@ -634,32 +333,17 @@
           "type": "registry:ui"
         }
       ],
-      "meta": {
-        "links": {
-          "docs": "https://ui.shadcn.com/docs/components/base/navigation-menu",
-          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/navigation-menu-example.tsx",
-          "api": "https://base-ui.com/react/components/navigation-menu.md"
-        }
-      },
       "type": "registry:ui"
     },
     {
       "name": "pagination",
-      "registryDependencies": [
-        "button"
-      ],
+      "registryDependencies": ["button"],
       "files": [
         {
           "path": "registry/base-vega/ui/pagination.tsx",
           "type": "registry:ui"
         }
       ],
-      "meta": {
-        "links": {
-          "docs": "https://ui.shadcn.com/docs/components/base/pagination",
-          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/pagination-example.tsx"
-        }
-      },
       "type": "registry:ui"
     },
     {
@@ -670,13 +354,6 @@
           "type": "registry:ui"
         }
       ],
-      "meta": {
-        "links": {
-          "docs": "https://ui.shadcn.com/docs/components/base/popover",
-          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/popover-example.tsx",
-          "api": "https://base-ui.com/react/components/popover.md"
-        }
-      },
       "type": "registry:ui"
     },
     {
@@ -687,13 +364,6 @@
           "type": "registry:ui"
         }
       ],
-      "meta": {
-        "links": {
-          "docs": "https://ui.shadcn.com/docs/components/base/progress",
-          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/progress-example.tsx",
-          "api": "https://base-ui.com/react/components/progress.md"
-        }
-      },
       "type": "registry:ui"
     },
     {
@@ -704,33 +374,17 @@
           "type": "registry:ui"
         }
       ],
-      "meta": {
-        "links": {
-          "docs": "https://ui.shadcn.com/docs/components/base/radio-group",
-          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/radio-group-example.tsx",
-          "api": "https://base-ui.com/react/components/radio-group.md"
-        }
-      },
       "type": "registry:ui"
     },
     {
       "name": "resizable",
-      "dependencies": [
-        "react-resizable-panels"
-      ],
+      "dependencies": ["react-resizable-panels"],
       "files": [
         {
           "path": "registry/base-vega/ui/resizable.tsx",
           "type": "registry:ui"
         }
       ],
-      "meta": {
-        "links": {
-          "docs": "https://ui.shadcn.com/docs/components/base/resizable",
-          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/resizable-example.tsx",
-          "api": "https://github.com/bvaughn/react-resizable-panels"
-        }
-      },
       "type": "registry:ui"
     },
     {
@@ -741,13 +395,6 @@
           "type": "registry:ui"
         }
       ],
-      "meta": {
-        "links": {
-          "docs": "https://ui.shadcn.com/docs/components/base/scroll-area",
-          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/scroll-area-example.tsx",
-          "api": "https://base-ui.com/react/components/scroll-area.md"
-        }
-      },
       "type": "registry:ui"
     },
     {
@@ -758,13 +405,6 @@
           "type": "registry:ui"
         }
       ],
-      "meta": {
-        "links": {
-          "docs": "https://ui.shadcn.com/docs/components/base/select",
-          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/select-example.tsx",
-          "api": "https://base-ui.com/react/components/select.md"
-        }
-      },
       "type": "registry:ui"
     },
     {
@@ -775,33 +415,17 @@
           "type": "registry:ui"
         }
       ],
-      "meta": {
-        "links": {
-          "docs": "https://ui.shadcn.com/docs/components/base/separator",
-          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/separator-example.tsx",
-          "api": "https://base-ui.com/react/components/separator.md"
-        }
-      },
       "type": "registry:ui"
     },
     {
       "name": "sheet",
-      "registryDependencies": [
-        "button"
-      ],
+      "registryDependencies": ["button"],
       "files": [
         {
           "path": "registry/base-vega/ui/sheet.tsx",
           "type": "registry:ui"
         }
       ],
-      "meta": {
-        "links": {
-          "docs": "https://ui.shadcn.com/docs/components/base/sheet",
-          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/sheet-example.tsx",
-          "api": "https://base-ui.com/react/components/dialog.md"
-        }
-      },
       "type": "registry:ui"
     },
     {
@@ -821,12 +445,6 @@
           "type": "registry:ui"
         }
       ],
-      "meta": {
-        "links": {
-          "docs": "https://ui.shadcn.com/docs/components/base/sidebar",
-          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/sidebar-example.tsx"
-        }
-      },
       "type": "registry:ui"
     },
     {
@@ -837,12 +455,6 @@
           "type": "registry:ui"
         }
       ],
-      "meta": {
-        "links": {
-          "docs": "https://ui.shadcn.com/docs/components/base/skeleton",
-          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/skeleton-example.tsx"
-        }
-      },
       "type": "registry:ui"
     },
     {
@@ -853,34 +465,17 @@
           "type": "registry:ui"
         }
       ],
-      "meta": {
-        "links": {
-          "docs": "https://ui.shadcn.com/docs/components/base/slider",
-          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/slider-example.tsx",
-          "api": "https://base-ui.com/react/components/slider.md"
-        }
-      },
       "type": "registry:ui"
     },
     {
       "name": "sonner",
-      "dependencies": [
-        "sonner",
-        "next-themes"
-      ],
+      "dependencies": ["sonner", "next-themes"],
       "files": [
         {
           "path": "registry/base-vega/ui/sonner.tsx",
           "type": "registry:ui"
         }
       ],
-      "meta": {
-        "links": {
-          "docs": "https://ui.shadcn.com/docs/components/base/sonner",
-          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/sonner-example.tsx",
-          "api": "https://sonner.emilkowal.ski"
-        }
-      },
       "type": "registry:ui"
     },
     {
@@ -891,12 +486,6 @@
           "type": "registry:ui"
         }
       ],
-      "meta": {
-        "links": {
-          "docs": "https://ui.shadcn.com/docs/components/base/spinner",
-          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/spinner-example.tsx"
-        }
-      },
       "type": "registry:ui"
     },
     {
@@ -907,13 +496,6 @@
           "type": "registry:ui"
         }
       ],
-      "meta": {
-        "links": {
-          "docs": "https://ui.shadcn.com/docs/components/base/switch",
-          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/switch-example.tsx",
-          "api": "https://base-ui.com/react/components/switch.md"
-        }
-      },
       "type": "registry:ui"
     },
     {
@@ -924,12 +506,6 @@
           "type": "registry:ui"
         }
       ],
-      "meta": {
-        "links": {
-          "docs": "https://ui.shadcn.com/docs/components/base/table",
-          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/table-example.tsx"
-        }
-      },
       "type": "registry:ui"
     },
     {
@@ -940,13 +516,6 @@
           "type": "registry:ui"
         }
       ],
-      "meta": {
-        "links": {
-          "docs": "https://ui.shadcn.com/docs/components/base/tabs",
-          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/tabs-example.tsx",
-          "api": "https://base-ui.com/react/components/tabs.md"
-        }
-      },
       "type": "registry:ui"
     },
     {
@@ -957,12 +526,6 @@
           "type": "registry:ui"
         }
       ],
-      "meta": {
-        "links": {
-          "docs": "https://ui.shadcn.com/docs/components/base/textarea",
-          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/textarea-example.tsx"
-        }
-      },
       "type": "registry:ui"
     },
     {
@@ -973,33 +536,17 @@
           "type": "registry:ui"
         }
       ],
-      "meta": {
-        "links": {
-          "docs": "https://ui.shadcn.com/docs/components/base/toggle",
-          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/toggle-example.tsx",
-          "api": "https://base-ui.com/react/components/toggle.md"
-        }
-      },
       "type": "registry:ui"
     },
     {
       "name": "toggle-group",
-      "registryDependencies": [
-        "toggle"
-      ],
+      "registryDependencies": ["toggle"],
       "files": [
         {
           "path": "registry/base-vega/ui/toggle-group.tsx",
           "type": "registry:ui"
         }
       ],
-      "meta": {
-        "links": {
-          "docs": "https://ui.shadcn.com/docs/components/base/toggle-group",
-          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/toggle-group-example.tsx",
-          "api": "https://base-ui.com/react/components/toggle-group.md"
-        }
-      },
       "type": "registry:ui"
     },
     {
@@ -1010,13 +557,6 @@
           "type": "registry:ui"
         }
       ],
-      "meta": {
-        "links": {
-          "docs": "https://ui.shadcn.com/docs/components/base/tooltip",
-          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/tooltip-example.tsx",
-          "api": "https://base-ui.com/react/components/tooltip.md"
-        }
-      },
       "docs": "The `tooltip` component has been added. Remember to wrap your app with the `TooltipProvider` component.\n\n```tsx title=\"app/layout.tsx\"\nimport { TooltipProvider } from \"@/components/ui/tooltip\"\n\nexport default function RootLayout({ children }: { children: React.ReactNode }) {\n  return (\n    <html lang=\"en\">\n      <body>\n        <TooltipProvider>{children}</TooltipProvider>\n      </body>\n    </html>\n  )\n}\n```\n",
       "type": "registry:ui"
     },
@@ -1028,12 +568,6 @@
           "type": "registry:ui"
         }
       ],
-      "meta": {
-        "links": {
-          "docs": "https://ui.shadcn.com/docs/components/base/kbd",
-          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/kbd-example.tsx"
-        }
-      },
       "type": "registry:ui"
     },
     {
@@ -1044,42 +578,23 @@
           "type": "registry:ui"
         }
       ],
-      "meta": {
-        "links": {
-          "docs": "https://ui.shadcn.com/docs/components/base/native-select",
-          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/native-select-example.tsx"
-        }
-      },
       "type": "registry:ui"
     },
     {
       "name": "direction",
-      "dependencies": [
-        "@base-ui/react"
-      ],
+      "dependencies": ["@base-ui/react"],
       "files": [
         {
           "path": "registry/base-vega/ui/direction.tsx",
           "type": "registry:ui"
         }
       ],
-      "meta": {
-        "links": {
-          "docs": "https://ui.shadcn.com/docs/components/base/direction",
-          "api": "https://base-ui.com/react/utils/direction-provider.md"
-        }
-      },
       "type": "registry:ui"
     },
     {
       "name": "accordion-example",
       "title": "Accordion",
-      "registryDependencies": [
-        "accordion",
-        "button",
-        "card",
-        "example"
-      ],
+      "registryDependencies": ["accordion", "button", "card", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/accordion-example.tsx",
@@ -1091,11 +606,7 @@
     {
       "name": "alert-example",
       "title": "Alert",
-      "registryDependencies": [
-        "alert",
-        "badge",
-        "example"
-      ],
+      "registryDependencies": ["alert", "badge", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/alert-example.tsx",
@@ -1107,12 +618,7 @@
     {
       "name": "alert-dialog-example",
       "title": "Alert Dialog",
-      "registryDependencies": [
-        "alert-dialog",
-        "button",
-        "dialog",
-        "example"
-      ],
+      "registryDependencies": ["alert-dialog", "button", "dialog", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/alert-dialog-example.tsx",
@@ -1124,10 +630,7 @@
     {
       "name": "aspect-ratio-example",
       "title": "Aspect Ratio",
-      "registryDependencies": [
-        "aspect-ratio",
-        "example"
-      ],
+      "registryDependencies": ["aspect-ratio", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/aspect-ratio-example.tsx",
@@ -1139,12 +642,7 @@
     {
       "name": "avatar-example",
       "title": "Avatar",
-      "registryDependencies": [
-        "avatar",
-        "button",
-        "empty",
-        "example"
-      ],
+      "registryDependencies": ["avatar", "button", "empty", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/avatar-example.tsx",
@@ -1156,11 +654,7 @@
     {
       "name": "badge-example",
       "title": "Badge",
-      "registryDependencies": [
-        "badge",
-        "spinner",
-        "example"
-      ],
+      "registryDependencies": ["badge", "spinner", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/badge-example.tsx",
@@ -1172,11 +666,7 @@
     {
       "name": "breadcrumb-example",
       "title": "Breadcrumb",
-      "registryDependencies": [
-        "breadcrumb",
-        "dropdown-menu",
-        "example"
-      ],
+      "registryDependencies": ["breadcrumb", "dropdown-menu", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/breadcrumb-example.tsx",
@@ -1188,10 +678,7 @@
     {
       "name": "button-example",
       "title": "Button",
-      "registryDependencies": [
-        "button",
-        "example"
-      ],
+      "registryDependencies": ["button", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/button-example.tsx",
@@ -1267,11 +754,7 @@
     {
       "name": "carousel-example",
       "title": "Carousel",
-      "registryDependencies": [
-        "card",
-        "carousel",
-        "example"
-      ],
+      "registryDependencies": ["card", "carousel", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/carousel-example.tsx",
@@ -1283,11 +766,7 @@
     {
       "name": "chart-example",
       "title": "Chart",
-      "registryDependencies": [
-        "chart",
-        "card",
-        "example"
-      ],
+      "registryDependencies": ["chart", "card", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/chart-example.tsx",
@@ -1299,12 +778,7 @@
     {
       "name": "checkbox-example",
       "title": "Checkbox",
-      "registryDependencies": [
-        "checkbox",
-        "field",
-        "table",
-        "example"
-      ],
+      "registryDependencies": ["checkbox", "field", "table", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/checkbox-example.tsx",
@@ -1359,11 +833,7 @@
     {
       "name": "command-example",
       "title": "Command",
-      "registryDependencies": [
-        "button",
-        "command",
-        "example"
-      ],
+      "registryDependencies": ["button", "command", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/command-example.tsx",
@@ -1375,12 +845,7 @@
     {
       "name": "context-menu-example",
       "title": "Context Menu",
-      "registryDependencies": [
-        "button",
-        "context-menu",
-        "dialog",
-        "example"
-      ],
+      "registryDependencies": ["button", "context-menu", "dialog", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/context-menu-example.tsx",
@@ -1419,10 +884,7 @@
     {
       "name": "drawer-example",
       "title": "Drawer",
-      "registryDependencies": [
-        "drawer",
-        "example"
-      ],
+      "registryDependencies": ["drawer", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/drawer-example.tsx",
@@ -1495,12 +957,7 @@
     {
       "name": "hover-card-example",
       "title": "Hover Card",
-      "registryDependencies": [
-        "button",
-        "dialog",
-        "hover-card",
-        "example"
-      ],
+      "registryDependencies": ["button", "dialog", "hover-card", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/hover-card-example.tsx",
@@ -1575,11 +1032,7 @@
     {
       "name": "item-example",
       "title": "Item",
-      "registryDependencies": [
-        "button",
-        "item",
-        "example"
-      ],
+      "registryDependencies": ["button", "item", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/item-example.tsx",
@@ -1628,12 +1081,7 @@
     {
       "name": "menubar-example",
       "title": "Menubar",
-      "registryDependencies": [
-        "button",
-        "dialog",
-        "menubar",
-        "example"
-      ],
+      "registryDependencies": ["button", "dialog", "menubar", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/menubar-example.tsx",
@@ -1645,11 +1093,7 @@
     {
       "name": "native-select-example",
       "title": "Native Select",
-      "registryDependencies": [
-        "field",
-        "native-select",
-        "example"
-      ],
+      "registryDependencies": ["field", "native-select", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/native-select-example.tsx",
@@ -1678,12 +1122,7 @@
     {
       "name": "pagination-example",
       "title": "Pagination",
-      "registryDependencies": [
-        "field",
-        "pagination",
-        "select",
-        "example"
-      ],
+      "registryDependencies": ["field", "pagination", "select", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/pagination-example.tsx",
@@ -1732,11 +1171,7 @@
     {
       "name": "radio-group-example",
       "title": "Radio Group",
-      "registryDependencies": [
-        "field",
-        "radio-group",
-        "example"
-      ],
+      "registryDependencies": ["field", "radio-group", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/radio-group-example.tsx",
@@ -1748,10 +1183,7 @@
     {
       "name": "resizable-example",
       "title": "Resizable",
-      "registryDependencies": [
-        "resizable",
-        "example"
-      ],
+      "registryDependencies": ["resizable", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/resizable-example.tsx",
@@ -1763,11 +1195,7 @@
     {
       "name": "scroll-area-example",
       "title": "Scroll Area",
-      "registryDependencies": [
-        "scroll-area",
-        "separator",
-        "example"
-      ],
+      "registryDependencies": ["scroll-area", "separator", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/scroll-area-example.tsx",
@@ -1800,10 +1228,7 @@
     {
       "name": "separator-example",
       "title": "Separator",
-      "registryDependencies": [
-        "separator",
-        "example"
-      ],
+      "registryDependencies": ["separator", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/separator-example.tsx",
@@ -1815,13 +1240,7 @@
     {
       "name": "sheet-example",
       "title": "Sheet",
-      "registryDependencies": [
-        "button",
-        "field",
-        "input",
-        "sheet",
-        "example"
-      ],
+      "registryDependencies": ["button", "field", "input", "sheet", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/sheet-example.tsx",
@@ -1872,11 +1291,7 @@
     {
       "name": "sidebar-inset-example",
       "title": "Sidebar (Inset)",
-      "registryDependencies": [
-        "collapsible",
-        "sidebar",
-        "example"
-      ],
+      "registryDependencies": ["collapsible", "sidebar", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/sidebar-inset-example.tsx",
@@ -1908,10 +1323,7 @@
     {
       "name": "skeleton-example",
       "title": "Skeleton",
-      "registryDependencies": [
-        "skeleton",
-        "example"
-      ],
+      "registryDependencies": ["skeleton", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/skeleton-example.tsx",
@@ -1923,11 +1335,7 @@
     {
       "name": "slider-example",
       "title": "Slider",
-      "registryDependencies": [
-        "label",
-        "slider",
-        "example"
-      ],
+      "registryDependencies": ["label", "slider", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/slider-example.tsx",
@@ -1939,10 +1347,7 @@
     {
       "name": "sonner-example",
       "title": "Sonner",
-      "registryDependencies": [
-        "sonner",
-        "example"
-      ],
+      "registryDependencies": ["sonner", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/sonner-example.tsx",
@@ -1974,12 +1379,7 @@
     {
       "name": "switch-example",
       "title": "Switch",
-      "registryDependencies": [
-        "field",
-        "label",
-        "switch",
-        "example"
-      ],
+      "registryDependencies": ["field", "label", "switch", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/switch-example.tsx",
@@ -2010,12 +1410,7 @@
     {
       "name": "tabs-example",
       "title": "Tabs",
-      "registryDependencies": [
-        "button",
-        "dropdown-menu",
-        "tabs",
-        "example"
-      ],
+      "registryDependencies": ["button", "dropdown-menu", "tabs", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/tabs-example.tsx",
@@ -2027,11 +1422,7 @@
     {
       "name": "textarea-example",
       "title": "Textarea",
-      "registryDependencies": [
-        "field",
-        "textarea",
-        "example"
-      ],
+      "registryDependencies": ["field", "textarea", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/textarea-example.tsx",
@@ -2043,10 +1434,7 @@
     {
       "name": "toggle-example",
       "title": "Toggle",
-      "registryDependencies": [
-        "toggle",
-        "example"
-      ],
+      "registryDependencies": ["toggle", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/toggle-example.tsx",
@@ -2058,12 +1446,7 @@
     {
       "name": "toggle-group-example",
       "title": "Toggle Group",
-      "registryDependencies": [
-        "input",
-        "select",
-        "toggle-group",
-        "example"
-      ],
+      "registryDependencies": ["input", "select", "toggle-group", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/toggle-group-example.tsx",
@@ -2075,12 +1458,7 @@
     {
       "name": "tooltip-example",
       "title": "Tooltip",
-      "registryDependencies": [
-        "button",
-        "kbd",
-        "tooltip",
-        "example"
-      ],
+      "registryDependencies": ["button", "kbd", "tooltip", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/tooltip-example.tsx",
@@ -2115,10 +1493,7 @@
     },
     {
       "name": "utils",
-      "dependencies": [
-        "clsx",
-        "tailwind-merge"
-      ],
+      "dependencies": ["clsx", "tailwind-merge"],
       "files": [
         {
           "path": "registry/base-vega/lib/utils.ts",
@@ -2140,7 +1515,7 @@
     },
     {
       "name": "preview",
-      "title": "Preview",
+      "title": "Home",
       "registryDependencies": [
         "alert-dialog",
         "avatar",
@@ -2148,7 +1523,6 @@
         "button",
         "button-group",
         "card",
-        "chart",
         "checkbox",
         "combobox",
         "dropdown-menu",
@@ -2172,7 +1546,110 @@
       ],
       "files": [
         {
-          "path": "registry/base-vega/blocks/preview/index.tsx",
+          "path": "registry/base-vega/blocks/preview.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "type": "registry:block"
+    },
+    {
+      "name": "elevenlabs",
+      "title": "Elevenlabs",
+      "registryDependencies": ["example", "button", "card"],
+      "files": [
+        {
+          "path": "registry/base-vega/blocks/elevenlabs.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "type": "registry:block"
+    },
+    {
+      "name": "github",
+      "title": "GitHub",
+      "registryDependencies": [
+        "avatar",
+        "badge",
+        "button",
+        "card",
+        "checkbox",
+        "combobox",
+        "command",
+        "drawer",
+        "dropdown-menu",
+        "empty",
+        "field",
+        "input",
+        "input-group",
+        "item",
+        "kbd",
+        "native-select",
+        "popover",
+        "separator",
+        "spinner",
+        "tabs",
+        "textarea",
+        "tooltip",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-vega/blocks/github.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "type": "registry:block"
+    },
+    {
+      "name": "vercel",
+      "title": "Vercel",
+      "registryDependencies": [
+        "alert",
+        "badge",
+        "button",
+        "calendar",
+        "card",
+        "chart",
+        "dialog",
+        "dropdown-menu",
+        "empty",
+        "field",
+        "input-group",
+        "item",
+        "native-select",
+        "popover",
+        "textarea",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-vega/blocks/vercel.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "type": "registry:block"
+    },
+    {
+      "name": "chatgpt",
+      "title": "ChatGPT",
+      "registryDependencies": [
+        "alert",
+        "alert-dialog",
+        "badge",
+        "button",
+        "card",
+        "dropdown-menu",
+        "field",
+        "input-group",
+        "item",
+        "kbd",
+        "popover",
+        "tooltip",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-vega/blocks/chatgpt.tsx",
           "type": "registry:block"
         }
       ],
@@ -2182,13 +1659,7 @@
       "name": "login-01",
       "title": "Login 01",
       "description": "A simple login form.",
-      "registryDependencies": [
-        "button",
-        "card",
-        "input",
-        "label",
-        "field"
-      ],
+      "registryDependencies": ["button", "card", "input", "label", "field"],
       "files": [
         {
           "path": "registry/base-vega/blocks/login-01/page.tsx",
@@ -2200,22 +1671,14 @@
           "type": "registry:component"
         }
       ],
-      "categories": [
-        "authentication",
-        "login"
-      ],
+      "categories": ["authentication", "login"],
       "type": "registry:block"
     },
     {
       "name": "login-02",
       "title": "Login 02",
       "description": "A two column login page with a cover image.",
-      "registryDependencies": [
-        "button",
-        "input",
-        "label",
-        "field"
-      ],
+      "registryDependencies": ["button", "input", "label", "field"],
       "files": [
         {
           "path": "registry/base-vega/blocks/login-02/page.tsx",
@@ -2227,23 +1690,14 @@
           "type": "registry:component"
         }
       ],
-      "categories": [
-        "authentication",
-        "login"
-      ],
+      "categories": ["authentication", "login"],
       "type": "registry:block"
     },
     {
       "name": "login-03",
       "title": "Login 03",
       "description": "A login page with a muted background color.",
-      "registryDependencies": [
-        "button",
-        "card",
-        "input",
-        "label",
-        "field"
-      ],
+      "registryDependencies": ["button", "card", "input", "label", "field"],
       "files": [
         {
           "path": "registry/base-vega/blocks/login-03/page.tsx",
@@ -2255,23 +1709,14 @@
           "type": "registry:component"
         }
       ],
-      "categories": [
-        "authentication",
-        "login"
-      ],
+      "categories": ["authentication", "login"],
       "type": "registry:block"
     },
     {
       "name": "login-04",
       "title": "Login 04",
       "description": "A login page with form and image.",
-      "registryDependencies": [
-        "button",
-        "card",
-        "input",
-        "label",
-        "field"
-      ],
+      "registryDependencies": ["button", "card", "input", "label", "field"],
       "files": [
         {
           "path": "registry/base-vega/blocks/login-04/page.tsx",
@@ -2283,22 +1728,14 @@
           "type": "registry:component"
         }
       ],
-      "categories": [
-        "authentication",
-        "login"
-      ],
+      "categories": ["authentication", "login"],
       "type": "registry:block"
     },
     {
       "name": "login-05",
       "title": "Login 05",
       "description": "A simple email-only login page.",
-      "registryDependencies": [
-        "button",
-        "input",
-        "label",
-        "field"
-      ],
+      "registryDependencies": ["button", "input", "label", "field"],
       "files": [
         {
           "path": "registry/base-vega/blocks/login-05/page.tsx",
@@ -2310,22 +1747,14 @@
           "type": "registry:component"
         }
       ],
-      "categories": [
-        "authentication",
-        "login"
-      ],
+      "categories": ["authentication", "login"],
       "type": "registry:block"
     },
     {
       "name": "signup-01",
       "title": "Signup 01",
       "description": "A simple signup form.",
-      "registryDependencies": [
-        "button",
-        "card",
-        "input",
-        "label"
-      ],
+      "registryDependencies": ["button", "card", "input", "label"],
       "files": [
         {
           "path": "registry/base-vega/blocks/signup-01/page.tsx",
@@ -2337,22 +1766,14 @@
           "type": "registry:component"
         }
       ],
-      "categories": [
-        "authentication",
-        "signup"
-      ],
+      "categories": ["authentication", "signup"],
       "type": "registry:block"
     },
     {
       "name": "signup-02",
       "title": "Signup 02",
       "description": "A two column signup page with a cover image.",
-      "registryDependencies": [
-        "button",
-        "input",
-        "label",
-        "field"
-      ],
+      "registryDependencies": ["button", "input", "label", "field"],
       "files": [
         {
           "path": "registry/base-vega/blocks/signup-02/page.tsx",
@@ -2364,23 +1785,14 @@
           "type": "registry:component"
         }
       ],
-      "categories": [
-        "authentication",
-        "signup"
-      ],
+      "categories": ["authentication", "signup"],
       "type": "registry:block"
     },
     {
       "name": "signup-03",
       "title": "Signup 03",
       "description": "A signup page with a muted background color.",
-      "registryDependencies": [
-        "button",
-        "card",
-        "input",
-        "label",
-        "field"
-      ],
+      "registryDependencies": ["button", "card", "input", "label", "field"],
       "files": [
         {
           "path": "registry/base-vega/blocks/signup-03/page.tsx",
@@ -2392,23 +1804,14 @@
           "type": "registry:component"
         }
       ],
-      "categories": [
-        "authentication",
-        "signup"
-      ],
+      "categories": ["authentication", "signup"],
       "type": "registry:block"
     },
     {
       "name": "signup-04",
       "title": "Signup 04",
       "description": "A signup page with form and image.",
-      "registryDependencies": [
-        "button",
-        "card",
-        "input",
-        "label",
-        "field"
-      ],
+      "registryDependencies": ["button", "card", "input", "label", "field"],
       "files": [
         {
           "path": "registry/base-vega/blocks/signup-04/page.tsx",
@@ -2420,21 +1823,14 @@
           "type": "registry:component"
         }
       ],
-      "categories": [
-        "authentication",
-        "signup"
-      ],
+      "categories": ["authentication", "signup"],
       "type": "registry:block"
     },
     {
       "name": "signup-05",
       "title": "Signup 05",
       "description": "A simple signup form with social providers.",
-      "registryDependencies": [
-        "button",
-        "input",
-        "label"
-      ],
+      "registryDependencies": ["button", "input", "label"],
       "files": [
         {
           "path": "registry/base-vega/blocks/signup-05/page.tsx",
@@ -2446,10 +1842,7 @@
           "type": "registry:component"
         }
       ],
-      "categories": [
-        "authentication",
-        "signup"
-      ],
+      "categories": ["authentication", "signup"],
       "type": "registry:block"
     },
     {
@@ -2536,9 +1929,7 @@
       "meta": {
         "iframeHeight": "1000px"
       },
-      "categories": [
-        "dashboard"
-      ],
+      "categories": ["dashboard"],
       "type": "registry:block"
     },
     {
@@ -2571,10 +1962,7 @@
           "type": "registry:component"
         }
       ],
-      "categories": [
-        "sidebar",
-        "dashboard"
-      ],
+      "categories": ["sidebar", "dashboard"],
       "type": "registry:block"
     },
     {
@@ -2607,20 +1995,14 @@
           "type": "registry:component"
         }
       ],
-      "categories": [
-        "sidebar",
-        "dashboard"
-      ],
+      "categories": ["sidebar", "dashboard"],
       "type": "registry:block"
     },
     {
       "name": "sidebar-03",
       "title": "Sidebar 03",
       "description": "A sidebar with submenus.",
-      "registryDependencies": [
-        "sidebar",
-        "breadcrumb"
-      ],
+      "registryDependencies": ["sidebar", "breadcrumb"],
       "files": [
         {
           "path": "registry/base-vega/blocks/sidebar-03/page.tsx",
@@ -2632,21 +2014,14 @@
           "type": "registry:component"
         }
       ],
-      "categories": [
-        "sidebar",
-        "dashboard"
-      ],
+      "categories": ["sidebar", "dashboard"],
       "type": "registry:block"
     },
     {
       "name": "sidebar-04",
       "title": "Sidebar 04",
       "description": "A floating sidebar with submenus.",
-      "registryDependencies": [
-        "sidebar",
-        "breadcrumb",
-        "separator"
-      ],
+      "registryDependencies": ["sidebar", "breadcrumb", "separator"],
       "files": [
         {
           "path": "registry/base-vega/blocks/sidebar-04/page.tsx",
@@ -2658,10 +2033,7 @@
           "type": "registry:component"
         }
       ],
-      "categories": [
-        "sidebar",
-        "dashboard"
-      ],
+      "categories": ["sidebar", "dashboard"],
       "type": "registry:block"
     },
     {
@@ -2690,10 +2062,7 @@
           "type": "registry:component"
         }
       ],
-      "categories": [
-        "sidebar",
-        "dashboard"
-      ],
+      "categories": ["sidebar", "dashboard"],
       "type": "registry:block"
     },
     {
@@ -2726,10 +2095,7 @@
           "type": "registry:component"
         }
       ],
-      "categories": [
-        "sidebar",
-        "dashboard"
-      ],
+      "categories": ["sidebar", "dashboard"],
       "type": "registry:block"
     },
     {
@@ -2771,10 +2137,7 @@
           "type": "registry:component"
         }
       ],
-      "categories": [
-        "sidebar",
-        "dashboard"
-      ],
+      "categories": ["sidebar", "dashboard"],
       "type": "registry:block"
     },
     {
@@ -2816,10 +2179,7 @@
           "type": "registry:component"
         }
       ],
-      "categories": [
-        "sidebar",
-        "dashboard"
-      ],
+      "categories": ["sidebar", "dashboard"],
       "type": "registry:block"
     },
     {
@@ -2851,10 +2211,7 @@
           "type": "registry:component"
         }
       ],
-      "categories": [
-        "sidebar",
-        "dashboard"
-      ],
+      "categories": ["sidebar", "dashboard"],
       "type": "registry:block"
     },
     {
@@ -2904,10 +2261,7 @@
           "type": "registry:component"
         }
       ],
-      "categories": [
-        "sidebar",
-        "dashboard"
-      ],
+      "categories": ["sidebar", "dashboard"],
       "type": "registry:block"
     },
     {
@@ -2931,10 +2285,7 @@
           "type": "registry:component"
         }
       ],
-      "categories": [
-        "sidebar",
-        "dashboard"
-      ],
+      "categories": ["sidebar", "dashboard"],
       "type": "registry:block"
     },
     {
@@ -2973,22 +2324,14 @@
           "type": "registry:component"
         }
       ],
-      "categories": [
-        "sidebar",
-        "dashboard"
-      ],
+      "categories": ["sidebar", "dashboard"],
       "type": "registry:block"
     },
     {
       "name": "sidebar-13",
       "title": "Sidebar 13",
       "description": "A sidebar in a dialog.",
-      "registryDependencies": [
-        "sidebar",
-        "breadcrumb",
-        "button",
-        "dialog"
-      ],
+      "registryDependencies": ["sidebar", "breadcrumb", "button", "dialog"],
       "files": [
         {
           "path": "registry/base-vega/blocks/sidebar-13/page.tsx",
@@ -3000,20 +2343,14 @@
           "type": "registry:component"
         }
       ],
-      "categories": [
-        "sidebar",
-        "dashboard"
-      ],
+      "categories": ["sidebar", "dashboard"],
       "type": "registry:block"
     },
     {
       "name": "sidebar-14",
       "title": "Sidebar 14",
       "description": "A sidebar on the right.",
-      "registryDependencies": [
-        "sidebar",
-        "breadcrumb"
-      ],
+      "registryDependencies": ["sidebar", "breadcrumb"],
       "files": [
         {
           "path": "registry/base-vega/blocks/sidebar-14/page.tsx",
@@ -3025,10 +2362,7 @@
           "type": "registry:component"
         }
       ],
-      "categories": [
-        "sidebar",
-        "dashboard"
-      ],
+      "categories": ["sidebar", "dashboard"],
       "type": "registry:block"
     },
     {
@@ -3092,10 +2426,7 @@
           "type": "registry:component"
         }
       ],
-      "categories": [
-        "sidebar",
-        "dashboard"
-      ],
+      "categories": ["sidebar", "dashboard"],
       "type": "registry:block"
     },
     {
@@ -3147,10 +2478,7 @@
           "type": "registry:component"
         }
       ],
-      "categories": [
-        "sidebar",
-        "dashboard"
-      ],
+      "categories": ["sidebar", "dashboard"],
       "type": "registry:block"
     },
     {
@@ -3172,9 +2500,7 @@
         "provider": "google",
         "import": "Geist",
         "variable": "--font-sans",
-        "subsets": [
-          "latin"
-        ]
+        "subsets": ["latin"]
       }
     },
     {
@@ -3186,9 +2512,7 @@
         "provider": "google",
         "import": "Inter",
         "variable": "--font-sans",
-        "subsets": [
-          "latin"
-        ]
+        "subsets": ["latin"]
       }
     },
     {
@@ -3222,9 +2546,7 @@
         "provider": "google",
         "import": "Figtree",
         "variable": "--font-sans",
-        "subsets": [
-          "latin"
-        ]
+        "subsets": ["latin"]
       }
     },
     {
@@ -3232,13 +2554,11 @@
       "title": "Roboto",
       "type": "registry:font",
       "font": {
-        "family": "'Roboto Variable', sans-serif",
+        "family": "'Roboto', sans-serif",
         "provider": "google",
         "import": "Roboto",
         "variable": "--font-sans",
-        "subsets": [
-          "latin"
-        ]
+        "subsets": ["latin"]
       }
     },
     {
@@ -3246,13 +2566,11 @@
       "title": "Raleway",
       "type": "registry:font",
       "font": {
-        "family": "'Raleway Variable', sans-serif",
+        "family": "'Raleway', sans-serif",
         "provider": "google",
         "import": "Raleway",
         "variable": "--font-sans",
-        "subsets": [
-          "latin"
-        ]
+        "subsets": ["latin"]
       }
     },
     {
@@ -3260,13 +2578,11 @@
       "title": "DM Sans",
       "type": "registry:font",
       "font": {
-        "family": "'DM Sans Variable', sans-serif",
+        "family": "'DM Sans', sans-serif",
         "provider": "google",
         "import": "DM_Sans",
         "variable": "--font-sans",
-        "subsets": [
-          "latin"
-        ]
+        "subsets": ["latin"]
       }
     },
     {
@@ -3274,13 +2590,11 @@
       "title": "Public Sans",
       "type": "registry:font",
       "font": {
-        "family": "'Public Sans Variable', sans-serif",
+        "family": "'Public Sans', sans-serif",
         "provider": "google",
         "import": "Public_Sans",
         "variable": "--font-sans",
-        "subsets": [
-          "latin"
-        ]
+        "subsets": ["latin"]
       }
     },
     {
@@ -3288,13 +2602,11 @@
       "title": "Outfit",
       "type": "registry:font",
       "font": {
-        "family": "'Outfit Variable', sans-serif",
+        "family": "'Outfit', sans-serif",
         "provider": "google",
         "import": "Outfit",
         "variable": "--font-sans",
-        "subsets": [
-          "latin"
-        ]
+        "subsets": ["latin"]
       }
     },
     {
@@ -3306,9 +2618,7 @@
         "provider": "google",
         "import": "JetBrains_Mono",
         "variable": "--font-sans",
-        "subsets": [
-          "latin"
-        ]
+        "subsets": ["latin"]
       }
     },
     {
@@ -3320,9 +2630,7 @@
         "provider": "google",
         "import": "Geist_Mono",
         "variable": "--font-mono",
-        "subsets": [
-          "latin"
-        ]
+        "subsets": ["latin"]
       }
     }
   ]

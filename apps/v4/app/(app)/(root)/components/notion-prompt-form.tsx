@@ -302,8 +302,12 @@ export function NotionPromptForm() {
                 </TooltipTrigger>
                 <TooltipContent>Select AI model</TooltipContent>
               </Tooltip>
-              <DropdownMenuContent side="top" align="start" className="w-48">
-                <DropdownMenuGroup className="w-48">
+              <DropdownMenuContent
+                side="top"
+                align="start"
+                className="min-w-48"
+              >
+                <DropdownMenuGroup>
                   <DropdownMenuLabel className="text-muted-foreground text-xs">
                     Select Agent Mode
                   </DropdownMenuLabel>
