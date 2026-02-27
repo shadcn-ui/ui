@@ -250,12 +250,25 @@ export async function transformLayoutFonts(
     fontUtilityClasses.push(font.font.variable.replace("--", ""))
   }
 
+  // Only keep one font-family class (font-sans, font-serif, font-mono) on <html>.
+  // The last one in the array takes priority as it's the one being added/changed.
+  const fontFamilyClasses = new Set(["font-sans", "font-serif", "font-mono"])
+  const lastFontFamilyClass = [...fontUtilityClasses]
+    .reverse()
+    .find((cls) => fontFamilyClasses.has(cls))
+  const filteredUtilityClasses = fontUtilityClasses.filter(
+    (cls) => !fontFamilyClasses.has(cls)
+  )
+  if (lastFontFamilyClass) {
+    filteredUtilityClasses.unshift(lastFontFamilyClass)
+  }
+
   // Update html className to include font variables and utility classes.
   if (fontVariableNames.length > 0) {
     updateHtmlClassName(
       sourceFile,
       fontVariableNames,
-      fontUtilityClasses,
+      filteredUtilityClasses,
       config
     )
   }
@@ -403,17 +416,18 @@ function updateHtmlClassName(
         const hasAllUtilityClasses = fontUtilityClasses.every((cls) =>
           exprText.includes(`"${cls}"`)
         )
-        if (hasAllFontVars && hasAllUtilityClasses) {
+        // Check there are no stale font-family classes (e.g., "font-sans" when we want "font-serif").
+        const staleFontFamilyClasses = ["font-sans", "font-serif", "font-mono"]
+          .filter((cls) => !fontUtilityClasses.includes(cls))
+          .some((cls) => exprText.includes(`"${cls}"`))
+        if (hasAllFontVars && hasAllUtilityClasses && !staleFontFamilyClasses) {
           // Already has everything, skip.
           continue
         }
 
-        // Remove existing font variables and utility classes, then add new ones.
-        let cleanedExpr = removeFontVariablesFromCn(exprText)
-        cleanedExpr = removeFontUtilityClassesFromCn(
-          cleanedExpr,
-          fontUtilityClasses
-        )
+        // Remove existing font variables and font-family classes, then add new ones.
+        let cleanedExpr = removeFontVariablesFromCn(exprText, newVarExpressions)
+        cleanedExpr = removeFontFamilyClassesFromCn(cleanedExpr)
         const newExpr = insertFontVariablesIntoCn(cleanedExpr, allNewArgs)
         jsxExpr.replaceWithText(`{${newExpr}}`)
       } else if (/^\w+\.variable$/.test(exprText)) {
@@ -510,18 +524,25 @@ function parseTemplateLiteralToCnArgs(templateLiteral: string) {
   return [...staticArgs, ...variableArgs]
 }
 
-function removeFontVariablesFromCn(cnExpr: string) {
-  // Remove patterns like "fontName.variable" from cn() call.
-  return cnExpr.replace(/,?\s*\w+\.variable/g, "").replace(/cn\(\s*,/, "cn(")
+function removeFontVariablesFromCn(
+  cnExpr: string,
+  variablesToRemove: string[]
+) {
+  // Remove specific font variable expressions from cn() call.
+  let result = cnExpr
+  for (const varExpr of variablesToRemove) {
+    result = result
+      .replace(new RegExp(`,?\\s*${varExpr.replace(".", "\\.")}`, "g"), "")
+      .replace(/cn\(\s*,/, "cn(")
+  }
+  return result
 }
 
-function removeFontUtilityClassesFromCn(
-  cnExpr: string,
-  utilityClasses: string[]
-) {
-  // Remove font utility class strings like "font-sans", "font-serif" from cn() call.
+function removeFontFamilyClassesFromCn(cnExpr: string) {
+  // Remove font-family class strings (font-sans, font-serif, font-mono) from cn() call.
+  // Does not remove other font classes like font-bold, font-semibold, etc.
   let result = cnExpr
-  for (const cls of utilityClasses) {
+  for (const cls of ["font-sans", "font-serif", "font-mono"]) {
     result = result
       .replace(new RegExp(`,?\\s*"${cls}"`, "g"), "")
       .replace(/cn\(\s*,/, "cn(")

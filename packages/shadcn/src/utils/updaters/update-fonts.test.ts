@@ -159,7 +159,7 @@ export default function RootLayout({
         children: React.ReactNode
       }) {
         return (
-          <html lang="en" className={cn("font-sans", "font-mono", inter.variable, jetbrainsMono.variable)}>
+          <html lang="en" className={cn("font-mono", inter.variable, jetbrainsMono.variable)}>
             <body>{children}</body>
           </html>
         )
@@ -962,13 +962,56 @@ export default function RootLayout({
         children: React.ReactNode
       }) {
         return (
-          <html lang="en" className={cn("font-sans", "font-serif", inter.variable, lora.variable)}>
+          <html lang="en" className={cn("font-serif", inter.variable, lora.variable)}>
             <body>{children}</body>
           </html>
         )
       }
       "
     `)
+  })
+
+  it("should replace existing font-sans with font-serif on html", async () => {
+    const input = `
+import { Inter } from "next/font/google";
+import { cn } from "@/lib/utils";
+
+const inter = Inter({subsets:['latin'],variable:'--font-sans'});
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en" className={cn("font-sans", inter.variable)}>
+      <body>{children}</body>
+    </html>
+  )
+}
+`
+    const fonts = [
+      {
+        name: "font-playfair-display",
+        type: "registry:font" as const,
+        font: {
+          family: "'Playfair Display Variable', serif",
+          provider: "google" as const,
+          import: "Playfair_Display",
+          variable: "--font-serif",
+          subsets: ["latin"],
+        },
+      },
+    ]
+
+    const result = await transformLayoutFonts(input, fonts, mockConfig)
+
+    // font-sans should be replaced with font-serif.
+    expect(result).toContain('"font-serif"')
+    expect(result).not.toContain('"font-sans"')
+    expect(result).toContain("playfairDisplay.variable")
+    // Inter's variable should remain since we only added Playfair.
+    expect(result).toContain("inter.variable")
   })
 
   it("should be idempotent with multiple fonts", async () => {
