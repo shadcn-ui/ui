@@ -12,6 +12,12 @@
     "description": "A set of beautifully designed components designed for developers who want niche, high-utility UI elements that you won't find in standard libraries."
   },
   {
+    "name": "@auth0",
+    "homepage": "https://auth0.com",
+    "url": "https://ui.auth0.com/r/{name}.json",
+    "description": "Official Auth0 Universal Components for Web. Accelerate development with pre-built, embeddable UI for enterprise SSO, MFA, and organization management"
+  },
+  {
     "name": "@abui",
     "homepage": "https://abui.io",
     "url": "https://abui.io/r/{name}.json",
@@ -22,6 +28,12 @@
     "homepage": "https://build.abs.xyz",
     "url": "https://build.abs.xyz/r/{name}/json",
     "description": "A collection of React components for the most common crypto patterns"
+  },
+  {
+    "name": "@arc",
+    "homepage": "https://witharc.co/components",
+    "url": "https://witharc.co/r/{name}.json",
+    "description": "Animated, accessible UI components built with React and Tailwind CSS."
   },
   {
     "name": "@aceternity",
@@ -78,6 +90,12 @@
     "description": "Radix-style React primitives for AI chat with adapters for AI SDK, LangGraph, Mastra, and custom backends."
   },
   {
+    "name": "@tool-ui",
+    "homepage": "https://www.tool-ui.com",
+    "url": "https://www.tool-ui.com/r/{name}.json",
+    "description": "Open source React components for rendering AI tool call widgets and rich assistant outputs."
+  },
+  {
     "name": "@better-upload",
     "homepage": "https://better-upload.com",
     "url": "https://better-upload.com/r/{name}.json",
@@ -100,6 +118,12 @@
     "homepage": "https://blocks.so",
     "url": "https://blocks.so/r/{name}.json",
     "description": "A set of clean, modern application building blocks for you in your applications. Free and Open Source"
+  },
+  {
+    "name": "@boldkit",
+    "homepage": "https://boldkit.dev",
+    "url": "https://boldkit.dev/r/{name}.json",
+    "description": "Neubrutalism component library with 43 components, 42 SVG shapes, thick borders, and hard shadows. Supports React, Vue, and Nuxt. Built on shadcn/ui."
   },
   {
     "name": "@bundui",
@@ -228,6 +252,12 @@
     "description": "A comprehensive React Hooks Collection built with Shadcn."
   },
   {
+    "name": "@inferencesh",
+    "homepage": "https://ui.inference.sh",
+    "url": "https://ui.inference.sh/r/{name}.json",
+    "description": "batteries-included agent components by inference.sh. chat interfaces with streaming, tool invocation rendering, syntax-highlighted code blocks, markdown renderer, and more."
+  },
+  {
     "name": "@intentui",
     "homepage": "https://intentui.com",
     "url": "https://intentui.com/r/{name}",
@@ -288,6 +318,12 @@
     "description": "Agentic UI toolkit for building MCP Apps. Open-source components and blocks ready to use within your chat app."
   },
   {
+    "name": "@mapcn",
+    "homepage": "https://mapcn.dev",
+    "url": "https://mapcn.dev/r/{name}.json",
+    "description": "Beautiful maps, made simple. Ready to use, customizable map components for React. Built on MapLibre. Styled with Tailwind CSS."
+  },
+  {
     "name": "@mui-treasury",
     "homepage": "https://www.mui-treasury.com",
     "url": "https://mui-treasury.com/r/{name}.json",
@@ -334,6 +370,12 @@
     "homepage": "https://elements.nexus.availproject.org/docs/view-components",
     "url": "https://elements.nexus.availproject.org/r/{name}.json",
     "description": "Ready-made React components for almost any use case. Use as is or customise and go to market fast"
+  },
+  {
+    "name": "@openstatus",
+    "homepage": "https://openstatus.dev/registry",
+    "url": "https://openstatus.dev/r/{name}.json",
+    "description": "Hand-crafted, accessible components for building beautiful status pages."
   },
   {
     "name": "@optics",
@@ -410,8 +452,8 @@
   {
     "name": "@reui",
     "homepage": "https://reui.io",
-    "url": "https://reui.io/r/{name}.json",
-    "description": "Open-source collection of UI components and animated effects built with React, Typescript, Tailwind CSS, and Motion. Pairs beautifully with shadcn/ui."
+    "url": "https://reui.io/r/{style}/{name}.json",
+    "description": "Free & open-source library of 1,000+ components and patterns to 10x your productivity in shadcn projects."
   },
   {
     "name": "@scrollxui",
@@ -436,6 +478,12 @@
     "homepage": "https://roiui.com",
     "url": "https://roiui.com/r/{name}.json",
     "description": "Roi UI is a library that offers UI components and blocks built with Base UI primitives. Some blocks and components use motion (framer). Everything is open-source and will be forever."
+  },
+  {
+    "name": "@slide-cn",
+    "homepage": "https://slide-cn.com",
+    "url": "https://slide-cn.com/r/{name}.json",
+    "description": "A component library to build slide decks using code."
   },
   {
     "name": "@satoriui",
@@ -484,6 +532,12 @@
     "homepage": "https://shadcnui-blocks.com",
     "url": "https://shadcnui-blocks.com/r/{name}.json",
     "description": "A collection of premium, production-ready shadcn/ui blocks, components and templates."
+  },
+  {
+    "name": "@shadcnuikit",
+    "homepage": "https://shadcnuikit.com",
+    "url": "https://shadcnuikit.com/r/{name}.json",
+    "description": "Launch your projects faster with admin dashboards, website templates, components, blocks, and pre-built real-world examples."
   },
   {
     "name": "@shadcraft",
@@ -730,5 +784,17 @@
     "homepage": "https://sona-ui.vercel.app",
     "url": "https://sona-ui.vercel.app/r/{name}.json",
     "description": "A modern UI component library built with React and TailwindCSS to help you build beautiful and accessible web applications faster."
+  },
+  {
+    "name": "@soundcn",
+    "homepage": "https://soundcn.xyz",
+    "url": "https://soundcn.xyz/r/{name}.json",
+    "description": "Large collection of game, interface, retro, and voice sound effects for web applications"
+  },
+  {
+    "name": "@pixelact-ui",
+    "homepage": "https://pixelactui.com",
+    "url": "https://pixelactui.com/r/{name}.json",
+    "description": "Playful pixel art style components library built on top of shadcn. Perfect for retro style projects and games."
   }
 ]

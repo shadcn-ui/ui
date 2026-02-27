@@ -98,35 +98,40 @@ export default function FormTanstackCheckbox() {
                 const isInvalid =
                   field.state.meta.isTouched && !field.state.meta.isValid
                 return (
-                  <FieldSet>
-                    <FieldLegend variant="label">Responses</FieldLegend>
-                    <FieldDescription>
-                      Get notified for requests that take time, like research or
-                      image generation.
-                    </FieldDescription>
-                    <FieldGroup data-slot="checkbox-group">
-                      <Field orientation="horizontal" data-invalid={isInvalid}>
-                        <Checkbox
-                          id="form-tanstack-checkbox-responses"
-                          name={field.name}
-                          checked={field.state.value}
-                          onCheckedChange={(checked) =>
-                            field.handleChange(checked === true)
-                          }
-                          disabled
-                        />
-                        <FieldLabel
-                          htmlFor="form-tanstack-checkbox-responses"
-                          className="font-normal"
+                  <div>
+                    <FieldSet>
+                      <FieldLegend variant="label">Responses</FieldLegend>
+                      <FieldDescription>
+                        Get notified for requests that take time, like research
+                        or image generation.
+                      </FieldDescription>
+                      <FieldGroup data-slot="checkbox-group">
+                        <Field
+                          orientation="horizontal"
+                          data-invalid={isInvalid}
                         >
-                          Push notifications
-                        </FieldLabel>
-                      </Field>
-                    </FieldGroup>
+                          <Checkbox
+                            id="form-tanstack-checkbox-responses"
+                            name={field.name}
+                            checked={field.state.value}
+                            onCheckedChange={(checked) =>
+                              field.handleChange(checked === true)
+                            }
+                            disabled
+                          />
+                          <FieldLabel
+                            htmlFor="form-tanstack-checkbox-responses"
+                            className="font-normal"
+                          >
+                            Push notifications
+                          </FieldLabel>
+                        </Field>
+                      </FieldGroup>
+                    </FieldSet>
                     {isInvalid && (
                       <FieldError errors={field.state.meta.errors} />
                     )}
-                  </FieldSet>
+                  </div>
                 )
               }}
             />
@@ -138,47 +143,52 @@ export default function FormTanstackCheckbox() {
                 const isInvalid =
                   field.state.meta.isTouched && !field.state.meta.isValid
                 return (
-                  <FieldSet>
-                    <FieldLegend variant="label">Tasks</FieldLegend>
-                    <FieldDescription>
-                      Get notified when tasks you&apos;ve created have updates.
-                    </FieldDescription>
-                    <FieldGroup data-slot="checkbox-group">
-                      {tasks.map((task) => (
-                        <Field
-                          key={task.id}
-                          orientation="horizontal"
-                          data-invalid={isInvalid}
-                        >
-                          <Checkbox
-                            id={`form-tanstack-checkbox-${task.id}`}
-                            name={field.name}
-                            aria-invalid={isInvalid}
-                            checked={field.state.value.includes(task.id)}
-                            onCheckedChange={(checked) => {
-                              if (checked) {
-                                field.pushValue(task.id)
-                              } else {
-                                const index = field.state.value.indexOf(task.id)
-                                if (index > -1) {
-                                  field.removeValue(index)
-                                }
-                              }
-                            }}
-                          />
-                          <FieldLabel
-                            htmlFor={`form-tanstack-checkbox-${task.id}`}
-                            className="font-normal"
+                  <FieldGroup>
+                    <FieldSet data-invalid={isInvalid}>
+                      <FieldLegend variant="label">Tasks</FieldLegend>
+                      <FieldDescription>
+                        Get notified when tasks you&apos;ve created have
+                        updates.
+                      </FieldDescription>
+                      <FieldGroup data-slot="checkbox-group">
+                        {tasks.map((task) => (
+                          <Field
+                            key={task.id}
+                            orientation="horizontal"
+                            data-invalid={isInvalid}
                           >
-                            {task.label}
-                          </FieldLabel>
-                        </Field>
-                      ))}
-                    </FieldGroup>
+                            <Checkbox
+                              id={`form-tanstack-checkbox-${task.id}`}
+                              name={field.name}
+                              aria-invalid={isInvalid}
+                              checked={field.state.value.includes(task.id)}
+                              onCheckedChange={(checked) => {
+                                if (checked) {
+                                  field.pushValue(task.id)
+                                } else {
+                                  const index = field.state.value.indexOf(
+                                    task.id
+                                  )
+                                  if (index > -1) {
+                                    field.removeValue(index)
+                                  }
+                                }
+                              }}
+                            />
+                            <FieldLabel
+                              htmlFor={`form-tanstack-checkbox-${task.id}`}
+                              className="font-normal"
+                            >
+                              {task.label}
+                            </FieldLabel>
+                          </Field>
+                        ))}
+                      </FieldGroup>
+                    </FieldSet>
                     {isInvalid && (
                       <FieldError errors={field.state.meta.errors} />
                     )}
-                  </FieldSet>
+                  </FieldGroup>
                 )
               }}
             />
