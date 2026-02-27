@@ -7,7 +7,7 @@
   "files": [
     {
       "path": "registry/new-york-v4/examples/native-select-demo.tsx",
-      "content": "import {\n  NativeSelect,\n  NativeSelectOption,\n} from \"@/registry/new-york-v4/ui/native-select\"\n\nexport default function NativeSelectDemo() {\n  return (\n    <NativeSelect>\n      <NativeSelectOption value=\"\">Select status</NativeSelectOption>\n      <NativeSelectOption value=\"todo\">Todo</NativeSelectOption>\n      <NativeSelectOption value=\"in-progress\">In Progress</NativeSelectOption>\n      <NativeSelectOption value=\"done\">Done</NativeSelectOption>\n      <NativeSelectOption value=\"cancelled\">Cancelled</NativeSelectOption>\n    </NativeSelect>\n  )\n}\n",
+      "content": "import {\r\n  NativeSelect,\r\n  NativeSelectOption,\r\n} from \"@/registry/new-york-v4/ui/native-select\"\r\n\r\nexport default function NativeSelectDemo() {\r\n  return (\r\n    <NativeSelect>\r\n      <NativeSelectOption value=\"\">Select status</NativeSelectOption>\r\n      <NativeSelectOption value=\"todo\">Todo</NativeSelectOption>\r\n      <NativeSelectOption value=\"in-progress\">In Progress</NativeSelectOption>\r\n      <NativeSelectOption value=\"done\">Done</NativeSelectOption>\r\n      <NativeSelectOption value=\"cancelled\">Cancelled</NativeSelectOption>\r\n    </NativeSelect>\r\n  )\r\n}\r\n",
       "type": "registry:example"
     }
   ],

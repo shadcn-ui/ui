@@ -7,7 +7,7 @@
   "files": [
     {
       "path": "registry/new-york-v4/examples/button-group-split.tsx",
-      "content": "import { IconPlus } from \"@tabler/icons-react\"\n\nimport { Button } from \"@/registry/new-york-v4/ui/button\"\nimport {\n  ButtonGroup,\n  ButtonGroupSeparator,\n} from \"@/registry/new-york-v4/ui/button-group\"\n\nexport default function ButtonGroupSplit() {\n  return (\n    <ButtonGroup>\n      <Button variant=\"secondary\">Button</Button>\n      <ButtonGroupSeparator />\n      <Button size=\"icon\" variant=\"secondary\">\n        <IconPlus />\n      </Button>\n    </ButtonGroup>\n  )\n}\n",
+      "content": "import { IconPlus } from \"@tabler/icons-react\"\r\n\r\nimport { Button } from \"@/registry/new-york-v4/ui/button\"\r\nimport {\r\n  ButtonGroup,\r\n  ButtonGroupSeparator,\r\n} from \"@/registry/new-york-v4/ui/button-group\"\r\n\r\nexport default function ButtonGroupSplit() {\r\n  return (\r\n    <ButtonGroup>\r\n      <Button variant=\"secondary\">Button</Button>\r\n      <ButtonGroupSeparator />\r\n      <Button size=\"icon\" variant=\"secondary\">\r\n        <IconPlus />\r\n      </Button>\r\n    </ButtonGroup>\r\n  )\r\n}\r\n",
       "type": "registry:example"
     }
   ],
