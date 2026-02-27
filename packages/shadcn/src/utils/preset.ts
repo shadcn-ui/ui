@@ -12,7 +12,7 @@
 // Value arrays — order matters for backward compat. Never reorder, only append.
 export const PRESET_BASES = ["radix", "base"] as const
 export const PRESET_STYLES = ["nova", "vega", "maia", "lyra", "mira"] as const
-export const PRESET_BASE_COLORS = ["neutral", "stone", "zinc", "gray"] as const
+export const PRESET_BASE_COLORS = ["neutral", "stone", "zinc", "gray", "mauve", "olive", "mist", "taupe"] as const
 export const PRESET_THEMES = [
   "neutral",
   "stone",
@@ -35,6 +35,10 @@ export const PRESET_THEMES = [
   "teal",
   "violet",
   "yellow",
+  "mauve",
+  "olive",
+  "mist",
+  "taupe",
 ] as const
 export const PRESET_ICON_LIBRARIES = [
   "lucide",
