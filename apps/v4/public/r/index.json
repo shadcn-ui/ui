@@ -48,9 +48,7 @@
   {
     "name": "alert-dialog",
     "type": "registry:ui",
-    "registryDependencies": [
-      "button"
-    ],
+    "registryDependencies": ["button"],
     "files": [
       {
         "path": "ui/alert-dialog.tsx",
@@ -188,9 +186,7 @@
   {
     "name": "button-group",
     "type": "registry:ui",
-    "registryDependencies": [
-      "separator"
-    ],
+    "registryDependencies": ["separator"],
     "files": [
       {
         "path": "ui/button-group.tsx",
@@ -213,13 +209,8 @@
   {
     "name": "calendar",
     "type": "registry:ui",
-    "dependencies": [
-      "react-day-picker@latest",
-      "date-fns"
-    ],
-    "registryDependencies": [
-      "button"
-    ],
+    "dependencies": ["react-day-picker@latest", "date-fns"],
+    "registryDependencies": ["button"],
     "files": [
       {
         "path": "ui/calendar.tsx",
@@ -272,12 +263,8 @@
         "type": "registry:ui"
       }
     ],
-    "registryDependencies": [
-      "button"
-    ],
-    "dependencies": [
-      "embla-carousel-react"
-    ],
+    "registryDependencies": ["button"],
+    "dependencies": ["embla-carousel-react"],
     "meta": {
       "links": {
         "radix": {
@@ -302,9 +289,7 @@
         "type": "registry:ui"
       }
     ],
-    "dependencies": [
-      "recharts@2.15.4"
-    ],
+    "dependencies": ["recharts@2.15.4"],
     "meta": {
       "links": {
         "radix": {
@@ -369,13 +354,8 @@
   {
     "name": "combobox",
     "type": "registry:ui",
-    "registryDependencies": [
-      "button",
-      "input-group"
-    ],
-    "dependencies": [
-      "@base-ui/react"
-    ],
+    "registryDependencies": ["button", "input-group"],
+    "dependencies": ["@base-ui/react"],
     "files": [
       {
         "path": "ui/combobox.tsx",
@@ -400,13 +380,8 @@
   {
     "name": "command",
     "type": "registry:ui",
-    "dependencies": [
-      "cmdk"
-    ],
-    "registryDependencies": [
-      "dialog",
-      "input-group"
-    ],
+    "dependencies": ["cmdk"],
+    "registryDependencies": ["dialog", "input-group"],
     "files": [
       {
         "path": "ui/command.tsx",
@@ -455,9 +430,7 @@
   {
     "name": "dialog",
     "type": "registry:ui",
-    "registryDependencies": [
-      "button"
-    ],
+    "registryDependencies": ["button"],
     "files": [
       {
         "path": "ui/dialog.tsx",
@@ -504,9 +477,7 @@
   {
     "name": "drawer",
     "type": "registry:ui",
-    "dependencies": [
-      "vaul"
-    ],
+    "dependencies": ["vaul"],
     "files": [
       {
         "path": "ui/drawer.tsx",
@@ -577,10 +548,7 @@
   {
     "name": "field",
     "type": "registry:ui",
-    "registryDependencies": [
-      "label",
-      "separator"
-    ],
+    "registryDependencies": ["label", "separator"],
     "files": [
       {
         "path": "ui/field.tsx",
@@ -653,11 +621,7 @@
   {
     "name": "input-group",
     "type": "registry:ui",
-    "registryDependencies": [
-      "button",
-      "input",
-      "textarea"
-    ],
+    "registryDependencies": ["button", "input", "textarea"],
     "files": [
       {
         "path": "ui/input-group.tsx",
@@ -680,9 +644,7 @@
   {
     "name": "input-otp",
     "type": "registry:ui",
-    "dependencies": [
-      "input-otp"
-    ],
+    "dependencies": ["input-otp"],
     "files": [
       {
         "path": "ui/input-otp.tsx",
@@ -707,9 +669,7 @@
   {
     "name": "item",
     "type": "registry:ui",
-    "registryDependencies": [
-      "separator"
-    ],
+    "registryDependencies": ["separator"],
     "files": [
       {
         "path": "ui/item.tsx",
@@ -848,9 +808,7 @@
   {
     "name": "pagination",
     "type": "registry:ui",
-    "registryDependencies": [
-      "button"
-    ],
+    "registryDependencies": ["button"],
     "files": [
       {
         "path": "ui/pagination.tsx",
@@ -945,9 +903,7 @@
   {
     "name": "resizable",
     "type": "registry:ui",
-    "dependencies": [
-      "react-resizable-panels"
-    ],
+    "dependencies": ["react-resizable-panels"],
     "files": [
       {
         "path": "ui/resizable.tsx",
@@ -1044,9 +1000,7 @@
   {
     "name": "sheet",
     "type": "registry:ui",
-    "registryDependencies": [
-      "button"
-    ],
+    "registryDependencies": ["button"],
     "files": [
       {
         "path": "ui/sheet.tsx",
@@ -1148,10 +1102,7 @@
   {
     "name": "sonner",
     "type": "registry:ui",
-    "dependencies": [
-      "sonner",
-      "next-themes"
-    ],
+    "dependencies": ["sonner", "next-themes"],
     "files": [
       {
         "path": "ui/sonner.tsx",
@@ -1314,9 +1265,7 @@
   {
     "name": "toggle-group",
     "type": "registry:ui",
-    "registryDependencies": [
-      "toggle"
-    ],
+    "registryDependencies": ["toggle"],
     "files": [
       {
         "path": "ui/toggle-group.tsx",

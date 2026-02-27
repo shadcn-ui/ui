@@ -1,6 +1,6 @@
-import { bold, cyan, dim, green, red, yellow } from "kleur/colors"
-import { structuredPatch, diffWords } from "diff"
 import type { DryRunFile, DryRunResult } from "@/src/utils/dry-run"
+import { diffWords, structuredPatch } from "diff"
+import { bold, cyan, dim, green, red, yellow } from "kleur/colors"
 
 const ACTION_GLYPHS: Record<DryRunFile["action"], string> = {
   create: "+",
@@ -39,7 +39,11 @@ function formatSummaryOutput(result: DryRunResult, componentNames: string[]) {
   const lines: string[] = []
 
   // Header.
-  lines.push(`${bold("┌")} ${bold(`shadcn add ${componentNames.join(", ")}`)} ${dim("(dry run)")}`)
+  lines.push(
+    `${bold("┌")} ${bold(`shadcn add ${componentNames.join(", ")}`)} ${dim(
+      "(dry run)"
+    )}`
+  )
   lines.push(dim("│"))
 
   // Files section.
@@ -61,11 +65,15 @@ function formatSummaryOutput(result: DryRunResult, componentNames: string[]) {
   formatFontsSection(result, lines)
 
   // Overwrite warning.
-  const overwriteCount = result.files.filter((f) => f.action === "overwrite").length
+  const overwriteCount = result.files.filter(
+    (f) => f.action === "overwrite"
+  ).length
   if (overwriteCount > 0) {
     lines.push(
       yellow(
-        `⚠ ${overwriteCount} ${overwriteCount === 1 ? "file" : "files"} will be overwritten.`
+        `⚠ ${overwriteCount} ${
+          overwriteCount === 1 ? "file" : "files"
+        } will be overwritten.`
       )
     )
     lines.push(dim("│"))
@@ -74,10 +82,16 @@ function formatSummaryOutput(result: DryRunResult, componentNames: string[]) {
   // Summary line.
   const summaryParts: string[] = []
   if (result.files.length > 0) {
-    summaryParts.push(`${result.files.length} ${result.files.length === 1 ? "file" : "files"}`)
+    summaryParts.push(
+      `${result.files.length} ${result.files.length === 1 ? "file" : "files"}`
+    )
   }
   if (result.dependencies.length > 0) {
-    summaryParts.push(`${result.dependencies.length} ${result.dependencies.length === 1 ? "dep" : "deps"}`)
+    summaryParts.push(
+      `${result.dependencies.length} ${
+        result.dependencies.length === 1 ? "dep" : "deps"
+      }`
+    )
   }
   if (result.css?.cssVarsCount) {
     summaryParts.push(`${result.css.cssVarsCount} CSS vars`)
@@ -89,30 +103,42 @@ function formatSummaryOutput(result: DryRunResult, componentNames: string[]) {
 
   // Footer.
   lines.push(`${dim("│")} ${dim("Run with --diff <path> to view changes.")}`)
-  lines.push(`${dim("│")} ${dim("Run with --view <path> to view file contents.")}`)
+  lines.push(
+    `${dim("│")} ${dim("Run with --view <path> to view file contents.")}`
+  )
   lines.push(`${dim("└")} ${dim("Run without --dry-run to apply.")}`)
 
   return lines.join("\n")
 }
 
 // Focused output for --diff <path>.
-function formatDiffOutput(result: DryRunResult, componentNames: string[], filterPath: string) {
+function formatDiffOutput(
+  result: DryRunResult,
+  componentNames: string[],
+  filterPath: string
+) {
   const lines: string[] = []
 
-  lines.push(`${bold("┌")} ${bold(`shadcn add ${componentNames.join(", ")}`)} ${dim("(dry run)")}`)
+  lines.push(
+    `${bold("┌")} ${bold(`shadcn add ${componentNames.join(", ")}`)} ${dim(
+      "(dry run)"
+    )}`
+  )
   lines.push(dim("│"))
 
   const filesToDiff = resolveFilterPath(result.files, filterPath)
 
   // Check if the filter matches the CSS file.
-  const cssMatch = result.css && (
-    result.css.path === filterPath ||
-    result.css.path.includes(filterPath) ||
-    result.css.path.endsWith(filterPath)
-  )
+  const cssMatch =
+    result.css &&
+    (result.css.path === filterPath ||
+      result.css.path.includes(filterPath) ||
+      result.css.path.endsWith(filterPath))
 
   if (filesToDiff.length === 0 && !cssMatch) {
-    lines.push(`${dim("│")} ${yellow(`No file matching "${filterPath}" found.`)}`)
+    lines.push(
+      `${dim("│")} ${yellow(`No file matching "${filterPath}" found.`)}`
+    )
     lines.push(dim("│"))
   } else {
     for (const file of filesToDiff) {
@@ -121,11 +147,14 @@ function formatDiffOutput(result: DryRunResult, componentNames: string[], filter
 
     // CSS diff.
     if (cssMatch && result.css) {
-      const actionLabel = result.css.action === "create"
-        ? green("create")
-        : yellow("update")
+      const actionLabel =
+        result.css.action === "create" ? green("create") : yellow("update")
 
-      lines.push(`${dim("├")} ${bold(result.css.path)} ${dim("(")}${actionLabel}${dim(")")}`)
+      lines.push(
+        `${dim("├")} ${bold(result.css.path)} ${dim("(")}${actionLabel}${dim(
+          ")"
+        )}`
+      )
 
       if (result.css.action === "create" || !result.css.existingContent) {
         lines.push(`${dim("│")} ${dim("┌" + "─".repeat(46))}`)
@@ -158,13 +187,16 @@ function formatDiffOutput(result: DryRunResult, componentNames: string[], filter
 
 // Format a single file's diff block.
 function formatFileDiff(file: DryRunFile, lines: string[]) {
-  const actionLabel = file.action === "create"
-    ? green("create")
-    : file.action === "overwrite"
+  const actionLabel =
+    file.action === "create"
+      ? green("create")
+      : file.action === "overwrite"
       ? yellow("overwrite")
       : dim("skip")
 
-  lines.push(`${dim("├")} ${bold(file.path)} ${dim("(")}${actionLabel}${dim(")")}`)
+  lines.push(
+    `${dim("├")} ${bold(file.path)} ${dim("(")}${actionLabel}${dim(")")}`
+  )
 
   if (file.action === "skip") {
     lines.push(`${dim("│")} ${dim("No changes.")}`)
@@ -192,34 +224,49 @@ function formatFileDiff(file: DryRunFile, lines: string[]) {
 }
 
 // Focused output for --view <path>.
-function formatViewOutput(result: DryRunResult, componentNames: string[], filterPath: string) {
+function formatViewOutput(
+  result: DryRunResult,
+  componentNames: string[],
+  filterPath: string
+) {
   const lines: string[] = []
 
-  lines.push(`${bold("┌")} ${bold(`shadcn add ${componentNames.join(", ")}`)} ${dim("(dry run)")}`)
+  lines.push(
+    `${bold("┌")} ${bold(`shadcn add ${componentNames.join(", ")}`)} ${dim(
+      "(dry run)"
+    )}`
+  )
   lines.push(dim("│"))
 
   const filesToView = resolveFilterPath(result.files, filterPath)
 
   // Check if the filter matches the CSS file.
-  const cssMatch = result.css && (
-    result.css.path === filterPath ||
-    result.css.path.includes(filterPath) ||
-    result.css.path.endsWith(filterPath)
-  )
+  const cssMatch =
+    result.css &&
+    (result.css.path === filterPath ||
+      result.css.path.includes(filterPath) ||
+      result.css.path.endsWith(filterPath))
 
   if (filesToView.length === 0 && !cssMatch) {
-    lines.push(`${dim("│")} ${yellow(`No file matching "${filterPath}" found.`)}`)
+    lines.push(
+      `${dim("│")} ${yellow(`No file matching "${filterPath}" found.`)}`
+    )
     lines.push(dim("│"))
   } else {
     for (const file of filesToView) {
       const contentLines = file.content.split("\n")
-      const actionLabel = file.action === "create"
-        ? green("create")
-        : file.action === "overwrite"
+      const actionLabel =
+        file.action === "create"
+          ? green("create")
+          : file.action === "overwrite"
           ? yellow("overwrite")
           : dim("skip")
 
-      lines.push(`${dim("├")} ${bold(file.path)} ${dim("(")}${actionLabel}${dim(")")} ${dim(`${contentLines.length} lines`)}`)
+      lines.push(
+        `${dim("├")} ${bold(file.path)} ${dim("(")}${actionLabel}${dim(
+          ")"
+        )} ${dim(`${contentLines.length} lines`)}`
+      )
       lines.push(`${dim("│")} ${dim("┌" + "─".repeat(46))}`)
 
       for (const line of contentLines) {
@@ -233,11 +280,14 @@ function formatViewOutput(result: DryRunResult, componentNames: string[], filter
     // CSS view.
     if (cssMatch && result.css) {
       const contentLines = result.css.content.split("\n")
-      const actionLabel = result.css.action === "create"
-        ? green("create")
-        : yellow("update")
+      const actionLabel =
+        result.css.action === "create" ? green("create") : yellow("update")
 
-      lines.push(`${dim("├")} ${bold(result.css.path)} ${dim("(")}${actionLabel}${dim(")")} ${dim(`${contentLines.length} lines`)}`)
+      lines.push(
+        `${dim("├")} ${bold(result.css.path)} ${dim("(")}${actionLabel}${dim(
+          ")"
+        )} ${dim(`${contentLines.length} lines`)}`
+      )
       lines.push(`${dim("│")} ${dim("┌" + "─".repeat(46))}`)
 
       for (const line of contentLines) {
@@ -263,7 +313,9 @@ function formatFilesSection(result: DryRunResult, lines: string[]) {
 
   // Build summary counts.
   const createCount = result.files.filter((f) => f.action === "create").length
-  const overwriteCount = result.files.filter((f) => f.action === "overwrite").length
+  const overwriteCount = result.files.filter(
+    (f) => f.action === "overwrite"
+  ).length
   const skipCount = result.files.filter((f) => f.action === "skip").length
   const summaryParts: string[] = []
   if (createCount > 0) {
@@ -275,7 +327,8 @@ function formatFilesSection(result: DryRunResult, lines: string[]) {
   if (skipCount > 0) {
     summaryParts.push(dim(`=${skipCount} skip`))
   }
-  const summary = summaryParts.length > 0 ? ` ${summaryParts.join(dim(", "))}` : ""
+  const summary =
+    summaryParts.length > 0 ? ` ${summaryParts.join(dim(", "))}` : ""
 
   lines.push(`${dim("├")} ${bold(`Files`)} ${dim(`(${totalCount})`)}${summary}`)
 
@@ -291,18 +344,17 @@ function formatFilesSection(result: DryRunResult, lines: string[]) {
       file.action === "create"
         ? green(glyph)
         : file.action === "overwrite"
-          ? yellow(glyph)
-          : dim(glyph)
+        ? yellow(glyph)
+        : dim(glyph)
 
-    const pathStr =
-      file.action === "skip" ? dim(file.path) : file.path
+    const pathStr = file.action === "skip" ? dim(file.path) : file.path
 
     const labelStr =
       file.action === "create"
         ? green(label)
         : file.action === "overwrite"
-          ? yellow(label)
-          : dim(label)
+        ? yellow(label)
+        : dim(label)
 
     lines.push(`${dim("│")} ${glyphStr} ${pathStr}${padding}${labelStr}`)
   }
@@ -310,11 +362,7 @@ function formatFilesSection(result: DryRunResult, lines: string[]) {
   lines.push(dim("│"))
 }
 
-function formatListSection(
-  title: string,
-  items: string[],
-  lines: string[]
-) {
+function formatListSection(title: string, items: string[], lines: string[]) {
   if (!items.length) {
     return
   }
@@ -335,12 +383,12 @@ function formatCssSection(result: DryRunResult, lines: string[]) {
 
   if (result.css.cssVarsCount > 0) {
     lines.push(
-      `${dim("│")} ${green("+")} ${result.css.cssVarsCount} CSS variables added to ${cyan(result.css.path)}`
+      `${dim("│")} ${green("+")} ${
+        result.css.cssVarsCount
+      } CSS variables added to ${cyan(result.css.path)}`
     )
   } else {
-    lines.push(
-      `${dim("│")} ${green("+")} Updated ${cyan(result.css.path)}`
-    )
+    lines.push(`${dim("│")} ${green("+")} Updated ${cyan(result.css.path)}`)
   }
 
   lines.push(dim("│"))
@@ -366,7 +414,9 @@ function formatFontsSection(result: DryRunResult, lines: string[]) {
 
   lines.push(`${dim("├")} ${bold("Fonts")}`)
   for (const font of result.fonts) {
-    lines.push(`${dim("│")} ${green("+")} ${font.name} ${dim(`(${font.provider})`)}`)
+    lines.push(
+      `${dim("│")} ${green("+")} ${font.name} ${dim(`(${font.provider})`)}`
+    )
   }
   lines.push(dim("│"))
 }
@@ -413,7 +463,10 @@ function computeUnifiedDiff(
   const normalizedNew = normalizeFileForDiff(newStr)
 
   const contextLines = options.fullContext
-    ? Math.max(normalizedOld.split("\n").length, normalizedNew.split("\n").length)
+    ? Math.max(
+        normalizedOld.split("\n").length,
+        normalizedNew.split("\n").length
+      )
     : 3
 
   const patch = structuredPatch(
@@ -485,7 +538,9 @@ function computeUnifiedDiff(
           // match multi-line removed statements against single-line added ones.
           // e.g., ["default:", '  "h-8..."'] → ["default: \"h-8...\""].
           const collapsedRemoved = collapseContLines(removed)
-          const normalizedCollapsed = collapsedRemoved.map((s) => normalizeLine(s))
+          const normalizedCollapsed = collapsedRemoved.map((s) =>
+            normalizeLine(s)
+          )
           const usedCollapsed = new Set<number>()
 
           for (let j = 0; j < added.length; j++) {
@@ -500,7 +555,10 @@ function computeUnifiedDiff(
             if (matchIdx !== -1) {
               // Formatting-only change — show as context.
               usedCollapsed.add(matchIdx)
-              entries.push({ kind: "context", formatted: dim(` ${actualNewLine}`) })
+              entries.push({
+                kind: "context",
+                formatted: dim(` ${actualNewLine}`),
+              })
             } else {
               // Real change — find best unmatched removed statement for inline diff.
               const unmatchedIdx = normalizedCollapsed.findIndex(
@@ -508,14 +566,18 @@ function computeUnifiedDiff(
               )
               if (unmatchedIdx !== -1) {
                 usedCollapsed.add(unmatchedIdx)
-                const { oldHighlighted, newHighlighted } = highlightInlineChanges(
-                  collapsedRemoved[unmatchedIdx],
-                  actualNewLine
-                )
+                const { oldHighlighted, newHighlighted } =
+                  highlightInlineChanges(
+                    collapsedRemoved[unmatchedIdx],
+                    actualNewLine
+                  )
                 entries.push({ kind: "removed", formatted: oldHighlighted })
                 entries.push({ kind: "added", formatted: newHighlighted })
               } else {
-                entries.push({ kind: "added", formatted: green(`+${actualNewLine}`) })
+                entries.push({
+                  kind: "added",
+                  formatted: green(`+${actualNewLine}`),
+                })
               }
             }
             newLineIndex++
@@ -524,7 +586,10 @@ function computeUnifiedDiff(
           // Remaining unmatched removed statements.
           for (let j = 0; j < collapsedRemoved.length; j++) {
             if (!usedCollapsed.has(j)) {
-              entries.push({ kind: "removed", formatted: red(`-${collapsedRemoved[j]}`) })
+              entries.push({
+                kind: "removed",
+                formatted: red(`-${collapsedRemoved[j]}`),
+              })
             }
           }
         }
@@ -555,7 +620,9 @@ function computeUnifiedDiff(
 
     output.push(
       cyan(
-        `@@ -${hunk.oldStart},${contextCount + removedCount} +${hunk.newStart},${contextCount + addedCount} @@`
+        `@@ -${hunk.oldStart},${contextCount + removedCount} +${
+          hunk.newStart
+        },${contextCount + addedCount} @@`
       )
     )
 
@@ -576,9 +643,12 @@ function normalizeFileForDiff(str: string) {
       // Preserve indentation, normalize quotes and semicolons.
       const indent = line.match(/^(\s*)/)?.[1] ?? ""
       const content = line.slice(indent.length)
-      return indent + content
-        .replace(/['"]/g, '"') // Normalize quotes to double.
-        .replace(/;$/g, "") // Remove trailing semicolons.
+      return (
+        indent +
+        content
+          .replace(/['"]/g, '"') // Normalize quotes to double.
+          .replace(/;$/g, "")
+      ) // Remove trailing semicolons.
     })
     .join("\n")
 }
@@ -593,10 +663,7 @@ function collapseContLines(lines: string[]) {
     let line = lines[i]
 
     // If line ends with `:` (after trimming) and next line is a continuation value.
-    while (
-      i + 1 < lines.length &&
-      line.trimEnd().endsWith(":")
-    ) {
+    while (i + 1 < lines.length && line.trimEnd().endsWith(":")) {
       i++
       line = line.trimEnd() + " " + lines[i].trim()
     }

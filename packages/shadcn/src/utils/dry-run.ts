@@ -8,21 +8,23 @@ import { isContentSame } from "@/src/utils/compare"
 import { isEnvFile } from "@/src/utils/env-helpers"
 import { Config } from "@/src/utils/get-config"
 import { getProjectInfo } from "@/src/utils/get-project-info"
+import { transform } from "@/src/utils/transformers"
+import { transformAsChild } from "@/src/utils/transformers/transform-aschild"
+import { transformCleanup } from "@/src/utils/transformers/transform-cleanup"
+import { transformCssVars as transformCssVarsTransformer } from "@/src/utils/transformers/transform-css-vars"
+import { transformIcons } from "@/src/utils/transformers/transform-icons"
+import { transformImport } from "@/src/utils/transformers/transform-import"
+import { transformMenu } from "@/src/utils/transformers/transform-menu"
+import { transformRsc } from "@/src/utils/transformers/transform-rsc"
+import { transformRtl } from "@/src/utils/transformers/transform-rtl"
+import { transformTwPrefixes } from "@/src/utils/transformers/transform-tw-prefix"
 import { transformCss } from "@/src/utils/updaters/update-css"
 import { transformCssVars } from "@/src/utils/updaters/update-css-vars"
+import {
+  findCommonRoot,
+  resolveFilePath,
+} from "@/src/utils/updaters/update-files"
 import { massageTreeForFonts } from "@/src/utils/updaters/update-fonts"
-import { resolveFilePath } from "@/src/utils/updaters/update-files"
-import { transform } from "@/src/utils/transformers"
-import { transformImport } from "@/src/utils/transformers/transform-import"
-import { transformRsc } from "@/src/utils/transformers/transform-rsc"
-import { transformCssVars as transformCssVarsTransformer } from "@/src/utils/transformers/transform-css-vars"
-import { transformTwPrefixes } from "@/src/utils/transformers/transform-tw-prefix"
-import { transformIcons } from "@/src/utils/transformers/transform-icons"
-import { transformMenu } from "@/src/utils/transformers/transform-menu"
-import { transformAsChild } from "@/src/utils/transformers/transform-aschild"
-import { transformRtl } from "@/src/utils/transformers/transform-rtl"
-import { transformCleanup } from "@/src/utils/transformers/transform-cleanup"
-import { findCommonRoot } from "@/src/utils/updaters/update-files"
 import { z } from "zod"
 
 export type DryRunFile = {
@@ -235,7 +237,9 @@ async function processCss(
   const existingFile = existsSync(cssFilepath)
   const relativePath = path.relative(config.resolvedPaths.cwd, cssFilepath)
 
-  const existingContent = existingFile ? await fs.readFile(cssFilepath, "utf8") : ""
+  const existingContent = existingFile
+    ? await fs.readFile(cssFilepath, "utf8")
+    : ""
   let output = existingContent
 
   // Apply CSS vars transform.
@@ -300,7 +304,8 @@ function processFonts(
   for (const font of tree.fonts) {
     result.fonts.push({
       name: font.font.family,
-      provider: font.font.provider === "google" ? "Google Fonts" : font.font.provider,
+      provider:
+        font.font.provider === "google" ? "Google Fonts" : font.font.provider,
     })
   }
 }
