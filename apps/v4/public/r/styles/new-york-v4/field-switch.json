@@ -7,7 +7,7 @@
   "files": [
     {
       "path": "registry/new-york-v4/examples/field-switch.tsx",
-      "content": "import {\n  Field,\n  FieldContent,\n  FieldDescription,\n  FieldLabel,\n} from \"@/registry/new-york-v4/ui/field\"\nimport { Switch } from \"@/registry/new-york-v4/ui/switch\"\n\nexport default function FieldSwitch() {\n  return (\n    <div className=\"w-full max-w-md\">\n      <Field orientation=\"horizontal\">\n        <FieldContent>\n          <FieldLabel htmlFor=\"2fa\">Multi-factor authentication</FieldLabel>\n          <FieldDescription>\n            Enable multi-factor authentication. If you do not have a two-factor\n            device, you can use a one-time code sent to your email.\n          </FieldDescription>\n        </FieldContent>\n        <Switch id=\"2fa\" />\n      </Field>\n    </div>\n  )\n}\n",
+      "content": "import {\r\n  Field,\r\n  FieldContent,\r\n  FieldDescription,\r\n  FieldLabel,\r\n} from \"@/registry/new-york-v4/ui/field\"\r\nimport { Switch } from \"@/registry/new-york-v4/ui/switch\"\r\n\r\nexport default function FieldSwitch() {\r\n  return (\r\n    <div className=\"w-full max-w-md\">\r\n      <Field orientation=\"horizontal\">\r\n        <FieldContent>\r\n          <FieldLabel htmlFor=\"2fa\">Multi-factor authentication</FieldLabel>\r\n          <FieldDescription>\r\n            Enable multi-factor authentication. If you do not have a two-factor\r\n            device, you can use a one-time code sent to your email.\r\n          </FieldDescription>\r\n        </FieldContent>\r\n        <Switch id=\"2fa\" />\r\n      </Field>\r\n    </div>\r\n  )\r\n}\r\n",
       "type": "registry:example"
     }
   ],

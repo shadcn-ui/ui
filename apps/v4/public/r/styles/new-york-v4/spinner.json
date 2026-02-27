@@ -7,7 +7,7 @@
   "files": [
     {
       "path": "registry/new-york-v4/ui/spinner.tsx",
-      "content": "import { Loader2Icon } from \"lucide-react\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Spinner({ className, ...props }: React.ComponentProps<\"svg\">) {\n  return (\n    <Loader2Icon\n      role=\"status\"\n      aria-label=\"Loading\"\n      className={cn(\"size-4 animate-spin\", className)}\n      {...props}\n    />\n  )\n}\n\nexport { Spinner }\n",
+      "content": "import { Loader2Icon } from \"lucide-react\"\r\n\r\nimport { cn } from \"@/lib/utils\"\r\n\r\nfunction Spinner({ className, ...props }: React.ComponentProps<\"svg\">) {\r\n  return (\r\n    <Loader2Icon\r\n      role=\"status\"\r\n      aria-label=\"Loading\"\r\n      className={cn(\"size-4 animate-spin\", className)}\r\n      {...props}\r\n    />\r\n  )\r\n}\r\n\r\nexport { Spinner }\r\n",
       "type": "registry:ui"
     }
   ],
