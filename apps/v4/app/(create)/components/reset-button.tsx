@@ -42,7 +42,11 @@ export function ResetButton() {
         />
         <AlertDialogTrigger
           render={
-            <Button variant="outline" size="sm" className="hidden w-full sm:flex">
+            <Button
+              variant="outline"
+              size="sm"
+              className="hidden w-full sm:flex"
+            >
               Reset
             </Button>
           }

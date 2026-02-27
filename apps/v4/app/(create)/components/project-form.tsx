@@ -117,7 +117,9 @@ export function ProjectForm() {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger render={<Button size="sm" />}>Create Project</DialogTrigger>
+      <DialogTrigger render={<Button size="sm" />}>
+        Create Project
+      </DialogTrigger>
       <DialogContent className="min-w-0 sm:max-w-md">
         <DialogHeader>
           <DialogTitle>Create Project</DialogTitle>
