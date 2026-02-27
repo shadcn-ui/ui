@@ -76,7 +76,7 @@
     "pub:beta": "pnpm build && pnpm publish --no-git-checks --access public --tag beta",
     "pub:next": "pnpm build && pnpm publish --no-git-checks --access public --tag next",
     "pub:release": "pnpm build && pnpm publish --access public",
-    "test": "vitest run --exclude test/visual/**",
+    "test": "vitest run",
     "test:rescript": "pnpm exec rescript && pnpm exec vitest run test/rescript",
     "test:pixel": "node test/visual/run-pixel-perfect.mjs",
     "test:dev": "REGISTRY_URL=http://localhost:4000/r vitest run",

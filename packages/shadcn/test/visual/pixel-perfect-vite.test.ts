@@ -1,4 +1,3 @@
-import { createHash } from "node:crypto"
 import { ChildProcessByStdio, spawn } from "node:child_process"
 import { existsSync, promises as fs, readdirSync } from "node:fs"
 import path from "node:path"
@@ -7,7 +6,7 @@ import { fileURLToPath } from "node:url"
 
 import puppeteer, { type Browser } from "puppeteer"
 import { twMerge } from "tailwind-merge"
-import { afterAll, beforeAll, describe, expect, it } from "vitest"
+import { afterAll, beforeAll, describe, expect, it, onTestFailed } from "vitest"
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const packageRoot = path.resolve(__dirname, "../..")
@@ -49,10 +48,6 @@ type SnapshotBundle = {
   layoutSnapshot: unknown
   a11ySnapshot: unknown
   screenshot: Buffer
-  domHash: string
-  layoutHash: string
-  a11yHash: string
-  pixelHash: string
 }
 
 function toPascalCase(value: string) {
@@ -116,14 +111,6 @@ const UNKNOWN_REQUESTED_COMPONENT_IDS = REQUESTED_COMPONENT_IDS.filter(
 let serverProcess: ChildProcessByStdio<null, Stream.Readable, Stream.Readable> | null = null
 let serverLogs = ""
 let browser: Browser | null = null
-
-function hashString(value: string) {
-  return createHash("sha256").update(value).digest("hex")
-}
-
-function hashBuffer(value: Buffer) {
-  return createHash("sha256").update(value).digest("hex")
-}
 
 async function delay(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms))
@@ -308,6 +295,22 @@ function sortSnapshotKeys(value: unknown): unknown {
     sorted[key] = sortSnapshotKeys((value as Record<string, unknown>)[key])
   }
   return sorted
+}
+
+function normalizeA11ySnapshot(value: unknown): unknown {
+  if (Array.isArray(value)) {
+    return value.map((item) => normalizeA11ySnapshot(item))
+  }
+
+  if (!value || typeof value !== "object") {
+    return value
+  }
+
+  const out = { ...(value as Record<string, unknown>) }
+  delete out.loaderId
+  return Object.fromEntries(
+    Object.entries(out).map(([key, entry]) => [key, normalizeA11ySnapshot(entry)])
+  )
 }
 
 async function captureBundle(component: string, impl: Impl): Promise<SnapshotBundle> {
@@ -526,10 +529,6 @@ async function captureBundle(component: string, impl: Impl): Promise<SnapshotBun
     await page.close()
   }
 
-  const domJson = JSON.stringify(sortSnapshotKeys(normalizeDomSnapshotClasses(domSnapshot)))
-  const layoutJson = JSON.stringify(sortSnapshotKeys(normalizeLayoutSnapshot(layoutSnapshot)))
-  const a11yJson = JSON.stringify(sortSnapshotKeys(a11ySnapshot))
-
   return {
     impl,
     url,
@@ -544,10 +543,6 @@ async function captureBundle(component: string, impl: Impl): Promise<SnapshotBun
     layoutSnapshot,
     a11ySnapshot,
     screenshot,
-    domHash: hashString(domJson),
-    layoutHash: hashString(layoutJson),
-    a11yHash: hashString(a11yJson),
-    pixelHash: hashBuffer(screenshot),
   }
 }
 
@@ -674,57 +669,75 @@ describe("tsx vs rescript parity (vite harness)", () => {
       async () => {
         const tsx = await captureBundle(component, "tsx")
         const rescript = await captureBundle(component, "rescript")
+        const artifactDir = path.join(ARTIFACTS_DIR, component)
 
         const tsxSmokeIssues = smokeIssues(tsx)
         const rescriptSmokeIssues = smokeIssues(rescript)
-        const bothSmokeOk = tsxSmokeIssues.length === 0 && rescriptSmokeIssues.length === 0
+        const assertionContext = [
+          `component: ${component}`,
+          `artifacts: ${artifactDir}`,
+          `server: ${BASE_URL}`,
+        ].join("\n")
 
-        const domEqual = bothSmokeOk && tsx.domHash === rescript.domHash
-        const layoutEqual = bothSmokeOk && tsx.layoutHash === rescript.layoutHash
-        const a11yEqual = bothSmokeOk && tsx.a11yHash === rescript.a11yHash
-        const pixelEqual = bothSmokeOk && tsx.pixelHash === rescript.pixelHash
-
-        const failures: string[] = []
-
-        if (tsxSmokeIssues.length > 0) {
-          failures.push(`tsx smoke failed: ${tsxSmokeIssues.join("; ")}`)
-        }
-
-        if (rescriptSmokeIssues.length > 0) {
-          failures.push(`rescript smoke failed: ${rescriptSmokeIssues.join("; ")}`)
-        }
-
-        if (bothSmokeOk && !domEqual) {
-          failures.push("dom snapshot mismatch")
-        }
-
-        if (bothSmokeOk && !layoutEqual) {
-          failures.push("layout snapshot mismatch")
-        }
-
-        if (bothSmokeOk && !a11yEqual) {
-          failures.push("a11y snapshot mismatch")
-        }
-
-        if (bothSmokeOk && !pixelEqual && domEqual) {
-          failures.push("pixel mismatch")
-        }
-
-        if (failures.length > 0) {
+        onTestFailed(async () => {
           await writeArtifacts(component, tsx, rescript)
+        })
+
+        const normalizedTsxDom = sortSnapshotKeys(normalizeDomSnapshotClasses(tsx.domSnapshot))
+        const normalizedRescriptDom = sortSnapshotKeys(normalizeDomSnapshotClasses(rescript.domSnapshot))
+        const normalizedTsxLayout = sortSnapshotKeys(normalizeLayoutSnapshot(tsx.layoutSnapshot))
+        const normalizedRescriptLayout = sortSnapshotKeys(normalizeLayoutSnapshot(rescript.layoutSnapshot))
+        const normalizedTsxA11y = sortSnapshotKeys(normalizeA11ySnapshot(tsx.a11ySnapshot))
+        const normalizedRescriptA11y = sortSnapshotKeys(normalizeA11ySnapshot(rescript.a11ySnapshot))
+
+        expect.soft(tsxSmokeIssues, [`tsx smoke failed`, assertionContext].join("\n")).toEqual([])
+        expect.soft(
+          rescriptSmokeIssues,
+          [`rescript smoke failed`, assertionContext].join("\n")
+        ).toEqual([])
+
+        if (tsxSmokeIssues.length > 0 || rescriptSmokeIssues.length > 0) {
+          return
         }
 
-        expect(
-          failures.length,
-          [
-            `component: ${component}`,
-            `failures: ${failures.join(" | ")}`,
-            `tsx hashes: dom=${tsx.domHash} layout=${tsx.layoutHash} a11y=${tsx.a11yHash} pixel=${tsx.pixelHash}`,
-            `rescript hashes: dom=${rescript.domHash} layout=${rescript.layoutHash} a11y=${rescript.a11yHash} pixel=${rescript.pixelHash}`,
-            `artifacts: ${path.join(ARTIFACTS_DIR, component)}`,
-            `server: ${BASE_URL}`,
-          ].join("\n")
-        ).toBe(0)
+        const domSnapshotPath = path.join(artifactDir, "tsx.dom.normalized.snapshot.json")
+        const layoutSnapshotPath = path.join(artifactDir, "tsx.layout.normalized.snapshot.json")
+        const a11ySnapshotPath = path.join(artifactDir, "tsx.a11y.snapshot.json")
+        const screenshotSnapshotPath = path.join(artifactDir, "tsx.screenshot.base64.snapshot.txt")
+
+        const tsxDomJson = JSON.stringify(normalizedTsxDom, null, 2)
+        const rescriptDomJson = JSON.stringify(normalizedRescriptDom, null, 2)
+        const tsxLayoutJson = JSON.stringify(normalizedTsxLayout, null, 2)
+        const rescriptLayoutJson = JSON.stringify(normalizedRescriptLayout, null, 2)
+        const tsxA11yJson = JSON.stringify(normalizedTsxA11y, null, 2)
+        const rescriptA11yJson = JSON.stringify(normalizedRescriptA11y, null, 2)
+
+        await fs.mkdir(artifactDir, { recursive: true })
+        await Promise.all([
+          fs.writeFile(domSnapshotPath, tsxDomJson),
+          fs.writeFile(layoutSnapshotPath, tsxLayoutJson),
+          fs.writeFile(a11ySnapshotPath, tsxA11yJson),
+          fs.writeFile(screenshotSnapshotPath, tsx.screenshot.toString("base64")),
+        ])
+
+        await expect
+          .soft(rescriptDomJson, [`dom snapshot mismatch`, assertionContext].join("\n"))
+          .toMatchFileSnapshot(domSnapshotPath)
+        await expect
+          .soft(rescriptLayoutJson, [`layout snapshot mismatch`, assertionContext].join("\n"))
+          .toMatchFileSnapshot(layoutSnapshotPath)
+        await expect
+          .soft(rescriptA11yJson, [`a11y snapshot mismatch`, assertionContext].join("\n"))
+          .toMatchFileSnapshot(a11ySnapshotPath)
+
+        if (tsxDomJson === rescriptDomJson) {
+          await expect
+            .soft(
+              rescript.screenshot.toString("base64"),
+              [`pixel mismatch`, assertionContext].join("\n")
+            )
+            .toMatchFileSnapshot(screenshotSnapshotPath)
+        }
       },
       COMPONENT_TEST_TIMEOUT_MS
     )

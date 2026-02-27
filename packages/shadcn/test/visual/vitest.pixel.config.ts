@@ -8,7 +8,6 @@ export default defineConfig({
       "**/node_modules/**",
       "**/fixtures/**",
       "**/templates/**",
-      "test/visual/**",
     ],
     testTimeout: 8000,
   },

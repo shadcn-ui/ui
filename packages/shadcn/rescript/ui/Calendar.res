@@ -438,14 +438,18 @@ let make = (
         `flex items-center gap-1 w-full absolute top-0 inset-x-0 justify-between ${defaultClassNames.nav}`,
       ),
       button_previous: classNames.button_previous->Option.getOr(
-        `${Button.buttonVariants(
-            ~variant=buttonVariant,
-          )} size-(--cell-size) aria-disabled:opacity-50 p-0 select-none ${defaultClassNames.button_previous}`,
+        twMerge(
+          `${Button.buttonVariants(
+              ~variant=buttonVariant,
+            )} size-(--cell-size) aria-disabled:opacity-50 p-0 select-none ${defaultClassNames.button_previous}`,
+        ),
       ),
       button_next: classNames.button_next->Option.getOr(
-        `${Button.buttonVariants(
-            ~variant=buttonVariant,
-          )} size-(--cell-size) aria-disabled:opacity-50 p-0 select-none ${defaultClassNames.button_next}`,
+        twMerge(
+          `${Button.buttonVariants(
+              ~variant=buttonVariant,
+            )} size-(--cell-size) aria-disabled:opacity-50 p-0 select-none ${defaultClassNames.button_next}`,
+        ),
       ),
       month_caption: classNames.month_caption->Option.getOr(
         `flex items-center justify-center h-(--cell-size) w-full px-(--cell-size) ${defaultClassNames.month_caption}`,
@@ -480,7 +484,15 @@ let make = (
         `text-[0.8rem] select-none text-muted-foreground ${defaultClassNames.week_number}`,
       ),
       day: classNames.day->Option.getOr(
-        `relative w-full rounded-(--cell-radius) h-full p-0 text-center [&:last-child[data-selected=true]_button]:rounded-r-(--cell-radius) group/day aspect-square select-none ${defaultClassNames.day}`,
+        twMerge(
+          `relative w-full rounded-(--cell-radius) h-full p-0 text-center [&:last-child[data-selected=true]_button]:rounded-r-(--cell-radius) group/day aspect-square select-none ${if (
+              showWeekNumber
+            ) {
+              "[&:nth-child(2)[data-selected=true]_button]:rounded-l-(--cell-radius)"
+            } else {
+              "[&:first-child[data-selected=true]_button]:rounded-l-(--cell-radius)"
+            }} ${defaultClassNames.day}`,
+        ),
       ),
       range_start: classNames.range_start->Option.getOr(
         `rounded-l-(--cell-radius) bg-muted relative after:bg-muted after:absolute after:inset-y-0 after:w-4 after:right-0 z-0 isolate ${defaultClassNames.range_start}`,
@@ -556,7 +568,7 @@ let make = (
       chevron: (props: ChevronProps.t) => {
         let className = props.className->Option.getOr("")
         let orientation = props.orientation
-        let props = (props :> Icons.props)
+        let props = ({...props, orientation: ?None} :> Icons.props)
         switch orientation {
         | Some(Left) =>
           <Icons.ChevronLeft {...props} className={`cn-rtl-flip size-4 ${className}`} />

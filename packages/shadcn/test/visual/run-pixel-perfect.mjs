@@ -165,6 +165,8 @@ function run() {
     const command = process.platform === "win32" ? "vitest.cmd" : "vitest"
     const args = [
       "run",
+      "--config",
+      "test/visual/vitest.pixel.config.ts",
       "test/visual/pixel-perfect-vite.test.ts",
       "--maxConcurrency=8",
       ...passthrough,
