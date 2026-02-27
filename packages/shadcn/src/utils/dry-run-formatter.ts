@@ -26,7 +26,9 @@ function colorAction(action: DryRunFile["action"] | "update") {
 
 // Format the shared header line.
 function formatHeader(componentNames: string[]) {
-  return `${bold("┌")} ${bold(`shadcn add ${componentNames.join(", ")}`)} ${dim("(dry run)")}`
+  return `${bold("┌")} ${bold(`shadcn add ${componentNames.join(", ")}`)} ${dim(
+    "(dry run)"
+  )}`
 }
 
 // Check if a CSS path matches a filter.
@@ -92,7 +94,9 @@ function formatSummaryOutput(result: DryRunResult, componentNames: string[]) {
   if (overwriteCount > 0) {
     lines.push(
       yellow(
-        `⚠ ${overwriteCount} ${overwriteCount === 1 ? "file" : "files"} will be overwritten.`
+        `⚠ ${overwriteCount} ${
+          overwriteCount === 1 ? "file" : "files"
+        } will be overwritten.`
       )
     )
     lines.push(dim("│"))
@@ -107,7 +111,9 @@ function formatSummaryOutput(result: DryRunResult, componentNames: string[]) {
   }
   if (result.dependencies.length > 0) {
     summaryParts.push(
-      `${result.dependencies.length} ${result.dependencies.length === 1 ? "dep" : "deps"}`
+      `${result.dependencies.length} ${
+        result.dependencies.length === 1 ? "dep" : "deps"
+      }`
     )
   }
   if (result.css?.cssVarsCount) {
@@ -154,7 +160,9 @@ function formatDiffOutput(
 
     if (cssMatch && result.css) {
       lines.push(
-        `${dim("├")} ${bold(result.css.path)} ${dim("(")}${colorAction(result.css.action)}${dim(")")}`
+        `${dim("├")} ${bold(result.css.path)} ${dim("(")}${colorAction(
+          result.css.action
+        )}${dim(")")}`
       )
 
       if (result.css.action === "create" || !result.css.existingContent) {
@@ -183,7 +191,9 @@ function formatDiffOutput(
 // Format a single file's diff block.
 function formatFileDiff(file: DryRunFile, lines: string[]) {
   lines.push(
-    `${dim("├")} ${bold(file.path)} ${dim("(")}${colorAction(file.action)}${dim(")")}`
+    `${dim("├")} ${bold(file.path)} ${dim("(")}${colorAction(file.action)}${dim(
+      ")"
+    )}`
   )
 
   if (file.action === "skip") {
@@ -225,7 +235,9 @@ function formatViewOutput(
     for (const file of filesToView) {
       const contentLines = file.content.split("\n")
       lines.push(
-        `${dim("├")} ${bold(file.path)} ${dim("(")}${colorAction(file.action)}${dim(")")} ${dim(`${contentLines.length} lines`)}`
+        `${dim("├")} ${bold(file.path)} ${dim("(")}${colorAction(
+          file.action
+        )}${dim(")")} ${dim(`${contentLines.length} lines`)}`
       )
       pushContentBox(lines, contentLines)
       lines.push(dim("│"))
@@ -234,7 +246,9 @@ function formatViewOutput(
     if (cssMatch && result.css) {
       const contentLines = result.css.content.split("\n")
       lines.push(
-        `${dim("├")} ${bold(result.css.path)} ${dim("(")}${colorAction(result.css.action)}${dim(")")} ${dim(`${contentLines.length} lines`)}`
+        `${dim("├")} ${bold(result.css.path)} ${dim("(")}${colorAction(
+          result.css.action
+        )}${dim(")")} ${dim(`${contentLines.length} lines`)}`
       )
       pushContentBox(lines, contentLines)
       lines.push(dim("│"))
@@ -285,8 +299,8 @@ function formatFilesSection(result: DryRunResult, lines: string[]) {
       file.action === "create"
         ? green
         : file.action === "overwrite"
-          ? yellow
-          : dim
+        ? yellow
+        : dim
 
     const pathStr = file.action === "skip" ? dim(file.path) : file.path
 
@@ -319,7 +333,9 @@ function formatCssSection(result: DryRunResult, lines: string[]) {
 
   if (result.css.cssVarsCount > 0) {
     lines.push(
-      `${dim("│")} ${green("+")} ${result.css.cssVarsCount} CSS variables added to ${cyan(result.css.path)}`
+      `${dim("│")} ${green("+")} ${
+        result.css.cssVarsCount
+      } CSS variables added to ${cyan(result.css.path)}`
     )
   } else {
     lines.push(`${dim("│")} ${green("+")} Updated ${cyan(result.css.path)}`)
@@ -416,10 +432,7 @@ function computeUnifiedDiff(
     return [dim("  No changes.")]
   }
 
-  const output: string[] = [
-    dim(`--- a/${filePath}`),
-    dim(`+++ b/${filePath}`),
-  ]
+  const output: string[] = [dim(`--- a/${filePath}`), dim(`+++ b/${filePath}`)]
 
   // Use the actual new file lines for display.
   const newLines = newStr.split("\n")
@@ -439,7 +452,9 @@ function computeUnifiedDiff(
 
     output.push(
       cyan(
-        `@@ -${hunk.oldStart},${contextCount + removedCount} +${hunk.newStart},${contextCount + addedCount} @@`
+        `@@ -${hunk.oldStart},${contextCount + removedCount} +${
+          hunk.newStart
+        },${contextCount + addedCount} @@`
       )
     )
 

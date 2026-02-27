@@ -70,6 +70,8 @@ export const add = new Command()
 
       await loadEnvFiles(options.cwd)
 
+      const isDryRun = options.dryRun || options.diff || options.view
+
       let initialConfig = await getConfig(options.cwd)
       if (!initialConfig) {
         initialConfig = createConfig({
@@ -102,8 +104,6 @@ export const add = new Command()
           itemType !== "registry:theme" &&
           itemType !== "registry:style" &&
           itemType !== "registry:base"
-
-        const isDryRun = options.dryRun || options.diff || options.view
 
         if (isUniversalRegistryItem(registryItem) && !isDryRun) {
           await addComponents(components, initialConfig, options)
@@ -263,13 +263,14 @@ export const add = new Command()
         config,
         {
           silent: options.silent || hasNewRegistries,
+          writeFile: !isDryRun,
         }
       )
       config = updatedConfig
 
       // Dry-run mode: preview changes without writing files.
       // --diff and --view imply --dry-run.
-      if (options.dryRun || options.diff || options.view) {
+      if (isDryRun) {
         const dryRunSpinner = spinner("Resolving items.", {
           silent: options.silent,
         }).start()
