@@ -120,14 +120,10 @@ export default function Page() {
           themeCssVars[font.font.variable] = `var(${font.font.variable})`
         }
 
-        await updateCssVars(
-          { theme: themeCssVars },
-          resolvedPackagesUiConfig,
-          {
-            silent: options.silent,
-            overwriteCssVars: false,
-          }
-        )
+        await updateCssVars({ theme: themeCssVars }, resolvedPackagesUiConfig, {
+          silent: options.silent,
+          overwriteCssVars: false,
+        })
 
         // Update layout.tsx in apps/web with the font import and className.
         await updateFonts(tree.fonts, resolvedAppsWebConfig, {

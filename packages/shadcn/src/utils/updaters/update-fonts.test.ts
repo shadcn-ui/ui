@@ -1,6 +1,6 @@
-import { describe, expect, it } from "vitest"
+import { describe, expect, it, vi } from "vitest"
 
-import { transformLayoutFonts } from "./update-fonts"
+import { massageTreeForFonts, transformLayoutFonts } from "./update-fonts"
 
 const mockConfig = {
   style: "new-york",
@@ -74,6 +74,7 @@ export default function RootLayout({
       import type { Metadata } from "next"
       import "./globals.css"
       import { Inter } from "next/font/google";
+      import { cn } from "@/lib/utils";
 
       const inter = Inter({subsets:['latin'],variable:'--font-sans'});
 
@@ -87,7 +88,7 @@ export default function RootLayout({
         children: React.ReactNode
       }) {
         return (
-          <html lang="en" className={inter.variable}>
+          <html lang="en" className={cn("font-sans", inter.variable)}>
             <body>{children}</body>
           </html>
         )
@@ -158,7 +159,7 @@ export default function RootLayout({
         children: React.ReactNode
       }) {
         return (
-          <html lang="en" className={cn(inter.variable, jetbrainsMono.variable)}>
+          <html lang="en" className={cn("font-sans", "font-mono", inter.variable, jetbrainsMono.variable)}>
             <body>{children}</body>
           </html>
         )
@@ -321,6 +322,7 @@ export default function RootLayout({
       "
       import type { Metadata } from "next"
       import { Inter } from "next/font/google";
+      import { cn } from "@/lib/utils";
 
       const inter = Inter({subsets:['latin'],variable:'--font-sans'});
 
@@ -331,7 +333,7 @@ export default function RootLayout({
         children: React.ReactNode
       }) {
         return (
-          <html lang="en" className={inter.variable}>
+          <html lang="en" className={cn("font-sans", inter.variable)}>
             <body className="antialiased">{children}</body>
           </html>
         )
@@ -377,6 +379,7 @@ export default function RootLayout({
     expect(result).toMatchInlineSnapshot(`
       "
       import { Roboto, Inter } from "next/font/google"
+      import { cn } from "@/lib/utils";
 
       const inter = Inter({subsets:['latin'],variable:'--font-sans'})
 
@@ -386,7 +389,7 @@ export default function RootLayout({
         children: React.ReactNode
       }) {
         return (
-          <html lang="en" className={inter.variable}>
+          <html lang="en" className={cn("font-sans", inter.variable)}>
             <body className={inter.variable}>{children}</body>
           </html>
         )
@@ -443,7 +446,7 @@ export default function RootLayout({
         children: React.ReactNode
       }) {
         return (
-          <html lang="en" className={inter.variable}>
+          <html lang="en" className={cn("font-sans", inter.variable)}>
             <body className={cn("antialiased", inter.variable)}>{children}</body>
           </html>
         )
@@ -485,6 +488,7 @@ export default function RootLayout({
 
     expect(result).toMatchInlineSnapshot(`
       "import { Inter } from "next/font/google";
+      import { cn } from "@/lib/utils";
 
       const inter = Inter({subsets:['latin'],weight:['400','500','600','700'],variable:'--font-sans'});
 
@@ -495,7 +499,7 @@ export default function RootLayout({
         children: React.ReactNode
       }) {
         return (
-          <html lang="en" className={inter.variable}>
+          <html lang="en" className={cn("font-sans", inter.variable)}>
             <body>{children}</body>
           </html>
         )
@@ -504,7 +508,7 @@ export default function RootLayout({
     `)
   })
 
-  it("should skip font entirely if already imported", async () => {
+  it("should add already-imported font to html className", async () => {
     const input = `
 import { Inter } from "next/font/google"
 
@@ -538,10 +542,11 @@ export default function RootLayout({
 
     const result = await transformLayoutFonts(input, fonts, mockConfig)
 
-    // Font is already imported, so the layout should remain unchanged.
+    // Font is already imported but not on <html>, so it should be added.
     expect(result).toMatchInlineSnapshot(`
       "
       import { Inter } from "next/font/google"
+      import { cn } from "@/lib/utils";
 
       const inter = Inter({subsets:['latin'],variable:'--font-sans'})
 
@@ -551,7 +556,7 @@ export default function RootLayout({
         children: React.ReactNode
       }) {
         return (
-          <html lang="en">
+          <html lang="en" className={cn("font-sans", inter.variable)}>
             <body className={inter.variable}>{children}</body>
           </html>
         )
@@ -655,6 +660,7 @@ export default function RootLayout({
     expect(result).toMatchInlineSnapshot(`
       "
       import { Roboto, Inter } from "next/font/google"
+      import { cn } from "@/lib/utils";
 
       const inter = Inter({subsets:['latin'],variable:'--font-sans'});
 
@@ -666,7 +672,7 @@ export default function RootLayout({
         children: React.ReactNode
       }) {
         return (
-          <html lang="en" className={inter.variable}>
+          <html lang="en" className={cn("font-sans", inter.variable)}>
             <body className={roboto.variable}>{children}</body>
           </html>
         )
@@ -707,6 +713,7 @@ export default function RootLayout({
 
     expect(result).toMatchInlineSnapshot(`
       "import { Inter } from "next/font/google";
+      import { cn } from "@/lib/utils";
 
       const inter = Inter({subsets:['latin'],variable:'--font-sans'});
 
@@ -717,7 +724,7 @@ export default function RootLayout({
         children: React.ReactNode
       }) {
         return (
-          <html lang="en" className={inter.variable}>
+          <html lang="en" className={cn("font-sans", inter.variable)}>
             <body className={someVariable}>{children}</body>
           </html>
         )
@@ -764,6 +771,7 @@ export default function RootLayout({
       import { GeistSans } from "geist/font/sans"
       import { GeistMono } from "geist/font/mono"
       import { Inter } from "next/font/google";
+      import { cn } from "@/lib/utils";
 
       const inter = Inter({subsets:['latin'],variable:'--font-sans'});
 
@@ -774,7 +782,7 @@ export default function RootLayout({
         children: React.ReactNode
       }) {
         return (
-          <html lang="en" className={inter.variable}>
+          <html lang="en" className={cn("font-sans", inter.variable)}>
             <body className={\`\${GeistSans.variable} \${GeistMono.variable} antialiased\`}>{children}</body>
           </html>
         )
@@ -869,6 +877,7 @@ export default function RootLayout({
       import type { Metadata } from "next"
       import "./globals.css"
       import { Lora } from "next/font/google";
+      import { cn } from "@/lib/utils";
 
       const lora = Lora({subsets:['latin'],variable:'--font-serif'});
 
@@ -882,7 +891,7 @@ export default function RootLayout({
         children: React.ReactNode
       }) {
         return (
-          <html lang="en" className={lora.variable}>
+          <html lang="en" className={cn("font-serif", lora.variable)}>
             <body>{children}</body>
           </html>
         )
@@ -953,7 +962,7 @@ export default function RootLayout({
         children: React.ReactNode
       }) {
         return (
-          <html lang="en" className={cn(inter.variable, lora.variable)}>
+          <html lang="en" className={cn("font-sans", "font-serif", inter.variable, lora.variable)}>
             <body>{children}</body>
           </html>
         )
@@ -1009,5 +1018,224 @@ export default function RootLayout({
 
     // All runs should produce the same result.
     expect(secondRun).toBe(firstRun)
+  })
+
+  it("should be idempotent when font is already imported and on html", async () => {
+    // Simulates a layout where the font was already added by a previous preset.
+    const input = `
+import { Merriweather } from "next/font/google";
+import { cn } from "@/lib/utils";
+
+const merriweather = Merriweather({subsets:['latin'],weight:['400','700'],variable:'--font-serif'});
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en" className={cn("font-serif", merriweather.variable)}>
+      <body>{children}</body>
+    </html>
+  )
+}
+`
+    const fonts = [
+      {
+        name: "font-merriweather",
+        type: "registry:font" as const,
+        font: {
+          family: "'Merriweather Variable', serif",
+          provider: "google" as const,
+          import: "Merriweather",
+          variable: "--font-serif",
+          subsets: ["latin"],
+          weight: ["400", "700"],
+        },
+      },
+    ]
+
+    const firstRun = await transformLayoutFonts(input, fonts, mockConfig)
+    const secondRun = await transformLayoutFonts(firstRun, fonts, mockConfig)
+
+    // Should remain unchanged across all runs.
+    expect(firstRun).toBe(input)
+    expect(secondRun).toBe(input)
+  })
+
+  it("should be idempotent when adding font to pre-existing layout with other fonts", async () => {
+    // Layout already has Inter, and we're adding Merriweather.
+    const input = `
+import { Inter } from "next/font/google";
+import { cn } from "@/lib/utils";
+
+const inter = Inter({subsets:['latin'],variable:'--font-sans'});
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en" className={cn("font-sans", inter.variable)}>
+      <body>{children}</body>
+    </html>
+  )
+}
+`
+    const fonts = [
+      {
+        name: "font-inter",
+        type: "registry:font" as const,
+        font: {
+          family: "'Inter Variable', sans-serif",
+          provider: "google" as const,
+          import: "Inter",
+          variable: "--font-sans",
+          subsets: ["latin"],
+        },
+      },
+      {
+        name: "font-merriweather",
+        type: "registry:font" as const,
+        font: {
+          family: "'Merriweather Variable', serif",
+          provider: "google" as const,
+          import: "Merriweather",
+          variable: "--font-serif",
+          subsets: ["latin"],
+          weight: ["400", "700"],
+        },
+      },
+    ]
+
+    const firstRun = await transformLayoutFonts(input, fonts, mockConfig)
+    const secondRun = await transformLayoutFonts(firstRun, fonts, mockConfig)
+
+    // Second run should be identical to first.
+    expect(secondRun).toBe(firstRun)
+    // Inter should still be there, Merriweather should be added.
+    expect(firstRun).toContain("font-sans")
+    expect(firstRun).toContain("font-serif")
+    expect(firstRun).toContain("inter.variable")
+    expect(firstRun).toContain("merriweather.variable")
+  })
+})
+
+vi.mock("@/src/utils/get-project-info", () => ({
+  getProjectInfo: vi.fn().mockResolvedValue({
+    framework: { name: "vite" },
+    isTsx: true,
+    isSrcDir: false,
+  }),
+}))
+
+describe("massageTreeForFonts", () => {
+  it("should add font @apply to body when no existing css", async () => {
+    const tree = {
+      fonts: [
+        {
+          name: "font-inter",
+          type: "registry:font" as const,
+          font: {
+            family: "'Inter Variable', sans-serif",
+            provider: "google" as const,
+            import: "Inter",
+            variable: "--font-sans",
+            subsets: ["latin"],
+          },
+        },
+      ],
+    } as any
+
+    const result = await massageTreeForFonts(tree, {
+      resolvedPaths: { cwd: "/test" },
+    } as any)
+
+    expect(result.css["@layer base"].body).toEqual({
+      "@apply font-sans": {},
+    })
+  })
+
+  it("should preserve existing body css rules when adding font classes", async () => {
+    const tree = {
+      fonts: [
+        {
+          name: "font-inter",
+          type: "registry:font" as const,
+          font: {
+            family: "'Inter Variable', sans-serif",
+            provider: "google" as const,
+            import: "Inter",
+            variable: "--font-sans",
+            subsets: ["latin"],
+          },
+        },
+      ],
+      cssVars: {
+        theme: {},
+      },
+      css: {
+        "@layer base": {
+          body: {
+            "@apply bg-background text-foreground": {},
+          },
+        },
+      },
+    } as any
+
+    const result = await massageTreeForFonts(tree, {
+      resolvedPaths: { cwd: "/test" },
+    } as any)
+
+    expect(result.css["@layer base"].body).toEqual({
+      "@apply bg-background text-foreground": {},
+      "@apply font-sans": {},
+    })
+  })
+
+  it("should combine multiple font classes into a single @apply", async () => {
+    const tree = {
+      fonts: [
+        {
+          name: "font-inter",
+          type: "registry:font" as const,
+          font: {
+            family: "'Inter Variable', sans-serif",
+            provider: "google" as const,
+            import: "Inter",
+            variable: "--font-sans",
+            subsets: ["latin"],
+          },
+        },
+        {
+          name: "font-lora",
+          type: "registry:font" as const,
+          font: {
+            family: "'Lora Variable', serif",
+            provider: "google" as const,
+            import: "Lora",
+            variable: "--font-serif",
+            subsets: ["latin"],
+          },
+        },
+      ],
+      css: {
+        "@layer base": {
+          body: {
+            "@apply bg-background text-foreground": {},
+          },
+        },
+      },
+    } as any
+
+    const result = await massageTreeForFonts(tree, {
+      resolvedPaths: { cwd: "/test" },
+    } as any)
+
+    expect(result.css["@layer base"].body).toEqual({
+      "@apply bg-background text-foreground": {},
+      "@apply font-sans font-serif": {},
+    })
   })
 })
