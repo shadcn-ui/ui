@@ -582,6 +582,12 @@
     "description": "Beautifully designed, accessible components that you can copy and paste into your apps. Made with React Aria Components and Shadcn tokens."
   },
   {
+    "name": "@terrae",
+    "homepage": "https://www.terrae.dev",
+    "url": "https://www.terrae.dev/{name}.json",
+    "description": "Composable, animated map components for React. Built with TypeScript, Tailwind CSS, Mapbox GL JS, and MapLibre GL. Perfect companion for shadcn/ui."
+  },
+  {
     "name": "@thegridcn",
     "homepage": "https://thegridcn.com",
     "url": "https://thegridcn.com/r/{name}.json",
