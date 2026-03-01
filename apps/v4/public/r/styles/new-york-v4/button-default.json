@@ -7,7 +7,7 @@
   "files": [
     {
       "path": "registry/new-york-v4/examples/button-default.tsx",
-      "content": "import { Button } from \"@/registry/new-york-v4/ui/button\"\n\nexport default function ButtonDefault() {\n  return <Button>Button</Button>\n}\n",
+      "content": "import { Button } from \"@/registry/new-york-v4/ui/button\"\r\n\r\nexport default function ButtonDefault() {\r\n  return <Button>Button</Button>\r\n}\r\n",
       "type": "registry:example"
     }
   ],
