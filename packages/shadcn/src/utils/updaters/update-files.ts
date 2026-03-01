@@ -550,9 +550,11 @@ async function resolveImports(filePaths: string[], config: Config) {
       const moduleSpecifier = importDeclaration.getModuleSpecifierValue()
 
       // Filter out non-local imports.
+      // Also accept subpath imports (#) as local.
       if (
         projectInfo?.aliasPrefix &&
-        !moduleSpecifier.startsWith(`${projectInfo.aliasPrefix}/`)
+        !moduleSpecifier.startsWith(`${projectInfo.aliasPrefix}/`) &&
+        !moduleSpecifier.startsWith("#")
       ) {
         continue
       }
@@ -707,9 +709,15 @@ export function toAliasedImport(
   rel = rel.split(path.sep).join("/") // e.g. "button/index.tsx"
 
   // 3️⃣ Strip code-file extensions, keep others (css, json, etc.)
+  //    Subpath imports (#) require explicit file extensions.
   const ext = path.posix.extname(rel)
   const codeExts = [".ts", ".tsx", ".js", ".jsx"]
-  const keepExt = codeExts.includes(ext) ? "" : ext
+  const isSubpathImport =
+    aliasKey === "cwd"
+      ? projectInfo.aliasPrefix?.startsWith("#")
+      : config.aliases[aliasKey as keyof typeof config.aliases]?.startsWith("#")
+  const keepExt =
+    codeExts.includes(ext) && !isSubpathImport ? "" : ext
   let noExt = rel.slice(0, rel.length - ext.length)
 
   // 4️⃣ Collapse "/index" to its directory
