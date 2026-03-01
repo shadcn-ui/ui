@@ -53,6 +53,7 @@ export default function ComboboxDemo() {
           variant="outline"
           role="combobox"
           aria-expanded={open}
+          aria-controls="combobox-content"
           className="w-[200px] justify-between"
         >
           {value
