@@ -40,6 +40,45 @@ function PickerContent({
     MenuPrimitive.Positioner.Props,
     "align" | "alignOffset" | "side" | "sideOffset" | "anchor"
   >) {
+  const scrollRef = React.useRef<HTMLDivElement>(null)
+  const [{ hasOverflow, atTop, atBottom }, setScrollState] = React.useState({
+    hasOverflow: false,
+    atTop: true,
+    atBottom: true,
+  })
+
+  const updateScrollState = React.useCallback(() => {
+    const el = scrollRef.current
+    if (!el) return
+
+    const maxScroll = el.scrollHeight - el.clientHeight
+    const hasOverflowContent = maxScroll > 1
+    const bottom = maxScroll - el.scrollTop <= 1
+    const top = el.scrollTop <= 1
+
+    setScrollState({
+      hasOverflow: hasOverflowContent,
+      atTop: top,
+      atBottom: bottom,
+    })
+  }, [])
+
+  React.useEffect(() => {
+    const el = scrollRef.current
+    if (!el) return
+
+    updateScrollState()
+    const handleScroll = () => updateScrollState()
+    el.addEventListener("scroll", handleScroll)
+    const resizeObserver = new ResizeObserver(updateScrollState)
+    resizeObserver.observe(el)
+
+    return () => {
+      el.removeEventListener("scroll", handleScroll)
+      resizeObserver.disconnect()
+    }
+  }, [updateScrollState])
+
   return (
     <MenuPrimitive.Portal>
       <MenuPrimitive.Positioner
@@ -53,11 +92,23 @@ function PickerContent({
         <MenuPrimitive.Popup
           data-slot="dropdown-menu-content"
           className={cn(
-            "data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 bg-popover text-popover-foreground cn-menu-target ring-foreground/10 no-scrollbar z-50 max-h-(--available-height) w-[calc(var(--available-width)-(--spacing(3.5)))] min-w-32 origin-(--transform-origin) overflow-x-hidden overflow-y-auto rounded-xl border-0 p-1 shadow-md ring-1 duration-100 outline-none data-closed:overflow-hidden md:w-52",
+            "data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 bg-popover text-popover-foreground cn-menu-target ring-foreground/10 relative z-50 w-[calc(var(--available-width)-(--spacing(3.5)))] min-w-32 origin-(--transform-origin) overflow-hidden rounded-xl border-0 p-1 shadow-md ring-1 duration-100 outline-none data-closed:overflow-hidden md:w-52",
             className
           )}
+          style={{ maxHeight: "min(24rem, var(--available-height))" }}
           {...props}
-        />
+        >
+          <div
+            ref={scrollRef}
+            className={cn(
+              "max-h-[inherit] overflow-y-auto overflow-x-hidden pr-2 pt-1",
+              hasOverflow ? "pb-2" : "pb-0"
+            )}
+            style={{ scrollbarGutter: "stable" }}
+          >
+            {props.children}
+          </div>
+        </MenuPrimitive.Popup>
       </MenuPrimitive.Positioner>
       <div className="absolute inset-0 z-40 bg-transparent" />
     </MenuPrimitive.Portal>
