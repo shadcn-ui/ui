@@ -909,7 +909,7 @@
   }
 
   .cn-radio-group-indicator {
-    @apply flex size-4 items-center justify-center;
+    @apply flex size-full items-center justify-center;
   }
 
   .cn-radio-group-indicator-icon {
