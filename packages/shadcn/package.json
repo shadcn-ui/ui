@@ -88,7 +88,7 @@
     "cosmiconfig": "^9.0.0",
     "dedent": "^1.6.0",
     "deepmerge": "^4.3.1",
-    "diff": "^8.0.2",
+    "diff": "^8.0.3",
     "execa": "^9.6.0",
     "fast-glob": "^3.3.3",
     "fs-extra": "^11.3.1",
