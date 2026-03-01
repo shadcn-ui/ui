@@ -529,7 +529,7 @@ async function promptForMinimalConfig(
   opts: z.infer<typeof initOptionsSchema>
 ) {
   let style = defaultConfig.style
-  let baseColor = opts.baseColor
+  let baseColor = opts.baseColor ?? defaultConfig.tailwind.baseColor
   let cssVariables = defaultConfig.tailwind.cssVariables
   let iconLibrary = defaultConfig.iconLibrary ?? "lucide"
 
