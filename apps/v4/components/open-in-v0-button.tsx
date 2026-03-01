@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils"
+import { APP_URL, V0_URL, cn } from "@/lib/utils"
 import { Icons } from "@/components/icons"
 import { Button } from "@/registry/new-york-v4/ui/button"
 
@@ -20,7 +20,7 @@ export function OpenInV0Button({
       {...props}
     >
       <a
-        href={`${process.env.NEXT_PUBLIC_V0_URL}/chat/api/open?url=${process.env.NEXT_PUBLIC_APP_URL}/r/styles/${V0_STYLE}/${name}.json`}
+        href={`${V0_URL}/chat/api/open?url=${APP_URL}/r/styles/${V0_STYLE}/${name}.json`}
         target="_blank"
       >
         Open in <Icons.v0 className="size-5" />
