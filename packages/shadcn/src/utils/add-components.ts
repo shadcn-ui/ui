@@ -355,7 +355,7 @@ async function addWorkspaceComponents(
   if (filesSkipped.length) {
     spinner(
       `Skipped ${filesSkipped.length} ${
-        filesUpdated.length === 1 ? "file" : "files"
+        filesSkipped.length === 1 ? "file" : "files"
       }: (use --overwrite to overwrite)`,
       {
         silent: options.silent,
