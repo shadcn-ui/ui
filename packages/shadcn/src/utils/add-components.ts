@@ -29,6 +29,7 @@ import {
   updateFonts,
 } from "@/src/utils/updaters/update-fonts"
 import { updateTailwindConfig } from "@/src/utils/updaters/update-tailwind-config"
+import { updateWxtConfig } from "@/src/utils/updaters/update-wxt-config"
 import { z } from "zod"
 
 export async function addComponents(
@@ -103,6 +104,11 @@ async function addProjectComponents(
   tree = await massageTreeForFonts(tree, config)
 
   await updateTailwindConfig(tree.tailwind?.config, config, {
+    silent: options.silent,
+    tailwindVersion,
+  })
+
+  await updateWxtConfig(config, {
     silent: options.silent,
     tailwindVersion,
   })

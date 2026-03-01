@@ -80,6 +80,14 @@ export const FRAMEWORKS = {
       tailwind: "https://www.nativewind.dev/docs/getting-started/installation",
     },
   },
+  wxt: {
+    name: "wxt",
+    label: "WXT",
+    links: {
+      installation: "https://ui.shadcn.com/docs/installation/wxt",
+      tailwind: "https://tailwindcss.com/docs/installation/using-vite",
+    },
+  },
   manual: {
     name: "manual",
     label: "Manual",

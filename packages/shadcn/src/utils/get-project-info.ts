@@ -48,7 +48,7 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
     packageJson,
   ] = await Promise.all([
     fg.glob(
-      "**/{next,vite,astro,app}.config.*|gatsby-config.*|composer.json|react-router.config.*",
+      "**/{next,vite,astro,app}.config.*|gatsby-config.*|composer.json|react-router.config.*|wxt.config.*",
       {
         cwd,
         deep: 3,
@@ -137,6 +137,15 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
     configFiles.find((file) => file.startsWith("react-router.config."))?.length
   ) {
     type.framework = FRAMEWORKS["react-router"]
+    return type
+  }
+
+  // WXT.
+  if (
+    configFiles.find((file) => file.startsWith("wxt.config.")) &&
+    packageJson?.devDependencies?.["@wxt-dev/module-react"]
+  ) {
+    type.framework = FRAMEWORKS["wxt"]
     return type
   }
 
