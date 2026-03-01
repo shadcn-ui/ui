@@ -150,6 +150,12 @@
     "description": "The easiest way to add authentication and user management to your application. Purpose-built for React, Next.js, Remix, and The Modern Web."
   },
   {
+    "name": "@coderabbit",
+    "homepage": "https://ramonclaudio.com/registries/coderabbit",
+    "url": "https://coderabbit-shadcn-registry.vercel.app/r/{name}.json",
+    "description": "A framework-agnostic API client, pluggable storage adapters (LocalStorage, Convex, Supabase, PostgreSQL, MySQL), and React components for generating developer activity reports."
+  },
+  {
     "name": "@commercn",
     "homepage": "https://commercn.com",
     "url": "https://commercn.com/r/{name}.json",
