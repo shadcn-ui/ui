@@ -1,5 +1,3 @@
-"use client"
-
 import { cn } from "@/examples/base/lib/utils"
 import { Separator as SeparatorPrimitive } from "@base-ui/react/separator"
 

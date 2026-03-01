@@ -1,5 +1,3 @@
-"use client"
-
 export {
   DirectionProvider,
   useDirection,
