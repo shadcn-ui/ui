@@ -1,5 +1,6 @@
 "use client"
 
+import * as React from "react"
 import { cn } from "@/examples/base/lib/utils"
 import { Button as ButtonPrimitive } from "@base-ui/react/button"
 import { cva, type VariantProps } from "class-variance-authority"
@@ -45,12 +46,29 @@ function Button({
   className,
   variant = "default",
   size = "default",
+  nativeButton,
+  render,
+  role,
   ...props
 }: ButtonPrimitive.Props & VariantProps<typeof buttonVariants>) {
+  const isRenderingAsLink =
+    nativeButton === false &&
+    render &&
+    React.isValidElement(render) &&
+    render.type === "a"
+
+  const finalRender =
+    isRenderingAsLink && !role
+      ? React.cloneElement(render, { role: "link" })
+      : render
+
   return (
     <ButtonPrimitive
       data-slot="button"
       className={cn(buttonVariants({ variant, size, className }))}
+      nativeButton={nativeButton}
+      render={finalRender}
+      role={role}
       {...props}
     />
   )
