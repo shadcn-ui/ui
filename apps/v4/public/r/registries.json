@@ -524,7 +524,7 @@
   {
     "name": "@shadcn-editor",
     "homepage": "https://shadcn-editor.vercel.app",
-    "url": "https://shadcn-editor.vercel.app/r/{name}.json",
+    "url": "https://raw.githubusercontent.com/htmujahid/shadcn-editor/refs/heads/main/public/r/{name}.json",
     "description": "Accessible, Customizable, Rich Text Editor. Made with Lexical and Shadcn/UI. Open Source. Open Code."
   },
   {
