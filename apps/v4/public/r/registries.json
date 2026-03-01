@@ -84,6 +84,12 @@
     "description": "A fully animated, open-source React component distribution. Browse a list of animated primitives, components and icons you can install and use in your projects."
   },
   {
+    "name": "@asanshay",
+    "homepage": "https://ds.asanshay.com",
+    "url": "https://ds.asanshay.com/r/{name}.json",
+    "description": "Clean, beautiful, themeable, and simple UI primitives and AI elements"
+  },
+  {
     "name": "@assistant-ui",
     "homepage": "https://www.assistant-ui.com",
     "url": "https://r.assistant-ui.com/{name}.json",
