@@ -14,6 +14,14 @@ This repository is a monorepo.
 - We use [Turborepo](https://turbo.build/repo) as our build system.
 - We use [changesets](https://github.com/changesets/changesets) for managing releases.
 
+## Prerequisites
+
+Before contributing, make sure you have the following installed on your system:
+
+- [Node.js](https://nodejs.org/) (includes npm)  
+- [`pnpm`](https://pnpm.io/) (package manager installed globally)
+
+
 ## Structure
 
 This repository is structured as follows:
