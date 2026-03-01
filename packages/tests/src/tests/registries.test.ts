@@ -1204,7 +1204,7 @@ describe("registries:init", () => {
       "@one": "http://localhost:4444/r/{name}",
     })
 
-    await npxShadcn(fixturePath, ["init", "@one/style"])
+    await npxShadcn(fixturePath, ["init", "--force", "@one/style"])
 
     const componentsJson = await fs.readJson(
       path.join(fixturePath, "components.json")
@@ -1272,7 +1272,7 @@ describe("registries:init", () => {
 
     process.env.BEARER_TOKEN = "EXAMPLE_BEARER_TOKEN"
 
-    await npxShadcn(fixturePath, ["init", "@two/style"])
+    await npxShadcn(fixturePath, ["init", "--force", "@two/style"])
 
     const componentsJson = await fs.readJson(
       path.join(fixturePath, "components.json")

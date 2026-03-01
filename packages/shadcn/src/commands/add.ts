@@ -6,6 +6,7 @@ import { DEPRECATED_COMPONENTS } from "@/src/registry/constants"
 import { clearRegistryContext } from "@/src/registry/context"
 import { registryItemTypeSchema } from "@/src/registry/schema"
 import { isUniversalRegistryItem } from "@/src/registry/utils"
+import { getTemplateForFramework } from "@/src/templates/index"
 import { addComponents } from "@/src/utils/add-components"
 import { createProject } from "@/src/utils/create-project"
 import { loadEnvFiles } from "@/src/utils/env-loader"
@@ -15,6 +16,7 @@ import { getProjectInfo } from "@/src/utils/get-project-info"
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
+import { promptForPreset, resolveRegistryBaseConfig } from "@/src/utils/presets"
 import { ensureRegistriesInConfig } from "@/src/utils/registries"
 import { updateAppIndex } from "@/src/utils/update-app-index"
 import { Command } from "commander"
@@ -29,8 +31,6 @@ export const addOptionsSchema = z.object({
   all: z.boolean(),
   path: z.string().optional(),
   silent: z.boolean(),
-  srcDir: z.boolean().optional(),
-  cssVariables: z.boolean(),
 })
 
 export const add = new Command()
@@ -47,23 +47,12 @@ export const add = new Command()
   .option("-a, --all", "add all available components", false)
   .option("-p, --path <path>", "the path to add the component to.")
   .option("-s, --silent", "mute output.", false)
-  .option(
-    "--src-dir",
-    "use the src directory when creating a new project.",
-    false
-  )
-  .option(
-    "--no-src-dir",
-    "do not use the src directory when creating a new project."
-  )
-  .option("--css-variables", "use css variables for theming.", true)
-  .option("--no-css-variables", "do not use css variables for theming.")
   .action(async (components, opts) => {
     try {
       const options = addOptionsSchema.parse({
         components,
-        cwd: path.resolve(opts.cwd),
         ...opts,
+        cwd: path.resolve(opts.cwd),
       })
 
       await loadEnvFiles(options.cwd)
@@ -169,6 +158,21 @@ export const add = new Command()
           process.exit(1)
         }
 
+        // Infer template from project framework.
+        const inferredTemplate = getTemplateForFramework(
+          projectInfo?.framework.name
+        )
+
+        // Prompt for preset.
+        const initUrl = await promptForPreset({
+          rtl: false,
+          template: inferredTemplate,
+        })
+
+        // Resolve registry:base config.
+        const { registryBaseConfig, installStyleIndex } =
+          await resolveRegistryBaseConfig(initUrl, options.cwd)
+
         config = await runInit({
           cwd: options.cwd,
           yes: true,
@@ -177,11 +181,11 @@ export const add = new Command()
           skipPreflight: false,
           silent: options.silent && !hasNewRegistries,
           isNewProject: false,
-          srcDir: options.srcDir,
-          cssVariables: options.cssVariables,
-          installStyleIndex: shouldInstallStyleIndex,
-          baseColor: shouldInstallStyleIndex ? undefined : "neutral",
-          components: options.components,
+          cssVariables: true,
+          rtl: false,
+          installStyleIndex,
+          components: [initUrl, ...(options.components ?? [])],
+          registryBaseConfig,
         })
         initHasRun = true
       }
@@ -192,7 +196,6 @@ export const add = new Command()
         const { projectPath, template } = await createProject({
           cwd: options.cwd,
           force: options.overwrite,
-          srcDir: options.srcDir,
           components: options.components,
         })
         if (!projectPath) {
@@ -205,6 +208,11 @@ export const add = new Command()
           options.cwd = path.resolve(options.cwd, "apps/web")
           config = await getConfig(options.cwd)
         } else {
+          // Prompt for preset.
+          const initUrl = await promptForPreset({ rtl: false, template })
+          const { registryBaseConfig, installStyleIndex } =
+            await resolveRegistryBaseConfig(initUrl, options.cwd)
+
           config = await runInit({
             cwd: options.cwd,
             yes: true,
@@ -213,11 +221,11 @@ export const add = new Command()
             skipPreflight: true,
             silent: !hasNewRegistries && options.silent,
             isNewProject: true,
-            srcDir: options.srcDir,
-            cssVariables: options.cssVariables,
-            installStyleIndex: shouldInstallStyleIndex,
-            baseColor: shouldInstallStyleIndex ? undefined : "neutral",
-            components: options.components,
+            cssVariables: true,
+            rtl: false,
+            installStyleIndex,
+            components: [initUrl, ...(options.components ?? [])],
+            registryBaseConfig,
           })
           initHasRun = true
 
