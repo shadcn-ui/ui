@@ -16,7 +16,7 @@ jobs:
     name: Write comment to the PR
     steps:
       - name: "Comment on PR"
-        uses: actions/github-script@v6
+        uses: actions/github-script@v8
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
@@ -53,7 +53,7 @@ jobs:
             ```
 
       - name: "Remove the autorelease label once published"
-        uses: actions/github-script@v6
+        uses: actions/github-script@v8
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
