@@ -124,6 +124,36 @@ export async function createProject(
     process.exit(1)
   }
 
+  // Check if target directory exists and is not empty
+  const targetDir = path.resolve(options.cwd, projectName)
+  if (fs.existsSync(targetDir)) {
+    try {
+      const dirContents = await fs.readdir(targetDir)
+      if (dirContents.length > 0) {
+        logger.break()
+        logger.error(
+          `The directory ${highlighter.info(projectName)} already exists and is not empty.`
+        )
+        logger.error(
+          `Please choose a different name or empty the directory and try again.`
+        )
+        logger.break()
+        process.exit(1)
+      }
+    } catch (error) {
+      // Directory read failed
+      logger.break()
+      logger.error(
+        `Cannot access directory ${highlighter.info(projectName)}.`
+      )
+      if (error instanceof Error) {
+        logger.error(`Error: ${error.message}`)
+      }
+      logger.break()
+      process.exit(1)
+    }
+  }
+
   if (fs.existsSync(path.resolve(options.cwd, projectName, "package.json"))) {
     logger.break()
     logger.error(
@@ -216,10 +246,30 @@ async function createNextProject(
       }
     )
   } catch (error) {
+    createSpinner?.fail("Failed to create Next.js project.")
     logger.break()
     logger.error(
       `Something went wrong creating a new Next.js project. Please try again.`
     )
+    
+    // Output detailed error information
+    if (error instanceof Error) {
+      logger.error(`Error: ${error.message}`)
+      
+      // If execa error, also output stderr
+      if ('stderr' in error && error.stderr) {
+        logger.error(`Details: ${String(error.stderr)}`)
+      }
+      
+      // Output stdout if available (useful for debugging)
+      if ('stdout' in error && error.stdout) {
+        logger.error(`Output: ${String(error.stdout)}`)
+      }
+    } else {
+      logger.error(`Unknown error: ${String(error)}`)
+    }
+    
+    logger.break()
     process.exit(1)
   }
 
