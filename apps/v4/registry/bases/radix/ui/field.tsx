@@ -1,19 +1,43 @@
-"use client"
+"use client";
 
-import { useMemo } from "react"
-import { cva, type VariantProps } from "class-variance-authority"
+import { Children, isValidElement, useMemo } from "react";
+import { cva, type VariantProps } from "class-variance-authority";
 
-import { cn } from "@/registry/bases/radix/lib/utils"
-import { Label } from "@/registry/bases/radix/ui/label"
-import { Separator } from "@/registry/bases/radix/ui/separator"
 
-function FieldSet({ className, ...props }: React.ComponentProps<"fieldset">) {
+
+import { cn } from "@/registry/bases/radix/lib/utils";
+import { Label } from "@/registry/bases/radix/ui/label";
+import { Separator } from "@/registry/bases/radix/ui/separator";
+
+
+
+
+
+function FieldSet({
+  className,
+  children,
+  ...props
+}: React.ComponentProps<"fieldset">) {
+  const childArray = Children.toArray(children)
+  const legend = childArray.find(
+    (child) =>
+      isValidElement(child) &&
+      (child.type === "legend" ||
+        (child.props as { "data-slot"?: string })?.["data-slot"] ===
+          "field-legend")
+  )
+  const otherChildren = childArray.filter((child) => child !== legend)
   return (
     <fieldset
       data-slot="field-set"
-      className={cn("cn-field-set flex flex-col", className)}
+      className={cn("min-w-0", className)}
       {...props}
-    />
+    >
+      {legend}
+      <div className="flex flex-col gap-6 has-[>[data-slot=checkbox-group]]:gap-3 has-[>[data-slot=radio-group]]:gap-3">
+        {otherChildren}
+      </div>
+    </fieldset>
   )
 }
 
