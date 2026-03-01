@@ -798,6 +798,12 @@
     "description": "Large collection of game, interface, retro, and voice sound effects for web applications"
   },
   {
+    "name": "@code-blocks",
+    "homepage": "https://code-blocks.pheralb.dev",
+    "url": "https://code-blocks.pheralb.dev/r/{name}.json",
+    "description": "A set of UI components & utilities to show your code beautifully."
+  },
+  {
     "name": "@pixelact-ui",
     "homepage": "https://pixelactui.com",
     "url": "https://pixelactui.com/r/{name}.json",
