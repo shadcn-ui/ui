@@ -324,6 +324,33 @@ async function loadMultiple() {
   ).toMatchSnapshot()
 })
 
+test("transform import for monorepo with multi-segment scoped alias", async () => {
+  expect(
+    await transform({
+      filename: "test.ts",
+      raw: `import * as React from "react"
+import { Foo } from "bar"
+    import { Button } from "@/registry/new-york/ui/button"
+    import { Label} from "ui/label"
+    import { Box } from "@/registry/new-york/box"
+
+    import { cn } from "@/lib/utils"
+    `,
+      config: {
+        tsx: true,
+        tailwind: {
+          baseColor: "neutral",
+          cssVariables: true,
+        },
+        aliases: {
+          components: "@package/ui/components",
+          utils: "@package/ui/lib/utils",
+        },
+      },
+    })
+  ).toMatchSnapshot()
+})
+
 test("transform re-exports with dynamic imports", async () => {
   expect(
     await transform({
