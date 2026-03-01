@@ -24,9 +24,7 @@
     },
     {
       "name": "alert-dialog",
-      "registryDependencies": [
-        "button"
-      ],
+      "registryDependencies": ["button"],
       "files": [
         {
           "path": "registry/base-vega/ui/alert-dialog.tsx",
@@ -87,9 +85,7 @@
     },
     {
       "name": "button-group",
-      "registryDependencies": [
-        "separator"
-      ],
+      "registryDependencies": ["separator"],
       "files": [
         {
           "path": "registry/base-vega/ui/button-group.tsx",
@@ -100,13 +96,8 @@
     },
     {
       "name": "calendar",
-      "dependencies": [
-        "react-day-picker@latest",
-        "date-fns"
-      ],
-      "registryDependencies": [
-        "button"
-      ],
+      "dependencies": ["react-day-picker@latest", "date-fns"],
+      "registryDependencies": ["button"],
       "files": [
         {
           "path": "registry/base-vega/ui/calendar.tsx",
@@ -127,12 +118,8 @@
     },
     {
       "name": "carousel",
-      "dependencies": [
-        "embla-carousel-react"
-      ],
-      "registryDependencies": [
-        "button"
-      ],
+      "dependencies": ["embla-carousel-react"],
+      "registryDependencies": ["button"],
       "files": [
         {
           "path": "registry/base-vega/ui/carousel.tsx",
@@ -143,12 +130,8 @@
     },
     {
       "name": "chart",
-      "dependencies": [
-        "recharts@2.15.4"
-      ],
-      "registryDependencies": [
-        "card"
-      ],
+      "dependencies": ["recharts@2.15.4"],
+      "registryDependencies": ["card"],
       "files": [
         {
           "path": "registry/base-vega/ui/chart.tsx",
@@ -179,13 +162,8 @@
     },
     {
       "name": "combobox",
-      "dependencies": [
-        "@base-ui/react"
-      ],
-      "registryDependencies": [
-        "button",
-        "input-group"
-      ],
+      "dependencies": ["@base-ui/react"],
+      "registryDependencies": ["button", "input-group"],
       "files": [
         {
           "path": "registry/base-vega/ui/combobox.tsx",
@@ -196,13 +174,8 @@
     },
     {
       "name": "command",
-      "dependencies": [
-        "cmdk"
-      ],
-      "registryDependencies": [
-        "dialog",
-        "input-group"
-      ],
+      "dependencies": ["cmdk"],
+      "registryDependencies": ["dialog", "input-group"],
       "files": [
         {
           "path": "registry/base-vega/ui/command.tsx",
@@ -223,9 +196,7 @@
     },
     {
       "name": "dialog",
-      "registryDependencies": [
-        "button"
-      ],
+      "registryDependencies": ["button"],
       "files": [
         {
           "path": "registry/base-vega/ui/dialog.tsx",
@@ -236,9 +207,7 @@
     },
     {
       "name": "drawer",
-      "dependencies": [
-        "vaul"
-      ],
+      "dependencies": ["vaul"],
       "files": [
         {
           "path": "registry/base-vega/ui/drawer.tsx",
@@ -269,10 +238,7 @@
     },
     {
       "name": "field",
-      "registryDependencies": [
-        "label",
-        "separator"
-      ],
+      "registryDependencies": ["label", "separator"],
       "files": [
         {
           "path": "registry/base-vega/ui/field.tsx",
@@ -307,11 +273,7 @@
     },
     {
       "name": "input-group",
-      "registryDependencies": [
-        "button",
-        "input",
-        "textarea"
-      ],
+      "registryDependencies": ["button", "input", "textarea"],
       "files": [
         {
           "path": "registry/base-vega/ui/input-group.tsx",
@@ -322,9 +284,7 @@
     },
     {
       "name": "input-otp",
-      "dependencies": [
-        "input-otp"
-      ],
+      "dependencies": ["input-otp"],
       "files": [
         {
           "path": "registry/base-vega/ui/input-otp.tsx",
@@ -335,9 +295,7 @@
     },
     {
       "name": "item",
-      "registryDependencies": [
-        "separator"
-      ],
+      "registryDependencies": ["separator"],
       "files": [
         {
           "path": "registry/base-vega/ui/item.tsx",
@@ -358,9 +316,7 @@
     },
     {
       "name": "menubar",
-      "registryDependencies": [
-        "dropdown-menu"
-      ],
+      "registryDependencies": ["dropdown-menu"],
       "files": [
         {
           "path": "registry/base-vega/ui/menubar.tsx",
@@ -381,9 +337,7 @@
     },
     {
       "name": "pagination",
-      "registryDependencies": [
-        "button"
-      ],
+      "registryDependencies": ["button"],
       "files": [
         {
           "path": "registry/base-vega/ui/pagination.tsx",
@@ -424,9 +378,7 @@
     },
     {
       "name": "resizable",
-      "dependencies": [
-        "react-resizable-panels"
-      ],
+      "dependencies": ["react-resizable-panels"],
       "files": [
         {
           "path": "registry/base-vega/ui/resizable.tsx",
@@ -467,9 +419,7 @@
     },
     {
       "name": "sheet",
-      "registryDependencies": [
-        "button"
-      ],
+      "registryDependencies": ["button"],
       "files": [
         {
           "path": "registry/base-vega/ui/sheet.tsx",
@@ -486,7 +436,8 @@
         "separator",
         "sheet",
         "skeleton",
-        "tooltip"
+        "tooltip",
+        "use-mobile"
       ],
       "files": [
         {
@@ -518,10 +469,7 @@
     },
     {
       "name": "sonner",
-      "dependencies": [
-        "sonner",
-        "next-themes"
-      ],
+      "dependencies": ["sonner", "next-themes"],
       "files": [
         {
           "path": "registry/base-vega/ui/sonner.tsx",
@@ -592,9 +540,7 @@
     },
     {
       "name": "toggle-group",
-      "registryDependencies": [
-        "toggle"
-      ],
+      "registryDependencies": ["toggle"],
       "files": [
         {
           "path": "registry/base-vega/ui/toggle-group.tsx",
@@ -611,6 +557,7 @@
           "type": "registry:ui"
         }
       ],
+      "docs": "The `tooltip` component has been added. Remember to wrap your app with the `TooltipProvider` component.\n\n```tsx title=\"app/layout.tsx\"\nimport { TooltipProvider } from \"@/components/ui/tooltip\"\n\nexport default function RootLayout({ children }: { children: React.ReactNode }) {\n  return (\n    <html lang=\"en\">\n      <body>\n        <TooltipProvider>{children}</TooltipProvider>\n      </body>\n    </html>\n  )\n}\n```\n",
       "type": "registry:ui"
     },
     {
@@ -635,9 +582,7 @@
     },
     {
       "name": "direction",
-      "dependencies": [
-        "@base-ui/react"
-      ],
+      "dependencies": ["@base-ui/react"],
       "files": [
         {
           "path": "registry/base-vega/ui/direction.tsx",
@@ -649,12 +594,7 @@
     {
       "name": "accordion-example",
       "title": "Accordion",
-      "registryDependencies": [
-        "accordion",
-        "button",
-        "card",
-        "example"
-      ],
+      "registryDependencies": ["accordion", "button", "card", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/accordion-example.tsx",
@@ -666,11 +606,7 @@
     {
       "name": "alert-example",
       "title": "Alert",
-      "registryDependencies": [
-        "alert",
-        "badge",
-        "example"
-      ],
+      "registryDependencies": ["alert", "badge", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/alert-example.tsx",
@@ -682,12 +618,7 @@
     {
       "name": "alert-dialog-example",
       "title": "Alert Dialog",
-      "registryDependencies": [
-        "alert-dialog",
-        "button",
-        "dialog",
-        "example"
-      ],
+      "registryDependencies": ["alert-dialog", "button", "dialog", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/alert-dialog-example.tsx",
@@ -699,10 +630,7 @@
     {
       "name": "aspect-ratio-example",
       "title": "Aspect Ratio",
-      "registryDependencies": [
-        "aspect-ratio",
-        "example"
-      ],
+      "registryDependencies": ["aspect-ratio", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/aspect-ratio-example.tsx",
@@ -714,12 +642,7 @@
     {
       "name": "avatar-example",
       "title": "Avatar",
-      "registryDependencies": [
-        "avatar",
-        "button",
-        "empty",
-        "example"
-      ],
+      "registryDependencies": ["avatar", "button", "empty", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/avatar-example.tsx",
@@ -731,11 +654,7 @@
     {
       "name": "badge-example",
       "title": "Badge",
-      "registryDependencies": [
-        "badge",
-        "spinner",
-        "example"
-      ],
+      "registryDependencies": ["badge", "spinner", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/badge-example.tsx",
@@ -747,11 +666,7 @@
     {
       "name": "breadcrumb-example",
       "title": "Breadcrumb",
-      "registryDependencies": [
-        "breadcrumb",
-        "dropdown-menu",
-        "example"
-      ],
+      "registryDependencies": ["breadcrumb", "dropdown-menu", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/breadcrumb-example.tsx",
@@ -763,10 +678,7 @@
     {
       "name": "button-example",
       "title": "Button",
-      "registryDependencies": [
-        "button",
-        "example"
-      ],
+      "registryDependencies": ["button", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/button-example.tsx",
@@ -842,11 +754,7 @@
     {
       "name": "carousel-example",
       "title": "Carousel",
-      "registryDependencies": [
-        "card",
-        "carousel",
-        "example"
-      ],
+      "registryDependencies": ["card", "carousel", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/carousel-example.tsx",
@@ -858,11 +766,7 @@
     {
       "name": "chart-example",
       "title": "Chart",
-      "registryDependencies": [
-        "chart",
-        "card",
-        "example"
-      ],
+      "registryDependencies": ["chart", "card", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/chart-example.tsx",
@@ -874,12 +778,7 @@
     {
       "name": "checkbox-example",
       "title": "Checkbox",
-      "registryDependencies": [
-        "checkbox",
-        "field",
-        "table",
-        "example"
-      ],
+      "registryDependencies": ["checkbox", "field", "table", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/checkbox-example.tsx",
@@ -934,11 +833,7 @@
     {
       "name": "command-example",
       "title": "Command",
-      "registryDependencies": [
-        "button",
-        "command",
-        "example"
-      ],
+      "registryDependencies": ["button", "command", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/command-example.tsx",
@@ -950,12 +845,7 @@
     {
       "name": "context-menu-example",
       "title": "Context Menu",
-      "registryDependencies": [
-        "button",
-        "context-menu",
-        "dialog",
-        "example"
-      ],
+      "registryDependencies": ["button", "context-menu", "dialog", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/context-menu-example.tsx",
@@ -994,10 +884,7 @@
     {
       "name": "drawer-example",
       "title": "Drawer",
-      "registryDependencies": [
-        "drawer",
-        "example"
-      ],
+      "registryDependencies": ["drawer", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/drawer-example.tsx",
@@ -1070,12 +957,7 @@
     {
       "name": "hover-card-example",
       "title": "Hover Card",
-      "registryDependencies": [
-        "button",
-        "dialog",
-        "hover-card",
-        "example"
-      ],
+      "registryDependencies": ["button", "dialog", "hover-card", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/hover-card-example.tsx",
@@ -1150,11 +1032,7 @@
     {
       "name": "item-example",
       "title": "Item",
-      "registryDependencies": [
-        "button",
-        "item",
-        "example"
-      ],
+      "registryDependencies": ["button", "item", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/item-example.tsx",
@@ -1203,12 +1081,7 @@
     {
       "name": "menubar-example",
       "title": "Menubar",
-      "registryDependencies": [
-        "button",
-        "dialog",
-        "menubar",
-        "example"
-      ],
+      "registryDependencies": ["button", "dialog", "menubar", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/menubar-example.tsx",
@@ -1220,11 +1093,7 @@
     {
       "name": "native-select-example",
       "title": "Native Select",
-      "registryDependencies": [
-        "field",
-        "native-select",
-        "example"
-      ],
+      "registryDependencies": ["field", "native-select", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/native-select-example.tsx",
@@ -1253,12 +1122,7 @@
     {
       "name": "pagination-example",
       "title": "Pagination",
-      "registryDependencies": [
-        "field",
-        "pagination",
-        "select",
-        "example"
-      ],
+      "registryDependencies": ["field", "pagination", "select", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/pagination-example.tsx",
@@ -1307,11 +1171,7 @@
     {
       "name": "radio-group-example",
       "title": "Radio Group",
-      "registryDependencies": [
-        "field",
-        "radio-group",
-        "example"
-      ],
+      "registryDependencies": ["field", "radio-group", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/radio-group-example.tsx",
@@ -1323,10 +1183,7 @@
     {
       "name": "resizable-example",
       "title": "Resizable",
-      "registryDependencies": [
-        "resizable",
-        "example"
-      ],
+      "registryDependencies": ["resizable", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/resizable-example.tsx",
@@ -1338,11 +1195,7 @@
     {
       "name": "scroll-area-example",
       "title": "Scroll Area",
-      "registryDependencies": [
-        "scroll-area",
-        "separator",
-        "example"
-      ],
+      "registryDependencies": ["scroll-area", "separator", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/scroll-area-example.tsx",
@@ -1375,10 +1228,7 @@
     {
       "name": "separator-example",
       "title": "Separator",
-      "registryDependencies": [
-        "separator",
-        "example"
-      ],
+      "registryDependencies": ["separator", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/separator-example.tsx",
@@ -1390,13 +1240,7 @@
     {
       "name": "sheet-example",
       "title": "Sheet",
-      "registryDependencies": [
-        "button",
-        "field",
-        "input",
-        "sheet",
-        "example"
-      ],
+      "registryDependencies": ["button", "field", "input", "sheet", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/sheet-example.tsx",
@@ -1447,11 +1291,7 @@
     {
       "name": "sidebar-inset-example",
       "title": "Sidebar (Inset)",
-      "registryDependencies": [
-        "collapsible",
-        "sidebar",
-        "example"
-      ],
+      "registryDependencies": ["collapsible", "sidebar", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/sidebar-inset-example.tsx",
@@ -1483,10 +1323,7 @@
     {
       "name": "skeleton-example",
       "title": "Skeleton",
-      "registryDependencies": [
-        "skeleton",
-        "example"
-      ],
+      "registryDependencies": ["skeleton", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/skeleton-example.tsx",
@@ -1498,11 +1335,7 @@
     {
       "name": "slider-example",
       "title": "Slider",
-      "registryDependencies": [
-        "label",
-        "slider",
-        "example"
-      ],
+      "registryDependencies": ["label", "slider", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/slider-example.tsx",
@@ -1514,10 +1347,7 @@
     {
       "name": "sonner-example",
       "title": "Sonner",
-      "registryDependencies": [
-        "sonner",
-        "example"
-      ],
+      "registryDependencies": ["sonner", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/sonner-example.tsx",
@@ -1549,12 +1379,7 @@
     {
       "name": "switch-example",
       "title": "Switch",
-      "registryDependencies": [
-        "field",
-        "label",
-        "switch",
-        "example"
-      ],
+      "registryDependencies": ["field", "label", "switch", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/switch-example.tsx",
@@ -1585,12 +1410,7 @@
     {
       "name": "tabs-example",
       "title": "Tabs",
-      "registryDependencies": [
-        "button",
-        "dropdown-menu",
-        "tabs",
-        "example"
-      ],
+      "registryDependencies": ["button", "dropdown-menu", "tabs", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/tabs-example.tsx",
@@ -1602,11 +1422,7 @@
     {
       "name": "textarea-example",
       "title": "Textarea",
-      "registryDependencies": [
-        "field",
-        "textarea",
-        "example"
-      ],
+      "registryDependencies": ["field", "textarea", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/textarea-example.tsx",
@@ -1618,10 +1434,7 @@
     {
       "name": "toggle-example",
       "title": "Toggle",
-      "registryDependencies": [
-        "toggle",
-        "example"
-      ],
+      "registryDependencies": ["toggle", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/toggle-example.tsx",
@@ -1633,12 +1446,7 @@
     {
       "name": "toggle-group-example",
       "title": "Toggle Group",
-      "registryDependencies": [
-        "input",
-        "select",
-        "toggle-group",
-        "example"
-      ],
+      "registryDependencies": ["input", "select", "toggle-group", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/toggle-group-example.tsx",
@@ -1650,12 +1458,7 @@
     {
       "name": "tooltip-example",
       "title": "Tooltip",
-      "registryDependencies": [
-        "button",
-        "kbd",
-        "tooltip",
-        "example"
-      ],
+      "registryDependencies": ["button", "kbd", "tooltip", "example"],
       "files": [
         {
           "path": "registry/base-vega/examples/tooltip-example.tsx",
@@ -1690,10 +1493,7 @@
     },
     {
       "name": "utils",
-      "dependencies": [
-        "clsx",
-        "tailwind-merge"
-      ],
+      "dependencies": ["clsx", "tailwind-merge"],
       "files": [
         {
           "path": "registry/base-vega/lib/utils.ts",
@@ -1755,11 +1555,7 @@
     {
       "name": "elevenlabs",
       "title": "Elevenlabs",
-      "registryDependencies": [
-        "example",
-        "button",
-        "card"
-      ],
+      "registryDependencies": ["example", "button", "card"],
       "files": [
         {
           "path": "registry/base-vega/blocks/elevenlabs.tsx",
@@ -1860,6 +1656,832 @@
       "type": "registry:block"
     },
     {
+      "name": "login-01",
+      "title": "Login 01",
+      "description": "A simple login form.",
+      "registryDependencies": ["button", "card", "input", "label", "field"],
+      "files": [
+        {
+          "path": "registry/base-vega/blocks/login-01/page.tsx",
+          "type": "registry:page",
+          "target": "app/login/page.tsx"
+        },
+        {
+          "path": "registry/base-vega/blocks/login-01/components/login-form.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": ["authentication", "login"],
+      "type": "registry:block"
+    },
+    {
+      "name": "login-02",
+      "title": "Login 02",
+      "description": "A two column login page with a cover image.",
+      "registryDependencies": ["button", "input", "label", "field"],
+      "files": [
+        {
+          "path": "registry/base-vega/blocks/login-02/page.tsx",
+          "type": "registry:page",
+          "target": "app/login/page.tsx"
+        },
+        {
+          "path": "registry/base-vega/blocks/login-02/components/login-form.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": ["authentication", "login"],
+      "type": "registry:block"
+    },
+    {
+      "name": "login-03",
+      "title": "Login 03",
+      "description": "A login page with a muted background color.",
+      "registryDependencies": ["button", "card", "input", "label", "field"],
+      "files": [
+        {
+          "path": "registry/base-vega/blocks/login-03/page.tsx",
+          "type": "registry:page",
+          "target": "app/login/page.tsx"
+        },
+        {
+          "path": "registry/base-vega/blocks/login-03/components/login-form.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": ["authentication", "login"],
+      "type": "registry:block"
+    },
+    {
+      "name": "login-04",
+      "title": "Login 04",
+      "description": "A login page with form and image.",
+      "registryDependencies": ["button", "card", "input", "label", "field"],
+      "files": [
+        {
+          "path": "registry/base-vega/blocks/login-04/page.tsx",
+          "type": "registry:page",
+          "target": "app/login/page.tsx"
+        },
+        {
+          "path": "registry/base-vega/blocks/login-04/components/login-form.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": ["authentication", "login"],
+      "type": "registry:block"
+    },
+    {
+      "name": "login-05",
+      "title": "Login 05",
+      "description": "A simple email-only login page.",
+      "registryDependencies": ["button", "input", "label", "field"],
+      "files": [
+        {
+          "path": "registry/base-vega/blocks/login-05/page.tsx",
+          "type": "registry:page",
+          "target": "app/login/page.tsx"
+        },
+        {
+          "path": "registry/base-vega/blocks/login-05/components/login-form.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": ["authentication", "login"],
+      "type": "registry:block"
+    },
+    {
+      "name": "signup-01",
+      "title": "Signup 01",
+      "description": "A simple signup form.",
+      "registryDependencies": ["button", "card", "input", "label"],
+      "files": [
+        {
+          "path": "registry/base-vega/blocks/signup-01/page.tsx",
+          "type": "registry:page",
+          "target": "app/signup/page.tsx"
+        },
+        {
+          "path": "registry/base-vega/blocks/signup-01/components/signup-form.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": ["authentication", "signup"],
+      "type": "registry:block"
+    },
+    {
+      "name": "signup-02",
+      "title": "Signup 02",
+      "description": "A two column signup page with a cover image.",
+      "registryDependencies": ["button", "input", "label", "field"],
+      "files": [
+        {
+          "path": "registry/base-vega/blocks/signup-02/page.tsx",
+          "type": "registry:page",
+          "target": "app/signup/page.tsx"
+        },
+        {
+          "path": "registry/base-vega/blocks/signup-02/components/signup-form.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": ["authentication", "signup"],
+      "type": "registry:block"
+    },
+    {
+      "name": "signup-03",
+      "title": "Signup 03",
+      "description": "A signup page with a muted background color.",
+      "registryDependencies": ["button", "card", "input", "label", "field"],
+      "files": [
+        {
+          "path": "registry/base-vega/blocks/signup-03/page.tsx",
+          "type": "registry:page",
+          "target": "app/signup/page.tsx"
+        },
+        {
+          "path": "registry/base-vega/blocks/signup-03/components/signup-form.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": ["authentication", "signup"],
+      "type": "registry:block"
+    },
+    {
+      "name": "signup-04",
+      "title": "Signup 04",
+      "description": "A signup page with form and image.",
+      "registryDependencies": ["button", "card", "input", "label", "field"],
+      "files": [
+        {
+          "path": "registry/base-vega/blocks/signup-04/page.tsx",
+          "type": "registry:page",
+          "target": "app/signup/page.tsx"
+        },
+        {
+          "path": "registry/base-vega/blocks/signup-04/components/signup-form.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": ["authentication", "signup"],
+      "type": "registry:block"
+    },
+    {
+      "name": "signup-05",
+      "title": "Signup 05",
+      "description": "A simple signup form with social providers.",
+      "registryDependencies": ["button", "input", "label"],
+      "files": [
+        {
+          "path": "registry/base-vega/blocks/signup-05/page.tsx",
+          "type": "registry:page",
+          "target": "app/signup/page.tsx"
+        },
+        {
+          "path": "registry/base-vega/blocks/signup-05/components/signup-form.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": ["authentication", "signup"],
+      "type": "registry:block"
+    },
+    {
+      "name": "dashboard-01",
+      "title": "Dashboard 01",
+      "description": "A dashboard with sidebar, charts and data table.",
+      "dependencies": [
+        "@dnd-kit/core",
+        "@dnd-kit/modifiers",
+        "@dnd-kit/sortable",
+        "@dnd-kit/utilities",
+        "@tanstack/react-table",
+        "zod"
+      ],
+      "registryDependencies": [
+        "sidebar",
+        "breadcrumb",
+        "separator",
+        "label",
+        "chart",
+        "card",
+        "select",
+        "tabs",
+        "table",
+        "toggle-group",
+        "badge",
+        "button",
+        "checkbox",
+        "dropdown-menu",
+        "drawer",
+        "input",
+        "avatar",
+        "sheet",
+        "sonner"
+      ],
+      "files": [
+        {
+          "path": "registry/base-vega/blocks/dashboard-01/page.tsx",
+          "type": "registry:page",
+          "target": "app/dashboard/page.tsx"
+        },
+        {
+          "path": "registry/base-vega/blocks/dashboard-01/data.json",
+          "type": "registry:file",
+          "target": "app/dashboard/data.json"
+        },
+        {
+          "path": "registry/base-vega/blocks/dashboard-01/components/app-sidebar.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/base-vega/blocks/dashboard-01/components/chart-area-interactive.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/base-vega/blocks/dashboard-01/components/data-table.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/base-vega/blocks/dashboard-01/components/nav-documents.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/base-vega/blocks/dashboard-01/components/nav-main.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/base-vega/blocks/dashboard-01/components/nav-secondary.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/base-vega/blocks/dashboard-01/components/nav-user.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/base-vega/blocks/dashboard-01/components/section-cards.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/base-vega/blocks/dashboard-01/components/site-header.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "1000px"
+      },
+      "categories": ["dashboard"],
+      "type": "registry:block"
+    },
+    {
+      "name": "sidebar-01",
+      "title": "Sidebar 01",
+      "description": "A simple sidebar with navigation grouped by section.",
+      "registryDependencies": [
+        "sidebar",
+        "breadcrumb",
+        "separator",
+        "label",
+        "dropdown-menu"
+      ],
+      "files": [
+        {
+          "path": "registry/base-vega/blocks/sidebar-01/page.tsx",
+          "type": "registry:page",
+          "target": "app/dashboard/page.tsx"
+        },
+        {
+          "path": "registry/base-vega/blocks/sidebar-01/components/app-sidebar.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/base-vega/blocks/sidebar-01/components/search-form.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/base-vega/blocks/sidebar-01/components/version-switcher.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": ["sidebar", "dashboard"],
+      "type": "registry:block"
+    },
+    {
+      "name": "sidebar-02",
+      "title": "Sidebar 02",
+      "description": "A sidebar with collapsible sections.",
+      "registryDependencies": [
+        "sidebar",
+        "breadcrumb",
+        "separator",
+        "label",
+        "dropdown-menu"
+      ],
+      "files": [
+        {
+          "path": "registry/base-vega/blocks/sidebar-02/page.tsx",
+          "type": "registry:page",
+          "target": "app/dashboard/page.tsx"
+        },
+        {
+          "path": "registry/base-vega/blocks/sidebar-02/components/app-sidebar.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/base-vega/blocks/sidebar-02/components/search-form.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/base-vega/blocks/sidebar-02/components/version-switcher.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": ["sidebar", "dashboard"],
+      "type": "registry:block"
+    },
+    {
+      "name": "sidebar-03",
+      "title": "Sidebar 03",
+      "description": "A sidebar with submenus.",
+      "registryDependencies": ["sidebar", "breadcrumb"],
+      "files": [
+        {
+          "path": "registry/base-vega/blocks/sidebar-03/page.tsx",
+          "type": "registry:page",
+          "target": "app/dashboard/page.tsx"
+        },
+        {
+          "path": "registry/base-vega/blocks/sidebar-03/components/app-sidebar.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": ["sidebar", "dashboard"],
+      "type": "registry:block"
+    },
+    {
+      "name": "sidebar-04",
+      "title": "Sidebar 04",
+      "description": "A floating sidebar with submenus.",
+      "registryDependencies": ["sidebar", "breadcrumb", "separator"],
+      "files": [
+        {
+          "path": "registry/base-vega/blocks/sidebar-04/page.tsx",
+          "type": "registry:page",
+          "target": "app/dashboard/page.tsx"
+        },
+        {
+          "path": "registry/base-vega/blocks/sidebar-04/components/app-sidebar.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": ["sidebar", "dashboard"],
+      "type": "registry:block"
+    },
+    {
+      "name": "sidebar-05",
+      "title": "Sidebar 05",
+      "description": "A sidebar with collapsible submenus.",
+      "registryDependencies": [
+        "sidebar",
+        "breadcrumb",
+        "separator",
+        "label",
+        "collapsible"
+      ],
+      "files": [
+        {
+          "path": "registry/base-vega/blocks/sidebar-05/page.tsx",
+          "type": "registry:page",
+          "target": "app/dashboard/page.tsx"
+        },
+        {
+          "path": "registry/base-vega/blocks/sidebar-05/components/app-sidebar.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/base-vega/blocks/sidebar-05/components/search-form.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": ["sidebar", "dashboard"],
+      "type": "registry:block"
+    },
+    {
+      "name": "sidebar-06",
+      "title": "Sidebar 06",
+      "description": "A sidebar with submenus as dropdowns.",
+      "registryDependencies": [
+        "sidebar",
+        "breadcrumb",
+        "separator",
+        "card",
+        "dropdown-menu"
+      ],
+      "files": [
+        {
+          "path": "registry/base-vega/blocks/sidebar-06/page.tsx",
+          "type": "registry:page",
+          "target": "app/dashboard/page.tsx"
+        },
+        {
+          "path": "registry/base-vega/blocks/sidebar-06/components/app-sidebar.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/base-vega/blocks/sidebar-06/components/nav-main.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/base-vega/blocks/sidebar-06/components/sidebar-opt-in-form.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": ["sidebar", "dashboard"],
+      "type": "registry:block"
+    },
+    {
+      "name": "sidebar-07",
+      "title": "Sidebar 07",
+      "description": "A sidebar that collapses to icons.",
+      "registryDependencies": [
+        "sidebar",
+        "breadcrumb",
+        "separator",
+        "collapsible",
+        "dropdown-menu",
+        "avatar"
+      ],
+      "files": [
+        {
+          "path": "registry/base-vega/blocks/sidebar-07/page.tsx",
+          "type": "registry:page",
+          "target": "app/dashboard/page.tsx"
+        },
+        {
+          "path": "registry/base-vega/blocks/sidebar-07/components/app-sidebar.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/base-vega/blocks/sidebar-07/components/nav-main.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/base-vega/blocks/sidebar-07/components/nav-projects.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/base-vega/blocks/sidebar-07/components/nav-user.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/base-vega/blocks/sidebar-07/components/team-switcher.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": ["sidebar", "dashboard"],
+      "type": "registry:block"
+    },
+    {
+      "name": "sidebar-08",
+      "title": "Sidebar 08",
+      "description": "An inset sidebar with secondary navigation.",
+      "registryDependencies": [
+        "sidebar",
+        "breadcrumb",
+        "separator",
+        "collapsible",
+        "dropdown-menu",
+        "avatar"
+      ],
+      "files": [
+        {
+          "path": "registry/base-vega/blocks/sidebar-08/page.tsx",
+          "type": "registry:page",
+          "target": "app/dashboard/page.tsx"
+        },
+        {
+          "path": "registry/base-vega/blocks/sidebar-08/components/app-sidebar.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/base-vega/blocks/sidebar-08/components/nav-main.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/base-vega/blocks/sidebar-08/components/nav-projects.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/base-vega/blocks/sidebar-08/components/nav-secondary.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/base-vega/blocks/sidebar-08/components/nav-user.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": ["sidebar", "dashboard"],
+      "type": "registry:block"
+    },
+    {
+      "name": "sidebar-09",
+      "title": "Sidebar 09",
+      "description": "Collapsible nested sidebars.",
+      "registryDependencies": [
+        "sidebar",
+        "breadcrumb",
+        "separator",
+        "collapsible",
+        "dropdown-menu",
+        "avatar",
+        "switch",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "registry/base-vega/blocks/sidebar-09/page.tsx",
+          "type": "registry:page",
+          "target": "app/dashboard/page.tsx"
+        },
+        {
+          "path": "registry/base-vega/blocks/sidebar-09/components/app-sidebar.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/base-vega/blocks/sidebar-09/components/nav-user.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": ["sidebar", "dashboard"],
+      "type": "registry:block"
+    },
+    {
+      "name": "sidebar-10",
+      "title": "Sidebar 10",
+      "description": "A sidebar in a popover.",
+      "registryDependencies": [
+        "sidebar",
+        "breadcrumb",
+        "separator",
+        "popover",
+        "collapsible",
+        "dropdown-menu"
+      ],
+      "files": [
+        {
+          "path": "registry/base-vega/blocks/sidebar-10/page.tsx",
+          "type": "registry:page",
+          "target": "app/dashboard/page.tsx"
+        },
+        {
+          "path": "registry/base-vega/blocks/sidebar-10/components/app-sidebar.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/base-vega/blocks/sidebar-10/components/nav-actions.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/base-vega/blocks/sidebar-10/components/nav-favorites.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/base-vega/blocks/sidebar-10/components/nav-main.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/base-vega/blocks/sidebar-10/components/nav-secondary.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/base-vega/blocks/sidebar-10/components/nav-workspaces.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/base-vega/blocks/sidebar-10/components/team-switcher.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": ["sidebar", "dashboard"],
+      "type": "registry:block"
+    },
+    {
+      "name": "sidebar-11",
+      "title": "Sidebar 11",
+      "description": "A sidebar with a collapsible file tree.",
+      "registryDependencies": [
+        "sidebar",
+        "breadcrumb",
+        "separator",
+        "collapsible"
+      ],
+      "files": [
+        {
+          "path": "registry/base-vega/blocks/sidebar-11/page.tsx",
+          "type": "registry:page",
+          "target": "app/dashboard/page.tsx"
+        },
+        {
+          "path": "registry/base-vega/blocks/sidebar-11/components/app-sidebar.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": ["sidebar", "dashboard"],
+      "type": "registry:block"
+    },
+    {
+      "name": "sidebar-12",
+      "title": "Sidebar 12",
+      "description": "A sidebar with a calendar.",
+      "registryDependencies": [
+        "sidebar",
+        "breadcrumb",
+        "separator",
+        "collapsible",
+        "calendar",
+        "dropdown-menu",
+        "avatar"
+      ],
+      "files": [
+        {
+          "path": "registry/base-vega/blocks/sidebar-12/page.tsx",
+          "type": "registry:page",
+          "target": "app/dashboard/page.tsx"
+        },
+        {
+          "path": "registry/base-vega/blocks/sidebar-12/components/app-sidebar.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/base-vega/blocks/sidebar-12/components/calendars.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/base-vega/blocks/sidebar-12/components/date-picker.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/base-vega/blocks/sidebar-12/components/nav-user.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": ["sidebar", "dashboard"],
+      "type": "registry:block"
+    },
+    {
+      "name": "sidebar-13",
+      "title": "Sidebar 13",
+      "description": "A sidebar in a dialog.",
+      "registryDependencies": ["sidebar", "breadcrumb", "button", "dialog"],
+      "files": [
+        {
+          "path": "registry/base-vega/blocks/sidebar-13/page.tsx",
+          "type": "registry:page",
+          "target": "app/dashboard/page.tsx"
+        },
+        {
+          "path": "registry/base-vega/blocks/sidebar-13/components/settings-dialog.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": ["sidebar", "dashboard"],
+      "type": "registry:block"
+    },
+    {
+      "name": "sidebar-14",
+      "title": "Sidebar 14",
+      "description": "A sidebar on the right.",
+      "registryDependencies": ["sidebar", "breadcrumb"],
+      "files": [
+        {
+          "path": "registry/base-vega/blocks/sidebar-14/page.tsx",
+          "type": "registry:page",
+          "target": "app/dashboard/page.tsx"
+        },
+        {
+          "path": "registry/base-vega/blocks/sidebar-14/components/app-sidebar.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": ["sidebar", "dashboard"],
+      "type": "registry:block"
+    },
+    {
+      "name": "sidebar-15",
+      "title": "Sidebar 15",
+      "description": "A left and right sidebar.",
+      "registryDependencies": [
+        "sidebar",
+        "breadcrumb",
+        "separator",
+        "popover",
+        "collapsible",
+        "dropdown-menu",
+        "calendar",
+        "avatar"
+      ],
+      "files": [
+        {
+          "path": "registry/base-vega/blocks/sidebar-15/page.tsx",
+          "type": "registry:page",
+          "target": "app/dashboard/page.tsx"
+        },
+        {
+          "path": "registry/base-vega/blocks/sidebar-15/components/calendars.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/base-vega/blocks/sidebar-15/components/date-picker.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/base-vega/blocks/sidebar-15/components/nav-favorites.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/base-vega/blocks/sidebar-15/components/nav-main.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/base-vega/blocks/sidebar-15/components/nav-secondary.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/base-vega/blocks/sidebar-15/components/nav-user.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/base-vega/blocks/sidebar-15/components/nav-workspaces.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/base-vega/blocks/sidebar-15/components/sidebar-left.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/base-vega/blocks/sidebar-15/components/sidebar-right.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/base-vega/blocks/sidebar-15/components/team-switcher.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": ["sidebar", "dashboard"],
+      "type": "registry:block"
+    },
+    {
+      "name": "sidebar-16",
+      "title": "Sidebar 16",
+      "description": "A sidebar with a sticky site header.",
+      "registryDependencies": [
+        "sidebar",
+        "breadcrumb",
+        "separator",
+        "collapsible",
+        "dropdown-menu",
+        "avatar",
+        "button",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "registry/base-vega/blocks/sidebar-16/page.tsx",
+          "type": "registry:page",
+          "target": "app/dashboard/page.tsx"
+        },
+        {
+          "path": "registry/base-vega/blocks/sidebar-16/components/app-sidebar.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/base-vega/blocks/sidebar-16/components/nav-main.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/base-vega/blocks/sidebar-16/components/nav-projects.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/base-vega/blocks/sidebar-16/components/nav-secondary.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/base-vega/blocks/sidebar-16/components/nav-user.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/base-vega/blocks/sidebar-16/components/search-form.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/base-vega/blocks/sidebar-16/components/site-header.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": ["sidebar", "dashboard"],
+      "type": "registry:block"
+    },
+    {
       "name": "use-mobile",
       "files": [
         {
@@ -1878,9 +2500,7 @@
         "provider": "google",
         "import": "Geist",
         "variable": "--font-sans",
-        "subsets": [
-          "latin"
-        ]
+        "subsets": ["latin"]
       }
     },
     {
@@ -1892,9 +2512,7 @@
         "provider": "google",
         "import": "Inter",
         "variable": "--font-sans",
-        "subsets": [
-          "latin"
-        ]
+        "subsets": ["latin"]
       }
     },
     {
@@ -1928,9 +2546,7 @@
         "provider": "google",
         "import": "Figtree",
         "variable": "--font-sans",
-        "subsets": [
-          "latin"
-        ]
+        "subsets": ["latin"]
       }
     },
     {
@@ -1942,9 +2558,7 @@
         "provider": "google",
         "import": "Roboto",
         "variable": "--font-sans",
-        "subsets": [
-          "latin"
-        ]
+        "subsets": ["latin"]
       }
     },
     {
@@ -1956,9 +2570,7 @@
         "provider": "google",
         "import": "Raleway",
         "variable": "--font-sans",
-        "subsets": [
-          "latin"
-        ]
+        "subsets": ["latin"]
       }
     },
     {
@@ -1970,9 +2582,7 @@
         "provider": "google",
         "import": "DM_Sans",
         "variable": "--font-sans",
-        "subsets": [
-          "latin"
-        ]
+        "subsets": ["latin"]
       }
     },
     {
@@ -1984,9 +2594,7 @@
         "provider": "google",
         "import": "Public_Sans",
         "variable": "--font-sans",
-        "subsets": [
-          "latin"
-        ]
+        "subsets": ["latin"]
       }
     },
     {
@@ -1998,9 +2606,7 @@
         "provider": "google",
         "import": "Outfit",
         "variable": "--font-sans",
-        "subsets": [
-          "latin"
-        ]
+        "subsets": ["latin"]
       }
     },
     {
@@ -2012,9 +2618,7 @@
         "provider": "google",
         "import": "JetBrains_Mono",
         "variable": "--font-sans",
-        "subsets": [
-          "latin"
-        ]
+        "subsets": ["latin"]
       }
     },
     {
@@ -2026,9 +2630,7 @@
         "provider": "google",
         "import": "Geist_Mono",
         "variable": "--font-mono",
-        "subsets": [
-          "latin"
-        ]
+        "subsets": ["latin"]
       }
     }
   ]

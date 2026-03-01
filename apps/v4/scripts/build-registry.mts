@@ -6,8 +6,10 @@ import { registrySchema } from "shadcn/schema"
 import {
   createStyleMap,
   transformDirection,
+  transformIcons,
   transformStyle,
 } from "shadcn/utils"
+import { Project, ScriptKind } from "ts-morph"
 
 import { getAllBlocks } from "@/lib/blocks"
 import { legacyStyles } from "@/registry/_legacy-styles"
@@ -21,6 +23,11 @@ const WHITELISTED_STYLES = ["new-york-v4"]
 
 // Collect paths for batch prettier formatting at the end.
 const prettierPaths: string[] = []
+
+// Create a ts-morph project for icon transformations.
+const iconProject = new Project({
+  compilerOptions: {},
+})
 
 function getStylesToBuild() {
   const stylesToBuild: { name: string; title: string }[] = [...legacyStyles]
@@ -43,6 +50,15 @@ try {
   console.log("🏗️ Building bases...")
   await buildBasesIndex(Array.from(BASES))
   await buildBases(Array.from(BASES))
+
+  // Format base files before building styles so the JSON output contains formatted code.
+  const baseDirs = Array.from(BASES).flatMap((base) =>
+    STYLES.map((style) =>
+      path.join(process.cwd(), `registry/${base.name}-${style.name}`)
+    )
+  )
+  console.log("\n✨ Formatting base files...")
+  await batchPrettier(baseDirs)
 
   const stylesToBuild = getStylesToBuild()
 
@@ -507,6 +523,27 @@ async function buildConfig() {
   prettierPaths.push(outputPath)
 }
 
+async function applyIconTransform(content: string, filename: string) {
+  const sourceFile = iconProject.createSourceFile(filename, content, {
+    scriptKind: ScriptKind.TSX,
+    overwrite: true,
+  })
+
+  // Create a minimal config with just iconLibrary.
+  // transformIcons only uses config.iconLibrary, so we can safely cast this.
+  type TransformIconsConfig = Parameters<typeof transformIcons>[0]["config"]
+  const config = { iconLibrary: "lucide" } as TransformIconsConfig
+
+  await transformIcons({
+    sourceFile,
+    config,
+    filename,
+    raw: content,
+  })
+
+  return sourceFile.getText()
+}
+
 async function copyUIToExamples() {
   const defaultStyle = "nova"
   const directories = ["ui", "lib", "hooks"]
@@ -545,6 +582,12 @@ async function copyUIToExamples() {
             new RegExp(`@/registry/${sourceStyle}/`, "g"),
             `@/examples/${base.name}/`
           )
+
+          // Transform icons for TSX files.
+          if (file.endsWith(".tsx")) {
+            content = await applyIconTransform(content, file)
+          }
+
           await fs.writeFile(targetPath, content)
         })
       )
@@ -624,9 +667,10 @@ async function batchPrettier(paths: string[]) {
   if (paths.length === 0) return
 
   await new Promise<void>((resolve, reject) => {
-    const proc = spawn("npx", ["prettier", "--write", ...paths], {
+    const prettierBin = path.join(process.cwd(), "node_modules/.bin/prettier")
+    const proc = spawn(prettierBin, ["--write", ...paths], {
       cwd: process.cwd(),
-      stdio: "pipe",
+      stdio: "inherit",
     })
     proc.on("close", () => resolve())
     proc.on("error", reject)
