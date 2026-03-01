@@ -67,8 +67,14 @@ function updateImportAliases(
 
   // Not a registry import.
   if (!moduleSpecifier.startsWith("@/registry/")) {
-    // We fix the alias and return.
-    const alias = config.aliases.components.split("/")[0]
+    // Extract base alias, handling scoped packages like @scope/package/path
+    const componentsAlias = config.aliases.components;
+    const segments = componentsAlias.split('/');
+    
+    const alias = segments[0].startsWith('@') && segments.length > 2
+      ? segments.slice(0, 2).join('/')
+      : segments[0];
+    
     return moduleSpecifier.replace(/^@\//, `${alias}/`)
   }
 
