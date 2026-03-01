@@ -35,6 +35,7 @@ export const transformStyleMap: TransformerStyle<SourceFile> = async ({
   applyToCvaCalls(sourceFile, styleMap, matchedClasses)
   applyToClassNameAttributes(sourceFile, styleMap, matchedClasses)
   applyToMergePropsCalls(sourceFile, styleMap, matchedClasses)
+  applyToAllStringLiterals(sourceFile, styleMap)
 
   return sourceFile
 }
@@ -270,11 +271,6 @@ function cleanCnClassesFromAttribute(initializer: Node) {
 function extractCnClasses(str: string) {
   const matches = str.matchAll(/\bcn-[\w-]+\b/g)
   return Array.from(matches, (match) => match[0])
-}
-
-function extractCnClass(str: string) {
-  const classes = extractCnClasses(str)
-  return classes[0] ?? null
 }
 
 function removeCnClasses(str: string) {
@@ -584,4 +580,65 @@ function applyClassesToCnCall(
   if (parent) {
     cnCall.replaceWithText(`cn(${updatedArguments.join(", ")})`)
   }
+}
+
+function isInAlreadyProcessedContext(node: Node): boolean {
+  let current = node.getParent()
+
+  while (current) {
+    if (Node.isCallExpression(current)) {
+      const expression = current.getExpression()
+      if (Node.isIdentifier(expression)) {
+        const name = expression.getText()
+        if (name === "cn" || name === "cva") {
+          return true
+        }
+      }
+    }
+
+    if (Node.isJsxAttribute(current)) {
+      const attrName = current.getNameNode().getText()
+      if (attrName === "className") {
+        return true
+      }
+    }
+
+    current = current.getParent()
+  }
+
+  return false
+}
+
+function applyToAllStringLiterals(sourceFile: SourceFile, styleMap: StyleMap) {
+  sourceFile.forEachDescendant((node) => {
+    if (!Node.isStringLiteral(node)) {
+      return
+    }
+
+    if (isInAlreadyProcessedContext(node)) {
+      return
+    }
+
+    const stringValue = node.getLiteralText()
+    const cnClasses = extractCnClasses(stringValue)
+
+    if (cnClasses.length === 0) {
+      return
+    }
+
+    const tailwindClassesToApply = cnClasses
+      .map((cnClass) => styleMap[cnClass])
+      .filter((classes): classes is string => Boolean(classes))
+
+    if (tailwindClassesToApply.length > 0) {
+      const mergedClasses = tailwindClassesToApply.join(" ")
+      const updated = removeCnClasses(mergeClasses(mergedClasses, stringValue))
+      node.setLiteralValue(updated)
+    } else {
+      const updated = removeCnClasses(stringValue)
+      if (updated !== stringValue) {
+        node.setLiteralValue(updated)
+      }
+    }
+  })
 }
