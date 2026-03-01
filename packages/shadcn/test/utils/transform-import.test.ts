@@ -174,6 +174,55 @@ import { Foo } from "bar"
       },
     })
   ).toMatchSnapshot()
+
+  // Test without style: @/registry/ui
+  expect(
+    await transform({
+      filename: "test.ts",
+      raw: `import * as React from "react"
+import { Foo } from "bar"
+    import { Button } from "@/registry/ui/button"
+    import { Label } from "@/registry/ui/label"
+    import { Box } from "@/registry/box"
+
+    import { cn } from "@/lib/utils"
+    `,
+      config: {
+        tsx: true,
+        tailwind: {
+          baseColor: "neutral",
+          cssVariables: true,
+        },
+        aliases: {
+          components: "@/components",
+          utils: "@/lib/utils",
+        },
+      },
+    })
+  ).toMatchSnapshot()
+
+  // Test without style with custom ui alias
+  expect(
+    await transform({
+      filename: "test.ts",
+      raw: `import * as React from "react"
+import { Foo } from "bar"
+    import { Button } from "@/registry/ui/button"
+    import { Label } from "@/registry/ui/label"
+    import { Card } from "@/registry/components/card"
+
+    import { cn } from "@/lib/utils"
+    `,
+      config: {
+        tsx: true,
+        aliases: {
+          components: "~/src/components",
+          utils: "~/src/utils",
+          ui: "~/src/ui",
+        },
+      },
+    })
+  ).toMatchSnapshot()
 })
 
 test("transform import for monorepo", async () => {
