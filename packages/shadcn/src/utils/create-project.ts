@@ -15,6 +15,13 @@ import { z } from "zod"
 const GITHUB_TEMPLATE_URL =
   "https://codeload.github.com/shadcn-ui/ui/tar.gz/main"
 
+// Windows BSD tar (built into Windows 10+) interprets `C:\path` as a remote
+// SSH host `C` with path `\path`. Convert backslashes to forward slashes so
+// that `C:\Users\...` becomes `C:/Users/...`, which Windows tar accepts.
+function toTarPath(p: string): string {
+  return p.replace(/\\/g, "/")
+}
+
 export const TEMPLATES = {
   next: "next",
   "next-monorepo": "next-monorepo",
@@ -250,9 +257,9 @@ async function createMonorepoProject(
     await fs.writeFile(tarPath, Buffer.from(await response.arrayBuffer()))
     await execa("tar", [
       "-xzf",
-      tarPath,
+      toTarPath(tarPath),
       "-C",
-      templatePath,
+      toTarPath(templatePath),
       "--strip-components=2",
       "ui-main/templates/monorepo-next",
     ])
@@ -315,9 +322,9 @@ async function createViteProject(
     await fs.writeFile(tarPath, Buffer.from(await response.arrayBuffer()))
     await execa("tar", [
       "-xzf",
-      tarPath,
+      toTarPath(tarPath),
       "-C",
-      templatePath,
+      toTarPath(templatePath),
       "--strip-components=2",
       "ui-main/templates/vite-app",
     ])
@@ -386,9 +393,9 @@ async function createStartProject(
     await fs.writeFile(tarPath, Buffer.from(await response.arrayBuffer()))
     await execa("tar", [
       "-xzf",
-      tarPath,
+      toTarPath(tarPath),
       "-C",
-      templatePath,
+      toTarPath(templatePath),
       "--strip-components=2",
       "ui-main/templates/start-app",
     ])
