@@ -654,16 +654,24 @@ const SidebarMenuBadge = React.forwardRef<
 ))
 SidebarMenuBadge.displayName = "SidebarMenuBadge"
 
+function getSkeletonWidth(id: string) {
+  let hash = 0
+  for (const char of id) {
+    hash = (hash << 5) - hash + char.charCodeAt(0)
+  }
+
+  return `${50 + (Math.abs(hash) % 41)}%`
+}
+
 const SidebarMenuSkeleton = React.forwardRef<
   HTMLDivElement,
   React.ComponentProps<"div"> & {
     showIcon?: boolean
   }
 >(({ className, showIcon = false, ...props }, ref) => {
-  // Random width between 50 to 90%.
-  const width = React.useMemo(() => {
-    return `${Math.floor(Math.random() * 40) + 50}%`
-  }, [])
+  // Deterministic pseudo-random width between 50 to 90%.
+  const id = React.useId()
+  const width = React.useMemo(() => getSkeletonWidth(id), [id])
 
   return (
     <div
