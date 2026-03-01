@@ -702,4 +702,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       },
     ],
   },
+  {
+    name: "date-field",
+    type: "registry:ui",
+    registryDependencies: ["calendar", "button", "scroll-area"],
+    files: [
+      {
+        path: "ui/date-field.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
 ]
