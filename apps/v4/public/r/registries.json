@@ -366,6 +366,12 @@
     "description": "A collection of neobrutalism-styled components based on shadcn/ui"
   },
   {
+    "name": "@nessra-ui",
+    "homepage": "https://nessra-ui.vercel.app",
+    "url": "https://nessra-ui.vercel.app/r/{name}.json",
+    "description": "Beautiful, accessible components built with Tailwind CSS v4 and Radix UI. Includes auth blocks, data tables, and TanStack Form integration."
+  },
+  {
     "name": "@nexus-elements",
     "homepage": "https://elements.nexus.availproject.org/docs/view-components",
     "url": "https://elements.nexus.availproject.org/r/{name}.json",
