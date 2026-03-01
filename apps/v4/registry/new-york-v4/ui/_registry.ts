@@ -562,6 +562,33 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "stepper",
+    type: "registry:ui",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "ui/stepper.tsx",
+        type: "registry:ui",
+      },
+      {
+        path: "ui/stepper-item.tsx",
+        type: "registry:ui",
+      },
+      {
+        path: "ui/step-indicator.tsx",
+        type: "registry:ui",
+      },
+      {
+        path: "ui/step-label.tsx",
+        type: "registry:ui",
+      },
+      {
+        path: "ui/step-connector.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "switch",
     type: "registry:ui",
     dependencies: ["radix-ui"],
