@@ -415,9 +415,9 @@ function resolveFileTargetDirectory(
 }
 
 export function findCommonRoot(paths: string[], needle: string): string {
-  // Remove leading slashes for consistent handling
-  const normalizedPaths = paths.map((p) => p.replace(/^\//, ""))
-  const normalizedNeedle = needle.replace(/^\//, "")
+  // Normalize paths by converting backslashes to forward slashes for consistent handling
+  const normalizedPaths = paths.map((p) => p.replace(/\\/g, "/").replace(/^\//, ""))
+  const normalizedNeedle = needle.replace(/\\/g, "/").replace(/^\//, "")
 
   // Get the directory path of the needle by removing the file name
   const needleDir = normalizedNeedle.split("/").slice(0, -1).join("/")
@@ -450,9 +450,9 @@ export function resolveNestedFilePath(
   filePath: string,
   targetDir: string
 ): string {
-  // Normalize paths by removing leading/trailing slashes
-  const normalizedFilePath = filePath.replace(/^\/|\/$/g, "")
-  const normalizedTargetDir = targetDir.replace(/^\/|\/$/g, "")
+  // Normalize paths by converting backslashes to forward slashes and removing leading/trailing slashes
+  const normalizedFilePath = filePath.replace(/\\/g, "/").replace(/^\/|\/$/g, "")
+  const normalizedTargetDir = targetDir.replace(/\\/g, "/").replace(/^\/|\/$/g, "")
 
   // Split paths into segments
   const fileSegments = normalizedFilePath.split("/")
