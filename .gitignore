@@ -5,6 +5,9 @@ node_modules
 .pnp
 .pnp.js
 
+# pnpm
+.pnpm-store
+
 # testing
 coverage
 
