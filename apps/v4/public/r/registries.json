@@ -247,8 +247,8 @@
   },
   {
     "name": "@hooks",
-    "homepage": "https://shadcn-hooks.vercel.app",
-    "url": "https://shadcn-hooks.vercel.app/r/{name}.json",
+    "homepage": "https://shadcn-hooks.com",
+    "url": "https://shadcn-hooks.com/r/{name}.json",
     "description": "A comprehensive React Hooks Collection built with Shadcn."
   },
   {
