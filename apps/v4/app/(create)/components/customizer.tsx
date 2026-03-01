@@ -39,7 +39,7 @@ export function Customizer() {
       ref={anchorRef}
     >
       <div className="no-scrollbar h-14 overflow-x-auto overflow-y-hidden p-px md:h-full md:overflow-x-hidden md:overflow-y-auto">
-        <FieldGroup className="flex h-full flex-1 flex-row gap-2 md:flex-col md:gap-0">
+        <FieldGroup className="flex h-full flex-1 flex-row gap-2 md:flex-col md:gap-0 overflow-auto">
           <PresetPicker
             presets={PRESETS}
             isMobile={isMobile}
