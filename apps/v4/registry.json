@@ -414,6 +414,17 @@
       ]
     },
     {
+      "name": "rating",
+      "type": "registry:ui",
+      "dependencies": ["class-variance-authority", "lucide-react"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/rating.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "resizable",
       "type": "registry:ui",
       "dependencies": ["react-resizable-panels"],
@@ -4580,6 +4591,28 @@
       "files": [
         {
           "path": "registry/new-york-v4/examples/radio-group-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "rating-demo",
+      "type": "registry:example",
+      "registryDependencies": ["rating", "label"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/rating-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "rating-sizes",
+      "type": "registry:example",
+      "registryDependencies": ["rating"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/rating-sizes.tsx",
           "type": "registry:example"
         }
       ]
