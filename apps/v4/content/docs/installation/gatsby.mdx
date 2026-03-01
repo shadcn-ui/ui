@@ -1,0 +1,126 @@
+---
+title: Gatsby
+description: Install and configure Gatsby.
+---
+
+<Callout className="mb-6 border-blue-600 bg-blue-50 dark:border-blue-900 dark:bg-blue-950 [&_code]:bg-blue-100 dark:[&_code]:bg-blue-900">
+  **Update:** We have added full support for React 19 and Tailwind v4 in the
+  `canary` release. See the docs for [Tailwind v4](/docs/tailwind-v4) for more
+  information.
+</Callout>
+
+<Steps>
+
+### Create project
+
+Start by creating a new Gatsby project using `create-gatsby`:
+
+```bash
+npm init gatsby
+```
+
+### Configure your Gatsby project to use TypeScript and Tailwind CSS
+
+You will be asked a few questions to configure your project:
+
+```txt showLineNumbers
+✔ What would you like to call your site?
+· your-app-name
+✔ What would you like to name the folder where your site will be created?
+· your-app-name
+✔ Will you be using JavaScript or TypeScript?
+· TypeScript
+✔ Will you be using a CMS?
+· Choose whatever you want
+✔ Would you like to install a styling system?
+· Tailwind CSS
+✔ Would you like to install additional features with other plugins?
+· Choose whatever you want
+✔ Shall we do this? (Y/n) · Yes
+```
+
+### Edit tsconfig.json file
+
+Add the following code to the `tsconfig.json` file to resolve paths:
+
+```ts {4-9} showLineNumbers
+{
+  "compilerOptions": {
+    // ...
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    }
+    // ...
+  }
+}
+```
+
+### Create gatsby-node.ts file
+
+Create a `gatsby-node.ts` file at the root of your project if it doesn’t already exist, and add the code below to the `gatsby-node` file so your app can resolve paths:
+
+```ts
+import * as path from "path"
+
+export const onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    resolve: {
+      alias: {
+        "@/components": path.resolve(__dirname, "src/components"),
+        "@/lib/utils": path.resolve(__dirname, "src/lib/utils"),
+      },
+    },
+  })
+}
+```
+
+### Run the CLI
+
+Run the `shadcn` init command to setup your project:
+
+```bash
+npx shadcn@latest init
+```
+
+### Configure components.json
+
+You will be asked a few questions to configure `components.json`:
+
+```txt showLineNumbers
+Would you like to use TypeScript (recommended)? no / yes
+Which style would you like to use? › Default
+Which color would you like to use as base color? › Slate
+Where is your global CSS file? › › ./src/styles/globals.css
+Do you want to use CSS variables for colors? › no / yes
+Where is your tailwind.config.js located? › tailwind.config.js
+Configure the import alias for components: › @/components
+Configure the import alias for utils: › @/lib/utils
+Are you using React Server Components? › no
+```
+
+### That's it
+
+You can now start adding components to your project.
+
+```bash
+npx shadcn@latest add button
+```
+
+The command above will add the `Button` component to your project. You can then import it like this:
+
+```tsx {1,6} showLineNumbers
+import { Button } from "@/components/ui/button"
+
+export default function Home() {
+  return (
+    <div>
+      <Button>Click me</Button>
+    </div>
+  )
+}
+```
+
+</Steps>

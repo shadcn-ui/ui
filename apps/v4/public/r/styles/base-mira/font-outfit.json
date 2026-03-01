@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "font-outfit",
+  "title": "Outfit",
+  "type": "registry:font",
+  "font": {
+    "family": "'Outfit', sans-serif",
+    "provider": "google",
+    "import": "Outfit",
+    "variable": "--font-sans",
+    "subsets": [
+      "latin"
+    ]
+  }
+}

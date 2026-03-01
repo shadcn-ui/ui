@@ -2,11 +2,19 @@
 
 A CLI for adding components to your project.
 
-## Usage
+## create
+
+Use the `create` command to create a new project. You will be taken to a website to build your custom design system and choose your framework.
+
+```bash
+npx shadcn create
+```
+
+## init
 
 Use the `init` command to initialize dependencies for a new project.
 
-The `init` command installs dependencies, adds the `cn` util, configures `tailwind.config.js`, and CSS variables for the project.
+The `init` command installs dependencies, adds the `cn` util, configures Tailwind CSS, and CSS variables for the project.
 
 ```bash
 npx shadcn init
@@ -40,4 +48,4 @@ Visit https://ui.shadcn.com/docs/cli to view the documentation.
 
 ## License
 
-Licensed under the [MIT license](https://github.com/shadcn/ui/blob/main/LICENSE.md).
+Licensed under the [MIT license](https://github.com/shadcn-ui/ui/blob/main/LICENSE.md).

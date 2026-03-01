@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-group-button",
+  "type": "registry:example",
+  "registryDependencies": [
+    "input-group"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/input-group-button.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport {\n  IconCheck,\n  IconCopy,\n  IconInfoCircle,\n  IconStar,\n} from \"@tabler/icons-react\"\n\nimport { useCopyToClipboard } from \"@/hooks/use-copy-to-clipboard\"\nimport {\n  InputGroup,\n  InputGroupAddon,\n  InputGroupButton,\n  InputGroupInput,\n} from \"@/registry/new-york-v4/ui/input-group\"\nimport {\n  Popover,\n  PopoverContent,\n  PopoverTrigger,\n} from \"@/registry/new-york-v4/ui/popover\"\n\nexport default function InputGroupButtonExample() {\n  const { copyToClipboard, isCopied } = useCopyToClipboard()\n  const [isFavorite, setIsFavorite] = React.useState(false)\n\n  return (\n    <div className=\"grid w-full max-w-sm gap-6\">\n      <InputGroup>\n        <InputGroupInput placeholder=\"https://x.com/shadcn\" readOnly />\n        <InputGroupAddon align=\"inline-end\">\n          <InputGroupButton\n            aria-label=\"Copy\"\n            title=\"Copy\"\n            size=\"icon-xs\"\n            onClick={() => {\n              copyToClipboard(\"https://x.com/shadcn\")\n            }}\n          >\n            {isCopied ? <IconCheck /> : <IconCopy />}\n          </InputGroupButton>\n        </InputGroupAddon>\n      </InputGroup>\n      <InputGroup className=\"[--radius:9999px]\">\n        <Popover>\n          <PopoverTrigger asChild>\n            <InputGroupAddon>\n              <InputGroupButton variant=\"secondary\" size=\"icon-xs\">\n                <IconInfoCircle />\n              </InputGroupButton>\n            </InputGroupAddon>\n          </PopoverTrigger>\n          <PopoverContent\n            align=\"start\"\n            className=\"flex flex-col gap-1 rounded-xl text-sm\"\n          >\n            <p className=\"font-medium\">Your connection is not secure.</p>\n            <p>You should not enter any sensitive information on this site.</p>\n          </PopoverContent>\n        </Popover>\n        <InputGroupAddon className=\"text-muted-foreground pl-1.5\">\n          https://\n        </InputGroupAddon>\n        <InputGroupInput id=\"input-secure-19\" />\n        <InputGroupAddon align=\"inline-end\">\n          <InputGroupButton\n            onClick={() => setIsFavorite(!isFavorite)}\n            size=\"icon-xs\"\n          >\n            <IconStar\n              data-favorite={isFavorite}\n              className=\"data-[favorite=true]:fill-blue-600 data-[favorite=true]:stroke-blue-600\"\n            />\n          </InputGroupButton>\n        </InputGroupAddon>\n      </InputGroup>\n      <InputGroup>\n        <InputGroupInput placeholder=\"Type to search...\" />\n        <InputGroupAddon align=\"inline-end\">\n          <InputGroupButton variant=\"secondary\">Search</InputGroupButton>\n        </InputGroupAddon>\n      </InputGroup>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

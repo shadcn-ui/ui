@@ -1,11 +1,7 @@
 import path from "path"
+import { rawConfigSchema } from "@/src/schema"
 import { FRAMEWORKS, Framework } from "@/src/utils/frameworks"
-import {
-  Config,
-  RawConfig,
-  getConfig,
-  resolveConfigPaths,
-} from "@/src/utils/get-config"
+import { Config, getConfig, resolveConfigPaths } from "@/src/utils/get-config"
 import { getPackageInfo } from "@/src/utils/get-package-info"
 import fg from "fast-glob"
 import fs from "fs-extra"
@@ -14,7 +10,7 @@ import { z } from "zod"
 
 export type TailwindVersion = "v3" | "v4" | null
 
-type ProjectInfo = {
+export type ProjectInfo = {
   framework: Framework
   isSrcDir: boolean
   isRSC: boolean
@@ -22,6 +18,7 @@ type ProjectInfo = {
   tailwindConfigFile: string | null
   tailwindCssFile: string | null
   tailwindVersion: TailwindVersion
+  frameworkVersion: string | null
   aliasPrefix: string | null
 }
 
@@ -50,11 +47,14 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
     aliasPrefix,
     packageJson,
   ] = await Promise.all([
-    fg.glob("**/{next,vite,astro}.config.*|gatsby-config.*|composer.json", {
-      cwd,
-      deep: 3,
-      ignore: PROJECT_SHARED_IGNORE,
-    }),
+    fg.glob(
+      "**/{next,vite,astro,app}.config.*|gatsby-config.*|composer.json|react-router.config.*",
+      {
+        cwd,
+        deep: 3,
+        ignore: PROJECT_SHARED_IGNORE,
+      }
+    ),
     fs.pathExists(path.resolve(cwd, "src")),
     isTypeScriptProject(cwd),
     getTailwindConfigFile(cwd),
@@ -76,6 +76,7 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
     tailwindConfigFile,
     tailwindCssFile,
     tailwindVersion,
+    frameworkVersion: null,
     aliasPrefix,
   }
 
@@ -85,6 +86,10 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
       ? FRAMEWORKS["next-app"]
       : FRAMEWORKS["next-pages"]
     type.isRSC = isUsingAppDir
+    type.frameworkVersion = await getFrameworkVersion(
+      type.framework,
+      packageJson
+    )
     return type
   }
 
@@ -116,6 +121,25 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
     return type
   }
 
+  // TanStack Start.
+  if (
+    [
+      ...Object.keys(packageJson?.dependencies ?? {}),
+      ...Object.keys(packageJson?.devDependencies ?? {}),
+    ].find((dep) => dep.startsWith("@tanstack/react-start"))
+  ) {
+    type.framework = FRAMEWORKS["tanstack-start"]
+    return type
+  }
+
+  // React Router.
+  if (
+    configFiles.find((file) => file.startsWith("react-router.config."))?.length
+  ) {
+    type.framework = FRAMEWORKS["react-router"]
+    return type
+  }
+
   // Vite.
   // Some Remix templates also have a vite.config.* file.
   // We'll assume that it got caught by the Remix check above.
@@ -124,13 +148,77 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
     return type
   }
 
+  // Vinxi-based (such as @tanstack/start and @solidjs/solid-start)
+  // They are vite-based, and the same configurations used for Vite should work flawlessly
+  const appConfig = configFiles.find((file) => file.startsWith("app.config"))
+  if (appConfig?.length) {
+    const appConfigContents = await fs.readFile(
+      path.resolve(cwd, appConfig),
+      "utf8"
+    )
+    if (appConfigContents.includes("defineConfig")) {
+      type.framework = FRAMEWORKS["vite"]
+      return type
+    }
+  }
+
+  // Expo.
+  if (packageJson?.dependencies?.expo) {
+    type.framework = FRAMEWORKS["expo"]
+    return type
+  }
+
   return type
+}
+
+export async function getFrameworkVersion(
+  framework: Framework,
+  packageJson: ReturnType<typeof getPackageInfo>
+) {
+  if (!packageJson) {
+    return null
+  }
+
+  // Only detect Next.js version for now.
+  if (!["next-app", "next-pages"].includes(framework.name)) {
+    return null
+  }
+
+  const version =
+    packageJson.dependencies?.next || packageJson.devDependencies?.next
+
+  if (!version) {
+    return null
+  }
+
+  // Extract full semver (major.minor.patch), handling ^, ~, etc.
+  const versionMatch = version.match(/^[\^~]?(\d+\.\d+\.\d+)/)
+  if (versionMatch) {
+    return versionMatch[1] // e.g., "16.0.0"
+  }
+
+  // For ranges like ">=15.0.0 <16.0.0", extract the first version.
+  const rangeMatch = version.match(/(\d+\.\d+\.\d+)/)
+  if (rangeMatch) {
+    return rangeMatch[1]
+  }
+
+  // For "latest", "canary", "rc", etc., return the tag as-is.
+  return version
 }
 
 export async function getTailwindVersion(
   cwd: string
 ): Promise<ProjectInfo["tailwindVersion"]> {
-  const packageInfo = getPackageInfo(cwd)
+  const [packageInfo, config] = await Promise.all([
+    getPackageInfo(cwd, false),
+    getConfig(cwd),
+  ])
+
+  // If the config file is empty, we can assume that it's a v4 project.
+  if (config?.tailwind?.config === "") {
+    return "v4"
+  }
 
   if (
     !packageInfo?.dependencies?.tailwindcss &&
@@ -282,7 +370,7 @@ export async function getProjectConfig(
     return null
   }
 
-  const config: RawConfig = {
+  const config: z.infer<typeof rawConfigSchema> = {
     $schema: "https://ui.shadcn.com/schema.json",
     rsc: projectInfo.isRSC,
     tsx: projectInfo.isTsx,
@@ -307,9 +395,9 @@ export async function getProjectConfig(
   return await resolveConfigPaths(cwd, config)
 }
 
-export async function getProjectTailwindVersionFromConfig(
-  config: Config
-): Promise<TailwindVersion> {
+export async function getProjectTailwindVersionFromConfig(config: {
+  resolvedPaths: Pick<Config["resolvedPaths"], "cwd">
+}): Promise<TailwindVersion> {
   if (!config.resolvedPaths?.cwd) {
     return "v3"
   }

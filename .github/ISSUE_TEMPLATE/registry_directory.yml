@@ -1,0 +1,63 @@
+name: Add registry to directory
+description: Add your registry to the directory
+title: "[Registry Directory]: "
+labels: ["registry", "directory"]
+assignees: []
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Name
+      description: The name of your registry. This is also the namespace.
+      placeholder: e.g., "@acme"
+    validations:
+      required: true
+
+  - type: input
+    id: url
+    attributes:
+      label: URL
+      description: The URL to your registry index. Use {name} placeholder.
+      placeholder: https://ui.acme.com/r/{name}.json
+    validations:
+      required: true
+
+  - type: input
+    id: homepage
+    attributes:
+      label: Homepage
+      description: The URL to your registry homepage. This is where users can browse your registry.
+      placeholder: https://ui.acme.com
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Briefly describe what is your registry and what type of components or code it distributes.
+      placeholder: 
+    validations:
+      required: true
+
+  - type: textarea
+    id: logo
+    attributes:
+      label: Logo
+      description: Add your SVG logo here.
+      placeholder: 
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: requirements
+    attributes:
+      label: Checklist
+      description: Verify that your registry meets the following requirements.
+      options:
+        - label: The registry must be open source and publicly accessible.
+        - label: The registry must be a valid JSON file that conforms to the [registry schema](https://ui.shadcn.com/docs/registry/registry-json) specification.
+        - label: The `files` array, if present on your registry items, must NOT include a `content` property.
+        - label: I've attached a square SVG logo to this issue
+    validations:
+      required: true

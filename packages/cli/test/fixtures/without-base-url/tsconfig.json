@@ -1,9 +1,0 @@
-{
-  "$schema": "https://json.schemastore.org/tsconfig",
-  "compilerOptions": {
-    "paths": {
-      "~/components/*": ["./components/*"],
-      "~/lib/*": ["./lib/*"]
-    }
-  }
-}

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "signup-02",
+  "type": "registry:block",
+  "description": "A two column signup page with a cover image.",
+  "registryDependencies": [
+    "button",
+    "input",
+    "label",
+    "field"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/blocks/signup-02/page.tsx",
+      "content": "import { GalleryVerticalEnd } from \"lucide-react\"\n\nimport { SignupForm } from \"@/registry/new-york-v4/blocks/signup-02/components/signup-form\"\n\nexport default function SignupPage() {\n  return (\n    <div className=\"grid min-h-svh lg:grid-cols-2\">\n      <div className=\"flex flex-col gap-4 p-6 md:p-10\">\n        <div className=\"flex justify-center gap-2 md:justify-start\">\n          <a href=\"#\" className=\"flex items-center gap-2 font-medium\">\n            <div className=\"bg-primary text-primary-foreground flex size-6 items-center justify-center rounded-md\">\n              <GalleryVerticalEnd className=\"size-4\" />\n            </div>\n            Acme Inc.\n          </a>\n        </div>\n        <div className=\"flex flex-1 items-center justify-center\">\n          <div className=\"w-full max-w-xs\">\n            <SignupForm />\n          </div>\n        </div>\n      </div>\n      <div className=\"bg-muted relative hidden lg:block\">\n        <img\n          src=\"/placeholder.svg\"\n          alt=\"Image\"\n          className=\"absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale\"\n        />\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:page",
+      "target": "app/signup/page.tsx"
+    },
+    {
+      "path": "registry/new-york-v4/blocks/signup-02/components/signup-form.tsx",
+      "content": "import { cn } from \"@/registry/new-york-v4/lib/utils\"\nimport { Button } from \"@/registry/new-york-v4/ui/button\"\nimport {\n  Field,\n  FieldDescription,\n  FieldGroup,\n  FieldLabel,\n  FieldSeparator,\n} from \"@/registry/new-york-v4/ui/field\"\nimport { Input } from \"@/registry/new-york-v4/ui/input\"\n\nexport function SignupForm({\n  className,\n  ...props\n}: React.ComponentProps<\"form\">) {\n  return (\n    <form className={cn(\"flex flex-col gap-6\", className)} {...props}>\n      <FieldGroup>\n        <div className=\"flex flex-col items-center gap-1 text-center\">\n          <h1 className=\"text-2xl font-bold\">Create your account</h1>\n          <p className=\"text-muted-foreground text-sm text-balance\">\n            Fill in the form below to create your account\n          </p>\n        </div>\n        <Field>\n          <FieldLabel htmlFor=\"name\">Full Name</FieldLabel>\n          <Input id=\"name\" type=\"text\" placeholder=\"John Doe\" required />\n        </Field>\n        <Field>\n          <FieldLabel htmlFor=\"email\">Email</FieldLabel>\n          <Input id=\"email\" type=\"email\" placeholder=\"m@example.com\" required />\n          <FieldDescription>\n            We&apos;ll use this to contact you. We will not share your email\n            with anyone else.\n          </FieldDescription>\n        </Field>\n        <Field>\n          <FieldLabel htmlFor=\"password\">Password</FieldLabel>\n          <Input id=\"password\" type=\"password\" required />\n          <FieldDescription>\n            Must be at least 8 characters long.\n          </FieldDescription>\n        </Field>\n        <Field>\n          <FieldLabel htmlFor=\"confirm-password\">Confirm Password</FieldLabel>\n          <Input id=\"confirm-password\" type=\"password\" required />\n          <FieldDescription>Please confirm your password.</FieldDescription>\n        </Field>\n        <Field>\n          <Button type=\"submit\">Create Account</Button>\n        </Field>\n        <FieldSeparator>Or continue with</FieldSeparator>\n        <Field>\n          <Button variant=\"outline\" type=\"button\">\n            <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\">\n              <path\n                d=\"M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12\"\n                fill=\"currentColor\"\n              />\n            </svg>\n            Sign up with GitHub\n          </Button>\n          <FieldDescription className=\"px-6 text-center\">\n            Already have an account? <a href=\"#\">Sign in</a>\n          </FieldDescription>\n        </Field>\n      </FieldGroup>\n    </form>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "categories": [
+    "authentication",
+    "signup"
+  ]
+}

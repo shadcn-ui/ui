@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "badge-destructive",
+  "type": "registry:example",
+  "registryDependencies": [
+    "badge"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/badge-destructive.tsx",
+      "content": "import { Badge } from \"@/registry/new-york-v4/ui/badge\"\n\nexport default function BadgeDestructive() {\n  return <Badge variant=\"destructive\">Destructive</Badge>\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "calendar-10",
+  "type": "registry:block",
+  "description": "Today button",
+  "registryDependencies": [
+    "calendar",
+    "card",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/blocks/calendar-10.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { Button } from \"@/registry/new-york-v4/ui/button\"\nimport { Calendar } from \"@/registry/new-york-v4/ui/calendar\"\nimport {\n  Card,\n  CardAction,\n  CardContent,\n  CardDescription,\n  CardHeader,\n  CardTitle,\n} from \"@/registry/new-york-v4/ui/card\"\n\nexport default function Calendar10() {\n  const [date, setDate] = React.useState<Date | undefined>(\n    new Date(2025, 5, 12)\n  )\n  const [month, setMonth] = React.useState<Date | undefined>(new Date())\n\n  return (\n    <Card>\n      <CardHeader>\n        <CardTitle>Appointment</CardTitle>\n        <CardDescription>Find a date</CardDescription>\n        <CardAction>\n          <Button\n            size=\"sm\"\n            variant=\"outline\"\n            onClick={() => {\n              setMonth(new Date())\n              setDate(new Date())\n            }}\n          >\n            Today\n          </Button>\n        </CardAction>\n      </CardHeader>\n      <CardContent>\n        <Calendar\n          mode=\"single\"\n          month={month}\n          onMonthChange={setMonth}\n          selected={date}\n          onSelect={setDate}\n          className=\"bg-transparent p-0\"\n        />\n      </CardContent>\n    </Card>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "iframeHeight": "600px",
+    "container": "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+    "mobile": "component"
+  },
+  "categories": [
+    "calendar",
+    "date"
+  ]
+}

@@ -1,7 +1,10 @@
 import { promises as fs } from "fs"
 import { tmpdir } from "os"
 import path from "path"
-import { registryItemTailwindSchema } from "@/src/registry/schema"
+import {
+  registryItemCssVarsSchema,
+  registryItemTailwindSchema,
+} from "@/src/schema"
 import { Config } from "@/src/utils/get-config"
 import { TailwindVersion } from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"
@@ -376,7 +379,7 @@ export function unnestSpreadProperties(obj: ObjectLiteralExpression) {
         initializer &&
         initializer.isKind(SyntaxKind.ArrayLiteralExpression)
       ) {
-        unnsetSpreadElements(
+        unsetSpreadElements(
           initializer.asKindOrThrow(SyntaxKind.ArrayLiteralExpression)
         )
       }
@@ -384,7 +387,7 @@ export function unnestSpreadProperties(obj: ObjectLiteralExpression) {
   }
 }
 
-export function unnsetSpreadElements(arr: ArrayLiteralExpression) {
+export function unsetSpreadElements(arr: ArrayLiteralExpression) {
   const elements = arr.getElements()
   for (let j = 0; j < elements.length; j++) {
     const element = elements[j]
@@ -395,7 +398,7 @@ export function unnsetSpreadElements(arr: ArrayLiteralExpression) {
       )
     } else if (element.isKind(SyntaxKind.ArrayLiteralExpression)) {
       // Recursive check on nested arrays
-      unnsetSpreadElements(
+      unsetSpreadElements(
         element.asKindOrThrow(SyntaxKind.ArrayLiteralExpression)
       )
     } else if (element.isKind(SyntaxKind.StringLiteral)) {
@@ -499,7 +502,7 @@ function parseValue(node: any): any {
 }
 
 export function buildTailwindThemeColorsFromCssVars(
-  cssVars: Record<string, string>
+  cssVars: z.infer<typeof registryItemCssVarsSchema>
 ) {
   const result: Record<string, any> = {}
 

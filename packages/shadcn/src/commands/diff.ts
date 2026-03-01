@@ -4,9 +4,9 @@ import {
   fetchTree,
   getItemTargetPath,
   getRegistryBaseColor,
-  getRegistryIndex,
+  getShadcnRegistryIndex,
 } from "@/src/registry/api"
-import { registryIndexSchema } from "@/src/registry/schema"
+import { registryIndexSchema } from "@/src/schema"
 import { Config, getConfig } from "@/src/utils/get-config"
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
@@ -57,7 +57,7 @@ export const diff = new Command()
         process.exit(1)
       }
 
-      const registryIndex = await getRegistryIndex()
+      const registryIndex = await getShadcnRegistryIndex()
 
       if (!registryIndex) {
         handleError(new Error("Failed to fetch registry index."))

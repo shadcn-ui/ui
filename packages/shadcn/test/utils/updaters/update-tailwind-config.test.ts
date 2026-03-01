@@ -5,7 +5,7 @@ import {
   buildTailwindThemeColorsFromCssVars, nestSpreadElements,
   nestSpreadProperties,
   transformTailwindConfig,
-  unnestSpreadProperties, unnsetSpreadElements,
+  unnestSpreadProperties, unsetSpreadElements,
 } from "../../../src/utils/updaters/update-tailwind-config"
 
 const SHARED_CONFIG = {
@@ -1186,7 +1186,7 @@ describe("unnestSpreadElements", () => {
     )
     if (!configObject) throw new Error("Config object not found")
 
-    unnsetSpreadElements(configObject)
+    unsetSpreadElements(configObject)
 
     const result = configObject.getText()
     expect(result.replace(/\s+/g, "")).toBe(expected.replace(/\s+/g, ""))

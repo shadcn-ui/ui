@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-group-text",
+  "type": "registry:example",
+  "registryDependencies": [
+    "input-group"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/input-group-text.tsx",
+      "content": "import {\n  InputGroup,\n  InputGroupAddon,\n  InputGroupInput,\n  InputGroupText,\n  InputGroupTextarea,\n} from \"@/registry/new-york-v4/ui/input-group\"\n\nexport default function InputGroupTextExample() {\n  return (\n    <div className=\"grid w-full max-w-sm gap-6\">\n      <InputGroup>\n        <InputGroupAddon>\n          <InputGroupText>$</InputGroupText>\n        </InputGroupAddon>\n        <InputGroupInput placeholder=\"0.00\" />\n        <InputGroupAddon align=\"inline-end\">\n          <InputGroupText>USD</InputGroupText>\n        </InputGroupAddon>\n      </InputGroup>\n      <InputGroup>\n        <InputGroupAddon>\n          <InputGroupText>https://</InputGroupText>\n        </InputGroupAddon>\n        <InputGroupInput placeholder=\"example.com\" className=\"!pl-0.5\" />\n        <InputGroupAddon align=\"inline-end\">\n          <InputGroupText>.com</InputGroupText>\n        </InputGroupAddon>\n      </InputGroup>\n      <InputGroup>\n        <InputGroupInput placeholder=\"Enter your username\" />\n        <InputGroupAddon align=\"inline-end\">\n          <InputGroupText>@company.com</InputGroupText>\n        </InputGroupAddon>\n      </InputGroup>\n      <InputGroup>\n        <InputGroupTextarea placeholder=\"Enter your message\" />\n        <InputGroupAddon align=\"block-end\">\n          <InputGroupText className=\"text-muted-foreground text-xs\">\n            120 characters left\n          </InputGroupText>\n        </InputGroupAddon>\n      </InputGroup>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

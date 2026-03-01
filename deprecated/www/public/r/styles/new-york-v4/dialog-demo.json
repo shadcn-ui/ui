@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dialog-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "dialog"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/dialog-demo.tsx",
+      "content": "import { Button } from \"@/registry/new-york-v4/ui/button\"\nimport {\n  Dialog,\n  DialogClose,\n  DialogContent,\n  DialogDescription,\n  DialogFooter,\n  DialogHeader,\n  DialogTitle,\n  DialogTrigger,\n} from \"@/registry/new-york-v4/ui/dialog\"\nimport { Input } from \"@/registry/new-york-v4/ui/input\"\nimport { Label } from \"@/registry/new-york-v4/ui/label\"\n\nexport default function DialogDemo() {\n  return (\n    <Dialog>\n      <form>\n        <DialogTrigger asChild>\n          <Button variant=\"outline\">Open Dialog</Button>\n        </DialogTrigger>\n        <DialogContent className=\"sm:max-w-[425px]\">\n          <DialogHeader>\n            <DialogTitle>Edit profile</DialogTitle>\n            <DialogDescription>\n              Make changes to your profile here. Click save when you&apos;re\n              done.\n            </DialogDescription>\n          </DialogHeader>\n          <div className=\"grid gap-4\">\n            <div className=\"grid gap-3\">\n              <Label htmlFor=\"name-1\">Name</Label>\n              <Input id=\"name-1\" name=\"name\" defaultValue=\"Pedro Duarte\" />\n            </div>\n            <div className=\"grid gap-3\">\n              <Label htmlFor=\"username-1\">Username</Label>\n              <Input id=\"username-1\" name=\"username\" defaultValue=\"@peduarte\" />\n            </div>\n          </div>\n          <DialogFooter>\n            <DialogClose asChild>\n              <Button variant=\"outline\">Cancel</Button>\n            </DialogClose>\n            <Button type=\"submit\">Save changes</Button>\n          </DialogFooter>\n        </DialogContent>\n      </form>\n    </Dialog>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

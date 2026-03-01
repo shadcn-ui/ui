@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "chart-radial-label",
+  "type": "registry:block",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "registryDependencies": [
+    "card",
+    "chart"
+  ],
+  "files": [
+    {
+      "path": "charts/chart-radial-label.tsx",
+      "content": "\"use client\"\n\nimport { TrendingUp } from \"lucide-react\"\nimport { LabelList, RadialBar, RadialBarChart } from \"recharts\"\n\nimport {\n  Card,\n  CardContent,\n  CardDescription,\n  CardFooter,\n  CardHeader,\n  CardTitle,\n} from \"@/registry/default/ui/card\"\nimport {\n  ChartConfig,\n  ChartContainer,\n  ChartTooltip,\n  ChartTooltipContent,\n} from \"@/registry/default/ui/chart\"\nconst chartData = [\n  { browser: \"chrome\", visitors: 275, fill: \"var(--color-chrome)\" },\n  { browser: \"safari\", visitors: 200, fill: \"var(--color-safari)\" },\n  { browser: \"firefox\", visitors: 187, fill: \"var(--color-firefox)\" },\n  { browser: \"edge\", visitors: 173, fill: \"var(--color-edge)\" },\n  { browser: \"other\", visitors: 90, fill: \"var(--color-other)\" },\n]\n\nconst chartConfig = {\n  visitors: {\n    label: \"Visitors\",\n  },\n  chrome: {\n    label: \"Chrome\",\n    color: \"hsl(var(--chart-1))\",\n  },\n  safari: {\n    label: \"Safari\",\n    color: \"hsl(var(--chart-2))\",\n  },\n  firefox: {\n    label: \"Firefox\",\n    color: \"hsl(var(--chart-3))\",\n  },\n  edge: {\n    label: \"Edge\",\n    color: \"hsl(var(--chart-4))\",\n  },\n  other: {\n    label: \"Other\",\n    color: \"hsl(var(--chart-5))\",\n  },\n} satisfies ChartConfig\n\nexport default function Component() {\n  return (\n    <Card className=\"flex flex-col\">\n      <CardHeader className=\"items-center pb-0\">\n        <CardTitle>Radial Chart - Label</CardTitle>\n        <CardDescription>January - June 2024</CardDescription>\n      </CardHeader>\n      <CardContent className=\"flex-1 pb-0\">\n        <ChartContainer\n          config={chartConfig}\n          className=\"mx-auto aspect-square max-h-[250px]\"\n        >\n          <RadialBarChart\n            data={chartData}\n            startAngle={-90}\n            endAngle={380}\n            innerRadius={30}\n            outerRadius={110}\n          >\n            <ChartTooltip\n              cursor={false}\n              content={<ChartTooltipContent hideLabel nameKey=\"browser\" />}\n            />\n            <RadialBar dataKey=\"visitors\" background>\n              <LabelList\n                position=\"insideStart\"\n                dataKey=\"browser\"\n                className=\"fill-white capitalize mix-blend-luminosity\"\n                fontSize={11}\n              />\n            </RadialBar>\n          </RadialBarChart>\n        </ChartContainer>\n      </CardContent>\n      <CardFooter className=\"flex-col gap-2 text-sm\">\n        <div className=\"flex items-center gap-2 font-medium leading-none\">\n          Trending up by 5.2% this month <TrendingUp className=\"h-4 w-4\" />\n        </div>\n        <div className=\"leading-none text-muted-foreground\">\n          Showing total visitors for the last 6 months\n        </div>\n      </CardFooter>\n    </Card>\n  )\n}\n",
+      "type": "registry:block",
+      "target": ""
+    }
+  ],
+  "categories": [
+    "charts",
+    "charts-radial"
+  ]
+}

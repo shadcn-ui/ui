@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm test:*)",
+      "Bash(npm run typecheck:*)",
+      "Bash(ls:*)",
+      "Bash(cat:*)",
+      "WebSearch",
+      "WebFetch(domain:github.com)"
+    ],
+    "deny": []
+  }
+}

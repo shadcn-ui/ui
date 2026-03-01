@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "empty-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "empty",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/empty-demo.tsx",
+      "content": "import { IconFolderCode } from \"@tabler/icons-react\"\nimport { ArrowUpRightIcon } from \"lucide-react\"\n\nimport { Button } from \"@/registry/new-york-v4/ui/button\"\nimport {\n  Empty,\n  EmptyContent,\n  EmptyDescription,\n  EmptyHeader,\n  EmptyMedia,\n  EmptyTitle,\n} from \"@/registry/new-york-v4/ui/empty\"\n\nexport default function EmptyDemo() {\n  return (\n    <Empty>\n      <EmptyHeader>\n        <EmptyMedia variant=\"icon\">\n          <IconFolderCode />\n        </EmptyMedia>\n        <EmptyTitle>No Projects Yet</EmptyTitle>\n        <EmptyDescription>\n          You haven&apos;t created any projects yet. Get started by creating\n          your first project.\n        </EmptyDescription>\n      </EmptyHeader>\n      <EmptyContent>\n        <div className=\"flex gap-2\">\n          <Button>Create Project</Button>\n          <Button variant=\"outline\">Import Project</Button>\n        </div>\n      </EmptyContent>\n      <Button\n        variant=\"link\"\n        asChild\n        className=\"text-muted-foreground\"\n        size=\"sm\"\n      >\n        <a href=\"#\">\n          Learn More <ArrowUpRightIcon />\n        </a>\n      </Button>\n    </Empty>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}
