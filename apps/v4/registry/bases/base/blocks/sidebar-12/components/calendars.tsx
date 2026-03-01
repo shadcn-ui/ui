@@ -33,10 +33,9 @@ export function Calendars({
           <SidebarGroup key={calendar.name}>
             <Collapsible
               defaultOpen={index === 0}
-              className="group/collapsible"
             >
               <SidebarGroupLabel
-                className="group/label text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground w-full text-sm"
+                className="group group/label text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground w-full text-sm"
                 render={<CollapsibleTrigger />}
               >
                 {calendar.name}{" "}
@@ -46,7 +45,7 @@ export function Calendars({
                   hugeicons="ArrowRight01Icon"
                   phosphor="CaretRightIcon"
                   remixicon="RiArrowRightSLine"
-                  className="ml-auto transition-transform group-data-open/collapsible:rotate-90"
+                  className="ml-auto transition-transform group-data-panel-open:rotate-90"
                 />
               </SidebarGroupLabel>
               <CollapsibleContent>

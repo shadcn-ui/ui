@@ -196,7 +196,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               <Collapsible
                 key={item.title}
                 defaultOpen={index === 1}
-                className="group/collapsible"
               >
                 <SidebarMenuItem>
                   <SidebarMenuButton render={<CollapsibleTrigger />}>

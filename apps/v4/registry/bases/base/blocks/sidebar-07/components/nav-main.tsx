@@ -39,10 +39,10 @@ export function NavMain({
           <Collapsible
             key={item.title}
             defaultOpen={item.isActive}
-            className="group/collapsible"
             render={<SidebarMenuItem />}
           >
             <CollapsibleTrigger
+              className="group"
               render={<SidebarMenuButton tooltip={item.title} />}
             >
               {item.icon}
@@ -53,7 +53,7 @@ export function NavMain({
                 hugeicons="ArrowRight01Icon"
                 phosphor="CaretRightIcon"
                 remixicon="RiArrowRightSLine"
-                className="ml-auto transition-transform duration-200 group-data-open/collapsible:rotate-90"
+                className="ml-auto transition-transform duration-200 group-data-panel-open:rotate-90"
               />
             </CollapsibleTrigger>
             <CollapsibleContent>

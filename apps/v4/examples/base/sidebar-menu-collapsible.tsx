@@ -159,13 +159,12 @@ export default function AppSidebar() {
                 {items.map((item, index) => (
                   <Collapsible
                     key={index}
-                    className="group/collapsible"
                     defaultOpen={index === 0}
                   >
                     <SidebarMenuItem>
-                      <CollapsibleTrigger render={<SidebarMenuButton />}>
+                      <CollapsibleTrigger className="group" render={<SidebarMenuButton />}>
                         <span>{item.title}</span>
-                        <ChevronRightIcon className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-90" />
+                        <ChevronRightIcon className="ml-auto transition-transform group-data-panel-open:rotate-90" />
                       </CollapsibleTrigger>
                       <CollapsibleContent>
                         <SidebarMenuSub>

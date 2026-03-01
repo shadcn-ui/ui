@@ -343,15 +343,15 @@ function SidebarContentInner({
                 <Collapsible
                   key={item.title}
                   defaultOpen={item.isActive}
-                  className="group/collapsible"
                 >
                   <SidebarMenuItem>
                     <CollapsibleTrigger
+                      className="group"
                       render={<SidebarMenuButton tooltip={item.title} />}
                     >
                       {item.icon && <item.icon />}
                       <span>{item.title}</span>
-                      <ChevronRight className="ms-auto transition-transform duration-200 group-data-open/collapsible:rotate-90 rtl:rotate-180 rtl:group-data-open/collapsible:rotate-90" />
+                      <ChevronRight className="ms-auto transition-transform duration-200 group-data-panel-open:rotate-90 rtl:rotate-180 rtl:group-data-panel-open:rotate-90" />
                     </CollapsibleTrigger>
                     <CollapsibleContent>
                       <SidebarMenuSub>
@@ -431,7 +431,7 @@ function SidebarContentInner({
                   render={
                     <SidebarMenuButton
                       size="lg"
-                      className="data-open:bg-sidebar-accent data-open:text-sidebar-accent-foreground"
+                      className="data-popup-open:bg-sidebar-accent data-popup-open:text-sidebar-accent-foreground"
                     />
                   }
                 >

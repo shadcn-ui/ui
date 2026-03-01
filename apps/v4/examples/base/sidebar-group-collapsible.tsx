@@ -23,14 +23,14 @@ export default function AppSidebar() {
     <SidebarProvider>
       <Sidebar>
         <SidebarContent>
-          <Collapsible defaultOpen className="group/collapsible">
+          <Collapsible defaultOpen>
             <SidebarGroup>
               <SidebarGroupLabel
                 render={<CollapsibleTrigger />}
-                className="hover:bg-sidebar-accent hover:text-sidebar-accent-foreground text-sm"
+                className="group hover:bg-sidebar-accent hover:text-sidebar-accent-foreground text-sm"
               >
                 Help
-                <ChevronDownIcon className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180" />
+                <ChevronDownIcon className="ml-auto transition-transform group-data-panel-open:rotate-180" />
               </SidebarGroupLabel>
               <CollapsibleContent>
                 <SidebarGroupContent>
