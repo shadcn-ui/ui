@@ -1,7 +1,11 @@
 import * as fs from "fs/promises"
 import * as path from "path"
+import fg from "fast-glob"
 import { preFlightRegistryBuild } from "@/src/preflights/preflight-registry"
-import { recursivelyResolveFileImports } from "@/src/registry/utils"
+import {
+  type FileMetadataMap,
+  recursivelyResolveFileImports,
+} from "@/src/registry/utils"
 import { configSchema, registryItemSchema, registrySchema } from "@/src/schema"
 import * as ERRORS from "@/src/utils/errors"
 import { ProjectInfo, getProjectInfo } from "@/src/utils/get-project-info"
@@ -89,11 +93,17 @@ async function buildRegistry(opts: z.infer<typeof buildOptionsSchema>) {
 
     const buildSpinner = spinner("Building registry...")
 
-    // Recursively resolve the registry items.
+    const fileMetadataMap = await buildFileMetadataMapFromCwd(
+      options.cwd,
+      resolvePaths.registryFile,
+      result.data
+    )
+
     const resolvedRegistry = await resolveRegistryItems(
       result.data,
       config,
-      projectInfo
+      projectInfo,
+      fileMetadataMap
     )
 
     // Loop through the registry items and remove duplicates files i.e same path.
@@ -181,23 +191,72 @@ async function buildRegistry(opts: z.infer<typeof buildOptionsSchema>) {
   }
 }
 
-// This reads the registry and recursively resolves the file imports.
+function normalizePathForLookup(p: string): string {
+  return path.normalize(p).replace(/\\/g, "/")
+}
+
+function mergeRegistryIntoFileMetadataMap(
+  map: FileMetadataMap,
+  registry: z.infer<typeof registrySchema>
+): void {
+  for (const item of registry.items) {
+    for (const f of item.files ?? []) {
+      const key = normalizePathForLookup(f.path)
+      const target = "target" in f ? f.target : undefined
+      map.set(key, { type: f.type, ...(target !== undefined && { target }) })
+    }
+  }
+}
+
+async function buildFileMetadataMapFromCwd(
+  cwd: string,
+  mainRegistryPath: string,
+  mainRegistry: z.infer<typeof registrySchema>
+): Promise<FileMetadataMap> {
+  const map: FileMetadataMap = new Map()
+  mergeRegistryIntoFileMetadataMap(map, mainRegistry)
+
+  const pattern = "**/registry.json"
+  const found = await fg(pattern, {
+    cwd,
+    absolute: true,
+    ignore: ["**/node_modules/**"],
+  })
+
+  const mainAbsolute = path.resolve(cwd, mainRegistryPath)
+  for (const filePath of found) {
+    if (filePath === mainAbsolute) continue
+    try {
+      const content = await fs.readFile(filePath, "utf-8")
+      const parsed = registrySchema.safeParse(JSON.parse(content))
+      if (parsed.success) {
+        mergeRegistryIntoFileMetadataMap(map, parsed.data)
+      }
+    } catch {
+    }
+  }
+
+  return map
+}
+
 async function resolveRegistryItems(
   registry: z.infer<typeof registrySchema>,
   config: z.infer<typeof configSchema>,
-  projectInfo: ProjectInfo
+  projectInfo: ProjectInfo,
+  fileMetadataMap: FileMetadataMap
 ): Promise<z.infer<typeof registrySchema>> {
   for (const item of registry.items) {
     if (!item.files?.length) {
       continue
     }
 
-    // Process all files in the array instead of just the first one
     for (const file of item.files) {
       const results = await recursivelyResolveFileImports(
         file.path,
         config,
-        projectInfo
+        projectInfo,
+        new Set(),
+        fileMetadataMap
       )
 
       // Remove file from results.files
