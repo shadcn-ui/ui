@@ -10,6 +10,7 @@ import {
   SelectGroup,
   SelectItem,
   SelectTrigger,
+  SelectValue,
 } from "@/examples/radix/ui/select"
 import { ArrowRightIcon } from "lucide-react"
 
@@ -35,7 +36,9 @@ export default function ButtonGroupSelect() {
     <ButtonGroup>
       <ButtonGroup>
         <Select value={currency} onValueChange={setCurrency}>
-          <SelectTrigger className="font-mono">{currency}</SelectTrigger>
+          <SelectTrigger className="font-mono">
+            <SelectValue placeholder="$">{currency}</SelectValue>
+          </SelectTrigger>
           <SelectContent className="min-w-24">
             <SelectGroup>
               {CURRENCIES.map((currency) => (
