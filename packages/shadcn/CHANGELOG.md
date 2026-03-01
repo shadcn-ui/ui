@@ -1,5 +1,11 @@
 # @shadcn/ui
 
+## 3.8.6
+
+### Patch Changes
+
+- [#9708](https://github.com/shadcn-ui/ui/pull/9708) [`82f03d0f1dd12efb5395a0b8689533588d778d0c`](https://github.com/shadcn-ui/ui/commit/82f03d0f1dd12efb5395a0b8689533588d778d0c) Thanks [@shadcn](https://github.com/shadcn)! - handling of apply directive inside utility
+
 ## 3.8.5
 
 ### Patch Changes
