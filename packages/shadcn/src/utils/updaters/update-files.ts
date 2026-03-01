@@ -30,7 +30,7 @@ import { transformRtl } from "@/src/utils/transformers/transform-rtl"
 import { transformTwPrefixes } from "@/src/utils/transformers/transform-tw-prefix"
 import prompts from "prompts"
 import { Project, ScriptKind } from "ts-morph"
-import { loadConfig } from "tsconfig-paths"
+import { loadTsConfig } from "@/src/utils/load-tsconfig"
 import { z } from "zod"
 
 export async function updateFiles(
@@ -514,7 +514,7 @@ async function resolveImports(filePaths: string[], config: Config) {
     compilerOptions: {},
   })
   const projectInfo = await getProjectInfo(config.resolvedPaths.cwd)
-  const tsConfig = loadConfig(config.resolvedPaths.cwd)
+  const tsConfig = loadTsConfig(config.resolvedPaths.cwd)
   const updatedFiles = []
 
   if (!projectInfo || tsConfig.resultType === "failed") {
