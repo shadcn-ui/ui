@@ -1,7 +1,11 @@
 import { RegistryItem } from "@/src/schema"
 import { Config } from "@/src/utils/get-config"
 import { getPackageInfo } from "@/src/utils/get-package-info"
-import { getPackageManager } from "@/src/utils/get-package-manager"
+import {
+  PackageManager,
+  getPackageExecutor,
+  getPackageManager,
+} from "@/src/utils/get-package-manager"
 import { logger } from "@/src/utils/logger"
 import { spinner } from "@/src/utils/spinner"
 import { execa } from "execa"
@@ -89,17 +93,20 @@ function shouldPromptForNpmFlag(config: Config) {
   return hasReact19 && hasReactDayPicker8
 }
 
-async function getUpdateDependenciesPackageManager(config: Config) {
+async function getUpdateDependenciesPackageManager(
+  config: Config
+): Promise<PackageManager | `expo/${PackageManager}`> {
+  const packageManager = await getPackageManager(config.resolvedPaths.cwd)
   const expoVersion = getPackageInfo(config.resolvedPaths.cwd, false)
     ?.dependencies?.expo
 
   if (expoVersion) {
     // Ensures package versions match the React Native version.
     // https://docs.expo.dev/more/expo-cli/#install
-    return "expo"
+    return `expo/${packageManager}`
   }
 
-  return getPackageManager(config.resolvedPaths.cwd)
+  return packageManager
 }
 
 async function installWithPackageManager(
@@ -119,8 +126,13 @@ async function installWithPackageManager(
     return installWithDeno(dependencies, devDependencies, cwd)
   }
 
-  if (packageManager === "expo") {
-    return installWithExpo(dependencies, devDependencies, cwd)
+  if (packageManager.startsWith("expo")) {
+    return installWithExpo(
+      packageManager.split("/")[1] as PackageManager,
+      dependencies,
+      devDependencies,
+      cwd
+    )
   }
 
   if (dependencies?.length) {
@@ -178,17 +190,36 @@ async function installWithDeno(
 }
 
 async function installWithExpo(
+  packageManager: PackageManager,
   dependencies: string[],
   devDependencies: string[],
   cwd: string
 ) {
+  const runner = getPackageExecutor(packageManager)
   if (dependencies.length) {
-    await execa("npx", ["expo", "install", ...dependencies], { cwd })
+    await execa(
+      runner[0],
+      [...runner[1], "expo", "install", ...runner[2], ...dependencies],
+      {
+        cwd,
+      }
+    )
   }
 
   if (devDependencies.length) {
-    await execa("npx", ["expo", "install", "-- -D", ...devDependencies], {
-      cwd,
-    })
+    await execa(
+      runner[0],
+      [
+        ...runner[1],
+        "expo",
+        "install",
+        ...runner[2],
+        "-- -D",
+        ...devDependencies,
+      ],
+      {
+        cwd,
+      }
+    )
   }
 }
