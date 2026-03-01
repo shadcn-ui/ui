@@ -65,6 +65,15 @@ export function CommandMenu({
   })
   const packageManager = config.packageManager || "pnpm"
 
+  let installCmd = "pnpm dlx"
+  if (packageManager == "npm") {
+    installCmd = "npx"
+  } else if (packageManager == "bun") {
+    installCmd = "bunx --bun"
+  } else if (packageManager == "yarn") {
+    installCmd = "yarn"
+  }
+  
   // Track search queries with debouncing to avoid excessive tracking.
   const searchTimeoutRef = React.useRef<NodeJS.Timeout | undefined>(undefined)
   const lastTrackedQueryRef = React.useRef<string>("")
@@ -142,31 +151,26 @@ export function CommandMenu({
       if (isComponent) {
         const componentName = item.url.split("/").pop()
         setSelectedType("component")
-        setCopyPayload(
-          `${packageManager} dlx shadcn@latest add ${componentName}`
-        )
+        setCopyPayload(`${installCmd} shadcn@latest add ${componentName}`)
       } else {
         setSelectedType("page")
         setCopyPayload("")
       }
     },
-    [packageManager, setSelectedType, setCopyPayload]
+    [installCmd]
   )
 
-  const handleColorHighlight = React.useCallback(
-    (color: Color) => {
-      setSelectedType("color")
-      setCopyPayload(color.className)
-    },
-    [setSelectedType, setCopyPayload]
-  )
+  const handleColorHighlight = React.useCallback((color: Color) => {
+    setSelectedType("color")
+    setCopyPayload(color.className)
+  }, [])
 
   const handleBlockHighlight = React.useCallback(
     (block: { name: string; description: string; categories: string[] }) => {
       setSelectedType("block")
-      setCopyPayload(`${packageManager} dlx shadcn@latest add ${block.name}`)
+      setCopyPayload(`${installCmd} shadcn@latest add ${block.name}`)
     },
-    [setSelectedType, setCopyPayload, packageManager]
+    [installCmd]
   )
 
   const runCommand = React.useCallback(
