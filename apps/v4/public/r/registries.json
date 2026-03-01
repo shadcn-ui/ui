@@ -802,5 +802,11 @@
     "homepage": "https://pixelactui.com",
     "url": "https://pixelactui.com/r/{name}.json",
     "description": "Playful pixel art style components library built on top of shadcn. Perfect for retro style projects and games."
+  },
+  {
+    "name": "@componentry",
+    "homepage": "https://componentry.fun",
+    "url": "https://componentry.fun/r/{name}.json",
+    "description": "Beautiful, interactive React + Tailwind components for modern product UIs."
   }
 ]
