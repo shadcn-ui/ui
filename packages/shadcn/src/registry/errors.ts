@@ -360,3 +360,51 @@ export class InvalidConfigIconLibraryError extends RegistryError {
     this.name = "InvalidConfigIconLibraryError"
   }
 }
+
+/**
+ * Type guard to check if an error is a RegistryError
+ * @param error - The error to check
+ * @returns True if the error is a RegistryError
+ * @example
+ * ```ts
+ * try {
+ *   await getRegistryItems(config)
+ * } catch (error) {
+ *   if (isRegistryError(error)) {
+ *     console.log(error.code) // Type-safe access to error properties
+ *   }
+ * }
+ * ```
+ */
+export function isRegistryError(error: unknown): error is RegistryError {
+  return error instanceof RegistryError
+}
+
+/**
+ * Type guard to check if an error is a network-related error
+ * @param error - The error to check
+ * @returns True if the error is a network-related RegistryError
+ */
+export function isNetworkError(error: unknown): error is RegistryError {
+  if (!isRegistryError(error)) return false
+  return [
+    RegistryErrorCode.NETWORK_ERROR,
+    RegistryErrorCode.NOT_FOUND,
+    RegistryErrorCode.UNAUTHORIZED,
+    RegistryErrorCode.FORBIDDEN,
+    RegistryErrorCode.FETCH_ERROR,
+  ].includes(error.code)
+}
+
+/**
+ * Type guard to check if an error is recoverable (user can retry)
+ * @param error - The error to check
+ * @returns True if the error might succeed on retry
+ */
+export function isRetryableError(error: unknown): error is RegistryError {
+  if (!isRegistryError(error)) return false
+  return [
+    RegistryErrorCode.NETWORK_ERROR,
+    RegistryErrorCode.FETCH_ERROR,
+  ].includes(error.code)
+}

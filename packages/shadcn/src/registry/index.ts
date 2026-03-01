@@ -20,4 +20,8 @@ export {
   RegistriesIndexParseError,
   RegistryMissingEnvironmentVariablesError,
   RegistryInvalidNamespaceError,
+  // Type guards for error handling
+  isRegistryError,
+  isNetworkError,
+  isRetryableError,
 } from "./errors"
