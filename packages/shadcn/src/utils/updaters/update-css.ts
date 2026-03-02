@@ -15,6 +15,7 @@ import AtRule from "postcss/lib/at-rule"
 import Declaration from "postcss/lib/declaration"
 import Root from "postcss/lib/root"
 import Rule from "postcss/lib/rule"
+import { twMerge } from "tailwind-merge"
 import { z } from "zod"
 
 export async function updateCss(
@@ -564,13 +565,10 @@ function processRule(parent: Root | AtRule, selector: string, properties: any) {
                   node.type === "atrule" && node.name === "apply"
               )
               if (existingApply) {
-                const existingClasses = new Set(
-                  existingApply.params.split(/\s+/)
+                existingApply.params = twMerge(
+                  existingApply.params,
+                  atRuleParams
                 )
-                for (const cls of atRuleParams.split(/\s+/)) {
-                  existingClasses.add(cls)
-                }
-                existingApply.params = [...existingClasses].join(" ")
                 continue
               }
             }

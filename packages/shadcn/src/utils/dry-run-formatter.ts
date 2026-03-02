@@ -134,9 +134,7 @@ function formatSummaryOutput(result: DryRunResult, componentNames: string[]) {
 
   // Footer.
   lines.push(`${dim("│")} ${dim("Run with --diff to view changes.")}`)
-  lines.push(
-    `${dim("│")} ${dim("Run with --view to view file contents.")}`
-  )
+  lines.push(`${dim("│")} ${dim("Run with --view to view file contents.")}`)
   lines.push(`${dim("└")} ${dim("Run without --dry-run to apply.")}`)
 
   return lines.join("\n")
