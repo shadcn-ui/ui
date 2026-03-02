@@ -39,8 +39,8 @@ export const addOptionsSchema = z.object({
   path: z.string().optional(),
   silent: z.boolean(),
   dryRun: z.boolean(),
-  diff: z.string().optional(),
-  view: z.string().optional(),
+  diff: z.union([z.string(), z.literal(true)]).optional(),
+  view: z.union([z.string(), z.literal(true)]).optional(),
 })
 
 export const add = new Command()
@@ -58,8 +58,8 @@ export const add = new Command()
   .option("-p, --path <path>", "the path to add the component to.")
   .option("-s, --silent", "mute output.", false)
   .option("--dry-run", "preview changes without writing files.", false)
-  .option("--diff <path>", "show diff for a file.")
-  .option("--view <path>", "show file contents.")
+  .option("--diff [path]", "show diff for a file.")
+  .option("--view [path]", "show file contents.")
   .action(async (components, opts) => {
     try {
       const options = addOptionsSchema.parse({

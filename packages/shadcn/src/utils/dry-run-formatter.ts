@@ -2,6 +2,8 @@ import type { DryRunFile, DryRunResult } from "@/src/utils/dry-run"
 import { diffWords, structuredPatch } from "diff"
 import { bold, cyan, dim, green, red, yellow } from "kleur/colors"
 
+const MAX_OVERVIEW_FILES = 5
+
 const BOX_TOP = dim("┌" + "─".repeat(46))
 const BOX_BOTTOM = dim("└" + "─".repeat(46))
 
@@ -57,17 +59,23 @@ export function formatDryRunResult(
   result: DryRunResult,
   componentNames: string[],
   options: {
-    diff?: string
-    view?: string
+    diff?: string | true
+    view?: string | true
   } = {}
 ) {
   // --diff and --view get a focused output with just the file.
   if (options.diff) {
-    return formatDiffOutput(result, componentNames, options.diff)
+    if (typeof options.diff === "string") {
+      return formatDiffOutput(result, componentNames, options.diff)
+    }
+    return formatDiffOverview(result, componentNames)
   }
 
   if (options.view) {
-    return formatViewOutput(result, componentNames, options.view)
+    if (typeof options.view === "string") {
+      return formatViewOutput(result, componentNames, options.view)
+    }
+    return formatViewOverview(result, componentNames)
   }
 
   return formatSummaryOutput(result, componentNames)
@@ -125,9 +133,9 @@ function formatSummaryOutput(result: DryRunResult, componentNames: string[]) {
   }
 
   // Footer.
-  lines.push(`${dim("│")} ${dim("Run with --diff <path> to view changes.")}`)
+  lines.push(`${dim("│")} ${dim("Run with --diff to view changes.")}`)
   lines.push(
-    `${dim("│")} ${dim("Run with --view <path> to view file contents.")}`
+    `${dim("│")} ${dim("Run with --view to view file contents.")}`
   )
   lines.push(`${dim("└")} ${dim("Run without --dry-run to apply.")}`)
 
@@ -184,6 +192,87 @@ function formatDiffOutput(
   }
 
   lines.push(`${dim("└")} ${dim("Run without --dry-run to apply.")}`)
+
+  return lines.join("\n")
+}
+
+// Overview output for --diff (no path).
+function formatDiffOverview(result: DryRunResult, componentNames: string[]) {
+  const lines: string[] = []
+
+  lines.push(formatHeader(componentNames))
+  lines.push(dim("│"))
+
+  const filesToDiff = result.files.slice(0, MAX_OVERVIEW_FILES)
+
+  if (filesToDiff.length === 0 && !result.css) {
+    lines.push(`${dim("│")} ${dim("No changes.")}`)
+    lines.push(dim("│"))
+  } else {
+    for (const file of filesToDiff) {
+      formatFileDiff(file, lines)
+    }
+
+    const total = result.files.length
+    if (total > MAX_OVERVIEW_FILES) {
+      lines.push(dim("│"))
+    }
+  }
+
+  lines.push(`${dim("└")} ${dim("Run without --dry-run to apply.")}`)
+
+  const total = result.files.length
+  if (total > MAX_OVERVIEW_FILES) {
+    lines.push(
+      `  ${dim(
+        `Showing ${MAX_OVERVIEW_FILES} of ${total} files. Use --diff <path> to view a specific file.`
+      )}`
+    )
+  }
+
+  return lines.join("\n")
+}
+
+// Overview output for --view (no path).
+function formatViewOverview(result: DryRunResult, componentNames: string[]) {
+  const lines: string[] = []
+
+  lines.push(formatHeader(componentNames))
+  lines.push(dim("│"))
+
+  const filesToView = result.files.slice(0, MAX_OVERVIEW_FILES)
+
+  if (filesToView.length === 0 && !result.css) {
+    lines.push(`${dim("│")} ${dim("No files.")}`)
+    lines.push(dim("│"))
+  } else {
+    for (const file of filesToView) {
+      const contentLines = file.content.split("\n")
+      lines.push(
+        `${dim("├")} ${bold(file.path)} ${dim("(")}${colorAction(
+          file.action
+        )}${dim(")")} ${dim(`${contentLines.length} lines`)}`
+      )
+      pushContentBox(lines, contentLines)
+      lines.push(dim("│"))
+    }
+
+    const total = result.files.length
+    if (total > MAX_OVERVIEW_FILES) {
+      lines.push(dim("│"))
+    }
+  }
+
+  lines.push(`${dim("└")} ${dim("Run without --dry-run to apply.")}`)
+
+  const total = result.files.length
+  if (total > MAX_OVERVIEW_FILES) {
+    lines.push(
+      `  ${dim(
+        `Showing ${MAX_OVERVIEW_FILES} of ${total} files. Use --view <path> to view a specific file.`
+      )}`
+    )
+  }
 
   return lines.join("\n")
 }

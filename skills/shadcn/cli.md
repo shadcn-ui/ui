@@ -59,8 +59,8 @@ Accepts component names, registry-prefixed names (`@magicui/shimmer-button`), UR
 | `--path <path>` | `-p` | Target path for the component | — |
 | `--silent` | `-s` | Mute output | `false` |
 | `--dry-run` | | Preview all changes without writing files | `false` |
-| `--diff <path>` | | Show the diff for a specific file (implies `--dry-run`) | — |
-| `--view <path>` | | Show the full content of a specific file (implies `--dry-run`) | — |
+| `--diff [path]` | | Show diffs. Without a path, shows the first 5 files. With a path, shows that file only (implies `--dry-run`) | — |
+| `--view [path]` | | Show file contents. Without a path, shows the first 5 files. With a path, shows that file only (implies `--dry-run`) | — |
 
 #### Dry-Run Mode
 
@@ -70,8 +70,14 @@ Use `--dry-run` to preview what `add` would do without writing any files. `--dif
 # Preview all changes.
 shadcn add button --dry-run
 
+# Show diffs for all files (top 5).
+shadcn add button --diff
+
 # Show the diff for a specific file.
 shadcn add button --diff button.tsx
+
+# Show contents for all files (top 5).
+shadcn add button --view
 
 # Show the full content of a specific file.
 shadcn add button --view button.tsx
