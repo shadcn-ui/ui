@@ -2357,6 +2357,96 @@
       "type": "registry:block"
     },
     {
+      "name": "chart-composed-default",
+      "registryDependencies": [
+        "card",
+        "chart"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/charts/chart-composed-default.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "categories": [
+        "charts",
+        "charts-composed"
+      ],
+      "type": "registry:block"
+    },
+    {
+      "name": "chart-composed-revenue",
+      "registryDependencies": [
+        "card",
+        "chart"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/charts/chart-composed-revenue.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "categories": [
+        "charts",
+        "charts-composed"
+      ],
+      "type": "registry:block"
+    },
+    {
+      "name": "chart-composed-weather",
+      "registryDependencies": [
+        "card",
+        "chart"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/charts/chart-composed-weather.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "categories": [
+        "charts",
+        "charts-composed"
+      ],
+      "type": "registry:block"
+    },
+    {
+      "name": "chart-composed-performance",
+      "registryDependencies": [
+        "card",
+        "chart"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/charts/chart-composed-performance.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "categories": [
+        "charts",
+        "charts-composed"
+      ],
+      "type": "registry:block"
+    },
+    {
+      "name": "chart-composed-stacked",
+      "registryDependencies": [
+        "card",
+        "chart"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/charts/chart-composed-stacked.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "categories": [
+        "charts",
+        "charts-composed"
+      ],
+      "type": "registry:block"
+    },
+    {
       "name": "utils",
       "dependencies": ["clsx", "tailwind-merge"],
       "files": [

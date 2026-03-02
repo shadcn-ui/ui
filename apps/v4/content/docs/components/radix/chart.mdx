@@ -571,6 +571,38 @@ const chartConfig = {
 
 This will use `Chrome` and `Safari` for the legend names.
 
+## Composed Charts
+
+A composed chart combines multiple chart types — such as `Area`, `Bar`, and `Line` — into a single `ComposedChart`. This is useful when you need to visualize related datasets that have different scales or units on the same graph.
+
+```tsx
+import { Area, Bar, ComposedChart, Line, XAxis, YAxis } from "recharts"
+
+import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
+```
+
+```tsx
+<ChartContainer config={chartConfig}>
+  <ComposedChart accessibilityLayer data={data}>
+    <XAxis dataKey="month" />
+    <YAxis yAxisId="left" />
+    <YAxis yAxisId="right" orientation="right" />
+    <ChartTooltip content={<ChartTooltipContent />} />
+    <Area yAxisId="left" dataKey="visitors" />
+    <Bar yAxisId="left" dataKey="signups" />
+    <Line yAxisId="right" dataKey="retention" />
+  </ComposedChart>
+</ChartContainer>
+```
+
+Key points when using `ComposedChart`:
+
+- Use multiple `<YAxis>` components with `yAxisId` when your series have different scales (e.g. raw counts vs percentages).
+- Assign the matching `yAxisId` prop to each `Area`, `Bar`, or `Line`.
+- Layer order matters — components rendered later appear on top.
+
+[Browse the Composed Charts gallery](/charts/composed).
+
 ## Accessibility
 
 You can turn on the `accessibilityLayer` prop to add an accessible layer to your chart.

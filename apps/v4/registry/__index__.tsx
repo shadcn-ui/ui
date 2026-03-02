@@ -3216,6 +3216,101 @@ export const Index: Record<string, Record<string, any>> = {
       categories: ["charts","charts-tooltip"],
       meta: undefined,
     },
+    "chart-composed-default": {
+      name: "chart-composed-default",
+      title: "undefined",
+      description: "",
+      type: "registry:block",
+      registryDependencies: ["card","chart"],
+      files: [{
+        path: "registry/new-york-v4/charts/chart-composed-default.tsx",
+        type: "registry:block",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/new-york-v4/charts/chart-composed-default.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: ["charts","charts-composed"],
+      meta: undefined,
+    },
+    "chart-composed-revenue": {
+      name: "chart-composed-revenue",
+      title: "undefined",
+      description: "",
+      type: "registry:block",
+      registryDependencies: ["card","chart"],
+      files: [{
+        path: "registry/new-york-v4/charts/chart-composed-revenue.tsx",
+        type: "registry:block",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/new-york-v4/charts/chart-composed-revenue.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: ["charts","charts-composed"],
+      meta: undefined,
+    },
+    "chart-composed-weather": {
+      name: "chart-composed-weather",
+      title: "undefined",
+      description: "",
+      type: "registry:block",
+      registryDependencies: ["card","chart"],
+      files: [{
+        path: "registry/new-york-v4/charts/chart-composed-weather.tsx",
+        type: "registry:block",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/new-york-v4/charts/chart-composed-weather.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: ["charts","charts-composed"],
+      meta: undefined,
+    },
+    "chart-composed-performance": {
+      name: "chart-composed-performance",
+      title: "undefined",
+      description: "",
+      type: "registry:block",
+      registryDependencies: ["card","chart"],
+      files: [{
+        path: "registry/new-york-v4/charts/chart-composed-performance.tsx",
+        type: "registry:block",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/new-york-v4/charts/chart-composed-performance.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: ["charts","charts-composed"],
+      meta: undefined,
+    },
+    "chart-composed-stacked": {
+      name: "chart-composed-stacked",
+      title: "undefined",
+      description: "",
+      type: "registry:block",
+      registryDependencies: ["card","chart"],
+      files: [{
+        path: "registry/new-york-v4/charts/chart-composed-stacked.tsx",
+        type: "registry:block",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/new-york-v4/charts/chart-composed-stacked.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: ["charts","charts-composed"],
+      meta: undefined,
+    },
     "utils": {
       name: "utils",
       title: "undefined",

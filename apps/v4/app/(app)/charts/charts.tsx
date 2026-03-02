@@ -70,6 +70,11 @@ import { ChartTooltipIndicatorNone } from "@/registry/new-york-v4/charts/chart-t
 import { ChartTooltipLabelCustom } from "@/registry/new-york-v4/charts/chart-tooltip-label-custom"
 import { ChartTooltipLabelFormatter } from "@/registry/new-york-v4/charts/chart-tooltip-label-formatter"
 import { ChartTooltipLabelNone } from "@/registry/new-york-v4/charts/chart-tooltip-label-none"
+import { ChartComposedDefault } from "@/registry/new-york-v4/charts/chart-composed-default"
+import { ChartComposedRevenue } from "@/registry/new-york-v4/charts/chart-composed-revenue"
+import { ChartComposedWeather } from "@/registry/new-york-v4/charts/chart-composed-weather"
+import { ChartComposedPerformance } from "@/registry/new-york-v4/charts/chart-composed-performance"
+import { ChartComposedStacked } from "@/registry/new-york-v4/charts/chart-composed-stacked"
 
 type ChartComponent = React.ComponentType
 
@@ -87,6 +92,7 @@ interface ChartGroups {
   radar: ChartItem[]
   radial: ChartItem[]
   tooltip: ChartItem[]
+  composed: ChartItem[]
 }
 
 export const charts: ChartGroups = {
@@ -198,6 +204,13 @@ export const charts: ChartGroups = {
     { id: "chart-tooltip-icons", component: ChartTooltipIcons },
     { id: "chart-tooltip-advanced", component: ChartTooltipAdvanced },
   ],
+  composed: [
+    { id: "chart-composed-default", component: ChartComposedDefault },
+    { id: "chart-composed-revenue", component: ChartComposedRevenue },
+    { id: "chart-composed-weather", component: ChartComposedWeather },
+    { id: "chart-composed-performance", component: ChartComposedPerformance },
+    { id: "chart-composed-stacked", component: ChartComposedStacked },
+  ],
 }
 
 // Export individual components for backward compatibility
@@ -272,4 +285,9 @@ export {
   ChartTooltipFormatter,
   ChartTooltipIcons,
   ChartTooltipAdvanced,
+  ChartComposedDefault,
+  ChartComposedRevenue,
+  ChartComposedWeather,
+  ChartComposedPerformance,
+  ChartComposedStacked,
 }
