@@ -11,9 +11,8 @@ export async function resolveImport(
     try {
       // @ts-ignore
       const resolved = import.meta.resolve(importPath, import.meta.url)
-      if(resolved) return resolved;
-    }
-    catch {
+      if (resolved) return resolved
+    } catch {
       // If native resolution fails, fallback to manual resolution.
     }
 

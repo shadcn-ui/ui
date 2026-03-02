@@ -716,8 +716,7 @@ export function toAliasedImport(
     aliasKey === "cwd"
       ? projectInfo.aliasPrefix?.startsWith("#")
       : config.aliases[aliasKey as keyof typeof config.aliases]?.startsWith("#")
-  const keepExt =
-    codeExts.includes(ext) && !isSubpathImport ? "" : ext
+  const keepExt = codeExts.includes(ext) && !isSubpathImport ? "" : ext
   let noExt = rel.slice(0, rel.length - ext.length)
 
   // 4️⃣ Collapse "/index" to its directory
