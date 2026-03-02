@@ -326,36 +326,36 @@ export default function SidebarIconExample() {
                   key={item.title}
                   defaultOpen={item.isActive}
                   className="group/collapsible"
-                  render={<SidebarMenuItem />}
                 >
-                  <SidebarMenuButton
-                    tooltip={item.title}
-                    render={<CollapsibleTrigger />}
-                  >
-                    {item.icon}
-                    <span>{item.title}</span>
-                    <IconPlaceholder
-                      lucide="ChevronRightIcon"
-                      tabler="IconChevronRight"
-                      hugeicons="ArrowRight01Icon"
-                      phosphor="CaretRightIcon"
-                      remixicon="RiArrowRightSLine"
-                      className="ml-auto transition-transform duration-100 group-data-open/collapsible:rotate-90"
-                    />
-                  </SidebarMenuButton>
-                  <CollapsibleContent>
-                    <SidebarMenuSub>
-                      {item.items?.map((subItem) => (
-                        <SidebarMenuSubItem key={subItem.title}>
-                          <SidebarMenuSubButton
-                            render={<a href={subItem.url} />}
-                          >
-                            {subItem.title}
-                          </SidebarMenuSubButton>
-                        </SidebarMenuSubItem>
-                      ))}
-                    </SidebarMenuSub>
-                  </CollapsibleContent>
+                  <SidebarMenuItem>
+                    <CollapsibleTrigger
+                      render={<SidebarMenuButton tooltip={item.title} />}
+                    >
+                      {item.icon}
+                      <span>{item.title}</span>
+                      <IconPlaceholder
+                        lucide="ChevronRightIcon"
+                        tabler="IconChevronRight"
+                        hugeicons="ArrowRight01Icon"
+                        phosphor="CaretRightIcon"
+                        remixicon="RiArrowRightSLine"
+                        className="ml-auto transition-transform duration-100 group-data-open/collapsible:rotate-90"
+                      />
+                    </CollapsibleTrigger>
+                    <CollapsibleContent>
+                      <SidebarMenuSub>
+                        {item.items?.map((subItem) => (
+                          <SidebarMenuSubItem key={subItem.title}>
+                            <SidebarMenuSubButton
+                              render={<a href={subItem.url} />}
+                            >
+                              {subItem.title}
+                            </SidebarMenuSubButton>
+                          </SidebarMenuSubItem>
+                        ))}
+                      </SidebarMenuSub>
+                    </CollapsibleContent>
+                  </SidebarMenuItem>
                 </Collapsible>
               ))}
             </SidebarMenu>
