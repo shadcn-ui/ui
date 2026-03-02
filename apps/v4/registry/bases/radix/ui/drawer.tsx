@@ -59,7 +59,17 @@ function DrawerContent({
         {...props}
       >
         <div className="cn-drawer-handle mx-auto hidden shrink-0 group-data-[vaul-drawer-direction=bottom]/drawer-content:block" />
-        {children}
+        <div
+          className="contents"
+          onPointerDown={(e) => {
+            const target = e.target as HTMLElement
+            if (target.closest("input, textarea, select, [contenteditable]")) {
+              e.stopPropagation()
+            }
+          }}
+        >
+          {children}
+        </div>
       </DrawerPrimitive.Content>
     </DrawerPortal>
   )
