@@ -128,7 +128,7 @@ export function IconPreviewGrid() {
           {PREVIEW_ICONS.map((icon, index) => (
             <Card
               key={index}
-              className="ring-border flex size-8 items-center justify-center rounded-md p-0 ring *:[svg]:size-4"
+              className="flex size-8 items-center justify-center rounded-md p-0 ring ring-border *:[svg]:size-4"
             >
               <IconPlaceholder
                 lucide={icon.lucide}

@@ -213,14 +213,14 @@ export function CodespacesCard() {
                 </Button>
                 <a
                   href="#learn-more"
-                  className="text-muted-foreground text-xs underline underline-offset-4"
+                  className="text-xs text-muted-foreground underline underline-offset-4"
                 >
                   Learn more about codespaces
                 </a>
               </EmptyContent>
             </Empty>
             <Separator className="-mx-2 my-2 w-auto!" />
-            <div className="text-muted-foreground p-1.5 text-xs">
+            <div className="p-1.5 text-xs text-muted-foreground">
               Codespace usage for this repository is paid for by{" "}
               <span className="font-medium">shadcn</span>.
             </div>
@@ -268,7 +268,7 @@ export function CodespacesCard() {
                 <TabsTrigger value="ssh">SSH</TabsTrigger>
                 <TabsTrigger value="cli">GitHub CLI</TabsTrigger>
               </TabsList>
-              <div className="bg-muted/30 rounded-md border p-2">
+              <div className="rounded-md border bg-muted/30 p-2">
                 <TabsContent value="https">
                   <Field className="gap-2">
                     <FieldLabel htmlFor="https-url" className="sr-only">

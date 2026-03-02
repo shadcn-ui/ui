@@ -28,11 +28,11 @@ export function ResetButton() {
           render={
             <Button
               variant="ghost"
-              className="border-foreground/10 bg-muted/50 flex h-[calc(--spacing(13.5))] w-[140px] touch-manipulation justify-between rounded-xl border select-none focus-visible:border-transparent focus-visible:ring-1 sm:hidden"
+              className="flex h-[calc(--spacing(13.5))] w-[140px] touch-manipulation justify-between rounded-xl border border-foreground/10 bg-muted/50 select-none focus-visible:border-transparent focus-visible:ring-1 sm:hidden"
             >
               <div className="flex flex-col justify-start text-left">
-                <div className="text-muted-foreground text-xs">Reset</div>
-                <div className="text-foreground text-sm font-medium">
+                <div className="text-xs text-muted-foreground">Reset</div>
+                <div className="text-sm font-medium text-foreground">
                   Start Over
                 </div>
               </div>

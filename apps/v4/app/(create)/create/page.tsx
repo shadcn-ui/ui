@@ -69,7 +69,7 @@ export default async function CreatePage() {
   return (
     <div
       data-slot="layout"
-      className="section-soft relative z-10 flex min-h-svh flex-col"
+      className="relative z-10 flex min-h-svh flex-col section-soft"
     >
       <main className="flex flex-1 flex-col pb-16 sm:pb-0">
         <SidebarProvider className="flex h-auto min-h-min flex-1 flex-col items-start overflow-hidden px-0">

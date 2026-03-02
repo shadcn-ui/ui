@@ -88,7 +88,7 @@ export function SleepReport() {
           ].map((s) => (
             <div key={s.label} className="text-center">
               <div className="text-sm font-medium tabular-nums">{s.value}</div>
-              <div className="text-muted-foreground text-xs">{s.label}</div>
+              <div className="text-xs text-muted-foreground">{s.label}</div>
             </div>
           ))}
         </div>

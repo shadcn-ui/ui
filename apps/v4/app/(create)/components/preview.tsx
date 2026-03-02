@@ -122,7 +122,7 @@ export function Preview() {
   return (
     <div className="relative -mx-1 flex flex-1 flex-col justify-center sm:mx-0">
       <div className="relative z-0 mx-auto flex w-full flex-1 flex-col overflow-hidden">
-        <div className="bg-muted dark:bg-muted/30 absolute inset-0" />
+        <div className="absolute inset-0 bg-muted dark:bg-muted/30" />
         <iframe
           key={params.base + params.item}
           ref={iframeRef}

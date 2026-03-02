@@ -9,7 +9,7 @@ export function Shortcuts() {
         <div className="flex flex-col gap-3">
           <div className="text-sm font-medium">Shortcuts</div>
           <div className="flex flex-col gap-2">
-            <div className="text-muted-foreground flex items-center justify-between text-sm">
+            <div className="flex items-center justify-between text-sm text-muted-foreground">
               <span>Search</span>
               <div className="flex gap-1">
                 <Kbd>⌘</Kbd>
@@ -17,7 +17,7 @@ export function Shortcuts() {
               </div>
             </div>
             <Separator />
-            <div className="text-muted-foreground flex items-center justify-between text-sm">
+            <div className="flex items-center justify-between text-sm text-muted-foreground">
               <span>Quick Actions</span>
               <div className="flex gap-1">
                 <Kbd>⌘</Kbd>
@@ -25,7 +25,7 @@ export function Shortcuts() {
               </div>
             </div>
             <Separator />
-            <div className="text-muted-foreground flex items-center justify-between text-sm">
+            <div className="flex items-center justify-between text-sm text-muted-foreground">
               <span>New File</span>
               <div className="flex gap-1">
                 <Kbd>⌘</Kbd>
@@ -33,7 +33,7 @@ export function Shortcuts() {
               </div>
             </div>
             <Separator />
-            <div className="text-muted-foreground flex items-center justify-between text-sm">
+            <div className="flex items-center justify-between text-sm text-muted-foreground">
               <span>Save</span>
               <div className="flex gap-1">
                 <Kbd>⌘</Kbd>
@@ -41,7 +41,7 @@ export function Shortcuts() {
               </div>
             </div>
             <Separator />
-            <div className="text-muted-foreground flex items-center justify-between text-sm">
+            <div className="flex items-center justify-between text-sm text-muted-foreground">
               <span>Toggle Sidebar</span>
               <div className="flex gap-1">
                 <Kbd>⌘</Kbd>

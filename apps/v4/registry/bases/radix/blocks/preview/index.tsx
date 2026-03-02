@@ -35,9 +35,9 @@ import { WeeklyFitnessSummary } from "@/registry/bases/radix/blocks/preview/card
 
 export default function PreviewExample() {
   return (
-    <div className="3xl:[--gap:--spacing(12)] overflow-x-auto overflow-y-hidden contain-[paint] [--gap:--spacing(10)]">
+    <div className="overflow-x-auto overflow-y-hidden contain-[paint] [--gap:--spacing(10)] 3xl:[--gap:--spacing(12)]">
       <div
-        className="bg-muted dark:bg-background grid w-[3000px] grid-cols-7 items-start gap-(--gap) p-(--gap) *:[div]:gap-(--gap)"
+        className="grid w-[3000px] grid-cols-7 items-start gap-(--gap) bg-muted p-(--gap) dark:bg-background *:[div]:gap-(--gap)"
         data-slot="capture-target"
       >
         <div className="hidden flex-col lg:flex">

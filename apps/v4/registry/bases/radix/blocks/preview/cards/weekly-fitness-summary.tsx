@@ -32,12 +32,12 @@ export function WeeklyFitnessSummary() {
           {FITNESS_WEEKLY_LOAD.map((day, index) => (
             <div
               key={`${day.day}-${index}`}
-              className="ring-border rounded-md p-1.5 text-center ring"
+              className="rounded-md p-1.5 text-center ring ring-border"
             >
-              <div className="text-muted-foreground text-sm">{day.day}</div>
-              <div className="bg-muted relative mt-1 h-16 overflow-hidden rounded-sm">
+              <div className="text-sm text-muted-foreground">{day.day}</div>
+              <div className="relative mt-1 h-16 overflow-hidden rounded-sm bg-muted">
                 <div
-                  className="bg-chart-3 absolute inset-x-0 bottom-0 rounded-sm"
+                  className="absolute inset-x-0 bottom-0 rounded-sm bg-chart-3"
                   style={
                     {
                       height: `${day.load}%`,

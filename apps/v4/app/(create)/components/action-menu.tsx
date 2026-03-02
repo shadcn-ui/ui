@@ -83,7 +83,7 @@ const comboboxTriggerButton = (
   <Button
     variant="outline"
     aria-label="Select item"
-    className="data-popup-open:bg-muted dark:data-popup-open:bg-muted/50 bg-muted/50 sm:bg-background md:dark:bg-background border-foreground/10 dark:bg-muted/50 h-[calc(--spacing(13.5))] w-full flex-1 touch-manipulation justify-between gap-2 rounded-xl pr-4! pl-2.5 text-left shadow-none select-none *:data-[slot=combobox-trigger-icon]:hidden sm:h-8 sm:rounded-lg sm:pr-2!"
+    className="h-[calc(--spacing(13.5))] w-full flex-1 touch-manipulation justify-between gap-2 rounded-xl border-foreground/10 bg-muted/50 pr-4! pl-2.5 text-left shadow-none select-none data-popup-open:bg-muted *:data-[slot=combobox-trigger-icon]:hidden sm:h-8 sm:rounded-lg sm:bg-background sm:pr-2! dark:bg-muted/50 dark:data-popup-open:bg-muted/50 md:dark:bg-background"
   />
 )
 
@@ -293,7 +293,7 @@ export function ActionMenu({
     >
       <ComboboxTrigger render={comboboxTriggerButton}>
         <ComboboxValue>
-          <span className="text-muted-foreground flex-1 text-sm">
+          <span className="flex-1 text-sm text-muted-foreground">
             Quick actions...
           </span>
         </ComboboxValue>

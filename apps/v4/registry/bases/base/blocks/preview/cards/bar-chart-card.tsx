@@ -109,9 +109,9 @@ export function BarChartCard() {
         </ChartContainer>
       </CardContent>
       <CardFooter>
-        <div className="divide-border/60 grid w-full grid-cols-3 divide-x">
+        <div className="grid w-full grid-cols-3 divide-x divide-border/60">
           <div className="px-2 text-center">
-            <div className="text-muted-foreground text-[0.65rem] uppercase">
+            <div className="text-[0.65rem] text-muted-foreground uppercase">
               Desktop
             </div>
             <div className="text-sm font-medium tabular-nums">
@@ -119,7 +119,7 @@ export function BarChartCard() {
             </div>
           </div>
           <div className="px-2 text-center">
-            <div className="text-muted-foreground text-[0.65rem] uppercase">
+            <div className="text-[0.65rem] text-muted-foreground uppercase">
               Mobile
             </div>
             <div className="text-sm font-medium tabular-nums">
@@ -127,7 +127,7 @@ export function BarChartCard() {
             </div>
           </div>
           <div className="px-2 text-center">
-            <div className="text-muted-foreground text-[0.65rem] uppercase">
+            <div className="text-[0.65rem] text-muted-foreground uppercase">
               Mix Delta
             </div>
             <div className="text-sm font-medium tabular-nums">

@@ -121,7 +121,7 @@ export function CardsTeamMembers() {
                                 <span className="text-sm font-medium">
                                   {role.name}
                                 </span>
-                                <span className="text-muted-foreground text-sm">
+                                <span className="text-sm text-muted-foreground">
                                   {role.description}
                                 </span>
                               </div>

@@ -384,7 +384,7 @@ const BarVisualizerComponent = React.forwardRef<
         className={cn(
           "relative flex justify-center gap-1.5",
           centerAlign ? "items-center" : "items-end",
-          "bg-muted h-32 w-full overflow-hidden rounded-lg p-4",
+          "h-32 w-full overflow-hidden rounded-lg bg-muted p-4",
           className
         )}
         style={{

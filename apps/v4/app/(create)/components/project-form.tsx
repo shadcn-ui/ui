@@ -187,10 +187,10 @@ export function ProjectForm() {
             </Field>
           </FieldLabel>
         </FieldGroup>
-        <DialogFooter className="bg-muted/30 -mx-6 mt-2 -mb-6 flex min-w-0 flex-col gap-3 border-t p-6 sm:flex-col">
+        <DialogFooter className="-mx-6 mt-2 -mb-6 flex min-w-0 flex-col gap-3 border-t bg-muted/30 p-6 sm:flex-col">
           {isLaravel && (
             <div className="flex flex-col gap-2">
-              <p className="text-muted-foreground text-sm">
+              <p className="text-sm text-muted-foreground">
                 <a
                   href="https://laravel.com/docs#creating-a-laravel-project"
                   className="text-foreground underline"
@@ -201,7 +201,7 @@ export function ProjectForm() {
                 </a>
                 , then run the following command.
               </p>
-              <div className="bg-surface min-w-0 overflow-hidden rounded-lg border">
+              <div className="min-w-0 overflow-hidden rounded-lg border bg-surface">
                 <div className="flex items-center py-1.5 pr-1.5 pl-3">
                   <div className="no-scrollbar min-w-0 flex-1 overflow-x-auto">
                     <code className="font-mono text-sm whitespace-nowrap">
@@ -239,10 +239,10 @@ export function ProjectForm() {
                 packageManager: value as "pnpm" | "npm" | "yarn" | "bun",
               })
             }}
-            className="bg-surface min-w-0 gap-0 overflow-hidden rounded-lg border"
+            className="min-w-0 gap-0 overflow-hidden rounded-lg border bg-surface"
           >
             <div className="flex items-center gap-2 px-1.5 py-1">
-              <TabsList className="*:data-[slot=tabs-trigger]:data-[state=active]:border-input h-auto rounded-none bg-transparent p-0 font-mono group-data-[orientation=horizontal]/tabs:h-8 *:data-[slot=tabs-trigger]:h-7 *:data-[slot=tabs-trigger]:border *:data-[slot=tabs-trigger]:border-transparent *:data-[slot=tabs-trigger]:pt-0.5 *:data-[slot=tabs-trigger]:shadow-none!">
+              <TabsList className="h-auto rounded-none bg-transparent p-0 font-mono group-data-[orientation=horizontal]/tabs:h-8 *:data-[slot=tabs-trigger]:h-7 *:data-[slot=tabs-trigger]:border *:data-[slot=tabs-trigger]:border-transparent *:data-[slot=tabs-trigger]:pt-0.5 *:data-[slot=tabs-trigger]:shadow-none! *:data-[slot=tabs-trigger]:data-[state=active]:border-input">
                 <TabsTrigger value="pnpm">pnpm</TabsTrigger>
                 <TabsTrigger value="npm">npm</TabsTrigger>
                 <TabsTrigger value="yarn">yarn</TabsTrigger>
@@ -265,7 +265,7 @@ export function ProjectForm() {
             {Object.entries(commands).map(([key, cmd]) => {
               return (
                 <TabsContent key={key} value={key}>
-                  <div className="bg-surface border-border/50 text-surface-foreground relative overflow-hidden border-t px-3 py-3">
+                  <div className="relative overflow-hidden border-t border-border/50 bg-surface px-3 py-3 text-surface-foreground">
                     <div className="no-scrollbar overflow-x-auto">
                       <code className="font-mono text-sm whitespace-nowrap">
                         {cmd}
@@ -323,12 +323,12 @@ function TemplateGrid({
               )}
             >
               <div
-                className="text-foreground *:[svg]:text-foreground! size-5 *:[svg]:size-5"
+                className="size-5 text-foreground *:[svg]:size-5 *:[svg]:text-foreground!"
                 dangerouslySetInnerHTML={{
                   __html: template.logo,
                 }}
               />
-              <span className="text-foreground text-xs font-medium">
+              <span className="text-xs font-medium text-foreground">
                 {template.title}
               </span>
             </button>

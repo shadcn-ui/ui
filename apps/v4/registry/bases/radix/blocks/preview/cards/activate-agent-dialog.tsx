@@ -76,11 +76,11 @@ export function ActivateAgentDialog() {
                   hugeicons="CheckmarkCircle02Icon"
                   phosphor="CheckCircleIcon"
                   remixicon="RiCheckboxCircleLine"
-                  className="fill-primary text-primary-foreground size-5"
+                  className="size-5 fill-primary text-primary-foreground"
                 />
               </ItemMedia>
               <ItemContent>
-                <ItemTitle className="text-muted-foreground *:[strong]:text-foreground inline leading-relaxed font-normal *:[strong]:font-medium">
+                <ItemTitle className="inline leading-relaxed font-normal text-muted-foreground *:[strong]:font-medium *:[strong]:text-foreground">
                   {feature.content}
                 </ItemTitle>
               </ItemContent>

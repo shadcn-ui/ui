@@ -27,7 +27,7 @@ export function StyleOverview() {
           <div className="text-2xl font-medium">
             {currentStyle?.title} - {currentFont?.name}
           </div>
-          <div className="text-muted-foreground line-clamp-2 text-base">
+          <div className="line-clamp-2 text-base text-muted-foreground">
             Designers love packing quirky glyphs into test phrases. This is a
             preview of the typography styles.
           </div>
@@ -52,7 +52,7 @@ export function StyleOverview() {
               className="flex flex-col flex-wrap items-center gap-2"
             >
               <div
-                className="after:border-border relative aspect-square w-full rounded-lg bg-(--color) after:absolute after:inset-0 after:rounded-lg after:border after:mix-blend-darken dark:after:mix-blend-lighten"
+                className="relative aspect-square w-full rounded-lg bg-(--color) after:absolute after:inset-0 after:rounded-lg after:border after:border-border after:mix-blend-darken dark:after:mix-blend-lighten"
                 style={
                   {
                     "--color": `var(${variant})`,
