@@ -100,8 +100,8 @@ export async function dryRunComponents(
   }
 
   // Dependencies pass through deduplicated.
-  result.dependencies = [...new Set(tree.dependencies ?? [])]
-  result.devDependencies = [...new Set(tree.devDependencies ?? [])]
+  result.dependencies = Array.from(new Set(tree.dependencies ?? []))
+  result.devDependencies = Array.from(new Set(tree.devDependencies ?? []))
 
   // Docs pass through directly.
   result.docs = tree.docs ?? null

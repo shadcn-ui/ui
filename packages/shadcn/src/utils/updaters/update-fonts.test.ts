@@ -1195,7 +1195,7 @@ describe("massageTreeForFonts", () => {
       resolvedPaths: { cwd: "/test" },
     } as any)
 
-    expect(result.css["@layer base"].body).toEqual({
+    expect(result.css!["@layer base"].body).toEqual({
       "@apply font-sans": {},
     })
   })
@@ -1231,7 +1231,7 @@ describe("massageTreeForFonts", () => {
       resolvedPaths: { cwd: "/test" },
     } as any)
 
-    expect(result.css["@layer base"].body).toEqual({
+    expect(result.css!["@layer base"].body).toEqual({
       "@apply bg-background text-foreground font-sans": {},
     })
   })
@@ -1275,7 +1275,7 @@ describe("massageTreeForFonts", () => {
       resolvedPaths: { cwd: "/test" },
     } as any)
 
-    expect(result.css["@layer base"].body).toEqual({
+    expect(result.css!["@layer base"].body).toEqual({
       "@apply bg-background text-foreground font-sans font-serif": {},
     })
   })
