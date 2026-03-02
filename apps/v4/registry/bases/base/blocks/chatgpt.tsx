@@ -185,7 +185,7 @@ function PromptForm() {
                     />
                     <TooltipContent side="right">
                       <div className="font-medium">35 left</div>
-                      <div className="text-primary-foreground/80 text-xs">
+                      <div className="text-xs text-primary-foreground/80">
                         More available for purchase
                       </div>
                     </TooltipContent>
@@ -309,12 +309,12 @@ function ModelSelector() {
             hugeicons="ArrowDown01Icon"
             phosphor="CaretDownIcon"
             remixicon="RiArrowDownSLine"
-            className="text-muted-foreground size-4"
+            className="size-4 text-muted-foreground"
           />
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-60" align="start">
           <DropdownMenuGroup>
-            <DropdownMenuLabel className="text-muted-foreground text-xs font-normal">
+            <DropdownMenuLabel className="text-xs font-normal text-muted-foreground">
               GPT-5.1
             </DropdownMenuLabel>
             <DropdownMenuRadioGroup value={mode} onValueChange={setMode}>
@@ -399,7 +399,7 @@ function GroupChatDialog() {
           <AlertDialogFooter className="flex-row items-center justify-between sm:justify-between">
             <a
               href="#"
-              className="text-muted-foreground hover:text-foreground text-sm underline underline-offset-4"
+              className="text-sm text-muted-foreground underline underline-offset-4 hover:text-foreground"
             >
               Learn more
             </a>
@@ -569,7 +569,7 @@ function CreateProjectForm() {
                               setSelectedColor(color)
                             }}
                           >
-                            <span className="group-data-[checked=true]/button:ring-offset-background size-5 rounded-full bg-(--color) ring-2 ring-transparent ring-offset-2 ring-offset-(--color) group-data-[checked=true]/button:ring-(--color)" />
+                            <span className="size-5 rounded-full bg-(--color) ring-2 ring-transparent ring-offset-2 ring-offset-(--color) group-data-[checked=true]/button:ring-(--color) group-data-[checked=true]/button:ring-offset-background" />
                             <span className="sr-only">{color}</span>
                           </Button>
                         ))}

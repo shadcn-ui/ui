@@ -51,7 +51,7 @@ export function ItemExplorer({
       className="sticky z-30 hidden h-[calc(100svh-var(--header-height)-2rem)] overscroll-none bg-transparent xl:flex"
       collapsible="none"
     >
-      <SidebarContent className="no-scrollbar -mx-1 overflow-x-hidden">
+      <SidebarContent className="-mx-1 no-scrollbar overflow-x-hidden">
         {groupedItems.map((group) => (
           <Collapsible
             key={group.type}
@@ -60,26 +60,26 @@ export function ItemExplorer({
           >
             <SidebarGroup className="px-1 py-0">
               <CollapsibleTrigger className="flex w-full items-center gap-1 py-1.5 text-[0.8rem] font-medium [&[data-state=open]>svg]:rotate-90">
-                <ChevronRightIcon className="text-muted-foreground size-3.5 transition-transform" />
+                <ChevronRightIcon className="size-3.5 text-muted-foreground transition-transform" />
                 <span>{group.title}</span>
               </CollapsibleTrigger>
               <CollapsibleContent>
                 <SidebarGroupContent>
-                  <SidebarMenu className="border-border/50 relative ml-1.5 border-l pl-2">
+                  <SidebarMenu className="relative ml-1.5 border-l border-border/50 pl-2">
                     {group.items.map((item, index) => (
                       <SidebarMenuItem key={item.name} className="relative">
                         <div
                           className={cn(
-                            "border-border/50 absolute top-1/2 -left-2 h-px w-2 border-t",
+                            "absolute top-1/2 -left-2 h-px w-2 border-t border-border/50",
                             index === group.items.length - 1 && "bg-sidebar"
                           )}
                         />
                         {index === group.items.length - 1 && (
-                          <div className="bg-sidebar absolute top-1/2 -bottom-1 -left-2.5 w-1" />
+                          <div className="absolute top-1/2 -bottom-1 -left-2.5 w-1 bg-sidebar" />
                         )}
                         <SidebarMenuButton
                           onClick={() => setParams({ item: item.name })}
-                          className="data-[active=true]:bg-accent data-[active=true]:border-accent 3xl:fixed:w-full 3xl:fixed:max-w-48 relative h-[26px] w-fit cursor-pointer overflow-visible border border-transparent text-[0.8rem] font-normal after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md"
+                          className="relative h-[26px] w-fit cursor-pointer overflow-visible border border-transparent text-[0.8rem] font-normal after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md data-[active=true]:border-accent data-[active=true]:bg-accent 3xl:fixed:w-full 3xl:fixed:max-w-48"
                           data-active={item.name === currentItem?.name}
                           isActive={item.name === currentItem?.name}
                         >

@@ -62,13 +62,13 @@ export function NavigationMenuDemo() {
                 <li className="row-span-3">
                   <NavigationMenuLink asChild>
                     <a
-                      className="from-muted/50 to-muted flex h-full w-full flex-col justify-end rounded-md bg-linear-to-b p-6 no-underline outline-hidden select-none focus:shadow-md"
+                      className="flex h-full w-full flex-col justify-end rounded-md bg-linear-to-b from-muted/50 to-muted p-6 no-underline outline-hidden select-none focus:shadow-md"
                       href="/"
                     >
                       <div className="mt-4 mb-2 text-lg font-medium">
                         shadcn/ui
                       </div>
-                      <p className="text-muted-foreground text-sm leading-tight">
+                      <p className="text-sm leading-tight text-muted-foreground">
                         Beautifully designed components built with Tailwind CSS.
                       </p>
                     </a>
@@ -217,7 +217,7 @@ function ListItem({
       <NavigationMenuLink asChild>
         <Link href={href}>
           <div className="text-sm leading-none font-medium">{title}</div>
-          <p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
+          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
             {children}
           </p>
         </Link>

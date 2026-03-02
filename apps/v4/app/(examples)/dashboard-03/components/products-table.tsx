@@ -76,7 +76,7 @@ export function ProductsTable({
         <div className="hidden items-center gap-2 **:data-[slot=button]:size-8 **:data-[slot=select-trigger]:h-8 @3xl/page:flex">
           <Select defaultValue="all">
             <SelectTrigger>
-              <span className="text-muted-foreground text-sm">Category:</span>
+              <span className="text-sm text-muted-foreground">Category:</span>
               <SelectValue placeholder="Select a product" />
             </SelectTrigger>
             <SelectContent>
@@ -88,7 +88,7 @@ export function ProductsTable({
           </Select>
           <Select defaultValue="all">
             <SelectTrigger>
-              <span className="text-muted-foreground text-sm">Price:</span>
+              <span className="text-sm text-muted-foreground">Price:</span>
               <SelectValue placeholder="Select a product" />
             </SelectTrigger>
             <SelectContent>
@@ -100,7 +100,7 @@ export function ProductsTable({
           </Select>
           <Select defaultValue="all">
             <SelectTrigger>
-              <span className="text-muted-foreground text-sm">Status:</span>
+              <span className="text-sm text-muted-foreground">Status:</span>
               <SelectValue placeholder="Select a product" />
             </SelectTrigger>
             <SelectContent>
@@ -184,7 +184,7 @@ export function ProductsTable({
         </Table>
       </CardContent>
       <CardFooter className="flex flex-col items-center justify-between border-t pt-6 @3xl/page:flex-row">
-        <div className="text-muted-foreground hidden text-sm @3xl/page:block">
+        <div className="hidden text-sm text-muted-foreground @3xl/page:block">
           Showing 1-10 of 100 products
         </div>
         <Pagination className="mx-0 w-fit">

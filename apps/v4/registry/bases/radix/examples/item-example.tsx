@@ -1602,7 +1602,7 @@ function ItemFooterExamples() {
           </ItemDescription>
         </ItemContent>
         <ItemFooter>
-          <span className="text-muted-foreground text-sm">
+          <span className="text-sm text-muted-foreground">
             Last updated 2 hours ago
           </span>
         </ItemFooter>
@@ -1616,7 +1616,7 @@ function ItemFooterExamples() {
           </ItemDescription>
         </ItemContent>
         <ItemFooter>
-          <span className="text-muted-foreground text-sm">
+          <span className="text-sm text-muted-foreground">
             Created by Sarah Chen
           </span>
         </ItemFooter>
@@ -1630,7 +1630,7 @@ function ItemFooterExamples() {
           </ItemDescription>
         </ItemContent>
         <ItemFooter>
-          <span className="text-muted-foreground text-sm">12 comments</span>
+          <span className="text-sm text-muted-foreground">12 comments</span>
         </ItemFooter>
       </Item>
     </Example>
@@ -1652,7 +1652,7 @@ function ItemHeaderAndFooterExamples() {
           </ItemDescription>
         </ItemContent>
         <ItemFooter>
-          <span className="text-muted-foreground text-sm">
+          <span className="text-sm text-muted-foreground">
             Updated 5 minutes ago
           </span>
         </ItemFooter>
@@ -1669,7 +1669,7 @@ function ItemHeaderAndFooterExamples() {
           </ItemDescription>
         </ItemContent>
         <ItemFooter>
-          <span className="text-muted-foreground text-sm">
+          <span className="text-sm text-muted-foreground">
             Status: In Progress
           </span>
         </ItemFooter>
@@ -1686,7 +1686,7 @@ function ItemHeaderAndFooterExamples() {
           </ItemDescription>
         </ItemContent>
         <ItemFooter>
-          <span className="text-muted-foreground text-sm">
+          <span className="text-sm text-muted-foreground">
             Category: Technical • 3 attachments
           </span>
         </ItemFooter>

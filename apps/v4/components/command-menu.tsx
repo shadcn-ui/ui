@@ -185,7 +185,7 @@ export function CommandMenu({
     return (
       <CommandGroup
         heading="Pages"
-        className="!p-0 [&_[cmdk-group-heading]]:scroll-mt-16 [&_[cmdk-group-heading]]:!p-3 [&_[cmdk-group-heading]]:!pb-1"
+        className="p-0! [&_[cmdk-group-heading]]:scroll-mt-16 [&_[cmdk-group-heading]]:p-3! [&_[cmdk-group-heading]]:pb-1!"
       >
         {navItems.map((item) => (
           <CommandMenuItem
@@ -230,7 +230,7 @@ export function CommandMenu({
         <CommandGroup
           key={group.$id}
           heading={group.name}
-          className="!p-0 [&_[cmdk-group-heading]]:scroll-mt-16 [&_[cmdk-group-heading]]:!p-3 [&_[cmdk-group-heading]]:!pb-1"
+          className="p-0! [&_[cmdk-group-heading]]:scroll-mt-16 [&_[cmdk-group-heading]]:p-3! [&_[cmdk-group-heading]]:pb-1!"
         >
           {pages.map((item) => {
             const isComponent = item.url.includes("/components/")
@@ -248,7 +248,7 @@ export function CommandMenu({
                 }}
               >
                 {isComponent ? (
-                  <div className="border-muted-foreground aspect-square size-4 rounded-full border border-dashed" />
+                  <div className="aspect-square size-4 rounded-full border border-dashed border-muted-foreground" />
                 ) : (
                   <IconArrowRight />
                 )}
@@ -268,7 +268,7 @@ export function CommandMenu({
         heading={
           colorPalette.name.charAt(0).toUpperCase() + colorPalette.name.slice(1)
         }
-        className="!p-0 [&_[cmdk-group-heading]]:!p-3"
+        className="p-0! [&_[cmdk-group-heading]]:p-3!"
       >
         {colorPalette.colors.map((color) => (
           <CommandMenuItem
@@ -290,7 +290,7 @@ export function CommandMenu({
               style={{ "--color": color.oklch } as React.CSSProperties}
             />
             {color.className}
-            <span className="text-muted-foreground ml-auto font-mono text-xs font-normal tabular-nums">
+            <span className="ml-auto font-mono text-xs font-normal text-muted-foreground tabular-nums">
               {color.oklch}
             </span>
           </CommandMenuItem>
@@ -307,7 +307,7 @@ export function CommandMenu({
     return (
       <CommandGroup
         heading="Blocks"
-        className="!p-0 [&_[cmdk-group-heading]]:!p-3"
+        className="p-0! [&_[cmdk-group-heading]]:p-3!"
       >
         {blocks.map((block) => (
           <CommandMenuItem
@@ -330,7 +330,7 @@ export function CommandMenu({
           >
             <SquareDashedIcon />
             {block.description}
-            <span className="text-muted-foreground ml-auto font-mono text-xs font-normal tabular-nums">
+            <span className="ml-auto font-mono text-xs font-normal text-muted-foreground tabular-nums">
               {block.name}
             </span>
           </CommandMenuItem>
@@ -391,7 +391,7 @@ export function CommandMenu({
         <Button
           variant="outline"
           className={cn(
-            "text-foreground dark:bg-card hover:bg-muted/50 relative h-8 w-full justify-start rounded-lg pl-3 font-normal shadow-none sm:pr-12 md:w-48 lg:w-56 xl:w-64"
+            "relative h-8 w-full justify-start rounded-lg pl-3 font-normal text-foreground shadow-none hover:bg-muted/50 sm:pr-12 md:w-48 lg:w-56 xl:w-64 dark:bg-card"
           )}
           onClick={() => setOpen(true)}
           {...props}
@@ -406,7 +406,7 @@ export function CommandMenu({
           <DialogDescription>Search for a command to run...</DialogDescription>
         </DialogHeader>
         <Command
-          className="**:data-[slot=command-input-wrapper]:bg-input/50 **:data-[slot=command-input-wrapper]:border-input rounded-none bg-transparent **:data-[slot=command-input]:!h-9 **:data-[slot=command-input]:py-0 **:data-[slot=command-input-wrapper]:mb-0 **:data-[slot=command-input-wrapper]:!h-9 **:data-[slot=command-input-wrapper]:rounded-md **:data-[slot=command-input-wrapper]:border"
+          className="rounded-none bg-transparent **:data-[slot=command-input]:h-9! **:data-[slot=command-input]:py-0 **:data-[slot=command-input-wrapper]:mb-0 **:data-[slot=command-input-wrapper]:h-9! **:data-[slot=command-input-wrapper]:rounded-md **:data-[slot=command-input-wrapper]:border **:data-[slot=command-input-wrapper]:border-input **:data-[slot=command-input-wrapper]:bg-input/50"
           filter={commandFilter}
         >
           <div className="relative">
@@ -416,12 +416,12 @@ export function CommandMenu({
             />
             {query.isLoading && (
               <div className="pointer-events-none absolute top-1/2 right-3 z-10 flex -translate-y-1/2 items-center justify-center">
-                <Spinner className="text-muted-foreground size-4" />
+                <Spinner className="size-4 text-muted-foreground" />
               </div>
             )}
           </div>
           <CommandList className="no-scrollbar min-h-80 scroll-pt-2 scroll-pb-1.5">
-            <CommandEmpty className="text-muted-foreground py-12 text-center text-sm">
+            <CommandEmpty className="py-12 text-center text-sm text-muted-foreground">
               {query.isLoading ? "Searching..." : "No results found."}
             </CommandEmpty>
             {navItemsSection}
@@ -439,7 +439,7 @@ export function CommandMenu({
             ) : null}
           </CommandList>
         </Command>
-        <div className="text-muted-foreground absolute inset-x-0 bottom-0 z-20 flex h-10 items-center gap-2 rounded-b-xl border-t border-t-neutral-100 bg-neutral-50 px-4 text-xs font-medium dark:border-t-neutral-700 dark:bg-neutral-800">
+        <div className="absolute inset-x-0 bottom-0 z-20 flex h-10 items-center gap-2 rounded-b-xl border-t border-t-neutral-100 bg-neutral-50 px-4 text-xs font-medium text-muted-foreground dark:border-t-neutral-700 dark:bg-neutral-800">
           <div className="flex items-center gap-2">
             <CommandMenuKbd>
               <CornerDownLeftIcon />
@@ -451,7 +451,7 @@ export function CommandMenu({
           </div>
           {copyPayload && (
             <>
-              <Separator orientation="vertical" className="!h-4" />
+              <Separator orientation="vertical" className="h-4!" />
               <div className="flex items-center gap-1">
                 <CommandMenuKbd>⌘</CommandMenuKbd>
                 <CommandMenuKbd>C</CommandMenuKbd>
@@ -493,7 +493,7 @@ function CommandMenuItem({
     <CommandItem
       ref={ref}
       className={cn(
-        "data-[selected=true]:border-input data-[selected=true]:bg-input/50 h-9 rounded-md border border-transparent !px-3 font-medium",
+        "h-9 rounded-md border border-transparent px-3! font-medium data-[selected=true]:border-input data-[selected=true]:bg-input/50",
         className
       )}
       {...props}
@@ -507,7 +507,7 @@ function CommandMenuKbd({ className, ...props }: React.ComponentProps<"kbd">) {
   return (
     <kbd
       className={cn(
-        "bg-background text-muted-foreground pointer-events-none flex h-5 items-center justify-center gap-1 rounded border px-1 font-sans text-[0.7rem] font-medium select-none [&_svg:not([class*='size-'])]:size-3",
+        "pointer-events-none flex h-5 items-center justify-center gap-1 rounded border bg-background px-1 font-sans text-[0.7rem] font-medium text-muted-foreground select-none [&_svg:not([class*='size-'])]:size-3",
         className
       )}
       {...props}
@@ -555,7 +555,7 @@ function SearchResults({
 
   return (
     <CommandGroup
-      className="!px-0 [&_[cmdk-group-heading]]:scroll-mt-16 [&_[cmdk-group-heading]]:!p-3 [&_[cmdk-group-heading]]:!pb-1"
+      className="px-0! [&_[cmdk-group-heading]]:scroll-mt-16 [&_[cmdk-group-heading]]:p-3! [&_[cmdk-group-heading]]:pb-1!"
       heading="Search Results"
     >
       {uniqueResults.map((item) => {
@@ -567,7 +567,7 @@ function SearchResults({
               router.push(item.url)
               setOpen(false)
             }}
-            className="data-[selected=true]:border-input data-[selected=true]:bg-input/50 h-9 rounded-md border border-transparent !px-3 font-normal"
+            className="h-9 rounded-md border border-transparent px-3! font-normal data-[selected=true]:border-input data-[selected=true]:bg-input/50"
             keywords={[item.content]}
             value={`${item.content} ${item.type}`}
           >
@@ -592,7 +592,7 @@ function DialogContent({
       <DialogPrimitive.Content
         data-slot="dialog-content"
         className={cn(
-          "bg-background fixed top-[15%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] gap-4 rounded-lg border p-6 shadow-lg duration-200 outline-none sm:max-w-lg",
+          "fixed top-[15%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] gap-4 rounded-lg border bg-background p-6 shadow-lg duration-200 outline-none sm:max-w-lg",
           className
         )}
         {...props}

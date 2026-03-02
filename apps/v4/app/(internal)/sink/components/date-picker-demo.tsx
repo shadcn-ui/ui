@@ -119,7 +119,7 @@ function DataPickerWithDropdowns() {
             )}
           >
             {date ? format(date, "PPP") : <span>Pick a date</span>}
-            <CalendarIcon className="text-muted-foreground ml-auto" />
+            <CalendarIcon className="ml-auto text-muted-foreground" />
           </Button>
         </DrawerTrigger>
         <DrawerContent>
@@ -153,7 +153,7 @@ function DataPickerWithDropdowns() {
           )}
         >
           {date ? format(date, "PPP") : <span>Pick a date</span>}
-          <CalendarIcon className="text-muted-foreground ml-auto" />
+          <CalendarIcon className="ml-auto text-muted-foreground" />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-auto p-0" align="start">

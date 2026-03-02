@@ -30,12 +30,12 @@ export function MenuAccentPicker({
       <Picker>
         <PickerTrigger>
           <div className="flex flex-col justify-start text-left">
-            <div className="text-muted-foreground text-xs">Menu Accent</div>
-            <div className="text-foreground text-sm font-medium">
+            <div className="text-xs text-muted-foreground">Menu Accent</div>
+            <div className="text-sm font-medium text-foreground">
               {currentAccent?.label}
             </div>
           </div>
-          <div className="text-foreground pointer-events-none absolute top-1/2 right-4 flex size-4 -translate-y-1/2 items-center justify-center text-base select-none">
+          <div className="pointer-events-none absolute top-1/2 right-4 flex size-4 -translate-y-1/2 items-center justify-center text-base text-foreground select-none">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="128"
@@ -51,7 +51,7 @@ export function MenuAccentPicker({
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 data-accent={currentAccent?.value}
-                className="data-[accent=bold]:fill-foreground fill-muted-foreground/30"
+                className="fill-muted-foreground/30 data-[accent=bold]:fill-foreground"
               ></path>
               <path
                 d="M22 20C22 21.1046 21.1046 22 20 22C18.8954 22 18 21.1046 18 20C18 18.8954 20 17 20 17C20 17 22 18.8954 22 20Z"
@@ -60,7 +60,7 @@ export function MenuAccentPicker({
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 data-accent={currentAccent?.value}
-                className="data-[accent=bold]:fill-foreground fill-muted-foreground/30"
+                className="fill-muted-foreground/30 data-[accent=bold]:fill-foreground"
               ></path>
             </svg>
           </div>
