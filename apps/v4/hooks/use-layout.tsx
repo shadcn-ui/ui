@@ -19,7 +19,6 @@ interface LayoutProviderState {
   forcedLayout?: Layout
 }
 
-const isServer = typeof window === "undefined"
 const LayoutContext = React.createContext<LayoutProviderState | undefined>(
   undefined
 )
@@ -28,13 +27,13 @@ const saveToLS = (storageKey: string, value: string) => {
   try {
     localStorage.setItem(storageKey, value)
   } catch {
-    // Unsupported
+    // storage unavailable (SSR / private mode)
   }
 }
 
 const useLayout = () => {
   const context = React.useContext(LayoutContext)
-  if (context === undefined) {
+  if (!context) {
     throw new Error("useLayout must be used within a LayoutProvider")
   }
   return context
@@ -48,98 +47,74 @@ const Layout = ({
   value,
   children,
 }: LayoutProviderProps) => {
-  const [layout, setLayoutState] = React.useState<Layout>(() => {
-    if (isServer) return defaultLayout
+  // ✅ start with default only (SSR-safe)
+  const [layout, setLayoutState] = React.useState<Layout>(defaultLayout)
+
+  // ✅ read localStorage ONLY after mount
+  React.useEffect(() => {
     try {
       const saved = localStorage.getItem(storageKey)
       if (saved === "fixed" || saved === "full") {
-        return saved
+        setLayoutState(saved)
       }
-      return defaultLayout
     } catch {
-      return defaultLayout
+      // ignore
     }
-  })
+  }, [storageKey])
 
-  const attrs = !value ? ["layout-fixed", "layout-full"] : Object.values(value)
+  // ✅ memoized to keep hook deps stable
+  const attrs = React.useMemo(
+    () => (!value ? ["layout-fixed", "layout-full"] : Object.values(value)),
+    [value]
+  )
 
   const applyLayout = React.useCallback(
     (layout: Layout) => {
-      if (!layout) return
-
       const name = value ? value[layout] : `layout-${layout}`
       const d = document.documentElement
 
       const handleAttribute = (attr: string) => {
         if (attr === "class") {
           d.classList.remove(...attrs)
-          if (name) d.classList.add(name)
+          d.classList.add(name)
         } else if (attr.startsWith("data-")) {
-          if (name) {
-            d.setAttribute(attr, name)
-          } else {
-            d.removeAttribute(attr)
-          }
+          d.setAttribute(attr, name)
         }
       }
 
-      if (Array.isArray(attribute)) attribute.forEach(handleAttribute)
-      else handleAttribute(attribute)
+      // ✅ no ternary side-effects (eslint-safe)
+      if (Array.isArray(attribute)) {
+        attribute.forEach(handleAttribute)
+      } else {
+        handleAttribute(attribute)
+      }
     },
     [attrs, attribute, value]
   )
 
   const setLayout = React.useCallback(
     (value: Layout | ((prev: Layout) => Layout)) => {
-      if (typeof value === "function") {
-        setLayoutState((prevLayout) => {
-          const newLayout = value(prevLayout)
-          saveToLS(storageKey, newLayout)
-          return newLayout
-        })
-      } else {
-        setLayoutState(value)
-        saveToLS(storageKey, value)
-      }
+      setLayoutState((prev) => {
+        const next = typeof value === "function" ? value(prev) : value
+        saveToLS(storageKey, next)
+        return next
+      })
     },
     [storageKey]
   )
 
-  // localStorage event handling
+  // Apply layout whenever it changes
   React.useEffect(() => {
-    const handleStorage = (e: StorageEvent) => {
-      if (e.key !== storageKey) return
-
-      if (!e.newValue) {
-        setLayout(defaultLayout)
-      } else if (e.newValue === "fixed" || e.newValue === "full") {
-        setLayoutState(e.newValue)
-      }
-    }
-
-    window.addEventListener("storage", handleStorage)
-    return () => window.removeEventListener("storage", handleStorage)
-  }, [setLayout, storageKey, defaultLayout])
-
-  // Apply layout on mount and when it changes
-  React.useEffect(() => {
-    const currentLayout = forcedLayout ?? layout
-    applyLayout(currentLayout)
-  }, [forcedLayout, layout, applyLayout])
-
-  // Prevent layout changes during hydration
-  const [isHydrated, setIsHydrated] = React.useState(false)
-  React.useEffect(() => {
-    setIsHydrated(true)
-  }, [])
+    applyLayout(forcedLayout ?? layout)
+  }, [layout, forcedLayout, applyLayout])
 
   const providerValue = React.useMemo(
     () => ({
-      layout: isHydrated ? layout : defaultLayout,
+      layout,
       setLayout,
       forcedLayout,
     }),
-    [layout, setLayout, forcedLayout, isHydrated, defaultLayout]
+    [layout, setLayout, forcedLayout]
   )
 
   return (
@@ -152,8 +127,9 @@ const Layout = ({
 const LayoutProvider = (props: LayoutProviderProps) => {
   const context = React.useContext(LayoutContext)
 
-  // Ignore nested context providers, just passthrough children
+  // Prevent nested providers
   if (context) return <>{props.children}</>
+
   return <Layout {...props} />
 }
 
