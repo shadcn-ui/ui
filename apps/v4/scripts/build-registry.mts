@@ -51,6 +51,15 @@ try {
   await buildBasesIndex(Array.from(BASES))
   await buildBases(Array.from(BASES))
 
+  // Format base files before building styles so the JSON output contains formatted code.
+  const baseDirs = Array.from(BASES).flatMap((base) =>
+    STYLES.map((style) =>
+      path.join(process.cwd(), `registry/${base.name}-${style.name}`)
+    )
+  )
+  console.log("\n✨ Formatting base files...")
+  await batchPrettier(baseDirs)
+
   const stylesToBuild = getStylesToBuild()
 
   // Build index for legacy styles and whitelisted base-style combinations.
@@ -658,9 +667,10 @@ async function batchPrettier(paths: string[]) {
   if (paths.length === 0) return
 
   await new Promise<void>((resolve, reject) => {
-    const proc = spawn("npx", ["prettier", "--write", ...paths], {
+    const prettierBin = path.join(process.cwd(), "node_modules/.bin/prettier")
+    const proc = spawn(prettierBin, ["--write", ...paths], {
       cwd: process.cwd(),
-      stdio: "pipe",
+      stdio: "inherit",
     })
     proc.on("close", () => resolve())
     proc.on("error", reject)
