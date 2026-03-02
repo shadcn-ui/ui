@@ -308,7 +308,7 @@ describe("shadcn init - custom style", async () => {
       true
     )
 
-    // Then add foo.ts from the custom registry with overriden payload.
+    // Then add foo.ts from the custom registry with overridden payload.
     expect(
       await fs.readFile(path.join(fixturePath, "lib/foo.ts"), "utf-8")
     ).toBe("const foo = 'baz-qux'")
