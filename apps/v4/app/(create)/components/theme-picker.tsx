@@ -76,7 +76,7 @@ export function ThemePicker({
           anchor={isMobile ? anchorRef : undefined}
           side={isMobile ? "top" : "right"}
           align={isMobile ? "center" : "start"}
-          className="max-h-[23rem]"
+          className="max-h-92"
         >
           <PickerRadioGroup
             value={currentTheme?.name}

@@ -14,11 +14,14 @@ import {
 import {
   Field,
   FieldContent,
-  FieldDescription,
   FieldGroup,
   FieldLabel,
+  FieldLegend,
+  FieldSeparator,
+  FieldSet,
   FieldTitle,
 } from "@/examples/base/ui/field"
+import { RadioGroup, RadioGroupItem } from "@/examples/base/ui/radio-group"
 import { Switch } from "@/examples/base/ui/switch"
 import {
   Tabs,
@@ -26,24 +29,29 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/examples/base/ui/tabs"
-import { Copy01Icon, Tick02Icon } from "@hugeicons/core-free-icons"
+import { Copy01Icon, Globe02Icon, Tick02Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 
-import { cn } from "@/lib/utils"
 import { useConfig } from "@/hooks/use-config"
 import { copyToClipboardWithMeta } from "@/components/copy-button"
-import {
-  ALL_TEMPLATES,
-  getFramework,
-  getTemplateValue,
-  NO_MONOREPO_FRAMEWORKS,
-  TEMPLATES,
-} from "@/app/(create)/components/template-picker"
 import { usePresetCode } from "@/app/(create)/hooks/use-design-system"
 import {
   useDesignSystemSearchParams,
   type DesignSystemSearchParams,
 } from "@/app/(create)/lib/search-params"
+import {
+  getFramework,
+  getTemplateValue,
+  NO_MONOREPO_FRAMEWORKS,
+  TEMPLATES,
+} from "@/app/(create)/lib/templates"
+
+const TURBOREPO_LOGO =
+  '<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Turborepo</title><path d="M11.9906 4.1957c-4.2998 0-7.7981 3.501-7.7981 7.8043s3.4983 7.8043 7.7981 7.8043c4.2999 0 7.7982-3.501 7.7982-7.8043s-3.4983-7.8043-7.7982-7.8043m0 11.843c-2.229 0-4.0356-1.8079-4.0356-4.0387s1.8065-4.0387 4.0356-4.0387S16.0262 9.7692 16.0262 12s-1.8065 4.0388-4.0356 4.0388m.6534-13.1249V0C18.9726.3386 24 5.5822 24 12s-5.0274 11.66-11.356 12v-2.9139c4.7167-.3372 8.4516-4.2814 8.4516-9.0861s-3.735-8.749-8.4516-9.0861M5.113 17.9586c-1.2502-1.4446-2.0562-3.2845-2.2-5.3046H0c.151 2.8266 1.2808 5.3917 3.051 7.3668l2.0606-2.0622zM11.3372 24v-2.9139c-2.02-.1439-3.8584-.949-5.3019-2.2018l-2.0606 2.0623c1.975 1.773 4.538 2.9022 7.361 3.0534z"/></svg>'
+const ORIGIN = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:4000"
+const IS_LOCAL_DEV = ORIGIN.includes("localhost")
+const PACKAGE_MANAGERS = ["pnpm", "npm", "yarn", "bun"] as const
+type PackageManager = (typeof PACKAGE_MANAGERS)[number]
 
 export function ProjectForm() {
   const [open, setOpen] = React.useState(false)
@@ -51,26 +59,29 @@ export function ProjectForm() {
   const presetCode = usePresetCode()
   const [config, setConfig] = useConfig()
   const [hasCopied, setHasCopied] = React.useState(false)
-  const [hasCopiedLaravel, setHasCopiedLaravel] = React.useState(false)
 
-  const packageManager = config.packageManager || "pnpm"
+  const packageManager = (config.packageManager || "pnpm") as PackageManager
+  const framework = React.useMemo(
+    () => getFramework(params.template ?? "next"),
+    [params.template]
+  )
+  const isMonorepo = React.useMemo(
+    () => params.template?.endsWith("-monorepo") ?? false,
+    [params.template]
+  )
 
-  const isLaravel = getFramework(params.template ?? "next") === "laravel"
+  const hasMonorepo = !NO_MONOREPO_FRAMEWORKS.includes(
+    framework as (typeof NO_MONOREPO_FRAMEWORKS)[number]
+  )
 
   const commands = React.useMemo(() => {
-    const origin = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:4000"
-    const isLocalDev = origin.includes("localhost")
     const presetFlag = ` --preset ${presetCode}`
-    const framework = getFramework(params.template ?? "next")
-    const isMonorepo = params.template?.endsWith("-monorepo") ?? false
-    // Laravel doesn't use --template since it has its own scaffolding.
-    const templateFlag =
-      params.template && !isLaravel ? ` --template ${framework}` : ""
+    const templateFlag = ` --template ${framework}`
     const monorepoFlag = isMonorepo ? " --monorepo" : ""
     const rtlFlag = params.rtl ? " --rtl" : ""
     const flags = `${presetFlag}${templateFlag}${monorepoFlag}${rtlFlag}`
 
-    return isLocalDev
+    return IS_LOCAL_DEV
       ? {
           pnpm: `shadcn init${flags}`,
           npm: `shadcn init${flags}`,
@@ -83,7 +94,7 @@ export function ProjectForm() {
           yarn: `yarn dlx shadcn@latest init${flags}`,
           bun: `bunx --bun shadcn@latest init${flags}`,
         }
-  }, [presetCode, params.rtl, params.template, isLaravel])
+  }, [framework, isMonorepo, params.rtl, presetCode])
 
   const command = commands[packageManager]
 
@@ -93,13 +104,6 @@ export function ProjectForm() {
       return () => clearTimeout(timer)
     }
   }, [hasCopied])
-
-  React.useEffect(() => {
-    if (hasCopiedLaravel) {
-      const timer = setTimeout(() => setHasCopiedLaravel(false), 2000)
-      return () => clearTimeout(timer)
-    }
-  }, [hasCopiedLaravel])
 
   const handleCopy = React.useCallback(() => {
     const properties: Record<string, string> = {
@@ -120,63 +124,58 @@ export function ProjectForm() {
       <DialogTrigger render={<Button size="sm" />}>
         Create Project
       </DialogTrigger>
-      <DialogContent className="min-w-0 sm:max-w-md">
+      <DialogContent className="min-w-0 p-6 sm:max-w-md">
         <DialogHeader>
           <DialogTitle>Create Project</DialogTitle>
           <DialogDescription>
-            Configure your project to use shadcn/ui.
+            Pick a template and configure your project. Available for all major
+            React frameworks.
           </DialogDescription>
         </DialogHeader>
         <FieldGroup>
           <Field>
-            <FieldLabel>Template</FieldLabel>
-            <TemplateGrid params={params} setParams={setParams} />
-            <FieldDescription>
-              See the{" "}
-              <a
-                href="/docs/installation"
-                className="text-foreground underline"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                installation guides
-              </a>{" "}
-              for more templates and frameworks.
-            </FieldDescription>
+            <FieldLabel className="sr-only">Template</FieldLabel>
+            <TemplateGrid template={params.template} setParams={setParams} />
           </Field>
-          {!isLaravel && (
-            <FieldLabel htmlFor="monorepo">
-              <Field orientation="horizontal">
-                <FieldContent>
-                  <FieldTitle>Monorepo</FieldTitle>
-                  <FieldDescription>
-                    Use a Turborepo monorepo with a shared UI package.
-                  </FieldDescription>
-                </FieldContent>
-                <Switch
-                  id="monorepo"
-                  checked={params.template?.endsWith("-monorepo") ?? false}
-                  onCheckedChange={(checked) => {
-                    const framework = getFramework(params.template ?? "next")
-                    setParams({
-                      template: getTemplateValue(
-                        framework,
-                        checked === true
-                      ) as typeof params.template,
-                    })
+          <FieldSeparator />
+          <FieldSet>
+            <FieldLegend variant="label" className="sr-only">
+              Options
+            </FieldLegend>
+            <Field
+              orientation="horizontal"
+              data-disabled={hasMonorepo ? undefined : "true"}
+            >
+              <FieldLabel htmlFor="monorepo">
+                <span
+                  className="size-4 text-foreground [&_svg]:size-4 [&_svg]:fill-current"
+                  dangerouslySetInnerHTML={{
+                    __html: TURBOREPO_LOGO,
                   }}
                 />
-              </Field>
-            </FieldLabel>
-          )}
-          <FieldLabel htmlFor="rtl">
+                Create a monorepo
+              </FieldLabel>
+              <Switch
+                id="monorepo"
+                checked={params.template?.endsWith("-monorepo") ?? false}
+                disabled={!hasMonorepo}
+                onCheckedChange={(checked) => {
+                  const framework = getFramework(params.template ?? "next")
+                  setParams({
+                    template: getTemplateValue(
+                      framework,
+                      checked === true
+                    ) as typeof params.template,
+                  })
+                }}
+              />
+            </Field>
+            <FieldSeparator />
             <Field orientation="horizontal">
-              <FieldContent>
-                <FieldTitle>Enable RTL</FieldTitle>
-                <FieldDescription>
-                  Add right-to-left support for your project.
-                </FieldDescription>
-              </FieldContent>
+              <FieldLabel htmlFor="rtl">
+                <HugeiconsIcon icon={Globe02Icon} className="size-4" />
+                Enable RTL support
+              </FieldLabel>
               <Switch
                 id="rtl"
                 checked={params.rtl}
@@ -185,68 +184,28 @@ export function ProjectForm() {
                 }
               />
             </Field>
-          </FieldLabel>
+          </FieldSet>
         </FieldGroup>
         <DialogFooter className="-mx-6 mt-2 -mb-6 flex min-w-0 flex-col gap-3 border-t bg-muted/30 p-6 sm:flex-col">
-          {isLaravel && (
-            <div className="flex flex-col gap-2">
-              <p className="text-sm text-muted-foreground">
-                <a
-                  href="https://laravel.com/docs#creating-a-laravel-project"
-                  className="text-foreground underline"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Create a new Laravel project
-                </a>
-                , then run the following command.
-              </p>
-              <div className="min-w-0 overflow-hidden rounded-lg border bg-surface">
-                <div className="flex items-center py-1.5 pr-1.5 pl-3">
-                  <div className="no-scrollbar min-w-0 flex-1 overflow-x-auto">
-                    <code className="font-mono text-sm whitespace-nowrap">
-                      laravel new example-app
-                    </code>
-                  </div>
-                  <Button
-                    size="icon-sm"
-                    variant="ghost"
-                    className="ml-2 size-7 shrink-0"
-                    onClick={() => {
-                      copyToClipboardWithMeta("laravel new example-app", {
-                        name: "copy_npm_command",
-                        properties: { command: "laravel new example-app" },
-                      })
-                      setHasCopiedLaravel(true)
-                    }}
-                  >
-                    {hasCopiedLaravel ? (
-                      <HugeiconsIcon icon={Tick02Icon} className="size-4" />
-                    ) : (
-                      <HugeiconsIcon icon={Copy01Icon} className="size-4" />
-                    )}
-                    <span className="sr-only">Copy command</span>
-                  </Button>
-                </div>
-              </div>
-            </div>
-          )}
           <Tabs
             value={packageManager}
             onValueChange={(value) => {
-              setConfig({
-                ...config,
-                packageManager: value as "pnpm" | "npm" | "yarn" | "bun",
-              })
+              setConfig((prev) => ({
+                ...prev,
+                packageManager: value as PackageManager,
+              }))
             }}
             className="min-w-0 gap-0 overflow-hidden rounded-lg border bg-surface"
           >
             <div className="flex items-center gap-2 px-1.5 py-1">
               <TabsList className="h-auto rounded-none bg-transparent p-0 font-mono group-data-[orientation=horizontal]/tabs:h-8 *:data-[slot=tabs-trigger]:h-7 *:data-[slot=tabs-trigger]:border *:data-[slot=tabs-trigger]:border-transparent *:data-[slot=tabs-trigger]:pt-0.5 *:data-[slot=tabs-trigger]:shadow-none! *:data-[slot=tabs-trigger]:data-[state=active]:border-input">
-                <TabsTrigger value="pnpm">pnpm</TabsTrigger>
-                <TabsTrigger value="npm">npm</TabsTrigger>
-                <TabsTrigger value="yarn">yarn</TabsTrigger>
-                <TabsTrigger value="bun">bun</TabsTrigger>
+                {PACKAGE_MANAGERS.map((manager) => {
+                  return (
+                    <TabsTrigger key={manager} value={manager}>
+                      {manager}
+                    </TabsTrigger>
+                  )
+                })}
               </TabsList>
               <Button
                 size="icon-sm"
@@ -285,56 +244,58 @@ export function ProjectForm() {
   )
 }
 
-function TemplateGrid({
-  params,
+const TemplateGrid = React.memo(function TemplateGrid({
+  template,
   setParams,
 }: {
-  params: DesignSystemSearchParams
+  template: DesignSystemSearchParams["template"]
   setParams: ReturnType<typeof useDesignSystemSearchParams>[1]
 }) {
-  const isMonorepo = params.template?.endsWith("-monorepo") ?? false
-  const framework = getFramework(params.template ?? "next")
+  const isMonorepo = template?.endsWith("-monorepo") ?? false
+  const framework = getFramework(template ?? "next")
+
+  const handleTemplateChange = React.useCallback(
+    (value: string) => {
+      setParams({
+        template: getTemplateValue(
+          value,
+          isMonorepo
+        ) as DesignSystemSearchParams["template"],
+      })
+    },
+    [isMonorepo, setParams]
+  )
 
   return (
-    <div className="flex flex-col gap-2">
-      {TEMPLATES.map((row, rowIndex) => (
-        <div
-          key={rowIndex}
-          className="grid gap-2"
-          style={{ gridTemplateColumns: `repeat(${row.length}, 1fr)` }}
+    <RadioGroup
+      value={framework}
+      onValueChange={handleTemplateChange}
+      className="grid grid-cols-3 gap-2"
+    >
+      {TEMPLATES.map((template) => (
+        <FieldLabel
+          key={template.value}
+          htmlFor={`template-${template.value}`}
+          className="py-2"
         >
-          {row.map((template) => (
-            <button
-              key={template.value}
-              type="button"
-              onClick={() =>
-                setParams({
-                  template: getTemplateValue(
-                    template.value,
-                    isMonorepo
-                  ) as typeof params.template,
-                })
-              }
-              className={cn(
-                "flex flex-col items-center gap-2 rounded-lg border p-3 text-sm transition-colors",
-                framework === template.value
-                  ? "border-foreground bg-muted"
-                  : "border-border hover:bg-muted/50"
-              )}
-            >
+          <Field className="gap-0" orientation="horizontal">
+            <FieldContent className="flex flex-col items-center justify-center gap-2">
               <div
-                className="size-5 text-foreground *:[svg]:size-5 *:[svg]:text-foreground!"
+                className="size-8 text-foreground [&_svg]:size-8 *:[svg]:text-foreground!"
                 dangerouslySetInnerHTML={{
                   __html: template.logo,
                 }}
-              />
-              <span className="text-xs font-medium text-foreground">
-                {template.title}
-              </span>
-            </button>
-          ))}
-        </div>
+              ></div>
+              <FieldTitle>{template.title}</FieldTitle>
+            </FieldContent>
+            <RadioGroupItem
+              value={template.value}
+              id={`template-${template.value}`}
+              className="sr-only absolute"
+            />
+          </Field>
+        </FieldLabel>
       ))}
-    </div>
+    </RadioGroup>
   )
-}
+})

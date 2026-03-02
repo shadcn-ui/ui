@@ -40,13 +40,13 @@ export default function PreviewExample() {
         className="grid w-[3000px] grid-cols-7 items-start gap-(--gap) bg-muted p-(--gap) dark:bg-background *:[div]:gap-(--gap)"
         data-slot="capture-target"
       >
-        <div className="hidden flex-col lg:flex">
+        <div className="flex flex-col">
           <StyleOverview />
           <CodespacesCard />
           <BarVisualizerCard />
           <Invoice />
         </div>
-        <div className="hidden flex-col lg:flex">
+        <div className="flex flex-col">
           <IconPreviewGrid />
           <UIElements />
           <ObservabilityCard />
@@ -59,20 +59,20 @@ export default function PreviewExample() {
           <InviteTeam />
           <ActivateAgentDialog />
         </div>
-        <div className="hidden flex-col lg:flex">
+        <div className="flex flex-col">
           <SkeletonLoading />
           <PieChartCard />
           <NoTeamMembers />
           <ReportBug />
           <Contributors />
         </div>
-        <div className="hidden flex-col lg:flex">
+        <div className="flex flex-col">
           <FeedbackForm />
           <BookAppointment />
           <SleepReport />
           <GithubProfile />
         </div>
-        <div className="hidden flex-col lg:flex">
+        <div className="flex flex-col">
           <AssignIssue />
           <WeeklyFitnessSummary />
           <FileUpload />
@@ -80,7 +80,7 @@ export default function PreviewExample() {
           <UsageCard />
           <ContributionsActivity />
         </div>
-        <div className="hidden flex-col lg:flex">
+        <div className="flex flex-col">
           <AnomalyAlert />
           <LiveWaveformCard />
           <ShippingAddress />
