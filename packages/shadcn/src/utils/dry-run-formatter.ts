@@ -299,8 +299,8 @@ function formatFilesSection(result: DryRunResult, lines: string[]) {
       file.action === "create"
         ? green
         : file.action === "overwrite"
-        ? yellow
-        : dim
+          ? yellow
+          : dim
 
     const pathStr = file.action === "skip" ? dim(file.path) : file.path
 

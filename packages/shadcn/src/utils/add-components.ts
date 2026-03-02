@@ -138,8 +138,8 @@ async function addProjectComponents(
   // Write CSS last so the file watcher triggers a rebuild
   // after all component files and dependencies are in place.
   const overwriteCssVars = tree.cssVars
-    ? options.overwriteCssVars ??
-      (await shouldOverwriteCssVars(components, config))
+    ? (options.overwriteCssVars ??
+      (await shouldOverwriteCssVars(components, config)))
     : undefined
   await updateCss(tree.css, config, {
     silent: options.silent,
@@ -200,9 +200,8 @@ async function addWorkspaceComponents(
   // Process global updates for the main target.
   // These should typically go to the UI package in a workspace.
   const mainTargetConfig = workspaceConfig.ui
-  const tailwindVersion = await getProjectTailwindVersionFromConfig(
-    mainTargetConfig
-  )
+  const tailwindVersion =
+    await getProjectTailwindVersionFromConfig(mainTargetConfig)
   const workspaceRoot = findCommonRoot(
     config.resolvedPaths.cwd,
     mainTargetConfig.resolvedPaths.ui
@@ -317,8 +316,8 @@ async function addWorkspaceComponents(
   // 6. Write CSS last so the file watcher triggers a rebuild
   // after all component files and dependencies are in place.
   const overwriteCssVars = tree.cssVars
-    ? options.overwriteCssVars ??
-      (await shouldOverwriteCssVars(components, config))
+    ? (options.overwriteCssVars ??
+      (await shouldOverwriteCssVars(components, config)))
     : undefined
   await updateCss(tree.css, mainTargetConfig, {
     silent: true,

@@ -1,7 +1,13 @@
 import { describe, expect, it } from "vitest"
 
 import {
+  decodePreset,
   DEFAULT_PRESET_CONFIG,
+  encodePreset,
+  fromBase62,
+  generateRandomPreset,
+  isPresetCode,
+  isValidPreset,
   PRESET_BASE_COLORS,
   PRESET_FONTS,
   PRESET_ICON_LIBRARIES,
@@ -10,12 +16,6 @@ import {
   PRESET_RADII,
   PRESET_STYLES,
   PRESET_THEMES,
-  decodePreset,
-  encodePreset,
-  fromBase62,
-  generateRandomPreset,
-  isPresetCode,
-  isValidPreset,
   toBase62,
   type PresetConfig,
 } from "./preset"

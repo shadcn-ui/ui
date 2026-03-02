@@ -2,7 +2,7 @@ import { existsSync, promises as fs } from "fs"
 import path from "path"
 import { RegistryFontItem, registryResolvedItemsTreeSchema } from "@/src/schema"
 import { Config } from "@/src/utils/get-config"
-import { ProjectInfo, getProjectInfo } from "@/src/utils/get-project-info"
+import { getProjectInfo, ProjectInfo } from "@/src/utils/get-project-info"
 import { spinner } from "@/src/utils/spinner"
 import {
   CallExpression,
