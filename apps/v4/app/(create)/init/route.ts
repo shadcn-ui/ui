@@ -1,54 +1,17 @@
 import { NextResponse, type NextRequest } from "next/server"
 import { track } from "@vercel/analytics/server"
-import { decodePreset, isPresetCode } from "shadcn/preset"
 import { registryItemSchema } from "shadcn/schema"
 
-import { buildRegistryBase, designSystemConfigSchema } from "@/registry/config"
+import { buildRegistryBase } from "@/registry/config"
+import { parseDesignSystemConfig } from "@/app/(create)/init/parse-config"
 
 export async function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams
-
-    // Decode preset code if present.
-    let configInput: Record<string, unknown>
-    const presetParam = searchParams.get("preset")
-
-    if (presetParam && isPresetCode(presetParam)) {
-      const decoded = decodePreset(presetParam)
-      if (!decoded) {
-        return NextResponse.json(
-          { error: "Invalid preset code" },
-          { status: 400 }
-        )
-      }
-      configInput = {
-        ...decoded,
-        template: searchParams.get("template") ?? undefined,
-        rtl: searchParams.get("rtl") === "true",
-      }
-    } else {
-      configInput = {
-        base: searchParams.get("base"),
-        style: searchParams.get("style"),
-        iconLibrary: searchParams.get("iconLibrary"),
-        baseColor: searchParams.get("baseColor"),
-        theme: searchParams.get("theme"),
-        font: searchParams.get("font"),
-        menuAccent: searchParams.get("menuAccent"),
-        menuColor: searchParams.get("menuColor"),
-        radius: searchParams.get("radius"),
-        template: searchParams.get("template") ?? undefined,
-        rtl: searchParams.get("rtl") === "true",
-      }
-    }
-
-    const result = designSystemConfigSchema.safeParse(configInput)
+    const result = parseDesignSystemConfig(searchParams)
 
     if (!result.success) {
-      return NextResponse.json(
-        { error: result.error.issues[0].message },
-        { status: 400 }
-      )
+      return NextResponse.json({ error: result.error }, { status: 400 })
     }
 
     const registryBase = buildRegistryBase(result.data)

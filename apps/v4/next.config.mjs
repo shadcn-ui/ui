@@ -121,6 +121,10 @@ const nextConfig = {
         source: "/docs/:path*.md",
         destination: "/llm/:path*",
       },
+      {
+        source: "/init.md",
+        destination: "/init/md",
+      },
     ]
   },
 }

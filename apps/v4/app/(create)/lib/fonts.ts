@@ -8,12 +8,14 @@ import {
   Lora,
   Merriweather,
   Noto_Sans,
+  Noto_Serif,
   Nunito_Sans,
   Outfit,
   Playfair_Display,
   Public_Sans,
   Raleway,
   Roboto,
+  Roboto_Slab,
 } from "next/font/google"
 
 const inter = Inter({
@@ -76,14 +78,24 @@ const outfit = Outfit({
   variable: "--font-outfit",
 })
 
-const lora = Lora({
+const notoSerif = Noto_Serif({
   subsets: ["latin"],
-  variable: "--font-lora",
+  variable: "--font-noto-serif",
+})
+
+const robotoSlab = Roboto_Slab({
+  subsets: ["latin"],
+  variable: "--font-roboto-slab",
 })
 
 const merriweather = Merriweather({
   subsets: ["latin"],
   variable: "--font-merriweather",
+})
+
+const lora = Lora({
+  subsets: ["latin"],
+  variable: "--font-lora",
 })
 
 const playfairDisplay = Playfair_Display({
@@ -165,15 +177,27 @@ export const FONTS = [
     type: "mono",
   },
   {
-    name: "Lora",
-    value: "lora",
-    font: lora,
+    name: "Noto Serif",
+    value: "noto-serif",
+    font: notoSerif,
+    type: "serif",
+  },
+  {
+    name: "Roboto Slab",
+    value: "roboto-slab",
+    font: robotoSlab,
     type: "serif",
   },
   {
     name: "Merriweather",
     value: "merriweather",
     font: merriweather,
+    type: "serif",
+  },
+  {
+    name: "Lora",
+    value: "lora",
+    font: lora,
     type: "serif",
   },
   {
