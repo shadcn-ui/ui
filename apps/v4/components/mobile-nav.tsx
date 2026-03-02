@@ -27,12 +27,20 @@ const TOP_LEVEL_SECTIONS = [
     href: "/docs/installation",
   },
   {
-    name: "Directory",
-    href: "/docs/directory",
+    name: "Theming",
+    href: "/docs/theming",
+  },
+  {
+    name: "CLI",
+    href: "/docs/cli",
   },
   {
     name: "RTL",
     href: "/docs/rtl",
+  },
+  {
+    name: "Skills",
+    href: "/docs/skills",
   },
   {
     name: "MCP Server",

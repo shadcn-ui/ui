@@ -29,12 +29,20 @@ const TOP_LEVEL_SECTIONS = [
     href: "/docs/installation",
   },
   {
-    name: "Directory",
-    href: "/docs/directory",
+    name: "Theming",
+    href: "/docs/theming",
+  },
+  {
+    name: "CLI",
+    href: "/docs/cli",
   },
   {
     name: "RTL",
     href: "/docs/rtl",
+  },
+  {
+    name: "Skills",
+    href: "/docs/skills",
   },
   {
     name: "MCP Server",
@@ -70,8 +78,8 @@ export function DocsSidebar({
       {...props}
     >
       <div className="h-9" />
-      <div className="from-background via-background/80 to-background/50 absolute top-8 z-10 h-8 w-(--sidebar-menu-width) shrink-0 bg-gradient-to-b blur-xs" />
-      <div className="via-border absolute top-12 right-2 bottom-0 hidden h-full w-px bg-gradient-to-b from-transparent to-transparent lg:flex" />
+      <div className="from-background via-background/80 to-background/50 absolute top-8 z-10 h-8 w-(--sidebar-menu-width) shrink-0 bg-linear-to-b blur-xs" />
+      <div className="via-border absolute top-12 right-2 bottom-0 hidden h-full w-px bg-linear-to-b from-transparent to-transparent lg:flex" />
       <SidebarContent className="no-scrollbar mx-auto w-(--sidebar-menu-width) overflow-x-hidden px-2">
         <SidebarGroup className="pt-6">
           <SidebarGroupLabel className="text-muted-foreground font-medium">
@@ -160,7 +168,7 @@ export function DocsSidebar({
             </SidebarGroup>
           )
         })}
-        <div className="from-background via-background/80 to-background/50 sticky -bottom-1 z-10 h-16 shrink-0 bg-gradient-to-t blur-xs" />
+        <div className="from-background via-background/80 to-background/50 sticky -bottom-1 z-10 h-16 shrink-0 bg-linear-to-t blur-xs" />
       </SidebarContent>
     </Sidebar>
   )
