@@ -11,7 +11,9 @@
 
 // Value arrays — order matters for backward compat. Never reorder, only append.
 export const PRESET_BASES = ["radix", "base"] as const
+
 export const PRESET_STYLES = ["nova", "vega", "maia", "lyra", "mira"] as const
+
 export const PRESET_BASE_COLORS = [
   "neutral",
   "stone",
@@ -22,6 +24,7 @@ export const PRESET_BASE_COLORS = [
   "mist",
   "taupe",
 ] as const
+
 export const PRESET_THEMES = [
   "neutral",
   "stone",
@@ -49,6 +52,7 @@ export const PRESET_THEMES = [
   "mist",
   "taupe",
 ] as const
+
 export const PRESET_ICON_LIBRARIES = [
   "lucide",
   "hugeicons",
@@ -56,6 +60,7 @@ export const PRESET_ICON_LIBRARIES = [
   "phosphor",
   "remixicon",
 ] as const
+
 export const PRESET_FONTS = [
   "inter",
   "noto-sans",
@@ -72,7 +77,10 @@ export const PRESET_FONTS = [
   "lora",
   "merriweather",
   "playfair-display",
+  "noto-serif",
+  "roboto-slab",
 ] as const
+
 export const PRESET_RADII = [
   "default",
   "none",
@@ -80,6 +88,7 @@ export const PRESET_RADII = [
   "medium",
   "large",
 ] as const
+
 export const PRESET_MENU_ACCENTS = ["subtle", "bold"] as const
 export const PRESET_MENU_COLORS = ["default", "inverted"] as const
 
@@ -159,8 +168,13 @@ export function encodePreset(config: Partial<PresetConfig>) {
 
 // Decode a preset code back into a PresetConfig.
 export function decodePreset(code: string): PresetConfig | null {
-  if (!code || code.length < 2) return null
-  if (code[0] !== VERSION_CHAR) return null
+  if (!code || code.length < 2) {
+    return null
+  }
+
+  if (code[0] !== VERSION_CHAR) {
+    return null
+  }
 
   const bits = fromBase62(code.slice(1))
   if (bits < 0) return null
@@ -179,11 +193,20 @@ export function decodePreset(code: string): PresetConfig | null {
 
 // Check if a string looks like a preset code (version char + base62).
 export function isPresetCode(value: string) {
-  if (!value || value.length < 2 || value.length > 10) return false
-  if (value[0] !== VERSION_CHAR) return false
-  for (let i = 1; i < value.length; i++) {
-    if (BASE62.indexOf(value[i]) === -1) return false
+  if (!value || value.length < 2 || value.length > 10) {
+    return false
   }
+
+  if (value[0] !== VERSION_CHAR) {
+    return false
+  }
+
+  for (let i = 1; i < value.length; i++) {
+    if (BASE62.indexOf(value[i]) === -1) {
+      return false
+    }
+  }
+
   return true
 }
 

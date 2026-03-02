@@ -1,6 +1,14 @@
 import { promises as fs } from "fs"
 import path from "path"
 import { preFlightInit } from "@/src/preflights/preflight-init"
+import { decodePreset, isPresetCode } from "@/src/preset/preset"
+import {
+  DEFAULT_PRESETS,
+  promptForBase,
+  promptForPreset,
+  resolveInitUrl,
+  resolveRegistryBaseConfig,
+} from "@/src/preset/presets"
 import { getRegistryBaseColors, getRegistryStyles } from "@/src/registry/api"
 import { BUILTIN_REGISTRIES } from "@/src/registry/constants"
 import { clearRegistryContext } from "@/src/registry/context"
@@ -45,14 +53,6 @@ import {
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
-import { decodePreset, isPresetCode } from "@/src/utils/preset"
-import {
-  DEFAULT_PRESETS,
-  promptForBase,
-  promptForPreset,
-  resolveInitUrl,
-  resolveRegistryBaseConfig,
-} from "@/src/utils/presets"
 import { ensureRegistriesInConfig } from "@/src/utils/registries"
 import { spinner } from "@/src/utils/spinner"
 import { Command } from "commander"
@@ -285,6 +285,7 @@ export const init = new Command()
               title: t.title,
               value,
               description: t.description,
+              disabled: options.monorepo && value === "laravel",
             })),
           })
 

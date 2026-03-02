@@ -20,4 +20,4 @@ export {
   generateRandomConfig,
   generateRandomPreset,
   type PresetConfig,
-} from "../utils/preset"
+} from "./preset"
