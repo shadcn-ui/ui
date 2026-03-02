@@ -317,7 +317,7 @@ function updateCssPlugin(css: z.infer<typeof registryItemCssSchema>) {
                 postcss.comment({ text: "---break---" })
               )
 
-              // Add declarations with their values preserved
+              // Add declarations with their values preserved.
               if (typeof properties === "object") {
                 for (const [prop, value] of Object.entries(properties)) {
                   if (typeof value === "string") {
@@ -327,13 +327,38 @@ function updateCssPlugin(css: z.infer<typeof registryItemCssSchema>) {
                       raws: { semicolon: true, before: "\n    " },
                     })
                     atRule.append(decl)
+                  } else if (
+                    prop.startsWith("@") &&
+                    typeof value === "object" &&
+                    value !== null &&
+                    Object.keys(value as Record<string, unknown>).length === 0
+                  ) {
+                    // Handle at-rules with no body (e.g., @apply).
+                    const atRuleMatch = prop.match(/@([a-zA-Z-]+)\s*(.*)/)
+                    if (atRuleMatch) {
+                      const [, atRuleName, atRuleParams] = atRuleMatch
+                      const existingAtRule = atRule.nodes?.find(
+                        (node): node is AtRule =>
+                          node.type === "atrule" &&
+                          node.name === atRuleName &&
+                          node.params === atRuleParams
+                      )
+                      if (!existingAtRule) {
+                        const newAtRule = postcss.atRule({
+                          name: atRuleName,
+                          params: atRuleParams,
+                          raws: { semicolon: true, before: "\n    " },
+                        })
+                        atRule.append(newAtRule)
+                      }
+                    }
                   } else if (typeof value === "object") {
                     processRule(atRule, prop, value)
                   }
                 }
               }
             } else {
-              // Update existing utility class
+              // Update existing utility class.
               if (typeof properties === "object") {
                 for (const [prop, value] of Object.entries(properties)) {
                   if (typeof value === "string") {
@@ -351,6 +376,31 @@ function updateCssPlugin(css: z.infer<typeof registryItemCssSchema>) {
                     existingDecl
                       ? existingDecl.replaceWith(decl)
                       : utilityAtRule.append(decl)
+                  } else if (
+                    prop.startsWith("@") &&
+                    typeof value === "object" &&
+                    value !== null &&
+                    Object.keys(value as Record<string, unknown>).length === 0
+                  ) {
+                    // Handle at-rules with no body (e.g., @apply).
+                    const atRuleMatch = prop.match(/@([a-zA-Z-]+)\s*(.*)/)
+                    if (atRuleMatch) {
+                      const [, atRuleName, atRuleParams] = atRuleMatch
+                      const existingAtRule = utilityAtRule.nodes?.find(
+                        (node): node is AtRule =>
+                          node.type === "atrule" &&
+                          node.name === atRuleName &&
+                          node.params === atRuleParams
+                      )
+                      if (!existingAtRule) {
+                        const newAtRule = postcss.atRule({
+                          name: atRuleName,
+                          params: atRuleParams,
+                          raws: { semicolon: true, before: "\n    " },
+                        })
+                        utilityAtRule.append(newAtRule)
+                      }
+                    }
                   } else if (typeof value === "object") {
                     processRule(utilityAtRule, prop, value)
                   }
