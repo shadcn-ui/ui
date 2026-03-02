@@ -70,7 +70,7 @@ function resolveSubpathImport(
         : importPath.slice(prefix.length)
       const target = resolveImportTarget(imports[pattern])
       if (target) {
-        return path.resolve(baseDir, target.replace("*", wildcard))
+        return path.resolve(baseDir, target.replace(/\*/g, wildcard))
       }
     }
   }
