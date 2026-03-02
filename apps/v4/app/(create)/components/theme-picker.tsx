@@ -51,8 +51,8 @@ export function ThemePicker({
       <Picker>
         <PickerTrigger>
           <div className="flex flex-col justify-start text-left">
-            <div className="text-muted-foreground text-xs">Theme</div>
-            <div className="text-foreground text-sm font-medium">
+            <div className="text-xs text-muted-foreground">Theme</div>
+            <div className="text-sm font-medium text-foreground">
               {currentTheme?.title}
             </div>
           </div>
@@ -113,7 +113,7 @@ export function ThemePicker({
                         )}
                         <div className="flex flex-col justify-start pointer-coarse:gap-1">
                           <div>{theme.title}</div>
-                          <div className="text-muted-foreground text-xs pointer-coarse:text-sm">
+                          <div className="text-xs text-muted-foreground pointer-coarse:text-sm">
                             Match base color
                           </div>
                         </div>

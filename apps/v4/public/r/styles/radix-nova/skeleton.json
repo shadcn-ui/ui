@@ -4,7 +4,7 @@
   "files": [
     {
       "path": "registry/radix-nova/ui/skeleton.tsx",
-      "content": "import { cn } from \"@/registry/radix-nova/lib/utils\"\n\nfunction Skeleton({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"skeleton\"\n      className={cn(\"bg-muted animate-pulse rounded-md\", className)}\n      {...props}\n    />\n  )\n}\n\nexport { Skeleton }\n",
+      "content": "import { cn } from \"@/registry/radix-nova/lib/utils\"\n\nfunction Skeleton({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"skeleton\"\n      className={cn(\"animate-pulse rounded-md bg-muted\", className)}\n      {...props}\n    />\n  )\n}\n\nexport { Skeleton }\n",
       "type": "registry:ui"
     }
   ],

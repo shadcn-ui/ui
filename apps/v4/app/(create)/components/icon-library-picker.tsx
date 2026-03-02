@@ -248,12 +248,12 @@ export function IconLibraryPicker({
       <Picker>
         <PickerTrigger>
           <div className="flex flex-col justify-start text-left">
-            <div className="text-muted-foreground text-xs">Icon Library</div>
-            <div className="text-foreground text-sm font-medium">
+            <div className="text-xs text-muted-foreground">Icon Library</div>
+            <div className="text-sm font-medium text-foreground">
               {currentIconLibrary?.title}
             </div>
           </div>
-          <div className="text-foreground *:[svg]:text-foreground! pointer-events-none absolute top-1/2 right-4 flex size-4 -translate-y-1/2 items-center justify-center text-base select-none">
+          <div className="pointer-events-none absolute top-1/2 right-4 flex size-4 -translate-y-1/2 items-center justify-center text-base text-foreground select-none *:[svg]:text-foreground!">
             {logos[currentIconLibrary?.name as keyof typeof logos]}
           </div>
         </PickerTrigger>
@@ -306,7 +306,7 @@ function IconLibraryPickerItem({
     >
       <Item size="xs">
         <ItemContent className="gap-1">
-          <ItemTitle className="text-muted-foreground text-xs font-medium">
+          <ItemTitle className="text-xs font-medium text-muted-foreground">
             {iconLibrary.title}
           </ItemTitle>
           <IconLibraryPreview iconLibrary={iconLibrary.name} />
@@ -345,7 +345,7 @@ const IconLibraryPreview = memo(function IconLibraryPreview({
           {previewIcons.map((iconName) => (
             <div
               key={iconName}
-              className="bg-muted size-6 animate-pulse rounded"
+              className="size-6 animate-pulse rounded bg-muted"
             />
           ))}
         </div>

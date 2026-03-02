@@ -30,7 +30,7 @@ export function SwitchDemo() {
       <Label className="flex items-center gap-6 rounded-lg border p-4 has-[[data-state=checked]]:border-blue-600">
         <div className="flex flex-col gap-1">
           <div className="font-medium">Share across devices</div>
-          <div className="text-muted-foreground text-sm font-normal">
+          <div className="text-sm font-normal text-muted-foreground">
             Focus is shared across devices, and turns off when you leave the
             app.
           </div>

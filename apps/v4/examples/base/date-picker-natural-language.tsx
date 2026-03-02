@@ -93,7 +93,7 @@ export function DatePickerNaturalLanguage() {
           </Popover>
         </InputGroupAddon>
       </InputGroup>
-      <div className="text-muted-foreground px-1 text-sm">
+      <div className="px-1 text-sm text-muted-foreground">
         Your post will be published on{" "}
         <span className="font-medium">{formatDate(date)}</span>.
       </div>

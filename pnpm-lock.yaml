@@ -28,8 +28,8 @@ importers:
         specifier: ^17.6.3
         version: 17.8.1
       '@ianvs/prettier-plugin-sort-imports':
-        specifier: ^3.7.2
-        version: 3.7.2(prettier@2.8.8)
+        specifier: ^4.6.1
+        version: 4.6.1(prettier@3.6.2)
       '@manypkg/cli':
         specifier: ^0.20.0
         version: 0.20.0
@@ -73,11 +73,11 @@ importers:
         specifier: ^12.12.1
         version: 12.23.12(@emotion/is-prop-valid@1.3.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       prettier:
-        specifier: ^2.8.8
-        version: 2.8.8
+        specifier: ^3.4.2
+        version: 3.6.2
       pretty-quick:
-        specifier: ^3.1.3
-        version: 3.3.1(prettier@2.8.8)
+        specifier: ^4.0.0
+        version: 4.2.2(prettier@3.6.2)
       puppeteer:
         specifier: ^23.6.0
         version: 23.11.1(typescript@5.9.2)
@@ -1443,15 +1443,6 @@ packages:
     resolution: {integrity: sha512-bV0Tgo9K4hfPCek+aMAn81RppFKv2ySDQeMoSZuvTASywNTnVJCArCZE2FWqpvIatKu7VMRLWlR1EazvVhDyhQ==}
     engines: {node: '>=18.18'}
 
-  '@ianvs/prettier-plugin-sort-imports@3.7.2':
-    resolution: {integrity: sha512-bVckKToJM8XV2wTOG1VpeXrSmfAG49esVrikbxeFbY51RJdNke9AdMANJtGuACB59uo+pGlz0wBdWFrRzWyO1A==}
-    peerDependencies:
-      '@vue/compiler-sfc': '>=3.0.0'
-      prettier: 2.x
-    peerDependenciesMeta:
-      '@vue/compiler-sfc':
-        optional: true
-
   '@ianvs/prettier-plugin-sort-imports@4.6.1':
     resolution: {integrity: sha512-Q0gujs/g6tw1uOGd1bTVLGDzAwb/UwrCehhPCQevTCYDkho8+eQSOhA0zcy9AM0XnXM1ChBWsZeE4P7Nym0pyw==}
     peerDependencies:
@@ -1880,6 +1871,10 @@ packages:
   '@pkgjs/parseargs@0.11.0':
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
     engines: {node: '>=14'}
+
+  '@pkgr/core@0.2.9':
+    resolution: {integrity: sha512-QNqXyfVS2wm9hweSYD2O7F0G06uurj9kZ96TRQE5Y9hU7+tgdZwIkbAKc5Ocy1HxEY2kuDQa6cQ1WRs/O5LFKA==}
+    engines: {node: ^12.20.0 || ^14.18.0 || >=16.0.0}
 
   '@puppeteer/browsers@2.6.1':
     resolution: {integrity: sha512-aBSREisdsGH890S2rQqK82qmQYU3uFpSH8wcZWHgHzl3LfzsxAKbLNiAG9mO8v1Y0UICBeClICxPJvyr0rcuxg==}
@@ -4587,10 +4582,6 @@ packages:
     resolution: {integrity: sha512-CRT1WTyuQoD771GW56XEZFQ/ZoSfWid1alKGDYMmkt2yl8UXrVR4pspqWNEcqKvVIzg6PAltWjxcSSPrboA4iA==}
     engines: {node: '>=18.0.0'}
 
-  execa@4.1.0:
-    resolution: {integrity: sha512-j5W0//W7f8UxAn8hXVnwG8tLwdiUy4FJLcSupCg6maBYZDpyBvTApK7KyuI4bKj8KOh1r2YH+6ucuYtJv1bTZA==}
-    engines: {node: '>=10'}
-
   execa@5.1.1:
     resolution: {integrity: sha512-8uSpZZocAZRBAPIEINJj3Lo9HyGitllczc27Eh5YYojjMFMn8yHMDMaUHE2Jqfq05D/wucwI4JGURyXt1vchyg==}
     engines: {node: '>=10'}
@@ -5111,10 +5102,6 @@ packages:
     resolution: {integrity: sha512-3gKm/gCSUipeLsRYZbbdA1BD83lBoWUkZ7G9VFrhWPAU76KwYo5KR8V28bpoPm/ygy0x5/GCbpRQdY7VLYCoIg==}
     hasBin: true
 
-  human-signals@1.1.1:
-    resolution: {integrity: sha512-SEQu7vl8KjNL2eoGBLF3+wAjpsNfA9XMlXAYj/3EdaNfAlxKthD1xjEQfGOUhllCGGJVNY34bRr6lPINhNjyZw==}
-    engines: {node: '>=8.12.0'}
-
   human-signals@2.1.0:
     resolution: {integrity: sha512-B4FFZ6q/T2jhhksgkbEW3HBvWIfDW85snkQgawt07S7J5QXTk6BkNV+0yAeZrM5QpMAdYlocGoljn0sJ/WQkFw==}
     engines: {node: '>=10.17.0'}
@@ -5424,9 +5411,6 @@ packages:
     resolution: {integrity: sha512-zptv57P3GpL+O0I7VdMJNBZCu+BPHVQUk55Ft8/QCJjTVxrnJHuVuX/0Bl2A6/+2oyR/ZMEuFKwmzqqZ/U5nPQ==}
     engines: {node: 20 || >=22}
 
-  javascript-natural-sort@0.7.1:
-    resolution: {integrity: sha512-nO6jcEfZWQXDhOiBtG2KvKyEptz7RVbpGP4vTD2hLBdmNQSsCiicO2Ioinv6UI4y9ukqnBpy+XZ9H6uLNgJTlw==}
-
   jiti@1.21.7:
     resolution: {integrity: sha512-/imKNG4EbWNrVjoNC/1H5/9GFy+tqjGBHCaSsN+P2RnPqjsLmv6UD3Ej+Kj8nBWaRAwyk7kK5ZUc+OEatnTR3A==}
     hasBin: true
@@ -5665,14 +5649,6 @@ packages:
 
   lodash.camelcase@4.3.0:
     resolution: {integrity: sha512-TwuEnCnxbc3rAvhf/LbG7tJUDzhqXyFnv3dtzLOPgCG/hODL7WFnsbwktkD7yUV0RrreP/l1PALq/YSg6VvjlA==}
-
-  lodash.clone@4.5.0:
-    resolution: {integrity: sha512-GhrVeweiTD6uTmmn5hV/lzgCQhccwReIVRLHp7LT4SopOjqEZ5BbX8b5WWEtAKasjmy8hR7ZPwsYlxRCku5odg==}
-    deprecated: This package is deprecated. Use structuredClone instead.
-
-  lodash.isequal@4.5.0:
-    resolution: {integrity: sha512-pDo3lu8Jhfjqls6GkMgpahsF9kCyayhgykjyLMNFTKWrpVdAQtYyB4muAMWozBB4ig/dtWAmsMxLEI8wuz+DYQ==}
-    deprecated: This package is deprecated. Use require('node:util').isDeepStrictEqual instead.
 
   lodash.isplainobject@4.0.6:
     resolution: {integrity: sha512-oSXzaWypCMHkPC3NvBEaPHf0KsA5mvPrOPgQWDsbg8n7orZ290M0BmC/jgRZ4vcJ6DTAhjrsSYgdsW/F+MFOBA==}
@@ -6413,10 +6389,6 @@ packages:
     resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}
     engines: {node: '>=8.6'}
 
-  picomatch@3.0.1:
-    resolution: {integrity: sha512-I3EurrIQMlRc9IaAZnqRR044Phh2DXY+55o7uJ0V+hYZAcQYSuFWsc9q5PvyDHUSCe1Qxn/iBz+78s86zWnGag==}
-    engines: {node: '>=10'}
-
   picomatch@4.0.3:
     resolution: {integrity: sha512-5gTmgEY/sqK6gFXLIsQNH19lWb4ebPDLA4SdLP7dsWkIXHWlG66oPuVvXSGFPppYZz8ZDZq0dYYrbHfBCVUb1Q==}
     engines: {node: '>=12'}
@@ -6580,12 +6552,12 @@ packages:
     resolution: {integrity: sha512-4yf0QO/sllf/1zbZWYnvWw3NxCQwLXKzIj0G849LSufP15BXKM0rbD2Z3wVnkMfjdn/CB0Dpp444gYAACdsplg==}
     engines: {node: '>=18'}
 
-  pretty-quick@3.3.1:
-    resolution: {integrity: sha512-3b36UXfYQ+IXXqex6mCca89jC8u0mYLqFAN5eTQKoXO6oCQYcIVYZEB/5AlBHI7JPYygReM2Vv6Vom/Gln7fBg==}
-    engines: {node: '>=10.13'}
+  pretty-quick@4.2.2:
+    resolution: {integrity: sha512-uAh96tBW1SsD34VhhDmWuEmqbpfYc/B3j++5MC/6b3Cb8Ow7NJsvKFhg0eoGu2xXX+o9RkahkTK6sUdd8E7g5w==}
+    engines: {node: '>=14'}
     hasBin: true
     peerDependencies:
-      prettier: ^2.0.0
+      prettier: ^3.0.0
 
   progress@2.0.3:
     resolution: {integrity: sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==}
@@ -8915,20 +8887,6 @@ snapshots:
 
   '@humanwhocodes/retry@0.4.3': {}
 
-  '@ianvs/prettier-plugin-sort-imports@3.7.2(prettier@2.8.8)':
-    dependencies:
-      '@babel/core': 7.28.0
-      '@babel/generator': 7.28.0
-      '@babel/parser': 7.28.0
-      '@babel/traverse': 7.28.0
-      '@babel/types': 7.28.2
-      javascript-natural-sort: 0.7.1
-      lodash.clone: 4.5.0
-      lodash.isequal: 4.5.0
-      prettier: 2.8.8
-    transitivePeerDependencies:
-      - supports-color
-
   '@ianvs/prettier-plugin-sort-imports@4.6.1(prettier@3.6.2)':
     dependencies:
       '@babel/generator': 7.28.0
@@ -9374,6 +9332,8 @@ snapshots:
 
   '@pkgjs/parseargs@0.11.0':
     optional: true
+
+  '@pkgr/core@0.2.9': {}
 
   '@puppeteer/browsers@2.6.1':
     dependencies:
@@ -12500,18 +12460,6 @@ snapshots:
     dependencies:
       eventsource-parser: 3.0.6
 
-  execa@4.1.0:
-    dependencies:
-      cross-spawn: 7.0.6
-      get-stream: 5.2.0
-      human-signals: 1.1.1
-      is-stream: 2.0.1
-      merge-stream: 2.0.0
-      npm-run-path: 4.0.1
-      onetime: 5.1.2
-      signal-exit: 3.0.7
-      strip-final-newline: 2.0.0
-
   execa@5.1.1:
     dependencies:
       cross-spawn: 7.0.6
@@ -13202,8 +13150,6 @@ snapshots:
 
   human-id@4.1.1: {}
 
-  human-signals@1.1.1: {}
-
   human-signals@2.1.0: {}
 
   human-signals@4.3.1: {}
@@ -13466,8 +13412,6 @@ snapshots:
     dependencies:
       '@isaacs/cliui': 8.0.2
 
-  javascript-natural-sort@0.7.1: {}
-
   jiti@1.21.7: {}
 
   jiti@2.6.1: {}
@@ -13653,10 +13597,6 @@ snapshots:
       p-locate: 6.0.0
 
   lodash.camelcase@4.3.0: {}
-
-  lodash.clone@4.5.0: {}
-
-  lodash.isequal@4.5.0: {}
 
   lodash.isplainobject@4.0.6: {}
 
@@ -14654,8 +14594,6 @@ snapshots:
 
   picomatch@2.3.1: {}
 
-  picomatch@3.0.1: {}
-
   picomatch@4.0.3: {}
 
   pify@2.3.0: {}
@@ -14753,15 +14691,15 @@ snapshots:
     dependencies:
       parse-ms: 4.0.0
 
-  pretty-quick@3.3.1(prettier@2.8.8):
+  pretty-quick@4.2.2(prettier@3.6.2):
     dependencies:
-      execa: 4.1.0
-      find-up: 4.1.0
-      ignore: 5.3.2
+      '@pkgr/core': 0.2.9
+      ignore: 7.0.5
       mri: 1.2.0
       picocolors: 1.1.1
-      picomatch: 3.0.1
-      prettier: 2.8.8
+      picomatch: 4.0.3
+      prettier: 3.6.2
+      tinyexec: 0.3.2
       tslib: 2.8.1
 
   progress@2.0.3: {}

@@ -288,7 +288,7 @@ export function NotionPromptForm() {
                   </Command>
                 </PopoverContent>
               </Popover>
-              <div className="no-scrollbar -m-1.5 flex gap-1 overflow-y-auto p-1.5">
+              <div className="-m-1.5 no-scrollbar flex gap-1 overflow-y-auto p-1.5">
                 {mentions.map((mention) => {
                   const item = SAMPLE_DATA.mentionable.find(
                     (item) => item.title === mention
@@ -303,7 +303,7 @@ export function NotionPromptForm() {
                       key={mention}
                       size="sm"
                       variant="secondary"
-                      className="rounded-full !pr-2"
+                      className="rounded-full pr-2!"
                       onClick={() => {
                         setMentions((prev) => prev.filter((m) => m !== mention))
                       }}
@@ -352,7 +352,7 @@ export function NotionPromptForm() {
                   dir={t.dir}
                 >
                   <DropdownMenuGroup className="w-48">
-                    <DropdownMenuLabel className="text-muted-foreground text-xs">
+                    <DropdownMenuLabel className="text-xs text-muted-foreground">
                       {t.selectAgentMode}
                     </DropdownMenuLabel>
                     {SAMPLE_DATA.models.map((model) => (
@@ -493,7 +493,7 @@ export function NotionPromptForm() {
                     <DropdownMenuItem>
                       <IconPlus /> {t.connectApps}
                     </DropdownMenuItem>
-                    <DropdownMenuLabel className="text-muted-foreground text-xs">
+                    <DropdownMenuLabel className="text-xs text-muted-foreground">
                       {t.searchSourcesNote}
                     </DropdownMenuLabel>
                   </DropdownMenuGroup>
