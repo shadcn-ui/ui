@@ -4,6 +4,7 @@ import { type RegistryItem } from "shadcn/schema"
 import { ActionMenu } from "@/app/(create)/components/action-menu"
 import { CopyPreset } from "@/app/(create)/components/copy-preset"
 import { HistoryButtons } from "@/app/(create)/components/history-buttons"
+import { ModeSwitcher } from "@/app/(create)/components/mode-switcher"
 import { ProjectForm } from "@/app/(create)/components/project-form"
 import { ShareButton } from "@/app/(create)/components/share-button"
 import { V0Button } from "@/app/(create)/components/v0-button"
@@ -20,15 +21,15 @@ export function PageHeader({
           <div className="item-center flex w-1/3 gap-2">
             <HistoryButtons />
             <Separator orientation="vertical" />
-            <ActionMenu itemsByBase={itemsByBase} />
+            <CopyPreset />
           </div>
           <div className="ml-auto flex items-center justify-end gap-2">
-            <CopyPreset />
-            <Separator orientation="vertical" />
             <ShareButton />
             <V0Button />
             <Separator orientation="vertical" />
             <ProjectForm />
+            <Separator orientation="vertical" />
+            <ModeSwitcher />
           </div>
         </div>
       </div>

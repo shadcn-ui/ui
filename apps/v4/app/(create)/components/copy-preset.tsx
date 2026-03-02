@@ -36,13 +36,13 @@ export function CopyPreset() {
       onClick={handleCopy}
       className="group/button"
     >
+      --preset {presetCode}
       <HugeiconsIcon
         icon={hasCopied ? Tick02Icon : Copy01Icon}
         strokeWidth={2}
         className="opacity-0 group-hover/button:opacity-100"
-        data-icon="inline-start"
+        data-icon="inline-end"
       />
-      --preset {presetCode}
     </Button>
   )
 }

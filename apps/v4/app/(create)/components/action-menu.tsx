@@ -299,9 +299,9 @@ export function ActionMenu({
         </ComboboxValue>
       </ComboboxTrigger>
       <ComboboxContent
-        className="animate-none data-open:animate-none"
-        side="bottom"
-        align="center"
+        className="w-80 animate-none data-open:animate-none"
+        side="right"
+        align="start"
       >
         <ComboboxInput
           showTrigger={false}
@@ -309,7 +309,7 @@ export function ActionMenu({
           className="has-focus-visible:border-inherit! has-focus-visible:ring-0!"
         />
         {comboboxEmpty}
-        <ComboboxList>
+        <ComboboxList className="max-h-128">
           {(group: ActionMenuGroup) => (
             <ComboboxGroup key={group.type} items={group.items}>
               <ComboboxLabel>{group.title}</ComboboxLabel>

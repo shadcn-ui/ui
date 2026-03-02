@@ -77,7 +77,7 @@ export default async function CreatePage() {
             data-slot="designer"
             className="flex w-full flex-1 flex-col gap-2 p-4 sm:gap-2 md:flex-row lg:gap-4"
           >
-            <Customizer />
+            <Customizer itemsByBase={itemsByBase} />
             <div className="flex flex-1 flex-col overflow-hidden rounded-2xl border">
               <PageHeader itemsByBase={itemsByBase} />
               <Preview />

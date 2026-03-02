@@ -2,10 +2,12 @@
 
 import * as React from "react"
 import { FieldGroup } from "@/examples/base/ui/field"
+import { type RegistryItem } from "shadcn/schema"
 
 import { useIsMobile } from "@/hooks/use-mobile"
 import { getThemesForBaseColor, STYLES } from "@/registry/config"
 import { MenuAccentPicker } from "@/app/(create)/components/accent-picker"
+import { ActionMenu } from "@/app/(create)/components/action-menu"
 import { BaseColorPicker } from "@/app/(create)/components/base-color-picker"
 import { BasePicker } from "@/app/(create)/components/base-picker"
 import { FontPicker } from "@/app/(create)/components/font-picker"
@@ -20,9 +22,11 @@ import { ThemePicker } from "@/app/(create)/components/theme-picker"
 import { FONTS } from "@/app/(create)/lib/fonts"
 import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
 
-import { MainMenu } from "./main-menu"
-
-export function Customizer() {
+export function Customizer({
+  itemsByBase,
+}: {
+  itemsByBase: Record<string, Pick<RegistryItem, "name" | "title" | "type">[]>
+}) {
   const [params] = useDesignSystemSearchParams()
   const isMobile = useIsMobile()
   const anchorRef = React.useRef<HTMLDivElement | null>(null)
@@ -34,14 +38,11 @@ export function Customizer() {
 
   return (
     <div
-      className="flex flex-col gap-4 rounded-2xl border p-4 md:h-[calc(100svh---spacing(8))] md:w-64"
+      className="flex flex-col gap-4 md:h-[calc(100svh---spacing(8))] md:w-56"
       ref={anchorRef}
     >
       <div className="flex items-center gap-2">
-        <MainMenu />
-        <div className="ml-auto">
-          <ModeSwitcher />
-        </div>
+        <ActionMenu itemsByBase={itemsByBase} />
       </div>
       <div className="no-scrollbar h-14 overflow-x-auto overflow-y-hidden p-px md:h-full md:overflow-x-hidden md:overflow-y-auto">
         <FieldGroup className="flex h-full flex-1 flex-row gap-2 md:flex-col md:gap-2">
