@@ -1232,8 +1232,7 @@ describe("massageTreeForFonts", () => {
     } as any)
 
     expect(result.css["@layer base"].body).toEqual({
-      "@apply bg-background text-foreground": {},
-      "@apply font-sans": {},
+      "@apply bg-background text-foreground font-sans": {},
     })
   })
 
@@ -1277,8 +1276,7 @@ describe("massageTreeForFonts", () => {
     } as any)
 
     expect(result.css["@layer base"].body).toEqual({
-      "@apply bg-background text-foreground": {},
-      "@apply font-sans font-serif": {},
+      "@apply bg-background text-foreground font-sans font-serif": {},
     })
   })
 })

@@ -50,15 +50,24 @@ export async function massageTreeForFonts(
     }
   }
 
-  // For non-Next frameworks, apply font utility classes to body.
-  if (!isNext && tree.fonts.length > 0) {
+  // Apply font utility classes to body.
+  if (tree.fonts.length > 0) {
     const fontClasses = tree.fonts
       .map((f) => f.font.variable.replace("--", ""))
       .join(" ")
     tree.css ??= {}
     tree.css["@layer base"] ??= {}
     tree.css["@layer base"].body ??= {}
-    tree.css["@layer base"].body[`@apply ${fontClasses}`] = {}
+    // Find existing @apply key and merge, or create new.
+    const existingApplyKey = Object.keys(tree.css["@layer base"].body).find(
+      (key) => key.startsWith("@apply ")
+    )
+    if (existingApplyKey) {
+      delete tree.css["@layer base"].body[existingApplyKey]
+      tree.css["@layer base"].body[`${existingApplyKey} ${fontClasses}`] = {}
+    } else {
+      tree.css["@layer base"].body[`@apply ${fontClasses}`] = {}
+    }
   }
 
   return tree
@@ -446,8 +455,16 @@ function updateHtmlClassName(
         // Template literal - parse and convert to cn() arguments.
         const cnArgs = parseTemplateLiteralToCnArgs(exprText)
         ensureCnImport(sourceFile, config)
+        // Deduplicate cnArgs against allNewArgs.
+        const allNewArgsSet = new Set(allNewArgs)
+        const fontFamilyLiterals = new Set(
+          ["font-sans", "font-serif", "font-mono"].map((c) => `"${c}"`)
+        )
+        const cleanedCnArgs = cnArgs.filter(
+          (arg) => !allNewArgsSet.has(arg) && !fontFamilyLiterals.has(arg)
+        )
         jsxExpr.replaceWithText(
-          `{cn(${[...cnArgs, ...allNewArgs].join(", ")})}`
+          `{cn(${[...cleanedCnArgs, ...allNewArgs].join(", ")})}`
         )
       } else {
         // Some other expression (variable, etc.), wrap with cn().

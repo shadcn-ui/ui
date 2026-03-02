@@ -557,6 +557,23 @@ function processRule(parent: Root | AtRule, selector: string, properties: any) {
           )
 
           if (!existingAtRule) {
+            // For @apply, merge with existing @apply instead of creating a duplicate.
+            if (atRuleName === "apply") {
+              const existingApply = rule.nodes?.find(
+                (node): node is AtRule =>
+                  node.type === "atrule" && node.name === "apply"
+              )
+              if (existingApply) {
+                const existingClasses = new Set(
+                  existingApply.params.split(/\s+/)
+                )
+                for (const cls of atRuleParams.split(/\s+/)) {
+                  existingClasses.add(cls)
+                }
+                existingApply.params = [...existingClasses].join(" ")
+                continue
+              }
+            }
             const atRule = postcss.atRule({
               name: atRuleName,
               params: atRuleParams,
