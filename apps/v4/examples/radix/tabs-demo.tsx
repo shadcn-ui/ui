@@ -30,7 +30,7 @@ export function TabsDemo() {
               across all your active projects.
             </CardDescription>
           </CardHeader>
-          <CardContent className="text-muted-foreground text-sm">
+          <CardContent className="text-sm text-muted-foreground">
             You have 12 active projects and 3 pending tasks.
           </CardContent>
         </Card>
@@ -44,7 +44,7 @@ export function TabsDemo() {
               identify growth opportunities.
             </CardDescription>
           </CardHeader>
-          <CardContent className="text-muted-foreground text-sm">
+          <CardContent className="text-sm text-muted-foreground">
             Page views are up 25% compared to last month.
           </CardContent>
         </Card>
@@ -58,7 +58,7 @@ export function TabsDemo() {
               multiple formats for analysis.
             </CardDescription>
           </CardHeader>
-          <CardContent className="text-muted-foreground text-sm">
+          <CardContent className="text-sm text-muted-foreground">
             You have 5 reports ready and available to export.
           </CardContent>
         </Card>
@@ -72,7 +72,7 @@ export function TabsDemo() {
               experience to fit your needs.
             </CardDescription>
           </CardHeader>
-          <CardContent className="text-muted-foreground text-sm">
+          <CardContent className="text-sm text-muted-foreground">
             Configure notifications, security, and themes.
           </CardContent>
         </Card>

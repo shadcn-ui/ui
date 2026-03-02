@@ -21,9 +21,9 @@ export function SiteHeader() {
   const pageTree = source.pageTree
 
   return (
-    <header className="bg-background sticky top-0 z-50 w-full">
-      <div className="container-wrapper 3xl:fixed:px-0 px-6">
-        <div className="3xl:fixed:container flex h-(--header-height) items-center **:data-[slot=separator]:!h-4">
+    <header className="sticky top-0 z-50 w-full bg-background">
+      <div className="container-wrapper px-6 3xl:fixed:px-0">
+        <div className="flex h-(--header-height) items-center **:data-[slot=separator]:h-4! 3xl:fixed:container">
           <MobileNav
             tree={pageTree}
             items={siteConfig.navItems}
@@ -54,8 +54,8 @@ export function SiteHeader() {
               className="ml-2 hidden lg:block"
             />
             <GitHubLink />
-            <Separator orientation="vertical" className="3xl:flex hidden" />
-            <SiteConfig className="3xl:flex hidden" />
+            <Separator orientation="vertical" className="hidden 3xl:flex" />
+            <SiteConfig className="hidden 3xl:flex" />
             <Separator orientation="vertical" />
             <ModeSwitcher />
             <Separator orientation="vertical" className="mr-2" />

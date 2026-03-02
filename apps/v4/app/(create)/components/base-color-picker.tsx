@@ -39,8 +39,8 @@ export function BaseColorPicker({
       <Picker>
         <PickerTrigger>
           <div className="flex flex-col justify-start text-left">
-            <div className="text-muted-foreground text-xs">Base Color</div>
-            <div className="text-foreground text-sm font-medium">
+            <div className="text-xs text-muted-foreground">Base Color</div>
+            <div className="text-sm font-medium text-foreground">
               {currentBaseColor?.title}
             </div>
           </div>
@@ -107,7 +107,7 @@ export function BaseColorPicker({
                   <div>
                     Switch to {resolvedTheme === "dark" ? "Light" : "Dark"} Mode
                   </div>
-                  <div className="text-muted-foreground text-xs pointer-coarse:text-sm">
+                  <div className="text-xs text-muted-foreground pointer-coarse:text-sm">
                     Base colors are easier to see in dark mode.
                   </div>
                 </div>
