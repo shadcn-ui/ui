@@ -2934,13 +2934,25 @@
       }
     },
     {
-      "name": "font-lora",
-      "title": "Lora",
+      "name": "font-noto-serif",
+      "title": "Noto Serif",
       "type": "registry:font",
       "font": {
-        "family": "'Lora Variable', serif",
+        "family": "'Noto Serif Variable', serif",
         "provider": "google",
-        "import": "Lora",
+        "import": "Noto_Serif",
+        "variable": "--font-serif",
+        "subsets": ["latin"]
+      }
+    },
+    {
+      "name": "font-roboto-slab",
+      "title": "Roboto Slab",
+      "type": "registry:font",
+      "font": {
+        "family": "'Roboto Slab Variable', serif",
+        "provider": "google",
+        "import": "Roboto_Slab",
         "variable": "--font-serif",
         "subsets": ["latin"]
       }
@@ -2953,6 +2965,18 @@
         "family": "'Merriweather Variable', serif",
         "provider": "google",
         "import": "Merriweather",
+        "variable": "--font-serif",
+        "subsets": ["latin"]
+      }
+    },
+    {
+      "name": "font-lora",
+      "title": "Lora",
+      "type": "registry:font",
+      "font": {
+        "family": "'Lora Variable', serif",
+        "provider": "google",
+        "import": "Lora",
         "variable": "--font-serif",
         "subsets": ["latin"]
       }

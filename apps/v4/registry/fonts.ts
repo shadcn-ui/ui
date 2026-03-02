@@ -144,15 +144,27 @@ export const fonts = [
     },
   },
   {
-    name: "font-lora",
-    title: "Lora",
+    name: "font-noto-serif",
+    title: "Noto Serif",
     type: "registry:font",
     font: {
-      family: "'Lora Variable', serif",
+      family: "'Noto Serif Variable', serif",
       provider: "google",
       variable: "--font-serif",
       subsets: ["latin"],
-      import: "Lora",
+      import: "Noto_Serif",
+    },
+  },
+  {
+    name: "font-roboto-slab",
+    title: "Roboto Slab",
+    type: "registry:font",
+    font: {
+      family: "'Roboto Slab Variable', serif",
+      provider: "google",
+      variable: "--font-serif",
+      subsets: ["latin"],
+      import: "Roboto_Slab",
     },
   },
   {
@@ -165,6 +177,18 @@ export const fonts = [
       variable: "--font-serif",
       subsets: ["latin"],
       import: "Merriweather",
+    },
+  },
+  {
+    name: "font-lora",
+    title: "Lora",
+    type: "registry:font",
+    font: {
+      family: "'Lora Variable', serif",
+      provider: "google",
+      variable: "--font-serif",
+      subsets: ["latin"],
+      import: "Lora",
     },
   },
   {
