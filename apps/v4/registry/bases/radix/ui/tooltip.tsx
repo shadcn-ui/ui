@@ -48,7 +48,12 @@ function TooltipContent({
         {...props}
       >
         {children}
-        <TooltipPrimitive.Arrow className="cn-tooltip-arrow bg-foreground fill-foreground z-50 translate-y-[calc(-50%_-_2px)]" />
+        <TooltipPrimitive.Arrow
+          className={cn(
+            "cn-tooltip-arrow bg-foreground fill-foreground z-50 translate-y-[calc(-50%_-_2px)]",
+            className
+          )}
+        />
       </TooltipPrimitive.Content>
     </TooltipPrimitive.Portal>
   )
