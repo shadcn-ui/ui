@@ -183,15 +183,14 @@ export const Index: Record<string, Record<string, any>> = {`
         target: "${file.target ?? ""}"
       }`
       })}],
-      component: ${
-        componentPath
+      component: ${componentPath
           ? `React.lazy(async () => {
         const mod = await import("${componentPath}")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       })`
           : "null"
-      },
+        },
       categories: ${JSON.stringify(item.categories)},
       meta: ${JSON.stringify(item.meta)},
     },`
@@ -386,15 +385,14 @@ export const Index: Record<string, Record<string, any>> = {`
         target: "${file.target ?? ""}"
       }`
       })}],
-      component: ${
-        componentPath
+      component: ${componentPath
           ? `React.lazy(async () => {
         const mod = await import("${componentPath}")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       })`
           : "null"
-      },
+        },
       categories: ${JSON.stringify(item.categories)},
       meta: ${JSON.stringify(item.meta)},
     },`
@@ -667,11 +665,14 @@ async function batchPrettier(paths: string[]) {
   if (paths.length === 0) return
 
   await new Promise<void>((resolve, reject) => {
-    const prettierBin = path.join(process.cwd(), "node_modules/.bin/prettier")
-    const proc = spawn(prettierBin, ["--write", ...paths], {
-      cwd: process.cwd(),
-      stdio: "inherit",
-    })
+    const proc = spawn(
+      process.platform === "win32" ? "pnpm.cmd" : "pnpm",
+      ["exec", "prettier", "--write", ...paths],
+      {
+        cwd: process.cwd(),
+        stdio: "inherit",
+      }
+    )
     proc.on("close", () => resolve())
     proc.on("error", reject)
   })

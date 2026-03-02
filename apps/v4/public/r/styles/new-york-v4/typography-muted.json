@@ -4,15 +4,7 @@
   "files": [
     {
       "path": "registry/new-york-v4/examples/typography-muted.tsx",
-<<<<<<< HEAD
-<<<<<<< HEAD
-      "content": "export default function TypographyMuted() {\n  return (\n    <p className=\"text-sm text-muted-foreground\">Enter your email address.</p>\n  )\n}\n",
-=======
-      "content": "export default function TypographyMuted() {\r\n  return (\r\n    <p className=\"text-muted-foreground text-sm\">Enter your email address.</p>\r\n  )\r\n}\r\n",
->>>>>>> 6140d8af (chore(registry): rebuild registry after checkbox disabled fix)
-=======
-      "content": "export default function TypographyMuted() {\r\n  return (\r\n    <p className=\"text-muted-foreground text-sm\">Enter your email address.</p>\r\n  )\r\n}\r\n",
->>>>>>> 47c59a89073ecd397bcc66e8f23edef1afaccc57
+      "content": "export default function TypographyMuted() {\r\n  return (\r\n    <p className=\"text-sm text-muted-foreground\">Enter your email address.</p>\r\n  )\r\n}\r\n",
       "type": "registry:example"
     }
   ],
