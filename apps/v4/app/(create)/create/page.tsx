@@ -83,12 +83,12 @@ export default async function CreatePage({
   return (
     <div
       data-slot="layout"
-      className="section-soft relative z-10 flex min-h-svh flex-col"
+      className="relative z-10 flex min-h-svh flex-col section-soft"
     >
       <header className="sticky top-0 z-50 w-full">
-        <div className="container-wrapper 3xl:fixed:px-0 px-6">
-          <div className="3xl:fixed:container flex h-(--header-height) items-center **:data-[slot=separator]:h-4!">
-            <div className="3xl:fixed:container flex h-(--header-height) items-center **:data-[slot=separator]:h-4!">
+        <div className="container-wrapper px-6 3xl:fixed:px-0">
+          <div className="flex h-(--header-height) items-center **:data-[slot=separator]:h-4! 3xl:fixed:container">
+            <div className="flex h-(--header-height) items-center **:data-[slot=separator]:h-4! 3xl:fixed:container">
               <MobileNav
                 tree={pageTree}
                 items={siteConfig.navItems}
@@ -116,8 +116,8 @@ export default async function CreatePage({
               <Separator orientation="vertical" className="mr-2 flex" />
             </div>
             <div className="ml-auto flex items-center gap-2 sm:ml-0 md:justify-end">
-              <SiteConfig className="3xl:flex hidden" />
-              <Separator orientation="vertical" className="3xl:flex hidden" />
+              <SiteConfig className="hidden 3xl:flex" />
+              <Separator orientation="vertical" className="hidden 3xl:flex" />
               <ModeSwitcher />
               <Separator
                 orientation="vertical"
@@ -134,7 +134,7 @@ export default async function CreatePage({
         <SidebarProvider className="flex h-auto min-h-min flex-1 flex-col items-start overflow-hidden px-0">
           <div
             data-slot="designer"
-            className="3xl:fixed:container flex w-full flex-1 flex-col gap-2 p-6 pt-1 pb-4 [--sidebar-width:--spacing(40)] sm:gap-2 sm:pt-2 md:flex-row md:pb-6 2xl:gap-6"
+            className="flex w-full flex-1 flex-col gap-2 p-6 pt-1 pb-4 [--sidebar-width:--spacing(40)] sm:gap-2 sm:pt-2 md:flex-row md:pb-6 2xl:gap-6 3xl:fixed:container"
           >
             <ItemExplorer base={base.name} items={filteredItems} />
             <Preview />

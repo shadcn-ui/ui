@@ -401,7 +401,7 @@ export function DataTableRtl() {
         </Table>
       </div>
       <div className="flex items-center justify-end gap-2 py-4">
-        <div className="text-muted-foreground flex-1 text-sm">
+        <div className="flex-1 text-sm text-muted-foreground">
           {table.getFilteredSelectedRowModel().rows.length} {t.rowsSelected}{" "}
           {table.getFilteredRowModel().rows.length} {t.rowsSelectedSuffix}
         </div>

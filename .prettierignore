@@ -5,3 +5,4 @@ build
 .contentlayer
 **/fixtures
 deprecated
+packages

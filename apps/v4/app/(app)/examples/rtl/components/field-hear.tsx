@@ -63,7 +63,7 @@ export function FieldHear() {
                     <FieldLabel
                       htmlFor={`rtl-${option.value}`}
                       key={option.value}
-                      className="!w-fit"
+                      className="w-fit!"
                     >
                       <Field
                         orientation="horizontal"

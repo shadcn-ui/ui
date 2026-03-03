@@ -45,14 +45,14 @@ export function TemplatePicker({
     <Picker>
       <PickerTrigger className="hidden md:flex">
         <div className="flex flex-col justify-start text-left">
-          <div className="text-muted-foreground text-xs">Template</div>
-          <div className="text-foreground text-sm font-medium">
+          <div className="text-xs text-muted-foreground">Template</div>
+          <div className="text-sm font-medium text-foreground">
             {currentTemplate?.title}
           </div>
         </div>
         {currentTemplate?.logo && (
           <div
-            className="text-foreground *:[svg]:text-foreground! pointer-events-none absolute top-1/2 right-4 size-4 -translate-y-1/2 select-none *:[svg]:size-4"
+            className="pointer-events-none absolute top-1/2 right-4 size-4 -translate-y-1/2 text-foreground select-none *:[svg]:size-4 *:[svg]:text-foreground!"
             dangerouslySetInnerHTML={{
               __html: currentTemplate.logo,
             }}
@@ -77,7 +77,7 @@ export function TemplatePicker({
               <PickerRadioItem key={template.value} value={template.value}>
                 {template.logo && (
                   <div
-                    className="text-foreground *:[svg]:text-foreground! size-4 shrink-0 [&_svg]:size-4"
+                    className="size-4 shrink-0 text-foreground [&_svg]:size-4 *:[svg]:text-foreground!"
                     dangerouslySetInnerHTML={{
                       __html: template.logo,
                     }}

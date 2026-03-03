@@ -102,7 +102,7 @@ function DrawerBottom() {
                 <div className="text-7xl font-bold tracking-tighter">
                   {goal}
                 </div>
-                <div className="text-muted-foreground text-[0.70rem] uppercase">
+                <div className="text-[0.70rem] text-muted-foreground uppercase">
                   Calories/day
                 </div>
               </div>

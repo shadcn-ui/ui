@@ -116,7 +116,7 @@ export function InputGroupDemo() {
             </DropdownMenuContent>
           </DropdownMenu>
           <InputGroupText className="ms-auto">{t.used}</InputGroupText>
-          <Separator orientation="vertical" className="!h-4" />
+          <Separator orientation="vertical" className="h-4!" />
           <InputGroupButton
             variant="default"
             className="rounded-full"
@@ -130,7 +130,7 @@ export function InputGroupDemo() {
       <InputGroup>
         <InputGroupInput placeholder="shadcn" />
         <InputGroupAddon align="inline-end">
-          <div className="bg-primary text-foreground flex size-4 items-center justify-center rounded-full">
+          <div className="flex size-4 items-center justify-center rounded-full bg-primary text-foreground">
             <IconCheck className="size-3 text-white" />
           </div>
         </InputGroupAddon>
