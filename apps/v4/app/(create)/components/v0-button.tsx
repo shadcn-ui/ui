@@ -3,11 +3,6 @@
 import * as React from "react"
 import { Button } from "@/examples/base/ui/button"
 import { Skeleton } from "@/examples/base/ui/skeleton"
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/examples/base/ui/tooltip"
 
 import { cn } from "@/lib/utils"
 import { useIsMobile } from "@/hooks/use-mobile"
@@ -20,7 +15,6 @@ export function V0Button({ className }: { className?: string }) {
   const isMobile = useIsMobile()
   const isMounted = useMounted()
 
-  // Memoize to avoid string concatenation on every render. (rerender-derived-state)
   const url = React.useMemo(
     () =>
       `${process.env.NEXT_PUBLIC_APP_URL}/create/v0?base=${params.base}&style=${params.style}&baseColor=${params.baseColor}&theme=${params.theme}&iconLibrary=${params.iconLibrary}&font=${params.font}&menuAccent=${params.menuAccent}&menuColor=${params.menuColor}&radius=${params.radius}&item=${params.item}`,
@@ -48,7 +42,7 @@ export function V0Button({ className }: { className?: string }) {
       role="link"
       variant={isMobile ? "default" : "outline"}
       className={cn(
-        "w-24 gap-1 data-[variant=default]:h-[31px] lg:w-8 xl:w-24",
+        "gap-1 pointer-coarse:h-10! pointer-coarse:text-sm!",
         className
       )}
       render={

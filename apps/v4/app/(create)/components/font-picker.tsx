@@ -69,7 +69,7 @@ export function FontPicker({
             </div>
           </div>
           <div
-            className="pointer-events-none absolute top-1/2 right-2 flex size-4 -translate-y-1/2 items-center justify-center text-base text-foreground select-none"
+            className="pointer-events-none absolute top-1/2 right-4 flex size-4 -translate-y-1/2 items-center justify-center text-base text-foreground select-none md:right-2"
             style={{ fontFamily: currentFont?.font.style.fontFamily }}
           >
             Aa
@@ -91,7 +91,11 @@ export function FontPicker({
               <PickerGroup key={group.type}>
                 <PickerLabel>{group.label}</PickerLabel>
                 {group.items.map((font) => (
-                  <PickerRadioItem key={font.value} value={font.value}>
+                  <PickerRadioItem
+                    key={font.value}
+                    value={font.value}
+                    closeOnClick={isMobile}
+                  >
                     {font.name}
                   </PickerRadioItem>
                 ))}

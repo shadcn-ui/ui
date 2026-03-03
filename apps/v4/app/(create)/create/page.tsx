@@ -1,5 +1,4 @@
 import { type Metadata } from "next"
-import { Agentation } from "agentation"
 
 import { siteConfig } from "@/lib/config"
 import { absoluteUrl } from "@/lib/utils"
@@ -69,18 +68,17 @@ export default async function CreatePage() {
   return (
     <div
       data-slot="layout"
-      className="group/layout relative z-10 flex h-screen flex-col overflow-hidden section-soft [--customizer-width:--spacing(56)] [--gap:--spacing(6)]"
+      className="group/layout relative z-10 flex h-svh flex-col overflow-hidden section-soft [--customizer-width:--spacing(56)] [--gap:--spacing(4)] md:[--gap:--spacing(6)]"
     >
       <SiteHeader />
       <main
         data-slot="designer"
-        className="flex min-h-0 w-full flex-1 flex-row gap-(--gap) p-(--gap) pt-3 group-data-reversed/layout:flex-row-reverse"
+        className="flex min-h-0 flex-1 flex-col gap-(--gap) p-(--gap) pt-[calc(var(--gap)*0.25)] md:flex-row-reverse"
       >
-        <Customizer itemsByBase={itemsByBase} />
         <Preview />
+        <Customizer itemsByBase={itemsByBase} />
         <PresetHandler />
         <WelcomeDialog />
-        {process.env.NODE_ENV === "development" && <Agentation />}
       </main>
     </div>
   )

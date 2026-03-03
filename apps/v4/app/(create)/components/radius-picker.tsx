@@ -42,7 +42,7 @@ export function RadiusPicker({
               {currentRadius?.label}
             </div>
           </div>
-          <div className="pointer-events-none absolute top-1/2 right-2 flex size-4 -translate-y-1/2 rotate-90 items-center justify-center text-base text-foreground select-none">
+          <div className="pointer-events-none absolute top-1/2 right-4 flex size-4 -translate-y-1/2 rotate-90 items-center justify-center text-base text-foreground select-none md:right-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -80,6 +80,7 @@ export function RadiusPicker({
                 <PickerRadioItem
                   key={defaultRadius.name}
                   value={defaultRadius.name}
+                  closeOnClick={isMobile}
                 >
                   {defaultRadius.label}
                 </PickerRadioItem>
@@ -88,7 +89,11 @@ export function RadiusPicker({
             <PickerSeparator />
             <PickerGroup>
               {otherRadii.map((radius) => (
-                <PickerRadioItem key={radius.name} value={radius.name}>
+                <PickerRadioItem
+                  key={radius.name}
+                  value={radius.name}
+                  closeOnClick={isMobile}
+                >
                   {radius.label}
                 </PickerRadioItem>
               ))}

@@ -5,22 +5,36 @@ import { Button } from "@/examples/base/ui/button"
 import { DiceFaces05Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 
+import { cn } from "@/lib/utils"
 import { useRandom } from "@/app/(create)/hooks/use-random"
 
 export const RANDOMIZE_FORWARD_TYPE = "randomize-forward"
 
 export function RandomButton({
   variant = "outline",
+  className,
   ...props
 }: React.ComponentProps<typeof Button>) {
   const { randomize } = useRandom()
 
   return (
-    <Button variant={variant} onClick={randomize} {...props}>
+    <Button
+      variant={variant}
+      onClick={randomize}
+      className={cn(
+        "h-17! w-42 touch-manipulation justify-between rounded-xl bg-transparent! p-4 text-sm! select-none md:hidden",
+        className
+      )}
+      {...props}
+    >
+      <div className="flex touch-manipulation flex-col justify-start text-left">
+        <div className="text-xs text-muted-foreground">Shuffle</div>
+        <div className="text-sm font-medium text-foreground">Try Random</div>
+      </div>
       <HugeiconsIcon
         icon={DiceFaces05Icon}
         strokeWidth={2}
-        className="size-4"
+        className="size-5"
       />
     </Button>
   )

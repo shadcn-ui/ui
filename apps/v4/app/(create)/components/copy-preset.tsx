@@ -2,8 +2,6 @@
 
 import * as React from "react"
 import { Button } from "@/examples/base/ui/button"
-import { Copy01Icon, Tick02Icon } from "@hugeicons/core-free-icons"
-import { HugeiconsIcon } from "@hugeicons/react"
 
 import { cn } from "@/lib/utils"
 import { copyToClipboardWithMeta } from "@/components/copy-button"
@@ -35,17 +33,11 @@ export function CopyPreset({ className }: React.ComponentProps<typeof Button>) {
       variant="outline"
       onClick={handleCopy}
       className={cn(
-        "justify-between font-mono text-xs transition-none",
+        "font-mono text-[0.825rem] transition-none pointer-coarse:h-10! pointer-coarse:text-sm!",
         className
       )}
     >
-      <span>--preset {presetCode}</span>
-      <HugeiconsIcon
-        icon={hasCopied ? Tick02Icon : Copy01Icon}
-        strokeWidth={2}
-        data-icon="inline-end"
-        className="size-3"
-      />
+      <span>{hasCopied ? "Copied" : `--preset ${presetCode}`}</span>
     </Button>
   )
 }

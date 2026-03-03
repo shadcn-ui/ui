@@ -64,7 +64,7 @@ export function ThemePicker({
                     ],
                 } as React.CSSProperties
               }
-              className="pointer-events-none absolute top-1/2 right-2 size-4 -translate-y-1/2 rounded-full bg-(--color) select-none"
+              className="pointer-events-none absolute top-1/2 right-4 size-4 -translate-y-1/2 rounded-full bg-(--color) select-none md:right-2"
             />
           )}
         </PickerTrigger>
@@ -87,7 +87,11 @@ export function ThemePicker({
                 )
                 .map((theme) => {
                   return (
-                    <PickerRadioItem key={theme.name} value={theme.name}>
+                    <PickerRadioItem
+                      key={theme.name}
+                      value={theme.name}
+                      closeOnClick={isMobile}
+                    >
                       {theme.title}
                     </PickerRadioItem>
                   )
@@ -104,7 +108,11 @@ export function ThemePicker({
                 )
                 .map((theme) => {
                   return (
-                    <PickerRadioItem key={theme.name} value={theme.name}>
+                    <PickerRadioItem
+                      key={theme.name}
+                      value={theme.name}
+                      closeOnClick={isMobile}
+                    >
                       {theme.title}
                     </PickerRadioItem>
                   )

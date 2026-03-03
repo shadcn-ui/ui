@@ -29,6 +29,7 @@ import { RandomButton } from "@/app/(create)/components/random-button"
 import { ResetDialog } from "@/app/(create)/components/reset-button"
 import { StylePicker } from "@/app/(create)/components/style-picker"
 import { ThemePicker } from "@/app/(create)/components/theme-picker"
+import { V0Button } from "@/app/(create)/components/v0-button"
 import { FONTS } from "@/app/(create)/lib/fonts"
 import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
 
@@ -48,16 +49,17 @@ export function Customizer({
 
   return (
     <Card
-      className="dark top-24 right-12 isolate z-10 max-h-full min-h-0 gap-0 self-start rounded-2xl bg-card/90 backdrop-blur-xl md:w-(--customizer-width)"
+      className="dark top-24 right-12 isolate z-10 max-h-full min-h-0 w-full self-start rounded-2xl bg-card/90 shadow-xl backdrop-blur-xl md:w-(--customizer-width)"
       ref={anchorRef}
       size="sm"
     >
-      <CardHeader className="flex items-center justify-between gap-2 border-b px-3! group-data-reversed/layout:flex-row-reverse">
-        <CopyPreset />
-        <MainMenu className="ring-1 ring-foreground/10" />
+      <CardHeader className="hidden items-center justify-between gap-2 border-b group-data-reversed/layout:flex-row-reverse md:flex">
+        <CopyPreset className="flex-1 px-1.5!" />
+        <MainMenu className="rounded-lg ring-1 ring-foreground/10" />
       </CardHeader>
-      <CardContent className="no-scrollbar min-h-0 flex-1 overflow-y-auto">
-        <FieldGroup className="gap-3.5 py-px">
+      <CardContent className="no-scrollbar min-h-0 flex-1 overflow-x-auto overflow-y-hidden md:overflow-y-auto">
+        <FieldGroup className="flex-row gap-2.5 py-px md:flex-col md:gap-3.5">
+          <RandomButton />
           <BasePicker isMobile={isMobile} anchorRef={anchorRef} />
           <StylePicker
             styles={STYLES}
@@ -77,8 +79,10 @@ export function Customizer({
           <MenuAccentPicker isMobile={isMobile} anchorRef={anchorRef} />
         </FieldGroup>
       </CardContent>
-      <CardFooter className="flex min-w-0 flex-col gap-2">
-        <ProjectForm className="w-full" />
+      <CardFooter className="flex min-w-0 gap-2 md:flex-col md:**:[button,a]:w-full">
+        <CopyPreset className="max-w-42 flex-1 md:hidden" />
+        <V0Button className="ml-auto max-w-42 flex-1 shrink-0 md:max-w-full md:flex-none" />
+        <ProjectForm />
         <ActionMenu itemsByBase={itemsByBase} />
         <ResetDialog />
       </CardFooter>

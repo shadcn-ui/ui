@@ -125,7 +125,14 @@ export function ProjectForm({
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger
-        render={<Button className={cn("hidden md:flex", className)} />}
+        render={
+          <Button
+            className={cn(
+              "hidden md:flex pointer-coarse:h-10! pointer-coarse:text-sm!",
+              className
+            )}
+          />
+        }
       >
         Create Project
       </DialogTrigger>

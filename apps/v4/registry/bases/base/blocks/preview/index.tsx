@@ -35,20 +35,25 @@ import { WeeklyFitnessSummary } from "@/registry/bases/base/blocks/preview/cards
 
 export default function PreviewExample() {
   return (
-    <div className="overflow-x-auto overflow-y-hidden contain-[paint] [--gap:--spacing(10)] 3xl:[--gap:--spacing(12)]">
+    <div className="overflow-x-auto overflow-y-hidden contain-[paint] [--gap:--spacing(4)] 3xl:[--gap:--spacing(12)] md:[--gap:--spacing(10)]">
       <div
-        className="grid w-[3000px] grid-cols-7 items-start gap-(--gap) bg-muted p-(--gap) dark:bg-background *:[div]:gap-(--gap)"
+        className="grid w-[2400px] grid-cols-7 items-start gap-(--gap) bg-muted p-(--gap) md:w-[3000px] dark:bg-background *:[div]:gap-(--gap)"
         data-slot="capture-target"
       >
         <div className="flex flex-col">
           <StyleOverview />
+          <div className="md:hidden">
+            <UIElements />
+          </div>
           <CodespacesCard />
           <BarVisualizerCard />
           <Invoice />
         </div>
         <div className="flex flex-col">
           <IconPreviewGrid />
-          <UIElements />
+          <div className="hidden w-full md:flex">
+            <UIElements />
+          </div>
           <ObservabilityCard />
           <Visitors />
           <Shortcuts />

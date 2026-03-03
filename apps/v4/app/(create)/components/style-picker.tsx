@@ -38,7 +38,7 @@ export function StylePicker({
             </div>
           </div>
           {currentStyle?.icon && (
-            <div className="pointer-events-none absolute top-1/2 right-2 flex size-4 -translate-y-1/2 items-center justify-center select-none">
+            <div className="pointer-events-none absolute top-1/2 right-4 flex size-4 -translate-y-1/2 items-center justify-center select-none md:right-2">
               {React.cloneElement(currentStyle.icon, {
                 className: "size-4",
               })}
@@ -58,7 +58,11 @@ export function StylePicker({
           >
             <PickerGroup>
               {styles.map((style) => (
-                <PickerRadioItem value={style.name} key={style.name}>
+                <PickerRadioItem
+                  value={style.name}
+                  key={style.name}
+                  closeOnClick={isMobile}
+                >
                   {style.title}
                 </PickerRadioItem>
               ))}

@@ -119,7 +119,7 @@ export function Preview() {
   }, [params.base, params.item])
 
   return (
-    <div className="relative flex flex-1 flex-col justify-center overflow-hidden rounded-2xl ring ring-foreground/10">
+    <div className="relative flex flex-1 flex-col justify-center overflow-hidden rounded-2xl ring ring-foreground/10 md:ring-transparent dark:ring-foreground/10">
       <div className="relative z-0 mx-auto flex w-full flex-1 flex-col overflow-hidden">
         <div className="absolute inset-0 bg-muted dark:bg-muted/30" />
         <iframe
