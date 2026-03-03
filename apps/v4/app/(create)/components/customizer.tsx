@@ -48,11 +48,11 @@ export function Customizer({
 
   return (
     <Card
-      className="dark max-h-full min-h-0 gap-0 self-start rounded-2xl md:w-(--customizer-width)"
+      className="dark top-24 right-12 isolate z-10 max-h-full min-h-0 gap-0 self-start rounded-2xl bg-card/90 backdrop-blur-xl md:w-(--customizer-width)"
       ref={anchorRef}
       size="sm"
     >
-      <CardHeader className="flex items-center justify-between gap-2 border-b px-3!">
+      <CardHeader className="flex items-center justify-between gap-2 border-b px-3! group-data-reversed/layout:flex-row-reverse">
         <CopyPreset />
         <MainMenu className="ring-1 ring-foreground/10" />
       </CardHeader>

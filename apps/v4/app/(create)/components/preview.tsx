@@ -1,10 +1,8 @@
 "use client"
 
 import * as React from "react"
-import { Badge } from "@/examples/base/ui/badge"
 
 import { CMD_K_FORWARD_TYPE } from "@/app/(create)/components/action-menu"
-import { CopyPreset } from "@/app/(create)/components/copy-preset"
 import {
   REDO_FORWARD_TYPE,
   UNDO_FORWARD_TYPE,
@@ -131,7 +129,6 @@ export function Preview() {
           className="z-10 size-full flex-1"
           title="Preview"
         />
-        <CopyPreset className="absolute top-4 right-4 isolate z-10" />
       </div>
     </div>
   )

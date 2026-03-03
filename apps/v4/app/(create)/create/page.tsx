@@ -69,12 +69,12 @@ export default async function CreatePage() {
   return (
     <div
       data-slot="layout"
-      className="relative z-10 flex h-screen flex-col overflow-hidden section-soft [--customizer-width:--spacing(56)] [--gap:--spacing(6)]"
+      className="group/layout relative z-10 flex h-screen flex-col overflow-hidden section-soft [--customizer-width:--spacing(56)] [--gap:--spacing(6)]"
     >
       <SiteHeader />
       <main
         data-slot="designer"
-        className="flex min-h-0 w-full flex-1 flex-col-reverse gap-(--gap) p-(--gap) pt-3 md:flex-row"
+        className="flex min-h-0 w-full flex-1 flex-row gap-(--gap) p-(--gap) pt-3 group-data-reversed/layout:flex-row-reverse"
       >
         <Customizer itemsByBase={itemsByBase} />
         <Preview />
