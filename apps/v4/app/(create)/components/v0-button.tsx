@@ -52,7 +52,7 @@ export function V0Button({ className }: { className?: string }) {
         />
       }
     >
-      <span className="lg:hidden xl:block">Open in</span>
+      <span>Open in</span>
       <Icons.v0 className="size-5" data-icon="inline-end" />
     </Button>
   )

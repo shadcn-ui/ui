@@ -1,6 +1,4 @@
 import Link from "next/link"
-import { PlusSignIcon } from "@hugeicons/core-free-icons"
-import { HugeiconsIcon } from "@hugeicons/react"
 
 import { getColors } from "@/lib/colors"
 import { siteConfig } from "@/lib/config"
@@ -15,6 +13,8 @@ import { SiteConfig } from "@/components/site-config"
 // import blocks from "@/registry/__blocks__.json"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import { Separator } from "@/registry/new-york-v4/ui/separator"
+import { ProjectForm } from "@/app/(create)/components/project-form"
+import { V0Button } from "@/app/(create)/components/v0-button"
 
 export function SiteHeader() {
   const colors = getColors()
@@ -58,6 +58,11 @@ export function SiteHeader() {
             <SiteConfig className="hidden 3xl:flex" />
             <Separator orientation="vertical" />
             <ModeSwitcher />
+            <div className="hidden items-center gap-2 group-has-data-[slot=designer]/layout:md:flex">
+              <Separator orientation="vertical" />
+              <V0Button />
+              <ProjectForm />
+            </div>
           </div>
         </div>
       </div>

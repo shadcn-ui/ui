@@ -128,7 +128,7 @@ export function ProjectForm({
         render={
           <Button
             className={cn(
-              "hidden md:flex pointer-coarse:h-10! pointer-coarse:text-sm!",
+              "pointer-coarse:h-10! pointer-coarse:text-sm!",
               className
             )}
           />

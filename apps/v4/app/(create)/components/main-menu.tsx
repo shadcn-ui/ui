@@ -1,17 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { useRouter } from "next/navigation"
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-} from "@/examples/base/ui/alert-dialog"
 import { type Button } from "@/examples/base/ui/button"
 import { Menu09Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
@@ -35,9 +24,7 @@ import { useThemeToggle } from "@/app/(create)/hooks/use-theme-toggle"
 const APPLE_PLATFORM_REGEX = /Mac|iPhone|iPad|iPod/
 
 export function MainMenu({ className }: React.ComponentProps<typeof Button>) {
-  const router = useRouter()
   const [isMac, setIsMac] = React.useState(false)
-  const [showExitDialog, setShowExitDialog] = React.useState(false)
   const { canGoBack, canGoForward, goBack, goForward } = useHistory()
   const { openActionMenu } = useActionMenuTrigger()
   const { randomize } = useRandom()
@@ -55,14 +42,14 @@ export function MainMenu({ className }: React.ComponentProps<typeof Button>) {
       <Picker>
         <PickerTrigger
           className={cn(
-            "flex size-8! items-center gap-2 ring-0 focus-visible:ring-1",
+            "flex items-center justify-between gap-2 rounded-lg px-1.75 ring-1 ring-foreground/10 focus-visible:ring-1",
             className
           )}
         >
-          <span className="sr-only">Menu</span>
+          <span className="font-medium">Menu</span>
           <HugeiconsIcon icon={Menu09Icon} strokeWidth={2} className="size-5" />
         </PickerTrigger>
-        <PickerContent side="right">
+        <PickerContent side="right" align="start" alignOffset={-8}>
           <PickerGroup>
             <PickerItem onClick={openActionMenu}>
               Quick actions{" "}
@@ -89,31 +76,8 @@ export function MainMenu({ className }: React.ComponentProps<typeof Button>) {
               Reset
             </PickerItem>
           </PickerGroup>
-          <PickerSeparator />
-          <PickerGroup>
-            <PickerItem onClick={() => setShowExitDialog(true)}>
-              Exit
-            </PickerItem>
-          </PickerGroup>
         </PickerContent>
       </Picker>
-      <AlertDialog open={showExitDialog} onOpenChange={setShowExitDialog}>
-        <AlertDialogContent size="sm">
-          <AlertDialogHeader>
-            <AlertDialogTitle>Discard changes and exit?</AlertDialogTitle>
-            <AlertDialogDescription>
-              You will lose your current changes and be taken back to the home
-              page.
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction onClick={() => router.push("/")}>
-              Leave
-            </AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
     </React.Fragment>
   )
 }
