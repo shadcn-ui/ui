@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { useTheme } from "next-themes"
 
 import { useMounted } from "@/hooks/use-mounted"
 import { BASE_COLORS, type Theme, type ThemeName } from "@/registry/config"
@@ -26,7 +25,6 @@ export function ThemePicker({
   isMobile: boolean
   anchorRef: React.RefObject<HTMLDivElement | null>
 }) {
-  const { resolvedTheme } = useTheme()
   const mounted = useMounted()
   const [params, setParams] = useDesignSystemSearchParams()
 
@@ -56,19 +54,17 @@ export function ThemePicker({
               {currentTheme?.title}
             </div>
           </div>
-          {mounted && resolvedTheme && (
+          {mounted && (
             <div
               style={
                 {
                   "--color":
-                    currentTheme?.cssVars?.[
-                      resolvedTheme as "light" | "dark"
-                    ]?.[
+                    currentTheme?.cssVars?.dark?.[
                       currentThemeIsBaseColor ? "muted-foreground" : "primary"
                     ],
                 } as React.CSSProperties
               }
-              className="pointer-events-none absolute top-1/2 right-4 size-4 -translate-y-1/2 rounded-full bg-(--color) select-none"
+              className="pointer-events-none absolute top-1/2 right-2 size-4 -translate-y-1/2 rounded-full bg-(--color) select-none"
             />
           )}
         </PickerTrigger>
@@ -90,34 +86,9 @@ export function ThemePicker({
                   BASE_COLORS.find((baseColor) => baseColor.name === theme.name)
                 )
                 .map((theme) => {
-                  const isBaseColor = BASE_COLORS.find(
-                    (baseColor) => baseColor.name === theme.name
-                  )
                   return (
                     <PickerRadioItem key={theme.name} value={theme.name}>
-                      <div className="flex items-start gap-2">
-                        {mounted && resolvedTheme && (
-                          <div
-                            style={
-                              {
-                                "--color":
-                                  theme.cssVars?.[
-                                    resolvedTheme as "light" | "dark"
-                                  ]?.[
-                                    isBaseColor ? "muted-foreground" : "primary"
-                                  ],
-                              } as React.CSSProperties
-                            }
-                            className="size-4 translate-y-1 rounded-full bg-(--color)"
-                          />
-                        )}
-                        <div className="flex flex-col justify-start pointer-coarse:gap-1">
-                          <div>{theme.title}</div>
-                          <div className="text-xs text-muted-foreground pointer-coarse:text-sm">
-                            Match base color
-                          </div>
-                        </div>
-                      </div>
+                      {theme.title}
                     </PickerRadioItem>
                   )
                 })}
@@ -134,22 +105,7 @@ export function ThemePicker({
                 .map((theme) => {
                   return (
                     <PickerRadioItem key={theme.name} value={theme.name}>
-                      <div className="flex items-center gap-2">
-                        {mounted && resolvedTheme && (
-                          <div
-                            style={
-                              {
-                                "--color":
-                                  theme.cssVars?.[
-                                    resolvedTheme as "light" | "dark"
-                                  ]?.["primary"],
-                              } as React.CSSProperties
-                            }
-                            className="size-4 rounded-full bg-(--color)"
-                          />
-                        )}
-                        {theme.title}
-                      </div>
+                      {theme.title}
                     </PickerRadioItem>
                   )
                 })}
@@ -159,7 +115,7 @@ export function ThemePicker({
       </Picker>
       <LockButton
         param="theme"
-        className="absolute top-1/2 right-10 -translate-y-1/2"
+        className="absolute top-1/2 right-8 -translate-y-1/2"
       />
     </div>
   )

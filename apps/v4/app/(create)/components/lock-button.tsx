@@ -1,11 +1,6 @@
 "use client"
 
 import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/examples/base/ui/tooltip"
-import {
   SquareLock01Icon,
   SquareUnlock01Icon,
 } from "@hugeicons/core-free-icons"
@@ -32,7 +27,7 @@ export function LockButton({
       onClick={() => toggleLock(param)}
       data-locked={locked}
       className={cn(
-        "flex size-4 cursor-pointer items-center justify-center rounded opacity-0 transition-opacity group-focus-within/picker:opacity-100 group-hover/picker:opacity-100 focus:opacity-100 data-[locked=true]:opacity-100 pointer-coarse:hidden",
+        "flex size-4 cursor-pointer items-center justify-center rounded opacity-0 ring-foreground/60 transition-opacity outline-none group-focus-within/picker:opacity-100 group-hover/picker:opacity-100 focus:opacity-100 focus-visible:ring-1 data-[locked=true]:opacity-100 pointer-coarse:hidden",
         className
       )}
     >

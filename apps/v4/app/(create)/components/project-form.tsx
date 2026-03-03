@@ -32,6 +32,7 @@ import {
 import { Copy01Icon, Globe02Icon, Tick02Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 
+import { cn } from "@/lib/utils"
 import { useConfig } from "@/hooks/use-config"
 import { copyToClipboardWithMeta } from "@/components/copy-button"
 import { usePresetCode } from "@/app/(create)/hooks/use-design-system"
@@ -53,7 +54,9 @@ const IS_LOCAL_DEV = ORIGIN.includes("localhost")
 const PACKAGE_MANAGERS = ["pnpm", "npm", "yarn", "bun"] as const
 type PackageManager = (typeof PACKAGE_MANAGERS)[number]
 
-export function ProjectForm() {
+export function ProjectForm({
+  className,
+}: React.ComponentProps<typeof Button>) {
   const [open, setOpen] = React.useState(false)
   const [params, setParams] = useDesignSystemSearchParams()
   const presetCode = usePresetCode()
@@ -121,7 +124,9 @@ export function ProjectForm() {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger render={<Button size="sm" />}>
+      <DialogTrigger
+        render={<Button className={cn("hidden md:flex", className)} />}
+      >
         Create Project
       </DialogTrigger>
       <DialogContent className="min-w-0 p-6 sm:max-w-md">

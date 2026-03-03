@@ -1,7 +1,15 @@
 "use client"
 
 import * as React from "react"
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+} from "@/examples/base/ui/card"
 import { FieldGroup } from "@/examples/base/ui/field"
+import { Separator } from "@/examples/base/ui/separator"
+import { CardTitle } from "@/examples/radix/ui/card"
 import { type RegistryItem } from "shadcn/schema"
 
 import { useIsMobile } from "@/hooks/use-mobile"
@@ -10,13 +18,15 @@ import { MenuAccentPicker } from "@/app/(create)/components/accent-picker"
 import { ActionMenu } from "@/app/(create)/components/action-menu"
 import { BaseColorPicker } from "@/app/(create)/components/base-color-picker"
 import { BasePicker } from "@/app/(create)/components/base-picker"
+import { CopyPreset } from "@/app/(create)/components/copy-preset"
 import { FontPicker } from "@/app/(create)/components/font-picker"
 import { IconLibraryPicker } from "@/app/(create)/components/icon-library-picker"
+import { MainMenu } from "@/app/(create)/components/main-menu"
 import { MenuColorPicker } from "@/app/(create)/components/menu-picker"
-import { ModeSwitcher } from "@/app/(create)/components/mode-switcher"
+import { ProjectForm } from "@/app/(create)/components/project-form"
 import { RadiusPicker } from "@/app/(create)/components/radius-picker"
 import { RandomButton } from "@/app/(create)/components/random-button"
-import { ResetButton } from "@/app/(create)/components/reset-button"
+import { ResetDialog } from "@/app/(create)/components/reset-button"
 import { StylePicker } from "@/app/(create)/components/style-picker"
 import { ThemePicker } from "@/app/(create)/components/theme-picker"
 import { FONTS } from "@/app/(create)/lib/fonts"
@@ -37,15 +47,17 @@ export function Customizer({
   )
 
   return (
-    <div
-      className="flex flex-col gap-4 md:h-[calc(100svh---spacing(8))] md:w-56"
+    <Card
+      className="dark max-h-full min-h-0 gap-0 self-start rounded-2xl md:w-(--customizer-width)"
       ref={anchorRef}
+      size="sm"
     >
-      <div className="flex items-center gap-2">
-        <ActionMenu itemsByBase={itemsByBase} />
-      </div>
-      <div className="no-scrollbar h-14 overflow-x-auto overflow-y-hidden p-px md:h-full md:overflow-x-hidden md:overflow-y-auto">
-        <FieldGroup className="flex h-full flex-1 flex-row gap-2 md:flex-col md:gap-2">
+      <CardHeader className="flex items-center justify-between gap-2 border-b px-3!">
+        <CopyPreset />
+        <MainMenu className="ring-1 ring-foreground/10" />
+      </CardHeader>
+      <CardContent className="no-scrollbar min-h-0 flex-1 overflow-y-auto">
+        <FieldGroup className="gap-3.5 py-px">
           <BasePicker isMobile={isMobile} anchorRef={anchorRef} />
           <StylePicker
             styles={STYLES}
@@ -64,11 +76,12 @@ export function Customizer({
           <MenuColorPicker isMobile={isMobile} anchorRef={anchorRef} />
           <MenuAccentPicker isMobile={isMobile} anchorRef={anchorRef} />
         </FieldGroup>
-      </div>
-      <div className="flex flex-col gap-2">
-        <ResetButton />
-        <RandomButton />
-      </div>
-    </div>
+      </CardContent>
+      <CardFooter className="flex min-w-0 flex-col gap-2">
+        <ProjectForm className="w-full" />
+        <ActionMenu itemsByBase={itemsByBase} />
+        <ResetDialog />
+      </CardFooter>
+    </Card>
   )
 }

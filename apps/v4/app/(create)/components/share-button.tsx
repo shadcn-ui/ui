@@ -37,7 +37,7 @@ export function ShareButton() {
   }, [shareUrl])
 
   return (
-    <Button variant="outline" size="sm" onClick={handleCopy}>
+    <Button variant="outline" className="hidden md:flex" onClick={handleCopy}>
       {hasCopied ? (
         <HugeiconsIcon
           icon={Tick02Icon}

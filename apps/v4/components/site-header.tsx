@@ -58,23 +58,6 @@ export function SiteHeader() {
             <SiteConfig className="hidden 3xl:flex" />
             <Separator orientation="vertical" />
             <ModeSwitcher />
-            <Separator orientation="vertical" className="mr-2" />
-            <Button
-              asChild
-              size="sm"
-              className="hidden h-[31px] rounded-lg sm:flex"
-            >
-              <Link href="/create">
-                <HugeiconsIcon icon={PlusSignIcon} />
-                New Project
-              </Link>
-            </Button>
-            <Button asChild size="sm" className="h-[31px] rounded-lg sm:hidden">
-              <Link href="/create">
-                <HugeiconsIcon icon={PlusSignIcon} />
-                New
-              </Link>
-            </Button>
           </div>
         </div>
       </div>

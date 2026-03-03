@@ -43,14 +43,14 @@ export function BasePicker({
     <Picker>
       <PickerTrigger>
         <div className="flex flex-col justify-start text-left">
-          <div className="text-xs text-muted-foreground">Component Library</div>
+          <div className="text-xs text-muted-foreground">Base</div>
           <div className="text-sm font-medium text-foreground">
             {currentBase?.title}
           </div>
         </div>
         {currentBase?.meta?.logo && (
           <div
-            className="pointer-events-none absolute top-1/2 right-4 size-4 -translate-y-1/2 text-foreground select-none *:[svg]:size-4 *:[svg]:text-foreground!"
+            className="pointer-events-none absolute top-1/2 right-2 size-4 -translate-y-1/2 text-foreground select-none *:[svg]:size-4 *:[svg]:text-foreground!"
             dangerouslySetInnerHTML={{
               __html: currentBase.meta.logo,
             }}
@@ -69,14 +69,6 @@ export function BasePicker({
           <PickerGroup>
             {BASES.map((base) => (
               <PickerRadioItem key={base.name} value={base.name}>
-                {base.meta?.logo && (
-                  <div
-                    className="size-4 shrink-0 text-foreground [&_svg]:size-4 *:[svg]:text-foreground!"
-                    dangerouslySetInnerHTML={{
-                      __html: base.meta.logo,
-                    }}
-                  />
-                )}
                 {base.title}
               </PickerRadioItem>
             ))}

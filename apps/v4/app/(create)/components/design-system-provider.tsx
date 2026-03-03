@@ -6,6 +6,7 @@ import {
   buildRegistryTheme,
   DEFAULT_CONFIG,
   type DesignSystemConfig,
+  type RadiusValue,
 } from "@/registry/config"
 import { useIframeMessageListener } from "@/app/(create)/hooks/use-iframe-sync"
 import { FONTS } from "@/app/(create)/lib/fonts"
@@ -25,6 +26,13 @@ export function DesignSystemProvider({
   })
   useIframeMessageListener("design-system-params", setSearchParams)
   const [isReady, setIsReady] = React.useState(false)
+  const effectiveRadius = style === "lyra" ? "none" : radius
+
+  React.useEffect(() => {
+    if (style === "lyra" && radius !== "none") {
+      setSearchParams({ radius: "none" as RadiusValue })
+    }
+  }, [style, radius, setSearchParams])
 
   // Use useLayoutEffect for synchronous style updates to prevent flash.
   React.useLayoutEffect(() => {
@@ -58,7 +66,7 @@ export function DesignSystemProvider({
   }, [style, theme, font, baseColor])
 
   const registryTheme = React.useMemo(() => {
-    if (!baseColor || !theme || !menuAccent || !radius) {
+    if (!baseColor || !theme || !menuAccent || !effectiveRadius) {
       return null
     }
 
@@ -67,11 +75,11 @@ export function DesignSystemProvider({
       baseColor,
       theme,
       menuAccent,
-      radius,
+      radius: effectiveRadius,
     }
 
     return buildRegistryTheme(config)
-  }, [baseColor, theme, menuAccent, radius])
+  }, [baseColor, theme, menuAccent, effectiveRadius])
 
   // Use useLayoutEffect for synchronous CSS var updates.
   React.useLayoutEffect(() => {

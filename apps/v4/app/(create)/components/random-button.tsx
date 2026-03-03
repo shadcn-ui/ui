@@ -1,6 +1,5 @@
 "use client"
 
-import * as React from "react"
 import Script from "next/script"
 import { Button } from "@/examples/base/ui/button"
 import { DiceFaces05Icon } from "@hugeicons/core-free-icons"
@@ -10,46 +9,19 @@ import { useRandom } from "@/app/(create)/hooks/use-random"
 
 export const RANDOMIZE_FORWARD_TYPE = "randomize-forward"
 
-export function RandomButton() {
+export function RandomButton({
+  variant = "outline",
+  ...props
+}: React.ComponentProps<typeof Button>) {
   const { randomize } = useRandom()
 
   return (
-    <React.Fragment>
-      <Button
-        variant="ghost"
-        onClick={randomize}
-        className="flex h-[calc(--spacing(13.5))] w-[140px] touch-manipulation justify-between rounded-xl border border-foreground/10 bg-muted/50 select-none focus-visible:border-transparent focus-visible:ring-1 sm:hidden"
-      >
-        <div className="flex flex-col justify-start text-left">
-          <div className="text-xs text-muted-foreground">Shuffle</div>
-          <div className="text-sm font-medium text-foreground">Try Random</div>
-        </div>
-        <HugeiconsIcon icon={DiceFaces05Icon} className="size-5" />
-      </Button>
-      <Button
-        variant="outline"
-        size="sm"
-        onClick={randomize}
-        className="hidden w-full sm:flex"
-      >
-        Shuffle
-      </Button>
-    </React.Fragment>
-  )
-}
-
-export function RandomIconButton() {
-  const { randomize } = useRandom()
-
-  return (
-    <Button
-      variant="ghost"
-      size="icon-sm"
-      onClick={randomize}
-      aria-label="Randomize"
-    >
-      <HugeiconsIcon icon={DiceFaces05Icon} />
-      <span className="sr-only">Randomize</span>
+    <Button variant={variant} onClick={randomize} {...props}>
+      <HugeiconsIcon
+        icon={DiceFaces05Icon}
+        strokeWidth={2}
+        className="size-4"
+      />
     </Button>
   )
 }

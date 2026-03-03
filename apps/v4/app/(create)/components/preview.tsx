@@ -4,6 +4,7 @@ import * as React from "react"
 import { Badge } from "@/examples/base/ui/badge"
 
 import { CMD_K_FORWARD_TYPE } from "@/app/(create)/components/action-menu"
+import { CopyPreset } from "@/app/(create)/components/copy-preset"
 import {
   REDO_FORWARD_TYPE,
   UNDO_FORWARD_TYPE,
@@ -120,7 +121,7 @@ export function Preview() {
   }, [params.base, params.item])
 
   return (
-    <div className="relative -mx-1 flex flex-1 flex-col justify-center sm:mx-0">
+    <div className="relative flex flex-1 flex-col justify-center overflow-hidden rounded-2xl ring ring-foreground/10">
       <div className="relative z-0 mx-auto flex w-full flex-1 flex-col overflow-hidden">
         <div className="absolute inset-0 bg-muted dark:bg-muted/30" />
         <iframe
@@ -130,12 +131,7 @@ export function Preview() {
           className="z-10 size-full flex-1"
           title="Preview"
         />
-        <Badge
-          className="absolute right-2 bottom-2 isolate z-10"
-          variant="secondary"
-        >
-          Preview
-        </Badge>
+        <CopyPreset className="absolute top-4 right-4 isolate z-10" />
       </div>
     </div>
   )

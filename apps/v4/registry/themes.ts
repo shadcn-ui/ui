@@ -525,7 +525,7 @@ export const THEMES: RegistryItem[] = [
     type: "registry:theme",
     cssVars: {
       light: {
-        primary: "oklch(0.666 0.179 58.318)",
+        primary: "oklch(0.555 0.163 48.998)",
         "primary-foreground": "oklch(0.987 0.022 95.277)",
         secondary: "oklch(0.967 0.001 286.375)",
         "secondary-foreground": "oklch(0.21 0.006 285.885)",
@@ -538,8 +538,8 @@ export const THEMES: RegistryItem[] = [
         "sidebar-primary-foreground": "oklch(0.987 0.022 95.277)",
       },
       dark: {
-        primary: "oklch(0.769 0.188 70.08)",
-        "primary-foreground": "oklch(0.279 0.077 45.635)",
+        primary: "oklch(0.473 0.137 46.201)",
+        "primary-foreground": "oklch(0.987 0.022 95.277)",
         secondary: "oklch(0.274 0.006 286.033)",
         "secondary-foreground": "oklch(0.985 0 0)",
         "chart-1": "oklch(0.879 0.169 91.605)",
@@ -591,7 +591,7 @@ export const THEMES: RegistryItem[] = [
     type: "registry:theme",
     cssVars: {
       light: {
-        primary: "oklch(0.609 0.126 221.723)",
+        primary: "oklch(0.52 0.105 223.128)",
         "primary-foreground": "oklch(0.984 0.019 200.873)",
         secondary: "oklch(0.967 0.001 286.375)",
         "secondary-foreground": "oklch(0.21 0.006 285.885)",
@@ -604,8 +604,8 @@ export const THEMES: RegistryItem[] = [
         "sidebar-primary-foreground": "oklch(0.984 0.019 200.873)",
       },
       dark: {
-        primary: "oklch(0.715 0.143 215.221)",
-        "primary-foreground": "oklch(0.302 0.056 229.695)",
+        primary: "oklch(0.45 0.085 224.283)",
+        "primary-foreground": "oklch(0.984 0.019 200.873)",
         secondary: "oklch(0.274 0.006 286.033)",
         "secondary-foreground": "oklch(0.985 0 0)",
         "chart-1": "oklch(0.865 0.127 207.078)",
@@ -613,7 +613,7 @@ export const THEMES: RegistryItem[] = [
         "chart-3": "oklch(0.609 0.126 221.723)",
         "chart-4": "oklch(0.52 0.105 223.128)",
         "chart-5": "oklch(0.45 0.085 224.283)",
-        "sidebar-primary": "oklch(0.789 0.154 211.53)",
+        "sidebar-primary": "oklch(0.715 0.143 215.221)",
         "sidebar-primary-foreground": "oklch(0.302 0.056 229.695)",
       },
     },
@@ -624,7 +624,7 @@ export const THEMES: RegistryItem[] = [
     type: "registry:theme",
     cssVars: {
       light: {
-        primary: "oklch(0.596 0.145 163.225)",
+        primary: "oklch(0.508 0.118 165.612)",
         "primary-foreground": "oklch(0.979 0.021 166.113)",
         secondary: "oklch(0.967 0.001 286.375)",
         "secondary-foreground": "oklch(0.21 0.006 285.885)",
@@ -637,8 +637,8 @@ export const THEMES: RegistryItem[] = [
         "sidebar-primary-foreground": "oklch(0.979 0.021 166.113)",
       },
       dark: {
-        primary: "oklch(0.696 0.17 162.48)",
-        "primary-foreground": "oklch(0.262 0.051 172.552)",
+        primary: "oklch(0.432 0.095 166.913)",
+        "primary-foreground": "oklch(0.979 0.021 166.113)",
         secondary: "oklch(0.274 0.006 286.033)",
         "secondary-foreground": "oklch(0.985 0 0)",
         "chart-1": "oklch(0.845 0.143 164.978)",
@@ -646,7 +646,7 @@ export const THEMES: RegistryItem[] = [
         "chart-3": "oklch(0.596 0.145 163.225)",
         "chart-4": "oklch(0.508 0.118 165.612)",
         "chart-5": "oklch(0.432 0.095 166.913)",
-        "sidebar-primary": "oklch(0.765 0.177 163.223)",
+        "sidebar-primary": "oklch(0.696 0.17 162.48)",
         "sidebar-primary-foreground": "oklch(0.262 0.051 172.552)",
       },
     },
@@ -657,7 +657,7 @@ export const THEMES: RegistryItem[] = [
     type: "registry:theme",
     cssVars: {
       light: {
-        primary: "oklch(0.591 0.293 322.896)",
+        primary: "oklch(0.518 0.253 323.949)",
         "primary-foreground": "oklch(0.977 0.017 320.058)",
         secondary: "oklch(0.967 0.001 286.375)",
         "secondary-foreground": "oklch(0.21 0.006 285.885)",
@@ -670,7 +670,7 @@ export const THEMES: RegistryItem[] = [
         "sidebar-primary-foreground": "oklch(0.977 0.017 320.058)",
       },
       dark: {
-        primary: "oklch(0.667 0.295 322.15)",
+        primary: "oklch(0.452 0.211 324.591)",
         "primary-foreground": "oklch(0.977 0.017 320.058)",
         secondary: "oklch(0.274 0.006 286.033)",
         "secondary-foreground": "oklch(0.985 0 0)",
@@ -679,7 +679,7 @@ export const THEMES: RegistryItem[] = [
         "chart-3": "oklch(0.591 0.293 322.896)",
         "chart-4": "oklch(0.518 0.253 323.949)",
         "chart-5": "oklch(0.452 0.211 324.591)",
-        "sidebar-primary": "oklch(0.74 0.238 322.16)",
+        "sidebar-primary": "oklch(0.667 0.295 322.15)",
         "sidebar-primary-foreground": "oklch(0.977 0.017 320.058)",
       },
     },
@@ -690,7 +690,7 @@ export const THEMES: RegistryItem[] = [
     type: "registry:theme",
     cssVars: {
       light: {
-        primary: "oklch(0.648 0.2 131.684)",
+        primary: "oklch(0.532 0.157 131.589)",
         "primary-foreground": "oklch(0.986 0.031 120.757)",
         secondary: "oklch(0.967 0.001 286.375)",
         "secondary-foreground": "oklch(0.21 0.006 285.885)",
@@ -703,7 +703,7 @@ export const THEMES: RegistryItem[] = [
         "sidebar-primary-foreground": "oklch(0.986 0.031 120.757)",
       },
       dark: {
-        primary: "oklch(0.648 0.2 131.684)",
+        primary: "oklch(0.453 0.124 130.933)",
         "primary-foreground": "oklch(0.986 0.031 120.757)",
         secondary: "oklch(0.274 0.006 286.033)",
         "secondary-foreground": "oklch(0.985 0 0)",
@@ -723,7 +723,7 @@ export const THEMES: RegistryItem[] = [
     type: "registry:theme",
     cssVars: {
       light: {
-        primary: "oklch(0.511 0.262 276.966)",
+        primary: "oklch(0.457 0.24 277.023)",
         "primary-foreground": "oklch(0.962 0.018 272.314)",
         secondary: "oklch(0.967 0.001 286.375)",
         "secondary-foreground": "oklch(0.21 0.006 285.885)",
@@ -736,7 +736,7 @@ export const THEMES: RegistryItem[] = [
         "sidebar-primary-foreground": "oklch(0.962 0.018 272.314)",
       },
       dark: {
-        primary: "oklch(0.585 0.233 277.117)",
+        primary: "oklch(0.398 0.195 277.366)",
         "primary-foreground": "oklch(0.962 0.018 272.314)",
         secondary: "oklch(0.274 0.006 286.033)",
         "secondary-foreground": "oklch(0.985 0 0)",
@@ -745,7 +745,7 @@ export const THEMES: RegistryItem[] = [
         "chart-3": "oklch(0.511 0.262 276.966)",
         "chart-4": "oklch(0.457 0.24 277.023)",
         "chart-5": "oklch(0.398 0.195 277.366)",
-        "sidebar-primary": "oklch(0.673 0.182 276.935)",
+        "sidebar-primary": "oklch(0.585 0.233 277.117)",
         "sidebar-primary-foreground": "oklch(0.962 0.018 272.314)",
       },
     },
@@ -756,7 +756,7 @@ export const THEMES: RegistryItem[] = [
     type: "registry:theme",
     cssVars: {
       light: {
-        primary: "oklch(0.648 0.2 131.684)",
+        primary: "oklch(0.532 0.157 131.589)",
         "primary-foreground": "oklch(0.986 0.031 120.757)",
         secondary: "oklch(0.967 0.001 286.375)",
         "secondary-foreground": "oklch(0.21 0.006 285.885)",
@@ -769,8 +769,8 @@ export const THEMES: RegistryItem[] = [
         "sidebar-primary-foreground": "oklch(0.986 0.031 120.757)",
       },
       dark: {
-        primary: "oklch(0.768 0.233 130.85)",
-        "primary-foreground": "oklch(0.274 0.072 132.109)",
+        primary: "oklch(0.453 0.124 130.933)",
+        "primary-foreground": "oklch(0.986 0.031 120.757)",
         secondary: "oklch(0.274 0.006 286.033)",
         "secondary-foreground": "oklch(0.985 0 0)",
         "chart-1": "oklch(0.897 0.196 126.665)",
@@ -778,7 +778,7 @@ export const THEMES: RegistryItem[] = [
         "chart-3": "oklch(0.648 0.2 131.684)",
         "chart-4": "oklch(0.532 0.157 131.589)",
         "chart-5": "oklch(0.453 0.124 130.933)",
-        "sidebar-primary": "oklch(0.841 0.238 128.85)",
+        "sidebar-primary": "oklch(0.768 0.233 130.85)",
         "sidebar-primary-foreground": "oklch(0.274 0.072 132.109)",
       },
     },
@@ -789,7 +789,7 @@ export const THEMES: RegistryItem[] = [
     type: "registry:theme",
     cssVars: {
       light: {
-        primary: "oklch(0.646 0.222 41.116)",
+        primary: "oklch(0.553 0.195 38.402)",
         "primary-foreground": "oklch(0.98 0.016 73.684)",
         secondary: "oklch(0.967 0.001 286.375)",
         "secondary-foreground": "oklch(0.21 0.006 285.885)",
@@ -802,7 +802,7 @@ export const THEMES: RegistryItem[] = [
         "sidebar-primary-foreground": "oklch(0.98 0.016 73.684)",
       },
       dark: {
-        primary: "oklch(0.705 0.213 47.604)",
+        primary: "oklch(0.47 0.157 37.304)",
         "primary-foreground": "oklch(0.98 0.016 73.684)",
         secondary: "oklch(0.274 0.006 286.033)",
         "secondary-foreground": "oklch(0.985 0 0)",
@@ -822,7 +822,7 @@ export const THEMES: RegistryItem[] = [
     type: "registry:theme",
     cssVars: {
       light: {
-        primary: "oklch(0.592 0.249 0.584)",
+        primary: "oklch(0.525 0.223 3.958)",
         "primary-foreground": "oklch(0.971 0.014 343.198)",
         secondary: "oklch(0.967 0.001 286.375)",
         "secondary-foreground": "oklch(0.21 0.006 285.885)",
@@ -835,7 +835,7 @@ export const THEMES: RegistryItem[] = [
         "sidebar-primary-foreground": "oklch(0.971 0.014 343.198)",
       },
       dark: {
-        primary: "oklch(0.656 0.241 354.308)",
+        primary: "oklch(0.459 0.187 3.815)",
         "primary-foreground": "oklch(0.971 0.014 343.198)",
         secondary: "oklch(0.274 0.006 286.033)",
         "secondary-foreground": "oklch(0.985 0 0)",
@@ -844,7 +844,7 @@ export const THEMES: RegistryItem[] = [
         "chart-3": "oklch(0.592 0.249 0.584)",
         "chart-4": "oklch(0.525 0.223 3.958)",
         "chart-5": "oklch(0.459 0.187 3.815)",
-        "sidebar-primary": "oklch(0.718 0.202 349.761)",
+        "sidebar-primary": "oklch(0.656 0.241 354.308)",
         "sidebar-primary-foreground": "oklch(0.971 0.014 343.198)",
       },
     },
@@ -855,7 +855,7 @@ export const THEMES: RegistryItem[] = [
     type: "registry:theme",
     cssVars: {
       light: {
-        primary: "oklch(0.558 0.288 302.321)",
+        primary: "oklch(0.496 0.265 301.924)",
         "primary-foreground": "oklch(0.977 0.014 308.299)",
         secondary: "oklch(0.967 0.001 286.375)",
         "secondary-foreground": "oklch(0.21 0.006 285.885)",
@@ -868,7 +868,7 @@ export const THEMES: RegistryItem[] = [
         "sidebar-primary-foreground": "oklch(0.977 0.014 308.299)",
       },
       dark: {
-        primary: "oklch(0.627 0.265 303.9)",
+        primary: "oklch(0.438 0.218 303.724)",
         "primary-foreground": "oklch(0.977 0.014 308.299)",
         secondary: "oklch(0.274 0.006 286.033)",
         "secondary-foreground": "oklch(0.985 0 0)",
@@ -877,7 +877,7 @@ export const THEMES: RegistryItem[] = [
         "chart-3": "oklch(0.558 0.288 302.321)",
         "chart-4": "oklch(0.496 0.265 301.924)",
         "chart-5": "oklch(0.438 0.218 303.724)",
-        "sidebar-primary": "oklch(0.714 0.203 305.504)",
+        "sidebar-primary": "oklch(0.627 0.265 303.9)",
         "sidebar-primary-foreground": "oklch(0.977 0.014 308.299)",
       },
     },
@@ -888,7 +888,7 @@ export const THEMES: RegistryItem[] = [
     type: "registry:theme",
     cssVars: {
       light: {
-        primary: "oklch(0.577 0.245 27.325)",
+        primary: "oklch(0.505 0.213 27.518)",
         "primary-foreground": "oklch(0.971 0.013 17.38)",
         secondary: "oklch(0.967 0.001 286.375)",
         "secondary-foreground": "oklch(0.21 0.006 285.885)",
@@ -901,7 +901,7 @@ export const THEMES: RegistryItem[] = [
         "sidebar-primary-foreground": "oklch(0.971 0.013 17.38)",
       },
       dark: {
-        primary: "oklch(0.637 0.237 25.331)",
+        primary: "oklch(0.444 0.177 26.899)",
         "primary-foreground": "oklch(0.971 0.013 17.38)",
         secondary: "oklch(0.274 0.006 286.033)",
         "secondary-foreground": "oklch(0.985 0 0)",
@@ -921,7 +921,7 @@ export const THEMES: RegistryItem[] = [
     type: "registry:theme",
     cssVars: {
       light: {
-        primary: "oklch(0.586 0.253 17.585)",
+        primary: "oklch(0.514 0.222 16.935)",
         "primary-foreground": "oklch(0.969 0.015 12.422)",
         secondary: "oklch(0.967 0.001 286.375)",
         "secondary-foreground": "oklch(0.21 0.006 285.885)",
@@ -934,7 +934,7 @@ export const THEMES: RegistryItem[] = [
         "sidebar-primary-foreground": "oklch(0.969 0.015 12.422)",
       },
       dark: {
-        primary: "oklch(0.645 0.246 16.439)",
+        primary: "oklch(0.455 0.188 13.697)",
         "primary-foreground": "oklch(0.969 0.015 12.422)",
         secondary: "oklch(0.274 0.006 286.033)",
         "secondary-foreground": "oklch(0.985 0 0)",
@@ -955,7 +955,7 @@ export const THEMES: RegistryItem[] = [
     type: "registry:theme",
     cssVars: {
       light: {
-        primary: "oklch(0.588 0.158 241.966)",
+        primary: "oklch(0.5 0.134 242.749)",
         "primary-foreground": "oklch(0.977 0.013 236.62)",
         secondary: "oklch(0.967 0.001 286.375)",
         "secondary-foreground": "oklch(0.21 0.006 285.885)",
@@ -968,8 +968,8 @@ export const THEMES: RegistryItem[] = [
         "sidebar-primary-foreground": "oklch(0.977 0.013 236.62)",
       },
       dark: {
-        primary: "oklch(0.685 0.169 237.323)",
-        "primary-foreground": "oklch(0.293 0.066 243.157)",
+        primary: "oklch(0.443 0.11 240.79)",
+        "primary-foreground": "oklch(0.977 0.013 236.62)",
         secondary: "oklch(0.274 0.006 286.033)",
         "secondary-foreground": "oklch(0.985 0 0)",
         "chart-1": "oklch(0.828 0.111 230.318)",
@@ -977,7 +977,7 @@ export const THEMES: RegistryItem[] = [
         "chart-3": "oklch(0.588 0.158 241.966)",
         "chart-4": "oklch(0.5 0.134 242.749)",
         "chart-5": "oklch(0.443 0.11 240.79)",
-        "sidebar-primary": "oklch(0.746 0.16 232.661)",
+        "sidebar-primary": "oklch(0.685 0.169 237.323)",
         "sidebar-primary-foreground": "oklch(0.293 0.066 243.157)",
       },
     },
@@ -988,7 +988,7 @@ export const THEMES: RegistryItem[] = [
     type: "registry:theme",
     cssVars: {
       light: {
-        primary: "oklch(0.6 0.118 184.704)",
+        primary: "oklch(0.511 0.096 186.391)",
         "primary-foreground": "oklch(0.984 0.014 180.72)",
         secondary: "oklch(0.967 0.001 286.375)",
         "secondary-foreground": "oklch(0.21 0.006 285.885)",
@@ -1001,8 +1001,8 @@ export const THEMES: RegistryItem[] = [
         "sidebar-primary-foreground": "oklch(0.984 0.014 180.72)",
       },
       dark: {
-        primary: "oklch(0.704 0.14 182.503)",
-        "primary-foreground": "oklch(0.277 0.046 192.524)",
+        primary: "oklch(0.437 0.078 188.216)",
+        "primary-foreground": "oklch(0.984 0.014 180.72)",
         secondary: "oklch(0.274 0.006 286.033)",
         "secondary-foreground": "oklch(0.985 0 0)",
         "chart-1": "oklch(0.855 0.138 181.071)",
@@ -1010,7 +1010,7 @@ export const THEMES: RegistryItem[] = [
         "chart-3": "oklch(0.6 0.118 184.704)",
         "chart-4": "oklch(0.511 0.096 186.391)",
         "chart-5": "oklch(0.437 0.078 188.216)",
-        "sidebar-primary": "oklch(0.777 0.152 181.912)",
+        "sidebar-primary": "oklch(0.704 0.14 182.503)",
         "sidebar-primary-foreground": "oklch(0.277 0.046 192.524)",
       },
     },
@@ -1021,7 +1021,7 @@ export const THEMES: RegistryItem[] = [
     type: "registry:theme",
     cssVars: {
       light: {
-        primary: "oklch(0.541 0.281 293.009)",
+        primary: "oklch(0.491 0.27 292.581)",
         "primary-foreground": "oklch(0.969 0.016 293.756)",
         secondary: "oklch(0.967 0.001 286.375)",
         "secondary-foreground": "oklch(0.21 0.006 285.885)",
@@ -1034,7 +1034,7 @@ export const THEMES: RegistryItem[] = [
         "sidebar-primary-foreground": "oklch(0.969 0.016 293.756)",
       },
       dark: {
-        primary: "oklch(0.606 0.25 292.717)",
+        primary: "oklch(0.432 0.232 292.759)",
         "primary-foreground": "oklch(0.969 0.016 293.756)",
         secondary: "oklch(0.274 0.006 286.033)",
         "secondary-foreground": "oklch(0.985 0 0)",

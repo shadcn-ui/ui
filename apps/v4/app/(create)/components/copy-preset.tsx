@@ -5,10 +5,11 @@ import { Button } from "@/examples/base/ui/button"
 import { Copy01Icon, Tick02Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 
+import { cn } from "@/lib/utils"
 import { copyToClipboardWithMeta } from "@/components/copy-button"
 import { usePresetCode } from "@/app/(create)/hooks/use-design-system"
 
-export function CopyPreset() {
+export function CopyPreset({ className }: React.ComponentProps<typeof Button>) {
   const presetCode = usePresetCode()
   const [hasCopied, setHasCopied] = React.useState(false)
 
@@ -31,17 +32,19 @@ export function CopyPreset() {
 
   return (
     <Button
-      variant="ghost"
-      size="sm"
+      variant="outline"
       onClick={handleCopy}
-      className="group/button"
+      className={cn(
+        "justify-between font-mono text-xs transition-none",
+        className
+      )}
     >
-      --preset {presetCode}
+      <span>--preset {presetCode}</span>
       <HugeiconsIcon
         icon={hasCopied ? Tick02Icon : Copy01Icon}
         strokeWidth={2}
-        className="opacity-0 group-hover/button:opacity-100"
         data-icon="inline-end"
+        className="size-3"
       />
     </Button>
   )

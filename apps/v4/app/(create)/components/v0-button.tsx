@@ -46,7 +46,6 @@ export function V0Button({ className }: { className?: string }) {
     <Button
       nativeButton={false}
       role="link"
-      size="sm"
       variant={isMobile ? "default" : "outline"}
       className={cn(
         "w-24 gap-1 data-[variant=default]:h-[31px] lg:w-8 xl:w-24",

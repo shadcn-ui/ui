@@ -1,11 +1,11 @@
 import { type Metadata } from "next"
-import { SidebarProvider } from "@/examples/base/ui/sidebar"
+import { Agentation } from "agentation"
 
 import { siteConfig } from "@/lib/config"
 import { absoluteUrl } from "@/lib/utils"
+import { SiteHeader } from "@/components/site-header"
 import { BASES, type BaseName } from "@/registry/config"
 import { Customizer } from "@/app/(create)/components/customizer"
-import { PageHeader } from "@/app/(create)/components/page-header"
 import { PresetHandler } from "@/app/(create)/components/preset-handler"
 import { Preview } from "@/app/(create)/components/preview"
 import { WelcomeDialog } from "@/app/(create)/components/welcome-dialog"
@@ -69,23 +69,18 @@ export default async function CreatePage() {
   return (
     <div
       data-slot="layout"
-      className="relative z-10 flex min-h-svh flex-col section-soft"
+      className="relative z-10 flex h-screen flex-col overflow-hidden section-soft [--customizer-width:--spacing(56)] [--gap:--spacing(6)]"
     >
-      <main className="flex flex-1 flex-col pb-16 sm:pb-0">
-        <SidebarProvider className="flex h-auto min-h-min flex-1 flex-col items-start overflow-hidden px-0">
-          <div
-            data-slot="designer"
-            className="flex w-full flex-1 flex-col gap-2 p-4 sm:gap-2 md:flex-row lg:gap-4"
-          >
-            <Customizer itemsByBase={itemsByBase} />
-            <div className="flex flex-1 flex-col overflow-hidden rounded-2xl border">
-              <PageHeader itemsByBase={itemsByBase} />
-              <Preview />
-            </div>
-          </div>
-        </SidebarProvider>
+      <SiteHeader />
+      <main
+        data-slot="designer"
+        className="flex min-h-0 w-full flex-1 flex-col-reverse gap-(--gap) p-(--gap) pt-3 md:flex-row"
+      >
+        <Customizer itemsByBase={itemsByBase} />
+        <Preview />
         <PresetHandler />
         <WelcomeDialog />
+        {process.env.NODE_ENV === "development" && <Agentation />}
       </main>
     </div>
   )

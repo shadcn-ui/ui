@@ -38,9 +38,9 @@ export function WelcomeDialog() {
     <Dialog open={isOpen} onOpenChange={handleOpenChange}>
       <DialogContent
         showCloseButton={false}
-        className="dialog-ring max-w-[23rem] min-w-0 gap-0 overflow-hidden rounded-xl p-0 sm:max-w-sm dark:bg-neutral-900"
+        className="dialog-ring max-w-92 min-w-0 gap-0 overflow-hidden rounded-xl p-0 sm:max-w-sm dark:bg-neutral-900"
       >
-        <div className="flex aspect-[2/1.2] w-full items-center justify-center rounded-t-xl bg-neutral-950 text-center text-neutral-100 sm:aspect-[2/1]">
+        <div className="flex aspect-[2/1.2] w-full items-center justify-center rounded-t-xl bg-neutral-950 text-center text-neutral-100 sm:aspect-2/1">
           <div className="font-mono text-2xl font-bold">
             <Icons.logo className="size-12" />
           </div>
@@ -54,10 +54,10 @@ export function WelcomeDialog() {
             library, font, color scheme, and more.
           </DialogDescription>
           <DialogDescription className="mt-2 text-left leading-relaxed font-medium text-foreground">
-            Available for Next.js, Vite, TanStack Start, and v0.
+            Available for all major React frameworks.
           </DialogDescription>
         </DialogHeader>
-        <DialogFooter className="p-4 pt-0">
+        <DialogFooter className="m-0">
           <DialogClose render={<Button className="w-full" />}>
             Get Started
           </DialogClose>

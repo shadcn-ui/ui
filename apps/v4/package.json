@@ -94,6 +94,7 @@
     "@types/react": "19.2.2",
     "@types/react-dom": "19.2.2",
     "@typescript-eslint/parser": "^8.31.0",
+    "agentation": "^2.2.1",
     "baseline-browser-mapping": "^2.10.0",
     "eslint": "^9",
     "eslint-config-next": "16.0.0",
@@ -138,7 +139,10 @@
       "decorators-legacy"
     ],
     "tailwindStylesheet": "./styles/globals.css",
-    "tailwindFunctions": ["cn", "cva"],
+    "tailwindFunctions": [
+      "cn",
+      "cva"
+    ],
     "plugins": [
       "@ianvs/prettier-plugin-sort-imports",
       "prettier-plugin-tailwindcss"
