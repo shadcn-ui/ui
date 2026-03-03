@@ -234,6 +234,12 @@
     "description": "Production-ready UI components designed for building beautiful AI assistants and conversational interfaces, from the team behind GAIA."
   },
   {
+    "name": "@gc-solid",
+    "homepage": "https://binnodon.github.io/gc-solid-ui",
+    "url": "https://binnodon.github.io/gc-solid-ui/r/{name}.json",
+    "description": "SolidJS port of shadcn-ui components built with Kobalte primitives. 57+ components with full TypeScript support and Vega theme."
+  },
+  {
     "name": "@glass-ui",
     "homepage": "https://glass-ui.crenspire.com",
     "url": "https://glass-ui.crenspire.com/r/{name}.json",
