@@ -40,7 +40,7 @@ export default function PreviewExample() {
         className="grid w-[2400px] grid-cols-7 items-start gap-(--gap) bg-muted p-(--gap) md:w-[3000px] dark:bg-background *:[div]:gap-(--gap)"
         data-slot="capture-target"
       >
-        <div className="flex flex-col">
+        <div className="flex flex-col p-px [contain-intrinsic-size:380px_1200px] [content-visibility:auto]">
           <StyleOverview />
           <div className="md:hidden">
             <UIElements />
@@ -49,7 +49,7 @@ export default function PreviewExample() {
           <BarVisualizerCard />
           <Invoice />
         </div>
-        <div className="flex flex-col">
+        <div className="flex flex-col p-px [contain-intrinsic-size:380px_1200px] [content-visibility:auto]">
           <IconPreviewGrid />
           <div className="hidden w-full md:flex">
             <UIElements />
@@ -58,26 +58,26 @@ export default function PreviewExample() {
           <Visitors />
           <Shortcuts />
         </div>
-        <div className="flex flex-col">
+        <div className="flex flex-col p-px [contain-intrinsic-size:380px_1200px] [content-visibility:auto]">
           <EnvironmentVariables />
           <BarChartCard />
           <InviteTeam />
           <ActivateAgentDialog />
         </div>
-        <div className="flex flex-col">
+        <div className="flex flex-col p-px [contain-intrinsic-size:380px_1200px] [content-visibility:auto]">
           <SkeletonLoading />
           <PieChartCard />
           <NoTeamMembers />
           <ReportBug />
           <Contributors />
         </div>
-        <div className="flex flex-col">
+        <div className="flex flex-col p-px [contain-intrinsic-size:380px_1200px] [content-visibility:auto]">
           <FeedbackForm />
           <BookAppointment />
           <SleepReport />
           <GithubProfile />
         </div>
-        <div className="flex flex-col">
+        <div className="flex flex-col p-px [contain-intrinsic-size:380px_1200px] [content-visibility:auto]">
           <AssignIssue />
           <WeeklyFitnessSummary />
           <FileUpload />
@@ -85,7 +85,7 @@ export default function PreviewExample() {
           <UsageCard />
           <ContributionsActivity />
         </div>
-        <div className="flex flex-col">
+        <div className="flex flex-col p-px [contain-intrinsic-size:380px_1200px] [content-visibility:auto]">
           <AnomalyAlert />
           <LiveWaveformCard />
           <ShippingAddress />

@@ -42,8 +42,8 @@ export function DesignSystemProvider({
 
     const body = document.body
 
-    // Remove old style/base-color classes in a single pass, then add new ones. (js-combine-iterations)
-    body.classList.forEach((className) => {
+    // Iterate over a snapshot so removals do not affect traversal.
+    Array.from(body.classList).forEach((className) => {
       if (
         className.startsWith("style-") ||
         className.startsWith("base-color-")

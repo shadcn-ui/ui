@@ -64,7 +64,7 @@ export function UIElements() {
   )
 
   return (
-    <Card>
+    <Card className="w-full">
       <CardContent className="flex flex-col gap-6">
         <div className="flex flex-col gap-4">
           <div className="flex flex-wrap gap-2">
