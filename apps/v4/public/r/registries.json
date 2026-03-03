@@ -1,5 +1,11 @@
 [
   {
+    "name": "@lmscn",
+    "homepage": "https://lmscn.vercel.app",
+    "url": "https://lmscn.vercel.app/r/{name}.json",
+    "description": "LMS components for building interactive learning experiences — quiz, flashcards, matching, fill-in-the-blank, word scramble, sequencing, reading comprehension, spaced repetition and more."
+  },
+  {
     "name": "@8bitcn",
     "homepage": "https://www.8bitcn.com",
     "url": "https://www.8bitcn.com/r/{name}.json",
@@ -808,5 +814,11 @@
     "homepage": "https://pixelactui.com",
     "url": "https://pixelactui.com/r/{name}.json",
     "description": "Playful pixel art style components library built on top of shadcn. Perfect for retro style projects and games."
+  },
+  {
+    "name": "@emerald-ui",
+    "homepage": "https://emerald-ui.com",
+    "url": "https://emerald-ui.com/r/{name}.json",
+    "description": "Emerald UI - collection of components built with Motion, GSAP, Tailwind CSS and shadcn/ui."
   }
 ]
