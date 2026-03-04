@@ -95,15 +95,17 @@ Don't build custom empty state markup.
 **Correct:**
 
 ```tsx
-import { Empty, EmptyIcon, EmptyTitle, EmptyDescription, EmptyActions } from "@/components/ui/empty"
+import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from "@/components/ui/empty"
 
 <Empty>
-  <EmptyIcon><FolderIcon /></EmptyIcon>
-  <EmptyTitle>No projects yet</EmptyTitle>
-  <EmptyDescription>Get started by creating a new project.</EmptyDescription>
-  <EmptyActions>
+  <EmptyHeader>
+    <EmptyMedia variant="icon"><FolderIcon /></EmptyMedia>
+    <EmptyTitle>No projects yet</EmptyTitle>
+    <EmptyDescription>Get started by creating a new project.</EmptyDescription>
+  </EmptyHeader>
+  <EmptyContent>
     <Button>Create Project</Button>
-  </EmptyActions>
+  </EmptyContent>
 </Empty>
 ```
 
@@ -141,7 +143,7 @@ toast("File deleted.", {
 
 ## Choosing between overlay components
 
-Don't default to `Dialog` for everything.
+Don't default to `Dialog` for everything. **When recommending an overlay, always show the full component structure with all required subcomponents.**
 
 **Incorrect:**
 
