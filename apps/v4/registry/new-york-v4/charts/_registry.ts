@@ -866,36 +866,36 @@ export const charts: Registry["items"] = [
     categories: ["charts", "charts-composed"],
   },
   {
-    name: "chart-composed-revenue",
+    name: "chart-composed-bar-line",
     type: "registry:block",
     registryDependencies: ["card", "chart"],
     files: [
       {
-        path: "charts/chart-composed-revenue.tsx",
+        path: "charts/chart-composed-bar-line.tsx",
         type: "registry:block",
       },
     ],
     categories: ["charts", "charts-composed"],
   },
   {
-    name: "chart-composed-weather",
+    name: "chart-composed-dashed",
     type: "registry:block",
     registryDependencies: ["card", "chart"],
     files: [
       {
-        path: "charts/chart-composed-weather.tsx",
+        path: "charts/chart-composed-dashed.tsx",
         type: "registry:block",
       },
     ],
     categories: ["charts", "charts-composed"],
   },
   {
-    name: "chart-composed-performance",
+    name: "chart-composed-axes",
     type: "registry:block",
     registryDependencies: ["card", "chart"],
     files: [
       {
-        path: "charts/chart-composed-performance.tsx",
+        path: "charts/chart-composed-axes.tsx",
         type: "registry:block",
       },
     ],

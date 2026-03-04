@@ -20,6 +20,11 @@ import { ChartBarMixed } from "@/registry/new-york-v4/charts/chart-bar-mixed"
 import { ChartBarMultiple } from "@/registry/new-york-v4/charts/chart-bar-multiple"
 import { ChartBarNegative } from "@/registry/new-york-v4/charts/chart-bar-negative"
 import { ChartBarStacked } from "@/registry/new-york-v4/charts/chart-bar-stacked"
+import { ChartComposedAxes } from "@/registry/new-york-v4/charts/chart-composed-axes"
+import { ChartComposedBarLine } from "@/registry/new-york-v4/charts/chart-composed-bar-line"
+import { ChartComposedDashed } from "@/registry/new-york-v4/charts/chart-composed-dashed"
+import { ChartComposedDefault } from "@/registry/new-york-v4/charts/chart-composed-default"
+import { ChartComposedStacked } from "@/registry/new-york-v4/charts/chart-composed-stacked"
 import { ChartLineDefault } from "@/registry/new-york-v4/charts/chart-line-default"
 import { ChartLineDots } from "@/registry/new-york-v4/charts/chart-line-dots"
 import { ChartLineDotsColors } from "@/registry/new-york-v4/charts/chart-line-dots-colors"
@@ -70,11 +75,6 @@ import { ChartTooltipIndicatorNone } from "@/registry/new-york-v4/charts/chart-t
 import { ChartTooltipLabelCustom } from "@/registry/new-york-v4/charts/chart-tooltip-label-custom"
 import { ChartTooltipLabelFormatter } from "@/registry/new-york-v4/charts/chart-tooltip-label-formatter"
 import { ChartTooltipLabelNone } from "@/registry/new-york-v4/charts/chart-tooltip-label-none"
-import { ChartComposedDefault } from "@/registry/new-york-v4/charts/chart-composed-default"
-import { ChartComposedRevenue } from "@/registry/new-york-v4/charts/chart-composed-revenue"
-import { ChartComposedWeather } from "@/registry/new-york-v4/charts/chart-composed-weather"
-import { ChartComposedPerformance } from "@/registry/new-york-v4/charts/chart-composed-performance"
-import { ChartComposedStacked } from "@/registry/new-york-v4/charts/chart-composed-stacked"
 
 type ChartComponent = React.ComponentType
 
@@ -206,9 +206,9 @@ export const charts: ChartGroups = {
   ],
   composed: [
     { id: "chart-composed-default", component: ChartComposedDefault },
-    { id: "chart-composed-revenue", component: ChartComposedRevenue },
-    { id: "chart-composed-weather", component: ChartComposedWeather },
-    { id: "chart-composed-performance", component: ChartComposedPerformance },
+    { id: "chart-composed-bar-line", component: ChartComposedBarLine },
+    { id: "chart-composed-dashed", component: ChartComposedDashed },
+    { id: "chart-composed-axes", component: ChartComposedAxes },
     { id: "chart-composed-stacked", component: ChartComposedStacked },
   ],
 }

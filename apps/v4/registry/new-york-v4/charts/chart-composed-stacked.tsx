@@ -55,7 +55,7 @@ export function ChartComposedStacked() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Traffic by Channel</CardTitle>
+        <CardTitle>Composed Chart - Stacked</CardTitle>
         <CardDescription>January - June 2024</CardDescription>
       </CardHeader>
       <CardContent>

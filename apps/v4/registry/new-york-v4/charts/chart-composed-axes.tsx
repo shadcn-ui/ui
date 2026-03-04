@@ -28,8 +28,7 @@ import {
   type ChartConfig,
 } from "@/registry/new-york-v4/ui/chart"
 
-export const description =
-  "A composed chart with traffic area, conversions bars and conversion rate line"
+export const description = "A composed chart with dual axes"
 
 const chartData = [
   { month: "January", traffic: 12400, conversions: 310, rate: 2.5 },
@@ -55,11 +54,11 @@ const chartConfig = {
   },
 } satisfies ChartConfig
 
-export function ChartComposedPerformance() {
+export function ChartComposedAxes() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Site Performance</CardTitle>
+        <CardTitle>Composed Chart - Axes</CardTitle>
         <CardDescription>January - June 2024</CardDescription>
       </CardHeader>
       <CardContent>

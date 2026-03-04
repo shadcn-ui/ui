@@ -2369,11 +2369,11 @@
       "type": "registry:block"
     },
     {
-      "name": "chart-composed-revenue",
+      "name": "chart-composed-bar-line",
       "registryDependencies": ["card", "chart"],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-composed-revenue.tsx",
+          "path": "registry/new-york-v4/charts/chart-composed-bar-line.tsx",
           "type": "registry:block"
         }
       ],
@@ -2381,11 +2381,11 @@
       "type": "registry:block"
     },
     {
-      "name": "chart-composed-weather",
+      "name": "chart-composed-dashed",
       "registryDependencies": ["card", "chart"],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-composed-weather.tsx",
+          "path": "registry/new-york-v4/charts/chart-composed-dashed.tsx",
           "type": "registry:block"
         }
       ],
@@ -2393,11 +2393,11 @@
       "type": "registry:block"
     },
     {
-      "name": "chart-composed-performance",
+      "name": "chart-composed-axes",
       "registryDependencies": ["card", "chart"],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-composed-performance.tsx",
+          "path": "registry/new-york-v4/charts/chart-composed-axes.tsx",
           "type": "registry:block"
         }
       ],

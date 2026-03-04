@@ -20,8 +20,7 @@ import {
   type ChartConfig,
 } from "@/registry/new-york-v4/ui/chart"
 
-export const description =
-  "A composed chart with revenue, expenses bars and profit margin line"
+export const description = "A bar and line composed chart"
 
 const chartData = [
   { month: "January", revenue: 42000, expenses: 31000, margin: 26 },
@@ -47,11 +46,11 @@ const chartConfig = {
   },
 } satisfies ChartConfig
 
-export function ChartComposedRevenue() {
+export function ChartComposedBarLine() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Revenue vs Expenses</CardTitle>
+        <CardTitle>Composed Chart - Bar Line</CardTitle>
         <CardDescription>January - June 2024</CardDescription>
       </CardHeader>
       <CardContent>

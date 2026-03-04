@@ -28,8 +28,7 @@ import {
   type ChartConfig,
 } from "@/registry/new-york-v4/ui/chart"
 
-export const description =
-  "A composed chart with temperature area, rainfall bars and humidity line"
+export const description = "A dashed composed chart"
 
 const chartData = [
   { month: "January", tempHigh: 48, rainfall: 3.8, humidity: 72 },
@@ -55,11 +54,11 @@ const chartConfig = {
   },
 } satisfies ChartConfig
 
-export function ChartComposedWeather() {
+export function ChartComposedDashed() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Weather Overview</CardTitle>
+        <CardTitle>Composed Chart - Dashed</CardTitle>
         <CardDescription>January - June 2024</CardDescription>
       </CardHeader>
       <CardContent>
