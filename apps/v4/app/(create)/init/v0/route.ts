@@ -2,7 +2,7 @@ import { after, NextResponse, type NextRequest } from "next/server"
 import { track } from "@vercel/analytics/server"
 
 import { parseDesignSystemConfig } from "@/app/(create)/init/parse-config"
-import { buildV0Payload } from "@/app/(create)/lib/build-payload"
+import { buildV0Payload } from "@/app/(create)/lib/v0"
 
 export async function GET(request: NextRequest) {
   try {
