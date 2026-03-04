@@ -247,7 +247,7 @@ export function NotionPromptForm() {
                 </Command>
               </PopoverContent>
             </Popover>
-            <div className="no-scrollbar -m-1.5 flex gap-1 overflow-y-auto p-1.5">
+            <div className="-m-1.5 no-scrollbar flex gap-1 overflow-y-auto p-1.5">
               {mentions.map((mention) => {
                 const item = SAMPLE_DATA.mentionable.find(
                   (item) => item.title === mention
@@ -262,7 +262,7 @@ export function NotionPromptForm() {
                     key={mention}
                     size="sm"
                     variant="secondary"
-                    className="rounded-full !pl-2"
+                    className="rounded-full pl-2!"
                     onClick={() => {
                       setMentions((prev) => prev.filter((m) => m !== mention))
                     }}
@@ -308,7 +308,7 @@ export function NotionPromptForm() {
                 className="min-w-48"
               >
                 <DropdownMenuGroup>
-                  <DropdownMenuLabel className="text-muted-foreground text-xs">
+                  <DropdownMenuLabel className="text-xs text-muted-foreground">
                     Select Agent Mode
                   </DropdownMenuLabel>
                   {SAMPLE_DATA.models.map((model) => (
@@ -426,7 +426,7 @@ export function NotionPromptForm() {
                   <DropdownMenuItem>
                     <IconPlus /> Connect Apps
                   </DropdownMenuItem>
-                  <DropdownMenuLabel className="text-muted-foreground text-xs">
+                  <DropdownMenuLabel className="text-xs text-muted-foreground">
                     We&apos;ll only search in the sources selected here.
                   </DropdownMenuLabel>
                 </DropdownMenuGroup>

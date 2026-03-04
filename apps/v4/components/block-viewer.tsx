@@ -253,7 +253,7 @@ function BlockViewerIframe({
       height={item.meta?.iframeHeight ?? 930}
       loading="lazy"
       className={cn(
-        "bg-background no-scrollbar relative z-20 w-full",
+        "relative z-20 no-scrollbar w-full bg-background",
         className
       )}
     />
@@ -269,17 +269,17 @@ function BlockViewerView({ styleName }: { styleName: Style["name"] }) {
         <div className="absolute inset-0 right-4 [background-image:radial-gradient(#d4d4d4_1px,transparent_1px)] [background-size:20px_20px] dark:[background-image:radial-gradient(#404040_1px,transparent_1px)]"></div>
         <ResizablePanelGroup
           orientation="horizontal"
-          className="after:bg-surface/50 relative z-10 after:absolute after:inset-0 after:right-3 after:z-0 after:rounded-xl"
+          className="relative z-10 after:absolute after:inset-0 after:right-3 after:z-0 after:rounded-xl after:bg-surface/50"
         >
           <ResizablePanel
             panelRef={resizablePanelRef}
-            className="bg-background relative aspect-[4/2.5] overflow-hidden rounded-lg border md:aspect-auto md:rounded-xl"
+            className="relative aspect-[4/2.5] overflow-hidden rounded-lg border bg-background md:aspect-auto md:rounded-xl"
             defaultSize="100%"
             minSize="30%"
           >
             <BlockViewerIframe styleName={styleName} />
           </ResizablePanel>
-          <ResizableHandle className="after:bg-border relative hidden w-3 bg-transparent p-0 after:absolute after:top-1/2 after:right-0 after:h-8 after:w-[6px] after:translate-x-[-1px] after:-translate-y-1/2 after:rounded-full after:transition-all after:hover:h-10 md:block" />
+          <ResizableHandle className="relative hidden w-3 bg-transparent p-0 after:absolute after:top-1/2 after:right-0 after:h-8 after:w-[6px] after:translate-x-[-1px] after:-translate-y-1/2 after:rounded-full after:bg-border after:transition-all after:hover:h-10 md:block" />
           <ResizablePanel defaultSize="0%" minSize="0%" />
         </ResizablePanelGroup>
       </div>
@@ -296,7 +296,7 @@ function BlockViewerMobile({ children }: { children: React.ReactNode }) {
         <div className="line-clamp-1 text-sm font-medium">
           {item.description}
         </div>
-        <div className="text-muted-foreground ml-auto shrink-0 font-mono text-xs">
+        <div className="ml-auto shrink-0 font-mono text-xs text-muted-foreground">
           {item.name}
         </div>
       </div>
@@ -340,16 +340,16 @@ function BlockViewerCode() {
   const language = file.path.split(".").pop() ?? "tsx"
 
   return (
-    <div className="bg-code text-code-foreground mr-[14px] flex overflow-hidden rounded-xl border group-data-[view=preview]/block-view-wrapper:hidden md:h-(--height)">
+    <div className="mr-[14px] flex overflow-hidden rounded-xl border bg-code text-code-foreground group-data-[view=preview]/block-view-wrapper:hidden md:h-(--height)">
       <div className="w-72">
         <BlockViewerFileTree />
       </div>
       <figure
         data-rehype-pretty-code-figure=""
-        className="!mx-0 mt-0 flex min-w-0 flex-1 flex-col rounded-xl border-none"
+        className="mx-0! mt-0 flex min-w-0 flex-1 flex-col rounded-xl border-none"
       >
         <figcaption
-          className="text-code-foreground [&_svg]:text-code-foreground flex h-12 shrink-0 items-center gap-2 border-b px-4 py-2 [&_svg]:size-4 [&_svg]:opacity-70"
+          className="flex h-12 shrink-0 items-center gap-2 border-b px-4 py-2 text-code-foreground [&_svg]:size-4 [&_svg]:text-code-foreground [&_svg]:opacity-70"
           data-language={language}
         >
           {getIconForLanguageExtension(language)}
@@ -376,7 +376,7 @@ export function BlockViewerFileTree() {
   }
 
   return (
-    <SidebarProvider className="flex !min-h-full flex-col border-r">
+    <SidebarProvider className="flex min-h-full! flex-col border-r">
       <Sidebar collapsible="none" className="w-full flex-1">
         <SidebarGroupLabel className="h-12 rounded-none border-b px-4 text-sm">
           Files
@@ -404,7 +404,7 @@ function Tree({ item, index }: { item: FileTree; index: number }) {
         <SidebarMenuButton
           isActive={item.path === activeFile}
           onClick={() => item.path && setActiveFile(item.path)}
-          className="hover:bg-muted-foreground/15 focus:bg-muted-foreground/15 focus-visible:bg-muted-foreground/15 active:bg-muted-foreground/15 data-[active=true]:bg-muted-foreground/15 rounded-none pl-(--index) whitespace-nowrap"
+          className="rounded-none pl-(--index) whitespace-nowrap hover:bg-muted-foreground/15 focus:bg-muted-foreground/15 focus-visible:bg-muted-foreground/15 active:bg-muted-foreground/15 data-[active=true]:bg-muted-foreground/15"
           data-index={index}
           style={
             {
@@ -428,7 +428,7 @@ function Tree({ item, index }: { item: FileTree; index: number }) {
       >
         <CollapsibleTrigger asChild>
           <SidebarMenuButton
-            className="hover:bg-muted-foreground/15 focus:bg-muted-foreground/15 focus-visible:bg-muted-foreground/15 active:bg-muted-foreground/15 data-[active=true]:bg-muted-foreground/15 rounded-none pl-(--index) whitespace-nowrap"
+            className="rounded-none pl-(--index) whitespace-nowrap hover:bg-muted-foreground/15 focus:bg-muted-foreground/15 focus-visible:bg-muted-foreground/15 active:bg-muted-foreground/15 data-[active=true]:bg-muted-foreground/15"
             style={
               {
                 "--index": `${index * (index === 1 ? 1 : 1.2)}rem`,

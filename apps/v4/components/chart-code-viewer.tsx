@@ -37,7 +37,7 @@ export function ChartCodeViewer({
     <Button
       size="sm"
       variant="outline"
-      className="text-foreground hover:bg-muted dark:text-foreground h-6 rounded-[6px] border bg-transparent px-2 text-xs shadow-none"
+      className="h-6 rounded-[6px] border bg-transparent px-2 text-xs text-foreground shadow-none hover:bg-muted dark:text-foreground"
     >
       View Code
     </Button>
@@ -45,7 +45,7 @@ export function ChartCodeViewer({
 
   const content = (
     <div className="flex min-h-0 flex-1 flex-col gap-0">
-      <div className="chart-wrapper theme-container hidden sm:block [&_[data-chart]]:mx-auto [&_[data-chart]]:max-h-[35vh] [&>div]:rounded-none [&>div]:border-0 [&>div]:border-b [&>div]:shadow-none">
+      <div className="chart-wrapper hidden theme-container sm:block [&_[data-chart]]:mx-auto [&_[data-chart]]:max-h-[35vh] [&>div]:rounded-none [&>div]:border-0 [&>div]:border-b [&>div]:shadow-none">
         {children}
       </div>
       <div className="flex min-w-0 flex-1 flex-col overflow-hidden p-4">
@@ -54,7 +54,7 @@ export function ChartCodeViewer({
           className="mt-0 flex h-auto min-w-0 flex-1 flex-col overflow-hidden"
         >
           <figcaption
-            className="text-foreground [&>svg]:text-foreground flex h-12 shrink-0 items-center gap-2 border-b py-2 pr-2 pl-4 [&>svg]:size-4 [&>svg]:opacity-70"
+            className="flex h-12 shrink-0 items-center gap-2 border-b py-2 pr-2 pl-4 text-foreground [&>svg]:size-4 [&>svg]:text-foreground [&>svg]:opacity-70"
             data-language="tsx"
           >
             {getIconForLanguageExtension("tsx")}

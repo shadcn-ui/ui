@@ -5,7 +5,7 @@ export function SeparatorDemo() {
     <div>
       <div className="flex flex-col gap-1">
         <div className="text-sm leading-none font-medium">Tailwind CSS</div>
-        <div className="text-muted-foreground text-sm">
+        <div className="text-sm text-muted-foreground">
           A utility-first CSS framework.
         </div>
       </div>

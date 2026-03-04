@@ -40,7 +40,7 @@ export function LockButton({
           <HugeiconsIcon
             icon={locked ? SquareLock01Icon : SquareUnlock01Icon}
             strokeWidth={2}
-            className="text-foreground size-5"
+            className="size-5 text-foreground"
           />
         </button>
       </TooltipTrigger>

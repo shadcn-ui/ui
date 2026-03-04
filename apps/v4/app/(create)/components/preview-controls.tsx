@@ -23,7 +23,7 @@ export function PreviewControls() {
             setParams({ size: parseInt(newValue) })
           }
         }}
-        className="gap-1 *:data-[slot=toggle-group-item]:!size-6 *:data-[slot=toggle-group-item]:!rounded-sm"
+        className="gap-1 *:data-[slot=toggle-group-item]:size-6! *:data-[slot=toggle-group-item]:rounded-sm!"
       >
         <ToggleGroupItem value="100" title="Desktop">
           <Monitor />

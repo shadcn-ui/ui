@@ -31,7 +31,7 @@ export async function StarsCount() {
       : json.stargazers_count.toLocaleString()
 
   return (
-    <span className="text-muted-foreground w-fit text-xs tabular-nums">
+    <span className="w-fit text-xs text-muted-foreground tabular-nums">
       {formattedCount}
     </span>
   )
