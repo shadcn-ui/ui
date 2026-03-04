@@ -1,7 +1,7 @@
 import { getRegistryItems } from "@/src/registry/api"
 import { buildUrlAndHeadersForRegistryItem } from "@/src/registry/builder"
 import { configWithDefaults } from "@/src/registry/config"
-import { REGISTRY_URL } from "@/src/registry/constants"
+import { REGISTRY_URL, SHADCN_URL } from "@/src/registry/constants"
 import { type registryConfigSchema } from "@/src/registry/schema"
 import { createConfig } from "@/src/utils/get-config"
 import { highlighter } from "@/src/utils/highlighter"
@@ -10,8 +10,6 @@ import { ensureRegistriesInConfig } from "@/src/utils/registries"
 import open from "open"
 import prompts from "prompts"
 import { type z } from "zod"
-
-const SHADCN_URL = REGISTRY_URL.replace(/\/r\/?$/, "")
 
 export const DEFAULT_PRESETS = {
   nova: {
@@ -174,7 +172,7 @@ export async function promptForPreset(options: {
       })),
       {
         title: "Custom",
-        description: "Build your own on https://ui.shadcn.com/create",
+        description: `Build your own at ${highlighter.info(`${SHADCN_URL}/create`)}`,
         value: "custom",
       },
     ],

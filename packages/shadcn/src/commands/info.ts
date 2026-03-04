@@ -1,5 +1,6 @@
 import { existsSync } from "fs"
 import path from "path"
+import { SHADCN_URL } from "@/src/registry/constants"
 import { getBase, getConfig } from "@/src/utils/get-config"
 import {
   formatMonorepoMessage,
@@ -143,11 +144,11 @@ function collectInfo(
       : null,
     components,
     links: {
-      docs: "https://ui.shadcn.com/docs",
-      components: `https://ui.shadcn.com/docs/components/${base}/[component].md`,
+      docs: `${SHADCN_URL}/docs`,
+      components: `${SHADCN_URL}/docs/components/${base}/[component].md`,
       ui: `${GITHUB_RAW_BASE}/${base}/ui/[component].tsx`,
       examples: `${GITHUB_RAW_BASE}/${base}/examples/[component]-example.tsx`,
-      schema: "https://ui.shadcn.com/schema.json",
+      schema: `${SHADCN_URL}/schema.json`,
     },
   }
 }

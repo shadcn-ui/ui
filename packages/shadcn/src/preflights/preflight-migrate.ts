@@ -1,6 +1,7 @@
 import path from "path"
 import { addOptionsSchema } from "@/src/commands/add"
 import { migrateOptionsSchema } from "@/src/commands/migrate"
+import { SHADCN_URL } from "@/src/registry/constants"
 import * as ERRORS from "@/src/utils/errors"
 import { getConfig } from "@/src/utils/get-config"
 import { highlighter } from "@/src/utils/highlighter"
@@ -55,7 +56,7 @@ export async function preFlightMigrate(
     )
     logger.error(
       `Learn more at ${highlighter.info(
-        "https://ui.shadcn.com/docs/components-json"
+        `${SHADCN_URL}/docs/components-json`
       )}.`
     )
     logger.break()

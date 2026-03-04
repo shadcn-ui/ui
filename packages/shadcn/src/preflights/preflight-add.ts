@@ -1,5 +1,6 @@
 import path from "path"
 import { addOptionsSchema } from "@/src/commands/add"
+import { SHADCN_URL } from "@/src/registry/constants"
 import * as ERRORS from "@/src/utils/errors"
 import { getConfig } from "@/src/utils/get-config"
 import {
@@ -66,7 +67,7 @@ export async function preFlightAdd(options: z.infer<typeof addOptionsSchema>) {
     )
     logger.error(
       `Learn more at ${highlighter.info(
-        "https://ui.shadcn.com/docs/components-json"
+        `${SHADCN_URL}/docs/components-json`
       )}.`
     )
     logger.break()

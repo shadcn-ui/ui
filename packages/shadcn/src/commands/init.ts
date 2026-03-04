@@ -10,7 +10,7 @@ import {
   resolveRegistryBaseConfig,
 } from "@/src/preset/presets"
 import { getRegistryBaseColors, getRegistryStyles } from "@/src/registry/api"
-import { BUILTIN_REGISTRIES } from "@/src/registry/constants"
+import { BUILTIN_REGISTRIES, SHADCN_URL } from "@/src/registry/constants"
 import { clearRegistryContext } from "@/src/registry/context"
 import { registryConfigSchema } from "@/src/registry/schema"
 import { isUrl } from "@/src/registry/utils"
@@ -317,7 +317,7 @@ export const init = new Command()
           )
           logger.log(
             `  See ${highlighter.info(
-              "https://ui.shadcn.com/docs/installation/laravel"
+              `${SHADCN_URL}/docs/installation/laravel`
             )} for more information.`
           )
           logger.break()
@@ -813,7 +813,7 @@ async function promptForConfig(defaultConfig: Config | null = null) {
   }
 
   return rawConfigSchema.parse({
-    $schema: "https://ui.shadcn.com/schema.json",
+    $schema: `${SHADCN_URL}/schema.json`,
     style: options.style,
     tailwind: {
       config: options.tailwindConfig,

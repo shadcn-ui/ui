@@ -1,6 +1,7 @@
 import * as fs from "fs/promises"
 import * as path from "path"
 import { preFlightRegistryBuild } from "@/src/preflights/preflight-registry"
+import { SHADCN_URL } from "@/src/registry/constants"
 import { recursivelyResolveFileImports } from "@/src/registry/utils"
 import { configSchema, registryItemSchema, registrySchema } from "@/src/schema"
 import * as ERRORS from "@/src/utils/errors"
@@ -121,7 +122,7 @@ async function buildRegistry(opts: z.infer<typeof buildOptionsSchema>) {
 
       // Add the schema to the registry item.
       registryItem["$schema"] =
-        "https://ui.shadcn.com/schema/registry-item.json"
+        `${SHADCN_URL}/schema/registry-item.json`
 
       for (const file of registryItem.files) {
         const absPath = path.resolve(resolvePaths.cwd, file.path)

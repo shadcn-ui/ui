@@ -1,6 +1,7 @@
 import * as fs from "fs/promises"
 import * as path from "path"
 import { preFlightBuild } from "@/src/preflights/preflight-build"
+import { SHADCN_URL } from "@/src/registry/constants"
 import { registryItemSchema, registrySchema } from "@/src/schema"
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
@@ -57,7 +58,7 @@ export const build = new Command()
 
         // Add the schema to the registry item.
         registryItem["$schema"] =
-          "https://ui.shadcn.com/schema/registry-item.json"
+          `${SHADCN_URL}/schema/registry-item.json`
 
         // Loop through each file in the files array.
         for (const file of registryItem.files ?? []) {

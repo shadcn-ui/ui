@@ -1,3 +1,4 @@
+import { SHADCN_URL } from "@/src/registry/constants"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 
@@ -19,7 +20,7 @@ export const laravel = createTemplate({
     )
     logger.log(
       `  See ${highlighter.info(
-        "https://ui.shadcn.com/docs/installation/laravel"
+        `${SHADCN_URL}/docs/installation/laravel`
       )} for more information.`
     )
     logger.break()
