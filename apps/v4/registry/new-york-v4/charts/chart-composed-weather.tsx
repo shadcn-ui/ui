@@ -126,7 +126,7 @@ export function ChartComposedWeather() {
         <div className="flex gap-2 leading-none font-medium">
           Humidity drops as temperatures climb <CloudRain className="h-4 w-4" />
         </div>
-        <div className="text-muted-foreground leading-none">
+        <div className="leading-none text-muted-foreground">
           Temperature (area), rainfall (bars), humidity % (dashed line)
         </div>
       </CardFooter>

@@ -123,7 +123,7 @@ export function ChartComposedDefault() {
         <div className="flex gap-2 leading-none font-medium">
           Retention up 12% over the period <TrendingUp className="h-4 w-4" />
         </div>
-        <div className="text-muted-foreground leading-none">
+        <div className="leading-none text-muted-foreground">
           Visitors, signups, and retention rate — January through June 2024
         </div>
       </CardFooter>

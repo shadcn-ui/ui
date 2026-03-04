@@ -1,14 +1,7 @@
 "use client"
 
 import { TrendingUp } from "lucide-react"
-import {
-  Bar,
-  CartesianGrid,
-  ComposedChart,
-  Line,
-  XAxis,
-  YAxis,
-} from "recharts"
+import { Bar, CartesianGrid, ComposedChart, Line, XAxis, YAxis } from "recharts"
 
 import {
   Card,
@@ -123,7 +116,7 @@ export function ChartComposedRevenue() {
         <div className="flex gap-2 leading-none font-medium">
           Profit margin up to 52% in June <TrendingUp className="h-4 w-4" />
         </div>
-        <div className="text-muted-foreground leading-none">
+        <div className="leading-none text-muted-foreground">
           Revenue and expenses (bars) with profit margin % overlay (line)
         </div>
       </CardFooter>

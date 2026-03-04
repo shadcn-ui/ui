@@ -126,7 +126,7 @@ export function ChartComposedPerformance() {
         <div className="flex gap-2 leading-none font-medium">
           Conversion rate doubled to 6% <TrendingUp className="h-4 w-4" />
         </div>
-        <div className="text-muted-foreground leading-none">
+        <div className="leading-none text-muted-foreground">
           Traffic (area), conversions (bars), conversion rate % (line)
         </div>
       </CardFooter>

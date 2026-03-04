@@ -1,14 +1,7 @@
 "use client"
 
 import { TrendingUp } from "lucide-react"
-import {
-  Bar,
-  CartesianGrid,
-  ComposedChart,
-  Line,
-  XAxis,
-  YAxis,
-} from "recharts"
+import { Bar, CartesianGrid, ComposedChart, Line, XAxis, YAxis } from "recharts"
 
 import {
   Card,
@@ -121,7 +114,7 @@ export function ChartComposedStacked() {
         <div className="flex gap-2 leading-none font-medium">
           Total visits up 127% to 11.6k <TrendingUp className="h-4 w-4" />
         </div>
-        <div className="text-muted-foreground leading-none">
+        <div className="leading-none text-muted-foreground">
           Stacked bars by channel with total trend line overlay
         </div>
       </CardFooter>
