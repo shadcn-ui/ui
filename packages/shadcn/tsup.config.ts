@@ -14,7 +14,7 @@ export default defineConfig({
     "src/preset/index.ts",
   ],
   format: ["esm"],
-  sourcemap: true,
+  sourcemap: false,
   minify: true,
   target: "esnext",
   outDir: "dist",

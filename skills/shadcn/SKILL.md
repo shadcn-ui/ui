@@ -6,14 +6,14 @@ user-invocable: false
 
 # shadcn/ui
 
-Copy-paste component library. Components are added as source code to the user's project via the CLI.
+A framework for building ui, components and design systems. Components are added as source code to the user's project via the CLI.
 
 > **IMPORTANT:** Run all CLI commands using the project's package runner: `npx shadcn@latest`, `pnpm dlx shadcn@latest`, or `bunx --bun shadcn@latest` — based on the project's `packageManager`. Examples below use `npx shadcn@latest` but substitute the correct runner for the project.
 
 ## Current Project Context
 
 ```json
-!`shadcn info --json 2>/dev/null || echo '{"error": "No shadcn project found. Run shadcn init first."}'`
+!`npx shadcn@latest info --json 2>/dev/null || echo '{"error": "No shadcn project found. Run shadcn init first."}'`
 ```
 
 The JSON above contains the project config and installed components. Use `npx shadcn@latest docs <component>` to get documentation and example URLs for any component.
