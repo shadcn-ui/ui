@@ -1,29 +1,43 @@
-# Base-specific patterns
+# Base vs Radix
 
-API differences between `base` and `radix`. Check the `base` field from `shadcn info` to determine which patterns to use.
+API differences between `base` and `radix`. Check the `base` field from `npx shadcn@latest info`.
 
 ## Contents
 
 - Composition: asChild vs render
 - Button / trigger as non-button element
-- Select
-- ToggleGroup
-- Slider
-- Accordion
+- Select (items prop, placeholder, positioning, multiple, object values)
+- ToggleGroup (type vs multiple)
+- Slider (scalar vs array)
+- Accordion (type and defaultValue)
 
 ---
 
 ## Composition: asChild (radix) vs render (base)
 
-Radix uses `asChild` to replace the default element. Base uses `render`.
+Radix uses `asChild` to replace the default element. Base uses `render`. Don't wrap triggers in extra elements.
+
+**Incorrect:**
 
 ```tsx
-// radix.
+<DialogTrigger>
+  <div>
+    <Button>Open</Button>
+  </div>
+</DialogTrigger>
+```
+
+**Correct (radix):**
+
+```tsx
 <DialogTrigger asChild>
   <Button>Open</Button>
 </DialogTrigger>
+```
 
-// base.
+**Correct (base):**
+
+```tsx
 <DialogTrigger render={<Button />}>Open</DialogTrigger>
 ```
 
@@ -35,13 +49,23 @@ This applies to all trigger and close components: `DialogTrigger`, `SheetTrigger
 
 When `render` changes an element to a non-button (`<a>`, `<span>`), add `nativeButton={false}`.
 
+**Incorrect (base):** missing `nativeButton={false}`.
+
 ```tsx
-// base — button as link.
+<Button render={<a href="/docs" />}>Read the docs</Button>
+```
+
+**Correct (base):**
+
+```tsx
 <Button render={<a href="/docs" />} nativeButton={false}>
   Read the docs
 </Button>
+```
 
-// radix equivalent.
+**Correct (radix):**
+
+```tsx
 <Button asChild>
   <a href="/docs">Read the docs</a>
 </Button>
@@ -62,8 +86,17 @@ Same for triggers whose `render` is not a `Button`:
 
 **items prop (base only).** Base requires an `items` prop on the root. Radix uses inline JSX only.
 
+**Incorrect (base):**
+
 ```tsx
-// base.
+<Select>
+  <SelectTrigger><SelectValue placeholder="Select a fruit" /></SelectTrigger>
+</Select>
+```
+
+**Correct (base):**
+
+```tsx
 const items = [
   { label: "Select a fruit", value: null },
   { label: "Apple", value: "apple" },
@@ -82,8 +115,11 @@ const items = [
     </SelectGroup>
   </SelectContent>
 </Select>
+```
 
-// radix.
+**Correct (radix):**
+
+```tsx
 <Select>
   <SelectTrigger>
     <SelectValue placeholder="Select a fruit" />
@@ -99,28 +135,6 @@ const items = [
 
 **Placeholder.** Base uses a `{ value: null }` item in the items array. Radix uses `<SelectValue placeholder="...">`.
 
-**Multiple selection and object values (base only).** Base supports `multiple`, render-function children on `SelectValue`, and object values with `itemToStringValue`. Radix is single-select with string values only.
-
-```tsx
-// base — multiple selection.
-<Select items={items} multiple defaultValue={[]}>
-  <SelectTrigger>
-    <SelectValue>
-      {(value: string[]) => value.length === 0 ? "Select fruits" : `${value.length} selected`}
-    </SelectValue>
-  </SelectTrigger>
-  ...
-</Select>
-
-// base — object values.
-<Select defaultValue={plans[0]} itemToStringValue={(plan) => plan.name}>
-  <SelectTrigger>
-    <SelectValue>{(value) => value.name}</SelectValue>
-  </SelectTrigger>
-  ...
-</Select>
-```
-
 **Content positioning.** Base uses `alignItemWithTrigger`. Radix uses `position`.
 
 ```tsx
@@ -133,44 +147,88 @@ const items = [
 
 ---
 
+## Select — multiple selection and object values (base only)
+
+Base supports `multiple`, render-function children on `SelectValue`, and object values with `itemToStringValue`. Radix is single-select with string values only.
+
+**Correct (base — multiple selection):**
+
+```tsx
+<Select items={items} multiple defaultValue={[]}>
+  <SelectTrigger>
+    <SelectValue>
+      {(value: string[]) => value.length === 0 ? "Select fruits" : `${value.length} selected`}
+    </SelectValue>
+  </SelectTrigger>
+  ...
+</Select>
+```
+
+**Correct (base — object values):**
+
+```tsx
+<Select defaultValue={plans[0]} itemToStringValue={(plan) => plan.name}>
+  <SelectTrigger>
+    <SelectValue>{(value) => value.name}</SelectValue>
+  </SelectTrigger>
+  ...
+</Select>
+```
+
+---
+
 ## ToggleGroup
 
 Base uses a `multiple` boolean prop. Radix uses `type="single"` or `type="multiple"`.
 
+**Incorrect (base):**
+
 ```tsx
-// base — single (no prop needed), defaultValue is always an array.
+<ToggleGroup type="single" defaultValue="daily">
+  <ToggleGroupItem value="daily">Daily</ToggleGroupItem>
+</ToggleGroup>
+```
+
+**Correct (base):**
+
+```tsx
+// Single (no prop needed), defaultValue is always an array.
 <ToggleGroup defaultValue={["daily"]} spacing={2}>
   <ToggleGroupItem value="daily">Daily</ToggleGroupItem>
   <ToggleGroupItem value="weekly">Weekly</ToggleGroupItem>
 </ToggleGroup>
 
-// base — multi-selection.
+// Multi-selection.
 <ToggleGroup multiple>
   <ToggleGroupItem value="bold">Bold</ToggleGroupItem>
   <ToggleGroupItem value="italic">Italic</ToggleGroupItem>
 </ToggleGroup>
+```
 
-// radix — single, defaultValue is a string.
+**Correct (radix):**
+
+```tsx
+// Single, defaultValue is a string.
 <ToggleGroup type="single" defaultValue="daily" spacing={2}>
   <ToggleGroupItem value="daily">Daily</ToggleGroupItem>
   <ToggleGroupItem value="weekly">Weekly</ToggleGroupItem>
 </ToggleGroup>
 
-// radix — multi-selection.
+// Multi-selection.
 <ToggleGroup type="multiple">
   <ToggleGroupItem value="bold">Bold</ToggleGroupItem>
   <ToggleGroupItem value="italic">Italic</ToggleGroupItem>
 </ToggleGroup>
 ```
 
-**Controlled single value.** Base wraps/unwraps arrays. Radix uses a plain string.
+**Controlled single value:**
 
 ```tsx
-// base.
+// base — wrap/unwrap arrays.
 const [value, setValue] = React.useState("normal")
 <ToggleGroup value={[value]} onValueChange={(v) => setValue(v[0])}>
 
-// radix.
+// radix — plain string.
 const [value, setValue] = React.useState("normal")
 <ToggleGroup type="single" value={value} onValueChange={setValue}>
 ```
@@ -181,15 +239,25 @@ const [value, setValue] = React.useState("normal")
 
 Base accepts a plain number for a single thumb. Radix always requires an array.
 
-```tsx
-// base.
-<Slider defaultValue={50} max={100} step={1} />
+**Incorrect (base):**
 
-// radix.
+```tsx
 <Slider defaultValue={[50]} max={100} step={1} />
 ```
 
-Both use arrays for range sliders. Controlled `onValueChange` in base may need a cast.
+**Correct (base):**
+
+```tsx
+<Slider defaultValue={50} max={100} step={1} />
+```
+
+**Correct (radix):**
+
+```tsx
+<Slider defaultValue={[50]} max={100} step={1} />
+```
+
+Both use arrays for range sliders. Controlled `onValueChange` in base may need a cast:
 
 ```tsx
 // base.
@@ -205,26 +273,34 @@ const [value, setValue] = React.useState([0.3, 0.7])
 
 ## Accordion
 
-Radix requires `type="single"` or `type="multiple"` and supports `collapsible`. `defaultValue` is a string.
+Radix requires `type="single"` or `type="multiple"` and supports `collapsible`. `defaultValue` is a string. Base uses no `type` prop, uses `multiple` boolean, and `defaultValue` is always an array.
+
+**Incorrect (base):**
 
 ```tsx
-// radix.
 <Accordion type="single" collapsible defaultValue="item-1">
   <AccordionItem value="item-1">...</AccordionItem>
 </Accordion>
 ```
 
-Base uses no `type` prop. Use `multiple` for multi-select. `defaultValue` is an array.
+**Correct (base):**
 
 ```tsx
-// base.
 <Accordion defaultValue={["item-1"]}>
   <AccordionItem value="item-1">...</AccordionItem>
 </Accordion>
 
-// base — multi-select.
+// Multi-select.
 <Accordion multiple defaultValue={["item-1", "item-2"]}>
   <AccordionItem value="item-1">...</AccordionItem>
   <AccordionItem value="item-2">...</AccordionItem>
+</Accordion>
+```
+
+**Correct (radix):**
+
+```tsx
+<Accordion type="single" collapsible defaultValue="item-1">
+  <AccordionItem value="item-1">...</AccordionItem>
 </Accordion>
 ```

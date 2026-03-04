@@ -27,21 +27,21 @@ Components reference semantic CSS variable tokens. Change the variables to chang
 
 Every color follows the `name` / `name-foreground` convention. The base variable is for backgrounds, `-foreground` is for text/icons on that background.
 
-| Variable | Purpose |
-|----------|---------|
-| `--background` / `--foreground` | Page background and default text |
-| `--card` / `--card-foreground` | Card surfaces |
-| `--primary` / `--primary-foreground` | Primary buttons and actions |
-| `--secondary` / `--secondary-foreground` | Secondary actions |
-| `--muted` / `--muted-foreground` | Muted/disabled states |
-| `--accent` / `--accent-foreground` | Hover and accent states |
-| `--destructive` / `--destructive-foreground` | Error and destructive actions |
-| `--border` | Default border color |
-| `--input` | Form input borders |
-| `--ring` | Focus ring color |
-| `--chart-1` through `--chart-5` | Chart/data visualization |
-| `--sidebar-*` | Sidebar-specific colors |
-| `--surface` / `--surface-foreground` | Secondary surface |
+| Variable                                     | Purpose                          |
+| -------------------------------------------- | -------------------------------- |
+| `--background` / `--foreground`              | Page background and default text |
+| `--card` / `--card-foreground`               | Card surfaces                    |
+| `--primary` / `--primary-foreground`         | Primary buttons and actions      |
+| `--secondary` / `--secondary-foreground`     | Secondary actions                |
+| `--muted` / `--muted-foreground`             | Muted/disabled states            |
+| `--accent` / `--accent-foreground`           | Hover and accent states          |
+| `--destructive` / `--destructive-foreground` | Error and destructive actions    |
+| `--border`                                   | Default border color             |
+| `--input`                                    | Form input borders               |
+| `--ring`                                     | Focus ring color                 |
+| `--chart-1` through `--chart-5`              | Chart/data visualization         |
+| `--sidebar-*`                                | Sidebar-specific colors          |
+| `--surface` / `--surface-foreground`         | Secondary surface                |
 
 Colors use OKLCH: `--primary: oklch(0.205 0 0)` where values are lightness (0–1), chroma (0 = gray), and hue (0–360).
 
@@ -65,14 +65,14 @@ import { ThemeProvider } from "next-themes"
 
 ```bash
 # Apply a preset code from ui.shadcn.com.
-shadcn init --preset a2r6bw --force
+npx shadcn@latest init --preset a2r6bw --force
 
 # Switch to a named preset.
-shadcn init --preset radix-nova --force
-shadcn init --reinstall  # update existing components to match
+npx shadcn@latest init --preset radix-nova --force
+npx shadcn@latest init --reinstall  # update existing components to match
 
 # Use a custom theme URL.
-shadcn init --preset "https://ui.shadcn.com/init?base=radix&style=nova&theme=blue&..." --force
+npx shadcn@latest init --preset "https://ui.shadcn.com/init?base=radix&style=nova&theme=blue&..." --force
 ```
 
 Or edit CSS variables directly in `globals.css`.
@@ -81,7 +81,7 @@ Or edit CSS variables directly in `globals.css`.
 
 ## Adding Custom Colors
 
-Add variables to the file at `tailwindCssFile` from `shadcn info` (typically `globals.css`). Never create a new CSS file for this.
+Add variables to the file at `tailwindCssFile` from `npx shadcn@latest info` (typically `globals.css`). Never create a new CSS file for this.
 
 ```css
 /* 1. Define in the global CSS file. */
@@ -103,7 +103,7 @@ Add variables to the file at `tailwindCssFile` from `shadcn info` (typically `gl
 }
 ```
 
-When `tailwindVersion` is `"v3"` (check via `shadcn info`), register in `tailwind.config.js` instead:
+When `tailwindVersion` is `"v3"` (check via `npx shadcn@latest info`), register in `tailwind.config.js` instead:
 
 ```js
 // 2b. Register with Tailwind v3 (tailwind.config.js).
@@ -112,7 +112,8 @@ module.exports = {
     extend: {
       colors: {
         warning: "oklch(var(--warning) / <alpha-value>)",
-        "warning-foreground": "oklch(var(--warning-foreground) / <alpha-value>)",
+        "warning-foreground":
+          "oklch(var(--warning-foreground) / <alpha-value>)",
       },
     },
   },
@@ -133,6 +134,8 @@ module.exports = {
 ---
 
 ## Customizing Components
+
+See also: [rules/styling.md](./rules/styling.md) for Incorrect/Correct examples.
 
 Prefer these approaches in order:
 
@@ -186,15 +189,14 @@ export function ConfirmDialog({ title, description, onConfirm, children }) {
 ## Checking for Updates
 
 ```bash
-shadcn diff          # all components with available updates
-shadcn diff button   # specific component
+npx shadcn@latest add button --diff
 ```
 
 To preview exactly what would change before updating, use `--dry-run` and `--diff`:
 
 ```bash
-shadcn add button --dry-run        # see all affected files
-shadcn add button --diff button.tsx # see the diff for a specific file
+npx shadcn@latest add button --dry-run        # see all affected files
+npx shadcn@latest add button --diff button.tsx # see the diff for a specific file
 ```
 
 See [Updating Components in SKILL.md](./SKILL.md#updating-components) for the full smart merge workflow.
