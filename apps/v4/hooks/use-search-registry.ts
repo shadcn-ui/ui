@@ -2,27 +2,25 @@ import { debounce, useQueryState } from "nuqs"
 
 import globalRegistries from "@/registry/directory.json"
 
-const normalizeQuery = (query: string) =>
-  query.toLowerCase().replaceAll(" ", "").replaceAll("@", "")
+const normalizeQuery = (value: string) =>
+  value.toLowerCase().replaceAll(" ", "").replaceAll("@", "")
 
-function finderFn<T extends (typeof globalRegistries)[0]>(
-  registry: T,
+function matchesRegistry(
+  registry: (typeof globalRegistries)[0],
   query: string
-) {
-  const normalizedName = normalizeQuery(registry.name)
-  const normalizedDecription = normalizeQuery(registry.description)
+): boolean {
   const normalizedQuery = normalizeQuery(query)
-
-  return (
-    normalizedName.includes(normalizedQuery) ||
-    normalizedDecription.includes(normalizedQuery)
-  )
+  const nameMatch = normalizeQuery(registry.name).includes(normalizedQuery)
+  const descriptionMatch = normalizeQuery(
+    registry.description ?? ""
+  ).includes(normalizedQuery)
+  return nameMatch || descriptionMatch
 }
 
 const searchDirectory = (query: string | null) => {
   if (!query) return globalRegistries
 
-  return globalRegistries.filter((registry) => finderFn(registry, query))
+  return globalRegistries.filter((registry) => matchesRegistry(registry, query))
 }
 
 export const useSearchRegistry = () => {
