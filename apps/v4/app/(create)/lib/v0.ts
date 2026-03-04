@@ -17,42 +17,7 @@ import {
 
 const { Index } = await import("@/registry/bases/__index__")
 
-// Builds a full v0 payload from a design system config.
-export async function buildV0Payload(designSystemConfig: DesignSystemConfig) {
-  const registryBase = buildRegistryBase(designSystemConfig)
-
-  // Build all files in parallel.
-  const [globalsCss, layoutFile, componentFiles] = await Promise.all([
-    buildGlobalsCss(registryBase),
-    buildLayoutFile(designSystemConfig),
-    buildComponentFiles(designSystemConfig),
-  ])
-
-  return registryItemSchema.parse({
-    name: designSystemConfig.item ?? "Item",
-    type: "registry:item",
-    dependencies: registryBase.dependencies,
-    files: [globalsCss, layoutFile, ...componentFiles],
-  })
-}
-
-function buildGlobalsCss(registryBase: RegistryItem) {
-  const lightVars = Object.entries(registryBase.cssVars?.light ?? {})
-    .map(([key, value]) => `  --${key}: ${value};`)
-    .join("\n")
-
-  const darkVars = Object.entries(registryBase.cssVars?.dark ?? {})
-    .map(([key, value]) => `  --${key}: ${value};`)
-    .join("\n")
-
-  const content = dedent`@import "tailwindcss";
-@import "tw-animate-css";
-/* @import "shadcn/tailwind.css"; */
-
-@custom-variant dark (&:is(.dark *));
-
-@theme inline {
-  --font-sans: var(--font-sans);
+const THEME_INLINE = `--font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
   --font-serif: var(--font-serif);
   --color-background: var(--background);
@@ -93,7 +58,129 @@ function buildGlobalsCss(registryBase: RegistryItem) {
   --radius-xl: calc(var(--radius) * 1.4);
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
-  --radius-4xl: calc(var(--radius) * 2.6);
+  --radius-4xl: calc(var(--radius) * 2.6);`
+
+// Static file — parsed once at module level.
+const themeProviderFile = registryItemFileSchema.parse({
+  path: "components/theme-provider.tsx",
+  type: "registry:component",
+  target: "components/theme-provider.tsx",
+  content: dedent`
+    "use client"
+
+    import * as React from "react"
+    import { ThemeProvider as NextThemesProvider, useTheme } from "next-themes"
+
+    function ThemeProvider({
+      children,
+      ...props
+    }: React.ComponentProps<typeof NextThemesProvider>) {
+      return (
+        <NextThemesProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+          {...props}
+        >
+          <ThemeHotkey />
+          {children}
+        </NextThemesProvider>
+      )
+    }
+
+    function isTypingTarget(target: EventTarget | null) {
+      if (!(target instanceof HTMLElement)) {
+        return false
+      }
+
+      return (
+        target.isContentEditable ||
+        target.tagName === "INPUT" ||
+        target.tagName === "TEXTAREA" ||
+        target.tagName === "SELECT"
+      )
+    }
+
+    function ThemeHotkey() {
+      const { resolvedTheme, setTheme } = useTheme()
+
+      React.useEffect(() => {
+        function onKeyDown(event: KeyboardEvent) {
+          if (event.defaultPrevented || event.repeat) {
+            return
+          }
+
+          if (event.metaKey || event.ctrlKey || event.altKey) {
+            return
+          }
+
+          if (event.key.toLowerCase() !== "d") {
+            return
+          }
+
+          if (isTypingTarget(event.target)) {
+            return
+          }
+
+          setTheme(resolvedTheme === "dark" ? "light" : "dark")
+        }
+
+        window.addEventListener("keydown", onKeyDown)
+
+        return () => {
+          window.removeEventListener("keydown", onKeyDown)
+        }
+      }, [resolvedTheme, setTheme])
+
+      return null
+    }
+
+    export { ThemeProvider }
+  `,
+})
+
+const transformers = [transformIcons, transformMenu, transformRender]
+
+// Reuse a single ts-morph Project — avoids re-creating the compiler host per file.
+const project = new Project({ compilerOptions: {} })
+
+// Builds a full v0 payload from a design system config.
+export async function buildV0Payload(designSystemConfig: DesignSystemConfig) {
+  const registryBase = buildRegistryBase(designSystemConfig)
+
+  // Build all files in parallel.
+  const [globalsCss, layoutFile, componentFiles] = await Promise.all([
+    buildGlobalsCss(registryBase),
+    buildLayoutFile(designSystemConfig),
+    buildComponentFiles(designSystemConfig),
+  ])
+
+  return registryItemSchema.parse({
+    name: designSystemConfig.item ?? "Item",
+    type: "registry:item",
+    dependencies: [...(registryBase.dependencies ?? []), "next-themes"],
+    files: [globalsCss, layoutFile, themeProviderFile, ...componentFiles],
+  })
+}
+
+function buildGlobalsCss(registryBase: RegistryItem) {
+  const lightVars = Object.entries(registryBase.cssVars?.light ?? {})
+    .map(([key, value]) => `  --${key}: ${value};`)
+    .join("\n")
+
+  const darkVars = Object.entries(registryBase.cssVars?.dark ?? {})
+    .map(([key, value]) => `  --${key}: ${value};`)
+    .join("\n")
+
+  const content = dedent`@import "tailwindcss";
+@import "tw-animate-css";
+/* @import "shadcn/tailwind.css"; */
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  ${THEME_INLINE}
 }
 
 :root {
@@ -149,6 +236,7 @@ function buildLayoutFile(designSystemConfig: DesignSystemConfig) {
     import type { Metadata } from "next";
     import { ${font.font.import} } from "next/font/google";
     import "./globals.css";
+    import { ThemeProvider } from "@/components/theme-provider";
 
     const ${constName} = ${font.font.import}({subsets:['latin'],variable:'${font.font.variable}'});
 
@@ -163,11 +251,11 @@ function buildLayoutFile(designSystemConfig: DesignSystemConfig) {
       children: React.ReactNode;
     }>) {
       return (
-        <html lang="en" className={${constName}.variable}>
+        <html lang="en" suppressHydrationWarning className={${constName}.variable}>
           <body
             className="${bodyClassName}"
           >
-            {children}
+            <ThemeProvider>{children}</ThemeProvider>
           </body>
         </html>
       );
@@ -183,40 +271,47 @@ function buildLayoutFile(designSystemConfig: DesignSystemConfig) {
 }
 
 async function buildComponentFiles(designSystemConfig: DesignSystemConfig) {
-  const files = []
   const allItemsForBase = Object.values(Index[designSystemConfig.base])
     .filter((item: RegistryItem) => item.type === "registry:ui")
     .map((item) => item.name)
 
-  // Fetch UI components and the item component in parallel.
-  const itemComponentPromise = designSystemConfig.item
-    ? getRegistryItemFile(designSystemConfig.item, designSystemConfig)
-    : null
+  // Build config once for all components.
+  const config = buildTransformConfig(designSystemConfig)
 
-  const registryItemFiles = await Promise.all(
-    allItemsForBase.map((name) => getRegistryItemFile(name, designSystemConfig))
-  )
-  files.push(...registryItemFiles)
+  // Fetch UI components and the item component in parallel.
+  const [registryItemFiles, itemComponentFile] = await Promise.all([
+    Promise.all(
+      allItemsForBase.map((name) =>
+        getRegistryItemFile(name, designSystemConfig, config)
+      )
+    ),
+    designSystemConfig.item
+      ? getRegistryItemFile(designSystemConfig.item, designSystemConfig, config)
+      : null,
+  ])
+
+  const files = [...registryItemFiles]
 
   const pageFile = {
     path: "app/page.tsx",
     type: "registry:page",
     target: "app/page.tsx",
     content: dedent`
+      import { Button } from "@/components/ui/button"
+
       export default function Page() {
         return (
           <div className="flex min-h-svh p-6">
-            <div className="max-w-md text-sm leading-loose">
-              <h1 className="font-medium">Project ready!</h1>
-              <p>You may now prompt v0 to start building.</p>
-              <a
-                href="https://ui.shadcn.com/docs/new"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-2 inline-flex text-primary underline underline-offset-4"
-              >
-                Read the docs
-              </a>
+            <div className="flex max-w-md min-w-0 flex-col gap-4 text-sm leading-loose">
+              <div>
+                <h1 className="font-medium">Project ready!</h1>
+                <p>You may now add components and start building.</p>
+                <p>We&apos;ve already added the button component for you.</p>
+                <Button className="mt-2">Button</Button>
+              </div>
+              <div className="font-mono text-xs text-muted-foreground">
+                (Press <kbd>d</kbd> to toggle dark mode)
+              </div>
             </div>
           </div>
         )
@@ -225,36 +320,33 @@ async function buildComponentFiles(designSystemConfig: DesignSystemConfig) {
   }
 
   // Build the actual item component.
-  if (itemComponentPromise) {
-    const itemComponentFile = await itemComponentPromise
-    if (itemComponentFile) {
-      // Find the export default function from the component file.
-      const exportDefault = itemComponentFile.content.match(
-        /export default function (\w+)/
+  if (itemComponentFile) {
+    // Find the export default function from the component file.
+    const exportDefault = itemComponentFile.content.match(
+      /export default function (\w+)/
+    )
+    if (exportDefault) {
+      const functionName = exportDefault[1]
+
+      // Replace the export default function with a named export.
+      itemComponentFile.content = itemComponentFile.content.replace(
+        /export default function (\w+)/,
+        `export function ${functionName}`
       )
-      if (exportDefault) {
-        const functionName = exportDefault[1]
 
-        // Replace the export default function with a named export.
-        itemComponentFile.content = itemComponentFile.content.replace(
-          /export default function (\w+)/,
-          `export function ${functionName}`
-        )
+      // Import and render the item on the page.
+      pageFile.content = dedent`import { ${functionName} } from "@/components/${designSystemConfig.item}";
 
-        // Import and render the item on the page.
-        pageFile.content = dedent`import { ${functionName} } from "@/components/${designSystemConfig.item}";
-
-        export default function Page() {
-          return <${functionName} />
-        }`
-      }
-
-      files.push({
-        ...itemComponentFile,
-        target: `components/${designSystemConfig.item}.tsx`,
-        type: "registry:component",
-      })
+      export default function Page() {
+        return <${functionName} />
+      }`
     }
+
+    files.push({
+      ...itemComponentFile,
+      target: `components/${designSystemConfig.item}.tsx`,
+      type: "registry:component",
+    })
   }
 
   files.push(pageFile)
@@ -262,23 +354,8 @@ async function buildComponentFiles(designSystemConfig: DesignSystemConfig) {
   return z.array(registryItemFileSchema).parse(files)
 }
 
-async function getRegistryItemFile(
-  name: string,
-  designSystemConfig: DesignSystemConfig
-) {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_APP_URL}/r/styles/${designSystemConfig.base}-${designSystemConfig.style}/${name}.json`
-  )
-
-  if (!response.ok) {
-    throw new Error(`Failed to fetch registry item: ${response.statusText}`)
-  }
-
-  const json = await response.json()
-  const item = registryItemSchema.parse(json)
-
-  // Build a v0 config i.e components.json.
-  const config = {
+function buildTransformConfig(designSystemConfig: DesignSystemConfig) {
+  return {
     $schema: "https://ui.shadcn.com/schema.json",
     style: `${designSystemConfig.base}-${designSystemConfig.style}`,
     rsc: true,
@@ -311,6 +388,23 @@ async function getRegistryItemFile(
       ui: "./components/ui",
     },
   } satisfies z.infer<typeof configSchema>
+}
+
+async function getRegistryItemFile(
+  name: string,
+  designSystemConfig: DesignSystemConfig,
+  config: z.infer<typeof configSchema>
+) {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_APP_URL}/r/styles/${designSystemConfig.base}-${designSystemConfig.style}/${name}.json`
+  )
+
+  if (!response.ok) {
+    throw new Error(`Failed to fetch registry item: ${response.statusText}`)
+  }
+
+  const json = await response.json()
+  const item = registryItemSchema.parse(json)
 
   const file = item.files?.[0]
   if (!file?.content) {
@@ -329,11 +423,6 @@ async function getRegistryItemFile(
     content,
   }
 }
-
-const transformers = [transformIcons, transformMenu, transformRender]
-
-// Reuse a single ts-morph Project — avoids re-creating the compiler host per file.
-const project = new Project({ compilerOptions: {} })
 
 async function transformFileContent(
   content: string,

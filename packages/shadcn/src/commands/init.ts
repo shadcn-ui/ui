@@ -592,6 +592,8 @@ export async function runInit(
   const components = [
     ...(options.installStyleIndex ? ["index"] : []),
     ...(options.components ?? []),
+    // Add button component for new template-based projects.
+    ...(selectedTemplate ? ["button"] : []),
   ]
 
   if (selectedTemplate?.init) {
