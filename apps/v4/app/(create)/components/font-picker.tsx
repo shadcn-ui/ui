@@ -43,13 +43,13 @@ export function FontPicker({
       <Picker>
         <PickerTrigger>
           <div className="flex flex-col justify-start text-left">
-            <div className="text-muted-foreground text-xs">Font</div>
-            <div className="text-foreground text-sm font-medium">
+            <div className="text-xs text-muted-foreground">Font</div>
+            <div className="text-sm font-medium text-foreground">
               {currentFont?.name}
             </div>
           </div>
           <div
-            className="text-foreground pointer-events-none absolute top-1/2 right-4 flex size-4 -translate-y-1/2 items-center justify-center text-base select-none"
+            className="pointer-events-none absolute top-1/2 right-4 flex size-4 -translate-y-1/2 items-center justify-center text-base text-foreground select-none"
             style={{ fontFamily: currentFont?.font.style.fontFamily }}
           >
             Aa
@@ -73,7 +73,7 @@ export function FontPicker({
                   <PickerRadioItem value={font.value}>
                     <Item size="xs">
                       <ItemContent className="gap-1">
-                        <ItemTitle className="text-muted-foreground text-xs font-medium">
+                        <ItemTitle className="text-xs font-medium text-muted-foreground">
                           {font.name}
                         </ItemTitle>
                         <ItemDescription

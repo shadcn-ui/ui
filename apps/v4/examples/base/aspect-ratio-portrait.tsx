@@ -5,7 +5,7 @@ export function AspectRatioPortrait() {
   return (
     <AspectRatio
       ratio={9 / 16}
-      className="bg-muted w-full max-w-[10rem] rounded-lg"
+      className="w-full max-w-[10rem] rounded-lg bg-muted"
     >
       <Image
         src="https://avatar.vercel.sh/shadcn1"

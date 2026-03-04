@@ -37,16 +37,16 @@ export function ComponentPreview({
           alt={name}
           width={1440}
           height={900}
-          className="bg-background absolute top-0 left-0 z-20 w-[970px] max-w-none sm:w-[1280px] md:hidden dark:hidden md:dark:hidden"
+          className="absolute top-0 left-0 z-20 w-[970px] max-w-none bg-background sm:w-[1280px] md:hidden dark:hidden md:dark:hidden"
         />
         <Image
           src={`/r/styles/new-york-v4/${name}-dark.png`}
           alt={name}
           width={1440}
           height={900}
-          className="bg-background absolute top-0 left-0 z-20 hidden w-[970px] max-w-none sm:w-[1280px] md:hidden dark:block md:dark:hidden"
+          className="absolute top-0 left-0 z-20 hidden w-[970px] max-w-none bg-background sm:w-[1280px] md:hidden dark:block md:dark:hidden"
         />
-        <div className="bg-background absolute inset-0 hidden w-[1600px] md:block">
+        <div className="absolute inset-0 hidden w-[1600px] bg-background md:block">
           <iframe src={`/view/${styleName}/${name}`} className="size-full" />
         </div>
       </div>
@@ -56,7 +56,7 @@ export function ComponentPreview({
       return (
         <figure className="flex flex-col gap-4">
           {content}
-          <figcaption className="text-muted-foreground text-center text-sm">
+          <figcaption className="text-center text-sm text-muted-foreground">
             {caption}
           </figcaption>
         </figure>
@@ -70,9 +70,9 @@ export function ComponentPreview({
 
   if (!Component) {
     return (
-      <p className="text-muted-foreground mt-6 text-sm">
+      <p className="mt-6 text-sm text-muted-foreground">
         Component{" "}
-        <code className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm">
+        <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm">
           {name}
         </code>{" "}
         not found in registry.
@@ -116,7 +116,7 @@ export function ComponentPreview({
         className="flex flex-col data-[hide-code=true]:gap-4"
       >
         {content}
-        <figcaption className="text-muted-foreground -mt-8 text-center text-sm data-[hide-code=true]:mt-0">
+        <figcaption className="-mt-8 text-center text-sm text-muted-foreground data-[hide-code=true]:mt-0">
           {caption}
         </figcaption>
       </figure>

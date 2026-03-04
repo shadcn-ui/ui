@@ -123,12 +123,12 @@ export function MenuColorPicker({
       <Picker>
         <PickerTrigger disabled={mounted && resolvedTheme === "dark"}>
           <div className="flex flex-col justify-start text-left">
-            <div className="text-muted-foreground text-xs">Menu Color</div>
-            <div className="text-foreground text-sm font-medium">
+            <div className="text-xs text-muted-foreground">Menu Color</div>
+            <div className="text-sm font-medium text-foreground">
               {currentMenu?.label}
             </div>
           </div>
-          <div className="text-foreground pointer-events-none absolute top-1/2 right-4 flex size-4 -translate-y-1/2 items-center justify-center text-base select-none">
+          <div className="pointer-events-none absolute top-1/2 right-4 flex size-4 -translate-y-1/2 items-center justify-center text-base text-foreground select-none">
             {currentMenu?.icon}
           </div>
         </PickerTrigger>

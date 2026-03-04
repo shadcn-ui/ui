@@ -189,7 +189,7 @@ export function ToolbarControls() {
                 <FieldLabel
                   key={template.value}
                   htmlFor={template.value}
-                  className="has-data-[state=checked]:border-primary/10 rounded-lg!"
+                  className="rounded-lg! has-data-[state=checked]:border-primary/10"
                 >
                   <Field className="flex min-w-0 flex-col items-center justify-center gap-2 p-3! text-center *:w-auto!">
                     <RadioGroupItem
@@ -199,7 +199,7 @@ export function ToolbarControls() {
                     />
                     {template.logo && (
                       <div
-                        className="text-foreground *:[svg]:text-foreground! size-6 [&_svg]:size-6"
+                        className="size-6 text-foreground [&_svg]:size-6 *:[svg]:text-foreground!"
                         dangerouslySetInnerHTML={{
                           __html: template.logo,
                         }}
@@ -211,7 +211,7 @@ export function ToolbarControls() {
               ))}
             </RadioGroup>
           </Field>
-          <FieldLabel className="has-data-[state=checked]:border-primary/10 rounded-lg!">
+          <FieldLabel className="rounded-lg! has-data-[state=checked]:border-primary/10">
             <Field orientation="horizontal">
               <FieldContent className="gap-1">
                 <FieldTitle>Enable RTL</FieldTitle>
@@ -241,10 +241,10 @@ export function ToolbarControls() {
                 packageManager: value as "pnpm" | "npm" | "yarn" | "bun",
               })
             }}
-            className="bg-surface min-w-0 gap-0 overflow-hidden rounded-lg border"
+            className="min-w-0 gap-0 overflow-hidden rounded-lg border bg-surface"
           >
             <div className="flex items-center gap-2 p-2">
-              <TabsList className="*:data-[slot=tabs-trigger]:data-[state=active]:border-input h-auto rounded-none bg-transparent p-0 font-mono group-data-[orientation=horizontal]/tabs:h-8 *:data-[slot=tabs-trigger]:h-7 *:data-[slot=tabs-trigger]:border *:data-[slot=tabs-trigger]:border-transparent *:data-[slot=tabs-trigger]:pt-0.5 *:data-[slot=tabs-trigger]:shadow-none!">
+              <TabsList className="h-auto rounded-none bg-transparent p-0 font-mono group-data-[orientation=horizontal]/tabs:h-8 *:data-[slot=tabs-trigger]:h-7 *:data-[slot=tabs-trigger]:border *:data-[slot=tabs-trigger]:border-transparent *:data-[slot=tabs-trigger]:pt-0.5 *:data-[slot=tabs-trigger]:shadow-none! *:data-[slot=tabs-trigger]:data-[state=active]:border-input">
                 <TabsTrigger value="pnpm">pnpm</TabsTrigger>
                 <TabsTrigger value="npm">npm</TabsTrigger>
                 <TabsTrigger value="yarn">yarn</TabsTrigger>
@@ -274,7 +274,7 @@ export function ToolbarControls() {
             {Object.entries(commands).map(([key, cmd]) => {
               return (
                 <TabsContent key={key} value={key}>
-                  <div className="bg-surface border-border/50 text-surface-foreground relative overflow-hidden border-t px-3 py-3">
+                  <div className="relative overflow-hidden border-t border-border/50 bg-surface px-3 py-3 text-surface-foreground">
                     <div className="no-scrollbar overflow-x-auto">
                       <code className="font-mono text-sm whitespace-nowrap">
                         {cmd}
@@ -286,7 +286,7 @@ export function ToolbarControls() {
             })}
           </Tabs>
         </FieldGroup>
-        <DialogFooter className="bg-muted/50 -mx-6 mt-2 -mb-6 flex flex-col gap-2 border-t p-6 sm:flex-col">
+        <DialogFooter className="-mx-6 mt-2 -mb-6 flex flex-col gap-2 border-t bg-muted/50 p-6 sm:flex-col">
           <Button
             size="sm"
             onClick={handleCopy}

@@ -48,11 +48,11 @@ export function WelcomeDialog() {
           <DialogTitle className="text-left text-base">
             Build your own shadcn/ui
           </DialogTitle>
-          <DialogDescription className="text-foreground text-left leading-relaxed">
+          <DialogDescription className="text-left leading-relaxed text-foreground">
             Customize everything from the ground up. Pick your component
             library, font, color scheme, and more.
           </DialogDescription>
-          <DialogDescription className="text-foreground mt-2 text-left leading-relaxed font-medium">
+          <DialogDescription className="mt-2 text-left leading-relaxed font-medium text-foreground">
             Available for Next.js, Vite, TanStack Start, and v0.
           </DialogDescription>
         </DialogHeader>

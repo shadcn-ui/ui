@@ -278,7 +278,7 @@ export default function PlaygroundPage() {
                       placeholder="We're writing to [inset]. Congrats from OpenAI!"
                       className="h-full min-h-[300px] p-4 lg:min-h-[700px] xl:min-h-[700px]"
                     />
-                    <div className="bg-muted rounded-md border"></div>
+                    <div className="rounded-md border bg-muted"></div>
                   </div>
                   <div className="flex items-center gap-2">
                     <Button>Submit</Button>
@@ -312,7 +312,7 @@ export default function PlaygroundPage() {
                         />
                       </div>
                     </div>
-                    <div className="bg-muted min-h-[400px] rounded-md border lg:min-h-[700px]" />
+                    <div className="min-h-[400px] rounded-md border bg-muted lg:min-h-[700px]" />
                   </div>
                   <div className="flex items-center gap-2">
                     <Button>Submit</Button>
