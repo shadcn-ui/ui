@@ -6,13 +6,13 @@ import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "@/registry/bases/base/ui/avatar"
-import { Button } from "@/registry/bases/base/ui/button"
+} from "@/registry/bases/react-aria/ui/avatar"
+import { Button } from "@/registry/bases/react-aria/ui/button"
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/registry/bases/base/ui/collapsible"
+} from "@/registry/bases/react-aria/ui/collapsible"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -21,14 +21,14 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/registry/bases/base/ui/dropdown-menu"
+} from "@/registry/bases/react-aria/ui/dropdown-menu"
 import {
   Item,
   ItemContent,
   ItemDescription,
   ItemMedia,
   ItemTitle,
-} from "@/registry/bases/base/ui/item"
+} from "@/registry/bases/react-aria/ui/item"
 import {
   Sidebar,
   SidebarContent,
@@ -46,7 +46,7 @@ import {
   SidebarProvider,
   SidebarRail,
   SidebarTrigger,
-} from "@/registry/bases/base/ui/sidebar"
+} from "@/registry/bases/react-aria/ui/sidebar"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function SidebarIconExample() {

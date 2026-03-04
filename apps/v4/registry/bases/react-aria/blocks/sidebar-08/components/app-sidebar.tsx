@@ -2,10 +2,10 @@
 
 import * as React from "react"
 
-import { NavMain } from "@/registry/bases/base/blocks/sidebar-08/components/nav-main"
-import { NavProjects } from "@/registry/bases/base/blocks/sidebar-08/components/nav-projects"
-import { NavSecondary } from "@/registry/bases/base/blocks/sidebar-08/components/nav-secondary"
-import { NavUser } from "@/registry/bases/base/blocks/sidebar-08/components/nav-user"
+import { NavMain } from "@/registry/bases/react-aria/blocks/sidebar-08/components/nav-main"
+import { NavProjects } from "@/registry/bases/react-aria/blocks/sidebar-08/components/nav-projects"
+import { NavSecondary } from "@/registry/bases/react-aria/blocks/sidebar-08/components/nav-secondary"
+import { NavUser } from "@/registry/bases/react-aria/blocks/sidebar-08/components/nav-user"
 import {
   Sidebar,
   SidebarContent,
@@ -14,7 +14,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/registry/bases/base/ui/sidebar"
+} from "@/registry/bases/react-aria/ui/sidebar"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 const data = {

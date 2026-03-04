@@ -3,8 +3,8 @@
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
-import { Button } from "@/registry/bases/base/ui/button"
+} from "@/registry/bases/react-aria/components/example"
+import { Button } from "@/registry/bases/react-aria/ui/button"
 import {
   Dialog,
   DialogContent,
@@ -12,24 +12,24 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/registry/bases/base/ui/dialog"
+} from "@/registry/bases/react-aria/ui/dialog"
 import {
   Field,
   FieldDescription,
   FieldError,
   FieldLabel,
-} from "@/registry/bases/base/ui/field"
-import { Input } from "@/registry/bases/base/ui/input"
+} from "@/registry/bases/react-aria/ui/field"
+import { Input } from "@/registry/bases/react-aria/ui/input"
 import {
   Item,
   ItemContent,
   ItemDescription,
   ItemTitle,
-} from "@/registry/bases/base/ui/item"
+} from "@/registry/bases/react-aria/ui/item"
 import {
   NativeSelect,
   NativeSelectOption,
-} from "@/registry/bases/base/ui/native-select"
+} from "@/registry/bases/react-aria/ui/native-select"
 import {
   Select,
   SelectContent,
@@ -39,7 +39,7 @@ import {
   SelectSeparator,
   SelectTrigger,
   SelectValue,
-} from "@/registry/bases/base/ui/select"
+} from "@/registry/bases/react-aria/ui/select"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function SelectExample() {

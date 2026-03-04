@@ -2,8 +2,8 @@
 
 import * as React from "react"
 
-import { NavUser } from "@/registry/bases/base/blocks/sidebar-09/components/nav-user"
-import { Label } from "@/registry/bases/base/ui/label"
+import { NavUser } from "@/registry/bases/react-aria/blocks/sidebar-09/components/nav-user"
+import { Label } from "@/registry/bases/react-aria/ui/label"
 import {
   Sidebar,
   SidebarContent,
@@ -16,8 +16,8 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
-} from "@/registry/bases/base/ui/sidebar"
-import { Switch } from "@/registry/bases/base/ui/switch"
+} from "@/registry/bases/react-aria/ui/sidebar"
+import { Switch } from "@/registry/bases/react-aria/ui/switch"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 // This is sample data

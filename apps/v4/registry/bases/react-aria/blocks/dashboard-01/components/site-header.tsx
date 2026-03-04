@@ -1,5 +1,5 @@
-import { Separator } from "@/registry/bases/base/ui/separator"
-import { SidebarTrigger } from "@/registry/bases/base/ui/sidebar"
+import { Separator } from "@/registry/bases/react-aria/ui/separator"
+import { SidebarTrigger } from "@/registry/bases/react-aria/ui/sidebar"
 
 export function SiteHeader() {
   return (

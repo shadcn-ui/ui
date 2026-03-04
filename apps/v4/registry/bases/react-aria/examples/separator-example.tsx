@@ -1,8 +1,8 @@
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
-import { Separator } from "@/registry/bases/base/ui/separator"
+} from "@/registry/bases/react-aria/components/example"
+import { Separator } from "@/registry/bases/react-aria/ui/separator"
 
 export default function SeparatorExample() {
   return (

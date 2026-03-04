@@ -5,9 +5,9 @@ import * as React from "react"
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
-import { Button } from "@/registry/bases/base/ui/button"
-import { Card, CardContent } from "@/registry/bases/base/ui/card"
+} from "@/registry/bases/react-aria/components/example"
+import { Button } from "@/registry/bases/react-aria/ui/button"
+import { Card, CardContent } from "@/registry/bases/react-aria/ui/card"
 import {
   Command,
   CommandDialog,
@@ -18,7 +18,7 @@ import {
   CommandList,
   CommandSeparator,
   CommandShortcut,
-} from "@/registry/bases/base/ui/command"
+} from "@/registry/bases/react-aria/ui/command"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function CommandExample() {

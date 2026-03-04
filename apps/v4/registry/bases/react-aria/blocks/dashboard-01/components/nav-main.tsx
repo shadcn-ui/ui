@@ -1,13 +1,13 @@
 "use client"
 
-import { Button } from "@/registry/bases/base/ui/button"
+import { Button } from "@/registry/bases/react-aria/ui/button"
 import {
   SidebarGroup,
   SidebarGroupContent,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/registry/bases/base/ui/sidebar"
+} from "@/registry/bases/react-aria/ui/sidebar"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export function NavMain({

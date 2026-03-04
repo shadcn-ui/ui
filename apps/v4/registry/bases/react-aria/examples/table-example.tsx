@@ -3,16 +3,16 @@
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
-import { Button } from "@/registry/bases/base/ui/button"
+} from "@/registry/bases/react-aria/components/example"
+import { Button } from "@/registry/bases/react-aria/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/registry/bases/base/ui/dropdown-menu"
-import { Input } from "@/registry/bases/base/ui/input"
+} from "@/registry/bases/react-aria/ui/dropdown-menu"
+import { Input } from "@/registry/bases/react-aria/ui/input"
 import {
   Select,
   SelectContent,
@@ -20,7 +20,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/registry/bases/base/ui/select"
+} from "@/registry/bases/react-aria/ui/select"
 import {
   Table,
   TableBody,
@@ -30,7 +30,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/registry/bases/base/ui/table"
+} from "@/registry/bases/react-aria/ui/table"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 const invoices = [

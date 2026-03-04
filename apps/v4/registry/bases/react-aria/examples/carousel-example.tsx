@@ -1,15 +1,15 @@
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
-import { Card, CardContent } from "@/registry/bases/base/ui/card"
+} from "@/registry/bases/react-aria/components/example"
+import { Card, CardContent } from "@/registry/bases/react-aria/ui/card"
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/registry/bases/base/ui/carousel"
+} from "@/registry/bases/react-aria/ui/carousel"
 
 export default function CarouselExample() {
   return (

@@ -1,4 +1,4 @@
-import { AppSidebar } from "@/registry/bases/base/blocks/sidebar-14/components/app-sidebar"
+import { AppSidebar } from "@/registry/bases/react-aria/blocks/sidebar-14/components/app-sidebar"
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -6,12 +6,12 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/registry/bases/base/ui/breadcrumb"
+} from "@/registry/bases/react-aria/ui/breadcrumb"
 import {
   SidebarInset,
   SidebarProvider,
   SidebarTrigger,
-} from "@/registry/bases/base/ui/sidebar"
+} from "@/registry/bases/react-aria/ui/sidebar"
 
 export default function Page() {
   return (

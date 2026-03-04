@@ -1,16 +1,16 @@
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
+} from "@/registry/bases/react-aria/components/example"
 import {
   Field,
   FieldContent,
   FieldDescription,
   FieldLabel,
   FieldTitle,
-} from "@/registry/bases/base/ui/field"
-import { Label } from "@/registry/bases/base/ui/label"
-import { Switch } from "@/registry/bases/base/ui/switch"
+} from "@/registry/bases/react-aria/ui/field"
+import { Label } from "@/registry/bases/react-aria/ui/label"
+import { Switch } from "@/registry/bases/react-aria/ui/switch"
 
 export default function SwitchExample() {
   return (

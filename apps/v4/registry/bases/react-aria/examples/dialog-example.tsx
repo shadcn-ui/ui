@@ -5,9 +5,9 @@ import * as React from "react"
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
-import { Button } from "@/registry/bases/base/ui/button"
-import { Checkbox } from "@/registry/bases/base/ui/checkbox"
+} from "@/registry/bases/react-aria/components/example"
+import { Button } from "@/registry/bases/react-aria/ui/button"
+import { Checkbox } from "@/registry/bases/react-aria/ui/checkbox"
 import {
   Dialog,
   DialogClose,
@@ -17,7 +17,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/registry/bases/base/ui/dialog"
+} from "@/registry/bases/react-aria/ui/dialog"
 import {
   Field,
   FieldContent,
@@ -27,19 +27,19 @@ import {
   FieldSeparator,
   FieldSet,
   FieldTitle,
-} from "@/registry/bases/base/ui/field"
-import { Input } from "@/registry/bases/base/ui/input"
+} from "@/registry/bases/react-aria/ui/field"
+import { Input } from "@/registry/bases/react-aria/ui/input"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
-} from "@/registry/bases/base/ui/input-group"
-import { Kbd } from "@/registry/bases/base/ui/kbd"
+} from "@/registry/bases/react-aria/ui/input-group"
+import { Kbd } from "@/registry/bases/react-aria/ui/kbd"
 import {
   NativeSelect,
   NativeSelectOption,
-} from "@/registry/bases/base/ui/native-select"
+} from "@/registry/bases/react-aria/ui/native-select"
 import {
   Select,
   SelectContent,
@@ -48,20 +48,20 @@ import {
   SelectSeparator,
   SelectTrigger,
   SelectValue,
-} from "@/registry/bases/base/ui/select"
-import { Switch } from "@/registry/bases/base/ui/switch"
+} from "@/registry/bases/react-aria/ui/select"
+import { Switch } from "@/registry/bases/react-aria/ui/switch"
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@/registry/bases/base/ui/tabs"
-import { Textarea } from "@/registry/bases/base/ui/textarea"
+} from "@/registry/bases/react-aria/ui/tabs"
+import { Textarea } from "@/registry/bases/react-aria/ui/textarea"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/registry/bases/base/ui/tooltip"
+} from "@/registry/bases/react-aria/ui/tooltip"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function DialogExample() {

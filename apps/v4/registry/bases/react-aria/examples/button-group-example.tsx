@@ -3,12 +3,12 @@
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
-import { Button } from "@/registry/bases/base/ui/button"
+} from "@/registry/bases/react-aria/components/example"
+import { Button } from "@/registry/bases/react-aria/ui/button"
 import {
   ButtonGroup,
   ButtonGroupText,
-} from "@/registry/bases/base/ui/button-group"
+} from "@/registry/bases/react-aria/ui/button-group"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,15 +16,15 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/registry/bases/base/ui/dropdown-menu"
-import { Field, FieldGroup } from "@/registry/bases/base/ui/field"
-import { Input } from "@/registry/bases/base/ui/input"
+} from "@/registry/bases/react-aria/ui/dropdown-menu"
+import { Field, FieldGroup } from "@/registry/bases/react-aria/ui/field"
+import { Input } from "@/registry/bases/react-aria/ui/input"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
-} from "@/registry/bases/base/ui/input-group"
-import { Label } from "@/registry/bases/base/ui/label"
+} from "@/registry/bases/react-aria/ui/input-group"
+import { Label } from "@/registry/bases/react-aria/ui/label"
 import {
   Select,
   SelectContent,
@@ -32,12 +32,12 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/registry/bases/base/ui/select"
+} from "@/registry/bases/react-aria/ui/select"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/registry/bases/base/ui/tooltip"
+} from "@/registry/bases/react-aria/ui/tooltip"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function ButtonGroupExample() {

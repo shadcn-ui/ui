@@ -2,9 +2,9 @@
 
 import * as React from "react"
 
-import { Calendars } from "@/registry/bases/base/blocks/sidebar-15/components/calendars"
-import { DatePicker } from "@/registry/bases/base/blocks/sidebar-15/components/date-picker"
-import { NavUser } from "@/registry/bases/base/blocks/sidebar-15/components/nav-user"
+import { Calendars } from "@/registry/bases/react-aria/blocks/sidebar-15/components/calendars"
+import { DatePicker } from "@/registry/bases/react-aria/blocks/sidebar-15/components/date-picker"
+import { NavUser } from "@/registry/bases/react-aria/blocks/sidebar-15/components/nav-user"
 import {
   Sidebar,
   SidebarContent,
@@ -15,7 +15,7 @@ import {
   SidebarMenuItem,
   SidebarRail,
   SidebarSeparator,
-} from "@/registry/bases/base/ui/sidebar"
+} from "@/registry/bases/react-aria/ui/sidebar"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 // This is sample data.

@@ -39,16 +39,16 @@ import { Area, AreaChart, CartesianGrid, XAxis } from "recharts"
 import { toast } from "sonner"
 import { z } from "zod"
 
-import { useIsMobile } from "@/registry/bases/base/hooks/use-mobile"
-import { Badge } from "@/registry/bases/base/ui/badge"
-import { Button } from "@/registry/bases/base/ui/button"
+import { useIsMobile } from "@/registry/bases/react-aria/hooks/use-mobile"
+import { Badge } from "@/registry/bases/react-aria/ui/badge"
+import { Button } from "@/registry/bases/react-aria/ui/button"
 import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
   type ChartConfig,
-} from "@/registry/bases/base/ui/chart"
-import { Checkbox } from "@/registry/bases/base/ui/checkbox"
+} from "@/registry/bases/react-aria/ui/chart"
+import { Checkbox } from "@/registry/bases/react-aria/ui/checkbox"
 import {
   Drawer,
   DrawerClose,
@@ -58,7 +58,7 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "@/registry/bases/base/ui/drawer"
+} from "@/registry/bases/react-aria/ui/drawer"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -66,9 +66,9 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/registry/bases/base/ui/dropdown-menu"
-import { Input } from "@/registry/bases/base/ui/input"
-import { Label } from "@/registry/bases/base/ui/label"
+} from "@/registry/bases/react-aria/ui/dropdown-menu"
+import { Input } from "@/registry/bases/react-aria/ui/input"
+import { Label } from "@/registry/bases/react-aria/ui/label"
 import {
   Select,
   SelectContent,
@@ -76,8 +76,8 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/registry/bases/base/ui/select"
-import { Separator } from "@/registry/bases/base/ui/separator"
+} from "@/registry/bases/react-aria/ui/select"
+import { Separator } from "@/registry/bases/react-aria/ui/separator"
 import {
   Table,
   TableBody,
@@ -85,13 +85,13 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/registry/bases/base/ui/table"
+} from "@/registry/bases/react-aria/ui/table"
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@/registry/bases/base/ui/tabs"
+} from "@/registry/bases/react-aria/ui/tabs"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export const schema = z.object({

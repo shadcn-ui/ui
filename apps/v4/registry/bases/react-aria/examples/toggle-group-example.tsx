@@ -5,13 +5,13 @@ import * as React from "react"
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
+} from "@/registry/bases/react-aria/components/example"
 import {
   Field,
   FieldDescription,
   FieldLabel,
-} from "@/registry/bases/base/ui/field"
-import { Input } from "@/registry/bases/base/ui/input"
+} from "@/registry/bases/react-aria/ui/field"
+import { Input } from "@/registry/bases/react-aria/ui/input"
 import {
   Select,
   SelectContent,
@@ -19,11 +19,11 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/registry/bases/base/ui/select"
+} from "@/registry/bases/react-aria/ui/select"
 import {
   ToggleGroup,
   ToggleGroupItem,
-} from "@/registry/bases/base/ui/toggle-group"
+} from "@/registry/bases/react-aria/ui/toggle-group"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function ToggleGroupExample() {

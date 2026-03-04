@@ -1,8 +1,8 @@
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
-import { Button } from "@/registry/bases/base/ui/button"
+} from "@/registry/bases/react-aria/components/example"
+import { Button } from "@/registry/bases/react-aria/ui/button"
 import {
   Empty,
   EmptyContent,
@@ -10,13 +10,13 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@/registry/bases/base/ui/empty"
+} from "@/registry/bases/react-aria/ui/empty"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
-} from "@/registry/bases/base/ui/input-group"
-import { Kbd } from "@/registry/bases/base/ui/kbd"
+} from "@/registry/bases/react-aria/ui/input-group"
+import { Kbd } from "@/registry/bases/react-aria/ui/kbd"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function EmptyExample() {

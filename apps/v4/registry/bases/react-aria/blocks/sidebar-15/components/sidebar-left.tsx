@@ -2,17 +2,17 @@
 
 import * as React from "react"
 
-import { NavFavorites } from "@/registry/bases/base/blocks/sidebar-15/components/nav-favorites"
-import { NavMain } from "@/registry/bases/base/blocks/sidebar-15/components/nav-main"
-import { NavSecondary } from "@/registry/bases/base/blocks/sidebar-15/components/nav-secondary"
-import { NavWorkspaces } from "@/registry/bases/base/blocks/sidebar-15/components/nav-workspaces"
-import { TeamSwitcher } from "@/registry/bases/base/blocks/sidebar-15/components/team-switcher"
+import { NavFavorites } from "@/registry/bases/react-aria/blocks/sidebar-15/components/nav-favorites"
+import { NavMain } from "@/registry/bases/react-aria/blocks/sidebar-15/components/nav-main"
+import { NavSecondary } from "@/registry/bases/react-aria/blocks/sidebar-15/components/nav-secondary"
+import { NavWorkspaces } from "@/registry/bases/react-aria/blocks/sidebar-15/components/nav-workspaces"
+import { TeamSwitcher } from "@/registry/bases/react-aria/blocks/sidebar-15/components/team-switcher"
 import {
   Sidebar,
   SidebarContent,
   SidebarHeader,
   SidebarRail,
-} from "@/registry/bases/base/ui/sidebar"
+} from "@/registry/bases/react-aria/ui/sidebar"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 // This is sample data.

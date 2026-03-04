@@ -3,7 +3,7 @@
 import * as React from "react"
 import { OTPInput, OTPInputContext } from "input-otp"
 
-import { cn } from "@/registry/bases/base/lib/utils"
+import { cn } from "@/registry/bases/react-aria/lib/utils"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 function InputOTP({

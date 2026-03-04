@@ -5,8 +5,8 @@ import * as React from "react"
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
-import { Alert, AlertDescription } from "@/registry/bases/base/ui/alert"
+} from "@/registry/bases/react-aria/components/example"
+import { Alert, AlertDescription } from "@/registry/bases/react-aria/ui/alert"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -17,9 +17,9 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/registry/bases/base/ui/alert-dialog"
-import { Badge } from "@/registry/bases/base/ui/badge"
-import { Button } from "@/registry/bases/base/ui/button"
+} from "@/registry/bases/react-aria/ui/alert-dialog"
+import { Badge } from "@/registry/bases/react-aria/ui/badge"
+import { Button } from "@/registry/bases/react-aria/ui/button"
 import {
   Card,
   CardAction,
@@ -27,7 +27,7 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/registry/bases/base/ui/card"
+} from "@/registry/bases/react-aria/ui/card"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -42,37 +42,37 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@/registry/bases/base/ui/dropdown-menu"
+} from "@/registry/bases/react-aria/ui/dropdown-menu"
 import {
   Field,
   FieldDescription,
   FieldGroup,
   FieldLabel,
-} from "@/registry/bases/base/ui/field"
+} from "@/registry/bases/react-aria/ui/field"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
   InputGroupTextarea,
-} from "@/registry/bases/base/ui/input-group"
+} from "@/registry/bases/react-aria/ui/input-group"
 import {
   Item,
   ItemContent,
   ItemDescription,
   ItemTitle,
-} from "@/registry/bases/base/ui/item"
-import { Kbd } from "@/registry/bases/base/ui/kbd"
+} from "@/registry/bases/react-aria/ui/item"
+import { Kbd } from "@/registry/bases/react-aria/ui/kbd"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/registry/bases/base/ui/popover"
+} from "@/registry/bases/react-aria/ui/popover"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/registry/bases/base/ui/tooltip"
+} from "@/registry/bases/react-aria/ui/tooltip"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function ChatGPTBlock() {

@@ -8,21 +8,21 @@ import { es } from "react-day-picker/locale"
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
-import { Button } from "@/registry/bases/base/ui/button"
-import { Calendar, CalendarDayButton } from "@/registry/bases/base/ui/calendar"
-import { Card, CardContent, CardFooter } from "@/registry/bases/base/ui/card"
-import { Field, FieldGroup, FieldLabel } from "@/registry/bases/base/ui/field"
+} from "@/registry/bases/react-aria/components/example"
+import { Button } from "@/registry/bases/react-aria/ui/button"
+import { Calendar, CalendarDayButton } from "@/registry/bases/react-aria/ui/calendar"
+import { Card, CardContent, CardFooter } from "@/registry/bases/react-aria/ui/card"
+import { Field, FieldGroup, FieldLabel } from "@/registry/bases/react-aria/ui/field"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
-} from "@/registry/bases/base/ui/input-group"
+} from "@/registry/bases/react-aria/ui/input-group"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/registry/bases/base/ui/popover"
+} from "@/registry/bases/react-aria/ui/popover"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function CalendarExample() {

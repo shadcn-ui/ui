@@ -5,14 +5,14 @@ import * as React from "react"
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
+} from "@/registry/bases/react-aria/components/example"
 import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "@/registry/bases/base/ui/avatar"
-import { Badge } from "@/registry/bases/base/ui/badge"
-import { Button } from "@/registry/bases/base/ui/button"
+} from "@/registry/bases/react-aria/ui/avatar"
+import { Badge } from "@/registry/bases/react-aria/ui/badge"
+import { Button } from "@/registry/bases/react-aria/ui/button"
 import {
   Card,
   CardAction,
@@ -21,8 +21,8 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/registry/bases/base/ui/card"
-import { Checkbox } from "@/registry/bases/base/ui/checkbox"
+} from "@/registry/bases/react-aria/ui/card"
+import { Checkbox } from "@/registry/bases/react-aria/ui/checkbox"
 import {
   Combobox,
   ComboboxChip,
@@ -34,7 +34,7 @@ import {
   ComboboxList,
   ComboboxValue,
   useComboboxAnchor,
-} from "@/registry/bases/base/ui/combobox"
+} from "@/registry/bases/react-aria/ui/combobox"
 import {
   Command,
   CommandEmpty,
@@ -42,7 +42,7 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@/registry/bases/base/ui/command"
+} from "@/registry/bases/react-aria/ui/command"
 import {
   Drawer,
   DrawerClose,
@@ -50,7 +50,7 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "@/registry/bases/base/ui/drawer"
+} from "@/registry/bases/react-aria/ui/drawer"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -59,7 +59,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/registry/bases/base/ui/dropdown-menu"
+} from "@/registry/bases/react-aria/ui/dropdown-menu"
 import {
   Empty,
   EmptyContent,
@@ -67,7 +67,7 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@/registry/bases/base/ui/empty"
+} from "@/registry/bases/react-aria/ui/empty"
 import {
   Field,
   FieldContent,
@@ -76,15 +76,15 @@ import {
   FieldLabel,
   FieldLegend,
   FieldSet,
-} from "@/registry/bases/base/ui/field"
-import { Input } from "@/registry/bases/base/ui/input"
+} from "@/registry/bases/react-aria/ui/field"
+import { Input } from "@/registry/bases/react-aria/ui/input"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
   InputGroupTextarea,
-} from "@/registry/bases/base/ui/input-group"
+} from "@/registry/bases/react-aria/ui/input-group"
 import {
   Item,
   ItemActions,
@@ -94,31 +94,31 @@ import {
   ItemMedia,
   ItemSeparator,
   ItemTitle,
-} from "@/registry/bases/base/ui/item"
-import { Kbd } from "@/registry/bases/base/ui/kbd"
+} from "@/registry/bases/react-aria/ui/item"
+import { Kbd } from "@/registry/bases/react-aria/ui/kbd"
 import {
   NativeSelect,
   NativeSelectOption,
-} from "@/registry/bases/base/ui/native-select"
+} from "@/registry/bases/react-aria/ui/native-select"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/registry/bases/base/ui/popover"
-import { Separator } from "@/registry/bases/base/ui/separator"
-import { Spinner } from "@/registry/bases/base/ui/spinner"
+} from "@/registry/bases/react-aria/ui/popover"
+import { Separator } from "@/registry/bases/react-aria/ui/separator"
+import { Spinner } from "@/registry/bases/react-aria/ui/spinner"
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@/registry/bases/base/ui/tabs"
-import { Textarea } from "@/registry/bases/base/ui/textarea"
+} from "@/registry/bases/react-aria/ui/tabs"
+import { Textarea } from "@/registry/bases/react-aria/ui/textarea"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/registry/bases/base/ui/tooltip"
+} from "@/registry/bases/react-aria/ui/tooltip"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function GithubBlock() {

@@ -1,13 +1,13 @@
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
+} from "@/registry/bases/react-aria/components/example"
 import {
   Field,
   FieldDescription,
   FieldLabel,
-} from "@/registry/bases/base/ui/field"
-import { Textarea } from "@/registry/bases/base/ui/textarea"
+} from "@/registry/bases/react-aria/ui/field"
+import { Textarea } from "@/registry/bases/react-aria/ui/textarea"
 
 export default function TextareaExample() {
   return (

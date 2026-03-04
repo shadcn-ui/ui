@@ -1,15 +1,15 @@
 "use client"
 
-import { cn } from "@/registry/bases/base/lib/utils"
-import { Button } from "@/registry/bases/base/ui/button"
+import { cn } from "@/registry/bases/react-aria/lib/utils"
+import { Button } from "@/registry/bases/react-aria/ui/button"
 import {
   Field,
   FieldDescription,
   FieldGroup,
   FieldLabel,
   FieldSeparator,
-} from "@/registry/bases/base/ui/field"
-import { Input } from "@/registry/bases/base/ui/input"
+} from "@/registry/bases/react-aria/ui/field"
+import { Input } from "@/registry/bases/react-aria/ui/input"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export function SignupForm({

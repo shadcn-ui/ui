@@ -6,12 +6,12 @@ import { toast } from "sonner"
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
-import { Button } from "@/registry/bases/base/ui/button"
+} from "@/registry/bases/react-aria/components/example"
+import { Button } from "@/registry/bases/react-aria/ui/button"
 import {
   ButtonGroup,
   ButtonGroupText,
-} from "@/registry/bases/base/ui/button-group"
+} from "@/registry/bases/react-aria/ui/button-group"
 import {
   Card,
   CardContent,
@@ -19,20 +19,20 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/registry/bases/base/ui/card"
+} from "@/registry/bases/react-aria/ui/card"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/registry/bases/base/ui/dropdown-menu"
+} from "@/registry/bases/react-aria/ui/dropdown-menu"
 import {
   Field,
   FieldDescription,
   FieldGroup,
   FieldLabel,
-} from "@/registry/bases/base/ui/field"
-import { Input } from "@/registry/bases/base/ui/input"
+} from "@/registry/bases/react-aria/ui/field"
+import { Input } from "@/registry/bases/react-aria/ui/input"
 import {
   InputGroup,
   InputGroupAddon,
@@ -40,8 +40,8 @@ import {
   InputGroupInput,
   InputGroupText,
   InputGroupTextarea,
-} from "@/registry/bases/base/ui/input-group"
-import { Kbd, KbdGroup } from "@/registry/bases/base/ui/kbd"
+} from "@/registry/bases/react-aria/ui/input-group"
+import { Kbd, KbdGroup } from "@/registry/bases/react-aria/ui/kbd"
 import {
   Popover,
   PopoverContent,
@@ -49,14 +49,14 @@ import {
   PopoverHeader,
   PopoverTitle,
   PopoverTrigger,
-} from "@/registry/bases/base/ui/popover"
-import { Spinner } from "@/registry/bases/base/ui/spinner"
-import { Textarea } from "@/registry/bases/base/ui/textarea"
+} from "@/registry/bases/react-aria/ui/popover"
+import { Spinner } from "@/registry/bases/react-aria/ui/spinner"
+import { Textarea } from "@/registry/bases/react-aria/ui/textarea"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/registry/bases/base/ui/tooltip"
+} from "@/registry/bases/react-aria/ui/tooltip"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function InputGroupExample() {

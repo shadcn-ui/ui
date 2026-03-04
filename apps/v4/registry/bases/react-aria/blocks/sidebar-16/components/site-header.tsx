@@ -1,6 +1,6 @@
 "use client"
 
-import { SearchForm } from "@/registry/bases/base/blocks/sidebar-16/components/search-form"
+import { SearchForm } from "@/registry/bases/react-aria/blocks/sidebar-16/components/search-form"
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -8,10 +8,10 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/registry/bases/base/ui/breadcrumb"
-import { Button } from "@/registry/bases/base/ui/button"
-import { Separator } from "@/registry/bases/base/ui/separator"
-import { useSidebar } from "@/registry/bases/base/ui/sidebar"
+} from "@/registry/bases/react-aria/ui/breadcrumb"
+import { Button } from "@/registry/bases/react-aria/ui/button"
+import { Separator } from "@/registry/bases/react-aria/ui/separator"
+import { useSidebar } from "@/registry/bases/react-aria/ui/sidebar"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export function SiteHeader() {

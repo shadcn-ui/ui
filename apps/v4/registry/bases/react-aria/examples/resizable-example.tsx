@@ -6,12 +6,12 @@ import type { Layout } from "react-resizable-panels"
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
+} from "@/registry/bases/react-aria/components/example"
 import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
-} from "@/registry/bases/base/ui/resizable"
+} from "@/registry/bases/react-aria/ui/resizable"
 
 export default function ResizableExample() {
   return (

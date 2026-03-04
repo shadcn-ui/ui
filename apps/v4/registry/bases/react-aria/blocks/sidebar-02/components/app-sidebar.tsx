@@ -2,13 +2,13 @@
 
 import * as React from "react"
 
-import { SearchForm } from "@/registry/bases/base/blocks/sidebar-02/components/search-form"
-import { VersionSwitcher } from "@/registry/bases/base/blocks/sidebar-02/components/version-switcher"
+import { SearchForm } from "@/registry/bases/react-aria/blocks/sidebar-02/components/search-form"
+import { VersionSwitcher } from "@/registry/bases/react-aria/blocks/sidebar-02/components/version-switcher"
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/registry/bases/base/ui/collapsible"
+} from "@/registry/bases/react-aria/ui/collapsible"
 import {
   Sidebar,
   SidebarContent,
@@ -20,7 +20,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarRail,
-} from "@/registry/bases/base/ui/sidebar"
+} from "@/registry/bases/react-aria/ui/sidebar"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 // This is sample data.

@@ -1,15 +1,15 @@
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
+} from "@/registry/bases/react-aria/components/example"
 import {
   Alert,
   AlertAction,
   AlertDescription,
   AlertTitle,
-} from "@/registry/bases/base/ui/alert"
-import { Badge } from "@/registry/bases/base/ui/badge"
-import { Button } from "@/registry/bases/base/ui/button"
+} from "@/registry/bases/react-aria/ui/alert"
+import { Badge } from "@/registry/bases/react-aria/ui/badge"
+import { Button } from "@/registry/bases/react-aria/ui/button"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function AlertExample() {

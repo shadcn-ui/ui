@@ -5,23 +5,23 @@ import * as React from "react"
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
-import { Button } from "@/registry/bases/base/ui/button"
+} from "@/registry/bases/react-aria/components/example"
+import { Button } from "@/registry/bases/react-aria/ui/button"
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/registry/bases/base/ui/card"
+} from "@/registry/bases/react-aria/ui/card"
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/registry/bases/base/ui/collapsible"
-import { Field, FieldGroup, FieldLabel } from "@/registry/bases/base/ui/field"
-import { Input } from "@/registry/bases/base/ui/input"
-import { Tabs, TabsList, TabsTrigger } from "@/registry/bases/base/ui/tabs"
+} from "@/registry/bases/react-aria/ui/collapsible"
+import { Field, FieldGroup, FieldLabel } from "@/registry/bases/react-aria/ui/field"
+import { Input } from "@/registry/bases/react-aria/ui/input"
+import { Tabs, TabsList, TabsTrigger } from "@/registry/bases/react-aria/ui/tabs"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function CollapsibleExample() {

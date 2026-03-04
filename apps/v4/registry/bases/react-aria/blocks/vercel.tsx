@@ -8,11 +8,11 @@ import { Area, AreaChart } from "recharts"
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
-import { Alert, AlertDescription } from "@/registry/bases/base/ui/alert"
-import { Badge } from "@/registry/bases/base/ui/badge"
-import { Button } from "@/registry/bases/base/ui/button"
-import { Calendar } from "@/registry/bases/base/ui/calendar"
+} from "@/registry/bases/react-aria/components/example"
+import { Alert, AlertDescription } from "@/registry/bases/react-aria/ui/alert"
+import { Badge } from "@/registry/bases/react-aria/ui/badge"
+import { Button } from "@/registry/bases/react-aria/ui/button"
+import { Calendar } from "@/registry/bases/react-aria/ui/calendar"
 import {
   Card,
   CardAction,
@@ -21,13 +21,13 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/registry/bases/base/ui/card"
+} from "@/registry/bases/react-aria/ui/card"
 import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
   type ChartConfig,
-} from "@/registry/bases/base/ui/chart"
+} from "@/registry/bases/react-aria/ui/chart"
 import {
   Dialog,
   DialogClose,
@@ -37,27 +37,27 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/registry/bases/base/ui/dialog"
+} from "@/registry/bases/react-aria/ui/dialog"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/registry/bases/base/ui/dropdown-menu"
+} from "@/registry/bases/react-aria/ui/dropdown-menu"
 import {
   Empty,
   EmptyContent,
   EmptyDescription,
   EmptyHeader,
   EmptyTitle,
-} from "@/registry/bases/base/ui/empty"
-import { Field, FieldGroup, FieldLabel } from "@/registry/bases/base/ui/field"
+} from "@/registry/bases/react-aria/ui/empty"
+import { Field, FieldGroup, FieldLabel } from "@/registry/bases/react-aria/ui/field"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
-} from "@/registry/bases/base/ui/input-group"
+} from "@/registry/bases/react-aria/ui/input-group"
 import {
   Item,
   ItemActions,
@@ -68,17 +68,17 @@ import {
   ItemMedia,
   ItemSeparator,
   ItemTitle,
-} from "@/registry/bases/base/ui/item"
+} from "@/registry/bases/react-aria/ui/item"
 import {
   NativeSelect,
   NativeSelectOption,
-} from "@/registry/bases/base/ui/native-select"
+} from "@/registry/bases/react-aria/ui/native-select"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/registry/bases/base/ui/popover"
-import { Textarea } from "@/registry/bases/base/ui/textarea"
+} from "@/registry/bases/react-aria/ui/popover"
+import { Textarea } from "@/registry/bases/react-aria/ui/textarea"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function VercelBlock() {

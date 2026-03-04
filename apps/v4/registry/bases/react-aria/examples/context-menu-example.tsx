@@ -5,8 +5,8 @@ import * as React from "react"
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
-import { Button } from "@/registry/bases/base/ui/button"
+} from "@/registry/bases/react-aria/components/example"
+import { Button } from "@/registry/bases/react-aria/ui/button"
 import {
   ContextMenu,
   ContextMenuCheckboxItem,
@@ -22,7 +22,7 @@ import {
   ContextMenuSubContent,
   ContextMenuSubTrigger,
   ContextMenuTrigger,
-} from "@/registry/bases/base/ui/context-menu"
+} from "@/registry/bases/react-aria/ui/context-menu"
 import {
   Dialog,
   DialogContent,
@@ -30,7 +30,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/registry/bases/base/ui/dialog"
+} from "@/registry/bases/react-aria/ui/dialog"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function ContextMenuExample() {

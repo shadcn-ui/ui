@@ -5,7 +5,7 @@ import * as React from "react"
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
+} from "@/registry/bases/react-aria/components/example"
 import {
   Item,
   ItemActions,
@@ -13,13 +13,13 @@ import {
   ItemGroup,
   ItemMedia,
   ItemTitle,
-} from "@/registry/bases/base/ui/item"
+} from "@/registry/bases/react-aria/ui/item"
 import {
   Progress,
   ProgressLabel,
   ProgressValue,
-} from "@/registry/bases/base/ui/progress"
-import { Slider } from "@/registry/bases/base/ui/slider"
+} from "@/registry/bases/react-aria/ui/progress"
+import { Slider } from "@/registry/bases/react-aria/ui/slider"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function ProgressExample() {

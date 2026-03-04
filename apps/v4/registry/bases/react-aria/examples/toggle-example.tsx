@@ -1,9 +1,9 @@
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
-import { Button } from "@/registry/bases/base/ui/button"
-import { Toggle } from "@/registry/bases/base/ui/toggle"
+} from "@/registry/bases/react-aria/components/example"
+import { Button } from "@/registry/bases/react-aria/ui/button"
+import { Toggle } from "@/registry/bases/react-aria/ui/toggle"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function ToggleExample() {

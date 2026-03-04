@@ -3,8 +3,8 @@ import Image from "next/image"
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
-import { AspectRatio } from "@/registry/bases/base/ui/aspect-ratio"
+} from "@/registry/bases/react-aria/components/example"
+import { AspectRatio } from "@/registry/bases/react-aria/ui/aspect-ratio"
 
 export default function AspectRatioExample() {
   return (

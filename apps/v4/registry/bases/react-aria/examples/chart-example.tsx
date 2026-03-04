@@ -25,7 +25,7 @@ import {
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
+} from "@/registry/bases/react-aria/components/example"
 import {
   Card,
   CardContent,
@@ -33,13 +33,13 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/registry/bases/base/ui/card"
+} from "@/registry/bases/react-aria/ui/card"
 import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
   type ChartConfig,
-} from "@/registry/bases/base/ui/chart"
+} from "@/registry/bases/react-aria/ui/chart"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 const areaChartData = [

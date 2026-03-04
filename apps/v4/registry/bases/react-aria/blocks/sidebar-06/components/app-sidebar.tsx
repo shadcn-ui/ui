@@ -2,8 +2,8 @@
 
 import * as React from "react"
 
-import { NavMain } from "@/registry/bases/base/blocks/sidebar-06/components/nav-main"
-import { SidebarOptInForm } from "@/registry/bases/base/blocks/sidebar-06/components/sidebar-opt-in-form"
+import { NavMain } from "@/registry/bases/react-aria/blocks/sidebar-06/components/nav-main"
+import { SidebarOptInForm } from "@/registry/bases/react-aria/blocks/sidebar-06/components/sidebar-opt-in-form"
 import {
   Sidebar,
   SidebarContent,
@@ -13,7 +13,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarRail,
-} from "@/registry/bases/base/ui/sidebar"
+} from "@/registry/bases/react-aria/ui/sidebar"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 // This is sample data.

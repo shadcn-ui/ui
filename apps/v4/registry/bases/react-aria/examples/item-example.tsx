@@ -3,8 +3,8 @@ import Image from "next/image"
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
-import { Button } from "@/registry/bases/base/ui/button"
+} from "@/registry/bases/react-aria/components/example"
+import { Button } from "@/registry/bases/react-aria/ui/button"
 import {
   Item,
   ItemActions,
@@ -16,7 +16,7 @@ import {
   ItemMedia,
   ItemSeparator,
   ItemTitle,
-} from "@/registry/bases/base/ui/item"
+} from "@/registry/bases/react-aria/ui/item"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function ItemExample() {

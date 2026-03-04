@@ -5,9 +5,9 @@ import * as React from "react"
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
-import { Label } from "@/registry/bases/base/ui/label"
-import { Slider } from "@/registry/bases/base/ui/slider"
+} from "@/registry/bases/react-aria/components/example"
+import { Label } from "@/registry/bases/react-aria/ui/label"
+import { Slider } from "@/registry/bases/react-aria/ui/slider"
 
 export default function SliderExample() {
   return (

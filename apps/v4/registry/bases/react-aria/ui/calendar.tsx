@@ -8,8 +8,8 @@ import {
   type Locale,
 } from "react-day-picker"
 
-import { cn } from "@/registry/bases/base/lib/utils"
-import { Button, buttonVariants } from "@/registry/bases/base/ui/button"
+import { cn } from "@/registry/bases/react-aria/lib/utils"
+import { Button, buttonVariants } from "@/registry/bases/react-aria/ui/button"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 function Calendar({

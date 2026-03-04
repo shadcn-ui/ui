@@ -1,9 +1,9 @@
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
-import { Badge } from "@/registry/bases/base/ui/badge"
-import { Button } from "@/registry/bases/base/ui/button"
+} from "@/registry/bases/react-aria/components/example"
+import { Badge } from "@/registry/bases/react-aria/ui/badge"
+import { Button } from "@/registry/bases/react-aria/ui/button"
 import {
   Empty,
   EmptyContent,
@@ -11,14 +11,14 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@/registry/bases/base/ui/empty"
-import { Field, FieldLabel } from "@/registry/bases/base/ui/field"
+} from "@/registry/bases/react-aria/ui/empty"
+import { Field, FieldLabel } from "@/registry/bases/react-aria/ui/field"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
-} from "@/registry/bases/base/ui/input-group"
-import { Spinner } from "@/registry/bases/base/ui/spinner"
+} from "@/registry/bases/react-aria/ui/input-group"
+import { Spinner } from "@/registry/bases/react-aria/ui/spinner"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function SpinnerExample() {

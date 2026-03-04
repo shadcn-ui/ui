@@ -1,4 +1,4 @@
-import { LoginForm } from "@/registry/bases/base/blocks/login-05/components/login-form"
+import { LoginForm } from "@/registry/bases/react-aria/blocks/login-05/components/login-form"
 
 export default function LoginPage() {
   return (

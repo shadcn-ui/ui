@@ -1,6 +1,6 @@
 "use client"
 
-import { SignupForm } from "@/registry/bases/base/blocks/signup-02/components/signup-form"
+import { SignupForm } from "@/registry/bases/react-aria/blocks/signup-02/components/signup-form"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function SignupPage() {

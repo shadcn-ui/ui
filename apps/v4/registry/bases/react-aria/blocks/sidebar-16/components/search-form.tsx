@@ -1,7 +1,7 @@
 "use client"
 
-import { Label } from "@/registry/bases/base/ui/label"
-import { SidebarInput } from "@/registry/bases/base/ui/sidebar"
+import { Label } from "@/registry/bases/react-aria/ui/label"
+import { SidebarInput } from "@/registry/bases/react-aria/ui/sidebar"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export function SearchForm({ ...props }: React.ComponentProps<"form">) {

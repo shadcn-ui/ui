@@ -1,7 +1,7 @@
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
+} from "@/registry/bases/react-aria/components/example"
 import {
   Avatar,
   AvatarBadge,
@@ -9,8 +9,8 @@ import {
   AvatarGroup,
   AvatarGroupCount,
   AvatarImage,
-} from "@/registry/bases/base/ui/avatar"
-import { Button } from "@/registry/bases/base/ui/button"
+} from "@/registry/bases/react-aria/ui/avatar"
+import { Button } from "@/registry/bases/react-aria/ui/button"
 import {
   Empty,
   EmptyContent,
@@ -18,7 +18,7 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@/registry/bases/base/ui/empty"
+} from "@/registry/bases/react-aria/ui/empty"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function AvatarExample() {

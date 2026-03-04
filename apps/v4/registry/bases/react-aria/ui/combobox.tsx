@@ -3,14 +3,14 @@
 import * as React from "react"
 import { Combobox as ComboboxPrimitive } from "@base-ui/react"
 
-import { cn } from "@/registry/bases/base/lib/utils"
-import { Button } from "@/registry/bases/base/ui/button"
+import { cn } from "@/registry/bases/react-aria/lib/utils"
+import { Button } from "@/registry/bases/react-aria/ui/button"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
-} from "@/registry/bases/base/ui/input-group"
+} from "@/registry/bases/react-aria/ui/input-group"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 const Combobox = ComboboxPrimitive.Root

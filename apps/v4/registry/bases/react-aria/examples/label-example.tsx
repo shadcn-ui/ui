@@ -1,12 +1,12 @@
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
-import { Checkbox } from "@/registry/bases/base/ui/checkbox"
-import { Field } from "@/registry/bases/base/ui/field"
-import { Input } from "@/registry/bases/base/ui/input"
-import { Label } from "@/registry/bases/base/ui/label"
-import { Textarea } from "@/registry/bases/base/ui/textarea"
+} from "@/registry/bases/react-aria/components/example"
+import { Checkbox } from "@/registry/bases/react-aria/ui/checkbox"
+import { Field } from "@/registry/bases/react-aria/ui/field"
+import { Input } from "@/registry/bases/react-aria/ui/input"
+import { Label } from "@/registry/bases/react-aria/ui/label"
+import { Textarea } from "@/registry/bases/react-aria/ui/textarea"
 
 export default function LabelExample() {
   return (

@@ -1,6 +1,6 @@
 "use client"
 
-import { Badge } from "@/registry/bases/base/ui/badge"
+import { Badge } from "@/registry/bases/react-aria/ui/badge"
 import {
   Card,
   CardAction,
@@ -8,7 +8,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/registry/bases/base/ui/card"
+} from "@/registry/bases/react-aria/ui/card"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export function SectionCards() {
