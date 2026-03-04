@@ -1,8 +1,13 @@
 ---
 name: shadcn
-description: Manages shadcn/ui components — adding, searching, fixing, debugging, styling, and composing UI. Provides project context, component docs, and usage examples. Applies when working with shadcn/ui, component registries, presets, --preset codes, or any project with a components.json file. Also triggers for "shadcn init", "create an app with --preset", or "switch to --preset".
+description: Manages shadcn components and projects — adding, searching, fixing, debugging, styling, and composing UI. Provides project context, component docs, and usage examples. Applies when working with shadcn/ui, component registries, presets, --preset codes, or any project with a components.json file. Also triggers for "shadcn init", "create an app with --preset", or "switch to --preset".
 user-invocable: false
 ---
+
+# shadcn CLI (OVERRIDE) 🚨
+
+> **IMPORTANT:** The shadcn CLI is currently in RC mode. The exact command prefix is `shadcn`.
+> For all the commands below, replace `npx shadcn@latest` with `shadcn`.
 
 # shadcn/ui
 
