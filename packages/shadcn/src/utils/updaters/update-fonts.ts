@@ -38,6 +38,9 @@ export async function massageTreeForFonts(
     if (isNext) {
       // Next.js sets the CSS variable via next/font on the <html> element.
       // The font utility class is added to <html> className in updateHtmlClassName.
+      // We update the theme CSS variable to reference itself so it resolves
+      // to the value injected by next/font on <html>.
+      tree.cssVars.theme[font.font.variable] = `var(${font.font.variable})`
     } else {
       // Other frameworks will use fontsource for now.
       const fontName = font.name.replace("font-", "")

@@ -140,27 +140,46 @@ const themeProviderFile = registryItemFileSchema.parse({
   `,
 })
 
+const ALIASES = {
+  components: "@/components",
+  utils: "@/lib/utils",
+  ui: "@/components/ui",
+  lib: "@/lib",
+  hooks: "@/hooks",
+} as const
+
 const transformers = [transformIcons, transformMenu, transformRender]
 
-// Reuse a single ts-morph Project — avoids re-creating the compiler host per file.
 const project = new Project({ compilerOptions: {} })
 
-// Builds a full v0 payload from a design system config.
+function getStyle(designSystemConfig: DesignSystemConfig) {
+  return `${designSystemConfig.base}-${designSystemConfig.style}`
+}
+
 export async function buildV0Payload(designSystemConfig: DesignSystemConfig) {
   const registryBase = buildRegistryBase(designSystemConfig)
 
-  // Build all files in parallel.
-  const [globalsCss, layoutFile, componentFiles] = await Promise.all([
-    buildGlobalsCss(registryBase),
-    buildLayoutFile(designSystemConfig),
-    buildComponentFiles(designSystemConfig),
-  ])
+  // Only buildComponentFiles is async — run sync builders directly.
+  const globalsCss = buildGlobalsCss(registryBase)
+  const layoutFile = buildLayoutFile(designSystemConfig)
+  const componentFiles = await buildComponentFiles(designSystemConfig)
+
+  const dependencies = [...(registryBase.dependencies ?? []), "next-themes"]
+  const componentsJson = buildComponentsJson(designSystemConfig)
+  const packageJson = buildPackageJson(dependencies)
 
   return registryItemSchema.parse({
-    name: designSystemConfig.item ?? "Item",
+    name: designSystemConfig.item ?? "open-in-v0",
     type: "registry:item",
-    dependencies: [...(registryBase.dependencies ?? []), "next-themes"],
-    files: [globalsCss, layoutFile, themeProviderFile, ...componentFiles],
+    dependencies,
+    files: [
+      globalsCss,
+      layoutFile,
+      themeProviderFile,
+      componentsJson,
+      packageJson,
+      ...componentFiles,
+    ],
   })
 }
 
@@ -205,6 +224,112 @@ function buildGlobalsCss(registryBase: RegistryItem) {
     path: "app/globals.css",
     type: "registry:file",
     target: "app/globals.css",
+    content,
+  })
+}
+
+function buildComponentsJson(designSystemConfig: DesignSystemConfig) {
+  const content = JSON.stringify(
+    {
+      $schema: "https://ui.shadcn.com/schema.json",
+      style: getStyle(designSystemConfig),
+      rsc: true,
+      tsx: true,
+      tailwind: {
+        config: "",
+        css: "app/globals.css",
+        baseColor: designSystemConfig.baseColor,
+        cssVariables: true,
+        prefix: "",
+      },
+      aliases: ALIASES,
+      iconLibrary: designSystemConfig.iconLibrary,
+    },
+    null,
+    2
+  )
+
+  return registryItemFileSchema.parse({
+    path: "components.json",
+    type: "registry:file",
+    target: "components.json",
+    content,
+  })
+}
+
+function buildPackageJson(dependencies: string[]) {
+  // Base package.json matching templates/next-app/package.json + component peer deps.
+  const baseDependencies: Record<string, string> = {
+    next: "16.1.6",
+    "next-themes": "^0.4.6",
+    react: "^19.2.4",
+    "react-dom": "^19.2.4",
+    // Utility deps.
+    "class-variance-authority": "^0.7.1",
+    clsx: "^2.1.1",
+    "tailwind-merge": "^3.3.1",
+    // Component peer deps.
+    "date-fns": "4.1.0",
+    "embla-carousel-react": "8.5.1",
+    "input-otp": "1.4.1",
+    "react-day-picker": "9.8.0",
+    "react-resizable-panels": "^2.1.7",
+    recharts: "2.15.4",
+    sonner: "^1.7.4",
+    vaul: "^1.1.2",
+    "@vercel/analytics": "1.3.1",
+  }
+
+  // Merge dynamic dependencies.
+  for (const dep of dependencies) {
+    const atIndex = dep.lastIndexOf("@")
+    if (atIndex > 0) {
+      // Has version: e.g. "shadcn@latest".
+      baseDependencies[dep.slice(0, atIndex)] = dep.slice(atIndex + 1)
+    } else {
+      baseDependencies[dep] = "latest"
+    }
+  }
+
+  const content = JSON.stringify(
+    {
+      name: "next-app",
+      version: "0.0.1",
+      type: "module",
+      private: true,
+      scripts: {
+        dev: "next dev --turbopack",
+        build: "next build",
+        start: "next start",
+        lint: "eslint",
+        format: 'prettier --write "**/*.{ts,tsx}"',
+        typecheck: "tsc --noEmit",
+      },
+      dependencies: baseDependencies,
+      devDependencies: {
+        "@eslint/eslintrc": "^3",
+        "@tailwindcss/postcss": "^4.1.18",
+        "@types/node": "^25.1.0",
+        "@types/react": "^19.2.10",
+        "@types/react-dom": "^19.2.3",
+        eslint: "^9.39.2",
+        "eslint-config-next": "16.1.6",
+        prettier: "^3.8.1",
+        "prettier-plugin-tailwindcss": "^0.7.2",
+        postcss: "^8",
+        tailwindcss: "^4.1.18",
+        "tw-animate-css": "^1.3.4",
+        typescript: "^5.9.3",
+      },
+    },
+    null,
+    2
+  )
+
+  return registryItemFileSchema.parse({
+    path: "package.json",
+    type: "registry:file",
+    target: "package.json",
     content,
   })
 }
@@ -357,7 +482,7 @@ async function buildComponentFiles(designSystemConfig: DesignSystemConfig) {
 function buildTransformConfig(designSystemConfig: DesignSystemConfig) {
   return {
     $schema: "https://ui.shadcn.com/schema.json",
-    style: `${designSystemConfig.base}-${designSystemConfig.style}`,
+    style: getStyle(designSystemConfig),
     rsc: true,
     tsx: true,
     tailwind: {
@@ -368,13 +493,7 @@ function buildTransformConfig(designSystemConfig: DesignSystemConfig) {
       prefix: "",
     },
     iconLibrary: designSystemConfig.iconLibrary,
-    aliases: {
-      components: "@/components",
-      utils: "@/lib/utils",
-      ui: "@/components/ui",
-      lib: "@/lib",
-      hooks: "@/hooks",
-    },
+    aliases: ALIASES,
     menuAccent: designSystemConfig.menuAccent,
     menuColor: designSystemConfig.menuColor,
     resolvedPaths: {
@@ -396,7 +515,7 @@ async function getRegistryItemFile(
   config: z.infer<typeof configSchema>
 ) {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_APP_URL}/r/styles/${designSystemConfig.base}-${designSystemConfig.style}/${name}.json`
+    `${process.env.NEXT_PUBLIC_APP_URL}/r/styles/${getStyle(designSystemConfig)}/${name}.json`
   )
 
   if (!response.ok) {

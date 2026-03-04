@@ -126,7 +126,7 @@ export const fonts = [
     font: {
       family: "'JetBrains Mono Variable', monospace",
       provider: "google",
-      variable: "--font-sans",
+      variable: "--font-mono",
       subsets: ["latin"],
       import: "JetBrains_Mono",
     },

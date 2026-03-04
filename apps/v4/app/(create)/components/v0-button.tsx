@@ -24,12 +24,14 @@ export function V0Button({ className }: { className?: string }) {
 
     searchParams.set("base", params.base)
 
-    if (params.item) {
-      searchParams.set("item", params.item)
-    }
-
     return `${process.env.NEXT_PUBLIC_APP_URL}/init/v0?${searchParams.toString()}`
-  }, [params.preset, params.base, params.item])
+  }, [params.preset, params.base])
+
+  const title = React.useMemo(() => {
+    return params.base && params.style
+      ? `New ${params.base}-${params.style} project`
+      : "New Project"
+  }, [params.base, params.style])
 
   if (!isMounted) {
     return <Skeleton className="h-8 w-24 rounded-lg" />
@@ -46,7 +48,7 @@ export function V0Button({ className }: { className?: string }) {
       )}
       render={
         <a
-          href={`${process.env.NEXT_PUBLIC_V0_URL}/chat/api/open?url=${url}`}
+          href={`${process.env.NEXT_PUBLIC_V0_URL}/chat/api/open?url=${url}&title=${title}`}
           target="_blank"
         />
       }
