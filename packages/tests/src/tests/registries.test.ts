@@ -269,8 +269,11 @@ const registryTwo = await createRegistryServer(
   }
 )
 
+let originalRegistryUrl: string | undefined
+
 beforeAll(async () => {
   // This sets the shadcn registry to our mock registry.
+  originalRegistryUrl = process.env.REGISTRY_URL
   process.env.REGISTRY_URL = "http://localhost:4040/r"
   await registryShadcn.start()
   await registryOne.start()
@@ -278,6 +281,12 @@ beforeAll(async () => {
 })
 
 afterAll(async () => {
+  // Restore the original REGISTRY_URL to avoid leaking into other test files.
+  if (originalRegistryUrl === undefined) {
+    delete process.env.REGISTRY_URL
+  } else {
+    process.env.REGISTRY_URL = originalRegistryUrl
+  }
   await registryShadcn.stop()
   await registryOne.stop()
   await registryTwo.stop()
