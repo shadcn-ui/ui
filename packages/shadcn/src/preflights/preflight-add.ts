@@ -66,9 +66,7 @@ export async function preFlightAdd(options: z.infer<typeof addOptionsSchema>) {
       )} file by running the ${highlighter.info("init")} command.`
     )
     logger.error(
-      `Learn more at ${highlighter.info(
-        `${SHADCN_URL}/docs/components-json`
-      )}.`
+      `Learn more at ${highlighter.info(`${SHADCN_URL}/docs/components-json`)}.`
     )
     logger.break()
     process.exit(1)

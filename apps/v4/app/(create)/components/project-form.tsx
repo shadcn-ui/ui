@@ -51,6 +51,7 @@ const TURBOREPO_LOGO =
   '<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Turborepo</title><path d="M11.9906 4.1957c-4.2998 0-7.7981 3.501-7.7981 7.8043s3.4983 7.8043 7.7981 7.8043c4.2999 0 7.7982-3.501 7.7982-7.8043s-3.4983-7.8043-7.7982-7.8043m0 11.843c-2.229 0-4.0356-1.8079-4.0356-4.0387s1.8065-4.0387 4.0356-4.0387S16.0262 9.7692 16.0262 12s-1.8065 4.0388-4.0356 4.0388m.6534-13.1249V0C18.9726.3386 24 5.5822 24 12s-5.0274 11.66-11.356 12v-2.9139c4.7167-.3372 8.4516-4.2814 8.4516-9.0861s-3.735-8.749-8.4516-9.0861M5.113 17.9586c-1.2502-1.4446-2.0562-3.2845-2.2-5.3046H0c.151 2.8266 1.2808 5.3917 3.051 7.3668l2.0606-2.0622zM11.3372 24v-2.9139c-2.02-.1439-3.8584-.949-5.3019-2.2018l-2.0606 2.0623c1.975 1.773 4.538 2.9022 7.361 3.0534z"/></svg>'
 const ORIGIN = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:4000"
 const IS_LOCAL_DEV = ORIGIN.includes("localhost")
+const SHADCN_VERSION = process.env.NEXT_PUBLIC_RC ? "@rc" : "@latest"
 const PACKAGE_MANAGERS = ["pnpm", "npm", "yarn", "bun"] as const
 type PackageManager = (typeof PACKAGE_MANAGERS)[number]
 
@@ -84,7 +85,7 @@ export function ProjectForm({
     const rtlFlag = params.rtl ? " --rtl" : ""
     const flags = `${presetFlag}${templateFlag}${monorepoFlag}${rtlFlag}`
 
-    return IS_LOCAL_DEV
+    return IS_LOCAL_DEV && !process.env.NEXT_PUBLIC_RC
       ? {
           pnpm: `shadcn init${flags}`,
           npm: `shadcn init${flags}`,
@@ -92,10 +93,10 @@ export function ProjectForm({
           bun: `shadcn init${flags}`,
         }
       : {
-          pnpm: `pnpm dlx shadcn@latest init${flags}`,
-          npm: `npx shadcn@latest init${flags}`,
-          yarn: `yarn dlx shadcn@latest init${flags}`,
-          bun: `bunx --bun shadcn@latest init${flags}`,
+          pnpm: `pnpm dlx shadcn${SHADCN_VERSION} init${flags}`,
+          npm: `npx shadcn${SHADCN_VERSION} init${flags}`,
+          yarn: `yarn dlx shadcn${SHADCN_VERSION} init${flags}`,
+          bun: `bunx --bun shadcn${SHADCN_VERSION} init${flags}`,
         }
   }, [framework, isMonorepo, params.rtl, presetCode])
 
