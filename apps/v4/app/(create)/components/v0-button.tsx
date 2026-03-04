@@ -44,7 +44,12 @@ export function V0Button({ className }: { className?: string }) {
         "gap-1 pointer-coarse:h-10! pointer-coarse:text-sm!",
         className
       )}
-      render={<a href={url} target="_blank" />}
+      render={
+        <a
+          href={`${process.env.NEXT_PUBLIC_V0_URL}/chat/api/open?url=${url}`}
+          target="_blank"
+        />
+      }
     >
       <span>Open in</span>
       <Icons.v0 className="size-5" data-icon="inline-end" />

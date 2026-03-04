@@ -35,7 +35,7 @@ import {
 import { FONTS } from "@/app/(create)/lib/fonts"
 
 const designSystemSearchParams = {
-  preset: parseAsString.withDefault(""),
+  preset: parseAsString.withDefault("a0"),
   base: parseAsStringLiteral<BaseName>(BASES.map((b) => b.name)).withDefault(
     DEFAULT_CONFIG.base
   ),
