@@ -79,7 +79,7 @@ export function Customizer({
         </FieldGroup>
       </CardContent>
       <CardFooter className="flex min-w-0 gap-2 md:flex-col md:**:[button,a]:w-full">
-        <CopyPreset className="h-9 max-w-42 flex-1 md:max-w-none md:flex-none" />
+        <CopyPreset className="h-8 max-w-42 flex-1 md:max-w-none md:flex-none" />
         <V0Button className="ml-auto max-w-42 flex-1 md:hidden" />
         <RandomButton className="hidden md:flex" />
         <ActionMenu itemsByBase={itemsByBase} />

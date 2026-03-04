@@ -22,7 +22,7 @@ export function RandomButton({
       variant={variant}
       onClick={randomize}
       className={cn(
-        "h-17! w-42 touch-manipulation justify-between rounded-xl bg-transparent! p-4 text-sm! select-none hover:bg-muted! md:h-9! md:rounded-lg md:px-2!",
+        "h-17! w-42 touch-manipulation justify-between rounded-xl bg-transparent! p-4 text-sm! select-none hover:bg-muted! md:h-8! md:rounded-lg md:px-2! md:py-0!",
         className
       )}
       {...props}

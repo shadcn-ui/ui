@@ -124,19 +124,10 @@ export function ProjectForm({
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger
-        render={
-          <Button
-            className={cn(
-              "pointer-coarse:h-10! pointer-coarse:text-sm!",
-              className
-            )}
-          />
-        }
-      >
+      <DialogTrigger render={<Button className={cn("", className)} />}>
         Create Project
       </DialogTrigger>
-      <DialogContent className="min-w-0 p-6 sm:max-w-md">
+      <DialogContent className="min-w-0 sm:max-w-sm">
         <DialogHeader>
           <DialogTitle>Create Project</DialogTitle>
           <DialogDescription>
@@ -198,58 +189,64 @@ export function ProjectForm({
             </Field>
           </FieldSet>
         </FieldGroup>
-        <DialogFooter className="-mx-6 mt-2 -mb-6 flex min-w-0 flex-col gap-3 border-t bg-muted/30 p-6 sm:flex-col">
-          <Tabs
-            value={packageManager}
-            onValueChange={(value) => {
-              setConfig((prev) => ({
-                ...prev,
-                packageManager: value as PackageManager,
-              }))
-            }}
-            className="min-w-0 gap-0 overflow-hidden rounded-lg border bg-surface"
-          >
-            <div className="flex items-center gap-2 px-1.5 py-1">
-              <TabsList className="h-auto rounded-none bg-transparent p-0 font-mono group-data-[orientation=horizontal]/tabs:h-8 *:data-[slot=tabs-trigger]:h-7 *:data-[slot=tabs-trigger]:border *:data-[slot=tabs-trigger]:border-transparent *:data-[slot=tabs-trigger]:pt-0.5 *:data-[slot=tabs-trigger]:shadow-none! *:data-[slot=tabs-trigger]:data-[state=active]:border-input">
-                {PACKAGE_MANAGERS.map((manager) => {
-                  return (
-                    <TabsTrigger key={manager} value={manager}>
-                      {manager}
-                    </TabsTrigger>
-                  )
-                })}
-              </TabsList>
-              <Button
-                size="icon-sm"
-                variant="ghost"
-                className="ml-auto size-7"
-                onClick={handleCopy}
-              >
-                {hasCopied ? (
-                  <HugeiconsIcon icon={Tick02Icon} className="size-4" />
-                ) : (
-                  <HugeiconsIcon icon={Copy01Icon} className="size-4" />
-                )}
-                <span className="sr-only">Copy command</span>
-              </Button>
-            </div>
-            {Object.entries(commands).map(([key, cmd]) => {
-              return (
-                <TabsContent key={key} value={key}>
-                  <div className="relative overflow-hidden border-t border-border/50 bg-surface px-3 py-3 text-surface-foreground">
-                    <div className="no-scrollbar overflow-x-auto">
-                      <code className="font-mono text-sm whitespace-nowrap">
-                        {cmd}
-                      </code>
+        <DialogFooter className="min-w-0">
+          <div className="over flex w-full min-w-0 flex-col gap-3">
+            <Tabs
+              value={packageManager}
+              onValueChange={(value) => {
+                setConfig((prev) => ({
+                  ...prev,
+                  packageManager: value as PackageManager,
+                }))
+              }}
+              className="min-w-0 gap-0 overflow-hidden rounded-lg border bg-surface"
+            >
+              <div className="flex items-center gap-2 px-1 py-1">
+                <TabsList className="font-mono">
+                  {PACKAGE_MANAGERS.map((manager) => {
+                    return (
+                      <TabsTrigger
+                        key={manager}
+                        value={manager}
+                        className="data-[state=active]:shadow-none"
+                      >
+                        {manager}
+                      </TabsTrigger>
+                    )
+                  })}
+                </TabsList>
+                <Button
+                  size="icon-sm"
+                  variant="ghost"
+                  className="ml-auto"
+                  onClick={handleCopy}
+                >
+                  {hasCopied ? (
+                    <HugeiconsIcon icon={Tick02Icon} />
+                  ) : (
+                    <HugeiconsIcon icon={Copy01Icon} />
+                  )}
+                  <span className="sr-only">Copy command</span>
+                </Button>
+              </div>
+              {Object.entries(commands).map(([key, cmd]) => {
+                return (
+                  <TabsContent key={key} value={key}>
+                    <div className="relative overflow-hidden border-t border-border/50 bg-surface px-3 py-3 text-surface-foreground">
+                      <div className="no-scrollbar overflow-x-auto">
+                        <code className="font-mono text-sm whitespace-nowrap">
+                          {cmd}
+                        </code>
+                      </div>
                     </div>
-                  </div>
-                </TabsContent>
-              )
-            })}
-          </Tabs>
-          <Button onClick={handleCopy} className="h-9 w-full">
-            Copy Command
-          </Button>
+                  </TabsContent>
+                )
+              })}
+            </Tabs>
+            <Button onClick={handleCopy} className="h-9 w-full">
+              {hasCopied ? "Copied" : "Copy Command"}
+            </Button>
+          </div>
         </DialogFooter>
       </DialogContent>
     </Dialog>
@@ -288,17 +285,17 @@ const TemplateGrid = React.memo(function TemplateGrid({
         <FieldLabel
           key={template.value}
           htmlFor={`template-${template.value}`}
-          className="py-2"
+          className="py-1"
         >
           <Field className="gap-0" orientation="horizontal">
             <FieldContent className="flex flex-col items-center justify-center gap-2">
               <div
-                className="size-8 text-foreground [&_svg]:size-8 *:[svg]:text-foreground!"
+                className="size-6 text-foreground [&_svg]:size-6 *:[svg]:text-foreground!"
                 dangerouslySetInnerHTML={{
                   __html: template.logo,
                 }}
               ></div>
-              <FieldTitle>{template.title}</FieldTitle>
+              <FieldTitle className="text-xs">{template.title}</FieldTitle>
             </FieldContent>
             <RadioGroupItem
               value={template.value}

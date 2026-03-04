@@ -1,5 +1,3 @@
-import { after, NextResponse, type NextRequest } from "next/server"
-import { track } from "@vercel/analytics/server"
 import dedent from "dedent"
 import {
   registryItemFileSchema,
@@ -13,59 +11,14 @@ import { z } from "zod"
 
 import {
   buildRegistryBase,
-  designSystemConfigSchema,
   fonts,
   type DesignSystemConfig,
 } from "@/registry/config"
 
 const { Index } = await import("@/registry/bases/__index__")
 
-export async function GET(request: NextRequest) {
-  try {
-    const searchParams = request.nextUrl.searchParams
-
-    const parseResult = designSystemConfigSchema.safeParse({
-      base: searchParams.get("base"),
-      style: searchParams.get("style"),
-      iconLibrary: searchParams.get("iconLibrary"),
-      baseColor: searchParams.get("baseColor"),
-      theme: searchParams.get("theme"),
-      font: searchParams.get("font"),
-      item: searchParams.get("item"),
-      menuAccent: searchParams.get("menuAccent"),
-      menuColor: searchParams.get("menuColor"),
-      radius: searchParams.get("radius"),
-    })
-
-    if (!parseResult.success) {
-      return NextResponse.json(
-        { error: parseResult.error.issues[0].message },
-        { status: 400 }
-      )
-    }
-
-    const designSystemConfig = parseResult.data
-
-    // Defer analytics to after response is sent. (server-after-nonblocking)
-    after(() => {
-      track("create_open_in_v0", designSystemConfig)
-    })
-
-    const payload = await buildV0Payload(designSystemConfig)
-
-    return NextResponse.json(payload)
-  } catch (error) {
-    return NextResponse.json(
-      {
-        error:
-          error instanceof Error ? error.message : "An unknown error occurred",
-      },
-      { status: 500 }
-    )
-  }
-}
-
-async function buildV0Payload(designSystemConfig: DesignSystemConfig) {
+// Builds a full v0 payload from a design system config.
+export async function buildV0Payload(designSystemConfig: DesignSystemConfig) {
   const registryBase = buildRegistryBase(designSystemConfig)
 
   // Build all files in parallel.
@@ -78,6 +31,7 @@ async function buildV0Payload(designSystemConfig: DesignSystemConfig) {
   return registryItemSchema.parse({
     name: designSystemConfig.item ?? "Item",
     type: "registry:item",
+    dependencies: registryBase.dependencies,
     files: [globalsCss, layoutFile, ...componentFiles],
   })
 }
@@ -100,6 +54,7 @@ function buildGlobalsCss(registryBase: RegistryItem) {
 @theme inline {
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
+  --font-serif: var(--font-serif);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -175,12 +130,27 @@ function buildLayoutFile(designSystemConfig: DesignSystemConfig) {
     throw new Error(`Font "${designSystemConfig.font}" not found`)
   }
 
+  // Derive const name from the font's CSS variable (e.g. --font-sans → fontSans).
+  const constName = font.font.variable
+    .replace(/^--/, "")
+    .replace(/-./g, (m) => m[1].toUpperCase())
+
+  // Add font-serif or font-mono class to body when needed. Sans is the default.
+  const fontClass =
+    font.font.variable === "--font-serif"
+      ? "font-serif"
+      : font.font.variable === "--font-mono"
+        ? "font-mono"
+        : ""
+
+  const bodyClassName = fontClass ? `antialiased ${fontClass}` : "antialiased"
+
   const content = dedent`
     import type { Metadata } from "next";
     import { ${font.font.import} } from "next/font/google";
     import "./globals.css";
 
-    const fontSans = ${font.font.import}({subsets:['latin'],variable:'--font-sans'});
+    const ${constName} = ${font.font.import}({subsets:['latin'],variable:'${font.font.variable}'});
 
     export const metadata: Metadata = {
       title: "Create Next App",
@@ -193,9 +163,9 @@ function buildLayoutFile(designSystemConfig: DesignSystemConfig) {
       children: React.ReactNode;
     }>) {
       return (
-        <html lang="en" className={fontSans.variable}>
+        <html lang="en" className={${constName}.variable}>
           <body
-            className="antialiased"
+            className="${bodyClassName}"
           >
             {children}
           </body>
@@ -215,13 +185,10 @@ function buildLayoutFile(designSystemConfig: DesignSystemConfig) {
 async function buildComponentFiles(designSystemConfig: DesignSystemConfig) {
   const files = []
   const allItemsForBase = Object.values(Index[designSystemConfig.base])
-    .filter(
-      (item: RegistryItem) =>
-        item.type === "registry:ui" || item.name === "example"
-    )
+    .filter((item: RegistryItem) => item.type === "registry:ui")
     .map((item) => item.name)
 
-  // Fetch UI components and the item component in parallel. (async-parallel)
+  // Fetch UI components and the item component in parallel.
   const itemComponentPromise = designSystemConfig.item
     ? getRegistryItemFile(designSystemConfig.item, designSystemConfig)
     : null
@@ -236,9 +203,23 @@ async function buildComponentFiles(designSystemConfig: DesignSystemConfig) {
     type: "registry:page",
     target: "app/page.tsx",
     content: dedent`
-      import { Button } from "@/components/ui/button";
       export default function Page() {
-        return <Button>Click me</Button>
+        return (
+          <div className="flex min-h-svh p-6">
+            <div className="max-w-md text-sm leading-loose">
+              <h1 className="font-medium">Project ready!</h1>
+              <p>You may now prompt v0 to start building.</p>
+              <a
+                href="https://ui.shadcn.com/docs/new"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-2 inline-flex text-primary underline underline-offset-4"
+              >
+                Read the docs
+              </a>
+            </div>
+          </div>
+        )
       }
     `,
   }
@@ -296,7 +277,7 @@ async function getRegistryItemFile(
   const json = await response.json()
   const item = registryItemSchema.parse(json)
 
-  // Build a v0 config i.e components.json
+  // Build a v0 config i.e components.json.
   const config = {
     $schema: "https://ui.shadcn.com/schema.json",
     style: `${designSystemConfig.base}-${designSystemConfig.style}`,
@@ -351,7 +332,7 @@ async function getRegistryItemFile(
 
 const transformers = [transformIcons, transformMenu, transformRender]
 
-// Reuse a single ts-morph Project — avoids re-creating the compiler host per file. (js-cache-function-results)
+// Reuse a single ts-morph Project — avoids re-creating the compiler host per file.
 const project = new Project({ compilerOptions: {} })
 
 async function transformFileContent(
