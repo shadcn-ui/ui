@@ -10,6 +10,7 @@ import { migrate } from "@/src/commands/migrate"
 import { registry } from "@/src/commands/registry"
 import { search } from "@/src/commands/search"
 import { view } from "@/src/commands/view"
+import { REGISTRY_URL } from "@/src/registry/constants"
 import { Command } from "commander"
 
 import packageJson from "../package.json"
@@ -18,6 +19,11 @@ process.on("SIGINT", () => process.exit(0))
 process.on("SIGTERM", () => process.exit(0))
 
 async function main() {
+  // 🚨 Remove before production.
+  if (!REGISTRY_URL.includes("rc") && !REGISTRY_URL.includes("localhost")) {
+    throw new Error("The REGISTRY_URL is not configured.")
+  }
+
   const program = new Command()
     .name("shadcn")
     .description("build your component library")
