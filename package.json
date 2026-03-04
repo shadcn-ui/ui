@@ -45,10 +45,10 @@
   "packageManager": "pnpm@9.0.6",
   "dependencies": {
     "@babel/core": "^7.22.1",
-    "@changesets/changelog-github": "^0.4.8",
+    "@changesets/changelog-github": "^0.5.1",
     "@changesets/cli": "^2.26.1",
     "@commitlint/cli": "^20.1.0",
-    "@commitlint/config-conventional": "^17.6.3",
+    "@commitlint/config-conventional": "^20.0.0",
     "@ianvs/prettier-plugin-sort-imports": "^4.6.1",
     "@manypkg/cli": "^0.20.0",
     "@typescript-eslint/eslint-plugin": "^8.49.0",
@@ -71,7 +71,7 @@
     "tsx": "^4.1.4",
     "turbo": "^1.9.9",
     "vite": "^7.1.12",
-    "vite-tsconfig-paths": "^4.2.0",
+    "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^2.1.9"
   },
   "devDependencies": {
