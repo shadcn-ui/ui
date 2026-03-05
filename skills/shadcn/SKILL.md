@@ -6,8 +6,8 @@ user-invocable: false
 
 # shadcn CLI (OVERRIDE) 🚨
 
-> **IMPORTANT:** The shadcn CLI is currently in RC mode. The exact command prefix is `shadcn`.
-> For all the commands below, replace `npx shadcn@latest` with `shadcn`.
+> **IMPORTANT:** The shadcn CLI is currently in RC mode. The exact command prefix is `shadcn@rc`.
+> For all the commands below, replace `shadcn@latest` with `shadcn@rc`.
 
 # shadcn/ui
 
