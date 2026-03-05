@@ -93,10 +93,10 @@ export function ProjectForm({
           bun: `shadcn init${flags}`,
         }
       : {
-          pnpm: `pnpm dlx shadcn init${flags}`,
-          npm: `npx shadcn init${flags}`,
-          yarn: `yarn dlx shadcn init${flags}`,
-          bun: `bunx --bun shadcn init${flags}`,
+          pnpm: `pnpm dlx shadcn${SHADCN_VERSION} init${flags}`,
+          npm: `npx shadcn${SHADCN_VERSION} init${flags}`,
+          yarn: `yarn dlx shadcn${SHADCN_VERSION} init${flags}`,
+          bun: `bunx --bun shadcn${SHADCN_VERSION} init${flags}`,
         }
   }, [framework, isMonorepo, params.rtl, presetCode])
 
