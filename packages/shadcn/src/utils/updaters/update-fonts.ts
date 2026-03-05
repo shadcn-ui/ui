@@ -69,7 +69,7 @@ export async function massageTreeForFonts(
     tree.css ??= {}
     tree.css["@layer base"] ??= {}
 
-    for (const [selector, classes] of groups) {
+    for (const [selector, classes] of groups.entries()) {
       const fontClasses = classes.join(" ")
       tree.css["@layer base"][selector] ??= {}
       // Find existing @apply key and merge, or create new.
