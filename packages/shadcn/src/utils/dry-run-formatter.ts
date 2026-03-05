@@ -217,8 +217,6 @@ function formatDiffOverview(result: DryRunResult, componentNames: string[]) {
     }
   }
 
-  lines.push(`${dim("└")} ${dim("Run without --dry-run to apply.")}`)
-
   const total = result.files.length
   if (total > MAX_OVERVIEW_FILES) {
     lines.push(
@@ -227,6 +225,8 @@ function formatDiffOverview(result: DryRunResult, componentNames: string[]) {
       )}`
     )
   }
+
+  lines.push(`${dim("└")} ${dim("Run without --dry-run to apply.")}`)
 
   return lines.join("\n")
 }
@@ -261,8 +261,6 @@ function formatViewOverview(result: DryRunResult, componentNames: string[]) {
     }
   }
 
-  lines.push(`${dim("└")} ${dim("Run without --dry-run to apply.")}`)
-
   const total = result.files.length
   if (total > MAX_OVERVIEW_FILES) {
     lines.push(
@@ -271,6 +269,8 @@ function formatViewOverview(result: DryRunResult, componentNames: string[]) {
       )}`
     )
   }
+
+  lines.push(`${dim("└")} ${dim("Run without --dry-run to apply.")}`)
 
   return lines.join("\n")
 }

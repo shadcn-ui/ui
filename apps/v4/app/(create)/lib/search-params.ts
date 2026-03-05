@@ -99,6 +99,7 @@ const DESIGN_SYSTEM_KEYS = [
 const NON_DESIGN_SYSTEM_KEYS = [
   "base",
   "item",
+  "preset",
   "template",
   "rtl",
   "size",
@@ -140,9 +141,7 @@ export function useDesignSystemSearchParams(options: Options = {}) {
 
   // Use ref so setParams callback stays stable across renders.
   const paramsRef = React.useRef(params)
-  React.useEffect(() => {
-    paramsRef.current = params
-  }, [params])
+  paramsRef.current = params
 
   type RawSetParamsInput = Parameters<typeof rawSetParams>[0]
 

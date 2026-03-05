@@ -123,6 +123,7 @@ export default function Page() {
         await updateCssVars({ theme: themeCssVars }, resolvedPackagesUiConfig, {
           silent: options.silent,
           overwriteCssVars: false,
+          tailwindVersion: "v4",
         })
 
         // Update layout.tsx in apps/web with the font import and className.

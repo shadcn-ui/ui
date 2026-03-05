@@ -33,7 +33,7 @@ export function CopyPreset({ className }: React.ComponentProps<typeof Button>) {
       variant="outline"
       onClick={handleCopy}
       className={cn(
-        "bg-transparent! font-mono text-sm transition-none hover:bg-muted! pointer-coarse:h-10!",
+        "touch-manipulation bg-transparent! px-2! py-0! text-sm! transition-none select-none hover:bg-muted! pointer-coarse:h-10!",
         className
       )}
     >

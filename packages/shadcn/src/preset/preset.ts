@@ -124,7 +124,7 @@ export const DEFAULT_PRESET_CONFIG: PresetConfig = Object.fromEntries(
 // Base62 alphabet.
 const BASE62 = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
 
-// Version prefix — 'A' = version 1.
+// Version prefix — 'a' = version 1.
 const VERSION_CHAR = "a"
 
 export function toBase62(num: number) {

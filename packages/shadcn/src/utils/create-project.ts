@@ -76,7 +76,7 @@ export async function createProject(
       withFallback: true,
     }))
 
-  const projectPath = `${options.cwd}/${projectName}`
+  const projectPath = path.join(options.cwd, projectName)
 
   // Check if path is writable.
   try {

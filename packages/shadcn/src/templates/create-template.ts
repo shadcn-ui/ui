@@ -164,7 +164,7 @@ function defaultScaffold({
       if (fs.existsSync(packageJsonPath)) {
         const packageJsonContent = await fs.readFile(packageJsonPath, "utf8")
         const packageJson = JSON.parse(packageJsonContent)
-        packageJson.name = projectPath.split("/").pop()
+        packageJson.name = path.basename(projectPath)
         await fs.writeFile(
           packageJsonPath,
           JSON.stringify(packageJson, null, 2)

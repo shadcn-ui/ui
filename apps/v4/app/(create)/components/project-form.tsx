@@ -125,7 +125,7 @@ export function ProjectForm({
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger render={<Button className={cn("", className)} />}>
+      <DialogTrigger render={<Button className={cn(className)} />}>
         Create Project
       </DialogTrigger>
       <DialogContent className="min-w-0 sm:max-w-sm">
@@ -191,7 +191,7 @@ export function ProjectForm({
           </FieldSet>
         </FieldGroup>
         <DialogFooter className="min-w-0">
-          <div className="over flex w-full min-w-0 flex-col gap-3">
+          <div className="flex w-full min-w-0 flex-col gap-3">
             <Tabs
               value={packageManager}
               onValueChange={(value) => {
@@ -282,10 +282,10 @@ const TemplateGrid = React.memo(function TemplateGrid({
       onValueChange={handleTemplateChange}
       className="grid grid-cols-3 gap-2"
     >
-      {TEMPLATES.map((template) => (
+      {TEMPLATES.map((item) => (
         <FieldLabel
-          key={template.value}
-          htmlFor={`template-${template.value}`}
+          key={item.value}
+          htmlFor={`template-${item.value}`}
           className="py-1"
         >
           <Field className="gap-0" orientation="horizontal">
@@ -293,14 +293,14 @@ const TemplateGrid = React.memo(function TemplateGrid({
               <div
                 className="size-6 text-foreground [&_svg]:size-6 *:[svg]:text-foreground!"
                 dangerouslySetInnerHTML={{
-                  __html: template.logo,
+                  __html: item.logo,
                 }}
               ></div>
-              <FieldTitle className="text-xs">{template.title}</FieldTitle>
+              <FieldTitle className="text-xs">{item.title}</FieldTitle>
             </FieldContent>
             <RadioGroupItem
-              value={template.value}
-              id={`template-${template.value}`}
+              value={item.value}
+              id={`template-${item.value}`}
               className="sr-only absolute"
             />
           </Field>

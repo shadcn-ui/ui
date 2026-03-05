@@ -58,7 +58,6 @@ export function Customizer({
       </CardHeader>
       <CardContent className="no-scrollbar min-h-0 flex-1 overflow-x-auto overflow-y-hidden md:overflow-y-auto">
         <FieldGroup className="flex-row gap-2.5 py-px md:flex-col md:gap-3.25">
-          <RandomButton className="md:hidden" />
           <BasePicker isMobile={isMobile} anchorRef={anchorRef} />
           <StylePicker
             styles={STYLES}
@@ -79,9 +78,8 @@ export function Customizer({
         </FieldGroup>
       </CardContent>
       <CardFooter className="flex min-w-0 gap-2 md:flex-col md:**:[button,a]:w-full">
-        <CopyPreset className="h-8 max-w-42 flex-1 md:max-w-none md:flex-none" />
-        <V0Button className="ml-auto max-w-42 flex-1 md:hidden" />
-        <RandomButton className="hidden md:flex" />
+        <CopyPreset className="flex-1 md:flex-none" />
+        <RandomButton className="flex-1 md:flex-none" />
         <ActionMenu itemsByBase={itemsByBase} />
         <ResetDialog />
       </CardFooter>

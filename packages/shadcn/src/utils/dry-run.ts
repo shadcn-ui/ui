@@ -6,7 +6,7 @@ import { resolveRegistryTree } from "@/src/registry/resolver"
 import { registryResolvedItemsTreeSchema } from "@/src/schema"
 import { isContentSame } from "@/src/utils/compare"
 import { isEnvFile } from "@/src/utils/env-helpers"
-import { Config } from "@/src/utils/get-config"
+import type { Config } from "@/src/utils/get-config"
 import { getProjectInfo } from "@/src/utils/get-project-info"
 import { transform } from "@/src/utils/transformers"
 import { transformAsChild } from "@/src/utils/transformers/transform-aschild"
@@ -25,7 +25,7 @@ import {
   resolveFilePath,
 } from "@/src/utils/updaters/update-files"
 import { massageTreeForFonts } from "@/src/utils/updaters/update-fonts"
-import { z } from "zod"
+import type { z } from "zod"
 
 export type DryRunFile = {
   path: string

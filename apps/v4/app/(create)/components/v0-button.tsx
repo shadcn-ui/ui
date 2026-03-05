@@ -42,10 +42,7 @@ export function V0Button({ className }: { className?: string }) {
       nativeButton={false}
       role="link"
       variant={isMobile ? "default" : "outline"}
-      className={cn(
-        "gap-1 pointer-coarse:h-10! pointer-coarse:text-sm!",
-        className
-      )}
+      className={cn("h-[31px] gap-1 rounded-lg", className)}
       render={
         <a
           href={`${process.env.NEXT_PUBLIC_V0_URL}/chat/api/open?url=${url}&title=${title}`}

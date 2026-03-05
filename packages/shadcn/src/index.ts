@@ -21,7 +21,8 @@ process.on("SIGTERM", () => process.exit(0))
 async function main() {
   // 🚨 Remove before production.
   if (!REGISTRY_URL.includes("rc") && !REGISTRY_URL.includes("localhost")) {
-    throw new Error("The REGISTRY_URL is not configured.")
+    console.error("⚠️ [BETA TESTERS] The REGISTRY_URL is not set.")
+    process.exit(1)
   }
 
   const program = new Command()

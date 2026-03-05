@@ -22,23 +22,12 @@ export function RandomButton({
       variant={variant}
       onClick={randomize}
       className={cn(
-        "h-17! w-42 touch-manipulation justify-between rounded-xl bg-transparent! p-4 text-sm! select-none hover:bg-muted! md:h-8! md:rounded-lg md:px-2! md:py-0!",
+        "touch-manipulation bg-transparent! px-2! py-0! text-sm! transition-none select-none hover:bg-muted! pointer-coarse:h-10!",
         className
       )}
       {...props}
     >
-      <div className="flex touch-manipulation flex-col justify-start text-left md:hidden">
-        <div className="text-xs text-muted-foreground">Shuffle</div>
-        <div className="text-sm font-medium text-foreground">Try Random</div>
-      </div>
-      <span className="hidden font-medium md:inline md:w-full md:text-center">
-        Shuffle
-      </span>
-      <HugeiconsIcon
-        icon={DiceFaces05Icon}
-        strokeWidth={2}
-        className="size-5 md:hidden"
-      />
+      <span className="w-full text-center font-medium">Shuffle</span>
     </Button>
   )
 }

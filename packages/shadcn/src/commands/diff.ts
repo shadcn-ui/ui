@@ -30,7 +30,7 @@ const updateOptionsSchema = z.object({
 
 export const diff = new Command()
   .name("diff")
-  .description("check for updates against the registry")
+  .description("[DEPRECATED] Use `add [component] --diff` instead.")
   .argument("[component]", "the component name")
   .option("-y, --yes", "skip confirmation prompt.", false)
   .option(

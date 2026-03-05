@@ -28,9 +28,12 @@ export function useRandom() {
   const { locks } = useLocks()
   const [params, setParams] = useDesignSystemSearchParams()
 
+  const paramsRef = React.useRef(params)
+  paramsRef.current = params
+
   const randomize = React.useCallback(() => {
     const selectedStyle = locks.has("style")
-      ? params.style
+      ? paramsRef.current.style
       : randomItem(STYLES).name
 
     const context: RandomizeContext = {
@@ -43,7 +46,7 @@ export function useRandom() {
       RANDOMIZE_BIASES.baseColors
     )
     const baseColor = locks.has("baseColor")
-      ? params.baseColor
+      ? paramsRef.current.baseColor
       : randomItem(availableBaseColors).name
     context.baseColor = baseColor
 
@@ -52,22 +55,22 @@ export function useRandom() {
     const availableRadii = applyBias(RADII, context, RANDOMIZE_BIASES.radius)
 
     const selectedTheme = locks.has("theme")
-      ? params.theme
+      ? paramsRef.current.theme
       : randomItem(availableThemes).name
     const selectedFont = locks.has("font")
-      ? params.font
+      ? paramsRef.current.font
       : randomItem(availableFonts).value
     const selectedRadius = locks.has("radius")
-      ? params.radius
+      ? paramsRef.current.radius
       : randomItem(availableRadii).name
     const selectedIconLibrary = locks.has("iconLibrary")
-      ? params.iconLibrary
+      ? paramsRef.current.iconLibrary
       : randomItem(Object.values(iconLibraries)).name
     const selectedMenuAccent = locks.has("menuAccent")
-      ? params.menuAccent
+      ? paramsRef.current.menuAccent
       : randomItem(MENU_ACCENTS).value
     const selectedMenuColor = locks.has("menuColor")
-      ? params.menuColor
+      ? paramsRef.current.menuColor
       : randomItem(MENU_COLORS).value
 
     context.theme = selectedTheme
@@ -84,7 +87,7 @@ export function useRandom() {
       menuColor: selectedMenuColor,
       radius: selectedRadius,
     })
-  }, [setParams, locks, params])
+  }, [setParams, locks])
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {

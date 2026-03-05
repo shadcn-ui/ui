@@ -20,6 +20,13 @@ const MAC_REGEX = /Mac|iPhone|iPad|iPod/
 
 // Hoisted — only uses module-level constants, no component state. (rendering-hoist-jsx)
 function handleMessage(event: MessageEvent) {
+  if (
+    typeof window === "undefined" ||
+    event.origin !== window.location.origin
+  ) {
+    return
+  }
+
   const type = event.data.type
   if (type === CMD_K_FORWARD_TYPE) {
     const isMac = MAC_REGEX.test(navigator.userAgent)

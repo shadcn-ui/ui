@@ -29,9 +29,7 @@ const SEARCH_KEYWORDS: Record<string, string> = {
   "registry:item": "item items component components",
 }
 
-function sortRegistryGroups(
-  groups: ReturnType<typeof groupItemsByType>
-): ReturnType<typeof groupItemsByType> {
+function sortRegistryGroups(groups: ReturnType<typeof groupItemsByType>) {
   return [...groups].sort((a, b) => {
     if (a.type === b.type) {
       return a.title.localeCompare(b.title)

@@ -89,7 +89,7 @@ export const init = new Command()
   .argument("[components...]", "names, url or local path to component")
   .option(
     "-t, --template <template>",
-    "the template to use. (next, start, vite, react-router, laravel)"
+    "the template to use. (next, start, vite, react-router, laravel, astro)"
   )
   .option("-b, --base <base>", "the component library to use. (radix, base)")
   .option("--monorepo", "scaffold a monorepo project.")
@@ -395,7 +395,10 @@ export const init = new Command()
             )
             presetBase = undefined
           } else {
-            const preset = presetsByName.get(presetArg)!
+            const preset = presetsByName.get(presetArg)
+            if (!preset) {
+              throw new Error(`Unknown preset: ${presetArg}`)
+            }
             initUrl = resolveInitUrl(
               {
                 ...preset,

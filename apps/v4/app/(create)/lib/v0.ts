@@ -150,8 +150,6 @@ const ALIASES = {
 
 const transformers = [transformIcons, transformMenu, transformRender]
 
-const project = new Project({ compilerOptions: {} })
-
 function getStyle(designSystemConfig: DesignSystemConfig) {
   return `${designSystemConfig.base}-${designSystemConfig.style}`
 }
@@ -415,7 +413,7 @@ async function buildComponentFiles(designSystemConfig: DesignSystemConfig) {
       : null,
   ])
 
-  const files = [...registryItemFiles]
+  const files = [...registryItemFiles.filter(Boolean)]
 
   const pageFile = {
     path: "app/page.tsx",
@@ -547,6 +545,7 @@ async function transformFileContent(
   content: string,
   config: z.infer<typeof configSchema>
 ) {
+  const project = new Project({ compilerOptions: {} })
   const sourceFile = project.createSourceFile("component.tsx", content, {
     scriptKind: ScriptKind.TSX,
     overwrite: true,
