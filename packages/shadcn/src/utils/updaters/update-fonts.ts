@@ -53,23 +53,37 @@ export async function massageTreeForFonts(
     }
   }
 
-  // Apply font utility classes to body.
+  // Apply font utility classes grouped by selector.
   if (tree.fonts.length > 0) {
-    const fontClasses = tree.fonts
-      .map((f) => f.font.variable.replace("--", ""))
-      .join(" ")
+    // Group fonts by their CSS selector (default to "html").
+    const groups = new Map<string, string[]>()
+    for (const font of tree.fonts) {
+      const selector = font.font.selector ?? "html"
+      const cls = font.font.variable.replace("--", "")
+      if (!groups.has(selector)) {
+        groups.set(selector, [])
+      }
+      groups.get(selector)!.push(cls)
+    }
+
     tree.css ??= {}
     tree.css["@layer base"] ??= {}
-    tree.css["@layer base"].body ??= {}
-    // Find existing @apply key and merge, or create new.
-    const existingApplyKey = Object.keys(tree.css["@layer base"].body).find(
-      (key) => key.startsWith("@apply ")
-    )
-    if (existingApplyKey) {
-      delete tree.css["@layer base"].body[existingApplyKey]
-      tree.css["@layer base"].body[`${existingApplyKey} ${fontClasses}`] = {}
-    } else {
-      tree.css["@layer base"].body[`@apply ${fontClasses}`] = {}
+
+    for (const [selector, classes] of groups) {
+      const fontClasses = classes.join(" ")
+      tree.css["@layer base"][selector] ??= {}
+      // Find existing @apply key and merge, or create new.
+      const existingApplyKey = Object.keys(
+        tree.css["@layer base"][selector]
+      ).find((key) => key.startsWith("@apply "))
+      if (existingApplyKey) {
+        delete tree.css["@layer base"][selector][existingApplyKey]
+        tree.css["@layer base"][selector][
+          `${existingApplyKey} ${fontClasses}`
+        ] = {}
+      } else {
+        tree.css["@layer base"][selector][`@apply ${fontClasses}`] = {}
+      }
     }
   }
 
@@ -206,7 +220,10 @@ export async function transformLayoutFonts(
         )
         if (existingVarDecl) {
           fontVariableNames.push(existingVarDecl.getName())
-          fontUtilityClasses.push(font.font.variable.replace("--", ""))
+          // Only add utility class to <html> if font has no custom selector.
+          if (!font.font.selector) {
+            fontUtilityClasses.push(font.font.variable.replace("--", ""))
+          }
         }
         continue
       }
@@ -259,7 +276,10 @@ export async function transformLayoutFonts(
     }
 
     fontVariableNames.push(varName)
-    fontUtilityClasses.push(font.font.variable.replace("--", ""))
+    // Only add utility class to <html> if font has no custom selector.
+    if (!font.font.selector) {
+      fontUtilityClasses.push(font.font.variable.replace("--", ""))
+    }
   }
 
   // Only keep one font-family class (font-sans, font-serif, font-mono) on <html>.

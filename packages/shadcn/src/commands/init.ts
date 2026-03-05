@@ -815,7 +815,7 @@ async function promptForConfig(defaultConfig: Config | null = null) {
   }
 
   return rawConfigSchema.parse({
-    $schema: `${SHADCN_URL}/schema.json`,
+    $schema: "https://ui.shadcn.com/schema.json",
     style: options.style,
     tailwind: {
       config: options.tailwindConfig,

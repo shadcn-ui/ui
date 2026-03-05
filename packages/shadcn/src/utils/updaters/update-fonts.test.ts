@@ -1163,6 +1163,59 @@ export default function RootLayout({
     expect(firstRun).toContain("inter.variable")
     expect(firstRun).toContain("merriweather.variable")
   })
+
+  it("should add .variable but not utility class for custom selector font", async () => {
+    const input = `
+import type { Metadata } from "next"
+import "./globals.css"
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  )
+}
+`
+    const fonts = [
+      {
+        name: "font-inter",
+        type: "registry:font" as const,
+        font: {
+          family: "'Inter Variable', sans-serif",
+          provider: "google" as const,
+          import: "Inter",
+          variable: "--font-sans",
+          subsets: ["latin"],
+        },
+      },
+      {
+        name: "font-playfair-display",
+        type: "registry:font" as const,
+        font: {
+          family: "'Playfair Display Variable', serif",
+          provider: "google" as const,
+          import: "Playfair_Display",
+          variable: "--font-heading",
+          subsets: ["latin"],
+          selector: "h1, h2, h3, h4, h5, h6",
+        },
+      },
+    ]
+
+    const result = await transformLayoutFonts(input, fonts, mockConfig)
+
+    // .variable should be on <html> for both fonts.
+    expect(result).toContain("inter.variable")
+    expect(result).toContain("playfairDisplay.variable")
+    // Only font-sans utility class should be on <html>, not font-heading.
+    expect(result).toContain('"font-sans"')
+    expect(result).not.toContain('"font-heading"')
+  })
 })
 
 vi.mock("@/src/utils/get-project-info", () => ({
@@ -1174,7 +1227,7 @@ vi.mock("@/src/utils/get-project-info", () => ({
 }))
 
 describe("massageTreeForFonts", () => {
-  it("should add font @apply to body when no existing css", async () => {
+  it("should add font @apply to html when no existing css", async () => {
     const tree = {
       fonts: [
         {
@@ -1195,12 +1248,12 @@ describe("massageTreeForFonts", () => {
       resolvedPaths: { cwd: "/test" },
     } as any)
 
-    expect(result.css!["@layer base"].body).toEqual({
+    expect(result.css!["@layer base"].html).toEqual({
       "@apply font-sans": {},
     })
   })
 
-  it("should preserve existing body css rules when adding font classes", async () => {
+  it("should preserve existing html css rules when adding font classes", async () => {
     const tree = {
       fonts: [
         {
@@ -1220,7 +1273,7 @@ describe("massageTreeForFonts", () => {
       },
       css: {
         "@layer base": {
-          body: {
+          html: {
             "@apply bg-background text-foreground": {},
           },
         },
@@ -1231,7 +1284,7 @@ describe("massageTreeForFonts", () => {
       resolvedPaths: { cwd: "/test" },
     } as any)
 
-    expect(result.css!["@layer base"].body).toEqual({
+    expect(result.css!["@layer base"].html).toEqual({
       "@apply bg-background text-foreground font-sans": {},
     })
   })
@@ -1264,7 +1317,7 @@ describe("massageTreeForFonts", () => {
       ],
       css: {
         "@layer base": {
-          body: {
+          html: {
             "@apply bg-background text-foreground": {},
           },
         },
@@ -1275,8 +1328,77 @@ describe("massageTreeForFonts", () => {
       resolvedPaths: { cwd: "/test" },
     } as any)
 
-    expect(result.css!["@layer base"].body).toEqual({
+    expect(result.css!["@layer base"].html).toEqual({
       "@apply bg-background text-foreground font-sans font-serif": {},
+    })
+  })
+
+  it("should apply font to custom selector", async () => {
+    const tree = {
+      fonts: [
+        {
+          name: "font-playfair-display",
+          type: "registry:font" as const,
+          font: {
+            family: "'Playfair Display Variable', serif",
+            provider: "google" as const,
+            import: "Playfair_Display",
+            variable: "--font-heading",
+            subsets: ["latin"],
+            selector: "h1, h2, h3, h4, h5, h6",
+          },
+        },
+      ],
+    } as any
+
+    const result = await massageTreeForFonts(tree, {
+      resolvedPaths: { cwd: "/test" },
+    } as any)
+
+    expect(result.css!["@layer base"]["h1, h2, h3, h4, h5, h6"]).toEqual({
+      "@apply font-heading": {},
+    })
+    expect(result.css!["@layer base"].html).toBeUndefined()
+  })
+
+  it("should handle mixed selectors (default html + custom)", async () => {
+    const tree = {
+      fonts: [
+        {
+          name: "font-inter",
+          type: "registry:font" as const,
+          font: {
+            family: "'Inter Variable', sans-serif",
+            provider: "google" as const,
+            import: "Inter",
+            variable: "--font-sans",
+            subsets: ["latin"],
+          },
+        },
+        {
+          name: "font-playfair-display",
+          type: "registry:font" as const,
+          font: {
+            family: "'Playfair Display Variable', serif",
+            provider: "google" as const,
+            import: "Playfair_Display",
+            variable: "--font-heading",
+            subsets: ["latin"],
+            selector: "h1, h2, h3, h4, h5, h6",
+          },
+        },
+      ],
+    } as any
+
+    const result = await massageTreeForFonts(tree, {
+      resolvedPaths: { cwd: "/test" },
+    } as any)
+
+    expect(result.css!["@layer base"].html).toEqual({
+      "@apply font-sans": {},
+    })
+    expect(result.css!["@layer base"]["h1, h2, h3, h4, h5, h6"]).toEqual({
+      "@apply font-heading": {},
     })
   })
 })

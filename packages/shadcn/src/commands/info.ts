@@ -148,7 +148,7 @@ function collectInfo(
       components: `${SHADCN_URL}/docs/components/${base}/[component].md`,
       ui: `${GITHUB_RAW_BASE}/${base}/ui/[component].tsx`,
       examples: `${GITHUB_RAW_BASE}/${base}/examples/[component]-example.tsx`,
-      schema: `${SHADCN_URL}/schema.json`,
+      schema: "https://ui.shadcn.com/schema.json",
     },
   }
 }

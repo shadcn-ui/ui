@@ -365,6 +365,28 @@ A `registry:font` item installs a Google Font. The `font` field is required and 
 }
 ```
 
+### Font with custom selector
+
+Use the `selector` field to apply a font to specific CSS selectors instead of globally on `html`. This is useful for heading fonts or other targeted font applications.
+
+```json title="font-playfair-display.json" showLineNumbers
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "font-playfair-display",
+  "type": "registry:font",
+  "font": {
+    "family": "'Playfair Display Variable', serif",
+    "provider": "google",
+    "import": "Playfair_Display",
+    "variable": "--font-heading",
+    "subsets": ["latin"],
+    "selector": "h1, h2, h3, h4, h5, h6"
+  }
+}
+```
+
+When `selector` is set, the font utility class (e.g. `font-heading`) is applied via CSS `@apply` on the specified selector within `@layer base`, instead of being added to the `<html>` element. The CSS variable is still injected on `<html>` so it's available globally.
+
 ## registry:base
 
 ### Custom base

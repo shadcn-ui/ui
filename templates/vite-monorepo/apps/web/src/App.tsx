@@ -1,4 +1,4 @@
-import { Button } from "@workspace/ui/components/ui/button"
+import { Button } from "@workspace/ui/components/button"
 
 export function App() {
   return (
@@ -10,7 +10,7 @@ export function App() {
           <p>We&apos;ve already added the button component for you.</p>
           <Button className="mt-2">Button</Button>
         </div>
-        <div className="font-mono text-xs text-muted-foreground">
+        <div className="text-muted-foreground font-mono text-xs">
           (Press <kbd>d</kbd> to toggle dark mode)
         </div>
       </div>
