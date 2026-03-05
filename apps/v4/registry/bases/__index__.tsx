@@ -3469,6 +3469,46 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    demo: {
+      name: "demo",
+      title: "Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "alert-dialog",
+        "badge",
+        "button",
+        "button-group",
+        "card",
+        "checkbox",
+        "dropdown-menu",
+        "field",
+        "input-group",
+        "item",
+        "radio-group",
+        "slider",
+        "switch",
+        "textarea",
+      ],
+      files: [
+        {
+          path: "registry/bases/radix/examples/demo.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/bases/radix/examples/demo.tsx")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     "component-example": {
       name: "component-example",
       title: "Example",
@@ -8304,6 +8344,46 @@ export const Index: Record<string, Record<string, any>> = {
         const mod = await import(
           "@/registry/bases/base/examples/tooltip-example.tsx"
         )
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    demo: {
+      name: "demo",
+      title: "Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "alert-dialog",
+        "badge",
+        "button",
+        "button-group",
+        "card",
+        "checkbox",
+        "dropdown-menu",
+        "field",
+        "input-group",
+        "item",
+        "radio-group",
+        "slider",
+        "switch",
+        "textarea",
+      ],
+      files: [
+        {
+          path: "registry/bases/base/examples/demo.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/bases/base/examples/demo.tsx")
         const exportName =
           Object.keys(mod).find(
             (key) =>

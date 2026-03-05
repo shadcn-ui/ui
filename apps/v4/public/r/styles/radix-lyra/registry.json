@@ -1871,6 +1871,33 @@
       "type": "registry:example"
     },
     {
+      "name": "demo",
+      "title": "Demo",
+      "registryDependencies": [
+        "alert-dialog",
+        "badge",
+        "button",
+        "button-group",
+        "card",
+        "checkbox",
+        "dropdown-menu",
+        "field",
+        "input-group",
+        "item",
+        "radio-group",
+        "slider",
+        "switch",
+        "textarea"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-lyra/examples/demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
       "name": "component-example",
       "title": "Example",
       "registryDependencies": [
