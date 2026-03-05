@@ -29,7 +29,9 @@ export function useRandom() {
   const [params, setParams] = useDesignSystemSearchParams()
 
   const paramsRef = React.useRef(params)
-  paramsRef.current = params
+  React.useEffect(() => {
+    paramsRef.current = params
+  }, [params])
 
   const randomize = React.useCallback(() => {
     const selectedStyle = locks.has("style")

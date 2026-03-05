@@ -141,7 +141,9 @@ export function useDesignSystemSearchParams(options: Options = {}) {
 
   // Use ref so setParams callback stays stable across renders.
   const paramsRef = React.useRef(params)
-  paramsRef.current = params
+  React.useEffect(() => {
+    paramsRef.current = params
+  }, [params])
 
   type RawSetParamsInput = Parameters<typeof rawSetParams>[0]
 
