@@ -11,7 +11,7 @@
     "typecheck": "react-router typegen && tsc"
   },
   "dependencies": {
-    "@react-router/node": "7.12.0",
+    "@react-router/node": "7.13.1",
     "@react-router/serve": "7.12.0",
     "@remixicon/react": "^4.9.0",
     "@workspace/ui": "workspace:*",
