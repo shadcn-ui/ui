@@ -820,5 +820,11 @@
     "homepage": "https://emerald-ui.com",
     "url": "https://emerald-ui.com/r/{name}.json",
     "description": "Emerald UI - collection of components built with Motion, GSAP, Tailwind CSS and shadcn/ui."
+  },
+  {
+    "name": "@iconiq",
+    "homepage": "https://iconiqs.vercel.app",
+    "url": "https://iconiqs.vercel.app/r/{name}.json",
+    "description": "Iconiq is a collection of icons designed for web applications. It is a modern, clean, and minimalistic icon set that is perfect for web applications."
   }
 ]
