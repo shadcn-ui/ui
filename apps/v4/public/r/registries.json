@@ -820,5 +820,11 @@
     "homepage": "https://emerald-ui.com",
     "url": "https://emerald-ui.com/r/{name}.json",
     "description": "Emerald UI - collection of components built with Motion, GSAP, Tailwind CSS and shadcn/ui."
+  },
+  {
+    "name": "@pulkitxm",
+    "homepage": "https://pulkitxm.com",
+    "url": "https://pulkitxm.com/components/{name}.json",
+    "description": "Animated shadcn components powered by GSAP and Framer Motion. Built for expressive UIs."
   }
 ]
