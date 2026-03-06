@@ -5,7 +5,6 @@ import { IconArrowUpRight } from "@tabler/icons-react"
 
 import { useSearchRegistry } from "@/hooks/use-search-registry"
 import { DirectoryAddButton } from "@/components/directory-add-button"
-import globalRegistries from "@/registry/directory.json"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import {
   Item,
@@ -72,7 +71,7 @@ export function DirectoryList() {
                 <DirectoryAddButton registry={registry} />
               </ItemFooter>
             </Item>
-            {index < globalRegistries.length - 1 && (
+            {index < registries.length - 1 && (
               <ItemSeparator className="my-1" />
             )}
           </React.Fragment>
