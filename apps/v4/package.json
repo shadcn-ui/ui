@@ -96,7 +96,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.0.0",
     "prettier": "^3.4.2",
-    "prettier-plugin-tailwindcss": "^0.6.11",
+    "prettier-plugin-tailwindcss": "^0.7.2",
     "tailwindcss": "^4",
     "tw-animate-css": "^1.4.0",
     "typescript": "^5",
@@ -109,6 +109,7 @@
     "singleQuote": false,
     "tabWidth": 2,
     "trailingComma": "es5",
+    "printWidth": 80,
     "importOrder": [
       "^(react/(.*)$)|^(react$)",
       "^(next/(.*)$)|^(next$)",
@@ -134,6 +135,11 @@
       "typescript",
       "jsx",
       "decorators-legacy"
+    ],
+    "tailwindStylesheet": "./styles/globals.css",
+    "tailwindFunctions": [
+      "cn",
+      "cva"
     ],
     "plugins": [
       "@ianvs/prettier-plugin-sort-imports",

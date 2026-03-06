@@ -1,5 +1,11 @@
 [
   {
+    "name": "@lmscn",
+    "homepage": "https://lmscn.vercel.app",
+    "url": "https://lmscn.vercel.app/r/{name}.json",
+    "description": "LMS components for building interactive learning experiences — quiz, flashcards, matching, fill-in-the-blank, word scramble, sequencing, reading comprehension, spaced repetition and more."
+  },
+  {
     "name": "@8bitcn",
     "homepage": "https://www.8bitcn.com",
     "url": "https://www.8bitcn.com/r/{name}.json",
@@ -228,6 +234,12 @@
     "description": "Production-ready UI components designed for building beautiful AI assistants and conversational interfaces, from the team behind GAIA."
   },
   {
+    "name": "@gc-solid",
+    "homepage": "https://binnodon.github.io/gc-solid-ui",
+    "url": "https://binnodon.github.io/gc-solid-ui/r/{name}.json",
+    "description": "SolidJS port of shadcn-ui components built with Kobalte primitives. 57+ components with full TypeScript support and Vega theme."
+  },
+  {
     "name": "@glass-ui",
     "homepage": "https://glass-ui.crenspire.com",
     "url": "https://glass-ui.crenspire.com/r/{name}.json",
@@ -247,8 +259,8 @@
   },
   {
     "name": "@hooks",
-    "homepage": "https://shadcn-hooks.vercel.app",
-    "url": "https://shadcn-hooks.vercel.app/r/{name}.json",
+    "homepage": "https://shadcn-hooks.com",
+    "url": "https://shadcn-hooks.com/r/{name}.json",
     "description": "A comprehensive React Hooks Collection built with Shadcn."
   },
   {
@@ -582,6 +594,12 @@
     "description": "Beautifully designed, accessible components that you can copy and paste into your apps. Made with React Aria Components and Shadcn tokens."
   },
   {
+    "name": "@terrae",
+    "homepage": "https://www.terrae.dev",
+    "url": "https://www.terrae.dev/{name}.json",
+    "description": "Composable, animated map components for React. Built with TypeScript, Tailwind CSS, Mapbox GL JS, and MapLibre GL. Perfect companion for shadcn/ui."
+  },
+  {
     "name": "@thegridcn",
     "homepage": "https://thegridcn.com",
     "url": "https://thegridcn.com/r/{name}.json",
@@ -796,5 +814,11 @@
     "homepage": "https://pixelactui.com",
     "url": "https://pixelactui.com/r/{name}.json",
     "description": "Playful pixel art style components library built on top of shadcn. Perfect for retro style projects and games."
+  },
+  {
+    "name": "@emerald-ui",
+    "homepage": "https://emerald-ui.com",
+    "url": "https://emerald-ui.com/r/{name}.json",
+    "description": "Emerald UI - collection of components built with Motion, GSAP, Tailwind CSS and shadcn/ui."
   }
 ]

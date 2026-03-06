@@ -99,7 +99,7 @@ export function ItemPicker({
             variant="outline"
             aria-label="Select item"
             size="sm"
-            className="data-popup-open:bg-muted dark:data-popup-open:bg-muted/50 bg-muted/50 sm:bg-background md:dark:bg-background border-foreground/10 dark:bg-muted/50 h-[calc(--spacing(13.5))] flex-1 touch-manipulation justify-between gap-2 rounded-xl pr-4! pl-2.5 text-left shadow-none select-none *:data-[slot=combobox-trigger-icon]:hidden sm:h-8 sm:max-w-56 sm:rounded-lg sm:pr-2! xl:max-w-64"
+            className="h-[calc(--spacing(13.5))] flex-1 touch-manipulation justify-between gap-2 rounded-xl border-foreground/10 bg-muted/50 pr-4! pl-2.5 text-left shadow-none select-none data-popup-open:bg-muted *:data-[slot=combobox-trigger-icon]:hidden sm:h-8 sm:max-w-56 sm:rounded-lg sm:bg-background sm:pr-2! xl:max-w-64 dark:bg-muted/50 dark:data-popup-open:bg-muted/50 md:dark:bg-background"
           />
         }
       >
@@ -107,14 +107,14 @@ export function ItemPicker({
           {(value) => (
             <>
               <div className="flex flex-col justify-start text-left sm:hidden">
-                <div className="text-muted-foreground text-xs font-normal">
+                <div className="text-xs font-normal text-muted-foreground">
                   Preview
                 </div>
-                <div className="text-foreground text-sm font-medium">
+                <div className="text-sm font-medium text-foreground">
                   {value?.title || "Not Found"}
                 </div>
               </div>
-              <div className="text-foreground hidden flex-1 text-sm sm:flex">
+              <div className="hidden flex-1 text-sm text-foreground sm:flex">
                 {value?.title || "Not Found"}
               </div>
             </>
@@ -123,14 +123,14 @@ export function ItemPicker({
         <HugeiconsIcon icon={Search01Icon} />
       </ComboboxTrigger>
       <ComboboxContent
-        className="ring-foreground/10 min-w-[calc(var(--available-width)---spacing(4))] translate-x-2 animate-none rounded-xl border-0 ring-1 data-open:animate-none sm:min-w-[calc(var(--anchor-width)+--spacing(7))] sm:translate-x-0 xl:w-96"
+        className="min-w-[calc(var(--available-width)---spacing(4))] translate-x-2 animate-none rounded-xl border-0 ring-1 ring-foreground/10 sm:min-w-[calc(var(--anchor-width)+--spacing(7))] sm:translate-x-0 xl:w-96 data-open:animate-none"
         side="bottom"
         align="end"
       >
         <ComboboxInput
           showTrigger={false}
           placeholder="Search"
-          className="bg-muted h-8 rounded-lg shadow-none has-focus-visible:border-inherit! has-focus-visible:ring-0! pointer-coarse:hidden"
+          className="h-8 rounded-lg bg-muted shadow-none has-focus-visible:border-inherit! has-focus-visible:ring-0! pointer-coarse:hidden"
         />
         <ComboboxEmpty>No items found.</ComboboxEmpty>
         <ComboboxList className="no-scrollbar scroll-my-1 pb-1">
@@ -145,7 +145,7 @@ export function ItemPicker({
                     className="group/combobox-item rounded-lg pointer-coarse:py-2.5 pointer-coarse:pl-3 pointer-coarse:text-base"
                   >
                     {item.title}
-                    <span className="text-muted-foreground ml-auto text-xs opacity-0 group-data-[selected=true]/combobox-item:opacity-100">
+                    <span className="ml-auto text-xs text-muted-foreground opacity-0 group-data-[selected=true]/combobox-item:opacity-100">
                       {group.title}
                     </span>
                   </ComboboxItem>

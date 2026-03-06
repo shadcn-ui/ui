@@ -174,7 +174,7 @@ function UsageCard() {
                   <ItemTitle className="inline">{item.name}</ItemTitle>
                 </ItemContent>
                 <ItemActions>
-                  <span className="text-muted-foreground font-mono text-xs font-medium tabular-nums">
+                  <span className="font-mono text-xs font-medium text-muted-foreground tabular-nums">
                     {item.value}
                   </span>
                 </ItemActions>
@@ -375,7 +375,7 @@ function DeploymentFilter() {
               phosphor="CaretDownIcon"
               remixicon="RiArrowDownSLine"
               data-icon="inline-end"
-              className="text-muted-foreground ml-auto"
+              className="ml-auto text-muted-foreground"
             />
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-56" align="end">
@@ -623,11 +623,11 @@ function ActivateAgentDialog() {
                       hugeicons="CheckmarkCircle02Icon"
                       phosphor="CheckCircleIcon"
                       remixicon="RiCheckboxCircleLine"
-                      className="fill-primary text-primary-foreground size-5"
+                      className="size-5 fill-primary text-primary-foreground"
                     />
                   </ItemMedia>
                   <ItemContent>
-                    <ItemTitle className="text-muted-foreground *:[strong]:text-foreground inline leading-relaxed font-normal *:[strong]:font-medium">
+                    <ItemTitle className="inline leading-relaxed font-normal text-muted-foreground *:[strong]:font-medium *:[strong]:text-foreground">
                       {feature.content}
                     </ItemTitle>
                   </ItemContent>
@@ -663,7 +663,7 @@ function ObservabilityCard() {
   return (
     <Example title="Observability" className="items-center justify-center">
       <Card className="relative w-full max-w-md overflow-hidden pt-0">
-        <div className="bg-primary absolute inset-0 z-30 aspect-video opacity-50 mix-blend-color" />
+        <div className="absolute inset-0 z-30 aspect-video bg-primary opacity-50 mix-blend-color" />
         <img
           src="https://images.unsplash.com/photo-1604076850742-4c7221f3101b?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           alt="Photo by mymind on Unsplash"

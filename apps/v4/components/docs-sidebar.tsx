@@ -70,11 +70,11 @@ export function DocsSidebar({
       {...props}
     >
       <div className="h-9" />
-      <div className="from-background via-background/80 to-background/50 absolute top-8 z-10 h-8 w-(--sidebar-menu-width) shrink-0 bg-gradient-to-b blur-xs" />
-      <div className="via-border absolute top-12 right-2 bottom-0 hidden h-full w-px bg-gradient-to-b from-transparent to-transparent lg:flex" />
-      <SidebarContent className="no-scrollbar mx-auto w-(--sidebar-menu-width) overflow-x-hidden px-2">
+      <div className="absolute top-8 z-10 h-8 w-(--sidebar-menu-width) shrink-0 bg-gradient-to-b from-background via-background/80 to-background/50 blur-xs" />
+      <div className="absolute top-12 right-2 bottom-0 hidden h-full w-px bg-gradient-to-b from-transparent via-border to-transparent lg:flex" />
+      <SidebarContent className="mx-auto no-scrollbar w-(--sidebar-menu-width) overflow-x-hidden px-2">
         <SidebarGroup className="pt-6">
-          <SidebarGroupLabel className="text-muted-foreground font-medium">
+          <SidebarGroupLabel className="font-medium text-muted-foreground">
             Sections
           </SidebarGroupLabel>
           <SidebarGroupContent>
@@ -92,7 +92,7 @@ export function DocsSidebar({
                           ? pathname === href
                           : pathname.startsWith(href)
                       }
-                      className="data-[active=true]:bg-accent data-[active=true]:border-accent 3xl:fixed:w-full 3xl:fixed:max-w-48 relative h-[30px] w-fit overflow-visible border border-transparent text-[0.8rem] font-medium after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md"
+                      className="relative h-[30px] w-fit overflow-visible border border-transparent text-[0.8rem] font-medium after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md data-[active=true]:border-accent data-[active=true]:bg-accent 3xl:fixed:w-full 3xl:fixed:max-w-48"
                     >
                       <Link href={href}>
                         <span className="absolute inset-0 flex w-(--sidebar-menu-width) bg-transparent" />
@@ -118,7 +118,7 @@ export function DocsSidebar({
 
           return (
             <SidebarGroup key={item.$id}>
-              <SidebarGroupLabel className="text-muted-foreground font-medium">
+              <SidebarGroupLabel className="font-medium text-muted-foreground">
                 {item.name}
               </SidebarGroupLabel>
               <SidebarGroupContent>
@@ -138,7 +138,7 @@ export function DocsSidebar({
                           <SidebarMenuButton
                             asChild
                             isActive={page.url === pathname}
-                            className="data-[active=true]:bg-accent data-[active=true]:border-accent 3xl:fixed:w-full 3xl:fixed:max-w-48 relative h-[30px] w-fit overflow-visible border border-transparent text-[0.8rem] font-medium after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md"
+                            className="relative h-[30px] w-fit overflow-visible border border-transparent text-[0.8rem] font-medium after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md data-[active=true]:border-accent data-[active=true]:bg-accent 3xl:fixed:w-full 3xl:fixed:max-w-48"
                           >
                             <Link href={page.url}>
                               <span className="absolute inset-0 flex w-(--sidebar-menu-width) bg-transparent" />
@@ -160,7 +160,7 @@ export function DocsSidebar({
             </SidebarGroup>
           )
         })}
-        <div className="from-background via-background/80 to-background/50 sticky -bottom-1 z-10 h-16 shrink-0 bg-gradient-to-t blur-xs" />
+        <div className="sticky -bottom-1 z-10 h-16 shrink-0 bg-gradient-to-t from-background via-background/80 to-background/50 blur-xs" />
       </SidebarContent>
     </Sidebar>
   )

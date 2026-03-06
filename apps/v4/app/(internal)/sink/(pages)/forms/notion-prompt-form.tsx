@@ -202,7 +202,7 @@ export function NotionPromptForm() {
         <FieldLabel htmlFor="notion-prompt" className="sr-only">
           Prompt
         </FieldLabel>
-        <InputGroup className="bg-background dark:bg-background shadow-none">
+        <InputGroup className="bg-background shadow-none dark:bg-background">
           <InputGroupTextarea
             id="notion-prompt"
             placeholder="Ask, search, or make anything..."
@@ -255,7 +255,7 @@ export function NotionPromptForm() {
                 </Command>
               </PopoverContent>
             </Popover>
-            <div className="no-scrollbar -m-1.5 flex gap-1 overflow-y-auto p-1.5">
+            <div className="-m-1.5 no-scrollbar flex gap-1 overflow-y-auto p-1.5">
               {mentions.map((mention) => {
                 const item = SAMPLE_DATA.mentionable.find(
                   (item) => item.title === mention
@@ -270,7 +270,7 @@ export function NotionPromptForm() {
                     key={mention}
                     size="sm"
                     variant="secondary"
-                    className="rounded-full !pl-2"
+                    className="rounded-full pl-2!"
                     onClick={() => {
                       setMentions((prev) => prev.filter((m) => m !== mention))
                     }}
@@ -319,7 +319,7 @@ export function NotionPromptForm() {
                 className="[--radius:1.2rem]"
               >
                 <DropdownMenuGroup className="w-72">
-                  <DropdownMenuLabel className="text-muted-foreground text-xs">
+                  <DropdownMenuLabel className="text-xs text-muted-foreground">
                     Get answers about your workspace
                   </DropdownMenuLabel>
                   {SAMPLE_DATA.models.map((model) => (
@@ -442,7 +442,7 @@ export function NotionPromptForm() {
                   <DropdownMenuItem>
                     <IconPlus /> Connect Apps
                   </DropdownMenuItem>
-                  <DropdownMenuLabel className="text-muted-foreground text-xs">
+                  <DropdownMenuLabel className="text-xs text-muted-foreground">
                     We&apos;ll only search in the sources selected here.
                   </DropdownMenuLabel>
                 </DropdownMenuGroup>

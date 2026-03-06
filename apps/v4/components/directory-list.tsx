@@ -42,7 +42,7 @@ export function DirectoryList() {
               <ItemMedia
                 variant="image"
                 dangerouslySetInnerHTML={{ __html: registry.logo }}
-                className="*:[svg]:fill-foreground grayscale *:[svg]:size-8"
+                className="grayscale *:[svg]:size-8 *:[svg]:fill-foreground"
               />
               <ItemContent>
                 <ItemTitle>

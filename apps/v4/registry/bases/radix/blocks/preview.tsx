@@ -669,7 +669,7 @@ function InputGroupExamples() {
           <InputGroupAddon align="inline-end">12 results</InputGroupAddon>
         </InputGroup>
         <InputGroup>
-          <InputGroupInput placeholder="example.com" className="!pl-1" />
+          <InputGroupInput placeholder="example.com" className="pl-1!" />
           <InputGroupAddon>
             <InputGroupText>https://</InputGroupText>
           </InputGroupAddon>
@@ -699,7 +699,7 @@ function InputGroupExamples() {
             Input Secure
           </Label>
           <InputGroup>
-            <InputGroupInput id="input-secure-19" className="!pl-0.5" />
+            <InputGroupInput id="input-secure-19" className="pl-0.5!" />
             <Popover>
               <PopoverTrigger asChild>
                 <InputGroupAddon>
@@ -729,7 +729,7 @@ function InputGroupExamples() {
                 </p>
               </PopoverContent>
             </Popover>
-            <InputGroupAddon className="text-muted-foreground !pl-1">
+            <InputGroupAddon className="pl-1! text-muted-foreground">
               https://
             </InputGroupAddon>
             <InputGroupAddon align="inline-end">
@@ -804,7 +804,7 @@ function InputGroupExamples() {
           <InputGroupAddon align="block-end">
             <InputGroupButton
               variant="outline"
-              className="style-lyra:rounded-none rounded-full"
+              className="rounded-full style-lyra:rounded-none"
               size="icon-xs"
               aria-label="Add"
             >
@@ -831,10 +831,10 @@ function InputGroupExamples() {
               </DropdownMenuContent>
             </DropdownMenu>
             <InputGroupText className="ml-auto">52% used</InputGroupText>
-            <Separator orientation="vertical" className="!h-4" />
+            <Separator orientation="vertical" className="h-4!" />
             <InputGroupButton
               variant="default"
-              className="style-lyra:rounded-none rounded-full"
+              className="rounded-full style-lyra:rounded-none"
               size="icon-xs"
             >
               <IconPlaceholder
@@ -1125,7 +1125,7 @@ function SmallFormExample() {
               </DropdownMenuTrigger>
               <DropdownMenuContent
                 align="end"
-                className="style-maia:w-56 style-mira:w-48 style-nova:w-48 style-vega:w-56 style-lyra:w-48"
+                className="style-vega:w-56 style-nova:w-48 style-lyra:w-48 style-maia:w-56 style-mira:w-48"
               >
                 <DropdownMenuGroup>
                   <DropdownMenuLabel>File</DropdownMenuLabel>
@@ -1474,7 +1474,7 @@ function ObservabilityCard() {
   return (
     <Example title="Card" className="items-center justify-center">
       <Card className="relative w-full max-w-sm overflow-hidden pt-0">
-        <div className="bg-primary absolute inset-0 z-30 aspect-video opacity-50 mix-blend-color" />
+        <div className="absolute inset-0 z-30 aspect-video bg-primary opacity-50 mix-blend-color" />
         <img
           src="https://images.unsplash.com/photo-1604076850742-4c7221f3101b?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           alt="Photo by mymind on Unsplash"
@@ -1654,7 +1654,7 @@ function SheetExample() {
                 {Array.from({ length: 10 }).map((_, index) => (
                   <p
                     key={index}
-                    className="style-lyra:mb-2 style-lyra:leading-relaxed mb-4 leading-normal"
+                    className="mb-4 leading-normal style-lyra:mb-2 style-lyra:leading-relaxed"
                   >
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
                     do eiusmod tempor incididunt ut labore et dolore magna
