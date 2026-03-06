@@ -22,7 +22,7 @@
     "@types/react-dom": "^19.2.3",
     "@workspace/eslint-config": "workspace:*",
     "@workspace/typescript-config": "workspace:*",
-    "eslint": "^9.39.2",
+    "eslint": "^10.0.2",
     "tailwindcss": "^4.1.18",
     "typescript": "^5.9.3"
   },
