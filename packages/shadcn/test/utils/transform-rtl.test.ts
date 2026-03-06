@@ -321,6 +321,30 @@ describe("applyRtlMapping", () => {
       "ltr:-translate-x-1/2 rtl:-translate-x-1/2"
     )
   })
+
+  test("does not duplicate generated rtl: classes on repeated runs", () => {
+    const once = applyRtlMapping(
+      "space-x-2 divide-x-2 translate-x-1/2 cursor-w-resize"
+    )
+    const twice = applyRtlMapping(once)
+
+    expect(twice).toBe(once)
+    expect(twice).toBe(
+      "space-x-2 rtl:space-x-reverse divide-x-2 rtl:divide-x-reverse translate-x-1/2 rtl:-translate-x-1/2 cursor-w-resize rtl:cursor-e-resize"
+    )
+  })
+
+  test("preserves manually-added rtl variants without re-adding them", () => {
+    expect(applyRtlMapping("space-x-2 rtl:space-x-reverse")).toBe(
+      "space-x-2 rtl:space-x-reverse"
+    )
+    expect(applyRtlMapping("translate-x-1/2 rtl:-translate-x-1/2")).toBe(
+      "translate-x-1/2 rtl:-translate-x-1/2"
+    )
+    expect(applyRtlMapping("cursor-w-resize rtl:cursor-e-resize")).toBe(
+      "cursor-w-resize rtl:cursor-e-resize"
+    )
+  })
 })
 
 describe("transformRtl", () => {
