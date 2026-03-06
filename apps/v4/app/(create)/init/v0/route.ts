@@ -15,7 +15,10 @@ export async function GET(request: NextRequest) {
 
     // Defer analytics to after response is sent.
     after(() => {
-      track("create_open_in_v0", result.data)
+      track("create_open_in_v0", {
+        ...result.data,
+        preset: searchParams.get("preset") ?? undefined,
+      })
     })
 
     const payload = await buildV0Payload(result.data)

@@ -27,7 +27,10 @@ export async function GET(request: NextRequest) {
       )
     }
 
-    track("create_app", result.data)
+    track("create_app", {
+      ...result.data,
+      preset: searchParams.get("preset") ?? undefined,
+    })
 
     return NextResponse.json(parseResult.data)
   } catch (error) {
