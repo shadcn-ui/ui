@@ -10,26 +10,46 @@ import {
 } from "@/registry/config"
 import { useIframeMessageListener } from "@/app/(create)/hooks/use-iframe-sync"
 import { FONTS } from "@/app/(create)/lib/fonts"
-import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
+import {
+  type DesignSystemSearchParams,
+  useDesignSystemSearchParams,
+} from "@/app/(create)/lib/search-params"
 
 export function DesignSystemProvider({
   children,
 }: {
   children: React.ReactNode
 }) {
-  const [
-    { style, theme, font, baseColor, menuAccent, menuColor, radius },
-    setSearchParams,
-  ] = useDesignSystemSearchParams({
+  const [searchParams, setSearchParams] = useDesignSystemSearchParams({
     shallow: true, // No need to go through the server…
     history: "replace", // …or push updates into the iframe history.
   })
-  useIframeMessageListener("design-system-params", setSearchParams)
+  const [liveSearchParams, setLiveSearchParams] = React.useState(searchParams)
   const [isReady, setIsReady] = React.useState(false)
+  const { style, theme, font, baseColor, menuAccent, menuColor, radius } =
+    liveSearchParams
   const effectiveRadius = style === "lyra" ? "none" : radius
 
   React.useEffect(() => {
+    setLiveSearchParams(searchParams)
+  }, [searchParams])
+
+  const handleDesignSystemMessage = React.useCallback(
+    (nextParams: DesignSystemSearchParams) => {
+      setLiveSearchParams(nextParams)
+      setSearchParams(nextParams)
+    },
+    [setSearchParams]
+  )
+
+  useIframeMessageListener("design-system-params", handleDesignSystemMessage)
+
+  React.useEffect(() => {
     if (style === "lyra" && radius !== "none") {
+      setLiveSearchParams((prev) => ({
+        ...prev,
+        radius: "none",
+      }))
       setSearchParams({ radius: "none" as RadiusValue })
     }
   }, [style, radius, setSearchParams])

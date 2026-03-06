@@ -52,7 +52,7 @@ export function MainMenu({ className }: React.ComponentProps<typeof Button>) {
         <PickerContent side="right" align="start" alignOffset={-8}>
           <PickerGroup>
             <PickerItem onClick={openActionMenu}>
-              Quick actions{" "}
+              Navigate...
               <PickerShortcut>{isMac ? "⌘P" : "Ctrl+P"}</PickerShortcut>
             </PickerItem>
             <PickerItem onClick={randomize}>

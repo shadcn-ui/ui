@@ -51,7 +51,7 @@ export function BasePicker({
           </div>
           {currentBase?.meta?.logo && (
             <div
-              className="pointer-events-none absolute top-1/2 right-4 size-4 -translate-y-1/2 text-foreground select-none md:right-2 *:[svg]:size-4 *:[svg]:text-foreground!"
+              className="pointer-events-none absolute top-1/2 right-4 size-4 -translate-y-1/2 text-foreground select-none md:right-2.5 *:[svg]:size-4 *:[svg]:text-foreground!"
               dangerouslySetInnerHTML={{
                 __html: currentBase.meta.logo,
               }}

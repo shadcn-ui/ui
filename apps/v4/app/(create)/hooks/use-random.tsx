@@ -79,7 +79,7 @@ export function useRandom() {
     context.font = selectedFont
     context.radius = selectedRadius
 
-    setParams({
+    const nextParams = {
       style: selectedStyle,
       baseColor,
       theme: selectedTheme,
@@ -88,8 +88,22 @@ export function useRandom() {
       menuAccent: selectedMenuAccent,
       menuColor: selectedMenuColor,
       radius: selectedRadius,
-    })
+    }
+
+    // Keep the ref in sync so rapid repeats use the latest randomized state
+    // even before the URL state finishes committing.
+    paramsRef.current = {
+      ...paramsRef.current,
+      ...nextParams,
+    }
+
+    setParams(nextParams)
   }, [setParams, locks])
+
+  const randomizeRef = React.useRef(randomize)
+  React.useEffect(() => {
+    randomizeRef.current = randomize
+  }, [randomize])
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -104,7 +118,7 @@ export function useRandom() {
         }
 
         e.preventDefault()
-        randomize()
+        randomizeRef.current()
       }
     }
 
@@ -112,7 +126,7 @@ export function useRandom() {
     return () => {
       document.removeEventListener("keydown", down)
     }
-  }, [randomize])
+  }, [])
 
   return { randomize }
 }

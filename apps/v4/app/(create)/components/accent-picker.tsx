@@ -35,7 +35,7 @@ export function MenuAccentPicker({
               {currentAccent?.label}
             </div>
           </div>
-          <div className="pointer-events-none absolute top-1/2 right-4 flex size-4 -translate-y-1/2 items-center justify-center text-base text-foreground select-none md:right-2">
+          <div className="pointer-events-none absolute top-1/2 right-4 flex size-4 -translate-y-1/2 items-center justify-center text-base text-foreground select-none md:right-2.5">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="128"
