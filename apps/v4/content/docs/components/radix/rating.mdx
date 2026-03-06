@@ -1,0 +1,68 @@
+---
+title: Rating
+description: A star rating input for collecting feedback.
+base: radix
+component: true
+---
+
+<ComponentPreview styleName="radix-nova" name="rating-demo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add rating
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="rating"
+  title="components/ui/rating.tsx"
+  styleName="radix-nova"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { Rating } from "@/components/ui/rating"
+```
+
+```tsx
+<Rating defaultValue={3} />
+```
+
+## Examples
+
+### Sizes
+
+Use the `size` prop to change the icon size.
+
+<ComponentPreview styleName="radix-nova" name="rating-sizes" />
+
+## RTL
+
+To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview styleName="radix-nova" name="rating-demo" direction="rtl" />

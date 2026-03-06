@@ -1796,6 +1796,28 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "rating-demo",
+    type: "registry:example",
+    registryDependencies: ["rating", "label"],
+    files: [
+      {
+        path: "examples/rating-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "rating-sizes",
+    type: "registry:example",
+    registryDependencies: ["rating"],
+    files: [
+      {
+        path: "examples/rating-sizes.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "resizable-demo",
     type: "registry:example",
     registryDependencies: ["resizable"],

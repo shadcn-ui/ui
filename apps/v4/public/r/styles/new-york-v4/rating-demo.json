@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "rating-demo",
+  "registryDependencies": [
+    "rating",
+    "label"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/rating-demo.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { Label } from \"@/registry/new-york-v4/ui/label\"\nimport { Rating } from \"@/registry/new-york-v4/ui/rating\"\n\nexport default function RatingDemo() {\n  const [value, setValue] = React.useState(4)\n\n  return (\n    <div className=\"flex flex-col gap-4\">\n      <div className=\"flex items-center gap-3\">\n        <Label className=\"w-20 text-sm text-muted-foreground\">Rating</Label>\n        <Rating value={value} onValueChange={setValue} />\n        <span className=\"text-sm text-muted-foreground\">{value}/5</span>\n      </div>\n      <div className=\"flex items-center gap-3\">\n        <Label className=\"w-20 text-sm text-muted-foreground\">Read only</Label>\n        <Rating value={4} readOnly />\n      </div>\n      <div className=\"flex items-center gap-3\">\n        <Label className=\"w-20 text-sm text-muted-foreground\">Disabled</Label>\n        <Rating defaultValue={2} disabled />\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}
