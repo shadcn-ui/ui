@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@react-router/node": "7.12.0",
-    "@react-router/serve": "7.12.0",
+    "@react-router/serve": "7.13.1",
     "@remixicon/react": "^4.9.0",
     "@workspace/ui": "workspace:*",
     "isbot": "^5.1.31",
