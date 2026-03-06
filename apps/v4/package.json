@@ -46,7 +46,7 @@
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
     "date-fns": "^4.1.0",
-    "dedent": "^1.6.0",
+    "dedent": "^1.7.2",
     "embla-carousel-autoplay": "8.5.2",
     "embla-carousel-react": "8.5.2",
     "front-matter": "^4.0.2",
