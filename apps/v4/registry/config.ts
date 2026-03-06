@@ -94,7 +94,21 @@ export const designSystemConfigSchema = z
     radius: z
       .enum(RADII.map((r) => r.name) as [RadiusValue, ...RadiusValue[]])
       .default("default"),
-    template: z.enum(["next", "start", "vite"]).default("next").optional(),
+    template: z
+      .enum([
+        "next",
+        "next-monorepo",
+        "start",
+        "react-router",
+        "vite",
+        "vite-monorepo",
+        "react-router-monorepo",
+        "start-monorepo",
+        "astro",
+        "astro-monorepo",
+      ])
+      .default("next")
+      .optional(),
   })
   .refine(
     (data) => {
@@ -151,12 +165,12 @@ export const PRESETS: Preset[] = [
   {
     name: "radix-nova",
     title: "Nova (Radix)",
-    description: "Nova / Hugeicons / Geist",
+    description: "Nova / Lucide / Geist",
     base: "radix",
     style: "nova",
     baseColor: "neutral",
     theme: "neutral",
-    iconLibrary: "hugeicons",
+    iconLibrary: "lucide",
     font: "geist",
     item: "Item",
     rtl: false,
@@ -188,7 +202,7 @@ export const PRESETS: Preset[] = [
     style: "lyra",
     baseColor: "neutral",
     theme: "neutral",
-    iconLibrary: "hugeicons",
+    iconLibrary: "phosphor",
     font: "jetbrains-mono",
     item: "Item",
     rtl: false,
@@ -216,12 +230,12 @@ export const PRESETS: Preset[] = [
   {
     name: "base-nova",
     title: "Nova (Base)",
-    description: "Nova / Hugeicons / Geist",
+    description: "Nova / Lucide / Geist",
     base: "base",
     style: "nova",
     baseColor: "neutral",
     theme: "neutral",
-    iconLibrary: "hugeicons",
+    iconLibrary: "lucide",
     font: "geist",
     item: "Item",
     rtl: false,
@@ -253,7 +267,7 @@ export const PRESETS: Preset[] = [
     style: "lyra",
     baseColor: "neutral",
     theme: "neutral",
-    iconLibrary: "hugeicons",
+    iconLibrary: "phosphor",
     font: "jetbrains-mono",
     item: "Item",
     rtl: false,
@@ -354,10 +368,10 @@ export function buildRegistryTheme(config: DesignSystemConfig) {
     lightVars["accent-foreground"] = lightVars["primary-foreground"]
     darkVars.accent = darkVars.primary
     darkVars["accent-foreground"] = darkVars["primary-foreground"]
-    lightVars["sidebar-accent"] = lightVars.primary
-    lightVars["sidebar-accent-foreground"] = lightVars["primary-foreground"]
-    darkVars["sidebar-accent"] = darkVars.primary
-    darkVars["sidebar-accent-foreground"] = darkVars["primary-foreground"]
+    // lightVars["sidebar-accent"] = lightVars.primary
+    // lightVars["sidebar-accent-foreground"] = lightVars["primary-foreground"]
+    // darkVars["sidebar-accent"] = darkVars.primary
+    // darkVars["sidebar-accent-foreground"] = darkVars["primary-foreground"]
   }
 
   // Apply radius transformation.
@@ -433,7 +447,7 @@ export function buildRegistryBase(config: DesignSystemConfig) {
       },
     },
     ...(config.rtl && {
-      docs: `To learn how to set up the RTL provider and fonts for your app, see https://ui.shadcn.com/docs/rtl/${config.template ?? "next"}`,
+      docs: `To learn how to set up the RTL provider and fonts for your app, see https://ui.shadcn.com/docs/rtl/${config.template === "next-monorepo" ? "next" : (config.template ?? "next")}`,
     }),
   }
 }

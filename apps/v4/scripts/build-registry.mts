@@ -2,7 +2,7 @@ import { spawn } from "child_process"
 import { promises as fs } from "fs"
 import path from "path"
 import { rimraf } from "rimraf"
-import { registrySchema } from "shadcn/schema"
+import { registrySchema, type RegistryItem } from "shadcn/schema"
 import {
   createStyleMap,
   transformDirection,
@@ -13,6 +13,7 @@ import { Project, ScriptKind } from "ts-morph"
 
 import { getAllBlocks } from "@/lib/blocks"
 import { legacyStyles } from "@/registry/_legacy-styles"
+import { BASE_COLORS } from "@/registry/base-colors"
 import { BASES, type Base } from "@/registry/bases"
 import { PRESETS } from "@/registry/config"
 import { STYLES } from "@/registry/styles"
@@ -20,6 +21,20 @@ import { STYLES } from "@/registry/styles"
 // This is a list of styles that we want to check into tracking.
 // This is used by the v4 site.
 const WHITELISTED_STYLES = ["new-york-v4"]
+
+// Template directories to archive during build.
+const TEMPLATE_NAMES = [
+  "next-app",
+  "vite-app",
+  "react-router-app",
+  "start-app",
+  "astro-app",
+  "next-monorepo",
+  "vite-monorepo",
+  "react-router-monorepo",
+  "start-monorepo",
+  "astro-monorepo",
+]
 
 // Collect paths for batch prettier formatting at the end.
 const prettierPaths: string[] = []
@@ -86,6 +101,9 @@ try {
   console.log("\n⚙️ Building public/r/config.json...")
   await buildConfig()
 
+  console.log("\n📦 Building public/r/templates...")
+  await buildTemplates()
+
   // Copy UI to examples before cleanup.
   console.log("\n📋 Copying UI to examples...")
   await copyUIToExamples()
@@ -94,8 +112,14 @@ try {
   console.log("\n🔄 Building RTL examples...")
   await buildRtlExamples()
 
+  console.log("\n📦 Building public/r/index.json...")
+  await buildIndex()
+
   console.log("\n📋 Building public/r/registries.json...")
   await buildRegistriesJson()
+
+  console.log("\n🎨 Building public/r/colors...")
+  await buildColors()
 
   // Batch format all collected files with prettier at the end.
   if (prettierPaths.length > 0) {
@@ -599,6 +623,51 @@ async function copyUIToExamples() {
   )
 }
 
+async function buildIndex() {
+  // Import ui/_registry.ts from each base.
+  const baseUiRegistries = await Promise.all(
+    Array.from(BASES).map(async (base) => {
+      const { ui } = await import(
+        `../registry/bases/${base.name}/ui/_registry.ts`
+      )
+      return { baseName: base.name, items: ui as RegistryItem[] }
+    })
+  )
+
+  // Dedupe components by name and merge links across bases.
+  type IndexItem = Omit<RegistryItem, "meta"> & {
+    meta?: { links?: Record<string, RegistryItem["meta"]> }
+  }
+  const componentMap = new Map<string, IndexItem>()
+  for (const { baseName, items } of baseUiRegistries) {
+    for (const item of items) {
+      if (!componentMap.has(item.name)) {
+        const { meta, ...rest } = item
+        componentMap.set(item.name, {
+          ...rest,
+          ...(meta?.links
+            ? { meta: { links: { [baseName]: meta.links } } }
+            : {}),
+        })
+      } else if (item.meta?.links) {
+        const existing = componentMap.get(item.name)!
+        existing.meta = existing.meta || {}
+        existing.meta.links = existing.meta.links || {}
+        existing.meta.links[baseName] = item.meta.links
+      }
+    }
+  }
+
+  // Sort alphabetically by name.
+  const index = Array.from(componentMap.values()).sort((a, b) =>
+    a.name.localeCompare(b.name)
+  )
+
+  const outputPath = path.join(process.cwd(), "public/r/index.json")
+  await fs.writeFile(outputPath, JSON.stringify(index, null, 2))
+  prettierPaths.push(outputPath)
+}
+
 async function buildRegistriesJson() {
   const directoryPath = path.join(process.cwd(), "registry/directory.json")
   const directoryContent = await fs.readFile(directoryPath, "utf8")
@@ -675,4 +744,101 @@ async function batchPrettier(paths: string[]) {
     proc.on("close", () => resolve())
     proc.on("error", reject)
   })
+}
+
+async function buildTemplates() {
+  const templatesDir = path.resolve(process.cwd(), "../../templates")
+  const outputDir = path.join(process.cwd(), "public/r/templates")
+  await fs.mkdir(outputDir, { recursive: true })
+
+  await Promise.all(
+    TEMPLATE_NAMES.map(async (name) => {
+      const templatePath = path.join(templatesDir, name)
+
+      // Verify the template directory exists.
+      try {
+        await fs.access(templatePath)
+      } catch {
+        console.log(`   ⚠️ templates/${name} not found, skipping`)
+        return
+      }
+
+      const outputPath = path.join(outputDir, `${name}.tar.gz`)
+
+      await new Promise<void>((resolve, reject) => {
+        const proc = spawn(
+          "tar",
+          [
+            "-czf",
+            outputPath,
+            "--exclude",
+            "node_modules",
+            "--exclude",
+            ".git",
+            "--exclude",
+            "pnpm-lock.yaml",
+            "-C",
+            templatesDir,
+            name,
+          ],
+          { cwd: process.cwd(), stdio: "pipe" }
+        )
+        let stderr = ""
+        proc.stderr?.on("data", (data) => (stderr += data))
+        proc.on("close", (code) => {
+          if (code !== 0) {
+            reject(new Error(`tar exited with code ${code}: ${stderr}`))
+          } else {
+            resolve()
+          }
+        })
+        proc.on("error", reject)
+      })
+
+      // Zero out the gzip mtime header (bytes 4-7) for deterministic output.
+      const buf = await fs.readFile(outputPath)
+      buf[4] = buf[5] = buf[6] = buf[7] = 0
+      await fs.writeFile(outputPath, buf)
+
+      console.log(`   ✅ ${name}.tar.gz`)
+    })
+  )
+}
+
+async function buildColors() {
+  const colorsTargetPath = path.join(process.cwd(), "public/r/colors")
+  await fs.mkdir(colorsTargetPath, { recursive: true })
+
+  await Promise.all(
+    BASE_COLORS.map(async (baseColor) => {
+      const light = (baseColor.cssVars?.light ?? {}) as Record<string, string>
+      const dark = (baseColor.cssVars?.dark ?? {}) as Record<string, string>
+
+      const cssVarKeys = Object.keys(light).filter(
+        (key) => !key.startsWith("sidebar")
+      )
+
+      const rootVars = cssVarKeys
+        .map((key) => `    --${key}: ${light[key]};`)
+        .join("\n")
+      const darkVars = cssVarKeys
+        .filter((key) => dark[key])
+        .map((key) => `    --${key}: ${dark[key]};`)
+        .join("\n")
+
+      const payload = {
+        inlineColors: { light, dark },
+        cssVars: { light, dark },
+        cssVarsV4: baseColor.cssVars,
+        inlineColorsTemplate:
+          "@tailwind base;\n@tailwind components;\n@tailwind utilities;\n  ",
+        cssVarsTemplate: `@tailwind base;\n@tailwind components;\n@tailwind utilities;\n\n@layer base {\n  :root {\n${rootVars}\n  }\n\n  .dark {\n${darkVars}\n  }\n}\n\n@layer base {\n  * {\n    @apply border-border;\n  }\n  body {\n    @apply bg-background text-foreground;\n  }\n}`,
+      }
+
+      const outputPath = path.join(colorsTargetPath, `${baseColor.name}.json`)
+      await fs.writeFile(outputPath, JSON.stringify(payload, null, 2))
+      prettierPaths.push(outputPath)
+      console.log(`   ✅ ${baseColor.name}.json`)
+    })
+  )
 }
