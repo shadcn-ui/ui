@@ -14,7 +14,7 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.1.18",
     "@tanstack/react-router": "^1.132.0",
-    "@tanstack/react-start": "^1.132.0",
+    "@tanstack/react-start": "^1.166.2",
     "@tanstack/router-plugin": "^1.132.0",
     "@workspace/ui": "workspace:*",
     "nitro": "latest",
