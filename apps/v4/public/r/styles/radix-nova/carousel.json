@@ -14,5 +14,12 @@
       "type": "registry:ui"
     }
   ],
+  "meta": {
+    "links": {
+      "docs": "https://ui.shadcn.com/docs/components/radix/carousel",
+      "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/carousel-example.tsx",
+      "api": "https://www.embla-carousel.com/get-started/react"
+    }
+  },
   "type": "registry:ui"
 }

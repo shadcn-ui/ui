@@ -29,12 +29,20 @@ const TOP_LEVEL_SECTIONS = [
     href: "/docs/installation",
   },
   {
-    name: "Directory",
-    href: "/docs/directory",
+    name: "Theming",
+    href: "/docs/theming",
+  },
+  {
+    name: "CLI",
+    href: "/docs/cli",
   },
   {
     name: "RTL",
     href: "/docs/rtl",
+  },
+  {
+    name: "Skills",
+    href: "/docs/skills",
   },
   {
     name: "MCP Server",
@@ -54,7 +62,7 @@ const TOP_LEVEL_SECTIONS = [
   },
 ]
 const EXCLUDED_SECTIONS = ["installation", "dark-mode", "changelog", "rtl"]
-const EXCLUDED_PAGES = ["/docs", "/docs/changelog", "/docs/rtl"]
+const EXCLUDED_PAGES = ["/docs", "/docs/changelog", "/docs/rtl", "/docs/new"]
 
 export function DocsSidebar({
   tree,
@@ -70,8 +78,8 @@ export function DocsSidebar({
       {...props}
     >
       <div className="h-9" />
-      <div className="absolute top-8 z-10 h-8 w-(--sidebar-menu-width) shrink-0 bg-gradient-to-b from-background via-background/80 to-background/50 blur-xs" />
-      <div className="absolute top-12 right-2 bottom-0 hidden h-full w-px bg-gradient-to-b from-transparent via-border to-transparent lg:flex" />
+      <div className="absolute top-8 z-10 h-8 w-(--sidebar-menu-width) shrink-0 bg-linear-to-b from-background via-background/80 to-background/50 blur-xs" />
+      <div className="absolute top-12 right-2 bottom-0 hidden h-full w-px bg-linear-to-b from-transparent via-border to-transparent lg:flex" />
       <SidebarContent className="mx-auto no-scrollbar w-(--sidebar-menu-width) overflow-x-hidden px-2">
         <SidebarGroup className="pt-6">
           <SidebarGroupLabel className="font-medium text-muted-foreground">
@@ -160,7 +168,7 @@ export function DocsSidebar({
             </SidebarGroup>
           )
         })}
-        <div className="sticky -bottom-1 z-10 h-16 shrink-0 bg-gradient-to-t from-background via-background/80 to-background/50 blur-xs" />
+        <div className="sticky -bottom-1 z-10 h-16 shrink-0 bg-linear-to-t from-background via-background/80 to-background/50 blur-xs" />
       </SidebarContent>
     </Sidebar>
   )

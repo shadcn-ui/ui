@@ -5,6 +5,7 @@ import { LRUCache } from "lru-cache"
 import { registryItemSchema, type registryItemFileSchema } from "shadcn/schema"
 import { type z } from "zod"
 
+import { readFileFromRoot } from "@/lib/read-file"
 import { Index as StylesIndex } from "@/registry/__index__"
 import { BASES } from "@/registry/bases"
 import { Index as BasesIndex } from "@/registry/bases/__index__"
@@ -43,8 +44,7 @@ export async function getDemoItem(name: string, styleName: string) {
     return null
   }
 
-  const filePath = path.join(process.cwd(), demo.filePath)
-  const content = await fs.readFile(filePath, "utf-8")
+  const content = await readFileFromRoot(demo.filePath)
 
   return {
     name: demo.name,

@@ -142,6 +142,7 @@ export const registryItemFontSchema = z.object({
   variable: z.string(),
   weight: z.array(z.string()).optional(),
   subsets: z.array(z.string()).optional(),
+  selector: z.string().optional(),
 })
 
 // Common fields shared by all registry items.
