@@ -961,8 +961,8 @@
   },
   {
     "name": "@fluid",
-    "homepage": "https://fluid-functionalism.vercel.app",
-    "url": "https://fluid-functionalism.vercel.app/r/{name}.json",
+    "homepage": "https://www.fluidfunctionalism.com",
+    "url": "https://www.fluidfunctionalism.com/r/{name}.json",
     "description": "Fluid components used exclusively in service of functional clarity. Proximity hover, spring animations, font-weight transitions, and animated focus rings.",
     "logo": "<svg width='40' height='40' viewBox='0 0 40 40' fill='none' xmlns='http://www.w3.org/2000/svg'><rect width='40' height='40' rx='8' fill='var(--foreground)'/><text x='20' y='26' text-anchor='middle' font-size='20' font-weight='700' font-family='system-ui' fill='var(--background)'>F</text></svg>"
   }
