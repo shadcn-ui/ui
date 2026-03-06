@@ -1,5 +1,3 @@
-"use client"
-
 import * as React from "react"
 import { cn } from "@/examples/base/lib/utils"
 import { Select as SelectPrimitive } from "@base-ui/react/select"
