@@ -7,6 +7,14 @@
 - Empty states use Empty component
 - Toast notifications use sonner
 - Choosing between overlay components
+- Dialog, Sheet, and Drawer always need a Title
+- Card structure
+- Button has no isPending or isLoading prop
+- TabsTrigger must be inside TabsList
+- Avatar always needs AvatarFallback
+- Use Separator instead of raw hr or border divs
+- Use Skeleton for loading placeholders
+- Use Badge instead of custom styled spans
 
 ---
 
@@ -48,30 +56,10 @@ This applies to all group-based components:
 
 ## Callouts use Alert
 
-Don't build custom styled `div` containers for info/warning messages.
-
-**Incorrect:**
-
 ```tsx
-<div className="rounded-md border border-yellow-200 bg-yellow-50 p-4">
-  <p className="text-sm font-medium text-yellow-800">Warning</p>
-  <p className="text-sm text-yellow-700">Something needs attention.</p>
-</div>
-```
-
-**Correct:**
-
-```tsx
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
-
 <Alert>
   <AlertTitle>Warning</AlertTitle>
   <AlertDescription>Something needs attention.</AlertDescription>
-</Alert>
-
-<Alert variant="destructive">
-  <AlertTitle>Error</AlertTitle>
-  <AlertDescription>Something went wrong.</AlertDescription>
 </Alert>
 ```
 
@@ -79,24 +67,7 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 
 ## Empty states use Empty component
 
-Don't build custom empty state markup.
-
-**Incorrect:**
-
 ```tsx
-<div className="flex flex-col items-center justify-center py-12 text-center">
-  <FolderIcon className="size-10 text-muted-foreground" />
-  <h3 className="mt-4 text-lg font-semibold">No projects yet</h3>
-  <p className="mt-2 text-sm text-muted-foreground">Get started by creating a new project.</p>
-  <Button className="mt-4">Create Project</Button>
-</div>
-```
-
-**Correct:**
-
-```tsx
-import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from "@/components/ui/empty"
-
 <Empty>
   <EmptyHeader>
     <EmptyMedia variant="icon"><FolderIcon /></EmptyMedia>
@@ -113,22 +84,6 @@ import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTi
 
 ## Toast notifications use sonner
 
-Don't build custom toast/notification markup.
-
-**Incorrect:**
-
-```tsx
-const [showToast, setShowToast] = useState(false)
-
-{showToast && (
-  <div className="fixed bottom-4 right-4 rounded-md bg-primary p-4 text-primary-foreground">
-    Changes saved.
-  </div>
-)}
-```
-
-**Correct:**
-
 ```tsx
 import { toast } from "sonner"
 
@@ -143,40 +98,6 @@ toast("File deleted.", {
 
 ## Choosing between overlay components
 
-Don't default to `Dialog` for everything. **When recommending an overlay, always show the full component structure with all required subcomponents.**
-
-**Incorrect:**
-
-```tsx
-<Dialog>
-  <DialogTrigger>Delete</DialogTrigger>
-  <DialogContent>
-    <p>Are you sure?</p>
-    <Button variant="destructive" onClick={handleDelete}>Delete</Button>
-  </DialogContent>
-</Dialog>
-```
-
-**Correct:**
-
-```tsx
-<AlertDialog>
-  <AlertDialogTrigger>Delete</AlertDialogTrigger>
-  <AlertDialogContent>
-    <AlertDialogHeader>
-      <AlertDialogTitle>Are you sure?</AlertDialogTitle>
-      <AlertDialogDescription>This action cannot be undone.</AlertDialogDescription>
-    </AlertDialogHeader>
-    <AlertDialogFooter>
-      <AlertDialogCancel>Cancel</AlertDialogCancel>
-      <AlertDialogAction onClick={handleDelete}>Delete</AlertDialogAction>
-    </AlertDialogFooter>
-  </AlertDialogContent>
-</AlertDialog>
-```
-
-**Quick reference:**
-
 | Use case | Component |
 |----------|-----------|
 | Focused task that requires input | `Dialog` |
@@ -185,3 +106,90 @@ Don't default to `Dialog` for everything. **When recommending an overlay, always
 | Mobile-first bottom panel | `Drawer` |
 | Quick info on hover | `HoverCard` |
 | Small contextual content on click | `Popover` |
+
+---
+
+## Dialog, Sheet, and Drawer always need a Title
+
+`DialogTitle`, `SheetTitle`, `DrawerTitle` are required for accessibility. Use `className="sr-only"` if visually hidden.
+
+```tsx
+<DialogContent>
+  <DialogHeader>
+    <DialogTitle>Edit Profile</DialogTitle>
+    <DialogDescription>Update your profile.</DialogDescription>
+  </DialogHeader>
+  ...
+</DialogContent>
+```
+
+---
+
+## Card structure
+
+Use full composition — don't dump everything into `CardContent`:
+
+```tsx
+<Card>
+  <CardHeader>
+    <CardTitle>Team Members</CardTitle>
+    <CardDescription>Manage your team.</CardDescription>
+  </CardHeader>
+  <CardContent>...</CardContent>
+  <CardFooter>
+    <Button>Invite</Button>
+  </CardFooter>
+</Card>
+```
+
+---
+
+## Button has no isPending or isLoading prop
+
+Compose with `Spinner` + `data-icon` + `disabled`:
+
+```tsx
+<Button disabled>
+  <Spinner data-icon="inline-start" />
+  Saving...
+</Button>
+```
+
+---
+
+## TabsTrigger must be inside TabsList
+
+Never render `TabsTrigger` directly inside `Tabs` — always wrap in `TabsList`:
+
+```tsx
+<Tabs defaultValue="account">
+  <TabsList>
+    <TabsTrigger value="account">Account</TabsTrigger>
+    <TabsTrigger value="password">Password</TabsTrigger>
+  </TabsList>
+  <TabsContent value="account">...</TabsContent>
+</Tabs>
+```
+
+---
+
+## Avatar always needs AvatarFallback
+
+Always include `AvatarFallback` for when the image fails to load:
+
+```tsx
+<Avatar>
+  <AvatarImage src="/avatar.png" alt="User" />
+  <AvatarFallback>JD</AvatarFallback>
+</Avatar>
+```
+
+---
+
+## Use existing components instead of custom markup
+
+| Instead of | Use |
+|---|---|
+| `<hr>` or `<div className="border-t">` | `<Separator />` |
+| `<div className="animate-pulse">` with styled divs | `<Skeleton className="h-4 w-3/4" />` |
+| `<span className="rounded-full bg-green-100 ...">` | `<Badge variant="secondary">` |
