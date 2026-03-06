@@ -2,7 +2,7 @@
 
 <button type="button" role="switch"
         data-slot="switch"
-        data-size="@Size"
+        data-size="@SizeValue"
         aria-checked="@Checked.ToString().ToLower()"
         data-checked="@(Checked ? "" : null)"
         class="@ComputedClass"
@@ -13,16 +13,28 @@
 </button>
 
 @code {
+    /// <summary>Whether the switch is checked.</summary>
     [Parameter] public bool Checked { get; set; }
+
+    /// <summary>Callback when checked state changes.</summary>
     [Parameter] public EventCallback<bool> CheckedChanged { get; set; }
+
+    /// <summary>Whether the switch is disabled.</summary>
     [Parameter] public bool Disabled { get; set; }
-    [Parameter] public string Size { get; set; } = "default";
+
+    /// <summary>Size of the switch.</summary>
+    [Parameter] public ComponentSize Size { get; set; } = ComponentSize.Default;
+
+    /// <summary>Additional CSS classes.</summary>
     [Parameter] public string? Class { get; set; }
+
     [Parameter(CaptureUnmatchedValues = true)] public Dictionary<string, object>? AdditionalAttributes { get; set; }
+
+    private string SizeValue => Size == ComponentSize.Sm ? "sm" : "default";
 
     private string ComputedClass => CssUtils.Cn(
         "cn-switch peer group/switch relative inline-flex items-center transition-all outline-none",
-        Disabled ? "cursor-not-allowed opacity-50" : "",
+        CssUtils.CnDisabled(Disabled),
         Class
     );
 

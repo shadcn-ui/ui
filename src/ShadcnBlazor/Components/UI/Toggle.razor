@@ -12,25 +12,40 @@
 
 @code {
     [Parameter] public RenderFragment? ChildContent { get; set; }
+
+    /// <summary>Whether the toggle is pressed.</summary>
     [Parameter] public bool Pressed { get; set; }
+
+    /// <summary>Callback when pressed state changes.</summary>
     [Parameter] public EventCallback<bool> PressedChanged { get; set; }
+
+    /// <summary>Visual variant of the toggle.</summary>
     [Parameter] public ToggleVariant Variant { get; set; } = ToggleVariant.Default;
+
+    /// <summary>Size of the toggle.</summary>
     [Parameter] public ToggleSize Size { get; set; } = ToggleSize.Default;
+
+    /// <summary>Whether the toggle is disabled.</summary>
     [Parameter] public bool Disabled { get; set; }
+
+    /// <summary>Additional CSS classes.</summary>
     [Parameter] public string? Class { get; set; }
+
     [Parameter(CaptureUnmatchedValues = true)] public Dictionary<string, object>? AdditionalAttributes { get; set; }
 
     private string ComputedClass => CssUtils.Cn(
         "cn-toggle inline-flex items-center justify-center whitespace-nowrap outline-none",
-        Variant == ToggleVariant.Outline ? "cn-toggle-variant-outline" : "",
-        Size switch
-        {
-            ToggleSize.Sm => "cn-toggle-size-sm",
-            ToggleSize.Lg => "cn-toggle-size-lg",
-            _ => "cn-toggle-size-default"
-        },
+        CssUtils.CnIf(Variant == ToggleVariant.Outline, "cn-toggle-variant-outline"),
+        SizeClass,
         Class
     );
+
+    private string SizeClass => Size switch
+    {
+        ToggleSize.Sm => "cn-toggle-size-sm",
+        ToggleSize.Lg => "cn-toggle-size-lg",
+        _ => "cn-toggle-size-default"
+    };
 
     private async Task HandleClick()
     {

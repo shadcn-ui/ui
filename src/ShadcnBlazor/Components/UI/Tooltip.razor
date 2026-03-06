@@ -12,7 +12,7 @@
     {
         <div data-slot="tooltip-content"
              class="@CssUtils.Cn("cn-tooltip-content absolute z-50 w-fit max-w-xs bg-foreground text-background", Class)"
-             style="@PositionStyle"
+             style="@PositionUtils.GetPositionStyle(Side)"
              role="tooltip">
             @ChildContent
         </div>
@@ -22,21 +22,17 @@
 @code {
     [Parameter] public RenderFragment? Trigger { get; set; }
     [Parameter] public RenderFragment? ChildContent { get; set; }
-    [Parameter] public string Side { get; set; } = "top";
+
+    /// <summary>Side where the tooltip appears.</summary>
+    [Parameter] public Side Side { get; set; } = Side.Top;
+
+    /// <summary>Additional CSS classes.</summary>
     [Parameter] public string? Class { get; set; }
+
     [Parameter(CaptureUnmatchedValues = true)] public Dictionary<string, object>? AdditionalAttributes { get; set; }
 
     private bool _visible;
 
     private void Show() => _visible = true;
     private void Hide() => _visible = false;
-
-    private string PositionStyle => Side switch
-    {
-        "top" => "bottom: 100%; left: 50%; transform: translateX(-50%); margin-bottom: 4px;",
-        "bottom" => "top: 100%; left: 50%; transform: translateX(-50%); margin-top: 4px;",
-        "left" => "right: 100%; top: 50%; transform: translateY(-50%); margin-right: 4px;",
-        "right" => "left: 100%; top: 50%; transform: translateY(-50%); margin-left: 4px;",
-        _ => "bottom: 100%; left: 50%; transform: translateX(-50%); margin-bottom: 4px;"
-    };
 }

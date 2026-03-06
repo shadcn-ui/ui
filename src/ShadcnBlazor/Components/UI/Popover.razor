@@ -9,7 +9,7 @@
     {
         <div data-slot="popover-content"
              class="@CssUtils.Cn("cn-popover-content absolute z-50 w-72 outline-none", Class)"
-             style="@PositionStyle">
+             style="@PositionUtils.GetPositionStyle(Side, Align)">
             @ChildContent
         </div>
     }
@@ -18,21 +18,19 @@
 @code {
     [Parameter] public RenderFragment? Trigger { get; set; }
     [Parameter] public RenderFragment? ChildContent { get; set; }
-    [Parameter] public string Side { get; set; } = "bottom";
-    [Parameter] public string Align { get; set; } = "center";
+
+    /// <summary>Side where the popover appears.</summary>
+    [Parameter] public Side Side { get; set; } = Side.Bottom;
+
+    /// <summary>Alignment of the popover.</summary>
+    [Parameter] public Alignment Align { get; set; } = Alignment.Center;
+
+    /// <summary>Additional CSS classes.</summary>
     [Parameter] public string? Class { get; set; }
+
     [Parameter(CaptureUnmatchedValues = true)] public Dictionary<string, object>? AdditionalAttributes { get; set; }
 
     private bool _open;
 
     private void ToggleOpen() => _open = !_open;
-
-    private string PositionStyle => Side switch
-    {
-        "top" => "bottom: 100%; margin-bottom: 4px;",
-        "bottom" => "top: 100%; margin-top: 4px;",
-        "left" => "right: 100%; margin-right: 4px;",
-        "right" => "left: 100%; margin-left: 4px;",
-        _ => "top: 100%; margin-top: 4px;"
-    };
 }

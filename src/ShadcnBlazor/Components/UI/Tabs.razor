@@ -1,7 +1,7 @@
 @* Tabs component - Blazor port of shadcn/ui Tabs *@
 
 <div data-slot="tabs" data-orientation="@Orientation"
-     class="@CssUtils.Cn("cn-tabs group/tabs flex", Orientation == "horizontal" ? "flex-col" : "flex-row", Class)"
+     class="@CssUtils.Cn("cn-tabs group/tabs flex", Orientation == Orientation.Horizontal ? "flex-col" : "flex-row", Class)"
      @attributes="AdditionalAttributes">
     @ChildContent
 </div>
@@ -10,7 +10,8 @@
     [Parameter] public RenderFragment? ChildContent { get; set; }
     [Parameter] public string? ActiveTab { get; set; }
     [Parameter] public EventCallback<string> ActiveTabChanged { get; set; }
-    [Parameter] public string Orientation { get; set; } = "horizontal";
+    /// <summary>Orientation of the tabs.</summary>
+    [Parameter] public Orientation Orientation { get; set; } = Orientation.Horizontal;
     [Parameter] public string? Class { get; set; }
     [Parameter(CaptureUnmatchedValues = true)] public Dictionary<string, object>? AdditionalAttributes { get; set; }
 

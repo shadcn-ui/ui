@@ -2,121 +2,178 @@
 
 A .NET Blazor port of [shadcn/ui](https://ui.shadcn.com) — beautifully designed, accessible UI components built with **Tailwind CSS only** (no Bootstrap). Targeting **.NET 10**.
 
+Available as a **NuGet package** (`ShadcnBlazor`) for easy integration into any Blazor project.
+
 ## Prerequisites
 
 - [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0)
-- Node.js (for Tailwind CSS build)
+- Node.js (for Tailwind CSS build, demo only)
 
-## Quick Start
+## Installation
+
+### NuGet Package
 
 ```bash
-# Clone the repository
-git clone <repo-url>
-cd shadcn-ui
-
-# Navigate to the Blazor project
-cd src/ShadcnBlazor
-
-# Restore and run
-dotnet restore
-dotnet run
+dotnet add package ShadcnBlazor
 ```
 
-The app will be available at `https://localhost:7100`.
+### Setup
+
+1. Add the CSS reference in your `App.razor` or `_Host.cshtml`:
+
+```html
+<link rel="stylesheet" href="_content/ShadcnBlazor/css/shadcn.css" />
+```
+
+2. Add the using directive in your `_Imports.razor`:
+
+```razor
+@using ShadcnBlazor.Components.UI
+```
+
+3. Start using components:
+
+```razor
+<Button Variant="ButtonVariant.Outline">Click me</Button>
+```
 
 ## Project Structure
 
 ```
 shadcn-ui/
-├── shadcn/                          # Original React shadcn/ui source (reference)
+├── shadcn/                              # Original React shadcn/ui source (reference)
 ├── src/
-│   └── ShadcnBlazor/
-│       ├── ShadcnBlazor.csproj      # .NET 10 Blazor project
-│       ├── Program.cs               # App entry point
-│       ├── _Imports.razor            # Global using directives
-│       ├── Properties/
-│       │   └── launchSettings.json
-│       ├── Components/
-│       │   ├── App.razor             # Root HTML document
-│       │   ├── Routes.razor          # Router configuration
-│       │   ├── Layout/
-│       │   │   ├── MainLayout.razor  # Main layout with NavBar
-│       │   │   └── NavBar.razor      # Responsive navigation bar
-│       │   ├── Pages/
-│       │   │   ├── Home.razor        # Demo showcase page
-│       │   │   ├── Components.razor  # Component catalog
-│       │   │   └── Examples.razor    # Interactive examples
-│       │   └── UI/                   # All UI components
-│       │       ├── CssUtils.cs       # cn() utility (class merging)
-│       │       ├── Button.razor
-│       │       ├── Input.razor
-│       │       ├── Card.razor
-│       │       ├── ...               # 50+ components
-│       │       └── Spinner.razor
-│       └── wwwroot/
-│           └── css/
-│               └── app.css           # Tailwind CSS + design tokens
+│   ├── ShadcnBlazor/                    # Razor Class Library (NuGet package)
+│   │   ├── ShadcnBlazor.csproj          # Microsoft.NET.Sdk.Razor + NuGet metadata
+│   │   ├── _Imports.razor               # Library-level imports
+│   │   ├── Components/
+│   │   │   └── UI/                      # All UI components
+│   │   │       ├── Enums.cs             # Consolidated enums (variants, sizes, etc.)
+│   │   │       ├── CssUtils.cs          # cn() utility (class merging)
+│   │   │       ├── PositionUtils.cs     # Shared positioning logic
+│   │   │       ├── Button.razor
+│   │   │       ├── ...                  # 50+ components
+│   │   │       └── Spinner.razor
+│   │   └── wwwroot/
+│   │       └── css/
+│   │           └── shadcn.css           # Tailwind CSS + design tokens
+│   └── ShadcnBlazor.Demo/              # Demo web application
+│       ├── ShadcnBlazor.Demo.csproj     # .NET 10 Blazor Web App
+│       ├── Program.cs                   # App entry point
+│       └── Components/
+│           ├── App.razor                # Root HTML document
+│           ├── Routes.razor             # Router configuration
+│           ├── Layout/
+│           │   ├── MainLayout.razor     # Main layout with NavBar
+│           │   └── NavBar.razor         # Responsive navigation bar
+│           └── Pages/
+│               ├── Home.razor           # Demo showcase page
+│               ├── Components.razor     # Component catalog
+│               └── Examples.razor       # Interactive examples
 ├── README.md
 ├── LICENSE.md
 └── CONTRIBUTING.md
 ```
 
+## Running the Demo
+
+```bash
+cd src/ShadcnBlazor.Demo
+dotnet restore
+dotnet run
+```
+
+## Building the NuGet Package
+
+```bash
+cd src/ShadcnBlazor
+dotnet pack -c Release
+```
+
+The `.nupkg` file will be in `bin/Release/`.
+
 ## Available Components (50+)
 
 ### Form Controls
-| Component | File | Description |
-|-----------|------|-------------|
-| `<Button>` | `Button.razor` | Button with variants (default, outline, secondary, ghost, destructive, link) and sizes |
-| `<Input>` | `Input.razor` | Text input with two-way binding |
-| `<Textarea>` | `Textarea.razor` | Multi-line text input |
-| `<Label>` | `Label.razor` | Accessible form label |
-| `<Checkbox>` | `Checkbox.razor` | Checkbox with `@bind-Checked` |
-| `<Switch>` | `Switch.razor` | Toggle switch with `@bind-Checked` |
-| `<RadioGroup>` | `RadioGroup.razor` | Radio button group with `@bind-Value` |
-| `<Select>` | `Select.razor` | Dropdown select with `<SelectItem>` |
-| `<Slider>` | `Slider.razor` | Range slider with `@bind-Value` |
-| `<Toggle>` | `Toggle.razor` | Toggle button with `@bind-Pressed` |
+| Component | Description |
+|-----------|-------------|
+| `<Button>` | Button with variants (`ButtonVariant`) and sizes (`ButtonSize`) |
+| `<Input>` | Text input with two-way binding |
+| `<Textarea>` | Multi-line text input |
+| `<Label>` | Accessible form label |
+| `<Checkbox>` | Checkbox with `@bind-Checked` |
+| `<Switch>` | Toggle switch with `@bind-Checked` and `ComponentSize` |
+| `<RadioGroup>` | Radio button group with `@bind-Value` |
+| `<Select>` | Dropdown select with `<SelectItem>` and `ComponentSize` |
+| `<Slider>` | Range slider with `@bind-Value` |
+| `<Toggle>` | Toggle button with `@bind-Pressed`, `ToggleVariant`, `ToggleSize` |
 
 ### Data Display
-| Component | File | Description |
-|-----------|------|-------------|
-| `<Card>` | `Card.razor` | Card container with Header, Title, Description, Content, Footer, Action |
-| `<Badge>` | `Badge.razor` | Status badge with variants |
-| `<Alert>` | `Alert.razor` | Alert message with Title and Description |
-| `<Avatar>` | `Avatar.razor` | User avatar with image/fallback |
-| `<AvatarGroup>` | `AvatarGroup.razor` | Grouped avatars |
-| `<Table>` | `Table.razor` | Data table with Header, Body, Row, Head, Cell |
-| `<Skeleton>` | `Skeleton.razor` | Loading placeholder |
-| `<Spinner>` | `Spinner.razor` | Animated loading indicator |
-| `<Progress>` | `Progress.razor` | Progress bar |
-| `<Kbd>` | `Kbd.razor` | Keyboard shortcut display |
-| `<Empty>` | `Empty.razor` | Empty state placeholder |
-| `<AspectRatio>` | `AspectRatio.razor` | Content with fixed aspect ratio |
+| Component | Description |
+|-----------|-------------|
+| `<Card>` | Card container with Header, Title, Description, Content, Footer, Action. Supports `ComponentSize` |
+| `<Badge>` | Status badge with `BadgeVariant` |
+| `<Alert>` | Alert message with `AlertVariant`, Title and Description |
+| `<Avatar>` | User avatar with image/fallback and `ComponentSize` |
+| `<AvatarGroup>` | Grouped avatars |
+| `<Table>` | Data table with Header, Body, Row, Head, Cell |
+| `<Skeleton>` | Loading placeholder |
+| `<Spinner>` | Animated loading indicator with `ComponentSize` |
+| `<Progress>` | Progress bar |
+| `<Kbd>` | Keyboard shortcut display |
+| `<Empty>` | Empty state placeholder |
+| `<AspectRatio>` | Content with fixed aspect ratio |
 
 ### Overlay & Dialog
-| Component | File | Description |
-|-----------|------|-------------|
-| `<Dialog>` | `Dialog.razor` | Modal dialog with `@bind-Open` |
-| `<AlertDialog>` | `AlertDialog.razor` | Confirmation dialog |
-| `<Sheet>` | `Sheet.razor` | Slide-out panel (top/right/bottom/left) |
-| `<Popover>` | `Popover.razor` | Floating content panel |
-| `<Tooltip>` | `Tooltip.razor` | Hover information tooltip |
-| `<DropdownMenu>` | `DropdownMenu.razor` | Dropdown menu with items |
-| `<ContextMenu>` | `ContextMenu.razor` | Right-click context menu |
-| `<HoverCard>` | `HoverCard.razor` | Hover-triggered preview card |
+| Component | Description |
+|-----------|-------------|
+| `<Dialog>` | Modal dialog with `@bind-Open` |
+| `<AlertDialog>` | Confirmation dialog |
+| `<Sheet>` | Slide-out panel with `Side` enum (Top/Right/Bottom/Left) |
+| `<Popover>` | Floating content panel with `Side` and `Alignment` |
+| `<Tooltip>` | Hover tooltip with `Side` positioning |
+| `<DropdownMenu>` | Dropdown menu with `Side` and `Alignment` |
+| `<ContextMenu>` | Right-click context menu |
+| `<HoverCard>` | Hover-triggered preview card with `Side` and `Alignment` |
 
 ### Navigation & Layout
-| Component | File | Description |
-|-----------|------|-------------|
-| `<NavBar>` | `NavBar.razor` | Responsive navigation bar |
-| `<Tabs>` | `Tabs.razor` | Tab navigation with `@bind-ActiveTab` |
-| `<Accordion>` | `Accordion.razor` | Collapsible content sections |
-| `<Breadcrumb>` | `Breadcrumb.razor` | Path navigation |
-| `<Pagination>` | `Pagination.razor` | Page navigation |
-| `<Separator>` | `Separator.razor` | Visual divider (horizontal/vertical) |
-| `<Collapsible>` | `Collapsible.razor` | Expandable/collapsible section |
-| `<ScrollArea>` | `ScrollArea.razor` | Custom scrollable container |
-| `<Sidebar>` | `Sidebar.razor` | Side navigation with groups and menus |
+| Component | Description |
+|-----------|-------------|
+| `<Tabs>` | Tab navigation with `@bind-ActiveTab` and `Orientation` |
+| `<Accordion>` | Collapsible content sections (single/multiple mode) |
+| `<Breadcrumb>` | Path navigation |
+| `<Pagination>` | Page navigation |
+| `<Separator>` | Visual divider with `Orientation` (Horizontal/Vertical) |
+| `<Collapsible>` | Expandable/collapsible section |
+| `<ScrollArea>` | Custom scrollable container |
+| `<Sidebar>` | Side navigation with groups and menus |
+
+## Enum Types
+
+All variants and sizes use strongly-typed C# enums instead of magic strings:
+
+```csharp
+// Button
+ButtonVariant: Default, Outline, Secondary, Ghost, Destructive, Link
+ButtonSize: Default, Xs, Sm, Lg, Icon, IconXs, IconSm, IconLg
+
+// Badge
+BadgeVariant: Default, Secondary, Destructive, Outline, Ghost, Link
+
+// Alert
+AlertVariant: Default, Destructive
+
+// Toggle
+ToggleVariant: Default, Outline
+ToggleSize: Default, Sm, Lg
+
+// Shared
+Side: Top, Bottom, Left, Right
+Alignment: Start, Center, End
+Orientation: Horizontal, Vertical
+ComponentSize: Default, Sm, Lg
+TabsListVariant: Default, Line
+```
 
 ## Usage Examples
 
@@ -167,21 +224,20 @@ shadcn-ui/
 }
 ```
 
-### Tabs
+### Sheet
 
 ```razor
-<Tabs @bind-ActiveTab="activeTab">
-    <TabsList>
-        <TabsTrigger Value="overview">Overview</TabsTrigger>
-        <TabsTrigger Value="analytics">Analytics</TabsTrigger>
-    </TabsList>
-    <TabsContent Value="overview">
-        <p>Overview content here.</p>
-    </TabsContent>
-    <TabsContent Value="analytics">
-        <p>Analytics content here.</p>
-    </TabsContent>
-</Tabs>
+<Button OnClick="() => sheetOpen = true">Open Menu</Button>
+
+<Sheet @bind-Open="sheetOpen" Side="Side.Left">
+    <SheetHeader>
+        <SheetTitle>Navigation</SheetTitle>
+    </SheetHeader>
+    <nav class="space-y-2">
+        <a href="/" class="block p-2 hover:bg-accent rounded-md">Home</a>
+        <a href="/about" class="block p-2 hover:bg-accent rounded-md">About</a>
+    </nav>
+</Sheet>
 ```
 
 ### Form Controls
@@ -203,66 +259,52 @@ shadcn-ui/
 </div>
 ```
 
-### Sheet
+## Utilities
 
-```razor
-<Button OnClick="() => sheetOpen = true">Open Menu</Button>
+### CssUtils
 
-<Sheet @bind-Open="sheetOpen" Side="left">
-    <SheetHeader>
-        <SheetTitle>Navigation</SheetTitle>
-    </SheetHeader>
-    <nav class="space-y-2">
-        <a href="/" class="block p-2 hover:bg-accent rounded-md">Home</a>
-        <a href="/about" class="block p-2 hover:bg-accent rounded-md">About</a>
-    </nav>
-</Sheet>
+```csharp
+// Merge CSS classes (equivalent to cn() in shadcn/ui)
+CssUtils.Cn("base-class", condition ? "active" : null, customClass)
+
+// Conditional class
+CssUtils.CnIf(isActive, "bg-primary", "bg-muted")
+
+// Disabled state
+CssUtils.CnDisabled(isDisabled)
+```
+
+### PositionUtils
+
+```csharp
+// Calculate CSS position style for floating elements
+PositionUtils.GetPositionStyle(Side.Bottom, Alignment.Center)
 ```
 
 ## Design Tokens & Theming
 
-All design tokens are defined in `wwwroot/css/app.css` using CSS custom properties and Tailwind's `@theme` directive. The project supports both light and dark modes.
+All design tokens are defined in `wwwroot/css/shadcn.css` using CSS custom properties and Tailwind's `@theme` directive. Supports light and dark modes.
 
-To switch themes, toggle the `dark` class on the `<html>` element:
+Toggle dark mode:
 
 ```csharp
-// In a Blazor component
 await JS.InvokeVoidAsync("document.documentElement.classList.toggle", "dark");
 ```
 
 Key color tokens: `background`, `foreground`, `primary`, `secondary`, `muted`, `accent`, `destructive`, `border`, `input`, `ring`.
 
-## CSS Utility
-
-The `CssUtils.Cn()` method merges CSS class strings, equivalent to the `cn()` utility in the original shadcn/ui:
-
-```csharp
-@using static ShadcnBlazor.Components.UI.CssUtils
-
-<div class="@Cn("base-class", condition ? "active" : null, customClass)">
-```
-
 ## Key Differences from React shadcn/ui
 
 | Feature | React (Original) | Blazor (This Port) |
 |---------|-------------------|---------------------|
-| Framework | React + Next.js | .NET 10 Blazor Server |
+| Framework | React + Next.js | .NET 10 Blazor |
+| Package | npm | NuGet (`ShadcnBlazor`) |
 | Styling | Tailwind CSS | Tailwind CSS (same) |
 | State | React hooks | `@bind-*`, `EventCallback` |
 | Headless UI | @base-ui/react | Native Blazor logic |
 | Class Merge | `cn()` (clsx + tailwind-merge) | `CssUtils.Cn()` |
 | Icons | Lucide React | Inline SVG |
 | Variants | class-variance-authority | C# enums + pattern matching |
-
-## Tailwind CSS Setup
-
-This project uses Tailwind CSS v4 with the `@import "tailwindcss"` directive. No Bootstrap is included.
-
-To build CSS for production:
-
-```bash
-npx @tailwindcss/cli -i wwwroot/css/app.css -o wwwroot/css/app.min.css --minify
-```
 
 ## Original React Source
 

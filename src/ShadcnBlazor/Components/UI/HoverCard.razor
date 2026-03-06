@@ -11,7 +11,7 @@
     {
         <div data-slot="hover-card-content"
              class="@CssUtils.Cn("cn-hover-card-content absolute z-50", Class)"
-             style="top: 100%; margin-top: 4px;">
+             style="@PositionUtils.GetPositionStyle(Side, Align)">
             @ChildContent
         </div>
     }
@@ -20,7 +20,16 @@
 @code {
     [Parameter] public RenderFragment? Trigger { get; set; }
     [Parameter] public RenderFragment? ChildContent { get; set; }
+
+    /// <summary>Side where the hover card appears.</summary>
+    [Parameter] public Side Side { get; set; } = Side.Bottom;
+
+    /// <summary>Alignment of the hover card.</summary>
+    [Parameter] public Alignment Align { get; set; } = Alignment.Center;
+
+    /// <summary>Additional CSS classes.</summary>
     [Parameter] public string? Class { get; set; }
+
     [Parameter(CaptureUnmatchedValues = true)] public Dictionary<string, object>? AdditionalAttributes { get; set; }
 
     private bool _visible;

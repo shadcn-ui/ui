@@ -1,6 +1,6 @@
 @* Separator component - Blazor port of shadcn/ui Separator *@
 
-@if (Orientation == "horizontal")
+@if (Orientation == Orientation.Horizontal)
 {
     <div data-slot="separator" role="separator" data-orientation="horizontal"
          class="@CssUtils.Cn("shrink-0 bg-border h-px w-full", Class)"
@@ -14,7 +14,11 @@ else
 }
 
 @code {
-    [Parameter] public string Orientation { get; set; } = "horizontal";
+    /// <summary>Orientation of the separator.</summary>
+    [Parameter] public Orientation Orientation { get; set; } = Orientation.Horizontal;
+
+    /// <summary>Additional CSS classes.</summary>
     [Parameter] public string? Class { get; set; }
+
     [Parameter(CaptureUnmatchedValues = true)] public Dictionary<string, object>? AdditionalAttributes { get; set; }
 }

@@ -1,7 +1,7 @@
 @* Select component - Blazor port of shadcn/ui Select *@
 
 <div data-slot="select" class="@CssUtils.Cn("relative", Class)" @attributes="AdditionalAttributes">
-    <button type="button" data-slot="select-trigger" data-size="@Size"
+    <button type="button" data-slot="select-trigger" data-size="@SizeValue"
             class="cn-select-trigger flex w-fit items-center justify-between whitespace-nowrap outline-none disabled:cursor-not-allowed disabled:opacity-50"
             disabled="@Disabled"
             @onclick="ToggleOpen">
@@ -32,15 +32,30 @@
 
 @code {
     [Parameter] public RenderFragment? ChildContent { get; set; }
+
+    /// <summary>Selected value.</summary>
     [Parameter] public string? Value { get; set; }
+
+    /// <summary>Callback when the selected value changes.</summary>
     [Parameter] public EventCallback<string> ValueChanged { get; set; }
+
+    /// <summary>Placeholder text when no value is selected.</summary>
     [Parameter] public string? Placeholder { get; set; } = "Select...";
-    [Parameter] public string Size { get; set; } = "default";
+
+    /// <summary>Size of the select trigger.</summary>
+    [Parameter] public ComponentSize Size { get; set; } = ComponentSize.Default;
+
+    /// <summary>Whether the select is disabled.</summary>
     [Parameter] public bool Disabled { get; set; }
+
+    /// <summary>Additional CSS classes.</summary>
     [Parameter] public string? Class { get; set; }
+
     [Parameter(CaptureUnmatchedValues = true)] public Dictionary<string, object>? AdditionalAttributes { get; set; }
 
     private bool _open;
+
+    private string SizeValue => Size == ComponentSize.Sm ? "sm" : "default";
 
     private void ToggleOpen() => _open = !_open;
 

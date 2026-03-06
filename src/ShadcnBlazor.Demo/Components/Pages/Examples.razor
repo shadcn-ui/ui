@@ -42,7 +42,7 @@
         <div class="flex gap-4">
             <Button Variant="ButtonVariant.Outline" OnClick="() => _sheetOpen = true">Open Sheet (Right)</Button>
         </div>
-        <Sheet @bind-Open="_sheetOpen" Side="right">
+        <Sheet @bind-Open="_sheetOpen" Side="Side.Right">
             <SheetHeader>
                 <SheetTitle>Edit Profile</SheetTitle>
                 <SheetDescription>Make changes to your profile.</SheetDescription>

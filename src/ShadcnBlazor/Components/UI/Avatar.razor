@@ -1,6 +1,6 @@
 @* Avatar component - Blazor port of shadcn/ui Avatar *@
 
-<span data-slot="avatar" data-size="@Size"
+<span data-slot="avatar" data-size="@SizeValue"
       class="@CssUtils.Cn("cn-avatar group/avatar relative flex shrink-0 select-none overflow-hidden rounded-full", Class)"
       @attributes="AdditionalAttributes">
     @if (!string.IsNullOrEmpty(Src))
@@ -22,7 +22,13 @@
     [Parameter] public string? Alt { get; set; }
     [Parameter] public RenderFragment? Fallback { get; set; }
     [Parameter] public RenderFragment? ChildContent { get; set; }
-    [Parameter] public string Size { get; set; } = "default";
+    /// <summary>Size of the avatar.</summary>
+    [Parameter] public ComponentSize Size { get; set; } = ComponentSize.Default;
+
+    /// <summary>Additional CSS classes.</summary>
     [Parameter] public string? Class { get; set; }
+
     [Parameter(CaptureUnmatchedValues = true)] public Dictionary<string, object>? AdditionalAttributes { get; set; }
+
+    private string SizeValue => Size == ComponentSize.Sm ? "sm" : "default";
 }

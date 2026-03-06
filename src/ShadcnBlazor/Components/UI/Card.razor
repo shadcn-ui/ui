@@ -1,14 +1,19 @@
 @* Card component - Blazor port of shadcn/ui Card *@
 
-<div data-slot="card" data-size="@Size" class="@ComputedClass" @attributes="AdditionalAttributes">
+<div data-slot="card" data-size="@SizeValue" class="@CssUtils.Cn("cn-card group/card flex flex-col", Class)" @attributes="AdditionalAttributes">
     @ChildContent
 </div>
 
 @code {
     [Parameter] public RenderFragment? ChildContent { get; set; }
-    [Parameter] public string Size { get; set; } = "default";
+
+    /// <summary>Size of the card.</summary>
+    [Parameter] public ComponentSize Size { get; set; } = ComponentSize.Default;
+
+    /// <summary>Additional CSS classes.</summary>
     [Parameter] public string? Class { get; set; }
+
     [Parameter(CaptureUnmatchedValues = true)] public Dictionary<string, object>? AdditionalAttributes { get; set; }
 
-    private string ComputedClass => CssUtils.Cn("cn-card group/card flex flex-col", Class);
+    private string SizeValue => Size == ComponentSize.Sm ? "sm" : "default";
 }
