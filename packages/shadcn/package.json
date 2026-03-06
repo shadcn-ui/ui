@@ -85,7 +85,7 @@
     "@babel/plugin-transform-typescript": "^7.28.0",
     "@babel/preset-typescript": "^7.27.1",
     "@dotenvx/dotenvx": "^1.48.4",
-    "@modelcontextprotocol/sdk": "^1.26.0",
+    "@modelcontextprotocol/sdk": "^1.27.1",
     "@types/validate-npm-package-name": "^4.0.2",
     "browserslist": "^4.26.2",
     "commander": "^14.0.0",
