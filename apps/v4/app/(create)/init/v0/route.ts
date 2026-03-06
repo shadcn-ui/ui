@@ -17,7 +17,7 @@ export async function GET(request: NextRequest) {
     after(() => {
       track("create_open_in_v0", {
         ...result.data,
-        preset: searchParams.get("preset") ?? undefined,
+        preset: searchParams.get("preset") ?? "",
       })
     })
 

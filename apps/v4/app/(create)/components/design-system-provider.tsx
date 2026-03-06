@@ -11,8 +11,8 @@ import {
 import { useIframeMessageListener } from "@/app/(create)/hooks/use-iframe-sync"
 import { FONTS } from "@/app/(create)/lib/fonts"
 import {
-  type DesignSystemSearchParams,
   useDesignSystemSearchParams,
+  type DesignSystemSearchParams,
 } from "@/app/(create)/lib/search-params"
 
 export function DesignSystemProvider({
