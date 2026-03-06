@@ -46,7 +46,7 @@ async function loadMultiple() {
 
 exports[`transform dynamic imports with cn utility 2`] = `
 "async function loadWorkspaceCn() {
-  const { cn } = await import("@workspace/lib/utils")
+  const { cn } = await import("@workspace/ui/lib/utils")
   return cn
 }
     "
@@ -141,6 +141,17 @@ import { Foo } from "bar"
     import { Box } from "@repo/ui/components/box"
 
     import { cn } from "@repo/ui/lib/utils"
+    "
+`;
+
+exports[`transform import for monorepo with multi-segment scoped alias 1`] = `
+"import * as React from "react"
+import { Foo } from "bar"
+    import { Button } from "@package/ui/components/ui/button"
+    import { Label} from "ui/label"
+    import { Box } from "@package/ui/components/box"
+
+    import { cn } from "@package/ui/lib/utils"
     "
 `;
 
