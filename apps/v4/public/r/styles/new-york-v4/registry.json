@@ -2357,6 +2357,66 @@
       "type": "registry:block"
     },
     {
+      "name": "chart-composed-default",
+      "registryDependencies": ["card", "chart"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/charts/chart-composed-default.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "categories": ["charts", "charts-composed"],
+      "type": "registry:block"
+    },
+    {
+      "name": "chart-composed-bar-line",
+      "registryDependencies": ["card", "chart"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/charts/chart-composed-bar-line.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "categories": ["charts", "charts-composed"],
+      "type": "registry:block"
+    },
+    {
+      "name": "chart-composed-dashed",
+      "registryDependencies": ["card", "chart"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/charts/chart-composed-dashed.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "categories": ["charts", "charts-composed"],
+      "type": "registry:block"
+    },
+    {
+      "name": "chart-composed-axes",
+      "registryDependencies": ["card", "chart"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/charts/chart-composed-axes.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "categories": ["charts", "charts-composed"],
+      "type": "registry:block"
+    },
+    {
+      "name": "chart-composed-stacked",
+      "registryDependencies": ["card", "chart"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/charts/chart-composed-stacked.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "categories": ["charts", "charts-composed"],
+      "type": "registry:block"
+    },
+    {
       "name": "utils",
       "dependencies": ["clsx", "tailwind-merge"],
       "files": [

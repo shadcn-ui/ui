@@ -35,6 +35,10 @@ const links = [
     name: "Tooltips",
     href: "/charts/tooltip#charts",
   },
+  {
+    name: "Composed Charts",
+    href: "/charts/composed#charts",
+  },
 ]
 
 export function ChartsNav({
