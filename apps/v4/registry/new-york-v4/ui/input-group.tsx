@@ -69,6 +69,10 @@ function InputGroupAddon({
       data-align={align}
       className={cn(inputGroupAddonVariants({ align }), className)}
       onClick={(e) => {
+        // Ignore clicks from React portals (e.g. Popover, Dialog).
+        if (!e.currentTarget.contains(e.target as Node)) {
+          return
+        }
         if ((e.target as HTMLElement).closest("button")) {
           return
         }
