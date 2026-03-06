@@ -9,6 +9,36 @@ import { TEMP_DIR } from "./setup"
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const FIXTURES_DIR = path.join(__dirname, "../../fixtures")
 const SHADCN_CLI_PATH = path.join(__dirname, "../../../shadcn/dist/index.js")
+const REPO_ROOT = path.join(__dirname, "../../../..")
+
+let buildCliPromise: Promise<void> | null = null
+
+async function ensureShadcnCliBuilt() {
+  if (await fs.pathExists(SHADCN_CLI_PATH)) {
+    return
+  }
+
+  if (!buildCliPromise) {
+    buildCliPromise = execa("pnpm", ["--filter=shadcn", "build"], {
+      cwd: REPO_ROOT,
+      env: {
+        ...process.env,
+        FORCE_COLOR: "0",
+        CI: "true",
+      },
+    }).then(() => undefined)
+  }
+
+  try {
+    await buildCliPromise
+  } finally {
+    buildCliPromise = null
+  }
+
+  if (!(await fs.pathExists(SHADCN_CLI_PATH))) {
+    throw new Error(`Failed to locate shadcn CLI at ${SHADCN_CLI_PATH}`)
+  }
+}
 
 export function getRegistryUrl() {
   return process.env.REGISTRY_URL || "http://localhost:4000/r"
@@ -35,6 +65,8 @@ export async function runCommand(
   }
 ) {
   try {
+    await ensureShadcnCliBuilt()
+
     const childProcess = execa("node", [SHADCN_CLI_PATH, ...args], {
       cwd,
       env: {
