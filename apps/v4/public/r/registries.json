@@ -790,5 +790,11 @@
     "homepage": "https://pixelactui.com",
     "url": "https://pixelactui.com/r/{name}.json",
     "description": "Playful pixel art style components library built on top of shadcn. Perfect for retro style projects and games."
+  },
+  {
+    "name": "@fluid",
+    "homepage": "https://fluid-functionalism.vercel.app",
+    "url": "https://fluid-functionalism.vercel.app/r/{name}.json",
+    "description": "Fluid components used exclusively in service of functional clarity. Proximity hover, spring animations, font-weight transitions, and animated focus rings."
   }
 ]
