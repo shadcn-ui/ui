@@ -1,0 +1,263 @@
+@page "/"
+
+<PageTitle>ShadcnBlazor - Component Library</PageTitle>
+
+<div class="space-y-12">
+    <div class="space-y-4">
+        <h1 class="text-4xl font-bold tracking-tight">ShadcnBlazor</h1>
+        <p class="text-lg text-muted-foreground">
+            A Blazor port of shadcn/ui. Beautifully designed components built with Tailwind CSS.
+        </p>
+    </div>
+
+    @* Buttons *@
+    <section class="space-y-4">
+        <h2 class="text-2xl font-semibold tracking-tight">Button</h2>
+        <div class="flex flex-wrap gap-4">
+            <Button>Default</Button>
+            <Button Variant="ButtonVariant.Secondary">Secondary</Button>
+            <Button Variant="ButtonVariant.Outline">Outline</Button>
+            <Button Variant="ButtonVariant.Ghost">Ghost</Button>
+            <Button Variant="ButtonVariant.Destructive">Destructive</Button>
+            <Button Variant="ButtonVariant.Link">Link</Button>
+        </div>
+        <div class="flex flex-wrap gap-4">
+            <Button Size="ButtonSize.Sm">Small</Button>
+            <Button>Default</Button>
+            <Button Size="ButtonSize.Lg">Large</Button>
+        </div>
+    </section>
+
+    <Separator />
+
+    @* Badge *@
+    <section class="space-y-4">
+        <h2 class="text-2xl font-semibold tracking-tight">Badge</h2>
+        <div class="flex flex-wrap gap-4">
+            <Badge>Default</Badge>
+            <Badge Variant="BadgeVariant.Secondary">Secondary</Badge>
+            <Badge Variant="BadgeVariant.Outline">Outline</Badge>
+            <Badge Variant="BadgeVariant.Destructive">Destructive</Badge>
+        </div>
+    </section>
+
+    <Separator />
+
+    @* Card *@
+    <section class="space-y-4">
+        <h2 class="text-2xl font-semibold tracking-tight">Card</h2>
+        <div class="grid gap-4 md:grid-cols-2">
+            <Card>
+                <CardHeader>
+                    <CardTitle>Card Title</CardTitle>
+                    <CardDescription>Card description goes here.</CardDescription>
+                </CardHeader>
+                <CardContent>
+                    <p>Card content with some example text.</p>
+                </CardContent>
+                <CardFooter>
+                    <Button>Action</Button>
+                </CardFooter>
+            </Card>
+            <Card>
+                <CardHeader>
+                    <CardTitle>Another Card</CardTitle>
+                    <CardDescription>With different content.</CardDescription>
+                </CardHeader>
+                <CardContent>
+                    <p>More example content here.</p>
+                </CardContent>
+            </Card>
+        </div>
+    </section>
+
+    <Separator />
+
+    @* Input & Form Controls *@
+    <section class="space-y-4">
+        <h2 class="text-2xl font-semibold tracking-tight">Form Controls</h2>
+        <div class="grid gap-4 max-w-sm">
+            <div class="space-y-2">
+                <Label For="email">Email</Label>
+                <Input Type="email" Placeholder="Enter your email" />
+            </div>
+            <div class="space-y-2">
+                <Label For="message">Message</Label>
+                <Textarea Placeholder="Type your message here" />
+            </div>
+            <div class="flex items-center space-x-2">
+                <Checkbox @bind-Checked="_checkboxValue" />
+                <Label>Accept terms and conditions</Label>
+            </div>
+            <div class="flex items-center space-x-2">
+                <Switch @bind-Checked="_switchValue" />
+                <Label>Enable notifications</Label>
+            </div>
+        </div>
+    </section>
+
+    <Separator />
+
+    @* Alert *@
+    <section class="space-y-4">
+        <h2 class="text-2xl font-semibold tracking-tight">Alert</h2>
+        <Alert>
+            <AlertTitle>Heads up!</AlertTitle>
+            <AlertDescription>You can add components to your app using the CLI.</AlertDescription>
+        </Alert>
+        <Alert Variant="AlertVariant.Destructive">
+            <AlertTitle>Error</AlertTitle>
+            <AlertDescription>Your session has expired. Please log in again.</AlertDescription>
+        </Alert>
+    </section>
+
+    <Separator />
+
+    @* Avatar *@
+    <section class="space-y-4">
+        <h2 class="text-2xl font-semibold tracking-tight">Avatar</h2>
+        <div class="flex items-center gap-4">
+            <Avatar Src="https://github.com/shadcn.png" Alt="shadcn" />
+            <Avatar Size="sm">
+                <span>CN</span>
+            </Avatar>
+            <Avatar Size="lg">
+                <span>LG</span>
+            </Avatar>
+        </div>
+    </section>
+
+    <Separator />
+
+    @* Progress *@
+    <section class="space-y-4">
+        <h2 class="text-2xl font-semibold tracking-tight">Progress</h2>
+        <Progress Value="60" Class="max-w-md" />
+        <Slider @bind-Value="_sliderValue" Class="max-w-md" />
+        <p class="text-sm text-muted-foreground">Slider value: @_sliderValue</p>
+    </section>
+
+    <Separator />
+
+    @* Skeleton *@
+    <section class="space-y-4">
+        <h2 class="text-2xl font-semibold tracking-tight">Skeleton</h2>
+        <div class="flex items-center space-x-4">
+            <Skeleton Class="h-12 w-12 rounded-full" />
+            <div class="space-y-2">
+                <Skeleton Class="h-4 w-[250px]" />
+                <Skeleton Class="h-4 w-[200px]" />
+            </div>
+        </div>
+    </section>
+
+    <Separator />
+
+    @* Tabs *@
+    <section class="space-y-4">
+        <h2 class="text-2xl font-semibold tracking-tight">Tabs</h2>
+        <CascadingValue Value="_tabs" IsFixed="true">
+            <Tabs @bind-ActiveTab="_activeTab">
+                <TabsList>
+                    <TabsTrigger Value="account">Account</TabsTrigger>
+                    <TabsTrigger Value="password">Password</TabsTrigger>
+                </TabsList>
+                <TabsContent Value="account">
+                    <Card>
+                        <CardHeader>
+                            <CardTitle>Account</CardTitle>
+                            <CardDescription>Make changes to your account here.</CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                            <div class="space-y-2">
+                                <Label>Name</Label>
+                                <Input Placeholder="Your name" />
+                            </div>
+                        </CardContent>
+                    </Card>
+                </TabsContent>
+                <TabsContent Value="password">
+                    <Card>
+                        <CardHeader>
+                            <CardTitle>Password</CardTitle>
+                            <CardDescription>Change your password here.</CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                            <div class="space-y-2">
+                                <Label>New Password</Label>
+                                <Input Type="password" />
+                            </div>
+                        </CardContent>
+                    </Card>
+                </TabsContent>
+            </Tabs>
+        </CascadingValue>
+    </section>
+
+    <Separator />
+
+    @* Table *@
+    <section class="space-y-4">
+        <h2 class="text-2xl font-semibold tracking-tight">Table</h2>
+        <Table>
+            <TableHeader>
+                <TableRow>
+                    <TableHead>Invoice</TableHead>
+                    <TableHead>Status</TableHead>
+                    <TableHead>Method</TableHead>
+                    <TableHead Class="text-right">Amount</TableHead>
+                </TableRow>
+            </TableHeader>
+            <TableBody>
+                <TableRow>
+                    <TableCell>INV001</TableCell>
+                    <TableCell><Badge>Paid</Badge></TableCell>
+                    <TableCell>Credit Card</TableCell>
+                    <TableCell Class="text-right">$250.00</TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell>INV002</TableCell>
+                    <TableCell><Badge Variant="BadgeVariant.Outline">Pending</Badge></TableCell>
+                    <TableCell>PayPal</TableCell>
+                    <TableCell Class="text-right">$150.00</TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell>INV003</TableCell>
+                    <TableCell><Badge Variant="BadgeVariant.Destructive">Overdue</Badge></TableCell>
+                    <TableCell>Bank Transfer</TableCell>
+                    <TableCell Class="text-right">$350.00</TableCell>
+                </TableRow>
+            </TableBody>
+        </Table>
+    </section>
+
+    <Separator />
+
+    @* Spinner *@
+    <section class="space-y-4">
+        <h2 class="text-2xl font-semibold tracking-tight">Spinner</h2>
+        <div class="flex gap-4 items-center">
+            <Spinner Size="sm" />
+            <Spinner />
+            <Spinner Size="lg" />
+        </div>
+    </section>
+
+    <Separator />
+
+    @* Keyboard *@
+    <section class="space-y-4">
+        <h2 class="text-2xl font-semibold tracking-tight">Keyboard Shortcut</h2>
+        <p class="text-sm text-muted-foreground">
+            Press <Kbd>Ctrl</Kbd> + <Kbd>K</Kbd> to open the command palette.
+        </p>
+    </section>
+</div>
+
+@code {
+    private bool _checkboxValue;
+    private bool _switchValue;
+    private double _sliderValue = 50;
+    private string _activeTab = "account";
+    private Tabs? _tabs;
+}

@@ -1,0 +1,35 @@
+@* Switch component - Blazor port of shadcn/ui Switch *@
+
+<button type="button" role="switch"
+        data-slot="switch"
+        data-size="@Size"
+        aria-checked="@Checked.ToString().ToLower()"
+        data-checked="@(Checked ? "" : null)"
+        class="@ComputedClass"
+        disabled="@Disabled"
+        @onclick="Toggle"
+        @attributes="AdditionalAttributes">
+    <span data-slot="switch-thumb" class="cn-switch-thumb pointer-events-none block ring-0 transition-transform"></span>
+</button>
+
+@code {
+    [Parameter] public bool Checked { get; set; }
+    [Parameter] public EventCallback<bool> CheckedChanged { get; set; }
+    [Parameter] public bool Disabled { get; set; }
+    [Parameter] public string Size { get; set; } = "default";
+    [Parameter] public string? Class { get; set; }
+    [Parameter(CaptureUnmatchedValues = true)] public Dictionary<string, object>? AdditionalAttributes { get; set; }
+
+    private string ComputedClass => CssUtils.Cn(
+        "cn-switch peer group/switch relative inline-flex items-center transition-all outline-none",
+        Disabled ? "cursor-not-allowed opacity-50" : "",
+        Class
+    );
+
+    private async Task Toggle()
+    {
+        if (Disabled) return;
+        Checked = !Checked;
+        await CheckedChanged.InvokeAsync(Checked);
+    }
+}

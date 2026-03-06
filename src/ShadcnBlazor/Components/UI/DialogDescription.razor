@@ -1,0 +1,9 @@
+<p data-slot="dialog-description" class="@CssUtils.Cn("cn-dialog-description", Class)" @attributes="AdditionalAttributes">
+    @ChildContent
+</p>
+
+@code {
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+    [Parameter] public string? Class { get; set; }
+    [Parameter(CaptureUnmatchedValues = true)] public Dictionary<string, object>? AdditionalAttributes { get; set; }
+}

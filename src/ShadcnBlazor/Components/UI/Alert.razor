@@ -1,0 +1,18 @@
+@* Alert component - Blazor port of shadcn/ui Alert *@
+
+<div data-slot="alert" role="alert" class="@ComputedClass" @attributes="AdditionalAttributes">
+    @ChildContent
+</div>
+
+@code {
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+    [Parameter] public AlertVariant Variant { get; set; } = AlertVariant.Default;
+    [Parameter] public string? Class { get; set; }
+    [Parameter(CaptureUnmatchedValues = true)] public Dictionary<string, object>? AdditionalAttributes { get; set; }
+
+    private string ComputedClass => CssUtils.Cn(
+        "cn-alert group/alert relative w-full",
+        Variant == AlertVariant.Destructive ? "cn-alert-variant-destructive" : "cn-alert-variant-default",
+        Class
+    );
+}

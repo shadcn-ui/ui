@@ -1,0 +1,44 @@
+@* Dialog component - Blazor port of shadcn/ui Dialog *@
+
+@if (Open)
+{
+    <div data-slot="dialog">
+        @* Overlay *@
+        <div data-slot="dialog-overlay"
+             class="cn-dialog-overlay fixed inset-0 isolate z-50"
+             @onclick="HandleOverlayClick"></div>
+
+        @* Content *@
+        <div data-slot="dialog-content"
+             class="@CssUtils.Cn("cn-dialog-content fixed top-1/2 left-1/2 z-50 w-full -translate-x-1/2 -translate-y-1/2 outline-none", Class)"
+             @attributes="AdditionalAttributes">
+            @ChildContent
+
+            @if (ShowCloseButton)
+            {
+                <button type="button" data-slot="dialog-close"
+                        class="cn-dialog-close absolute right-4 top-4"
+                        @onclick="Close">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 6 6 18" /><path d="m6 6 12 12" />
+                    </svg>
+                    <span class="sr-only">Close</span>
+                </button>
+            }
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+    [Parameter] public bool Open { get; set; }
+    [Parameter] public EventCallback<bool> OpenChanged { get; set; }
+    [Parameter] public bool ShowCloseButton { get; set; } = true;
+    [Parameter] public string? Class { get; set; }
+    [Parameter(CaptureUnmatchedValues = true)] public Dictionary<string, object>? AdditionalAttributes { get; set; }
+
+    private async Task Close() => await OpenChanged.InvokeAsync(false);
+
+    private async Task HandleOverlayClick() => await Close();
+}

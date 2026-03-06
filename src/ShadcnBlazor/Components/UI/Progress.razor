@@ -1,0 +1,16 @@
+@* Progress component - Blazor port of shadcn/ui Progress *@
+
+<div data-slot="progress" class="@CssUtils.Cn("cn-progress-root flex flex-wrap gap-3", Class)" @attributes="AdditionalAttributes">
+    @ChildContent
+    <div data-slot="progress-track" class="cn-progress-track relative flex w-full items-center overflow-x-hidden">
+        <div data-slot="progress-indicator" class="cn-progress-indicator h-full transition-all"
+             style="width: @(Value)%"></div>
+    </div>
+</div>
+
+@code {
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+    [Parameter] public int Value { get; set; }
+    [Parameter] public string? Class { get; set; }
+    [Parameter(CaptureUnmatchedValues = true)] public Dictionary<string, object>? AdditionalAttributes { get; set; }
+}

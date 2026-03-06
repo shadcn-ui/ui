@@ -1,0 +1,21 @@
+@* AlertDialog component - Blazor port of shadcn/ui AlertDialog *@
+
+@if (Open)
+{
+    <div data-slot="alert-dialog" role="alertdialog">
+        <div data-slot="alert-dialog-overlay" class="cn-alert-dialog-overlay fixed inset-0 z-50"></div>
+        <div data-slot="alert-dialog-content"
+             class="@CssUtils.Cn("cn-alert-dialog-content", Class)"
+             @attributes="AdditionalAttributes">
+            @ChildContent
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+    [Parameter] public bool Open { get; set; }
+    [Parameter] public EventCallback<bool> OpenChanged { get; set; }
+    [Parameter] public string? Class { get; set; }
+    [Parameter(CaptureUnmatchedValues = true)] public Dictionary<string, object>? AdditionalAttributes { get; set; }
+}

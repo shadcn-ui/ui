@@ -1,0 +1,40 @@
+@* Toggle component - Blazor port of shadcn/ui Toggle *@
+
+<button type="button" data-slot="toggle"
+        data-state="@(Pressed ? "on" : "off")"
+        aria-pressed="@Pressed.ToString().ToLower()"
+        class="@ComputedClass"
+        disabled="@Disabled"
+        @onclick="HandleClick"
+        @attributes="AdditionalAttributes">
+    @ChildContent
+</button>
+
+@code {
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+    [Parameter] public bool Pressed { get; set; }
+    [Parameter] public EventCallback<bool> PressedChanged { get; set; }
+    [Parameter] public ToggleVariant Variant { get; set; } = ToggleVariant.Default;
+    [Parameter] public ToggleSize Size { get; set; } = ToggleSize.Default;
+    [Parameter] public bool Disabled { get; set; }
+    [Parameter] public string? Class { get; set; }
+    [Parameter(CaptureUnmatchedValues = true)] public Dictionary<string, object>? AdditionalAttributes { get; set; }
+
+    private string ComputedClass => CssUtils.Cn(
+        "cn-toggle inline-flex items-center justify-center whitespace-nowrap outline-none",
+        Variant == ToggleVariant.Outline ? "cn-toggle-variant-outline" : "",
+        Size switch
+        {
+            ToggleSize.Sm => "cn-toggle-size-sm",
+            ToggleSize.Lg => "cn-toggle-size-lg",
+            _ => "cn-toggle-size-default"
+        },
+        Class
+    );
+
+    private async Task HandleClick()
+    {
+        Pressed = !Pressed;
+        await PressedChanged.InvokeAsync(Pressed);
+    }
+}

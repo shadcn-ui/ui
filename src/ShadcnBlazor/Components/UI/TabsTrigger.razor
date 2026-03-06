@@ -1,0 +1,24 @@
+<button type="button" data-slot="tabs-trigger" role="tab"
+        data-active="@(IsActive ? "" : null)"
+        aria-selected="@IsActive.ToString().ToLower()"
+        class="@CssUtils.Cn("cn-tabs-trigger", IsActive ? "data-active:bg-background data-active:text-foreground" : "text-foreground/60", Class)"
+        @onclick="HandleClick"
+        @attributes="AdditionalAttributes">
+    @ChildContent
+</button>
+
+@code {
+    [CascadingParameter] public Tabs? Parent { get; set; }
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+    [Parameter] public string Value { get; set; } = "";
+    [Parameter] public string? Class { get; set; }
+    [Parameter(CaptureUnmatchedValues = true)] public Dictionary<string, object>? AdditionalAttributes { get; set; }
+
+    private bool IsActive => Parent?.ActiveTab == Value;
+
+    private async Task HandleClick()
+    {
+        if (Parent is not null)
+            await Parent.SetActiveTab(Value);
+    }
+}

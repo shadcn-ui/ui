@@ -1,0 +1,18 @@
+@if (IsActive)
+{
+    <div data-slot="tabs-content" role="tabpanel"
+         class="@CssUtils.Cn("cn-tabs-content flex-1 outline-none", Class)"
+         @attributes="AdditionalAttributes">
+        @ChildContent
+    </div>
+}
+
+@code {
+    [CascadingParameter] public Tabs? Parent { get; set; }
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+    [Parameter] public string Value { get; set; } = "";
+    [Parameter] public string? Class { get; set; }
+    [Parameter(CaptureUnmatchedValues = true)] public Dictionary<string, object>? AdditionalAttributes { get; set; }
+
+    private bool IsActive => Parent?.ActiveTab == Value;
+}

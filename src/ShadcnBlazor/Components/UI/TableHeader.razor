@@ -1,0 +1,9 @@
+<thead data-slot="table-header" class="@CssUtils.Cn("cn-table-header [&_tr]:border-b", Class)" @attributes="AdditionalAttributes">
+    @ChildContent
+</thead>
+
+@code {
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+    [Parameter] public string? Class { get; set; }
+    [Parameter(CaptureUnmatchedValues = true)] public Dictionary<string, object>? AdditionalAttributes { get; set; }
+}

@@ -1,0 +1,6 @@
+<div data-slot="dropdown-menu-separator" class="@CssUtils.Cn("cn-dropdown-menu-separator", Class)" @attributes="AdditionalAttributes"></div>
+
+@code {
+    [Parameter] public string? Class { get; set; }
+    [Parameter(CaptureUnmatchedValues = true)] public Dictionary<string, object>? AdditionalAttributes { get; set; }
+}

@@ -1,0 +1,53 @@
+@* Select component - Blazor port of shadcn/ui Select *@
+
+<div data-slot="select" class="@CssUtils.Cn("relative", Class)" @attributes="AdditionalAttributes">
+    <button type="button" data-slot="select-trigger" data-size="@Size"
+            class="cn-select-trigger flex w-fit items-center justify-between whitespace-nowrap outline-none disabled:cursor-not-allowed disabled:opacity-50"
+            disabled="@Disabled"
+            @onclick="ToggleOpen">
+        <span data-slot="select-value" class="cn-select-value">
+            @if (!string.IsNullOrEmpty(Value))
+            {
+                @Value
+            }
+            else
+            {
+                <span class="text-muted-foreground">@Placeholder</span>
+            }
+        </span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+             class="cn-select-trigger-icon pointer-events-none ml-2 opacity-50">
+            <path d="m6 9 6 6 6-6"/>
+        </svg>
+    </button>
+
+    @if (_open)
+    {
+        <div data-slot="select-content" class="cn-select-content absolute z-50 mt-1 min-w-[8rem]">
+            @ChildContent
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+    [Parameter] public string? Value { get; set; }
+    [Parameter] public EventCallback<string> ValueChanged { get; set; }
+    [Parameter] public string? Placeholder { get; set; } = "Select...";
+    [Parameter] public string Size { get; set; } = "default";
+    [Parameter] public bool Disabled { get; set; }
+    [Parameter] public string? Class { get; set; }
+    [Parameter(CaptureUnmatchedValues = true)] public Dictionary<string, object>? AdditionalAttributes { get; set; }
+
+    private bool _open;
+
+    private void ToggleOpen() => _open = !_open;
+
+    internal async Task SelectItem(string value)
+    {
+        Value = value;
+        _open = false;
+        await ValueChanged.InvokeAsync(value);
+    }
+}

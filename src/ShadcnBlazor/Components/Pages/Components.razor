@@ -1,0 +1,68 @@
+@page "/components"
+
+<PageTitle>Components - ShadcnBlazor</PageTitle>
+
+<div class="space-y-6">
+    <div>
+        <h1 class="text-3xl font-bold tracking-tight">Components</h1>
+        <p class="text-muted-foreground">Browse all available components.</p>
+    </div>
+
+    <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        @foreach (var component in _components)
+        {
+            <Card>
+                <CardHeader>
+                    <CardTitle>@component.Name</CardTitle>
+                    <CardDescription>@component.Description</CardDescription>
+                </CardHeader>
+            </Card>
+        }
+    </div>
+</div>
+
+@code {
+    private record ComponentInfo(string Name, string Description);
+
+    private readonly ComponentInfo[] _components =
+    [
+        new("Button", "Displays a button or a component that looks like a button."),
+        new("Input", "Displays a form input field."),
+        new("Textarea", "Displays a form textarea field."),
+        new("Label", "Renders an accessible label for form controls."),
+        new("Card", "Displays a card with header, content, and footer."),
+        new("Badge", "Displays a badge or label."),
+        new("Alert", "Displays a callout for important information."),
+        new("AlertDialog", "A modal dialog that interrupts with important content."),
+        new("Avatar", "An image element with a fallback for user profile images."),
+        new("Checkbox", "A control that allows toggling between checked and unchecked."),
+        new("Switch", "A toggle control for switching between two states."),
+        new("RadioGroup", "A set of checkable buttons where only one can be checked."),
+        new("Select", "Displays a list of options for the user to pick from."),
+        new("Separator", "Visually separates content."),
+        new("Skeleton", "Used to show a placeholder while content is loading."),
+        new("Dialog", "A window overlaid on the primary content."),
+        new("Sheet", "A panel that slides from the edge of the screen."),
+        new("Popover", "Displays rich content in a portal triggered by a button."),
+        new("Tooltip", "A popup that displays information on hover."),
+        new("DropdownMenu", "A menu displayed on trigger click."),
+        new("ContextMenu", "A menu displayed on right-click."),
+        new("HoverCard", "Allows sighted users to preview content behind a link."),
+        new("Tabs", "A set of layered sections of content, shown one at a time."),
+        new("Accordion", "A vertically stacked set of expandable items."),
+        new("Breadcrumb", "Displays the path to the current resource."),
+        new("Table", "A responsive table component."),
+        new("Progress", "Displays a progress indicator."),
+        new("Slider", "An input where the user selects a value from a range."),
+        new("Toggle", "A two-state button that can be on or off."),
+        new("Pagination", "Navigation for paged content."),
+        new("Collapsible", "An interactive component that expands/collapses."),
+        new("ScrollArea", "Augments native scroll functionality for custom styling."),
+        new("Sidebar", "A composable sidebar component with menu items."),
+        new("Spinner", "An animated loading indicator."),
+        new("Kbd", "Displays keyboard shortcut styling."),
+        new("AspectRatio", "Displays content within a desired ratio."),
+        new("Empty", "Empty state placeholder."),
+        new("NavigationMenu", "A navigation bar with dropdown content."),
+    ];
+}

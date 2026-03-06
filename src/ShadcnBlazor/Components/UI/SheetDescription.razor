@@ -1,0 +1,9 @@
+<p data-slot="sheet-description" class="@CssUtils.Cn("cn-sheet-description", Class)" @attributes="AdditionalAttributes">
+    @ChildContent
+</p>
+
+@code {
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+    [Parameter] public string? Class { get; set; }
+    [Parameter(CaptureUnmatchedValues = true)] public Dictionary<string, object>? AdditionalAttributes { get; set; }
+}

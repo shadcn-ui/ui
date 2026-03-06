@@ -1,0 +1,39 @@
+@* Accordion component - Blazor port of shadcn/ui Accordion *@
+
+<div data-slot="accordion"
+     class="@CssUtils.Cn("cn-accordion flex w-full flex-col", Class)"
+     @attributes="AdditionalAttributes">
+    @ChildContent
+</div>
+
+@code {
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+    [Parameter] public string? ExpandedItem { get; set; }
+    [Parameter] public EventCallback<string?> ExpandedItemChanged { get; set; }
+    [Parameter] public bool Multiple { get; set; }
+    [Parameter] public string? Class { get; set; }
+    [Parameter(CaptureUnmatchedValues = true)] public Dictionary<string, object>? AdditionalAttributes { get; set; }
+
+    private HashSet<string> _expandedItems = new();
+
+    internal bool IsExpanded(string value)
+    {
+        if (Multiple)
+            return _expandedItems.Contains(value);
+        return ExpandedItem == value;
+    }
+
+    internal async Task Toggle(string value)
+    {
+        if (Multiple)
+        {
+            if (!_expandedItems.Remove(value))
+                _expandedItems.Add(value);
+        }
+        else
+        {
+            ExpandedItem = ExpandedItem == value ? null : value;
+            await ExpandedItemChanged.InvokeAsync(ExpandedItem);
+        }
+    }
+}

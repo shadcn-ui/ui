@@ -1,0 +1,38 @@
+@* Popover component - Blazor port of shadcn/ui Popover *@
+
+<div data-slot="popover" class="relative inline-block" @attributes="AdditionalAttributes">
+    <div data-slot="popover-trigger" @onclick="ToggleOpen">
+        @Trigger
+    </div>
+
+    @if (_open)
+    {
+        <div data-slot="popover-content"
+             class="@CssUtils.Cn("cn-popover-content absolute z-50 w-72 outline-none", Class)"
+             style="@PositionStyle">
+            @ChildContent
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter] public RenderFragment? Trigger { get; set; }
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+    [Parameter] public string Side { get; set; } = "bottom";
+    [Parameter] public string Align { get; set; } = "center";
+    [Parameter] public string? Class { get; set; }
+    [Parameter(CaptureUnmatchedValues = true)] public Dictionary<string, object>? AdditionalAttributes { get; set; }
+
+    private bool _open;
+
+    private void ToggleOpen() => _open = !_open;
+
+    private string PositionStyle => Side switch
+    {
+        "top" => "bottom: 100%; margin-bottom: 4px;",
+        "bottom" => "top: 100%; margin-top: 4px;",
+        "left" => "right: 100%; margin-right: 4px;",
+        "right" => "left: 100%; margin-left: 4px;",
+        _ => "top: 100%; margin-top: 4px;"
+    };
+}

@@ -1,0 +1,13 @@
+@* Table component - Blazor port of shadcn/ui Table *@
+
+<div class="relative w-full overflow-auto">
+    <table data-slot="table" class="@CssUtils.Cn("cn-table w-full caption-bottom text-sm", Class)" @attributes="AdditionalAttributes">
+        @ChildContent
+    </table>
+</div>
+
+@code {
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+    [Parameter] public string? Class { get; set; }
+    [Parameter(CaptureUnmatchedValues = true)] public Dictionary<string, object>? AdditionalAttributes { get; set; }
+}

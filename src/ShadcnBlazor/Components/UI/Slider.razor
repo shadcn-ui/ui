@@ -1,0 +1,35 @@
+@* Slider component - Blazor port of shadcn/ui Slider *@
+
+<div data-slot="slider"
+     class="@CssUtils.Cn("cn-slider relative flex w-full touch-none select-none items-center", Disabled ? "opacity-50" : "", Class)"
+     @attributes="AdditionalAttributes">
+    <div class="cn-slider-track relative h-1.5 w-full grow overflow-hidden rounded-full bg-primary/20">
+        <div class="cn-slider-range absolute h-full bg-primary" style="width: @(Percentage)%"></div>
+    </div>
+    <input type="range" min="@Min" max="@Max" step="@Step" value="@Value"
+           class="absolute inset-0 cursor-pointer opacity-0"
+           disabled="@Disabled"
+           @oninput="HandleInput" />
+</div>
+
+@code {
+    [Parameter] public double Value { get; set; }
+    [Parameter] public EventCallback<double> ValueChanged { get; set; }
+    [Parameter] public double Min { get; set; } = 0;
+    [Parameter] public double Max { get; set; } = 100;
+    [Parameter] public double Step { get; set; } = 1;
+    [Parameter] public bool Disabled { get; set; }
+    [Parameter] public string? Class { get; set; }
+    [Parameter(CaptureUnmatchedValues = true)] public Dictionary<string, object>? AdditionalAttributes { get; set; }
+
+    private double Percentage => Max > Min ? ((Value - Min) / (Max - Min)) * 100 : 0;
+
+    private async Task HandleInput(ChangeEventArgs e)
+    {
+        if (double.TryParse(e.Value?.ToString(), out var val))
+        {
+            Value = val;
+            await ValueChanged.InvokeAsync(val);
+        }
+    }
+}

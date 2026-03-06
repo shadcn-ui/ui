@@ -1,0 +1,13 @@
+@* Breadcrumb component - Blazor port of shadcn/ui Breadcrumb *@
+
+<nav data-slot="breadcrumb" aria-label="breadcrumb" @attributes="AdditionalAttributes">
+    <ol class="@CssUtils.Cn("cn-breadcrumb-list flex flex-wrap items-center gap-1.5 text-sm text-muted-foreground sm:gap-2.5", Class)">
+        @ChildContent
+    </ol>
+</nav>
+
+@code {
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+    [Parameter] public string? Class { get; set; }
+    [Parameter(CaptureUnmatchedValues = true)] public Dictionary<string, object>? AdditionalAttributes { get; set; }
+}

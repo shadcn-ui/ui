@@ -1,0 +1,35 @@
+@* RadioGroupItem component *@
+
+<button type="button" role="radio"
+        data-slot="radio-group-item"
+        aria-checked="@IsSelected.ToString().ToLower()"
+        data-checked="@(IsSelected ? "" : null)"
+        class="@CssUtils.Cn("cn-radio-group-item", Class)"
+        disabled="@Disabled"
+        @onclick="HandleClick"
+        @attributes="AdditionalAttributes">
+    @if (IsSelected)
+    {
+        <span class="flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 24 24" fill="currentColor">
+                <circle cx="12" cy="12" r="12" />
+            </svg>
+        </span>
+    }
+</button>
+
+@code {
+    [CascadingParameter] public RadioGroup? Parent { get; set; }
+    [Parameter] public string Value { get; set; } = "";
+    [Parameter] public bool Disabled { get; set; }
+    [Parameter] public string? Class { get; set; }
+    [Parameter(CaptureUnmatchedValues = true)] public Dictionary<string, object>? AdditionalAttributes { get; set; }
+
+    private bool IsSelected => Parent?.Value == Value;
+
+    private async Task HandleClick()
+    {
+        if (Parent is not null)
+            await Parent.SelectValue(Value);
+    }
+}

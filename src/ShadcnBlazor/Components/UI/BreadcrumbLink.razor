@@ -1,0 +1,12 @@
+<a data-slot="breadcrumb-link" href="@Href"
+   class="@CssUtils.Cn("cn-breadcrumb-link transition-colors hover:text-foreground", Class)"
+   @attributes="AdditionalAttributes">
+    @ChildContent
+</a>
+
+@code {
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+    [Parameter] public string? Href { get; set; }
+    [Parameter] public string? Class { get; set; }
+    [Parameter(CaptureUnmatchedValues = true)] public Dictionary<string, object>? AdditionalAttributes { get; set; }
+}

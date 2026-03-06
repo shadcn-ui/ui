@@ -1,0 +1,102 @@
+@page "/examples"
+
+<PageTitle>Examples - ShadcnBlazor</PageTitle>
+
+<div class="space-y-8">
+    <div>
+        <h1 class="text-3xl font-bold tracking-tight">Examples</h1>
+        <p class="text-muted-foreground">Example layouts and compositions using ShadcnBlazor components.</p>
+    </div>
+
+    @* Dialog Example *@
+    <section class="space-y-4">
+        <h2 class="text-2xl font-semibold">Dialog</h2>
+        <Button OnClick="() => _dialogOpen = true">Open Dialog</Button>
+        <Dialog @bind-Open="_dialogOpen">
+            <DialogHeader>
+                <DialogTitle>Edit Profile</DialogTitle>
+                <DialogDescription>Make changes to your profile here. Click save when you're done.</DialogDescription>
+            </DialogHeader>
+            <div class="grid gap-4 py-4">
+                <div class="space-y-2">
+                    <Label>Name</Label>
+                    <Input Placeholder="Your name" />
+                </div>
+                <div class="space-y-2">
+                    <Label>Username</Label>
+                    <Input Placeholder="@username" />
+                </div>
+            </div>
+            <DialogFooter>
+                <Button Variant="ButtonVariant.Outline" OnClick="() => _dialogOpen = false">Cancel</Button>
+                <Button OnClick="() => _dialogOpen = false">Save changes</Button>
+            </DialogFooter>
+        </Dialog>
+    </section>
+
+    <Separator />
+
+    @* Sheet Example *@
+    <section class="space-y-4">
+        <h2 class="text-2xl font-semibold">Sheet</h2>
+        <div class="flex gap-4">
+            <Button Variant="ButtonVariant.Outline" OnClick="() => _sheetOpen = true">Open Sheet (Right)</Button>
+        </div>
+        <Sheet @bind-Open="_sheetOpen" Side="right">
+            <SheetHeader>
+                <SheetTitle>Edit Profile</SheetTitle>
+                <SheetDescription>Make changes to your profile.</SheetDescription>
+            </SheetHeader>
+            <div class="grid gap-4 py-4">
+                <div class="space-y-2">
+                    <Label>Name</Label>
+                    <Input Placeholder="Your name" />
+                </div>
+            </div>
+            <SheetFooter>
+                <Button OnClick="() => _sheetOpen = false">Save changes</Button>
+            </SheetFooter>
+        </Sheet>
+    </section>
+
+    <Separator />
+
+    @* Accordion Example *@
+    <section class="space-y-4">
+        <h2 class="text-2xl font-semibold">Accordion</h2>
+        <CascadingValue Value="_accordion" IsFixed="true">
+            <Accordion @bind-ExpandedItem="_expandedItem" Class="max-w-md">
+                <CascadingValue Value="_item1" IsFixed="true">
+                    <AccordionItem Value="item-1">
+                        <AccordionTrigger>Is it accessible?</AccordionTrigger>
+                        <AccordionContent>Yes. It adheres to the WAI-ARIA design pattern.</AccordionContent>
+                    </AccordionItem>
+                </CascadingValue>
+                <CascadingValue Value="_item2" IsFixed="true">
+                    <AccordionItem Value="item-2">
+                        <AccordionTrigger>Is it styled?</AccordionTrigger>
+                        <AccordionContent>
+                            Yes. It comes with default styles that match the other components' aesthetic.
+                        </AccordionContent>
+                    </AccordionItem>
+                </CascadingValue>
+                <CascadingValue Value="_item3" IsFixed="true">
+                    <AccordionItem Value="item-3">
+                        <AccordionTrigger>Is it animated?</AccordionTrigger>
+                        <AccordionContent>
+                            Yes. It's animated by default, but you can disable it if you prefer.
+                        </AccordionContent>
+                    </AccordionItem>
+                </CascadingValue>
+            </Accordion>
+        </CascadingValue>
+    </section>
+</div>
+
+@code {
+    private bool _dialogOpen;
+    private bool _sheetOpen;
+    private string? _expandedItem = "item-1";
+    private Accordion? _accordion;
+    private AccordionItem? _item1, _item2, _item3;
+}

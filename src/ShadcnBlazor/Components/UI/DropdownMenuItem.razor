@@ -1,0 +1,24 @@
+@* DropdownMenuItem component *@
+
+<div data-slot="dropdown-menu-item" data-variant="@Variant"
+     class="@CssUtils.Cn("cn-dropdown-menu-item group/dropdown-menu-item relative flex cursor-default items-center outline-none select-none", Disabled ? "pointer-events-none opacity-50" : "", Class)"
+     @onclick="HandleClick"
+     @attributes="AdditionalAttributes">
+    @ChildContent
+</div>
+
+@code {
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+    [Parameter] public string Variant { get; set; } = "default";
+    [Parameter] public bool Disabled { get; set; }
+    [Parameter] public bool Inset { get; set; }
+    [Parameter] public EventCallback OnClick { get; set; }
+    [Parameter] public string? Class { get; set; }
+    [Parameter(CaptureUnmatchedValues = true)] public Dictionary<string, object>? AdditionalAttributes { get; set; }
+
+    private async Task HandleClick()
+    {
+        if (!Disabled)
+            await OnClick.InvokeAsync();
+    }
+}

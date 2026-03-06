@@ -1,0 +1,20 @@
+@* Label component - Blazor port of shadcn/ui Label *@
+
+<label data-slot="label"
+       for="@For"
+       class="@ComputedClass"
+       @attributes="AdditionalAttributes">
+    @ChildContent
+</label>
+
+@code {
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+    [Parameter] public string? For { get; set; }
+    [Parameter] public string? Class { get; set; }
+    [Parameter(CaptureUnmatchedValues = true)] public Dictionary<string, object>? AdditionalAttributes { get; set; }
+
+    private string ComputedClass => CssUtils.Cn(
+        "cn-label flex items-center select-none group-data-[disabled=true]:pointer-events-none peer-disabled:cursor-not-allowed",
+        Class
+    );
+}

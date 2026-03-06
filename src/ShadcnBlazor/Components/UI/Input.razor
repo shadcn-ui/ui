@@ -1,0 +1,31 @@
+@* Input component - Blazor port of shadcn/ui Input *@
+
+<input type="@Type"
+       data-slot="input"
+       class="@ComputedClass"
+       value="@Value"
+       placeholder="@Placeholder"
+       disabled="@Disabled"
+       @oninput="HandleInput"
+       @attributes="AdditionalAttributes" />
+
+@code {
+    [Parameter] public string Type { get; set; } = "text";
+    [Parameter] public string? Value { get; set; }
+    [Parameter] public EventCallback<string> ValueChanged { get; set; }
+    [Parameter] public string? Placeholder { get; set; }
+    [Parameter] public string? Class { get; set; }
+    [Parameter] public bool Disabled { get; set; }
+    [Parameter(CaptureUnmatchedValues = true)] public Dictionary<string, object>? AdditionalAttributes { get; set; }
+
+    private string ComputedClass => CssUtils.Cn(
+        "cn-input w-full min-w-0 outline-none file:inline-flex file:border-0 file:bg-transparent file:text-foreground placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50",
+        Class
+    );
+
+    private async Task HandleInput(ChangeEventArgs e)
+    {
+        Value = e.Value?.ToString();
+        await ValueChanged.InvokeAsync(Value);
+    }
+}
