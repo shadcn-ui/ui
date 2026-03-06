@@ -113,6 +113,16 @@ const nextConfig = {
         destination: "/docs/new",
         permanent: false,
       },
+      {
+        source: "/skills",
+        destination: "/docs/skills",
+        permanent: true,
+      },
+      {
+        source: "/cli",
+        destination: "/docs/cli",
+        permanent: true,
+      },
     ]
   },
   rewrites() {
