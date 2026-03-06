@@ -61,8 +61,8 @@ importers:
         specifier: ^0.4.24
         version: 0.4.26(eslint@9.39.3(jiti@2.6.1))
       globals:
-        specifier: ^17.2.0
-        version: 17.3.0
+        specifier: ^17.4.0
+        version: 17.4.0
       typescript:
         specifier: ^5.9.3
         version: 5.9.3
@@ -113,8 +113,8 @@ importers:
         specifier: ^0.4.24
         version: 0.4.26(eslint@9.39.3(jiti@2.6.1))
       globals:
-        specifier: ^17.2.0
-        version: 17.3.0
+        specifier: ^17.4.0
+        version: 17.4.0
       tailwindcss:
         specifier: ^4.1.18
         version: 4.2.1
@@ -1263,8 +1263,8 @@ packages:
     resolution: {integrity: sha512-oahGvuMGQlPw/ivIYBjVSrWAfWLBeku5tpPE2fOPLi+WHffIWbuh2tCjhyQhTBPMf5E9jDEH4FOmTYgYwbKwtQ==}
     engines: {node: '>=18'}
 
-  globals@17.3.0:
-    resolution: {integrity: sha512-yMqGUQVVCkD4tqjOJf3TnrvaaHDMYp4VlUSObbkIiuCPe/ofdMBFIAcBbCSRFWOnos6qRiTVStDwqPLUclaxIw==}
+  globals@17.4.0:
+    resolution: {integrity: sha512-hjrNztw/VajQwOLsMNT1cbJiH2muO3OROCHnbehc8eY5JyD2gqz4AcMHPqgaOR59DjgUjYAYLeH699g/eWi2jw==}
     engines: {node: '>=18'}
 
   globby@10.0.2:
@@ -3132,7 +3132,7 @@ snapshots:
 
   globals@14.0.0: {}
 
-  globals@17.3.0: {}
+  globals@17.4.0: {}
 
   globby@10.0.2:
     dependencies:
