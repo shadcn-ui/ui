@@ -1,4 +1,5 @@
 import type {
+  BaseColor,
   BaseColorName,
   Radius,
   StyleName,
@@ -24,11 +25,11 @@ export type BiasFilter<T> = (
 ) => readonly T[]
 
 export type RandomizeBiases = {
+  baseColors?: BiasFilter<BaseColor>
   fonts?: BiasFilter<(typeof FONTS)[number]>
   radius?: BiasFilter<Radius>
   // Add more bias filters as needed:
   // styles?: BiasFilter<Style>
-  // baseColors?: BiasFilter<BaseColor>
   // themes?: BiasFilter<Theme>
   // etc.
 }
@@ -38,6 +39,9 @@ export type RandomizeBiases = {
  * Add biases here to influence random selection based on context.
  */
 export const RANDOMIZE_BIASES: RandomizeBiases = {
+  baseColors: (baseColors) => {
+    return baseColors.filter((c) => c.name !== "gray")
+  },
   fonts: (fonts, context) => {
     // When style is lyra, only use mono fonts.
     if (context.style === "lyra") {

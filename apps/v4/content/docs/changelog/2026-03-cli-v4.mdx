@@ -1,0 +1,153 @@
+---
+title: March 2026 - shadcn/cli v4
+description: More capable, easier to use. Built for you and your coding agents. Skills, presets, dry run, new templates, monorepo and more.
+date: 2026-03-06
+---
+
+We're releasing version 4 of shadcn/cli. More capable, easier to use. Built for you and your coding agents. Here's everything new.
+
+### shadcn/skills
+
+shadcn/skills gives coding agents the context they need to work with your components and registry correctly. It covers both Radix and Base UI primitives, updated APIs, component patterns and registry workflows. The skill also knows how to use the shadcn CLI, when to invoke it and which flags to pass. Agents make fewer mistakes and produce code that actually matches your design system.
+
+You can ask your agent things like:
+
+- "create a new vite monorepo"
+- "find me a hero from tailark, add it to the homepage, animate the text using an animation from react-bits"
+- "install and configure a sign in page from @clerk"
+
+```bash
+npx skills add shadcn/ui
+```
+
+### Introducing --preset
+
+A preset packs your entire design system config into a short code. Colors, theme, icon library, fonts, radius. One string, everything included.
+
+Build your preset on [shadcn/create](/create), preview it live and grab the code when you're ready.
+
+```bash
+npx shadcn@latest init --preset a1Dg5eFl
+```
+
+Use it to scaffold projects from custom config, share with your team or publish in your registry. Drop it in prompts so your agent knows where to start. Use it across Claude, Codex, v0, Replit. Take your preset with you.
+
+### Switching presets
+
+When you're working on a new app, it can take a few tries to find something you like so we've made switching presets really easy. Run init --preset in your app, and the cli will take care of reconfiguring everything including your components.
+
+```bash
+npx shadcn@latest init --preset ad3qkJ7
+```
+
+### Skills + Presets
+
+Your agent knows how to use presets. Scaffold a project, switch design systems, try something new.
+
+- "create a new next app using --preset adtk27v"
+- "let's try --preset adtk27v"
+
+### New shadcn/create
+
+To help you build custom presets, we rebuilt [shadcn/create](/create). It now includes a library of UI components you can use to preview your presets. See how your colors, fonts and radius apply to real components before you start building.
+
+### New --dry-run, --diff, and --view flags
+
+Inspect what a registry will add to your project before anything gets written. Review the payload yourself or pipe it to your coding agent for a second look.
+
+```bash
+npx shadcn@latest add button --dry-run
+npx shadcn@latest add button --diff
+npx shadcn@latest add button --view
+```
+
+### Updating primitives
+
+You can use the `--diff` flag to check for registry updates. Or ask your agent: "check for updates from @shadcn and merge with my local changes".
+
+```bash
+npx shadcn@latest add button --diff
+```
+
+### shadcn init --template
+
+`shadcn init` now scaffolds full project templates for Next.js, Vite, Laravel, React Router, Astro and TanStack Start. Dark mode included for Next.js and Vite.
+
+```bash
+npx shadcn@latest init
+
+Select a template › - Use arrow-keys. Return to submit.
+❯ Next.js
+  Vite
+  TanStack Start
+  React Router
+  Astro
+  Laravel
+```
+
+Use `--monorepo` to set up a monorepo.
+
+```bash
+npx shadcn@latest init -t next --monorepo
+```
+
+### shadcn init --base
+
+Pick your primitives. Use `--base` to start a project with Radix or Base UI.
+
+```bash
+npx shadcn@latest init --base radix
+```
+
+### shadcn info
+
+The `info` command now shows the full picture: framework, version, CSS vars, which components are installed, and where to find docs and examples for every component. Great for giving coding agents the context they need to work with your project.
+
+```bash
+npx shadcn@latest info
+```
+
+### shadcn docs
+
+Get docs, code and examples for any UI component right from the CLI. Gives your coding agent the context to use your primitives correctly.
+
+```bash
+npx shadcn@latest docs combobox
+
+combobox
+  - docs      https://ui.shadcn.com/docs/components/radix/combobox
+  - examples  https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/combobox-example.tsx
+  - api       https://base-ui.com/react/components/combobox
+```
+
+### registry:base and registry:font
+
+Registries can now distribute an entire design system as a single payload using `registry:base`. Components, dependencies, CSS vars, fonts, config. One install, everything set up.
+
+Fonts are now a first-class registry type. Install and configure them the same way you install components.
+
+```json title="font-inter.json" showLineNumbers
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "font-inter",
+  "type": "registry:font",
+  "font": {
+    "family": "'Inter Variable', sans-serif",
+    "provider": "google",
+    "import": "Inter",
+    "variable": "--font-sans",
+    "subsets": ["latin"]
+  }
+}
+```
+
+```bash
+npx shadcn@latest add font-inter
+```
+
+## Links
+
+- [shadcn/skills](/skills)
+- [shadcn/create](/create)
+- [shadcn/cli](/cli)
+- [shadcn/registry](/docs/registry)

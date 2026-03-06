@@ -15,5 +15,12 @@
       "type": "registry:ui"
     }
   ],
+  "meta": {
+    "links": {
+      "docs": "https://ui.shadcn.com/docs/components/base/command",
+      "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/command-example.tsx",
+      "api": "https://github.com/dip/cmdk"
+    }
+  },
   "type": "registry:ui"
 }

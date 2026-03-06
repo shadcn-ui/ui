@@ -21,21 +21,33 @@ Usage: shadcn init [options] [components...]
 initialize your project and install dependencies
 
 Arguments:
-  components         name, url or local path to component
+  components              name, url or local path to component
 
 Options:
-  -t, --template <template>      the template to use. (next, next-monorepo)
-  -b, --base-color <base-color>  the base color to use. (neutral, gray, zinc, stone, slate)
-  -y, --yes                      skip confirmation prompt. (default: true)
-  -f, --force                    force overwrite of existing configuration. (default: false)
-  -c, --cwd <cwd>                the working directory. defaults to the current directory.
-  -s, --silent                   mute output. (default: false)
-  --src-dir                      use the src directory when creating a new project. (default: false)
-  --no-src-dir                   do not use the src directory when creating a new project.
-  --css-variables                use css variables for theming. (default: true)
-  --no-css-variables             do not use css variables for theming.
-  --no-base-style                do not install the base shadcn style
-  -h, --help                     display help for command
+  -t, --template <template>  the template to use. (next, vite, start, react-router, laravel, astro)
+  -b, --base <base>          the component library to use. (radix, base)
+  -p, --preset [name]        use a preset configuration. (name, URL, or preset code)
+  -n, --name <name>          the name for the new project.
+  -d, --defaults             use default configuration. (default: false)
+  -y, --yes                  skip confirmation prompt. (default: true)
+  -f, --force                force overwrite of existing configuration. (default: false)
+  -c, --cwd <cwd>            the working directory. defaults to the current directory.
+  -s, --silent               mute output. (default: false)
+  --monorepo                 scaffold a monorepo project.
+  --no-monorepo              skip the monorepo prompt.
+  --reinstall                re-install existing UI components.
+  --no-reinstall             do not re-install existing UI components.
+  --rtl                      enable RTL support.
+  --no-rtl                   disable RTL support.
+  --css-variables            use css variables for theming. (default: true)
+  --no-css-variables         do not use css variables for theming.
+  -h, --help                 display help for command
+```
+
+The `create` command is an alias for `init`:
+
+```bash
+npx shadcn@latest create
 ```
 
 ---
@@ -56,20 +68,19 @@ Usage: shadcn add [options] [components...]
 add a component to your project
 
 Arguments:
-  components         name, url or local path to component
+  components           name, url or local path to component
 
 Options:
-  -y, --yes           skip confirmation prompt. (default: false)
-  -o, --overwrite     overwrite existing files. (default: false)
-  -c, --cwd <cwd>     the working directory. defaults to the current directory.
-  -a, --all           add all available components (default: false)
-  -p, --path <path>   the path to add the component to.
-  -s, --silent        mute output. (default: false)
-  --src-dir           use the src directory when creating a new project. (default: false)
-  --no-src-dir        do not use the src directory when creating a new project.
-  --css-variables     use css variables for theming. (default: true)
-  --no-css-variables  do not use css variables for theming.
-  -h, --help          display help for command
+  -y, --yes            skip confirmation prompt. (default: false)
+  -o, --overwrite      overwrite existing files. (default: false)
+  -c, --cwd <cwd>      the working directory. defaults to the current directory.
+  -a, --all            add all available components (default: false)
+  -p, --path <path>    the path to add the component to.
+  -s, --silent         mute output. (default: false)
+  --dry-run            preview changes without writing files. (default: false)
+  --diff [path]        show diff for a file.
+  --view [path]        show file contents.
+  -h, --help           display help for command
 ```
 
 ---
@@ -158,40 +169,6 @@ Options:
 
 ---
 
-## list
-
-Use the `list` command to list all items from a registry.
-
-```bash
-npx shadcn@latest list @acme
-```
-
-**Options**
-
-```bash
-Usage: shadcn list [options] <registries...>
-
-list items from registries
-
-Arguments:
-  registries             the registry names or urls to list items from. Names
-    must be prefixed with @.
-```
-
-**Options**
-
-```bash
-Usage: shadcn list [options] <registries...>
-
-list items from registries
-
-Arguments:
-  registries             the registry names or urls to list items from. Names
-    must be prefixed with @.
-```
-
----
-
 ## build
 
 Use the `build` command to generate the registry JSON files.
@@ -222,6 +199,56 @@ To customize the output directory, use the `--output` option.
 
 ```bash
 npx shadcn@latest build --output ./public/registry
+```
+
+---
+
+## docs
+
+Use the `docs` command to fetch documentation and API references for components.
+
+```bash
+npx shadcn@latest docs [component]
+```
+
+**Options**
+
+```bash
+Usage: shadcn docs [options] [component]
+
+fetch documentation and API references for components
+
+Arguments:
+  component          the component to get docs for
+
+Options:
+  -c, --cwd <cwd>    the working directory. defaults to the current directory.
+  -b, --base <base>  the base to use either 'base' or 'radix'. defaults to project base.
+  --json             output as JSON. (default: false)
+  -h, --help         display help for command
+```
+
+---
+
+## info
+
+Use the `info` command to get information about your project.
+
+```bash
+npx shadcn@latest info
+```
+
+**Options**
+
+```bash
+Usage: shadcn info [options]
+
+get information about your project
+
+Options:
+  -c, --cwd <cwd>  the working directory. defaults to the current directory.
+  --json            output as JSON. (default: false)
+  -h, --help        display help for command
 ```
 
 ---

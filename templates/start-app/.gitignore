@@ -10,4 +10,5 @@ count.txt
 .wrangler
 .output
 .vinxi
+__unconfig*
 todos.json

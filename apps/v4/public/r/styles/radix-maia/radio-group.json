@@ -8,5 +8,12 @@
       "type": "registry:ui"
     }
   ],
+  "meta": {
+    "links": {
+      "docs": "https://ui.shadcn.com/docs/components/radix/radio-group",
+      "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/radio-group-example.tsx",
+      "api": "https://www.radix-ui.com/docs/primitives/components/radio-group.md"
+    }
+  },
   "type": "registry:ui"
 }

@@ -8,5 +8,12 @@
       "type": "registry:ui"
     }
   ],
+  "meta": {
+    "links": {
+      "docs": "https://ui.shadcn.com/docs/components/radix/switch",
+      "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/switch-example.tsx",
+      "api": "https://www.radix-ui.com/docs/primitives/components/switch.md"
+    }
+  },
   "type": "registry:ui"
 }

@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { Button } from "@/examples/radix/ui/button"
 import { PlusSignIcon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 
@@ -12,9 +13,9 @@ import { MainNav } from "@/components/main-nav"
 import { MobileNav } from "@/components/mobile-nav"
 import { ModeSwitcher } from "@/components/mode-switcher"
 import { SiteConfig } from "@/components/site-config"
-// import blocks from "@/registry/__blocks__.json"
-import { Button } from "@/registry/new-york-v4/ui/button"
 import { Separator } from "@/registry/new-york-v4/ui/separator"
+import { ProjectForm } from "@/app/(create)/components/project-form"
+import { V0Button } from "@/app/(create)/components/v0-button"
 
 export function SiteHeader() {
   const colors = getColors()
@@ -58,23 +59,24 @@ export function SiteHeader() {
             <SiteConfig className="hidden 3xl:flex" />
             <Separator orientation="vertical" />
             <ModeSwitcher />
-            <Separator orientation="vertical" className="mr-2" />
-            <Button
-              asChild
-              size="sm"
-              className="hidden h-[31px] rounded-lg sm:flex"
-            >
-              <Link href="/create">
-                <HugeiconsIcon icon={PlusSignIcon} />
-                New Project
-              </Link>
-            </Button>
-            <Button asChild size="sm" className="h-[31px] rounded-lg sm:hidden">
-              <Link href="/create">
-                <HugeiconsIcon icon={PlusSignIcon} />
-                New
-              </Link>
-            </Button>
+            <div className="hidden items-center gap-2 group-has-data-[slot=designer]/layout:md:flex">
+              <Separator orientation="vertical" />
+              <V0Button />
+              <ProjectForm />
+            </div>
+            <div className="hidden items-center gap-2 group-has-data-[slot=designer]/layout:flex group-has-data-[slot=designer]/layout:md:hidden">
+              <Separator orientation="vertical" />
+              <V0Button />
+            </div>
+            <div className="flex items-center gap-2 group-has-data-[slot=designer]/layout:hidden">
+              <Separator orientation="vertical" />
+              <Button asChild size="sm" className="h-[31px] rounded-lg">
+                <Link href="/create">
+                  <HugeiconsIcon icon={PlusSignIcon} />
+                  New
+                </Link>
+              </Button>
+            </div>
           </div>
         </div>
       </div>

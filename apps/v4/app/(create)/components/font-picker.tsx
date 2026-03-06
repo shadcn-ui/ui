@@ -14,6 +14,7 @@ import {
   Picker,
   PickerContent,
   PickerGroup,
+  PickerLabel,
   PickerRadioGroup,
   PickerRadioItem,
   PickerSeparator,
@@ -37,6 +38,25 @@ export function FontPicker({
     () => fonts.find((font) => font.value === params.font),
     [fonts, params.font]
   )
+  const groupedFonts = React.useMemo(() => {
+    const groups = new Map<Font["type"], Font[]>()
+
+    for (const font of fonts) {
+      const existing = groups.get(font.type)
+      if (existing) {
+        existing.push(font)
+        continue
+      }
+
+      groups.set(font.type, [font])
+    }
+
+    return Array.from(groups.entries()).map(([type, items]) => ({
+      type,
+      label: `${type.charAt(0).toUpperCase()}${type.slice(1)}`,
+      items,
+    }))
+  }, [fonts])
 
   return (
     <div className="group/picker relative">
@@ -49,7 +69,7 @@ export function FontPicker({
             </div>
           </div>
           <div
-            className="pointer-events-none absolute top-1/2 right-4 flex size-4 -translate-y-1/2 items-center justify-center text-base text-foreground select-none"
+            className="pointer-events-none absolute top-1/2 right-4 flex size-4 -translate-y-1/2 items-center justify-center text-base text-foreground select-none md:right-2.5"
             style={{ fontFamily: currentFont?.font.style.fontFamily }}
           >
             Aa
@@ -59,7 +79,7 @@ export function FontPicker({
           anchor={isMobile ? anchorRef : undefined}
           side={isMobile ? "top" : "right"}
           align={isMobile ? "center" : "start"}
-          className="max-h-96 md:w-72"
+          className="max-h-96"
         >
           <PickerRadioGroup
             value={currentFont?.value}
@@ -67,36 +87,26 @@ export function FontPicker({
               setParams({ font: value as FontValue })
             }}
           >
-            <PickerGroup>
-              {fonts.map((font, index) => (
-                <React.Fragment key={font.value}>
-                  <PickerRadioItem value={font.value}>
-                    <Item size="xs">
-                      <ItemContent className="gap-1">
-                        <ItemTitle className="text-xs font-medium text-muted-foreground">
-                          {font.name}
-                        </ItemTitle>
-                        <ItemDescription
-                          style={{ fontFamily: font.font.style.fontFamily }}
-                        >
-                          Designers love packing quirky glyphs into test
-                          phrases.
-                        </ItemDescription>
-                      </ItemContent>
-                    </Item>
+            {groupedFonts.map((group) => (
+              <PickerGroup key={group.type}>
+                <PickerLabel>{group.label}</PickerLabel>
+                {group.items.map((font) => (
+                  <PickerRadioItem
+                    key={font.value}
+                    value={font.value}
+                    closeOnClick={isMobile}
+                  >
+                    {font.name}
                   </PickerRadioItem>
-                  {index < fonts.length - 1 && (
-                    <PickerSeparator className="opacity-50" />
-                  )}
-                </React.Fragment>
-              ))}
-            </PickerGroup>
+                ))}
+              </PickerGroup>
+            ))}
           </PickerRadioGroup>
         </PickerContent>
       </Picker>
       <LockButton
         param="font"
-        className="absolute top-1/2 right-10 -translate-y-1/2"
+        className="absolute top-1/2 right-8 -translate-y-1/2"
       />
     </div>
   )

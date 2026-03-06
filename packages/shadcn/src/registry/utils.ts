@@ -7,7 +7,7 @@ import {
   registryItemSchema,
 } from "@/src/schema"
 import { Config } from "@/src/utils/get-config"
-import { ProjectInfo, getProjectInfo } from "@/src/utils/get-project-info"
+import { getProjectInfo, ProjectInfo } from "@/src/utils/get-project-info"
 import { resolveImport } from "@/src/utils/resolve-import"
 import {
   findCommonRoot,

@@ -15,5 +15,12 @@
       "type": "registry:ui"
     }
   ],
+  "meta": {
+    "links": {
+      "docs": "https://ui.shadcn.com/docs/components/base/combobox",
+      "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/combobox-example.tsx",
+      "api": "https://base-ui.com/react/components/combobox.md"
+    }
+  },
   "type": "registry:ui"
 }

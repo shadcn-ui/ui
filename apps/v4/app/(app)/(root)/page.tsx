@@ -56,7 +56,7 @@ export default function IndexPage() {
         <PageHeaderDescription>{description}</PageHeaderDescription>
         <PageActions>
           <Button asChild size="sm" className="h-[31px] rounded-lg">
-            <Link href="/docs/installation">Get Started</Link>
+            <Link href="/create">New Project</Link>
           </Button>
           <Button asChild size="sm" variant="ghost" className="rounded-lg">
             <Link href="/docs/components">View Components</Link>

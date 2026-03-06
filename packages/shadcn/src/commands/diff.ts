@@ -8,6 +8,11 @@ import {
 } from "@/src/registry/api"
 import { registryIndexSchema } from "@/src/schema"
 import { Config, getConfig } from "@/src/utils/get-config"
+import {
+  formatMonorepoMessage,
+  getMonorepoTargets,
+  isMonorepoRoot,
+} from "@/src/utils/get-monorepo-info"
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
@@ -25,7 +30,7 @@ const updateOptionsSchema = z.object({
 
 export const diff = new Command()
   .name("diff")
-  .description("check for updates against the registry")
+  .description("[DEPRECATED] Use `add [component] --diff` instead.")
   .argument("[component]", "the component name")
   .option("-y, --yes", "skip confirmation prompt.", false)
   .option(
@@ -49,6 +54,15 @@ export const diff = new Command()
 
       const config = await getConfig(cwd)
       if (!config) {
+        // Check if we're in a monorepo root.
+        if (await isMonorepoRoot(cwd)) {
+          const targets = await getMonorepoTargets(cwd)
+          if (targets.length > 0) {
+            formatMonorepoMessage("diff [component]", targets)
+            process.exit(1)
+          }
+        }
+
         logger.warn(
           `Configuration is missing. Please run ${highlighter.success(
             `init`

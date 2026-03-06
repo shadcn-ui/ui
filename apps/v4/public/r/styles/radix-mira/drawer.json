@@ -11,5 +11,12 @@
       "type": "registry:ui"
     }
   ],
+  "meta": {
+    "links": {
+      "docs": "https://ui.shadcn.com/docs/components/radix/drawer",
+      "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/drawer-example.tsx",
+      "api": "https://vaul.emilkowal.ski/getting-started"
+    }
+  },
   "type": "registry:ui"
 }

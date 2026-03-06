@@ -4,7 +4,7 @@
   "title": "Outfit",
   "type": "registry:font",
   "font": {
-    "family": "'Outfit', sans-serif",
+    "family": "'Outfit Variable', sans-serif",
     "provider": "google",
     "import": "Outfit",
     "variable": "--font-sans",

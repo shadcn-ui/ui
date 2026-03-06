@@ -23,6 +23,12 @@ export function useIframeMessageListener<
   messageType: MessageType,
   onMessage: (data: Extract<Message, { type: MessageType }>["data"]) => void
 ) {
+  const onMessageRef = React.useRef(onMessage)
+
+  React.useEffect(() => {
+    onMessageRef.current = onMessage
+  }, [onMessage])
+
   React.useEffect(() => {
     if (!isInIframe()) {
       return
@@ -30,7 +36,7 @@ export function useIframeMessageListener<
 
     const handleMessage = (event: MessageEvent) => {
       if (event.data.type === messageType) {
-        onMessage(event.data.data)
+        onMessageRef.current(event.data.data)
       }
     }
 
@@ -38,7 +44,7 @@ export function useIframeMessageListener<
     return () => {
       window.removeEventListener("message", handleMessage)
     }
-  }, [messageType, onMessage])
+  }, [messageType])
 }
 
 export function sendToIframe<

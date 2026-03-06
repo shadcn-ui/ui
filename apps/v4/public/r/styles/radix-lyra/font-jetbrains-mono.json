@@ -7,7 +7,7 @@
     "family": "'JetBrains Mono Variable', monospace",
     "provider": "google",
     "import": "JetBrains_Mono",
-    "variable": "--font-sans",
+    "variable": "--font-mono",
     "subsets": [
       "latin"
     ]

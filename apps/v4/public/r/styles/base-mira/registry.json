@@ -3,6 +3,56 @@
   "homepage": "https://ui.shadcn.com",
   "items": [
     {
+      "name": "index",
+      "dependencies": [
+        "class-variance-authority",
+        "lucide-react",
+        "@base-ui/react"
+      ],
+      "devDependencies": ["tw-animate-css", "shadcn"],
+      "registryDependencies": ["utils"],
+      "files": [],
+      "cssVars": {},
+      "css": {
+        "@import \"tw-animate-css\"": {},
+        "@import \"shadcn/tailwind.css\"": {},
+        "@layer base": {
+          "*": {
+            "@apply border-border outline-ring/50": {}
+          },
+          "body": {
+            "@apply bg-background text-foreground": {}
+          }
+        }
+      },
+      "type": "registry:style"
+    },
+    {
+      "name": "style",
+      "dependencies": [
+        "class-variance-authority",
+        "lucide-react",
+        "@base-ui/react"
+      ],
+      "devDependencies": ["tw-animate-css", "shadcn"],
+      "registryDependencies": ["utils"],
+      "files": [],
+      "cssVars": {},
+      "css": {
+        "@import \"tw-animate-css\"": {},
+        "@import \"shadcn/tailwind.css\"": {},
+        "@layer base": {
+          "*": {
+            "@apply border-border outline-ring/50": {}
+          },
+          "body": {
+            "@apply bg-background text-foreground": {}
+          }
+        }
+      },
+      "type": "registry:style"
+    },
+    {
       "name": "accordion",
       "files": [
         {
@@ -10,6 +60,13 @@
           "type": "registry:ui"
         }
       ],
+      "meta": {
+        "links": {
+          "docs": "https://ui.shadcn.com/docs/components/base/accordion",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/accordion-example.tsx",
+          "api": "https://base-ui.com/react/components/accordion.md"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -20,6 +77,12 @@
           "type": "registry:ui"
         }
       ],
+      "meta": {
+        "links": {
+          "docs": "https://ui.shadcn.com/docs/components/base/alert",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/alert-example.tsx"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -31,6 +94,13 @@
           "type": "registry:ui"
         }
       ],
+      "meta": {
+        "links": {
+          "docs": "https://ui.shadcn.com/docs/components/base/alert-dialog",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/alert-dialog-example.tsx",
+          "api": "https://base-ui.com/react/components/alert-dialog.md"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -41,6 +111,12 @@
           "type": "registry:ui"
         }
       ],
+      "meta": {
+        "links": {
+          "docs": "https://ui.shadcn.com/docs/components/base/aspect-ratio",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/aspect-ratio-example.tsx"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -51,6 +127,13 @@
           "type": "registry:ui"
         }
       ],
+      "meta": {
+        "links": {
+          "docs": "https://ui.shadcn.com/docs/components/base/avatar",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/avatar-example.tsx",
+          "api": "https://base-ui.com/react/components/avatar.md"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -61,6 +144,12 @@
           "type": "registry:ui"
         }
       ],
+      "meta": {
+        "links": {
+          "docs": "https://ui.shadcn.com/docs/components/base/badge",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/badge-example.tsx"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -71,6 +160,12 @@
           "type": "registry:ui"
         }
       ],
+      "meta": {
+        "links": {
+          "docs": "https://ui.shadcn.com/docs/components/base/breadcrumb",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/breadcrumb-example.tsx"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -81,6 +176,12 @@
           "type": "registry:ui"
         }
       ],
+      "meta": {
+        "links": {
+          "docs": "https://ui.shadcn.com/docs/components/base/button",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/button-example.tsx"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -92,6 +193,12 @@
           "type": "registry:ui"
         }
       ],
+      "meta": {
+        "links": {
+          "docs": "https://ui.shadcn.com/docs/components/base/button-group",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/button-group-example.tsx"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -104,6 +211,13 @@
           "type": "registry:ui"
         }
       ],
+      "meta": {
+        "links": {
+          "docs": "https://ui.shadcn.com/docs/components/base/calendar",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/calendar-example.tsx",
+          "api": "https://react-day-picker.js.org"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -114,6 +228,12 @@
           "type": "registry:ui"
         }
       ],
+      "meta": {
+        "links": {
+          "docs": "https://ui.shadcn.com/docs/components/base/card",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/card-example.tsx"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -126,6 +246,13 @@
           "type": "registry:ui"
         }
       ],
+      "meta": {
+        "links": {
+          "docs": "https://ui.shadcn.com/docs/components/base/carousel",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/carousel-example.tsx",
+          "api": "https://www.embla-carousel.com/get-started/react"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -138,6 +265,12 @@
           "type": "registry:ui"
         }
       ],
+      "meta": {
+        "links": {
+          "docs": "https://ui.shadcn.com/docs/components/base/chart",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/chart-example.tsx"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -148,6 +281,13 @@
           "type": "registry:ui"
         }
       ],
+      "meta": {
+        "links": {
+          "docs": "https://ui.shadcn.com/docs/components/base/checkbox",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/checkbox-example.tsx",
+          "api": "https://base-ui.com/react/components/checkbox.md"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -158,6 +298,13 @@
           "type": "registry:ui"
         }
       ],
+      "meta": {
+        "links": {
+          "docs": "https://ui.shadcn.com/docs/components/base/collapsible",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/collapsible-example.tsx",
+          "api": "https://base-ui.com/react/components/collapsible.md"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -170,6 +317,13 @@
           "type": "registry:ui"
         }
       ],
+      "meta": {
+        "links": {
+          "docs": "https://ui.shadcn.com/docs/components/base/combobox",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/combobox-example.tsx",
+          "api": "https://base-ui.com/react/components/combobox.md"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -182,6 +336,13 @@
           "type": "registry:ui"
         }
       ],
+      "meta": {
+        "links": {
+          "docs": "https://ui.shadcn.com/docs/components/base/command",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/command-example.tsx",
+          "api": "https://github.com/dip/cmdk"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -192,6 +353,13 @@
           "type": "registry:ui"
         }
       ],
+      "meta": {
+        "links": {
+          "docs": "https://ui.shadcn.com/docs/components/base/context-menu",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/context-menu-example.tsx",
+          "api": "https://base-ui.com/react/components/context-menu.md"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -203,6 +371,13 @@
           "type": "registry:ui"
         }
       ],
+      "meta": {
+        "links": {
+          "docs": "https://ui.shadcn.com/docs/components/base/dialog",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/dialog-example.tsx",
+          "api": "https://base-ui.com/react/components/dialog.md"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -214,6 +389,13 @@
           "type": "registry:ui"
         }
       ],
+      "meta": {
+        "links": {
+          "docs": "https://ui.shadcn.com/docs/components/base/drawer",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/drawer-example.tsx",
+          "api": "https://vaul.emilkowal.ski/getting-started"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -224,6 +406,13 @@
           "type": "registry:ui"
         }
       ],
+      "meta": {
+        "links": {
+          "docs": "https://ui.shadcn.com/docs/components/base/dropdown-menu",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/dropdown-menu-example.tsx",
+          "api": "https://base-ui.com/react/components/menu.md"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -234,6 +423,12 @@
           "type": "registry:ui"
         }
       ],
+      "meta": {
+        "links": {
+          "docs": "https://ui.shadcn.com/docs/components/base/empty",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/empty-example.tsx"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -245,6 +440,12 @@
           "type": "registry:ui"
         }
       ],
+      "meta": {
+        "links": {
+          "docs": "https://ui.shadcn.com/docs/components/base/field",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/field-example.tsx"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -259,6 +460,13 @@
           "type": "registry:ui"
         }
       ],
+      "meta": {
+        "links": {
+          "docs": "https://ui.shadcn.com/docs/components/base/hover-card",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/hover-card-example.tsx",
+          "api": "https://base-ui.com/react/components/hover-card.md"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -269,6 +477,12 @@
           "type": "registry:ui"
         }
       ],
+      "meta": {
+        "links": {
+          "docs": "https://ui.shadcn.com/docs/components/base/input",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/input-example.tsx"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -280,6 +494,12 @@
           "type": "registry:ui"
         }
       ],
+      "meta": {
+        "links": {
+          "docs": "https://ui.shadcn.com/docs/components/base/input-group",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/input-group-example.tsx"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -291,6 +511,13 @@
           "type": "registry:ui"
         }
       ],
+      "meta": {
+        "links": {
+          "docs": "https://ui.shadcn.com/docs/components/base/input-otp",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/input-otp-example.tsx",
+          "api": "https://input-otp.rodz.dev"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -302,6 +529,12 @@
           "type": "registry:ui"
         }
       ],
+      "meta": {
+        "links": {
+          "docs": "https://ui.shadcn.com/docs/components/base/item",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/item-example.tsx"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -312,6 +545,13 @@
           "type": "registry:ui"
         }
       ],
+      "meta": {
+        "links": {
+          "docs": "https://ui.shadcn.com/docs/components/base/label",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/label-example.tsx",
+          "api": "https://base-ui.com/react/components/label.md"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -323,6 +563,13 @@
           "type": "registry:ui"
         }
       ],
+      "meta": {
+        "links": {
+          "docs": "https://ui.shadcn.com/docs/components/base/menubar",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/menubar-example.tsx",
+          "api": "https://base-ui.com/react/components/menubar.md"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -333,6 +580,13 @@
           "type": "registry:ui"
         }
       ],
+      "meta": {
+        "links": {
+          "docs": "https://ui.shadcn.com/docs/components/base/navigation-menu",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/navigation-menu-example.tsx",
+          "api": "https://base-ui.com/react/components/navigation-menu.md"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -344,6 +598,12 @@
           "type": "registry:ui"
         }
       ],
+      "meta": {
+        "links": {
+          "docs": "https://ui.shadcn.com/docs/components/base/pagination",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/pagination-example.tsx"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -354,6 +614,13 @@
           "type": "registry:ui"
         }
       ],
+      "meta": {
+        "links": {
+          "docs": "https://ui.shadcn.com/docs/components/base/popover",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/popover-example.tsx",
+          "api": "https://base-ui.com/react/components/popover.md"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -364,6 +631,13 @@
           "type": "registry:ui"
         }
       ],
+      "meta": {
+        "links": {
+          "docs": "https://ui.shadcn.com/docs/components/base/progress",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/progress-example.tsx",
+          "api": "https://base-ui.com/react/components/progress.md"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -374,6 +648,13 @@
           "type": "registry:ui"
         }
       ],
+      "meta": {
+        "links": {
+          "docs": "https://ui.shadcn.com/docs/components/base/radio-group",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/radio-group-example.tsx",
+          "api": "https://base-ui.com/react/components/radio-group.md"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -385,6 +666,13 @@
           "type": "registry:ui"
         }
       ],
+      "meta": {
+        "links": {
+          "docs": "https://ui.shadcn.com/docs/components/base/resizable",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/resizable-example.tsx",
+          "api": "https://github.com/bvaughn/react-resizable-panels"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -395,6 +683,13 @@
           "type": "registry:ui"
         }
       ],
+      "meta": {
+        "links": {
+          "docs": "https://ui.shadcn.com/docs/components/base/scroll-area",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/scroll-area-example.tsx",
+          "api": "https://base-ui.com/react/components/scroll-area.md"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -405,6 +700,13 @@
           "type": "registry:ui"
         }
       ],
+      "meta": {
+        "links": {
+          "docs": "https://ui.shadcn.com/docs/components/base/select",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/select-example.tsx",
+          "api": "https://base-ui.com/react/components/select.md"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -415,6 +717,13 @@
           "type": "registry:ui"
         }
       ],
+      "meta": {
+        "links": {
+          "docs": "https://ui.shadcn.com/docs/components/base/separator",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/separator-example.tsx",
+          "api": "https://base-ui.com/react/components/separator.md"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -426,6 +735,13 @@
           "type": "registry:ui"
         }
       ],
+      "meta": {
+        "links": {
+          "docs": "https://ui.shadcn.com/docs/components/base/sheet",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/sheet-example.tsx",
+          "api": "https://base-ui.com/react/components/dialog.md"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -445,6 +761,12 @@
           "type": "registry:ui"
         }
       ],
+      "meta": {
+        "links": {
+          "docs": "https://ui.shadcn.com/docs/components/base/sidebar",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/sidebar-example.tsx"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -455,6 +777,12 @@
           "type": "registry:ui"
         }
       ],
+      "meta": {
+        "links": {
+          "docs": "https://ui.shadcn.com/docs/components/base/skeleton",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/skeleton-example.tsx"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -465,6 +793,13 @@
           "type": "registry:ui"
         }
       ],
+      "meta": {
+        "links": {
+          "docs": "https://ui.shadcn.com/docs/components/base/slider",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/slider-example.tsx",
+          "api": "https://base-ui.com/react/components/slider.md"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -476,6 +811,13 @@
           "type": "registry:ui"
         }
       ],
+      "meta": {
+        "links": {
+          "docs": "https://ui.shadcn.com/docs/components/base/sonner",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/sonner-example.tsx",
+          "api": "https://sonner.emilkowal.ski"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -486,6 +828,12 @@
           "type": "registry:ui"
         }
       ],
+      "meta": {
+        "links": {
+          "docs": "https://ui.shadcn.com/docs/components/base/spinner",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/spinner-example.tsx"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -496,6 +844,13 @@
           "type": "registry:ui"
         }
       ],
+      "meta": {
+        "links": {
+          "docs": "https://ui.shadcn.com/docs/components/base/switch",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/switch-example.tsx",
+          "api": "https://base-ui.com/react/components/switch.md"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -506,6 +861,12 @@
           "type": "registry:ui"
         }
       ],
+      "meta": {
+        "links": {
+          "docs": "https://ui.shadcn.com/docs/components/base/table",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/table-example.tsx"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -516,6 +877,13 @@
           "type": "registry:ui"
         }
       ],
+      "meta": {
+        "links": {
+          "docs": "https://ui.shadcn.com/docs/components/base/tabs",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/tabs-example.tsx",
+          "api": "https://base-ui.com/react/components/tabs.md"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -526,6 +894,12 @@
           "type": "registry:ui"
         }
       ],
+      "meta": {
+        "links": {
+          "docs": "https://ui.shadcn.com/docs/components/base/textarea",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/textarea-example.tsx"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -536,6 +910,13 @@
           "type": "registry:ui"
         }
       ],
+      "meta": {
+        "links": {
+          "docs": "https://ui.shadcn.com/docs/components/base/toggle",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/toggle-example.tsx",
+          "api": "https://base-ui.com/react/components/toggle.md"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -547,6 +928,13 @@
           "type": "registry:ui"
         }
       ],
+      "meta": {
+        "links": {
+          "docs": "https://ui.shadcn.com/docs/components/base/toggle-group",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/toggle-group-example.tsx",
+          "api": "https://base-ui.com/react/components/toggle-group.md"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -557,6 +945,13 @@
           "type": "registry:ui"
         }
       ],
+      "meta": {
+        "links": {
+          "docs": "https://ui.shadcn.com/docs/components/base/tooltip",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/tooltip-example.tsx",
+          "api": "https://base-ui.com/react/components/tooltip.md"
+        }
+      },
       "docs": "The `tooltip` component has been added. Remember to wrap your app with the `TooltipProvider` component.\n\n```tsx title=\"app/layout.tsx\"\nimport { TooltipProvider } from \"@/components/ui/tooltip\"\n\nexport default function RootLayout({ children }: { children: React.ReactNode }) {\n  return (\n    <html lang=\"en\">\n      <body>\n        <TooltipProvider>{children}</TooltipProvider>\n      </body>\n    </html>\n  )\n}\n```\n",
       "type": "registry:ui"
     },
@@ -568,6 +963,12 @@
           "type": "registry:ui"
         }
       ],
+      "meta": {
+        "links": {
+          "docs": "https://ui.shadcn.com/docs/components/base/kbd",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/kbd-example.tsx"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -578,6 +979,12 @@
           "type": "registry:ui"
         }
       ],
+      "meta": {
+        "links": {
+          "docs": "https://ui.shadcn.com/docs/components/base/native-select",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/native-select-example.tsx"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -589,6 +996,12 @@
           "type": "registry:ui"
         }
       ],
+      "meta": {
+        "links": {
+          "docs": "https://ui.shadcn.com/docs/components/base/direction",
+          "api": "https://base-ui.com/react/utils/direction-provider.md"
+        }
+      },
       "type": "registry:ui"
     },
     {
@@ -1468,6 +1881,33 @@
       "type": "registry:example"
     },
     {
+      "name": "demo",
+      "title": "Demo",
+      "registryDependencies": [
+        "alert-dialog",
+        "badge",
+        "button",
+        "button-group",
+        "card",
+        "checkbox",
+        "dropdown-menu",
+        "field",
+        "input-group",
+        "item",
+        "radio-group",
+        "slider",
+        "switch",
+        "textarea"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/examples/demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
       "name": "component-example",
       "title": "Example",
       "registryDependencies": [
@@ -1515,7 +1955,7 @@
     },
     {
       "name": "preview",
-      "title": "Home",
+      "title": "Preview",
       "registryDependencies": [
         "alert-dialog",
         "avatar",
@@ -1523,6 +1963,7 @@
         "button",
         "button-group",
         "card",
+        "chart",
         "checkbox",
         "combobox",
         "dropdown-menu",
@@ -1546,110 +1987,7 @@
       ],
       "files": [
         {
-          "path": "registry/base-mira/blocks/preview.tsx",
-          "type": "registry:block"
-        }
-      ],
-      "type": "registry:block"
-    },
-    {
-      "name": "elevenlabs",
-      "title": "Elevenlabs",
-      "registryDependencies": ["example", "button", "card"],
-      "files": [
-        {
-          "path": "registry/base-mira/blocks/elevenlabs.tsx",
-          "type": "registry:block"
-        }
-      ],
-      "type": "registry:block"
-    },
-    {
-      "name": "github",
-      "title": "GitHub",
-      "registryDependencies": [
-        "avatar",
-        "badge",
-        "button",
-        "card",
-        "checkbox",
-        "combobox",
-        "command",
-        "drawer",
-        "dropdown-menu",
-        "empty",
-        "field",
-        "input",
-        "input-group",
-        "item",
-        "kbd",
-        "native-select",
-        "popover",
-        "separator",
-        "spinner",
-        "tabs",
-        "textarea",
-        "tooltip",
-        "example"
-      ],
-      "files": [
-        {
-          "path": "registry/base-mira/blocks/github.tsx",
-          "type": "registry:block"
-        }
-      ],
-      "type": "registry:block"
-    },
-    {
-      "name": "vercel",
-      "title": "Vercel",
-      "registryDependencies": [
-        "alert",
-        "badge",
-        "button",
-        "calendar",
-        "card",
-        "chart",
-        "dialog",
-        "dropdown-menu",
-        "empty",
-        "field",
-        "input-group",
-        "item",
-        "native-select",
-        "popover",
-        "textarea",
-        "example"
-      ],
-      "files": [
-        {
-          "path": "registry/base-mira/blocks/vercel.tsx",
-          "type": "registry:block"
-        }
-      ],
-      "type": "registry:block"
-    },
-    {
-      "name": "chatgpt",
-      "title": "ChatGPT",
-      "registryDependencies": [
-        "alert",
-        "alert-dialog",
-        "badge",
-        "button",
-        "card",
-        "dropdown-menu",
-        "field",
-        "input-group",
-        "item",
-        "kbd",
-        "popover",
-        "tooltip",
-        "example"
-      ],
-      "files": [
-        {
-          "path": "registry/base-mira/blocks/chatgpt.tsx",
+          "path": "registry/base-mira/blocks/preview/index.tsx",
           "type": "registry:block"
         }
       ],
@@ -2554,7 +2892,7 @@
       "title": "Roboto",
       "type": "registry:font",
       "font": {
-        "family": "'Roboto', sans-serif",
+        "family": "'Roboto Variable', sans-serif",
         "provider": "google",
         "import": "Roboto",
         "variable": "--font-sans",
@@ -2566,7 +2904,7 @@
       "title": "Raleway",
       "type": "registry:font",
       "font": {
-        "family": "'Raleway', sans-serif",
+        "family": "'Raleway Variable', sans-serif",
         "provider": "google",
         "import": "Raleway",
         "variable": "--font-sans",
@@ -2578,7 +2916,7 @@
       "title": "DM Sans",
       "type": "registry:font",
       "font": {
-        "family": "'DM Sans', sans-serif",
+        "family": "'DM Sans Variable', sans-serif",
         "provider": "google",
         "import": "DM_Sans",
         "variable": "--font-sans",
@@ -2590,7 +2928,7 @@
       "title": "Public Sans",
       "type": "registry:font",
       "font": {
-        "family": "'Public Sans', sans-serif",
+        "family": "'Public Sans Variable', sans-serif",
         "provider": "google",
         "import": "Public_Sans",
         "variable": "--font-sans",
@@ -2602,7 +2940,7 @@
       "title": "Outfit",
       "type": "registry:font",
       "font": {
-        "family": "'Outfit', sans-serif",
+        "family": "'Outfit Variable', sans-serif",
         "provider": "google",
         "import": "Outfit",
         "variable": "--font-sans",
@@ -2617,7 +2955,7 @@
         "family": "'JetBrains Mono Variable', monospace",
         "provider": "google",
         "import": "JetBrains_Mono",
-        "variable": "--font-sans",
+        "variable": "--font-mono",
         "subsets": ["latin"]
       }
     },
@@ -2630,6 +2968,66 @@
         "provider": "google",
         "import": "Geist_Mono",
         "variable": "--font-mono",
+        "subsets": ["latin"]
+      }
+    },
+    {
+      "name": "font-noto-serif",
+      "title": "Noto Serif",
+      "type": "registry:font",
+      "font": {
+        "family": "'Noto Serif Variable', serif",
+        "provider": "google",
+        "import": "Noto_Serif",
+        "variable": "--font-serif",
+        "subsets": ["latin"]
+      }
+    },
+    {
+      "name": "font-roboto-slab",
+      "title": "Roboto Slab",
+      "type": "registry:font",
+      "font": {
+        "family": "'Roboto Slab Variable', serif",
+        "provider": "google",
+        "import": "Roboto_Slab",
+        "variable": "--font-serif",
+        "subsets": ["latin"]
+      }
+    },
+    {
+      "name": "font-merriweather",
+      "title": "Merriweather",
+      "type": "registry:font",
+      "font": {
+        "family": "'Merriweather Variable', serif",
+        "provider": "google",
+        "import": "Merriweather",
+        "variable": "--font-serif",
+        "subsets": ["latin"]
+      }
+    },
+    {
+      "name": "font-lora",
+      "title": "Lora",
+      "type": "registry:font",
+      "font": {
+        "family": "'Lora Variable', serif",
+        "provider": "google",
+        "import": "Lora",
+        "variable": "--font-serif",
+        "subsets": ["latin"]
+      }
+    },
+    {
+      "name": "font-playfair-display",
+      "title": "Playfair Display",
+      "type": "registry:font",
+      "font": {
+        "family": "'Playfair Display Variable', serif",
+        "provider": "google",
+        "import": "Playfair_Display",
+        "variable": "--font-serif",
         "subsets": ["latin"]
       }
     }

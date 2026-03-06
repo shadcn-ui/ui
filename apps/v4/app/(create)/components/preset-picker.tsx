@@ -100,7 +100,11 @@ export function PresetPicker({
             {currentBasePresets.map((preset) => {
               const style = STYLES.find((s) => s.name === preset.style)
               return (
-                <PickerRadioItem key={preset.title} value={preset.title}>
+                <PickerRadioItem
+                  key={preset.title}
+                  value={preset.title}
+                  closeOnClick={isMobile}
+                >
                   <div className="flex items-center gap-2">
                     {style?.icon && (
                       <div className="flex size-4 shrink-0 items-center justify-center">

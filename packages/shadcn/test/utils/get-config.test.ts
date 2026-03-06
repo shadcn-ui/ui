@@ -3,6 +3,7 @@ import { describe, expect, test } from "vitest"
 
 import {
   createConfig,
+  getBase,
   getConfig,
   getRawConfig,
 } from "../../src/utils/get-config"
@@ -194,6 +195,22 @@ test("get config", async () => {
     registries: {
       "@shadcn": "https://ui.shadcn.com/r/styles/{style}/{name}.json",
     },
+  })
+})
+
+describe("getBase", () => {
+  test("returns radix for radix styles", () => {
+    expect(getBase("radix-nova")).toBe("radix")
+    expect(getBase("radix-vega")).toBe("radix")
+  })
+
+  test("returns base for base styles", () => {
+    expect(getBase("base-nova")).toBe("base")
+    expect(getBase("base-vega")).toBe("base")
+  })
+
+  test("returns radix for undefined", () => {
+    expect(getBase(undefined)).toBe("radix")
   })
 })
 

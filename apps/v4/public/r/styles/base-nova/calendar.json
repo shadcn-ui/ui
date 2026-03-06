@@ -15,5 +15,12 @@
       "type": "registry:ui"
     }
   ],
+  "meta": {
+    "links": {
+      "docs": "https://ui.shadcn.com/docs/components/base/calendar",
+      "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/calendar-example.tsx",
+      "api": "https://react-day-picker.js.org"
+    }
+  },
   "type": "registry:ui"
 }

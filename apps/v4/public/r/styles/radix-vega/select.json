@@ -8,5 +8,12 @@
       "type": "registry:ui"
     }
   ],
+  "meta": {
+    "links": {
+      "docs": "https://ui.shadcn.com/docs/components/radix/select",
+      "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/select-example.tsx",
+      "api": "https://www.radix-ui.com/docs/primitives/components/select.md"
+    }
+  },
   "type": "registry:ui"
 }

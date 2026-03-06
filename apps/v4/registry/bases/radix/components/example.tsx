@@ -2,7 +2,7 @@ import { cn } from "@/registry/bases/radix/lib/utils"
 
 function ExampleWrapper({ className, ...props }: React.ComponentProps<"div">) {
   return (
-    <div className="w-full bg-background">
+    <div className="w-full bg-muted dark:bg-background">
       <div
         data-slot="example-wrapper"
         className={cn(
@@ -42,7 +42,7 @@ function Example({
       <div
         data-slot="example-content"
         className={cn(
-          "flex min-w-0 flex-1 flex-col items-start gap-6 border border-dashed bg-background p-4 text-foreground sm:p-6 *:[div:not([class*='w-'])]:w-full",
+          "flex min-w-0 flex-1 flex-col items-start gap-6 rounded-xl bg-card p-12 text-foreground *:[div:not([class*='w-'])]:w-full",
           className
         )}
       >

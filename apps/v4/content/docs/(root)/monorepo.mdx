@@ -20,27 +20,27 @@ for you.
 
 ### Create a new monorepo project
 
-To create a new monorepo project, run the `init` command. You will be prompted
-to select the type of project you are creating.
+To create a new monorepo project, run the `init` command with the `--monorepo` flag.
 
 ```bash
-npx shadcn@latest init
+npx shadcn@latest init --monorepo
 ```
 
-Select the `Next.js (Monorepo)` option.
+Then select the template you want to use.
 
 ```bash
-? Would you like to start a new project?
-    Next.js
-❯   Next.js (Monorepo)
+? Select a template ›
+❯   Next.js
+    Vite
+    TanStack Start
+    React Router
+    Astro
 ```
 
 This will create a new monorepo project with two workspaces: `web` and `ui`,
 and [Turborepo](https://turbo.build/repo/docs) as the build system.
 
 Everything is set up for you, so you can start adding components to your project.
-
-Note: The monorepo uses React 19 and Tailwind CSS v4.
 
 ### Add components to your project
 
@@ -116,13 +116,13 @@ turbo.json
 ```json showLineNumbers title="apps/web/components.json"
 {
   "$schema": "https://ui.shadcn.com/schema.json",
-  "style": "new-york",
+  "style": "radix-nova",
   "rsc": true,
   "tsx": true,
   "tailwind": {
     "config": "",
     "css": "../../packages/ui/src/styles/globals.css",
-    "baseColor": "zinc",
+    "baseColor": "neutral",
     "cssVariables": true
   },
   "iconLibrary": "lucide",
@@ -139,13 +139,13 @@ turbo.json
 ```json showLineNumbers title="packages/ui/components.json"
 {
   "$schema": "https://ui.shadcn.com/schema.json",
-  "style": "new-york",
+  "style": "radix-nova",
   "rsc": true,
   "tsx": true,
   "tailwind": {
     "config": "",
     "css": "src/styles/globals.css",
-    "baseColor": "zinc",
+    "baseColor": "neutral",
     "cssVariables": true
   },
   "iconLibrary": "lucide",

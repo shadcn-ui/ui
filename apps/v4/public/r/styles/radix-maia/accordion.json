@@ -8,5 +8,12 @@
       "type": "registry:ui"
     }
   ],
+  "meta": {
+    "links": {
+      "docs": "https://ui.shadcn.com/docs/components/radix/accordion",
+      "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/accordion-example.tsx",
+      "api": "https://www.radix-ui.com/primitives/docs/components/accordion.md"
+    }
+  },
   "type": "registry:ui"
 }

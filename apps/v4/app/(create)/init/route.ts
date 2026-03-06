@@ -2,31 +2,16 @@ import { NextResponse, type NextRequest } from "next/server"
 import { track } from "@vercel/analytics/server"
 import { registryItemSchema } from "shadcn/schema"
 
-import { buildRegistryBase, designSystemConfigSchema } from "@/registry/config"
+import { buildRegistryBase } from "@/registry/config"
+import { parseDesignSystemConfig } from "@/app/(create)/init/parse-config"
 
 export async function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams
-
-    const result = designSystemConfigSchema.safeParse({
-      base: searchParams.get("base"),
-      style: searchParams.get("style"),
-      iconLibrary: searchParams.get("iconLibrary"),
-      baseColor: searchParams.get("baseColor"),
-      theme: searchParams.get("theme"),
-      font: searchParams.get("font"),
-      menuAccent: searchParams.get("menuAccent"),
-      menuColor: searchParams.get("menuColor"),
-      radius: searchParams.get("radius"),
-      template: searchParams.get("template"),
-      rtl: searchParams.get("rtl") === "true",
-    })
+    const result = parseDesignSystemConfig(searchParams)
 
     if (!result.success) {
-      return NextResponse.json(
-        { error: result.error.issues[0].message },
-        { status: 400 }
-      )
+      return NextResponse.json({ error: result.error }, { status: 400 })
     }
 
     const registryBase = buildRegistryBase(result.data)
@@ -42,7 +27,10 @@ export async function GET(request: NextRequest) {
       )
     }
 
-    track("create_app", result.data)
+    track("create_app", {
+      ...result.data,
+      preset: searchParams.get("preset") ?? "",
+    })
 
     return NextResponse.json(parseResult.data)
   } catch (error) {

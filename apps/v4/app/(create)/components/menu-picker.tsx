@@ -29,7 +29,7 @@ const MENU_OPTIONS = [
         fill="none"
         role="img"
         stroke="currentColor"
-        className="text-foreground"
+        className="size-4 text-foreground"
       >
         <path
           d="M2 11.5C2 7.02166 2 4.78249 3.39124 3.39124C4.78249 2 7.02166 2 11.5 2C15.9783 2 18.2175 2 19.6088 3.39124C21 4.78249 21 7.02166 21 11.5C21 15.9783 21 18.2175 19.6088 19.6088C18.2175 21 15.9783 21 11.5 21C7.02166 21 4.78249 21 3.39124 19.6088C2 18.2175 2 15.9783 2 11.5Z"
@@ -71,7 +71,7 @@ const MENU_OPTIONS = [
         viewBox="0 0 24 24"
         fill="none"
         role="img"
-        className="fill-foreground text-foreground"
+        className="size-4 fill-background"
       >
         <path
           d="M2 11.5C2 7.02166 2 4.78249 3.39124 3.39124C4.78249 2 7.02166 2 11.5 2C15.9783 2 18.2175 2 19.6088 3.39124C21 4.78249 21 7.02166 21 11.5C21 15.9783 21 18.2175 19.6088 19.6088C18.2175 21 15.9783 21 11.5 21C7.02166 21 4.78249 21 3.39124 19.6088C2 18.2175 2 15.9783 2 11.5Z"
@@ -80,21 +80,21 @@ const MENU_OPTIONS = [
         />
         <path
           d="M8.5 11.5L14.5001 11.5"
-          stroke="var(--background)"
+          stroke="var(--foreground)"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
         />
         <path
           d="M9.5 15H13.5"
-          stroke="var(--background)"
+          stroke="var(--foreground)"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
         />
         <path
           d="M7.5 8H15.5"
-          stroke="var(--background)"
+          stroke="var(--foreground)"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -128,7 +128,7 @@ export function MenuColorPicker({
               {currentMenu?.label}
             </div>
           </div>
-          <div className="pointer-events-none absolute top-1/2 right-4 flex size-4 -translate-y-1/2 items-center justify-center text-base text-foreground select-none">
+          <div className="pointer-events-none absolute top-1/2 right-4 flex size-4 -translate-y-1/2 items-center justify-center text-base text-foreground select-none md:right-2.5">
             {currentMenu?.icon}
           </div>
         </PickerTrigger>
@@ -145,8 +145,11 @@ export function MenuColorPicker({
           >
             <PickerGroup>
               {MENU_OPTIONS.map((menu) => (
-                <PickerRadioItem key={menu.value} value={menu.value}>
-                  {menu.icon}
+                <PickerRadioItem
+                  key={menu.value}
+                  value={menu.value}
+                  closeOnClick={isMobile}
+                >
                   {menu.label}
                 </PickerRadioItem>
               ))}
@@ -156,7 +159,7 @@ export function MenuColorPicker({
       </Picker>
       <LockButton
         param="menuColor"
-        className="absolute top-1/2 right-10 -translate-y-1/2"
+        className="absolute top-1/2 right-8 -translate-y-1/2"
       />
     </div>
   )

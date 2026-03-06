@@ -3,20 +3,24 @@ title: React Router
 description: Install and configure shadcn/ui for React Router.
 ---
 
+<Callout className="mb-6 border-emerald-600 bg-emerald-100 dark:border-emerald-400 dark:bg-emerald-900">
+
+**Starting a new project?** Use [shadcn/create](/create) for a fully configured React Router app with custom themes, Base UI or Radix, and icon libraries.
+
+</Callout>
+
 <Steps>
 
 ### Create project
 
 ```bash
-npx create-react-router@latest my-app
+npx shadcn@latest init -t react-router
 ```
 
-### Run the CLI
-
-Run the `shadcn` init command to setup your project:
+**For a monorepo project, use `--monorepo` flag:**
 
 ```bash
-npx shadcn@latest init
+npx shadcn@latest init -t react-router --monorepo
 ```
 
 ### Add Components
@@ -30,7 +34,7 @@ npx shadcn@latest add button
 The command above will add the `Button` component to your project. You can then import it like this:
 
 ```tsx showLineNumbers title="app/routes/home.tsx"
-import { Button } from "~/components/ui/button"
+import { Button } from "@/components/ui/button"
 
 import type { Route } from "./+types/home"
 

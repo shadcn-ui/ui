@@ -16,7 +16,7 @@
         "V0_EDIT_SECRET",
         "DEPLOYMENT_PROTECTION_BYPASS"
       ],
-      "outputs": ["dist/**", ".next/**"]
+      "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
     },
     "preview": {
       "env": ["NEXT_PUBLIC_APP_URL"],
