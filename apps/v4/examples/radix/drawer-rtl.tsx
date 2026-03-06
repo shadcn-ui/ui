@@ -142,7 +142,7 @@ export function DrawerRtl() {
                 <div className="text-7xl font-bold tracking-tighter">
                   {goal.toLocaleString(locale)}
                 </div>
-                <div className="text-muted-foreground text-[0.70rem] uppercase">
+                <div className="text-[0.70rem] text-muted-foreground uppercase">
                   {t.caloriesPerDay}
                 </div>
               </div>

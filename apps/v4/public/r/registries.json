@@ -1,5 +1,11 @@
 [
   {
+    "name": "@lmscn",
+    "homepage": "https://lmscn.vercel.app",
+    "url": "https://lmscn.vercel.app/r/{name}.json",
+    "description": "LMS components for building interactive learning experiences \u2014 quiz, flashcards, matching, fill-in-the-blank, word scramble, sequencing, reading comprehension, spaced repetition and more."
+  },
+  {
     "name": "@8bitcn",
     "homepage": "https://www.8bitcn.com",
     "url": "https://www.8bitcn.com/r/{name}.json",
@@ -51,7 +57,7 @@
     "name": "@aevr",
     "homepage": "https://ui.aevr.space",
     "url": "https://ui.aevr.space/r/{name}.json",
-    "description": "A small collection of focused, production‑ready components and primitives for React/Next.js projects—built on shadcn/ui and complementary libraries."
+    "description": "A small collection of focused, production\u2011ready components and primitives for React/Next.js projects\u2014built on shadcn/ui and complementary libraries."
   },
   {
     "name": "@ai-blocks",
@@ -171,7 +177,7 @@
     "name": "@cult-ui",
     "homepage": "https://www.cult-ui.com",
     "url": "https://cult-ui.com/r/{name}.json",
-    "description": "Cult UI is a rare, curated set of shadcn-compatible, headless and composable components—tastefully animated with Framer Motion."
+    "description": "Cult UI is a rare, curated set of shadcn-compatible, headless and composable components\u2014tastefully animated with Framer Motion."
   },
   {
     "name": "@diceui",
@@ -228,6 +234,12 @@
     "description": "Production-ready UI components designed for building beautiful AI assistants and conversational interfaces, from the team behind GAIA."
   },
   {
+    "name": "@gc-solid",
+    "homepage": "https://binnodon.github.io/gc-solid-ui",
+    "url": "https://binnodon.github.io/gc-solid-ui/r/{name}.json",
+    "description": "SolidJS port of shadcn-ui components built with Kobalte primitives. 57+ components with full TypeScript support and Vega theme."
+  },
+  {
     "name": "@glass-ui",
     "homepage": "https://glass-ui.crenspire.com",
     "url": "https://glass-ui.crenspire.com/r/{name}.json",
@@ -247,8 +259,8 @@
   },
   {
     "name": "@hooks",
-    "homepage": "https://shadcn-hooks.vercel.app",
-    "url": "https://shadcn-hooks.vercel.app/r/{name}.json",
+    "homepage": "https://shadcn-hooks.com",
+    "url": "https://shadcn-hooks.com/r/{name}.json",
     "description": "A comprehensive React Hooks Collection built with Shadcn."
   },
   {
@@ -405,7 +417,7 @@
     "name": "@paykit-sdk",
     "homepage": "https://www.usepaykit.dev",
     "url": "https://www.usepaykit.dev/r/{name}.json",
-    "description": "Unified payments SDK for builders — handle checkout, billing, and webhooks across Stripe, PayPal, Adyen, and regional gateways with a single integration."
+    "description": "Unified payments SDK for builders \u2014 handle checkout, billing, and webhooks across Stripe, PayPal, Adyen, and regional gateways with a single integration."
   },
   {
     "name": "@plate",
@@ -534,6 +546,12 @@
     "description": "A collection of premium, production-ready shadcn/ui blocks, components and templates."
   },
   {
+    "name": "@shadcnuikit",
+    "homepage": "https://shadcnuikit.com",
+    "url": "https://shadcnuikit.com/r/{name}.json",
+    "description": "Launch your projects faster with admin dashboards, website templates, components, blocks, and pre-built real-world examples."
+  },
+  {
     "name": "@shadcraft",
     "homepage": "https://free.shadcraft.com",
     "url": "https://free.shadcraft.com/r/{name}.json",
@@ -543,7 +561,7 @@
     "name": "@smoothui",
     "homepage": "https://smoothui.dev",
     "url": "https://smoothui.dev/r/{name}.json",
-    "description": "A collection of beautifully crafted motion components built with React, Framer Motion, and TailwindCSS. Designed to elevate microinteractions, each component focuses on smooth animations, subtle feedback, and delightful UX. Perfect for designers and developers who want to add refined motion to their interfaces — copy, paste, and make your UI come alive."
+    "description": "A collection of beautifully crafted motion components built with React, Framer Motion, and TailwindCSS. Designed to elevate microinteractions, each component focuses on smooth animations, subtle feedback, and delightful UX. Perfect for designers and developers who want to add refined motion to their interfaces \u2014 copy, paste, and make your UI come alive."
   },
   {
     "name": "@spectrumui",
@@ -574,6 +592,12 @@
     "homepage": "https://taki-ui.com",
     "url": "https://taki-ui.com/r/{name}.json",
     "description": "Beautifully designed, accessible components that you can copy and paste into your apps. Made with React Aria Components and Shadcn tokens."
+  },
+  {
+    "name": "@terrae",
+    "homepage": "https://www.terrae.dev",
+    "url": "https://www.terrae.dev/{name}.json",
+    "description": "Composable, animated map components for React. Built with TypeScript, Tailwind CSS, Mapbox GL JS, and MapLibre GL. Perfect companion for shadcn/ui."
   },
   {
     "name": "@thegridcn",
@@ -633,7 +657,7 @@
     "name": "@ui-layouts",
     "homepage": "https://ui-layouts.com/",
     "url": "https://ui-layouts.com/r/{name}.json",
-    "description": "UI Layouts offers components, effects, design tools, and ready-made blocks that make building modern interfaces more efficient—built with React, Next.js, Tailwind CSS, and shadcn/ui."
+    "description": "UI Layouts offers components, effects, design tools, and ready-made blocks that make building modern interfaces more efficient\u2014built with React, Next.js, Tailwind CSS, and shadcn/ui."
   },
   {
     "name": "@pureui",
@@ -681,7 +705,7 @@
     "name": "@shadcn-dashboard",
     "homepage": "https://shadcn-dashboard.com",
     "url": "https://shadcn-dashboard.com/r/{name}.json",
-    "description": "ShadcnDashboard is a collection of modern, production-ready dashboard layouts, components, and UI patterns built on top of shadcn/ui and Tailwind CSS. It’s designed to help developers build clean, scalable, and data-driven dashboards faster—without compromising on performance, accessibility, or customization."
+    "description": "ShadcnDashboard is a collection of modern, production-ready dashboard layouts, components, and UI patterns built on top of shadcn/ui and Tailwind CSS. It\u2019s designed to help developers build clean, scalable, and data-driven dashboards faster\u2014without compromising on performance, accessibility, or customization."
   },
   {
     "name": "@icons-animated",
@@ -717,7 +741,7 @@
     "name": "@lumiui",
     "homepage": "https://www.lumiui.dev",
     "url": "https://www.lumiui.dev/r/{name}.json",
-    "description": "Composable React components powered by Base UI and Tailwind CSS — Build fast, customize everything."
+    "description": "Composable React components powered by Base UI and Tailwind CSS \u2014 Build fast, customize everything."
   },
   {
     "name": "@uselayouts",
@@ -790,6 +814,12 @@
     "homepage": "https://pixelactui.com",
     "url": "https://pixelactui.com/r/{name}.json",
     "description": "Playful pixel art style components library built on top of shadcn. Perfect for retro style projects and games."
+  },
+  {
+    "name": "@emerald-ui",
+    "homepage": "https://emerald-ui.com",
+    "url": "https://emerald-ui.com/r/{name}.json",
+    "description": "Emerald UI - collection of components built with Motion, GSAP, Tailwind CSS and shadcn/ui."
   },
   {
     "name": "@fluid",

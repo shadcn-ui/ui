@@ -57,7 +57,7 @@ export default function ChangelogPage() {
                 </a>
               </Button>
             </div>
-            <p className="text-muted-foreground text-[1.05rem] sm:text-base sm:text-balance md:max-w-[80%]">
+            <p className="text-[1.05rem] text-muted-foreground sm:text-base sm:text-balance md:max-w-[80%]">
               Latest updates and announcements.
             </p>
           </div>
@@ -91,9 +91,9 @@ export default function ChangelogPage() {
                       <Link
                         key={page.url}
                         href={page.url}
-                        className="bg-surface text-surface-foreground hover:bg-surface/80 flex w-full flex-col rounded-xl px-4 py-3 transition-colors"
+                        className="flex w-full flex-col rounded-xl bg-surface px-4 py-3 text-surface-foreground transition-colors hover:bg-surface/80"
                       >
-                        <span className="text-muted-foreground text-xs">
+                        <span className="text-xs text-muted-foreground">
                           {date}
                         </span>
                         <span className="text-sm font-medium">{title}</span>
@@ -110,7 +110,7 @@ export default function ChangelogPage() {
         <div className="h-(--top-spacing) shrink-0"></div>
         <div className="no-scrollbar flex flex-col gap-8 overflow-y-auto px-8">
           <div className="flex flex-col gap-2 p-4 pt-0 text-sm">
-            <p className="text-muted-foreground bg-background sticky top-0 h-6 text-xs font-medium">
+            <p className="sticky top-0 h-6 bg-background text-xs font-medium text-muted-foreground">
               On This Page
             </p>
             {latestPages.map((page) => {
@@ -119,7 +119,7 @@ export default function ChangelogPage() {
                 <Link
                   key={page.url}
                   href={page.url}
-                  className="text-muted-foreground hover:text-foreground text-[0.8rem] no-underline transition-colors"
+                  className="text-[0.8rem] text-muted-foreground no-underline transition-colors hover:text-foreground"
                 >
                   {data.title}
                 </Link>
@@ -128,7 +128,7 @@ export default function ChangelogPage() {
             {olderPages.length > 0 && (
               <a
                 href="#more-updates"
-                className="text-muted-foreground hover:text-foreground text-[0.8rem] no-underline transition-colors"
+                className="text-[0.8rem] text-muted-foreground no-underline transition-colors hover:text-foreground"
               >
                 More Updates
               </a>

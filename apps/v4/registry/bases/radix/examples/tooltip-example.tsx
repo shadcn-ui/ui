@@ -159,7 +159,7 @@ function TooltipOnLink() {
         <TooltipTrigger asChild>
           <a
             href="#"
-            className="text-primary w-fit text-sm underline-offset-4 hover:underline"
+            className="w-fit text-sm text-primary underline-offset-4 hover:underline"
             onClick={(e) => e.preventDefault()}
           >
             Learn more

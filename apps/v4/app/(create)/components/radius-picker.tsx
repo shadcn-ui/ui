@@ -31,12 +31,12 @@ export function RadiusPicker({
       <Picker>
         <PickerTrigger>
           <div className="flex flex-col justify-start text-left">
-            <div className="text-muted-foreground text-xs">Radius</div>
-            <div className="text-foreground text-sm font-medium">
+            <div className="text-xs text-muted-foreground">Radius</div>
+            <div className="text-sm font-medium text-foreground">
               {currentRadius?.label}
             </div>
           </div>
-          <div className="text-foreground pointer-events-none absolute top-1/2 right-4 flex size-4 -translate-y-1/2 rotate-90 items-center justify-center text-base select-none">
+          <div className="pointer-events-none absolute top-1/2 right-4 flex size-4 -translate-y-1/2 rotate-90 items-center justify-center text-base text-foreground select-none">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -74,7 +74,7 @@ export function RadiusPicker({
                 >
                   <div className="flex flex-col justify-start pointer-coarse:gap-1">
                     <div>{defaultRadius.label}</div>
-                    <div className="text-muted-foreground text-xs pointer-coarse:text-sm">
+                    <div className="text-xs text-muted-foreground pointer-coarse:text-sm">
                       Use radius from style
                     </div>
                   </div>

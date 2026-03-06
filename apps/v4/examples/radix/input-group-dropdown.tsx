@@ -44,7 +44,7 @@ export default function InputGroupDropdown() {
         <InputGroupAddon align="inline-end">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <InputGroupButton variant="ghost" className="!pr-1.5 text-xs">
+              <InputGroupButton variant="ghost" className="pr-1.5! text-xs">
                 Search In... <ChevronDownIcon className="size-3" />
               </InputGroupButton>
             </DropdownMenuTrigger>

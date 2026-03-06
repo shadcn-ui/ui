@@ -12,7 +12,7 @@ import { RefreshCcwIcon } from "lucide-react"
 
 export function EmptyMuted() {
   return (
-    <Empty className="bg-muted/30 h-full">
+    <Empty className="h-full bg-muted/30">
       <EmptyHeader>
         <EmptyMedia variant="icon">
           <IconBell />

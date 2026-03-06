@@ -23,15 +23,15 @@ export function CardSmall() {
       <CardContent>
         <ul className="grid gap-2 py-2 text-sm">
           <li className="flex gap-2">
-            <ChevronRightIcon className="text-muted-foreground mt-0.5 size-4 shrink-0" />
+            <ChevronRightIcon className="mt-0.5 size-4 shrink-0 text-muted-foreground" />
             <span>Choose a schedule (daily, or weekly).</span>
           </li>
           <li className="flex gap-2">
-            <ChevronRightIcon className="text-muted-foreground mt-0.5 size-4 shrink-0" />
+            <ChevronRightIcon className="mt-0.5 size-4 shrink-0 text-muted-foreground" />
             <span>Send to channels or specific teammates.</span>
           </li>
           <li className="flex gap-2">
-            <ChevronRightIcon className="text-muted-foreground mt-0.5 size-4 shrink-0" />
+            <ChevronRightIcon className="mt-0.5 size-4 shrink-0 text-muted-foreground" />
             <span>Include charts, tables, and key metrics.</span>
           </li>
         </ul>
