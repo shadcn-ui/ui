@@ -462,9 +462,9 @@ function SidebarGroupContent({
   )
 }
 
-function SidebarMenu({ className, ...props }: React.ComponentProps<"ul">) {
+function SidebarMenu({ className, ...props }: React.ComponentProps<"div">) {
   return (
-    <ul
+    <div
       data-slot="sidebar-menu"
       data-sidebar="menu"
       className={cn("cn-sidebar-menu flex w-full min-w-0 flex-col", className)}
@@ -473,9 +473,9 @@ function SidebarMenu({ className, ...props }: React.ComponentProps<"ul">) {
   )
 }
 
-function SidebarMenuItem({ className, ...props }: React.ComponentProps<"li">) {
+function SidebarMenuItem({ className, ...props }: React.ComponentProps<"div">) {
   return (
-    <li
+    <div
       data-slot="sidebar-menu-item"
       data-sidebar="menu-item"
       className={cn("group/menu-item relative", className)}

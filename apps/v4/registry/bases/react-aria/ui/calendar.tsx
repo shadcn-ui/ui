@@ -237,7 +237,7 @@ function CalendarDayButton({
         defaultClassNames.day,
         className
       )}
-      {...props as React.ComponentProps<typeof DayButton>}
+      {...props as React.ComponentProps<typeof Button>}
     />
   )
 }

@@ -32,10 +32,11 @@ function ToggleGroup({
   orientation = "horizontal",
   children,
   ...props
-}: ToggleButtonGroupProps &
+}: Omit<ToggleButtonGroupProps, "children"> &
   VariantProps<typeof toggleVariants> & {
     spacing?: number
-    orientation?: "horizontal" | "vertical"
+    orientation?: "horizontal" | "vertical",
+    children?: React.ReactNode
   }) {
   return (
     <ToggleGroupPrimitive

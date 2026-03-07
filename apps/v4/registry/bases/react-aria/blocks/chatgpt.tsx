@@ -587,7 +587,8 @@ function CreateProjectForm() {
                     }
                     data-checked={selectedCategory === category.id}
                     render={
-                      <button
+                      props => <button
+                        {...props}
                         onClick={() => {
                           setSelectedCategory(
                             selectedCategory === category.id

@@ -484,7 +484,6 @@ function ToggleGroupFontWeightSelector() {
         <ToggleGroup
           selectedKeys={[fontWeight]}
           onSelectionChange={(value) => {
-            if (value === "all") return
             setFontWeight((Array.from(value)[0] as string) ?? "normal")
           }}
           variant="outline"

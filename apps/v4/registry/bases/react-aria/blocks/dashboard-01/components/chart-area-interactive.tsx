@@ -179,7 +179,6 @@ export function ChartAreaInteractive() {
             selectionMode="single"
             selectedKeys={timeRange ? [timeRange] : []}
             onSelectionChange={(value) => {
-              if (value === "all") return
               setTimeRange((Array.from(value)[0] as string) ?? "90d")
             }}
             variant="outline"
