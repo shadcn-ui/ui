@@ -1,5 +1,55 @@
 # @shadcn/ui
 
+## 4.0.0
+
+### Major Changes
+
+- [#9804](https://github.com/shadcn-ui/ui/pull/9804) [`605246f93b8c0c56eee0c1b25ccaa526e5cbdc1d`](https://github.com/shadcn-ui/ui/commit/605246f93b8c0c56eee0c1b25ccaa526e5cbdc1d) Thanks [@shadcn](https://github.com/shadcn)! - add --monorepo flag and monorepo support for vite, start and react-router
+
+- [#9804](https://github.com/shadcn-ui/ui/pull/9804) [`da10396f2b9b248c23bef05234ce222b0868ace4`](https://github.com/shadcn-ui/ui/commit/da10396f2b9b248c23bef05234ce222b0868ace4) Thanks [@shadcn](https://github.com/shadcn)! - add new base colors: mauve, olive, mist and taupe
+
+- [#9804](https://github.com/shadcn-ui/ui/pull/9804) [`ce1f9259bfe043b3105350a3357249458ac41a1b`](https://github.com/shadcn-ui/ui/commit/ce1f9259bfe043b3105350a3357249458ac41a1b) Thanks [@shadcn](https://github.com/shadcn)! - added `--preset` flag to `init` command
+
+- [#9804](https://github.com/shadcn-ui/ui/pull/9804) [`642d802eeef86a01a861de20e6da851cd3d8c974`](https://github.com/shadcn-ui/ui/commit/642d802eeef86a01a861de20e6da851cd3d8c974) Thanks [@shadcn](https://github.com/shadcn)! - use multiplicative instead of addition for --radius calc
+
+- [#9804](https://github.com/shadcn-ui/ui/pull/9804) [`b9b30a23e644c952fbe52db337bfdd427bc6449f`](https://github.com/shadcn-ui/ui/commit/b9b30a23e644c952fbe52db337bfdd427bc6449f) Thanks [@shadcn](https://github.com/shadcn)! - add shadcn/skills
+
+- [#9804](https://github.com/shadcn-ui/ui/pull/9804) [`642d802eeef86a01a861de20e6da851cd3d8c974`](https://github.com/shadcn-ui/ui/commit/642d802eeef86a01a861de20e6da851cd3d8c974) Thanks [@shadcn](https://github.com/shadcn)! - deprecate --base-color, --src-dir, --no-base-style flags
+
+- [#9804](https://github.com/shadcn-ui/ui/pull/9804) [`3bc23a60c7c825647265bca0942c330d1e93fcaa`](https://github.com/shadcn-ui/ui/commit/3bc23a60c7c825647265bca0942c330d1e93fcaa) Thanks [@shadcn](https://github.com/shadcn)! - deprecate create and make it an alias of init
+
+- [#9804](https://github.com/shadcn-ui/ui/pull/9804) [`fae5e7829263d80eb4b19bdcc9b8ea595060b837`](https://github.com/shadcn-ui/ui/commit/fae5e7829263d80eb4b19bdcc9b8ea595060b837) Thanks [@shadcn](https://github.com/shadcn)! - add astro template support
+
+- [#9804](https://github.com/shadcn-ui/ui/pull/9804) [`4bdd23291c499159098e2b2e27b738041a514558`](https://github.com/shadcn-ui/ui/commit/4bdd23291c499159098e2b2e27b738041a514558) Thanks [@shadcn](https://github.com/shadcn)! - add --reinstall flag for init
+
+- [#9804](https://github.com/shadcn-ui/ui/pull/9804) [`4fa2ef66ed6e99a02ea4524e45568440968a6c27`](https://github.com/shadcn-ui/ui/commit/4fa2ef66ed6e99a02ea4524e45568440968a6c27) Thanks [@shadcn](https://github.com/shadcn)! - add shadcn docs command
+
+- [#9804](https://github.com/shadcn-ui/ui/pull/9804) [`642d802eeef86a01a861de20e6da851cd3d8c974`](https://github.com/shadcn-ui/ui/commit/642d802eeef86a01a861de20e6da851cd3d8c974) Thanks [@shadcn](https://github.com/shadcn)! - add --base to shadcn init
+
+- [#9804](https://github.com/shadcn-ui/ui/pull/9804) [`642d802eeef86a01a861de20e6da851cd3d8c974`](https://github.com/shadcn-ui/ui/commit/642d802eeef86a01a861de20e6da851cd3d8c974) Thanks [@shadcn](https://github.com/shadcn)! - deprecate --css-variables flag from shadcn add
+
+- [#9804](https://github.com/shadcn-ui/ui/pull/9804) [`0d3f6a0812c51b36a6c7618e3b9eadd758860321`](https://github.com/shadcn-ui/ui/commit/0d3f6a0812c51b36a6c7618e3b9eadd758860321) Thanks [@shadcn](https://github.com/shadcn)! - deprecate registry:build and registry:mcp
+
+- [#9804](https://github.com/shadcn-ui/ui/pull/9804) [`4307815c0fa7576668e1d39999a284e350dbfc66`](https://github.com/shadcn-ui/ui/commit/4307815c0fa7576668e1d39999a284e350dbfc66) Thanks [@shadcn](https://github.com/shadcn)! - add preset code support
+
+- [#9804](https://github.com/shadcn-ui/ui/pull/9804) [`5f9691670188b5b411f84d16ca7db2693c922155`](https://github.com/shadcn-ui/ui/commit/5f9691670188b5b411f84d16ca7db2693c922155) Thanks [@shadcn](https://github.com/shadcn)! - refactor shadcn info command to output llm-friendly output
+
+- [#9804](https://github.com/shadcn-ui/ui/pull/9804) [`642d802eeef86a01a861de20e6da851cd3d8c974`](https://github.com/shadcn-ui/ui/commit/642d802eeef86a01a861de20e6da851cd3d8c974) Thanks [@shadcn](https://github.com/shadcn)! - refactor ordering of updaters
+
+- [#9804](https://github.com/shadcn-ui/ui/pull/9804) [`646f884e8fddd196cff3e118184733522516193d`](https://github.com/shadcn-ui/ui/commit/646f884e8fddd196cff3e118184733522516193d) Thanks [@shadcn](https://github.com/shadcn)! - add --dry-run, --diff and --view to the add command
+
+- [#9804](https://github.com/shadcn-ui/ui/pull/9804) [`642d802eeef86a01a861de20e6da851cd3d8c974`](https://github.com/shadcn-ui/ui/commit/642d802eeef86a01a861de20e6da851cd3d8c974) Thanks [@shadcn](https://github.com/shadcn)! - getTailwindCssFile fallback to config.tailwind.css
+
+- [#9804](https://github.com/shadcn-ui/ui/pull/9804) [`642d802eeef86a01a861de20e6da851cd3d8c974`](https://github.com/shadcn-ui/ui/commit/642d802eeef86a01a861de20e6da851cd3d8c974) Thanks [@shadcn](https://github.com/shadcn)! - add support for hooks, lib and ui install for workspaces
+
+### Patch Changes
+
+- [#9804](https://github.com/shadcn-ui/ui/pull/9804) [`4a96d95bde1bb2e692e61808ccc6b9c8e00676f4`](https://github.com/shadcn-ui/ui/commit/4a96d95bde1bb2e692e61808ccc6b9c8e00676f4) Thanks [@shadcn](https://github.com/shadcn)! - fix kbd display in tooltip
+
+- [#9804](https://github.com/shadcn-ui/ui/pull/9804) [`2ddd920e4d7c251eb96c88398b98bfe1f6ea0b8a`](https://github.com/shadcn-ui/ui/commit/2ddd920e4d7c251eb96c88398b98bfe1f6ea0b8a) Thanks [@shadcn](https://github.com/shadcn)! - warn if in monorepo and cwd not set
+
+- [#9708](https://github.com/shadcn-ui/ui/pull/9708) [`82f03d0f1dd12efb5395a0b8689533588d778d0c`](https://github.com/shadcn-ui/ui/commit/82f03d0f1dd12efb5395a0b8689533588d778d0c) Thanks [@shadcn](https://github.com/shadcn)! - handling of apply directive inside utility
+
 ## 3.8.5
 
 ### Patch Changes
