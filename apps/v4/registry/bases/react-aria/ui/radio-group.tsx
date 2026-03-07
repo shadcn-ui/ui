@@ -1,11 +1,15 @@
 "use client"
 
-import { Radio as RadioPrimitive } from "@base-ui/react/radio"
-import { RadioGroup as RadioGroupPrimitive } from "@base-ui/react/radio-group"
+import {
+  Radio as RadioPrimitive,
+  RadioGroup as RadioGroupPrimitive,
+  type RadioGroupProps,
+  type RadioProps,
+} from "react-aria-components"
 
 import { cn } from "@/registry/bases/react-aria/lib/utils"
 
-function RadioGroup({ className, ...props }: RadioGroupPrimitive.Props) {
+function RadioGroup({ className, ...props }: RadioGroupProps) {
   return (
     <RadioGroupPrimitive
       data-slot="radio-group"
@@ -15,23 +19,28 @@ function RadioGroup({ className, ...props }: RadioGroupPrimitive.Props) {
   )
 }
 
-function RadioGroupItem({ className, ...props }: RadioPrimitive.Root.Props) {
+function RadioGroupItem({ className, children, ...props }: RadioProps) {
   return (
-    <RadioPrimitive.Root
+    <RadioPrimitive
       data-slot="radio-group-item"
       className={cn(
-        "cn-radio-group-item group/radio-group-item peer relative aspect-square shrink-0 border outline-none after:absolute after:-inset-x-3 after:-inset-y-2 disabled:cursor-not-allowed disabled:opacity-50",
+        "cn-radio-group-item group/radio-group-item peer relative aspect-square shrink-0 border outline-none after:absolute after:-inset-x-3 after:-inset-y-2 data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50",
         className
       )}
       {...props}
     >
-      <RadioPrimitive.Indicator
-        data-slot="radio-group-indicator"
-        className="cn-radio-group-indicator"
-      >
-        <span className="cn-radio-group-indicator-icon" />
-      </RadioPrimitive.Indicator>
-    </RadioPrimitive.Root>
+      {({ isSelected }) => (
+        <>
+          <span
+            data-slot="radio-group-indicator"
+            className="cn-radio-group-indicator"
+          >
+            {isSelected && <span className="cn-radio-group-indicator-icon" />}
+          </span>
+          {children}
+        </>
+      )}
+    </RadioPrimitive>
   )
 }
 

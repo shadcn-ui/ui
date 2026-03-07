@@ -89,6 +89,12 @@
   }
 }
 
+@custom-variant data-invalid {
+  &:where([data-invalid="true"], [aria-invalid="true"]) {
+    @slot;
+  }
+}
+
 @utility no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;

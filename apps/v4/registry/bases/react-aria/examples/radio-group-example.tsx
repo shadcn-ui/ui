@@ -164,7 +164,7 @@ function RadioGroupGrid() {
 function RadioGroupDisabled() {
   return (
     <Example title="Disabled">
-      <RadioGroup defaultValue="option2" disabled>
+      <RadioGroup defaultValue="option2" isDisabled>
         <Field orientation="horizontal">
           <RadioGroupItem value="option1" id="disabled-1" />
           <FieldLabel htmlFor="disabled-1" className="font-normal">
@@ -196,21 +196,21 @@ function RadioGroupInvalid() {
         <FieldDescription>
           Choose how you want to receive notifications.
         </FieldDescription>
-        <RadioGroup defaultValue="email">
+        <RadioGroup defaultValue="email" isInvalid>
           <Field orientation="horizontal" data-invalid>
-            <RadioGroupItem value="email" id="invalid-email" aria-invalid />
+            <RadioGroupItem value="email" id="invalid-email" />
             <FieldLabel htmlFor="invalid-email" className="font-normal">
               Email only
             </FieldLabel>
           </Field>
           <Field orientation="horizontal" data-invalid>
-            <RadioGroupItem value="sms" id="invalid-sms" aria-invalid />
+            <RadioGroupItem value="sms" id="invalid-sms" />
             <FieldLabel htmlFor="invalid-sms" className="font-normal">
               SMS only
             </FieldLabel>
           </Field>
           <Field orientation="horizontal" data-invalid>
-            <RadioGroupItem value="both" id="invalid-both" aria-invalid />
+            <RadioGroupItem value="both" id="invalid-both" />
             <FieldLabel htmlFor="invalid-both" className="font-normal">
               Both Email & SMS
             </FieldLabel>
