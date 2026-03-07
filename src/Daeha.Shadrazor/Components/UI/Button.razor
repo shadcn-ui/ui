@@ -1,0 +1,52 @@
+@* Button component - Blazor port of shadcn/ui Button *@
+
+<button type="@Type"
+        data-slot="button"
+        class="@ComputedClass"
+        disabled="@Disabled"
+        @onclick="OnClick"
+        @attributes="AdditionalAttributes">
+    @ChildContent
+</button>
+
+@code {
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+    [Parameter] public ButtonVariant Variant { get; set; } = ButtonVariant.Default;
+    [Parameter] public ButtonSize Size { get; set; } = ButtonSize.Default;
+    [Parameter] public string? Class { get; set; }
+    [Parameter] public string Type { get; set; } = "button";
+    [Parameter] public bool Disabled { get; set; }
+    [Parameter] public EventCallback<Microsoft.AspNetCore.Components.Web.MouseEventArgs> OnClick { get; set; }
+    [Parameter(CaptureUnmatchedValues = true)] public Dictionary<string, object>? AdditionalAttributes { get; set; }
+
+    private string ComputedClass => CssUtils.Cn(
+        "cn-button group/button inline-flex shrink-0 items-center justify-center whitespace-nowrap transition-all outline-none select-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+        VariantClass,
+        SizeClass,
+        Class
+    );
+
+    private string VariantClass => Variant switch
+    {
+        ButtonVariant.Default => "cn-button-variant-default",
+        ButtonVariant.Outline => "cn-button-variant-outline",
+        ButtonVariant.Secondary => "cn-button-variant-secondary",
+        ButtonVariant.Ghost => "cn-button-variant-ghost",
+        ButtonVariant.Destructive => "cn-button-variant-destructive",
+        ButtonVariant.Link => "cn-button-variant-link",
+        _ => "cn-button-variant-default"
+    };
+
+    private string SizeClass => Size switch
+    {
+        ButtonSize.Default => "cn-button-size-default",
+        ButtonSize.Xs => "cn-button-size-xs",
+        ButtonSize.Sm => "cn-button-size-sm",
+        ButtonSize.Lg => "cn-button-size-lg",
+        ButtonSize.Icon => "cn-button-size-icon",
+        ButtonSize.IconXs => "cn-button-size-icon-xs",
+        ButtonSize.IconSm => "cn-button-size-icon-sm",
+        ButtonSize.IconLg => "cn-button-size-icon-lg",
+        _ => "cn-button-size-default"
+    };
+}

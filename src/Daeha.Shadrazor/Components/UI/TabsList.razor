@@ -1,0 +1,26 @@
+<div data-slot="tabs-list" data-variant="@VariantValue"
+     class="@CssUtils.Cn("cn-tabs-list inline-flex w-fit items-center justify-center text-muted-foreground", VariantClass, Class)"
+     role="tablist"
+     @attributes="AdditionalAttributes">
+    @ChildContent
+</div>
+
+@code {
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+
+    /// <summary>Visual variant of the tabs list.</summary>
+    [Parameter] public TabsListVariant Variant { get; set; } = TabsListVariant.Default;
+
+    /// <summary>Additional CSS classes.</summary>
+    [Parameter] public string? Class { get; set; }
+
+    [Parameter(CaptureUnmatchedValues = true)] public Dictionary<string, object>? AdditionalAttributes { get; set; }
+
+    private string VariantValue => Variant == TabsListVariant.Default ? "default" : "line";
+
+    private string VariantClass => Variant switch
+    {
+        TabsListVariant.Line => "cn-tabs-list-variant-line",
+        _ => "cn-tabs-list-variant-default"
+    };
+}

@@ -1,0 +1,11 @@
+@* Skeleton component - Blazor port of shadcn/ui Skeleton *@
+
+<div data-slot="skeleton"
+     class="@CssUtils.Cn("cn-skeleton animate-pulse", Class)"
+     @attributes="AdditionalAttributes">
+</div>
+
+@code {
+    [Parameter] public string? Class { get; set; }
+    [Parameter(CaptureUnmatchedValues = true)] public Dictionary<string, object>? AdditionalAttributes { get; set; }
+}

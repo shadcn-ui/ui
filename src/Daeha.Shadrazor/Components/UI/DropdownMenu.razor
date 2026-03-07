@@ -1,0 +1,38 @@
+@* DropdownMenu component - Blazor port of shadcn/ui DropdownMenu *@
+
+<div data-slot="dropdown-menu" class="relative inline-block" @attributes="AdditionalAttributes">
+    <div data-slot="dropdown-menu-trigger" @onclick="ToggleOpen">
+        @Trigger
+    </div>
+
+    @if (_open)
+    {
+        <div data-slot="dropdown-menu-content"
+             class="@CssUtils.Cn("cn-dropdown-menu-content absolute z-50 min-w-[8rem] origin-top-right", Class)"
+             style="@PositionUtils.GetPositionStyle(Side, Align)">
+            @ChildContent
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter] public RenderFragment? Trigger { get; set; }
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+
+    /// <summary>Alignment of the dropdown relative to its trigger.</summary>
+    [Parameter] public Alignment Align { get; set; } = Alignment.Start;
+
+    /// <summary>Side where the dropdown appears.</summary>
+    [Parameter] public Side Side { get; set; } = Side.Bottom;
+
+    /// <summary>Additional CSS classes.</summary>
+    [Parameter] public string? Class { get; set; }
+
+    [Parameter(CaptureUnmatchedValues = true)] public Dictionary<string, object>? AdditionalAttributes { get; set; }
+
+    private bool _open;
+
+    private void ToggleOpen() => _open = !_open;
+
+    internal void CloseMenu() { _open = false; StateHasChanged(); }
+}

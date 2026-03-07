@@ -1,0 +1,60 @@
+@* Pagination component - Blazor port of shadcn/ui Pagination *@
+
+<nav data-slot="pagination" role="navigation" aria-label="pagination"
+     class="@CssUtils.Cn("cn-pagination mx-auto flex w-full justify-center", Class)"
+     @attributes="AdditionalAttributes">
+    <ul class="cn-pagination-content flex flex-row items-center gap-1">
+        @if (CurrentPage > 1)
+        {
+            <li class="cn-pagination-item">
+                <button type="button" class="cn-pagination-link" @onclick="() => GoToPage(CurrentPage - 1)">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m15 18-6-6 6-6"/>
+                    </svg>
+                    <span>Previous</span>
+                </button>
+            </li>
+        }
+
+        @for (int i = 1; i <= TotalPages; i++)
+        {
+            var page = i;
+            <li class="cn-pagination-item">
+                <button type="button"
+                        class="cn-pagination-link"
+                        data-active="@(page == CurrentPage ? "" : null)"
+                        @onclick="() => GoToPage(page)">
+                    @page
+                </button>
+            </li>
+        }
+
+        @if (CurrentPage < TotalPages)
+        {
+            <li class="cn-pagination-item">
+                <button type="button" class="cn-pagination-link" @onclick="() => GoToPage(CurrentPage + 1)">
+                    <span>Next</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6"/>
+                    </svg>
+                </button>
+            </li>
+        }
+    </ul>
+</nav>
+
+@code {
+    [Parameter] public int CurrentPage { get; set; } = 1;
+    [Parameter] public EventCallback<int> CurrentPageChanged { get; set; }
+    [Parameter] public int TotalPages { get; set; } = 1;
+    [Parameter] public string? Class { get; set; }
+    [Parameter(CaptureUnmatchedValues = true)] public Dictionary<string, object>? AdditionalAttributes { get; set; }
+
+    private async Task GoToPage(int page)
+    {
+        CurrentPage = page;
+        await CurrentPageChanged.InvokeAsync(page);
+    }
+}

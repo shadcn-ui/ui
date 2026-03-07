@@ -1,0 +1,11 @@
+@* KBD component - Blazor port of shadcn/ui KBD *@
+
+<kbd data-slot="kbd" class="@CssUtils.Cn("cn-kbd", Class)" @attributes="AdditionalAttributes">
+    @ChildContent
+</kbd>
+
+@code {
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+    [Parameter] public string? Class { get; set; }
+    [Parameter(CaptureUnmatchedValues = true)] public Dictionary<string, object>? AdditionalAttributes { get; set; }
+}

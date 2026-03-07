@@ -1,0 +1,58 @@
+@* Sheet component - Blazor port of shadcn/ui Sheet *@
+
+@if (Open)
+{
+    <div data-slot="sheet">
+        <div data-slot="sheet-overlay"
+             class="cn-sheet-overlay fixed inset-0 z-50"
+             @onclick="Close"></div>
+
+        <div data-slot="sheet-content" data-side="@SideValue"
+             class="@CssUtils.Cn("cn-sheet-content", Class)"
+             @attributes="AdditionalAttributes">
+            @ChildContent
+
+            @if (ShowCloseButton)
+            {
+                <button type="button" data-slot="sheet-close" class="cn-sheet-close" @onclick="Close">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 6 6 18" /><path d="m6 6 12 12" />
+                    </svg>
+                    <span class="sr-only">Close</span>
+                </button>
+            }
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+
+    /// <summary>Whether the sheet is open.</summary>
+    [Parameter] public bool Open { get; set; }
+
+    /// <summary>Callback when open state changes.</summary>
+    [Parameter] public EventCallback<bool> OpenChanged { get; set; }
+
+    /// <summary>Side from which the sheet slides in.</summary>
+    [Parameter] public Side Side { get; set; } = Side.Right;
+
+    /// <summary>Whether to show the close button.</summary>
+    [Parameter] public bool ShowCloseButton { get; set; } = true;
+
+    /// <summary>Additional CSS classes.</summary>
+    [Parameter] public string? Class { get; set; }
+
+    [Parameter(CaptureUnmatchedValues = true)] public Dictionary<string, object>? AdditionalAttributes { get; set; }
+
+    private string SideValue => Side switch
+    {
+        Side.Top => "top",
+        Side.Bottom => "bottom",
+        Side.Left => "left",
+        _ => "right"
+    };
+
+    private async Task Close() => await OpenChanged.InvokeAsync(false);
+}

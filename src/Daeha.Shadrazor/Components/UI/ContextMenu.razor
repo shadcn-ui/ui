@@ -1,0 +1,32 @@
+@* ContextMenu component - Blazor port of shadcn/ui ContextMenu *@
+
+<div data-slot="context-menu" class="relative" @oncontextmenu="HandleContextMenu" @oncontextmenu:preventDefault
+     @attributes="AdditionalAttributes">
+    @Trigger
+
+    @if (_open)
+    {
+        <div data-slot="context-menu-content"
+             class="@CssUtils.Cn("cn-context-menu-content fixed z-50", Class)"
+             style="left: @(_x)px; top: @(_y)px;">
+            @ChildContent
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter] public RenderFragment? Trigger { get; set; }
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+    [Parameter] public string? Class { get; set; }
+    [Parameter(CaptureUnmatchedValues = true)] public Dictionary<string, object>? AdditionalAttributes { get; set; }
+
+    private bool _open;
+    private double _x, _y;
+
+    private void HandleContextMenu(MouseEventArgs e)
+    {
+        _x = e.ClientX;
+        _y = e.ClientY;
+        _open = !_open;
+    }
+}

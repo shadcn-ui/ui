@@ -1,0 +1,16 @@
+@* AspectRatio component - Blazor port of shadcn/ui AspectRatio *@
+
+<div data-slot="aspect-ratio" class="@CssUtils.Cn("relative w-full", Class)"
+     style="padding-bottom: @(100 / Ratio)%"
+     @attributes="AdditionalAttributes">
+    <div class="absolute inset-0">
+        @ChildContent
+    </div>
+</div>
+
+@code {
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+    [Parameter] public double Ratio { get; set; } = 16.0 / 9.0;
+    [Parameter] public string? Class { get; set; }
+    [Parameter(CaptureUnmatchedValues = true)] public Dictionary<string, object>? AdditionalAttributes { get; set; }
+}

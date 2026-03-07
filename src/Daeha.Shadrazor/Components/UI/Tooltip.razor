@@ -1,0 +1,38 @@
+@* Tooltip component - Blazor port of shadcn/ui Tooltip *@
+
+<div data-slot="tooltip" class="relative inline-block"
+     @onmouseenter="Show" @onmouseleave="Hide"
+     @onfocusin="Show" @onfocusout="Hide"
+     @attributes="AdditionalAttributes">
+    <div data-slot="tooltip-trigger">
+        @Trigger
+    </div>
+
+    @if (_visible)
+    {
+        <div data-slot="tooltip-content"
+             class="@CssUtils.Cn("cn-tooltip-content absolute z-50 w-fit max-w-xs bg-foreground text-background", Class)"
+             style="@PositionUtils.GetPositionStyle(Side)"
+             role="tooltip">
+            @ChildContent
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter] public RenderFragment? Trigger { get; set; }
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+
+    /// <summary>Side where the tooltip appears.</summary>
+    [Parameter] public Side Side { get; set; } = Side.Top;
+
+    /// <summary>Additional CSS classes.</summary>
+    [Parameter] public string? Class { get; set; }
+
+    [Parameter(CaptureUnmatchedValues = true)] public Dictionary<string, object>? AdditionalAttributes { get; set; }
+
+    private bool _visible;
+
+    private void Show() => _visible = true;
+    private void Hide() => _visible = false;
+}

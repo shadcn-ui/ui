@@ -1,0 +1,11 @@
+<span data-slot="breadcrumb-page" role="link" aria-current="page" aria-disabled="true"
+      class="@CssUtils.Cn("cn-breadcrumb-page font-normal text-foreground", Class)"
+      @attributes="AdditionalAttributes">
+    @ChildContent
+</span>
+
+@code {
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+    [Parameter] public string? Class { get; set; }
+    [Parameter(CaptureUnmatchedValues = true)] public Dictionary<string, object>? AdditionalAttributes { get; set; }
+}

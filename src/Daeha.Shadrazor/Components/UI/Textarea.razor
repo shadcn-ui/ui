@@ -1,0 +1,30 @@
+@* Textarea component - Blazor port of shadcn/ui Textarea *@
+
+<textarea data-slot="textarea"
+          class="@ComputedClass"
+          placeholder="@Placeholder"
+          disabled="@Disabled"
+          rows="@Rows"
+          @oninput="HandleInput"
+          @attributes="AdditionalAttributes">@Value</textarea>
+
+@code {
+    [Parameter] public string? Value { get; set; }
+    [Parameter] public EventCallback<string> ValueChanged { get; set; }
+    [Parameter] public string? Placeholder { get; set; }
+    [Parameter] public string? Class { get; set; }
+    [Parameter] public bool Disabled { get; set; }
+    [Parameter] public int Rows { get; set; } = 3;
+    [Parameter(CaptureUnmatchedValues = true)] public Dictionary<string, object>? AdditionalAttributes { get; set; }
+
+    private string ComputedClass => CssUtils.Cn(
+        "cn-textarea flex field-sizing-content min-h-16 w-full outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50",
+        Class
+    );
+
+    private async Task HandleInput(ChangeEventArgs e)
+    {
+        Value = e.Value?.ToString();
+        await ValueChanged.InvokeAsync(Value);
+    }
+}

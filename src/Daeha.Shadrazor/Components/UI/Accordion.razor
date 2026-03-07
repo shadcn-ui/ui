@@ -1,0 +1,47 @@
+@* Accordion component - Blazor port of shadcn/ui Accordion *@
+
+<div data-slot="accordion"
+     class="@CssUtils.Cn("cn-accordion flex w-full flex-col", Class)"
+     @attributes="AdditionalAttributes">
+    @ChildContent
+</div>
+
+@code {
+    /// <summary>Child content containing AccordionItem components.</summary>
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+
+    /// <summary>The currently expanded item value (single-select mode).</summary>
+    [Parameter] public string? ExpandedItem { get; set; }
+
+    /// <summary>Callback when the expanded item changes.</summary>
+    [Parameter] public EventCallback<string?> ExpandedItemChanged { get; set; }
+
+    /// <summary>When true, allows multiple items to be expanded simultaneously.</summary>
+    [Parameter] public bool Multiple { get; set; }
+
+    /// <summary>Additional CSS classes.</summary>
+    [Parameter] public string? Class { get; set; }
+
+    [Parameter(CaptureUnmatchedValues = true)] public Dictionary<string, object>? AdditionalAttributes { get; set; }
+
+    private readonly HashSet<string> _expandedItems = new();
+
+    internal bool IsExpanded(string value)
+        => Multiple ? _expandedItems.Contains(value) : ExpandedItem == value;
+
+    internal async Task Toggle(string value)
+    {
+        if (Multiple)
+        {
+            if (!_expandedItems.Remove(value))
+                _expandedItems.Add(value);
+            StateHasChanged();
+        }
+        else
+        {
+            ExpandedItem = ExpandedItem == value ? null : value;
+        }
+
+        await ExpandedItemChanged.InvokeAsync(ExpandedItem);
+    }
+}

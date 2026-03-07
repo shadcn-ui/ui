@@ -1,0 +1,29 @@
+@* Collapsible component - Blazor port of shadcn/ui Collapsible *@
+
+<div data-slot="collapsible" class="@CssUtils.Cn(Class)" @attributes="AdditionalAttributes">
+    <div data-slot="collapsible-trigger" @onclick="Toggle">
+        @Trigger
+    </div>
+
+    @if (Open)
+    {
+        <div data-slot="collapsible-content" class="cn-collapsible-content">
+            @ChildContent
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter] public RenderFragment? Trigger { get; set; }
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+    [Parameter] public bool Open { get; set; }
+    [Parameter] public EventCallback<bool> OpenChanged { get; set; }
+    [Parameter] public string? Class { get; set; }
+    [Parameter(CaptureUnmatchedValues = true)] public Dictionary<string, object>? AdditionalAttributes { get; set; }
+
+    private async Task Toggle()
+    {
+        Open = !Open;
+        await OpenChanged.InvokeAsync(Open);
+    }
+}

@@ -1,0 +1,39 @@
+@* HoverCard component - Blazor port of shadcn/ui HoverCard *@
+
+<div data-slot="hover-card" class="relative inline-block"
+     @onmouseenter="Show" @onmouseleave="Hide"
+     @attributes="AdditionalAttributes">
+    <div data-slot="hover-card-trigger">
+        @Trigger
+    </div>
+
+    @if (_visible)
+    {
+        <div data-slot="hover-card-content"
+             class="@CssUtils.Cn("cn-hover-card-content absolute z-50", Class)"
+             style="@PositionUtils.GetPositionStyle(Side, Align)">
+            @ChildContent
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter] public RenderFragment? Trigger { get; set; }
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+
+    /// <summary>Side where the hover card appears.</summary>
+    [Parameter] public Side Side { get; set; } = Side.Bottom;
+
+    /// <summary>Alignment of the hover card.</summary>
+    [Parameter] public Alignment Align { get; set; } = Alignment.Center;
+
+    /// <summary>Additional CSS classes.</summary>
+    [Parameter] public string? Class { get; set; }
+
+    [Parameter(CaptureUnmatchedValues = true)] public Dictionary<string, object>? AdditionalAttributes { get; set; }
+
+    private bool _visible;
+
+    private void Show() => _visible = true;
+    private void Hide() => _visible = false;
+}

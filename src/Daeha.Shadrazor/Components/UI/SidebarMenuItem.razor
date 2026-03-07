@@ -1,0 +1,9 @@
+<li data-slot="sidebar-menu-item" class="@CssUtils.Cn("cn-sidebar-menu-item", Class)" @attributes="AdditionalAttributes">
+    @ChildContent
+</li>
+
+@code {
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+    [Parameter] public string? Class { get; set; }
+    [Parameter(CaptureUnmatchedValues = true)] public Dictionary<string, object>? AdditionalAttributes { get; set; }
+}

@@ -1,0 +1,32 @@
+<h3 class="flex">
+    <button type="button" data-slot="accordion-trigger"
+            aria-expanded="@IsExpanded.ToString().ToLower()"
+            class="@CssUtils.Cn("cn-accordion-trigger group/accordion-trigger relative flex flex-1 items-start justify-between", Class)"
+            @onclick="HandleClick"
+            @attributes="AdditionalAttributes">
+        @ChildContent
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+             class="cn-accordion-trigger-icon pointer-events-none shrink-0 @(IsExpanded ? "rotate-180" : "")"
+             data-slot="accordion-trigger-icon">
+            <path d="m6 9 6 6 6-6"/>
+        </svg>
+    </button>
+</h3>
+
+@code {
+    [CascadingParameter] public Accordion? AccordionParent { get; set; }
+    [CascadingParameter] public AccordionItem? ItemParent { get; set; }
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+    [Parameter] public string? Class { get; set; }
+    [Parameter(CaptureUnmatchedValues = true)] public Dictionary<string, object>? AdditionalAttributes { get; set; }
+
+    private string ItemValue => ItemParent?.Value ?? "";
+    private bool IsExpanded => AccordionParent?.IsExpanded(ItemValue) ?? false;
+
+    private async Task HandleClick()
+    {
+        if (AccordionParent is not null)
+            await AccordionParent.Toggle(ItemValue);
+    }
+}

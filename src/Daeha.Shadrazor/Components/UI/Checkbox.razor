@@ -1,0 +1,39 @@
+@* Checkbox component - Blazor port of shadcn/ui Checkbox *@
+
+<button type="button" role="checkbox"
+        data-slot="checkbox"
+        aria-checked="@Checked.ToString().ToLower()"
+        data-checked="@(Checked ? "" : null)"
+        class="@ComputedClass"
+        disabled="@Disabled"
+        @onclick="Toggle"
+        @attributes="AdditionalAttributes">
+    @if (Checked)
+    {
+        <span data-slot="checkbox-indicator" class="cn-checkbox-indicator grid place-content-center text-current">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12" />
+            </svg>
+        </span>
+    }
+</button>
+
+@code {
+    [Parameter] public bool Checked { get; set; }
+    [Parameter] public EventCallback<bool> CheckedChanged { get; set; }
+    [Parameter] public bool Disabled { get; set; }
+    [Parameter] public string? Class { get; set; }
+    [Parameter(CaptureUnmatchedValues = true)] public Dictionary<string, object>? AdditionalAttributes { get; set; }
+
+    private string ComputedClass => CssUtils.Cn(
+        "cn-checkbox peer relative shrink-0 outline-none disabled:cursor-not-allowed disabled:opacity-50",
+        Class
+    );
+
+    private async Task Toggle()
+    {
+        Checked = !Checked;
+        await CheckedChanged.InvokeAsync(Checked);
+    }
+}

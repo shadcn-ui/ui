@@ -1,0 +1,77 @@
+@* Navigation Bar - Blazor port of shadcn/ui NavigationMenu *@
+
+<nav class="flex items-center space-x-4 lg:space-x-6" data-slot="navbar">
+    <a href="/" class="flex items-center space-x-2">
+        <span class="font-bold">Shadrazor</span>
+    </a>
+    <div class="hidden md:flex md:items-center md:space-x-4">
+        @if (Items is not null)
+        {
+            @foreach (var item in Items)
+            {
+                <a href="@item.Href"
+                   class="cn-navigation-menu-link text-sm font-medium text-muted-foreground transition-colors hover:text-foreground @(IsActive(item.Href) ? "text-foreground" : "")">
+                    @item.Label
+                </a>
+            }
+        }
+    </div>
+
+    @* Mobile menu button *@
+    <div class="flex md:hidden">
+        <Button Variant="ButtonVariant.Ghost" Size="ButtonSize.IconSm" OnClick="ToggleMobileMenu">
+            @if (_mobileMenuOpen)
+            {
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 6 6 18" /><path d="m6 6 12 12" />
+                </svg>
+            }
+            else
+            {
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="4" x2="20" y1="12" y2="12" /><line x1="4" x2="20" y1="6" y2="6" /><line x1="4" x2="20" y1="18" y2="18" />
+                </svg>
+            }
+        </Button>
+    </div>
+</nav>
+
+@if (_mobileMenuOpen && Items is not null)
+{
+    <div class="md:hidden border-t border-border p-4 space-y-2">
+        @foreach (var item in Items)
+        {
+            <a href="@item.Href"
+               class="block text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
+                @item.Label
+            </a>
+        }
+    </div>
+}
+
+@code {
+    [Parameter] public List<NavItem>? Items { get; set; }
+
+    [Inject] private NavigationManager Navigation { get; set; } = default!;
+
+    private bool _mobileMenuOpen;
+
+    protected override void OnInitialized()
+    {
+        Items ??= new List<NavItem>
+        {
+            new("Home", "/"),
+            new("Components", "/components"),
+            new("Examples", "/examples")
+        };
+    }
+
+    private bool IsActive(string href)
+        => Navigation.Uri.EndsWith(href, StringComparison.OrdinalIgnoreCase);
+
+    private void ToggleMobileMenu() => _mobileMenuOpen = !_mobileMenuOpen;
+
+    public record NavItem(string Label, string Href);
+}

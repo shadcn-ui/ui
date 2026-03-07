@@ -1,0 +1,32 @@
+@* SelectItem component *@
+
+<div data-slot="select-item"
+     data-selected="@(IsSelected ? "" : null)"
+     class="cn-select-item relative flex w-full cursor-default items-center outline-none select-none"
+     @onclick="HandleClick">
+    <span class="cn-select-item-text shrink-0 whitespace-nowrap">@ChildContent</span>
+    @if (IsSelected)
+    {
+        <span class="cn-select-item-indicator absolute right-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12" />
+            </svg>
+        </span>
+    }
+</div>
+
+@code {
+    [CascadingParameter] public Select? Parent { get; set; }
+    [Parameter] public string Value { get; set; } = "";
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+    [Parameter] public bool Disabled { get; set; }
+
+    private bool IsSelected => Parent?.Value == Value;
+
+    private async Task HandleClick()
+    {
+        if (!Disabled && Parent is not null)
+            await Parent.SelectItem(Value);
+    }
+}
