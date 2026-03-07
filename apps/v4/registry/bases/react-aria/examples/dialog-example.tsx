@@ -305,17 +305,20 @@ function DialogChatSettings() {
               </NativeSelectOption>
               <NativeSelectOption value="security">Security</NativeSelectOption>
             </NativeSelect>
-            <Tabs value={tab} onValueChange={setTab}>
+            <Tabs
+              selectedKey={tab}
+              onSelectionChange={(key) => setTab(String(key))}
+            >
               <TabsList className="hidden w-full md:flex">
-                <TabsTrigger value="general">General</TabsTrigger>
-                <TabsTrigger value="notifications">Notifications</TabsTrigger>
-                <TabsTrigger value="personalization">
+                <TabsTrigger id="general">General</TabsTrigger>
+                <TabsTrigger id="notifications">Notifications</TabsTrigger>
+                <TabsTrigger id="personalization">
                   Personalization
                 </TabsTrigger>
-                <TabsTrigger value="security">Security</TabsTrigger>
+                <TabsTrigger id="security">Security</TabsTrigger>
               </TabsList>
               <div className="border style-vega:min-h-[550px] style-vega:rounded-lg style-vega:p-6 style-nova:min-h-[460px] style-nova:rounded-lg style-nova:p-4 style-lyra:min-h-[450px] style-lyra:rounded-none style-lyra:p-4 style-maia:min-h-[550px] style-maia:rounded-xl style-maia:p-6 style-mira:min-h-[450px] style-mira:rounded-md style-mira:p-4 [&_[data-slot=select-trigger]]:min-w-[125px]">
-                <TabsContent value="general">
+                <TabsContent id="general">
                   <FieldSet>
                     <FieldGroup>
                       <Field orientation="horizontal">
@@ -435,7 +438,7 @@ function DialogChatSettings() {
                     </FieldGroup>
                   </FieldSet>
                 </TabsContent>
-                <TabsContent value="notifications">
+                <TabsContent id="notifications">
                   <FieldGroup>
                     <FieldSet>
                       <FieldLabel>Responses</FieldLabel>
@@ -482,7 +485,7 @@ function DialogChatSettings() {
                     </FieldSet>
                   </FieldGroup>
                 </TabsContent>
-                <TabsContent value="personalization">
+                <TabsContent id="personalization">
                   <FieldGroup>
                     <Field orientation="responsive">
                       <FieldLabel htmlFor="nickname">Nickname</FieldLabel>
@@ -547,7 +550,7 @@ function DialogChatSettings() {
                     </FieldLabel>
                   </FieldGroup>
                 </TabsContent>
-                <TabsContent value="security">
+                <TabsContent id="security">
                   <FieldGroup>
                     <Field orientation="horizontal">
                       <FieldContent>

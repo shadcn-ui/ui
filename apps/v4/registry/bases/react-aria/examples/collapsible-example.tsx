@@ -143,10 +143,10 @@ function CollapsibleFileTree() {
     <Example title="File Tree" className="items-center">
       <Card className="mx-auto w-full max-w-[16rem] gap-2" size="sm">
         <CardHeader>
-          <Tabs defaultValue="explorer">
+          <Tabs defaultSelectedKey="explorer">
             <TabsList className="w-full">
-              <TabsTrigger value="explorer">Explorer</TabsTrigger>
-              <TabsTrigger value="settings">Outline</TabsTrigger>
+              <TabsTrigger id="explorer">Explorer</TabsTrigger>
+              <TabsTrigger id="settings">Outline</TabsTrigger>
             </TabsList>
           </Tabs>
         </CardHeader>

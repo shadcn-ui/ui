@@ -140,12 +140,12 @@ function CodespacesCard() {
     <Example title="Codespaces" className="min-h-[550px] lg:p-12">
       <Card className="mx-auto w-full max-w-sm" size="sm">
         <CardContent>
-          <Tabs defaultValue="codespaces">
+          <Tabs defaultSelectedKey="codespaces">
             <TabsList className="w-full">
-              <TabsTrigger value="codespaces">Codespaces</TabsTrigger>
-              <TabsTrigger value="local">Local</TabsTrigger>
+              <TabsTrigger id="codespaces">Codespaces</TabsTrigger>
+              <TabsTrigger id="local">Local</TabsTrigger>
             </TabsList>
-            <TabsContent value="codespaces">
+            <TabsContent id="codespaces">
               <Item size="sm" className="px-1 pt-2">
                 <ItemContent>
                   <ItemTitle>Codespaces</ItemTitle>
@@ -311,7 +311,7 @@ function CodespacesCard() {
                 <span className="font-medium">shadcn</span>.
               </div>
             </TabsContent>
-            <TabsContent value="local">
+            <TabsContent id="local">
               <Item size="sm" className="hidden p-0">
                 <ItemContent>
                   <ItemTitle className="gap-2">
@@ -345,17 +345,17 @@ function CodespacesCard() {
                   </Tooltip>
                 </ItemActions>
               </Item>
-              <Tabs defaultValue="https">
+              <Tabs defaultSelectedKey="https">
                 <TabsList
                   variant="line"
                   className="w-full justify-start border-b *:[button]:flex-0"
                 >
-                  <TabsTrigger value="https">HTTPS</TabsTrigger>
-                  <TabsTrigger value="ssh">SSH</TabsTrigger>
-                  <TabsTrigger value="cli">GitHub CLI</TabsTrigger>
+                  <TabsTrigger id="https">HTTPS</TabsTrigger>
+                  <TabsTrigger id="ssh">SSH</TabsTrigger>
+                  <TabsTrigger id="cli">GitHub CLI</TabsTrigger>
                 </TabsList>
                 <div className="rounded-md border bg-muted/30 p-2">
-                  <TabsContent value="https">
+                  <TabsContent id="https">
                     <Field className="gap-2">
                       <FieldLabel htmlFor="https-url" className="sr-only">
                         HTTPS URL
@@ -383,7 +383,7 @@ function CodespacesCard() {
                       </FieldDescription>
                     </Field>
                   </TabsContent>
-                  <TabsContent value="ssh">
+                  <TabsContent id="ssh">
                     <Field className="gap-2">
                       <FieldLabel htmlFor="ssh-url" className="sr-only">
                         SSH URL
@@ -411,7 +411,7 @@ function CodespacesCard() {
                       </FieldDescription>
                     </Field>
                   </TabsContent>
-                  <TabsContent value="cli">
+                  <TabsContent id="cli">
                     <Field className="gap-2">
                       <FieldLabel htmlFor="cli-command" className="sr-only">
                         CLI Command

@@ -42,10 +42,10 @@ export default function TabsExample() {
 function TabsBasic() {
   return (
     <Example title="Basic">
-      <Tabs defaultValue="home">
+      <Tabs defaultSelectedKey="home">
         <TabsList>
-          <TabsTrigger value="home">Home</TabsTrigger>
-          <TabsTrigger value="settings">Settings</TabsTrigger>
+          <TabsTrigger id="home">Home</TabsTrigger>
+          <TabsTrigger id="settings">Settings</TabsTrigger>
         </TabsList>
       </Tabs>
     </Example>
@@ -55,11 +55,11 @@ function TabsBasic() {
 function TabsLine() {
   return (
     <Example title="Line">
-      <Tabs defaultValue="overview">
+      <Tabs defaultSelectedKey="overview">
         <TabsList variant="line">
-          <TabsTrigger value="overview">Overview</TabsTrigger>
-          <TabsTrigger value="analytics">Analytics</TabsTrigger>
-          <TabsTrigger value="reports">Reports</TabsTrigger>
+          <TabsTrigger id="overview">Overview</TabsTrigger>
+          <TabsTrigger id="analytics">Analytics</TabsTrigger>
+          <TabsTrigger id="reports">Reports</TabsTrigger>
         </TabsList>
       </Tabs>
     </Example>
@@ -70,16 +70,16 @@ function TabsVariantsComparison() {
   return (
     <Example title="Variants Alignment">
       <div className="flex gap-4">
-        <Tabs defaultValue="overview">
+        <Tabs defaultSelectedKey="overview">
           <TabsList>
-            <TabsTrigger value="overview">Overview</TabsTrigger>
-            <TabsTrigger value="analytics">Analytics</TabsTrigger>
+            <TabsTrigger id="overview">Overview</TabsTrigger>
+            <TabsTrigger id="analytics">Analytics</TabsTrigger>
           </TabsList>
         </Tabs>
-        <Tabs defaultValue="overview">
+        <Tabs defaultSelectedKey="overview">
           <TabsList variant="line">
-            <TabsTrigger value="overview">Overview</TabsTrigger>
-            <TabsTrigger value="analytics">Analytics</TabsTrigger>
+            <TabsTrigger id="overview">Overview</TabsTrigger>
+            <TabsTrigger id="analytics">Analytics</TabsTrigger>
           </TabsList>
         </Tabs>
       </div>
@@ -90,10 +90,10 @@ function TabsVariantsComparison() {
 function TabsDisabled() {
   return (
     <Example title="Disabled">
-      <Tabs defaultValue="home">
+      <Tabs defaultSelectedKey="home">
         <TabsList>
-          <TabsTrigger value="home">Home</TabsTrigger>
-          <TabsTrigger value="settings" disabled>
+          <TabsTrigger id="home">Home</TabsTrigger>
+          <TabsTrigger id="settings" isDisabled>
             Disabled
           </TabsTrigger>
         </TabsList>
@@ -105,9 +105,9 @@ function TabsDisabled() {
 function TabsWithIcons() {
   return (
     <Example title="With Icons">
-      <Tabs defaultValue="preview">
+      <Tabs defaultSelectedKey="preview">
         <TabsList>
-          <TabsTrigger value="preview">
+          <TabsTrigger id="preview">
             <IconPlaceholder
               lucide="AppWindowIcon"
               tabler="IconAppWindow"
@@ -117,7 +117,7 @@ function TabsWithIcons() {
             />
             Preview
           </TabsTrigger>
-          <TabsTrigger value="code">
+          <TabsTrigger id="code">
             <IconPlaceholder
               lucide="CodeIcon"
               tabler="IconCode"
@@ -136,9 +136,9 @@ function TabsWithIcons() {
 function TabsIconOnly() {
   return (
     <Example title="Icon Only">
-      <Tabs defaultValue="home">
+      <Tabs defaultSelectedKey="home">
         <TabsList>
-          <TabsTrigger value="home">
+          <TabsTrigger id="home">
             <IconPlaceholder
               lucide="HomeIcon"
               tabler="IconHome"
@@ -147,7 +147,7 @@ function TabsIconOnly() {
               remixicon="RiHomeLine"
             />
           </TabsTrigger>
-          <TabsTrigger value="search">
+          <TabsTrigger id="search">
             <IconPlaceholder
               lucide="SearchIcon"
               tabler="IconSearch"
@@ -156,7 +156,7 @@ function TabsIconOnly() {
               remixicon="RiSearchLine"
             />
           </TabsTrigger>
-          <TabsTrigger value="settings">
+          <TabsTrigger id="settings">
             <IconPlaceholder
               lucide="SettingsIcon"
               tabler="IconSettings"
@@ -174,12 +174,12 @@ function TabsIconOnly() {
 function TabsMultiple() {
   return (
     <Example title="Multiple">
-      <Tabs defaultValue="overview">
+      <Tabs defaultSelectedKey="overview">
         <TabsList>
-          <TabsTrigger value="overview">Overview</TabsTrigger>
-          <TabsTrigger value="analytics">Analytics</TabsTrigger>
-          <TabsTrigger value="reports">Reports</TabsTrigger>
-          <TabsTrigger value="settings">Settings</TabsTrigger>
+          <TabsTrigger id="overview">Overview</TabsTrigger>
+          <TabsTrigger id="analytics">Analytics</TabsTrigger>
+          <TabsTrigger id="reports">Reports</TabsTrigger>
+          <TabsTrigger id="settings">Settings</TabsTrigger>
         </TabsList>
       </Tabs>
     </Example>
@@ -189,20 +189,20 @@ function TabsMultiple() {
 function TabsWithContent() {
   return (
     <Example title="With Content">
-      <Tabs defaultValue="account">
+      <Tabs defaultSelectedKey="account">
         <TabsList>
-          <TabsTrigger value="account">Account</TabsTrigger>
-          <TabsTrigger value="password">Password</TabsTrigger>
-          <TabsTrigger value="notifications">Notifications</TabsTrigger>
+          <TabsTrigger id="account">Account</TabsTrigger>
+          <TabsTrigger id="password">Password</TabsTrigger>
+          <TabsTrigger id="notifications">Notifications</TabsTrigger>
         </TabsList>
         <div className="border style-vega:rounded-lg style-vega:p-6 style-nova:rounded-lg style-nova:p-4 style-lyra:rounded-none style-lyra:p-4 style-maia:rounded-xl style-maia:p-6 style-mira:rounded-md style-mira:p-4">
-          <TabsContent value="account">
+          <TabsContent id="account">
             Manage your account preferences and profile information.
           </TabsContent>
-          <TabsContent value="password">
+          <TabsContent id="password">
             Update your password to keep your account secure.
           </TabsContent>
-          <TabsContent value="notifications">
+          <TabsContent id="notifications">
             Configure how you receive notifications and alerts.
           </TabsContent>
         </div>
@@ -214,20 +214,20 @@ function TabsWithContent() {
 function TabsLineWithContent() {
   return (
     <Example title="Line With Content">
-      <Tabs defaultValue="account">
+      <Tabs defaultSelectedKey="account">
         <TabsList variant="line">
-          <TabsTrigger value="account">Account</TabsTrigger>
-          <TabsTrigger value="password">Password</TabsTrigger>
-          <TabsTrigger value="notifications">Notifications</TabsTrigger>
+          <TabsTrigger id="account">Account</TabsTrigger>
+          <TabsTrigger id="password">Password</TabsTrigger>
+          <TabsTrigger id="notifications">Notifications</TabsTrigger>
         </TabsList>
         <div className="border style-vega:rounded-lg style-vega:p-6 style-nova:rounded-lg style-nova:p-4 style-lyra:rounded-none style-lyra:p-4 style-maia:rounded-xl style-maia:p-6 style-mira:rounded-md style-mira:p-4">
-          <TabsContent value="account">
+          <TabsContent id="account">
             Manage your account preferences and profile information.
           </TabsContent>
-          <TabsContent value="password">
+          <TabsContent id="password">
             Update your password to keep your account secure.
           </TabsContent>
-          <TabsContent value="notifications">
+          <TabsContent id="notifications">
             Configure how you receive notifications and alerts.
           </TabsContent>
         </div>
@@ -239,11 +239,11 @@ function TabsLineWithContent() {
 function TabsLineDisabled() {
   return (
     <Example title="Line Disabled">
-      <Tabs defaultValue="overview">
+      <Tabs defaultSelectedKey="overview">
         <TabsList variant="line">
-          <TabsTrigger value="overview">Overview</TabsTrigger>
-          <TabsTrigger value="analytics">Analytics</TabsTrigger>
-          <TabsTrigger value="reports" disabled>
+          <TabsTrigger id="overview">Overview</TabsTrigger>
+          <TabsTrigger id="analytics">Analytics</TabsTrigger>
+          <TabsTrigger id="reports" isDisabled>
             Reports
           </TabsTrigger>
         </TabsList>
@@ -255,12 +255,12 @@ function TabsLineDisabled() {
 function TabsWithDropdown() {
   return (
     <Example title="With Dropdown">
-      <Tabs defaultValue="overview">
+      <Tabs defaultSelectedKey="overview">
         <div className="flex items-center justify-between">
           <TabsList>
-            <TabsTrigger value="overview">Overview</TabsTrigger>
-            <TabsTrigger value="analytics">Analytics</TabsTrigger>
-            <TabsTrigger value="reports">Reports</TabsTrigger>
+            <TabsTrigger id="overview">Overview</TabsTrigger>
+            <TabsTrigger id="analytics">Analytics</TabsTrigger>
+            <TabsTrigger id="reports">Reports</TabsTrigger>
           </TabsList>
           <DropdownMenu>
             <DropdownMenuTrigger
@@ -285,13 +285,13 @@ function TabsWithDropdown() {
         </div>
 
         <div className="border style-vega:rounded-lg style-vega:p-6 style-nova:rounded-lg style-nova:p-4 style-lyra:rounded-none style-lyra:p-4 style-maia:rounded-xl style-maia:p-6 style-mira:rounded-md style-mira:p-4">
-          <TabsContent value="overview">
+          <TabsContent id="overview">
             View your dashboard metrics and key performance indicators.
           </TabsContent>
-          <TabsContent value="analytics">
+          <TabsContent id="analytics">
             Detailed analytics and insights about your data.
           </TabsContent>
-          <TabsContent value="reports">
+          <TabsContent id="reports">
             Generate and view custom reports.
           </TabsContent>
         </div>
@@ -303,21 +303,21 @@ function TabsWithDropdown() {
 function TabsVertical() {
   return (
     <Example title="Vertical">
-      <Tabs defaultValue="account" orientation="vertical">
+      <Tabs defaultSelectedKey="account" orientation="vertical">
         <TabsList>
-          <TabsTrigger value="account">Account</TabsTrigger>
-          <TabsTrigger value="password">Password</TabsTrigger>
-          <TabsTrigger value="notifications">Notifications</TabsTrigger>
+          <TabsTrigger id="account">Account</TabsTrigger>
+          <TabsTrigger id="password">Password</TabsTrigger>
+          <TabsTrigger id="notifications">Notifications</TabsTrigger>
         </TabsList>
         <div className="border style-vega:rounded-lg style-vega:p-6 style-nova:rounded-lg style-nova:p-4 style-lyra:rounded-none style-lyra:p-4 style-maia:rounded-xl style-maia:p-6 style-mira:rounded-md style-mira:p-4">
-          <TabsContent value="account">
+          <TabsContent id="account">
             Manage your account preferences and profile information.
           </TabsContent>
-          <TabsContent value="password">
+          <TabsContent id="password">
             Update your password to keep your account secure. Use a strong
             password with a mix of letters, numbers, and symbols.
           </TabsContent>
-          <TabsContent value="notifications">
+          <TabsContent id="notifications">
             Configure how you receive notifications and alerts. Choose which
             types of notifications you want to receive and how you want to
             receive them.
@@ -331,11 +331,11 @@ function TabsVertical() {
 function TabsWithInputAndButton() {
   return (
     <Example title="With Input and Button" containerClassName="col-span-full">
-      <Tabs defaultValue="overview" className="mx-auto w-full max-w-lg">
+      <Tabs defaultSelectedKey="overview" className="mx-auto w-full max-w-lg">
         <div className="flex items-center gap-4">
           <TabsList>
-            <TabsTrigger value="overview">Overview</TabsTrigger>
-            <TabsTrigger value="analytics">Analytics</TabsTrigger>
+            <TabsTrigger id="overview">Overview</TabsTrigger>
+            <TabsTrigger id="analytics">Analytics</TabsTrigger>
           </TabsList>
           <div className="ml-auto flex items-center gap-2">
             <Input placeholder="Search..." className="w-44" />
@@ -343,13 +343,13 @@ function TabsWithInputAndButton() {
           </div>
         </div>
         <div className="border style-vega:rounded-lg style-vega:p-6 style-nova:rounded-lg style-nova:p-4 style-lyra:rounded-none style-lyra:p-4 style-maia:rounded-xl style-maia:p-6 style-mira:rounded-md style-mira:p-4">
-          <TabsContent value="overview">
+          <TabsContent id="overview">
             View your dashboard metrics and key performance indicators.
           </TabsContent>
-          <TabsContent value="analytics">
+          <TabsContent id="analytics">
             Detailed analytics and insights about your data.
           </TabsContent>
-          <TabsContent value="reports">
+          <TabsContent id="reports">
             Generate and view custom reports.
           </TabsContent>
         </div>

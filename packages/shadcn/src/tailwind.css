@@ -72,7 +72,8 @@
 
 @custom-variant data-active {
   &:where([data-state="active"]),
-  &:where([data-active]:not([data-active="false"])) {
+  &:where([data-active]:not([data-active="false"])),
+  &:where([data-selected]) {
     @slot;
   }
 }
