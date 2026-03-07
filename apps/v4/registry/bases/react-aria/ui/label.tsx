@@ -1,12 +1,12 @@
 "use client"
 
 import * as React from "react"
-
+import {Label as LabelPrimitive} from "react-aria-components"
 import { cn } from "@/registry/bases/react-aria/lib/utils"
 
 function Label({ className, ...props }: React.ComponentProps<"label">) {
   return (
-    <label
+    <LabelPrimitive
       data-slot="label"
       className={cn(
         "cn-label flex items-center select-none group-data-[disabled=true]:pointer-events-none peer-disabled:cursor-not-allowed",

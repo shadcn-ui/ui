@@ -207,8 +207,8 @@ export default function SidebarInsetExample() {
               {data.navMain.map((item) => (
                 <Collapsible
                   key={item.title}
-                  defaultOpen={item.isActive}
-                  render={<SidebarMenuItem />}
+                  defaultExpanded={item.isActive}
+                  render={props => <SidebarMenuItem {...props} />}
                 >
                   <SidebarMenuButton
                     render={<a href={item.url} />}
@@ -221,7 +221,7 @@ export default function SidebarInsetExample() {
                     <>
                       <CollapsibleTrigger
                         render={
-                          <SidebarMenuAction className="data-open:rotate-90" />
+                          props => <SidebarMenuAction {...props} className="group-data-open/menu-item:rotate-90" />
                         }
                       >
                         <IconPlaceholder

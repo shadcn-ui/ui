@@ -6,7 +6,7 @@ import {
   Example,
   ExampleWrapper,
 } from "@/registry/bases/react-aria/components/example"
-import { Button } from "@/registry/bases/react-aria/ui/button"
+import { Button, buttonVariants } from "@/registry/bases/react-aria/ui/button"
 import {
   Card,
   CardContent,
@@ -93,13 +93,7 @@ function CollapsibleFileTree() {
       return (
         <Collapsible key={fileItem.name}>
           <CollapsibleTrigger
-            render={
-              <Button
-                variant="ghost"
-                size="sm"
-                className="group w-full justify-start transition-none hover:bg-accent hover:text-accent-foreground"
-              />
-            }
+            className={buttonVariants({ variant: "ghost", size: "sm", className: "group w-full justify-start transition-none hover:bg-accent hover:text-accent-foreground" })}
           >
             <IconPlaceholder
               lucide="ChevronRightIcon"
@@ -107,7 +101,7 @@ function CollapsibleFileTree() {
               hugeicons="ArrowRight01Icon"
               phosphor="CaretRightIcon"
               remixicon="RiArrowRightSLine"
-              className="transition-transform group-data-[state=open]:rotate-90"
+              className="transition-transform group-aria-expanded:rotate-90"
             />
             <IconPlaceholder
               lucide="FolderIcon"
@@ -180,8 +174,8 @@ function CollapsibleSettings() {
         </CardHeader>
         <CardContent>
           <Collapsible
-            open={isOpen}
-            onOpenChange={setIsOpen}
+            isExpanded={isOpen}
+            onExpandedChange={setIsOpen}
             className="flex items-start gap-2"
           >
             <FieldGroup className="grid w-full grid-cols-2 gap-2">
@@ -213,7 +207,7 @@ function CollapsibleSettings() {
               </CollapsibleContent>
             </FieldGroup>
             <CollapsibleTrigger
-              render={<Button variant="outline" size="icon" />}
+              className={buttonVariants({ variant: "outline", size: "icon" })}
             >
               {isOpen ? (
                 <IconPlaceholder

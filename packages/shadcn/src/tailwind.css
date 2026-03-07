@@ -36,7 +36,7 @@
 @custom-variant data-closed {
   &:where([data-state="closed"]),
   &:where([data-closed]:not([data-closed="false"])),
-  &:where(:not([data-expanded])) {
+  &:where(:not([data-expanded], [data-open], [data-state="open"])) {
     @slot;
   }
 }

@@ -38,12 +38,12 @@ export function NavMain({
         {items.map((item) => (
           <Collapsible
             key={item.title}
-            defaultOpen={item.isActive}
+            defaultExpanded={item.isActive}
             className="group/collapsible"
-            render={<SidebarMenuItem />}
+            render={props => <SidebarMenuItem {...props} />}
           >
             <CollapsibleTrigger
-              render={<SidebarMenuButton tooltip={item.title} />}
+              render={props => <SidebarMenuButton {...props} tooltip={item.title} />}
             >
               {item.icon}
               <span>{item.title}</span>

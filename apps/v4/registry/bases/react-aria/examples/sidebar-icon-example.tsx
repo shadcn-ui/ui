@@ -325,12 +325,12 @@ export default function SidebarIconExample() {
               {data.navMain.map((item) => (
                 <Collapsible
                   key={item.title}
-                  defaultOpen={item.isActive}
+                  defaultExpanded={item.isActive}
                   className="group/collapsible"
                 >
                   <SidebarMenuItem>
                     <CollapsibleTrigger
-                      render={<SidebarMenuButton tooltip={item.title} />}
+                      render={props => <SidebarMenuButton {...props} tooltip={item.title} />}
                     >
                       {item.icon}
                       <span>{item.title}</span>

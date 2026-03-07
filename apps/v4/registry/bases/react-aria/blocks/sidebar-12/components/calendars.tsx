@@ -32,7 +32,7 @@ export function Calendars({
         <React.Fragment key={calendar.name}>
           <SidebarGroup key={calendar.name}>
             <Collapsible
-              defaultOpen={index === 0}
+              defaultExpanded={index === 0}
               className="group/collapsible"
             >
               <SidebarGroupLabel
