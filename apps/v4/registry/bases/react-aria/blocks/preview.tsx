@@ -303,9 +303,9 @@ function FieldExamples() {
             </FieldDescription>
             <Slider
               value={value}
-              onValueChange={(val) => setValue(val as number[])}
-              max={1000}
-              min={0}
+              onChange={setValue}
+              maxValue={1000}
+              minValue={0}
               step={10}
               className="mt-2 w-full"
               aria-label="Price Range"

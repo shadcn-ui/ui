@@ -25,7 +25,7 @@ export default function SliderExample() {
 function SliderBasic() {
   return (
     <Example title="Basic">
-      <Slider defaultValue={50} max={100} step={1} />
+      <Slider aria-label="Basic slider" defaultValue={50} maxValue={100} step={1} />
     </Example>
   )
 }
@@ -33,7 +33,7 @@ function SliderBasic() {
 function SliderRange() {
   return (
     <Example title="Range">
-      <Slider defaultValue={[25, 50]} max={100} step={5} />
+      <Slider aria-label="Range slider" defaultValue={[25, 50]} maxValue={100} step={5} />
     </Example>
   )
 }
@@ -41,7 +41,7 @@ function SliderRange() {
 function SliderMultiple() {
   return (
     <Example title="Multiple Thumbs">
-      <Slider defaultValue={[10, 20, 70]} max={100} step={10} />
+      <Slider aria-label="Multiple thumbs slider" defaultValue={[10, 20, 70]} maxValue={100} step={10} />
     </Example>
   )
 }
@@ -51,15 +51,17 @@ function SliderVertical() {
     <Example title="Vertical">
       <div className="flex items-center gap-6">
         <Slider
+          aria-label="Vertical slider"
           defaultValue={[50]}
-          max={100}
+          maxValue={100}
           step={1}
           orientation="vertical"
           className="h-40"
         />
         <Slider
+          aria-label="Vertical slider"
           defaultValue={[25]}
-          max={100}
+          maxValue={100}
           step={1}
           orientation="vertical"
           className="h-40"
@@ -82,11 +84,12 @@ function SliderControlled() {
           </span>
         </div>
         <Slider
+          aria-label="Controlled slider"
           id="slider-demo-temperature"
           value={value}
-          onValueChange={(value) => setValue(value as number[])}
-          min={0}
-          max={1}
+          onChange={setValue}
+          minValue={0}
+          maxValue={1}
           step={0.1}
         />
       </div>
@@ -97,7 +100,7 @@ function SliderControlled() {
 function SliderDisabled() {
   return (
     <Example title="Disabled">
-      <Slider defaultValue={[50]} max={100} step={1} disabled />
+      <Slider aria-label="Disabled slider" defaultValue={[50]} maxValue={100} step={1} isDisabled />
     </Example>
   )
 }

@@ -1,57 +1,72 @@
 "use client"
 
-import * as React from "react"
-import { cn } from "@/examples/base/lib/utils"
-import { Slider as SliderPrimitive } from "@base-ui/react/slider"
+import {
+  Slider as SliderPrimitive,
+  SliderThumb,
+  SliderTrack,
+  type SliderProps as SliderPrimitiveProps,
+} from "react-aria-components"
 
-function Slider({
+import { cn } from "@/registry/bases/react-aria/lib/utils"
+
+type SliderValue = number | number[]
+type SliderProps<T extends SliderValue = SliderValue> = Omit<
+  SliderPrimitiveProps<T>,
+  "className"
+> & {
+  className?: string
+}
+
+function Slider<T extends SliderValue = SliderValue>({
   className,
-  defaultValue,
-  value,
-  min = 0,
-  max = 100,
   ...props
-}: SliderPrimitive.Root.Props) {
-  const _values = React.useMemo(
-    () =>
-      Array.isArray(value)
-        ? value
-        : Array.isArray(defaultValue)
-          ? defaultValue
-          : [min, max],
-    [value, defaultValue, min, max]
-  )
-
+}: SliderProps<T>) {
   return (
-    <SliderPrimitive.Root
-      className={cn("data-horizontal:w-full data-vertical:h-full", className)}
+    <SliderPrimitive
+      className={cn(
+        "cn-slider group relative flex w-full touch-none items-center select-none data-disabled:opacity-50 data-vertical:h-full data-vertical:w-auto data-vertical:flex-col",
+        className
+      )}
       data-slot="slider"
-      defaultValue={defaultValue}
-      value={value}
-      min={min}
-      max={max}
-      thumbAlignment="edge"
       {...props}
     >
-      <SliderPrimitive.Control className="relative flex w-full touch-none items-center select-none data-disabled:opacity-50 data-vertical:h-full data-vertical:min-h-40 data-vertical:w-auto data-vertical:flex-col">
-        <SliderPrimitive.Track
-          data-slot="slider-track"
-          className="relative grow overflow-hidden rounded-full bg-muted select-none data-horizontal:h-1 data-horizontal:w-full data-vertical:h-full data-vertical:w-1"
-        >
-          <SliderPrimitive.Indicator
-            data-slot="slider-range"
-            className="bg-primary select-none data-horizontal:h-full data-vertical:w-full"
-          />
-        </SliderPrimitive.Track>
-        {Array.from({ length: _values.length }, (_, index) => (
-          <SliderPrimitive.Thumb
-            data-slot="slider-thumb"
-            key={index}
-            className="relative block size-3 shrink-0 rounded-full border border-ring bg-white ring-ring/50 transition-[color,box-shadow] select-none after:absolute after:-inset-2 hover:ring-3 focus-visible:ring-3 focus-visible:outline-hidden active:ring-3 disabled:pointer-events-none disabled:opacity-50"
-          />
-        ))}
-      </SliderPrimitive.Control>
-    </SliderPrimitive.Root>
+      {({ isDisabled, orientation, state }) => {
+        const hasValues = state.values.length > 0
+        const startPercent =
+          hasValues && state.values.length > 1 ? state.getThumbPercent(0) * 100 : 0
+        const endPercent = hasValues
+          ? state.getThumbPercent(state.values.length - 1) * 100
+          : 0
+        const sizePercent = Math.max(0, endPercent - startPercent)
+
+        return (
+          <>
+            <SliderTrack
+              data-slot="slider-track"
+              className="cn-slider-track relative grow overflow-hidden select-none"
+            >
+              <div
+                data-slot="slider-range"
+                className="cn-slider-range absolute select-none data-horizontal:h-full data-vertical:w-full"
+                style={
+                  orientation === "vertical"
+                    ? { bottom: `${startPercent}%`, height: `${sizePercent}%`, width: "100%" }
+                    : { left: `${startPercent}%`, width: `${sizePercent}%`, height: "100%" }
+                }
+              />
+            </SliderTrack>
+            {state.values.map((_, index) => (
+              <SliderThumb
+                data-slot="slider-thumb"
+                key={index}
+                index={index}
+                className="cn-slider-thumb block shrink-0 select-none group-data-horizontal:top-[50%] group-data-vertical:left-[50%] disabled:pointer-events-none disabled:opacity-50"
+              />
+            ))}
+          </>
+        )
+      }}
+    </SliderPrimitive>
   )
 }
 

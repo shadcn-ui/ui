@@ -735,8 +735,8 @@ function SliderFields() {
           <Slider
             id="slider-volume"
             value={volume}
-            onValueChange={(value) => setVolume(value as number[])}
-            max={100}
+            onChange={setVolume}
+            maxValue={100}
             step={1}
           />
         </Field>
@@ -745,8 +745,8 @@ function SliderFields() {
           <Slider
             id="slider-brightness"
             value={brightness}
-            onValueChange={(value) => setBrightness(value as number[])}
-            max={100}
+            onChange={setBrightness}
+            maxValue={100}
             step={5}
           />
           <FieldDescription>
@@ -761,8 +761,8 @@ function SliderFields() {
           <Slider
             id="slider-quality"
             defaultValue={[720]}
-            max={1080}
-            min={360}
+            maxValue={1080}
+            minValue={360}
             step={360}
           />
         </Field>
@@ -773,9 +773,9 @@ function SliderFields() {
           <Slider
             id="slider-temperature"
             value={temperature}
-            onValueChange={(value) => setTemperature(value as number[])}
-            min={0}
-            max={1}
+            onChange={setTemperature}
+            minValue={0}
+            maxValue={1}
             step={0.1}
           />
           <FieldDescription>
@@ -787,8 +787,8 @@ function SliderFields() {
           <Slider
             id="slider-price-range"
             value={priceRange}
-            onValueChange={(value) => setPriceRange(value as number[])}
-            max={100}
+            onChange={setPriceRange}
+            maxValue={100}
             step={5}
           />
           <FieldDescription>
@@ -800,8 +800,8 @@ function SliderFields() {
           <Slider
             id="slider-color-balance"
             value={colorBalance}
-            onValueChange={(value) => setColorBalance(value as number[])}
-            max={100}
+            onChange={setColorBalance}
+            maxValue={100}
             step={10}
           />
           <FieldDescription>
@@ -814,7 +814,7 @@ function SliderFields() {
           <Slider
             id="slider-invalid"
             defaultValue={[30]}
-            max={100}
+            maxValue={100}
             aria-invalid
           />
           <FieldDescription>
@@ -828,8 +828,8 @@ function SliderFields() {
           <Slider
             id="slider-disabled-field"
             defaultValue={[50]}
-            max={100}
-            disabled
+            maxValue={100}
+            isDisabled
           />
           <FieldDescription>
             This slider is currently disabled.
@@ -1037,7 +1037,7 @@ function HorizontalFields() {
             <FieldLabel htmlFor="horizontal-slider">Volume</FieldLabel>
             <FieldDescription>Adjust the volume level.</FieldDescription>
           </FieldContent>
-          <Slider id="horizontal-slider" defaultValue={[50]} max={100} />
+          <Slider id="horizontal-slider" defaultValue={[50]} maxValue={100} />
         </Field>
       </FieldGroup>
     </Example>
