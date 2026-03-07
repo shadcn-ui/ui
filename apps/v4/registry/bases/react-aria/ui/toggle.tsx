@@ -1,6 +1,9 @@
 "use client"
 
-import { Toggle as TogglePrimitive } from "@base-ui/react/toggle"
+import {
+  ToggleButton as TogglePrimitive,
+  type ToggleButtonProps,
+} from "react-aria-components"
 import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/registry/bases/react-aria/lib/utils"
@@ -31,7 +34,7 @@ function Toggle({
   variant = "default",
   size = "default",
   ...props
-}: TogglePrimitive.Props & VariantProps<typeof toggleVariants>) {
+}: ToggleButtonProps & VariantProps<typeof toggleVariants>) {
   return (
     <TogglePrimitive
       data-slot="toggle"

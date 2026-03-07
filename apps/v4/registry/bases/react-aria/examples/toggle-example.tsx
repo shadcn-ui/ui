@@ -25,7 +25,7 @@ function ToggleBasic() {
   return (
     <Example title="Basic">
       <div className="flex flex-wrap items-center gap-2">
-        <Toggle aria-label="Toggle bold" defaultPressed>
+        <Toggle aria-label="Toggle bold" defaultSelected>
           <IconPlaceholder
             lucide="BoldIcon"
             tabler="IconBold"
@@ -296,10 +296,10 @@ function ToggleDisabled() {
   return (
     <Example title="Disabled">
       <div className="flex flex-wrap items-center gap-2">
-        <Toggle aria-label="Toggle disabled" disabled>
+        <Toggle aria-label="Toggle disabled" isDisabled>
           Disabled
         </Toggle>
-        <Toggle variant="outline" aria-label="Toggle disabled outline" disabled>
+        <Toggle variant="outline" aria-label="Toggle disabled outline" isDisabled>
           Disabled
         </Toggle>
       </div>
@@ -311,14 +311,14 @@ function ToggleWithIcon() {
   return (
     <Example title="With Icon">
       <div className="flex flex-wrap items-center gap-2">
-        <Toggle aria-label="Toggle bookmark" defaultPressed>
+        <Toggle aria-label="Toggle bookmark" defaultSelected>
           <IconPlaceholder
             lucide="BookmarkIcon"
             tabler="IconBookmark"
             hugeicons="BookmarkIcon"
             phosphor="BookmarkIcon"
             remixicon="RiBookmarkLine"
-            className="group-data-[state=on]/toggle:fill-accent-foreground"
+            className="group-data-[selected]/toggle:fill-accent-foreground"
           />
         </Toggle>
         <Toggle variant="outline" aria-label="Toggle bookmark outline">
@@ -328,7 +328,7 @@ function ToggleWithIcon() {
             hugeicons="BookmarkIcon"
             phosphor="BookmarkIcon"
             remixicon="RiBookmarkLine"
-            className="group-data-[state=on]/toggle:fill-accent-foreground"
+            className="group-data-[selected]/toggle:fill-accent-foreground"
           />
           Bookmark
         </Toggle>

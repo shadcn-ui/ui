@@ -1,9 +1,13 @@
 "use client"
 
 import * as React from "react"
-import { Toggle as TogglePrimitive } from "@base-ui/react/toggle"
-import { ToggleGroup as ToggleGroupPrimitive } from "@base-ui/react/toggle-group"
 import { type VariantProps } from "class-variance-authority"
+import {
+  ToggleButton as TogglePrimitive,
+  ToggleButtonGroup as ToggleGroupPrimitive,
+  type ToggleButtonGroupProps,
+  type ToggleButtonProps,
+} from "react-aria-components"
 
 import { cn } from "@/registry/bases/react-aria/lib/utils"
 import { toggleVariants } from "@/registry/bases/react-aria/ui/toggle"
@@ -28,7 +32,7 @@ function ToggleGroup({
   orientation = "horizontal",
   children,
   ...props
-}: ToggleGroupPrimitive.Props &
+}: ToggleButtonGroupProps &
   VariantProps<typeof toggleVariants> & {
     spacing?: number
     orientation?: "horizontal" | "vertical"
@@ -39,7 +43,7 @@ function ToggleGroup({
       data-variant={variant}
       data-size={size}
       data-spacing={spacing}
-      data-orientation={orientation}
+      orientation={orientation}
       style={{ "--gap": spacing } as React.CSSProperties}
       className={cn(
         "cn-toggle-group group/toggle-group flex w-fit flex-row items-center gap-[--spacing(var(--gap))] data-vertical:flex-col data-vertical:items-stretch",
@@ -62,7 +66,7 @@ function ToggleGroupItem({
   variant = "default",
   size = "default",
   ...props
-}: TogglePrimitive.Props & VariantProps<typeof toggleVariants>) {
+}: ToggleButtonProps & VariantProps<typeof toggleVariants>) {
   const context = React.useContext(ToggleGroupContext)
 
   return (

@@ -176,17 +176,18 @@ export function ChartAreaInteractive() {
         </CardDescription>
         <CardAction>
           <ToggleGroup
-            multiple={false}
-            value={timeRange ? [timeRange] : []}
-            onValueChange={(value) => {
-              setTimeRange(value[0] ?? "90d")
+            selectionMode="single"
+            selectedKeys={timeRange ? [timeRange] : []}
+            onSelectionChange={(value) => {
+              if (value === "all") return
+              setTimeRange((Array.from(value)[0] as string) ?? "90d")
             }}
             variant="outline"
             className="hidden *:data-[slot=toggle-group-item]:px-4! @[767px]/card:flex"
           >
-            <ToggleGroupItem value="90d">Last 3 months</ToggleGroupItem>
-            <ToggleGroupItem value="30d">Last 30 days</ToggleGroupItem>
-            <ToggleGroupItem value="7d">Last 7 days</ToggleGroupItem>
+            <ToggleGroupItem id="90d">Last 3 months</ToggleGroupItem>
+            <ToggleGroupItem id="30d">Last 30 days</ToggleGroupItem>
+            <ToggleGroupItem id="7d">Last 7 days</ToggleGroupItem>
           </ToggleGroup>
           <Select
             value={timeRange}

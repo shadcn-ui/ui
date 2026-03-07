@@ -1,5 +1,7 @@
+"use client"
+
 import * as React from "react"
-import { Input as InputPrimitive } from "@base-ui/react/input"
+import { Input as InputPrimitive } from "react-aria-components"
 
 import { cn } from "@/registry/bases/react-aria/lib/utils"
 
