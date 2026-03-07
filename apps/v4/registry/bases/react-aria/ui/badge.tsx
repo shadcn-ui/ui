@@ -1,5 +1,4 @@
-import { mergeProps } from "@base-ui/react/merge-props"
-import { useRender } from "@base-ui/react/use-render"
+import { mergeProps } from "react-aria-components"
 import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/registry/bases/react-aria/lib/utils"
@@ -28,21 +27,22 @@ function Badge({
   variant = "default",
   render,
   ...props
-}: useRender.ComponentProps<"span"> & VariantProps<typeof badgeVariants>) {
-  return useRender({
-    defaultTagName: "span",
-    props: mergeProps<"span">(
-      {
-        className: cn(badgeVariants({ variant }), className),
-      },
-      props
-    ),
-    render,
-    state: {
-      slot: "badge",
-      variant,
-    },
-  })
+}: React.ComponentProps<"span"> & VariantProps<typeof badgeVariants> & { render?: (props: React.ComponentProps<"span">) => React.ReactNode }) {
+  if (render) {
+    return render({
+      "data-slot": "badge",
+      className: cn(badgeVariants({ variant }), className),
+      ...props,
+    })
+  }
+
+  return (
+    <span
+      data-slot="badge"
+      className={cn(badgeVariants({ variant }), className)}
+      {...props}
+    />
+  )
 }
 
 export { Badge, badgeVariants }

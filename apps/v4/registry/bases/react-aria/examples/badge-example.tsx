@@ -224,7 +224,7 @@ function BadgeAsLink() {
       <div className="flex flex-wrap gap-2">
         <Badge
           render={
-            <a href="#">
+            props => <a {...props} href="#">
               Link{" "}
               <IconPlaceholder
                 lucide="ArrowUpRightIcon"
@@ -240,7 +240,7 @@ function BadgeAsLink() {
         <Badge
           variant="secondary"
           render={
-            <a href="#">
+            props => <a {...props} href="#">
               Link{" "}
               <IconPlaceholder
                 lucide="ArrowUpRightIcon"
@@ -256,7 +256,7 @@ function BadgeAsLink() {
         <Badge
           variant="destructive"
           render={
-            <a href="#">
+            props => <a {...props} href="#">
               Link{" "}
               <IconPlaceholder
                 lucide="ArrowUpRightIcon"
@@ -272,7 +272,7 @@ function BadgeAsLink() {
         <Badge
           variant="ghost"
           render={
-            <a href="#">
+            props => <a {...props} href="#">
               Link{" "}
               <IconPlaceholder
                 lucide="ArrowUpRightIcon"
