@@ -133,6 +133,28 @@ describe("createProject", () => {
     })
   })
 
+  it("should use the detected package manager for monorepo, not the template default", async () => {
+    const { getPackageManager } = await import("@/src/utils/get-package-manager")
+    vi.mocked(getPackageManager).mockResolvedValue("bun")
+
+    vi.mocked(prompts).mockResolvedValue({
+      type: "next",
+      name: "my-monorepo",
+    })
+
+    await createProject({
+      cwd: "/test",
+      force: false,
+      monorepo: true,
+    })
+
+    expect(execa).toHaveBeenCalledWith(
+      "bun",
+      expect.arrayContaining(["install"]),
+      expect.any(Object)
+    )
+  })
+
   it("should force next template for remote components", async () => {
     const result = await createProject({
       cwd: "/test",
