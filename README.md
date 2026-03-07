@@ -1,8 +1,8 @@
-# ShadcnBlazor
+# Shadrazor
 
 A .NET Blazor port of [shadcn/ui](https://ui.shadcn.com) — beautifully designed, accessible UI components built with **Tailwind CSS only** (no Bootstrap). Targeting **.NET 10**.
 
-Available as a **NuGet package** (`ShadcnBlazor`) for easy integration into any Blazor project.
+Available as a **NuGet package** (`Daeha.Shadrazor`) for easy integration into any Blazor project.
 
 ## Prerequisites
 
@@ -14,7 +14,7 @@ Available as a **NuGet package** (`ShadcnBlazor`) for easy integration into any 
 ### NuGet Package
 
 ```bash
-dotnet add package ShadcnBlazor
+dotnet add package Daeha.Shadrazor
 ```
 
 ### Setup
@@ -22,13 +22,13 @@ dotnet add package ShadcnBlazor
 1. Add the CSS reference in your `App.razor` or `_Host.cshtml`:
 
 ```html
-<link rel="stylesheet" href="_content/ShadcnBlazor/css/shadcn.css" />
+<link rel="stylesheet" href="_content/Daeha.Shadrazor/css/shadcn.css" />
 ```
 
 2. Add the using directive in your `_Imports.razor`:
 
 ```razor
-@using ShadcnBlazor.Components.UI
+@using Daeha.Shadrazor.Components.UI
 ```
 
 3. Start using components:
@@ -40,36 +40,35 @@ dotnet add package ShadcnBlazor
 ## Project Structure
 
 ```
-shadcn-ui/
-├── shadcn/                              # Original React shadcn/ui source (reference)
+Shadrazor/
 ├── src/
-│   ├── ShadcnBlazor/                    # Razor Class Library (NuGet package)
-│   │   ├── ShadcnBlazor.csproj          # Microsoft.NET.Sdk.Razor + NuGet metadata
-│   │   ├── _Imports.razor               # Library-level imports
+│   ├── Daeha.Shadrazor/                # Razor Class Library (NuGet package)
+│   │   ├── Daeha.Shadrazor.csproj      # Microsoft.NET.Sdk.Razor + NuGet metadata
+│   │   ├── _Imports.razor              # Library-level imports
 │   │   ├── Components/
-│   │   │   └── UI/                      # All UI components
-│   │   │       ├── Enums.cs             # Consolidated enums (variants, sizes, etc.)
-│   │   │       ├── CssUtils.cs          # cn() utility (class merging)
-│   │   │       ├── PositionUtils.cs     # Shared positioning logic
+│   │   │   └── UI/                     # All UI components
+│   │   │       ├── Enums.cs            # Consolidated enums (variants, sizes, etc.)
+│   │   │       ├── CssUtils.cs         # cn() utility (class merging)
+│   │   │       ├── PositionUtils.cs    # Shared positioning logic
 │   │   │       ├── Button.razor
-│   │   │       ├── ...                  # 50+ components
+│   │   │       ├── ...                 # 50+ components
 │   │   │       └── Spinner.razor
 │   │   └── wwwroot/
 │   │       └── css/
-│   │           └── shadcn.css           # Tailwind CSS + design tokens
-│   └── ShadcnBlazor.Demo/              # Demo web application
-│       ├── ShadcnBlazor.Demo.csproj     # .NET 10 Blazor Web App
-│       ├── Program.cs                   # App entry point
+│   │           └── shadcn.css          # Tailwind CSS + design tokens
+│   └── Daeha.Shadrazor.Demo/          # Demo web application
+│       ├── Daeha.Shadrazor.Demo.csproj # .NET 10 Blazor Web App
+│       ├── Program.cs                  # App entry point
 │       └── Components/
-│           ├── App.razor                # Root HTML document
-│           ├── Routes.razor             # Router configuration
+│           ├── App.razor               # Root HTML document
+│           ├── Routes.razor            # Router configuration
 │           ├── Layout/
-│           │   ├── MainLayout.razor     # Main layout with NavBar
-│           │   └── NavBar.razor         # Responsive navigation bar
+│           │   ├── MainLayout.razor    # Main layout with NavBar
+│           │   └── NavBar.razor        # Responsive navigation bar
 │           └── Pages/
-│               ├── Home.razor           # Demo showcase page
-│               ├── Components.razor     # Component catalog
-│               └── Examples.razor       # Interactive examples
+│               ├── Home.razor          # Demo showcase page
+│               ├── Components.razor    # Component catalog
+│               └── Examples.razor      # Interactive examples
 ├── README.md
 ├── LICENSE.md
 └── CONTRIBUTING.md
@@ -78,7 +77,7 @@ shadcn-ui/
 ## Running the Demo
 
 ```bash
-cd src/ShadcnBlazor.Demo
+cd src/Daeha.Shadrazor.Demo
 dotnet restore
 dotnet run
 ```
@@ -86,7 +85,7 @@ dotnet run
 ## Building the NuGet Package
 
 ```bash
-cd src/ShadcnBlazor
+cd src/Daeha.Shadrazor
 dotnet pack -c Release
 ```
 
@@ -295,20 +294,16 @@ Key color tokens: `background`, `foreground`, `primary`, `secondary`, `muted`, `
 
 ## Key Differences from React shadcn/ui
 
-| Feature | React (Original) | Blazor (This Port) |
+| Feature | React (Original) | Blazor (Shadrazor) |
 |---------|-------------------|---------------------|
 | Framework | React + Next.js | .NET 10 Blazor |
-| Package | npm | NuGet (`ShadcnBlazor`) |
+| Package | npm | NuGet (`Daeha.Shadrazor`) |
 | Styling | Tailwind CSS | Tailwind CSS (same) |
 | State | React hooks | `@bind-*`, `EventCallback` |
 | Headless UI | @base-ui/react | Native Blazor logic |
 | Class Merge | `cn()` (clsx + tailwind-merge) | `CssUtils.Cn()` |
 | Icons | Lucide React | Inline SVG |
 | Variants | class-variance-authority | C# enums + pattern matching |
-
-## Original React Source
-
-The original React shadcn/ui source code is preserved in the `shadcn/` directory for reference.
 
 ## Contributing
 

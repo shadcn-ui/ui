@@ -4,11 +4,11 @@
     <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>ShadcnBlazor.Demo</RootNamespace>
+    <RootNamespace>Daeha.Shadrazor.Demo</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ShadcnBlazor\ShadcnBlazor.csproj" />
+    <ProjectReference Include="..\Daeha.Shadrazor\Daeha.Shadrazor.csproj" />
   </ItemGroup>
 
 </Project>

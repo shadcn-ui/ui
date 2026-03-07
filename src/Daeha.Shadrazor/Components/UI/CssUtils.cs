@@ -1,4 +1,4 @@
-namespace ShadcnBlazor.Components.UI;
+namespace Daeha.Shadrazor.Components.UI;
 
 /// <summary>
 /// Utility class for merging CSS class names, equivalent to the cn() utility in shadcn/ui.

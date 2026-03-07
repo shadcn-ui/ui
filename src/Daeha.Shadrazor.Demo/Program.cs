@@ -15,7 +15,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseAntiforgery();
 
-app.MapRazorComponents<ShadcnBlazor.Demo.Components.App>()
+app.MapRazorComponents<Daeha.Shadrazor.Demo.Components.App>()
     .AddInteractiveServerRenderMode();
 
 app.Run();

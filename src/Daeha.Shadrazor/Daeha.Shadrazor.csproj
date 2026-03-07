@@ -4,15 +4,15 @@
     <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>ShadcnBlazor</RootNamespace>
+    <RootNamespace>Daeha.Shadrazor</RootNamespace>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
 
     <!-- NuGet Package Metadata -->
-    <PackageId>ShadcnBlazor</PackageId>
+    <PackageId>Daeha.Shadrazor</PackageId>
     <Version>1.0.0</Version>
-    <Authors>ShadcnBlazor Contributors</Authors>
-    <Description>A Blazor port of shadcn/ui — beautifully designed, accessible UI components built with Tailwind CSS.</Description>
-    <PackageTags>blazor;components;ui;tailwindcss;shadcn;razor</PackageTags>
+    <Authors>Daeha</Authors>
+    <Description>Shadrazor — a Blazor port of shadcn/ui. Beautifully designed, accessible UI components built with Tailwind CSS.</Description>
+    <PackageTags>blazor;components;ui;tailwindcss;shadcn;razor;shadrazor</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryType>git</RepositoryType>

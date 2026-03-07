@@ -1,4 +1,4 @@
-namespace ShadcnBlazor.Components.UI;
+namespace Daeha.Shadrazor.Components.UI;
 
 /// <summary>
 /// Utility for calculating CSS position styles for floating elements (tooltips, popovers, dropdowns).

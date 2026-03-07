@@ -1,4 +1,4 @@
-namespace ShadcnBlazor.Components.UI;
+namespace Daeha.Shadrazor.Components.UI;
 
 // === Button ===
 
