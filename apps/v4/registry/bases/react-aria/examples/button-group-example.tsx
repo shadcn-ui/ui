@@ -103,7 +103,7 @@ function ButtonGroupWithText() {
           <Button variant="outline">Another Button</Button>
         </ButtonGroup>
         <ButtonGroup>
-          <ButtonGroupText render={<Label htmlFor="input-text" />}>
+          <ButtonGroupText render={props => <Label htmlFor="input-text" {...props} />}>
             GPU Size
           </ButtonGroupText>
           <Input id="input-text" placeholder="Type something here..." />

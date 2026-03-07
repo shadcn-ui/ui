@@ -1,5 +1,3 @@
-import { mergeProps } from "@base-ui/react/merge-props"
-import { useRender } from "@base-ui/react/use-render"
 import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/registry/bases/react-aria/lib/utils"
@@ -42,23 +40,29 @@ function ButtonGroupText({
   className,
   render,
   ...props
-}: useRender.ComponentProps<"div">) {
-  return useRender({
-    defaultTagName: "div",
-    props: mergeProps<"div">(
-      {
-        className: cn(
-          "cn-button-group-text flex items-center [&_svg]:pointer-events-none",
-          className
-        ),
-      },
-      props
-    ),
-    render,
-    state: {
-      slot: "button-group-text",
-    },
-  })
+}: React.ComponentProps<"div"> & { render?: (props: React.HTMLAttributes<HTMLElement>) => React.ReactNode }) {
+  if (render) {
+    return render({
+      // @ts-expect-error - data-slot is a valid prop for a div element
+      "data-slot": "button-group-text",
+      className: cn(
+        "cn-button-group-text flex items-center [&_svg]:pointer-events-none",
+        className
+      ),
+      ...props,
+    })
+  }
+
+  return (
+    <div
+      data-slot="button-group-text"
+      className={cn(
+        "cn-button-group-text flex items-center [&_svg]:pointer-events-none",
+        className
+      )}
+      {...props}
+    />
+  )
 }
 
 function ButtonGroupSeparator({
