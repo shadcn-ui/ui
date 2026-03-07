@@ -170,22 +170,22 @@ function BlockViewerToolbar({ styleName }: { styleName: Style["name"] }) {
         <div className="h-8 items-center gap-1.5 rounded-md border p-[3px] shadow-none">
           <ToggleGroup
             type="single"
-            defaultValue="100"
+            defaultValue="100%"
             onValueChange={(value) => {
               setView("preview")
               if (resizablePanelRef?.current) {
-                resizablePanelRef.current.resize(parseInt(value))
+                resizablePanelRef.current.resize(value)
               }
             }}
             className="gap-1 *:data-[slot=toggle-group-item]:size-6! *:data-[slot=toggle-group-item]:rounded-sm!"
           >
-            <ToggleGroupItem value="100" title="Desktop">
+            <ToggleGroupItem value="100%" title="Desktop">
               <Monitor />
             </ToggleGroupItem>
-            <ToggleGroupItem value="60" title="Tablet">
+            <ToggleGroupItem value="60%" title="Tablet">
               <Tablet />
             </ToggleGroupItem>
-            <ToggleGroupItem value="30" title="Mobile">
+            <ToggleGroupItem value="30%" title="Mobile">
               <Smartphone />
             </ToggleGroupItem>
             <Separator orientation="vertical" className="h-4!" />
