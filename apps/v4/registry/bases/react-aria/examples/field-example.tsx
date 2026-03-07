@@ -679,7 +679,7 @@ function SwitchFields() {
           <FieldLabel>Privacy Settings</FieldLabel>
           <FieldDescription>Manage your privacy preferences.</FieldDescription>
           <Field orientation="horizontal">
-            <Switch id="switch-profile" defaultChecked />
+            <Switch id="switch-profile" defaultSelected />
             <FieldContent>
               <FieldLabel htmlFor="switch-profile" className="font-normal">
                 Make profile visible to others
@@ -713,7 +713,7 @@ function SwitchFields() {
               This switch is currently disabled.
             </FieldDescription>
           </FieldContent>
-          <Switch id="switch-disabled-field" disabled />
+          <Switch id="switch-disabled-field" isDisabled />
         </Field>
       </FieldGroup>
     </Example>

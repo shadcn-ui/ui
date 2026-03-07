@@ -52,7 +52,7 @@
 @custom-variant data-unchecked {
   &:where([data-state="unchecked"]),
   &:where([data-unchecked]:not([data-unchecked="false"])),
-  &:where(:not([data-selected])) {
+  &:where(:not([data-selected], [data-checked], [data-state="checked"])) {
     @slot;
   }
 }

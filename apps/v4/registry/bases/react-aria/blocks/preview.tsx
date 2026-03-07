@@ -281,7 +281,7 @@ function FieldExamples() {
                 Allow the wallpaper to be tinted.
               </FieldDescription>
             </FieldContent>
-            <Switch id="tinting" defaultChecked />
+            <Switch id="tinting" defaultSelected />
           </Field>
           <FieldSeparator />
           <FieldLabel htmlFor="checkbox-demo">

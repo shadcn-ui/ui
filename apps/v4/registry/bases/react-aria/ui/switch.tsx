@@ -1,18 +1,21 @@
 "use client"
 
-import { Switch as SwitchPrimitive } from "@base-ui/react/switch"
+import {
+  Switch as SwitchPrimitive,
+  type SwitchProps as SwitchPrimitiveProps,
+} from "react-aria-components"
 
-import { cn } from "@/registry/bases/base/lib/utils"
+import { cn } from "@/registry/bases/react-aria/lib/utils"
 
 function Switch({
   className,
   size = "default",
   ...props
-}: SwitchPrimitive.Root.Props & {
+}: SwitchPrimitiveProps & {
   size?: "sm" | "default"
 }) {
   return (
-    <SwitchPrimitive.Root
+    <SwitchPrimitive
       data-slot="switch"
       data-size={size}
       className={cn(
@@ -21,11 +24,14 @@ function Switch({
       )}
       {...props}
     >
-      <SwitchPrimitive.Thumb
-        data-slot="switch-thumb"
-        className="cn-switch-thumb pointer-events-none block ring-0 transition-transform"
-      />
-    </SwitchPrimitive.Root>
+      {({ isSelected }) => (
+        <span
+          data-slot="switch-thumb"
+          data-selected={isSelected || undefined}
+          className="cn-switch-thumb pointer-events-none block ring-0 transition-transform"
+        />
+      )}
+    </SwitchPrimitive>
   )
 }
 

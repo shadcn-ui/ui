@@ -38,7 +38,7 @@ function SwitchWithLabel() {
   return (
     <Example title="With Label">
       <div className="flex items-center gap-2">
-        <Switch id="switch-bluetooth" defaultChecked />
+        <Switch id="switch-bluetooth" defaultSelected />
         <Label htmlFor="switch-bluetooth">Bluetooth</Label>
       </div>
     </Example>
@@ -69,13 +69,13 @@ function SwitchDisabled() {
     <Example title="Disabled">
       <div className="flex flex-col gap-12">
         <div className="flex items-center gap-2">
-          <Switch id="switch-disabled-unchecked" disabled />
+          <Switch id="switch-disabled-unchecked" isDisabled />
           <Label htmlFor="switch-disabled-unchecked">
             Disabled (Unchecked)
           </Label>
         </div>
         <div className="flex items-center gap-2">
-          <Switch id="switch-disabled-checked" defaultChecked disabled />
+          <Switch id="switch-disabled-checked" defaultSelected isDisabled />
           <Label htmlFor="switch-disabled-checked">Disabled (Checked)</Label>
         </div>
       </div>

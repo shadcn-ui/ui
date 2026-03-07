@@ -542,7 +542,7 @@ function DialogChatSettings() {
                             personalized.
                           </FieldDescription>
                         </FieldContent>
-                        <Switch id="customization" defaultChecked />
+                        <Switch id="customization" defaultSelected />
                       </Field>
                     </FieldLabel>
                   </FieldGroup>
