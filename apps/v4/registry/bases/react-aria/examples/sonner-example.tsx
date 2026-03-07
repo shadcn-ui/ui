@@ -21,7 +21,7 @@ function SonnerBasic() {
   return (
     <Example title="Basic" className="items-center justify-center">
       <Button
-        onClick={() => toast("Event has been created")}
+        onPress={() => toast("Event has been created")}
         variant="outline"
         className="w-fit"
       >
@@ -35,7 +35,7 @@ function SonnerWithDescription() {
   return (
     <Example title="With Description" className="items-center justify-center">
       <Button
-        onClick={() =>
+        onPress={() =>
           toast("Event has been created", {
             description: "Monday, January 3rd at 6:00pm",
           })

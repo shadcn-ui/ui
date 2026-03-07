@@ -3,7 +3,7 @@ import {
   ExampleWrapper,
 } from "@/registry/bases/react-aria/components/example"
 import { Badge } from "@/registry/bases/react-aria/ui/badge"
-import { Button } from "@/registry/bases/react-aria/ui/button"
+import { Button, LinkButton } from "@/registry/bases/react-aria/ui/button"
 import {
   Empty,
   EmptyContent,
@@ -51,13 +51,13 @@ function SpinnerInButtons() {
         <Button>
           <Spinner data-icon="inline-start" /> Submit
         </Button>
-        <Button disabled>
+        <Button isDisabled>
           <Spinner data-icon="inline-start" /> Disabled
         </Button>
-        <Button variant="outline" disabled>
+        <Button variant="outline" isDisabled>
           <Spinner data-icon="inline-start" /> Outline
         </Button>
-        <Button variant="outline" size="icon" disabled>
+        <Button variant="outline" size="icon" isDisabled>
           <Spinner data-icon="inline-start" />
           <span className="sr-only">Loading...</span>
         </Button>
@@ -123,15 +123,12 @@ function SpinnerInEmpty() {
         </EmptyHeader>
         <EmptyContent>
           <div className="flex gap-2">
-            <Button render={<a href="#" />} nativeButton={false}>
-              Create project
-            </Button>
+            <LinkButton href="#">Create project</LinkButton>
             <Button variant="outline">Import project</Button>
           </div>
-          <Button
+          <LinkButton
             variant="link"
-            render={<a href="#" />}
-            nativeButton={false}
+            href="#"
             className="text-muted-foreground"
           >
             Learn more{" "}
@@ -142,7 +139,7 @@ function SpinnerInEmpty() {
               phosphor="ArrowRightIcon"
               remixicon="RiArrowRightLine"
             />
-          </Button>
+          </LinkButton>
         </EmptyContent>
       </Empty>
     </Example>

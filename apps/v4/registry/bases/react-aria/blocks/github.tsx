@@ -282,13 +282,13 @@ function CodespacesCard() {
                 <EmptyContent>
                   <Button
                     size="sm"
-                    onClick={() => {
+                    onPress={() => {
                       setIsCreatingCodespace(true)
                       setTimeout(() => {
                         setIsCreatingCodespace(false)
                       }, 2000)
                     }}
-                    disabled={isCreatingCodespace}
+                    isDisabled={isCreatingCodespace}
                   >
                     {isCreatingCodespace ? (
                       <Spinner data-icon="inline-start" />

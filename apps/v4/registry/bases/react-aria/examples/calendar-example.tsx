@@ -355,7 +355,7 @@ function CalendarWithPresets() {
               variant="outline"
               size="sm"
               className="flex-1"
-              onClick={() => {
+              onPress={() => {
                 const newDate = addDays(new Date(), preset.value)
                 setDate(newDate)
                 setCurrentMonth(
@@ -507,7 +507,7 @@ function DataPickerWithDropdowns() {
                 variant="outline"
                 size="sm"
                 className="w-full"
-                onClick={() => setOpen(false)}
+                onPress={() => setOpen(false)}
               >
                 Done
               </Button>

@@ -616,8 +616,8 @@ export function DataTable({
               <Button
                 variant="outline"
                 className="hidden h-8 w-8 p-0 lg:flex"
-                onClick={() => table.setPageIndex(0)}
-                disabled={!table.getCanPreviousPage()}
+                onPress={() => table.setPageIndex(0)}
+                isDisabled={!table.getCanPreviousPage()}
               >
                 <span className="sr-only">Go to first page</span>
                 <IconPlaceholder
@@ -632,8 +632,8 @@ export function DataTable({
                 variant="outline"
                 className="size-8"
                 size="icon"
-                onClick={() => table.previousPage()}
-                disabled={!table.getCanPreviousPage()}
+                onPress={() => table.previousPage()}
+                isDisabled={!table.getCanPreviousPage()}
               >
                 <span className="sr-only">Go to previous page</span>
                 <IconPlaceholder
@@ -648,8 +648,8 @@ export function DataTable({
                 variant="outline"
                 className="size-8"
                 size="icon"
-                onClick={() => table.nextPage()}
-                disabled={!table.getCanNextPage()}
+                onPress={() => table.nextPage()}
+                isDisabled={!table.getCanNextPage()}
               >
                 <span className="sr-only">Go to next page</span>
                 <IconPlaceholder
@@ -664,8 +664,8 @@ export function DataTable({
                 variant="outline"
                 className="hidden size-8 lg:flex"
                 size="icon"
-                onClick={() => table.setPageIndex(table.getPageCount() - 1)}
-                disabled={!table.getCanNextPage()}
+                onPress={() => table.setPageIndex(table.getPageCount() - 1)}
+                isDisabled={!table.getCanNextPage()}
               >
                 <span className="sr-only">Go to last page</span>
                 <IconPlaceholder

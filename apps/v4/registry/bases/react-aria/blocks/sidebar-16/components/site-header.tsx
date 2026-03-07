@@ -24,7 +24,7 @@ export function SiteHeader() {
           className="h-8 w-8"
           variant="ghost"
           size="icon"
-          onClick={toggleSidebar}
+          onPress={toggleSidebar}
         >
           <IconPlaceholder
             lucide="PanelLeftIcon"

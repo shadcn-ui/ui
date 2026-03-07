@@ -125,7 +125,7 @@ function CommandBasic() {
     <Example title="Basic">
       <div className="flex flex-col gap-4">
         <Button
-          onClick={() => setOpen(true)}
+          onPress={() => setOpen(true)}
           variant="outline"
           className="w-fit"
         >
@@ -156,7 +156,7 @@ function CommandWithShortcuts() {
     <Example title="With Shortcuts">
       <div className="flex flex-col gap-4">
         <Button
-          onClick={() => setOpen(true)}
+          onPress={() => setOpen(true)}
           variant="outline"
           className="w-fit"
         >
@@ -217,7 +217,7 @@ function CommandWithGroups() {
     <Example title="With Groups">
       <div className="flex flex-col gap-4">
         <Button
-          onClick={() => setOpen(true)}
+          onPress={() => setOpen(true)}
           variant="outline"
           className="w-fit"
         >
@@ -311,7 +311,7 @@ function CommandManyItems() {
     <Example title="Many Groups & Items">
       <div className="flex flex-col gap-4">
         <Button
-          onClick={() => setOpen(true)}
+          onPress={() => setOpen(true)}
           variant="outline"
           className="w-fit"
         >

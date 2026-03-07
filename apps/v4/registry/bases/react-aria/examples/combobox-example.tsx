@@ -1205,13 +1205,13 @@ function ComboboxInDialog() {
             <Button
               type="button"
               variant="outline"
-              onClick={() => setOpen(false)}
+              onPress={() => setOpen(false)}
             >
               Cancel
             </Button>
             <Button
               type="button"
-              onClick={() => {
+              onPress={() => {
                 toast("Framework selected.")
                 setOpen(false)
               }}

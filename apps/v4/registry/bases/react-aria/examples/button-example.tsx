@@ -4,7 +4,7 @@ import {
   Example,
   ExampleWrapper,
 } from "@/registry/bases/react-aria/components/example"
-import { Button, buttonVariants } from "@/registry/bases/react-aria/ui/button"
+import { Button, LinkButton } from "@/registry/bases/react-aria/ui/button"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function ButtonExample() {
@@ -908,9 +908,7 @@ function ButtonExamples() {
             />
           </Button>
         </div>
-        <a href="#" className={buttonVariants()}>
-          Link
-        </a>
+        <LinkButton href="#">Link</LinkButton>
       </div>
     </Example>
   )

@@ -7,7 +7,7 @@ import {
   AvatarFallback,
   AvatarImage,
 } from "@/registry/bases/react-aria/ui/avatar"
-import { Button } from "@/registry/bases/react-aria/ui/button"
+import { buttonVariants } from "@/registry/bases/react-aria/ui/button"
 import {
   Collapsible,
   CollapsibleContent,
@@ -249,11 +249,12 @@ export default function SidebarIconExample() {
                     />
                   }
                 >
-                  <Button
-                    size="icon-sm"
-                    render={<span />}
-                    nativeButton={false}
-                    className="size-8"
+                  <span
+                    data-slot="button"
+                    className={buttonVariants({
+                      size: "icon-sm",
+                      className: "size-8",
+                    })}
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -283,7 +284,7 @@ export default function SidebarIconExample() {
                         strokeWidth="32"
                       ></line>
                     </svg>
-                  </Button>
+                  </span>
                   <div className="grid flex-1 text-left text-sm leading-tight">
                     <span className="truncate font-medium">
                       {activeTeam.name}

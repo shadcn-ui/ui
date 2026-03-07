@@ -244,8 +244,8 @@ function FieldExamples() {
                 size="icon"
                 type="button"
                 aria-label="Decrement"
-                onClick={() => handleGpuAdjustment(-1)}
-                disabled={gpuCount <= 1}
+                onPress={() => handleGpuAdjustment(-1)}
+                isDisabled={gpuCount <= 1}
               >
                 <IconPlaceholder
                   lucide="MinusIcon"
@@ -260,8 +260,8 @@ function FieldExamples() {
                 size="icon"
                 type="button"
                 aria-label="Increment"
-                onClick={() => handleGpuAdjustment(1)}
-                disabled={gpuCount >= 99}
+                onPress={() => handleGpuAdjustment(1)}
+                isDisabled={gpuCount >= 99}
               >
                 <IconPlaceholder
                   lucide="PlusIcon"
@@ -746,7 +746,7 @@ function InputGroupExamples() {
             </InputGroupAddon>
             <InputGroupAddon align="inline-end">
               <InputGroupButton
-                onClick={() => setIsFavorite(!isFavorite)}
+                onPress={() => setIsFavorite(!isFavorite)}
                 size="icon-xs"
                 aria-label="Favorite"
               >
@@ -790,7 +790,7 @@ function InputGroupExamples() {
                   <TooltipTrigger
                     render={
                       <InputGroupButton
-                        onClick={() => setVoiceEnabled(!voiceEnabled)}
+                        onPress={() => setVoiceEnabled(!voiceEnabled)}
                         data-active={voiceEnabled}
                         className="data-[active=true]:bg-primary data-[active=true]:text-primary-foreground"
                         aria-pressed={voiceEnabled}

@@ -1,68 +1,57 @@
 "use client"
 
 import * as React from "react"
-import {
-  Slider as RACSlider,
-  SliderOutput,
-  SliderThumb,
-  SliderTrack,
-  type SliderProps,
-} from "react-aria-components"
-
-import { cn } from "@/registry/bases/react-aria/lib/utils"
+import { cn } from "@/examples/base/lib/utils"
+import { Slider as SliderPrimitive } from "@base-ui/react/slider"
 
 function Slider({
   className,
   defaultValue,
   value,
-  minValue = 0,
-  maxValue = 100,
+  min = 0,
+  max = 100,
   ...props
-}: SliderProps) {
+}: SliderPrimitive.Root.Props) {
   const _values = React.useMemo(
     () =>
       Array.isArray(value)
         ? value
         : Array.isArray(defaultValue)
           ? defaultValue
-          : [minValue, maxValue],
-    [value, defaultValue, minValue, maxValue]
+          : [min, max],
+    [value, defaultValue, min, max]
   )
 
   return (
-    <RACSlider
-      className={cn(
-        "data-[orientation=vertical]:h-full data-horizontal:w-full",
-        className
-      )}
+    <SliderPrimitive.Root
+      className={cn("data-horizontal:w-full data-vertical:h-full", className)}
       data-slot="slider"
       defaultValue={defaultValue}
       value={value}
-      minValue={minValue}
-      maxValue={maxValue}
+      min={min}
+      max={max}
+      thumbAlignment="edge"
       {...props}
     >
-      <div className="cn-slider relative flex w-full touch-none items-center select-none data-[orientation=vertical]:h-full data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col data-disabled:opacity-50">
-        <SliderTrack
+      <SliderPrimitive.Control className="relative flex w-full touch-none items-center select-none data-disabled:opacity-50 data-vertical:h-full data-vertical:min-h-40 data-vertical:w-auto data-vertical:flex-col">
+        <SliderPrimitive.Track
           data-slot="slider-track"
-          className="cn-slider-track relative grow overflow-hidden select-none"
+          className="relative grow overflow-hidden rounded-full bg-muted select-none data-horizontal:h-1 data-horizontal:w-full data-vertical:h-full data-vertical:w-1"
         >
-          <div
+          <SliderPrimitive.Indicator
             data-slot="slider-range"
-            className="cn-slider-range select-none data-[orientation=vertical]:w-full data-horizontal:h-full"
+            className="bg-primary select-none data-horizontal:h-full data-vertical:w-full"
           />
-        </SliderTrack>
-        <SliderOutput />
+        </SliderPrimitive.Track>
         {Array.from({ length: _values.length }, (_, index) => (
-          <SliderThumb
+          <SliderPrimitive.Thumb
             data-slot="slider-thumb"
             key={index}
-            index={index}
-            className="cn-slider-thumb top-0 left-0 block shrink-0 select-none disabled:pointer-events-none disabled:opacity-50"
+            className="relative block size-3 shrink-0 rounded-full border border-ring bg-white ring-ring/50 transition-[color,box-shadow] select-none after:absolute after:-inset-2 hover:ring-3 focus-visible:ring-3 focus-visible:outline-hidden active:ring-3 disabled:pointer-events-none disabled:opacity-50"
           />
         ))}
-      </div>
-    </RACSlider>
+      </SliderPrimitive.Control>
+    </SliderPrimitive.Root>
   )
 }
 

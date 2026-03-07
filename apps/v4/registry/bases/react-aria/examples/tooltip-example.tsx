@@ -116,7 +116,7 @@ function TooltipDisabled() {
     <Example title="Disabled">
       <Tooltip>
         <TooltipTrigger render={<span className="inline-block w-fit" />}>
-          <Button variant="outline" disabled>
+          <Button variant="outline" isDisabled>
             Disabled
           </Button>
         </TooltipTrigger>

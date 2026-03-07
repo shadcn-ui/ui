@@ -1,7 +1,7 @@
 import * as React from "react"
 
 import { cn } from "@/registry/bases/react-aria/lib/utils"
-import { Button } from "@/registry/bases/react-aria/ui/button"
+import { Button, LinkButton } from "@/registry/bases/react-aria/ui/button"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 function Pagination({ className, ...props }: React.ComponentProps<"nav">) {
@@ -39,7 +39,7 @@ function PaginationItem({ ...props }: React.ComponentProps<"li">) {
 type PaginationLinkProps = {
   isActive?: boolean
 } & Pick<React.ComponentProps<typeof Button>, "size"> &
-  React.ComponentProps<"a">
+  Omit<React.ComponentProps<typeof LinkButton>, "size" | "variant">
 
 function PaginationLink({
   className,
@@ -48,19 +48,14 @@ function PaginationLink({
   ...props
 }: PaginationLinkProps) {
   return (
-    <Button
+    <LinkButton
       variant={isActive ? "outline" : "ghost"}
       size={size}
       className={cn("cn-pagination-link", className)}
-      nativeButton={false}
-      render={
-        <a
-          aria-current={isActive ? "page" : undefined}
-          data-slot="pagination-link"
-          data-active={isActive}
-          {...props}
-        />
-      }
+      aria-current={isActive ? "page" : undefined}
+      data-slot="pagination-link"
+      data-active={isActive}
+      {...props}
     />
   )
 }

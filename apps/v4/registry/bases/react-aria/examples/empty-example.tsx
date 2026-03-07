@@ -2,7 +2,7 @@ import {
   Example,
   ExampleWrapper,
 } from "@/registry/bases/react-aria/components/example"
-import { Button } from "@/registry/bases/react-aria/ui/button"
+import { Button, LinkButton } from "@/registry/bases/react-aria/ui/button"
 import {
   Empty,
   EmptyContent,
@@ -45,16 +45,13 @@ function EmptyBasic() {
         </EmptyHeader>
         <EmptyContent>
           <div className="flex gap-2">
-            <Button render={<a href="#" />} nativeButton={false}>
-              Create project
-            </Button>
+            <LinkButton href="#">Create project</LinkButton>
             <Button variant="outline">Import project</Button>
           </div>
-          <Button
+          <LinkButton
             variant="link"
-            render={<a href="#" />}
+            href="#"
             className="text-muted-foreground"
-            nativeButton={false}
           >
             Learn more{" "}
             <IconPlaceholder
@@ -64,7 +61,7 @@ function EmptyBasic() {
               phosphor="ArrowUpRightIcon"
               remixicon="RiArrowRightUpLine"
             />
-          </Button>
+          </LinkButton>
         </EmptyContent>
       </Empty>
     </Example>
@@ -83,11 +80,10 @@ function EmptyWithMutedBackground() {
         </EmptyHeader>
         <EmptyContent>
           <Button>Try again</Button>
-          <Button
+          <LinkButton
             variant="link"
-            render={<a href="#" />}
+            href="#"
             className="text-muted-foreground"
-            nativeButton={false}
           >
             Learn more{" "}
             <IconPlaceholder
@@ -97,7 +93,7 @@ function EmptyWithMutedBackground() {
               phosphor="ArrowUpRightIcon"
               remixicon="RiArrowRightUpLine"
             />
-          </Button>
+          </LinkButton>
         </EmptyContent>
       </Empty>
     </Example>
@@ -236,16 +232,13 @@ function EmptyInCard() {
         </EmptyHeader>
         <EmptyContent>
           <div className="flex gap-2">
-            <Button render={<a href="#" />} nativeButton={false}>
-              Create project
-            </Button>
+            <LinkButton href="#">Create project</LinkButton>
             <Button variant="outline">Import project</Button>
           </div>
-          <Button
+          <LinkButton
             variant="link"
-            render={<a href="#" />}
+            href="#"
             className="text-muted-foreground"
-            nativeButton={false}
           >
             Learn more{" "}
             <IconPlaceholder
@@ -255,7 +248,7 @@ function EmptyInCard() {
               phosphor="ArrowUpRightIcon"
               remixicon="RiArrowRightUpLine"
             />
-          </Button>
+          </LinkButton>
         </EmptyContent>
       </Empty>
     </Example>

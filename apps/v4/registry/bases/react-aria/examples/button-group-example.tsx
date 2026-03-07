@@ -4,7 +4,7 @@ import {
   Example,
   ExampleWrapper,
 } from "@/registry/bases/react-aria/components/example"
-import { Button } from "@/registry/bases/react-aria/ui/button"
+import { Button, buttonVariants } from "@/registry/bases/react-aria/ui/button"
 import {
   ButtonGroup,
   ButtonGroupText,
@@ -400,15 +400,9 @@ function ButtonGroupWithLike() {
           />{" "}
           Like
         </Button>
-        <Button
-          variant="outline"
-          size="icon"
-          className="w-12"
-          render={<span />}
-          nativeButton={false}
-        >
+        <span data-slot="button" className={buttonVariants({ variant: "outline", size: "icon", className: "w-12" })}>
           1.2K
-        </Button>
+        </span>
       </ButtonGroup>
     </Example>
   )

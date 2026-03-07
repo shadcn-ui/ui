@@ -54,21 +54,21 @@ function BarVisualizerDemo() {
           <Button
             size="sm"
             variant={state === "connecting" ? "default" : "outline"}
-            onClick={() => setState("connecting")}
+            onPress={() => setState("connecting")}
           >
             Connecting
           </Button>
           <Button
             size="sm"
             variant={state === "listening" ? "default" : "outline"}
-            onClick={() => setState("listening")}
+            onPress={() => setState("listening")}
           >
             Listening
           </Button>
           <Button
             size="sm"
             variant={state === "speaking" ? "default" : "outline"}
-            onClick={() => setState("speaking")}
+            onPress={() => setState("speaking")}
           >
             Speaking
           </Button>
@@ -120,21 +120,21 @@ function WaveformDemo() {
           <Button
             size="sm"
             variant={active ? "default" : "outline"}
-            onClick={handleToggleActive}
+            onPress={handleToggleActive}
           >
             {active ? "Stop" : "Start"} Listening
           </Button>
           <Button
             size="sm"
             variant={processing ? "default" : "outline"}
-            onClick={handleToggleProcessing}
+            onPress={handleToggleProcessing}
           >
             {processing ? "Stop" : "Start"} Processing
           </Button>
           <Button
             size="sm"
             variant="outline"
-            onClick={() => setMode(mode === "static" ? "scrolling" : "static")}
+            onPress={() => setMode(mode === "static" ? "scrolling" : "static")}
           >
             {mode === "static" ? "Static" : "Scrolling"}
           </Button>

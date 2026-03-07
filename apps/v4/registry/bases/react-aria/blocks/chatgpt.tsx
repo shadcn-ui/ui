@@ -107,7 +107,7 @@ function PromptForm() {
                         <InputGroupButton
                           variant="ghost"
                           size="icon-sm"
-                          onClick={() => setDictateEnabled(!dictateEnabled)}
+                          onPress={() => setDictateEnabled(!dictateEnabled)}
                           className="rounded-4xl"
                         />
                       }
@@ -257,7 +257,7 @@ function PromptForm() {
                   <InputGroupButton
                     variant="ghost"
                     size="icon-sm"
-                    onClick={() => setDictateEnabled(!dictateEnabled)}
+                    onPress={() => setDictateEnabled(!dictateEnabled)}
                     className="ml-auto rounded-4xl"
                   />
                 }
@@ -565,7 +565,7 @@ function CreateProjectForm() {
                             className="rounded-full p-1"
                             style={{ "--color": color } as React.CSSProperties}
                             data-checked={selectedColor === color}
-                            onClick={() => {
+                            onPress={() => {
                               setSelectedColor(color)
                             }}
                           >
