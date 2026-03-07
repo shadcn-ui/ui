@@ -66,6 +66,12 @@ describe("buildInitUrl", () => {
     expect(parsed.searchParams.get("template")).toBe("next")
   })
 
+  it("should not include laravel template", () => {
+    const url = resolveInitUrl(mockPreset, { template: "laravel" })
+    const parsed = new URL(url)
+    expect(parsed.searchParams.has("template")).toBe(false)
+  })
+
   it("should not include template when not provided", () => {
     const url = resolveInitUrl(mockPreset)
     const parsed = new URL(url)

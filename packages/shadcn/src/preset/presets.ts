@@ -132,7 +132,7 @@ export function resolveInitUrl(
     radius: preset.radius,
   })
 
-  if (options?.template) {
+  if (options?.template && options.template !== "laravel") {
     params.set("template", options.template)
   }
 
