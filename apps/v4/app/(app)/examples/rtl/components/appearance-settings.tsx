@@ -128,7 +128,7 @@ export function AppearanceSettings() {
                 value={gpuCount}
                 onChange={handleGpuInputChange}
                 size={3}
-                className="h-7 !w-14 font-mono"
+                className="h-7 w-14! font-mono"
                 maxLength={3}
               />
               <Button

@@ -120,7 +120,7 @@ export function InputGroupWithTooltip({
                 </PopoverHeader>
               </PopoverContent>
             </Popover>
-            <InputGroupAddon className="text-muted-foreground pl-1">
+            <InputGroupAddon className="pl-1 text-muted-foreground">
               https://
             </InputGroupAddon>
             <InputGroupInput id="input-secure-19" />

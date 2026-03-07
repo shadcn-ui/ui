@@ -12,7 +12,7 @@ import {
   parseEnvContent,
 } from "@/src/utils/env-helpers"
 import { Config } from "@/src/utils/get-config"
-import { ProjectInfo, getProjectInfo } from "@/src/utils/get-project-info"
+import { getProjectInfo, ProjectInfo } from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import { resolveImport } from "@/src/utils/resolve-import"
@@ -116,6 +116,17 @@ export async function updateFiles(
     }
 
     const existingFile = existsSync(filePath)
+
+    // TODO: revisit this when we implement utils transform instead of override.
+    if (
+      file.type === "registry:lib" &&
+      basename(file.path) === "utils.ts" &&
+      projectInfo?.framework.name === "laravel" &&
+      existingFile
+    ) {
+      filesSkipped.push(path.relative(config.resolvedPaths.cwd, filePath))
+      continue
+    }
 
     // Check if the path exists and is a directory - we can't write to directories.
     if (existingFile && statSync(filePath).isDirectory()) {
@@ -251,18 +262,17 @@ export async function updateFiles(
   // Let's update filesUpdated with the updated files.
   filesUpdated.push(...updatedFiles)
 
-  // If a file is in filesCreated and filesUpdated, we should remove it from filesUpdated.
-  filesUpdated = filesUpdated.filter((file) => !filesCreated.includes(file))
+  // Remove duplicates and filter out files already in filesCreated.
+  filesCreated = Array.from(new Set(filesCreated))
+  filesUpdated = Array.from(
+    new Set(filesUpdated.filter((file) => !filesCreated.includes(file)))
+  )
+  filesSkipped = Array.from(new Set(filesSkipped))
 
   const hasUpdatedFiles = filesCreated.length || filesUpdated.length
   if (!hasUpdatedFiles && !filesSkipped.length) {
     filesCreatedSpinner?.info("No files updated.")
   }
-
-  // Remove duplicates.
-  filesCreated = Array.from(new Set(filesCreated))
-  filesUpdated = Array.from(new Set(filesUpdated))
-  filesSkipped = Array.from(new Set(filesSkipped))
 
   if (filesCreated.length) {
     filesCreatedSpinner?.succeed(
@@ -298,7 +308,7 @@ export async function updateFiles(
   if (filesSkipped.length) {
     spinner(
       `Skipped ${filesSkipped.length} ${
-        filesUpdated.length === 1 ? "file" : "files"
+        filesSkipped.length === 1 ? "file" : "files"
       }: (files might be identical, use --overwrite to overwrite)`,
       {
         silent: options.silent,
@@ -320,10 +330,6 @@ export async function updateFiles(
         logger.log(`  ${highlighter.success("+")} ${key}`)
       }
     }
-  }
-
-  if (!options.silent) {
-    logger.break()
   }
 
   return {

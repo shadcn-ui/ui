@@ -4,7 +4,7 @@ import { AspectRatio } from "@/examples/radix/ui/aspect-ratio"
 export function AspectRatioSquare() {
   return (
     <div className="w-full max-w-[12rem]">
-      <AspectRatio ratio={1 / 1} className="bg-muted rounded-lg">
+      <AspectRatio ratio={1 / 1} className="rounded-lg bg-muted">
         <Image
           src="https://avatar.vercel.sh/shadcn1"
           alt="Photo"

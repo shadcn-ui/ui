@@ -10,7 +10,7 @@ function ComponentContent({ ...props }: React.ComponentProps<typeof Atom>) {
   return (
     <Atom
       shade="50"
-      className="bg-muted/30 ring-muted flex aspect-video items-center justify-center rounded-lg p-4 ring *:w-full *:max-w-[70%]"
+      className="flex aspect-video items-center justify-center rounded-lg bg-muted/30 p-4 ring ring-muted *:w-full *:max-w-[70%]"
       {...props}
     />
   )
@@ -19,7 +19,7 @@ function ComponentContent({ ...props }: React.ComponentProps<typeof Atom>) {
 function ComponentName({ ...props }: React.ComponentProps<"div">) {
   return (
     <div
-      className="text-foreground text-center font-medium underline-offset-2 group-hover:underline"
+      className="text-center font-medium text-foreground underline-offset-2 group-hover:underline"
       {...props}
     />
   )

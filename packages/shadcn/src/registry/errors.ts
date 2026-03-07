@@ -1,3 +1,4 @@
+import { SHADCN_URL } from "@/src/registry/constants"
 import { z } from "zod"
 
 // Error codes for programmatic error handling
@@ -76,7 +77,10 @@ export class RegistryError extends Error {
 }
 
 export class RegistryNotFoundError extends RegistryError {
-  constructor(public readonly url: string, cause?: unknown) {
+  constructor(
+    public readonly url: string,
+    cause?: unknown
+  ) {
     const message = `The item at ${url} was not found. It may not exist at the registry.`
 
     super(message, {
@@ -92,7 +96,10 @@ export class RegistryNotFoundError extends RegistryError {
 }
 
 export class RegistryGoneError extends RegistryError {
-  constructor(public readonly url: string, cause?: unknown) {
+  constructor(
+    public readonly url: string,
+    cause?: unknown
+  ) {
     const message = `The item at ${url} is no longer available. It may have been removed or expired.`
 
     super(message, {
@@ -108,7 +115,10 @@ export class RegistryGoneError extends RegistryError {
 }
 
 export class RegistryUnauthorizedError extends RegistryError {
-  constructor(public readonly url: string, cause?: unknown) {
+  constructor(
+    public readonly url: string,
+    cause?: unknown
+  ) {
     const message = `You are not authorized to access the item at ${url}. If this is a remote registry, you may need to authenticate.`
 
     super(message, {
@@ -124,7 +134,10 @@ export class RegistryUnauthorizedError extends RegistryError {
 }
 
 export class RegistryForbiddenError extends RegistryError {
-  constructor(public readonly url: string, cause?: unknown) {
+  constructor(
+    public readonly url: string,
+    cause?: unknown
+  ) {
     const message = `You are not authorized to access the item at ${url}. If this is a remote registry, you may need to authenticate.`
 
     super(message, {
@@ -199,7 +212,10 @@ export class RegistryNotConfiguredError extends RegistryError {
 }
 
 export class RegistryLocalFileError extends RegistryError {
-  constructor(public readonly filePath: string, cause?: unknown) {
+  constructor(
+    public readonly filePath: string,
+    cause?: unknown
+  ) {
     super(`Failed to read local registry file: ${filePath}`, {
       code: RegistryErrorCode.LOCAL_FILE_ERROR,
       cause,
@@ -213,7 +229,10 @@ export class RegistryLocalFileError extends RegistryError {
 export class RegistryParseError extends RegistryError {
   public readonly parseError: unknown
 
-  constructor(public readonly item: string, parseError: unknown) {
+  constructor(
+    public readonly item: string,
+    parseError: unknown
+  ) {
     let message = `Failed to parse registry item: ${item}`
 
     if (parseError instanceof z.ZodError) {
@@ -226,8 +245,7 @@ export class RegistryParseError extends RegistryError {
       code: RegistryErrorCode.PARSE_ERROR,
       cause: parseError,
       context: { item },
-      suggestion:
-        "The registry item may be corrupted or have an invalid format. Please make sure it returns a valid JSON object. See https://ui.shadcn.com/schema/registry-item.json.",
+      suggestion: `The registry item may be corrupted or have an invalid format. Please make sure it returns a valid JSON object. See ${SHADCN_URL}/schema/registry-item.json.`,
     })
 
     this.parseError = parseError
@@ -283,7 +301,10 @@ export class ConfigMissingError extends RegistryError {
 }
 
 export class ConfigParseError extends RegistryError {
-  constructor(public readonly cwd: string, parseError: unknown) {
+  constructor(
+    public readonly cwd: string,
+    parseError: unknown
+  ) {
     let message = `Invalid components.json configuration in ${cwd}.`
 
     if (parseError instanceof z.ZodError) {
