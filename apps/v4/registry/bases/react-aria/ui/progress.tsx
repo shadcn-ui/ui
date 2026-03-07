@@ -1,80 +1,57 @@
 "use client"
 
-import { Progress as ProgressPrimitive } from "@base-ui/react/progress"
+import * as React from "react"
+import {
+  ProgressBar as ProgressPrimitive,
+  type ProgressBarProps as ProgressPrimitiveProps,
+} from "react-aria-components"
 
 import { cn } from "@/registry/bases/react-aria/lib/utils"
 
 function Progress({
   className,
-  children,
-  value,
+  label,
+  showValueLabel = false,
   ...props
-}: ProgressPrimitive.Root.Props) {
+}: Omit<ProgressPrimitiveProps, "children" | "className"> & {
+  className?: string
+  label?: React.ReactNode
+  showValueLabel?: boolean
+}) {
   return (
-    <ProgressPrimitive.Root
-      value={value}
+    <ProgressPrimitive
       data-slot="progress"
       className={cn("cn-progress-root flex flex-wrap gap-3", className)}
       {...props}
     >
-      {children}
-      <ProgressTrack>
-        <ProgressIndicator />
-      </ProgressTrack>
-    </ProgressPrimitive.Root>
-  )
-}
-
-function ProgressTrack({ className, ...props }: ProgressPrimitive.Track.Props) {
-  return (
-    <ProgressPrimitive.Track
-      className={cn(
-        "cn-progress-track relative flex w-full items-center overflow-x-hidden",
-        className
+      {({ percentage, valueText, isIndeterminate }) => (
+        <>
+          {label ? (
+            <span className={cn("cn-progress-label")} data-slot="progress-label">
+              {label}
+            </span>
+          ) : null}
+          {showValueLabel ? (
+            <span className={cn("cn-progress-value")} data-slot="progress-value">
+              {valueText}
+            </span>
+          ) : null}
+          <span
+            className={cn(
+              "cn-progress-track relative flex w-full items-center overflow-x-hidden"
+            )}
+            data-slot="progress-track"
+          >
+            <span
+              data-slot="progress-indicator"
+              className={cn("cn-progress-indicator h-full transition-all")}
+              style={{ width: `${isIndeterminate ? 100 : percentage}%` }}
+            />
+          </span>
+        </>
       )}
-      data-slot="progress-track"
-      {...props}
-    />
+    </ProgressPrimitive>
   )
 }
 
-function ProgressIndicator({
-  className,
-  ...props
-}: ProgressPrimitive.Indicator.Props) {
-  return (
-    <ProgressPrimitive.Indicator
-      data-slot="progress-indicator"
-      className={cn("cn-progress-indicator h-full transition-all", className)}
-      {...props}
-    />
-  )
-}
-
-function ProgressLabel({ className, ...props }: ProgressPrimitive.Label.Props) {
-  return (
-    <ProgressPrimitive.Label
-      className={cn("cn-progress-label", className)}
-      data-slot="progress-label"
-      {...props}
-    />
-  )
-}
-
-function ProgressValue({ className, ...props }: ProgressPrimitive.Value.Props) {
-  return (
-    <ProgressPrimitive.Value
-      className={cn("cn-progress-value", className)}
-      data-slot="progress-value"
-      {...props}
-    />
-  )
-}
-
-export {
-  Progress,
-  ProgressTrack,
-  ProgressIndicator,
-  ProgressLabel,
-  ProgressValue,
-}
+export { Progress }
