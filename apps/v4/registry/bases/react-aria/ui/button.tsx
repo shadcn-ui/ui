@@ -1,6 +1,6 @@
 "use client"
 
-import { Button as ButtonPrimitive, ButtonProps } from "react-aria-components"
+import { Button as ButtonPrimitive, type ButtonProps } from "react-aria-components"
 import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/registry/bases/react-aria/lib/utils"

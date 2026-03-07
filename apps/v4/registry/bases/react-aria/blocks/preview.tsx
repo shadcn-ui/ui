@@ -286,7 +286,7 @@ function FieldExamples() {
           <FieldSeparator />
           <FieldLabel htmlFor="checkbox-demo">
             <Field orientation="horizontal">
-              <Checkbox id="checkbox-demo" defaultChecked />
+              <Checkbox id="checkbox-demo" defaultSelected />
               <FieldLabel htmlFor="checkbox-demo" className="line-clamp-1">
                 I agree to the terms and conditions
               </FieldLabel>
@@ -1084,7 +1084,7 @@ function FormExample() {
                   <Field orientation="horizontal">
                     <Checkbox
                       id="checkout-7j9-same-as-shipping-wgm"
-                      defaultChecked
+                      defaultSelected
                     />
                     <FieldLabel
                       htmlFor="checkout-7j9-same-as-shipping-wgm"

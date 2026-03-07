@@ -140,12 +140,12 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
     header: ({ table }) => (
       <div className="flex items-center justify-center">
         <Checkbox
-          checked={table.getIsAllPageRowsSelected()}
-          indeterminate={
+          isSelected={table.getIsAllPageRowsSelected()}
+          isIndeterminate={
             table.getIsSomePageRowsSelected() &&
             !table.getIsAllPageRowsSelected()
           }
-          onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+          onChange={(value) => table.toggleAllPageRowsSelected(!!value)}
           aria-label="Select all"
         />
       </div>
@@ -153,8 +153,8 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
     cell: ({ row }) => (
       <div className="flex items-center justify-center">
         <Checkbox
-          checked={row.getIsSelected()}
-          onCheckedChange={(value) => row.toggleSelected(!!value)}
+          isSelected={row.getIsSelected()}
+          onChange={(value) => row.toggleSelected(!!value)}
           aria-label="Select row"
         />
       </div>

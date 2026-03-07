@@ -53,7 +53,7 @@ function CheckboxWithDescription() {
   return (
     <Example title="With Description">
       <Field orientation="horizontal">
-        <Checkbox id="terms-2" defaultChecked />
+        <Checkbox id="terms-2" defaultSelected />
         <FieldContent>
           <FieldLabel htmlFor="terms-2">Accept terms and conditions</FieldLabel>
           <FieldDescription>
@@ -69,7 +69,7 @@ function CheckboxInvalid() {
   return (
     <Example title="Invalid">
       <Field orientation="horizontal" data-invalid>
-        <Checkbox id="terms-3" aria-invalid />
+        <Checkbox id="terms-3" isInvalid />
         <FieldLabel htmlFor="terms-3">Accept terms and conditions</FieldLabel>
       </Field>
     </Example>
@@ -80,7 +80,7 @@ function CheckboxDisabled() {
   return (
     <Example title="Disabled">
       <Field orientation="horizontal">
-        <Checkbox id="toggle" disabled />
+        <Checkbox id="toggle" isDisabled />
         <FieldLabel htmlFor="toggle">Enable notifications</FieldLabel>
       </Field>
     </Example>
@@ -93,7 +93,7 @@ function CheckboxWithTitle() {
       <FieldGroup>
         <FieldLabel htmlFor="toggle-2">
           <Field orientation="horizontal">
-            <Checkbox id="toggle-2" defaultChecked />
+            <Checkbox id="toggle-2" defaultSelected />
             <FieldContent>
               <FieldTitle>Enable notifications</FieldTitle>
               <FieldDescription>
@@ -104,7 +104,7 @@ function CheckboxWithTitle() {
         </FieldLabel>
         <FieldLabel htmlFor="toggle-4">
           <Field orientation="horizontal" data-disabled>
-            <Checkbox id="toggle-4" disabled />
+            <Checkbox id="toggle-4" isDisabled />
             <FieldContent>
               <FieldTitle>Enable notifications</FieldTitle>
               <FieldDescription>
@@ -178,8 +178,8 @@ function CheckboxInTable() {
             <TableHead className="w-8">
               <Checkbox
                 id="select-all"
-                checked={selectAll}
-                onCheckedChange={handleSelectAll}
+                isSelected={selectAll}
+                onChange={handleSelectAll}
               />
             </TableHead>
             <TableHead>Name</TableHead>
@@ -196,8 +196,8 @@ function CheckboxInTable() {
               <TableCell>
                 <Checkbox
                   id={`row-${row.id}`}
-                  checked={selectedRows.has(row.id)}
-                  onCheckedChange={(checked) =>
+                  isSelected={selectedRows.has(row.id)}
+                  onChange={(checked) =>
                     handleSelectRow(row.id, checked === true)
                   }
                 />

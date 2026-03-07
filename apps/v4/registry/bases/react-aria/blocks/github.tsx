@@ -1267,7 +1267,7 @@ function ContributionsActivity() {
                     </FieldContent>
                   </Field>
                   <Field orientation="horizontal">
-                    <Checkbox id="private-contributions" defaultChecked />
+                    <Checkbox id="private-contributions" defaultSelected />
                     <FieldContent>
                       <FieldLabel
                         htmlFor="private-contributions"

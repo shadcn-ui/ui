@@ -437,7 +437,7 @@ function CheckboxFields() {
     <Example title="Checkbox Fields">
       <FieldGroup>
         <Field orientation="horizontal">
-          <Checkbox id="checkbox-basic" defaultChecked />
+          <Checkbox id="checkbox-basic" defaultSelected />
           <FieldLabel htmlFor="checkbox-basic" className="font-normal">
             I agree to the terms and conditions
           </FieldLabel>
@@ -497,13 +497,13 @@ function CheckboxFields() {
           </FieldGroup>
         </FieldSet>
         <Field data-invalid orientation="horizontal">
-          <Checkbox id="checkbox-invalid" aria-invalid />
+          <Checkbox id="checkbox-invalid" isInvalid />
           <FieldLabel htmlFor="checkbox-invalid" className="font-normal">
             Invalid checkbox
           </FieldLabel>
         </Field>
         <Field data-disabled orientation="horizontal">
-          <Checkbox id="checkbox-disabled-field" disabled />
+          <Checkbox id="checkbox-disabled-field" isDisabled />
           <FieldLabel htmlFor="checkbox-disabled-field" className="font-normal">
             Disabled checkbox
           </FieldLabel>
