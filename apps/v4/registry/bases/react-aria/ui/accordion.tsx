@@ -1,13 +1,25 @@
 "use client"
 
-import { Accordion as AccordionPrimitive } from "@base-ui/react/accordion"
+import * as React from "react"
+import {
+  Button as AccordionTriggerPrimitive,
+  Disclosure as AccordionItemPrimitive,
+  DisclosureGroup as AccordionPrimitive,
+  DisclosurePanel as AccordionContentPrimitive,
+  DisclosureStateContext,
+  Heading as AccordionHeaderPrimitive,
+  type ButtonProps,
+  type DisclosureGroupProps,
+  type DisclosurePanelProps,
+  type DisclosureProps,
+} from "react-aria-components"
 
 import { cn } from "@/registry/bases/react-aria/lib/utils"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
-function Accordion({ className, ...props }: AccordionPrimitive.Root.Props) {
+function Accordion({ className, ...props }: DisclosureGroupProps) {
   return (
-    <AccordionPrimitive.Root
+    <AccordionPrimitive
       data-slot="accordion"
       className={cn("cn-accordion flex w-full flex-col", className)}
       {...props}
@@ -15,9 +27,9 @@ function Accordion({ className, ...props }: AccordionPrimitive.Root.Props) {
   )
 }
 
-function AccordionItem({ className, ...props }: AccordionPrimitive.Item.Props) {
+function AccordionItem({ className, ...props }: DisclosureProps) {
   return (
-    <AccordionPrimitive.Item
+    <AccordionItemPrimitive
       data-slot="accordion-item"
       className={cn("cn-accordion-item", className)}
       {...props}
@@ -29,13 +41,14 @@ function AccordionTrigger({
   className,
   children,
   ...props
-}: AccordionPrimitive.Trigger.Props) {
+}: Omit<ButtonProps, "children"> & { children: React.ReactNode }) {
   return (
-    <AccordionPrimitive.Header className="flex">
-      <AccordionPrimitive.Trigger
+    <AccordionHeaderPrimitive className="flex">
+      <AccordionTriggerPrimitive
+        slot="trigger"
         data-slot="accordion-trigger"
         className={cn(
-          "cn-accordion-trigger group/accordion-trigger relative flex flex-1 items-start justify-between border border-transparent transition-all outline-none aria-disabled:pointer-events-none aria-disabled:opacity-50",
+          "cn-accordion-trigger group/accordion-trigger relative flex flex-1 items-start justify-between border border-transparent transition-all outline-none disabled:pointer-events-none disabled:opacity-50",
           className
         )}
         {...props}
@@ -59,8 +72,8 @@ function AccordionTrigger({
           remixicon="RiArrowUpSLine"
           className="cn-accordion-trigger-icon pointer-events-none hidden shrink-0 group-aria-expanded/accordion-trigger:inline"
         />
-      </AccordionPrimitive.Trigger>
-    </AccordionPrimitive.Header>
+      </AccordionTriggerPrimitive>
+    </AccordionHeaderPrimitive>
   )
 }
 
@@ -68,22 +81,22 @@ function AccordionContent({
   className,
   children,
   ...props
-}: AccordionPrimitive.Panel.Props) {
+}: DisclosurePanelProps) {
   return (
-    <AccordionPrimitive.Panel
+    <AccordionContentPrimitive
       data-slot="accordion-content"
-      className="cn-accordion-content overflow-hidden"
+      className="cn-accordion-content h-(--disclosure-panel-height) transition-[height] overflow-clip"
       {...props}
     >
       <div
         className={cn(
-          "cn-accordion-content-inner h-(--accordion-panel-height) data-ending-style:h-0 data-starting-style:h-0 [&_a]:underline [&_a]:underline-offset-3 [&_a]:hover:text-foreground [&_p:not(:last-child)]:mb-4",
+          "cn-accordion-content-inner [&_a]:underline [&_a]:underline-offset-3 [&_a]:hover:text-foreground [&_p:not(:last-child)]:mb-4",
           className
         )}
       >
         {children}
       </div>
-    </AccordionPrimitive.Panel>
+    </AccordionContentPrimitive>
   )
 }
 

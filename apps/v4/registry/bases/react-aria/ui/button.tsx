@@ -1,6 +1,6 @@
 "use client"
 
-import { Button as ButtonPrimitive } from "@base-ui/react/button"
+import { Button as ButtonPrimitive, ButtonProps } from "react-aria-components"
 import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/registry/bases/react-aria/lib/utils"
@@ -40,7 +40,7 @@ function Button({
   variant = "default",
   size = "default",
   ...props
-}: ButtonPrimitive.Props & VariantProps<typeof buttonVariants>) {
+}: ButtonProps & VariantProps<typeof buttonVariants>) {
   return (
     <ButtonPrimitive
       data-slot="button"

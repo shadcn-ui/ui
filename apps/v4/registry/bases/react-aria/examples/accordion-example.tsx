@@ -55,7 +55,7 @@ function AccordionBasic() {
     <Example title="Basic">
       <Accordion className="mx-auto max-w-lg">
         {items.map((item) => (
-          <AccordionItem key={item.value} value={item.value}>
+          <AccordionItem key={item.value} id={item.value}>
             <AccordionTrigger>{item.trigger}</AccordionTrigger>
             <AccordionContent>{item.content}</AccordionContent>
           </AccordionItem>
@@ -85,9 +85,9 @@ function AccordionMultiple() {
 
   return (
     <Example title="Multiple">
-      <Accordion multiple className="mx-auto max-w-lg">
+      <Accordion allowsMultipleExpanded className="mx-auto max-w-lg">
         {items.map((item) => (
-          <AccordionItem key={item.value} value={item.value}>
+          <AccordionItem key={item.value} id={item.value}>
             <AccordionTrigger>{item.trigger}</AccordionTrigger>
             <AccordionContent>{item.content}</AccordionContent>
           </AccordionItem>
@@ -136,7 +136,7 @@ function AccordionWithBorders() {
         {items.map((item) => (
           <AccordionItem
             key={item.value}
-            value={item.value}
+            id={item.value}
             className="style-vega:rounded-lg style-vega:border style-nova:rounded-lg style-nova:border style-lyra:border"
           >
             <AccordionTrigger className="font-medium style-vega:px-4 style-vega:text-sm style-nova:px-2.5 style-nova:text-sm style-lyra:px-2 style-lyra:text-xs style-maia:text-sm style-mira:text-xs">
@@ -270,12 +270,12 @@ function AccordionInCard() {
         </CardHeader>
         <CardContent>
           <Accordion
-            multiple
-            defaultValue={["plans"]}
+            allowsMultipleExpanded
+            defaultExpandedKeys={["plans"]}
             className="style-maia:rounded-md style-mira:rounded-md"
           >
             {items.map((item) => (
-              <AccordionItem key={item.value} value={item.value}>
+              <AccordionItem key={item.value} id={item.value}>
                 <AccordionTrigger>{item.trigger}</AccordionTrigger>
                 <AccordionContent>{item.content}</AccordionContent>
               </AccordionItem>
@@ -318,9 +318,9 @@ function AccordionWithDisabled() {
         {items.map((item) => (
           <AccordionItem
             key={item.value}
-            value={item.value}
-            disabled={item.disabled}
-            className="p-1 data-open:bg-muted/50"
+            id={item.value}
+            isDisabled={item.disabled}
+            className="p-1 data-expanded:bg-muted/50"
           >
             <AccordionTrigger className="style-vega:px-4 style-nova:px-2.5 style-lyra:px-2">
               {item.trigger}

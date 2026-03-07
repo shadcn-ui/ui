@@ -27,28 +27,32 @@
 /* Custom variants */
 @custom-variant data-open {
   &:where([data-state="open"]),
-  &:where([data-open]:not([data-open="false"])) {
+  &:where([data-open]:not([data-open="false"])),
+  &:where([data-expanded]) {
     @slot;
   }
 }
 
 @custom-variant data-closed {
   &:where([data-state="closed"]),
-  &:where([data-closed]:not([data-closed="false"])) {
+  &:where([data-closed]:not([data-closed="false"])),
+  &:where(:not([data-expanded])) {
     @slot;
   }
 }
 
 @custom-variant data-checked {
   &:where([data-state="checked"]),
-  &:where([data-checked]:not([data-checked="false"])) {
+  &:where([data-checked]:not([data-checked="false"])),
+  &:where([data-selected]) {
     @slot;
   }
 }
 
 @custom-variant data-unchecked {
   &:where([data-state="unchecked"]),
-  &:where([data-unchecked]:not([data-unchecked="false"])) {
+  &:where([data-unchecked]:not([data-unchecked="false"])),
+  &:where(:not([data-selected])) {
     @slot;
   }
 }
