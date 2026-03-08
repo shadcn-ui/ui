@@ -1037,6 +1037,90 @@ describe("transformCss", () => {
     `)
   })
 
+  test("should merge @apply directives in the same rule instead of duplicating", async () => {
+    const input = `@import "tailwindcss";
+
+@layer base {
+  body {
+    @apply bg-background text-foreground;
+  }
+}`
+
+    const result = await transformCss(input, {
+      "@layer base": {
+        body: {
+          "@apply font-sans": {},
+        },
+      },
+    })
+
+    expect(result).toMatchInlineSnapshot(`
+      "@import "tailwindcss";
+
+      @layer base {
+        body {
+          @apply bg-background text-foreground font-sans;
+        }
+      }"
+    `)
+  })
+
+  test("should resolve conflicting tailwind classes when merging @apply", async () => {
+    const input = `@import "tailwindcss";
+
+@layer base {
+  body {
+    @apply bg-background font-serif text-foreground;
+  }
+}`
+
+    const result = await transformCss(input, {
+      "@layer base": {
+        body: {
+          "@apply font-mono": {},
+        },
+      },
+    })
+
+    expect(result).toMatchInlineSnapshot(`
+      "@import "tailwindcss";
+
+      @layer base {
+        body {
+          @apply bg-background text-foreground font-mono;
+        }
+      }"
+    `)
+  })
+
+  test("should not duplicate @apply classes that already exist", async () => {
+    const input = `@import "tailwindcss";
+
+@layer base {
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+}`
+
+    const result = await transformCss(input, {
+      "@layer base": {
+        body: {
+          "@apply font-sans": {},
+        },
+      },
+    })
+
+    expect(result).toMatchInlineSnapshot(`
+      "@import "tailwindcss";
+
+      @layer base {
+        body {
+          @apply bg-background text-foreground font-sans;
+        }
+      }"
+    `)
+  })
+
   test("should replace existing keyframes instead of duplicating", async () => {
     const input = `@import "tailwindcss";
 

@@ -474,6 +474,12 @@
     "description": "ScrollX UI is an open-source React and shadcn-compatible component library for animated, interactive, and customizable user interfaces. It offers motion-driven components that blend seamlessly with modern ShadCN setups."
   },
   {
+    "name": "@spell",
+    "homepage": "https://spell.sh",
+    "url": "https://spell.sh/r/{name}.json",
+    "description": "Beautiful, sophisticated UI components designed for modern React and Tailwind CSS applications."
+  },
+  {
     "name": "@square-ui",
     "homepage": "https://square.lndev.me",
     "url": "https://square.lndev.me/registry/{name}.json",
@@ -820,5 +826,11 @@
     "homepage": "https://emerald-ui.com",
     "url": "https://emerald-ui.com/r/{name}.json",
     "description": "Emerald UI - collection of components built with Motion, GSAP, Tailwind CSS and shadcn/ui."
+  },
+  {
+    "name": "@iconiq",
+    "homepage": "https://iconiqs.vercel.app",
+    "url": "https://iconiqs.vercel.app/r/{name}.json",
+    "description": "Iconiq is a collection of icons designed for web applications. It is a modern, clean, and minimalistic icon set that is perfect for web applications."
   }
 ]

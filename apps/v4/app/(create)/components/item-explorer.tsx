@@ -2,16 +2,11 @@
 
 import * as React from "react"
 import Link from "next/link"
-import { ChevronRightIcon } from "lucide-react"
-import { type RegistryItem } from "shadcn/schema"
-
-import { cn } from "@/lib/utils"
-import { type Base } from "@/registry/bases"
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/registry/new-york-v4/ui/collapsible"
+} from "@/examples/base/ui/collapsible"
 import {
   Sidebar,
   SidebarContent,
@@ -20,7 +15,12 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/registry/new-york-v4/ui/sidebar"
+} from "@/examples/base/ui/sidebar"
+import { ChevronRightIcon } from "lucide-react"
+import { type RegistryItem } from "shadcn/schema"
+
+import { cn } from "@/lib/utils"
+import { type Base } from "@/registry/bases"
 import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
 import { groupItemsByType } from "@/app/(create)/lib/utils"
 
@@ -48,7 +48,7 @@ export function ItemExplorer({
 
   return (
     <Sidebar
-      className="sticky z-30 hidden h-[calc(100svh-var(--header-height)-2rem)] overscroll-none bg-transparent xl:flex"
+      className="sticky z-30 hidden h-full overscroll-none bg-transparent xl:flex"
       collapsible="none"
     >
       <SidebarContent className="-mx-1 no-scrollbar overflow-x-hidden">

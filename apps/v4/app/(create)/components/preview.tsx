@@ -1,11 +1,13 @@
 "use client"
 
 import * as React from "react"
-import { type PanelImperativeHandle } from "react-resizable-panels"
 
-import { DARK_MODE_FORWARD_TYPE } from "@/components/mode-switcher"
-import { Badge } from "@/registry/new-york-v4/ui/badge"
-import { CMD_K_FORWARD_TYPE } from "@/app/(create)/components/item-picker"
+import { CMD_K_FORWARD_TYPE } from "@/app/(create)/components/action-menu"
+import {
+  REDO_FORWARD_TYPE,
+  UNDO_FORWARD_TYPE,
+} from "@/app/(create)/components/history-buttons"
+import { DARK_MODE_FORWARD_TYPE } from "@/app/(create)/components/mode-switcher"
 import { RANDOMIZE_FORWARD_TYPE } from "@/app/(create)/components/random-button"
 import { sendToIframe } from "@/app/(create)/hooks/use-iframe-sync"
 import {
@@ -13,17 +15,75 @@ import {
   useDesignSystemSearchParams,
 } from "@/app/(create)/lib/search-params"
 
+// Hoisted — avoids recreating on every message event. (js-hoist-regexp)
+const MAC_REGEX = /Mac|iPhone|iPad|iPod/
+
+// Hoisted — only uses module-level constants, no component state. (rendering-hoist-jsx)
+function handleMessage(event: MessageEvent) {
+  if (
+    typeof window === "undefined" ||
+    event.origin !== window.location.origin
+  ) {
+    return
+  }
+
+  const type = event.data.type
+  if (type === CMD_K_FORWARD_TYPE) {
+    const isMac = MAC_REGEX.test(navigator.userAgent)
+    document.dispatchEvent(
+      new KeyboardEvent("keydown", {
+        key: event.data.key || "k",
+        metaKey: isMac,
+        ctrlKey: !isMac,
+        bubbles: true,
+        cancelable: true,
+      })
+    )
+  } else if (type === RANDOMIZE_FORWARD_TYPE) {
+    document.dispatchEvent(
+      new KeyboardEvent("keydown", {
+        key: event.data.key || "r",
+        bubbles: true,
+        cancelable: true,
+      })
+    )
+  } else if (type === UNDO_FORWARD_TYPE) {
+    const isMac = MAC_REGEX.test(navigator.userAgent)
+    document.dispatchEvent(
+      new KeyboardEvent("keydown", {
+        key: "z",
+        metaKey: isMac,
+        ctrlKey: !isMac,
+        bubbles: true,
+        cancelable: true,
+      })
+    )
+  } else if (type === REDO_FORWARD_TYPE) {
+    const isMac = MAC_REGEX.test(navigator.userAgent)
+    document.dispatchEvent(
+      new KeyboardEvent("keydown", {
+        key: "z",
+        shiftKey: true,
+        metaKey: isMac,
+        ctrlKey: !isMac,
+        bubbles: true,
+        cancelable: true,
+      })
+    )
+  } else if (type === DARK_MODE_FORWARD_TYPE) {
+    document.dispatchEvent(
+      new KeyboardEvent("keydown", {
+        key: event.data.key || "d",
+        bubbles: true,
+        cancelable: true,
+      })
+    )
+  }
+}
+
 export function Preview() {
   const [params] = useDesignSystemSearchParams()
   const iframeRef = React.useRef<HTMLIFrameElement>(null)
-  const resizablePanelRef = React.useRef<PanelImperativeHandle>(null)
-
-  // Sync resizable panel with URL param changes.
-  React.useEffect(() => {
-    if (resizablePanelRef.current && params.size) {
-      resizablePanelRef.current.resize(params.size)
-    }
-  }, [params.size])
 
   React.useEffect(() => {
     const iframe = iframeRef.current
@@ -44,44 +104,6 @@ export function Preview() {
       iframe.removeEventListener("load", sendParams)
     }
   }, [params])
-
-  const handleMessage = (event: MessageEvent) => {
-    if (event.data.type === CMD_K_FORWARD_TYPE) {
-      const isMac = /Mac|iPhone|iPad|iPod/.test(navigator.userAgent)
-      const key = event.data.key || "k"
-
-      const syntheticEvent = new KeyboardEvent("keydown", {
-        key,
-        metaKey: isMac,
-        ctrlKey: !isMac,
-        bubbles: true,
-        cancelable: true,
-      })
-      document.dispatchEvent(syntheticEvent)
-    }
-
-    if (event.data.type === RANDOMIZE_FORWARD_TYPE) {
-      const key = event.data.key || "r"
-
-      const syntheticEvent = new KeyboardEvent("keydown", {
-        key,
-        bubbles: true,
-        cancelable: true,
-      })
-      document.dispatchEvent(syntheticEvent)
-    }
-
-    if (event.data.type === DARK_MODE_FORWARD_TYPE) {
-      const key = event.data.key || "d"
-
-      const syntheticEvent = new KeyboardEvent("keydown", {
-        key,
-        bubbles: true,
-        cancelable: true,
-      })
-      document.dispatchEvent(syntheticEvent)
-    }
-  }
 
   React.useEffect(() => {
     window.addEventListener("message", handleMessage)
@@ -104,9 +126,9 @@ export function Preview() {
   }, [params.base, params.item])
 
   return (
-    <div className="relative -mx-1 flex flex-1 flex-col justify-center sm:mx-0">
-      <div className="relative -z-0 mx-auto flex w-full flex-1 flex-col overflow-hidden rounded-2xl ring-1 ring-foreground/15 3xl:max-h-[1200px] 3xl:max-w-[1800px]">
-        <div className="absolute inset-0 rounded-2xl bg-muted dark:bg-muted/30" />
+    <div className="relative flex flex-1 flex-col justify-center overflow-hidden rounded-2xl ring ring-foreground/10 md:ring-muted dark:ring-foreground/10">
+      <div className="relative z-0 mx-auto flex w-full flex-1 flex-col overflow-hidden">
+        <div className="absolute inset-0 bg-muted dark:bg-muted/30" />
         <iframe
           key={params.base + params.item}
           ref={iframeRef}
@@ -114,12 +136,6 @@ export function Preview() {
           className="z-10 size-full flex-1"
           title="Preview"
         />
-        <Badge
-          className="absolute right-2 bottom-2 isolate z-10"
-          variant="secondary"
-        >
-          Preview
-        </Badge>
       </div>
     </div>
   )
