@@ -106,6 +106,7 @@ export const designSystemConfigSchema = z
         "start-monorepo",
         "astro",
         "astro-monorepo",
+        "laravel",
       ])
       .default("next")
       .optional(),
