@@ -838,5 +838,11 @@
     "homepage": "https://www.fonttrio.xyz",
     "url": "https://www.fonttrio.xyz/r/{name}.json",
     "description": "Curated font pairing registry for shadcn. Three fonts. One command. Install perfectly configured typography (heading + body + mono) with shadcn add. Includes editorial-grade type scales, CSS variables, and a live preview site."
+  },
+  {
+    "name": "componentry",
+    "homepage": "https://componentry.fun",
+    "url": "https://componentry.fun/r/{name}.json",
+    "description": "Beautiful, interactive React + Tailwind components for modern product UIs."
   }
 ]
