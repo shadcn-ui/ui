@@ -10,7 +10,6 @@ import {
   AlertDialog,
   AlertDialogAction,
   AlertDialogCancel,
-  AlertDialogContent,
   AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
@@ -96,8 +95,8 @@ function CardExample() {
           </CardDescription>
         </CardHeader>
         <CardFooter>
-          <AlertDialog>
-            <AlertDialogTrigger render={<Button />}>
+          <AlertDialogTrigger>
+            <Button>
               <IconPlaceholder
                 lucide="PlusIcon"
                 tabler="IconPlus"
@@ -107,8 +106,8 @@ function CardExample() {
                 data-icon="inline-start"
               />
               Show Dialog
-            </AlertDialogTrigger>
-            <AlertDialogContent size="sm">
+            </Button>
+            <AlertDialog size="sm">
               <AlertDialogHeader>
                 <AlertDialogMedia>
                   <IconPlaceholder
@@ -129,8 +128,8 @@ function CardExample() {
                 <AlertDialogCancel>Don&apos;t allow</AlertDialogCancel>
                 <AlertDialogAction>Allow</AlertDialogAction>
               </AlertDialogFooter>
-            </AlertDialogContent>
-          </AlertDialog>
+            </AlertDialog>
+          </AlertDialogTrigger>
           <Badge variant="secondary" className="ml-auto">
             Warning
           </Badge>

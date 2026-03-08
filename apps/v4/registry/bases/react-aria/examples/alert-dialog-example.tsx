@@ -6,7 +6,6 @@ import {
   AlertDialog,
   AlertDialogAction,
   AlertDialogCancel,
-  AlertDialogContent,
   AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
@@ -41,11 +40,11 @@ export default function AlertDialogExample() {
 function AlertDialogBasic() {
   return (
     <Example title="Basic" className="items-center">
-      <AlertDialog>
-        <AlertDialogTrigger
-          render={<Button variant="outline">Default</Button>}
-        />
-        <AlertDialogContent>
+      <AlertDialogTrigger>
+        <Button variant="outline">
+          Default
+        </Button>
+        <AlertDialog>
           <AlertDialogHeader>
             <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
             <AlertDialogDescription>
@@ -57,8 +56,8 @@ function AlertDialogBasic() {
             <AlertDialogCancel>Cancel</AlertDialogCancel>
             <AlertDialogAction>Continue</AlertDialogAction>
           </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
+        </AlertDialog>
+      </AlertDialogTrigger>
     </Example>
   )
 }
@@ -66,9 +65,11 @@ function AlertDialogBasic() {
 function AlertDialogSmall() {
   return (
     <Example title="Small" className="items-center">
-      <AlertDialog>
-        <AlertDialogTrigger render={<Button variant="outline">Small</Button>} />
-        <AlertDialogContent size="sm">
+      <AlertDialogTrigger>
+        <Button variant="outline">
+          Small
+        </Button>
+        <AlertDialog size="sm">
           <AlertDialogHeader>
             <AlertDialogTitle>Allow accessory to connect?</AlertDialogTitle>
             <AlertDialogDescription>
@@ -79,8 +80,8 @@ function AlertDialogSmall() {
             <AlertDialogCancel>Don&apos;t allow</AlertDialogCancel>
             <AlertDialogAction>Allow</AlertDialogAction>
           </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
+        </AlertDialog>
+      </AlertDialogTrigger>
     </Example>
   )
 }
@@ -88,11 +89,11 @@ function AlertDialogSmall() {
 function AlertDialogWithMedia() {
   return (
     <Example title="With Media" className="items-center">
-      <AlertDialog>
-        <AlertDialogTrigger
-          render={<Button variant="outline">Default (Media)</Button>}
-        />
-        <AlertDialogContent>
+      <AlertDialogTrigger>
+        <Button variant="outline">
+          Default (Media)
+        </Button>
+        <AlertDialog>
           <AlertDialogHeader>
             <AlertDialogMedia>
               <IconPlaceholder
@@ -113,8 +114,8 @@ function AlertDialogWithMedia() {
             <AlertDialogCancel>Cancel</AlertDialogCancel>
             <AlertDialogAction>Continue</AlertDialogAction>
           </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
+        </AlertDialog>
+      </AlertDialogTrigger>
     </Example>
   )
 }
@@ -122,12 +123,12 @@ function AlertDialogWithMedia() {
 function AlertDialogSmallWithMedia() {
   return (
     <Example title="Small With Media" className="items-center">
-      <AlertDialog>
-        <AlertDialogTrigger
-          render={<Button variant="outline">Small (Media)</Button>}
-        />
+      <AlertDialogTrigger>
+        <Button variant="outline">
+          Small (Media)
+        </Button>
 
-        <AlertDialogContent size="sm">
+        <AlertDialog size="sm">
           <AlertDialogHeader>
             <AlertDialogMedia>
               <IconPlaceholder
@@ -147,8 +148,8 @@ function AlertDialogSmallWithMedia() {
             <AlertDialogCancel>Don&apos;t allow</AlertDialogCancel>
             <AlertDialogAction>Allow</AlertDialogAction>
           </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
+        </AlertDialog>
+      </AlertDialogTrigger>
     </Example>
   )
 }
@@ -156,11 +157,11 @@ function AlertDialogSmallWithMedia() {
 function AlertDialogDestructive() {
   return (
     <Example title="Destructive" className="items-center">
-      <AlertDialog>
-        <AlertDialogTrigger
-          render={<Button variant="destructive">Delete Chat</Button>}
-        />
-        <AlertDialogContent size="sm">
+      <AlertDialogTrigger>
+        <Button variant="destructive">
+          Delete Chat
+        </Button>
+        <AlertDialog size="sm">
           <AlertDialogHeader>
             <AlertDialogMedia className="bg-destructive/10 text-destructive dark:bg-destructive/20 dark:text-destructive">
               <IconPlaceholder
@@ -182,8 +183,8 @@ function AlertDialogDestructive() {
             <AlertDialogCancel variant="ghost">Cancel</AlertDialogCancel>
             <AlertDialogAction variant="destructive">Delete</AlertDialogAction>
           </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
+        </AlertDialog>
+      </AlertDialogTrigger>
     </Example>
   )
 }
@@ -203,11 +204,11 @@ function AlertDialogInDialog() {
             </DialogDescription>
           </DialogHeader>
           <DialogFooter>
-            <AlertDialog>
-              <AlertDialogTrigger render={<Button />}>
+            <AlertDialogTrigger>
+              <Button>
                 Open Alert Dialog
-              </AlertDialogTrigger>
-              <AlertDialogContent size="sm">
+              </Button>
+              <AlertDialog size="sm">
                 <AlertDialogHeader>
                   <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
                   <AlertDialogDescription>
@@ -219,8 +220,8 @@ function AlertDialogInDialog() {
                   <AlertDialogCancel>Cancel</AlertDialogCancel>
                   <AlertDialogAction>Continue</AlertDialogAction>
                 </AlertDialogFooter>
-              </AlertDialogContent>
-            </AlertDialog>
+              </AlertDialog>
+            </AlertDialogTrigger>
           </DialogFooter>
         </Dialog>
       </DialogTrigger>

@@ -11,7 +11,6 @@ import {
   AlertDialog,
   AlertDialogAction,
   AlertDialogCancel,
-  AlertDialogContent,
   AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
@@ -384,11 +383,11 @@ function ModelSelector() {
 function GroupChatDialog() {
   return (
     <Example title="Group Chat Dialog" className="items-center justify-center">
-      <AlertDialog>
-        <AlertDialogTrigger render={<Button />}>
+      <AlertDialogTrigger>
+        <Button>
           Start Group Chat
-        </AlertDialogTrigger>
-        <AlertDialogContent>
+        </Button>
+        <AlertDialog>
           <AlertDialogHeader>
             <AlertDialogTitle>Use ChatGPT together</AlertDialogTitle>
             <AlertDialogDescription>
@@ -407,8 +406,8 @@ function GroupChatDialog() {
               <AlertDialogAction>Start group chat</AlertDialogAction>
             </div>
           </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
+        </AlertDialog>
+      </AlertDialogTrigger>
     </Example>
   )
 }

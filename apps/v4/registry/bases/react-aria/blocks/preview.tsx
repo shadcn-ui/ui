@@ -11,7 +11,6 @@ import {
   AlertDialog,
   AlertDialogAction,
   AlertDialogCancel,
-  AlertDialogContent,
   AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
@@ -899,11 +898,11 @@ function EmptyAvatarGroup() {
         </EmptyHeader>
         <EmptyContent>
           <div className="flex gap-2">
-            <AlertDialog>
-              <AlertDialogTrigger render={<Button variant="outline" />}>
+            <AlertDialogTrigger>
+              <Button variant="outline">
                 Show Dialog
-              </AlertDialogTrigger>
-              <AlertDialogContent>
+              </Button>
+              <AlertDialog>
                 <AlertDialogHeader>
                   <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
                   <AlertDialogDescription>
@@ -915,13 +914,13 @@ function EmptyAvatarGroup() {
                   <AlertDialogCancel>Cancel</AlertDialogCancel>
                   <AlertDialogAction>Continue</AlertDialogAction>
                 </AlertDialogFooter>
-              </AlertDialogContent>
-            </AlertDialog>
-            <AlertDialog>
-              <AlertDialogTrigger render={<Button />}>
+              </AlertDialog>
+            </AlertDialogTrigger>
+            <AlertDialogTrigger>
+              <Button>
                 Connect Mouse
-              </AlertDialogTrigger>
-              <AlertDialogContent size="sm">
+              </Button>
+              <AlertDialog size="sm">
                 <AlertDialogHeader>
                   <AlertDialogMedia>
                     <IconPlaceholder
@@ -944,8 +943,8 @@ function EmptyAvatarGroup() {
                   <AlertDialogCancel>Don&apos;t allow</AlertDialogCancel>
                   <AlertDialogAction>Allow</AlertDialogAction>
                 </AlertDialogFooter>
-              </AlertDialogContent>
-            </AlertDialog>
+              </AlertDialog>
+            </AlertDialogTrigger>
           </div>
         </EmptyContent>
       </Empty>

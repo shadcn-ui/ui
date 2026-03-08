@@ -1,63 +1,104 @@
 "use client"
 
 import * as React from "react"
-import { AlertDialog as AlertDialogPrimitive } from "@base-ui/react/alert-dialog"
+import {
+  Dialog as AlertDialogPrimitive,
+  DialogTrigger as AlertDialogTriggerPrimitive,
+  Heading,
+  Modal as ModalPrimitive,
+  ModalOverlay as ModalOverlayPrimitive,
+  type DialogProps as AlertDialogPrimitiveProps,
+  type DialogTriggerProps as AlertDialogTriggerPrimitiveProps,
+  type ModalOverlayProps as ModalOverlayPrimitiveProps,
+  type ModalRenderProps,
+} from "react-aria-components"
 
 import { cn } from "@/registry/bases/react-aria/lib/utils"
 import { Button } from "@/registry/bases/react-aria/ui/button"
 
-function AlertDialog({ ...props }: AlertDialogPrimitive.Root.Props) {
-  return <AlertDialogPrimitive.Root data-slot="alert-dialog" {...props} />
-}
-
-function AlertDialogTrigger({ ...props }: AlertDialogPrimitive.Trigger.Props) {
+function AlertDialogTrigger({ ...props }: AlertDialogTriggerPrimitiveProps) {
   return (
-    <AlertDialogPrimitive.Trigger data-slot="alert-dialog-trigger" {...props} />
-  )
-}
-
-function AlertDialogPortal({ ...props }: AlertDialogPrimitive.Portal.Props) {
-  return (
-    <AlertDialogPrimitive.Portal data-slot="alert-dialog-portal" {...props} />
+    <AlertDialogTriggerPrimitive {...props} />
   )
 }
 
 function AlertDialogOverlay({
   className,
+  children,
   ...props
-}: AlertDialogPrimitive.Backdrop.Props) {
+}: Omit<ModalOverlayPrimitiveProps, "className" | "children"> & {
+  className?: string
+  children: React.ReactNode
+}) {
   return (
-    <AlertDialogPrimitive.Backdrop
+    <ModalOverlayPrimitive
       data-slot="alert-dialog-overlay"
       className={cn(
         "cn-alert-dialog-overlay fixed inset-0 isolate z-50",
         className
       )}
+      // Keep existing data-open/data-closed selectors working with RAC state.
+      render={(renderProps, state: ModalRenderProps) => (
+        <div
+          {...renderProps}
+          data-open={state.isEntering}
+          data-closed={state.isExiting}
+        />
+      )}
       {...props}
-    />
+    >
+      {children}
+    </ModalOverlayPrimitive>
   )
 }
 
-function AlertDialogContent({
+function AlertDialog({
   className,
   size = "default",
+  children,
   ...props
-}: AlertDialogPrimitive.Popup.Props & {
-  size?: "default" | "sm"
-}) {
+}: Omit<ModalOverlayPrimitiveProps, "className" | "children"> &
+  Pick<React.ComponentProps<typeof ModalPrimitive>, "isDismissable"> & {
+    className?: string
+    size?: "default" | "sm"
+    children: React.ReactNode
+  }) {
   return (
-    <AlertDialogPortal>
-      <AlertDialogOverlay />
-      <AlertDialogPrimitive.Popup
+    <AlertDialogOverlay {...props}>
+      <ModalPrimitive
         data-slot="alert-dialog-content"
         data-size={size}
         className={cn(
           "cn-alert-dialog-content group/alert-dialog-content fixed top-1/2 left-1/2 z-50 grid w-full -translate-x-1/2 -translate-y-1/2 outline-none",
           className
         )}
-        {...props}
-      />
-    </AlertDialogPortal>
+        // Keep existing data-open/data-closed selectors working with RAC state.
+        render={(renderProps, state: ModalRenderProps) => (
+          <div
+            {...renderProps}
+            data-open={state.isEntering}
+            data-closed={state.isExiting}
+          />
+        )}
+      >
+        <AlertDialogPrimitive data-slot="alert-dialog" role="alertdialog" className="[display:inherit] [gap:inherit] outline-none">
+          {children}
+        </AlertDialogPrimitive>
+      </ModalPrimitive>
+    </AlertDialogOverlay>
+  )
+}
+
+function AlertDialogContent({
+  className,
+  size = "default",
+  children,
+  ...props
+}: React.ComponentProps<typeof AlertDialog>) {
+  return (
+    <AlertDialog className={className} size={size} {...props}>
+      {children}
+    </AlertDialog>
   )
 }
 
@@ -106,9 +147,10 @@ function AlertDialogMedia({
 function AlertDialogTitle({
   className,
   ...props
-}: React.ComponentProps<typeof AlertDialogPrimitive.Title>) {
+}: Omit<React.ComponentProps<typeof Heading>, "slot">) {
   return (
-    <AlertDialogPrimitive.Title
+    <Heading
+      slot="title"
       data-slot="alert-dialog-title"
       className={cn("cn-alert-dialog-title", className)}
       {...props}
@@ -119,9 +161,9 @@ function AlertDialogTitle({
 function AlertDialogDescription({
   className,
   ...props
-}: React.ComponentProps<typeof AlertDialogPrimitive.Description>) {
+}: Omit<React.ComponentProps<"div">, "slot">) {
   return (
-    <AlertDialogPrimitive.Description
+    <div
       data-slot="alert-dialog-description"
       className={cn("cn-alert-dialog-description", className)}
       {...props}
@@ -147,17 +189,20 @@ function AlertDialogCancel({
   variant = "outline",
   size = "default",
   ...props
-}: AlertDialogPrimitive.Close.Props &
-  Pick<React.ComponentProps<typeof Button>, "variant" | "size">) {
+}: React.ComponentProps<typeof Button>) {
   return (
-    <AlertDialogPrimitive.Close
+    <Button
+      slot="close"
       data-slot="alert-dialog-cancel"
       className={cn("cn-alert-dialog-cancel", className)}
-      render={<Button variant={variant} size={size} />}
+      variant={variant}
+      size={size}
       {...props}
     />
   )
 }
+
+export type { AlertDialogPrimitiveProps, AlertDialogTriggerPrimitiveProps }
 
 export {
   AlertDialog,
@@ -169,7 +214,6 @@ export {
   AlertDialogHeader,
   AlertDialogMedia,
   AlertDialogOverlay,
-  AlertDialogPortal,
   AlertDialogTitle,
   AlertDialogTrigger,
 }

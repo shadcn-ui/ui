@@ -7,7 +7,6 @@ import {
   Heading,
   Modal as ModalPrimitive,
   ModalOverlay as ModalOverlayPrimitive,
-  Text,
   type DialogProps as DialogPrimitiveProps,
   type DialogTriggerProps as DialogTriggerPrimitiveProps,
   type ModalOverlayProps as ModalOverlayPrimitiveProps,
@@ -190,10 +189,9 @@ function DialogTitle({
 function DialogDescription({
   className,
   ...props
-}: Omit<React.ComponentProps<typeof Text>, "slot">) {
+}: Omit<React.ComponentProps<"div">, "slot">) {
   return (
-    <Text
-      slot="description"
+    <div
       data-slot="dialog-description"
       className={cn("cn-dialog-description", className)}
       {...props}
