@@ -777,6 +777,8 @@ async function buildTemplates() {
             ".git",
             "--exclude",
             "pnpm-lock.yaml",
+            "--exclude",
+            "._*",
             "-C",
             templatesDir,
             name,
