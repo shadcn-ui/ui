@@ -1,8 +1,11 @@
 import * as React from "react"
 import { cn } from "@/examples/radix/lib/utils"
 import { Button } from "@/examples/radix/ui/button"
-
-import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
+import {
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  MoreHorizontalIcon,
+} from "lucide-react"
 
 function Pagination({ className, ...props }: React.ComponentProps<"nav">) {
   return (
@@ -63,8 +66,9 @@ function PaginationLink({
 
 function PaginationPrevious({
   className,
+  text = "Previous",
   ...props
-}: React.ComponentProps<typeof PaginationLink>) {
+}: React.ComponentProps<typeof PaginationLink> & { text?: string }) {
   return (
     <PaginationLink
       aria-label="Go to previous page"
@@ -72,23 +76,17 @@ function PaginationPrevious({
       className={cn("pl-1.5!", className)}
       {...props}
     >
-      <IconPlaceholder
-        lucide="ChevronLeftIcon"
-        tabler="IconChevronLeft"
-        hugeicons="ArrowLeft01Icon"
-        phosphor="CaretLeftIcon"
-        remixicon="RiArrowLeftSLine"
-        data-icon="inline-start"
-      />
-      <span className="hidden sm:block">Previous</span>
+      <ChevronLeftIcon data-icon="inline-start" className="cn-rtl-flip" />
+      <span className="hidden sm:block">{text}</span>
     </PaginationLink>
   )
 }
 
 function PaginationNext({
   className,
+  text = "Next",
   ...props
-}: React.ComponentProps<typeof PaginationLink>) {
+}: React.ComponentProps<typeof PaginationLink> & { text?: string }) {
   return (
     <PaginationLink
       aria-label="Go to next page"
@@ -96,15 +94,8 @@ function PaginationNext({
       className={cn("pr-1.5!", className)}
       {...props}
     >
-      <span className="hidden sm:block">Next</span>
-      <IconPlaceholder
-        lucide="ChevronRightIcon"
-        tabler="IconChevronRight"
-        hugeicons="ArrowRight01Icon"
-        phosphor="CaretRightIcon"
-        remixicon="RiArrowRightSLine"
-        data-icon="inline-end"
-      />
+      <span className="hidden sm:block">{text}</span>
+      <ChevronRightIcon data-icon="inline-end" className="cn-rtl-flip" />
     </PaginationLink>
   )
 }
@@ -123,13 +114,7 @@ function PaginationEllipsis({
       )}
       {...props}
     >
-      <IconPlaceholder
-        lucide="MoreHorizontalIcon"
-        tabler="IconDots"
-        hugeicons="MoreHorizontalCircle01Icon"
-        phosphor="DotsThreeIcon"
-        remixicon="RiMoreLine"
-      />
+      <MoreHorizontalIcon />
       <span className="sr-only">More pages</span>
     </span>
   )

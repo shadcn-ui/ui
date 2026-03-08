@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { type DropdownMenuCheckboxItemProps } from "@radix-ui/react-dropdown-menu"
+import type { DropdownMenu as DropdownMenuPrimitive } from "radix-ui"
 
 import { Button } from "@/registry/new-york-v4/ui/button"
 import {
@@ -13,7 +13,9 @@ import {
   DropdownMenuTrigger,
 } from "@/registry/new-york-v4/ui/dropdown-menu"
 
-type Checked = DropdownMenuCheckboxItemProps["checked"]
+type Checked = React.ComponentProps<
+  typeof DropdownMenuPrimitive.CheckboxItem
+>["checked"]
 
 export default function DropdownMenuCheckboxes() {
   const [showStatusBar, setShowStatusBar] = React.useState<Checked>(true)

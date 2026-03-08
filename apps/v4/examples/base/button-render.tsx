@@ -1,9 +1,14 @@
-import { Button } from "@/examples/base/ui/button"
+"use client"
+
+import { buttonVariants } from "@/examples/base/ui/button"
 
 export default function ButtonRender() {
   return (
-    <Button nativeButton={false} render={<a href="#" />}>
+    <a
+      href="#"
+      className={buttonVariants({ variant: "secondary", size: "sm" })}
+    >
       Login
-    </Button>
+    </a>
   )
 }

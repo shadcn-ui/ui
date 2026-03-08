@@ -12,8 +12,8 @@ export default function ThemesPage() {
           <ThemeCustomizer />
         </div>
       </div>
-      <div className="container-wrapper section-soft flex flex-1 flex-col pb-6">
-        <div className="theme-container container flex flex-1 flex-col">
+      <div className="container-wrapper flex flex-1 flex-col section-soft pb-6">
+        <div className="container flex flex-1 flex-col theme-container">
           <CardsDemo />
         </div>
       </div>

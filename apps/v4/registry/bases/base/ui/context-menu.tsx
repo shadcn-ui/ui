@@ -80,7 +80,7 @@ function ContextMenuLabel({
     <ContextMenuPrimitive.GroupLabel
       data-slot="context-menu-label"
       data-inset={inset}
-      className={cn("cn-context-menu-label data-[inset]:pl-8", className)}
+      className={cn("cn-context-menu-label", className)}
       {...props}
     />
   )
@@ -101,7 +101,7 @@ function ContextMenuItem({
       data-inset={inset}
       data-variant={variant}
       className={cn(
-        "cn-context-menu-item group/context-menu-item relative flex cursor-default items-center outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 data-[inset]:pl-8 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+        "cn-context-menu-item group/context-menu-item relative flex cursor-default items-center outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
         className
       )}
       {...props}
@@ -128,7 +128,7 @@ function ContextMenuSubTrigger({
       data-slot="context-menu-sub-trigger"
       data-inset={inset}
       className={cn(
-        "cn-context-menu-sub-trigger flex cursor-default items-center outline-hidden select-none data-[inset]:pl-8 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+        "cn-context-menu-sub-trigger flex cursor-default items-center outline-hidden select-none [&_svg]:pointer-events-none [&_svg]:shrink-0",
         className
       )}
       {...props}
@@ -140,7 +140,7 @@ function ContextMenuSubTrigger({
         hugeicons="ArrowRight01Icon"
         phosphor="CaretRightIcon"
         remixicon="RiArrowRightSLine"
-        className="ml-auto"
+        className="cn-rtl-flip ml-auto"
       />
     </ContextMenuPrimitive.SubmenuTrigger>
   )
@@ -163,13 +163,17 @@ function ContextMenuCheckboxItem({
   className,
   children,
   checked,
+  inset,
   ...props
-}: ContextMenuPrimitive.CheckboxItem.Props) {
+}: ContextMenuPrimitive.CheckboxItem.Props & {
+  inset?: boolean
+}) {
   return (
     <ContextMenuPrimitive.CheckboxItem
       data-slot="context-menu-checkbox-item"
+      data-inset={inset}
       className={cn(
-        "cn-context-menu-checkbox-item relative flex cursor-default items-center outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+        "cn-context-menu-checkbox-item relative flex cursor-default items-center outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
         className
       )}
       checked={checked}
@@ -205,13 +209,17 @@ function ContextMenuRadioGroup({
 function ContextMenuRadioItem({
   className,
   children,
+  inset,
   ...props
-}: ContextMenuPrimitive.RadioItem.Props) {
+}: ContextMenuPrimitive.RadioItem.Props & {
+  inset?: boolean
+}) {
   return (
     <ContextMenuPrimitive.RadioItem
       data-slot="context-menu-radio-item"
+      data-inset={inset}
       className={cn(
-        "cn-context-menu-radio-item relative flex cursor-default items-center outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+        "cn-context-menu-radio-item relative flex cursor-default items-center outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
         className
       )}
       {...props}

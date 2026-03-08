@@ -142,10 +142,8 @@ function TooltipWithKeyboard() {
             />
           </Button>
         </TooltipTrigger>
-        <TooltipContent className="pr-1.5">
-          <div className="flex items-center gap-2">
-            Save Changes <Kbd>S</Kbd>
-          </div>
+        <TooltipContent>
+          Save Changes <Kbd>S</Kbd>
         </TooltipContent>
       </Tooltip>
     </Example>
@@ -159,7 +157,7 @@ function TooltipOnLink() {
         <TooltipTrigger asChild>
           <a
             href="#"
-            className="text-primary w-fit text-sm underline-offset-4 hover:underline"
+            className="w-fit text-sm text-primary underline-offset-4 hover:underline"
             onClick={(e) => e.preventDefault()}
           >
             Learn more

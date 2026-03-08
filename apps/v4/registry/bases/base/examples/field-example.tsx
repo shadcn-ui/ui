@@ -59,6 +59,7 @@ export default function FieldExample() {
       <SliderFields />
       <NativeSelectFields />
       <InputOTPFields />
+      <HorizontalFields />
     </ExampleWrapper>
   )
 }
@@ -968,6 +969,91 @@ function InputOTPFields() {
           <FieldDescription>
             This OTP field is currently disabled.
           </FieldDescription>
+        </Field>
+      </FieldGroup>
+    </Example>
+  )
+}
+
+function HorizontalFields() {
+  const basicItems = [
+    { label: "Select a fruit", value: null },
+    { label: "Apple", value: "apple" },
+    { label: "Banana", value: "banana" },
+    { label: "Orange", value: "orange" },
+  ]
+
+  return (
+    <Example title="Horizontal Fields">
+      <FieldGroup className="**:data-[slot=field-content]:min-w-48">
+        <Field orientation="horizontal">
+          <FieldContent>
+            <FieldLabel htmlFor="horizontal-input">Username</FieldLabel>
+            <FieldDescription>Enter your preferred username.</FieldDescription>
+          </FieldContent>
+          <Input id="horizontal-input" placeholder="johndoe" />
+        </Field>
+        <Field orientation="horizontal">
+          <FieldContent>
+            <FieldLabel htmlFor="horizontal-textarea">Bio</FieldLabel>
+            <FieldDescription>
+              Write a short description about yourself.
+            </FieldDescription>
+          </FieldContent>
+          <Textarea
+            id="horizontal-textarea"
+            placeholder="Tell us about yourself..."
+          />
+        </Field>
+        <Field orientation="horizontal">
+          <FieldContent>
+            <FieldLabel htmlFor="horizontal-switch">
+              Email Notifications
+            </FieldLabel>
+            <FieldDescription>
+              Receive email updates about your account.
+            </FieldDescription>
+          </FieldContent>
+          <Switch id="horizontal-switch" />
+        </Field>
+        <Field orientation="horizontal">
+          <FieldContent>
+            <FieldLabel htmlFor="horizontal-select">Favorite Fruit</FieldLabel>
+            <FieldDescription>Choose your favorite fruit.</FieldDescription>
+          </FieldContent>
+          <Select items={basicItems}>
+            <SelectTrigger id="horizontal-select">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                {basicItems.map((item) => (
+                  <SelectItem key={item.value} value={item.value}>
+                    {item.label}
+                  </SelectItem>
+                ))}
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+        </Field>
+        <Field orientation="horizontal">
+          <FieldContent>
+            <FieldLabel htmlFor="horizontal-native-select">Country</FieldLabel>
+            <FieldDescription>Select your country.</FieldDescription>
+          </FieldContent>
+          <NativeSelect id="horizontal-native-select">
+            <NativeSelectOption value="">Select a country</NativeSelectOption>
+            <NativeSelectOption value="us">United States</NativeSelectOption>
+            <NativeSelectOption value="uk">United Kingdom</NativeSelectOption>
+            <NativeSelectOption value="ca">Canada</NativeSelectOption>
+          </NativeSelect>
+        </Field>
+        <Field orientation="horizontal">
+          <FieldContent>
+            <FieldLabel htmlFor="horizontal-slider">Volume</FieldLabel>
+            <FieldDescription>Adjust the volume level.</FieldDescription>
+          </FieldContent>
+          <Slider id="horizontal-slider" defaultValue={[50]} max={100} />
         </Field>
       </FieldGroup>
     </Example>
