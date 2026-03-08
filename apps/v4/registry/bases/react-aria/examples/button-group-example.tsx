@@ -249,14 +249,14 @@ function ButtonGroupWithSelect() {
       <Field>
         <Label htmlFor="amount">Amount</Label>
         <ButtonGroup>
-          <Select items={currencyItems} defaultValue={currencyItems[0]}>
+          <Select aria-label="Currency" defaultValue={currencyItems[0].value}>
             <SelectTrigger>
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
                 {currencyItems.map((item) => (
-                  <SelectItem key={item.value} value={item}>
+                  <SelectItem key={item.value} id={item.value}>
                     {item.label}
                   </SelectItem>
                 ))}
@@ -418,14 +418,14 @@ function ButtonGroupWithSelectAndInput() {
   return (
     <Example title="With Select and Input">
       <ButtonGroup>
-        <Select items={durationItems} defaultValue={durationItems[0]}>
+        <Select aria-label="Duration" defaultValue={durationItems[0].value}>
           <SelectTrigger id="duration">
             <SelectValue />
           </SelectTrigger>
           <SelectContent align="start">
             <SelectGroup>
               {durationItems.map((item) => (
-                <SelectItem key={item.value} value={item.value}>
+                <SelectItem key={item.value} id={item.value}>
                   {item.label}
                 </SelectItem>
               ))}

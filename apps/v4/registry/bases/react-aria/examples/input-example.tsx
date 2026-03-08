@@ -169,9 +169,9 @@ function InputWithSelect() {
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
-              <SelectItem value="usd">USD</SelectItem>
-              <SelectItem value="eur">EUR</SelectItem>
-              <SelectItem value="gbp">GBP</SelectItem>
+              <SelectItem id="usd">USD</SelectItem>
+              <SelectItem id="eur">EUR</SelectItem>
+              <SelectItem id="gbp">GBP</SelectItem>
             </SelectGroup>
           </SelectContent>
         </Select>
@@ -243,9 +243,9 @@ function InputForm() {
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>
-                    <SelectItem value="us">United States</SelectItem>
-                    <SelectItem value="uk">United Kingdom</SelectItem>
-                    <SelectItem value="ca">Canada</SelectItem>
+                    <SelectItem id="us">United States</SelectItem>
+                    <SelectItem id="uk">United Kingdom</SelectItem>
+                    <SelectItem id="ca">Canada</SelectItem>
                   </SelectGroup>
                 </SelectContent>
               </Select>

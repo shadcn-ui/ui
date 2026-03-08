@@ -602,14 +602,14 @@ function FormExample() {
                 </Field>
                 <Field>
                   <FieldLabel htmlFor="small-form-role">Role</FieldLabel>
-                  <Select items={roleItems} defaultValue={null}>
+                  <Select defaultValue={null}>
                     <SelectTrigger id="small-form-role">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectGroup>
                         {roleItems.map((item) => (
-                          <SelectItem key={item.value} value={item.value}>
+                          <SelectItem key={item.value} id={item.value}>
                             {item.label}
                           </SelectItem>
                         ))}

@@ -1226,10 +1226,6 @@ function ComboboxInDialog() {
 
 const items = [
   {
-    label: "Select a framework",
-    value: null,
-  },
-  {
     label: "React",
     value: "react",
   },
@@ -1275,14 +1271,14 @@ function ComboboxWithOtherInputs() {
           </ComboboxList>
         </ComboboxContent>
       </Combobox>
-      <Select items={items}>
+      <Select placeholder="Select a framework">
         <SelectTrigger className="w-52">
           <SelectValue />
         </SelectTrigger>
         <SelectContent>
           <SelectGroup>
             {items.map((item) => (
-              <SelectItem key={item.value} value={item.value}>
+              <SelectItem key={item.value} id={item.value}>
                 {item.label}
               </SelectItem>
             ))}

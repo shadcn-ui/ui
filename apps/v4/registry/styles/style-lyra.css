@@ -936,7 +936,7 @@
   }
 
   .cn-select-value {
-    @apply flex flex-1 text-left;
+    @apply flex flex-1 text-left data-placeholder:text-muted-foreground;
   }
 
   .cn-select-trigger-icon {

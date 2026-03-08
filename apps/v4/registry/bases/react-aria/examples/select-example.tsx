@@ -65,7 +65,6 @@ export default function SelectExample() {
 
 function SelectBasic() {
   const items = [
-    { label: "Select a fruit", value: null },
     { label: "Apple", value: "apple" },
     { label: "Banana", value: "banana" },
     { label: "Blueberry", value: "blueberry" },
@@ -74,14 +73,14 @@ function SelectBasic() {
   ]
   return (
     <Example title="Basic">
-      <Select items={items}>
+      <Select aria-label="Fruits" placeholder="Select a fruit">
         <SelectTrigger>
           <SelectValue />
         </SelectTrigger>
         <SelectContent>
           <SelectGroup>
             {items.map((item) => (
-              <SelectItem key={item.value} value={item.value}>
+              <SelectItem key={item.value} id={item.value}>
                 {item.label}
               </SelectItem>
             ))}
@@ -94,7 +93,6 @@ function SelectBasic() {
 
 function SelectSides() {
   const items = [
-    { label: "Select", value: null },
     { label: "Apple", value: "apple" },
     { label: "Banana", value: "banana" },
     { label: "Blueberry", value: "blueberry" },
@@ -112,14 +110,14 @@ function SelectSides() {
             "inline-end",
           ] as const
         ).map((side) => (
-          <Select key={side} items={items}>
+          <Select key={side} aria-label="Fruits" placeholder="Select">
             <SelectTrigger className="w-28 capitalize">
-              <SelectValue placeholder={side.replace("-", " ")} />
+              <SelectValue />
             </SelectTrigger>
-            <SelectContent side={side} alignItemWithTrigger={false}>
+            <SelectContent side={side}>
               <SelectGroup>
                 {items.map((item) => (
-                  <SelectItem key={item.value} value={item.value}>
+                  <SelectItem key={item.value} id={item.value}>
                     {item.label}
                   </SelectItem>
                 ))}
@@ -134,21 +132,6 @@ function SelectSides() {
 
 function SelectWithIcons() {
   const items = [
-    {
-      label: (
-        <>
-          <IconPlaceholder
-            lucide="ChartLineIcon"
-            tabler="IconChartLine"
-            hugeicons="Chart03Icon"
-            phosphor="ChartLineIcon"
-            remixicon="RiLineChartLine"
-          />
-          Chart Type
-        </>
-      ),
-      value: null,
-    },
     {
       label: (
         <>
@@ -198,28 +181,54 @@ function SelectWithIcons() {
   return (
     <Example title="With Icons">
       <div className="flex flex-col gap-4">
-        <Select items={items}>
+        <Select aria-label="Chart Type">
           <SelectTrigger size="sm">
-            <SelectValue />
+            <SelectValue>
+              {({isPlaceholder, defaultChildren}) => (
+                isPlaceholder ? <>
+                  <IconPlaceholder
+                    lucide="ChartLineIcon"
+                    tabler="IconChartLine"
+                    hugeicons="Chart03Icon"
+                    phosphor="ChartLineIcon"
+                    remixicon="RiLineChartLine"
+                  />
+                  Chart Type
+                </> : defaultChildren
+              )}
+            </SelectValue>
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
               {items.map((item) => (
-                <SelectItem key={item.value} value={item.value}>
+                <SelectItem key={item.value} id={item.value}>
                   {item.label}
                 </SelectItem>
               ))}
             </SelectGroup>
           </SelectContent>
         </Select>
-        <Select items={items}>
+        <Select aria-label="Chart Type">
           <SelectTrigger size="default">
-            <SelectValue />
+            <SelectValue>
+              {({isPlaceholder, defaultChildren}) => (
+                isPlaceholder ? <>
+                  <IconPlaceholder
+                    lucide="ChartLineIcon"
+                    tabler="IconChartLine"
+                    hugeicons="Chart03Icon"
+                    phosphor="ChartLineIcon"
+                    remixicon="RiLineChartLine"
+                  />
+                  Chart Type
+                </> : defaultChildren
+              )}
+            </SelectValue>
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
               {items.map((item) => (
-                <SelectItem key={item.value} value={item.value}>
+                <SelectItem key={item.value} id={item.value}>
                   {item.label}
                 </SelectItem>
               ))}
@@ -242,14 +251,9 @@ function SelectWithGroups() {
     { label: "Broccoli", value: "broccoli" },
     { label: "Spinach", value: "spinach" },
   ]
-  const allItems = [
-    { label: "Select a fruit", value: null },
-    ...fruits,
-    ...vegetables,
-  ]
   return (
     <Example title="With Groups & Labels">
-      <Select items={allItems}>
+      <Select aria-label="Fruits and Vegetables">
         <SelectTrigger>
           <SelectValue />
         </SelectTrigger>
@@ -257,7 +261,7 @@ function SelectWithGroups() {
           <SelectGroup>
             <SelectLabel>Fruits</SelectLabel>
             {fruits.map((item) => (
-              <SelectItem key={item.value} value={item.value}>
+              <SelectItem key={item.value} id={item.value}>
                 {item.label}
               </SelectItem>
             ))}
@@ -266,7 +270,7 @@ function SelectWithGroups() {
           <SelectGroup>
             <SelectLabel>Vegetables</SelectLabel>
             {vegetables.map((item) => (
-              <SelectItem key={item.value} value={item.value}>
+              <SelectItem key={item.value} id={item.value}>
                 {item.label}
               </SelectItem>
             ))}
@@ -278,23 +282,20 @@ function SelectWithGroups() {
 }
 
 function SelectLargeList() {
-  const items = [
-    { label: "Select an item", value: null },
-    ...Array.from({ length: 100 }).map((_, i) => ({
-      label: `Item ${i}`,
-      value: `item-${i}`,
-    })),
-  ]
+  const items = Array.from({ length: 100 }).map((_, i) => ({
+    label: `Item ${i}`,
+    value: `item-${i}`,
+  }))
   return (
     <Example title="Large List">
-      <Select items={items}>
+      <Select aria-label="Items">
         <SelectTrigger>
           <SelectValue />
         </SelectTrigger>
         <SelectContent>
           <SelectGroup>
             {items.map((item) => (
-              <SelectItem key={item.value} value={item.value}>
+              <SelectItem key={item.value} id={item.value}>
                 {item.label}
               </SelectItem>
             ))}
@@ -307,7 +308,6 @@ function SelectLargeList() {
 
 function SelectSizes() {
   const items = [
-    { label: "Select a fruit", value: null },
     { label: "Apple", value: "apple" },
     { label: "Banana", value: "banana" },
     { label: "Blueberry", value: "blueberry" },
@@ -315,28 +315,28 @@ function SelectSizes() {
   return (
     <Example title="Sizes">
       <div className="flex flex-col gap-4">
-        <Select items={items}>
+        <Select aria-label="Fruits" placeholder="Select a fruit">
           <SelectTrigger size="sm">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
               {items.map((item) => (
-                <SelectItem key={item.value} value={item.value}>
+                <SelectItem key={item.value} id={item.value}>
                   {item.label}
                 </SelectItem>
               ))}
             </SelectGroup>
           </SelectContent>
         </Select>
-        <Select items={items}>
+        <Select aria-label="Fruits">
           <SelectTrigger size="default">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
               {items.map((item) => (
-                <SelectItem key={item.value} value={item.value}>
+                <SelectItem key={item.value} id={item.value}>
                   {item.label}
                 </SelectItem>
               ))}
@@ -350,7 +350,6 @@ function SelectSizes() {
 
 function SelectWithButton() {
   const items = [
-    { label: "Select a fruit", value: null },
     { label: "Apple", value: "apple" },
     { label: "Banana", value: "banana" },
     { label: "Blueberry", value: "blueberry" },
@@ -359,14 +358,14 @@ function SelectWithButton() {
     <Example title="With Button">
       <div className="flex flex-col gap-4">
         <div className="flex items-center gap-2">
-          <Select items={items}>
+          <Select aria-label="Fruits" placeholder="Select a fruit">
             <SelectTrigger size="sm">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
                 {items.map((item) => (
-                  <SelectItem key={item.value} value={item.value}>
+                  <SelectItem key={item.value} id={item.value}>
                     {item.label}
                   </SelectItem>
                 ))}
@@ -378,14 +377,14 @@ function SelectWithButton() {
           </Button>
         </div>
         <div className="flex items-center gap-2">
-          <Select items={items}>
+          <Select aria-label="Fruits">
             <SelectTrigger>
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
                 {items.map((item) => (
-                  <SelectItem key={item.value} value={item.value}>
+                  <SelectItem key={item.value} id={item.value}>
                     {item.label}
                   </SelectItem>
                 ))}
@@ -401,7 +400,6 @@ function SelectWithButton() {
 
 function SelectItemAligned() {
   const items = [
-    { label: "Select a fruit", value: null },
     { label: "Apple", value: "apple" },
     { label: "Banana", value: "banana" },
     { label: "Blueberry", value: "blueberry" },
@@ -410,17 +408,17 @@ function SelectItemAligned() {
   ]
   return (
     <Example title="Item Aligned">
-      <Select items={items}>
+      <Select aria-label="Fruits" placeholder="Select a fruit">
         <SelectTrigger>
           <SelectValue />
         </SelectTrigger>
-        <SelectContent alignItemWithTrigger={true}>
+        <SelectContent>
           <SelectGroup>
             {items.map((item) => (
               <SelectItem
                 key={item.value}
-                value={item.value}
-                disabled={item.disabled}
+                id={item.value}
+                isDisabled={item.disabled}
               >
                 {item.label}
               </SelectItem>
@@ -434,7 +432,6 @@ function SelectItemAligned() {
 
 function SelectWithField() {
   const items = [
-    { label: "Select a fruit", value: null },
     { label: "Apple", value: "apple" },
     { label: "Banana", value: "banana" },
     { label: "Blueberry", value: "blueberry" },
@@ -445,14 +442,14 @@ function SelectWithField() {
     <Example title="With Field">
       <Field>
         <FieldLabel htmlFor="select-fruit">Favorite Fruit</FieldLabel>
-        <Select items={items}>
+        <Select aria-label="Fruits" placeholder="Select a fruit">
           <SelectTrigger id="select-fruit">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
               {items.map((item) => (
-                <SelectItem key={item.value} value={item.value}>
+                <SelectItem key={item.value} id={item.value}>
                   {item.label}
                 </SelectItem>
               ))}
@@ -469,7 +466,6 @@ function SelectWithField() {
 
 function SelectInvalid() {
   const items = [
-    { label: "Select a fruit", value: null },
     { label: "Apple", value: "apple" },
     { label: "Banana", value: "banana" },
     { label: "Blueberry", value: "blueberry" },
@@ -479,14 +475,14 @@ function SelectInvalid() {
   return (
     <Example title="Invalid">
       <div className="flex flex-col gap-4">
-        <Select items={items}>
+        <Select aria-label="Fruits" placeholder="Select a fruit">
           <SelectTrigger aria-invalid="true">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
               {items.map((item) => (
-                <SelectItem key={item.value} value={item.value}>
+                <SelectItem key={item.value} id={item.value}>
                   {item.label}
                 </SelectItem>
               ))}
@@ -495,14 +491,14 @@ function SelectInvalid() {
         </Select>
         <Field data-invalid>
           <FieldLabel htmlFor="select-fruit-invalid">Favorite Fruit</FieldLabel>
-          <Select items={items}>
+          <Select aria-label="Fruits">
             <SelectTrigger id="select-fruit-invalid" aria-invalid>
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
                 {items.map((item) => (
-                  <SelectItem key={item.value} value={item.value}>
+                  <SelectItem key={item.value} id={item.value}>
                     {item.label}
                   </SelectItem>
                 ))}
@@ -518,7 +514,6 @@ function SelectInvalid() {
 
 function SelectInline() {
   const items = [
-    { label: "Filter", value: null },
     { label: "All", value: "all" },
     { label: "Active", value: "active" },
     { label: "Inactive", value: "inactive" },
@@ -527,14 +522,14 @@ function SelectInline() {
     <Example title="Inline with Input & NativeSelect">
       <div className="flex items-center gap-2">
         <Input placeholder="Search..." className="flex-1" />
-        <Select items={items}>
+        <Select aria-label="Filter" placeholder="Filter">
           <SelectTrigger className="w-[140px]">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
               {items.map((item) => (
-                <SelectItem key={item.value} value={item.value}>
+                <SelectItem key={item.value} id={item.value}>
                   {item.label}
                 </SelectItem>
               ))}
@@ -554,7 +549,6 @@ function SelectInline() {
 
 function SelectDisabled() {
   const items = [
-    { label: "Select a fruit", value: null },
     { label: "Apple", value: "apple" },
     { label: "Banana", value: "banana" },
     { label: "Blueberry", value: "blueberry" },
@@ -563,7 +557,7 @@ function SelectDisabled() {
   ]
   return (
     <Example title="Disabled">
-      <Select items={items} disabled>
+      <Select aria-label="Fruits" placeholder="Select a fruit" isDisabled>
         <SelectTrigger>
           <SelectValue />
         </SelectTrigger>
@@ -572,8 +566,8 @@ function SelectDisabled() {
             {items.map((item) => (
               <SelectItem
                 key={item.value}
-                value={item.value}
-                disabled={item.disabled}
+                id={item.value}
+                isDisabled={item.disabled}
               >
                 {item.label}
               </SelectItem>
@@ -604,18 +598,16 @@ function SelectPlan() {
   return (
     <Example title="Subscription Plan">
       <Select
-        defaultValue={plans[0]}
-        itemToStringValue={(plan: (typeof plans)[number]) => plan.name}
+        aria-label="Subscription Plan"
+        defaultValue={plans[0].name}
       >
         <SelectTrigger className="h-auto! w-72">
-          <SelectValue>
-            {(value: (typeof plans)[number]) => <SelectPlanItem plan={value} />}
-          </SelectValue>
+          <SelectValue />
         </SelectTrigger>
         <SelectContent>
           <SelectGroup>
             {plans.map((plan) => (
-              <SelectItem key={plan.name} value={plan}>
+              <SelectItem key={plan.name} id={plan.name} textValue={plan.name}>
                 <SelectPlanItem plan={plan} />
               </SelectItem>
             ))}
@@ -649,29 +641,31 @@ function SelectMultiple() {
     { label: "Strawberry", value: "strawberry" },
     { label: "Watermelon", value: "watermelon" },
   ]
+
   return (
     <Example title="Multiple Selection">
-      <Select items={items} multiple defaultValue={[]}>
+      <Select
+        selectionMode="multiple"
+        aria-label="Fruits"
+      >
         <SelectTrigger className="w-72">
-          <SelectValue>
-            {(value: string[]) => {
-              if (value.length === 0) {
-                return "Select fruits"
-              }
-              if (value.length === 1) {
-                return items.find((item) => item.value === value[0])?.label
-              }
-              return `${value.length} fruits selected`
-            }}
+          <SelectValue<typeof items[0]>>
+            {({selectedItems}) => (
+            selectedItems.length === 0
+              ? "Select fruits"
+              : selectedItems.length === 1
+                ? selectedItems[0]?.label ?? ""
+                : `${selectedItems.length} fruits selected`
+            )}
           </SelectValue>
         </SelectTrigger>
         <SelectContent>
-          <SelectGroup>
-            {items.map((item) => (
-              <SelectItem key={item.value} value={item.value}>
+          <SelectGroup items={items}>
+            {item => (
+              <SelectItem id={item.value}>
                 {item.label}
               </SelectItem>
-            ))}
+            )}
           </SelectGroup>
         </SelectContent>
       </Select>
@@ -681,7 +675,6 @@ function SelectMultiple() {
 
 function SelectInDialog() {
   const items = [
-    { label: "Select a fruit", value: null },
     { label: "Apple", value: "apple" },
     { label: "Banana", value: "banana" },
     { label: "Blueberry", value: "blueberry" },
@@ -701,14 +694,14 @@ function SelectInDialog() {
               Use the select below to choose a fruit.
             </DialogDescription>
           </DialogHeader>
-          <Select items={items}>
+          <Select aria-label="Fruits" placeholder="Select a fruit">
             <SelectTrigger>
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
                 {items.map((item) => (
-                  <SelectItem key={item.value} value={item.value}>
+                  <SelectItem key={item.value} id={item.value}>
                     {item.label}
                   </SelectItem>
                 ))}

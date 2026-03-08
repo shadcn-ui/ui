@@ -345,14 +345,14 @@ function ToggleGroupWithInputAndSelect() {
     <Example title="With Input and Select">
       <div className="flex items-center gap-2">
         <Input type="search" placeholder="Search..." className="flex-1" />
-        <Select items={items} defaultValue={items[0]}>
+        <Select defaultValue={items[0].value}>
           <SelectTrigger className="w-32">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
               {items.map((item) => (
-                <SelectItem key={item.value} value={item.value}>
+                <SelectItem key={item.value} id={item.value}>
                   {item.label}
                 </SelectItem>
               ))}

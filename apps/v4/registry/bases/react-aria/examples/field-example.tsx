@@ -202,31 +202,26 @@ function TextareaFields() {
 
 function SelectFields() {
   const basicItems = [
-    { label: "Choose an option", value: null },
     { label: "Option 1", value: "option1" },
     { label: "Option 2", value: "option2" },
     { label: "Option 3", value: "option3" },
   ]
   const countryItems = [
-    { label: "Select your country", value: null },
     { label: "United States", value: "us" },
     { label: "United Kingdom", value: "uk" },
     { label: "Canada", value: "ca" },
   ]
   const timezoneItems = [
-    { label: "Select timezone", value: null },
     { label: "UTC", value: "utc" },
     { label: "Eastern Time", value: "est" },
     { label: "Pacific Time", value: "pst" },
   ]
   const invalidItems = [
-    { label: "This field has an error", value: null },
     { label: "Option 1", value: "option1" },
     { label: "Option 2", value: "option2" },
     { label: "Option 3", value: "option3" },
   ]
   const disabledItems = [
-    { label: "Cannot select", value: null },
     { label: "Option 1", value: "option1" },
     { label: "Option 2", value: "option2" },
     { label: "Option 3", value: "option3" },
@@ -237,14 +232,14 @@ function SelectFields() {
       <FieldGroup>
         <Field>
           <FieldLabel htmlFor="select-basic">Basic Select</FieldLabel>
-          <Select items={basicItems}>
+          <Select placeholder="Choose an option">
             <SelectTrigger id="select-basic">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
                 {basicItems.map((item) => (
-                  <SelectItem key={item.value} value={item.value}>
+                  <SelectItem key={item.value} id={item.value}>
                     {item.label}
                   </SelectItem>
                 ))}
@@ -254,14 +249,14 @@ function SelectFields() {
         </Field>
         <Field>
           <FieldLabel htmlFor="select-country">Country</FieldLabel>
-          <Select items={countryItems}>
+          <Select placeholder="Select your country">
             <SelectTrigger id="select-country">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
                 {countryItems.map((item) => (
-                  <SelectItem key={item.value} value={item.value}>
+                  <SelectItem key={item.value} id={item.value}>
                     {item.label}
                   </SelectItem>
                 ))}
@@ -277,14 +272,14 @@ function SelectFields() {
           <FieldDescription>
             Choose your local timezone for accurate scheduling.
           </FieldDescription>
-          <Select items={timezoneItems}>
+          <Select placeholder="Select timezone">
             <SelectTrigger id="select-timezone">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
                 {timezoneItems.map((item) => (
-                  <SelectItem key={item.value} value={item.value}>
+                  <SelectItem key={item.value} id={item.value}>
                     {item.label}
                   </SelectItem>
                 ))}
@@ -294,14 +289,14 @@ function SelectFields() {
         </Field>
         <Field data-invalid>
           <FieldLabel htmlFor="select-invalid">Invalid Select</FieldLabel>
-          <Select items={invalidItems}>
+          <Select placeholder="This field has an error">
             <SelectTrigger id="select-invalid" aria-invalid>
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
                 {invalidItems.map((item) => (
-                  <SelectItem key={item.value} value={item.value}>
+                  <SelectItem key={item.value} id={item.value}>
                     {item.label}
                   </SelectItem>
                 ))}
@@ -316,14 +311,14 @@ function SelectFields() {
           <FieldLabel htmlFor="select-disabled-field">
             Disabled Field
           </FieldLabel>
-          <Select items={disabledItems} disabled>
+          <Select placeholder="Cannot select" isDisabled>
             <SelectTrigger id="select-disabled-field">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
                 {disabledItems.map((item) => (
-                  <SelectItem key={item.value} value={item.value}>
+                  <SelectItem key={item.value} id={item.value}>
                     {item.label}
                   </SelectItem>
                 ))}
@@ -961,7 +956,6 @@ function InputOTPFields() {
 
 function HorizontalFields() {
   const basicItems = [
-    { label: "Select a fruit", value: null },
     { label: "Apple", value: "apple" },
     { label: "Banana", value: "banana" },
     { label: "Orange", value: "orange" },
@@ -1005,14 +999,14 @@ function HorizontalFields() {
             <FieldLabel htmlFor="horizontal-select">Favorite Fruit</FieldLabel>
             <FieldDescription>Choose your favorite fruit.</FieldDescription>
           </FieldContent>
-          <Select items={basicItems}>
+          <Select placeholder="Select a fruit">
             <SelectTrigger id="horizontal-select">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
                 {basicItems.map((item) => (
-                  <SelectItem key={item.value} value={item.value}>
+                  <SelectItem key={item.value} id={item.value}>
                     {item.label}
                   </SelectItem>
                 ))}

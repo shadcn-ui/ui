@@ -322,9 +322,8 @@ function DialogChatSettings() {
                       <Field orientation="horizontal">
                         <FieldLabel htmlFor="theme">Theme</FieldLabel>
                         <Select
-                          items={themes}
                           value={theme}
-                          onValueChange={(value) => setTheme(value as string)}
+                          onChange={(value) => setTheme(String(value))}
                         >
                           <SelectTrigger id="theme">
                             <SelectValue />
@@ -334,7 +333,7 @@ function DialogChatSettings() {
                               {themes.map((theme) => (
                                 <SelectItem
                                   key={theme.value}
-                                  value={theme.value}
+                                  id={theme.value}
                                 >
                                   {theme.label}
                                 </SelectItem>
@@ -349,10 +348,9 @@ function DialogChatSettings() {
                           Accent Color
                         </FieldLabel>
                         <Select
-                          items={accents}
                           value={accentColor}
-                          onValueChange={(value) =>
-                            setAccentColor(value as string)
+                          onChange={(value) =>
+                            setAccentColor(String(value))
                           }
                         >
                           <SelectTrigger id="accent-color">
@@ -363,7 +361,7 @@ function DialogChatSettings() {
                               {accents.map((accent) => (
                                 <SelectItem
                                   key={accent.value}
-                                  value={accent.value}
+                                  id={accent.value}
                                 >
                                   {accent.label}
                                 </SelectItem>
@@ -385,10 +383,9 @@ function DialogChatSettings() {
                           </FieldDescription>
                         </FieldContent>
                         <Select
-                          items={spokenLanguages}
                           value={spokenLanguage}
-                          onValueChange={(value) =>
-                            setSpokenLanguage(value as string)
+                          onChange={(value) =>
+                            setSpokenLanguage(String(value))
                           }
                         >
                           <SelectTrigger id="spoken-language">
@@ -399,7 +396,7 @@ function DialogChatSettings() {
                               {spokenLanguages.map((language) => (
                                 <SelectItem
                                   key={language.value}
-                                  value={language.value}
+                                  id={language.value}
                                 >
                                   {language.label}
                                 </SelectItem>
@@ -412,9 +409,8 @@ function DialogChatSettings() {
                       <Field orientation="horizontal">
                         <FieldLabel htmlFor="voice">Voice</FieldLabel>
                         <Select
-                          items={voices}
                           value={voice}
-                          onValueChange={(value) => setVoice(value as string)}
+                          onChange={(value) => setVoice(String(value))}
                         >
                           <SelectTrigger id="voice">
                             <SelectValue />
@@ -424,7 +420,7 @@ function DialogChatSettings() {
                               {voices.map((voice) => (
                                 <SelectItem
                                   key={voice.value}
-                                  value={voice.value}
+                                  id={voice.value}
                                 >
                                   {voice.label}
                                 </SelectItem>

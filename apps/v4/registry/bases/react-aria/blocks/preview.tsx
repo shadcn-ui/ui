@@ -438,7 +438,7 @@ function ButtonGroupExamples() {
                         <DropdownMenuGroup>
                           <DropdownMenuRadioGroup
                             value={label}
-                            onValueChange={setLabel}
+                            onValueChange={(value) => setLabel(String(value))}
                           >
                             <DropdownMenuRadioItem value="personal">
                               Personal
@@ -944,7 +944,6 @@ function EmptyAvatarGroup() {
 
 function FormExample() {
   const monthItems = [
-    { label: "MM", value: null },
     { label: "01", value: "01" },
     { label: "02", value: "02" },
     { label: "03", value: "03" },
@@ -960,7 +959,6 @@ function FormExample() {
   ]
 
   const yearItems = [
-    { label: "YYYY", value: null },
     { label: "2024", value: "2024" },
     { label: "2025", value: "2025" },
     { label: "2026", value: "2026" },
@@ -1017,14 +1015,14 @@ function FormExample() {
                       <FieldLabel htmlFor="checkout-7j9-exp-month-ts6">
                         Month
                       </FieldLabel>
-                      <Select items={monthItems} defaultValue={null}>
+                      <Select placeholder="MM">
                         <SelectTrigger id="checkout-7j9-exp-month-ts6">
                           <SelectValue />
                         </SelectTrigger>
                         <SelectContent>
                           <SelectGroup>
                             {monthItems.map((item) => (
-                              <SelectItem key={item.value} value={item.value}>
+                              <SelectItem key={item.value} id={item.value}>
                                 {item.label}
                               </SelectItem>
                             ))}
@@ -1036,14 +1034,14 @@ function FormExample() {
                       <FieldLabel htmlFor="checkout-7j9-exp-year-f59">
                         Year
                       </FieldLabel>
-                      <Select items={yearItems} defaultValue={null}>
+                      <Select placeholder="YYYY">
                         <SelectTrigger id="checkout-7j9-exp-year-f59">
                           <SelectValue />
                         </SelectTrigger>
                         <SelectContent>
                           <SelectGroup>
                             {yearItems.map((item) => (
-                              <SelectItem key={item.value} value={item.value}>
+                              <SelectItem key={item.value} id={item.value}>
                                 {item.label}
                               </SelectItem>
                             ))}
@@ -1435,14 +1433,14 @@ function SmallFormExample() {
                 </Field>
                 <Field>
                   <FieldLabel htmlFor="small-form-role">Role</FieldLabel>
-                  <Select items={roleItems} defaultValue={null}>
+                  <Select>
                     <SelectTrigger id="small-form-role">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectGroup>
                         {roleItems.map((item) => (
-                          <SelectItem key={item.value} value={item.value}>
+                          <SelectItem key={item.value} id={item.value}>
                             {item.label}
                           </SelectItem>
                         ))}
