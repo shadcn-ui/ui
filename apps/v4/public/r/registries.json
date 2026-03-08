@@ -832,5 +832,11 @@
     "homepage": "https://iconiqs.vercel.app",
     "url": "https://iconiqs.vercel.app/r/{name}.json",
     "description": "Iconiq is a collection of icons designed for web applications. It is a modern, clean, and minimalistic icon set that is perfect for web applications."
+  },
+  {
+    "name": "@fonttrio",
+    "homepage": "https://www.fonttrio.xyz",
+    "url": "https://www.fonttrio.xyz/r/{name}.json",
+    "description": "Curated font pairing registry for shadcn. Three fonts. One command. Install perfectly configured typography (heading + body + mono) with shadcn add. Includes editorial-grade type scales, CSS variables, and a live preview site."
   }
 ]
