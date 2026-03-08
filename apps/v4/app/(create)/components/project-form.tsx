@@ -80,10 +80,11 @@ export function ProjectForm({
 
   const commands = React.useMemo(() => {
     const presetFlag = ` --preset ${presetCode}`
+    const baseFlag = params.base !== "radix" ? ` --base ${params.base}` : ""
     const templateFlag = ` --template ${framework}`
     const monorepoFlag = isMonorepo ? " --monorepo" : ""
     const rtlFlag = params.rtl ? " --rtl" : ""
-    const flags = `${presetFlag}${templateFlag}${monorepoFlag}${rtlFlag}`
+    const flags = `${presetFlag}${baseFlag}${templateFlag}${monorepoFlag}${rtlFlag}`
 
     return IS_LOCAL_DEV && !process.env.NEXT_PUBLIC_RC
       ? {
@@ -98,7 +99,7 @@ export function ProjectForm({
           yarn: `yarn dlx shadcn${SHADCN_VERSION} init${flags}`,
           bun: `bunx --bun shadcn${SHADCN_VERSION} init${flags}`,
         }
-  }, [framework, isMonorepo, params.rtl, presetCode])
+  }, [framework, isMonorepo, params.base, params.rtl, presetCode])
 
   const command = commands[packageManager]
 
