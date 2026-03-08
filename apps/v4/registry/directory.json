@@ -631,6 +631,13 @@
     "logo": "<svg width='80' height='80' viewBox='0 0 80 80' fill='none' xmlns='http://www.w3.org/2000/svg'><g clip-path='url(#clip0_22651_9557)'><g clip-path='url(#clip1_22651_9557)'><rect x='10' y='10' width='60' height='60' fill='black' stroke='#4497F7' stroke-width='5'/><rect x='2.5' y='2.5' width='15' height='15' fill='white' stroke='#4497F7' stroke-width='5'/><rect x='62.5' y='2.5' width='15' height='15' fill='white' stroke='#4497F7' stroke-width='5'/><rect x='2.5' y='62.5' width='15' height='15' fill='white' stroke='#4497F7' stroke-width='5'/><rect x='62.5' y='62.5' width='15' height='15' fill='white' stroke='#4497F7' stroke-width='5'/><path d='M23.75 56.25L56.25 23.75' stroke='white' stroke-width='5'/><path d='M43.75 56.25L56.25 43.75' stroke='white' stroke-width='5'/></g></g><defs><clipPath id='clip0_22651_9557'><rect width='80' height='80' fill='white'/></clipPath><clipPath id='clip1_22651_9557'><rect width='80' height='80' fill='white'/></clipPath></defs></svg>"
   },
   {
+    "name": "@shadcnmaps",
+    "homepage": "https://shadcnmaps.com",
+    "url": "https://shadcnmaps.com/r/{name}.json",
+    "description": "Beautiful map components powered by pure SVG.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='46.876' height='46.876' viewBox='0 0 12.403 12.403'><path d='M6.201 0A6.21 6.21 0 0 0 0 6.201a6.21 6.21 0 0 0 6.201 6.202A6.21 6.21 0 0 0 12.403 6.2 6.21 6.21 0 0 0 6.2 0m2.977 3.99L7.616 9.573a.62.62 0 0 1-.552.452l-.045.002a.62.62 0 0 1-.567-.368L5.31 7.095 2.743 5.951a.62.62 0 0 1 .086-1.164l5.585-1.562a.62.62 0 0 1 .765.765z'/></svg>"
+  },
+  {
     "name": "@shadcnstore",
     "homepage": "https://www.shadcnstore.com",
     "url": "https://shadcnstore.com/r/{name}.json",
