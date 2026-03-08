@@ -65,7 +65,6 @@ import {
 import { Kbd } from "@/registry/bases/react-aria/ui/kbd"
 import {
   Popover,
-  PopoverContent,
   PopoverTrigger,
 } from "@/registry/bases/react-aria/ui/popover"
 import {
@@ -526,12 +525,8 @@ function CreateProjectForm() {
                   }}
                 />
                 <InputGroupAddon>
-                  <Popover>
-                    <PopoverTrigger
-                      render={
-                        <InputGroupButton variant="ghost" size="icon-xs" />
-                      }
-                    >
+                  <PopoverTrigger>
+                    <InputGroupButton variant="ghost" size="icon-xs">
                       <IconPlaceholder
                         style={
                           { "--color": selectedColor } as React.CSSProperties
@@ -543,8 +538,8 @@ function CreateProjectForm() {
                         remixicon="RiFolderLine"
                         className="text-(--color)"
                       />
-                    </PopoverTrigger>
-                    <PopoverContent align="start" className="w-60 p-3">
+                    </InputGroupButton>
+                    <Popover align="start" className="w-60 p-3">
                       <div className="flex flex-wrap gap-2">
                         {[
                           "var(--foreground)",
@@ -574,8 +569,8 @@ function CreateProjectForm() {
                           </Button>
                         ))}
                       </div>
-                    </PopoverContent>
-                  </Popover>
+                    </Popover>
+                  </PopoverTrigger>
                 </InputGroupAddon>
               </InputGroup>
               <FieldDescription className="flex flex-wrap gap-2">

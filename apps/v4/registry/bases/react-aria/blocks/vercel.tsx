@@ -75,7 +75,6 @@ import {
 } from "@/registry/bases/react-aria/ui/native-select"
 import {
   Popover,
-  PopoverContent,
   PopoverTrigger,
 } from "@/registry/bases/react-aria/ui/popover"
 import { Textarea } from "@/registry/bases/react-aria/ui/textarea"
@@ -256,10 +255,8 @@ function DeploymentFilter() {
   return (
     <Example title="Deployment Filter" containerClassName="col-span-full">
       <div className="flex w-full flex-wrap items-center gap-2 *:w-full lg:*:w-auto">
-        <Popover>
-          <PopoverTrigger
-            render={<Button variant="outline" className="justify-start" />}
-          >
+        <PopoverTrigger>
+          <Button variant="outline" className="justify-start">
             <IconPlaceholder
               lucide="CalendarIcon"
               tabler="IconCalendar"
@@ -281,8 +278,8 @@ function DeploymentFilter() {
             ) : (
               "Select Date Range"
             )}
-          </PopoverTrigger>
-          <PopoverContent className="w-auto p-0" align="start">
+          </Button>
+          <Popover className="w-auto p-0" align="start">
             <Calendar
               mode="range"
               defaultMonth={dateRange?.from}
@@ -290,8 +287,8 @@ function DeploymentFilter() {
               onSelect={setDateRange}
               numberOfMonths={2}
             />
-          </PopoverContent>
-        </Popover>
+          </Popover>
+        </PopoverTrigger>
         <InputGroup className="lg:ml-auto lg:max-w-72">
           <InputGroupAddon>
             <IconPlaceholder

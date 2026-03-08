@@ -1,49 +1,87 @@
 "use client"
 
 import * as React from "react"
-import { Popover as PopoverPrimitive } from "@base-ui/react/popover"
+import {
+  DialogTrigger,
+  type DialogTriggerProps,
+  Heading,
+  Popover as PopoverPrimitive,
+  type PopoverProps as PopoverPrimitiveProps,
+  Text,
+} from "react-aria-components"
 
 import { cn } from "@/registry/bases/react-aria/lib/utils"
 
-function Popover({ ...props }: PopoverPrimitive.Root.Props) {
-  return <PopoverPrimitive.Root data-slot="popover" {...props} />
+type PopoverSide = "top" | "right" | "bottom" | "left" | "inline-start" | "inline-end"
+type PopoverAlign = "start" | "center" | "end"
+
+function getPlacement(side: PopoverSide, align: PopoverAlign) {
+  if (side === "inline-start") {
+    return "start"
+  }
+
+  if (side === "inline-end") {
+    return "end"
+  }
+
+  if (align === "center") {
+    return side
+  }
+
+  if (side === "left" || side === "right") {
+    const crossPlacement = align === "start" ? "top" : "bottom"
+    return `${side} ${crossPlacement}` as const
+  }
+
+  return `${side} ${align}` as const
 }
 
-function PopoverTrigger({ ...props }: PopoverPrimitive.Trigger.Props) {
-  return <PopoverPrimitive.Trigger data-slot="popover-trigger" {...props} />
+function PopoverTrigger({
+  children,
+  ...props
+}: DialogTriggerProps) {
+  return (
+    <DialogTrigger {...props}>
+      {children}
+    </DialogTrigger>
+  )
 }
 
-function PopoverContent({
+function Popover({
   className,
   align = "center",
   alignOffset = 0,
   side = "bottom",
   sideOffset = 4,
   ...props
-}: PopoverPrimitive.Popup.Props &
-  Pick<
-    PopoverPrimitive.Positioner.Props,
-    "align" | "alignOffset" | "side" | "sideOffset"
-  >) {
+}: Omit<PopoverPrimitiveProps, "className" | "children" | "placement"> & {
+  className?: string
+  children?: React.ReactNode
+  align?: PopoverAlign
+  alignOffset?: number
+  side?: PopoverSide
+  sideOffset?: number
+}) {
   return (
-    <PopoverPrimitive.Portal>
-      <PopoverPrimitive.Positioner
-        align={align}
-        alignOffset={alignOffset}
-        side={side}
-        sideOffset={sideOffset}
-        className="isolate z-50"
-      >
-        <PopoverPrimitive.Popup
-          data-slot="popover-content"
-          className={cn(
-            "cn-popover-content cn-popover-content-logical z-50 w-72 origin-(--transform-origin) outline-hidden",
-            className
-          )}
+    <PopoverPrimitive
+      data-slot="popover-content"
+      placement={getPlacement(side, align)}
+      offset={sideOffset}
+      crossOffset={alignOffset}
+      render={(props, {placement, isEntering, isExiting}) => 
+        // compatibility with existing themes
+        <div
           {...props}
-        />
-      </PopoverPrimitive.Positioner>
-    </PopoverPrimitive.Portal>
+          data-side={placement}
+          data-open={isEntering}
+          data-closed={isExiting} />
+      }
+      className={cn(
+        "cn-popover-content cn-popover-content-logical z-50 w-72 origin-(--trigger-anchor-point) outline-hidden data-entering:animate-in data-entering:fade-in-0 data-entering:zoom-in-95 data-exiting:animate-out data-exiting:fade-out-0 data-exiting:zoom-out-95 data-[placement=bottom]:slide-in-from-top-2 data-[placement=left]:slide-in-from-right-2 data-[placement=right]:slide-in-from-left-2 data-[placement=top]:slide-in-from-bottom-2 data-[placement=start]:slide-in-from-right-2 data-[placement=end]:slide-in-from-left-2",
+        className
+      )}
+      {...props}
+    />
   )
 }
 
@@ -57,9 +95,9 @@ function PopoverHeader({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
-function PopoverTitle({ className, ...props }: PopoverPrimitive.Title.Props) {
+function PopoverTitle({ className, ...props }: React.ComponentProps<typeof Heading>) {
   return (
-    <PopoverPrimitive.Title
+    <Heading
       data-slot="popover-title"
       className={cn("cn-popover-title", className)}
       {...props}
@@ -70,10 +108,9 @@ function PopoverTitle({ className, ...props }: PopoverPrimitive.Title.Props) {
 function PopoverDescription({
   className,
   ...props
-}: PopoverPrimitive.Description.Props) {
+}: React.ComponentProps<"div">) {
   return (
-    <PopoverPrimitive.Description
-      data-slot="popover-description"
+    <div
       className={cn("cn-popover-description", className)}
       {...props}
     />
@@ -82,7 +119,6 @@ function PopoverDescription({
 
 export {
   Popover,
-  PopoverContent,
   PopoverDescription,
   PopoverHeader,
   PopoverTitle,

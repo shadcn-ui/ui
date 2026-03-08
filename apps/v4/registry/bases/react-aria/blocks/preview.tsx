@@ -102,7 +102,6 @@ import {
 import { Label } from "@/registry/bases/react-aria/ui/label"
 import {
   Popover,
-  PopoverContent,
   PopoverDescription,
   PopoverHeader,
   PopoverTitle,
@@ -614,15 +613,11 @@ function ButtonGroupExamples() {
                 />{" "}
                 Copilot
               </Button>
-              <Popover>
-                <PopoverTrigger
-                  render={
-                    <Button
-                      variant="outline"
-                      size="icon"
-                      aria-label="Open Popover"
-                    />
-                  }
+              <PopoverTrigger>
+                <Button
+                  variant="outline"
+                  size="icon"
+                  aria-label="Open Popover"
                 >
                   <IconPlaceholder
                     lucide="ChevronDownIcon"
@@ -631,8 +626,8 @@ function ButtonGroupExamples() {
                     phosphor="CaretDownIcon"
                     remixicon="RiArrowDownSLine"
                   />
-                </PopoverTrigger>
-                <PopoverContent align="end" className="w-96">
+                </Button>
+                <Popover align="end" className="w-96">
                   <PopoverHeader>
                     <PopoverTitle>Agent Tasks</PopoverTitle>
                     <PopoverDescription>
@@ -646,8 +641,8 @@ function ButtonGroupExamples() {
                       className="min-h-32 resize-none"
                     />
                   </div>
-                </PopoverContent>
-              </Popover>
+                </Popover>
+              </PopoverTrigger>
             </ButtonGroup>
           </ButtonGroup>
         </div>
@@ -711,15 +706,11 @@ function InputGroupExamples() {
           <InputGroup>
             <InputGroupInput id="input-secure-19" className="pl-0.5!" />
             <InputGroupAddon>
-              <Popover>
-                <PopoverTrigger
-                  render={
-                    <InputGroupButton
-                      variant="secondary"
-                      size="icon-xs"
-                      aria-label="Info"
-                    />
-                  }
+              <PopoverTrigger>
+                <InputGroupButton
+                  variant="secondary"
+                  size="icon-xs"
+                  aria-label="Info"
                 >
                   <IconPlaceholder
                     lucide="InfoIcon"
@@ -728,8 +719,8 @@ function InputGroupExamples() {
                     phosphor="InfoIcon"
                     remixicon="RiInformationLine"
                   />
-                </PopoverTrigger>
-                <PopoverContent
+                </InputGroupButton>
+                <Popover
                   align="start"
                   alignOffset={10}
                   className="flex flex-col gap-1 rounded-xl text-sm"
@@ -738,8 +729,8 @@ function InputGroupExamples() {
                   <p>
                     You should not enter any sensitive information on this site.
                   </p>
-                </PopoverContent>
-              </Popover>
+                </Popover>
+              </PopoverTrigger>
             </InputGroupAddon>
             <InputGroupAddon className="pl-1! text-muted-foreground">
               https://

@@ -5,7 +5,6 @@ import * as React from "react"
 import { Button } from "@/registry/bases/react-aria/ui/button"
 import {
   Popover,
-  PopoverContent,
   PopoverTrigger,
 } from "@/registry/bases/react-aria/ui/popover"
 import {
@@ -204,15 +203,13 @@ export function NavActions() {
           remixicon="RiStarLine"
         />
       </Button>
-      <Popover open={isOpen} onOpenChange={setIsOpen}>
-        <PopoverTrigger
-          render={
-            <Button
-              variant="ghost"
-              size="icon"
-              className="h-7 w-7 data-open:bg-accent"
-            />
-          }
+      <PopoverTrigger
+        isOpen={isOpen}
+        onOpenChange={setIsOpen}>
+        <Button
+          variant="ghost"
+          size="icon"
+          className="h-7 w-7 aria-expanded:bg-accent"
         >
           <IconPlaceholder
             lucide="MoreHorizontalIcon"
@@ -221,8 +218,8 @@ export function NavActions() {
             phosphor="DotsThreeOutlineIcon"
             remixicon="RiMoreLine"
           />
-        </PopoverTrigger>
-        <PopoverContent
+        </Button>
+        <Popover
           className="w-56 overflow-hidden rounded-lg p-0"
           align="end"
         >
@@ -245,8 +242,8 @@ export function NavActions() {
               ))}
             </SidebarContent>
           </Sidebar>
-        </PopoverContent>
-      </Popover>
+        </Popover>
+      </PopoverTrigger>
     </div>
   )
 }

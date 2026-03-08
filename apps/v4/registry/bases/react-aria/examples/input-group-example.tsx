@@ -44,7 +44,6 @@ import {
 import { Kbd, KbdGroup } from "@/registry/bases/react-aria/ui/kbd"
 import {
   Popover,
-  PopoverContent,
   PopoverDescription,
   PopoverHeader,
   PopoverTitle,
@@ -439,8 +438,8 @@ function InputGroupWithTooltip({
         <Field>
           <FieldLabel htmlFor="input-secure-19">Popover</FieldLabel>
           <InputGroup>
-            <Popover>
-              <PopoverTrigger render={<InputGroupAddon />} nativeButton={false}>
+            <PopoverTrigger>
+              <InputGroupAddon>
                 <InputGroupButton variant="secondary" size="icon-xs">
                   <IconPlaceholder
                     lucide="InfoIcon"
@@ -450,16 +449,16 @@ function InputGroupWithTooltip({
                     remixicon="RiInformationLine"
                   />
                 </InputGroupButton>
-              </PopoverTrigger>
-              <PopoverContent align="start">
+              </InputGroupAddon>
+              <Popover align="start">
                 <PopoverHeader>
                   <PopoverTitle>Your connection is not secure.</PopoverTitle>
                   <PopoverDescription>
                     You should not enter any sensitive information on this site.
                   </PopoverDescription>
                 </PopoverHeader>
-              </PopoverContent>
-            </Popover>
+              </Popover>
+            </PopoverTrigger>
             <InputGroupAddon className="pl-1 text-muted-foreground">
               https://
             </InputGroupAddon>

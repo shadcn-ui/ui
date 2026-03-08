@@ -102,7 +102,6 @@ import {
 } from "@/registry/bases/react-aria/ui/native-select"
 import {
   Popover,
-  PopoverContent,
   PopoverTrigger,
 } from "@/registry/bases/react-aria/ui/popover"
 import { Separator } from "@/registry/bases/react-aria/ui/separator"
@@ -541,56 +540,37 @@ function RepositoryToolbar() {
             </DropdownMenuGroup>
           </DropdownMenuContent>
         </DropdownMenu>
-        <Popover>
-          <Tooltip>
-            <TooltipTrigger
-              render={
-                <PopoverTrigger
-                  render={<Button variant="outline" size="icon" />}
-                />
-              }
-            >
-              <IconPlaceholder
-                lucide="CloudCogIcon"
-                hugeicons="AiCloud01Icon"
-                tabler="IconCloudCog"
-                phosphor="CloudArrowUpIcon"
-                remixicon="RiUploadCloudLine"
-              />
-            </TooltipTrigger>
-            <TooltipContent>New Agent Task</TooltipContent>
-          </Tooltip>
-          <PopoverContent side="bottom" align="end" className="w-96">
+        <PopoverTrigger>
+          <Button variant="outline" size="icon" aria-label="New Agent Task">
+            <IconPlaceholder
+              lucide="CloudCogIcon"
+              hugeicons="AiCloud01Icon"
+              tabler="IconCloudCog"
+              phosphor="CloudArrowUpIcon"
+              remixicon="RiUploadCloudLine"
+            />
+          </Button>
+          <Popover side="bottom" align="end" className="w-96">
             <Field>
               <FieldLabel htmlFor="new-agent-task">New Agent Task</FieldLabel>
               <InputGroup>
                 <InputGroupTextarea placeholder="Describe your task in natural language."></InputGroupTextarea>
                 <InputGroupAddon align="block-end">
-                  <Popover>
-                    <Tooltip>
-                      <PopoverTrigger
-                        render={
-                          <TooltipTrigger
-                            render={
-                              <InputGroupButton
-                                variant="outline"
-                                size="icon-sm"
-                              />
-                            }
-                          />
-                        }
-                      >
-                        <IconPlaceholder
-                          lucide="GitBranchIcon"
-                          hugeicons="GitBranchIcon"
-                          tabler="IconGitBranch"
-                          phosphor="GitBranchIcon"
-                          remixicon="RiGitBranchLine"
-                        />
-                      </PopoverTrigger>
-                      <TooltipContent>Select a branch</TooltipContent>
-                    </Tooltip>
-                    <PopoverContent side="bottom" align="start" className="p-1">
+                  <PopoverTrigger>
+                    <InputGroupButton
+                      variant="outline"
+                      size="icon-sm"
+                      aria-label="Select a branch"
+                    >
+                      <IconPlaceholder
+                        lucide="GitBranchIcon"
+                        hugeicons="GitBranchIcon"
+                        tabler="IconGitBranch"
+                        phosphor="GitBranchIcon"
+                        remixicon="RiGitBranchLine"
+                      />
+                    </InputGroupButton>
+                    <Popover side="bottom" align="start" className="p-1">
                       <Field>
                         <FieldLabel htmlFor="select-branch" className="sr-only">
                           Select a Branch
@@ -641,33 +621,23 @@ function RepositoryToolbar() {
                           </CommandList>
                         </Command>
                       </Field>
-                    </PopoverContent>
-                  </Popover>
-                  <Popover>
-                    <Tooltip>
-                      <PopoverTrigger
-                        render={
-                          <TooltipTrigger
-                            render={
-                              <InputGroupButton
-                                variant="outline"
-                                size="icon-sm"
-                              />
-                            }
-                          />
-                        }
-                      >
-                        <IconPlaceholder
-                          lucide="BotIcon"
-                          hugeicons="RoboticIcon"
-                          tabler="IconRobot"
-                          phosphor="RobotIcon"
-                          remixicon="RiRobotLine"
-                        />
-                      </PopoverTrigger>
-                      <TooltipContent>Select Agent</TooltipContent>
-                    </Tooltip>
-                    <PopoverContent side="bottom" align="start">
+                    </Popover>
+                  </PopoverTrigger>
+                  <PopoverTrigger>
+                    <InputGroupButton
+                      variant="outline"
+                      size="icon-sm"
+                      aria-label="Select Agent"
+                    >
+                      <IconPlaceholder
+                        lucide="BotIcon"
+                        hugeicons="RoboticIcon"
+                        tabler="IconRobot"
+                        phosphor="RobotIcon"
+                        remixicon="RiRobotLine"
+                      />
+                    </InputGroupButton>
+                    <Popover side="bottom" align="start">
                       <Empty className="gap-4 p-0">
                         <EmptyHeader>
                           <EmptyTitle className="text-sm">
@@ -684,8 +654,8 @@ function RepositoryToolbar() {
                           </Button>
                         </EmptyContent>
                       </Empty>
-                    </PopoverContent>
-                  </Popover>
+                    </Popover>
+                  </PopoverTrigger>
                   <Tooltip>
                     <TooltipTrigger
                       render={
@@ -711,8 +681,8 @@ function RepositoryToolbar() {
                 </InputGroupAddon>
               </InputGroup>
             </Field>
-          </PopoverContent>
-        </Popover>
+          </Popover>
+        </PopoverTrigger>
       </div>
     </Example>
   )
