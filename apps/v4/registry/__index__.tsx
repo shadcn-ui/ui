@@ -352,7 +352,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["button"],
       files: [{
         path: "registry/new-york-v4/ui/dialog.tsx",
         type: "registry:ui",
