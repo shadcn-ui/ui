@@ -213,17 +213,7 @@ export function findCommonRoot(cwd: string, resolvedPath: string) {
 // TODO: Cache this call.
 export async function getTargetStyleFromConfig(cwd: string, fallback: string) {
   const projectInfo = await getProjectInfo(cwd)
-
-  // Only override legacy v3 style names for Tailwind v4 projects.
-  // Preserve v4 style names like "base-nova", "radix-nova", etc.
-  if (
-    projectInfo?.tailwindVersion === "v4" &&
-    (!fallback || fallback === "new-york" || fallback === "default")
-  ) {
-    return "new-york-v4"
-  }
-
-  return fallback
+  return projectInfo?.tailwindVersion === "v4" ? "new-york-v4" : fallback
 }
 
 export function getBase(style: string | undefined) {
