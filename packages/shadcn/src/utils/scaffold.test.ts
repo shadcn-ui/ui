@@ -39,7 +39,8 @@ function setupMocks() {
 
 describe("defaultScaffold", () => {
   const originalEnv = { ...process.env }
-  let mockExit: ReturnType<typeof vi.spyOn>
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let mockExit: any
 
   beforeEach(() => {
     vi.clearAllMocks()
