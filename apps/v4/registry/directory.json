@@ -961,8 +961,8 @@
   },
   {
     "name": "@iconiq",
-    "homepage": "https://iconiqs.vercel.app",
-    "url": "https://iconiqs.vercel.app/r/{name}.json",
+    "homepage": "https://iconiqui.com",
+    "url": "https://iconiqui.com/r/{name}.json",
     "description": "Iconiq is a collection of icons designed for web applications. It is a modern, clean, and minimalistic icon set that is perfect for web applications.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='31' height='30' viewBox='0 0 31 30' fill='none'><path d='M30.8574 13.4209H25.0322V24.8223H17.4414L17.4961 26.2822C17.9462 26.0015 18.5219 25.8223 19.1543 25.7988C20.6429 25.744 21.8818 26.5719 21.9219 27.6484C21.96 28.6881 20.8658 29.576 19.4502 29.6855V29.6924L17.5859 29.7617C17.043 29.7816 16.5855 29.3565 16.5654 28.8135L16.5303 27.8643H16.5312C16.531 27.8588 16.5305 27.8531 16.5303 27.8477C16.5292 27.8173 16.5324 27.787 16.5332 27.7568L16.4229 24.8223H13.2686L13.1494 27.9941C13.1502 28.0242 13.1534 28.0546 13.1523 28.085C13.1521 28.0902 13.1517 28.0963 13.1514 28.1016H13.1523L13.1172 29.0518C13.097 29.5946 12.6395 30.0188 12.0967 29.999L10.2324 29.9297V29.9238C8.81666 29.8144 7.7226 28.9265 7.76074 27.8867C7.80082 26.8101 9.03966 25.9813 10.5283 26.0361C11.1608 26.0596 11.7364 26.2396 12.1865 26.5205L12.25 24.8223H4.72266L5.2832 13.4209H0L14.0205 0L30.8574 13.4209Z' fill='#EE4822'/><circle cx='10.4573' cy='14.5408' r='2.62989' fill='white'/><circle cx='17.5155' cy='14.5408' r='2.62989' fill='white'/><circle cx='10.6948' cy='14.88' r='0.763516' fill='black'/><circle cx='17.0064' cy='14.88' r='0.763516' fill='black'/></svg>"
   }

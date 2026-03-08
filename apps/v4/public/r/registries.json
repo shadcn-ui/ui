@@ -823,8 +823,8 @@
   },
   {
     "name": "@iconiq",
-    "homepage": "https://iconiqs.vercel.app",
-    "url": "https://iconiqs.vercel.app/r/{name}.json",
+    "homepage": "https://iconiqui.com",
+    "url": "https://iconiqui.com/r/{name}.json",
     "description": "Iconiq is a collection of icons designed for web applications. It is a modern, clean, and minimalistic icon set that is perfect for web applications."
   }
 ]
