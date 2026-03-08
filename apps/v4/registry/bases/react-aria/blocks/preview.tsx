@@ -122,7 +122,6 @@ import { Separator } from "@/registry/bases/react-aria/ui/separator"
 import {
   Sheet,
   SheetClose,
-  SheetContent,
   SheetDescription,
   SheetFooter,
   SheetHeader,
@@ -1638,15 +1637,11 @@ function SheetExample() {
     <Example title="Sheet">
       <div className="flex gap-2">
         {SHEET_SIDES.map((side) => (
-          <Sheet key={side}>
-            <SheetTrigger
-              render={
-                <Button variant="secondary" className="flex-1 capitalize" />
-              }
-            >
+          <SheetTrigger key={side}>
+            <Button variant="secondary" className="flex-1 capitalize">
               {side}
-            </SheetTrigger>
-            <SheetContent
+            </Button>
+            <Sheet
               side={side}
               className="data-[side=bottom]:max-h-[50vh] data-[side=top]:max-h-[50vh]"
             >
@@ -1676,12 +1671,12 @@ function SheetExample() {
               </div>
               <SheetFooter>
                 <Button type="submit">Save changes</Button>
-                <SheetClose render={<Button variant="outline" />}>
+                <SheetClose variant="outline">
                   Cancel
                 </SheetClose>
               </SheetFooter>
-            </SheetContent>
-          </Sheet>
+            </Sheet>
+          </SheetTrigger>
         ))}
       </div>
     </Example>

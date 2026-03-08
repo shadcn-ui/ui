@@ -1,35 +1,121 @@
 "use client"
 
 import * as React from "react"
-import { Dialog as SheetPrimitive } from "@base-ui/react/dialog"
+import {
+  Dialog as SheetPrimitive,
+  DialogTrigger as SheetTriggerPrimitive,
+  Heading,
+  Modal as ModalPrimitive,
+  ModalOverlay as ModalOverlayPrimitive,
+  type DialogProps as SheetPrimitiveProps,
+  type DialogTriggerProps as SheetTriggerPrimitiveProps,
+  type ModalOverlayProps as ModalOverlayPrimitiveProps,
+  type ModalRenderProps,
+} from "react-aria-components"
 
 import { cn } from "@/registry/bases/react-aria/lib/utils"
 import { Button } from "@/registry/bases/react-aria/ui/button"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
-function Sheet({ ...props }: SheetPrimitive.Root.Props) {
-  return <SheetPrimitive.Root data-slot="sheet" {...props} />
+function SheetTrigger({ ...props }: SheetTriggerPrimitiveProps) {
+  return <SheetTriggerPrimitive data-slot="sheet-trigger" {...props} />
 }
 
-function SheetTrigger({ ...props }: SheetPrimitive.Trigger.Props) {
-  return <SheetPrimitive.Trigger data-slot="sheet-trigger" {...props} />
-}
-
-function SheetClose({ ...props }: SheetPrimitive.Close.Props) {
-  return <SheetPrimitive.Close data-slot="sheet-close" {...props} />
-}
-
-function SheetPortal({ ...props }: SheetPrimitive.Portal.Props) {
-  return <SheetPrimitive.Portal data-slot="sheet-portal" {...props} />
-}
-
-function SheetOverlay({ className, ...props }: SheetPrimitive.Backdrop.Props) {
+function SheetClose({
+  className,
+  variant = "outline",
+  size = "default",
+  ...props
+}: React.ComponentProps<typeof Button>) {
   return (
-    <SheetPrimitive.Backdrop
-      data-slot="sheet-overlay"
-      className={cn("cn-sheet-overlay fixed inset-0 z-50", className)}
+    <Button
+      slot="close"
+      data-slot="sheet-close"
+      variant={variant}
+      size={size}
+      className={cn(className)}
       {...props}
     />
+  )
+}
+
+function SheetOverlay({
+  className,
+  children,
+  ...props
+}: Omit<ModalOverlayPrimitiveProps, "className" | "children"> & {
+  className?: string
+  children: React.ReactNode
+}) {
+  return (
+    <ModalOverlayPrimitive
+      data-slot="sheet-overlay"
+      isDismissable
+      className={cn("cn-sheet-overlay fixed inset-0 z-50", className)}
+      // Keep existing data-open/data-closed selectors working with RAC state.
+      render={(renderProps, state: ModalRenderProps) => (
+        <div
+          {...renderProps}
+          data-open={state.isEntering}
+          data-closed={state.isExiting}
+        />
+      )}
+      {...props}
+    >
+      {children}
+    </ModalOverlayPrimitive>
+  )
+}
+
+function Sheet({
+  className,
+  children,
+  side = "right",
+  showCloseButton = true,
+  ...props
+}: Omit<ModalOverlayPrimitiveProps, "className" | "children"> &
+  Pick<React.ComponentProps<typeof ModalPrimitive>, "isDismissable"> & {
+    className?: string
+    children: React.ReactNode
+    side?: "top" | "right" | "bottom" | "left"
+    showCloseButton?: boolean
+  }) {
+  return (
+    <SheetOverlay {...props}>
+      <ModalPrimitive
+        data-slot="sheet-content"
+        data-side={side}
+        className={cn("cn-sheet-content", className)}
+        // Keep existing data-open/data-closed selectors working with RAC state.
+        render={(renderProps, state: ModalRenderProps) => (
+          <div
+            {...renderProps}
+            data-open={state.isEntering}
+            data-closed={state.isExiting}
+          />
+        )}
+      >
+        <SheetPrimitive data-slot="sheet" className="[display:inherit] [flex-direction:inherit] [gap:inherit] h-full max-h-[inherit] outline-none">
+          {children}
+          {showCloseButton && (
+            <SheetClose
+              variant="ghost"
+              className="cn-sheet-close"
+              size="icon-sm"
+            >
+              <IconPlaceholder
+                lucide="XIcon"
+                tabler="IconX"
+                hugeicons="Cancel01Icon"
+                phosphor="XIcon"
+                remixicon="RiCloseLine"
+              />
+              <span className="sr-only">Close</span>
+            </SheetClose>
+          )}
+        </SheetPrimitive>
+      </ModalPrimitive>
+    </SheetOverlay>
   )
 }
 
@@ -39,43 +125,19 @@ function SheetContent({
   side = "right",
   showCloseButton = true,
   ...props
-}: SheetPrimitive.Popup.Props & {
+}: React.ComponentProps<typeof Sheet> & {
   side?: "top" | "right" | "bottom" | "left"
   showCloseButton?: boolean
 }) {
   return (
-    <SheetPortal>
-      <SheetOverlay />
-      <SheetPrimitive.Popup
-        data-slot="sheet-content"
-        data-side={side}
-        className={cn("cn-sheet-content", className)}
-        {...props}
-      >
-        {children}
-        {showCloseButton && (
-          <SheetPrimitive.Close
-            data-slot="sheet-close"
-            render={
-              <Button
-                variant="ghost"
-                className="cn-sheet-close"
-                size="icon-sm"
-              />
-            }
-          >
-            <IconPlaceholder
-              lucide="XIcon"
-              tabler="IconX"
-              hugeicons="Cancel01Icon"
-              phosphor="XIcon"
-              remixicon="RiCloseLine"
-            />
-            <span className="sr-only">Close</span>
-          </SheetPrimitive.Close>
-        )}
-      </SheetPrimitive.Popup>
-    </SheetPortal>
+    <Sheet
+      className={className}
+      side={side}
+      showCloseButton={showCloseButton}
+      {...props}
+    >
+      {children}
+    </Sheet>
   )
 }
 
@@ -99,9 +161,13 @@ function SheetFooter({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
-function SheetTitle({ className, ...props }: SheetPrimitive.Title.Props) {
+function SheetTitle({
+  className,
+  ...props
+}: Omit<React.ComponentProps<typeof Heading>, "slot">) {
   return (
-    <SheetPrimitive.Title
+    <Heading
+      slot="title"
       data-slot="sheet-title"
       className={cn("cn-sheet-title", className)}
       {...props}
@@ -112,9 +178,9 @@ function SheetTitle({ className, ...props }: SheetPrimitive.Title.Props) {
 function SheetDescription({
   className,
   ...props
-}: SheetPrimitive.Description.Props) {
+}: Omit<React.ComponentProps<"div">, "slot">) {
   return (
-    <SheetPrimitive.Description
+    <div
       data-slot="sheet-description"
       className={cn("cn-sheet-description", className)}
       {...props}
@@ -132,3 +198,5 @@ export {
   SheetTitle,
   SheetDescription,
 }
+
+export type { SheetPrimitiveProps, SheetTriggerPrimitiveProps }

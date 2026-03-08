@@ -8,7 +8,6 @@ import { Input } from "@/registry/bases/react-aria/ui/input"
 import {
   Sheet,
   SheetClose,
-  SheetContent,
   SheetDescription,
   SheetFooter,
   SheetHeader,
@@ -29,9 +28,9 @@ export default function SheetExample() {
 function SheetWithForm() {
   return (
     <Example title="With Form">
-      <Sheet>
-        <SheetTrigger render={<Button variant="outline" />}>Open</SheetTrigger>
-        <SheetContent>
+      <SheetTrigger>
+        <Button variant="outline">Open</Button>
+        <Sheet>
           <SheetHeader>
             <SheetTitle>Edit profile</SheetTitle>
             <SheetDescription>
@@ -53,10 +52,10 @@ function SheetWithForm() {
           </div>
           <SheetFooter>
             <Button type="submit">Save changes</Button>
-            <SheetClose render={<Button variant="outline" />}>Close</SheetClose>
+            <SheetClose variant="outline">Close</SheetClose>
           </SheetFooter>
-        </SheetContent>
-      </Sheet>
+        </Sheet>
+      </SheetTrigger>
     </Example>
   )
 }
@@ -64,11 +63,11 @@ function SheetWithForm() {
 function SheetNoCloseButton() {
   return (
     <Example title="No Close Button">
-      <Sheet>
-        <SheetTrigger render={<Button variant="outline" />}>
+      <SheetTrigger>
+        <Button variant="outline">
           No Close Button
-        </SheetTrigger>
-        <SheetContent showCloseButton={false}>
+        </Button>
+        <Sheet showCloseButton={false}>
           <SheetHeader>
             <SheetTitle>No Close Button</SheetTitle>
             <SheetDescription>
@@ -76,8 +75,8 @@ function SheetNoCloseButton() {
               corner. You can only close it using the button below.
             </SheetDescription>
           </SheetHeader>
-        </SheetContent>
-      </Sheet>
+        </Sheet>
+      </SheetTrigger>
     </Example>
   )
 }
@@ -89,13 +88,11 @@ function SheetWithSides() {
     <Example title="Sides">
       <div className="flex flex-wrap gap-2">
         {SHEET_SIDES.map((side) => (
-          <Sheet key={side}>
-            <SheetTrigger
-              render={<Button variant="outline" className="capitalize" />}
-            >
+          <SheetTrigger key={side}>
+            <Button variant="outline" className="capitalize">
               {side}
-            </SheetTrigger>
-            <SheetContent
+            </Button>
+            <Sheet
               side={side}
               className="data-[side=bottom]:max-h-[50vh] data-[side=top]:max-h-[50vh]"
             >
@@ -125,12 +122,12 @@ function SheetWithSides() {
               </div>
               <SheetFooter>
                 <Button type="submit">Save changes</Button>
-                <SheetClose render={<Button variant="outline" />}>
+                <SheetClose variant="outline">
                   Cancel
                 </SheetClose>
               </SheetFooter>
-            </SheetContent>
-          </Sheet>
+            </Sheet>
+          </SheetTrigger>
         ))}
       </div>
     </Example>
