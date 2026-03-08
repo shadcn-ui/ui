@@ -1,5 +1,11 @@
 # @shadcn/ui
 
+## 4.0.2
+
+### Patch Changes
+
+- [#9903](https://github.com/shadcn-ui/ui/pull/9903) [`f5ac4a0d2aa5af87202f67558a4b9b8f92c00bd2`](https://github.com/shadcn-ui/ui/commit/f5ac4a0d2aa5af87202f67558a4b9b8f92c00bd2) Thanks [@shadcn](https://github.com/shadcn)! - scaffold templates from github remote
+
 ## 4.0.1
 
 ### Patch Changes
