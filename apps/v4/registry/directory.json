@@ -987,4 +987,12 @@
     "description": "Beautiful, interactive React + Tailwind components for modern product UIs.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='120 120 272 272' fill='currentColor'><path d='M120 160Q120 120 160 120H260Q300 120 300 160V220H352Q392 220 392 260V352Q392 392 352 392H260Q220 392 220 352V292H160Q120 292 120 252Z'/></svg>"
   }
+  {                                                                                                                                                     
+    "name": "@paletteui",                                                                                                                               
+    "homepage": "https://paletteui.xyz",                                                                                                                
+    "url": "https://paletteui.xyz/r/{name}.json",                                                                                                       
+    "description": "Curated OKLCH color themes for shadcn/ui + visual theme editor with CSS, Tailwind v4, and Figma export.",                        
+    "logo": "<svg width='16' height='16' viewBox='0 0 72 72' xmlns='http://www.w3.org/2000/svg'><path fill='currentColor' d='M36,45 v-36 a28,28 0 0 0 0 
+  56 z'/><circle cx='36' cy='36' r='28' fill='none' stroke='currentColor' stroke-linejoin='round' stroke-width='3'/></svg>"                             
+  }
 ]
