@@ -783,7 +783,11 @@ async function buildTemplates() {
             templatesDir,
             name,
           ],
-          { cwd: process.cwd(), stdio: "pipe" }
+          {
+            cwd: process.cwd(),
+            stdio: "pipe",
+            env: { ...process.env, COPYFILE_DISABLE: "1" },
+          }
         )
         let stderr = ""
         proc.stderr?.on("data", (data) => (stderr += data))
