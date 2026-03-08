@@ -5,7 +5,6 @@ import {
 import { Button } from "@/registry/bases/react-aria/ui/button"
 import {
   Dialog,
-  DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
@@ -67,11 +66,11 @@ function HoverCardSides() {
 function HoverCardInDialog() {
   return (
     <Example title="In Dialog">
-      <Dialog>
-        <DialogTrigger render={<Button variant="outline" />}>
+      <DialogTrigger>
+        <Button variant="outline">
           Open Dialog
-        </DialogTrigger>
-        <DialogContent>
+        </Button>
+        <Dialog>
           <DialogHeader>
             <DialogTitle>Hover Card Example</DialogTitle>
             <DialogDescription>
@@ -96,8 +95,8 @@ function HoverCardInDialog() {
               </div>
             </HoverCardContent>
           </HoverCard>
-        </DialogContent>
-      </Dialog>
+        </Dialog>
+      </DialogTrigger>
     </Example>
   )
 }

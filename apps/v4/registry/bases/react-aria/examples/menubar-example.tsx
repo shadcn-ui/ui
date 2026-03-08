@@ -9,7 +9,6 @@ import {
 import { Button } from "@/registry/bases/react-aria/ui/button"
 import {
   Dialog,
-  DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
@@ -601,11 +600,11 @@ function MenubarDestructive() {
 function MenubarInDialog() {
   return (
     <Example title="In Dialog">
-      <Dialog>
-        <DialogTrigger render={<Button variant="outline" />}>
+      <DialogTrigger>
+        <Button variant="outline">
           Open Dialog
-        </DialogTrigger>
-        <DialogContent>
+        </Button>
+        <Dialog>
           <DialogHeader>
             <DialogTitle>Menubar Example</DialogTitle>
             <DialogDescription>
@@ -682,8 +681,8 @@ function MenubarInDialog() {
               </MenubarContent>
             </MenubarMenu>
           </Menubar>
-        </DialogContent>
-      </Dialog>
+        </Dialog>
+      </DialogTrigger>
     </Example>
   )
 }

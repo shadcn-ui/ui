@@ -31,7 +31,6 @@ import {
 import {
   Dialog,
   DialogClose,
-  DialogContent,
   DialogDescription,
   DialogFooter,
   DialogHeader,
@@ -596,11 +595,11 @@ const agentFeatures = [
 function ActivateAgentDialog() {
   return (
     <Example title="Activate Agent" className="items-center justify-center">
-      <Dialog>
-        <DialogTrigger render={<Button variant="outline" />}>
+      <DialogTrigger>
+        <Button variant="outline">
           Activate Agent
-        </DialogTrigger>
-        <DialogContent showCloseButton={false}>
+        </Button>
+        <Dialog showCloseButton={false}>
           <DialogHeader>
             <DialogTitle>Ship faster & safer with Vercel Agent</DialogTitle>
             <DialogDescription>
@@ -645,13 +644,13 @@ function ActivateAgentDialog() {
             </Alert>
           </div>
           <DialogFooter>
-            <DialogClose render={<Button variant="outline" />}>
+            <DialogClose variant="outline">
               Cancel
             </DialogClose>
             <Button>Enable with $100 credits</Button>
           </DialogFooter>
-        </DialogContent>
-      </Dialog>
+        </Dialog>
+      </DialogTrigger>
     </Example>
   )
 }

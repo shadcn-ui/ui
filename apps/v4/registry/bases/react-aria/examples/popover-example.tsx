@@ -5,7 +5,6 @@ import {
 import { Button } from "@/registry/bases/react-aria/ui/button"
 import {
   Dialog,
-  DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
@@ -162,11 +161,11 @@ function PopoverAlignments() {
 function PopoverInDialog() {
   return (
     <Example title="In Dialog">
-      <Dialog>
-        <DialogTrigger render={<Button variant="outline" />}>
+      <DialogTrigger>
+        <Button variant="outline">
           Open Dialog
-        </DialogTrigger>
-        <DialogContent>
+        </Button>
+        <Dialog>
           <DialogHeader>
             <DialogTitle>Popover Example</DialogTitle>
             <DialogDescription>
@@ -187,8 +186,8 @@ function PopoverInDialog() {
               </PopoverHeader>
             </Popover>
           </PopoverTrigger>
-        </DialogContent>
-      </Dialog>
+        </Dialog>
+      </DialogTrigger>
     </Example>
   )
 }

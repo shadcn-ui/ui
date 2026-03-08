@@ -14,7 +14,6 @@ import {
 import { Button } from "@/registry/bases/react-aria/ui/button"
 import {
   Dialog,
-  DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
@@ -660,11 +659,11 @@ function DropdownMenuWithAvatar() {
 function DropdownMenuInDialog() {
   return (
     <Example title="In Dialog">
-      <Dialog>
-        <DialogTrigger render={<Button variant="outline" />}>
+      <DialogTrigger>
+        <Button variant="outline">
           Open Dialog
-        </DialogTrigger>
-        <DialogContent>
+        </Button>
+        <Dialog>
           <DialogHeader>
             <DialogTitle>Dropdown Menu Example</DialogTitle>
             <DialogDescription>
@@ -734,8 +733,8 @@ function DropdownMenuInDialog() {
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
-        </DialogContent>
-      </Dialog>
+        </Dialog>
+      </DialogTrigger>
     </Example>
   )
 }

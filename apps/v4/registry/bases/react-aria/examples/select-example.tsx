@@ -7,7 +7,6 @@ import {
 import { Button } from "@/registry/bases/react-aria/ui/button"
 import {
   Dialog,
-  DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
@@ -691,11 +690,11 @@ function SelectInDialog() {
   ]
   return (
     <Example title="In Dialog">
-      <Dialog>
-        <DialogTrigger render={<Button variant="outline" />}>
+      <DialogTrigger>
+        <Button variant="outline">
           Open Dialog
-        </DialogTrigger>
-        <DialogContent>
+        </Button>
+        <Dialog>
           <DialogHeader>
             <DialogTitle>Select Example</DialogTitle>
             <DialogDescription>
@@ -716,8 +715,8 @@ function SelectInDialog() {
               </SelectGroup>
             </SelectContent>
           </Select>
-        </DialogContent>
-      </Dialog>
+        </Dialog>
+      </DialogTrigger>
     </Example>
   )
 }

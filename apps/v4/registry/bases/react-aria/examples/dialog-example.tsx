@@ -11,7 +11,6 @@ import { Checkbox } from "@/registry/bases/react-aria/ui/checkbox"
 import {
   Dialog,
   DialogClose,
-  DialogContent,
   DialogDescription,
   DialogFooter,
   DialogHeader,
@@ -79,12 +78,12 @@ export default function DialogExample() {
 function DialogWithForm() {
   return (
     <Example title="With Form" className="items-center justify-center">
-      <Dialog>
+      <DialogTrigger>
         <form>
-          <DialogTrigger render={<Button variant="outline" />}>
+          <Button variant="outline">
             Edit Profile
-          </DialogTrigger>
-          <DialogContent>
+          </Button>
+          <Dialog>
             <DialogHeader>
               <DialogTitle>Edit profile</DialogTitle>
               <DialogDescription>
@@ -107,14 +106,14 @@ function DialogWithForm() {
               </Field>
             </FieldGroup>
             <DialogFooter>
-              <DialogClose render={<Button variant="outline" />}>
+              <DialogClose variant="outline">
                 Cancel
               </DialogClose>
               <Button type="submit">Save changes</Button>
             </DialogFooter>
-          </DialogContent>
+          </Dialog>
         </form>
-      </Dialog>
+      </DialogTrigger>
     </Example>
   )
 }
@@ -122,11 +121,11 @@ function DialogWithForm() {
 function DialogScrollableContent() {
   return (
     <Example title="Scrollable Content" className="items-center justify-center">
-      <Dialog>
-        <DialogTrigger render={<Button variant="outline" />}>
+      <DialogTrigger>
+        <Button variant="outline">
           Scrollable Content
-        </DialogTrigger>
-        <DialogContent>
+        </Button>
+        <Dialog>
           <DialogHeader>
             <DialogTitle>Scrollable Content</DialogTitle>
             <DialogDescription>
@@ -149,8 +148,8 @@ function DialogScrollableContent() {
               </p>
             ))}
           </div>
-        </DialogContent>
-      </Dialog>
+        </Dialog>
+      </DialogTrigger>
     </Example>
   )
 }
@@ -158,11 +157,11 @@ function DialogScrollableContent() {
 function DialogWithStickyFooter() {
   return (
     <Example title="With Sticky Footer" className="items-center justify-center">
-      <Dialog>
-        <DialogTrigger render={<Button variant="outline" />}>
+      <DialogTrigger>
+        <Button variant="outline">
           Sticky Footer
-        </DialogTrigger>
-        <DialogContent>
+        </Button>
+        <Dialog>
           <DialogHeader>
             <DialogTitle>Scrollable Content</DialogTitle>
             <DialogDescription>
@@ -186,12 +185,12 @@ function DialogWithStickyFooter() {
             ))}
           </div>
           <DialogFooter>
-            <DialogClose render={<Button variant="outline" />}>
+            <DialogClose variant="outline">
               Close
             </DialogClose>
           </DialogFooter>
-        </DialogContent>
-      </Dialog>
+        </Dialog>
+      </DialogTrigger>
     </Example>
   )
 }
@@ -199,11 +198,11 @@ function DialogWithStickyFooter() {
 function DialogNoCloseButton() {
   return (
     <Example title="No Close Button" className="items-center justify-center">
-      <Dialog>
-        <DialogTrigger render={<Button variant="outline" />}>
+      <DialogTrigger>
+        <Button variant="outline">
           No Close Button
-        </DialogTrigger>
-        <DialogContent showCloseButton={false}>
+        </Button>
+        <Dialog showCloseButton={false}>
           <DialogHeader>
             <DialogTitle>No Close Button</DialogTitle>
             <DialogDescription>
@@ -212,12 +211,12 @@ function DialogNoCloseButton() {
             </DialogDescription>
           </DialogHeader>
           <DialogFooter>
-            <DialogClose render={<Button variant="outline" />}>
+            <DialogClose variant="outline">
               Close
             </DialogClose>
           </DialogFooter>
-        </DialogContent>
-      </Dialog>
+        </Dialog>
+      </DialogTrigger>
     </Example>
   )
 }
@@ -278,11 +277,11 @@ function DialogChatSettings() {
 
   return (
     <Example title="Chat Settings" className="items-center justify-center">
-      <Dialog>
-        <DialogTrigger render={<Button variant="outline" />}>
+      <DialogTrigger>
+        <Button variant="outline">
           Chat Settings
-        </DialogTrigger>
-        <DialogContent className="min-w-md">
+        </Button>
+        <Dialog className="min-w-md">
           <DialogHeader>
             <DialogTitle>Chat Settings</DialogTitle>
             <DialogDescription>
@@ -597,8 +596,8 @@ function DialogChatSettings() {
               </div>
             </Tabs>
           </div>
-        </DialogContent>
-      </Dialog>
+        </Dialog>
+      </DialogTrigger>
     </Example>
   )
 }

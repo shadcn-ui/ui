@@ -29,7 +29,6 @@ import {
 } from "@/registry/bases/react-aria/ui/combobox"
 import {
   Dialog,
-  DialogContent,
   DialogDescription,
   DialogFooter,
   DialogHeader,
@@ -1169,11 +1168,11 @@ function ComboboxInDialog() {
 
   return (
     <Example title="Combobox in Dialog">
-      <Dialog open={open} onOpenChange={setOpen}>
-        <DialogTrigger render={<Button variant="outline" />}>
+      <DialogTrigger isOpen={open} onOpenChange={setOpen}>
+        <Button variant="outline">
           Open Dialog
-        </DialogTrigger>
-        <DialogContent className="sm:max-w-[425px]">
+        </Button>
+        <Dialog className="sm:max-w-[425px]">
           <DialogHeader>
             <DialogTitle>Select Framework</DialogTitle>
             <DialogDescription>
@@ -1219,8 +1218,8 @@ function ComboboxInDialog() {
               Confirm
             </Button>
           </DialogFooter>
-        </DialogContent>
-      </Dialog>
+        </Dialog>
+      </DialogTrigger>
     </Example>
   )
 }

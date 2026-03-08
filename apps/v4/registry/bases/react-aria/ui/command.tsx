@@ -6,7 +6,6 @@ import { Command as CommandPrimitive } from "cmdk"
 import { cn } from "@/registry/bases/react-aria/lib/utils"
 import {
   Dialog,
-  DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
@@ -37,31 +36,39 @@ function CommandDialog({
   title = "Command Palette",
   description = "Search for a command to run...",
   children,
+  open,
+  onOpenChange,
   className,
   showCloseButton = false,
   ...props
-}: Omit<React.ComponentProps<typeof Dialog>, "children"> & {
+}: Omit<
+  React.ComponentProps<typeof Dialog>,
+  "children" | "className" | "isOpen" | "onOpenChange"
+> & {
   title?: string
   description?: string
+  open?: boolean
+  onOpenChange?: (isOpen: boolean) => void
   className?: string
   showCloseButton?: boolean
   children: React.ReactNode
 }) {
   return (
-    <Dialog {...props}>
+    <Dialog
+      isOpen={open}
+      onOpenChange={onOpenChange}
+      className={cn(
+        "cn-command-dialog top-1/3 translate-y-0 overflow-hidden p-0",
+        className
+      )}
+      showCloseButton={showCloseButton}
+      {...props}
+    >
       <DialogHeader className="sr-only">
         <DialogTitle>{title}</DialogTitle>
         <DialogDescription>{description}</DialogDescription>
       </DialogHeader>
-      <DialogContent
-        className={cn(
-          "cn-command-dialog top-1/3 translate-y-0 overflow-hidden p-0",
-          className
-        )}
-        showCloseButton={showCloseButton}
-      >
-        {children}
-      </DialogContent>
+      {children}
     </Dialog>
   )
 }
@@ -75,6 +82,7 @@ function CommandInput({
       <InputGroup className="cn-command-input-group">
         <CommandPrimitive.Input
           data-slot="command-input"
+          autoFocus
           className={cn(
             "cn-command-input outline-hidden disabled:cursor-not-allowed disabled:opacity-50",
             className

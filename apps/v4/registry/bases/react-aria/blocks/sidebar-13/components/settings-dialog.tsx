@@ -13,7 +13,6 @@ import {
 import { Button } from "@/registry/bases/react-aria/ui/button"
 import {
   Dialog,
-  DialogContent,
   DialogDescription,
   DialogTitle,
   DialogTrigger,
@@ -182,9 +181,9 @@ const data = {
 export function SettingsDialog() {
   const [open, setOpen] = React.useState(true)
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger render={<Button size="sm" />}>Open Dialog</DialogTrigger>
-      <DialogContent className="overflow-hidden p-0 md:max-h-[500px] md:max-w-[700px] lg:max-w-[800px]">
+    <DialogTrigger isOpen={open} onOpenChange={setOpen}>
+      <Button size="sm">Open Dialog</Button>
+      <Dialog className="overflow-hidden p-0 md:max-h-[500px] md:max-w-[700px] lg:max-w-[800px]">
         <DialogTitle className="sr-only">Settings</DialogTitle>
         <DialogDescription className="sr-only">
           Customize your settings here.
@@ -239,7 +238,7 @@ export function SettingsDialog() {
             </div>
           </main>
         </SidebarProvider>
-      </DialogContent>
-    </Dialog>
+      </Dialog>
+    </DialogTrigger>
   )
 }

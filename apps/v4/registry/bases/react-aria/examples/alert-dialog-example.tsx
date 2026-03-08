@@ -17,7 +17,6 @@ import {
 import { Button } from "@/registry/bases/react-aria/ui/button"
 import {
   Dialog,
-  DialogContent,
   DialogDescription,
   DialogFooter,
   DialogHeader,
@@ -192,11 +191,11 @@ function AlertDialogDestructive() {
 function AlertDialogInDialog() {
   return (
     <Example title="In Dialog" className="items-center">
-      <Dialog>
-        <DialogTrigger render={<Button variant="outline" />}>
+      <DialogTrigger>
+        <Button variant="outline">
           Open Dialog
-        </DialogTrigger>
-        <DialogContent>
+        </Button>
+        <Dialog>
           <DialogHeader>
             <DialogTitle>Alert Dialog Example</DialogTitle>
             <DialogDescription>
@@ -223,8 +222,8 @@ function AlertDialogInDialog() {
               </AlertDialogContent>
             </AlertDialog>
           </DialogFooter>
-        </DialogContent>
-      </Dialog>
+        </Dialog>
+      </DialogTrigger>
     </Example>
   )
 }

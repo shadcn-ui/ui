@@ -25,7 +25,6 @@ import {
 } from "@/registry/bases/react-aria/ui/context-menu"
 import {
   Dialog,
-  DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
@@ -427,11 +426,11 @@ function ContextMenuWithSides() {
 function ContextMenuInDialog() {
   return (
     <Example title="In Dialog">
-      <Dialog>
-        <DialogTrigger render={<Button variant="outline" />}>
+      <DialogTrigger>
+        <Button variant="outline">
           Open Dialog
-        </DialogTrigger>
-        <DialogContent>
+        </Button>
+        <Dialog>
           <DialogHeader>
             <DialogTitle>Context Menu Example</DialogTitle>
             <DialogDescription>
@@ -505,8 +504,8 @@ function ContextMenuInDialog() {
               </ContextMenuGroup>
             </ContextMenuContent>
           </ContextMenu>
-        </DialogContent>
-      </Dialog>
+        </Dialog>
+      </DialogTrigger>
     </Example>
   )
 }
