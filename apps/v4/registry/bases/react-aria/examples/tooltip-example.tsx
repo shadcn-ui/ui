@@ -6,12 +6,9 @@ import {
 } from "@/registry/bases/react-aria/components/example"
 import { Button } from "@/registry/bases/react-aria/ui/button"
 import { Kbd } from "@/registry/bases/react-aria/ui/kbd"
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/registry/bases/react-aria/ui/tooltip"
+import { Tooltip, TooltipTrigger } from "@/registry/bases/react-aria/ui/tooltip"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
+import {Link} from "react-aria-components"
 
 export default function TooltipExample() {
   return (
@@ -31,14 +28,14 @@ export default function TooltipExample() {
 function TooltipBasic() {
   return (
     <Example title="Basic">
-      <Tooltip>
-        <TooltipTrigger render={<Button variant="outline" className="w-fit" />}>
+      <TooltipTrigger>
+        <Button variant="outline" className="w-fit">
           Show Tooltip
-        </TooltipTrigger>
-        <TooltipContent>
+        </Button>
+        <Tooltip>
           <p>Add to library</p>
-        </TooltipContent>
-      </Tooltip>
+        </Tooltip>
+      </TooltipTrigger>
     </Example>
   )
 }
@@ -57,16 +54,14 @@ function TooltipSides() {
             "inline-end",
           ] as const
         ).map((side) => (
-          <Tooltip key={side}>
-            <TooltipTrigger
-              render={<Button variant="outline" className="w-fit capitalize" />}
-            >
+          <TooltipTrigger key={side}>
+            <Button variant="outline" className="w-fit capitalize">
               {side.replace("-", " ")}
-            </TooltipTrigger>
-            <TooltipContent side={side}>
+            </Button>
+            <Tooltip side={side}>
               <p>Add to library</p>
-            </TooltipContent>
-          </Tooltip>
+            </Tooltip>
+          </TooltipTrigger>
         ))}
       </div>
     </Example>
@@ -76,8 +71,8 @@ function TooltipSides() {
 function TooltipWithIcon() {
   return (
     <Example title="With Icon">
-      <Tooltip>
-        <TooltipTrigger render={<Button variant="ghost" size="icon" />}>
+      <TooltipTrigger>
+        <Button variant="ghost" size="icon">
           <IconPlaceholder
             lucide="InfoIcon"
             tabler="IconInfoCircle"
@@ -86,11 +81,11 @@ function TooltipWithIcon() {
             remixicon="RiInformationLine"
           />
           <span className="sr-only">Info</span>
-        </TooltipTrigger>
-        <TooltipContent>
+        </Button>
+        <Tooltip>
           <p>Additional information</p>
-        </TooltipContent>
-      </Tooltip>
+        </Tooltip>
+      </TooltipTrigger>
     </Example>
   )
 }
@@ -98,15 +93,15 @@ function TooltipWithIcon() {
 function TooltipLongContent() {
   return (
     <Example title="Long Content">
-      <Tooltip>
-        <TooltipTrigger render={<Button variant="outline" className="w-fit" />}>
+      <TooltipTrigger>
+        <Button variant="outline" className="w-fit">
           Show Tooltip
-        </TooltipTrigger>
-        <TooltipContent>
+        </Button>
+        <Tooltip>
           To learn more about how this works, check out the docs. If you have
           any questions, please reach out to us.
-        </TooltipContent>
-      </Tooltip>
+        </Tooltip>
+      </TooltipTrigger>
     </Example>
   )
 }
@@ -114,16 +109,16 @@ function TooltipLongContent() {
 function TooltipDisabled() {
   return (
     <Example title="Disabled">
-      <Tooltip>
-        <TooltipTrigger render={<span className="inline-block w-fit" />}>
+      <TooltipTrigger>
+        <span className="inline-block w-fit">
           <Button variant="outline" isDisabled>
             Disabled
           </Button>
-        </TooltipTrigger>
-        <TooltipContent>
+        </span>
+        <Tooltip>
           <p>This feature is currently unavailable</p>
-        </TooltipContent>
-      </Tooltip>
+        </Tooltip>
+      </TooltipTrigger>
     </Example>
   )
 }
@@ -131,8 +126,8 @@ function TooltipDisabled() {
 function TooltipWithKeyboard() {
   return (
     <Example title="With Keyboard Shortcut">
-      <Tooltip>
-        <TooltipTrigger render={<Button variant="outline" size="icon-sm" />}>
+      <TooltipTrigger>
+        <Button variant="outline" size="icon-sm">
           <IconPlaceholder
             lucide="SaveIcon"
             tabler="IconDeviceFloppy"
@@ -140,13 +135,13 @@ function TooltipWithKeyboard() {
             phosphor="FloppyDiskIcon"
             remixicon="RiSaveLine"
           />
-        </TooltipTrigger>
-        <TooltipContent className="pr-1.5">
+        </Button>
+        <Tooltip className="pr-1.5">
           <div className="flex items-center gap-2">
             Save Changes <Kbd>S</Kbd>
           </div>
-        </TooltipContent>
-      </Tooltip>
+        </Tooltip>
+      </TooltipTrigger>
     </Example>
   )
 }
@@ -154,22 +149,18 @@ function TooltipWithKeyboard() {
 function TooltipOnLink() {
   return (
     <Example title="On Link">
-      <Tooltip>
-        <TooltipTrigger
-          render={
-            <a
-              href="#"
-              className="w-fit text-sm text-primary underline-offset-4 hover:underline"
-              onClick={(e) => e.preventDefault()}
-            />
-          }
+      <TooltipTrigger>
+        <Link
+          href="#"
+          className="w-fit text-sm text-primary underline-offset-4 hover:underline"
+          onClick={(e) => e.preventDefault()}
         >
           Learn more
-        </TooltipTrigger>
-        <TooltipContent>
+        </Link>
+        <Tooltip>
           <p>Click to read the documentation</p>
-        </TooltipContent>
-      </Tooltip>
+        </Tooltip>
+      </TooltipTrigger>
     </Example>
   )
 }
@@ -177,17 +168,17 @@ function TooltipOnLink() {
 function TooltipFormatted() {
   return (
     <Example title="Formatted Content">
-      <Tooltip>
-        <TooltipTrigger render={<Button variant="outline" className="w-fit" />}>
+      <TooltipTrigger>
+        <Button variant="outline" className="w-fit">
           Status
-        </TooltipTrigger>
-        <TooltipContent>
+        </Button>
+        <Tooltip>
           <div className="flex flex-col gap-1">
             <p className="font-semibold">Active</p>
             <p className="text-xs opacity-80">Last updated 2 hours ago</p>
           </div>
-        </TooltipContent>
-      </Tooltip>
+        </Tooltip>
+      </TooltipTrigger>
     </Example>
   )
 }

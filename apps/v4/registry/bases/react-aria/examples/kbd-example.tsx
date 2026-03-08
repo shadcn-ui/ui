@@ -9,11 +9,7 @@ import {
   InputGroupInput,
 } from "@/registry/bases/react-aria/ui/input-group"
 import { Kbd, KbdGroup } from "@/registry/bases/react-aria/ui/kbd"
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/registry/bases/react-aria/ui/tooltip"
+import { Tooltip, TooltipTrigger } from "@/registry/bases/react-aria/ui/tooltip"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function KbdExample() {
@@ -161,8 +157,8 @@ function KbdInInputGroup() {
 function KbdInTooltip() {
   return (
     <Example title="Tooltip">
-      <Tooltip>
-        <TooltipTrigger render={<Button size="icon-sm" variant="outline" />}>
+      <TooltipTrigger>
+        <Button size="icon-sm" variant="outline">
           <IconPlaceholder
             lucide="SaveIcon"
             tabler="IconDeviceFloppy"
@@ -170,13 +166,13 @@ function KbdInTooltip() {
             phosphor="FloppyDiskIcon"
             remixicon="RiSaveLine"
           />
-        </TooltipTrigger>
-        <TooltipContent className="pr-1.5">
+        </Button>
+        <Tooltip className="pr-1.5">
           <div className="flex items-center gap-2">
             Save Changes <Kbd>S</Kbd>
           </div>
-        </TooltipContent>
-      </Tooltip>
+        </Tooltip>
+      </TooltipTrigger>
     </Example>
   )
 }

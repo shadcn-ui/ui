@@ -35,10 +35,10 @@ import {
 } from "@/registry/bases/react-aria/ui/select"
 import {
   Tooltip,
-  TooltipContent,
   TooltipTrigger,
 } from "@/registry/bases/react-aria/ui/tooltip"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
+import { Focusable } from "react-aria-components"
 
 export default function ButtonGroupExample() {
   return (
@@ -456,18 +456,20 @@ function ButtonGroupNested() {
         <ButtonGroup>
           <InputGroup>
             <InputGroupInput placeholder="Send a message..." />
-            <Tooltip>
-              <TooltipTrigger render={<InputGroupAddon align="inline-end" />}>
-                <IconPlaceholder
-                  lucide="AudioLinesIcon"
-                  tabler="IconHeadphones"
-                  hugeicons="AudioWave01Icon"
-                  phosphor="MicrophoneIcon"
-                  remixicon="RiMicLine"
-                />
-              </TooltipTrigger>
-              <TooltipContent>Voice Mode</TooltipContent>
-            </Tooltip>
+            <TooltipTrigger>
+              <Focusable>
+                <InputGroupAddon align="inline-end" role="button">
+                  <IconPlaceholder
+                    lucide="AudioLinesIcon"
+                    tabler="IconHeadphones"
+                    hugeicons="AudioWave01Icon"
+                    phosphor="MicrophoneIcon"
+                    remixicon="RiMicLine"
+                  />
+                </InputGroupAddon>
+              </Focusable>
+              <Tooltip>Voice Mode</Tooltip>
+            </TooltipTrigger>
           </InputGroup>
         </ButtonGroup>
       </ButtonGroup>

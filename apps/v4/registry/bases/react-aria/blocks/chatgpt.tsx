@@ -68,7 +68,6 @@ import {
 } from "@/registry/bases/react-aria/ui/popover"
 import {
   Tooltip,
-  TooltipContent,
   TooltipTrigger,
 } from "@/registry/bases/react-aria/ui/tooltip"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
@@ -97,18 +96,14 @@ function PromptForm() {
           <InputGroupTextarea id="prompt" placeholder="Ask anything" />
           <InputGroupAddon align="block-end">
             <DropdownMenu>
-              <Tooltip>
-                <TooltipTrigger
+              <TooltipTrigger>
+                <DropdownMenuTrigger
                   render={
-                    <DropdownMenuTrigger
-                      render={
-                        <InputGroupButton
-                          variant="ghost"
-                          size="icon-sm"
-                          onPress={() => setDictateEnabled(!dictateEnabled)}
-                          className="rounded-4xl"
-                        />
-                      }
+                    <InputGroupButton
+                      variant="ghost"
+                      size="icon-sm"
+                      onPress={() => setDictateEnabled(!dictateEnabled)}
+                      className="rounded-4xl"
                     />
                   }
                 >
@@ -119,11 +114,11 @@ function PromptForm() {
                     phosphor="PlusIcon"
                     remixicon="RiAddLine"
                   />
-                </TooltipTrigger>
-                <TooltipContent>
+                </DropdownMenuTrigger>
+                <Tooltip>
                   Add files and more <Kbd>/</Kbd>
-                </TooltipContent>
-              </Tooltip>
+                </Tooltip>
+              </TooltipTrigger>
               <DropdownMenuContent className="w-56">
                 <DropdownMenuGroup>
                   <DropdownMenuItem>
@@ -166,28 +161,24 @@ function PromptForm() {
                     />
                     Create image
                   </DropdownMenuItem>
-                  <Tooltip>
-                    <TooltipTrigger
-                      render={
-                        <DropdownMenuItem>
-                          <IconPlaceholder
-                            lucide="MousePointerIcon"
-                            tabler="IconPointer"
-                            hugeicons="Cursor01Icon"
-                            phosphor="HandPointingIcon"
-                            remixicon="RiHand"
-                          />
-                          Agent mode
-                        </DropdownMenuItem>
-                      }
-                    />
-                    <TooltipContent side="right">
+                  <TooltipTrigger>
+                    <DropdownMenuItem>
+                      <IconPlaceholder
+                        lucide="MousePointerIcon"
+                        tabler="IconPointer"
+                        hugeicons="Cursor01Icon"
+                        phosphor="HandPointingIcon"
+                        remixicon="RiHand"
+                      />
+                      Agent mode
+                    </DropdownMenuItem>
+                    <Tooltip side="right">
                       <div className="font-medium">35 left</div>
                       <div className="text-xs text-primary-foreground/80">
                         More available for purchase
                       </div>
-                    </TooltipContent>
-                  </Tooltip>
+                    </Tooltip>
+                  </TooltipTrigger>
                 </DropdownMenuGroup>
                 <DropdownMenuSub>
                   <DropdownMenuSubTrigger>
@@ -249,16 +240,12 @@ function PromptForm() {
                 </DropdownMenuSub>
               </DropdownMenuContent>
             </DropdownMenu>
-            <Tooltip>
-              <TooltipTrigger
-                render={
-                  <InputGroupButton
-                    variant="ghost"
-                    size="icon-sm"
-                    onPress={() => setDictateEnabled(!dictateEnabled)}
-                    className="ml-auto rounded-4xl"
-                  />
-                }
+            <TooltipTrigger>
+              <InputGroupButton
+                variant="ghost"
+                size="icon-sm"
+                onPress={() => setDictateEnabled(!dictateEnabled)}
+                className="ml-auto rounded-4xl"
               >
                 <IconPlaceholder
                   lucide="AudioLinesIcon"
@@ -267,9 +254,9 @@ function PromptForm() {
                   phosphor="MicrophoneIcon"
                   remixicon="RiMicLine"
                 />
-              </TooltipTrigger>
-              <TooltipContent>Dictate</TooltipContent>
-            </Tooltip>
+              </InputGroupButton>
+              <Tooltip>Dictate</Tooltip>
+            </TooltipTrigger>
             <InputGroupButton
               size="icon-sm"
               variant="default"

@@ -1,31 +1,49 @@
 "use client"
 
-import { Tooltip as TooltipPrimitive } from "@base-ui/react/tooltip"
+import * as React from "react"
+import {
+  OverlayArrow,
+  Tooltip as TooltipPrimitive,
+  TooltipTrigger as TooltipTriggerPrimitive,
+} from "react-aria-components"
 
 import { cn } from "@/registry/bases/react-aria/lib/utils"
 
-function TooltipProvider({
-  delay = 0,
-  ...props
-}: TooltipPrimitive.Provider.Props) {
-  return (
-    <TooltipPrimitive.Provider
-      data-slot="tooltip-provider"
-      delay={delay}
-      {...props}
-    />
-  )
+type TooltipSide =
+  | "top"
+  | "right"
+  | "bottom"
+  | "left"
+  | "inline-start"
+  | "inline-end"
+type TooltipAlign = "start" | "center" | "end"
+
+function getPlacement(side: TooltipSide, align: TooltipAlign) {
+  if (side === "inline-start") {
+    return "start"
+  }
+
+  if (side === "inline-end") {
+    return "end"
+  }
+
+  if (align === "center") {
+    return side
+  }
+
+  if (side === "left" || side === "right") {
+    const crossPlacement = align === "start" ? "top" : "bottom"
+    return `${side} ${crossPlacement}` as const
+  }
+
+  return `${side} ${align}` as const
 }
 
-function Tooltip({ ...props }: TooltipPrimitive.Root.Props) {
-  return <TooltipPrimitive.Root data-slot="tooltip" {...props} />
+function TooltipTrigger({ ...props }: React.ComponentProps<typeof TooltipTriggerPrimitive>) {
+  return <TooltipTriggerPrimitive {...props} />
 }
 
-function TooltipTrigger({ ...props }: TooltipPrimitive.Trigger.Props) {
-  return <TooltipPrimitive.Trigger data-slot="tooltip-trigger" {...props} />
-}
-
-function TooltipContent({
+function Tooltip({
   className,
   side = "top",
   sideOffset = 4,
@@ -33,34 +51,60 @@ function TooltipContent({
   alignOffset = 0,
   children,
   ...props
-}: TooltipPrimitive.Popup.Props &
-  Pick<
-    TooltipPrimitive.Positioner.Props,
-    "align" | "alignOffset" | "side" | "sideOffset"
-  >) {
+}: Omit<
+  React.ComponentProps<typeof TooltipPrimitive>,
+  "children" | "className" | "placement" | "offset" | "crossOffset"
+> & {
+  className?: string
+  children?: React.ReactNode
+  side?: TooltipSide
+  sideOffset?: number
+  align?: TooltipAlign
+  alignOffset?: number
+}) {
   return (
-    <TooltipPrimitive.Portal>
-      <TooltipPrimitive.Positioner
-        align={align}
-        alignOffset={alignOffset}
-        side={side}
-        sideOffset={sideOffset}
-        className="isolate z-50"
-      >
-        <TooltipPrimitive.Popup
-          data-slot="tooltip-content"
-          className={cn(
-            "cn-tooltip-content cn-tooltip-content-logical z-50 w-fit max-w-xs origin-(--transform-origin) bg-foreground text-background",
-            className
-          )}
+    <TooltipPrimitive
+      data-slot="tooltip-content"
+      placement={getPlacement(side, align)}
+      offset={sideOffset}
+      crossOffset={alignOffset}
+      render={(props, { placement, isEntering, isExiting }) => (
+        <div
           {...props}
-        >
-          {children}
-          <TooltipPrimitive.Arrow className="cn-tooltip-arrow cn-tooltip-arrow-logical z-50 bg-foreground fill-foreground data-[side=bottom]:top-1 data-[side=left]:top-1/2! data-[side=left]:-right-1 data-[side=left]:-translate-y-1/2 data-[side=right]:top-1/2! data-[side=right]:-left-1 data-[side=right]:-translate-y-1/2 data-[side=top]:-bottom-2.5" />
-        </TooltipPrimitive.Popup>
-      </TooltipPrimitive.Positioner>
-    </TooltipPrimitive.Portal>
+          data-side={placement}
+          data-open={isEntering}
+          data-closed={isExiting}
+        />
+      )}
+      className={cn(
+        "cn-tooltip-content cn-tooltip-content-logical z-50 w-fit max-w-xs origin-(--trigger-anchor-point) bg-foreground text-background",
+        className
+      )}
+      {...props}
+    >
+      {children}
+      <OverlayArrow
+        className="cn-tooltip-arrow cn-tooltip-arrow-logical z-50 bg-foreground fill-foreground"
+        style={({placement, defaultStyle}) => ({
+          ...defaultStyle,
+          rotate: "0deg",
+          translate: "0 0",
+          transform: placement === "bottom"
+            ? "translate(-50%, calc(50% + 2px)) rotate(45deg)"
+            : placement === "top"
+            ? "translate(-50%, calc(-50% - 2px)) rotate(45deg)"
+            : placement === "left"
+            ? "translate(calc(-50% - 2px), -50%) rotate(45deg)"
+            : "translate(calc(50% + 2px), -50%) rotate(45deg)",
+        })}
+        render={(props, { placement }) => (
+          <div
+            {...props}
+            data-side={placement} />
+        )}
+      />
+    </TooltipPrimitive>
   )
 }
 
-export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider }
+export { Tooltip, TooltipTrigger }

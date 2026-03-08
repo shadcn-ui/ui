@@ -58,7 +58,6 @@ import {
 import { Textarea } from "@/registry/bases/react-aria/ui/textarea"
 import {
   Tooltip,
-  TooltipContent,
   TooltipTrigger,
 } from "@/registry/bases/react-aria/ui/tooltip"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
@@ -495,10 +494,8 @@ function DialogChatSettings() {
                           className="@md/field-group:max-w-[200px]"
                         />
                         <InputGroupAddon align="inline-end">
-                          <Tooltip>
-                            <TooltipTrigger
-                              render={<InputGroupButton size="icon-xs" />}
-                            >
+                          <TooltipTrigger>
+                            <InputGroupButton size="icon-xs">
                               <IconPlaceholder
                                 lucide="InfoIcon"
                                 tabler="IconInfoCircle"
@@ -506,11 +503,11 @@ function DialogChatSettings() {
                                 phosphor="InfoIcon"
                                 remixicon="RiInformationLine"
                               />
-                            </TooltipTrigger>
-                            <TooltipContent className="flex items-center gap-2">
+                            </InputGroupButton>
+                            <Tooltip className="flex items-center gap-2">
                               Used to identify you in the chat. <Kbd>N</Kbd>
-                            </TooltipContent>
-                          </Tooltip>
+                            </Tooltip>
+                          </TooltipTrigger>
                         </InputGroupAddon>
                       </InputGroup>
                     </Field>

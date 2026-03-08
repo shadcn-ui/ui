@@ -134,7 +134,6 @@ import { Switch } from "@/registry/bases/react-aria/ui/switch"
 import { Textarea } from "@/registry/bases/react-aria/ui/textarea"
 import {
   Tooltip,
-  TooltipContent,
   TooltipTrigger,
 } from "@/registry/bases/react-aria/ui/tooltip"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
@@ -675,15 +674,11 @@ function InputGroupExamples() {
             <InputGroupText>https://</InputGroupText>
           </InputGroupAddon>
           <InputGroupAddon align="inline-end">
-            <Tooltip>
-              <TooltipTrigger
-                render={
-                  <InputGroupButton
-                    className="rounded-full"
-                    size="icon-xs"
-                    aria-label="Info"
-                  />
-                }
+            <TooltipTrigger>
+              <InputGroupButton
+                className="rounded-full"
+                size="icon-xs"
+                aria-label="Info"
               >
                 <IconPlaceholder
                   lucide="InfoIcon"
@@ -692,9 +687,9 @@ function InputGroupExamples() {
                   phosphor="InfoIcon"
                   remixicon="RiInformationLine"
                 />
-              </TooltipTrigger>
-              <TooltipContent>This is content in a tooltip.</TooltipContent>
-            </Tooltip>
+              </InputGroupButton>
+              <Tooltip>This is content in a tooltip.</Tooltip>
+            </TooltipTrigger>
           </InputGroupAddon>
         </InputGroup>
         <Field>
@@ -775,18 +770,14 @@ function InputGroupExamples() {
                 disabled={voiceEnabled}
               />
               <InputGroupAddon align="inline-end">
-                <Tooltip>
-                  <TooltipTrigger
-                    render={
-                      <InputGroupButton
-                        onPress={() => setVoiceEnabled(!voiceEnabled)}
-                        data-active={voiceEnabled}
-                        className="data-[active=true]:bg-primary data-[active=true]:text-primary-foreground"
-                        aria-pressed={voiceEnabled}
-                        size="icon-xs"
-                        aria-label="Voice Mode"
-                      />
-                    }
+                <TooltipTrigger>
+                  <InputGroupButton
+                    onPress={() => setVoiceEnabled(!voiceEnabled)}
+                    data-active={voiceEnabled}
+                    className="data-[active=true]:bg-primary data-[active=true]:text-primary-foreground"
+                    aria-pressed={voiceEnabled}
+                    size="icon-xs"
+                    aria-label="Voice Mode"
                   >
                     <IconPlaceholder
                       lucide="AudioLinesIcon"
@@ -795,9 +786,9 @@ function InputGroupExamples() {
                       phosphor="MicrophoneIcon"
                       remixicon="RiMicLine"
                     />
-                  </TooltipTrigger>
-                  <TooltipContent>Voice Mode</TooltipContent>
-                </Tooltip>
+                  </InputGroupButton>
+                  <Tooltip>Voice Mode</Tooltip>
+                </TooltipTrigger>
               </InputGroupAddon>
             </InputGroup>
           </ButtonGroup>

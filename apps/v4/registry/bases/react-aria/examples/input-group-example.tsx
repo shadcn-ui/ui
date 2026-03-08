@@ -53,7 +53,6 @@ import { Spinner } from "@/registry/bases/react-aria/ui/spinner"
 import { Textarea } from "@/registry/bases/react-aria/ui/textarea"
 import {
   Tooltip,
-  TooltipContent,
   TooltipTrigger,
 } from "@/registry/bases/react-aria/ui/tooltip"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
@@ -370,12 +369,8 @@ function InputGroupWithTooltip({
           <InputGroup>
             <InputGroupInput id="input-tooltip-20" />
             <InputGroupAddon align="inline-end">
-              <Tooltip>
-                <TooltipTrigger
-                  render={
-                    <InputGroupButton className="rounded-full" size="icon-xs" />
-                  }
-                >
+              <TooltipTrigger>
+                <InputGroupButton className="rounded-full" size="icon-xs">
                   <IconPlaceholder
                     lucide="InfoIcon"
                     tabler="IconInfoCircle"
@@ -383,9 +378,9 @@ function InputGroupWithTooltip({
                     phosphor="InfoIcon"
                     remixicon="RiInformationLine"
                   />
-                </TooltipTrigger>
-                <TooltipContent>This is content in a tooltip.</TooltipContent>
-              </Tooltip>
+                </InputGroupButton>
+                <Tooltip>This is content in a tooltip.</Tooltip>
+              </TooltipTrigger>
             </InputGroupAddon>
           </InputGroup>
           <FieldDescription>

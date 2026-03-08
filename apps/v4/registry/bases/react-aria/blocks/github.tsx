@@ -115,7 +115,6 @@ import {
 import { Textarea } from "@/registry/bases/react-aria/ui/textarea"
 import {
   Tooltip,
-  TooltipContent,
   TooltipTrigger,
 } from "@/registry/bases/react-aria/ui/tooltip"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
@@ -153,10 +152,8 @@ function CodespacesCard() {
                   </ItemDescription>
                 </ItemContent>
                 <ItemActions>
-                  <Tooltip>
-                    <TooltipTrigger
-                      render={<Button variant="ghost" size="icon-sm" />}
-                    >
+                  <TooltipTrigger>
+                    <Button variant="ghost" size="icon-sm">
                       <IconPlaceholder
                         lucide="PlusIcon"
                         tabler="IconPlus"
@@ -164,19 +161,15 @@ function CodespacesCard() {
                         phosphor="PlusIcon"
                         remixicon="RiAddLine"
                       />
-                    </TooltipTrigger>
-                    <TooltipContent side="bottom">
+                    </Button>
+                    <Tooltip side="bottom">
                       Create a codespace on main
-                    </TooltipContent>
-                  </Tooltip>
+                    </Tooltip>
+                  </TooltipTrigger>
                   <DropdownMenu>
-                    <Tooltip>
-                      <TooltipTrigger
-                        render={
-                          <DropdownMenuTrigger
-                            render={<Button variant="ghost" size="icon-sm" />}
-                          />
-                        }
+                    <TooltipTrigger>
+                      <DropdownMenuTrigger
+                        render={<Button variant="ghost" size="icon-sm" />}
                       >
                         <IconPlaceholder
                           lucide="MoreHorizontalIcon"
@@ -185,11 +178,11 @@ function CodespacesCard() {
                           phosphor="DotsThreeOutlineIcon"
                           remixicon="RiMoreLine"
                         />
-                      </TooltipTrigger>
-                      <TooltipContent side="bottom">
+                      </DropdownMenuTrigger>
+                      <Tooltip side="bottom">
                         Codespace repository configuration
-                      </TooltipContent>
-                    </Tooltip>
+                      </Tooltip>
+                    </TooltipTrigger>
                     <DropdownMenuContent align="end" className="w-56">
                       <DropdownMenuGroup>
                         <DropdownMenuItem>
@@ -326,10 +319,8 @@ function CodespacesCard() {
                   </ItemTitle>
                 </ItemContent>
                 <ItemActions>
-                  <Tooltip>
-                    <TooltipTrigger
-                      render={<Button variant="ghost" size="icon" />}
-                    >
+                  <TooltipTrigger>
+                    <Button variant="ghost" size="icon">
                       <IconPlaceholder
                         lucide="InfoIcon"
                         tabler="IconInfoCircle"
@@ -337,11 +328,11 @@ function CodespacesCard() {
                         phosphor="InfoIcon"
                         remixicon="RiInformationLine"
                       />
-                    </TooltipTrigger>
-                    <TooltipContent side="left">
+                    </Button>
+                    <Tooltip side="left">
                       Which remote URL should I use?
-                    </TooltipContent>
-                  </Tooltip>
+                    </Tooltip>
+                  </TooltipTrigger>
                 </ItemActions>
               </Item>
               <Tabs defaultSelectedKey="https">
@@ -656,15 +647,11 @@ function RepositoryToolbar() {
                       </Empty>
                     </Popover>
                   </PopoverTrigger>
-                  <Tooltip>
-                    <TooltipTrigger
-                      render={
-                        <InputGroupButton
-                          variant="ghost"
-                          size="icon-sm"
-                          className="ml-auto"
-                        />
-                      }
+                  <TooltipTrigger>
+                    <InputGroupButton
+                      variant="ghost"
+                      size="icon-sm"
+                      className="ml-auto"
                     >
                       <IconPlaceholder
                         lucide="SendIcon"
@@ -673,11 +660,11 @@ function RepositoryToolbar() {
                         phosphor="PaperPlaneTiltIcon"
                         remixicon="RiSendPlaneLine"
                       />
-                    </TooltipTrigger>
-                    <TooltipContent className="flex items-center gap-2 pr-2">
+                    </InputGroupButton>
+                    <Tooltip className="flex items-center gap-2 pr-2">
                       Start Task <Kbd>⏎</Kbd>
-                    </TooltipContent>
-                  </Tooltip>
+                    </Tooltip>
+                  </TooltipTrigger>
                 </InputGroupAddon>
               </InputGroup>
             </Field>
@@ -1285,10 +1272,8 @@ function AssignIssue() {
             Select users to assign to this issue.
           </CardDescription>
           <CardAction>
-            <Tooltip>
-              <TooltipTrigger
-                render={<Button variant="outline" size="icon-xs" />}
-              >
+            <TooltipTrigger>
+              <Button variant="outline" size="icon-xs">
                 <IconPlaceholder
                   lucide="PlusIcon"
                   tabler="IconPlus"
@@ -1296,9 +1281,9 @@ function AssignIssue() {
                   phosphor="PlusIcon"
                   remixicon="RiAddLine"
                 />
-              </TooltipTrigger>
-              <TooltipContent>Add user</TooltipContent>
-            </Tooltip>
+              </Button>
+              <Tooltip>Add user</Tooltip>
+            </TooltipTrigger>
           </CardAction>
         </CardHeader>
         <CardContent>
