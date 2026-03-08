@@ -22,20 +22,6 @@ import { STYLES } from "@/registry/styles"
 // This is used by the v4 site.
 const WHITELISTED_STYLES = ["new-york-v4"]
 
-// Template directories to archive during build.
-const TEMPLATE_NAMES = [
-  "next-app",
-  "vite-app",
-  "react-router-app",
-  "start-app",
-  "astro-app",
-  "next-monorepo",
-  "vite-monorepo",
-  "react-router-monorepo",
-  "start-monorepo",
-  "astro-monorepo",
-]
-
 // Collect paths for batch prettier formatting at the end.
 const prettierPaths: string[] = []
 
@@ -100,9 +86,6 @@ try {
 
   console.log("\n⚙️ Building public/r/config.json...")
   await buildConfig()
-
-  console.log("\n📦 Building public/r/templates...")
-  await buildTemplates()
 
   // Copy UI to examples before cleanup.
   console.log("\n📋 Copying UI to examples...")
@@ -744,65 +727,6 @@ async function batchPrettier(paths: string[]) {
     proc.on("close", () => resolve())
     proc.on("error", reject)
   })
-}
-
-async function buildTemplates() {
-  const templatesDir = path.resolve(process.cwd(), "../../templates")
-  const outputDir = path.join(process.cwd(), "public/r/templates")
-  await fs.mkdir(outputDir, { recursive: true })
-
-  await Promise.all(
-    TEMPLATE_NAMES.map(async (name) => {
-      const templatePath = path.join(templatesDir, name)
-
-      // Verify the template directory exists.
-      try {
-        await fs.access(templatePath)
-      } catch {
-        console.log(`   ⚠️ templates/${name} not found, skipping`)
-        return
-      }
-
-      const outputPath = path.join(outputDir, `${name}.tar.gz`)
-
-      await new Promise<void>((resolve, reject) => {
-        const proc = spawn(
-          "tar",
-          [
-            "-czf",
-            outputPath,
-            "--exclude",
-            "node_modules",
-            "--exclude",
-            ".git",
-            "--exclude",
-            "pnpm-lock.yaml",
-            "-C",
-            templatesDir,
-            name,
-          ],
-          { cwd: process.cwd(), stdio: "pipe" }
-        )
-        let stderr = ""
-        proc.stderr?.on("data", (data) => (stderr += data))
-        proc.on("close", (code) => {
-          if (code !== 0) {
-            reject(new Error(`tar exited with code ${code}: ${stderr}`))
-          } else {
-            resolve()
-          }
-        })
-        proc.on("error", reject)
-      })
-
-      // Zero out the gzip mtime header (bytes 4-7) for deterministic output.
-      const buf = await fs.readFile(outputPath)
-      buf[4] = buf[5] = buf[6] = buf[7] = 0
-      await fs.writeFile(outputPath, buf)
-
-      console.log(`   ✅ ${name}.tar.gz`)
-    })
-  )
 }
 
 async function buildColors() {
