@@ -4,7 +4,7 @@
   "title": "Roboto",
   "type": "registry:font",
   "font": {
-    "family": "'Roboto', sans-serif",
+    "family": "'Roboto Variable', sans-serif",
     "provider": "google",
     "import": "Roboto",
     "variable": "--font-sans",

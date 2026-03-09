@@ -144,7 +144,7 @@ export function TypographyRtl() {
       <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight text-balance">
         {t.title}
       </h1>
-      <p className="text-muted-foreground text-xl leading-7 [&:not(:first-child)]:mt-6">
+      <p className="text-xl leading-7 text-muted-foreground [&:not(:first-child)]:mt-6">
         {t.leadParagraph}
       </p>
       <h2 className="mt-10 scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0">
@@ -154,7 +154,7 @@ export function TypographyRtl() {
         {t.kingThought}{" "}
         <a
           href="#"
-          className="text-primary font-medium underline underline-offset-4"
+          className="font-medium text-primary underline underline-offset-4"
         >
           {t.brilliantPlan}
         </a>
@@ -187,7 +187,7 @@ export function TypographyRtl() {
       <div className="my-6 w-full overflow-y-auto">
         <table className="w-full">
           <thead>
-            <tr className="even:bg-muted m-0 border-t p-0">
+            <tr className="m-0 border-t p-0 even:bg-muted">
               <th className="border px-4 py-2 text-start font-bold">
                 {t.kingsTreasury}
               </th>
@@ -197,15 +197,15 @@ export function TypographyRtl() {
             </tr>
           </thead>
           <tbody>
-            <tr className="even:bg-muted m-0 border-t p-0">
+            <tr className="m-0 border-t p-0 even:bg-muted">
               <td className="border px-4 py-2 text-start">{t.empty}</td>
               <td className="border px-4 py-2 text-start">{t.overflowing}</td>
             </tr>
-            <tr className="even:bg-muted m-0 border-t p-0">
+            <tr className="m-0 border-t p-0 even:bg-muted">
               <td className="border px-4 py-2 text-start">{t.modest}</td>
               <td className="border px-4 py-2 text-start">{t.satisfied}</td>
             </tr>
-            <tr className="even:bg-muted m-0 border-t p-0">
+            <tr className="m-0 border-t p-0 even:bg-muted">
               <td className="border px-4 py-2 text-start">{t.full}</td>
               <td className="border px-4 py-2 text-start">{t.ecstatic}</td>
             </tr>

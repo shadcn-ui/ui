@@ -64,7 +64,7 @@ export const fonts = [
     title: "Roboto",
     type: "registry:font",
     font: {
-      family: "'Roboto', sans-serif",
+      family: "'Roboto Variable', sans-serif",
       provider: "google",
       variable: "--font-sans",
       subsets: ["latin"],
@@ -76,7 +76,7 @@ export const fonts = [
     title: "Raleway",
     type: "registry:font",
     font: {
-      family: "'Raleway', sans-serif",
+      family: "'Raleway Variable', sans-serif",
       provider: "google",
       variable: "--font-sans",
       subsets: ["latin"],
@@ -88,7 +88,7 @@ export const fonts = [
     title: "DM Sans",
     type: "registry:font",
     font: {
-      family: "'DM Sans', sans-serif",
+      family: "'DM Sans Variable', sans-serif",
       provider: "google",
       variable: "--font-sans",
       subsets: ["latin"],
@@ -100,7 +100,7 @@ export const fonts = [
     title: "Public Sans",
     type: "registry:font",
     font: {
-      family: "'Public Sans', sans-serif",
+      family: "'Public Sans Variable', sans-serif",
       provider: "google",
       variable: "--font-sans",
       subsets: ["latin"],
@@ -112,7 +112,7 @@ export const fonts = [
     title: "Outfit",
     type: "registry:font",
     font: {
-      family: "'Outfit', sans-serif",
+      family: "'Outfit Variable', sans-serif",
       provider: "google",
       variable: "--font-sans",
       subsets: ["latin"],
@@ -126,7 +126,7 @@ export const fonts = [
     font: {
       family: "'JetBrains Mono Variable', monospace",
       provider: "google",
-      variable: "--font-sans",
+      variable: "--font-mono",
       subsets: ["latin"],
       import: "JetBrains_Mono",
     },
@@ -141,6 +141,66 @@ export const fonts = [
       variable: "--font-mono",
       subsets: ["latin"],
       import: "Geist_Mono",
+    },
+  },
+  {
+    name: "font-noto-serif",
+    title: "Noto Serif",
+    type: "registry:font",
+    font: {
+      family: "'Noto Serif Variable', serif",
+      provider: "google",
+      variable: "--font-serif",
+      subsets: ["latin"],
+      import: "Noto_Serif",
+    },
+  },
+  {
+    name: "font-roboto-slab",
+    title: "Roboto Slab",
+    type: "registry:font",
+    font: {
+      family: "'Roboto Slab Variable', serif",
+      provider: "google",
+      variable: "--font-serif",
+      subsets: ["latin"],
+      import: "Roboto_Slab",
+    },
+  },
+  {
+    name: "font-merriweather",
+    title: "Merriweather",
+    type: "registry:font",
+    font: {
+      family: "'Merriweather Variable', serif",
+      provider: "google",
+      variable: "--font-serif",
+      subsets: ["latin"],
+      import: "Merriweather",
+    },
+  },
+  {
+    name: "font-lora",
+    title: "Lora",
+    type: "registry:font",
+    font: {
+      family: "'Lora Variable', serif",
+      provider: "google",
+      variable: "--font-serif",
+      subsets: ["latin"],
+      import: "Lora",
+    },
+  },
+  {
+    name: "font-playfair-display",
+    title: "Playfair Display",
+    type: "registry:font",
+    font: {
+      family: "'Playfair Display Variable', serif",
+      provider: "google",
+      variable: "--font-serif",
+      subsets: ["latin"],
+      import: "Playfair_Display",
     },
   },
 ] satisfies RegistryItem[]

@@ -6,25 +6,53 @@ import {
   buildRegistryTheme,
   DEFAULT_CONFIG,
   type DesignSystemConfig,
+  type RadiusValue,
 } from "@/registry/config"
 import { useIframeMessageListener } from "@/app/(create)/hooks/use-iframe-sync"
 import { FONTS } from "@/app/(create)/lib/fonts"
-import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
+import {
+  useDesignSystemSearchParams,
+  type DesignSystemSearchParams,
+} from "@/app/(create)/lib/search-params"
 
 export function DesignSystemProvider({
   children,
 }: {
   children: React.ReactNode
 }) {
-  const [
-    { style, theme, font, baseColor, menuAccent, menuColor, radius },
-    setSearchParams,
-  ] = useDesignSystemSearchParams({
+  const [searchParams, setSearchParams] = useDesignSystemSearchParams({
     shallow: true, // No need to go through the server…
     history: "replace", // …or push updates into the iframe history.
   })
-  useIframeMessageListener("design-system-params", setSearchParams)
+  const [liveSearchParams, setLiveSearchParams] = React.useState(searchParams)
   const [isReady, setIsReady] = React.useState(false)
+  const { style, theme, font, baseColor, menuAccent, menuColor, radius } =
+    liveSearchParams
+  const effectiveRadius = style === "lyra" ? "none" : radius
+
+  React.useEffect(() => {
+    setLiveSearchParams(searchParams)
+  }, [searchParams])
+
+  const handleDesignSystemMessage = React.useCallback(
+    (nextParams: DesignSystemSearchParams) => {
+      setLiveSearchParams(nextParams)
+      setSearchParams(nextParams)
+    },
+    [setSearchParams]
+  )
+
+  useIframeMessageListener("design-system-params", handleDesignSystemMessage)
+
+  React.useEffect(() => {
+    if (style === "lyra" && radius !== "none") {
+      setLiveSearchParams((prev) => ({
+        ...prev,
+        radius: "none",
+      }))
+      setSearchParams({ radius: "none" as RadiusValue })
+    }
+  }, [style, radius, setSearchParams])
 
   // Use useLayoutEffect for synchronous style updates to prevent flash.
   React.useLayoutEffect(() => {
@@ -34,23 +62,20 @@ export function DesignSystemProvider({
 
     const body = document.body
 
-    // Update style class in place (remove old, add new).
-    body.classList.forEach((className) => {
-      if (className.startsWith("style-")) {
+    // Iterate over a snapshot so removals do not affect traversal.
+    Array.from(body.classList).forEach((className) => {
+      if (
+        className.startsWith("style-") ||
+        className.startsWith("base-color-")
+      ) {
         body.classList.remove(className)
       }
     })
-    body.classList.add(`style-${style}`)
-
-    // Update base color class in place.
-    body.classList.forEach((className) => {
-      if (className.startsWith("base-color-")) {
-        body.classList.remove(className)
-      }
-    })
-    body.classList.add(`base-color-${baseColor}`)
+    body.classList.add(`style-${style}`, `base-color-${baseColor}`)
 
     // Update font.
+    // Always set --font-sans for the preview so the selected font is visible.
+    // The font type (sans/serif/mono) is metadata for the CLI updater.
     const selectedFont = FONTS.find((f) => f.value === font)
     if (selectedFont) {
       const fontFamily = selectedFont.font.style.fontFamily
@@ -61,7 +86,7 @@ export function DesignSystemProvider({
   }, [style, theme, font, baseColor])
 
   const registryTheme = React.useMemo(() => {
-    if (!baseColor || !theme || !menuAccent || !radius) {
+    if (!baseColor || !theme || !menuAccent || !effectiveRadius) {
       return null
     }
 
@@ -70,11 +95,11 @@ export function DesignSystemProvider({
       baseColor,
       theme,
       menuAccent,
-      radius,
+      radius: effectiveRadius,
     }
 
     return buildRegistryTheme(config)
-  }, [baseColor, theme, menuAccent, radius])
+  }, [baseColor, theme, menuAccent, effectiveRadius])
 
   // Use useLayoutEffect for synchronous CSS var updates.
   React.useLayoutEffect(() => {
