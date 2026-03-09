@@ -14,6 +14,7 @@ import {
   type DayButton,
   type Locale,
 } from "react-day-picker"
+import "react-day-picker/style.css"
 
 function Calendar({
   className,
