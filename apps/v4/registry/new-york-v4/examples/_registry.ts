@@ -987,6 +987,18 @@ export const examples: Registry["items"] = [
     dependencies: ["react-hook-form", "@hookform/resolvers", "zod"],
   },
   {
+    name: "form-rhf-combobox",
+    type: "registry:example",
+    registryDependencies: ["field", "combobox", "button", "card"],
+    files: [
+      {
+        path: "examples/form-rhf-combobox.tsx",
+        type: "registry:example",
+      },
+    ],
+    dependencies: ["react-hook-form", "@hookform/resolvers", "zod"],
+  },
+  {
     name: "form-rhf-checkbox",
     type: "registry:example",
     registryDependencies: ["field", "checkbox", "button", "card"],
