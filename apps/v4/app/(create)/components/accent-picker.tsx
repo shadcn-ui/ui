@@ -82,6 +82,11 @@ export function MenuAccentPicker({
                   key={accent.value}
                   value={accent.value}
                   closeOnClick={isMobile}
+                  disabled={
+                    accent.value === "bold" &&
+                    (params.menuColor === "translucent" ||
+                      params.menuColor === "translucent-inverted")
+                  }
                 >
                   {accent.label}
                 </PickerRadioItem>

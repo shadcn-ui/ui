@@ -312,6 +312,208 @@ export function Component() {
     `)
   })
 
+  describe("menuColor is translucent", () => {
+    test("inlines cn-menu-translucent styles from style map", async () => {
+      expect(
+        await transform(
+          {
+            filename: "test.tsx",
+            raw: `import * as React from "react"
+
+export function Component() {
+  return <div className="cn-menu-target cn-menu-translucent p-4">Content</div>
+}`,
+            config: {
+              ...testConfig,
+              menuColor: "translucent",
+            },
+            styleMap: {
+              "cn-menu-translucent": "relative bg-popover/80 backdrop-blur-2xl",
+            },
+          },
+          [transformMenu]
+        )
+      ).toMatchInlineSnapshot(`
+        "import * as React from "react"
+
+        export function Component() {
+          return <div className="relative bg-popover/80 backdrop-blur-2xl p-4">Content</div>
+        }"
+      `)
+    })
+
+    test("inlines cn-menu-translucent styles in cn() call", async () => {
+      expect(
+        await transform(
+          {
+            filename: "test.tsx",
+            raw: `import * as React from "react"
+
+export function Component() {
+  return <div className={cn("cn-menu-target cn-menu-translucent", "p-4")}>Content</div>
+}`,
+            config: {
+              ...testConfig,
+              menuColor: "translucent",
+            },
+            styleMap: {
+              "cn-menu-translucent": "relative bg-popover/80 backdrop-blur-2xl",
+            },
+          },
+          [transformMenu]
+        )
+      ).toMatchInlineSnapshot(`
+        "import * as React from "react"
+
+        export function Component() {
+          return <div className={cn("relative bg-popover/80 backdrop-blur-2xl","p-4")}>Content</div>
+        }"
+      `)
+    })
+
+    test("keeps cn-menu-translucent when no style map is provided", async () => {
+      expect(
+        await transform(
+          {
+            filename: "test.tsx",
+            raw: `import * as React from "react"
+
+export function Component() {
+  return <div className="cn-menu-target cn-menu-translucent p-4">Content</div>
+}`,
+            config: {
+              ...testConfig,
+              menuColor: "translucent",
+            },
+          },
+          [transformMenu]
+        )
+      ).toMatchInlineSnapshot(`
+        "import * as React from "react"
+
+        export function Component() {
+          return <div className="cn-menu-translucent p-4">Content</div>
+        }"
+      `)
+    })
+  })
+
+  describe("menuColor is translucent-inverted", () => {
+    test("replaces cn-menu-target with dark and inlines cn-menu-translucent", async () => {
+      expect(
+        await transform(
+          {
+            filename: "test.tsx",
+            raw: `import * as React from "react"
+
+export function Component() {
+  return <div className="cn-menu-target cn-menu-translucent p-4">Content</div>
+}`,
+            config: {
+              ...testConfig,
+              menuColor: "translucent-inverted",
+            },
+            styleMap: {
+              "cn-menu-translucent": "relative bg-popover/80 backdrop-blur-2xl",
+            },
+          },
+          [transformMenu]
+        )
+      ).toMatchInlineSnapshot(`
+        "import * as React from "react"
+
+        export function Component() {
+          return <div className="dark relative bg-popover/80 backdrop-blur-2xl p-4">Content</div>
+        }"
+      `)
+    })
+
+    test("replaces cn-menu-target with dark and inlines cn-menu-translucent in cn() call", async () => {
+      expect(
+        await transform(
+          {
+            filename: "test.tsx",
+            raw: `import * as React from "react"
+
+export function Component() {
+  return <div className={cn("cn-menu-target cn-menu-translucent", "p-4")}>Content</div>
+}`,
+            config: {
+              ...testConfig,
+              menuColor: "translucent-inverted",
+            },
+            styleMap: {
+              "cn-menu-translucent": "relative bg-popover/80 backdrop-blur-2xl",
+            },
+          },
+          [transformMenu]
+        )
+      ).toMatchInlineSnapshot(`
+        "import * as React from "react"
+
+        export function Component() {
+          return <div className={cn("dark relative bg-popover/80 backdrop-blur-2xl", "p-4")}>Content</div>
+        }"
+      `)
+    })
+  })
+
+  describe("menuColor is inverted removes cn-menu-translucent", () => {
+    test("replaces cn-menu-target with dark and removes cn-menu-translucent", async () => {
+      expect(
+        await transform(
+          {
+            filename: "test.tsx",
+            raw: `import * as React from "react"
+
+export function Component() {
+  return <div className="cn-menu-target cn-menu-translucent p-4">Content</div>
+}`,
+            config: {
+              ...testConfig,
+              menuColor: "inverted",
+            },
+          },
+          [transformMenu]
+        )
+      ).toMatchInlineSnapshot(`
+        "import * as React from "react"
+
+        export function Component() {
+          return <div className="dark p-4">Content</div>
+        }"
+      `)
+    })
+  })
+
+  describe("menuColor is default removes cn-menu-translucent", () => {
+    test("removes both cn-menu-target and cn-menu-translucent", async () => {
+      expect(
+        await transform(
+          {
+            filename: "test.tsx",
+            raw: `import * as React from "react"
+
+export function Component() {
+  return <div className="cn-menu-target cn-menu-translucent p-4">Content</div>
+}`,
+            config: {
+              ...testConfig,
+              menuColor: "default",
+            },
+          },
+          [transformMenu]
+        )
+      ).toMatchInlineSnapshot(`
+        "import * as React from "react"
+
+        export function Component() {
+          return <div className="p-4">Content</div>
+        }"
+      `)
+    })
+  })
+
   test("preserves semicolons", async () => {
     expect(
       await transform(

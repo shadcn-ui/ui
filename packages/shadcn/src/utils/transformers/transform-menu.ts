@@ -1,16 +1,28 @@
 import { Transformer } from "@/src/utils/transformers"
 import { SyntaxKind } from "ts-morph"
 
-// Transforms cn-menu-target class based on config.menuColor.
-// If menuColor is "inverted", replaces cn-menu-target with "dark".
-// Otherwise, removes cn-menu-target entirely.
-export const transformMenu: Transformer = async ({ sourceFile, config }) => {
+// Transforms cn-menu-target and cn-menu-translucent classes based on config.menuColor.
+// If menuColor is "inverted", replaces cn-menu-target with "dark" and removes cn-menu-translucent.
+// If menuColor is "translucent", removes cn-menu-target and inlines cn-menu-translucent styles.
+// If menuColor is "translucent-inverted", replaces cn-menu-target with "dark" and inlines cn-menu-translucent styles.
+// Otherwise, removes both cn-menu-target and cn-menu-translucent.
+export const transformMenu: Transformer = async ({
+  sourceFile,
+  config,
+  styleMap,
+}) => {
   const menuColor = config.menuColor
+  const isTranslucent =
+    menuColor === "translucent" || menuColor === "translucent-inverted"
 
-  // If menuColor is not set or is "default", we remove the placeholder.
-  const replacement = menuColor === "inverted" ? "dark" : ""
+  // Resolve the inlined classes for cn-menu-translucent from the style map.
+  const translucentClasses = isTranslucent
+    ? styleMap?.["cn-menu-translucent"] ?? ""
+    : ""
 
-  for (const attr of sourceFile.getDescendantsOfKind(SyntaxKind.JsxAttribute)) {
+  for (const attr of sourceFile.getDescendantsOfKind(
+    SyntaxKind.JsxAttribute
+  )) {
     const attrName = attr.getNameNode().getText()
     if (attrName !== "className") {
       continue
@@ -22,18 +34,42 @@ export const transformMenu: Transformer = async ({ sourceFile, config }) => {
     }
 
     const text = initializer.getText()
-    if (!text.includes("cn-menu-target")) {
+    if (
+      !text.includes("cn-menu-target") &&
+      !text.includes("cn-menu-translucent")
+    ) {
       continue
     }
 
-    // Replace cn-menu-target with the replacement value.
-    let newText = text.replace(/cn-menu-target/g, replacement)
+    let newText = text
+    let needsCleanup = false
 
-    // Clean up extra spaces if we removed the class.
-    if (!replacement) {
-      // Remove double spaces.
+    if (menuColor === "inverted" || menuColor === "translucent-inverted") {
+      // Replace cn-menu-target with "dark".
+      newText = newText.replace(/cn-menu-target/g, "dark")
+    } else {
+      // Remove cn-menu-target for both "translucent" and "default".
+      newText = newText.replace(/cn-menu-target/g, "")
+      needsCleanup = true
+    }
+
+    if (isTranslucent) {
+      if (translucentClasses) {
+        // Inline the translucent styles from the style map.
+        newText = newText.replace(/cn-menu-translucent/g, translucentClasses)
+      }
+      // If no style map, keep cn-menu-translucent as-is (fallback).
+    } else {
+      // Remove cn-menu-translucent.
+      if (newText.includes("cn-menu-translucent")) {
+        newText = newText.replace(/cn-menu-translucent/g, "")
+        needsCleanup = true
+      }
+    }
+
+    // Clean up extra spaces only when classes were removed.
+    if (needsCleanup) {
       newText = newText.replace(/\s{2,}/g, " ")
-      // Clean up leading/trailing spaces in strings.
       newText = newText.replace(/"\s+/g, '"')
       newText = newText.replace(/\s+"/g, '"')
       // Clean up empty strings in cn() calls.

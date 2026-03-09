@@ -3,6 +3,7 @@ import { tmpdir } from "os"
 import path, { basename } from "path"
 import { getRegistryBaseColor } from "@/src/registry/api"
 import { RegistryItem, registryItemFileSchema } from "@/src/schema"
+import { createStyleMap, type StyleMap } from "@/src/styles/create-style-map"
 import { isContentSame } from "@/src/utils/compare"
 import {
   findExistingEnvFile,
@@ -71,6 +72,20 @@ export async function updateFiles(
       ? getRegistryBaseColor(config.tailwind.baseColor)
       : Promise.resolve(undefined),
   ])
+
+  // Build style map from the user's CSS for transformers that need it.
+  let styleMap: StyleMap | undefined
+  if (config.resolvedPaths.tailwindCss) {
+    try {
+      const cssContent = await fs.readFile(
+        config.resolvedPaths.tailwindCss,
+        "utf-8"
+      )
+      styleMap = createStyleMap(cssContent)
+    } catch {
+      // Ignore if CSS file is not found.
+    }
+  }
 
   let filesCreated: string[] = []
   let filesUpdated: string[] = []
@@ -152,6 +167,7 @@ export async function updateFiles(
               baseColor,
               transformJsx: !config.tsx,
               isRemote: options.isRemote,
+              styleMap,
             },
             [
               transformImport,

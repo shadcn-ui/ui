@@ -136,6 +136,12 @@ describe("encodePreset / decodePreset", () => {
       }
     }
   })
+
+  it("should round-trip translucent menu color", () => {
+    const code = encodePreset({ menuColor: "translucent" })
+    const decoded = decodePreset(code)
+    expect(decoded!.menuColor).toBe("translucent")
+  })
 })
 
 describe("decodePreset edge cases", () => {

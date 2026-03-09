@@ -157,19 +157,50 @@ export function DesignSystemProvider({
   }, [registryTheme])
 
   // Handle menu color inversion by adding/removing dark class to elements with cn-menu-target.
-  React.useEffect(() => {
+  // useLayoutEffect to apply classes synchronously before paint, avoiding flash.
+  React.useLayoutEffect(() => {
     if (!menuColor) {
       return
     }
 
     const updateMenuElements = () => {
-      const menuElements = document.querySelectorAll(".cn-menu-target")
-      menuElements.forEach((element) => {
-        if (menuColor === "inverted") {
-          element.classList.add("dark")
-        } else {
-          element.classList.remove("dark")
+      const allElements = document.querySelectorAll(
+        ".cn-menu-target, [data-menu-translucent]"
+      )
+
+      // Disable transitions while toggling classes.
+      allElements.forEach((el) => {
+        ;(el as HTMLElement).style.transition = "none"
+      })
+
+      allElements.forEach((element) => {
+        if (element.classList.contains("cn-menu-target")) {
+          if (
+            menuColor === "inverted" ||
+            menuColor === "translucent-inverted"
+          ) {
+            element.classList.add("dark")
+          } else {
+            element.classList.remove("dark")
+          }
         }
+
+        if (
+          menuColor === "translucent" ||
+          menuColor === "translucent-inverted"
+        ) {
+          element.classList.add("cn-menu-translucent")
+          element.removeAttribute("data-menu-translucent")
+        } else if (element.classList.contains("cn-menu-translucent")) {
+          element.classList.remove("cn-menu-translucent")
+          element.setAttribute("data-menu-translucent", "")
+        }
+      })
+
+      // Force a reflow, then re-enable transitions.
+      document.body.offsetHeight
+      allElements.forEach((el) => {
+        ;(el as HTMLElement).style.transition = ""
       })
     }
 
