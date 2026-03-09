@@ -844,5 +844,11 @@
     "homepage": "https://componentry.fun",
     "url": "https://componentry.fun/r/{name}.json",
     "description": "Beautiful, interactive React + Tailwind components for modern product UIs."
+  },
+  {
+    "name": "@paletteui",
+    "homepage": "https://paletteui.xyz",
+    "url": "https://paletteui.xyz/r/{name}.json",
+    "description": "Curated OKLCH color themes for shadcn/ui + visual theme editor with CSS, Tailwind v4, and Figma export."
   }
 ]
