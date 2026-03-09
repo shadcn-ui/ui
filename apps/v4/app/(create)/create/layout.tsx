@@ -1,3 +1,6 @@
+import { Suspense } from "react"
+
+import { HistoryProvider } from "@/app/(create)/hooks/use-history"
 import { LocksProvider } from "@/app/(create)/hooks/use-locks"
 
 export default function CreateLayout({
@@ -5,5 +8,11 @@ export default function CreateLayout({
 }: {
   children: React.ReactNode
 }) {
-  return <LocksProvider>{children}</LocksProvider>
+  return (
+    <LocksProvider>
+      <Suspense>
+        <HistoryProvider>{children}</HistoryProvider>
+      </Suspense>
+    </LocksProvider>
+  )
 }

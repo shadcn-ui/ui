@@ -430,13 +430,13 @@ function updateThemePlugin(cssVars: z.infer<typeof registryItemCssVarsSchema>) {
 
         if (variable === "radius") {
           const radiusVariables = {
-            sm: "calc(var(--radius) - 4px)",
-            md: "calc(var(--radius) - 2px)",
+            sm: "calc(var(--radius) * 0.6)",
+            md: "calc(var(--radius) * 0.8)",
             lg: "var(--radius)",
-            xl: "calc(var(--radius) + 4px)",
-            "2xl": "calc(var(--radius) + 8px)",
-            "3xl": "calc(var(--radius) + 12px)",
-            "4xl": "calc(var(--radius) + 16px)",
+            xl: "calc(var(--radius) * 1.4)",
+            "2xl": "calc(var(--radius) * 1.8)",
+            "3xl": "calc(var(--radius) * 2.2)",
+            "4xl": "calc(var(--radius) * 2.6)",
           }
           for (const [key, value] of Object.entries(radiusVariables)) {
             const cssVarNode = postcss.decl({

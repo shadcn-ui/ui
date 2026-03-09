@@ -228,6 +228,12 @@
     "description": "Production-ready UI components designed for building beautiful AI assistants and conversational interfaces, from the team behind GAIA."
   },
   {
+    "name": "@gc-solid",
+    "homepage": "https://binnodon.github.io/gc-solid-ui",
+    "url": "https://binnodon.github.io/gc-solid-ui/r/{name}.json",
+    "description": "SolidJS port of shadcn-ui components built with Kobalte primitives. 57+ components with full TypeScript support and Vega theme."
+  },
+  {
     "name": "@glass-ui",
     "homepage": "https://glass-ui.crenspire.com",
     "url": "https://glass-ui.crenspire.com/r/{name}.json",
@@ -292,6 +298,12 @@
     "homepage": "https://limeplay.winoffrg.dev",
     "url": "https://limeplay.winoffrg.dev/r/{name}.json",
     "description": "Modern UI Library for building media players in React. Powered by Shaka Player."
+  },
+  {
+    "name": "@lmscn",
+    "homepage": "https://lmscn.vercel.app",
+    "url": "https://lmscn.vercel.app/r/{name}.json",
+    "description": "LMS components for building interactive learning experiences — quiz, flashcards, matching, fill-in-the-blank, word scramble, sequencing, reading comprehension, spaced repetition and more."
   },
   {
     "name": "@lucide-animated",
@@ -460,6 +472,12 @@
     "homepage": "https://www.scrollxui.dev",
     "url": "https://www.scrollxui.dev/registry/{name}.json",
     "description": "ScrollX UI is an open-source React and shadcn-compatible component library for animated, interactive, and customizable user interfaces. It offers motion-driven components that blend seamlessly with modern ShadCN setups."
+  },
+  {
+    "name": "@spell",
+    "homepage": "https://spell.sh",
+    "url": "https://spell.sh/r/{name}.json",
+    "description": "Beautiful, sophisticated UI components designed for modern React and Tailwind CSS applications."
   },
   {
     "name": "@square-ui",
@@ -802,5 +820,29 @@
     "homepage": "https://pixelactui.com",
     "url": "https://pixelactui.com/r/{name}.json",
     "description": "Playful pixel art style components library built on top of shadcn. Perfect for retro style projects and games."
+  },
+  {
+    "name": "@emerald-ui",
+    "homepage": "https://emerald-ui.com",
+    "url": "https://emerald-ui.com/r/{name}.json",
+    "description": "Emerald UI - collection of components built with Motion, GSAP, Tailwind CSS and shadcn/ui."
+  },
+  {
+    "name": "@iconiq",
+    "homepage": "https://iconiqui.com",
+    "url": "https://iconiqui.com/r/{name}.json",
+    "description": "Iconiq is a collection of icons designed for web applications. It is a modern, clean, and minimalistic icon set that is perfect for web applications."
+  },
+  {
+    "name": "@fonttrio",
+    "homepage": "https://www.fonttrio.xyz",
+    "url": "https://www.fonttrio.xyz/r/{name}.json",
+    "description": "Curated font pairing registry for shadcn. Three fonts. One command. Install perfectly configured typography (heading + body + mono) with shadcn add. Includes editorial-grade type scales, CSS variables, and a live preview site."
+  },
+  {
+    "name": "@componentry",
+    "homepage": "https://componentry.fun",
+    "url": "https://componentry.fun/r/{name}.json",
+    "description": "Beautiful, interactive React + Tailwind components for modern product UIs."
   }
 ]

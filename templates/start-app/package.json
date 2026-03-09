@@ -8,11 +8,11 @@
     "preview": "vite preview",
     "test": "vitest run",
     "lint": "eslint",
-    "format": "prettier",
-    "check": "prettier --write . && eslint --fix"
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx}\"",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@tailwindcss/vite": "^4.0.6",
+    "@tailwindcss/vite": "^4.1.18",
     "@tanstack/react-devtools": "^0.7.0",
     "@tanstack/react-router": "^1.132.0",
     "@tanstack/react-router-devtools": "^1.132.0",
@@ -36,6 +36,7 @@
     "@vitejs/plugin-react": "^5.0.4",
     "jsdom": "^27.0.0",
     "prettier": "^3.5.3",
+    "prettier-plugin-tailwindcss": "^0.7.2",
     "typescript": "^5.7.2",
     "vite": "^7.1.7",
     "vitest": "^3.0.5",
