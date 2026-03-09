@@ -44,7 +44,7 @@ describe("createProject", () => {
     vi.mocked(fs.move).mockResolvedValue(undefined)
     vi.mocked(fs.remove).mockResolvedValue(undefined)
 
-    // Mock execa for template scaffold commands.
+    // Mock execa for git clone and package manager install.
     vi.mocked(execa).mockResolvedValue({
       stdout: "",
       stderr: "",
@@ -57,12 +57,6 @@ describe("createProject", () => {
       timedOut: false,
       isCanceled: false,
       killed: false,
-    } as any)
-
-    // Mock fetch for template download.
-    global.fetch = vi.fn().mockResolvedValue({
-      ok: true,
-      arrayBuffer: () => Promise.resolve(new ArrayBuffer(0)),
     } as any)
 
     // Reset prompts mock
@@ -96,7 +90,6 @@ describe("createProject", () => {
   afterEach(() => {
     vi.resetAllMocks()
     mockExit?.mockRestore()
-    delete (global as any).fetch
   })
 
   it("should create a Next.js project with default options", async () => {

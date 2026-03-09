@@ -1,5 +1,19 @@
 # @shadcn/ui
 
+## 4.0.2
+
+### Patch Changes
+
+- [#9903](https://github.com/shadcn-ui/ui/pull/9903) [`f5ac4a0d2aa5af87202f67558a4b9b8f92c00bd2`](https://github.com/shadcn-ui/ui/commit/f5ac4a0d2aa5af87202f67558a4b9b8f92c00bd2) Thanks [@shadcn](https://github.com/shadcn)! - scaffold templates from github remote
+
+## 4.0.1
+
+### Patch Changes
+
+- [#9896](https://github.com/shadcn-ui/ui/pull/9896) [`1ce9c2dd6a3d16422a6586e39632ebbccc45d3a4`](https://github.com/shadcn-ui/ui/commit/1ce9c2dd6a3d16422a6586e39632ebbccc45d3a4) Thanks [@shadcn](https://github.com/shadcn)! - fix apple metadata files in template
+
+- [#9897](https://github.com/shadcn-ui/ui/pull/9897) [`5edf9c95b7d13dcbd325aa4cf6b48d58a53b07c6`](https://github.com/shadcn-ui/ui/commit/5edf9c95b7d13dcbd325aa4cf6b48d58a53b07c6) Thanks [@shadcn](https://github.com/shadcn)! - fix fallback style resolving issue
+
 ## 4.0.0
 
 ### Major Changes
