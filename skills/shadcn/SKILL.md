@@ -173,9 +173,10 @@ npx shadcn@latest docs button dialog select
 7. **Review added components** — After adding a component or block from any registry, **always read the added files and verify they are correct**. Check for missing sub-components (e.g. `SelectItem` without `SelectGroup`), missing imports, incorrect composition, or violations of the [Critical Rules](#critical-rules). Also replace any icon imports with the project's `iconLibrary` from the project context (e.g. if the registry item uses `lucide-react` but the project uses `hugeicons`, swap the imports and icon names accordingly). Fix all issues before moving on.
 8. **Registry must be explicit** — When the user asks to add a block or component, **do not guess the registry**. If no registry is specified (e.g. user says "add a login block" without specifying `@shadcn`, `@tailark`, etc.), ask which registry to use. Never default to a registry on behalf of the user.
 9. **Switching presets** — Ask the user first: **reinstall**, **merge**, or **skip**?
-   - **Reinstall**: `npx shadcn@latest init --preset <code> --force --reinstall`. Overwrites all components.
-   - **Merge**: `npx shadcn@latest init --preset <code> --force --no-reinstall`, then run `npx shadcn@latest info` to list installed components, then for each installed component use `--dry-run` and `--diff` to [smart merge](#updating-components) it individually.
-   - **Skip**: `npx shadcn@latest init --preset <code> --force --no-reinstall`. Only updates config and CSS, leaves components as-is.
+   - **First preserve the current base**: read `npx shadcn@latest info` (or `components.json`) and keep the existing component-library base (`base` vs `radix`) when applying a preset code. **Preset codes are opaque and do not tell you which base to switch to.** If you need to run the command outside the target project (for example in a scratch/merge workflow), pass `--base <current-base>` explicitly.
+   - **Reinstall**: `npx shadcn@latest init --preset <code> --base <current-base> --force --reinstall`. Overwrites all components.
+   - **Merge**: `npx shadcn@latest init --preset <code> --base <current-base> --force --no-reinstall`, then run `npx shadcn@latest info` to list installed components, then for each installed component use `--dry-run` and `--diff` to [smart merge](#updating-components) it individually.
+   - **Skip**: `npx shadcn@latest init --preset <code> --base <current-base> --force --no-reinstall`. Only updates config and CSS, leaves components as-is.
 
 ## Updating Components
 

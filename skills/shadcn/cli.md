@@ -245,11 +245,15 @@ Three ways to specify a preset via `--preset`:
 3. **URL:** `--preset "https://ui.shadcn.com/init?base=radix&style=nova&..."`
 
 > **IMPORTANT:** Never try to decode, fetch, or resolve preset codes manually. Preset codes are opaque — pass them directly to `npx shadcn@latest init --preset <code>` and let the CLI handle resolution.
+>
+> When switching a preset in an existing project, preserve the current component-library base (`base` vs `radix`). Get it from `npx shadcn@latest info` or `components.json`, and if you are running the preset command outside that project (for example in a scratch/merge workflow), pass `--base <current-base>` explicitly. Do not infer the base from the preset code.
 
 ## Switching Presets
 
 Ask the user first: **reinstall**, **merge**, or **skip** existing components?
 
-- **Re-install** → `npx shadcn@latest init --preset <code> --force --reinstall`. Overwrites all component files with the new preset styles. Use when the user hasn't customized components.
-- **Merge** → `npx shadcn@latest init --preset <code> --force --no-reinstall`, then run `npx shadcn@latest info` to get the list of installed components and use the [smart merge workflow](./SKILL.md#updating-components) to update them one by one, preserving local changes. Use when the user has customized components.
-- **Skip** → `npx shadcn@latest init --preset <code> --force --no-reinstall`. Only updates config and CSS variables, leaves existing components as-is.
+Before running the command, read `npx shadcn@latest info` (or `components.json`) and preserve the current component-library base (`base` vs `radix`). Preset codes are base-agnostic. If you are applying the preset in a scratch/temp project during a merge workflow, pass `--base <current-base>` explicitly.
+
+- **Re-install** → `npx shadcn@latest init --preset <code> --base <current-base> --force --reinstall`. Overwrites all component files with the new preset styles. Use when the user hasn't customized components.
+- **Merge** → `npx shadcn@latest init --preset <code> --base <current-base> --force --no-reinstall`, then run `npx shadcn@latest info` to get the list of installed components and use the [smart merge workflow](./SKILL.md#updating-components) to update them one by one, preserving local changes. Use when the user has customized components.
+- **Skip** → `npx shadcn@latest init --preset <code> --base <current-base> --force --no-reinstall`. Only updates config and CSS variables, leaves existing components as-is.
