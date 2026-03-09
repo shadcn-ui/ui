@@ -135,18 +135,18 @@ function AccordionWithBorders() {
       <Accordion
         type="single"
         collapsible
-        className="style-lyra:gap-2 style-vega:gap-2 style-nova:gap-2 mx-auto max-w-lg"
+        className="mx-auto max-w-lg style-vega:gap-2 style-nova:gap-2 style-lyra:gap-2"
       >
         {items.map((item) => (
           <AccordionItem
             key={item.value}
             value={item.value}
-            className="style-vega:border style-nova:border style-lyra:border style-vega:rounded-lg style-nova:rounded-lg"
+            className="style-vega:rounded-lg style-vega:border style-nova:rounded-lg style-nova:border style-lyra:border"
           >
-            <AccordionTrigger className="style-nova:px-2.5 style-nova:text-sm style-vega:text-sm style-maia:text-sm style-mira:text-xs style-lyra:px-2 style-lyra:text-xs style-vega:px-4 font-medium">
+            <AccordionTrigger className="font-medium style-vega:px-4 style-vega:text-sm style-nova:px-2.5 style-nova:text-sm style-lyra:px-2 style-lyra:text-xs style-maia:text-sm style-mira:text-xs">
               {item.trigger}
             </AccordionTrigger>
-            <AccordionContent className="text-muted-foreground style-nova:px-2.5 style-nova:text-sm style-lyra:px-2 style-lyra:text-xs style-vega:px-4 style-maia:px-0 style-mira:px-0">
+            <AccordionContent className="text-muted-foreground style-vega:px-4 style-nova:px-2.5 style-nova:text-sm style-lyra:px-2 style-lyra:text-xs style-maia:px-0 style-mira:px-0">
               {item.content}
             </AccordionContent>
           </AccordionItem>
@@ -322,19 +322,19 @@ function AccordionWithDisabled() {
       <Accordion
         type="single"
         collapsible
-        className="style-lyra:rounded-none style-vega:rounded-lg style-nova:rounded-lg style-maia:rounded-lg style-mira:rounded-lg mx-auto max-w-lg overflow-hidden border"
+        className="mx-auto max-w-lg overflow-hidden border style-vega:rounded-lg style-nova:rounded-lg style-lyra:rounded-none style-maia:rounded-lg style-mira:rounded-lg"
       >
         {items.map((item) => (
           <AccordionItem
             key={item.value}
             value={item.value}
             disabled={item.disabled}
-            className="data-open:bg-muted/50 p-1"
+            className="p-1 data-open:bg-muted/50"
           >
-            <AccordionTrigger className="style-nova:px-2.5 style-lyra:px-2 style-vega:px-4">
+            <AccordionTrigger className="style-vega:px-4 style-nova:px-2.5 style-lyra:px-2">
               {item.trigger}
             </AccordionTrigger>
-            <AccordionContent className="style-nova:px-2.5 style-lyra:px-2 style-vega:px-4">
+            <AccordionContent className="style-vega:px-4 style-nova:px-2.5 style-lyra:px-2">
               {item.content}
             </AccordionContent>
           </AccordionItem>

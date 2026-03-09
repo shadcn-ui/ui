@@ -195,7 +195,7 @@ function InputGroupWithAddons() {
                 hugeicons="AlertCircleIcon"
                 phosphor="InfoIcon"
                 remixicon="RiInformationLine"
-                className="text-muted-foreground ml-auto"
+                className="ml-auto text-muted-foreground"
               />
             </InputGroupAddon>
           </InputGroup>
@@ -212,7 +212,7 @@ function InputGroupWithAddons() {
                 hugeicons="AlertCircleIcon"
                 phosphor="InfoIcon"
                 remixicon="RiInformationLine"
-                className="text-muted-foreground ml-auto"
+                className="ml-auto text-muted-foreground"
               />
             </InputGroupAddon>
           </InputGroup>
@@ -460,7 +460,7 @@ function InputGroupWithTooltip({
                 </PopoverHeader>
               </PopoverContent>
             </Popover>
-            <InputGroupAddon className="text-muted-foreground pl-1">
+            <InputGroupAddon className="pl-1 text-muted-foreground">
               https://
             </InputGroupAddon>
             <InputGroupInput id="input-secure-19" />
@@ -807,7 +807,7 @@ function InputGroupTextareaExamples() {
                 hugeicons="AlertCircleIcon"
                 phosphor="InfoIcon"
                 remixicon="RiInformationLine"
-                className="text-muted-foreground ml-auto"
+                className="ml-auto text-muted-foreground"
               />
             </InputGroupAddon>
           </InputGroup>

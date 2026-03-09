@@ -1,5 +1,7 @@
 "use client"
 
+import * as React from "react"
+
 import { RADII, type RadiusValue } from "@/registry/config"
 import { LockButton } from "@/app/(create)/components/lock-button"
 import {
@@ -21,22 +23,26 @@ export function RadiusPicker({
   anchorRef: React.RefObject<HTMLDivElement | null>
 }) {
   const [params, setParams] = useDesignSystemSearchParams()
+  const isRadiusLocked = params.style === "lyra"
+  const selectedRadiusName = isRadiusLocked ? "none" : params.radius
 
-  const currentRadius = RADII.find((radius) => radius.name === params.radius)
+  const currentRadius = RADII.find(
+    (radius) => radius.name === selectedRadiusName
+  )
   const defaultRadius = RADII.find((radius) => radius.name === "default")
   const otherRadii = RADII.filter((radius) => radius.name !== "default")
 
   return (
     <div className="group/picker relative">
       <Picker>
-        <PickerTrigger>
+        <PickerTrigger disabled={isRadiusLocked}>
           <div className="flex flex-col justify-start text-left">
-            <div className="text-muted-foreground text-xs">Radius</div>
-            <div className="text-foreground text-sm font-medium">
+            <div className="text-xs text-muted-foreground">Radius</div>
+            <div className="text-sm font-medium text-foreground">
               {currentRadius?.label}
             </div>
           </div>
-          <div className="text-foreground pointer-events-none absolute top-1/2 right-4 flex size-4 -translate-y-1/2 rotate-90 items-center justify-center text-base select-none">
+          <div className="pointer-events-none absolute top-1/2 right-4 flex size-4 -translate-y-1/2 rotate-90 items-center justify-center text-base text-foreground select-none md:right-2.5">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -63,6 +69,9 @@ export function RadiusPicker({
           <PickerRadioGroup
             value={currentRadius?.name}
             onValueChange={(value) => {
+              if (isRadiusLocked) {
+                return
+              }
               setParams({ radius: value as RadiusValue })
             }}
           >
@@ -71,20 +80,20 @@ export function RadiusPicker({
                 <PickerRadioItem
                   key={defaultRadius.name}
                   value={defaultRadius.name}
+                  closeOnClick={isMobile}
                 >
-                  <div className="flex flex-col justify-start pointer-coarse:gap-1">
-                    <div>{defaultRadius.label}</div>
-                    <div className="text-muted-foreground text-xs pointer-coarse:text-sm">
-                      Use radius from style
-                    </div>
-                  </div>
+                  {defaultRadius.label}
                 </PickerRadioItem>
               )}
             </PickerGroup>
             <PickerSeparator />
             <PickerGroup>
               {otherRadii.map((radius) => (
-                <PickerRadioItem key={radius.name} value={radius.name}>
+                <PickerRadioItem
+                  key={radius.name}
+                  value={radius.name}
+                  closeOnClick={isMobile}
+                >
                   {radius.label}
                 </PickerRadioItem>
               ))}
@@ -94,7 +103,7 @@ export function RadiusPicker({
       </Picker>
       <LockButton
         param="radius"
-        className="absolute top-1/2 right-10 -translate-y-1/2"
+        className="absolute top-1/2 right-8 -translate-y-1/2"
       />
     </div>
   )
