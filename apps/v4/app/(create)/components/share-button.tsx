@@ -7,6 +7,7 @@ import { HugeiconsIcon } from "@hugeicons/react"
 
 import { copyToClipboardWithMeta } from "@/components/copy-button"
 import { usePresetCode } from "@/app/(create)/hooks/use-design-system"
+import { buildCreateShareUrl } from "@/app/(create)/lib/preset-links"
 import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
 
 export function ShareButton() {
@@ -16,8 +17,14 @@ export function ShareButton() {
 
   const shareUrl = React.useMemo(() => {
     const origin = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"
-    return `${origin}/create?preset=${presetCode}&item=${params.item}`
-  }, [presetCode, params.item])
+
+    return buildCreateShareUrl({
+      origin,
+      presetCode,
+      item: params.item,
+      base: params.base,
+    })
+  }, [params.base, params.item, presetCode])
 
   React.useEffect(() => {
     if (hasCopied) {

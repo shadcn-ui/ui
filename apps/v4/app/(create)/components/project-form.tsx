@@ -36,6 +36,7 @@ import { cn } from "@/lib/utils"
 import { useConfig } from "@/hooks/use-config"
 import { copyToClipboardWithMeta } from "@/components/copy-button"
 import { usePresetCode } from "@/app/(create)/hooks/use-design-system"
+import { buildPresetArgs } from "@/app/(create)/lib/preset-links"
 import {
   useDesignSystemSearchParams,
   type DesignSystemSearchParams,
@@ -79,12 +80,11 @@ export function ProjectForm({
   )
 
   const commands = React.useMemo(() => {
-    const presetFlag = ` --preset ${presetCode}`
-    const baseFlag = params.base !== "radix" ? ` --base ${params.base}` : ""
+    const presetFlags = ` ${buildPresetArgs(presetCode, { base: params.base })}`
     const templateFlag = ` --template ${framework}`
     const monorepoFlag = isMonorepo ? " --monorepo" : ""
     const rtlFlag = params.rtl ? " --rtl" : ""
-    const flags = `${presetFlag}${baseFlag}${templateFlag}${monorepoFlag}${rtlFlag}`
+    const flags = `${presetFlags}${templateFlag}${monorepoFlag}${rtlFlag}`
 
     return IS_LOCAL_DEV && !process.env.NEXT_PUBLIC_RC
       ? {
