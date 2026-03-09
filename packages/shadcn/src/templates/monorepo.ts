@@ -80,22 +80,23 @@ export async function fontsourceMonorepoInit(options: TemplateInitOptions) {
   )
   if (tree?.fonts?.length) {
     const [fontSans] = tree.fonts
-
     // Add fontsource dependency.
     const fontName = fontSans.name.replace("font-", "")
-    const fontSourceDependency = `@fontsource-variable/${fontName}`
+    const fontSourceBase = `@fontsource/${fontName}`
+    const fontSourceVariable = `@fontsource-variable/${fontName}`
     await updateDependencies(
-      [fontSourceDependency],
+      [fontSourceBase, fontSourceVariable],
       [],
       resolvedPackagesUiConfig,
       { silent: true }
     )
 
     // Add font CSS variable to @theme inline in packages/ui CSS.
+    const baseFamily = fontSans.font.family.replace(" Variable", "")
     await updateCssVars(
       {
         theme: {
-          [fontSans.font.variable]: fontSans.font.family,
+          [fontSans.font.variable]: baseFamily,
         },
       },
       resolvedPackagesUiConfig,
@@ -109,7 +110,13 @@ export async function fontsourceMonorepoInit(options: TemplateInitOptions) {
     // Add fontsource import to packages/ui CSS.
     await updateCss(
       {
-        [`@import "${fontSourceDependency}"`]: {},
+        [`@import "${fontSourceBase}"`]: {},
+        [`@import "${fontSourceVariable}"`]: {},
+        "@supports (font-variation-settings: normal)": {
+          ":root": {
+            [fontSans.font.variable]: fontSans.font.family,
+          },
+        },
       },
       resolvedPackagesUiConfig,
       {
