@@ -90,9 +90,14 @@ export const PRESET_RADII = [
 ] as const
 
 export const PRESET_MENU_ACCENTS = ["subtle", "bold"] as const
-export const PRESET_MENU_COLORS = ["default", "inverted"] as const
+export const PRESET_MENU_COLORS = [
+  "default",
+  "inverted",
+  "default-translucent",
+  "inverted-translucent",
+] as const
 
-// Field definitions in pack order. Total: 40 bits, 13 bits headroom.
+// Field definitions in pack order. Total: 43 bits, 10 bits headroom.
 // Note: `base` was removed (was bits 40-42). Old codes are backward-compatible
 // because `base` was the last field — decoder stops at bit 40 and ignores the rest.
 const PRESET_FIELDS = [

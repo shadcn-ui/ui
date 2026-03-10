@@ -118,6 +118,46 @@ export type DesignSystemSearchParams = inferParserType<
   typeof designSystemSearchParams
 >
 
+export function isTranslucentMenuColor(
+  menuColor?: MenuColorValue | null
+): menuColor is "default-translucent" | "inverted-translucent" {
+  return (
+    menuColor === "default-translucent" || menuColor === "inverted-translucent"
+  )
+}
+
+function normalizePartialDesignSystemParams(
+  params: Partial<DesignSystemSearchParams>
+): Partial<DesignSystemSearchParams> {
+  if (
+    params.menuAccent === "bold" &&
+    isTranslucentMenuColor(params.menuColor ?? undefined)
+  ) {
+    return {
+      ...params,
+      menuAccent: "subtle",
+    }
+  }
+
+  return params
+}
+
+function normalizeDesignSystemParams(
+  params: DesignSystemSearchParams
+): DesignSystemSearchParams {
+  if (
+    params.menuAccent === "bold" &&
+    isTranslucentMenuColor(params.menuColor)
+  ) {
+    return {
+      ...params,
+      menuAccent: "subtle",
+    }
+  }
+
+  return params
+}
+
 // Wraps nuqs useQueryStates with transparent preset encoding/decoding.
 // - Reads: if ?preset=CODE is in the URL, decodes it and returns individual values.
 // - Writes: when design system params are set, encodes them into a preset code.
@@ -129,15 +169,16 @@ export function useDesignSystemSearchParams(options: Options = {}) {
   })
 
   // If preset param exists, decode it and overlay on raw params.
-  const params = React.useMemo(() => {
-    if (rawParams.preset && isPresetCode(rawParams.preset)) {
-      const decoded = decodePreset(rawParams.preset)
-      if (decoded) {
-        return { ...rawParams, ...decoded }
-      }
-    }
-    return rawParams
-  }, [rawParams])
+  const params = React.useMemo(
+    () =>
+      rawParams.preset && isPresetCode(rawParams.preset)
+        ? normalizeDesignSystemParams({
+            ...rawParams,
+            ...(decodePreset(rawParams.preset) ?? {}),
+          })
+        : normalizeDesignSystemParams(rawParams),
+    [rawParams]
+  )
 
   // Use ref so setParams callback stays stable across renders.
   const paramsRef = React.useRef(params)
@@ -156,8 +197,9 @@ export function useDesignSystemSearchParams(options: Options = {}) {
           ) => Partial<DesignSystemSearchParams>),
       setOptions?: Options
     ) => {
-      const resolvedUpdates =
+      const resolvedUpdates = normalizePartialDesignSystemParams(
         typeof updates === "function" ? updates(paramsRef.current) : updates
+      )
 
       const hasDesignSystemUpdate = DESIGN_SYSTEM_KEYS.some(
         (key) => key in resolvedUpdates
@@ -169,7 +211,10 @@ export function useDesignSystemSearchParams(options: Options = {}) {
       }
 
       // Merge current decoded values with updates.
-      const merged = { ...paramsRef.current, ...resolvedUpdates }
+      const merged = normalizeDesignSystemParams({
+        ...paramsRef.current,
+        ...resolvedUpdates,
+      })
 
       // Encode design system fields into a preset code.
       // Cast needed: merged values may include null from nuqs resets,
