@@ -844,5 +844,11 @@
     "homepage": "https://componentry.fun",
     "url": "https://componentry.fun/r/{name}.json",
     "description": "Beautiful, interactive React + Tailwind components for modern product UIs."
+  },
+  {
+    "name": "@fluid",
+    "homepage": "https://www.fluidfunctionalism.com",
+    "url": "https://www.fluidfunctionalism.com/r/{name}.json",
+    "description": "Fluid components used exclusively in service of functional clarity. Proximity hover, spring animations, font-weight transitions, and animated focus rings."
   }
 ]
