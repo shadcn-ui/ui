@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Focusable } from "react-aria-components"
+import { Pressable } from "react-aria-components"
 import { mergeProps } from "@base-ui/react/merge-props"
 import { useRender } from "@base-ui/react/use-render"
 import { cva, type VariantProps } from "class-variance-authority"
@@ -537,7 +537,11 @@ function SidebarMenuButton({
   })
 
   if (!tooltip) {
-    return comp
+    return (
+      <Pressable>
+        {comp as React.ReactElement<React.HTMLAttributes<HTMLButtonElement>, string>}
+      </Pressable>
+    )
   }
 
   if (typeof tooltip === "string") {
@@ -548,9 +552,9 @@ function SidebarMenuButton({
 
   return (
     <TooltipTrigger isDisabled={state !== "collapsed" || isMobile}>
-      <Focusable>
+      <Pressable>
         {comp as React.ReactElement<React.HTMLAttributes<HTMLButtonElement>, string>}
-      </Focusable>
+      </Pressable>
       <Tooltip
         side="right"
         align="center"
@@ -569,7 +573,7 @@ function SidebarMenuAction({
   React.ComponentProps<"button"> & {
     showOnHover?: boolean
   }) {
-  return useRender({
+  const comp = useRender({
     defaultTagName: "button",
     props: mergeProps<"button">(
       {
@@ -588,6 +592,12 @@ function SidebarMenuAction({
       sidebar: "menu-action",
     },
   })
+
+  return (
+    <Pressable>
+      {comp as React.ReactElement<React.HTMLAttributes<HTMLButtonElement>, string>}
+    </Pressable>
+  )
 }
 
 function SidebarMenuBadge({
@@ -681,7 +691,7 @@ function SidebarMenuSubButton({
     size?: "sm" | "md"
     isActive?: boolean
   }) {
-  return useRender({
+  const comp = useRender({
     defaultTagName: "a",
     props: mergeProps<"a">(
       {
@@ -700,6 +710,12 @@ function SidebarMenuSubButton({
       active: isActive,
     },
   })
+
+  return (
+    <Pressable>
+      {comp as React.ReactElement<React.HTMLAttributes<HTMLAnchorElement>, string>}
+    </Pressable>
+  )
 }
 
 export {

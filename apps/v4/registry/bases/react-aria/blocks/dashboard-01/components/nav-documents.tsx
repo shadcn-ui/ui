@@ -2,7 +2,6 @@
 
 import {
   DropdownMenu,
-  DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
@@ -38,15 +37,9 @@ export function NavDocuments({
               {item.icon}
               <span>{item.name}</span>
             </SidebarMenuButton>
-            <DropdownMenu>
-              <DropdownMenuTrigger
-                render={
-                  <SidebarMenuAction
-                    showOnHover
-                    className="aria-expanded:bg-muted"
-                  />
-                }
-              >
+
+            <DropdownMenuTrigger>
+              <SidebarMenuAction showOnHover className="aria-expanded:bg-muted">
                 <IconPlaceholder
                   lucide="MoreHorizontalIcon"
                   tabler="IconDots"
@@ -55,8 +48,8 @@ export function NavDocuments({
                   remixicon="RiMoreLine"
                 />
                 <span className="sr-only">More</span>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent
+              </SidebarMenuAction>
+              <DropdownMenu
                 className="w-24"
                 side={isMobile ? "bottom" : "right"}
                 align={isMobile ? "end" : "start"}
@@ -92,8 +85,8 @@ export function NavDocuments({
                   />
                   <span>Delete</span>
                 </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+              </DropdownMenu>
+            </DropdownMenuTrigger>
           </SidebarMenuItem>
         ))}
         <SidebarMenuItem>

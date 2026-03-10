@@ -6,7 +6,6 @@ import { Button } from "@/registry/bases/react-aria/ui/button"
 import { Card, CardContent } from "@/registry/bases/react-aria/ui/card"
 import {
   DropdownMenu,
-  DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuSeparator,
@@ -46,10 +45,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/registry/bases/react-aria/ui/tabs"
-import {
-  Tooltip,
-  TooltipTrigger,
-} from "@/registry/bases/react-aria/ui/tooltip"
+import { Tooltip, TooltipTrigger } from "@/registry/bases/react-aria/ui/tooltip"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export function CodespacesCard() {
@@ -69,7 +65,7 @@ export function CodespacesCard() {
                 <ItemDescription>Your workspaces in the cloud</ItemDescription>
               </ItemContent>
               <ItemActions>
-                <TooltipTrigger >
+                <TooltipTrigger>
                   <Button variant="ghost" size="icon-sm">
                     <IconPlaceholder
                       lucide="PlusIcon"
@@ -79,27 +75,19 @@ export function CodespacesCard() {
                       remixicon="RiAddLine"
                     />
                   </Button>
-                  <Tooltip side="bottom">
-                    Create a codespace on main
-                  </Tooltip>
+                  <Tooltip side="bottom">Create a codespace on main</Tooltip>
                 </TooltipTrigger>
-                <DropdownMenu>
-                  <TooltipTrigger>
-                    <DropdownMenuTrigger
-                      render={<Button variant="ghost" size="icon-sm" />}>
-                      <IconPlaceholder
-                        lucide="MoreHorizontalIcon"
-                        tabler="IconDots"
-                        hugeicons="MoreHorizontalCircle01Icon"
-                        phosphor="DotsThreeOutlineIcon"
-                        remixicon="RiMoreLine"
-                      />
-                    </DropdownMenuTrigger>
-                    <Tooltip side="bottom">
-                      Codespace repository configuration
-                    </Tooltip>
-                  </TooltipTrigger>
-                  <DropdownMenuContent align="end" className="w-56">
+                <DropdownMenuTrigger>
+                  <Button variant="ghost" size="icon-sm">
+                    <IconPlaceholder
+                      lucide="MoreHorizontalIcon"
+                      tabler="IconDots"
+                      hugeicons="MoreHorizontalCircle01Icon"
+                      phosphor="DotsThreeOutlineIcon"
+                      remixicon="RiMoreLine"
+                    />
+                  </Button>
+                  <DropdownMenu align="end" className="w-56">
                     <DropdownMenuGroup>
                       <DropdownMenuItem>
                         <IconPlaceholder
@@ -165,8 +153,8 @@ export function CodespacesCard() {
                         What are codespaces?
                       </DropdownMenuItem>
                     </DropdownMenuGroup>
-                  </DropdownMenuContent>
-                </DropdownMenu>
+                  </DropdownMenu>
+                </DropdownMenuTrigger>
               </ItemActions>
             </Item>
             <Separator className="-mx-2 my-2 w-auto!" />
@@ -245,9 +233,7 @@ export function CodespacesCard() {
                       remixicon="RiInformationLine"
                     />
                   </Button>
-                  <Tooltip side="left">
-                    Which remote URL should I use?
-                  </Tooltip>
+                  <Tooltip side="left">Which remote URL should I use?</Tooltip>
                 </TooltipTrigger>
               </ItemActions>
             </Item>

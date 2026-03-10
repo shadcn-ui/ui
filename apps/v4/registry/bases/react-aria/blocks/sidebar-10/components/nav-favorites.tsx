@@ -2,7 +2,6 @@
 
 import {
   DropdownMenu,
-  DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuSeparator,
@@ -39,15 +38,9 @@ export function NavFavorites({
               <span>{item.emoji}</span>
               <span>{item.name}</span>
             </SidebarMenuButton>
-            <DropdownMenu>
-              <DropdownMenuTrigger
-                render={
-                  <SidebarMenuAction
-                    showOnHover
-                    className="aria-expanded:bg-muted"
-                  />
-                }
-              >
+
+            <DropdownMenuTrigger>
+              <SidebarMenuAction showOnHover className="aria-expanded:bg-muted">
                 <IconPlaceholder
                   lucide="MoreHorizontalIcon"
                   tabler="IconDots"
@@ -56,8 +49,8 @@ export function NavFavorites({
                   remixicon="RiMoreLine"
                 />
                 <span className="sr-only">More</span>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent
+              </SidebarMenuAction>
+              <DropdownMenu
                 className="w-56 rounded-lg"
                 side={isMobile ? "bottom" : "right"}
                 align={isMobile ? "end" : "start"}
@@ -112,8 +105,8 @@ export function NavFavorites({
                     <span>Delete</span>
                   </DropdownMenuItem>
                 </DropdownMenuGroup>
-              </DropdownMenuContent>
-            </DropdownMenu>
+              </DropdownMenu>
+            </DropdownMenuTrigger>
           </SidebarMenuItem>
         ))}
         <SidebarMenuItem>

@@ -15,7 +15,6 @@ import {
 } from "@/registry/bases/react-aria/ui/collapsible"
 import {
   DropdownMenu,
-  DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
@@ -240,14 +239,10 @@ export default function SidebarIconExample() {
         <SidebarHeader>
           <SidebarMenu>
             <SidebarMenuItem>
-              <DropdownMenu>
-                <DropdownMenuTrigger
-                  render={
-                    <SidebarMenuButton
-                      size="lg"
-                      className="data-open:bg-sidebar-accent data-open:text-sidebar-accent-foreground"
-                    />
-                  }
+              <DropdownMenuTrigger>
+                <SidebarMenuButton
+                  size="lg"
+                  className="data-open:bg-sidebar-accent data-open:text-sidebar-accent-foreground"
                 >
                   <span
                     data-slot="button"
@@ -298,8 +293,8 @@ export default function SidebarIconExample() {
                     phosphor="CaretUpDownIcon"
                     remixicon="RiArrowUpDownLine"
                   />
-                </DropdownMenuTrigger>
-                <DropdownMenuContent>
+                </SidebarMenuButton>
+                <DropdownMenu>
                   <DropdownMenuGroup>
                     <DropdownMenuLabel>Teams</DropdownMenuLabel>
                   </DropdownMenuGroup>
@@ -307,14 +302,14 @@ export default function SidebarIconExample() {
                     {data.teams.map((team) => (
                       <DropdownMenuItem
                         key={team.name}
-                        onClick={() => setActiveTeam(team)}
+                        onAction={() => setActiveTeam(team)}
                       >
                         {team.name}
                       </DropdownMenuItem>
                     ))}
                   </DropdownMenuGroup>
-                </DropdownMenuContent>
-              </DropdownMenu>
+                </DropdownMenu>
+              </DropdownMenuTrigger>
             </SidebarMenuItem>
           </SidebarMenu>
         </SidebarHeader>
@@ -330,7 +325,9 @@ export default function SidebarIconExample() {
                 >
                   <SidebarMenuItem>
                     <CollapsibleTrigger
-                      render={props => <SidebarMenuButton {...props} tooltip={item.title} />}
+                      render={(props) => (
+                        <SidebarMenuButton {...props} tooltip={item.title} />
+                      )}
                     >
                       {item.icon}
                       <span>{item.title}</span>
@@ -378,14 +375,10 @@ export default function SidebarIconExample() {
         <SidebarFooter>
           <SidebarMenu>
             <SidebarMenuItem>
-              <DropdownMenu>
-                <DropdownMenuTrigger
-                  render={
-                    <SidebarMenuButton
-                      size="lg"
-                      className="data-open:bg-sidebar-accent data-open:text-sidebar-accent-foreground"
-                    />
-                  }
+              <DropdownMenuTrigger>
+                <SidebarMenuButton
+                  size="lg"
+                  className="data-open:bg-sidebar-accent data-open:text-sidebar-accent-foreground"
                 >
                   <Avatar>
                     <AvatarImage src={data.user.avatar} alt={data.user.name} />
@@ -404,8 +397,8 @@ export default function SidebarIconExample() {
                     phosphor="CaretUpDownIcon"
                     remixicon="RiArrowUpDownLine"
                   />
-                </DropdownMenuTrigger>
-                <DropdownMenuContent>
+                </SidebarMenuButton>
+                <DropdownMenu>
                   <DropdownMenuGroup>
                     <DropdownMenuLabel>
                       <Item size="xs">
@@ -435,8 +428,8 @@ export default function SidebarIconExample() {
                   <DropdownMenuGroup>
                     <DropdownMenuItem>Log out</DropdownMenuItem>
                   </DropdownMenuGroup>
-                </DropdownMenuContent>
-              </DropdownMenu>
+                </DropdownMenu>
+              </DropdownMenuTrigger>
             </SidebarMenuItem>
           </SidebarMenu>
         </SidebarFooter>

@@ -4,7 +4,6 @@ import * as React from "react"
 
 import {
   DropdownMenu,
-  DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/registry/bases/react-aria/ui/dropdown-menu"
@@ -26,14 +25,10 @@ export function VersionSwitcher({
   return (
     <SidebarMenu>
       <SidebarMenuItem>
-        <DropdownMenu>
-          <DropdownMenuTrigger
-            render={
-              <SidebarMenuButton
-                size="lg"
-                className="data-open:bg-sidebar-accent data-open:text-sidebar-accent-foreground"
-              />
-            }
+        <DropdownMenuTrigger>
+          <SidebarMenuButton
+            size="lg"
+            className="data-open:bg-sidebar-accent data-open:text-sidebar-accent-foreground"
           >
             <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
               <IconPlaceholder
@@ -57,12 +52,12 @@ export function VersionSwitcher({
               remixicon="RiArrowUpDownLine"
               className="ml-auto"
             />
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="start">
+          </SidebarMenuButton>
+          <DropdownMenu align="start">
             {versions.map((version) => (
               <DropdownMenuItem
                 key={version}
-                onSelect={() => setSelectedVersion(version)}
+                onAction={() => setSelectedVersion(version)}
               >
                 v{version}{" "}
                 {version === selectedVersion && (
@@ -77,8 +72,8 @@ export function VersionSwitcher({
                 )}
               </DropdownMenuItem>
             ))}
-          </DropdownMenuContent>
-        </DropdownMenu>
+          </DropdownMenu>
+        </DropdownMenuTrigger>
       </SidebarMenuItem>
     </SidebarMenu>
   )

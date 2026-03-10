@@ -2,7 +2,6 @@
 
 import {
   DropdownMenu,
-  DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/registry/bases/react-aria/ui/dropdown-menu"
@@ -34,13 +33,9 @@ export function NavMain({
     <SidebarGroup>
       <SidebarMenu>
         {items.map((item) => (
-          <DropdownMenu key={item.title}>
-            <SidebarMenuItem>
-              <DropdownMenuTrigger
-                render={
-                  <SidebarMenuButton className="aria-expanded:bg-muted" />
-                }
-              >
+          <SidebarMenuItem key={item.title}>
+            <DropdownMenuTrigger>
+              <SidebarMenuButton className="aria-expanded:bg-muted">
                 {item.title}{" "}
                 <IconPlaceholder
                   lucide="MoreHorizontalIcon"
@@ -50,25 +45,22 @@ export function NavMain({
                   remixicon="RiMoreLine"
                   className="ml-auto"
                 />
-              </DropdownMenuTrigger>
+              </SidebarMenuButton>
               {item.items?.length ? (
-                <DropdownMenuContent
+                <DropdownMenu
                   side={isMobile ? "bottom" : "right"}
                   align={isMobile ? "end" : "start"}
                   className="min-w-56 rounded-lg"
                 >
                   {item.items.map((item) => (
-                    <DropdownMenuItem
-                      key={item.title}
-                      render={<a href={item.url} />}
-                    >
+                    <DropdownMenuItem key={item.title} href={item.url}>
                       {item.title}
                     </DropdownMenuItem>
                   ))}
-                </DropdownMenuContent>
+                </DropdownMenu>
               ) : null}
-            </SidebarMenuItem>
-          </DropdownMenu>
+            </DropdownMenuTrigger>
+          </SidebarMenuItem>
         ))}
       </SidebarMenu>
     </SidebarGroup>

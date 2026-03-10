@@ -1,5 +1,7 @@
 "use client"
 
+import { Focusable } from "react-aria-components"
+
 import {
   Example,
   ExampleWrapper,
@@ -11,7 +13,6 @@ import {
 } from "@/registry/bases/react-aria/ui/button-group"
 import {
   DropdownMenu,
-  DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuSeparator,
@@ -33,12 +34,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/registry/bases/react-aria/ui/select"
-import {
-  Tooltip,
-  TooltipTrigger,
-} from "@/registry/bases/react-aria/ui/tooltip"
+import { Tooltip, TooltipTrigger } from "@/registry/bases/react-aria/ui/tooltip"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
-import { Focusable } from "react-aria-components"
 
 export default function ButtonGroupExample() {
   return (
@@ -103,7 +100,9 @@ function ButtonGroupWithText() {
           <Button variant="outline">Another Button</Button>
         </ButtonGroup>
         <ButtonGroup>
-          <ButtonGroupText render={props => <Label htmlFor="input-text" {...props} />}>
+          <ButtonGroupText
+            render={(props) => <Label htmlFor="input-text" {...props} />}
+          >
             GPU Size
           </ButtonGroupText>
           <Input id="input-text" placeholder="Type something here..." />
@@ -119,10 +118,9 @@ function ButtonGroupWithDropdown() {
       <div className="flex flex-col gap-4">
         <ButtonGroup>
           <Button variant="outline">Update</Button>
-          <DropdownMenu>
-            <DropdownMenuTrigger
-              render={<Button variant="outline" size="icon" />}
-            >
+
+          <DropdownMenuTrigger>
+            <Button variant="outline" size="icon">
               <IconPlaceholder
                 lucide="ChevronDownIcon"
                 tabler="IconChevronDown"
@@ -130,21 +128,20 @@ function ButtonGroupWithDropdown() {
                 phosphor="CaretDownIcon"
                 remixicon="RiArrowDownSLine"
               />
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
+            </Button>
+            <DropdownMenu align="end">
               <DropdownMenuItem>Disable</DropdownMenuItem>
               <DropdownMenuItem variant="destructive">
                 Uninstall
               </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+            </DropdownMenu>
+          </DropdownMenuTrigger>
         </ButtonGroup>
         <ButtonGroup>
           <Button variant="outline">Follow</Button>
-          <DropdownMenu>
-            <DropdownMenuTrigger
-              render={<Button variant="outline" size="icon" />}
-            >
+
+          <DropdownMenuTrigger>
+            <Button variant="outline" size="icon">
               <IconPlaceholder
                 lucide="ChevronDownIcon"
                 tabler="IconChevronDown"
@@ -152,8 +149,8 @@ function ButtonGroupWithDropdown() {
                 phosphor="CaretDownIcon"
                 remixicon="RiArrowDownSLine"
               />
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-50">
+            </Button>
+            <DropdownMenu align="end" className="w-50">
               <DropdownMenuGroup>
                 <DropdownMenuItem>
                   <IconPlaceholder
@@ -229,8 +226,8 @@ function ButtonGroupWithDropdown() {
                   Delete Conversation
                 </DropdownMenuItem>
               </DropdownMenuGroup>
-            </DropdownMenuContent>
-          </DropdownMenu>
+            </DropdownMenu>
+          </DropdownMenuTrigger>
         </ButtonGroup>
       </div>
     </Example>
@@ -400,7 +397,14 @@ function ButtonGroupWithLike() {
           />{" "}
           Like
         </Button>
-        <span data-slot="button" className={buttonVariants({ variant: "outline", size: "icon", className: "w-12" })}>
+        <span
+          data-slot="button"
+          className={buttonVariants({
+            variant: "outline",
+            size: "icon",
+            className: "w-12",
+          })}
+        >
           1.2K
         </span>
       </ButtonGroup>

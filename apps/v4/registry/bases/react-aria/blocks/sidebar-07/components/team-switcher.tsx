@@ -4,7 +4,6 @@ import * as React from "react"
 
 import {
   DropdownMenu,
-  DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
@@ -37,14 +36,10 @@ export function TeamSwitcher({
   return (
     <SidebarMenu>
       <SidebarMenuItem>
-        <DropdownMenu>
-          <DropdownMenuTrigger
-            render={
-              <SidebarMenuButton
-                size="lg"
-                className="data-open:bg-sidebar-accent data-open:text-sidebar-accent-foreground"
-              />
-            }
+        <DropdownMenuTrigger>
+          <SidebarMenuButton
+            size="lg"
+            className="data-open:bg-sidebar-accent data-open:text-sidebar-accent-foreground"
           >
             <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
               {activeTeam.logo}
@@ -61,8 +56,8 @@ export function TeamSwitcher({
               remixicon="RiArrowUpDownLine"
               className="ml-auto"
             />
-          </DropdownMenuTrigger>
-          <DropdownMenuContent
+          </SidebarMenuButton>
+          <DropdownMenu
             className="min-w-56 rounded-lg"
             align="start"
             side={isMobile ? "bottom" : "right"}
@@ -75,7 +70,7 @@ export function TeamSwitcher({
               {teams.map((team, index) => (
                 <DropdownMenuItem
                   key={team.name}
-                  onClick={() => setActiveTeam(team)}
+                  onAction={() => setActiveTeam(team)}
                   className="gap-2 p-2"
                 >
                   <div className="flex size-6 items-center justify-center rounded-md border">
@@ -104,8 +99,8 @@ export function TeamSwitcher({
                 </div>
               </DropdownMenuItem>
             </DropdownMenuGroup>
-          </DropdownMenuContent>
-        </DropdownMenu>
+          </DropdownMenu>
+        </DropdownMenuTrigger>
       </SidebarMenuItem>
     </SidebarMenu>
   )

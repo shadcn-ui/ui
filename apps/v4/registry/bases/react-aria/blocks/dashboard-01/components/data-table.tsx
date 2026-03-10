@@ -61,8 +61,6 @@ import {
 } from "@/registry/bases/react-aria/ui/drawer"
 import {
   DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
@@ -295,15 +293,11 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
   {
     id: "actions",
     cell: () => (
-      <DropdownMenu>
-        <DropdownMenuTrigger
-          render={
-            <Button
-              variant="ghost"
-              className="flex size-8 text-muted-foreground data-open:bg-muted"
-              size="icon"
-            />
-          }
+      <DropdownMenuTrigger>
+        <Button
+          variant="ghost"
+          className="flex size-8 text-muted-foreground data-open:bg-muted"
+          size="icon"
         >
           <IconPlaceholder
             lucide="EllipsisVerticalIcon"
@@ -313,15 +307,15 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
             remixicon="RiMore2Line"
           />
           <span className="sr-only">Open menu</span>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent align="end" className="w-32">
+        </Button>
+        <DropdownMenu align="end" className="w-32">
           <DropdownMenuItem>Edit</DropdownMenuItem>
           <DropdownMenuItem>Make a copy</DropdownMenuItem>
           <DropdownMenuItem>Favorite</DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem variant="destructive">Delete</DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
+        </DropdownMenu>
+      </DropdownMenuTrigger>
     ),
   },
 ]
@@ -418,10 +412,7 @@ export function DataTable({
         <Label htmlFor="view-selector" className="sr-only">
           View
         </Label>
-        <Select
-          placeholder="Select a view"
-          defaultValue="outline"
-        >
+        <Select placeholder="Select a view" defaultValue="outline">
           <SelectTrigger
             className="flex w-fit @4xl/main:hidden"
             size="sm"
@@ -449,10 +440,8 @@ export function DataTable({
           <TabsTrigger id="focus-documents">Focus Documents</TabsTrigger>
         </TabsList>
         <div className="flex items-center gap-2">
-          <DropdownMenu>
-            <DropdownMenuTrigger
-              render={<Button variant="outline" size="sm" />}
-            >
+          <DropdownMenuTrigger>
+            <Button variant="outline" size="sm">
               <IconPlaceholder
                 lucide="Columns3Icon"
                 tabler="IconLayoutColumns"
@@ -470,8 +459,13 @@ export function DataTable({
                 remixicon="RiArrowDownSLine"
                 data-icon="inline-end"
               />
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-32">
+            </Button>
+            <DropdownMenu
+              align="end"
+              className="w-32"
+              selectionMode="multiple"
+              selectedKeys={Object.keys(columnVisibility).filter(key => columnVisibility[key])}
+              onSelectionChange={keys => setColumnVisibility(Object.fromEntries(keys === 'all' ? table.getAllColumns().map(column => [column.id, true]) : [...keys].map(key => [key, true])))}>
               {table
                 .getAllColumns()
                 .filter(
@@ -481,20 +475,18 @@ export function DataTable({
                 )
                 .map((column) => {
                   return (
-                    <DropdownMenuCheckboxItem
+                    <DropdownMenuItem
                       key={column.id}
+                      id={column.id}
                       className="capitalize"
-                      checked={column.getIsVisible()}
-                      onCheckedChange={(value) =>
-                        column.toggleVisibility(!!value)
-                      }
                     >
                       {column.id}
-                    </DropdownMenuCheckboxItem>
+                    </DropdownMenuItem>
                   )
                 })}
-            </DropdownMenuContent>
-          </DropdownMenu>
+            </DropdownMenu>
+          </DropdownMenuTrigger>
+
           <Button variant="outline" size="sm">
             <IconPlaceholder
               lucide="PlusIcon"
@@ -665,19 +657,13 @@ export function DataTable({
           </div>
         </div>
       </TabsContent>
-      <TabsContent
-        id="past-performance"
-        className="flex flex-col px-4 lg:px-6"
-      >
+      <TabsContent id="past-performance" className="flex flex-col px-4 lg:px-6">
         <div className="aspect-video w-full flex-1 rounded-lg border border-dashed"></div>
       </TabsContent>
       <TabsContent id="key-personnel" className="flex flex-col px-4 lg:px-6">
         <div className="aspect-video w-full flex-1 rounded-lg border border-dashed"></div>
       </TabsContent>
-      <TabsContent
-        id="focus-documents"
-        className="flex flex-col px-4 lg:px-6"
-      >
+      <TabsContent id="focus-documents" className="flex flex-col px-4 lg:px-6">
         <div className="aspect-video w-full flex-1 rounded-lg border border-dashed"></div>
       </TabsContent>
     </Tabs>
@@ -814,10 +800,7 @@ function TableCellViewer({ item }: { item: z.infer<typeof schema> }) {
             <div className="grid grid-cols-2 gap-4">
               <div className="flex flex-col gap-3">
                 <Label htmlFor="type">Type</Label>
-                <Select
-                  placeholder="Select a type"
-                  defaultValue={item.type}
-                >
+                <Select placeholder="Select a type" defaultValue={item.type}>
                   <SelectTrigger id="type" className="w-full">
                     <SelectValue />
                   </SelectTrigger>

@@ -7,7 +7,7 @@ import { Menubar as MenubarPrimitive } from "@base-ui/react/menubar"
 import { cn } from "@/registry/bases/react-aria/lib/utils"
 import {
   DropdownMenu,
-  DropdownMenuContent,
+  DropdownMenu,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
@@ -19,7 +19,7 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@/registry/bases/react-aria/ui/dropdown-menu"
+} from "@/registry/bases/base/ui/dropdown-menu"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 function Menubar({ className, ...props }: MenubarPrimitive.Props) {
@@ -70,9 +70,9 @@ function MenubarContent({
   alignOffset = -4,
   sideOffset = 8,
   ...props
-}: React.ComponentProps<typeof DropdownMenuContent>) {
+}: React.ComponentProps<typeof DropdownMenu>) {
   return (
-    <DropdownMenuContent
+    <DropdownMenu
       data-slot="menubar-content"
       align={align}
       alignOffset={alignOffset}

@@ -7,7 +7,6 @@ import {
 } from "@/registry/bases/react-aria/ui/avatar"
 import {
   DropdownMenu,
-  DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
@@ -35,14 +34,10 @@ export function NavUser({
   return (
     <SidebarMenu>
       <SidebarMenuItem>
-        <DropdownMenu>
-          <DropdownMenuTrigger
-            render={
-              <SidebarMenuButton
-                size="lg"
-                className="md:h-8 md:p-0 data-open:bg-sidebar-accent data-open:text-sidebar-accent-foreground"
-              />
-            }
+        <DropdownMenuTrigger>
+          <SidebarMenuButton
+            size="lg"
+            className="md:h-8 md:p-0 data-open:bg-sidebar-accent data-open:text-sidebar-accent-foreground"
           >
             <Avatar className="h-8 w-8 rounded-lg">
               <AvatarImage src={user.avatar} alt={user.name} />
@@ -60,8 +55,8 @@ export function NavUser({
               remixicon="RiArrowUpDownLine"
               className="ml-auto size-4"
             />
-          </DropdownMenuTrigger>
-          <DropdownMenuContent
+          </SidebarMenuButton>
+          <DropdownMenu
             className="min-w-56 rounded-lg"
             side={isMobile ? "bottom" : "right"}
             align="end"
@@ -136,8 +131,8 @@ export function NavUser({
               />
               Log out
             </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+          </DropdownMenu>
+        </DropdownMenuTrigger>
       </SidebarMenuItem>
     </SidebarMenu>
   )

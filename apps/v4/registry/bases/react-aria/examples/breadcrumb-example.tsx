@@ -16,7 +16,6 @@ import {
 import { Button } from "@/registry/bases/react-aria/ui/button"
 import {
   DropdownMenu,
-  DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/registry/bases/react-aria/ui/dropdown-menu"
@@ -63,19 +62,17 @@ function BreadcrumbWithDropdown() {
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <DropdownMenu>
-              <DropdownMenuTrigger
-                render={<Button size="icon-sm" variant="ghost" />}
-              >
+            <DropdownMenuTrigger>
+              <Button size="icon-sm" variant="ghost">
                 <BreadcrumbEllipsis />
                 <span className="sr-only">Toggle menu</span>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="start">
+              </Button>
+              <DropdownMenu align="start">
                 <DropdownMenuItem>Documentation</DropdownMenuItem>
                 <DropdownMenuItem>Themes</DropdownMenuItem>
                 <DropdownMenuItem>GitHub</DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+              </DropdownMenu>
+            </DropdownMenuTrigger>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>

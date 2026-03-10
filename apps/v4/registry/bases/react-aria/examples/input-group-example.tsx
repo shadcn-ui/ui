@@ -22,7 +22,6 @@ import {
 } from "@/registry/bases/react-aria/ui/card"
 import {
   DropdownMenu,
-  DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/registry/bases/react-aria/ui/dropdown-menu"
@@ -51,10 +50,7 @@ import {
 } from "@/registry/bases/react-aria/ui/popover"
 import { Spinner } from "@/registry/bases/react-aria/ui/spinner"
 import { Textarea } from "@/registry/bases/react-aria/ui/textarea"
-import {
-  Tooltip,
-  TooltipTrigger,
-} from "@/registry/bases/react-aria/ui/tooltip"
+import { Tooltip, TooltipTrigger } from "@/registry/bases/react-aria/ui/tooltip"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function InputGroupExample() {
@@ -392,12 +388,8 @@ function InputGroupWithTooltip({
           <InputGroup>
             <InputGroupInput id="input-dropdown-21" />
             <InputGroupAddon>
-              <DropdownMenu>
-                <DropdownMenuTrigger
-                  render={
-                    <InputGroupButton className="text-muted-foreground tabular-nums" />
-                  }
-                >
+              <DropdownMenuTrigger>
+                <InputGroupButton className="text-muted-foreground tabular-nums">
                   {country}{" "}
                   <IconPlaceholder
                     lucide="ChevronDownIcon"
@@ -406,24 +398,24 @@ function InputGroupWithTooltip({
                     phosphor="CaretDownIcon"
                     remixicon="RiArrowDownSLine"
                   />
-                </DropdownMenuTrigger>
-                <DropdownMenuContent
+                </InputGroupButton>
+                <DropdownMenu
                   align="start"
                   className="min-w-16"
                   sideOffset={10}
                   alignOffset={-8}
                 >
-                  <DropdownMenuItem onClick={() => setCountry("+1")}>
+                  <DropdownMenuItem onAction={() => setCountry("+1")}>
                     +1
                   </DropdownMenuItem>
-                  <DropdownMenuItem onClick={() => setCountry("+44")}>
+                  <DropdownMenuItem onAction={() => setCountry("+44")}>
                     +44
                   </DropdownMenuItem>
-                  <DropdownMenuItem onClick={() => setCountry("+46")}>
+                  <DropdownMenuItem onAction={() => setCountry("+46")}>
                     +46
                   </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
+                </DropdownMenu>
+              </DropdownMenuTrigger>
             </InputGroupAddon>
           </InputGroup>
           <FieldDescription>

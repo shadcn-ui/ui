@@ -10,7 +10,6 @@ import {
 } from "@/registry/bases/react-aria/ui/card"
 import {
   DropdownMenu,
-  DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuTrigger,
@@ -191,13 +190,9 @@ export default function SidebarFloatingExample() {
           <SidebarGroup>
             <SidebarMenu>
               {data.navMain.map((item) => (
-                <DropdownMenu key={item.title}>
-                  <SidebarMenuItem>
-                    <DropdownMenuTrigger
-                      render={
-                        <SidebarMenuButton className="data-popup-open:bg-sidebar-accent data-popup-open:text-sidebar-accent-foreground" />
-                      }
-                    >
+                <SidebarMenuItem key={item.title}>
+                  <DropdownMenuTrigger>
+                    <SidebarMenuButton className="aria-expanded:bg-sidebar-accent aria-expanded:text-sidebar-accent-foreground">
                       {item.title}{" "}
                       <IconPlaceholder
                         lucide="MoreHorizontalIcon"
@@ -207,23 +202,23 @@ export default function SidebarFloatingExample() {
                         remixicon="RiMoreLine"
                         className="ml-auto"
                       />
-                    </DropdownMenuTrigger>
+                    </SidebarMenuButton>
                     {item.items?.length ? (
-                      <DropdownMenuContent side="right" align="start">
+                      <DropdownMenu side="right" align="start">
                         <DropdownMenuGroup>
                           {item.items.map((subItem) => (
                             <DropdownMenuItem
-                              render={<a href={subItem.url} />}
+                              href={subItem.url}
                               key={subItem.title}
                             >
                               {subItem.title}
                             </DropdownMenuItem>
                           ))}
                         </DropdownMenuGroup>
-                      </DropdownMenuContent>
+                      </DropdownMenu>
                     ) : null}
-                  </SidebarMenuItem>
-                </DropdownMenu>
+                  </DropdownMenuTrigger>
+                </SidebarMenuItem>
               ))}
             </SidebarMenu>
           </SidebarGroup>

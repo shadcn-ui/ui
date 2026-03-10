@@ -4,7 +4,6 @@ import * as React from "react"
 
 import {
   DropdownMenu,
-  DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/registry/bases/react-aria/ui/dropdown-menu"
@@ -174,14 +173,10 @@ export default function SidebarExample() {
         <SidebarHeader>
           <SidebarMenu>
             <SidebarMenuItem>
-              <DropdownMenu>
-                <DropdownMenuTrigger
-                  render={
-                    <SidebarMenuButton
-                      size="lg"
-                      className="data-open:bg-sidebar-accent data-open:text-sidebar-accent-foreground"
-                    />
-                  }
+              <DropdownMenuTrigger>
+                <SidebarMenuButton
+                  size="lg"
+                  className="data-open:bg-sidebar-accent data-open:text-sidebar-accent-foreground"
                 >
                   <Item className="p-0" size="xs">
                     <ItemContent>
@@ -198,12 +193,12 @@ export default function SidebarExample() {
                       />
                     </ItemActions>
                   </Item>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent>
+                </SidebarMenuButton>
+                <DropdownMenu>
                   {data.versions.map((version) => (
                     <DropdownMenuItem
                       key={version}
-                      onSelect={() => setSelectedVersion(version)}
+                      onAction={() => setSelectedVersion(version)}
                     >
                       v{version}{" "}
                       {version === selectedVersion && (
@@ -218,8 +213,8 @@ export default function SidebarExample() {
                       )}
                     </DropdownMenuItem>
                   ))}
-                </DropdownMenuContent>
-              </DropdownMenu>
+                </DropdownMenu>
+              </DropdownMenuTrigger>
             </SidebarMenuItem>
           </SidebarMenu>
           <form>

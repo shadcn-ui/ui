@@ -20,7 +20,6 @@ import { Card, CardContent } from "@/registry/bases/react-aria/ui/card"
 import { Checkbox } from "@/registry/bases/react-aria/ui/checkbox"
 import {
   DropdownMenu,
-  DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
@@ -154,10 +153,9 @@ export function UIElements() {
           </AlertDialogTrigger>
           <ButtonGroup>
             <Button variant="outline">Button Group</Button>
-            <DropdownMenu>
-              <DropdownMenuTrigger
-                render={<Button variant="outline" size="icon" />}
-              >
+
+            <DropdownMenuTrigger>
+              <Button variant="outline" size="icon">
                 <IconPlaceholder
                   lucide="ChevronUpIcon"
                   tabler="IconChevronUp"
@@ -165,8 +163,8 @@ export function UIElements() {
                   phosphor="CaretUpIcon"
                   remixicon="RiArrowUpSLine"
                 />
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" side="top" className="w-40">
+              </Button>
+              <DropdownMenu align="end" side="top" className="w-40">
                 <DropdownMenuGroup>
                   <DropdownMenuLabel>Quick Actions</DropdownMenuLabel>
                   <DropdownMenuItem>Mute Conversation</DropdownMenuItem>
@@ -186,8 +184,8 @@ export function UIElements() {
                     Delete Conversation
                   </DropdownMenuItem>
                 </DropdownMenuGroup>
-              </DropdownMenuContent>
-            </DropdownMenu>
+              </DropdownMenu>
+            </DropdownMenuTrigger>
           </ButtonGroup>
           <Switch defaultSelected className="ml-auto" />
         </div>

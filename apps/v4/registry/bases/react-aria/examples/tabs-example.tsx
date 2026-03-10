@@ -5,7 +5,6 @@ import {
 import { Button } from "@/registry/bases/react-aria/ui/button"
 import {
   DropdownMenu,
-  DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
@@ -262,10 +261,9 @@ function TabsWithDropdown() {
             <TabsTrigger id="analytics">Analytics</TabsTrigger>
             <TabsTrigger id="reports">Reports</TabsTrigger>
           </TabsList>
-          <DropdownMenu>
-            <DropdownMenuTrigger
-              render={<Button variant="ghost" size="icon" className="size-8" />}
-            >
+
+          <DropdownMenuTrigger>
+            <Button variant="ghost" size="icon" className="size-8">
               <IconPlaceholder
                 lucide="MoreHorizontalIcon"
                 tabler="IconDots"
@@ -274,14 +272,14 @@ function TabsWithDropdown() {
                 remixicon="RiMoreLine"
               />
               <span className="sr-only">More options</span>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
+            </Button>
+            <DropdownMenu align="end">
               <DropdownMenuItem>Settings</DropdownMenuItem>
               <DropdownMenuItem>Export</DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem>Archive</DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+            </DropdownMenu>
+          </DropdownMenuTrigger>
         </div>
 
         <div className="border style-vega:rounded-lg style-vega:p-6 style-nova:rounded-lg style-nova:p-4 style-lyra:rounded-none style-lyra:p-4 style-maia:rounded-xl style-maia:p-6 style-mira:rounded-md style-mira:p-4">
