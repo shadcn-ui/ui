@@ -1,7 +1,14 @@
+import { collectInfo } from "@/src/commands/info"
 import { getRegistriesConfig } from "@/src/registry/api"
 import { registryItemSchema, searchResultsSchema } from "@/src/schema"
-import { getPackageRunner } from "@/src/utils/get-package-manager"
+import { getBase, getConfig } from "@/src/utils/get-config"
+import {
+  getProjectComponents,
+  getProjectInfo,
+} from "@/src/utils/get-project-info"
 import { z } from "zod"
+
+export { getBase, getConfig, getProjectComponents, getProjectInfo }
 
 const SHADCN_CLI_COMMAND = "shadcn@latest"
 
@@ -60,19 +67,17 @@ export function formatSearchResultsWithPagination(
   }
   header += ":"
 
-  const showingRange = `Showing items ${
-    results.pagination.offset + 1
-  }-${Math.min(
-    results.pagination.offset + results.pagination.limit,
-    results.pagination.total
-  )} of ${results.pagination.total}:`
+  const showingRange = `Showing items ${results.pagination.offset + 1
+    }-${Math.min(
+      results.pagination.offset + results.pagination.limit,
+      results.pagination.total
+    )} of ${results.pagination.total}:`
 
   let output = `${header}\n\n${showingRange}\n\n${formattedItems.join("\n\n")}`
 
   if (results.pagination.hasMore) {
-    output += `\n\nMore items available. Use offset: ${
-      results.pagination.offset + results.pagination.limit
-    } to see the next page.`
+    output += `\n\nMore items available. Use offset: ${results.pagination.offset + results.pagination.limit
+      } to see the next page.`
   }
 
   return output
@@ -124,9 +129,103 @@ export function formatItemExamples(
     return parts.filter(Boolean).join("\n")
   })
 
-  const header = `# Usage Examples\n\nFound ${items.length} example${
-    items.length > 1 ? "s" : ""
-  } matching "${query}":\n`
+  const header = `# Usage Examples\n\nFound ${items.length} example${items.length > 1 ? "s" : ""
+    } matching "${query}":\n`
 
   return header + sections.join("\n\n---\n\n")
+}
+
+export function formatProjectInfo(
+  data: ReturnType<typeof collectInfo>
+): string {
+  const lines: string[] = []
+
+  if (data.project) {
+    lines.push("## Project")
+    lines.push(
+      `framework: ${data.project.framework} (${data.project.frameworkName})`
+    )
+
+    lines.push(`srcDirectory: ${data.project.srcDirectory ? "Yes" : "No"}`)
+    lines.push(`rsc: ${data.project.rsc ? "Yes" : "No"}`)
+    lines.push(`typescript: ${data.project.typescript ? "Yes" : "No"}`)
+
+    if (data.project.frameworkVersion) {
+      lines.push(`frameworkVersion: ${data.project.frameworkVersion}`)
+    }
+
+    if (data.project.tailwindVersion) {
+      lines.push(`tailwindVersion: ${data.project.tailwindVersion}`)
+    }
+
+    if (data.project.tailwindConfig) {
+      lines.push(`tailwindConfig: ${data.project.tailwindConfig}`)
+    }
+
+    if (data.project.tailwindCss) {
+      lines.push(`tailwindCss: ${data.project.tailwindCss}`)
+    }
+
+    if (data.project.importAlias) {
+      lines.push(`importAlias: ${data.project.importAlias}`)
+    }
+  } else {
+    lines.push("## Project\nNo project info detected.")
+  }
+
+  if (data.config) {
+    lines.push("\n## Configuration (components.json)")
+    lines.push(`style: ${data.config.style}`)
+    lines.push(`base: ${data.config.base}`)
+    lines.push(`rsc: ${data.config.rsc ? "Yes" : "No"}`)
+    lines.push(`typescript: ${data.config.typescript ? "Yes" : "No"}`)
+
+    if (data.config.iconLibrary) {
+      lines.push(`iconLibrary: ${data.config.iconLibrary}`)
+    }
+
+    lines.push(`rtl: ${data.config.rtl ? "Yes" : "No"}`)
+
+    lines.push("\n### Aliases")
+    lines.push(`components: ${data.config.aliases.components}`)
+    lines.push(`utils: ${data.config.aliases.utils}`)
+
+    if (data.config.aliases.ui) {
+      lines.push(`ui: ${data.config.aliases.ui}`)
+    }
+
+    if (data.config.aliases.lib) {
+      lines.push(`lib: ${data.config.aliases.lib}`)
+    }
+
+    if (data.config.aliases.hooks) {
+      lines.push(`hooks: ${data.config.aliases.hooks}`)
+    }
+
+    const registries = Object.entries(data.config.registries)
+
+    if (registries.length > 0) {
+      lines.push("\n### Registries")
+      for (const [name, url] of registries) {
+        lines.push(`${name}: ${url}`)
+      }
+    }
+  } else {
+    lines.push("\n## Configuration\nNo components.json found.")
+  }
+
+  lines.push("\n## Installed Components")
+
+  if (data.components.length > 0) {
+    lines.push(data.components.join(", "))
+  } else {
+    lines.push("No components installed.")
+  }
+
+  lines.push("\n## Links")
+  for (const [key, url] of Object.entries(data.links)) {
+    lines.push(`${key}: ${url}`)
+  }
+
+  return lines.join("\n")
 }

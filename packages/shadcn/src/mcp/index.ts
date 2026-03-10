@@ -9,8 +9,16 @@ import dedent from "dedent"
 import { z } from "zod"
 import { zodToJsonSchema } from "zod-to-json-schema"
 
+import { collectInfo } from "@/src/commands/info"
+import { getBase, getConfig } from "@/src/utils/get-config"
+import {
+  getProjectComponents,
+  getProjectInfo,
+} from "@/src/utils/get-project-info"
+
 import {
   formatItemExamples,
+  formatProjectInfo,
   formatRegistryItems,
   formatSearchResultsWithPagination,
   getMcpConfig,
@@ -141,6 +149,12 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
           "After creating new components or generating new code files, use this tool for a quick checklist to verify that everything is working as expected. Make sure to run the tool after all required steps have been completed.",
         inputSchema: zodToJsonSchema(z.object({})),
       },
+      {
+        name: "get_project_info",
+        description:
+          "Get project context: framework, Tailwind config, import aliases, installed components, and components.json settings. Use this to understand the project structure before adding or modifying components.",
+        inputSchema: zodToJsonSchema(z.object({})),
+      },
     ],
   }
 })
@@ -153,6 +167,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 
     switch (request.params.name) {
       case "get_project_registries": {
+
         const config = await getMcpConfig(process.cwd())
 
         if (!config?.registries) {
@@ -402,6 +417,24 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
               - [ ] Check for TypeScript errors
               - [ ] Use the Playwright MCP if available.
               `,
+            },
+          ],
+        }
+      }
+
+      case "get_project_info": {
+        const cwd = process.cwd()
+        const projectInfo = await getProjectInfo(cwd)
+        const config = await getConfig(cwd)
+        const components = await getProjectComponents(cwd)
+        const base = getBase(config?.style)
+        const data = collectInfo(projectInfo, config, components, base)
+
+        return {
+          content: [
+            {
+              type: "text",
+              text: formatProjectInfo(data),
             },
           ],
         }
