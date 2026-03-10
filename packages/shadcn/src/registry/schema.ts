@@ -293,7 +293,12 @@ export const presetSchema = z.object({
   font: z.string(),
   rtl: z.coerce.boolean().default(false),
   menuAccent: z.enum(["subtle", "bold"]),
-  menuColor: z.enum(["default", "inverted", "translucent", "translucent-inverted"]),
+  menuColor: z.enum([
+    "default",
+    "inverted",
+    "translucent",
+    "translucent-inverted",
+  ]),
   radius: z.string(),
 })
 

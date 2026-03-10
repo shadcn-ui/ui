@@ -313,7 +313,7 @@ export function Component() {
   })
 
   describe("menuColor is translucent", () => {
-    test("inlines cn-menu-translucent styles from style map", async () => {
+    test("inlines cn-menu-translucent styles", async () => {
       expect(
         await transform(
           {
@@ -327,9 +327,6 @@ export function Component() {
               ...testConfig,
               menuColor: "translucent",
             },
-            styleMap: {
-              "cn-menu-translucent": "relative bg-popover/80 backdrop-blur-2xl",
-            },
           },
           [transformMenu]
         )
@@ -337,7 +334,7 @@ export function Component() {
         "import * as React from "react"
 
         export function Component() {
-          return <div className="relative bg-popover/80 backdrop-blur-2xl p-4">Content</div>
+          return <div className="p-4 animate-none! relative bg-popover/70 before:pointer-events-none before:absolute before:inset-0 before:-z-1 before:rounded-[inherit] before:backdrop-blur-2xl before:backdrop-saturate-150 **:data-[slot$=-item]:focus:bg-foreground/10 **:data-[slot$=-item]:data-highlighted:bg-foreground/10 **:data-[slot$=-separator]:bg-foreground/5 **:data-[slot$=-trigger]:focus:bg-foreground/10 **:data-[slot$=-trigger]:aria-expanded:bg-foreground/10! **:data-[variant=destructive]:focus:bg-foreground/10! **:data-[variant=destructive]:text-accent-foreground! **:data-[variant=destructive]:**:text-accent-foreground!">Content</div>
         }"
       `)
     })
@@ -356,9 +353,6 @@ export function Component() {
               ...testConfig,
               menuColor: "translucent",
             },
-            styleMap: {
-              "cn-menu-translucent": "relative bg-popover/80 backdrop-blur-2xl",
-            },
           },
           [transformMenu]
         )
@@ -366,33 +360,7 @@ export function Component() {
         "import * as React from "react"
 
         export function Component() {
-          return <div className={cn("relative bg-popover/80 backdrop-blur-2xl","p-4")}>Content</div>
-        }"
-      `)
-    })
-
-    test("keeps cn-menu-translucent when no style map is provided", async () => {
-      expect(
-        await transform(
-          {
-            filename: "test.tsx",
-            raw: `import * as React from "react"
-
-export function Component() {
-  return <div className="cn-menu-target cn-menu-translucent p-4">Content</div>
-}`,
-            config: {
-              ...testConfig,
-              menuColor: "translucent",
-            },
-          },
-          [transformMenu]
-        )
-      ).toMatchInlineSnapshot(`
-        "import * as React from "react"
-
-        export function Component() {
-          return <div className="cn-menu-translucent p-4">Content</div>
+          return <div className={cn("animate-none! relative bg-popover/70 before:pointer-events-none before:absolute before:inset-0 before:-z-1 before:rounded-[inherit] before:backdrop-blur-2xl before:backdrop-saturate-150 **:data-[slot$=-item]:focus:bg-foreground/10 **:data-[slot$=-item]:data-highlighted:bg-foreground/10 **:data-[slot$=-separator]:bg-foreground/5 **:data-[slot$=-trigger]:focus:bg-foreground/10 **:data-[slot$=-trigger]:aria-expanded:bg-foreground/10! **:data-[variant=destructive]:focus:bg-foreground/10! **:data-[variant=destructive]:text-accent-foreground! **:data-[variant=destructive]:**:text-accent-foreground!","p-4")}>Content</div>
         }"
       `)
     })
@@ -413,9 +381,6 @@ export function Component() {
               ...testConfig,
               menuColor: "translucent-inverted",
             },
-            styleMap: {
-              "cn-menu-translucent": "relative bg-popover/80 backdrop-blur-2xl",
-            },
           },
           [transformMenu]
         )
@@ -423,7 +388,7 @@ export function Component() {
         "import * as React from "react"
 
         export function Component() {
-          return <div className="dark relative bg-popover/80 backdrop-blur-2xl p-4">Content</div>
+          return <div className="dark p-4 animate-none! relative bg-popover/70 before:pointer-events-none before:absolute before:inset-0 before:-z-1 before:rounded-[inherit] before:backdrop-blur-2xl before:backdrop-saturate-150 **:data-[slot$=-item]:focus:bg-foreground/10 **:data-[slot$=-item]:data-highlighted:bg-foreground/10 **:data-[slot$=-separator]:bg-foreground/5 **:data-[slot$=-trigger]:focus:bg-foreground/10 **:data-[slot$=-trigger]:aria-expanded:bg-foreground/10! **:data-[variant=destructive]:focus:bg-foreground/10! **:data-[variant=destructive]:text-accent-foreground! **:data-[variant=destructive]:**:text-accent-foreground!">Content</div>
         }"
       `)
     })
@@ -442,9 +407,6 @@ export function Component() {
               ...testConfig,
               menuColor: "translucent-inverted",
             },
-            styleMap: {
-              "cn-menu-translucent": "relative bg-popover/80 backdrop-blur-2xl",
-            },
           },
           [transformMenu]
         )
@@ -452,7 +414,7 @@ export function Component() {
         "import * as React from "react"
 
         export function Component() {
-          return <div className={cn("dark relative bg-popover/80 backdrop-blur-2xl", "p-4")}>Content</div>
+          return <div className={cn("dark animate-none! relative bg-popover/70 before:pointer-events-none before:absolute before:inset-0 before:-z-1 before:rounded-[inherit] before:backdrop-blur-2xl before:backdrop-saturate-150 **:data-[slot$=-item]:focus:bg-foreground/10 **:data-[slot$=-item]:data-highlighted:bg-foreground/10 **:data-[slot$=-separator]:bg-foreground/5 **:data-[slot$=-trigger]:focus:bg-foreground/10 **:data-[slot$=-trigger]:aria-expanded:bg-foreground/10! **:data-[variant=destructive]:focus:bg-foreground/10! **:data-[variant=destructive]:text-accent-foreground! **:data-[variant=destructive]:**:text-accent-foreground!", "p-4")}>Content</div>
         }"
       `)
     })

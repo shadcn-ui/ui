@@ -1,28 +1,22 @@
 import { Transformer } from "@/src/utils/transformers"
+import { twMerge } from "tailwind-merge"
 import { SyntaxKind } from "ts-morph"
+
+// Hardcoded translucent classes inlined at install time.
+const TRANSLUCENT_CLASSES =
+  "animate-none! relative bg-popover/70 before:pointer-events-none before:absolute before:inset-0 before:-z-1 before:rounded-[inherit] before:backdrop-blur-2xl before:backdrop-saturate-150 **:data-[slot$=-item]:focus:bg-foreground/10 **:data-[slot$=-item]:data-highlighted:bg-foreground/10 **:data-[slot$=-separator]:bg-foreground/5 **:data-[slot$=-trigger]:focus:bg-foreground/10 **:data-[slot$=-trigger]:aria-expanded:bg-foreground/10! **:data-[variant=destructive]:focus:bg-foreground/10! **:data-[variant=destructive]:text-accent-foreground! **:data-[variant=destructive]:**:text-accent-foreground!"
 
 // Transforms cn-menu-target and cn-menu-translucent classes based on config.menuColor.
 // If menuColor is "inverted", replaces cn-menu-target with "dark" and removes cn-menu-translucent.
 // If menuColor is "translucent", removes cn-menu-target and inlines cn-menu-translucent styles.
 // If menuColor is "translucent-inverted", replaces cn-menu-target with "dark" and inlines cn-menu-translucent styles.
 // Otherwise, removes both cn-menu-target and cn-menu-translucent.
-export const transformMenu: Transformer = async ({
-  sourceFile,
-  config,
-  styleMap,
-}) => {
+export const transformMenu: Transformer = async ({ sourceFile, config }) => {
   const menuColor = config.menuColor
   const isTranslucent =
     menuColor === "translucent" || menuColor === "translucent-inverted"
 
-  // Resolve the inlined classes for cn-menu-translucent from the style map.
-  const translucentClasses = isTranslucent
-    ? styleMap?.["cn-menu-translucent"] ?? ""
-    : ""
-
-  for (const attr of sourceFile.getDescendantsOfKind(
-    SyntaxKind.JsxAttribute
-  )) {
+  for (const attr of sourceFile.getDescendantsOfKind(SyntaxKind.JsxAttribute)) {
     const attrName = attr.getNameNode().getText()
     if (attrName !== "className") {
       continue
@@ -54,11 +48,14 @@ export const transformMenu: Transformer = async ({
     }
 
     if (isTranslucent) {
-      if (translucentClasses) {
-        // Inline the translucent styles from the style map.
-        newText = newText.replace(/cn-menu-translucent/g, translucentClasses)
-      }
-      // If no style map, keep cn-menu-translucent as-is (fallback).
+      // Merge translucent classes with existing classes, then remove the placeholder.
+      newText = newText.replace(
+        /"([^"]*cn-menu-translucent[^"]*)"/g,
+        (_, classes) => {
+          const merged = twMerge(classes, TRANSLUCENT_CLASSES)
+          return `"${merged.replace(/\s*\bcn-menu-translucent\b\s*/g, " ").trim()}"`
+        }
+      )
     } else {
       // Remove cn-menu-translucent.
       if (newText.includes("cn-menu-translucent")) {

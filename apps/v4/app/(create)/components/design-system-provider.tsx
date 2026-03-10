@@ -6,7 +6,6 @@ import {
   buildRegistryTheme,
   DEFAULT_CONFIG,
   type DesignSystemConfig,
-  type RadiusValue,
 } from "@/registry/config"
 import { useIframeMessageListener } from "@/app/(create)/hooks/use-iframe-sync"
 import { FONTS } from "@/app/(create)/lib/fonts"
@@ -14,6 +13,46 @@ import {
   useDesignSystemSearchParams,
   type DesignSystemSearchParams,
 } from "@/app/(create)/lib/search-params"
+
+const THEME_STYLE_ELEMENT_ID = "design-system-theme-vars"
+const MANAGED_BODY_CLASS_PREFIXES = ["style-", "base-color-"] as const
+
+type RegistryThemeCssVars = NonNullable<
+  ReturnType<typeof buildRegistryTheme>["cssVars"]
+>
+
+function removeManagedBodyClasses(body: Element) {
+  for (const className of Array.from(body.classList)) {
+    if (
+      MANAGED_BODY_CLASS_PREFIXES.some((prefix) => className.startsWith(prefix))
+    ) {
+      body.classList.remove(className)
+    }
+  }
+}
+
+function buildCssRule(selector: string, cssVars?: Record<string, string>) {
+  const declarations = Object.entries(cssVars ?? {})
+    .filter(([, value]) => Boolean(value))
+    .map(([key, value]) => `  --${key}: ${value};`)
+    .join("\n")
+
+  if (!declarations) {
+    return `${selector} {}\n`
+  }
+
+  return `${selector} {\n${declarations}\n}\n`
+}
+
+function buildThemeCssText(cssVars: RegistryThemeCssVars) {
+  return [
+    buildCssRule(":root", {
+      ...(cssVars.theme ?? {}),
+      ...(cssVars.light ?? {}),
+    }),
+    buildCssRule(".dark", cssVars.dark),
+  ].join("\n")
+}
 
 export function DesignSystemProvider({
   children,
@@ -29,10 +68,35 @@ export function DesignSystemProvider({
   const { style, theme, font, baseColor, menuAccent, menuColor, radius } =
     liveSearchParams
   const effectiveRadius = style === "lyra" ? "none" : radius
+  const selectedFont = React.useMemo(
+    () => FONTS.find((fontOption) => fontOption.value === font),
+    [font]
+  )
+  const initialFontSansRef = React.useRef<string | null>(null)
 
   React.useEffect(() => {
     setLiveSearchParams(searchParams)
   }, [searchParams])
+
+  React.useEffect(() => {
+    initialFontSansRef.current =
+      document.documentElement.style.getPropertyValue("--font-sans")
+
+    return () => {
+      removeManagedBodyClasses(document.body)
+      document.getElementById(THEME_STYLE_ELEMENT_ID)?.remove()
+
+      if (initialFontSansRef.current) {
+        document.documentElement.style.setProperty(
+          "--font-sans",
+          initialFontSansRef.current
+        )
+        return
+      }
+
+      document.documentElement.style.removeProperty("--font-sans")
+    }
+  }, [])
 
   const handleDesignSystemMessage = React.useCallback(
     (nextParams: DesignSystemSearchParams) => {
@@ -50,7 +114,7 @@ export function DesignSystemProvider({
         ...prev,
         radius: "none",
       }))
-      setSearchParams({ radius: "none" as RadiusValue })
+      setSearchParams({ radius: "none" })
     }
   }, [style, radius, setSearchParams])
 
@@ -63,27 +127,19 @@ export function DesignSystemProvider({
     const body = document.body
 
     // Iterate over a snapshot so removals do not affect traversal.
-    Array.from(body.classList).forEach((className) => {
-      if (
-        className.startsWith("style-") ||
-        className.startsWith("base-color-")
-      ) {
-        body.classList.remove(className)
-      }
-    })
+    removeManagedBodyClasses(body)
     body.classList.add(`style-${style}`, `base-color-${baseColor}`)
 
     // Update font.
     // Always set --font-sans for the preview so the selected font is visible.
     // The font type (sans/serif/mono) is metadata for the CLI updater.
-    const selectedFont = FONTS.find((f) => f.value === font)
     if (selectedFont) {
       const fontFamily = selectedFont.font.style.fontFamily
       document.documentElement.style.setProperty("--font-sans", fontFamily)
     }
 
     setIsReady(true)
-  }, [style, theme, font, baseColor])
+  }, [style, theme, font, baseColor, selectedFont])
 
   const registryTheme = React.useMemo(() => {
     if (!baseColor || !theme || !menuAccent || !effectiveRadius) {
@@ -107,53 +163,17 @@ export function DesignSystemProvider({
       return
     }
 
-    const styleId = "design-system-theme-vars"
     let styleElement = document.getElementById(
-      styleId
+      THEME_STYLE_ELEMENT_ID
     ) as HTMLStyleElement | null
 
     if (!styleElement) {
       styleElement = document.createElement("style")
-      styleElement.id = styleId
+      styleElement.id = THEME_STYLE_ELEMENT_ID
       document.head.appendChild(styleElement)
     }
 
-    const {
-      light: lightVars,
-      dark: darkVars,
-      theme: themeVars,
-    } = registryTheme.cssVars
-
-    let cssText = ":root {\n"
-    // Add theme vars (shared across light/dark).
-    if (themeVars) {
-      Object.entries(themeVars).forEach(([key, value]) => {
-        if (value) {
-          cssText += `  --${key}: ${value};\n`
-        }
-      })
-    }
-    // Add light mode vars.
-    if (lightVars) {
-      Object.entries(lightVars).forEach(([key, value]) => {
-        if (value) {
-          cssText += `  --${key}: ${value};\n`
-        }
-      })
-    }
-    cssText += "}\n\n"
-
-    cssText += ".dark {\n"
-    if (darkVars) {
-      Object.entries(darkVars).forEach(([key, value]) => {
-        if (value) {
-          cssText += `  --${key}: ${value};\n`
-        }
-      })
-    }
-    cssText += "}\n"
-
-    styleElement.textContent = cssText
+    styleElement.textContent = buildThemeCssText(registryTheme.cssVars)
   }, [registryTheme])
 
   // Handle menu color inversion by adding/removing dark class to elements with cn-menu-target.
@@ -163,32 +183,36 @@ export function DesignSystemProvider({
       return
     }
 
+    const isInvertedMenu =
+      menuColor === "inverted" || menuColor === "translucent-inverted"
+    const isTranslucentMenu =
+      menuColor === "translucent" || menuColor === "translucent-inverted"
+    let frameId = 0
+
     const updateMenuElements = () => {
-      const allElements = document.querySelectorAll(
+      const allElements = document.querySelectorAll<HTMLElement>(
         ".cn-menu-target, [data-menu-translucent]"
       )
 
+      if (allElements.length === 0) {
+        return
+      }
+
       // Disable transitions while toggling classes.
-      allElements.forEach((el) => {
-        ;(el as HTMLElement).style.transition = "none"
+      allElements.forEach((element) => {
+        element.style.transition = "none"
       })
 
       allElements.forEach((element) => {
         if (element.classList.contains("cn-menu-target")) {
-          if (
-            menuColor === "inverted" ||
-            menuColor === "translucent-inverted"
-          ) {
+          if (isInvertedMenu) {
             element.classList.add("dark")
           } else {
             element.classList.remove("dark")
           }
         }
 
-        if (
-          menuColor === "translucent" ||
-          menuColor === "translucent-inverted"
-        ) {
+        if (isTranslucentMenu) {
           element.classList.add("cn-menu-translucent")
           element.removeAttribute("data-menu-translucent")
         } else if (element.classList.contains("cn-menu-translucent")) {
@@ -198,9 +222,20 @@ export function DesignSystemProvider({
       })
 
       // Force a reflow, then re-enable transitions.
-      document.body.offsetHeight
-      allElements.forEach((el) => {
-        ;(el as HTMLElement).style.transition = ""
+      void document.body.offsetHeight
+      allElements.forEach((element) => {
+        element.style.transition = ""
+      })
+    }
+
+    const scheduleMenuUpdate = () => {
+      if (frameId) {
+        return
+      }
+
+      frameId = window.requestAnimationFrame(() => {
+        frameId = 0
+        updateMenuElements()
       })
     }
 
@@ -209,7 +244,7 @@ export function DesignSystemProvider({
 
     // Watch for new menu elements being added to the DOM.
     const observer = new MutationObserver(() => {
-      updateMenuElements()
+      scheduleMenuUpdate()
     })
 
     observer.observe(document.body, {
@@ -219,6 +254,9 @@ export function DesignSystemProvider({
 
     return () => {
       observer.disconnect()
+      if (frameId) {
+        window.cancelAnimationFrame(frameId)
+      }
     }
   }, [menuColor])
 
