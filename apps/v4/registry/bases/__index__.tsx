@@ -12966,7 +12966,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     preview: {
       name: "preview",
-      title: "Home",
+      title: "Preview",
       description: "",
       type: "registry:block",
       registryDependencies: [
@@ -12976,6 +12976,7 @@ export const Index: Record<string, Record<string, any>> = {
         "button",
         "button-group",
         "card",
+        "chart",
         "checkbox",
         "combobox",
         "dropdown-menu",
@@ -12999,168 +13000,15 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
-          path: "registry/bases/react-aria/blocks/preview.tsx",
+          path: "registry/bases/react-aria/blocks/preview/index.tsx",
           type: "registry:block",
           target: "",
         },
       ],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/bases/react-aria/blocks/preview.tsx")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: undefined,
-      meta: undefined,
-    },
-    elevenlabs: {
-      name: "elevenlabs",
-      title: "Elevenlabs",
-      description: "",
-      type: "registry:block",
-      registryDependencies: ["example", "button", "card"],
-      files: [
-        {
-          path: "registry/bases/react-aria/blocks/elevenlabs.tsx",
-          type: "registry:block",
-          target: "",
-        },
-      ],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/bases/react-aria/blocks/elevenlabs.tsx")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: undefined,
-      meta: undefined,
-    },
-    github: {
-      name: "github",
-      title: "GitHub",
-      description: "",
-      type: "registry:block",
-      registryDependencies: [
-        "avatar",
-        "badge",
-        "button",
-        "card",
-        "checkbox",
-        "combobox",
-        "command",
-        "drawer",
-        "dropdown-menu",
-        "empty",
-        "field",
-        "input",
-        "input-group",
-        "item",
-        "kbd",
-        "native-select",
-        "popover",
-        "separator",
-        "spinner",
-        "tabs",
-        "textarea",
-        "tooltip",
-        "example",
-      ],
-      files: [
-        {
-          path: "registry/bases/react-aria/blocks/github.tsx",
-          type: "registry:block",
-          target: "",
-        },
-      ],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/bases/react-aria/blocks/github.tsx")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: undefined,
-      meta: undefined,
-    },
-    vercel: {
-      name: "vercel",
-      title: "Vercel",
-      description: "",
-      type: "registry:block",
-      registryDependencies: [
-        "alert",
-        "badge",
-        "button",
-        "calendar",
-        "card",
-        "chart",
-        "dialog",
-        "dropdown-menu",
-        "empty",
-        "field",
-        "input-group",
-        "item",
-        "native-select",
-        "popover",
-        "textarea",
-        "example",
-      ],
-      files: [
-        {
-          path: "registry/bases/react-aria/blocks/vercel.tsx",
-          type: "registry:block",
-          target: "",
-        },
-      ],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/bases/react-aria/blocks/vercel.tsx")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: undefined,
-      meta: undefined,
-    },
-    chatgpt: {
-      name: "chatgpt",
-      title: "ChatGPT",
-      description: "",
-      type: "registry:block",
-      registryDependencies: [
-        "alert",
-        "alert-dialog",
-        "badge",
-        "button",
-        "card",
-        "dropdown-menu",
-        "field",
-        "input-group",
-        "item",
-        "kbd",
-        "popover",
-        "tooltip",
-        "example",
-      ],
-      files: [
-        {
-          path: "registry/bases/react-aria/blocks/chatgpt.tsx",
-          type: "registry:block",
-          target: "",
-        },
-      ],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/bases/react-aria/blocks/chatgpt.tsx")
+        const mod = await import(
+          "@/registry/bases/react-aria/blocks/preview/index.tsx"
+        )
         const exportName =
           Object.keys(mod).find(
             (key) =>
