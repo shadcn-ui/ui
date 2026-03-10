@@ -59,7 +59,7 @@
     },
     "menuColor": {
       "type": "string",
-      "enum": ["default", "inverted"]
+      "enum": ["default", "inverted", "default-translucent", "inverted-translucent"]
     },
     "menuAccent": {
       "type": "string",
