@@ -11,15 +11,18 @@ import { z } from "zod"
 import { zodToJsonSchema } from "zod-to-json-schema"
 
 import { collectInfo } from "@/src/commands/info"
+import { dryRunComponents } from "@/src/utils/dry-run"
 import { getBase, getConfig } from "@/src/utils/get-config"
 import {
   getProjectComponents,
   getProjectInfo,
 } from "@/src/utils/get-project-info"
+import { ensureRegistriesInConfig } from "@/src/utils/registries"
 
 import {
   findSkillsDirectory,
   formatComponentDocs,
+  formatDryRunForMcp,
   formatItemExamples,
   formatProjectInfo,
   formatRegistryItems,
@@ -189,6 +192,26 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
           })
         ),
       },
+      {
+        name: "dry_run_add",
+        description:
+          "Preview what 'shadcn add' would change without writing any files. Returns files to create/overwrite, npm dependencies, CSS variables, and env vars. Requires components.json to exist.",
+        inputSchema: zodToJsonSchema(
+          z.object({
+            components: z
+              .array(z.string())
+              .describe(
+                "Array of component identifiers with registry prefix (e.g., ['@shadcn/button', '@shadcn/card'])"
+              ),
+            overwrite: z
+              .boolean()
+              .optional()
+              .describe(
+                "If true, existing files are marked as 'overwrite' instead of 'skip'. Default: false"
+              ),
+          })
+        ),
+      },
     ],
   }
 })
@@ -233,10 +256,10 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
                 \`${await npxShadcn("view @name-of-registry")}\`
 
                 For example: \`${await npxShadcn(
-                  "view @shadcn"
-                )}\` or \`${await npxShadcn(
-                  "view @shadcn @acme"
-                )}\` to view multiple registries.
+                    "view @shadcn"
+                  )}\` or \`${await npxShadcn(
+                    "view @shadcn @acme"
+                  )}\` to view multiple registries.
                 `,
             },
           ],
@@ -265,11 +288,10 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
             content: [
               {
                 type: "text",
-                text: dedent`No items found matching "${
-                  args.query
-                }" in registries ${args.registries.join(
-                  ", "
-                )}, Try searching with a different query or registry.`,
+                text: dedent`No items found matching "${args.query
+                  }" in registries ${args.registries.join(
+                    ", "
+                  )}, Try searching with a different query or registry.`,
               },
             ],
           }
@@ -451,6 +473,51 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
               - [ ] Check for TypeScript errors
               - [ ] Use the Playwright MCP if available.
               `,
+            },
+          ],
+        }
+      }
+
+      case "dry_run_add": {
+        const { components, overwrite } = z
+          .object({
+            components: z.array(z.string()),
+            overwrite: z.boolean().optional(),
+          })
+          .parse(request.params.arguments)
+
+        const cwd = process.cwd()
+        const config = await getConfig(cwd)
+
+        if (!config) {
+          return {
+            content: [
+              {
+                type: "text",
+                text: dedent`No components.json found in ${cwd}.
+
+                Run 'shadcn init' to create one before previewing component changes.`,
+              },
+            ],
+            isError: true,
+          }
+        }
+
+        const { config: updatedConfig } = await ensureRegistriesInConfig(
+          components,
+          config,
+          { silent: true, writeFile: false }
+        )
+
+        const result = await dryRunComponents(components, updatedConfig, {
+          overwrite,
+        })
+
+        return {
+          content: [
+            {
+              type: "text",
+              text: formatDryRunForMcp(result, components),
             },
           ],
         }

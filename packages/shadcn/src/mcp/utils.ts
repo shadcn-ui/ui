@@ -3,6 +3,7 @@ import fs from "fs/promises"
 import { homedir } from "os"
 import path from "path"
 import { collectInfo } from "@/src/commands/info"
+import type { DryRunResult } from "@/src/utils/dry-run"
 import { getRegistriesConfig } from "@/src/registry/api"
 import { registryItemSchema, searchResultsSchema } from "@/src/schema"
 import { getBase, getConfig } from "@/src/utils/get-config"
@@ -80,6 +81,7 @@ export async function readSkillsContent(
   for (const topic of topics) {
     const file = TOPIC_TO_FILE[topic]
     if (!file) continue
+
     const fullPath = path.join(skillsDir, file)
     if (existsSync(fullPath)) {
       const content = await fs.readFile(fullPath, "utf-8")
@@ -334,6 +336,70 @@ export function formatProjectInfo(
   lines.push("\n## Links")
   for (const [key, url] of Object.entries(data.links)) {
     lines.push(`${key}: ${url}`)
+  }
+
+  return lines.join("\n")
+}
+
+export function formatDryRunForMcp(
+  result: DryRunResult,
+  components: string[]
+): string {
+  const lines: string[] = []
+
+  lines.push(`## Dry Run: shadcn add ${components.join(", ")}`)
+
+  // Files
+  if (result.files.length > 0) {
+    lines.push("\n### Files")
+    for (const file of result.files) {
+      lines.push(`- [${file.action}] ${file.path}`)
+    }
+  } else {
+    lines.push("\n### Files\nNo files to add.")
+  }
+
+  // Dependencies
+  if (result.dependencies.length > 0) {
+    lines.push("\n### Dependencies")
+    lines.push(result.dependencies.join(", "))
+  }
+
+  if (result.devDependencies.length > 0) {
+    lines.push("\n### Dev Dependencies")
+    lines.push(result.devDependencies.join(", "))
+  }
+
+  // CSS
+  if (result.css) {
+    lines.push("\n### CSS")
+    lines.push(`file: ${result.css.path} (${result.css.action})`)
+    if (result.css.cssVarsCount > 0) {
+      lines.push(`cssVars: ${result.css.cssVarsCount} variables`)
+    }
+  }
+
+  // Env vars
+  if (result.envVars) {
+    lines.push("\n### Environment Variables")
+    lines.push(`file: ${result.envVars.path} (${result.envVars.action})`)
+    for (const key of Object.keys(result.envVars.variables)) {
+      lines.push(`- ${key}`)
+    }
+  }
+
+  // Fonts
+  if (result.fonts.length > 0) {
+    lines.push("\n### Fonts")
+    for (const font of result.fonts) {
+      lines.push(`- ${font.name} (${font.provider})`)
+    }
+  }
+
+  // Docs
+  if (result.docs) {
+    lines.push("\n### Docs")
+    lines.push(result.docs)
   }
 
   return lines.join("\n")
