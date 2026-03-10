@@ -4,19 +4,33 @@ import { notFound } from "next/navigation"
 
 import { siteConfig } from "@/lib/config"
 import { absoluteUrl } from "@/lib/utils"
-import { DarkModeScript } from "@/components/mode-switcher"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
-import { BASES, type Base } from "@/registry/config"
+import { BASES, type Base, type BaseName } from "@/registry/config"
+import { ActionMenuScript } from "@/app/(create)/components/action-menu"
 import { DesignSystemProvider } from "@/app/(create)/components/design-system-provider"
-import { ItemPickerScript } from "@/app/(create)/components/item-picker"
+import { HistoryScript } from "@/app/(create)/components/history-buttons"
+import { DarkModeScript } from "@/app/(create)/components/mode-switcher"
 import { PreviewStyle } from "@/app/(create)/components/preview-style"
 import { RandomizeScript } from "@/app/(create)/components/random-button"
-import { getBaseComponent, getBaseItem } from "@/app/(create)/lib/api"
-import { ALLOWED_ITEM_TYPES } from "@/app/(create)/lib/constants"
+import {
+  getBaseComponent,
+  getBaseItem,
+  getItemsForBase,
+} from "@/app/(create)/lib/api"
 
 export const revalidate = false
 export const dynamic = "force-static"
 export const dynamicParams = false
+
+function PreventScrollOnFocusScript() {
+  return (
+    <script
+      dangerouslySetInnerHTML={{
+        __html: `(function(){var f=HTMLElement.prototype.focus;HTMLElement.prototype.focus=function(o){f.call(this,Object.assign({},o,{preventScroll:true}))};})();`,
+      }}
+    />
+  )
+}
 
 const getCacheRegistryItem = React.cache(
   async (name: string, base: Base["name"]) => {
@@ -81,23 +95,15 @@ export async function generateMetadata({
 }
 
 export async function generateStaticParams() {
-  const { Index } = await import("@/registry/bases/__index__")
   const params: Array<{ base: string; name: string }> = []
 
   for (const base of BASES) {
-    if (!Index[base.name]) {
-      continue
-    }
-
-    const styleIndex = Index[base.name]
-    for (const itemName in styleIndex) {
-      const item = styleIndex[itemName]
-      if (ALLOWED_ITEM_TYPES.includes(item.type)) {
-        params.push({
-          base: base.name,
-          name: item.name,
-        })
-      }
+    const items = await getItemsForBase(base.name as BaseName)
+    for (const item of items) {
+      params.push({
+        base: base.name,
+        name: item.name,
+      })
     }
   }
 
@@ -129,10 +135,12 @@ export default async function BlockPage({
   }
 
   return (
-    <div className="relative">
+    <div className="relative bg-background">
+      <PreventScrollOnFocusScript />
       <PreviewStyle />
-      <ItemPickerScript />
+      <ActionMenuScript />
       <RandomizeScript />
+      <HistoryScript />
       <DarkModeScript />
       <DesignSystemProvider>
         <Component />

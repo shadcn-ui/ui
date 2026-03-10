@@ -246,6 +246,10 @@
             "type": "string"
           },
           "description": "Array of font subsets to include (e.g., ['latin', 'latin-ext'])."
+        },
+        "selector": {
+          "type": "string",
+          "description": "CSS selector to apply the font utility class to (e.g., 'h1, h2, h3'). Defaults to 'html'."
         }
       },
       "required": ["family", "provider", "import", "variable"]

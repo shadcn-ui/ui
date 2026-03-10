@@ -76,7 +76,7 @@ export function CodeViewer() {
             </pre>
           </div>
           <div>
-            <p className="text-muted-foreground text-sm">
+            <p className="text-sm text-muted-foreground">
               Your API Key can be found here. You should use environment
               variables or a secret management tool to expose your key to your
               applications.

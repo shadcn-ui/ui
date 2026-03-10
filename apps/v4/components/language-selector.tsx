@@ -108,7 +108,7 @@ export function LanguageSelector({
       </SelectTrigger>
       <SelectContent
         dir="ltr"
-        className="data-closed:animate-none data-open:animate-none"
+        className="data-open:animate-none data-closed:animate-none"
       >
         <SelectGroup>
           {languageOptions
