@@ -137,10 +137,10 @@ describe("encodePreset / decodePreset", () => {
     }
   })
 
-  it("should round-trip translucent menu color", () => {
-    const code = encodePreset({ menuColor: "translucent" })
+  it("should round-trip default-translucent menu color", () => {
+    const code = encodePreset({ menuColor: "default-translucent" })
     const decoded = decodePreset(code)
-    expect(decoded!.menuColor).toBe("translucent")
+    expect(decoded!.menuColor).toBe("default-translucent")
   })
 })
 

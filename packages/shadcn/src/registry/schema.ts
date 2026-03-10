@@ -41,7 +41,12 @@ export const rawConfigSchema = z
     iconLibrary: z.string().optional(),
     rtl: z.coerce.boolean().default(false).optional(),
     menuColor: z
-      .enum(["default", "inverted", "translucent", "translucent-inverted"])
+      .enum([
+        "default",
+        "inverted",
+        "default-translucent",
+        "inverted-translucent",
+      ])
       .default("default")
       .optional(),
     menuAccent: z.enum(["subtle", "bold"]).default("subtle").optional(),
@@ -296,8 +301,8 @@ export const presetSchema = z.object({
   menuColor: z.enum([
     "default",
     "inverted",
-    "translucent",
-    "translucent-inverted",
+    "default-translucent",
+    "inverted-translucent",
   ]),
   radius: z.string(),
 })

@@ -84,8 +84,8 @@ export function MenuAccentPicker({
                   closeOnClick={isMobile}
                   disabled={
                     accent.value === "bold" &&
-                    (params.menuColor === "translucent" ||
-                      params.menuColor === "translucent-inverted")
+                    (params.menuColor === "default-translucent" ||
+                      params.menuColor === "inverted-translucent")
                   }
                 >
                   {accent.label}

@@ -18,7 +18,10 @@ import {
   PickerSeparator,
   PickerTrigger,
 } from "@/app/(create)/components/picker"
-import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
+import {
+  isTranslucentMenuColor,
+  useDesignSystemSearchParams,
+} from "@/app/(create)/lib/search-params"
 
 type ColorChoice = "default" | "inverted"
 type SurfaceChoice = "solid" | "translucent"
@@ -33,17 +36,17 @@ function getMenuColorValue(
   translucent: boolean
 ): MenuColorValue {
   if (color === "default") {
-    return translucent ? "translucent" : "default"
+    return translucent ? "default-translucent" : "default"
   }
 
-  return translucent ? "translucent-inverted" : "inverted"
+  return translucent ? "inverted-translucent" : "inverted"
 }
 
 const MENU_ITEMS: MenuItemConfig[] = [
   { value: "default", label: "Default / Solid" },
-  { value: "translucent", label: "Default / Translucent" },
+  { value: "default-translucent", label: "Default / Translucent" },
   { value: "inverted", label: "Inverted / Solid" },
-  { value: "translucent-inverted", label: "Inverted / Translucent" },
+  { value: "inverted-translucent", label: "Inverted / Translucent" },
 ]
 const ALL_OPTIONS = MENU_ITEMS
 
@@ -57,38 +60,47 @@ export function MenuColorPicker({
   const [params, setParams] = useDesignSystemSearchParams()
   const { resolvedTheme } = useTheme()
   const mounted = useMounted()
+  const lastSolidMenuAccentRef = React.useRef(params.menuAccent)
   const isDark = mounted && resolvedTheme === "dark"
   const currentMenu = ALL_OPTIONS.find(
     (menu) => menu.value === params.menuColor
   )
   const colorChoice: ColorChoice =
     params.menuColor === "inverted" ||
-    params.menuColor === "translucent-inverted"
+    params.menuColor === "inverted-translucent"
       ? "inverted"
       : "default"
   const surfaceChoice: SurfaceChoice =
-    params.menuColor === "translucent" ||
-    params.menuColor === "translucent-inverted"
+    params.menuColor === "default-translucent" ||
+    params.menuColor === "inverted-translucent"
       ? "translucent"
       : "solid"
+
+  React.useEffect(() => {
+    if (surfaceChoice === "solid") {
+      lastSolidMenuAccentRef.current = params.menuAccent
+    }
+  }, [params.menuAccent, surfaceChoice])
 
   const setColor = (color: ColorChoice) => {
     const nextMenuColor = getMenuColorValue(
       color,
       surfaceChoice === "translucent"
     )
+
     setParams({
       menuColor: nextMenuColor,
-      ...(surfaceChoice === "translucent" && { menuAccent: "subtle" }),
+      ...(isTranslucentMenuColor(nextMenuColor) && { menuAccent: "subtle" }),
     })
   }
 
   const setSurface = (choice: SurfaceChoice) => {
     const isTranslucent = choice === "translucent"
     const nextMenuColor = getMenuColorValue(colorChoice, isTranslucent)
+
     setParams({
       menuColor: nextMenuColor,
-      ...(isTranslucent && { menuAccent: "subtle" }),
+      menuAccent: isTranslucent ? "subtle" : lastSolidMenuAccentRef.current,
     })
   }
 

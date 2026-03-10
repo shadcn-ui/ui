@@ -93,8 +93,8 @@ export const PRESET_MENU_ACCENTS = ["subtle", "bold"] as const
 export const PRESET_MENU_COLORS = [
   "default",
   "inverted",
-  "translucent",
-  "translucent-inverted",
+  "default-translucent",
+  "inverted-translucent",
 ] as const
 
 // Field definitions in pack order. Total: 43 bits, 10 bits headroom.

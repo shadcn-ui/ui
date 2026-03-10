@@ -312,7 +312,7 @@ export function Component() {
     `)
   })
 
-  describe("menuColor is translucent", () => {
+  describe("menuColor is default-translucent", () => {
     test("inlines cn-menu-translucent styles", async () => {
       expect(
         await transform(
@@ -325,7 +325,7 @@ export function Component() {
 }`,
             config: {
               ...testConfig,
-              menuColor: "translucent",
+              menuColor: "default-translucent",
             },
           },
           [transformMenu]
@@ -351,7 +351,7 @@ export function Component() {
 }`,
             config: {
               ...testConfig,
-              menuColor: "translucent",
+              menuColor: "default-translucent",
             },
           },
           [transformMenu]
@@ -366,7 +366,7 @@ export function Component() {
     })
   })
 
-  describe("menuColor is translucent-inverted", () => {
+  describe("menuColor is inverted-translucent", () => {
     test("replaces cn-menu-target with dark and inlines cn-menu-translucent", async () => {
       expect(
         await transform(
@@ -379,7 +379,7 @@ export function Component() {
 }`,
             config: {
               ...testConfig,
-              menuColor: "translucent-inverted",
+              menuColor: "inverted-translucent",
             },
           },
           [transformMenu]
@@ -405,7 +405,7 @@ export function Component() {
 }`,
             config: {
               ...testConfig,
-              menuColor: "translucent-inverted",
+              menuColor: "inverted-translucent",
             },
           },
           [transformMenu]

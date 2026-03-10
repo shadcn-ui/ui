@@ -184,9 +184,10 @@ export function DesignSystemProvider({
     }
 
     const isInvertedMenu =
-      menuColor === "inverted" || menuColor === "translucent-inverted"
+      menuColor === "inverted" || menuColor === "inverted-translucent"
     const isTranslucentMenu =
-      menuColor === "translucent" || menuColor === "translucent-inverted"
+      menuColor === "default-translucent" ||
+      menuColor === "inverted-translucent"
     let frameId = 0
 
     const updateMenuElements = () => {

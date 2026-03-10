@@ -82,6 +82,16 @@ export const initOptionsSchema = z.object({
   existingConfig: z.record(z.unknown()).optional(),
   installStyleIndex: z.boolean().default(true),
   registryBaseConfig: rawConfigSchema.deepPartial().optional(),
+  menuColor: z
+    .enum([
+      "default",
+      "inverted",
+      "default-translucent",
+      "inverted-translucent",
+    ])
+    .optional(),
+  menuAccent: z.enum(["subtle", "bold"]).optional(),
+  iconLibrary: z.string().optional(),
 })
 
 export const init = new Command()
