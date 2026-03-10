@@ -986,5 +986,12 @@
     "url": "https://componentry.fun/r/{name}.json",
     "description": "Beautiful, interactive React + Tailwind components for modern product UIs.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='120 120 272 272' fill='currentColor'><path d='M120 160Q120 120 160 120H260Q300 120 300 160V220H352Q392 220 392 260V352Q392 392 352 392H260Q220 392 220 352V292H160Q120 292 120 252Z'/></svg>"
+  },
+  {
+    "name": "@fluid",
+    "homepage": "https://www.fluidfunctionalism.com",
+    "url": "https://www.fluidfunctionalism.com/r/{name}.json",
+    "description": "Fluid components used exclusively in service of functional clarity. Proximity hover, spring animations, font-weight transitions, and animated focus rings.",
+    "logo": "<svg width='40' height='40' viewBox='0 0 40 40' fill='none' xmlns='http://www.w3.org/2000/svg'><rect width='40' height='40' rx='8' fill='var(--foreground)'/><text x='20' y='26' text-anchor='middle' font-size='20' font-weight='700' font-family='system-ui' fill='var(--background)'>F</text></svg>"
   }
 ]
