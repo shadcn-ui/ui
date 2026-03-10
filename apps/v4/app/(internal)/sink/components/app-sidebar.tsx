@@ -180,7 +180,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               <Label htmlFor="search" className="sr-only">
                 Search
               </Label>
-              <InputGroup className="bg-background h-8 shadow-none">
+              <InputGroup className="h-8 bg-background shadow-none">
                 <InputGroupInput
                   id="search"
                   placeholder="Search the docs..."

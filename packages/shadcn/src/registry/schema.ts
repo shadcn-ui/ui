@@ -39,6 +39,7 @@ export const rawConfigSchema = z
       prefix: z.string().default("").optional(),
     }),
     iconLibrary: z.string().optional(),
+    rtl: z.coerce.boolean().default(false).optional(),
     menuColor: z.enum(["default", "inverted"]).default("default").optional(),
     menuAccent: z.enum(["subtle", "bold"]).default("subtle").optional(),
     aliases: z.object({
@@ -141,6 +142,7 @@ export const registryItemFontSchema = z.object({
   variable: z.string(),
   weight: z.array(z.string()).optional(),
   subsets: z.array(z.string()).optional(),
+  selector: z.string().optional(),
 })
 
 // Common fields shared by all registry items.
@@ -286,6 +288,7 @@ export const presetSchema = z.object({
   theme: z.string(),
   iconLibrary: z.string(),
   font: z.string(),
+  rtl: z.coerce.boolean().default(false),
   menuAccent: z.enum(["subtle", "bold"]),
   menuColor: z.enum(["default", "inverted"]),
   radius: z.string(),

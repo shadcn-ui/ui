@@ -91,7 +91,7 @@ import {
 export function FieldDemo() {
   return (
     <div className="@container w-full">
-      <div className="bg-muted grid gap-4 p-4 @3xl:grid-cols-2 @5xl:grid-cols-3 @[120rem]:grid-cols-4 @[140rem]:grid-cols-5">
+      <div className="grid gap-4 bg-muted p-4 @3xl:grid-cols-2 @5xl:grid-cols-3 @[120rem]:grid-cols-4 @[140rem]:grid-cols-5">
         <div className="flex flex-col gap-6">
           <BasicFields />
           <PrivacySettings />
@@ -599,8 +599,8 @@ function PrivacySettings() {
                   id="everyone-f8k"
                   className="sr-only"
                 />
-                <IconCircle className="stroke-input size-5 stroke-1 group-has-data-[state=checked]/field:hidden" />
-                <IconCircleCheckFilled className="fill-primary hidden size-5 group-has-data-[state=checked]/field:block" />
+                <IconCircle className="size-5 stroke-input stroke-1 group-has-data-[state=checked]/field:hidden" />
+                <IconCircleCheckFilled className="hidden size-5 fill-primary group-has-data-[state=checked]/field:block" />
               </Field>
             </FieldLabel>
             <FieldLabel htmlFor="followers-s7m">
@@ -616,8 +616,8 @@ function PrivacySettings() {
                   id="followers-s7m"
                   className="sr-only"
                 />
-                <IconCircle className="stroke-input size-5 stroke-1 group-has-data-[state=checked]/field:hidden" />
-                <IconCircleCheckFilled className="fill-primary hidden size-5 group-has-data-[state=checked]/field:block" />
+                <IconCircle className="size-5 stroke-input stroke-1 group-has-data-[state=checked]/field:hidden" />
+                <IconCircleCheckFilled className="hidden size-5 fill-primary group-has-data-[state=checked]/field:block" />
               </Field>
             </FieldLabel>
             <FieldLabel htmlFor="custom-q3r">
@@ -633,8 +633,8 @@ function PrivacySettings() {
                   id="custom-q3r"
                   className="sr-only"
                 />
-                <IconCircle className="stroke-input size-5 stroke-1 group-has-data-[state=checked]/field:hidden" />
-                <IconCircleCheckFilled className="fill-primary hidden size-5 group-has-data-[state=checked]/field:block" />
+                <IconCircle className="size-5 stroke-input stroke-1 group-has-data-[state=checked]/field:hidden" />
+                <IconCircleCheckFilled className="hidden size-5 fill-primary group-has-data-[state=checked]/field:block" />
               </Field>
             </FieldLabel>
           </RadioGroup>
@@ -699,7 +699,7 @@ function PrivacySettings() {
           <RadioGroup>
             <FieldLabel htmlFor="everyone-3-k4p">
               <Field orientation="horizontal">
-                <div className="bg-muted group-has-data-[state=checked]/field:bg-primary group-has-data-[state=checked]/field:text-primary-foreground group-has-data-[state=checked]/field:border-primary flex size-8 shrink-0 items-center justify-center rounded-full border transition-all duration-100">
+                <div className="flex size-8 shrink-0 items-center justify-center rounded-full border bg-muted transition-all duration-100 group-has-data-[state=checked]/field:border-primary group-has-data-[state=checked]/field:bg-primary group-has-data-[state=checked]/field:text-primary-foreground">
                   <IconWorld className="size-4" />
                 </div>
                 <FieldContent>
@@ -713,13 +713,13 @@ function PrivacySettings() {
                   id="everyone-3-k4p"
                   className="sr-only"
                 />
-                <IconCircle className="stroke-input size-5 stroke-1 group-has-data-[state=checked]/field:hidden" />
-                <IconCircleCheckFilled className="fill-primary hidden size-5 group-has-data-[state=checked]/field:block" />
+                <IconCircle className="size-5 stroke-input stroke-1 group-has-data-[state=checked]/field:hidden" />
+                <IconCircleCheckFilled className="hidden size-5 fill-primary group-has-data-[state=checked]/field:block" />
               </Field>
             </FieldLabel>
             <FieldLabel htmlFor="followers-3-m7j">
               <Field orientation="horizontal">
-                <div className="bg-muted group-has-data-[state=checked]/field:bg-primary group-has-data-[state=checked]/field:text-primary-foreground group-has-data-[state=checked]/field:border-primary flex size-8 shrink-0 items-center justify-center rounded-full border transition-all duration-100">
+                <div className="flex size-8 shrink-0 items-center justify-center rounded-full border bg-muted transition-all duration-100 group-has-data-[state=checked]/field:border-primary group-has-data-[state=checked]/field:bg-primary group-has-data-[state=checked]/field:text-primary-foreground">
                   <IconUsers className="size-4" />
                 </div>
                 <FieldContent>
@@ -733,13 +733,13 @@ function PrivacySettings() {
                   id="followers-3-m7j"
                   className="sr-only"
                 />
-                <IconCircle className="stroke-input size-5 stroke-1 group-has-data-[state=checked]/field:hidden" />
-                <IconCircleCheckFilled className="fill-primary hidden size-5 group-has-data-[state=checked]/field:block" />
+                <IconCircle className="size-5 stroke-input stroke-1 group-has-data-[state=checked]/field:hidden" />
+                <IconCircleCheckFilled className="hidden size-5 fill-primary group-has-data-[state=checked]/field:block" />
               </Field>
             </FieldLabel>
             <FieldLabel htmlFor="custom-3-r9w">
               <Field orientation="horizontal">
-                <div className="bg-muted group-has-data-[state=checked]/field:bg-primary group-has-data-[state=checked]/field:text-primary-foreground group-has-data-[state=checked]/field:border-primary flex size-8 shrink-0 items-center justify-center rounded-full border transition-all duration-100">
+                <div className="flex size-8 shrink-0 items-center justify-center rounded-full border bg-muted transition-all duration-100 group-has-data-[state=checked]/field:border-primary group-has-data-[state=checked]/field:bg-primary group-has-data-[state=checked]/field:text-primary-foreground">
                   <IconPlus className="size-4" />
                 </div>
                 <FieldContent>
@@ -753,8 +753,8 @@ function PrivacySettings() {
                   id="custom-3-r9w"
                   className="sr-only"
                 />
-                <IconCircle className="stroke-input size-5 stroke-1 group-has-data-[state=checked]/field:hidden" />
-                <IconCircleCheckFilled className="fill-primary hidden size-5 group-has-data-[state=checked]/field:block" />
+                <IconCircle className="size-5 stroke-input stroke-1 group-has-data-[state=checked]/field:hidden" />
+                <IconCircleCheckFilled className="hidden size-5 fill-primary group-has-data-[state=checked]/field:block" />
               </Field>
             </FieldLabel>
           </RadioGroup>
@@ -1034,7 +1034,7 @@ function ShippingMethods() {
         </CardContent>
       </Card>
       <form>
-        <FieldGroup className="bg-background gap-6 rounded-lg border p-6">
+        <FieldGroup className="gap-6 rounded-lg border bg-background p-6">
           <FieldSet>
             <FieldLegend>GPU Type</FieldLegend>
             <FieldDescription>

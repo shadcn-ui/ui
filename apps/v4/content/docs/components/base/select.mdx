@@ -59,6 +59,7 @@ npm install @base-ui/react
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
   SelectTrigger,
   SelectValue,
@@ -66,14 +67,24 @@ import {
 ```
 
 ```tsx showLineNumbers
-<Select>
+const items = [
+  { label: "Light", value: "light" },
+  { label: "Dark", value: "dark" },
+  { label: "System", value: "system" },
+]
+
+<Select items={items}>
   <SelectTrigger className="w-[180px]">
     <SelectValue placeholder="Theme" />
   </SelectTrigger>
   <SelectContent>
-    <SelectItem value="light">Light</SelectItem>
-    <SelectItem value="dark">Dark</SelectItem>
-    <SelectItem value="system">System</SelectItem>
+    <SelectGroup>
+      {items.map((item) => (
+        <SelectItem key={item.value} value={item.value}>
+          {item.label}
+        </SelectItem>
+      ))}
+    </SelectGroup>
   </SelectContent>
 </Select>
 ```
@@ -116,6 +127,12 @@ Add the `data-invalid` attribute to the `Field` component and the `aria-invalid`
 ```
 
 <ComponentPreview styleName="base-nova" name="select-invalid" />
+
+## RTL
+
+To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview styleName="base-nova" name="select-rtl" direction="rtl" />
 
 ## API Reference
 

@@ -21,7 +21,7 @@ export function ButtonGroupPopover() {
             <ChevronDownIcon />
           </Button>
         </PopoverTrigger>
-        <PopoverContent align="end" className="rounded-xl p-0 text-sm">
+        <PopoverContent align="end" className="gap-0 rounded-xl p-0 text-sm">
           <div className="px-4 py-3">
             <div className="text-sm font-medium">Agent Tasks</div>
           </div>

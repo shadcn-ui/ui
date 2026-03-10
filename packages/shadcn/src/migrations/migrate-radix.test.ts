@@ -888,10 +888,13 @@ describe("migrateRadix - package.json updates", () => {
       },
     }
 
+    // Old packages should remain - we don't remove them automatically.
     const expectedPackageJson = {
       name: "test-project",
       dependencies: {
         react: "^18.0.0",
+        "@radix-ui/react-dialog": "^1.0.0",
+        "@radix-ui/react-select": "^1.0.0",
         "other-package": "^1.0.0",
         "radix-ui": "latest",
       },
@@ -1030,23 +1033,26 @@ describe("migrateRadix - package.json updates", () => {
     )
   })
 
-  it("should only remove packages that were found in source files", async () => {
+  it("should not remove old @radix-ui packages from package.json", async () => {
     const mockPackageJson = {
       name: "test-project",
       dependencies: {
         react: "^18.0.0",
         "@radix-ui/react-dialog": "^1.0.0",
         "@radix-ui/react-select": "^1.0.0",
-        "@radix-ui/react-toast": "^1.0.0", // This one is NOT in source files
+        "@radix-ui/react-toast": "^1.0.0",
         "other-package": "^1.0.0",
       },
     }
 
+    // Old packages should remain - we don't remove them automatically.
     const expectedPackageJson = {
       name: "test-project",
       dependencies: {
         react: "^18.0.0",
-        "@radix-ui/react-toast": "^1.0.0", // Should remain since not found in source
+        "@radix-ui/react-dialog": "^1.0.0",
+        "@radix-ui/react-select": "^1.0.0",
+        "@radix-ui/react-toast": "^1.0.0",
         "other-package": "^1.0.0",
         "radix-ui": "latest",
       },
@@ -1084,22 +1090,24 @@ describe("migrateRadix - package.json updates", () => {
     )
   })
 
-  it("should not remove @radix-ui/react-icons from package.json", async () => {
+  it("should keep @radix-ui/react-icons and other packages in package.json", async () => {
     const mockPackageJson = {
       name: "test-project",
       dependencies: {
         react: "^18.0.0",
         "@radix-ui/react-dialog": "^1.0.0",
-        "@radix-ui/react-icons": "^1.3.0", // Should NOT be removed
+        "@radix-ui/react-icons": "^1.3.0",
         "other-package": "^1.0.0",
       },
     }
 
+    // Old packages should remain - we don't remove them automatically.
     const expectedPackageJson = {
       name: "test-project",
       dependencies: {
         react: "^18.0.0",
-        "@radix-ui/react-icons": "^1.3.0", // Should remain
+        "@radix-ui/react-dialog": "^1.0.0",
+        "@radix-ui/react-icons": "^1.3.0",
         "other-package": "^1.0.0",
         "radix-ui": "latest",
       },

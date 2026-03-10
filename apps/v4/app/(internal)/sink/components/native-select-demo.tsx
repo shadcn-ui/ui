@@ -17,7 +17,7 @@ export function NativeSelectDemo() {
   return (
     <div className="flex flex-col gap-8">
       <div className="flex flex-col gap-3">
-        <div className="text-muted-foreground text-sm font-medium">
+        <div className="text-sm font-medium text-muted-foreground">
           Basic Select
         </div>
         <div className="flex flex-col gap-4">
@@ -48,7 +48,7 @@ export function NativeSelectDemo() {
         </div>
       </div>
       <div className="flex flex-col gap-3">
-        <div className="text-muted-foreground text-sm font-medium">
+        <div className="text-sm font-medium text-muted-foreground">
           With Groups
         </div>
         <div className="flex flex-col gap-4">
@@ -89,7 +89,7 @@ export function NativeSelectDemo() {
         </div>
       </div>
       <div className="flex flex-col gap-3">
-        <div className="text-muted-foreground text-sm font-medium">
+        <div className="text-sm font-medium text-muted-foreground">
           Disabled State
         </div>
         <div className="flex flex-col gap-4">
@@ -110,7 +110,7 @@ export function NativeSelectDemo() {
         </div>
       </div>
       <div className="flex flex-col gap-3">
-        <div className="text-muted-foreground text-sm font-medium">
+        <div className="text-sm font-medium text-muted-foreground">
           Error State
         </div>
         <div className="flex flex-col gap-4">

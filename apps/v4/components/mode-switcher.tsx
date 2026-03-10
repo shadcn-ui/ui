@@ -4,6 +4,7 @@ import * as React from "react"
 import Script from "next/script"
 import { useTheme } from "next-themes"
 
+import { cn } from "@/lib/utils"
 import { useMetaColor } from "@/hooks/use-meta-color"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import { Kbd } from "@/registry/new-york-v4/ui/kbd"
@@ -15,7 +16,13 @@ import {
 
 export const DARK_MODE_FORWARD_TYPE = "dark-mode-forward"
 
-export function ModeSwitcher() {
+export function ModeSwitcher({
+  variant = "ghost",
+  className,
+}: {
+  variant?: React.ComponentProps<typeof Button>["variant"]
+  className?: React.ComponentProps<typeof Button>["className"]
+}) {
   const { setTheme, resolvedTheme } = useTheme()
   const { setMetaColor, metaColor } = useMetaColor()
 
@@ -27,34 +34,13 @@ export function ModeSwitcher() {
     setTheme(resolvedTheme === "dark" ? "light" : "dark")
   }, [resolvedTheme, setTheme])
 
-  React.useEffect(() => {
-    const down = (e: KeyboardEvent) => {
-      if ((e.key === "d" || e.key === "D") && !e.metaKey && !e.ctrlKey) {
-        if (
-          (e.target instanceof HTMLElement && e.target.isContentEditable) ||
-          e.target instanceof HTMLInputElement ||
-          e.target instanceof HTMLTextAreaElement ||
-          e.target instanceof HTMLSelectElement
-        ) {
-          return
-        }
-
-        e.preventDefault()
-        toggleTheme()
-      }
-    }
-
-    document.addEventListener("keydown", down)
-    return () => document.removeEventListener("keydown", down)
-  }, [toggleTheme])
-
   return (
     <Tooltip>
       <TooltipTrigger asChild>
         <Button
-          variant="ghost"
+          variant={variant}
           size="icon"
-          className="group/toggle extend-touch-target size-8"
+          className={cn("group/toggle extend-touch-target size-8", className)}
           onClick={toggleTheme}
         >
           <svg
@@ -88,6 +74,7 @@ export function ModeSwitcher() {
 
 export function DarkModeScript() {
   return (
+    // eslint-disable-next-line @next/next/no-before-interactive-script-outside-document
     <Script
       id="dark-mode-listener"
       strategy="beforeInteractive"
@@ -96,7 +83,7 @@ export function DarkModeScript() {
             (function() {
               // Forward D key
               document.addEventListener('keydown', function(e) {
-                if ((e.key === 'd' || e.key === 'D') && !e.metaKey && !e.ctrlKey) {
+                if ((e.key === 'd' || e.key === 'D') && !e.metaKey && !e.ctrlKey && !e.altKey) {
                   if (
                     (e.target instanceof HTMLElement && e.target.isContentEditable) ||
                     e.target instanceof HTMLInputElement ||
