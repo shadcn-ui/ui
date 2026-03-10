@@ -63,20 +63,15 @@ export function DesignSystemProvider({
     shallow: true, // No need to go through the server…
     history: "replace", // …or push updates into the iframe history.
   })
-  const [liveSearchParams, setLiveSearchParams] = React.useState(searchParams)
   const [isReady, setIsReady] = React.useState(false)
   const { style, theme, font, baseColor, menuAccent, menuColor, radius } =
-    liveSearchParams
+    searchParams
   const effectiveRadius = style === "lyra" ? "none" : radius
   const selectedFont = React.useMemo(
     () => FONTS.find((fontOption) => fontOption.value === font),
     [font]
   )
   const initialFontSansRef = React.useRef<string | null>(null)
-
-  React.useEffect(() => {
-    setLiveSearchParams(searchParams)
-  }, [searchParams])
 
   React.useEffect(() => {
     initialFontSansRef.current =
@@ -100,7 +95,6 @@ export function DesignSystemProvider({
 
   const handleDesignSystemMessage = React.useCallback(
     (nextParams: DesignSystemSearchParams) => {
-      setLiveSearchParams(nextParams)
       setSearchParams(nextParams)
     },
     [setSearchParams]
@@ -110,10 +104,6 @@ export function DesignSystemProvider({
 
   React.useEffect(() => {
     if (style === "lyra" && radius !== "none") {
-      setLiveSearchParams((prev) => ({
-        ...prev,
-        radius: "none",
-      }))
       setSearchParams({ radius: "none" })
     }
   }, [style, radius, setSearchParams])
