@@ -34,32 +34,6 @@ export function ModeSwitcher({
     setTheme(resolvedTheme === "dark" ? "light" : "dark")
   }, [resolvedTheme, setTheme])
 
-  React.useEffect(() => {
-    const down = (e: KeyboardEvent) => {
-      if (
-        (e.key === "d" || e.key === "D") &&
-        !e.metaKey &&
-        !e.ctrlKey &&
-        !e.altKey
-      ) {
-        if (
-          (e.target instanceof HTMLElement && e.target.isContentEditable) ||
-          e.target instanceof HTMLInputElement ||
-          e.target instanceof HTMLTextAreaElement ||
-          e.target instanceof HTMLSelectElement
-        ) {
-          return
-        }
-
-        e.preventDefault()
-        toggleTheme()
-      }
-    }
-
-    document.addEventListener("keydown", down)
-    return () => document.removeEventListener("keydown", down)
-  }, [toggleTheme])
-
   return (
     <Tooltip>
       <TooltipTrigger asChild>
