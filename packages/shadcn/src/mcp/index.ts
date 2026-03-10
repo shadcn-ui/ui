@@ -1,3 +1,5 @@
+import fs from "fs/promises"
+import path from "path"
 import { getRegistryItems, searchRegistries } from "@/src/registry"
 import { getShadcnRegistryIndex } from "@/src/registry/api"
 import { RegistryError } from "@/src/registry/errors"
@@ -23,6 +25,8 @@ import { ensureRegistriesInConfig } from "@/src/utils/registries"
 import {
   findSkillsDirectory,
   formatAddResult,
+  formatApplyResult,
+  formatComponentDiff,
   formatComponentDocs,
   formatDryRunForMcp,
   formatItemExamples,
@@ -231,6 +235,45 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
               .describe(
                 "If true, overwrite existing files. Default: false"
               ),
+          })
+        ),
+      },
+      {
+        name: "get_component_diff",
+        description: dedent`Show a per-file diff between what is currently in the project and what 'shadcn add' would write.
+          New files show full content; existing files show a unified diff (current → incoming); unchanged files are listed as skipped.
+          After showing this diff to the user and asking which files to accept or skip, call \`apply_component_diff\` with their choices.`,
+        inputSchema: zodToJsonSchema(
+          z.object({
+            components: z
+              .array(z.string())
+              .describe(
+                "Array of component identifiers with registry prefix (e.g., ['@shadcn/button', '@shadcn/card'])"
+              ),
+          })
+        ),
+      },
+      {
+        name: "apply_component_diff",
+        description:
+          "Apply per-file resolutions from get_component_diff. Writes accepted files, skips rejected ones, and always installs dependencies and updates CSS/env vars.",
+        inputSchema: zodToJsonSchema(
+          z.object({
+            components: z
+              .array(z.string())
+              .describe(
+                "Array of component identifiers with registry prefix (e.g., ['@shadcn/button', '@shadcn/card'])"
+              ),
+            resolutions: z
+              .array(
+                z.object({
+                  path: z.string().describe("Relative file path from the diff"),
+                  resolution: z
+                    .enum(["accept", "skip"])
+                    .describe("accept to write the file, skip to leave it unchanged"),
+                })
+              )
+              .describe("Per-file resolutions from the user"),
           })
         ),
       },
@@ -715,6 +758,125 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
             {
               type: "text",
               text: formatProjectInfo(data),
+            },
+          ],
+        }
+      }
+
+      case "get_component_diff": {
+        const { components } = z
+          .object({ components: z.array(z.string()) })
+          .parse(request.params.arguments)
+
+        const cwd = process.cwd()
+        const config = await getConfig(cwd)
+
+        if (!config) {
+          return {
+            content: [
+              {
+                type: "text",
+                text: dedent`No components.json found in ${cwd}.
+
+                Run 'shadcn init' to create one before previewing component changes.`,
+              },
+            ],
+            isError: true,
+          }
+        }
+
+        const { config: updatedConfig } = await ensureRegistriesInConfig(
+          components,
+          config,
+          { silent: true, writeFile: false }
+        )
+
+        const result = await dryRunComponents(components, updatedConfig, {
+          overwrite: true,
+        })
+
+        return {
+          content: [
+            {
+              type: "text",
+              text: formatComponentDiff(result, components),
+            },
+          ],
+        }
+      }
+
+      case "apply_component_diff": {
+        const { components, resolutions } = z
+          .object({
+            components: z.array(z.string()),
+            resolutions: z.array(
+              z.object({
+                path: z.string(),
+                resolution: z.enum(["accept", "skip"]),
+              })
+            ),
+          })
+          .parse(request.params.arguments)
+
+        const cwd = process.cwd()
+        const config = await getConfig(cwd)
+
+        if (!config) {
+          return {
+            content: [
+              {
+                type: "text",
+                text: dedent`No components.json found in ${cwd}.
+
+                Run 'shadcn init' to create one before applying component changes.`,
+              },
+            ],
+            isError: true,
+          }
+        }
+
+        const { config: updatedConfig } = await ensureRegistriesInConfig(
+          components,
+          config,
+          { silent: true, writeFile: true }
+        )
+
+        const result = await dryRunComponents(components, updatedConfig, {
+          overwrite: true,
+        })
+
+        const resolutionMap = new Map(
+          resolutions.map((r) => [r.path, r.resolution])
+        )
+
+        const written: string[] = []
+        const skipped: string[] = []
+
+        for (const file of result.files) {
+          const resolution =
+            resolutionMap.get(file.path) ??
+            (file.action === "create" ? "accept" : "skip")
+
+          if (resolution === "accept" && file.action !== "skip") {
+            const absPath = path.join(cwd, file.path)
+            await fs.mkdir(path.dirname(absPath), { recursive: true })
+            await fs.writeFile(absPath, file.content, "utf-8")
+            written.push(file.path)
+          } else {
+            skipped.push(file.path)
+          }
+        }
+
+        await addComponents(components, updatedConfig, {
+          overwrite: false,
+          silent: true,
+        })
+
+        return {
+          content: [
+            {
+              type: "text",
+              text: formatApplyResult(written, skipped, result),
             },
           ],
         }

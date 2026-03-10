@@ -5,6 +5,7 @@ import path from "path"
 import { collectInfo } from "@/src/commands/info"
 import type { DryRunResult } from "@/src/utils/dry-run"
 import { getRegistriesConfig } from "@/src/registry/api"
+import { structuredPatch } from "diff"
 import { registryItemSchema, searchResultsSchema } from "@/src/schema"
 import { getBase, getConfig } from "@/src/utils/get-config"
 import {
@@ -392,6 +393,117 @@ export function formatAddResult(
   if (result.docs) {
     lines.push("\n### Docs")
     lines.push(result.docs)
+  }
+
+  return lines.join("\n")
+}
+
+export function formatComponentDiff(
+  result: DryRunResult,
+  components: string[]
+): string {
+  const lines: string[] = []
+  lines.push(`## Diff: ${components.join(", ")}`)
+
+  const overwriteFiles = result.files.filter((f) => f.action === "overwrite")
+  const createFiles = result.files.filter((f) => f.action === "create")
+  const skipFiles = result.files.filter((f) => f.action === "skip")
+
+  if (createFiles.length > 0) {
+    lines.push("\n### New files (will be created)")
+    for (const file of createFiles) {
+      lines.push(`\n#### ${file.path}`)
+      lines.push("```tsx")
+      lines.push(file.content)
+      lines.push("```")
+    }
+  }
+
+  if (overwriteFiles.length > 0) {
+    lines.push("\n### Changed files (current → incoming)")
+    for (const file of overwriteFiles) {
+      lines.push(`\n#### ${file.path}`)
+      const patch = structuredPatch(
+        file.path,
+        file.path,
+        file.existingContent!,
+        file.content,
+        "",
+        "",
+        { context: 3 }
+      )
+      for (const hunk of patch.hunks) {
+        lines.push(
+          `@@ -${hunk.oldStart},${hunk.oldLines} +${hunk.newStart},${hunk.newLines} @@`
+        )
+        for (const line of hunk.lines) {
+          lines.push(line)
+        }
+      }
+    }
+  }
+
+  if (skipFiles.length > 0) {
+    lines.push("\n### Unchanged files (will be skipped)")
+    for (const file of skipFiles) lines.push(`- ${file.path}`)
+  }
+
+  lines.push("\n---")
+  lines.push(
+    "Use `apply_component_diff` with `resolutions` to accept or skip each file."
+  )
+  const filesToResolve = result.files
+    .filter((f) => f.action !== "skip")
+    .map((f) => f.path)
+    .join(", ")
+  lines.push(`Files to resolve: ${filesToResolve}`)
+
+  return lines.join("\n")
+}
+
+export function formatApplyResult(
+  written: string[],
+  skipped: string[],
+  result: DryRunResult
+): string {
+  const lines: string[] = []
+
+  lines.push("## Apply Result")
+
+  if (written.length > 0) {
+    lines.push("\n### Written files")
+    for (const f of written) lines.push(`- ${f}`)
+  }
+
+  if (skipped.length > 0) {
+    lines.push("\n### Skipped files")
+    for (const f of skipped) lines.push(`- ${f}`)
+  }
+
+  if (result.dependencies.length > 0) {
+    lines.push("\n### Dependencies installed")
+    lines.push(result.dependencies.join(", "))
+  }
+
+  if (result.devDependencies.length > 0) {
+    lines.push("\n### Dev dependencies installed")
+    lines.push(result.devDependencies.join(", "))
+  }
+
+  if (result.css) {
+    lines.push("\n### CSS")
+    lines.push(`file: ${result.css.path} (${result.css.action})`)
+    if (result.css.cssVarsCount > 0) {
+      lines.push(`cssVars: ${result.css.cssVarsCount} variables`)
+    }
+  }
+
+  if (result.envVars) {
+    lines.push("\n### Environment Variables")
+    lines.push(`file: ${result.envVars.path} (${result.envVars.action})`)
+    for (const key of Object.keys(result.envVars.variables)) {
+      lines.push(`- ${key}`)
+    }
   }
 
   return lines.join("\n")
