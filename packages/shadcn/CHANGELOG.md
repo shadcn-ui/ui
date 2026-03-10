@@ -1,5 +1,11 @@
 # @shadcn/ui
 
+## 4.0.3
+
+### Patch Changes
+
+- [#9950](https://github.com/shadcn-ui/ui/pull/9950) [`ce2c3ca688916db4fdb5fe173e9c6902f78696ed`](https://github.com/shadcn-ui/ui/commit/ce2c3ca688916db4fdb5fe173e9c6902f78696ed) Thanks [@shadcn](https://github.com/shadcn)! - add support for translucent menu
+
 ## 4.0.2
 
 ### Patch Changes
