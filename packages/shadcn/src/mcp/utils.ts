@@ -341,6 +341,62 @@ export function formatProjectInfo(
   return lines.join("\n")
 }
 
+export function formatAddResult(
+  result: DryRunResult,
+  components: string[]
+): string {
+  const lines: string[] = []
+
+  lines.push(`## Added: ${components.join(", ")}`)
+
+  if (result.files.length > 0) {
+    lines.push("\n### Files")
+    for (const file of result.files) {
+      lines.push(`- [${file.action}] ${file.path}`)
+    }
+  }
+
+  if (result.dependencies.length > 0) {
+    lines.push("\n### Dependencies installed")
+    lines.push(result.dependencies.join(", "))
+  }
+
+  if (result.devDependencies.length > 0) {
+    lines.push("\n### Dev dependencies installed")
+    lines.push(result.devDependencies.join(", "))
+  }
+
+  if (result.css) {
+    lines.push("\n### CSS")
+    lines.push(`file: ${result.css.path} (${result.css.action})`)
+    if (result.css.cssVarsCount > 0) {
+      lines.push(`cssVars: ${result.css.cssVarsCount} variables`)
+    }
+  }
+
+  if (result.envVars) {
+    lines.push("\n### Environment Variables")
+    lines.push(`file: ${result.envVars.path} (${result.envVars.action})`)
+    for (const key of Object.keys(result.envVars.variables)) {
+      lines.push(`- ${key}`)
+    }
+  }
+
+  if (result.fonts.length > 0) {
+    lines.push("\n### Fonts")
+    for (const font of result.fonts) {
+      lines.push(`- ${font.name} (${font.provider})`)
+    }
+  }
+
+  if (result.docs) {
+    lines.push("\n### Docs")
+    lines.push(result.docs)
+  }
+
+  return lines.join("\n")
+}
+
 export function formatDryRunForMcp(
   result: DryRunResult,
   components: string[]

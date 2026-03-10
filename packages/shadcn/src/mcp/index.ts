@@ -11,6 +11,7 @@ import { z } from "zod"
 import { zodToJsonSchema } from "zod-to-json-schema"
 
 import { collectInfo } from "@/src/commands/info"
+import { addComponents } from "@/src/utils/add-components"
 import { dryRunComponents } from "@/src/utils/dry-run"
 import { getBase, getConfig } from "@/src/utils/get-config"
 import {
@@ -21,6 +22,7 @@ import { ensureRegistriesInConfig } from "@/src/utils/registries"
 
 import {
   findSkillsDirectory,
+  formatAddResult,
   formatComponentDocs,
   formatDryRunForMcp,
   formatItemExamples,
@@ -208,6 +210,26 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
               .optional()
               .describe(
                 "If true, existing files are marked as 'overwrite' instead of 'skip'. Default: false"
+              ),
+          })
+        ),
+      },
+      {
+        name: "add_component",
+        description:
+          "Install shadcn components into the project. Writes files, installs dependencies, and updates CSS. Requires components.json to exist. Use dry_run_add first to preview changes.",
+        inputSchema: zodToJsonSchema(
+          z.object({
+            components: z
+              .array(z.string())
+              .describe(
+                "Array of component identifiers with registry prefix (e.g., ['@shadcn/button', '@shadcn/card'])"
+              ),
+            overwrite: z
+              .boolean()
+              .optional()
+              .describe(
+                "If true, overwrite existing files. Default: false"
               ),
           })
         ),
@@ -473,6 +495,57 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
               - [ ] Check for TypeScript errors
               - [ ] Use the Playwright MCP if available.
               `,
+            },
+          ],
+        }
+      }
+
+      case "add_component": {
+        const { components, overwrite } = z
+          .object({
+            components: z.array(z.string()),
+            overwrite: z.boolean().optional(),
+          })
+          .parse(request.params.arguments)
+
+        const cwd = process.cwd()
+        const config = await getConfig(cwd)
+
+        if (!config) {
+          return {
+            content: [
+              {
+                type: "text",
+                text: dedent`No components.json found in ${cwd}.
+
+                Run 'shadcn init' to create one before adding components.`,
+              },
+            ],
+            isError: true,
+          }
+        }
+
+        const { config: updatedConfig } = await ensureRegistriesInConfig(
+          components,
+          config,
+          { silent: true, writeFile: true }
+        )
+
+        // Collect what will be added before applying.
+        const preview = await dryRunComponents(components, updatedConfig, {
+          overwrite,
+        })
+
+        await addComponents(components, updatedConfig, {
+          overwrite,
+          silent: true,
+        })
+
+        return {
+          content: [
+            {
+              type: "text",
+              text: formatAddResult(preview, components),
             },
           ],
         }
