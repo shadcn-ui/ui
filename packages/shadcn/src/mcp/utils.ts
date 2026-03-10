@@ -135,6 +135,38 @@ export function formatItemExamples(
   return header + sections.join("\n\n---\n\n")
 }
 
+export function formatComponentDocs(
+  results: Array<{
+    component: string
+    base: string
+    links: Record<string, string>
+  }>,
+  notFound: string[] = []
+): string {
+  const lines: string[] = []
+
+  if (notFound.length > 0) {
+    lines.push(
+      `Components not found in registry: ${notFound.join(", ")}\n`
+    )
+  }
+
+  if (results.length === 0) {
+    lines.push("No documentation links found for the requested components.")
+    return lines.join("\n")
+  }
+
+  for (const { component, base, links } of results) {
+    lines.push(`## ${component} (base: ${base})`)
+    for (const [key, url] of Object.entries(links)) {
+      lines.push(`- ${key}: ${url}`)
+    }
+    lines.push("")
+  }
+
+  return lines.join("\n").trimEnd()
+}
+
 export function formatProjectInfo(
   data: ReturnType<typeof collectInfo>
 ): string {

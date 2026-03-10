@@ -1,4 +1,5 @@
 import { getRegistryItems, searchRegistries } from "@/src/registry"
+import { getShadcnRegistryIndex } from "@/src/registry/api"
 import { RegistryError } from "@/src/registry/errors"
 import { Server } from "@modelcontextprotocol/sdk/server/index.js"
 import {
@@ -17,6 +18,7 @@ import {
 } from "@/src/utils/get-project-info"
 
 import {
+  formatComponentDocs,
   formatItemExamples,
   formatProjectInfo,
   formatRegistryItems,
@@ -154,6 +156,20 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
         description:
           "Get project context: framework, Tailwind config, import aliases, installed components, and components.json settings. Use this to understand the project structure before adding or modifying components.",
         inputSchema: zodToJsonSchema(z.object({})),
+      },
+      {
+        name: "get_component_docs",
+        description:
+          "Get documentation links for shadcn components: official docs, API reference, source code, and usage examples. Use this to learn how to use a component before adding it to your project.",
+        inputSchema: zodToJsonSchema(
+          z.object({
+            components: z
+              .array(z.string())
+              .describe(
+                "Array of shadcn component names (e.g., ['button', 'card', 'dialog'])"
+              ),
+          })
+        ),
       },
     ],
   }
@@ -417,6 +433,63 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
               - [ ] Check for TypeScript errors
               - [ ] Use the Playwright MCP if available.
               `,
+            },
+          ],
+        }
+      }
+
+      case "get_component_docs": {
+        const { components } = z
+          .object({ components: z.array(z.string()) })
+          .parse(request.params.arguments)
+
+        const cwd = process.cwd()
+        const config = await getConfig(cwd)
+        const base = getBase(config?.style)
+
+        const index = await getShadcnRegistryIndex()
+        if (!index) {
+          return {
+            content: [
+              {
+                type: "text",
+                text: "Failed to fetch the registry index.",
+              },
+            ],
+            isError: true,
+          }
+        }
+
+        const results: {
+          component: string
+          base: string
+          links: Record<string, string>
+        }[] = []
+        const notFound: string[] = []
+
+        const metaLinksSchema = z.record(
+          z.string(),
+          z.record(z.string(), z.string())
+        )
+
+        for (const component of components) {
+          const item = index.find((entry) => entry.name === component)
+          if (!item) {
+            notFound.push(component)
+            continue
+          }
+          const parsed = metaLinksSchema.safeParse(item.meta?.links)
+          const links = parsed.success ? parsed.data[base] : undefined
+          if (links && Object.keys(links).length > 0) {
+            results.push({ component, base, links })
+          }
+        }
+
+        return {
+          content: [
+            {
+              type: "text",
+              text: formatComponentDocs(results, notFound),
             },
           ],
         }
