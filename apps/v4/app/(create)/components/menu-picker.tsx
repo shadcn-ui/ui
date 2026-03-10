@@ -26,11 +26,6 @@ import {
 type ColorChoice = "default" | "inverted"
 type SurfaceChoice = "solid" | "translucent"
 
-type MenuItemConfig = {
-  value: MenuColorValue
-  label: string
-}
-
 function getMenuColorValue(
   color: ColorChoice,
   translucent: boolean
@@ -42,13 +37,12 @@ function getMenuColorValue(
   return translucent ? "inverted-translucent" : "inverted"
 }
 
-const MENU_ITEMS: MenuItemConfig[] = [
+const MENU_OPTIONS: { value: MenuColorValue; label: string }[] = [
   { value: "default", label: "Default / Solid" },
   { value: "default-translucent", label: "Default / Translucent" },
   { value: "inverted", label: "Inverted / Solid" },
   { value: "inverted-translucent", label: "Inverted / Translucent" },
 ]
-const ALL_OPTIONS = MENU_ITEMS
 
 export function MenuColorPicker({
   isMobile,
@@ -62,7 +56,7 @@ export function MenuColorPicker({
   const mounted = useMounted()
   const lastSolidMenuAccentRef = React.useRef(params.menuAccent)
   const isDark = mounted && resolvedTheme === "dark"
-  const currentMenu = ALL_OPTIONS.find(
+  const currentMenu = MENU_OPTIONS.find(
     (menu) => menu.value === params.menuColor
   )
   const colorChoice: ColorChoice =
@@ -109,7 +103,7 @@ export function MenuColorPicker({
       <Picker>
         <PickerTrigger>
           <div className="flex flex-col justify-start text-left">
-            <div className="text-xs text-muted-foreground">Menu </div>
+            <div className="text-xs text-muted-foreground">Menu</div>
             <div className="text-sm font-medium text-foreground">
               {currentMenu?.label}
             </div>

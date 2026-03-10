@@ -169,13 +169,16 @@ export function useDesignSystemSearchParams(options: Options = {}) {
   })
 
   // If preset param exists, decode it and overlay on raw params.
-  const params =
-    rawParams.preset && isPresetCode(rawParams.preset)
-      ? normalizeDesignSystemParams({
-          ...rawParams,
-          ...(decodePreset(rawParams.preset) ?? {}),
-        })
-      : normalizeDesignSystemParams(rawParams)
+  const params = React.useMemo(
+    () =>
+      rawParams.preset && isPresetCode(rawParams.preset)
+        ? normalizeDesignSystemParams({
+            ...rawParams,
+            ...(decodePreset(rawParams.preset) ?? {}),
+          })
+        : normalizeDesignSystemParams(rawParams),
+    [rawParams]
+  )
 
   // Use ref so setParams callback stays stable across renders.
   const paramsRef = React.useRef(params)

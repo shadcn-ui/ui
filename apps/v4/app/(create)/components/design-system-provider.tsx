@@ -203,6 +203,9 @@ export function DesignSystemProvider({
           }
         }
 
+        // When translucent is enabled, move from data-attr to class so styles apply.
+        // When disabled, move back to a data-attr so the element stays queryable
+        // for future toggles without losing its identity as a menu element.
         if (isTranslucentMenu) {
           element.classList.add("cn-menu-translucent")
           element.removeAttribute("data-menu-translucent")
