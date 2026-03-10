@@ -21,7 +21,7 @@ import {
 import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
 
 type ColorChoice = "default" | "inverted"
-type TranslucentChoice = "yes" | "no"
+type SurfaceChoice = "solid" | "translucent"
 
 type MenuItemConfig = {
   value: MenuColorValue
@@ -35,14 +35,15 @@ function getMenuColorValue(
   if (color === "default") {
     return translucent ? "translucent" : "default"
   }
+
   return translucent ? "translucent-inverted" : "inverted"
 }
 
 const MENU_ITEMS: MenuItemConfig[] = [
-  { value: "default", label: "Default" },
-  { value: "translucent", label: "Translucent" },
-  { value: "inverted", label: "Inverted" },
-  { value: "translucent-inverted", label: "Inverted (translucent)" },
+  { value: "default", label: "Default / Solid" },
+  { value: "translucent", label: "Default / Translucent" },
+  { value: "inverted", label: "Inverted / Solid" },
+  { value: "translucent-inverted", label: "Inverted / Translucent" },
 ]
 const ALL_OPTIONS = MENU_ITEMS
 
@@ -65,22 +66,25 @@ export function MenuColorPicker({
     params.menuColor === "translucent-inverted"
       ? "inverted"
       : "default"
-  const translucentChoice: TranslucentChoice =
+  const surfaceChoice: SurfaceChoice =
     params.menuColor === "translucent" ||
     params.menuColor === "translucent-inverted"
-      ? "yes"
-      : "no"
+      ? "translucent"
+      : "solid"
 
   const setColor = (color: ColorChoice) => {
-    const nextMenuColor = getMenuColorValue(color, translucentChoice === "yes")
+    const nextMenuColor = getMenuColorValue(
+      color,
+      surfaceChoice === "translucent"
+    )
     setParams({
       menuColor: nextMenuColor,
-      ...(translucentChoice === "yes" && { menuAccent: "subtle" }),
+      ...(surfaceChoice === "translucent" && { menuAccent: "subtle" }),
     })
   }
 
-  const setTranslucent = (choice: TranslucentChoice) => {
-    const isTranslucent = choice === "yes"
+  const setSurface = (choice: SurfaceChoice) => {
+    const isTranslucent = choice === "translucent"
     const nextMenuColor = getMenuColorValue(colorChoice, isTranslucent)
     setParams({
       menuColor: nextMenuColor,
@@ -133,18 +137,18 @@ export function MenuColorPicker({
           </PickerGroup>
           <PickerSeparator />
           <PickerGroup>
-            <PickerLabel>Translucent</PickerLabel>
+            <PickerLabel>Appearance</PickerLabel>
             <PickerRadioGroup
-              value={translucentChoice}
+              value={surfaceChoice}
               onValueChange={(value) => {
-                setTranslucent(value as TranslucentChoice)
+                setSurface(value as SurfaceChoice)
               }}
             >
-              <PickerRadioItem value="yes" closeOnClick={isMobile}>
-                Yes
+              <PickerRadioItem value="solid" closeOnClick={isMobile}>
+                Solid
               </PickerRadioItem>
-              <PickerRadioItem value="no" closeOnClick={isMobile}>
-                No
+              <PickerRadioItem value="translucent" closeOnClick={isMobile}>
+                Translucent
               </PickerRadioItem>
             </PickerRadioGroup>
           </PickerGroup>
