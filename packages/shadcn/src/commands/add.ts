@@ -24,6 +24,9 @@ import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import { ensureRegistriesInConfig } from "@/src/utils/registries"
+import { formatSecurityReport } from "@/src/utils/security/formatter"
+import { defaultRules } from "@/src/utils/security/rules"
+import { scanDryRunResult } from "@/src/utils/security/scanner"
 import { spinner } from "@/src/utils/spinner"
 import { updateAppIndex } from "@/src/utils/update-app-index"
 import { Command } from "commander"
@@ -41,6 +44,7 @@ export const addOptionsSchema = z.object({
   dryRun: z.boolean(),
   diff: z.union([z.string(), z.literal(true)]).optional(),
   view: z.union([z.string(), z.literal(true)]).optional(),
+  security: z.boolean(),
 })
 
 export const add = new Command()
@@ -60,6 +64,7 @@ export const add = new Command()
   .option("--dry-run", "preview changes without writing files.", false)
   .option("--diff [path]", "show diff for a file.")
   .option("--view [path]", "show file contents.")
+  .option("--security", "scan for security threats before installing.", false)
   .action(async (components, opts) => {
     try {
       const options = addOptionsSchema.parse({
@@ -70,7 +75,8 @@ export const add = new Command()
 
       await loadEnvFiles(options.cwd)
 
-      const isDryRun = options.dryRun || options.diff || options.view
+      const isDryRun =
+        options.dryRun || options.diff || options.view || options.security
 
       let initialConfig = await getConfig(options.cwd)
       if (!initialConfig) {
@@ -282,6 +288,19 @@ export const add = new Command()
           }
         )
         dryRunSpinner.stop()
+
+        if (options.security) {
+          const scanSpinner = spinner("Scanning for security issues.", {
+            silent: options.silent,
+          }).start()
+          const securityReport = scanDryRunResult(dryRunResult, defaultRules)
+          scanSpinner.stop()
+          logger.log(formatSecurityReport(securityReport, options.components))
+          if (!securityReport.passed) {
+            process.exit(1)
+          }
+          return
+        }
 
         logger.log(
           formatDryRunResult(dryRunResult, options.components, {
