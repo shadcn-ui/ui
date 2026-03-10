@@ -10,11 +10,21 @@ import {
 } from "../utils/helpers"
 import { createRegistryServer } from "../utils/registry"
 
-describe("shadcn init - next-app", () => {
-  it("should init with default configuration", async () => {
-    // Sleep for 1 second to avoid race condition with the registry server.
-    await new Promise((resolve) => setTimeout(resolve, 2000))
+describe("shadcn init - next-app", async () => {
+  const registry = await createRegistryServer([], {
+    port: 4000,
+    path: "/r",
+  })
 
+  beforeAll(async () => {
+    await registry.start()
+  })
+
+  afterAll(async () => {
+    await registry.stop()
+  })
+
+  it("should init with default configuration", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
     await npxShadcn(fixturePath, ["init", "--defaults"])
 
