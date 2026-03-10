@@ -18,6 +18,7 @@ import {
 } from "@/src/utils/get-project-info"
 
 import {
+  findSkillsDirectory,
   formatComponentDocs,
   formatItemExamples,
   formatProjectInfo,
@@ -25,6 +26,8 @@ import {
   formatSearchResultsWithPagination,
   getMcpConfig,
   npxShadcn,
+  readSkillsContent,
+  SKILLS_TOPICS,
 } from "./utils"
 
 export const server = new Server(
@@ -167,6 +170,21 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
               .array(z.string())
               .describe(
                 "Array of shadcn component names (e.g., ['button', 'card', 'dialog'])"
+              ),
+          })
+        ),
+      },
+      {
+        name: "get_skills_context",
+        description:
+          "Get shadcn best practices and patterns from skills files installed in the project. Returns guidelines for styling, forms, icons, composition, and more. If no skills are installed, returns installation instructions.",
+        inputSchema: zodToJsonSchema(
+          z.object({
+            topics: z
+              .array(z.enum(SKILLS_TOPICS))
+              .optional()
+              .describe(
+                `Optional list of topics to filter. Omit to get the main overview (SKILL.md). Available: ${SKILLS_TOPICS.join(", ")}`
               ),
           })
         ),
@@ -433,6 +451,55 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
               - [ ] Check for TypeScript errors
               - [ ] Use the Playwright MCP if available.
               `,
+            },
+          ],
+        }
+      }
+
+      case "get_skills_context": {
+        const { topics } = z
+          .object({ topics: z.array(z.enum(SKILLS_TOPICS)).optional() })
+          .parse(request.params.arguments)
+
+        const cwd = process.cwd()
+        const skillsDir = await findSkillsDirectory(cwd)
+
+        if (!skillsDir) {
+          return {
+            content: [
+              {
+                type: "text",
+                text: dedent`No shadcn skills found in this project.
+
+                To install shadcn skills, run:
+                \`npx skills add shadcn/ui\`
+
+                Skills provide best practices and patterns for:
+                - styling, forms, icons, composition
+                - base-vs-radix, cli, customization, mcp`,
+              },
+            ],
+          }
+        }
+
+        const content = await readSkillsContent(skillsDir, topics)
+
+        if (!content) {
+          return {
+            content: [
+              {
+                type: "text",
+                text: "Skills directory found but no content available for the requested topics.",
+              },
+            ],
+          }
+        }
+
+        return {
+          content: [
+            {
+              type: "text",
+              text: content,
             },
           ],
         }

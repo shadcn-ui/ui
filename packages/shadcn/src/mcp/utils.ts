@@ -1,3 +1,7 @@
+import { existsSync } from "fs"
+import fs from "fs/promises"
+import { homedir } from "os"
+import path from "path"
 import { collectInfo } from "@/src/commands/info"
 import { getRegistriesConfig } from "@/src/registry/api"
 import { registryItemSchema, searchResultsSchema } from "@/src/schema"
@@ -11,6 +15,79 @@ import { z } from "zod"
 export { getBase, getConfig, getProjectComponents, getProjectInfo }
 
 const SHADCN_CLI_COMMAND = "shadcn@latest"
+
+const SKILLS_SEARCH_PATHS = [
+  ".claude/skills",
+  ".cursor/skills",
+  ".copilot/skills",
+  ".codex/skills",
+  ".junie/skills", // Junie
+  ".config/agents/skills", // Kimi CLI
+  ".config/opencode/skills", // OpenCode
+  "skills",
+]
+
+export const SKILLS_TOPICS = [
+  "styling",
+  "forms",
+  "icons",
+  "composition",
+  "base-vs-radix",
+  "cli",
+  "customization",
+  "mcp",
+] as const
+
+export type SkillsTopic = (typeof SKILLS_TOPICS)[number]
+
+const TOPIC_TO_FILE: Record<SkillsTopic, string> = {
+  styling: "rules/styling.md",
+  forms: "rules/forms.md",
+  icons: "rules/icons.md",
+  composition: "rules/composition.md",
+  "base-vs-radix": "rules/base-vs-radix.md",
+  cli: "cli.md",
+  customization: "customization.md",
+  mcp: "mcp.md",
+}
+
+export async function findSkillsDirectory(
+  cwd: string
+): Promise<string | null> {
+  const searchRoots = [cwd, homedir()]
+  for (const root of searchRoots) {
+    for (const searchPath of SKILLS_SEARCH_PATHS) {
+      const fullPath = path.join(root, searchPath, "shadcn")
+      if (existsSync(fullPath)) return fullPath
+    }
+  }
+  return null
+}
+
+export async function readSkillsContent(
+  skillsDir: string,
+  topics?: SkillsTopic[]
+): Promise<string> {
+  if (!topics || topics.length === 0) {
+    const defaultFile = path.join(skillsDir, "SKILL.md")
+    if (existsSync(defaultFile)) {
+      return fs.readFile(defaultFile, "utf-8")
+    }
+    return ""
+  }
+
+  const sections: string[] = []
+  for (const topic of topics) {
+    const file = TOPIC_TO_FILE[topic]
+    if (!file) continue
+    const fullPath = path.join(skillsDir, file)
+    if (existsSync(fullPath)) {
+      const content = await fs.readFile(fullPath, "utf-8")
+      sections.push(`# ${topic}\n\n${content}`)
+    }
+  }
+  return sections.join("\n\n---\n\n")
+}
 
 export async function npxShadcn(command: string) {
   const packageRunner = await getPackageRunner(process.cwd())
