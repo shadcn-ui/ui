@@ -731,7 +731,7 @@
 
   /* MARK: Menubar */
   .cn-menubar {
-    @apply bg-background h-8 gap-0.5 rounded-none border p-1;
+    @apply h-8 gap-0.5 rounded-none border p-1;
   }
 
   .cn-menubar-trigger {
@@ -1335,5 +1335,10 @@
 
   .cn-input-group-textarea {
     @apply rounded-none border-0 bg-transparent py-2 shadow-none ring-0 focus-visible:ring-0 disabled:bg-transparent aria-invalid:ring-0 dark:bg-transparent dark:disabled:bg-transparent;
+  }
+
+  /* MARK: Menu Translucent */
+  .cn-menu-translucent {
+    @apply animate-none! relative bg-popover/70 before:pointer-events-none before:absolute before:inset-0 before:-z-1 before:rounded-[inherit] before:backdrop-blur-2xl before:backdrop-saturate-150 **:data-[slot$=-item]:focus:bg-foreground/10 **:data-[slot$=-item]:data-highlighted:bg-foreground/10 **:data-[slot$=-separator]:bg-foreground/5 **:data-[slot$=-trigger]:focus:bg-foreground/10 **:data-[slot$=-trigger]:aria-expanded:bg-foreground/10! **:data-[variant=destructive]:focus:bg-foreground/10! **:data-[variant=destructive]:text-accent-foreground! **:data-[variant=destructive]:**:text-accent-foreground!
   }
 }

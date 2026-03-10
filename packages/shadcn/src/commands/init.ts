@@ -35,7 +35,9 @@ import {
   DEFAULT_TAILWIND_CONFIG,
   DEFAULT_TAILWIND_CSS,
   DEFAULT_UTILS,
+  explorer,
   getConfig,
+  getWorkspaceConfig,
   resolveConfigPaths,
   type Config,
 } from "@/src/utils/get-config"
@@ -80,6 +82,16 @@ export const initOptionsSchema = z.object({
   existingConfig: z.record(z.unknown()).optional(),
   installStyleIndex: z.boolean().default(true),
   registryBaseConfig: rawConfigSchema.deepPartial().optional(),
+  menuColor: z
+    .enum([
+      "default",
+      "inverted",
+      "default-translucent",
+      "inverted-translucent",
+    ])
+    .optional(),
+  menuAccent: z.enum(["subtle", "bold"]).optional(),
+  iconLibrary: z.string().optional(),
 })
 
 export const init = new Command()
@@ -605,6 +617,9 @@ export async function runInit(
       components,
       registryBaseConfig: options.registryBaseConfig,
       rtl: options.rtl ?? false,
+      menuColor: options.menuColor,
+      menuAccent: options.menuAccent,
+      iconLibrary: options.iconLibrary,
       silent: options.silent,
     })
 
@@ -699,8 +714,43 @@ export async function runInit(
   await fs.writeFile(targetPath, `${JSON.stringify(config, null, 2)}\n`, "utf8")
   componentSpinner.succeed()
 
-  // Add components.
+  // Propagate design settings to workspace components.json files.
   const fullConfig = await resolveConfigPaths(options.cwd, config)
+  const workspaceConfig = await getWorkspaceConfig(fullConfig)
+  if (workspaceConfig) {
+    const designSettings: Record<string, unknown> = {}
+    if (config.menuColor) designSettings.menuColor = config.menuColor
+    if (config.menuAccent) designSettings.menuAccent = config.menuAccent
+    if (config.rtl !== undefined) designSettings.rtl = config.rtl
+    if (config.iconLibrary) designSettings.iconLibrary = config.iconLibrary
+
+    if (Object.keys(designSettings).length > 0) {
+      for (const key of Object.keys(workspaceConfig)) {
+        const wsConfig = workspaceConfig[key]
+        if (wsConfig.resolvedPaths.cwd === fullConfig.resolvedPaths.cwd) {
+          continue
+        }
+
+        const wsConfigPath = path.resolve(
+          wsConfig.resolvedPaths.cwd,
+          "components.json"
+        )
+        if (fsExtra.existsSync(wsConfigPath)) {
+          const wsRawConfig = await fsExtra.readJson(wsConfigPath)
+          await fsExtra.writeJson(
+            wsConfigPath,
+            { ...wsRawConfig, ...designSettings },
+            { spaces: 2 }
+          )
+        }
+      }
+    }
+  }
+
+  // Clear cosmiconfig cache so addComponents re-reads the updated workspace configs.
+  explorer.clearCaches()
+
+  // Add components.
   await addComponents(components, fullConfig, {
     // Init will always overwrite files.
     overwrite: true,
