@@ -146,10 +146,7 @@ async function adaptWorkspaceConfig(
       await fs.remove(pnpmWorkspacePath)
     }
 
-    await fs.writeFile(
-      packageJsonPath,
-      JSON.stringify(packageJson, null, 2)
-    )
+    await fs.writeFile(packageJsonPath, JSON.stringify(packageJson, null, 2))
   }
 
   // Rewrite workspace: protocol references in nested package.json files.
