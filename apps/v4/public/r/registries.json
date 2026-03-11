@@ -540,6 +540,12 @@
     "description": "A growing collection of high-quality blocks and themes for shadcn/ui."
   },
   {
+    "name": "@shadcnmaps",
+    "homepage": "https://shadcnmaps.com",
+    "url": "https://shadcnmaps.com/r/{name}.json",
+    "description": "Beautiful map components powered by pure SVG."
+  },
+  {
     "name": "@shadcnstore",
     "homepage": "https://www.shadcnstore.com",
     "url": "https://shadcnstore.com/r/{name}.json",
