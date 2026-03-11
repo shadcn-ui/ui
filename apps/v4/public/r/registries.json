@@ -564,6 +564,12 @@
     "description": "An open-source set of shadcn/ui components, blocks, and templates with a powerful theme generator."
   },
   {
+    "name": "@waves-cn",
+    "homepage": "https://waves-cn.vercel.app/r/{name}.json",
+    "url": "https://waves-cn.vercel.app",
+    "description": "A collection of wave players and waveform components built with wavesurfer.js and shadcn/ui."
+  },
+  {
     "name": "@shadcn-editor",
     "homepage": "https://shadcn-editor.vercel.app",
     "url": "https://shadcn-editor.vercel.app/r/{name}.json",
