@@ -209,24 +209,17 @@ describe("defaultScaffold", () => {
 
     await template.scaffold({
       projectPath: "/test/my-app",
-      packageManager: "npm",
+      packageManager: "bun",
       cwd: "/test",
     })
 
-    expect(vi.mocked(execa)).toHaveBeenCalledWith("npm", ["install"], {
+    expect(vi.mocked(execa)).toHaveBeenCalledWith("bun", ["install"], {
       cwd: "/test/my-app",
     })
   })
 
-  it("should pass custom install args", async () => {
-    const template = createTemplate({
-      name: "start",
-      title: "TanStack Start",
-      defaultProjectName: "start-app",
-      templateDir: "start-app",
-      installArgs: ["--shamefully-hoist"],
-      create: vi.fn(),
-    })
+  it("should pass --no-frozen-lockfile for pnpm", async () => {
+    const template = createTestTemplate()
 
     await template.scaffold({
       projectPath: "/test/my-app",
@@ -236,7 +229,7 @@ describe("defaultScaffold", () => {
 
     expect(vi.mocked(execa)).toHaveBeenCalledWith(
       "pnpm",
-      ["install", "--shamefully-hoist"],
+      ["install", "--no-frozen-lockfile"],
       { cwd: "/test/my-app" }
     )
   })

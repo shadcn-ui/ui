@@ -39,10 +39,6 @@ export default function Page() {
   ],
   monorepo: {
     templateDir: "next-monorepo",
-    packageManager: "pnpm",
-    // pnpm enables frozen lockfile in CI by default.
-    // The template lockfile may drift, so force-disable it explicitly.
-    installArgs: ["--no-frozen-lockfile"],
     init: async (options) => {
       const packagesUiPath = path.resolve(options.projectPath, "packages/ui")
       const appsWebPath = path.resolve(options.projectPath, "apps/web")
