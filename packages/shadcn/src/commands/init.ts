@@ -384,10 +384,7 @@ export const init = new Command()
             } else if (options.rtl === false) {
               url.searchParams.delete("rtl")
             }
-            if (
-              url.pathname === "/init" &&
-              presetArg.startsWith(SHADCN_URL)
-            ) {
+            if (url.pathname === "/init" && presetArg.startsWith(SHADCN_URL)) {
               url.searchParams.set("track", "1")
             }
             initUrl = url.toString()
