@@ -18,7 +18,7 @@ export function LoginForm({
       <FieldGroup>
         <div className="flex flex-col items-center gap-1 text-center">
           <h1 className="text-2xl font-bold">Login to your account</h1>
-          <p className="text-muted-foreground text-sm text-balance">
+          <p className="text-sm text-balance text-muted-foreground">
             Enter your email below to login to your account
           </p>
         </div>
@@ -52,9 +52,7 @@ export function LoginForm({
         <Field>
           <Button type="submit">Login</Button>
         </Field>
-        <FieldSeparator className="*:data-[slot=field-separator-content]:bg-muted dark:*:data-[slot=field-separator-content]:bg-card">
-          Or continue with
-        </FieldSeparator>
+        <FieldSeparator>Or continue with</FieldSeparator>
         <Field>
           <Button variant="outline" type="button">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">

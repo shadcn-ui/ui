@@ -27,7 +27,7 @@ export default function AppSidebar() {
             <SidebarGroup>
               <SidebarGroupLabel
                 asChild
-                className="hover:bg-sidebar-accent hover:text-sidebar-accent-foreground text-sm"
+                className="text-sm hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
               >
                 <CollapsibleTrigger>
                   Help

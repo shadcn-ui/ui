@@ -1,13 +1,21 @@
 import path from "path"
 import { runInit } from "@/src/commands/init"
 import { preFlightAdd } from "@/src/preflights/preflight-add"
+import {
+  promptForBase,
+  promptForPreset,
+  resolveRegistryBaseConfig,
+} from "@/src/preset/presets"
 import { getRegistryItems, getShadcnRegistryIndex } from "@/src/registry/api"
 import { DEPRECATED_COMPONENTS } from "@/src/registry/constants"
 import { clearRegistryContext } from "@/src/registry/context"
 import { registryItemTypeSchema } from "@/src/registry/schema"
 import { isUniversalRegistryItem } from "@/src/registry/utils"
+import { getTemplateForFramework } from "@/src/templates/index"
 import { addComponents } from "@/src/utils/add-components"
 import { createProject } from "@/src/utils/create-project"
+import { dryRunComponents } from "@/src/utils/dry-run"
+import { formatDryRunResult } from "@/src/utils/dry-run-formatter"
 import { loadEnvFiles } from "@/src/utils/env-loader"
 import * as ERRORS from "@/src/utils/errors"
 import { createConfig, getConfig } from "@/src/utils/get-config"
@@ -16,6 +24,7 @@ import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import { ensureRegistriesInConfig } from "@/src/utils/registries"
+import { spinner } from "@/src/utils/spinner"
 import { updateAppIndex } from "@/src/utils/update-app-index"
 import { Command } from "commander"
 import prompts from "prompts"
@@ -29,8 +38,9 @@ export const addOptionsSchema = z.object({
   all: z.boolean(),
   path: z.string().optional(),
   silent: z.boolean(),
-  srcDir: z.boolean().optional(),
-  cssVariables: z.boolean(),
+  dryRun: z.boolean(),
+  diff: z.union([z.string(), z.literal(true)]).optional(),
+  view: z.union([z.string(), z.literal(true)]).optional(),
 })
 
 export const add = new Command()
@@ -47,26 +57,20 @@ export const add = new Command()
   .option("-a, --all", "add all available components", false)
   .option("-p, --path <path>", "the path to add the component to.")
   .option("-s, --silent", "mute output.", false)
-  .option(
-    "--src-dir",
-    "use the src directory when creating a new project.",
-    false
-  )
-  .option(
-    "--no-src-dir",
-    "do not use the src directory when creating a new project."
-  )
-  .option("--css-variables", "use css variables for theming.", true)
-  .option("--no-css-variables", "do not use css variables for theming.")
+  .option("--dry-run", "preview changes without writing files.", false)
+  .option("--diff [path]", "show diff for a file.")
+  .option("--view [path]", "show file contents.")
   .action(async (components, opts) => {
     try {
       const options = addOptionsSchema.parse({
         components,
-        cwd: path.resolve(opts.cwd),
         ...opts,
+        cwd: path.resolve(opts.cwd),
       })
 
       await loadEnvFiles(options.cwd)
+
+      const isDryRun = options.dryRun || options.diff || options.view
 
       let initialConfig = await getConfig(options.cwd)
       if (!initialConfig) {
@@ -101,13 +105,13 @@ export const add = new Command()
           itemType !== "registry:style" &&
           itemType !== "registry:base"
 
-        if (isUniversalRegistryItem(registryItem)) {
+        if (isUniversalRegistryItem(registryItem) && !isDryRun) {
           await addComponents(components, initialConfig, options)
           return
         }
-
         if (
           !options.yes &&
+          !isDryRun &&
           (itemType === "registry:style" || itemType === "registry:theme")
         ) {
           logger.break()
@@ -169,6 +173,23 @@ export const add = new Command()
           process.exit(1)
         }
 
+        // Infer template from project framework.
+        const inferredTemplate = getTemplateForFramework(
+          projectInfo?.framework.name
+        )
+
+        // Prompt for base and preset.
+        const base = await promptForBase()
+        const { url: initUrl } = await promptForPreset({
+          rtl: false,
+          base,
+          template: inferredTemplate,
+        })
+
+        // Resolve registry:base config.
+        const { registryBaseConfig, installStyleIndex } =
+          await resolveRegistryBaseConfig(initUrl, options.cwd)
+
         config = await runInit({
           cwd: options.cwd,
           yes: true,
@@ -177,11 +198,11 @@ export const add = new Command()
           skipPreflight: false,
           silent: options.silent && !hasNewRegistries,
           isNewProject: false,
-          srcDir: options.srcDir,
-          cssVariables: options.cssVariables,
-          installStyleIndex: shouldInstallStyleIndex,
-          baseColor: shouldInstallStyleIndex ? undefined : "neutral",
-          components: options.components,
+          cssVariables: true,
+          rtl: false,
+          installStyleIndex,
+          components: [initUrl, ...(options.components ?? [])],
+          registryBaseConfig,
         })
         initHasRun = true
       }
@@ -192,7 +213,6 @@ export const add = new Command()
         const { projectPath, template } = await createProject({
           cwd: options.cwd,
           force: options.overwrite,
-          srcDir: options.srcDir,
           components: options.components,
         })
         if (!projectPath) {
@@ -201,30 +221,35 @@ export const add = new Command()
         }
         options.cwd = projectPath
 
-        if (template === "next-monorepo") {
-          options.cwd = path.resolve(options.cwd, "apps/web")
-          config = await getConfig(options.cwd)
-        } else {
-          config = await runInit({
-            cwd: options.cwd,
-            yes: true,
-            force: true,
-            defaults: false,
-            skipPreflight: true,
-            silent: !hasNewRegistries && options.silent,
-            isNewProject: true,
-            srcDir: options.srcDir,
-            cssVariables: options.cssVariables,
-            installStyleIndex: shouldInstallStyleIndex,
-            baseColor: shouldInstallStyleIndex ? undefined : "neutral",
-            components: options.components,
-          })
-          initHasRun = true
+        // Prompt for base and preset.
+        const selectedBase = await promptForBase()
+        const { url: initUrl } = await promptForPreset({
+          rtl: false,
+          base: selectedBase,
+          template,
+        })
+        const { registryBaseConfig, installStyleIndex } =
+          await resolveRegistryBaseConfig(initUrl, options.cwd)
 
-          shouldUpdateAppIndex =
-            options.components?.length === 1 &&
-            !!options.components[0].match(/\/chat\/b\//)
-        }
+        config = await runInit({
+          cwd: options.cwd,
+          yes: true,
+          force: true,
+          defaults: false,
+          skipPreflight: true,
+          silent: !hasNewRegistries && options.silent,
+          isNewProject: true,
+          cssVariables: true,
+          rtl: false,
+          installStyleIndex,
+          components: [initUrl, ...(options.components ?? [])],
+          registryBaseConfig,
+        })
+        initHasRun = true
+
+        shouldUpdateAppIndex =
+          options.components?.length === 1 &&
+          !!options.components[0].match(/\/chat\/b\//)
       }
 
       if (!config) {
@@ -238,9 +263,34 @@ export const add = new Command()
         config,
         {
           silent: options.silent || hasNewRegistries,
+          writeFile: !isDryRun,
         }
       )
       config = updatedConfig
+
+      // Dry-run mode: preview changes without writing files.
+      // --diff and --view imply --dry-run.
+      if (isDryRun) {
+        const dryRunSpinner = spinner("Resolving items.", {
+          silent: options.silent,
+        }).start()
+        const dryRunResult = await dryRunComponents(
+          options.components,
+          config,
+          {
+            overwrite: options.overwrite,
+          }
+        )
+        dryRunSpinner.stop()
+
+        logger.log(
+          formatDryRunResult(dryRunResult, options.components, {
+            diff: options.diff,
+            view: options.view,
+          })
+        )
+        return
+      }
 
       if (!initHasRun) {
         await addComponents(options.components, config, options)

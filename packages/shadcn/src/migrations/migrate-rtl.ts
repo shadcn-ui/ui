@@ -1,5 +1,6 @@
 import { promises as fs } from "fs"
 import path from "path"
+import { SHADCN_URL } from "@/src/registry/constants"
 import { Config } from "@/src/utils/get-config"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
@@ -15,7 +16,7 @@ const FILES_NEEDING_MANUAL_REVIEW = [
   "calendar.tsx",
 ]
 
-const RTL_DOCS_URL = "https://ui.shadcn.com/docs/rtl#manual-migration-optional"
+const RTL_DOCS_URL = `${SHADCN_URL}/docs/rtl#manual-migration-optional`
 
 export async function migrateRtl(
   config: Config,

@@ -26,7 +26,7 @@ export function CalendarWithTime() {
           className="p-0"
         />
       </CardContent>
-      <CardFooter className="bg-card border-t">
+      <CardFooter className="border-t bg-card">
         <FieldGroup>
           <Field>
             <FieldLabel htmlFor="time-from">Start Time</FieldLabel>

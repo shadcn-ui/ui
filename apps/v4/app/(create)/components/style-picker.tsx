@@ -10,7 +10,6 @@ import {
   PickerGroup,
   PickerRadioGroup,
   PickerRadioItem,
-  PickerSeparator,
   PickerTrigger,
 } from "@/app/(create)/components/picker"
 import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
@@ -33,13 +32,13 @@ export function StylePicker({
       <Picker>
         <PickerTrigger>
           <div className="flex flex-col justify-start text-left">
-            <div className="text-muted-foreground text-xs">Style</div>
-            <div className="text-foreground text-sm font-medium">
+            <div className="text-xs text-muted-foreground">Style</div>
+            <div className="text-sm font-medium text-foreground">
               {currentStyle?.title}
             </div>
           </div>
           {currentStyle?.icon && (
-            <div className="pointer-events-none absolute top-1/2 right-4 flex size-4 -translate-y-1/2 items-center justify-center select-none">
+            <div className="pointer-events-none absolute top-1/2 right-4 flex size-4 -translate-y-1/2 items-center justify-center select-none md:right-2.5">
               {React.cloneElement(currentStyle.icon, {
                 className: "size-4",
               })}
@@ -50,7 +49,6 @@ export function StylePicker({
           anchor={isMobile ? anchorRef : undefined}
           side={isMobile ? "top" : "right"}
           align={isMobile ? "center" : "start"}
-          className="md:w-64"
         >
           <PickerRadioGroup
             value={currentStyle?.name}
@@ -59,29 +57,14 @@ export function StylePicker({
             }}
           >
             <PickerGroup>
-              {styles.map((style, index) => (
-                <React.Fragment key={style.name}>
-                  <PickerRadioItem value={style.name}>
-                    <div className="flex items-start gap-2">
-                      {style.icon && (
-                        <div className="flex size-4 translate-y-0.5 items-center justify-center">
-                          {React.cloneElement(style.icon, {
-                            className: "size-4",
-                          })}
-                        </div>
-                      )}
-                      <div className="flex flex-col justify-start pointer-coarse:gap-1">
-                        <div>{style.title}</div>
-                        <div className="text-muted-foreground text-xs pointer-coarse:text-sm">
-                          {style.description}
-                        </div>
-                      </div>
-                    </div>
-                  </PickerRadioItem>
-                  {index < styles.length - 1 && (
-                    <PickerSeparator className="opacity-50" />
-                  )}
-                </React.Fragment>
+              {styles.map((style) => (
+                <PickerRadioItem
+                  value={style.name}
+                  key={style.name}
+                  closeOnClick={isMobile}
+                >
+                  {style.title}
+                </PickerRadioItem>
               ))}
             </PickerGroup>
           </PickerRadioGroup>
@@ -89,7 +72,7 @@ export function StylePicker({
       </Picker>
       <LockButton
         param="style"
-        className="absolute top-1/2 right-10 -translate-y-1/2"
+        className="absolute top-1/2 right-8 -translate-y-1/2"
       />
     </div>
   )
