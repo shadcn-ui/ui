@@ -18,7 +18,10 @@ import {
   RANDOMIZE_BIASES,
   type RandomizeContext,
 } from "@/app/(create)/lib/randomize-biases"
-import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
+import {
+  isTranslucentMenuColor,
+  useDesignSystemSearchParams,
+} from "@/app/(create)/lib/search-params"
 
 function randomItem<T>(array: readonly T[]): T {
   return array[Math.floor(Math.random() * array.length)]
@@ -68,12 +71,25 @@ export function useRandom() {
     const selectedIconLibrary = locks.has("iconLibrary")
       ? paramsRef.current.iconLibrary
       : randomItem(Object.values(iconLibraries)).name
-    const selectedMenuAccent = locks.has("menuAccent")
+    const lockedMenuAccent = locks.has("menuAccent")
       ? paramsRef.current.menuAccent
-      : randomItem(MENU_ACCENTS).value
+      : undefined
+    const availableMenuColors =
+      !locks.has("menuColor") && lockedMenuAccent === "bold"
+        ? MENU_COLORS.filter((menuColor) => {
+            return !isTranslucentMenuColor(menuColor.value)
+          })
+        : MENU_COLORS
     const selectedMenuColor = locks.has("menuColor")
       ? paramsRef.current.menuColor
-      : randomItem(MENU_COLORS).value
+      : randomItem(availableMenuColors).value
+    const selectedMenuAccent =
+      locks.has("menuAccent") || isTranslucentMenuColor(selectedMenuColor)
+        ? paramsRef.current.menuAccent === "bold" &&
+          isTranslucentMenuColor(selectedMenuColor)
+          ? "subtle"
+          : paramsRef.current.menuAccent
+        : randomItem(MENU_ACCENTS).value
 
     context.theme = selectedTheme
     context.font = selectedFont
