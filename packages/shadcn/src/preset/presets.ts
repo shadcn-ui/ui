@@ -266,6 +266,7 @@ export async function resolveRegistryBaseConfig(
 
   const [item] = await getRegistryItems([initUrl], {
     config: shadowConfig,
+    useCache: true,
   })
 
   const registryBaseConfig =
