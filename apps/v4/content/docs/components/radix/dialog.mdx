@@ -93,6 +93,18 @@ Replace the default close control with your own button.
 
 <ComponentPreview styleName="radix-nova" name="dialog-close-button" />
 
+### Portal Container
+
+Use the `container` prop on `DialogContent` to portal the dialog inside a specific DOM element instead of `document.body`.
+
+```tsx
+const containerRef = useRef<HTMLDivElement>(null)
+
+<DialogContent container={containerRef.current}>
+  {/* portals inside the container */}
+</DialogContent>
+```
+
 ### No Close Button
 
 Use `showCloseButton={false}` to hide the close button.
