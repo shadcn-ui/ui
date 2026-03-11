@@ -1,5 +1,6 @@
 # Adapted from vercel/next.js
 name: "Stale issue handler"
+
 on:
   workflow_dispatch:
   schedule:
