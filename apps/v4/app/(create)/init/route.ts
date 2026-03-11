@@ -44,10 +44,12 @@ export async function GET(request: NextRequest) {
       )
     }
 
-    track("create_app", {
-      ...result.data,
-      preset: presetCode,
-    })
+    if (searchParams.get("track") === "1") {
+      track("create_app", {
+        ...result.data,
+        preset: presetCode,
+      })
+    }
 
     return NextResponse.json(parseResult.data)
   } catch (error) {
