@@ -1,5 +1,11 @@
 # @shadcn/ui
 
+## 4.0.5
+
+### Patch Changes
+
+- [#9960](https://github.com/shadcn-ui/ui/pull/9960) [`5ee456735377158c12cf55eefbe872f7303e1325`](https://github.com/shadcn-ui/ui/commit/5ee456735377158c12cf55eefbe872f7303e1325) Thanks [@shadcn](https://github.com/shadcn)! - update handling of init urls
+
 ## 4.0.4
 
 ### Patch Changes
