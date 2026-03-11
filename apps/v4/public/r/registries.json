@@ -12,6 +12,12 @@
     "description": "A set of beautifully designed components designed for developers who want niche, high-utility UI elements that you won't find in standard libraries."
   },
   {
+    "name": "@0unlumen-ui",
+    "homepage": "https://ui.unlumen.com",
+    "url": "https://ui.unlumen.com/r/{name}.json",
+    "description": "Primitives and components with serious attention to animation and design. Copy, own, ship."
+  },
+  {
     "name": "@auth0",
     "homepage": "https://auth0.com",
     "url": "https://ui.auth0.com/r/{name}.json",
