@@ -540,6 +540,12 @@
     "description": "A growing collection of high-quality blocks and themes for shadcn/ui."
   },
   {
+    "name": "@shadcnmaps",
+    "homepage": "https://shadcnmaps.com",
+    "url": "https://shadcnmaps.com/r/{name}.json",
+    "description": "Beautiful map components powered by pure SVG."
+  },
+  {
     "name": "@shadcnstore",
     "homepage": "https://www.shadcnstore.com",
     "url": "https://shadcnstore.com/r/{name}.json",
@@ -868,5 +874,11 @@
     "homepage": "https://www.fluidfunctionalism.com",
     "url": "https://www.fluidfunctionalism.com/r/{name}.json",
     "description": "Fluid components used exclusively in service of functional clarity. Proximity hover, spring animations, font-weight transitions, and animated focus rings."
+  },
+  {
+    "name": "@gammaui",
+    "homepage": "https://www.gammaui.com",
+    "url": "https://www.gammaui.com/r/{name}.json",
+    "description": "Beautifully designed landing page components built with React & Tailwind CSS & Motion."
   }
 ]
