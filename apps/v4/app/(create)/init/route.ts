@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server"
 import { track } from "@vercel/analytics/server"
+import { encodePreset, isPresetCode } from "shadcn/preset"
 import { registryItemSchema } from "shadcn/schema"
 
 import { buildRegistryBase } from "@/registry/config"
@@ -13,6 +14,22 @@ export async function GET(request: NextRequest) {
     if (!result.success) {
       return NextResponse.json({ error: result.error }, { status: 400 })
     }
+
+    // Use the preset code from the URL if provided, otherwise encode one.
+    const presetParam = searchParams.get("preset")
+    const presetCode =
+      presetParam && isPresetCode(presetParam)
+        ? presetParam
+        : encodePreset({
+            style: result.data.style,
+            baseColor: result.data.baseColor,
+            theme: result.data.theme,
+            iconLibrary: result.data.iconLibrary,
+            font: result.data.font,
+            radius: result.data.radius,
+            menuAccent: result.data.menuAccent,
+            menuColor: result.data.menuColor,
+          } as Parameters<typeof encodePreset>[0])
 
     const registryBase = buildRegistryBase(result.data)
     const parseResult = registryItemSchema.safeParse(registryBase)
@@ -29,7 +46,7 @@ export async function GET(request: NextRequest) {
 
     track("create_app", {
       ...result.data,
-      preset: searchParams.get("preset") ?? "",
+      preset: presetCode,
     })
 
     return NextResponse.json(parseResult.data)
