@@ -40,7 +40,15 @@ export const rawConfigSchema = z
     }),
     iconLibrary: z.string().optional(),
     rtl: z.coerce.boolean().default(false).optional(),
-    menuColor: z.enum(["default", "inverted"]).default("default").optional(),
+    menuColor: z
+      .enum([
+        "default",
+        "inverted",
+        "default-translucent",
+        "inverted-translucent",
+      ])
+      .default("default")
+      .optional(),
     menuAccent: z.enum(["subtle", "bold"]).default("subtle").optional(),
     aliases: z.object({
       components: z.string(),
@@ -290,7 +298,12 @@ export const presetSchema = z.object({
   font: z.string(),
   rtl: z.coerce.boolean().default(false),
   menuAccent: z.enum(["subtle", "bold"]),
-  menuColor: z.enum(["default", "inverted"]),
+  menuColor: z.enum([
+    "default",
+    "inverted",
+    "default-translucent",
+    "inverted-translucent",
+  ]),
   radius: z.string(),
 })
 

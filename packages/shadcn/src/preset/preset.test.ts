@@ -136,6 +136,12 @@ describe("encodePreset / decodePreset", () => {
       }
     }
   })
+
+  it("should round-trip default-translucent menu color", () => {
+    const code = encodePreset({ menuColor: "default-translucent" })
+    const decoded = decodePreset(code)
+    expect(decoded!.menuColor).toBe("default-translucent")
+  })
 })
 
 describe("decodePreset edge cases", () => {
