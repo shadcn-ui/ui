@@ -1,5 +1,11 @@
 # @shadcn/ui
 
+## 4.0.4
+
+### Patch Changes
+
+- [#9957](https://github.com/shadcn-ui/ui/pull/9957) [`aa841e35cf405e574123478b46f4058cff0e179a`](https://github.com/shadcn-ui/ui/commit/aa841e35cf405e574123478b46f4058cff0e179a) Thanks [@shadcn](https://github.com/shadcn)! - fix cache in resolveRegistryBaseConfig
+
 ## 4.0.3
 
 ### Patch Changes
