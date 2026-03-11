@@ -12,6 +12,7 @@ jobs:
     if: github.repository_owner == 'shadcn-ui'
     steps:
       - uses: actions/stale@v9
+
         id: issue-stale
         name: "Mark stale issues, close stale issues"
         with:
