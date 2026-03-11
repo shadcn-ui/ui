@@ -898,5 +898,11 @@
     "homepage": "https://www.gammaui.com",
     "url": "https://www.gammaui.com/r/{name}.json",
     "description": "Beautifully designed landing page components built with React & Tailwind CSS & Motion."
+  },
+  {
+    "name": "@flx",
+    "homepage": "https://ui.flexnative.com",
+    "url": "https://ui.flexnative.com/r/{name}.json",
+    "description": "A collection of customizable UI blocks with interactive live previews"
   }
 ]
