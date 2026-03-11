@@ -21,6 +21,9 @@ export interface TemplateInitOptions {
   components: string[]
   registryBaseConfig?: Record<string, unknown>
   rtl: boolean
+  menuColor?: string
+  menuAccent?: string
+  iconLibrary?: string
   silent: boolean
 }
 
