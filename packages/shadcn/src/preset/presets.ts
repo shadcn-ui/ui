@@ -22,6 +22,7 @@ export const DEFAULT_PRESETS = {
     font: "geist",
     menuAccent: "subtle" as const,
     menuColor: "default" as const,
+
     radius: "default",
     rtl: false,
   },
@@ -35,6 +36,7 @@ export const DEFAULT_PRESETS = {
     font: "inter",
     menuAccent: "subtle" as const,
     menuColor: "default" as const,
+
     radius: "default",
     rtl: false,
   },
@@ -48,6 +50,7 @@ export const DEFAULT_PRESETS = {
     font: "figtree",
     menuAccent: "subtle" as const,
     menuColor: "default" as const,
+
     radius: "default",
     rtl: false,
   },
@@ -61,6 +64,7 @@ export const DEFAULT_PRESETS = {
     font: "jetbrains-mono",
     menuAccent: "subtle" as const,
     menuColor: "default" as const,
+
     radius: "default",
     rtl: false,
   },
@@ -74,6 +78,7 @@ export const DEFAULT_PRESETS = {
     font: "inter",
     menuAccent: "subtle" as const,
     menuColor: "default" as const,
+
     radius: "default",
     rtl: false,
   },
