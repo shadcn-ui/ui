@@ -420,6 +420,12 @@
     "description": "Carefully built UI blocks for real apps and dashboards, designed to integrate smoothly from early ideas to production releases."
   },
   {
+    "name": "@pacekit-gsap",
+    "homepage": "https://gsap.pacekit.dev",
+    "url": "https://gsap.pacekit.dev/r/{name}.json",
+    "description": "Animated GSAP components crafted for smooth interaction and rich detail."
+  },
+  {
     "name": "@pastecn",
     "homepage": "https://pastecn.com",
     "url": "https://pastecn.com/r/{name}",
