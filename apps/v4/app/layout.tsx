@@ -107,6 +107,7 @@ export default function RootLayout({
               <TailwindIndicator />
               <Analytics />
             </ActiveThemeProvider>
+            
           </LayoutProvider>
           
         </ThemeProvider>
