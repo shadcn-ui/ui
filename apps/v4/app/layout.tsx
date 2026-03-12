@@ -104,6 +104,7 @@ export default function RootLayout({
                 {children}
                 <Toaster position="top-center" />
               </NuqsAdapter>
+              
               <TailwindIndicator />
               
               <Analytics />
