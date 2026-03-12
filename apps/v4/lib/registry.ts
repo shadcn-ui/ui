@@ -30,6 +30,7 @@ export async function getRegistryItems(
   const filteredEntries = filter ? entries.filter(filter) : entries
   
 
+
   return await Promise.all(
     filteredEntries.map(async (entry) => {
       const item = await getRegistryItem(entry.name, styleName)
