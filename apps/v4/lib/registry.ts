@@ -74,6 +74,7 @@ export async function getRegistryItem(name: string, styleName: Style["name"]) {
   for (const file of item.files) {
   
   
+  
     const content = await getFileContent(file)
     
     
