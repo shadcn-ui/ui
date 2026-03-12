@@ -108,6 +108,7 @@ export default function RootLayout({
               <Analytics />
             </ActiveThemeProvider>
           </LayoutProvider>
+          
         </ThemeProvider>
       </body>
     </html>
