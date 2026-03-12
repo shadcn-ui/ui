@@ -25,6 +25,7 @@ export async function getRegistryItems(
   }
 
   const entries = Object.values(styleIndex)
+  
 
   const filteredEntries = filter ? entries.filter(filter) : entries
 
