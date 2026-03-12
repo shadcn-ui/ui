@@ -354,6 +354,7 @@ export function FormDemo() {
         <div>
           <h3 className="mb-4 text-lg font-medium">Email Notifications</h3>
           <div className="flex flex-col gap-4">
+          
             <FormField
               control={form.control}
               name="marketing_emails"
