@@ -1,6 +1,5 @@
 import os from "os"
 import path from "path"
-import { REGISTRY_URL } from "@/src/registry/constants"
 import type { RegistryItem } from "@/src/registry/schema"
 import type { Config } from "@/src/utils/get-config"
 import { handleError } from "@/src/utils/handle-error"
@@ -8,7 +7,8 @@ import { spinner } from "@/src/utils/spinner"
 import { execa } from "execa"
 import fs from "fs-extra"
 
-export const TEMPLATE_BASE_URL = `${REGISTRY_URL}/templates`
+const GITHUB_REPO_URL =
+  process.env.SHADCN_GITHUB_URL ?? "https://github.com/shadcn-ui/ui.git"
 
 export interface TemplateOptions {
   projectPath: string
@@ -21,6 +21,9 @@ export interface TemplateInitOptions {
   components: string[]
   registryBaseConfig?: Record<string, unknown>
   rtl: boolean
+  menuColor?: string
+  menuAccent?: string
+  iconLibrary?: string
   silent: boolean
 }
 
@@ -99,7 +102,7 @@ export function resolveTemplate(
   return resolved
 }
 
-// Default scaffold that fetches a pre-built template archive.
+// Default scaffold that downloads a template from GitHub.
 function defaultScaffold({
   title,
   templateDir,
@@ -123,24 +126,33 @@ function defaultScaffold({
           filter: (src) => !src.includes("node_modules"),
         })
       } else {
-        // Fetch the pre-built template archive.
+        // Clone only the template directory from GitHub using sparse checkout.
         const templatePath = path.join(
           os.tmpdir(),
           `shadcn-template-${Date.now()}`
         )
-        await fs.ensureDir(templatePath)
-        const response = await fetch(
-          `${TEMPLATE_BASE_URL}/${templateDir}.tar.gz`
-        )
-        if (!response.ok) {
-          throw new Error(`Failed to download template: ${response.statusText}`)
-        }
+        await execa("git", [
+          "clone",
+          "--depth",
+          "1",
+          "--filter=blob:none",
+          "--sparse",
+          GITHUB_REPO_URL,
+          templatePath,
+        ])
+        await execa("git", [
+          "-C",
+          templatePath,
+          "sparse-checkout",
+          "set",
+          `templates/${templateDir}`,
+        ])
 
-        // Write and extract the tar file.
-        const tarPath = path.resolve(templatePath, "template.tar.gz")
-        await fs.writeFile(tarPath, Buffer.from(await response.arrayBuffer()))
-        await execa("tar", ["-xzf", tarPath, "-C", templatePath])
-        const extractedPath = path.resolve(templatePath, templateDir)
+        const extractedPath = path.resolve(
+          templatePath,
+          "templates",
+          templateDir
+        )
         await fs.move(extractedPath, projectPath)
         await fs.remove(templatePath)
       }

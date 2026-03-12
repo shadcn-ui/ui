@@ -1,11 +1,5 @@
 [
   {
-    "name": "@lmscn",
-    "homepage": "https://lmscn.vercel.app",
-    "url": "https://lmscn.vercel.app/r/{name}.json",
-    "description": "LMS components for building interactive learning experiences — quiz, flashcards, matching, fill-in-the-blank, word scramble, sequencing, reading comprehension, spaced repetition and more."
-  },
-  {
     "name": "@8bitcn",
     "homepage": "https://www.8bitcn.com",
     "url": "https://www.8bitcn.com/r/{name}.json",
@@ -288,6 +282,12 @@
     "description": "A set of perfect-designed components built on top of React Aria and Motion."
   },
   {
+    "name": "@kapwa",
+    "homepage": "https://kapwa-two.vercel.app",
+    "url": "https://kapwa-two.vercel.app/r/{name}.json",
+    "description": "Cleanly designed components purposely built for open-source government portals."
+  },
+  {
     "name": "@kokonutui",
     "homepage": "https://kokonutui.com",
     "url": "https://kokonutui.com/r/{name}.json",
@@ -304,6 +304,12 @@
     "homepage": "https://limeplay.winoffrg.dev",
     "url": "https://limeplay.winoffrg.dev/r/{name}.json",
     "description": "Modern UI Library for building media players in React. Powered by Shaka Player."
+  },
+  {
+    "name": "@lmscn",
+    "homepage": "https://lmscn.vercel.app",
+    "url": "https://lmscn.vercel.app/r/{name}.json",
+    "description": "LMS components for building interactive learning experiences — quiz, flashcards, matching, fill-in-the-blank, word scramble, sequencing, reading comprehension, spaced repetition and more."
   },
   {
     "name": "@lucide-animated",
@@ -376,6 +382,12 @@
     "homepage": "https://www.neobrutalism.dev",
     "url": "https://www.neobrutalism.dev/r/{name}.json",
     "description": "A collection of neobrutalism-styled components based on shadcn/ui"
+  },
+  {
+    "name": "@nessra-ui",
+    "homepage": "https://nessra-ui.vercel.app",
+    "url": "https://nessra-ui.vercel.app/r/{name}.json",
+    "description": "Beautiful, accessible components built with Tailwind CSS v4 and Radix UI. Includes auth blocks, data tables, and TanStack Form integration."
   },
   {
     "name": "@nexus-elements",
@@ -526,6 +538,18 @@
     "homepage": "https://www.shadcndesign.com",
     "url": "https://shadcndesign-free.vercel.app/r/{name}.json",
     "description": "A growing collection of high-quality blocks and themes for shadcn/ui."
+  },
+  {
+    "name": "@shadcnmaps",
+    "homepage": "https://shadcnmaps.com",
+    "url": "https://shadcnmaps.com/r/{name}.json",
+    "description": "Beautiful map components powered by pure SVG."
+  },
+  {
+    "name": "@shadcnstore",
+    "homepage": "https://www.shadcnstore.com",
+    "url": "https://shadcnstore.com/r/{name}.json",
+    "description": "A growing collection of shadcn/ui components, blocks, and templates for building modern web apps."
   },
   {
     "name": "@shadcn-map",
@@ -829,8 +853,32 @@
   },
   {
     "name": "@iconiq",
-    "homepage": "https://iconiqs.vercel.app",
-    "url": "https://iconiqs.vercel.app/r/{name}.json",
+    "homepage": "https://iconiqui.com",
+    "url": "https://iconiqui.com/r/{name}.json",
     "description": "Iconiq is a collection of icons designed for web applications. It is a modern, clean, and minimalistic icon set that is perfect for web applications."
+  },
+  {
+    "name": "@fonttrio",
+    "homepage": "https://www.fonttrio.xyz",
+    "url": "https://www.fonttrio.xyz/r/{name}.json",
+    "description": "Curated font pairing registry for shadcn. Three fonts. One command. Install perfectly configured typography (heading + body + mono) with shadcn add. Includes editorial-grade type scales, CSS variables, and a live preview site."
+  },
+  {
+    "name": "@componentry",
+    "homepage": "https://componentry.fun",
+    "url": "https://componentry.fun/r/{name}.json",
+    "description": "Beautiful, interactive React + Tailwind components for modern product UIs."
+  },
+  {
+    "name": "@fluid",
+    "homepage": "https://www.fluidfunctionalism.com",
+    "url": "https://www.fluidfunctionalism.com/r/{name}.json",
+    "description": "Fluid components used exclusively in service of functional clarity. Proximity hover, spring animations, font-weight transitions, and animated focus rings."
+  },
+  {
+    "name": "@gammaui",
+    "homepage": "https://www.gammaui.com",
+    "url": "https://www.gammaui.com/r/{name}.json",
+    "description": "Beautifully designed landing page components built with React & Tailwind CSS & Motion."
   }
 ]

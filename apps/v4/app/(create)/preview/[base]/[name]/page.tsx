@@ -135,7 +135,7 @@ export default async function BlockPage({
   }
 
   return (
-    <div className="relative">
+    <div className="relative bg-background">
       <PreventScrollOnFocusScript />
       <PreviewStyle />
       <ActionMenuScript />

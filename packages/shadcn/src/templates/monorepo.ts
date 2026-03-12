@@ -30,6 +30,15 @@ export async function fontsourceMonorepoInit(options: TemplateInitOptions) {
   if (options.rtl) {
     packagesUiConfig.rtl = true
   }
+  if (options.menuColor) {
+    packagesUiConfig.menuColor = options.menuColor
+  }
+  if (options.menuAccent) {
+    packagesUiConfig.menuAccent = options.menuAccent
+  }
+  if (options.iconLibrary) {
+    packagesUiConfig.iconLibrary = options.iconLibrary
+  }
   await fs.writeJson(packagesUiConfigPath, packagesUiConfig, {
     spaces: 2,
   })
@@ -43,6 +52,15 @@ export async function fontsourceMonorepoInit(options: TemplateInitOptions) {
   appsWebConfig.tailwind.baseColor = "neutral"
   if (options.rtl) {
     appsWebConfig.rtl = true
+  }
+  if (options.menuColor) {
+    appsWebConfig.menuColor = options.menuColor
+  }
+  if (options.menuAccent) {
+    appsWebConfig.menuAccent = options.menuAccent
+  }
+  if (options.iconLibrary) {
+    appsWebConfig.iconLibrary = options.iconLibrary
   }
   await fs.writeJson(appsWebConfigPath, appsWebConfig, { spaces: 2 })
 
