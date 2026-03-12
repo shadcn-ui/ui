@@ -22,6 +22,7 @@ export function ThemeProvider({
       enableColorScheme
       
       {...props}
+      
     >
       {children}
     </NextThemesProvider>
