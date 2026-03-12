@@ -106,6 +106,7 @@ export default function RootLayout({
               </NuqsAdapter>
               <TailwindIndicator />
               <Analytics />
+              
             </ActiveThemeProvider>
             
           </LayoutProvider>
