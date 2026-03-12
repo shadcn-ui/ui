@@ -10,6 +10,7 @@
     "**/node_modules/**",
     "**/fixtures/**"
   ],
+  
   "files.exclude": {
     "deprecated": true
   },
