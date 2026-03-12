@@ -69,6 +69,7 @@ export async function getRegistryItem(name: string, styleName: Style["name"]) {
   let files: typeof result.data.files = []
   
   
+  
   for (const file of item.files) {
   
   
