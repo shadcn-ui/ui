@@ -24,6 +24,7 @@ export function ThemeProvider({
       {...props}
       
     >
+    
       {children}
     </NextThemesProvider>
   )
