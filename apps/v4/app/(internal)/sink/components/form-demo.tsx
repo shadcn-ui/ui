@@ -235,6 +235,7 @@ export function FormDemo() {
           name="mobile"
           render={({ field }) => (
             <FormItem className="flex flex-row items-start gap-3 rounded-md border p-4 shadow-xs">
+            
               <FormControl>
                 <Checkbox
                   checked={field.value}
