@@ -28,4 +28,5 @@ export function ThemeProvider({
       {children}
     </NextThemesProvider>
   )
+  
 }
