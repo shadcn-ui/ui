@@ -4,6 +4,7 @@ import { useTheme } from "next-themes"
 export const META_THEME_COLORS = {
   light: "#ffffff",
   dark: "#0a0a0a",
+  
 }
 
 export function useMetaColor() {
