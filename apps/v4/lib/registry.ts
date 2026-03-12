@@ -82,6 +82,7 @@ export async function getRegistryItem(name: string, styleName: Style["name"]) {
       ...file,
       
       
+      
       path: relativePath,
       
       
