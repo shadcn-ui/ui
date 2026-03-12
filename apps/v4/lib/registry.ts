@@ -70,6 +70,7 @@ export async function getRegistryItem(name: string, styleName: Style["name"]) {
   
     const content = await getFileContent(file)
     
+    
     const relativePath = path.relative(process.cwd(), file.path)
     
 
