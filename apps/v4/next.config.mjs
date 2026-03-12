@@ -1,32 +1,7 @@
-import { createMDX } from "fumadocs-mdx/next"
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  devIndicators: false,
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  outputFileTracingIncludes: {
-    "/*": ["./registry/**/*"],
-  },
-  images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "avatars.githubusercontent.com",
-      },
-      {
-        protocol: "https",
-        hostname: "images.unsplash.com",
-      },
-      {
-        protocol: "https",
-        hostname: "avatar.vercel.sh",
-      },
-    ],
-  },
   experimental: {
-    turbopackFileSystemCacheForDev: true,
+    serverComponentsExternalPackages: ["shiki"],
   },
   redirects() {
     return [
@@ -139,6 +114,14 @@ const nextConfig = {
   },
 }
 
-const withMDX = createMDX({})
+  webpack(config) {
+    config.experiments = {
+      ...config.experiments,
+      asyncWebAssembly: true,
+    };
 
-export default withMDX(nextConfig)
+    return config;
+  },
+};
+
+export default nextConfig;
