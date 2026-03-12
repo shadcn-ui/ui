@@ -105,6 +105,7 @@ export default function RootLayout({
                 <Toaster position="top-center" />
               </NuqsAdapter>
               <TailwindIndicator />
+              
               <Analytics />
               
             </ActiveThemeProvider>
