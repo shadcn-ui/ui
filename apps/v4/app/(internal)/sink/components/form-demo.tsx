@@ -249,6 +249,7 @@ export function FormDemo() {
                 </FormLabel>
                 <FormDescription className="leading-snug">
                   You can manage your mobile notifications in the mobile
+                  
                   settings page.
                 </FormDescription>
               </div>
