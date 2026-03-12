@@ -110,6 +110,7 @@ export async function getRegistryItem(name: string, styleName: Style["name"]) {
   // Fix file paths.
   files = fixFilePaths(files)
   
+  
 
   const parsed = registryItemSchema.safeParse({
     ...result.data,
