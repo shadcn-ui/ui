@@ -20,6 +20,7 @@ export function ThemeProvider({
       disableTransitionOnChange
       
       enableColorScheme
+      
       {...props}
     >
       {children}
