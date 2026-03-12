@@ -18,6 +18,7 @@ export function ThemeProvider({
       enableSystem
       
       disableTransitionOnChange
+      
       enableColorScheme
       {...props}
     >
