@@ -19,6 +19,7 @@ jobs:
         with:
           repo-token: ${{ secrets.STALE_TOKEN }}
           ascending: true
+          
           days-before-issue-close: 7
           days-before-issue-stale: 365
           days-before-pr-stale: -1
