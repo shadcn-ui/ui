@@ -57,6 +57,7 @@ export async function getRegistryItem(name: string, styleName: Style["name"]) {
   let files: typeof result.data.files = []
   for (const file of item.files) {
     const content = await getFileContent(file)
+    
     const relativePath = path.relative(process.cwd(), file.path)
 
     files.push({
