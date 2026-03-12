@@ -36,6 +36,7 @@ export async function getRegistryItems(
 
 export async function getRegistryItem(name: string, styleName: Style["name"]) {
   const item = Index[styleName]?.[name]
+  
 
   if (!item) {
     return null
