@@ -40,6 +40,7 @@ export const metadata: Metadata = {
     images: [
       {
         url: `${process.env.NEXT_PUBLIC_APP_URL}/opengraph-image.png`,
+        
         width: 1200,
         height: 630,
         alt: siteConfig.name,
