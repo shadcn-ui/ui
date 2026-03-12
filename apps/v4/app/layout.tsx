@@ -102,6 +102,7 @@ export default function RootLayout({
             <ActiveThemeProvider>
               <NuqsAdapter>
                 {children}
+                
                 <Toaster position="top-center" />
                 
               </NuqsAdapter>
