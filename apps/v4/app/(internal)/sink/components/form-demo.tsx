@@ -301,6 +301,7 @@ export function FormDemo() {
                           <FormLabel className="text-sm leading-tight font-normal">
                           
                             {item.label}
+                            
                           </FormLabel>
                         </FormItem>
                       )
