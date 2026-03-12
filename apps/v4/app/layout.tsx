@@ -6,6 +6,7 @@ import { NuqsAdapter } from "nuqs/adapters/next/app"
 import { META_THEME_COLORS, siteConfig } from "@/lib/config"
 
 import { fontVariables } from "@/lib/fonts"
+
 import { cn } from "@/lib/utils"
 import { LayoutProvider } from "@/hooks/use-layout"
 import { ActiveThemeProvider } from "@/components/active-theme"
