@@ -37,6 +37,7 @@ export function ModeSwitcher() {
   const toggleTheme = React.useCallback(() => {
     setTheme(resolvedTheme === "dark" ? "light" : "dark")
   }, [resolvedTheme, setTheme])
+  
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
