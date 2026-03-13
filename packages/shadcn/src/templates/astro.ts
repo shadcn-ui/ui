@@ -30,8 +30,6 @@ import { ComponentExample } from "@/components/component-example"
   ],
   monorepo: {
     templateDir: "astro-monorepo",
-    packageManager: "pnpm",
-    installArgs: ["--no-frozen-lockfile"],
     init: fontsourceMonorepoInit,
     files: [
       {
