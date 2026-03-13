@@ -43,8 +43,8 @@
   },
   {
     "name": "@agents-ui",
-    "homepage": "https://livekit.io/ui",
-    "url": "https://livekit.io/ui/r/{name}.json",
+    "homepage": "https://livekit.com/ui",
+    "url": "https://livekit.com/ui/r/{name}.json",
     "description": "This is a shadcn/ui component registry that distributes copy-paste React components for building LiveKit AI Agent interfaces."
   },
   {
@@ -270,6 +270,12 @@
     "description": "Accessible React component library to copy, customize, and own your UI."
   },
   {
+    "name": "@jalco",
+    "homepage": "https://ui.justinlevine.me",
+    "url": "https://ui.justinlevine.me/r/{name}.json",
+    "description": "A curated collection of GitHub-integrated, documentation, and developer-facing components. Self-contained, zero-dependency, and production-ready."
+  },
+  {
     "name": "@kibo-ui",
     "homepage": "https://www.kibo-ui.com/",
     "url": "https://www.kibo-ui.com/r/{name}.json",
@@ -420,6 +426,12 @@
     "description": "Carefully built UI blocks for real apps and dashboards, designed to integrate smoothly from early ideas to production releases."
   },
   {
+    "name": "@pacekit-gsap",
+    "homepage": "https://gsap.pacekit.dev",
+    "url": "https://gsap.pacekit.dev/r/{name}.json",
+    "description": "Animated GSAP components crafted for smooth interaction and rich detail."
+  },
+  {
     "name": "@pastecn",
     "homepage": "https://pastecn.com",
     "url": "https://pastecn.com/r/{name}",
@@ -562,6 +574,12 @@
     "homepage": "https://shadcnstudio.com",
     "url": "https://shadcnstudio.com/r/{name}.json",
     "description": "An open-source set of shadcn/ui components, blocks, and templates with a powerful theme generator."
+  },
+  {
+    "name": "@waves-cn",
+    "homepage": "https://waves-cn.vercel.app/r/{name}.json",
+    "url": "https://waves-cn.vercel.app",
+    "description": "A collection of wave players and waveform components built with wavesurfer.js and shadcn/ui."
   },
   {
     "name": "@shadcn-editor",

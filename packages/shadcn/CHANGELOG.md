@@ -1,5 +1,11 @@
 # @shadcn/ui
 
+## 4.0.6
+
+### Patch Changes
+
+- [#10022](https://github.com/shadcn-ui/ui/pull/10022) [`7e93eb81ea8160c06c86f98bb6bfeb1ddfd0d237`](https://github.com/shadcn-ui/ui/commit/7e93eb81ea8160c06c86f98bb6bfeb1ddfd0d237) Thanks [@shadcn](https://github.com/shadcn)! - ensure monorepo respect package manager
+
 ## 4.0.5
 
 ### Patch Changes
