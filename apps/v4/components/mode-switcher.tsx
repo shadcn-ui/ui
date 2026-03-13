@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import Script from "next/script"
+
 import { useTheme } from "next-themes"
 
 import { useMetaColor } from "@/hooks/use-meta-color"
