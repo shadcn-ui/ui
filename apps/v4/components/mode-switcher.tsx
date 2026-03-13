@@ -45,6 +45,7 @@ export function ModeSwitcher() {
     const down = (e: KeyboardEvent) => {
     
       if ((e.key === "d" || e.key === "D") && !e.metaKey && !e.ctrlKey) {
+      
         if (
           (e.target instanceof HTMLElement && e.target.isContentEditable) ||
           e.target instanceof HTMLInputElement ||
