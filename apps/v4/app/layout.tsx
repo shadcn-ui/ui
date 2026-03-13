@@ -84,6 +84,7 @@ export default function RootLayout({
                   document.querySelector('meta[name="theme-color"]').setAttribute('content', '${META_THEME_COLORS.dark}')
                 }
                 if (localStorage.layout) {
+                
                   document.documentElement.classList.add('layout-' + localStorage.layout)
                   
                 }
