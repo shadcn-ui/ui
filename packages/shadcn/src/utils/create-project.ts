@@ -70,11 +70,16 @@ export async function createProject(
     monorepo: options.monorepo,
   })
 
+  const detectedPackageManager = await getPackageManager(options.cwd, {
+    withFallback: true,
+  })
+
   const packageManager =
-    effectiveTemplate.packageManager ??
-    (await getPackageManager(options.cwd, {
-      withFallback: true,
-    }))
+    options.monorepo &&
+    effectiveTemplate.packageManager === "pnpm" &&
+    detectedPackageManager === "bun"
+      ? "bun"
+      : effectiveTemplate.packageManager ?? detectedPackageManager
 
   const projectPath = path.join(options.cwd, projectName)
 

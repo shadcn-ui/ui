@@ -1,3 +1,4 @@
+import { getPackageManager } from "@/src/utils/get-package-manager"
 import { spinner } from "@/src/utils/spinner"
 import { execa } from "execa"
 import fs from "fs-extra"
@@ -35,6 +36,7 @@ describe("createProject", () => {
 
   beforeEach(() => {
     vi.clearAllMocks()
+    vi.mocked(getPackageManager).mockResolvedValue("npm")
 
     // Reset all fs mocks
     vi.mocked(fs.access).mockResolvedValue(undefined)
@@ -124,6 +126,42 @@ describe("createProject", () => {
       projectName: "my-monorepo",
       template: "next",
     })
+  })
+
+  it("should use bun for monorepo templates when bun is detected", async () => {
+    vi.mocked(getPackageManager).mockResolvedValue("bun")
+
+    await createProject({
+      cwd: "/test",
+      force: true,
+      template: "vite",
+      name: "bun-monorepo",
+      monorepo: true,
+    })
+
+    expect(execa).toHaveBeenCalledWith("bun", ["install"], {
+      cwd: "/test/bun-monorepo",
+    })
+  })
+
+  it("should keep pnpm for monorepo templates when bun is not detected", async () => {
+    vi.mocked(getPackageManager).mockResolvedValue("npm")
+
+    await createProject({
+      cwd: "/test",
+      force: true,
+      template: "vite",
+      name: "pnpm-monorepo",
+      monorepo: true,
+    })
+
+    expect(execa).toHaveBeenCalledWith(
+      "pnpm",
+      ["install", "--no-frozen-lockfile"],
+      {
+        cwd: "/test/pnpm-monorepo",
+      }
+    )
   })
 
   it("should force next template for remote components", async () => {

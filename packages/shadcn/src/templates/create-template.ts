@@ -166,7 +166,11 @@ function defaultScaffold({
       }
 
       // Run install.
-      const args = ["install", ...(installArgs ?? [])]
+      // `--no-frozen-lockfile` is pnpm-specific and breaks for Bun.
+      const normalizedInstallArgs = (installArgs ?? []).filter(
+        (arg) => packageManager === "pnpm" || arg !== "--no-frozen-lockfile"
+      )
+      const args = ["install", ...normalizedInstallArgs]
       await execa(packageManager, args, {
         cwd: projectPath,
       })
