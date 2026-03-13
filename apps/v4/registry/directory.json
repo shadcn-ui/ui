@@ -50,8 +50,8 @@
   },
   {
     "name": "@agents-ui",
-    "homepage": "https://livekit.io/ui",
-    "url": "https://livekit.io/ui/r/{name}.json",
+    "homepage": "https://livekit.com/ui",
+    "url": "https://livekit.com/ui/r/{name}.json",
     "description": "This is a shadcn/ui component registry that distributes copy-paste React components for building LiveKit AI Agent interfaces.",
     "logo": "<svg role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><title>LiveKit</title><path d='M0 0v24h14.4v-4.799h4.8V24H24v-4.8h-4.799v-4.8h-4.8v4.8H4.8V0H0zm14.4 14.4V9.602h4.801V4.8H24V0h-4.8v4.8h-4.8v4.8H9.6v4.8h4.8z'/></svg>"
   },
@@ -316,6 +316,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='122' height='122' fill='none' viewBox='0 0 122 122'><rect width='101.667' height='101.667' x='10.167' y='10.166' fill='#0d6dfd' rx='19.063'/><g fill='#fff' filter='url(#a)' shape-rendering='crispEdges'><path d='M27.243 32.083a4.84 4.84 0 0 1 4.84-4.84h9.678a4.84 4.84 0 0 1 4.839 4.84v9.678a4.84 4.84 0 0 1-4.84 4.84h-9.678a4.84 4.84 0 0 1-4.839-4.84z'/><path fill-opacity='.5' d='M51.366 32.083a4.84 4.84 0 0 1 4.839-4.84h9.678a4.84 4.84 0 0 1 4.84 4.84v9.678a4.84 4.84 0 0 1-4.84 4.84h-9.678a4.84 4.84 0 0 1-4.84-4.84z'/><path d='M75.488 32.083a4.84 4.84 0 0 1 4.84-4.84h9.678a4.84 4.84 0 0 1 4.839 4.84v9.678a4.84 4.84 0 0 1-4.84 4.84h-9.678a4.84 4.84 0 0 1-4.839-4.84z'/><path fill-opacity='.5' d='M75.488 56.205a4.84 4.84 0 0 1 4.84-4.839h9.678a4.84 4.84 0 0 1 4.839 4.84v9.678a4.84 4.84 0 0 1-4.84 4.839h-9.678a4.84 4.84 0 0 1-4.839-4.84z'/></g><defs><filter id='a' width='68.247' height='44.125' x='26.921' y='27.082' color-interpolation-filters='sRGB' filterUnits='userSpaceOnUse'><feFlood flood-opacity='0' result='BackgroundImageFix'/><feColorMatrix in='SourceAlpha' result='hardAlpha' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0'/><feOffset dy='.161'/><feGaussianBlur stdDeviation='.161'/><feComposite in2='hardAlpha' operator='out'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.05 0'/><feBlend in2='BackgroundImageFix' result='effect1_dropShadow_76_525'/><feBlend in='SourceGraphic' in2='effect1_dropShadow_76_525' result='shape'/></filter></defs></svg>"
   },
   {
+    "name": "@jalco",
+    "homepage": "https://ui.justinlevine.me",
+    "url": "https://ui.justinlevine.me/r/{name}.json",
+    "description": "A curated collection of GitHub-integrated, documentation, and developer-facing components. Self-contained, zero-dependency, and production-ready.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1415 784' fill='currentColor'><path d='M803.5,188.2v248.3c.5,55.1-31.4,104.5-65.9,144.9-8.9,10.4-20.2,26.8-32,34.2-11.9,7.5-27.4,4.2-40.8,1.8-29.1-5.3-57.2-17-83.4-30.2-55-27.7-107.1-63-155.8-101.2-21.5-16.9-64.8-44.2-65.5-75.5v-103.4c44.4-22.1,88.8-44.3,133.3-66.4v184.3c0,42.4,53.8,69.9,88.1,79.9,48,14,89.1-7,88.8-60.6V152.4c8.9-4.4,22.5-14.7,33.3-14.1,9.5.6,24.6,12.3,33.3,16.6,22.2,11.1,44.4,22.1,66.6,33.2Z'/><path d='M1042.2,474.3c-44.4,21.5-88.8,42.9-133.3,64.4V240.7c44.4,22.1,88.8,44.3,133.3,66.4v167.1Z'/></svg>"
+  },
+  {
     "name": "@kibo-ui",
     "homepage": "https://www.kibo-ui.com/",
     "url": "https://www.kibo-ui.com/r/{name}.json",
@@ -491,6 +498,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='512' height='512' fill='none' viewBox='0 0 512 512'><g clip-path='url(#clip0_832_289)'><path fill='var(--foregorund)' d='M256 0C51.2 0 0 51.2 0 256s51.2 256 256 256 256-51.2 256-256S460.8 0 256 0'/><path stroke='var(--background)' stroke-width='24' d='M381.631 89.102 156.848 226.934c-1.77 1.101-3.439 2.653-4.844 4.505s-2.5 3.94-3.177 6.062c-.673 2.062-.875 4.084-.584 5.83.288 1.658 1.077 2.946 2.257 3.686l98.286 32.478-122.2 137.576a7.9 7.9 0 0 0-1.306 2.72c-.234.895-.22 1.742.04 2.404q.369 1.032 1.341 1.214c.64.125 1.387-.039 2.127-.468l224.795-137.85c1.77-1.102 3.438-2.654 4.844-4.506 1.405-1.852 2.5-3.94 3.177-6.061.666-2.057.864-4.072.571-5.813-.282-1.663-1.066-2.957-2.245-3.704l-87.131-44.529L383.845 94.953a7.9 7.9 0 0 0 1.306-2.72c.233-.895.219-1.741-.04-2.404-.257-.632-.727-1.058-1.341-1.214-.641-.125-1.4.058-2.139.487Z'/></g></svg>"
   },
   {
+    "name": "@pacekit-gsap",
+    "homepage": "https://gsap.pacekit.dev",
+    "url": "https://gsap.pacekit.dev/r/{name}.json",
+    "description": "Animated GSAP components crafted for smooth interaction and rich detail.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='512' height='512' fill='none' viewBox='0 0 512 512'><g clip-path='url(#clip0_832_289)'><path fill='var(--foregorund)' d='M256 0C51.2 0 0 51.2 0 256s51.2 256 256 256 256-51.2 256-256S460.8 0 256 0'/><path stroke='var(--background)' stroke-width='24' d='M381.631 89.102 156.848 226.934c-1.77 1.101-3.439 2.653-4.844 4.505s-2.5 3.94-3.177 6.062c-.673 2.062-.875 4.084-.584 5.83.288 1.658 1.077 2.946 2.257 3.686l98.286 32.478-122.2 137.576a7.9 7.9 0 0 0-1.306 2.72c-.234.895-.22 1.742.04 2.404q.369 1.032 1.341 1.214c.64.125 1.387-.039 2.127-.468l224.795-137.85c1.77-1.102 3.438-2.654 4.844-4.506 1.405-1.852 2.5-3.94 3.177-6.061.666-2.057.864-4.072.571-5.813-.282-1.663-1.066-2.957-2.245-3.704l-87.131-44.529L383.845 94.953a7.9 7.9 0 0 0 1.306-2.72c.233-.895.219-1.741-.04-2.404-.257-.632-.727-1.058-1.341-1.214-.641-.125-1.4.058-2.139.487Z'/></g></svg>"
+  },
+  {
     "name": "@pastecn",
     "homepage": "https://pastecn.com",
     "url": "https://pastecn.com/r/{name}",
@@ -657,6 +671,13 @@
     "url": "https://shadcnstudio.com/r/{name}.json",
     "description": "An open-source set of shadcn/ui components, blocks, and templates with a powerful theme generator.",
     "logo": "<svg width='33' height='33' viewBox='0 0 33 33' fill='none' xmlns='http://www.w3.org/2000/svg'><rect x='0.5' y='0.5' width='32' height='32' rx='16' fill='var(--forgraound)'></rect><path d='M16.5993 7.50488V13.4044C16.5993 15.3441 15.0268 16.9166 13.0871 16.9166H7.35156' stroke='var(--background)' stroke-width='1.95122'></path><path d='M16.7562 26.3286L16.7562 20.4291C16.7562 18.4893 18.3286 16.9169 20.2684 16.9169L26.0039 16.9169' stroke='var(--background)' stroke-width='1.95122'></path><line x1='23.7326' y1='10.0919' x2='19.696' y2='14.081' stroke='var(--background)' stroke-width='1.95122'></line><line x1='13.7385' y1='20.0567' x2='9.70187' y2='24.0459' stroke='var(--background)' stroke-width='1.95122'></line><line x1='13.5426' y1='13.8681' x2='9.52961' y2='9.85513' stroke='var(--background)' stroke-width='1.95122'></line><line x1='23.689' y1='24.0419' x2='19.6761' y2='20.029' stroke='var(--background)' stroke-width='1.95122'></line></svg>"
+  },
+  {
+    "name": "@waves-cn",
+    "url": "https://waves-cn.vercel.app",
+    "homepage": "https://waves-cn.vercel.app/r/{name}.json",
+    "description": "A collection of wave players and waveform components built with wavesurfer.js and shadcn/ui.",
+    "logo": "<svg width='43' height='48' viewBox='0 0 44 48' fill='none' xmlns=' http://www.w3.org/2000/svg'><path fill-rule='evenodd' clip-rule='evenodd' d='M23.2 8.047a7 7 0 0 0-.737-3.12 7 7 0 0 1-.723-2.686L21.6 0l-.14 2.24a7 7 0 0 1-.723 2.686A7 7 0 0 0 20 8.047v31.906a7 7 0 0 0 .737 3.12 7 7 0 0 1 .723 2.686L21.6 48l.14-2.24a7 7 0 0 1 .723-2.686 7 7 0 0 0 .737-3.121zm-8.737.08a7 7 0 0 1 .737 3.12v25.505a7 7 0 0 1-.737 3.122 7 7 0 0 0-.723 2.685L13.6 44.8l-.14-2.24a7 7 0 0 0-.723-2.686A7 7 0 0 1 12 36.752V11.248c0-1.084.252-2.152.737-3.122a7 7 0 0 0 .723-2.685L13.6 3.2l.14 2.24a7 7 0 0 0 .723 2.686m-3.263 6.32a7 7 0 0 0-.737-3.12A7 7 0 0 1 9.74 8.64L9.6 6.4l-.14 2.24a7 7 0 0 1-.723 2.686A7 7 0 0 0 8 14.448v19.106c0 1.083.252 2.152.737 3.12a7 7 0 0 1 .723 2.686l.14 2.24.14-2.24a7 7 0 0 1 .723-2.687 7 7 0 0 0 .737-3.12zm-4.737 3.28a7 7 0 0 1 .737 3.12v6.305a7 7 0 0 1-.737 3.121 7 7 0 0 0-.723 2.686L5.6 35.2l-.14-2.24a7 7 0 0 0-.723-2.687A7 7 0 0 1 4 27.153v-6.305a7 7 0 0 1 .737-3.122 7 7 0 0 0 .723-2.685L5.6 12.8l.14 2.24c.058.935.304 1.849.723 2.686M3.2 24v.047-.095zm-3.2.047V24a7 7 0 0 0 .737 3.073 7 7 0 0 1 .723 2.686L1.6 32l.14-2.24a7 7 0 0 1 .723-2.687c.478-.954.73-2.006.737-3.073a7 7 0 0 0-.737-3.073 7 7 0 0 1-.723-2.686L1.6 16l-.14 2.24a7 7 0 0 1-.723 2.687A7 7 0 0 0 0 24v-.047zm18.463-19.12a7 7 0 0 1 .737 3.12v31.906a7 7 0 0 1-.737 3.12 7 7 0 0 0-.723 2.686L17.6 48l-.14-2.24a7 7 0 0 0-.723-2.686A7 7 0 0 1 16 39.953V8.047c0-1.083.252-2.152.737-3.12a7 7 0 0 0 .723-2.686L17.6 0l.14 2.24a7 7 0 0 0 .723 2.686m8 0a7 7 0 0 1 .737 3.12v31.906a7 7 0 0 1-.737 3.12 7 7 0 0 0-.723 2.686L25.6 48l-.14-2.24a7 7 0 0 0-.723-2.686A7 7 0 0 1 24 39.953V8.047c0-1.083.252-2.152.737-3.12a7 7 0 0 0 .723-2.686L25.6 0l.14 2.24a7 7 0 0 0 .723 2.686m4.737 6.32a7 7 0 0 0-.737-3.12 7 7 0 0 1-.723-2.686L29.6 3.2l-.14 2.24a7 7 0 0 1-.723 2.686A7 7 0 0 0 28 11.248v25.504c0 1.084.252 2.152.737 3.122a7 7 0 0 1 .723 2.685l.14 2.241.14-2.24a7 7 0 0 1 .723-2.686c.485-.97.737-2.038.737-3.122zm3.263.08a7 7 0 0 1 .737 3.12v19.106a7 7 0 0 1-.737 3.12 7 7 0 0 0-.723 2.686L33.6 41.6l-.14-2.24a7 7 0 0 0-.723-2.687 7 7 0 0 1-.737-3.12V14.448c0-1.084.252-2.152.737-3.122a7 7 0 0 0 .723-2.685L33.6 6.4l.14 2.24c.058.935.304 1.849.723 2.686m4.737 9.52a7 7 0 0 0-.737-3.12 7 7 0 0 1-.723-2.686l-.14-2.24-.14 2.24a7 7 0 0 1-.723 2.686A7 7 0 0 0 36 20.848v6.305c0 1.083.252 2.152.737 3.12a7 7 0 0 1 .723 2.686l.14 2.241.14-2.24a7 7 0 0 1 .723-2.687 7 7 0 0 0 .737-3.12zm4 3.153v.047-.095zM40 24a7 7 0 0 0 .737 3.073 7 7 0 0 1 .723 2.686L41.6 32l.14-2.24a7 7 0 0 1 .723-2.687c.478-.954.73-2.006.737-3.073a7 7 0 0 0-.737-3.073 7 7 0 0 1-.723-2.686L41.6 16l-.14 2.24a7 7 0 0 1-.723 2.687A7 7 0 0 0 40 24m0 0v-.047.095z' class='ccustom' fill='#394149'/></svg>"
   },
   {
     "name": "@shadcn-editor",
