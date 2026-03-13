@@ -12,6 +12,7 @@ import { LayoutProvider } from "@/hooks/use-layout"
 import { ActiveThemeProvider } from "@/components/active-theme"
 import { Analytics } from "@/components/analytics"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
+
 import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/registry/bases/radix/ui/sonner"
 
