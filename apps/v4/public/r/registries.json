@@ -43,8 +43,8 @@
   },
   {
     "name": "@agents-ui",
-    "homepage": "https://livekit.io/ui",
-    "url": "https://livekit.io/ui/r/{name}.json",
+    "homepage": "https://livekit.com/ui",
+    "url": "https://livekit.com/ui/r/{name}.json",
     "description": "This is a shadcn/ui component registry that distributes copy-paste React components for building LiveKit AI Agent interfaces."
   },
   {
