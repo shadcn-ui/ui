@@ -26,6 +26,7 @@ export const metadata: Metadata = {
   
   description: siteConfig.description,
   keywords: ["Next.js", "React", "Tailwind CSS", "Components", "shadcn"],
+  
   authors: [
     {
       name: "shadcn",
