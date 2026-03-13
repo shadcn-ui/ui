@@ -87,6 +87,7 @@ export function ModeSwitcher() {
           
           size="icon"
           
+          
           className="group/toggle extend-touch-target size-8"
           
           onClick={toggleTheme}
