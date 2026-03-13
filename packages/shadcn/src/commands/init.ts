@@ -384,6 +384,9 @@ export const init = new Command()
             } else if (options.rtl === false) {
               url.searchParams.delete("rtl")
             }
+            if (url.pathname === "/init" && presetArg.startsWith(SHADCN_URL)) {
+              url.searchParams.set("track", "1")
+            }
             initUrl = url.toString()
             presetBase = url.searchParams.get("base") ?? undefined
           } else if (isPresetCode(presetArg)) {
@@ -512,12 +515,18 @@ export const init = new Command()
         }
 
         // Resolve registry:base config from the first component.
-        const { registryBaseConfig, installStyleIndex } =
-          await resolveRegistryBaseConfig(components[0], cwd, {
-            registries: existingConfig?.registries as
-              | z.infer<typeof registryConfigSchema>
-              | undefined,
-          })
+        const {
+          registryBaseConfig,
+          installStyleIndex,
+          url: cleanUrl,
+        } = await resolveRegistryBaseConfig(components[0], cwd, {
+          registries: existingConfig?.registries as
+            | z.infer<typeof registryConfigSchema>
+            | undefined,
+        })
+
+        // Use the clean URL (track param stripped) for subsequent fetches.
+        components[0] = cleanUrl
 
         if (!installStyleIndex) {
           options.installStyleIndex = false
