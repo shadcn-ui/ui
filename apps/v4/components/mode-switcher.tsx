@@ -83,6 +83,7 @@ export function ModeSwitcher() {
         
           variant="ghost"
           
+          
           size="icon"
           
           className="group/toggle extend-touch-target size-8"
