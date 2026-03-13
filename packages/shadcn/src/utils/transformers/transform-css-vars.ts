@@ -1,7 +1,21 @@
 import { registryBaseColorSchema } from "@/src/schema"
 import { Transformer } from "@/src/utils/transformers"
-import { ScriptKind, SyntaxKind } from "ts-morph"
+import { SyntaxKind, type StringLiteral } from "ts-morph"
 import { z } from "zod"
+
+function applyColorMappingToStringLiteral(
+  node: StringLiteral,
+  inlineColors: z.infer<typeof registryBaseColorSchema>["inlineColors"]
+) {
+  const raw = node.getLiteralText()
+  const mapped = applyColorMapping(raw, inlineColors).trim()
+  if (mapped !== raw) {
+    node.setLiteralValue(mapped)
+  }
+}
+
+// Class name utility function names that accept class strings as arguments.
+const CLASS_UTIL_FUNCTIONS = ["cn", "clsx", "cva"]
 
 export const transformCssVars: Transformer = async ({
   sourceFile,
@@ -13,91 +27,123 @@ export const transformCssVars: Transformer = async ({
     return sourceFile
   }
 
-  // Find jsx attributes with the name className.
-  // const openingElements = sourceFile.getDescendantsOfKind(SyntaxKind.JsxElement)
-  // console.log(openingElements)
-  // const jsxAttributes = sourceFile
-  //   .getDescendantsOfKind(SyntaxKind.JsxAttribute)
-  //   .filter((node) => node.getName() === "className")
+  const inlineColors = baseColor.inlineColors
 
-  // for (const jsxAttribute of jsxAttributes) {
-  //   const value = jsxAttribute.getInitializer()?.getText()
-  //   if (value) {
-  //     const valueWithColorMapping = applyColorMapping(
-  //       value.replace(/"/g, ""),
-  //       baseColor.inlineColors
-  //     )
-  //     jsxAttribute.setInitializer(`"${valueWithColorMapping}"`)
-  //   }
-  // }
-  sourceFile.getDescendantsOfKind(SyntaxKind.StringLiteral).forEach((node) => {
-    const raw = node.getLiteralText()
-    const mapped = applyColorMapping(raw, baseColor.inlineColors).trim()
-    if (mapped !== raw) {
-      node.setLiteralValue(mapped)
+  // Transform cva() calls: cva(base, { variants: { ... } })
+  sourceFile
+    .getDescendantsOfKind(SyntaxKind.CallExpression)
+    .filter((node) => node.getExpression().getText() === "cva")
+    .forEach((node) => {
+      // cva(base, ...)
+      const firstArg = node.getArguments()[0]
+      if (firstArg?.isKind(SyntaxKind.StringLiteral)) {
+        applyColorMappingToStringLiteral(firstArg, inlineColors)
+      }
+
+      // cva(..., { variants: { ... } })
+      const secondArg = node.getArguments()[1]
+      if (secondArg?.isKind(SyntaxKind.ObjectLiteralExpression)) {
+        secondArg
+          .getDescendantsOfKind(SyntaxKind.PropertyAssignment)
+          .find((node) => node.getName() === "variants")
+          ?.getDescendantsOfKind(SyntaxKind.PropertyAssignment)
+          .forEach((node) => {
+            node
+              .getDescendantsOfKind(SyntaxKind.PropertyAssignment)
+              .forEach((node) => {
+                const classNames = node.getInitializerIfKind(
+                  SyntaxKind.StringLiteral
+                )
+                if (classNames) {
+                  applyColorMappingToStringLiteral(classNames, inlineColors)
+                }
+              })
+          })
+      }
+    })
+
+  // Transform className and classNames JSX attributes.
+  sourceFile.getDescendantsOfKind(SyntaxKind.JsxAttribute).forEach((node) => {
+    const attrName = node.getNameNode().getText()
+
+    if (attrName === "className") {
+      // className="..."
+      const initializer = node.getInitializer()
+      if (initializer?.isKind(SyntaxKind.StringLiteral)) {
+        applyColorMappingToStringLiteral(initializer, inlineColors)
+      }
+
+      // className={...}
+      if (initializer?.isKind(SyntaxKind.JsxExpression)) {
+        // Find calls to cn(), clsx(), etc.
+        initializer
+          .getDescendantsOfKind(SyntaxKind.CallExpression)
+          .filter((node) =>
+            CLASS_UTIL_FUNCTIONS.includes(node.getExpression().getText())
+          )
+          .forEach((callExpression) => {
+            callExpression.getArguments().forEach((arg) => {
+              if (arg.isKind(SyntaxKind.StringLiteral)) {
+                applyColorMappingToStringLiteral(arg, inlineColors)
+              }
+
+              if (
+                arg.isKind(SyntaxKind.ConditionalExpression) ||
+                arg.isKind(SyntaxKind.BinaryExpression)
+              ) {
+                arg
+                  .getChildrenOfKind(SyntaxKind.StringLiteral)
+                  .forEach((node) => {
+                    applyColorMappingToStringLiteral(node, inlineColors)
+                  })
+              }
+            })
+          })
+      }
+    }
+
+    // classNames={...} (object form, e.g. classNames={{ root: cn("...") }})
+    if (attrName === "classNames") {
+      if (node.getInitializer()?.isKind(SyntaxKind.JsxExpression)) {
+        node
+          .getDescendantsOfKind(SyntaxKind.PropertyAssignment)
+          .forEach((prop) => {
+            if (prop.getInitializer()?.isKind(SyntaxKind.CallExpression)) {
+              const callExpression = prop.getInitializerIfKind(
+                SyntaxKind.CallExpression
+              )
+              if (callExpression) {
+                callExpression.getArguments().forEach((arg) => {
+                  if (arg.isKind(SyntaxKind.StringLiteral)) {
+                    applyColorMappingToStringLiteral(arg, inlineColors)
+                  }
+
+                  if (arg.isKind(SyntaxKind.ConditionalExpression)) {
+                    arg
+                      .getChildrenOfKind(SyntaxKind.StringLiteral)
+                      .forEach((node) => {
+                        applyColorMappingToStringLiteral(node, inlineColors)
+                      })
+                  }
+                })
+              }
+            }
+
+            if (prop.getInitializer()?.isKind(SyntaxKind.StringLiteral)) {
+              const classNames = prop.getInitializerIfKind(
+                SyntaxKind.StringLiteral
+              )
+              if (classNames) {
+                applyColorMappingToStringLiteral(classNames, inlineColors)
+              }
+            }
+          })
+      }
     }
   })
 
   return sourceFile
 }
-
-// export default function transformer(file: FileInfo, api: API) {
-//   const j = api.jscodeshift.withParser("tsx")
-
-//   // Replace bg-background with "bg-white dark:bg-slate-950"
-//   const $j = j(file.source)
-//   return $j
-//     .find(j.JSXAttribute, {
-//       name: {
-//         name: "className",
-//       },
-//     })
-//     .forEach((path) => {
-//       const { node } = path
-//       if (node?.value?.type) {
-//         if (node.value.type === "StringLiteral") {
-//           node.value.value = applyColorMapping(node.value.value)
-//           console.log(node.value.value)
-//         }
-
-//         if (
-//           node.value.type === "JSXExpressionContainer" &&
-//           node.value.expression.type === "CallExpression"
-//         ) {
-//           const callee = node.value.expression.callee
-//           if (callee.type === "Identifier" && callee.name === "cn") {
-//             node.value.expression.arguments.forEach((arg) => {
-//               if (arg.type === "StringLiteral") {
-//                 arg.value = applyColorMapping(arg.value)
-//               }
-
-//               if (
-//                 arg.type === "LogicalExpression" &&
-//                 arg.right.type === "StringLiteral"
-//               ) {
-//                 arg.right.value = applyColorMapping(arg.right.value)
-//               }
-//             })
-//           }
-//         }
-//       }
-//     })
-//     .toSource()
-// }
-
-// // export function splitClassName(input: string): (string | null)[] {
-// //   const parts = input.split(":")
-// //   const classNames = parts.map((part) => {
-// //     const match = part.match(/^\[?(.+)\]$/)
-// //     if (match) {
-// //       return match[1]
-// //     } else {
-// //       return null
-// //     }
-// //   })
-
-// //   return classNames
-// // }
 
 // Splits a className into [variant, name, alpha].
 // eg. hover:bg-primary-100 -> [hover, bg-primary, 100]
