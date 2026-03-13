@@ -146,7 +146,10 @@ async function adaptWorkspaceConfig(
       await fs.remove(pnpmWorkspacePath)
     }
 
-    await fs.writeFile(packageJsonPath, JSON.stringify(packageJson, null, 2))
+    await fs.writeFile(
+      packageJsonPath,
+      JSON.stringify(packageJson, null, 2) + "\n"
+    )
   }
 
   // Rewrite workspace: protocol references in nested package.json files.
@@ -187,7 +190,7 @@ async function rewriteWorkspaceProtocol(dir: string) {
         }
       }
       if (changed) {
-        await fs.writeFile(fullPath, JSON.stringify(pkg, null, 2))
+        await fs.writeFile(fullPath, JSON.stringify(pkg, null, 2) + "\n")
       }
     }
   }
@@ -264,7 +267,7 @@ function defaultScaffold({
         packageJson.name = path.basename(projectPath)
         await fs.writeFile(
           packageJsonPath,
-          JSON.stringify(packageJson, null, 2)
+          JSON.stringify(packageJson, null, 2) + "\n"
         )
       }
 
