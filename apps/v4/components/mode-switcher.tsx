@@ -24,6 +24,7 @@ import {
 
 export const DARK_MODE_FORWARD_TYPE = "dark-mode-forward"
 
+
 export function ModeSwitcher() {
   const { setTheme, resolvedTheme } = useTheme()
   const { setMetaColor, metaColor } = useMetaColor()
