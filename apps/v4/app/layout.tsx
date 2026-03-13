@@ -95,6 +95,7 @@ export default function RootLayout({
       <body
         className={cn(
           "group/body overscroll-none antialiased [--footer-height:calc(var(--spacing)*14)] [--header-height:calc(var(--spacing)*14)] xl:[--footer-height:calc(var(--spacing)*24)]"
+          
         )}
       >
         <ThemeProvider>
