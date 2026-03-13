@@ -17,6 +17,7 @@ import { Toaster } from "@/registry/bases/radix/ui/sonner"
 
 import "@/styles/globals.css"
 
+
 export const metadata: Metadata = {
   title: {
     default: siteConfig.name,
