@@ -9,6 +9,7 @@ import { fontVariables } from "@/lib/fonts"
 
 import { cn } from "@/lib/utils"
 import { LayoutProvider } from "@/hooks/use-layout"
+
 import { ActiveThemeProvider } from "@/components/active-theme"
 
 import { Analytics } from "@/components/analytics"
