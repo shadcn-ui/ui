@@ -270,6 +270,12 @@
     "description": "Accessible React component library to copy, customize, and own your UI."
   },
   {
+    "name": "@jalco",
+    "homepage": "https://ui.justinlevine.me",
+    "url": "https://ui.justinlevine.me/r/{name}.json",
+    "description": "A curated collection of GitHub-integrated, documentation, and developer-facing components. Self-contained, zero-dependency, and production-ready."
+  },
+  {
     "name": "@kibo-ui",
     "homepage": "https://www.kibo-ui.com/",
     "url": "https://www.kibo-ui.com/r/{name}.json",
