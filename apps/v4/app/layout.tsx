@@ -91,6 +91,7 @@ export default function RootLayout({
           }}
         />
         <meta name="theme-color" content={META_THEME_COLORS.light} />
+        
       </head>
       <body
         className={cn(
