@@ -27,8 +27,6 @@ export default function Home() {
   ],
   monorepo: {
     templateDir: "react-router-monorepo",
-    packageManager: "pnpm",
-    installArgs: ["--no-frozen-lockfile"],
     init: fontsourceMonorepoInit,
     files: [
       {
