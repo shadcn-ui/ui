@@ -34,12 +34,8 @@ export interface TemplateConfig {
   defaultProjectName: string
   // The template directory name (e.g. "next-app", "vite-app").
   templateDir: string
-  // Force a specific package manager for this template.
-  packageManager?: string
   // Framework names that map to this template.
   frameworks?: string[]
-  // Custom args passed to `packageManager install`.
-  installArgs?: string[]
   scaffold?: (options: TemplateOptions) => Promise<void>
   create: (options: TemplateOptions) => Promise<void>
   init?: (options: TemplateInitOptions) => Promise<Config>
@@ -50,8 +46,6 @@ export interface TemplateConfig {
   monorepo?: {
     templateDir: string
     defaultProjectName?: string
-    packageManager?: string
-    installArgs?: string[]
     init?: (options: TemplateInitOptions) => Promise<Config>
     files?: RegistryItem["files"]
   }
@@ -66,7 +60,6 @@ export function createTemplate(config: TemplateConfig) {
       defaultScaffold({
         title: config.title,
         templateDir: config.templateDir,
-        installArgs: config.installArgs,
       }),
     postInit: config.postInit ?? defaultPostInit,
   }
@@ -86,8 +79,6 @@ export function resolveTemplate(
     ...template,
     templateDir: m.templateDir,
     defaultProjectName: m.defaultProjectName ?? m.templateDir,
-    packageManager: m.packageManager ?? template.packageManager,
-    installArgs: m.installArgs ?? template.installArgs,
     init: m.init ?? template.init,
     files: m.files ?? template.files,
   }
@@ -96,21 +87,122 @@ export function resolveTemplate(
   resolved.scaffold = defaultScaffold({
     title: template.title,
     templateDir: m.templateDir,
-    installArgs: resolved.installArgs,
   })
 
   return resolved
+}
+
+// Get the appropriate install args for the given package manager.
+function getInstallArgs(packageManager: string): string[] {
+  switch (packageManager) {
+    case "pnpm":
+      // pnpm enables frozen lockfile in CI by default.
+      // The template lockfile may drift, so force-disable it explicitly.
+      return ["--no-frozen-lockfile"]
+    default:
+      return []
+  }
+}
+
+// Adapt a pnpm-based monorepo template to the target package manager.
+async function adaptWorkspaceConfig(
+  projectPath: string,
+  packageManager: string
+) {
+  if (packageManager === "pnpm") {
+    return
+  }
+
+  const pnpmWorkspacePath = path.join(projectPath, "pnpm-workspace.yaml")
+  const packageJsonPath = path.join(projectPath, "package.json")
+
+  // Remove pnpm-lock.yaml.
+  const lockFilePath = path.join(projectPath, "pnpm-lock.yaml")
+  if (fs.existsSync(lockFilePath)) {
+    await fs.remove(lockFilePath)
+  }
+
+  const isMonorepo = fs.existsSync(pnpmWorkspacePath)
+
+  // Update root package.json: strip "packageManager" field to avoid
+  // triggering Corepack, and add "workspaces" for npm/bun/yarn.
+  if (fs.existsSync(packageJsonPath)) {
+    const packageJsonContent = await fs.readFile(packageJsonPath, "utf8")
+    const packageJson = JSON.parse(packageJsonContent)
+    delete packageJson.packageManager
+
+    if (isMonorepo) {
+      // Read workspace patterns from pnpm-workspace.yaml.
+      const workspaceContent = await fs.readFile(pnpmWorkspacePath, "utf8")
+      const patterns: string[] = []
+      for (const line of workspaceContent.split("\n")) {
+        const match = line.match(/^\s*-\s*["']?(.+?)["']?\s*$/)
+        if (match) {
+          patterns.push(match[1])
+        }
+      }
+
+      packageJson.workspaces = patterns
+      await fs.remove(pnpmWorkspacePath)
+    }
+
+    await fs.writeFile(
+      packageJsonPath,
+      JSON.stringify(packageJson, null, 2) + "\n"
+    )
+  }
+
+  // Rewrite workspace: protocol references in nested package.json files.
+  // npm does not support workspace: protocol; bun and yarn do, so only
+  // rewrite for npm monorepo templates.
+  if (isMonorepo && packageManager === "npm") {
+    await rewriteWorkspaceProtocol(projectPath)
+  }
+}
+
+// Recursively find all package.json files and replace workspace: protocol
+// version specifiers with "*", which npm understands.
+async function rewriteWorkspaceProtocol(dir: string) {
+  const entries = await fs.readdir(dir, { withFileTypes: true })
+  for (const entry of entries) {
+    if (entry.name === "node_modules") continue
+    const fullPath = path.join(dir, entry.name)
+    if (entry.isDirectory()) {
+      await rewriteWorkspaceProtocol(fullPath)
+    } else if (entry.name === "package.json") {
+      const content = await fs.readFile(fullPath, "utf8")
+      if (!content.includes("workspace:")) continue
+      const pkg = JSON.parse(content)
+      let changed = false
+      for (const depKey of [
+        "dependencies",
+        "devDependencies",
+        "peerDependencies",
+        "optionalDependencies",
+      ]) {
+        const deps = pkg[depKey]
+        if (!deps) continue
+        for (const [name, version] of Object.entries(deps)) {
+          if (typeof version === "string" && version.startsWith("workspace:")) {
+            deps[name] = "*"
+            changed = true
+          }
+        }
+      }
+      if (changed) {
+        await fs.writeFile(fullPath, JSON.stringify(pkg, null, 2) + "\n")
+      }
+    }
+  }
 }
 
 // Default scaffold that downloads a template from GitHub.
 function defaultScaffold({
   title,
   templateDir,
-  installArgs,
 }: {
   title: string
   templateDir: string
-  installArgs?: string[]
 }) {
   return async ({ projectPath, packageManager }: TemplateOptions) => {
     const createSpinner = spinner(
@@ -157,16 +249,12 @@ function defaultScaffold({
         await fs.remove(templatePath)
       }
 
-      // Remove pnpm-lock.yaml if using a different package manager.
-      if (packageManager !== "pnpm") {
-        const lockFilePath = path.join(projectPath, "pnpm-lock.yaml")
-        if (fs.existsSync(lockFilePath)) {
-          await fs.remove(lockFilePath)
-        }
-      }
+      // Adapt workspace config and lockfiles for the target package manager.
+      await adaptWorkspaceConfig(projectPath, packageManager)
 
       // Run install.
-      const args = ["install", ...(installArgs ?? [])]
+      const installArgs = getInstallArgs(packageManager)
+      const args = ["install", ...installArgs]
       await execa(packageManager, args, {
         cwd: projectPath,
       })
@@ -179,7 +267,7 @@ function defaultScaffold({
         packageJson.name = path.basename(projectPath)
         await fs.writeFile(
           packageJsonPath,
-          JSON.stringify(packageJson, null, 2)
+          JSON.stringify(packageJson, null, 2) + "\n"
         )
       }
 
