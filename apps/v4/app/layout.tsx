@@ -86,6 +86,7 @@ export default function RootLayout({
                 if (localStorage.layout) {
                   document.documentElement.classList.add('layout-' + localStorage.layout)
                 }
+                
               } catch (_) {}
             `,
           }}
