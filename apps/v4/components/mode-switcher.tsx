@@ -43,6 +43,7 @@ export function ModeSwitcher() {
   React.useEffect(() => {
   
     const down = (e: KeyboardEvent) => {
+    
       if ((e.key === "d" || e.key === "D") && !e.metaKey && !e.ctrlKey) {
         if (
           (e.target instanceof HTMLElement && e.target.isContentEditable) ||
