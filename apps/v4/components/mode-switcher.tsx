@@ -68,6 +68,7 @@ export function ModeSwitcher() {
   return (
     <Tooltip>
       <TooltipTrigger asChild>
+      
         <Button
           variant="ghost"
           size="icon"
