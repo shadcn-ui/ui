@@ -43,8 +43,8 @@
   },
   {
     "name": "@agents-ui",
-    "homepage": "https://livekit.io/ui",
-    "url": "https://livekit.io/ui/r/{name}.json",
+    "homepage": "https://livekit.com/ui",
+    "url": "https://livekit.com/ui/r/{name}.json",
     "description": "This is a shadcn/ui component registry that distributes copy-paste React components for building LiveKit AI Agent interfaces."
   },
   {
@@ -270,6 +270,12 @@
     "description": "Accessible React component library to copy, customize, and own your UI."
   },
   {
+    "name": "@jalco",
+    "homepage": "https://ui.justinlevine.me",
+    "url": "https://ui.justinlevine.me/r/{name}.json",
+    "description": "A curated collection of GitHub-integrated, documentation, and developer-facing components. Self-contained, zero-dependency, and production-ready."
+  },
+  {
     "name": "@kibo-ui",
     "homepage": "https://www.kibo-ui.com/",
     "url": "https://www.kibo-ui.com/r/{name}.json",
@@ -280,6 +286,12 @@
     "homepage": "https://kanpeki.vercel.app",
     "url": "https://kanpeki.vercel.app/r/{name}.json",
     "description": "A set of perfect-designed components built on top of React Aria and Motion."
+  },
+  {
+    "name": "@kapwa",
+    "homepage": "https://kapwa-two.vercel.app",
+    "url": "https://kapwa-two.vercel.app/r/{name}.json",
+    "description": "Cleanly designed components purposely built for open-source government portals."
   },
   {
     "name": "@kokonutui",
@@ -378,6 +390,12 @@
     "description": "A collection of neobrutalism-styled components based on shadcn/ui"
   },
   {
+    "name": "@nessra-ui",
+    "homepage": "https://nessra-ui.vercel.app",
+    "url": "https://nessra-ui.vercel.app/r/{name}.json",
+    "description": "Beautiful, accessible components built with Tailwind CSS v4 and Radix UI. Includes auth blocks, data tables, and TanStack Form integration."
+  },
+  {
     "name": "@nexus-elements",
     "homepage": "https://elements.nexus.availproject.org/docs/view-components",
     "url": "https://elements.nexus.availproject.org/r/{name}.json",
@@ -406,6 +424,12 @@
     "homepage": "https://ui.pacekit.dev",
     "url": "https://ui.pacekit.dev/r/{name}.json",
     "description": "Carefully built UI blocks for real apps and dashboards, designed to integrate smoothly from early ideas to production releases."
+  },
+  {
+    "name": "@pacekit-gsap",
+    "homepage": "https://gsap.pacekit.dev",
+    "url": "https://gsap.pacekit.dev/r/{name}.json",
+    "description": "Animated GSAP components crafted for smooth interaction and rich detail."
   },
   {
     "name": "@pastecn",
@@ -528,6 +552,18 @@
     "description": "A growing collection of high-quality blocks and themes for shadcn/ui."
   },
   {
+    "name": "@shadcnmaps",
+    "homepage": "https://shadcnmaps.com",
+    "url": "https://shadcnmaps.com/r/{name}.json",
+    "description": "Beautiful map components powered by pure SVG."
+  },
+  {
+    "name": "@shadcnstore",
+    "homepage": "https://www.shadcnstore.com",
+    "url": "https://shadcnstore.com/r/{name}.json",
+    "description": "A growing collection of shadcn/ui components, blocks, and templates for building modern web apps."
+  },
+  {
     "name": "@shadcn-map",
     "homepage": "https://shadcn-map.vercel.app",
     "url": "http://shadcn-map.vercel.app/r/{name}.json",
@@ -538,6 +574,12 @@
     "homepage": "https://shadcnstudio.com",
     "url": "https://shadcnstudio.com/r/{name}.json",
     "description": "An open-source set of shadcn/ui components, blocks, and templates with a powerful theme generator."
+  },
+  {
+    "name": "@waves-cn",
+    "url": "https://waves-cn.vercel.app/r/{name}.json",
+    "homepage": "https://waves-cn.vercel.app",
+    "description": "A collection of wave players and waveform components built with wavesurfer.js and shadcn/ui."
   },
   {
     "name": "@shadcn-editor",
@@ -850,5 +892,17 @@
     "homepage": "https://paletteui.xyz",
     "url": "https://paletteui.xyz/r/{name}.json",
     "description": "Curated OKLCH color themes for shadcn/ui + visual theme editor with CSS, Tailwind v4, and Figma export."
+  },
+  {
+    "name": "@fluid",
+    "homepage": "https://www.fluidfunctionalism.com",
+    "url": "https://www.fluidfunctionalism.com/r/{name}.json",
+    "description": "Fluid components used exclusively in service of functional clarity. Proximity hover, spring animations, font-weight transitions, and animated focus rings."
+  },
+  {
+    "name": "@gammaui",
+    "homepage": "https://www.gammaui.com",
+    "url": "https://www.gammaui.com/r/{name}.json",
+    "description": "Beautifully designed landing page components built with React & Tailwind CSS & Motion."
   }
 ]

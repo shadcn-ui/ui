@@ -3,6 +3,7 @@ import { buildUrlAndHeadersForRegistryItem } from "@/src/registry/builder"
 import { configWithDefaults } from "@/src/registry/config"
 import { REGISTRY_URL, SHADCN_URL } from "@/src/registry/constants"
 import { type registryConfigSchema } from "@/src/registry/schema"
+import { isUrl } from "@/src/registry/utils"
 import { createConfig } from "@/src/utils/get-config"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
@@ -22,6 +23,7 @@ export const DEFAULT_PRESETS = {
     font: "geist",
     menuAccent: "subtle" as const,
     menuColor: "default" as const,
+
     radius: "default",
     rtl: false,
   },
@@ -35,6 +37,7 @@ export const DEFAULT_PRESETS = {
     font: "inter",
     menuAccent: "subtle" as const,
     menuColor: "default" as const,
+
     radius: "default",
     rtl: false,
   },
@@ -48,6 +51,7 @@ export const DEFAULT_PRESETS = {
     font: "figtree",
     menuAccent: "subtle" as const,
     menuColor: "default" as const,
+
     radius: "default",
     rtl: false,
   },
@@ -61,6 +65,7 @@ export const DEFAULT_PRESETS = {
     font: "jetbrains-mono",
     menuAccent: "subtle" as const,
     menuColor: "default" as const,
+
     radius: "default",
     rtl: false,
   },
@@ -74,6 +79,7 @@ export const DEFAULT_PRESETS = {
     font: "inter",
     menuAccent: "subtle" as const,
     menuColor: "default" as const,
+
     radius: "default",
     rtl: false,
   },
@@ -135,6 +141,9 @@ export function resolveInitUrl(
   if (options?.template) {
     params.set("template", options.template)
   }
+
+  // Signal the server to record this init run.
+  params.set("track", "1")
 
   return `${SHADCN_URL}/init?${params.toString()}`
 }
@@ -261,13 +270,31 @@ export async function resolveRegistryBaseConfig(
 
   const [item] = await getRegistryItems([initUrl], {
     config: shadowConfig,
+    useCache: true,
   })
 
   const registryBaseConfig =
     item?.type === "registry:base" && item.config ? item.config : undefined
 
+  // Strip the track param so subsequent fetches don't re-trigger tracking.
+  let cleanUrl = initUrl
+  if (isShadcnInitUrl(initUrl)) {
+    const url = new URL(initUrl)
+    url.searchParams.delete("track")
+    cleanUrl = url.toString()
+  }
+
   return {
     registryBaseConfig,
     installStyleIndex: item?.extends !== "none",
+    url: cleanUrl,
+  }
+}
+
+function isShadcnInitUrl(url: string) {
+  try {
+    return new URL(url).pathname === "/init" && url.startsWith(SHADCN_URL)
+  } catch {
+    return false
   }
 }

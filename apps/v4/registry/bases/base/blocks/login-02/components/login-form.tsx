@@ -41,9 +41,7 @@ export function LoginForm({
         <Field>
           <Button type="submit">Login</Button>
         </Field>
-        <FieldSeparator className="*:data-[slot=field-separator-content]:bg-muted dark:*:data-[slot=field-separator-content]:bg-card">
-          Or continue with
-        </FieldSeparator>
+        <FieldSeparator>Or continue with</FieldSeparator>
         <Field>
           <Button variant="outline" type="button">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
