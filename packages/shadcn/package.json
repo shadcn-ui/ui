@@ -61,8 +61,8 @@
   },
   "bin": "./dist/index.js",
   "scripts": {
-    "dev": "tsup --watch",
-    "build": "tsup",
+    "dev": "tsdown --watch",
+    "build": "tsdown",
     "typecheck": "tsc --noEmit",
     "clean": "rimraf dist && rimraf components",
     "start:dev": "cross-env REGISTRY_URL=http://localhost:4000/r SHADCN_TEMPLATE_DIR=../../templates node dist/index.js",
@@ -121,7 +121,7 @@
     "@types/prompts": "^2.4.9",
     "@types/stringify-object": "^4.0.5",
     "rimraf": "^6.0.1",
-    "tsup": "^8.5.0",
+    "tsdown": "^0.21.1",
     "type-fest": "^4.41.0",
     "typescript": "^5.9.2"
   }
