@@ -577,8 +577,8 @@
   },
   {
     "name": "@waves-cn",
-    "homepage": "https://waves-cn.vercel.app/r/{name}.json",
-    "url": "https://waves-cn.vercel.app",
+    "homepage": "https://waves-cn.vercel.app",
+    "url": "https://waves-cn.vercel.app/r/{name}.json",
     "description": "A collection of wave players and waveform components built with wavesurfer.js and shadcn/ui."
   },
   {
