@@ -1,5 +1,11 @@
 # @shadcn/ui
 
+## 4.0.7
+
+### Patch Changes
+
+- [#9929](https://github.com/shadcn-ui/ui/pull/9929) [`f9b365bc7f9d591c995952976711dbdd7b1bc45a`](https://github.com/shadcn-ui/ui/commit/f9b365bc7f9d591c995952976711dbdd7b1bc45a) Thanks [@kapishdima](https://github.com/kapishdima)! - add dependency field to registry:font
+
 ## 4.0.6
 
 ### Patch Changes
