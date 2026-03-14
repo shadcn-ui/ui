@@ -888,6 +888,12 @@
     "description": "Beautiful, interactive React + Tailwind components for modern product UIs."
   },
   {
+    "name": "@paletteui",
+    "homepage": "https://paletteui.xyz",
+    "url": "https://paletteui.xyz/r/{name}.json",
+    "description": "Curated OKLCH color themes for shadcn/ui + visual theme editor with CSS, Tailwind v4, and Figma export."
+  },
+  {
     "name": "@fluid",
     "homepage": "https://www.fluidfunctionalism.com",
     "url": "https://www.fluidfunctionalism.com/r/{name}.json",
