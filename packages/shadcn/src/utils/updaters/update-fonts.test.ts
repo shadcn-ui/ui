@@ -1402,8 +1402,35 @@ describe("massageTreeForFonts", () => {
     })
   })
 
+  it("should install non-variable font using dependency field", async () => {
+    const tree = {
+      fonts: [
+        {
+          name: "font-lato",
+          type: "registry:font" as const,
+          font: {
+            family: "'Lato', sans-serif",
+            provider: "google" as const,
+            import: "Lato",
+            variable: "--font-sans",
+            weight: ["400", "700"],
+            dependency: "@fontsource/lato",
+          },
+        },
+      ],
+    } as any
 
-  it("should add both base and variable fontsource dependencies", async () => {
+    const result = await massageTreeForFonts(tree, {
+      resolvedPaths: { cwd: "/test" },
+    } as any)
+
+    expect(result.dependencies).toContain("@fontsource/lato")
+    expect(result.dependencies).not.toContain("@fontsource-variable/lato")
+    expect(result.css).toHaveProperty('@import "@fontsource/lato"')
+    expect(result.cssVars!.theme!["--font-sans"]).toBe("'Lato', sans-serif")
+  })
+
+  it("should fall back to @fontsource-variable when no dependency is specified", async () => {
     const tree = {
       fonts: [
         {
@@ -1424,122 +1451,7 @@ describe("massageTreeForFonts", () => {
       resolvedPaths: { cwd: "/test" },
     } as any)
 
-    expect(result.dependencies).toContain("@fontsource/inter")
     expect(result.dependencies).toContain("@fontsource-variable/inter")
-  })
-
-  it("should add both CSS imports", async () => {
-    const tree = {
-      fonts: [
-        {
-          name: "font-inter",
-          type: "registry:font" as const,
-          font: {
-            family: "'Inter Variable', sans-serif",
-            provider: "google" as const,
-            import: "Inter",
-            variable: "--font-sans",
-            subsets: ["latin"],
-          },
-        },
-      ],
-    } as any
-
-    const result = await massageTreeForFonts(tree, {
-      resolvedPaths: { cwd: "/test" },
-    } as any)
-
-    expect(result.css).toHaveProperty('@import "@fontsource/inter"')
     expect(result.css).toHaveProperty('@import "@fontsource-variable/inter"')
-  })
-
-  it("should set base font family without Variable suffix in cssVars", async () => {
-    const tree = {
-      fonts: [
-        {
-          name: "font-inter",
-          type: "registry:font" as const,
-          font: {
-            family: "'Inter Variable', sans-serif",
-            provider: "google" as const,
-            import: "Inter",
-            variable: "--font-sans",
-            subsets: ["latin"],
-          },
-        },
-      ],
-    } as any
-
-    const result = await massageTreeForFonts(tree, {
-      resolvedPaths: { cwd: "/test" },
-    } as any)
-
-    expect(result.cssVars!.theme!["--font-sans"]).toBe("'Inter', sans-serif")
-  })
-
-  it("should add @supports block with variable font override", async () => {
-    const tree = {
-      fonts: [
-        {
-          name: "font-inter",
-          type: "registry:font" as const,
-          font: {
-            family: "'Inter Variable', sans-serif",
-            provider: "google" as const,
-            import: "Inter",
-            variable: "--font-sans",
-            subsets: ["latin"],
-          },
-        },
-      ],
-    } as any
-
-    const result = await massageTreeForFonts(tree, {
-      resolvedPaths: { cwd: "/test" },
-    } as any)
-
-    expect(
-      result.css!["@supports (font-variation-settings: normal)"][":root"][
-        "--font-sans"
-      ]
-    ).toBe("'Inter Variable', sans-serif")
-  })
-
-  it("should accumulate multiple fonts in @supports block", async () => {
-    const tree = {
-      fonts: [
-        {
-          name: "font-inter",
-          type: "registry:font" as const,
-          font: {
-            family: "'Inter Variable', sans-serif",
-            provider: "google" as const,
-            import: "Inter",
-            variable: "--font-sans",
-            subsets: ["latin"],
-          },
-        },
-        {
-          name: "font-lora",
-          type: "registry:font" as const,
-          font: {
-            family: "'Lora Variable', serif",
-            provider: "google" as const,
-            import: "Lora",
-            variable: "--font-serif",
-            subsets: ["latin"],
-          },
-        },
-      ],
-    } as any
-
-    const result = await massageTreeForFonts(tree, {
-      resolvedPaths: { cwd: "/test" },
-    } as any)
-
-    const supportsRoot =
-      result.css!["@supports (font-variation-settings: normal)"][":root"]
-    expect(supportsRoot["--font-sans"]).toBe("'Inter Variable', sans-serif")
-    expect(supportsRoot["--font-serif"]).toBe("'Lora Variable', serif")
   })
 })

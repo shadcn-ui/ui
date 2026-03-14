@@ -44,25 +44,13 @@ export async function massageTreeForFonts(
     } else {
       // Other frameworks will use fontsource for now.
       const fontName = font.name.replace("font-", "")
-      const fontSourceBase = `@fontsource/${fontName}`
-      const fontSourceVariable = `@fontsource-variable/${fontName}`
-      
+      const fontSourceDependency =
+        font.font.dependency ?? `@fontsource-variable/${fontName}`
       tree.dependencies ??= []
-      tree.dependencies.push(fontSourceBase)
-      tree.dependencies.push(fontSourceVariable)
-
+      tree.dependencies.push(fontSourceDependency)
       tree.css ??= {}
-      tree.css[`@import "${fontSourceBase}"`] = {}
-      tree.css[`@import "${fontSourceVariable}"`] = {}
-
-      const baseFamily = font.font.family.replace(" Variable", "")
-      tree.cssVars.theme[font.font.variable] = baseFamily
-
-      tree.css["@supports (font-variation-settings: normal)"] ??= {}
-      tree.css["@supports (font-variation-settings: normal)"][":root"] ??= {}
-      tree.css["@supports (font-variation-settings: normal)"][":root"][
-        font.font.variable
-      ] = font.font.family
+      tree.css[`@import "${fontSourceDependency}"`] = {}
+      tree.cssVars.theme[font.font.variable] = font.font.family
     }
   }
 
