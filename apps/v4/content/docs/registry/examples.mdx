@@ -325,7 +325,8 @@ A `registry:font` item installs a Google Font. The `font` field is required and 
     "provider": "google",
     "import": "Inter",
     "variable": "--font-sans",
-    "subsets": ["latin"]
+    "subsets": ["latin"],
+    "dependency": "@fontsource-variable/inter"
   }
 }
 ```
@@ -343,7 +344,8 @@ A `registry:font` item installs a Google Font. The `font` field is required and 
     "import": "JetBrains_Mono",
     "variable": "--font-mono",
     "weight": ["400", "500", "600", "700"],
-    "subsets": ["latin"]
+    "subsets": ["latin"],
+    "dependency": "@fontsource-variable/jetbrains-mono"
   }
 }
 ```
@@ -360,7 +362,8 @@ A `registry:font` item installs a Google Font. The `font` field is required and 
     "provider": "google",
     "import": "Lora",
     "variable": "--font-serif",
-    "subsets": ["latin"]
+    "subsets": ["latin"],
+    "dependency": "@fontsource-variable/lora"
   }
 }
 ```
@@ -380,7 +383,8 @@ Use the `selector` field to apply a font to specific CSS selectors instead of gl
     "import": "Playfair_Display",
     "variable": "--font-heading",
     "subsets": ["latin"],
-    "selector": "h1, h2, h3, h4, h5, h6"
+    "selector": "h1, h2, h3, h4, h5, h6",
+    "dependency": "@fontsource-variable/playfair-display"
   }
 }
 ```
