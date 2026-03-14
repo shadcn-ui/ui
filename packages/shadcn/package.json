@@ -79,7 +79,6 @@
     "mcp:inspect": "pnpm dlx @modelcontextprotocol/inspector node dist/index.js mcp"
   },
   "dependencies": {
-    "@antfu/ni": "^25.0.0",
     "@babel/core": "^7.28.0",
     "@babel/parser": "^7.28.0",
     "@babel/plugin-transform-typescript": "^7.28.0",
@@ -116,6 +115,7 @@
     "zod-to-json-schema": "^3.24.6"
   },
   "devDependencies": {
+    "@antfu/ni": "^25.0.0",
     "@types/babel__core": "^7.20.5",
     "@types/fs-extra": "^11.0.4",
     "@types/prompts": "^2.4.9",
