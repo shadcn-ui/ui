@@ -5,19 +5,26 @@ import { Slot } from "radix-ui"
 import { cn } from "@/lib/utils"
 
 const badgeVariants = cva(
-  "inline-flex w-fit shrink-0 items-center justify-center gap-1 overflow-hidden rounded-full border border-transparent px-2 py-0.5 text-xs font-medium whitespace-nowrap transition-[color,box-shadow] focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&>svg]:pointer-events-none [&>svg]:size-3",
+  "inline-flex w-fit shrink-0 items-center justify-center gap-1 overflow-hidden rounded-full border px-2.5 py-0.5 text-xs font-medium whitespace-nowrap select-none transition-colors duration-[100ms] [&>svg]:pointer-events-none [&>svg]:size-3",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground [a&]:hover:bg-primary/90",
-        secondary:
-          "bg-secondary text-secondary-foreground [a&]:hover:bg-secondary/90",
+        default:
+          "border-[rgb(var(--border)/0.18)] bg-[rgb(var(--foreground)/0.06)] text-[rgb(var(--foreground-muted))]",
+        primary:
+          "border-[rgb(var(--primary)/0.25)] bg-[rgb(var(--primary)/0.08)] text-[rgb(var(--primary))]",
+        success:
+          "border-[rgb(var(--success)/0.25)] bg-[rgb(var(--success)/0.08)] text-[rgb(var(--success))]",
+        warning:
+          "border-[rgb(var(--warning)/0.25)] bg-[rgb(var(--warning)/0.08)] text-[rgb(var(--warning))]",
         destructive:
-          "bg-destructive text-white focus-visible:ring-destructive/20 dark:bg-destructive/60 dark:focus-visible:ring-destructive/40 [a&]:hover:bg-destructive/90",
+          "border-[rgb(var(--destructive)/0.25)] bg-[rgb(var(--destructive)/0.08)] text-[rgb(var(--destructive))]",
+        secondary:
+          "border-[rgb(var(--border)/0.18)] bg-[rgb(var(--foreground)/0.06)] text-[rgb(var(--foreground-muted))]",
         outline:
-          "border-border text-foreground [a&]:hover:bg-accent [a&]:hover:text-accent-foreground",
+          "border-[rgb(var(--border)/0.2)] bg-transparent text-[rgb(var(--foreground-muted))]",
         ghost: "[a&]:hover:bg-accent [a&]:hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 [a&]:hover:underline",
+        link: "text-[rgb(var(--primary))] underline-offset-4 [a&]:hover:underline",
       },
     },
     defaultVariants: {
