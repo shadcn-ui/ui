@@ -252,7 +252,7 @@
     "description": "Ready-to-use foundation components/blocks built on top of shadcn/ui."
   },
   {
-    "name": "@hooks",
+    "name": "@shadcnhooks",
     "homepage": "https://shadcn-hooks.com",
     "url": "https://shadcn-hooks.com/r/{name}.json",
     "description": "A comprehensive React Hooks Collection built with Shadcn."
