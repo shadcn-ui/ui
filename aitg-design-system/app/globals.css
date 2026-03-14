@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, monospace;
+
+  --radius-xs: 3px; --radius-sm: 5px; --radius-md: 8px;
+  --radius-lg: 10px; --radius-xl: 14px; --radius-full: 9999px;
+  --radius: var(--radius-md);
+
+  --background:          250 250 248;
+  --background-raised:   253 253 251;
+  --background-overlay:  244 243 240;
+  --foreground:          16  15  12;
+  --foreground-muted:    88  86  80;
+  --foreground-subtle:   148 146 139;
+
+  --border:              16  15  12;
+
+  --card:                253 253 251;   --card-foreground:    16  15  12;
+  --popover:             244 243 240;   --popover-foreground: 16  15  12;
+  --primary:             59 111 232;   --primary-foreground:  255 255 255;
+  --secondary:           238 237 233;  --secondary-foreground: 16  15  12;
+  --muted:               242 241 237;  --muted-foreground:    118 116 110;
+  --accent:              232 238 253;  --accent-foreground:   59 111 232;
+  --destructive:         204  58  52;  --destructive-foreground: 255 255 255;
+
+  --input:               16  15  12;
+  --ring:                59 111 232;
+}
+
+.dark {
+  --background:          17  16  14;
+  --background-raised:   27  26  23;
+  --background-overlay:  32  31  28;
+  --foreground:          242 241 237;
+  --foreground-muted:    158 156 150;
+  --foreground-subtle:    96  94  88;
+
+  --border:              242 241 237;
+
+  --card:                27  26  23;    --card-foreground:    242 241 237;
+  --popover:             32  31  28;    --popover-foreground: 242 241 237;
+  --primary:             91 135 240;   --primary-foreground:  255 255 255;
+  --secondary:           32  31  28;   --secondary-foreground: 242 241 237;
+  --muted:               27  26  23;   --muted-foreground:    118 116 110;
+  --accent:              20  32  68;   --accent-foreground:   91 135 240;
+  --destructive:         218  76  70;  --destructive-foreground: 255 255 255;
+
+  --input:               242 241 237;
+  --ring:                91 135 240;
+}
+
+@layer base {
+  * { border-color: rgb(var(--border) / 0.12); box-sizing: border-box; }
+  body {
+    background-color: rgb(var(--background));
+    color: rgb(var(--foreground));
+    font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: 1.6;
+    letter-spacing: -0.011em;
+    -webkit-font-smoothing: antialiased;
+  }
+}
