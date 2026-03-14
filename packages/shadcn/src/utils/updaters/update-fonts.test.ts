@@ -1402,7 +1402,7 @@ describe("massageTreeForFonts", () => {
     })
   })
 
-  it("should use font.dependency when specified", async () => {
+  it("should install non-variable font using dependency field", async () => {
     const tree = {
       fonts: [
         {
