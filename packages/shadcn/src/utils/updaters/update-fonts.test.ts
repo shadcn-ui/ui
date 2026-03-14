@@ -1401,4 +1401,57 @@ describe("massageTreeForFonts", () => {
       "@apply font-heading": {},
     })
   })
+
+  it("should use font.dependency when specified", async () => {
+    const tree = {
+      fonts: [
+        {
+          name: "font-lato",
+          type: "registry:font" as const,
+          font: {
+            family: "'Lato', sans-serif",
+            provider: "google" as const,
+            import: "Lato",
+            variable: "--font-sans",
+            weight: ["400", "700"],
+            dependency: "@fontsource/lato",
+          },
+        },
+      ],
+    } as any
+
+    const result = await massageTreeForFonts(tree, {
+      resolvedPaths: { cwd: "/test" },
+    } as any)
+
+    expect(result.dependencies).toContain("@fontsource/lato")
+    expect(result.dependencies).not.toContain("@fontsource-variable/lato")
+    expect(result.css).toHaveProperty('@import "@fontsource/lato"')
+    expect(result.cssVars!.theme!["--font-sans"]).toBe("'Lato', sans-serif")
+  })
+
+  it("should fall back to @fontsource-variable when no dependency is specified", async () => {
+    const tree = {
+      fonts: [
+        {
+          name: "font-inter",
+          type: "registry:font" as const,
+          font: {
+            family: "'Inter Variable', sans-serif",
+            provider: "google" as const,
+            import: "Inter",
+            variable: "--font-sans",
+            subsets: ["latin"],
+          },
+        },
+      ],
+    } as any
+
+    const result = await massageTreeForFonts(tree, {
+      resolvedPaths: { cwd: "/test" },
+    } as any)
+
+    expect(result.dependencies).toContain("@fontsource-variable/inter")
+    expect(result.css).toHaveProperty('@import "@fontsource-variable/inter"')
+  })
 })

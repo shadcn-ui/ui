@@ -101,7 +101,8 @@ export async function fontsourceMonorepoInit(options: TemplateInitOptions) {
 
     // Add fontsource dependency.
     const fontName = fontSans.name.replace("font-", "")
-    const fontSourceDependency = `@fontsource-variable/${fontName}`
+    const fontSourceDependency =
+      fontSans.font.dependency ?? `@fontsource-variable/${fontName}`
     await updateDependencies(
       [fontSourceDependency],
       [],
