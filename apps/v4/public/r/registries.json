@@ -577,8 +577,8 @@
   },
   {
     "name": "@waves-cn",
-    "homepage": "https://waves-cn.vercel.app/r/{name}.json",
-    "url": "https://waves-cn.vercel.app",
+    "homepage": "https://waves-cn.vercel.app",
+    "url": "https://waves-cn.vercel.app/r/{name}.json",
     "description": "A collection of wave players and waveform components built with wavesurfer.js and shadcn/ui."
   },
   {
@@ -888,6 +888,12 @@
     "description": "Beautiful, interactive React + Tailwind components for modern product UIs."
   },
   {
+    "name": "@paletteui",
+    "homepage": "https://paletteui.xyz",
+    "url": "https://paletteui.xyz/r/{name}.json",
+    "description": "Curated OKLCH color themes for shadcn/ui + visual theme editor with CSS, Tailwind v4, and Figma export."
+  },
+  {
     "name": "@fluid",
     "homepage": "https://www.fluidfunctionalism.com",
     "url": "https://www.fluidfunctionalism.com/r/{name}.json",
@@ -898,5 +904,11 @@
     "homepage": "https://www.gammaui.com",
     "url": "https://www.gammaui.com/r/{name}.json",
     "description": "Beautifully designed landing page components built with React & Tailwind CSS & Motion."
+  },
+  {
+    "name": "@flx",
+    "homepage": "https://ui.flexnative.com",
+    "url": "https://ui.flexnative.com/r/{name}.json",
+    "description": "A collection of customizable UI blocks with interactive live previews"
   }
 ]
