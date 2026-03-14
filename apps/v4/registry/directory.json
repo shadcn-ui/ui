@@ -217,6 +217,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' viewBox='0 0 24 24'><rect width='24' height='24' rx='2' fill='#8763B3'/><g transform='rotate(-12 12 12)'><path d='M3 7c3 -2 6 -2 9 0s6 2 9 0' stroke='#ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' fill='none'/><path d='M3 17c3 -2 6 -2 9 0s6 2 9 0' stroke='#ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' fill='none'/><path d='M3 12c3 -2 6 -2 9 0s6 2 9 0' stroke='#ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' fill='none'/></g></svg>"
   },
   {
+    "name": "@dsikeres1",
+    "homepage": "https://dsikeres1.github.io/react-date-range-picker/",
+    "url": "https://dsikeres1.github.io/react-date-range-picker/r/{name}.json",
+    "description": "A headless, composable date & date range picker for React. 5 picker types, 15 locales, dark mode, accessible. Zero dependencies.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200' fill='none'><rect x='20' y='20' width='160' height='160' rx='24' fill='var(--foreground)'/><rect x='30' y='62' width='140' height='110' rx='16' fill='var(--background)'/><circle cx='54' cy='84' r='7' fill='var(--foreground)' opacity='0.3'/><circle cx='78' cy='84' r='7' fill='var(--foreground)' opacity='0.3'/><circle cx='122' cy='84' r='7' fill='var(--foreground)' opacity='0.3'/><circle cx='146' cy='84' r='7' fill='var(--foreground)' opacity='0.3'/><circle cx='54' cy='108' r='7' fill='var(--foreground)' opacity='0.3'/><rect x='78' y='102' width='44' height='12' rx='6' fill='var(--foreground)'/><circle cx='78' cy='108' r='10' fill='var(--foreground)'/><circle cx='122' cy='108' r='10' fill='var(--foreground)'/><circle cx='146' cy='108' r='7' fill='var(--foreground)' opacity='0.3'/><circle cx='54' cy='132' r='7' fill='var(--foreground)' opacity='0.3'/><circle cx='78' cy='132' r='7' fill='var(--foreground)' opacity='0.3'/><circle cx='100' cy='132' r='7' fill='var(--foreground)' opacity='0.3'/><circle cx='122' cy='132' r='7' fill='var(--foreground)' opacity='0.3'/><circle cx='146' cy='132' r='7' fill='var(--foreground)' opacity='0.3'/><circle cx='54' cy='156' r='7' fill='var(--foreground)' opacity='0.3'/><circle cx='78' cy='156' r='7' fill='var(--foreground)' opacity='0.3'/><circle cx='100' cy='156' r='7' fill='var(--foreground)' opacity='0.3'/></svg>"
+  },
+  {
     "name": "@elements",
     "homepage": "https://www.tryelements.dev",
     "url": "https://www.tryelements.dev/r/{name}.json",
