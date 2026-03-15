@@ -19,6 +19,9 @@ export default defineConfig({
   target: "esnext",
   outDir: "dist",
   treeshake: true,
+  // Bundle @antfu/ni and its dependency tinyexec to avoid
+  // module resolution failures with npx temporary installs.
+  noExternal: ["@antfu/ni", "tinyexec"],
   onSuccess: async () => {
     copyFileSync("src/tailwind.css", "dist/tailwind.css")
   },

@@ -4888,6 +4888,44 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "form-next-demo": {
+      name: "form-next-demo",
+      title: "undefined",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["field","input","textarea","button","card","spinner"],
+      files: [{
+        path: "registry/new-york-v4/examples/form-next-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/new-york-v4/examples/form-next-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "form-next-complex": {
+      name: "form-next-complex",
+      title: "undefined",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["field","input","textarea","button","card","spinner","checkbox","dialog","radio-group","select","switch"],
+      files: [{
+        path: "registry/new-york-v4/examples/form-next-complex.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/new-york-v4/examples/form-next-complex.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     "form-rhf-demo": {
       name: "form-rhf-demo",
       title: "undefined",
