@@ -1,5 +1,11 @@
 # @shadcn/ui
 
+## 4.0.8
+
+### Patch Changes
+
+- [#10041](https://github.com/shadcn-ui/ui/pull/10041) [`a97ebe54f1824032d8ad00d1d0c079e3dc6f52d7`](https://github.com/shadcn-ui/ui/commit/a97ebe54f1824032d8ad00d1d0c079e3dc6f52d7) Thanks [@shadcn](https://github.com/shadcn)! - Bundle @antfu/ni and tinyexec to fix missing module error with npx
+
 ## 4.0.7
 
 ### Patch Changes
