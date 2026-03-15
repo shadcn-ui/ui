@@ -14,7 +14,7 @@ export function CheckboxDemo() {
         <Checkbox id="terms-2" defaultChecked />
         <div className="grid gap-2">
           <Label htmlFor="terms-2">Accept terms and conditions</Label>
-          <p className="text-muted-foreground text-sm">
+          <p className="text-sm text-muted-foreground">
             By clicking this checkbox, you agree to the terms and conditions.
           </p>
         </div>
@@ -23,7 +23,7 @@ export function CheckboxDemo() {
         <Checkbox id="toggle" disabled />
         <Label htmlFor="toggle">Enable notifications</Label>
       </div>
-      <Label className="hover:bg-accent/50 flex items-start gap-3 rounded-lg border p-3 has-[[aria-checked=true]]:border-blue-600 has-[[aria-checked=true]]:bg-blue-50 dark:has-[[aria-checked=true]]:border-blue-900 dark:has-[[aria-checked=true]]:bg-blue-950">
+      <Label className="flex items-start gap-3 rounded-lg border p-3 hover:bg-accent/50 has-[[aria-checked=true]]:border-blue-600 has-[[aria-checked=true]]:bg-blue-50 dark:has-[[aria-checked=true]]:border-blue-900 dark:has-[[aria-checked=true]]:bg-blue-950">
         <Checkbox
           id="toggle-2"
           defaultChecked
@@ -33,7 +33,7 @@ export function CheckboxDemo() {
           <p className="text-sm leading-none font-medium">
             Enable notifications
           </p>
-          <p className="text-muted-foreground text-sm">
+          <p className="text-sm text-muted-foreground">
             You can enable or disable notifications at any time.
           </p>
         </div>

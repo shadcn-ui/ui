@@ -45,7 +45,7 @@ const chartConfig = {
 export function ChartRadarLegend() {
   return (
     <Card>
-      <CardHeader className="items-center pb-4">
+      <CardHeader className="items-center">
         <CardTitle>Radar Chart - Legend</CardTitle>
         <CardDescription>
           Showing total visitors for the last 6 months
@@ -83,7 +83,7 @@ export function ChartRadarLegend() {
         <div className="flex items-center gap-2 leading-none font-medium">
           Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
         </div>
-        <div className="text-muted-foreground flex items-center gap-2 leading-none">
+        <div className="flex items-center gap-2 leading-none text-muted-foreground">
           January - June 2024
         </div>
       </CardFooter>

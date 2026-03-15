@@ -1,20 +1,19 @@
 "use client"
 
 import * as React from "react"
-import { IconInfoCircle, IconStar } from "@tabler/icons-react"
-
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
-} from "@/registry/new-york-v4/ui/input-group"
-import { Label } from "@/registry/new-york-v4/ui/label"
+} from "@/examples/radix/ui/input-group"
+import { Label } from "@/examples/radix/ui/label"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/registry/new-york-v4/ui/popover"
+} from "@/examples/radix/ui/popover"
+import { IconInfoCircle, IconStar } from "@tabler/icons-react"
 
 export function InputGroupButtonExample() {
   const [isFavorite, setIsFavorite] = React.useState(false)
@@ -25,7 +24,7 @@ export function InputGroupButtonExample() {
         Input Secure
       </Label>
       <InputGroup className="[--radius:9999px]">
-        <InputGroupInput id="input-secure-19" className="!pl-0.5" />
+        <InputGroupInput id="input-secure-19" className="pl-0.5!" />
         <Popover>
           <PopoverTrigger asChild>
             <InputGroupAddon>
@@ -47,7 +46,7 @@ export function InputGroupButtonExample() {
             <p>You should not enter any sensitive information on this site.</p>
           </PopoverContent>
         </Popover>
-        <InputGroupAddon className="text-muted-foreground !pl-1">
+        <InputGroupAddon className="pl-1! text-muted-foreground">
           https://
         </InputGroupAddon>
         <InputGroupAddon align="inline-end">

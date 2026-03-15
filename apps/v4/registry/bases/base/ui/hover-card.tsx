@@ -38,7 +38,7 @@ function HoverCardContent({
         <PreviewCardPrimitive.Popup
           data-slot="hover-card-content"
           className={cn(
-            "cn-hover-card-content z-50 origin-(--transform-origin) outline-hidden",
+            "cn-hover-card-content cn-hover-card-content-logical z-50 origin-(--transform-origin) outline-hidden",
             className
           )}
           {...props}

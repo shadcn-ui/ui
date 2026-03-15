@@ -96,13 +96,14 @@ function CollapsibleFileTree() {
             <Button
               variant="ghost"
               size="sm"
-              className="group hover:bg-accent hover:text-accent-foreground w-full justify-start transition-none"
+              className="group w-full justify-start transition-none hover:bg-accent hover:text-accent-foreground"
             >
               <IconPlaceholder
                 lucide="ChevronRightIcon"
                 tabler="IconChevronRight"
                 hugeicons="ArrowRight01Icon"
                 phosphor="CaretRightIcon"
+                remixicon="RiArrowRightSLine"
                 className="transition-transform group-data-[state=open]:rotate-90"
               />
               <IconPlaceholder
@@ -110,11 +111,12 @@ function CollapsibleFileTree() {
                 tabler="IconFolder"
                 hugeicons="Folder01Icon"
                 phosphor="FolderIcon"
+                remixicon="RiFolderLine"
               />
               {fileItem.name}
             </Button>
           </CollapsibleTrigger>
-          <CollapsibleContent className="style-lyra:ml-4 mt-1 ml-5">
+          <CollapsibleContent className="mt-1 ml-5 style-lyra:ml-4">
             <div className="flex flex-col gap-1">
               {fileItem.items.map((child) => renderItem(child))}
             </div>
@@ -127,13 +129,14 @@ function CollapsibleFileTree() {
         key={fileItem.name}
         variant="link"
         size="sm"
-        className="text-foreground w-full justify-start gap-2"
+        className="w-full justify-start gap-2 text-foreground"
       >
         <IconPlaceholder
           lucide="FileIcon"
           tabler="IconFile"
           hugeicons="File01Icon"
           phosphor="FileIcon"
+          remixicon="RiFileLine"
         />
         <span>{fileItem.name}</span>
       </Button>
@@ -215,6 +218,7 @@ function CollapsibleSettings() {
                     tabler="IconMinimize"
                     hugeicons="MinusSignIcon"
                     phosphor="MinusIcon"
+                    remixicon="RiSubtractLine"
                   />
                 ) : (
                   <IconPlaceholder
@@ -222,6 +226,7 @@ function CollapsibleSettings() {
                     tabler="IconMaximize"
                     hugeicons="PlusSignIcon"
                     phosphor="PlusIcon"
+                    remixicon="RiAddLine"
                   />
                 )}
               </Button>
