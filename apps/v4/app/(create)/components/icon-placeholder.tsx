@@ -30,6 +30,21 @@ const IconPhosphor = lazy(() =>
   }))
 )
 
+const IconRemixicon = lazy(() =>
+  import("@/registry/icons/icon-remixicon").then((mod) => ({
+    default: mod.IconRemixicon,
+  }))
+)
+
+// Preload all icon renderer modules so switching libraries is instant.
+// These warm the browser module cache; React.lazy resolves immediately
+// for modules that are already loaded.
+void import("@/registry/icons/icon-lucide")
+void import("@/registry/icons/icon-tabler")
+void import("@/registry/icons/icon-hugeicons")
+void import("@/registry/icons/icon-phosphor")
+void import("@/registry/icons/icon-remixicon")
+
 export function IconPlaceholder({
   ...props
 }: {
@@ -51,6 +66,9 @@ export function IconPlaceholder({
       )}
       {iconLibrary === "phosphor" && (
         <IconPhosphor name={iconName} {...props} />
+      )}
+      {iconLibrary === "remixicon" && (
+        <IconRemixicon name={iconName} {...props} />
       )}
     </Suspense>
   )

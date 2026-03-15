@@ -11,7 +11,7 @@ import {
 } from "@/registry/new-york-v4/ui/input-group"
 
 export const SearchDirectory = () => {
-  const { query, setQuery } = useSearchRegistry()
+  const { query, registries, setQuery } = useSearchRegistry()
 
   const onQueryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
@@ -29,6 +29,12 @@ export const SearchDirectory = () => {
           value={query}
           onChange={onQueryChange}
         />
+        <InputGroupAddon align="inline-end">
+          <span className="text-muted-foreground tabular-nums sm:text-xs">
+            {registries.length}{" "}
+            {registries.length === 1 ? "registry" : "registries"}
+          </span>
+        </InputGroupAddon>
         <InputGroupAddon
           align="inline-end"
           data-disabled={!query.length}

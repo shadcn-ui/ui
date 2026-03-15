@@ -47,6 +47,27 @@ export function SheetDemo() {
           </SheetFooter>
         </SheetContent>
       </Sheet>
+      <Sheet>
+        <SheetTrigger asChild>
+          <Button variant="outline">No Close Button</Button>
+        </SheetTrigger>
+        <SheetContent showCloseButton={false}>
+          <SheetHeader>
+            <SheetTitle>Custom Close</SheetTitle>
+            <SheetDescription>
+              This sheet has no default close button. Use the footer buttons
+              instead.
+            </SheetDescription>
+          </SheetHeader>
+          <div className="flex-1 px-4" />
+          <SheetFooter>
+            <SheetClose asChild>
+              <Button variant="outline">Cancel</Button>
+            </SheetClose>
+            <Button type="submit">Save</Button>
+          </SheetFooter>
+        </SheetContent>
+      </Sheet>
       <div className="flex gap-2">
         {SHEET_SIDES.map((side) => (
           <Sheet key={side}>

@@ -89,7 +89,7 @@ export function ChartLineDemo() {
             <div className="flex items-center gap-2 leading-none font-medium">
               Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
             </div>
-            <div className="text-muted-foreground flex items-center gap-2 leading-none">
+            <div className="flex items-center gap-2 leading-none text-muted-foreground">
               Showing total visitors for the last 6 months
             </div>
           </div>

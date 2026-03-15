@@ -1,0 +1,206 @@
+---
+title: August 2025 - shadcn CLI 3.0 and MCP Server
+description: Namespaced registries, advanced authentication, new commands and a completely rewritten registry engine.
+date: 2025-08-27
+---
+
+We just shipped shadcn CLI 3.0 with support for namespaced registries, advanced authentication, new commands and a completely rewritten registry engine.
+
+### What's New
+
+- [Namespaced Registries](#namespaced-registries) - Install components using `@registry/name` format.
+- [Private Registries](#private-registries) - Secure your registry with advanced authentication.
+- [Search & Discovery](#search--discovery) - New commands to find and view code before installing.
+- [MCP Server](#mcp-server) - MCP server for all registries.
+- [Faster Everything](#faster-everything) - Completely rewritten registry resolution.
+- [Improved Error Handling](#improved-error-handling) - Better error messages for users and LLMs.
+- [Upgrade Guide](#upgrade-guide) - Migration notes for existing users.
+
+### Namespaced Registries
+
+The biggest change in 3.0 is namespaced registries. You can now install components from registries: a community registry, your company's private registry or internal registry, using the `@registry/name` format.
+
+This makes it easier to distribute code across teams and projects.
+
+Configure registries in your `components.json`:
+
+```json title="components.json"
+{
+  "registries": {
+    "@acme": "https://acme.com/r/{name}.json",
+    "@internal": {
+      "url": "https://registry.company.com/{name}",
+      "headers": {
+        "Authorization": "Bearer ${REGISTRY_TOKEN}"
+      }
+    }
+  }
+}
+```
+
+Then use the `@registry/name` format to install components:
+
+```bash
+npx shadcn add @acme/button @internal/auth-system
+```
+
+It's completely decentralized. There's no central registrar. Create any namespace you want and organize components however makes sense for your team.
+
+```json title="components.json" showLineNumbers
+{
+  "registries": {
+    "@design": "https://registry.company.com/create/{name}.json",
+    "@engineering": "https://registry.company.com/eng/{name}.json",
+    "@marketing": "https://registry.company.com/marketing/{name}.json"
+  }
+}
+```
+
+Components can even depend on resources from different registries. Everything gets resolved and installed automatically from the right sources.
+
+```json title="registry-item.json" showLineNumbers
+{
+  "name": "dashboard",
+  "type": "registry:block",
+  "registryDependencies": [
+    "@shadcn/card", // From default registry
+    "@v0/chart", // From v0 registry
+    "@acme/data-table", // From acme registry
+    "@lib/data-fetcher", // Utility library
+    "@ai/analytics-prompt" // AI prompt resource
+  ]
+}
+```
+
+### Private Registries
+
+Need to keep your components private? We've got you covered. Configure authentication with tokens, API keys, or custom headers:
+
+```json title="components.json"
+{
+  "registries": {
+    "@private": {
+      "url": "https://registry.company.com/{name}.json",
+      "headers": {
+        "Authorization": "Bearer ${REGISTRY_TOKEN}"
+      }
+    }
+  }
+}
+```
+
+Your private components stay private. Perfect for enterprise teams with proprietary UI libraries.
+
+We support all major authentication methods: basic auth, bearer token, api key query params and custom headers.
+
+See the [authentication docs](/docs/registry/authentication) for more details.
+
+### Search & Discovery
+
+Three new commands make it easy to find exactly what you need:
+
+1. View items from the registry before installing
+
+```bash
+npx shadcn view @acme/auth-system
+```
+
+2. Search items from registries
+
+```bash
+npx shadcn search @tweakcn -q "dark"
+```
+
+3. List all items from a registry
+
+```bash
+npx shadcn list @acme
+```
+
+Preview components before installing them. Search across multiple registries. See the code and all dependencies upfront.
+
+### MCP Server
+
+<Image
+  src="/images/mcp.jpeg"
+  width="1432"
+  height="1050"
+  alt="Lift Mode"
+  className="mt-6 w-full overflow-hidden rounded-lg border"
+/>
+
+Back in April, we [introduced](https://x.com/shadcn/status/1917597228513853603) the first version of the MCP server. Since then, we've taken everything we learned and built a better MCP server.
+
+Here's what's new:
+
+- Works with all registries. Zero config
+- One command to add to your favorite MCP clients
+- We improved the underlying tools
+- Better integration with the CLI and registries
+- Support for multiple registries in the same project
+
+Add the MCP server to your project:
+
+```bash
+npx shadcn@latest mcp init
+```
+
+See the [docs](/docs/mcp) for more details.
+
+### Faster Everything
+
+We completely rewrote the registry resolution engine from scratch. It's faster, smarter, and handles even the trickiest dependency trees.
+
+- Up to 3x faster dependency resolution
+- Smarter file deduplication and merging
+- Better monorepo support out of the box
+- Updated `build` command for registry authors
+
+### Improved Error Handling
+
+Registry developers can now provide custom error messages to help guide users (and LLMs) when things go wrong. The CLI displays helpful, actionable errors for common issues:
+
+```txt
+Unknown registry "@acme". Make sure it is defined in components.json as follows:
+{
+  "registries": {
+    "@acme": "[URL_TO_REGISTRY]"
+  }
+}
+```
+
+Missing environment variables? The CLI tells you exactly what's needed:
+
+```txt
+Registry "@private" requires the following environment variables:
+  • REGISTRY_TOKEN
+
+Set the required environment variables to your .env or .env.local file.
+```
+
+Registry authors can provide custom error messages in their responses to help users and AI agents understand and fix issues quickly.
+
+```txt
+Error:
+You are not authorized to access the item at http://example.com/r/component.
+
+Message:
+[Unauthorized] Your API key has expired. Renew it at https://example.com/api/renew-key.
+```
+
+### Upgrade Guide
+
+Here's the best part: there are no breaking changes for users. Your existing `components.json` works exactly the same. All your installed components work exactly the same.
+
+For developers, if you're using the programmatic APIs directly, we've deprecated a few functions in favor of better ones:
+
+- `fetchRegistry` → `getRegistry`
+- `resolveRegistryTree` → `resolveRegistryItems`
+- Schema moved from `shadcn/registry` to `shadcn/schema` package
+
+```diff
+- import { registryItemSchema } from "shadcn/registry"
++ import { registryItemSchema } from "shadcn/schema"
+```
+
+That's it. Seriously. Everything else just works.
