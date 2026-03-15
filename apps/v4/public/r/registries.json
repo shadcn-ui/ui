@@ -916,5 +916,11 @@
     "homepage": "https://ui.flexnative.com",
     "url": "https://ui.flexnative.com/r/{name}.json",
     "description": "A collection of customizable UI blocks with interactive live previews"
+  },
+  {
+    "name": "@sabraman",
+    "homepage": "https://sabraman.ru/components",
+    "url": "https://sabraman.ru/r/{name}.json",
+    "description": "Legacy skeuomorphic UI components and blocks for shadcn."
   }
 ]
