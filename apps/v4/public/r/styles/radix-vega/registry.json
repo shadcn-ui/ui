@@ -2827,7 +2827,8 @@
         "provider": "google",
         "import": "Geist",
         "variable": "--font-sans",
-        "subsets": ["latin"]
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/geist"
       }
     },
     {
@@ -2839,7 +2840,8 @@
         "provider": "google",
         "import": "Inter",
         "variable": "--font-sans",
-        "subsets": ["latin"]
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/inter"
       }
     },
     {
@@ -2850,7 +2852,8 @@
         "family": "'Noto Sans Variable', sans-serif",
         "provider": "google",
         "import": "Noto_Sans",
-        "variable": "--font-sans"
+        "variable": "--font-sans",
+        "dependency": "@fontsource-variable/noto-sans"
       }
     },
     {
@@ -2861,7 +2864,8 @@
         "family": "'Nunito Sans Variable', sans-serif",
         "provider": "google",
         "import": "Nunito_Sans",
-        "variable": "--font-sans"
+        "variable": "--font-sans",
+        "dependency": "@fontsource-variable/nunito-sans"
       }
     },
     {
@@ -2873,7 +2877,8 @@
         "provider": "google",
         "import": "Figtree",
         "variable": "--font-sans",
-        "subsets": ["latin"]
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/figtree"
       }
     },
     {
@@ -2885,7 +2890,8 @@
         "provider": "google",
         "import": "Roboto",
         "variable": "--font-sans",
-        "subsets": ["latin"]
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/roboto"
       }
     },
     {
@@ -2897,7 +2903,8 @@
         "provider": "google",
         "import": "Raleway",
         "variable": "--font-sans",
-        "subsets": ["latin"]
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/raleway"
       }
     },
     {
@@ -2909,7 +2916,8 @@
         "provider": "google",
         "import": "DM_Sans",
         "variable": "--font-sans",
-        "subsets": ["latin"]
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/dm-sans"
       }
     },
     {
@@ -2921,7 +2929,8 @@
         "provider": "google",
         "import": "Public_Sans",
         "variable": "--font-sans",
-        "subsets": ["latin"]
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/public-sans"
       }
     },
     {
@@ -2933,7 +2942,8 @@
         "provider": "google",
         "import": "Outfit",
         "variable": "--font-sans",
-        "subsets": ["latin"]
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/outfit"
       }
     },
     {
@@ -2945,7 +2955,8 @@
         "provider": "google",
         "import": "JetBrains_Mono",
         "variable": "--font-mono",
-        "subsets": ["latin"]
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/jetbrains-mono"
       }
     },
     {
@@ -2957,7 +2968,8 @@
         "provider": "google",
         "import": "Geist_Mono",
         "variable": "--font-mono",
-        "subsets": ["latin"]
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/geist-mono"
       }
     },
     {
@@ -2969,7 +2981,8 @@
         "provider": "google",
         "import": "Noto_Serif",
         "variable": "--font-serif",
-        "subsets": ["latin"]
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/noto-serif"
       }
     },
     {
@@ -2981,7 +2994,8 @@
         "provider": "google",
         "import": "Roboto_Slab",
         "variable": "--font-serif",
-        "subsets": ["latin"]
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/roboto-slab"
       }
     },
     {
@@ -2993,7 +3007,8 @@
         "provider": "google",
         "import": "Merriweather",
         "variable": "--font-serif",
-        "subsets": ["latin"]
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/merriweather"
       }
     },
     {
@@ -3005,7 +3020,8 @@
         "provider": "google",
         "import": "Lora",
         "variable": "--font-serif",
-        "subsets": ["latin"]
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/lora"
       }
     },
     {
@@ -3017,7 +3033,8 @@
         "provider": "google",
         "import": "Playfair_Display",
         "variable": "--font-serif",
-        "subsets": ["latin"]
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/playfair-display"
       }
     }
   ]
