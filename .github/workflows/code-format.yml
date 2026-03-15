@@ -1,0 +1,125 @@
+name: Code format
+
+on:
+  workflow_run:
+    workflows: ["Code check"]
+    types:
+      - completed
+
+permissions:
+  actions: read
+  contents: write
+  pull-requests: read
+
+jobs:
+  format:
+    if: |
+      github.event.workflow_run.conclusion == 'failure' &&
+      github.event.workflow_run.event == 'pull_request'
+    runs-on: ubuntu-latest
+    name: Run pnpm format:write
+    steps:
+      - name: Inspect failed workflow run
+        id: meta
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const pr = context.payload.workflow_run.pull_requests[0]
+
+            if (!pr) {
+              core.notice("Skipping because the failed run is not attached to a pull request.")
+              core.setOutput("should_run", "false")
+              return
+            }
+
+            const { data: pullRequest } = await github.rest.pulls.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: pr.number,
+            })
+
+            const { data: jobs } = await github.rest.actions.listJobsForWorkflowRun({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              run_id: context.payload.workflow_run.id,
+              per_page: 100,
+            })
+
+            const formatJob = jobs.jobs.find((job) => job.name === "pnpm format:check")
+            const sameRepo =
+              pullRequest.head.repo.full_name === `${context.repo.owner}/${context.repo.repo}`
+            const shouldRun = formatJob?.conclusion === "failure" && sameRepo
+
+            if (!formatJob) {
+              core.notice("Skipping because the format job could not be found in the failed run.")
+            } else if (formatJob.conclusion !== "failure") {
+              core.notice(
+                `Skipping because the format job concluded with "${formatJob.conclusion}".`
+              )
+            }
+
+            if (!sameRepo) {
+              core.notice(
+                `Skipping PR #${pullRequest.number} because its head branch lives in ${pullRequest.head.repo.full_name}.`
+              )
+            }
+
+            core.setOutput("head_ref", pullRequest.head.ref)
+            core.setOutput("should_run", shouldRun ? "true" : "false")
+
+      - name: Checkout pull request branch
+        if: steps.meta.outputs.should_run == 'true'
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ steps.meta.outputs.head_ref }}
+
+      - name: Install Node.js
+        if: steps.meta.outputs.should_run == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install pnpm
+        if: steps.meta.outputs.should_run == 'true'
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9.0.6
+          run_install: false
+
+      - name: Get pnpm store directory
+        if: steps.meta.outputs.should_run == 'true'
+        id: pnpm-cache
+        run: |
+          echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - name: Setup pnpm cache
+        if: steps.meta.outputs.should_run == 'true'
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        if: steps.meta.outputs.should_run == 'true'
+        run: pnpm install
+
+      - name: Apply formatting
+        if: steps.meta.outputs.should_run == 'true'
+        run: pnpm format:write
+
+      - name: Commit formatting changes
+        if: steps.meta.outputs.should_run == 'true'
+        run: |
+          if git diff --quiet; then
+            echo "No formatting changes to commit."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "style: apply automated formatting"
+          git push origin HEAD:${{ steps.meta.outputs.head_ref }}
