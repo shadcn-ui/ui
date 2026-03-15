@@ -1,5 +1,29 @@
 # @shadcn/ui
 
+## 4.0.7
+
+### Patch Changes
+
+- [#9929](https://github.com/shadcn-ui/ui/pull/9929) [`f9b365bc7f9d591c995952976711dbdd7b1bc45a`](https://github.com/shadcn-ui/ui/commit/f9b365bc7f9d591c995952976711dbdd7b1bc45a) Thanks [@kapishdima](https://github.com/kapishdima)! - add dependency field to registry:font
+
+## 4.0.6
+
+### Patch Changes
+
+- [#10022](https://github.com/shadcn-ui/ui/pull/10022) [`7e93eb81ea8160c06c86f98bb6bfeb1ddfd0d237`](https://github.com/shadcn-ui/ui/commit/7e93eb81ea8160c06c86f98bb6bfeb1ddfd0d237) Thanks [@shadcn](https://github.com/shadcn)! - ensure monorepo respect package manager
+
+## 4.0.5
+
+### Patch Changes
+
+- [#9960](https://github.com/shadcn-ui/ui/pull/9960) [`5ee456735377158c12cf55eefbe872f7303e1325`](https://github.com/shadcn-ui/ui/commit/5ee456735377158c12cf55eefbe872f7303e1325) Thanks [@shadcn](https://github.com/shadcn)! - update handling of init urls
+
+## 4.0.4
+
+### Patch Changes
+
+- [#9957](https://github.com/shadcn-ui/ui/pull/9957) [`aa841e35cf405e574123478b46f4058cff0e179a`](https://github.com/shadcn-ui/ui/commit/aa841e35cf405e574123478b46f4058cff0e179a) Thanks [@shadcn](https://github.com/shadcn)! - fix cache in resolveRegistryBaseConfig
+
 ## 4.0.3
 
 ### Patch Changes

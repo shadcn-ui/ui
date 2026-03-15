@@ -43,8 +43,8 @@
   },
   {
     "name": "@agents-ui",
-    "homepage": "https://livekit.io/ui",
-    "url": "https://livekit.io/ui/r/{name}.json",
+    "homepage": "https://livekit.com/ui",
+    "url": "https://livekit.com/ui/r/{name}.json",
     "description": "This is a shadcn/ui component registry that distributes copy-paste React components for building LiveKit AI Agent interfaces."
   },
   {
@@ -114,7 +114,7 @@
     "description": "BillingSDK is an open-source React and Next.js component library for SaaS billing and payments. It offers ready-to-use, customizable components for subscriptions, invoices, usage-based pricing and billing - fully compatible with Dodo Payments and Stripe."
   },
   {
-    "name": "@blocks",
+    "name": "@blocks-so",
     "homepage": "https://blocks.so",
     "url": "https://blocks.so/r/{name}.json",
     "description": "A set of clean, modern application building blocks for you in your applications. Free and Open Source"
@@ -270,6 +270,12 @@
     "description": "Accessible React component library to copy, customize, and own your UI."
   },
   {
+    "name": "@jalco",
+    "homepage": "https://ui.justinlevine.me",
+    "url": "https://ui.justinlevine.me/r/{name}.json",
+    "description": "A curated collection of GitHub-integrated, documentation, and developer-facing components. Self-contained, zero-dependency, and production-ready."
+  },
+  {
     "name": "@kibo-ui",
     "homepage": "https://www.kibo-ui.com/",
     "url": "https://www.kibo-ui.com/r/{name}.json",
@@ -420,6 +426,12 @@
     "description": "Carefully built UI blocks for real apps and dashboards, designed to integrate smoothly from early ideas to production releases."
   },
   {
+    "name": "@pacekit-gsap",
+    "homepage": "https://gsap.pacekit.dev",
+    "url": "https://gsap.pacekit.dev/r/{name}.json",
+    "description": "Animated GSAP components crafted for smooth interaction and rich detail."
+  },
+  {
     "name": "@pastecn",
     "homepage": "https://pastecn.com",
     "url": "https://pastecn.com/r/{name}",
@@ -540,6 +552,12 @@
     "description": "A growing collection of high-quality blocks and themes for shadcn/ui."
   },
   {
+    "name": "@shadcnmaps",
+    "homepage": "https://shadcnmaps.com",
+    "url": "https://shadcnmaps.com/r/{name}.json",
+    "description": "Beautiful map components powered by pure SVG."
+  },
+  {
     "name": "@shadcnstore",
     "homepage": "https://www.shadcnstore.com",
     "url": "https://shadcnstore.com/r/{name}.json",
@@ -556,6 +574,12 @@
     "homepage": "https://shadcnstudio.com",
     "url": "https://shadcnstudio.com/r/{name}.json",
     "description": "An open-source set of shadcn/ui components, blocks, and templates with a powerful theme generator."
+  },
+  {
+    "name": "@waves-cn",
+    "homepage": "https://waves-cn.vercel.app",
+    "url": "https://waves-cn.vercel.app/r/{name}.json",
+    "description": "A collection of wave players and waveform components built with wavesurfer.js and shadcn/ui."
   },
   {
     "name": "@shadcn-editor",
@@ -864,9 +888,27 @@
     "description": "Beautiful, interactive React + Tailwind components for modern product UIs."
   },
   {
+    "name": "@paletteui",
+    "homepage": "https://paletteui.xyz",
+    "url": "https://paletteui.xyz/r/{name}.json",
+    "description": "Curated OKLCH color themes for shadcn/ui + visual theme editor with CSS, Tailwind v4, and Figma export."
+  },
+  {
     "name": "@fluid",
     "homepage": "https://www.fluidfunctionalism.com",
     "url": "https://www.fluidfunctionalism.com/r/{name}.json",
     "description": "Fluid components used exclusively in service of functional clarity. Proximity hover, spring animations, font-weight transitions, and animated focus rings."
+  },
+  {
+    "name": "@gammaui",
+    "homepage": "https://www.gammaui.com",
+    "url": "https://www.gammaui.com/r/{name}.json",
+    "description": "Beautifully designed landing page components built with React & Tailwind CSS & Motion."
+  },
+  {
+    "name": "@flx",
+    "homepage": "https://ui.flexnative.com",
+    "url": "https://ui.flexnative.com/r/{name}.json",
+    "description": "A collection of customizable UI blocks with interactive live previews"
   }
 ]
