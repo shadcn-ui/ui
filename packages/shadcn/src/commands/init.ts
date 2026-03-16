@@ -21,6 +21,7 @@ import {
   templates,
 } from "@/src/templates/index"
 import { addComponents } from "@/src/utils/add-components"
+import { getInitAliasDefaults } from "@/src/utils/alias"
 import { createProject } from "@/src/utils/create-project"
 import { loadEnvFiles } from "@/src/utils/env-loader"
 import * as ERRORS from "@/src/utils/errors"
@@ -903,63 +904,6 @@ async function promptForConfig(defaultConfig: Config | null = null) {
       utils: aliasDefaults.utils,
     },
   })
-}
-
-export function getInitAliasDefaults(
-  componentsAlias: string,
-  existingAliases?: Config["aliases"]
-) {
-  const derivedLib =
-    existingAliases?.lib ?? deriveAliasFromComponents(componentsAlias, "lib")
-
-  return {
-    ui: existingAliases?.ui ?? deriveAliasFromComponents(componentsAlias, "ui"),
-    lib: derivedLib,
-    hooks:
-      existingAliases?.hooks ??
-      deriveAliasFromComponents(componentsAlias, "hooks"),
-    utils:
-      existingAliases?.utils ??
-      deriveAliasFromComponents(componentsAlias, "utils", derivedLib),
-  }
-}
-
-function deriveAliasFromComponents(
-  componentsAlias: string,
-  kind: "ui" | "lib" | "hooks" | "utils",
-  libAlias?: string
-) {
-  const alias = componentsAlias || DEFAULT_COMPONENTS
-
-  if (kind === "ui") {
-    return `${alias}/ui`
-  }
-
-  if (kind === "utils") {
-    const resolvedLib = libAlias || replaceComponentsAliasTail(alias, "lib")
-    return resolvedLib ? `${resolvedLib}/utils` : DEFAULT_UTILS
-  }
-
-  return replaceComponentsAliasTail(alias, kind)
-}
-
-function replaceComponentsAliasTail(
-  alias: string,
-  kind: "lib" | "hooks"
-) {
-  if (alias === "components") {
-    return kind
-  }
-
-  if (alias.endsWith("/components")) {
-    return `${alias.slice(0, -"/components".length)}/${kind}`
-  }
-
-  if (alias.endsWith("components") && !alias.includes("/")) {
-    return `${alias.slice(0, -"components".length)}${kind}`
-  }
-
-  return ""
 }
 
 export function shouldRunTemplatePostInit(
