@@ -215,12 +215,12 @@ describe("shadcn add", () => {
   })
 
   it("should add item with target to root", async () => {
-    const fixturePath = await createFixtureTestDirectory("next-app")
-    await npxShadcn(fixturePath, ["init", "--defaults"])
-    await npxShadcn(fixturePath, [
+    const fixturePath = await createFixtureTestDirectory("next-app-init")
+    const result = await npxShadcn(fixturePath, [
       "add",
       "../../fixtures/registry/example-item-to-root.json",
     ])
+    expect(result.exitCode).toBe(0)
     expect(await fs.pathExists(path.join(fixturePath, "config.json"))).toBe(
       true
     )
