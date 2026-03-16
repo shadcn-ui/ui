@@ -18,7 +18,7 @@ export function SignupForm({
       <FieldGroup>
         <div className="flex flex-col items-center gap-1 text-center">
           <h1 className="text-2xl font-bold">Create your account</h1>
-          <p className="text-muted-foreground text-sm text-balance">
+          <p className="text-sm text-balance text-muted-foreground">
             Fill in the form below to create your account
           </p>
         </div>
@@ -71,9 +71,7 @@ export function SignupForm({
         <Field>
           <Button type="submit">Create Account</Button>
         </Field>
-        <FieldSeparator className="*:data-[slot=field-separator-content]:bg-muted dark:*:data-[slot=field-separator-content]:bg-card">
-          Or continue with
-        </FieldSeparator>
+        <FieldSeparator>Or continue with</FieldSeparator>
         <Field>
           <Button variant="outline" type="button">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">

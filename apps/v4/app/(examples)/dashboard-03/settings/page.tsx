@@ -489,7 +489,7 @@ function FieldDescription({
     <p
       data-slot="field-description"
       className={cn(
-        "text-muted-foreground text-sm @3xl/field-group:col-start-1 @3xl/field-group:row-start-1 @3xl/field-group:translate-y-6",
+        "text-sm text-muted-foreground @3xl/field-group:col-start-1 @3xl/field-group:row-start-1 @3xl/field-group:translate-y-6",
         className
       )}
       {...props}

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "popover",
+  "files": [
+    {
+      "path": "registry/ark-vega/ui/popover.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { Popover as PopoverPrimitive } from \"@ark-ui/react/popover\"\nimport { Portal } from \"@ark-ui/react/portal\"\n\nimport { cn } from \"@/registry/ark-vega/lib/utils\"\n\nfunction Popover({\n  ...props\n}: React.ComponentProps<typeof PopoverPrimitive.Root>) {\n  return <PopoverPrimitive.Root data-slot=\"popover\" {...props} />\n}\n\nfunction PopoverTrigger({\n  ...props\n}: React.ComponentProps<typeof PopoverPrimitive.Trigger>) {\n  return <PopoverPrimitive.Trigger data-slot=\"popover-trigger\" {...props} />\n}\n\nfunction PopoverAnchor({\n  ...props\n}: React.ComponentProps<typeof PopoverPrimitive.Anchor>) {\n  return <PopoverPrimitive.Anchor data-slot=\"popover-anchor\" {...props} />\n}\n\nfunction PopoverContent({\n  className,\n  align = \"center\",\n  sideOffset = 4,\n  ...props\n}: React.ComponentProps<typeof PopoverPrimitive.Content> & {\n  align?: \"start\" | \"center\" | \"end\"\n  sideOffset?: number\n}) {\n  return (\n    <Portal>\n      <PopoverPrimitive.Positioner>\n        <PopoverPrimitive.Content\n          data-slot=\"popover-content\"\n          className={cn(\n            \"flex flex-col gap-4 rounded-md bg-popover p-4 text-sm text-popover-foreground shadow-md ring-1 ring-foreground/10 duration-100 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95\",\n            className\n          )}\n          {...props}\n        />\n      </PopoverPrimitive.Positioner>\n    </Portal>\n  )\n}\n\nfunction PopoverArrow({\n  className,\n  ...props\n}: React.ComponentProps<typeof PopoverPrimitive.Arrow>) {\n  return (\n    <PopoverPrimitive.Arrow\n      data-slot=\"popover-arrow\"\n      className={cn(className)}\n      {...props}\n    >\n      <PopoverPrimitive.ArrowTip className=\"\" />\n    </PopoverPrimitive.Arrow>\n  )\n}\n\nexport { Popover, PopoverAnchor, PopoverArrow, PopoverContent, PopoverTrigger }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

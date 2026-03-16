@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "avatar",
+  "files": [
+    {
+      "path": "registry/ark-lyra/ui/avatar.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { Avatar as AvatarPrimitive } from \"@ark-ui/react/avatar\"\n\nimport { cn } from \"@/registry/ark-lyra/lib/utils\"\n\nfunction Avatar({\n  className,\n  ...props\n}: React.ComponentProps<typeof AvatarPrimitive.Root>) {\n  return (\n    <AvatarPrimitive.Root\n      data-slot=\"avatar\"\n      className={cn(\n        \"size-8 rounded-full after:rounded-full data-[size=lg]:size-10 data-[size=sm]:size-6\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction AvatarImage({\n  className,\n  ...props\n}: React.ComponentProps<typeof AvatarPrimitive.Image>) {\n  return (\n    <AvatarPrimitive.Image\n      data-slot=\"avatar-image\"\n      className={cn(\"rounded-full\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction AvatarFallback({\n  className,\n  ...props\n}: React.ComponentProps<typeof AvatarPrimitive.Fallback>) {\n  return (\n    <AvatarPrimitive.Fallback\n      data-slot=\"avatar-fallback\"\n      className={cn(\"rounded-full bg-muted text-muted-foreground\", className)}\n      {...props}\n    />\n  )\n}\n\nexport { Avatar, AvatarFallback, AvatarImage }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -5244,6 +5244,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "toggle-group-font-weight-selector": {
+      name: "toggle-group-font-weight-selector",
+      filePath: "examples/radix/toggle-group-font-weight-selector.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/toggle-group-font-weight-selector")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "toggle-group-font-weight-selector"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "toggle-group-outline": {
       name: "toggle-group-outline",
       filePath: "examples/radix/toggle-group-outline.tsx",
@@ -10859,6 +10872,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "toggle-group-disabled"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "toggle-group-font-weight-selector": {
+      name: "toggle-group-font-weight-selector",
+      filePath: "examples/base/toggle-group-font-weight-selector.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/toggle-group-font-weight-selector")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "toggle-group-font-weight-selector"
         return { default: mod.default || mod[exportName] }
       }),
     },

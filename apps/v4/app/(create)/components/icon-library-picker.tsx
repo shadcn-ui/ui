@@ -1,14 +1,8 @@
 "use client"
 
 import * as React from "react"
-import { lazy, memo, Suspense } from "react"
 
-import { Item, ItemContent, ItemTitle } from "@/registry/bases/radix/ui/item"
-import {
-  iconLibraries,
-  type IconLibrary,
-  type IconLibraryName,
-} from "@/registry/config"
+import { iconLibraries, type IconLibraryName } from "@/registry/config"
 import { LockButton } from "@/app/(create)/components/lock-button"
 import {
   Picker,
@@ -16,123 +10,9 @@ import {
   PickerGroup,
   PickerRadioGroup,
   PickerRadioItem,
-  PickerSeparator,
   PickerTrigger,
 } from "@/app/(create)/components/picker"
 import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
-
-const IconLucide = lazy(() =>
-  import("@/registry/icons/icon-lucide").then((mod) => ({
-    default: mod.IconLucide,
-  }))
-)
-
-const IconTabler = lazy(() =>
-  import("@/registry/icons/icon-tabler").then((mod) => ({
-    default: mod.IconTabler,
-  }))
-)
-
-const IconHugeicons = lazy(() =>
-  import("@/registry/icons/icon-hugeicons").then((mod) => ({
-    default: mod.IconHugeicons,
-  }))
-)
-
-const IconPhosphor = lazy(() =>
-  import("@/registry/icons/icon-phosphor").then((mod) => ({
-    default: mod.IconPhosphor,
-  }))
-)
-
-const IconRemixicon = lazy(() =>
-  import("@/registry/icons/icon-remixicon").then((mod) => ({
-    default: mod.IconRemixicon,
-  }))
-)
-
-const PREVIEW_ICONS = {
-  lucide: [
-    "CopyIcon",
-    "CircleAlertIcon",
-    "TrashIcon",
-    "ShareIcon",
-    "ShoppingBagIcon",
-    "MoreHorizontalIcon",
-    "Loader2Icon",
-    "PlusIcon",
-    "MinusIcon",
-    "ArrowLeftIcon",
-    "ArrowRightIcon",
-    "CheckIcon",
-    "ChevronDownIcon",
-    "ChevronRightIcon",
-  ],
-  tabler: [
-    "IconCopy",
-    "IconExclamationCircle",
-    "IconTrash",
-    "IconShare",
-    "IconShoppingBag",
-    "IconDots",
-    "IconLoader",
-    "IconPlus",
-    "IconMinus",
-    "IconArrowLeft",
-    "IconArrowRight",
-    "IconCheck",
-    "IconChevronDown",
-    "IconChevronRight",
-  ],
-  hugeicons: [
-    "Copy01Icon",
-    "AlertCircleIcon",
-    "Delete02Icon",
-    "Share03Icon",
-    "ShoppingBag01Icon",
-    "MoreHorizontalCircle01Icon",
-    "Loading03Icon",
-    "PlusSignIcon",
-    "MinusSignIcon",
-    "ArrowLeft02Icon",
-    "ArrowRight02Icon",
-    "Tick02Icon",
-    "ArrowDown01Icon",
-    "ArrowRight01Icon",
-  ],
-  phosphor: [
-    "CopyIcon",
-    "WarningCircleIcon",
-    "TrashIcon",
-    "ShareIcon",
-    "BagIcon",
-    "DotsThreeIcon",
-    "SpinnerIcon",
-    "PlusIcon",
-    "MinusIcon",
-    "ArrowLeftIcon",
-    "ArrowRightIcon",
-    "CheckIcon",
-    "CaretDownIcon",
-    "CaretRightIcon",
-  ],
-  remixicon: [
-    "RiFileCopyLine",
-    "RiErrorWarningLine",
-    "RiDeleteBinLine",
-    "RiShareLine",
-    "RiShoppingBagLine",
-    "RiMoreLine",
-    "RiLoaderLine",
-    "RiAddLine",
-    "RiSubtractLine",
-    "RiArrowLeftLine",
-    "RiArrowRightLine",
-    "RiCheckLine",
-    "RiArrowDownSLine",
-    "RiArrowRightSLine",
-  ],
-}
 
 const logos = {
   lucide: (
@@ -248,12 +128,12 @@ export function IconLibraryPicker({
       <Picker>
         <PickerTrigger>
           <div className="flex flex-col justify-start text-left">
-            <div className="text-muted-foreground text-xs">Icon Library</div>
-            <div className="text-foreground text-sm font-medium">
+            <div className="text-xs text-muted-foreground">Icon Library</div>
+            <div className="text-sm font-medium text-foreground">
               {currentIconLibrary?.title}
             </div>
           </div>
-          <div className="text-foreground *:[svg]:text-foreground! pointer-events-none absolute top-1/2 right-4 flex size-4 -translate-y-1/2 items-center justify-center text-base select-none">
+          <div className="pointer-events-none absolute top-1/2 right-4 flex size-4 -translate-y-1/2 items-center justify-center text-base text-foreground select-none md:right-2.5 *:[svg]:text-foreground!">
             {logos[currentIconLibrary?.name as keyof typeof logos]}
           </div>
         </PickerTrigger>
@@ -269,16 +149,14 @@ export function IconLibraryPicker({
             }}
           >
             <PickerGroup>
-              {Object.values(iconLibraries).map((iconLibrary, index) => (
-                <React.Fragment key={iconLibrary.name}>
-                  <IconLibraryPickerItem
-                    iconLibrary={iconLibrary}
-                    value={iconLibrary.name}
-                  />
-                  {index < Object.values(iconLibraries).length - 1 && (
-                    <PickerSeparator className="opacity-50" />
-                  )}
-                </React.Fragment>
+              {Object.values(iconLibraries).map((iconLibrary) => (
+                <PickerRadioItem
+                  key={iconLibrary.name}
+                  value={iconLibrary.name}
+                  closeOnClick={isMobile}
+                >
+                  {iconLibrary.title}
+                </PickerRadioItem>
               ))}
             </PickerGroup>
           </PickerRadioGroup>
@@ -286,81 +164,8 @@ export function IconLibraryPicker({
       </Picker>
       <LockButton
         param="iconLibrary"
-        className="absolute top-1/2 right-10 -translate-y-1/2"
+        className="absolute top-1/2 right-8 -translate-y-1/2"
       />
     </div>
   )
 }
-
-function IconLibraryPickerItem({
-  iconLibrary,
-  value,
-}: {
-  iconLibrary: IconLibrary
-  value: string
-}) {
-  return (
-    <PickerRadioItem
-      value={value}
-      className="pr-2 *:data-[slot=dropdown-menu-radio-item-indicator]:hidden"
-    >
-      <Item size="xs">
-        <ItemContent className="gap-1">
-          <ItemTitle className="text-muted-foreground text-xs font-medium">
-            {iconLibrary.title}
-          </ItemTitle>
-          <IconLibraryPreview iconLibrary={iconLibrary.name} />
-        </ItemContent>
-      </Item>
-    </PickerRadioItem>
-  )
-}
-
-const IconLibraryPreview = memo(function IconLibraryPreview({
-  iconLibrary,
-}: {
-  iconLibrary: IconLibraryName
-}) {
-  const previewIcons = PREVIEW_ICONS[iconLibrary]
-
-  if (!previewIcons) {
-    return null
-  }
-
-  const IconRenderer =
-    iconLibrary === "lucide"
-      ? IconLucide
-      : iconLibrary === "tabler"
-        ? IconTabler
-        : iconLibrary === "hugeicons"
-          ? IconHugeicons
-          : iconLibrary === "phosphor"
-            ? IconPhosphor
-            : IconRemixicon
-
-  return (
-    <Suspense
-      fallback={
-        <div className="-mx-1 grid w-full grid-cols-7 gap-2">
-          {previewIcons.map((iconName) => (
-            <div
-              key={iconName}
-              className="bg-muted size-6 animate-pulse rounded"
-            />
-          ))}
-        </div>
-      }
-    >
-      <div className="-mx-1 grid w-full grid-cols-7 gap-2">
-        {previewIcons.map((iconName) => (
-          <div
-            key={iconName}
-            className="flex size-6 items-center justify-center *:[svg]:size-5"
-          >
-            <IconRenderer name={iconName} />
-          </div>
-        ))}
-      </div>
-    </Suspense>
-  )
-})

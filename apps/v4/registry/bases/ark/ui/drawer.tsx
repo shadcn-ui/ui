@@ -1,13 +1,12 @@
 "use client"
 
 import * as React from "react"
-import { Drawer as DrawerPrimitive } from "vaul"
+import { Drawer as DrawerPrimitive } from "@ark-ui/react/drawer"
+import { Portal } from "@ark-ui/react/portal"
 
 import { cn } from "@/registry/bases/ark/lib/utils"
 
-function Drawer({
-  ...props
-}: React.ComponentProps<typeof DrawerPrimitive.Root>) {
+function Drawer({ ...props }: DrawerPrimitive.RootProps) {
   return <DrawerPrimitive.Root data-slot="drawer" {...props} />
 }
 
@@ -17,24 +16,22 @@ function DrawerTrigger({
   return <DrawerPrimitive.Trigger data-slot="drawer-trigger" {...props} />
 }
 
-function DrawerPortal({
-  ...props
-}: React.ComponentProps<typeof DrawerPrimitive.Portal>) {
-  return <DrawerPrimitive.Portal data-slot="drawer-portal" {...props} />
+function DrawerPortal({ children }: { children: React.ReactNode }) {
+  return <Portal>{children}</Portal>
 }
 
 function DrawerClose({
   ...props
-}: React.ComponentProps<typeof DrawerPrimitive.Close>) {
-  return <DrawerPrimitive.Close data-slot="drawer-close" {...props} />
+}: React.ComponentProps<typeof DrawerPrimitive.CloseTrigger>) {
+  return <DrawerPrimitive.CloseTrigger data-slot="drawer-close" {...props} />
 }
 
 function DrawerOverlay({
   className,
   ...props
-}: React.ComponentProps<typeof DrawerPrimitive.Overlay>) {
+}: React.ComponentProps<typeof DrawerPrimitive.Backdrop>) {
   return (
-    <DrawerPrimitive.Overlay
+    <DrawerPrimitive.Backdrop
       data-slot="drawer-overlay"
       className={cn("cn-drawer-overlay fixed inset-0 z-50", className)}
       {...props}
@@ -45,22 +42,31 @@ function DrawerOverlay({
 function DrawerContent({
   className,
   children,
+  showHandle = true,
   ...props
-}: React.ComponentProps<typeof DrawerPrimitive.Content>) {
+}: React.ComponentProps<typeof DrawerPrimitive.Content> & {
+  showHandle?: boolean
+}) {
   return (
-    <DrawerPortal data-slot="drawer-portal">
+    <DrawerPortal>
       <DrawerOverlay />
-      <DrawerPrimitive.Content
-        data-slot="drawer-content"
-        className={cn(
-          "cn-drawer-content group/drawer-content fixed z-50",
-          className
-        )}
-        {...props}
-      >
-        <div className="cn-drawer-handle mx-auto hidden shrink-0 group-data-[vaul-drawer-direction=bottom]/drawer-content:block" />
-        {children}
-      </DrawerPrimitive.Content>
+      <DrawerPrimitive.Positioner className="fixed inset-0 z-50">
+        <DrawerPrimitive.Content
+          data-slot="drawer-content"
+          className={cn(
+            "cn-drawer-content group/drawer-content z-50 w-full outline-none",
+            className
+          )}
+          {...props}
+        >
+          {showHandle && (
+            <DrawerPrimitive.Grabber>
+              <DrawerPrimitive.GrabberIndicator className="cn-drawer-handle mx-auto shrink-0" />
+            </DrawerPrimitive.Grabber>
+          )}
+          {children}
+        </DrawerPrimitive.Content>
+      </DrawerPrimitive.Positioner>
     </DrawerPortal>
   )
 }

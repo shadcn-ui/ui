@@ -137,9 +137,9 @@ To create a button group, use the `ButtonGroup` component. See the [Button Group
 
 ### Link
 
-You can use the `render` prop on `<Button />` to make another component look like a button. Here's an example of a link that looks like a button.
+You can use the `buttonVariants` helper to make a link look like a button.
 
-Remember to set the `nativeButton` prop to `false` if you're returning an element that is not a button.
+**Do not use `<Button render={<a />} nativeButton={false} />` for links.** The Base UI `Button` component always applies `role="button"`, which overrides the semantic link role on `<a>` elements. Use `buttonVariants` with a plain `<a>` tag instead.
 
 <ComponentPreview styleName="base-nova" name="button-render" />
 

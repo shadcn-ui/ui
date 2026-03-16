@@ -1,30 +1,46 @@
 import * as React from "react"
 
+import { ark } from "@ark-ui/react/factory"
+
 import { cn } from "@/registry/bases/ark/lib/utils"
 
-function Card({ className, ...props }: React.ComponentProps<"div">) {
+function Card({
+  className,
+  size = "default",
+  ...props
+}: React.ComponentProps<typeof ark.div> & { size?: "default" | "sm" }) {
   return (
-    <div
+    <ark.div
       data-slot="card"
-      className={cn("cn-card overflow-hidden group/card", className)}
+      data-size={size}
+      className={cn("cn-card group/card flex flex-col", className)}
       {...props}
     />
   )
 }
 
-function CardHeader({ className, ...props }: React.ComponentProps<"div">) {
+function CardHeader({
+  className,
+  ...props
+}: React.ComponentProps<typeof ark.div>) {
   return (
-    <div
+    <ark.div
       data-slot="card-header"
-      className={cn("cn-card-header flex flex-col gap-1.5", className)}
+      className={cn(
+        "cn-card-header group/card-header @container/card-header grid auto-rows-min items-start has-data-[slot=card-action]:grid-cols-[1fr_auto] has-data-[slot=card-description]:grid-rows-[auto_auto]",
+        className
+      )}
       {...props}
     />
   )
 }
 
-function CardTitle({ className, ...props }: React.ComponentProps<"div">) {
+function CardTitle({
+  className,
+  ...props
+}: React.ComponentProps<typeof ark.h3>) {
   return (
-    <div
+    <ark.h3
       data-slot="card-title"
       className={cn("cn-card-title", className)}
       {...props}
@@ -32,9 +48,12 @@ function CardTitle({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
-function CardDescription({ className, ...props }: React.ComponentProps<"div">) {
+function CardDescription({
+  className,
+  ...props
+}: React.ComponentProps<typeof ark.p>) {
   return (
-    <div
+    <ark.p
       data-slot="card-description"
       className={cn("cn-card-description", className)}
       {...props}
@@ -42,9 +61,28 @@ function CardDescription({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
-function CardContent({ className, ...props }: React.ComponentProps<"div">) {
+function CardAction({
+  className,
+  ...props
+}: React.ComponentProps<typeof ark.div>) {
   return (
-    <div
+    <ark.div
+      data-slot="card-action"
+      className={cn(
+        "cn-card-action col-start-2 row-span-2 row-start-1 self-start justify-self-end",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+function CardContent({
+  className,
+  ...props
+}: React.ComponentProps<typeof ark.div>) {
+  return (
+    <ark.div
       data-slot="card-content"
       className={cn("cn-card-content", className)}
       {...props}
@@ -52,9 +90,12 @@ function CardContent({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
-function CardFooter({ className, ...props }: React.ComponentProps<"div">) {
+function CardFooter({
+  className,
+  ...props
+}: React.ComponentProps<typeof ark.div>) {
   return (
-    <div
+    <ark.div
       data-slot="card-footer"
       className={cn("cn-card-footer flex items-center", className)}
       {...props}
@@ -62,4 +103,12 @@ function CardFooter({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
-export { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
+export {
+  Card,
+  CardHeader,
+  CardFooter,
+  CardTitle,
+  CardAction,
+  CardDescription,
+  CardContent,
+}

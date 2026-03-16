@@ -50,7 +50,7 @@ export function InputGroupButtonExample() {
         {t.inputLabel}
       </Label>
       <InputGroup className="[--radius:9999px]">
-        <InputGroupInput id="input-secure-rtl" className="!pr-0.5" />
+        <InputGroupInput id="input-secure-rtl" className="pr-0.5!" />
         <InputGroupAddon>
           <Popover>
             <PopoverTrigger

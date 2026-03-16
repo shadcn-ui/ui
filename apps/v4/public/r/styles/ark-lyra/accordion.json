@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "accordion",
+  "files": [
+    {
+      "path": "registry/ark-lyra/ui/accordion.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { Accordion as AccordionPrimitive } from \"@ark-ui/react/accordion\"\n\nimport { cn } from \"@/registry/ark-lyra/lib/utils\"\nimport { IconPlaceholder } from \"@/app/(create)/components/icon-placeholder\"\n\nfunction Accordion({\n  ...props\n}: React.ComponentProps<typeof AccordionPrimitive.Root>) {\n  return <AccordionPrimitive.Root data-slot=\"accordion\" {...props} />\n}\n\nfunction AccordionItem({\n  className,\n  ...props\n}: React.ComponentProps<typeof AccordionPrimitive.Item>) {\n  return (\n    <AccordionPrimitive.Item\n      data-slot=\"accordion-item\"\n      className={cn(\"not-last:border-b\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction AccordionTrigger({\n  className,\n  children,\n  ...props\n}: React.ComponentProps<typeof AccordionPrimitive.ItemTrigger>) {\n  return (\n    <AccordionPrimitive.ItemTrigger\n      data-slot=\"accordion-trigger\"\n      className={cn(\n        \"group/trigger rounded-none py-2.5 text-left text-xs font-medium hover:underline focus-visible:border-ring focus-visible:ring-1 focus-visible:ring-ring/50 focus-visible:after:border-ring **:data-[slot=accordion-trigger-icon]:ml-auto **:data-[slot=accordion-trigger-icon]:size-4 **:data-[slot=accordion-trigger-icon]:text-muted-foreground\",\n        className\n      )}\n      {...props}\n    >\n      {children}\n      <IconPlaceholder\n        lucide=\"ChevronDownIcon\"\n        tabler=\"IconChevronDown\"\n        hugeicons=\"ArrowDown01Icon\"\n        phosphor=\"CaretDownIcon\"\n        remixicon=\"RiArrowDownSLine\"\n        className=\"\"\n      />\n    </AccordionPrimitive.ItemTrigger>\n  )\n}\n\nfunction AccordionContent({\n  className,\n  children,\n  ...props\n}: React.ComponentProps<typeof AccordionPrimitive.ItemContent>) {\n  return (\n    <AccordionPrimitive.ItemContent\n      data-slot=\"accordion-content\"\n      className={cn(\n        \"text-xs data-open:animate-accordion-down data-closed:animate-accordion-up\",\n        className\n      )}\n      {...props}\n    >\n      <div className=\"pt-0 pb-2.5\">{children}</div>\n    </AccordionPrimitive.ItemContent>\n  )\n}\n\nexport { Accordion, AccordionContent, AccordionItem, AccordionTrigger }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

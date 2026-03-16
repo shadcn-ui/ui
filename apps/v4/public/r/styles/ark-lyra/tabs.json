@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tabs",
+  "files": [
+    {
+      "path": "registry/ark-lyra/ui/tabs.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { Tabs as TabsPrimitive } from \"@ark-ui/react/tabs\"\n\nimport { cn } from \"@/registry/ark-lyra/lib/utils\"\n\nfunction Tabs({\n  className,\n  ...props\n}: React.ComponentProps<typeof TabsPrimitive.Root>) {\n  return (\n    <TabsPrimitive.Root\n      data-slot=\"tabs\"\n      className={cn(\"gap-2\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction TabsList({\n  className,\n  ...props\n}: React.ComponentProps<typeof TabsPrimitive.List>) {\n  return (\n    <TabsPrimitive.List\n      data-slot=\"tabs-list\"\n      className={cn(\n        \"rounded-none p-[3px] group-data-horizontal/tabs:h-8 data-[variant=line]:rounded-none\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction TabsTrigger({\n  className,\n  ...props\n}: React.ComponentProps<typeof TabsPrimitive.Trigger>) {\n  return (\n    <TabsPrimitive.Trigger\n      data-slot=\"tabs-trigger\"\n      className={cn(\n        \"gap-1.5 rounded-none border border-transparent px-1.5 py-0.5 text-xs font-medium group-data-vertical/tabs:py-[calc(--spacing(1.25))] [&_svg:not([class*='size-'])]:size-4\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction TabsContent({\n  className,\n  ...props\n}: React.ComponentProps<typeof TabsPrimitive.Content>) {\n  return (\n    <TabsPrimitive.Content\n      data-slot=\"tabs-content\"\n      className={cn(\"text-xs/relaxed\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction TabsIndicator({\n  className,\n  ...props\n}: React.ComponentProps<typeof TabsPrimitive.Indicator>) {\n  return (\n    <TabsPrimitive.Indicator\n      data-slot=\"tabs-indicator\"\n      className={cn(className)}\n      {...props}\n    />\n  )\n}\n\nexport { Tabs, TabsContent, TabsIndicator, TabsList, TabsTrigger }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

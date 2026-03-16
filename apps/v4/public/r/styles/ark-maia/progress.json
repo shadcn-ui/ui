@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "progress",
+  "files": [
+    {
+      "path": "registry/ark-maia/ui/progress.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { Progress as ProgressPrimitive } from \"@ark-ui/react/progress\"\n\nimport { cn } from \"@/registry/ark-maia/lib/utils\"\n\nfunction Progress({\n  className,\n  value,\n  ...props\n}: React.ComponentProps<typeof ProgressPrimitive.Root>) {\n  return (\n    <ProgressPrimitive.Root\n      data-slot=\"progress\"\n      className={cn(\"h-3 rounded-4xl bg-muted\", className)}\n      value={value}\n      {...props}\n    >\n      <ProgressPrimitive.Track className=\"h-3 rounded-4xl bg-muted\">\n        <ProgressPrimitive.Range className=\"\" />\n      </ProgressPrimitive.Track>\n    </ProgressPrimitive.Root>\n  )\n}\n\nfunction ProgressLabel({\n  className,\n  ...props\n}: React.ComponentProps<typeof ProgressPrimitive.Label>) {\n  return (\n    <ProgressPrimitive.Label\n      data-slot=\"progress-label\"\n      className={cn(\"text-sm font-medium\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction ProgressValueText({\n  className,\n  ...props\n}: React.ComponentProps<typeof ProgressPrimitive.ValueText>) {\n  return (\n    <ProgressPrimitive.ValueText\n      data-slot=\"progress-value-text\"\n      className={cn(className)}\n      {...props}\n    />\n  )\n}\n\nexport { Progress, ProgressLabel, ProgressValueText }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

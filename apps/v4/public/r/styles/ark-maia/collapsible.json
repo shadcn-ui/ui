@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "collapsible",
+  "files": [
+    {
+      "path": "registry/ark-maia/ui/collapsible.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { Collapsible as CollapsiblePrimitive } from \"@ark-ui/react/collapsible\"\n\nimport { cn } from \"@/registry/ark-maia/lib/utils\"\n\nfunction Collapsible({\n  ...props\n}: React.ComponentProps<typeof CollapsiblePrimitive.Root>) {\n  return <CollapsiblePrimitive.Root data-slot=\"collapsible\" {...props} />\n}\n\nfunction CollapsibleTrigger({\n  ...props\n}: React.ComponentProps<typeof CollapsiblePrimitive.Trigger>) {\n  return (\n    <CollapsiblePrimitive.Trigger data-slot=\"collapsible-trigger\" {...props} />\n  )\n}\n\nfunction CollapsibleContent({\n  className,\n  ...props\n}: React.ComponentProps<typeof CollapsiblePrimitive.Content>) {\n  return (\n    <CollapsiblePrimitive.Content\n      data-slot=\"collapsible-content\"\n      className={cn(className)}\n      {...props}\n    />\n  )\n}\n\nexport { Collapsible, CollapsibleContent, CollapsibleTrigger }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

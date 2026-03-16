@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toggle-group",
+  "registryDependencies": [
+    "toggle"
+  ],
+  "files": [
+    {
+      "path": "registry/ark-lyra/ui/toggle-group.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { ToggleGroup as ToggleGroupPrimitive } from \"@ark-ui/react/toggle-group\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/registry/ark-lyra/lib/utils\"\n\nconst toggleGroupVariants = cva(\n  \"inline-flex items-center justify-center rounded-none data-[size=sm]:rounded-none\",\n  {\n    variants: {\n      variant: {\n        default: \"\",\n        outline: \"\",\n      },\n      size: {\n        default: \"\",\n        sm: \"\",\n        lg: \"\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n      size: \"default\",\n    },\n  }\n)\n\nfunction ToggleGroup({\n  className,\n  variant,\n  size,\n  ...props\n}: React.ComponentProps<typeof ToggleGroupPrimitive.Root> &\n  VariantProps<typeof toggleGroupVariants>) {\n  return (\n    <ToggleGroupPrimitive.Root\n      data-slot=\"toggle-group\"\n      className={cn(toggleGroupVariants({ variant, size, className }))}\n      {...props}\n    />\n  )\n}\n\nfunction ToggleGroupItem({\n  className,\n  ...props\n}: React.ComponentProps<typeof ToggleGroupPrimitive.Item>) {\n  return (\n    <ToggleGroupPrimitive.Item\n      data-slot=\"toggle-group-item\"\n      className={cn(\n        \"group-data-[spacing=0]/toggle-group:rounded-none group-data-[spacing=0]/toggle-group:px-2 group-data-horizontal/toggle-group:data-[spacing=0]:first:rounded-none group-data-vertical/toggle-group:data-[spacing=0]:first:rounded-none group-data-horizontal/toggle-group:data-[spacing=0]:last:rounded-none group-data-vertical/toggle-group:data-[spacing=0]:last:rounded-none\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { ToggleGroup, ToggleGroupItem, toggleGroupVariants }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}
