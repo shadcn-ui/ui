@@ -49,6 +49,48 @@ describe("get project info", async () => {
       },
     },
     {
+      name: "next-app-imports",
+      type: {
+        framework: FRAMEWORKS["next-app"],
+        isSrcDir: true,
+        isRSC: true,
+        isTsx: true,
+        tailwindConfigFile: "tailwind.config.ts",
+        tailwindCssFile: "src/app/styles.css",
+        tailwindVersion: "v3",
+        frameworkVersion: null,
+        aliasPrefix: "#",
+      },
+    },
+    {
+      name: "vite-app-imports",
+      type: {
+        framework: FRAMEWORKS["vite"],
+        isSrcDir: true,
+        isRSC: false,
+        isTsx: true,
+        tailwindConfigFile: null,
+        tailwindCssFile: "src/index.css",
+        tailwindVersion: "v4",
+        frameworkVersion: null,
+        aliasPrefix: "#custom",
+      },
+    },
+    {
+      name: "vite-partial-imports",
+      type: {
+        framework: FRAMEWORKS["vite"],
+        isSrcDir: true,
+        isRSC: false,
+        isTsx: true,
+        tailwindConfigFile: null,
+        tailwindCssFile: "src/index.css",
+        tailwindVersion: "v4",
+        frameworkVersion: null,
+        aliasPrefix: "#",
+      },
+    },
+    {
       name: "next-pages",
       type: {
         framework: FRAMEWORKS["next-pages"],

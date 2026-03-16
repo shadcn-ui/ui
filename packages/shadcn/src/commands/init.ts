@@ -632,8 +632,10 @@ export async function runInit(
       silent: options.silent,
     })
 
-    // Run postInit for new projects (e.g. git init).
-    await selectedTemplate.postInit({ projectPath: options.cwd })
+    if (shouldRunTemplatePostInit(selectedTemplate, options.isNewProject)) {
+      // Run postInit for newly scaffolded projects (e.g. git init).
+      await selectedTemplate.postInit({ projectPath: options.cwd })
+    }
 
     return result
   }
@@ -770,9 +772,9 @@ export async function runInit(
       options.isNewProject || projectInfo?.framework.name === "next-app",
   })
 
-  // Run postInit for new projects without a custom init (e.g. git init).
-  if (selectedTemplate) {
-    await selectedTemplate.postInit({ projectPath: options.cwd })
+  // Run postInit only for newly scaffolded projects.
+  if (shouldRunTemplatePostInit(selectedTemplate, options.isNewProject)) {
+    await selectedTemplate!.postInit!({ projectPath: options.cwd })
   }
 
   return fullConfig
@@ -856,11 +858,46 @@ async function promptForConfig(defaultConfig: Config | null = null) {
       )}:`,
       initial: defaultConfig?.aliases["components"] ?? DEFAULT_COMPONENTS,
     },
+  ])
+
+  if (!options.style) {
+    process.exit(1)
+  }
+
+  const existingAliases =
+    defaultConfig && defaultConfig.aliases.components === options.components
+      ? defaultConfig.aliases
+      : undefined
+
+  const aliasDefaults = getInitAliasDefaults(
+    options.components,
+    existingAliases
+  )
+
+  const aliasOptions = await prompts([
+    {
+      type: "text",
+      name: "ui",
+      message: `Configure the import alias for ${highlighter.info("ui")}:`,
+      initial: aliasDefaults.ui,
+    },
+    {
+      type: "text",
+      name: "lib",
+      message: `Configure the import alias for ${highlighter.info("lib")}:`,
+      initial: aliasDefaults.lib,
+    },
+    {
+      type: "text",
+      name: "hooks",
+      message: `Configure the import alias for ${highlighter.info("hooks")}:`,
+      initial: aliasDefaults.hooks,
+    },
     {
       type: "text",
       name: "utils",
       message: `Configure the import alias for ${highlighter.info("utils")}:`,
-      initial: defaultConfig?.aliases["utils"] ?? DEFAULT_UTILS,
+      initial: aliasDefaults.utils,
     },
     {
       type: "toggle",
@@ -872,10 +909,6 @@ async function promptForConfig(defaultConfig: Config | null = null) {
     },
   ])
 
-  if (!options.style) {
-    process.exit(1)
-  }
-
   return rawConfigSchema.parse({
     $schema: "https://ui.shadcn.com/schema.json",
     style: options.style,
@@ -886,16 +919,73 @@ async function promptForConfig(defaultConfig: Config | null = null) {
       cssVariables: options.tailwindCssVariables,
       prefix: options.tailwindPrefix,
     },
-    rsc: options.rsc,
+    rsc: aliasOptions.rsc,
     tsx: options.typescript,
     aliases: {
-      utils: options.utils,
       components: options.components,
-      // TODO: fix this.
-      lib: options.components.replace(/\/components$/, "lib"),
-      hooks: options.components.replace(/\/components$/, "hooks"),
+      ui: aliasOptions.ui,
+      lib: aliasOptions.lib,
+      hooks: aliasOptions.hooks,
+      utils: aliasOptions.utils,
     },
   })
+}
+
+export function getInitAliasDefaults(
+  componentsAlias: string,
+  existingAliases?: Config["aliases"]
+) {
+  const derivedLib =
+    existingAliases?.lib ?? deriveSiblingAlias(componentsAlias, "lib")
+
+  return {
+    ui: existingAliases?.ui ?? deriveUiAlias(componentsAlias),
+    lib: derivedLib,
+    hooks:
+      existingAliases?.hooks ?? deriveSiblingAlias(componentsAlias, "hooks"),
+    utils:
+      existingAliases?.utils ?? deriveUtilsAlias(componentsAlias, derivedLib),
+  }
+}
+
+function deriveUiAlias(componentsAlias: string) {
+  return componentsAlias ? `${componentsAlias}/ui` : `${DEFAULT_COMPONENTS}/ui`
+}
+
+function deriveUtilsAlias(componentsAlias: string, libAlias: string) {
+  if (componentsAlias === "#components") {
+    return "#utils"
+  }
+
+  return libAlias ? `${libAlias}/utils` : DEFAULT_UTILS
+}
+
+function deriveSiblingAlias(componentsAlias: string, segment: "lib" | "hooks") {
+  if (componentsAlias === "components") {
+    return segment
+  }
+
+  if (componentsAlias.endsWith("/components")) {
+    return `${componentsAlias.slice(0, -"/components".length)}/${segment}`
+  }
+
+  if (
+    componentsAlias.endsWith("components") &&
+    !componentsAlias.includes("/")
+  ) {
+    return `${componentsAlias.slice(0, -"components".length)}${segment}`
+  }
+
+  return ""
+}
+
+export function shouldRunTemplatePostInit(
+  template:
+    | { postInit?: (options: { projectPath: string }) => Promise<void> }
+    | undefined,
+  isNewProject: boolean | undefined
+) {
+  return Boolean(template?.postInit && isNewProject)
 }
 
 async function promptForMinimalConfig(

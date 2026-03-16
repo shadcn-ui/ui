@@ -23,8 +23,11 @@ import { transformCssVars } from "@/src/utils/updaters/update-css-vars"
 import {
   findCommonRoot,
   resolveFilePath,
+  rewriteResolvedImportsInContent,
 } from "@/src/utils/updaters/update-files"
 import { massageTreeForFonts } from "@/src/utils/updaters/update-fonts"
+import { Project } from "ts-morph"
+import { loadConfig } from "tsconfig-paths"
 import type { z } from "zod"
 
 export type DryRunFile = {
@@ -140,6 +143,41 @@ async function processFiles(
       ? getRegistryBaseColor(config.tailwind.baseColor)
       : Promise.resolve(undefined),
   ])
+  let tsConfig: ReturnType<typeof loadConfig>
+  try {
+    tsConfig = loadConfig(config.resolvedPaths.cwd)
+  } catch {
+    tsConfig = { resultType: "failed" } as ReturnType<typeof loadConfig>
+  }
+  const project = new Project({
+    compilerOptions: {},
+  })
+  const plannedFilePaths = files
+    .filter((file): file is NonNullable<typeof file> => !!file?.content)
+    .map((file, index) => {
+      let plannedFilePath = resolveFilePath(file, config, {
+        isSrcDir: projectInfo?.isSrcDir,
+        framework: projectInfo?.framework.name,
+        commonRoot: findCommonRoot(
+          files.map((entry) => entry.path),
+          file.path
+        ),
+        fileIndex: index,
+      })
+
+      if (!plannedFilePath) {
+        return null
+      }
+
+      if (!config.tsx) {
+        plannedFilePath = plannedFilePath.replace(/\.tsx?$/, (match) =>
+          match === ".tsx" ? ".jsx" : ".js"
+        )
+      }
+
+      return path.relative(config.resolvedPaths.cwd, plannedFilePath)
+    })
+    .filter((filePath): filePath is string => !!filePath)
 
   for (let index = 0; index < files.length; index++) {
     const file = files[index]
@@ -197,13 +235,25 @@ async function processFiles(
               transformCleanup,
             ]
           )
+    const finalContent =
+      isEnvFile(filePath) || isUniversalItemFile
+        ? content
+        : await rewriteResolvedImportsInContent({
+            config,
+            content,
+            filePaths: plannedFilePaths,
+            project,
+            projectInfo,
+            resolvedPath: filePath,
+            tsConfig,
+          })
 
     // Determine action.
     let action: DryRunFile["action"] = "create"
     let oldContent: string | undefined
     if (existingFile) {
       oldContent = await fs.readFile(filePath, "utf-8")
-      if (isContentSame(oldContent, content)) {
+      if (isContentSame(oldContent, finalContent)) {
         action = "skip"
       } else {
         action = "overwrite"
@@ -213,7 +263,7 @@ async function processFiles(
     result.files.push({
       path: relativePath,
       action,
-      content,
+      content: finalContent,
       ...(action === "overwrite" && { existingContent: oldContent }),
       type: file.type ?? "registry:ui",
     })

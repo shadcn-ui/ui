@@ -6,6 +6,10 @@ import { rawConfigSchema } from "@/src/schema"
 import { Framework, FRAMEWORKS } from "@/src/utils/frameworks"
 import { Config, getConfig, resolveConfigPaths } from "@/src/utils/get-config"
 import { getPackageInfo } from "@/src/utils/get-package-info"
+import {
+  getPackageImportAliases,
+  getPackageImportPrefix,
+} from "@/src/utils/package-imports"
 import fg from "fast-glob"
 import fs from "fs-extra"
 import { loadConfig } from "tsconfig-paths"
@@ -50,7 +54,7 @@ export async function getProjectInfo(
     tailwindConfigFile,
     tailwindCssFile,
     tailwindVersion,
-    aliasPrefix,
+    aliasPrefixInfo,
     packageJson,
   ] = await Promise.all([
     fg.glob(
@@ -66,7 +70,7 @@ export async function getProjectInfo(
     getTailwindConfigFile(cwd),
     getTailwindCssFile(cwd, opts?.configCssFile),
     getTailwindVersion(cwd),
-    getTsConfigAliasPrefix(cwd),
+    getProjectAliasInfo(cwd),
     getPackageInfo(cwd, false),
   ])
 
@@ -83,7 +87,7 @@ export async function getProjectInfo(
     tailwindCssFile,
     tailwindVersion,
     frameworkVersion: null,
-    aliasPrefix,
+    aliasPrefix: aliasPrefixInfo.prefix,
   }
 
   // Next.js.
@@ -324,6 +328,31 @@ export async function getTsConfigAliasPrefix(cwd: string) {
   return Object.keys(tsConfig?.paths)?.[0].replace(/\/\*$/, "") ?? null
 }
 
+export async function getProjectAliasInfo(cwd: string) {
+  const tsConfigAliasPrefix = await getTsConfigAliasPrefix(cwd)
+
+  if (tsConfigAliasPrefix) {
+    return {
+      prefix: tsConfigAliasPrefix,
+      source: "tsconfig_paths" as const,
+    }
+  }
+
+  const packageImportPrefix = getPackageImportPrefix(cwd)
+
+  if (packageImportPrefix) {
+    return {
+      prefix: packageImportPrefix,
+      source: "package_imports" as const,
+    }
+  }
+
+  return {
+    prefix: null,
+    source: null,
+  }
+}
+
 export async function isTypeScriptProject(cwd: string) {
   const files = await fg.glob("tsconfig.*", {
     cwd,
@@ -365,11 +394,12 @@ export async function getProjectConfig(
   defaultProjectInfo: ProjectInfo | null = null
 ): Promise<Config | null> {
   // Check for existing component config.
-  const [existingConfig, projectInfo] = await Promise.all([
+  const [existingConfig, projectInfo, aliasInfo] = await Promise.all([
     getConfig(cwd),
     !defaultProjectInfo
       ? getProjectInfo(cwd)
       : Promise.resolve(defaultProjectInfo),
+    getProjectAliasInfo(cwd),
   ])
 
   if (existingConfig) {
@@ -381,6 +411,35 @@ export async function getProjectConfig(
     !projectInfo.tailwindCssFile ||
     (projectInfo.tailwindVersion === "v3" && !projectInfo.tailwindConfigFile)
   ) {
+    return null
+  }
+
+  const packageImportAliases =
+    aliasInfo.source === "package_imports" ? getPackageImportAliases(cwd) : null
+
+  if (!projectInfo.aliasPrefix) {
+    return null
+  }
+
+  const fallbackAliases = getAliasDefaultsFromPrefix(
+    projectInfo.aliasPrefix,
+    aliasInfo.source === "package_imports"
+  )
+
+  const aliases =
+    aliasInfo.source === "package_imports" && packageImportAliases
+      ? derivePackageImportAliases({
+          ...fallbackAliases,
+          components:
+            packageImportAliases.components ?? fallbackAliases.components,
+          ui: packageImportAliases.ui ?? fallbackAliases.ui,
+          hooks: packageImportAliases.hooks ?? fallbackAliases.hooks,
+          lib: packageImportAliases.lib ?? fallbackAliases.lib,
+          utils: packageImportAliases.utils ?? fallbackAliases.utils,
+        })
+      : fallbackAliases
+
+  if (!aliases.components || !aliases.utils) {
     return null
   }
 
@@ -397,16 +456,57 @@ export async function getProjectConfig(
       prefix: "",
     },
     iconLibrary: "lucide",
-    aliases: {
-      components: `${projectInfo.aliasPrefix}/components`,
-      ui: `${projectInfo.aliasPrefix}/components/ui`,
-      hooks: `${projectInfo.aliasPrefix}/hooks`,
-      lib: `${projectInfo.aliasPrefix}/lib`,
-      utils: `${projectInfo.aliasPrefix}/lib/utils`,
-    },
+    aliases,
   }
 
   return await resolveConfigPaths(cwd, config)
+}
+
+function getAliasDefaultsFromPrefix(
+  aliasPrefix: string,
+  isPackageImport: boolean = false
+) {
+  if (isPackageImport && aliasPrefix === "#") {
+    return {
+      components: "",
+      ui: undefined,
+      hooks: undefined,
+      lib: undefined,
+      utils: "",
+    }
+  }
+
+  return {
+    components: `${aliasPrefix}/components`,
+    ui: `${aliasPrefix}/components/ui`,
+    hooks: `${aliasPrefix}/hooks`,
+    lib: `${aliasPrefix}/lib`,
+    utils: `${aliasPrefix}/lib/utils`,
+  }
+}
+
+function derivePackageImportAliases(aliases: {
+  components: string
+  ui?: string
+  hooks?: string
+  lib?: string
+  utils: string
+}) {
+  const derivedAliases = { ...aliases }
+
+  if (!derivedAliases.ui && derivedAliases.components) {
+    derivedAliases.ui = `${derivedAliases.components}/ui`
+  }
+
+  if (!derivedAliases.lib && derivedAliases.utils.endsWith("/utils")) {
+    derivedAliases.lib = derivedAliases.utils.slice(0, -"/utils".length)
+  }
+
+  if (!derivedAliases.utils && derivedAliases.lib) {
+    derivedAliases.utils = `${derivedAliases.lib}/utils`
+  }
+
+  return derivedAliases
 }
 
 export async function getProjectTailwindVersionFromConfig(config: {

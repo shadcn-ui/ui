@@ -129,14 +129,14 @@ export async function preFlightInit(
     tailwindSpinner?.succeed()
   }
 
-  const tsConfigSpinner = spinner(`Validating import alias.`, {
+  const aliasSpinner = spinner(`Validating import alias.`, {
     silent: options.silent,
   }).start()
   if (!projectInfo?.aliasPrefix) {
     errors[ERRORS.IMPORT_ALIAS_MISSING] = true
-    tsConfigSpinner?.fail()
+    aliasSpinner?.fail()
   } else {
-    tsConfigSpinner?.succeed()
+    aliasSpinner?.succeed()
   }
 
   if (Object.keys(errors).length > 0) {
@@ -162,7 +162,16 @@ export async function preFlightInit(
 
     if (errors[ERRORS.IMPORT_ALIAS_MISSING]) {
       logger.break()
-      logger.error(`No import alias found in your tsconfig.json file.`)
+      logger.error(
+        `No import alias found in your ${highlighter.info(
+          "tsconfig.json"
+        )} or ${highlighter.info("package.json#imports")} configuration.`
+      )
+      logger.error(
+        `Add an alias in ${highlighter.info(
+          "compilerOptions.paths"
+        )} or ${highlighter.info('"imports"')} and try again.`
+      )
       if (projectInfo?.framework.links.installation) {
         logger.error(
           `Visit ${highlighter.info(

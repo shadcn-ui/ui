@@ -7,10 +7,13 @@ import {
 } from "@/src/schema"
 import { getProjectInfo } from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"
-import { resolveImport } from "@/src/utils/resolve-import"
+import {
+  resolveImport,
+  resolveImportWithMetadata,
+} from "@/src/utils/resolve-import"
 import { cosmiconfig } from "cosmiconfig"
 import fg from "fast-glob"
-import { loadConfig } from "tsconfig-paths"
+import { loadConfig, type ConfigLoaderSuccessResult } from "tsconfig-paths"
 import { z } from "zod"
 
 export const DEFAULT_STYLE = "default"
@@ -72,33 +75,108 @@ export async function resolveConfigPaths(
         ? path.resolve(cwd, config.tailwind.config)
         : "",
       tailwindCss: path.resolve(cwd, config.tailwind.css),
-      utils: await resolveImport(config.aliases["utils"], tsConfig),
-      components: await resolveImport(config.aliases["components"], tsConfig),
+      utils: await resolveAliasPath(
+        "utils",
+        config.aliases["utils"],
+        cwd,
+        tsConfig
+      ),
+      components: await resolveAliasPath(
+        "components",
+        config.aliases["components"],
+        cwd,
+        tsConfig
+      ),
       ui: config.aliases["ui"]
-        ? await resolveImport(config.aliases["ui"], tsConfig)
+        ? await resolveAliasPath("ui", config.aliases["ui"], cwd, tsConfig)
         : path.resolve(
-            (await resolveImport(config.aliases["components"], tsConfig)) ??
+            (await resolveAliasPath(
+              "components",
+              config.aliases["components"],
               cwd,
+              tsConfig
+            )) ?? cwd,
             "ui"
           ),
       // TODO: Make this configurable.
       // For now, we assume the lib and hooks directories are one level up from the components directory.
       lib: config.aliases["lib"]
-        ? await resolveImport(config.aliases["lib"], tsConfig)
+        ? await resolveAliasPath("lib", config.aliases["lib"], cwd, tsConfig)
         : path.resolve(
-            (await resolveImport(config.aliases["utils"], tsConfig)) ?? cwd,
+            (await resolveAliasPath(
+              "utils",
+              config.aliases["utils"],
+              cwd,
+              tsConfig
+            )) ?? cwd,
             ".."
           ),
       hooks: config.aliases["hooks"]
-        ? await resolveImport(config.aliases["hooks"], tsConfig)
+        ? await resolveAliasPath(
+            "hooks",
+            config.aliases["hooks"],
+            cwd,
+            tsConfig
+          )
         : path.resolve(
-            (await resolveImport(config.aliases["components"], tsConfig)) ??
+            (await resolveAliasPath(
+              "components",
+              config.aliases["components"],
               cwd,
+              tsConfig
+            )) ?? cwd,
             "..",
             "hooks"
           ),
     },
   })
+}
+
+async function resolveAliasPath(
+  aliasKey: "components" | "utils" | "ui" | "lib" | "hooks",
+  alias: string,
+  cwd: string,
+  tsConfig: Pick<ConfigLoaderSuccessResult, "absoluteBaseUrl" | "paths">
+) {
+  const resolved = await resolveImportWithMetadata(alias, {
+    ...tsConfig,
+    cwd,
+  })
+
+  if (!resolved?.path) {
+    return await resolveImport(alias, { ...tsConfig, cwd })
+  }
+
+  if (
+    aliasKey !== "utils" &&
+    ["package_imports", "workspace_package_exports"].includes(
+      resolved.source
+    ) &&
+    !resolved.matchedAlias.includes("*") &&
+    /\/index\.[^/]+$/.test(resolved.path)
+  ) {
+    // Exact package-import aliases like `#hooks`, and exact workspace package
+    // exports that point at index files, should resolve to directory roots for
+    // components/hooks/ui/lib. `utils` stays file-based by design.
+    return path.dirname(resolved.path)
+  }
+
+  if (
+    aliasKey !== "utils" &&
+    ["package_imports", "workspace_package_exports"].includes(
+      resolved.source
+    ) &&
+    resolved.matchedAlias.includes("*") &&
+    /\.[^/]+$/.test(resolved.path)
+  ) {
+    // Wildcard package-import aliases and workspace package exports stored in
+    // components.json represent directory roots, even when the matched target
+    // is extension-based (`./src/components/*.tsx`). Strip the source extension
+    // so `ui` resolves to `/src/components/ui` instead of `/src/components/ui.tsx`.
+    return resolved.path.replace(/\.[^/]+$/, "")
+  }
+
+  return resolved.path
 }
 
 export async function getRawConfig(
