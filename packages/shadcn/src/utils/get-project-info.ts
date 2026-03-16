@@ -304,32 +304,43 @@ export async function getTailwindConfigFile(cwd: string) {
 
 export async function getTsConfigAliasPrefix(cwd: string) {
   const tsConfig = await loadConfig(cwd)
+  const paths =
+    tsConfig?.resultType === "success" && Object.entries(tsConfig.paths).length
+      ? tsConfig.paths
+      : (await getTsConfig(cwd))?.compilerOptions.paths
 
-  if (
-    tsConfig?.resultType === "failed" ||
-    !Object.entries(tsConfig?.paths).length
-  ) {
+  if (!paths || !Object.entries(paths).length) {
     return null
   }
 
   // This assume that the first alias is the prefix.
-  for (const [alias, paths] of Object.entries(tsConfig.paths)) {
+  for (const [alias, targets] of Object.entries(paths)) {
+    const values = Array.isArray(targets) ? targets : [targets]
+
     if (
-      paths.includes("./*") ||
-      paths.includes("./src/*") ||
-      paths.includes("./app/*") ||
-      paths.includes("./resources/js/*") // Laravel.
+      values.includes("./*") ||
+      values.includes("./src/*") ||
+      values.includes("./app/*") ||
+      values.includes("./resources/js/*") // Laravel.
     ) {
       return alias.replace(/\/\*$/, "") ?? null
     }
   }
 
   // Use the first alias as the prefix.
-  return Object.keys(tsConfig?.paths)?.[0].replace(/\/\*$/, "") ?? null
+  return Object.keys(paths)?.[0].replace(/\/\*$/, "") ?? null
 }
 
 export async function getProjectAliasInfo(cwd: string) {
   const tsConfigAliasPrefix = await getTsConfigAliasPrefix(cwd)
+  const packageImportPrefix = getPackageImportPrefix(cwd)
+
+  if (packageImportPrefix && tsConfigAliasPrefix?.startsWith("#")) {
+    return {
+      prefix: packageImportPrefix,
+      source: "package_imports" as const,
+    }
+  }
 
   if (tsConfigAliasPrefix) {
     return {
@@ -337,8 +348,6 @@ export async function getProjectAliasInfo(cwd: string) {
       source: "tsconfig_paths" as const,
     }
   }
-
-  const packageImportPrefix = getPackageImportPrefix(cwd)
 
   if (packageImportPrefix) {
     return {
@@ -374,10 +383,16 @@ export async function getTsConfig(cwd: string) {
       continue
     }
 
-    // We can't use fs.readJSON because it doesn't support comments.
     const contents = await fs.readFile(filePath, "utf8")
-    const cleanedContents = contents.replace(/\/\*\s*\*\//g, "")
-    const result = TS_CONFIG_SCHEMA.safeParse(JSON.parse(cleanedContents))
+    let parsed
+
+    try {
+      parsed = JSON.parse(stripJsonComments(contents))
+    } catch {
+      continue
+    }
+
+    const result = TS_CONFIG_SCHEMA.safeParse(parsed)
 
     if (result.error) {
       continue
@@ -387,6 +402,78 @@ export async function getTsConfig(cwd: string) {
   }
 
   return null
+}
+
+function stripJsonComments(value: string) {
+  let result = ""
+  let inString = false
+  let escaped = false
+
+  for (let index = 0; index < value.length; index++) {
+    const current = value[index]
+    const next = value[index + 1]
+
+    if (inString) {
+      result += current
+
+      if (escaped) {
+        escaped = false
+        continue
+      }
+
+      if (current === "\\") {
+        escaped = true
+        continue
+      }
+
+      if (current === '"') {
+        inString = false
+      }
+
+      continue
+    }
+
+    if (current === '"') {
+      inString = true
+      result += current
+      continue
+    }
+
+    if (current === "/" && next === "/") {
+      while (index < value.length && value[index] !== "\n") {
+        index++
+      }
+
+      if (index < value.length) {
+        result += value[index]
+      }
+
+      continue
+    }
+
+    if (current === "/" && next === "*") {
+      index += 2
+
+      while (index < value.length) {
+        if (value[index] === "*" && value[index + 1] === "/") {
+          index++
+          break
+        }
+
+        if (value[index] === "\n") {
+          result += "\n"
+        }
+
+        index++
+      }
+
+      continue
+    }
+
+    result += current
+  }
+
+  return result
 }
 
 export async function getProjectConfig(

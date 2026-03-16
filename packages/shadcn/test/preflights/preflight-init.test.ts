@@ -1,15 +1,9 @@
 import { afterEach, describe, expect, test, vi } from "vitest"
 import { z } from "zod"
 
-const {
-  mockedGetProjectInfo,
-  mockedGetProjectConfig,
-  mockedExistsSync,
-  mockedLogger,
-} = vi.hoisted(
+const { mockedGetProjectInfo, mockedExistsSync, mockedLogger } = vi.hoisted(
   () => ({
     mockedGetProjectInfo: vi.fn(),
-    mockedGetProjectConfig: vi.fn(),
     mockedExistsSync: vi.fn(),
     mockedLogger: {
       break: vi.fn(),
@@ -30,7 +24,6 @@ vi.mock("../../src/commands/init", () => ({
 
 vi.mock("../../src/utils/get-project-info", () => ({
   getProjectInfo: mockedGetProjectInfo,
-  getProjectConfig: mockedGetProjectConfig,
 }))
 
 vi.mock("../../src/utils/get-monorepo-info", () => ({
@@ -93,16 +86,6 @@ const baseOptions = {
   silent: true,
 }
 
-const baseConfig = {
-  aliases: {
-    components: "#components",
-    ui: "#components/ui",
-    lib: "#lib",
-    hooks: "#hooks",
-    utils: "#utils",
-  },
-}
-
 afterEach(() => {
   vi.clearAllMocks()
 })
@@ -113,13 +96,11 @@ describe("preFlightInit", () => {
       return !filePath.endsWith("components.json")
     })
     mockedGetProjectInfo.mockResolvedValue(baseProjectInfo)
-    mockedGetProjectConfig.mockResolvedValue(baseConfig)
 
     const result = await preFlightInit(baseOptions)
 
     expect(result.errors).toEqual({})
     expect(result.projectInfo?.aliasPrefix).toBe("#")
-    expect(result.projectConfig).toEqual(baseConfig)
     expect(mockedLogger.error).not.toHaveBeenCalled()
   })
 
@@ -131,7 +112,6 @@ describe("preFlightInit", () => {
       ...baseProjectInfo,
       aliasPrefix: null,
     })
-    mockedGetProjectConfig.mockResolvedValue(null)
 
     const exitSpy = vi
       .spyOn(process, "exit")
@@ -142,35 +122,13 @@ describe("preFlightInit", () => {
     await expect(preFlightInit(baseOptions)).rejects.toThrow("process.exit:1")
 
     expect(mockedLogger.error).toHaveBeenCalledWith(
-      "No import alias found in your tsconfig.json or package.json#imports configuration."
+      "Could not find valid path aliases or package imports for init."
     )
     expect(mockedLogger.error).toHaveBeenCalledWith(
-      'Add an alias in compilerOptions.paths or "imports" and try again.'
-    )
-
-    exitSpy.mockRestore()
-  })
-
-  test("reports incomplete alias configuration when project config cannot be derived", async () => {
-    mockedExistsSync.mockImplementation((filePath: string) => {
-      return !filePath.endsWith("components.json")
-    })
-    mockedGetProjectInfo.mockResolvedValue(baseProjectInfo)
-    mockedGetProjectConfig.mockResolvedValue(null)
-
-    const exitSpy = vi
-      .spyOn(process, "exit")
-      .mockImplementation(((code?: string | number | null) => {
-        throw new Error(`process.exit:${code ?? ""}`)
-      }) as never)
-
-    await expect(preFlightInit(baseOptions)).rejects.toThrow("process.exit:1")
-
-    expect(mockedLogger.error).toHaveBeenCalledWith(
-      "Could not determine a complete configuration from your tsconfig.json or package.json#imports aliases."
+      "Configure path aliases in tsconfig.json or imports in package.json, then run init again."
     )
     expect(mockedLogger.error).toHaveBeenCalledWith(
-      "Configure the required components, ui, lib, hooks, and utils aliases, or create components.json manually and try again."
+      "Learn more at https://ui.shadcn.com/docs/installation/manual#configure-import-aliases."
     )
 
     exitSpy.mockRestore()

@@ -1,17 +1,20 @@
 import path from "path"
 import { initOptionsSchema } from "@/src/commands/init"
+import { SHADCN_URL } from "@/src/registry/constants"
 import * as ERRORS from "@/src/utils/errors"
 import {
   formatMonorepoMessage,
   getMonorepoTargets,
   isMonorepoRoot,
 } from "@/src/utils/get-monorepo-info"
-import { getProjectConfig, getProjectInfo } from "@/src/utils/get-project-info"
+import { getProjectInfo } from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import { spinner } from "@/src/utils/spinner"
 import fs from "fs-extra"
 import { z } from "zod"
+
+const IMPORT_ALIAS_DOCS_URL = `${SHADCN_URL}/docs/installation/manual#configure-import-aliases`
 
 export async function preFlightInit(
   options: z.infer<typeof initOptionsSchema>
@@ -28,7 +31,6 @@ export async function preFlightInit(
     return {
       errors,
       projectInfo: null,
-      projectConfig: null,
     }
   }
 
@@ -133,20 +135,12 @@ export async function preFlightInit(
   const aliasSpinner = spinner(`Validating import alias.`, {
     silent: options.silent,
   }).start()
-  let projectConfig = null
 
   if (!projectInfo?.aliasPrefix) {
     errors[ERRORS.IMPORT_ALIAS_MISSING] = true
     aliasSpinner?.fail()
   } else {
-    projectConfig = await getProjectConfig(options.cwd, projectInfo)
-
-    if (!projectConfig) {
-      errors[ERRORS.INCOMPLETE_CONFIG] = true
-      aliasSpinner?.fail()
-    } else {
-      aliasSpinner?.succeed()
-    }
+    aliasSpinner?.succeed()
   }
 
   if (Object.keys(errors).length > 0) {
@@ -173,42 +167,18 @@ export async function preFlightInit(
     if (errors[ERRORS.IMPORT_ALIAS_MISSING]) {
       logger.break()
       logger.error(
-        `No import alias found in your ${highlighter.info(
+        `Could not find valid path aliases or package imports for ${highlighter.info(
+          "init"
+        )}.`
+      )
+      logger.error(
+        `Configure path aliases in ${highlighter.info(
           "tsconfig.json"
-        )} or ${highlighter.info("package.json#imports")} configuration.`
+        )} or imports in ${highlighter.info("package.json")}, then run ${highlighter.info(
+          "init"
+        )} again.`
       )
-      logger.error(
-        `Add an alias in ${highlighter.info(
-          "compilerOptions.paths"
-        )} or ${highlighter.info('"imports"')} and try again.`
-      )
-      if (projectInfo?.framework.links.installation) {
-        logger.error(
-          `Visit ${highlighter.info(
-            projectInfo?.framework.links.installation
-          )} to learn how to set an import alias.`
-        )
-      }
-    }
-
-    if (errors[ERRORS.INCOMPLETE_CONFIG]) {
-      logger.break()
-      logger.error(
-        `Could not determine a complete configuration from your ${highlighter.info(
-          "tsconfig.json"
-        )} or ${highlighter.info("package.json#imports")} aliases.`
-      )
-      logger.error(
-        `Configure the required ${highlighter.info(
-          "components"
-        )}, ${highlighter.info("ui")}, ${highlighter.info(
-          "lib"
-        )}, ${highlighter.info("hooks")}, and ${highlighter.info(
-          "utils"
-        )} aliases, or create ${highlighter.info(
-          "components.json"
-        )} manually and try again.`
-      )
+      logger.error(`Learn more at ${highlighter.info(IMPORT_ALIAS_DOCS_URL)}.`)
     }
 
     logger.break()
@@ -218,6 +188,5 @@ export async function preFlightInit(
   return {
     errors,
     projectInfo,
-    projectConfig,
   }
 }

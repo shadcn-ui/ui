@@ -20,7 +20,7 @@ describe("getInitAliasDefaults", () => {
       ui: "#components/ui",
       lib: "#lib",
       hooks: "#hooks",
-      utils: "#utils",
+      utils: "#lib/utils",
     })
   })
 
@@ -40,13 +40,13 @@ describe("getInitAliasDefaults", () => {
         ui: "#components/ui",
         lib: "#lib",
         hooks: "#hooks",
-        utils: "#utils",
+        utils: "#lib/utils",
       })
     ).toEqual({
       ui: "#components/ui",
       lib: "#lib",
       hooks: "#hooks",
-      utils: "#utils",
+      utils: "#lib/utils",
     })
   })
 })

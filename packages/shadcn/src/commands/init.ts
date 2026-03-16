@@ -602,12 +602,12 @@ export async function runInit(
       projectInfo = await getProjectInfo(options.cwd)
     } else {
       projectInfo = preflight.projectInfo
-      projectConfig = preflight.projectConfig
     }
   } else {
     projectInfo = await getProjectInfo(options.cwd)
-    projectConfig = await getProjectConfig(options.cwd, projectInfo)
   }
+
+  projectConfig = await getProjectConfig(options.cwd, projectInfo)
 
   // Use the template from project creation if available,
   // or fall back to the explicit --template flag.
@@ -910,44 +910,53 @@ export function getInitAliasDefaults(
   existingAliases?: Config["aliases"]
 ) {
   const derivedLib =
-    existingAliases?.lib ?? deriveSiblingAlias(componentsAlias, "lib")
+    existingAliases?.lib ?? deriveAliasFromComponents(componentsAlias, "lib")
 
   return {
-    ui: existingAliases?.ui ?? deriveUiAlias(componentsAlias),
+    ui: existingAliases?.ui ?? deriveAliasFromComponents(componentsAlias, "ui"),
     lib: derivedLib,
     hooks:
-      existingAliases?.hooks ?? deriveSiblingAlias(componentsAlias, "hooks"),
+      existingAliases?.hooks ??
+      deriveAliasFromComponents(componentsAlias, "hooks"),
     utils:
-      existingAliases?.utils ?? deriveUtilsAlias(componentsAlias, derivedLib),
+      existingAliases?.utils ??
+      deriveAliasFromComponents(componentsAlias, "utils", derivedLib),
   }
 }
 
-function deriveUiAlias(componentsAlias: string) {
-  return componentsAlias ? `${componentsAlias}/ui` : `${DEFAULT_COMPONENTS}/ui`
+function deriveAliasFromComponents(
+  componentsAlias: string,
+  kind: "ui" | "lib" | "hooks" | "utils",
+  libAlias?: string
+) {
+  const alias = componentsAlias || DEFAULT_COMPONENTS
+
+  if (kind === "ui") {
+    return `${alias}/ui`
+  }
+
+  if (kind === "utils") {
+    const resolvedLib = libAlias || replaceComponentsAliasTail(alias, "lib")
+    return resolvedLib ? `${resolvedLib}/utils` : DEFAULT_UTILS
+  }
+
+  return replaceComponentsAliasTail(alias, kind)
 }
 
-function deriveUtilsAlias(componentsAlias: string, libAlias: string) {
-  if (componentsAlias === "#components") {
-    return "#utils"
+function replaceComponentsAliasTail(
+  alias: string,
+  kind: "lib" | "hooks"
+) {
+  if (alias === "components") {
+    return kind
   }
 
-  return libAlias ? `${libAlias}/utils` : DEFAULT_UTILS
-}
-
-function deriveSiblingAlias(componentsAlias: string, segment: "lib" | "hooks") {
-  if (componentsAlias === "components") {
-    return segment
+  if (alias.endsWith("/components")) {
+    return `${alias.slice(0, -"/components".length)}/${kind}`
   }
 
-  if (componentsAlias.endsWith("/components")) {
-    return `${componentsAlias.slice(0, -"/components".length)}/${segment}`
-  }
-
-  if (
-    componentsAlias.endsWith("components") &&
-    !componentsAlias.includes("/")
-  ) {
-    return `${componentsAlias.slice(0, -"components".length)}${segment}`
+  if (alias.endsWith("components") && !alias.includes("/")) {
+    return `${alias.slice(0, -"components".length)}${kind}`
   }
 
   return ""

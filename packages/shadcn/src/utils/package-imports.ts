@@ -45,7 +45,8 @@ export function getPackageImportEntries(cwd: string) {
 
     entries.push({
       key,
-      aliasBase: key.endsWith("/*") ? key.slice(0, -2) : key,
+      aliasBase:
+        key === "#*" ? "#" : key.endsWith("/*") ? key.slice(0, -2) : key,
       target,
       emitMode: getImportTargetEmitMode(target),
       hasWildcard: key.includes("*"),
@@ -76,13 +77,23 @@ export function resolvePackageImport(
 
 export function getPackageImportAliases(cwd: string) {
   const entries = getPackageImportEntries(cwd)
+  const rootWildcardDefaults = entries.some((entry) => entry.key === "#*")
+    ? {
+        components: "#components",
+        ui: "#components/ui",
+        lib: "#lib",
+        hooks: "#hooks",
+        utils: "#lib/utils",
+      }
+    : null
 
   return {
-    components: findBestAlias(entries, "components"),
-    ui: findBestAlias(entries, "ui"),
-    lib: findBestAlias(entries, "lib"),
-    hooks: findBestAlias(entries, "hooks"),
-    utils: findBestAlias(entries, "utils"),
+    components:
+      findBestAlias(entries, "components") ?? rootWildcardDefaults?.components,
+    ui: findBestAlias(entries, "ui") ?? rootWildcardDefaults?.ui,
+    lib: findBestAlias(entries, "lib") ?? rootWildcardDefaults?.lib,
+    hooks: findBestAlias(entries, "hooks") ?? rootWildcardDefaults?.hooks,
+    utils: findBestAlias(entries, "utils") ?? rootWildcardDefaults?.utils,
   }
 }
 

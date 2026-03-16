@@ -77,6 +77,20 @@ describe("get project info", async () => {
       },
     },
     {
+      name: "vite-root-imports",
+      type: {
+        framework: FRAMEWORKS["vite"],
+        isSrcDir: true,
+        isRSC: false,
+        isTsx: true,
+        tailwindConfigFile: null,
+        tailwindCssFile: "src/index.css",
+        tailwindVersion: "v4",
+        frameworkVersion: null,
+        aliasPrefix: "#",
+      },
+    },
+    {
       name: "vite-partial-imports",
       type: {
         framework: FRAMEWORKS["vite"],
