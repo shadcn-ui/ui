@@ -570,7 +570,7 @@
   {
     "name": "@react-easy-modals",
     "homepage": "https://react-easy-modals-docs.vercel.app",
-    "url": "https://react-easy-modals-docs.vercel.app/r/{name}.json",
+    "url": "https://react-easy-modals-docs.vercel.app/r/styles/{style}/{name}.json",
     "description": "Modal component for react-easy-modals. Integrates with shadcn Dialog for a simple, powerful modal system with TypeScript support and promise-based API.",
     "logo": "<svg width='500' height='500' viewBox='0 0 500 500' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M442.515 470.873C441.34 486.958 427.92 499.643 411.536 499.643H88.4652C72.0806 499.643 58.6595 486.958 57.4849 470.873C63.1615 473.568 69.5098 475.079 76.2115 475.079H423.788C430.49 475.079 436.838 473.568 442.515 470.873Z' fill='var(--foreground)'/><path d='M43.4246 431.686C51.0253 437.231 60.3877 440.505 70.5161 440.505H429.484C439.611 440.505 448.974 437.233 456.574 431.69C456.396 449.647 441.787 464.149 423.788 464.149H76.2115C58.2115 464.149 43.6008 449.645 43.4246 431.686Z' fill='var(--foreground)'/><path fill-rule='evenodd' clip-rule='evenodd' d='M429.484 1C448.547 1 464 16.4534 464 35.5161V394.484C464 413.547 448.547 429 429.484 429H70.5161C51.4534 429 36 413.547 36 394.484V35.5161C36 16.4534 51.4534 1 70.5161 1H429.484ZM403.315 53.5202L383.383 33.5881L371.179 45.7912L391.112 65.7234L371.179 85.6555L383.383 97.8586L403.315 77.9265L423.247 97.8586L435.45 85.6555L415.518 65.7234L435.45 45.7912L423.247 33.5881L403.315 53.5202Z' fill='var(--foreground)'/></svg>"
   },
