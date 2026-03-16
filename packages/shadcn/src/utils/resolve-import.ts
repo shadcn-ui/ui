@@ -130,7 +130,7 @@ function findMatchingTsPathPattern(
       key,
       target:
         targetList[0]?.includes("*") && wildcardValue !== null
-          ? targetList[0].replace("*", wildcardValue)
+          ? targetList[0].replace(/\*/g, wildcardValue)
           : targetList[0],
     }
   }
