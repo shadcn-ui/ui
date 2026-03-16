@@ -3,6 +3,7 @@ import { loadConfig, type ConfigLoaderSuccessResult } from "tsconfig-paths"
 import { describe, expect, test } from "vitest"
 
 import {
+  isLocalAliasImport,
   resolveImport,
   resolveImportWithMetadata,
 } from "../../src/utils/resolve-import"
@@ -184,6 +185,12 @@ describe("resolve workspace package exports", () => {
 
     expect(await resolveImport("@workspace/ui/lib/utils", config)).toEqual(
       path.resolve(root, "packages/ui/src/lib/utils.ts")
+    )
+  })
+
+  test("does not treat workspace package exports as local alias imports", () => {
+    expect(isLocalAliasImport("@workspace/ui/components/button", "#")).toBe(
+      false
     )
   })
 })

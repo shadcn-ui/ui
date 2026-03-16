@@ -3,6 +3,7 @@ import { getWorkspacePatterns } from "@/src/utils/get-monorepo-info"
 import { getPackageInfo } from "@/src/utils/get-package-info"
 import { type ImportEmitMode } from "@/src/utils/package-imports"
 import fg from "fast-glob"
+import fs from "fs-extra"
 
 type WorkspacePackageInfo = {
   packageName: string
@@ -33,6 +34,7 @@ const workspaceExportEntriesCache = new Map<
   string,
   WorkspacePackageExportEntry[]
 >()
+const workspaceRootCache = new Map<string, string | null>()
 
 export async function resolveWorkspacePackageExport(
   importPath: string,
@@ -203,12 +205,45 @@ async function loadWorkspacePackages(root: string) {
 }
 
 async function findWorkspaceRoot(cwd: string) {
-  let current = path.resolve(cwd)
+  const start = path.resolve(cwd)
+  const cachedRoot = workspaceRootCache.get(start)
+
+  if (cachedRoot !== undefined) {
+    return cachedRoot
+  }
+
+  let current = start
+  const gitRoot = await findGitRoot(start)
 
   while (true) {
     const patterns = await getWorkspacePatterns(current)
 
     if (patterns.length) {
+      workspaceRootCache.set(start, current)
+      return current
+    }
+
+    if (gitRoot && current === gitRoot) {
+      workspaceRootCache.set(start, null)
+      return null
+    }
+
+    const parent = path.dirname(current)
+
+    if (parent === current) {
+      workspaceRootCache.set(start, null)
+      return null
+    }
+
+    current = parent
+  }
+}
+
+async function findGitRoot(cwd: string) {
+  let current = path.resolve(cwd)
+
+  while (true) {
+    if (fs.existsSync(path.resolve(current, ".git"))) {
       return current
     }
 

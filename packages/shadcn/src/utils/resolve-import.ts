@@ -92,6 +92,8 @@ export function isLocalAliasImport(
   moduleSpecifier: string,
   aliasPrefix: string | null
 ) {
+  // Workspace package exports such as `@workspace/ui/...` are already the final
+  // import specifiers we want to keep, so they are intentionally excluded here.
   if (moduleSpecifier.startsWith("#")) {
     return true
   }

@@ -156,6 +156,12 @@ function updateImportAliases(
 }
 
 function getWorkspaceAliasFromUtilsAlias(utilsAlias: string) {
+  // `#...` utils aliases are handled by package-import normalization and should
+  // not be treated as workspace package roots.
+  if (utilsAlias.startsWith("#")) {
+    return ""
+  }
+
   if (utilsAlias.endsWith("/lib/utils")) {
     return utilsAlias.slice(0, -"/lib/utils".length)
   }
