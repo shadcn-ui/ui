@@ -7,9 +7,8 @@ import {
   type ImportEmitMode,
   type ImportResolutionEntry,
   type ImportResolutionMatch,
-} from "@/src/utils/import-entries"
-
-export type { ImportEmitMode } from "@/src/utils/import-entries"
+} from "@/src/utils/import-matcher"
+export type { ImportEmitMode } from "@/src/utils/import-matcher"
 export type PackageImportEntry = ImportResolutionEntry
 export type PackageImportMatch = ImportResolutionMatch
 

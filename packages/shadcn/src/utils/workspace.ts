@@ -10,7 +10,7 @@ import {
   type ImportEmitMode,
   type ImportResolutionEntry,
   type ImportResolutionMatch,
-} from "@/src/utils/import-entries"
+} from "@/src/utils/import-matcher"
 
 type WorkspacePackageInfo = {
   packageName: string

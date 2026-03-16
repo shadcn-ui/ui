@@ -2,7 +2,7 @@ import {
   resolvePackageImport,
   type ImportEmitMode,
 } from "@/src/utils/package-imports"
-import { resolveWorkspacePackageExport } from "@/src/utils/workspace-package-exports"
+import { resolveWorkspacePackageExport } from "@/src/utils/workspace"
 import { createMatchPath, type ConfigLoaderSuccessResult } from "tsconfig-paths"
 
 export type ResolvedImport = {

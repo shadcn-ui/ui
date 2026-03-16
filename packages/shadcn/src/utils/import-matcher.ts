@@ -1,5 +1,10 @@
 import path from "path"
 
+// Node can resolve `package.json#imports` and `package.json#exports` at
+// runtime, but the CLI needs the matched pattern, local filesystem target, and
+// emit behavior as data so it can place files and rewrite imports consistently.
+// This module is the shared matcher for those normalized entry shapes.
+
 export type ImportEmitMode = "strip_extension" | "preserve_extension"
 
 export type ImportResolutionEntry = {
