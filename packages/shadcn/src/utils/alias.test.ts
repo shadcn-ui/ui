@@ -1,9 +1,8 @@
-import { describe, expect, test } from "vitest"
-
 import {
   deriveAliasFromComponents,
   getInitAliasDefaults,
 } from "@/src/utils/alias"
+import { describe, expect, test } from "vitest"
 
 describe("deriveAliasFromComponents", () => {
   test("derives ui aliases from components", () => {

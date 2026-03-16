@@ -43,10 +43,7 @@ export function deriveAliasFromComponents(
   return replaceComponentsAliasTail(alias, kind)
 }
 
-function replaceComponentsAliasTail(
-  alias: string,
-  kind: "lib" | "hooks"
-) {
+function replaceComponentsAliasTail(alias: string, kind: "lib" | "hooks") {
   // Handles the common `@/components` and `#custom/components` forms by
   // swapping the trailing `components` segment for a sibling alias root.
   if (alias === "components") {

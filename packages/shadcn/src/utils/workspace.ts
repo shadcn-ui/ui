@@ -1,8 +1,6 @@
 import path from "path"
 import { getWorkspacePatterns } from "@/src/utils/get-monorepo-info"
 import { getPackageInfo } from "@/src/utils/get-package-info"
-import fg from "fast-glob"
-import fs from "fs-extra"
 import {
   getImportTargetEmitMode,
   resolveImportEntryMatch,
@@ -11,6 +9,8 @@ import {
   type ImportResolutionEntry,
   type ImportResolutionMatch,
 } from "@/src/utils/import-matcher"
+import fg from "fast-glob"
+import fs from "fs-extra"
 
 type WorkspacePackageInfo = {
   packageName: string
@@ -106,10 +106,7 @@ function getWorkspacePackageExportEntries(
   return entries
 }
 
-async function findWorkspacePackage(
-  cwd: string,
-  packageName: string
-) {
+async function findWorkspacePackage(cwd: string, packageName: string) {
   const workspaceRoot = await findWorkspaceRoot(cwd)
 
   if (!workspaceRoot) {

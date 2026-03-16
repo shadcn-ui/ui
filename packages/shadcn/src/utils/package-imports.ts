@@ -8,6 +8,7 @@ import {
   type ImportResolutionEntry,
   type ImportResolutionMatch,
 } from "@/src/utils/import-matcher"
+
 export type { ImportEmitMode } from "@/src/utils/import-matcher"
 export type PackageImportEntry = ImportResolutionEntry
 export type PackageImportMatch = ImportResolutionMatch
@@ -67,10 +68,7 @@ export function getPackageImportPrefix(cwd: string) {
   return getSharedPackageImportPrefix(aliases)
 }
 
-export function resolvePackageImport(
-  importPath: string,
-  cwd: string
-) {
+export function resolvePackageImport(importPath: string, cwd: string) {
   return resolveImportEntryMatch(importPath, getPackageImportEntries(cwd))
 }
 

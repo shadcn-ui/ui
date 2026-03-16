@@ -1,3 +1,4 @@
+import { preFlightInit } from "@/src/preflights/preflight-init"
 import { afterEach, describe, expect, test, vi } from "vitest"
 import { z } from "zod"
 
@@ -58,8 +59,6 @@ vi.mock("fs-extra", () => ({
   },
 }))
 
-import { preFlightInit } from "@/src/preflights/preflight-init"
-
 const baseProjectInfo = {
   framework: {
     name: "next-app",
@@ -118,11 +117,11 @@ describe("preFlightInit", () => {
       aliasPrefix: null,
     })
 
-    const exitSpy = vi
-      .spyOn(process, "exit")
-      .mockImplementation(((code?: string | number | null) => {
-        throw new Error(`process.exit:${code ?? ""}`)
-      }) as never)
+    const exitSpy = vi.spyOn(process, "exit").mockImplementation(((
+      code?: string | number | null
+    ) => {
+      throw new Error(`process.exit:${code ?? ""}`)
+    }) as never)
 
     await expect(preFlightInit(baseOptions)).rejects.toThrow("process.exit:1")
 
