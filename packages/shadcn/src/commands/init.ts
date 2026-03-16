@@ -906,7 +906,7 @@ async function promptForConfig(defaultConfig: Config | null = null) {
   })
 }
 
-export function shouldRunTemplatePostInit(
+function shouldRunTemplatePostInit(
   template:
     | { postInit?: (options: { projectPath: string }) => Promise<void> }
     | undefined,
