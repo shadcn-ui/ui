@@ -14,8 +14,6 @@ import { spinner } from "@/src/utils/spinner"
 import fs from "fs-extra"
 import { z } from "zod"
 
-const IMPORT_ALIAS_DOCS_URL = `${SHADCN_URL}/docs/installation/manual#configure-import-aliases`
-
 export async function preFlightInit(
   options: z.infer<typeof initOptionsSchema>
 ) {
@@ -178,7 +176,11 @@ export async function preFlightInit(
           "init"
         )} again.`
       )
-      logger.error(`Learn more at ${highlighter.info(IMPORT_ALIAS_DOCS_URL)}.`)
+      logger.error(
+        `Learn more at ${highlighter.info(
+          `${SHADCN_URL}/docs/installation/manual#configure-import-aliases`
+        )}.`
+      )
     }
 
     logger.break()
