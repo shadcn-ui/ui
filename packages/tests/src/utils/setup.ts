@@ -47,6 +47,16 @@ export default async function setup() {
     }
   })
 
+  // The CLI fetches registry paths that may not exist (e.g. font files),
+  // causing Next.js to compile the /_not-found/page route on first 404.
+  // That compilation takes ~4-5s and contributes to the first test timing
+  // out. Trigger one 404 here so the not-found page is pre-compiled.
+  try {
+    await fetch(`${shadcnUrl}/r/styles/new-york-v4/font-geist.json`)
+  } catch {
+    // Best effort — don't block setup if this fails.
+  }
+
   return async () => {
     try {
       await rimraf(TEMP_DIR)
