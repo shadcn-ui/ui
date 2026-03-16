@@ -22,6 +22,7 @@ import { transformCss } from "@/src/utils/updaters/update-css"
 import { transformCssVars } from "@/src/utils/updaters/update-css-vars"
 import {
   findCommonRoot,
+  getPlannedFilePaths,
   resolveFilePath,
   rewriteResolvedImportsInContent,
 } from "@/src/utils/updaters/update-files"
@@ -152,32 +153,10 @@ async function processFiles(
   const project = new Project({
     compilerOptions: {},
   })
-  const plannedFilePaths = files
-    .filter((file): file is NonNullable<typeof file> => !!file?.content)
-    .map((file, index) => {
-      let plannedFilePath = resolveFilePath(file, config, {
-        isSrcDir: projectInfo?.isSrcDir,
-        framework: projectInfo?.framework.name,
-        commonRoot: findCommonRoot(
-          files.map((entry) => entry.path),
-          file.path
-        ),
-        fileIndex: index,
-      })
-
-      if (!plannedFilePath) {
-        return null
-      }
-
-      if (!config.tsx) {
-        plannedFilePath = plannedFilePath.replace(/\.tsx?$/, (match) =>
-          match === ".tsx" ? ".jsx" : ".js"
-        )
-      }
-
-      return path.relative(config.resolvedPaths.cwd, plannedFilePath)
-    })
-    .filter((filePath): filePath is string => !!filePath)
+  const plannedFilePaths = getPlannedFilePaths(files, config, {
+    isSrcDir: projectInfo?.isSrcDir,
+    framework: projectInfo?.framework.name,
+  })
 
   for (let index = 0; index < files.length; index++) {
     const file = files[index]

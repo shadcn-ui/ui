@@ -34,7 +34,7 @@ import { transformRtl } from "@/src/utils/transformers/transform-rtl"
 import { transformTwPrefixes } from "@/src/utils/transformers/transform-tw-prefix"
 import prompts from "prompts"
 import { Project, ScriptKind } from "ts-morph"
-import { loadConfig } from "tsconfig-paths"
+import { loadConfig, type ConfigLoaderSuccessResult } from "tsconfig-paths"
 import { z } from "zod"
 
 export async function updateFiles(
@@ -594,7 +594,7 @@ async function resolveImports(filePaths: string[], config: Config) {
   return updatedFiles
 }
 
-function getPlannedFilePaths(
+export function getPlannedFilePaths(
   files: RegistryItem["files"],
   config: Config,
   options: {
@@ -683,26 +683,11 @@ export async function rewriteResolvedImportsInContent({
       continue
     }
 
-    const probableImportFilePath = (
-      await resolveImportWithMetadata(moduleSpecifier, {
-        ...tsConfig,
-        cwd: config.resolvedPaths.cwd,
-      })
-    )?.path
-
-    const fallbackImportFilePath =
-      !probableImportFilePath && !moduleSpecifier.startsWith(".")
-        ? resolveImportFromConfiguredAliases(moduleSpecifier, config)
-        : null
-
-    if (!probableImportFilePath && !fallbackImportFilePath) {
-      continue
-    }
-
-    const resolvedImportFilePath = resolveModuleByProbablePath(
-      probableImportFilePath ?? fallbackImportFilePath!,
+    const resolvedImportFilePath = await resolveImportFilePathForRewrite(
+      moduleSpecifier,
       filePaths,
-      config
+      config,
+      tsConfig
     )
 
     if (!resolvedImportFilePath) {
@@ -725,6 +710,35 @@ export async function rewriteResolvedImportsInContent({
   }
 
   return hasChanges ? workingSourceFile.getFullText() : content
+}
+
+async function resolveImportFilePathForRewrite(
+  moduleSpecifier: string,
+  filePaths: string[],
+  config: Config,
+  tsConfig: Pick<ConfigLoaderSuccessResult, "absoluteBaseUrl" | "paths">
+) {
+  const probableImportFilePath = (
+    await resolveImportWithMetadata(moduleSpecifier, {
+      ...tsConfig,
+      cwd: config.resolvedPaths.cwd,
+    })
+  )?.path
+
+  const fallbackImportFilePath =
+    !probableImportFilePath && !moduleSpecifier.startsWith(".")
+      ? resolveImportFromConfiguredAliases(moduleSpecifier, config)
+      : null
+
+  if (!probableImportFilePath && !fallbackImportFilePath) {
+    return null
+  }
+
+  return resolveModuleByProbablePath(
+    probableImportFilePath ?? fallbackImportFilePath!,
+    filePaths,
+    config
+  )
 }
 
 /**

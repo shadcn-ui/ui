@@ -1,22 +1,17 @@
 import path from "path"
 import { getPackageInfo } from "@/src/utils/get-package-info"
+import {
+  getImportTargetEmitMode,
+  resolveImportEntryMatch,
+  resolveLocalPathTarget,
+  type ImportEmitMode,
+  type ImportResolutionEntry,
+  type ImportResolutionMatch,
+} from "@/src/utils/import-entries"
 
-export type ImportEmitMode = "strip_extension" | "preserve_extension"
-
-export type PackageImportEntry = {
-  key: string
-  aliasBase: string
-  target: string
-  emitMode: ImportEmitMode
-  hasWildcard: boolean
-}
-
-export type PackageImportMatch = {
-  path: string
-  matchedAlias: string
-  matchedTarget: string
-  emitMode: ImportEmitMode
-}
+export type { ImportEmitMode } from "@/src/utils/import-entries"
+export type PackageImportEntry = ImportResolutionEntry
+export type PackageImportMatch = ImportResolutionMatch
 
 const packageImportEntriesCache = new Map<string, PackageImportEntry[]>()
 
@@ -43,7 +38,7 @@ export function getPackageImportEntries(cwd: string): PackageImportEntry[] {
       continue
     }
 
-    const target = resolveLocalImportTarget(value)
+    const target = resolveLocalPathTarget(value)
     if (!target) {
       continue
     }
@@ -52,8 +47,9 @@ export function getPackageImportEntries(cwd: string): PackageImportEntry[] {
       key,
       aliasBase: key.endsWith("/*") ? key.slice(0, -2) : key,
       target,
-      emitMode: getImportEmitMode(target),
+      emitMode: getImportTargetEmitMode(target),
       hasWildcard: key.includes("*"),
+      rootDir: cacheKey,
     })
   }
 
@@ -75,41 +71,7 @@ export function resolvePackageImport(
   importPath: string,
   cwd: string
 ): PackageImportMatch | null {
-  const entries = getPackageImportEntries(cwd)
-
-  const exactMatch = entries.find(
-    (entry) => !entry.hasWildcard && entry.key === importPath
-  )
-  if (exactMatch) {
-    return {
-      path: path.resolve(cwd, exactMatch.target),
-      matchedAlias: exactMatch.key,
-      matchedTarget: exactMatch.target,
-      emitMode: exactMatch.emitMode,
-    }
-  }
-
-  const wildcardMatches = entries
-    .filter((entry) => entry.hasWildcard)
-    .sort((a, b) => b.key.length - a.key.length)
-
-  for (const entry of wildcardMatches) {
-    const [keyPrefix, keySuffix] = entry.key.split("*")
-    const wildcardValue = getWildcardValue(importPath, keyPrefix, keySuffix)
-
-    if (wildcardValue === null) {
-      continue
-    }
-
-    return {
-      path: path.resolve(cwd, applyWildcardTarget(entry.target, wildcardValue)),
-      matchedAlias: entry.key,
-      matchedTarget: entry.target,
-      emitMode: entry.emitMode,
-    }
-  }
-
-  return null
+  return resolveImportEntryMatch(importPath, getPackageImportEntries(cwd))
 }
 
 export function getPackageImportAliases(cwd: string) {
@@ -122,89 +84,6 @@ export function getPackageImportAliases(cwd: string) {
     hooks: findBestAlias(entries, "hooks"),
     utils: findBestAlias(entries, "utils"),
   }
-}
-
-function resolveLocalImportTarget(target: unknown): string | null {
-  if (typeof target === "string") {
-    return target.startsWith(".") ? target : null
-  }
-
-  if (Array.isArray(target)) {
-    for (const value of target) {
-      const resolved = resolveLocalImportTarget(value)
-      if (resolved) {
-        return resolved
-      }
-    }
-
-    return null
-  }
-
-  if (target && typeof target === "object") {
-    for (const value of Object.values(target as Record<string, unknown>)) {
-      const resolved = resolveLocalImportTarget(value)
-      if (resolved) {
-        return resolved
-      }
-    }
-  }
-
-  return null
-}
-
-function getImportEmitMode(target: string): ImportEmitMode {
-  if (!target.includes("*")) {
-    return "strip_extension"
-  }
-
-  const suffix = target.slice(target.indexOf("*") + 1)
-
-  // A bare `*` target like `./src/components/*` expects the emitted specifier
-  // to include the source extension (`#components/button.tsx`).
-  if (!suffix) {
-    return "preserve_extension"
-  }
-
-  return /^\.[^/]+$/.test(suffix) ? "strip_extension" : "preserve_extension"
-}
-
-function getWildcardValue(
-  importPath: string,
-  prefix: string,
-  suffix: string
-): string | null {
-  if (importPath.startsWith(prefix) && importPath.endsWith(suffix)) {
-    return suffix
-      ? importPath.slice(prefix.length, -suffix.length)
-      : importPath.slice(prefix.length)
-  }
-
-  // `components.json` stores alias roots like `#components`, not raw
-  // `package.json#imports` patterns like `#components/*`, so we accept the
-  // bare alias base here to keep package-import support schema-compatible.
-  if (
-    suffix === "" &&
-    prefix.endsWith("/") &&
-    importPath === prefix.slice(0, -1)
-  ) {
-    return ""
-  }
-
-  return null
-}
-
-function applyWildcardTarget(target: string, wildcardValue: string) {
-  if (!target.includes("*")) {
-    return target
-  }
-
-  const [prefix, suffix = ""] = target.split("*")
-
-  if (!wildcardValue) {
-    return prefix.replace(/\/$/, "")
-  }
-
-  return `${prefix}${wildcardValue}${suffix}`
 }
 
 function findBestAlias(
