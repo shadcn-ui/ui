@@ -33,7 +33,7 @@ const workspaceRootCache = new Map<string, string | null>()
 export async function resolveWorkspacePackageExport(
   importPath: string,
   cwd: string
-): Promise<WorkspacePackageExportMatch | null> {
+) {
   const specifier = parsePackageSpecifier(importPath)
 
   if (!specifier) {
@@ -57,7 +57,7 @@ export async function resolveWorkspacePackageExport(
 
 function getWorkspacePackageExportEntries(
   workspacePackage: WorkspacePackageInfo
-): WorkspacePackageExportEntry[] {
+) {
   const cacheKey = `${workspacePackage.packageRoot}:${workspacePackage.packageName}`
   const cachedEntries = workspaceExportEntriesCache.get(cacheKey)
 
@@ -109,7 +109,7 @@ function getWorkspacePackageExportEntries(
 async function findWorkspacePackage(
   cwd: string,
   packageName: string
-): Promise<WorkspacePackageInfo | null> {
+) {
   const workspaceRoot = await findWorkspaceRoot(cwd)
 
   if (!workspaceRoot) {

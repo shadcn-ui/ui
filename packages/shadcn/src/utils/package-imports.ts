@@ -15,7 +15,7 @@ export type PackageImportMatch = ImportResolutionMatch
 
 const packageImportEntriesCache = new Map<string, PackageImportEntry[]>()
 
-export function getPackageImportEntries(cwd: string): PackageImportEntry[] {
+export function getPackageImportEntries(cwd: string) {
   const cacheKey = path.resolve(cwd)
   const cachedEntries = packageImportEntriesCache.get(cacheKey)
 
@@ -70,7 +70,7 @@ export function getPackageImportPrefix(cwd: string) {
 export function resolvePackageImport(
   importPath: string,
   cwd: string
-): PackageImportMatch | null {
+) {
   return resolveImportEntryMatch(importPath, getPackageImportEntries(cwd))
 }
 

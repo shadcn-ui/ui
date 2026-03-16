@@ -6,7 +6,7 @@ import {
   getMonorepoTargets,
   isMonorepoRoot,
 } from "@/src/utils/get-monorepo-info"
-import { getProjectInfo } from "@/src/utils/get-project-info"
+import { getProjectConfig, getProjectInfo } from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import { spinner } from "@/src/utils/spinner"
@@ -28,6 +28,7 @@ export async function preFlightInit(
     return {
       errors,
       projectInfo: null,
+      projectConfig: null,
     }
   }
 
@@ -132,11 +133,20 @@ export async function preFlightInit(
   const aliasSpinner = spinner(`Validating import alias.`, {
     silent: options.silent,
   }).start()
+  let projectConfig = null
+
   if (!projectInfo?.aliasPrefix) {
     errors[ERRORS.IMPORT_ALIAS_MISSING] = true
     aliasSpinner?.fail()
   } else {
-    aliasSpinner?.succeed()
+    projectConfig = await getProjectConfig(options.cwd, projectInfo)
+
+    if (!projectConfig) {
+      errors[ERRORS.INCOMPLETE_CONFIG] = true
+      aliasSpinner?.fail()
+    } else {
+      aliasSpinner?.succeed()
+    }
   }
 
   if (Object.keys(errors).length > 0) {
@@ -181,6 +191,26 @@ export async function preFlightInit(
       }
     }
 
+    if (errors[ERRORS.INCOMPLETE_CONFIG]) {
+      logger.break()
+      logger.error(
+        `Could not determine a complete configuration from your ${highlighter.info(
+          "tsconfig.json"
+        )} or ${highlighter.info("package.json#imports")} aliases.`
+      )
+      logger.error(
+        `Configure the required ${highlighter.info(
+          "components"
+        )}, ${highlighter.info("ui")}, ${highlighter.info(
+          "lib"
+        )}, ${highlighter.info("hooks")}, and ${highlighter.info(
+          "utils"
+        )} aliases, or create ${highlighter.info(
+          "components.json"
+        )} manually and try again.`
+      )
+    }
+
     logger.break()
     process.exit(1)
   }
@@ -188,5 +218,6 @@ export async function preFlightInit(
   return {
     errors,
     projectInfo,
+    projectConfig,
   }
 }

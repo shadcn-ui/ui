@@ -18,35 +18,34 @@ export type ImportResolutionMatch = {
   emitMode: ImportEmitMode
 }
 
-export function resolveLocalPathTarget(target: unknown): string | null {
-  if (typeof target === "string") {
-    return target.startsWith(".") ? target : null
-  }
+export function resolveLocalPathTarget(target: unknown) {
+  const queue = [target]
 
-  if (Array.isArray(target)) {
-    for (const value of target) {
-      const resolved = resolveLocalPathTarget(value)
-      if (resolved) {
-        return resolved
+  while (queue.length) {
+    const value = queue.shift()
+
+    if (typeof value === "string") {
+      if (value.startsWith(".")) {
+        return value
       }
+
+      continue
     }
 
-    return null
-  }
+    if (Array.isArray(value)) {
+      queue.unshift(...value)
+      continue
+    }
 
-  if (target && typeof target === "object") {
-    for (const value of Object.values(target as Record<string, unknown>)) {
-      const resolved = resolveLocalPathTarget(value)
-      if (resolved) {
-        return resolved
-      }
+    if (value && typeof value === "object") {
+      queue.unshift(...Object.values(value as Record<string, unknown>))
     }
   }
 
   return null
 }
 
-export function getImportTargetEmitMode(target: string): ImportEmitMode {
+export function getImportTargetEmitMode(target: string) {
   if (!target.includes("*")) {
     return "strip_extension"
   }
@@ -65,7 +64,7 @@ export function getImportTargetEmitMode(target: string): ImportEmitMode {
 export function resolveImportEntryMatch(
   importPath: string,
   entries: ImportResolutionEntry[]
-): ImportResolutionMatch | null {
+) {
   const exactMatch = entries.find(
     (entry) => !entry.hasWildcard && entry.key === importPath
   )
@@ -112,7 +111,7 @@ export function getPatternWildcardValue(
   options: {
     allowBareAliasBase?: boolean
   } = {}
-): string | null {
+) {
   if (!pattern.includes("*")) {
     return importPath === pattern ? "" : null
   }

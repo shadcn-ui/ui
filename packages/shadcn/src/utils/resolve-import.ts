@@ -23,22 +23,36 @@ type ResolveImportConfig = Pick<
 export async function resolveImportWithMetadata(
   importPath: string,
   config: ResolveImportConfig
-): Promise<ResolvedImport | null> {
+) {
   const cwd = config.cwd ?? config.absoluteBaseUrl
 
-  for (const resolver of [
-    () => resolveFromPackageImports(importPath, cwd),
-    () => resolveFromWorkspacePackageExports(importPath, cwd),
-    () => resolveFromTsconfigPaths(importPath, config),
-  ]) {
-    const resolved = await resolver()
+  if (importPath.startsWith("#")) {
+    const resolved = resolvePackageImport(importPath, cwd)
 
     if (resolved) {
-      return resolved
+      return {
+        path: resolved.path,
+        source: "package_imports",
+        matchedAlias: resolved.matchedAlias,
+        matchedTarget: resolved.matchedTarget,
+        emitMode: resolved.emitMode,
+      } satisfies ResolvedImport
     }
   }
 
-  return null
+  const workspaceResolved = await resolveWorkspacePackageExport(importPath, cwd)
+
+  if (workspaceResolved) {
+    return {
+      path: workspaceResolved.path,
+      source: "workspace_package_exports",
+      matchedAlias: workspaceResolved.matchedAlias,
+      matchedTarget: workspaceResolved.matchedTarget,
+      emitMode: workspaceResolved.emitMode,
+    } satisfies ResolvedImport
+  }
+
+  return resolveFromTsconfigPaths(importPath, config)
 }
 
 export async function resolveImport(
@@ -69,53 +83,10 @@ function isScopedPackageSpecifier(importPath: string) {
   return /^@[^/]+\/[^/]+(?:\/.*)?$/.test(importPath)
 }
 
-function toResolvedImport(
-  source: ResolvedImport["source"],
-  resolved: {
-    path: string
-    matchedAlias: string
-    matchedTarget: string
-    emitMode: ImportEmitMode
-  } | null
-) {
-  if (!resolved) {
-    return null
-  }
-
-  return {
-    path: resolved.path,
-    source,
-    matchedAlias: resolved.matchedAlias,
-    matchedTarget: resolved.matchedTarget,
-    emitMode: resolved.emitMode,
-  } satisfies ResolvedImport
-}
-
-function resolveFromPackageImports(importPath: string, cwd: string) {
-  if (!importPath.startsWith("#")) {
-    return null
-  }
-
-  return toResolvedImport(
-    "package_imports",
-    resolvePackageImport(importPath, cwd)
-  )
-}
-
-async function resolveFromWorkspacePackageExports(
-  importPath: string,
-  cwd: string
-) {
-  return toResolvedImport(
-    "workspace_package_exports",
-    await resolveWorkspacePackageExport(importPath, cwd)
-  )
-}
-
 function resolveFromTsconfigPaths(
   importPath: string,
   config: ResolveImportConfig
-): ResolvedImport | null {
+) {
   const matchedPath = createMatchPath(config.absoluteBaseUrl, config.paths)(
     importPath,
     undefined,

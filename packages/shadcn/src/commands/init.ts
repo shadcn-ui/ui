@@ -9,7 +9,7 @@ import {
   resolveInitUrl,
   resolveRegistryBaseConfig,
 } from "@/src/preset/presets"
-import { getRegistryBaseColors, getRegistryStyles } from "@/src/registry/api"
+import { getRegistryStyles } from "@/src/registry/api"
 import { BUILTIN_REGISTRIES, SHADCN_URL } from "@/src/registry/constants"
 import { clearRegistryContext } from "@/src/registry/context"
 import { registryConfigSchema } from "@/src/registry/schema"
@@ -31,12 +31,7 @@ import {
   restoreFileBackup,
 } from "@/src/utils/file-helper"
 import {
-  DEFAULT_COMPONENTS,
-  DEFAULT_TAILWIND_CONFIG,
-  DEFAULT_TAILWIND_CSS,
-  DEFAULT_UTILS,
   explorer,
-  getConfig,
   getWorkspaceConfig,
   resolveConfigPaths,
   type Config,
@@ -565,6 +560,7 @@ export async function runInit(
   }
 ) {
   let projectInfo
+  let projectConfig
   let newProjectTemplate: keyof typeof templates | undefined
 
   // Resolve the effective template if --monorepo is set.
@@ -601,9 +597,11 @@ export async function runInit(
       projectInfo = await getProjectInfo(options.cwd)
     } else {
       projectInfo = preflight.projectInfo
+      projectConfig = preflight.projectConfig
     }
   } else {
     projectInfo = await getProjectInfo(options.cwd)
+    projectConfig = await getProjectConfig(options.cwd, projectInfo)
   }
 
   // Use the template from project creation if available,
@@ -641,11 +639,11 @@ export async function runInit(
   }
 
   // Standard init path for existing projects.
-  const projectConfig = await getProjectConfig(options.cwd, projectInfo)
+  if (!projectConfig) {
+    throw new Error("Project config is required for standard init.")
+  }
 
-  let config = projectConfig
-    ? await promptForMinimalConfig(projectConfig, options)
-    : await promptForConfig(await getConfig(options.cwd))
+  let config = await promptForMinimalConfig(projectConfig, options)
 
   if (!options.yes) {
     const { proceed } = await prompts({
@@ -774,209 +772,10 @@ export async function runInit(
 
   // Run postInit only for newly scaffolded projects.
   if (shouldRunTemplatePostInit(selectedTemplate, options.isNewProject)) {
-    await selectedTemplate!.postInit!({ projectPath: options.cwd })
+    await selectedTemplate.postInit({ projectPath: options.cwd })
   }
 
   return fullConfig
-}
-
-async function promptForConfig(defaultConfig: Config | null = null) {
-  const [styles, baseColors] = await Promise.all([
-    getRegistryStyles(),
-    getRegistryBaseColors(),
-  ])
-
-  logger.info("")
-  const options = await prompts([
-    {
-      type: "toggle",
-      name: "typescript",
-      message: `Would you like to use ${highlighter.info(
-        "TypeScript"
-      )} (recommended)?`,
-      initial: defaultConfig?.tsx ?? true,
-      active: "yes",
-      inactive: "no",
-    },
-    {
-      type: "select",
-      name: "style",
-      message: `Which ${highlighter.info("style")} would you like to use?`,
-      choices: styles.map((style) => ({
-        title: style.label,
-        value: style.name,
-      })),
-    },
-    {
-      type: "select",
-      name: "tailwindBaseColor",
-      message: `Which color would you like to use as the ${highlighter.info(
-        "base color"
-      )}?`,
-      choices: baseColors.map((color) => ({
-        title: color.label,
-        value: color.name,
-      })),
-    },
-    {
-      type: "text",
-      name: "tailwindCss",
-      message: `Where is your ${highlighter.info("global CSS")} file?`,
-      initial: defaultConfig?.tailwind.css ?? DEFAULT_TAILWIND_CSS,
-    },
-    {
-      type: "toggle",
-      name: "tailwindCssVariables",
-      message: `Would you like to use ${highlighter.info(
-        "CSS variables"
-      )} for theming?`,
-      initial: defaultConfig?.tailwind.cssVariables ?? true,
-      active: "yes",
-      inactive: "no",
-    },
-    {
-      type: "text",
-      name: "tailwindPrefix",
-      message: `Are you using a custom ${highlighter.info(
-        "tailwind prefix eg. tw-"
-      )}? (Leave blank if not)`,
-      initial: "",
-    },
-    {
-      type: "text",
-      name: "tailwindConfig",
-      message: `Where is your ${highlighter.info(
-        "tailwind.config.js"
-      )} located?`,
-      initial: defaultConfig?.tailwind.config ?? DEFAULT_TAILWIND_CONFIG,
-    },
-    {
-      type: "text",
-      name: "components",
-      message: `Configure the import alias for ${highlighter.info(
-        "components"
-      )}:`,
-      initial: defaultConfig?.aliases["components"] ?? DEFAULT_COMPONENTS,
-    },
-  ])
-
-  if (!options.style) {
-    process.exit(1)
-  }
-
-  const existingAliases =
-    defaultConfig && defaultConfig.aliases.components === options.components
-      ? defaultConfig.aliases
-      : undefined
-
-  const aliasDefaults = getInitAliasDefaults(
-    options.components,
-    existingAliases
-  )
-
-  const aliasOptions = await prompts([
-    {
-      type: "text",
-      name: "ui",
-      message: `Configure the import alias for ${highlighter.info("ui")}:`,
-      initial: aliasDefaults.ui,
-    },
-    {
-      type: "text",
-      name: "lib",
-      message: `Configure the import alias for ${highlighter.info("lib")}:`,
-      initial: aliasDefaults.lib,
-    },
-    {
-      type: "text",
-      name: "hooks",
-      message: `Configure the import alias for ${highlighter.info("hooks")}:`,
-      initial: aliasDefaults.hooks,
-    },
-    {
-      type: "text",
-      name: "utils",
-      message: `Configure the import alias for ${highlighter.info("utils")}:`,
-      initial: aliasDefaults.utils,
-    },
-    {
-      type: "toggle",
-      name: "rsc",
-      message: `Are you using ${highlighter.info("React Server Components")}?`,
-      initial: defaultConfig?.rsc ?? true,
-      active: "yes",
-      inactive: "no",
-    },
-  ])
-
-  return rawConfigSchema.parse({
-    $schema: "https://ui.shadcn.com/schema.json",
-    style: options.style,
-    tailwind: {
-      config: options.tailwindConfig,
-      css: options.tailwindCss,
-      baseColor: options.tailwindBaseColor,
-      cssVariables: options.tailwindCssVariables,
-      prefix: options.tailwindPrefix,
-    },
-    rsc: aliasOptions.rsc,
-    tsx: options.typescript,
-    aliases: {
-      components: options.components,
-      ui: aliasOptions.ui,
-      lib: aliasOptions.lib,
-      hooks: aliasOptions.hooks,
-      utils: aliasOptions.utils,
-    },
-  })
-}
-
-export function getInitAliasDefaults(
-  componentsAlias: string,
-  existingAliases?: Config["aliases"]
-) {
-  const derivedLib =
-    existingAliases?.lib ?? deriveSiblingAlias(componentsAlias, "lib")
-
-  return {
-    ui: existingAliases?.ui ?? deriveUiAlias(componentsAlias),
-    lib: derivedLib,
-    hooks:
-      existingAliases?.hooks ?? deriveSiblingAlias(componentsAlias, "hooks"),
-    utils:
-      existingAliases?.utils ?? deriveUtilsAlias(componentsAlias, derivedLib),
-  }
-}
-
-function deriveUiAlias(componentsAlias: string) {
-  return componentsAlias ? `${componentsAlias}/ui` : `${DEFAULT_COMPONENTS}/ui`
-}
-
-function deriveUtilsAlias(componentsAlias: string, libAlias: string) {
-  if (componentsAlias === "#components") {
-    return "#utils"
-  }
-
-  return libAlias ? `${libAlias}/utils` : DEFAULT_UTILS
-}
-
-function deriveSiblingAlias(componentsAlias: string, segment: "lib" | "hooks") {
-  if (componentsAlias === "components") {
-    return segment
-  }
-
-  if (componentsAlias.endsWith("/components")) {
-    return `${componentsAlias.slice(0, -"/components".length)}/${segment}`
-  }
-
-  if (
-    componentsAlias.endsWith("components") &&
-    !componentsAlias.includes("/")
-  ) {
-    return `${componentsAlias.slice(0, -"components".length)}${segment}`
-  }
-
-  return ""
 }
 
 export function shouldRunTemplatePostInit(
@@ -984,7 +783,9 @@ export function shouldRunTemplatePostInit(
     | { postInit?: (options: { projectPath: string }) => Promise<void> }
     | undefined,
   isNewProject: boolean | undefined
-) {
+): template is {
+  postInit: (options: { projectPath: string }) => Promise<void>
+} {
   return Boolean(template?.postInit && isNewProject)
 }
 
