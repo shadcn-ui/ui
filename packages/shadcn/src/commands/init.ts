@@ -859,6 +859,14 @@ async function promptForConfig(defaultConfig: Config | null = null) {
       )}:`,
       initial: defaultConfig?.aliases["components"] ?? DEFAULT_COMPONENTS,
     },
+    {
+      type: "toggle",
+      name: "rsc",
+      message: `Are you using ${highlighter.info("React Server Components")}?`,
+      initial: defaultConfig?.rsc ?? true,
+      active: "yes",
+      inactive: "no",
+    },
   ])
 
   if (!options.style) {
@@ -875,41 +883,6 @@ async function promptForConfig(defaultConfig: Config | null = null) {
     existingAliases
   )
 
-  const aliasOptions = await prompts([
-    {
-      type: "text",
-      name: "ui",
-      message: `Configure the import alias for ${highlighter.info("ui")}:`,
-      initial: aliasDefaults.ui,
-    },
-    {
-      type: "text",
-      name: "lib",
-      message: `Configure the import alias for ${highlighter.info("lib")}:`,
-      initial: aliasDefaults.lib,
-    },
-    {
-      type: "text",
-      name: "hooks",
-      message: `Configure the import alias for ${highlighter.info("hooks")}:`,
-      initial: aliasDefaults.hooks,
-    },
-    {
-      type: "text",
-      name: "utils",
-      message: `Configure the import alias for ${highlighter.info("utils")}:`,
-      initial: aliasDefaults.utils,
-    },
-    {
-      type: "toggle",
-      name: "rsc",
-      message: `Are you using ${highlighter.info("React Server Components")}?`,
-      initial: defaultConfig?.rsc ?? true,
-      active: "yes",
-      inactive: "no",
-    },
-  ])
-
   return rawConfigSchema.parse({
     $schema: "https://ui.shadcn.com/schema.json",
     style: options.style,
@@ -920,14 +893,14 @@ async function promptForConfig(defaultConfig: Config | null = null) {
       cssVariables: options.tailwindCssVariables,
       prefix: options.tailwindPrefix,
     },
-    rsc: aliasOptions.rsc,
+    rsc: options.rsc,
     tsx: options.typescript,
     aliases: {
       components: options.components,
-      ui: aliasOptions.ui,
-      lib: aliasOptions.lib,
-      hooks: aliasOptions.hooks,
-      utils: aliasOptions.utils,
+      ui: aliasDefaults.ui,
+      lib: aliasDefaults.lib,
+      hooks: aliasDefaults.hooks,
+      utils: aliasDefaults.utils,
     },
   })
 }
