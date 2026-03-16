@@ -953,7 +953,14 @@ export const examples: Registry["items"] = [
   {
     name: "form-next-demo",
     type: "registry:example",
-    registryDependencies: ["field", "input", "textarea", "button", "card", "spinner"],
+    registryDependencies: [
+      "field",
+      "input",
+      "textarea",
+      "button",
+      "card",
+      "spinner",
+    ],
     files: [
       {
         path: "examples/form-next-demo.tsx",
