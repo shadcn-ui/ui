@@ -916,5 +916,11 @@
     "homepage": "https://ui.flexnative.com",
     "url": "https://ui.flexnative.com/r/{name}.json",
     "description": "A collection of customizable UI blocks with interactive live previews"
+  },
+  {
+    "name": "@nexus-ui",
+    "homepage": "https://nexus-ui.dev",
+    "url": "https://nexus-ui.dev/r/{name}.json",
+    "description": "Open-source component library of composable, copy-paste primitives for building AI interfaces (chat, streaming, multimodal)"
   }
 ]
