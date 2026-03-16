@@ -12,7 +12,7 @@ const { mockedGetProjectInfo, mockedExistsSync, mockedLogger } = vi.hoisted(
   })
 )
 
-vi.mock("../../src/commands/init", () => ({
+vi.mock("@/src/commands/init", () => ({
   initOptionsSchema: z.object({
     cwd: z.string(),
     force: z.boolean(),
@@ -22,27 +22,27 @@ vi.mock("../../src/commands/init", () => ({
   }),
 }))
 
-vi.mock("../../src/utils/get-project-info", () => ({
+vi.mock("@/src/utils/get-project-info", () => ({
   getProjectInfo: mockedGetProjectInfo,
 }))
 
-vi.mock("../../src/utils/get-monorepo-info", () => ({
+vi.mock("@/src/utils/get-monorepo-info", () => ({
   formatMonorepoMessage: vi.fn(),
   getMonorepoTargets: vi.fn().mockResolvedValue([]),
   isMonorepoRoot: vi.fn().mockResolvedValue(false),
 }))
 
-vi.mock("../../src/utils/highlighter", () => ({
+vi.mock("@/src/utils/highlighter", () => ({
   highlighter: {
     info: (value: string) => value,
   },
 }))
 
-vi.mock("../../src/utils/logger", () => ({
+vi.mock("@/src/utils/logger", () => ({
   logger: mockedLogger,
 }))
 
-vi.mock("../../src/utils/spinner", () => ({
+vi.mock("@/src/utils/spinner", () => ({
   spinner: vi.fn().mockReturnValue({
     start: vi.fn().mockReturnValue({
       succeed: vi.fn(),
@@ -58,7 +58,7 @@ vi.mock("fs-extra", () => ({
   },
 }))
 
-import { preFlightInit } from "../../src/preflights/preflight-init"
+import { preFlightInit } from "@/src/preflights/preflight-init"
 
 const baseProjectInfo = {
   framework: {
@@ -81,9 +81,14 @@ const baseProjectInfo = {
 
 const baseOptions = {
   cwd: "/tmp/project",
+  cssVariables: true,
+  defaults: false,
   force: false,
+  installStyleIndex: true,
+  isNewProject: false,
   monorepo: false,
   silent: true,
+  yes: true,
 }
 
 afterEach(() => {

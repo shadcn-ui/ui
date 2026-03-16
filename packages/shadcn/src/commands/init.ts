@@ -623,6 +623,9 @@ export async function runInit(
     // Add button component for new template-based projects.
     ...(selectedTemplate ? ["button"] : []),
   ]
+  const templatePostInit = options.isNewProject
+    ? selectedTemplate?.postInit
+    : undefined
 
   if (selectedTemplate?.init) {
     const result = await selectedTemplate.init({
@@ -636,9 +639,9 @@ export async function runInit(
       silent: options.silent,
     })
 
-    if (shouldRunTemplatePostInit(selectedTemplate, options.isNewProject)) {
+    if (templatePostInit) {
       // Run postInit for newly scaffolded projects (e.g. git init).
-      await selectedTemplate.postInit({ projectPath: options.cwd })
+      await templatePostInit({ projectPath: options.cwd })
     }
 
     return result
@@ -775,8 +778,8 @@ export async function runInit(
   })
 
   // Run postInit only for newly scaffolded projects.
-  if (shouldRunTemplatePostInit(selectedTemplate, options.isNewProject)) {
-    await selectedTemplate.postInit({ projectPath: options.cwd })
+  if (templatePostInit) {
+    await templatePostInit({ projectPath: options.cwd })
   }
 
   return fullConfig
@@ -904,17 +907,6 @@ async function promptForConfig(defaultConfig: Config | null = null) {
       utils: aliasDefaults.utils,
     },
   })
-}
-
-function shouldRunTemplatePostInit(
-  template:
-    | { postInit?: (options: { projectPath: string }) => Promise<void> }
-    | undefined,
-  isNewProject: boolean | undefined
-): template is {
-  postInit: (options: { projectPath: string }) => Promise<void>
-} {
-  return Boolean(template?.postInit && isNewProject)
 }
 
 async function promptForMinimalConfig(
