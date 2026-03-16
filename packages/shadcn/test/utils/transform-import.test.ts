@@ -34,6 +34,49 @@ test('transform nested workspace folder for utils, website/src/utils', async () 
 
 })
 
+test.each([
+  {
+    name: "bare aliases",
+    aliases: {
+      components: "components",
+      ui: "components/ui",
+      lib: "lib",
+      utils: "lib/utils",
+    },
+    buttonImport: `import { Button } from "components/ui/button"`,
+    utilsImport: `import { cn } from "lib/utils"`,
+  },
+  {
+    name: "path-like aliases",
+    aliases: {
+      components: "website/src/components",
+      ui: "website/src/components/ui",
+      lib: "website/src/lib",
+      utils: "website/src/lib/utils",
+    },
+    buttonImport: `import { Button } from "website/src/components/ui/button"`,
+    utilsImport: `import { cn } from "website/src/lib/utils"`,
+  },
+])("transform import with non-sigil aliases: $name", async ({
+  aliases,
+  buttonImport,
+  utilsImport,
+}) => {
+  const result = await transform({
+    filename: "test.ts",
+    raw: `import { Button } from "@/registry/new-york/ui/button"
+import { cn } from "@/lib/utils"
+`,
+    config: {
+      tsx: true,
+      aliases,
+    },
+  })
+
+  expect(result).toContain(buttonImport)
+  expect(result).toContain(utilsImport)
+})
+
 test("transform import", async () => {
   expect(
     await transform({
