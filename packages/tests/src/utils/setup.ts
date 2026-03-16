@@ -29,13 +29,18 @@ export default async function setup() {
     fs.pathExists(SHADCN_CLI_PATH)
   )
 
-  // Wait for the registry to actually serve responses. /r itself is a
-  // directory and returns 404; /r/index.json is a real static file.
+  // The CLI's first request goes to the dynamic /init route. On a cold Next.js
+  // dev server, this route needs to be compiled on first access (~1.8s). That
+  // compilation time, on top of everything else init does, pushes the first
+  // test over the 30s CLI timeout. Warming up the route here ensures it is
+  // already compiled before any test starts.
   const registryUrl = process.env.REGISTRY_URL || "http://localhost:4000/r"
-  const registryCheckUrl = `${registryUrl}/index.json`
-  await waitForCondition("registry", async () => {
+  const shadcnUrl = registryUrl.replace(/\/r\/?$/, "")
+  const initWarmupUrl = `${shadcnUrl}/init?base=base&style=nova&baseColor=neutral&theme=neutral&iconLibrary=lucide&font=geist&rtl=false&menuAccent=subtle&menuColor=default&radius=default&template=next`
+
+  await waitForCondition("init route warm-up", async () => {
     try {
-      const res = await fetch(registryCheckUrl)
+      const res = await fetch(initWarmupUrl)
       return res.ok
     } catch {
       return false
