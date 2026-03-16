@@ -132,15 +132,15 @@ export async function preFlightInit(
     tailwindSpinner?.succeed()
   }
 
-  const aliasSpinner = spinner(`Validating import alias.`, {
+  const tsConfigSpinner = spinner(`Validating import alias.`, {
     silent: options.silent,
   }).start()
 
   if (!projectInfo?.aliasPrefix) {
     errors[ERRORS.IMPORT_ALIAS_MISSING] = true
-    aliasSpinner?.fail()
+    tsConfigSpinner?.fail()
   } else {
-    aliasSpinner?.succeed()
+    tsConfigSpinner?.succeed()
   }
 
   if (Object.keys(errors).length > 0) {
