@@ -7,10 +7,7 @@ import {
 } from "@/src/schema"
 import { getProjectInfo } from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"
-import {
-  resolveImport,
-  resolveImportWithMetadata,
-} from "@/src/utils/resolve-import"
+import { resolveImportWithMetadata } from "@/src/utils/resolve-import"
 import { cosmiconfig } from "cosmiconfig"
 import fg from "fast-glob"
 import { loadConfig, type ConfigLoaderSuccessResult } from "tsconfig-paths"
@@ -67,6 +64,20 @@ export async function resolveConfigPaths(
     )
   }
 
+  // Resolve the primary aliases first so fallbacks can reuse their results.
+  const resolvedUtils = await resolveAliasPath(
+    "utils",
+    config.aliases["utils"],
+    cwd,
+    tsConfig
+  )
+  const resolvedComponents = await resolveAliasPath(
+    "components",
+    config.aliases["components"],
+    cwd,
+    tsConfig
+  )
+
   return configSchema.parse({
     ...config,
     resolvedPaths: {
@@ -75,42 +86,16 @@ export async function resolveConfigPaths(
         ? path.resolve(cwd, config.tailwind.config)
         : "",
       tailwindCss: path.resolve(cwd, config.tailwind.css),
-      utils: await resolveAliasPath(
-        "utils",
-        config.aliases["utils"],
-        cwd,
-        tsConfig
-      ),
-      components: await resolveAliasPath(
-        "components",
-        config.aliases["components"],
-        cwd,
-        tsConfig
-      ),
+      utils: resolvedUtils,
+      components: resolvedComponents,
       ui: config.aliases["ui"]
         ? await resolveAliasPath("ui", config.aliases["ui"], cwd, tsConfig)
-        : path.resolve(
-            (await resolveAliasPath(
-              "components",
-              config.aliases["components"],
-              cwd,
-              tsConfig
-            )) ?? cwd,
-            "ui"
-          ),
+        : path.resolve(resolvedComponents ?? cwd, "ui"),
       // TODO: Make this configurable.
       // For now, we assume the lib and hooks directories are one level up from the components directory.
       lib: config.aliases["lib"]
         ? await resolveAliasPath("lib", config.aliases["lib"], cwd, tsConfig)
-        : path.resolve(
-            (await resolveAliasPath(
-              "utils",
-              config.aliases["utils"],
-              cwd,
-              tsConfig
-            )) ?? cwd,
-            ".."
-          ),
+        : path.resolve(resolvedUtils ?? cwd, ".."),
       hooks: config.aliases["hooks"]
         ? await resolveAliasPath(
             "hooks",
@@ -118,16 +103,7 @@ export async function resolveConfigPaths(
             cwd,
             tsConfig
           )
-        : path.resolve(
-            (await resolveAliasPath(
-              "components",
-              config.aliases["components"],
-              cwd,
-              tsConfig
-            )) ?? cwd,
-            "..",
-            "hooks"
-          ),
+        : path.resolve(resolvedComponents ?? cwd, "..", "hooks"),
     },
   })
 }
@@ -144,36 +120,32 @@ async function resolveAliasPath(
   })
 
   if (!resolved?.path) {
-    return await resolveImport(alias, { ...tsConfig, cwd })
+    return null
   }
 
+  // For non-utils alias keys backed by package imports or workspace exports,
+  // strip directory-level artifacts so the resolved path points at the
+  // directory root rather than a specific file.
   if (
     aliasKey !== "utils" &&
-    ["package_imports", "workspace_package_exports"].includes(
-      resolved.source
-    ) &&
-    !resolved.matchedAlias.includes("*") &&
-    /\/index\.[^/]+$/.test(resolved.path)
+    (resolved.source === "package_imports" ||
+      resolved.source === "workspace_package_exports")
   ) {
-    // Exact package-import aliases like `#hooks`, and exact workspace package
-    // exports that point at index files, should resolve to directory roots for
-    // components/hooks/ui/lib. `utils` stays file-based by design.
-    return path.dirname(resolved.path)
-  }
+    // Exact aliases (e.g. `#hooks` → `./src/hooks/index.ts`) should resolve
+    // to the directory root.
+    if (
+      !resolved.matchedAlias.includes("*") &&
+      /\/index\.[^/]+$/.test(resolved.path)
+    ) {
+      return path.dirname(resolved.path)
+    }
 
-  if (
-    aliasKey !== "utils" &&
-    ["package_imports", "workspace_package_exports"].includes(
-      resolved.source
-    ) &&
-    resolved.matchedAlias.includes("*") &&
-    /\.[^/]+$/.test(resolved.path)
-  ) {
-    // Wildcard package-import aliases and workspace package exports stored in
-    // components.json represent directory roots, even when the matched target
-    // is extension-based (`./src/components/*.tsx`). Strip the source extension
-    // so `ui` resolves to `/src/components/ui` instead of `/src/components/ui.tsx`.
-    return resolved.path.replace(/\.[^/]+$/, "")
+    // Wildcard aliases with explicit extensions (e.g. `#components/*` →
+    // `./src/components/*.tsx`) should strip the source extension so `ui`
+    // resolves to `/src/components/ui` instead of `/src/components/ui.tsx`.
+    if (resolved.matchedAlias.includes("*") && /\.[^/]+$/.test(resolved.path)) {
+      return resolved.path.replace(/\.[^/]+$/, "")
+    }
   }
 
   return resolved.path

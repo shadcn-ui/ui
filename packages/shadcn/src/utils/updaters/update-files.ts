@@ -37,6 +37,8 @@ import { Project, ScriptKind } from "ts-morph"
 import { loadConfig, type ConfigLoaderSuccessResult } from "tsconfig-paths"
 import { z } from "zod"
 
+const CODE_EXTENSIONS = [".ts", ".tsx", ".js", ".jsx"]
+
 export async function updateFiles(
   files: RegistryItem["files"],
   config: Config,
@@ -868,8 +870,7 @@ export function toAliasedImport(
 
   // 3️⃣ Strip code-file extensions, keep others (css, json, etc.)
   const ext = path.posix.extname(rel)
-  const codeExts = [".ts", ".tsx", ".js", ".jsx"]
-  const keepExt = codeExts.includes(ext) ? "" : ext
+  const keepExt = CODE_EXTENSIONS.includes(ext) ? "" : ext
   let noExt = rel.slice(0, rel.length - ext.length)
 
   // 4️⃣ Collapse "/index" to its directory
@@ -895,9 +896,9 @@ function toPackageImport(
     : never
 ) {
   const ext = path.posix.extname(relativePath)
-  const codeExts = [".ts", ".tsx", ".js", ".jsx"]
   const keepExt =
-    codeExts.includes(ext) && packageImport.emitMode === "strip_extension"
+    CODE_EXTENSIONS.includes(ext) &&
+    packageImport.emitMode === "strip_extension"
       ? ""
       : ext
   const normalizedRelativePath = relativePath
@@ -996,8 +997,7 @@ function toRelativeImport(fromFilePath: string, targetFilePath: string) {
   rel = rel.split(path.sep).join("/")
 
   const ext = path.posix.extname(rel)
-  const codeExts = [".ts", ".tsx", ".js", ".jsx"]
-  const keepExt = codeExts.includes(ext) ? "" : ext
+  const keepExt = CODE_EXTENSIONS.includes(ext) ? "" : ext
   let noExt = rel.slice(0, rel.length - ext.length)
 
   if (noExt.endsWith("/index")) {

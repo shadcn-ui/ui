@@ -1,3 +1,4 @@
+import { getPatternWildcardValue } from "@/src/utils/import-matcher"
 import {
   resolvePackageImport,
   type ImportEmitMode,
@@ -119,7 +120,7 @@ function findMatchingTsPathPattern(
 ) {
   for (const [key, targets] of Object.entries(paths)) {
     const targetList = Array.isArray(targets) ? targets : [targets]
-    const wildcardValue = getWildcardValue(importPath, key)
+    const wildcardValue = getPatternWildcardValue(importPath, key)
 
     if (wildcardValue === null) {
       continue
@@ -135,19 +136,4 @@ function findMatchingTsPathPattern(
   }
 
   return null
-}
-
-function getWildcardValue(importPath: string, pattern: string) {
-  if (!pattern.includes("*")) {
-    return importPath === pattern ? "" : null
-  }
-
-  const [prefix, suffix = ""] = pattern.split("*")
-  if (!importPath.startsWith(prefix) || !importPath.endsWith(suffix)) {
-    return null
-  }
-
-  return suffix
-    ? importPath.slice(prefix.length, -suffix.length)
-    : importPath.slice(prefix.length)
 }
