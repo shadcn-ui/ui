@@ -134,7 +134,7 @@ export default async function Page(props: {
                 </div>
               </div>
               {doc.description && (
-                <p className="text-muted-foreground text-[1.05rem] sm:text-base sm:text-balance md:max-w-[80%]">
+                <p className="text-[1.05rem] text-muted-foreground sm:text-base sm:text-balance md:max-w-[80%]">
                   {doc.description}
                 </p>
               )}

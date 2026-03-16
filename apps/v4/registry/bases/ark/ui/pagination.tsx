@@ -1,14 +1,18 @@
+"use client"
+
 import * as React from "react"
+import { Pagination as PaginationPrimitive } from "@ark-ui/react/pagination"
 
 import { cn } from "@/registry/bases/ark/lib/utils"
 import { Button } from "@/registry/bases/ark/ui/button"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
-function Pagination({ className, ...props }: React.ComponentProps<"nav">) {
+function Pagination({
+  className,
+  ...props
+}: React.ComponentProps<typeof PaginationPrimitive.Root>) {
   return (
-    <nav
-      role="navigation"
-      aria-label="pagination"
+    <PaginationPrimitive.Root
       data-slot="pagination"
       className={cn(
         "cn-pagination mx-auto flex w-full justify-center",
@@ -24,11 +28,18 @@ function PaginationContent({
   ...props
 }: React.ComponentProps<"ul">) {
   return (
-    <ul
-      data-slot="pagination-content"
-      className={cn("cn-pagination-content flex items-center", className)}
-      {...props}
-    />
+    <PaginationPrimitive.Context>
+      {() => (
+        <ul
+          data-slot="pagination-content"
+          className={cn(
+            "cn-pagination-content flex items-center",
+            className
+          )}
+          {...props}
+        />
+      )}
+    </PaginationPrimitive.Context>
   )
 }
 
@@ -39,7 +50,7 @@ function PaginationItem({ ...props }: React.ComponentProps<"li">) {
 type PaginationLinkProps = {
   isActive?: boolean
 } & Pick<React.ComponentProps<typeof Button>, "size"> &
-  React.ComponentProps<"a">
+  React.ComponentProps<typeof PaginationPrimitive.Item>
 
 function PaginationLink({
   className,
@@ -48,19 +59,19 @@ function PaginationLink({
   ...props
 }: PaginationLinkProps) {
   return (
-    <Button
+    <PaginationPrimitive.Item
       asChild
-      variant={isActive ? "outline" : "ghost"}
-      size={size}
-      className={cn("cn-pagination-link", className)}
+      {...props}
     >
-      <a
+      <Button
+        variant={isActive ? "outline" : "ghost"}
+        size={size}
         aria-current={isActive ? "page" : undefined}
         data-slot="pagination-link"
         data-active={isActive}
-        {...props}
+        className={cn("cn-pagination-link", className)}
       />
-    </Button>
+    </PaginationPrimitive.Item>
   )
 }
 
@@ -68,27 +79,32 @@ function PaginationPrevious({
   className,
   text = "Previous",
   ...props
-}: React.ComponentProps<typeof PaginationLink> & { text?: string }) {
+}: Omit<React.ComponentProps<typeof PaginationPrimitive.PrevTrigger>, "children"> & {
+  text?: string
+}) {
   return (
-    <PaginationLink
-      aria-label="Go to previous page"
-      size="default"
-      className={cn("cn-pagination-previous", className)}
-      {...props}
-    >
-      <IconPlaceholder
-        lucide="ChevronLeftIcon"
-        tabler="IconChevronLeft"
-        hugeicons="ArrowLeft01Icon"
-        phosphor="CaretLeftIcon"
-        remixicon="RiArrowLeftSLine"
-        data-icon="inline-start"
-        className="cn-rtl-flip"
-      />
-      <span className="cn-pagination-previous-text hidden sm:block">
-        {text}
-      </span>
-    </PaginationLink>
+    <PaginationPrimitive.PrevTrigger asChild {...props}>
+      <Button
+        variant="ghost"
+        size="default"
+        aria-label="Go to previous page"
+        data-slot="pagination-link"
+        className={cn("cn-pagination-previous", className)}
+      >
+        <IconPlaceholder
+          lucide="ChevronLeftIcon"
+          tabler="IconChevronLeft"
+          hugeicons="ArrowLeft01Icon"
+          phosphor="CaretLeftIcon"
+          remixicon="RiArrowLeftSLine"
+          data-icon="inline-start"
+          className="cn-rtl-flip"
+        />
+        <span className="cn-pagination-previous-text hidden sm:block">
+          {text}
+        </span>
+      </Button>
+    </PaginationPrimitive.PrevTrigger>
   )
 }
 
@@ -96,35 +112,41 @@ function PaginationNext({
   className,
   text = "Next",
   ...props
-}: React.ComponentProps<typeof PaginationLink> & { text?: string }) {
+}: Omit<React.ComponentProps<typeof PaginationPrimitive.NextTrigger>, "children"> & {
+  text?: string
+}) {
   return (
-    <PaginationLink
-      aria-label="Go to next page"
-      size="default"
-      className={cn("cn-pagination-next", className)}
-      {...props}
-    >
-      <span className="cn-pagination-next-text hidden sm:block">{text}</span>
-      <IconPlaceholder
-        lucide="ChevronRightIcon"
-        tabler="IconChevronRight"
-        hugeicons="ArrowRight01Icon"
-        phosphor="CaretRightIcon"
-        remixicon="RiArrowRightSLine"
-        data-icon="inline-end"
-        className="cn-rtl-flip"
-      />
-    </PaginationLink>
+    <PaginationPrimitive.NextTrigger asChild {...props}>
+      <Button
+        variant="ghost"
+        size="default"
+        aria-label="Go to next page"
+        data-slot="pagination-link"
+        className={cn("cn-pagination-next", className)}
+      >
+        <span className="cn-pagination-next-text hidden sm:block">
+          {text}
+        </span>
+        <IconPlaceholder
+          lucide="ChevronRightIcon"
+          tabler="IconChevronRight"
+          hugeicons="ArrowRight01Icon"
+          phosphor="CaretRightIcon"
+          remixicon="RiArrowRightSLine"
+          data-icon="inline-end"
+          className="cn-rtl-flip"
+        />
+      </Button>
+    </PaginationPrimitive.NextTrigger>
   )
 }
 
 function PaginationEllipsis({
   className,
   ...props
-}: React.ComponentProps<"span">) {
+}: React.ComponentProps<typeof PaginationPrimitive.Ellipsis>) {
   return (
-    <span
-      aria-hidden
+    <PaginationPrimitive.Ellipsis
       data-slot="pagination-ellipsis"
       className={cn(
         "cn-pagination-ellipsis flex items-center justify-center",
@@ -140,7 +162,7 @@ function PaginationEllipsis({
         remixicon="RiMoreLine"
       />
       <span className="sr-only">More pages</span>
-    </span>
+    </PaginationPrimitive.Ellipsis>
   )
 }
 

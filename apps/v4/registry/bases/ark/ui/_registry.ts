@@ -96,7 +96,7 @@ export const ui: Registry["items"] = [
   {
     name: "calendar",
     type: "registry:ui",
-    dependencies: ["react-day-picker@latest", "date-fns"],
+    dependencies: ["@ark-ui/react", "@internationalized/date"],
     registryDependencies: ["button"],
     files: [
       {
@@ -125,7 +125,7 @@ export const ui: Registry["items"] = [
       },
     ],
     registryDependencies: ["button"],
-    dependencies: ["embla-carousel-react"],
+    dependencies: ["@ark-ui/react"],
   },
   {
     name: "chart",
@@ -207,7 +207,7 @@ export const ui: Registry["items"] = [
   {
     name: "drawer",
     type: "registry:ui",
-    dependencies: ["vaul"],
+    dependencies: ["@ark-ui/react"],
     files: [
       {
         path: "ui/drawer.tsx",
@@ -284,7 +284,7 @@ export const ui: Registry["items"] = [
   {
     name: "input-otp",
     type: "registry:ui",
-    dependencies: ["input-otp"],
+    dependencies: ["@ark-ui/react"],
     files: [
       {
         path: "ui/input-otp.tsx",
@@ -378,7 +378,7 @@ export const ui: Registry["items"] = [
   {
     name: "resizable",
     type: "registry:ui",
-    dependencies: ["react-resizable-panels"],
+    dependencies: ["@ark-ui/react"],
     files: [
       {
         path: "ui/resizable.tsx",
@@ -468,7 +468,7 @@ export const ui: Registry["items"] = [
   {
     name: "sonner",
     type: "registry:ui",
-    dependencies: ["sonner", "next-themes"],
+    dependencies: ["@ark-ui/react"],
     files: [
       {
         path: "ui/sonner.tsx",
@@ -573,6 +573,16 @@ export const ui: Registry["items"] = [
     files: [
       {
         path: "ui/native-select.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "direction",
+    type: "registry:ui",
+    files: [
+      {
+        path: "ui/direction.tsx",
         type: "registry:ui",
       },
     ],

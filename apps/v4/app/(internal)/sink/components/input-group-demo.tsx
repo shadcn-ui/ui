@@ -131,7 +131,7 @@ export function InputGroupDemo() {
           <InputGroup>
             <InputGroupInput id="input-icon-right-08" />
             <InputGroupAddon align="inline-end">
-              <IconLoader2 className="text-muted-foreground animate-spin" />
+              <IconLoader2 className="animate-spin text-muted-foreground" />
             </InputGroupAddon>
           </InputGroup>
         </Field>
@@ -353,7 +353,7 @@ export function InputGroupDemo() {
             <InputGroupInput id="input-addon-20" />
             <InputGroupAddon align="block-start">
               <InputGroupText>First Name</InputGroupText>
-              <IconInfoCircle className="text-muted-foreground ml-auto" />
+              <IconInfoCircle className="ml-auto text-muted-foreground" />
             </InputGroupAddon>
           </InputGroup>
         </Field>
@@ -363,7 +363,7 @@ export function InputGroupDemo() {
             <InputGroupInput id="input-addon-21" />
             <InputGroupAddon align="block-end">
               <InputGroupText>20/240 characters</InputGroupText>
-              <IconInfoCircle className="text-muted-foreground ml-auto" />
+              <IconInfoCircle className="ml-auto text-muted-foreground" />
             </InputGroupAddon>
           </InputGroup>
         </Field>

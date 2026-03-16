@@ -1,0 +1,821 @@
+{
+  "name": "shadcn/ui",
+  "homepage": "https://ui.shadcn.com",
+  "items": [
+    {
+      "name": "accordion",
+      "files": [
+        {
+          "path": "registry/ark-maia/ui/accordion.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "alert",
+      "files": [
+        {
+          "path": "registry/ark-maia/ui/alert.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "alert-dialog",
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/ark-maia/ui/alert-dialog.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "aspect-ratio",
+      "files": [
+        {
+          "path": "registry/ark-maia/ui/aspect-ratio.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "avatar",
+      "files": [
+        {
+          "path": "registry/ark-maia/ui/avatar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "badge",
+      "files": [
+        {
+          "path": "registry/ark-maia/ui/badge.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "breadcrumb",
+      "files": [
+        {
+          "path": "registry/ark-maia/ui/breadcrumb.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "button",
+      "files": [
+        {
+          "path": "registry/ark-maia/ui/button.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "button-group",
+      "registryDependencies": ["separator"],
+      "files": [
+        {
+          "path": "registry/ark-maia/ui/button-group.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "calendar",
+      "dependencies": ["@ark-ui/react", "@internationalized/date"],
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/ark-maia/ui/calendar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "card",
+      "files": [
+        {
+          "path": "registry/ark-maia/ui/card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "carousel",
+      "dependencies": ["@ark-ui/react"],
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/ark-maia/ui/carousel.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "chart",
+      "dependencies": ["recharts@2.15.4"],
+      "registryDependencies": ["card"],
+      "files": [
+        {
+          "path": "registry/ark-maia/ui/chart.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "checkbox",
+      "files": [
+        {
+          "path": "registry/ark-maia/ui/checkbox.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "collapsible",
+      "files": [
+        {
+          "path": "registry/ark-maia/ui/collapsible.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "combobox",
+      "dependencies": ["@ark-ui/react"],
+      "registryDependencies": ["button", "input-group"],
+      "files": [
+        {
+          "path": "registry/ark-maia/ui/combobox.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "command",
+      "dependencies": ["cmdk"],
+      "registryDependencies": ["dialog", "input-group"],
+      "files": [
+        {
+          "path": "registry/ark-maia/ui/command.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "context-menu",
+      "files": [
+        {
+          "path": "registry/ark-maia/ui/context-menu.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "dialog",
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/ark-maia/ui/dialog.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "drawer",
+      "dependencies": ["@ark-ui/react"],
+      "files": [
+        {
+          "path": "registry/ark-maia/ui/drawer.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "dropdown-menu",
+      "files": [
+        {
+          "path": "registry/ark-maia/ui/dropdown-menu.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "empty",
+      "files": [
+        {
+          "path": "registry/ark-maia/ui/empty.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "field",
+      "registryDependencies": ["label", "separator"],
+      "files": [
+        {
+          "path": "registry/ark-maia/ui/field.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "form",
+      "type": "registry:ui"
+    },
+    {
+      "name": "hover-card",
+      "files": [
+        {
+          "path": "registry/ark-maia/ui/hover-card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "input",
+      "files": [
+        {
+          "path": "registry/ark-maia/ui/input.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "input-group",
+      "registryDependencies": ["button", "input", "textarea"],
+      "files": [
+        {
+          "path": "registry/ark-maia/ui/input-group.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "input-otp",
+      "dependencies": ["@ark-ui/react"],
+      "files": [
+        {
+          "path": "registry/ark-maia/ui/input-otp.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "item",
+      "registryDependencies": ["separator"],
+      "files": [
+        {
+          "path": "registry/ark-maia/ui/item.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "label",
+      "files": [
+        {
+          "path": "registry/ark-maia/ui/label.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "menubar",
+      "registryDependencies": ["dropdown-menu"],
+      "files": [
+        {
+          "path": "registry/ark-maia/ui/menubar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "navigation-menu",
+      "files": [
+        {
+          "path": "registry/ark-maia/ui/navigation-menu.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "pagination",
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/ark-maia/ui/pagination.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "popover",
+      "files": [
+        {
+          "path": "registry/ark-maia/ui/popover.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "progress",
+      "files": [
+        {
+          "path": "registry/ark-maia/ui/progress.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "radio-group",
+      "files": [
+        {
+          "path": "registry/ark-maia/ui/radio-group.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "resizable",
+      "dependencies": ["@ark-ui/react"],
+      "files": [
+        {
+          "path": "registry/ark-maia/ui/resizable.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "scroll-area",
+      "files": [
+        {
+          "path": "registry/ark-maia/ui/scroll-area.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "select",
+      "files": [
+        {
+          "path": "registry/ark-maia/ui/select.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "separator",
+      "files": [
+        {
+          "path": "registry/ark-maia/ui/separator.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "sheet",
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/ark-maia/ui/sheet.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "sidebar",
+      "registryDependencies": [
+        "button",
+        "input",
+        "separator",
+        "sheet",
+        "skeleton",
+        "tooltip"
+      ],
+      "files": [
+        {
+          "path": "registry/ark-maia/ui/sidebar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "skeleton",
+      "files": [
+        {
+          "path": "registry/ark-maia/ui/skeleton.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "slider",
+      "files": [
+        {
+          "path": "registry/ark-maia/ui/slider.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "sonner",
+      "dependencies": ["@ark-ui/react"],
+      "files": [
+        {
+          "path": "registry/ark-maia/ui/sonner.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "spinner",
+      "files": [
+        {
+          "path": "registry/ark-maia/ui/spinner.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "switch",
+      "files": [
+        {
+          "path": "registry/ark-maia/ui/switch.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "table",
+      "files": [
+        {
+          "path": "registry/ark-maia/ui/table.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "tabs",
+      "files": [
+        {
+          "path": "registry/ark-maia/ui/tabs.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "textarea",
+      "files": [
+        {
+          "path": "registry/ark-maia/ui/textarea.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "toggle",
+      "files": [
+        {
+          "path": "registry/ark-maia/ui/toggle.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "toggle-group",
+      "registryDependencies": ["toggle"],
+      "files": [
+        {
+          "path": "registry/ark-maia/ui/toggle-group.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "tooltip",
+      "files": [
+        {
+          "path": "registry/ark-maia/ui/tooltip.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "kbd",
+      "files": [
+        {
+          "path": "registry/ark-maia/ui/kbd.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "native-select",
+      "files": [
+        {
+          "path": "registry/ark-maia/ui/native-select.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "direction",
+      "files": [
+        {
+          "path": "registry/ark-maia/ui/direction.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "utils",
+      "files": [
+        {
+          "path": "registry/ark-maia/lib/utils.ts",
+          "type": "registry:lib"
+        }
+      ],
+      "type": "registry:lib"
+    },
+    {
+      "name": "font-geist",
+      "title": "Geist",
+      "type": "registry:font",
+      "font": {
+        "family": "'Geist Variable', sans-serif",
+        "provider": "google",
+        "import": "Geist",
+        "variable": "--font-sans",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/geist"
+      }
+    },
+    {
+      "name": "font-inter",
+      "title": "Inter",
+      "type": "registry:font",
+      "font": {
+        "family": "'Inter Variable', sans-serif",
+        "provider": "google",
+        "import": "Inter",
+        "variable": "--font-sans",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/inter"
+      }
+    },
+    {
+      "name": "font-noto-sans",
+      "title": "Noto Sans",
+      "type": "registry:font",
+      "font": {
+        "family": "'Noto Sans Variable', sans-serif",
+        "provider": "google",
+        "import": "Noto_Sans",
+        "variable": "--font-sans",
+        "dependency": "@fontsource-variable/noto-sans"
+      }
+    },
+    {
+      "name": "font-nunito-sans",
+      "title": "Nunito Sans",
+      "type": "registry:font",
+      "font": {
+        "family": "'Nunito Sans Variable', sans-serif",
+        "provider": "google",
+        "import": "Nunito_Sans",
+        "variable": "--font-sans",
+        "dependency": "@fontsource-variable/nunito-sans"
+      }
+    },
+    {
+      "name": "font-figtree",
+      "title": "Figtree",
+      "type": "registry:font",
+      "font": {
+        "family": "'Figtree Variable', sans-serif",
+        "provider": "google",
+        "import": "Figtree",
+        "variable": "--font-sans",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/figtree"
+      }
+    },
+    {
+      "name": "font-roboto",
+      "title": "Roboto",
+      "type": "registry:font",
+      "font": {
+        "family": "'Roboto Variable', sans-serif",
+        "provider": "google",
+        "import": "Roboto",
+        "variable": "--font-sans",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/roboto"
+      }
+    },
+    {
+      "name": "font-raleway",
+      "title": "Raleway",
+      "type": "registry:font",
+      "font": {
+        "family": "'Raleway Variable', sans-serif",
+        "provider": "google",
+        "import": "Raleway",
+        "variable": "--font-sans",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/raleway"
+      }
+    },
+    {
+      "name": "font-dm-sans",
+      "title": "DM Sans",
+      "type": "registry:font",
+      "font": {
+        "family": "'DM Sans Variable', sans-serif",
+        "provider": "google",
+        "import": "DM_Sans",
+        "variable": "--font-sans",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/dm-sans"
+      }
+    },
+    {
+      "name": "font-public-sans",
+      "title": "Public Sans",
+      "type": "registry:font",
+      "font": {
+        "family": "'Public Sans Variable', sans-serif",
+        "provider": "google",
+        "import": "Public_Sans",
+        "variable": "--font-sans",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/public-sans"
+      }
+    },
+    {
+      "name": "font-outfit",
+      "title": "Outfit",
+      "type": "registry:font",
+      "font": {
+        "family": "'Outfit Variable', sans-serif",
+        "provider": "google",
+        "import": "Outfit",
+        "variable": "--font-sans",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/outfit"
+      }
+    },
+    {
+      "name": "font-jetbrains-mono",
+      "title": "JetBrains Mono",
+      "type": "registry:font",
+      "font": {
+        "family": "'JetBrains Mono Variable', monospace",
+        "provider": "google",
+        "import": "JetBrains_Mono",
+        "variable": "--font-mono",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/jetbrains-mono"
+      }
+    },
+    {
+      "name": "font-geist-mono",
+      "title": "Geist Mono",
+      "type": "registry:font",
+      "font": {
+        "family": "'Geist Mono Variable', monospace",
+        "provider": "google",
+        "import": "Geist_Mono",
+        "variable": "--font-mono",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/geist-mono"
+      }
+    },
+    {
+      "name": "font-noto-serif",
+      "title": "Noto Serif",
+      "type": "registry:font",
+      "font": {
+        "family": "'Noto Serif Variable', serif",
+        "provider": "google",
+        "import": "Noto_Serif",
+        "variable": "--font-serif",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/noto-serif"
+      }
+    },
+    {
+      "name": "font-roboto-slab",
+      "title": "Roboto Slab",
+      "type": "registry:font",
+      "font": {
+        "family": "'Roboto Slab Variable', serif",
+        "provider": "google",
+        "import": "Roboto_Slab",
+        "variable": "--font-serif",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/roboto-slab"
+      }
+    },
+    {
+      "name": "font-merriweather",
+      "title": "Merriweather",
+      "type": "registry:font",
+      "font": {
+        "family": "'Merriweather Variable', serif",
+        "provider": "google",
+        "import": "Merriweather",
+        "variable": "--font-serif",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/merriweather"
+      }
+    },
+    {
+      "name": "font-lora",
+      "title": "Lora",
+      "type": "registry:font",
+      "font": {
+        "family": "'Lora Variable', serif",
+        "provider": "google",
+        "import": "Lora",
+        "variable": "--font-serif",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/lora"
+      }
+    },
+    {
+      "name": "font-playfair-display",
+      "title": "Playfair Display",
+      "type": "registry:font",
+      "font": {
+        "family": "'Playfair Display Variable', serif",
+        "provider": "google",
+        "import": "Playfair_Display",
+        "variable": "--font-serif",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/playfair-display"
+      }
+    }
+  ]
+}

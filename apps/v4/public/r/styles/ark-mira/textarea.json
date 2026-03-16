@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "textarea",
+  "files": [
+    {
+      "path": "registry/ark-mira/ui/textarea.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { Field } from \"@ark-ui/react/field\"\n\nimport { cn } from \"@/registry/ark-mira/lib/utils\"\n\nfunction Textarea({\n  className,\n  ...props\n}: React.ComponentProps<typeof Field.Textarea>) {\n  return (\n    <Field.Textarea\n      data-slot=\"textarea\"\n      className={cn(\n        \"resize-none rounded-md border border-input bg-input/20 px-2 py-2 text-sm transition-colors focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/30 aria-invalid:border-destructive aria-invalid:ring-2 aria-invalid:ring-destructive/20 md:text-xs/relaxed dark:bg-input/30 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Textarea }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

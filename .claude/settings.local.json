@@ -6,7 +6,22 @@
       "Bash(ls:*)",
       "Bash(cat:*)",
       "WebSearch",
-      "WebFetch(domain:github.com)"
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:ark-ui.com)",
+      "WebFetch(domain:shipbase-ui.pages.dev)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(find:*)",
+      "Bash(gh api:*)",
+      "Bash(git fetch:*)",
+      "Bash(git checkout:*)",
+      "Bash(curl:*)",
+      "Bash(npm view:*)",
+      "Bash(gh search:*)",
+      "Bash(pnpm:*)",
+      "Bash(node:*)",
+      "Bash(npx tsc:*)",
+      "Bash(git status:*)",
+      "Bash(git add:*)"
     ],
     "deny": []
   }
