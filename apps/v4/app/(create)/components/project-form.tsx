@@ -34,8 +34,8 @@ import { HugeiconsIcon } from "@hugeicons/react"
 
 import { cn } from "@/lib/utils"
 import { useConfig } from "@/hooks/use-config"
-import { BASES, type BaseName } from "@/registry/config"
 import { copyToClipboardWithMeta } from "@/components/copy-button"
+import { BASES, type BaseName } from "@/registry/config"
 import { usePresetCode } from "@/app/(create)/hooks/use-design-system"
 import {
   useDesignSystemSearchParams,
