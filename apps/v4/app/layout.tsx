@@ -40,6 +40,7 @@ export const metadata: Metadata = {
   keywords: ["Next.js", "React", "Tailwind CSS", "Components", "shadcn"],
   
   
+  
   authors: [
     {
       name: "shadcn",
