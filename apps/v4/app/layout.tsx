@@ -138,6 +138,7 @@ export default function RootLayout({
             <ActiveThemeProvider>
             
             
+            
               <NuqsAdapter>
               
                 {children}
