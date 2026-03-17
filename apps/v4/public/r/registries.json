@@ -186,6 +186,12 @@
     "description": "A collection of beautiful, reusable component blocks built with React"
   },
   {
+    "name": "@dsikeres1",
+    "homepage": "https://dsikeres1.github.io/react-date-range-picker/",
+    "url": "https://dsikeres1.github.io/react-date-range-picker/r/{name}.json",
+    "description": "A headless, composable date & date range picker for React. 5 picker types, 15 locales, dark mode, accessible. Zero dependencies."
+  },
+  {
     "name": "@elements",
     "homepage": "https://www.tryelements.dev",
     "url": "https://www.tryelements.dev/r/{name}.json",
