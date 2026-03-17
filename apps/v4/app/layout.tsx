@@ -54,6 +54,7 @@ export const metadata: Metadata = {
     url: process.env.NEXT_PUBLIC_APP_URL!,
     
     
+    
     title: siteConfig.name,
     description: siteConfig.description,
     siteName: siteConfig.name,
