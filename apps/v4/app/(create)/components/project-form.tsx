@@ -87,7 +87,7 @@ export function ProjectForm({
     const rtlFlag = params.rtl ? " --rtl" : ""
     const flags = `${presetFlag}${baseFlag}${templateFlag}${monorepoFlag}${rtlFlag}`
 
-    return IS_LOCAL_DEV && !process.env.NEXT_PUBLIC_RC
+    return IS_LOCAL_DEV
       ? {
           pnpm: `shadcn init${flags}`,
           npm: `shadcn init${flags}`,

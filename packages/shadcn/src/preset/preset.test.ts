@@ -9,6 +9,7 @@ import {
   isPresetCode,
   isValidPreset,
   PRESET_BASE_COLORS,
+  PRESET_CHART_COLORS,
   PRESET_FONTS,
   PRESET_ICON_LIBRARIES,
   PRESET_MENU_ACCENTS,
@@ -48,6 +49,7 @@ describe("encodePreset / decodePreset", () => {
       style: "lyra",
       baseColor: "zinc",
       theme: "blue",
+      chartColor: "emerald",
       iconLibrary: "tabler",
       font: "jetbrains-mono",
       radius: "large",
@@ -123,6 +125,14 @@ describe("encodePreset / decodePreset", () => {
       const code = encodePreset({ baseColor })
       const decoded = decodePreset(code)
       expect(decoded!.baseColor).toBe(baseColor)
+    }
+  })
+
+  it("should round-trip all chart colors", () => {
+    for (const chartColor of PRESET_CHART_COLORS) {
+      const code = encodePreset({ chartColor })
+      const decoded = decodePreset(code)
+      expect(decoded!.chartColor).toBe(chartColor)
     }
   })
 

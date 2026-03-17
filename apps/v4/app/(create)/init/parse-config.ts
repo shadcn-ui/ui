@@ -28,6 +28,7 @@ export function parseDesignSystemConfig(searchParams: URLSearchParams) {
       iconLibrary: searchParams.get("iconLibrary"),
       baseColor: searchParams.get("baseColor"),
       theme: searchParams.get("theme"),
+      chartColor: searchParams.get("chartColor") ?? undefined,
       font: searchParams.get("font"),
       menuAccent: searchParams.get("menuAccent"),
       menuColor: searchParams.get("menuColor"),

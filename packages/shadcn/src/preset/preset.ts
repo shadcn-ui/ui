@@ -53,6 +53,8 @@ export const PRESET_THEMES = [
   "taupe",
 ] as const
 
+export const PRESET_CHART_COLORS = PRESET_THEMES
+
 export const PRESET_ICON_LIBRARIES = [
   "lucide",
   "hugeicons",
@@ -97,7 +99,7 @@ export const PRESET_MENU_COLORS = [
   "inverted-translucent",
 ] as const
 
-// Field definitions in pack order. Total: 43 bits, 10 bits headroom.
+// Field definitions in pack order. Total: 46 bits, 7 bits headroom.
 // Note: `base` was removed (was bits 40-42). Old codes are backward-compatible
 // because `base` was the last field — decoder stops at bit 40 and ignores the rest.
 const PRESET_FIELDS = [
@@ -109,12 +111,14 @@ const PRESET_FIELDS = [
   { key: "theme", values: PRESET_THEMES, bits: 6 },
   { key: "baseColor", values: PRESET_BASE_COLORS, bits: 6 },
   { key: "style", values: PRESET_STYLES, bits: 6 },
+  { key: "chartColor", values: PRESET_CHART_COLORS, bits: 6 },
 ] as const
 
 export type PresetConfig = {
   style: (typeof PRESET_STYLES)[number]
   baseColor: (typeof PRESET_BASE_COLORS)[number]
   theme: (typeof PRESET_THEMES)[number]
+  chartColor: (typeof PRESET_CHART_COLORS)[number]
   iconLibrary: (typeof PRESET_ICON_LIBRARIES)[number]
   font: (typeof PRESET_FONTS)[number]
   radius: (typeof PRESET_RADII)[number]

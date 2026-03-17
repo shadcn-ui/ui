@@ -7,7 +7,7 @@ import {
   CardFooter,
   CardHeader,
 } from "@/examples/base/ui/card"
-import { FieldGroup } from "@/examples/base/ui/field"
+import { FieldGroup, FieldSeparator } from "@/examples/base/ui/field"
 import { type RegistryItem } from "shadcn/schema"
 
 import { useIsMobile } from "@/hooks/use-mobile"
@@ -16,6 +16,7 @@ import { MenuAccentPicker } from "@/app/(create)/components/accent-picker"
 import { ActionMenu } from "@/app/(create)/components/action-menu"
 import { BaseColorPicker } from "@/app/(create)/components/base-color-picker"
 import { BasePicker } from "@/app/(create)/components/base-picker"
+import { ChartColorPicker } from "@/app/(create)/components/chart-color-picker"
 import { CopyPreset } from "@/app/(create)/components/copy-preset"
 import { FontPicker } from "@/app/(create)/components/font-picker"
 import { IconLibraryPicker } from "@/app/(create)/components/icon-library-picker"
@@ -54,22 +55,26 @@ export function Customizer({
         <MainMenu />
       </CardHeader>
       <CardContent className="no-scrollbar min-h-0 flex-1 overflow-x-auto overflow-y-hidden md:overflow-y-auto">
-        <FieldGroup className="flex-row gap-2.5 py-px md:flex-col md:gap-3.25">
+        <FieldGroup className="flex-row gap-2.5 py-px **:data-[slot=field-separator]:-mx-4 **:data-[slot=field-separator]:w-auto md:flex-col md:gap-3.25">
           {isMobile && <BasePicker isMobile={isMobile} anchorRef={anchorRef} />}
           <StylePicker
             styles={STYLES}
             isMobile={isMobile}
             anchorRef={anchorRef}
           />
+          <FieldSeparator />
           <BaseColorPicker isMobile={isMobile} anchorRef={anchorRef} />
           <ThemePicker
             themes={availableThemes}
             isMobile={isMobile}
             anchorRef={anchorRef}
           />
+          <ChartColorPicker isMobile={isMobile} anchorRef={anchorRef} />
+          <FieldSeparator />
           <IconLibraryPicker isMobile={isMobile} anchorRef={anchorRef} />
           <FontPicker fonts={FONTS} isMobile={isMobile} anchorRef={anchorRef} />
           <RadiusPicker isMobile={isMobile} anchorRef={anchorRef} />
+          <FieldSeparator />
           <MenuColorPicker isMobile={isMobile} anchorRef={anchorRef} />
           <MenuAccentPicker isMobile={isMobile} anchorRef={anchorRef} />
         </FieldGroup>

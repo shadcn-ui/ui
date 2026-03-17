@@ -116,6 +116,7 @@ export function resolveInitUrl(
     style: string
     baseColor: string
     theme: string
+    chartColor?: string
     iconLibrary: string
     font: string
     rtl: boolean
@@ -137,6 +138,10 @@ export function resolveInitUrl(
     menuColor: preset.menuColor,
     radius: preset.radius,
   })
+
+  if (preset.chartColor) {
+    params.set("chartColor", preset.chartColor)
+  }
 
   if (options?.template) {
     params.set("template", options.template)

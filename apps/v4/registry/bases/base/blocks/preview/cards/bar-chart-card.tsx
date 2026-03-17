@@ -1,7 +1,9 @@
 "use client"
 
+import * as React from "react"
 import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
 
+import { Button } from "@/registry/bases/base/ui/button"
 import {
   Card,
   CardAction,
@@ -72,7 +74,7 @@ export function BarChartCard() {
           </ToggleGroup>
         </CardAction>
       </CardHeader>
-      <CardContent className="pt-0">
+      <CardContent className="flex flex-col gap-4 pt-0">
         <ChartContainer
           config={barChartConfig}
           className="max-h-[180px] w-full"
@@ -107,8 +109,6 @@ export function BarChartCard() {
             />
           </BarChart>
         </ChartContainer>
-      </CardContent>
-      <CardFooter>
         <div className="grid w-full grid-cols-3 divide-x divide-border/60">
           <div className="px-2 text-center">
             <div className="text-[0.65rem] text-muted-foreground uppercase">
@@ -136,6 +136,9 @@ export function BarChartCard() {
             </div>
           </div>
         </div>
+      </CardContent>
+      <CardFooter>
+        <Button className="w-full">View report</Button>
       </CardFooter>
     </Card>
   )

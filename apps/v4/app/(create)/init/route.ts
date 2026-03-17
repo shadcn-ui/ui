@@ -24,6 +24,7 @@ export async function GET(request: NextRequest) {
             style: result.data.style,
             baseColor: result.data.baseColor,
             theme: result.data.theme,
+            chartColor: result.data.chartColor,
             iconLibrary: result.data.iconLibrary,
             font: result.data.font,
             radius: result.data.radius,

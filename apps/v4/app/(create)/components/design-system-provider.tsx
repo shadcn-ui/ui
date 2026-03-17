@@ -64,8 +64,16 @@ export function DesignSystemProvider({
     history: "replace", // …or push updates into the iframe history.
   })
   const [isReady, setIsReady] = React.useState(false)
-  const { style, theme, font, baseColor, menuAccent, menuColor, radius } =
-    searchParams
+  const {
+    style,
+    theme,
+    font,
+    baseColor,
+    chartColor,
+    menuAccent,
+    menuColor,
+    radius,
+  } = searchParams
   const effectiveRadius = style === "lyra" ? "none" : radius
   const selectedFont = React.useMemo(
     () => FONTS.find((fontOption) => fontOption.value === font),
@@ -140,12 +148,13 @@ export function DesignSystemProvider({
       ...DEFAULT_CONFIG,
       baseColor,
       theme,
+      chartColor,
       menuAccent,
       radius: effectiveRadius,
     }
 
     return buildRegistryTheme(config)
-  }, [baseColor, theme, menuAccent, effectiveRadius])
+  }, [baseColor, theme, chartColor, menuAccent, effectiveRadius])
 
   // Use useLayoutEffect for synchronous CSS var updates.
   React.useLayoutEffect(() => {

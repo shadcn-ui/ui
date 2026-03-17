@@ -22,12 +22,12 @@ export function StyleOverview() {
 
   return (
     <Card>
-      <CardContent className="flex flex-col gap-6">
+      <CardContent className="flex flex-col gap-6 style-lyra:gap-4 style-mira:gap-4">
         <div className="flex flex-col gap-1">
-          <div className="text-2xl font-medium">
+          <div className="text-2xl font-medium style-lyra:text-lg style-mira:text-lg">
             {currentStyle?.title} - {currentFont?.name}
           </div>
-          <div className="line-clamp-2 text-base text-muted-foreground">
+          <div className="line-clamp-2 text-base text-muted-foreground style-lyra:text-sm style-mira:text-sm">
             Designers love packing quirky glyphs into test phrases. This is a
             preview of the typography styles.
           </div>
@@ -40,7 +40,7 @@ export function StyleOverview() {
             "--secondary",
             "--muted",
             "--accent",
-            "--destructive",
+            "--border",
             "--chart-1",
             "--chart-2",
             "--chart-3",
@@ -59,7 +59,7 @@ export function StyleOverview() {
                   } as React.CSSProperties
                 }
               />
-              <div className="hidden max-w-14 truncate font-mono text-[0.60rem] md:block">
+              <div className="hidden max-w-14 truncate font-mono text-[0.60rem] md:block style-lyra:max-w-10 style-mira:max-w-10">
                 {variant}
               </div>
             </div>

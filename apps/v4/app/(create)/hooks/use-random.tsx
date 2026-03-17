@@ -62,6 +62,17 @@ export function useRandom() {
     const selectedTheme = locks.has("theme")
       ? paramsRef.current.theme
       : randomItem(availableThemes).name
+    context.theme = selectedTheme
+
+    const availableChartColors = applyBias(
+      getThemesForBaseColor(baseColor),
+      context,
+      RANDOMIZE_BIASES.chartColors
+    )
+    const selectedChartColor = locks.has("chartColor")
+      ? paramsRef.current.chartColor
+      : randomItem(availableChartColors).name
+    context.chartColor = selectedChartColor
     const selectedFont = locks.has("font")
       ? paramsRef.current.font
       : randomItem(availableFonts).value
@@ -91,7 +102,6 @@ export function useRandom() {
           : paramsRef.current.menuAccent
         : randomItem(MENU_ACCENTS).value
 
-    context.theme = selectedTheme
     context.font = selectedFont
     context.radius = selectedRadius
 
@@ -99,6 +109,7 @@ export function useRandom() {
       style: selectedStyle,
       baseColor,
       theme: selectedTheme,
+      chartColor: selectedChartColor,
       iconLibrary: selectedIconLibrary,
       font: selectedFont,
       menuAccent: selectedMenuAccent,

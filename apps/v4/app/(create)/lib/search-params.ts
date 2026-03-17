@@ -16,6 +16,7 @@ import {
   BASE_COLORS,
   BASES,
   DEFAULT_CONFIG,
+  getThemesForBaseColor,
   iconLibraries,
   MENU_ACCENTS,
   MENU_COLORS,
@@ -24,6 +25,7 @@ import {
   THEMES,
   type BaseColorName,
   type BaseName,
+  type ChartColorName,
   type FontValue,
   type IconLibraryName,
   type MenuAccentValue,
@@ -49,6 +51,9 @@ const designSystemSearchParams = {
   theme: parseAsStringLiteral<ThemeName>(THEMES.map((t) => t.name)).withDefault(
     DEFAULT_CONFIG.theme
   ),
+  chartColor: parseAsStringLiteral<ChartColorName>(
+    THEMES.map((t) => t.name)
+  ).withDefault(DEFAULT_CONFIG.chartColor),
   font: parseAsStringLiteral<FontValue>(FONTS.map((f) => f.value)).withDefault(
     DEFAULT_CONFIG.font
   ),
@@ -87,6 +92,7 @@ const DESIGN_SYSTEM_KEYS = [
   "style",
   "baseColor",
   "theme",
+  "chartColor",
   "iconLibrary",
   "font",
   "radius",
@@ -145,17 +151,35 @@ function normalizePartialDesignSystemParams(
 function normalizeDesignSystemParams(
   params: DesignSystemSearchParams
 ): DesignSystemSearchParams {
+  let result = params
+
+  // Validate theme and chartColor against baseColor.
+  if (result.baseColor) {
+    const available = getThemesForBaseColor(result.baseColor)
+    const themeValid = available.some((t) => t.name === result.theme)
+    const chartColorValid = available.some((t) => t.name === result.chartColor)
+
+    if (!themeValid || !chartColorValid) {
+      const fallback = (available[0]?.name ?? result.baseColor) as ThemeName
+      result = {
+        ...result,
+        ...(!themeValid && { theme: fallback }),
+        ...(!chartColorValid && { chartColor: fallback as ChartColorName }),
+      }
+    }
+  }
+
   if (
-    params.menuAccent === "bold" &&
-    isTranslucentMenuColor(params.menuColor)
+    result.menuAccent === "bold" &&
+    isTranslucentMenuColor(result.menuColor)
   ) {
     return {
-      ...params,
+      ...result,
       menuAccent: "subtle",
     }
   }
 
-  return params
+  return result
 }
 
 // Wraps nuqs useQueryStates with transparent preset encoding/decoding.
@@ -223,6 +247,7 @@ export function useDesignSystemSearchParams(options: Options = {}) {
         style: merged.style ?? undefined,
         baseColor: merged.baseColor ?? undefined,
         theme: merged.theme ?? undefined,
+        chartColor: merged.chartColor ?? undefined,
         iconLibrary: merged.iconLibrary ?? undefined,
         font: merged.font ?? undefined,
         radius: merged.radius ?? undefined,

@@ -24,6 +24,7 @@ export function useReset() {
       style: DEFAULT_CONFIG.style,
       baseColor: DEFAULT_CONFIG.baseColor,
       theme: DEFAULT_CONFIG.theme,
+      chartColor: DEFAULT_CONFIG.chartColor,
       iconLibrary: DEFAULT_CONFIG.iconLibrary,
       font: DEFAULT_CONFIG.font,
       menuAccent: DEFAULT_CONFIG.menuAccent,
