@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { NuqsAdapter } from "nuqs/adapters/next/app"
 
 
+
 import { META_THEME_COLORS, siteConfig } from "@/lib/config"
 
 import { fontVariables } from "@/lib/fonts"
