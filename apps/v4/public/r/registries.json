@@ -922,5 +922,11 @@
     "homepage": "https://nexus-ui.dev",
     "url": "https://nexus-ui.dev/r/{name}.json",
     "description": "Open-source component library of composable, copy-paste primitives for building AI interfaces (chat, streaming, multimodal)"
+  },
+  {
+    "name": "@sabraman",
+    "homepage": "https://sabraman.ru/components",
+    "url": "https://sabraman.ru/r/{name}.json",
+    "description": "Legacy skeuomorphic UI components and blocks for shadcn."
   }
 ]
