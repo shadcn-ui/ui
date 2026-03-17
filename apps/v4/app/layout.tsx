@@ -97,6 +97,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning className={fontVariables}>
     
     
+    
       <head>
         <script
           dangerouslySetInnerHTML={{
