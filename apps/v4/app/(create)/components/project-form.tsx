@@ -34,6 +34,7 @@ import { HugeiconsIcon } from "@hugeicons/react"
 
 import { cn } from "@/lib/utils"
 import { useConfig } from "@/hooks/use-config"
+import { BASES, type BaseName } from "@/registry/config"
 import { copyToClipboardWithMeta } from "@/components/copy-button"
 import { usePresetCode } from "@/app/(create)/hooks/use-design-system"
 import {
@@ -129,68 +130,74 @@ export function ProjectForm({
       <DialogTrigger render={<Button className={cn(className)} />}>
         Create Project
       </DialogTrigger>
-      <DialogContent className="min-w-0 sm:max-w-sm">
+      <DialogContent className="no-scrollbar max-h-[calc(100svh-2rem)] overflow-y-auto sm:max-w-sm">
         <DialogHeader>
           <DialogTitle>Create Project</DialogTitle>
           <DialogDescription>
-            Pick a template and configure your project. Available for all major
-            React frameworks.
+            Pick a template and configure your project.
           </DialogDescription>
         </DialogHeader>
-        <FieldGroup>
-          <Field>
-            <FieldLabel className="sr-only">Template</FieldLabel>
-            <TemplateGrid template={params.template} setParams={setParams} />
-          </Field>
-          <FieldSeparator />
-          <FieldSet>
-            <FieldLegend variant="label" className="sr-only">
-              Options
-            </FieldLegend>
-            <Field
-              orientation="horizontal"
-              data-disabled={hasMonorepo ? undefined : "true"}
-            >
-              <FieldLabel htmlFor="monorepo">
-                <span
-                  className="size-4 text-foreground [&_svg]:size-4 [&_svg]:fill-current"
-                  dangerouslySetInnerHTML={{
-                    __html: TURBOREPO_LOGO,
-                  }}
-                />
-                Create a monorepo
-              </FieldLabel>
-              <Switch
-                id="monorepo"
-                checked={params.template?.endsWith("-monorepo") ?? false}
-                disabled={!hasMonorepo}
-                onCheckedChange={(checked) => {
-                  const framework = getFramework(params.template ?? "next")
-                  setParams({
-                    template: getTemplateValue(
-                      framework,
-                      checked === true
-                    ) as typeof params.template,
-                  })
-                }}
-              />
+        <div>
+          <FieldGroup>
+            <Field>
+              <FieldLabel>Template</FieldLabel>
+              <TemplateGrid template={params.template} setParams={setParams} />
             </Field>
             <FieldSeparator />
-            <Field orientation="horizontal">
-              <FieldLabel htmlFor="rtl">
-                <HugeiconsIcon icon={Globe02Icon} className="size-4" />
-                Enable RTL support
-              </FieldLabel>
-              <Switch
-                id="rtl"
-                checked={params.rtl}
-                onCheckedChange={(checked) =>
-                  setParams({ rtl: checked === true })
-                }
-              />
+            <Field className="-mt-2">
+              <FieldLabel>Base</FieldLabel>
+              <BaseGrid base={params.base} setParams={setParams} />
             </Field>
-          </FieldSet>
-        </FieldGroup>
+            <FieldSeparator />
+            <FieldSet>
+              <FieldLegend variant="label" className="sr-only">
+                Options
+              </FieldLegend>
+              <Field
+                orientation="horizontal"
+                data-disabled={hasMonorepo ? undefined : "true"}
+              >
+                <FieldLabel htmlFor="monorepo">
+                  <span
+                    className="size-4 text-foreground [&_svg]:size-4 [&_svg]:fill-current"
+                    dangerouslySetInnerHTML={{
+                      __html: TURBOREPO_LOGO,
+                    }}
+                  />
+                  Create a monorepo
+                </FieldLabel>
+                <Switch
+                  id="monorepo"
+                  checked={params.template?.endsWith("-monorepo") ?? false}
+                  disabled={!hasMonorepo}
+                  onCheckedChange={(checked) => {
+                    const framework = getFramework(params.template ?? "next")
+                    setParams({
+                      template: getTemplateValue(
+                        framework,
+                        checked === true
+                      ) as typeof params.template,
+                    })
+                  }}
+                />
+              </Field>
+              <FieldSeparator />
+              <Field orientation="horizontal">
+                <FieldLabel htmlFor="rtl">
+                  <HugeiconsIcon icon={Globe02Icon} className="size-4" />
+                  Enable RTL support
+                </FieldLabel>
+                <Switch
+                  id="rtl"
+                  checked={params.rtl}
+                  onCheckedChange={(checked) =>
+                    setParams({ rtl: checked === true })
+                  }
+                />
+              </Field>
+            </FieldSet>
+          </FieldGroup>
+        </div>
         <DialogFooter className="min-w-0">
           <div className="flex w-full min-w-0 flex-col gap-3">
             <Tabs
@@ -302,6 +309,55 @@ const TemplateGrid = React.memo(function TemplateGrid({
             <RadioGroupItem
               value={item.value}
               id={`template-${item.value}`}
+              className="sr-only absolute"
+            />
+          </Field>
+        </FieldLabel>
+      ))}
+    </RadioGroup>
+  )
+})
+
+const BaseGrid = React.memo(function BaseGrid({
+  base,
+  setParams,
+}: {
+  base: DesignSystemSearchParams["base"]
+  setParams: ReturnType<typeof useDesignSystemSearchParams>[1]
+}) {
+  const handleBaseChange = React.useCallback(
+    (value: string) => {
+      setParams({ base: value as BaseName })
+    },
+    [setParams]
+  )
+
+  return (
+    <RadioGroup
+      value={base}
+      onValueChange={handleBaseChange}
+      aria-label="Base"
+      className="grid grid-cols-2 gap-2"
+    >
+      {BASES.map((item) => (
+        <FieldLabel
+          key={item.name}
+          htmlFor={`base-${item.name}`}
+          className="py-1"
+        >
+          <Field className="gap-0" orientation="horizontal">
+            <FieldContent className="flex flex-col items-center justify-center gap-2">
+              <div
+                className="size-6 text-foreground [&_svg]:size-6 *:[svg]:text-foreground!"
+                dangerouslySetInnerHTML={{
+                  __html: item.meta?.logo ?? "",
+                }}
+              />
+              <FieldTitle className="text-xs">{item.title}</FieldTitle>
+            </FieldContent>
+            <RadioGroupItem
+              value={item.name}
+              id={`base-${item.name}`}
               className="sr-only absolute"
             />
           </Field>
