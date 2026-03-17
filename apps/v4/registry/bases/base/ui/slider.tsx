@@ -5,14 +5,14 @@ import { Slider as SliderPrimitive } from "@base-ui/react/slider"
 
 import { cn } from "@/registry/bases/base/lib/utils"
 
-function Slider({
+function Slider<Value extends number | readonly number[]>({
   className,
   defaultValue,
   value,
   min = 0,
   max = 100,
   ...props
-}: SliderPrimitive.Root.Props) {
+}: SliderPrimitive.Root.Props<Value>) {
   const _values = React.useMemo(
     () =>
       Array.isArray(value)
