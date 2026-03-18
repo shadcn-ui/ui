@@ -928,5 +928,11 @@
     "homepage": "https://sabraman.ru/components",
     "url": "https://sabraman.ru/r/{name}.json",
     "description": "Legacy skeuomorphic UI components and blocks for shadcn."
+  },
+  {
+    "name": "@rescript-shadcn",
+    "homepage": "https://rescript-shadcn.miriad.studio",
+    "url": "https://rescript-shadcn.miriad.studio/r/{name}.json",
+    "description": "Shadcn components rewritten in Rescript, compatible with shadcn CLI."
   }
 ]
