@@ -11,6 +11,7 @@ export const fonts = [
       variable: "--font-sans",
       subsets: ["latin"],
       import: "Geist",
+      dependency: "@fontsource-variable/geist",
     },
   },
   {
@@ -23,6 +24,7 @@ export const fonts = [
       variable: "--font-sans",
       subsets: ["latin"],
       import: "Inter",
+      dependency: "@fontsource-variable/inter",
     },
   },
   {
@@ -34,6 +36,7 @@ export const fonts = [
       provider: "google",
       variable: "--font-sans",
       import: "Noto_Sans",
+      dependency: "@fontsource-variable/noto-sans",
     },
   },
   {
@@ -45,6 +48,7 @@ export const fonts = [
       provider: "google",
       variable: "--font-sans",
       import: "Nunito_Sans",
+      dependency: "@fontsource-variable/nunito-sans",
     },
   },
   {
@@ -57,6 +61,7 @@ export const fonts = [
       variable: "--font-sans",
       subsets: ["latin"],
       import: "Figtree",
+      dependency: "@fontsource-variable/figtree",
     },
   },
   {
@@ -69,6 +74,7 @@ export const fonts = [
       variable: "--font-sans",
       subsets: ["latin"],
       import: "Roboto",
+      dependency: "@fontsource-variable/roboto",
     },
   },
   {
@@ -81,6 +87,7 @@ export const fonts = [
       variable: "--font-sans",
       subsets: ["latin"],
       import: "Raleway",
+      dependency: "@fontsource-variable/raleway",
     },
   },
   {
@@ -93,6 +100,7 @@ export const fonts = [
       variable: "--font-sans",
       subsets: ["latin"],
       import: "DM_Sans",
+      dependency: "@fontsource-variable/dm-sans",
     },
   },
   {
@@ -105,6 +113,7 @@ export const fonts = [
       variable: "--font-sans",
       subsets: ["latin"],
       import: "Public_Sans",
+      dependency: "@fontsource-variable/public-sans",
     },
   },
   {
@@ -117,6 +126,7 @@ export const fonts = [
       variable: "--font-sans",
       subsets: ["latin"],
       import: "Outfit",
+      dependency: "@fontsource-variable/outfit",
     },
   },
   {
@@ -129,6 +139,7 @@ export const fonts = [
       variable: "--font-mono",
       subsets: ["latin"],
       import: "JetBrains_Mono",
+      dependency: "@fontsource-variable/jetbrains-mono",
     },
   },
   {
@@ -141,6 +152,7 @@ export const fonts = [
       variable: "--font-mono",
       subsets: ["latin"],
       import: "Geist_Mono",
+      dependency: "@fontsource-variable/geist-mono",
     },
   },
   {
@@ -153,6 +165,7 @@ export const fonts = [
       variable: "--font-serif",
       subsets: ["latin"],
       import: "Noto_Serif",
+      dependency: "@fontsource-variable/noto-serif",
     },
   },
   {
@@ -165,6 +178,7 @@ export const fonts = [
       variable: "--font-serif",
       subsets: ["latin"],
       import: "Roboto_Slab",
+      dependency: "@fontsource-variable/roboto-slab",
     },
   },
   {
@@ -177,6 +191,7 @@ export const fonts = [
       variable: "--font-serif",
       subsets: ["latin"],
       import: "Merriweather",
+      dependency: "@fontsource-variable/merriweather",
     },
   },
   {
@@ -189,6 +204,7 @@ export const fonts = [
       variable: "--font-serif",
       subsets: ["latin"],
       import: "Lora",
+      dependency: "@fontsource-variable/lora",
     },
   },
   {
@@ -201,6 +217,7 @@ export const fonts = [
       variable: "--font-serif",
       subsets: ["latin"],
       import: "Playfair_Display",
+      dependency: "@fontsource-variable/playfair-display",
     },
   },
 ] satisfies RegistryItem[]

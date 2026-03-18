@@ -44,7 +44,8 @@ export async function massageTreeForFonts(
     } else {
       // Other frameworks will use fontsource for now.
       const fontName = font.name.replace("font-", "")
-      const fontSourceDependency = `@fontsource-variable/${fontName}`
+      const fontSourceDependency =
+        font.font.dependency ?? `@fontsource-variable/${fontName}`
       tree.dependencies ??= []
       tree.dependencies.push(fontSourceDependency)
       tree.css ??= {}

@@ -1,5 +1,23 @@
 # @shadcn/ui
 
+## 4.0.8
+
+### Patch Changes
+
+- [#10041](https://github.com/shadcn-ui/ui/pull/10041) [`a97ebe54f1824032d8ad00d1d0c079e3dc6f52d7`](https://github.com/shadcn-ui/ui/commit/a97ebe54f1824032d8ad00d1d0c079e3dc6f52d7) Thanks [@shadcn](https://github.com/shadcn)! - Bundle @antfu/ni and tinyexec to fix missing module error with npx
+
+## 4.0.7
+
+### Patch Changes
+
+- [#9929](https://github.com/shadcn-ui/ui/pull/9929) [`f9b365bc7f9d591c995952976711dbdd7b1bc45a`](https://github.com/shadcn-ui/ui/commit/f9b365bc7f9d591c995952976711dbdd7b1bc45a) Thanks [@kapishdima](https://github.com/kapishdima)! - add dependency field to registry:font
+
+## 4.0.6
+
+### Patch Changes
+
+- [#10022](https://github.com/shadcn-ui/ui/pull/10022) [`7e93eb81ea8160c06c86f98bb6bfeb1ddfd0d237`](https://github.com/shadcn-ui/ui/commit/7e93eb81ea8160c06c86f98bb6bfeb1ddfd0d237) Thanks [@shadcn](https://github.com/shadcn)! - ensure monorepo respect package manager
+
 ## 4.0.5
 
 ### Patch Changes

@@ -339,6 +339,34 @@ Environment variables are added to the `.env.local` or `.env` file. Existing var
 
 </Callout>
 
+### font
+
+The `font` property is required for `registry:font` items. It configures the font family, provider, import name, CSS variable, and the npm package to install for non-Next.js projects.
+
+```json title="registry-item.json" showLineNumbers
+{
+  "font": {
+    "family": "'Inter Variable', sans-serif",
+    "provider": "google",
+    "import": "Inter",
+    "variable": "--font-sans",
+    "subsets": ["latin"],
+    "dependency": "@fontsource-variable/inter"
+  }
+}
+```
+
+| Property     | Type       | Required | Description                                                                               |
+| ------------ | ---------- | -------- | ----------------------------------------------------------------------------------------- |
+| `family`     | `string`   | Yes      | The CSS font-family value.                                                                |
+| `provider`   | `string`   | Yes      | The font provider. Currently only `google` is supported.                                  |
+| `import`     | `string`   | Yes      | The import name for the font from `next/font/google`.                                     |
+| `variable`   | `string`   | Yes      | The CSS variable name for the font (e.g., `--font-sans`, `--font-mono`).                  |
+| `weight`     | `string[]` | No       | Array of font weights to include.                                                         |
+| `subsets`    | `string[]` | No       | Array of font subsets to include.                                                         |
+| `selector`   | `string`   | No       | CSS selector to apply the font to. Defaults to `html`.                                    |
+| `dependency` | `string`   | No       | The npm package to install for non-Next.js projects (e.g., `@fontsource-variable/inter`). |
+
 ### docs
 
 Use `docs` to show custom documentation or message when installing your registry item via the CLI.

@@ -278,7 +278,7 @@ importers:
         specifier: ^0.0.1
         version: 0.0.1
       shadcn:
-        specifier: 4.0.5
+        specifier: 4.0.8
         version: link:../../packages/shadcn
       shiki:
         specifier: ^1.10.1
@@ -359,9 +359,6 @@ importers:
 
   packages/shadcn:
     dependencies:
-      '@antfu/ni':
-        specifier: ^25.0.0
-        version: 25.0.0
       '@babel/core':
         specifier: ^7.28.0
         version: 7.28.0
@@ -465,6 +462,9 @@ importers:
         specifier: ^3.24.6
         version: 3.24.6(zod@3.25.76)
     devDependencies:
+      '@antfu/ni':
+        specifier: ^25.0.0
+        version: 25.0.0
       '@types/babel__core':
         specifier: ^7.20.5
         version: 7.20.5
