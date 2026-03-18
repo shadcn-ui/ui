@@ -8,8 +8,6 @@ import {
   CardHeader,
 } from "@/examples/base/ui/card"
 import { FieldGroup } from "@/examples/base/ui/field"
-import { Separator } from "@/examples/base/ui/separator"
-import { CardTitle } from "@/examples/radix/ui/card"
 import { type RegistryItem } from "shadcn/schema"
 
 import { useIsMobile } from "@/hooks/use-mobile"
@@ -23,7 +21,6 @@ import { FontPicker } from "@/app/(create)/components/font-picker"
 import { IconLibraryPicker } from "@/app/(create)/components/icon-library-picker"
 import { MainMenu } from "@/app/(create)/components/main-menu"
 import { MenuColorPicker } from "@/app/(create)/components/menu-picker"
-import { ProjectForm } from "@/app/(create)/components/project-form"
 import { RadiusPicker } from "@/app/(create)/components/radius-picker"
 import { RandomButton } from "@/app/(create)/components/random-button"
 import { ResetDialog } from "@/app/(create)/components/reset-button"
@@ -58,7 +55,7 @@ export function Customizer({
       </CardHeader>
       <CardContent className="no-scrollbar min-h-0 flex-1 overflow-x-auto overflow-y-hidden md:overflow-y-auto">
         <FieldGroup className="flex-row gap-2.5 py-px md:flex-col md:gap-3.25">
-          <BasePicker isMobile={isMobile} anchorRef={anchorRef} />
+          {isMobile && <BasePicker isMobile={isMobile} anchorRef={anchorRef} />}
           <StylePicker
             styles={STYLES}
             isMobile={isMobile}
