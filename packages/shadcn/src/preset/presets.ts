@@ -124,7 +124,7 @@ export function resolveInitUrl(
     menuColor: string
     radius: string
   },
-  options?: { template?: string }
+  options?: { template?: string; preset?: string }
 ) {
   const params = new URLSearchParams({
     base: preset.base,
@@ -141,6 +141,12 @@ export function resolveInitUrl(
 
   if (preset.chartColor) {
     params.set("chartColor", preset.chartColor)
+  }
+
+  // Pass the original preset code so the server can apply
+  // version-specific backward-compat fixups.
+  if (options?.preset) {
+    params.set("preset", options.preset)
   }
 
   if (options?.template) {

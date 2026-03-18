@@ -68,7 +68,7 @@ describe("encodePreset / decodePreset", () => {
 
   it("should start with the version character", () => {
     const code = encodePreset(DEFAULT_PRESET_CONFIG)
-    expect(code[0]).toBe("a")
+    expect(code[0]).toBe("b")
   })
 
   it("should handle partial config by filling defaults", () => {
@@ -164,11 +164,41 @@ describe("decodePreset edge cases", () => {
   })
 
   it("should return null for wrong version prefix", () => {
-    expect(decodePreset("b123")).toBeNull()
+    expect(decodePreset("c123")).toBeNull()
   })
 
   it("should return null for invalid base62 characters", () => {
     expect(decodePreset("A!@#")).toBeNull()
+  })
+})
+
+describe("v1/v2 backward compatibility", () => {
+  it("should decode old 'a'-prefixed codes without chartColor", () => {
+    const decoded = decodePreset("a0")
+    expect(decoded).not.toBeNull()
+    expect(decoded!.style).toBe("nova")
+    expect(decoded!.theme).toBe("neutral")
+    expect(decoded!.chartColor).toBeUndefined()
+  })
+
+  it("should decode new 'b'-prefixed codes with chartColor", () => {
+    const code = encodePreset({ theme: "blue", chartColor: "emerald" })
+    expect(code[0]).toBe("b")
+    const decoded = decodePreset(code)
+    expect(decoded).not.toBeNull()
+    expect(decoded!.theme).toBe("blue")
+    expect(decoded!.chartColor).toBe("emerald")
+  })
+
+  it("should encode always produces 'b'-prefixed codes", () => {
+    const code = encodePreset({})
+    expect(code[0]).toBe("b")
+  })
+
+  it("should accept both 'a' and 'b' in isPresetCode", () => {
+    expect(isPresetCode("a0")).toBe(true)
+    expect(isPresetCode("b0")).toBe(true)
+    expect(isPresetCode("c0")).toBe(false)
   })
 })
 
@@ -207,7 +237,7 @@ describe("isValidPreset", () => {
 
   it("should return false for invalid codes", () => {
     expect(isValidPreset("")).toBe(false)
-    expect(isValidPreset("b123")).toBe(false)
+    expect(isValidPreset("c123")).toBe(false)
   })
 })
 

@@ -401,13 +401,14 @@ async function buildComponentFiles(designSystemConfig: DesignSystemConfig) {
   // Build config once for all components.
   const config = buildTransformConfig(designSystemConfig)
 
-  // Fetch UI components and the item component in parallel.
-  const [registryItemFiles, itemComponentFile] = await Promise.all([
+  // Fetch UI components, the demo, and the item component in parallel.
+  const [registryItemFiles, demoFile, itemComponentFile] = await Promise.all([
     Promise.all(
       allItemsForBase.map((name) =>
         getRegistryItemFile(name, designSystemConfig, config)
       )
     ),
+    getRegistryItemFile("demo", designSystemConfig, config),
     designSystemConfig.item
       ? getRegistryItemFile(designSystemConfig.item, designSystemConfig, config)
       : null,
@@ -415,29 +416,24 @@ async function buildComponentFiles(designSystemConfig: DesignSystemConfig) {
 
   const files = [...registryItemFiles.filter(Boolean)]
 
+  // Include the demo component.
+  if (demoFile) {
+    files.push({
+      ...demoFile,
+      target: "components/demo.tsx",
+      type: "registry:component",
+    })
+  }
+
   const pageFile = {
     path: "app/page.tsx",
     type: "registry:page",
     target: "app/page.tsx",
     content: dedent`
-      import { Button } from "@/components/ui/button"
+      import { Demo } from "@/components/demo"
 
       export default function Page() {
-        return (
-          <div className="flex min-h-svh p-6">
-            <div className="flex max-w-md min-w-0 flex-col gap-4 text-sm leading-loose">
-              <div>
-                <h1 className="font-medium">Project ready!</h1>
-                <p>You may now add components and start building.</p>
-                <p>We&apos;ve already added the button component for you.</p>
-                <Button className="mt-2">Button</Button>
-              </div>
-              <div className="font-mono text-xs text-muted-foreground">
-                (Press <kbd>d</kbd> to toggle dark mode)
-              </div>
-            </div>
-          </div>
-        )
+        return <Demo />
       }
     `,
   }

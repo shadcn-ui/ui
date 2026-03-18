@@ -10,7 +10,12 @@ import {
   type inferParserType,
   type Options,
 } from "nuqs/server"
-import { decodePreset, encodePreset, isPresetCode } from "shadcn/preset"
+import {
+  decodePreset,
+  encodePreset,
+  isPresetCode,
+  V1_CHART_COLOR_MAP,
+} from "shadcn/preset"
 
 import {
   BASE_COLORS,
@@ -37,7 +42,7 @@ import {
 import { FONTS } from "@/app/(create)/lib/fonts"
 
 const designSystemSearchParams = {
-  preset: parseAsString.withDefault("a0"),
+  preset: parseAsString.withDefault("b0"),
   base: parseAsStringLiteral<BaseName>(BASES.map((b) => b.name)).withDefault(
     DEFAULT_CONFIG.base
   ),
@@ -53,7 +58,7 @@ const designSystemSearchParams = {
   ),
   chartColor: parseAsStringLiteral<ChartColorName>(
     THEMES.map((t) => t.name)
-  ).withDefault(DEFAULT_CONFIG.chartColor),
+  ).withDefault(DEFAULT_CONFIG.chartColor ?? "neutral"),
   font: parseAsStringLiteral<FontValue>(FONTS.map((f) => f.value)).withDefault(
     DEFAULT_CONFIG.font
   ),
@@ -193,16 +198,20 @@ export function useDesignSystemSearchParams(options: Options = {}) {
   })
 
   // If preset param exists, decode it and overlay on raw params.
-  const params = React.useMemo(
-    () =>
-      rawParams.preset && isPresetCode(rawParams.preset)
-        ? normalizeDesignSystemParams({
-            ...rawParams,
-            ...(decodePreset(rawParams.preset) ?? {}),
-          })
-        : normalizeDesignSystemParams(rawParams),
-    [rawParams]
-  )
+  const params = React.useMemo(() => {
+    if (rawParams.preset && isPresetCode(rawParams.preset)) {
+      const decoded = decodePreset(rawParams.preset)
+      if (decoded) {
+        return normalizeDesignSystemParams({
+          ...rawParams,
+          ...decoded,
+          chartColor:
+            decoded.chartColor ?? V1_CHART_COLOR_MAP[decoded.theme] ?? decoded.theme,
+        })
+      }
+    }
+    return normalizeDesignSystemParams(rawParams)
+  }, [rawParams])
 
   // Use ref so setParams callback stays stable across renders.
   const paramsRef = React.useRef(params)

@@ -71,4 +71,28 @@ describe("buildInitUrl", () => {
     const parsed = new URL(url)
     expect(parsed.searchParams.has("template")).toBe(false)
   })
+
+  it("should include chartColor when provided", () => {
+    const url = resolveInitUrl({ ...mockPreset, chartColor: "emerald" })
+    const parsed = new URL(url)
+    expect(parsed.searchParams.get("chartColor")).toBe("emerald")
+  })
+
+  it("should not include chartColor when not provided", () => {
+    const url = resolveInitUrl(mockPreset)
+    const parsed = new URL(url)
+    expect(parsed.searchParams.has("chartColor")).toBe(false)
+  })
+
+  it("should include preset code when provided", () => {
+    const url = resolveInitUrl(mockPreset, { preset: "a0" })
+    const parsed = new URL(url)
+    expect(parsed.searchParams.get("preset")).toBe("a0")
+  })
+
+  it("should not include preset when not provided", () => {
+    const url = resolveInitUrl(mockPreset)
+    const parsed = new URL(url)
+    expect(parsed.searchParams.has("preset")).toBe(false)
+  })
 })
