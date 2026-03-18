@@ -9,6 +9,7 @@ export type LockableParam =
   | "chartColor"
   | "iconLibrary"
   | "font"
+  | "fontHeading"
   | "menuAccent"
   | "menuColor"
   | "radius"

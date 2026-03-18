@@ -28,7 +28,7 @@ import { ResetDialog } from "@/app/(create)/components/reset-button"
 import { StylePicker } from "@/app/(create)/components/style-picker"
 import { ThemePicker } from "@/app/(create)/components/theme-picker"
 import { V0Button } from "@/app/(create)/components/v0-button"
-import { FONTS } from "@/app/(create)/lib/fonts"
+import { FONT_HEADING_OPTIONS, FONTS } from "@/app/(create)/lib/fonts"
 import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
 
 export function Customizer({
@@ -71,8 +71,22 @@ export function Customizer({
           />
           <ChartColorPicker isMobile={isMobile} anchorRef={anchorRef} />
           <FieldSeparator className="hidden md:block" />
+          <FontPicker
+            label="Font"
+            param="font"
+            fonts={FONTS}
+            isMobile={isMobile}
+            anchorRef={anchorRef}
+          />
+          <FontPicker
+            label="Heading"
+            param="fontHeading"
+            fonts={FONT_HEADING_OPTIONS}
+            isMobile={isMobile}
+            anchorRef={anchorRef}
+          />
+          <FieldSeparator className="hidden md:block" />
           <IconLibraryPicker isMobile={isMobile} anchorRef={anchorRef} />
-          <FontPicker fonts={FONTS} isMobile={isMobile} anchorRef={anchorRef} />
           <RadiusPicker isMobile={isMobile} anchorRef={anchorRef} />
           <FieldSeparator className="hidden md:block" />
           <MenuColorPicker isMobile={isMobile} anchorRef={anchorRef} />

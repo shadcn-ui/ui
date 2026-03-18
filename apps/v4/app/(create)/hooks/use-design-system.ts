@@ -1,42 +1,23 @@
 "use client"
 
-import * as React from "react"
-import { encodePreset, isPresetCode } from "shadcn/preset"
+import { encodePreset } from "shadcn/preset"
 
 import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
 
-// Returns the current preset code derived from search params.
+// Returns the canonical preset code derived from the current search params.
 export function usePresetCode() {
   const [params] = useDesignSystemSearchParams()
 
-  return React.useMemo(() => {
-    // If preset is already in the URL, return it.
-    if (params.preset && isPresetCode(params.preset)) {
-      return params.preset
-    }
-
-    // Otherwise encode current params (e.g. on initial load before first interaction).
-    return encodePreset({
-      style: params.style ?? undefined,
-      baseColor: params.baseColor ?? undefined,
-      theme: params.theme ?? undefined,
-      chartColor: params.chartColor ?? undefined,
-      iconLibrary: params.iconLibrary ?? undefined,
-      font: params.font ?? undefined,
-      radius: params.radius ?? undefined,
-      menuAccent: params.menuAccent ?? undefined,
-      menuColor: params.menuColor ?? undefined,
-    } as Parameters<typeof encodePreset>[0])
-  }, [
-    params.preset,
-    params.style,
-    params.baseColor,
-    params.theme,
-    params.chartColor,
-    params.iconLibrary,
-    params.font,
-    params.radius,
-    params.menuAccent,
-    params.menuColor,
-  ])
+  return encodePreset({
+    style: params.style,
+    baseColor: params.baseColor,
+    theme: params.theme,
+    chartColor: params.chartColor,
+    iconLibrary: params.iconLibrary,
+    font: params.font,
+    fontHeading: params.fontHeading,
+    radius: params.radius,
+    menuAccent: params.menuAccent,
+    menuColor: params.menuColor,
+  } as Parameters<typeof encodePreset>[0])
 }

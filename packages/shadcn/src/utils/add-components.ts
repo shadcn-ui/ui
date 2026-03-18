@@ -6,6 +6,7 @@ import {
   configSchema,
   registryItemFileSchema,
   registryItemSchema,
+  registryResolvedItemsTreeSchema,
   workspaceConfigSchema,
 } from "@/src/schema"
 import {
@@ -110,6 +111,8 @@ async function addProjectComponents(
     tree = await massageTreeForFonts(tree, config)
   }
 
+  const supportedFontMarkers = getSupportedFontMarkers(tree)
+
   await updateDependencies(tree.dependencies, tree.devDependencies, config, {
     silent: options.silent,
   })
@@ -133,6 +136,7 @@ async function addProjectComponents(
     overwrite: options.overwrite,
     silent: options.silent,
     path: options.path,
+    supportedFontMarkers,
   })
 
   // Write CSS last so the file watcher triggers a rebuild
@@ -210,6 +214,7 @@ async function addWorkspaceComponents(
   // Massage tree for fonts using the app config for framework detection.
   // This adds fontsource deps + CSS for non-Next, or next/font CSS vars for Next.
   tree = await massageTreeForFonts(tree, config)
+  const supportedFontMarkers = getSupportedFontMarkers(tree)
 
   // 1. Update dependencies.
   await updateDependencies(
@@ -294,6 +299,7 @@ async function addWorkspaceComponents(
       isRemote: options.isRemote,
       isWorkspace: true,
       path: options.path,
+      supportedFontMarkers,
     })
 
     filesCreated.push(
@@ -409,6 +415,35 @@ async function shouldOverwriteCssVars(
       component.type === "registry:font" ||
       component.type === "registry:base"
   )
+}
+
+const FONT_MARKERS_BY_VARIABLE: Record<string, string> = {
+  "--font-heading": "cn-font-heading",
+}
+
+function getSupportedFontMarkers(
+  tree: z.infer<typeof registryResolvedItemsTreeSchema>
+) {
+  const supportedMarkers = new Set<string>()
+
+  for (const font of tree.fonts ?? []) {
+    const marker = FONT_MARKERS_BY_VARIABLE[font.font.variable]
+    if (marker) {
+      supportedMarkers.add(marker)
+    }
+  }
+
+  for (const vars of Object.values(tree.cssVars ?? {})) {
+    for (const key of Object.keys(vars ?? {})) {
+      const normalizedKey = key.startsWith("--") ? key : `--${key}`
+      const marker = FONT_MARKERS_BY_VARIABLE[normalizedKey]
+      if (marker) {
+        supportedMarkers.add(marker)
+      }
+    }
+  }
+
+  return Array.from(supportedMarkers)
 }
 
 function validateFilesTarget(

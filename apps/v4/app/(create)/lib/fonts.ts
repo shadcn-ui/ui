@@ -209,3 +209,15 @@ export const FONTS = [
 ] as const
 
 export type Font = (typeof FONTS)[number]
+
+export const FONT_HEADING_OPTIONS = [
+  {
+    name: "Inherit",
+    value: "inherit",
+    font: null,
+    type: "default",
+  },
+  ...FONTS,
+] as const
+
+export type FontHeadingOption = (typeof FONT_HEADING_OPTIONS)[number]

@@ -10,6 +10,7 @@ import {
   MENU_COLORS,
   RADII,
   STYLES,
+  type FontHeadingValue,
 } from "@/registry/config"
 import { useLocks } from "@/app/(create)/hooks/use-locks"
 import { FONTS } from "@/app/(create)/lib/fonts"
@@ -76,6 +77,13 @@ export function useRandom() {
     const selectedFont = locks.has("font")
       ? paramsRef.current.font
       : randomItem(availableFonts).value
+    const availableFontHeadings = [
+      "inherit",
+      ...availableFonts.map((font) => font.value),
+    ] as const
+    const selectedFontHeading = locks.has("fontHeading")
+      ? paramsRef.current.fontHeading
+      : (randomItem(availableFontHeadings) as FontHeadingValue)
     const selectedRadius = locks.has("radius")
       ? paramsRef.current.radius
       : randomItem(availableRadii).name
@@ -112,6 +120,7 @@ export function useRandom() {
       chartColor: selectedChartColor,
       iconLibrary: selectedIconLibrary,
       font: selectedFont,
+      fontHeading: selectedFontHeading,
       menuAccent: selectedMenuAccent,
       menuColor: selectedMenuColor,
       radius: selectedRadius,

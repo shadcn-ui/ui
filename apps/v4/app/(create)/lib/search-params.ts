@@ -31,6 +31,7 @@ import {
   type BaseColorName,
   type BaseName,
   type ChartColorName,
+  type FontHeadingValue,
   type FontValue,
   type IconLibraryName,
   type MenuAccentValue,
@@ -62,6 +63,10 @@ const designSystemSearchParams = {
   font: parseAsStringLiteral<FontValue>(FONTS.map((f) => f.value)).withDefault(
     DEFAULT_CONFIG.font
   ),
+  fontHeading: parseAsStringLiteral<FontHeadingValue>([
+    "inherit",
+    ...FONTS.map((f) => f.value),
+  ]).withDefault(DEFAULT_CONFIG.fontHeading),
   baseColor: parseAsStringLiteral<BaseColorName>(
     BASE_COLORS.map((b) => b.name)
   ).withDefault(DEFAULT_CONFIG.baseColor),
@@ -100,10 +105,18 @@ const DESIGN_SYSTEM_KEYS = [
   "chartColor",
   "iconLibrary",
   "font",
+  "fontHeading",
   "radius",
   "menuAccent",
   "menuColor",
 ] as const
+
+function normalizeFontHeading(
+  font: FontValue,
+  fontHeading: FontHeadingValue
+): FontHeadingValue {
+  return fontHeading === font ? "inherit" : fontHeading
+}
 
 // Non-design-system keys that get passed through as-is.
 // `base` is not encoded in preset codes — it's an architectural choice, not visual.
@@ -156,7 +169,10 @@ function normalizePartialDesignSystemParams(
 function normalizeDesignSystemParams(
   params: DesignSystemSearchParams
 ): DesignSystemSearchParams {
-  let result = params
+  let result = {
+    ...params,
+    fontHeading: normalizeFontHeading(params.font, params.fontHeading),
+  }
 
   // Validate theme and chartColor against baseColor.
   if (result.baseColor) {
@@ -257,7 +273,6 @@ export function useDesignSystemSearchParams(options: Options = {}) {
         ...paramsRef.current,
         ...resolvedUpdates,
       })
-
       // Encode design system fields into a preset code.
       // Cast needed: merged values may include null from nuqs resets,
       // but encodePreset handles missing values by falling back to defaults.
@@ -268,11 +283,11 @@ export function useDesignSystemSearchParams(options: Options = {}) {
         chartColor: merged.chartColor ?? undefined,
         iconLibrary: merged.iconLibrary ?? undefined,
         font: merged.font ?? undefined,
+        fontHeading: merged.fontHeading ?? undefined,
         radius: merged.radius ?? undefined,
         menuAccent: merged.menuAccent ?? undefined,
         menuColor: merged.menuColor ?? undefined,
       } as Parameters<typeof encodePreset>[0])
-
       // Build update: set preset, clear individual DS params from URL.
       const rawUpdate: Record<string, unknown> = { preset: code }
       for (const key of DESIGN_SYSTEM_KEYS) {
