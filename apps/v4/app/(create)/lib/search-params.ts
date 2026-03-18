@@ -187,6 +187,26 @@ function normalizeDesignSystemParams(
   return result
 }
 
+// If preset param exists, decode it and overlay on raw params.
+// V1 presets don't encode chartColor — fall back to the colored
+// theme that base-color themes originally borrowed charts from.
+function resolvePresetParams(rawParams: DesignSystemSearchParams) {
+  if (rawParams.preset && isPresetCode(rawParams.preset)) {
+    const decoded = decodePreset(rawParams.preset)
+    if (decoded) {
+      return normalizeDesignSystemParams({
+        ...rawParams,
+        ...decoded,
+        chartColor:
+          decoded.chartColor ??
+          V1_CHART_COLOR_MAP[decoded.theme] ??
+          decoded.theme,
+      })
+    }
+  }
+  return normalizeDesignSystemParams(rawParams)
+}
+
 // Wraps nuqs useQueryStates with transparent preset encoding/decoding.
 // - Reads: if ?preset=CODE is in the URL, decodes it and returns individual values.
 // - Writes: when design system params are set, encodes them into a preset code.
@@ -197,21 +217,10 @@ export function useDesignSystemSearchParams(options: Options = {}) {
     ...options,
   })
 
-  // If preset param exists, decode it and overlay on raw params.
-  const params = React.useMemo(() => {
-    if (rawParams.preset && isPresetCode(rawParams.preset)) {
-      const decoded = decodePreset(rawParams.preset)
-      if (decoded) {
-        return normalizeDesignSystemParams({
-          ...rawParams,
-          ...decoded,
-          chartColor:
-            decoded.chartColor ?? V1_CHART_COLOR_MAP[decoded.theme] ?? decoded.theme,
-        })
-      }
-    }
-    return normalizeDesignSystemParams(rawParams)
-  }, [rawParams])
+  const params = React.useMemo(
+    () => resolvePresetParams(rawParams),
+    [rawParams]
+  )
 
   // Use ref so setParams callback stays stable across renders.
   const paramsRef = React.useRef(params)

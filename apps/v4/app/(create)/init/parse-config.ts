@@ -20,7 +20,9 @@ export function parseDesignSystemConfig(searchParams: URLSearchParams) {
       // V1 presets don't encode chartColor — fall back to the colored
       // theme that base-color themes originally borrowed charts from.
       chartColor:
-        decoded.chartColor ?? V1_CHART_COLOR_MAP[decoded.theme] ?? decoded.theme,
+        decoded.chartColor ??
+        V1_CHART_COLOR_MAP[decoded.theme] ??
+        decoded.theme,
       base: searchParams.get("base") ?? "radix",
       template: searchParams.get("template") ?? undefined,
       rtl: searchParams.get("rtl") === "true",

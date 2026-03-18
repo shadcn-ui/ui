@@ -229,9 +229,7 @@ export function isPresetCode(value: string) {
     return false
   }
 
-  if (
-    !VALID_VERSIONS.includes(value[0] as (typeof VALID_VERSIONS)[number])
-  ) {
+  if (!VALID_VERSIONS.includes(value[0] as (typeof VALID_VERSIONS)[number])) {
     return false
   }
 
