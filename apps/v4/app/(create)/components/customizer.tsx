@@ -62,7 +62,7 @@ export function Customizer({
             isMobile={isMobile}
             anchorRef={anchorRef}
           />
-          <FieldSeparator />
+          <FieldSeparator className="hidden md:block" />
           <BaseColorPicker isMobile={isMobile} anchorRef={anchorRef} />
           <ThemePicker
             themes={availableThemes}
@@ -70,11 +70,11 @@ export function Customizer({
             anchorRef={anchorRef}
           />
           <ChartColorPicker isMobile={isMobile} anchorRef={anchorRef} />
-          <FieldSeparator />
+          <FieldSeparator className="hidden md:block" />
           <IconLibraryPicker isMobile={isMobile} anchorRef={anchorRef} />
           <FontPicker fonts={FONTS} isMobile={isMobile} anchorRef={anchorRef} />
           <RadiusPicker isMobile={isMobile} anchorRef={anchorRef} />
-          <FieldSeparator />
+          <FieldSeparator className="hidden md:block" />
           <MenuColorPicker isMobile={isMobile} anchorRef={anchorRef} />
           <MenuAccentPicker isMobile={isMobile} anchorRef={anchorRef} />
         </FieldGroup>
