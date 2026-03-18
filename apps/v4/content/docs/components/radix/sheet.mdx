@@ -87,6 +87,18 @@ Use the `side` prop on `SheetContent` to set the edge of the screen where the sh
 
 <ComponentPreview styleName="radix-nova" name="sheet-side" />
 
+### Portal Container
+
+Use the `container` prop on `SheetContent` to portal the sheet inside a specific DOM element instead of `document.body`. This is useful when using a sheet inside a sidebar layout to prevent it from covering the sidebar.
+
+```tsx
+const scrollRef = useRef<HTMLDivElement>(null)
+
+<SheetContent side="bottom" container={scrollRef.current}>
+  {/* portals inside the scroll container */}
+</SheetContent>
+```
+
 ### No Close Button
 
 Use `showCloseButton={false}` on `SheetContent` to hide the close button.
