@@ -5,7 +5,12 @@ import {
   type configSchema,
   type RegistryItem,
 } from "shadcn/schema"
-import { transformIcons, transformMenu, transformRender } from "shadcn/utils"
+import {
+  transformFont,
+  transformIcons,
+  transformMenu,
+  transformRender,
+} from "shadcn/utils"
 import { Project, ScriptKind } from "ts-morph"
 import { z } from "zod"
 
@@ -153,7 +158,12 @@ const ALIASES = {
   hooks: "@/hooks",
 } as const
 
-const transformers = [transformIcons, transformMenu, transformRender]
+const transformers: Array<typeof transformFont> = [
+  transformIcons,
+  transformMenu,
+  transformRender,
+  transformFont,
+]
 
 function getStyle(designSystemConfig: DesignSystemConfig) {
   return `${designSystemConfig.base}-${designSystemConfig.style}`
@@ -591,6 +601,7 @@ async function transformFileContent(
       raw: content,
       sourceFile,
       config,
+      supportedFontMarkers: ["cn-font-heading"],
     })
   }
 
