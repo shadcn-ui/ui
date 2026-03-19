@@ -52,3 +52,4 @@ jobs:
 
       - name: Validate registries
         run: pnpm --filter=v4 validate:registries
+        

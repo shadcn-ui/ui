@@ -76,3 +76,4 @@ jobs:
                 console.log('Deprecated label not found, skipping removal');
               }
             }
+            

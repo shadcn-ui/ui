@@ -61,3 +61,4 @@ body:
         - label: I've attached a square SVG logo to this issue
     validations:
       required: true
+      
