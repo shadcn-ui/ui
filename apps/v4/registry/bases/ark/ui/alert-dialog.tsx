@@ -1,14 +1,14 @@
 "use client"
 
 import * as React from "react"
+import { ark } from "@ark-ui/react/factory"
 import { Dialog as DialogPrimitive } from "@ark-ui/react/dialog"
 import { Portal } from "@ark-ui/react/portal"
 
 import { cn } from "@/registry/bases/ark/lib/utils"
 import { Button } from "@/registry/bases/ark/ui/button"
 
-// Ark UI doesn't have a separate AlertDialog primitive, so we use Dialog with role="alertdialog"
-function AlertDialog({ ...props }: DialogPrimitive.RootProps) {
+function AlertDialog({ ...props }: React.ComponentProps<typeof DialogPrimitive.Root>) {
   return <DialogPrimitive.Root data-slot="alert-dialog" {...props} />
 }
 
@@ -16,10 +16,6 @@ function AlertDialogTrigger({
   ...props
 }: React.ComponentProps<typeof DialogPrimitive.Trigger>) {
   return <DialogPrimitive.Trigger data-slot="alert-dialog-trigger" {...props} />
-}
-
-function AlertDialogPortal({ children }: { children: React.ReactNode }) {
-  return <Portal>{children}</Portal>
 }
 
 function AlertDialogOverlay({
@@ -43,7 +39,7 @@ function AlertDialogContent({
   size?: "default" | "sm"
 }) {
   return (
-    <AlertDialogPortal>
+    <Portal>
       <AlertDialogOverlay />
       <DialogPrimitive.Positioner className="fixed inset-0 z-50 flex items-center justify-center">
         <DialogPrimitive.Content
@@ -57,16 +53,16 @@ function AlertDialogContent({
           {...props}
         />
       </DialogPrimitive.Positioner>
-    </AlertDialogPortal>
+    </Portal>
   )
 }
 
 function AlertDialogHeader({
   className,
   ...props
-}: React.ComponentProps<"div">) {
+}: React.ComponentProps<typeof ark.div>) {
   return (
-    <div
+    <ark.div
       data-slot="alert-dialog-header"
       className={cn("cn-alert-dialog-header", className)}
       {...props}
@@ -77,9 +73,9 @@ function AlertDialogHeader({
 function AlertDialogFooter({
   className,
   ...props
-}: React.ComponentProps<"div">) {
+}: React.ComponentProps<typeof ark.div>) {
   return (
-    <div
+    <ark.div
       data-slot="alert-dialog-footer"
       className={cn(
         "cn-alert-dialog-footer flex flex-col-reverse gap-2 group-data-[size=sm]/alert-dialog-content:grid group-data-[size=sm]/alert-dialog-content:grid-cols-2 sm:flex-row sm:justify-end",
@@ -93,9 +89,9 @@ function AlertDialogFooter({
 function AlertDialogMedia({
   className,
   ...props
-}: React.ComponentProps<"div">) {
+}: React.ComponentProps<typeof ark.div>) {
   return (
-    <div
+    <ark.div
       data-slot="alert-dialog-media"
       className={cn("cn-alert-dialog-media", className)}
       {...props}
@@ -175,7 +171,6 @@ export {
   AlertDialogHeader,
   AlertDialogMedia,
   AlertDialogOverlay,
-  AlertDialogPortal,
   AlertDialogTitle,
   AlertDialogTrigger,
 }

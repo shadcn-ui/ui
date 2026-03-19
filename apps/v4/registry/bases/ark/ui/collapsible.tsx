@@ -5,31 +5,37 @@ import { Collapsible as CollapsiblePrimitive } from "@ark-ui/react/collapsible"
 
 import { cn } from "@/registry/bases/ark/lib/utils"
 
-function Collapsible({
-  ...props
-}: React.ComponentProps<typeof CollapsiblePrimitive.Root>) {
-  return <CollapsiblePrimitive.Root data-slot="collapsible" {...props} />
-}
+const Collapsible = React.forwardRef<
+  React.ElementRef<typeof CollapsiblePrimitive.Root>,
+  React.ComponentPropsWithoutRef<typeof CollapsiblePrimitive.Root>
+>(({ ...props }, ref) => (
+  <CollapsiblePrimitive.Root ref={ref} data-slot="collapsible" {...props} />
+))
+Collapsible.displayName = "Collapsible"
 
-function CollapsibleTrigger({
-  ...props
-}: React.ComponentProps<typeof CollapsiblePrimitive.Trigger>) {
-  return (
-    <CollapsiblePrimitive.Trigger data-slot="collapsible-trigger" {...props} />
-  )
-}
+const CollapsibleTrigger = React.forwardRef<
+  React.ElementRef<typeof CollapsiblePrimitive.Trigger>,
+  React.ComponentPropsWithoutRef<typeof CollapsiblePrimitive.Trigger>
+>(({ ...props }, ref) => (
+  <CollapsiblePrimitive.Trigger
+    ref={ref}
+    data-slot="collapsible-trigger"
+    {...props}
+  />
+))
+CollapsibleTrigger.displayName = "CollapsibleTrigger"
 
-function CollapsibleContent({
-  className,
-  ...props
-}: React.ComponentProps<typeof CollapsiblePrimitive.Content>) {
-  return (
-    <CollapsiblePrimitive.Content
-      data-slot="collapsible-content"
-      className={cn("cn-collapsible-content", className)}
-      {...props}
-    />
-  )
-}
+const CollapsibleContent = React.forwardRef<
+  React.ElementRef<typeof CollapsiblePrimitive.Content>,
+  React.ComponentPropsWithoutRef<typeof CollapsiblePrimitive.Content>
+>(({ className, ...props }, ref) => (
+  <CollapsiblePrimitive.Content
+    ref={ref}
+    data-slot="collapsible-content"
+    className={cn("cn-collapsible-content", className)}
+    {...props}
+  />
+))
+CollapsibleContent.displayName = "CollapsibleContent"
 
 export { Collapsible, CollapsibleContent, CollapsibleTrigger }

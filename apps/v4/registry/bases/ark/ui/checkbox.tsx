@@ -17,14 +17,13 @@ function Checkbox({
       {...props}
     >
       <CheckboxPrimitive.Control className="cn-checkbox-control">
-        <CheckboxPrimitive.Indicator>
+        <CheckboxPrimitive.Indicator className="cn-checkbox-indicator">
           <IconPlaceholder
             lucide="CheckIcon"
             tabler="IconCheck"
             hugeicons="Tick02Icon"
             phosphor="CheckIcon"
             remixicon="RiCheckLine"
-            className="cn-checkbox-indicator"
           />
         </CheckboxPrimitive.Indicator>
       </CheckboxPrimitive.Control>

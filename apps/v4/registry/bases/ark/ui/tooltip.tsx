@@ -2,7 +2,6 @@
 
 import * as React from "react"
 import { Tooltip as TooltipPrimitive } from "@ark-ui/react/tooltip"
-import { Portal } from "@ark-ui/react/portal"
 
 import { cn } from "@/registry/bases/ark/lib/utils"
 
@@ -22,25 +21,24 @@ function TooltipTrigger({
   return <TooltipPrimitive.Trigger data-slot="tooltip-trigger" {...props} />
 }
 
-function TooltipContent({
-  className,
-  sideOffset = 4,
-  ...props
-}: React.ComponentProps<typeof TooltipPrimitive.Content> & {
-  sideOffset?: number
-}) {
-  return (
-    <Portal>
-      <TooltipPrimitive.Positioner>
-        <TooltipPrimitive.Content
-          data-slot="tooltip-content"
-          className={cn("cn-tooltip-content", className)}
-          {...props}
-        />
-      </TooltipPrimitive.Positioner>
-    </Portal>
-  )
-}
+const TooltipContent = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentProps<typeof TooltipPrimitive.Content> & {
+    sideOffset?: number
+  }
+>(({ className, sideOffset = 4, children, ...props }, ref) => (
+  <TooltipPrimitive.Positioner>
+    <TooltipPrimitive.Content
+      ref={ref}
+      data-slot="tooltip-content"
+      className={cn("cn-tooltip-content", className)}
+      {...props}
+    >
+      {children}
+    </TooltipPrimitive.Content>
+  </TooltipPrimitive.Positioner>
+))
+TooltipContent.displayName = "TooltipContent"
 
 function TooltipArrow({
   className,

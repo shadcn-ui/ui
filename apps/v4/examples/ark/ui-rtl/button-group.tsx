@@ -1,4 +1,4 @@
-import { Slot } from "@ark-ui/react/slot"
+import { ark } from "@ark-ui/react/factory"
 import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/examples/ark/lib/utils"
@@ -44,7 +44,7 @@ function ButtonGroupText({
 }: React.ComponentProps<"div"> & {
   asChild?: boolean
 }) {
-  const Comp = asChild ? Slot : "div"
+  const Comp = asChild ? ark.div : "div"
 
   return (
     <Comp

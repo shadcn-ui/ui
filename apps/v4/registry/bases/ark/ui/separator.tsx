@@ -1,19 +1,25 @@
 "use client"
 
 import * as React from "react"
-import { Separator as SeparatorPrimitive } from "@ark-ui/react/separator"
+import { ark } from "@ark-ui/react/factory"
 
 import { cn } from "@/registry/bases/ark/lib/utils"
 
 function Separator({
   className,
   orientation = "horizontal",
+  decorative = true,
   ...props
-}: React.ComponentProps<typeof SeparatorPrimitive>) {
+}: React.ComponentProps<typeof ark.div> & {
+  orientation?: "horizontal" | "vertical"
+  decorative?: boolean
+}) {
   return (
-    <SeparatorPrimitive
+    <ark.div
       data-slot="separator"
-      orientation={orientation}
+      role={decorative ? "none" : "separator"}
+      aria-orientation={decorative ? undefined : orientation}
+      data-orientation={orientation}
       className={cn(
         "bg-border shrink-0 data-[orientation=horizontal]:h-px data-[orientation=horizontal]:w-full data-[orientation=vertical]:w-px data-[orientation=vertical]:self-stretch",
         className

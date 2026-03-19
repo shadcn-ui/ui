@@ -2,13 +2,15 @@
 
 import * as React from "react"
 import { Dialog as DialogPrimitive } from "@ark-ui/react/dialog"
+import { ark } from "@ark-ui/react/factory"
 import { Portal } from "@ark-ui/react/portal"
 
 import { cn } from "@/examples/ark/lib/utils"
 import { Button } from "@/examples/ark/ui/button"
 
-// Ark UI doesn't have a separate AlertDialog primitive, so we use Dialog with role="alertdialog"
-function AlertDialog({ ...props }: DialogPrimitive.RootProps) {
+function AlertDialog({
+  ...props
+}: React.ComponentProps<typeof DialogPrimitive.Root>) {
   return <DialogPrimitive.Root data-slot="alert-dialog" {...props} />
 }
 
@@ -16,10 +18,6 @@ function AlertDialogTrigger({
   ...props
 }: React.ComponentProps<typeof DialogPrimitive.Trigger>) {
   return <DialogPrimitive.Trigger data-slot="alert-dialog-trigger" {...props} />
-}
-
-function AlertDialogPortal({ children }: { children: React.ReactNode }) {
-  return <Portal>{children}</Portal>
 }
 
 function AlertDialogOverlay({
@@ -46,7 +44,7 @@ function AlertDialogContent({
   size?: "default" | "sm"
 }) {
   return (
-    <AlertDialogPortal>
+    <Portal>
       <AlertDialogOverlay />
       <DialogPrimitive.Positioner className="fixed inset-0 z-50 flex items-center justify-center">
         <DialogPrimitive.Content
@@ -60,16 +58,16 @@ function AlertDialogContent({
           {...props}
         />
       </DialogPrimitive.Positioner>
-    </AlertDialogPortal>
+    </Portal>
   )
 }
 
 function AlertDialogHeader({
   className,
   ...props
-}: React.ComponentProps<"div">) {
+}: React.ComponentProps<typeof ark.div>) {
   return (
-    <div
+    <ark.div
       data-slot="alert-dialog-header"
       className={cn(
         "grid grid-rows-[auto_1fr] place-items-center gap-1.5 text-center has-data-[slot=alert-dialog-media]:grid-rows-[auto_auto_1fr] has-data-[slot=alert-dialog-media]:gap-x-4 sm:group-data-[size=default]/alert-dialog-content:place-items-start sm:group-data-[size=default]/alert-dialog-content:text-left sm:group-data-[size=default]/alert-dialog-content:has-data-[slot=alert-dialog-media]:grid-rows-[auto_1fr]",
@@ -83,9 +81,9 @@ function AlertDialogHeader({
 function AlertDialogFooter({
   className,
   ...props
-}: React.ComponentProps<"div">) {
+}: React.ComponentProps<typeof ark.div>) {
   return (
-    <div
+    <ark.div
       data-slot="alert-dialog-footer"
       className={cn(
         "-mx-4 -mb-4 flex flex-col-reverse gap-2 rounded-b-xl border-t bg-muted/50 p-4 group-data-[size=sm]/alert-dialog-content:grid group-data-[size=sm]/alert-dialog-content:grid-cols-2 sm:flex-row sm:justify-end",
@@ -99,9 +97,9 @@ function AlertDialogFooter({
 function AlertDialogMedia({
   className,
   ...props
-}: React.ComponentProps<"div">) {
+}: React.ComponentProps<typeof ark.div>) {
   return (
-    <div
+    <ark.div
       data-slot="alert-dialog-media"
       className={cn(
         "mb-2 inline-flex size-10 items-center justify-center rounded-md bg-muted sm:group-data-[size=default]/alert-dialog-content:row-span-2 *:[svg:not([class*='size-'])]:size-6",
@@ -190,7 +188,6 @@ export {
   AlertDialogHeader,
   AlertDialogMedia,
   AlertDialogOverlay,
-  AlertDialogPortal,
   AlertDialogTitle,
   AlertDialogTrigger,
 }

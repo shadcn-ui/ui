@@ -7,16 +7,23 @@ import { cn } from "@/registry/bases/ark/lib/utils"
 
 function Switch({
   className,
+  size = "default",
   ...props
-}: React.ComponentProps<typeof SwitchPrimitive.Root>) {
+}: React.ComponentProps<typeof SwitchPrimitive.Root> & {
+  size?: "sm" | "default"
+}) {
   return (
     <SwitchPrimitive.Root
       data-slot="switch"
+      data-size={size}
       className={cn("cn-switch", className)}
       {...props}
     >
       <SwitchPrimitive.Control className="cn-switch-control">
-        <SwitchPrimitive.Thumb className="cn-switch-thumb" />
+        <SwitchPrimitive.Thumb
+          data-slot="switch-thumb"
+          className="cn-switch-thumb"
+        />
       </SwitchPrimitive.Control>
       <SwitchPrimitive.HiddenInput />
     </SwitchPrimitive.Root>

@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { ark } from "@ark-ui/react/factory"
 import { Dialog as DialogPrimitive } from "@ark-ui/react/dialog"
 import { Portal } from "@ark-ui/react/portal"
 
@@ -9,7 +10,7 @@ import { Button } from "@/registry/bases/ark/ui/button"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 // Sheet is implemented using Dialog with side positioning
-function Sheet({ ...props }: DialogPrimitive.RootProps) {
+function Sheet({ ...props }: React.ComponentProps<typeof DialogPrimitive.Root>) {
   return <DialogPrimitive.Root data-slot="sheet" {...props} />
 }
 
@@ -23,10 +24,6 @@ function SheetClose({
   ...props
 }: React.ComponentProps<typeof DialogPrimitive.CloseTrigger>) {
   return <DialogPrimitive.CloseTrigger data-slot="sheet-close" {...props} />
-}
-
-function SheetPortal({ children }: { children: React.ReactNode }) {
-  return <Portal>{children}</Portal>
 }
 
 function SheetOverlay({
@@ -53,7 +50,7 @@ function SheetContent({
   showCloseButton?: boolean
 }) {
   return (
-    <SheetPortal>
+    <Portal>
       <SheetOverlay />
       <DialogPrimitive.Positioner className="fixed inset-0 z-50">
         <DialogPrimitive.Content
@@ -79,13 +76,16 @@ function SheetContent({
           )}
         </DialogPrimitive.Content>
       </DialogPrimitive.Positioner>
-    </SheetPortal>
+    </Portal>
   )
 }
 
-function SheetHeader({ className, ...props }: React.ComponentProps<"div">) {
+function SheetHeader({
+  className,
+  ...props
+}: React.ComponentProps<typeof ark.div>) {
   return (
-    <div
+    <ark.div
       data-slot="sheet-header"
       className={cn("cn-sheet-header flex flex-col", className)}
       {...props}
@@ -93,9 +93,12 @@ function SheetHeader({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
-function SheetFooter({ className, ...props }: React.ComponentProps<"div">) {
+function SheetFooter({
+  className,
+  ...props
+}: React.ComponentProps<typeof ark.div>) {
   return (
-    <div
+    <ark.div
       data-slot="sheet-footer"
       className={cn("cn-sheet-footer mt-auto flex flex-col", className)}
       {...props}
@@ -136,6 +139,7 @@ export {
   SheetContent,
   SheetHeader,
   SheetFooter,
+  SheetOverlay,
   SheetTitle,
   SheetDescription,
 }

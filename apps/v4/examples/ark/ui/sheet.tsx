@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import { Dialog as DialogPrimitive } from "@ark-ui/react/dialog"
+import { ark } from "@ark-ui/react/factory"
 import { Portal } from "@ark-ui/react/portal"
 
 import { cn } from "@/examples/ark/lib/utils"
@@ -9,7 +10,9 @@ import { Button } from "@/examples/ark/ui/button"
 import { XIcon } from "lucide-react"
 
 // Sheet is implemented using Dialog with side positioning
-function Sheet({ ...props }: DialogPrimitive.RootProps) {
+function Sheet({
+  ...props
+}: React.ComponentProps<typeof DialogPrimitive.Root>) {
   return <DialogPrimitive.Root data-slot="sheet" {...props} />
 }
 
@@ -23,10 +26,6 @@ function SheetClose({
   ...props
 }: React.ComponentProps<typeof DialogPrimitive.CloseTrigger>) {
   return <DialogPrimitive.CloseTrigger data-slot="sheet-close" {...props} />
-}
-
-function SheetPortal({ children }: { children: React.ReactNode }) {
-  return <Portal>{children}</Portal>
 }
 
 function SheetOverlay({
@@ -56,7 +55,7 @@ function SheetContent({
   showCloseButton?: boolean
 }) {
   return (
-    <SheetPortal>
+    <Portal>
       <SheetOverlay />
       <DialogPrimitive.Positioner className="fixed inset-0 z-50">
         <DialogPrimitive.Content
@@ -84,13 +83,16 @@ function SheetContent({
           )}
         </DialogPrimitive.Content>
       </DialogPrimitive.Positioner>
-    </SheetPortal>
+    </Portal>
   )
 }
 
-function SheetHeader({ className, ...props }: React.ComponentProps<"div">) {
+function SheetHeader({
+  className,
+  ...props
+}: React.ComponentProps<typeof ark.div>) {
   return (
-    <div
+    <ark.div
       data-slot="sheet-header"
       className={cn("flex flex-col gap-0.5 p-4", className)}
       {...props}
@@ -98,9 +100,12 @@ function SheetHeader({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
-function SheetFooter({ className, ...props }: React.ComponentProps<"div">) {
+function SheetFooter({
+  className,
+  ...props
+}: React.ComponentProps<typeof ark.div>) {
   return (
-    <div
+    <ark.div
       data-slot="sheet-footer"
       className={cn("mt-auto flex flex-col gap-2 p-4", className)}
       {...props}
@@ -141,6 +146,7 @@ export {
   SheetContent,
   SheetHeader,
   SheetFooter,
+  SheetOverlay,
   SheetTitle,
   SheetDescription,
 }

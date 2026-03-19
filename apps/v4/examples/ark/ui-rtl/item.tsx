@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Slot } from "@ark-ui/react/slot"
+import { ark } from "@ark-ui/react/factory"
 import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/examples/ark/lib/utils"
@@ -63,7 +63,7 @@ function Item({
   ...props
 }: React.ComponentProps<"div"> &
   VariantProps<typeof itemVariants> & { asChild?: boolean }) {
-  const Comp = asChild ? Slot : "div"
+  const Comp = asChild ? ark.div : "div"
   return (
     <Comp
       data-slot="item"
