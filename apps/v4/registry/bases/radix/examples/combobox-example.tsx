@@ -86,6 +86,7 @@ export default function ComboboxExample() {
       <ComboboxWithCustomItems />
       <ComboboxInDialog />
       <ComboboxWithOtherInputs />
+      <ComboboxDisabledItems />
     </ExampleWrapper>
   )
 }
@@ -575,6 +576,32 @@ function ComboboxDisabled() {
           <ComboboxList>
             {(item) => (
               <ComboboxItem key={item} value={item}>
+                {item}
+              </ComboboxItem>
+            )}
+          </ComboboxList>
+        </ComboboxContent>
+      </Combobox>
+    </Example>
+  )
+}
+
+const disabledFrameworks = ["Nuxt.js", "Remix"]
+
+function ComboboxDisabledItems() {
+  return (
+    <Example title="Disabled Items">
+      <Combobox items={frameworks}>
+        <ComboboxInput placeholder="Select a framework" />
+        <ComboboxContent>
+          <ComboboxEmpty>No items found.</ComboboxEmpty>
+          <ComboboxList>
+            {(item) => (
+              <ComboboxItem
+                key={item}
+                value={item}
+                disabled={disabledFrameworks.includes(item)}
+              >
                 {item}
               </ComboboxItem>
             )}
@@ -1193,7 +1220,7 @@ function ComboboxWithOtherInputs() {
       </Select>
       <Button
         variant="outline"
-        className="text-muted-foreground w-52 justify-between font-normal"
+        className="w-52 justify-between font-normal text-muted-foreground"
       >
         Select a framework
         <IconPlaceholder

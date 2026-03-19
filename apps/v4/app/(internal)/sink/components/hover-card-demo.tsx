@@ -30,8 +30,8 @@ export function HoverCardDemo() {
               The React Framework – created and maintained by @vercel.
             </p>
             <div className="mt-1 flex items-center gap-2">
-              <CalendarIcon className="text-muted-foreground size-4" />{" "}
-              <span className="text-muted-foreground text-xs">
+              <CalendarIcon className="size-4 text-muted-foreground" />{" "}
+              <span className="text-xs text-muted-foreground">
                 Joined December 2021
               </span>
             </div>

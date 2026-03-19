@@ -7,7 +7,7 @@ component: true
 
 import { InfoIcon } from "lucide-react"
 
-<Callout variant="info" icon={<InfoIcon className="!translate-y-[3px]" />}>
+<Callout variant="info" icon={<InfoIcon className="translate-y-[3px]!" />}>
   For a styled select component, see the [Select](/docs/components/select)
   component.
 </Callout>
@@ -94,6 +94,16 @@ Use `aria-invalid` to show validation errors and the `data-invalid` attribute to
 
 - Use `NativeSelect` for native browser behavior, better performance, or mobile-optimized dropdowns.
 - Use `Select` for custom styling, animations, or complex interactions.
+
+## RTL
+
+To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview
+  styleName="base-nova"
+  name="native-select-rtl"
+  direction="rtl"
+/>
 
 ## API Reference
 

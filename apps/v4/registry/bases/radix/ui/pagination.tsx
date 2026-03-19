@@ -66,8 +66,9 @@ function PaginationLink({
 
 function PaginationPrevious({
   className,
+  text = "Previous",
   ...props
-}: React.ComponentProps<typeof PaginationLink>) {
+}: React.ComponentProps<typeof PaginationLink> & { text?: string }) {
   return (
     <PaginationLink
       aria-label="Go to previous page"
@@ -82,9 +83,10 @@ function PaginationPrevious({
         phosphor="CaretLeftIcon"
         remixicon="RiArrowLeftSLine"
         data-icon="inline-start"
+        className="cn-rtl-flip"
       />
       <span className="cn-pagination-previous-text hidden sm:block">
-        Previous
+        {text}
       </span>
     </PaginationLink>
   )
@@ -92,8 +94,9 @@ function PaginationPrevious({
 
 function PaginationNext({
   className,
+  text = "Next",
   ...props
-}: React.ComponentProps<typeof PaginationLink>) {
+}: React.ComponentProps<typeof PaginationLink> & { text?: string }) {
   return (
     <PaginationLink
       aria-label="Go to next page"
@@ -101,7 +104,7 @@ function PaginationNext({
       className={cn("cn-pagination-next", className)}
       {...props}
     >
-      <span className="cn-pagination-next-text hidden sm:block">Next</span>
+      <span className="cn-pagination-next-text hidden sm:block">{text}</span>
       <IconPlaceholder
         lucide="ChevronRightIcon"
         tabler="IconChevronRight"
@@ -109,6 +112,7 @@ function PaginationNext({
         phosphor="CaretRightIcon"
         remixicon="RiArrowRightSLine"
         data-icon="inline-end"
+        className="cn-rtl-flip"
       />
     </PaginationLink>
   )

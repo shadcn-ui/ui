@@ -1,6 +1,6 @@
 {
   "name": "shadcn",
-  "version": "3.7.0",
+  "version": "4.0.8",
   "description": "Add components to your apps.",
   "publishConfig": {
     "access": "public"
@@ -51,6 +51,10 @@
       "types": "./dist/icons/index.d.ts",
       "default": "./dist/icons/index.js"
     },
+    "./preset": {
+      "types": "./dist/preset/index.d.ts",
+      "default": "./dist/preset/index.js"
+    },
     "./tailwind.css": {
       "style": "./dist/tailwind.css"
     }
@@ -61,7 +65,7 @@
     "build": "tsup",
     "typecheck": "tsc --noEmit",
     "clean": "rimraf dist && rimraf components",
-    "start:dev": "cross-env REGISTRY_URL=http://localhost:4000/r node dist/index.js",
+    "start:dev": "cross-env REGISTRY_URL=http://localhost:4000/r SHADCN_TEMPLATE_DIR=../../templates node dist/index.js",
     "start:prod": "cross-env REGISTRY_URL=https://ui.shadcn.com/r node dist/index.js",
     "start": "node dist/index.js",
     "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
@@ -71,17 +75,16 @@
     "pub:next": "pnpm build && pnpm publish --no-git-checks --access public --tag next",
     "pub:release": "pnpm build && pnpm publish --access public",
     "test": "vitest run",
-    "test:dev": "REGISTRY_URL=http://localhost:4000/r vitest run",
+    "test:dev": "REGISTRY_URL=http://localhost:4000/r SHADCN_TEMPLATE_DIR=../../templates vitest run",
     "mcp:inspect": "pnpm dlx @modelcontextprotocol/inspector node dist/index.js mcp"
   },
   "dependencies": {
-    "@antfu/ni": "^25.0.0",
     "@babel/core": "^7.28.0",
     "@babel/parser": "^7.28.0",
     "@babel/plugin-transform-typescript": "^7.28.0",
     "@babel/preset-typescript": "^7.27.1",
     "@dotenvx/dotenvx": "^1.48.4",
-    "@modelcontextprotocol/sdk": "^1.17.2",
+    "@modelcontextprotocol/sdk": "^1.26.0",
     "@types/validate-npm-package-name": "^4.0.2",
     "browserslist": "^4.26.2",
     "commander": "^14.0.0",
@@ -104,6 +107,7 @@
     "prompts": "^2.4.2",
     "recast": "^0.23.11",
     "stringify-object": "^5.0.0",
+    "tailwind-merge": "^3.0.1",
     "ts-morph": "^26.0.0",
     "tsconfig-paths": "^4.2.0",
     "validate-npm-package-name": "^7.0.1",
@@ -111,6 +115,7 @@
     "zod-to-json-schema": "^3.24.6"
   },
   "devDependencies": {
+    "@antfu/ni": "^25.0.0",
     "@types/babel__core": "^7.20.5",
     "@types/fs-extra": "^11.0.4",
     "@types/prompts": "^2.4.9",

@@ -1,4 +1,5 @@
 import { TransformerStyle } from "@/src/styles/transform"
+import { twMerge } from "tailwind-merge"
 import {
   Node,
   type CallExpression,
@@ -14,7 +15,13 @@ import { type StyleMap } from "./create-style-map"
  * These are typically used as CSS selectors or for other purposes
  * that require the class name to remain in the code.
  */
-const ALLOWLIST = new Set(["cn-menu-target"])
+// TODO: all cn-* classes to be allowedlisted.
+const ALLOWLIST = new Set([
+  "cn-menu-target",
+  "cn-menu-translucent",
+  "cn-logical-sides",
+  "cn-rtl-flip",
+])
 
 function isStringLiteralLike(
   node: Node
@@ -61,7 +68,12 @@ function applyStyleToCvaString(
     return
   }
 
-  const tailwindClassesToApply = unmatchedClasses
+  // Skip allowlisted classes — they are handled at CLI install time.
+  const classesToInline = unmatchedClasses.filter(
+    (cnClass) => !ALLOWLIST.has(cnClass)
+  )
+
+  const tailwindClassesToApply = classesToInline
     .map((cnClass) => styleMap[cnClass])
     .filter((classes): classes is string => Boolean(classes))
 
@@ -71,7 +83,7 @@ function applyStyleToCvaString(
     stringNode.setLiteralValue(updated)
     unmatchedClasses.forEach((cnClass) => matchedClasses.add(cnClass))
   } else {
-    // No styles to apply, but still need to clean up non-allowlisted classes
+    // No styles to apply, but still need to clean up non-allowlisted classes.
     const updated = removeCnClasses(stringValue)
     stringNode.setLiteralValue(updated)
   }
@@ -187,7 +199,12 @@ function applyToClassNameAttributes(
       return
     }
 
-    const tailwindClassesToApply = unmatchedClasses
+    // Skip allowlisted classes — they are handled at CLI install time.
+    const classesToInline = unmatchedClasses.filter(
+      (cnClass) => !ALLOWLIST.has(cnClass)
+    )
+
+    const tailwindClassesToApply = classesToInline
       .map((cnClass) => styleMap[cnClass])
       .filter((classes): classes is string => Boolean(classes))
 
@@ -414,10 +431,7 @@ function applyClassesToElement(element: Node, tailwindClasses: string) {
 }
 
 function mergeClasses(newClasses: string, existing: string) {
-  const existingParts = existing.split(/\s+/).filter(Boolean)
-  const newParts = newClasses.split(/\s+/).filter(Boolean)
-  const combined = [...newParts, ...existingParts]
-  return combined.join(" ").trim()
+  return twMerge(newClasses, existing)
 }
 
 function isCnCall(call: CallExpression) {
@@ -489,7 +503,12 @@ function applyToMergePropsCalls(
           continue
         }
 
-        const tailwindClassesToApply = unmatchedClasses
+        // Skip allowlisted classes — they are handled at CLI install time.
+        const classesToInline = unmatchedClasses.filter(
+          (cnClass) => !ALLOWLIST.has(cnClass)
+        )
+
+        const tailwindClassesToApply = classesToInline
           .map((cnClass) => styleMap[cnClass])
           .filter((classes): classes is string => Boolean(classes))
 

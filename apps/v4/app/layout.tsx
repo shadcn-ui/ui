@@ -9,7 +9,9 @@ import { ActiveThemeProvider } from "@/components/active-theme"
 import { Analytics } from "@/components/analytics"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
+import { TooltipProvider as BaseTooltipProvider } from "@/registry/bases/base/ui/tooltip"
 import { Toaster } from "@/registry/bases/radix/ui/sonner"
+import { TooltipProvider as RadixTooltipProvider } from "@/registry/bases/radix/ui/tooltip"
 
 import "@/styles/globals.css"
 
@@ -97,8 +99,12 @@ export default function RootLayout({
           <LayoutProvider>
             <ActiveThemeProvider>
               <NuqsAdapter>
-                {children}
-                <Toaster position="top-center" />
+                <BaseTooltipProvider delay={0}>
+                  <RadixTooltipProvider delayDuration={0}>
+                    {children}
+                    <Toaster position="top-center" />
+                  </RadixTooltipProvider>
+                </BaseTooltipProvider>
               </NuqsAdapter>
               <TailwindIndicator />
               <Analytics />

@@ -44,6 +44,8 @@ export type MenuAccentValue = MenuAccent["value"]
 export const MENU_COLORS = [
   { value: "default", label: "Default" },
   { value: "inverted", label: "Inverted" },
+  { value: "default-translucent", label: "Default Translucent" },
+  { value: "inverted-translucent", label: "Inverted Translucent" },
 ] as const
 
 export type MenuColor = (typeof MENU_COLORS)[number]
@@ -77,6 +79,7 @@ export const designSystemConfigSchema = z
     theme: z.enum(THEMES.map((t) => t.name) as [ThemeName, ...ThemeName[]]),
     font: z.enum(fontValues).default("inter"),
     item: z.string().optional(),
+    rtl: z.boolean().default(false),
     menuAccent: z
       .enum(
         MENU_ACCENTS.map((a) => a.value) as [
@@ -93,7 +96,22 @@ export const designSystemConfigSchema = z
     radius: z
       .enum(RADII.map((r) => r.name) as [RadiusValue, ...RadiusValue[]])
       .default("default"),
-    template: z.enum(["next", "start", "vite"]).default("next").optional(),
+    template: z
+      .enum([
+        "next",
+        "next-monorepo",
+        "start",
+        "react-router",
+        "vite",
+        "vite-monorepo",
+        "react-router-monorepo",
+        "start-monorepo",
+        "astro",
+        "astro-monorepo",
+        "laravel",
+      ])
+      .default("next")
+      .optional(),
   })
   .refine(
     (data) => {
@@ -110,12 +128,13 @@ export type DesignSystemConfig = z.infer<typeof designSystemConfigSchema>
 
 export const DEFAULT_CONFIG: DesignSystemConfig = {
   base: "radix",
-  style: "vega",
+  style: "nova",
   baseColor: "neutral",
   theme: "neutral",
   iconLibrary: "lucide",
   font: "inter",
   item: "Item",
+  rtl: false,
   menuAccent: "subtle",
   menuColor: "default",
   radius: "default",
@@ -141,6 +160,7 @@ export const PRESETS: Preset[] = [
     iconLibrary: "lucide",
     font: "inter",
     item: "Item",
+    rtl: false,
     menuAccent: "subtle",
     menuColor: "default",
     radius: "default",
@@ -148,14 +168,15 @@ export const PRESETS: Preset[] = [
   {
     name: "radix-nova",
     title: "Nova (Radix)",
-    description: "Nova / Hugeicons / Inter",
+    description: "Nova / Lucide / Geist",
     base: "radix",
     style: "nova",
     baseColor: "neutral",
     theme: "neutral",
-    iconLibrary: "hugeicons",
-    font: "inter",
+    iconLibrary: "lucide",
+    font: "geist",
     item: "Item",
+    rtl: false,
     menuAccent: "subtle",
     menuColor: "default",
     radius: "default",
@@ -171,6 +192,7 @@ export const PRESETS: Preset[] = [
     iconLibrary: "hugeicons",
     font: "figtree",
     item: "Item",
+    rtl: false,
     menuAccent: "subtle",
     menuColor: "default",
     radius: "default",
@@ -183,9 +205,10 @@ export const PRESETS: Preset[] = [
     style: "lyra",
     baseColor: "neutral",
     theme: "neutral",
-    iconLibrary: "hugeicons",
+    iconLibrary: "phosphor",
     font: "jetbrains-mono",
     item: "Item",
+    rtl: false,
     menuAccent: "subtle",
     menuColor: "default",
     radius: "default",
@@ -202,6 +225,7 @@ export const PRESETS: Preset[] = [
     iconLibrary: "lucide",
     font: "inter",
     item: "Item",
+    rtl: false,
     menuAccent: "subtle",
     menuColor: "default",
     radius: "default",
@@ -209,14 +233,15 @@ export const PRESETS: Preset[] = [
   {
     name: "base-nova",
     title: "Nova (Base)",
-    description: "Nova / Hugeicons / Inter",
+    description: "Nova / Lucide / Geist",
     base: "base",
     style: "nova",
     baseColor: "neutral",
     theme: "neutral",
-    iconLibrary: "hugeicons",
-    font: "inter",
+    iconLibrary: "lucide",
+    font: "geist",
     item: "Item",
+    rtl: false,
     menuAccent: "subtle",
     menuColor: "default",
     radius: "default",
@@ -232,6 +257,7 @@ export const PRESETS: Preset[] = [
     iconLibrary: "hugeicons",
     font: "figtree",
     item: "Item",
+    rtl: false,
     menuAccent: "subtle",
     menuColor: "default",
     radius: "default",
@@ -244,9 +270,10 @@ export const PRESETS: Preset[] = [
     style: "lyra",
     baseColor: "neutral",
     theme: "neutral",
-    iconLibrary: "hugeicons",
+    iconLibrary: "phosphor",
     font: "jetbrains-mono",
     item: "Item",
+    rtl: false,
     menuAccent: "subtle",
     menuColor: "default",
     radius: "default",
@@ -262,6 +289,7 @@ export const PRESETS: Preset[] = [
     iconLibrary: "hugeicons",
     font: "inter",
     item: "Item",
+    rtl: false,
     menuAccent: "subtle",
     menuColor: "default",
     radius: "default",
@@ -277,6 +305,7 @@ export const PRESETS: Preset[] = [
     iconLibrary: "hugeicons",
     font: "inter",
     item: "Item",
+    rtl: false,
     menuAccent: "subtle",
     menuColor: "default",
     radius: "default",
@@ -342,10 +371,10 @@ export function buildRegistryTheme(config: DesignSystemConfig) {
     lightVars["accent-foreground"] = lightVars["primary-foreground"]
     darkVars.accent = darkVars.primary
     darkVars["accent-foreground"] = darkVars["primary-foreground"]
-    lightVars["sidebar-accent"] = lightVars.primary
-    lightVars["sidebar-accent-foreground"] = lightVars["primary-foreground"]
-    darkVars["sidebar-accent"] = darkVars.primary
-    darkVars["sidebar-accent-foreground"] = darkVars["primary-foreground"]
+    // lightVars["sidebar-accent"] = lightVars.primary
+    // lightVars["sidebar-accent-foreground"] = lightVars["primary-foreground"]
+    // darkVars["sidebar-accent"] = darkVars.primary
+    // darkVars["sidebar-accent-foreground"] = darkVars["primary-foreground"]
   }
 
   // Apply radius transformation.
@@ -402,6 +431,7 @@ export function buildRegistryBase(config: DesignSystemConfig) {
     config: {
       style: `${config.base}-${config.style}`,
       iconLibrary: iconLibraryItem.name,
+      rtl: config.rtl,
       menuColor: config.menuColor,
       menuAccent: config.menuAccent,
       tailwind: {
@@ -419,5 +449,8 @@ export function buildRegistryBase(config: DesignSystemConfig) {
         body: { "@apply bg-background text-foreground": {} },
       },
     },
+    ...(config.rtl && {
+      docs: `To learn how to set up the RTL provider and fonts for your app, see https://ui.shadcn.com/docs/rtl/${config.template === "next-monorepo" ? "next" : (config.template ?? "next")}`,
+    }),
   }
 }
