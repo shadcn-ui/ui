@@ -6,7 +6,6 @@ import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
 import { Button } from "@/registry/bases/base/ui/button"
 import {
   Card,
-  CardAction,
   CardContent,
   CardDescription,
   CardFooter,
@@ -21,10 +20,6 @@ import {
   ChartTooltipContent,
   type ChartConfig,
 } from "@/registry/bases/base/ui/chart"
-import {
-  ToggleGroup,
-  ToggleGroupItem,
-} from "@/registry/bases/base/ui/toggle-group"
 
 const barChartData = [
   { month: "January", desktop: 186, mobile: 80 },
@@ -57,22 +52,11 @@ export function BarChartCard() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Traffic Channels</CardTitle>
-        <CardDescription>
-          Desktop vs mobile over the last 6 months
+        <CardTitle className="text-lg">Traffic channels</CardTitle>
+        <CardDescription className="line-clamp-2 text-sm leading-snug">
+          Monthly desktop and mobile traffic for the last six months—compare
+          volume and mix across platforms and devices at a glance.
         </CardDescription>
-        <CardAction>
-          <ToggleGroup
-            aria-label="Time range"
-            multiple={false}
-            defaultValue={["6m"]}
-            variant="outline"
-            size="sm"
-          >
-            <ToggleGroupItem value="6m">6M</ToggleGroupItem>
-            <ToggleGroupItem value="12m">12M</ToggleGroupItem>
-          </ToggleGroup>
-        </CardAction>
       </CardHeader>
       <CardContent className="flex flex-col gap-4 pt-0">
         <ChartContainer

@@ -72,16 +72,16 @@ export function Customizer({
           <ChartColorPicker isMobile={isMobile} anchorRef={anchorRef} />
           <FieldSeparator className="hidden md:block" />
           <FontPicker
-            label="Font"
-            param="font"
-            fonts={FONTS}
+            label="Heading"
+            param="fontHeading"
+            fonts={FONT_HEADING_OPTIONS}
             isMobile={isMobile}
             anchorRef={anchorRef}
           />
           <FontPicker
-            label="Heading"
-            param="fontHeading"
-            fonts={FONT_HEADING_OPTIONS}
+            label="Font"
+            param="font"
+            fonts={FONTS}
             isMobile={isMobile}
             anchorRef={anchorRef}
           />
