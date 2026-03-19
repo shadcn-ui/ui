@@ -9,6 +9,7 @@ export type FontDefinition = {
   import: string
   dependency: string
   subsets: readonly string[]
+  weight?: readonly string[]
 }
 
 export const FONT_DEFINITIONS = [
@@ -131,6 +132,19 @@ export const FONT_DEFINITIONS = [
     import: "Outfit",
     dependency: "@fontsource-variable/outfit",
     subsets: ["latin"],
+  },
+  {
+    name: "tomorrow",
+    title: "Tomorrow",
+    type: "sans",
+    family: "'Tomorrow', sans-serif",
+    registryVariable: "--font-sans",
+    previewVariable: "--font-tomorrow",
+    provider: "google",
+    import: "Tomorrow",
+    dependency: "@fontsource/tomorrow",
+    subsets: ["latin"],
+    weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   },
   {
     name: "jetbrains-mono",

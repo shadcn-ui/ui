@@ -16,6 +16,7 @@ import {
   Raleway,
   Roboto,
   Roboto_Slab,
+  Tomorrow,
 } from "next/font/google"
 
 import { FONT_DEFINITIONS, type FontDefinition } from "@/lib/font-definitions"
@@ -72,6 +73,12 @@ const outfit = Outfit({
   variable: "--font-outfit",
 })
 
+const tomorrow = Tomorrow({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  variable: "--font-tomorrow",
+})
+
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-jetbrains-mono",
@@ -118,6 +125,7 @@ const PREVIEW_FONTS = {
   "dm-sans": dmSans,
   "public-sans": publicSans,
   outfit,
+  tomorrow,
   "jetbrains-mono": jetbrainsMono,
   "geist-mono": geistMono,
   "noto-serif": notoSerif,
@@ -153,6 +161,7 @@ export const FONTS = [
   createFontOption("dm-sans"),
   createFontOption("public-sans"),
   createFontOption("outfit"),
+  createFontOption("tomorrow"),
   createFontOption("geist-mono"),
   createFontOption("jetbrains-mono"),
   createFontOption("noto-serif"),

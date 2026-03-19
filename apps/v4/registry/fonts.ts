@@ -15,6 +15,7 @@ function createFontItem(definition: FontDefinition, role: "body" | "heading") {
       provider: definition.provider,
       variable:
         role === "body" ? definition.registryVariable : "--font-heading",
+      ...(definition.weight ? { weight: [...definition.weight] } : {}),
       subsets: [...definition.subsets],
       import: definition.import,
       dependency: definition.dependency,

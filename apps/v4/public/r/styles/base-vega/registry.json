@@ -2960,6 +2960,30 @@
       }
     },
     {
+      "name": "font-tomorrow",
+      "title": "Tomorrow",
+      "type": "registry:font",
+      "font": {
+        "family": "'Tomorrow', sans-serif",
+        "provider": "google",
+        "import": "Tomorrow",
+        "variable": "--font-sans",
+        "weight": [
+          "100",
+          "200",
+          "300",
+          "400",
+          "500",
+          "600",
+          "700",
+          "800",
+          "900"
+        ],
+        "subsets": ["latin"],
+        "dependency": "@fontsource/tomorrow"
+      }
+    },
+    {
       "name": "font-jetbrains-mono",
       "title": "JetBrains Mono",
       "type": "registry:font",
@@ -3178,6 +3202,30 @@
         "variable": "--font-heading",
         "subsets": ["latin"],
         "dependency": "@fontsource-variable/outfit"
+      }
+    },
+    {
+      "name": "font-heading-tomorrow",
+      "title": "Tomorrow (Heading)",
+      "type": "registry:font",
+      "font": {
+        "family": "'Tomorrow', sans-serif",
+        "provider": "google",
+        "import": "Tomorrow",
+        "variable": "--font-heading",
+        "weight": [
+          "100",
+          "200",
+          "300",
+          "400",
+          "500",
+          "600",
+          "700",
+          "800",
+          "900"
+        ],
+        "subsets": ["latin"],
+        "dependency": "@fontsource/tomorrow"
       }
     },
     {
