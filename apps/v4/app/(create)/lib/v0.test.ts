@@ -4,13 +4,12 @@ import { DEFAULT_CONFIG } from "@/registry/config"
 import { buildV0Payload } from "@/app/(create)/lib/v0"
 
 vi.mock("shadcn/schema", async () => {
-  return await import("../../../../../packages/shadcn/src/schema/index.ts")
+  return await vi.importActual<typeof import("shadcn/schema")>("shadcn/schema")
 })
 
 vi.mock("shadcn/utils", async () => {
-  const { transformFont } = await import(
-    "../../../../../packages/shadcn/src/utils/transformers/transform-font.ts"
-  )
+  const { transformFont } =
+    await vi.importActual<typeof import("shadcn/utils")>("shadcn/utils")
 
   return {
     transformFont,

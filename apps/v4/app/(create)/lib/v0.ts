@@ -11,7 +11,7 @@ import {
   transformMenu,
   transformRender,
 } from "shadcn/utils"
-import { Project, ScriptKind } from "ts-morph"
+import { Project, ScriptKind, type SourceFile } from "ts-morph"
 import { z } from "zod"
 
 import {
@@ -158,11 +158,19 @@ const ALIASES = {
   hooks: "@/hooks",
 } as const
 
-const transformers: Array<typeof transformFont> = [
-  transformIcons,
-  transformMenu,
-  transformRender,
-  transformFont,
+type V0Transformer = (opts: {
+  filename: string
+  raw: string
+  sourceFile: SourceFile
+  config: z.infer<typeof configSchema>
+  supportedFontMarkers?: string[]
+}) => Promise<unknown>
+
+const transformers: V0Transformer[] = [
+  transformIcons as V0Transformer,
+  transformMenu as V0Transformer,
+  transformRender as V0Transformer,
+  transformFont as V0Transformer,
 ]
 
 function getStyle(designSystemConfig: DesignSystemConfig) {

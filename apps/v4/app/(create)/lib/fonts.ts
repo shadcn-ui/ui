@@ -25,7 +25,7 @@ import {
   Space_Grotesk,
 } from "next/font/google"
 
-import { FONT_DEFINITIONS, type FontDefinition } from "@/lib/font-definitions"
+import { FONT_DEFINITIONS, type FontName } from "@/lib/font-definitions"
 
 type PreviewFont = ReturnType<typeof Inter>
 
@@ -174,9 +174,9 @@ const PREVIEW_FONTS = {
   merriweather,
   lora,
   "playfair-display": playfairDisplay,
-} satisfies Record<FontDefinition["name"], PreviewFont>
+} satisfies Record<FontName, PreviewFont>
 
-function createFontOption(name: FontDefinition["name"]) {
+function createFontOption(name: FontName) {
   const definition = FONT_DEFINITIONS.find((font) => font.name === name)
 
   if (!definition) {

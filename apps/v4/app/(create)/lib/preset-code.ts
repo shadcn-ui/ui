@@ -1,4 +1,4 @@
-import { encodePreset } from "shadcn/preset"
+import { encodePreset, type PresetConfig } from "shadcn/preset"
 
 import { type DesignSystemConfig } from "@/registry/config"
 
@@ -17,16 +17,18 @@ type PresetCodeConfig = Pick<
 >
 
 export function getPresetCode(config: PresetCodeConfig) {
-  return encodePreset({
-    style: config.style,
-    baseColor: config.baseColor,
-    theme: config.theme,
-    chartColor: config.chartColor,
-    iconLibrary: config.iconLibrary,
-    font: config.font,
-    fontHeading: config.fontHeading,
-    radius: config.radius,
-    menuAccent: config.menuAccent,
-    menuColor: config.menuColor,
-  })
+  const presetConfig: Partial<PresetConfig> = {
+    style: config.style as PresetConfig["style"],
+    baseColor: config.baseColor as PresetConfig["baseColor"],
+    theme: config.theme as PresetConfig["theme"],
+    chartColor: config.chartColor as PresetConfig["chartColor"],
+    iconLibrary: config.iconLibrary as PresetConfig["iconLibrary"],
+    font: config.font as PresetConfig["font"],
+    fontHeading: config.fontHeading as PresetConfig["fontHeading"],
+    radius: config.radius as PresetConfig["radius"],
+    menuAccent: config.menuAccent as PresetConfig["menuAccent"],
+    menuColor: config.menuColor as PresetConfig["menuColor"],
+  }
+
+  return encodePreset(presetConfig)
 }

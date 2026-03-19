@@ -302,3 +302,5 @@ export const FONT_DEFINITIONS = [
     subsets: ["latin"],
   },
 ] as const satisfies readonly FontDefinition[]
+
+export type FontName = (typeof FONT_DEFINITIONS)[number]["name"]
