@@ -10,12 +10,7 @@ import {
   type inferParserType,
   type Options,
 } from "nuqs/server"
-import {
-  decodePreset,
-  encodePreset,
-  isPresetCode,
-  V1_CHART_COLOR_MAP,
-} from "shadcn/preset"
+import { decodePreset, isPresetCode, V1_CHART_COLOR_MAP } from "shadcn/preset"
 
 import {
   BASE_COLORS,
@@ -41,6 +36,7 @@ import {
   type ThemeName,
 } from "@/registry/config"
 import { FONTS } from "@/app/(create)/lib/fonts"
+import { getPresetCode } from "@/app/(create)/lib/preset-code"
 
 const designSystemSearchParams = {
   preset: parseAsString.withDefault("b0"),
@@ -278,18 +274,7 @@ export function useDesignSystemSearchParams(options: Options = {}) {
       // Encode design system fields into a preset code.
       // Cast needed: merged values may include null from nuqs resets,
       // but encodePreset handles missing values by falling back to defaults.
-      const code = encodePreset({
-        style: merged.style ?? undefined,
-        baseColor: merged.baseColor ?? undefined,
-        theme: merged.theme ?? undefined,
-        chartColor: merged.chartColor ?? undefined,
-        iconLibrary: merged.iconLibrary ?? undefined,
-        font: merged.font ?? undefined,
-        fontHeading: merged.fontHeading ?? undefined,
-        radius: merged.radius ?? undefined,
-        menuAccent: merged.menuAccent ?? undefined,
-        menuColor: merged.menuColor ?? undefined,
-      } as Parameters<typeof encodePreset>[0])
+      const code = getPresetCode(merged)
       // Build update: set preset, clear individual DS params from URL.
       const rawUpdate: Record<string, unknown> = { preset: code }
       for (const key of DESIGN_SYSTEM_KEYS) {
