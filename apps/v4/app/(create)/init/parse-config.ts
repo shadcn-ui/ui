@@ -1,9 +1,10 @@
-import { decodePreset, isPresetCode, V1_CHART_COLOR_MAP } from "shadcn/preset"
+import { decodePreset, isPresetCode } from "shadcn/preset"
 
 import {
   designSystemConfigSchema,
   type DesignSystemConfig,
 } from "@/registry/config"
+import { resolvePresetOverrides } from "@/app/(create)/lib/preset-query"
 
 // Parses design system config from URL search params.
 export function parseDesignSystemConfig(searchParams: URLSearchParams) {
@@ -15,17 +16,10 @@ export function parseDesignSystemConfig(searchParams: URLSearchParams) {
     if (!decoded) {
       return { success: false as const, error: "Invalid preset code" }
     }
+    const presetOverrides = resolvePresetOverrides(searchParams, decoded)
     configInput = {
       ...decoded,
-      // Allow an explicit query param to override the decoded preset so older
-      // preset codes can still opt into newer fields like fontHeading.
-      fontHeading: searchParams.get("fontHeading") ?? decoded.fontHeading,
-      // V1 presets don't encode chartColor — fall back to the colored
-      // theme that base-color themes originally borrowed charts from.
-      chartColor:
-        decoded.chartColor ??
-        V1_CHART_COLOR_MAP[decoded.theme] ??
-        decoded.theme,
+      ...presetOverrides,
       base: searchParams.get("base") ?? "radix",
       template: searchParams.get("template") ?? undefined,
       rtl: searchParams.get("rtl") === "true",

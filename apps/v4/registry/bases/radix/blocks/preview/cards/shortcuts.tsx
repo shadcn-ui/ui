@@ -1,4 +1,6 @@
 import * as React from "react"
+
+import { Card, CardContent } from "@/registry/bases/radix/ui/card"
 import {
   Item,
   ItemActions,
@@ -6,9 +8,7 @@ import {
   ItemHeader,
   ItemSeparator,
   ItemTitle,
-} from "@/examples/radix/ui/item"
-
-import { Card, CardContent } from "@/registry/bases/radix/ui/card"
+} from "@/registry/bases/radix/ui/item"
 import { Kbd } from "@/registry/bases/radix/ui/kbd"
 
 const shortcuts = [

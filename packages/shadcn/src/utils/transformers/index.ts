@@ -4,7 +4,6 @@ import path from "path"
 import { registryBaseColorSchema } from "@/src/schema"
 import { Config } from "@/src/utils/get-config"
 import { transformCssVars } from "@/src/utils/transformers/transform-css-vars"
-import { transformFont } from "@/src/utils/transformers/transform-font"
 import { transformIcons } from "@/src/utils/transformers/transform-icons"
 import { transformImport } from "@/src/utils/transformers/transform-import"
 import { transformJsx } from "@/src/utils/transformers/transform-jsx"
@@ -50,7 +49,6 @@ export async function transform(
     transformTwPrefixes,
     transformRtl,
     transformIcons,
-    transformFont,
     transformCleanup,
   ]
 ) {

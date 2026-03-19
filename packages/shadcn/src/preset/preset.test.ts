@@ -189,6 +189,7 @@ describe("v1/v2 backward compatibility", () => {
     expect(decoded!.style).toBe("nova")
     expect(decoded!.theme).toBe("neutral")
     expect(decoded!.chartColor).toBeUndefined()
+    expect(decoded!.fontHeading).toBe("inherit")
   })
 
   it("should decode new 'b'-prefixed codes with chartColor", () => {

@@ -230,6 +230,10 @@ export function decodePreset(code: string): PresetConfig | null {
     offset += field.bits
   }
 
+  if (version === "a") {
+    result.fontHeading = "inherit"
+  }
+
   return result as PresetConfig
 }
 

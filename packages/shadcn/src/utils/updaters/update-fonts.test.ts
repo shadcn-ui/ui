@@ -1273,6 +1273,50 @@ export default function RootLayout({
     )
     expect(result).not.toContain('"font-heading"')
   })
+
+  it("should keep an existing heading font when adding the matching body font", async () => {
+    const input = `
+import { cn } from "@/lib/utils"
+import { Inter } from "next/font/google"
+
+const interHeading = Inter({subsets:['latin'],variable:'--font-heading'})
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en" className={interHeading.variable}>
+      <body>{children}</body>
+    </html>
+  )
+}
+`
+    const fonts = [
+      {
+        name: "font-inter",
+        type: "registry:font" as const,
+        font: {
+          family: "'Inter Variable', sans-serif",
+          provider: "google" as const,
+          import: "Inter",
+          variable: "--font-sans",
+          subsets: ["latin"],
+        },
+      },
+    ]
+
+    const result = await transformLayoutFonts(input, fonts, mockConfig)
+
+    expect(result).toContain('import { cn } from "@/lib/utils"')
+    expect(result).toContain(
+      "const inter = Inter({subsets:['latin'],variable:'--font-sans'});"
+    )
+    expect(result).toContain("interHeading.variable")
+    expect(result).toContain('"font-sans"')
+    expect(result).toContain("inter.variable")
+  })
 })
 
 vi.mock("@/src/utils/get-project-info", () => ({

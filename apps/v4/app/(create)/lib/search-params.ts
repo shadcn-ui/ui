@@ -1,4 +1,5 @@
 import * as React from "react"
+import { useSearchParams } from "next/navigation"
 import { useQueryStates } from "nuqs"
 import {
   createLoader,
@@ -10,7 +11,7 @@ import {
   type inferParserType,
   type Options,
 } from "nuqs/server"
-import { decodePreset, isPresetCode, V1_CHART_COLOR_MAP } from "shadcn/preset"
+import { decodePreset, isPresetCode } from "shadcn/preset"
 
 import {
   BASE_COLORS,
@@ -37,6 +38,7 @@ import {
 } from "@/registry/config"
 import { FONTS } from "@/app/(create)/lib/fonts"
 import { getPresetCode } from "@/app/(create)/lib/preset-code"
+import { resolvePresetOverrides } from "@/app/(create)/lib/preset-query"
 
 const designSystemSearchParams = {
   preset: parseAsString.withDefault("b0"),
@@ -204,17 +206,26 @@ function normalizeDesignSystemParams(
 // If preset param exists, decode it and overlay on raw params.
 // V1 presets don't encode chartColor — fall back to the colored
 // theme that base-color themes originally borrowed charts from.
-function resolvePresetParams(rawParams: DesignSystemSearchParams) {
+type SearchParamsLike = Pick<URLSearchParams, "get" | "has">
+
+function resolvePresetParams(
+  rawParams: DesignSystemSearchParams,
+  searchParams: SearchParamsLike
+) {
   if (rawParams.preset && isPresetCode(rawParams.preset)) {
     const decoded = decodePreset(rawParams.preset)
     if (decoded) {
+      const presetOverrides = resolvePresetOverrides(searchParams, decoded)
       return normalizeDesignSystemParams({
-        ...rawParams,
         ...decoded,
-        chartColor:
-          decoded.chartColor ??
-          V1_CHART_COLOR_MAP[decoded.theme] ??
-          decoded.theme,
+        ...presetOverrides,
+        base: rawParams.base,
+        item: rawParams.item,
+        preset: rawParams.preset,
+        template: rawParams.template,
+        rtl: rawParams.rtl,
+        size: rawParams.size,
+        custom: rawParams.custom,
       })
     }
   }
@@ -225,6 +236,7 @@ function resolvePresetParams(rawParams: DesignSystemSearchParams) {
 // - Reads: if ?preset=CODE is in the URL, decodes it and returns individual values.
 // - Writes: when design system params are set, encodes them into a preset code.
 export function useDesignSystemSearchParams(options: Options = {}) {
+  const searchParams = useSearchParams()
   const [rawParams, rawSetParams] = useQueryStates(designSystemSearchParams, {
     shallow: false,
     history: "push",
@@ -232,8 +244,8 @@ export function useDesignSystemSearchParams(options: Options = {}) {
   })
 
   const params = React.useMemo(
-    () => resolvePresetParams(rawParams),
-    [rawParams]
+    () => resolvePresetParams(rawParams, searchParams),
+    [rawParams, searchParams]
   )
 
   // Use ref so setParams callback stays stable across renders.

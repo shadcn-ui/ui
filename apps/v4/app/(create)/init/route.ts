@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server"
 import { track } from "@vercel/analytics/server"
+import { isPresetCode } from "shadcn/preset"
 import { registryItemSchema } from "shadcn/schema"
 
 import { buildRegistryBase } from "@/registry/config"
@@ -15,7 +16,11 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: result.error }, { status: 400 })
     }
 
-    const presetCode = getPresetCode(result.data)
+    const rawPreset = searchParams.get("preset")
+    const presetCode =
+      rawPreset && isPresetCode(rawPreset)
+        ? rawPreset
+        : getPresetCode(result.data)
 
     const registryBase = buildRegistryBase(result.data)
     const parseResult = registryItemSchema.safeParse(registryBase)

@@ -1,6 +1,10 @@
 import { describe, expect, it } from "vitest"
 
-import { buildRegistryBase, DEFAULT_CONFIG } from "./config"
+import {
+  buildRegistryBase,
+  DEFAULT_CONFIG,
+  designSystemConfigSchema,
+} from "./config"
 
 describe("buildRegistryBase", () => {
   it("seeds a font-heading fallback when heading inherits the body font", () => {
@@ -43,5 +47,39 @@ describe("buildRegistryBase", () => {
 
     expect(result.registryDependencies).toContain("font-jetbrains-mono")
     expect(result.cssVars?.theme?.["--font-heading"]).toBe("var(--font-mono)")
+  })
+
+  it("defaults chartColor to neutral when omitted", () => {
+    const result = designSystemConfigSchema.parse({
+      base: "radix",
+      style: "nova",
+      iconLibrary: "lucide",
+      theme: "neutral",
+      font: "inter",
+      fontHeading: "inherit",
+      menuAccent: "subtle",
+      menuColor: "default",
+      radius: "default",
+    })
+
+    expect(result.chartColor).toBe("neutral")
+  })
+
+  it("rejects chartColor values that are unavailable for the selected base color", () => {
+    const result = designSystemConfigSchema.safeParse({
+      base: "radix",
+      style: "nova",
+      iconLibrary: "lucide",
+      baseColor: "neutral",
+      theme: "neutral",
+      chartColor: "stone",
+      font: "inter",
+      fontHeading: "inherit",
+      menuAccent: "subtle",
+      menuColor: "default",
+      radius: "default",
+    })
+
+    expect(result.success).toBe(false)
   })
 })

@@ -251,7 +251,8 @@ export async function transformLayoutFonts(
     if (
       hasExistingImport &&
       !existingVarDecl &&
-      isRootFontVariable(font.font.variable)
+      isRootFontVariable(font.font.variable) &&
+      !hasHeadingFontDeclaration(sourceFile, importName)
     ) {
       continue
     }
@@ -406,6 +407,35 @@ function findFontVariableDeclaration(
   return null
 }
 
+function hasHeadingFontDeclaration(
+  sourceFile: ReturnType<Project["createSourceFile"]>,
+  importName: string
+) {
+  const variableStatements = sourceFile.getVariableStatements()
+
+  for (const statement of variableStatements) {
+    for (const declaration of statement.getDeclarations()) {
+      const initializer = declaration.getInitializer()
+      if (!initializer) continue
+
+      if (initializer.getKind() !== SyntaxKind.CallExpression) continue
+
+      const callExpr = initializer as CallExpression
+      if (callExpr.getExpression().getText() !== importName) continue
+
+      const args = callExpr.getArguments()
+      if (!args.length) continue
+
+      const argText = args[0].getText()
+      if (argText.includes(`variable:`) && argText.includes("--font-heading")) {
+        return true
+      }
+    }
+  }
+
+  return false
+}
+
 function findInsertPosition(
   sourceFile: ReturnType<Project["createSourceFile"]>
 ) {
@@ -509,7 +539,15 @@ function updateHtmlClassName(
         }
         // Replace with cn() including utility classes and font variables.
         ensureCnImport(sourceFile, config)
-        jsxExpr.replaceWithText(`{cn(${allNewArgs.join(", ")})}`)
+        const existingName = exprText.split(".")[0] ?? ""
+        const shouldPreserveExisting =
+          existingName.toLowerCase().includes("heading") ||
+          fontUtilityClasses.length === 0
+        jsxExpr.replaceWithText(
+          shouldPreserveExisting
+            ? `{cn(${exprText}, ${allNewArgs.join(", ")})}`
+            : `{cn(${allNewArgs.join(", ")})}`
+        )
       } else if (exprText.startsWith("`") && exprText.endsWith("`")) {
         // Template literal - parse and convert to cn() arguments.
         const cnArgs = parseTemplateLiteralToCnArgs(exprText)

@@ -19,16 +19,17 @@ export function TypographySpecimen() {
     () => FONTS.find((font) => font.value === params.fontHeading),
     [params.fontHeading]
   )
+  const headingLabel =
+    currentFontHeading?.name && currentFontHeading.name !== currentFont?.name
+      ? currentFontHeading.name
+      : "Inherit"
+  const bodyLabel = currentFont?.name ?? "Default"
 
   return (
     <Card>
       <CardContent className="flex flex-col gap-2">
         <div className="text-xs font-medium tracking-wide text-muted-foreground uppercase">
-          {currentFontHeading?.name &&
-          currentFontHeading.name !== currentFont?.name
-            ? currentFontHeading.name
-            : currentFont?.name}{" "}
-          - {currentFont?.name ?? "Default"}
+          {headingLabel} - {bodyLabel}
         </div>
         <p className="cn-font-heading text-2xl font-medium">
           Designing with rhythm and hierarchy.

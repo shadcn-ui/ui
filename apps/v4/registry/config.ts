@@ -98,8 +98,7 @@ export const designSystemConfigSchema = z
     theme: z.enum(THEMES.map((t) => t.name) as [ThemeName, ...ThemeName[]]),
     chartColor: z
       .enum(THEMES.map((t) => t.name) as [ChartColorName, ...ChartColorName[]])
-      .default("neutral")
-      .optional(),
+      .default("neutral"),
     font: z.enum(fontValues).default("inter"),
     fontHeading: z.enum(fontHeadingValues).default("inherit"),
     item: z.string().optional(),
@@ -145,6 +144,16 @@ export const designSystemConfigSchema = z
     (data) => ({
       message: `Theme "${data.theme}" is not available for base color "${data.baseColor}"`,
       path: ["theme"],
+    })
+  )
+  .refine(
+    (data) => {
+      const availableThemes = getThemesForBaseColor(data.baseColor)
+      return availableThemes.some((t) => t.name === data.chartColor)
+    },
+    (data) => ({
+      message: `Chart color "${data.chartColor}" is not available for base color "${data.baseColor}"`,
+      path: ["chartColor"],
     })
   )
 
@@ -411,17 +420,15 @@ export function buildRegistryTheme(config: DesignSystemConfig) {
   }
   const themeVars: Record<string, string> = {}
 
-  // Apply chart color override (only when chartColor is defined, i.e. v2 codes).
-  if (config.chartColor) {
-    const chartTheme = getTheme(config.chartColor as ThemeName)
-    if (chartTheme) {
-      const chartLight = chartTheme.cssVars?.light as Record<string, string>
-      const chartDark = chartTheme.cssVars?.dark as Record<string, string>
-      for (let i = 1; i <= 5; i++) {
-        const key = `chart-${i}`
-        if (chartLight?.[key]) lightVars[key] = chartLight[key]
-        if (chartDark?.[key]) darkVars[key] = chartDark[key]
-      }
+  // Apply chart color override.
+  const chartTheme = getTheme(config.chartColor)
+  if (chartTheme) {
+    const chartLight = chartTheme.cssVars?.light as Record<string, string>
+    const chartDark = chartTheme.cssVars?.dark as Record<string, string>
+    for (let i = 1; i <= 5; i++) {
+      const key = `chart-${i}`
+      if (chartLight?.[key]) lightVars[key] = chartLight[key]
+      if (chartDark?.[key]) darkVars[key] = chartDark[key]
     }
   }
 

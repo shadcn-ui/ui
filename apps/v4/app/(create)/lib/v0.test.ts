@@ -1,15 +1,17 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
+import type * as ShadcnSchemaModule from "shadcn/schema"
+import type * as ShadcnUtilsModule from "shadcn/utils"
 
 import { DEFAULT_CONFIG } from "@/registry/config"
 import { buildV0Payload } from "@/app/(create)/lib/v0"
 
 vi.mock("shadcn/schema", async () => {
-  return await vi.importActual<typeof import("shadcn/schema")>("shadcn/schema")
+  return await vi.importActual<ShadcnSchemaModule>("shadcn/schema")
 })
 
 vi.mock("shadcn/utils", async () => {
   const { transformFont } =
-    await vi.importActual<typeof import("shadcn/utils")>("shadcn/utils")
+    await vi.importActual<ShadcnUtilsModule>("shadcn/utils")
 
   return {
     transformFont,

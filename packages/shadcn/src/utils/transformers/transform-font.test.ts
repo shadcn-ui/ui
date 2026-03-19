@@ -40,6 +40,21 @@ afterEach(async () => {
 })
 
 describe("transformFont", () => {
+  test("does not rewrite cn-font-heading unless transformFont is explicitly included", async () => {
+    const result = await transform({
+      filename: "test.tsx",
+      raw: `import * as React from "react"
+export function Component() {
+  return <h2 className="cn-font-heading text-xl" />
+}`,
+      config: await createTestConfig(
+        `@theme inline { --font-heading: var(--font-heading); }`
+      ),
+    })
+
+    expect(result).toContain('className="cn-font-heading text-xl"')
+  })
+
   test("rewrites cn-font-heading to font-heading when the project supports it", async () => {
     const result = await transform(
       {
