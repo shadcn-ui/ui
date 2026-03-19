@@ -3,9 +3,7 @@
 import { ActivateAgentDialog } from "@/registry/bases/base/blocks/preview/cards/activate-agent-dialog"
 import { AnalyticsCard } from "@/registry/bases/base/blocks/preview/cards/analytics-card"
 import { AnomalyAlert } from "@/registry/bases/base/blocks/preview/cards/anomaly-alert"
-import { AssignIssue } from "@/registry/bases/base/blocks/preview/cards/assign-issue"
 import { BarChartCard } from "@/registry/bases/base/blocks/preview/cards/bar-chart-card"
-import { BarVisualizerCard } from "@/registry/bases/base/blocks/preview/cards/bar-visualizer"
 import { BookAppointment } from "@/registry/bases/base/blocks/preview/cards/book-appointment"
 import { CodespacesCard } from "@/registry/bases/base/blocks/preview/cards/codespaces-card"
 import { ContributionsActivity } from "@/registry/bases/base/blocks/preview/cards/contributions-activity"
@@ -28,6 +26,7 @@ import { Shortcuts } from "@/registry/bases/base/blocks/preview/cards/shortcuts"
 import { SkeletonLoading } from "@/registry/bases/base/blocks/preview/cards/skeleton-loading"
 import { SleepReport } from "@/registry/bases/base/blocks/preview/cards/sleep-report"
 import { StyleOverview } from "@/registry/bases/base/blocks/preview/cards/style-overview"
+import { TypographySpecimen } from "@/registry/bases/base/blocks/preview/cards/typography-specimen"
 import { UIElements } from "@/registry/bases/base/blocks/preview/cards/ui-elements"
 import { UsageCard } from "@/registry/bases/base/blocks/preview/cards/usage-card"
 import { Visitors } from "@/registry/bases/base/blocks/preview/cards/visitors"
@@ -43,11 +42,11 @@ export default function PreviewExample() {
         >
           <div className="flex flex-col p-px [contain-intrinsic-size:380px_1200px] [content-visibility:auto]">
             <StyleOverview />
+            <TypographySpecimen />
             <div className="md:hidden">
               <UIElements />
             </div>
             <CodespacesCard />
-            <BarVisualizerCard />
             <Invoice />
           </div>
           <div className="flex flex-col p-px [contain-intrinsic-size:380px_1200px] [content-visibility:auto]">
@@ -56,8 +55,7 @@ export default function PreviewExample() {
               <UIElements />
             </div>
             <ObservabilityCard />
-            <Visitors />
-            <Shortcuts />
+            <ShippingAddress />
           </div>
           <div className="flex flex-col p-px [contain-intrinsic-size:380px_1200px] [content-visibility:auto]">
             <EnvironmentVariables />
@@ -79,17 +77,17 @@ export default function PreviewExample() {
             <GithubProfile />
           </div>
           <div className="flex flex-col p-px [contain-intrinsic-size:380px_1200px] [content-visibility:auto]">
-            <AssignIssue />
             <WeeklyFitnessSummary />
             <FileUpload />
             <AnalyticsCard />
             <UsageCard />
-            <ContributionsActivity />
+            <Shortcuts />
           </div>
           <div className="flex flex-col p-px [contain-intrinsic-size:380px_1200px] [content-visibility:auto]">
             <AnomalyAlert />
             <LiveWaveformCard />
-            <ShippingAddress />
+            <Visitors />
+            <ContributionsActivity />
             <NotFound />
           </div>
         </div>

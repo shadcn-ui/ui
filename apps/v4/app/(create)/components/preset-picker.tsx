@@ -33,6 +33,7 @@ export function PresetPicker({
         preset.theme === params.theme &&
         preset.iconLibrary === params.iconLibrary &&
         preset.font === params.font &&
+        preset.fontHeading === params.fontHeading &&
         preset.menuAccent === params.menuAccent &&
         preset.menuColor === params.menuColor &&
         preset.radius === params.radius
@@ -45,6 +46,7 @@ export function PresetPicker({
     params.theme,
     params.iconLibrary,
     params.font,
+    params.fontHeading,
     params.menuAccent,
     params.menuColor,
     params.radius,
@@ -69,6 +71,7 @@ export function PresetPicker({
       theme: preset.theme,
       iconLibrary: preset.iconLibrary,
       font: preset.font,
+      fontHeading: preset.fontHeading,
       menuAccent: preset.menuAccent,
       menuColor: preset.menuColor,
       radius: preset.radius,

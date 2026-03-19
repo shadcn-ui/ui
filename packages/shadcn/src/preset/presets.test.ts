@@ -15,6 +15,7 @@ const mockPreset = {
   theme: "default",
   iconLibrary: "lucide",
   font: "inter",
+  fontHeading: "inherit",
   rtl: false,
   menuAccent: "subtle" as const,
   menuColor: "default" as const,
@@ -82,6 +83,21 @@ describe("buildInitUrl", () => {
     const url = resolveInitUrl(mockPreset)
     const parsed = new URL(url)
     expect(parsed.searchParams.has("chartColor")).toBe(false)
+  })
+
+  it("should include fontHeading when it is explicitly set", () => {
+    const url = resolveInitUrl({
+      ...mockPreset,
+      fontHeading: "playfair-display",
+    })
+    const parsed = new URL(url)
+    expect(parsed.searchParams.get("fontHeading")).toBe("playfair-display")
+  })
+
+  it("should not include fontHeading when it inherits the body font", () => {
+    const url = resolveInitUrl(mockPreset)
+    const parsed = new URL(url)
+    expect(parsed.searchParams.has("fontHeading")).toBe(false)
   })
 
   it("should include preset code when provided", () => {

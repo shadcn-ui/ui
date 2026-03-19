@@ -5,19 +5,28 @@ import {
   type configSchema,
   type RegistryItem,
 } from "shadcn/schema"
-import { transformIcons, transformMenu, transformRender } from "shadcn/utils"
+import {
+  transformFont,
+  transformIcons,
+  transformMenu,
+  transformRender,
+} from "shadcn/utils"
 import { Project, ScriptKind } from "ts-morph"
 import { z } from "zod"
 
 import {
   buildRegistryBase,
-  fonts,
+  getBodyFont,
+  getHeadingFont,
+  getInheritedHeadingFontValue,
   type DesignSystemConfig,
 } from "@/registry/config"
 
 const { Index } = await import("@/registry/bases/__index__")
 
-const THEME_INLINE = `--font-sans: var(--font-sans);
+function buildThemeInline(fontHeadingValue: string) {
+  return `--font-sans: var(--font-sans);
+  --font-heading: ${fontHeadingValue};
   --font-mono: var(--font-mono);
   --font-serif: var(--font-serif);
   --color-background: var(--background);
@@ -59,6 +68,7 @@ const THEME_INLINE = `--font-sans: var(--font-sans);
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);`
+}
 
 // Static file — parsed once at module level.
 const themeProviderFile = registryItemFileSchema.parse({
@@ -148,7 +158,12 @@ const ALIASES = {
   hooks: "@/hooks",
 } as const
 
-const transformers = [transformIcons, transformMenu, transformRender]
+const transformers: Array<typeof transformFont> = [
+  transformIcons,
+  transformMenu,
+  transformRender,
+  transformFont,
+]
 
 function getStyle(designSystemConfig: DesignSystemConfig) {
   return `${designSystemConfig.base}-${designSystemConfig.style}`
@@ -156,10 +171,18 @@ function getStyle(designSystemConfig: DesignSystemConfig) {
 
 export async function buildV0Payload(designSystemConfig: DesignSystemConfig) {
   const registryBase = buildRegistryBase(designSystemConfig)
+  const normalizedFontHeading =
+    designSystemConfig.fontHeading === designSystemConfig.font
+      ? "inherit"
+      : designSystemConfig.fontHeading
 
   // Only buildComponentFiles is async — run sync builders directly.
-  const globalsCss = buildGlobalsCss(registryBase)
-  const layoutFile = buildLayoutFile(designSystemConfig)
+  const globalsCss = buildGlobalsCss(
+    registryBase,
+    designSystemConfig.font,
+    normalizedFontHeading
+  )
+  const layoutFile = buildLayoutFile(designSystemConfig, normalizedFontHeading)
   const componentFiles = await buildComponentFiles(designSystemConfig)
 
   const dependencies = [...(registryBase.dependencies ?? []), "next-themes"]
@@ -181,7 +204,11 @@ export async function buildV0Payload(designSystemConfig: DesignSystemConfig) {
   })
 }
 
-function buildGlobalsCss(registryBase: RegistryItem) {
+function buildGlobalsCss(
+  registryBase: RegistryItem,
+  font: DesignSystemConfig["font"],
+  fontHeading: DesignSystemConfig["fontHeading"]
+) {
   const lightVars = Object.entries(registryBase.cssVars?.light ?? {})
     .map(([key, value]) => `  --${key}: ${value};`)
     .join("\n")
@@ -194,11 +221,15 @@ function buildGlobalsCss(registryBase: RegistryItem) {
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
-@custom-variant dark (&:is(.dark *));
+  @custom-variant dark (&:is(.dark *));
 
-@theme inline {
-  ${THEME_INLINE}
-}
+  @theme inline {
+  ${buildThemeInline(
+    fontHeading === "inherit"
+      ? getInheritedHeadingFontValue(font)
+      : "var(--font-heading)"
+  )}
+  }
 
 :root {
   ${lightVars}
@@ -332,18 +363,23 @@ function buildPackageJson(dependencies: string[]) {
   })
 }
 
-function buildLayoutFile(designSystemConfig: DesignSystemConfig) {
-  const font = fonts.find(
-    (font) => font.name === `font-${designSystemConfig.font}`
-  )
+function buildLayoutFile(
+  designSystemConfig: DesignSystemConfig,
+  fontHeading: DesignSystemConfig["fontHeading"]
+) {
+  const font = getBodyFont(designSystemConfig.font)
   if (!font) {
     throw new Error(`Font "${designSystemConfig.font}" not found`)
   }
+
+  const headingFont =
+    fontHeading === "inherit" ? undefined : getHeadingFont(fontHeading)
 
   // Derive const name from the font's CSS variable (e.g. --font-sans → fontSans).
   const constName = font.font.variable
     .replace(/^--/, "")
     .replace(/-./g, (m) => m[1].toUpperCase())
+  const headingConstName = "fontHeading"
 
   // Add font-serif or font-mono class to body when needed. Sans is the default.
   const fontClass =
@@ -354,14 +390,26 @@ function buildLayoutFile(designSystemConfig: DesignSystemConfig) {
         : ""
 
   const bodyClassName = fontClass ? `antialiased ${fontClass}` : "antialiased"
+  const imports = headingFont
+    ? Array.from(new Set([font.font.import, headingFont.font.import])).join(
+        ", "
+      )
+    : font.font.import
+  const headingDeclaration = headingFont
+    ? `\nconst ${headingConstName} = ${headingFont.font.import}({subsets:['latin'],variable:'${headingFont.font.variable}'});\n`
+    : ""
+  const htmlClassName = headingFont
+    ? `{${constName}.variable + " " + ${headingConstName}.variable}`
+    : `{${constName}.variable}`
 
   const content = dedent`
     import type { Metadata } from "next";
-    import { ${font.font.import} } from "next/font/google";
+    import { ${imports} } from "next/font/google";
     import "./globals.css";
     import { ThemeProvider } from "@/components/theme-provider";
 
     const ${constName} = ${font.font.import}({subsets:['latin'],variable:'${font.font.variable}'});
+    ${headingDeclaration}
 
     export const metadata: Metadata = {
       title: "Create Next App",
@@ -374,7 +422,7 @@ function buildLayoutFile(designSystemConfig: DesignSystemConfig) {
       children: React.ReactNode;
     }>) {
       return (
-        <html lang="en" suppressHydrationWarning className={${constName}.variable}>
+        <html lang="en" suppressHydrationWarning className=${htmlClassName}>
           <body
             className="${bodyClassName}"
           >
@@ -553,6 +601,7 @@ async function transformFileContent(
       raw: content,
       sourceFile,
       config,
+      supportedFontMarkers: ["cn-font-heading"],
     })
   }
 

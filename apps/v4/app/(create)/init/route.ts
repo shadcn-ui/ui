@@ -27,6 +27,7 @@ export async function GET(request: NextRequest) {
             chartColor: result.data.chartColor,
             iconLibrary: result.data.iconLibrary,
             font: result.data.font,
+            fontHeading: result.data.fontHeading,
             radius: result.data.radius,
             menuAccent: result.data.menuAccent,
             menuColor: result.data.menuColor,

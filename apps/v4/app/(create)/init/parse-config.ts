@@ -17,6 +17,9 @@ export function parseDesignSystemConfig(searchParams: URLSearchParams) {
     }
     configInput = {
       ...decoded,
+      // Allow an explicit query param to override the decoded preset so older
+      // preset codes can still opt into newer fields like fontHeading.
+      fontHeading: searchParams.get("fontHeading") ?? decoded.fontHeading,
       // V1 presets don't encode chartColor — fall back to the colored
       // theme that base-color themes originally borrowed charts from.
       chartColor:
@@ -36,6 +39,7 @@ export function parseDesignSystemConfig(searchParams: URLSearchParams) {
       theme: searchParams.get("theme"),
       chartColor: searchParams.get("chartColor") ?? undefined,
       font: searchParams.get("font"),
+      fontHeading: searchParams.get("fontHeading") ?? undefined,
       menuAccent: searchParams.get("menuAccent"),
       menuColor: searchParams.get("menuColor"),
       radius: searchParams.get("radius"),

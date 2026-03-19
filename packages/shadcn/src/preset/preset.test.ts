@@ -10,6 +10,7 @@ import {
   isValidPreset,
   PRESET_BASE_COLORS,
   PRESET_CHART_COLORS,
+  PRESET_FONT_HEADINGS,
   PRESET_FONTS,
   PRESET_ICON_LIBRARIES,
   PRESET_MENU_ACCENTS,
@@ -52,6 +53,7 @@ describe("encodePreset / decodePreset", () => {
       chartColor: "emerald",
       iconLibrary: "tabler",
       font: "jetbrains-mono",
+      fontHeading: "playfair-display",
       radius: "large",
       menuAccent: "bold",
       menuColor: "inverted",
@@ -61,9 +63,9 @@ describe("encodePreset / decodePreset", () => {
     expect(decoded).toEqual(config)
   })
 
-  it("should produce short codes (max 9 chars)", () => {
+  it("should produce short codes (max 10 chars)", () => {
     const code = encodePreset(DEFAULT_PRESET_CONFIG)
-    expect(code.length).toBeLessThanOrEqual(9)
+    expect(code.length).toBeLessThanOrEqual(10)
   })
 
   it("should start with the version character", () => {
@@ -101,6 +103,14 @@ describe("encodePreset / decodePreset", () => {
       const code = encodePreset({ font })
       const decoded = decodePreset(code)
       expect(decoded!.font).toBe(font)
+    }
+  })
+
+  it("should round-trip all font headings", () => {
+    for (const fontHeading of PRESET_FONT_HEADINGS) {
+      const code = encodePreset({ fontHeading })
+      const decoded = decodePreset(code)
+      expect(decoded!.fontHeading).toBe(fontHeading)
     }
   })
 
@@ -188,6 +198,12 @@ describe("v1/v2 backward compatibility", () => {
     expect(decoded).not.toBeNull()
     expect(decoded!.theme).toBe("blue")
     expect(decoded!.chartColor).toBe("emerald")
+  })
+
+  it("should decode old b-prefixed codes with fontHeading defaulting to inherit", () => {
+    const decoded = decodePreset("b0")
+    expect(decoded).not.toBeNull()
+    expect(decoded!.fontHeading).toBe("inherit")
   })
 
   it("should encode always produces 'b'-prefixed codes", () => {

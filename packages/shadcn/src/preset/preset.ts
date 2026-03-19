@@ -94,7 +94,15 @@ export const PRESET_FONTS = [
   "playfair-display",
   "noto-serif",
   "roboto-slab",
+  "oxanium",
+  "manrope",
+  "space-grotesk",
+  "montserrat",
+  "ibm-plex-sans",
+  "source-sans-3",
+  "instrument-sans",
 ] as const
+export const PRESET_FONT_HEADINGS = ["inherit", ...PRESET_FONTS] as const
 
 export const PRESET_RADII = [
   "default",
@@ -124,10 +132,11 @@ const PRESET_FIELDS_V1 = [
   { key: "style", values: PRESET_STYLES, bits: 6 },
 ] as const
 
-// V2 fields (version "b"): 46 bits. Adds chartColor.
+// V2 fields (version "b"): 51 bits. Adds chartColor and fontHeading.
 const PRESET_FIELDS_V2 = [
   ...PRESET_FIELDS_V1,
   { key: "chartColor", values: PRESET_CHART_COLORS, bits: 6 },
+  { key: "fontHeading", values: PRESET_FONT_HEADINGS, bits: 5 },
 ] as const
 
 export type PresetConfig = {
@@ -137,6 +146,7 @@ export type PresetConfig = {
   chartColor?: (typeof PRESET_CHART_COLORS)[number]
   iconLibrary: (typeof PRESET_ICON_LIBRARIES)[number]
   font: (typeof PRESET_FONTS)[number]
+  fontHeading: (typeof PRESET_FONT_HEADINGS)[number]
   radius: (typeof PRESET_RADII)[number]
   menuAccent: (typeof PRESET_MENU_ACCENTS)[number]
   menuColor: (typeof PRESET_MENU_COLORS)[number]
