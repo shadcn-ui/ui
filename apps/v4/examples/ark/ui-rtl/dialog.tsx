@@ -2,13 +2,16 @@
 
 import * as React from "react"
 import { Dialog as DialogPrimitive } from "@ark-ui/react/dialog"
+import { ark } from "@ark-ui/react/factory"
 import { Portal } from "@ark-ui/react/portal"
 
 import { cn } from "@/examples/ark/lib/utils"
 import { Button } from "@/examples/ark/ui-rtl/button"
 import { XIcon } from "lucide-react"
 
-function Dialog({ ...props }: DialogPrimitive.RootProps) {
+function Dialog({
+  ...props
+}: React.ComponentProps<typeof DialogPrimitive.Root>) {
   return <DialogPrimitive.Root data-slot="dialog" {...props} />
 }
 
@@ -16,10 +19,6 @@ function DialogTrigger({
   ...props
 }: React.ComponentProps<typeof DialogPrimitive.Trigger>) {
   return <DialogPrimitive.Trigger data-slot="dialog-trigger" {...props} />
-}
-
-function DialogPortal({ children }: { children: React.ReactNode }) {
-  return <Portal>{children}</Portal>
 }
 
 function DialogClose({
@@ -53,7 +52,7 @@ function DialogContent({
   showCloseButton?: boolean
 }) {
   return (
-    <DialogPortal>
+    <Portal>
       <DialogOverlay />
       <DialogPrimitive.Positioner className="fixed inset-0 z-50 flex items-center justify-center">
         <DialogPrimitive.Content
@@ -80,13 +79,16 @@ function DialogContent({
           )}
         </DialogPrimitive.Content>
       </DialogPrimitive.Positioner>
-    </DialogPortal>
+    </Portal>
   )
 }
 
-function DialogHeader({ className, ...props }: React.ComponentProps<"div">) {
+function DialogHeader({
+  className,
+  ...props
+}: React.ComponentProps<typeof ark.div>) {
   return (
-    <div
+    <ark.div
       data-slot="dialog-header"
       className={cn("flex flex-col gap-2", className)}
       {...props}
@@ -99,11 +101,11 @@ function DialogFooter({
   showCloseButton = false,
   children,
   ...props
-}: React.ComponentProps<"div"> & {
+}: React.ComponentProps<typeof ark.div> & {
   showCloseButton?: boolean
 }) {
   return (
-    <div
+    <ark.div
       data-slot="dialog-footer"
       className={cn(
         "-mx-4 -mb-4 flex flex-col-reverse gap-2 rounded-b-xl border-t bg-muted/50 p-4 sm:flex-row sm:justify-end",
@@ -117,7 +119,7 @@ function DialogFooter({
           <Button variant="outline">Close</Button>
         </DialogPrimitive.CloseTrigger>
       )}
-    </div>
+    </ark.div>
   )
 }
 
@@ -158,7 +160,6 @@ export {
   DialogFooter,
   DialogHeader,
   DialogOverlay,
-  DialogPortal,
   DialogTitle,
   DialogTrigger,
 }

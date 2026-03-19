@@ -24,30 +24,4 @@ function Progress({
   )
 }
 
-function ProgressLabel({
-  className,
-  ...props
-}: React.ComponentProps<typeof ProgressPrimitive.Label>) {
-  return (
-    <ProgressPrimitive.Label
-      data-slot="progress-label"
-      className={cn("text-sm font-medium", className)}
-      {...props}
-    />
-  )
-}
-
-function ProgressValueText({
-  className,
-  ...props
-}: React.ComponentProps<typeof ProgressPrimitive.ValueText>) {
-  return (
-    <ProgressPrimitive.ValueText
-      data-slot="progress-value-text"
-      className={cn(className)}
-      {...props}
-    />
-  )
-}
-
-export { Progress, ProgressLabel, ProgressValueText }
+export { Progress }

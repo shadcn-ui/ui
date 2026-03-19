@@ -21,7 +21,13 @@
       "Bash(node:*)",
       "Bash(npx tsc:*)",
       "Bash(git status:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(pkill:*)",
+      "Bash(npm pack:*)",
+      "Bash(python3:*)",
+      "Bash(grep:*)",
+      "Bash(bun run:*)"
     ],
     "deny": []
   }

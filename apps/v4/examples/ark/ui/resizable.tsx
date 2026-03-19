@@ -4,7 +4,6 @@ import type { ComponentProps } from "react"
 import { Splitter } from "@ark-ui/react/splitter"
 
 import { cn } from "@/examples/ark/lib/utils"
-import { GripVertical } from "lucide-react"
 
 function ResizablePanelGroup({
   className,
@@ -44,9 +43,7 @@ function ResizableHandle({
     >
       {withHandle && (
         <Splitter.ResizeTriggerIndicator>
-          <div className="z-10 flex h-6 w-1 shrink-0 rounded-lg bg-border">
-            <GripVertical className="size-2.5" />
-          </div>
+          <div className="z-10 flex h-6 w-1 shrink-0 rounded-lg bg-border" />
         </Splitter.ResizeTriggerIndicator>
       )}
     </Splitter.ResizeTrigger>

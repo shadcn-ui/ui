@@ -24,7 +24,9 @@ function Menubar({
   )
 }
 
-function MenubarMenu({ ...props }: MenuPrimitive.RootProps) {
+function MenubarMenu({
+  ...props
+}: React.ComponentProps<typeof MenuPrimitive.Root>) {
   return <MenuPrimitive.Root data-slot="menubar-menu" {...props} />
 }
 
@@ -40,8 +42,13 @@ function MenubarPortal({ children }: { children: React.ReactNode }) {
 
 function MenubarRadioGroup({
   ...props
-}: React.ComponentProps<typeof MenuPrimitive.ItemGroup>) {
-  return <MenuPrimitive.ItemGroup data-slot="menubar-radio-group" {...props} />
+}: React.ComponentProps<typeof MenuPrimitive.RadioItemGroup>) {
+  return (
+    <MenuPrimitive.RadioItemGroup
+      data-slot="menubar-radio-group"
+      {...props}
+    />
+  )
 }
 
 function MenubarTrigger({
@@ -106,6 +113,7 @@ function MenubarItem({
 function MenubarCheckboxItem({
   className,
   children,
+  checked,
   inset,
   ...props
 }: React.ComponentProps<typeof MenuPrimitive.CheckboxItem> & {
@@ -119,6 +127,7 @@ function MenubarCheckboxItem({
         "cn-menubar-checkbox-item relative flex cursor-default items-center outline-hidden select-none data-disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0",
         className
       )}
+      checked={checked}
       {...props}
     >
       <span className="cn-menubar-checkbox-item-indicator pointer-events-none absolute flex items-center justify-center">
@@ -132,7 +141,7 @@ function MenubarCheckboxItem({
           />
         </MenuPrimitive.ItemIndicator>
       </span>
-      <MenuPrimitive.ItemText>{children}</MenuPrimitive.ItemText>
+      {children}
     </MenuPrimitive.CheckboxItem>
   )
 }
@@ -166,7 +175,7 @@ function MenubarRadioItem({
           />
         </MenuPrimitive.ItemIndicator>
       </span>
-      <MenuPrimitive.ItemText>{children}</MenuPrimitive.ItemText>
+      {children}
     </MenuPrimitive.RadioItem>
   )
 }
@@ -214,7 +223,9 @@ function MenubarShortcut({
   )
 }
 
-function MenubarSub({ ...props }: MenuPrimitive.RootProps) {
+function MenubarSub({
+  ...props
+}: React.ComponentProps<typeof MenuPrimitive.Root>) {
   return <MenuPrimitive.Root data-slot="menubar-sub" {...props} />
 }
 
@@ -254,16 +265,18 @@ function MenubarSubContent({
   ...props
 }: React.ComponentProps<typeof MenuPrimitive.Content>) {
   return (
-    <MenuPrimitive.Positioner>
-      <MenuPrimitive.Content
-        data-slot="menubar-sub-content"
-        className={cn(
-          "cn-menubar-sub-content cn-menu-target z-50 overflow-hidden",
-          className
-        )}
-        {...props}
-      />
-    </MenuPrimitive.Positioner>
+    <Portal>
+      <MenuPrimitive.Positioner>
+        <MenuPrimitive.Content
+          data-slot="menubar-sub-content"
+          className={cn(
+            "cn-menubar-sub-content cn-menu-target z-50 overflow-hidden",
+            className
+          )}
+          {...props}
+        />
+      </MenuPrimitive.Positioner>
+    </Portal>
   )
 }
 

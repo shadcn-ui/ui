@@ -7,7 +7,9 @@ import { Portal } from "@ark-ui/react/portal"
 import { cn } from "@/registry/bases/ark/lib/utils"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
-function ContextMenu({ ...props }: MenuPrimitive.RootProps) {
+function ContextMenu({
+  ...props
+}: React.ComponentProps<typeof MenuPrimitive.Root>) {
   return <MenuPrimitive.Root data-slot="context-menu" {...props} />
 }
 
@@ -36,15 +38,17 @@ function ContextMenuPortal({ children }: { children: React.ReactNode }) {
   return <Portal>{children}</Portal>
 }
 
-function ContextMenuSub({ ...props }: MenuPrimitive.RootProps) {
+function ContextMenuSub({
+  ...props
+}: React.ComponentProps<typeof MenuPrimitive.Root>) {
   return <MenuPrimitive.Root data-slot="context-menu-sub" {...props} />
 }
 
 function ContextMenuRadioGroup({
   ...props
-}: React.ComponentProps<typeof MenuPrimitive.ItemGroup>) {
+}: React.ComponentProps<typeof MenuPrimitive.RadioItemGroup>) {
   return (
-    <MenuPrimitive.ItemGroup
+    <MenuPrimitive.RadioItemGroup
       data-slot="context-menu-radio-group"
       {...props}
     />
@@ -130,22 +134,25 @@ function ContextMenuSubContent({
   ...props
 }: React.ComponentProps<typeof MenuPrimitive.Content>) {
   return (
-    <MenuPrimitive.Positioner>
-      <MenuPrimitive.Content
-        data-slot="context-menu-sub-content"
-        className={cn(
-          "cn-context-menu-sub-content cn-menu-target z-50 overflow-hidden",
-          className
-        )}
-        {...props}
-      />
-    </MenuPrimitive.Positioner>
+    <Portal>
+      <MenuPrimitive.Positioner>
+        <MenuPrimitive.Content
+          data-slot="context-menu-sub-content"
+          className={cn(
+            "cn-context-menu-sub-content cn-menu-target z-50 overflow-hidden",
+            className
+          )}
+          {...props}
+        />
+      </MenuPrimitive.Positioner>
+    </Portal>
   )
 }
 
 function ContextMenuCheckboxItem({
   className,
   children,
+  checked,
   inset,
   ...props
 }: React.ComponentProps<typeof MenuPrimitive.CheckboxItem> & {
@@ -159,6 +166,7 @@ function ContextMenuCheckboxItem({
         "cn-context-menu-checkbox-item relative flex cursor-default items-center outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
         className
       )}
+      checked={checked}
       {...props}
     >
       <span className="cn-context-menu-item-indicator pointer-events-none">
@@ -172,7 +180,7 @@ function ContextMenuCheckboxItem({
           />
         </MenuPrimitive.ItemIndicator>
       </span>
-      <MenuPrimitive.ItemText>{children}</MenuPrimitive.ItemText>
+      {children}
     </MenuPrimitive.CheckboxItem>
   )
 }
@@ -206,7 +214,7 @@ function ContextMenuRadioItem({
           />
         </MenuPrimitive.ItemIndicator>
       </span>
-      <MenuPrimitive.ItemText>{children}</MenuPrimitive.ItemText>
+      {children}
     </MenuPrimitive.RadioItem>
   )
 }

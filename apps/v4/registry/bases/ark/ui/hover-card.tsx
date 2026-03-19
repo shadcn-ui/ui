@@ -15,25 +15,27 @@ function HoverCard({
 function HoverCardTrigger({
   ...props
 }: React.ComponentProps<typeof HoverCardPrimitive.Trigger>) {
-  return <HoverCardPrimitive.Trigger data-slot="hover-card-trigger" {...props} />
-}
-
-function HoverCardContent({
-  className,
-  ...props
-}: React.ComponentProps<typeof HoverCardPrimitive.Content>) {
   return (
-    <Portal>
-      <HoverCardPrimitive.Positioner>
-        <HoverCardPrimitive.Content
-          data-slot="hover-card-content"
-          className={cn("cn-hover-card-content", className)}
-          {...props}
-        />
-      </HoverCardPrimitive.Positioner>
-    </Portal>
+    <HoverCardPrimitive.Trigger data-slot="hover-card-trigger" {...props} />
   )
 }
+
+const HoverCardContent = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentProps<typeof HoverCardPrimitive.Content>
+>(({ className, ...props }, ref) => (
+  <Portal>
+    <HoverCardPrimitive.Positioner>
+      <HoverCardPrimitive.Content
+        ref={ref}
+        data-slot="hover-card-content"
+        className={cn("cn-hover-card-content", className)}
+        {...props}
+      />
+    </HoverCardPrimitive.Positioner>
+  </Portal>
+))
+HoverCardContent.displayName = "HoverCardContent"
 
 function HoverCardArrow({
   className,

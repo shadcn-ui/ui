@@ -7,7 +7,9 @@ import { Portal } from "@ark-ui/react/portal"
 import { cn } from "@/examples/ark/lib/utils"
 import { ChevronRightIcon, CheckIcon } from "lucide-react"
 
-function ContextMenu({ ...props }: MenuPrimitive.RootProps) {
+function ContextMenu({
+  ...props
+}: React.ComponentProps<typeof MenuPrimitive.Root>) {
   return <MenuPrimitive.Root data-slot="context-menu" {...props} />
 }
 
@@ -34,15 +36,20 @@ function ContextMenuPortal({ children }: { children: React.ReactNode }) {
   return <Portal>{children}</Portal>
 }
 
-function ContextMenuSub({ ...props }: MenuPrimitive.RootProps) {
+function ContextMenuSub({
+  ...props
+}: React.ComponentProps<typeof MenuPrimitive.Root>) {
   return <MenuPrimitive.Root data-slot="context-menu-sub" {...props} />
 }
 
 function ContextMenuRadioGroup({
   ...props
-}: React.ComponentProps<typeof MenuPrimitive.ItemGroup>) {
+}: React.ComponentProps<typeof MenuPrimitive.RadioItemGroup>) {
   return (
-    <MenuPrimitive.ItemGroup data-slot="context-menu-radio-group" {...props} />
+    <MenuPrimitive.RadioItemGroup
+      data-slot="context-menu-radio-group"
+      {...props}
+    />
   )
 }
 
@@ -118,22 +125,25 @@ function ContextMenuSubContent({
   ...props
 }: React.ComponentProps<typeof MenuPrimitive.Content>) {
   return (
-    <MenuPrimitive.Positioner>
-      <MenuPrimitive.Content
-        data-slot="context-menu-sub-content"
-        className={cn(
-          "cn-menu-target z-50 min-w-32 overflow-hidden rounded-lg border bg-popover p-1 text-popover-foreground shadow-lg duration-100 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95",
-          className
-        )}
-        {...props}
-      />
-    </MenuPrimitive.Positioner>
+    <Portal>
+      <MenuPrimitive.Positioner>
+        <MenuPrimitive.Content
+          data-slot="context-menu-sub-content"
+          className={cn(
+            "cn-menu-target z-50 min-w-32 overflow-hidden rounded-lg border bg-popover p-1 text-popover-foreground shadow-lg duration-100 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95",
+            className
+          )}
+          {...props}
+        />
+      </MenuPrimitive.Positioner>
+    </Portal>
   )
 }
 
 function ContextMenuCheckboxItem({
   className,
   children,
+  checked,
   inset,
   ...props
 }: React.ComponentProps<typeof MenuPrimitive.CheckboxItem> & {
@@ -147,6 +157,7 @@ function ContextMenuCheckboxItem({
         "relative flex cursor-default items-center gap-1.5 rounded-md py-1 pr-8 pl-1.5 text-sm outline-hidden select-none focus:bg-accent focus:text-accent-foreground data-inset:pl-7 data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
         className
       )}
+      checked={checked}
       {...props}
     >
       <span className="pointer-events-none absolute right-2">
@@ -155,7 +166,7 @@ function ContextMenuCheckboxItem({
           />
         </MenuPrimitive.ItemIndicator>
       </span>
-      <MenuPrimitive.ItemText>{children}</MenuPrimitive.ItemText>
+      {children}
     </MenuPrimitive.CheckboxItem>
   )
 }
@@ -184,7 +195,7 @@ function ContextMenuRadioItem({
           />
         </MenuPrimitive.ItemIndicator>
       </span>
-      <MenuPrimitive.ItemText>{children}</MenuPrimitive.ItemText>
+      {children}
     </MenuPrimitive.RadioItem>
   )
 }

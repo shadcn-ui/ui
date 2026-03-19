@@ -20,8 +20,9 @@ function Checkbox({
       {...props}
     >
       <CheckboxPrimitive.Control className="">
-        <CheckboxPrimitive.Indicator>
-          <CheckIcon className="[&>svg]:size-3.5" />
+        <CheckboxPrimitive.Indicator className="[&>svg]:size-3.5">
+          <CheckIcon
+          />
         </CheckboxPrimitive.Indicator>
       </CheckboxPrimitive.Control>
       <CheckboxPrimitive.HiddenInput />

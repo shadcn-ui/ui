@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Slot } from "@ark-ui/react/slot"
+import { ark } from "@ark-ui/react/factory"
 
 import { cn } from "@/examples/ark/lib/utils"
 import { ChevronRightIcon, MoreHorizontalIcon } from "lucide-react"
@@ -45,7 +45,7 @@ function BreadcrumbLink({
 }: React.ComponentProps<"a"> & {
   asChild?: boolean
 }) {
-  const Comp = asChild ? Slot : "a"
+  const Comp = asChild ? ark.a : "a"
 
   return (
     <Comp

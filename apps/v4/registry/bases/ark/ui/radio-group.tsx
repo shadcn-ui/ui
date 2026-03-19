@@ -20,6 +20,7 @@ function RadioGroup({
 
 function RadioGroupItem({
   className,
+  children,
   ...props
 }: React.ComponentProps<typeof RadioGroupPrimitive.Item>) {
   return (
@@ -32,34 +33,9 @@ function RadioGroupItem({
         <RadioGroupPrimitive.ItemIndicator className="cn-radio-group-item-indicator" />
       </RadioGroupPrimitive.ItemControl>
       <RadioGroupPrimitive.ItemHiddenInput />
+      {children}
     </RadioGroupPrimitive.Item>
   )
 }
 
-function RadioGroupItemText({
-  className,
-  ...props
-}: React.ComponentProps<typeof RadioGroupPrimitive.ItemText>) {
-  return (
-    <RadioGroupPrimitive.ItemText
-      data-slot="radio-group-item-text"
-      className={cn("cn-radio-group-item-text", className)}
-      {...props}
-    />
-  )
-}
-
-function RadioGroupLabel({
-  className,
-  ...props
-}: React.ComponentProps<typeof RadioGroupPrimitive.Label>) {
-  return (
-    <RadioGroupPrimitive.Label
-      data-slot="radio-group-label"
-      className={cn("cn-radio-group-label", className)}
-      {...props}
-    />
-  )
-}
-
-export { RadioGroup, RadioGroupItem, RadioGroupItemText, RadioGroupLabel }
+export { RadioGroup, RadioGroupItem }

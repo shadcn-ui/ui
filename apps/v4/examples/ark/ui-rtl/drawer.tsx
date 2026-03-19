@@ -2,11 +2,14 @@
 
 import * as React from "react"
 import { Drawer as DrawerPrimitive } from "@ark-ui/react/drawer"
+import { ark } from "@ark-ui/react/factory"
 import { Portal } from "@ark-ui/react/portal"
 
 import { cn } from "@/examples/ark/lib/utils"
 
-function Drawer({ ...props }: DrawerPrimitive.RootProps) {
+function Drawer({
+  ...props
+}: React.ComponentProps<typeof DrawerPrimitive.Root>) {
   return <DrawerPrimitive.Root data-slot="drawer" {...props} />
 }
 
@@ -14,10 +17,6 @@ function DrawerTrigger({
   ...props
 }: React.ComponentProps<typeof DrawerPrimitive.Trigger>) {
   return <DrawerPrimitive.Trigger data-slot="drawer-trigger" {...props} />
-}
-
-function DrawerPortal({ children }: { children: React.ReactNode }) {
-  return <Portal>{children}</Portal>
 }
 
 function DrawerClose({
@@ -51,7 +50,7 @@ function DrawerContent({
   showHandle?: boolean
 }) {
   return (
-    <DrawerPortal>
+    <Portal>
       <DrawerOverlay />
       <DrawerPrimitive.Positioner className="fixed inset-0 z-50">
         <DrawerPrimitive.Content
@@ -62,21 +61,35 @@ function DrawerContent({
           )}
           {...props}
         >
-          {showHandle && (
-            <DrawerPrimitive.Grabber>
-              <DrawerPrimitive.GrabberIndicator className="mx-auto mt-4 hidden h-1 w-[100px] shrink-0 rounded-full bg-muted group-data-[vaul-drawer-direction=bottom]/drawer-content:block" />
-            </DrawerPrimitive.Grabber>
-          )}
+          {showHandle && <DrawerHandle />}
           {children}
         </DrawerPrimitive.Content>
       </DrawerPrimitive.Positioner>
-    </DrawerPortal>
+    </Portal>
   )
 }
 
-function DrawerHeader({ className, ...props }: React.ComponentProps<"div">) {
+function DrawerHandle({
+  className,
+  ...props
+}: React.ComponentProps<typeof DrawerPrimitive.Grabber>) {
   return (
-    <div
+    <DrawerPrimitive.Grabber
+      data-slot="drawer-handle"
+      className={cn(className)}
+      {...props}
+    >
+      <DrawerPrimitive.GrabberIndicator className="mx-auto mt-4 hidden h-1 w-[100px] shrink-0 rounded-full bg-muted group-data-[vaul-drawer-direction=bottom]/drawer-content:block" />
+    </DrawerPrimitive.Grabber>
+  )
+}
+
+function DrawerHeader({
+  className,
+  ...props
+}: React.ComponentProps<typeof ark.div>) {
+  return (
+    <ark.div
       data-slot="drawer-header"
       className={cn(
         "flex flex-col gap-0.5 p-4 group-data-[vaul-drawer-direction=bottom]/drawer-content:text-center group-data-[vaul-drawer-direction=top]/drawer-content:text-center md:gap-0.5 md:text-start",
@@ -87,9 +100,12 @@ function DrawerHeader({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
-function DrawerFooter({ className, ...props }: React.ComponentProps<"div">) {
+function DrawerFooter({
+  className,
+  ...props
+}: React.ComponentProps<typeof ark.div>) {
   return (
-    <div
+    <ark.div
       data-slot="drawer-footer"
       className={cn("mt-auto flex flex-col gap-2 p-4", className)}
       {...props}
@@ -125,11 +141,11 @@ function DrawerDescription({
 
 export {
   Drawer,
-  DrawerPortal,
   DrawerOverlay,
   DrawerTrigger,
   DrawerClose,
   DrawerContent,
+  DrawerHandle,
   DrawerHeader,
   DrawerFooter,
   DrawerTitle,

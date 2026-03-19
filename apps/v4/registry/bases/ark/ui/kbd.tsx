@@ -15,4 +15,14 @@ function Kbd({ className, ...props }: React.ComponentProps<"kbd">) {
   )
 }
 
-export { Kbd }
+function KbdGroup({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <kbd
+      data-slot="kbd-group"
+      className={cn("cn-kbd-group inline-flex items-center", className)}
+      {...props}
+    />
+  )
+}
+
+export { Kbd, KbdGroup }

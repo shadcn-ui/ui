@@ -3,7 +3,7 @@
 import * as React from "react"
 import {
   Carousel as ArkCarousel,
-  useCarouselContext,
+  type useCarouselContext,
 } from "@ark-ui/react/carousel"
 
 import { cn } from "@/examples/ark/lib/utils"

@@ -5,7 +5,6 @@ import type { ComponentProps } from "react"
 import { Splitter } from "@ark-ui/react/splitter"
 
 import { cn } from "@/registry/bases/ark/lib/utils"
-import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 function ResizablePanelGroup({
   className,
@@ -47,16 +46,7 @@ function ResizableHandle({
     >
       {withHandle && (
         <Splitter.ResizeTriggerIndicator>
-          <div className="cn-resizable-handle-icon z-10 flex shrink-0">
-            <IconPlaceholder
-              lucide="GripVertical"
-              tabler="GripVertical"
-              hugeicons="GripVertical"
-              phosphor="DotsSixVertical"
-              remixicon="DraggableFill"
-              className="size-2.5"
-            />
-          </div>
+          <div className="cn-resizable-handle-icon z-10 flex shrink-0" />
         </Splitter.ResizeTriggerIndicator>
       )}
     </Splitter.ResizeTrigger>

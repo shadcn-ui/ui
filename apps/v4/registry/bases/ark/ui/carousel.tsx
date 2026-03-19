@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Carousel as ArkCarousel, useCarouselContext } from "@ark-ui/react/carousel"
+import { Carousel as ArkCarousel, type useCarouselContext } from "@ark-ui/react/carousel"
 
 import { cn } from "@/registry/bases/ark/lib/utils"
 import { Button } from "@/registry/bases/ark/ui/button"
