@@ -94,7 +94,13 @@ export const PRESET_FONTS = [
   "playfair-display",
   "noto-serif",
   "roboto-slab",
-  "tomorrow",
+  "oxanium",
+  "manrope",
+  "space-grotesk",
+  "montserrat",
+  "ibm-plex-sans",
+  "source-sans-3",
+  "instrument-sans",
 ] as const
 export const PRESET_FONT_HEADINGS = ["inherit", ...PRESET_FONTS] as const
 

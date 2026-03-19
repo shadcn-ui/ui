@@ -2960,27 +2960,94 @@
       }
     },
     {
-      "name": "font-tomorrow",
-      "title": "Tomorrow",
+      "name": "font-oxanium",
+      "title": "Oxanium",
       "type": "registry:font",
       "font": {
-        "family": "'Tomorrow', sans-serif",
+        "family": "'Oxanium Variable', sans-serif",
         "provider": "google",
-        "import": "Tomorrow",
+        "import": "Oxanium",
         "variable": "--font-sans",
-        "weight": [
-          "100",
-          "200",
-          "300",
-          "400",
-          "500",
-          "600",
-          "700",
-          "800",
-          "900"
-        ],
         "subsets": ["latin"],
-        "dependency": "@fontsource/tomorrow"
+        "dependency": "@fontsource-variable/oxanium"
+      }
+    },
+    {
+      "name": "font-manrope",
+      "title": "Manrope",
+      "type": "registry:font",
+      "font": {
+        "family": "'Manrope Variable', sans-serif",
+        "provider": "google",
+        "import": "Manrope",
+        "variable": "--font-sans",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/manrope"
+      }
+    },
+    {
+      "name": "font-space-grotesk",
+      "title": "Space Grotesk",
+      "type": "registry:font",
+      "font": {
+        "family": "'Space Grotesk Variable', sans-serif",
+        "provider": "google",
+        "import": "Space_Grotesk",
+        "variable": "--font-sans",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/space-grotesk"
+      }
+    },
+    {
+      "name": "font-montserrat",
+      "title": "Montserrat",
+      "type": "registry:font",
+      "font": {
+        "family": "'Montserrat Variable', sans-serif",
+        "provider": "google",
+        "import": "Montserrat",
+        "variable": "--font-sans",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/montserrat"
+      }
+    },
+    {
+      "name": "font-ibm-plex-sans",
+      "title": "IBM Plex Sans",
+      "type": "registry:font",
+      "font": {
+        "family": "'IBM Plex Sans Variable', sans-serif",
+        "provider": "google",
+        "import": "IBM_Plex_Sans",
+        "variable": "--font-sans",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/ibm-plex-sans"
+      }
+    },
+    {
+      "name": "font-source-sans-3",
+      "title": "Source Sans 3",
+      "type": "registry:font",
+      "font": {
+        "family": "'Source Sans 3 Variable', sans-serif",
+        "provider": "google",
+        "import": "Source_Sans_3",
+        "variable": "--font-sans",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/source-sans-3"
+      }
+    },
+    {
+      "name": "font-instrument-sans",
+      "title": "Instrument Sans",
+      "type": "registry:font",
+      "font": {
+        "family": "'Instrument Sans Variable', sans-serif",
+        "provider": "google",
+        "import": "Instrument_Sans",
+        "variable": "--font-sans",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/instrument-sans"
       }
     },
     {
@@ -3205,27 +3272,94 @@
       }
     },
     {
-      "name": "font-heading-tomorrow",
-      "title": "Tomorrow (Heading)",
+      "name": "font-heading-oxanium",
+      "title": "Oxanium (Heading)",
       "type": "registry:font",
       "font": {
-        "family": "'Tomorrow', sans-serif",
+        "family": "'Oxanium Variable', sans-serif",
         "provider": "google",
-        "import": "Tomorrow",
+        "import": "Oxanium",
         "variable": "--font-heading",
-        "weight": [
-          "100",
-          "200",
-          "300",
-          "400",
-          "500",
-          "600",
-          "700",
-          "800",
-          "900"
-        ],
         "subsets": ["latin"],
-        "dependency": "@fontsource/tomorrow"
+        "dependency": "@fontsource-variable/oxanium"
+      }
+    },
+    {
+      "name": "font-heading-manrope",
+      "title": "Manrope (Heading)",
+      "type": "registry:font",
+      "font": {
+        "family": "'Manrope Variable', sans-serif",
+        "provider": "google",
+        "import": "Manrope",
+        "variable": "--font-heading",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/manrope"
+      }
+    },
+    {
+      "name": "font-heading-space-grotesk",
+      "title": "Space Grotesk (Heading)",
+      "type": "registry:font",
+      "font": {
+        "family": "'Space Grotesk Variable', sans-serif",
+        "provider": "google",
+        "import": "Space_Grotesk",
+        "variable": "--font-heading",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/space-grotesk"
+      }
+    },
+    {
+      "name": "font-heading-montserrat",
+      "title": "Montserrat (Heading)",
+      "type": "registry:font",
+      "font": {
+        "family": "'Montserrat Variable', sans-serif",
+        "provider": "google",
+        "import": "Montserrat",
+        "variable": "--font-heading",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/montserrat"
+      }
+    },
+    {
+      "name": "font-heading-ibm-plex-sans",
+      "title": "IBM Plex Sans (Heading)",
+      "type": "registry:font",
+      "font": {
+        "family": "'IBM Plex Sans Variable', sans-serif",
+        "provider": "google",
+        "import": "IBM_Plex_Sans",
+        "variable": "--font-heading",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/ibm-plex-sans"
+      }
+    },
+    {
+      "name": "font-heading-source-sans-3",
+      "title": "Source Sans 3 (Heading)",
+      "type": "registry:font",
+      "font": {
+        "family": "'Source Sans 3 Variable', sans-serif",
+        "provider": "google",
+        "import": "Source_Sans_3",
+        "variable": "--font-heading",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/source-sans-3"
+      }
+    },
+    {
+      "name": "font-heading-instrument-sans",
+      "title": "Instrument Sans (Heading)",
+      "type": "registry:font",
+      "font": {
+        "family": "'Instrument Sans Variable', sans-serif",
+        "provider": "google",
+        "import": "Instrument_Sans",
+        "variable": "--font-heading",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/instrument-sans"
       }
     },
     {

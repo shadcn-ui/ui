@@ -31,18 +31,22 @@ const iconProject = new Project({
 })
 
 function getStylesToBuild() {
-  const stylesToBuild: { name: string; title: string }[] = [...legacyStyles]
+  const stylesToBuild = new Map<string, { name: string; title: string }>()
+
+  for (const style of legacyStyles) {
+    stylesToBuild.set(style.name, { ...style })
+  }
 
   for (const base of BASES) {
     for (const style of STYLES) {
-      stylesToBuild.push({
+      stylesToBuild.set(`${base.name}-${style.name}`, {
         name: `${base.name}-${style.name}`,
         title: `${base.title} ${style.title}`,
       })
     }
   }
 
-  return stylesToBuild
+  return Array.from(stylesToBuild.values())
 }
 
 try {
@@ -716,14 +720,28 @@ async function buildRtlExamples() {
 }
 
 async function batchPrettier(paths: string[]) {
-  if (paths.length === 0) return
+  const uniquePaths = Array.from(new Set(paths))
+
+  if (uniquePaths.length === 0) return
 
   await new Promise<void>((resolve, reject) => {
     const prettierBin = path.join(process.cwd(), "node_modules/.bin/prettier")
-    const proc = spawn(prettierBin, ["--write", ...paths], {
-      cwd: process.cwd(),
-      stdio: "inherit",
-    })
+    const proc = spawn(
+      prettierBin,
+      [
+        "--write",
+        "--log-level",
+        "silent",
+        "--cache",
+        "--cache-strategy",
+        "content",
+        ...uniquePaths,
+      ],
+      {
+        cwd: process.cwd(),
+        stdio: "inherit",
+      }
+    )
     proc.on("close", () => resolve())
     proc.on("error", reject)
   })

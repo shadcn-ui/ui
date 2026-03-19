@@ -3,10 +3,14 @@ import {
   Figtree,
   Geist,
   Geist_Mono,
+  IBM_Plex_Sans,
+  Instrument_Sans,
   Inter,
   JetBrains_Mono,
   Lora,
+  Manrope,
   Merriweather,
+  Montserrat,
   Noto_Sans,
   Noto_Serif,
   Nunito_Sans,
@@ -16,7 +20,9 @@ import {
   Raleway,
   Roboto,
   Roboto_Slab,
-  Tomorrow,
+  Oxanium,
+  Source_Sans_3,
+  Space_Grotesk,
 } from "next/font/google"
 
 import { FONT_DEFINITIONS, type FontDefinition } from "@/lib/font-definitions"
@@ -73,10 +79,39 @@ const outfit = Outfit({
   variable: "--font-outfit",
 })
 
-const tomorrow = Tomorrow({
+const oxanium = Oxanium({
   subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-  variable: "--font-tomorrow",
+  variable: "--font-oxanium",
+})
+
+const manrope = Manrope({
+  subsets: ["latin"],
+  variable: "--font-manrope",
+})
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-space-grotesk",
+})
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  variable: "--font-montserrat",
+})
+
+const ibmPlexSans = IBM_Plex_Sans({
+  subsets: ["latin"],
+  variable: "--font-ibm-plex-sans",
+})
+
+const sourceSans3 = Source_Sans_3({
+  subsets: ["latin"],
+  variable: "--font-source-sans-3",
+})
+
+const instrumentSans = Instrument_Sans({
+  subsets: ["latin"],
+  variable: "--font-instrument-sans",
 })
 
 const jetbrainsMono = JetBrains_Mono({
@@ -125,7 +160,13 @@ const PREVIEW_FONTS = {
   "dm-sans": dmSans,
   "public-sans": publicSans,
   outfit,
-  tomorrow,
+  oxanium,
+  manrope,
+  "space-grotesk": spaceGrotesk,
+  montserrat,
+  "ibm-plex-sans": ibmPlexSans,
+  "source-sans-3": sourceSans3,
+  "instrument-sans": instrumentSans,
   "jetbrains-mono": jetbrainsMono,
   "geist-mono": geistMono,
   "noto-serif": notoSerif,
@@ -161,7 +202,13 @@ export const FONTS = [
   createFontOption("dm-sans"),
   createFontOption("public-sans"),
   createFontOption("outfit"),
-  createFontOption("tomorrow"),
+  createFontOption("oxanium"),
+  createFontOption("manrope"),
+  createFontOption("space-grotesk"),
+  createFontOption("montserrat"),
+  createFontOption("ibm-plex-sans"),
+  createFontOption("source-sans-3"),
+  createFontOption("instrument-sans"),
   createFontOption("geist-mono"),
   createFontOption("jetbrains-mono"),
   createFontOption("noto-serif"),
