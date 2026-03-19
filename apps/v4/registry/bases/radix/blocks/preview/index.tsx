@@ -26,6 +26,7 @@ import { Shortcuts } from "@/registry/bases/radix/blocks/preview/cards/shortcuts
 import { SkeletonLoading } from "@/registry/bases/radix/blocks/preview/cards/skeleton-loading"
 import { SleepReport } from "@/registry/bases/radix/blocks/preview/cards/sleep-report"
 import { StyleOverview } from "@/registry/bases/radix/blocks/preview/cards/style-overview"
+import { TypographySpecimen } from "@/registry/bases/radix/blocks/preview/cards/typography-specimen"
 import { UIElements } from "@/registry/bases/radix/blocks/preview/cards/ui-elements"
 import { UsageCard } from "@/registry/bases/radix/blocks/preview/cards/usage-card"
 import { Visitors } from "@/registry/bases/radix/blocks/preview/cards/visitors"
@@ -41,6 +42,7 @@ export default function PreviewExample() {
         >
           <div className="flex flex-col p-px [contain-intrinsic-size:380px_1200px] [content-visibility:auto]">
             <StyleOverview />
+            <TypographySpecimen />
             <div className="md:hidden">
               <UIElements />
             </div>

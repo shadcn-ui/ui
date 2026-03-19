@@ -2853,6 +2853,7 @@
         "provider": "google",
         "import": "Noto_Sans",
         "variable": "--font-sans",
+        "subsets": ["latin"],
         "dependency": "@fontsource-variable/noto-sans"
       }
     },
@@ -2865,6 +2866,7 @@
         "provider": "google",
         "import": "Nunito_Sans",
         "variable": "--font-sans",
+        "subsets": ["latin"],
         "dependency": "@fontsource-variable/nunito-sans"
       }
     },
@@ -3072,6 +3074,7 @@
         "provider": "google",
         "import": "Noto_Sans",
         "variable": "--font-heading",
+        "subsets": ["latin"],
         "dependency": "@fontsource-variable/noto-sans"
       }
     },
@@ -3084,6 +3087,7 @@
         "provider": "google",
         "import": "Nunito_Sans",
         "variable": "--font-heading",
+        "subsets": ["latin"],
         "dependency": "@fontsource-variable/nunito-sans"
       }
     },

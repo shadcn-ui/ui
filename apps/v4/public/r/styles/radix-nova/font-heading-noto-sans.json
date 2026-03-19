@@ -8,6 +8,9 @@
     "provider": "google",
     "import": "Noto_Sans",
     "variable": "--font-heading",
+    "subsets": [
+      "latin"
+    ],
     "dependency": "@fontsource-variable/noto-sans"
   }
 }
