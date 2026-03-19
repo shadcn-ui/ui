@@ -18,6 +18,15 @@ import {
   Roboto_Slab,
 } from "next/font/google"
 
+import { FONT_DEFINITIONS, type FontDefinition } from "@/lib/font-definitions"
+
+type PreviewFont = ReturnType<typeof Inter>
+
+const geistSans = Geist({
+  subsets: ["latin"],
+  variable: "--font-geist-sans",
+})
+
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -36,21 +45,6 @@ const nunitoSans = Nunito_Sans({
 const figtree = Figtree({
   subsets: ["latin"],
   variable: "--font-figtree",
-})
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-jetbrains-mono",
-})
-
-const geistSans = Geist({
-  subsets: ["latin"],
-  variable: "--font-geist-sans",
-})
-
-const geistMono = Geist_Mono({
-  subsets: ["latin"],
-  variable: "--font-geist-mono",
 })
 
 const roboto = Roboto({
@@ -78,6 +72,16 @@ const outfit = Outfit({
   variable: "--font-outfit",
 })
 
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains-mono",
+})
+
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  variable: "--font-geist-mono",
+})
+
 const notoSerif = Noto_Serif({
   subsets: ["latin"],
   variable: "--font-noto-serif",
@@ -103,109 +107,59 @@ const playfairDisplay = Playfair_Display({
   variable: "--font-playfair-display",
 })
 
+const PREVIEW_FONTS = {
+  geist: geistSans,
+  inter,
+  "noto-sans": notoSans,
+  "nunito-sans": nunitoSans,
+  figtree,
+  roboto,
+  raleway,
+  "dm-sans": dmSans,
+  "public-sans": publicSans,
+  outfit,
+  "jetbrains-mono": jetbrainsMono,
+  "geist-mono": geistMono,
+  "noto-serif": notoSerif,
+  "roboto-slab": robotoSlab,
+  merriweather,
+  lora,
+  "playfair-display": playfairDisplay,
+} satisfies Record<FontDefinition["name"], PreviewFont>
+
+function createFontOption(name: FontDefinition["name"]) {
+  const definition = FONT_DEFINITIONS.find((font) => font.name === name)
+
+  if (!definition) {
+    throw new Error(`Unknown font definition: ${name}`)
+  }
+
+  return {
+    name: definition.title,
+    value: definition.name,
+    font: PREVIEW_FONTS[name],
+    type: definition.type,
+  } as const
+}
+
 export const FONTS = [
-  {
-    name: "Geist",
-    value: "geist",
-    font: geistSans,
-    type: "sans",
-  },
-  {
-    name: "Inter",
-    value: "inter",
-    font: inter,
-    type: "sans",
-  },
-  {
-    name: "Noto Sans",
-    value: "noto-sans",
-    font: notoSans,
-    type: "sans",
-  },
-  {
-    name: "Nunito Sans",
-    value: "nunito-sans",
-    font: nunitoSans,
-    type: "sans",
-  },
-  {
-    name: "Figtree",
-    value: "figtree",
-    font: figtree,
-    type: "sans",
-  },
-  {
-    name: "Roboto",
-    value: "roboto",
-    font: roboto,
-    type: "sans",
-  },
-  {
-    name: "Raleway",
-    value: "raleway",
-    font: raleway,
-    type: "sans",
-  },
-  {
-    name: "DM Sans",
-    value: "dm-sans",
-    font: dmSans,
-    type: "sans",
-  },
-  {
-    name: "Public Sans",
-    value: "public-sans",
-    font: publicSans,
-    type: "sans",
-  },
-  {
-    name: "Outfit",
-    value: "outfit",
-    font: outfit,
-    type: "sans",
-  },
-  {
-    name: "Geist Mono",
-    value: "geist-mono",
-    font: geistMono,
-    type: "mono",
-  },
-  {
-    name: "JetBrains Mono",
-    value: "jetbrains-mono",
-    font: jetbrainsMono,
-    type: "mono",
-  },
-  {
-    name: "Noto Serif",
-    value: "noto-serif",
-    font: notoSerif,
-    type: "serif",
-  },
-  {
-    name: "Roboto Slab",
-    value: "roboto-slab",
-    font: robotoSlab,
-    type: "serif",
-  },
-  {
-    name: "Merriweather",
-    value: "merriweather",
-    font: merriweather,
-    type: "serif",
-  },
-  {
-    name: "Lora",
-    value: "lora",
-    font: lora,
-    type: "serif",
-  },
-  {
-    name: "Playfair Display",
-    value: "playfair-display",
-    font: playfairDisplay,
-    type: "serif",
-  },
+  createFontOption("geist"),
+  createFontOption("inter"),
+  createFontOption("noto-sans"),
+  createFontOption("nunito-sans"),
+  createFontOption("figtree"),
+  createFontOption("roboto"),
+  createFontOption("raleway"),
+  createFontOption("dm-sans"),
+  createFontOption("public-sans"),
+  createFontOption("outfit"),
+  createFontOption("geist-mono"),
+  createFontOption("jetbrains-mono"),
+  createFontOption("noto-serif"),
+  createFontOption("roboto-slab"),
+  createFontOption("merriweather"),
+  createFontOption("lora"),
+  createFontOption("playfair-display"),
 ] as const
 
 export type Font = (typeof FONTS)[number]

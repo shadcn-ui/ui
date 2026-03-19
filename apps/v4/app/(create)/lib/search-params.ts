@@ -115,6 +115,8 @@ function normalizeFontHeading(
   font: FontValue,
   fontHeading: FontHeadingValue
 ): FontHeadingValue {
+  // Persist "same as body" as an explicit inherit sentinel so the body font
+  // can change later without freezing headings to a concrete previous value.
   return fontHeading === font ? "inherit" : fontHeading
 }
 

@@ -3,9 +3,7 @@
 import { ActivateAgentDialog } from "@/registry/bases/radix/blocks/preview/cards/activate-agent-dialog"
 import { AnalyticsCard } from "@/registry/bases/radix/blocks/preview/cards/analytics-card"
 import { AnomalyAlert } from "@/registry/bases/radix/blocks/preview/cards/anomaly-alert"
-import { AssignIssue } from "@/registry/bases/radix/blocks/preview/cards/assign-issue"
 import { BarChartCard } from "@/registry/bases/radix/blocks/preview/cards/bar-chart-card"
-import { BarVisualizerCard } from "@/registry/bases/radix/blocks/preview/cards/bar-visualizer"
 import { BookAppointment } from "@/registry/bases/radix/blocks/preview/cards/book-appointment"
 import { CodespacesCard } from "@/registry/bases/radix/blocks/preview/cards/codespaces-card"
 import { ContributionsActivity } from "@/registry/bases/radix/blocks/preview/cards/contributions-activity"
@@ -47,7 +45,6 @@ export default function PreviewExample() {
               <UIElements />
             </div>
             <CodespacesCard />
-            <BarVisualizerCard />
             <Invoice />
           </div>
           <div className="flex flex-col p-px [contain-intrinsic-size:380px_1200px] [content-visibility:auto]">
@@ -56,8 +53,7 @@ export default function PreviewExample() {
               <UIElements />
             </div>
             <ObservabilityCard />
-            <Visitors />
-            <Shortcuts />
+            <ShippingAddress />
           </div>
           <div className="flex flex-col p-px [contain-intrinsic-size:380px_1200px] [content-visibility:auto]">
             <EnvironmentVariables />
@@ -79,17 +75,17 @@ export default function PreviewExample() {
             <GithubProfile />
           </div>
           <div className="flex flex-col p-px [contain-intrinsic-size:380px_1200px] [content-visibility:auto]">
-            <AssignIssue />
             <WeeklyFitnessSummary />
             <FileUpload />
             <AnalyticsCard />
             <UsageCard />
-            <ContributionsActivity />
+            <Shortcuts />
           </div>
           <div className="flex flex-col p-px [contain-intrinsic-size:380px_1200px] [content-visibility:auto]">
             <AnomalyAlert />
             <LiveWaveformCard />
-            <ShippingAddress />
+            <Visitors />
+            <ContributionsActivity />
             <NotFound />
           </div>
         </div>
