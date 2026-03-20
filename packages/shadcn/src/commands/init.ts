@@ -406,7 +406,7 @@ export const init = new Command()
                 base: "radix",
                 rtl: options.rtl ?? false,
               },
-              { template: options.template }
+              { template: options.template, preset: presetArg }
             )
             presetBase = undefined
           } else {
