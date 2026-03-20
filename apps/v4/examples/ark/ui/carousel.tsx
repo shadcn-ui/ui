@@ -39,35 +39,67 @@ function useCarousel() {
   return context
 }
 
+function countSlides(children: React.ReactNode): number {
+  let count = 0
+  React.Children.forEach(children, (child) => {
+    if (!React.isValidElement(child)) return
+    const name = (child.type as { displayName?: string })?.displayName
+    if (name === "CarouselItem") {
+      count++
+    } else {
+      const props = child.props as { children?: React.ReactNode }
+      if (props?.children) {
+        count += countSlides(props.children)
+      }
+    }
+  })
+  return count
+}
+
 function Carousel({
   orientation = "horizontal",
   opts,
   className,
   children,
+  slideCount,
   ...props
 }: React.ComponentProps<typeof ArkCarousel.Root> & CarouselProps) {
+  const autoSlideCount = React.useMemo(
+    () => slideCount ?? countSlides(children),
+    [slideCount, children]
+  )
+
   return (
     <ArkCarousel.Root
       orientation={orientation}
       loop={opts?.loop}
       slidesPerPage={opts?.slidesPerPage}
       spacing={opts?.spacing}
+      slideCount={autoSlideCount}
       className={cn("relative", className)}
       data-slot="carousel"
       {...props}
     >
       <ArkCarousel.Context>
-        {(context) => (
-          <CarouselContext.Provider
-            value={{
-              orientation,
-              canScrollPrev: context.canScrollPrev,
-              canScrollNext: context.canScrollNext,
-            }}
-          >
-            {children}
-          </CarouselContext.Provider>
-        )}
+        {(context) => {
+          const counterRef = { current: 0 }
+          counterRef.current = 0
+          return (
+            <CarouselContext.Provider
+              value={{
+                orientation,
+                canScrollPrev: context.canScrollPrev,
+                canScrollNext: context.canScrollNext,
+              }}
+            >
+              <CarouselIndexContext.Provider
+                value={{ next: () => counterRef.current++ }}
+              >
+                {children}
+              </CarouselIndexContext.Provider>
+            </CarouselContext.Provider>
+          )
+        }}
       </ArkCarousel.Context>
     </ArkCarousel.Root>
   )
@@ -92,12 +124,20 @@ function CarouselContent({
   )
 }
 
+const CarouselIndexContext = React.createContext<{ next: () => number }>({
+  next: () => 0,
+})
+
 function CarouselItem({
   className,
-  index,
+  index: indexProp,
   ...props
-}: React.ComponentProps<typeof ArkCarousel.Item> & { index: number }) {
+}: Omit<React.ComponentProps<typeof ArkCarousel.Item>, "index"> & {
+  index?: number
+}) {
   const { orientation } = useCarousel()
+  const counter = React.useContext(CarouselIndexContext)
+  const [index] = React.useState(() => indexProp ?? counter.next())
 
   return (
     <ArkCarousel.Item
@@ -112,6 +152,7 @@ function CarouselItem({
     />
   )
 }
+CarouselItem.displayName = "CarouselItem"
 
 function CarouselPrevious({
   className,

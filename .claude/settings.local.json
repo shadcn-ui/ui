@@ -6,15 +6,11 @@
       "Bash(ls:*)",
       "Bash(cat:*)",
       "WebSearch",
-      "WebFetch(domain:github.com)",
-      "Bash(grep:*)",
-      "Bash(grep -l \"React.ComponentProps<\"\"\" registry/bases/ark/ui/*.tsx)",
-      "Bash(for f:*)",
-      "Bash(do grep:*)",
-      "Bash(echo \"^^^ $f\")",
-      "Bash(done)",
-      "Bash(npx tsc:*)",
-      "Read(//Users/lope/Desktop/open-source/chakra/ark/packages/react/src/components/date-picker/examples/**)"
+      "Bash(pkill -f 'next dev')",
+      "Bash(pkill -f turbo)",
+      "Bash(pkill -f tsup)",
+      "Bash(pkill -f tsx)",
+      "Bash(bun run:*)"
     ],
     "deny": []
   }
