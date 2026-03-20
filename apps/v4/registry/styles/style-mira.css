@@ -150,6 +150,11 @@
     @apply focus-visible:border-ring focus-visible:ring-ring/30 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 rounded-md border border-transparent bg-clip-padding text-xs/relaxed font-medium focus-visible:ring-2 aria-invalid:ring-2 active:translate-y-px [&_svg:not([class*='size-'])]:size-4;
   }
 
+  .cn-button[data-slot="dropdown-menu-trigger"]:active,
+  [data-slot="dropdown-menu-trigger"]:active .cn-button {
+    transform: translateY(0) !important;
+  }
+
   .cn-button-variant-default {
     @apply bg-primary text-primary-foreground hover:bg-primary/80;
   }
