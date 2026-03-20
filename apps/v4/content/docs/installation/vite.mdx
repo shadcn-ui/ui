@@ -25,6 +25,19 @@ npx shadcn@latest init -t vite
 npx shadcn@latest init -t vite --monorepo
 ```
 
+Make sure configure the path aliases in your `tsconfig.json` file.
+
+```json {3-6} title="tsconfig.json" showLineNumbers
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"]
+    }
+  }
+}
+```
+
 ### Add Components
 
 You can now start adding components to your project.
