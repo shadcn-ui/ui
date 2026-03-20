@@ -119,9 +119,9 @@ export async function recursivelyResolveFileImports(
     const moduleSpecifier = importStatement.getModuleSpecifierValue()
 
     const isRelativeImport = moduleSpecifier.startsWith(".")
-    const isAliasImport = moduleSpecifier.startsWith(
-      `${projectInfo.aliasPrefix}/`
-    )
+    const isAliasImport =
+      moduleSpecifier.startsWith(`${projectInfo.aliasPrefix}/`) ||
+      moduleSpecifier.startsWith("#")
 
     // If not a local import, add to the dependencies array.
     if (!isAliasImport && !isRelativeImport) {
