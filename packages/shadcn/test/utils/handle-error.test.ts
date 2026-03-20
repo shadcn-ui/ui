@@ -30,13 +30,13 @@ describe("handleError", () => {
     processExitSpy.mockRestore()
   })
 
-  test("should format Zod errors correctly with multiple messages", () => {
+  test("should format Zod errors correctly with a single message", () => {
     const schema = z.object({
       name: z.string().min(5, "Too short"),
     })
 
     const result = schema.safeParse({ name: "abc" })
-    
+
     if (!result.success) {
       try {
         handleError(result.error)
@@ -57,7 +57,7 @@ describe("handleError", () => {
     })
 
     const result = schema.safeParse({ name: "abc" })
-    
+
     if (!result.success) {
       try {
         handleError(result.error)
