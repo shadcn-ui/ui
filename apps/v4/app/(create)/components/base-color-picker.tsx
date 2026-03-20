@@ -4,6 +4,7 @@ import * as React from "react"
 
 import { useMounted } from "@/hooks/use-mounted"
 import { BASE_COLORS, type BaseColorName } from "@/registry/config"
+import { useCustomizerLayout } from "@/app/(create)/components/customizer-layout"
 import { LockButton } from "@/app/(create)/components/lock-button"
 import {
   Picker,
@@ -11,50 +12,51 @@ import {
   PickerGroup,
   PickerRadioGroup,
   PickerRadioItem,
-  PickerTrigger,
+  PickerValueTrigger,
 } from "@/app/(create)/components/picker"
 import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
 
 export function BaseColorPicker({
   isMobile,
   anchorRef,
+  collapsed = false,
 }: {
   isMobile: boolean
   anchorRef: React.RefObject<HTMLDivElement | null>
+  collapsed?: boolean
 }) {
   const mounted = useMounted()
   const [params, setParams] = useDesignSystemSearchParams()
+  const { desktopPickerSide } = useCustomizerLayout()
 
   const currentBaseColor = React.useMemo(
     () => BASE_COLORS.find((baseColor) => baseColor.name === params.baseColor),
     [params.baseColor]
   )
+  const baseColorIndicator = mounted ? (
+    <div
+      style={
+        {
+          "--color": currentBaseColor?.cssVars?.dark?.["muted-foreground"],
+        } as React.CSSProperties
+      }
+      className="size-4 rounded-full bg-(--color)"
+    />
+  ) : null
 
   return (
     <div className="group/picker relative">
       <Picker>
-        <PickerTrigger>
-          <div className="flex flex-col justify-start text-left">
-            <div className="text-xs text-muted-foreground">Base Color</div>
-            <div className="text-sm font-medium text-foreground">
-              {currentBaseColor?.title}
-            </div>
-          </div>
-          {mounted && (
-            <div
-              style={
-                {
-                  "--color":
-                    currentBaseColor?.cssVars?.dark?.["muted-foreground"],
-                } as React.CSSProperties
-              }
-              className="pointer-events-none absolute top-1/2 right-4 size-4 -translate-y-1/2 rounded-full bg-(--color) select-none md:right-2.5"
-            />
-          )}
-        </PickerTrigger>
+        <PickerValueTrigger
+          label="Base Color"
+          value={currentBaseColor?.title}
+          valueText={currentBaseColor?.title}
+          indicator={baseColorIndicator}
+          collapsed={collapsed}
+        />
         <PickerContent
           anchor={isMobile ? anchorRef : undefined}
-          side={isMobile ? "top" : "right"}
+          side={isMobile ? "top" : desktopPickerSide}
           align={isMobile ? "center" : "start"}
         >
           <PickerRadioGroup
@@ -77,10 +79,12 @@ export function BaseColorPicker({
           </PickerRadioGroup>
         </PickerContent>
       </Picker>
-      <LockButton
-        param="baseColor"
-        className="absolute top-1/2 right-8 -translate-y-1/2"
-      />
+      {!collapsed ? (
+        <LockButton
+          param="baseColor"
+          className="absolute top-1/2 right-8 -translate-y-1/2"
+        />
+      ) : null}
     </div>
   )
 }

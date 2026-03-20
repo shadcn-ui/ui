@@ -3,6 +3,7 @@
 import * as React from "react"
 
 import { CMD_K_FORWARD_TYPE } from "@/app/(create)/components/action-menu"
+import { CUSTOMIZER_TOGGLE_FORWARD_TYPE } from "@/app/(create)/components/customizer"
 import {
   REDO_FORWARD_TYPE,
   UNDO_FORWARD_TYPE,
@@ -74,6 +75,17 @@ function handleMessage(event: MessageEvent) {
     document.dispatchEvent(
       new KeyboardEvent("keydown", {
         key: event.data.key || "d",
+        bubbles: true,
+        cancelable: true,
+      })
+    )
+  } else if (type === CUSTOMIZER_TOGGLE_FORWARD_TYPE) {
+    const isMac = MAC_REGEX.test(navigator.userAgent)
+    document.dispatchEvent(
+      new KeyboardEvent("keydown", {
+        key: event.data.key || "b",
+        metaKey: isMac,
+        ctrlKey: !isMac,
         bubbles: true,
         cancelable: true,
       })
