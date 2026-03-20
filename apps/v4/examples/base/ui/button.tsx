@@ -1,5 +1,3 @@
-"use client"
-
 import { cn } from "@/examples/base/lib/utils"
 import { Button as ButtonPrimitive } from "@base-ui/react/button"
 import { cva, type VariantProps } from "class-variance-authority"

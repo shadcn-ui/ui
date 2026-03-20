@@ -1,5 +1,3 @@
-"use client"
-
 import * as React from "react"
 import { cn } from "@/examples/radix/lib/utils"
 import { Button } from "@/examples/radix/ui/button"
