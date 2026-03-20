@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stepper-vertical",
+  "type": "registry:example",
+  "registryDependencies": [
+    "stepper"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/stepper-vertical.tsx",
+      "content": "\"use client\"\r\n\r\nimport { Stepper } from \"@/registry/new-york-v4/ui/stepper\"\r\nimport { StepperItem } from \"@/registry/new-york-v4/ui/stepper-item\"\r\n\r\nexport default function StepperVertical() {\r\n  return (\r\n    <Stepper currentStep={1} orientation=\"vertical\" className=\"w-full max-w-sm\">\r\n      <StepperItem\r\n        title=\"Step 1\"\r\n        description=\"This step is completed\"\r\n      />\r\n      <StepperItem\r\n        title=\"Step 2\"\r\n        description=\"This is the current step\"\r\n      />\r\n      <StepperItem\r\n        title=\"Step 3\"\r\n        description=\"This step is upcoming\"\r\n      />\r\n    </Stepper>\r\n  )\r\n}\r\n",
+      "type": "registry:example"
+    }
+  ]
+}

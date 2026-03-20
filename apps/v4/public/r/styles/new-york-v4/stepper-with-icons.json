@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stepper-with-icons",
+  "type": "registry:example",
+  "registryDependencies": [
+    "stepper"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/stepper-with-icons.tsx",
+      "content": "\"use client\"\r\n\r\nimport { FileText, Settings, User } from \"lucide-react\"\r\n\r\nimport { Stepper } from \"@/registry/new-york-v4/ui/stepper\"\r\nimport { StepperItem } from \"@/registry/new-york-v4/ui/stepper-item\"\r\n\r\nexport default function StepperWithIcons() {\r\n  return (\r\n    <Stepper currentStep={1} className=\"w-full max-w-lg\">\r\n      <StepperItem\r\n        title=\"Personal Info\"\r\n        icon={<User className=\"size-4\" />}\r\n      />\r\n      <StepperItem\r\n        title=\"Documents\"\r\n        icon={<FileText className=\"size-4\" />}\r\n      />\r\n      <StepperItem\r\n        title=\"Settings\"\r\n        icon={<Settings className=\"size-4\" />}\r\n      />\r\n    </Stepper>\r\n  )\r\n}\r\n",
+      "type": "registry:example"
+    }
+  ]
+}
