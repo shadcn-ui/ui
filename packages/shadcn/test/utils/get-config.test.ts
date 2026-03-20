@@ -1,8 +1,11 @@
+import os from "os"
 import path from "path"
+import fs from "fs-extra"
 import { describe, expect, test } from "vitest"
 
 import {
   createConfig,
+  findPackageRoot,
   getBase,
   getConfig,
   getRawConfig,
@@ -211,6 +214,50 @@ describe("getBase", () => {
 
   test("returns radix for undefined", () => {
     expect(getBase(undefined)).toBe("radix")
+  })
+})
+
+describe("findPackageRoot", () => {
+  test("matches package root by path segment (not prefix)", async () => {
+    const tempDir = await fs.mkdtemp(path.join(os.tmpdir(), "shadcn-find-root-"))
+
+    try {
+      const sibling = path.join(tempDir, "directory")
+      const target = path.join(tempDir, "directory-2")
+      await fs.ensureDir(sibling)
+      await fs.ensureDir(target)
+      await fs.writeJson(path.join(sibling, "package.json"), { name: "sibling" })
+      await fs.writeJson(path.join(target, "package.json"), { name: "target" })
+
+      const result = await findPackageRoot(
+        tempDir,
+        path.join(target, "lib", "utils.ts")
+      )
+
+      expect(result).toBe(target)
+    } finally {
+      await fs.remove(tempDir)
+    }
+  })
+
+  test("resolves relative paths against cwd", async () => {
+    const tempDir = await fs.mkdtemp(path.join(os.tmpdir(), "shadcn-find-root-"))
+    const originalCwd = process.cwd()
+
+    try {
+      const target = path.join(tempDir, "directory-2")
+      await fs.ensureDir(target)
+      await fs.writeJson(path.join(target, "package.json"), { name: "target" })
+
+      process.chdir(tempDir)
+
+      const result = await findPackageRoot(target, path.join("lib", "utils.ts"))
+
+      expect(result).toBe(target)
+    } finally {
+      process.chdir(originalCwd)
+      await fs.remove(tempDir)
+    }
   })
 })
 
