@@ -3,7 +3,6 @@
 import * as React from "react"
 
 import { BASES } from "@/registry/config"
-import { useCustomizerLayout } from "@/app/(create)/components/customizer-layout"
 import {
   Picker,
   PickerContent,
@@ -22,7 +21,6 @@ export function BasePicker({
   anchorRef: React.RefObject<HTMLDivElement | null>
 }) {
   const [params, setParams] = useDesignSystemSearchParams()
-  const { desktopPickerSide } = useCustomizerLayout()
 
   const currentBase = React.useMemo(
     () => BASES.find((base) => base.name === params.base),
@@ -62,7 +60,7 @@ export function BasePicker({
         </PickerTrigger>
         <PickerContent
           anchor={isMobile ? anchorRef : undefined}
-          side={isMobile ? "top" : desktopPickerSide}
+          side={isMobile ? "top" : "right"}
           align={isMobile ? "center" : "start"}
         >
           <PickerRadioGroup

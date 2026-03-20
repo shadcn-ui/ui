@@ -7,7 +7,6 @@ import { absoluteUrl } from "@/lib/utils"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { BASES, type Base, type BaseName } from "@/registry/config"
 import { ActionMenuScript } from "@/app/(create)/components/action-menu"
-import { CustomizerToggleScript } from "@/app/(create)/components/customizer"
 import { DesignSystemProvider } from "@/app/(create)/components/design-system-provider"
 import { HistoryScript } from "@/app/(create)/components/history-buttons"
 import { DarkModeScript } from "@/app/(create)/components/mode-switcher"
@@ -143,7 +142,6 @@ export default async function BlockPage({
       <RandomizeScript />
       <HistoryScript />
       <DarkModeScript />
-      <CustomizerToggleScript />
       <DesignSystemProvider>
         <Component />
       </DesignSystemProvider>

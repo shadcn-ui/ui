@@ -1,7 +1,6 @@
 "use client"
 
 import { MENU_ACCENTS, type MenuAccentValue } from "@/registry/config"
-import { useCustomizerLayout } from "@/app/(create)/components/customizer-layout"
 import { LockButton } from "@/app/(create)/components/lock-button"
 import {
   Picker,
@@ -9,21 +8,18 @@ import {
   PickerGroup,
   PickerRadioGroup,
   PickerRadioItem,
-  PickerValueTrigger,
+  PickerTrigger,
 } from "@/app/(create)/components/picker"
 import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
 
 export function MenuAccentPicker({
   isMobile,
   anchorRef,
-  collapsed = false,
 }: {
   isMobile: boolean
   anchorRef: React.RefObject<HTMLDivElement | null>
-  collapsed?: boolean
 }) {
   const [params, setParams] = useDesignSystemSearchParams()
-  const { desktopPickerSide } = useCustomizerLayout()
 
   const currentAccent = MENU_ACCENTS.find(
     (accent) => accent.value === params.menuAccent
@@ -32,11 +28,14 @@ export function MenuAccentPicker({
   return (
     <div className="group/picker relative pr-3 md:pr-0">
       <Picker>
-        <PickerValueTrigger
-          label="Menu Accent"
-          value={currentAccent?.label}
-          valueText={currentAccent?.label}
-          indicator={
+        <PickerTrigger>
+          <div className="flex flex-col justify-start text-left">
+            <div className="text-xs text-muted-foreground">Menu Accent</div>
+            <div className="text-sm font-medium text-foreground">
+              {currentAccent?.label}
+            </div>
+          </div>
+          <div className="pointer-events-none absolute top-1/2 right-4 flex size-4 -translate-y-1/2 items-center justify-center text-base text-foreground select-none md:right-2.5">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="128"
@@ -64,12 +63,11 @@ export function MenuAccentPicker({
                 className="fill-muted-foreground/30 data-[accent=bold]:fill-foreground"
               ></path>
             </svg>
-          }
-          collapsed={collapsed}
-        />
+          </div>
+        </PickerTrigger>
         <PickerContent
           anchor={isMobile ? anchorRef : undefined}
-          side={isMobile ? "top" : desktopPickerSide}
+          side={isMobile ? "top" : "right"}
           align={isMobile ? "center" : "start"}
         >
           <PickerRadioGroup
@@ -97,12 +95,10 @@ export function MenuAccentPicker({
           </PickerRadioGroup>
         </PickerContent>
       </Picker>
-      {!collapsed ? (
-        <LockButton
-          param="menuAccent"
-          className="absolute top-1/2 right-8 -translate-y-1/2"
-        />
-      ) : null}
+      <LockButton
+        param="menuAccent"
+        className="absolute top-1/2 right-8 -translate-y-1/2"
+      />
     </div>
   )
 }
