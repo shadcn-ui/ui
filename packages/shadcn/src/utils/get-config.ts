@@ -7,10 +7,10 @@ import {
 } from "@/src/schema"
 import { getProjectInfo } from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"
-import { resolveImport } from "@/src/utils/resolve-import"
+import { resolveImportWithMetadata } from "@/src/utils/resolve-import"
 import { cosmiconfig } from "cosmiconfig"
 import fg from "fast-glob"
-import { loadConfig } from "tsconfig-paths"
+import { loadConfig, type ConfigLoaderSuccessResult } from "tsconfig-paths"
 import { z } from "zod"
 
 export const DEFAULT_STYLE = "default"
@@ -64,6 +64,20 @@ export async function resolveConfigPaths(
     )
   }
 
+  // Resolve the primary aliases first so fallbacks can reuse their results.
+  const resolvedUtils = await resolveAliasPath(
+    "utils",
+    config.aliases["utils"],
+    cwd,
+    tsConfig
+  )
+  const resolvedComponents = await resolveAliasPath(
+    "components",
+    config.aliases["components"],
+    cwd,
+    tsConfig
+  )
+
   return configSchema.parse({
     ...config,
     resolvedPaths: {
@@ -72,33 +86,69 @@ export async function resolveConfigPaths(
         ? path.resolve(cwd, config.tailwind.config)
         : "",
       tailwindCss: path.resolve(cwd, config.tailwind.css),
-      utils: await resolveImport(config.aliases["utils"], tsConfig),
-      components: await resolveImport(config.aliases["components"], tsConfig),
+      utils: resolvedUtils,
+      components: resolvedComponents,
       ui: config.aliases["ui"]
-        ? await resolveImport(config.aliases["ui"], tsConfig)
-        : path.resolve(
-            (await resolveImport(config.aliases["components"], tsConfig)) ??
-              cwd,
-            "ui"
-          ),
+        ? await resolveAliasPath("ui", config.aliases["ui"], cwd, tsConfig)
+        : path.resolve(resolvedComponents ?? cwd, "ui"),
       // TODO: Make this configurable.
       // For now, we assume the lib and hooks directories are one level up from the components directory.
       lib: config.aliases["lib"]
-        ? await resolveImport(config.aliases["lib"], tsConfig)
-        : path.resolve(
-            (await resolveImport(config.aliases["utils"], tsConfig)) ?? cwd,
-            ".."
-          ),
+        ? await resolveAliasPath("lib", config.aliases["lib"], cwd, tsConfig)
+        : path.resolve(resolvedUtils ?? cwd, ".."),
       hooks: config.aliases["hooks"]
-        ? await resolveImport(config.aliases["hooks"], tsConfig)
-        : path.resolve(
-            (await resolveImport(config.aliases["components"], tsConfig)) ??
-              cwd,
-            "..",
-            "hooks"
-          ),
+        ? await resolveAliasPath(
+            "hooks",
+            config.aliases["hooks"],
+            cwd,
+            tsConfig
+          )
+        : path.resolve(resolvedComponents ?? cwd, "..", "hooks"),
     },
   })
+}
+
+async function resolveAliasPath(
+  aliasKey: "components" | "utils" | "ui" | "lib" | "hooks",
+  alias: string,
+  cwd: string,
+  tsConfig: Pick<ConfigLoaderSuccessResult, "absoluteBaseUrl" | "paths">
+) {
+  const resolved = await resolveImportWithMetadata(alias, {
+    ...tsConfig,
+    cwd,
+  })
+
+  if (!resolved?.path) {
+    return null
+  }
+
+  // For non-utils alias keys backed by package imports or workspace exports,
+  // strip directory-level artifacts so the resolved path points at the
+  // directory root rather than a specific file.
+  if (
+    aliasKey !== "utils" &&
+    (resolved.source === "package_imports" ||
+      resolved.source === "workspace_package_exports")
+  ) {
+    // Exact aliases (e.g. `#hooks` → `./src/hooks/index.ts`) should resolve
+    // to the directory root.
+    if (
+      !resolved.matchedAlias.includes("*") &&
+      /\/index\.[^/]+$/.test(resolved.path)
+    ) {
+      return path.dirname(resolved.path)
+    }
+
+    // Wildcard aliases with explicit extensions (e.g. `#components/*` →
+    // `./src/components/*.tsx`) should strip the source extension so `ui`
+    // resolves to `/src/components/ui` instead of `/src/components/ui.tsx`.
+    if (resolved.matchedAlias.includes("*") && /\.[^/]+$/.test(resolved.path)) {
+      return resolved.path.replace(/\.[^/]+$/, "")
+    }
+  }
+
+  return resolved.path
 }
 
 export async function getRawConfig(
