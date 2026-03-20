@@ -419,6 +419,9 @@ importers:
       msw:
         specifier: ^2.10.4
         version: 2.10.4(@types/node@20.19.10)(typescript@5.9.2)
+      nano-stringify-object:
+        specifier: 0.0.0
+        version: 0.0.0
       node-fetch:
         specifier: ^3.3.2
         version: 3.3.2
@@ -440,9 +443,6 @@ importers:
       recast:
         specifier: ^0.23.11
         version: 0.23.11
-      stringify-object:
-        specifier: ^5.0.0
-        version: 5.0.0
       tailwind-merge:
         specifier: ^3.0.1
         version: 3.3.1
@@ -474,9 +474,6 @@ importers:
       '@types/prompts':
         specifier: ^2.4.9
         version: 2.4.9
-      '@types/stringify-object':
-        specifier: ^4.0.5
-        version: 4.0.5
       rimraf:
         specifier: ^6.0.1
         version: 6.0.1
@@ -3060,9 +3057,6 @@ packages:
 
   '@types/statuses@2.0.6':
     resolution: {integrity: sha512-xMAgYwceFhRA2zY+XbEA7mxYbA093wdiW8Vu6gZPGWy9cmOyU9XesH1tNcEWsKFd5Vzrqx5T3D38PWx1FIIXkA==}
-
-  '@types/stringify-object@4.0.5':
-    resolution: {integrity: sha512-TzX5V+njkbJ8iJ0mrj+Vqveep/1JBH4SSA3J2wYrE1eUrOhdsjTBCb0kao4EquSQ8KgPpqY4zSVP2vCPWKBElg==}
 
   '@types/tough-cookie@4.0.5':
     resolution: {integrity: sha512-/Ad8+nIOV7Rl++6f1BdKxFSMgmoqEoYbHRpPcx3JEfv8VRsQe9Z4mCXeJBzxs7mbHY/XOZZuXlRNfhpVPbs6ZA==}
@@ -6029,6 +6023,9 @@ packages:
   mz@2.7.0:
     resolution: {integrity: sha512-z81GNO7nnYMEhrGh9LeymoE4+Yr0Wn5McHIZMK5cfQCl+NDX08sCZgUc9/6MHni9IWuFLm1Z3HTCXu2z9fN62Q==}
 
+  nano-stringify-object@0.0.0:
+    resolution: {integrity: sha512-s4XcjhMpc1u7HfHHimUAT0dtNNYFiOunlNPGUv5N9BoX4X1Lwklq4ckdFDPo+50/exciNsf0ggH4s8Sj6CufOA==}
+
   nanoid@3.3.11:
     resolution: {integrity: sha512-N8SpfPUnUp1bK+PMYW8qSWdl9U+wwNWI4QKxOYDy9JAro3WMX7p2OeVRF9v+347pnakNevPmiHhNmZ2HbFA76w==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
@@ -7178,10 +7175,6 @@ packages:
 
   stringify-entities@4.0.4:
     resolution: {integrity: sha512-IwfBptatlO+QCJUo19AqvrPNqlVMpW9YEL2LIVY+Rpv2qsjCGxaDLNRgeGsQWJhfItebuJhsGSLjaBbNSQ+ieg==}
-
-  stringify-object@5.0.0:
-    resolution: {integrity: sha512-zaJYxz2FtcMb4f+g60KsRNFOpVMUyuJgA51Zi5Z1DOTC3S59+OQiVOzE9GZt0x72uBGWKsQIuBKeF9iusmKFsg==}
-    engines: {node: '>=14.16'}
 
   strip-ansi@6.0.1:
     resolution: {integrity: sha512-Y38VPSHcqkFrCpFnQ9vuSXmquuv5oXOKpGeT6aGrr3o3Gc9AlVa6JBfUSOCnbxGGZF+/0ooI7KrPuUSztUdU5A==}
@@ -10540,8 +10533,6 @@ snapshots:
   '@types/semver@6.2.7': {}
 
   '@types/statuses@2.0.6': {}
-
-  '@types/stringify-object@4.0.5': {}
 
   '@types/tough-cookie@4.0.5': {}
 
@@ -14186,6 +14177,8 @@ snapshots:
       object-assign: 4.1.1
       thenify-all: 1.6.0
 
+  nano-stringify-object@0.0.0: {}
+
   nanoid@3.3.11: {}
 
   napi-postinstall@0.3.3: {}
@@ -15550,12 +15543,6 @@ snapshots:
     dependencies:
       character-entities-html4: 2.1.0
       character-entities-legacy: 3.0.0
-
-  stringify-object@5.0.0:
-    dependencies:
-      get-own-enumerable-keys: 1.0.0
-      is-obj: 3.0.0
-      is-regexp: 3.1.0
 
   strip-ansi@6.0.1:
     dependencies:
