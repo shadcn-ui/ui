@@ -533,6 +533,12 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='lucide lucide-minus-icon lucide-minus'><path d='M5 12h14'/></svg>"
   },
   {
+    "name": "@popapp",
+    "homepage": "https://popapp.dev/docs",
+    "url": "https://popapp-ai.github.io/ui/r/{name}.json",
+    "description": "Native UI components for React Native and Expo. StyleSheet-native, gesture-first, with haptic feedback and Liquid Glass support. Open Source."
+  },
+  {
     "name": "@prompt-kit",
     "homepage": "https://www.prompt-kit.com",
     "url": "https://www.prompt-kit.com/c/{name}.json",
