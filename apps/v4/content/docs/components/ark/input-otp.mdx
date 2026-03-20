@@ -4,14 +4,15 @@ description: Accessible one-time password component with copy paste functionalit
 base: ark
 component: true
 links:
-  doc: https://input-otp.rodz.dev
+  doc: https://ark-ui.com/docs/components/pin-input
+  api: https://ark-ui.com/docs/components/pin-input#api-reference
 ---
 
 <ComponentPreview styleName="ark-nova" name="input-otp-demo" />
 
 ## About
 
-Input OTP is built on top of [input-otp](https://github.com/guilhermerodz/input-otp) by [@guilherme_rodz](https://twitter.com/guilherme_rodz).
+Input OTP is built on top of the [Ark UI Pin Input](https://ark-ui.com/docs/components/pin-input) primitive.
 
 ## Installation
 
@@ -36,7 +37,7 @@ npx shadcn@latest add input-otp
 <Step>Install the following dependencies:</Step>
 
 ```bash
-npm install input-otp
+npm install @ark-ui/react
 ```
 
 <Step>Copy and paste the following code into your project.</Step>
@@ -86,10 +87,8 @@ import {
 
 Use the `pattern` prop to define a custom pattern for the OTP input.
 
-```tsx showLineNumbers {1,5}
-import { REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp"
-
-;<InputOTP maxLength={6} pattern={REGEXP_ONLY_DIGITS_AND_CHARS}>
+```tsx showLineNumbers {3}
+<InputOTP maxLength={6} pattern="[a-zA-Z0-9]">
   ...
 </InputOTP>
 ```
@@ -150,4 +149,4 @@ To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl)
 
 ## API Reference
 
-See the [input-otp](https://input-otp.rodz.dev) documentation for more information.
+See the [Ark UI Pin Input documentation](https://ark-ui.com/docs/components/pin-input#api-reference) for more information.
