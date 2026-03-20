@@ -2,7 +2,6 @@
 
 import * as React from "react"
 
-import { useCustomizerLayout } from "@/app/(create)/components/customizer-layout"
 import { LockButton } from "@/app/(create)/components/lock-button"
 import {
   Picker,
@@ -12,7 +11,7 @@ import {
   PickerRadioGroup,
   PickerRadioItem,
   PickerSeparator,
-  PickerValueTrigger,
+  PickerTrigger,
 } from "@/app/(create)/components/picker"
 import { FONTS } from "@/app/(create)/lib/fonts"
 import {
@@ -37,17 +36,14 @@ export function FontPicker({
   fonts,
   isMobile,
   anchorRef,
-  collapsed = false,
 }: {
   label: string
   param: "font" | "fontHeading"
   fonts: readonly FontPickerOption[]
   isMobile: boolean
   anchorRef: React.RefObject<HTMLDivElement | null>
-  collapsed?: boolean
 }) {
   const [params, setParams] = useDesignSystemSearchParams()
-  const { desktopPickerSide } = useCustomizerLayout()
   const currentValue = param === "font" ? params.font : params.fontHeading
   const handleFontChange = React.useCallback(
     (value: string) => {
@@ -98,26 +94,27 @@ export function FontPicker({
   return (
     <div className="group/picker relative">
       <Picker>
-        <PickerValueTrigger
-          label={label}
-          value={displayFontName}
-          valueText={displayFontName}
-          indicator={
-            <span
-              style={{
-                fontFamily:
-                  currentFont?.font?.style.fontFamily ??
-                  currentBodyFont?.font.style.fontFamily,
-              }}
-            >
-              Aa
-            </span>
-          }
-          collapsed={collapsed}
-        />
+        <PickerTrigger>
+          <div className="flex flex-col justify-start text-left">
+            <div className="text-xs text-muted-foreground">{label}</div>
+            <div className="text-sm font-medium text-foreground">
+              {displayFontName}
+            </div>
+          </div>
+          <div
+            className="pointer-events-none absolute top-1/2 right-4 flex size-4 -translate-y-1/2 items-center justify-center text-base text-foreground select-none md:right-2.5"
+            style={{
+              fontFamily:
+                currentFont?.font?.style.fontFamily ??
+                currentBodyFont?.font.style.fontFamily,
+            }}
+          >
+            Aa
+          </div>
+        </PickerTrigger>
         <PickerContent
           anchor={isMobile ? anchorRef : undefined}
-          side={isMobile ? "top" : desktopPickerSide}
+          side={isMobile ? "top" : "right"}
           align={isMobile ? "center" : "start"}
           className="max-h-96"
         >
@@ -152,12 +149,10 @@ export function FontPicker({
           </PickerRadioGroup>
         </PickerContent>
       </Picker>
-      {!collapsed ? (
-        <LockButton
-          param={param}
-          className="absolute top-1/2 right-8 -translate-y-1/2"
-        />
-      ) : null}
+      <LockButton
+        param={param}
+        className="absolute top-1/2 right-8 -translate-y-1/2"
+      />
     </div>
   )
 }

@@ -5,12 +5,6 @@ import { Menu as MenuPrimitive } from "@base-ui/react/menu"
 
 import { cn } from "@/registry/bases/base/lib/utils"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
-import {
-  createTooltipHandle,
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/app/(create)/components/tooltip"
 
 function Picker({ ...props }: MenuPrimitive.Root.Props) {
   return <MenuPrimitive.Root data-slot="dropdown-menu" {...props} />
@@ -20,129 +14,16 @@ function PickerPortal({ ...props }: MenuPrimitive.Portal.Props) {
   return <MenuPrimitive.Portal data-slot="dropdown-menu-portal" {...props} />
 }
 
-function PickerTrigger({
-  className,
-  collapsed = false,
-  tooltip,
-  ...triggerProps
-}: MenuPrimitive.Trigger.Props & {
-  collapsed?: boolean
-  tooltip?: string
-}) {
-  const [tooltipHandle] = React.useState(() =>
-    createTooltipHandle<{ text: string }>()
-  )
-
-  const trigger = (
+function PickerTrigger({ className, ...props }: MenuPrimitive.Trigger.Props) {
+  return (
     <MenuPrimitive.Trigger
       data-slot="dropdown-menu-trigger"
-      data-collapsed={collapsed ? "true" : undefined}
       className={cn(
-        "relative w-40 shrink-0 touch-manipulation overflow-hidden rounded-xl p-3 ring-1 ring-foreground/10 transition-[width,padding,border-radius] duration-200 ease-out select-none hover:bg-muted focus-visible:ring-foreground/50 focus-visible:outline-none disabled:opacity-50 data-popup-open:bg-muted md:w-full md:rounded-lg md:px-2.5 md:py-2",
-        collapsed &&
-          "flex size-10 w-10 items-center justify-center rounded-xl p-0 md:size-10 md:w-10 md:rounded-xl md:p-0",
-        className
-      )}
-      {...triggerProps}
-    />
-  )
-
-  if (!collapsed || !tooltip) {
-    return trigger
-  }
-
-  return (
-    <React.Fragment>
-      <TooltipTrigger
-        handle={tooltipHandle}
-        payload={{ text: tooltip }}
-        render={trigger}
-      />
-      <Tooltip handle={tooltipHandle}>
-        {(state) => {
-          const payload = state.payload as { text: string } | null | undefined
-
-          return payload ? (
-            <TooltipContent side="right" sideOffset={10}>
-              {payload.text}
-            </TooltipContent>
-          ) : null
-        }}
-      </Tooltip>
-    </React.Fragment>
-  )
-}
-
-function PickerValueTrigger({
-  label,
-  value,
-  valueText,
-  indicator,
-  valueClassName,
-  indicatorClassName,
-  collapsed = false,
-  className,
-  ...props
-}: MenuPrimitive.Trigger.Props & {
-  label: string
-  value?: React.ReactNode
-  valueText?: string
-  indicator?: React.ReactNode
-  valueClassName?: string
-  indicatorClassName?: string
-  collapsed?: boolean
-}) {
-  const accessibleValue =
-    valueText ?? (typeof value === "string" ? value : undefined)
-  const accessibleLabel = accessibleValue
-    ? `${label}: ${accessibleValue}`
-    : label
-  const tooltip = accessibleValue ? `${label}: ${accessibleValue}` : label
-
-  return (
-    <PickerTrigger
-      aria-label={accessibleLabel}
-      collapsed={collapsed}
-      tooltip={tooltip}
-      className={cn(
-        "flex items-center",
-        collapsed ? "justify-center gap-0" : "justify-start gap-2.5",
+        "relative w-40 shrink-0 touch-manipulation rounded-xl p-3 ring-1 ring-foreground/10 select-none hover:bg-muted focus-visible:ring-foreground/50 focus-visible:outline-none disabled:opacity-50 data-popup-open:bg-muted md:w-full md:rounded-lg md:px-2.5 md:py-2",
         className
       )}
       {...props}
-    >
-      <div
-        aria-hidden={collapsed}
-        className={cn(
-          "min-w-0 flex-1 overflow-hidden text-left transition-[flex-basis,max-width,opacity,transform] duration-200 ease-out",
-          collapsed
-            ? "max-w-0 basis-0 -translate-x-1 opacity-0"
-            : "max-w-full basis-auto opacity-100"
-        )}
-      >
-        <div className="flex flex-col justify-start text-left">
-          <div className="truncate text-xs text-muted-foreground">{label}</div>
-          <div
-            className={cn(
-              "truncate text-sm font-medium text-foreground",
-              valueClassName
-            )}
-          >
-            {value}
-          </div>
-        </div>
-      </div>
-      {indicator ? (
-        <div
-          className={cn(
-            "pointer-events-none flex size-4 shrink-0 items-center justify-center text-base text-foreground transition-transform duration-200 ease-out select-none *:[svg]:size-4 *:[svg]:text-foreground!",
-            indicatorClassName
-          )}
-        >
-          {indicator}
-        </div>
-      ) : null}
-    </PickerTrigger>
+    />
   )
 }
 
@@ -159,13 +40,6 @@ function PickerContent({
     MenuPrimitive.Positioner.Props,
     "align" | "alignOffset" | "side" | "sideOffset" | "anchor"
   >) {
-  const bridgeClassName =
-    side === "left"
-      ? "absolute inset-y-0 left-0 right-62 z-40 bg-transparent"
-      : side === "right"
-        ? "absolute inset-y-0 right-0 left-62 z-40 bg-transparent"
-        : null
-
   return (
     <MenuPrimitive.Portal>
       <MenuPrimitive.Positioner
@@ -185,7 +59,7 @@ function PickerContent({
           {...props}
         />
       </MenuPrimitive.Positioner>
-      {bridgeClassName ? <div className={bridgeClassName} /> : null}
+      <div className="absolute inset-y-0 right-0 left-62 z-40 bg-transparent" />
     </MenuPrimitive.Portal>
   )
 }
@@ -404,7 +278,6 @@ export {
   Picker,
   PickerPortal,
   PickerTrigger,
-  PickerValueTrigger,
   PickerContent,
   PickerGroup,
   PickerLabel,

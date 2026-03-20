@@ -3,7 +3,6 @@
 import * as React from "react"
 
 import { iconLibraries, type IconLibraryName } from "@/registry/config"
-import { useCustomizerLayout } from "@/app/(create)/components/customizer-layout"
 import { LockButton } from "@/app/(create)/components/lock-button"
 import {
   Picker,
@@ -11,7 +10,7 @@ import {
   PickerGroup,
   PickerRadioGroup,
   PickerRadioItem,
-  PickerValueTrigger,
+  PickerTrigger,
 } from "@/app/(create)/components/picker"
 import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
 
@@ -113,14 +112,11 @@ const logos = {
 export function IconLibraryPicker({
   isMobile,
   anchorRef,
-  collapsed = false,
 }: {
   isMobile: boolean
   anchorRef: React.RefObject<HTMLDivElement | null>
-  collapsed?: boolean
 }) {
   const [params, setParams] = useDesignSystemSearchParams()
-  const { desktopPickerSide } = useCustomizerLayout()
 
   const currentIconLibrary = React.useMemo(
     () => iconLibraries[params.iconLibrary as keyof typeof iconLibraries],
@@ -130,16 +126,20 @@ export function IconLibraryPicker({
   return (
     <div className="group/picker relative">
       <Picker>
-        <PickerValueTrigger
-          label="Icon Library"
-          value={currentIconLibrary?.title}
-          valueText={currentIconLibrary?.title}
-          indicator={logos[currentIconLibrary?.name as keyof typeof logos]}
-          collapsed={collapsed}
-        />
+        <PickerTrigger>
+          <div className="flex flex-col justify-start text-left">
+            <div className="text-xs text-muted-foreground">Icon Library</div>
+            <div className="text-sm font-medium text-foreground">
+              {currentIconLibrary?.title}
+            </div>
+          </div>
+          <div className="pointer-events-none absolute top-1/2 right-4 flex size-4 -translate-y-1/2 items-center justify-center text-base text-foreground select-none md:right-2.5 *:[svg]:text-foreground!">
+            {logos[currentIconLibrary?.name as keyof typeof logos]}
+          </div>
+        </PickerTrigger>
         <PickerContent
           anchor={isMobile ? anchorRef : undefined}
-          side={isMobile ? "top" : desktopPickerSide}
+          side={isMobile ? "top" : "right"}
           align={isMobile ? "center" : "start"}
         >
           <PickerRadioGroup
@@ -162,12 +162,10 @@ export function IconLibraryPicker({
           </PickerRadioGroup>
         </PickerContent>
       </Picker>
-      {!collapsed ? (
-        <LockButton
-          param="iconLibrary"
-          className="absolute top-1/2 right-8 -translate-y-1/2"
-        />
-      ) : null}
+      <LockButton
+        param="iconLibrary"
+        className="absolute top-1/2 right-8 -translate-y-1/2"
+      />
     </div>
   )
 }
