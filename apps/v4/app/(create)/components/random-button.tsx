@@ -2,6 +2,11 @@
 
 import Script from "next/script"
 import { Button } from "@/examples/base/ui/button"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/examples/base/ui/tooltip"
 import { DiceFaces05Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 
@@ -13,9 +18,40 @@ export const RANDOMIZE_FORWARD_TYPE = "randomize-forward"
 export function RandomButton({
   variant = "outline",
   className,
+  collapsed = false,
   ...props
-}: React.ComponentProps<typeof Button>) {
+}: React.ComponentProps<typeof Button> & {
+  collapsed?: boolean
+}) {
   const { randomize } = useRandom()
+
+  if (collapsed) {
+    return (
+      <Tooltip>
+        <TooltipTrigger
+          render={
+            <Button
+              variant={variant}
+              size="icon"
+              aria-label="Shuffle"
+              onClick={randomize}
+              className={cn(
+                "size-10 touch-manipulation rounded-xl bg-transparent! transition-none select-none hover:bg-muted!",
+                className
+              )}
+              {...props}
+            />
+          }
+        >
+          <HugeiconsIcon icon={DiceFaces05Icon} strokeWidth={2} />
+          <span className="sr-only">Shuffle</span>
+        </TooltipTrigger>
+        <TooltipContent side="right" sideOffset={10}>
+          Shuffle
+        </TooltipContent>
+      </Tooltip>
+    )
+  }
 
   return (
     <Button

@@ -7,6 +7,7 @@ import { useTheme } from "next-themes"
 
 import { useMounted } from "@/hooks/use-mounted"
 import { type MenuColorValue } from "@/registry/config"
+import { useCustomizerLayout } from "@/app/(create)/components/customizer-layout"
 import { LockButton } from "@/app/(create)/components/lock-button"
 import {
   Picker,
@@ -16,7 +17,7 @@ import {
   PickerRadioGroup,
   PickerRadioItem,
   PickerSeparator,
-  PickerTrigger,
+  PickerValueTrigger,
 } from "@/app/(create)/components/picker"
 import {
   isTranslucentMenuColor,
@@ -47,11 +48,14 @@ const MENU_OPTIONS: { value: MenuColorValue; label: string }[] = [
 export function MenuColorPicker({
   isMobile,
   anchorRef,
+  collapsed = false,
 }: {
   isMobile: boolean
   anchorRef: React.RefObject<HTMLDivElement | null>
+  collapsed?: boolean
 }) {
   const [params, setParams] = useDesignSystemSearchParams()
+  const { desktopPickerSide } = useCustomizerLayout()
   const { resolvedTheme } = useTheme()
   const mounted = useMounted()
   const lastSolidMenuAccentRef = React.useRef(params.menuAccent)
@@ -101,24 +105,23 @@ export function MenuColorPicker({
   return (
     <div className="group/picker relative">
       <Picker>
-        <PickerTrigger>
-          <div className="flex flex-col justify-start text-left">
-            <div className="text-xs text-muted-foreground">Menu</div>
-            <div className="line-clamp-1 text-sm font-medium text-foreground">
-              {currentMenu?.label}
-            </div>
-          </div>
-          <div className="pointer-events-none absolute top-1/2 right-4 flex size-4 -translate-y-1/2 items-center justify-center text-base text-foreground select-none md:right-2.5">
+        <PickerValueTrigger
+          label="Menu"
+          value={currentMenu?.label}
+          valueText={currentMenu?.label}
+          valueClassName="line-clamp-1"
+          indicator={
             <HugeiconsIcon
               icon={Menu02Icon}
               strokeWidth={2}
               className="size-4"
             />
-          </div>
-        </PickerTrigger>
+          }
+          collapsed={collapsed}
+        />
         <PickerContent
           anchor={isMobile ? anchorRef : undefined}
-          side={isMobile ? "top" : "right"}
+          side={isMobile ? "top" : desktopPickerSide}
           align={isMobile ? "center" : "start"}
         >
           <PickerGroup>
@@ -160,10 +163,12 @@ export function MenuColorPicker({
           </PickerGroup>
         </PickerContent>
       </Picker>
-      <LockButton
-        param="menuColor"
-        className="absolute top-1/2 right-8 -translate-y-1/2"
-      />
+      {!collapsed ? (
+        <LockButton
+          param="menuColor"
+          className="absolute top-1/2 right-8 -translate-y-1/2"
+        />
+      ) : null}
     </div>
   )
 }

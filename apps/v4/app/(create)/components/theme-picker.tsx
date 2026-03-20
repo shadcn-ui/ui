@@ -4,6 +4,7 @@ import * as React from "react"
 
 import { useMounted } from "@/hooks/use-mounted"
 import { BASE_COLORS, type Theme, type ThemeName } from "@/registry/config"
+import { useCustomizerLayout } from "@/app/(create)/components/customizer-layout"
 import { LockButton } from "@/app/(create)/components/lock-button"
 import {
   Picker,
@@ -12,7 +13,7 @@ import {
   PickerRadioGroup,
   PickerRadioItem,
   PickerSeparator,
-  PickerTrigger,
+  PickerValueTrigger,
 } from "@/app/(create)/components/picker"
 import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
 
@@ -20,13 +21,16 @@ export function ThemePicker({
   themes,
   isMobile,
   anchorRef,
+  collapsed = false,
 }: {
   themes: readonly Theme[]
   isMobile: boolean
   anchorRef: React.RefObject<HTMLDivElement | null>
+  collapsed?: boolean
 }) {
   const mounted = useMounted()
   const [params, setParams] = useDesignSystemSearchParams()
+  const { desktopPickerSide } = useCustomizerLayout()
 
   const currentTheme = React.useMemo(
     () => themes.find((theme) => theme.name === params.theme),
@@ -44,33 +48,33 @@ export function ThemePicker({
     }
   }, [currentTheme, themes, setParams])
 
+  const themeIndicator = mounted ? (
+    <div
+      style={
+        {
+          "--color":
+            currentTheme?.cssVars?.dark?.[
+              currentThemeIsBaseColor ? "muted-foreground" : "primary"
+            ],
+        } as React.CSSProperties
+      }
+      className="size-4 rounded-full bg-(--color)"
+    />
+  ) : null
+
   return (
     <div className="group/picker relative">
       <Picker>
-        <PickerTrigger>
-          <div className="flex flex-col justify-start text-left">
-            <div className="text-xs text-muted-foreground">Theme</div>
-            <div className="text-sm font-medium text-foreground">
-              {currentTheme?.title}
-            </div>
-          </div>
-          {mounted && (
-            <div
-              style={
-                {
-                  "--color":
-                    currentTheme?.cssVars?.dark?.[
-                      currentThemeIsBaseColor ? "muted-foreground" : "primary"
-                    ],
-                } as React.CSSProperties
-              }
-              className="pointer-events-none absolute top-1/2 right-4 size-4 -translate-y-1/2 rounded-full bg-(--color) select-none md:right-2.5"
-            />
-          )}
-        </PickerTrigger>
+        <PickerValueTrigger
+          label="Theme"
+          value={currentTheme?.title}
+          valueText={currentTheme?.title}
+          indicator={themeIndicator}
+          collapsed={collapsed}
+        />
         <PickerContent
           anchor={isMobile ? anchorRef : undefined}
-          side={isMobile ? "top" : "right"}
+          side={isMobile ? "top" : desktopPickerSide}
           align={isMobile ? "center" : "start"}
           className="max-h-92"
         >
@@ -121,10 +125,12 @@ export function ThemePicker({
           </PickerRadioGroup>
         </PickerContent>
       </Picker>
-      <LockButton
-        param="theme"
-        className="absolute top-1/2 right-8 -translate-y-1/2"
-      />
+      {!collapsed ? (
+        <LockButton
+          param="theme"
+          className="absolute top-1/2 right-8 -translate-y-1/2"
+        />
+      ) : null}
     </div>
   )
 }

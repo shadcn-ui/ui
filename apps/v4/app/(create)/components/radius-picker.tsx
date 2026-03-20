@@ -3,6 +3,7 @@
 import * as React from "react"
 
 import { RADII, type RadiusValue } from "@/registry/config"
+import { useCustomizerLayout } from "@/app/(create)/components/customizer-layout"
 import { LockButton } from "@/app/(create)/components/lock-button"
 import {
   Picker,
@@ -11,18 +12,21 @@ import {
   PickerRadioGroup,
   PickerRadioItem,
   PickerSeparator,
-  PickerTrigger,
+  PickerValueTrigger,
 } from "@/app/(create)/components/picker"
 import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
 
 export function RadiusPicker({
   isMobile,
   anchorRef,
+  collapsed = false,
 }: {
   isMobile: boolean
   anchorRef: React.RefObject<HTMLDivElement | null>
+  collapsed?: boolean
 }) {
   const [params, setParams] = useDesignSystemSearchParams()
+  const { desktopPickerSide } = useCustomizerLayout()
   const isRadiusLocked = params.style === "lyra"
   const selectedRadiusName = isRadiusLocked ? "none" : params.radius
 
@@ -35,20 +39,17 @@ export function RadiusPicker({
   return (
     <div className="group/picker relative">
       <Picker>
-        <PickerTrigger disabled={isRadiusLocked}>
-          <div className="flex flex-col justify-start text-left">
-            <div className="text-xs text-muted-foreground">Radius</div>
-            <div className="text-sm font-medium text-foreground">
-              {currentRadius?.label}
-            </div>
-          </div>
-          <div className="pointer-events-none absolute top-1/2 right-4 flex size-4 -translate-y-1/2 rotate-90 items-center justify-center text-base text-foreground select-none md:right-2.5">
+        <PickerValueTrigger
+          label="Radius"
+          value={currentRadius?.label}
+          valueText={currentRadius?.label}
+          indicator={
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"
               viewBox="0 0 24 24"
-              className="text-foreground"
+              className="rotate-90 text-foreground"
             >
               <path
                 fill="none"
@@ -59,11 +60,13 @@ export function RadiusPicker({
                 d="M4 20v-5C4 8.925 8.925 4 15 4h5"
               />
             </svg>
-          </div>
-        </PickerTrigger>
+          }
+          collapsed={collapsed}
+          disabled={isRadiusLocked}
+        />
         <PickerContent
           anchor={isMobile ? anchorRef : undefined}
-          side={isMobile ? "top" : "right"}
+          side={isMobile ? "top" : desktopPickerSide}
           align={isMobile ? "center" : "start"}
         >
           <PickerRadioGroup
@@ -101,10 +104,12 @@ export function RadiusPicker({
           </PickerRadioGroup>
         </PickerContent>
       </Picker>
-      <LockButton
-        param="radius"
-        className="absolute top-1/2 right-8 -translate-y-1/2"
-      />
+      {!collapsed ? (
+        <LockButton
+          param="radius"
+          className="absolute top-1/2 right-8 -translate-y-1/2"
+        />
+      ) : null}
     </div>
   )
 }
