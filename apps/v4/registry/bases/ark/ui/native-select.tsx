@@ -1,9 +1,14 @@
 import * as React from "react"
+import { ark } from "@ark-ui/react/factory"
+import { Field } from "@ark-ui/react/field"
 
 import { cn } from "@/registry/bases/ark/lib/utils"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
-type NativeSelectProps = Omit<React.ComponentProps<"select">, "size"> & {
+type NativeSelectProps = Omit<
+  React.ComponentProps<typeof Field.Select>,
+  "size"
+> & {
   size?: "sm" | "default"
 }
 
@@ -13,7 +18,7 @@ function NativeSelect({
   ...props
 }: NativeSelectProps) {
   return (
-    <div
+    <ark.div
       className={cn(
         "cn-native-select-wrapper group/native-select relative w-fit has-[select:disabled]:opacity-50",
         className
@@ -21,7 +26,7 @@ function NativeSelect({
       data-slot="native-select-wrapper"
       data-size={size}
     >
-      <select
+      <Field.Select
         data-slot="native-select"
         data-size={size}
         className="cn-native-select outline-none disabled:pointer-events-none disabled:cursor-not-allowed"
@@ -37,20 +42,22 @@ function NativeSelect({
         aria-hidden="true"
         data-slot="native-select-icon"
       />
-    </div>
+    </ark.div>
   )
 }
 
-function NativeSelectOption({ ...props }: React.ComponentProps<"option">) {
-  return <option data-slot="native-select-option" {...props} />
+function NativeSelectOption({
+  ...props
+}: React.ComponentProps<typeof ark.option>) {
+  return <ark.option data-slot="native-select-option" {...props} />
 }
 
 function NativeSelectOptGroup({
   className,
   ...props
-}: React.ComponentProps<"optgroup">) {
+}: React.ComponentProps<typeof ark.optgroup>) {
   return (
-    <optgroup
+    <ark.optgroup
       data-slot="native-select-optgroup"
       className={cn(className)}
       {...props}

@@ -25,9 +25,10 @@ function ButtonGroup({
   className,
   orientation,
   ...props
-}: React.ComponentProps<"div"> & VariantProps<typeof buttonGroupVariants>) {
+}: React.ComponentProps<typeof ark.div> &
+  VariantProps<typeof buttonGroupVariants>) {
   return (
-    <div
+    <ark.div
       role="group"
       data-slot="button-group"
       data-orientation={orientation}
@@ -41,10 +42,10 @@ function ButtonGroupText({
   className,
   asChild = false,
   ...props
-}: React.ComponentProps<"div"> & {
+}: React.ComponentProps<typeof ark.div> & {
   asChild?: boolean
 }) {
-  const Comp = asChild ? ark.div : "div"
+  const Comp = asChild ? ark.div : ark.div
 
   return (
     <Comp

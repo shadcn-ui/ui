@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { ark } from "@ark-ui/react/factory"
 import { Menu as MenuPrimitive } from "@ark-ui/react/menu"
 import { Portal } from "@ark-ui/react/portal"
 
@@ -160,12 +161,12 @@ function ContextMenuCheckboxItem({
       checked={checked}
       {...props}
     >
-      <span className="pointer-events-none absolute end-2">
+      <ark.span className="pointer-events-none absolute end-2">
         <MenuPrimitive.ItemIndicator>
           <CheckIcon
           />
         </MenuPrimitive.ItemIndicator>
-      </span>
+      </ark.span>
       {children}
     </MenuPrimitive.CheckboxItem>
   )
@@ -189,12 +190,12 @@ function ContextMenuRadioItem({
       )}
       {...props}
     >
-      <span className="pointer-events-none absolute end-2">
+      <ark.span className="pointer-events-none absolute end-2">
         <MenuPrimitive.ItemIndicator>
           <CheckIcon
           />
         </MenuPrimitive.ItemIndicator>
-      </span>
+      </ark.span>
       {children}
     </MenuPrimitive.RadioItem>
   )
@@ -236,9 +237,9 @@ function ContextMenuSeparator({
 function ContextMenuShortcut({
   className,
   ...props
-}: React.ComponentProps<"span">) {
+}: React.ComponentProps<typeof ark.span>) {
   return (
-    <span
+    <ark.span
       data-slot="context-menu-shortcut"
       className={cn(
         "ms-auto text-xs tracking-widest text-muted-foreground group-focus/context-menu-item:text-accent-foreground",

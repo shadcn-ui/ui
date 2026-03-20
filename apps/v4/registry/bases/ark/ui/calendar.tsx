@@ -191,7 +191,22 @@ function Calendar({
                                 "[&:first-child[data-selected]_div]:rounded-l-(--cell-radius)"
                               )}
                             >
-                              <CalendarDayButton />
+                              <DatePicker.TableCellTrigger
+                                className={cn(
+                                  "cn-calendar-day-button relative isolate z-10 flex aspect-square size-auto w-full min-w-(--cell-size) items-center justify-center gap-1 rounded-(--cell-radius) border-0 text-sm leading-none font-normal",
+                                  "hover:bg-accent hover:text-accent-foreground",
+                                  "data-[selected]:bg-primary data-[selected]:text-primary-foreground data-[selected]:hover:bg-primary data-[selected]:hover:text-primary-foreground",
+                                  "data-[today]:bg-accent data-[today]:text-accent-foreground",
+                                  "data-[outside-range]:text-muted-foreground/50",
+                                  "data-[disabled]:text-muted-foreground data-[disabled]:opacity-50",
+                                  "data-[in-range]:bg-accent data-[in-range]:text-accent-foreground data-[in-range]:rounded-none",
+                                  "data-[range-start]:rounded-l-(--cell-radius) data-[range-start]:bg-primary data-[range-start]:text-primary-foreground",
+                                  "data-[range-end]:rounded-r-(--cell-radius) data-[range-end]:bg-primary data-[range-end]:text-primary-foreground",
+                                  "focus-visible:relative focus-visible:z-10 focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-1"
+                                )}
+                              >
+                                {day.day}
+                              </DatePicker.TableCellTrigger>
                             </DatePicker.TableCell>
                           )
                         })}
@@ -364,25 +379,29 @@ function Calendar({
   )
 }
 
-function CalendarDayButton() {
+function CalendarDayButton({
+  children,
+  className,
+  ...props
+}: React.ComponentProps<typeof DatePicker.TableCellTrigger>) {
   return (
-    <DatePicker.TableCellTrigger asChild>
-      <Button
-        variant="ghost"
-        size="icon"
-        className={cn(
-          "cn-calendar-day-button relative isolate z-10 flex aspect-square size-auto w-full min-w-(--cell-size) flex-col gap-1 border-0 leading-none font-normal",
-          "data-[selected]:bg-primary data-[selected]:text-primary-foreground",
-          "data-[today]:bg-muted data-[today]:text-foreground data-[today]:data-[selected]:rounded-none",
-          "data-[outside-range]:text-muted-foreground data-[outside-range]:aria-selected:text-muted-foreground",
-          "data-[disabled]:text-muted-foreground data-[disabled]:opacity-50",
-          "data-[in-range]:bg-muted data-[in-range]:text-foreground data-[in-range]:rounded-none",
-          "data-[range-start]:rounded-(--cell-radius) data-[range-start]:rounded-l-(--cell-radius) data-[range-start]:bg-primary data-[range-start]:text-primary-foreground",
-          "data-[range-end]:rounded-(--cell-radius) data-[range-end]:rounded-r-(--cell-radius) data-[range-end]:bg-primary data-[range-end]:text-primary-foreground",
-          "dark:hover:text-foreground [&>span]:text-xs [&>span]:opacity-70",
-          "focus-visible:relative focus-visible:z-10 focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50"
-        )}
-      />
+    <DatePicker.TableCellTrigger
+      className={cn(
+        "cn-calendar-day-button relative isolate z-10 flex aspect-square size-auto w-full min-w-(--cell-size) items-center justify-center gap-1 rounded-(--cell-radius) border-0 text-sm leading-none font-normal",
+        "hover:bg-accent hover:text-accent-foreground",
+        "data-[selected]:bg-primary data-[selected]:text-primary-foreground",
+        "data-[today]:bg-accent data-[today]:text-accent-foreground",
+        "data-[outside-range]:text-muted-foreground/50",
+        "data-[disabled]:text-muted-foreground data-[disabled]:opacity-50",
+        "data-[in-range]:bg-accent data-[in-range]:text-accent-foreground data-[in-range]:rounded-none",
+        "data-[range-start]:rounded-l-(--cell-radius) data-[range-start]:bg-primary data-[range-start]:text-primary-foreground",
+        "data-[range-end]:rounded-r-(--cell-radius) data-[range-end]:bg-primary data-[range-end]:text-primary-foreground",
+        "focus-visible:relative focus-visible:z-10 focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-1",
+        className
+      )}
+      {...props}
+    >
+      {children}
     </DatePicker.TableCellTrigger>
   )
 }

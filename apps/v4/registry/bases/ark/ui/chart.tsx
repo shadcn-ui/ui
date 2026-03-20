@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { ark } from "@ark-ui/react/factory"
 import * as RechartsPrimitive from "recharts"
 
 import { cn } from "@/registry/bases/ark/lib/utils"
@@ -40,7 +41,7 @@ function ChartContainer({
   children,
   config,
   ...props
-}: React.ComponentProps<"div"> & {
+}: React.ComponentProps<typeof ark.div> & {
   config: ChartConfig
   children: React.ComponentProps<
     typeof RechartsPrimitive.ResponsiveContainer
@@ -51,7 +52,7 @@ function ChartContainer({
 
   return (
     <ChartContext.Provider value={{ config }}>
-      <div
+      <ark.div
         data-slot="chart"
         data-chart={chartId}
         className={cn(
@@ -64,7 +65,7 @@ function ChartContainer({
         <RechartsPrimitive.ResponsiveContainer>
           {children}
         </RechartsPrimitive.ResponsiveContainer>
-      </div>
+      </ark.div>
     </ChartContext.Provider>
   )
 }
@@ -119,7 +120,7 @@ function ChartTooltipContent({
   nameKey,
   labelKey,
 }: React.ComponentProps<typeof RechartsPrimitive.Tooltip> &
-  React.ComponentProps<"div"> & {
+  React.ComponentProps<typeof ark.div> & {
     hideLabel?: boolean
     hideIndicator?: boolean
     indicator?: "line" | "dot" | "dashed"
@@ -143,9 +144,9 @@ function ChartTooltipContent({
 
     if (labelFormatter) {
       return (
-        <div className={cn("font-medium", labelClassName)}>
+        <ark.div className={cn("font-medium", labelClassName)}>
           {labelFormatter(value, payload)}
-        </div>
+        </ark.div>
       )
     }
 
@@ -153,7 +154,7 @@ function ChartTooltipContent({
       return null
     }
 
-    return <div className={cn("font-medium", labelClassName)}>{value}</div>
+    return <ark.div className={cn("font-medium", labelClassName)}>{value}</ark.div>
   }, [
     label,
     labelFormatter,
@@ -171,11 +172,11 @@ function ChartTooltipContent({
   const nestLabel = payload.length === 1 && indicator !== "dot"
 
   return (
-    <div
+    <ark.div
       className={cn("cn-chart-tooltip grid min-w-32 items-start", className)}
     >
       {!nestLabel ? tooltipLabel : null}
-      <div className="grid gap-1.5">
+      <ark.div className="grid gap-1.5">
         {payload
           .filter((item) => item.type !== "none")
           .map((item, index) => {
@@ -184,7 +185,7 @@ function ChartTooltipContent({
             const indicatorColor = color || item.payload.fill || item.color
 
             return (
-              <div
+              <ark.div
                 key={item.dataKey}
                 className={cn(
                   "flex w-full flex-wrap items-stretch gap-2 [&>svg]:h-2.5 [&>svg]:w-2.5 [&>svg]:text-muted-foreground",
@@ -199,7 +200,7 @@ function ChartTooltipContent({
                       <itemConfig.icon />
                     ) : (
                       !hideIndicator && (
-                        <div
+                        <ark.div
                           className={cn(
                             "shrink-0 rounded-[2px] border-(--color-border) bg-(--color-bg)",
                             {
@@ -219,31 +220,31 @@ function ChartTooltipContent({
                         />
                       )
                     )}
-                    <div
+                    <ark.div
                       className={cn(
                         "flex flex-1 justify-between leading-none",
                         nestLabel ? "items-end" : "items-center"
                       )}
                     >
-                      <div className="grid gap-1.5">
+                      <ark.div className="grid gap-1.5">
                         {nestLabel ? tooltipLabel : null}
-                        <span className="text-muted-foreground">
+                        <ark.span className="text-muted-foreground">
                           {itemConfig?.label || item.name}
-                        </span>
-                      </div>
+                        </ark.span>
+                      </ark.div>
                       {item.value && (
-                        <span className="font-mono font-medium text-foreground tabular-nums">
+                        <ark.span className="font-mono font-medium text-foreground tabular-nums">
                           {item.value.toLocaleString()}
-                        </span>
+                        </ark.span>
                       )}
-                    </div>
+                    </ark.div>
                   </>
                 )}
-              </div>
+              </ark.div>
             )
           })}
-      </div>
-    </div>
+      </ark.div>
+    </ark.div>
   )
 }
 
@@ -255,7 +256,7 @@ function ChartLegendContent({
   payload,
   verticalAlign = "bottom",
   nameKey,
-}: React.ComponentProps<"div"> &
+}: React.ComponentProps<typeof ark.div> &
   Pick<RechartsPrimitive.LegendProps, "payload" | "verticalAlign"> & {
     hideIcon?: boolean
     nameKey?: string
@@ -267,7 +268,7 @@ function ChartLegendContent({
   }
 
   return (
-    <div
+    <ark.div
       className={cn(
         "flex items-center justify-center gap-4",
         verticalAlign === "top" ? "pb-3" : "pt-3",
@@ -281,7 +282,7 @@ function ChartLegendContent({
           const itemConfig = getPayloadConfigFromPayload(config, item, key)
 
           return (
-            <div
+            <ark.div
               key={item.value}
               className={cn(
                 "flex items-center gap-1.5 [&>svg]:h-3 [&>svg]:w-3 [&>svg]:text-muted-foreground"
@@ -290,7 +291,7 @@ function ChartLegendContent({
               {itemConfig?.icon && !hideIcon ? (
                 <itemConfig.icon />
               ) : (
-                <div
+                <ark.div
                   className="h-2 w-2 shrink-0 rounded-[2px]"
                   style={{
                     backgroundColor: item.color,
@@ -298,10 +299,10 @@ function ChartLegendContent({
                 />
               )}
               {itemConfig?.label}
-            </div>
+            </ark.div>
           )
         })}
-    </div>
+    </ark.div>
   )
 }
 

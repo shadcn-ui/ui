@@ -1,9 +1,14 @@
 import * as React from "react"
+import { ark } from "@ark-ui/react/factory"
+import { Field } from "@ark-ui/react/field"
 
 import { cn } from "@/examples/ark/lib/utils"
 import { ChevronDownIcon } from "lucide-react"
 
-type NativeSelectProps = Omit<React.ComponentProps<"select">, "size"> & {
+type NativeSelectProps = Omit<
+  React.ComponentProps<typeof Field.Select>,
+  "size"
+> & {
   size?: "sm" | "default"
 }
 
@@ -13,7 +18,7 @@ function NativeSelect({
   ...props
 }: NativeSelectProps) {
   return (
-    <div
+    <ark.div
       className={cn(
         "group/native-select relative w-fit has-[select:disabled]:opacity-50",
         className
@@ -21,27 +26,29 @@ function NativeSelect({
       data-slot="native-select-wrapper"
       data-size={size}
     >
-      <select
+      <Field.Select
         data-slot="native-select"
         data-size={size}
         className="h-8 w-full min-w-0 appearance-none rounded-lg border border-input bg-transparent py-1 pe-8 ps-2.5 text-sm transition-colors outline-none select-none selection:bg-primary selection:text-primary-foreground placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:cursor-not-allowed aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 data-[size=sm]:h-7 data-[size=sm]:rounded-[min(var(--radius-md),10px)] data-[size=sm]:py-0.5 dark:bg-input/30 dark:hover:bg-input/50 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40"
         {...props}
       />
       <ChevronDownIcon className="pointer-events-none absolute top-1/2 end-2.5 size-4 -translate-y-1/2 text-muted-foreground select-none" aria-hidden="true" data-slot="native-select-icon" />
-    </div>
+    </ark.div>
   )
 }
 
-function NativeSelectOption({ ...props }: React.ComponentProps<"option">) {
-  return <option data-slot="native-select-option" {...props} />
+function NativeSelectOption({
+  ...props
+}: React.ComponentProps<typeof ark.option>) {
+  return <ark.option data-slot="native-select-option" {...props} />
 }
 
 function NativeSelectOptGroup({
   className,
   ...props
-}: React.ComponentProps<"optgroup">) {
+}: React.ComponentProps<typeof ark.optgroup>) {
   return (
-    <optgroup
+    <ark.optgroup
       data-slot="native-select-optgroup"
       className={cn(className)}
       {...props}

@@ -121,9 +121,9 @@ function DrawerTitle({
 function DrawerDescription({
   className,
   ...props
-}: React.ComponentProps<typeof DrawerPrimitive.Description>) {
+}: React.ComponentProps<typeof ark.p>) {
   return (
-    <DrawerPrimitive.Description
+    <ark.p
       data-slot="drawer-description"
       className={cn("cn-drawer-description", className)}
       {...props}

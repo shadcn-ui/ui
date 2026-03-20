@@ -1,15 +1,16 @@
 "use client"
 
 import * as React from "react"
+import { ark } from "@ark-ui/react/factory"
 
 function AspectRatio({
   ratio = 1 / 1,
   className,
   style,
   ...props
-}: React.ComponentProps<"div"> & { ratio?: number }) {
+}: React.ComponentProps<typeof ark.div> & { ratio?: number }) {
   return (
-    <div
+    <ark.div
       data-slot="aspect-ratio"
       style={{
         position: "relative",
@@ -18,7 +19,7 @@ function AspectRatio({
         ...style,
       }}
     >
-      <div
+      <ark.div
         className={className}
         style={{
           position: "absolute",
@@ -29,7 +30,7 @@ function AspectRatio({
         }}
         {...props}
       />
-    </div>
+    </ark.div>
   )
 }
 

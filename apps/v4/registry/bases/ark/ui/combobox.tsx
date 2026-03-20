@@ -8,6 +8,8 @@ import {
 import type { CollectionItem, ListCollection } from "@ark-ui/react/combobox"
 import { Portal } from "@ark-ui/react/portal"
 
+import { ark } from "@ark-ui/react/factory"
+
 import { cn } from "@/registry/bases/ark/lib/utils"
 import { Button } from "@/registry/bases/ark/ui/button"
 import {
@@ -65,9 +67,9 @@ function Combobox<T extends CollectionItem>({
 
 const ComboboxValue = React.forwardRef<
   HTMLSpanElement,
-  React.ComponentProps<"span">
+  React.ComponentProps<typeof ark.span>
 >(({ className, ...props }, ref) => (
-  <span ref={ref} data-slot="combobox-value" className={className} {...props} />
+  <ark.span ref={ref} data-slot="combobox-value" className={className} {...props} />
 ))
 ComboboxValue.displayName = "ComboboxValue"
 
@@ -321,9 +323,9 @@ ComboboxEmpty.displayName = "ComboboxEmpty"
 
 const ComboboxSeparator = React.forwardRef<
   HTMLDivElement,
-  React.ComponentProps<"div">
+  React.ComponentProps<typeof ark.div>
 >(({ className, ...props }, ref) => (
-  <div
+  <ark.div
     ref={ref}
     data-slot="combobox-separator"
     className={cn("cn-combobox-separator", className)}
@@ -335,27 +337,27 @@ ComboboxSeparator.displayName = "ComboboxSeparator"
 
 const ComboboxChips = React.forwardRef<
   HTMLDivElement,
-  React.ComponentProps<"div">
+  React.ComponentProps<typeof ark.div>
 >(({ className, children, ...props }, ref) => (
-  <div
+  <ark.div
     ref={ref}
     data-slot="combobox-chips"
     className={cn("cn-combobox-chips", className)}
     {...props}
   >
     {children}
-  </div>
+  </ark.div>
 ))
 ComboboxChips.displayName = "ComboboxChips"
 
 const ComboboxChip = React.forwardRef<
   HTMLDivElement,
-  React.ComponentProps<"div"> & {
+  React.ComponentProps<typeof ark.div> & {
     showRemove?: boolean
     value?: string
   }
 >(({ className, children, showRemove = true, value, ...props }, ref) => (
-  <div
+  <ark.div
     ref={ref}
     data-slot="combobox-chip"
     className={cn(
@@ -384,7 +386,7 @@ const ComboboxChip = React.forwardRef<
         </Button>
       </ComboboxPrimitive.ClearTrigger>
     )}
-  </div>
+  </ark.div>
 ))
 ComboboxChip.displayName = "ComboboxChip"
 

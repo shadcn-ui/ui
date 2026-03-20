@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { ark } from "@ark-ui/react/factory"
 import { Pagination as PaginationPrimitive } from "@ark-ui/react/pagination"
 
 import { cn } from "@/registry/bases/ark/lib/utils"
@@ -26,11 +27,11 @@ function Pagination({
 function PaginationContent({
   className,
   ...props
-}: React.ComponentProps<"ul">) {
+}: React.ComponentProps<typeof ark.ul>) {
   return (
     <PaginationPrimitive.Context>
       {() => (
-        <ul
+        <ark.ul
           data-slot="pagination-content"
           className={cn(
             "cn-pagination-content flex items-center",
@@ -43,8 +44,8 @@ function PaginationContent({
   )
 }
 
-function PaginationItem({ ...props }: React.ComponentProps<"li">) {
-  return <li data-slot="pagination-item" {...props} />
+function PaginationItem({ ...props }: React.ComponentProps<typeof ark.li>) {
+  return <ark.li data-slot="pagination-item" {...props} />
 }
 
 type PaginationLinkProps = {
@@ -100,9 +101,9 @@ function PaginationPrevious({
           data-icon="inline-start"
           className="cn-rtl-flip"
         />
-        <span className="cn-pagination-previous-text hidden sm:block">
+        <ark.span className="cn-pagination-previous-text hidden sm:block">
           {text}
-        </span>
+        </ark.span>
       </Button>
     </PaginationPrimitive.PrevTrigger>
   )
@@ -124,9 +125,9 @@ function PaginationNext({
         data-slot="pagination-link"
         className={cn("cn-pagination-next", className)}
       >
-        <span className="cn-pagination-next-text hidden sm:block">
+        <ark.span className="cn-pagination-next-text hidden sm:block">
           {text}
-        </span>
+        </ark.span>
         <IconPlaceholder
           lucide="ChevronRightIcon"
           tabler="IconChevronRight"
@@ -161,7 +162,7 @@ function PaginationEllipsis({
         phosphor="DotsThreeIcon"
         remixicon="RiMoreLine"
       />
-      <span className="sr-only">More pages</span>
+      <ark.span className="sr-only">More pages</ark.span>
     </PaginationPrimitive.Ellipsis>
   )
 }

@@ -1,15 +1,16 @@
 "use client"
 
 import { useMemo } from "react"
+import { ark } from "@ark-ui/react/factory"
 import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/registry/bases/ark/lib/utils"
 import { Label } from "@/registry/bases/ark/ui/label"
 import { Separator } from "@/registry/bases/ark/ui/separator"
 
-function FieldSet({ className, ...props }: React.ComponentProps<"fieldset">) {
+function FieldSet({ className, ...props }: React.ComponentProps<typeof ark.fieldset>) {
   return (
-    <fieldset
+    <ark.fieldset
       data-slot="field-set"
       className={cn("cn-field-set flex flex-col", className)}
       {...props}
@@ -21,9 +22,9 @@ function FieldLegend({
   className,
   variant = "legend",
   ...props
-}: React.ComponentProps<"legend"> & { variant?: "legend" | "label" }) {
+}: React.ComponentProps<typeof ark.legend> & { variant?: "legend" | "label" }) {
   return (
-    <legend
+    <ark.legend
       data-slot="field-legend"
       data-variant={variant}
       className={cn("cn-field-legend", className)}
@@ -32,9 +33,9 @@ function FieldLegend({
   )
 }
 
-function FieldGroup({ className, ...props }: React.ComponentProps<"div">) {
+function FieldGroup({ className, ...props }: React.ComponentProps<typeof ark.div>) {
   return (
-    <div
+    <ark.div
       data-slot="field-group"
       className={cn(
         "cn-field-group group/field-group @container/field-group flex w-full flex-col",
@@ -65,9 +66,9 @@ function Field({
   className,
   orientation = "vertical",
   ...props
-}: React.ComponentProps<"div"> & VariantProps<typeof fieldVariants>) {
+}: React.ComponentProps<typeof ark.div> & VariantProps<typeof fieldVariants>) {
   return (
-    <div
+    <ark.div
       role="group"
       data-slot="field"
       data-orientation={orientation}
@@ -77,9 +78,9 @@ function Field({
   )
 }
 
-function FieldContent({ className, ...props }: React.ComponentProps<"div">) {
+function FieldContent({ className, ...props }: React.ComponentProps<typeof ark.div>) {
   return (
-    <div
+    <ark.div
       data-slot="field-content"
       className={cn(
         "cn-field-content group/field-content flex flex-1 flex-col leading-snug",
@@ -107,9 +108,9 @@ function FieldLabel({
   )
 }
 
-function FieldTitle({ className, ...props }: React.ComponentProps<"div">) {
+function FieldTitle({ className, ...props }: React.ComponentProps<typeof ark.div>) {
   return (
-    <div
+    <ark.div
       data-slot="field-label"
       className={cn(
         "cn-field-title flex w-fit items-center leading-snug",
@@ -120,9 +121,9 @@ function FieldTitle({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
-function FieldDescription({ className, ...props }: React.ComponentProps<"p">) {
+function FieldDescription({ className, ...props }: React.ComponentProps<typeof ark.p>) {
   return (
-    <p
+    <ark.p
       data-slot="field-description"
       className={cn(
         "cn-field-description leading-normal font-normal group-has-data-horizontal/field:text-balance",
@@ -139,11 +140,11 @@ function FieldSeparator({
   children,
   className,
   ...props
-}: React.ComponentProps<"div"> & {
+}: React.ComponentProps<typeof ark.div> & {
   children?: React.ReactNode
 }) {
   return (
-    <div
+    <ark.div
       data-slot="field-separator"
       data-content={!!children}
       className={cn("cn-field-separator relative", className)}
@@ -151,14 +152,14 @@ function FieldSeparator({
     >
       <Separator className="absolute inset-0 top-1/2" />
       {children && (
-        <span
+        <ark.span
           className="cn-field-separator-content bg-background relative mx-auto block w-fit"
           data-slot="field-separator-content"
         >
           {children}
-        </span>
+        </ark.span>
       )}
-    </div>
+    </ark.div>
   )
 }
 
@@ -167,7 +168,7 @@ function FieldError({
   children,
   errors,
   ...props
-}: React.ComponentProps<"div"> & {
+}: React.ComponentProps<typeof ark.div> & {
   errors?: Array<{ message?: string } | undefined>
 }) {
   const content = useMemo(() => {
@@ -188,12 +189,12 @@ function FieldError({
     }
 
     return (
-      <ul className="ml-4 flex list-disc flex-col gap-1">
+      <ark.ul className="ml-4 flex list-disc flex-col gap-1">
         {uniqueErrors.map(
           (error, index) =>
-            error?.message && <li key={index}>{error.message}</li>
+            error?.message && <ark.li key={index}>{error.message}</ark.li>
         )}
-      </ul>
+      </ark.ul>
     )
   }, [children, errors])
 
@@ -202,14 +203,14 @@ function FieldError({
   }
 
   return (
-    <div
+    <ark.div
       role="alert"
       data-slot="field-error"
       className={cn("cn-field-error font-normal", className)}
       {...props}
     >
       {content}
-    </div>
+    </ark.div>
   )
 }
 

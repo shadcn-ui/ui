@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { ark } from "@ark-ui/react/factory"
 import { Menu as MenuPrimitive } from "@ark-ui/react/menu"
 import { Portal } from "@ark-ui/react/portal"
 
@@ -96,7 +97,7 @@ function DropdownMenuCheckboxItem({
       checked={checked}
       {...props}
     >
-      <span
+      <ark.span
         className="cn-dropdown-menu-item-indicator pointer-events-none"
         data-slot="dropdown-menu-checkbox-item-indicator"
       >
@@ -109,7 +110,7 @@ function DropdownMenuCheckboxItem({
             remixicon="RiCheckLine"
           />
         </MenuPrimitive.ItemIndicator>
-      </span>
+      </ark.span>
       {children}
     </MenuPrimitive.CheckboxItem>
   )
@@ -144,7 +145,7 @@ function DropdownMenuRadioItem({
       )}
       {...props}
     >
-      <span
+      <ark.span
         className="cn-dropdown-menu-item-indicator pointer-events-none"
         data-slot="dropdown-menu-radio-item-indicator"
       >
@@ -157,7 +158,7 @@ function DropdownMenuRadioItem({
             remixicon="RiCheckLine"
           />
         </MenuPrimitive.ItemIndicator>
-      </span>
+      </ark.span>
       {children}
     </MenuPrimitive.RadioItem>
   )
@@ -196,9 +197,9 @@ function DropdownMenuSeparator({
 function DropdownMenuShortcut({
   className,
   ...props
-}: React.ComponentProps<"span">) {
+}: React.ComponentProps<typeof ark.span>) {
   return (
-    <span
+    <ark.span
       data-slot="dropdown-menu-shortcut"
       className={cn("cn-dropdown-menu-shortcut", className)}
       {...props}

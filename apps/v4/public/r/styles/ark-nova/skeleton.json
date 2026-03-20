@@ -4,7 +4,7 @@
   "files": [
     {
       "path": "registry/ark-nova/ui/skeleton.tsx",
-      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/registry/ark-nova/lib/utils\"\n\nfunction Skeleton({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"skeleton\"\n      className={cn(\"animate-pulse rounded-md bg-accent\", className)}\n      {...props}\n    />\n  )\n}\n\nexport { Skeleton }\n",
+      "content": "import * as React from \"react\"\nimport { ark } from \"@ark-ui/react/factory\"\n\nimport { cn } from \"@/registry/ark-nova/lib/utils\"\n\nfunction Skeleton({\n  className,\n  ...props\n}: React.ComponentProps<typeof ark.div>) {\n  return (\n    <ark.div\n      data-slot=\"skeleton\"\n      className={cn(\"animate-pulse rounded-md bg-accent\", className)}\n      {...props}\n    />\n  )\n}\n\nexport { Skeleton }\n",
       "type": "registry:ui"
     }
   ],

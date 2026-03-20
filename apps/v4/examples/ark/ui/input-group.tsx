@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { ark } from "@ark-ui/react/factory"
 import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/examples/ark/lib/utils"
@@ -8,9 +9,12 @@ import { Button } from "@/examples/ark/ui/button"
 import { Input } from "@/examples/ark/ui/input"
 import { Textarea } from "@/examples/ark/ui/textarea"
 
-function InputGroup({ className, ...props }: React.ComponentProps<"div">) {
+function InputGroup({
+  className,
+  ...props
+}: React.ComponentProps<typeof ark.div>) {
   return (
-    <div
+    <ark.div
       data-slot="input-group"
       role="group"
       className={cn(
@@ -47,9 +51,10 @@ function InputGroupAddon({
   className,
   align = "inline-start",
   ...props
-}: React.ComponentProps<"div"> & VariantProps<typeof inputGroupAddonVariants>) {
+}: React.ComponentProps<typeof ark.div> &
+  VariantProps<typeof inputGroupAddonVariants>) {
   return (
-    <div
+    <ark.div
       role="group"
       data-slot="input-group-addon"
       data-align={align}
@@ -102,9 +107,12 @@ function InputGroupButton({
   )
 }
 
-function InputGroupText({ className, ...props }: React.ComponentProps<"span">) {
+function InputGroupText({
+  className,
+  ...props
+}: React.ComponentProps<typeof ark.span>) {
   return (
-    <span
+    <ark.span
       className={cn(
         "flex items-center gap-2 text-sm text-muted-foreground [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4",
         className
@@ -117,7 +125,7 @@ function InputGroupText({ className, ...props }: React.ComponentProps<"span">) {
 function InputGroupInput({
   className,
   ...props
-}: React.ComponentProps<"input">) {
+}: React.ComponentProps<typeof ark.input>) {
   return (
     <Input
       data-slot="input-group-control"
@@ -133,7 +141,7 @@ function InputGroupInput({
 function InputGroupTextarea({
   className,
   ...props
-}: React.ComponentProps<"textarea">) {
+}: React.ComponentProps<typeof ark.textarea>) {
   return (
     <Textarea
       data-slot="input-group-control"

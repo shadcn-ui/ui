@@ -9,7 +9,6 @@ import { cn } from "@/examples/ark/lib/utils"
 import { Button } from "@/examples/ark/ui-rtl/button"
 import { XIcon } from "lucide-react"
 
-// Sheet is implemented using Dialog with side positioning
 function Sheet({
   ...props
 }: React.ComponentProps<typeof DialogPrimitive.Root>) {

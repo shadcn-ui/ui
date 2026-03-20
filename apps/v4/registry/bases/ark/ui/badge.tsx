@@ -28,11 +28,11 @@ function Badge({
   variant = "default",
   asChild = false,
   ...props
-}: React.ComponentProps<"span"> &
+}: React.ComponentProps<typeof ark.span> &
   VariantProps<typeof badgeVariants> & {
     asChild?: boolean
   }) {
-  const Comp = asChild ? ark.span : "span"
+  const Comp = asChild ? ark.span : ark.span
   return (
     <Comp
       data-slot="badge"
