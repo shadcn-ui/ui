@@ -12,8 +12,10 @@ This is a monorepo template for Astro with React, TypeScript, and shadcn/ui.
 To add components, run the following command from the root:
 
 ```bash
-npx shadcn@latest add button -c apps/web
+npx shadcn@latest add button -c packages/ui
 ```
+
+This will place the ui components in the `packages/ui/src/components` directory.
 
 ## Using components
 
