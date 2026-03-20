@@ -6,11 +6,7 @@
       "Bash(ls:*)",
       "Bash(cat:*)",
       "WebSearch",
-      "Bash(pkill -f 'next dev')",
-      "Bash(pkill -f turbo)",
-      "Bash(pkill -f tsup)",
-      "Bash(pkill -f tsx)",
-      "Bash(bun run:*)"
+      "WebFetch(domain:github.com)"
     ],
     "deny": []
   }
