@@ -34,6 +34,7 @@ export const addOptionsSchema = z.object({
   components: z.array(z.string()).optional(),
   yes: z.boolean(),
   overwrite: z.boolean(),
+  noOverwrite: z.boolean(),
   cwd: z.string(),
   all: z.boolean(),
   path: z.string().optional(),
@@ -49,6 +50,7 @@ export const add = new Command()
   .argument("[components...]", "names, url or local path to component")
   .option("-y, --yes", "skip confirmation prompt.", false)
   .option("-o, --overwrite", "overwrite existing files.", false)
+  .option("--no-overwrite", "skip existing files instead of prompting.", false)
   .option(
     "-c, --cwd <cwd>",
     "the working directory. defaults to the current directory.",
@@ -67,6 +69,10 @@ export const add = new Command()
         ...opts,
         cwd: path.resolve(opts.cwd),
       })
+
+      if (options.overwrite && options.noOverwrite) {
+        throw new Error("Cannot use both --overwrite and --no-overwrite.")
+      }
 
       await loadEnvFiles(options.cwd)
 
@@ -111,6 +117,7 @@ export const add = new Command()
         }
         if (
           !options.yes &&
+          !options.noOverwrite &&
           !isDryRun &&
           (itemType === "registry:style" || itemType === "registry:theme")
         ) {
@@ -285,6 +292,7 @@ export const add = new Command()
           config,
           {
             overwrite: options.overwrite,
+            noOverwrite: options.noOverwrite,
           }
         )
         dryRunSpinner.stop()
