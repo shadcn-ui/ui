@@ -7,6 +7,7 @@ import {
   type DayButton,
   type Locale,
 } from "react-day-picker"
+import "react-day-picker/style.css"
 
 import { cn } from "@/registry/bases/radix/lib/utils"
 import { Button, buttonVariants } from "@/registry/bases/radix/ui/button"

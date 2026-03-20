@@ -11,6 +11,7 @@ import {
   getDefaultClassNames,
   type DayButton,
 } from "react-day-picker"
+import "react-day-picker/style.css"
 
 import { cn } from "@/lib/utils"
 import { Button, buttonVariants } from "@/registry/new-york-v4/ui/button"
