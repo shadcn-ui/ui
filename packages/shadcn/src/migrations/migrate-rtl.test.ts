@@ -121,5 +121,57 @@ export function Component() {
       expect(result).toContain("size-4")
       expect(result).not.toContain("cn-rtl-flip")
     })
+
+    it("should be idempotent for translate-x classes", async () => {
+      const input = `
+import * as React from "react"
+
+export function Component() {
+  return <div className="-translate-x-1/2">content</div>
+}`
+
+      const firstPass = await transformDirection(input, true)
+      const secondPass = await transformDirection(firstPass, true)
+      expect(secondPass).toBe(firstPass)
+    })
+
+    it("should be idempotent for space-x classes", async () => {
+      const input = `
+import * as React from "react"
+
+export function Component() {
+  return <div className="space-x-4">content</div>
+}`
+
+      const firstPass = await transformDirection(input, true)
+      const secondPass = await transformDirection(firstPass, true)
+      expect(secondPass).toBe(firstPass)
+    })
+
+    it("should be idempotent for cursor swap classes", async () => {
+      const input = `
+import * as React from "react"
+
+export function Component() {
+  return <div className="cursor-e-resize">content</div>
+}`
+
+      const firstPass = await transformDirection(input, true)
+      const secondPass = await transformDirection(firstPass, true)
+      expect(secondPass).toBe(firstPass)
+    })
+
+    it("should be idempotent for direct replacement classes", async () => {
+      const input = `
+import * as React from "react"
+
+export function Component() {
+  return <div className="ml-2 mr-4 text-left pl-4">content</div>
+}`
+
+      const firstPass = await transformDirection(input, true)
+      const secondPass = await transformDirection(firstPass, true)
+      expect(secondPass).toBe(firstPass)
+    })
   })
 })
