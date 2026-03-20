@@ -139,22 +139,39 @@ function transformStringLiteralNode(node: {
 }
 
 export function applyRtlMapping(input: string) {
+  const existingClasses = new Set(input.split(" ").filter(Boolean))
+  const emittedClasses = new Set<string>()
+
+  const pushUnique = (classes: string[], className: string) => {
+    if (!className || emittedClasses.has(className)) {
+      return
+    }
+
+    emittedClasses.add(className)
+    classes.push(className)
+  }
+
   return input
     .split(" ")
     .flatMap((className) => {
+      const classes: string[] = []
+
       // Skip classes that already have rtl: or ltr: prefix.
       if (className.startsWith("rtl:") || className.startsWith("ltr:")) {
-        return [className]
+        pushUnique(classes, className)
+        return classes
       }
 
       // Replace the cn-rtl-flip marker with rtl:rotate-180.
       if (className === RTL_FLIP_MARKER) {
-        return ["rtl:rotate-180"]
+        pushUnique(classes, "rtl:rotate-180")
+        return classes
       }
       const [variant, value, modifier] = splitClassName(className)
 
       if (!value) {
-        return [className]
+        pushUnique(classes, className)
+        return classes
       }
 
       // Check for translate-x patterns first (add rtl: variant, don't replace).
@@ -164,7 +181,11 @@ export function applyRtlMapping(input: string) {
           const rtlClass = variant
             ? `rtl:${variant}:${rtlValue}${modifier ? `/${modifier}` : ""}`
             : `rtl:${rtlValue}${modifier ? `/${modifier}` : ""}`
-          return [className, rtlClass]
+          pushUnique(classes, className)
+          if (!existingClasses.has(rtlClass)) {
+            pushUnique(classes, rtlClass)
+          }
+          return classes
         }
       }
 
@@ -174,7 +195,11 @@ export function applyRtlMapping(input: string) {
           const rtlClass = variant
             ? `rtl:${variant}:${reverseClass}`
             : `rtl:${reverseClass}`
-          return [className, rtlClass]
+          pushUnique(classes, className)
+          if (!existingClasses.has(rtlClass)) {
+            pushUnique(classes, rtlClass)
+          }
+          return classes
         }
       }
 
@@ -184,7 +209,11 @@ export function applyRtlMapping(input: string) {
           const rtlClass = variant
             ? `rtl:${variant}:${swapped}`
             : `rtl:${swapped}`
-          return [className, rtlClass]
+          pushUnique(classes, className)
+          if (!existingClasses.has(rtlClass)) {
+            pushUnique(classes, rtlClass)
+          }
+          return classes
         }
       }
 
@@ -200,7 +229,8 @@ export function applyRtlMapping(input: string) {
           const result = modifier
             ? `${variant}:${mappedValue}/${modifier}`
             : `${variant}:${mappedValue}`
-          return [result]
+          pushUnique(classes, result)
+          return classes
         }
       }
 
@@ -241,7 +271,8 @@ export function applyRtlMapping(input: string) {
         result = modifier ? `${mappedValue}/${modifier}` : mappedValue
       }
 
-      return [result]
+      pushUnique(classes, result)
+      return classes
     })
     .join(" ")
 }
