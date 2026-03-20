@@ -446,3 +446,45 @@ export async function getProjectComponents(cwd: string) {
     .map((f) => path.basename(f, path.extname(f)))
     .filter((name) => registryNames.has(name))
 }
+
+async function addPathAliasToTsConfig(
+  filePath: string,
+  aliasEntry: Record<string, string[]>
+) {
+  if (!(await fs.pathExists(filePath))) {
+    return
+  }
+  const contents = await fs.readFile(filePath, "utf8")
+  const cleaned = contents.replace(/\/\*[\s\S]*?\*\//g, "")
+  const tsconfig = JSON.parse(cleaned)
+  tsconfig.compilerOptions = {
+    ...tsconfig.compilerOptions,
+    baseUrl: ".",
+    paths: {
+      ...tsconfig.compilerOptions?.paths,
+      ...aliasEntry,
+    },
+  }
+  await fs.writeFile(
+    filePath,
+    JSON.stringify(tsconfig, null, 2) + "\n",
+    "utf8"
+  )
+}
+
+export async function configureTsConfigAlias(
+  cwd: string,
+  isSrcDir: boolean
+): Promise<string | null> {
+  try {
+    const aliasEntry = { "@/*": isSrcDir ? ["./src/*"] : ["./*"] }
+    await addPathAliasToTsConfig(path.resolve(cwd, "tsconfig.json"), aliasEntry)
+    await addPathAliasToTsConfig(
+      path.resolve(cwd, "tsconfig.app.json"),
+      aliasEntry
+    )
+    return await getTsConfigAliasPrefix(cwd)
+  } catch {
+    return null
+  }
+}
