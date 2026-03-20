@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { ark } from "@ark-ui/react/factory"
 import { PinInput } from "@ark-ui/react/pin-input"
 
 import { cn } from "@/registry/bases/ark/lib/utils"
@@ -54,9 +55,9 @@ function InputOTP({
   )
 }
 
-function InputOTPGroup({ className, ...props }: React.ComponentProps<"div">) {
+function InputOTPGroup({ className, ...props }: React.ComponentProps<typeof ark.div>) {
   return (
-    <div
+    <ark.div
       data-slot="input-otp-group"
       className={cn("cn-input-otp-group flex items-center", className)}
       {...props}
@@ -85,9 +86,9 @@ function InputOTPSlot({
   )
 }
 
-function InputOTPSeparator({ ...props }: React.ComponentProps<"div">) {
+function InputOTPSeparator({ ...props }: React.ComponentProps<typeof ark.div>) {
   return (
-    <div
+    <ark.div
       data-slot="input-otp-separator"
       className="cn-input-otp-separator flex items-center"
       role="separator"
@@ -100,7 +101,7 @@ function InputOTPSeparator({ ...props }: React.ComponentProps<"div">) {
         phosphor="MinusIcon"
         remixicon="RiSubtractLine"
       />
-    </div>
+    </ark.div>
   )
 }
 

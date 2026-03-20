@@ -6,8 +6,6 @@ import { Accordion as AccordionPrimitive } from "@ark-ui/react/accordion"
 import { cn } from "@/registry/bases/ark/lib/utils"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
-// Bridge radix API (type="single"|"multiple", collapsible, defaultValue: string)
-// to ark API (multiple: boolean, collapsible: boolean, defaultValue: string[])
 type AccordionProps = Omit<
   React.ComponentProps<typeof AccordionPrimitive.Root>,
   "defaultValue" | "value" | "onValueChange"

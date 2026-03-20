@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { ark } from "@ark-ui/react/factory"
 import { Popover as PopoverPrimitive } from "@ark-ui/react/popover"
 import { Portal } from "@ark-ui/react/portal"
 
@@ -59,9 +60,9 @@ function PopoverArrow({
   )
 }
 
-function PopoverHeader({ className, ...props }: React.ComponentProps<"div">) {
+function PopoverHeader({ className, ...props }: React.ComponentProps<typeof ark.div>) {
   return (
-    <div
+    <ark.div
       data-slot="popover-header"
       className={cn("cn-popover-header", className)}
       {...props}
@@ -69,9 +70,9 @@ function PopoverHeader({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
-function PopoverTitle({ className, ...props }: React.ComponentProps<"h2">) {
+function PopoverTitle({ className, ...props }: React.ComponentProps<typeof ark.div>) {
   return (
-    <div
+    <ark.div
       data-slot="popover-title"
       className={cn("cn-popover-title", className)}
       {...props}
@@ -82,9 +83,9 @@ function PopoverTitle({ className, ...props }: React.ComponentProps<"h2">) {
 function PopoverDescription({
   className,
   ...props
-}: React.ComponentProps<"p">) {
+}: React.ComponentProps<typeof ark.p>) {
   return (
-    <p
+    <ark.p
       data-slot="popover-description"
       className={cn("cn-popover-description", className)}
       {...props}

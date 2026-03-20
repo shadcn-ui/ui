@@ -6,8 +6,6 @@ import { Accordion as AccordionPrimitive } from "@ark-ui/react/accordion"
 import { cn } from "@/examples/ark/lib/utils"
 import { ChevronDownIcon, ChevronUpIcon } from "lucide-react"
 
-// Bridge radix API (type="single"|"multiple", collapsible, defaultValue: string)
-// to ark API (multiple: boolean, collapsible: boolean, defaultValue: string[])
 type AccordionProps = Omit<
   React.ComponentProps<typeof AccordionPrimitive.Root>,
   "defaultValue" | "value" | "onValueChange"

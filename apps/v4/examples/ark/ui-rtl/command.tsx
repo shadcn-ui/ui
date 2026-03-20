@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { ark } from "@ark-ui/react/factory"
 import { Command as CommandPrimitive } from "cmdk"
 
 import { cn } from "@/examples/ark/lib/utils"
@@ -67,7 +68,7 @@ function CommandInput({
   ...props
 }: React.ComponentProps<typeof CommandPrimitive.Input>) {
   return (
-    <div data-slot="command-input-wrapper" className="p-1 pb-0">
+    <ark.div data-slot="command-input-wrapper" className="p-1 pb-0">
       <InputGroup className="h-8! rounded-lg! border-input/30 bg-input/30 shadow-none! *:data-[slot=input-group-addon]:ps-2!">
         <CommandPrimitive.Input
           data-slot="command-input"
@@ -81,7 +82,7 @@ function CommandInput({
           <SearchIcon className="size-4 shrink-0 opacity-50" />
         </InputGroupAddon>
       </InputGroup>
-    </div>
+    </ark.div>
   )
 }
 
@@ -166,9 +167,9 @@ function CommandItem({
 function CommandShortcut({
   className,
   ...props
-}: React.ComponentProps<"span">) {
+}: React.ComponentProps<typeof ark.span>) {
   return (
-    <span
+    <ark.span
       data-slot="command-shortcut"
       className={cn(
         "ms-auto text-xs tracking-widest text-muted-foreground group-data-selected/command-item:text-foreground",

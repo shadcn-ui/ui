@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { ark } from "@ark-ui/react/factory"
 import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/registry/bases/ark/lib/utils"
@@ -8,9 +9,9 @@ import { Button } from "@/registry/bases/ark/ui/button"
 import { Input } from "@/registry/bases/ark/ui/input"
 import { Textarea } from "@/registry/bases/ark/ui/textarea"
 
-function InputGroup({ className, ...props }: React.ComponentProps<"div">) {
+function InputGroup({ className, ...props }: React.ComponentProps<typeof ark.div>) {
   return (
-    <div
+    <ark.div
       data-slot="input-group"
       role="group"
       className={cn(
@@ -45,9 +46,9 @@ function InputGroupAddon({
   className,
   align = "inline-start",
   ...props
-}: React.ComponentProps<"div"> & VariantProps<typeof inputGroupAddonVariants>) {
+}: React.ComponentProps<typeof ark.div> & VariantProps<typeof inputGroupAddonVariants>) {
   return (
-    <div
+    <ark.div
       role="group"
       data-slot="input-group-addon"
       data-align={align}
@@ -99,9 +100,9 @@ function InputGroupButton({
   )
 }
 
-function InputGroupText({ className, ...props }: React.ComponentProps<"span">) {
+function InputGroupText({ className, ...props }: React.ComponentProps<typeof ark.span>) {
   return (
-    <span
+    <ark.span
       className={cn(
         "cn-input-group-text flex items-center [&_svg]:pointer-events-none",
         className
@@ -114,7 +115,7 @@ function InputGroupText({ className, ...props }: React.ComponentProps<"span">) {
 function InputGroupInput({
   className,
   ...props
-}: React.ComponentProps<"input">) {
+}: React.ComponentProps<typeof ark.input>) {
   return (
     <Input
       data-slot="input-group-control"
@@ -127,7 +128,7 @@ function InputGroupInput({
 function InputGroupTextarea({
   className,
   ...props
-}: React.ComponentProps<"textarea">) {
+}: React.ComponentProps<typeof ark.textarea>) {
   return (
     <Textarea
       data-slot="input-group-control"

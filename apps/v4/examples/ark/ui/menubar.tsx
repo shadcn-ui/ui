@@ -1,20 +1,20 @@
 "use client"
 
 import * as React from "react"
+import { ark } from "@ark-ui/react/factory"
 import { Menu as MenuPrimitive } from "@ark-ui/react/menu"
 import { Portal } from "@ark-ui/react/portal"
 
 import { cn } from "@/examples/ark/lib/utils"
 import { CheckIcon, ChevronRightIcon } from "lucide-react"
 
-// Menubar is implemented using Menu primitives with horizontal layout
 function Menubar({
   className,
   children,
   ...props
-}: React.ComponentProps<"div">) {
+}: React.ComponentProps<typeof ark.div>) {
   return (
-    <div
+    <ark.div
       data-slot="menubar"
       className={cn(
         "flex h-8 items-center gap-0.5 rounded-lg border p-[3px]",
@@ -23,7 +23,7 @@ function Menubar({
       {...props}
     >
       {children}
-    </div>
+    </ark.div>
   )
 }
 
@@ -130,12 +130,12 @@ function MenubarCheckboxItem({
       checked={checked}
       {...props}
     >
-      <span className="pointer-events-none absolute left-1.5 flex size-4 items-center justify-center [&_svg:not([class*='size-'])]:size-4">
+      <ark.span className="pointer-events-none absolute left-1.5 flex size-4 items-center justify-center [&_svg:not([class*='size-'])]:size-4">
         <MenuPrimitive.ItemIndicator>
           <CheckIcon
           />
         </MenuPrimitive.ItemIndicator>
-      </span>
+      </ark.span>
       {children}
     </MenuPrimitive.CheckboxItem>
   )
@@ -159,12 +159,12 @@ function MenubarRadioItem({
       )}
       {...props}
     >
-      <span className="pointer-events-none absolute left-1.5 flex size-4 items-center justify-center [&_svg:not([class*='size-'])]:size-4">
+      <ark.span className="pointer-events-none absolute left-1.5 flex size-4 items-center justify-center [&_svg:not([class*='size-'])]:size-4">
         <MenuPrimitive.ItemIndicator>
           <CheckIcon
           />
         </MenuPrimitive.ItemIndicator>
-      </span>
+      </ark.span>
       {children}
     </MenuPrimitive.RadioItem>
   )
@@ -206,9 +206,9 @@ function MenubarSeparator({
 function MenubarShortcut({
   className,
   ...props
-}: React.ComponentProps<"span">) {
+}: React.ComponentProps<typeof ark.span>) {
   return (
-    <span
+    <ark.span
       data-slot="menubar-shortcut"
       className={cn(
         "ml-auto text-xs tracking-widest text-muted-foreground group-focus/menubar-item:text-accent-foreground",

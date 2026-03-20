@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import { Avatar as AvatarPrimitive } from "@ark-ui/react/avatar"
+import { ark } from "@ark-ui/react/factory"
 
 import { cn } from "@/registry/bases/ark/lib/utils"
 
@@ -57,9 +58,9 @@ function AvatarFallback({
   )
 }
 
-function AvatarBadge({ className, ...props }: React.ComponentProps<"span">) {
+function AvatarBadge({ className, ...props }: React.ComponentProps<typeof ark.span>) {
   return (
-    <span
+    <ark.span
       data-slot="avatar-badge"
       className={cn(
         "cn-avatar-badge absolute right-0 bottom-0 z-10 inline-flex items-center justify-center rounded-full bg-blend-color ring-2 select-none",
@@ -73,9 +74,9 @@ function AvatarBadge({ className, ...props }: React.ComponentProps<"span">) {
   )
 }
 
-function AvatarGroup({ className, ...props }: React.ComponentProps<"div">) {
+function AvatarGroup({ className, ...props }: React.ComponentProps<typeof ark.div>) {
   return (
-    <div
+    <ark.div
       data-slot="avatar-group"
       className={cn(
         "cn-avatar-group group/avatar-group flex -space-x-2 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:ring-background",
@@ -89,9 +90,9 @@ function AvatarGroup({ className, ...props }: React.ComponentProps<"div">) {
 function AvatarGroupCount({
   className,
   ...props
-}: React.ComponentProps<"div">) {
+}: React.ComponentProps<typeof ark.div>) {
   return (
-    <div
+    <ark.div
       data-slot="avatar-group-count"
       className={cn(
         "cn-avatar-group-count relative flex shrink-0 items-center justify-center ring-2 ring-background",

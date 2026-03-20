@@ -63,7 +63,7 @@ const icons = {
 } as const
 
 const toaster = createToaster({
-  placement: "bottom-right",
+  placement: "bottom-end",
   overlap: true,
   gap: 16,
 })

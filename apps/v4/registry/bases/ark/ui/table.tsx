@@ -5,19 +5,19 @@ import { ark } from "@ark-ui/react/factory"
 
 import { cn } from "@/registry/bases/ark/lib/utils"
 
-function Table({ className, ...props }: React.ComponentProps<"table">) {
+function Table({ className, ...props }: React.ComponentProps<typeof ark.table>) {
   return (
-    <div data-slot="table-container" className="cn-table-container">
+    <ark.div data-slot="table-container" className="cn-table-container">
       <ark.table
         data-slot="table"
         className={cn("cn-table", className)}
         {...props}
       />
-    </div>
+    </ark.div>
   )
 }
 
-function TableHeader({ className, ...props }: React.ComponentProps<"thead">) {
+function TableHeader({ className, ...props }: React.ComponentProps<typeof ark.thead>) {
   return (
     <ark.thead
       data-slot="table-header"
@@ -27,7 +27,7 @@ function TableHeader({ className, ...props }: React.ComponentProps<"thead">) {
   )
 }
 
-function TableBody({ className, ...props }: React.ComponentProps<"tbody">) {
+function TableBody({ className, ...props }: React.ComponentProps<typeof ark.tbody>) {
   return (
     <ark.tbody
       data-slot="table-body"
@@ -37,7 +37,7 @@ function TableBody({ className, ...props }: React.ComponentProps<"tbody">) {
   )
 }
 
-function TableFooter({ className, ...props }: React.ComponentProps<"tfoot">) {
+function TableFooter({ className, ...props }: React.ComponentProps<typeof ark.tfoot>) {
   return (
     <ark.tfoot
       data-slot="table-footer"
@@ -47,7 +47,7 @@ function TableFooter({ className, ...props }: React.ComponentProps<"tfoot">) {
   )
 }
 
-function TableRow({ className, ...props }: React.ComponentProps<"tr">) {
+function TableRow({ className, ...props }: React.ComponentProps<typeof ark.tr>) {
   return (
     <ark.tr
       data-slot="table-row"
@@ -57,7 +57,7 @@ function TableRow({ className, ...props }: React.ComponentProps<"tr">) {
   )
 }
 
-function TableHead({ className, ...props }: React.ComponentProps<"th">) {
+function TableHead({ className, ...props }: React.ComponentProps<typeof ark.th>) {
   return (
     <ark.th
       data-slot="table-head"
@@ -67,7 +67,7 @@ function TableHead({ className, ...props }: React.ComponentProps<"th">) {
   )
 }
 
-function TableCell({ className, ...props }: React.ComponentProps<"td">) {
+function TableCell({ className, ...props }: React.ComponentProps<typeof ark.td>) {
   return (
     <ark.td
       data-slot="table-cell"
@@ -80,7 +80,7 @@ function TableCell({ className, ...props }: React.ComponentProps<"td">) {
 function TableCaption({
   className,
   ...props
-}: React.ComponentProps<"caption">) {
+}: React.ComponentProps<typeof ark.caption>) {
   return (
     <ark.caption
       data-slot="table-caption"

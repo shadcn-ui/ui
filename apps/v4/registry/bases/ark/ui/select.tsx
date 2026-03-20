@@ -1,16 +1,16 @@
 "use client"
 
 import * as React from "react"
-import { Select as SelectPrimitive, createListCollection } from "@ark-ui/react/select"
-import type { ListCollection, CollectionItem } from "@ark-ui/react/select"
+import { ark } from "@ark-ui/react/factory"
+import {
+  Select as SelectPrimitive,
+  createListCollection,
+} from "@ark-ui/react/select"
+import type { ListCollection } from "@ark-ui/react/select"
 import { Portal } from "@ark-ui/react/portal"
 
 import { cn } from "@/registry/bases/ark/lib/utils"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
-
-// ---------------------------------------------------------------------------
-// Helpers – build a ListCollection from declarative <SelectItem> children
-// ---------------------------------------------------------------------------
 
 interface SelectItemData {
   value: string
@@ -23,30 +23,25 @@ function collectItems(children: React.ReactNode): SelectItemData[] {
   React.Children.forEach(children, (child) => {
     if (!React.isValidElement(child)) return
 
-    // SelectItem – collect its value + text
-    if (
-      (child.type as { displayName?: string })?.displayName === "SelectItem" ||
-      (child.props as Record<string, unknown>)?.["data-slot"] === "select-item"
-    ) {
-      const props = child.props as {
-        value?: string
-        disabled?: boolean
-        children?: React.ReactNode
-      }
-      if (props.value != null) {
+    const props = child.props as Record<string, unknown>
+
+    // SelectItem - collect its value + text
+    if (props?.["data-select-item-scan"] === true || props?.value != null) {
+      // Only treat as item if it has a string value (like radix SelectItem)
+      const typeName = (child.type as { displayName?: string })?.displayName
+      if (typeName === "SelectItem" || props?.["data-select-item-scan"]) {
         items.push({
           value: String(props.value),
-          label: extractText(props.children),
-          disabled: props.disabled,
+          label: extractText(props.children as React.ReactNode),
+          disabled: !!props.disabled,
         })
+        return
       }
-      return
     }
 
     // Recurse into groups, content, etc.
-    const props = child.props as { children?: React.ReactNode }
     if (props?.children) {
-      items.push(...collectItems(props.children))
+      items.push(...collectItems(props.children as React.ReactNode))
     }
   })
   return items
@@ -62,25 +57,18 @@ function extractText(node: React.ReactNode): string {
   return ""
 }
 
-// ---------------------------------------------------------------------------
-// Context – share the collection so items can look themselves up
-// ---------------------------------------------------------------------------
-
 const SelectCollectionContext = React.createContext<
   ListCollection<SelectItemData> | null
 >(null)
 
-// ---------------------------------------------------------------------------
-// Select (Root)
-// ---------------------------------------------------------------------------
-
 type SelectRootProps = Omit<
-  SelectPrimitive.RootProps<SelectItemData>,
-  "collection" | "defaultValue" | "value"
+  React.ComponentProps<typeof SelectPrimitive.Root>,
+  "collection" | "defaultValue" | "value" | "onValueChange"
 > & {
   collection?: ListCollection<SelectItemData>
-  defaultValue?: string | string[]
-  value?: string | string[]
+  defaultValue?: string
+  value?: string
+  onValueChange?: (value: string) => void
 }
 
 function Select({
@@ -88,6 +76,7 @@ function Select({
   collection: collectionProp,
   defaultValue,
   value,
+  onValueChange,
   ...props
 }: SelectRootProps) {
   const items = React.useMemo(
@@ -107,50 +96,43 @@ function Select({
     [collectionProp, items]
   )
 
-  // Normalize string values to arrays for ark-ui compatibility
-  const normalizedDefaultValue = defaultValue
-    ? Array.isArray(defaultValue)
-      ? defaultValue
-      : [defaultValue]
-    : undefined
-  const normalizedValue = value
-    ? Array.isArray(value)
-      ? value
-      : [value]
-    : undefined
+  const handleValueChange = React.useCallback(
+    (details: { value: string[]; items: SelectItemData[] }) => {
+      onValueChange?.(details.value[0] ?? "")
+    },
+    [onValueChange]
+  )
 
   return (
     <SelectCollectionContext.Provider value={collection}>
       <SelectPrimitive.Root<SelectItemData>
         data-slot="select"
         collection={collection}
-        defaultValue={normalizedDefaultValue}
-        value={normalizedValue}
+        defaultValue={defaultValue ? [defaultValue] : undefined}
+        {...(value !== undefined ? { value: value ? [value] : [] } : {})}
+        onValueChange={onValueChange ? handleValueChange : undefined}
         {...props}
       >
         {children}
+        <SelectPrimitive.HiddenSelect />
       </SelectPrimitive.Root>
     </SelectCollectionContext.Provider>
   )
 }
 
-// ---------------------------------------------------------------------------
-// SelectTrigger – wraps Control + Trigger
-// ---------------------------------------------------------------------------
-
-const SelectTrigger = React.forwardRef<
-  HTMLButtonElement,
-  React.ComponentProps<typeof SelectPrimitive.Trigger>
->(({ className, children, ...props }, ref) => (
-  <SelectPrimitive.Control>
-    <SelectPrimitive.Trigger
-      ref={ref}
-      data-slot="select-trigger"
-      className={cn("cn-select-trigger", className)}
-      {...props}
-    >
-      {children}
-      <SelectPrimitive.Indicator>
+function SelectTrigger({
+  className,
+  children,
+  ...props
+}: React.ComponentProps<typeof SelectPrimitive.Trigger>) {
+  return (
+    <SelectPrimitive.Control className="cn-select-trigger-control">
+      <SelectPrimitive.Trigger
+        data-slot="select-trigger"
+        className={cn("cn-select-trigger", className)}
+        {...props}
+      >
+        {children}
         <IconPlaceholder
           lucide="ChevronDownIcon"
           tabler="IconChevronDown"
@@ -159,90 +141,82 @@ const SelectTrigger = React.forwardRef<
           remixicon="RiArrowDownSLine"
           className="cn-select-trigger-icon"
         />
-      </SelectPrimitive.Indicator>
-    </SelectPrimitive.Trigger>
-  </SelectPrimitive.Control>
-))
-SelectTrigger.displayName = "SelectTrigger"
+      </SelectPrimitive.Trigger>
+    </SelectPrimitive.Control>
+  )
+}
 
-// ---------------------------------------------------------------------------
-// SelectValue
-// ---------------------------------------------------------------------------
+function SelectValue({
+  className,
+  ...props
+}: React.ComponentProps<typeof SelectPrimitive.ValueText>) {
+  return (
+    <SelectPrimitive.ValueText
+      data-slot="select-value"
+      className={cn("cn-select-value", className)}
+      {...props}
+    />
+  )
+}
 
-const SelectValue = React.forwardRef<
-  HTMLSpanElement,
-  React.ComponentProps<typeof SelectPrimitive.ValueText>
->(({ className, ...props }, ref) => (
-  <SelectPrimitive.ValueText
-    ref={ref}
-    data-slot="select-value"
-    className={cn("cn-select-value", className)}
-    {...props}
-  />
-))
-SelectValue.displayName = "SelectValue"
+function SelectContent({
+  className,
+  children,
+  ...props
+}: React.ComponentProps<typeof SelectPrimitive.Content>) {
+  return (
+    <Portal>
+      <SelectPrimitive.Positioner>
+        <SelectPrimitive.Content
+          data-slot="select-content"
+          className={cn("cn-select-content", className)}
+          {...props}
+        >
+          {children}
+        </SelectPrimitive.Content>
+      </SelectPrimitive.Positioner>
+    </Portal>
+  )
+}
 
-// ---------------------------------------------------------------------------
-// SelectContent – Portal + Positioner + Content
-// ---------------------------------------------------------------------------
+function SelectLabel({
+  className,
+  ...props
+}: React.ComponentProps<typeof SelectPrimitive.ItemGroupLabel>) {
+  return (
+    <SelectPrimitive.ItemGroupLabel
+      data-slot="select-label"
+      className={cn("cn-select-label", className)}
+      {...props}
+    />
+  )
+}
 
-const SelectContent = React.forwardRef<
-  HTMLDivElement,
-  React.ComponentProps<typeof SelectPrimitive.Content>
->(({ className, ...props }, ref) => (
-  <Portal>
-    <SelectPrimitive.Positioner>
-      <SelectPrimitive.Content
-        ref={ref}
-        data-slot="select-content"
-        className={cn("cn-select-content", className)}
-        {...props}
-      />
-    </SelectPrimitive.Positioner>
-  </Portal>
-))
-SelectContent.displayName = "SelectContent"
-
-// ---------------------------------------------------------------------------
-// SelectLabel – maps to ark ItemGroupLabel
-// ---------------------------------------------------------------------------
-
-const SelectLabel = React.forwardRef<
-  HTMLDivElement,
-  React.ComponentProps<typeof SelectPrimitive.ItemGroupLabel>
->(({ className, ...props }, ref) => (
-  <SelectPrimitive.ItemGroupLabel
-    ref={ref}
-    data-slot="select-label"
-    className={cn("cn-select-label", className)}
-    {...props}
-  />
-))
-SelectLabel.displayName = "SelectLabel"
-
-// ---------------------------------------------------------------------------
-// SelectItem – bridges radix's value-based API to ark's item-based API
-// ---------------------------------------------------------------------------
-
-const SelectItem = React.forwardRef<
-  HTMLDivElement,
-  Omit<React.ComponentProps<typeof SelectPrimitive.Item>, "item"> & {
-    value: string
-    disabled?: boolean
-  }
->(({ className, children, value, disabled, ...props }, ref) => {
+function SelectItem({
+  className,
+  children,
+  value,
+  disabled,
+  ...props
+}: Omit<React.ComponentProps<typeof SelectPrimitive.Item>, "item"> & {
+  value: string
+  disabled?: boolean
+}) {
   const collection = React.useContext(SelectCollectionContext)
   const item = React.useMemo(() => {
     if (!collection) return { value, label: extractText(children) }
     return (
-      collection.find(value) ?? { value, label: extractText(children) }
+      collection.find(value) ?? {
+        value,
+        label: extractText(children),
+      }
     )
   }, [collection, value, children])
 
   return (
     <SelectPrimitive.Item
-      ref={ref}
       data-slot="select-item"
+      data-select-item-scan
       className={cn("cn-select-item", className)}
       item={item}
       {...props}
@@ -259,93 +233,76 @@ const SelectItem = React.forwardRef<
       </SelectPrimitive.ItemIndicator>
     </SelectPrimitive.Item>
   )
-})
+}
 SelectItem.displayName = "SelectItem"
 
-// ---------------------------------------------------------------------------
-// SelectGroup – maps to ark ItemGroup
-// ---------------------------------------------------------------------------
-
-const SelectGroup = React.forwardRef<
-  HTMLDivElement,
-  React.ComponentProps<typeof SelectPrimitive.ItemGroup>
->(({ className, ...props }, ref) => (
-  <SelectPrimitive.ItemGroup
-    ref={ref}
-    data-slot="select-group"
-    className={cn("cn-select-group", className)}
-    {...props}
-  />
-))
-SelectGroup.displayName = "SelectGroup"
-
-// ---------------------------------------------------------------------------
-// SelectSeparator – ark has no separator primitive, use a plain div
-// ---------------------------------------------------------------------------
-
-const SelectSeparator = React.forwardRef<
-  HTMLDivElement,
-  React.ComponentProps<"div">
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    data-slot="select-separator"
-    className={cn("cn-select-separator", className)}
-    {...props}
-  />
-))
-SelectSeparator.displayName = "SelectSeparator"
-
-// ---------------------------------------------------------------------------
-// SelectScrollUpButton / SelectScrollDownButton – no-op placeholders
-// (ark handles scroll internally; these exist for radix export parity)
-// ---------------------------------------------------------------------------
-
-const SelectScrollUpButton = React.forwardRef<
-  HTMLDivElement,
-  React.ComponentProps<"div">
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    data-slot="select-scroll-up-button"
-    className={cn("cn-select-scroll-up-button", className)}
-    {...props}
-  >
-    <IconPlaceholder
-      lucide="ChevronUpIcon"
-      tabler="IconChevronUp"
-      hugeicons="ArrowUp01Icon"
-      phosphor="CaretUpIcon"
-      remixicon="RiArrowUpSLine"
+function SelectGroup({
+  className,
+  ...props
+}: React.ComponentProps<typeof SelectPrimitive.ItemGroup>) {
+  return (
+    <SelectPrimitive.ItemGroup
+      data-slot="select-group"
+      className={cn("cn-select-group", className)}
+      {...props}
     />
-  </div>
-))
-SelectScrollUpButton.displayName = "SelectScrollUpButton"
+  )
+}
 
-const SelectScrollDownButton = React.forwardRef<
-  HTMLDivElement,
-  React.ComponentProps<"div">
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    data-slot="select-scroll-down-button"
-    className={cn("cn-select-scroll-down-button", className)}
-    {...props}
-  >
-    <IconPlaceholder
-      lucide="ChevronDownIcon"
-      tabler="IconChevronDown"
-      hugeicons="ArrowDown01Icon"
-      phosphor="CaretDownIcon"
-      remixicon="RiArrowDownSLine"
+function SelectSeparator({
+  className,
+  ...props
+}: React.ComponentProps<typeof ark.div>) {
+  return (
+    <ark.div
+      data-slot="select-separator"
+      className={cn("cn-select-separator", className)}
+      {...props}
     />
-  </div>
-))
-SelectScrollDownButton.displayName = "SelectScrollDownButton"
+  )
+}
 
-// ---------------------------------------------------------------------------
-// Exports – match radix export names exactly
-// ---------------------------------------------------------------------------
+function SelectScrollUpButton({
+  className,
+  ...props
+}: React.ComponentProps<typeof ark.div>) {
+  return (
+    <ark.div
+      data-slot="select-scroll-up-button"
+      className={cn("cn-select-scroll-up-button", className)}
+      {...props}
+    >
+      <IconPlaceholder
+        lucide="ChevronUpIcon"
+        tabler="IconChevronUp"
+        hugeicons="ArrowUp01Icon"
+        phosphor="CaretUpIcon"
+        remixicon="RiArrowUpSLine"
+      />
+    </ark.div>
+  )
+}
+
+function SelectScrollDownButton({
+  className,
+  ...props
+}: React.ComponentProps<typeof ark.div>) {
+  return (
+    <ark.div
+      data-slot="select-scroll-down-button"
+      className={cn("cn-select-scroll-down-button", className)}
+      {...props}
+    >
+      <IconPlaceholder
+        lucide="ChevronDownIcon"
+        tabler="IconChevronDown"
+        hugeicons="ArrowDown01Icon"
+        phosphor="CaretDownIcon"
+        remixicon="RiArrowDownSLine"
+      />
+    </ark.div>
+  )
+}
 
 export {
   Select,

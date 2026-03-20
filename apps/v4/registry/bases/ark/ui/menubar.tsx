@@ -1,26 +1,26 @@
 "use client"
 
 import * as React from "react"
+import { ark } from "@ark-ui/react/factory"
 import { Menu as MenuPrimitive } from "@ark-ui/react/menu"
 import { Portal } from "@ark-ui/react/portal"
 
 import { cn } from "@/registry/bases/ark/lib/utils"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
-// Menubar is implemented using Menu primitives with horizontal layout
 function Menubar({
   className,
   children,
   ...props
-}: React.ComponentProps<"div">) {
+}: React.ComponentProps<typeof ark.div>) {
   return (
-    <div
+    <ark.div
       data-slot="menubar"
       className={cn("cn-menubar flex items-center", className)}
       {...props}
     >
       {children}
-    </div>
+    </ark.div>
   )
 }
 
@@ -130,7 +130,7 @@ function MenubarCheckboxItem({
       checked={checked}
       {...props}
     >
-      <span className="cn-menubar-checkbox-item-indicator pointer-events-none absolute flex items-center justify-center">
+      <ark.span className="cn-menubar-checkbox-item-indicator pointer-events-none absolute flex items-center justify-center">
         <MenuPrimitive.ItemIndicator>
           <IconPlaceholder
             lucide="CheckIcon"
@@ -140,7 +140,7 @@ function MenubarCheckboxItem({
             remixicon="RiCheckLine"
           />
         </MenuPrimitive.ItemIndicator>
-      </span>
+      </ark.span>
       {children}
     </MenuPrimitive.CheckboxItem>
   )
@@ -164,7 +164,7 @@ function MenubarRadioItem({
       )}
       {...props}
     >
-      <span className="cn-menubar-radio-item-indicator pointer-events-none absolute flex items-center justify-center">
+      <ark.span className="cn-menubar-radio-item-indicator pointer-events-none absolute flex items-center justify-center">
         <MenuPrimitive.ItemIndicator>
           <IconPlaceholder
             lucide="CheckIcon"
@@ -174,7 +174,7 @@ function MenubarRadioItem({
             remixicon="RiCheckLine"
           />
         </MenuPrimitive.ItemIndicator>
-      </span>
+      </ark.span>
       {children}
     </MenuPrimitive.RadioItem>
   )
@@ -213,9 +213,9 @@ function MenubarSeparator({
 function MenubarShortcut({
   className,
   ...props
-}: React.ComponentProps<"span">) {
+}: React.ComponentProps<typeof ark.span>) {
   return (
-    <span
+    <ark.span
       data-slot="menubar-shortcut"
       className={cn("cn-menubar-shortcut ml-auto", className)}
       {...props}

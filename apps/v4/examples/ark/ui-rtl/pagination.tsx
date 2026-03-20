@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { ark } from "@ark-ui/react/factory"
 import { Pagination as PaginationPrimitive } from "@ark-ui/react/pagination"
 
 import { cn } from "@/examples/ark/lib/utils"
@@ -23,11 +24,11 @@ function Pagination({
 function PaginationContent({
   className,
   ...props
-}: React.ComponentProps<"ul">) {
+}: React.ComponentProps<typeof ark.ul>) {
   return (
     <PaginationPrimitive.Context>
       {() => (
-        <ul
+        <ark.ul
           data-slot="pagination-content"
           className={cn("flex items-center gap-0.5", className)}
           {...props}
@@ -37,8 +38,8 @@ function PaginationContent({
   )
 }
 
-function PaginationItem({ ...props }: React.ComponentProps<"li">) {
-  return <li data-slot="pagination-item" {...props} />
+function PaginationItem({ ...props }: React.ComponentProps<typeof ark.li>) {
+  return <ark.li data-slot="pagination-item" {...props} />
 }
 
 type PaginationLinkProps = {
@@ -86,7 +87,7 @@ function PaginationPrevious({
         className={cn("ps-1.5!", className)}
       >
         <ChevronLeftIcon data-icon="inline-start" className="rtl:rotate-180" />
-        <span className="hidden sm:block">{text}</span>
+        <ark.span className="hidden sm:block">{text}</ark.span>
       </Button>
     </PaginationPrimitive.PrevTrigger>
   )
@@ -111,7 +112,7 @@ function PaginationNext({
         data-slot="pagination-link"
         className={cn("pe-1.5!", className)}
       >
-        <span className="hidden sm:block">{text}</span>
+        <ark.span className="hidden sm:block">{text}</ark.span>
         <ChevronRightIcon data-icon="inline-end" className="rtl:rotate-180" />
       </Button>
     </PaginationPrimitive.NextTrigger>
@@ -133,7 +134,7 @@ function PaginationEllipsis({
     >
       <MoreHorizontalIcon
       />
-      <span className="sr-only">More pages</span>
+      <ark.span className="sr-only">More pages</ark.span>
     </PaginationPrimitive.Ellipsis>
   )
 }

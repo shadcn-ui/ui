@@ -4,9 +4,9 @@ import { ark } from "@ark-ui/react/factory"
 import { cn } from "@/registry/bases/ark/lib/utils"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
-function Breadcrumb({ className, ...props }: React.ComponentProps<"nav">) {
+function Breadcrumb({ className, ...props }: React.ComponentProps<typeof ark.nav>) {
   return (
-    <nav
+    <ark.nav
       aria-label="breadcrumb"
       data-slot="breadcrumb"
       className={cn("cn-breadcrumb", className)}
@@ -15,9 +15,9 @@ function Breadcrumb({ className, ...props }: React.ComponentProps<"nav">) {
   )
 }
 
-function BreadcrumbList({ className, ...props }: React.ComponentProps<"ol">) {
+function BreadcrumbList({ className, ...props }: React.ComponentProps<typeof ark.ol>) {
   return (
-    <ol
+    <ark.ol
       data-slot="breadcrumb-list"
       className={cn(
         "cn-breadcrumb-list flex flex-wrap items-center wrap-break-word",
@@ -28,9 +28,9 @@ function BreadcrumbList({ className, ...props }: React.ComponentProps<"ol">) {
   )
 }
 
-function BreadcrumbItem({ className, ...props }: React.ComponentProps<"li">) {
+function BreadcrumbItem({ className, ...props }: React.ComponentProps<typeof ark.li>) {
   return (
-    <li
+    <ark.li
       data-slot="breadcrumb-item"
       className={cn("cn-breadcrumb-item inline-flex items-center", className)}
       {...props}
@@ -42,10 +42,10 @@ function BreadcrumbLink({
   asChild,
   className,
   ...props
-}: React.ComponentProps<"a"> & {
+}: React.ComponentProps<typeof ark.a> & {
   asChild?: boolean
 }) {
-  const Comp = asChild ? ark.a : "a"
+  const Comp = asChild ? ark.a : ark.a
 
   return (
     <Comp
@@ -56,9 +56,9 @@ function BreadcrumbLink({
   )
 }
 
-function BreadcrumbPage({ className, ...props }: React.ComponentProps<"span">) {
+function BreadcrumbPage({ className, ...props }: React.ComponentProps<typeof ark.span>) {
   return (
-    <span
+    <ark.span
       data-slot="breadcrumb-page"
       role="link"
       aria-disabled="true"
@@ -73,9 +73,9 @@ function BreadcrumbSeparator({
   children,
   className,
   ...props
-}: React.ComponentProps<"li">) {
+}: React.ComponentProps<typeof ark.li>) {
   return (
-    <li
+    <ark.li
       data-slot="breadcrumb-separator"
       role="presentation"
       aria-hidden="true"
@@ -92,16 +92,16 @@ function BreadcrumbSeparator({
           className="cn-rtl-flip"
         />
       )}
-    </li>
+    </ark.li>
   )
 }
 
 function BreadcrumbEllipsis({
   className,
   ...props
-}: React.ComponentProps<"span">) {
+}: React.ComponentProps<typeof ark.span>) {
   return (
-    <span
+    <ark.span
       data-slot="breadcrumb-ellipsis"
       role="presentation"
       aria-hidden="true"
@@ -118,8 +118,8 @@ function BreadcrumbEllipsis({
         phosphor="DotsThreeIcon"
         remixicon="RiMoreLine"
       />
-      <span className="sr-only">More</span>
-    </span>
+      <ark.span className="sr-only">More</ark.span>
+    </ark.span>
   )
 }
 

@@ -5,9 +5,9 @@ import { ark } from "@ark-ui/react/factory"
 import { cn } from "@/registry/bases/ark/lib/utils"
 import { Separator } from "@/registry/bases/ark/ui/separator"
 
-function ItemGroup({ className, ...props }: React.ComponentProps<"div">) {
+function ItemGroup({ className, ...props }: React.ComponentProps<typeof ark.div>) {
   return (
-    <div
+    <ark.div
       role="list"
       data-slot="item-group"
       className={cn(
@@ -61,9 +61,9 @@ function Item({
   size = "default",
   asChild = false,
   ...props
-}: React.ComponentProps<"div"> &
+}: React.ComponentProps<typeof ark.div> &
   VariantProps<typeof itemVariants> & { asChild?: boolean }) {
-  const Comp = asChild ? ark.div : "div"
+  const Comp = asChild ? ark.div : ark.div
   return (
     <Comp
       data-slot="item"
@@ -95,9 +95,9 @@ function ItemMedia({
   className,
   variant = "default",
   ...props
-}: React.ComponentProps<"div"> & VariantProps<typeof itemMediaVariants>) {
+}: React.ComponentProps<typeof ark.div> & VariantProps<typeof itemMediaVariants>) {
   return (
-    <div
+    <ark.div
       data-slot="item-media"
       data-variant={variant}
       className={cn(itemMediaVariants({ variant, className }))}
@@ -106,9 +106,9 @@ function ItemMedia({
   )
 }
 
-function ItemContent({ className, ...props }: React.ComponentProps<"div">) {
+function ItemContent({ className, ...props }: React.ComponentProps<typeof ark.div>) {
   return (
-    <div
+    <ark.div
       data-slot="item-content"
       className={cn(
         "cn-item-content flex flex-1 flex-col [&+[data-slot=item-content]]:flex-none",
@@ -119,9 +119,9 @@ function ItemContent({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
-function ItemTitle({ className, ...props }: React.ComponentProps<"div">) {
+function ItemTitle({ className, ...props }: React.ComponentProps<typeof ark.div>) {
   return (
-    <div
+    <ark.div
       data-slot="item-title"
       className={cn(
         "cn-item-title line-clamp-1 flex w-fit items-center",
@@ -132,9 +132,9 @@ function ItemTitle({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
-function ItemDescription({ className, ...props }: React.ComponentProps<"p">) {
+function ItemDescription({ className, ...props }: React.ComponentProps<typeof ark.p>) {
   return (
-    <p
+    <ark.p
       data-slot="item-description"
       className={cn(
         "cn-item-description [&>a:hover]:text-primary line-clamp-2 font-normal [&>a]:underline [&>a]:underline-offset-4",
@@ -145,9 +145,9 @@ function ItemDescription({ className, ...props }: React.ComponentProps<"p">) {
   )
 }
 
-function ItemActions({ className, ...props }: React.ComponentProps<"div">) {
+function ItemActions({ className, ...props }: React.ComponentProps<typeof ark.div>) {
   return (
-    <div
+    <ark.div
       data-slot="item-actions"
       className={cn("cn-item-actions flex items-center", className)}
       {...props}
@@ -155,9 +155,9 @@ function ItemActions({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
-function ItemHeader({ className, ...props }: React.ComponentProps<"div">) {
+function ItemHeader({ className, ...props }: React.ComponentProps<typeof ark.div>) {
   return (
-    <div
+    <ark.div
       data-slot="item-header"
       className={cn(
         "cn-item-header flex basis-full items-center justify-between",
@@ -168,9 +168,9 @@ function ItemHeader({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
-function ItemFooter({ className, ...props }: React.ComponentProps<"div">) {
+function ItemFooter({ className, ...props }: React.ComponentProps<typeof ark.div>) {
   return (
-    <div
+    <ark.div
       data-slot="item-footer"
       className={cn(
         "cn-item-footer flex basis-full items-center justify-between",
