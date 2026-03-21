@@ -25,7 +25,7 @@ export async function GET(request: NextRequest) {
     after(() => {
       track("create_open_in_v0", {
         ...result.data,
-        preset: presetCode,
+        ...(presetCode && { preset: presetCode }),
       })
     })
 
