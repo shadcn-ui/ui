@@ -159,6 +159,22 @@
       "menuAccent": "subtle",
       "menuColor": "default",
       "radius": "default"
+    },
+    {
+      "name": "base-react-aria",
+      "title": "Vega (React Aria)",
+      "description": "Vega / Lucide / Inter",
+      "base": "react-aria",
+      "style": "vega",
+      "baseColor": "neutral",
+      "theme": "neutral",
+      "iconLibrary": "lucide",
+      "font": "inter",
+      "item": "Item",
+      "rtl": false,
+      "menuAccent": "subtle",
+      "menuColor": "default",
+      "radius": "default"
     }
   ]
 }

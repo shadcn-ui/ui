@@ -28,10 +28,7 @@ import {
   ComboboxValue,
   useComboboxAnchor,
 } from "@/registry/bases/react-aria/ui/combobox"
-import {
-  Tooltip,
-  TooltipTrigger,
-} from "@/registry/bases/react-aria/ui/tooltip"
+import { Tooltip, TooltipTrigger } from "@/registry/bases/react-aria/ui/tooltip"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 // Users available for assignment.

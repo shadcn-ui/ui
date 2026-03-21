@@ -5,8 +5,8 @@ import {
   Dialog as AlertDialogPrimitive,
   DialogTrigger as AlertDialogTriggerPrimitive,
   Heading,
-  Modal as ModalPrimitive,
   ModalOverlay as ModalOverlayPrimitive,
+  Modal as ModalPrimitive,
   type DialogProps as AlertDialogPrimitiveProps,
   type DialogTriggerProps as AlertDialogTriggerPrimitiveProps,
   type ModalOverlayProps as ModalOverlayPrimitiveProps,
@@ -17,9 +17,7 @@ import { cn } from "@/registry/bases/react-aria/lib/utils"
 import { Button } from "@/registry/bases/react-aria/ui/button"
 
 function AlertDialogTrigger({ ...props }: AlertDialogTriggerPrimitiveProps) {
-  return (
-    <AlertDialogTriggerPrimitive {...props} />
-  )
+  return <AlertDialogTriggerPrimitive {...props} />
 }
 
 function AlertDialogOverlay({
@@ -81,7 +79,11 @@ function AlertDialog({
           />
         )}
       >
-        <AlertDialogPrimitive data-slot="alert-dialog" role="alertdialog" className="[display:inherit] [gap:inherit] outline-none">
+        <AlertDialogPrimitive
+          data-slot="alert-dialog"
+          role="alertdialog"
+          className="[display:inherit] [gap:inherit] outline-none"
+        >
           {children}
         </AlertDialogPrimitive>
       </ModalPrimitive>

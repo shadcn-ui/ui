@@ -208,7 +208,7 @@ export default function SidebarInsetExample() {
                 <Collapsible
                   key={item.title}
                   defaultExpanded={item.isActive}
-                  render={props => <SidebarMenuItem {...props} />}
+                  render={(props) => <SidebarMenuItem {...props} />}
                 >
                   <SidebarMenuButton
                     render={<a href={item.url} />}
@@ -220,9 +220,12 @@ export default function SidebarInsetExample() {
                   {item.items?.length ? (
                     <>
                       <CollapsibleTrigger
-                        render={
-                          props => <SidebarMenuAction {...props} className="group-data-open/menu-item:rotate-90" />
-                        }
+                        render={(props) => (
+                          <SidebarMenuAction
+                            {...props}
+                            className="group-data-open/menu-item:rotate-90"
+                          />
+                        )}
                       >
                         <IconPlaceholder
                           lucide="ChevronRightIcon"

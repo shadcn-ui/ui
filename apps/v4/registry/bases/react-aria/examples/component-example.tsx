@@ -155,8 +155,10 @@ const roleItems = [
 ]
 
 function FormExample() {
-  const [notifications, setNotifications] = React.useState<Selection>(new Set(['email', 'push']))
-  const [view, setView] = React.useState<Selection>(new Set(['sidebar']))
+  const [notifications, setNotifications] = React.useState<Selection>(
+    new Set(["email", "push"])
+  )
+  const [view, setView] = React.useState<Selection>(new Set(["sidebar"]))
   const [theme, setTheme] = React.useState("light")
 
   return (
@@ -313,7 +315,11 @@ function FormExample() {
                   </DropdownMenuItem>
                 </DropdownMenuGroup>
                 <DropdownMenuSeparator />
-                <DropdownMenuGroup selectionMode="multiple" selectedKeys={notifications} onSelectionChange={setNotifications}>
+                <DropdownMenuGroup
+                  selectionMode="multiple"
+                  selectedKeys={notifications}
+                  onSelectionChange={setNotifications}
+                >
                   <DropdownMenuLabel>View</DropdownMenuLabel>
                   <DropdownMenuItem id="sidebar">
                     <IconPlaceholder
@@ -348,7 +354,17 @@ function FormExample() {
                     </DropdownMenuSubTrigger>
 
                     <DropdownMenuSubContent>
-                      <DropdownMenuGroup selectionMode="single" selectedKeys={[theme]} onSelectionChange={keys => setTheme(keys === "all" ? "system" : keys.values().next().value as string)}>
+                      <DropdownMenuGroup
+                        selectionMode="single"
+                        selectedKeys={[theme]}
+                        onSelectionChange={(keys) =>
+                          setTheme(
+                            keys === "all"
+                              ? "system"
+                              : (keys.values().next().value as string)
+                          )
+                        }
+                      >
                         <DropdownMenuLabel>Appearance</DropdownMenuLabel>
                         <DropdownMenuItem id="light">
                           <IconPlaceholder
@@ -456,7 +472,11 @@ function FormExample() {
                           </DropdownMenuSubTrigger>
 
                           <DropdownMenuSubContent>
-                            <DropdownMenuGroup selectionMode="multiple" selectedKeys={notifications} onSelectionChange={setNotifications}>
+                            <DropdownMenuGroup
+                              selectionMode="multiple"
+                              selectedKeys={notifications}
+                              onSelectionChange={setNotifications}
+                            >
                               <DropdownMenuLabel>
                                 Notification Types
                               </DropdownMenuLabel>

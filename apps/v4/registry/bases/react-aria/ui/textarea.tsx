@@ -1,7 +1,8 @@
 "use client"
 
 import * as React from "react"
-import {TextArea as TextareaPrimitive} from "react-aria-components"
+import { TextArea as TextareaPrimitive } from "react-aria-components"
+
 import { cn } from "@/registry/bases/react-aria/lib/utils"
 
 function Textarea({ className, ...props }: React.ComponentProps<"textarea">) {

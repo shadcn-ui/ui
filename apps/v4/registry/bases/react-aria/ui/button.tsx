@@ -1,13 +1,13 @@
 "use client"
 
 import type * as React from "react"
+import { cva, type VariantProps } from "class-variance-authority"
 import {
   Button as ButtonPrimitive,
   Link as LinkPrimitive,
   type ButtonProps as ButtonPrimitiveProps,
   type LinkProps as LinkPrimitiveProps,
 } from "react-aria-components"
-import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/registry/bases/react-aria/lib/utils"
 
@@ -46,10 +46,7 @@ function Button({
   variant = "default",
   size = "default",
   ...props
-}: Omit<
-  ButtonPrimitiveProps,
-  "className"
-> &
+}: Omit<ButtonPrimitiveProps, "className"> &
   VariantProps<typeof buttonVariants> & {
     className?: string
   }) {

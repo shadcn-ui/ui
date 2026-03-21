@@ -1,5 +1,7 @@
 "use client"
 
+import { Link } from "react-aria-components"
+
 import {
   Example,
   ExampleWrapper,
@@ -8,7 +10,6 @@ import { Button } from "@/registry/bases/react-aria/ui/button"
 import { Kbd } from "@/registry/bases/react-aria/ui/kbd"
 import { Tooltip, TooltipTrigger } from "@/registry/bases/react-aria/ui/tooltip"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
-import {Link} from "react-aria-components"
 
 export default function TooltipExample() {
   return (

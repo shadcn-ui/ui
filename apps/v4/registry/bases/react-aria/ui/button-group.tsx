@@ -40,7 +40,9 @@ function ButtonGroupText({
   className,
   render,
   ...props
-}: React.ComponentProps<"div"> & { render?: (props: React.HTMLAttributes<HTMLElement>) => React.ReactNode }) {
+}: React.ComponentProps<"div"> & {
+  render?: (props: React.HTMLAttributes<HTMLElement>) => React.ReactNode
+}) {
   if (render) {
     return render({
       // @ts-expect-error - data-slot is a valid prop for a div element

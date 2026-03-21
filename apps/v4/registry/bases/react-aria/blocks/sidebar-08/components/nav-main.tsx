@@ -40,7 +40,7 @@ export function NavMain({
           <Collapsible
             key={item.title}
             defaultExpanded={item.isActive}
-            render={props => <SidebarMenuItem {...props} />}
+            render={(props) => <SidebarMenuItem {...props} />}
           >
             <SidebarMenuButton
               tooltip={item.title}
@@ -52,9 +52,12 @@ export function NavMain({
             {item.items?.length ? (
               <>
                 <CollapsibleTrigger
-                  render={
-                    props => <SidebarMenuAction {...props} className="aria-expanded:rotate-90" />
-                  }
+                  render={(props) => (
+                    <SidebarMenuAction
+                      {...props}
+                      className="aria-expanded:rotate-90"
+                    />
+                  )}
                 >
                   <IconPlaceholder
                     lucide="ChevronRightIcon"

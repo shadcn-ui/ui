@@ -299,7 +299,11 @@ function ToggleDisabled() {
         <Toggle aria-label="Toggle disabled" isDisabled>
           Disabled
         </Toggle>
-        <Toggle variant="outline" aria-label="Toggle disabled outline" isDisabled>
+        <Toggle
+          variant="outline"
+          aria-label="Toggle disabled outline"
+          isDisabled
+        >
           Disabled
         </Toggle>
       </div>

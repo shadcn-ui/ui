@@ -3,7 +3,10 @@ import { ChartAreaInteractive } from "@/registry/bases/react-aria/blocks/dashboa
 import { DataTable } from "@/registry/bases/react-aria/blocks/dashboard-01/components/data-table"
 import { SectionCards } from "@/registry/bases/react-aria/blocks/dashboard-01/components/section-cards"
 import { SiteHeader } from "@/registry/bases/react-aria/blocks/dashboard-01/components/site-header"
-import { SidebarInset, SidebarProvider } from "@/registry/bases/react-aria/ui/sidebar"
+import {
+  SidebarInset,
+  SidebarProvider,
+} from "@/registry/bases/react-aria/ui/sidebar"
 
 import data from "./data.json"
 

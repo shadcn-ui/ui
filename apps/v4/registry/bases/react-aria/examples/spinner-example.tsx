@@ -126,11 +126,7 @@ function SpinnerInEmpty() {
             <LinkButton href="#">Create project</LinkButton>
             <Button variant="outline">Import project</Button>
           </div>
-          <LinkButton
-            variant="link"
-            href="#"
-            className="text-muted-foreground"
-          >
+          <LinkButton variant="link" href="#" className="text-muted-foreground">
             Learn more{" "}
             <IconPlaceholder
               lucide="ArrowRightIcon"

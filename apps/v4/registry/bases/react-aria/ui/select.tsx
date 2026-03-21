@@ -2,25 +2,31 @@
 
 import * as React from "react"
 import {
-  Button as SelectTriggerPrimitive,
+  composeRenderProps,
+  Popover as SelectContentPrimitive,
+  ListBoxSection as SelectGroupPrimitive,
+  ListBoxItem as SelectItemPrimitive,
   Header as SelectLabelPrimitive,
   ListBox as SelectListPrimitive,
-  ListBoxItem as SelectItemPrimitive,
-  ListBoxSection as SelectGroupPrimitive,
-  type ListBoxSectionProps as SelectGroupProps,
-  Popover as SelectContentPrimitive,
   Select as SelectPrimitive,
-  type SelectProps,
-  SelectValue as SelectValuePrimitive,
-  type SelectValueProps,
   Separator as SelectSeparatorPrimitive,
-  composeRenderProps,
+  Button as SelectTriggerPrimitive,
+  SelectValue as SelectValuePrimitive,
+  type ListBoxSectionProps as SelectGroupProps,
+  type SelectProps,
+  type SelectValueProps,
 } from "react-aria-components"
 
 import { cn } from "@/registry/bases/react-aria/lib/utils"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
-type SelectSide = "top" | "right" | "bottom" | "left" | "inline-start" | "inline-end"
+type SelectSide =
+  | "top"
+  | "right"
+  | "bottom"
+  | "left"
+  | "inline-start"
+  | "inline-end"
 type SelectAlign = "start" | "center" | "end"
 
 function getPlacement(side: SelectSide, align: SelectAlign) {
@@ -44,8 +50,17 @@ function getPlacement(side: SelectSide, align: SelectAlign) {
   return `${side} ${align}` as const
 }
 
-function Select<T extends object, M extends "single" | "multiple" = "single">({ className, ...props }: SelectProps<T, M>) {
-  return <SelectPrimitive data-slot="select" className={cn("w-fit", className)} {...props} />
+function Select<T extends object, M extends "single" | "multiple" = "single">({
+  className,
+  ...props
+}: SelectProps<T, M>) {
+  return (
+    <SelectPrimitive
+      data-slot="select"
+      className={cn("w-fit", className)}
+      {...props}
+    />
+  )
 }
 
 function SelectGroup<T extends object>({
@@ -70,10 +85,12 @@ function SelectValue<T extends object>({
     <SelectValuePrimitive
       data-slot="select-value"
       className={cn("cn-select-value", className)}
-      {...props}>
-      {typeof children === 'function' ? children : ({ selectedItems, selectedText, defaultChildren }) => (
-        selectedItems.length > 1 ? selectedText : defaultChildren
-      )}
+      {...props}
+    >
+      {typeof children === "function"
+        ? children
+        : ({ selectedItems, selectedText, defaultChildren }) =>
+            selectedItems.length > 1 ? selectedText : defaultChildren}
     </SelectValuePrimitive>
   )
 }
@@ -184,25 +201,28 @@ function SelectItem({
       )}
       {...props}
     >
-      {composeRenderProps(children, (children, { isFocused, isHovered, isSelected }) => (
-        <>
-          <span className="cn-select-item-text shrink-0 whitespace-nowrap">
-            {children}
-          </span>
-          <span className="cn-select-item-indicator">
-            {isSelected ? (
-              <IconPlaceholder
-                lucide="CheckIcon"
-                tabler="IconCheck"
-                hugeicons="Tick02Icon"
-                phosphor="CheckIcon"
-                remixicon="RiCheckLine"
-                className="cn-select-item-indicator-icon pointer-events-none"
-              />
-            ) : null}
-          </span>
-        </>
-      ))}
+      {composeRenderProps(
+        children,
+        (children, { isFocused, isHovered, isSelected }) => (
+          <>
+            <span className="cn-select-item-text shrink-0 whitespace-nowrap">
+              {children}
+            </span>
+            <span className="cn-select-item-indicator">
+              {isSelected ? (
+                <IconPlaceholder
+                  lucide="CheckIcon"
+                  tabler="IconCheck"
+                  hugeicons="Tick02Icon"
+                  phosphor="CheckIcon"
+                  remixicon="RiCheckLine"
+                  className="cn-select-item-indicator-icon pointer-events-none"
+                />
+              ) : null}
+            </span>
+          </>
+        )
+      )}
     </SelectItemPrimitive>
   )
 }

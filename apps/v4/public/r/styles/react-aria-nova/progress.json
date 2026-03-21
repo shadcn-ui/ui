@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "progress",
+  "files": [
+    {
+      "path": "registry/react-aria-nova/ui/progress.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport {\n  ProgressBar as ProgressPrimitive,\n  type ProgressBarProps as ProgressPrimitiveProps,\n} from \"react-aria-components\"\n\nimport { cn } from \"@/registry/react-aria-nova/lib/utils\"\n\nfunction Progress({\n  className,\n  label,\n  showValueLabel = false,\n  ...props\n}: Omit<ProgressPrimitiveProps, \"children\" | \"className\"> & {\n  className?: string\n  label?: React.ReactNode\n  showValueLabel?: boolean\n}) {\n  return (\n    <ProgressPrimitive\n      data-slot=\"progress\"\n      className={cn(\"flex flex-wrap gap-3\", className)}\n      {...props}\n    >\n      {({ percentage, valueText, isIndeterminate }) => (\n        <>\n          {label ? (\n            <span\n              className={cn(\"text-sm font-medium\")}\n              data-slot=\"progress-label\"\n            >\n              {label}\n            </span>\n          ) : null}\n          {showValueLabel ? (\n            <span\n              className={cn(\n                \"ml-auto text-sm text-muted-foreground tabular-nums\"\n              )}\n              data-slot=\"progress-value\"\n            >\n              {valueText}\n            </span>\n          ) : null}\n          <span\n            className={cn(\n              \"relative flex h-1 w-full items-center overflow-x-hidden rounded-full bg-muted\"\n            )}\n            data-slot=\"progress-track\"\n          >\n            <span\n              data-slot=\"progress-indicator\"\n              className={cn(\"h-full bg-primary transition-all\")}\n              style={{ width: `${isIndeterminate ? 100 : percentage}%` }}\n            />\n          </span>\n        </>\n      )}\n    </ProgressPrimitive>\n  )\n}\n\nexport { Progress }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

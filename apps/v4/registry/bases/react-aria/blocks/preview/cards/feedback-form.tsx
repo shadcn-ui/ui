@@ -1,8 +1,16 @@
 "use client"
 
 import { Button } from "@/registry/bases/react-aria/ui/button"
-import { Card, CardContent, CardFooter } from "@/registry/bases/react-aria/ui/card"
-import { Field, FieldGroup, FieldLabel } from "@/registry/bases/react-aria/ui/field"
+import {
+  Card,
+  CardContent,
+  CardFooter,
+} from "@/registry/bases/react-aria/ui/card"
+import {
+  Field,
+  FieldGroup,
+  FieldLabel,
+} from "@/registry/bases/react-aria/ui/field"
 import {
   NativeSelect,
   NativeSelectOption,

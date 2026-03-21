@@ -223,8 +223,8 @@ function BadgeAsLink() {
     <Example title="asChild">
       <div className="flex flex-wrap gap-2">
         <Badge
-          render={
-            props => <a {...props} href="#">
+          render={(props) => (
+            <a {...props} href="#">
               Link{" "}
               <IconPlaceholder
                 lucide="ArrowUpRightIcon"
@@ -235,12 +235,12 @@ function BadgeAsLink() {
                 data-icon="inline-end"
               />
             </a>
-          }
+          )}
         />
         <Badge
           variant="secondary"
-          render={
-            props => <a {...props} href="#">
+          render={(props) => (
+            <a {...props} href="#">
               Link{" "}
               <IconPlaceholder
                 lucide="ArrowUpRightIcon"
@@ -251,12 +251,12 @@ function BadgeAsLink() {
                 data-icon="inline-end"
               />
             </a>
-          }
+          )}
         />
         <Badge
           variant="destructive"
-          render={
-            props => <a {...props} href="#">
+          render={(props) => (
+            <a {...props} href="#">
               Link{" "}
               <IconPlaceholder
                 lucide="ArrowUpRightIcon"
@@ -267,12 +267,12 @@ function BadgeAsLink() {
                 data-icon="inline-end"
               />
             </a>
-          }
+          )}
         />
         <Badge
           variant="ghost"
-          render={
-            props => <a {...props} href="#">
+          render={(props) => (
+            <a {...props} href="#">
               Link{" "}
               <IconPlaceholder
                 lucide="ArrowUpRightIcon"
@@ -283,7 +283,7 @@ function BadgeAsLink() {
                 data-icon="inline-end"
               />
             </a>
-          }
+          )}
         />
       </div>
     </Example>

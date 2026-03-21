@@ -67,9 +67,7 @@ function HoverCardInDialog() {
   return (
     <Example title="In Dialog">
       <DialogTrigger>
-        <Button variant="outline">
-          Open Dialog
-        </Button>
+        <Button variant="outline">Open Dialog</Button>
         <Dialog>
           <DialogHeader>
             <DialogTitle>Hover Card Example</DialogTitle>

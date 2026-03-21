@@ -21,7 +21,11 @@ import {
   CardHeader,
   CardTitle,
 } from "@/registry/bases/react-aria/ui/card"
-import { Field, FieldGroup, FieldLabel } from "@/registry/bases/react-aria/ui/field"
+import {
+  Field,
+  FieldGroup,
+  FieldLabel,
+} from "@/registry/bases/react-aria/ui/field"
 import { Input } from "@/registry/bases/react-aria/ui/input"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 

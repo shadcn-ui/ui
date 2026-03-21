@@ -8,7 +8,11 @@ import {
   ExampleWrapper,
 } from "@/registry/bases/react-aria/components/example"
 import { Button } from "@/registry/bases/react-aria/ui/button"
-import { Card, CardContent, CardFooter } from "@/registry/bases/react-aria/ui/card"
+import {
+  Card,
+  CardContent,
+  CardFooter,
+} from "@/registry/bases/react-aria/ui/card"
 import {
   Combobox,
   ComboboxChip,
@@ -1169,9 +1173,7 @@ function ComboboxInDialog() {
   return (
     <Example title="Combobox in Dialog">
       <DialogTrigger isOpen={open} onOpenChange={setOpen}>
-        <Button variant="outline">
-          Open Dialog
-        </Button>
+        <Button variant="outline">Open Dialog</Button>
         <Dialog className="sm:max-w-[425px]">
           <DialogHeader>
             <DialogTitle>Select Framework</DialogTitle>

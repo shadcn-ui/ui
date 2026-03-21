@@ -1,7 +1,8 @@
 "use client"
 
+import { Keyboard as KbdPrimitive } from "react-aria-components"
+
 import { cn } from "@/registry/bases/react-aria/lib/utils"
-import {Keyboard as KbdPrimitive} from "react-aria-components"
 
 function Kbd({ className, ...props }: React.ComponentProps<"kbd">) {
   return (

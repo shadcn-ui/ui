@@ -10,7 +10,11 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/registry/bases/react-aria/ui/dialog"
-import { Field, FieldGroup, FieldLabel } from "@/registry/bases/react-aria/ui/field"
+import {
+  Field,
+  FieldGroup,
+  FieldLabel,
+} from "@/registry/bases/react-aria/ui/field"
 import { Input } from "@/registry/bases/react-aria/ui/input"
 import {
   Popover,
@@ -65,7 +69,7 @@ function PopoverSides() {
                   {label}
                 </Button>
                 <Popover side={side} className="w-40">
-                <p>Popover on {side.replace("-", " ")}</p>
+                  <p>Popover on {side.replace("-", " ")}</p>
                 </Popover>
               </PopoverTrigger>
             )
@@ -80,7 +84,7 @@ function PopoverSides() {
                   {label}
                 </Button>
                 <Popover side={side} className="w-40">
-                <p>Popover on {side.replace("-", " ")}</p>
+                  <p>Popover on {side.replace("-", " ")}</p>
                 </Popover>
               </PopoverTrigger>
             )
@@ -95,9 +99,7 @@ function PopoverWithForm() {
   return (
     <Example title="With Form">
       <PopoverTrigger>
-        <Button variant="outline">
-          Open Popover
-        </Button>
+        <Button variant="outline">Open Popover</Button>
         <Popover className="w-64" align="start">
           <PopoverHeader>
             <PopoverTitle>Dimensions</PopoverTitle>
@@ -162,9 +164,7 @@ function PopoverInDialog() {
   return (
     <Example title="In Dialog">
       <DialogTrigger>
-        <Button variant="outline">
-          Open Dialog
-        </Button>
+        <Button variant="outline">Open Dialog</Button>
         <Dialog>
           <DialogHeader>
             <DialogTitle>Popover Example</DialogTitle>

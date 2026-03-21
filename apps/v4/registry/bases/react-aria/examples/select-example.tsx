@@ -184,18 +184,22 @@ function SelectWithIcons() {
         <Select aria-label="Chart Type">
           <SelectTrigger size="sm">
             <SelectValue>
-              {({isPlaceholder, defaultChildren}) => (
-                isPlaceholder ? <>
-                  <IconPlaceholder
-                    lucide="ChartLineIcon"
-                    tabler="IconChartLine"
-                    hugeicons="Chart03Icon"
-                    phosphor="ChartLineIcon"
-                    remixicon="RiLineChartLine"
-                  />
-                  Chart Type
-                </> : defaultChildren
-              )}
+              {({ isPlaceholder, defaultChildren }) =>
+                isPlaceholder ? (
+                  <>
+                    <IconPlaceholder
+                      lucide="ChartLineIcon"
+                      tabler="IconChartLine"
+                      hugeicons="Chart03Icon"
+                      phosphor="ChartLineIcon"
+                      remixicon="RiLineChartLine"
+                    />
+                    Chart Type
+                  </>
+                ) : (
+                  defaultChildren
+                )
+              }
             </SelectValue>
           </SelectTrigger>
           <SelectContent>
@@ -211,18 +215,22 @@ function SelectWithIcons() {
         <Select aria-label="Chart Type">
           <SelectTrigger size="default">
             <SelectValue>
-              {({isPlaceholder, defaultChildren}) => (
-                isPlaceholder ? <>
-                  <IconPlaceholder
-                    lucide="ChartLineIcon"
-                    tabler="IconChartLine"
-                    hugeicons="Chart03Icon"
-                    phosphor="ChartLineIcon"
-                    remixicon="RiLineChartLine"
-                  />
-                  Chart Type
-                </> : defaultChildren
-              )}
+              {({ isPlaceholder, defaultChildren }) =>
+                isPlaceholder ? (
+                  <>
+                    <IconPlaceholder
+                      lucide="ChartLineIcon"
+                      tabler="IconChartLine"
+                      hugeicons="Chart03Icon"
+                      phosphor="ChartLineIcon"
+                      remixicon="RiLineChartLine"
+                    />
+                    Chart Type
+                  </>
+                ) : (
+                  defaultChildren
+                )
+              }
             </SelectValue>
           </SelectTrigger>
           <SelectContent>
@@ -597,10 +605,7 @@ const plans = [
 function SelectPlan() {
   return (
     <Example title="Subscription Plan">
-      <Select
-        aria-label="Subscription Plan"
-        defaultValue={plans[0].name}
-      >
+      <Select aria-label="Subscription Plan" defaultValue={plans[0].name}>
         <SelectTrigger className="h-auto! w-72">
           <SelectValue />
         </SelectTrigger>
@@ -644,28 +649,21 @@ function SelectMultiple() {
 
   return (
     <Example title="Multiple Selection">
-      <Select
-        selectionMode="multiple"
-        aria-label="Fruits"
-      >
+      <Select selectionMode="multiple" aria-label="Fruits">
         <SelectTrigger className="w-72">
-          <SelectValue<typeof items[0]>>
-            {({selectedItems}) => (
-            selectedItems.length === 0
-              ? "Select fruits"
-              : selectedItems.length === 1
-                ? selectedItems[0]?.label ?? ""
-                : `${selectedItems.length} fruits selected`
-            )}
+          <SelectValue<(typeof items)[0]>>
+            {({ selectedItems }) =>
+              selectedItems.length === 0
+                ? "Select fruits"
+                : selectedItems.length === 1
+                  ? (selectedItems[0]?.label ?? "")
+                  : `${selectedItems.length} fruits selected`
+            }
           </SelectValue>
         </SelectTrigger>
         <SelectContent>
           <SelectGroup items={items}>
-            {item => (
-              <SelectItem id={item.value}>
-                {item.label}
-              </SelectItem>
-            )}
+            {(item) => <SelectItem id={item.value}>{item.label}</SelectItem>}
           </SelectGroup>
         </SelectContent>
       </Select>
@@ -684,9 +682,7 @@ function SelectInDialog() {
   return (
     <Example title="In Dialog">
       <DialogTrigger>
-        <Button variant="outline">
-          Open Dialog
-        </Button>
+        <Button variant="outline">Open Dialog</Button>
         <Dialog>
           <DialogHeader>
             <DialogTitle>Select Example</DialogTitle>

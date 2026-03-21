@@ -10,18 +10,26 @@ import {
   ExampleWrapper,
 } from "@/registry/bases/react-aria/components/example"
 import { Button } from "@/registry/bases/react-aria/ui/button"
-import { Calendar, CalendarDayButton } from "@/registry/bases/react-aria/ui/calendar"
-import { Card, CardContent, CardFooter } from "@/registry/bases/react-aria/ui/card"
-import { Field, FieldGroup, FieldLabel } from "@/registry/bases/react-aria/ui/field"
+import {
+  Calendar,
+  CalendarDayButton,
+} from "@/registry/bases/react-aria/ui/calendar"
+import {
+  Card,
+  CardContent,
+  CardFooter,
+} from "@/registry/bases/react-aria/ui/card"
+import {
+  Field,
+  FieldGroup,
+  FieldLabel,
+} from "@/registry/bases/react-aria/ui/field"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
 } from "@/registry/bases/react-aria/ui/input-group"
-import {
-  Popover,
-  PopoverTrigger,
-} from "@/registry/bases/react-aria/ui/popover"
+import { Popover, PopoverTrigger } from "@/registry/bases/react-aria/ui/popover"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function CalendarExample() {

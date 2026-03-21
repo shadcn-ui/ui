@@ -236,16 +236,22 @@ function DropdownMenuWithSubmenu() {
 }
 
 function DropdownMenuWithCheckboxes() {
-  const [selectedKeys, setSelectedKeys] = React.useState<Selection>(new Set(['status-bar']))
+  const [selectedKeys, setSelectedKeys] = React.useState<Selection>(
+    new Set(["status-bar"])
+  )
 
   return (
     <Example title="With Checkboxes">
-      <DropdownMenuTrigger>  
+      <DropdownMenuTrigger>
         <Button variant="outline" className="w-fit">
           Checkboxes
-        </Button>  
+        </Button>
         <DropdownMenu className="min-w-40">
-          <DropdownMenuGroup selectionMode="multiple" selectedKeys={selectedKeys} onSelectionChange={setSelectedKeys}>
+          <DropdownMenuGroup
+            selectionMode="multiple"
+            selectedKeys={selectedKeys}
+            onSelectionChange={setSelectedKeys}
+          >
             <DropdownMenuLabel>Appearance</DropdownMenuLabel>
             <DropdownMenuItem id="status-bar">
               <IconPlaceholder
@@ -294,7 +300,17 @@ function DropdownMenuWithRadio() {
           Radio Group
         </Button>
         <DropdownMenu>
-          <DropdownMenuGroup selectionMode="single" selectedKeys={[position]} onSelectionChange={keys => setPosition(keys === "all" ? "bottom" : keys.values().next().value as string)}>
+          <DropdownMenuGroup
+            selectionMode="single"
+            selectedKeys={[position]}
+            onSelectionChange={(keys) =>
+              setPosition(
+                keys === "all"
+                  ? "bottom"
+                  : (keys.values().next().value as string)
+              )
+            }
+          >
             <DropdownMenuLabel>Panel Position</DropdownMenuLabel>
             <DropdownMenuItem id="top">
               <IconPlaceholder
@@ -334,7 +350,9 @@ function DropdownMenuWithRadio() {
 }
 
 function DropdownMenuWithCheckboxesIcons() {
-  const [selectedKeys, setSelectedKeys] = React.useState<Selection>(new Set(['email', 'push']))
+  const [selectedKeys, setSelectedKeys] = React.useState<Selection>(
+    new Set(["email", "push"])
+  )
 
   return (
     <Example title="Checkboxes with Icons">
@@ -343,7 +361,11 @@ function DropdownMenuWithCheckboxesIcons() {
           Notifications
         </Button>
         <DropdownMenu className="min-w-56">
-          <DropdownMenuGroup selectionMode="multiple" selectedKeys={selectedKeys} onSelectionChange={setSelectedKeys}>
+          <DropdownMenuGroup
+            selectionMode="multiple"
+            selectedKeys={selectedKeys}
+            onSelectionChange={setSelectedKeys}
+          >
             <DropdownMenuLabel>Notification Preferences</DropdownMenuLabel>
             <DropdownMenuItem id="email">
               <IconPlaceholder
@@ -392,7 +414,15 @@ function DropdownMenuWithRadioIcons() {
           Payment Method
         </Button>
         <DropdownMenu className="min-w-56">
-          <DropdownMenuGroup selectionMode="single" selectedKeys={[paymentMethod]} onSelectionChange={keys => setPaymentMethod(keys === "all" ? "card" : keys.values().next().value as string)}>
+          <DropdownMenuGroup
+            selectionMode="single"
+            selectedKeys={[paymentMethod]}
+            onSelectionChange={(keys) =>
+              setPaymentMethod(
+                keys === "all" ? "card" : (keys.values().next().value as string)
+              )
+            }
+          >
             <DropdownMenuLabel>Select Payment Method</DropdownMenuLabel>
             <DropdownMenuItem id="card">
               <IconPlaceholder
@@ -663,7 +693,9 @@ function DropdownMenuInDialog() {
 }
 
 function DropdownMenuWithInset() {
-  const [selectedKeys, setSelectedKeys] = React.useState<Selection>(new Set(['bookmarks']))
+  const [selectedKeys, setSelectedKeys] = React.useState<Selection>(
+    new Set(["bookmarks"])
+  )
   const [theme, setTheme] = React.useState("system")
 
   return (
@@ -698,23 +730,31 @@ function DropdownMenuWithInset() {
             <DropdownMenuItem inset>Paste</DropdownMenuItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
-          <DropdownMenuGroup selectionMode="multiple" selectedKeys={selectedKeys} onSelectionChange={setSelectedKeys}>
+          <DropdownMenuGroup
+            selectionMode="multiple"
+            selectedKeys={selectedKeys}
+            onSelectionChange={setSelectedKeys}
+          >
             <DropdownMenuLabel inset>Appearance</DropdownMenuLabel>
-            <DropdownMenuItem
-              inset
-              id="bookmarks"
-            >
+            <DropdownMenuItem inset id="bookmarks">
               Bookmarks
             </DropdownMenuItem>
-            <DropdownMenuItem
-              inset
-              id="urls"
-            >
+            <DropdownMenuItem inset id="urls">
               Full URLs
             </DropdownMenuItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
-          <DropdownMenuGroup selectionMode="single" selectedKeys={[theme]} onSelectionChange={keys => setTheme(keys === "all" ? "system" : keys.values().next().value as string)}>
+          <DropdownMenuGroup
+            selectionMode="single"
+            selectedKeys={[theme]}
+            onSelectionChange={(keys) =>
+              setTheme(
+                keys === "all"
+                  ? "system"
+                  : (keys.values().next().value as string)
+              )
+            }
+          >
             <DropdownMenuLabel inset>Theme</DropdownMenuLabel>
             <DropdownMenuItem inset id="light">
               Light
@@ -744,8 +784,10 @@ function DropdownMenuWithInset() {
 }
 
 function DropdownMenuComplex() {
-  const [view, setView] = React.useState<Selection>(new Set(['sidebar']))
-  const [notifications, setNotifications] = React.useState<Selection>(new Set(['email', 'push']))
+  const [view, setView] = React.useState<Selection>(new Set(["sidebar"]))
+  const [notifications, setNotifications] = React.useState<Selection>(
+    new Set(["email", "push"])
+  )
   const [theme, setTheme] = React.useState("light")
 
   return (
@@ -890,7 +932,11 @@ function DropdownMenuComplex() {
             </DropdownMenuItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
-          <DropdownMenuGroup selectionMode="multiple" selectedKeys={view} onSelectionChange={setView}>
+          <DropdownMenuGroup
+            selectionMode="multiple"
+            selectedKeys={view}
+            onSelectionChange={setView}
+          >
             <DropdownMenuLabel>View</DropdownMenuLabel>
             <DropdownMenuItem id="sidebar">
               <IconPlaceholder
@@ -925,7 +971,17 @@ function DropdownMenuComplex() {
               </DropdownMenuSubTrigger>
 
               <DropdownMenuSubContent>
-                <DropdownMenuGroup selectionMode="single" selectedKeys={[theme]} onSelectionChange={keys => setTheme(keys === "all" ? "system" : keys.values().next().value as string)}>
+                <DropdownMenuGroup
+                  selectionMode="single"
+                  selectedKeys={[theme]}
+                  onSelectionChange={(keys) =>
+                    setTheme(
+                      keys === "all"
+                        ? "system"
+                        : (keys.values().next().value as string)
+                    )
+                  }
+                >
                   <DropdownMenuLabel>Appearance</DropdownMenuLabel>
                   <DropdownMenuItem id="light">
                     <IconPlaceholder
@@ -1033,7 +1089,11 @@ function DropdownMenuComplex() {
                     </DropdownMenuSubTrigger>
 
                     <DropdownMenuSubContent>
-                      <DropdownMenuGroup selectionMode="multiple" selectedKeys={notifications} onSelectionChange={setNotifications}>
+                      <DropdownMenuGroup
+                        selectionMode="multiple"
+                        selectedKeys={notifications}
+                        onSelectionChange={setNotifications}
+                      >
                         <DropdownMenuLabel>
                           Notification Types
                         </DropdownMenuLabel>

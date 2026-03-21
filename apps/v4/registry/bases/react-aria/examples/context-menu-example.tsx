@@ -427,9 +427,7 @@ function ContextMenuInDialog() {
   return (
     <Example title="In Dialog">
       <DialogTrigger>
-        <Button variant="outline">
-          Open Dialog
-        </Button>
+        <Button variant="outline">Open Dialog</Button>
         <Dialog>
           <DialogHeader>
             <DialogTitle>Context Menu Example</DialogTitle>

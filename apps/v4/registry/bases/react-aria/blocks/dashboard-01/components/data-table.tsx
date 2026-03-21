@@ -464,8 +464,19 @@ export function DataTable({
               align="end"
               className="w-32"
               selectionMode="multiple"
-              selectedKeys={Object.keys(columnVisibility).filter(key => columnVisibility[key])}
-              onSelectionChange={keys => setColumnVisibility(Object.fromEntries(keys === 'all' ? table.getAllColumns().map(column => [column.id, true]) : [...keys].map(key => [key, true])))}>
+              selectedKeys={Object.keys(columnVisibility).filter(
+                (key) => columnVisibility[key]
+              )}
+              onSelectionChange={(keys) =>
+                setColumnVisibility(
+                  Object.fromEntries(
+                    keys === "all"
+                      ? table.getAllColumns().map((column) => [column.id, true])
+                      : [...keys].map((key) => [key, true])
+                  )
+                )
+              }
+            >
               {table
                 .getAllColumns()
                 .filter(

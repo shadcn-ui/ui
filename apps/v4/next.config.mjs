@@ -48,12 +48,12 @@ const nextConfig = {
       },
       // Component redirects (default to radix).
       {
-        source: "/docs/components/:name((?!radix|base|form)[^/]+)",
+        source: "/docs/components/:name((?!radix|base|react-aria|form)[^/]+)",
         destination: "/docs/components/radix/:name",
         permanent: false,
       },
       {
-        source: "/docs/components/:name((?!radix|base|form)[^/]+).md",
+        source: "/docs/components/:name((?!radix|base|react-aria|form)[^/]+).md",
         destination: "/docs/components/radix/:name.md",
         permanent: false,
       },

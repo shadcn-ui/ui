@@ -1,6 +1,9 @@
 import { AppSidebar } from "@/registry/bases/react-aria/blocks/sidebar-16/components/app-sidebar"
 import { SiteHeader } from "@/registry/bases/react-aria/blocks/sidebar-16/components/site-header"
-import { SidebarInset, SidebarProvider } from "@/registry/bases/react-aria/ui/sidebar"
+import {
+  SidebarInset,
+  SidebarProvider,
+} from "@/registry/bases/react-aria/ui/sidebar"
 
 export const iframeHeight = "800px"
 

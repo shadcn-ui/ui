@@ -33,7 +33,9 @@ function Slider<T extends SliderValue = SliderValue>({
       {({ isDisabled, orientation, state }) => {
         const hasValues = state.values.length > 0
         const startPercent =
-          hasValues && state.values.length > 1 ? state.getThumbPercent(0) * 100 : 0
+          hasValues && state.values.length > 1
+            ? state.getThumbPercent(0) * 100
+            : 0
         const endPercent = hasValues
           ? state.getThumbPercent(state.values.length - 1) * 100
           : 0
@@ -50,8 +52,16 @@ function Slider<T extends SliderValue = SliderValue>({
                 className="cn-slider-range absolute select-none data-horizontal:h-full data-vertical:w-full"
                 style={
                   orientation === "vertical"
-                    ? { bottom: `${startPercent}%`, height: `${sizePercent}%`, width: "100%" }
-                    : { left: `${startPercent}%`, width: `${sizePercent}%`, height: "100%" }
+                    ? {
+                        bottom: `${startPercent}%`,
+                        height: `${sizePercent}%`,
+                        width: "100%",
+                      }
+                    : {
+                        left: `${startPercent}%`,
+                        width: `${sizePercent}%`,
+                        height: "100%",
+                      }
                 }
               />
             </SliderTrack>

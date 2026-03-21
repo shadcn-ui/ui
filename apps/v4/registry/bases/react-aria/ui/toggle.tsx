@@ -1,10 +1,10 @@
 "use client"
 
+import { cva, type VariantProps } from "class-variance-authority"
 import {
   ToggleButton as TogglePrimitive,
   type ToggleButtonProps,
 } from "react-aria-components"
-import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/registry/bases/react-aria/lib/utils"
 

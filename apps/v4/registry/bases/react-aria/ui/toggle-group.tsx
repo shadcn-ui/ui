@@ -3,8 +3,8 @@
 import * as React from "react"
 import { type VariantProps } from "class-variance-authority"
 import {
-  ToggleButton as TogglePrimitive,
   ToggleButtonGroup as ToggleGroupPrimitive,
+  ToggleButton as TogglePrimitive,
   type ToggleButtonGroupProps,
   type ToggleButtonProps,
 } from "react-aria-components"
@@ -35,7 +35,7 @@ function ToggleGroup({
 }: Omit<ToggleButtonGroupProps, "children"> &
   VariantProps<typeof toggleVariants> & {
     spacing?: number
-    orientation?: "horizontal" | "vertical",
+    orientation?: "horizontal" | "vertical"
     children?: React.ReactNode
   }) {
   return (

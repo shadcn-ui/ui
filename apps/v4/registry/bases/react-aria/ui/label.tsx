@@ -1,7 +1,8 @@
 "use client"
 
 import * as React from "react"
-import {Label as LabelPrimitive} from "react-aria-components"
+import { Label as LabelPrimitive } from "react-aria-components"
+
 import { cn } from "@/registry/bases/react-aria/lib/utils"
 
 function Label({ className, ...props }: React.ComponentProps<"label">) {

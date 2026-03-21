@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "font-figtree",
+  "title": "Figtree",
+  "type": "registry:font",
+  "font": {
+    "family": "'Figtree Variable', sans-serif",
+    "provider": "google",
+    "import": "Figtree",
+    "variable": "--font-sans",
+    "subsets": [
+      "latin"
+    ]
+  }
+}

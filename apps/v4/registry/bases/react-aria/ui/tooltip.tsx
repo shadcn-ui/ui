@@ -39,7 +39,9 @@ function getPlacement(side: TooltipSide, align: TooltipAlign) {
   return `${side} ${align}` as const
 }
 
-function TooltipTrigger({ ...props }: React.ComponentProps<typeof TooltipTriggerPrimitive>) {
+function TooltipTrigger({
+  ...props
+}: React.ComponentProps<typeof TooltipTriggerPrimitive>) {
   return <TooltipTriggerPrimitive {...props} />
 }
 
@@ -85,22 +87,21 @@ function Tooltip({
       {children}
       <OverlayArrow
         className="cn-tooltip-arrow cn-tooltip-arrow-logical z-50 bg-foreground fill-foreground"
-        style={({placement, defaultStyle}) => ({
+        style={({ placement, defaultStyle }) => ({
           ...defaultStyle,
           rotate: "0deg",
           translate: "0 0",
-          transform: placement === "bottom"
-            ? "translate(-50%, calc(50% + 2px)) rotate(45deg)"
-            : placement === "top"
-            ? "translate(-50%, calc(-50% - 2px)) rotate(45deg)"
-            : placement === "left"
-            ? "translate(calc(-50% - 2px), -50%) rotate(45deg)"
-            : "translate(calc(50% + 2px), -50%) rotate(45deg)",
+          transform:
+            placement === "bottom"
+              ? "translate(-50%, calc(50% + 2px)) rotate(45deg)"
+              : placement === "top"
+                ? "translate(-50%, calc(-50% - 2px)) rotate(45deg)"
+                : placement === "left"
+                  ? "translate(calc(-50% - 2px), -50%) rotate(45deg)"
+                  : "translate(calc(50% + 2px), -50%) rotate(45deg)",
         })}
         render={(props, { placement }) => (
-          <div
-            {...props}
-            data-side={placement} />
+          <div {...props} data-side={placement} />
         )}
       />
     </TooltipPrimitive>

@@ -1,10 +1,10 @@
 "use client"
 
 import * as React from "react"
-import { Pressable } from "react-aria-components"
 import { mergeProps } from "@base-ui/react/merge-props"
 import { useRender } from "@base-ui/react/use-render"
 import { cva, type VariantProps } from "class-variance-authority"
+import { Pressable } from "react-aria-components"
 
 import { useIsMobile } from "@/registry/bases/react-aria/hooks/use-mobile"
 import { cn } from "@/registry/bases/react-aria/lib/utils"
@@ -18,10 +18,7 @@ import {
   SheetTitle,
 } from "@/registry/bases/react-aria/ui/sheet"
 import { Skeleton } from "@/registry/bases/react-aria/ui/skeleton"
-import {
-  Tooltip,
-  TooltipTrigger,
-} from "@/registry/bases/react-aria/ui/tooltip"
+import { Tooltip, TooltipTrigger } from "@/registry/bases/react-aria/ui/tooltip"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 const SIDEBAR_COOKIE_NAME = "sidebar_state"
@@ -539,7 +536,12 @@ function SidebarMenuButton({
   if (!tooltip) {
     return (
       <Pressable>
-        {comp as React.ReactElement<React.HTMLAttributes<HTMLButtonElement>, string>}
+        {
+          comp as React.ReactElement<
+            React.HTMLAttributes<HTMLButtonElement>,
+            string
+          >
+        }
       </Pressable>
     )
   }
@@ -553,13 +555,14 @@ function SidebarMenuButton({
   return (
     <TooltipTrigger isDisabled={state !== "collapsed" || isMobile}>
       <Pressable>
-        {comp as React.ReactElement<React.HTMLAttributes<HTMLButtonElement>, string>}
+        {
+          comp as React.ReactElement<
+            React.HTMLAttributes<HTMLButtonElement>,
+            string
+          >
+        }
       </Pressable>
-      <Tooltip
-        side="right"
-        align="center"
-        {...tooltip}
-      />
+      <Tooltip side="right" align="center" {...tooltip} />
     </TooltipTrigger>
   )
 }
@@ -595,7 +598,12 @@ function SidebarMenuAction({
 
   return (
     <Pressable>
-      {comp as React.ReactElement<React.HTMLAttributes<HTMLButtonElement>, string>}
+      {
+        comp as React.ReactElement<
+          React.HTMLAttributes<HTMLButtonElement>,
+          string
+        >
+      }
     </Pressable>
   )
 }
@@ -713,7 +721,12 @@ function SidebarMenuSubButton({
 
   return (
     <Pressable>
-      {comp as React.ReactElement<React.HTMLAttributes<HTMLAnchorElement>, string>}
+      {
+        comp as React.ReactElement<
+          React.HTMLAttributes<HTMLAnchorElement>,
+          string
+        >
+      }
     </Pressable>
   )
 }

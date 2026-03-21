@@ -5,8 +5,8 @@ import {
   Dialog as DialogPrimitive,
   DialogTrigger as DialogTriggerPrimitive,
   Heading,
-  Modal as ModalPrimitive,
   ModalOverlay as ModalOverlayPrimitive,
+  Modal as ModalPrimitive,
   type DialogProps as DialogPrimitiveProps,
   type DialogTriggerProps as DialogTriggerPrimitiveProps,
   type ModalOverlayProps as ModalOverlayPrimitiveProps,
@@ -94,7 +94,10 @@ function Dialog({
           />
         )}
       >
-        <DialogPrimitive data-slot="dialog" className="[display:inherit] [gap:inherit] outline-none">
+        <DialogPrimitive
+          data-slot="dialog"
+          className="[display:inherit] [gap:inherit] outline-none"
+        >
           {children}
           {showCloseButton && (
             <DialogClose
@@ -125,11 +128,7 @@ function DialogContent({
   ...props
 }: React.ComponentProps<typeof Dialog>) {
   return (
-    <Dialog
-      className={className}
-      showCloseButton={showCloseButton}
-      {...props}
-    >
+    <Dialog className={className} showCloseButton={showCloseButton} {...props}>
       {children}
     </Dialog>
   )
@@ -163,11 +162,7 @@ function DialogFooter({
       {...props}
     >
       {children}
-      {showCloseButton && (
-        <DialogClose variant="outline">
-          Close
-        </DialogClose>
-      )}
+      {showCloseButton && <DialogClose variant="outline">Close</DialogClose>}
     </div>
   )
 }

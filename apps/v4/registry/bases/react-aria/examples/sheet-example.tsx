@@ -3,7 +3,11 @@ import {
   ExampleWrapper,
 } from "@/registry/bases/react-aria/components/example"
 import { Button } from "@/registry/bases/react-aria/ui/button"
-import { Field, FieldGroup, FieldLabel } from "@/registry/bases/react-aria/ui/field"
+import {
+  Field,
+  FieldGroup,
+  FieldLabel,
+} from "@/registry/bases/react-aria/ui/field"
 import { Input } from "@/registry/bases/react-aria/ui/input"
 import {
   Sheet,
@@ -64,9 +68,7 @@ function SheetNoCloseButton() {
   return (
     <Example title="No Close Button">
       <SheetTrigger>
-        <Button variant="outline">
-          No Close Button
-        </Button>
+        <Button variant="outline">No Close Button</Button>
         <Sheet showCloseButton={false}>
           <SheetHeader>
             <SheetTitle>No Close Button</SheetTitle>
@@ -122,9 +124,7 @@ function SheetWithSides() {
               </div>
               <SheetFooter>
                 <Button type="submit">Save changes</Button>
-                <SheetClose variant="outline">
-                  Cancel
-                </SheetClose>
+                <SheetClose variant="outline">Cancel</SheetClose>
               </SheetFooter>
             </Sheet>
           </SheetTrigger>

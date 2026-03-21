@@ -13,6 +13,9 @@ function getStyleFromSlug(slug: string[] | undefined, fallbackStyle: string) {
     if (slug[1] === "base") {
       return "base-nova"
     }
+    if (slug[1] === "react-aria") {
+      return "base-react-aria"
+    }
     if (slug[1] === "radix") {
       return "new-york-v4"
     }

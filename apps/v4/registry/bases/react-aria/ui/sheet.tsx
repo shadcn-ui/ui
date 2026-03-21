@@ -2,15 +2,15 @@
 
 import * as React from "react"
 import {
+  Heading,
+  ModalOverlay as ModalOverlayPrimitive,
+  Modal as ModalPrimitive,
   Dialog as SheetPrimitive,
   DialogTrigger as SheetTriggerPrimitive,
-  Heading,
-  Modal as ModalPrimitive,
-  ModalOverlay as ModalOverlayPrimitive,
-  type DialogProps as SheetPrimitiveProps,
-  type DialogTriggerProps as SheetTriggerPrimitiveProps,
   type ModalOverlayProps as ModalOverlayPrimitiveProps,
   type ModalRenderProps,
+  type DialogProps as SheetPrimitiveProps,
+  type DialogTriggerProps as SheetTriggerPrimitiveProps,
 } from "react-aria-components"
 
 import { cn } from "@/registry/bases/react-aria/lib/utils"
@@ -95,7 +95,10 @@ function Sheet({
           />
         )}
       >
-        <SheetPrimitive data-slot="sheet" className="[display:inherit] [flex-direction:inherit] [gap:inherit] h-full max-h-[inherit] outline-none">
+        <SheetPrimitive
+          data-slot="sheet"
+          className="[display:inherit] h-full max-h-[inherit] [flex-direction:inherit] [gap:inherit] outline-none"
+        >
           {children}
           {showCloseButton && (
             <SheetClose

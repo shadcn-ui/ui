@@ -40,10 +40,12 @@ export function NavMain({
             key={item.title}
             defaultExpanded={item.isActive}
             className="group/collapsible"
-            render={props => <SidebarMenuItem {...props} />}
+            render={(props) => <SidebarMenuItem {...props} />}
           >
             <CollapsibleTrigger
-              render={props => <SidebarMenuButton {...props} tooltip={item.title} />}
+              render={(props) => (
+                <SidebarMenuButton {...props} tooltip={item.title} />
+              )}
             >
               {item.icon}
               <span>{item.title}</span>

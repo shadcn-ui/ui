@@ -143,14 +143,20 @@ function DropdownMenuItem({
       data-inset={inset}
       data-variant={variant}
       textValue={typeof children === "string" ? children : props.textValue}
-      className={({selectionMode}) => cn(
-        selectionMode === "none" ? "cn-dropdown-menu-item" : selectionMode === "single" ? "cn-dropdown-menu-radio-item" : "cn-dropdown-menu-checkbox-item",
-        "group/dropdown-menu-item relative flex cursor-default items-center outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
-        className
-      )}
+      className={({ selectionMode }) =>
+        cn(
+          selectionMode === "none"
+            ? "cn-dropdown-menu-item"
+            : selectionMode === "single"
+              ? "cn-dropdown-menu-radio-item"
+              : "cn-dropdown-menu-checkbox-item",
+          "group/dropdown-menu-item relative flex cursor-default items-center outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+          className
+        )
+      }
       {...props}
     >
-      {composeRenderProps(children, (children, {isSelected}) => (
+      {composeRenderProps(children, (children, { isSelected }) => (
         <>
           <span
             className="cn-dropdown-menu-item-indicator pointer-events-none"
@@ -176,9 +182,7 @@ function DropdownMenuItem({
 function DropdownMenuSub({
   ...props
 }: React.ComponentProps<typeof SubmenuTriggerPrimitive>) {
-  return (
-    <SubmenuTriggerPrimitive {...props} />
-  )
+  return <SubmenuTriggerPrimitive {...props} />
 }
 
 function DropdownMenuSubTrigger({

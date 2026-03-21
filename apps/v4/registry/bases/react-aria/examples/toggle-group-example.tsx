@@ -201,7 +201,12 @@ function ToggleGroupSpacing() {
 function ToggleGroupWithIcons() {
   return (
     <Example title="With Icons">
-      <ToggleGroup selectionMode="multiple" variant="outline" spacing={2} size="sm">
+      <ToggleGroup
+        selectionMode="multiple"
+        variant="outline"
+        spacing={2}
+        size="sm"
+      >
         <ToggleGroupItem
           id="star"
           aria-label="Toggle star"

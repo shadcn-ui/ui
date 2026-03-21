@@ -19,9 +19,17 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/registry/bases/react-aria/ui/collapsible"
-import { Field, FieldGroup, FieldLabel } from "@/registry/bases/react-aria/ui/field"
+import {
+  Field,
+  FieldGroup,
+  FieldLabel,
+} from "@/registry/bases/react-aria/ui/field"
 import { Input } from "@/registry/bases/react-aria/ui/input"
-import { Tabs, TabsList, TabsTrigger } from "@/registry/bases/react-aria/ui/tabs"
+import {
+  Tabs,
+  TabsList,
+  TabsTrigger,
+} from "@/registry/bases/react-aria/ui/tabs"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function CollapsibleExample() {
@@ -93,7 +101,12 @@ function CollapsibleFileTree() {
       return (
         <Collapsible key={fileItem.name}>
           <CollapsibleTrigger
-            className={buttonVariants({ variant: "ghost", size: "sm", className: "group w-full justify-start transition-none hover:bg-accent hover:text-accent-foreground" })}
+            className={buttonVariants({
+              variant: "ghost",
+              size: "sm",
+              className:
+                "group w-full justify-start transition-none hover:bg-accent hover:text-accent-foreground",
+            })}
           >
             <IconPlaceholder
               lucide="ChevronRightIcon"

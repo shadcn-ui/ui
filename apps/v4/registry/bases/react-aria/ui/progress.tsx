@@ -27,12 +27,18 @@ function Progress({
       {({ percentage, valueText, isIndeterminate }) => (
         <>
           {label ? (
-            <span className={cn("cn-progress-label")} data-slot="progress-label">
+            <span
+              className={cn("cn-progress-label")}
+              data-slot="progress-label"
+            >
               {label}
             </span>
           ) : null}
           {showValueLabel ? (
-            <span className={cn("cn-progress-value")} data-slot="progress-value">
+            <span
+              className={cn("cn-progress-value")}
+              data-slot="progress-value"
+            >
               {valueText}
             </span>
           ) : null}

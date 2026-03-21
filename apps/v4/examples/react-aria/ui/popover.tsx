@@ -1,0 +1,123 @@
+"use client"
+
+import * as React from "react"
+import { cn } from "@/examples/react-aria/lib/utils"
+import {
+  DialogTrigger,
+  Heading,
+  Popover as PopoverPrimitive,
+  Text,
+  type DialogTriggerProps,
+  type PopoverProps as PopoverPrimitiveProps,
+} from "react-aria-components"
+
+type PopoverSide =
+  | "top"
+  | "right"
+  | "bottom"
+  | "left"
+  | "inline-start"
+  | "inline-end"
+type PopoverAlign = "start" | "center" | "end"
+
+function getPlacement(side: PopoverSide, align: PopoverAlign) {
+  if (side === "inline-start") {
+    return "start"
+  }
+
+  if (side === "inline-end") {
+    return "end"
+  }
+
+  if (align === "center") {
+    return side
+  }
+
+  if (side === "left" || side === "right") {
+    const crossPlacement = align === "start" ? "top" : "bottom"
+    return `${side} ${crossPlacement}` as const
+  }
+
+  return `${side} ${align}` as const
+}
+
+function PopoverTrigger({ children, ...props }: DialogTriggerProps) {
+  return <DialogTrigger {...props}>{children}</DialogTrigger>
+}
+
+function Popover({
+  className,
+  align = "center",
+  alignOffset = 0,
+  side = "bottom",
+  sideOffset = 4,
+  ...props
+}: Omit<PopoverPrimitiveProps, "className" | "children" | "placement"> & {
+  className?: string
+  children?: React.ReactNode
+  align?: PopoverAlign
+  alignOffset?: number
+  side?: PopoverSide
+  sideOffset?: number
+}) {
+  return (
+    <PopoverPrimitive
+      data-slot="popover-content"
+      placement={getPlacement(side, align)}
+      offset={sideOffset}
+      crossOffset={alignOffset}
+      render={(props, { placement, isEntering, isExiting }) => (
+        // compatibility with existing themes
+        <div
+          {...props}
+          data-side={placement}
+          data-open={isEntering}
+          data-closed={isExiting}
+        />
+      )}
+      className={cn(
+        "z-50 flex w-72 origin-(--trigger-anchor-point) flex-col gap-2.5 rounded-lg bg-popover p-2.5 text-sm text-popover-foreground shadow-md ring-1 ring-foreground/10 outline-hidden duration-100 data-entering:animate-in data-entering:fade-in-0 data-entering:zoom-in-95 data-exiting:animate-out data-exiting:fade-out-0 data-exiting:zoom-out-95 data-[placement=bottom]:slide-in-from-top-2 data-[placement=end]:slide-in-from-left-2 data-[placement=left]:slide-in-from-right-2 data-[placement=right]:slide-in-from-left-2 data-[placement=start]:slide-in-from-right-2 data-[placement=top]:slide-in-from-bottom-2 data-[side=bottom]:slide-in-from-top-2 data-[side=inline-end]:slide-in-from-left-2 data-[side=inline-start]:slide-in-from-right-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+function PopoverHeader({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="popover-header"
+      className={cn("flex flex-col gap-0.5 text-sm", className)}
+      {...props}
+    />
+  )
+}
+
+function PopoverTitle({
+  className,
+  ...props
+}: React.ComponentProps<typeof Heading>) {
+  return (
+    <Heading
+      data-slot="popover-title"
+      className={cn("font-medium", className)}
+      {...props}
+    />
+  )
+}
+
+function PopoverDescription({
+  className,
+  ...props
+}: React.ComponentProps<"div">) {
+  return <div className={cn("text-muted-foreground", className)} {...props} />
+}
+
+export {
+  Popover,
+  PopoverDescription,
+  PopoverHeader,
+  PopoverTitle,
+  PopoverTrigger,
+}

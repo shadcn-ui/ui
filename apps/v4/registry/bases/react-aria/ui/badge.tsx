@@ -26,7 +26,10 @@ function Badge({
   variant = "default",
   render,
   ...props
-}: React.ComponentProps<"span"> & VariantProps<typeof badgeVariants> & { render?: (props: React.HTMLAttributes<HTMLElement>) => React.ReactNode }) {
+}: React.ComponentProps<"span"> &
+  VariantProps<typeof badgeVariants> & {
+    render?: (props: React.HTMLAttributes<HTMLElement>) => React.ReactNode
+  }) {
   if (render) {
     return render({
       // @ts-expect-error - data-slot is not a valid prop for a span element

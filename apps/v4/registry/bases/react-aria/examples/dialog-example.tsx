@@ -56,10 +56,7 @@ import {
   TabsTrigger,
 } from "@/registry/bases/react-aria/ui/tabs"
 import { Textarea } from "@/registry/bases/react-aria/ui/textarea"
-import {
-  Tooltip,
-  TooltipTrigger,
-} from "@/registry/bases/react-aria/ui/tooltip"
+import { Tooltip, TooltipTrigger } from "@/registry/bases/react-aria/ui/tooltip"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function DialogExample() {
@@ -79,9 +76,7 @@ function DialogWithForm() {
     <Example title="With Form" className="items-center justify-center">
       <DialogTrigger>
         <form>
-          <Button variant="outline">
-            Edit Profile
-          </Button>
+          <Button variant="outline">Edit Profile</Button>
           <Dialog>
             <DialogHeader>
               <DialogTitle>Edit profile</DialogTitle>
@@ -105,9 +100,7 @@ function DialogWithForm() {
               </Field>
             </FieldGroup>
             <DialogFooter>
-              <DialogClose variant="outline">
-                Cancel
-              </DialogClose>
+              <DialogClose variant="outline">Cancel</DialogClose>
               <Button type="submit">Save changes</Button>
             </DialogFooter>
           </Dialog>
@@ -121,9 +114,7 @@ function DialogScrollableContent() {
   return (
     <Example title="Scrollable Content" className="items-center justify-center">
       <DialogTrigger>
-        <Button variant="outline">
-          Scrollable Content
-        </Button>
+        <Button variant="outline">Scrollable Content</Button>
         <Dialog>
           <DialogHeader>
             <DialogTitle>Scrollable Content</DialogTitle>
@@ -157,9 +148,7 @@ function DialogWithStickyFooter() {
   return (
     <Example title="With Sticky Footer" className="items-center justify-center">
       <DialogTrigger>
-        <Button variant="outline">
-          Sticky Footer
-        </Button>
+        <Button variant="outline">Sticky Footer</Button>
         <Dialog>
           <DialogHeader>
             <DialogTitle>Scrollable Content</DialogTitle>
@@ -184,9 +173,7 @@ function DialogWithStickyFooter() {
             ))}
           </div>
           <DialogFooter>
-            <DialogClose variant="outline">
-              Close
-            </DialogClose>
+            <DialogClose variant="outline">Close</DialogClose>
           </DialogFooter>
         </Dialog>
       </DialogTrigger>
@@ -198,9 +185,7 @@ function DialogNoCloseButton() {
   return (
     <Example title="No Close Button" className="items-center justify-center">
       <DialogTrigger>
-        <Button variant="outline">
-          No Close Button
-        </Button>
+        <Button variant="outline">No Close Button</Button>
         <Dialog showCloseButton={false}>
           <DialogHeader>
             <DialogTitle>No Close Button</DialogTitle>
@@ -210,9 +195,7 @@ function DialogNoCloseButton() {
             </DialogDescription>
           </DialogHeader>
           <DialogFooter>
-            <DialogClose variant="outline">
-              Close
-            </DialogClose>
+            <DialogClose variant="outline">Close</DialogClose>
           </DialogFooter>
         </Dialog>
       </DialogTrigger>
@@ -277,9 +260,7 @@ function DialogChatSettings() {
   return (
     <Example title="Chat Settings" className="items-center justify-center">
       <DialogTrigger>
-        <Button variant="outline">
-          Chat Settings
-        </Button>
+        <Button variant="outline">Chat Settings</Button>
         <Dialog className="min-w-md">
           <DialogHeader>
             <DialogTitle>Chat Settings</DialogTitle>
@@ -310,9 +291,7 @@ function DialogChatSettings() {
               <TabsList className="hidden w-full md:flex">
                 <TabsTrigger id="general">General</TabsTrigger>
                 <TabsTrigger id="notifications">Notifications</TabsTrigger>
-                <TabsTrigger id="personalization">
-                  Personalization
-                </TabsTrigger>
+                <TabsTrigger id="personalization">Personalization</TabsTrigger>
                 <TabsTrigger id="security">Security</TabsTrigger>
               </TabsList>
               <div className="border style-vega:min-h-[550px] style-vega:rounded-lg style-vega:p-6 style-nova:min-h-[460px] style-nova:rounded-lg style-nova:p-4 style-lyra:min-h-[450px] style-lyra:rounded-none style-lyra:p-4 style-maia:min-h-[550px] style-maia:rounded-xl style-maia:p-6 style-mira:min-h-[450px] style-mira:rounded-md style-mira:p-4 [&_[data-slot=select-trigger]]:min-w-[125px]">
@@ -331,10 +310,7 @@ function DialogChatSettings() {
                           <SelectContent align="end">
                             <SelectGroup>
                               {themes.map((theme) => (
-                                <SelectItem
-                                  key={theme.value}
-                                  id={theme.value}
-                                >
+                                <SelectItem key={theme.value} id={theme.value}>
                                   {theme.label}
                                 </SelectItem>
                               ))}
@@ -349,9 +325,7 @@ function DialogChatSettings() {
                         </FieldLabel>
                         <Select
                           value={accentColor}
-                          onChange={(value) =>
-                            setAccentColor(String(value))
-                          }
+                          onChange={(value) => setAccentColor(String(value))}
                         >
                           <SelectTrigger id="accent-color">
                             <SelectValue />
@@ -384,9 +358,7 @@ function DialogChatSettings() {
                         </FieldContent>
                         <Select
                           value={spokenLanguage}
-                          onChange={(value) =>
-                            setSpokenLanguage(String(value))
-                          }
+                          onChange={(value) => setSpokenLanguage(String(value))}
                         >
                           <SelectTrigger id="spoken-language">
                             <SelectValue />
@@ -418,10 +390,7 @@ function DialogChatSettings() {
                           <SelectContent align="end">
                             <SelectGroup>
                               {voices.map((voice) => (
-                                <SelectItem
-                                  key={voice.value}
-                                  id={voice.value}
-                                >
+                                <SelectItem key={voice.value} id={voice.value}>
                                   {voice.label}
                                 </SelectItem>
                               ))}

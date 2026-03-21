@@ -48,11 +48,7 @@ function EmptyBasic() {
             <LinkButton href="#">Create project</LinkButton>
             <Button variant="outline">Import project</Button>
           </div>
-          <LinkButton
-            variant="link"
-            href="#"
-            className="text-muted-foreground"
-          >
+          <LinkButton variant="link" href="#" className="text-muted-foreground">
             Learn more{" "}
             <IconPlaceholder
               lucide="ArrowUpRightIcon"
@@ -80,11 +76,7 @@ function EmptyWithMutedBackground() {
         </EmptyHeader>
         <EmptyContent>
           <Button>Try again</Button>
-          <LinkButton
-            variant="link"
-            href="#"
-            className="text-muted-foreground"
-          >
+          <LinkButton variant="link" href="#" className="text-muted-foreground">
             Learn more{" "}
             <IconPlaceholder
               lucide="ArrowUpRightIcon"
@@ -235,11 +227,7 @@ function EmptyInCard() {
             <LinkButton href="#">Create project</LinkButton>
             <Button variant="outline">Import project</Button>
           </div>
-          <LinkButton
-            variant="link"
-            href="#"
-            className="text-muted-foreground"
-          >
+          <LinkButton variant="link" href="#" className="text-muted-foreground">
             Learn more{" "}
             <IconPlaceholder
               lucide="ArrowUpRightIcon"

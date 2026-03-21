@@ -2,7 +2,11 @@ import {
   Example,
   ExampleWrapper,
 } from "@/registry/bases/react-aria/components/example"
-import { Card, CardContent, CardHeader } from "@/registry/bases/react-aria/ui/card"
+import {
+  Card,
+  CardContent,
+  CardHeader,
+} from "@/registry/bases/react-aria/ui/card"
 import { Skeleton } from "@/registry/bases/react-aria/ui/skeleton"
 
 export default function SkeletonExample() {

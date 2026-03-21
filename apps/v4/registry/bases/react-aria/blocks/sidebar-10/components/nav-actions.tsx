@@ -3,10 +3,7 @@
 import * as React from "react"
 
 import { Button } from "@/registry/bases/react-aria/ui/button"
-import {
-  Popover,
-  PopoverTrigger,
-} from "@/registry/bases/react-aria/ui/popover"
+import { Popover, PopoverTrigger } from "@/registry/bases/react-aria/ui/popover"
 import {
   Sidebar,
   SidebarContent,
@@ -203,9 +200,7 @@ export function NavActions() {
           remixicon="RiStarLine"
         />
       </Button>
-      <PopoverTrigger
-        isOpen={isOpen}
-        onOpenChange={setIsOpen}>
+      <PopoverTrigger isOpen={isOpen} onOpenChange={setIsOpen}>
         <Button
           variant="ghost"
           size="icon"
@@ -219,10 +214,7 @@ export function NavActions() {
             remixicon="RiMoreLine"
           />
         </Button>
-        <Popover
-          className="w-56 overflow-hidden rounded-lg p-0"
-          align="end"
-        >
+        <Popover className="w-56 overflow-hidden rounded-lg p-0" align="end">
           <Sidebar collapsible="none" className="bg-transparent">
             <SidebarContent>
               {data.map((group, index) => (

@@ -14,9 +14,7 @@ import {
   ItemMedia,
   ItemTitle,
 } from "@/registry/bases/react-aria/ui/item"
-import {
-  Progress,
-} from "@/registry/bases/react-aria/ui/progress"
+import { Progress } from "@/registry/bases/react-aria/ui/progress"
 import { Slider } from "@/registry/bases/react-aria/ui/slider"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
