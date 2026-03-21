@@ -311,7 +311,13 @@
     "url": "https://lensblocks.com/r/{name}.json",
     "description": "A collection of social media components for use with Lens Social Protocol."
   },
-  {
+  
+    {
+          "name": "@lightswind",
+          "homepage": "https://lightswind.com",
+          "url": "https://lightswind.com/r/{name}.json",
+          "description": "153+ premium animated React & Tailwind CSS components. Includes 3D effects, WebGL backgrounds, interactive primitives, scroll animations, and production-ready UI blocks for modern web apps."
+    },{
     "name": "@limeplay",
     "homepage": "https://limeplay.winoffrg.dev",
     "url": "https://limeplay.winoffrg.dev/r/{name}.json",
