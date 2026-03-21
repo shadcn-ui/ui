@@ -12,7 +12,7 @@ function Textarea({
   return (
     <Field.Textarea
       data-slot="textarea"
-      className={cn("cn-textarea", className)}
+      className={cn("w-full cn-textarea", className)}
       {...props}
     />
   )
