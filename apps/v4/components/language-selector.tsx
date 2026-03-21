@@ -10,11 +10,14 @@ import {
   SelectValue,
 } from "@/examples/base/ui/select"
 
+import {
+  languageOptions,
+  type Direction,
+  type Language,
+} from "@/lib/localization"
 import { cn } from "@/lib/utils"
 
-export type Language = "en" | "ar" | "he"
-
-export type Direction = "ltr" | "rtl"
+export type { Language }
 
 export type Translations<
   T extends Record<string, string> = Record<string, string>,
@@ -26,12 +29,6 @@ export type Translations<
     values: T
   }
 >
-
-export const languageOptions = [
-  { value: "en", label: "English" },
-  { value: "ar", label: "Arabic (العربية)" },
-  { value: "he", label: "Hebrew (עברית)" },
-] as const
 
 type LanguageContextType = {
   language: Language

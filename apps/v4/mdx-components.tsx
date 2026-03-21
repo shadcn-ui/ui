@@ -134,17 +134,17 @@ export const mdxComponents = {
     <strong className={cn("font-medium", className)} {...props} />
   ),
   ul: ({ className, ...props }: React.ComponentProps<"ul">) => (
-    <ul className={cn("my-6 ml-6 list-disc", className)} {...props} />
+    <ul className={cn("my-6 ms-6 list-disc", className)} {...props} />
   ),
   ol: ({ className, ...props }: React.ComponentProps<"ol">) => (
-    <ol className={cn("my-6 ml-6 list-decimal", className)} {...props} />
+    <ol className={cn("my-6 ms-6 list-decimal", className)} {...props} />
   ),
   li: ({ className, ...props }: React.ComponentProps<"li">) => (
     <li className={cn("mt-2", className)} {...props} />
   ),
   blockquote: ({ className, ...props }: React.ComponentProps<"blockquote">) => (
     <blockquote
-      className={cn("mt-6 border-l-2 pl-6 italic", className)}
+      className={cn("mt-6 border-s-2 ps-6 italic", className)}
       {...props}
     />
   ),
@@ -171,7 +171,7 @@ export const mdxComponents = {
   th: ({ className, ...props }: React.ComponentProps<"th">) => (
     <th
       className={cn(
-        "px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right",
+        "px-4 py-2 text-start font-bold [&[align=center]]:text-center [&[align=right]]:text-end",
         className
       )}
       {...props}
@@ -180,7 +180,7 @@ export const mdxComponents = {
   td: ({ className, ...props }: React.ComponentProps<"td">) => (
     <td
       className={cn(
-        "px-4 py-2 text-left whitespace-nowrap [&[align=center]]:text-center [&[align=right]]:text-right",
+        "px-4 py-2 text-start whitespace-nowrap [&[align=center]]:text-center [&[align=right]]:text-end",
         className
       )}
       {...props}
@@ -288,7 +288,7 @@ export const mdxComponents = {
   Steps: ({ className, ...props }: React.ComponentProps<"div">) => (
     <div
       className={cn(
-        "steps mb-12 [counter-reset:step] md:ml-4 md:border-l md:pl-8 [&>h3]:step",
+        "steps mb-12 [counter-reset:step] md:ms-4 md:border-s md:ps-8 [&>h3]:step",
         className
       )}
       {...props}

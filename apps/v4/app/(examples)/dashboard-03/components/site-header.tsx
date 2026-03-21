@@ -40,19 +40,19 @@ export function SiteHeader() {
       data-slot="site-header"
       className="sticky top-0 z-50 flex w-full items-center border-b bg-background"
     >
-      <div className="flex h-(--header-height) w-full items-center gap-2 px-2 pr-4">
+      <div className="flex h-(--header-height) w-full items-center gap-2 px-2 pe-4">
         <Button
           variant="ghost"
           size="sm"
           onClick={toggleSidebar}
           className="gap-2.5 has-[>svg]:px-2"
         >
-          <SidebarIcon />
+          <SidebarIcon className="rtl:-scale-x-100" />
           <span className="truncate font-medium">Acme Inc</span>
         </Button>
         <Separator
           orientation="vertical"
-          className="mr-2 data-[orientation=vertical]:h-4"
+          className="me-2 data-[orientation=vertical]:h-4"
         />
         <Breadcrumb className="hidden sm:block">
           <BreadcrumbList>
@@ -85,7 +85,7 @@ export function SiteHeader() {
             )}
           </BreadcrumbList>
         </Breadcrumb>
-        <div className="ml-auto flex items-center gap-2">
+        <div className="ms-auto flex items-center gap-2">
           <SearchForm className="w-fullsm:w-auto" />
           <ThemeSelector />
           <ModeToggle />

@@ -3,12 +3,30 @@
 import * as React from "react"
 import { Drawer as DrawerPrimitive } from "vaul"
 
+import { resolveSide, type LogicalSide } from "@/lib/localization"
 import { cn } from "@/lib/utils"
+import { useDirection } from "@/registry/new-york-v4/ui/direction"
+
+type DrawerDirection =
+  | NonNullable<React.ComponentProps<typeof DrawerPrimitive.Root>["direction"]>
+  | LogicalSide
 
 function Drawer({
+  direction,
   ...props
-}: React.ComponentProps<typeof DrawerPrimitive.Root>) {
-  return <DrawerPrimitive.Root data-slot="drawer" {...props} />
+}: Omit<React.ComponentProps<typeof DrawerPrimitive.Root>, "direction"> & {
+  direction?: DrawerDirection
+}) {
+  const textDirection = useDirection()
+  const rootProps = props as React.ComponentProps<typeof DrawerPrimitive.Root>
+
+  return (
+    <DrawerPrimitive.Root
+      data-slot="drawer"
+      {...rootProps}
+      direction={direction ? resolveSide(textDirection, direction) : undefined}
+    />
+  )
 }
 
 function DrawerTrigger({
@@ -77,7 +95,7 @@ function DrawerHeader({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="drawer-header"
       className={cn(
-        "flex flex-col gap-0.5 p-4 group-data-[vaul-drawer-direction=bottom]/drawer-content:text-center group-data-[vaul-drawer-direction=top]/drawer-content:text-center md:gap-1.5 md:text-left",
+        "flex flex-col gap-0.5 p-4 group-data-[vaul-drawer-direction=bottom]/drawer-content:text-center group-data-[vaul-drawer-direction=top]/drawer-content:text-center md:gap-1.5 md:text-start",
         className
       )}
       {...props}

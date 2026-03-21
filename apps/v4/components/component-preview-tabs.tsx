@@ -19,6 +19,7 @@ import {
 } from "@/components/language-selector"
 import { DirectionProvider as BaseDirectionProvider } from "@/registry/bases/base/ui/direction"
 import { DirectionProvider as RadixDirectionProvider } from "@/registry/bases/radix/ui/direction"
+import { DirectionProvider as NewYorkDirectionProvider } from "@/registry/new-york-v4/ui/direction"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import { Separator } from "@/registry/new-york-v4/ui/separator"
 
@@ -67,7 +68,7 @@ export function ComponentPreviewTabs({
                   <Button
                     variant="ghost"
                     size="icon-sm"
-                    className="ml-auto size-7"
+                    className="ms-auto size-7"
                   >
                     <IconAlertCircle />
                     <span className="sr-only">Toggle</span>
@@ -122,7 +123,7 @@ export function ComponentPreviewTabs({
         <div
           data-slot="code"
           data-mobile-code-visible={isMobileCodeVisible}
-          className="relative overflow-hidden **:data-[slot=copy-button]:right-4 **:data-[slot=copy-button]:hidden data-[mobile-code-visible=true]:**:data-[slot=copy-button]:flex [&_[data-rehype-pretty-code-figure]]:m-0! [&_[data-rehype-pretty-code-figure]]:rounded-t-none [&_[data-rehype-pretty-code-figure]]:border-t [&_pre]:max-h-72"
+          className="relative overflow-hidden **:data-[slot=copy-button]:end-4 **:data-[slot=copy-button]:hidden data-[mobile-code-visible=true]:**:data-[slot=copy-button]:flex [&_[data-rehype-pretty-code-figure]]:m-0! [&_[data-rehype-pretty-code-figure]]:rounded-t-none [&_[data-rehype-pretty-code-figure]]:border-t [&_pre]:max-h-72"
         >
           {isMobileCodeVisible ? (
             <>
@@ -259,9 +260,15 @@ function DirectionProviderWrapper({
 
   if (base === "base") {
     return (
-      <BaseDirectionProvider direction={dir}>{children}</BaseDirectionProvider>
+      <NewYorkDirectionProvider dir={dir}>
+        <BaseDirectionProvider direction={dir}>{children}</BaseDirectionProvider>
+      </NewYorkDirectionProvider>
     )
   }
 
-  return <RadixDirectionProvider dir={dir}>{children}</RadixDirectionProvider>
+  return (
+    <NewYorkDirectionProvider dir={dir}>
+      <RadixDirectionProvider dir={dir}>{children}</RadixDirectionProvider>
+    </NewYorkDirectionProvider>
+  )
 }

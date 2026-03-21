@@ -54,7 +54,7 @@ export function ThemeSelector() {
   const { activeTheme, setActiveTheme } = useThemeConfig()
 
   return (
-    <div className="flex items-center gap-2">
+    <div dir="ltr" className="flex items-center gap-2">
       <Label htmlFor="theme-selector" className="sr-only">
         Theme
       </Label>

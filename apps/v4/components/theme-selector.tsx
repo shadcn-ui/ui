@@ -28,7 +28,7 @@ export function ThemeSelector({ className }: React.ComponentProps<"div">) {
   }))
 
   return (
-    <div className={cn("flex items-center gap-2", className)}>
+    <div dir="ltr" className={cn("flex items-center gap-2", className)}>
       <Label htmlFor="theme-selector" className="sr-only">
         Theme
       </Label>
