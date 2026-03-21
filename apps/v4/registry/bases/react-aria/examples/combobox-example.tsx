@@ -16,9 +16,9 @@ import {
 import {
   Combobox,
   ComboboxChip,
+  ComboboxChipList,
   ComboboxChips,
   ComboboxChipsInput,
-  ComboboxCollection,
   ComboboxContent,
   ComboboxEmpty,
   ComboboxGroup,
@@ -27,7 +27,6 @@ import {
   ComboboxLabel,
   ComboboxList,
   ComboboxSeparator,
-  ComboboxTrigger,
   ComboboxValue,
   useComboboxAnchor,
 } from "@/registry/bases/react-aria/ui/combobox"
@@ -81,7 +80,6 @@ export default function ComboboxExample() {
       <ComboboxWithGroupsAndSeparator />
       <ComboboxLargeList />
       <ComboxboxInputAddon />
-      <ComboboxInPopup />
       <ComboboxWithForm />
       <ComboboxMultiple />
       <ComboboxMultipleDisabled />
@@ -553,16 +551,19 @@ const timezones = [
 function ComboboxBasic() {
   return (
     <Example title="Basic">
-      <Combobox items={frameworks}>
+      <Combobox allowsEmptyCollection>
         <ComboboxInput placeholder="Select a framework" />
         <ComboboxContent>
-          <ComboboxEmpty>No items found.</ComboboxEmpty>
-          <ComboboxList>
-            {(item) => (
-              <ComboboxItem key={item} value={item}>
+          <ComboboxList
+            renderEmptyState={() => (
+              <ComboboxEmpty>No items found.</ComboboxEmpty>
+            )}
+          >
+            {frameworks.map((item) => (
+              <ComboboxItem key={item} id={item}>
                 {item}
               </ComboboxItem>
-            )}
+            ))}
           </ComboboxList>
         </ComboboxContent>
       </Combobox>
@@ -584,19 +585,22 @@ function ComboboxSides() {
             "inline-end",
           ] as const
         ).map((side) => (
-          <Combobox key={side} items={frameworks}>
+          <Combobox key={side} allowsEmptyCollection>
             <ComboboxInput
               placeholder={side.replace("-", " ")}
               className="w-32 **:data-[slot=input-group-control]:capitalize"
             />
             <ComboboxContent side={side}>
-              <ComboboxEmpty>No items found.</ComboboxEmpty>
-              <ComboboxList>
-                {(item) => (
-                  <ComboboxItem key={item} value={item}>
+              <ComboboxList
+                renderEmptyState={() => (
+                  <ComboboxEmpty>No items found.</ComboboxEmpty>
+                )}
+              >
+                {frameworks.map((item) => (
+                  <ComboboxItem key={item} id={item}>
                     {item}
                   </ComboboxItem>
-                )}
+                ))}
               </ComboboxList>
             </ComboboxContent>
           </Combobox>
@@ -609,16 +613,19 @@ function ComboboxSides() {
 function ComboboxDisabled() {
   return (
     <Example title="Disabled">
-      <Combobox items={frameworks}>
+      <Combobox allowsEmptyCollection>
         <ComboboxInput placeholder="Select a framework" disabled />
         <ComboboxContent>
-          <ComboboxEmpty>No items found.</ComboboxEmpty>
-          <ComboboxList>
-            {(item) => (
-              <ComboboxItem key={item} value={item}>
+          <ComboboxList
+            renderEmptyState={() => (
+              <ComboboxEmpty>No items found.</ComboboxEmpty>
+            )}
+          >
+            {frameworks.map((item) => (
+              <ComboboxItem key={item} id={item}>
                 {item}
               </ComboboxItem>
-            )}
+            ))}
           </ComboboxList>
         </ComboboxContent>
       </Combobox>
@@ -631,20 +638,23 @@ const disabledFrameworks = ["Nuxt.js", "Remix"]
 function ComboboxDisabledItems() {
   return (
     <Example title="Disabled Items">
-      <Combobox items={frameworks}>
+      <Combobox allowsEmptyCollection>
         <ComboboxInput placeholder="Select a framework" />
         <ComboboxContent>
-          <ComboboxEmpty>No items found.</ComboboxEmpty>
-          <ComboboxList>
-            {(item) => (
+          <ComboboxList
+            renderEmptyState={() => (
+              <ComboboxEmpty>No items found.</ComboboxEmpty>
+            )}
+          >
+            {frameworks.map((item) => (
               <ComboboxItem
                 key={item}
-                value={item}
-                disabled={disabledFrameworks.includes(item)}
+                id={item}
+                isDisabled={disabledFrameworks.includes(item)}
               >
                 {item}
               </ComboboxItem>
-            )}
+            ))}
           </ComboboxList>
         </ComboboxContent>
       </Combobox>
@@ -656,16 +666,19 @@ function ComboboxInvalid() {
   return (
     <Example title="Invalid">
       <div className="flex flex-col gap-4">
-        <Combobox items={frameworks}>
-          <ComboboxInput placeholder="Select a framework" aria-invalid="true" />
+        <Combobox allowsEmptyCollection isInvalid>
+          <ComboboxInput placeholder="Select a framework" />
           <ComboboxContent>
-            <ComboboxEmpty>No items found.</ComboboxEmpty>
-            <ComboboxList>
-              {(item) => (
-                <ComboboxItem key={item} value={item}>
+            <ComboboxList
+              renderEmptyState={() => (
+                <ComboboxEmpty>No items found.</ComboboxEmpty>
+              )}
+            >
+              {frameworks.map((item) => (
+                <ComboboxItem key={item} id={item}>
                   {item}
                 </ComboboxItem>
-              )}
+              ))}
             </ComboboxList>
           </ComboboxContent>
         </Combobox>
@@ -673,20 +686,22 @@ function ComboboxInvalid() {
           <FieldLabel htmlFor="combobox-framework-invalid">
             Framework
           </FieldLabel>
-          <Combobox items={frameworks}>
+          <Combobox allowsEmptyCollection isInvalid>
             <ComboboxInput
               id="combobox-framework-invalid"
               placeholder="Select a framework"
-              aria-invalid
             />
             <ComboboxContent>
-              <ComboboxEmpty>No items found.</ComboboxEmpty>
-              <ComboboxList>
-                {(item) => (
-                  <ComboboxItem key={item} value={item}>
+              <ComboboxList
+                renderEmptyState={() => (
+                  <ComboboxEmpty>No items found.</ComboboxEmpty>
+                )}
+              >
+                {frameworks.map((item) => (
+                  <ComboboxItem key={item} id={item}>
                     {item}
                   </ComboboxItem>
-                )}
+                ))}
               </ComboboxList>
             </ComboboxContent>
           </Combobox>
@@ -701,16 +716,19 @@ function ComboboxInvalid() {
 function ComboboxWithClear() {
   return (
     <Example title="With Clear Button">
-      <Combobox items={frameworks} defaultValue={frameworks[0]}>
+      <Combobox defaultValue={frameworks[0]} allowsEmptyCollection>
         <ComboboxInput placeholder="Select a framework" showClear />
         <ComboboxContent>
-          <ComboboxEmpty>No items found.</ComboboxEmpty>
-          <ComboboxList>
-            {(item) => (
-              <ComboboxItem key={item} value={item}>
+          <ComboboxList
+            renderEmptyState={() => (
+              <ComboboxEmpty>No items found.</ComboboxEmpty>
+            )}
+          >
+            {frameworks.map((item) => (
+              <ComboboxItem key={item} id={item}>
                 {item}
               </ComboboxItem>
-            )}
+            ))}
           </ComboboxList>
         </ComboboxContent>
       </Combobox>
@@ -721,21 +739,23 @@ function ComboboxWithClear() {
 function ComboboxWithGroups() {
   return (
     <Example title="With Groups">
-      <Combobox items={timezones}>
+      <Combobox allowsEmptyCollection>
         <ComboboxInput placeholder="Select a timezone" />
         <ComboboxContent>
-          <ComboboxEmpty>No timezones found.</ComboboxEmpty>
-          <ComboboxList>
+          <ComboboxList
+            items={timezones}
+            renderEmptyState={() => (
+              <ComboboxEmpty>No timezones found.</ComboboxEmpty>
+            )}
+          >
             {(group) => (
-              <ComboboxGroup key={group.value} items={group.items}>
+              <ComboboxGroup id={group.value}>
                 <ComboboxLabel>{group.value}</ComboboxLabel>
-                <ComboboxCollection>
-                  {(item) => (
-                    <ComboboxItem key={item} value={item}>
-                      {item}
-                    </ComboboxItem>
-                  )}
-                </ComboboxCollection>
+                {group.items.map((item) => (
+                  <ComboboxItem key={item} id={item}>
+                    {item}
+                  </ComboboxItem>
+                ))}
               </ComboboxGroup>
             )}
           </ComboboxList>
@@ -748,21 +768,23 @@ function ComboboxWithGroups() {
 function ComboboxWithGroupsAndSeparator() {
   return (
     <Example title="With Groups and Separator">
-      <Combobox items={timezones}>
+      <Combobox allowsEmptyCollection>
         <ComboboxInput placeholder="Select a timezone" />
         <ComboboxContent>
-          <ComboboxEmpty>No timezones found.</ComboboxEmpty>
-          <ComboboxList>
+          <ComboboxList
+            items={timezones}
+            renderEmptyState={() => (
+              <ComboboxEmpty>No timezones found.</ComboboxEmpty>
+            )}
+          >
             {(group) => (
-              <ComboboxGroup key={group.value} items={group.items}>
+              <ComboboxGroup id={group.value}>
                 <ComboboxLabel>{group.value}</ComboboxLabel>
-                <ComboboxCollection>
-                  {(item) => (
-                    <ComboboxItem key={item} value={item}>
-                      {item}
-                    </ComboboxItem>
-                  )}
-                </ComboboxCollection>
+                {group.items.map((item) => (
+                  <ComboboxItem key={item} id={item}>
+                    {item}
+                  </ComboboxItem>
+                ))}
                 <ComboboxSeparator />
               </ComboboxGroup>
             )}
@@ -793,7 +815,7 @@ function ComboboxWithForm() {
             <FieldGroup>
               <Field>
                 <FieldLabel htmlFor="framework">Framework</FieldLabel>
-                <Combobox items={frameworks}>
+                <Combobox allowsEmptyCollection>
                   <ComboboxInput
                     id="framework"
                     name="framework"
@@ -801,13 +823,16 @@ function ComboboxWithForm() {
                     required
                   />
                   <ComboboxContent>
-                    <ComboboxEmpty>No items found.</ComboboxEmpty>
-                    <ComboboxList>
-                      {(item) => (
-                        <ComboboxItem key={item} value={item}>
+                    <ComboboxList
+                      renderEmptyState={() => (
+                        <ComboboxEmpty>No items found.</ComboboxEmpty>
+                      )}
+                    >
+                      {frameworks.map((item) => (
+                        <ComboboxItem key={item} id={item}>
                           {item}
                         </ComboboxItem>
-                      )}
+                      ))}
                     </ComboboxList>
                   </ComboboxContent>
                 </Combobox>
@@ -830,16 +855,19 @@ const largeListItems = Array.from({ length: 100 }, (_, i) => `Item ${i + 1}`)
 function ComboboxLargeList() {
   return (
     <Example title="Large List (100 items)">
-      <Combobox items={largeListItems}>
+      <Combobox allowsEmptyCollection>
         <ComboboxInput placeholder="Search from 100 items" />
         <ComboboxContent>
-          <ComboboxEmpty>No items found.</ComboboxEmpty>
-          <ComboboxList>
-            {(item) => (
-              <ComboboxItem key={item} value={item}>
+          <ComboboxList
+            renderEmptyState={() => (
+              <ComboboxEmpty>No items found.</ComboboxEmpty>
+            )}
+          >
+            {largeListItems.map((item) => (
+              <ComboboxItem key={item} id={item}>
                 {item}
               </ComboboxItem>
-            )}
+            ))}
           </ComboboxList>
         </ComboboxContent>
       </Combobox>
@@ -850,16 +878,19 @@ function ComboboxLargeList() {
 function ComboboxAutoHighlight() {
   return (
     <Example title="With Auto Highlight">
-      <Combobox items={frameworks} autoHighlight>
+      <Combobox allowsEmptyCollection>
         <ComboboxInput placeholder="Select a framework" />
         <ComboboxContent>
-          <ComboboxEmpty>No items found.</ComboboxEmpty>
-          <ComboboxList>
-            {(item) => (
-              <ComboboxItem key={item} value={item}>
+          <ComboboxList
+            renderEmptyState={() => (
+              <ComboboxEmpty>No items found.</ComboboxEmpty>
+            )}
+          >
+            {frameworks.map((item) => (
+              <ComboboxItem key={item} id={item}>
                 {item}
               </ComboboxItem>
-            )}
+            ))}
           </ComboboxList>
         </ComboboxContent>
       </Combobox>
@@ -870,7 +901,7 @@ function ComboboxAutoHighlight() {
 function ComboxboxInputAddon() {
   return (
     <Example title="With Icon Addon">
-      <Combobox items={timezones}>
+      <Combobox allowsEmptyCollection>
         <ComboboxInput placeholder="Select a timezone">
           <InputGroupAddon>
             <IconPlaceholder
@@ -883,49 +914,21 @@ function ComboxboxInputAddon() {
           </InputGroupAddon>
         </ComboboxInput>
         <ComboboxContent alignOffset={-28} className="w-60">
-          <ComboboxEmpty>No timezones found.</ComboboxEmpty>
-          <ComboboxList>
-            {(group) => (
-              <ComboboxGroup key={group.value} items={group.items}>
-                <ComboboxLabel>{group.value}</ComboboxLabel>
-                <ComboboxCollection>
-                  {(item) => (
-                    <ComboboxItem key={item} value={item}>
-                      {item}
-                    </ComboboxItem>
-                  )}
-                </ComboboxCollection>
-              </ComboboxGroup>
+          <ComboboxList
+            items={timezones}
+            renderEmptyState={() => (
+              <ComboboxEmpty>No timezones found.</ComboboxEmpty>
             )}
-          </ComboboxList>
-        </ComboboxContent>
-      </Combobox>
-    </Example>
-  )
-}
-
-function ComboboxInPopup() {
-  return (
-    <Example title="Combobox in Popup">
-      <Combobox items={countries} defaultValue={countries[0]}>
-        <ComboboxTrigger
-          render={
-            <Button
-              variant="outline"
-              className="w-64 justify-between font-normal"
-            />
-          }
-        >
-          <ComboboxValue />
-        </ComboboxTrigger>
-        <ComboboxContent>
-          <ComboboxInput showTrigger={false} placeholder="Search" />
-          <ComboboxEmpty>No items found.</ComboboxEmpty>
-          <ComboboxList>
-            {(item) => (
-              <ComboboxItem key={item.code} value={item}>
-                {item.label}
-              </ComboboxItem>
+          >
+            {(group) => (
+              <ComboboxGroup id={group.value}>
+                <ComboboxLabel>{group.value}</ComboboxLabel>
+                {group.items.map((item) => (
+                  <ComboboxItem key={item} id={item}>
+                    {item}
+                  </ComboboxItem>
+                ))}
+              </ComboboxGroup>
             )}
           </ComboboxList>
         </ComboboxContent>
@@ -940,31 +943,29 @@ function ComboboxMultiple() {
   return (
     <Example title="Combobox Multiple">
       <Combobox
-        multiple
-        autoHighlight
-        items={frameworks}
+        selectionMode="multiple"
         defaultValue={[frameworks[0]]}
+        allowsEmptyCollection
       >
         <ComboboxChips ref={anchor}>
-          <ComboboxValue>
-            {(values) => (
-              <React.Fragment>
-                {values.map((value: string) => (
-                  <ComboboxChip key={value}>{value}</ComboboxChip>
-                ))}
-                <ComboboxChipsInput />
-              </React.Fragment>
+          <ComboboxChipList<{ name: string }>>
+            {(value) => (
+              <ComboboxChip id={value.name}>{value.name}</ComboboxChip>
             )}
-          </ComboboxValue>
+          </ComboboxChipList>
+          <ComboboxChipsInput />
         </ComboboxChips>
         <ComboboxContent anchor={anchor}>
-          <ComboboxEmpty>No items found.</ComboboxEmpty>
-          <ComboboxList>
-            {(item) => (
-              <ComboboxItem key={item} value={item}>
+          <ComboboxList
+            renderEmptyState={() => (
+              <ComboboxEmpty>No items found.</ComboboxEmpty>
+            )}
+          >
+            {frameworks.map((item) => (
+              <ComboboxItem key={item} id={item} value={{ name: item }}>
                 {item}
               </ComboboxItem>
-            )}
+            ))}
           </ComboboxList>
         </ComboboxContent>
       </Combobox>
@@ -978,32 +979,30 @@ function ComboboxMultipleDisabled() {
   return (
     <Example title="Combobox Multiple Disabled">
       <Combobox
-        multiple
-        autoHighlight
-        items={frameworks}
+        selectionMode="multiple"
         defaultValue={[frameworks[0], frameworks[1]]}
-        disabled
+        isDisabled
+        allowsEmptyCollection
       >
         <ComboboxChips ref={anchor}>
-          <ComboboxValue>
-            {(values) => (
-              <React.Fragment>
-                {values.map((value: string) => (
-                  <ComboboxChip key={value}>{value}</ComboboxChip>
-                ))}
-                <ComboboxChipsInput disabled />
-              </React.Fragment>
+          <ComboboxChipList<{ name: string }>>
+            {(value) => (
+              <ComboboxChip id={value.name}>{value.name}</ComboboxChip>
             )}
-          </ComboboxValue>
+          </ComboboxChipList>
+          <ComboboxChipsInput />
         </ComboboxChips>
         <ComboboxContent anchor={anchor}>
-          <ComboboxEmpty>No items found.</ComboboxEmpty>
-          <ComboboxList>
-            {(item) => (
-              <ComboboxItem key={item} value={item}>
+          <ComboboxList
+            renderEmptyState={() => (
+              <ComboboxEmpty>No items found.</ComboboxEmpty>
+            )}
+          >
+            {frameworks.map((item) => (
+              <ComboboxItem key={item} id={item} value={{ name: item }}>
                 {item}
               </ComboboxItem>
-            )}
+            ))}
           </ComboboxList>
         </ComboboxContent>
       </Combobox>
@@ -1019,31 +1018,30 @@ function ComboboxMultipleInvalid() {
     <Example title="Combobox Multiple Invalid">
       <div className="flex flex-col gap-4">
         <Combobox
-          multiple
-          autoHighlight
-          items={frameworks}
+          selectionMode="multiple"
           defaultValue={[frameworks[0], frameworks[1]]}
+          allowsEmptyCollection
+          isInvalid
         >
           <ComboboxChips ref={anchor1}>
-            <ComboboxValue>
-              {(values) => (
-                <React.Fragment>
-                  {values.map((value: string) => (
-                    <ComboboxChip key={value}>{value}</ComboboxChip>
-                  ))}
-                  <ComboboxChipsInput aria-invalid="true" />
-                </React.Fragment>
+            <ComboboxChipList<{ name: string }>>
+              {(value) => (
+                <ComboboxChip id={value.name}>{value.name}</ComboboxChip>
               )}
-            </ComboboxValue>
+            </ComboboxChipList>
+            <ComboboxChipsInput />
           </ComboboxChips>
           <ComboboxContent anchor={anchor1}>
-            <ComboboxEmpty>No items found.</ComboboxEmpty>
-            <ComboboxList>
-              {(item) => (
-                <ComboboxItem key={item} value={item}>
+            <ComboboxList
+              renderEmptyState={() => (
+                <ComboboxEmpty>No items found.</ComboboxEmpty>
+              )}
+            >
+              {frameworks.map((item) => (
+                <ComboboxItem key={item} id={item} value={{ name: item }}>
                   {item}
                 </ComboboxItem>
-              )}
+              ))}
             </ComboboxList>
           </ComboboxContent>
         </Combobox>
@@ -1052,34 +1050,30 @@ function ComboboxMultipleInvalid() {
             Frameworks
           </FieldLabel>
           <Combobox
-            multiple
-            autoHighlight
-            items={frameworks}
+            selectionMode="multiple"
             defaultValue={[frameworks[0], frameworks[1], frameworks[2]]}
+            allowsEmptyCollection
+            isInvalid
           >
             <ComboboxChips ref={anchor2}>
-              <ComboboxValue>
-                {(values) => (
-                  <React.Fragment>
-                    {values.map((value: string) => (
-                      <ComboboxChip key={value}>{value}</ComboboxChip>
-                    ))}
-                    <ComboboxChipsInput
-                      id="combobox-multiple-invalid"
-                      aria-invalid
-                    />
-                  </React.Fragment>
+              <ComboboxChipList<{ name: string }>>
+                {(value) => (
+                  <ComboboxChip id={value.name}>{value.name}</ComboboxChip>
                 )}
-              </ComboboxValue>
+              </ComboboxChipList>
+              <ComboboxChipsInput id="combobox-multiple-invalid" />
             </ComboboxChips>
             <ComboboxContent anchor={anchor2}>
-              <ComboboxEmpty>No items found.</ComboboxEmpty>
-              <ComboboxList>
-                {(item) => (
-                  <ComboboxItem key={item} value={item}>
+              <ComboboxList
+                renderEmptyState={() => (
+                  <ComboboxEmpty>No items found.</ComboboxEmpty>
+                )}
+              >
+                {frameworks.map((item) => (
+                  <ComboboxItem key={item} id={item} value={{ name: item }}>
                     {item}
                   </ComboboxItem>
-                )}
+                ))}
               </ComboboxList>
             </ComboboxContent>
           </Combobox>
@@ -1099,33 +1093,31 @@ function ComboboxMultipleNoRemove() {
   return (
     <Example title="Combobox Multiple (No Remove)">
       <Combobox
-        multiple
-        autoHighlight
-        items={frameworks}
+        selectionMode="multiple"
         defaultValue={[frameworks[0], frameworks[1]]}
+        allowsEmptyCollection
       >
         <ComboboxChips ref={anchor}>
-          <ComboboxValue>
-            {(values) => (
-              <React.Fragment>
-                {values.map((value: string) => (
-                  <ComboboxChip key={value} showRemove={false}>
-                    {value}
-                  </ComboboxChip>
-                ))}
-                <ComboboxChipsInput />
-              </React.Fragment>
+          <ComboboxChipList<{ name: string }>>
+            {(value) => (
+              <ComboboxChip id={value.name} showRemove={false}>
+                {value.name}
+              </ComboboxChip>
             )}
-          </ComboboxValue>
+          </ComboboxChipList>
+          <ComboboxChipsInput />
         </ComboboxChips>
         <ComboboxContent anchor={anchor}>
-          <ComboboxEmpty>No items found.</ComboboxEmpty>
-          <ComboboxList>
-            {(item) => (
-              <ComboboxItem key={item} value={item}>
+          <ComboboxList
+            renderEmptyState={() => (
+              <ComboboxEmpty>No items found.</ComboboxEmpty>
+            )}
+          >
+            {frameworks.map((item) => (
+              <ComboboxItem key={item} id={item} value={{ name: item }}>
                 {item}
               </ComboboxItem>
-            )}
+            ))}
           </ComboboxList>
         </ComboboxContent>
       </Combobox>
@@ -1136,30 +1128,34 @@ function ComboboxMultipleNoRemove() {
 function ComboboxWithCustomItems() {
   return (
     <Example title="With Custom Item Rendering">
-      <Combobox
-        items={countries.filter((country) => country.code !== "")}
-        itemToStringValue={(country: (typeof countries)[number]) =>
-          country.label
-        }
-      >
+      <Combobox allowsEmptyCollection>
         <ComboboxInput placeholder="Search countries..." />
         <ComboboxContent>
-          <ComboboxEmpty>No countries found.</ComboboxEmpty>
-          <ComboboxList>
-            {(country) => (
-              <ComboboxItem key={country.code} value={country}>
-                <Item size="xs" className="p-0">
-                  <ItemContent>
-                    <ItemTitle className="whitespace-nowrap">
-                      {country.label}
-                    </ItemTitle>
-                    <ItemDescription>
-                      {country.continent} ({country.code})
-                    </ItemDescription>
-                  </ItemContent>
-                </Item>
-              </ComboboxItem>
+          <ComboboxList
+            renderEmptyState={() => (
+              <ComboboxEmpty>No countries found.</ComboboxEmpty>
             )}
+          >
+            {countries
+              .filter((country) => country.code !== "")
+              .map((country) => (
+                <ComboboxItem
+                  key={country.code}
+                  id={country.code}
+                  textValue={country.label}
+                >
+                  <Item size="xs" className="p-0">
+                    <ItemContent>
+                      <ItemTitle className="whitespace-nowrap">
+                        {country.label}
+                      </ItemTitle>
+                      <ItemDescription>
+                        {country.continent} ({country.code})
+                      </ItemDescription>
+                    </ItemContent>
+                  </Item>
+                </ComboboxItem>
+              ))}
           </ComboboxList>
         </ComboboxContent>
       </Combobox>
@@ -1185,7 +1181,7 @@ function ComboboxInDialog() {
             <FieldLabel htmlFor="framework-dialog" className="sr-only">
               Framework
             </FieldLabel>
-            <Combobox items={frameworks}>
+            <Combobox>
               <ComboboxInput
                 id="framework-dialog"
                 placeholder="Select a framework"
@@ -1193,11 +1189,11 @@ function ComboboxInDialog() {
               <ComboboxContent>
                 <ComboboxEmpty>No items found.</ComboboxEmpty>
                 <ComboboxList>
-                  {(item) => (
-                    <ComboboxItem key={item} value={item}>
+                  {frameworks.map((item) => (
+                    <ComboboxItem key={item} id={item}>
                       {item}
                     </ComboboxItem>
-                  )}
+                  ))}
                 </ComboboxList>
               </ComboboxContent>
             </Combobox>
@@ -1260,16 +1256,19 @@ const items = [
 function ComboboxWithOtherInputs() {
   return (
     <Example title="With Other Inputs">
-      <Combobox items={frameworks}>
+      <Combobox allowsEmptyCollection>
         <ComboboxInput placeholder="Select a framework" className="w-52" />
         <ComboboxContent>
-          <ComboboxEmpty>No items found.</ComboboxEmpty>
-          <ComboboxList>
-            {(item) => (
-              <ComboboxItem key={item} value={item}>
+          <ComboboxList
+            renderEmptyState={() => (
+              <ComboboxEmpty>No items found.</ComboboxEmpty>
+            )}
+          >
+            {frameworks.map((item) => (
+              <ComboboxItem key={item} id={item}>
                 {item}
               </ComboboxItem>
-            )}
+            ))}
           </ComboboxList>
         </ComboboxContent>
       </Combobox>

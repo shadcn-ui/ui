@@ -47,6 +47,7 @@ function Button({
   size = "default",
   ...props
 }: Omit<ButtonPrimitiveProps, "className"> &
+  React.RefAttributes<HTMLButtonElement> &
   VariantProps<typeof buttonVariants> & {
     className?: string
   }) {

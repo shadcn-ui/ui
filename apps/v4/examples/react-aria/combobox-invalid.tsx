@@ -19,18 +19,18 @@ const frameworks = [
 
 export function ComboboxInvalid() {
   return (
-    <Combobox items={frameworks}>
-      <ComboboxInput placeholder="Select a framework" aria-invalid="true" />
+    <Combobox allowsEmptyCollection isInvalid>
+      <ComboboxInput placeholder="Select a framework" />
       <ComboboxContent>
-        <ComboboxEmpty>No items found.</ComboboxEmpty>
-        <ComboboxList>
-          {(item) => (
-            <ComboboxItem key={item} value={item}>
+
+        <ComboboxList renderEmptyState={() => <ComboboxEmpty>No items found.</ComboboxEmpty>}>
+          {frameworks.map((item) => (
+            <ComboboxItem key={item} id={item}>
               {item}
             </ComboboxItem>
-          )}
+          ))}
         </ComboboxList>
       </ComboboxContent>
     </Combobox>
-  )
+  );
 }

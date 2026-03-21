@@ -2,16 +2,16 @@
 
 import * as React from "react"
 import {
+  Button as ButtonPrimitive,
   composeRenderProps,
-  Popover as SelectContentPrimitive,
-  ListBoxSection as SelectGroupPrimitive,
-  ListBoxItem as SelectItemPrimitive,
-  Header as SelectLabelPrimitive,
-  ListBox as SelectListPrimitive,
+  Header as HeaderPrimitive,
+  ListBoxItem as ListBoxItemPrimitive,
+  ListBox as ListBoxPrimitive,
+  ListBoxSection as ListBoxSectionPrimitive,
+  Popover as PopoverPrimitive,
   Select as SelectPrimitive,
-  Separator as SelectSeparatorPrimitive,
-  Button as SelectTriggerPrimitive,
   SelectValue as SelectValuePrimitive,
+  Separator as SeparatorPrimitive,
   type ListBoxSectionProps as SelectGroupProps,
   type SelectProps,
   type SelectValueProps,
@@ -68,7 +68,7 @@ function SelectGroup<T extends object>({
   ...props
 }: SelectGroupProps<T>) {
   return (
-    <SelectGroupPrimitive
+    <ListBoxSectionPrimitive
       data-slot="select-group"
       className={cn("cn-select-group", className)}
       {...props}
@@ -100,12 +100,12 @@ function SelectTrigger({
   size = "default",
   children,
   ...props
-}: Omit<React.ComponentProps<typeof SelectTriggerPrimitive>, "children"> & {
+}: Omit<React.ComponentProps<typeof ButtonPrimitive>, "children"> & {
   children?: React.ReactNode
   size?: "sm" | "default"
 }) {
   return (
-    <SelectTriggerPrimitive
+    <ButtonPrimitive
       data-slot="select-trigger"
       data-size={size}
       className={cn(
@@ -123,7 +123,7 @@ function SelectTrigger({
         remixicon="RiArrowDownSLine"
         className="cn-select-trigger-icon pointer-events-none"
       />
-    </SelectTriggerPrimitive>
+    </ButtonPrimitive>
   )
 }
 
@@ -136,7 +136,7 @@ function SelectContent({
   alignOffset = 0,
   ...props
 }: Omit<
-  React.ComponentProps<typeof SelectContentPrimitive>,
+  React.ComponentProps<typeof PopoverPrimitive>,
   "className" | "children" | "placement" | "offset" | "crossOffset"
 > & {
   className?: string
@@ -147,7 +147,7 @@ function SelectContent({
   sideOffset?: number
 }) {
   return (
-    <SelectContentPrimitive
+    <PopoverPrimitive
       data-slot="select-content"
       placement={getPlacement(side, align)}
       offset={sideOffset}
@@ -161,24 +161,24 @@ function SelectContent({
         />
       )}
       className={cn(
-        "cn-select-content cn-select-content-logical cn-menu-target relative isolate z-50 max-h-(--available-height) w-(--trigger-width) origin-(--trigger-anchor-point) overflow-hidden",
+        "cn-select-content cn-select-content-logical cn-menu-target relative isolate z-50 w-(--trigger-width) origin-(--trigger-anchor-point) overflow-hidden",
         className
       )}
       {...props}
     >
-      <SelectListPrimitive className="max-h-(--available-height) overflow-x-hidden overflow-y-auto p-0 outline-hidden">
+      <ListBoxPrimitive className="max-h-[inherit] overflow-x-hidden overflow-y-auto p-0 outline-hidden">
         {children}
-      </SelectListPrimitive>
-    </SelectContentPrimitive>
+      </ListBoxPrimitive>
+    </PopoverPrimitive>
   )
 }
 
 function SelectLabel({
   className,
   ...props
-}: React.ComponentProps<typeof SelectLabelPrimitive>) {
+}: React.ComponentProps<typeof HeaderPrimitive>) {
   return (
-    <SelectLabelPrimitive
+    <HeaderPrimitive
       data-slot="select-label"
       className={cn("cn-select-label", className)}
       {...props}
@@ -190,9 +190,9 @@ function SelectItem({
   className,
   children,
   ...props
-}: React.ComponentProps<typeof SelectItemPrimitive>) {
+}: React.ComponentProps<typeof ListBoxItemPrimitive>) {
   return (
-    <SelectItemPrimitive
+    <ListBoxItemPrimitive
       data-slot="select-item"
       textValue={typeof children === "string" ? children : undefined}
       className={cn(
@@ -201,38 +201,35 @@ function SelectItem({
       )}
       {...props}
     >
-      {composeRenderProps(
-        children,
-        (children, { isFocused, isHovered, isSelected }) => (
-          <>
-            <span className="cn-select-item-text shrink-0 whitespace-nowrap">
-              {children}
-            </span>
-            <span className="cn-select-item-indicator">
-              {isSelected ? (
-                <IconPlaceholder
-                  lucide="CheckIcon"
-                  tabler="IconCheck"
-                  hugeicons="Tick02Icon"
-                  phosphor="CheckIcon"
-                  remixicon="RiCheckLine"
-                  className="cn-select-item-indicator-icon pointer-events-none"
-                />
-              ) : null}
-            </span>
-          </>
-        )
-      )}
-    </SelectItemPrimitive>
+      {composeRenderProps(children, (children, { isSelected }) => (
+        <>
+          <span className="cn-select-item-text shrink-0 whitespace-nowrap">
+            {children}
+          </span>
+          <span className="cn-select-item-indicator">
+            {isSelected ? (
+              <IconPlaceholder
+                lucide="CheckIcon"
+                tabler="IconCheck"
+                hugeicons="Tick02Icon"
+                phosphor="CheckIcon"
+                remixicon="RiCheckLine"
+                className="cn-select-item-indicator-icon pointer-events-none"
+              />
+            ) : null}
+          </span>
+        </>
+      ))}
+    </ListBoxItemPrimitive>
   )
 }
 
 function SelectSeparator({
   className,
   ...props
-}: React.ComponentProps<typeof SelectSeparatorPrimitive>) {
+}: React.ComponentProps<typeof SeparatorPrimitive>) {
   return (
-    <SelectSeparatorPrimitive
+    <SeparatorPrimitive
       data-slot="select-separator"
       className={cn("cn-select-separator pointer-events-none", className)}
       {...props}

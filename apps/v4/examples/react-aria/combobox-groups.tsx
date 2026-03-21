@@ -51,26 +51,23 @@ const timezones = [
 
 export function ComboboxWithGroupsAndSeparator() {
   return (
-    <Combobox items={timezones}>
+    <Combobox allowsEmptyCollection>
       <ComboboxInput placeholder="Select a timezone" />
       <ComboboxContent>
-        <ComboboxEmpty>No timezones found.</ComboboxEmpty>
-        <ComboboxList>
-          {(group, index) => (
-            <ComboboxGroup key={group.value} items={group.items}>
+        <ComboboxList renderEmptyState={() => <ComboboxEmpty>No timezones found.</ComboboxEmpty>}>
+          {timezones.map((group, index) => (
+            <ComboboxGroup key={group.value} id={group.value}>
               <ComboboxLabel>{group.value}</ComboboxLabel>
-              <ComboboxCollection>
-                {(item) => (
-                  <ComboboxItem key={item} value={item}>
-                    {item}
-                  </ComboboxItem>
-                )}
-              </ComboboxCollection>
+              {group.items.map((item) => (
+                <ComboboxItem key={item} id={item}>
+                  {item}
+                </ComboboxItem>
+              ))}
               {index < timezones.length - 1 && <ComboboxSeparator />}
             </ComboboxGroup>
-          )}
+          ))}
         </ComboboxList>
       </ComboboxContent>
     </Combobox>
-  )
+  );
 }

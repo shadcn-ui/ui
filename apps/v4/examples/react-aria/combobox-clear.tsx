@@ -19,18 +19,18 @@ const frameworks = [
 
 export function ComboboxWithClear() {
   return (
-    <Combobox items={frameworks} defaultValue={frameworks[0]}>
+    <Combobox defaultValue={frameworks[0]} allowsEmptyCollection>
       <ComboboxInput placeholder="Select a framework" showClear />
       <ComboboxContent>
-        <ComboboxEmpty>No items found.</ComboboxEmpty>
-        <ComboboxList>
-          {(item) => (
-            <ComboboxItem key={item} value={item}>
+
+        <ComboboxList renderEmptyState={() => <ComboboxEmpty>No items found.</ComboboxEmpty>}>
+          {frameworks.map((item) => (
+            <ComboboxItem key={item} id={item}>
               {item}
             </ComboboxItem>
-          )}
+          ))}
         </ComboboxList>
       </ComboboxContent>
     </Combobox>
-  )
+  );
 }

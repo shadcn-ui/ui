@@ -16,7 +16,6 @@ import {
 } from "@/examples/react-aria/ui/item"
 
 const countries = [
-  { code: "", value: "", continent: "", label: "Select country" },
   {
     code: "ar",
     value: "argentina",
@@ -70,16 +69,13 @@ const countries = [
 
 export function ComboboxWithCustomItems() {
   return (
-    <Combobox
-      items={countries.filter((country) => country.code !== "")}
-      itemToStringValue={(country: (typeof countries)[number]) => country.label}
-    >
+    <Combobox allowsEmptyCollection>
       <ComboboxInput placeholder="Search countries..." />
       <ComboboxContent>
-        <ComboboxEmpty>No countries found.</ComboboxEmpty>
-        <ComboboxList>
-          {(country) => (
-            <ComboboxItem key={country.code} value={country}>
+        <ComboboxList
+          renderEmptyState={() => <ComboboxEmpty>No countries found.</ComboboxEmpty>}>
+          {countries.filter((country) => country.code !== "").map((country) => (
+            <ComboboxItem key={country.code} id={country.code} textValue={country.label}>
               <Item size="xs" className="p-0">
                 <ItemContent>
                   <ItemTitle className="whitespace-nowrap">
@@ -91,9 +87,9 @@ export function ComboboxWithCustomItems() {
                 </ItemContent>
               </Item>
             </ComboboxItem>
-          )}
+          ))}
         </ComboboxList>
       </ComboboxContent>
     </Combobox>
-  )
+  );
 }

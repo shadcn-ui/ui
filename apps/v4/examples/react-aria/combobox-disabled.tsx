@@ -19,18 +19,18 @@ const frameworks = [
 
 export function ComboboxDisabled() {
   return (
-    <Combobox items={frameworks}>
+    <Combobox allowsEmptyCollection>
       <ComboboxInput placeholder="Select a framework" disabled />
       <ComboboxContent>
-        <ComboboxEmpty>No items found.</ComboboxEmpty>
-        <ComboboxList>
-          {(item) => (
-            <ComboboxItem key={item} value={item}>
+
+        <ComboboxList renderEmptyState={() => <ComboboxEmpty>No items found.</ComboboxEmpty>}>
+          {frameworks.map((item) => (
+            <ComboboxItem key={item} id={item}>
               {item}
             </ComboboxItem>
-          )}
+          ))}
         </ComboboxList>
       </ComboboxContent>
     </Combobox>
-  )
+  );
 }

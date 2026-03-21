@@ -96,6 +96,12 @@
   }
 }
 
+@custom-variant data-highlighted {
+  &:where([data-highlighted], [data-focused]) {
+    @slot;
+  }
+}
+
 @utility no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;

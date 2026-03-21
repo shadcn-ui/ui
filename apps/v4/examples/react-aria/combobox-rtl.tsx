@@ -4,6 +4,7 @@ import * as React from "react"
 import {
   Combobox,
   ComboboxChip,
+  ComboboxChipList,
   ComboboxChips,
   ComboboxChipsInput,
   ComboboxContent,
@@ -91,43 +92,32 @@ export function ComboboxRtl() {
     <Field className="mx-auto w-full max-w-xs">
       <FieldLabel>{t.label}</FieldLabel>
       <Combobox
-        multiple
-        autoHighlight
-        items={categories}
+        selectionMode="multiple"
         defaultValue={[categories[0]]}
-        itemToStringValue={(item: (typeof categories)[number]) =>
-          categoryLabels[item] || item
-        }
-      >
+        allowsEmptyCollection>
         <ComboboxChips ref={anchor}>
-          <ComboboxValue>
-            {(values) => (
-              <React.Fragment>
-                {values.map((value: string) => (
-                  <ComboboxChip key={value}>
-                    {categoryLabels[value] || value}
-                  </ComboboxChip>
-                ))}
-                <ComboboxChipsInput placeholder={t.placeholder} />
-              </React.Fragment>
+          <ComboboxChipList<{ name: string }>>
+            {(value) => (
+              <ComboboxChip id={value.name}>{categoryLabels[value.name] || value.name}</ComboboxChip>
             )}
-          </ComboboxValue>
+          </ComboboxChipList>
+          <ComboboxChipsInput placeholder={t.placeholder} />
         </ComboboxChips>
         <ComboboxContent
           anchor={anchor}
           dir={dir}
           data-lang={dir === "rtl" ? language : undefined}
         >
-          <ComboboxEmpty>{t.empty}</ComboboxEmpty>
-          <ComboboxList>
-            {(item) => (
-              <ComboboxItem key={item} value={item}>
+
+          <ComboboxList renderEmptyState={() => <ComboboxEmpty>{t.empty}</ComboboxEmpty>}>
+            {categories.map((item) => (
+              <ComboboxItem key={item} id={item} value={{ name: item }}>
                 {categoryLabels[item] || item}
               </ComboboxItem>
-            )}
+            ))}
           </ComboboxList>
         </ComboboxContent>
       </Combobox>
     </Field>
-  )
+  );
 }

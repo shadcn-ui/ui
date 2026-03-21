@@ -52,29 +52,29 @@ const timezones = [
 
 export function ComboxboxInputGroup() {
   return (
-    <Combobox items={timezones}>
+    <Combobox allowsEmptyCollection>
       <ComboboxInput placeholder="Select a timezone">
         <InputGroupAddon>
           <GlobeIcon />
         </InputGroupAddon>
       </ComboboxInput>
       <ComboboxContent alignOffset={-28} className="w-60">
-        <ComboboxEmpty>No timezones found.</ComboboxEmpty>
-        <ComboboxList>
+
+        <ComboboxList
+          items={timezones}
+          renderEmptyState={() => <ComboboxEmpty>No timezones found.</ComboboxEmpty>}>
           {(group) => (
-            <ComboboxGroup key={group.value} items={group.items}>
+            <ComboboxGroup id={group.value}>
               <ComboboxLabel>{group.value}</ComboboxLabel>
-              <ComboboxCollection>
-                {(item) => (
-                  <ComboboxItem key={item} value={item}>
-                    {item}
-                  </ComboboxItem>
-                )}
-              </ComboboxCollection>
+              {group.items.map((item) => (
+                <ComboboxItem key={item} id={item}>
+                  {item}
+                </ComboboxItem>
+              ))}
             </ComboboxGroup>
           )}
         </ComboboxList>
       </ComboboxContent>
     </Combobox>
-  )
+  );
 }

@@ -8,7 +8,6 @@ import {
   ComboboxInput,
   ComboboxItem,
   ComboboxList,
-  ComboboxTrigger,
   ComboboxValue,
 } from "@/examples/react-aria/ui/combobox"
 
@@ -68,23 +67,18 @@ const countries = [
 export function ComboboxPopup() {
   return (
     <>
-      <Combobox items={countries} defaultValue={countries[0]}>
-        <ComboboxTrigger
-          render={
-            <Button
-              variant="outline"
-              className="w-64 justify-between font-normal"
-            />
-          }
-        >
+      <Combobox defaultValue={countries[0].code} allowsEmptyCollection>
+        <Button variant="outline" className="w-64 justify-between font-normal">
           <ComboboxValue />
-        </ComboboxTrigger>
+        </Button>
         <ComboboxContent>
           <ComboboxInput showTrigger={false} placeholder="Search" />
-          <ComboboxEmpty>No items found.</ComboboxEmpty>
-          <ComboboxList>
+
+          <ComboboxList
+            items={countries}
+            renderEmptyState={() => <ComboboxEmpty>No items found.</ComboboxEmpty>}>
             {(item) => (
-              <ComboboxItem key={item.code} value={item}>
+              <ComboboxItem id={item.code}>
                 {item.label}
               </ComboboxItem>
             )}
@@ -92,5 +86,5 @@ export function ComboboxPopup() {
         </ComboboxContent>
       </Combobox>
     </>
-  )
+  );
 }

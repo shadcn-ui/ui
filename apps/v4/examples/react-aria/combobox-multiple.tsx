@@ -4,13 +4,13 @@ import * as React from "react"
 import {
   Combobox,
   ComboboxChip,
+  ComboboxChipList,
   ComboboxChips,
   ComboboxChipsInput,
   ComboboxContent,
   ComboboxEmpty,
   ComboboxItem,
   ComboboxList,
-  ComboboxValue,
   useComboboxAnchor,
 } from "@/examples/react-aria/ui/combobox"
 
@@ -27,33 +27,26 @@ export function ComboboxMultiple() {
 
   return (
     <Combobox
-      multiple
-      autoHighlight
-      items={frameworks}
+      selectionMode="multiple"
       defaultValue={[frameworks[0]]}
-    >
+      allowsEmptyCollection>
       <ComboboxChips ref={anchor} className="w-full max-w-xs">
-        <ComboboxValue>
-          {(values) => (
-            <React.Fragment>
-              {values.map((value: string) => (
-                <ComboboxChip key={value}>{value}</ComboboxChip>
-              ))}
-              <ComboboxChipsInput />
-            </React.Fragment>
+        <ComboboxChipList<{ name: string }>>
+          {(value) => (
+            <ComboboxChip id={value.name}>{value.name}</ComboboxChip>
           )}
-        </ComboboxValue>
+        </ComboboxChipList>
+        <ComboboxChipsInput />
       </ComboboxChips>
       <ComboboxContent anchor={anchor}>
-        <ComboboxEmpty>No items found.</ComboboxEmpty>
-        <ComboboxList>
-          {(item) => (
-            <ComboboxItem key={item} value={item}>
+        <ComboboxList renderEmptyState={() => <ComboboxEmpty>No items found.</ComboboxEmpty>}>
+          {frameworks.map((item) => (
+            <ComboboxItem key={item} id={item} value={{ name: item }}>
               {item}
             </ComboboxItem>
-          )}
+          ))}
         </ComboboxList>
       </ComboboxContent>
     </Combobox>
-  )
+  );
 }
