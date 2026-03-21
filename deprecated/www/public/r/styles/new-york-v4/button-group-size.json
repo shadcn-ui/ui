@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-group-size",
+  "type": "registry:example",
+  "registryDependencies": [
+    "button-group"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/button-group-size.tsx",
+      "content": "import { PlusIcon } from \"lucide-react\"\n\nimport { Button } from \"@/registry/new-york-v4/ui/button\"\nimport { ButtonGroup } from \"@/registry/new-york-v4/ui/button-group\"\n\nexport default function ButtonGroupSize() {\n  return (\n    <div className=\"flex flex-col items-start gap-8\">\n      <ButtonGroup>\n        <Button variant=\"outline\" size=\"sm\">\n          Small\n        </Button>\n        <Button variant=\"outline\" size=\"sm\">\n          Button\n        </Button>\n        <Button variant=\"outline\" size=\"sm\">\n          Group\n        </Button>\n        <Button variant=\"outline\" size=\"icon-sm\">\n          <PlusIcon />\n        </Button>\n      </ButtonGroup>\n      <ButtonGroup>\n        <Button variant=\"outline\">Default</Button>\n        <Button variant=\"outline\">Button</Button>\n        <Button variant=\"outline\">Group</Button>\n        <Button variant=\"outline\" size=\"icon\">\n          <PlusIcon />\n        </Button>\n      </ButtonGroup>\n      <ButtonGroup>\n        <Button variant=\"outline\" size=\"lg\">\n          Large\n        </Button>\n        <Button variant=\"outline\" size=\"lg\">\n          Button\n        </Button>\n        <Button variant=\"outline\" size=\"lg\">\n          Group\n        </Button>\n        <Button variant=\"outline\" size=\"icon-lg\">\n          <PlusIcon />\n        </Button>\n      </ButtonGroup>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "calendar-19",
+  "type": "registry:block",
+  "description": "With presets",
+  "dependencies": [
+    "date-fns"
+  ],
+  "registryDependencies": [
+    "calendar",
+    "card",
+    "input",
+    "label"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/blocks/calendar-19.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { addDays } from \"date-fns\"\n\nimport { Button } from \"@/registry/new-york-v4/ui/button\"\nimport { Calendar } from \"@/registry/new-york-v4/ui/calendar\"\nimport { Card, CardContent, CardFooter } from \"@/registry/new-york-v4/ui/card\"\n\nexport default function Calendar19() {\n  const [date, setDate] = React.useState<Date | undefined>(\n    new Date(2025, 5, 12)\n  )\n\n  return (\n    <Card className=\"max-w-[300px] py-4\">\n      <CardContent className=\"px-4\">\n        <Calendar\n          mode=\"single\"\n          selected={date}\n          onSelect={setDate}\n          defaultMonth={date}\n          className=\"bg-transparent p-0 [--cell-size:--spacing(9.5)]\"\n        />\n      </CardContent>\n      <CardFooter className=\"flex flex-wrap gap-2 border-t px-4 !pt-4\">\n        {[\n          { label: \"Today\", value: 0 },\n          { label: \"Tomorrow\", value: 1 },\n          { label: \"In 3 days\", value: 3 },\n          { label: \"In a week\", value: 7 },\n          { label: \"In 2 weeks\", value: 14 },\n        ].map((preset) => (\n          <Button\n            key={preset.value}\n            variant=\"outline\"\n            size=\"sm\"\n            className=\"flex-1\"\n            onClick={() => {\n              const newDate = addDays(new Date(), preset.value)\n              setDate(newDate)\n            }}\n          >\n            {preset.label}\n          </Button>\n        ))}\n      </CardFooter>\n    </Card>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "iframeHeight": "600px",
+    "container": "w-full bg-surface min-h-svh flex px-6 py-12 items-start justify-center min-w-0",
+    "mobile": "component"
+  },
+  "categories": [
+    "calendar",
+    "date"
+  ]
+}

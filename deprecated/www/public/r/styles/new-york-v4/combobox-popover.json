@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "combobox-popover",
+  "type": "registry:example",
+  "registryDependencies": [
+    "combobox",
+    "popover"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/combobox-popover.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { Button } from \"@/registry/new-york-v4/ui/button\"\nimport {\n  Command,\n  CommandEmpty,\n  CommandGroup,\n  CommandInput,\n  CommandItem,\n  CommandList,\n} from \"@/registry/new-york-v4/ui/command\"\nimport {\n  Popover,\n  PopoverContent,\n  PopoverTrigger,\n} from \"@/registry/new-york-v4/ui/popover\"\n\ntype Status = {\n  value: string\n  label: string\n}\n\nconst statuses: Status[] = [\n  {\n    value: \"backlog\",\n    label: \"Backlog\",\n  },\n  {\n    value: \"todo\",\n    label: \"Todo\",\n  },\n  {\n    value: \"in progress\",\n    label: \"In Progress\",\n  },\n  {\n    value: \"done\",\n    label: \"Done\",\n  },\n  {\n    value: \"canceled\",\n    label: \"Canceled\",\n  },\n]\n\nexport default function ComboboxPopover() {\n  const [open, setOpen] = React.useState(false)\n  const [selectedStatus, setSelectedStatus] = React.useState<Status | null>(\n    null\n  )\n\n  return (\n    <div className=\"flex items-center space-x-4\">\n      <p className=\"text-muted-foreground text-sm\">Status</p>\n      <Popover open={open} onOpenChange={setOpen}>\n        <PopoverTrigger asChild>\n          <Button variant=\"outline\" className=\"w-[150px] justify-start\">\n            {selectedStatus ? <>{selectedStatus.label}</> : <>+ Set status</>}\n          </Button>\n        </PopoverTrigger>\n        <PopoverContent className=\"p-0\" side=\"right\" align=\"start\">\n          <Command>\n            <CommandInput placeholder=\"Change status...\" />\n            <CommandList>\n              <CommandEmpty>No results found.</CommandEmpty>\n              <CommandGroup>\n                {statuses.map((status) => (\n                  <CommandItem\n                    key={status.value}\n                    value={status.value}\n                    onSelect={(value) => {\n                      setSelectedStatus(\n                        statuses.find((priority) => priority.value === value) ||\n                          null\n                      )\n                      setOpen(false)\n                    }}\n                  >\n                    {status.label}\n                  </CommandItem>\n                ))}\n              </CommandGroup>\n            </CommandList>\n          </Command>\n        </PopoverContent>\n      </Popover>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

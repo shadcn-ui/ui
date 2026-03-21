@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-group-select",
+  "type": "registry:example",
+  "registryDependencies": [
+    "input-group",
+    "select"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/input-group-select.tsx",
+      "content": "import { Input } from \"@/registry/new-york-v4/ui/input\"\nimport {\n  InputGroup,\n  InputGroupAddon,\n} from \"@/registry/new-york-v4/ui/input-group\"\nimport {\n  Select,\n  SelectContent,\n  SelectItem,\n  SelectTrigger,\n  SelectValue,\n} from \"@/registry/new-york-v4/ui/select\"\n\nexport default function InputGroupSelect() {\n  return (\n    <div className=\"grid w-full max-w-sm gap-4\">\n      <InputGroup>\n        <InputGroupAddon>\n          <Select defaultValue=\"usd\">\n            <SelectTrigger className=\"w-20 border-0 bg-transparent shadow-none\">\n              <SelectValue />\n            </SelectTrigger>\n            <SelectContent>\n              <SelectItem value=\"usd\">USD</SelectItem>\n              <SelectItem value=\"eur\">EUR</SelectItem>\n              <SelectItem value=\"gbp\">GBP</SelectItem>\n            </SelectContent>\n          </Select>\n        </InputGroupAddon>\n        <Input placeholder=\"0.00\" />\n      </InputGroup>\n\n      <InputGroup>\n        <Input placeholder=\"Enter phone number\" />\n        <InputGroupAddon align=\"inline-end\">\n          <Select defaultValue=\"us\">\n            <SelectTrigger className=\"w-16 border-0 bg-transparent shadow-none\">\n              <SelectValue />\n            </SelectTrigger>\n            <SelectContent>\n              <SelectItem value=\"us\">🇺🇸</SelectItem>\n              <SelectItem value=\"uk\">🇬🇧</SelectItem>\n              <SelectItem value=\"ca\">🇨🇦</SelectItem>\n              <SelectItem value=\"fr\">🇫🇷</SelectItem>\n            </SelectContent>\n          </Select>\n        </InputGroupAddon>\n      </InputGroup>\n\n      <InputGroup>\n        <InputGroupAddon>\n          <Select defaultValue=\"https\">\n            <SelectTrigger className=\"w-24 border-0 bg-transparent shadow-none\">\n              <SelectValue />\n            </SelectTrigger>\n            <SelectContent>\n              <SelectItem value=\"https\">https://</SelectItem>\n              <SelectItem value=\"http\">http://</SelectItem>\n              <SelectItem value=\"ftp\">ftp://</SelectItem>\n            </SelectContent>\n          </Select>\n        </InputGroupAddon>\n        <Input placeholder=\"example.com\" />\n        <InputGroupAddon align=\"inline-end\">\n          <Select defaultValue=\"com\">\n            <SelectTrigger className=\"w-16 border-0 bg-transparent shadow-none\">\n              <SelectValue />\n            </SelectTrigger>\n            <SelectContent>\n              <SelectItem value=\"com\">.com</SelectItem>\n              <SelectItem value=\"org\">.org</SelectItem>\n              <SelectItem value=\"net\">.net</SelectItem>\n              <SelectItem value=\"io\">.io</SelectItem>\n            </SelectContent>\n          </Select>\n        </InputGroupAddon>\n      </InputGroup>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

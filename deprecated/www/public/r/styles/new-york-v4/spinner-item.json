@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spinner-item",
+  "type": "registry:example",
+  "registryDependencies": [
+    "spinner"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/spinner-item.tsx",
+      "content": "import { Button } from \"@/registry/new-york-v4/ui/button\"\nimport {\n  Item,\n  ItemActions,\n  ItemContent,\n  ItemDescription,\n  ItemFooter,\n  ItemMedia,\n  ItemTitle,\n} from \"@/registry/new-york-v4/ui/item\"\nimport { Progress } from \"@/registry/new-york-v4/ui/progress\"\nimport { Spinner } from \"@/registry/new-york-v4/ui/spinner\"\n\nexport default function SpinnerItem() {\n  return (\n    <div className=\"flex w-full max-w-md flex-col gap-4 [--radius:1rem]\">\n      <Item variant=\"outline\">\n        <ItemMedia variant=\"icon\">\n          <Spinner />\n        </ItemMedia>\n        <ItemContent>\n          <ItemTitle>Downloading...</ItemTitle>\n          <ItemDescription>129 MB / 1000 MB</ItemDescription>\n        </ItemContent>\n        <ItemActions className=\"hidden sm:flex\">\n          <Button variant=\"outline\" size=\"sm\">\n            Cancel\n          </Button>\n        </ItemActions>\n        <ItemFooter>\n          <Progress value={75} />\n        </ItemFooter>\n      </Item>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

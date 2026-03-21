@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "field-choice-card",
+  "type": "registry:example",
+  "registryDependencies": [
+    "field"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/field-choice-card.tsx",
+      "content": "import {\n  Field,\n  FieldContent,\n  FieldDescription,\n  FieldGroup,\n  FieldLabel,\n  FieldSet,\n  FieldTitle,\n} from \"@/registry/new-york-v4/ui/field\"\nimport {\n  RadioGroup,\n  RadioGroupItem,\n} from \"@/registry/new-york-v4/ui/radio-group\"\n\nexport default function FieldChoiceCard() {\n  return (\n    <div className=\"w-full max-w-md\">\n      <FieldGroup>\n        <FieldSet>\n          <FieldLabel htmlFor=\"compute-environment-p8w\">\n            Compute Environment\n          </FieldLabel>\n          <FieldDescription>\n            Select the compute environment for your cluster.\n          </FieldDescription>\n          <RadioGroup defaultValue=\"kubernetes\">\n            <FieldLabel htmlFor=\"kubernetes-r2h\">\n              <Field orientation=\"horizontal\">\n                <FieldContent>\n                  <FieldTitle>Kubernetes</FieldTitle>\n                  <FieldDescription>\n                    Run GPU workloads on a K8s configured cluster.\n                  </FieldDescription>\n                </FieldContent>\n                <RadioGroupItem value=\"kubernetes\" id=\"kubernetes-r2h\" />\n              </Field>\n            </FieldLabel>\n            <FieldLabel htmlFor=\"vm-z4k\">\n              <Field orientation=\"horizontal\">\n                <FieldContent>\n                  <FieldTitle>Virtual Machine</FieldTitle>\n                  <FieldDescription>\n                    Access a VM configured cluster to run GPU workloads.\n                  </FieldDescription>\n                </FieldContent>\n                <RadioGroupItem value=\"vm\" id=\"vm-z4k\" />\n              </Field>\n            </FieldLabel>\n          </RadioGroup>\n        </FieldSet>\n      </FieldGroup>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

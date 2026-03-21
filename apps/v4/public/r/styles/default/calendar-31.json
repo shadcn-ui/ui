@@ -1,0 +1,29 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "calendar-31",
+  "type": "registry:block",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "description": "With event slots",
+  "registryDependencies": [
+    "calendar",
+    "card",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "blocks/calendar-31.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { formatDateRange } from \"little-date\"\nimport { PlusIcon } from \"lucide-react\"\n\nimport { Button } from \"@/registry/default/ui/button\"\nimport { Calendar } from \"@/registry/default/ui/calendar\"\nimport { Card, CardContent, CardFooter } from \"@/registry/default/ui/card\"\n\nconst events = [\n  {\n    title: \"Team Sync Meeting\",\n    from: \"2025-06-12T09:00:00\",\n    to: \"2025-06-12T10:00:00\",\n  },\n  {\n    title: \"Design Review\",\n    from: \"2025-06-12T11:30:00\",\n    to: \"2025-06-12T12:30:00\",\n  },\n  {\n    title: \"Client Presentation\",\n    from: \"2025-06-12T14:00:00\",\n    to: \"2025-06-12T15:00:00\",\n  },\n]\n\nexport default function Calendar31() {\n  const [date, setDate] = React.useState<Date | undefined>(\n    new Date(2025, 5, 12)\n  )\n\n  return (\n    <Card className=\"w-fit py-4\">\n      <CardContent className=\"px-4\">\n        <Calendar\n          mode=\"single\"\n          selected={date}\n          onSelect={setDate}\n          className=\"bg-transparent p-0\"\n          required\n        />\n      </CardContent>\n      <CardFooter className=\"flex flex-col items-start gap-3 border-t px-4 pb-0 pt-4\">\n        <div className=\"flex w-full items-center justify-between px-1\">\n          <div className=\"text-sm font-medium\">\n            {date?.toLocaleDateString(\"en-US\", {\n              day: \"numeric\",\n              month: \"long\",\n              year: \"numeric\",\n            })}\n          </div>\n          <Button\n            variant=\"ghost\"\n            size=\"icon\"\n            className=\"h-6 w-6\"\n            title=\"Add Event\"\n          >\n            <PlusIcon />\n            <span className=\"sr-only\">Add Event</span>\n          </Button>\n        </div>\n        <div className=\"flex w-full flex-col gap-2\">\n          {events.map((event) => (\n            <div\n              key={event.title}\n              className=\"bg-muted after:bg-primary/70 relative rounded-md p-2 pl-6 text-sm after:absolute after:inset-y-2 after:left-2 after:w-1 after:rounded-full\"\n            >\n              <div className=\"font-medium\">{event.title}</div>\n              <div className=\"text-muted-foreground text-xs\">\n                {formatDateRange(new Date(event.from), new Date(event.to))}\n              </div>\n            </div>\n          ))}\n        </div>\n      </CardFooter>\n    </Card>\n  )\n}\n",
+      "type": "registry:component",
+      "target": ""
+    }
+  ],
+  "meta": {
+    "iframeHeight": "700px",
+    "container": "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0",
+    "mobile": "component"
+  },
+  "categories": [
+    "calendar",
+    "date"
+  ]
+}

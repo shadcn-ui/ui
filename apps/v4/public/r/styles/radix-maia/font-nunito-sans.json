@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "font-nunito-sans",
+  "title": "Nunito Sans",
+  "type": "registry:font",
+  "font": {
+    "family": "'Nunito Sans Variable', sans-serif",
+    "provider": "google",
+    "import": "Nunito_Sans",
+    "variable": "--font-sans"
+  }
+}

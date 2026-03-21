@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sidebar-menu-badge",
+  "type": "registry:internal",
+  "files": [
+    {
+      "path": "registry/new-york-v4/internal/sidebar-menu-badge.tsx",
+      "content": "\"use client\"\n\nimport {\n  FrameIcon,\n  LifeBuoyIcon,\n  MapIcon,\n  PieChartIcon,\n  SendIcon,\n} from \"lucide-react\"\n\nimport {\n  Sidebar,\n  SidebarContent,\n  SidebarGroup,\n  SidebarGroupContent,\n  SidebarGroupLabel,\n  SidebarMenu,\n  SidebarMenuBadge,\n  SidebarMenuButton,\n  SidebarMenuItem,\n  SidebarProvider,\n} from \"@/registry/new-york-v4/ui/sidebar\"\n\nconst projects = [\n  {\n    name: \"Design Engineering\",\n    url: \"#\",\n    icon: FrameIcon,\n    badge: \"24\",\n  },\n  {\n    name: \"Sales & Marketing\",\n    url: \"#\",\n    icon: PieChartIcon,\n    badge: \"12\",\n  },\n  {\n    name: \"Travel\",\n    url: \"#\",\n    icon: MapIcon,\n    badge: \"3\",\n  },\n  {\n    name: \"Support\",\n    url: \"#\",\n    icon: LifeBuoyIcon,\n    badge: \"21\",\n  },\n  {\n    name: \"Feedback\",\n    url: \"#\",\n    icon: SendIcon,\n    badge: \"8\",\n  },\n]\n\nexport default function AppSidebar() {\n  return (\n    <SidebarProvider>\n      <Sidebar>\n        <SidebarContent>\n          <SidebarGroup>\n            <SidebarGroupLabel>Projects</SidebarGroupLabel>\n            <SidebarGroupContent>\n              <SidebarMenu>\n                {projects.map((project) => (\n                  <SidebarMenuItem key={project.name}>\n                    <SidebarMenuButton\n                      asChild\n                      className=\"group-has-[[data-state=open]]/menu-item:bg-sidebar-accent\"\n                    >\n                      <a href={project.url}>\n                        <project.icon />\n                        <span>{project.name}</span>\n                      </a>\n                    </SidebarMenuButton>\n                    <SidebarMenuBadge>{project.badge}</SidebarMenuBadge>\n                  </SidebarMenuItem>\n                ))}\n              </SidebarMenu>\n            </SidebarGroupContent>\n          </SidebarGroup>\n        </SidebarContent>\n      </Sidebar>\n    </SidebarProvider>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

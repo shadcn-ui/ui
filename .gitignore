@@ -39,3 +39,5 @@ tsconfig.tsbuildinfo
 .idea
 .fleet
 .vscode
+
+.notes

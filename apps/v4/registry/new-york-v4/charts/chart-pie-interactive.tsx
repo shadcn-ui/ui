@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { Label, Pie, PieChart, Sector } from "recharts"
-import { PieSectorDataItem } from "recharts/types/polar/Pie"
+import { type PieSectorDataItem } from "recharts/types/polar/Pie"
 
 import {
   Card,
@@ -12,11 +12,11 @@ import {
   CardTitle,
 } from "@/registry/new-york-v4/ui/card"
 import {
-  ChartConfig,
   ChartContainer,
   ChartStyle,
   ChartTooltip,
   ChartTooltipContent,
+  type ChartConfig,
 } from "@/registry/new-york-v4/ui/chart"
 import {
   Select,

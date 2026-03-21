@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "font-dm-sans",
+  "title": "DM Sans",
+  "type": "registry:font",
+  "font": {
+    "family": "'DM Sans', sans-serif",
+    "provider": "google",
+    "import": "DM_Sans",
+    "variable": "--font-sans",
+    "subsets": [
+      "latin"
+    ]
+  }
+}
