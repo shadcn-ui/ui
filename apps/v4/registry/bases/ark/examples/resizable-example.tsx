@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-import type { Layout } from "react-resizable-panels"
 
 import {
   Example,
@@ -29,16 +28,16 @@ function ResizableHorizontal() {
   return (
     <Example title="Horizontal">
       <ResizablePanelGroup
-        orientation="horizontal"
+        panels={[{ id: "a" }, { id: "b" }]}
         className="min-h-[200px] rounded-lg border"
       >
-        <ResizablePanel defaultSize="25%">
+        <ResizablePanel id="a">
           <div className="flex h-full items-center justify-center p-6">
             <span className="font-semibold">Sidebar</span>
           </div>
         </ResizablePanel>
-        <ResizableHandle />
-        <ResizablePanel defaultSize="75%">
+        <ResizableHandle id="a:b" />
+        <ResizablePanel id="b">
           <div className="flex h-full items-center justify-center p-6">
             <span className="font-semibold">Content</span>
           </div>
@@ -52,16 +51,17 @@ function ResizableVertical() {
   return (
     <Example title="Vertical">
       <ResizablePanelGroup
+        panels={[{ id: "a" }, { id: "b" }]}
         orientation="vertical"
         className="min-h-[200px] rounded-lg border"
       >
-        <ResizablePanel defaultSize="25%">
+        <ResizablePanel id="a">
           <div className="flex h-full items-center justify-center p-6">
             <span className="font-semibold">Header</span>
           </div>
         </ResizablePanel>
-        <ResizableHandle />
-        <ResizablePanel defaultSize="75%">
+        <ResizableHandle id="a:b" />
+        <ResizablePanel id="b">
           <div className="flex h-full items-center justify-center p-6">
             <span className="font-semibold">Content</span>
           </div>
@@ -75,16 +75,16 @@ function ResizableWithHandle() {
   return (
     <Example title="With Handle">
       <ResizablePanelGroup
-        orientation="horizontal"
+        panels={[{ id: "a" }, { id: "b" }]}
         className="min-h-[200px] rounded-lg border"
       >
-        <ResizablePanel defaultSize="25%">
+        <ResizablePanel id="a">
           <div className="flex h-full items-center justify-center p-6">
             <span className="font-semibold">Sidebar</span>
           </div>
         </ResizablePanel>
-        <ResizableHandle withHandle />
-        <ResizablePanel defaultSize="75%">
+        <ResizableHandle id="a:b" withHandle />
+        <ResizablePanel id="b">
           <div className="flex h-full items-center justify-center p-6">
             <span className="font-semibold">Content</span>
           </div>
@@ -98,24 +98,27 @@ function ResizableNested() {
   return (
     <Example title="Nested">
       <ResizablePanelGroup
-        orientation="horizontal"
+        panels={[{ id: "a" }, { id: "b" }]}
         className="rounded-lg border"
       >
-        <ResizablePanel defaultSize="50%">
+        <ResizablePanel id="a">
           <div className="flex h-[200px] items-center justify-center p-6">
             <span className="font-semibold">One</span>
           </div>
         </ResizablePanel>
-        <ResizableHandle />
-        <ResizablePanel defaultSize="50%">
-          <ResizablePanelGroup orientation="vertical">
-            <ResizablePanel defaultSize="25%">
+        <ResizableHandle id="a:b" />
+        <ResizablePanel id="b">
+          <ResizablePanelGroup
+            panels={[{ id: "c" }, { id: "d" }]}
+            orientation="vertical"
+          >
+            <ResizablePanel id="c">
               <div className="flex h-full items-center justify-center p-6">
                 <span className="font-semibold">Two</span>
               </div>
             </ResizablePanel>
-            <ResizableHandle />
-            <ResizablePanel defaultSize="75%">
+            <ResizableHandle id="c:d" />
+            <ResizablePanel id="d">
               <div className="flex h-full items-center justify-center p-6">
                 <span className="font-semibold">Three</span>
               </div>
@@ -128,27 +131,28 @@ function ResizableNested() {
 }
 
 function ResizableControlled() {
-  const [layout, setLayout] = React.useState<Layout>({})
+  const [sizes, setSizes] = React.useState<number[]>([30, 70])
 
   return (
     <Example title="Controlled">
       <ResizablePanelGroup
-        orientation="horizontal"
+        panels={[{ id: "left", minSize: 20 }, { id: "right", minSize: 30 }]}
+        defaultSize={[30, 70]}
         className="min-h-[200px] rounded-lg border"
-        onLayoutChange={setLayout}
+        onResize={(details) => setSizes(details.size)}
       >
-        <ResizablePanel defaultSize="30%" id="left" minSize="20%">
+        <ResizablePanel id="left">
           <div className="flex h-full flex-col items-center justify-center gap-2 p-6">
             <span className="font-semibold">
-              {Math.round(layout.left ?? 30)}%
+              {Math.round(sizes[0])}%
             </span>
           </div>
         </ResizablePanel>
-        <ResizableHandle />
-        <ResizablePanel defaultSize="70%" id="right" minSize="30%">
+        <ResizableHandle id="left:right" />
+        <ResizablePanel id="right">
           <div className="flex h-full flex-col items-center justify-center gap-2 p-6">
             <span className="font-semibold">
-              {Math.round(layout.right ?? 70)}%
+              {Math.round(sizes[1])}%
             </span>
           </div>
         </ResizablePanel>

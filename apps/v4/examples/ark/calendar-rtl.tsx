@@ -1,8 +1,12 @@
 "use client"
 
 import * as React from "react"
-import { Calendar } from "@/examples/ark/ui-rtl/calendar"
-import { arSA, he } from "react-day-picker/locale"
+import {
+  Calendar,
+  CalendarDate,
+  type DateValue,
+  type DatePickerValueChangeDetails,
+} from "@/examples/ark/ui-rtl/calendar"
 
 import {
   useTranslation,
@@ -24,26 +28,28 @@ const translations: Translations = {
   },
 }
 
-const locales = {
-  ar: arSA,
-  he: he,
-} as const
+const locales: Record<string, string> = {
+  en: "en-US",
+  ar: "ar-SA",
+  he: "he-IL",
+}
 
 export function CalendarRtl() {
   const { dir, language } = useTranslation(translations, "ar")
-  const [date, setDate] = React.useState<Date | undefined>(new Date())
+  const [value, setValue] = React.useState<DateValue[]>([
+    new CalendarDate(2026, 3, 21),
+  ])
 
   return (
     <Calendar
-      mode="single"
-      selected={date}
-      onSelect={setDate}
-      className="rounded-lg border [--cell-size:--spacing(9)]"
-      captionLayout="dropdown"
-      dir={dir}
-      locale={
-        dir === "rtl" ? locales[language as keyof typeof locales] : undefined
+      selectionMode="single"
+      value={value}
+      onValueChange={(details: DatePickerValueChangeDetails) =>
+        setValue(details.value)
       }
+      className="rounded-lg border [--cell-size:--spacing(9)]"
+      dir={dir}
+      locale={locales[language] ?? "en-US"}
     />
   )
 }

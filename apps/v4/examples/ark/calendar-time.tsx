@@ -1,7 +1,12 @@
 "use client"
 
 import * as React from "react"
-import { Calendar } from "@/examples/ark/ui/calendar"
+import {
+  Calendar,
+  CalendarDate,
+  type DateValue,
+  type DatePickerValueChangeDetails,
+} from "@/examples/ark/ui/calendar"
 import { Card, CardContent, CardFooter } from "@/examples/ark/ui/card"
 import { Field, FieldGroup, FieldLabel } from "@/examples/ark/ui/field"
 import {
@@ -12,17 +17,20 @@ import {
 import { Clock2Icon } from "lucide-react"
 
 export function CalendarWithTime() {
-  const [date, setDate] = React.useState<Date | undefined>(
-    new Date(new Date().getFullYear(), new Date().getMonth(), 12)
-  )
+  const now = new Date()
+  const [value, setValue] = React.useState<DateValue[]>([
+    new CalendarDate(now.getFullYear(), now.getMonth() + 1, 12),
+  ])
 
   return (
     <Card size="sm" className="mx-auto w-fit">
       <CardContent>
         <Calendar
-          mode="single"
-          selected={date}
-          onSelect={setDate}
+          selectionMode="single"
+          value={value}
+          onValueChange={(details: DatePickerValueChangeDetails) =>
+            setValue(details.value)
+          }
           className="p-0"
         />
       </CardContent>

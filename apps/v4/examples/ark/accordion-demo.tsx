@@ -8,9 +8,8 @@ import {
 export default function AccordionDemo() {
   return (
     <Accordion
-      type="single"
       collapsible
-      defaultValue="shipping"
+      defaultValue={["shipping"]}
       className="max-w-lg"
     >
       <AccordionItem value="shipping">

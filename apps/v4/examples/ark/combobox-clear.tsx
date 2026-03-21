@@ -1,34 +1,62 @@
 "use client"
 
+import * as React from "react"
 import {
   Combobox,
+  ComboboxClearTrigger,
   ComboboxContent,
-  ComboboxEmpty,
+  ComboboxControl,
   ComboboxInput,
   ComboboxItem,
+  ComboboxItemIndicator,
+  ComboboxItemText,
   ComboboxList,
+  ComboboxTrigger,
+  createListCollection,
 } from "@/examples/ark/ui/combobox"
 
-const frameworks = [
-  "Next.js",
-  "SvelteKit",
-  "Nuxt.js",
-  "Remix",
-  "Astro",
-] as const
+const frameworkItems = [
+  { label: "Next.js", value: "nextjs" },
+  { label: "SvelteKit", value: "sveltekit" },
+  { label: "Nuxt.js", value: "nuxtjs" },
+  { label: "Remix", value: "remix" },
+  { label: "Astro", value: "astro" },
+]
 
 export function ComboboxWithClear() {
+  const [items, setItems] = React.useState(frameworkItems)
+
+  const collection = React.useMemo(
+    () => createListCollection({ items }),
+    [items]
+  )
+
+  const handleInputValueChange = (details: { inputValue: string }) => {
+    const filtered = frameworkItems.filter((item) =>
+      item.label.toLowerCase().includes(details.inputValue.toLowerCase())
+    )
+    setItems(filtered.length > 0 ? filtered : frameworkItems)
+  }
+
   return (
-    <Combobox items={frameworks} defaultValue={frameworks[0]}>
-      <ComboboxInput placeholder="Select a framework" showClear />
+    <Combobox
+      collection={collection}
+      onInputValueChange={handleInputValueChange}
+      defaultValue={["nextjs"]}
+    >
+      <ComboboxControl>
+        <ComboboxInput placeholder="Select a framework" />
+        <ComboboxClearTrigger />
+        <ComboboxTrigger />
+      </ComboboxControl>
       <ComboboxContent>
-        <ComboboxEmpty>No items found.</ComboboxEmpty>
         <ComboboxList>
-          {(item) => (
-            <ComboboxItem key={item} value={item}>
-              {item}
+          {collection.items.map((item) => (
+            <ComboboxItem key={item.value} item={item}>
+              <ComboboxItemText>{item.label}</ComboboxItemText>
+              <ComboboxItemIndicator />
             </ComboboxItem>
-          )}
+          ))}
         </ComboboxList>
       </ComboboxContent>
     </Combobox>

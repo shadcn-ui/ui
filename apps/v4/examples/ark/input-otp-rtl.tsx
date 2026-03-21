@@ -41,8 +41,8 @@ export function InputOTPRtl() {
     <Field className="mx-auto max-w-xs">
       <FieldLabel htmlFor="input-otp-rtl">{t.verificationCode}</FieldLabel>
       <InputOTP
-        maxLength={6}
-        defaultValue="123456"
+        count={6}
+        defaultValue={["1", "2", "3", "4", "5", "6"]}
         dir={dir}
         id="input-otp-rtl"
       >

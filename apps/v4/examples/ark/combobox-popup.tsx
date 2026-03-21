@@ -1,35 +1,27 @@
 "use client"
 
+import * as React from "react"
 import { Button } from "@/examples/ark/ui/button"
 import {
   Combobox,
   ComboboxContent,
-  ComboboxEmpty,
+  ComboboxControl,
   ComboboxInput,
   ComboboxItem,
+  ComboboxItemIndicator,
+  ComboboxItemText,
   ComboboxList,
   ComboboxTrigger,
-  ComboboxValue,
+  createListCollection,
 } from "@/examples/ark/ui/combobox"
 
-const countries = [
-  { code: "", value: "", continent: "", label: "Select country" },
-  {
-    code: "ar",
-    value: "argentina",
-    label: "Argentina",
-    continent: "South America",
-  },
+const countryItems = [
+  { code: "ar", value: "argentina", label: "Argentina", continent: "South America" },
   { code: "au", value: "australia", label: "Australia", continent: "Oceania" },
   { code: "br", value: "brazil", label: "Brazil", continent: "South America" },
   { code: "ca", value: "canada", label: "Canada", continent: "North America" },
   { code: "cn", value: "china", label: "China", continent: "Asia" },
-  {
-    code: "co",
-    value: "colombia",
-    label: "Colombia",
-    continent: "South America",
-  },
+  { code: "co", value: "colombia", label: "Colombia", continent: "South America" },
   { code: "eg", value: "egypt", label: "Egypt", continent: "Africa" },
   { code: "fr", value: "france", label: "France", continent: "Europe" },
   { code: "de", value: "germany", label: "Germany", continent: "Europe" },
@@ -37,60 +29,55 @@ const countries = [
   { code: "jp", value: "japan", label: "Japan", continent: "Asia" },
   { code: "ke", value: "kenya", label: "Kenya", continent: "Africa" },
   { code: "mx", value: "mexico", label: "Mexico", continent: "North America" },
-  {
-    code: "nz",
-    value: "new-zealand",
-    label: "New Zealand",
-    continent: "Oceania",
-  },
+  { code: "nz", value: "new-zealand", label: "New Zealand", continent: "Oceania" },
   { code: "ng", value: "nigeria", label: "Nigeria", continent: "Africa" },
-  {
-    code: "za",
-    value: "south-africa",
-    label: "South Africa",
-    continent: "Africa",
-  },
+  { code: "za", value: "south-africa", label: "South Africa", continent: "Africa" },
   { code: "kr", value: "south-korea", label: "South Korea", continent: "Asia" },
-  {
-    code: "gb",
-    value: "united-kingdom",
-    label: "United Kingdom",
-    continent: "Europe",
-  },
-  {
-    code: "us",
-    value: "united-states",
-    label: "United States",
-    continent: "North America",
-  },
+  { code: "gb", value: "united-kingdom", label: "United Kingdom", continent: "Europe" },
+  { code: "us", value: "united-states", label: "United States", continent: "North America" },
 ]
 
 export function ComboboxPopup() {
+  const [items, setItems] = React.useState(countryItems)
+
+  const collection = React.useMemo(
+    () => createListCollection({ items }),
+    [items]
+  )
+
+  const handleInputValueChange = (details: { inputValue: string }) => {
+    const filtered = countryItems.filter((item) =>
+      item.label.toLowerCase().includes(details.inputValue.toLowerCase())
+    )
+    setItems(filtered.length > 0 ? filtered : countryItems)
+  }
+
   return (
-    <>
-      <Combobox items={countries} defaultValue={countries[0]}>
-        <ComboboxTrigger
-          render={
-            <Button
-              variant="outline"
-              className="w-64 justify-between font-normal"
-            />
-          }
-        >
-          <ComboboxValue />
+    <Combobox
+      collection={collection}
+      onInputValueChange={handleInputValueChange}
+    >
+      <ComboboxControl>
+        <ComboboxTrigger asChild>
+          <Button
+            variant="outline"
+            className="w-64 justify-between font-normal"
+          >
+            Select country
+          </Button>
         </ComboboxTrigger>
-        <ComboboxContent>
-          <ComboboxInput showTrigger={false} placeholder="Search" />
-          <ComboboxEmpty>No items found.</ComboboxEmpty>
-          <ComboboxList>
-            {(item) => (
-              <ComboboxItem key={item.code} value={item}>
-                {item.label}
-              </ComboboxItem>
-            )}
-          </ComboboxList>
-        </ComboboxContent>
-      </Combobox>
-    </>
+      </ComboboxControl>
+      <ComboboxContent>
+        <ComboboxInput placeholder="Search" />
+        <ComboboxList>
+          {collection.items.map((item) => (
+            <ComboboxItem key={item.value} item={item}>
+              <ComboboxItemText>{item.label}</ComboboxItemText>
+              <ComboboxItemIndicator />
+            </ComboboxItem>
+          ))}
+        </ComboboxList>
+      </ComboboxContent>
+    </Combobox>
   )
 }

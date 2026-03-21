@@ -1,23 +1,29 @@
 "use client"
 
 import * as React from "react"
-import { Calendar } from "@/examples/ark/ui/calendar"
+import {
+  Calendar,
+  CalendarDate,
+  type DateValue,
+  type DatePickerValueChangeDetails,
+} from "@/examples/ark/ui/calendar"
 import { Card, CardContent } from "@/examples/ark/ui/card"
 
 export function CalendarWeekNumbers() {
-  const [date, setDate] = React.useState<Date | undefined>(
-    new Date(new Date().getFullYear(), 1, 3)
-  )
+  const [value, setValue] = React.useState<DateValue[]>([
+    new CalendarDate(2026, 2, 3),
+  ])
 
   return (
     <Card className="mx-auto w-fit p-0">
       <CardContent className="p-0">
         <Calendar
-          mode="single"
-          defaultMonth={date}
-          selected={date}
-          onSelect={setDate}
-          showWeekNumber
+          selectionMode="single"
+          defaultFocusedValue={new CalendarDate(2026, 2, 3)}
+          value={value}
+          onValueChange={(details: DatePickerValueChangeDetails) =>
+            setValue(details.value)
+          }
         />
       </CardContent>
     </Card>

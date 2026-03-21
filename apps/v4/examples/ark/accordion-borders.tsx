@@ -29,10 +29,9 @@ const items = [
 export default function AccordionBorders() {
   return (
     <Accordion
-      type="single"
       collapsible
       className="max-w-lg rounded-lg border"
-      defaultValue="billing"
+      defaultValue={["billing"]}
     >
       {items.map((item) => (
         <AccordionItem

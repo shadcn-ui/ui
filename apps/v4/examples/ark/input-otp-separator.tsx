@@ -7,7 +7,7 @@ import {
 
 export default function InputOTPWithSeparator() {
   return (
-    <InputOTP maxLength={6}>
+    <InputOTP count={6}>
       <InputOTPGroup>
         <InputOTPSlot index={0} />
         <InputOTPSlot index={1} />

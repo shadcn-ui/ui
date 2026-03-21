@@ -1,29 +1,33 @@
 "use client"
 
 import * as React from "react"
-import { Calendar } from "@/examples/ark/ui/calendar"
+import {
+  Calendar,
+  CalendarDate,
+  type DateValue,
+  type DatePickerValueChangeDetails,
+} from "@/examples/ark/ui/calendar"
 import { Card, CardContent } from "@/examples/ark/ui/card"
-import { addDays } from "date-fns"
-import { type DateRange } from "react-day-picker"
 
 export function CalendarRange() {
-  const [dateRange, setDateRange] = React.useState<DateRange | undefined>({
-    from: new Date(new Date().getFullYear(), 0, 12),
-    to: addDays(new Date(new Date().getFullYear(), 0, 12), 30),
-  })
+  const [value, setValue] = React.useState<DateValue[]>([
+    new CalendarDate(2026, 1, 12),
+    new CalendarDate(2026, 2, 11),
+  ])
 
   return (
     <Card className="mx-auto w-fit p-0">
       <CardContent className="p-0">
         <Calendar
-          mode="range"
-          defaultMonth={dateRange?.from}
-          selected={dateRange}
-          onSelect={setDateRange}
-          numberOfMonths={2}
-          disabled={(date) =>
-            date > new Date() || date < new Date("1900-01-01")
+          selectionMode="range"
+          defaultFocusedValue={new CalendarDate(2026, 1, 12)}
+          value={value}
+          onValueChange={(details: DatePickerValueChangeDetails) =>
+            setValue(details.value)
           }
+          numOfMonths={2}
+          max={new CalendarDate(2026, 3, 21)}
+          min={new CalendarDate(1900, 1, 1)}
         />
       </CardContent>
     </Card>

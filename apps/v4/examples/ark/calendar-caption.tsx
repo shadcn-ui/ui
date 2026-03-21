@@ -5,8 +5,7 @@ import { Calendar } from "@/examples/ark/ui/calendar"
 export function CalendarCaption() {
   return (
     <Calendar
-      mode="single"
-      captionLayout="dropdown"
+      selectionMode="single"
       className="rounded-lg border"
     />
   )

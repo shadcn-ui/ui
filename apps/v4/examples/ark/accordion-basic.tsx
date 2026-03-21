@@ -29,9 +29,8 @@ const items = [
 export function AccordionBasic() {
   return (
     <Accordion
-      type="single"
       collapsible
-      defaultValue="item-1"
+      defaultValue={["item-1"]}
       className="max-w-lg"
     >
       {items.map((item) => (

@@ -2,14 +2,18 @@
 
 import * as React from "react"
 import {
+  createListCollection,
   Select,
   SelectContent,
-  SelectGroup,
   SelectItem,
-  SelectLabel,
+  SelectItemGroup,
+  SelectItemGroupLabel,
+  SelectItemIndicator,
+  SelectItemText,
   SelectSeparator,
   SelectTrigger,
   SelectValue,
+  type SelectValueChangeDetails,
 } from "@/examples/ark/ui-rtl/select"
 
 import {
@@ -70,45 +74,67 @@ const translations: Translations = {
 
 export function SelectRtl() {
   const { dir, t, language } = useTranslation(translations, "ar")
-  const [selectedFruit, setSelectedFruit] = React.useState<string>("")
+  const [selectedFruit, setSelectedFruit] = React.useState<string[]>([])
 
-  const fruits = [
-    { label: t.apple, value: "apple" },
-    { label: t.banana, value: "banana" },
-    { label: t.blueberry, value: "blueberry" },
-    { label: t.grapes, value: "grapes" },
-    { label: t.pineapple, value: "pineapple" },
-  ]
+  const fruits = React.useMemo(
+    () => [
+      { label: t.apple, value: "apple" },
+      { label: t.banana, value: "banana" },
+      { label: t.blueberry, value: "blueberry" },
+      { label: t.grapes, value: "grapes" },
+      { label: t.pineapple, value: "pineapple" },
+    ],
+    [t]
+  )
 
-  const vegetables = [
-    { label: t.carrot, value: "carrot" },
-    { label: t.broccoli, value: "broccoli" },
-    { label: t.spinach, value: "spinach" },
-  ]
+  const vegetables = React.useMemo(
+    () => [
+      { label: t.carrot, value: "carrot" },
+      { label: t.broccoli, value: "broccoli" },
+      { label: t.spinach, value: "spinach" },
+    ],
+    [t]
+  )
+
+  const collection = React.useMemo(
+    () =>
+      createListCollection({
+        items: [...fruits, ...vegetables],
+      }),
+    [fruits, vegetables]
+  )
 
   return (
-    <Select value={selectedFruit} onValueChange={setSelectedFruit}>
+    <Select
+      collection={collection}
+      value={selectedFruit}
+      onValueChange={(details: SelectValueChangeDetails) =>
+        setSelectedFruit(details.value)
+      }
+    >
       <SelectTrigger className="w-32" dir={dir}>
         <SelectValue placeholder={t.selectFruit} />
       </SelectTrigger>
       <SelectContent dir={dir} data-lang={dir === "rtl" ? language : undefined}>
-        <SelectGroup>
-          <SelectLabel>{t.fruits}</SelectLabel>
+        <SelectItemGroup>
+          <SelectItemGroupLabel>{t.fruits}</SelectItemGroupLabel>
           {fruits.map((item) => (
-            <SelectItem key={item.value} value={item.value}>
-              {item.label}
+            <SelectItem key={item.value} item={item}>
+              <SelectItemText>{item.label}</SelectItemText>
+              <SelectItemIndicator />
             </SelectItem>
           ))}
-        </SelectGroup>
+        </SelectItemGroup>
         <SelectSeparator />
-        <SelectGroup>
-          <SelectLabel>{t.vegetables}</SelectLabel>
+        <SelectItemGroup>
+          <SelectItemGroupLabel>{t.vegetables}</SelectItemGroupLabel>
           {vegetables.map((item) => (
-            <SelectItem key={item.value} value={item.value}>
-              {item.label}
+            <SelectItem key={item.value} item={item}>
+              <SelectItemText>{item.label}</SelectItemText>
+              <SelectItemIndicator />
             </SelectItem>
           ))}
-        </SelectGroup>
+        </SelectItemGroup>
       </SelectContent>
     </Select>
   )

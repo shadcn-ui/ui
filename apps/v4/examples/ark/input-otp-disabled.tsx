@@ -7,7 +7,7 @@ import {
 
 export function InputOTPDisabled() {
   return (
-    <InputOTP id="disabled" maxLength={6} disabled value="123456">
+    <InputOTP id="disabled" count={6} disabled value={["1", "2", "3", "4", "5", "6"]}>
       <InputOTPGroup>
         <InputOTPSlot index={0} />
         <InputOTPSlot index={1} />
