@@ -38,7 +38,7 @@ export async function GET(request: NextRequest) {
     if (searchParams.get("track") === "1") {
       track("create_app", {
         ...result.data,
-        preset: presetCode,
+        ...(presetCode && { preset: presetCode }),
       })
     }
 
