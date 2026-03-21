@@ -8,6 +8,8 @@ import {
   createListCollection,
   Select,
   SelectContent,
+  SelectControl,
+  SelectIndicator,
   SelectItem,
   SelectItemGroup,
   SelectItemIndicator,
@@ -42,7 +44,10 @@ export default function ButtonGroupSelect() {
     <ButtonGroup>
       <ButtonGroup>
         <Select collection={currencyItems} value={[currency]} onValueChange={(details) => setCurrency(details.value[0])}>
-          <SelectTrigger className="font-mono">{currency}</SelectTrigger>
+          <SelectControl>
+            <SelectTrigger className="font-mono">{currency}</SelectTrigger>
+            <SelectIndicator />
+          </SelectControl>
           <SelectContent className="min-w-24">
             <SelectItemGroup>
               {CURRENCIES.map((c) => (

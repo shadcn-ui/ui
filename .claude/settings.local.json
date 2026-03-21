@@ -20,7 +20,8 @@
       "Bash(__NEW_LINE_0f439a331b76470a__ git:*)",
       "Bash(git add:*)",
       "Bash(git commit:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(__NEW_LINE_c871c58c9fb51dda__ git:*)"
     ],
     "deny": []
   }

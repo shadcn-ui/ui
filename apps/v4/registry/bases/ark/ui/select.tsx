@@ -32,32 +32,77 @@ const Select = React.forwardRef(function Select<T extends CollectionItem>(
 ) => React.ReactElement
 ;(Select as { displayName?: string }).displayName = "Select"
 
+// --- Control ---
+
+const SelectControl = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentProps<typeof SelectPrimitive.Control>
+>(({ className, ...props }, ref) => (
+  <SelectPrimitive.Control
+    ref={ref}
+    data-slot="select-control"
+    className={cn("cn-select-control", className)}
+    {...props}
+  />
+))
+SelectControl.displayName = "SelectControl"
+
 // --- Trigger ---
 
 const SelectTrigger = React.forwardRef<
   HTMLButtonElement,
   React.ComponentProps<typeof SelectPrimitive.Trigger>
 >(({ className, children, ...props }, ref) => (
-  <SelectPrimitive.Control>
-    <SelectPrimitive.Trigger
-      ref={ref}
-      data-slot="select-trigger"
-      className={cn("cn-select-trigger", className)}
-      {...props}
-    >
-      {children}
+  <SelectPrimitive.Trigger
+    ref={ref}
+    data-slot="select-trigger"
+    className={cn("cn-select-trigger", className)}
+    {...props}
+  >
+    {children}
+  </SelectPrimitive.Trigger>
+))
+SelectTrigger.displayName = "SelectTrigger"
+
+// --- Indicator (chevron) ---
+
+const SelectIndicator = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentProps<typeof SelectPrimitive.Indicator>
+>(({ className, children, ...props }, ref) => (
+  <SelectPrimitive.Indicator
+    ref={ref}
+    data-slot="select-indicator"
+    className={cn("cn-select-trigger-icon", className)}
+    {...props}
+  >
+    {children ?? (
       <IconPlaceholder
         lucide="ChevronDownIcon"
         tabler="IconChevronDown"
         hugeicons="ArrowDown01Icon"
         phosphor="CaretDownIcon"
         remixicon="RiArrowDownSLine"
-        className="cn-select-trigger-icon"
       />
-    </SelectPrimitive.Trigger>
-  </SelectPrimitive.Control>
+    )}
+  </SelectPrimitive.Indicator>
 ))
-SelectTrigger.displayName = "SelectTrigger"
+SelectIndicator.displayName = "SelectIndicator"
+
+// --- ClearTrigger ---
+
+const SelectClearTrigger = React.forwardRef<
+  HTMLButtonElement,
+  React.ComponentProps<typeof SelectPrimitive.ClearTrigger>
+>(({ className, ...props }, ref) => (
+  <SelectPrimitive.ClearTrigger
+    ref={ref}
+    data-slot="select-clear-trigger"
+    className={cn("cn-select-clear-trigger", className)}
+    {...props}
+  />
+))
+SelectClearTrigger.displayName = "SelectClearTrigger"
 
 // --- Value ---
 
@@ -209,7 +254,10 @@ const SelectRootProvider = SelectPrimitive.RootProvider
 
 export {
   Select,
+  SelectControl,
   SelectTrigger,
+  SelectIndicator,
+  SelectClearTrigger,
   SelectValue,
   SelectContent,
   SelectItem,

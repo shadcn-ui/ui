@@ -36,6 +36,8 @@ import {
   createListCollection,
   Select,
   SelectContent,
+  SelectControl,
+  SelectIndicator,
   SelectItem,
   SelectItemGroup,
   SelectItemGroupLabel,
@@ -96,25 +98,22 @@ const chartCollection = createListCollection({
   ],
 })
 
-const fruitsOnlyCollection = createListCollection({
-  items: [
-    { label: "Apple", value: "apple" },
-    { label: "Banana", value: "banana" },
-    { label: "Blueberry", value: "blueberry" },
-  ],
-})
-
-const vegetablesCollection = createListCollection({
-  items: [
-    { label: "Carrot", value: "carrot" },
-    { label: "Broccoli", value: "broccoli" },
-    { label: "Spinach", value: "spinach" },
-  ],
-})
-
 const fruitsAndVegetablesCollection = createListCollection({
-  items: [...fruitsOnlyCollection.items, ...vegetablesCollection.items],
+  items: [
+    { label: "Apple", value: "apple", type: "fruit" },
+    { label: "Banana", value: "banana", type: "fruit" },
+    { label: "Blueberry", value: "blueberry", type: "fruit" },
+    { label: "Carrot", value: "carrot", type: "vegetable" },
+    { label: "Broccoli", value: "broccoli", type: "vegetable" },
+    { label: "Spinach", value: "spinach", type: "vegetable" },
+  ],
+  groupBy: (item) => item.type,
 })
+
+const groupLabels: Record<string, string> = {
+  fruit: "Fruits",
+  vegetable: "Vegetables",
+}
 
 const largeListCollection = createListCollection({
   items: Array.from({ length: 100 }, (_, i) => ({
@@ -145,9 +144,12 @@ function SelectBasic() {
   return (
     <Example title="Basic">
       <Select collection={fruitsWithDisabledCollection}>
-        <SelectTrigger>
-          <SelectValue placeholder="Select a fruit" />
-        </SelectTrigger>
+        <SelectControl>
+          <SelectTrigger>
+            <SelectValue placeholder="Select a fruit" />
+          </SelectTrigger>
+          <SelectIndicator />
+        </SelectControl>
         <SelectContent>
           <SelectItemGroup>
             {fruitsWithDisabledCollection.items.map((item) => (
@@ -198,22 +200,25 @@ function SelectWithIcons() {
     <Example title="With Icons">
       <div className="flex flex-col gap-4">
         <Select collection={chartCollection}>
-          <SelectTrigger size="sm">
-            <SelectValue
-              placeholder={
-                <>
-                  <IconPlaceholder
-                    lucide="ChartLineIcon"
-                    tabler="IconChartLine"
-                    hugeicons="Chart03Icon"
-                    phosphor="ChartLineIcon"
-                    remixicon="RiLineChartLine"
-                  />
-                  Chart Type
-                </>
-              }
-            />
-          </SelectTrigger>
+          <SelectControl>
+            <SelectTrigger size="sm">
+              <SelectValue
+                placeholder={
+                  <>
+                    <IconPlaceholder
+                      lucide="ChartLineIcon"
+                      tabler="IconChartLine"
+                      hugeicons="Chart03Icon"
+                      phosphor="ChartLineIcon"
+                      remixicon="RiLineChartLine"
+                    />
+                    Chart Type
+                  </>
+                }
+              />
+            </SelectTrigger>
+            <SelectIndicator />
+          </SelectControl>
           <SelectContent>
             <SelectItemGroup>
               {chartCollection.items.map((item) => (
@@ -229,22 +234,25 @@ function SelectWithIcons() {
           </SelectContent>
         </Select>
         <Select collection={chartCollection}>
-          <SelectTrigger size="default">
-            <SelectValue
-              placeholder={
-                <>
-                  <IconPlaceholder
-                    lucide="ChartLineIcon"
-                    tabler="IconChartLine"
-                    hugeicons="Chart03Icon"
-                    phosphor="ChartLineIcon"
-                    remixicon="RiLineChartLine"
-                  />
-                  Chart Type
-                </>
-              }
-            />
-          </SelectTrigger>
+          <SelectControl>
+            <SelectTrigger size="default">
+              <SelectValue
+                placeholder={
+                  <>
+                    <IconPlaceholder
+                      lucide="ChartLineIcon"
+                      tabler="IconChartLine"
+                      hugeicons="Chart03Icon"
+                      phosphor="ChartLineIcon"
+                      remixicon="RiLineChartLine"
+                    />
+                    Chart Type
+                  </>
+                }
+              />
+            </SelectTrigger>
+            <SelectIndicator />
+          </SelectControl>
           <SelectContent>
             <SelectItemGroup>
               {chartCollection.items.map((item) => (
@@ -268,29 +276,27 @@ function SelectWithGroups() {
   return (
     <Example title="With Groups & Labels">
       <Select collection={fruitsAndVegetablesCollection}>
-        <SelectTrigger>
-          <SelectValue placeholder="Select a fruit" />
-        </SelectTrigger>
+        <SelectControl>
+          <SelectTrigger>
+            <SelectValue placeholder="Select a fruit" />
+          </SelectTrigger>
+          <SelectIndicator />
+        </SelectControl>
         <SelectContent>
-          <SelectItemGroup>
-            <SelectItemGroupLabel>Fruits</SelectItemGroupLabel>
-            {fruitsOnlyCollection.items.map((item) => (
-              <SelectItem key={item.value} item={item}>
-                <SelectItemText>{item.label}</SelectItemText>
-                <SelectItemIndicator />
-              </SelectItem>
-            ))}
-          </SelectItemGroup>
-          <SelectSeparator />
-          <SelectItemGroup>
-            <SelectItemGroupLabel>Vegetables</SelectItemGroupLabel>
-            {vegetablesCollection.items.map((item) => (
-              <SelectItem key={item.value} item={item}>
-                <SelectItemText>{item.label}</SelectItemText>
-                <SelectItemIndicator />
-              </SelectItem>
-            ))}
-          </SelectItemGroup>
+          {fruitsAndVegetablesCollection.group().map(([type, group], index) => (
+            <SelectItemGroup key={type}>
+              {index > 0 && <SelectSeparator />}
+              <SelectItemGroupLabel>
+                {groupLabels[type] ?? type}
+              </SelectItemGroupLabel>
+              {group.map((item) => (
+                <SelectItem key={item.value} item={item}>
+                  <SelectItemText>{item.label}</SelectItemText>
+                  <SelectItemIndicator />
+                </SelectItem>
+              ))}
+            </SelectItemGroup>
+          ))}
         </SelectContent>
       </Select>
     </Example>
@@ -301,9 +307,12 @@ function SelectLargeList() {
   return (
     <Example title="Large List">
       <Select collection={largeListCollection}>
-        <SelectTrigger>
-          <SelectValue placeholder="Select an item" />
-        </SelectTrigger>
+        <SelectControl>
+          <SelectTrigger>
+            <SelectValue placeholder="Select an item" />
+          </SelectTrigger>
+          <SelectIndicator />
+        </SelectControl>
         <SelectContent>
           <SelectItemGroup>
             {largeListCollection.items.map((item) => (
@@ -323,13 +332,16 @@ function SelectSizes() {
   return (
     <Example title="Sizes">
       <div className="flex flex-col gap-4">
-        <Select collection={fruitsOnlyCollection}>
-          <SelectTrigger size="sm">
-            <SelectValue placeholder="Small size" />
-          </SelectTrigger>
+        <Select collection={fruitsCollection}>
+          <SelectControl>
+            <SelectTrigger size="sm">
+              <SelectValue placeholder="Small size" />
+            </SelectTrigger>
+            <SelectIndicator />
+          </SelectControl>
           <SelectContent>
             <SelectItemGroup>
-              {fruitsOnlyCollection.items.map((item) => (
+              {fruitsCollection.items.map((item) => (
                 <SelectItem key={item.value} item={item}>
                   <SelectItemText>{item.label}</SelectItemText>
                   <SelectItemIndicator />
@@ -338,13 +350,16 @@ function SelectSizes() {
             </SelectItemGroup>
           </SelectContent>
         </Select>
-        <Select collection={fruitsOnlyCollection}>
-          <SelectTrigger size="default">
-            <SelectValue placeholder="Default size" />
-          </SelectTrigger>
+        <Select collection={fruitsCollection}>
+          <SelectControl>
+            <SelectTrigger size="default">
+              <SelectValue placeholder="Default size" />
+            </SelectTrigger>
+            <SelectIndicator />
+          </SelectControl>
           <SelectContent>
             <SelectItemGroup>
-              {fruitsOnlyCollection.items.map((item) => (
+              {fruitsCollection.items.map((item) => (
                 <SelectItem key={item.value} item={item}>
                   <SelectItemText>{item.label}</SelectItemText>
                   <SelectItemIndicator />
@@ -363,13 +378,16 @@ function SelectWithButton() {
     <Example title="With Button">
       <div className="flex flex-col gap-4">
         <div className="flex items-center gap-2">
-          <Select collection={fruitsOnlyCollection}>
-            <SelectTrigger size="sm">
-              <SelectValue placeholder="Small" />
-            </SelectTrigger>
+          <Select collection={fruitsCollection}>
+            <SelectControl>
+              <SelectTrigger size="sm">
+                <SelectValue placeholder="Small" />
+              </SelectTrigger>
+              <SelectIndicator />
+            </SelectControl>
             <SelectContent>
               <SelectItemGroup>
-                {fruitsOnlyCollection.items.map((item) => (
+                {fruitsCollection.items.map((item) => (
                   <SelectItem key={item.value} item={item}>
                     <SelectItemText>{item.label}</SelectItemText>
                     <SelectItemIndicator />
@@ -383,13 +401,16 @@ function SelectWithButton() {
           </Button>
         </div>
         <div className="flex items-center gap-2">
-          <Select collection={fruitsOnlyCollection}>
-            <SelectTrigger>
-              <SelectValue placeholder="Default" />
-            </SelectTrigger>
+          <Select collection={fruitsCollection}>
+            <SelectControl>
+              <SelectTrigger>
+                <SelectValue placeholder="Default" />
+              </SelectTrigger>
+              <SelectIndicator />
+            </SelectControl>
             <SelectContent>
               <SelectItemGroup>
-                {fruitsOnlyCollection.items.map((item) => (
+                {fruitsCollection.items.map((item) => (
                   <SelectItem key={item.value} item={item}>
                     <SelectItemText>{item.label}</SelectItemText>
                     <SelectItemIndicator />
@@ -409,9 +430,12 @@ function SelectItemAligned() {
   return (
     <Example title="Popper">
       <Select collection={fruitsWithDisabledCollection}>
-        <SelectTrigger>
-          <SelectValue placeholder="Select a fruit" />
-        </SelectTrigger>
+        <SelectControl>
+          <SelectTrigger>
+            <SelectValue placeholder="Select a fruit" />
+          </SelectTrigger>
+          <SelectIndicator />
+        </SelectControl>
         <SelectContent position="popper">
           <SelectItemGroup>
             {fruitsWithDisabledCollection.items.map((item) => (
@@ -433,9 +457,12 @@ function SelectWithField() {
       <Field>
         <FieldLabel htmlFor="select-fruit">Favorite Fruit</FieldLabel>
         <Select collection={fruitsCollection}>
-          <SelectTrigger id="select-fruit">
-            <SelectValue placeholder="Select a fruit" />
-          </SelectTrigger>
+          <SelectControl>
+            <SelectTrigger id="select-fruit">
+              <SelectValue placeholder="Select a fruit" />
+            </SelectTrigger>
+            <SelectIndicator />
+          </SelectControl>
           <SelectContent>
             <SelectItemGroup>
               {fruitsCollection.items.map((item) => (
@@ -460,9 +487,12 @@ function SelectInvalid() {
     <Example title="Invalid">
       <div className="flex flex-col gap-4">
         <Select collection={fruitsCollection}>
-          <SelectTrigger aria-invalid="true">
-            <SelectValue placeholder="Select a fruit" />
-          </SelectTrigger>
+          <SelectControl>
+            <SelectTrigger aria-invalid="true">
+              <SelectValue placeholder="Select a fruit" />
+            </SelectTrigger>
+            <SelectIndicator />
+          </SelectControl>
           <SelectContent>
             <SelectItemGroup>
               {fruitsCollection.items.map((item) => (
@@ -477,9 +507,12 @@ function SelectInvalid() {
         <Field data-invalid>
           <FieldLabel htmlFor="select-fruit-invalid">Favorite Fruit</FieldLabel>
           <Select collection={fruitsCollection}>
-            <SelectTrigger id="select-fruit-invalid" aria-invalid>
-              <SelectValue placeholder="Select a fruit" />
-            </SelectTrigger>
+            <SelectControl>
+              <SelectTrigger id="select-fruit-invalid" aria-invalid>
+                <SelectValue placeholder="Select a fruit" />
+              </SelectTrigger>
+              <SelectIndicator />
+            </SelectControl>
             <SelectContent>
               <SelectItemGroup>
                 {fruitsCollection.items.map((item) => (
@@ -504,9 +537,12 @@ function SelectInline() {
       <div className="flex items-center gap-2">
         <Input placeholder="Search..." className="flex-1" />
         <Select collection={filterCollection}>
-          <SelectTrigger className="w-[140px]">
-            <SelectValue placeholder="Filter" />
-          </SelectTrigger>
+          <SelectControl className="w-[140px]">
+            <SelectTrigger>
+              <SelectValue placeholder="Filter" />
+            </SelectTrigger>
+            <SelectIndicator />
+          </SelectControl>
           <SelectContent>
             <SelectItemGroup>
               {filterCollection.items.map((item) => (
@@ -533,9 +569,12 @@ function SelectDisabled() {
   return (
     <Example title="Disabled">
       <Select collection={fruitsWithDisabledCollection} disabled>
-        <SelectTrigger>
-          <SelectValue placeholder="Disabled" />
-        </SelectTrigger>
+        <SelectControl>
+          <SelectTrigger>
+            <SelectValue placeholder="Disabled" />
+          </SelectTrigger>
+          <SelectIndicator />
+        </SelectControl>
         <SelectContent>
           <SelectItemGroup>
             {fruitsWithDisabledCollection.items.map((item) => (
@@ -588,11 +627,14 @@ function SelectPlan() {
           setPlan(details.value)
         }
       >
-        <SelectTrigger className="h-auto! w-72">
-          <SelectValue>
-            {selectedPlan && <SelectPlanItem plan={selectedPlan} />}
-          </SelectValue>
-        </SelectTrigger>
+        <SelectControl>
+          <SelectTrigger className="h-auto! w-72">
+            <SelectValue>
+              {selectedPlan && <SelectPlanItem plan={selectedPlan} />}
+            </SelectValue>
+          </SelectTrigger>
+          <SelectIndicator />
+        </SelectControl>
         <SelectContent>
           <SelectItemGroup>
             {plansCollection.items.map((item) => (
@@ -643,9 +685,12 @@ function SelectInDialog() {
             </DialogDescription>
           </DialogHeader>
           <Select collection={fruitsCollection}>
-            <SelectTrigger>
-              <SelectValue placeholder="Select a fruit" />
-            </SelectTrigger>
+            <SelectControl>
+              <SelectTrigger>
+                <SelectValue placeholder="Select a fruit" />
+              </SelectTrigger>
+              <SelectIndicator />
+            </SelectControl>
             <SelectContent>
               <SelectItemGroup>
                 {fruitsCollection.items.map((item) => (

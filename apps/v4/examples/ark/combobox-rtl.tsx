@@ -11,7 +11,8 @@ import {
   ComboboxItemText,
   ComboboxList,
   ComboboxTrigger,
-  createListCollection,
+  useFilter,
+  useListCollection,
 } from "@/examples/ark/ui-rtl/combobox"
 import { Field, FieldLabel } from "@/examples/ark/ui-rtl/field"
 
@@ -92,30 +93,22 @@ export function ComboboxRtl() {
     [categoryLabels]
   )
 
-  const [items, setItems] = React.useState(categoryItems)
+  const { contains } = useFilter({ sensitivity: "base" })
+  const { collection, filter, set } = useListCollection({
+    initialItems: categoryItems,
+    filter: contains,
+  })
 
   React.useEffect(() => {
-    setItems(categoryItems)
-  }, [categoryItems])
-
-  const collection = React.useMemo(
-    () => createListCollection({ items }),
-    [items]
-  )
-
-  const handleInputValueChange = (details: { inputValue: string }) => {
-    const filtered = categoryItems.filter((item) =>
-      item.label.toLowerCase().includes(details.inputValue.toLowerCase())
-    )
-    setItems(filtered.length > 0 ? filtered : categoryItems)
-  }
+    set(categoryItems)
+  }, [categoryItems, set])
 
   return (
     <Field className="mx-auto w-full max-w-xs">
       <FieldLabel>{t.label}</FieldLabel>
       <Combobox
         collection={collection}
-        onInputValueChange={handleInputValueChange}
+        onInputValueChange={(details) => filter(details.inputValue)}
         multiple
         defaultValue={[categories[0]]}
       >

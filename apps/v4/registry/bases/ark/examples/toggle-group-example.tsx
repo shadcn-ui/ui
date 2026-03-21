@@ -16,6 +16,8 @@ import {
   createListCollection,
   Select,
   SelectContent,
+  SelectControl,
+  SelectIndicator,
   SelectItem,
   SelectItemGroup,
   SelectItemIndicator,
@@ -364,9 +366,12 @@ function ToggleGroupWithInputAndSelect() {
       <div className="flex items-center gap-2">
         <Input type="search" placeholder="Search..." className="flex-1" />
         <Select collection={filterItems} defaultValue={["all"]}>
-          <SelectTrigger className="w-32">
-            <SelectValue />
-          </SelectTrigger>
+          <SelectControl className="w-32">
+            <SelectTrigger>
+              <SelectValue />
+            </SelectTrigger>
+            <SelectIndicator />
+          </SelectControl>
           <SelectContent>
             <SelectItemGroup>
               {filterItems.items.map((item) => (

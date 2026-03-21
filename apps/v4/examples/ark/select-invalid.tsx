@@ -5,6 +5,8 @@ import {
   createListCollection,
   Select,
   SelectContent,
+  SelectControl,
+  SelectIndicator,
   SelectItem,
   SelectItemGroup,
   SelectItemIndicator,
@@ -26,9 +28,12 @@ export function SelectInvalid() {
     <Field data-invalid className="w-full max-w-48">
       <FieldLabel>Fruit</FieldLabel>
       <Select collection={fruits}>
-        <SelectTrigger aria-invalid>
-          <SelectValue placeholder="Select a fruit" />
-        </SelectTrigger>
+        <SelectControl>
+          <SelectTrigger aria-invalid>
+            <SelectValue placeholder="Select a fruit" />
+          </SelectTrigger>
+          <SelectIndicator />
+        </SelectControl>
         <SelectContent>
           <SelectItemGroup>
             {fruits.items.map((item) => (

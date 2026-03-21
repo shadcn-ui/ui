@@ -22,7 +22,8 @@ import {
   ComboboxItemText,
   ComboboxList,
   ComboboxTrigger,
-  createListCollection,
+  useFilter,
+  useListCollection,
 } from "@/registry/bases/ark/ui/combobox"
 import {
   Dialog,
@@ -56,6 +57,8 @@ import {
   createListCollection as createSelectListCollection,
   Select,
   SelectContent,
+  SelectControl,
+  SelectIndicator,
   SelectItem,
   SelectItemGroup,
   SelectItemIndicator,
@@ -166,36 +169,22 @@ const asiaPacificItems = [
 
 const allTimezoneItems = [...americasItems, ...europeItems, ...asiaPacificItems]
 
-function useFilteredCollection<T extends { label: string }>(allItems: T[]) {
-  const [items, setItems] = React.useState(allItems)
-
-  const collection = React.useMemo(
-    () => createListCollection({ items }),
-    [items]
-  )
-
-  const handleInputValueChange = React.useCallback(
-    (details: { inputValue: string }) => {
-      const filtered = allItems.filter((item) =>
-        item.label.toLowerCase().includes(details.inputValue.toLowerCase())
-      )
-      setItems(filtered.length > 0 ? filtered : allItems)
-    },
-    [allItems]
-  )
-
-  return { collection, items, handleInputValueChange }
-}
+const americasValues = new Set(americasItems.map((i) => i.value))
+const europeValues = new Set(europeItems.map((i) => i.value))
+const asiaPacificValues = new Set(asiaPacificItems.map((i) => i.value))
 
 function ComboboxBasic() {
-  const { collection, handleInputValueChange } =
-    useFilteredCollection(frameworkItems)
+  const { contains } = useFilter({ sensitivity: "base" })
+  const { collection, filter } = useListCollection({
+    initialItems: frameworkItems,
+    filter: contains,
+  })
 
   return (
     <Example title="Basic">
       <Combobox
         collection={collection}
-        onInputValueChange={handleInputValueChange}
+        onInputValueChange={(details) => filter(details.inputValue)}
       >
         <ComboboxControl>
           <ComboboxInput placeholder="Select a framework" />
@@ -217,10 +206,9 @@ function ComboboxBasic() {
 }
 
 function ComboboxDisabled() {
-  const collection = React.useMemo(
-    () => createListCollection({ items: frameworkItems }),
-    []
-  )
+  const { collection } = useListCollection({
+    initialItems: frameworkItems,
+  })
 
   return (
     <Example title="Disabled">
@@ -245,14 +233,17 @@ function ComboboxDisabled() {
 }
 
 function ComboboxDisabledItems() {
-  const { collection, handleInputValueChange } =
-    useFilteredCollection(frameworkItems)
+  const { contains } = useFilter({ sensitivity: "base" })
+  const { collection, filter } = useListCollection({
+    initialItems: frameworkItems,
+    filter: contains,
+  })
 
   return (
     <Example title="Disabled Items">
       <Combobox
         collection={collection}
-        onInputValueChange={handleInputValueChange}
+        onInputValueChange={(details) => filter(details.inputValue)}
       >
         <ComboboxControl>
           <ComboboxInput placeholder="Select a framework" />
@@ -278,15 +269,18 @@ function ComboboxDisabledItems() {
 }
 
 function ComboboxInvalid() {
-  const { collection, handleInputValueChange } =
-    useFilteredCollection(frameworkItems)
+  const { contains } = useFilter({ sensitivity: "base" })
+  const { collection, filter } = useListCollection({
+    initialItems: frameworkItems,
+    filter: contains,
+  })
 
   return (
     <Example title="Invalid">
       <div className="flex flex-col gap-4">
         <Combobox
           collection={collection}
-          onInputValueChange={handleInputValueChange}
+          onInputValueChange={(details) => filter(details.inputValue)}
           invalid
         >
           <ComboboxControl>
@@ -310,7 +304,7 @@ function ComboboxInvalid() {
           </FieldLabel>
           <Combobox
             collection={collection}
-            onInputValueChange={handleInputValueChange}
+            onInputValueChange={(details) => filter(details.inputValue)}
             invalid
           >
             <ComboboxControl>
@@ -340,14 +334,17 @@ function ComboboxInvalid() {
 }
 
 function ComboboxWithClear() {
-  const { collection, handleInputValueChange } =
-    useFilteredCollection(frameworkItems)
+  const { contains } = useFilter({ sensitivity: "base" })
+  const { collection, filter } = useListCollection({
+    initialItems: frameworkItems,
+    filter: contains,
+  })
 
   return (
     <Example title="With Clear Button">
       <Combobox
         collection={collection}
-        onInputValueChange={handleInputValueChange}
+        onInputValueChange={(details) => filter(details.inputValue)}
         defaultValue={["nextjs"]}
       >
         <ComboboxControl>
@@ -371,24 +368,27 @@ function ComboboxWithClear() {
 }
 
 function ComboboxWithGroups() {
-  const { collection, items, handleInputValueChange } =
-    useFilteredCollection(allTimezoneItems)
+  const { contains } = useFilter({ sensitivity: "base" })
+  const { collection, filter } = useListCollection({
+    initialItems: allTimezoneItems,
+    filter: contains,
+  })
 
-  const filteredAmericas = items.filter((item) =>
-    americasItems.some((a) => a.value === item.value)
+  const filteredAmericas = collection.items.filter((item) =>
+    americasValues.has(item.value)
   )
-  const filteredEurope = items.filter((item) =>
-    europeItems.some((e) => e.value === item.value)
+  const filteredEurope = collection.items.filter((item) =>
+    europeValues.has(item.value)
   )
-  const filteredAsiaPacific = items.filter((item) =>
-    asiaPacificItems.some((a) => a.value === item.value)
+  const filteredAsiaPacific = collection.items.filter((item) =>
+    asiaPacificValues.has(item.value)
   )
 
   return (
     <Example title="With Groups">
       <Combobox
         collection={collection}
-        onInputValueChange={handleInputValueChange}
+        onInputValueChange={(details) => filter(details.inputValue)}
       >
         <ComboboxControl>
           <ComboboxInput placeholder="Select a timezone" />
@@ -437,24 +437,27 @@ function ComboboxWithGroups() {
 }
 
 function ComboboxWithGroupsAndSeparator() {
-  const { collection, items, handleInputValueChange } =
-    useFilteredCollection(allTimezoneItems)
+  const { contains } = useFilter({ sensitivity: "base" })
+  const { collection, filter } = useListCollection({
+    initialItems: allTimezoneItems,
+    filter: contains,
+  })
 
-  const filteredAmericas = items.filter((item) =>
-    americasItems.some((a) => a.value === item.value)
+  const filteredAmericas = collection.items.filter((item) =>
+    americasValues.has(item.value)
   )
-  const filteredEurope = items.filter((item) =>
-    europeItems.some((e) => e.value === item.value)
+  const filteredEurope = collection.items.filter((item) =>
+    europeValues.has(item.value)
   )
-  const filteredAsiaPacific = items.filter((item) =>
-    asiaPacificItems.some((a) => a.value === item.value)
+  const filteredAsiaPacific = collection.items.filter((item) =>
+    asiaPacificValues.has(item.value)
   )
 
   return (
     <Example title="With Groups and Separator">
       <Combobox
         collection={collection}
-        onInputValueChange={handleInputValueChange}
+        onInputValueChange={(details) => filter(details.inputValue)}
       >
         <ComboboxControl>
           <ComboboxInput placeholder="Select a timezone" />
@@ -503,8 +506,11 @@ function ComboboxWithGroupsAndSeparator() {
 }
 
 function ComboboxWithForm() {
-  const { collection, handleInputValueChange } =
-    useFilteredCollection(frameworkItems)
+  const { contains } = useFilter({ sensitivity: "base" })
+  const { collection, filter } = useListCollection({
+    initialItems: frameworkItems,
+    filter: contains,
+  })
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -527,7 +533,7 @@ function ComboboxWithForm() {
                 <FieldLabel htmlFor="framework">Framework</FieldLabel>
                 <Combobox
                   collection={collection}
-                  onInputValueChange={handleInputValueChange}
+                  onInputValueChange={(details) => filter(details.inputValue)}
                   name="framework"
                 >
                   <ComboboxControl>
@@ -568,14 +574,17 @@ const largeListItems = Array.from({ length: 100 }, (_, i) => ({
 }))
 
 function ComboboxLargeList() {
-  const { collection, handleInputValueChange } =
-    useFilteredCollection(largeListItems)
+  const { contains } = useFilter({ sensitivity: "base" })
+  const { collection, filter } = useListCollection({
+    initialItems: largeListItems,
+    filter: contains,
+  })
 
   return (
     <Example title="Large List (100 items)">
       <Combobox
         collection={collection}
-        onInputValueChange={handleInputValueChange}
+        onInputValueChange={(details) => filter(details.inputValue)}
       >
         <ComboboxControl>
           <ComboboxInput placeholder="Search from 100 items" />
@@ -597,14 +606,17 @@ function ComboboxLargeList() {
 }
 
 function ComboboxAutoHighlight() {
-  const { collection, handleInputValueChange } =
-    useFilteredCollection(frameworkItems)
+  const { contains } = useFilter({ sensitivity: "base" })
+  const { collection, filter } = useListCollection({
+    initialItems: frameworkItems,
+    filter: contains,
+  })
 
   return (
     <Example title="With Auto Highlight">
       <Combobox
         collection={collection}
-        onInputValueChange={handleInputValueChange}
+        onInputValueChange={(details) => filter(details.inputValue)}
         autoFocus
       >
         <ComboboxControl>
@@ -627,24 +639,27 @@ function ComboboxAutoHighlight() {
 }
 
 function ComboxboxInputAddon() {
-  const { collection, items, handleInputValueChange } =
-    useFilteredCollection(allTimezoneItems)
+  const { contains } = useFilter({ sensitivity: "base" })
+  const { collection, filter } = useListCollection({
+    initialItems: allTimezoneItems,
+    filter: contains,
+  })
 
-  const filteredAmericas = items.filter((item) =>
-    americasItems.some((a) => a.value === item.value)
+  const filteredAmericas = collection.items.filter((item) =>
+    americasValues.has(item.value)
   )
-  const filteredEurope = items.filter((item) =>
-    europeItems.some((e) => e.value === item.value)
+  const filteredEurope = collection.items.filter((item) =>
+    europeValues.has(item.value)
   )
-  const filteredAsiaPacific = items.filter((item) =>
-    asiaPacificItems.some((a) => a.value === item.value)
+  const filteredAsiaPacific = collection.items.filter((item) =>
+    asiaPacificValues.has(item.value)
   )
 
   return (
     <Example title="With Icon Addon">
       <Combobox
         collection={collection}
-        onInputValueChange={handleInputValueChange}
+        onInputValueChange={(details) => filter(details.inputValue)}
       >
         <ComboboxControl>
           <IconPlaceholder
@@ -700,14 +715,17 @@ function ComboxboxInputAddon() {
 }
 
 function ComboboxInPopup() {
-  const { collection, handleInputValueChange } =
-    useFilteredCollection(countryItems)
+  const { contains } = useFilter({ sensitivity: "base" })
+  const { collection, filter } = useListCollection({
+    initialItems: countryItems,
+    filter: contains,
+  })
 
   return (
     <Example title="Combobox in Popup">
       <Combobox
         collection={collection}
-        onInputValueChange={handleInputValueChange}
+        onInputValueChange={(details) => filter(details.inputValue)}
       >
         <ComboboxControl>
           <ComboboxTrigger asChild>
@@ -736,14 +754,17 @@ function ComboboxInPopup() {
 }
 
 function ComboboxMultiple() {
-  const { collection, handleInputValueChange } =
-    useFilteredCollection(frameworkItems)
+  const { contains } = useFilter({ sensitivity: "base" })
+  const { collection, filter } = useListCollection({
+    initialItems: frameworkItems,
+    filter: contains,
+  })
 
   return (
     <Example title="Combobox Multiple">
       <Combobox
         collection={collection}
-        onInputValueChange={handleInputValueChange}
+        onInputValueChange={(details) => filter(details.inputValue)}
         multiple
         defaultValue={["nextjs"]}
       >
@@ -767,10 +788,9 @@ function ComboboxMultiple() {
 }
 
 function ComboboxMultipleDisabled() {
-  const collection = React.useMemo(
-    () => createListCollection({ items: frameworkItems }),
-    []
-  )
+  const { collection } = useListCollection({
+    initialItems: frameworkItems,
+  })
 
   return (
     <Example title="Combobox Multiple Disabled">
@@ -800,15 +820,18 @@ function ComboboxMultipleDisabled() {
 }
 
 function ComboboxMultipleInvalid() {
-  const { collection, handleInputValueChange } =
-    useFilteredCollection(frameworkItems)
+  const { contains } = useFilter({ sensitivity: "base" })
+  const { collection, filter } = useListCollection({
+    initialItems: frameworkItems,
+    filter: contains,
+  })
 
   return (
     <Example title="Combobox Multiple Invalid">
       <div className="flex flex-col gap-4">
         <Combobox
           collection={collection}
-          onInputValueChange={handleInputValueChange}
+          onInputValueChange={(details) => filter(details.inputValue)}
           multiple
           defaultValue={["nextjs", "sveltekit"]}
           invalid
@@ -834,7 +857,7 @@ function ComboboxMultipleInvalid() {
           </FieldLabel>
           <Combobox
             collection={collection}
-            onInputValueChange={handleInputValueChange}
+            onInputValueChange={(details) => filter(details.inputValue)}
             multiple
             defaultValue={["nextjs", "sveltekit", "nuxtjs"]}
             invalid
@@ -868,14 +891,17 @@ function ComboboxMultipleInvalid() {
 }
 
 function ComboboxWithCustomItems() {
-  const { collection, handleInputValueChange } =
-    useFilteredCollection(countryItems)
+  const { contains } = useFilter({ sensitivity: "base" })
+  const { collection, filter } = useListCollection({
+    initialItems: countryItems,
+    filter: contains,
+  })
 
   return (
     <Example title="With Custom Item Rendering">
       <Combobox
         collection={collection}
-        onInputValueChange={handleInputValueChange}
+        onInputValueChange={(details) => filter(details.inputValue)}
       >
         <ComboboxControl>
           <ComboboxInput placeholder="Search countries..." />
@@ -909,8 +935,11 @@ function ComboboxWithCustomItems() {
 
 function ComboboxInDialog() {
   const [open, setOpen] = React.useState(false)
-  const { collection, handleInputValueChange } =
-    useFilteredCollection(frameworkItems)
+  const { contains } = useFilter({ sensitivity: "base" })
+  const { collection, filter } = useListCollection({
+    initialItems: frameworkItems,
+    filter: contains,
+  })
 
   return (
     <Example title="Combobox in Dialog">
@@ -931,7 +960,7 @@ function ComboboxInDialog() {
             </FieldLabel>
             <Combobox
               collection={collection}
-              onInputValueChange={handleInputValueChange}
+              onInputValueChange={(details) => filter(details.inputValue)}
             >
               <ComboboxControl>
                 <ComboboxInput
@@ -981,14 +1010,17 @@ const selectFrameworksCollection = createSelectListCollection({
 })
 
 function ComboboxWithOtherInputs() {
-  const { collection, handleInputValueChange } =
-    useFilteredCollection(frameworkItems)
+  const { contains } = useFilter({ sensitivity: "base" })
+  const { collection, filter } = useListCollection({
+    initialItems: frameworkItems,
+    filter: contains,
+  })
 
   return (
     <Example title="With Other Inputs">
       <Combobox
         collection={collection}
-        onInputValueChange={handleInputValueChange}
+        onInputValueChange={(details) => filter(details.inputValue)}
       >
         <ComboboxControl>
           <ComboboxInput
@@ -1009,9 +1041,12 @@ function ComboboxWithOtherInputs() {
         </ComboboxContent>
       </Combobox>
       <Select collection={selectFrameworksCollection}>
-        <SelectTrigger className="w-52">
-          <SelectValue placeholder="Select a framework" />
-        </SelectTrigger>
+        <SelectControl className="w-52">
+          <SelectTrigger>
+            <SelectValue placeholder="Select a framework" />
+          </SelectTrigger>
+          <SelectIndicator />
+        </SelectControl>
         <SelectContent>
           <SelectItemGroup>
             {selectFrameworksCollection.items.map((item) => (

@@ -1,6 +1,5 @@
 "use client"
 
-import * as React from "react"
 import { Button } from "@/examples/ark/ui/button"
 import {
   Combobox,
@@ -12,7 +11,8 @@ import {
   ComboboxItemText,
   ComboboxList,
   ComboboxTrigger,
-  createListCollection,
+  useFilter,
+  useListCollection,
 } from "@/examples/ark/ui/combobox"
 
 const countryItems = [
@@ -38,24 +38,16 @@ const countryItems = [
 ]
 
 export function ComboboxPopup() {
-  const [items, setItems] = React.useState(countryItems)
-
-  const collection = React.useMemo(
-    () => createListCollection({ items }),
-    [items]
-  )
-
-  const handleInputValueChange = (details: { inputValue: string }) => {
-    const filtered = countryItems.filter((item) =>
-      item.label.toLowerCase().includes(details.inputValue.toLowerCase())
-    )
-    setItems(filtered.length > 0 ? filtered : countryItems)
-  }
+  const { contains } = useFilter({ sensitivity: "base" })
+  const { collection, filter } = useListCollection({
+    initialItems: countryItems,
+    filter: contains,
+  })
 
   return (
     <Combobox
       collection={collection}
-      onInputValueChange={handleInputValueChange}
+      onInputValueChange={(details) => filter(details.inputValue)}
     >
       <ComboboxControl>
         <ComboboxTrigger asChild>

@@ -62,6 +62,8 @@ import { Input } from "@/registry/bases/ark/ui/input"
 import {
   Select,
   SelectContent,
+  SelectControl,
+  SelectIndicator,
   SelectItem,
   SelectItemGroup,
   SelectItemIndicator,
@@ -615,9 +617,12 @@ function FormExample() {
                 <Field>
                   <FieldLabel htmlFor="small-form-role">Role</FieldLabel>
                   <Select collection={roleItems}>
-                    <SelectTrigger id="small-form-role">
-                      <SelectValue placeholder="Select a role" />
-                    </SelectTrigger>
+                    <SelectControl>
+                      <SelectTrigger id="small-form-role">
+                        <SelectValue placeholder="Select a role" />
+                      </SelectTrigger>
+                      <SelectIndicator />
+                    </SelectControl>
                     <SelectContent>
                       <SelectItemGroup>
                         {roleItems.items.map((item) => (

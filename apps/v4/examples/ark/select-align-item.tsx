@@ -12,6 +12,8 @@ import {
   createListCollection,
   Select,
   SelectContent,
+  SelectControl,
+  SelectIndicator,
   SelectItem,
   SelectItemGroup,
   SelectItemIndicator,
@@ -51,9 +53,12 @@ export function SelectAlignItem() {
       </Field>
       <Field>
         <Select collection={fruits} defaultValue={["banana"]}>
-          <SelectTrigger>
-            <SelectValue />
-          </SelectTrigger>
+          <SelectControl>
+            <SelectTrigger>
+              <SelectValue />
+            </SelectTrigger>
+            <SelectIndicator />
+          </SelectControl>
           <SelectContent
             position={alignItemWithTrigger ? "item-aligned" : "popper"}
           >

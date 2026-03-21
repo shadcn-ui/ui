@@ -1,6 +1,5 @@
 "use client"
 
-import * as React from "react"
 import {
   Combobox,
   ComboboxContent,
@@ -13,7 +12,8 @@ import {
   ComboboxItemText,
   ComboboxList,
   ComboboxTrigger,
-  createListCollection,
+  useFilter,
+  useListCollection,
 } from "@/examples/ark/ui/combobox"
 
 const americasItems = [
@@ -45,35 +45,31 @@ const asiaPacificItems = [
 
 const allTimezoneItems = [...americasItems, ...europeItems, ...asiaPacificItems]
 
+const americasValues = new Set(americasItems.map((i) => i.value))
+const europeValues = new Set(europeItems.map((i) => i.value))
+const asiaPacificValues = new Set(asiaPacificItems.map((i) => i.value))
+
 export function ComboboxWithGroupsAndSeparator() {
-  const [items, setItems] = React.useState(allTimezoneItems)
+  const { contains } = useFilter({ sensitivity: "base" })
+  const { collection, filter } = useListCollection({
+    initialItems: allTimezoneItems,
+    filter: contains,
+  })
 
-  const collection = React.useMemo(
-    () => createListCollection({ items }),
-    [items]
+  const filteredAmericas = collection.items.filter((item) =>
+    americasValues.has(item.value)
   )
-
-  const handleInputValueChange = (details: { inputValue: string }) => {
-    const filtered = allTimezoneItems.filter((item) =>
-      item.label.toLowerCase().includes(details.inputValue.toLowerCase())
-    )
-    setItems(filtered.length > 0 ? filtered : allTimezoneItems)
-  }
-
-  const filteredAmericas = items.filter((item) =>
-    americasItems.some((a) => a.value === item.value)
+  const filteredEurope = collection.items.filter((item) =>
+    europeValues.has(item.value)
   )
-  const filteredEurope = items.filter((item) =>
-    europeItems.some((e) => e.value === item.value)
-  )
-  const filteredAsiaPacific = items.filter((item) =>
-    asiaPacificItems.some((a) => a.value === item.value)
+  const filteredAsiaPacific = collection.items.filter((item) =>
+    asiaPacificValues.has(item.value)
   )
 
   return (
     <Combobox
       collection={collection}
-      onInputValueChange={handleInputValueChange}
+      onInputValueChange={(details) => filter(details.inputValue)}
     >
       <ComboboxControl>
         <ComboboxInput placeholder="Select a timezone" />

@@ -10,6 +10,8 @@ import {
   createListCollection,
   Select,
   SelectContent,
+  SelectControl,
+  SelectIndicator,
   SelectItem,
   SelectItemGroup,
   SelectItemIndicator,
@@ -54,9 +56,12 @@ export function InputForm() {
           <Field>
             <FieldLabel htmlFor="form-country">Country</FieldLabel>
             <Select collection={countryItems} defaultValue={["us"]}>
-              <SelectTrigger id="form-country">
-                <SelectValue />
-              </SelectTrigger>
+              <SelectControl>
+                <SelectTrigger id="form-country">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectIndicator />
+              </SelectControl>
               <SelectContent>
                 <SelectItemGroup>
                   {countryItems.items.map((item) => (
