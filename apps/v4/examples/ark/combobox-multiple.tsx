@@ -3,55 +3,59 @@
 import * as React from "react"
 import {
   Combobox,
-  ComboboxChip,
-  ComboboxChips,
-  ComboboxChipsInput,
   ComboboxContent,
-  ComboboxEmpty,
+  ComboboxControl,
+  ComboboxInput,
   ComboboxItem,
+  ComboboxItemIndicator,
+  ComboboxItemText,
   ComboboxList,
-  ComboboxValue,
-  useComboboxAnchor,
+  ComboboxTrigger,
+  createListCollection,
 } from "@/examples/ark/ui/combobox"
 
-const frameworks = [
-  "Next.js",
-  "SvelteKit",
-  "Nuxt.js",
-  "Remix",
-  "Astro",
-] as const
+const frameworkItems = [
+  { label: "Next.js", value: "nextjs" },
+  { label: "SvelteKit", value: "sveltekit" },
+  { label: "Nuxt.js", value: "nuxtjs" },
+  { label: "Remix", value: "remix" },
+  { label: "Astro", value: "astro" },
+]
 
 export function ComboboxMultiple() {
-  const anchor = useComboboxAnchor()
+  const [items, setItems] = React.useState(frameworkItems)
+
+  const collection = React.useMemo(
+    () => createListCollection({ items }),
+    [items]
+  )
+
+  const handleInputValueChange = (details: { inputValue: string }) => {
+    const filtered = frameworkItems.filter((item) =>
+      item.label.toLowerCase().includes(details.inputValue.toLowerCase())
+    )
+    setItems(filtered.length > 0 ? filtered : frameworkItems)
+  }
 
   return (
     <Combobox
+      collection={collection}
+      onInputValueChange={handleInputValueChange}
       multiple
-      autoHighlight
-      items={frameworks}
-      defaultValue={[frameworks[0]]}
+      defaultValue={["nextjs"]}
     >
-      <ComboboxChips ref={anchor} className="w-full max-w-xs">
-        <ComboboxValue>
-          {(values) => (
-            <React.Fragment>
-              {values.map((value: string) => (
-                <ComboboxChip key={value}>{value}</ComboboxChip>
-              ))}
-              <ComboboxChipsInput />
-            </React.Fragment>
-          )}
-        </ComboboxValue>
-      </ComboboxChips>
-      <ComboboxContent anchor={anchor}>
-        <ComboboxEmpty>No items found.</ComboboxEmpty>
+      <ComboboxControl>
+        <ComboboxInput placeholder="Select frameworks" />
+        <ComboboxTrigger />
+      </ComboboxControl>
+      <ComboboxContent>
         <ComboboxList>
-          {(item) => (
-            <ComboboxItem key={item} value={item}>
-              {item}
+          {collection.items.map((item) => (
+            <ComboboxItem key={item.value} item={item}>
+              <ComboboxItemText>{item.label}</ComboboxItemText>
+              <ComboboxItemIndicator />
             </ComboboxItem>
-          )}
+          ))}
         </ComboboxList>
       </ComboboxContent>
     </Combobox>

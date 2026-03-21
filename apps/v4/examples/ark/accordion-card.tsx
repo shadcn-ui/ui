@@ -44,7 +44,7 @@ export default function AccordionCard() {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <Accordion type="single" collapsible defaultValue="plans">
+        <Accordion collapsible defaultValue={["plans"]}>
           {items.map((item) => (
             <AccordionItem key={item.value} value={item.value}>
               <AccordionTrigger>{item.trigger}</AccordionTrigger>

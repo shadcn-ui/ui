@@ -3,15 +3,15 @@
 import * as React from "react"
 import {
   Combobox,
-  ComboboxChip,
-  ComboboxChips,
-  ComboboxChipsInput,
   ComboboxContent,
-  ComboboxEmpty,
+  ComboboxControl,
+  ComboboxInput,
   ComboboxItem,
+  ComboboxItemIndicator,
+  ComboboxItemText,
   ComboboxList,
-  ComboboxValue,
-  useComboboxAnchor,
+  ComboboxTrigger,
+  createListCollection,
 } from "@/examples/ark/ui-rtl/combobox"
 import { Field, FieldLabel } from "@/examples/ark/ui-rtl/field"
 
@@ -35,7 +35,6 @@ const translations: Translations = {
     values: {
       label: "Categories",
       placeholder: "Add categories",
-      empty: "No categories found.",
       technology: "Technology",
       design: "Design",
       business: "Business",
@@ -49,7 +48,6 @@ const translations: Translations = {
     values: {
       label: "الفئات",
       placeholder: "أضف فئات",
-      empty: "لم يتم العثور على فئات.",
       technology: "التكنولوجيا",
       design: "التصميم",
       business: "الأعمال",
@@ -63,7 +61,6 @@ const translations: Translations = {
     values: {
       label: "קטגוריות",
       placeholder: "הוסף קטגוריות",
-      empty: "לא נמצאו קטגוריות.",
       technology: "טכנולוגיה",
       design: "עיצוב",
       business: "עסקים",
@@ -76,7 +73,6 @@ const translations: Translations = {
 
 export function ComboboxRtl() {
   const { dir, t, language } = useTranslation(translations, "ar")
-  const anchor = useComboboxAnchor()
 
   const categoryLabels: Record<string, string> = {
     technology: t.technology,
@@ -87,44 +83,57 @@ export function ComboboxRtl() {
     health: t.health,
   }
 
+  const categoryItems = React.useMemo(
+    () =>
+      categories.map((cat) => ({
+        label: categoryLabels[cat] || cat,
+        value: cat,
+      })),
+    [categoryLabels]
+  )
+
+  const [items, setItems] = React.useState(categoryItems)
+
+  React.useEffect(() => {
+    setItems(categoryItems)
+  }, [categoryItems])
+
+  const collection = React.useMemo(
+    () => createListCollection({ items }),
+    [items]
+  )
+
+  const handleInputValueChange = (details: { inputValue: string }) => {
+    const filtered = categoryItems.filter((item) =>
+      item.label.toLowerCase().includes(details.inputValue.toLowerCase())
+    )
+    setItems(filtered.length > 0 ? filtered : categoryItems)
+  }
+
   return (
     <Field className="mx-auto w-full max-w-xs">
       <FieldLabel>{t.label}</FieldLabel>
       <Combobox
+        collection={collection}
+        onInputValueChange={handleInputValueChange}
         multiple
-        autoHighlight
-        items={categories}
         defaultValue={[categories[0]]}
-        itemToStringValue={(item: (typeof categories)[number]) =>
-          categoryLabels[item] || item
-        }
       >
-        <ComboboxChips ref={anchor}>
-          <ComboboxValue>
-            {(values) => (
-              <React.Fragment>
-                {values.map((value: string) => (
-                  <ComboboxChip key={value}>
-                    {categoryLabels[value] || value}
-                  </ComboboxChip>
-                ))}
-                <ComboboxChipsInput placeholder={t.placeholder} />
-              </React.Fragment>
-            )}
-          </ComboboxValue>
-        </ComboboxChips>
+        <ComboboxControl>
+          <ComboboxInput placeholder={t.placeholder} />
+          <ComboboxTrigger />
+        </ComboboxControl>
         <ComboboxContent
-          anchor={anchor}
           dir={dir}
           data-lang={dir === "rtl" ? language : undefined}
         >
-          <ComboboxEmpty>{t.empty}</ComboboxEmpty>
           <ComboboxList>
-            {(item) => (
-              <ComboboxItem key={item} value={item}>
-                {categoryLabels[item] || item}
+            {collection.items.map((item) => (
+              <ComboboxItem key={item.value} item={item}>
+                <ComboboxItemText>{item.label}</ComboboxItemText>
+                <ComboboxItemIndicator />
               </ComboboxItem>
-            )}
+            ))}
           </ComboboxList>
         </ComboboxContent>
       </Combobox>

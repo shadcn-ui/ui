@@ -1,5 +1,3 @@
-"use client"
-
 import * as React from "react"
 import { Card, CardContent } from "@/examples/ark/ui/card"
 import {
@@ -9,23 +7,17 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/examples/ark/ui/carousel"
-import Autoplay from "embla-carousel-autoplay"
 
 export default function CarouselPlugin() {
-  const plugin = React.useRef(
-    Autoplay({ delay: 2000, stopOnInteraction: true })
-  )
-
   return (
     <Carousel
-      plugins={[plugin.current]}
+      slideCount={5}
+      autoplay
       className="w-full max-w-[10rem] sm:max-w-xs"
-      onMouseEnter={plugin.current.stop}
-      onMouseLeave={plugin.current.reset}
     >
       <CarouselContent>
         {Array.from({ length: 5 }).map((_, index) => (
-          <CarouselItem key={index}>
+          <CarouselItem key={index} index={index}>
             <div className="p-1">
               <Card>
                 <CardContent className="flex aspect-square items-center justify-center p-6">

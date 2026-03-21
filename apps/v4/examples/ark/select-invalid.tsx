@@ -1,27 +1,41 @@
 import { Field, FieldError, FieldLabel } from "@/examples/ark/ui/field"
 import {
+  createListCollection,
   Select,
   SelectContent,
-  SelectGroup,
   SelectItem,
+  SelectItemGroup,
+  SelectItemIndicator,
+  SelectItemText,
   SelectTrigger,
   SelectValue,
 } from "@/examples/ark/ui/select"
+
+const fruits = createListCollection({
+  items: [
+    { label: "Apple", value: "apple" },
+    { label: "Banana", value: "banana" },
+    { label: "Blueberry", value: "blueberry" },
+  ],
+})
 
 export function SelectInvalid() {
   return (
     <Field data-invalid className="w-full max-w-48">
       <FieldLabel>Fruit</FieldLabel>
-      <Select>
+      <Select collection={fruits}>
         <SelectTrigger aria-invalid>
           <SelectValue placeholder="Select a fruit" />
         </SelectTrigger>
         <SelectContent>
-          <SelectGroup>
-            <SelectItem value="apple">Apple</SelectItem>
-            <SelectItem value="banana">Banana</SelectItem>
-            <SelectItem value="blueberry">Blueberry</SelectItem>
-          </SelectGroup>
+          <SelectItemGroup>
+            {fruits.items.map((item) => (
+              <SelectItem key={item.value} item={item}>
+                <SelectItemText>{item.label}</SelectItemText>
+                <SelectItemIndicator />
+              </SelectItem>
+            ))}
+          </SelectItemGroup>
         </SelectContent>
       </Select>
       <FieldError>Please select a fruit.</FieldError>

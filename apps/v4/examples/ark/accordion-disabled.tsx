@@ -7,7 +7,7 @@ import {
 
 export default function AccordionDisabled() {
   return (
-    <Accordion type="single" collapsible className="w-full">
+    <Accordion collapsible className="w-full">
       <AccordionItem value="item-1">
         <AccordionTrigger>Can I access my account history?</AccordionTrigger>
         <AccordionContent>

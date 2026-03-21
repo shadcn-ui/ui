@@ -9,14 +9,27 @@ import {
   FieldLabel,
 } from "@/examples/ark/ui/field"
 import {
+  createListCollection,
   Select,
   SelectContent,
-  SelectGroup,
   SelectItem,
+  SelectItemGroup,
+  SelectItemIndicator,
+  SelectItemText,
   SelectTrigger,
   SelectValue,
 } from "@/examples/ark/ui/select"
 import { Switch } from "@/examples/ark/ui/switch"
+
+const fruits = createListCollection({
+  items: [
+    { label: "Apple", value: "apple" },
+    { label: "Banana", value: "banana" },
+    { label: "Blueberry", value: "blueberry" },
+    { label: "Grapes", value: "grapes" },
+    { label: "Pineapple", value: "pineapple" },
+  ],
+})
 
 export function SelectAlignItem() {
   const [alignItemWithTrigger, setAlignItemWithTrigger] = React.useState(true)
@@ -37,20 +50,21 @@ export function SelectAlignItem() {
         />
       </Field>
       <Field>
-        <Select defaultValue="banana">
+        <Select collection={fruits} defaultValue={["banana"]}>
           <SelectTrigger>
             <SelectValue />
           </SelectTrigger>
           <SelectContent
             position={alignItemWithTrigger ? "item-aligned" : "popper"}
           >
-            <SelectGroup>
-              <SelectItem value="apple">Apple</SelectItem>
-              <SelectItem value="banana">Banana</SelectItem>
-              <SelectItem value="blueberry">Blueberry</SelectItem>
-              <SelectItem value="grapes">Grapes</SelectItem>
-              <SelectItem value="pineapple">Pineapple</SelectItem>
-            </SelectGroup>
+            <SelectItemGroup>
+              {fruits.items.map((item) => (
+                <SelectItem key={item.value} item={item}>
+                  <SelectItemText>{item.label}</SelectItemText>
+                  <SelectItemIndicator />
+                </SelectItem>
+              ))}
+            </SelectItemGroup>
           </SelectContent>
         </Select>
       </Field>

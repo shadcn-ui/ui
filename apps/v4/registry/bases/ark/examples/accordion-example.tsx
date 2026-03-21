@@ -53,7 +53,7 @@ function AccordionBasic() {
 
   return (
     <Example title="Basic">
-      <Accordion type="single" collapsible className="mx-auto max-w-lg">
+      <Accordion collapsible className="mx-auto max-w-lg">
         {items.map((item) => (
           <AccordionItem key={item.value} value={item.value}>
             <AccordionTrigger>{item.trigger}</AccordionTrigger>
@@ -85,7 +85,7 @@ function AccordionMultiple() {
 
   return (
     <Example title="Multiple">
-      <Accordion type="multiple" className="mx-auto max-w-lg">
+      <Accordion multiple className="mx-auto max-w-lg">
         {items.map((item) => (
           <AccordionItem key={item.value} value={item.value}>
             <AccordionTrigger>{item.trigger}</AccordionTrigger>
@@ -133,7 +133,6 @@ function AccordionWithBorders() {
   return (
     <Example title="With Borders">
       <Accordion
-        type="single"
         collapsible
         className="mx-auto max-w-lg style-vega:gap-2 style-nova:gap-2 style-lyra:gap-2"
       >
@@ -274,9 +273,8 @@ function AccordionInCard() {
         </CardHeader>
         <CardContent>
           <Accordion
-            type="single"
             collapsible
-            defaultValue="plans"
+            defaultValue={["plans"]}
             className="style-maia:rounded-md style-mira:rounded-md"
           >
             {items.map((item) => (
@@ -320,7 +318,6 @@ function AccordionWithDisabled() {
   return (
     <Example title="With Disabled">
       <Accordion
-        type="single"
         collapsible
         className="mx-auto max-w-lg overflow-hidden border style-vega:rounded-lg style-nova:rounded-lg style-lyra:rounded-none style-maia:rounded-lg style-mira:rounded-lg"
       >

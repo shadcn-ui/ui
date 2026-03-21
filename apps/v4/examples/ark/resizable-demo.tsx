@@ -7,24 +7,27 @@ import {
 export default function ResizableDemo() {
   return (
     <ResizablePanelGroup
-      orientation="horizontal"
+      panels={[{ id: "a" }, { id: "b" }]}
       className="max-w-sm rounded-lg border"
     >
-      <ResizablePanel defaultSize="50%">
+      <ResizablePanel id="a">
         <div className="flex h-[200px] items-center justify-center p-6">
           <span className="font-semibold">One</span>
         </div>
       </ResizablePanel>
-      <ResizableHandle withHandle />
-      <ResizablePanel defaultSize="50%">
-        <ResizablePanelGroup orientation="vertical">
-          <ResizablePanel defaultSize="25%">
+      <ResizableHandle id="a:b" withHandle />
+      <ResizablePanel id="b">
+        <ResizablePanelGroup
+          panels={[{ id: "c" }, { id: "d" }]}
+          orientation="vertical"
+        >
+          <ResizablePanel id="c">
             <div className="flex h-full items-center justify-center p-6">
               <span className="font-semibold">Two</span>
             </div>
           </ResizablePanel>
-          <ResizableHandle withHandle />
-          <ResizablePanel defaultSize="75%">
+          <ResizableHandle id="c:d" withHandle />
+          <ResizablePanel id="d">
             <div className="flex h-full items-center justify-center p-6">
               <span className="font-semibold">Three</span>
             </div>

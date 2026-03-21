@@ -2,27 +2,47 @@
 
 import * as React from "react"
 import { Button } from "@/examples/ark/ui/button"
-import { Calendar } from "@/examples/ark/ui/calendar"
+import {
+  Calendar,
+  CalendarDate,
+  type DateValue,
+  type DatePickerValueChangeDetails,
+} from "@/examples/ark/ui/calendar"
 import { Card, CardContent, CardFooter } from "@/examples/ark/ui/card"
-import { addDays } from "date-fns"
+
+function toCalendarDate(date: Date): CalendarDate {
+  return new CalendarDate(
+    date.getFullYear(),
+    date.getMonth() + 1,
+    date.getDate()
+  )
+}
+
+function addDays(date: Date, days: number): Date {
+  const result = new Date(date)
+  result.setDate(result.getDate() + days)
+  return result
+}
 
 export function CalendarWithPresets() {
-  const [date, setDate] = React.useState<Date | undefined>(
-    new Date(new Date().getFullYear(), 1, 12)
-  )
-  const [currentMonth, setCurrentMonth] = React.useState<Date>(
-    new Date(new Date().getFullYear(), new Date().getMonth(), 1)
+  const [value, setValue] = React.useState<DateValue[]>([
+    new CalendarDate(2026, 2, 12),
+  ])
+  const [focusedValue, setFocusedValue] = React.useState<DateValue>(
+    new CalendarDate(2026, 2, 12)
   )
 
   return (
     <Card className="mx-auto w-fit max-w-[300px]" size="sm">
       <CardContent>
         <Calendar
-          mode="single"
-          selected={date}
-          onSelect={setDate}
-          month={currentMonth}
-          onMonthChange={setCurrentMonth}
+          selectionMode="single"
+          value={value}
+          onValueChange={(details: DatePickerValueChangeDetails) =>
+            setValue(details.value)
+          }
+          focusedValue={focusedValue}
+          onFocusChange={(details) => setFocusedValue(details.focusedValue)}
           fixedWeeks
           className="p-0 [--cell-size:--spacing(9.5)]"
         />
@@ -42,10 +62,9 @@ export function CalendarWithPresets() {
             className="flex-1"
             onClick={() => {
               const newDate = addDays(new Date(), preset.value)
-              setDate(newDate)
-              setCurrentMonth(
-                new Date(newDate.getFullYear(), newDate.getMonth(), 1)
-              )
+              const calDate = toCalendarDate(newDate)
+              setValue([calDate])
+              setFocusedValue(calDate)
             }}
           >
             {preset.label}

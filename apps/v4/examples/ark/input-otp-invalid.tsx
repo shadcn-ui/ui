@@ -6,13 +6,20 @@ import {
   InputOTPGroup,
   InputOTPSeparator,
   InputOTPSlot,
+  type PinInputValueChangeDetails,
 } from "@/examples/ark/ui/input-otp"
 
 export function InputOTPInvalid() {
-  const [value, setValue] = React.useState("000000")
+  const [value, setValue] = React.useState(["0", "0", "0", "0", "0", "0"])
 
   return (
-    <InputOTP maxLength={6} value={value} onChange={setValue}>
+    <InputOTP
+      count={6}
+      value={value}
+      onValueChange={(details: PinInputValueChangeDetails) =>
+        setValue(details.value)
+      }
+    >
       <InputOTPGroup>
         <InputOTPSlot index={0} aria-invalid />
         <InputOTPSlot index={1} aria-invalid />

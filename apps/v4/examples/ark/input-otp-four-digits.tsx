@@ -1,15 +1,12 @@
-"use client"
-
 import {
   InputOTP,
   InputOTPGroup,
   InputOTPSlot,
 } from "@/examples/ark/ui/input-otp"
-import { REGEXP_ONLY_DIGITS } from "input-otp"
 
 export function InputOTPFourDigits() {
   return (
-    <InputOTP maxLength={4} pattern={REGEXP_ONLY_DIGITS}>
+    <InputOTP count={4} type="numeric">
       <InputOTPGroup>
         <InputOTPSlot index={0} />
         <InputOTPSlot index={1} />

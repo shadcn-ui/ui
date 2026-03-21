@@ -5,17 +5,20 @@ import {
   InputOTP,
   InputOTPGroup,
   InputOTPSlot,
+  type PinInputValueChangeDetails,
 } from "@/examples/ark/ui/input-otp"
 
 export default function InputOTPControlled() {
-  const [value, setValue] = React.useState("")
+  const [value, setValue] = React.useState<string[]>([])
 
   return (
     <div className="space-y-2">
       <InputOTP
-        maxLength={6}
+        count={6}
         value={value}
-        onChange={(value) => setValue(value)}
+        onValueChange={(details: PinInputValueChangeDetails) =>
+          setValue(details.value)
+        }
       >
         <InputOTPGroup>
           <InputOTPSlot index={0} />
@@ -27,10 +30,10 @@ export default function InputOTPControlled() {
         </InputOTPGroup>
       </InputOTP>
       <div className="text-center text-sm">
-        {value === "" ? (
+        {value.every((v) => v === "") || value.length === 0 ? (
           <>Enter your one-time password.</>
         ) : (
-          <>You entered: {value}</>
+          <>You entered: {value.join("")}</>
         )}
       </div>
     </div>
