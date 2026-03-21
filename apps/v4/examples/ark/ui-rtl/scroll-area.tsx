@@ -52,4 +52,11 @@ function ScrollBar({
   )
 }
 
-export { ScrollArea, ScrollBar }
+// --- Context & RootProvider re-exports ---
+
+const ScrollAreaContext = ScrollAreaPrimitive.Context
+const ScrollAreaRootProvider = ScrollAreaPrimitive.RootProvider
+
+export { ScrollArea, ScrollBar, ScrollAreaContext, ScrollAreaRootProvider }
+
+export { useScrollArea, useScrollAreaContext } from "@ark-ui/react/scroll-area"

@@ -86,4 +86,17 @@ function ToggleGroupItem({
   )
 }
 
-export { ToggleGroup, ToggleGroupItem }
+const ToggleGroupArkContext = ToggleGroupPrimitive.Context
+const ToggleGroupRootProvider = ToggleGroupPrimitive.RootProvider
+
+export {
+  ToggleGroup,
+  ToggleGroupItem,
+  ToggleGroupArkContext,
+  ToggleGroupRootProvider,
+}
+export {
+  useToggleGroup,
+  useToggleGroupContext,
+  type ToggleGroupValueChangeDetails,
+} from "@ark-ui/react/toggle-group"

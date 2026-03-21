@@ -167,6 +167,11 @@ function PaginationEllipsis({
   )
 }
 
+// --- Context & RootProvider re-exports ---
+
+const PaginationContext = PaginationPrimitive.Context
+const PaginationRootProvider = PaginationPrimitive.RootProvider
+
 export {
   Pagination,
   PaginationContent,
@@ -175,4 +180,8 @@ export {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
+  PaginationContext,
+  PaginationRootProvider,
 }
+
+export { usePagination, usePaginationContext } from "@ark-ui/react/pagination"

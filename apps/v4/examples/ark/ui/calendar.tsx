@@ -5,102 +5,23 @@ import {
   DatePicker,
   type DatePickerValueChangeDetails,
 } from "@ark-ui/react/date-picker"
-import { CalendarDate, type DateValue } from "@internationalized/date"
 
 import { cn } from "@/examples/ark/lib/utils"
 import { Button } from "@/examples/ark/ui/button"
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react"
 
-type SelectionMode = "single" | "multiple" | "range"
-
-interface CalendarProps {
-  className?: string
-  showOutsideDays?: boolean
-  mode?: SelectionMode
-  selected?: Date | Date[] | { from?: Date; to?: Date } | undefined
-  onSelect?: (
-    value: Date | Date[] | { from?: Date; to?: Date } | undefined
-  ) => void
-  buttonVariant?: React.ComponentProps<typeof Button>["variant"]
-  numOfMonths?: number
-  fixedWeeks?: boolean
-  startOfWeek?: number
-  showWeekNumbers?: boolean
-  locale?: string | Record<string, unknown>
-  captionLayout?: string
-  defaultMonth?: Date
-  disabled?: unknown
-}
-
-function dateToCalendarDate(d: Date): CalendarDate {
-  return new CalendarDate(d.getFullYear(), d.getMonth() + 1, d.getDate())
-}
-
-function calendarDateToDate(dv: DateValue): Date {
-  return new Date(dv.year, dv.month - 1, dv.day)
-}
-
 function Calendar({
   className,
   showOutsideDays = true,
-  mode = "single",
-  selected,
-  onSelect,
   buttonVariant = "ghost",
-  locale,
-  numOfMonths = 1,
-  fixedWeeks,
-  startOfWeek,
-  showWeekNumbers,
-  captionLayout: _captionLayout,
-  defaultMonth: _defaultMonth,
-  disabled: _disabled,
-}: CalendarProps) {
-  // Bridge JS Date / {from, to} → CalendarDate[] for ark
-  const arkValue = React.useMemo((): DateValue[] | undefined => {
-    if (!selected) return undefined
-    if (
-      typeof selected === "object" &&
-      !Array.isArray(selected) &&
-      !(selected instanceof Date)
-    ) {
-      const range = selected as { from?: Date; to?: Date }
-      const result: DateValue[] = []
-      if (range.from) result.push(dateToCalendarDate(range.from))
-      if (range.to) result.push(dateToCalendarDate(range.to))
-      return result.length > 0 ? result : undefined
-    }
-    const dates = Array.isArray(selected) ? selected : [selected]
-    return dates
-      .filter((d): d is Date => d instanceof Date)
-      .map(dateToCalendarDate)
-  }, [selected])
-
+  ...props
+}: Omit<React.ComponentProps<typeof DatePicker.Root>, "inline"> & {
+  className?: string
+  showOutsideDays?: boolean
+  buttonVariant?: React.ComponentProps<typeof Button>["variant"]
+}) {
   return (
-    <DatePicker.Root
-      selectionMode={mode}
-      value={arkValue}
-      onValueChange={
-        onSelect
-          ? (details: DatePickerValueChangeDetails) => {
-              const dates = details.value.map(calendarDateToDate)
-              if (mode === "single") {
-                onSelect(dates[0] ?? undefined)
-              } else if (mode === "range") {
-                onSelect({ from: dates[0], to: dates[1] })
-              } else {
-                onSelect(dates)
-              }
-            }
-          : undefined
-      }
-      locale={typeof locale === "string" ? locale : undefined}
-      numOfMonths={numOfMonths}
-      fixedWeeks={fixedWeeks}
-      startOfWeek={startOfWeek}
-      showWeekNumbers={showWeekNumbers}
-      inline
-    >
+    <DatePicker.Root inline {...props}>
       <div
         data-slot="calendar"
         className={cn(
@@ -364,4 +285,10 @@ function CalendarDayButton({
 }
 
 export { Calendar, CalendarDayButton }
-export type { CalendarProps }
+export {
+  useDatePicker,
+  useDatePickerContext,
+  type DatePickerValueChangeDetails,
+  type DatePickerOpenChangeDetails,
+} from "@ark-ui/react/date-picker"
+export { CalendarDate, type DateValue } from "@internationalized/date"

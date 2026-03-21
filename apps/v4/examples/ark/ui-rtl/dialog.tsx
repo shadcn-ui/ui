@@ -1,7 +1,12 @@
 "use client"
 
 import * as React from "react"
-import { Dialog as DialogPrimitive } from "@ark-ui/react/dialog"
+import {
+  Dialog as DialogPrimitive,
+  useDialog,
+  useDialogContext,
+  type DialogOpenChangeDetails,
+} from "@ark-ui/react/dialog"
 import { ark } from "@ark-ui/react/factory"
 import { Portal } from "@ark-ui/react/portal"
 
@@ -152,14 +157,22 @@ function DialogDescription({
   )
 }
 
+const DialogContext = DialogPrimitive.Context
+const DialogRootProvider = DialogPrimitive.RootProvider
+
 export {
   Dialog,
   DialogClose,
   DialogContent,
+  DialogContext,
   DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogOverlay,
+  DialogRootProvider,
   DialogTitle,
   DialogTrigger,
+  useDialog,
+  useDialogContext,
+  type DialogOpenChangeDetails,
 }

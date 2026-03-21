@@ -1,7 +1,12 @@
 "use client"
 
 import * as React from "react"
-import { Collapsible as CollapsiblePrimitive } from "@ark-ui/react/collapsible"
+import {
+  Collapsible as CollapsiblePrimitive,
+  useCollapsible,
+  useCollapsibleContext,
+  type CollapsibleOpenChangeDetails,
+} from "@ark-ui/react/collapsible"
 
 import { cn } from "@/examples/ark/lib/utils"
 
@@ -38,4 +43,16 @@ const CollapsibleContent = React.forwardRef<
 ))
 CollapsibleContent.displayName = "CollapsibleContent"
 
-export { Collapsible, CollapsibleContent, CollapsibleTrigger }
+const CollapsibleContext = CollapsiblePrimitive.Context
+const CollapsibleRootProvider = CollapsiblePrimitive.RootProvider
+
+export {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleContext,
+  CollapsibleRootProvider,
+  CollapsibleTrigger,
+  useCollapsible,
+  useCollapsibleContext,
+  type CollapsibleOpenChangeDetails,
+}

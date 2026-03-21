@@ -2,7 +2,12 @@
 
 import * as React from "react"
 import { ark } from "@ark-ui/react/factory"
-import { Popover as PopoverPrimitive } from "@ark-ui/react/popover"
+import {
+  Popover as PopoverPrimitive,
+  usePopover,
+  usePopoverContext,
+  type PopoverOpenChangeDetails,
+} from "@ark-ui/react/popover"
 import { Portal } from "@ark-ui/react/portal"
 
 import { cn } from "@/examples/ark/lib/utils"
@@ -102,13 +107,21 @@ function PopoverDescription({
   )
 }
 
+const PopoverContext = PopoverPrimitive.Context
+const PopoverRootProvider = PopoverPrimitive.RootProvider
+
 export {
   Popover,
   PopoverAnchor,
   PopoverArrow,
   PopoverContent,
+  PopoverContext,
   PopoverDescription,
   PopoverHeader,
+  PopoverRootProvider,
   PopoverTitle,
   PopoverTrigger,
+  usePopover,
+  usePopoverContext,
+  type PopoverOpenChangeDetails,
 }

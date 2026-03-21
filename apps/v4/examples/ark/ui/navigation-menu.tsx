@@ -153,6 +153,11 @@ function NavigationMenuIndicator({
   )
 }
 
+// --- Context & RootProvider re-exports ---
+
+const NavigationMenuContext = NavigationMenuPrimitive.Context
+const NavigationMenuRootProvider = NavigationMenuPrimitive.RootProvider
+
 export {
   NavigationMenu,
   NavigationMenuList,
@@ -163,4 +168,11 @@ export {
   NavigationMenuIndicator,
   NavigationMenuViewport,
   navigationMenuTriggerStyle,
+  NavigationMenuContext,
+  NavigationMenuRootProvider,
 }
+
+export {
+  useNavigationMenu,
+  useNavigationMenuContext,
+} from "@ark-ui/react/navigation-menu"

@@ -269,6 +269,10 @@ function MenubarSubContent({
   )
 }
 
+// --- Context re-export ---
+
+const MenubarContext = MenuPrimitive.Context
+
 export {
   Menubar,
   MenubarPortal,
@@ -286,4 +290,7 @@ export {
   MenubarSub,
   MenubarSubTrigger,
   MenubarSubContent,
+  MenubarContext,
 }
+
+export { useMenu, useMenuContext } from "@ark-ui/react/menu"

@@ -24,4 +24,12 @@ function Progress({
   )
 }
 
-export { Progress }
+const ProgressContext = ProgressPrimitive.Context
+const ProgressRootProvider = ProgressPrimitive.RootProvider
+
+export { Progress, ProgressContext, ProgressRootProvider }
+export {
+  useProgress,
+  useProgressContext,
+  type ProgressValueChangeDetails,
+} from "@ark-ui/react/progress"

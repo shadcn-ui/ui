@@ -249,6 +249,10 @@ function DropdownMenuSubContent({
   )
 }
 
+// --- Context re-export ---
+
+const DropdownMenuContext = MenuPrimitive.Context
+
 export {
   DropdownMenu,
   DropdownMenuPortal,
@@ -265,4 +269,7 @@ export {
   DropdownMenuSub,
   DropdownMenuSubTrigger,
   DropdownMenuSubContent,
+  DropdownMenuContext,
 }
+
+export { useMenu, useMenuContext } from "@ark-ui/react/menu"

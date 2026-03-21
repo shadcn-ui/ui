@@ -6,39 +6,14 @@ import { Accordion as AccordionPrimitive } from "@ark-ui/react/accordion"
 import { cn } from "@/examples/ark/lib/utils"
 import { ChevronDownIcon, ChevronUpIcon } from "lucide-react"
 
-type AccordionProps = Omit<
-  React.ComponentProps<typeof AccordionPrimitive.Root>,
-  "defaultValue" | "value" | "onValueChange"
-> & {
-  type?: "single" | "multiple"
-  collapsible?: boolean
-  defaultValue?: string | string[]
-  value?: string | string[]
-  onValueChange?: (value: string) => void
-}
-
 const Accordion = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Root>,
-  AccordionProps
->(({ type, defaultValue, value, onValueChange, ...props }, ref) => (
+  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Root>
+>(({ className, ...props }, ref) => (
   <AccordionPrimitive.Root
     ref={ref}
     data-slot="accordion"
-    multiple={type === "multiple"}
-    defaultValue={
-      defaultValue
-        ? Array.isArray(defaultValue)
-          ? defaultValue
-          : [defaultValue]
-        : undefined
-    }
-    value={value ? (Array.isArray(value) ? value : [value]) : undefined}
-    onValueChange={
-      onValueChange
-        ? (details) => onValueChange(details.value[0] ?? "")
-        : undefined
-    }
-    className={cn("flex w-full flex-col", props.className)}
+    className={cn("flex w-full flex-col", className)}
     {...props}
   />
 ))
@@ -99,4 +74,20 @@ const AccordionContent = React.forwardRef<
 ))
 AccordionContent.displayName = "AccordionContent"
 
-export { Accordion, AccordionItem, AccordionTrigger, AccordionContent }
+const AccordionContext = AccordionPrimitive.Context
+const AccordionRootProvider = AccordionPrimitive.RootProvider
+
+export {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+  AccordionContext,
+  AccordionRootProvider,
+}
+
+export {
+  useAccordion,
+  useAccordionContext,
+  type AccordionValueChangeDetails,
+} from "@ark-ui/react/accordion"
