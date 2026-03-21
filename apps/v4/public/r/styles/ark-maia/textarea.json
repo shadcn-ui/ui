@@ -4,7 +4,7 @@
   "files": [
     {
       "path": "registry/ark-maia/ui/textarea.tsx",
-      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { Field } from \"@ark-ui/react/field\"\n\nimport { cn } from \"@/registry/ark-maia/lib/utils\"\n\nfunction Textarea({\n  className,\n  ...props\n}: React.ComponentProps<typeof Field.Textarea>) {\n  return (\n    <Field.Textarea\n      data-slot=\"textarea\"\n      className={cn(\n        \"resize-none rounded-xl border border-input bg-input/30 px-3 py-3 text-base transition-colors focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-[3px] aria-invalid:ring-destructive/20 md:text-sm dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Textarea }\n",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { Field } from \"@ark-ui/react/field\"\n\nimport { cn } from \"@/registry/ark-maia/lib/utils\"\n\nfunction Textarea({\n  className,\n  ...props\n}: React.ComponentProps<typeof Field.Textarea>) {\n  return (\n    <Field.Textarea\n      data-slot=\"textarea\"\n      className={cn(\n        \"w-full resize-none rounded-xl border border-input bg-input/30 px-3 py-3 text-base transition-colors focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-[3px] aria-invalid:ring-destructive/20 md:text-sm dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Textarea }\n",
       "type": "registry:ui"
     }
   ],
