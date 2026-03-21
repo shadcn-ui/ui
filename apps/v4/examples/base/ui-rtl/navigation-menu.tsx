@@ -1,6 +1,7 @@
-import { cn } from "@/examples/base/lib/utils"
 import { NavigationMenu as NavigationMenuPrimitive } from "@base-ui/react/navigation-menu"
 import { cva } from "class-variance-authority"
+
+import { cn } from "@/examples/base/lib/utils"
 import { ChevronDownIcon } from "lucide-react"
 
 function NavigationMenu({
@@ -70,10 +71,7 @@ function NavigationMenuTrigger({
       {...props}
     >
       {children}{" "}
-      <ChevronDownIcon
-        className="relative top-px ms-1 size-3 transition duration-300 group-data-popup-open/navigation-menu-trigger:rotate-180 group-data-open/navigation-menu-trigger:rotate-180"
-        aria-hidden="true"
-      />
+      <ChevronDownIcon className="relative top-px ms-1 size-3 transition duration-300 group-data-popup-open/navigation-menu-trigger:rotate-180 group-data-open/navigation-menu-trigger:rotate-180" aria-hidden="true" />
     </NavigationMenuPrimitive.Trigger>
   )
 }
@@ -110,7 +108,7 @@ function NavigationMenuPositioner({
         align={align}
         alignOffset={alignOffset}
         className={cn(
-          "isolate z-50 h-(--positioner-height) w-(--positioner-width) max-w-(--available-width) transition-[top,left,right,bottom] duration-[0.35s] ease-[cubic-bezier(0.22,1,0.36,1)] data-instant:transition-none data-[side=bottom]:before:start-0 data-[side=bottom]:before:end-0 data-[side=bottom]:before:top-[-10px]",
+          "isolate z-50 h-(--positioner-height) w-(--positioner-width) max-w-(--available-width) transition-[top,left,right,bottom] duration-[0.35s] ease-[cubic-bezier(0.22,1,0.36,1)] data-instant:transition-none data-[side=bottom]:before:top-[-10px] data-[side=bottom]:before:end-0 data-[side=bottom]:before:start-0",
           className
         )}
         {...props}

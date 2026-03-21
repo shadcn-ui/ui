@@ -1,6 +1,8 @@
 "use client"
 
 import * as React from "react"
+import { Command as CommandPrimitive } from "cmdk"
+
 import { cn } from "@/examples/radix/lib/utils"
 import {
   Dialog,
@@ -9,9 +11,11 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/examples/radix/ui/dialog"
-import { InputGroup, InputGroupAddon } from "@/examples/radix/ui/input-group"
-import { Command as CommandPrimitive } from "cmdk"
-import { CheckIcon, SearchIcon } from "lucide-react"
+import {
+  InputGroup,
+  InputGroupAddon,
+} from "@/examples/radix/ui/input-group"
+import { SearchIcon, CheckIcon } from "lucide-react"
 
 function Command({
   className,

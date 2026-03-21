@@ -21,7 +21,24 @@ export const BASES: z.infer<typeof registryItemSchema>[] = [
       "Components for building accessible web apps and design systems.",
     dependencies: ["@base-ui/react"],
     meta: {
-      logo: "<svg width='17' height='24' viewBox='0 0 17 24'><path fill='currentColor' d='M9.5001 7.01537C9.2245 6.99837 9 7.22385 9 7.49999V23C13.4183 23 17 19.4183 17 15C17 10.7497 13.6854 7.27351 9.5001 7.01537Z'></path><path fill='currentColor'   d='M8 9.8V12V23C3.58172 23 0 19.0601 0 14.2V12V1C4.41828 1 8 4.93989 8 9.8Z'></path></svg>",
+      logo: "<svg width='17' height='24' viewBox='0 0 17 24'><path fill='currentColor' d='M9.5001 7.01537C9.2245 6.99837 9 7.22385 9 7.49999V23C13.4183 23 17 19.4183 17 15C17 10.7497 13.6854 7.27351 9.5001 7.01537Z'></path><path fill='currentColor' d='M8 9.8V12V23C3.58172 23 0 19.0601 0 14.2V12V1C4.41828 1 8 4.93989 8 9.8Z'></path></svg>",
+    },
+  },
+  {
+    name: "ark",
+    type: "registry:style",
+    title: "Ark UI",
+    description: "Headless UI components built on Zag.js state machines.",
+    dependencies: ["@ark-ui/react"],
+    meta: {
+      logo: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          fill="currentColor"
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M9.07455 11.5775L12.6148 24L12.6531 23.9938V19.5735H21.8947L16.5307 4.17479C16.4829 4.0375 16.4169 3.99982 16.274 4H5.50866L0 19.716H6.06512C6.24167 19.7211 6.31584 19.6699 6.3727 19.5023C7.26885 16.8622 8.17034 14.2238 9.07455 11.5775Z"
+        />
+      </svg>`,
     },
   },
 ]

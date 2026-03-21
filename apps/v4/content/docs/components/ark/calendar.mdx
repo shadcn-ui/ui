@@ -1,0 +1,173 @@
+---
+title: Calendar
+description: A calendar component that allows users to select a date or a range of dates.
+base: ark
+component: true
+links:
+  doc: https://ark-ui.com/docs/components/date-picker
+  api: https://ark-ui.com/docs/components/date-picker#api-reference
+---
+
+<ComponentPreview
+  styleName="ark-nova"
+  name="calendar-demo"
+  previewClassName="h-96"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add calendar
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react @internationalized/date
+```
+
+<Step>Add the `Button` component to your project.</Step>
+
+The `Calendar` component uses the `Button` component. Make sure you have it installed in your project.
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="calendar"
+  title="components/ui/calendar.tsx"
+  styleName="ark-nova"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { Calendar } from "@/components/ui/calendar"
+```
+
+```tsx showLineNumbers
+const [date, setDate] = React.useState<Date | undefined>(new Date())
+
+return (
+  <Calendar
+    mode="single"
+    selected={date}
+    onSelect={setDate}
+    className="rounded-lg border"
+  />
+)
+```
+
+See the [Ark UI DatePicker](https://ark-ui.com/docs/components/date-picker) documentation for more information.
+
+## About
+
+The `Calendar` component is built on top of [Ark UI's DatePicker](https://ark-ui.com/docs/components/date-picker) primitive, which uses [`@internationalized/date`](https://react-spectrum.adobe.com/internationalized/date/) for date handling. The component bridges the `Date` API to Ark's `DateValue` internally.
+
+## Date Picker
+
+You can use the `<Calendar>` component to build a date picker. See the [Date Picker](/docs/components/ark/date-picker) page for more information.
+
+## Examples
+
+### Basic
+
+A basic calendar component. We used `className="rounded-lg border"` to style the calendar.
+
+<ComponentPreview
+  styleName="ark-nova"
+  name="calendar-basic"
+  previewClassName="h-96"
+/>
+
+### Range Calendar
+
+Use the `mode="range"` prop to enable range selection.
+
+<ComponentPreview
+  styleName="ark-nova"
+  name="calendar-range"
+  previewClassName="h-[36rem] md:h-96"
+/>
+
+### Presets
+
+<ComponentPreview
+  styleName="ark-nova"
+  name="calendar-presets"
+  previewClassName="h-[650px]"
+/>
+
+### Date and Time Picker
+
+<ComponentPreview
+  styleName="ark-nova"
+  name="calendar-time"
+  previewClassName="h-[600px]"
+/>
+
+### Booked dates
+
+<ComponentPreview
+  styleName="ark-nova"
+  name="calendar-booked-dates"
+  previewClassName="h-96"
+/>
+
+### Week Numbers
+
+Use `showWeekNumber` to show week numbers.
+
+<ComponentPreview
+  styleName="ark-nova"
+  name="calendar-week-numbers"
+  previewClassName="h-96"
+/>
+
+## RTL
+
+To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview
+  styleName="ark-nova"
+  name="calendar-rtl"
+  direction="rtl"
+  previewClassName="h-96"
+/>
+
+When using RTL, pass the `locale` prop as a string (e.g. `"ar-SA"`) and `dir="rtl"` to the Calendar component:
+
+```tsx showLineNumbers
+<Calendar
+  mode="single"
+  selected={date}
+  onSelect={setDate}
+  locale="ar-SA"
+  dir="rtl"
+/>
+```
+
+## API Reference
+
+See the [Ark UI DatePicker](https://ark-ui.com/docs/components/date-picker#api-reference) documentation for the full API reference.

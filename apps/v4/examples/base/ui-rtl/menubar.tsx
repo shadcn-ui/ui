@@ -1,6 +1,9 @@
 "use client"
 
 import * as React from "react"
+import { Menu as MenuPrimitive } from "@base-ui/react/menu"
+import { Menubar as MenubarPrimitive } from "@base-ui/react/menubar"
+
 import { cn } from "@/examples/base/lib/utils"
 import {
   DropdownMenu,
@@ -17,8 +20,6 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/examples/base/ui-rtl/dropdown-menu"
-import { Menu as MenuPrimitive } from "@base-ui/react/menu"
-import { Menubar as MenubarPrimitive } from "@base-ui/react/menubar"
 import { CheckIcon } from "lucide-react"
 
 function Menubar({ className, ...props }: MenubarPrimitive.Props) {
@@ -122,7 +123,7 @@ function MenubarCheckboxItem({
       data-slot="menubar-checkbox-item"
       data-inset={inset}
       className={cn(
-        "relative flex cursor-default items-center gap-1.5 rounded-md py-1 ps-7 pe-1.5 text-sm outline-hidden select-none focus:bg-accent focus:text-accent-foreground focus:**:text-accent-foreground data-inset:ps-7 data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+        "relative flex cursor-default items-center gap-1.5 rounded-md py-1 pe-1.5 ps-7 text-sm outline-hidden select-none focus:bg-accent focus:text-accent-foreground focus:**:text-accent-foreground data-inset:ps-7 data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
         className
       )}
       checked={checked}
@@ -130,7 +131,8 @@ function MenubarCheckboxItem({
     >
       <span className="pointer-events-none absolute start-1.5 flex size-4 items-center justify-center [&_svg:not([class*='size-'])]:size-4">
         <MenuPrimitive.CheckboxItemIndicator>
-          <CheckIcon />
+          <CheckIcon
+          />
         </MenuPrimitive.CheckboxItemIndicator>
       </span>
       {children}
@@ -157,14 +159,15 @@ function MenubarRadioItem({
       data-slot="menubar-radio-item"
       data-inset={inset}
       className={cn(
-        "relative flex cursor-default items-center gap-1.5 rounded-md py-1 ps-7 pe-1.5 text-sm outline-hidden select-none focus:bg-accent focus:text-accent-foreground focus:**:text-accent-foreground data-inset:ps-7 data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        "relative flex cursor-default items-center gap-1.5 rounded-md py-1 pe-1.5 ps-7 text-sm outline-hidden select-none focus:bg-accent focus:text-accent-foreground focus:**:text-accent-foreground data-inset:ps-7 data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
         className
       )}
       {...props}
     >
       <span className="pointer-events-none absolute start-1.5 flex size-4 items-center justify-center [&_svg:not([class*='size-'])]:size-4">
         <MenuPrimitive.RadioItemIndicator>
-          <CheckIcon />
+          <CheckIcon
+          />
         </MenuPrimitive.RadioItemIndicator>
       </span>
       {children}

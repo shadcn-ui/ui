@@ -1,0 +1,127 @@
+---
+title: Sonner
+description: An opinionated toast component for React.
+base: ark
+component: true
+links:
+  doc: https://ark-ui.com/docs/components/toast
+  api: https://ark-ui.com/docs/components/toast#api-reference
+---
+
+<ComponentPreview styleName="ark-nova" name="sonner-demo" />
+
+## About
+
+The Toast component is built on top of the [Ark UI Toast](https://ark-ui.com/docs/components/toast) primitive.
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Run the following command:</Step>
+
+```bash
+npx shadcn@latest add sonner
+```
+
+<Step>Add the Toaster component</Step>
+
+```tsx title="app/layout.tsx" {1,9} showLineNumbers
+import { Toaster } from "@/components/ui/sonner"
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <head />
+      <body>
+        <main>{children}</main>
+        <Toaster />
+      </body>
+    </html>
+  )
+}
+```
+
+</Steps>
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react next-themes
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="sonner"
+  title="components/ui/sonner.tsx"
+  styleName="ark-nova"
+/>
+
+<Step>Add the Toaster component</Step>
+
+```tsx showLineNumbers title="app/layout.tsx" {1,8}
+import { Toaster } from "@/components/ui/sonner"
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <head />
+      <body>
+        <Toaster />
+        <main>{children}</main>
+      </body>
+    </html>
+  )
+}
+```
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { toast } from "@/components/ui/sonner"
+```
+
+```tsx
+toast.create({ title: "Event has been created." })
+```
+
+## Examples
+
+### Types
+
+<ComponentPreview styleName="ark-nova" name="sonner-types" />
+
+### Description
+
+<ComponentPreview styleName="ark-nova" name="sonner-description" />
+
+### Position
+
+Use the `position` prop to change the position of the toast.
+
+<ComponentPreview styleName="ark-nova" name="sonner-position" />
+
+## API Reference
+
+See the [Ark UI Toast documentation](https://ark-ui.com/docs/components/toast#api-reference) for more information.

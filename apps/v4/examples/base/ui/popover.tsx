@@ -1,8 +1,9 @@
 "use client"
 
 import * as React from "react"
-import { cn } from "@/examples/base/lib/utils"
 import { Popover as PopoverPrimitive } from "@base-ui/react/popover"
+
+import { cn } from "@/examples/base/lib/utils"
 
 function Popover({ ...props }: PopoverPrimitive.Root.Props) {
   return <PopoverPrimitive.Root data-slot="popover" {...props} />

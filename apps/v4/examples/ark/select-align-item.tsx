@@ -1,0 +1,78 @@
+"use client"
+
+import * as React from "react"
+import {
+  Field,
+  FieldContent,
+  FieldDescription,
+  FieldGroup,
+  FieldLabel,
+} from "@/examples/ark/ui/field"
+import {
+  createListCollection,
+  Select,
+  SelectContent,
+  SelectControl,
+  SelectIndicator,
+  SelectItem,
+  SelectItemGroup,
+  SelectItemIndicator,
+  SelectItemText,
+  SelectTrigger,
+  SelectValue,
+} from "@/examples/ark/ui/select"
+import { Switch } from "@/examples/ark/ui/switch"
+
+const fruits = createListCollection({
+  items: [
+    { label: "Apple", value: "apple" },
+    { label: "Banana", value: "banana" },
+    { label: "Blueberry", value: "blueberry" },
+    { label: "Grapes", value: "grapes" },
+    { label: "Pineapple", value: "pineapple" },
+  ],
+})
+
+export function SelectAlignItem() {
+  const [alignItemWithTrigger, setAlignItemWithTrigger] = React.useState(true)
+
+  return (
+    <FieldGroup className="w-full max-w-xs">
+      <Field orientation="horizontal">
+        <FieldContent>
+          <FieldLabel htmlFor="align-item">Align Item</FieldLabel>
+          <FieldDescription>
+            Toggle to align the item with the trigger.
+          </FieldDescription>
+        </FieldContent>
+        <Switch
+          id="align-item"
+          checked={alignItemWithTrigger}
+          onCheckedChange={setAlignItemWithTrigger}
+        />
+      </Field>
+      <Field>
+        <Select collection={fruits} defaultValue={["banana"]}>
+          <SelectControl>
+            <SelectTrigger>
+              <SelectValue />
+            </SelectTrigger>
+            <SelectIndicator />
+          </SelectControl>
+          <SelectContent
+            position={alignItemWithTrigger ? "item-aligned" : "popper"}
+          >
+            <SelectItemGroup>
+              {fruits.items.map((item) => (
+                <SelectItem key={item.value} item={item}>
+                  <SelectItemText>{item.label}</SelectItemText>
+                  <SelectItemIndicator />
+                </SelectItem>
+              ))}
+            </SelectItemGroup>
+          </SelectContent>
+        </Select>
+      </Field>
+    </FieldGroup>
+  )
+}
