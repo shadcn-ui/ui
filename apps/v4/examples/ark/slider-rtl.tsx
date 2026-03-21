@@ -1,7 +1,13 @@
 "use client"
 
 import * as React from "react"
-import { Slider } from "@/examples/ark/ui-rtl/slider"
+import {
+  Slider,
+  SliderControl,
+  SliderRange,
+  SliderThumb,
+  SliderTrack,
+} from "@/examples/ark/ui-rtl/slider"
 
 import {
   useTranslation,
@@ -33,6 +39,13 @@ export function SliderRtl() {
       step={1}
       className="mx-auto w-full max-w-xs"
       dir={dir}
-    />
+    >
+      <SliderControl>
+        <SliderTrack>
+          <SliderRange />
+        </SliderTrack>
+        <SliderThumb index={0} />
+      </SliderControl>
+    </Slider>
   )
 }

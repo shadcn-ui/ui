@@ -1,7 +1,13 @@
 "use client"
 
 import * as React from "react"
-import { Checkbox } from "@/examples/ark/ui/checkbox"
+import {
+  Checkbox,
+  CheckboxControl,
+  CheckboxHiddenInput,
+  CheckboxIndicator,
+  type CheckboxCheckedChangeDetails,
+} from "@/examples/ark/ui/checkbox"
 import {
   Table,
   TableBody,
@@ -45,17 +51,20 @@ export function CheckboxInTable() {
 
   const selectAll = selectedRows.size === tableData.length
 
-  const handleSelectAll = (checked: boolean) => {
-    if (checked) {
+  const handleSelectAll = (details: CheckboxCheckedChangeDetails) => {
+    if (details.checked) {
       setSelectedRows(new Set(tableData.map((row) => row.id)))
     } else {
       setSelectedRows(new Set())
     }
   }
 
-  const handleSelectRow = (id: string, checked: boolean) => {
+  const handleSelectRow = (
+    id: string,
+    details: CheckboxCheckedChangeDetails
+  ) => {
     const newSelected = new Set(selectedRows)
-    if (checked) {
+    if (details.checked) {
       newSelected.add(id)
     } else {
       newSelected.delete(id)
@@ -73,7 +82,12 @@ export function CheckboxInTable() {
               name="select-all-checkbox"
               checked={selectAll}
               onCheckedChange={handleSelectAll}
-            />
+            >
+              <CheckboxControl>
+                <CheckboxIndicator />
+              </CheckboxControl>
+              <CheckboxHiddenInput />
+            </Checkbox>
           </TableHead>
           <TableHead>Name</TableHead>
           <TableHead>Email</TableHead>
@@ -91,10 +105,15 @@ export function CheckboxInTable() {
                 id={`row-${row.id}-checkbox`}
                 name={`row-${row.id}-checkbox`}
                 checked={selectedRows.has(row.id)}
-                onCheckedChange={(checked) =>
-                  handleSelectRow(row.id, checked === true)
+                onCheckedChange={(details) =>
+                  handleSelectRow(row.id, details)
                 }
-              />
+              >
+                <CheckboxControl>
+                  <CheckboxIndicator />
+                </CheckboxControl>
+                <CheckboxHiddenInput />
+              </Checkbox>
             </TableCell>
             <TableCell className="font-medium">{row.name}</TableCell>
             <TableCell>{row.email}</TableCell>

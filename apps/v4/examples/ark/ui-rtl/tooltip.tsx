@@ -26,12 +26,18 @@ function TooltipTrigger({
   return <TooltipPrimitive.Trigger data-slot="tooltip-trigger" {...props} />
 }
 
+function TooltipPositioner({
+  ...props
+}: React.ComponentProps<typeof TooltipPrimitive.Positioner>) {
+  return (
+    <TooltipPrimitive.Positioner data-slot="tooltip-positioner" {...props} />
+  )
+}
+
 const TooltipContent = React.forwardRef<
   HTMLDivElement,
-  React.ComponentProps<typeof TooltipPrimitive.Content> & {
-    sideOffset?: number
-  }
->(({ className, sideOffset = 4, children, ...props }, ref) => (
+  React.ComponentProps<typeof TooltipPrimitive.Content>
+>(({ className, children, ...props }, ref) => (
   <TooltipPrimitive.Positioner>
     <TooltipPrimitive.Content
       ref={ref}
@@ -74,6 +80,7 @@ export {
   TooltipArrow,
   TooltipContent,
   TooltipContext,
+  TooltipPositioner,
   TooltipProvider,
   TooltipRootProvider,
   TooltipTrigger,

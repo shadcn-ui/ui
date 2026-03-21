@@ -6,7 +6,7 @@ import { Pagination as PaginationPrimitive } from "@ark-ui/react/pagination"
 
 import { cn } from "@/examples/ark/lib/utils"
 import { Button } from "@/examples/ark/ui/button"
-import { ChevronLeftIcon, ChevronRightIcon, MoreHorizontalIcon } from "lucide-react"
+import { ChevronLeftIcon, ChevronRightIcon, MoreHorizontalIcon, ChevronsLeftIcon, ChevronsRightIcon } from "lucide-react"
 
 function Pagination({
   className,
@@ -139,6 +139,58 @@ function PaginationEllipsis({
   )
 }
 
+function PaginationFirst({
+  className,
+  text = "First",
+  ...props
+}: Omit<
+  React.ComponentProps<typeof PaginationPrimitive.FirstTrigger>,
+  "children"
+> & {
+  text?: string
+}) {
+  return (
+    <PaginationPrimitive.FirstTrigger asChild {...props}>
+      <Button
+        variant="ghost"
+        size="default"
+        aria-label="Go to first page"
+        data-slot="pagination-link"
+        className={cn(className)}
+      >
+        <ChevronsLeftIcon data-icon="inline-start" className="cn-rtl-flip" />
+        <ark.span className="hidden sm:block">{text}</ark.span>
+      </Button>
+    </PaginationPrimitive.FirstTrigger>
+  )
+}
+
+function PaginationLast({
+  className,
+  text = "Last",
+  ...props
+}: Omit<
+  React.ComponentProps<typeof PaginationPrimitive.LastTrigger>,
+  "children"
+> & {
+  text?: string
+}) {
+  return (
+    <PaginationPrimitive.LastTrigger asChild {...props}>
+      <Button
+        variant="ghost"
+        size="default"
+        aria-label="Go to last page"
+        data-slot="pagination-link"
+        className={cn(className)}
+      >
+        <ark.span className="hidden sm:block">{text}</ark.span>
+        <ChevronsRightIcon data-icon="inline-end" className="cn-rtl-flip" />
+      </Button>
+    </PaginationPrimitive.LastTrigger>
+  )
+}
+
 // --- Context & RootProvider re-exports ---
 
 const PaginationContext = PaginationPrimitive.Context
@@ -148,7 +200,9 @@ export {
   Pagination,
   PaginationContent,
   PaginationEllipsis,
+  PaginationFirst,
   PaginationItem,
+  PaginationLast,
   PaginationLink,
   PaginationNext,
   PaginationPrevious,

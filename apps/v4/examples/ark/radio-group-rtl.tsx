@@ -2,12 +2,16 @@
 
 import * as React from "react"
 import {
-  Field,
+  RadioGroup,
+  RadioGroupItem,
+  RadioGroupItemControl,
+  RadioGroupItemHiddenInput,
+  RadioGroupItemText,
+} from "@/examples/ark/ui-rtl/radio-group"
+import {
   FieldContent,
   FieldDescription,
-  FieldLabel,
 } from "@/examples/ark/ui-rtl/field"
-import { RadioGroup, RadioGroupItem } from "@/examples/ark/ui-rtl/radio-group"
 
 import {
   useTranslation,
@@ -55,35 +59,32 @@ export function RadioGroupRtl() {
 
   return (
     <RadioGroup defaultValue="comfortable" className="w-fit" dir={dir}>
-      <Field orientation="horizontal">
-        <RadioGroupItem value="default" id="r1-rtl" dir={dir} />
+      <RadioGroupItem value="default" dir={dir}>
+        <RadioGroupItemControl />
         <FieldContent>
-          <FieldLabel htmlFor="r1-rtl" dir={dir}>
-            {t.default}
-          </FieldLabel>
+          <RadioGroupItemText dir={dir}>{t.default}</RadioGroupItemText>
           <FieldDescription dir={dir}>{t.defaultDescription}</FieldDescription>
         </FieldContent>
-      </Field>
-      <Field orientation="horizontal">
-        <RadioGroupItem value="comfortable" id="r2-rtl" dir={dir} />
+        <RadioGroupItemHiddenInput />
+      </RadioGroupItem>
+      <RadioGroupItem value="comfortable" dir={dir}>
+        <RadioGroupItemControl />
         <FieldContent>
-          <FieldLabel htmlFor="r2-rtl" dir={dir}>
-            {t.comfortable}
-          </FieldLabel>
+          <RadioGroupItemText dir={dir}>{t.comfortable}</RadioGroupItemText>
           <FieldDescription dir={dir}>
             {t.comfortableDescription}
           </FieldDescription>
         </FieldContent>
-      </Field>
-      <Field orientation="horizontal">
-        <RadioGroupItem value="compact" id="r3-rtl" dir={dir} />
+        <RadioGroupItemHiddenInput />
+      </RadioGroupItem>
+      <RadioGroupItem value="compact" dir={dir}>
+        <RadioGroupItemControl />
         <FieldContent>
-          <FieldLabel htmlFor="r3-rtl" dir={dir}>
-            {t.compact}
-          </FieldLabel>
+          <RadioGroupItemText dir={dir}>{t.compact}</RadioGroupItemText>
           <FieldDescription dir={dir}>{t.compactDescription}</FieldDescription>
         </FieldContent>
-      </Field>
+        <RadioGroupItemHiddenInput />
+      </RadioGroupItem>
     </RadioGroup>
   )
 }

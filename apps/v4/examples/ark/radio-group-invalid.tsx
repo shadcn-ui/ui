@@ -1,39 +1,37 @@
 import {
-  Field,
-  FieldDescription,
-  FieldLabel,
-  FieldLegend,
-  FieldSet,
-} from "@/examples/ark/ui/field"
-import { RadioGroup, RadioGroupItem } from "@/examples/ark/ui/radio-group"
+  RadioGroup,
+  RadioGroupItem,
+  RadioGroupItemControl,
+  RadioGroupItemHiddenInput,
+  RadioGroupItemText,
+  RadioGroupLabel,
+} from "@/examples/ark/ui/radio-group"
 
 export function RadioGroupInvalid() {
   return (
-    <FieldSet className="w-full max-w-xs">
-      <FieldLegend variant="label">Notification Preferences</FieldLegend>
-      <FieldDescription>
-        Choose how you want to receive notifications.
-      </FieldDescription>
-      <RadioGroup defaultValue="email">
-        <Field orientation="horizontal" data-invalid>
-          <RadioGroupItem value="email" id="invalid-email" aria-invalid />
-          <FieldLabel htmlFor="invalid-email" className="font-normal">
-            Email only
-          </FieldLabel>
-        </Field>
-        <Field orientation="horizontal" data-invalid>
-          <RadioGroupItem value="sms" id="invalid-sms" aria-invalid />
-          <FieldLabel htmlFor="invalid-sms" className="font-normal">
-            SMS only
-          </FieldLabel>
-        </Field>
-        <Field orientation="horizontal" data-invalid>
-          <RadioGroupItem value="both" id="invalid-both" aria-invalid />
-          <FieldLabel htmlFor="invalid-both" className="font-normal">
-            Both Email & SMS
-          </FieldLabel>
-        </Field>
-      </RadioGroup>
-    </FieldSet>
+    <RadioGroup defaultValue="email" className="w-full max-w-xs">
+      <RadioGroupLabel>Notification Preferences</RadioGroupLabel>
+      <RadioGroupItem value="email">
+        <RadioGroupItemControl />
+        <RadioGroupItemText className="font-normal">
+          Email only
+        </RadioGroupItemText>
+        <RadioGroupItemHiddenInput />
+      </RadioGroupItem>
+      <RadioGroupItem value="sms">
+        <RadioGroupItemControl />
+        <RadioGroupItemText className="font-normal">
+          SMS only
+        </RadioGroupItemText>
+        <RadioGroupItemHiddenInput />
+      </RadioGroupItem>
+      <RadioGroupItem value="both">
+        <RadioGroupItemControl />
+        <RadioGroupItemText className="font-normal">
+          Both Email & SMS
+        </RadioGroupItemText>
+        <RadioGroupItemHiddenInput />
+      </RadioGroupItem>
+    </RadioGroup>
   )
 }

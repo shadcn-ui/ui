@@ -1,23 +1,19 @@
 import {
-  Field,
-  FieldContent,
-  FieldDescription,
-  FieldLabel,
-} from "@/examples/ark/ui/field"
-import { Switch } from "@/examples/ark/ui/switch"
+  Switch,
+  SwitchControl,
+  SwitchHiddenInput,
+  SwitchLabel,
+  SwitchThumb,
+} from "@/examples/ark/ui/switch"
 
 export function SwitchDescription() {
   return (
-    <Field orientation="horizontal" className="max-w-sm">
-      <FieldContent>
-        <FieldLabel htmlFor="switch-focus-mode">
-          Share across devices
-        </FieldLabel>
-        <FieldDescription>
-          Focus is shared across devices, and turns off when you leave the app.
-        </FieldDescription>
-      </FieldContent>
-      <Switch id="switch-focus-mode" />
-    </Field>
+    <Switch id="switch-focus-mode" className="max-w-sm">
+      <SwitchControl>
+        <SwitchThumb />
+      </SwitchControl>
+      <SwitchLabel>Share across devices</SwitchLabel>
+      <SwitchHiddenInput />
+    </Switch>
   )
 }

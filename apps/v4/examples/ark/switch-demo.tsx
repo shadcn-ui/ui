@@ -1,11 +1,19 @@
-import { Label } from "@/examples/ark/ui/label"
-import { Switch } from "@/examples/ark/ui/switch"
+import {
+  Switch,
+  SwitchControl,
+  SwitchHiddenInput,
+  SwitchLabel,
+  SwitchThumb,
+} from "@/examples/ark/ui/switch"
 
 export function SwitchDemo() {
   return (
-    <div className="flex items-center space-x-2">
-      <Switch id="airplane-mode" />
-      <Label htmlFor="airplane-mode">Airplane Mode</Label>
-    </div>
+    <Switch id="airplane-mode">
+      <SwitchControl>
+        <SwitchThumb />
+      </SwitchControl>
+      <SwitchLabel>Airplane Mode</SwitchLabel>
+      <SwitchHiddenInput />
+    </Switch>
   )
 }

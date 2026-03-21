@@ -43,7 +43,20 @@ function Toggle({
   )
 }
 
+function ToggleIndicator({
+  className,
+  ...props
+}: React.ComponentProps<typeof TogglePrimitive.Indicator>) {
+  return (
+    <TogglePrimitive.Indicator
+      data-slot="toggle-indicator"
+      className={cn(className)}
+      {...props}
+    />
+  )
+}
+
 const ToggleContext = TogglePrimitive.Context
 
-export { Toggle, toggleVariants, ToggleContext }
+export { Toggle, toggleVariants, ToggleContext, ToggleIndicator }
 export { useToggle, useToggleContext } from "@ark-ui/react/toggle"

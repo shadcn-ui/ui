@@ -1,17 +1,28 @@
-import { Field, FieldGroup, FieldLabel } from "@/examples/ark/ui/field"
-import { Switch } from "@/examples/ark/ui/switch"
+import {
+  Switch,
+  SwitchControl,
+  SwitchHiddenInput,
+  SwitchLabel,
+  SwitchThumb,
+} from "@/examples/ark/ui/switch"
 
 export function SwitchSizes() {
   return (
-    <FieldGroup className="w-full max-w-[10rem]">
-      <Field orientation="horizontal">
-        <Switch id="switch-size-sm" size="sm" />
-        <FieldLabel htmlFor="switch-size-sm">Small</FieldLabel>
-      </Field>
-      <Field orientation="horizontal">
-        <Switch id="switch-size-default" size="default" />
-        <FieldLabel htmlFor="switch-size-default">Default</FieldLabel>
-      </Field>
-    </FieldGroup>
+    <div className="w-full max-w-[10rem] space-y-4">
+      <Switch id="switch-size-sm">
+        <SwitchControl>
+          <SwitchThumb />
+        </SwitchControl>
+        <SwitchLabel>Small</SwitchLabel>
+        <SwitchHiddenInput />
+      </Switch>
+      <Switch id="switch-size-default">
+        <SwitchControl>
+          <SwitchThumb />
+        </SwitchControl>
+        <SwitchLabel>Default</SwitchLabel>
+        <SwitchHiddenInput />
+      </Switch>
+    </div>
   )
 }

@@ -74,6 +74,20 @@ const AccordionContent = React.forwardRef<
 ))
 AccordionContent.displayName = "AccordionContent"
 
+const AccordionItemIndicator = React.forwardRef<
+  React.ElementRef<typeof AccordionPrimitive.ItemIndicator>,
+  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.ItemIndicator>
+>(({ className, ...props }, ref) => (
+  <AccordionPrimitive.ItemIndicator
+    ref={ref}
+    data-slot="accordion-item-indicator"
+    className={cn(className)}
+    {...props}
+  />
+))
+AccordionItemIndicator.displayName = "AccordionItemIndicator"
+
+const AccordionItemContext = AccordionPrimitive.ItemContext
 const AccordionContext = AccordionPrimitive.Context
 const AccordionRootProvider = AccordionPrimitive.RootProvider
 
@@ -82,6 +96,8 @@ export {
   AccordionItem,
   AccordionTrigger,
   AccordionContent,
+  AccordionItemIndicator,
+  AccordionItemContext,
   AccordionContext,
   AccordionRootProvider,
 }
@@ -89,5 +105,6 @@ export {
 export {
   useAccordion,
   useAccordionContext,
+  useAccordionItemContext,
   type AccordionValueChangeDetails,
 } from "@ark-ui/react/accordion"

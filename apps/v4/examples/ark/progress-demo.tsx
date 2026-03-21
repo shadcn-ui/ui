@@ -1,7 +1,11 @@
 "use client"
 
 import * as React from "react"
-import { Progress } from "@/examples/ark/ui/progress"
+import {
+  Progress,
+  ProgressRange,
+  ProgressTrack,
+} from "@/examples/ark/ui/progress"
 
 export default function ProgressDemo() {
   const [progress, setProgress] = React.useState(13)
@@ -11,5 +15,11 @@ export default function ProgressDemo() {
     return () => clearTimeout(timer)
   }, [])
 
-  return <Progress value={progress} className="w-[60%]" />
+  return (
+    <Progress value={progress} className="w-[60%]">
+      <ProgressTrack>
+        <ProgressRange />
+      </ProgressTrack>
+    </Progress>
+  )
 }
