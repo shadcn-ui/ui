@@ -12,7 +12,7 @@ import {
 
 export function DrawerScrollableContent() {
   return (
-    <Drawer direction="right">
+    <Drawer swipeDirection="right">
       <DrawerTrigger asChild>
         <Button variant="outline">Scrollable Content</Button>
       </DrawerTrigger>

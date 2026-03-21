@@ -2,7 +2,12 @@
 
 import * as React from "react"
 import { Button } from "@/examples/ark/ui/button"
-import { Checkbox } from "@/examples/ark/ui/checkbox"
+import {
+  Checkbox,
+  CheckboxControl,
+  CheckboxHiddenInput,
+  CheckboxIndicator,
+} from "@/examples/ark/ui/checkbox"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -84,16 +89,28 @@ export const columns: ColumnDef<Payment>[] = [
           table.getIsAllPageRowsSelected() ||
           (table.getIsSomePageRowsSelected() && "indeterminate")
         }
-        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+        onCheckedChange={(details) =>
+          table.toggleAllPageRowsSelected(!!details.checked)
+        }
         aria-label="Select all"
-      />
+      >
+        <CheckboxControl>
+          <CheckboxIndicator />
+        </CheckboxControl>
+        <CheckboxHiddenInput />
+      </Checkbox>
     ),
     cell: ({ row }) => (
       <Checkbox
         checked={row.getIsSelected()}
-        onCheckedChange={(value) => row.toggleSelected(!!value)}
+        onCheckedChange={(details) => row.toggleSelected(!!details.checked)}
         aria-label="Select row"
-      />
+      >
+        <CheckboxControl>
+          <CheckboxIndicator />
+        </CheckboxControl>
+        <CheckboxHiddenInput />
+      </Checkbox>
     ),
     enableSorting: false,
     enableHiding: false,

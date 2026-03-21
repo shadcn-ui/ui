@@ -2,7 +2,12 @@ import {
   Example,
   ExampleWrapper,
 } from "@/registry/bases/ark/components/example"
-import { Checkbox } from "@/registry/bases/ark/ui/checkbox"
+import {
+  Checkbox,
+  CheckboxControl,
+  CheckboxHiddenInput,
+  CheckboxIndicator,
+} from "@/registry/bases/ark/ui/checkbox"
 import { Field } from "@/registry/bases/ark/ui/field"
 import { Input } from "@/registry/bases/ark/ui/input"
 import { Label } from "@/registry/bases/ark/ui/label"
@@ -23,7 +28,12 @@ function LabelWithCheckbox() {
   return (
     <Example title="With Checkbox">
       <Field orientation="horizontal">
-        <Checkbox id="label-demo-terms" />
+        <Checkbox id="label-demo-terms">
+          <CheckboxControl>
+            <CheckboxIndicator />
+          </CheckboxControl>
+          <CheckboxHiddenInput />
+        </Checkbox>
         <Label htmlFor="label-demo-terms">Accept terms and conditions</Label>
       </Field>
     </Example>

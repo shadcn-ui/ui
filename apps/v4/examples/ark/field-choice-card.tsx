@@ -8,7 +8,12 @@ import {
   FieldSet,
   FieldTitle,
 } from "@/examples/ark/ui/field"
-import { RadioGroup, RadioGroupItem } from "@/examples/ark/ui/radio-group"
+import {
+  RadioGroup,
+  RadioGroupItem,
+  RadioGroupItemControl,
+  RadioGroupItemHiddenInput,
+} from "@/examples/ark/ui/radio-group"
 
 export default function FieldChoiceCard() {
   return (
@@ -27,7 +32,10 @@ export default function FieldChoiceCard() {
                   Run GPU workloads on a K8s cluster.
                 </FieldDescription>
               </FieldContent>
-              <RadioGroupItem value="kubernetes" id="kubernetes-r2h" />
+              <RadioGroupItem value="kubernetes" id="kubernetes-r2h">
+                <RadioGroupItemControl />
+                <RadioGroupItemHiddenInput />
+              </RadioGroupItem>
             </Field>
           </FieldLabel>
           <FieldLabel htmlFor="vm-z4k">
@@ -38,7 +46,10 @@ export default function FieldChoiceCard() {
                   Access a cluster to run GPU workloads.
                 </FieldDescription>
               </FieldContent>
-              <RadioGroupItem value="vm" id="vm-z4k" />
+              <RadioGroupItem value="vm" id="vm-z4k">
+                <RadioGroupItemControl />
+                <RadioGroupItemHiddenInput />
+              </RadioGroupItem>
             </Field>
           </FieldLabel>
         </RadioGroup>

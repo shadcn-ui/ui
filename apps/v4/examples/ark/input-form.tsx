@@ -1,3 +1,5 @@
+"use client"
+
 import { Button } from "@/examples/ark/ui/button"
 import {
   Field,

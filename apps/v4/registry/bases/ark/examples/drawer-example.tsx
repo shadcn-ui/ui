@@ -25,7 +25,12 @@ export default function DrawerExample() {
   )
 }
 
-const DRAWER_SIDES = ["top", "right", "bottom", "left"] as const
+const DRAWER_SIDES = [
+  { label: "top", swipeDirection: "up" },
+  { label: "right", swipeDirection: "right" },
+  { label: "bottom", swipeDirection: "down" },
+  { label: "left", swipeDirection: "left" },
+] as const
 
 function DrawerWithSides() {
   return (
@@ -33,17 +38,19 @@ function DrawerWithSides() {
       <div className="flex flex-wrap gap-2">
         {DRAWER_SIDES.map((side) => (
           <Drawer
-            key={side}
-            direction={
-              side === "bottom" ? undefined : (side as "top" | "right" | "left")
+            key={side.label}
+            swipeDirection={
+              side.swipeDirection === "down"
+                ? undefined
+                : side.swipeDirection
             }
           >
             <DrawerTrigger asChild>
               <Button variant="outline" className="capitalize">
-                {side}
+                {side.label}
               </Button>
             </DrawerTrigger>
-            <DrawerContent className="data-[vaul-drawer-direction=bottom]:max-h-[50vh] data-[vaul-drawer-direction=top]:max-h-[50vh]">
+            <DrawerContent className="data-[swipe-direction=down]:max-h-[50vh] data-[swipe-direction=up]:max-h-[50vh]">
               <DrawerHeader>
                 <DrawerTitle>Move Goal</DrawerTitle>
                 <DrawerDescription>
@@ -84,7 +91,7 @@ function DrawerWithSides() {
 function DrawerScrollableContent() {
   return (
     <Example title="Scrollable Content">
-      <Drawer direction="right">
+      <Drawer swipeDirection="right">
         <DrawerTrigger asChild>
           <Button variant="outline">Scrollable Content</Button>
         </DrawerTrigger>

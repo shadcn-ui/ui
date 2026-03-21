@@ -1,4 +1,9 @@
-import { Checkbox } from "@/examples/ark/ui/checkbox"
+import {
+  Checkbox,
+  CheckboxControl,
+  CheckboxHiddenInput,
+  CheckboxIndicator,
+} from "@/examples/ark/ui/checkbox"
 import {
   Field,
   FieldContent,
@@ -22,7 +27,12 @@ export function FieldCheckbox() {
         </FieldDescription>
         <FieldGroup className="gap-3">
           <Field orientation="horizontal">
-            <Checkbox id="finder-pref-9k2-hard-disks-ljj" />
+            <Checkbox id="finder-pref-9k2-hard-disks-ljj">
+              <CheckboxControl>
+                <CheckboxIndicator />
+              </CheckboxControl>
+              <CheckboxHiddenInput />
+            </Checkbox>
             <FieldLabel
               htmlFor="finder-pref-9k2-hard-disks-ljj"
               className="font-normal"
@@ -32,7 +42,12 @@ export function FieldCheckbox() {
             </FieldLabel>
           </Field>
           <Field orientation="horizontal">
-            <Checkbox id="finder-pref-9k2-external-disks-1yg" />
+            <Checkbox id="finder-pref-9k2-external-disks-1yg">
+              <CheckboxControl>
+                <CheckboxIndicator />
+              </CheckboxControl>
+              <CheckboxHiddenInput />
+            </Checkbox>
             <FieldLabel
               htmlFor="finder-pref-9k2-external-disks-1yg"
               className="font-normal"
@@ -41,7 +56,12 @@ export function FieldCheckbox() {
             </FieldLabel>
           </Field>
           <Field orientation="horizontal">
-            <Checkbox id="finder-pref-9k2-cds-dvds-fzt" />
+            <Checkbox id="finder-pref-9k2-cds-dvds-fzt">
+              <CheckboxControl>
+                <CheckboxIndicator />
+              </CheckboxControl>
+              <CheckboxHiddenInput />
+            </Checkbox>
             <FieldLabel
               htmlFor="finder-pref-9k2-cds-dvds-fzt"
               className="font-normal"
@@ -50,7 +70,12 @@ export function FieldCheckbox() {
             </FieldLabel>
           </Field>
           <Field orientation="horizontal">
-            <Checkbox id="finder-pref-9k2-connected-servers-6l2" />
+            <Checkbox id="finder-pref-9k2-connected-servers-6l2">
+              <CheckboxControl>
+                <CheckboxIndicator />
+              </CheckboxControl>
+              <CheckboxHiddenInput />
+            </Checkbox>
             <FieldLabel
               htmlFor="finder-pref-9k2-connected-servers-6l2"
               className="font-normal"
@@ -62,7 +87,12 @@ export function FieldCheckbox() {
       </FieldSet>
       <FieldSeparator />
       <Field orientation="horizontal">
-        <Checkbox id="finder-pref-9k2-sync-folders-nep" defaultChecked />
+        <Checkbox id="finder-pref-9k2-sync-folders-nep" defaultChecked>
+          <CheckboxControl>
+            <CheckboxIndicator />
+          </CheckboxControl>
+          <CheckboxHiddenInput />
+        </Checkbox>
         <FieldContent>
           <FieldLabel htmlFor="finder-pref-9k2-sync-folders-nep">
             Sync Desktop & Documents folders

@@ -5,7 +5,12 @@ import {
   FieldLegend,
   FieldSet,
 } from "@/examples/ark/ui/field"
-import { RadioGroup, RadioGroupItem } from "@/examples/ark/ui/radio-group"
+import {
+  RadioGroup,
+  RadioGroupItem,
+  RadioGroupItemControl,
+  RadioGroupItemHiddenInput,
+} from "@/examples/ark/ui/radio-group"
 
 export function FieldRadio() {
   return (
@@ -16,19 +21,28 @@ export function FieldRadio() {
       </FieldDescription>
       <RadioGroup defaultValue="monthly">
         <Field orientation="horizontal">
-          <RadioGroupItem value="monthly" id="plan-monthly" />
+          <RadioGroupItem value="monthly" id="plan-monthly">
+            <RadioGroupItemControl />
+            <RadioGroupItemHiddenInput />
+          </RadioGroupItem>
           <FieldLabel htmlFor="plan-monthly" className="font-normal">
             Monthly ($9.99/month)
           </FieldLabel>
         </Field>
         <Field orientation="horizontal">
-          <RadioGroupItem value="yearly" id="plan-yearly" />
+          <RadioGroupItem value="yearly" id="plan-yearly">
+            <RadioGroupItemControl />
+            <RadioGroupItemHiddenInput />
+          </RadioGroupItem>
           <FieldLabel htmlFor="plan-yearly" className="font-normal">
             Yearly ($99.99/year)
           </FieldLabel>
         </Field>
         <Field orientation="horizontal">
-          <RadioGroupItem value="lifetime" id="plan-lifetime" />
+          <RadioGroupItem value="lifetime" id="plan-lifetime">
+            <RadioGroupItemControl />
+            <RadioGroupItemHiddenInput />
+          </RadioGroupItem>
           <FieldLabel htmlFor="plan-lifetime" className="font-normal">
             Lifetime ($299.99)
           </FieldLabel>

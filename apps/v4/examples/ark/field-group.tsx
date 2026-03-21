@@ -1,4 +1,9 @@
-import { Checkbox } from "@/examples/ark/ui/checkbox"
+import {
+  Checkbox,
+  CheckboxControl,
+  CheckboxHiddenInput,
+  CheckboxIndicator,
+} from "@/examples/ark/ui/checkbox"
 import {
   Field,
   FieldDescription,
@@ -19,7 +24,12 @@ export default function FieldGroupExample() {
         </FieldDescription>
         <FieldGroup data-slot="checkbox-group">
           <Field orientation="horizontal">
-            <Checkbox id="push" defaultChecked disabled />
+            <Checkbox id="push" defaultChecked disabled>
+              <CheckboxControl>
+                <CheckboxIndicator />
+              </CheckboxControl>
+              <CheckboxHiddenInput />
+            </Checkbox>
             <FieldLabel htmlFor="push" className="font-normal">
               Push notifications
             </FieldLabel>
@@ -35,13 +45,23 @@ export default function FieldGroupExample() {
         </FieldDescription>
         <FieldGroup data-slot="checkbox-group">
           <Field orientation="horizontal">
-            <Checkbox id="push-tasks" />
+            <Checkbox id="push-tasks">
+              <CheckboxControl>
+                <CheckboxIndicator />
+              </CheckboxControl>
+              <CheckboxHiddenInput />
+            </Checkbox>
             <FieldLabel htmlFor="push-tasks" className="font-normal">
               Push notifications
             </FieldLabel>
           </Field>
           <Field orientation="horizontal">
-            <Checkbox id="email-tasks" />
+            <Checkbox id="email-tasks">
+              <CheckboxControl>
+                <CheckboxIndicator />
+              </CheckboxControl>
+              <CheckboxHiddenInput />
+            </Checkbox>
             <FieldLabel htmlFor="email-tasks" className="font-normal">
               Email notifications
             </FieldLabel>
