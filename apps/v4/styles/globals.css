@@ -239,7 +239,7 @@
   counter-increment: step;
 
   &:before {
-    @apply border-background bg-muted mr-2 inline-flex size-6 items-center justify-center rounded-full text-center -indent-px font-mono text-sm font-medium md:absolute md:mt-[-4px] md:ml-[-50px] md:size-9 md:border-4;
+    @apply border-background bg-muted me-2 inline-flex size-6 items-center justify-center rounded-full text-center -indent-px font-mono text-sm font-medium md:absolute md:mt-[-4px] md:ms-[-50px] md:size-9 md:border-4;
     content: counter(step);
   }
 }
@@ -315,12 +315,12 @@
     content: counter(line);
     display: inline-block;
     width: calc(var(--spacing) * 16);
-    padding-right: calc(var(--spacing) * 6);
-    text-align: right;
+    padding-inline-end: calc(var(--spacing) * 6);
+    text-align: end;
     color: var(--color-code-number);
     background-color: var(--color-code);
     position: sticky;
-    left: 0;
+    inset-inline-start: 0;
   }
 
   [data-line-numbers] [data-highlighted-line][data-line]::before {
@@ -353,7 +353,7 @@
     &:after {
       position: absolute;
       top: 0;
-      left: 0;
+      inset-inline-start: 0;
       width: 2px;
       height: 100%;
       content: "";

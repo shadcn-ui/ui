@@ -12,6 +12,7 @@ import { Icons } from "@/components/icons"
 import { MainNav } from "@/components/main-nav"
 import { MobileNav } from "@/components/mobile-nav"
 import { ModeSwitcher } from "@/components/mode-switcher"
+import { LocaleSwitcher } from "@/components/locale-switcher"
 import { SiteConfig } from "@/components/site-config"
 import { Separator } from "@/registry/new-york-v4/ui/separator"
 import { ProjectForm } from "@/app/(create)/components/project-form"
@@ -42,7 +43,7 @@ export function SiteHeader() {
             </Link>
           </Button>
           <MainNav items={siteConfig.navItems} className="hidden lg:flex" />
-          <div className="ml-auto flex items-center gap-2 md:flex-1 md:justify-end">
+          <div className="ms-auto flex items-center gap-2 md:flex-1 md:justify-end">
             <div className="hidden w-full flex-1 md:flex md:w-auto md:flex-none">
               <CommandMenu
                 tree={pageTree}
@@ -52,12 +53,14 @@ export function SiteHeader() {
             </div>
             <Separator
               orientation="vertical"
-              className="ml-2 hidden lg:block"
+              className="ms-2 hidden lg:block"
             />
             <GitHubLink />
             <Separator orientation="vertical" className="hidden 3xl:flex" />
             <SiteConfig className="hidden 3xl:flex" />
             <Separator orientation="vertical" />
+            <LocaleSwitcher className="hidden md:flex" />
+            <Separator orientation="vertical" className="hidden md:flex" />
             <ModeSwitcher />
             <div className="hidden items-center gap-2 group-has-data-[slot=designer]/layout:md:flex">
               <Separator orientation="vertical" />

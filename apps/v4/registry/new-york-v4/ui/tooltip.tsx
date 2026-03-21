@@ -3,7 +3,13 @@
 import * as React from "react"
 import { Tooltip as TooltipPrimitive } from "radix-ui"
 
+import { resolveSide, type LogicalSide } from "@/lib/localization"
 import { cn } from "@/lib/utils"
+import { useDirection } from "@/registry/new-york-v4/ui/direction"
+
+type TooltipSide =
+  | NonNullable<React.ComponentProps<typeof TooltipPrimitive.Content>["side"]>
+  | LogicalSide
 
 function TooltipProvider({
   delayDuration = 0,
@@ -34,12 +40,18 @@ function TooltipContent({
   className,
   sideOffset = 0,
   children,
+  side,
   ...props
-}: React.ComponentProps<typeof TooltipPrimitive.Content>) {
+}: Omit<React.ComponentProps<typeof TooltipPrimitive.Content>, "side"> & {
+  side?: TooltipSide
+}) {
+  const direction = useDirection()
+
   return (
     <TooltipPrimitive.Portal>
       <TooltipPrimitive.Content
         data-slot="tooltip-content"
+        side={side ? resolveSide(direction, side) : undefined}
         sideOffset={sideOffset}
         className={cn(
           "z-50 w-fit origin-(--radix-tooltip-content-transform-origin) animate-in rounded-md bg-foreground px-3 py-1.5 text-xs text-balance text-background fade-in-0 zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95",

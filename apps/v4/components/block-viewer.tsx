@@ -16,7 +16,7 @@ import {
   Tablet,
   Terminal,
 } from "lucide-react"
-import { type PanelImperativeHandle } from "react-resizable-panels"
+import { usePanelRef } from "react-resizable-panels"
 import {
   type registryItemFileSchema,
   type registryItemSchema,
@@ -68,7 +68,7 @@ type BlockViewerContext = {
   setView: (view: "code" | "preview") => void
   activeFile: string | null
   setActiveFile: (file: string) => void
-  resizablePanelRef: React.RefObject<PanelImperativeHandle | null> | null
+  resizablePanelRef: ReturnType<typeof usePanelRef> | null
   tree: ReturnType<typeof createFileTreeForRegistryItemFiles> | null
   highlightedFiles:
     | (z.infer<typeof registryItemFileSchema> & {
@@ -101,7 +101,7 @@ function BlockViewerProvider({
   const [activeFile, setActiveFile] = React.useState<
     BlockViewerContext["activeFile"]
   >(highlightedFiles?.[0].target ?? null)
-  const resizablePanelRef = React.useRef<PanelImperativeHandle>(null)
+  const resizablePanelRef = usePanelRef()
   const [iframeKey, setIframeKey] = React.useState(0)
 
   return (

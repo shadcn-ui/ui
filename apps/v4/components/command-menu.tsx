@@ -200,7 +200,7 @@ export function CommandMenu({
               runCommand(() => router.push(item.href))
             }}
           >
-            <IconArrowRight />
+            <IconArrowRight className="rtl:-scale-x-100" />
             {item.label}
           </CommandMenuItem>
         ))}
@@ -250,7 +250,7 @@ export function CommandMenu({
                 {isComponent ? (
                   <div className="aspect-square size-4 rounded-full border border-dashed border-muted-foreground" />
                 ) : (
-                  <IconArrowRight />
+                  <IconArrowRight className="rtl:-scale-x-100" />
                 )}
                 {item.name}
               </CommandMenuItem>
@@ -290,7 +290,7 @@ export function CommandMenu({
               style={{ "--color": color.oklch } as React.CSSProperties}
             />
             {color.className}
-            <span className="ml-auto font-mono text-xs font-normal text-muted-foreground tabular-nums">
+            <span className="ms-auto font-mono text-xs font-normal text-muted-foreground tabular-nums">
               {color.oklch}
             </span>
           </CommandMenuItem>
@@ -330,7 +330,7 @@ export function CommandMenu({
           >
             <SquareDashedIcon />
             {block.description}
-            <span className="ml-auto font-mono text-xs font-normal text-muted-foreground tabular-nums">
+            <span className="ms-auto font-mono text-xs font-normal text-muted-foreground tabular-nums">
               {block.name}
             </span>
           </CommandMenuItem>
@@ -391,7 +391,7 @@ export function CommandMenu({
         <Button
           variant="outline"
           className={cn(
-            "relative h-8 w-full justify-start rounded-lg pl-3 font-normal text-foreground shadow-none hover:bg-muted/50 sm:pr-12 md:w-48 lg:w-40 xl:w-64 dark:bg-card"
+            "relative h-8 w-full justify-start rounded-lg ps-3 font-normal text-foreground shadow-none hover:bg-muted/50 sm:pe-12 md:w-48 lg:w-40 xl:w-64 dark:bg-card"
           )}
           onClick={() => setOpen(true)}
           {...props}
@@ -415,7 +415,7 @@ export function CommandMenu({
               onValueChange={handleSearchChange}
             />
             {query.isLoading && (
-              <div className="pointer-events-none absolute top-1/2 right-3 z-10 flex -translate-y-1/2 items-center justify-center">
+              <div className="pointer-events-none absolute top-1/2 end-3 z-10 flex -translate-y-1/2 items-center justify-center">
                 <Spinner className="size-4 text-muted-foreground" />
               </div>
             )}

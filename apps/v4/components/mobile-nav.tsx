@@ -9,6 +9,7 @@ import { showMcpDocs } from "@/lib/flags"
 import { getCurrentBase, getPagesFromFolder } from "@/lib/page-tree"
 import { type source } from "@/lib/source"
 import { cn } from "@/lib/utils"
+import { LocaleSwitcher } from "@/components/locale-switcher"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import {
   Popover,
@@ -150,6 +151,12 @@ export function MobileNav({
                 )
               })}
             </div>
+          </div>
+          <div className="flex flex-col gap-4">
+            <div className="text-sm font-medium text-muted-foreground">
+              Language
+            </div>
+            <LocaleSwitcher />
           </div>
           <div className="flex flex-col gap-8">
             {tree?.children?.map((group, index) => {
