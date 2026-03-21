@@ -5,8 +5,6 @@ import { Switch as SwitchPrimitive } from "@ark-ui/react/switch"
 
 import { cn } from "@/registry/bases/ark/lib/utils"
 
-// --- Root ---
-
 const Switch = React.forwardRef<
   HTMLLabelElement,
   React.ComponentProps<typeof SwitchPrimitive.Root>
@@ -14,13 +12,14 @@ const Switch = React.forwardRef<
   <SwitchPrimitive.Root
     ref={ref}
     data-slot="switch"
-    className={cn("cn-switch", className)}
+    className={cn(
+      "inline-flex items-center gap-2 data-disabled:cursor-not-allowed data-disabled:opacity-50",
+      className
+    )}
     {...props}
   />
 ))
 Switch.displayName = "Switch"
-
-// --- Control ---
 
 const SwitchControl = React.forwardRef<
   HTMLSpanElement,
@@ -29,13 +28,15 @@ const SwitchControl = React.forwardRef<
   <SwitchPrimitive.Control
     ref={ref}
     data-slot="switch-control"
-    className={cn("cn-switch-control", className)}
+    className={cn(
+      "cn-switch inline-flex shrink-0 cursor-pointer items-center rounded-full border border-transparent transition-colors focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 data-[state=checked]:bg-primary data-[state=unchecked]:bg-input dark:data-[state=unchecked]:bg-input/80 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 data-[size=default]:h-[18.4px] data-[size=default]:w-8 data-[size=sm]:h-3.5 data-[size=sm]:w-6",
+      className
+    )}
     {...props}
   />
 ))
 SwitchControl.displayName = "SwitchControl"
 
-// --- Thumb ---
 
 const SwitchThumb = React.forwardRef<
   HTMLSpanElement,
@@ -44,13 +45,15 @@ const SwitchThumb = React.forwardRef<
   <SwitchPrimitive.Thumb
     ref={ref}
     data-slot="switch-thumb"
-    className={cn("cn-switch-thumb", className)}
+    className={cn(
+      "cn-switch-thumb pointer-events-none block rounded-full bg-background shadow-xs ring-0 transition-transform data-[state=checked]:translate-x-[calc(100%-2px)] data-[state=unchecked]:translate-x-0 dark:data-[state=checked]:bg-primary-foreground dark:data-[state=unchecked]:bg-foreground",
+      "size-4",
+      className
+    )}
     {...props}
   />
 ))
 SwitchThumb.displayName = "SwitchThumb"
-
-// --- Label ---
 
 const SwitchLabel = React.forwardRef<
   HTMLSpanElement,
@@ -65,11 +68,7 @@ const SwitchLabel = React.forwardRef<
 ))
 SwitchLabel.displayName = "SwitchLabel"
 
-// --- HiddenInput ---
-
 const SwitchHiddenInput = SwitchPrimitive.HiddenInput
-
-// --- Context & RootProvider ---
 
 const SwitchContext = SwitchPrimitive.Context
 const SwitchRootProvider = SwitchPrimitive.RootProvider

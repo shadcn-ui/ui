@@ -39,7 +39,8 @@
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:4000/docs/components/ark/label)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:4000/docs/components/ark/drawer)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:4000/docs/components/ark/checkbox)",
-      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:4000/docs/components/ark/switch)"
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:4000/docs/components/ark/switch)",
+      "Bash(find /Users/lope/Desktop/open-source -path */shipbase* -name switch*)"
     ],
     "deny": []
   }
