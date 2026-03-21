@@ -1,16 +1,13 @@
 "use client"
 
 import * as React from "react"
-import { Checkbox } from "@/examples/ark/ui-rtl/checkbox"
 import {
-  Field,
-  FieldContent,
-  FieldDescription,
-  FieldGroup,
-  FieldLabel,
-  FieldTitle,
-} from "@/examples/ark/ui-rtl/field"
-import { Label } from "@/examples/ark/ui-rtl/label"
+  Checkbox,
+  CheckboxControl,
+  CheckboxHiddenInput,
+  CheckboxIndicator,
+  CheckboxLabel,
+} from "@/examples/ark/ui-rtl/checkbox"
 
 import {
   useTranslation,
@@ -56,41 +53,39 @@ export function CheckboxRtl() {
   const { dir, t } = useTranslation(translations, "ar")
 
   return (
-    <FieldGroup className="max-w-sm" dir={dir}>
-      <Field orientation="horizontal">
-        <Checkbox id="terms-checkbox-rtl" name="terms-checkbox" />
-        <Label htmlFor="terms-checkbox-rtl">{t.acceptTerms}</Label>
-      </Field>
-      <Field orientation="horizontal">
-        <Checkbox
-          id="terms-checkbox-2-rtl"
-          name="terms-checkbox-2"
-          defaultChecked
-        />
-        <FieldContent>
-          <FieldLabel htmlFor="terms-checkbox-2-rtl">
-            {t.acceptTerms}
-          </FieldLabel>
-          <FieldDescription>{t.acceptTermsDescription}</FieldDescription>
-        </FieldContent>
-      </Field>
-      <Field orientation="horizontal" data-disabled>
-        <Checkbox id="toggle-checkbox-rtl" name="toggle-checkbox" disabled />
-        <FieldLabel htmlFor="toggle-checkbox-rtl">
-          {t.enableNotifications}
-        </FieldLabel>
-      </Field>
-      <FieldLabel>
-        <Field orientation="horizontal">
-          <Checkbox id="toggle-checkbox-2" name="toggle-checkbox-2" />
-          <FieldContent>
-            <FieldTitle>{t.enableNotifications}</FieldTitle>
-            <FieldDescription>
-              {t.enableNotificationsDescription}
-            </FieldDescription>
-          </FieldContent>
-        </Field>
-      </FieldLabel>
-    </FieldGroup>
+    <div className="max-w-sm space-y-4" dir={dir}>
+      <Checkbox id="terms-checkbox-rtl" name="terms-checkbox">
+        <CheckboxControl>
+          <CheckboxIndicator />
+        </CheckboxControl>
+        <CheckboxLabel>{t.acceptTerms}</CheckboxLabel>
+        <CheckboxHiddenInput />
+      </Checkbox>
+      <Checkbox
+        id="terms-checkbox-2-rtl"
+        name="terms-checkbox-2"
+        defaultChecked
+      >
+        <CheckboxControl>
+          <CheckboxIndicator />
+        </CheckboxControl>
+        <CheckboxLabel>{t.acceptTerms}</CheckboxLabel>
+        <CheckboxHiddenInput />
+      </Checkbox>
+      <Checkbox id="toggle-checkbox-rtl" name="toggle-checkbox" disabled>
+        <CheckboxControl>
+          <CheckboxIndicator />
+        </CheckboxControl>
+        <CheckboxLabel>{t.enableNotifications}</CheckboxLabel>
+        <CheckboxHiddenInput />
+      </Checkbox>
+      <Checkbox id="toggle-checkbox-2" name="toggle-checkbox-2">
+        <CheckboxControl>
+          <CheckboxIndicator />
+        </CheckboxControl>
+        <CheckboxLabel>{t.enableNotifications}</CheckboxLabel>
+        <CheckboxHiddenInput />
+      </Checkbox>
+    </div>
   )
 }

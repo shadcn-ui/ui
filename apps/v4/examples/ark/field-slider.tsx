@@ -2,7 +2,13 @@
 
 import * as React from "react"
 import { Field, FieldDescription, FieldTitle } from "@/examples/ark/ui/field"
-import { Slider } from "@/examples/ark/ui/slider"
+import {
+  Slider,
+  SliderControl,
+  SliderRange,
+  SliderThumb,
+  SliderTrack,
+} from "@/examples/ark/ui/slider"
 
 export default function FieldSlider() {
   const [value, setValue] = React.useState([200, 800])
@@ -17,13 +23,21 @@ export default function FieldSlider() {
       </FieldDescription>
       <Slider
         value={value}
-        onValueChange={(value) => setValue(value as [number, number])}
+        onValueChange={(details) => setValue(details.value as [number, number])}
         max={1000}
         min={0}
         step={10}
         className="mt-2 w-full"
-        aria-label="Price Range"
-      />
+        aria-label={["Price Range Min", "Price Range Max"]}
+      >
+        <SliderControl>
+          <SliderTrack>
+            <SliderRange />
+          </SliderTrack>
+          <SliderThumb index={0} />
+          <SliderThumb index={1} />
+        </SliderControl>
+      </Slider>
     </Field>
   )
 }

@@ -1,4 +1,10 @@
-import { Slider } from "@/examples/ark/ui/slider"
+import {
+  Slider,
+  SliderControl,
+  SliderRange,
+  SliderThumb,
+  SliderTrack,
+} from "@/examples/ark/ui/slider"
 
 export function SliderDemo() {
   return (
@@ -7,6 +13,13 @@ export function SliderDemo() {
       max={100}
       step={1}
       className="mx-auto w-full max-w-xs"
-    />
+    >
+      <SliderControl>
+        <SliderTrack>
+          <SliderRange />
+        </SliderTrack>
+        <SliderThumb index={0} />
+      </SliderControl>
+    </Slider>
   )
 }

@@ -2,12 +2,12 @@
 
 import * as React from "react"
 import {
-  Field,
-  FieldContent,
-  FieldDescription,
-  FieldLabel,
-} from "@/examples/ark/ui-rtl/field"
-import { Switch } from "@/examples/ark/ui-rtl/switch"
+  Switch,
+  SwitchControl,
+  SwitchHiddenInput,
+  SwitchLabel,
+  SwitchThumb,
+} from "@/examples/ark/ui-rtl/switch"
 
 import {
   useTranslation,
@@ -44,14 +44,12 @@ export function SwitchRtl() {
   const { dir, t } = useTranslation(translations, "ar")
 
   return (
-    <Field orientation="horizontal" className="max-w-sm" dir={dir}>
-      <FieldContent>
-        <FieldLabel htmlFor="switch-focus-mode-rtl" dir={dir}>
-          {t.label}
-        </FieldLabel>
-        <FieldDescription dir={dir}>{t.description}</FieldDescription>
-      </FieldContent>
-      <Switch id="switch-focus-mode-rtl" dir={dir} />
-    </Field>
+    <Switch id="switch-focus-mode-rtl" dir={dir} className="max-w-sm">
+      <SwitchControl>
+        <SwitchThumb />
+      </SwitchControl>
+      <SwitchLabel dir={dir}>{t.label}</SwitchLabel>
+      <SwitchHiddenInput />
+    </Switch>
   )
 }

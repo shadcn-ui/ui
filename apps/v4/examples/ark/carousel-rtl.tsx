@@ -52,7 +52,7 @@ export function CarouselRtl() {
     <Carousel
       slideCount={5}
       dir={dir}
-      className="w-full max-w-[12rem] sm:max-w-xs"
+      className="w-full max-w-48 sm:max-w-xs"
     >
       <CarouselContent>
         {Array.from({ length: 5 }).map((_, index) => (

@@ -2,7 +2,11 @@
 
 import * as React from "react"
 import { Field, FieldLabel } from "@/examples/ark/ui-rtl/field"
-import { Progress } from "@/examples/ark/ui-rtl/progress"
+import {
+  Progress,
+  ProgressRange,
+  ProgressTrack,
+} from "@/examples/ark/ui-rtl/progress"
 
 import {
   useTranslation,
@@ -55,7 +59,11 @@ export function ProgressRtl() {
         <span>{t.label}</span>
         <span className="ms-auto">{formatNumber(66)}%</span>
       </FieldLabel>
-      <Progress value={66} id="progress-upload" className="rtl:rotate-180" />
+      <Progress value={66} id="progress-upload" className="rtl:rotate-180">
+        <ProgressTrack>
+          <ProgressRange />
+        </ProgressTrack>
+      </Progress>
     </Field>
   )
 }

@@ -43,6 +43,19 @@ const CollapsibleContent = React.forwardRef<
 ))
 CollapsibleContent.displayName = "CollapsibleContent"
 
+const CollapsibleIndicator = React.forwardRef<
+  React.ElementRef<typeof CollapsiblePrimitive.Indicator>,
+  React.ComponentPropsWithoutRef<typeof CollapsiblePrimitive.Indicator>
+>(({ className, ...props }, ref) => (
+  <CollapsiblePrimitive.Indicator
+    ref={ref}
+    data-slot="collapsible-indicator"
+    className={cn(className)}
+    {...props}
+  />
+))
+CollapsibleIndicator.displayName = "CollapsibleIndicator"
+
 const CollapsibleContext = CollapsiblePrimitive.Context
 const CollapsibleRootProvider = CollapsiblePrimitive.RootProvider
 
@@ -50,6 +63,7 @@ export {
   Collapsible,
   CollapsibleContent,
   CollapsibleContext,
+  CollapsibleIndicator,
   CollapsibleRootProvider,
   CollapsibleTrigger,
   useCollapsible,

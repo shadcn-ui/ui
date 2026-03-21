@@ -2,7 +2,13 @@
 
 import * as React from "react"
 import { Label } from "@/examples/ark/ui/label"
-import { Slider } from "@/examples/ark/ui/slider"
+import {
+  Slider,
+  SliderControl,
+  SliderRange,
+  SliderThumb,
+  SliderTrack,
+} from "@/examples/ark/ui/slider"
 
 export function SliderControlled() {
   const [value, setValue] = React.useState([0.3, 0.7])
@@ -18,11 +24,19 @@ export function SliderControlled() {
       <Slider
         id="slider-demo-temperature"
         value={value}
-        onValueChange={setValue}
+        onValueChange={(details) => setValue(details.value)}
         min={0}
         max={1}
         step={0.1}
-      />
+      >
+        <SliderControl>
+          <SliderTrack>
+            <SliderRange />
+          </SliderTrack>
+          <SliderThumb index={0} />
+          <SliderThumb index={1} />
+        </SliderControl>
+      </Slider>
     </div>
   )
 }

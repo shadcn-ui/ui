@@ -86,12 +86,73 @@ const CarouselNext = React.forwardRef<
 ))
 CarouselNext.displayName = "CarouselNext"
 
+const CarouselControl = React.forwardRef<
+  React.ElementRef<typeof ArkCarousel.Control>,
+  React.ComponentPropsWithoutRef<typeof ArkCarousel.Control>
+>(({ className, ...props }, ref) => (
+  <ArkCarousel.Control
+    ref={ref}
+    data-slot="carousel-control"
+    className={cn(className)}
+    {...props}
+  />
+))
+CarouselControl.displayName = "CarouselControl"
+
+const CarouselIndicatorGroup = React.forwardRef<
+  React.ElementRef<typeof ArkCarousel.IndicatorGroup>,
+  React.ComponentPropsWithoutRef<typeof ArkCarousel.IndicatorGroup>
+>(({ className, ...props }, ref) => (
+  <ArkCarousel.IndicatorGroup
+    ref={ref}
+    data-slot="carousel-indicator-group"
+    className={cn(className)}
+    {...props}
+  />
+))
+CarouselIndicatorGroup.displayName = "CarouselIndicatorGroup"
+
+const CarouselIndicator = React.forwardRef<
+  React.ElementRef<typeof ArkCarousel.Indicator>,
+  React.ComponentPropsWithoutRef<typeof ArkCarousel.Indicator>
+>(({ className, ...props }, ref) => (
+  <ArkCarousel.Indicator
+    ref={ref}
+    data-slot="carousel-indicator"
+    className={cn(className)}
+    {...props}
+  />
+))
+CarouselIndicator.displayName = "CarouselIndicator"
+
+function CarouselAutoplayTrigger({
+  className,
+  ...props
+}: React.ComponentProps<typeof ArkCarousel.AutoplayTrigger>) {
+  return (
+    <ArkCarousel.AutoplayTrigger
+      data-slot="carousel-autoplay-trigger"
+      className={cn(className)}
+      {...props}
+    />
+  )
+}
+
+const CarouselContext = ArkCarousel.Context
+const CarouselRootProvider = ArkCarousel.RootProvider
+
 export {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselPrevious,
   CarouselNext,
+  CarouselControl,
+  CarouselIndicatorGroup,
+  CarouselIndicator,
+  CarouselAutoplayTrigger,
+  CarouselContext,
+  CarouselRootProvider,
 }
 
 export {

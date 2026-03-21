@@ -13,7 +13,7 @@ export default function CarouselPlugin() {
     <Carousel
       slideCount={5}
       autoplay
-      className="w-full max-w-[10rem] sm:max-w-xs"
+      className="w-full max-w-40 sm:max-w-xs"
     >
       <CarouselContent>
         {Array.from({ length: 5 }).map((_, index) => (

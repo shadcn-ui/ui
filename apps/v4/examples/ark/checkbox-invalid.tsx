@@ -1,19 +1,25 @@
-import { Checkbox } from "@/examples/ark/ui/checkbox"
-import { Field, FieldGroup, FieldLabel } from "@/examples/ark/ui/field"
+import {
+  Checkbox,
+  CheckboxControl,
+  CheckboxHiddenInput,
+  CheckboxIndicator,
+  CheckboxLabel,
+} from "@/examples/ark/ui/checkbox"
 
 export function CheckboxInvalid() {
   return (
-    <FieldGroup className="mx-auto w-56">
-      <Field orientation="horizontal" data-invalid>
-        <Checkbox
-          id="terms-checkbox-invalid"
-          name="terms-checkbox-invalid"
-          aria-invalid
-        />
-        <FieldLabel htmlFor="terms-checkbox-invalid">
-          Accept terms and conditions
-        </FieldLabel>
-      </Field>
-    </FieldGroup>
+    <div className="mx-auto w-56">
+      <Checkbox
+        id="terms-checkbox-invalid"
+        name="terms-checkbox-invalid"
+        aria-invalid
+      >
+        <CheckboxControl>
+          <CheckboxIndicator />
+        </CheckboxControl>
+        <CheckboxLabel>Accept terms and conditions</CheckboxLabel>
+        <CheckboxHiddenInput />
+      </Checkbox>
+    </div>
   )
 }

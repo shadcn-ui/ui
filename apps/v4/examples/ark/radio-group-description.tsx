@@ -1,39 +1,46 @@
 import {
-  Field,
+  RadioGroup,
+  RadioGroupItem,
+  RadioGroupItemControl,
+  RadioGroupItemHiddenInput,
+  RadioGroupItemText,
+} from "@/examples/ark/ui/radio-group"
+import {
   FieldContent,
   FieldDescription,
-  FieldLabel,
 } from "@/examples/ark/ui/field"
-import { RadioGroup, RadioGroupItem } from "@/examples/ark/ui/radio-group"
 
 export function RadioGroupDescription() {
   return (
     <RadioGroup defaultValue="comfortable" className="w-fit">
-      <Field orientation="horizontal">
-        <RadioGroupItem value="default" id="desc-r1" />
+      <RadioGroupItem value="default">
+        <RadioGroupItemControl />
         <FieldContent>
-          <FieldLabel htmlFor="desc-r1">Default</FieldLabel>
+          <RadioGroupItemText>Default</RadioGroupItemText>
           <FieldDescription>
             Standard spacing for most use cases.
           </FieldDescription>
         </FieldContent>
-      </Field>
-      <Field orientation="horizontal">
-        <RadioGroupItem value="comfortable" id="desc-r2" />
+        <RadioGroupItemHiddenInput />
+      </RadioGroupItem>
+      <RadioGroupItem value="comfortable">
+        <RadioGroupItemControl />
         <FieldContent>
-          <FieldLabel htmlFor="desc-r2">Comfortable</FieldLabel>
+          <RadioGroupItemText>Comfortable</RadioGroupItemText>
           <FieldDescription>More space between elements.</FieldDescription>
         </FieldContent>
-      </Field>
-      <Field orientation="horizontal">
-        <RadioGroupItem value="compact" id="desc-r3" />
+        <RadioGroupItemHiddenInput />
+      </RadioGroupItem>
+      <RadioGroupItem value="compact">
+        <RadioGroupItemControl />
         <FieldContent>
-          <FieldLabel htmlFor="desc-r3">Compact</FieldLabel>
+          <RadioGroupItemText>Compact</RadioGroupItemText>
           <FieldDescription>
             Minimal spacing for dense layouts.
           </FieldDescription>
         </FieldContent>
-      </Field>
+        <RadioGroupItemHiddenInput />
+      </RadioGroupItem>
     </RadioGroup>
   )
 }

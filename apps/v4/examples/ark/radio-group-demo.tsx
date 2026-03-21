@@ -1,21 +1,29 @@
-import { Label } from "@/examples/ark/ui/label"
-import { RadioGroup, RadioGroupItem } from "@/examples/ark/ui/radio-group"
+import {
+  RadioGroup,
+  RadioGroupItem,
+  RadioGroupItemControl,
+  RadioGroupItemHiddenInput,
+  RadioGroupItemText,
+} from "@/examples/ark/ui/radio-group"
 
 export function RadioGroupDemo() {
   return (
     <RadioGroup defaultValue="comfortable" className="w-fit">
-      <div className="flex items-center gap-3">
-        <RadioGroupItem value="default" id="r1" />
-        <Label htmlFor="r1">Default</Label>
-      </div>
-      <div className="flex items-center gap-3">
-        <RadioGroupItem value="comfortable" id="r2" />
-        <Label htmlFor="r2">Comfortable</Label>
-      </div>
-      <div className="flex items-center gap-3">
-        <RadioGroupItem value="compact" id="r3" />
-        <Label htmlFor="r3">Compact</Label>
-      </div>
+      <RadioGroupItem value="default">
+        <RadioGroupItemControl />
+        <RadioGroupItemText>Default</RadioGroupItemText>
+        <RadioGroupItemHiddenInput />
+      </RadioGroupItem>
+      <RadioGroupItem value="comfortable">
+        <RadioGroupItemControl />
+        <RadioGroupItemText>Comfortable</RadioGroupItemText>
+        <RadioGroupItemHiddenInput />
+      </RadioGroupItem>
+      <RadioGroupItem value="compact">
+        <RadioGroupItemControl />
+        <RadioGroupItemText>Compact</RadioGroupItemText>
+        <RadioGroupItemHiddenInput />
+      </RadioGroupItem>
     </RadioGroup>
   )
 }

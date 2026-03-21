@@ -15,8 +15,18 @@ import {
   ItemMedia,
   ItemTitle,
 } from "@/registry/bases/ark/ui/item"
-import { Progress } from "@/registry/bases/ark/ui/progress"
-import { Slider } from "@/registry/bases/ark/ui/slider"
+import {
+  Progress,
+  ProgressRange,
+  ProgressTrack,
+} from "@/registry/bases/ark/ui/progress"
+import {
+  Slider,
+  SliderControl,
+  SliderRange,
+  SliderThumb,
+  SliderTrack,
+} from "@/registry/bases/ark/ui/slider"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function ProgressExample() {
@@ -34,11 +44,31 @@ function ProgressValues() {
   return (
     <Example title="Progress Bar">
       <div className="flex w-full flex-col gap-4">
-        <Progress value={0} />
-        <Progress value={25} className="w-full" />
-        <Progress value={50} />
-        <Progress value={75} />
-        <Progress value={100} />
+        <Progress value={0}>
+          <ProgressTrack>
+            <ProgressRange />
+          </ProgressTrack>
+        </Progress>
+        <Progress value={25} className="w-full">
+          <ProgressTrack>
+            <ProgressRange />
+          </ProgressTrack>
+        </Progress>
+        <Progress value={50}>
+          <ProgressTrack>
+            <ProgressRange />
+          </ProgressTrack>
+        </Progress>
+        <Progress value={75}>
+          <ProgressTrack>
+            <ProgressRange />
+          </ProgressTrack>
+        </Progress>
+        <Progress value={100}>
+          <ProgressTrack>
+            <ProgressRange />
+          </ProgressTrack>
+        </Progress>
       </div>
     </Example>
   )
@@ -52,7 +82,11 @@ function ProgressWithLabel() {
           <span>Upload progress</span>
           <span className="ml-auto">66%</span>
         </FieldLabel>
-        <Progress value={66} className="w-full" id="progress-upload" />
+        <Progress value={66} className="w-full" id="progress-upload">
+          <ProgressTrack>
+            <ProgressRange />
+          </ProgressTrack>
+        </Progress>
       </Field>
     </Example>
   )
@@ -64,14 +98,25 @@ function ProgressControlled() {
   return (
     <Example title="Controlled">
       <div className="flex w-full flex-col gap-4">
-        <Progress value={value[0]} className="w-full" />
+        <Progress value={value[0]} className="w-full">
+          <ProgressTrack>
+            <ProgressRange />
+          </ProgressTrack>
+        </Progress>
         <Slider
           value={value}
-          onValueChange={setValue}
+          onValueChange={(details) => setValue(details.value)}
           min={0}
           max={100}
           step={1}
-        />
+        >
+          <SliderControl>
+            <SliderTrack>
+              <SliderRange />
+            </SliderTrack>
+            <SliderThumb index={0} />
+          </SliderControl>
+        </Slider>
       </div>
     </Example>
   )
@@ -127,7 +172,11 @@ function FileUploadList() {
               <ItemTitle className="inline">{file.name}</ItemTitle>
             </ItemContent>
             <ItemContent>
-              <Progress value={file.progress} className="w-32" />
+              <Progress value={file.progress} className="w-32">
+                <ProgressTrack>
+                  <ProgressRange />
+                </ProgressTrack>
+              </Progress>
             </ItemContent>
             <ItemActions className="w-16 justify-end">
               <span className="text-sm text-muted-foreground">

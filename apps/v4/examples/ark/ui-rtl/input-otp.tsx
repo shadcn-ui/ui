@@ -72,7 +72,31 @@ const InputOTPSeparator = React.forwardRef<
 ))
 InputOTPSeparator.displayName = "InputOTPSeparator"
 
-export { InputOTP, InputOTPGroup, InputOTPSlot, InputOTPSeparator }
+const InputOTPLabel = React.forwardRef<
+  React.ElementRef<typeof PinInput.Label>,
+  React.ComponentPropsWithoutRef<typeof PinInput.Label>
+>(({ className, ...props }, ref) => (
+  <PinInput.Label
+    ref={ref}
+    data-slot="input-otp-label"
+    className={cn(className)}
+    {...props}
+  />
+))
+InputOTPLabel.displayName = "InputOTPLabel"
+
+const InputOTPContext = PinInput.Context
+const InputOTPRootProvider = PinInput.RootProvider
+
+export {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSlot,
+  InputOTPSeparator,
+  InputOTPLabel,
+  InputOTPContext,
+  InputOTPRootProvider,
+}
 
 export {
   usePinInput,

@@ -6,15 +6,15 @@ import {
   Example,
   ExampleWrapper,
 } from "@/registry/bases/ark/components/example"
-import { Checkbox } from "@/registry/bases/ark/ui/checkbox"
 import {
-  Field,
-  FieldContent,
-  FieldDescription,
-  FieldGroup,
-  FieldLabel,
-  FieldTitle,
-} from "@/registry/bases/ark/ui/field"
+  Checkbox,
+  CheckboxControl,
+  CheckboxGroup,
+  CheckboxHiddenInput,
+  CheckboxIndicator,
+  CheckboxLabel,
+  type CheckboxCheckedChangeDetails,
+} from "@/registry/bases/ark/ui/checkbox"
 import {
   Table,
   TableBody,
@@ -31,9 +31,8 @@ export default function CheckboxExample() {
       <CheckboxWithDescription />
       <CheckboxInvalid />
       <CheckboxDisabled />
-      <CheckboxWithTitle />
       <CheckboxInTable />
-      <CheckboxGroup />
+      <CheckboxGroupDemo />
     </ExampleWrapper>
   )
 }
@@ -41,10 +40,13 @@ export default function CheckboxExample() {
 function CheckboxBasic() {
   return (
     <Example title="Basic">
-      <Field orientation="horizontal">
-        <Checkbox id="terms" />
-        <FieldLabel htmlFor="terms">Accept terms and conditions</FieldLabel>
-      </Field>
+      <Checkbox id="terms">
+        <CheckboxControl>
+          <CheckboxIndicator />
+        </CheckboxControl>
+        <CheckboxLabel>Accept terms and conditions</CheckboxLabel>
+        <CheckboxHiddenInput />
+      </Checkbox>
     </Example>
   )
 }
@@ -52,15 +54,13 @@ function CheckboxBasic() {
 function CheckboxWithDescription() {
   return (
     <Example title="With Description">
-      <Field orientation="horizontal">
-        <Checkbox id="terms-2" defaultChecked />
-        <FieldContent>
-          <FieldLabel htmlFor="terms-2">Accept terms and conditions</FieldLabel>
-          <FieldDescription>
-            By clicking this checkbox, you agree to the terms and conditions.
-          </FieldDescription>
-        </FieldContent>
-      </Field>
+      <Checkbox id="terms-2" defaultChecked>
+        <CheckboxControl>
+          <CheckboxIndicator />
+        </CheckboxControl>
+        <CheckboxLabel>Accept terms and conditions</CheckboxLabel>
+        <CheckboxHiddenInput />
+      </Checkbox>
     </Example>
   )
 }
@@ -68,10 +68,13 @@ function CheckboxWithDescription() {
 function CheckboxInvalid() {
   return (
     <Example title="Invalid">
-      <Field orientation="horizontal" data-invalid>
-        <Checkbox id="terms-3" aria-invalid />
-        <FieldLabel htmlFor="terms-3">Accept terms and conditions</FieldLabel>
-      </Field>
+      <Checkbox id="terms-3" aria-invalid>
+        <CheckboxControl>
+          <CheckboxIndicator />
+        </CheckboxControl>
+        <CheckboxLabel>Accept terms and conditions</CheckboxLabel>
+        <CheckboxHiddenInput />
+      </Checkbox>
     </Example>
   )
 }
@@ -79,41 +82,13 @@ function CheckboxInvalid() {
 function CheckboxDisabled() {
   return (
     <Example title="Disabled">
-      <Field orientation="horizontal">
-        <Checkbox id="toggle" disabled />
-        <FieldLabel htmlFor="toggle">Enable notifications</FieldLabel>
-      </Field>
-    </Example>
-  )
-}
-
-function CheckboxWithTitle() {
-  return (
-    <Example title="With Title">
-      <FieldGroup>
-        <FieldLabel htmlFor="toggle-2">
-          <Field orientation="horizontal">
-            <Checkbox id="toggle-2" defaultChecked />
-            <FieldContent>
-              <FieldTitle>Enable notifications</FieldTitle>
-              <FieldDescription>
-                You can enable or disable notifications at any time.
-              </FieldDescription>
-            </FieldContent>
-          </Field>
-        </FieldLabel>
-        <FieldLabel htmlFor="toggle-4">
-          <Field orientation="horizontal" data-disabled>
-            <Checkbox id="toggle-4" disabled />
-            <FieldContent>
-              <FieldTitle>Enable notifications</FieldTitle>
-              <FieldDescription>
-                You can enable or disable notifications at any time.
-              </FieldDescription>
-            </FieldContent>
-          </Field>
-        </FieldLabel>
-      </FieldGroup>
+      <Checkbox id="toggle" disabled>
+        <CheckboxControl>
+          <CheckboxIndicator />
+        </CheckboxControl>
+        <CheckboxLabel>Enable notifications</CheckboxLabel>
+        <CheckboxHiddenInput />
+      </Checkbox>
     </Example>
   )
 }
@@ -152,17 +127,20 @@ function CheckboxInTable() {
 
   const selectAll = selectedRows.size === tableData.length
 
-  const handleSelectAll = (checked: boolean) => {
-    if (checked) {
+  const handleSelectAll = (details: CheckboxCheckedChangeDetails) => {
+    if (details.checked) {
       setSelectedRows(new Set(tableData.map((row) => row.id)))
     } else {
       setSelectedRows(new Set())
     }
   }
 
-  const handleSelectRow = (id: string, checked: boolean) => {
+  const handleSelectRow = (
+    id: string,
+    details: CheckboxCheckedChangeDetails
+  ) => {
     const newSelected = new Set(selectedRows)
-    if (checked) {
+    if (details.checked) {
       newSelected.add(id)
     } else {
       newSelected.delete(id)
@@ -180,7 +158,12 @@ function CheckboxInTable() {
                 id="select-all"
                 checked={selectAll}
                 onCheckedChange={handleSelectAll}
-              />
+              >
+                <CheckboxControl>
+                  <CheckboxIndicator />
+                </CheckboxControl>
+                <CheckboxHiddenInput />
+              </Checkbox>
             </TableHead>
             <TableHead>Name</TableHead>
             <TableHead>Email</TableHead>
@@ -197,10 +180,15 @@ function CheckboxInTable() {
                 <Checkbox
                   id={`row-${row.id}`}
                   checked={selectedRows.has(row.id)}
-                  onCheckedChange={(checked) =>
-                    handleSelectRow(row.id, checked === true)
+                  onCheckedChange={(details) =>
+                    handleSelectRow(row.id, details)
                   }
-                />
+                >
+                  <CheckboxControl>
+                    <CheckboxIndicator />
+                  </CheckboxControl>
+                  <CheckboxHiddenInput />
+                </Checkbox>
               </TableCell>
               <TableCell className="font-medium">{row.name}</TableCell>
               <TableCell>{row.email}</TableCell>
@@ -213,48 +201,43 @@ function CheckboxInTable() {
   )
 }
 
-function CheckboxGroup() {
+function CheckboxGroupDemo() {
   return (
     <Example title="Group">
-      <Field>
-        <FieldLabel>Show these items on the desktop:</FieldLabel>
-        <Field orientation="horizontal">
-          <Checkbox id="finder-pref-9k2-hard-disks-ljj" />
-          <FieldLabel
-            htmlFor="finder-pref-9k2-hard-disks-ljj"
-            className="font-normal"
-          >
-            Hard disks
-          </FieldLabel>
-        </Field>
-        <Field orientation="horizontal">
-          <Checkbox id="finder-pref-9k2-external-disks-1yg" />
-          <FieldLabel
-            htmlFor="finder-pref-9k2-external-disks-1yg"
-            className="font-normal"
-          >
-            External disks
-          </FieldLabel>
-        </Field>
-        <Field orientation="horizontal">
-          <Checkbox id="finder-pref-9k2-cds-dvds-fzt" />
-          <FieldLabel
-            htmlFor="finder-pref-9k2-cds-dvds-fzt"
-            className="font-normal"
-          >
+      <CheckboxGroup defaultValue={["hard-disks"]} name="finder-pref" className="flex flex-col gap-3">
+        <Checkbox value="hard-disks">
+          <CheckboxControl>
+            <CheckboxIndicator />
+          </CheckboxControl>
+          <CheckboxLabel className="font-normal">Hard disks</CheckboxLabel>
+          <CheckboxHiddenInput />
+        </Checkbox>
+        <Checkbox value="external-disks">
+          <CheckboxControl>
+            <CheckboxIndicator />
+          </CheckboxControl>
+          <CheckboxLabel className="font-normal">External disks</CheckboxLabel>
+          <CheckboxHiddenInput />
+        </Checkbox>
+        <Checkbox value="cds-dvds">
+          <CheckboxControl>
+            <CheckboxIndicator />
+          </CheckboxControl>
+          <CheckboxLabel className="font-normal">
             CDs, DVDs, and iPods
-          </FieldLabel>
-        </Field>
-        <Field orientation="horizontal">
-          <Checkbox id="finder-pref-9k2-connected-servers-6l2" />
-          <FieldLabel
-            htmlFor="finder-pref-9k2-connected-servers-6l2"
-            className="font-normal"
-          >
+          </CheckboxLabel>
+          <CheckboxHiddenInput />
+        </Checkbox>
+        <Checkbox value="connected-servers">
+          <CheckboxControl>
+            <CheckboxIndicator />
+          </CheckboxControl>
+          <CheckboxLabel className="font-normal">
             Connected servers
-          </FieldLabel>
-        </Field>
-      </Field>
+          </CheckboxLabel>
+          <CheckboxHiddenInput />
+        </Checkbox>
+      </CheckboxGroup>
     </Example>
   )
 }

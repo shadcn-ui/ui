@@ -12,7 +12,7 @@ export function ToggleGroupFontWeightSelector() {
       <ToggleGroup
         type="single"
         value={fontWeight}
-        onValueChange={(value) => setFontWeight(value)}
+        onValueChange={(details) => setFontWeight(details.value[0] ?? "normal")}
         variant="outline"
         spacing={2}
         size="lg"
