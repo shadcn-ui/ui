@@ -3,7 +3,7 @@
 import * as React from "react"
 import { Button } from "@/examples/react-aria/ui-rtl/button"
 import { Calendar } from "@/examples/react-aria/ui-rtl/calendar"
-import { Popover, PopoverTrigger } from "@/examples/react-aria/ui-rtl/popover";
+import { Popover, PopoverTrigger } from "@/examples/react-aria/ui-rtl/popover"
 import { format } from "date-fns"
 import { arSA, he } from "date-fns/locale"
 import { ChevronDownIcon } from "lucide-react"
@@ -67,7 +67,8 @@ export function DatePickerRtl() {
         variant={"outline"}
         data-empty={!date}
         className="w-[212px] justify-between text-left font-normal data-[empty=true]:text-muted-foreground"
-        dir={dir}>
+        dir={dir}
+      >
         {date ? (
           format(date, "PPP", { locale: dateFnsLocale })
         ) : (
@@ -86,5 +87,5 @@ export function DatePickerRtl() {
         />
       </Popover>
     </PopoverTrigger>
-  );
+  )
 }

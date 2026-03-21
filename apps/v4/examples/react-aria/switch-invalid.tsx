@@ -19,5 +19,5 @@ export function SwitchInvalid() {
       </FieldContent>
       <Switch id="switch-terms" />
     </Field>
-  );
+  )
 }

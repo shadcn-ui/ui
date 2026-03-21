@@ -35,5 +35,5 @@ export function ToggleGroupSizes() {
         </ToggleGroupItem>
       </ToggleGroup>
     </div>
-  );
+  )
 }

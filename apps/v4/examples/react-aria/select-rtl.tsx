@@ -118,5 +118,5 @@ export function SelectRtl() {
         </SelectGroup>
       </SelectContent>
     </Select>
-  );
+  )
 }

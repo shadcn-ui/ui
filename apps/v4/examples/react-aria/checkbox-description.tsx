@@ -26,5 +26,5 @@ export function CheckboxDescription() {
         </FieldContent>
       </Field>
     </FieldGroup>
-  );
+  )
 }

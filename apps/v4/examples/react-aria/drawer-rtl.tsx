@@ -189,5 +189,5 @@ export function DrawerRtl() {
         </div>
       </DrawerContent>
     </Drawer>
-  );
+  )
 }

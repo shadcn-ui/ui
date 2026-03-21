@@ -8,5 +8,5 @@ export function SliderRange() {
       step={5}
       className="mx-auto w-full max-w-xs"
     />
-  );
+  )
 }

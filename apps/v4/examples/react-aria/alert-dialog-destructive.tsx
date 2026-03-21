@@ -8,7 +8,7 @@ import {
   AlertDialogMedia,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/examples/react-aria/ui/alert-dialog";
+} from "@/examples/react-aria/ui/alert-dialog"
 import { Button } from "@/examples/react-aria/ui/button"
 import { Trash2Icon } from "lucide-react"
 
@@ -33,5 +33,5 @@ export function AlertDialogDestructive() {
         </AlertDialogFooter>
       </AlertDialog>
     </AlertDialogTrigger>
-  );
+  )
 }

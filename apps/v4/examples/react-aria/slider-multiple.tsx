@@ -8,5 +8,5 @@ export function SliderMultiple() {
       step={10}
       className="mx-auto w-full max-w-xs"
     />
-  );
+  )
 }

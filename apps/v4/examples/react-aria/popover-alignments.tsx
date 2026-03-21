@@ -1,5 +1,5 @@
 import { Button } from "@/examples/react-aria/ui/button"
-import { Popover, PopoverTrigger } from "@/examples/react-aria/ui/popover";
+import { Popover, PopoverTrigger } from "@/examples/react-aria/ui/popover"
 
 export function PopoverAlignments() {
   return (
@@ -31,5 +31,5 @@ export function PopoverAlignments() {
         </PopoverTrigger>
       </div>
     </>
-  );
+  )
 }

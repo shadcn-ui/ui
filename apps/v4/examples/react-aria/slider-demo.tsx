@@ -8,5 +8,5 @@ export function SliderDemo() {
       step={1}
       className="mx-auto w-full max-w-xs"
     />
-  );
+  )
 }

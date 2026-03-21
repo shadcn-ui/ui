@@ -5,7 +5,7 @@ import {
   InputGroupInput,
 } from "@/examples/react-aria/ui/input-group"
 import { Label } from "@/examples/react-aria/ui/label"
-import { Tooltip, TooltipTrigger } from "@/examples/react-aria/ui/tooltip";
+import { Tooltip, TooltipTrigger } from "@/examples/react-aria/ui/tooltip"
 import { InfoIcon } from "lucide-react"
 
 export default function InputGroupLabel() {
@@ -28,7 +28,8 @@ export default function InputGroupLabel() {
               variant="ghost"
               aria-label="Help"
               className="ml-auto rounded-full"
-              size="icon-xs">
+              size="icon-xs"
+            >
               <InfoIcon />
             </InputGroupButton>
             <Tooltip>
@@ -38,5 +39,5 @@ export default function InputGroupLabel() {
         </InputGroupAddon>
       </InputGroup>
     </div>
-  );
+  )
 }

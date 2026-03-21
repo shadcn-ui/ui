@@ -103,5 +103,5 @@ export function CheckboxInTable() {
         ))}
       </TableBody>
     </Table>
-  );
+  )
 }

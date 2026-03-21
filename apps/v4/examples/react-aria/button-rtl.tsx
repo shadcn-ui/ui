@@ -57,5 +57,5 @@ export function ButtonRtl() {
         <Spinner data-icon="inline-start" /> {t.loading}
       </Button>
     </div>
-  );
+  )
 }

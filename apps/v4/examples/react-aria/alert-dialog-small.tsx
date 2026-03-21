@@ -7,7 +7,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/examples/react-aria/ui/alert-dialog";
+} from "@/examples/react-aria/ui/alert-dialog"
 import { Button } from "@/examples/react-aria/ui/button"
 
 export function AlertDialogSmall() {
@@ -27,5 +27,5 @@ export function AlertDialogSmall() {
         </AlertDialogFooter>
       </AlertDialog>
     </AlertDialogTrigger>
-  );
+  )
 }

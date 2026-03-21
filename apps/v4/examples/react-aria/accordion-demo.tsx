@@ -30,5 +30,5 @@ export default function AccordionDemo() {
         </AccordionContent>
       </AccordionItem>
     </Accordion>
-  );
+  )
 }

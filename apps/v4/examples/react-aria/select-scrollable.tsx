@@ -55,7 +55,7 @@ const items = [
   ...europeAfrica,
   ...asia,
   ...australiaPacific,
-  ...southAmerica
+  ...southAmerica,
 ]
 
 export function SelectScrollable() {
@@ -107,5 +107,5 @@ export function SelectScrollable() {
         </SelectGroup>
       </SelectContent>
     </Select>
-  );
+  )
 }

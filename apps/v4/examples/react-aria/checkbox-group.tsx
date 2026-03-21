@@ -70,5 +70,5 @@ export function CheckboxGroup() {
         </Field>
       </FieldGroup>
     </FieldSet>
-  );
+  )
 }

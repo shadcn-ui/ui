@@ -1,14 +1,12 @@
 import { Button } from "@/examples/react-aria/ui/button"
 import { Input } from "@/examples/react-aria/ui/input"
 import { Label } from "@/examples/react-aria/ui/label"
-import { Popover, PopoverTrigger } from "@/examples/react-aria/ui/popover";
+import { Popover, PopoverTrigger } from "@/examples/react-aria/ui/popover"
 
 export default function PopoverDemo() {
   return (
     <PopoverTrigger>
-      <Button variant="outline">
-        Open popover
-      </Button>
+      <Button variant="outline">Open popover</Button>
       <Popover className="w-80">
         <div className="grid gap-4">
           <div className="space-y-2">
@@ -54,5 +52,5 @@ export default function PopoverDemo() {
         </div>
       </Popover>
     </PopoverTrigger>
-  );
+  )
 }

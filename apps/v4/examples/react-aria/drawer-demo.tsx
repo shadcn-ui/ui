@@ -130,5 +130,5 @@ export function DrawerDemo() {
         </div>
       </DrawerContent>
     </Drawer>
-  );
+  )
 }

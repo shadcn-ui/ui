@@ -8,7 +8,7 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/examples/react-aria/ui/dropdown-menu";
+} from "@/examples/react-aria/ui/dropdown-menu"
 import {
   AlertTriangleIcon,
   CheckIcon,
@@ -65,5 +65,5 @@ export default function ButtonGroupDropdown() {
         </DropdownMenu>
       </DropdownMenuTrigger>
     </ButtonGroup>
-  );
+  )
 }

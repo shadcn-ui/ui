@@ -32,5 +32,5 @@ export default function AccordionDisabled() {
         </AccordionContent>
       </AccordionItem>
     </Accordion>
-  );
+  )
 }

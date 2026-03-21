@@ -18,5 +18,5 @@ export function ProgressControlled() {
         step={1}
       />
     </div>
-  );
+  )
 }

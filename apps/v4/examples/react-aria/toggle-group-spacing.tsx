@@ -5,7 +5,12 @@ import {
 
 export function ToggleGroupSpacing() {
   return (
-    <ToggleGroup size="sm" defaultSelectedKeys={["top"]} variant="outline" spacing={2}>
+    <ToggleGroup
+      size="sm"
+      defaultSelectedKeys={["top"]}
+      variant="outline"
+      spacing={2}
+    >
       <ToggleGroupItem id="top" aria-label="Toggle top">
         Top
       </ToggleGroupItem>
@@ -19,5 +24,5 @@ export function ToggleGroupSpacing() {
         Right
       </ToggleGroupItem>
     </ToggleGroup>
-  );
+  )
 }

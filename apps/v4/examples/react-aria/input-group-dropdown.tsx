@@ -1,6 +1,11 @@
 "use client"
 
-import { DropdownMenu, DropdownMenuGroup, DropdownMenuItem, DropdownMenuTrigger } from "@/examples/react-aria/ui/dropdown-menu";
+import {
+  DropdownMenu,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/examples/react-aria/ui/dropdown-menu"
 import {
   InputGroup,
   InputGroupAddon,
@@ -47,5 +52,5 @@ export function InputGroupDropdown() {
         </InputGroupAddon>
       </InputGroup>
     </div>
-  );
+  )
 }

@@ -13,5 +13,5 @@ export function ToggleGroupOutline() {
         Missed
       </ToggleGroupItem>
     </ToggleGroup>
-  );
+  )
 }

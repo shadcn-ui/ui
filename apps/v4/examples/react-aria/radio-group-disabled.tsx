@@ -26,5 +26,5 @@ export function RadioGroupDisabled() {
         </FieldLabel>
       </Field>
     </RadioGroup>
-  );
+  )
 }

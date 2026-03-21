@@ -1,6 +1,10 @@
 "use client"
 
-import { DropdownMenu, DropdownMenuItem, DropdownMenuTrigger } from "@/examples/react-aria/ui/dropdown-menu";
+import {
+  DropdownMenu,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/examples/react-aria/ui/dropdown-menu"
 import {
   Sidebar,
   SidebarContent,
@@ -90,5 +94,5 @@ export default function AppSidebar() {
         </SidebarContent>
       </Sidebar>
     </SidebarProvider>
-  );
+  )
 }

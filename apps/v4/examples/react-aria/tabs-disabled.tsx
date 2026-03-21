@@ -10,5 +10,5 @@ export function TabsDisabled() {
         </TabsTrigger>
       </TabsList>
     </Tabs>
-  );
+  )
 }

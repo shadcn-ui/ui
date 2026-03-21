@@ -1,6 +1,10 @@
 "use client"
 
-import { DropdownMenu, DropdownMenuItem, DropdownMenuTrigger } from "@/examples/react-aria/ui/dropdown-menu";
+import {
+  DropdownMenu,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/examples/react-aria/ui/dropdown-menu"
 import {
   Sidebar,
   SidebarHeader,
@@ -21,8 +25,7 @@ export default function AppSidebar() {
           <SidebarMenu>
             <SidebarMenuItem>
               <DropdownMenuTrigger>
-                <SidebarMenuButton
-                  className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground">
+                <SidebarMenuButton className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground">
                   Select Workspace
                   <ChevronDownIcon className="ml-auto" />
                 </SidebarMenuButton>
@@ -45,5 +48,5 @@ export default function AppSidebar() {
         </header>
       </SidebarInset>
     </SidebarProvider>
-  );
+  )
 }

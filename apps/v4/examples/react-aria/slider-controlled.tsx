@@ -24,5 +24,5 @@ export function SliderControlled() {
         step={0.1}
       />
     </div>
-  );
+  )
 }

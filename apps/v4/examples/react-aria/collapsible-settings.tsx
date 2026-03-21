@@ -67,5 +67,5 @@ export function CollapsibleSettings() {
         </Collapsible>
       </CardContent>
     </Card>
-  );
+  )
 }

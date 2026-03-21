@@ -5,7 +5,7 @@ import { Button } from "@/examples/react-aria/ui/button"
 import { Calendar } from "@/examples/react-aria/ui/calendar"
 import { Field, FieldGroup, FieldLabel } from "@/examples/react-aria/ui/field"
 import { Input } from "@/examples/react-aria/ui/input"
-import { Popover, PopoverTrigger } from "@/examples/react-aria/ui/popover";
+import { Popover, PopoverTrigger } from "@/examples/react-aria/ui/popover"
 import { format } from "date-fns"
 import { ChevronDownIcon } from "lucide-react"
 
@@ -21,7 +21,8 @@ export function DatePickerTime() {
           <Button
             variant="outline"
             id="date-picker-optional"
-            className="w-32 justify-between font-normal">
+            className="w-32 justify-between font-normal"
+          >
             {date ? format(date, "PPP") : "Select date"}
             <ChevronDownIcon data-icon="inline-end" />
           </Button>
@@ -50,5 +51,5 @@ export function DatePickerTime() {
         />
       </Field>
     </FieldGroup>
-  );
+  )
 }

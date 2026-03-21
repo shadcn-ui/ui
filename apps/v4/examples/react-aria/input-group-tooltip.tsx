@@ -4,7 +4,7 @@ import {
   InputGroupButton,
   InputGroupInput,
 } from "@/examples/react-aria/ui/input-group"
-import { Tooltip, TooltipTrigger } from "@/examples/react-aria/ui/tooltip";
+import { Tooltip, TooltipTrigger } from "@/examples/react-aria/ui/tooltip"
 import { HelpCircle, InfoIcon } from "lucide-react"
 
 export default function InputGroupTooltip() {
@@ -50,5 +50,5 @@ export default function InputGroupTooltip() {
         </TooltipTrigger>
       </InputGroup>
     </div>
-  );
+  )
 }

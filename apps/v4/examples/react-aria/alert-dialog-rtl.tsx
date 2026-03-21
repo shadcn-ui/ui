@@ -10,7 +10,7 @@ import {
   AlertDialogMedia,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/examples/react-aria/ui-rtl/alert-dialog";
+} from "@/examples/react-aria/ui-rtl/alert-dialog"
 import { Button } from "@/examples/react-aria/ui-rtl/button"
 import { BluetoothIcon } from "lucide-react"
 
@@ -77,13 +77,8 @@ export function AlertDialogRtl() {
   return (
     <div className="flex gap-4" dir={dir}>
       <AlertDialogTrigger>
-        <Button variant="outline">
-          {t.showDialog}
-        </Button>
-        <AlertDialog
-          dir={dir}
-          data-lang={dir === "rtl" ? language : undefined}
-        >
+        <Button variant="outline">{t.showDialog}</Button>
+        <AlertDialog dir={dir} data-lang={dir === "rtl" ? language : undefined}>
           <AlertDialogHeader>
             <AlertDialogTitle>{t.title}</AlertDialogTitle>
             <AlertDialogDescription>{t.description}</AlertDialogDescription>
@@ -95,9 +90,7 @@ export function AlertDialogRtl() {
         </AlertDialog>
       </AlertDialogTrigger>
       <AlertDialogTrigger>
-        <Button variant="outline">
-          {t.showDialogSm}
-        </Button>
+        <Button variant="outline">{t.showDialogSm}</Button>
         <AlertDialog
           size="sm"
           dir={dir}
@@ -119,5 +112,5 @@ export function AlertDialogRtl() {
         </AlertDialog>
       </AlertDialogTrigger>
     </div>
-  );
+  )
 }

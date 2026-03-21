@@ -7,15 +7,13 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/examples/react-aria/ui/alert-dialog";
+} from "@/examples/react-aria/ui/alert-dialog"
 import { Button } from "@/examples/react-aria/ui/button"
 
 export default function AlertDialogDemo() {
   return (
     <AlertDialogTrigger>
-      <Button variant="outline">
-        Show Dialog
-      </Button>
+      <Button variant="outline">Show Dialog</Button>
       <AlertDialog>
         <AlertDialogHeader>
           <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
@@ -30,5 +28,5 @@ export default function AlertDialogDemo() {
         </AlertDialogFooter>
       </AlertDialog>
     </AlertDialogTrigger>
-  );
+  )
 }

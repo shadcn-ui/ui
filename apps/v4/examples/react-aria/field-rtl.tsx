@@ -40,7 +40,7 @@ const months = [
   { label: "09", value: "09" },
   { label: "10", value: "10" },
   { label: "11", value: "11" },
-  { label: "12", value: "12" }
+  { label: "12", value: "12" },
 ]
 
 const years = [
@@ -49,7 +49,7 @@ const years = [
   { label: "2026", value: "2026" },
   { label: "2027", value: "2027" },
   { label: "2028", value: "2028" },
-  { label: "2029", value: "2029" }
+  { label: "2029", value: "2029" },
 ]
 
 const translations: Translations = {
@@ -283,5 +283,5 @@ export function FieldRtl() {
         </FieldGroup>
       </form>
     </div>
-  );
+  )
 }

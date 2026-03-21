@@ -10,5 +10,5 @@ export function ToggleDisabled() {
         Disabled
       </Toggle>
     </div>
-  );
+  )
 }

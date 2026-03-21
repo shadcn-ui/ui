@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-import type { Selection } from "react-aria-components"
 import { Button } from "@/examples/react-aria/ui/button"
 import {
   DropdownMenu,
@@ -42,16 +41,17 @@ import {
   SunIcon,
   UserIcon,
 } from "lucide-react"
+import type { Selection } from "react-aria-components"
 
 export function DropdownMenuComplex() {
-  const [notifications, setNotifications] = React.useState<Selection>(new Set(['email', 'push']))
+  const [notifications, setNotifications] = React.useState<Selection>(
+    new Set(["email", "push"])
+  )
   const [theme, setTheme] = React.useState("light")
 
   return (
     <DropdownMenuTrigger>
-      <Button variant="outline">
-        Complex Menu
-      </Button>
+      <Button variant="outline">Complex Menu</Button>
       <DropdownMenu className="w-44">
         <DropdownMenuGroup>
           <DropdownMenuLabel>File</DropdownMenuLabel>
@@ -70,42 +70,42 @@ export function DropdownMenuComplex() {
               <FolderOpenIcon />
               Open Recent
             </DropdownMenuSubTrigger>
-              <DropdownMenuSubContent>
-                <DropdownMenuGroup>
-                  <DropdownMenuLabel>Recent Projects</DropdownMenuLabel>
-                  <DropdownMenuItem>
-                    <FileCodeIcon />
-                    Project Alpha
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <FileCodeIcon />
-                    Project Beta
-                  </DropdownMenuItem>
-                  <DropdownMenuSub>
-                    <DropdownMenuSubTrigger>
-                      <MoreHorizontalIcon />
-                      More Projects
-                    </DropdownMenuSubTrigger>
-                      <DropdownMenuSubContent>
-                        <DropdownMenuItem>
-                          <FileCodeIcon />
-                          Project Gamma
-                        </DropdownMenuItem>
-                        <DropdownMenuItem>
-                          <FileCodeIcon />
-                          Project Delta
-                        </DropdownMenuItem>
-                      </DropdownMenuSubContent>
-                  </DropdownMenuSub>
-                </DropdownMenuGroup>
-                <DropdownMenuSeparator />
-                <DropdownMenuGroup>
-                  <DropdownMenuItem>
-                    <FolderSearchIcon />
-                    Browse...
-                  </DropdownMenuItem>
-                </DropdownMenuGroup>
-              </DropdownMenuSubContent>
+            <DropdownMenuSubContent>
+              <DropdownMenuGroup>
+                <DropdownMenuLabel>Recent Projects</DropdownMenuLabel>
+                <DropdownMenuItem>
+                  <FileCodeIcon />
+                  Project Alpha
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <FileCodeIcon />
+                  Project Beta
+                </DropdownMenuItem>
+                <DropdownMenuSub>
+                  <DropdownMenuSubTrigger>
+                    <MoreHorizontalIcon />
+                    More Projects
+                  </DropdownMenuSubTrigger>
+                  <DropdownMenuSubContent>
+                    <DropdownMenuItem>
+                      <FileCodeIcon />
+                      Project Gamma
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>
+                      <FileCodeIcon />
+                      Project Delta
+                    </DropdownMenuItem>
+                  </DropdownMenuSubContent>
+                </DropdownMenuSub>
+              </DropdownMenuGroup>
+              <DropdownMenuSeparator />
+              <DropdownMenuGroup>
+                <DropdownMenuItem>
+                  <FolderSearchIcon />
+                  Browse...
+                </DropdownMenuItem>
+              </DropdownMenuGroup>
+            </DropdownMenuSubContent>
           </DropdownMenuSub>
           <DropdownMenuSeparator />
           <DropdownMenuItem>
@@ -120,7 +120,11 @@ export function DropdownMenuComplex() {
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuGroup selectionMode="multiple" selectedKeys={notifications} onSelectionChange={setNotifications}>
+        <DropdownMenuGroup
+          selectionMode="multiple"
+          selectedKeys={notifications}
+          onSelectionChange={setNotifications}
+        >
           <DropdownMenuLabel>View</DropdownMenuLabel>
           <DropdownMenuItem id="email">
             <EyeIcon />
@@ -135,23 +139,27 @@ export function DropdownMenuComplex() {
               <PaletteIcon />
               Theme
             </DropdownMenuSubTrigger>
-              <DropdownMenuSubContent>
-                <DropdownMenuGroup selectionMode="single" selectedKeys={[theme]} onSelectionChange={keys => setTheme([...keys][0] as string)}>
-                  <DropdownMenuLabel>Appearance</DropdownMenuLabel>
-                  <DropdownMenuItem id="light">
-                    <SunIcon />
-                    Light
-                  </DropdownMenuItem>
-                  <DropdownMenuItem id="dark">
-                    <MoonIcon />
-                    Dark
-                  </DropdownMenuItem>
-                  <DropdownMenuItem id="system">
-                    <MonitorIcon />
-                    System
-                  </DropdownMenuItem>
-                </DropdownMenuGroup>
-              </DropdownMenuSubContent>
+            <DropdownMenuSubContent>
+              <DropdownMenuGroup
+                selectionMode="single"
+                selectedKeys={[theme]}
+                onSelectionChange={(keys) => setTheme([...keys][0] as string)}
+              >
+                <DropdownMenuLabel>Appearance</DropdownMenuLabel>
+                <DropdownMenuItem id="light">
+                  <SunIcon />
+                  Light
+                </DropdownMenuItem>
+                <DropdownMenuItem id="dark">
+                  <MoonIcon />
+                  Dark
+                </DropdownMenuItem>
+                <DropdownMenuItem id="system">
+                  <MonitorIcon />
+                  System
+                </DropdownMenuItem>
+              </DropdownMenuGroup>
+            </DropdownMenuSubContent>
           </DropdownMenuSub>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
@@ -171,47 +179,49 @@ export function DropdownMenuComplex() {
               <SettingsIcon />
               Settings
             </DropdownMenuSubTrigger>
-              <DropdownMenuSubContent>
-                <DropdownMenuGroup>
-                  <DropdownMenuLabel>Preferences</DropdownMenuLabel>
-                  <DropdownMenuItem>
-                    <KeyboardIcon />
-                    Keyboard Shortcuts
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <LanguagesIcon />
-                    Language
-                  </DropdownMenuItem>
-                  <DropdownMenuSub>
-                    <DropdownMenuSubTrigger>
-                      <BellIcon />
-                      Notifications
-                    </DropdownMenuSubTrigger>
-                      <DropdownMenuSubContent>
-                        <DropdownMenuGroup selectionMode="multiple" selectedKeys={notifications} onSelectionChange={setNotifications}>
-                          <DropdownMenuLabel>
-                            Notification Types
-                          </DropdownMenuLabel>
-                          <DropdownMenuItem id="push">
-                            <BellIcon />
-                            Push Notifications
-                          </DropdownMenuItem>
-                          <DropdownMenuItem id="email">
-                            <MailIcon />
-                            Email Notifications
-                          </DropdownMenuItem>
-                        </DropdownMenuGroup>
-                      </DropdownMenuSubContent>
-                  </DropdownMenuSub>
-                </DropdownMenuGroup>
-                <DropdownMenuSeparator />
-                <DropdownMenuGroup>
-                  <DropdownMenuItem>
-                    <ShieldIcon />
-                    Privacy & Security
-                  </DropdownMenuItem>
-                </DropdownMenuGroup>
-              </DropdownMenuSubContent>
+            <DropdownMenuSubContent>
+              <DropdownMenuGroup>
+                <DropdownMenuLabel>Preferences</DropdownMenuLabel>
+                <DropdownMenuItem>
+                  <KeyboardIcon />
+                  Keyboard Shortcuts
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <LanguagesIcon />
+                  Language
+                </DropdownMenuItem>
+                <DropdownMenuSub>
+                  <DropdownMenuSubTrigger>
+                    <BellIcon />
+                    Notifications
+                  </DropdownMenuSubTrigger>
+                  <DropdownMenuSubContent>
+                    <DropdownMenuGroup
+                      selectionMode="multiple"
+                      selectedKeys={notifications}
+                      onSelectionChange={setNotifications}
+                    >
+                      <DropdownMenuLabel>Notification Types</DropdownMenuLabel>
+                      <DropdownMenuItem id="push">
+                        <BellIcon />
+                        Push Notifications
+                      </DropdownMenuItem>
+                      <DropdownMenuItem id="email">
+                        <MailIcon />
+                        Email Notifications
+                      </DropdownMenuItem>
+                    </DropdownMenuGroup>
+                  </DropdownMenuSubContent>
+                </DropdownMenuSub>
+              </DropdownMenuGroup>
+              <DropdownMenuSeparator />
+              <DropdownMenuGroup>
+                <DropdownMenuItem>
+                  <ShieldIcon />
+                  Privacy & Security
+                </DropdownMenuItem>
+              </DropdownMenuGroup>
+            </DropdownMenuSubContent>
           </DropdownMenuSub>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />

@@ -1,7 +1,7 @@
 "use client"
 
 import { Button } from "@/examples/react-aria/ui-rtl/button"
-import { Tooltip, TooltipTrigger } from "@/examples/react-aria/ui-rtl/tooltip";
+import { Tooltip, TooltipTrigger } from "@/examples/react-aria/ui-rtl/tooltip"
 
 import {
   useTranslation,
@@ -58,9 +58,7 @@ export function TooltipRtl() {
       <div className="flex flex-wrap justify-center gap-2">
         {physicalSides.map((side) => (
           <TooltipTrigger key={side}>
-            <Button variant="outline">
-              {t[side]}
-            </Button>
+            <Button variant="outline">{t[side]}</Button>
             <Tooltip side={side} dir={dir}>
               {t.content}
             </Tooltip>
@@ -70,9 +68,7 @@ export function TooltipRtl() {
       <div className="flex flex-wrap justify-center gap-2">
         {logicalSides.map((side) => (
           <TooltipTrigger key={side}>
-            <Button variant="outline">
-              {t[side]}
-            </Button>
+            <Button variant="outline">{t[side]}</Button>
             <Tooltip side={side} dir={dir}>
               {t.content}
             </Tooltip>
@@ -80,5 +76,5 @@ export function TooltipRtl() {
         ))}
       </div>
     </div>
-  );
+  )
 }

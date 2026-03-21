@@ -1,5 +1,11 @@
 import { Button } from "@/examples/react-aria/ui/button"
-import { Popover, PopoverDescription, PopoverHeader, PopoverTitle, PopoverTrigger } from "@/examples/react-aria/ui/popover";
+import {
+  Popover,
+  PopoverDescription,
+  PopoverHeader,
+  PopoverTitle,
+  PopoverTrigger,
+} from "@/examples/react-aria/ui/popover"
 
 export function PopoverBasic() {
   return (
@@ -18,5 +24,5 @@ export function PopoverBasic() {
         </Popover>
       </PopoverTrigger>
     </>
-  );
+  )
 }

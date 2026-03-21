@@ -12,14 +12,12 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@/examples/react-aria/ui/dropdown-menu";
+} from "@/examples/react-aria/ui/dropdown-menu"
 
 export function DropdownMenuDemo() {
   return (
     <DropdownMenuTrigger>
-      <Button variant="outline">
-        Open
-      </Button>
+      <Button variant="outline">Open</Button>
       <DropdownMenu className="w-40" align="start">
         <DropdownMenuGroup>
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
@@ -48,7 +46,6 @@ export function DropdownMenuDemo() {
               <DropdownMenuSeparator />
               <DropdownMenuItem>More...</DropdownMenuItem>
             </DropdownMenuSubContent>
-
           </DropdownMenuSub>
           <DropdownMenuItem>
             New Team
@@ -70,5 +67,5 @@ export function DropdownMenuDemo() {
         </DropdownMenuGroup>
       </DropdownMenu>
     </DropdownMenuTrigger>
-  );
+  )
 }

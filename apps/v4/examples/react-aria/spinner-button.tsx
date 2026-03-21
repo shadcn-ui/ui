@@ -17,5 +17,5 @@ export function SpinnerButton() {
         Processing
       </Button>
     </div>
-  );
+  )
 }

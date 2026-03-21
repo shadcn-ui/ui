@@ -54,5 +54,5 @@ export default function AccordionCard() {
         </Accordion>
       </CardContent>
     </Card>
-  );
+  )
 }

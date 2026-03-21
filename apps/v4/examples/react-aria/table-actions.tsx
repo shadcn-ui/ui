@@ -1,5 +1,10 @@
 import { Button } from "@/examples/react-aria/ui/button"
-import { DropdownMenu, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/examples/react-aria/ui/dropdown-menu";
+import {
+  DropdownMenu,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/examples/react-aria/ui/dropdown-menu"
 import {
   Table,
   TableBody,
@@ -83,5 +88,5 @@ export function TableActions() {
         </TableRow>
       </TableBody>
     </Table>
-  );
+  )
 }

@@ -9,14 +9,12 @@ import {
   DropdownMenuSeparator,
   DropdownMenuShortcut,
   DropdownMenuTrigger,
-} from "@/examples/react-aria/ui/dropdown-menu";
+} from "@/examples/react-aria/ui/dropdown-menu"
 
 export function DropdownMenuShortcuts() {
   return (
     <DropdownMenuTrigger>
-      <Button variant="outline">
-        Open
-      </Button>
+      <Button variant="outline">Open</Button>
       <DropdownMenu>
         <DropdownMenuGroup>
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
@@ -40,5 +38,5 @@ export function DropdownMenuShortcuts() {
         </DropdownMenuItem>
       </DropdownMenu>
     </DropdownMenuTrigger>
-  );
+  )
 }

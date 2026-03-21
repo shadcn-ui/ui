@@ -9,7 +9,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/examples/react-aria/ui/sheet";
+} from "@/examples/react-aria/ui/sheet"
 
 export default function SheetDemo() {
   return (
@@ -38,5 +38,5 @@ export default function SheetDemo() {
         </SheetFooter>
       </Sheet>
     </SheetTrigger>
-  );
+  )
 }

@@ -1,5 +1,5 @@
 import { Button } from "@/examples/react-aria/ui/button"
-import { Tooltip, TooltipTrigger } from "@/examples/react-aria/ui/tooltip";
+import { Tooltip, TooltipTrigger } from "@/examples/react-aria/ui/tooltip"
 
 export function TooltipDisabled() {
   return (
@@ -15,5 +15,5 @@ export function TooltipDisabled() {
         </Tooltip>
       </TooltipTrigger>
     </>
-  );
+  )
 }

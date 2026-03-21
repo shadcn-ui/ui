@@ -6,7 +6,7 @@ import {
   InputGroupAddon,
   InputGroupInput,
 } from "@/examples/react-aria/ui/input-group"
-import { Tooltip, TooltipTrigger } from "@/examples/react-aria/ui/tooltip";
+import { Tooltip, TooltipTrigger } from "@/examples/react-aria/ui/tooltip"
 import { AudioLinesIcon, PlusIcon } from "lucide-react"
 
 export function ButtonGroupNested() {
@@ -29,5 +29,5 @@ export function ButtonGroupNested() {
         </InputGroup>
       </ButtonGroup>
     </ButtonGroup>
-  );
+  )
 }

@@ -28,7 +28,11 @@ const items = [
 
 export function AccordionMultiple() {
   return (
-    <Accordion allowsMultipleExpanded className="max-w-lg" defaultExpandedKeys={["notifications"]}>
+    <Accordion
+      allowsMultipleExpanded
+      className="max-w-lg"
+      defaultExpandedKeys={["notifications"]}
+    >
       {items.map((item) => (
         <AccordionItem key={item.value} id={item.value}>
           <AccordionTrigger>{item.trigger}</AccordionTrigger>
@@ -36,5 +40,5 @@ export function AccordionMultiple() {
         </AccordionItem>
       ))}
     </Accordion>
-  );
+  )
 }

@@ -7,5 +7,5 @@ export function SwitchDisabled() {
       <Switch id="switch-disabled-unchecked" isDisabled />
       <FieldLabel htmlFor="switch-disabled-unchecked">Disabled</FieldLabel>
     </Field>
-  );
+  )
 }

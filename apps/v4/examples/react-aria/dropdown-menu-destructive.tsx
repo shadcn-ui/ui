@@ -7,15 +7,13 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/examples/react-aria/ui/dropdown-menu";
+} from "@/examples/react-aria/ui/dropdown-menu"
 import { PencilIcon, ShareIcon, TrashIcon } from "lucide-react"
 
 export function DropdownMenuDestructive() {
   return (
     <DropdownMenuTrigger>
-      <Button variant="outline">
-        Actions
-      </Button>
+      <Button variant="outline">Actions</Button>
       <DropdownMenu>
         <DropdownMenuGroup>
           <DropdownMenuItem>
@@ -36,5 +34,5 @@ export function DropdownMenuDestructive() {
         </DropdownMenuGroup>
       </DropdownMenu>
     </DropdownMenuTrigger>
-  );
+  )
 }

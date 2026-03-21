@@ -38,5 +38,5 @@ export function RadioGroupInvalid() {
         </Field>
       </RadioGroup>
     </FieldSet>
-  );
+  )
 }

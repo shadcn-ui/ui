@@ -19,7 +19,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/examples/react-aria/ui-rtl/dropdown-menu";
+} from "@/examples/react-aria/ui-rtl/dropdown-menu"
 import {
   Sidebar,
   SidebarContent,
@@ -346,7 +346,9 @@ function SidebarContentInner({
                 >
                   <SidebarMenuItem>
                     <CollapsibleTrigger
-                      render={props => <SidebarMenuButton {...props} tooltip={item.title} />}
+                      render={(props) => (
+                        <SidebarMenuButton {...props} tooltip={item.title} />
+                      )}
                     >
                       {item.icon && <item.icon />}
                       <span>{item.title}</span>
@@ -426,7 +428,8 @@ function SidebarContentInner({
               <DropdownMenuTrigger>
                 <SidebarMenuButton
                   size="lg"
-                  className="data-open:bg-sidebar-accent data-open:text-sidebar-accent-foreground">
+                  className="data-open:bg-sidebar-accent data-open:text-sidebar-accent-foreground"
+                >
                   <Avatar className="rounded-lg">
                     <AvatarImage src={user.avatar} alt={user.name} />
                     <AvatarFallback className="rounded-lg">CN</AvatarFallback>
@@ -509,5 +512,5 @@ function SidebarContentInner({
         </header>
       </SidebarInset>
     </>
-  );
+  )
 }

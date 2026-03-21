@@ -12,7 +12,7 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/examples/react-aria/ui/dropdown-menu";
+} from "@/examples/react-aria/ui/dropdown-menu"
 
 export function AvatarDropdown() {
   return (
@@ -35,5 +35,5 @@ export function AvatarDropdown() {
         </DropdownMenuGroup>
       </DropdownMenu>
     </DropdownMenuTrigger>
-  );
+  )
 }

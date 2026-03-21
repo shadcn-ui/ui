@@ -17,5 +17,5 @@ export function ToggleGroupDisabled() {
         <Underline />
       </ToggleGroupItem>
     </ToggleGroup>
-  );
+  )
 }

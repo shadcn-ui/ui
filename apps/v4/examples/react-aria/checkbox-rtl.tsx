@@ -92,5 +92,5 @@ export function CheckboxRtl() {
         </Field>
       </FieldLabel>
     </FieldGroup>
-  );
+  )
 }

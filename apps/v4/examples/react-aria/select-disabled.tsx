@@ -13,7 +13,7 @@ export function SelectDisabled() {
     { label: "Banana", value: "banana" },
     { label: "Blueberry", value: "blueberry" },
     { label: "Grapes", value: "grapes", disabled: true },
-    { label: "Pineapple", value: "pineapple" }
+    { label: "Pineapple", value: "pineapple" },
   ]
   return (
     <Select isDisabled placeholder="Select a fruit">
@@ -34,5 +34,5 @@ export function SelectDisabled() {
         </SelectGroup>
       </SelectContent>
     </Select>
-  );
+  )
 }

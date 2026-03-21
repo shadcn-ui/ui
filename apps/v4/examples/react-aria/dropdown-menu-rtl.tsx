@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-import type { Selection } from "react-aria-components"
 import { Button } from "@/examples/react-aria/ui-rtl/button"
 import {
   DropdownMenu,
@@ -16,6 +15,7 @@ import {
   DropdownMenuTrigger,
 } from "@/examples/react-aria/ui-rtl/dropdown-menu"
 import { CreditCardIcon, SettingsIcon, UserIcon } from "lucide-react"
+import type { Selection } from "react-aria-components"
 
 import {
   useTranslation,
@@ -124,9 +124,7 @@ export function DropdownMenuRtl() {
 
   return (
     <DropdownMenuTrigger>
-      <Button variant="outline">
-        {t.open}
-      </Button>
+      <Button variant="outline">{t.open}</Button>
       <DropdownMenu
         align={dir === "rtl" ? "end" : "start"}
         dir={dir}
@@ -136,25 +134,25 @@ export function DropdownMenuRtl() {
         <DropdownMenuGroup>
           <DropdownMenuSub>
             <DropdownMenuSubTrigger>{t.account}</DropdownMenuSubTrigger>
-              <DropdownMenuSubContent
-                dir={dir}
-                data-lang={dir === "rtl" ? language : undefined}
-              >
-                <DropdownMenuGroup>
-                  <DropdownMenuItem>
-                    <UserIcon />
-                    {t.profile}
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <CreditCardIcon />
-                    {t.billing}
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <SettingsIcon />
-                    {t.settings}
-                  </DropdownMenuItem>
-                </DropdownMenuGroup>
-              </DropdownMenuSubContent>
+            <DropdownMenuSubContent
+              dir={dir}
+              data-lang={dir === "rtl" ? language : undefined}
+            >
+              <DropdownMenuGroup>
+                <DropdownMenuItem>
+                  <UserIcon />
+                  {t.profile}
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <CreditCardIcon />
+                  {t.billing}
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <SettingsIcon />
+                  {t.settings}
+                </DropdownMenuItem>
+              </DropdownMenuGroup>
+            </DropdownMenuSubContent>
           </DropdownMenuSub>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
@@ -163,27 +161,27 @@ export function DropdownMenuRtl() {
           <DropdownMenuItem>{t.team}</DropdownMenuItem>
           <DropdownMenuSub>
             <DropdownMenuSubTrigger>{t.inviteUsers}</DropdownMenuSubTrigger>
-              <DropdownMenuSubContent
-                dir={dir}
-                data-lang={dir === "rtl" ? language : undefined}
-              >
-                <DropdownMenuItem>{t.email}</DropdownMenuItem>
-                <DropdownMenuItem>{t.message}</DropdownMenuItem>
-                <DropdownMenuSub>
-                  <DropdownMenuSubTrigger>{t.more}</DropdownMenuSubTrigger>
-                    <DropdownMenuSubContent
-                      dir={dir}
-                      data-lang={dir === "rtl" ? language : undefined}
-                    >
-                      <DropdownMenuItem>{t.calendar}</DropdownMenuItem>
-                      <DropdownMenuItem>{t.chat}</DropdownMenuItem>
-                      <DropdownMenuSeparator />
-                      <DropdownMenuItem>{t.webhook}</DropdownMenuItem>
-                    </DropdownMenuSubContent>
-                </DropdownMenuSub>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem>{t.advanced}</DropdownMenuItem>
-              </DropdownMenuSubContent>
+            <DropdownMenuSubContent
+              dir={dir}
+              data-lang={dir === "rtl" ? language : undefined}
+            >
+              <DropdownMenuItem>{t.email}</DropdownMenuItem>
+              <DropdownMenuItem>{t.message}</DropdownMenuItem>
+              <DropdownMenuSub>
+                <DropdownMenuSubTrigger>{t.more}</DropdownMenuSubTrigger>
+                <DropdownMenuSubContent
+                  dir={dir}
+                  data-lang={dir === "rtl" ? language : undefined}
+                >
+                  <DropdownMenuItem>{t.calendar}</DropdownMenuItem>
+                  <DropdownMenuItem>{t.chat}</DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem>{t.webhook}</DropdownMenuItem>
+                </DropdownMenuSubContent>
+              </DropdownMenuSub>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem>{t.advanced}</DropdownMenuItem>
+            </DropdownMenuSubContent>
           </DropdownMenuSub>
           <DropdownMenuItem>
             {t.newTeam}
@@ -191,28 +189,26 @@ export function DropdownMenuRtl() {
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuGroup selectionMode="multiple" selectedKeys={selectedKeys} onSelectionChange={setSelectedKeys}>
+        <DropdownMenuGroup
+          selectionMode="multiple"
+          selectedKeys={selectedKeys}
+          onSelectionChange={setSelectedKeys}
+        >
           <DropdownMenuLabel>{t.view}</DropdownMenuLabel>
-          <DropdownMenuItem id="status-bar">
-            {t.statusBar}
-          </DropdownMenuItem>
-          <DropdownMenuItem id="activity-bar">
-            {t.activityBar}
-          </DropdownMenuItem>
-          <DropdownMenuItem id="panel">
-            {t.panel}
-          </DropdownMenuItem>
+          <DropdownMenuItem id="status-bar">{t.statusBar}</DropdownMenuItem>
+          <DropdownMenuItem id="activity-bar">{t.activityBar}</DropdownMenuItem>
+          <DropdownMenuItem id="panel">{t.panel}</DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuGroup selectionMode="single" selectedKeys={[position]} onSelectionChange={keys => setPosition([...keys][0] as string)}>
+        <DropdownMenuGroup
+          selectionMode="single"
+          selectedKeys={[position]}
+          onSelectionChange={(keys) => setPosition([...keys][0] as string)}
+        >
           <DropdownMenuLabel>{t.position}</DropdownMenuLabel>
           <DropdownMenuItem id="top">{t.top}</DropdownMenuItem>
-          <DropdownMenuItem id="bottom">
-            {t.bottom}
-          </DropdownMenuItem>
-          <DropdownMenuItem id="right">
-            {t.right}
-          </DropdownMenuItem>
+          <DropdownMenuItem id="bottom">{t.bottom}</DropdownMenuItem>
+          <DropdownMenuItem id="right">{t.right}</DropdownMenuItem>
           <DropdownMenuItem id="left">{t.left}</DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />

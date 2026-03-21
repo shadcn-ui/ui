@@ -7,14 +7,12 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/examples/react-aria/ui/dialog";
+} from "@/examples/react-aria/ui/dialog"
 
 export function DialogNoCloseButton() {
   return (
     <DialogTrigger>
-      <Button variant="outline">
-        No Close Button
-      </Button>
+      <Button variant="outline">No Close Button</Button>
       <Dialog showCloseButton={false}>
         <DialogHeader>
           <DialogTitle>No Close Button</DialogTitle>
@@ -25,5 +23,5 @@ export function DialogNoCloseButton() {
         </DialogHeader>
       </Dialog>
     </DialogTrigger>
-  );
+  )
 }

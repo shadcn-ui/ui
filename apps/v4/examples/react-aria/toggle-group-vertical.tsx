@@ -22,5 +22,5 @@ export function ToggleGroupVertical() {
         <UnderlineIcon />
       </ToggleGroupItem>
     </ToggleGroup>
-  );
+  )
 }

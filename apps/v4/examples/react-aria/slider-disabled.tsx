@@ -9,5 +9,5 @@ export function SliderDisabled() {
       isDisabled
       className="mx-auto w-full max-w-xs"
     />
-  );
+  )
 }

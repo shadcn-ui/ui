@@ -4,24 +4,28 @@ import * as React from "react"
 import { Button } from "@/examples/react-aria/ui/button"
 import {
   DropdownMenu,
-  DropdownMenuItem,
   DropdownMenuGroup,
+  DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from "@/examples/react-aria/ui/dropdown-menu"
 import { BellIcon, MailIcon, MessageSquareIcon } from "lucide-react"
-import type {Selection} from 'react-aria-components'
+import type { Selection } from "react-aria-components"
 
 export function DropdownMenuCheckboxesIcons() {
-  const [notifications, setNotifications] = React.useState<Selection>(new Set(['email', 'push']))
+  const [notifications, setNotifications] = React.useState<Selection>(
+    new Set(["email", "push"])
+  )
 
   return (
     <DropdownMenuTrigger>
-      <Button variant="outline">
-        Notifications
-      </Button>
+      <Button variant="outline">Notifications</Button>
       <DropdownMenu className="w-48">
-        <DropdownMenuGroup selectionMode="multiple" selectedKeys={notifications} onSelectionChange={setNotifications}>
+        <DropdownMenuGroup
+          selectionMode="multiple"
+          selectedKeys={notifications}
+          onSelectionChange={setNotifications}
+        >
           <DropdownMenuLabel>Notification Preferences</DropdownMenuLabel>
           <DropdownMenuItem id="email">
             <MailIcon />

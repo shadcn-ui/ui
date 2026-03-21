@@ -49,5 +49,5 @@ export default function FieldGroupExample() {
         </FieldGroup>
       </FieldSet>
     </FieldGroup>
-  );
+  )
 }

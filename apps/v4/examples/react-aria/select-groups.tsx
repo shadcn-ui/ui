@@ -46,5 +46,5 @@ export function SelectGroups() {
         </SelectGroup>
       </SelectContent>
     </Select>
-  );
+  )
 }

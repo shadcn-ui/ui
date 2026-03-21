@@ -9,7 +9,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/examples/react-aria/ui-rtl/dialog";
+} from "@/examples/react-aria/ui-rtl/dialog"
 import { Field, FieldGroup } from "@/examples/react-aria/ui-rtl/field"
 import { Input } from "@/examples/react-aria/ui-rtl/input"
 import { Label } from "@/examples/react-aria/ui-rtl/label"
@@ -66,9 +66,7 @@ export function DialogRtl() {
   return (
     <DialogTrigger>
       <form>
-        <Button variant="outline">
-          {t.openDialog}
-        </Button>
+        <Button variant="outline">{t.openDialog}</Button>
         <Dialog
           className="sm:max-w-sm"
           dir={dir}
@@ -89,13 +87,11 @@ export function DialogRtl() {
             </Field>
           </FieldGroup>
           <DialogFooter>
-            <DialogClose variant="outline">
-              {t.cancel}
-            </DialogClose>
+            <DialogClose variant="outline">{t.cancel}</DialogClose>
             <Button type="submit">{t.saveChanges}</Button>
           </DialogFooter>
         </Dialog>
       </form>
     </DialogTrigger>
-  );
+  )
 }

@@ -126,13 +126,21 @@ export function RadioFields() {
         <FieldLegend variant="label">Disabled Radio Group</FieldLegend>
         <RadioGroup isDisabled>
           <Field data-disabled orientation="horizontal">
-            <RadioGroupItem value="disabled1" id="radio-disabled-1" isDisabled />
+            <RadioGroupItem
+              value="disabled1"
+              id="radio-disabled-1"
+              isDisabled
+            />
             <FieldLabel htmlFor="radio-disabled-1">
               Disabled Option 1
             </FieldLabel>
           </Field>
           <Field data-disabled orientation="horizontal">
-            <RadioGroupItem value="disabled2" id="radio-disabled-2" isDisabled />
+            <RadioGroupItem
+              value="disabled2"
+              id="radio-disabled-2"
+              isDisabled
+            />
             <FieldLabel htmlFor="radio-disabled-2">
               Disabled Option 2
             </FieldLabel>
@@ -140,5 +148,5 @@ export function RadioFields() {
         </RadioGroup>
       </FieldSet>
     </FieldGroup>
-  );
+  )
 }

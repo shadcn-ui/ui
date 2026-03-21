@@ -154,5 +154,5 @@ export function TabsRtl() {
         </Card>
       </TabsContent>
     </Tabs>
-  );
+  )
 }

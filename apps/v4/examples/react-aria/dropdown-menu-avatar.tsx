@@ -12,7 +12,7 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/examples/react-aria/ui/dropdown-menu";
+} from "@/examples/react-aria/ui/dropdown-menu"
 import {
   BadgeCheckIcon,
   BellIcon,
@@ -51,5 +51,5 @@ export function DropdownMenuAvatar() {
         </DropdownMenuItem>
       </DropdownMenu>
     </DropdownMenuTrigger>
-  );
+  )
 }

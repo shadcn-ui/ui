@@ -74,5 +74,5 @@ export function FieldCheckbox() {
         </FieldContent>
       </Field>
     </FieldGroup>
-  );
+  )
 }

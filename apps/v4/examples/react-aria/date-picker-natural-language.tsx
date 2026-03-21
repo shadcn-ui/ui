@@ -9,7 +9,7 @@ import {
   InputGroupButton,
   InputGroupInput,
 } from "@/examples/react-aria/ui/input-group"
-import { Popover, PopoverTrigger } from "@/examples/react-aria/ui/popover";
+import { Popover, PopoverTrigger } from "@/examples/react-aria/ui/popover"
 import { parseDate } from "chrono-node"
 import { CalendarIcon } from "lucide-react"
 
@@ -56,7 +56,12 @@ export function DatePickerNaturalLanguage() {
         />
         <InputGroupAddon align="inline-end">
           <PopoverTrigger isOpen={open} onOpenChange={setOpen}>
-            <InputGroupButton id="date-picker" variant="ghost" size="icon-xs" aria-label="Select date">
+            <InputGroupButton
+              id="date-picker"
+              variant="ghost"
+              size="icon-xs"
+              aria-label="Select date"
+            >
               <CalendarIcon />
               <span className="sr-only">Select date</span>
             </InputGroupButton>
@@ -85,5 +90,5 @@ export function DatePickerNaturalLanguage() {
         <span className="font-medium">{formatDate(date)}</span>.
       </div>
     </Field>
-  );
+  )
 }

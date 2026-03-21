@@ -53,5 +53,5 @@ export function ToggleGroupRtl() {
         {t.cards}
       </ToggleGroupItem>
     </ToggleGroup>
-  );
+  )
 }

@@ -7,7 +7,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/examples/react-aria/ui/sheet";
+} from "@/examples/react-aria/ui/sheet"
 
 const SHEET_SIDES = ["top", "right", "bottom", "left"] as const
 
@@ -46,13 +46,11 @@ export default function SheetSide() {
             </div>
             <SheetFooter>
               <Button type="submit">Save changes</Button>
-              <SheetClose variant="outline">
-                Cancel
-              </SheetClose>
+              <SheetClose variant="outline">Cancel</SheetClose>
             </SheetFooter>
           </Sheet>
         </SheetTrigger>
       ))}
     </div>
-  );
+  )
 }

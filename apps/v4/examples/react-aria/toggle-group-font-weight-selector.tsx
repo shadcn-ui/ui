@@ -64,5 +64,5 @@ export function ToggleGroupFontWeightSelector() {
         to set the font weight.
       </FieldDescription>
     </Field>
-  );
+  )
 }

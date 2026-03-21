@@ -1,7 +1,13 @@
 "use client"
 
 import { Button } from "@/examples/react-aria/ui-rtl/button"
-import { Popover, PopoverDescription, PopoverHeader, PopoverTitle, PopoverTrigger } from "@/examples/react-aria/ui-rtl/popover";
+import {
+  Popover,
+  PopoverDescription,
+  PopoverHeader,
+  PopoverTitle,
+  PopoverTrigger,
+} from "@/examples/react-aria/ui-rtl/popover"
 
 import {
   useTranslation,
@@ -61,9 +67,7 @@ export function PopoverRtl() {
       <div className="flex flex-wrap justify-center gap-2">
         {physicalSides.map((side) => (
           <PopoverTrigger key={side}>
-            <Button variant="outline">
-              {t[side]}
-            </Button>
+            <Button variant="outline">{t[side]}</Button>
             <Popover side={side} dir={dir}>
               <PopoverHeader>
                 <PopoverTitle>{t.title}</PopoverTitle>
@@ -76,9 +80,7 @@ export function PopoverRtl() {
       <div className="flex flex-wrap justify-center gap-2">
         {logicalSides.map((side) => (
           <PopoverTrigger key={side}>
-            <Button variant="outline">
-              {t[side]}
-            </Button>
+            <Button variant="outline">{t[side]}</Button>
             <Popover side={side} dir={dir}>
               <PopoverHeader>
                 <PopoverTitle>{t.title}</PopoverTitle>
@@ -89,5 +91,5 @@ export function PopoverRtl() {
         ))}
       </div>
     </div>
-  );
+  )
 }

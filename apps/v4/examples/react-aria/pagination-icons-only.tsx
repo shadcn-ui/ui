@@ -45,5 +45,5 @@ export function PaginationIconsOnly() {
         </PaginationContent>
       </Pagination>
     </div>
-  );
+  )
 }

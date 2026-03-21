@@ -12,7 +12,7 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@/examples/react-aria/ui/dropdown-menu";
+} from "@/examples/react-aria/ui/dropdown-menu"
 import {
   ArchiveIcon,
   ArrowLeftIcon,
@@ -75,16 +75,14 @@ export default function ButtonGroupDemo() {
                   <TagIcon />
                   Label As...
                 </DropdownMenuSubTrigger>
-                <DropdownMenuSubContent selectionMode="single" selectedKeys={[label]} onSelectionChange={keys => setLabel([...keys][0] as string)}>
-                  <DropdownMenuItem id="personal">
-                    Personal
-                  </DropdownMenuItem>
-                  <DropdownMenuItem id="work">
-                    Work
-                  </DropdownMenuItem>
-                  <DropdownMenuItem id="other">
-                    Other
-                  </DropdownMenuItem>
+                <DropdownMenuSubContent
+                  selectionMode="single"
+                  selectedKeys={[label]}
+                  onSelectionChange={(keys) => setLabel([...keys][0] as string)}
+                >
+                  <DropdownMenuItem id="personal">Personal</DropdownMenuItem>
+                  <DropdownMenuItem id="work">Work</DropdownMenuItem>
+                  <DropdownMenuItem id="other">Other</DropdownMenuItem>
                 </DropdownMenuSubContent>
               </DropdownMenuSub>
             </DropdownMenuGroup>
@@ -99,5 +97,5 @@ export default function ButtonGroupDemo() {
         </DropdownMenuTrigger>
       </ButtonGroup>
     </ButtonGroup>
-  );
+  )
 }

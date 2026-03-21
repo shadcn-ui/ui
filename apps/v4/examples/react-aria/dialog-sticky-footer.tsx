@@ -7,14 +7,12 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/examples/react-aria/ui/dialog";
+} from "@/examples/react-aria/ui/dialog"
 
 export function DialogStickyFooter() {
   return (
     <DialogTrigger>
-      <Button variant="outline">
-        Sticky Footer
-      </Button>
+      <Button variant="outline">Sticky Footer</Button>
       <Dialog>
         <DialogHeader>
           <DialogTitle>Sticky Footer</DialogTitle>
@@ -41,5 +39,5 @@ export function DialogStickyFooter() {
         </DialogFooter>
       </Dialog>
     </DialogTrigger>
-  );
+  )
 }

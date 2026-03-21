@@ -7,7 +7,7 @@ import {
   InputGroupButton,
   InputGroupInput,
 } from "@/examples/react-aria/ui/input-group"
-import { Popover, PopoverTrigger } from "@/examples/react-aria/ui/popover";
+import { Popover, PopoverTrigger } from "@/examples/react-aria/ui/popover"
 import {
   IconCheck,
   IconCopy,
@@ -75,5 +75,5 @@ export default function InputGroupButtonExample() {
         </InputGroupAddon>
       </InputGroup>
     </div>
-  );
+  )
 }

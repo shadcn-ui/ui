@@ -4,7 +4,7 @@ import * as React from "react"
 import { Button } from "@/examples/react-aria/ui/button"
 import { Calendar } from "@/examples/react-aria/ui/calendar"
 import { Field, FieldLabel } from "@/examples/react-aria/ui/field"
-import { Popover, PopoverTrigger } from "@/examples/react-aria/ui/popover";
+import { Popover, PopoverTrigger } from "@/examples/react-aria/ui/popover"
 import { addDays, format } from "date-fns"
 import { CalendarIcon } from "lucide-react"
 import { type DateRange } from "react-day-picker"
@@ -22,7 +22,8 @@ export function DatePickerWithRange() {
         <Button
           variant="outline"
           id="date-picker-range"
-          className="justify-start px-2.5 font-normal">
+          className="justify-start px-2.5 font-normal"
+        >
           <CalendarIcon data-icon="inline-start" />
           {date?.from ? (
             date.to ? (
@@ -48,5 +49,5 @@ export function DatePickerWithRange() {
         </Popover>
       </PopoverTrigger>
     </Field>
-  );
+  )
 }

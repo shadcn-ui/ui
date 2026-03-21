@@ -1,4 +1,4 @@
-import { Button, LinkButton } from "@/examples/react-aria/ui/button";
+import { Button, LinkButton } from "@/examples/react-aria/ui/button"
 import {
   Empty,
   EmptyContent,
@@ -24,9 +24,7 @@ export function EmptyInCard() {
       </EmptyHeader>
       <EmptyContent>
         <div className="flex gap-2">
-          <LinkButton href="#">
-            Create project
-          </LinkButton>
+          <LinkButton href="#">Create project</LinkButton>
           <Button variant="outline">Import project</Button>
         </div>
         <LinkButton href="#" variant="link" className="text-muted-foreground">
@@ -34,5 +32,5 @@ export function EmptyInCard() {
         </LinkButton>
       </EmptyContent>
     </Empty>
-  );
+  )
 }

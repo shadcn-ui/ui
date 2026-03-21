@@ -49,5 +49,5 @@ export default function CheckboxDemo() {
         </Field>
       </FieldLabel>
     </FieldGroup>
-  );
+  )
 }

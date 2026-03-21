@@ -86,5 +86,5 @@ export function CollapsibleRtl() {
         </div>
       </CollapsibleContent>
     </Collapsible>
-  );
+  )
 }

@@ -224,7 +224,8 @@ export function DataTableDemo() {
                       : [...keys].map((key) => [key, true])
                   )
                 )
-              }>
+              }
+            >
               {table
                 .getAllColumns()
                 .filter((column) => column.getCanHide())

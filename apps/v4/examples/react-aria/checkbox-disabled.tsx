@@ -15,5 +15,5 @@ export function CheckboxDisabled() {
         </FieldLabel>
       </Field>
     </FieldGroup>
-  );
+  )
 }

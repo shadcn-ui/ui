@@ -87,5 +87,5 @@ export function AccordionRtl() {
         </AccordionItem>
       ))}
     </Accordion>
-  );
+  )
 }

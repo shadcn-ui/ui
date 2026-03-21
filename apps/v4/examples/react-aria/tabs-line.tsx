@@ -9,5 +9,5 @@ export function TabsLine() {
         <TabsTrigger id="reports">Reports</TabsTrigger>
       </TabsList>
     </Tabs>
-  );
+  )
 }

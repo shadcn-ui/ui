@@ -71,7 +71,8 @@ export function CollapsibleFileTree() {
             slot="trigger"
             variant="ghost"
             size="sm"
-            className="group w-full justify-start transition-none hover:bg-accent hover:text-accent-foreground">
+            className="group w-full justify-start transition-none hover:bg-accent hover:text-accent-foreground"
+          >
             <ChevronRightIcon className="transition-transform group-data-[state=open]:rotate-90" />
             <FolderIcon />
             {fileItem.name}
@@ -82,7 +83,7 @@ export function CollapsibleFileTree() {
             </div>
           </CollapsibleContent>
         </Collapsible>
-      );
+      )
     }
     return (
       <Button
@@ -113,5 +114,5 @@ export function CollapsibleFileTree() {
         </div>
       </CardContent>
     </Card>
-  );
+  )
 }

@@ -2,7 +2,13 @@
 
 import * as React from "react"
 import { Button } from "@/examples/react-aria/ui/button"
-import { Dialog, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/examples/react-aria/ui/dialog";
+import {
+  Dialog,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/examples/react-aria/ui/dialog"
 import {
   Drawer,
   DrawerClose,
@@ -26,9 +32,7 @@ export function DrawerDialogDemo() {
   if (isDesktop) {
     return (
       <DialogTrigger isOpen={open} onOpenChange={setOpen}>
-        <Button variant="outline">
-          Edit Profile
-        </Button>
+        <Button variant="outline">Edit Profile</Button>
         <Dialog className="sm:max-w-[425px]">
           <DialogHeader>
             <DialogTitle>Edit profile</DialogTitle>
@@ -40,7 +44,7 @@ export function DrawerDialogDemo() {
           <ProfileForm />
         </Dialog>
       </DialogTrigger>
-    );
+    )
   }
 
   return (

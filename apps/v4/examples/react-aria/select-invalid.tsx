@@ -11,7 +11,7 @@ import {
 const items = [
   { label: "Apple", value: "apple" },
   { label: "Banana", value: "banana" },
-  { label: "Blueberry", value: "blueberry" }
+  { label: "Blueberry", value: "blueberry" },
 ]
 
 export function SelectInvalid() {
@@ -34,5 +34,5 @@ export function SelectInvalid() {
       </Select>
       <FieldError>Please select a fruit.</FieldError>
     </Field>
-  );
+  )
 }

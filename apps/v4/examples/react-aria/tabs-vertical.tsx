@@ -9,5 +9,5 @@ export function TabsVertical() {
         <TabsTrigger id="notifications">Notifications</TabsTrigger>
       </TabsList>
     </Tabs>
-  );
+  )
 }

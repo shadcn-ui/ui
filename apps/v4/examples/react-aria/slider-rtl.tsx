@@ -34,5 +34,5 @@ export function SliderRtl() {
       className="mx-auto w-full max-w-xs"
       dir={dir}
     />
-  );
+  )
 }

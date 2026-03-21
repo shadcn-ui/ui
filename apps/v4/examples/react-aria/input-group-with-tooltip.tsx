@@ -4,7 +4,11 @@ import {
   ButtonGroup,
   ButtonGroupText,
 } from "@/examples/react-aria/ui/button-group"
-import { DropdownMenu, DropdownMenuItem, DropdownMenuTrigger } from "@/examples/react-aria/ui/dropdown-menu";
+import {
+  DropdownMenu,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/examples/react-aria/ui/dropdown-menu"
 import {
   Field,
   FieldDescription,
@@ -17,8 +21,14 @@ import {
   InputGroupButton,
   InputGroupInput,
 } from "@/examples/react-aria/ui/input-group"
-import { Popover, PopoverDescription, PopoverHeader, PopoverTitle, PopoverTrigger } from "@/examples/react-aria/ui/popover";
-import { Tooltip, TooltipTrigger } from "@/examples/react-aria/ui/tooltip";
+import {
+  Popover,
+  PopoverDescription,
+  PopoverHeader,
+  PopoverTitle,
+  PopoverTrigger,
+} from "@/examples/react-aria/ui/popover"
+import { Tooltip, TooltipTrigger } from "@/examples/react-aria/ui/tooltip"
 import { ChevronDownIcon, InfoIcon, StarIcon } from "lucide-react"
 import { toast } from "sonner"
 
@@ -134,5 +144,5 @@ export function InputGroupWithTooltip({
         </Field>
       </FieldGroup>
     </>
-  );
+  )
 }

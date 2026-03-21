@@ -180,9 +180,7 @@ export function DataTableRtl() {
               table.getIsAllPageRowsSelected() ||
               (table.getIsSomePageRowsSelected() ? true : false)
             }
-            onChange={(value) =>
-              table.toggleAllPageRowsSelected(!!value)
-            }
+            onChange={(value) => table.toggleAllPageRowsSelected(!!value)}
             aria-label={t.selectAll}
           />
         ),
@@ -335,7 +333,8 @@ export function DataTableRtl() {
                       : [...keys].map((key) => [key, true])
                   )
                 )
-              }>
+              }
+            >
               {table
                 .getAllColumns()
                 .filter((column) => column.getCanHide())

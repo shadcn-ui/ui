@@ -25,7 +25,10 @@ export default function ButtonGroupSelect() {
   return (
     <ButtonGroup>
       <ButtonGroup>
-        <Select value={currency} onChange={(value) => setCurrency(value as string)}>
+        <Select
+          value={currency}
+          onChange={(value) => setCurrency(value as string)}
+        >
           <SelectTrigger className="font-mono">{currency}</SelectTrigger>
           <SelectContent align="start">
             <SelectGroup>
@@ -46,5 +49,5 @@ export default function ButtonGroupSelect() {
         </Button>
       </ButtonGroup>
     </ButtonGroup>
-  );
+  )
 }

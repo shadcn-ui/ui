@@ -9,7 +9,12 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/examples/react-aria/ui-rtl/breadcrumb"
-import { DropdownMenu, DropdownMenuGroup, DropdownMenuItem, DropdownMenuTrigger } from "@/examples/react-aria/ui-rtl/dropdown-menu";
+import {
+  DropdownMenu,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/examples/react-aria/ui-rtl/dropdown-menu"
 import { ChevronDownIcon, DotIcon } from "lucide-react"
 
 import {
@@ -92,5 +97,5 @@ export function BreadcrumbRtl() {
         </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>
-  );
+  )
 }

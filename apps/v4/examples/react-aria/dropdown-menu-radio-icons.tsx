@@ -5,10 +5,10 @@ import { Button } from "@/examples/react-aria/ui/button"
 import {
   DropdownMenu,
   DropdownMenuGroup,
-  DropdownMenuLabel,
   DropdownMenuItem,
+  DropdownMenuLabel,
   DropdownMenuTrigger,
-} from "@/examples/react-aria/ui/dropdown-menu";
+} from "@/examples/react-aria/ui/dropdown-menu"
 import { Building2Icon, CreditCardIcon, WalletIcon } from "lucide-react"
 
 export function DropdownMenuRadioIcons() {
@@ -16,11 +16,13 @@ export function DropdownMenuRadioIcons() {
 
   return (
     <DropdownMenuTrigger>
-      <Button variant="outline">
-        Payment Method
-      </Button>
+      <Button variant="outline">Payment Method</Button>
       <DropdownMenu className="min-w-56">
-        <DropdownMenuGroup selectionMode="single" selectedKeys={[paymentMethod]} onSelectionChange={keys => setPaymentMethod([...keys][0] as string)}>
+        <DropdownMenuGroup
+          selectionMode="single"
+          selectedKeys={[paymentMethod]}
+          onSelectionChange={(keys) => setPaymentMethod([...keys][0] as string)}
+        >
           <DropdownMenuLabel>Select Payment Method</DropdownMenuLabel>
           <DropdownMenuItem id="card">
             <CreditCardIcon />
@@ -37,5 +39,5 @@ export function DropdownMenuRadioIcons() {
         </DropdownMenuGroup>
       </DropdownMenu>
     </DropdownMenuTrigger>
-  );
+  )
 }

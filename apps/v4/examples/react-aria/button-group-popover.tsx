@@ -5,7 +5,13 @@ import {
   FieldDescription,
   FieldLabel,
 } from "@/examples/react-aria/ui/field"
-import { Popover, PopoverDescription, PopoverHeader, PopoverTitle, PopoverTrigger } from "@/examples/react-aria/ui/popover";
+import {
+  Popover,
+  PopoverDescription,
+  PopoverHeader,
+  PopoverTitle,
+  PopoverTrigger,
+} from "@/examples/react-aria/ui/popover"
 import { Textarea } from "@/examples/react-aria/ui/textarea"
 import { BotIcon, ChevronDownIcon } from "lucide-react"
 
@@ -42,5 +48,5 @@ export default function ButtonGroupPopover() {
         </Popover>
       </PopoverTrigger>
     </ButtonGroup>
-  );
+  )
 }

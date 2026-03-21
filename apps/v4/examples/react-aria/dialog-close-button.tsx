@@ -7,7 +7,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/examples/react-aria/ui/dialog";
+} from "@/examples/react-aria/ui/dialog"
 import { Input } from "@/examples/react-aria/ui/input"
 import { Label } from "@/examples/react-aria/ui/label"
 
@@ -39,5 +39,5 @@ export function DialogCloseButton() {
         </DialogFooter>
       </Dialog>
     </DialogTrigger>
-  );
+  )
 }

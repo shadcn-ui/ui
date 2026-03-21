@@ -20,7 +20,7 @@ const items = [
   { label: "Customer Support", value: "support" },
   { label: "Human Resources", value: "hr" },
   { label: "Finance", value: "finance" },
-  { label: "Operations", value: "operations" }
+  { label: "Operations", value: "operations" },
 ]
 
 export default function FieldSelect() {
@@ -45,5 +45,5 @@ export default function FieldSelect() {
         Select your department or area of work.
       </FieldDescription>
     </Field>
-  );
+  )
 }

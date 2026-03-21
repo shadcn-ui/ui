@@ -43,5 +43,5 @@ export default function AccordionBorders() {
         </AccordionItem>
       ))}
     </Accordion>
-  );
+  )
 }

@@ -29,5 +29,5 @@ export default function FieldSlider() {
         aria-label="Price Range"
       />
     </Field>
-  );
+  )
 }

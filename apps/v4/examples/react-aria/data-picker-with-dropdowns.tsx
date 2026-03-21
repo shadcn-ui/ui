@@ -4,7 +4,7 @@ import * as React from "react"
 import { Button } from "@/examples/react-aria/ui/button"
 import { Calendar } from "@/examples/react-aria/ui/calendar"
 import { Field, FieldLabel } from "@/examples/react-aria/ui/field"
-import { Popover, PopoverTrigger } from "@/examples/react-aria/ui/popover";
+import { Popover, PopoverTrigger } from "@/examples/react-aria/ui/popover"
 import { format } from "date-fns"
 import { ChevronDownIcon } from "lucide-react"
 
@@ -21,7 +21,8 @@ export function DataPickerWithDropdowns() {
         <Button
           variant="outline"
           id="date-picker-with-dropdowns-desktop"
-          className="justify-start px-2.5 font-normal">
+          className="justify-start px-2.5 font-normal"
+        >
           <ChevronDownIcon className="ml-auto" />
           {date ? format(date, "PPP") : <span>Pick a date</span>}
         </Button>
@@ -45,5 +46,5 @@ export function DataPickerWithDropdowns() {
         </Popover>
       </PopoverTrigger>
     </Field>
-  );
+  )
 }

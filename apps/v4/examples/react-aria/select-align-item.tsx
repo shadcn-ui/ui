@@ -24,7 +24,7 @@ const items = [
   { label: "Banana", value: "banana" },
   { label: "Blueberry", value: "blueberry" },
   { label: "Grapes", value: "grapes" },
-  { label: "Pineapple", value: "pineapple" }
+  { label: "Pineapple", value: "pineapple" },
 ]
 
 export function SelectAlignItem() {
@@ -62,5 +62,5 @@ export function SelectAlignItem() {
         </Select>
       </Field>
     </FieldGroup>
-  );
+  )
 }

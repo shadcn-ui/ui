@@ -13,5 +13,5 @@ export default function ButtonLoading() {
         <Spinner data-icon="inline-start" />
       </Button>
     </div>
-  );
+  )
 }

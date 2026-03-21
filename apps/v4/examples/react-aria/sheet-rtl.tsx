@@ -15,7 +15,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/examples/react-aria/ui-rtl/sheet";
+} from "@/examples/react-aria/ui-rtl/sheet"
 
 import {
   useTranslation,
@@ -68,9 +68,7 @@ export function SheetRtl() {
 
   return (
     <SheetTrigger>
-      <Button variant="outline">
-        {t.open}
-      </Button>
+      <Button variant="outline">{t.open}</Button>
       <Sheet
         dir={dir}
         side={dir === "rtl" ? "left" : "right"}
@@ -92,11 +90,9 @@ export function SheetRtl() {
         </FieldGroup>
         <SheetFooter>
           <Button type="submit">{t.save}</Button>
-          <SheetClose variant="outline">
-            {t.close}
-          </SheetClose>
+          <SheetClose variant="outline">{t.close}</SheetClose>
         </SheetFooter>
       </Sheet>
     </SheetTrigger>
-  );
+  )
 }

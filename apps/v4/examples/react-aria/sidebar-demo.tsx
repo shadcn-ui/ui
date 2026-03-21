@@ -19,7 +19,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuShortcut,
   DropdownMenuTrigger,
-} from "@/examples/react-aria/ui/dropdown-menu";
+} from "@/examples/react-aria/ui/dropdown-menu"
 import {
   Sidebar,
   SidebarContent,
@@ -217,7 +217,8 @@ function TeamSwitcher({
         <DropdownMenuTrigger>
           <SidebarMenuButton
             size="lg"
-            className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground">
+            className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+          >
             <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
               <activeTeam.logo className="size-4" />
             </div>
@@ -266,7 +267,7 @@ function TeamSwitcher({
         </DropdownMenuTrigger>
       </SidebarMenuItem>
     </SidebarMenu>
-  );
+  )
 }
 
 function NavMain({
@@ -295,7 +296,9 @@ function NavMain({
           >
             <SidebarMenuItem>
               <CollapsibleTrigger
-                render={props => <SidebarMenuButton {...props} tooltip={item.title} />}
+                render={(props) => (
+                  <SidebarMenuButton {...props} tooltip={item.title} />
+                )}
               >
                 {item.icon && <item.icon />}
                 <span>{item.title}</span>
@@ -317,7 +320,7 @@ function NavMain({
         ))}
       </SidebarMenu>
     </SidebarGroup>
-  );
+  )
 }
 
 function NavProjects({
@@ -376,7 +379,7 @@ function NavProjects({
         </SidebarMenuItem>
       </SidebarMenu>
     </SidebarGroup>
-  );
+  )
 }
 
 function NavUser({
@@ -396,7 +399,8 @@ function NavUser({
         <DropdownMenuTrigger>
           <SidebarMenuButton
             size="lg"
-            className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground">
+            className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+          >
             <Avatar className="h-8 w-8 rounded-lg">
               <AvatarImage src={user.avatar} alt={user.name} />
               <AvatarFallback className="rounded-lg">CN</AvatarFallback>
@@ -460,7 +464,7 @@ function NavUser({
         </DropdownMenuTrigger>
       </SidebarMenuItem>
     </SidebarMenu>
-  );
+  )
 }
 
 export default function AppSidebar({

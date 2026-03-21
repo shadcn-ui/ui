@@ -75,5 +75,5 @@ export function InputForm() {
         </Field>
       </FieldGroup>
     </form>
-  );
+  )
 }

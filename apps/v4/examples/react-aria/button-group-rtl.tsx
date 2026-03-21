@@ -12,7 +12,7 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@/examples/react-aria/ui-rtl/dropdown-menu";
+} from "@/examples/react-aria/ui-rtl/dropdown-menu"
 import {
   ArchiveIcon,
   ArrowLeftIcon,
@@ -143,17 +143,15 @@ export function ButtonGroupRtl() {
                     data-lang={dir === "rtl" ? language : undefined}
                     selectionMode="single"
                     selectedKeys={[label]}
-                    onSelectionChange={keys => setLabel([...keys][0] as string)}
+                    onSelectionChange={(keys) =>
+                      setLabel([...keys][0] as string)
+                    }
                   >
                     <DropdownMenuItem id="personal">
                       {t.personal}
                     </DropdownMenuItem>
-                    <DropdownMenuItem id="work">
-                      {t.work}
-                    </DropdownMenuItem>
-                    <DropdownMenuItem id="other">
-                      {t.other}
-                    </DropdownMenuItem>
+                    <DropdownMenuItem id="work">{t.work}</DropdownMenuItem>
+                    <DropdownMenuItem id="other">{t.other}</DropdownMenuItem>
                   </DropdownMenuSubContent>
                 </DropdownMenuSub>
               </DropdownMenuGroup>
@@ -169,5 +167,5 @@ export function ButtonGroupRtl() {
         </ButtonGroup>
       </ButtonGroup>
     </div>
-  );
+  )
 }

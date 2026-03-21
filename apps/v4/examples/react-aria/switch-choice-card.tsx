@@ -35,5 +35,5 @@ export function SwitchChoiceCard() {
         </Field>
       </FieldLabel>
     </FieldGroup>
-  );
+  )
 }

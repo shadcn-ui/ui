@@ -40,5 +40,5 @@ export default function CollapsibleDemo() {
         </div>
       </CollapsibleContent>
     </Collapsible>
-  );
+  )
 }

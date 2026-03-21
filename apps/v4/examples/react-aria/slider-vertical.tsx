@@ -18,5 +18,5 @@ export function SliderVertical() {
         className="h-40"
       />
     </div>
-  );
+  )
 }

@@ -1,12 +1,16 @@
 import { Button } from "@/examples/react-aria/ui/button"
-import { Sheet, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/examples/react-aria/ui/sheet";
+import {
+  Sheet,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/examples/react-aria/ui/sheet"
 
 export default function SheetNoCloseButton() {
   return (
     <SheetTrigger>
-      <Button variant="outline">
-        Open Sheet
-      </Button>
+      <Button variant="outline">Open Sheet</Button>
       <Sheet showCloseButton={false}>
         <SheetHeader>
           <SheetTitle>No Close Button</SheetTitle>
@@ -17,5 +21,5 @@ export default function SheetNoCloseButton() {
         </SheetHeader>
       </Sheet>
     </SheetTrigger>
-  );
+  )
 }

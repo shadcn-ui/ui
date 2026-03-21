@@ -1,12 +1,16 @@
 import { Button } from "@/examples/react-aria/ui/button"
-import { Dialog, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/examples/react-aria/ui/dialog";
+import {
+  Dialog,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/examples/react-aria/ui/dialog"
 
 export function DialogScrollableContent() {
   return (
     <DialogTrigger>
-      <Button variant="outline">
-        Scrollable Content
-      </Button>
+      <Button variant="outline">Scrollable Content</Button>
       <Dialog>
         <DialogHeader>
           <DialogTitle>Scrollable Content</DialogTitle>
@@ -29,5 +33,5 @@ export function DialogScrollableContent() {
         </div>
       </Dialog>
     </DialogTrigger>
-  );
+  )
 }

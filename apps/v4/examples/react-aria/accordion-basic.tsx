@@ -36,5 +36,5 @@ export function AccordionBasic() {
         </AccordionItem>
       ))}
     </Accordion>
-  );
+  )
 }

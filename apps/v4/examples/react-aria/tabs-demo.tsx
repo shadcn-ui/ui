@@ -78,5 +78,5 @@ export function TabsDemo() {
         </Card>
       </TabsContent>
     </Tabs>
-  );
+  )
 }
