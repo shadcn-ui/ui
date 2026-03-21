@@ -1,5 +1,25 @@
 # @shadcn/ui
 
+## 4.1.0
+
+### Minor Changes
+
+- [#10115](https://github.com/shadcn-ui/ui/pull/10115) [`687f09817b614a3450f0f56779edf367082e1e53`](https://github.com/shadcn-ui/ui/commit/687f09817b614a3450f0f56779edf367082e1e53) Thanks [@shadcn](https://github.com/shadcn)! - add fontHeading to presets
+
+- [#10115](https://github.com/shadcn-ui/ui/pull/10115) [`687f09817b614a3450f0f56779edf367082e1e53`](https://github.com/shadcn-ui/ui/commit/687f09817b614a3450f0f56779edf367082e1e53) Thanks [@shadcn](https://github.com/shadcn)! - add chartColor
+
+## 4.0.8
+
+### Patch Changes
+
+- [#10041](https://github.com/shadcn-ui/ui/pull/10041) [`a97ebe54f1824032d8ad00d1d0c079e3dc6f52d7`](https://github.com/shadcn-ui/ui/commit/a97ebe54f1824032d8ad00d1d0c079e3dc6f52d7) Thanks [@shadcn](https://github.com/shadcn)! - Bundle @antfu/ni and tinyexec to fix missing module error with npx
+
+## 4.0.7
+
+### Patch Changes
+
+- [#9929](https://github.com/shadcn-ui/ui/pull/9929) [`f9b365bc7f9d591c995952976711dbdd7b1bc45a`](https://github.com/shadcn-ui/ui/commit/f9b365bc7f9d591c995952976711dbdd7b1bc45a) Thanks [@kapishdima](https://github.com/kapishdima)! - add dependency field to registry:font
+
 ## 4.0.6
 
 ### Patch Changes
