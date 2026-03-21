@@ -2,7 +2,12 @@
 
 import * as React from "react"
 import { ark } from "@ark-ui/react/factory"
-import { Dialog as DialogPrimitive } from "@ark-ui/react/dialog"
+import {
+  Dialog as DialogPrimitive,
+  useDialog as useAlertDialog,
+  useDialogContext as useAlertDialogContext,
+  type DialogOpenChangeDetails as AlertDialogOpenChangeDetails,
+} from "@ark-ui/react/dialog"
 import { Portal } from "@ark-ui/react/portal"
 
 import { cn } from "@/registry/bases/ark/lib/utils"
@@ -161,16 +166,24 @@ function AlertDialogCancel({
   )
 }
 
+const AlertDialogContext = DialogPrimitive.Context
+const AlertDialogRootProvider = DialogPrimitive.RootProvider
+
 export {
   AlertDialog,
   AlertDialogAction,
   AlertDialogCancel,
   AlertDialogContent,
+  AlertDialogContext,
   AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogMedia,
   AlertDialogOverlay,
+  AlertDialogRootProvider,
   AlertDialogTitle,
   AlertDialogTrigger,
+  useAlertDialog,
+  useAlertDialogContext,
+  type AlertDialogOpenChangeDetails,
 }

@@ -51,4 +51,12 @@ function Slider({
   )
 }
 
-export { Slider }
+const SliderContext = SliderPrimitive.Context
+const SliderRootProvider = SliderPrimitive.RootProvider
+
+export { Slider, SliderContext, SliderRootProvider }
+export {
+  useSlider,
+  useSliderContext,
+  type SliderValueChangeDetails,
+} from "@ark-ui/react/slider"

@@ -1,7 +1,12 @@
 "use client"
 
 import * as React from "react"
-import { HoverCard as HoverCardPrimitive } from "@ark-ui/react/hover-card"
+import {
+  HoverCard as HoverCardPrimitive,
+  useHoverCard,
+  useHoverCardContext,
+  type HoverCardOpenChangeDetails,
+} from "@ark-ui/react/hover-card"
 import { Portal } from "@ark-ui/react/portal"
 
 import { cn } from "@/registry/bases/ark/lib/utils"
@@ -52,4 +57,17 @@ function HoverCardArrow({
   )
 }
 
-export { HoverCard, HoverCardArrow, HoverCardContent, HoverCardTrigger }
+const HoverCardContext = HoverCardPrimitive.Context
+const HoverCardRootProvider = HoverCardPrimitive.RootProvider
+
+export {
+  HoverCard,
+  HoverCardArrow,
+  HoverCardContent,
+  HoverCardContext,
+  HoverCardRootProvider,
+  HoverCardTrigger,
+  useHoverCard,
+  useHoverCardContext,
+  type HoverCardOpenChangeDetails,
+}

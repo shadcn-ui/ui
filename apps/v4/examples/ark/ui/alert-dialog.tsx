@@ -1,7 +1,12 @@
 "use client"
 
 import * as React from "react"
-import { Dialog as DialogPrimitive } from "@ark-ui/react/dialog"
+import {
+  Dialog as DialogPrimitive,
+  useDialog as useAlertDialog,
+  useDialogContext as useAlertDialogContext,
+  type DialogOpenChangeDetails as AlertDialogOpenChangeDetails,
+} from "@ark-ui/react/dialog"
 import { ark } from "@ark-ui/react/factory"
 import { Portal } from "@ark-ui/react/portal"
 
@@ -178,16 +183,24 @@ function AlertDialogCancel({
   )
 }
 
+const AlertDialogContext = DialogPrimitive.Context
+const AlertDialogRootProvider = DialogPrimitive.RootProvider
+
 export {
   AlertDialog,
   AlertDialogAction,
   AlertDialogCancel,
   AlertDialogContent,
+  AlertDialogContext,
   AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogMedia,
   AlertDialogOverlay,
+  AlertDialogRootProvider,
   AlertDialogTitle,
   AlertDialogTrigger,
+  useAlertDialog,
+  useAlertDialogContext,
+  type AlertDialogOpenChangeDetails,
 }

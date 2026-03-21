@@ -1,7 +1,12 @@
 "use client"
 
 import * as React from "react"
-import { Drawer as DrawerPrimitive } from "@ark-ui/react/drawer"
+import {
+  Drawer as DrawerPrimitive,
+  useDrawer,
+  useDrawerContext,
+  type DrawerOpenChangeDetails,
+} from "@ark-ui/react/drawer"
 import { ark } from "@ark-ui/react/factory"
 import { Portal } from "@ark-ui/react/portal"
 
@@ -139,15 +144,23 @@ function DrawerDescription({
   )
 }
 
+const DrawerContext = DrawerPrimitive.Context
+const DrawerRootProvider = DrawerPrimitive.RootProvider
+
 export {
   Drawer,
-  DrawerOverlay,
-  DrawerTrigger,
   DrawerClose,
   DrawerContent,
+  DrawerContext,
+  DrawerDescription,
+  DrawerFooter,
   DrawerHandle,
   DrawerHeader,
-  DrawerFooter,
+  DrawerOverlay,
+  DrawerRootProvider,
   DrawerTitle,
-  DrawerDescription,
+  DrawerTrigger,
+  useDrawer,
+  useDrawerContext,
+  type DrawerOpenChangeDetails,
 }

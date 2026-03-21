@@ -2,7 +2,12 @@
 
 import * as React from "react"
 import { ark } from "@ark-ui/react/factory"
-import { Dialog as DialogPrimitive } from "@ark-ui/react/dialog"
+import {
+  Dialog as DialogPrimitive,
+  useDialog,
+  useDialogContext,
+  type DialogOpenChangeDetails,
+} from "@ark-ui/react/dialog"
 import { Portal } from "@ark-ui/react/portal"
 
 import { cn } from "@/registry/bases/ark/lib/utils"
@@ -145,14 +150,22 @@ function DialogDescription({
   )
 }
 
+const DialogContext = DialogPrimitive.Context
+const DialogRootProvider = DialogPrimitive.RootProvider
+
 export {
   Dialog,
   DialogClose,
   DialogContent,
+  DialogContext,
   DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogOverlay,
+  DialogRootProvider,
   DialogTitle,
   DialogTrigger,
+  useDialog,
+  useDialogContext,
+  type DialogOpenChangeDetails,
 }

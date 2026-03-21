@@ -250,6 +250,10 @@ function ContextMenuShortcut({
   )
 }
 
+// --- Context re-export ---
+
+const ContextMenuContext = MenuPrimitive.Context
+
 export {
   ContextMenu,
   ContextMenuTrigger,
@@ -266,4 +270,7 @@ export {
   ContextMenuSubContent,
   ContextMenuSubTrigger,
   ContextMenuRadioGroup,
+  ContextMenuContext,
 }
+
+export { useMenu, useMenuContext } from "@ark-ui/react/menu"

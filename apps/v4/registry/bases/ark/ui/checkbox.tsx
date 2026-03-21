@@ -32,4 +32,12 @@ function Checkbox({
   )
 }
 
-export { Checkbox }
+const CheckboxContext = CheckboxPrimitive.Context
+const CheckboxRootProvider = CheckboxPrimitive.RootProvider
+
+export { Checkbox, CheckboxContext, CheckboxRootProvider }
+export {
+  useCheckbox,
+  useCheckboxContext,
+  type CheckboxCheckedChangeDetails,
+} from "@ark-ui/react/checkbox"

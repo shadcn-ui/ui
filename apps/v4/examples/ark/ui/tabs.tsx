@@ -91,6 +91,11 @@ const TabsIndicator = React.forwardRef<
 ))
 TabsIndicator.displayName = "TabsIndicator"
 
+// --- Context & RootProvider re-exports ---
+
+const TabsContext = TabsPrimitive.Context
+const TabsRootProvider = TabsPrimitive.RootProvider
+
 export {
   Tabs,
   TabsContent,
@@ -98,4 +103,12 @@ export {
   TabsList,
   TabsTrigger,
   tabsListVariants,
+  TabsContext,
+  TabsRootProvider,
 }
+
+export {
+  useTabs,
+  useTabsContext,
+  type TabsValueChangeDetails,
+} from "@ark-ui/react/tabs"

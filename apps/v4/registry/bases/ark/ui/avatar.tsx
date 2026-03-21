@@ -104,6 +104,11 @@ function AvatarGroupCount({
   )
 }
 
+// --- Context & RootProvider re-exports ---
+
+const AvatarContext = AvatarPrimitive.Context
+const AvatarRootProvider = AvatarPrimitive.RootProvider
+
 export {
   Avatar,
   AvatarImage,
@@ -111,4 +116,8 @@ export {
   AvatarGroup,
   AvatarGroupCount,
   AvatarBadge,
+  AvatarContext,
+  AvatarRootProvider,
 }
+
+export { useAvatar, useAvatarContext } from "@ark-ui/react/avatar"

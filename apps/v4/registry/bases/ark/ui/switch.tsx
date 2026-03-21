@@ -30,4 +30,12 @@ function Switch({
   )
 }
 
-export { Switch }
+const SwitchContext = SwitchPrimitive.Context
+const SwitchRootProvider = SwitchPrimitive.RootProvider
+
+export { Switch, SwitchContext, SwitchRootProvider }
+export {
+  useSwitch,
+  useSwitchContext,
+  type SwitchCheckedChangeDetails,
+} from "@ark-ui/react/switch"

@@ -1,7 +1,12 @@
 "use client"
 
 import * as React from "react"
-import { Tooltip as TooltipPrimitive } from "@ark-ui/react/tooltip"
+import {
+  Tooltip as TooltipPrimitive,
+  useTooltip,
+  useTooltipContext,
+  type TooltipOpenChangeDetails,
+} from "@ark-ui/react/tooltip"
 
 import { cn } from "@/registry/bases/ark/lib/utils"
 
@@ -55,4 +60,18 @@ function TooltipArrow({
   )
 }
 
-export { Tooltip, TooltipArrow, TooltipContent, TooltipProvider, TooltipTrigger }
+const TooltipContext = TooltipPrimitive.Context
+const TooltipRootProvider = TooltipPrimitive.RootProvider
+
+export {
+  Tooltip,
+  TooltipArrow,
+  TooltipContent,
+  TooltipContext,
+  TooltipProvider,
+  TooltipRootProvider,
+  TooltipTrigger,
+  useTooltip,
+  useTooltipContext,
+  type TooltipOpenChangeDetails,
+}

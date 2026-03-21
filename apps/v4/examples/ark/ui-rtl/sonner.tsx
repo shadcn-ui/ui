@@ -78,3 +78,5 @@ function Toaster() {
 }
 
 export { Toaster, toaster as toast }
+
+export { type ToastStatus } from "@ark-ui/react/toast"

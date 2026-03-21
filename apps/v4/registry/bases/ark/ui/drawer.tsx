@@ -2,7 +2,12 @@
 
 import * as React from "react"
 import { ark } from "@ark-ui/react/factory"
-import { Drawer as DrawerPrimitive } from "@ark-ui/react/drawer"
+import {
+  Drawer as DrawerPrimitive,
+  useDrawer,
+  useDrawerContext,
+  type DrawerOpenChangeDetails,
+} from "@ark-ui/react/drawer"
 import { Portal } from "@ark-ui/react/portal"
 
 import { cn } from "@/registry/bases/ark/lib/utils"
@@ -131,15 +136,23 @@ function DrawerDescription({
   )
 }
 
+const DrawerContext = DrawerPrimitive.Context
+const DrawerRootProvider = DrawerPrimitive.RootProvider
+
 export {
   Drawer,
-  DrawerOverlay,
-  DrawerTrigger,
   DrawerClose,
   DrawerContent,
+  DrawerContext,
+  DrawerDescription,
+  DrawerFooter,
   DrawerHandle,
   DrawerHeader,
-  DrawerFooter,
+  DrawerOverlay,
+  DrawerRootProvider,
   DrawerTitle,
-  DrawerDescription,
+  DrawerTrigger,
+  useDrawer,
+  useDrawerContext,
+  type DrawerOpenChangeDetails,
 }

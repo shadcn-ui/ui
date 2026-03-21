@@ -2,7 +2,12 @@
 
 import * as React from "react"
 import { ark } from "@ark-ui/react/factory"
-import { Dialog as DialogPrimitive } from "@ark-ui/react/dialog"
+import {
+  Dialog as DialogPrimitive,
+  useDialog as useSheet,
+  useDialogContext as useSheetContext,
+  type DialogOpenChangeDetails as SheetOpenChangeDetails,
+} from "@ark-ui/react/dialog"
 import { Portal } from "@ark-ui/react/portal"
 
 import { cn } from "@/registry/bases/ark/lib/utils"
@@ -131,14 +136,22 @@ function SheetDescription({
   )
 }
 
+const SheetContext = DialogPrimitive.Context
+const SheetRootProvider = DialogPrimitive.RootProvider
+
 export {
   Sheet,
-  SheetTrigger,
   SheetClose,
   SheetContent,
-  SheetHeader,
-  SheetFooter,
-  SheetOverlay,
-  SheetTitle,
+  SheetContext,
   SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetOverlay,
+  SheetRootProvider,
+  SheetTitle,
+  SheetTrigger,
+  useSheet,
+  useSheetContext,
+  type SheetOpenChangeDetails,
 }

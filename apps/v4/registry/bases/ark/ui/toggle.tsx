@@ -43,4 +43,7 @@ function Toggle({
   )
 }
 
-export { Toggle, toggleVariants }
+const ToggleContext = TogglePrimitive.Context
+
+export { Toggle, toggleVariants, ToggleContext }
+export { useToggle, useToggleContext } from "@ark-ui/react/toggle"

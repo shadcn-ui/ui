@@ -41,4 +41,12 @@ function RadioGroupItem({
   )
 }
 
-export { RadioGroup, RadioGroupItem }
+const RadioGroupContext = RadioGroupPrimitive.Context
+const RadioGroupRootProvider = RadioGroupPrimitive.RootProvider
+
+export { RadioGroup, RadioGroupItem, RadioGroupContext, RadioGroupRootProvider }
+export {
+  useRadioGroup,
+  useRadioGroupContext,
+  type RadioGroupValueChangeDetails,
+} from "@ark-ui/react/radio-group"
