@@ -12,6 +12,12 @@
     "description": "A set of beautifully designed components designed for developers who want niche, high-utility UI elements that you won't find in standard libraries."
   },
   {
+    "name": "@unlumen-ui",
+    "homepage": "https://ui.unlumen.com",
+    "url": "https://ui.unlumen.com/r/{name}.json",
+    "description": "Primitives and components with serious attention to animation and design. Copy, own, ship."
+  },
+  {
     "name": "@auth0",
     "homepage": "https://auth0.com",
     "url": "https://ui.auth0.com/r/{name}.json",
@@ -114,7 +120,7 @@
     "description": "BillingSDK is an open-source React and Next.js component library for SaaS billing and payments. It offers ready-to-use, customizable components for subscriptions, invoices, usage-based pricing and billing - fully compatible with Dodo Payments and Stripe."
   },
   {
-    "name": "@blocks",
+    "name": "@blocks-so",
     "homepage": "https://blocks.so",
     "url": "https://blocks.so/r/{name}.json",
     "description": "A set of clean, modern application building blocks for you in your applications. Free and Open Source"
@@ -252,7 +258,7 @@
     "description": "Ready-to-use foundation components/blocks built on top of shadcn/ui."
   },
   {
-    "name": "@hooks",
+    "name": "@shadcnhooks",
     "homepage": "https://shadcn-hooks.com",
     "url": "https://shadcn-hooks.com/r/{name}.json",
     "description": "A comprehensive React Hooks Collection built with Shadcn."
@@ -888,6 +894,12 @@
     "description": "Beautiful, interactive React + Tailwind components for modern product UIs."
   },
   {
+    "name": "@paletteui",
+    "homepage": "https://paletteui.xyz",
+    "url": "https://paletteui.xyz/r/{name}.json",
+    "description": "Curated OKLCH color themes for shadcn/ui + visual theme editor with CSS, Tailwind v4, and Figma export."
+  },
+  {
     "name": "@fluid",
     "homepage": "https://www.fluidfunctionalism.com",
     "url": "https://www.fluidfunctionalism.com/r/{name}.json",
@@ -898,5 +910,23 @@
     "homepage": "https://www.gammaui.com",
     "url": "https://www.gammaui.com/r/{name}.json",
     "description": "Beautifully designed landing page components built with React & Tailwind CSS & Motion."
+  },
+  {
+    "name": "@flx",
+    "homepage": "https://ui.flexnative.com",
+    "url": "https://ui.flexnative.com/r/{name}.json",
+    "description": "A collection of customizable UI blocks with interactive live previews"
+  },
+  {
+    "name": "@nexus-ui",
+    "homepage": "https://nexus-ui.dev",
+    "url": "https://nexus-ui.dev/r/{name}.json",
+    "description": "Open-source component library of composable, copy-paste primitives for building AI interfaces (chat, streaming, multimodal)"
+  },
+  {
+    "name": "@sabraman",
+    "homepage": "https://sabraman.ru/components",
+    "url": "https://sabraman.ru/r/{name}.json",
+    "description": "Legacy skeuomorphic UI components and blocks for shadcn."
   }
 ]

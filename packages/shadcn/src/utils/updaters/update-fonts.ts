@@ -13,6 +13,12 @@ import {
 } from "ts-morph"
 import z from "zod"
 
+const ROOT_FONT_VARIABLES = new Set([
+  "--font-sans",
+  "--font-serif",
+  "--font-mono",
+])
+
 export async function massageTreeForFonts(
   tree: z.infer<typeof registryResolvedItemsTreeSchema>,
   config: Config
@@ -44,7 +50,8 @@ export async function massageTreeForFonts(
     } else {
       // Other frameworks will use fontsource for now.
       const fontName = font.name.replace("font-", "")
-      const fontSourceDependency = `@fontsource-variable/${fontName}`
+      const fontSourceDependency =
+        font.font.dependency ?? `@fontsource-variable/${fontName}`
       tree.dependencies ??= []
       tree.dependencies.push(fontSourceDependency)
       tree.css ??= {}
@@ -55,10 +62,15 @@ export async function massageTreeForFonts(
 
   // Apply font utility classes grouped by selector.
   if (tree.fonts.length > 0) {
-    // Group fonts by their CSS selector (default to "html").
     const groups = new Map<string, string[]>()
+
     for (const font of tree.fonts) {
-      const selector = font.font.selector ?? "html"
+      const selector =
+        font.font.selector ?? getDefaultFontSelector(font.font.variable)
+      if (!selector) {
+        continue
+      }
+
       const cls = font.font.variable.replace("--", "")
       if (!groups.has(selector)) {
         groups.set(selector, [])
@@ -206,29 +218,16 @@ export async function transformLayoutFonts(
       const moduleSpecifier = decl.getModuleSpecifierValue()
       return moduleSpecifier === "next/font/google"
     })
+    let hasExistingImport = false
 
     if (existingImport) {
-      // Check if this specific font is already imported.
       const namedImports = existingImport.getNamedImports()
-      const hasImport = namedImports.some((imp) => imp.getName() === importName)
-
-      if (hasImport) {
-        // Font is already imported. Still track it for className update.
-        const existingVarDecl = findFontVariableDeclaration(
-          sourceFile,
-          font.font.variable
-        )
-        if (existingVarDecl) {
-          fontVariableNames.push(existingVarDecl.getName())
-          // Only add utility class to <html> if font has no custom selector.
-          if (!font.font.selector) {
-            fontUtilityClasses.push(font.font.variable.replace("--", ""))
-          }
-        }
-        continue
+      hasExistingImport = namedImports.some(
+        (imp) => imp.getName() === importName
+      )
+      if (!hasExistingImport) {
+        existingImport.addNamedImport(importName)
       }
-
-      existingImport.addNamedImport(importName)
     } else {
       // Add new import.
       sourceFile.addImportDeclaration({
@@ -237,8 +236,7 @@ export async function transformLayoutFonts(
       })
     }
 
-    // Generate a variable name from the import (e.g., "Inter" -> "inter", "Geist_Mono" -> "geistMono").
-    const varName = toCamelCase(importName)
+    const varName = getFontVariableName(importName, font.font.variable)
 
     // Build font options.
     const fontOptions = buildFontOptions(font)
@@ -248,6 +246,16 @@ export async function transformLayoutFonts(
       sourceFile,
       font.font.variable
     )
+    let resolvedVarName = varName
+
+    if (
+      hasExistingImport &&
+      !existingVarDecl &&
+      isRootFontVariable(font.font.variable) &&
+      !hasHeadingFontDeclaration(sourceFile, importName)
+    ) {
+      continue
+    }
 
     if (existingVarDecl) {
       // Replace the initializer of the existing declaration.
@@ -256,6 +264,7 @@ export async function transformLayoutFonts(
       if (existingVarDecl.getName() !== varName) {
         existingVarDecl.rename(varName)
       }
+      resolvedVarName = varName
     } else {
       // Find the last import or existing font declaration to insert after.
       const insertPosition = findInsertPosition(sourceFile)
@@ -275,9 +284,8 @@ export async function transformLayoutFonts(
       statement.appendWhitespace("\n")
     }
 
-    fontVariableNames.push(varName)
-    // Only add utility class to <html> if font has no custom selector.
-    if (!font.font.selector) {
+    fontVariableNames.push(resolvedVarName)
+    if (shouldApplyFontUtilityToHtml(font)) {
       fontUtilityClasses.push(font.font.variable.replace("--", ""))
     }
   }
@@ -326,6 +334,28 @@ function buildFontOptions(font: RegistryFontItem) {
     .replace(/"/g, "'") // Use single quotes for strings.
 }
 
+function isRootFontVariable(variable: string) {
+  return ROOT_FONT_VARIABLES.has(variable)
+}
+
+function getDefaultFontSelector(variable: string) {
+  return isRootFontVariable(variable) ? "html" : null
+}
+
+function shouldApplyFontUtilityToHtml(font: RegistryFontItem) {
+  return !font.font.selector && isRootFontVariable(font.font.variable)
+}
+
+function getFontVariableName(importName: string, variable: string) {
+  const baseName = toCamelCase(importName)
+
+  if (isRootFontVariable(variable)) {
+    return baseName
+  }
+
+  return `${baseName}${toPascalCase(variable.replace(/^--font-/, ""))}`
+}
+
 function toCamelCase(str: string) {
   // Convert "Geist_Mono" -> "geistMono", "Inter" -> "inter".
   return str
@@ -335,6 +365,13 @@ function toCamelCase(str: string) {
         ? part.toLowerCase()
         : part.charAt(0).toUpperCase() + part.slice(1).toLowerCase()
     )
+    .join("")
+}
+
+function toPascalCase(str: string) {
+  return str
+    .split("-")
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
     .join("")
 }
 
@@ -368,6 +405,35 @@ function findFontVariableDeclaration(
   }
 
   return null
+}
+
+function hasHeadingFontDeclaration(
+  sourceFile: ReturnType<Project["createSourceFile"]>,
+  importName: string
+) {
+  const variableStatements = sourceFile.getVariableStatements()
+
+  for (const statement of variableStatements) {
+    for (const declaration of statement.getDeclarations()) {
+      const initializer = declaration.getInitializer()
+      if (!initializer) continue
+
+      if (initializer.getKind() !== SyntaxKind.CallExpression) continue
+
+      const callExpr = initializer as CallExpression
+      if (callExpr.getExpression().getText() !== importName) continue
+
+      const args = callExpr.getArguments()
+      if (!args.length) continue
+
+      const argText = args[0].getText()
+      if (argText.includes(`variable:`) && argText.includes("--font-heading")) {
+        return true
+      }
+    }
+  }
+
+  return false
 }
 
 function findInsertPosition(
@@ -473,7 +539,15 @@ function updateHtmlClassName(
         }
         // Replace with cn() including utility classes and font variables.
         ensureCnImport(sourceFile, config)
-        jsxExpr.replaceWithText(`{cn(${allNewArgs.join(", ")})}`)
+        const existingName = exprText.split(".")[0] ?? ""
+        const shouldPreserveExisting =
+          existingName.toLowerCase().includes("heading") ||
+          fontUtilityClasses.length === 0
+        jsxExpr.replaceWithText(
+          shouldPreserveExisting
+            ? `{cn(${exprText}, ${allNewArgs.join(", ")})}`
+            : `{cn(${allNewArgs.join(", ")})}`
+        )
       } else if (exprText.startsWith("`") && exprText.endsWith("`")) {
         // Template literal - parse and convert to cn() arguments.
         const cnArgs = parseTemplateLiteralToCnArgs(exprText)

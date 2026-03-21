@@ -4,6 +4,7 @@ import {
   designSystemConfigSchema,
   type DesignSystemConfig,
 } from "@/registry/config"
+import { resolvePresetOverrides } from "@/app/(create)/lib/preset-query"
 
 // Parses design system config from URL search params.
 export function parseDesignSystemConfig(searchParams: URLSearchParams) {
@@ -15,8 +16,10 @@ export function parseDesignSystemConfig(searchParams: URLSearchParams) {
     if (!decoded) {
       return { success: false as const, error: "Invalid preset code" }
     }
+    const presetOverrides = resolvePresetOverrides(searchParams, decoded)
     configInput = {
       ...decoded,
+      ...presetOverrides,
       base: searchParams.get("base") ?? "radix",
       template: searchParams.get("template") ?? undefined,
       rtl: searchParams.get("rtl") === "true",
@@ -28,7 +31,9 @@ export function parseDesignSystemConfig(searchParams: URLSearchParams) {
       iconLibrary: searchParams.get("iconLibrary"),
       baseColor: searchParams.get("baseColor"),
       theme: searchParams.get("theme"),
+      chartColor: searchParams.get("chartColor") ?? undefined,
       font: searchParams.get("font"),
+      fontHeading: searchParams.get("fontHeading") ?? undefined,
       menuAccent: searchParams.get("menuAccent"),
       menuColor: searchParams.get("menuColor"),
       radius: searchParams.get("radius"),
