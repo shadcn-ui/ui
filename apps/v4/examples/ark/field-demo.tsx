@@ -1,5 +1,12 @@
+"use client"
+
 import { Button } from "@/examples/ark/ui/button"
-import { Checkbox } from "@/examples/ark/ui/checkbox"
+import {
+  Checkbox,
+  CheckboxControl,
+  CheckboxHiddenInput,
+  CheckboxIndicator,
+} from "@/examples/ark/ui/checkbox"
 import {
   Field,
   FieldDescription,
@@ -152,7 +159,12 @@ export default function FieldDemo() {
                 <Checkbox
                   id="checkout-7j9-same-as-shipping-wgm"
                   defaultChecked
-                />
+                >
+                  <CheckboxControl>
+                    <CheckboxIndicator />
+                  </CheckboxControl>
+                  <CheckboxHiddenInput />
+                </Checkbox>
                 <FieldLabel
                   htmlFor="checkout-7j9-same-as-shipping-wgm"
                   className="font-normal"

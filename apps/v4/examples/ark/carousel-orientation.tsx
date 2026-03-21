@@ -12,11 +12,10 @@ export default function CarouselOrientation() {
   return (
     <Carousel
       slideCount={5}
-      align="start"
       orientation="vertical"
       className="w-full max-w-xs"
     >
-      <CarouselContent className="-mt-1 h-[270px]">
+      <CarouselContent className="-mt-1 h-67.5">
         {Array.from({ length: 5 }).map((_, index) => (
           <CarouselItem key={index} index={index} className="basis-1/2 pt-1">
             <div className="p-1">

@@ -7,7 +7,12 @@ import {
   ExampleWrapper,
 } from "@/registry/bases/ark/components/example"
 import { Button } from "@/registry/bases/ark/ui/button"
-import { Checkbox } from "@/registry/bases/ark/ui/checkbox"
+import {
+  Checkbox,
+  CheckboxControl,
+  CheckboxHiddenInput,
+  CheckboxIndicator,
+} from "@/registry/bases/ark/ui/checkbox"
 import {
   Dialog,
   DialogClose,
@@ -54,7 +59,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/registry/bases/ark/ui/select"
-import { Switch } from "@/registry/bases/ark/ui/switch"
+import {
+  Switch,
+  SwitchControl,
+  SwitchHiddenInput,
+  SwitchThumb,
+} from "@/registry/bases/ark/ui/switch"
 import {
   Tabs,
   TabsContent,
@@ -472,7 +482,12 @@ function DialogChatSettings() {
                       </FieldDescription>
                       <FieldGroup data-slot="checkbox-group">
                         <Field orientation="horizontal">
-                          <Checkbox id="push" defaultChecked disabled />
+                          <Checkbox id="push" defaultChecked disabled>
+                            <CheckboxControl>
+                              <CheckboxIndicator />
+                            </CheckboxControl>
+                            <CheckboxHiddenInput />
+                          </Checkbox>
                           <FieldLabel htmlFor="push" className="font-normal">
                             Push notifications
                           </FieldLabel>
@@ -488,7 +503,12 @@ function DialogChatSettings() {
                       </FieldDescription>
                       <FieldGroup data-slot="checkbox-group">
                         <Field orientation="horizontal">
-                          <Checkbox id="push-tasks" />
+                          <Checkbox id="push-tasks">
+                            <CheckboxControl>
+                              <CheckboxIndicator />
+                            </CheckboxControl>
+                            <CheckboxHiddenInput />
+                          </Checkbox>
                           <FieldLabel
                             htmlFor="push-tasks"
                             className="font-normal"
@@ -497,7 +517,12 @@ function DialogChatSettings() {
                           </FieldLabel>
                         </Field>
                         <Field orientation="horizontal">
-                          <Checkbox id="email-tasks" />
+                          <Checkbox id="email-tasks">
+                            <CheckboxControl>
+                              <CheckboxIndicator />
+                            </CheckboxControl>
+                            <CheckboxHiddenInput />
+                          </Checkbox>
                           <FieldLabel
                             htmlFor="email-tasks"
                             className="font-normal"
@@ -569,7 +594,12 @@ function DialogChatSettings() {
                             personalized.
                           </FieldDescription>
                         </FieldContent>
-                        <Switch id="customization" defaultChecked />
+                        <Switch id="customization" defaultChecked>
+                          <SwitchControl>
+                            <SwitchThumb />
+                          </SwitchControl>
+                          <SwitchHiddenInput />
+                        </Switch>
                       </Field>
                     </FieldLabel>
                   </FieldGroup>
@@ -588,7 +618,12 @@ function DialogChatSettings() {
                           sent to your email.
                         </FieldDescription>
                       </FieldContent>
-                      <Switch id="2fa" />
+                      <Switch id="2fa">
+                        <SwitchControl>
+                          <SwitchThumb />
+                        </SwitchControl>
+                        <SwitchHiddenInput />
+                      </Switch>
                     </Field>
                     <FieldSeparator />
                     <Field orientation="horizontal">

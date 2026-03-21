@@ -8,7 +8,12 @@ import {
   ExampleWrapper,
 } from "@/registry/bases/ark/components/example"
 import { Badge } from "@/registry/bases/ark/ui/badge"
-import { Checkbox } from "@/registry/bases/ark/ui/checkbox"
+import {
+  Checkbox,
+  CheckboxControl,
+  CheckboxHiddenInput,
+  CheckboxIndicator,
+} from "@/registry/bases/ark/ui/checkbox"
 import {
   Field,
   FieldContent,
@@ -34,6 +39,8 @@ import {
 import {
   RadioGroup,
   RadioGroupItem,
+  RadioGroupItemControl,
+  RadioGroupItemHiddenInput,
 } from "@/registry/bases/ark/ui/radio-group"
 import {
   createListCollection,
@@ -48,8 +55,19 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/registry/bases/ark/ui/select"
-import { Slider } from "@/registry/bases/ark/ui/slider"
-import { Switch } from "@/registry/bases/ark/ui/switch"
+import {
+  Slider,
+  SliderControl,
+  SliderRange,
+  SliderThumb,
+  SliderTrack,
+} from "@/registry/bases/ark/ui/slider"
+import {
+  Switch,
+  SwitchControl,
+  SwitchHiddenInput,
+  SwitchThumb,
+} from "@/registry/bases/ark/ui/switch"
 import { Textarea } from "@/registry/bases/ark/ui/textarea"
 
 export default function FieldExample() {
@@ -463,7 +481,12 @@ function CheckboxFields() {
     <Example title="Checkbox Fields">
       <FieldGroup>
         <Field orientation="horizontal">
-          <Checkbox id="checkbox-basic" defaultChecked />
+          <Checkbox id="checkbox-basic" defaultChecked>
+            <CheckboxControl>
+              <CheckboxIndicator />
+            </CheckboxControl>
+            <CheckboxHiddenInput />
+          </Checkbox>
           <FieldLabel htmlFor="checkbox-basic" className="font-normal">
             I agree to the terms and conditions
           </FieldLabel>
@@ -472,10 +495,20 @@ function CheckboxFields() {
           <FieldLabel htmlFor="checkbox-right">
             Accept terms and conditions
           </FieldLabel>
-          <Checkbox id="checkbox-right" />
+          <Checkbox id="checkbox-right">
+            <CheckboxControl>
+              <CheckboxIndicator />
+            </CheckboxControl>
+            <CheckboxHiddenInput />
+          </Checkbox>
         </Field>
         <Field orientation="horizontal">
-          <Checkbox id="checkbox-with-desc" />
+          <Checkbox id="checkbox-with-desc">
+            <CheckboxControl>
+              <CheckboxIndicator />
+            </CheckboxControl>
+            <CheckboxHiddenInput />
+          </Checkbox>
           <FieldContent>
             <FieldLabel htmlFor="checkbox-with-desc">
               Subscribe to newsletter
@@ -487,7 +520,12 @@ function CheckboxFields() {
         </Field>
         <FieldLabel htmlFor="checkbox-with-title">
           <Field orientation="horizontal">
-            <Checkbox id="checkbox-with-title" />
+            <Checkbox id="checkbox-with-title">
+              <CheckboxControl>
+                <CheckboxIndicator />
+              </CheckboxControl>
+              <CheckboxHiddenInput />
+            </Checkbox>
             <FieldContent>
               <FieldTitle>Enable Touch ID</FieldTitle>
               <FieldDescription>
@@ -503,19 +541,34 @@ function CheckboxFields() {
           </FieldDescription>
           <FieldGroup className="gap-3">
             <Field orientation="horizontal">
-              <Checkbox id="pref-dark" />
+              <Checkbox id="pref-dark">
+                <CheckboxControl>
+                  <CheckboxIndicator />
+                </CheckboxControl>
+                <CheckboxHiddenInput />
+              </Checkbox>
               <FieldLabel htmlFor="pref-dark" className="font-normal">
                 Dark mode
               </FieldLabel>
             </Field>
             <Field orientation="horizontal">
-              <Checkbox id="pref-compact" />
+              <Checkbox id="pref-compact">
+                <CheckboxControl>
+                  <CheckboxIndicator />
+                </CheckboxControl>
+                <CheckboxHiddenInput />
+              </Checkbox>
               <FieldLabel htmlFor="pref-compact" className="font-normal">
                 Compact view
               </FieldLabel>
             </Field>
             <Field orientation="horizontal">
-              <Checkbox id="pref-notifications" />
+              <Checkbox id="pref-notifications">
+                <CheckboxControl>
+                  <CheckboxIndicator />
+                </CheckboxControl>
+                <CheckboxHiddenInput />
+              </Checkbox>
               <FieldLabel htmlFor="pref-notifications" className="font-normal">
                 Enable notifications
               </FieldLabel>
@@ -523,13 +576,23 @@ function CheckboxFields() {
           </FieldGroup>
         </FieldSet>
         <Field data-invalid orientation="horizontal">
-          <Checkbox id="checkbox-invalid" aria-invalid />
+          <Checkbox id="checkbox-invalid" aria-invalid>
+            <CheckboxControl>
+              <CheckboxIndicator />
+            </CheckboxControl>
+            <CheckboxHiddenInput />
+          </Checkbox>
           <FieldLabel htmlFor="checkbox-invalid" className="font-normal">
             Invalid checkbox
           </FieldLabel>
         </Field>
         <Field data-disabled orientation="horizontal">
-          <Checkbox id="checkbox-disabled-field" disabled />
+          <Checkbox id="checkbox-disabled-field" disabled>
+            <CheckboxControl>
+              <CheckboxIndicator />
+            </CheckboxControl>
+            <CheckboxHiddenInput />
+          </Checkbox>
           <FieldLabel htmlFor="checkbox-disabled-field" className="font-normal">
             Disabled checkbox
           </FieldLabel>
@@ -547,19 +610,28 @@ function RadioFields() {
           <FieldLegend variant="label">Subscription Plan</FieldLegend>
           <RadioGroup defaultValue="free">
             <Field orientation="horizontal">
-              <RadioGroupItem value="free" id="radio-free" />
+              <RadioGroupItem value="free" id="radio-free">
+                <RadioGroupItemControl />
+                <RadioGroupItemHiddenInput />
+              </RadioGroupItem>
               <FieldLabel htmlFor="radio-free" className="font-normal">
                 Free Plan
               </FieldLabel>
             </Field>
             <Field orientation="horizontal">
-              <RadioGroupItem value="pro" id="radio-pro" />
+              <RadioGroupItem value="pro" id="radio-pro">
+                <RadioGroupItemControl />
+                <RadioGroupItemHiddenInput />
+              </RadioGroupItem>
               <FieldLabel htmlFor="radio-pro" className="font-normal">
                 Pro Plan
               </FieldLabel>
             </Field>
             <Field orientation="horizontal">
-              <RadioGroupItem value="enterprise" id="radio-enterprise" />
+              <RadioGroupItem value="enterprise" id="radio-enterprise">
+                <RadioGroupItemControl />
+                <RadioGroupItemHiddenInput />
+              </RadioGroupItem>
               <FieldLabel htmlFor="radio-enterprise" className="font-normal">
                 Enterprise
               </FieldLabel>
@@ -573,22 +645,34 @@ function RadioFields() {
           </FieldDescription>
           <RadioGroup>
             <Field orientation="horizontal">
-              <RadioGroupItem value="high" id="battery-high" />
+              <RadioGroupItem value="high" id="battery-high">
+                <RadioGroupItemControl />
+                <RadioGroupItemHiddenInput />
+              </RadioGroupItem>
               <FieldLabel htmlFor="battery-high">High</FieldLabel>
             </Field>
             <Field orientation="horizontal">
-              <RadioGroupItem value="medium" id="battery-medium" />
+              <RadioGroupItem value="medium" id="battery-medium">
+                <RadioGroupItemControl />
+                <RadioGroupItemHiddenInput />
+              </RadioGroupItem>
               <FieldLabel htmlFor="battery-medium">Medium</FieldLabel>
             </Field>
             <Field orientation="horizontal">
-              <RadioGroupItem value="low" id="battery-low" />
+              <RadioGroupItem value="low" id="battery-low">
+                <RadioGroupItemControl />
+                <RadioGroupItemHiddenInput />
+              </RadioGroupItem>
               <FieldLabel htmlFor="battery-low">Low</FieldLabel>
             </Field>
           </RadioGroup>
         </FieldSet>
         <RadioGroup className="gap-6">
           <Field orientation="horizontal">
-            <RadioGroupItem value="option1" id="radio-content-1" />
+            <RadioGroupItem value="option1" id="radio-content-1">
+              <RadioGroupItemControl />
+              <RadioGroupItemHiddenInput />
+            </RadioGroupItem>
             <FieldContent>
               <FieldLabel htmlFor="radio-content-1">Enable Touch ID</FieldLabel>
               <FieldDescription>
@@ -597,7 +681,10 @@ function RadioFields() {
             </FieldContent>
           </Field>
           <Field orientation="horizontal">
-            <RadioGroupItem value="option2" id="radio-content-2" />
+            <RadioGroupItem value="option2" id="radio-content-2">
+              <RadioGroupItemControl />
+              <RadioGroupItemHiddenInput />
+            </RadioGroupItem>
             <FieldContent>
               <FieldLabel htmlFor="radio-content-2">
                 Enable Touch ID and Face ID to make it even faster to unlock
@@ -612,7 +699,10 @@ function RadioFields() {
         <RadioGroup className="gap-3">
           <FieldLabel htmlFor="radio-title-1">
             <Field orientation="horizontal">
-              <RadioGroupItem value="title1" id="radio-title-1" />
+              <RadioGroupItem value="title1" id="radio-title-1">
+                <RadioGroupItemControl />
+                <RadioGroupItemHiddenInput />
+              </RadioGroupItem>
               <FieldContent>
                 <FieldTitle>Enable Touch ID</FieldTitle>
                 <FieldDescription>
@@ -623,7 +713,10 @@ function RadioFields() {
           </FieldLabel>
           <FieldLabel htmlFor="radio-title-2">
             <Field orientation="horizontal">
-              <RadioGroupItem value="title2" id="radio-title-2" />
+              <RadioGroupItem value="title2" id="radio-title-2">
+                <RadioGroupItemControl />
+                <RadioGroupItemHiddenInput />
+              </RadioGroupItem>
               <FieldContent>
                 <FieldTitle>
                   Enable Touch ID and Face ID to make it even faster to unlock
@@ -644,7 +737,10 @@ function RadioFields() {
                 value="invalid1"
                 id="radio-invalid-1"
                 aria-invalid
-              />
+              >
+                <RadioGroupItemControl />
+                <RadioGroupItemHiddenInput />
+              </RadioGroupItem>
               <FieldLabel htmlFor="radio-invalid-1">
                 Invalid Option 1
               </FieldLabel>
@@ -654,7 +750,10 @@ function RadioFields() {
                 value="invalid2"
                 id="radio-invalid-2"
                 aria-invalid
-              />
+              >
+                <RadioGroupItemControl />
+                <RadioGroupItemHiddenInput />
+              </RadioGroupItem>
               <FieldLabel htmlFor="radio-invalid-2">
                 Invalid Option 2
               </FieldLabel>
@@ -669,7 +768,10 @@ function RadioFields() {
                 value="disabled1"
                 id="radio-disabled-1"
                 disabled
-              />
+              >
+                <RadioGroupItemControl />
+                <RadioGroupItemHiddenInput />
+              </RadioGroupItem>
               <FieldLabel htmlFor="radio-disabled-1">
                 Disabled Option 1
               </FieldLabel>
@@ -679,7 +781,10 @@ function RadioFields() {
                 value="disabled2"
                 id="radio-disabled-2"
                 disabled
-              />
+              >
+                <RadioGroupItemControl />
+                <RadioGroupItemHiddenInput />
+              </RadioGroupItem>
               <FieldLabel htmlFor="radio-disabled-2">
                 Disabled Option 2
               </FieldLabel>
@@ -702,14 +807,29 @@ function SwitchFields() {
               Turn on airplane mode to disable all connections.
             </FieldDescription>
           </FieldContent>
-          <Switch id="switch-airplane" />
+          <Switch id="switch-airplane">
+            <SwitchControl>
+              <SwitchThumb />
+            </SwitchControl>
+            <SwitchHiddenInput />
+          </Switch>
         </Field>
         <Field orientation="horizontal">
           <FieldLabel htmlFor="switch-dark">Dark Mode</FieldLabel>
-          <Switch id="switch-dark" />
+          <Switch id="switch-dark">
+            <SwitchControl>
+              <SwitchThumb />
+            </SwitchControl>
+            <SwitchHiddenInput />
+          </Switch>
         </Field>
         <Field orientation="horizontal">
-          <Switch id="switch-marketing" />
+          <Switch id="switch-marketing">
+            <SwitchControl>
+              <SwitchThumb />
+            </SwitchControl>
+            <SwitchHiddenInput />
+          </Switch>
           <FieldContent>
             <FieldLabel htmlFor="switch-marketing">Marketing Emails</FieldLabel>
             <FieldDescription>
@@ -721,7 +841,12 @@ function SwitchFields() {
           <FieldLabel>Privacy Settings</FieldLabel>
           <FieldDescription>Manage your privacy preferences.</FieldDescription>
           <Field orientation="horizontal">
-            <Switch id="switch-profile" defaultChecked />
+            <Switch id="switch-profile" defaultChecked>
+              <SwitchControl>
+                <SwitchThumb />
+              </SwitchControl>
+              <SwitchHiddenInput />
+            </Switch>
             <FieldContent>
               <FieldLabel htmlFor="switch-profile" className="font-normal">
                 Make profile visible to others
@@ -729,7 +854,12 @@ function SwitchFields() {
             </FieldContent>
           </Field>
           <Field orientation="horizontal">
-            <Switch id="switch-email" />
+            <Switch id="switch-email">
+              <SwitchControl>
+                <SwitchThumb />
+              </SwitchControl>
+              <SwitchHiddenInput />
+            </Switch>
             <FieldContent>
               <FieldLabel htmlFor="switch-email" className="font-normal">
                 Show email on profile
@@ -744,7 +874,12 @@ function SwitchFields() {
               This switch has validation errors.
             </FieldDescription>
           </FieldContent>
-          <Switch id="switch-invalid" aria-invalid />
+          <Switch id="switch-invalid" aria-invalid>
+            <SwitchControl>
+              <SwitchThumb />
+            </SwitchControl>
+            <SwitchHiddenInput />
+          </Switch>
         </Field>
         <Field data-disabled orientation="horizontal">
           <FieldContent>
@@ -755,7 +890,12 @@ function SwitchFields() {
               This switch is currently disabled.
             </FieldDescription>
           </FieldContent>
-          <Switch id="switch-disabled-field" disabled />
+          <Switch id="switch-disabled-field" disabled>
+            <SwitchControl>
+              <SwitchThumb />
+            </SwitchControl>
+            <SwitchHiddenInput />
+          </Switch>
         </Field>
       </FieldGroup>
     </Example>
@@ -777,20 +917,34 @@ function SliderFields() {
           <Slider
             id="slider-volume"
             value={volume}
-            onValueChange={setVolume}
+            onValueChange={(details) => setVolume(details.value)}
             max={100}
             step={1}
-          />
+          >
+            <SliderControl>
+              <SliderTrack>
+                <SliderRange />
+              </SliderTrack>
+              <SliderThumb index={0} />
+            </SliderControl>
+          </Slider>
         </Field>
         <Field>
           <FieldLabel htmlFor="slider-brightness">Screen Brightness</FieldLabel>
           <Slider
             id="slider-brightness"
             value={brightness}
-            onValueChange={setBrightness}
+            onValueChange={(details) => setBrightness(details.value)}
             max={100}
             step={5}
-          />
+          >
+            <SliderControl>
+              <SliderTrack>
+                <SliderRange />
+              </SliderTrack>
+              <SliderThumb index={0} />
+            </SliderControl>
+          </Slider>
           <FieldDescription>
             Current brightness: {brightness[0]}%
           </FieldDescription>
@@ -806,7 +960,14 @@ function SliderFields() {
             max={1080}
             min={360}
             step={360}
-          />
+          >
+            <SliderControl>
+              <SliderTrack>
+                <SliderRange />
+              </SliderTrack>
+              <SliderThumb index={0} />
+            </SliderControl>
+          </Slider>
         </Field>
         <Field>
           <FieldLabel htmlFor="slider-temperature">
@@ -815,11 +976,19 @@ function SliderFields() {
           <Slider
             id="slider-temperature"
             value={temperature}
-            onValueChange={setTemperature}
+            onValueChange={(details) => setTemperature(details.value)}
             min={0}
             max={1}
             step={0.1}
-          />
+          >
+            <SliderControl>
+              <SliderTrack>
+                <SliderRange />
+              </SliderTrack>
+              <SliderThumb index={0} />
+              <SliderThumb index={1} />
+            </SliderControl>
+          </Slider>
           <FieldDescription>
             Range: {temperature[0].toFixed(1)} - {temperature[1].toFixed(1)}
           </FieldDescription>
@@ -829,10 +998,18 @@ function SliderFields() {
           <Slider
             id="slider-price-range"
             value={priceRange}
-            onValueChange={setPriceRange}
+            onValueChange={(details) => setPriceRange(details.value)}
             max={100}
             step={5}
-          />
+          >
+            <SliderControl>
+              <SliderTrack>
+                <SliderRange />
+              </SliderTrack>
+              <SliderThumb index={0} />
+              <SliderThumb index={1} />
+            </SliderControl>
+          </Slider>
           <FieldDescription>
             ${priceRange[0]} - ${priceRange[1]}
           </FieldDescription>
@@ -842,10 +1019,19 @@ function SliderFields() {
           <Slider
             id="slider-color-balance"
             value={colorBalance}
-            onValueChange={setColorBalance}
+            onValueChange={(details) => setColorBalance(details.value)}
             max={100}
             step={10}
-          />
+          >
+            <SliderControl>
+              <SliderTrack>
+                <SliderRange />
+              </SliderTrack>
+              <SliderThumb index={0} />
+              <SliderThumb index={1} />
+              <SliderThumb index={2} />
+            </SliderControl>
+          </Slider>
           <FieldDescription>
             Red: {colorBalance[0]}%, Green: {colorBalance[1]}%, Blue:{" "}
             {colorBalance[2]}%
@@ -858,7 +1044,14 @@ function SliderFields() {
             defaultValue={[30]}
             max={100}
             aria-invalid
-          />
+          >
+            <SliderControl>
+              <SliderTrack>
+                <SliderRange />
+              </SliderTrack>
+              <SliderThumb index={0} />
+            </SliderControl>
+          </Slider>
           <FieldDescription>
             This slider has validation errors.
           </FieldDescription>
@@ -872,7 +1065,14 @@ function SliderFields() {
             defaultValue={[50]}
             max={100}
             disabled
-          />
+          >
+            <SliderControl>
+              <SliderTrack>
+                <SliderRange />
+              </SliderTrack>
+              <SliderThumb index={0} />
+            </SliderControl>
+          </Slider>
           <FieldDescription>
             This slider is currently disabled.
           </FieldDescription>
@@ -1033,7 +1233,12 @@ function HorizontalFields() {
               Receive email updates about your account.
             </FieldDescription>
           </FieldContent>
-          <Switch id="horizontal-switch" />
+          <Switch id="horizontal-switch">
+            <SwitchControl>
+              <SwitchThumb />
+            </SwitchControl>
+            <SwitchHiddenInput />
+          </Switch>
         </Field>
         <Field orientation="horizontal">
           <FieldContent>
@@ -1076,7 +1281,14 @@ function HorizontalFields() {
             <FieldLabel htmlFor="horizontal-slider">Volume</FieldLabel>
             <FieldDescription>Adjust the volume level.</FieldDescription>
           </FieldContent>
-          <Slider id="horizontal-slider" defaultValue={[50]} max={100} />
+          <Slider id="horizontal-slider" defaultValue={[50]} max={100}>
+            <SliderControl>
+              <SliderTrack>
+                <SliderRange />
+              </SliderTrack>
+              <SliderThumb index={0} />
+            </SliderControl>
+          </Slider>
         </Field>
       </FieldGroup>
     </Example>

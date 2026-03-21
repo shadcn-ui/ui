@@ -17,7 +17,7 @@ export default function CarouselDApiDemo() {
   const [current, setCurrent] = React.useState(0)
 
   return (
-    <div className="mx-auto max-w-[10rem] sm:max-w-xs">
+    <div className="mx-auto max-w-40 sm:max-w-xs">
       <Carousel
         slideCount={SLIDE_COUNT}
         className="w-full max-w-xs"

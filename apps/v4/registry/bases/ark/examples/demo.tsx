@@ -17,7 +17,12 @@ import { Badge } from "@/registry/bases/ark/ui/badge"
 import { Button } from "@/registry/bases/ark/ui/button"
 import { ButtonGroup } from "@/registry/bases/ark/ui/button-group"
 import { Card, CardContent } from "@/registry/bases/ark/ui/card"
-import { Checkbox } from "@/registry/bases/ark/ui/checkbox"
+import {
+  Checkbox,
+  CheckboxControl,
+  CheckboxHiddenInput,
+  CheckboxIndicator,
+} from "@/registry/bases/ark/ui/checkbox"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -44,17 +49,33 @@ import {
 import {
   RadioGroup,
   RadioGroupItem,
+  RadioGroupItemControl,
+  RadioGroupItemHiddenInput,
 } from "@/registry/bases/ark/ui/radio-group"
-import { Slider } from "@/registry/bases/ark/ui/slider"
-import { Switch } from "@/registry/bases/ark/ui/switch"
+import {
+  Slider,
+  SliderControl,
+  SliderRange,
+  SliderThumb,
+  SliderTrack,
+} from "@/registry/bases/ark/ui/slider"
+import {
+  Switch,
+  SwitchControl,
+  SwitchHiddenInput,
+  SwitchThumb,
+} from "@/registry/bases/ark/ui/switch"
 import { Textarea } from "@/registry/bases/ark/ui/textarea"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export function Demo() {
   const [sliderValue, setSliderValue] = React.useState<number[]>([500])
-  const handleSliderValueChange = React.useCallback((value: number[]) => {
-    setSliderValue(value)
-  }, [])
+  const handleSliderValueChange = React.useCallback(
+    (details: { value: number[] }) => {
+      setSliderValue(details.value)
+    },
+    []
+  )
 
   return (
     <div className="flex min-h-screen w-full flex-col items-center justify-center bg-muted p-4 sm:p-6 lg:p-12 dark:bg-background">
@@ -287,7 +308,14 @@ export function Demo() {
                 step={10}
                 className="flex-1"
                 aria-label="Slider"
-              />
+              >
+                <SliderControl>
+                  <SliderTrack>
+                    <SliderRange />
+                  </SliderTrack>
+                  <SliderThumb index={0} />
+                </SliderControl>
+              </Slider>
               <FieldGroup>
                 <Field>
                   <InputGroup>
@@ -319,12 +347,28 @@ export function Demo() {
                   defaultValue="apple"
                   className="ml-auto flex w-fit gap-3"
                 >
-                  <RadioGroupItem value="apple" />
-                  <RadioGroupItem value="banana" />
+                  <RadioGroupItem value="apple">
+                    <RadioGroupItemControl />
+                    <RadioGroupItemHiddenInput />
+                  </RadioGroupItem>
+                  <RadioGroupItem value="banana">
+                    <RadioGroupItemControl />
+                    <RadioGroupItemHiddenInput />
+                  </RadioGroupItem>
                 </RadioGroup>
                 <div className="flex gap-3">
-                  <Checkbox defaultChecked />
-                  <Checkbox />
+                  <Checkbox defaultChecked>
+                    <CheckboxControl>
+                      <CheckboxIndicator />
+                    </CheckboxControl>
+                    <CheckboxHiddenInput />
+                  </Checkbox>
+                  <Checkbox>
+                    <CheckboxControl>
+                      <CheckboxIndicator />
+                    </CheckboxControl>
+                    <CheckboxHiddenInput />
+                  </Checkbox>
                 </div>
               </div>
               <div className="flex items-center gap-4">
@@ -392,7 +436,12 @@ export function Demo() {
                     </DropdownMenuContent>
                   </DropdownMenu>
                 </ButtonGroup>
-                <Switch defaultChecked className="ml-auto" />
+                <Switch defaultChecked className="ml-auto">
+                  <SwitchControl>
+                    <SwitchThumb />
+                  </SwitchControl>
+                  <SwitchHiddenInput />
+                </Switch>
               </div>
             </CardContent>
           </Card>

@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/examples/ark/ui/card"
 import {
   Carousel,
   CarouselContent,
+  CarouselControl,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
@@ -10,7 +11,7 @@ import {
 
 export default function CarouselDemo() {
   return (
-    <Carousel slideCount={5} className="w-full max-w-[12rem] sm:max-w-xs">
+    <Carousel slideCount={5} className="w-full max-w-48 sm:max-w-xs">
       <CarouselContent>
         {Array.from({ length: 5 }).map((_, index) => (
           <CarouselItem key={index} index={index}>
@@ -24,8 +25,10 @@ export default function CarouselDemo() {
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
+      <CarouselControl>
+        <CarouselPrevious />
+        <CarouselNext />
+     </CarouselControl>
     </Carousel>
   )
 }

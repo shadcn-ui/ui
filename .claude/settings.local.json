@@ -27,7 +27,19 @@
       "Read(//Users/lope/Desktop/open-source/chakra/ark/packages/react/src/components/**)",
       "Bash(done)",
       "Bash(grep -rn createListCollection /Users/lope/Desktop/open-source/shadcn/ui/apps/v4/examples/ark/pagination-*.tsx /Users/lope/Desktop/open-source/shadcn/ui/apps/v4/registry/bases/ark/examples/pagination-example.tsx)",
-      "Bash(__NEW_LINE_ba61d9b69ba8a604__ git:*)"
+      "Bash(__NEW_LINE_ba61d9b69ba8a604__ git:*)",
+      "Bash(find /Users/lope/Desktop/open-source/chakra/ark -path */node_modules/@zag-js/drawer* -name *.d.ts)",
+      "Bash(find /Users/lope/Desktop/open-source/chakra/ark -path *zag*drawer* -name *.mjs -o -path *zag*drawer* -name *.js)",
+      "Bash(find /Users/lope/Desktop/open-source/shadcn/ui/apps/v4/node_modules/@ark-ui/react -path *drawer* -name *.d.ts)",
+      "Bash(find /Users/lope/Desktop/open-source/shadcn/ui -path *node_modules/@ark-ui* -name drawer -type d)",
+      "Bash(find /Users/lope/Desktop/open-source/shadcn/ui/node_modules/.pnpm -path *@zag-js/drawer* -name *.d.ts)",
+      "Bash(grep -n '<Checkbox[^>]*/>$\\\\|<Switch[^>]*/>$\\\\|<RadioGroupItem[^>]*/>$\\\\|<Slider[^>]*/>$' registry/bases/ark/examples/demo.tsx registry/bases/ark/examples/dialog-example.tsx registry/bases/ark/examples/field-example.tsx registry/bases/ark/examples/label-example.tsx examples/ark/data-table-demo.tsx examples/ark/field-checkbox.tsx examples/ark/field-demo.tsx examples/ark/field-group.tsx examples/ark/label-demo.tsx examples/ark/field-switch.tsx examples/ark/select-align-item.tsx examples/ark/field-choice-card.tsx examples/ark/field-radio.tsx examples/ark/radio-fields.tsx)",
+      "Bash(curl -s http://localhost:4000/docs/components/ark/label)",
+      "Bash(python3 -c \":*)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:4000/docs/components/ark/label)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:4000/docs/components/ark/drawer)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:4000/docs/components/ark/checkbox)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:4000/docs/components/ark/switch)"
     ],
     "deny": []
   }

@@ -11,7 +11,6 @@ export function CarouselMultiple() {
   return (
     <Carousel
       slideCount={5}
-      align="start"
       className="mx-auto max-w-xs sm:max-w-sm"
     >
       <CarouselContent>

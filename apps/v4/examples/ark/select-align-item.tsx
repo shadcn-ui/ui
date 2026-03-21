@@ -21,7 +21,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/examples/ark/ui/select"
-import { Switch } from "@/examples/ark/ui/switch"
+import {
+  Switch,
+  SwitchControl,
+  SwitchHiddenInput,
+  SwitchThumb,
+} from "@/examples/ark/ui/switch"
 
 const fruits = createListCollection({
   items: [
@@ -48,8 +53,15 @@ export function SelectAlignItem() {
         <Switch
           id="align-item"
           checked={alignItemWithTrigger}
-          onCheckedChange={setAlignItemWithTrigger}
-        />
+          onCheckedChange={(details) =>
+            setAlignItemWithTrigger(!!details.checked)
+          }
+        >
+          <SwitchControl>
+            <SwitchThumb />
+          </SwitchControl>
+          <SwitchHiddenInput />
+        </Switch>
       </Field>
       <Field>
         <Select collection={fruits} defaultValue={["banana"]}>
