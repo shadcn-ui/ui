@@ -264,9 +264,38 @@ function DropdownMenuSubContent({
   )
 }
 
-// --- Context re-export ---
+function DropdownMenuArrow({
+  className,
+  ...props
+}: React.ComponentProps<typeof MenuPrimitive.Arrow>) {
+  return (
+    <MenuPrimitive.Arrow
+      data-slot="dropdown-menu-arrow"
+      className={cn("cn-dropdown-menu-arrow", className)}
+      {...props}
+    >
+      <MenuPrimitive.ArrowTip className="cn-dropdown-menu-arrow-tip" />
+    </MenuPrimitive.Arrow>
+  )
+}
+
+function DropdownMenuItemText({
+  className,
+  ...props
+}: React.ComponentProps<typeof MenuPrimitive.ItemText>) {
+  return (
+    <MenuPrimitive.ItemText
+      data-slot="dropdown-menu-item-text"
+      className={cn("cn-dropdown-menu-item-text", className)}
+      {...props}
+    />
+  )
+}
+
+// --- Context & RootProvider re-exports ---
 
 const DropdownMenuContext = MenuPrimitive.Context
+const DropdownMenuRootProvider = MenuPrimitive.RootProvider
 
 export {
   DropdownMenu,
@@ -284,7 +313,10 @@ export {
   DropdownMenuSub,
   DropdownMenuSubTrigger,
   DropdownMenuSubContent,
+  DropdownMenuArrow,
+  DropdownMenuItemText,
   DropdownMenuContext,
+  DropdownMenuRootProvider,
 }
 
 export { useMenu, useMenuContext } from "@ark-ui/react/menu"

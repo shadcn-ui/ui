@@ -1,3 +1,5 @@
+"use client"
+
 import { Field, FieldLabel } from "@/examples/ark/ui/field"
 import {
   Pagination,

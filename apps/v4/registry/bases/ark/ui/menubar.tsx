@@ -280,9 +280,38 @@ function MenubarSubContent({
   )
 }
 
-// --- Context re-export ---
+function MenubarArrow({
+  className,
+  ...props
+}: React.ComponentProps<typeof MenuPrimitive.Arrow>) {
+  return (
+    <MenuPrimitive.Arrow
+      data-slot="menubar-arrow"
+      className={cn("cn-menubar-arrow", className)}
+      {...props}
+    >
+      <MenuPrimitive.ArrowTip className="cn-menubar-arrow-tip" />
+    </MenuPrimitive.Arrow>
+  )
+}
+
+function MenubarItemText({
+  className,
+  ...props
+}: React.ComponentProps<typeof MenuPrimitive.ItemText>) {
+  return (
+    <MenuPrimitive.ItemText
+      data-slot="menubar-item-text"
+      className={cn("cn-menubar-item-text", className)}
+      {...props}
+    />
+  )
+}
+
+// --- Context & RootProvider re-exports ---
 
 const MenubarContext = MenuPrimitive.Context
+const MenubarRootProvider = MenuPrimitive.RootProvider
 
 export {
   Menubar,
@@ -301,7 +330,10 @@ export {
   MenubarSub,
   MenubarSubTrigger,
   MenubarSubContent,
+  MenubarArrow,
+  MenubarItemText,
   MenubarContext,
+  MenubarRootProvider,
 }
 
 export { useMenu, useMenuContext } from "@ark-ui/react/menu"
