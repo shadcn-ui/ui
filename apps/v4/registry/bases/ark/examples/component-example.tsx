@@ -30,12 +30,15 @@ import {
   CardTitle,
 } from "@/registry/bases/ark/ui/card"
 import {
+  createListCollection,
   Combobox,
   ComboboxContent,
-  ComboboxEmpty,
+  ComboboxControl,
   ComboboxInput,
   ComboboxItem,
+  ComboboxItemText,
   ComboboxList,
+  ComboboxTrigger,
 } from "@/registry/bases/ark/ui/combobox"
 import {
   DropdownMenu,
@@ -59,8 +62,10 @@ import { Input } from "@/registry/bases/ark/ui/input"
 import {
   Select,
   SelectContent,
-  SelectGroup,
   SelectItem,
+  SelectItemGroup,
+  SelectItemIndicator,
+  SelectItemText,
   SelectTrigger,
   SelectValue,
 } from "@/registry/bases/ark/ui/select"
@@ -142,13 +147,24 @@ function CardExample() {
   )
 }
 
-const frameworks = [
-  "Next.js",
-  "SvelteKit",
-  "Nuxt.js",
-  "Remix",
-  "Astro",
-] as const
+const frameworkCollection = createListCollection({
+  items: [
+    { label: "Next.js", value: "nextjs" },
+    { label: "SvelteKit", value: "sveltekit" },
+    { label: "Nuxt.js", value: "nuxtjs" },
+    { label: "Remix", value: "remix" },
+    { label: "Astro", value: "astro" },
+  ],
+})
+
+const roleItems = createListCollection({
+  items: [
+    { label: "Developer", value: "developer" },
+    { label: "Designer", value: "designer" },
+    { label: "Manager", value: "manager" },
+    { label: "Other", value: "other" },
+  ],
+})
 
 function FormExample() {
   const [notifications, setNotifications] = React.useState({
@@ -598,17 +614,19 @@ function FormExample() {
                 </Field>
                 <Field>
                   <FieldLabel htmlFor="small-form-role">Role</FieldLabel>
-                  <Select defaultValue="">
+                  <Select collection={roleItems}>
                     <SelectTrigger id="small-form-role">
                       <SelectValue placeholder="Select a role" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectGroup>
-                        <SelectItem value="developer">Developer</SelectItem>
-                        <SelectItem value="designer">Designer</SelectItem>
-                        <SelectItem value="manager">Manager</SelectItem>
-                        <SelectItem value="other">Other</SelectItem>
-                      </SelectGroup>
+                      <SelectItemGroup>
+                        {roleItems.items.map((item) => (
+                          <SelectItem key={item.value} item={item}>
+                            <SelectItemText>{item.label}</SelectItemText>
+                            <SelectItemIndicator />
+                          </SelectItem>
+                        ))}
+                      </SelectItemGroup>
                     </SelectContent>
                   </Select>
                 </Field>
@@ -617,20 +635,22 @@ function FormExample() {
                 <FieldLabel htmlFor="small-form-framework">
                   Framework
                 </FieldLabel>
-                <Combobox items={frameworks}>
-                  <ComboboxInput
-                    id="small-form-framework"
-                    placeholder="Select a framework"
-                    required
-                  />
+                <Combobox collection={frameworkCollection}>
+                  <ComboboxControl>
+                    <ComboboxInput
+                      id="small-form-framework"
+                      placeholder="Select a framework"
+                      required
+                    />
+                    <ComboboxTrigger />
+                  </ComboboxControl>
                   <ComboboxContent>
-                    <ComboboxEmpty>No frameworks found.</ComboboxEmpty>
                     <ComboboxList>
-                      {(item) => (
-                        <ComboboxItem key={item} value={item}>
-                          {item}
+                      {frameworkCollection.items.map((item) => (
+                        <ComboboxItem key={item.value} item={item}>
+                          <ComboboxItemText>{item.label}</ComboboxItemText>
                         </ComboboxItem>
-                      )}
+                      ))}
                     </ComboboxList>
                   </ComboboxContent>
                 </Combobox>

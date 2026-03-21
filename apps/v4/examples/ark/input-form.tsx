@@ -7,12 +7,24 @@ import {
 } from "@/examples/ark/ui/field"
 import { Input } from "@/examples/ark/ui/input"
 import {
+  createListCollection,
   Select,
   SelectContent,
   SelectItem,
+  SelectItemGroup,
+  SelectItemIndicator,
+  SelectItemText,
   SelectTrigger,
   SelectValue,
 } from "@/examples/ark/ui/select"
+
+const countryItems = createListCollection({
+  items: [
+    { label: "United States", value: "us" },
+    { label: "United Kingdom", value: "uk" },
+    { label: "Canada", value: "ca" },
+  ],
+})
 
 export function InputForm() {
   return (
@@ -41,14 +53,19 @@ export function InputForm() {
           </Field>
           <Field>
             <FieldLabel htmlFor="form-country">Country</FieldLabel>
-            <Select defaultValue="us">
+            <Select collection={countryItems} defaultValue={["us"]}>
               <SelectTrigger id="form-country">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="us">United States</SelectItem>
-                <SelectItem value="uk">United Kingdom</SelectItem>
-                <SelectItem value="ca">Canada</SelectItem>
+                <SelectItemGroup>
+                  {countryItems.items.map((item) => (
+                    <SelectItem key={item.value} item={item}>
+                      <SelectItemText>{item.label}</SelectItemText>
+                      <SelectItemIndicator />
+                    </SelectItem>
+                  ))}
+                </SelectItemGroup>
               </SelectContent>
             </Select>
           </Field>

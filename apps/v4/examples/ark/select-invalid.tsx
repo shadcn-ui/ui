@@ -1,3 +1,5 @@
+"use client"
+
 import { Field, FieldError, FieldLabel } from "@/examples/ark/ui/field"
 import {
   createListCollection,

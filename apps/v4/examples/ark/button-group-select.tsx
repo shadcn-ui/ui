@@ -5,10 +5,13 @@ import { Button } from "@/examples/ark/ui/button"
 import { ButtonGroup } from "@/examples/ark/ui/button-group"
 import { Input } from "@/examples/ark/ui/input"
 import {
+  createListCollection,
   Select,
   SelectContent,
-  SelectGroup,
   SelectItem,
+  SelectItemGroup,
+  SelectItemIndicator,
+  SelectItemText,
   SelectTrigger,
 } from "@/examples/ark/ui/select"
 import { ArrowRightIcon } from "lucide-react"
@@ -28,25 +31,32 @@ const CURRENCIES = [
   },
 ]
 
+const currencyItems = createListCollection({
+  items: CURRENCIES,
+})
+
 export default function ButtonGroupSelect() {
   const [currency, setCurrency] = React.useState("$")
 
   return (
     <ButtonGroup>
       <ButtonGroup>
-        <Select value={currency} onValueChange={setCurrency}>
+        <Select collection={currencyItems} value={[currency]} onValueChange={(details) => setCurrency(details.value[0])}>
           <SelectTrigger className="font-mono">{currency}</SelectTrigger>
           <SelectContent className="min-w-24">
-            <SelectGroup>
-              {CURRENCIES.map((currency) => (
-                <SelectItem key={currency.value} value={currency.value}>
-                  {currency.value}{" "}
-                  <span className="text-muted-foreground">
-                    {currency.label}
-                  </span>
+            <SelectItemGroup>
+              {CURRENCIES.map((c) => (
+                <SelectItem key={c.value} item={c}>
+                  <SelectItemText>
+                    {c.value}{" "}
+                    <span className="text-muted-foreground">
+                      {c.label}
+                    </span>
+                  </SelectItemText>
+                  <SelectItemIndicator />
                 </SelectItem>
               ))}
-            </SelectGroup>
+            </SelectItemGroup>
           </SelectContent>
         </Select>
         <Input placeholder="10.00" pattern="[0-9]*" />

@@ -11,14 +11,45 @@ import {
 } from "@/examples/ark/ui/field"
 import { Input } from "@/examples/ark/ui/input"
 import {
+  createListCollection,
   Select,
   SelectContent,
-  SelectGroup,
   SelectItem,
+  SelectItemGroup,
+  SelectItemIndicator,
+  SelectItemText,
   SelectTrigger,
   SelectValue,
 } from "@/examples/ark/ui/select"
 import { Textarea } from "@/examples/ark/ui/textarea"
+
+const monthItems = createListCollection({
+  items: [
+    { label: "01", value: "01" },
+    { label: "02", value: "02" },
+    { label: "03", value: "03" },
+    { label: "04", value: "04" },
+    { label: "05", value: "05" },
+    { label: "06", value: "06" },
+    { label: "07", value: "07" },
+    { label: "08", value: "08" },
+    { label: "09", value: "09" },
+    { label: "10", value: "10" },
+    { label: "11", value: "11" },
+    { label: "12", value: "12" },
+  ],
+})
+
+const yearItems = createListCollection({
+  items: [
+    { label: "2024", value: "2024" },
+    { label: "2025", value: "2025" },
+    { label: "2026", value: "2026" },
+    { label: "2027", value: "2027" },
+    { label: "2028", value: "2028" },
+    { label: "2029", value: "2029" },
+  ],
+})
 
 export default function FieldDemo() {
   return (
@@ -59,25 +90,19 @@ export default function FieldDemo() {
                   <FieldLabel htmlFor="checkout-exp-month-ts6">
                     Month
                   </FieldLabel>
-                  <Select defaultValue="">
+                  <Select collection={monthItems}>
                     <SelectTrigger id="checkout-exp-month-ts6">
                       <SelectValue placeholder="MM" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectGroup>
-                        <SelectItem value="01">01</SelectItem>
-                        <SelectItem value="02">02</SelectItem>
-                        <SelectItem value="03">03</SelectItem>
-                        <SelectItem value="04">04</SelectItem>
-                        <SelectItem value="05">05</SelectItem>
-                        <SelectItem value="06">06</SelectItem>
-                        <SelectItem value="07">07</SelectItem>
-                        <SelectItem value="08">08</SelectItem>
-                        <SelectItem value="09">09</SelectItem>
-                        <SelectItem value="10">10</SelectItem>
-                        <SelectItem value="11">11</SelectItem>
-                        <SelectItem value="12">12</SelectItem>
-                      </SelectGroup>
+                      <SelectItemGroup>
+                        {monthItems.items.map((item) => (
+                          <SelectItem key={item.value} item={item}>
+                            <SelectItemText>{item.label}</SelectItemText>
+                            <SelectItemIndicator />
+                          </SelectItem>
+                        ))}
+                      </SelectItemGroup>
                     </SelectContent>
                   </Select>
                 </Field>
@@ -85,19 +110,19 @@ export default function FieldDemo() {
                   <FieldLabel htmlFor="checkout-7j9-exp-year-f59">
                     Year
                   </FieldLabel>
-                  <Select defaultValue="">
+                  <Select collection={yearItems}>
                     <SelectTrigger id="checkout-7j9-exp-year-f59">
                       <SelectValue placeholder="YYYY" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectGroup>
-                        <SelectItem value="2024">2024</SelectItem>
-                        <SelectItem value="2025">2025</SelectItem>
-                        <SelectItem value="2026">2026</SelectItem>
-                        <SelectItem value="2027">2027</SelectItem>
-                        <SelectItem value="2028">2028</SelectItem>
-                        <SelectItem value="2029">2029</SelectItem>
-                      </SelectGroup>
+                      <SelectItemGroup>
+                        {yearItems.items.map((item) => (
+                          <SelectItem key={item.value} item={item}>
+                            <SelectItemText>{item.label}</SelectItemText>
+                            <SelectItemIndicator />
+                          </SelectItem>
+                        ))}
+                      </SelectItemGroup>
                     </SelectContent>
                   </Select>
                 </Field>

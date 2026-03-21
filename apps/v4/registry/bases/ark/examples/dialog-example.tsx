@@ -41,10 +41,13 @@ import {
   NativeSelectOption,
 } from "@/registry/bases/ark/ui/native-select"
 import {
+  createListCollection,
   Select,
   SelectContent,
-  SelectGroup,
   SelectItem,
+  SelectItemGroup,
+  SelectItemIndicator,
+  SelectItemText,
   SelectSeparator,
   SelectTrigger,
   SelectValue,
@@ -253,6 +256,36 @@ const voices = [
   { label: "Daniel", value: "daniel" },
 ]
 
+const themeItems = createListCollection({
+  items: [
+    { label: "Light", value: "light" },
+    { label: "Dark", value: "dark" },
+    { label: "System", value: "system" },
+  ],
+})
+
+const accentColorItems = createListCollection({
+  items: [
+    { label: "Default", value: "default", color: "bg-neutral-500 dark:bg-neutral-400" },
+    { label: "Red", value: "red", color: "bg-red-500 dark:bg-red-400" },
+    { label: "Blue", value: "blue", color: "bg-blue-500 dark:bg-blue-400" },
+    { label: "Green", value: "green", color: "bg-green-500 dark:bg-green-400" },
+    { label: "Purple", value: "purple", color: "bg-purple-500 dark:bg-purple-400" },
+    { label: "Pink", value: "pink", color: "bg-pink-500 dark:bg-pink-400" },
+  ],
+})
+
+const spokenLanguageItems = createListCollection({
+  items: [
+    { label: "Auto", value: "auto" },
+    ...spokenLanguages,
+  ],
+})
+
+const voiceItems = createListCollection({
+  items: voices,
+})
+
 function DialogChatSettings() {
   const [tab, setTab] = React.useState("general")
   const [theme, setTheme] = React.useState("system")
@@ -304,16 +337,19 @@ function DialogChatSettings() {
                     <FieldGroup>
                       <Field orientation="horizontal">
                         <FieldLabel htmlFor="theme">Theme</FieldLabel>
-                        <Select value={theme} onValueChange={setTheme}>
+                        <Select collection={themeItems} value={[theme]} onValueChange={(details) => setTheme(details.value[0])}>
                           <SelectTrigger id="theme">
                             <SelectValue placeholder="Select" />
                           </SelectTrigger>
                           <SelectContent align="end">
-                            <SelectGroup>
-                              <SelectItem value="light">Light</SelectItem>
-                              <SelectItem value="dark">Dark</SelectItem>
-                              <SelectItem value="system">System</SelectItem>
-                            </SelectGroup>
+                            <SelectItemGroup>
+                              {themeItems.items.map((item) => (
+                                <SelectItem key={item.value} item={item}>
+                                  <SelectItemText>{item.label}</SelectItemText>
+                                  <SelectItemIndicator />
+                                </SelectItem>
+                              ))}
+                            </SelectItemGroup>
                           </SelectContent>
                         </Select>
                       </Field>
@@ -323,39 +359,25 @@ function DialogChatSettings() {
                           Accent Color
                         </FieldLabel>
                         <Select
-                          value={accentColor}
-                          onValueChange={setAccentColor}
+                          collection={accentColorItems}
+                          value={[accentColor]}
+                          onValueChange={(details) => setAccentColor(details.value[0])}
                         >
                           <SelectTrigger id="accent-color">
                             <SelectValue placeholder="Select" />
                           </SelectTrigger>
                           <SelectContent align="end">
-                            <SelectGroup>
-                              <SelectItem value="default">
-                                <div className="size-3 rounded-full bg-neutral-500 dark:bg-neutral-400" />
-                                Default
-                              </SelectItem>
-                              <SelectItem value="red">
-                                <div className="size-3 rounded-full bg-red-500 dark:bg-red-400" />
-                                Red
-                              </SelectItem>
-                              <SelectItem value="blue">
-                                <div className="size-3 rounded-full bg-blue-500 dark:bg-blue-400" />
-                                Blue
-                              </SelectItem>
-                              <SelectItem value="green">
-                                <div className="size-3 rounded-full bg-green-500 dark:bg-green-400" />
-                                Green
-                              </SelectItem>
-                              <SelectItem value="purple">
-                                <div className="size-3 rounded-full bg-purple-500 dark:bg-purple-400" />
-                                Purple
-                              </SelectItem>
-                              <SelectItem value="pink">
-                                <div className="size-3 rounded-full bg-pink-500 dark:bg-pink-400" />
-                                Pink
-                              </SelectItem>
-                            </SelectGroup>
+                            <SelectItemGroup>
+                              {accentColorItems.items.map((item) => (
+                                <SelectItem key={item.value} item={item}>
+                                  <SelectItemText>
+                                    <div className={`size-3 rounded-full ${item.color}`} />
+                                    {item.label}
+                                  </SelectItemText>
+                                  <SelectItemIndicator />
+                                </SelectItem>
+                              ))}
+                            </SelectItemGroup>
                           </SelectContent>
                         </Select>
                       </Field>
@@ -372,48 +394,54 @@ function DialogChatSettings() {
                           </FieldDescription>
                         </FieldContent>
                         <Select
-                          value={spokenLanguage}
-                          onValueChange={setSpokenLanguage}
+                          collection={spokenLanguageItems}
+                          value={[spokenLanguage]}
+                          onValueChange={(details) => setSpokenLanguage(details.value[0])}
                         >
                           <SelectTrigger id="spoken-language">
                             <SelectValue placeholder="Select" />
                           </SelectTrigger>
-                          <SelectContent align="end" position="item-aligned">
-                            <SelectGroup>
-                              <SelectItem value="auto">Auto</SelectItem>
-                            </SelectGroup>
+                          <SelectContent align="end">
+                            <SelectItemGroup>
+                              <SelectItem item={spokenLanguageItems.items[0]}>
+                                <SelectItemText>Auto</SelectItemText>
+                                <SelectItemIndicator />
+                              </SelectItem>
+                            </SelectItemGroup>
                             <SelectSeparator />
-                            <SelectGroup>
+                            <SelectItemGroup>
                               {spokenLanguages.map((language) => (
                                 <SelectItem
                                   key={language.value}
-                                  value={language.value}
+                                  item={language}
                                 >
-                                  {language.label}
+                                  <SelectItemText>{language.label}</SelectItemText>
+                                  <SelectItemIndicator />
                                 </SelectItem>
                               ))}
-                            </SelectGroup>
+                            </SelectItemGroup>
                           </SelectContent>
                         </Select>
                       </Field>
                       <FieldSeparator />
                       <Field orientation="horizontal">
                         <FieldLabel htmlFor="voice">Voice</FieldLabel>
-                        <Select value={voice} onValueChange={setVoice}>
+                        <Select collection={voiceItems} value={[voice]} onValueChange={(details) => setVoice(details.value[0])}>
                           <SelectTrigger id="voice">
                             <SelectValue placeholder="Select" />
                           </SelectTrigger>
-                          <SelectContent align="end" position="item-aligned">
-                            <SelectGroup>
-                              {voices.map((voice) => (
+                          <SelectContent align="end">
+                            <SelectItemGroup>
+                              {voices.map((v) => (
                                 <SelectItem
-                                  key={voice.value}
-                                  value={voice.value}
+                                  key={v.value}
+                                  item={v}
                                 >
-                                  {voice.label}
+                                  <SelectItemText>{v.label}</SelectItemText>
+                                  <SelectItemIndicator />
                                 </SelectItem>
                               ))}
-                            </SelectGroup>
+                            </SelectItemGroup>
                           </SelectContent>
                         </Select>
                       </Field>

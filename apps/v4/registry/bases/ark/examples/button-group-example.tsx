@@ -28,10 +28,13 @@ import {
 } from "@/registry/bases/ark/ui/input-group"
 import { Label } from "@/registry/bases/ark/ui/label"
 import {
+  createListCollection,
   Select,
   SelectContent,
-  SelectGroup,
   SelectItem,
+  SelectItemGroup,
+  SelectItemIndicator,
+  SelectItemText,
   SelectTrigger,
   SelectValue,
 } from "@/registry/bases/ark/ui/select"
@@ -239,6 +242,14 @@ function ButtonGroupWithDropdown() {
   )
 }
 
+const currencySymbolItems = createListCollection({
+  items: [
+    { label: "$", value: "$" },
+    { label: "€", value: "€" },
+    { label: "£", value: "£" },
+  ],
+})
+
 function ButtonGroupWithSelect() {
   const [currency, setCurrency] = useState("$")
 
@@ -247,16 +258,19 @@ function ButtonGroupWithSelect() {
       <Field>
         <Label htmlFor="amount">Amount</Label>
         <ButtonGroup>
-          <Select value={currency} onValueChange={setCurrency}>
+          <Select collection={currencySymbolItems} value={[currency]} onValueChange={(details) => setCurrency(details.value[0])}>
             <SelectTrigger>
               <SelectValue />
             </SelectTrigger>
             <SelectContent align="start">
-              <SelectGroup>
-                <SelectItem value="$">$</SelectItem>
-                <SelectItem value="€">€</SelectItem>
-                <SelectItem value="£">£</SelectItem>
-              </SelectGroup>
+              <SelectItemGroup>
+                {currencySymbolItems.items.map((item) => (
+                  <SelectItem key={item.value} item={item}>
+                    <SelectItemText>{item.label}</SelectItemText>
+                    <SelectItemIndicator />
+                  </SelectItem>
+                ))}
+              </SelectItemGroup>
             </SelectContent>
           </Select>
           <Input placeholder="Enter amount to send" />
@@ -404,20 +418,31 @@ function ButtonGroupWithLike() {
   )
 }
 
+const durationItems = createListCollection({
+  items: [
+    { label: "Hours", value: "hours" },
+    { label: "Days", value: "days" },
+    { label: "Weeks", value: "weeks" },
+  ],
+})
+
 function ButtonGroupWithSelectAndInput() {
   return (
     <Example title="With Select and Input">
       <ButtonGroup>
-        <Select defaultValue="hours">
+        <Select collection={durationItems} defaultValue={["hours"]}>
           <SelectTrigger id="duration">
             <SelectValue placeholder="Select duration" />
           </SelectTrigger>
           <SelectContent align="start">
-            <SelectGroup>
-              <SelectItem value="hours">Hours</SelectItem>
-              <SelectItem value="days">Days</SelectItem>
-              <SelectItem value="weeks">Weeks</SelectItem>
-            </SelectGroup>
+            <SelectItemGroup>
+              {durationItems.items.map((item) => (
+                <SelectItem key={item.value} item={item}>
+                  <SelectItemText>{item.label}</SelectItemText>
+                  <SelectItemIndicator />
+                </SelectItem>
+              ))}
+            </SelectItemGroup>
           </SelectContent>
         </Select>
         <Input />
