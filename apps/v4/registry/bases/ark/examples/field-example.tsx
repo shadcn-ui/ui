@@ -36,10 +36,13 @@ import {
   RadioGroupItem,
 } from "@/registry/bases/ark/ui/radio-group"
 import {
+  createListCollection,
   Select,
   SelectContent,
-  SelectGroup,
   SelectItem,
+  SelectItemGroup,
+  SelectItemIndicator,
+  SelectItemText,
   SelectTrigger,
   SelectValue,
 } from "@/registry/bases/ark/ui/select"
@@ -200,37 +203,75 @@ function TextareaFields() {
   )
 }
 
+const optionItems = createListCollection({
+  items: [
+    { label: "Option 1", value: "option1" },
+    { label: "Option 2", value: "option2" },
+    { label: "Option 3", value: "option3" },
+  ],
+})
+
+const countryItems = createListCollection({
+  items: [
+    { label: "United States", value: "us" },
+    { label: "United Kingdom", value: "uk" },
+    { label: "Canada", value: "ca" },
+  ],
+})
+
+const fruitItems = createListCollection({
+  items: [
+    { label: "Apple", value: "apple" },
+    { label: "Banana", value: "banana" },
+    { label: "Orange", value: "orange" },
+  ],
+})
+
+const timezoneItems = createListCollection({
+  items: [
+    { label: "UTC", value: "utc" },
+    { label: "Eastern Time", value: "est" },
+    { label: "Pacific Time", value: "pst" },
+  ],
+})
+
 function SelectFields() {
   return (
     <Example title="Select Fields">
       <FieldGroup>
         <Field>
           <FieldLabel htmlFor="select-basic">Basic Select</FieldLabel>
-          <Select>
+          <Select collection={optionItems}>
             <SelectTrigger id="select-basic">
               <SelectValue placeholder="Choose an option" />
             </SelectTrigger>
             <SelectContent>
-              <SelectGroup>
-                <SelectItem value="option1">Option 1</SelectItem>
-                <SelectItem value="option2">Option 2</SelectItem>
-                <SelectItem value="option3">Option 3</SelectItem>
-              </SelectGroup>
+              <SelectItemGroup>
+                {optionItems.items.map((item) => (
+                  <SelectItem key={item.value} item={item}>
+                    <SelectItemText>{item.label}</SelectItemText>
+                    <SelectItemIndicator />
+                  </SelectItem>
+                ))}
+              </SelectItemGroup>
             </SelectContent>
           </Select>
         </Field>
         <Field>
           <FieldLabel htmlFor="select-country">Country</FieldLabel>
-          <Select>
+          <Select collection={countryItems}>
             <SelectTrigger id="select-country">
               <SelectValue placeholder="Select your country" />
             </SelectTrigger>
             <SelectContent>
-              <SelectGroup>
-                <SelectItem value="us">United States</SelectItem>
-                <SelectItem value="uk">United Kingdom</SelectItem>
-                <SelectItem value="ca">Canada</SelectItem>
-              </SelectGroup>
+              <SelectItemGroup>
+                {countryItems.items.map((item) => (
+                  <SelectItem key={item.value} item={item}>
+                    <SelectItemText>{item.label}</SelectItemText>
+                    <SelectItemIndicator />
+                  </SelectItem>
+                ))}
+              </SelectItemGroup>
             </SelectContent>
           </Select>
           <FieldDescription>
@@ -242,31 +283,37 @@ function SelectFields() {
           <FieldDescription>
             Choose your local timezone for accurate scheduling.
           </FieldDescription>
-          <Select>
+          <Select collection={timezoneItems}>
             <SelectTrigger id="select-timezone">
               <SelectValue placeholder="Select timezone" />
             </SelectTrigger>
             <SelectContent>
-              <SelectGroup>
-                <SelectItem value="utc">UTC</SelectItem>
-                <SelectItem value="est">Eastern Time</SelectItem>
-                <SelectItem value="pst">Pacific Time</SelectItem>
-              </SelectGroup>
+              <SelectItemGroup>
+                {timezoneItems.items.map((item) => (
+                  <SelectItem key={item.value} item={item}>
+                    <SelectItemText>{item.label}</SelectItemText>
+                    <SelectItemIndicator />
+                  </SelectItem>
+                ))}
+              </SelectItemGroup>
             </SelectContent>
           </Select>
         </Field>
         <Field data-invalid>
           <FieldLabel htmlFor="select-invalid">Invalid Select</FieldLabel>
-          <Select>
+          <Select collection={optionItems}>
             <SelectTrigger id="select-invalid" aria-invalid>
               <SelectValue placeholder="This field has an error" />
             </SelectTrigger>
             <SelectContent>
-              <SelectGroup>
-                <SelectItem value="option1">Option 1</SelectItem>
-                <SelectItem value="option2">Option 2</SelectItem>
-                <SelectItem value="option3">Option 3</SelectItem>
-              </SelectGroup>
+              <SelectItemGroup>
+                {optionItems.items.map((item) => (
+                  <SelectItem key={item.value} item={item}>
+                    <SelectItemText>{item.label}</SelectItemText>
+                    <SelectItemIndicator />
+                  </SelectItem>
+                ))}
+              </SelectItemGroup>
             </SelectContent>
           </Select>
           <FieldDescription>
@@ -277,16 +324,19 @@ function SelectFields() {
           <FieldLabel htmlFor="select-disabled-field">
             Disabled Field
           </FieldLabel>
-          <Select disabled>
+          <Select collection={optionItems} disabled>
             <SelectTrigger id="select-disabled-field">
               <SelectValue placeholder="Cannot select" />
             </SelectTrigger>
             <SelectContent>
-              <SelectGroup>
-                <SelectItem value="option1">Option 1</SelectItem>
-                <SelectItem value="option2">Option 2</SelectItem>
-                <SelectItem value="option3">Option 3</SelectItem>
-              </SelectGroup>
+              <SelectItemGroup>
+                {optionItems.items.map((item) => (
+                  <SelectItem key={item.value} item={item}>
+                    <SelectItemText>{item.label}</SelectItemText>
+                    <SelectItemIndicator />
+                  </SelectItem>
+                ))}
+              </SelectItemGroup>
             </SelectContent>
           </Select>
           <FieldDescription>This field is currently disabled.</FieldDescription>
@@ -973,16 +1023,19 @@ function HorizontalFields() {
             <FieldLabel htmlFor="horizontal-select">Favorite Fruit</FieldLabel>
             <FieldDescription>Choose your favorite fruit.</FieldDescription>
           </FieldContent>
-          <Select>
+          <Select collection={fruitItems}>
             <SelectTrigger id="horizontal-select">
               <SelectValue placeholder="Select a fruit" />
             </SelectTrigger>
             <SelectContent>
-              <SelectGroup>
-                <SelectItem value="apple">Apple</SelectItem>
-                <SelectItem value="banana">Banana</SelectItem>
-                <SelectItem value="orange">Orange</SelectItem>
-              </SelectGroup>
+              <SelectItemGroup>
+                {fruitItems.items.map((item) => (
+                  <SelectItem key={item.value} item={item}>
+                    <SelectItemText>{item.label}</SelectItemText>
+                    <SelectItemIndicator />
+                  </SelectItem>
+                ))}
+              </SelectItemGroup>
             </SelectContent>
           </Select>
         </Field>

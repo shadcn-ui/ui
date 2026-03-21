@@ -6,7 +6,21 @@
       "Bash(ls:*)",
       "Bash(cat:*)",
       "WebSearch",
-      "WebFetch(domain:github.com)"
+      "WebFetch(domain:github.com)",
+      "Bash(pnpm registry:*)",
+      "Bash(bun run:*)",
+      "Bash(grep -rn SelectGroup /Users/lope/Desktop/open-source/shadcn/ui/apps/v4/registry/bases/ark/examples/*.tsx /Users/lope/Desktop/open-source/shadcn/ui/apps/v4/examples/ark/*.tsx)",
+      "Bash(grep -rl SelectGroupb /Users/lope/Desktop/open-source/shadcn/ui/apps/v4/examples/ark/*.tsx /Users/lope/Desktop/open-source/shadcn/ui/apps/v4/registry/bases/ark/examples/*.tsx)",
+      "Bash(npx tsc:*)",
+      "Bash(pkill -f 'next dev')",
+      "Bash(pkill -f turbo)",
+      "Bash(pkill -f tsup)",
+      "Bash(pkill -f tsx)",
+      "Bash(grep -rn \"ComboboxEmpty\\\\|ComboboxChip\\\\|ComboboxCollection\\\\|ComboboxValue\\\\|SelectGroup[^L]\\\\|SelectLabel[^>]\\\\|SelectScrollDown\\\\|SelectScrollUp\\\\|useComboboxAnchor\" /Users/lope/Desktop/open-source/shadcn/ui/apps/v4/registry/bases/ark/examples/*.tsx /Users/lope/Desktop/open-source/shadcn/ui/apps/v4/examples/ark/*.tsx)",
+      "Bash(__NEW_LINE_0f439a331b76470a__ git:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
     ],
     "deny": []
   }

@@ -13,10 +13,13 @@ import {
 } from "@/examples/ark/ui-rtl/field"
 import { Input } from "@/examples/ark/ui-rtl/input"
 import {
+  createListCollection,
   Select,
   SelectContent,
-  SelectGroup,
   SelectItem,
+  SelectItemGroup,
+  SelectItemIndicator,
+  SelectItemText,
   SelectTrigger,
   SelectValue,
 } from "@/examples/ark/ui-rtl/select"
@@ -28,7 +31,7 @@ import {
 } from "@/components/language-selector"
 
 const months = [
-  { label: "MM", value: null },
+  { label: "MM", value: "MM" },
   { label: "01", value: "01" },
   { label: "02", value: "02" },
   { label: "03", value: "03" },
@@ -43,8 +46,10 @@ const months = [
   { label: "12", value: "12" },
 ]
 
+const monthItems = createListCollection({ items: months })
+
 const years = [
-  { label: "YYYY", value: null },
+  { label: "YYYY", value: "YYYY" },
   { label: "2024", value: "2024" },
   { label: "2025", value: "2025" },
   { label: "2026", value: "2026" },
@@ -52,6 +57,8 @@ const years = [
   { label: "2028", value: "2028" },
   { label: "2029", value: "2029" },
 ]
+
+const yearItems = createListCollection({ items: years })
 
 const translations: Translations = {
   en: {
@@ -159,8 +166,8 @@ const translations: Translations = {
 export function FieldRtl() {
   const { dir, t } = useTranslation(translations, "ar")
 
-  const getMonthLabel = (value: string | null): string => {
-    if (value === null) return t.monthPlaceholder
+  const getMonthLabel = (value: string): string => {
+    if (value === "MM") return t.monthPlaceholder
     const monthKey = `month${value}` as keyof typeof t
     return t[monthKey] || value
   }
@@ -199,21 +206,22 @@ export function FieldRtl() {
                   <FieldLabel htmlFor="checkout-exp-month-ts6-rtl">
                     {t.month}
                   </FieldLabel>
-                  <Select>
+                  <Select collection={monthItems}>
                     <SelectTrigger id="checkout-exp-month-ts6-rtl">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent dir={dir}>
-                      <SelectGroup>
+                      <SelectItemGroup>
                         {months.map((item) => (
                           <SelectItem
-                            key={item.label}
-                            value={item.value ?? item.label}
+                            key={item.value}
+                            item={item}
                           >
-                            {getMonthLabel(item.value)}
+                            <SelectItemText>{getMonthLabel(item.value)}</SelectItemText>
+                            <SelectItemIndicator />
                           </SelectItem>
                         ))}
-                      </SelectGroup>
+                      </SelectItemGroup>
                     </SelectContent>
                   </Select>
                 </Field>
@@ -221,21 +229,22 @@ export function FieldRtl() {
                   <FieldLabel htmlFor="checkout-7j9-exp-year-f59-rtl">
                     {t.year}
                   </FieldLabel>
-                  <Select>
+                  <Select collection={yearItems}>
                     <SelectTrigger id="checkout-7j9-exp-year-f59-rtl">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent dir={dir}>
-                      <SelectGroup>
+                      <SelectItemGroup>
                         {years.map((item) => (
                           <SelectItem
-                            key={item.label}
-                            value={item.value ?? item.label}
+                            key={item.value}
+                            item={item}
                           >
-                            {item.label}
+                            <SelectItemText>{item.label}</SelectItemText>
+                            <SelectItemIndicator />
                           </SelectItem>
                         ))}
-                      </SelectGroup>
+                      </SelectItemGroup>
                     </SelectContent>
                   </Select>
                 </Field>

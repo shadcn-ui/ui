@@ -1,32 +1,46 @@
 import { Field, FieldDescription, FieldLabel } from "@/examples/ark/ui/field"
 import {
+  createListCollection,
   Select,
   SelectContent,
-  SelectGroup,
   SelectItem,
+  SelectItemGroup,
+  SelectItemIndicator,
+  SelectItemText,
   SelectTrigger,
   SelectValue,
 } from "@/examples/ark/ui/select"
+
+const departmentItems = createListCollection({
+  items: [
+    { label: "Engineering", value: "engineering" },
+    { label: "Design", value: "design" },
+    { label: "Marketing", value: "marketing" },
+    { label: "Sales", value: "sales" },
+    { label: "Customer Support", value: "support" },
+    { label: "Human Resources", value: "hr" },
+    { label: "Finance", value: "finance" },
+    { label: "Operations", value: "operations" },
+  ],
+})
 
 export default function FieldSelect() {
   return (
     <Field className="w-full max-w-xs">
       <FieldLabel>Department</FieldLabel>
-      <Select>
+      <Select collection={departmentItems}>
         <SelectTrigger>
           <SelectValue placeholder="Choose department" />
         </SelectTrigger>
         <SelectContent>
-          <SelectGroup>
-            <SelectItem value="engineering">Engineering</SelectItem>
-            <SelectItem value="design">Design</SelectItem>
-            <SelectItem value="marketing">Marketing</SelectItem>
-            <SelectItem value="sales">Sales</SelectItem>
-            <SelectItem value="support">Customer Support</SelectItem>
-            <SelectItem value="hr">Human Resources</SelectItem>
-            <SelectItem value="finance">Finance</SelectItem>
-            <SelectItem value="operations">Operations</SelectItem>
-          </SelectGroup>
+          <SelectItemGroup>
+            {departmentItems.items.map((item) => (
+              <SelectItem key={item.value} item={item}>
+                <SelectItemText>{item.label}</SelectItemText>
+                <SelectItemIndicator />
+              </SelectItem>
+            ))}
+          </SelectItemGroup>
         </SelectContent>
       </Select>
       <FieldDescription>

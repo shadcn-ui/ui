@@ -13,10 +13,13 @@ import {
 } from "@/registry/bases/ark/ui/field"
 import { Input } from "@/registry/bases/ark/ui/input"
 import {
+  createListCollection,
   Select,
   SelectContent,
-  SelectGroup,
   SelectItem,
+  SelectItemGroup,
+  SelectItemIndicator,
+  SelectItemText,
   SelectTrigger,
   SelectValue,
 } from "@/registry/bases/ark/ui/select"
@@ -347,21 +350,32 @@ function ToggleGroupSort() {
   )
 }
 
+const filterItems = createListCollection({
+  items: [
+    { label: "All", value: "all" },
+    { label: "Active", value: "active" },
+    { label: "Archived", value: "archived" },
+  ],
+})
+
 function ToggleGroupWithInputAndSelect() {
   return (
     <Example title="With Input and Select">
       <div className="flex items-center gap-2">
         <Input type="search" placeholder="Search..." className="flex-1" />
-        <Select defaultValue="all">
+        <Select collection={filterItems} defaultValue={["all"]}>
           <SelectTrigger className="w-32">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
-            <SelectGroup>
-              <SelectItem value="all">All</SelectItem>
-              <SelectItem value="active">Active</SelectItem>
-              <SelectItem value="archived">Archived</SelectItem>
-            </SelectGroup>
+            <SelectItemGroup>
+              {filterItems.items.map((item) => (
+                <SelectItem key={item.value} item={item}>
+                  <SelectItemText>{item.label}</SelectItemText>
+                  <SelectItemIndicator />
+                </SelectItem>
+              ))}
+            </SelectItemGroup>
           </SelectContent>
         </Select>
         <ToggleGroup type="single" defaultValue="grid" variant="outline">

@@ -12,10 +12,13 @@ import {
 } from "@/registry/bases/ark/ui/dropdown-menu"
 import { Input } from "@/registry/bases/ark/ui/input"
 import {
+  createListCollection,
   Select,
   SelectContent,
-  SelectGroup,
   SelectItem,
+  SelectItemGroup,
+  SelectItemIndicator,
+  SelectItemText,
   SelectTrigger,
   SelectValue,
 } from "@/registry/bases/ark/ui/select"
@@ -348,6 +351,15 @@ function TableWithActions() {
   )
 }
 
+const assigneeItems = createListCollection({
+  items: [
+    { label: "Sarah Chen", value: "sarah" },
+    { label: "Marc Rodriguez", value: "marcus" },
+    { label: "Emily Watson", value: "emily" },
+    { label: "David Kim", value: "david" },
+  ],
+})
+
 function TableWithSelect() {
   return (
     <Example title="With Select">
@@ -363,17 +375,19 @@ function TableWithSelect() {
           <TableRow>
             <TableCell className="font-medium">Design homepage</TableCell>
             <TableCell>
-              <Select defaultValue="sarah">
+              <Select collection={assigneeItems} defaultValue={["sarah"]}>
                 <SelectTrigger className="w-40" size="sm">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectGroup>
-                    <SelectItem value="sarah">Sarah Chen</SelectItem>
-                    <SelectItem value="marcus">Marc Rodriguez</SelectItem>
-                    <SelectItem value="emily">Emily Watson</SelectItem>
-                    <SelectItem value="david">David Kim</SelectItem>
-                  </SelectGroup>
+                  <SelectItemGroup>
+                    {assigneeItems.items.map((item) => (
+                      <SelectItem key={item.value} item={item}>
+                        <SelectItemText>{item.label}</SelectItemText>
+                        <SelectItemIndicator />
+                      </SelectItem>
+                    ))}
+                  </SelectItemGroup>
                 </SelectContent>
               </Select>
             </TableCell>
@@ -382,17 +396,19 @@ function TableWithSelect() {
           <TableRow>
             <TableCell className="font-medium">Implement API</TableCell>
             <TableCell>
-              <Select defaultValue="marcus">
+              <Select collection={assigneeItems} defaultValue={["marcus"]}>
                 <SelectTrigger className="w-40" size="sm">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectGroup>
-                    <SelectItem value="sarah">Sarah Chen</SelectItem>
-                    <SelectItem value="marcus">Marc Rodriguez</SelectItem>
-                    <SelectItem value="emily">Emily Watson</SelectItem>
-                    <SelectItem value="david">David Kim</SelectItem>
-                  </SelectGroup>
+                  <SelectItemGroup>
+                    {assigneeItems.items.map((item) => (
+                      <SelectItem key={item.value} item={item}>
+                        <SelectItemText>{item.label}</SelectItemText>
+                        <SelectItemIndicator />
+                      </SelectItem>
+                    ))}
+                  </SelectItemGroup>
                 </SelectContent>
               </Select>
             </TableCell>
@@ -401,17 +417,19 @@ function TableWithSelect() {
           <TableRow>
             <TableCell className="font-medium">Write tests</TableCell>
             <TableCell>
-              <Select defaultValue="emily">
+              <Select collection={assigneeItems} defaultValue={["emily"]}>
                 <SelectTrigger className="w-40" size="sm">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectGroup>
-                    <SelectItem value="sarah">Sarah Chen</SelectItem>
-                    <SelectItem value="marcus">Marc Rodriguez</SelectItem>
-                    <SelectItem value="emily">Emily Watson</SelectItem>
-                    <SelectItem value="david">David Kim</SelectItem>
-                  </SelectGroup>
+                  <SelectItemGroup>
+                    {assigneeItems.items.map((item) => (
+                      <SelectItem key={item.value} item={item}>
+                        <SelectItemText>{item.label}</SelectItemText>
+                        <SelectItemIndicator />
+                      </SelectItem>
+                    ))}
+                  </SelectItemGroup>
                 </SelectContent>
               </Select>
             </TableCell>

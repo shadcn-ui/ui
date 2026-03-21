@@ -15,10 +15,13 @@ import {
   NativeSelectOption,
 } from "@/registry/bases/ark/ui/native-select"
 import {
+  createListCollection,
   Select,
   SelectContent,
-  SelectGroup,
   SelectItem,
+  SelectItemGroup,
+  SelectItemIndicator,
+  SelectItemText,
   SelectTrigger,
   SelectValue,
 } from "@/registry/bases/ark/ui/select"
@@ -158,21 +161,32 @@ function InputTypes() {
   )
 }
 
+const currencyItems = createListCollection({
+  items: [
+    { label: "USD", value: "usd" },
+    { label: "EUR", value: "eur" },
+    { label: "GBP", value: "gbp" },
+  ],
+})
+
 function InputWithSelect() {
   return (
     <Example title="With Select">
       <div className="flex w-full gap-2">
         <Input type="text" placeholder="Enter amount" className="flex-1" />
-        <Select defaultValue="usd">
+        <Select collection={currencyItems} defaultValue={["usd"]}>
           <SelectTrigger className="w-32">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
-            <SelectGroup>
-              <SelectItem value="usd">USD</SelectItem>
-              <SelectItem value="eur">EUR</SelectItem>
-              <SelectItem value="gbp">GBP</SelectItem>
-            </SelectGroup>
+            <SelectItemGroup>
+              {currencyItems.items.map((item) => (
+                <SelectItem key={item.value} item={item}>
+                  <SelectItemText>{item.label}</SelectItemText>
+                  <SelectItemIndicator />
+                </SelectItem>
+              ))}
+            </SelectItemGroup>
           </SelectContent>
         </Select>
       </div>
@@ -206,6 +220,14 @@ function InputWithNativeSelect() {
   )
 }
 
+const countryItems = createListCollection({
+  items: [
+    { label: "United States", value: "us" },
+    { label: "United Kingdom", value: "uk" },
+    { label: "Canada", value: "ca" },
+  ],
+})
+
 function InputForm() {
   return (
     <Example title="Form">
@@ -237,16 +259,19 @@ function InputForm() {
             </Field>
             <Field>
               <FieldLabel htmlFor="form-country">Country</FieldLabel>
-              <Select defaultValue="us">
+              <Select collection={countryItems} defaultValue={["us"]}>
                 <SelectTrigger id="form-country">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectGroup>
-                    <SelectItem value="us">United States</SelectItem>
-                    <SelectItem value="uk">United Kingdom</SelectItem>
-                    <SelectItem value="ca">Canada</SelectItem>
-                  </SelectGroup>
+                  <SelectItemGroup>
+                    {countryItems.items.map((item) => (
+                      <SelectItem key={item.value} item={item}>
+                        <SelectItemText>{item.label}</SelectItemText>
+                        <SelectItemIndicator />
+                      </SelectItem>
+                    ))}
+                  </SelectItemGroup>
                 </SelectContent>
               </Select>
             </Field>
