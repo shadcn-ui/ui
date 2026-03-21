@@ -30,13 +30,21 @@ function PopoverAnchor({
   return <PopoverPrimitive.Anchor data-slot="popover-anchor" {...props} />
 }
 
+function PopoverPositioner({
+  ...props
+}: React.ComponentProps<typeof PopoverPrimitive.Positioner>) {
+  return (
+    <PopoverPrimitive.Positioner
+      data-slot="popover-positioner"
+      {...props}
+    />
+  )
+}
+
 const PopoverContent = React.forwardRef<
   HTMLDivElement,
-  React.ComponentProps<typeof PopoverPrimitive.Content> & {
-    align?: "start" | "center" | "end"
-    sideOffset?: number
-  }
->(({ className, align = "center", sideOffset = 4, ...props }, ref) => (
+  React.ComponentProps<typeof PopoverPrimitive.Content>
+>(({ className, ...props }, ref) => (
   <Portal>
     <PopoverPrimitive.Positioner>
       <PopoverPrimitive.Content
@@ -49,6 +57,19 @@ const PopoverContent = React.forwardRef<
   </Portal>
 ))
 PopoverContent.displayName = "PopoverContent"
+
+function PopoverCloseTrigger({
+  className,
+  ...props
+}: React.ComponentProps<typeof PopoverPrimitive.CloseTrigger>) {
+  return (
+    <PopoverPrimitive.CloseTrigger
+      data-slot="popover-close-trigger"
+      className={cn("cn-popover-close-trigger", className)}
+      {...props}
+    />
+  )
+}
 
 function PopoverArrow({
   className,
@@ -105,10 +126,12 @@ export {
   Popover,
   PopoverAnchor,
   PopoverArrow,
+  PopoverCloseTrigger,
   PopoverContent,
   PopoverContext,
   PopoverDescription,
   PopoverHeader,
+  PopoverPositioner,
   PopoverRootProvider,
   PopoverTitle,
   PopoverTrigger,

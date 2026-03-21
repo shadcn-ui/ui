@@ -263,9 +263,38 @@ function ContextMenuShortcut({
   )
 }
 
-// --- Context re-export ---
+function ContextMenuArrow({
+  className,
+  ...props
+}: React.ComponentProps<typeof MenuPrimitive.Arrow>) {
+  return (
+    <MenuPrimitive.Arrow
+      data-slot="context-menu-arrow"
+      className={cn("cn-context-menu-arrow", className)}
+      {...props}
+    >
+      <MenuPrimitive.ArrowTip className="cn-context-menu-arrow-tip" />
+    </MenuPrimitive.Arrow>
+  )
+}
+
+function ContextMenuItemText({
+  className,
+  ...props
+}: React.ComponentProps<typeof MenuPrimitive.ItemText>) {
+  return (
+    <MenuPrimitive.ItemText
+      data-slot="context-menu-item-text"
+      className={cn("cn-context-menu-item-text", className)}
+      {...props}
+    />
+  )
+}
+
+// --- Context & RootProvider re-exports ---
 
 const ContextMenuContext = MenuPrimitive.Context
+const ContextMenuRootProvider = MenuPrimitive.RootProvider
 
 export {
   ContextMenu,
@@ -283,7 +312,10 @@ export {
   ContextMenuSubContent,
   ContextMenuSubTrigger,
   ContextMenuRadioGroup,
+  ContextMenuArrow,
+  ContextMenuItemText,
   ContextMenuContext,
+  ContextMenuRootProvider,
 }
 
 export { useMenu, useMenuContext } from "@ark-ui/react/menu"
