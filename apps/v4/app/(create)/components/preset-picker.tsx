@@ -31,8 +31,10 @@ export function PresetPicker({
         preset.style === params.style &&
         preset.baseColor === params.baseColor &&
         preset.theme === params.theme &&
+        preset.chartColor === params.chartColor &&
         preset.iconLibrary === params.iconLibrary &&
         preset.font === params.font &&
+        preset.fontHeading === params.fontHeading &&
         preset.menuAccent === params.menuAccent &&
         preset.menuColor === params.menuColor &&
         preset.radius === params.radius
@@ -43,8 +45,10 @@ export function PresetPicker({
     params.style,
     params.baseColor,
     params.theme,
+    params.chartColor,
     params.iconLibrary,
     params.font,
+    params.fontHeading,
     params.menuAccent,
     params.menuColor,
     params.radius,
@@ -67,8 +71,10 @@ export function PresetPicker({
       style: preset.style,
       baseColor: preset.baseColor,
       theme: preset.theme,
+      chartColor: preset.chartColor,
       iconLibrary: preset.iconLibrary,
       font: preset.font,
+      fontHeading: preset.fontHeading,
       menuAccent: preset.menuAccent,
       menuColor: preset.menuColor,
       radius: preset.radius,
