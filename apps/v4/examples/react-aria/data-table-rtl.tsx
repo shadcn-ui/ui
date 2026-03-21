@@ -5,8 +5,6 @@ import { Button } from "@/examples/react-aria/ui-rtl/button"
 import { Checkbox } from "@/examples/react-aria/ui-rtl/checkbox"
 import {
   DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
@@ -178,11 +176,11 @@ export function DataTableRtl() {
         id: "select",
         header: ({ table }) => (
           <Checkbox
-            checked={
+            isSelected={
               table.getIsAllPageRowsSelected() ||
               (table.getIsSomePageRowsSelected() ? true : false)
             }
-            onCheckedChange={(value) =>
+            onChange={(value) =>
               table.toggleAllPageRowsSelected(!!value)
             }
             aria-label={t.selectAll}
@@ -190,8 +188,8 @@ export function DataTableRtl() {
         ),
         cell: ({ row }) => (
           <Checkbox
-            checked={row.getIsSelected()}
-            onCheckedChange={(value) => row.toggleSelected(!!value)}
+            isSelected={row.getIsSelected()}
+            onChange={(value) => row.toggleSelected(!!value)}
             aria-label={t.selectRow}
           />
         ),
@@ -254,14 +252,12 @@ export function DataTableRtl() {
           const payment = row.original
 
           return (
-            <DropdownMenu>
-              <DropdownMenuTrigger
-                render={<Button variant="ghost" size="icon-xs" />}
-              >
+            <DropdownMenuTrigger>
+              <Button variant="ghost" size="icon-xs">
                 <span className="sr-only">{t.openMenu}</span>
                 <MoreHorizontal />
-              </DropdownMenuTrigger>
-              <DropdownMenuContent
+              </Button>
+              <DropdownMenu
                 align={dir === "rtl" ? "start" : "end"}
                 data-lang={dir === "rtl" ? language : undefined}
                 className="w-40"
@@ -279,8 +275,8 @@ export function DataTableRtl() {
                   <DropdownMenuItem>{t.viewCustomer}</DropdownMenuItem>
                   <DropdownMenuItem>{t.viewPaymentDetails}</DropdownMenuItem>
                 </DropdownMenuGroup>
-              </DropdownMenuContent>
-            </DropdownMenu>
+              </DropdownMenu>
+            </DropdownMenuTrigger>
           )
         },
       },
@@ -318,37 +314,45 @@ export function DataTableRtl() {
           }
           className="max-w-sm"
         />
-        <DropdownMenu>
-          <DropdownMenuTrigger
-            render={<Button variant="outline" className="ms-auto" />}
-          >
+        <DropdownMenuTrigger>
+          <Button variant="outline" className="ms-auto">
             {t.columns} <ChevronDown />
-          </DropdownMenuTrigger>
-          <DropdownMenuContent
+          </Button>
+          <DropdownMenu
             align={dir === "rtl" ? "start" : "end"}
             data-lang={dir === "rtl" ? language : undefined}
           >
-            <DropdownMenuGroup>
+            <DropdownMenuGroup
+              selectionMode="multiple"
+              selectedKeys={Object.keys(columnVisibility).filter(
+                (key) => columnVisibility[key]
+              )}
+              onSelectionChange={(keys) =>
+                setColumnVisibility(
+                  Object.fromEntries(
+                    keys === "all"
+                      ? table.getAllColumns().map((column) => [column.id, true])
+                      : [...keys].map((key) => [key, true])
+                  )
+                )
+              }>
               {table
                 .getAllColumns()
                 .filter((column) => column.getCanHide())
                 .map((column) => {
                   return (
-                    <DropdownMenuCheckboxItem
+                    <DropdownMenuItem
                       key={column.id}
+                      id={column.id}
                       className="capitalize"
-                      checked={column.getIsVisible()}
-                      onCheckedChange={(value) =>
-                        column.toggleVisibility(!!value)
-                      }
                     >
                       {column.id}
-                    </DropdownMenuCheckboxItem>
+                    </DropdownMenuItem>
                   )
                 })}
             </DropdownMenuGroup>
-          </DropdownMenuContent>
-        </DropdownMenu>
+          </DropdownMenu>
+        </DropdownMenuTrigger>
       </div>
       <div className="overflow-hidden rounded-md border">
         <Table>
@@ -410,7 +414,7 @@ export function DataTableRtl() {
             variant="outline"
             size="sm"
             onClick={() => table.previousPage()}
-            disabled={!table.getCanPreviousPage()}
+            isDisabled={!table.getCanPreviousPage()}
           >
             {t.previous}
           </Button>
@@ -418,7 +422,7 @@ export function DataTableRtl() {
             variant="outline"
             size="sm"
             onClick={() => table.nextPage()}
-            disabled={!table.getCanNextPage()}
+            isDisabled={!table.getCanNextPage()}
           >
             {t.next}
           </Button>

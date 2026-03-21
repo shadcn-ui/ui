@@ -1,13 +1,7 @@
 "use client"
 
 import { Button } from "@/examples/react-aria/ui/button"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/examples/react-aria/ui/dropdown-menu"
+import { DropdownMenu, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/examples/react-aria/ui/dropdown-menu";
 import {
   CreditCardIcon,
   LogOutIcon,
@@ -17,11 +11,11 @@ import {
 
 export function DropdownMenuIcons() {
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger render={<Button variant="outline" />}>
+    <DropdownMenuTrigger>
+      <Button variant="outline">
         Open
-      </DropdownMenuTrigger>
-      <DropdownMenuContent>
+      </Button>
+      <DropdownMenu>
         <DropdownMenuItem>
           <UserIcon />
           Profile
@@ -39,7 +33,7 @@ export function DropdownMenuIcons() {
           <LogOutIcon />
           Log out
         </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
-  )
+      </DropdownMenu>
+    </DropdownMenuTrigger>
+  );
 }

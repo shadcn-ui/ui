@@ -42,16 +42,16 @@ export function ToggleGroupRtl() {
   const { dir, t } = useTranslation(translations, "ar")
 
   return (
-    <ToggleGroup variant="outline" defaultValue={["list"]} dir={dir}>
-      <ToggleGroupItem value="list" aria-label={t.list}>
+    <ToggleGroup variant="outline" defaultSelectedKeys={["list"]} dir={dir}>
+      <ToggleGroupItem id="list" aria-label={t.list}>
         {t.list}
       </ToggleGroupItem>
-      <ToggleGroupItem value="grid" aria-label={t.grid}>
+      <ToggleGroupItem id="grid" aria-label={t.grid}>
         {t.grid}
       </ToggleGroupItem>
-      <ToggleGroupItem value="cards" aria-label={t.cards}>
+      <ToggleGroupItem id="cards" aria-label={t.cards}>
         {t.cards}
       </ToggleGroupItem>
     </ToggleGroup>
-  )
+  );
 }

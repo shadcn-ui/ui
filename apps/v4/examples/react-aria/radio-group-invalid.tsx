@@ -17,26 +17,26 @@ export function RadioGroupInvalid() {
       <FieldDescription>
         Choose how you want to receive notifications.
       </FieldDescription>
-      <RadioGroup defaultValue="email">
+      <RadioGroup defaultValue="email" isInvalid>
         <Field orientation="horizontal" data-invalid>
-          <RadioGroupItem value="email" id="invalid-email" aria-invalid />
+          <RadioGroupItem value="email" id="invalid-email" />
           <FieldLabel htmlFor="invalid-email" className="font-normal">
             Email only
           </FieldLabel>
         </Field>
         <Field orientation="horizontal" data-invalid>
-          <RadioGroupItem value="sms" id="invalid-sms" aria-invalid />
+          <RadioGroupItem value="sms" id="invalid-sms" />
           <FieldLabel htmlFor="invalid-sms" className="font-normal">
             SMS only
           </FieldLabel>
         </Field>
         <Field orientation="horizontal" data-invalid>
-          <RadioGroupItem value="both" id="invalid-both" aria-invalid />
+          <RadioGroupItem value="both" id="invalid-both" />
           <FieldLabel htmlFor="invalid-both" className="font-normal">
             Both Email & SMS
           </FieldLabel>
         </Field>
       </RadioGroup>
     </FieldSet>
-  )
+  );
 }

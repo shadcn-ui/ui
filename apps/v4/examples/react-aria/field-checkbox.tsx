@@ -62,7 +62,7 @@ export function FieldCheckbox() {
       </FieldSet>
       <FieldSeparator />
       <Field orientation="horizontal">
-        <Checkbox id="finder-pref-9k2-sync-folders-nep" defaultChecked />
+        <Checkbox id="finder-pref-9k2-sync-folders-nep" defaultSelected />
         <FieldContent>
           <FieldLabel htmlFor="finder-pref-9k2-sync-folders-nep">
             Sync Desktop & Documents folders
@@ -74,5 +74,5 @@ export function FieldCheckbox() {
         </FieldContent>
       </Field>
     </FieldGroup>
-  )
+  );
 }

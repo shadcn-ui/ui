@@ -2,13 +2,12 @@ import { Button } from "@/examples/react-aria/ui/button"
 import {
   Sheet,
   SheetClose,
-  SheetContent,
   SheetDescription,
   SheetFooter,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/examples/react-aria/ui/sheet"
+} from "@/examples/react-aria/ui/sheet";
 
 const SHEET_SIDES = ["top", "right", "bottom", "left"] as const
 
@@ -16,13 +15,11 @@ export default function SheetSide() {
   return (
     <div className="flex flex-wrap gap-2">
       {SHEET_SIDES.map((side) => (
-        <Sheet key={side}>
-          <SheetTrigger
-            render={<Button variant="outline" className="capitalize" />}
-          >
+        <SheetTrigger key={side}>
+          <Button variant="outline" className="capitalize">
             {side}
-          </SheetTrigger>
-          <SheetContent
+          </Button>
+          <Sheet
             side={side}
             className="data-[side=bottom]:max-h-[50vh] data-[side=top]:max-h-[50vh]"
           >
@@ -49,13 +46,13 @@ export default function SheetSide() {
             </div>
             <SheetFooter>
               <Button type="submit">Save changes</Button>
-              <SheetClose render={<Button variant="outline" />}>
+              <SheetClose variant="outline">
                 Cancel
               </SheetClose>
             </SheetFooter>
-          </SheetContent>
-        </Sheet>
+          </Sheet>
+        </SheetTrigger>
       ))}
     </div>
-  )
+  );
 }

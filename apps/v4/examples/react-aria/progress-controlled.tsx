@@ -12,11 +12,11 @@ export function ProgressControlled() {
       <Progress value={value} className="w-full" />
       <Slider
         value={value}
-        onValueChange={(value) => setValue(value as number)}
-        min={0}
-        max={100}
+        onChange={(value) => setValue(value as number)}
+        minValue={0}
+        maxValue={100}
         step={1}
       />
     </div>
-  )
+  );
 }

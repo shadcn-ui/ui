@@ -17,14 +17,14 @@ export function ToggleGroupFontWeightSelector() {
     <Field>
       <FieldLabel>Font Weight</FieldLabel>
       <ToggleGroup
-        value={[fontWeight]}
-        onValueChange={(value) => setFontWeight(value[0])}
+        selectedKeys={[fontWeight]}
+        onSelectionChange={(value) => setFontWeight([...value][0] as string)}
         variant="outline"
         spacing={2}
         size="lg"
       >
         <ToggleGroupItem
-          value="light"
+          id="light"
           aria-label="Light"
           className="flex size-16 flex-col items-center justify-center rounded-xl"
         >
@@ -32,7 +32,7 @@ export function ToggleGroupFontWeightSelector() {
           <span className="text-xs text-muted-foreground">Light</span>
         </ToggleGroupItem>
         <ToggleGroupItem
-          value="normal"
+          id="normal"
           aria-label="Normal"
           className="flex size-16 flex-col items-center justify-center rounded-xl"
         >
@@ -40,7 +40,7 @@ export function ToggleGroupFontWeightSelector() {
           <span className="text-xs text-muted-foreground">Normal</span>
         </ToggleGroupItem>
         <ToggleGroupItem
-          value="medium"
+          id="medium"
           aria-label="Medium"
           className="flex size-16 flex-col items-center justify-center rounded-xl"
         >
@@ -48,7 +48,7 @@ export function ToggleGroupFontWeightSelector() {
           <span className="text-xs text-muted-foreground">Medium</span>
         </ToggleGroupItem>
         <ToggleGroupItem
-          value="bold"
+          id="bold"
           aria-label="Bold"
           className="flex size-16 flex-col items-center justify-center rounded-xl"
         >
@@ -64,5 +64,5 @@ export function ToggleGroupFontWeightSelector() {
         to set the font weight.
       </FieldDescription>
     </Field>
-  )
+  );
 }

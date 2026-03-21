@@ -4,12 +4,11 @@ import { Button } from "@/examples/react-aria/ui/button"
 import { ButtonGroup } from "@/examples/react-aria/ui/button-group"
 import {
   DropdownMenu,
-  DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/examples/react-aria/ui/dropdown-menu"
+} from "@/examples/react-aria/ui/dropdown-menu";
 import {
   AlertTriangleIcon,
   CheckIcon,
@@ -25,13 +24,11 @@ export default function ButtonGroupDropdown() {
   return (
     <ButtonGroup>
       <Button variant="outline">Follow</Button>
-      <DropdownMenu>
-        <DropdownMenuTrigger
-          render={<Button variant="outline" className="pl-2!" />}
-        >
+      <DropdownMenuTrigger>
+        <Button variant="outline" className="pl-2!">
           <ChevronDownIcon />
-        </DropdownMenuTrigger>
-        <DropdownMenuContent align="end" className="w-44">
+        </Button>
+        <DropdownMenu align="end" className="w-44">
           <DropdownMenuGroup>
             <DropdownMenuItem>
               <VolumeOffIcon />
@@ -65,8 +62,8 @@ export default function ButtonGroupDropdown() {
               Delete Conversation
             </DropdownMenuItem>
           </DropdownMenuGroup>
-        </DropdownMenuContent>
-      </DropdownMenu>
+        </DropdownMenu>
+      </DropdownMenuTrigger>
     </ButtonGroup>
-  )
+  );
 }

@@ -2,21 +2,20 @@ import { Button } from "@/examples/react-aria/ui/button"
 import {
   Dialog,
   DialogClose,
-  DialogContent,
   DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/examples/react-aria/ui/dialog"
+} from "@/examples/react-aria/ui/dialog";
 import { Input } from "@/examples/react-aria/ui/input"
 import { Label } from "@/examples/react-aria/ui/label"
 
 export function DialogCloseButton() {
   return (
-    <Dialog>
-      <DialogTrigger render={<Button variant="outline" />}>Share</DialogTrigger>
-      <DialogContent className="sm:max-w-md">
+    <DialogTrigger>
+      <Button variant="outline">Share</Button>
+      <Dialog className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle>Share link</DialogTitle>
           <DialogDescription>
@@ -36,9 +35,9 @@ export function DialogCloseButton() {
           </div>
         </div>
         <DialogFooter className="sm:justify-start">
-          <DialogClose render={<Button type="button" />}>Close</DialogClose>
+          <DialogClose type="button">Close</DialogClose>
         </DialogFooter>
-      </DialogContent>
-    </Dialog>
-  )
+      </Dialog>
+    </DialogTrigger>
+  );
 }

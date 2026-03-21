@@ -6,11 +6,7 @@ import {
   InputGroupAddon,
   InputGroupInput,
 } from "@/examples/react-aria/ui/input-group"
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/examples/react-aria/ui/tooltip"
+import { Tooltip, TooltipTrigger } from "@/examples/react-aria/ui/tooltip";
 import { AudioLinesIcon, PlusIcon } from "lucide-react"
 
 export function ButtonGroupNested() {
@@ -24,14 +20,14 @@ export function ButtonGroupNested() {
       <ButtonGroup>
         <InputGroup>
           <InputGroupInput placeholder="Send a message..." />
-          <Tooltip>
-            <TooltipTrigger render={<InputGroupAddon align="inline-end" />}>
+          <TooltipTrigger>
+            <InputGroupAddon align="inline-end">
               <AudioLinesIcon />
-            </TooltipTrigger>
-            <TooltipContent>Voice Mode</TooltipContent>
-          </Tooltip>
+            </InputGroupAddon>
+            <Tooltip>Voice Mode</Tooltip>
+          </TooltipTrigger>
         </InputGroup>
       </ButtonGroup>
     </ButtonGroup>
-  )
+  );
 }

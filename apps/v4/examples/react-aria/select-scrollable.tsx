@@ -51,17 +51,16 @@ const southAmerica = [
 ]
 
 const items = [
-  { label: "Select a timezone", value: null },
   ...northAmerica,
   ...europeAfrica,
   ...asia,
   ...australiaPacific,
-  ...southAmerica,
+  ...southAmerica
 ]
 
 export function SelectScrollable() {
   return (
-    <Select items={items}>
+    <Select placeholder="Select a timezone">
       <SelectTrigger className="w-full max-w-64">
         <SelectValue />
       </SelectTrigger>
@@ -69,7 +68,7 @@ export function SelectScrollable() {
         <SelectGroup>
           <SelectLabel>North America</SelectLabel>
           {northAmerica.map((item) => (
-            <SelectItem key={item.value} value={item.value}>
+            <SelectItem key={item.value} id={item.value}>
               {item.label}
             </SelectItem>
           ))}
@@ -77,7 +76,7 @@ export function SelectScrollable() {
         <SelectGroup>
           <SelectLabel>Europe & Africa</SelectLabel>
           {europeAfrica.map((item) => (
-            <SelectItem key={item.value} value={item.value}>
+            <SelectItem key={item.value} id={item.value}>
               {item.label}
             </SelectItem>
           ))}
@@ -85,7 +84,7 @@ export function SelectScrollable() {
         <SelectGroup>
           <SelectLabel>Asia</SelectLabel>
           {asia.map((item) => (
-            <SelectItem key={item.value} value={item.value}>
+            <SelectItem key={item.value} id={item.value}>
               {item.label}
             </SelectItem>
           ))}
@@ -93,7 +92,7 @@ export function SelectScrollable() {
         <SelectGroup>
           <SelectLabel>Australia & Pacific</SelectLabel>
           {australiaPacific.map((item) => (
-            <SelectItem key={item.value} value={item.value}>
+            <SelectItem key={item.value} id={item.value}>
               {item.label}
             </SelectItem>
           ))}
@@ -101,12 +100,12 @@ export function SelectScrollable() {
         <SelectGroup>
           <SelectLabel>South America</SelectLabel>
           {southAmerica.map((item) => (
-            <SelectItem key={item.value} value={item.value}>
+            <SelectItem key={item.value} id={item.value}>
               {item.label}
             </SelectItem>
           ))}
         </SelectGroup>
       </SelectContent>
     </Select>
-  )
+  );
 }

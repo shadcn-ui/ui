@@ -87,17 +87,13 @@ export function SelectRtl() {
     { label: t.spinach, value: "spinach" },
   ]
 
-  const allItems = [
-    { label: t.selectFruit, value: null },
-    ...fruits,
-    ...vegetables,
-  ]
+  const allItems = [...fruits, ...vegetables]
 
   return (
     <Select
-      items={allItems}
       value={selectedFruit}
-      onValueChange={setSelectedFruit}
+      onChange={setSelectedFruit}
+      placeholder={t.selectFruit}
     >
       <SelectTrigger className="w-32" dir={dir}>
         <SelectValue />
@@ -106,7 +102,7 @@ export function SelectRtl() {
         <SelectGroup>
           <SelectLabel>{t.fruits}</SelectLabel>
           {fruits.map((item) => (
-            <SelectItem key={item.value} value={item.value}>
+            <SelectItem key={item.value} id={item.value}>
               {item.label}
             </SelectItem>
           ))}
@@ -115,12 +111,12 @@ export function SelectRtl() {
         <SelectGroup>
           <SelectLabel>{t.vegetables}</SelectLabel>
           {vegetables.map((item) => (
-            <SelectItem key={item.value} value={item.value}>
+            <SelectItem key={item.value} id={item.value}>
               {item.label}
             </SelectItem>
           ))}
         </SelectGroup>
       </SelectContent>
     </Select>
-  )
+  );
 }

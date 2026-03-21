@@ -102,14 +102,14 @@ export function TabsRtl() {
   const { dir, t } = useTranslation(translations, "ar")
 
   return (
-    <Tabs defaultValue="overview" className="w-full max-w-sm" dir={dir}>
+    <Tabs defaultSelectedKey="overview" className="w-full max-w-sm" dir={dir}>
       <TabsList dir={dir}>
-        <TabsTrigger value="overview">{t.overview}</TabsTrigger>
-        <TabsTrigger value="analytics">{t.analytics}</TabsTrigger>
-        <TabsTrigger value="reports">{t.reports}</TabsTrigger>
-        <TabsTrigger value="settings">{t.settings}</TabsTrigger>
+        <TabsTrigger id="overview">{t.overview}</TabsTrigger>
+        <TabsTrigger id="analytics">{t.analytics}</TabsTrigger>
+        <TabsTrigger id="reports">{t.reports}</TabsTrigger>
+        <TabsTrigger id="settings">{t.settings}</TabsTrigger>
       </TabsList>
-      <TabsContent value="overview">
+      <TabsContent id="overview">
         <Card dir={dir}>
           <CardHeader>
             <CardTitle>{t.overviewTitle}</CardTitle>
@@ -120,7 +120,7 @@ export function TabsRtl() {
           </CardContent>
         </Card>
       </TabsContent>
-      <TabsContent value="analytics">
+      <TabsContent id="analytics">
         <Card dir={dir}>
           <CardHeader>
             <CardTitle>{t.analyticsTitle}</CardTitle>
@@ -131,7 +131,7 @@ export function TabsRtl() {
           </CardContent>
         </Card>
       </TabsContent>
-      <TabsContent value="reports">
+      <TabsContent id="reports">
         <Card dir={dir}>
           <CardHeader>
             <CardTitle>{t.reportsTitle}</CardTitle>
@@ -142,7 +142,7 @@ export function TabsRtl() {
           </CardContent>
         </Card>
       </TabsContent>
-      <TabsContent value="settings">
+      <TabsContent id="settings">
         <Card dir={dir}>
           <CardHeader>
             <CardTitle>{t.settingsTitle}</CardTitle>
@@ -154,5 +154,5 @@ export function TabsRtl() {
         </Card>
       </TabsContent>
     </Tabs>
-  )
+  );
 }

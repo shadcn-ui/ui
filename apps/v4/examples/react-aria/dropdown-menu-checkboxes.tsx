@@ -1,50 +1,43 @@
 "use client"
 
 import * as React from "react"
+import type { Selection } from "react-aria-components"
 import { Button } from "@/examples/react-aria/ui/button"
 import {
   DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
+  DropdownMenuItem,
   DropdownMenuGroup,
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from "@/examples/react-aria/ui/dropdown-menu"
 
 export function DropdownMenuCheckboxes() {
-  const [showStatusBar, setShowStatusBar] = React.useState(true)
-  const [showActivityBar, setShowActivityBar] = React.useState(false)
-  const [showPanel, setShowPanel] = React.useState(false)
+  const [selectedKeys, setSelectedKeys] = React.useState<Selection>(
+    new Set(["status-bar"])
+  )
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger render={<Button variant="outline" />}>
+    <DropdownMenuTrigger>
+      <Button variant="outline">
         Open
-      </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-40">
-        <DropdownMenuGroup>
+      </Button>
+      <DropdownMenu className="w-40">
+        <DropdownMenuGroup
+          selectionMode="multiple"
+          selectedKeys={selectedKeys}
+          onSelectionChange={setSelectedKeys}>
           <DropdownMenuLabel>Appearance</DropdownMenuLabel>
-          <DropdownMenuCheckboxItem
-            checked={showStatusBar ?? false}
-            onCheckedChange={setShowStatusBar}
-          >
+          <DropdownMenuItem id="status-bar">
             Status Bar
-          </DropdownMenuCheckboxItem>
-          <DropdownMenuCheckboxItem
-            checked={showActivityBar}
-            onCheckedChange={setShowActivityBar}
-            disabled
-          >
+          </DropdownMenuItem>
+          <DropdownMenuItem id="activity-bar" isDisabled>
             Activity Bar
-          </DropdownMenuCheckboxItem>
-          <DropdownMenuCheckboxItem
-            checked={showPanel}
-            onCheckedChange={setShowPanel}
-          >
+          </DropdownMenuItem>
+          <DropdownMenuItem id="panel">
             Panel
-          </DropdownMenuCheckboxItem>
+          </DropdownMenuItem>
         </DropdownMenuGroup>
-      </DropdownMenuContent>
-    </DropdownMenu>
+      </DropdownMenu>
+    </DropdownMenuTrigger>
   )
 }

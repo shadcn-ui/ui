@@ -22,7 +22,7 @@ export default function CheckboxDemo() {
         <Checkbox
           id="terms-checkbox-2"
           name="terms-checkbox-2"
-          defaultChecked
+          defaultSelected
         />
         <FieldContent>
           <FieldLabel htmlFor="terms-checkbox-2">
@@ -34,7 +34,7 @@ export default function CheckboxDemo() {
         </FieldContent>
       </Field>
       <Field orientation="horizontal" data-disabled>
-        <Checkbox id="toggle-checkbox" name="toggle-checkbox" disabled />
+        <Checkbox id="toggle-checkbox" name="toggle-checkbox" isDisabled />
         <FieldLabel htmlFor="toggle-checkbox">Enable notifications</FieldLabel>
       </Field>
       <FieldLabel>
@@ -49,5 +49,5 @@ export default function CheckboxDemo() {
         </Field>
       </FieldLabel>
     </FieldGroup>
-  )
+  );
 }

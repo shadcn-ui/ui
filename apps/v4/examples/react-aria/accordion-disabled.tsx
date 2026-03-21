@@ -8,7 +8,7 @@ import {
 export default function AccordionDisabled() {
   return (
     <Accordion className="w-full">
-      <AccordionItem value="item-1">
+      <AccordionItem id="item-1">
         <AccordionTrigger>Can I access my account history?</AccordionTrigger>
         <AccordionContent>
           Yes, you can view your complete account history including all
@@ -16,14 +16,14 @@ export default function AccordionDisabled() {
           section of your dashboard.
         </AccordionContent>
       </AccordionItem>
-      <AccordionItem value="item-2" disabled>
+      <AccordionItem id="item-2" isDisabled>
         <AccordionTrigger>Premium feature information</AccordionTrigger>
         <AccordionContent>
           This section contains information about premium features. Upgrade your
           plan to access this content.
         </AccordionContent>
       </AccordionItem>
-      <AccordionItem value="item-3">
+      <AccordionItem id="item-3">
         <AccordionTrigger>How do I update my email address?</AccordionTrigger>
         <AccordionContent>
           You can update your email address in your account settings.
@@ -32,5 +32,5 @@ export default function AccordionDisabled() {
         </AccordionContent>
       </AccordionItem>
     </Accordion>
-  )
+  );
 }

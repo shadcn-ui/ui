@@ -4,58 +4,39 @@ import * as React from "react"
 import { Button } from "@/examples/react-aria/ui/button"
 import {
   DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
+  DropdownMenuItem,
   DropdownMenuGroup,
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from "@/examples/react-aria/ui/dropdown-menu"
 import { BellIcon, MailIcon, MessageSquareIcon } from "lucide-react"
+import type {Selection} from 'react-aria-components'
 
 export function DropdownMenuCheckboxesIcons() {
-  const [notifications, setNotifications] = React.useState({
-    email: true,
-    sms: false,
-    push: true,
-  })
+  const [notifications, setNotifications] = React.useState<Selection>(new Set(['email', 'push']))
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger render={<Button variant="outline" />}>
+    <DropdownMenuTrigger>
+      <Button variant="outline">
         Notifications
-      </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-48">
-        <DropdownMenuGroup>
+      </Button>
+      <DropdownMenu className="w-48">
+        <DropdownMenuGroup selectionMode="multiple" selectedKeys={notifications} onSelectionChange={setNotifications}>
           <DropdownMenuLabel>Notification Preferences</DropdownMenuLabel>
-          <DropdownMenuCheckboxItem
-            checked={notifications.email}
-            onCheckedChange={(checked) =>
-              setNotifications({ ...notifications, email: checked === true })
-            }
-          >
+          <DropdownMenuItem id="email">
             <MailIcon />
             Email notifications
-          </DropdownMenuCheckboxItem>
-          <DropdownMenuCheckboxItem
-            checked={notifications.sms}
-            onCheckedChange={(checked) =>
-              setNotifications({ ...notifications, sms: checked === true })
-            }
-          >
+          </DropdownMenuItem>
+          <DropdownMenuItem id="sms">
             <MessageSquareIcon />
             SMS notifications
-          </DropdownMenuCheckboxItem>
-          <DropdownMenuCheckboxItem
-            checked={notifications.push}
-            onCheckedChange={(checked) =>
-              setNotifications({ ...notifications, push: checked === true })
-            }
-          >
+          </DropdownMenuItem>
+          <DropdownMenuItem id="push">
             <BellIcon />
             Push notifications
-          </DropdownMenuCheckboxItem>
+          </DropdownMenuItem>
         </DropdownMenuGroup>
-      </DropdownMenuContent>
-    </DropdownMenu>
+      </DropdownMenu>
+    </DropdownMenuTrigger>
   )
 }

@@ -20,12 +20,11 @@ import {
 import { Switch } from "@/examples/react-aria/ui/switch"
 
 const items = [
-  { label: "Select a fruit", value: null },
   { label: "Apple", value: "apple" },
   { label: "Banana", value: "banana" },
   { label: "Blueberry", value: "blueberry" },
   { label: "Grapes", value: "grapes" },
-  { label: "Pineapple", value: "pineapple" },
+  { label: "Pineapple", value: "pineapple" }
 ]
 
 export function SelectAlignItem() {
@@ -42,19 +41,19 @@ export function SelectAlignItem() {
         </FieldContent>
         <Switch
           id="align-item"
-          checked={alignItemWithTrigger}
-          onCheckedChange={setAlignItemWithTrigger}
+          isSelected={alignItemWithTrigger}
+          onChange={setAlignItemWithTrigger}
         />
       </Field>
       <Field>
-        <Select items={items} defaultValue="banana">
+        <Select defaultValue="banana" placeholder="Select a fruit">
           <SelectTrigger>
             <SelectValue />
           </SelectTrigger>
           <SelectContent alignItemWithTrigger={alignItemWithTrigger}>
             <SelectGroup>
               {items.map((item) => (
-                <SelectItem key={item.value} value={item.value}>
+                <SelectItem key={item.value} id={item.value}>
                   {item.label}
                 </SelectItem>
               ))}
@@ -63,5 +62,5 @@ export function SelectAlignItem() {
         </Select>
       </Field>
     </FieldGroup>
-  )
+  );
 }

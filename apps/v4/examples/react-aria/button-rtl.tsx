@@ -53,9 +53,9 @@ export function ButtonRtl() {
       <Button variant="outline" size="icon" aria-label="Add">
         <PlusIcon />
       </Button>
-      <Button variant="secondary" disabled>
+      <Button variant="secondary" isDisabled>
         <Spinner data-icon="inline-start" /> {t.loading}
       </Button>
     </div>
-  )
+  );
 }

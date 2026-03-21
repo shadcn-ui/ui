@@ -5,11 +5,7 @@ import { Button } from "@/examples/react-aria/ui/button"
 import { Calendar } from "@/examples/react-aria/ui/calendar"
 import { Field, FieldGroup, FieldLabel } from "@/examples/react-aria/ui/field"
 import { Input } from "@/examples/react-aria/ui/input"
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/examples/react-aria/ui/popover"
+import { Popover, PopoverTrigger } from "@/examples/react-aria/ui/popover";
 import { format } from "date-fns"
 import { ChevronDownIcon } from "lucide-react"
 
@@ -21,20 +17,15 @@ export function DatePickerTime() {
     <FieldGroup className="mx-auto max-w-xs flex-row">
       <Field>
         <FieldLabel htmlFor="date-picker-optional">Date</FieldLabel>
-        <Popover open={open} onOpenChange={setOpen}>
-          <PopoverTrigger
-            render={
-              <Button
-                variant="outline"
-                id="date-picker-optional"
-                className="w-32 justify-between font-normal"
-              />
-            }
-          >
+        <PopoverTrigger isOpen={open} onOpenChange={setOpen}>
+          <Button
+            variant="outline"
+            id="date-picker-optional"
+            className="w-32 justify-between font-normal">
             {date ? format(date, "PPP") : "Select date"}
             <ChevronDownIcon data-icon="inline-end" />
-          </PopoverTrigger>
-          <PopoverContent className="w-auto overflow-hidden p-0" align="start">
+          </Button>
+          <Popover className="w-auto overflow-hidden p-0" align="start">
             <Calendar
               mode="single"
               selected={date}
@@ -45,8 +36,8 @@ export function DatePickerTime() {
                 setOpen(false)
               }}
             />
-          </PopoverContent>
-        </Popover>
+          </Popover>
+        </PopoverTrigger>
       </Field>
       <Field className="w-32">
         <FieldLabel htmlFor="time-picker-optional">Time</FieldLabel>
@@ -59,5 +50,5 @@ export function DatePickerTime() {
         />
       </Field>
     </FieldGroup>
-  )
+  );
 }

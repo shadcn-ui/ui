@@ -2,12 +2,12 @@ import { Tabs, TabsList, TabsTrigger } from "@/examples/react-aria/ui/tabs"
 
 export function TabsVertical() {
   return (
-    <Tabs defaultValue="account" orientation="vertical">
+    <Tabs defaultSelectedKey="account" orientation="vertical">
       <TabsList>
-        <TabsTrigger value="account">Account</TabsTrigger>
-        <TabsTrigger value="password">Password</TabsTrigger>
-        <TabsTrigger value="notifications">Notifications</TabsTrigger>
+        <TabsTrigger id="account">Account</TabsTrigger>
+        <TabsTrigger id="password">Password</TabsTrigger>
+        <TabsTrigger id="notifications">Notifications</TabsTrigger>
       </TabsList>
     </Tabs>
-  )
+  );
 }

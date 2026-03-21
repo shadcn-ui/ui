@@ -4,13 +4,12 @@ import { Button } from "@/examples/react-aria/ui-rtl/button"
 import {
   Dialog,
   DialogClose,
-  DialogContent,
   DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/examples/react-aria/ui-rtl/dialog"
+} from "@/examples/react-aria/ui-rtl/dialog";
 import { Field, FieldGroup } from "@/examples/react-aria/ui-rtl/field"
 import { Input } from "@/examples/react-aria/ui-rtl/input"
 import { Label } from "@/examples/react-aria/ui-rtl/label"
@@ -65,12 +64,12 @@ export function DialogRtl() {
   const { dir, t, language } = useTranslation(translations, "ar")
 
   return (
-    <Dialog>
+    <DialogTrigger>
       <form>
-        <DialogTrigger render={<Button variant="outline" />}>
+        <Button variant="outline">
           {t.openDialog}
-        </DialogTrigger>
-        <DialogContent
+        </Button>
+        <Dialog
           className="sm:max-w-sm"
           dir={dir}
           data-lang={dir === "rtl" ? language : undefined}
@@ -90,13 +89,13 @@ export function DialogRtl() {
             </Field>
           </FieldGroup>
           <DialogFooter>
-            <DialogClose render={<Button variant="outline" />}>
+            <DialogClose variant="outline">
               {t.cancel}
             </DialogClose>
             <Button type="submit">{t.saveChanges}</Button>
           </DialogFooter>
-        </DialogContent>
+        </Dialog>
       </form>
-    </Dialog>
-  )
+    </DialogTrigger>
+  );
 }

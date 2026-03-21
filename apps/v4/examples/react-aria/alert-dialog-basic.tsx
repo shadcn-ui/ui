@@ -2,22 +2,19 @@ import {
   AlertDialog,
   AlertDialogAction,
   AlertDialogCancel,
-  AlertDialogContent,
   AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/examples/react-aria/ui/alert-dialog"
+} from "@/examples/react-aria/ui/alert-dialog";
 import { Button } from "@/examples/react-aria/ui/button"
 
 export function AlertDialogBasic() {
   return (
-    <AlertDialog>
-      <AlertDialogTrigger
-        render={<Button variant="outline">Show Dialog</Button>}
-      />
-      <AlertDialogContent>
+    <AlertDialogTrigger>
+      <Button variant="outline">Show Dialog</Button>
+      <AlertDialog>
         <AlertDialogHeader>
           <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
           <AlertDialogDescription>
@@ -29,7 +26,7 @@ export function AlertDialogBasic() {
           <AlertDialogCancel>Cancel</AlertDialogCancel>
           <AlertDialogAction>Continue</AlertDialogAction>
         </AlertDialogFooter>
-      </AlertDialogContent>
-    </AlertDialog>
-  )
+      </AlertDialog>
+    </AlertDialogTrigger>
+  );
 }

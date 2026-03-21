@@ -1,23 +1,19 @@
 import { Button } from "@/examples/react-aria/ui/button"
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/examples/react-aria/ui/tooltip"
+import { Tooltip, TooltipTrigger } from "@/examples/react-aria/ui/tooltip";
 
 export function TooltipDisabled() {
   return (
     <>
-      <Tooltip>
-        <TooltipTrigger render={<span className="inline-block w-fit" />}>
-          <Button variant="outline" disabled>
+      <TooltipTrigger>
+        <span className="inline-block w-fit">
+          <Button variant="outline" isDisabled>
             Disabled
           </Button>
-        </TooltipTrigger>
-        <TooltipContent>
+        </span>
+        <Tooltip>
           <p>This feature is currently unavailable</p>
-        </TooltipContent>
-      </Tooltip>
+        </Tooltip>
+      </TooltipTrigger>
     </>
-  )
+  );
 }

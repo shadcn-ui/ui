@@ -28,13 +28,13 @@ const items = [
 
 export function AccordionBasic() {
   return (
-    <Accordion defaultValue={["item-1"]} className="max-w-lg">
+    <Accordion defaultExpandedKeys={["item-1"]} className="max-w-lg">
       {items.map((item) => (
-        <AccordionItem key={item.value} value={item.value}>
+        <AccordionItem key={item.value} id={item.value}>
           <AccordionTrigger>{item.trigger}</AccordionTrigger>
           <AccordionContent>{item.content}</AccordionContent>
         </AccordionItem>
       ))}
     </Accordion>
-  )
+  );
 }

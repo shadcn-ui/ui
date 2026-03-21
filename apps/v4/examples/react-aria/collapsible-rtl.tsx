@@ -59,19 +59,17 @@ export function CollapsibleRtl() {
 
   return (
     <Collapsible
-      open={isOpen}
-      onOpenChange={setIsOpen}
+      isExpanded={isOpen}
+      onExpandedChange={setIsOpen}
       className="flex w-[350px] flex-col gap-2"
       dir={dir}
     >
       <div className="flex items-center justify-between gap-4 px-4">
         <h4 className="text-sm font-semibold">{t.orderNumber}</h4>
-        <CollapsibleTrigger
-          render={<Button variant="ghost" size="icon" className="size-8" />}
-        >
+        <Button slot="trigger" variant="ghost" size="icon" className="size-8">
           <ChevronsUpDown />
           <span className="sr-only">Toggle details</span>
-        </CollapsibleTrigger>
+        </Button>
       </div>
       <div className="flex items-center justify-between rounded-md border px-4 py-2 text-sm">
         <span className="text-muted-foreground">{t.status}</span>
@@ -88,5 +86,5 @@ export function CollapsibleRtl() {
         </div>
       </CollapsibleContent>
     </Collapsible>
-  )
+  );
 }

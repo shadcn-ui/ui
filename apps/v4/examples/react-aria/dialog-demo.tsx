@@ -2,25 +2,24 @@ import { Button } from "@/examples/react-aria/ui/button"
 import {
   Dialog,
   DialogClose,
-  DialogContent,
   DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/examples/react-aria/ui/dialog"
+} from "@/examples/react-aria/ui/dialog";
 import { Field, FieldGroup } from "@/examples/react-aria/ui/field"
 import { Input } from "@/examples/react-aria/ui/input"
 import { Label } from "@/examples/react-aria/ui/label"
 
 export function DialogDemo() {
   return (
-    <Dialog>
+    <DialogTrigger>
       <form>
-        <DialogTrigger render={<Button variant="outline" />}>
+        <Button variant="outline">
           Open Dialog
-        </DialogTrigger>
-        <DialogContent className="sm:max-w-sm">
+        </Button>
+        <Dialog className="sm:max-w-sm">
           <DialogHeader>
             <DialogTitle>Edit profile</DialogTitle>
             <DialogDescription>
@@ -39,13 +38,13 @@ export function DialogDemo() {
             </Field>
           </FieldGroup>
           <DialogFooter>
-            <DialogClose render={<Button variant="outline" />}>
+            <DialogClose variant="outline">
               Cancel
             </DialogClose>
             <Button type="submit">Save changes</Button>
           </DialogFooter>
-        </DialogContent>
+        </Dialog>
       </form>
-    </Dialog>
-  )
+    </DialogTrigger>
+  );
 }

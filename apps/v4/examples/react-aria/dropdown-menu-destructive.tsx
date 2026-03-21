@@ -3,21 +3,20 @@
 import { Button } from "@/examples/react-aria/ui/button"
 import {
   DropdownMenu,
-  DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/examples/react-aria/ui/dropdown-menu"
+} from "@/examples/react-aria/ui/dropdown-menu";
 import { PencilIcon, ShareIcon, TrashIcon } from "lucide-react"
 
 export function DropdownMenuDestructive() {
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger render={<Button variant="outline" />}>
+    <DropdownMenuTrigger>
+      <Button variant="outline">
         Actions
-      </DropdownMenuTrigger>
-      <DropdownMenuContent>
+      </Button>
+      <DropdownMenu>
         <DropdownMenuGroup>
           <DropdownMenuItem>
             <PencilIcon />
@@ -35,7 +34,7 @@ export function DropdownMenuDestructive() {
             Delete
           </DropdownMenuItem>
         </DropdownMenuGroup>
-      </DropdownMenuContent>
-    </DropdownMenu>
-  )
+      </DropdownMenu>
+    </DropdownMenuTrigger>
+  );
 }

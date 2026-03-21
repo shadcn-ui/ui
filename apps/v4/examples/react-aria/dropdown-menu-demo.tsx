@@ -3,26 +3,24 @@
 import { Button } from "@/examples/react-aria/ui/button"
 import {
   DropdownMenu,
-  DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuPortal,
   DropdownMenuSeparator,
   DropdownMenuShortcut,
   DropdownMenuSub,
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@/examples/react-aria/ui/dropdown-menu"
+} from "@/examples/react-aria/ui/dropdown-menu";
 
 export function DropdownMenuDemo() {
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger render={<Button variant="outline" />}>
+    <DropdownMenuTrigger>
+      <Button variant="outline">
         Open
-      </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-40" align="start">
+      </Button>
+      <DropdownMenu className="w-40" align="start">
         <DropdownMenuGroup>
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
           <DropdownMenuItem>
@@ -43,14 +41,14 @@ export function DropdownMenuDemo() {
           <DropdownMenuItem>Team</DropdownMenuItem>
           <DropdownMenuSub>
             <DropdownMenuSubTrigger>Invite users</DropdownMenuSubTrigger>
-            <DropdownMenuPortal>
-              <DropdownMenuSubContent>
-                <DropdownMenuItem>Email</DropdownMenuItem>
-                <DropdownMenuItem>Message</DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem>More...</DropdownMenuItem>
-              </DropdownMenuSubContent>
-            </DropdownMenuPortal>
+
+            <DropdownMenuSubContent>
+              <DropdownMenuItem>Email</DropdownMenuItem>
+              <DropdownMenuItem>Message</DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem>More...</DropdownMenuItem>
+            </DropdownMenuSubContent>
+
           </DropdownMenuSub>
           <DropdownMenuItem>
             New Team
@@ -61,7 +59,7 @@ export function DropdownMenuDemo() {
         <DropdownMenuGroup>
           <DropdownMenuItem>GitHub</DropdownMenuItem>
           <DropdownMenuItem>Support</DropdownMenuItem>
-          <DropdownMenuItem disabled>API</DropdownMenuItem>
+          <DropdownMenuItem isDisabled>API</DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
@@ -70,7 +68,7 @@ export function DropdownMenuDemo() {
             <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
           </DropdownMenuItem>
         </DropdownMenuGroup>
-      </DropdownMenuContent>
-    </DropdownMenu>
-  )
+      </DropdownMenu>
+    </DropdownMenuTrigger>
+  );
 }

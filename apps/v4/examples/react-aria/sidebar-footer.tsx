@@ -1,11 +1,6 @@
 "use client"
 
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/examples/react-aria/ui/dropdown-menu"
+import { DropdownMenu, DropdownMenuItem, DropdownMenuTrigger } from "@/examples/react-aria/ui/dropdown-menu";
 import {
   Sidebar,
   SidebarContent,
@@ -29,16 +24,13 @@ export default function AppSidebar() {
         <SidebarFooter>
           <SidebarMenu>
             <SidebarMenuItem>
-              <DropdownMenu>
-                <DropdownMenuTrigger
-                  render={
-                    <SidebarMenuButton className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground" />
-                  }
-                >
+              <DropdownMenuTrigger>
+                <SidebarMenuButton
+                  className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground">
                   Username
                   <ChevronUpIcon className="ml-auto" />
-                </DropdownMenuTrigger>
-                <DropdownMenuContent
+                </SidebarMenuButton>
+                <DropdownMenu
                   side="top"
                   className="w-(--radix-popper-anchor-width)"
                 >
@@ -51,8 +43,8 @@ export default function AppSidebar() {
                   <DropdownMenuItem>
                     <span>Sign out</span>
                   </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
+                </DropdownMenu>
+              </DropdownMenuTrigger>
             </SidebarMenuItem>
           </SidebarMenu>
         </SidebarFooter>
@@ -63,5 +55,5 @@ export default function AppSidebar() {
         </header>
       </SidebarInset>
     </SidebarProvider>
-  )
+  );
 }

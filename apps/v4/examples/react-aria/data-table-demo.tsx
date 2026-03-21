@@ -5,8 +5,6 @@ import { Button } from "@/examples/react-aria/ui/button"
 import { Checkbox } from "@/examples/react-aria/ui/checkbox"
 import {
   DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
@@ -81,18 +79,18 @@ export const columns: ColumnDef<Payment>[] = [
     id: "select",
     header: ({ table }) => (
       <Checkbox
-        checked={
+        isSelected={
           table.getIsAllPageRowsSelected() ||
           (table.getIsSomePageRowsSelected() ? true : false)
         }
-        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+        onChange={(value) => table.toggleAllPageRowsSelected(!!value)}
         aria-label="Select all"
       />
     ),
     cell: ({ row }) => (
       <Checkbox
-        checked={row.getIsSelected()}
-        onCheckedChange={(value) => row.toggleSelected(!!value)}
+        isSelected={row.getIsSelected()}
+        onChange={(value) => row.toggleSelected(!!value)}
         aria-label="Select row"
       />
     ),
@@ -143,14 +141,12 @@ export const columns: ColumnDef<Payment>[] = [
       const payment = row.original
 
       return (
-        <DropdownMenu>
-          <DropdownMenuTrigger
-            render={<Button variant="ghost" size="icon-xs" />}
-          >
+        <DropdownMenuTrigger>
+          <Button variant="ghost" size="icon-xs">
             <span className="sr-only">Open menu</span>
             <MoreHorizontal />
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-44">
+          </Button>
+          <DropdownMenu align="end" className="w-44">
             <DropdownMenuGroup>
               <DropdownMenuLabel>Actions</DropdownMenuLabel>
               <DropdownMenuItem
@@ -164,8 +160,8 @@ export const columns: ColumnDef<Payment>[] = [
               <DropdownMenuItem>View customer</DropdownMenuItem>
               <DropdownMenuItem>View payment details</DropdownMenuItem>
             </DropdownMenuGroup>
-          </DropdownMenuContent>
-        </DropdownMenu>
+          </DropdownMenu>
+        </DropdownMenuTrigger>
       )
     },
   },
@@ -210,34 +206,42 @@ export function DataTableDemo() {
           }
           className="max-w-sm"
         />
-        <DropdownMenu>
-          <DropdownMenuTrigger
-            render={<Button variant="outline" className="ml-auto" />}
-          >
+        <DropdownMenuTrigger>
+          <Button variant="outline" className="ml-auto">
             Columns <ChevronDown />
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-44">
-            <DropdownMenuGroup>
+          </Button>
+          <DropdownMenu align="end" className="w-44">
+            <DropdownMenuGroup
+              selectionMode="multiple"
+              selectedKeys={Object.keys(columnVisibility).filter(
+                (key) => columnVisibility[key]
+              )}
+              onSelectionChange={(keys) =>
+                setColumnVisibility(
+                  Object.fromEntries(
+                    keys === "all"
+                      ? table.getAllColumns().map((column) => [column.id, true])
+                      : [...keys].map((key) => [key, true])
+                  )
+                )
+              }>
               {table
                 .getAllColumns()
                 .filter((column) => column.getCanHide())
                 .map((column) => {
                   return (
-                    <DropdownMenuCheckboxItem
+                    <DropdownMenuItem
                       key={column.id}
+                      id={column.id}
                       className="capitalize"
-                      checked={column.getIsVisible()}
-                      onCheckedChange={(value) =>
-                        column.toggleVisibility(!!value)
-                      }
                     >
                       {column.id}
-                    </DropdownMenuCheckboxItem>
+                    </DropdownMenuItem>
                   )
                 })}
             </DropdownMenuGroup>
-          </DropdownMenuContent>
-        </DropdownMenu>
+          </DropdownMenu>
+        </DropdownMenuTrigger>
       </div>
       <div className="overflow-hidden rounded-md border">
         <Table>
@@ -299,7 +303,7 @@ export function DataTableDemo() {
             variant="outline"
             size="sm"
             onClick={() => table.previousPage()}
-            disabled={!table.getCanPreviousPage()}
+            isDisabled={!table.getCanPreviousPage()}
           >
             Previous
           </Button>
@@ -307,7 +311,7 @@ export function DataTableDemo() {
             variant="outline"
             size="sm"
             onClick={() => table.nextPage()}
-            disabled={!table.getCanNextPage()}
+            isDisabled={!table.getCanNextPage()}
           >
             Next
           </Button>

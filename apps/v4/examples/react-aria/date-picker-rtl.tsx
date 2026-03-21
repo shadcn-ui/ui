@@ -3,11 +3,7 @@
 import * as React from "react"
 import { Button } from "@/examples/react-aria/ui-rtl/button"
 import { Calendar } from "@/examples/react-aria/ui-rtl/calendar"
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/examples/react-aria/ui-rtl/popover"
+import { Popover, PopoverTrigger } from "@/examples/react-aria/ui-rtl/popover";
 import { format } from "date-fns"
 import { arSA, he } from "date-fns/locale"
 import { ChevronDownIcon } from "lucide-react"
@@ -66,25 +62,20 @@ export function DatePickerRtl() {
       : undefined
 
   return (
-    <Popover>
-      <PopoverTrigger
-        render={
-          <Button
-            variant={"outline"}
-            data-empty={!date}
-            className="w-[212px] justify-between text-left font-normal data-[empty=true]:text-muted-foreground"
-            dir={dir}
-          />
-        }
-      >
+    <PopoverTrigger>
+      <Button
+        variant={"outline"}
+        data-empty={!date}
+        className="w-[212px] justify-between text-left font-normal data-[empty=true]:text-muted-foreground"
+        dir={dir}>
         {date ? (
           format(date, "PPP", { locale: dateFnsLocale })
         ) : (
           <span>{t.placeholder}</span>
         )}
         <ChevronDownIcon data-icon="inline-end" />
-      </PopoverTrigger>
-      <PopoverContent className="w-auto p-0" align="start" dir={dir}>
+      </Button>
+      <Popover className="w-auto p-0" align="start" dir={dir}>
         <Calendar
           mode="single"
           selected={date}
@@ -93,7 +84,7 @@ export function DatePickerRtl() {
           dir={dir}
           locale={dayPickerLocale}
         />
-      </PopoverContent>
-    </Popover>
-  )
+      </Popover>
+    </PopoverTrigger>
+  );
 }

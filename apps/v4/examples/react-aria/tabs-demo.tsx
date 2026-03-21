@@ -14,14 +14,14 @@ import {
 
 export function TabsDemo() {
   return (
-    <Tabs defaultValue="overview" className="w-[400px]">
+    <Tabs defaultSelectedKey="overview" className="w-[400px]">
       <TabsList>
-        <TabsTrigger value="overview">Overview</TabsTrigger>
-        <TabsTrigger value="analytics">Analytics</TabsTrigger>
-        <TabsTrigger value="reports">Reports</TabsTrigger>
-        <TabsTrigger value="settings">Settings</TabsTrigger>
+        <TabsTrigger id="overview">Overview</TabsTrigger>
+        <TabsTrigger id="analytics">Analytics</TabsTrigger>
+        <TabsTrigger id="reports">Reports</TabsTrigger>
+        <TabsTrigger id="settings">Settings</TabsTrigger>
       </TabsList>
-      <TabsContent value="overview">
+      <TabsContent id="overview">
         <Card>
           <CardHeader>
             <CardTitle>Overview</CardTitle>
@@ -35,7 +35,7 @@ export function TabsDemo() {
           </CardContent>
         </Card>
       </TabsContent>
-      <TabsContent value="analytics">
+      <TabsContent id="analytics">
         <Card>
           <CardHeader>
             <CardTitle>Analytics</CardTitle>
@@ -49,7 +49,7 @@ export function TabsDemo() {
           </CardContent>
         </Card>
       </TabsContent>
-      <TabsContent value="reports">
+      <TabsContent id="reports">
         <Card>
           <CardHeader>
             <CardTitle>Reports</CardTitle>
@@ -63,7 +63,7 @@ export function TabsDemo() {
           </CardContent>
         </Card>
       </TabsContent>
-      <TabsContent value="settings">
+      <TabsContent id="settings">
         <Card>
           <CardHeader>
             <CardTitle>Settings</CardTitle>
@@ -78,5 +78,5 @@ export function TabsDemo() {
         </Card>
       </TabsContent>
     </Tabs>
-  )
+  );
 }

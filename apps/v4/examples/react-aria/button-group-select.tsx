@@ -25,16 +25,12 @@ export default function ButtonGroupSelect() {
   return (
     <ButtonGroup>
       <ButtonGroup>
-        <Select
-          items={CURRENCIES}
-          value={currency}
-          onValueChange={(value) => setCurrency(value as string)}
-        >
+        <Select value={currency} onChange={(value) => setCurrency(value as string)}>
           <SelectTrigger className="font-mono">{currency}</SelectTrigger>
-          <SelectContent alignItemWithTrigger={false} align="start">
+          <SelectContent align="start">
             <SelectGroup>
               {CURRENCIES.map((item) => (
-                <SelectItem key={item.value} value={item.value}>
+                <SelectItem key={item.value} id={item.value}>
                   {item.value}{" "}
                   <span className="text-muted-foreground">{item.label}</span>
                 </SelectItem>
@@ -50,5 +46,5 @@ export default function ButtonGroupSelect() {
         </Button>
       </ButtonGroup>
     </ButtonGroup>
-  )
+  );
 }

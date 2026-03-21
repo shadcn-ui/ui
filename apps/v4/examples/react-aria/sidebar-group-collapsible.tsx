@@ -23,7 +23,7 @@ export default function AppSidebar() {
     <SidebarProvider>
       <Sidebar>
         <SidebarContent>
-          <Collapsible defaultOpen className="group/collapsible">
+          <Collapsible defaultExpanded className="group/collapsible">
             <SidebarGroup>
               <SidebarGroupLabel
                 render={<CollapsibleTrigger />}
@@ -55,5 +55,5 @@ export default function AppSidebar() {
         </SidebarContent>
       </Sidebar>
     </SidebarProvider>
-  )
+  );
 }

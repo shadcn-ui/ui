@@ -1,4 +1,4 @@
-import { Button } from "@/examples/react-aria/ui/button"
+import { Button, LinkButton } from "@/examples/react-aria/ui/button";
 import {
   Empty,
   EmptyContent,
@@ -27,15 +27,9 @@ export default function EmptyDemo() {
         <Button>Create Project</Button>
         <Button variant="outline">Import Project</Button>
       </EmptyContent>
-      <Button
-        variant="link"
-        render={<a href="#" />}
-        className="text-muted-foreground"
-        size="sm"
-        nativeButton={false}
-      >
+      <LinkButton href="#" variant="link" className="text-muted-foreground" size="sm">
         Learn More <ArrowUpRightIcon />
-      </Button>
+      </LinkButton>
     </Empty>
-  )
+  );
 }

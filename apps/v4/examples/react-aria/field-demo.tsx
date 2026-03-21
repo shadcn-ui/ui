@@ -21,7 +21,6 @@ import {
 import { Textarea } from "@/examples/react-aria/ui/textarea"
 
 const months = [
-  { label: "MM", value: null },
   { label: "01", value: "01" },
   { label: "02", value: "02" },
   { label: "03", value: "03" },
@@ -33,17 +32,16 @@ const months = [
   { label: "09", value: "09" },
   { label: "10", value: "10" },
   { label: "11", value: "11" },
-  { label: "12", value: "12" },
+  { label: "12", value: "12" }
 ]
 
 const years = [
-  { label: "YYYY", value: null },
   { label: "2024", value: "2024" },
   { label: "2025", value: "2025" },
   { label: "2026", value: "2026" },
   { label: "2027", value: "2027" },
   { label: "2028", value: "2028" },
-  { label: "2029", value: "2029" },
+  { label: "2029", value: "2029" }
 ]
 
 export default function FieldDemo() {
@@ -85,14 +83,14 @@ export default function FieldDemo() {
                   <FieldLabel htmlFor="checkout-exp-month-ts6">
                     Month
                   </FieldLabel>
-                  <Select items={months}>
+                  <Select placeholder="MM">
                     <SelectTrigger id="checkout-exp-month-ts6">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectGroup>
                         {months.map((item) => (
-                          <SelectItem key={item.value} value={item.value}>
+                          <SelectItem key={item.value} id={item.value}>
                             {item.label}
                           </SelectItem>
                         ))}
@@ -104,14 +102,14 @@ export default function FieldDemo() {
                   <FieldLabel htmlFor="checkout-7j9-exp-year-f59">
                     Year
                   </FieldLabel>
-                  <Select items={years}>
+                  <Select placeholder="YYYY">
                     <SelectTrigger id="checkout-7j9-exp-year-f59">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectGroup>
                         {years.map((item) => (
-                          <SelectItem key={item.value} value={item.value}>
+                          <SelectItem key={item.value} id={item.value}>
                             {item.label}
                           </SelectItem>
                         ))}
@@ -136,7 +134,7 @@ export default function FieldDemo() {
               <Field orientation="horizontal">
                 <Checkbox
                   id="checkout-7j9-same-as-shipping-wgm"
-                  defaultChecked
+                  defaultSelected
                 />
                 <FieldLabel
                   htmlFor="checkout-7j9-same-as-shipping-wgm"
@@ -170,5 +168,5 @@ export default function FieldDemo() {
         </FieldGroup>
       </form>
     </div>
-  )
+  );
 }

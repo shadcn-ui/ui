@@ -4,11 +4,7 @@ import {
   InputGroupButton,
   InputGroupInput,
 } from "@/examples/react-aria/ui/input-group"
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/examples/react-aria/ui/tooltip"
+import { Tooltip, TooltipTrigger } from "@/examples/react-aria/ui/tooltip";
 import { HelpCircle, InfoIcon } from "lucide-react"
 
 export default function InputGroupTooltip() {
@@ -17,58 +13,42 @@ export default function InputGroupTooltip() {
       <InputGroup>
         <InputGroupInput placeholder="Enter password" type="password" />
         <InputGroupAddon align="inline-end">
-          <Tooltip>
-            <TooltipTrigger
-              render={
-                <InputGroupButton
-                  variant="ghost"
-                  aria-label="Info"
-                  size="icon-xs"
-                />
-              }
-            >
+          <TooltipTrigger>
+            <InputGroupButton variant="ghost" aria-label="Info" size="icon-xs">
               <InfoIcon />
-            </TooltipTrigger>
-            <TooltipContent>
+            </InputGroupButton>
+            <Tooltip>
               <p>Password must be at least 8 characters</p>
-            </TooltipContent>
-          </Tooltip>
+            </Tooltip>
+          </TooltipTrigger>
         </InputGroupAddon>
       </InputGroup>
       <InputGroup>
         <InputGroupInput placeholder="Your email address" />
         <InputGroupAddon align="inline-end">
-          <Tooltip>
-            <TooltipTrigger
-              render={
-                <InputGroupButton
-                  variant="ghost"
-                  aria-label="Help"
-                  size="icon-xs"
-                />
-              }
-            >
+          <TooltipTrigger>
+            <InputGroupButton variant="ghost" aria-label="Help" size="icon-xs">
               <HelpCircle />
-            </TooltipTrigger>
-            <TooltipContent>
+            </InputGroupButton>
+            <Tooltip>
               <p>We&apos;ll use this to send you notifications</p>
-            </TooltipContent>
-          </Tooltip>
+            </Tooltip>
+          </TooltipTrigger>
         </InputGroupAddon>
       </InputGroup>
       <InputGroup>
         <InputGroupInput placeholder="Enter API key" />
-        <Tooltip>
-          <TooltipTrigger render={<InputGroupAddon />}>
+        <TooltipTrigger>
+          <InputGroupAddon>
             <InputGroupButton variant="ghost" aria-label="Help" size="icon-xs">
               <HelpCircle />
             </InputGroupButton>
-          </TooltipTrigger>
-          <TooltipContent side="left">
+          </InputGroupAddon>
+          <Tooltip side="left">
             <p>Click for help with API keys</p>
-          </TooltipContent>
-        </Tooltip>
+          </Tooltip>
+        </TooltipTrigger>
       </InputGroup>
     </div>
-  )
+  );
 }

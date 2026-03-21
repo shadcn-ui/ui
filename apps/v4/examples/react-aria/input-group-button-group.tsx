@@ -14,7 +14,7 @@ export default function InputGroupButtonGroup() {
   return (
     <div className="grid w-full max-w-sm gap-6">
       <ButtonGroup>
-        <ButtonGroupText render={<Label htmlFor="url" />}>
+        <ButtonGroupText render={props => <Label {...props} htmlFor="url" />}>
           https://
         </ButtonGroupText>
         <InputGroup>

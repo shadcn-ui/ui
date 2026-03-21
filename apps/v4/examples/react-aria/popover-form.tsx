@@ -1,23 +1,16 @@
 import { Button } from "@/examples/react-aria/ui/button"
 import { Field, FieldGroup, FieldLabel } from "@/examples/react-aria/ui/field"
 import { Input } from "@/examples/react-aria/ui/input"
-import {
-  Popover,
-  PopoverContent,
-  PopoverDescription,
-  PopoverHeader,
-  PopoverTitle,
-  PopoverTrigger,
-} from "@/examples/react-aria/ui/popover"
+import { Popover, PopoverDescription, PopoverHeader, PopoverTitle, PopoverTrigger } from "@/examples/react-aria/ui/popover";
 
 export function PopoverForm() {
   return (
     <>
-      <Popover>
-        <PopoverTrigger render={<Button variant="outline" />}>
+      <PopoverTrigger>
+        <Button variant="outline">
           Open Popover
-        </PopoverTrigger>
-        <PopoverContent className="w-64" align="start">
+        </Button>
+        <Popover className="w-64" align="start">
           <PopoverHeader>
             <PopoverTitle>Dimensions</PopoverTitle>
             <PopoverDescription>
@@ -38,8 +31,8 @@ export function PopoverForm() {
               <Input id="height" defaultValue="25px" />
             </Field>
           </FieldGroup>
-        </PopoverContent>
-      </Popover>
+        </Popover>
+      </PopoverTrigger>
     </>
-  )
+  );
 }

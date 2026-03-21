@@ -111,36 +111,28 @@ export function RadioFields() {
       </RadioGroup>
       <FieldSet>
         <FieldLegend variant="label">Invalid Radio Group</FieldLegend>
-        <RadioGroup>
+        <RadioGroup isInvalid>
           <Field data-invalid orientation="horizontal">
-            <RadioGroupItem
-              value="invalid1"
-              id="radio-invalid-1"
-              aria-invalid
-            />
+            <RadioGroupItem value="invalid1" id="radio-invalid-1" />
             <FieldLabel htmlFor="radio-invalid-1">Invalid Option 1</FieldLabel>
           </Field>
           <Field data-invalid orientation="horizontal">
-            <RadioGroupItem
-              value="invalid2"
-              id="radio-invalid-2"
-              aria-invalid
-            />
+            <RadioGroupItem value="invalid2" id="radio-invalid-2" />
             <FieldLabel htmlFor="radio-invalid-2">Invalid Option 2</FieldLabel>
           </Field>
         </RadioGroup>
       </FieldSet>
       <FieldSet>
         <FieldLegend variant="label">Disabled Radio Group</FieldLegend>
-        <RadioGroup disabled>
+        <RadioGroup isDisabled>
           <Field data-disabled orientation="horizontal">
-            <RadioGroupItem value="disabled1" id="radio-disabled-1" disabled />
+            <RadioGroupItem value="disabled1" id="radio-disabled-1" isDisabled />
             <FieldLabel htmlFor="radio-disabled-1">
               Disabled Option 1
             </FieldLabel>
           </Field>
           <Field data-disabled orientation="horizontal">
-            <RadioGroupItem value="disabled2" id="radio-disabled-2" disabled />
+            <RadioGroupItem value="disabled2" id="radio-disabled-2" isDisabled />
             <FieldLabel htmlFor="radio-disabled-2">
               Disabled Option 2
             </FieldLabel>
@@ -148,5 +140,5 @@ export function RadioFields() {
         </RadioGroup>
       </FieldSet>
     </FieldGroup>
-  )
+  );
 }

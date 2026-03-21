@@ -1,11 +1,6 @@
 "use client"
 
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/examples/react-aria/ui/dropdown-menu"
+import { DropdownMenu, DropdownMenuItem, DropdownMenuTrigger } from "@/examples/react-aria/ui/dropdown-menu";
 import {
   Sidebar,
   SidebarContent,
@@ -73,20 +68,20 @@ export default function AppSidebar() {
                       <project.icon />
                       <span>{project.name}</span>
                     </SidebarMenuButton>
-                    <DropdownMenu>
-                      <DropdownMenuTrigger render={<SidebarMenuAction />}>
+                    <DropdownMenuTrigger>
+                      <SidebarMenuAction>
                         <MoreHorizontalIcon />
                         <span className="sr-only">More</span>
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent side="right" align="start">
+                      </SidebarMenuAction>
+                      <DropdownMenu side="right" align="start">
                         <DropdownMenuItem>
                           <span>Edit Project</span>
                         </DropdownMenuItem>
                         <DropdownMenuItem>
                           <span>Delete Project</span>
                         </DropdownMenuItem>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
+                      </DropdownMenu>
+                    </DropdownMenuTrigger>
                   </SidebarMenuItem>
                 ))}
               </SidebarMenu>
@@ -95,5 +90,5 @@ export default function AppSidebar() {
         </SidebarContent>
       </Sidebar>
     </SidebarProvider>
-  )
+  );
 }

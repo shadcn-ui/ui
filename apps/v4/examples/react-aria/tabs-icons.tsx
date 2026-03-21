@@ -3,17 +3,17 @@ import { AppWindowIcon, CodeIcon } from "lucide-react"
 
 export function TabsIcons() {
   return (
-    <Tabs defaultValue="preview">
+    <Tabs defaultSelectedKey="preview">
       <TabsList>
-        <TabsTrigger value="preview">
+        <TabsTrigger id="preview">
           <AppWindowIcon />
           Preview
         </TabsTrigger>
-        <TabsTrigger value="code">
+        <TabsTrigger id="code">
           <CodeIcon />
           Code
         </TabsTrigger>
       </TabsList>
     </Tabs>
-  )
+  );
 }

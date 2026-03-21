@@ -29,8 +29,8 @@ export function CollapsibleSettings() {
       </CardHeader>
       <CardContent>
         <Collapsible
-          open={isOpen}
-          onOpenChange={setIsOpen}
+          isExpanded={isOpen}
+          onExpandedChange={setIsOpen}
           className="flex items-start gap-2"
         >
           <FieldGroup className="grid w-full grid-cols-2 gap-2">
@@ -61,11 +61,11 @@ export function CollapsibleSettings() {
               </Field>
             </CollapsibleContent>
           </FieldGroup>
-          <CollapsibleTrigger render={<Button variant="outline" size="icon" />}>
+          <Button slot="trigger" variant="outline" size="icon">
             {isOpen ? <MinimizeIcon /> : <MaximizeIcon />}
-          </CollapsibleTrigger>
+          </Button>
         </Collapsible>
       </CardContent>
     </Card>
-  )
+  );
 }

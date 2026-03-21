@@ -5,14 +5,7 @@ import {
   FieldDescription,
   FieldLabel,
 } from "@/examples/react-aria/ui/field"
-import {
-  Popover,
-  PopoverContent,
-  PopoverDescription,
-  PopoverHeader,
-  PopoverTitle,
-  PopoverTrigger,
-} from "@/examples/react-aria/ui/popover"
+import { Popover, PopoverDescription, PopoverHeader, PopoverTitle, PopoverTrigger } from "@/examples/react-aria/ui/popover";
 import { Textarea } from "@/examples/react-aria/ui/textarea"
 import { BotIcon, ChevronDownIcon } from "lucide-react"
 
@@ -22,15 +15,11 @@ export default function ButtonGroupPopover() {
       <Button variant="outline">
         <BotIcon /> Copilot
       </Button>
-      <Popover>
-        <PopoverTrigger
-          render={
-            <Button variant="outline" size="icon" aria-label="Open Popover" />
-          }
-        >
+      <PopoverTrigger>
+        <Button variant="outline" size="icon" aria-label="Open Popover">
           <ChevronDownIcon />
-        </PopoverTrigger>
-        <PopoverContent align="end" className="rounded-xl text-sm">
+        </Button>
+        <Popover align="end" className="rounded-xl text-sm">
           <PopoverHeader>
             <PopoverTitle>Start a new task with Copilot</PopoverTitle>
             <PopoverDescription>
@@ -50,8 +39,8 @@ export default function ButtonGroupPopover() {
               Copilot will open a pull request for review.
             </FieldDescription>
           </Field>
-        </PopoverContent>
-      </Popover>
+        </Popover>
+      </PopoverTrigger>
     </ButtonGroup>
-  )
+  );
 }

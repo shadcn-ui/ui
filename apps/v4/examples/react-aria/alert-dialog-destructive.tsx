@@ -2,24 +2,21 @@ import {
   AlertDialog,
   AlertDialogAction,
   AlertDialogCancel,
-  AlertDialogContent,
   AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogMedia,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/examples/react-aria/ui/alert-dialog"
+} from "@/examples/react-aria/ui/alert-dialog";
 import { Button } from "@/examples/react-aria/ui/button"
 import { Trash2Icon } from "lucide-react"
 
 export function AlertDialogDestructive() {
   return (
-    <AlertDialog>
-      <AlertDialogTrigger
-        render={<Button variant="destructive">Delete Chat</Button>}
-      />
-      <AlertDialogContent size="sm">
+    <AlertDialogTrigger>
+      <Button variant="destructive">Delete Chat</Button>
+      <AlertDialog size="sm">
         <AlertDialogHeader>
           <AlertDialogMedia className="bg-destructive/10 text-destructive dark:bg-destructive/20 dark:text-destructive">
             <Trash2Icon />
@@ -34,7 +31,7 @@ export function AlertDialogDestructive() {
           <AlertDialogCancel variant="outline">Cancel</AlertDialogCancel>
           <AlertDialogAction variant="destructive">Delete</AlertDialogAction>
         </AlertDialogFooter>
-      </AlertDialogContent>
-    </AlertDialog>
-  )
+      </AlertDialog>
+    </AlertDialogTrigger>
+  );
 }

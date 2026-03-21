@@ -4,12 +4,7 @@ import {
   ButtonGroup,
   ButtonGroupText,
 } from "@/examples/react-aria/ui/button-group"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/examples/react-aria/ui/dropdown-menu"
+import { DropdownMenu, DropdownMenuItem, DropdownMenuTrigger } from "@/examples/react-aria/ui/dropdown-menu";
 import {
   Field,
   FieldDescription,
@@ -22,19 +17,8 @@ import {
   InputGroupButton,
   InputGroupInput,
 } from "@/examples/react-aria/ui/input-group"
-import {
-  Popover,
-  PopoverContent,
-  PopoverDescription,
-  PopoverHeader,
-  PopoverTitle,
-  PopoverTrigger,
-} from "@/examples/react-aria/ui/popover"
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/examples/react-aria/ui/tooltip"
+import { Popover, PopoverDescription, PopoverHeader, PopoverTitle, PopoverTrigger } from "@/examples/react-aria/ui/popover";
+import { Tooltip, TooltipTrigger } from "@/examples/react-aria/ui/tooltip";
 import { ChevronDownIcon, InfoIcon, StarIcon } from "lucide-react"
 import { toast } from "sonner"
 
@@ -53,16 +37,12 @@ export function InputGroupWithTooltip({
           <InputGroup>
             <InputGroupInput id="input-tooltip-20" />
             <InputGroupAddon align="inline-end">
-              <Tooltip>
-                <TooltipTrigger
-                  render={
-                    <InputGroupButton className="rounded-full" size="icon-xs" />
-                  }
-                >
+              <TooltipTrigger>
+                <InputGroupButton className="rounded-full" size="icon-xs">
                   <InfoIcon />
-                </TooltipTrigger>
-                <TooltipContent>This is content in a tooltip.</TooltipContent>
-              </Tooltip>
+                </InputGroupButton>
+                <Tooltip>This is content in a tooltip.</Tooltip>
+              </TooltipTrigger>
             </InputGroupAddon>
           </InputGroup>
           <FieldDescription>
@@ -74,15 +54,11 @@ export function InputGroupWithTooltip({
           <InputGroup>
             <InputGroupInput id="input-dropdown-21" />
             <InputGroupAddon>
-              <DropdownMenu>
-                <DropdownMenuTrigger
-                  render={
-                    <InputGroupButton className="text-muted-foreground tabular-nums" />
-                  }
-                >
+              <DropdownMenuTrigger>
+                <InputGroupButton className="text-muted-foreground tabular-nums">
                   {country} <ChevronDownIcon />
-                </DropdownMenuTrigger>
-                <DropdownMenuContent
+                </InputGroupButton>
+                <DropdownMenu
                   align="start"
                   className="min-w-16"
                   sideOffset={10}
@@ -97,8 +73,8 @@ export function InputGroupWithTooltip({
                   <DropdownMenuItem onClick={() => setCountry("+46")}>
                     +46
                   </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
+                </DropdownMenu>
+              </DropdownMenuTrigger>
             </InputGroupAddon>
           </InputGroup>
           <FieldDescription>
@@ -108,21 +84,21 @@ export function InputGroupWithTooltip({
         <Field>
           <FieldLabel htmlFor="input-secure-19">Popover</FieldLabel>
           <InputGroup>
-            <Popover>
-              <PopoverTrigger render={<InputGroupAddon />} nativeButton={false}>
+            <PopoverTrigger>
+              <InputGroupAddon>
                 <InputGroupButton variant="secondary" size="icon-xs">
                   <InfoIcon />
                 </InputGroupButton>
-              </PopoverTrigger>
-              <PopoverContent align="start">
+              </InputGroupAddon>
+              <Popover align="start">
                 <PopoverHeader>
                   <PopoverTitle>Your connection is not secure.</PopoverTitle>
                   <PopoverDescription>
                     You should not enter any sensitive information on this site.
                   </PopoverDescription>
                 </PopoverHeader>
-              </PopoverContent>
-            </Popover>
+              </Popover>
+            </PopoverTrigger>
             <InputGroupAddon className="pl-1 text-muted-foreground">
               https://
             </InputGroupAddon>
@@ -158,5 +134,5 @@ export function InputGroupWithTooltip({
         </Field>
       </FieldGroup>
     </>
-  )
+  );
 }

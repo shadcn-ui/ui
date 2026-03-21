@@ -3,22 +3,21 @@
 import { Button } from "@/examples/react-aria/ui/button"
 import {
   DropdownMenu,
-  DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuShortcut,
   DropdownMenuTrigger,
-} from "@/examples/react-aria/ui/dropdown-menu"
+} from "@/examples/react-aria/ui/dropdown-menu";
 
 export function DropdownMenuShortcuts() {
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger render={<Button variant="outline" />}>
+    <DropdownMenuTrigger>
+      <Button variant="outline">
         Open
-      </DropdownMenuTrigger>
-      <DropdownMenuContent>
+      </Button>
+      <DropdownMenu>
         <DropdownMenuGroup>
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
           <DropdownMenuItem>
@@ -39,7 +38,7 @@ export function DropdownMenuShortcuts() {
           Log out
           <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
         </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
-  )
+      </DropdownMenu>
+    </DropdownMenuTrigger>
+  );
 }

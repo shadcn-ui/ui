@@ -65,7 +65,7 @@ export function CheckboxRtl() {
         <Checkbox
           id="terms-checkbox-2-rtl"
           name="terms-checkbox-2"
-          defaultChecked
+          defaultSelected
         />
         <FieldContent>
           <FieldLabel htmlFor="terms-checkbox-2-rtl">
@@ -75,7 +75,7 @@ export function CheckboxRtl() {
         </FieldContent>
       </Field>
       <Field orientation="horizontal" data-disabled>
-        <Checkbox id="toggle-checkbox-rtl" name="toggle-checkbox" disabled />
+        <Checkbox id="toggle-checkbox-rtl" name="toggle-checkbox" isDisabled />
         <FieldLabel htmlFor="toggle-checkbox-rtl">
           {t.enableNotifications}
         </FieldLabel>
@@ -92,5 +92,5 @@ export function CheckboxRtl() {
         </Field>
       </FieldLabel>
     </FieldGroup>
-  )
+  );
 }

@@ -14,13 +14,12 @@ import {
 import { DirectionProvider } from "@/examples/react-aria/ui-rtl/direction"
 import {
   DropdownMenu,
-  DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/examples/react-aria/ui-rtl/dropdown-menu"
+} from "@/examples/react-aria/ui-rtl/dropdown-menu";
 import {
   Sidebar,
   SidebarContent,
@@ -342,12 +341,12 @@ function SidebarContentInner({
               {navMain.map((item) => (
                 <Collapsible
                   key={item.title}
-                  defaultOpen={item.isActive}
+                  defaultExpanded={item.isActive}
                   className="group/collapsible"
                 >
                   <SidebarMenuItem>
                     <CollapsibleTrigger
-                      render={<SidebarMenuButton tooltip={item.title} />}
+                      render={props => <SidebarMenuButton {...props} tooltip={item.title} />}
                     >
                       {item.icon && <item.icon />}
                       <span>{item.title}</span>
@@ -380,14 +379,12 @@ function SidebarContentInner({
                     <item.icon />
                     <span>{item.name}</span>
                   </SidebarMenuButton>
-                  <DropdownMenu>
-                    <DropdownMenuTrigger
-                      render={<SidebarMenuAction showOnHover />}
-                    >
+                  <DropdownMenuTrigger>
+                    <SidebarMenuAction showOnHover>
                       <MoreHorizontal />
                       <span className="sr-only">{t.more}</span>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent
+                    </SidebarMenuAction>
+                    <DropdownMenu
                       className="w-48 rounded-lg"
                       side={isMobile ? "bottom" : "inline-end"}
                       align={isMobile ? "end" : "start"}
@@ -410,8 +407,8 @@ function SidebarContentInner({
                           <span>{t.deleteProject}</span>
                         </DropdownMenuItem>
                       </DropdownMenuGroup>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
+                    </DropdownMenu>
+                  </DropdownMenuTrigger>
                 </SidebarMenuItem>
               ))}
               <SidebarMenuItem>
@@ -426,15 +423,10 @@ function SidebarContentInner({
         <SidebarFooter>
           <SidebarMenu>
             <SidebarMenuItem>
-              <DropdownMenu>
-                <DropdownMenuTrigger
-                  render={
-                    <SidebarMenuButton
-                      size="lg"
-                      className="data-open:bg-sidebar-accent data-open:text-sidebar-accent-foreground"
-                    />
-                  }
-                >
+              <DropdownMenuTrigger>
+                <SidebarMenuButton
+                  size="lg"
+                  className="data-open:bg-sidebar-accent data-open:text-sidebar-accent-foreground">
                   <Avatar className="rounded-lg">
                     <AvatarImage src={user.avatar} alt={user.name} />
                     <AvatarFallback className="rounded-lg">CN</AvatarFallback>
@@ -444,8 +436,8 @@ function SidebarContentInner({
                     <span className="truncate text-xs">{user.email}</span>
                   </div>
                   <ChevronsUpDown className="ms-auto size-4" />
-                </DropdownMenuTrigger>
-                <DropdownMenuContent
+                </SidebarMenuButton>
+                <DropdownMenu
                   className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
                   side={isMobile ? "bottom" : "inline-end"}
                   align="end"
@@ -499,8 +491,8 @@ function SidebarContentInner({
                       {t.logOut}
                     </DropdownMenuItem>
                   </DropdownMenuGroup>
-                </DropdownMenuContent>
-              </DropdownMenu>
+                </DropdownMenu>
+              </DropdownMenuTrigger>
             </SidebarMenuItem>
           </SidebarMenu>
         </SidebarFooter>
@@ -517,5 +509,5 @@ function SidebarContentInner({
         </header>
       </SidebarInset>
     </>
-  )
+  );
 }

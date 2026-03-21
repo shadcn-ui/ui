@@ -4,14 +4,13 @@ import {
   AlertDialog,
   AlertDialogAction,
   AlertDialogCancel,
-  AlertDialogContent,
   AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogMedia,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/examples/react-aria/ui-rtl/alert-dialog"
+} from "@/examples/react-aria/ui-rtl/alert-dialog";
 import { Button } from "@/examples/react-aria/ui-rtl/button"
 import { BluetoothIcon } from "lucide-react"
 
@@ -77,11 +76,11 @@ export function AlertDialogRtl() {
 
   return (
     <div className="flex gap-4" dir={dir}>
-      <AlertDialog>
-        <AlertDialogTrigger render={<Button variant="outline" />}>
+      <AlertDialogTrigger>
+        <Button variant="outline">
           {t.showDialog}
-        </AlertDialogTrigger>
-        <AlertDialogContent
+        </Button>
+        <AlertDialog
           dir={dir}
           data-lang={dir === "rtl" ? language : undefined}
         >
@@ -93,13 +92,13 @@ export function AlertDialogRtl() {
             <AlertDialogCancel>{t.cancel}</AlertDialogCancel>
             <AlertDialogAction>{t.continue}</AlertDialogAction>
           </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
-      <AlertDialog>
-        <AlertDialogTrigger render={<Button variant="outline" />}>
+        </AlertDialog>
+      </AlertDialogTrigger>
+      <AlertDialogTrigger>
+        <Button variant="outline">
           {t.showDialogSm}
-        </AlertDialogTrigger>
-        <AlertDialogContent
+        </Button>
+        <AlertDialog
           size="sm"
           dir={dir}
           data-lang={dir === "rtl" ? language : undefined}
@@ -117,8 +116,8 @@ export function AlertDialogRtl() {
             <AlertDialogCancel>{t.dontAllow}</AlertDialogCancel>
             <AlertDialogAction>{t.allow}</AlertDialogAction>
           </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
+        </AlertDialog>
+      </AlertDialogTrigger>
     </div>
-  )
+  );
 }

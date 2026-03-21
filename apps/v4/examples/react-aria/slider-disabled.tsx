@@ -4,10 +4,10 @@ export function SliderDisabled() {
   return (
     <Slider
       defaultValue={[50]}
-      max={100}
+      maxValue={100}
       step={1}
-      disabled
+      isDisabled
       className="mx-auto w-full max-w-xs"
     />
-  )
+  );
 }

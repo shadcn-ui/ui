@@ -13,14 +13,13 @@ import {
 } from "@/examples/react-aria/ui/collapsible"
 import {
   DropdownMenu,
-  DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuShortcut,
   DropdownMenuTrigger,
-} from "@/examples/react-aria/ui/dropdown-menu"
+} from "@/examples/react-aria/ui/dropdown-menu";
 import {
   Sidebar,
   SidebarContent,
@@ -215,15 +214,10 @@ function TeamSwitcher({
   return (
     <SidebarMenu>
       <SidebarMenuItem>
-        <DropdownMenu>
-          <DropdownMenuTrigger
-            render={
-              <SidebarMenuButton
-                size="lg"
-                className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
-              />
-            }
-          >
+        <DropdownMenuTrigger>
+          <SidebarMenuButton
+            size="lg"
+            className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground">
             <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
               <activeTeam.logo className="size-4" />
             </div>
@@ -232,8 +226,8 @@ function TeamSwitcher({
               <span className="truncate text-xs">{activeTeam.plan}</span>
             </div>
             <ChevronsUpDown className="ml-auto" />
-          </DropdownMenuTrigger>
-          <DropdownMenuContent
+          </SidebarMenuButton>
+          <DropdownMenu
             className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
             align="start"
             side={isMobile ? "bottom" : "right"}
@@ -268,11 +262,11 @@ function TeamSwitcher({
                 </div>
               </DropdownMenuItem>
             </DropdownMenuGroup>
-          </DropdownMenuContent>
-        </DropdownMenu>
+          </DropdownMenu>
+        </DropdownMenuTrigger>
       </SidebarMenuItem>
     </SidebarMenu>
-  )
+  );
 }
 
 function NavMain({
@@ -296,12 +290,12 @@ function NavMain({
         {items.map((item) => (
           <Collapsible
             key={item.title}
-            defaultOpen={item.isActive}
+            defaultExpanded={item.isActive}
             className="group/collapsible"
           >
             <SidebarMenuItem>
               <CollapsibleTrigger
-                render={<SidebarMenuButton tooltip={item.title} />}
+                render={props => <SidebarMenuButton {...props} tooltip={item.title} />}
               >
                 {item.icon && <item.icon />}
                 <span>{item.title}</span>
@@ -323,7 +317,7 @@ function NavMain({
         ))}
       </SidebarMenu>
     </SidebarGroup>
-  )
+  );
 }
 
 function NavProjects({
@@ -347,12 +341,12 @@ function NavProjects({
               <item.icon />
               <span>{item.name}</span>
             </SidebarMenuButton>
-            <DropdownMenu>
-              <DropdownMenuTrigger render={<SidebarMenuAction showOnHover />}>
+            <DropdownMenuTrigger>
+              <SidebarMenuAction showOnHover>
                 <MoreHorizontal />
                 <span className="sr-only">More</span>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent
+              </SidebarMenuAction>
+              <DropdownMenu
                 className="w-48 rounded-lg"
                 side={isMobile ? "bottom" : "right"}
                 align={isMobile ? "end" : "start"}
@@ -370,8 +364,8 @@ function NavProjects({
                   <Trash2 className="text-muted-foreground" />
                   <span>Delete Project</span>
                 </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+              </DropdownMenu>
+            </DropdownMenuTrigger>
           </SidebarMenuItem>
         ))}
         <SidebarMenuItem>
@@ -382,7 +376,7 @@ function NavProjects({
         </SidebarMenuItem>
       </SidebarMenu>
     </SidebarGroup>
-  )
+  );
 }
 
 function NavUser({
@@ -399,15 +393,10 @@ function NavUser({
   return (
     <SidebarMenu>
       <SidebarMenuItem>
-        <DropdownMenu>
-          <DropdownMenuTrigger
-            render={
-              <SidebarMenuButton
-                size="lg"
-                className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
-              />
-            }
-          >
+        <DropdownMenuTrigger>
+          <SidebarMenuButton
+            size="lg"
+            className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground">
             <Avatar className="h-8 w-8 rounded-lg">
               <AvatarImage src={user.avatar} alt={user.name} />
               <AvatarFallback className="rounded-lg">CN</AvatarFallback>
@@ -417,8 +406,8 @@ function NavUser({
               <span className="truncate text-xs">{user.email}</span>
             </div>
             <ChevronsUpDown className="ml-auto size-4" />
-          </DropdownMenuTrigger>
-          <DropdownMenuContent
+          </SidebarMenuButton>
+          <DropdownMenu
             className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
             side={isMobile ? "bottom" : "right"}
             align="end"
@@ -467,11 +456,11 @@ function NavUser({
                 Log out
               </DropdownMenuItem>
             </DropdownMenuGroup>
-          </DropdownMenuContent>
-        </DropdownMenu>
+          </DropdownMenu>
+        </DropdownMenuTrigger>
       </SidebarMenuItem>
     </SidebarMenu>
-  )
+  );
 }
 
 export default function AppSidebar({

@@ -82,7 +82,7 @@ export function DrawerDemo() {
                 size="icon"
                 className="h-8 w-8 shrink-0 rounded-full"
                 onClick={() => onClick(-10)}
-                disabled={goal <= 200}
+                isDisabled={goal <= 200}
               >
                 <Minus />
                 <span className="sr-only">Decrease</span>
@@ -100,7 +100,7 @@ export function DrawerDemo() {
                 size="icon"
                 className="h-8 w-8 shrink-0 rounded-full"
                 onClick={() => onClick(10)}
-                disabled={goal >= 400}
+                isDisabled={goal >= 400}
               >
                 <Plus />
                 <span className="sr-only">Increase</span>
@@ -130,5 +130,5 @@ export function DrawerDemo() {
         </div>
       </DrawerContent>
     </Drawer>
-  )
+  );
 }

@@ -22,7 +22,7 @@ export function CheckboxGroup() {
           <Checkbox
             id="finder-pref-9k2-hard-disks-ljj-checkbox"
             name="finder-pref-9k2-hard-disks-ljj-checkbox"
-            defaultChecked
+            defaultSelected
           />
           <FieldLabel
             htmlFor="finder-pref-9k2-hard-disks-ljj-checkbox"
@@ -35,7 +35,7 @@ export function CheckboxGroup() {
           <Checkbox
             id="finder-pref-9k2-external-disks-1yg-checkbox"
             name="finder-pref-9k2-external-disks-1yg-checkbox"
-            defaultChecked
+            defaultSelected
           />
           <FieldLabel
             htmlFor="finder-pref-9k2-external-disks-1yg-checkbox"
@@ -70,5 +70,5 @@ export function CheckboxGroup() {
         </Field>
       </FieldGroup>
     </FieldSet>
-  )
+  );
 }

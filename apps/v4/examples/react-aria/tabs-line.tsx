@@ -2,12 +2,12 @@ import { Tabs, TabsList, TabsTrigger } from "@/examples/react-aria/ui/tabs"
 
 export function TabsLine() {
   return (
-    <Tabs defaultValue="overview">
+    <Tabs defaultSelectedKey="overview">
       <TabsList variant="line">
-        <TabsTrigger value="overview">Overview</TabsTrigger>
-        <TabsTrigger value="analytics">Analytics</TabsTrigger>
-        <TabsTrigger value="reports">Reports</TabsTrigger>
+        <TabsTrigger id="overview">Overview</TabsTrigger>
+        <TabsTrigger id="analytics">Analytics</TabsTrigger>
+        <TabsTrigger id="reports">Reports</TabsTrigger>
       </TabsList>
     </Tabs>
-  )
+  );
 }

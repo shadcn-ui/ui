@@ -47,14 +47,14 @@ export function InputForm() {
           </Field>
           <Field>
             <FieldLabel htmlFor="form-country">Country</FieldLabel>
-            <Select items={countries} defaultValue="us">
+            <Select defaultValue="us">
               <SelectTrigger id="form-country">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>
                   {countries.map((country) => (
-                    <SelectItem key={country.value} value={country.value}>
+                    <SelectItem key={country.value} id={country.value}>
                       {country.label}
                     </SelectItem>
                   ))}
@@ -75,5 +75,5 @@ export function InputForm() {
         </Field>
       </FieldGroup>
     </form>
-  )
+  );
 }

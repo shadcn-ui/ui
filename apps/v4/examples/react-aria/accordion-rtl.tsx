@@ -79,13 +79,13 @@ export function AccordionRtl() {
   const { t } = useTranslation(translations, "ar")
 
   return (
-    <Accordion defaultValue={["item-1"]} className="max-w-md">
+    <Accordion defaultExpandedKeys={["item-1"]} className="max-w-md">
       {items.map((item) => (
-        <AccordionItem key={item.value} value={item.value}>
+        <AccordionItem key={item.value} id={item.value}>
           <AccordionTrigger>{t[item.questionKey]}</AccordionTrigger>
           <AccordionContent>{t[item.answerKey]}</AccordionContent>
         </AccordionItem>
       ))}
     </Accordion>
-  )
+  );
 }

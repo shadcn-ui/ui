@@ -9,15 +9,14 @@ import {
 
 export function SelectDisabled() {
   const items = [
-    { label: "Select a fruit", value: null },
     { label: "Apple", value: "apple" },
     { label: "Banana", value: "banana" },
     { label: "Blueberry", value: "blueberry" },
     { label: "Grapes", value: "grapes", disabled: true },
-    { label: "Pineapple", value: "pineapple" },
+    { label: "Pineapple", value: "pineapple" }
   ]
   return (
-    <Select items={items} disabled>
+    <Select isDisabled placeholder="Select a fruit">
       <SelectTrigger className="w-full max-w-48">
         <SelectValue />
       </SelectTrigger>
@@ -26,8 +25,8 @@ export function SelectDisabled() {
           {items.map((item) => (
             <SelectItem
               key={item.value}
-              value={item.value}
-              disabled={item.disabled}
+              id={item.value}
+              isDisabled={item.disabled}
             >
               {item.label}
             </SelectItem>
@@ -35,5 +34,5 @@ export function SelectDisabled() {
         </SelectGroup>
       </SelectContent>
     </Select>
-  )
+  );
 }

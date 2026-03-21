@@ -2,25 +2,21 @@ import {
   AlertDialog,
   AlertDialogAction,
   AlertDialogCancel,
-  AlertDialogContent,
   AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogMedia,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/examples/react-aria/ui/alert-dialog"
+} from "@/examples/react-aria/ui/alert-dialog";
 import { Button } from "@/examples/react-aria/ui/button"
 import { BluetoothIcon } from "lucide-react"
 
 export function AlertDialogSmallWithMedia() {
   return (
-    <AlertDialog>
-      <AlertDialogTrigger
-        render={<Button variant="outline">Show Dialog</Button>}
-      />
-
-      <AlertDialogContent size="sm">
+    <AlertDialogTrigger>
+      <Button variant="outline">Show Dialog</Button>
+      <AlertDialog size="sm">
         <AlertDialogHeader>
           <AlertDialogMedia>
             <BluetoothIcon />
@@ -34,7 +30,7 @@ export function AlertDialogSmallWithMedia() {
           <AlertDialogCancel>Don&apos;t allow</AlertDialogCancel>
           <AlertDialogAction>Allow</AlertDialogAction>
         </AlertDialogFooter>
-      </AlertDialogContent>
-    </AlertDialog>
-  )
+      </AlertDialog>
+    </AlertDialogTrigger>
+  );
 }

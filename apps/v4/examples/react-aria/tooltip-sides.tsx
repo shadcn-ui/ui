@@ -1,25 +1,19 @@
 import { Button } from "@/examples/react-aria/ui/button"
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/examples/react-aria/ui/tooltip"
+import { Tooltip, TooltipTrigger } from "@/examples/react-aria/ui/tooltip";
 
 export function TooltipSides() {
   return (
     <div className="flex flex-wrap gap-2">
       {(["left", "top", "bottom", "right"] as const).map((side) => (
-        <Tooltip key={side}>
-          <TooltipTrigger
-            render={<Button variant="outline" className="w-fit capitalize" />}
-          >
+        <TooltipTrigger key={side}>
+          <Button variant="outline" className="w-fit capitalize">
             {side}
-          </TooltipTrigger>
-          <TooltipContent side={side}>
+          </Button>
+          <Tooltip side={side}>
             <p>Add to library</p>
-          </TooltipContent>
-        </Tooltip>
+          </Tooltip>
+        </TooltipTrigger>
       ))}
     </div>
-  )
+  );
 }

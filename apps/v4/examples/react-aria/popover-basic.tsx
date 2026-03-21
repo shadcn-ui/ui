@@ -1,29 +1,22 @@
 import { Button } from "@/examples/react-aria/ui/button"
-import {
-  Popover,
-  PopoverContent,
-  PopoverDescription,
-  PopoverHeader,
-  PopoverTitle,
-  PopoverTrigger,
-} from "@/examples/react-aria/ui/popover"
+import { Popover, PopoverDescription, PopoverHeader, PopoverTitle, PopoverTrigger } from "@/examples/react-aria/ui/popover";
 
 export function PopoverBasic() {
   return (
     <>
-      <Popover>
-        <PopoverTrigger render={<Button variant="outline" className="w-fit" />}>
+      <PopoverTrigger>
+        <Button variant="outline" className="w-fit">
           Open Popover
-        </PopoverTrigger>
-        <PopoverContent align="start">
+        </Button>
+        <Popover align="start">
           <PopoverHeader>
             <PopoverTitle>Dimensions</PopoverTitle>
             <PopoverDescription>
               Set the dimensions for the layer.
             </PopoverDescription>
           </PopoverHeader>
-        </PopoverContent>
-      </Popover>
+        </Popover>
+      </PopoverTrigger>
     </>
-  )
+  );
 }

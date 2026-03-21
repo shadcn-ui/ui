@@ -31,9 +31,9 @@ export function SwitchChoiceCard() {
               Receive notifications when focus mode is enabled or disabled.
             </FieldDescription>
           </FieldContent>
-          <Switch id="switch-notifications" defaultChecked />
+          <Switch id="switch-notifications" defaultSelected />
         </Field>
       </FieldLabel>
     </FieldGroup>
-  )
+  );
 }

@@ -5,11 +5,7 @@ import {
   InputGroupInput,
 } from "@/examples/react-aria/ui/input-group"
 import { Label } from "@/examples/react-aria/ui/label"
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/examples/react-aria/ui/tooltip"
+import { Tooltip, TooltipTrigger } from "@/examples/react-aria/ui/tooltip";
 import { InfoIcon } from "lucide-react"
 
 export default function InputGroupLabel() {
@@ -27,25 +23,20 @@ export default function InputGroupLabel() {
           <Label htmlFor="email-2" className="text-foreground">
             Email
           </Label>
-          <Tooltip>
-            <TooltipTrigger
-              render={
-                <InputGroupButton
-                  variant="ghost"
-                  aria-label="Help"
-                  className="ml-auto rounded-full"
-                  size="icon-xs"
-                />
-              }
-            >
+          <TooltipTrigger>
+            <InputGroupButton
+              variant="ghost"
+              aria-label="Help"
+              className="ml-auto rounded-full"
+              size="icon-xs">
               <InfoIcon />
-            </TooltipTrigger>
-            <TooltipContent>
+            </InputGroupButton>
+            <Tooltip>
               <p>We&apos;ll use this to send you notifications</p>
-            </TooltipContent>
-          </Tooltip>
+            </Tooltip>
+          </TooltipTrigger>
         </InputGroupAddon>
       </InputGroup>
     </div>
-  )
+  );
 }

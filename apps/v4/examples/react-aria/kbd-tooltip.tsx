@@ -1,37 +1,33 @@
 import { Button } from "@/examples/react-aria/ui/button"
 import { ButtonGroup } from "@/examples/react-aria/ui/button-group"
 import { Kbd, KbdGroup } from "@/examples/react-aria/ui/kbd"
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/examples/react-aria/ui/tooltip"
+import { Tooltip, TooltipTrigger } from "@/examples/react-aria/ui/tooltip";
 
 export default function KbdTooltip() {
   return (
     <div className="flex flex-wrap gap-4">
       <ButtonGroup>
-        <Tooltip>
-          <TooltipTrigger render={<Button variant="outline" />}>
+        <TooltipTrigger>
+          <Button variant="outline">
             Save
-          </TooltipTrigger>
-          <TooltipContent>
+          </Button>
+          <Tooltip>
             Save Changes <Kbd>S</Kbd>
-          </TooltipContent>
-        </Tooltip>
-        <Tooltip>
-          <TooltipTrigger render={<Button variant="outline" />}>
+          </Tooltip>
+        </TooltipTrigger>
+        <TooltipTrigger>
+          <Button variant="outline">
             Print
-          </TooltipTrigger>
-          <TooltipContent>
+          </Button>
+          <Tooltip>
             Print Document{" "}
             <KbdGroup>
               <Kbd>Ctrl</Kbd>
               <Kbd>P</Kbd>
             </KbdGroup>
-          </TooltipContent>
-        </Tooltip>
+          </Tooltip>
+        </TooltipTrigger>
       </ButtonGroup>
     </div>
-  )
+  );
 }

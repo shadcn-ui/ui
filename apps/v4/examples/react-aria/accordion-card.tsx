@@ -44,9 +44,9 @@ export default function AccordionCard() {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <Accordion defaultValue={["plans"]}>
+        <Accordion defaultExpandedKeys={["plans"]}>
           {items.map((item) => (
-            <AccordionItem key={item.value} value={item.value}>
+            <AccordionItem key={item.value} id={item.value}>
               <AccordionTrigger>{item.trigger}</AccordionTrigger>
               <AccordionContent>{item.content}</AccordionContent>
             </AccordionItem>
@@ -54,5 +54,5 @@ export default function AccordionCard() {
         </Accordion>
       </CardContent>
     </Card>
-  )
+  );
 }

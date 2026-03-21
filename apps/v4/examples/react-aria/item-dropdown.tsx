@@ -6,13 +6,7 @@ import {
   AvatarImage,
 } from "@/examples/react-aria/ui/avatar"
 import { Button } from "@/examples/react-aria/ui/button"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/examples/react-aria/ui/dropdown-menu"
+import { DropdownMenu, DropdownMenuGroup, DropdownMenuItem, DropdownMenuTrigger } from "@/examples/react-aria/ui/dropdown-menu";
 import {
   Item,
   ItemContent,
@@ -42,11 +36,11 @@ const people = [
 
 export function ItemDropdown() {
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger render={<Button variant="outline" />}>
+    <DropdownMenuTrigger>
+      <Button variant="outline">
         Select <ChevronDownIcon />
-      </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-48" align="end">
+      </Button>
+      <DropdownMenu className="w-48" align="end">
         <DropdownMenuGroup>
           {people.map((person) => (
             <DropdownMenuItem key={person.username}>
@@ -67,7 +61,7 @@ export function ItemDropdown() {
             </DropdownMenuItem>
           ))}
         </DropdownMenuGroup>
-      </DropdownMenuContent>
-    </DropdownMenu>
-  )
+      </DropdownMenu>
+    </DropdownMenuTrigger>
+  );
 }

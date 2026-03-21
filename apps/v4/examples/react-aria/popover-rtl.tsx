@@ -1,14 +1,7 @@
 "use client"
 
 import { Button } from "@/examples/react-aria/ui-rtl/button"
-import {
-  Popover,
-  PopoverContent,
-  PopoverDescription,
-  PopoverHeader,
-  PopoverTitle,
-  PopoverTrigger,
-} from "@/examples/react-aria/ui-rtl/popover"
+import { Popover, PopoverDescription, PopoverHeader, PopoverTitle, PopoverTrigger } from "@/examples/react-aria/ui-rtl/popover";
 
 import {
   useTranslation,
@@ -67,34 +60,34 @@ export function PopoverRtl() {
     <div className="grid gap-4">
       <div className="flex flex-wrap justify-center gap-2">
         {physicalSides.map((side) => (
-          <Popover key={side}>
-            <PopoverTrigger render={<Button variant="outline" />}>
+          <PopoverTrigger key={side}>
+            <Button variant="outline">
               {t[side]}
-            </PopoverTrigger>
-            <PopoverContent side={side} dir={dir}>
+            </Button>
+            <Popover side={side} dir={dir}>
               <PopoverHeader>
                 <PopoverTitle>{t.title}</PopoverTitle>
                 <PopoverDescription>{t.description}</PopoverDescription>
               </PopoverHeader>
-            </PopoverContent>
-          </Popover>
+            </Popover>
+          </PopoverTrigger>
         ))}
       </div>
       <div className="flex flex-wrap justify-center gap-2">
         {logicalSides.map((side) => (
-          <Popover key={side}>
-            <PopoverTrigger render={<Button variant="outline" />}>
+          <PopoverTrigger key={side}>
+            <Button variant="outline">
               {t[side]}
-            </PopoverTrigger>
-            <PopoverContent side={side} dir={dir}>
+            </Button>
+            <Popover side={side} dir={dir}>
               <PopoverHeader>
                 <PopoverTitle>{t.title}</PopoverTitle>
                 <PopoverDescription>{t.description}</PopoverDescription>
               </PopoverHeader>
-            </PopoverContent>
-          </Popover>
+            </Popover>
+          </PopoverTrigger>
         ))}
       </div>
     </div>
-  )
+  );
 }

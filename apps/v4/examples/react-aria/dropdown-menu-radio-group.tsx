@@ -4,32 +4,28 @@ import * as React from "react"
 import { Button } from "@/examples/react-aria/ui/button"
 import {
   DropdownMenu,
-  DropdownMenuContent,
   DropdownMenuGroup,
+  DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuRadioGroup,
-  DropdownMenuRadioItem,
   DropdownMenuTrigger,
-} from "@/examples/react-aria/ui/dropdown-menu"
+} from "@/examples/react-aria/ui/dropdown-menu";
 
 export function DropdownMenuRadioGroupDemo() {
   const [position, setPosition] = React.useState("bottom")
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger render={<Button variant="outline" />}>
+    <DropdownMenuTrigger>
+      <Button variant="outline">
         Open
-      </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-32">
-        <DropdownMenuGroup>
+      </Button>
+      <DropdownMenu className="w-32">
+        <DropdownMenuGroup selectionMode="single" selectedKeys={[position]} onSelectionChange={keys => setPosition([...keys][0] as string)}>
           <DropdownMenuLabel>Panel Position</DropdownMenuLabel>
-          <DropdownMenuRadioGroup value={position} onValueChange={setPosition}>
-            <DropdownMenuRadioItem value="top">Top</DropdownMenuRadioItem>
-            <DropdownMenuRadioItem value="bottom">Bottom</DropdownMenuRadioItem>
-            <DropdownMenuRadioItem value="right">Right</DropdownMenuRadioItem>
-          </DropdownMenuRadioGroup>
+          <DropdownMenuItem id="top">Top</DropdownMenuItem>
+          <DropdownMenuItem id="bottom">Bottom</DropdownMenuItem>
+          <DropdownMenuItem id="right">Right</DropdownMenuItem>
         </DropdownMenuGroup>
-      </DropdownMenuContent>
-    </DropdownMenu>
-  )
+      </DropdownMenu>
+    </DropdownMenuTrigger>
+  );
 }

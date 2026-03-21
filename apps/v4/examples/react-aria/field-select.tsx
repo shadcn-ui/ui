@@ -13,7 +13,6 @@ import {
 } from "@/examples/react-aria/ui/select"
 
 const items = [
-  { label: "Choose department", value: null },
   { label: "Engineering", value: "engineering" },
   { label: "Design", value: "design" },
   { label: "Marketing", value: "marketing" },
@@ -21,21 +20,21 @@ const items = [
   { label: "Customer Support", value: "support" },
   { label: "Human Resources", value: "hr" },
   { label: "Finance", value: "finance" },
-  { label: "Operations", value: "operations" },
+  { label: "Operations", value: "operations" }
 ]
 
 export default function FieldSelect() {
   return (
     <Field className="w-full max-w-xs">
       <FieldLabel>Department</FieldLabel>
-      <Select items={items}>
+      <Select placeholder="Choose department">
         <SelectTrigger>
           <SelectValue />
         </SelectTrigger>
         <SelectContent>
           <SelectGroup>
             {items.map((item) => (
-              <SelectItem key={item.value} value={item.value}>
+              <SelectItem key={item.value} id={item.value}>
                 {item.label}
               </SelectItem>
             ))}
@@ -46,5 +45,5 @@ export default function FieldSelect() {
         Select your department or area of work.
       </FieldDescription>
     </Field>
-  )
+  );
 }

@@ -19,7 +19,7 @@ export default function FieldGroupExample() {
         </FieldDescription>
         <FieldGroup data-slot="checkbox-group">
           <Field orientation="horizontal">
-            <Checkbox id="push" defaultChecked disabled />
+            <Checkbox id="push" defaultSelected isDisabled />
             <FieldLabel htmlFor="push" className="font-normal">
               Push notifications
             </FieldLabel>
@@ -49,5 +49,5 @@ export default function FieldGroupExample() {
         </FieldGroup>
       </FieldSet>
     </FieldGroup>
-  )
+  );
 }

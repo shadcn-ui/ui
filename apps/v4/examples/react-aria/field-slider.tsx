@@ -21,13 +21,13 @@ export default function FieldSlider() {
       </FieldDescription>
       <Slider
         value={value}
-        onValueChange={(value) => setValue(value as [number, number])}
-        max={1000}
-        min={0}
+        onChange={(value) => setValue(value as [number, number])}
+        maxValue={1000}
+        minValue={0}
         step={10}
         className="mt-2 w-full"
         aria-label="Price Range"
       />
     </Field>
-  )
+  );
 }

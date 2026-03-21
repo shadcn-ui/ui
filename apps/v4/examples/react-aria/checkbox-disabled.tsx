@@ -8,12 +8,12 @@ export function CheckboxDisabled() {
         <Checkbox
           id="toggle-checkbox-disabled"
           name="toggle-checkbox-disabled"
-          disabled
+          isDisabled
         />
         <FieldLabel htmlFor="toggle-checkbox-disabled">
           Enable notifications
         </FieldLabel>
       </Field>
     </FieldGroup>
-  )
+  );
 }

@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/react-aria/ui-rtl/button"
+import { Button, LinkButton } from "@/examples/react-aria/ui-rtl/button";
 import {
   Empty,
   EmptyContent,
@@ -69,16 +69,10 @@ export function EmptyRtl() {
         <Button>{t.createProject}</Button>
         <Button variant="outline">{t.importProject}</Button>
       </EmptyContent>
-      <Button
-        variant="link"
-        render={<a href="#" />}
-        className="text-muted-foreground"
-        size="sm"
-        nativeButton={false}
-      >
+      <LinkButton href="#" variant="link" className="text-muted-foreground" size="sm">
         {t.learnMore}{" "}
         <ArrowUpRightIcon className="rtl:rotate-270" data-icon="inline-end" />
-      </Button>
+      </LinkButton>
     </Empty>
-  )
+  );
 }

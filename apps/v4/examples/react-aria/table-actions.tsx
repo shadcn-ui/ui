@@ -1,11 +1,5 @@
 import { Button } from "@/examples/react-aria/ui/button"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/examples/react-aria/ui/dropdown-menu"
+import { DropdownMenu, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/examples/react-aria/ui/dropdown-menu";
 import {
   Table,
   TableBody,
@@ -31,75 +25,63 @@ export function TableActions() {
           <TableCell className="font-medium">Wireless Mouse</TableCell>
           <TableCell>$29.99</TableCell>
           <TableCell className="text-right">
-            <DropdownMenu>
-              <DropdownMenuTrigger
-                render={
-                  <Button variant="ghost" size="icon" className="size-8" />
-                }
-              >
+            <DropdownMenuTrigger>
+              <Button variant="ghost" size="icon" className="size-8">
                 <MoreHorizontalIcon />
                 <span className="sr-only">Open menu</span>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
+              </Button>
+              <DropdownMenu align="end">
                 <DropdownMenuItem>Edit</DropdownMenuItem>
                 <DropdownMenuItem>Duplicate</DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem variant="destructive">
                   Delete
                 </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+              </DropdownMenu>
+            </DropdownMenuTrigger>
           </TableCell>
         </TableRow>
         <TableRow>
           <TableCell className="font-medium">Mechanical Keyboard</TableCell>
           <TableCell>$129.99</TableCell>
           <TableCell className="text-right">
-            <DropdownMenu>
-              <DropdownMenuTrigger
-                render={
-                  <Button variant="ghost" size="icon" className="size-8" />
-                }
-              >
+            <DropdownMenuTrigger>
+              <Button variant="ghost" size="icon" className="size-8">
                 <MoreHorizontalIcon />
                 <span className="sr-only">Open menu</span>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
+              </Button>
+              <DropdownMenu align="end">
                 <DropdownMenuItem>Edit</DropdownMenuItem>
                 <DropdownMenuItem>Duplicate</DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem variant="destructive">
                   Delete
                 </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+              </DropdownMenu>
+            </DropdownMenuTrigger>
           </TableCell>
         </TableRow>
         <TableRow>
           <TableCell className="font-medium">USB-C Hub</TableCell>
           <TableCell>$49.99</TableCell>
           <TableCell className="text-right">
-            <DropdownMenu>
-              <DropdownMenuTrigger
-                render={
-                  <Button variant="ghost" size="icon" className="size-8" />
-                }
-              >
+            <DropdownMenuTrigger>
+              <Button variant="ghost" size="icon" className="size-8">
                 <MoreHorizontalIcon />
                 <span className="sr-only">Open menu</span>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
+              </Button>
+              <DropdownMenu align="end">
                 <DropdownMenuItem>Edit</DropdownMenuItem>
                 <DropdownMenuItem>Duplicate</DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem variant="destructive">
                   Delete
                 </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+              </DropdownMenu>
+            </DropdownMenuTrigger>
           </TableCell>
         </TableRow>
       </TableBody>
     </Table>
-  )
+  );
 }

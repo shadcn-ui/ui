@@ -1,39 +1,35 @@
 import { Button } from "@/examples/react-aria/ui/button"
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/examples/react-aria/ui/popover"
+import { Popover, PopoverTrigger } from "@/examples/react-aria/ui/popover";
 
 export function PopoverAlignments() {
   return (
     <>
       <div className="flex gap-6">
-        <Popover>
-          <PopoverTrigger render={<Button variant="outline" size="sm" />}>
+        <PopoverTrigger>
+          <Button variant="outline" size="sm">
             Start
-          </PopoverTrigger>
-          <PopoverContent align="start" className="w-40">
+          </Button>
+          <Popover align="start" className="w-40">
             Aligned to start
-          </PopoverContent>
-        </Popover>
-        <Popover>
-          <PopoverTrigger render={<Button variant="outline" size="sm" />}>
+          </Popover>
+        </PopoverTrigger>
+        <PopoverTrigger>
+          <Button variant="outline" size="sm">
             Center
-          </PopoverTrigger>
-          <PopoverContent align="center" className="w-40">
+          </Button>
+          <Popover align="center" className="w-40">
             Aligned to center
-          </PopoverContent>
-        </Popover>
-        <Popover>
-          <PopoverTrigger render={<Button variant="outline" size="sm" />}>
+          </Popover>
+        </PopoverTrigger>
+        <PopoverTrigger>
+          <Button variant="outline" size="sm">
             End
-          </PopoverTrigger>
-          <PopoverContent align="end" className="w-40">
+          </Button>
+          <Popover align="end" className="w-40">
             Aligned to end
-          </PopoverContent>
-        </Popover>
+          </Popover>
+        </PopoverTrigger>
       </div>
     </>
-  )
+  );
 }

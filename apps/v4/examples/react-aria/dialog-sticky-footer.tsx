@@ -2,21 +2,20 @@ import { Button } from "@/examples/react-aria/ui/button"
 import {
   Dialog,
   DialogClose,
-  DialogContent,
   DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/examples/react-aria/ui/dialog"
+} from "@/examples/react-aria/ui/dialog";
 
 export function DialogStickyFooter() {
   return (
-    <Dialog>
-      <DialogTrigger render={<Button variant="outline" />}>
+    <DialogTrigger>
+      <Button variant="outline">
         Sticky Footer
-      </DialogTrigger>
-      <DialogContent>
+      </Button>
+      <Dialog>
         <DialogHeader>
           <DialogTitle>Sticky Footer</DialogTitle>
           <DialogDescription>
@@ -38,9 +37,9 @@ export function DialogStickyFooter() {
           ))}
         </div>
         <DialogFooter>
-          <DialogClose render={<Button variant="outline" />}>Close</DialogClose>
+          <DialogClose variant="outline">Close</DialogClose>
         </DialogFooter>
-      </DialogContent>
-    </Dialog>
-  )
+      </Dialog>
+    </DialogTrigger>
+  );
 }

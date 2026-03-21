@@ -5,17 +5,14 @@ import { Button } from "@/examples/react-aria/ui-rtl/button"
 import { ButtonGroup } from "@/examples/react-aria/ui-rtl/button-group"
 import {
   DropdownMenu,
-  DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
-  DropdownMenuRadioGroup,
-  DropdownMenuRadioItem,
   DropdownMenuSeparator,
   DropdownMenuSub,
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@/examples/react-aria/ui-rtl/dropdown-menu"
+} from "@/examples/react-aria/ui-rtl/dropdown-menu";
 import {
   ArchiveIcon,
   ArrowLeftIcon,
@@ -102,19 +99,11 @@ export function ButtonGroupRtl() {
         </ButtonGroup>
         <ButtonGroup>
           <Button variant="outline">{t.snooze}</Button>
-          <DropdownMenu>
-            <DropdownMenuTrigger
-              render={
-                <Button
-                  variant="outline"
-                  size="icon"
-                  aria-label="More Options"
-                />
-              }
-            >
+          <DropdownMenuTrigger>
+            <Button variant="outline" size="icon" aria-label="More Options">
               <MoreHorizontalIcon />
-            </DropdownMenuTrigger>
-            <DropdownMenuContent
+            </Button>
+            <DropdownMenu
               align={dir === "rtl" ? "start" : "end"}
               data-lang={dir === "rtl" ? language : undefined}
               dir={dir}
@@ -152,21 +141,19 @@ export function ButtonGroupRtl() {
                   <DropdownMenuSubContent
                     dir={dir}
                     data-lang={dir === "rtl" ? language : undefined}
+                    selectionMode="single"
+                    selectedKeys={[label]}
+                    onSelectionChange={keys => setLabel([...keys][0] as string)}
                   >
-                    <DropdownMenuRadioGroup
-                      value={label}
-                      onValueChange={setLabel}
-                    >
-                      <DropdownMenuRadioItem value="personal">
-                        {t.personal}
-                      </DropdownMenuRadioItem>
-                      <DropdownMenuRadioItem value="work">
-                        {t.work}
-                      </DropdownMenuRadioItem>
-                      <DropdownMenuRadioItem value="other">
-                        {t.other}
-                      </DropdownMenuRadioItem>
-                    </DropdownMenuRadioGroup>
+                    <DropdownMenuItem id="personal">
+                      {t.personal}
+                    </DropdownMenuItem>
+                    <DropdownMenuItem id="work">
+                      {t.work}
+                    </DropdownMenuItem>
+                    <DropdownMenuItem id="other">
+                      {t.other}
+                    </DropdownMenuItem>
                   </DropdownMenuSubContent>
                 </DropdownMenuSub>
               </DropdownMenuGroup>
@@ -177,10 +164,10 @@ export function ButtonGroupRtl() {
                   {t.trash}
                 </DropdownMenuItem>
               </DropdownMenuGroup>
-            </DropdownMenuContent>
-          </DropdownMenu>
+            </DropdownMenu>
+          </DropdownMenuTrigger>
         </ButtonGroup>
       </ButtonGroup>
     </div>
-  )
+  );
 }

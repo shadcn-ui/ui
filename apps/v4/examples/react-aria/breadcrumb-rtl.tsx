@@ -9,13 +9,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/examples/react-aria/ui-rtl/breadcrumb"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/examples/react-aria/ui-rtl/dropdown-menu"
+import { DropdownMenu, DropdownMenuGroup, DropdownMenuItem, DropdownMenuTrigger } from "@/examples/react-aria/ui-rtl/dropdown-menu";
 import { ChevronDownIcon, DotIcon } from "lucide-react"
 
 import {
@@ -72,14 +66,12 @@ export function BreadcrumbRtl() {
           <DotIcon />
         </BreadcrumbSeparator>
         <BreadcrumbItem>
-          <DropdownMenu>
-            <DropdownMenuTrigger
-              render={<button className="flex items-center gap-1" />}
-            >
+          <DropdownMenuTrigger>
+            <button className="flex items-center gap-1">
               {t.components}
               <ChevronDownIcon data-icon="inline-end" className="size-3.5" />
-            </DropdownMenuTrigger>
-            <DropdownMenuContent
+            </button>
+            <DropdownMenu
               align={dir === "rtl" ? "end" : "start"}
               data-lang={dir === "rtl" ? language : undefined}
               dir={dir}
@@ -89,8 +81,8 @@ export function BreadcrumbRtl() {
                 <DropdownMenuItem>{t.themes}</DropdownMenuItem>
                 <DropdownMenuItem>{t.github}</DropdownMenuItem>
               </DropdownMenuGroup>
-            </DropdownMenuContent>
-          </DropdownMenu>
+            </DropdownMenu>
+          </DropdownMenuTrigger>
         </BreadcrumbItem>
         <BreadcrumbSeparator>
           <DotIcon />
@@ -100,5 +92,5 @@ export function BreadcrumbRtl() {
         </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>
-  )
+  );
 }

@@ -7,13 +7,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/examples/react-aria/ui/breadcrumb"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/examples/react-aria/ui/dropdown-menu"
+import { DropdownMenu, DropdownMenuGroup, DropdownMenuItem, DropdownMenuTrigger } from "@/examples/react-aria/ui/dropdown-menu";
 import { ChevronDownIcon, DotIcon } from "lucide-react"
 
 export function BreadcrumbDropdown() {
@@ -27,21 +21,19 @@ export function BreadcrumbDropdown() {
           <DotIcon />
         </BreadcrumbSeparator>
         <BreadcrumbItem>
-          <DropdownMenu>
-            <DropdownMenuTrigger
-              render={<button className="flex items-center gap-1" />}
-            >
+          <DropdownMenuTrigger>
+            <button className="flex items-center gap-1">
               Components
               <ChevronDownIcon data-icon="inline-end" />
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="start">
+            </button>
+            <DropdownMenu align="start">
               <DropdownMenuGroup>
                 <DropdownMenuItem>Documentation</DropdownMenuItem>
                 <DropdownMenuItem>Themes</DropdownMenuItem>
                 <DropdownMenuItem>GitHub</DropdownMenuItem>
               </DropdownMenuGroup>
-            </DropdownMenuContent>
-          </DropdownMenu>
+            </DropdownMenu>
+          </DropdownMenuTrigger>
         </BreadcrumbItem>
         <BreadcrumbSeparator>
           <DotIcon />
@@ -51,5 +43,5 @@ export function BreadcrumbDropdown() {
         </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>
-  )
+  );
 }

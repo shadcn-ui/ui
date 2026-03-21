@@ -8,12 +8,12 @@ export function CheckboxInvalid() {
         <Checkbox
           id="terms-checkbox-invalid"
           name="terms-checkbox-invalid"
-          aria-invalid
+          isInvalid
         />
         <FieldLabel htmlFor="terms-checkbox-invalid">
           Accept terms and conditions
         </FieldLabel>
       </Field>
     </FieldGroup>
-  )
+  );
 }

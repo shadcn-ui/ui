@@ -17,7 +17,7 @@ export function SwitchInvalid() {
           You must accept the terms and conditions to continue.
         </FieldDescription>
       </FieldContent>
-      <Switch id="switch-terms" aria-invalid />
+      <Switch id="switch-terms" />
     </Field>
-  )
+  );
 }

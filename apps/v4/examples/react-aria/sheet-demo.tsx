@@ -4,19 +4,18 @@ import { Label } from "@/examples/react-aria/ui/label"
 import {
   Sheet,
   SheetClose,
-  SheetContent,
   SheetDescription,
   SheetFooter,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/examples/react-aria/ui/sheet"
+} from "@/examples/react-aria/ui/sheet";
 
 export default function SheetDemo() {
   return (
-    <Sheet>
-      <SheetTrigger render={<Button variant="outline" />}>Open</SheetTrigger>
-      <SheetContent>
+    <SheetTrigger>
+      <Button variant="outline">Open</Button>
+      <Sheet>
         <SheetHeader>
           <SheetTitle>Edit profile</SheetTitle>
           <SheetDescription>
@@ -35,9 +34,9 @@ export default function SheetDemo() {
         </div>
         <SheetFooter>
           <Button type="submit">Save changes</Button>
-          <SheetClose render={<Button variant="outline" />}>Close</SheetClose>
+          <SheetClose variant="outline">Close</SheetClose>
         </SheetFooter>
-      </SheetContent>
-    </Sheet>
-  )
+      </Sheet>
+    </SheetTrigger>
+  );
 }

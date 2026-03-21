@@ -2,22 +2,19 @@ import {
   AlertDialog,
   AlertDialogAction,
   AlertDialogCancel,
-  AlertDialogContent,
   AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/examples/react-aria/ui/alert-dialog"
+} from "@/examples/react-aria/ui/alert-dialog";
 import { Button } from "@/examples/react-aria/ui/button"
 
 export function AlertDialogSmall() {
   return (
-    <AlertDialog>
-      <AlertDialogTrigger
-        render={<Button variant="outline">Show Dialog</Button>}
-      />
-      <AlertDialogContent size="sm">
+    <AlertDialogTrigger>
+      <Button variant="outline">Show Dialog</Button>
+      <AlertDialog size="sm">
         <AlertDialogHeader>
           <AlertDialogTitle>Allow accessory to connect?</AlertDialogTitle>
           <AlertDialogDescription>
@@ -28,7 +25,7 @@ export function AlertDialogSmall() {
           <AlertDialogCancel>Don&apos;t allow</AlertDialogCancel>
           <AlertDialogAction>Allow</AlertDialogAction>
         </AlertDialogFooter>
-      </AlertDialogContent>
-    </AlertDialog>
-  )
+      </AlertDialog>
+    </AlertDialogTrigger>
+  );
 }

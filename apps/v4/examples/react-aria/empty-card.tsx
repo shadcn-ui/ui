@@ -1,4 +1,4 @@
-import { Button } from "@/examples/react-aria/ui/button"
+import { Button, LinkButton } from "@/examples/react-aria/ui/button";
 import {
   Empty,
   EmptyContent,
@@ -24,20 +24,15 @@ export function EmptyInCard() {
       </EmptyHeader>
       <EmptyContent>
         <div className="flex gap-2">
-          <Button render={<a href="#" />} nativeButton={false}>
+          <LinkButton href="#">
             Create project
-          </Button>
+          </LinkButton>
           <Button variant="outline">Import project</Button>
         </div>
-        <Button
-          variant="link"
-          render={<a href="#" />}
-          className="text-muted-foreground"
-          nativeButton={false}
-        >
+        <LinkButton href="#" variant="link" className="text-muted-foreground">
           Learn more <ArrowUpRightIcon />
-        </Button>
+        </LinkButton>
       </EmptyContent>
     </Empty>
-  )
+  );
 }

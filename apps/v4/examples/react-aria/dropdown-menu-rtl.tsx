@@ -1,17 +1,13 @@
 "use client"
 
 import * as React from "react"
+import type { Selection } from "react-aria-components"
 import { Button } from "@/examples/react-aria/ui-rtl/button"
 import {
   DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuPortal,
-  DropdownMenuRadioGroup,
-  DropdownMenuRadioItem,
   DropdownMenuSeparator,
   DropdownMenuShortcut,
   DropdownMenuSub,
@@ -121,17 +117,17 @@ const translations: Translations = {
 
 export function DropdownMenuRtl() {
   const { dir, language, t } = useTranslation(translations, "ar")
-  const [showStatusBar, setShowStatusBar] = React.useState(true)
-  const [showActivityBar, setShowActivityBar] = React.useState(false)
-  const [showPanel, setShowPanel] = React.useState(false)
+  const [selectedKeys, setSelectedKeys] = React.useState<Selection>(
+    new Set(["status-bar"])
+  )
   const [position, setPosition] = React.useState("bottom")
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger render={<Button variant="outline" />}>
+    <DropdownMenuTrigger>
+      <Button variant="outline">
         {t.open}
-      </DropdownMenuTrigger>
-      <DropdownMenuContent
+      </Button>
+      <DropdownMenu
         align={dir === "rtl" ? "end" : "start"}
         dir={dir}
         className="w-36"
@@ -140,7 +136,6 @@ export function DropdownMenuRtl() {
         <DropdownMenuGroup>
           <DropdownMenuSub>
             <DropdownMenuSubTrigger>{t.account}</DropdownMenuSubTrigger>
-            <DropdownMenuPortal>
               <DropdownMenuSubContent
                 dir={dir}
                 data-lang={dir === "rtl" ? language : undefined}
@@ -160,7 +155,6 @@ export function DropdownMenuRtl() {
                   </DropdownMenuItem>
                 </DropdownMenuGroup>
               </DropdownMenuSubContent>
-            </DropdownMenuPortal>
           </DropdownMenuSub>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
@@ -169,7 +163,6 @@ export function DropdownMenuRtl() {
           <DropdownMenuItem>{t.team}</DropdownMenuItem>
           <DropdownMenuSub>
             <DropdownMenuSubTrigger>{t.inviteUsers}</DropdownMenuSubTrigger>
-            <DropdownMenuPortal>
               <DropdownMenuSubContent
                 dir={dir}
                 data-lang={dir === "rtl" ? language : undefined}
@@ -178,7 +171,6 @@ export function DropdownMenuRtl() {
                 <DropdownMenuItem>{t.message}</DropdownMenuItem>
                 <DropdownMenuSub>
                   <DropdownMenuSubTrigger>{t.more}</DropdownMenuSubTrigger>
-                  <DropdownMenuPortal>
                     <DropdownMenuSubContent
                       dir={dir}
                       data-lang={dir === "rtl" ? language : undefined}
@@ -188,12 +180,10 @@ export function DropdownMenuRtl() {
                       <DropdownMenuSeparator />
                       <DropdownMenuItem>{t.webhook}</DropdownMenuItem>
                     </DropdownMenuSubContent>
-                  </DropdownMenuPortal>
                 </DropdownMenuSub>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>{t.advanced}</DropdownMenuItem>
               </DropdownMenuSubContent>
-            </DropdownMenuPortal>
           </DropdownMenuSub>
           <DropdownMenuItem>
             {t.newTeam}
@@ -201,46 +191,35 @@ export function DropdownMenuRtl() {
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuGroup>
+        <DropdownMenuGroup selectionMode="multiple" selectedKeys={selectedKeys} onSelectionChange={setSelectedKeys}>
           <DropdownMenuLabel>{t.view}</DropdownMenuLabel>
-          <DropdownMenuCheckboxItem
-            checked={showStatusBar}
-            onCheckedChange={setShowStatusBar}
-          >
+          <DropdownMenuItem id="status-bar">
             {t.statusBar}
-          </DropdownMenuCheckboxItem>
-          <DropdownMenuCheckboxItem
-            checked={showActivityBar}
-            onCheckedChange={setShowActivityBar}
-          >
+          </DropdownMenuItem>
+          <DropdownMenuItem id="activity-bar">
             {t.activityBar}
-          </DropdownMenuCheckboxItem>
-          <DropdownMenuCheckboxItem
-            checked={showPanel}
-            onCheckedChange={setShowPanel}
-          >
+          </DropdownMenuItem>
+          <DropdownMenuItem id="panel">
             {t.panel}
-          </DropdownMenuCheckboxItem>
+          </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuGroup>
+        <DropdownMenuGroup selectionMode="single" selectedKeys={[position]} onSelectionChange={keys => setPosition([...keys][0] as string)}>
           <DropdownMenuLabel>{t.position}</DropdownMenuLabel>
-          <DropdownMenuRadioGroup value={position} onValueChange={setPosition}>
-            <DropdownMenuRadioItem value="top">{t.top}</DropdownMenuRadioItem>
-            <DropdownMenuRadioItem value="bottom">
-              {t.bottom}
-            </DropdownMenuRadioItem>
-            <DropdownMenuRadioItem value="right">
-              {t.right}
-            </DropdownMenuRadioItem>
-            <DropdownMenuRadioItem value="left">{t.left}</DropdownMenuRadioItem>
-          </DropdownMenuRadioGroup>
+          <DropdownMenuItem id="top">{t.top}</DropdownMenuItem>
+          <DropdownMenuItem id="bottom">
+            {t.bottom}
+          </DropdownMenuItem>
+          <DropdownMenuItem id="right">
+            {t.right}
+          </DropdownMenuItem>
+          <DropdownMenuItem id="left">{t.left}</DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem variant="destructive">{t.logout}</DropdownMenuItem>
         </DropdownMenuGroup>
-      </DropdownMenuContent>
-    </DropdownMenu>
+      </DropdownMenu>
+    </DropdownMenuTrigger>
   )
 }

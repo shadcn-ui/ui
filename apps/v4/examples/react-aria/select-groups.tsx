@@ -20,13 +20,9 @@ export function SelectGroups() {
     { label: "Broccoli", value: "broccoli" },
     { label: "Spinach", value: "spinach" },
   ]
-  const allItems = [
-    { label: "Select a fruit", value: null },
-    ...fruits,
-    ...vegetables,
-  ]
+  const allItems = [...fruits, ...vegetables]
   return (
-    <Select items={allItems}>
+    <Select placeholder="Select a fruit">
       <SelectTrigger className="w-full max-w-48">
         <SelectValue />
       </SelectTrigger>
@@ -34,7 +30,7 @@ export function SelectGroups() {
         <SelectGroup>
           <SelectLabel>Fruits</SelectLabel>
           {fruits.map((item) => (
-            <SelectItem key={item.value} value={item.value}>
+            <SelectItem key={item.value} id={item.value}>
               {item.label}
             </SelectItem>
           ))}
@@ -43,12 +39,12 @@ export function SelectGroups() {
         <SelectGroup>
           <SelectLabel>Vegetables</SelectLabel>
           {vegetables.map((item) => (
-            <SelectItem key={item.value} value={item.value}>
+            <SelectItem key={item.value} id={item.value}>
               {item.label}
             </SelectItem>
           ))}
         </SelectGroup>
       </SelectContent>
     </Select>
-  )
+  );
 }

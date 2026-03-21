@@ -2,24 +2,21 @@ import {
   AlertDialog,
   AlertDialogAction,
   AlertDialogCancel,
-  AlertDialogContent,
   AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogMedia,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/examples/react-aria/ui/alert-dialog"
+} from "@/examples/react-aria/ui/alert-dialog";
 import { Button } from "@/examples/react-aria/ui/button"
 import { CircleFadingPlusIcon } from "lucide-react"
 
 export function AlertDialogWithMedia() {
   return (
-    <AlertDialog>
-      <AlertDialogTrigger
-        render={<Button variant="outline">Share Project</Button>}
-      />
-      <AlertDialogContent>
+    <AlertDialogTrigger>
+      <Button variant="outline">Share Project</Button>
+      <AlertDialog>
         <AlertDialogHeader>
           <AlertDialogMedia>
             <CircleFadingPlusIcon />
@@ -33,7 +30,7 @@ export function AlertDialogWithMedia() {
           <AlertDialogCancel>Cancel</AlertDialogCancel>
           <AlertDialogAction>Share</AlertDialogAction>
         </AlertDialogFooter>
-      </AlertDialogContent>
-    </AlertDialog>
-  )
+      </AlertDialog>
+    </AlertDialogTrigger>
+  );
 }

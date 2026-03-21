@@ -2,21 +2,20 @@ import { Button } from "@/examples/react-aria/ui/button"
 import {
   Dialog,
   DialogClose,
-  DialogContent,
   DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/examples/react-aria/ui/dialog"
+} from "@/examples/react-aria/ui/dialog";
 
 export function DialogNoCloseButton() {
   return (
-    <Dialog>
-      <DialogTrigger render={<Button variant="outline" />}>
+    <DialogTrigger>
+      <Button variant="outline">
         No Close Button
-      </DialogTrigger>
-      <DialogContent showCloseButton={false}>
+      </Button>
+      <Dialog showCloseButton={false}>
         <DialogHeader>
           <DialogTitle>No Close Button</DialogTitle>
           <DialogDescription>
@@ -24,7 +23,7 @@ export function DialogNoCloseButton() {
             corner.
           </DialogDescription>
         </DialogHeader>
-      </DialogContent>
-    </Dialog>
-  )
+      </Dialog>
+    </DialogTrigger>
+  );
 }

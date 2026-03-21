@@ -9,17 +9,16 @@ import {
 } from "@/examples/react-aria/ui/select"
 
 const items = [
-  { label: "Select a fruit", value: null },
   { label: "Apple", value: "apple" },
   { label: "Banana", value: "banana" },
   { label: "Blueberry", value: "blueberry" },
   { label: "Grapes", value: "grapes" },
-  { label: "Pineapple", value: "pineapple" },
+  { label: "Pineapple", value: "pineapple" }
 ]
 
 export function SelectDemo() {
   return (
-    <Select items={items}>
+    <Select placeholder="Select a fruit">
       <SelectTrigger className="w-full max-w-48">
         <SelectValue />
       </SelectTrigger>
@@ -27,12 +26,12 @@ export function SelectDemo() {
         <SelectGroup>
           <SelectLabel>Fruits</SelectLabel>
           {items.map((item) => (
-            <SelectItem key={item.value} value={item.value}>
+            <SelectItem key={item.value} id={item.value}>
               {item.label}
             </SelectItem>
           ))}
         </SelectGroup>
       </SelectContent>
     </Select>
-  )
+  );
 }

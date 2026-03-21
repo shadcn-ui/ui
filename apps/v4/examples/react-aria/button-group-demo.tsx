@@ -5,17 +5,14 @@ import { Button } from "@/examples/react-aria/ui/button"
 import { ButtonGroup } from "@/examples/react-aria/ui/button-group"
 import {
   DropdownMenu,
-  DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
-  DropdownMenuRadioGroup,
-  DropdownMenuRadioItem,
   DropdownMenuSeparator,
   DropdownMenuSub,
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@/examples/react-aria/ui/dropdown-menu"
+} from "@/examples/react-aria/ui/dropdown-menu";
 import {
   ArchiveIcon,
   ArrowLeftIcon,
@@ -44,15 +41,11 @@ export default function ButtonGroupDemo() {
       </ButtonGroup>
       <ButtonGroup>
         <Button variant="outline">Snooze</Button>
-        <DropdownMenu>
-          <DropdownMenuTrigger
-            render={
-              <Button variant="outline" size="icon" aria-label="More Options" />
-            }
-          >
+        <DropdownMenuTrigger>
+          <Button variant="outline" size="icon" aria-label="More Options">
             <MoreHorizontalIcon />
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-40">
+          </Button>
+          <DropdownMenu align="end" className="w-40">
             <DropdownMenuGroup>
               <DropdownMenuItem>
                 <MailCheckIcon />
@@ -82,21 +75,16 @@ export default function ButtonGroupDemo() {
                   <TagIcon />
                   Label As...
                 </DropdownMenuSubTrigger>
-                <DropdownMenuSubContent>
-                  <DropdownMenuRadioGroup
-                    value={label}
-                    onValueChange={setLabel}
-                  >
-                    <DropdownMenuRadioItem value="personal">
-                      Personal
-                    </DropdownMenuRadioItem>
-                    <DropdownMenuRadioItem value="work">
-                      Work
-                    </DropdownMenuRadioItem>
-                    <DropdownMenuRadioItem value="other">
-                      Other
-                    </DropdownMenuRadioItem>
-                  </DropdownMenuRadioGroup>
+                <DropdownMenuSubContent selectionMode="single" selectedKeys={[label]} onSelectionChange={keys => setLabel([...keys][0] as string)}>
+                  <DropdownMenuItem id="personal">
+                    Personal
+                  </DropdownMenuItem>
+                  <DropdownMenuItem id="work">
+                    Work
+                  </DropdownMenuItem>
+                  <DropdownMenuItem id="other">
+                    Other
+                  </DropdownMenuItem>
                 </DropdownMenuSubContent>
               </DropdownMenuSub>
             </DropdownMenuGroup>
@@ -107,9 +95,9 @@ export default function ButtonGroupDemo() {
                 Trash
               </DropdownMenuItem>
             </DropdownMenuGroup>
-          </DropdownMenuContent>
-        </DropdownMenu>
+          </DropdownMenu>
+        </DropdownMenuTrigger>
       </ButtonGroup>
     </ButtonGroup>
-  )
+  );
 }

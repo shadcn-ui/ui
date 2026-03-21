@@ -7,11 +7,7 @@ import {
   InputGroupButton,
   InputGroupInput,
 } from "@/examples/react-aria/ui/input-group"
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/examples/react-aria/ui/popover"
+import { Popover, PopoverTrigger } from "@/examples/react-aria/ui/popover";
 import {
   IconCheck,
   IconCopy,
@@ -32,7 +28,6 @@ export default function InputGroupButtonExample() {
         <InputGroupAddon align="inline-end">
           <InputGroupButton
             aria-label="Copy"
-            title="Copy"
             size="icon-xs"
             onClick={() => {
               copyToClipboard("https://x.com/shadcn")
@@ -43,20 +38,20 @@ export default function InputGroupButtonExample() {
         </InputGroupAddon>
       </InputGroup>
       <InputGroup className="[--radius:9999px]">
-        <Popover>
-          <PopoverTrigger render={<InputGroupAddon />}>
+        <PopoverTrigger>
+          <InputGroupAddon>
             <InputGroupButton variant="secondary" size="icon-xs">
               <IconInfoCircle />
             </InputGroupButton>
-          </PopoverTrigger>
-          <PopoverContent
+          </InputGroupAddon>
+          <Popover
             align="start"
             className="flex flex-col gap-1 rounded-xl text-sm"
           >
             <p className="font-medium">Your connection is not secure.</p>
             <p>You should not enter any sensitive information on this site.</p>
-          </PopoverContent>
-        </Popover>
+          </Popover>
+        </PopoverTrigger>
         <InputGroupAddon className="pl-1.5 text-muted-foreground">
           https://
         </InputGroupAddon>
@@ -80,5 +75,5 @@ export default function InputGroupButtonExample() {
         </InputGroupAddon>
       </InputGroup>
     </div>
-  )
+  );
 }

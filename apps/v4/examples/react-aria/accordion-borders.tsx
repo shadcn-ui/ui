@@ -30,12 +30,12 @@ export default function AccordionBorders() {
   return (
     <Accordion
       className="max-w-lg rounded-lg border"
-      defaultValue={["billing"]}
+      defaultExpandedKeys={["billing"]}
     >
       {items.map((item) => (
         <AccordionItem
           key={item.value}
-          value={item.value}
+          id={item.value}
           className="border-b px-4 last:border-b-0"
         >
           <AccordionTrigger>{item.trigger}</AccordionTrigger>
@@ -43,5 +43,5 @@ export default function AccordionBorders() {
         </AccordionItem>
       ))}
     </Accordion>
-  )
+  );
 }

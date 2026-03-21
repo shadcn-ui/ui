@@ -4,45 +4,38 @@ import * as React from "react"
 import { Button } from "@/examples/react-aria/ui/button"
 import {
   DropdownMenu,
-  DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuLabel,
-  DropdownMenuRadioGroup,
-  DropdownMenuRadioItem,
+  DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/examples/react-aria/ui/dropdown-menu"
+} from "@/examples/react-aria/ui/dropdown-menu";
 import { Building2Icon, CreditCardIcon, WalletIcon } from "lucide-react"
 
 export function DropdownMenuRadioIcons() {
   const [paymentMethod, setPaymentMethod] = React.useState("card")
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger render={<Button variant="outline" />}>
+    <DropdownMenuTrigger>
+      <Button variant="outline">
         Payment Method
-      </DropdownMenuTrigger>
-      <DropdownMenuContent className="min-w-56">
-        <DropdownMenuGroup>
+      </Button>
+      <DropdownMenu className="min-w-56">
+        <DropdownMenuGroup selectionMode="single" selectedKeys={[paymentMethod]} onSelectionChange={keys => setPaymentMethod([...keys][0] as string)}>
           <DropdownMenuLabel>Select Payment Method</DropdownMenuLabel>
-          <DropdownMenuRadioGroup
-            value={paymentMethod}
-            onValueChange={setPaymentMethod}
-          >
-            <DropdownMenuRadioItem value="card">
-              <CreditCardIcon />
-              Credit Card
-            </DropdownMenuRadioItem>
-            <DropdownMenuRadioItem value="paypal">
-              <WalletIcon />
-              PayPal
-            </DropdownMenuRadioItem>
-            <DropdownMenuRadioItem value="bank">
-              <Building2Icon />
-              Bank Transfer
-            </DropdownMenuRadioItem>
-          </DropdownMenuRadioGroup>
+          <DropdownMenuItem id="card">
+            <CreditCardIcon />
+            Credit Card
+          </DropdownMenuItem>
+          <DropdownMenuItem id="paypal">
+            <WalletIcon />
+            PayPal
+          </DropdownMenuItem>
+          <DropdownMenuItem id="bank">
+            <Building2Icon />
+            Bank Transfer
+          </DropdownMenuItem>
         </DropdownMenuGroup>
-      </DropdownMenuContent>
-    </DropdownMenu>
-  )
+      </DropdownMenu>
+    </DropdownMenuTrigger>
+  );
 }

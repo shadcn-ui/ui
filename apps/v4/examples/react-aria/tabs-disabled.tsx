@@ -2,13 +2,13 @@ import { Tabs, TabsList, TabsTrigger } from "@/examples/react-aria/ui/tabs"
 
 export function TabsDisabled() {
   return (
-    <Tabs defaultValue="home">
+    <Tabs defaultSelectedKey="home">
       <TabsList>
-        <TabsTrigger value="home">Home</TabsTrigger>
-        <TabsTrigger value="settings" disabled>
+        <TabsTrigger id="home">Home</TabsTrigger>
+        <TabsTrigger id="settings" isDisabled>
           Disabled
         </TabsTrigger>
       </TabsList>
     </Tabs>
-  )
+  );
 }

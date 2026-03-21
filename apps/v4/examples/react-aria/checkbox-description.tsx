@@ -14,7 +14,7 @@ export function CheckboxDescription() {
         <Checkbox
           id="terms-checkbox-desc"
           name="terms-checkbox-desc"
-          defaultChecked
+          defaultSelected
         />
         <FieldContent>
           <FieldLabel htmlFor="terms-checkbox-desc">
@@ -26,5 +26,5 @@ export function CheckboxDescription() {
         </FieldContent>
       </Field>
     </FieldGroup>
-  )
+  );
 }

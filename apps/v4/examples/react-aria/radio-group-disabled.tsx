@@ -8,7 +8,7 @@ export function RadioGroupDisabled() {
   return (
     <RadioGroup defaultValue="option2" className="w-fit">
       <Field orientation="horizontal" data-disabled>
-        <RadioGroupItem value="option1" id="disabled-1" disabled />
+        <RadioGroupItem value="option1" id="disabled-1" isDisabled />
         <FieldLabel htmlFor="disabled-1" className="font-normal">
           Disabled
         </FieldLabel>
@@ -26,5 +26,5 @@ export function RadioGroupDisabled() {
         </FieldLabel>
       </Field>
     </RadioGroup>
-  )
+  );
 }
