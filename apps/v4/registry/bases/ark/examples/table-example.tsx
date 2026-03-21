@@ -15,6 +15,8 @@ import {
   createListCollection,
   Select,
   SelectContent,
+  SelectControl,
+  SelectIndicator,
   SelectItem,
   SelectItemGroup,
   SelectItemIndicator,
@@ -376,9 +378,12 @@ function TableWithSelect() {
             <TableCell className="font-medium">Design homepage</TableCell>
             <TableCell>
               <Select collection={assigneeItems} defaultValue={["sarah"]}>
-                <SelectTrigger className="w-40" size="sm">
-                  <SelectValue />
-                </SelectTrigger>
+                <SelectControl className="w-40">
+                  <SelectTrigger size="sm">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectIndicator />
+                </SelectControl>
                 <SelectContent>
                   <SelectItemGroup>
                     {assigneeItems.items.map((item) => (
@@ -397,9 +402,12 @@ function TableWithSelect() {
             <TableCell className="font-medium">Implement API</TableCell>
             <TableCell>
               <Select collection={assigneeItems} defaultValue={["marcus"]}>
-                <SelectTrigger className="w-40" size="sm">
-                  <SelectValue />
-                </SelectTrigger>
+                <SelectControl className="w-40">
+                  <SelectTrigger size="sm">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectIndicator />
+                </SelectControl>
                 <SelectContent>
                   <SelectItemGroup>
                     {assigneeItems.items.map((item) => (
@@ -418,9 +426,12 @@ function TableWithSelect() {
             <TableCell className="font-medium">Write tests</TableCell>
             <TableCell>
               <Select collection={assigneeItems} defaultValue={["emily"]}>
-                <SelectTrigger className="w-40" size="sm">
-                  <SelectValue />
-                </SelectTrigger>
+                <SelectControl className="w-40">
+                  <SelectTrigger size="sm">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectIndicator />
+                </SelectControl>
                 <SelectContent>
                   <SelectItemGroup>
                     {assigneeItems.items.map((item) => (

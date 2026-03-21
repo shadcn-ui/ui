@@ -5,6 +5,8 @@ import {
   createListCollection,
   Select,
   SelectContent,
+  SelectControl,
+  SelectIndicator,
   SelectItem,
   SelectItemGroup,
   SelectItemGroupLabel,
@@ -112,9 +114,12 @@ export function SelectRtl() {
         setSelectedFruit(details.value)
       }
     >
-      <SelectTrigger className="w-32" dir={dir}>
-        <SelectValue placeholder={t.selectFruit} />
-      </SelectTrigger>
+      <SelectControl className="w-32" dir={dir}>
+        <SelectTrigger>
+          <SelectValue placeholder={t.selectFruit} />
+        </SelectTrigger>
+        <SelectIndicator />
+      </SelectControl>
       <SelectContent dir={dir} data-lang={dir === "rtl" ? language : undefined}>
         <SelectItemGroup>
           <SelectItemGroupLabel>{t.fruits}</SelectItemGroupLabel>

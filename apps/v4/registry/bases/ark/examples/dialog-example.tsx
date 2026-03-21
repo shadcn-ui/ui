@@ -44,6 +44,8 @@ import {
   createListCollection,
   Select,
   SelectContent,
+  SelectControl,
+  SelectIndicator,
   SelectItem,
   SelectItemGroup,
   SelectItemIndicator,
@@ -338,9 +340,12 @@ function DialogChatSettings() {
                       <Field orientation="horizontal">
                         <FieldLabel htmlFor="theme">Theme</FieldLabel>
                         <Select collection={themeItems} value={[theme]} onValueChange={(details) => setTheme(details.value[0])}>
-                          <SelectTrigger id="theme">
-                            <SelectValue placeholder="Select" />
-                          </SelectTrigger>
+                          <SelectControl>
+                            <SelectTrigger id="theme">
+                              <SelectValue placeholder="Select" />
+                            </SelectTrigger>
+                            <SelectIndicator />
+                          </SelectControl>
                           <SelectContent align="end">
                             <SelectItemGroup>
                               {themeItems.items.map((item) => (
@@ -363,9 +368,12 @@ function DialogChatSettings() {
                           value={[accentColor]}
                           onValueChange={(details) => setAccentColor(details.value[0])}
                         >
-                          <SelectTrigger id="accent-color">
-                            <SelectValue placeholder="Select" />
-                          </SelectTrigger>
+                          <SelectControl>
+                            <SelectTrigger id="accent-color">
+                              <SelectValue placeholder="Select" />
+                            </SelectTrigger>
+                            <SelectIndicator />
+                          </SelectControl>
                           <SelectContent align="end">
                             <SelectItemGroup>
                               {accentColorItems.items.map((item) => (
@@ -398,9 +406,12 @@ function DialogChatSettings() {
                           value={[spokenLanguage]}
                           onValueChange={(details) => setSpokenLanguage(details.value[0])}
                         >
-                          <SelectTrigger id="spoken-language">
-                            <SelectValue placeholder="Select" />
-                          </SelectTrigger>
+                          <SelectControl>
+                            <SelectTrigger id="spoken-language">
+                              <SelectValue placeholder="Select" />
+                            </SelectTrigger>
+                            <SelectIndicator />
+                          </SelectControl>
                           <SelectContent align="end">
                             <SelectItemGroup>
                               <SelectItem item={spokenLanguageItems.items[0]}>
@@ -427,9 +438,12 @@ function DialogChatSettings() {
                       <Field orientation="horizontal">
                         <FieldLabel htmlFor="voice">Voice</FieldLabel>
                         <Select collection={voiceItems} value={[voice]} onValueChange={(details) => setVoice(details.value[0])}>
-                          <SelectTrigger id="voice">
-                            <SelectValue placeholder="Select" />
-                          </SelectTrigger>
+                          <SelectControl>
+                            <SelectTrigger id="voice">
+                              <SelectValue placeholder="Select" />
+                            </SelectTrigger>
+                            <SelectIndicator />
+                          </SelectControl>
                           <SelectContent align="end">
                             <SelectItemGroup>
                               {voices.map((v) => (

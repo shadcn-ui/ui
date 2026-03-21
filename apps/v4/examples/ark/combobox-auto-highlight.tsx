@@ -1,6 +1,5 @@
 "use client"
 
-import * as React from "react"
 import {
   Combobox,
   ComboboxContent,
@@ -11,7 +10,8 @@ import {
   ComboboxItemText,
   ComboboxList,
   ComboboxTrigger,
-  createListCollection,
+  useFilter,
+  useListCollection,
 } from "@/examples/ark/ui/combobox"
 
 const frameworkItems = [
@@ -23,24 +23,16 @@ const frameworkItems = [
 ]
 
 export function ComboboxAutoHighlight() {
-  const [items, setItems] = React.useState(frameworkItems)
-
-  const collection = React.useMemo(
-    () => createListCollection({ items }),
-    [items]
-  )
-
-  const handleInputValueChange = (details: { inputValue: string }) => {
-    const filtered = frameworkItems.filter((item) =>
-      item.label.toLowerCase().includes(details.inputValue.toLowerCase())
-    )
-    setItems(filtered.length > 0 ? filtered : frameworkItems)
-  }
+  const { contains } = useFilter({ sensitivity: "base" })
+  const { collection, filter } = useListCollection({
+    initialItems: frameworkItems,
+    filter: contains,
+  })
 
   return (
     <Combobox
       collection={collection}
-      onInputValueChange={handleInputValueChange}
+      onInputValueChange={(details) => filter(details.inputValue)}
       autoFocus
     >
       <ComboboxControl>

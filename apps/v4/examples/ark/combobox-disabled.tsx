@@ -10,20 +10,22 @@ import {
   ComboboxItemText,
   ComboboxList,
   ComboboxTrigger,
-  createListCollection,
+  useListCollection,
 } from "@/examples/ark/ui/combobox"
 
-const collection = createListCollection({
-  items: [
-    { label: "Next.js", value: "nextjs" },
-    { label: "SvelteKit", value: "sveltekit" },
-    { label: "Nuxt.js", value: "nuxtjs" },
-    { label: "Remix", value: "remix" },
-    { label: "Astro", value: "astro" },
-  ],
-})
+const frameworkItems = [
+  { label: "Next.js", value: "nextjs" },
+  { label: "SvelteKit", value: "sveltekit" },
+  { label: "Nuxt.js", value: "nuxtjs" },
+  { label: "Remix", value: "remix" },
+  { label: "Astro", value: "astro" },
+]
 
 export function ComboboxDisabled() {
+  const { collection } = useListCollection({
+    initialItems: frameworkItems,
+  })
+
   return (
     <Combobox collection={collection} disabled>
       <ComboboxControl>

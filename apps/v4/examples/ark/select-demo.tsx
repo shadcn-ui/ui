@@ -4,6 +4,8 @@ import {
   createListCollection,
   Select,
   SelectContent,
+  SelectControl,
+  SelectIndicator,
   SelectItem,
   SelectItemGroup,
   SelectItemGroupLabel,
@@ -26,9 +28,12 @@ const fruits = createListCollection({
 export function SelectDemo() {
   return (
     <Select collection={fruits}>
-      <SelectTrigger className="w-full max-w-48">
-        <SelectValue placeholder="Select a fruit" />
-      </SelectTrigger>
+      <SelectControl className="w-full max-w-48">
+        <SelectTrigger>
+          <SelectValue placeholder="Select a fruit" />
+        </SelectTrigger>
+        <SelectIndicator />
+      </SelectControl>
       <SelectContent>
         <SelectItemGroup>
           <SelectItemGroupLabel>Fruits</SelectItemGroupLabel>

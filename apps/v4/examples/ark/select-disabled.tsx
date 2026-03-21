@@ -4,6 +4,8 @@ import {
   createListCollection,
   Select,
   SelectContent,
+  SelectControl,
+  SelectIndicator,
   SelectItem,
   SelectItemGroup,
   SelectItemIndicator,
@@ -25,9 +27,12 @@ const fruits = createListCollection({
 export function SelectDisabled() {
   return (
     <Select collection={fruits} disabled>
-      <SelectTrigger className="w-full max-w-48">
-        <SelectValue placeholder="Select a fruit" />
-      </SelectTrigger>
+      <SelectControl className="w-full max-w-48">
+        <SelectTrigger>
+          <SelectValue placeholder="Select a fruit" />
+        </SelectTrigger>
+        <SelectIndicator />
+      </SelectControl>
       <SelectContent>
         <SelectItemGroup>
           {fruits.items.map((item) => (

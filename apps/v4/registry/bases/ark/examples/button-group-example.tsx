@@ -31,6 +31,8 @@ import {
   createListCollection,
   Select,
   SelectContent,
+  SelectControl,
+  SelectIndicator,
   SelectItem,
   SelectItemGroup,
   SelectItemIndicator,
@@ -259,9 +261,12 @@ function ButtonGroupWithSelect() {
         <Label htmlFor="amount">Amount</Label>
         <ButtonGroup>
           <Select collection={currencySymbolItems} value={[currency]} onValueChange={(details) => setCurrency(details.value[0])}>
-            <SelectTrigger>
-              <SelectValue />
-            </SelectTrigger>
+            <SelectControl>
+              <SelectTrigger>
+                <SelectValue />
+              </SelectTrigger>
+              <SelectIndicator />
+            </SelectControl>
             <SelectContent align="start">
               <SelectItemGroup>
                 {currencySymbolItems.items.map((item) => (
@@ -431,9 +436,12 @@ function ButtonGroupWithSelectAndInput() {
     <Example title="With Select and Input">
       <ButtonGroup>
         <Select collection={durationItems} defaultValue={["hours"]}>
-          <SelectTrigger id="duration">
-            <SelectValue placeholder="Select duration" />
-          </SelectTrigger>
+          <SelectControl>
+            <SelectTrigger id="duration">
+              <SelectValue placeholder="Select duration" />
+            </SelectTrigger>
+            <SelectIndicator />
+          </SelectControl>
           <SelectContent align="start">
             <SelectItemGroup>
               {durationItems.items.map((item) => (

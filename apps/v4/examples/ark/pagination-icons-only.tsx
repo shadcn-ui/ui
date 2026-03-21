@@ -10,6 +10,8 @@ import {
   createListCollection,
   Select,
   SelectContent,
+  SelectControl,
+  SelectIndicator,
   SelectItem,
   SelectItemGroup,
   SelectItemIndicator,
@@ -33,9 +35,12 @@ export function PaginationIconsOnly() {
       <Field orientation="horizontal" className="w-fit">
         <FieldLabel htmlFor="select-rows-per-page">Rows per page</FieldLabel>
         <Select collection={rowsPerPageItems} defaultValue={["25"]}>
-          <SelectTrigger className="w-20" id="select-rows-per-page">
-            <SelectValue />
-          </SelectTrigger>
+          <SelectControl className="w-20">
+            <SelectTrigger id="select-rows-per-page">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectIndicator />
+          </SelectControl>
           <SelectContent align="start">
             <SelectItemGroup>
               {rowsPerPageItems.items.map((item) => (

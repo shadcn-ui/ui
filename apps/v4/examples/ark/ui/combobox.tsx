@@ -260,6 +260,9 @@ export {
   createListCollection,
   useCombobox,
   useComboboxContext,
+  useListCollection,
   type ComboboxInputValueChangeDetails,
   type ComboboxValueChangeDetails,
 } from "@ark-ui/react/combobox"
+
+export { useFilter } from "@ark-ui/react/locale"

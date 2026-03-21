@@ -18,6 +18,8 @@ import {
   createListCollection,
   Select,
   SelectContent,
+  SelectControl,
+  SelectIndicator,
   SelectItem,
   SelectItemGroup,
   SelectItemIndicator,
@@ -175,9 +177,12 @@ function InputWithSelect() {
       <div className="flex w-full gap-2">
         <Input type="text" placeholder="Enter amount" className="flex-1" />
         <Select collection={currencyItems} defaultValue={["usd"]}>
-          <SelectTrigger className="w-32">
-            <SelectValue />
-          </SelectTrigger>
+          <SelectControl className="w-32">
+            <SelectTrigger>
+              <SelectValue />
+            </SelectTrigger>
+            <SelectIndicator />
+          </SelectControl>
           <SelectContent>
             <SelectItemGroup>
               {currencyItems.items.map((item) => (
@@ -260,9 +265,12 @@ function InputForm() {
             <Field>
               <FieldLabel htmlFor="form-country">Country</FieldLabel>
               <Select collection={countryItems} defaultValue={["us"]}>
-                <SelectTrigger id="form-country">
-                  <SelectValue />
-                </SelectTrigger>
+                <SelectControl>
+                  <SelectTrigger id="form-country">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectIndicator />
+                </SelectControl>
                 <SelectContent>
                   <SelectItemGroup>
                     {countryItems.items.map((item) => (

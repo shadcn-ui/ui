@@ -4,6 +4,8 @@ import {
   createListCollection,
   Select,
   SelectContent,
+  SelectControl,
+  SelectIndicator,
   SelectItem,
   SelectItemGroup,
   SelectItemGroupLabel,
@@ -13,110 +15,84 @@ import {
   SelectValue,
 } from "@/examples/ark/ui/select"
 
-const northAmerica = [
-  { label: "Eastern Standard Time", value: "est" },
-  { label: "Central Standard Time", value: "cst" },
-  { label: "Mountain Standard Time", value: "mst" },
-  { label: "Pacific Standard Time", value: "pst" },
-  { label: "Alaska Standard Time", value: "akst" },
-  { label: "Hawaii Standard Time", value: "hst" },
-]
-
-const europeAfrica = [
-  { label: "Greenwich Mean Time", value: "gmt" },
-  { label: "Central European Time", value: "cet" },
-  { label: "Eastern European Time", value: "eet" },
-  { label: "Western European Summer Time", value: "west" },
-  { label: "Central Africa Time", value: "cat" },
-  { label: "East Africa Time", value: "eat" },
-]
-
-const asia = [
-  { label: "Moscow Time", value: "msk" },
-  { label: "India Standard Time", value: "ist" },
-  { label: "China Standard Time", value: "cst_china" },
-  { label: "Japan Standard Time", value: "jst" },
-  { label: "Korea Standard Time", value: "kst" },
-  { label: "Indonesia Central Standard Time", value: "ist_indonesia" },
-]
-
-const australiaPacific = [
-  { label: "Australian Western Standard Time", value: "awst" },
-  { label: "Australian Central Standard Time", value: "acst" },
-  { label: "Australian Eastern Standard Time", value: "aest" },
-  { label: "New Zealand Standard Time", value: "nzst" },
-  { label: "Fiji Time", value: "fjt" },
-]
-
-const southAmerica = [
-  { label: "Argentina Time", value: "art" },
-  { label: "Bolivia Time", value: "bot" },
-  { label: "Brasilia Time", value: "brt" },
-  { label: "Chile Standard Time", value: "clt" },
-]
-
-const timezones = createListCollection({
+const collection = createListCollection({
   items: [
-    ...northAmerica,
-    ...europeAfrica,
-    ...asia,
-    ...australiaPacific,
-    ...southAmerica,
+    { label: "Eastern Standard Time", value: "est", type: "North America" },
+    { label: "Central Standard Time", value: "cst", type: "North America" },
+    { label: "Mountain Standard Time", value: "mst", type: "North America" },
+    { label: "Pacific Standard Time", value: "pst", type: "North America" },
+    { label: "Alaska Standard Time", value: "akst", type: "North America" },
+    { label: "Hawaii Standard Time", value: "hst", type: "North America" },
+    { label: "Greenwich Mean Time", value: "gmt", type: "Europe & Africa" },
+    { label: "Central European Time", value: "cet", type: "Europe & Africa" },
+    { label: "Eastern European Time", value: "eet", type: "Europe & Africa" },
+    {
+      label: "Western European Summer Time",
+      value: "west",
+      type: "Europe & Africa",
+    },
+    { label: "Central Africa Time", value: "cat", type: "Europe & Africa" },
+    { label: "East Africa Time", value: "eat", type: "Europe & Africa" },
+    { label: "Moscow Time", value: "msk", type: "Asia" },
+    { label: "India Standard Time", value: "ist", type: "Asia" },
+    { label: "China Standard Time", value: "cst_china", type: "Asia" },
+    { label: "Japan Standard Time", value: "jst", type: "Asia" },
+    { label: "Korea Standard Time", value: "kst", type: "Asia" },
+    {
+      label: "Indonesia Central Standard Time",
+      value: "ist_indonesia",
+      type: "Asia",
+    },
+    {
+      label: "Australian Western Standard Time",
+      value: "awst",
+      type: "Australia & Pacific",
+    },
+    {
+      label: "Australian Central Standard Time",
+      value: "acst",
+      type: "Australia & Pacific",
+    },
+    {
+      label: "Australian Eastern Standard Time",
+      value: "aest",
+      type: "Australia & Pacific",
+    },
+    {
+      label: "New Zealand Standard Time",
+      value: "nzst",
+      type: "Australia & Pacific",
+    },
+    { label: "Fiji Time", value: "fjt", type: "Australia & Pacific" },
+    { label: "Argentina Time", value: "art", type: "South America" },
+    { label: "Bolivia Time", value: "bot", type: "South America" },
+    { label: "Brasilia Time", value: "brt", type: "South America" },
+    { label: "Chile Standard Time", value: "clt", type: "South America" },
   ],
+  groupBy: (item) => item.type,
 })
 
 export function SelectScrollable() {
   return (
-    <Select collection={timezones}>
-      <SelectTrigger className="w-full max-w-64">
-        <SelectValue placeholder="Select a timezone" />
-      </SelectTrigger>
+    <Select collection={collection}>
+      <SelectControl className="w-full max-w-64">
+        <SelectTrigger>
+          <SelectValue placeholder="Select a timezone" />
+        </SelectTrigger>
+        <SelectIndicator />
+      </SelectControl>
       <SelectContent>
-        <SelectItemGroup>
-          <SelectItemGroupLabel>North America</SelectItemGroupLabel>
-          {northAmerica.map((item) => (
-            <SelectItem key={item.value} item={item}>
-              <SelectItemText>{item.label}</SelectItemText>
-              <SelectItemIndicator />
-            </SelectItem>
-          ))}
-        </SelectItemGroup>
-        <SelectItemGroup>
-          <SelectItemGroupLabel>Europe & Africa</SelectItemGroupLabel>
-          {europeAfrica.map((item) => (
-            <SelectItem key={item.value} item={item}>
-              <SelectItemText>{item.label}</SelectItemText>
-              <SelectItemIndicator />
-            </SelectItem>
-          ))}
-        </SelectItemGroup>
-        <SelectItemGroup>
-          <SelectItemGroupLabel>Asia</SelectItemGroupLabel>
-          {asia.map((item) => (
-            <SelectItem key={item.value} item={item}>
-              <SelectItemText>{item.label}</SelectItemText>
-              <SelectItemIndicator />
-            </SelectItem>
-          ))}
-        </SelectItemGroup>
-        <SelectItemGroup>
-          <SelectItemGroupLabel>Australia & Pacific</SelectItemGroupLabel>
-          {australiaPacific.map((item) => (
-            <SelectItem key={item.value} item={item}>
-              <SelectItemText>{item.label}</SelectItemText>
-              <SelectItemIndicator />
-            </SelectItem>
-          ))}
-        </SelectItemGroup>
-        <SelectItemGroup>
-          <SelectItemGroupLabel>South America</SelectItemGroupLabel>
-          {southAmerica.map((item) => (
-            <SelectItem key={item.value} item={item}>
-              <SelectItemText>{item.label}</SelectItemText>
-              <SelectItemIndicator />
-            </SelectItem>
-          ))}
-        </SelectItemGroup>
+        {collection.group().map(([type, group]) => (
+          <SelectItemGroup key={type}>
+            <SelectItemGroupLabel>{type}</SelectItemGroupLabel>
+            {group.map((item) => (
+              <SelectItem key={item.value} item={item}>
+                <SelectItemText>{item.label}</SelectItemText>
+                <SelectItemIndicator />
+              </SelectItem>
+            ))}
+          </SelectItemGroup>
+        ))}
       </SelectContent>
     </Select>
   )

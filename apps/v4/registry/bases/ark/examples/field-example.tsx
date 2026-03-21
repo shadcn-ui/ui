@@ -39,6 +39,8 @@ import {
   createListCollection,
   Select,
   SelectContent,
+  SelectControl,
+  SelectIndicator,
   SelectItem,
   SelectItemGroup,
   SelectItemIndicator,
@@ -242,9 +244,12 @@ function SelectFields() {
         <Field>
           <FieldLabel htmlFor="select-basic">Basic Select</FieldLabel>
           <Select collection={optionItems}>
-            <SelectTrigger id="select-basic">
-              <SelectValue placeholder="Choose an option" />
-            </SelectTrigger>
+            <SelectControl>
+              <SelectTrigger id="select-basic">
+                <SelectValue placeholder="Choose an option" />
+              </SelectTrigger>
+              <SelectIndicator />
+            </SelectControl>
             <SelectContent>
               <SelectItemGroup>
                 {optionItems.items.map((item) => (
@@ -260,9 +265,12 @@ function SelectFields() {
         <Field>
           <FieldLabel htmlFor="select-country">Country</FieldLabel>
           <Select collection={countryItems}>
-            <SelectTrigger id="select-country">
-              <SelectValue placeholder="Select your country" />
-            </SelectTrigger>
+            <SelectControl>
+              <SelectTrigger id="select-country">
+                <SelectValue placeholder="Select your country" />
+              </SelectTrigger>
+              <SelectIndicator />
+            </SelectControl>
             <SelectContent>
               <SelectItemGroup>
                 {countryItems.items.map((item) => (
@@ -284,9 +292,12 @@ function SelectFields() {
             Choose your local timezone for accurate scheduling.
           </FieldDescription>
           <Select collection={timezoneItems}>
-            <SelectTrigger id="select-timezone">
-              <SelectValue placeholder="Select timezone" />
-            </SelectTrigger>
+            <SelectControl>
+              <SelectTrigger id="select-timezone">
+                <SelectValue placeholder="Select timezone" />
+              </SelectTrigger>
+              <SelectIndicator />
+            </SelectControl>
             <SelectContent>
               <SelectItemGroup>
                 {timezoneItems.items.map((item) => (
@@ -302,9 +313,12 @@ function SelectFields() {
         <Field data-invalid>
           <FieldLabel htmlFor="select-invalid">Invalid Select</FieldLabel>
           <Select collection={optionItems}>
-            <SelectTrigger id="select-invalid" aria-invalid>
-              <SelectValue placeholder="This field has an error" />
-            </SelectTrigger>
+            <SelectControl>
+              <SelectTrigger id="select-invalid" aria-invalid>
+                <SelectValue placeholder="This field has an error" />
+              </SelectTrigger>
+              <SelectIndicator />
+            </SelectControl>
             <SelectContent>
               <SelectItemGroup>
                 {optionItems.items.map((item) => (
@@ -325,9 +339,12 @@ function SelectFields() {
             Disabled Field
           </FieldLabel>
           <Select collection={optionItems} disabled>
-            <SelectTrigger id="select-disabled-field">
-              <SelectValue placeholder="Cannot select" />
-            </SelectTrigger>
+            <SelectControl>
+              <SelectTrigger id="select-disabled-field">
+                <SelectValue placeholder="Cannot select" />
+              </SelectTrigger>
+              <SelectIndicator />
+            </SelectControl>
             <SelectContent>
               <SelectItemGroup>
                 {optionItems.items.map((item) => (
@@ -1024,9 +1041,12 @@ function HorizontalFields() {
             <FieldDescription>Choose your favorite fruit.</FieldDescription>
           </FieldContent>
           <Select collection={fruitItems}>
-            <SelectTrigger id="horizontal-select">
-              <SelectValue placeholder="Select a fruit" />
-            </SelectTrigger>
+            <SelectControl>
+              <SelectTrigger id="horizontal-select">
+                <SelectValue placeholder="Select a fruit" />
+              </SelectTrigger>
+              <SelectIndicator />
+            </SelectControl>
             <SelectContent>
               <SelectItemGroup>
                 {fruitItems.items.map((item) => (

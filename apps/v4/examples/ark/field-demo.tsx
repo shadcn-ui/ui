@@ -14,6 +14,8 @@ import {
   createListCollection,
   Select,
   SelectContent,
+  SelectControl,
+  SelectIndicator,
   SelectItem,
   SelectItemGroup,
   SelectItemIndicator,
@@ -91,9 +93,12 @@ export default function FieldDemo() {
                     Month
                   </FieldLabel>
                   <Select collection={monthItems}>
-                    <SelectTrigger id="checkout-exp-month-ts6">
-                      <SelectValue placeholder="MM" />
-                    </SelectTrigger>
+                    <SelectControl>
+                      <SelectTrigger id="checkout-exp-month-ts6">
+                        <SelectValue placeholder="MM" />
+                      </SelectTrigger>
+                      <SelectIndicator />
+                    </SelectControl>
                     <SelectContent>
                       <SelectItemGroup>
                         {monthItems.items.map((item) => (
@@ -111,9 +116,12 @@ export default function FieldDemo() {
                     Year
                   </FieldLabel>
                   <Select collection={yearItems}>
-                    <SelectTrigger id="checkout-7j9-exp-year-f59">
-                      <SelectValue placeholder="YYYY" />
-                    </SelectTrigger>
+                    <SelectControl>
+                      <SelectTrigger id="checkout-7j9-exp-year-f59">
+                        <SelectValue placeholder="YYYY" />
+                      </SelectTrigger>
+                      <SelectIndicator />
+                    </SelectControl>
                     <SelectContent>
                       <SelectItemGroup>
                         {yearItems.items.map((item) => (

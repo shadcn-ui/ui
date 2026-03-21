@@ -3,6 +3,8 @@ import {
   createListCollection,
   Select,
   SelectContent,
+  SelectControl,
+  SelectIndicator,
   SelectItem,
   SelectItemGroup,
   SelectItemIndicator,
@@ -29,9 +31,12 @@ export default function FieldSelect() {
     <Field className="w-full max-w-xs">
       <FieldLabel>Department</FieldLabel>
       <Select collection={departmentItems}>
-        <SelectTrigger>
-          <SelectValue placeholder="Choose department" />
-        </SelectTrigger>
+        <SelectControl>
+          <SelectTrigger>
+            <SelectValue placeholder="Choose department" />
+          </SelectTrigger>
+          <SelectIndicator />
+        </SelectControl>
         <SelectContent>
           <SelectItemGroup>
             {departmentItems.items.map((item) => (
