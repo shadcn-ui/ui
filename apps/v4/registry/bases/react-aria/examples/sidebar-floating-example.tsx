@@ -175,7 +175,7 @@ export default function SidebarFloatingExample() {
         <SidebarHeader>
           <SidebarMenu>
             <SidebarMenuItem>
-              <SidebarMenuButton size="lg" render={<a href="#" />}>
+              <SidebarMenuButton href="#" size="lg">
                 <Item className="p-0" size="xs">
                   <ItemContent>
                     <ItemTitle className="text-sm">Documentation</ItemTitle>
@@ -266,5 +266,5 @@ export default function SidebarFloatingExample() {
         </div>
       </SidebarInset>
     </SidebarProvider>
-  )
+  );
 }

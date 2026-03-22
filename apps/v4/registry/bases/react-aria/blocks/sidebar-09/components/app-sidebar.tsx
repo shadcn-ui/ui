@@ -205,9 +205,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           <SidebarMenu>
             <SidebarMenuItem>
               <SidebarMenuButton
+                href="#"
                 size="lg"
                 className="md:h-8 md:p-0"
-                render={<a href="#" />}
               >
                 <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
                   <IconPlaceholder
@@ -265,7 +265,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           <NavUser user={data.user} />
         </SidebarFooter>
       </Sidebar>
-
       {/* This is the second sidebar */}
       {/* We disable collapsible and let it fill remaining space */}
       <Sidebar collapsible="none" className="hidden flex-1 md:flex">
@@ -305,5 +304,5 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         </SidebarContent>
       </Sidebar>
     </Sidebar>
-  )
+  );
 }

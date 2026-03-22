@@ -39,12 +39,12 @@ export function NavWorkspaces({
           {workspaces.map((workspace) => (
             <Collapsible key={workspace.name}>
               <SidebarMenuItem>
-                <SidebarMenuButton render={<a href="#" />}>
+                <SidebarMenuButton href="#">
                   <span>{workspace.emoji}</span>
                   <span>{workspace.name}</span>
                 </SidebarMenuButton>
                 <SidebarMenuAction
-                  render={<CollapsibleTrigger />}
+                  slot="trigger"
                   className="left-2 bg-sidebar-accent text-sidebar-accent-foreground data-open:rotate-90"
                   showOnHover
                 >
@@ -69,7 +69,7 @@ export function NavWorkspaces({
                   <SidebarMenuSub>
                     {workspace.pages.map((page) => (
                       <SidebarMenuSubItem key={page.name}>
-                        <SidebarMenuSubButton render={<a href="#" />}>
+                        <SidebarMenuSubButton href="#">
                           <span>{page.emoji}</span>
                           <span>{page.name}</span>
                         </SidebarMenuSubButton>
@@ -95,5 +95,5 @@ export function NavWorkspaces({
         </SidebarMenu>
       </SidebarGroupContent>
     </SidebarGroup>
-  )
+  );
 }

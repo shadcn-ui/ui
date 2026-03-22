@@ -211,7 +211,7 @@ export default function SidebarInsetExample() {
                   render={(props) => <SidebarMenuItem {...props} />}
                 >
                   <SidebarMenuButton
-                    render={<a href={item.url} />}
+                    href={item.url}
                     isActive={item.isActive}
                   >
                     {item.icon}
@@ -219,14 +219,9 @@ export default function SidebarInsetExample() {
                   </SidebarMenuButton>
                   {item.items?.length ? (
                     <>
-                      <CollapsibleTrigger
-                        render={(props) => (
-                          <SidebarMenuAction
-                            {...props}
-                            className="group-data-open/menu-item:rotate-90"
-                          />
-                        )}
-                      >
+                      <SidebarMenuAction
+                        slot="trigger"
+                        className="group-data-open/menu-item:rotate-90">
                         <IconPlaceholder
                           lucide="ChevronRightIcon"
                           tabler="IconChevronRight"
@@ -235,13 +230,13 @@ export default function SidebarInsetExample() {
                           remixicon="RiArrowRightSLine"
                         />
                         <span className="sr-only">Toggle</span>
-                      </CollapsibleTrigger>
+                      </SidebarMenuAction>
                       <CollapsibleContent>
                         <SidebarMenuSub>
                           {item.items.map((subItem) => (
                             <SidebarMenuSubItem key={subItem.title}>
                               <SidebarMenuSubButton
-                                render={<a href={subItem.url} />}
+                                href={subItem.url}
                               >
                                 {subItem.title}
                               </SidebarMenuSubButton>
@@ -260,7 +255,7 @@ export default function SidebarInsetExample() {
               <SidebarMenu>
                 {data.navSecondary.map((item) => (
                   <SidebarMenuItem key={item.title}>
-                    <SidebarMenuButton render={<a href={item.url} />} size="sm">
+                    <SidebarMenuButton href={item.url} size="sm">
                       {item.icon}
                       <span>{item.title}</span>
                     </SidebarMenuButton>
@@ -286,5 +281,5 @@ export default function SidebarInsetExample() {
         </div>
       </SidebarInset>
     </SidebarProvider>
-  )
+  );
 }

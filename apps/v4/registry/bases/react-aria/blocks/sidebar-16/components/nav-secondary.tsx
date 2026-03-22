@@ -26,7 +26,7 @@ export function NavSecondary({
         <SidebarMenu>
           {items.map((item) => (
             <SidebarMenuItem key={item.title}>
-              <SidebarMenuButton size="sm" render={<a href={item.url} />}>
+              <SidebarMenuButton href={item.url} size="sm">
                 {item.icon}
                 <span>{item.title}</span>
               </SidebarMenuButton>
@@ -35,5 +35,5 @@ export function NavSecondary({
         </SidebarMenu>
       </SidebarGroupContent>
     </SidebarGroup>
-  )
+  );
 }

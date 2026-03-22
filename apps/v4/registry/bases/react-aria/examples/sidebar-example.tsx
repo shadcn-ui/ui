@@ -249,7 +249,7 @@ export default function SidebarExample() {
                   {item.items.map((subItem) => (
                     <SidebarMenuItem key={subItem.title}>
                       <SidebarMenuButton
-                        render={<a href={subItem.url} />}
+                        href={subItem.url}
                         isActive={subItem.isActive}
                       >
                         {subItem.title}
@@ -277,5 +277,5 @@ export default function SidebarExample() {
         </div>
       </SidebarInset>
     </SidebarProvider>
-  )
+  );
 }

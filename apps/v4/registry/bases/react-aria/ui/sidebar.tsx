@@ -3,6 +3,7 @@
 import * as React from "react"
 import { mergeProps } from "@base-ui/react/merge-props"
 import { useRender } from "@base-ui/react/use-render"
+import {Button as ButtonPrimitive, type ButtonProps, Link as LinkPrimitive, type LinkProps} from "react-aria-components"
 import { cva, type VariantProps } from "class-variance-authority"
 import { Pressable } from "react-aria-components"
 
@@ -199,7 +200,7 @@ function Sidebar({
         </SheetHeader>
         <div className="flex h-full w-full flex-col">{children}</div>
       </Sheet>
-    )
+    );
   }
 
   return (
@@ -399,50 +400,37 @@ function SidebarGroup({ className, ...props }: React.ComponentProps<"div">) {
 
 function SidebarGroupLabel({
   className,
-  render,
+  elementType: Element = 'div',
   ...props
-}: useRender.ComponentProps<"div"> & React.ComponentProps<"div">) {
-  return useRender({
-    defaultTagName: "div",
-    props: mergeProps<"div">(
-      {
-        className: cn(
-          "cn-sidebar-group-label flex shrink-0 items-center outline-hidden [&>svg]:shrink-0",
-          className
-        ),
-      },
-      props
-    ),
-    render,
-    state: {
-      slot: "sidebar-group-label",
-      sidebar: "group-label",
-    },
-  })
+}: React.HTMLAttributes<HTMLElement> & {elementType?: React.ElementType}) {
+  return (
+    <Element
+      data-slot="sidebar-group-label"
+      data-sidebar="group-label"
+      className={cn(
+        "cn-sidebar-group-label flex shrink-0 items-center outline-hidden [&>svg]:shrink-0",
+        className
+      )}
+      {...props}
+    />
+  )
 }
 
 function SidebarGroupAction({
   className,
-  render,
   ...props
-}: useRender.ComponentProps<"button"> & React.ComponentProps<"button">) {
-  return useRender({
-    defaultTagName: "button",
-    props: mergeProps<"button">(
-      {
-        className: cn(
-          "cn-sidebar-group-action flex aspect-square items-center justify-center outline-hidden transition-transform group-data-[collapsible=icon]:hidden after:absolute after:-inset-2 md:after:hidden [&>svg]:shrink-0",
-          className
-        ),
-      },
-      props
-    ),
-    render,
-    state: {
-      slot: "sidebar-group-action",
-      sidebar: "group-action",
-    },
-  })
+}: React.ComponentProps<"button">) {
+  return (
+    <button
+      data-slot="sidebar-group-action"
+      data-sidebar="group-action"
+      className={cn(
+        "cn-sidebar-group-action flex aspect-square items-center justify-center outline-hidden transition-transform group-data-[collapsible=icon]:hidden after:absolute after:-inset-2 md:after:hidden [&>svg]:shrink-0",
+        className
+      )}
+      {...props}
+    />
+  )
 }
 
 function SidebarGroupContent({
@@ -510,40 +498,27 @@ function SidebarMenuButton({
   tooltip,
   className,
   ...props
-}: useRender.ComponentProps<"button"> &
-  React.ComponentProps<"button"> & {
-    isActive?: boolean
-    tooltip?: string | React.ComponentProps<typeof Tooltip>
-  } & VariantProps<typeof sidebarMenuButtonVariants>) {
+}: (ButtonProps | LinkProps) & {
+  isActive?: boolean
+  tooltip?: string | React.ComponentProps<typeof Tooltip>
+} & VariantProps<typeof sidebarMenuButtonVariants>) {
   const { isMobile, state } = useSidebar()
-  const comp = useRender({
-    defaultTagName: "button",
-    props: mergeProps<"button">(
-      {
-        className: cn(sidebarMenuButtonVariants({ variant, size }), className),
-      },
-      props
-    ),
-    render,
-    state: {
-      slot: "sidebar-menu-button",
-      sidebar: "menu-button",
-      size,
-      active: isActive,
-    },
-  })
+  const Element = 'href' in props ? LinkPrimitive : ButtonPrimitive;
+  
+  const comp = (
+    // @ts-expect-error - TS doesn't narrow props to match Element type
+    (<Element
+      data-slot="sidebar-menu-button"
+      data-sidebar="menu-button"
+      data-size={size}
+      data-active={isActive}
+      className={cn(sidebarMenuButtonVariants({ variant, size }), className)}
+      {...props}
+    />)
+  );
 
   if (!tooltip) {
-    return (
-      <Pressable>
-        {
-          comp as React.ReactElement<
-            React.HTMLAttributes<HTMLButtonElement>,
-            string
-          >
-        }
-      </Pressable>
-    )
+    return comp
   }
 
   if (typeof tooltip === "string") {
@@ -554,14 +529,7 @@ function SidebarMenuButton({
 
   return (
     <TooltipTrigger isDisabled={state !== "collapsed" || isMobile}>
-      <Pressable>
-        {
-          comp as React.ReactElement<
-            React.HTMLAttributes<HTMLButtonElement>,
-            string
-          >
-        }
-      </Pressable>
+      {comp}
       <Tooltip side="right" align="center" {...tooltip} />
     </TooltipTrigger>
   )
@@ -569,42 +537,23 @@ function SidebarMenuButton({
 
 function SidebarMenuAction({
   className,
-  render,
   showOnHover = false,
   ...props
-}: useRender.ComponentProps<"button"> &
-  React.ComponentProps<"button"> & {
-    showOnHover?: boolean
-  }) {
-  const comp = useRender({
-    defaultTagName: "button",
-    props: mergeProps<"button">(
-      {
-        className: cn(
-          "cn-sidebar-menu-action flex items-center justify-center outline-hidden transition-transform group-data-[collapsible=icon]:hidden after:absolute after:-inset-2 md:after:hidden [&>svg]:shrink-0",
-          showOnHover &&
-            "group-focus-within/menu-item:opacity-100 group-hover/menu-item:opacity-100 peer-data-active/menu-button:text-sidebar-accent-foreground aria-expanded:opacity-100 md:opacity-0",
-          className
-        ),
-      },
-      props
-    ),
-    render,
-    state: {
-      slot: "sidebar-menu-action",
-      sidebar: "menu-action",
-    },
-  })
-
+}: ButtonProps & {
+  showOnHover?: boolean
+}) {
   return (
-    <Pressable>
-      {
-        comp as React.ReactElement<
-          React.HTMLAttributes<HTMLButtonElement>,
-          string
-        >
-      }
-    </Pressable>
+    <ButtonPrimitive
+      data-slot="sidebar-menu-action"
+      data-sidebar="menu-action"
+      className={cn(
+        "cn-sidebar-menu-action flex items-center justify-center outline-hidden transition-transform group-data-[collapsible=icon]:hidden after:absolute after:-inset-2 md:after:hidden [&>svg]:shrink-0",
+        showOnHover &&
+          "group-focus-within/menu-item:opacity-100 group-hover/menu-item:opacity-100 peer-data-active/menu-button:text-sidebar-accent-foreground aria-expanded:opacity-100 md:opacity-0",
+        className
+      )}
+      {...props}
+    />
   )
 }
 
@@ -694,40 +643,25 @@ function SidebarMenuSubButton({
   isActive = false,
   className,
   ...props
-}: useRender.ComponentProps<"a"> &
-  React.ComponentProps<"a"> & {
+}: (ButtonProps | LinkProps) & {
     size?: "sm" | "md"
     isActive?: boolean
   }) {
-  const comp = useRender({
-    defaultTagName: "a",
-    props: mergeProps<"a">(
-      {
-        className: cn(
-          "cn-sidebar-menu-sub-button flex min-w-0 -translate-x-px items-center overflow-hidden outline-hidden group-data-[collapsible=icon]:hidden disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 [&>span:last-child]:truncate [&>svg]:shrink-0",
-          className
-        ),
-      },
-      props
-    ),
-    render,
-    state: {
-      slot: "sidebar-menu-sub-button",
-      sidebar: "menu-sub-button",
-      size,
-      active: isActive,
-    },
-  })
-
+  const Element = 'href' in props ? LinkPrimitive : ButtonPrimitive;
+  
   return (
-    <Pressable>
-      {
-        comp as React.ReactElement<
-          React.HTMLAttributes<HTMLAnchorElement>,
-          string
-        >
-      }
-    </Pressable>
+    // @ts-expect-error - TS doesn't narrow props to match Element type
+    (<Element
+      data-slot="sidebar-menu-sub-button"
+      data-sidebar="menu-sub-button"
+      data-size={size}
+      data-active={isActive}
+      className={cn(
+        "cn-sidebar-menu-sub-button flex min-w-0 -translate-x-px items-center overflow-hidden outline-hidden group-data-[collapsible=icon]:hidden disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 [&>span:last-child]:truncate [&>svg]:shrink-0",
+        className
+      )}
+      {...props}
+    />)
   )
 }
 

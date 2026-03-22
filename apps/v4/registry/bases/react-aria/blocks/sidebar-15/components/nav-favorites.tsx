@@ -33,7 +33,7 @@ export function NavFavorites({
       <SidebarMenu>
         {favorites.map((item) => (
           <SidebarMenuItem key={item.name}>
-            <SidebarMenuButton render={<a href={item.url} title={item.name} />}>
+            <SidebarMenuButton href={item.url} title={item.name}>
               <span>{item.emoji}</span>
               <span>{item.name}</span>
             </SidebarMenuButton>
@@ -118,5 +118,5 @@ export function NavFavorites({
         </SidebarMenuItem>
       </SidebarMenu>
     </SidebarGroup>
-  )
+  );
 }

@@ -252,8 +252,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton
+              href="#"
               className="data-[slot=sidebar-menu-button]:p-1.5!"
-              render={<a href="#" />}
             >
               <IconPlaceholder
                 lucide="CommandIcon"
@@ -277,5 +277,5 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <NavUser user={data.user} />
       </SidebarFooter>
     </Sidebar>
-  )
+  );
 }

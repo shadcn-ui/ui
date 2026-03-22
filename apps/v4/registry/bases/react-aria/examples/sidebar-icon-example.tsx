@@ -324,10 +324,9 @@ export default function SidebarIconExample() {
                   className="group/collapsible"
                 >
                   <SidebarMenuItem>
-                    <CollapsibleTrigger
-                      render={(props) => (
-                        <SidebarMenuButton {...props} tooltip={item.title} />
-                      )}
+                    <SidebarMenuButton
+                      slot="trigger"
+                      tooltip={item.title}
                     >
                       {item.icon}
                       <span>{item.title}</span>
@@ -339,13 +338,13 @@ export default function SidebarIconExample() {
                         remixicon="RiArrowRightSLine"
                         className="ml-auto transition-transform duration-100 group-data-open/collapsible:rotate-90"
                       />
-                    </CollapsibleTrigger>
+                    </SidebarMenuButton>
                     <CollapsibleContent>
                       <SidebarMenuSub>
                         {item.items?.map((subItem) => (
                           <SidebarMenuSubItem key={subItem.title}>
                             <SidebarMenuSubButton
-                              render={<a href={subItem.url} />}
+                              href={subItem.url}
                             >
                               {subItem.title}
                             </SidebarMenuSubButton>
@@ -363,7 +362,7 @@ export default function SidebarIconExample() {
             <SidebarMenu>
               {data.projects.map((item) => (
                 <SidebarMenuItem key={item.name}>
-                  <SidebarMenuButton render={<a href={item.url} />}>
+                  <SidebarMenuButton href={item.url}>
                     {item.icon}
                     {item.name}
                   </SidebarMenuButton>
@@ -451,5 +450,5 @@ export default function SidebarIconExample() {
         </div>
       </SidebarInset>
     </SidebarProvider>
-  )
+  );
 }

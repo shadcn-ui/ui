@@ -165,8 +165,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 {item.items.map((item) => (
                   <SidebarMenuItem key={item.title}>
                     <SidebarMenuButton
+                      href={item.url}
                       isActive={item.isActive}
-                      render={<a href={item.url} />}
                     >
                       {item.title}
                     </SidebarMenuButton>
@@ -179,5 +179,5 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarContent>
       <SidebarRail />
     </Sidebar>
-  )
+  );
 }

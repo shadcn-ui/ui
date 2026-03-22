@@ -43,8 +43,8 @@ export function NavMain({
             render={(props) => <SidebarMenuItem {...props} />}
           >
             <SidebarMenuButton
+              href={item.url}
               tooltip={item.title}
-              render={<a href={item.url} />}
             >
               {item.icon}
               <span>{item.title}</span>
@@ -52,7 +52,7 @@ export function NavMain({
             {item.items?.length ? (
               <>
                 <SidebarMenuAction
-                  render={<CollapsibleTrigger />}
+                  slot="trigger"
                   className="aria-expanded:rotate-90"
                 >
                   <IconPlaceholder
@@ -68,7 +68,7 @@ export function NavMain({
                   <SidebarMenuSub>
                     {item.items?.map((subItem) => (
                       <SidebarMenuSubItem key={subItem.title}>
-                        <SidebarMenuSubButton render={<a href={subItem.url} />}>
+                        <SidebarMenuSubButton href={subItem.url}>
                           <span>{subItem.title}</span>
                         </SidebarMenuSubButton>
                       </SidebarMenuSubItem>
@@ -81,5 +81,5 @@ export function NavMain({
         ))}
       </SidebarMenu>
     </SidebarGroup>
-  )
+  );
 }

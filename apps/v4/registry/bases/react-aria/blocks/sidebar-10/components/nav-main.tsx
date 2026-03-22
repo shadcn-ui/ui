@@ -21,8 +21,8 @@ export function NavMain({
       {items.map((item) => (
         <SidebarMenuItem key={item.title}>
           <SidebarMenuButton
+            href={item.url}
             isActive={item.isActive}
-            render={<a href={item.url} />}
           >
             {item.icon}
             <span>{item.title}</span>
@@ -30,5 +30,5 @@ export function NavMain({
         </SidebarMenuItem>
       ))}
     </SidebarMenu>
-  )
+  );
 }

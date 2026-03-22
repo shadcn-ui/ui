@@ -185,7 +185,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             <SidebarGroup>
               <SidebarGroupLabel
                 className="group/label text-sm text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
-                render={<CollapsibleTrigger />}
+                elementType={CollapsibleTrigger}
               >
                 {item.title}{" "}
                 <IconPlaceholder
@@ -203,8 +203,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                     {item.items.map((item) => (
                       <SidebarMenuItem key={item.title}>
                         <SidebarMenuButton
+                          href={item.url}
                           isActive={item.isActive}
-                          render={<a href={item.url} />}
                         >
                           {item.title}
                         </SidebarMenuButton>
@@ -219,5 +219,5 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarContent>
       <SidebarRail />
     </Sidebar>
-  )
+  );
 }
