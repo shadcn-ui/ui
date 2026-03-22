@@ -1,14 +1,7 @@
 "use client"
 
 import { SearchForm } from "@/registry/bases/react-aria/blocks/sidebar-16/components/search-form"
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/registry/bases/react-aria/ui/breadcrumb"
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage } from "@/registry/bases/react-aria/ui/breadcrumb";
 import { Button } from "@/registry/bases/react-aria/ui/button"
 import { Separator } from "@/registry/bases/react-aria/ui/separator"
 import { useSidebar } from "@/registry/bases/react-aria/ui/sidebar"
@@ -43,7 +36,7 @@ export function SiteHeader() {
             <BreadcrumbItem>
               <BreadcrumbLink href="#">Build Your Application</BreadcrumbLink>
             </BreadcrumbItem>
-            <BreadcrumbSeparator />
+
             <BreadcrumbItem>
               <BreadcrumbPage>Data Fetching</BreadcrumbPage>
             </BreadcrumbItem>
@@ -52,5 +45,5 @@ export function SiteHeader() {
         <SearchForm className="w-full sm:ml-auto sm:w-auto" />
       </div>
     </header>
-  )
+  );
 }

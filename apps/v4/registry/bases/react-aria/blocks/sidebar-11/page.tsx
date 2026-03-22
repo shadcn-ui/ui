@@ -1,12 +1,5 @@
 import { AppSidebar } from "@/registry/bases/react-aria/blocks/sidebar-11/components/app-sidebar"
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/registry/bases/react-aria/ui/breadcrumb"
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage } from "@/registry/bases/react-aria/ui/breadcrumb";
 import { Separator } from "@/registry/bases/react-aria/ui/separator"
 import {
   SidebarInset,
@@ -30,11 +23,11 @@ export default function Page() {
               <BreadcrumbItem className="hidden md:block">
                 <BreadcrumbLink href="#">components</BreadcrumbLink>
               </BreadcrumbItem>
-              <BreadcrumbSeparator className="hidden md:block" />
+
               <BreadcrumbItem className="hidden md:block">
                 <BreadcrumbLink href="#">ui</BreadcrumbLink>
               </BreadcrumbItem>
-              <BreadcrumbSeparator className="hidden md:block" />
+
               <BreadcrumbItem>
                 <BreadcrumbPage>button.tsx</BreadcrumbPage>
               </BreadcrumbItem>
@@ -51,5 +44,5 @@ export default function Page() {
         </div>
       </SidebarInset>
     </SidebarProvider>
-  )
+  );
 }

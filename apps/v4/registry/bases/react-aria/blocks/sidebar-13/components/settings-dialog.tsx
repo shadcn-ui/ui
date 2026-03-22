@@ -2,14 +2,7 @@
 
 import * as React from "react"
 
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/registry/bases/react-aria/ui/breadcrumb"
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage } from "@/registry/bases/react-aria/ui/breadcrumb";
 import { Button } from "@/registry/bases/react-aria/ui/button"
 import {
   Dialog,
@@ -218,7 +211,6 @@ export function SettingsDialog() {
                     <BreadcrumbItem className="hidden md:block">
                       <BreadcrumbLink href="#">Settings</BreadcrumbLink>
                     </BreadcrumbItem>
-                    <BreadcrumbSeparator className="hidden md:block" />
                     <BreadcrumbItem>
                       <BreadcrumbPage>Messages & media</BreadcrumbPage>
                     </BreadcrumbItem>

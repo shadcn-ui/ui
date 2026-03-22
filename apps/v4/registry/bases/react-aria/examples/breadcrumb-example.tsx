@@ -1,3 +1,5 @@
+"use client"
+
 import Link from "next/link"
 
 import {
@@ -11,8 +13,7 @@ import {
   BreadcrumbLink,
   BreadcrumbList,
   BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/registry/bases/react-aria/ui/breadcrumb"
+} from "@/registry/bases/react-aria/ui/breadcrumb";
 import { Button } from "@/registry/bases/react-aria/ui/button"
 import {
   DropdownMenu,
@@ -38,18 +39,18 @@ function BreadcrumbBasic() {
           <BreadcrumbItem>
             <BreadcrumbLink href="#">Home</BreadcrumbLink>
           </BreadcrumbItem>
-          <BreadcrumbSeparator />
+
           <BreadcrumbItem>
             <BreadcrumbLink href="#">Components</BreadcrumbLink>
           </BreadcrumbItem>
-          <BreadcrumbSeparator />
+
           <BreadcrumbItem>
             <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
     </Example>
-  )
+  );
 }
 
 function BreadcrumbWithDropdown() {
@@ -60,7 +61,7 @@ function BreadcrumbWithDropdown() {
           <BreadcrumbItem>
             <BreadcrumbLink href="#">Home</BreadcrumbLink>
           </BreadcrumbItem>
-          <BreadcrumbSeparator />
+
           <BreadcrumbItem>
             <DropdownMenuTrigger>
               <Button size="icon-sm" variant="ghost">
@@ -74,18 +75,18 @@ function BreadcrumbWithDropdown() {
               </DropdownMenu>
             </DropdownMenuTrigger>
           </BreadcrumbItem>
-          <BreadcrumbSeparator />
+
           <BreadcrumbItem>
             <BreadcrumbLink href="#">Components</BreadcrumbLink>
           </BreadcrumbItem>
-          <BreadcrumbSeparator />
+
           <BreadcrumbItem>
             <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
     </Example>
-  )
+  );
 }
 
 function BreadcrumbWithLink() {
@@ -94,22 +95,22 @@ function BreadcrumbWithLink() {
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
-            <BreadcrumbLink render={<Link href="#">Home</Link>} />
+            <BreadcrumbLink href="#" render={props => 'href' in props ? <Link {...props} /> : <span {...props} />}>Home</BreadcrumbLink>
           </BreadcrumbItem>
-          <BreadcrumbSeparator />
+
           <BreadcrumbItem>
             <BreadcrumbEllipsis />
           </BreadcrumbItem>
-          <BreadcrumbSeparator />
+
           <BreadcrumbItem>
-            <BreadcrumbLink render={<Link href="#">Components</Link>} />
+            <BreadcrumbLink href="#" render={props => 'href' in props ? <Link {...props} /> : <span {...props} />}>Components</BreadcrumbLink>
           </BreadcrumbItem>
-          <BreadcrumbSeparator />
+
           <BreadcrumbItem>
             <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
     </Example>
-  )
+  );
 }

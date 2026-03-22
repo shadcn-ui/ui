@@ -41,19 +41,6 @@ import {
 } from "@/registry/bases/react-aria/ui/input-group"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
-function Combobox<
-  T extends object,
-  M extends "single" | "multiple" = "single",
->({ className, ...props }: ComboBoxProps<T, M>) {
-  return (
-    <ComboBoxPrimitive
-      data-slot="select"
-      className={cn("w-fit", className)}
-      {...props}
-    />
-  )
-}
-
 function ComboboxTrigger({
   className,
   children,
@@ -432,7 +419,7 @@ function useComboboxAnchor() {
 }
 
 export {
-  Combobox,
+  ComboBoxPrimitive as Combobox,
   ComboboxInput,
   ComboboxContent,
   ComboboxList,

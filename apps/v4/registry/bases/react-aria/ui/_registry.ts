@@ -163,7 +163,6 @@ export const ui: Registry["items"] = [
     name: "combobox",
     type: "registry:ui",
     registryDependencies: ["button", "input-group"],
-    dependencies: ["@base-ui/react"],
     files: [
       {
         path: "ui/combobox.tsx",
@@ -581,7 +580,6 @@ export const ui: Registry["items"] = [
   {
     name: "direction",
     type: "registry:ui",
-    dependencies: ["@base-ui/react"],
     files: [
       {
         path: "ui/direction.tsx",
