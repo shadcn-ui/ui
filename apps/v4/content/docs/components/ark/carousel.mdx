@@ -67,6 +67,7 @@ npm install @ark-ui/react
 import {
   Carousel,
   CarouselContent,
+  CarouselControl,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
@@ -74,14 +75,16 @@ import {
 ```
 
 ```tsx showLineNumbers
-<Carousel>
-  <CarouselContent>
-    <CarouselItem>...</CarouselItem>
-    <CarouselItem>...</CarouselItem>
-    <CarouselItem>...</CarouselItem>
-  </CarouselContent>
-  <CarouselPrevious />
-  <CarouselNext />
+<Carousel slideCount={5}>
+  <CarouselControl>
+    <CarouselPrevious />
+    <CarouselContent>
+      <CarouselItem index={0}>...</CarouselItem>
+      <CarouselItem index={1}>...</CarouselItem>
+      <CarouselItem index={2}>...</CarouselItem>
+    </CarouselContent>
+    <CarouselNext />
+  </CarouselControl>
 </Carousel>
 ```
 
@@ -89,55 +92,40 @@ import {
 
 ### Sizes
 
-To set the size of the items, you can use the `basis` utility class on the `<CarouselItem />`.
+Use the `slidesPerPage` prop to show multiple slides at once.
 
 <ComponentPreview styleName="ark-nova" name="carousel-size" />
 
-```tsx showLineNumbers {4-6}
-// 33% of the carousel width.
-<Carousel>
-  <CarouselContent>
-    <CarouselItem className="basis-1/3">...</CarouselItem>
-    <CarouselItem className="basis-1/3">...</CarouselItem>
-    <CarouselItem className="basis-1/3">...</CarouselItem>
-  </CarouselContent>
-</Carousel>
-```
-
-```tsx showLineNumbers {4-6}
-// 50% on small screens and 33% on larger screens.
-<Carousel>
-  <CarouselContent>
-    <CarouselItem className="md:basis-1/2 lg:basis-1/3">...</CarouselItem>
-    <CarouselItem className="md:basis-1/2 lg:basis-1/3">...</CarouselItem>
-    <CarouselItem className="md:basis-1/2 lg:basis-1/3">...</CarouselItem>
-  </CarouselContent>
+```tsx showLineNumbers /slidesPerPage/
+<Carousel slideCount={5} slidesPerPage={3}>
+  <CarouselControl>
+    <CarouselPrevious />
+    <CarouselContent>
+      <CarouselItem index={0}>...</CarouselItem>
+      <CarouselItem index={1}>...</CarouselItem>
+      <CarouselItem index={2}>...</CarouselItem>
+    </CarouselContent>
+    <CarouselNext />
+  </CarouselControl>
 </Carousel>
 ```
 
 ### Spacing
 
-To set the spacing between the items, we use a `pl-[VALUE]` utility on the `<CarouselItem />` and a negative `-ml-[VALUE]` on the `<CarouselContent />`.
+Use the `spacing` prop on `Carousel` to set the gap between slides. Default is `1rem`.
 
 <ComponentPreview styleName="ark-nova" name="carousel-spacing" />
 
-```tsx showLineNumbers /-ml-4/ /pl-4/
-<Carousel>
-  <CarouselContent className="-ml-4">
-    <CarouselItem className="pl-4">...</CarouselItem>
-    <CarouselItem className="pl-4">...</CarouselItem>
-    <CarouselItem className="pl-4">...</CarouselItem>
-  </CarouselContent>
-</Carousel>
-```
-
-```tsx showLineNumbers /-ml-2/ /pl-2/ /md:-ml-4/ /md:pl-4/
-<Carousel>
-  <CarouselContent className="-ml-2 md:-ml-4">
-    <CarouselItem className="pl-2 md:pl-4">...</CarouselItem>
-    <CarouselItem className="pl-2 md:pl-4">...</CarouselItem>
-    <CarouselItem className="pl-2 md:pl-4">...</CarouselItem>
-  </CarouselContent>
+```tsx showLineNumbers /spacing/
+<Carousel slideCount={5} spacing="16px" slidesPerPage={2}>
+  <CarouselControl>
+    <CarouselPrevious />
+    <CarouselContent>
+      <CarouselItem index={0}>...</CarouselItem>
+      <CarouselItem index={1}>...</CarouselItem>
+    </CarouselContent>
+    <CarouselNext />
+  </CarouselControl>
 </Carousel>
 ```
 
@@ -151,38 +139,55 @@ Use the `orientation` prop to set the orientation of the carousel.
   previewClassName="h-[32rem]"
 />
 
-```tsx showLineNumbers /vertical | horizontal/
-<Carousel orientation="vertical | horizontal">
-  <CarouselContent>
-    <CarouselItem>...</CarouselItem>
-    <CarouselItem>...</CarouselItem>
-    <CarouselItem>...</CarouselItem>
+```tsx showLineNumbers /orientation/
+<Carousel slideCount={5} orientation="vertical">
+  <CarouselContent className="h-80">
+    <CarouselItem index={0}>...</CarouselItem>
+    <CarouselItem index={1}>...</CarouselItem>
   </CarouselContent>
+  <CarouselControl className="justify-between">
+    <CarouselPrevious>
+      <ChevronUpIcon />
+    </CarouselPrevious>
+    <CarouselNext>
+      <ChevronDownIcon />
+    </CarouselNext>
+  </CarouselControl>
 </Carousel>
 ```
 
-## Options
+### Options
 
-You can pass options to the carousel using the `opts` prop. See the [Ark UI Carousel docs](https://ark-ui.com/docs/components/carousel) for more information.
+Pass options directly as props on `Carousel`. See the [Ark UI Carousel docs](https://ark-ui.com/docs/components/carousel) for all available props.
 
-```tsx showLineNumbers {2-5}
+```tsx showLineNumbers
 <Carousel
-  opts={{
-    align: "start",
-    loop: true,
-  }}
+  slideCount={5}
+  loop
+  slidesPerPage={2}
+  slidesPerMove={1}
+  spacing="16px"
+  allowMouseDrag
 >
-  <CarouselContent>
-    <CarouselItem>...</CarouselItem>
-    <CarouselItem>...</CarouselItem>
-    <CarouselItem>...</CarouselItem>
-  </CarouselContent>
+  ...
 </Carousel>
 ```
 
-## API
+### Autoplay
 
-Use a state and the `setApi` props to get an instance of the carousel API.
+Use the `autoplay` prop to enable automatic slide advancement.
+
+<ComponentPreview styleName="ark-nova" name="carousel-plugin" />
+
+```tsx showLineNumbers /autoplay/
+<Carousel slideCount={5} autoplay={{ delay: 2000 }}>
+  ...
+</Carousel>
+```
+
+### API
+
+Use the `useCarouselApi` hook with `CarouselRootProvider` for programmatic control.
 
 <ComponentPreview
   styleName="ark-nova"
@@ -190,72 +195,45 @@ Use a state and the `setApi` props to get an instance of the carousel API.
   previewClassName="sm:h-[32rem]"
 />
 
-```tsx showLineNumbers {1,4,22}
-import { type CarouselApi } from "@/components/ui/carousel"
+```tsx showLineNumbers
+import { CarouselRootProvider, useCarouselApi } from "@/components/ui/carousel"
 
 export function Example() {
-  const [api, setApi] = React.useState<CarouselApi>()
-  const [current, setCurrent] = React.useState(0)
-  const [count, setCount] = React.useState(0)
-
-  React.useEffect(() => {
-    if (!api) {
-      return
-    }
-
-    setCount(api.scrollSnapList().length)
-    setCurrent(api.selectedScrollSnap() + 1)
-
-    api.on("select", () => {
-      setCurrent(api.selectedScrollSnap() + 1)
-    })
-  }, [api])
+  const carousel = useCarouselApi({ slideCount: 5 })
 
   return (
-    <Carousel setApi={setApi}>
-      <CarouselContent>
-        <CarouselItem>...</CarouselItem>
-        <CarouselItem>...</CarouselItem>
-        <CarouselItem>...</CarouselItem>
-      </CarouselContent>
-    </Carousel>
+    <CarouselRootProvider value={carousel}>
+      <CarouselControl>
+        <CarouselPrevious />
+        <CarouselContent>
+          <CarouselItem index={0}>...</CarouselItem>
+        </CarouselContent>
+        <CarouselNext />
+      </CarouselControl>
+      <p>Slide {carousel.page + 1} of {carousel.pageSnapPoints.length}</p>
+    </CarouselRootProvider>
   )
 }
 ```
 
-## Events
+### Indicators
 
-You can listen to events using the api instance from `setApi`.
+Use `CarouselIndicatorGroup` and `CarouselIndicator` for dot pagination.
 
-```tsx showLineNumbers {1,4-14,16}
-import { type CarouselApi } from "@/components/ui/carousel"
-
-export function Example() {
-  const [api, setApi] = React.useState<CarouselApi>()
-
-  React.useEffect(() => {
-    if (!api) {
-      return
-    }
-
-    api.on("select", () => {
-      // Do something on select.
-    })
-  }, [api])
-
-  return (
-    <Carousel setApi={setApi}>
-      <CarouselContent>
-        <CarouselItem>...</CarouselItem>
-        <CarouselItem>...</CarouselItem>
-        <CarouselItem>...</CarouselItem>
-      </CarouselContent>
-    </Carousel>
-  )
-}
+```tsx showLineNumbers
+<Carousel slideCount={5}>
+  <CarouselContent>...</CarouselContent>
+  <CarouselControl>
+    <CarouselPrevious />
+    <CarouselIndicatorGroup>
+      {Array.from({ length: 5 }).map((_, index) => (
+        <CarouselIndicator key={index} index={index} />
+      ))}
+    </CarouselIndicatorGroup>
+    <CarouselNext />
+  </CarouselControl>
+</Carousel>
 ```
-
-See the [Ark UI Carousel docs](https://ark-ui.com/docs/components/carousel) for more information on using events.
 
 ## RTL
 
@@ -268,27 +246,20 @@ To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl)
   previewClassName="h-80 sm:h-[32rem]"
 />
 
-When localizing the carousel for RTL languages, you need to set the `direction` option in the `opts` prop to match the text direction. This ensures the carousel scrolls in the correct direction.
+Pass the `dir` prop to the `Carousel` component for RTL support.
 
-```tsx showLineNumbers {2-5}
-<Carousel
-  dir={dir}
-  opts={{
-    direction: dir,
-  }}
->
-  <CarouselContent>
-    <CarouselItem>...</CarouselItem>
-    <CarouselItem>...</CarouselItem>
-    <CarouselItem>...</CarouselItem>
-  </CarouselContent>
-  <CarouselPrevious className="rtl:rotate-180" />
-  <CarouselNext className="rtl:rotate-180" />
+```tsx showLineNumbers /dir/
+<Carousel slideCount={5} dir="rtl">
+  <CarouselControl>
+    <CarouselPrevious />
+    <CarouselContent>
+      <CarouselItem index={0}>...</CarouselItem>
+    </CarouselContent>
+    <CarouselNext />
+  </CarouselControl>
 </Carousel>
 ```
 
-The `direction` option accepts `"ltr"` or `"rtl"` and should match the `dir` prop value. You may also want to rotate the navigation buttons using the `rtl:rotate-180` class to ensure they point in the correct direction.
-
 ## API Reference
 
-See the [Ark UI Carousel docs](https://ark-ui.com/docs/components/carousel#api-reference) for more information on props.
+See the [Ark UI Carousel](https://ark-ui.com/docs/components/carousel#api-reference) documentation for the full API reference.

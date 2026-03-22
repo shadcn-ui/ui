@@ -7,7 +7,10 @@
       "Bash(cat:*)",
       "WebSearch",
       "WebFetch(domain:github.com)",
-      "Bash(git rm:*)"
+      "Bash(git rm:*)",
+      "Bash(grep -rn \"defaultMonth\\\\|captionLayout\\\\|disabled=\" /Users/lope/Desktop/open-source/shadcn/ui/apps/v4/examples/ark/calendar-*.tsx /Users/lope/Desktop/open-source/shadcn/ui/apps/v4/examples/ark/date-picker-*.tsx)",
+      "Bash(find /Users/lope/Desktop/open-source/shadcn/ui/apps/v4/examples/ark/ui -name field* -o -name input-group*)",
+      "Bash(grep -rn \"defaultMonth\\\\|captionLayout\\\\|react-day-picker\\\\|date-fns\" /Users/lope/Desktop/open-source/shadcn/ui/apps/v4/examples/ark/calendar-*.tsx)"
     ],
     "deny": []
   }

@@ -50,11 +50,7 @@ export function CarouselRtl() {
   }
 
   return (
-    <Carousel
-      slideCount={5}
-      dir={dir}
-      className="w-full max-w-xs"
-    >
+    <Carousel slideCount={5} dir={dir} className="w-full max-w-xs">
       <CarouselControl>
         <CarouselPrevious />
         <CarouselContent>

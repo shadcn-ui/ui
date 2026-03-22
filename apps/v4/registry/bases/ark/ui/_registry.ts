@@ -106,6 +106,18 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "date-picker",
+    type: "registry:ui",
+    dependencies: ["@ark-ui/react", "@internationalized/date"],
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "ui/date-picker.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "card",
     type: "registry:ui",
     files: [

@@ -10,12 +10,13 @@ import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 const Carousel = React.forwardRef<
   React.ElementRef<typeof ArkCarousel.Root>,
   React.ComponentPropsWithoutRef<typeof ArkCarousel.Root>
->(({ className, spacing = "1rem", loop = false, ...props }, ref) => (
+>(({ className, spacing = "1rem", loop = false, page, ...props }, ref) => (
   <ArkCarousel.Root
     ref={ref}
     data-slot="carousel"
     spacing={spacing}
     loop={loop}
+    page={page}
     className={cn(
       "relative flex w-full flex-col gap-4 data-[orientation=vertical]:flex-row",
       className

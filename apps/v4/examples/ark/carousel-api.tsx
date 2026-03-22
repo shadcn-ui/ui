@@ -22,7 +22,7 @@ export default function CarouselDApiDemo() {
         <CarouselControl>
           <CarouselPrevious />
           <CarouselContent>
-            {Array.from({ length: SLIDE_COUNT }).map((_, index) => (
+            {Array.from({ length: carousel.pageSnapPoints.length }).map((_, index) => (
               <CarouselItem key={index} index={index}>
                 <Card className="m-px">
                   <CardContent className="flex aspect-square items-center justify-center p-6">
@@ -36,7 +36,7 @@ export default function CarouselDApiDemo() {
         </CarouselControl>
       </CarouselRootProvider>
       <div className="py-2 text-center text-sm text-muted-foreground">
-        Slide {carousel.page + 1} of {SLIDE_COUNT}
+        Slide {carousel.page + 1} of {carousel.pageSnapPoints.length}
       </div>
     </div>
   )
