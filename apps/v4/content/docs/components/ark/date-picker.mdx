@@ -12,52 +12,126 @@ links:
 
 ## Installation
 
-The Date Picker is built using a composition of the `<Popover />` and the `<Calendar />` components.
+<CodeTabs>
 
-See installation instructions for the [Popover](/docs/components/ark/popover#installation) and the [Calendar](/docs/components/ark/calendar#installation) components.
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add date-picker
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react @internationalized/date
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="date-picker"
+  title="components/ui/date-picker.tsx"
+  styleName="ark-nova"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
 
 ## Usage
 
-```tsx showLineNumbers title="components/example-date-picker.tsx"
-"use client"
-
-import * as React from "react"
-import { format } from "date-fns"
-import { Calendar as CalendarIcon } from "lucide-react"
-
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
-import { Calendar } from "@/components/ui/calendar"
+```tsx showLineNumbers
 import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover"
-
-export function DatePickerDemo() {
-  const [date, setDate] = React.useState<Date>()
-
-  return (
-    <Popover>
-      <PopoverTrigger asChild>
-        <Button
-          variant="outline"
-          data-empty={!date}
-          className="w-[280px] justify-start text-left font-normal data-[empty=true]:text-muted-foreground"
-        >
-          <CalendarIcon />
-          {date ? format(date, "PPP") : <span>Pick a date</span>}
-        </Button>
-      </PopoverTrigger>
-      <PopoverContent className="w-auto p-0">
-        <Calendar mode="single" selected={date} onSelect={setDate} />
-      </PopoverContent>
-    </Popover>
-  )
-}
+  DatePicker,
+  DatePickerContent,
+  DatePickerContext,
+  DatePickerControl,
+  DatePickerInput,
+  DatePickerNextTrigger,
+  DatePickerPositioner,
+  DatePickerPrevTrigger,
+  DatePickerRangeText,
+  DatePickerTable,
+  DatePickerTableBody,
+  DatePickerTableCell,
+  DatePickerTableCellTrigger,
+  DatePickerTableHead,
+  DatePickerTableHeader,
+  DatePickerTableRow,
+  DatePickerTrigger,
+  DatePickerView,
+  DatePickerViewControl,
+  DatePickerViewTrigger,
+} from "@/components/ui/date-picker"
 ```
 
-The Calendar component is built on [Ark UI's DatePicker](https://ark-ui.com/docs/components/date-picker), which uses [`@internationalized/date`](https://react-spectrum.adobe.com/internationalized/date/) for date handling.
+```tsx showLineNumbers
+<DatePicker>
+  <DatePickerControl>
+    <DatePickerInput />
+    <DatePickerTrigger />
+  </DatePickerControl>
+  <DatePickerPositioner>
+    <DatePickerContent>
+      <DatePickerView view="day">
+        <DatePickerContext>
+          {(api) => (
+            <>
+              <DatePickerViewControl>
+                <DatePickerPrevTrigger />
+                <DatePickerViewTrigger>
+                  <DatePickerRangeText />
+                </DatePickerViewTrigger>
+                <DatePickerNextTrigger />
+              </DatePickerViewControl>
+              <DatePickerTable>
+                <DatePickerTableHead>
+                  <DatePickerTableRow>
+                    {api.weekDays.map((day, i) => (
+                      <DatePickerTableHeader key={i}>
+                        {day.short}
+                      </DatePickerTableHeader>
+                    ))}
+                  </DatePickerTableRow>
+                </DatePickerTableHead>
+                <DatePickerTableBody>
+                  {api.weeks.map((week, i) => (
+                    <DatePickerTableRow key={i}>
+                      {week.map((day, j) => (
+                        <DatePickerTableCell key={j} value={day}>
+                          <DatePickerTableCellTrigger>
+                            {day.day}
+                          </DatePickerTableCellTrigger>
+                        </DatePickerTableCell>
+                      ))}
+                    </DatePickerTableRow>
+                  ))}
+                </DatePickerTableBody>
+              </DatePickerTable>
+            </>
+          )}
+        </DatePickerContext>
+      </DatePickerView>
+    </DatePickerContent>
+  </DatePickerPositioner>
+</DatePicker>
+```
+
+The Date Picker is built on [Ark UI's DatePicker](https://ark-ui.com/docs/components/date-picker), which uses [`@internationalized/date`](https://react-spectrum.adobe.com/internationalized/date/) for date handling.
 
 ## Examples
 
@@ -69,19 +143,19 @@ A basic date picker component.
 
 ### Range Picker
 
-A date picker component for selecting a range of dates.
+A date picker component for selecting a range of dates. Use `selectionMode="range"` with two inputs.
 
 <ComponentPreview styleName="ark-nova" name="date-picker-range" />
 
 ### Date of Birth
 
-A date picker component for selecting a date of birth. This component includes a dropdown caption layout for date and month selection.
+A date picker with month and year dropdowns using `DatePickerMonthSelect` and `DatePickerYearSelect`.
 
 <ComponentPreview styleName="ark-nova" name="date-picker-dob" />
 
 ### Input
 
-A date picker component with an input field for selecting a date.
+A date picker component with an input field for typing dates directly.
 
 <ComponentPreview styleName="ark-nova" name="date-picker-input" />
 
@@ -106,3 +180,15 @@ To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl)
   name="date-picker-rtl"
   direction="rtl"
 />
+
+Pass the `locale` and `dir` props for RTL languages:
+
+```tsx showLineNumbers
+<DatePicker locale="ar-SA" dir="rtl">
+  ...
+</DatePicker>
+```
+
+## API Reference
+
+See the [Ark UI DatePicker](https://ark-ui.com/docs/components/date-picker#api-reference) documentation for the full API reference.

@@ -12,7 +12,7 @@ export default function CarouselPlugin() {
   return (
     <Carousel
       slideCount={5}
-      autoplay
+      autoplay={{ delay: 2000 }}
       className="w-full max-w-xs"
     >
       <CarouselControl>
