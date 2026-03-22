@@ -1,9 +1,8 @@
 "use client"
 
 import * as React from "react"
-import { RadioGroup as RadioGroupPrimitive } from "radix-ui"
-
 import { cn } from "@/examples/radix/lib/utils"
+import { RadioGroup as RadioGroupPrimitive } from "radix-ui"
 
 function RadioGroup({
   className,
@@ -35,7 +34,7 @@ function RadioGroupItem({
         data-slot="radio-group-indicator"
         className="flex size-4 items-center justify-center"
       >
-        <span className="absolute top-1/2 start-1/2 size-2 -translate-x-1/2 rtl:translate-x-1/2 -translate-y-1/2 rounded-full bg-primary-foreground" />
+        <span className="absolute start-1/2 top-1/2 size-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary-foreground rtl:translate-x-1/2" />
       </RadioGroupPrimitive.Indicator>
     </RadioGroupPrimitive.Item>
   )
