@@ -16,7 +16,7 @@ const SelectControl = React.forwardRef<
   <SelectPrimitive.Control
     ref={ref}
     data-slot="select-control"
-    className={cn("relative flex w-full items-center gap-2", className)}
+    className={cn("relative flex w-full items-center", className)}
     {...props}
   >
     {children}
@@ -32,7 +32,12 @@ const SelectTrigger = React.forwardRef<
     ref={ref}
     data-slot="select-trigger"
     className={cn(
-      "flex w-full items-center gap-2 rounded-md border border-input bg-transparent py-2 pr-10 pl-3 text-sm transition-colors select-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-1 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 data-invalid:border-destructive data-invalid:focus-visible:border-destructive data-invalid:focus-visible:ring-destructive/20 data-placeholder:text-muted-foreground data-placeholder-shown:text-muted-foreground data-[size=default]:h-8 data-[size=sm]:h-7 data-[size=sm]:rounded-[min(var(--radius-md),10px)] *:data-[slot=select-value]:flex *:data-[slot=select-value]:gap-1.5 dark:bg-input/30 dark:hover:bg-input/50 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 data-disabled:opacity-50 [&_svg]:size-4 [&_svg]:shrink-0 [&_svg]:text-muted-foreground [&_svg:not([class*='size-'])]:size-4",
+      "flex h-9 w-full items-center gap-2 rounded-md border border-input bg-transparent py-2 pr-10 pl-3 text-sm shadow-xs transition-[border-color,box-shadow] duration-150 ease-in-out outline-none",
+      "data-placeholder-shown:text-muted-foreground",
+      "hover:border-ring/50",
+      "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/20",
+      "data-disabled:cursor-not-allowed data-disabled:opacity-50",
+      "data-invalid:border-destructive data-invalid:focus-visible:ring-destructive/20",
       className
     )}
     {...props}
@@ -42,6 +47,24 @@ const SelectTrigger = React.forwardRef<
 ))
 SelectTrigger.displayName = "SelectTrigger"
 
+const SelectIndicatorGroup = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentProps<typeof ark.div>
+>(({ className, children, ...props }, ref) => (
+  <ark.div
+    ref={ref}
+    data-slot="select-indicator-group"
+    className={cn(
+      "pointer-events-none absolute inset-y-0 right-0 flex items-center gap-1 px-2.5",
+      className
+    )}
+    {...props}
+  >
+    {children}
+  </ark.div>
+))
+SelectIndicatorGroup.displayName = "SelectIndicatorGroup"
+
 const SelectIndicator = React.forwardRef<
   HTMLDivElement,
   React.ComponentProps<typeof SelectPrimitive.Indicator>
@@ -50,7 +73,7 @@ const SelectIndicator = React.forwardRef<
     ref={ref}
     data-slot="select-indicator"
     className={cn(
-      "flex shrink-0 items-center justify-center text-muted-foreground [&_svg]:size-4",
+      "flex shrink-0 items-center justify-center text-muted-foreground/60 [&_svg]:size-4",
       className
     )}
     {...props}
@@ -71,7 +94,7 @@ const SelectClearTrigger = React.forwardRef<
     ref={ref}
     data-slot="select-clear-trigger"
     className={cn(
-      "pointer-events-auto flex shrink-0 items-center justify-center text-muted-foreground transition-colors hover:text-foreground [&_svg]:size-4",
+      "pointer-events-auto flex shrink-0 items-center justify-center rounded-sm text-muted-foreground/60 transition-colors hover:text-foreground [&_svg]:size-3.5",
       className
     )}
     {...props}
@@ -104,7 +127,7 @@ const SelectPositioner = React.forwardRef<
   <SelectPrimitive.Positioner
     ref={ref}
     data-slot="select-positioner"
-    className={cn("z-50", className)}
+    className={cn("z-50 outline-none", className)}
     {...props}
   />
 ))
@@ -118,7 +141,12 @@ const SelectContent = React.forwardRef<
     ref={ref}
     data-slot="select-content"
     className={cn(
-      "flex max-h-[min(var(--available-height,300px),300px)] min-w-(--reference-width) flex-col gap-1 overflow-y-auto rounded-md border bg-popover p-1 text-popover-foreground shadow-md ring-1 ring-foreground/10 duration-100 outline-none data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95",
+      "flex flex-col gap-0.5 rounded-lg border bg-popover p-1 text-popover-foreground shadow-lg outline-none",
+      "min-w-(--reference-width)",
+      "max-h-[min(var(--available-height,300px),300px)] overflow-y-auto",
+      "origin-(--transform-origin)",
+      "data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-[98%]",
+      "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-[98%]",
       className
     )}
     {...props}
@@ -138,7 +166,10 @@ const SelectItem = React.forwardRef<
     ref={ref}
     data-slot="select-item"
     className={cn(
-      "relative flex items-center gap-2 rounded-sm px-2 py-1.5 pr-8 text-sm select-none focus:bg-accent focus:text-accent-foreground not-data-[variant=destructive]:focus:**:text-accent-foreground data-highlighted:bg-accent data-highlighted:text-accent-foreground data-disabled:opacity-50 [&_svg:not([class*='size-'])]:size-4 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2",
+      "relative flex w-full cursor-default items-center gap-2 rounded-md px-2 py-1.5 pr-8 text-sm outline-none select-none",
+      "data-highlighted:bg-accent data-highlighted:text-accent-foreground",
+      "data-[state=checked]:font-medium",
+      "data-disabled:pointer-events-none data-disabled:opacity-50",
       className
     )}
     {...props}
@@ -148,12 +179,7 @@ const SelectItem = React.forwardRef<
 ))
 SelectItem.displayName = "SelectItem"
 
-// --- ItemText ---
-
 const SelectItemText = SelectPrimitive.ItemText
-SelectItemText.displayName = "SelectItemText"
-
-// --- ItemIndicator ---
 
 const SelectItemIndicator = React.forwardRef<
   HTMLDivElement,
@@ -163,7 +189,7 @@ const SelectItemIndicator = React.forwardRef<
     ref={ref}
     data-slot="select-item-indicator"
     className={cn(
-      "pointer-events-none absolute right-2 flex size-4 shrink-0 items-center justify-center",
+      "absolute right-2 flex size-4 items-center justify-center",
       className
     )}
     {...props}
@@ -176,8 +202,6 @@ const SelectItemIndicator = React.forwardRef<
 ))
 SelectItemIndicator.displayName = "SelectItemIndicator"
 
-// --- ItemGroup ---
-
 const SelectItemGroup = React.forwardRef<
   HTMLDivElement,
   React.ComponentProps<typeof SelectPrimitive.ItemGroup>
@@ -185,13 +209,11 @@ const SelectItemGroup = React.forwardRef<
   <SelectPrimitive.ItemGroup
     ref={ref}
     data-slot="select-item-group"
-    className={cn("scroll-my-1 p-1", className)}
+    className={cn("flex flex-col", className)}
     {...props}
   />
 ))
 SelectItemGroup.displayName = "SelectItemGroup"
-
-// --- ItemGroupLabel ---
 
 const SelectItemGroupLabel = React.forwardRef<
   HTMLDivElement,
@@ -200,13 +222,14 @@ const SelectItemGroupLabel = React.forwardRef<
   <SelectPrimitive.ItemGroupLabel
     ref={ref}
     data-slot="select-item-group-label"
-    className={cn("px-1.5 py-1 text-xs text-muted-foreground", className)}
+    className={cn(
+      "px-2 py-1.5 text-xs font-semibold tracking-wide text-muted-foreground",
+      className
+    )}
     {...props}
   />
 ))
 SelectItemGroupLabel.displayName = "SelectItemGroupLabel"
-
-// --- Label ---
 
 const SelectLabel = React.forwardRef<
   HTMLLabelElement,
@@ -215,13 +238,14 @@ const SelectLabel = React.forwardRef<
   <SelectPrimitive.Label
     ref={ref}
     data-slot="select-label"
-    className={cn("px-1.5 py-1 text-xs text-muted-foreground", className)}
+    className={cn(
+      "text-sm leading-none font-medium select-none data-disabled:opacity-50",
+      className
+    )}
     {...props}
   />
 ))
 SelectLabel.displayName = "SelectLabel"
-
-// --- Separator ---
 
 const SelectSeparator = React.forwardRef<
   HTMLDivElement,
@@ -235,24 +259,6 @@ const SelectSeparator = React.forwardRef<
   />
 ))
 SelectSeparator.displayName = "SelectSeparator"
-
-const SelectIndicatorGroup = React.forwardRef<
-  HTMLDivElement,
-  React.ComponentProps<typeof ark.div>
->(({ className, children, ...props }, ref) => (
-  <ark.div
-    ref={ref}
-    data-slot="select-indicator-group"
-    className={cn(
-      "pointer-events-none absolute inset-y-0 right-0 flex items-center gap-1 px-3",
-      className
-    )}
-    {...props}
-  >
-    {children}
-  </ark.div>
-))
-SelectIndicatorGroup.displayName = "SelectIndicatorGroup"
 
 const SelectContext = SelectPrimitive.Context
 const SelectRootProvider = SelectPrimitive.RootProvider

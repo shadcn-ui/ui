@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/examples/ark/ui-rtl/card"
 import {
   Carousel,
   CarouselContent,
+  CarouselControl,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
@@ -52,25 +53,27 @@ export function CarouselRtl() {
     <Carousel
       slideCount={5}
       dir={dir}
-      className="w-full max-w-48 sm:max-w-xs"
+      className="w-full max-w-xs"
     >
-      <CarouselContent>
-        {Array.from({ length: 5 }).map((_, index) => (
-          <CarouselItem key={index} index={index}>
-            <div className="p-1">
-              <Card dir={dir}>
-                <CardContent className="flex aspect-square items-center justify-center p-6">
-                  <span className="text-4xl font-semibold">
-                    {formatNumber(index + 1)}
-                  </span>
-                </CardContent>
-              </Card>
-            </div>
-          </CarouselItem>
-        ))}
-      </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
+      <CarouselControl>
+        <CarouselPrevious />
+        <CarouselContent>
+          {Array.from({ length: 5 }).map((_, index) => (
+            <CarouselItem key={index} index={index}>
+              <div className="p-1">
+                <Card dir={dir}>
+                  <CardContent className="flex aspect-square items-center justify-center p-6">
+                    <span className="text-4xl font-semibold">
+                      {formatNumber(index + 1)}
+                    </span>
+                  </CardContent>
+                </Card>
+              </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselNext />
+      </CarouselControl>
     </Carousel>
   )
 }
