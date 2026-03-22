@@ -35,9 +35,9 @@ export function ItemImage() {
       <ItemGroup className="gap-4">
         {music.map((song) => (
           <Item
+            href="#"
             key={song.title}
             variant="outline"
-            render={<a href="#" />}
             role="listitem"
           >
             <ItemMedia variant="image">
@@ -63,5 +63,5 @@ export function ItemImage() {
         ))}
       </ItemGroup>
     </div>
-  )
+  );
 }

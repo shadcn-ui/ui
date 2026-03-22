@@ -65,7 +65,7 @@ export default function AppSidebar() {
               <SidebarMenu>
                 {projects.map((project) => (
                   <SidebarMenuItem key={project.name}>
-                    <SidebarMenuButton render={<a href={project.url} />}>
+                    <SidebarMenuButton href={project.url}>
                       <project.icon />
                       <span>{project.name}</span>
                     </SidebarMenuButton>
@@ -89,5 +89,5 @@ export default function AppSidebar() {
         </header>
       </SidebarInset>
     </SidebarProvider>
-  )
+  );
 }

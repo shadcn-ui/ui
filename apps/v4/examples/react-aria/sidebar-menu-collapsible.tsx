@@ -163,18 +163,16 @@ export default function AppSidebar() {
                     defaultExpanded={index === 0}
                   >
                     <SidebarMenuItem>
-                      <CollapsibleTrigger
-                        render={(props) => <SidebarMenuButton {...props} />}
-                      >
+                      <SidebarMenuButton slot="trigger">
                         <span>{item.title}</span>
                         <ChevronRightIcon className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-90" />
-                      </CollapsibleTrigger>
+                      </SidebarMenuButton>
                       <CollapsibleContent>
                         <SidebarMenuSub>
                           {item.items.map((subItem, subIndex) => (
                             <SidebarMenuSubItem key={subIndex}>
                               <SidebarMenuSubButton
-                                render={<a href={subItem.url} />}
+                                href={subItem.url}
                               >
                                 <span>{subItem.title}</span>
                               </SidebarMenuSubButton>
@@ -191,5 +189,5 @@ export default function AppSidebar() {
         </SidebarContent>
       </Sidebar>
     </SidebarProvider>
-  )
+  );
 }

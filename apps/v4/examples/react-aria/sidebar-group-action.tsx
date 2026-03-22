@@ -37,19 +37,19 @@ export default function AppSidebar() {
             <SidebarGroupContent>
               <SidebarMenu>
                 <SidebarMenuItem>
-                  <SidebarMenuButton render={<a href="#" />}>
+                  <SidebarMenuButton href="#">
                     <FrameIcon />
                     <span>Design Engineering</span>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
                 <SidebarMenuItem>
-                  <SidebarMenuButton render={<a href="#" />}>
+                  <SidebarMenuButton href="#">
                     <PieChartIcon />
                     <span>Sales & Marketing</span>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
                 <SidebarMenuItem>
-                  <SidebarMenuButton render={<a href="#" />}>
+                  <SidebarMenuButton href="#">
                     <MapIcon />
                     <span>Travel</span>
                   </SidebarMenuButton>
@@ -60,5 +60,5 @@ export default function AppSidebar() {
         </SidebarContent>
       </Sidebar>
     </SidebarProvider>
-  )
+  );
 }

@@ -17,6 +17,7 @@ import {
   type Language,
   type Translations,
 } from "@/components/language-selector"
+import { type Key } from "react-aria-components"
 
 const translations: Translations = {
   en: {
@@ -71,7 +72,7 @@ const translations: Translations = {
 
 export function SelectRtl() {
   const { dir, t, language } = useTranslation(translations, "ar")
-  const [selectedFruit, setSelectedFruit] = React.useState<string | null>(null)
+  const [selectedFruit, setSelectedFruit] = React.useState<Key | null>(null)
 
   const fruits = [
     { label: t.apple, value: "apple" },

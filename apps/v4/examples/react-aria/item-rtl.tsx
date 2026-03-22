@@ -63,7 +63,7 @@ export function ItemRtl() {
           </Button>
         </ItemActions>
       </Item>
-      <Item variant="outline" size="sm" render={<a href="#" />} dir={dir}>
+      <Item href="#" variant="outline" size="sm" dir={dir}>
         <ItemMedia>
           <BadgeCheckIcon className="size-5" />
         </ItemMedia>
@@ -75,5 +75,5 @@ export function ItemRtl() {
         </ItemActions>
       </Item>
     </div>
-  )
+  );
 }

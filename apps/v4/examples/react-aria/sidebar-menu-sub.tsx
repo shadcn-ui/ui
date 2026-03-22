@@ -152,14 +152,14 @@ export default function AppSidebar() {
               <SidebarMenu>
                 {items.map((item, index) => (
                   <SidebarMenuItem key={index}>
-                    <SidebarMenuButton render={<a href={item.url} />}>
+                    <SidebarMenuButton href={item.url}>
                       <span>{item.title}</span>
                     </SidebarMenuButton>
                     <SidebarMenuSub>
                       {item.items.map((subItem, subIndex) => (
                         <SidebarMenuSubItem key={subIndex}>
                           <SidebarMenuSubButton
-                            render={<a href={subItem.url} />}
+                            href={subItem.url}
                           >
                             <span>{subItem.title}</span>
                           </SidebarMenuSubButton>
@@ -174,5 +174,5 @@ export default function AppSidebar() {
         </SidebarContent>
       </Sidebar>
     </SidebarProvider>
-  )
+  );
 }

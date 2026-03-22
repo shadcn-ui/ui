@@ -25,7 +25,7 @@ export function ItemDemo() {
           </Button>
         </ItemActions>
       </Item>
-      <Item variant="outline" size="sm" render={<a href="#" />}>
+      <Item href="#" variant="outline" size="sm">
         <ItemMedia>
           <BadgeCheckIcon className="size-5" />
         </ItemMedia>
@@ -37,5 +37,5 @@ export function ItemDemo() {
         </ItemActions>
       </Item>
     </div>
-  )
+  );
 }

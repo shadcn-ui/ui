@@ -295,20 +295,16 @@ function NavMain({
             className="group/collapsible"
           >
             <SidebarMenuItem>
-              <CollapsibleTrigger
-                render={(props) => (
-                  <SidebarMenuButton {...props} tooltip={item.title} />
-                )}
-              >
+              <SidebarMenuButton slot="trigger" tooltip={item.title}>
                 {item.icon && <item.icon />}
                 <span>{item.title}</span>
                 <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
-              </CollapsibleTrigger>
+              </SidebarMenuButton>
               <CollapsibleContent>
                 <SidebarMenuSub>
                   {item.items?.map((subItem) => (
                     <SidebarMenuSubItem key={subItem.title}>
-                      <SidebarMenuSubButton render={<a href={subItem.url} />}>
+                      <SidebarMenuSubButton href={subItem.url}>
                         <span>{subItem.title}</span>
                       </SidebarMenuSubButton>
                     </SidebarMenuSubItem>
@@ -320,7 +316,7 @@ function NavMain({
         ))}
       </SidebarMenu>
     </SidebarGroup>
-  )
+  );
 }
 
 function NavProjects({
@@ -340,7 +336,7 @@ function NavProjects({
       <SidebarMenu>
         {projects.map((item) => (
           <SidebarMenuItem key={item.name}>
-            <SidebarMenuButton render={<a href={item.url} />}>
+            <SidebarMenuButton href={item.url}>
               <item.icon />
               <span>{item.name}</span>
             </SidebarMenuButton>
@@ -379,7 +375,7 @@ function NavProjects({
         </SidebarMenuItem>
       </SidebarMenu>
     </SidebarGroup>
-  )
+  );
 }
 
 function NavUser({
