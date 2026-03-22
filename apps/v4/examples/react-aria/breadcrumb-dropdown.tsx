@@ -1,12 +1,7 @@
+"use client"
+
 import Link from "next/link"
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/examples/react-aria/ui/breadcrumb"
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage } from "@/examples/react-aria/ui/breadcrumb";
 import {
   DropdownMenu,
   DropdownMenuGroup,
@@ -20,11 +15,9 @@ export function BreadcrumbDropdown() {
     <Breadcrumb>
       <BreadcrumbList>
         <BreadcrumbItem>
-          <BreadcrumbLink render={<Link href="/" />}>Home</BreadcrumbLink>
+          <BreadcrumbLink href="/" render={props => 'href' in props ? <Link {...props} /> : <span {...props} />}>Home</BreadcrumbLink>
         </BreadcrumbItem>
-        <BreadcrumbSeparator>
-          <DotIcon />
-        </BreadcrumbSeparator>
+
         <BreadcrumbItem>
           <DropdownMenuTrigger>
             <button className="flex items-center gap-1">
@@ -40,13 +33,11 @@ export function BreadcrumbDropdown() {
             </DropdownMenu>
           </DropdownMenuTrigger>
         </BreadcrumbItem>
-        <BreadcrumbSeparator>
-          <DotIcon />
-        </BreadcrumbSeparator>
+
         <BreadcrumbItem>
           <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
         </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>
-  )
+  );
 }

@@ -1,4 +1,5 @@
-import Link from "next/link"
+"use client"
+
 import {
   Breadcrumb,
   BreadcrumbEllipsis,
@@ -6,8 +7,7 @@ import {
   BreadcrumbLink,
   BreadcrumbList,
   BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/examples/react-aria/ui/breadcrumb"
+} from "@/examples/react-aria/ui/breadcrumb";
 import { Button } from "@/examples/react-aria/ui/button"
 import {
   DropdownMenu,
@@ -21,9 +21,9 @@ export function BreadcrumbDemo() {
     <Breadcrumb>
       <BreadcrumbList>
         <BreadcrumbItem>
-          <BreadcrumbLink render={<a href="#" />}>Home</BreadcrumbLink>
+          <BreadcrumbLink href="#">Home</BreadcrumbLink>
         </BreadcrumbItem>
-        <BreadcrumbSeparator />
+
         <BreadcrumbItem>
           <DropdownMenuTrigger>
             <Button size="icon-sm" variant="ghost">
@@ -39,15 +39,15 @@ export function BreadcrumbDemo() {
             </DropdownMenu>
           </DropdownMenuTrigger>
         </BreadcrumbItem>
-        <BreadcrumbSeparator />
+
         <BreadcrumbItem>
-          <BreadcrumbLink render={<a href="#" />}>Components</BreadcrumbLink>
+          <BreadcrumbLink href="#">Components</BreadcrumbLink>
         </BreadcrumbItem>
-        <BreadcrumbSeparator />
+
         <BreadcrumbItem>
           <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
         </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>
-  )
+  );
 }

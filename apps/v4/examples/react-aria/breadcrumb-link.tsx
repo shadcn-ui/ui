@@ -1,33 +1,28 @@
+"use client"
+
 import Link from "next/link"
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/examples/react-aria/ui/breadcrumb"
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage } from "@/examples/react-aria/ui/breadcrumb";
 
 export function BreadcrumbLinkDemo() {
   return (
     <Breadcrumb>
       <BreadcrumbList>
         <BreadcrumbItem>
-          <BreadcrumbLink render={<Link href="#link-component" />}>
+          <BreadcrumbLink href="#link-component" render={props => 'href' in props ? <Link {...props} /> : <span {...props} />}>
             Home
           </BreadcrumbLink>
         </BreadcrumbItem>
-        <BreadcrumbSeparator />
+
         <BreadcrumbItem>
-          <BreadcrumbLink render={<Link href="#link-component" />}>
+          <BreadcrumbLink href="#link-component" render={props => 'href' in props ? <Link {...props} /> : <span {...props} />}>
             Components
           </BreadcrumbLink>
         </BreadcrumbItem>
-        <BreadcrumbSeparator />
+
         <BreadcrumbItem>
           <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
         </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>
-  )
+  );
 }
