@@ -40,7 +40,10 @@
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:4000/docs/components/ark/drawer)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:4000/docs/components/ark/checkbox)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:4000/docs/components/ark/switch)",
-      "Bash(find /Users/lope/Desktop/open-source -path */shipbase* -name switch*)"
+      "Bash(find /Users/lope/Desktop/open-source -path */shipbase* -name switch*)",
+      "Bash(grep -A10 Portal /Users/lope/Desktop/open-source/shadcn/ui/node_modules/.pnpm/radix-ui@1*/node_modules/radix-ui/dist/components/portal.js)",
+      "Bash(grep -rn createPortal /Users/lope/Desktop/open-source/shadcn/ui/node_modules/.pnpm/radix-ui@*/node_modules/radix-ui/dist/)",
+      "Bash(find /Users/lope/Desktop/open-source/shadcn/ui/node_modules/.pnpm -path */radix-ui/dist/*portal*)"
     ],
     "deny": []
   }

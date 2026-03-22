@@ -5,12 +5,15 @@ import {
   Select,
   SelectContent,
   SelectControl,
+  SelectHiddenSelect,
   SelectIndicator,
+  SelectIndicatorGroup,
   SelectItem,
   SelectItemGroup,
   SelectItemGroupLabel,
   SelectItemIndicator,
   SelectItemText,
+  SelectPositioner,
   SelectTrigger,
   SelectValue,
 } from "@/examples/ark/ui/select"
@@ -74,26 +77,33 @@ const collection = createListCollection({
 
 export function SelectScrollable() {
   return (
-    <Select collection={collection}>
-      <SelectControl className="w-full max-w-64">
+    <Select collection={collection} className="w-full max-w-64">
+      <SelectHiddenSelect />
+      <SelectControl>
         <SelectTrigger>
           <SelectValue placeholder="Select a timezone" />
         </SelectTrigger>
-        <SelectIndicator />
+        <SelectIndicatorGroup>
+          <SelectIndicator />
+        </SelectIndicatorGroup>
       </SelectControl>
-      <SelectContent>
-        {collection.group().map(([type, group]) => (
-          <SelectItemGroup key={type}>
-            <SelectItemGroupLabel>{type}</SelectItemGroupLabel>
-            {group.map((item) => (
-              <SelectItem key={item.value} item={item}>
-                <SelectItemText>{item.label}</SelectItemText>
-                <SelectItemIndicator />
-              </SelectItem>
+      
+        <SelectPositioner>
+          <SelectContent>
+            {collection.group().map(([type, group]) => (
+              <SelectItemGroup key={type}>
+                <SelectItemGroupLabel>{type}</SelectItemGroupLabel>
+                {group.map((item) => (
+                  <SelectItem key={item.value} item={item}>
+                    <SelectItemText>{item.label}</SelectItemText>
+                    <SelectItemIndicator />
+                  </SelectItem>
+                ))}
+              </SelectItemGroup>
             ))}
-          </SelectItemGroup>
-        ))}
-      </SelectContent>
+          </SelectContent>
+        </SelectPositioner>
+      
     </Select>
   )
 }

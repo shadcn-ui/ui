@@ -1,17 +1,19 @@
 "use client"
 
-import { Portal } from "@ark-ui/react/portal"
 import {
   createListCollection,
   Select,
   SelectContent,
   SelectControl,
+  SelectHiddenSelect,
   SelectIndicator,
+  SelectIndicatorGroup,
   SelectItem,
   SelectItemGroup,
   SelectItemGroupLabel,
   SelectItemIndicator,
   SelectItemText,
+  SelectPositioner,
   SelectSeparator,
   SelectTrigger,
   SelectValue,
@@ -36,31 +38,36 @@ const groupLabels: Record<string, string> = {
 
 export function SelectGroups() {
   return (
-    <Select collection={collection}>
-      <SelectControl className="w-full max-w-48">
+    <Select collection={collection} className="w-full max-w-48">
+      <SelectHiddenSelect />
+      <SelectControl>
         <SelectTrigger>
-          <SelectValue placeholder="Select a fruit" />
+          <SelectValue placeholder="Select" />
         </SelectTrigger>
-        <SelectIndicator />
+        <SelectIndicatorGroup>
+          <SelectIndicator />
+        </SelectIndicatorGroup>
       </SelectControl>
-      <Portal>
-        <SelectContent>
-        {collection.group().map(([type, group], index) => (
-          <SelectItemGroup key={type}>
-            {index > 0 && <SelectSeparator />}
-            <SelectItemGroupLabel>
-              {groupLabels[type] ?? type}
-            </SelectItemGroupLabel>
-            {group.map((item) => (
-              <SelectItem key={item.value} item={item}>
-                <SelectItemText>{item.label}</SelectItemText>
-                <SelectItemIndicator />
-              </SelectItem>
+      
+        <SelectPositioner>
+          <SelectContent>
+            {collection.group().map(([type, group], index) => (
+              <SelectItemGroup key={type}>
+                {index > 0 && <SelectSeparator />}
+                <SelectItemGroupLabel>
+                  {groupLabels[type] ?? type}
+                </SelectItemGroupLabel>
+                {group.map((item) => (
+                  <SelectItem key={item.value} item={item}>
+                    <SelectItemText>{item.label}</SelectItemText>
+                    <SelectItemIndicator />
+                  </SelectItem>
+                ))}
+              </SelectItemGroup>
             ))}
-          </SelectItemGroup>
-        ))}
-      </SelectContent>
-      </Portal>
+          </SelectContent>
+        </SelectPositioner>
+      
     </Select>
   )
 }

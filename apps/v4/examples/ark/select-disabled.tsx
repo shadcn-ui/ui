@@ -1,15 +1,19 @@
 "use client"
 
+
 import {
   createListCollection,
   Select,
   SelectContent,
   SelectControl,
+  SelectHiddenSelect,
   SelectIndicator,
+  SelectIndicatorGroup,
   SelectItem,
   SelectItemGroup,
   SelectItemIndicator,
   SelectItemText,
+  SelectPositioner,
   SelectTrigger,
   SelectValue,
 } from "@/examples/ark/ui/select"
@@ -26,23 +30,28 @@ const fruits = createListCollection({
 
 export function SelectDisabled() {
   return (
-    <Select collection={fruits} disabled>
-      <SelectControl className="w-full max-w-48">
+    <Select collection={fruits} disabled className="w-full max-w-48">
+      <SelectHiddenSelect />
+      <SelectControl>
         <SelectTrigger>
           <SelectValue placeholder="Select a fruit" />
         </SelectTrigger>
-        <SelectIndicator />
+        <SelectIndicatorGroup>
+          <SelectIndicator />
+        </SelectIndicatorGroup>
       </SelectControl>
-      <SelectContent>
-        <SelectItemGroup>
-          {fruits.items.map((item) => (
-            <SelectItem key={item.value} item={item}>
-              <SelectItemText>{item.label}</SelectItemText>
-              <SelectItemIndicator />
-            </SelectItem>
-          ))}
-        </SelectItemGroup>
-      </SelectContent>
+      <SelectPositioner>
+        <SelectContent>
+          <SelectItemGroup>
+            {fruits.items.map((item) => (
+              <SelectItem key={item.value} item={item}>
+                <SelectItemText>{item.label}</SelectItemText>
+                <SelectItemIndicator />
+              </SelectItem>
+            ))}
+          </SelectItemGroup>
+        </SelectContent>
+      </SelectPositioner>
     </Select>
   )
 }

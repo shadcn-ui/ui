@@ -57,27 +57,58 @@ npm install @ark-ui/react
 
 ```tsx showLineNumbers
 import {
+  createListCollection,
   Select,
+  SelectClearTrigger,
   SelectContent,
-  SelectGroup,
+  SelectControl,
+  SelectHiddenSelect,
+  SelectIndicator,
+  SelectIndicatorGroup,
   SelectItem,
+  SelectItemGroup,
+  SelectItemGroupLabel,
+  SelectItemIndicator,
+  SelectItemText,
+  SelectPositioner,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
 ```
 
 ```tsx showLineNumbers
-<Select>
-  <SelectTrigger className="w-[180px]">
-    <SelectValue placeholder="Theme" />
-  </SelectTrigger>
-  <SelectContent>
-    <SelectGroup>
-      <SelectItem value="light">Light</SelectItem>
-      <SelectItem value="dark">Dark</SelectItem>
-      <SelectItem value="system">System</SelectItem>
-    </SelectGroup>
-  </SelectContent>
+const frameworks = createListCollection({
+  items: [
+    { label: "React", value: "react" },
+    { label: "Vue", value: "vue" },
+    { label: "Svelte", value: "svelte" },
+  ],
+})
+
+<Select collection={frameworks}>
+  <SelectHiddenSelect />
+  <SelectControl>
+    <SelectTrigger>
+      <SelectValue placeholder="Select a framework" />
+    </SelectTrigger>
+    <SelectIndicatorGroup>
+      <SelectClearTrigger />
+      <SelectIndicator />
+    </SelectIndicatorGroup>
+  </SelectControl>
+  <SelectPositioner>
+    <SelectContent>
+      <SelectItemGroup>
+        <SelectItemGroupLabel>Frameworks</SelectItemGroupLabel>
+        {frameworks.items.map((item) => (
+          <SelectItem key={item.value} item={item}>
+            <SelectItemText>{item.label}</SelectItemText>
+            <SelectItemIndicator />
+          </SelectItem>
+        ))}
+      </SelectItemGroup>
+    </SelectContent>
+  </SelectPositioner>
 </Select>
 ```
 
@@ -85,13 +116,13 @@ import {
 
 ### Align Item With Trigger
 
-Use the `position` prop on `SelectContent` to control alignment. When `position="item-aligned"` (default), the popup positions so the selected item appears over the trigger. When `position="popper"`, the popup aligns to the trigger edge.
+Use the `positioning` prop on `Select` to control alignment.
 
 <ComponentPreview styleName="ark-nova" name="select-align-item" />
 
 ### Groups
 
-Use `SelectGroup`, `SelectLabel`, and `SelectSeparator` to organize items.
+Use `SelectItemGroup`, `SelectItemGroupLabel` to organize items. Use `groupBy` in `createListCollection` for automatic grouping.
 
 <ComponentPreview styleName="ark-nova" name="select-groups" />
 
@@ -107,15 +138,20 @@ A select with many items that scrolls.
 
 ### Invalid
 
-Add the `data-invalid` attribute to the `Field` component and the `aria-invalid` attribute to the `SelectTrigger` component to show an error state.
+Pass the `invalid` prop to the `Select` root to show an error state.
 
-```tsx showLineNumbers /data-invalid/ /aria-invalid/
-<Field data-invalid>
-  <FieldLabel>Fruit</FieldLabel>
-  <SelectTrigger aria-invalid>
-    <SelectValue />
-  </SelectTrigger>
-</Field>
+```tsx showLineNumbers /invalid/
+<Select collection={items} invalid>
+  <SelectControl>
+    <SelectTrigger>
+      <SelectValue placeholder="Select" />
+    </SelectTrigger>
+    <SelectIndicatorGroup>
+      <SelectIndicator />
+    </SelectIndicatorGroup>
+  </SelectControl>
+  ...
+</Select>
 ```
 
 <ComponentPreview styleName="ark-nova" name="select-invalid" />
