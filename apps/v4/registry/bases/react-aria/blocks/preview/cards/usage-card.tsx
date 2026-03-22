@@ -109,10 +109,10 @@ export function UsageCard() {
         <ItemGroup className="gap-0">
           {items.map((item) => (
             <Item
+              href="#"
               key={item.name}
               size="xs"
               className="px-0 group-hover/item-group:bg-transparent"
-              render={<a href="#" />}
             >
               <ItemMedia variant="icon" className="text-primary">
                 <CircularGauge percentage={item.percentage} />
@@ -130,5 +130,5 @@ export function UsageCard() {
         </ItemGroup>
       </CardContent>
     </Card>
-  )
+  );
 }

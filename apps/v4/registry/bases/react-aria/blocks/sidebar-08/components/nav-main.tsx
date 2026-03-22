@@ -51,13 +51,9 @@ export function NavMain({
             </SidebarMenuButton>
             {item.items?.length ? (
               <>
-                <CollapsibleTrigger
-                  render={(props) => (
-                    <SidebarMenuAction
-                      {...props}
-                      className="aria-expanded:rotate-90"
-                    />
-                  )}
+                <SidebarMenuAction
+                  slot="trigger"
+                  className="aria-expanded:rotate-90"
                 >
                   <IconPlaceholder
                     lucide="ChevronRightIcon"
@@ -67,7 +63,7 @@ export function NavMain({
                     remixicon="RiArrowRightSLine"
                   />
                   <span className="sr-only">Toggle</span>
-                </CollapsibleTrigger>
+                </SidebarMenuAction>
                 <CollapsibleContent>
                   <SidebarMenuSub>
                     {item.items?.map((subItem) => (

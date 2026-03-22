@@ -483,8 +483,8 @@ function SelectInvalid() {
   return (
     <Example title="Invalid">
       <div className="flex flex-col gap-4">
-        <Select aria-label="Fruits" placeholder="Select a fruit">
-          <SelectTrigger aria-invalid="true">
+        <Select aria-label="Fruits" placeholder="Select a fruit" isInvalid>
+          <SelectTrigger>
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
@@ -499,8 +499,8 @@ function SelectInvalid() {
         </Select>
         <Field data-invalid>
           <FieldLabel htmlFor="select-fruit-invalid">Favorite Fruit</FieldLabel>
-          <Select aria-label="Fruits">
-            <SelectTrigger id="select-fruit-invalid" aria-invalid>
+          <Select aria-label="Fruits" isInvalid>
+            <SelectTrigger id="select-fruit-invalid">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -517,7 +517,7 @@ function SelectInvalid() {
         </Field>
       </div>
     </Example>
-  )
+  );
 }
 
 function SelectInline() {

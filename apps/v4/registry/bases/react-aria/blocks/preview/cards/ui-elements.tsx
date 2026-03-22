@@ -136,7 +136,7 @@ export function UIElements() {
               <span className="hidden md:block">Alert Dialog</span>
               <span className="block md:hidden">Dialog</span>
             </Button>
-            <AlertDialogContent size="sm">
+            <AlertDialog size="sm">
               <AlertDialogHeader>
                 <AlertDialogTitle>Allow accessory to connect?</AlertDialogTitle>
                 <AlertDialogDescription>
@@ -148,7 +148,7 @@ export function UIElements() {
                 <AlertDialogCancel>Don&apos;t allow</AlertDialogCancel>
                 <AlertDialogAction>Allow</AlertDialogAction>
               </AlertDialogFooter>
-            </AlertDialogContent>
+            </AlertDialog>
           </AlertDialogTrigger>
           <ButtonGroup>
             <Button variant="outline">Button Group</Button>

@@ -289,8 +289,8 @@ function SelectFields() {
         </Field>
         <Field data-invalid>
           <FieldLabel htmlFor="select-invalid">Invalid Select</FieldLabel>
-          <Select placeholder="This field has an error">
-            <SelectTrigger id="select-invalid" aria-invalid>
+          <Select placeholder="This field has an error" isInvalid>
+            <SelectTrigger id="select-invalid">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -329,7 +329,7 @@ function SelectFields() {
         </Field>
       </FieldGroup>
     </Example>
-  )
+  );
 }
 
 function NativeSelectFields() {
@@ -697,7 +697,7 @@ function SwitchFields() {
               This switch has validation errors.
             </FieldDescription>
           </FieldContent>
-          <Switch id="switch-invalid" aria-invalid />
+          <Switch id="switch-invalid" />
         </Field>
         <Field data-disabled orientation="horizontal">
           <FieldContent>
@@ -712,7 +712,7 @@ function SwitchFields() {
         </Field>
       </FieldGroup>
     </Example>
-  )
+  );
 }
 
 function SliderFields() {

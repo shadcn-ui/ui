@@ -1176,12 +1176,12 @@ function DefaultLinkItems() {
   return (
     <Example title="asChild">
       <ItemGroup>
-        <Item render={<a href="#" />}>
+        <Item href="#">
           <ItemContent>
             <ItemTitle>Title Only (Link)</ItemTitle>
           </ItemContent>
         </Item>
-        <Item render={<a href="#" />}>
+        <Item href="#">
           <ItemContent>
             <ItemTitle>Title + Description (Link)</ItemTitle>
             <ItemDescription>
@@ -1189,7 +1189,7 @@ function DefaultLinkItems() {
             </ItemDescription>
           </ItemContent>
         </Item>
-        <Item render={<a href="#" />}>
+        <Item href="#">
           <ItemMedia variant="icon">
             <IconPlaceholder
               lucide="InboxIcon"
@@ -1203,7 +1203,7 @@ function DefaultLinkItems() {
             <ItemTitle>Media + Title (Link)</ItemTitle>
           </ItemContent>
         </Item>
-        <Item render={<a href="#" />}>
+        <Item href="#">
           <ItemMedia variant="icon">
             <IconPlaceholder
               lucide="InboxIcon"
@@ -1220,7 +1220,7 @@ function DefaultLinkItems() {
             </ItemDescription>
           </ItemContent>
         </Item>
-        <Item render={<a href="#" />}>
+        <Item href="#">
           <ItemContent>
             <ItemTitle>With Actions (Link)</ItemTitle>
             <ItemDescription>
@@ -1235,19 +1235,19 @@ function DefaultLinkItems() {
         </Item>
       </ItemGroup>
     </Example>
-  )
+  );
 }
 
 function OutlineLinkItems() {
   return (
-    <Example title="Outline - asChild">
+    <Example title="Outline - links">
       <ItemGroup>
-        <Item variant="outline" render={<a href="#" />}>
+        <Item href="#" variant="outline">
           <ItemContent>
             <ItemTitle>Title Only (Link)</ItemTitle>
           </ItemContent>
         </Item>
-        <Item variant="outline" render={<a href="#" />}>
+        <Item href="#" variant="outline">
           <ItemContent>
             <ItemTitle>Title + Description (Link)</ItemTitle>
             <ItemDescription>
@@ -1255,7 +1255,7 @@ function OutlineLinkItems() {
             </ItemDescription>
           </ItemContent>
         </Item>
-        <Item variant="outline" render={<a href="#" />}>
+        <Item href="#" variant="outline">
           <ItemMedia variant="icon">
             <IconPlaceholder
               lucide="InboxIcon"
@@ -1269,7 +1269,7 @@ function OutlineLinkItems() {
             <ItemTitle>Media + Title (Link)</ItemTitle>
           </ItemContent>
         </Item>
-        <Item variant="outline" render={<a href="#" />}>
+        <Item href="#" variant="outline">
           <ItemMedia variant="icon">
             <IconPlaceholder
               lucide="InboxIcon"
@@ -1286,7 +1286,7 @@ function OutlineLinkItems() {
             </ItemDescription>
           </ItemContent>
         </Item>
-        <Item variant="outline" render={<a href="#" />}>
+        <Item href="#" variant="outline">
           <ItemContent>
             <ItemTitle>With Actions (Link)</ItemTitle>
             <ItemDescription>
@@ -1301,19 +1301,19 @@ function OutlineLinkItems() {
         </Item>
       </ItemGroup>
     </Example>
-  )
+  );
 }
 
 function MutedLinkItems() {
   return (
     <Example title="Muted - asChild">
       <ItemGroup>
-        <Item variant="muted" render={<a href="#" />}>
+        <Item href="#" variant="muted">
           <ItemContent>
             <ItemTitle>Title Only (Link)</ItemTitle>
           </ItemContent>
         </Item>
-        <Item variant="muted" render={<a href="#" />}>
+        <Item href="#" variant="muted">
           <ItemContent>
             <ItemTitle>Title + Description (Link)</ItemTitle>
             <ItemDescription>
@@ -1321,7 +1321,7 @@ function MutedLinkItems() {
             </ItemDescription>
           </ItemContent>
         </Item>
-        <Item variant="muted" render={<a href="#" />}>
+        <Item href="#" variant="muted">
           <ItemMedia variant="icon">
             <IconPlaceholder
               lucide="InboxIcon"
@@ -1335,7 +1335,7 @@ function MutedLinkItems() {
             <ItemTitle>Media + Title (Link)</ItemTitle>
           </ItemContent>
         </Item>
-        <Item variant="muted" render={<a href="#" />}>
+        <Item href="#" variant="muted">
           <ItemMedia variant="icon">
             <IconPlaceholder
               lucide="InboxIcon"
@@ -1352,7 +1352,7 @@ function MutedLinkItems() {
             </ItemDescription>
           </ItemContent>
         </Item>
-        <Item variant="muted" render={<a href="#" />}>
+        <Item href="#" variant="muted">
           <ItemContent>
             <ItemTitle>With Actions (Link)</ItemTitle>
             <ItemDescription>
@@ -1367,7 +1367,7 @@ function MutedLinkItems() {
         </Item>
       </ItemGroup>
     </Example>
-  )
+  );
 }
 
 function DefaultItemGroup() {

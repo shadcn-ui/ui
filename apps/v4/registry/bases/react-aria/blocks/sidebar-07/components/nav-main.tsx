@@ -42,11 +42,7 @@ export function NavMain({
             className="group/collapsible"
             render={(props) => <SidebarMenuItem {...props} />}
           >
-            <CollapsibleTrigger
-              render={(props) => (
-                <SidebarMenuButton {...props} tooltip={item.title} />
-              )}
-            >
+            <SidebarMenuButton slot="trigger" tooltip={item.title}>
               {item.icon}
               <span>{item.title}</span>
               <IconPlaceholder
@@ -57,7 +53,7 @@ export function NavMain({
                 remixicon="RiArrowRightSLine"
                 className="ml-auto transition-transform duration-200 group-data-open/collapsible:rotate-90"
               />
-            </CollapsibleTrigger>
+            </SidebarMenuButton>
             <CollapsibleContent>
               <SidebarMenuSub>
                 {item.items?.map((subItem) => (

@@ -595,20 +595,19 @@ function FormExample() {
                 <FieldLabel htmlFor="small-form-framework">
                   Framework
                 </FieldLabel>
-                <Combobox items={frameworks}>
+                <Combobox allowsEmptyCollection>
                   <ComboboxInput
                     id="small-form-framework"
                     placeholder="Select a framework"
                     required
                   />
                   <ComboboxContent>
-                    <ComboboxEmpty>No frameworks found.</ComboboxEmpty>
-                    <ComboboxList>
-                      {(item) => (
-                        <ComboboxItem key={item} value={item}>
+                    <ComboboxList renderEmptyState={() => <ComboboxEmpty>No frameworks found.</ComboboxEmpty>}>
+                      {frameworks.map((item) => (
+                        <ComboboxItem key={item} id={item}>
                           {item}
                         </ComboboxItem>
-                      )}
+                      ))}
                     </ComboboxList>
                   </ComboboxContent>
                 </Combobox>
@@ -631,5 +630,5 @@ function FormExample() {
         </CardContent>
       </Card>
     </Example>
-  )
+  );
 }

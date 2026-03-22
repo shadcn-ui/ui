@@ -30,6 +30,7 @@ import {
 } from "@/registry/bases/react-aria/ui/combobox"
 import { Tooltip, TooltipTrigger } from "@/registry/bases/react-aria/ui/tooltip"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
+import { ComboboxChipList } from "@/examples/react-aria/ui/combobox"
 
 // Users available for assignment.
 const users = [
@@ -67,42 +68,30 @@ export function AssignIssue() {
         </CardAction>
       </CardHeader>
       <CardContent>
-        <Combobox
-          multiple
-          autoHighlight
-          items={users}
-          defaultValue={[users[0]]}
-        >
+        <Combobox selectionMode="multiple" defaultValue={[users[0]]} allowsEmptyCollection>
           <ComboboxChips ref={anchor}>
-            <ComboboxValue>
-              {(values) => (
-                <React.Fragment>
-                  {values.map((username: string) => (
-                    <ComboboxChip key={username}>
-                      <Avatar className="size-4">
-                        <AvatarImage
-                          src={`https://github.com/${username}.png`}
-                          alt={username}
-                        />
-                        <AvatarFallback>{username.charAt(0)}</AvatarFallback>
-                      </Avatar>
-                      {username}
-                    </ComboboxChip>
-                  ))}
-                  <ComboboxChipsInput
-                    placeholder={
-                      values.length > 0 ? undefined : "Select a item..."
-                    }
-                  />
-                </React.Fragment>
+            <ComboboxChipList<{username: string}>>
+              {(value) => (
+                <ComboboxChip id={value.username}>
+                  <Avatar className="size-4">
+                    <AvatarImage
+                      src={`https://github.com/${value.username}.png`}
+                      alt={value.username}
+                    />
+                    <AvatarFallback>{value.username.charAt(0)}</AvatarFallback>
+                  </Avatar>
+                  {value.username}
+                </ComboboxChip>
               )}
-            </ComboboxValue>
+            </ComboboxChipList>
+            <ComboboxChipsInput
+              placeholder="Select a item..."
+            />
           </ComboboxChips>
           <ComboboxContent anchor={anchor}>
-            <ComboboxEmpty>No users found.</ComboboxEmpty>
-            <ComboboxList>
-              {(username) => (
-                <ComboboxItem key={username} value={username}>
+            <ComboboxList renderEmptyState={() => <ComboboxEmpty>No users found.</ComboboxEmpty>}>
+              {users.map((username) => (
+                <ComboboxItem key={username} id={username} value={{username}} textValue={username}>
                   <Avatar className="size-5">
                     <AvatarImage
                       src={`https://github.com/${username}.png`}
@@ -112,11 +101,11 @@ export function AssignIssue() {
                   </Avatar>
                   {username}
                 </ComboboxItem>
-              )}
+              ))}
             </ComboboxList>
           </ComboboxContent>
         </Combobox>
       </CardContent>
     </Card>
-  )
+  );
 }

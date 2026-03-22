@@ -199,7 +199,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 className="group/collapsible"
               >
                 <SidebarMenuItem>
-                  <SidebarMenuButton render={<CollapsibleTrigger />}>
+                  <SidebarMenuButton slot="trigger">
                     {item.title}{" "}
                     <IconPlaceholder
                       lucide="PlusIcon"

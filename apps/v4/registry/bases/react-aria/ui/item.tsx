@@ -1,10 +1,11 @@
+"use client"
+
 import * as React from "react"
-import { mergeProps } from "@base-ui/react/merge-props"
-import { useRender } from "@base-ui/react/use-render"
 import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/registry/bases/react-aria/lib/utils"
 import { Separator } from "@/registry/bases/react-aria/ui/separator"
+import { Link as LinkPrimitive, type LinkProps } from "react-aria-components"
 
 function ItemGroup({ className, ...props }: React.ComponentProps<"div">) {
   return (
@@ -60,24 +61,18 @@ function Item({
   className,
   variant = "default",
   size = "default",
-  render,
   ...props
-}: useRender.ComponentProps<"div"> & VariantProps<typeof itemVariants>) {
-  return useRender({
-    defaultTagName: "div",
-    props: mergeProps<"div">(
-      {
-        className: cn(itemVariants({ variant, size, className })),
-      },
-      props
-    ),
-    render,
-    state: {
-      slot: "item",
-      variant,
-      size,
-    },
-  })
+}: Omit<LinkProps, "children"> & React.HTMLAttributes<HTMLElement> & VariantProps<typeof itemVariants>) {
+  const Element = 'href' in props ? LinkPrimitive : 'div';
+  return (
+    <Element
+      data-slot="item"
+      data-variant={variant}
+      data-size={size}
+      className={cn(itemVariants({ variant, size, className }))}
+      {...props}
+    />
+  )
 }
 
 const itemMediaVariants = cva(

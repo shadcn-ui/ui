@@ -1,11 +1,8 @@
 "use client"
 
 import * as React from "react"
-import { mergeProps } from "@base-ui/react/merge-props"
-import { useRender } from "@base-ui/react/use-render"
 import {Button as ButtonPrimitive, type ButtonProps, Link as LinkPrimitive, type LinkProps} from "react-aria-components"
 import { cva, type VariantProps } from "class-variance-authority"
-import { Pressable } from "react-aria-components"
 
 import { useIsMobile } from "@/registry/bases/react-aria/hooks/use-mobile"
 import { cn } from "@/registry/bases/react-aria/lib/utils"

@@ -132,7 +132,7 @@ function Tree({ item }: { item: TreeItem }) {
         className="group/collapsible [&[data-expanded]>button>svg:first-child]:rotate-90"
         defaultExpanded={name === "components" || name === "ui"}
       >
-        <SidebarMenuButton render={<CollapsibleTrigger />}>
+        <SidebarMenuButton slot="trigger">
           <IconPlaceholder
             lucide="ChevronRightIcon"
             tabler="IconChevronRight"
