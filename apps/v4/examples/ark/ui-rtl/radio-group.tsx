@@ -29,7 +29,7 @@ const RadioGroupLabel = React.forwardRef<
   <RadioGroupPrimitive.Label
     ref={ref}
     data-slot="radio-group-label"
-    className={cn(className)}
+    className={cn("text-sm leading-none font-medium select-none", className)}
     {...props}
   />
 ))
@@ -45,7 +45,7 @@ const RadioGroupItem = React.forwardRef<
     ref={ref}
     data-slot="radio-group-item"
     className={cn(
-      "flex size-4 rounded-full border-input focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 aria-invalid:aria-checked:border-primary dark:bg-input/30 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 data-checked:border-primary data-checked:bg-primary data-checked:text-primary-foreground dark:data-checked:bg-primary",
+      "inline-flex items-center gap-2 data-[disabled]:opacity-50",
       className
     )}
     {...props}
@@ -62,7 +62,10 @@ const RadioGroupItemControl = React.forwardRef<
   <RadioGroupPrimitive.ItemControl
     ref={ref}
     data-slot="radio-group-item-control"
-    className={cn(className)}
+    className={cn(
+      "inline-flex size-4 shrink-0 items-center justify-center rounded-full border-input focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 aria-invalid:aria-checked:border-primary dark:bg-input/30 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 data-checked:border-primary data-checked:bg-primary data-checked:text-primary-foreground dark:data-checked:bg-primary",
+      className
+    )}
     {...props}
   />
 ))
@@ -77,7 +80,7 @@ const RadioGroupItemText = React.forwardRef<
   <RadioGroupPrimitive.ItemText
     ref={ref}
     data-slot="radio-group-item-text"
-    className={cn(className)}
+    className={cn("text-sm leading-none select-none", className)}
     {...props}
   />
 ))

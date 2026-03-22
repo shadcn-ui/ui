@@ -1,5 +1,6 @@
 "use client"
 
+import { Portal } from "@ark-ui/react/portal"
 import {
   createListCollection,
   Select,
@@ -42,7 +43,8 @@ export function SelectGroups() {
         </SelectTrigger>
         <SelectIndicator />
       </SelectControl>
-      <SelectContent>
+      <Portal>
+        <SelectContent>
         {collection.group().map(([type, group], index) => (
           <SelectItemGroup key={type}>
             {index > 0 && <SelectSeparator />}
@@ -58,6 +60,7 @@ export function SelectGroups() {
           </SelectItemGroup>
         ))}
       </SelectContent>
+      </Portal>
     </Select>
   )
 }

@@ -16,7 +16,7 @@ const Checkbox = React.forwardRef<
     ref={ref}
     data-slot="checkbox"
     className={cn(
-      "group/checkbox flex size-4 items-center justify-center rounded-[4px] border border-input transition-colors group-has-disabled/field:opacity-50 focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 aria-invalid:aria-checked:border-primary dark:bg-input/30 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 data-checked:border-primary data-checked:bg-primary data-checked:text-primary-foreground dark:data-checked:bg-primary",
+      "group/checkbox inline-flex items-center gap-2 data-[disabled]:opacity-50",
       className
     )}
     {...props}
@@ -33,7 +33,10 @@ const CheckboxControl = React.forwardRef<
   <CheckboxPrimitive.Control
     ref={ref}
     data-slot="checkbox-control"
-    className={cn(className)}
+    className={cn(
+      "inline-flex size-4 shrink-0 items-center justify-center rounded-[4px] border border-input transition-colors group-has-disabled/field:opacity-50 focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 aria-invalid:aria-checked:border-primary dark:bg-input/30 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 data-checked:border-primary data-checked:bg-primary data-checked:text-primary-foreground dark:data-checked:bg-primary",
+      className
+    )}
     {...props}
   />
 ))
@@ -68,7 +71,10 @@ const CheckboxLabel = React.forwardRef<
   <CheckboxPrimitive.Label
     ref={ref}
     data-slot="checkbox-label"
-    className={cn(className)}
+    className={cn(
+      "text-sm leading-none font-medium select-none peer-disabled:opacity-50",
+      className
+    )}
     {...props}
   />
 ))

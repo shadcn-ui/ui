@@ -15,7 +15,7 @@ const Checkbox = React.forwardRef<
   <CheckboxPrimitive.Root
     ref={ref}
     data-slot="checkbox"
-    className={cn("cn-checkbox group/checkbox", className)}
+    className={cn("inline-flex items-center gap-2 data-[disabled]:opacity-50 group/checkbox", className)}
     {...props}
   />
 ))
@@ -30,7 +30,7 @@ const CheckboxControl = React.forwardRef<
   <CheckboxPrimitive.Control
     ref={ref}
     data-slot="checkbox-control"
-    className={cn("cn-checkbox-control", className)}
+    className={cn("cn-checkbox inline-flex shrink-0 items-center justify-center", className)}
     {...props}
   />
 ))
@@ -70,7 +70,7 @@ const CheckboxLabel = React.forwardRef<
   <CheckboxPrimitive.Label
     ref={ref}
     data-slot="checkbox-label"
-    className={cn("cn-checkbox-label", className)}
+    className={cn("text-sm font-medium leading-none select-none peer-disabled:opacity-50", className)}
     {...props}
   />
 ))
