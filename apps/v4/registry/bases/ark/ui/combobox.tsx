@@ -42,7 +42,7 @@ const ComboboxControl = React.forwardRef<
   <ComboboxPrimitive.Control
     ref={ref}
     data-slot="combobox-control"
-    className={cn("cn-combobox-control", className)}
+    className={cn("cn-combobox-control relative flex items-center", className)}
     {...props}
   />
 ))
@@ -57,7 +57,7 @@ const ComboboxInput = React.forwardRef<
   <ComboboxPrimitive.Input
     ref={ref}
     data-slot="combobox-input"
-    className={cn("cn-combobox-input", className)}
+    className={cn("cn-combobox-input flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50", className)}
     {...props}
   />
 ))

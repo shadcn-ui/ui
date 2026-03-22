@@ -8,7 +8,7 @@ import {
 
 export function SwitchInvalid() {
   return (
-    <Switch id="switch-terms" aria-invalid className="max-w-sm">
+    <Switch id="switch-terms" invalid className="max-w-sm">
       <SwitchControl>
         <SwitchThumb />
       </SwitchControl>

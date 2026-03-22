@@ -14,7 +14,7 @@ const Progress = React.forwardRef<
   <ProgressPrimitive.Root
     ref={ref}
     data-slot="progress"
-    className={cn("cn-progress", className)}
+    className={cn("grid grid-cols-[1fr_auto] gap-x-1 gap-y-2 w-full", className)}
     {...props}
   />
 ))
@@ -29,7 +29,7 @@ const ProgressTrack = React.forwardRef<
   <ProgressPrimitive.Track
     ref={ref}
     data-slot="progress-track"
-    className={cn("cn-progress-track", className)}
+    className={cn("cn-progress col-span-full overflow-hidden", className)}
     {...props}
   />
 ))
@@ -44,7 +44,7 @@ const ProgressRange = React.forwardRef<
   <ProgressPrimitive.Range
     ref={ref}
     data-slot="progress-range"
-    className={cn("cn-progress-range", className)}
+    className={cn("cn-progress-indicator h-full rounded-[inherit] transition-all", className)}
     {...props}
   />
 ))
@@ -59,7 +59,7 @@ const ProgressLabel = React.forwardRef<
   <ProgressPrimitive.Label
     ref={ref}
     data-slot="progress-label"
-    className={cn("cn-progress-label", className)}
+    className={cn("cn-progress-label text-sm font-medium", className)}
     {...props}
   />
 ))
@@ -74,7 +74,7 @@ const ProgressValueText = React.forwardRef<
   <ProgressPrimitive.ValueText
     ref={ref}
     data-slot="progress-value-text"
-    className={cn("cn-progress-value-text", className)}
+    className={cn("cn-progress-value text-muted-foreground ml-auto text-sm tabular-nums", className)}
     {...props}
   />
 ))

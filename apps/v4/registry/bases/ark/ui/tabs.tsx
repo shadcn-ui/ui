@@ -20,7 +20,7 @@ const Tabs = React.forwardRef<
 Tabs.displayName = "Tabs"
 
 const tabsListVariants = cva(
-  "cn-tabs-list group/tabs-list inline-flex w-fit items-center justify-center text-muted-foreground group-data-vertical/tabs:h-fit group-data-vertical/tabs:flex-col",
+  "cn-tabs-list relative group/tabs-list inline-flex w-fit items-center justify-center text-muted-foreground group-data-vertical/tabs:h-fit group-data-vertical/tabs:flex-col",
   {
     variants: {
       variant: {
@@ -82,7 +82,7 @@ const TabsIndicator = React.forwardRef<
   <TabsPrimitive.Indicator
     ref={ref}
     data-slot="tabs-indicator"
-    className={cn("cn-tabs-indicator", className)}
+    className={cn("cn-tabs-indicator absolute z-[-1] rounded-md bg-background shadow-xs transition-all duration-200", className)}
     {...props}
   />
 ))

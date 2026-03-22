@@ -29,7 +29,7 @@ const SwitchControl = React.forwardRef<
     ref={ref}
     data-slot="switch-control"
     className={cn(
-      "cn-switch inline-flex shrink-0 cursor-pointer items-center rounded-full border border-transparent transition-colors focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 data-[state=checked]:bg-primary data-[state=unchecked]:bg-input dark:data-[state=unchecked]:bg-input/80 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 data-[size=default]:h-[18.4px] data-[size=default]:w-8 data-[size=sm]:h-3.5 data-[size=sm]:w-6",
+      "inline-flex h-6 w-10 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent p-0.5 transition-colors focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-2 focus-visible:outline-ring data-[state=checked]:bg-primary data-[state=unchecked]:bg-input dark:data-[state=unchecked]:bg-input/80 data-[invalid]:border-destructive data-[invalid]:ring-destructive/20 dark:data-[invalid]:border-destructive/50 dark:data-[invalid]:ring-destructive/40",
       className
     )}
     {...props}
@@ -46,8 +46,7 @@ const SwitchThumb = React.forwardRef<
     ref={ref}
     data-slot="switch-thumb"
     className={cn(
-      "cn-switch-thumb pointer-events-none block rounded-full bg-background shadow-xs ring-0 transition-transform data-[state=checked]:translate-x-[calc(100%-2px)] data-[state=unchecked]:translate-x-0 dark:data-[state=checked]:bg-primary-foreground dark:data-[state=unchecked]:bg-foreground",
-      "size-4",
+      "pointer-events-none block size-5 rounded-full bg-background shadow-xs ring-0 transition-transform data-[state=checked]:translate-x-4 data-[state=unchecked]:translate-x-0 dark:data-[state=checked]:bg-primary-foreground dark:data-[state=unchecked]:bg-foreground",
       className
     )}
     {...props}
@@ -62,7 +61,7 @@ const SwitchLabel = React.forwardRef<
   <SwitchPrimitive.Label
     ref={ref}
     data-slot="switch-label"
-    className={cn("cn-switch-label", className)}
+    className={cn("text-sm font-medium leading-none select-none data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50", className)}
     {...props}
   />
 ))

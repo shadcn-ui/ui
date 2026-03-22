@@ -29,7 +29,7 @@ const RadioGroupLabel = React.forwardRef<
   <RadioGroupPrimitive.Label
     ref={ref}
     data-slot="radio-group-label"
-    className={cn("cn-radio-group-label", className)}
+    className={cn("text-sm font-medium leading-none select-none", className)}
     {...props}
   />
 ))
@@ -44,7 +44,7 @@ const RadioGroupItem = React.forwardRef<
   <RadioGroupPrimitive.Item
     ref={ref}
     data-slot="radio-group-item"
-    className={cn("cn-radio-group-item", className)}
+    className={cn("inline-flex items-center gap-2 data-[disabled]:opacity-50", className)}
     {...props}
   />
 ))
@@ -59,7 +59,7 @@ const RadioGroupItemControl = React.forwardRef<
   <RadioGroupPrimitive.ItemControl
     ref={ref}
     data-slot="radio-group-item-control"
-    className={cn("cn-radio-group-item-control", className)}
+    className={cn("cn-radio-group-item inline-flex shrink-0 items-center justify-center", className)}
     {...props}
   />
 ))
@@ -74,7 +74,7 @@ const RadioGroupItemText = React.forwardRef<
   <RadioGroupPrimitive.ItemText
     ref={ref}
     data-slot="radio-group-item-text"
-    className={cn("cn-radio-group-item-text", className)}
+    className={cn("text-sm leading-none select-none", className)}
     {...props}
   />
 ))

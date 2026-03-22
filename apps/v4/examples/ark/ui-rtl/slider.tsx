@@ -29,7 +29,10 @@ const SliderControl = React.forwardRef<
   <SliderPrimitive.Control
     ref={ref}
     data-slot="slider-control"
-    className={cn(className)}
+    className={cn(
+      "relative flex h-5 items-center data-[orientation=vertical]:h-full data-[orientation=vertical]:w-5 data-[orientation=vertical]:flex-col",
+      className
+    )}
     {...props}
   />
 ))
@@ -45,7 +48,7 @@ const SliderTrack = React.forwardRef<
     ref={ref}
     data-slot="slider-track"
     className={cn(
-      "rounded-full bg-muted data-horizontal:h-1 data-horizontal:w-full data-vertical:h-full data-vertical:w-1",
+      "flex-1 overflow-hidden rounded-full bg-muted data-horizontal:h-1 data-horizontal:w-full data-vertical:h-full data-vertical:w-1",
       className
     )}
     {...props}
@@ -62,7 +65,10 @@ const SliderRange = React.forwardRef<
   <SliderPrimitive.Range
     ref={ref}
     data-slot="slider-range"
-    className={cn("bg-primary", className)}
+    className={cn(
+      "h-full bg-primary data-[orientation=vertical]:w-full",
+      className
+    )}
     {...props}
   />
 ))
@@ -95,7 +101,7 @@ const SliderLabel = React.forwardRef<
   <SliderPrimitive.Label
     ref={ref}
     data-slot="slider-label"
-    className={cn(className)}
+    className={cn("text-sm leading-none font-medium select-none", className)}
     {...props}
   />
 ))
@@ -110,7 +116,7 @@ const SliderValueText = React.forwardRef<
   <SliderPrimitive.ValueText
     ref={ref}
     data-slot="slider-value-text"
-    className={cn(className)}
+    className={cn("text-sm font-medium tabular-nums", className)}
     {...props}
   />
 ))
@@ -125,7 +131,10 @@ const SliderMarkerGroup = React.forwardRef<
   <SliderPrimitive.MarkerGroup
     ref={ref}
     data-slot="slider-marker-group"
-    className={cn(className)}
+    className={cn(
+      "mt-2 flex justify-between data-[orientation=vertical]:ms-2 data-[orientation=vertical]:mt-0 data-[orientation=vertical]:h-full data-[orientation=vertical]:flex-col",
+      className
+    )}
     {...props}
   />
 ))
@@ -140,7 +149,7 @@ const SliderMarker = React.forwardRef<
   <SliderPrimitive.Marker
     ref={ref}
     data-slot="slider-marker"
-    className={cn(className)}
+    className={cn("relative text-xs text-muted-foreground", className)}
     {...props}
   />
 ))
