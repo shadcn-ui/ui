@@ -7,7 +7,7 @@ import {
   BreadcrumbLink,
   BreadcrumbList,
   BreadcrumbPage,
-} from "@/examples/react-aria/ui/breadcrumb";
+} from "@/examples/react-aria/ui/breadcrumb"
 import { Button } from "@/examples/react-aria/ui/button"
 import {
   DropdownMenu,
@@ -49,5 +49,5 @@ export function BreadcrumbDemo() {
         </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>
-  );
+  )
 }

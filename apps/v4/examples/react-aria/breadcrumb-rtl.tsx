@@ -1,7 +1,13 @@
 "use client"
 
 import Link from "next/link"
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage } from "@/examples/react-aria/ui-rtl/breadcrumb";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+} from "@/examples/react-aria/ui-rtl/breadcrumb"
 import {
   DropdownMenu,
   DropdownMenuGroup,
@@ -58,7 +64,14 @@ export function BreadcrumbRtl() {
     <Breadcrumb dir={dir}>
       <BreadcrumbList>
         <BreadcrumbItem>
-          <BreadcrumbLink href="/" render={props => 'href' in props ? <Link {...props} /> : <span {...props} />}>{t.home}</BreadcrumbLink>
+          <BreadcrumbLink
+            href="/"
+            render={(props) =>
+              "href" in props ? <Link {...props} /> : <span {...props} />
+            }
+          >
+            {t.home}
+          </BreadcrumbLink>
         </BreadcrumbItem>
 
         <BreadcrumbItem>
@@ -86,5 +99,5 @@ export function BreadcrumbRtl() {
         </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>
-  );
+  )
 }

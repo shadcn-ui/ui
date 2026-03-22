@@ -8,14 +8,21 @@ import {
   BreadcrumbLink,
   BreadcrumbList,
   BreadcrumbPage,
-} from "@/examples/react-aria/ui/breadcrumb";
+} from "@/examples/react-aria/ui/breadcrumb"
 
 export function BreadcrumbEllipsisDemo() {
   return (
     <Breadcrumb>
       <BreadcrumbList>
         <BreadcrumbItem>
-          <BreadcrumbLink href="/" render={props => 'href' in props ? <Link {...props} /> : <span {...props} />}>Home</BreadcrumbLink>
+          <BreadcrumbLink
+            href="/"
+            render={(props) =>
+              "href" in props ? <Link {...props} /> : <span {...props} />
+            }
+          >
+            Home
+          </BreadcrumbLink>
         </BreadcrumbItem>
 
         <BreadcrumbItem>
@@ -23,7 +30,12 @@ export function BreadcrumbEllipsisDemo() {
         </BreadcrumbItem>
 
         <BreadcrumbItem>
-          <BreadcrumbLink href="/docs/components" render={props => 'href' in props ? <Link {...props} /> : <span {...props} />}>
+          <BreadcrumbLink
+            href="/docs/components"
+            render={(props) =>
+              "href" in props ? <Link {...props} /> : <span {...props} />
+            }
+          >
             Components
           </BreadcrumbLink>
         </BreadcrumbItem>
@@ -33,5 +45,5 @@ export function BreadcrumbEllipsisDemo() {
         </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>
-  );
+  )
 }

@@ -1,6 +1,9 @@
 "use client"
 
 import * as React from "react"
+import { cn } from "@/examples/react-aria/lib/utils"
+import { cva } from "class-variance-authority"
+import { CheckIcon, ChevronRightIcon } from "lucide-react"
 import {
   composeRenderProps,
   Header as HeaderPrimitive,
@@ -14,9 +17,6 @@ import {
   type MenuItemProps as MenuItemPrimitiveProps,
   type MenuSectionProps as MenuSectionPrimitiveProps,
 } from "react-aria-components"
-
-import { cn } from "@/registry/bases/react-aria/lib/utils"
-import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 type DropdownMenuSide =
   | "top"
@@ -80,7 +80,7 @@ function DropdownMenu({
       offset={sideOffset}
       crossOffset={alignOffset}
       className={cn(
-        "cn-dropdown-menu-content cn-dropdown-menu-content-logical cn-menu-target z-50 max-h-(--available-height) w-(--trigger-width) origin-(--trigger-anchor-point) overflow-x-hidden overflow-y-auto outline-none data-closed:overflow-hidden",
+        "cn-menu-target z-50 max-h-(--available-height) w-(--trigger-width) min-w-32 origin-(--trigger-anchor-point) overflow-x-hidden overflow-y-auto rounded-lg bg-popover p-1 text-popover-foreground shadow-md ring-1 ring-foreground/10 duration-100 outline-none data-[side=bottom]:slide-in-from-top-2 data-[side=inline-end]:slide-in-from-left-2 data-[side=inline-start]:slide-in-from-right-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:overflow-hidden data-closed:fade-out-0 data-closed:zoom-out-95",
         className
       )}
       render={(renderProps, state) => (
@@ -121,11 +121,27 @@ function DropdownMenuLabel({
     <HeaderPrimitive
       data-slot="dropdown-menu-label"
       data-inset={inset}
-      className={cn("cn-dropdown-menu-label", className)}
+      className={cn(
+        "px-1.5 py-1 text-xs font-medium text-muted-foreground data-inset:pl-7",
+        className
+      )}
       {...props}
     />
   )
 }
+
+const dropdownMenuItemVariants = cva(
+  "group/dropdown-menu-item relative flex cursor-default items-center outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+  {
+    variants: {
+      selectionMode: {
+        none: "cn-dropdown-menu-item",
+        single: "cn-dropdown-menu-radio-item",
+        multiple: "cn-dropdown-menu-checkbox-item",
+      },
+    },
+  }
+)
 
 function DropdownMenuItem({
   className,
@@ -144,33 +160,17 @@ function DropdownMenuItem({
       data-variant={variant}
       textValue={typeof children === "string" ? children : props.textValue}
       className={({ selectionMode }) =>
-        cn(
-          selectionMode === "none"
-            ? "cn-dropdown-menu-item"
-            : selectionMode === "single"
-              ? "cn-dropdown-menu-radio-item"
-              : "cn-dropdown-menu-checkbox-item",
-          "group/dropdown-menu-item relative flex cursor-default items-center outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
-          className
-        )
+        cn(dropdownMenuItemVariants({ selectionMode, className }))
       }
       {...props}
     >
       {composeRenderProps(children, (children, { isSelected }) => (
         <>
           <span
-            className="cn-dropdown-menu-item-indicator pointer-events-none"
+            className="pointer-events-none absolute right-2 flex items-center justify-center"
             data-slot="dropdown-menu-checkbox-item-indicator"
           >
-            {isSelected ? (
-              <IconPlaceholder
-                lucide="CheckIcon"
-                tabler="IconCheck"
-                hugeicons="Tick02Icon"
-                phosphor="CheckIcon"
-                remixicon="RiCheckLine"
-              />
-            ) : null}
+            {isSelected ? <CheckIcon /> : null}
           </span>
           {children}
         </>
@@ -199,7 +199,7 @@ function DropdownMenuSubTrigger({
       data-inset={inset}
       textValue={typeof children === "string" ? children : props.textValue}
       className={cn(
-        "cn-dropdown-menu-sub-trigger flex cursor-default items-center outline-hidden select-none data-open:bg-accent data-open:text-accent-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0",
+        "flex cursor-default items-center gap-1.5 rounded-md px-1.5 py-1 text-sm outline-hidden select-none focus:bg-accent focus:text-accent-foreground not-data-[variant=destructive]:focus:**:text-accent-foreground data-inset:pl-7 data-open:bg-accent data-open:text-accent-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
         className
       )}
       {...props}
@@ -207,14 +207,7 @@ function DropdownMenuSubTrigger({
       {composeRenderProps(children, (children) => (
         <>
           {children}
-          <IconPlaceholder
-            lucide="ChevronRightIcon"
-            tabler="IconChevronRight"
-            hugeicons="ArrowRight01Icon"
-            phosphor="CaretRightIcon"
-            remixicon="RiArrowRightSLine"
-            className="cn-rtl-flip ml-auto"
-          />
+          <ChevronRightIcon className="cn-rtl-flip ml-auto" />
         </>
       ))}
     </MenuItemPrimitive>
@@ -232,7 +225,10 @@ function DropdownMenuSubContent({
   return (
     <DropdownMenu
       data-slot="dropdown-menu-sub-content"
-      className={cn("cn-dropdown-menu-sub-content w-auto", className)}
+      className={cn(
+        "w-auto min-w-[96px] rounded-lg bg-popover p-1 text-popover-foreground shadow-lg ring-1 ring-foreground/10 duration-100 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95",
+        className
+      )}
       align={align}
       alignOffset={alignOffset}
       side={side}
@@ -249,7 +245,7 @@ function DropdownMenuSeparator({
   return (
     <SeparatorPrimitive
       data-slot="dropdown-menu-separator"
-      className={cn("cn-dropdown-menu-separator", className)}
+      className={cn("-mx-1 my-1 h-px bg-border", className)}
       {...props}
     />
   )
@@ -262,7 +258,10 @@ function DropdownMenuShortcut({
   return (
     <span
       data-slot="dropdown-menu-shortcut"
-      className={cn("cn-dropdown-menu-shortcut", className)}
+      className={cn(
+        "ml-auto text-xs tracking-widest text-muted-foreground group-focus/dropdown-menu-item:text-accent-foreground",
+        className
+      )}
       {...props}
     />
   )

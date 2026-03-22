@@ -1,4 +1,10 @@
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage } from "@/examples/react-aria/ui/breadcrumb";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+} from "@/examples/react-aria/ui/breadcrumb"
 
 export function BreadcrumbBasic() {
   return (
@@ -17,5 +23,5 @@ export function BreadcrumbBasic() {
         </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>
-  );
+  )
 }
