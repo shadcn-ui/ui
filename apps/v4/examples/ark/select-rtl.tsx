@@ -6,12 +6,15 @@ import {
   Select,
   SelectContent,
   SelectControl,
+  SelectHiddenSelect,
   SelectIndicator,
+  SelectIndicatorGroup,
   SelectItem,
   SelectItemGroup,
   SelectItemGroupLabel,
   SelectItemIndicator,
   SelectItemText,
+  SelectPositioner,
   SelectSeparator,
   SelectTrigger,
   SelectValue,
@@ -113,34 +116,45 @@ export function SelectRtl() {
       onValueChange={(details: SelectValueChangeDetails) =>
         setSelectedFruit(details.value)
       }
+      className="w-32"
     >
-      <SelectControl className="w-32" dir={dir}>
+      <SelectHiddenSelect />
+      <SelectControl dir={dir}>
         <SelectTrigger>
           <SelectValue placeholder={t.selectFruit} />
         </SelectTrigger>
-        <SelectIndicator />
+        <SelectIndicatorGroup>
+          <SelectIndicator />
+        </SelectIndicatorGroup>
       </SelectControl>
-      <SelectContent dir={dir} data-lang={dir === "rtl" ? language : undefined}>
-        <SelectItemGroup>
-          <SelectItemGroupLabel>{t.fruits}</SelectItemGroupLabel>
-          {fruits.map((item) => (
-            <SelectItem key={item.value} item={item}>
-              <SelectItemText>{item.label}</SelectItemText>
-              <SelectItemIndicator />
-            </SelectItem>
-          ))}
-        </SelectItemGroup>
-        <SelectSeparator />
-        <SelectItemGroup>
-          <SelectItemGroupLabel>{t.vegetables}</SelectItemGroupLabel>
-          {vegetables.map((item) => (
-            <SelectItem key={item.value} item={item}>
-              <SelectItemText>{item.label}</SelectItemText>
-              <SelectItemIndicator />
-            </SelectItem>
-          ))}
-        </SelectItemGroup>
-      </SelectContent>
+      
+        <SelectPositioner>
+          <SelectContent
+            dir={dir}
+            data-lang={dir === "rtl" ? language : undefined}
+          >
+            <SelectItemGroup>
+              <SelectItemGroupLabel>{t.fruits}</SelectItemGroupLabel>
+              {fruits.map((item) => (
+                <SelectItem key={item.value} item={item}>
+                  <SelectItemText>{item.label}</SelectItemText>
+                  <SelectItemIndicator />
+                </SelectItem>
+              ))}
+            </SelectItemGroup>
+            <SelectSeparator />
+            <SelectItemGroup>
+              <SelectItemGroupLabel>{t.vegetables}</SelectItemGroupLabel>
+              {vegetables.map((item) => (
+                <SelectItem key={item.value} item={item}>
+                  <SelectItemText>{item.label}</SelectItemText>
+                  <SelectItemIndicator />
+                </SelectItem>
+              ))}
+            </SelectItemGroup>
+          </SelectContent>
+        </SelectPositioner>
+      
     </Select>
   )
 }

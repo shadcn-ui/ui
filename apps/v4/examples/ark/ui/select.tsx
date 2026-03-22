@@ -91,10 +91,7 @@ const SelectValue = React.forwardRef<
   <SelectPrimitive.ValueText
     ref={ref}
     data-slot="select-value"
-    className={cn(
-      "flex-1 overflow-hidden text-left text-ellipsis whitespace-nowrap",
-      className
-    )}
+    className={cn("line-clamp-1 flex-1 text-left", className)}
     {...props}
   />
 ))
@@ -121,7 +118,7 @@ const SelectContent = React.forwardRef<
     ref={ref}
     data-slot="select-content"
     className={cn(
-      "flex max-h-[min(var(--available-height,300px),300px)] min-w-[var(--reference-width)] flex-col gap-1 overflow-y-auto rounded-md border bg-popover p-1 text-popover-foreground shadow-md ring-1 ring-foreground/10 duration-100 outline-none data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95",
+      "flex max-h-[min(var(--available-height,300px),300px)] min-w-(--reference-width) flex-col gap-1 overflow-y-auto rounded-md border bg-popover p-1 text-popover-foreground shadow-md ring-1 ring-foreground/10 duration-100 outline-none data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95",
       className
     )}
     {...props}
@@ -131,11 +128,7 @@ const SelectContent = React.forwardRef<
 ))
 SelectContent.displayName = "SelectContent"
 
-// --- HiddenSelect ---
-
 const SelectHiddenSelect = SelectPrimitive.HiddenSelect
-
-// --- Item ---
 
 const SelectItem = React.forwardRef<
   HTMLDivElement,
@@ -243,6 +236,24 @@ const SelectSeparator = React.forwardRef<
 ))
 SelectSeparator.displayName = "SelectSeparator"
 
+const SelectIndicatorGroup = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentProps<typeof ark.div>
+>(({ className, children, ...props }, ref) => (
+  <ark.div
+    ref={ref}
+    data-slot="select-indicator-group"
+    className={cn(
+      "pointer-events-none absolute inset-y-0 right-0 flex items-center gap-1 px-3",
+      className
+    )}
+    {...props}
+  >
+    {children}
+  </ark.div>
+))
+SelectIndicatorGroup.displayName = "SelectIndicatorGroup"
+
 const SelectContext = SelectPrimitive.Context
 const SelectRootProvider = SelectPrimitive.RootProvider
 
@@ -263,6 +274,7 @@ export {
   SelectItemGroupLabel,
   SelectLabel,
   SelectSeparator,
+  SelectIndicatorGroup,
   SelectContext,
   SelectRootProvider,
 }

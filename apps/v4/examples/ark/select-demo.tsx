@@ -1,6 +1,5 @@
 "use client"
 
-import { Portal } from "@ark-ui/react/portal"
 import {
   createListCollection,
   Select,
@@ -9,6 +8,7 @@ import {
   SelectControl,
   SelectHiddenSelect,
   SelectIndicator,
+  SelectIndicatorGroup,
   SelectItem,
   SelectItemGroup,
   SelectItemGroupLabel,
@@ -32,31 +32,29 @@ const fruits = createListCollection({
 export function SelectDemo() {
   return (
     <Select collection={fruits} className="w-full max-w-48">
+      <SelectHiddenSelect />
       <SelectControl>
         <SelectTrigger>
           <SelectValue placeholder="Select a fruit" />
         </SelectTrigger>
-        <div className="pointer-events-none absolute top-1/2 right-3 flex -translate-y-1/2 items-center gap-2">
+        <SelectIndicatorGroup>
           <SelectClearTrigger />
           <SelectIndicator />
-        </div>
+        </SelectIndicatorGroup>
       </SelectControl>
-      <Portal>
-        <SelectPositioner>
-          <SelectContent>
-            <SelectItemGroup>
-              <SelectItemGroupLabel>Fruits</SelectItemGroupLabel>
-              {fruits.items.map((item) => (
-                <SelectItem key={item.value} item={item}>
-                  <SelectItemText>{item.label}</SelectItemText>
-                  <SelectItemIndicator />
-                </SelectItem>
-              ))}
-            </SelectItemGroup>
-          </SelectContent>
-        </SelectPositioner>
-      </Portal>
-      <SelectHiddenSelect />
+      <SelectPositioner>
+        <SelectContent>
+          <SelectItemGroup>
+            <SelectItemGroupLabel>Fruits</SelectItemGroupLabel>
+            {fruits.items.map((item) => (
+              <SelectItem key={item.value} item={item}>
+                <SelectItemText>{item.label}</SelectItemText>
+                <SelectItemIndicator />
+              </SelectItem>
+            ))}
+          </SelectItemGroup>
+        </SelectContent>
+      </SelectPositioner>
     </Select>
   )
 }

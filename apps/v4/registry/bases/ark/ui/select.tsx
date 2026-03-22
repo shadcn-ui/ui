@@ -98,7 +98,7 @@ const SelectValue = React.forwardRef<
   <SelectPrimitive.ValueText
     ref={ref}
     data-slot="select-value"
-    className={cn("flex-1 overflow-hidden text-ellipsis whitespace-nowrap text-left", className)}
+    className={cn("flex-1 text-left line-clamp-1", className)}
     {...props}
   />
 ))
@@ -132,11 +132,7 @@ const SelectContent = React.forwardRef<
 ))
 SelectContent.displayName = "SelectContent"
 
-// --- HiddenSelect ---
-
 const SelectHiddenSelect = SelectPrimitive.HiddenSelect
-
-// --- Item ---
 
 const SelectItem = React.forwardRef<
   HTMLDivElement,
@@ -243,6 +239,24 @@ const SelectSeparator = React.forwardRef<
 ))
 SelectSeparator.displayName = "SelectSeparator"
 
+const SelectIndicatorGroup = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentProps<typeof ark.div>
+>(({ className, children, ...props }, ref) => (
+  <ark.div
+    ref={ref}
+    data-slot="select-indicator-group"
+    className={cn(
+      "pointer-events-none absolute inset-y-0 right-0 flex items-center gap-1 px-3",
+      className
+    )}
+    {...props}
+  >
+    {children}
+  </ark.div>
+))
+SelectIndicatorGroup.displayName = "SelectIndicatorGroup"
+
 const SelectContext = SelectPrimitive.Context
 const SelectRootProvider = SelectPrimitive.RootProvider
 
@@ -263,6 +277,7 @@ export {
   SelectItemGroupLabel,
   SelectLabel,
   SelectSeparator,
+  SelectIndicatorGroup,
   SelectContext,
   SelectRootProvider,
 }

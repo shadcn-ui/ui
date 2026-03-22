@@ -6,11 +6,14 @@ import {
   Select,
   SelectContent,
   SelectControl,
+  SelectHiddenSelect,
   SelectIndicator,
+  SelectIndicatorGroup,
   SelectItem,
   SelectItemGroup,
   SelectItemIndicator,
   SelectItemText,
+  SelectPositioner,
   SelectTrigger,
   SelectValue,
 } from "@/examples/ark/ui/select"
@@ -27,23 +30,30 @@ export function SelectInvalid() {
   return (
     <Field data-invalid className="w-full max-w-48">
       <FieldLabel>Fruit</FieldLabel>
-      <Select collection={fruits}>
+      <Select collection={fruits} invalid>
+        <SelectHiddenSelect />
         <SelectControl>
-          <SelectTrigger aria-invalid>
+          <SelectTrigger>
             <SelectValue placeholder="Select a fruit" />
           </SelectTrigger>
-          <SelectIndicator />
+          <SelectIndicatorGroup>
+            <SelectIndicator />
+          </SelectIndicatorGroup>
         </SelectControl>
-        <SelectContent>
-          <SelectItemGroup>
-            {fruits.items.map((item) => (
-              <SelectItem key={item.value} item={item}>
-                <SelectItemText>{item.label}</SelectItemText>
-                <SelectItemIndicator />
-              </SelectItem>
-            ))}
-          </SelectItemGroup>
-        </SelectContent>
+        
+          <SelectPositioner>
+            <SelectContent>
+              <SelectItemGroup>
+                {fruits.items.map((item) => (
+                  <SelectItem key={item.value} item={item}>
+                    <SelectItemText>{item.label}</SelectItemText>
+                    <SelectItemIndicator />
+                  </SelectItem>
+                ))}
+              </SelectItemGroup>
+            </SelectContent>
+          </SelectPositioner>
+        
       </Select>
       <FieldError>Please select a fruit.</FieldError>
     </Field>

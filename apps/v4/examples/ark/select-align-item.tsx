@@ -13,11 +13,14 @@ import {
   Select,
   SelectContent,
   SelectControl,
+  SelectHiddenSelect,
   SelectIndicator,
+  SelectIndicatorGroup,
   SelectItem,
   SelectItemGroup,
   SelectItemIndicator,
   SelectItemText,
+  SelectPositioner,
   SelectTrigger,
   SelectValue,
 } from "@/examples/ark/ui/select"
@@ -39,23 +42,21 @@ const fruits = createListCollection({
 })
 
 export function SelectAlignItem() {
-  const [alignItemWithTrigger, setAlignItemWithTrigger] = React.useState(true)
+  const [sameWidth, setSameWidth] = React.useState(true)
 
   return (
     <FieldGroup className="w-full max-w-xs">
       <Field orientation="horizontal">
         <FieldContent>
-          <FieldLabel htmlFor="align-item">Align Item</FieldLabel>
+          <FieldLabel htmlFor="same-width">Same Width</FieldLabel>
           <FieldDescription>
-            Toggle to align the item with the trigger.
+            Toggle to match the dropdown width with the trigger.
           </FieldDescription>
         </FieldContent>
         <Switch
-          id="align-item"
-          checked={alignItemWithTrigger}
-          onCheckedChange={(details) =>
-            setAlignItemWithTrigger(!!details.checked)
-          }
+          id="same-width"
+          checked={sameWidth}
+          onCheckedChange={(details) => setSameWidth(!!details.checked)}
         >
           <SwitchControl>
             <SwitchThumb />
@@ -64,25 +65,34 @@ export function SelectAlignItem() {
         </Switch>
       </Field>
       <Field>
-        <Select collection={fruits} defaultValue={["banana"]}>
+        <Select
+          collection={fruits}
+          defaultValue={["banana"]}
+          positioning={{ sameWidth }}
+        >
+          <SelectHiddenSelect />
           <SelectControl>
             <SelectTrigger>
               <SelectValue />
             </SelectTrigger>
-            <SelectIndicator />
+            <SelectIndicatorGroup>
+              <SelectIndicator />
+            </SelectIndicatorGroup>
           </SelectControl>
-          <SelectContent
-            position={alignItemWithTrigger ? "item-aligned" : "popper"}
-          >
-            <SelectItemGroup>
-              {fruits.items.map((item) => (
-                <SelectItem key={item.value} item={item}>
-                  <SelectItemText>{item.label}</SelectItemText>
-                  <SelectItemIndicator />
-                </SelectItem>
-              ))}
-            </SelectItemGroup>
-          </SelectContent>
+          
+            <SelectPositioner>
+              <SelectContent>
+                <SelectItemGroup>
+                  {fruits.items.map((item) => (
+                    <SelectItem key={item.value} item={item}>
+                      <SelectItemText>{item.label}</SelectItemText>
+                      <SelectItemIndicator />
+                    </SelectItem>
+                  ))}
+                </SelectItemGroup>
+              </SelectContent>
+            </SelectPositioner>
+          
         </Select>
       </Field>
     </FieldGroup>
