@@ -14,7 +14,11 @@ import {
   ItemMedia,
   ItemTitle,
 } from "@/registry/bases/react-aria/ui/item"
-import { Progress } from "@/registry/bases/react-aria/ui/progress"
+import {
+  Progress,
+  ProgressLabel,
+  ProgressValue,
+} from "@/registry/bases/react-aria/ui/progress"
 import { Slider } from "@/registry/bases/react-aria/ui/slider"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
@@ -46,7 +50,10 @@ function ProgressValues() {
 function ProgressWithLabel() {
   return (
     <Example title="With Label">
-      <Progress value={56} label="Upload progress" showValueLabel />
+      <Progress value={56}>
+        <ProgressLabel>Upload progress</ProgressLabel>
+        <ProgressValue />
+      </Progress>
     </Example>
   )
 }
