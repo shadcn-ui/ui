@@ -130,5 +130,5 @@ export function UsageCard() {
         </ItemGroup>
       </CardContent>
     </Card>
-  );
+  )
 }

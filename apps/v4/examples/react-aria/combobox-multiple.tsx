@@ -29,17 +29,20 @@ export function ComboboxMultiple() {
     <Combobox
       selectionMode="multiple"
       defaultValue={[frameworks[0]]}
-      allowsEmptyCollection>
+      allowsEmptyCollection
+    >
       <ComboboxChips ref={anchor} className="w-full max-w-xs">
         <ComboboxChipList<{ name: string }>>
-          {(value) => (
-            <ComboboxChip id={value.name}>{value.name}</ComboboxChip>
-          )}
+          {(value) => <ComboboxChip id={value.name}>{value.name}</ComboboxChip>}
         </ComboboxChipList>
         <ComboboxChipsInput />
       </ComboboxChips>
       <ComboboxContent anchor={anchor}>
-        <ComboboxList renderEmptyState={() => <ComboboxEmpty>No items found.</ComboboxEmpty>}>
+        <ComboboxList
+          renderEmptyState={() => (
+            <ComboboxEmpty>No items found.</ComboboxEmpty>
+          )}
+        >
           {frameworks.map((item) => (
             <ComboboxItem key={item} id={item} value={{ name: item }}>
               {item}
@@ -48,5 +51,5 @@ export function ComboboxMultiple() {
         </ComboboxList>
       </ComboboxContent>
     </Combobox>
-  );
+  )
 }

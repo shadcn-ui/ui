@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { ComboboxChipList } from "@/examples/react-aria/ui/combobox"
 
 import {
   Avatar,
@@ -30,7 +31,6 @@ import {
 } from "@/registry/bases/react-aria/ui/combobox"
 import { Tooltip, TooltipTrigger } from "@/registry/bases/react-aria/ui/tooltip"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
-import { ComboboxChipList } from "@/examples/react-aria/ui/combobox"
 
 // Users available for assignment.
 const users = [
@@ -68,9 +68,13 @@ export function AssignIssue() {
         </CardAction>
       </CardHeader>
       <CardContent>
-        <Combobox selectionMode="multiple" defaultValue={[users[0]]} allowsEmptyCollection>
+        <Combobox
+          selectionMode="multiple"
+          defaultValue={[users[0]]}
+          allowsEmptyCollection
+        >
           <ComboboxChips ref={anchor}>
-            <ComboboxChipList<{username: string}>>
+            <ComboboxChipList<{ username: string }>>
               {(value) => (
                 <ComboboxChip id={value.username}>
                   <Avatar className="size-4">
@@ -84,14 +88,21 @@ export function AssignIssue() {
                 </ComboboxChip>
               )}
             </ComboboxChipList>
-            <ComboboxChipsInput
-              placeholder="Select a item..."
-            />
+            <ComboboxChipsInput placeholder="Select a item..." />
           </ComboboxChips>
           <ComboboxContent anchor={anchor}>
-            <ComboboxList renderEmptyState={() => <ComboboxEmpty>No users found.</ComboboxEmpty>}>
+            <ComboboxList
+              renderEmptyState={() => (
+                <ComboboxEmpty>No users found.</ComboboxEmpty>
+              )}
+            >
               {users.map((username) => (
-                <ComboboxItem key={username} id={username} value={{username}} textValue={username}>
+                <ComboboxItem
+                  key={username}
+                  id={username}
+                  value={{ username }}
+                  textValue={username}
+                >
                   <Avatar className="size-5">
                     <AvatarImage
                       src={`https://github.com/${username}.png`}
@@ -107,5 +118,5 @@ export function AssignIssue() {
         </Combobox>
       </CardContent>
     </Card>
-  );
+  )
 }

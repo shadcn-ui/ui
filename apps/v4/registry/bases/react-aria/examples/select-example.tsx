@@ -517,7 +517,7 @@ function SelectInvalid() {
         </Field>
       </div>
     </Example>
-  );
+  )
 }
 
 function SelectInline() {

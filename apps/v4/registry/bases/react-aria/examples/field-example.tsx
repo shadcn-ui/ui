@@ -329,7 +329,7 @@ function SelectFields() {
         </Field>
       </FieldGroup>
     </Example>
-  );
+  )
 }
 
 function NativeSelectFields() {
@@ -712,7 +712,7 @@ function SwitchFields() {
         </Field>
       </FieldGroup>
     </Example>
-  );
+  )
 }
 
 function SliderFields() {

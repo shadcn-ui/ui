@@ -40,19 +40,6 @@ import {
   type TagProps,
 } from "react-aria-components"
 
-function Combobox<
-  T extends object,
-  M extends "single" | "multiple" = "single",
->({ className, ...props }: ComboBoxProps<T, M>) {
-  return (
-    <ComboBoxPrimitive
-      data-slot="select"
-      className={cn("w-fit", className)}
-      {...props}
-    />
-  )
-}
-
 function ComboboxTrigger({
   className,
   children,
@@ -397,7 +384,7 @@ function useComboboxAnchor() {
 }
 
 export {
-  Combobox,
+  ComboBoxPrimitive as Combobox,
   ComboboxInput,
   ComboboxContent,
   ComboboxList,

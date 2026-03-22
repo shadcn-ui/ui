@@ -324,10 +324,7 @@ export default function SidebarIconExample() {
                   className="group/collapsible"
                 >
                   <SidebarMenuItem>
-                    <SidebarMenuButton
-                      slot="trigger"
-                      tooltip={item.title}
-                    >
+                    <SidebarMenuButton slot="trigger" tooltip={item.title}>
                       {item.icon}
                       <span>{item.title}</span>
                       <IconPlaceholder
@@ -343,9 +340,7 @@ export default function SidebarIconExample() {
                       <SidebarMenuSub>
                         {item.items?.map((subItem) => (
                           <SidebarMenuSubItem key={subItem.title}>
-                            <SidebarMenuSubButton
-                              href={subItem.url}
-                            >
+                            <SidebarMenuSubButton href={subItem.url}>
                               {subItem.title}
                             </SidebarMenuSubButton>
                           </SidebarMenuSubItem>
@@ -450,5 +445,5 @@ export default function SidebarIconExample() {
         </div>
       </SidebarInset>
     </SidebarProvider>
-  );
+  )
 }

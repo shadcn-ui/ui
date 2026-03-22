@@ -204,11 +204,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <SidebarHeader>
           <SidebarMenu>
             <SidebarMenuItem>
-              <SidebarMenuButton
-                href="#"
-                size="lg"
-                className="md:h-8 md:p-0"
-              >
+              <SidebarMenuButton href="#" size="lg" className="md:h-8 md:p-0">
                 <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
                   <IconPlaceholder
                     lucide="TerminalIcon"
@@ -304,5 +300,5 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         </SidebarContent>
       </Sidebar>
     </Sidebar>
-  );
+  )
 }

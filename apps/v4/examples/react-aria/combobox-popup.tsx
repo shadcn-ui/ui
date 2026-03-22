@@ -76,15 +76,14 @@ export function ComboboxPopup() {
 
           <ComboboxList
             items={countries}
-            renderEmptyState={() => <ComboboxEmpty>No items found.</ComboboxEmpty>}>
-            {(item) => (
-              <ComboboxItem id={item.code}>
-                {item.label}
-              </ComboboxItem>
+            renderEmptyState={() => (
+              <ComboboxEmpty>No items found.</ComboboxEmpty>
             )}
+          >
+            {(item) => <ComboboxItem id={item.code}>{item.label}</ComboboxItem>}
           </ComboboxList>
         </ComboboxContent>
       </Combobox>
     </>
-  );
+  )
 }

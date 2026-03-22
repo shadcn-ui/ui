@@ -2,7 +2,13 @@
 
 import * as React from "react"
 
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage } from "@/registry/bases/react-aria/ui/breadcrumb";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+} from "@/registry/bases/react-aria/ui/breadcrumb"
 import { Button } from "@/registry/bases/react-aria/ui/button"
 import {
   Dialog,

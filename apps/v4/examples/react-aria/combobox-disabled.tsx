@@ -22,8 +22,11 @@ export function ComboboxDisabled() {
     <Combobox allowsEmptyCollection>
       <ComboboxInput placeholder="Select a framework" disabled />
       <ComboboxContent>
-
-        <ComboboxList renderEmptyState={() => <ComboboxEmpty>No items found.</ComboboxEmpty>}>
+        <ComboboxList
+          renderEmptyState={() => (
+            <ComboboxEmpty>No items found.</ComboboxEmpty>
+          )}
+        >
           {frameworks.map((item) => (
             <ComboboxItem key={item} id={item}>
               {item}
@@ -32,5 +35,5 @@ export function ComboboxDisabled() {
         </ComboboxList>
       </ComboboxContent>
     </Combobox>
-  );
+  )
 }

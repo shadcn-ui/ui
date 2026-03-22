@@ -59,10 +59,12 @@ export function ComboxboxInputGroup() {
         </InputGroupAddon>
       </ComboboxInput>
       <ComboboxContent alignOffset={-28} className="w-60">
-
         <ComboboxList
           items={timezones}
-          renderEmptyState={() => <ComboboxEmpty>No timezones found.</ComboboxEmpty>}>
+          renderEmptyState={() => (
+            <ComboboxEmpty>No timezones found.</ComboboxEmpty>
+          )}
+        >
           {(group) => (
             <ComboboxGroup id={group.value}>
               <ComboboxLabel>{group.value}</ComboboxLabel>
@@ -76,5 +78,5 @@ export function ComboxboxInputGroup() {
         </ComboboxList>
       </ComboboxContent>
     </Combobox>
-  );
+  )
 }

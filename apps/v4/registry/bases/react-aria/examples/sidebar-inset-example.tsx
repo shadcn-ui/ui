@@ -210,10 +210,7 @@ export default function SidebarInsetExample() {
                   defaultExpanded={item.isActive}
                   render={(props) => <SidebarMenuItem {...props} />}
                 >
-                  <SidebarMenuButton
-                    href={item.url}
-                    isActive={item.isActive}
-                  >
+                  <SidebarMenuButton href={item.url} isActive={item.isActive}>
                     {item.icon}
                     <span>{item.title}</span>
                   </SidebarMenuButton>
@@ -221,7 +218,8 @@ export default function SidebarInsetExample() {
                     <>
                       <SidebarMenuAction
                         slot="trigger"
-                        className="group-data-open/menu-item:rotate-90">
+                        className="group-data-open/menu-item:rotate-90"
+                      >
                         <IconPlaceholder
                           lucide="ChevronRightIcon"
                           tabler="IconChevronRight"
@@ -235,9 +233,7 @@ export default function SidebarInsetExample() {
                         <SidebarMenuSub>
                           {item.items.map((subItem) => (
                             <SidebarMenuSubItem key={subItem.title}>
-                              <SidebarMenuSubButton
-                                href={subItem.url}
-                              >
+                              <SidebarMenuSubButton href={subItem.url}>
                                 {subItem.title}
                               </SidebarMenuSubButton>
                             </SidebarMenuSubItem>
@@ -281,5 +277,5 @@ export default function SidebarInsetExample() {
         </div>
       </SidebarInset>
     </SidebarProvider>
-  );
+  )
 }

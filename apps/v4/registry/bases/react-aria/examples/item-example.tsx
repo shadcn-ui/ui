@@ -1235,7 +1235,7 @@ function DefaultLinkItems() {
         </Item>
       </ItemGroup>
     </Example>
-  );
+  )
 }
 
 function OutlineLinkItems() {
@@ -1301,7 +1301,7 @@ function OutlineLinkItems() {
         </Item>
       </ItemGroup>
     </Example>
-  );
+  )
 }
 
 function MutedLinkItems() {
@@ -1367,7 +1367,7 @@ function MutedLinkItems() {
         </Item>
       </ItemGroup>
     </Example>
-  );
+  )
 }
 
 function DefaultItemGroup() {

@@ -602,7 +602,11 @@ function FormExample() {
                     required
                   />
                   <ComboboxContent>
-                    <ComboboxList renderEmptyState={() => <ComboboxEmpty>No frameworks found.</ComboboxEmpty>}>
+                    <ComboboxList
+                      renderEmptyState={() => (
+                        <ComboboxEmpty>No frameworks found.</ComboboxEmpty>
+                      )}
+                    >
                       {frameworks.map((item) => (
                         <ComboboxItem key={item} id={item}>
                           {item}
@@ -630,5 +634,5 @@ function FormExample() {
         </CardContent>
       </Card>
     </Example>
-  );
+  )
 }

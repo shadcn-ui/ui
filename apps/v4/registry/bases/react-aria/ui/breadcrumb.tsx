@@ -8,7 +8,7 @@ import {
   Link as LinkPrimitive,
   type BreadcrumbProps,
   type BreadcrumbsProps,
-  type LinkProps
+  type LinkProps,
 } from "react-aria-components"
 
 import { cn } from "@/registry/bases/react-aria/lib/utils"
@@ -25,7 +25,10 @@ function Breadcrumb({ className, ...props }: React.ComponentProps<"nav">) {
   )
 }
 
-function BreadcrumbList<T extends object>({ className, ...props }: BreadcrumbsProps<T>) {
+function BreadcrumbList<T extends object>({
+  className,
+  ...props
+}: BreadcrumbsProps<T>) {
   return (
     <BreadcrumbsPrimitive
       data-slot="breadcrumb-list"
@@ -38,16 +41,22 @@ function BreadcrumbList<T extends object>({ className, ...props }: BreadcrumbsPr
   )
 }
 
-function BreadcrumbItem({ className, children, separatorClassName, ...props }: BreadcrumbProps & {separatorClassName?: string}) {
+function BreadcrumbItem({
+  className,
+  children,
+  separatorClassName,
+  ...props
+}: BreadcrumbProps & { separatorClassName?: string }) {
   return (
     <BreadcrumbPrimitive
       data-slot="breadcrumb-item"
       className={cn("cn-breadcrumb-item inline-flex items-center", className)}
-      {...props}>
-      {composeRenderProps(children, (children, {isCurrent}) => (
+      {...props}
+    >
+      {composeRenderProps(children, (children, { isCurrent }) => (
         <>
           {children}
-          {!isCurrent && 
+          {!isCurrent && (
             <span
               data-slot="breadcrumb-separator"
               role="presentation"
@@ -63,18 +72,14 @@ function BreadcrumbItem({ className, children, separatorClassName, ...props }: B
                 className="cn-rtl-flip"
               />
             </span>
-          }
+          )}
         </>
       ))}
     </BreadcrumbPrimitive>
   )
 }
 
-function BreadcrumbLink({
-  className,
-  render,
-  ...props
-}: LinkProps) {
+function BreadcrumbLink({ className, render, ...props }: LinkProps) {
   return (
     <LinkPrimitive
       data-slot="breadcrumb-link"

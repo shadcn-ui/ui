@@ -11,7 +11,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/registry/bases/react-aria/ui/alert-dialog";
+} from "@/registry/bases/react-aria/ui/alert-dialog"
 import { Badge } from "@/registry/bases/react-aria/ui/badge"
 import { Button } from "@/registry/bases/react-aria/ui/button"
 import { ButtonGroup } from "@/registry/bases/react-aria/ui/button-group"

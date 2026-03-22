@@ -94,11 +94,14 @@ export function ComboboxRtl() {
       <Combobox
         selectionMode="multiple"
         defaultValue={[categories[0]]}
-        allowsEmptyCollection>
+        allowsEmptyCollection
+      >
         <ComboboxChips ref={anchor}>
           <ComboboxChipList<{ name: string }>>
             {(value) => (
-              <ComboboxChip id={value.name}>{categoryLabels[value.name] || value.name}</ComboboxChip>
+              <ComboboxChip id={value.name}>
+                {categoryLabels[value.name] || value.name}
+              </ComboboxChip>
             )}
           </ComboboxChipList>
           <ComboboxChipsInput placeholder={t.placeholder} />
@@ -108,8 +111,9 @@ export function ComboboxRtl() {
           dir={dir}
           data-lang={dir === "rtl" ? language : undefined}
         >
-
-          <ComboboxList renderEmptyState={() => <ComboboxEmpty>{t.empty}</ComboboxEmpty>}>
+          <ComboboxList
+            renderEmptyState={() => <ComboboxEmpty>{t.empty}</ComboboxEmpty>}
+          >
             {categories.map((item) => (
               <ComboboxItem key={item} id={item} value={{ name: item }}>
                 {categoryLabels[item] || item}
@@ -119,5 +123,5 @@ export function ComboboxRtl() {
         </ComboboxContent>
       </Combobox>
     </Field>
-  );
+  )
 }

@@ -277,5 +277,5 @@ export default function SidebarExample() {
         </div>
       </SidebarInset>
     </SidebarProvider>
-  );
+  )
 }

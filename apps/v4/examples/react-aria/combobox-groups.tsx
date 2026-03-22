@@ -54,7 +54,11 @@ export function ComboboxWithGroupsAndSeparator() {
     <Combobox allowsEmptyCollection>
       <ComboboxInput placeholder="Select a timezone" />
       <ComboboxContent>
-        <ComboboxList renderEmptyState={() => <ComboboxEmpty>No timezones found.</ComboboxEmpty>}>
+        <ComboboxList
+          renderEmptyState={() => (
+            <ComboboxEmpty>No timezones found.</ComboboxEmpty>
+          )}
+        >
           {timezones.map((group, index) => (
             <ComboboxGroup key={group.value} id={group.value}>
               <ComboboxLabel>{group.value}</ComboboxLabel>
@@ -69,5 +73,5 @@ export function ComboboxWithGroupsAndSeparator() {
         </ComboboxList>
       </ComboboxContent>
     </Combobox>
-  );
+  )
 }

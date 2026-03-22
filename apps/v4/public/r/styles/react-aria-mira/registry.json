@@ -162,7 +162,6 @@
     },
     {
       "name": "combobox",
-      "dependencies": ["@base-ui/react"],
       "registryDependencies": ["button", "input-group"],
       "files": [
         {
@@ -581,7 +580,6 @@
     },
     {
       "name": "direction",
-      "dependencies": ["@base-ui/react"],
       "files": [
         {
           "path": "registry/react-aria-mira/ui/direction.tsx",

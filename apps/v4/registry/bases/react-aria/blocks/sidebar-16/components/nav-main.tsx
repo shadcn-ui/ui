@@ -42,10 +42,7 @@ export function NavMain({
             defaultExpanded={item.isActive}
             render={(props) => <SidebarMenuItem {...props} />}
           >
-            <SidebarMenuButton
-              href={item.url}
-              tooltip={item.title}
-            >
+            <SidebarMenuButton href={item.url} tooltip={item.title}>
               {item.icon}
               <span>{item.title}</span>
             </SidebarMenuButton>
@@ -81,5 +78,5 @@ export function NavMain({
         ))}
       </SidebarMenu>
     </SidebarGroup>
-  );
+  )
 }

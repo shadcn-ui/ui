@@ -13,7 +13,7 @@ import {
   BreadcrumbLink,
   BreadcrumbList,
   BreadcrumbPage,
-} from "@/registry/bases/react-aria/ui/breadcrumb";
+} from "@/registry/bases/react-aria/ui/breadcrumb"
 import { Button } from "@/registry/bases/react-aria/ui/button"
 import {
   DropdownMenu,
@@ -50,7 +50,7 @@ function BreadcrumbBasic() {
         </BreadcrumbList>
       </Breadcrumb>
     </Example>
-  );
+  )
 }
 
 function BreadcrumbWithDropdown() {
@@ -86,7 +86,7 @@ function BreadcrumbWithDropdown() {
         </BreadcrumbList>
       </Breadcrumb>
     </Example>
-  );
+  )
 }
 
 function BreadcrumbWithLink() {
@@ -95,7 +95,14 @@ function BreadcrumbWithLink() {
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
-            <BreadcrumbLink href="#" render={props => 'href' in props ? <Link {...props} /> : <span {...props} />}>Home</BreadcrumbLink>
+            <BreadcrumbLink
+              href="#"
+              render={(props) =>
+                "href" in props ? <Link {...props} /> : <span {...props} />
+              }
+            >
+              Home
+            </BreadcrumbLink>
           </BreadcrumbItem>
 
           <BreadcrumbItem>
@@ -103,7 +110,14 @@ function BreadcrumbWithLink() {
           </BreadcrumbItem>
 
           <BreadcrumbItem>
-            <BreadcrumbLink href="#" render={props => 'href' in props ? <Link {...props} /> : <span {...props} />}>Components</BreadcrumbLink>
+            <BreadcrumbLink
+              href="#"
+              render={(props) =>
+                "href" in props ? <Link {...props} /> : <span {...props} />
+              }
+            >
+              Components
+            </BreadcrumbLink>
           </BreadcrumbItem>
 
           <BreadcrumbItem>
@@ -112,5 +126,5 @@ function BreadcrumbWithLink() {
         </BreadcrumbList>
       </Breadcrumb>
     </Example>
-  );
+  )
 }

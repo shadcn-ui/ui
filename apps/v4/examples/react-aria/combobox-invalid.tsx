@@ -22,8 +22,11 @@ export function ComboboxInvalid() {
     <Combobox allowsEmptyCollection isInvalid>
       <ComboboxInput placeholder="Select a framework" />
       <ComboboxContent>
-
-        <ComboboxList renderEmptyState={() => <ComboboxEmpty>No items found.</ComboboxEmpty>}>
+        <ComboboxList
+          renderEmptyState={() => (
+            <ComboboxEmpty>No items found.</ComboboxEmpty>
+          )}
+        >
           {frameworks.map((item) => (
             <ComboboxItem key={item} id={item}>
               {item}
@@ -32,5 +35,5 @@ export function ComboboxInvalid() {
         </ComboboxList>
       </ComboboxContent>
     </Combobox>
-  );
+  )
 }

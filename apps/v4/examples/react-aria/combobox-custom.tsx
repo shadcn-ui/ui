@@ -73,23 +73,32 @@ export function ComboboxWithCustomItems() {
       <ComboboxInput placeholder="Search countries..." />
       <ComboboxContent>
         <ComboboxList
-          renderEmptyState={() => <ComboboxEmpty>No countries found.</ComboboxEmpty>}>
-          {countries.filter((country) => country.code !== "").map((country) => (
-            <ComboboxItem key={country.code} id={country.code} textValue={country.label}>
-              <Item size="xs" className="p-0">
-                <ItemContent>
-                  <ItemTitle className="whitespace-nowrap">
-                    {country.label}
-                  </ItemTitle>
-                  <ItemDescription>
-                    {country.continent} ({country.code})
-                  </ItemDescription>
-                </ItemContent>
-              </Item>
-            </ComboboxItem>
-          ))}
+          renderEmptyState={() => (
+            <ComboboxEmpty>No countries found.</ComboboxEmpty>
+          )}
+        >
+          {countries
+            .filter((country) => country.code !== "")
+            .map((country) => (
+              <ComboboxItem
+                key={country.code}
+                id={country.code}
+                textValue={country.label}
+              >
+                <Item size="xs" className="p-0">
+                  <ItemContent>
+                    <ItemTitle className="whitespace-nowrap">
+                      {country.label}
+                    </ItemTitle>
+                    <ItemDescription>
+                      {country.continent} ({country.code})
+                    </ItemDescription>
+                  </ItemContent>
+                </Item>
+              </ComboboxItem>
+            ))}
         </ComboboxList>
       </ComboboxContent>
     </Combobox>
-  );
+  )
 }

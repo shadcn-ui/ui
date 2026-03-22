@@ -1,8 +1,13 @@
 "use client"
 
 import * as React from "react"
-import {Button as ButtonPrimitive, type ButtonProps, Link as LinkPrimitive, type LinkProps} from "react-aria-components"
 import { cva, type VariantProps } from "class-variance-authority"
+import {
+  Button as ButtonPrimitive,
+  Link as LinkPrimitive,
+  type ButtonProps,
+  type LinkProps,
+} from "react-aria-components"
 
 import { useIsMobile } from "@/registry/bases/react-aria/hooks/use-mobile"
 import { cn } from "@/registry/bases/react-aria/lib/utils"
@@ -197,7 +202,7 @@ function Sidebar({
         </SheetHeader>
         <div className="flex h-full w-full flex-col">{children}</div>
       </Sheet>
-    );
+    )
   }
 
   return (
@@ -397,9 +402,9 @@ function SidebarGroup({ className, ...props }: React.ComponentProps<"div">) {
 
 function SidebarGroupLabel({
   className,
-  elementType: Element = 'div',
+  elementType: Element = "div",
   ...props
-}: React.HTMLAttributes<HTMLElement> & {elementType?: React.ElementType}) {
+}: React.HTMLAttributes<HTMLElement> & { elementType?: React.ElementType }) {
   return (
     <Element
       data-slot="sidebar-group-label"
@@ -500,19 +505,19 @@ function SidebarMenuButton({
   tooltip?: string | React.ComponentProps<typeof Tooltip>
 } & VariantProps<typeof sidebarMenuButtonVariants>) {
   const { isMobile, state } = useSidebar()
-  const Element = 'href' in props ? LinkPrimitive : ButtonPrimitive;
-  
+  const Element = "href" in props ? LinkPrimitive : ButtonPrimitive
+
   const comp = (
     // @ts-expect-error - TS doesn't narrow props to match Element type
-    (<Element
+    <Element
       data-slot="sidebar-menu-button"
       data-sidebar="menu-button"
       data-size={size}
       data-active={isActive}
       className={cn(sidebarMenuButtonVariants({ variant, size }), className)}
       {...props}
-    />)
-  );
+    />
+  )
 
   if (!tooltip) {
     return comp
@@ -641,14 +646,14 @@ function SidebarMenuSubButton({
   className,
   ...props
 }: (ButtonProps | LinkProps) & {
-    size?: "sm" | "md"
-    isActive?: boolean
-  }) {
-  const Element = 'href' in props ? LinkPrimitive : ButtonPrimitive;
-  
+  size?: "sm" | "md"
+  isActive?: boolean
+}) {
+  const Element = "href" in props ? LinkPrimitive : ButtonPrimitive
+
   return (
     // @ts-expect-error - TS doesn't narrow props to match Element type
-    (<Element
+    <Element
       data-slot="sidebar-menu-sub-button"
       data-sidebar="menu-sub-button"
       data-size={size}
@@ -658,7 +663,7 @@ function SidebarMenuSubButton({
         className
       )}
       {...props}
-    />)
+    />
   )
 }
 

@@ -2,10 +2,10 @@
 
 import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
+import { Link as LinkPrimitive, type LinkProps } from "react-aria-components"
 
 import { cn } from "@/registry/bases/react-aria/lib/utils"
 import { Separator } from "@/registry/bases/react-aria/ui/separator"
-import { Link as LinkPrimitive, type LinkProps } from "react-aria-components"
 
 function ItemGroup({ className, ...props }: React.ComponentProps<"div">) {
   return (
@@ -62,8 +62,10 @@ function Item({
   variant = "default",
   size = "default",
   ...props
-}: Omit<LinkProps, "children"> & React.HTMLAttributes<HTMLElement> & VariantProps<typeof itemVariants>) {
-  const Element = 'href' in props ? LinkPrimitive : 'div';
+}: Omit<LinkProps, "children"> &
+  React.HTMLAttributes<HTMLElement> &
+  VariantProps<typeof itemVariants>) {
+  const Element = "href" in props ? LinkPrimitive : "div"
   return (
     <Element
       data-slot="item"

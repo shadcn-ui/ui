@@ -266,5 +266,5 @@ export default function SidebarFloatingExample() {
         </div>
       </SidebarInset>
     </SidebarProvider>
-  );
+  )
 }
