@@ -43,7 +43,8 @@
       "Bash(find /Users/lope/Desktop/open-source -path */shipbase* -name switch*)",
       "Bash(grep -A10 Portal /Users/lope/Desktop/open-source/shadcn/ui/node_modules/.pnpm/radix-ui@1*/node_modules/radix-ui/dist/components/portal.js)",
       "Bash(grep -rn createPortal /Users/lope/Desktop/open-source/shadcn/ui/node_modules/.pnpm/radix-ui@*/node_modules/radix-ui/dist/)",
-      "Bash(find /Users/lope/Desktop/open-source/shadcn/ui/node_modules/.pnpm -path */radix-ui/dist/*portal*)"
+      "Bash(find /Users/lope/Desktop/open-source/shadcn/ui/node_modules/.pnpm -path */radix-ui/dist/*portal*)",
+      "Bash(# Copy ark source ui files directly to examples \\(fast, skips full registry\\)\ncp /Users/lope/Desktop/open-source/shadcn/ui/apps/v4/registry/bases/ark/ui/carousel.tsx /Users/lope/Desktop/open-source/shadcn/ui/apps/v4/examples/ark/ui/carousel.tsx\n\n# Fix import paths: @/registry/bases/ark/ → @/examples/ark/\nsed -i '' 's|@/registry/bases/ark/|@/examples/ark/|g' /Users/lope/Desktop/open-source/shadcn/ui/apps/v4/examples/ark/ui/carousel.tsx\n\n# Fix IconPlaceholder to lucide icons \\(examples use lucide directly\\)\nsed -i '' 's|import { IconPlaceholder } from \"@/app/\\(create\\)/components/icon-placeholder\"||' /Users/lope/Desktop/open-source/shadcn/ui/apps/v4/examples/ark/ui/carousel.tsx\n\necho \"Done - copied and fixed imports\")"
     ],
     "deny": []
   }
