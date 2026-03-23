@@ -5,12 +5,6 @@ base: radix
 component: true
 ---
 
-<Callout>
-
-**Recharts v3:** The `chart` component now targets Recharts v3. Use `ChartTooltip.defaultIndex` for initial tooltip state, but keep persistent active shapes in your own chart state. Also remove `layout` from `<Bar>` when `BarChart` already sets it, and keep a height or `min-h-*` on `ChartContainer`.
-
-</Callout>
-
 <ComponentPreview
   styleName="radix-nova"
   name="chart-demo"
@@ -50,6 +44,15 @@ export function MyChart() {
 We do not wrap Recharts. This means you're not locked into an abstraction. When a new Recharts version is released, you can follow the official upgrade path to upgrade your charts.
 
 **The components are yours**.
+
+## Updating to Recharts v3
+
+If you're upgrading existing charts from Recharts v2:
+
+- Use `ChartTooltip.defaultIndex` for initial tooltip state.
+- Keep persistent active shapes in your own React state and render them with `shape` or `activeShape`.
+- Remove `layout` from `<Bar>` when `BarChart` already sets it.
+- Keep a height or `min-h-*` on `ChartContainer` so the chart can measure correctly.
 
 ## Installation
 
