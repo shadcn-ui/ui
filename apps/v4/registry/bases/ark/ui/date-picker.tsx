@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import { DatePicker as DatePickerPrimitive } from "@ark-ui/react/date-picker"
+import { Portal } from "@ark-ui/react/portal"
 
 import { cn } from "@/registry/bases/ark/lib/utils"
 import { Button } from "@/registry/bases/ark/ui/button"
@@ -115,19 +116,23 @@ const DatePickerContent = React.forwardRef<
   HTMLDivElement,
   React.ComponentProps<typeof DatePickerPrimitive.Content>
 >(({ className, ...props }, ref) => (
-  <DatePickerPrimitive.Content
-    ref={ref}
-    data-slot="date-picker-content"
-    className={cn(
-      "flex flex-col gap-3 rounded-lg border bg-popover p-3 text-popover-foreground shadow-lg outline-none",
-      "min-w-[17.5rem]",
-      "origin-[var(--transform-origin)]",
-      "data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-[98%]",
-      "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-[98%]",
-      className
-    )}
-    {...props}
-  />
+  <Portal>
+    <DatePickerPrimitive.Positioner data-slot="date-picker-positioner" className="z-50">
+      <DatePickerPrimitive.Content
+        ref={ref}
+        data-slot="date-picker-content"
+        className={cn(
+          "flex flex-col gap-3 rounded-lg border bg-popover p-3 text-popover-foreground shadow-lg outline-none",
+          "min-w-[17.5rem]",
+          "origin-[var(--transform-origin)]",
+          "data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-[98%]",
+          "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-[98%]",
+          className
+        )}
+        {...props}
+      />
+    </DatePickerPrimitive.Positioner>
+  </Portal>
 ))
 DatePickerContent.displayName = "DatePickerContent"
 

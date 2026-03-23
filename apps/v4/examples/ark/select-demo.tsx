@@ -14,11 +14,9 @@ import {
   SelectItemGroupLabel,
   SelectItemIndicator,
   SelectItemText,
-  SelectPositioner,
   SelectTrigger,
   SelectValue,
 } from "@/examples/ark/ui/select"
-import { Portal } from "@ark-ui/react/portal"
 
 const fruits = createListCollection({
   items: [
@@ -43,21 +41,17 @@ export function SelectDemo() {
           <SelectIndicator />
         </SelectIndicatorGroup>
       </SelectControl>
-      <Portal>
-        <SelectPositioner>
-        <SelectContent>
-          <SelectItemGroup>
-            <SelectItemGroupLabel>Fruits</SelectItemGroupLabel>
-            {fruits.items.map((item) => (
-              <SelectItem key={item.value} item={item}>
-                <SelectItemText>{item.label}</SelectItemText>
-                <SelectItemIndicator />
-              </SelectItem>
-            ))}
-          </SelectItemGroup>
-        </SelectContent>
-      </SelectPositioner>
-      </Portal>
+      <SelectContent>
+        <SelectItemGroup>
+          <SelectItemGroupLabel>Fruits</SelectItemGroupLabel>
+          {fruits.items.map((item) => (
+            <SelectItem key={item.value} item={item}>
+              <SelectItemText>{item.label}</SelectItemText>
+              <SelectItemIndicator />
+            </SelectItem>
+          ))}
+        </SelectItemGroup>
+      </SelectContent>
     </Select>
   )
 }

@@ -18,14 +18,14 @@ export function DropdownMenuBasic() {
       <DropdownMenuContent>
         <DropdownMenuGroup>
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
-          <DropdownMenuItem>Profile</DropdownMenuItem>
-          <DropdownMenuItem>Billing</DropdownMenuItem>
-          <DropdownMenuItem>Settings</DropdownMenuItem>
+          <DropdownMenuItem value="profile">Profile</DropdownMenuItem>
+          <DropdownMenuItem value="billing">Billing</DropdownMenuItem>
+          <DropdownMenuItem value="settings">Settings</DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>GitHub</DropdownMenuItem>
-        <DropdownMenuItem>Support</DropdownMenuItem>
-        <DropdownMenuItem disabled>API</DropdownMenuItem>
+        <DropdownMenuItem value="github">GitHub</DropdownMenuItem>
+        <DropdownMenuItem value="support">Support</DropdownMenuItem>
+        <DropdownMenuItem value="api" disabled>API</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   )

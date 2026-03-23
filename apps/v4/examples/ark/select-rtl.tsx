@@ -14,7 +14,6 @@ import {
   SelectItemGroupLabel,
   SelectItemIndicator,
   SelectItemText,
-  SelectPositioner,
   SelectSeparator,
   SelectTrigger,
   SelectValue,
@@ -127,34 +126,30 @@ export function SelectRtl() {
           <SelectIndicator />
         </SelectIndicatorGroup>
       </SelectControl>
-      
-        <SelectPositioner>
-          <SelectContent
-            dir={dir}
-            data-lang={dir === "rtl" ? language : undefined}
-          >
-            <SelectItemGroup>
-              <SelectItemGroupLabel>{t.fruits}</SelectItemGroupLabel>
-              {fruits.map((item) => (
-                <SelectItem key={item.value} item={item}>
-                  <SelectItemText>{item.label}</SelectItemText>
-                  <SelectItemIndicator />
-                </SelectItem>
-              ))}
-            </SelectItemGroup>
-            <SelectSeparator />
-            <SelectItemGroup>
-              <SelectItemGroupLabel>{t.vegetables}</SelectItemGroupLabel>
-              {vegetables.map((item) => (
-                <SelectItem key={item.value} item={item}>
-                  <SelectItemText>{item.label}</SelectItemText>
-                  <SelectItemIndicator />
-                </SelectItem>
-              ))}
-            </SelectItemGroup>
-          </SelectContent>
-        </SelectPositioner>
-      
+      <SelectContent
+        dir={dir}
+        data-lang={dir === "rtl" ? language : undefined}
+      >
+        <SelectItemGroup>
+          <SelectItemGroupLabel>{t.fruits}</SelectItemGroupLabel>
+          {fruits.map((item) => (
+            <SelectItem key={item.value} item={item}>
+              <SelectItemText>{item.label}</SelectItemText>
+              <SelectItemIndicator />
+            </SelectItem>
+          ))}
+        </SelectItemGroup>
+        <SelectSeparator />
+        <SelectItemGroup>
+          <SelectItemGroupLabel>{t.vegetables}</SelectItemGroupLabel>
+          {vegetables.map((item) => (
+            <SelectItem key={item.value} item={item}>
+              <SelectItemText>{item.label}</SelectItemText>
+              <SelectItemIndicator />
+            </SelectItem>
+          ))}
+        </SelectItemGroup>
+      </SelectContent>
     </Select>
   )
 }

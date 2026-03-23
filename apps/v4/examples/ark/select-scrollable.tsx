@@ -13,7 +13,6 @@ import {
   SelectItemGroupLabel,
   SelectItemIndicator,
   SelectItemText,
-  SelectPositioner,
   SelectTrigger,
   SelectValue,
 } from "@/examples/ark/ui/select"
@@ -87,23 +86,19 @@ export function SelectScrollable() {
           <SelectIndicator />
         </SelectIndicatorGroup>
       </SelectControl>
-      
-        <SelectPositioner>
-          <SelectContent>
-            {collection.group().map(([type, group]) => (
-              <SelectItemGroup key={type}>
-                <SelectItemGroupLabel>{type}</SelectItemGroupLabel>
-                {group.map((item) => (
-                  <SelectItem key={item.value} item={item}>
-                    <SelectItemText>{item.label}</SelectItemText>
-                    <SelectItemIndicator />
-                  </SelectItem>
-                ))}
-              </SelectItemGroup>
+      <SelectContent>
+        {collection.group().map(([type, group]) => (
+          <SelectItemGroup key={type}>
+            <SelectItemGroupLabel>{type}</SelectItemGroupLabel>
+            {group.map((item) => (
+              <SelectItem key={item.value} item={item}>
+                <SelectItemText>{item.label}</SelectItemText>
+                <SelectItemIndicator />
+              </SelectItem>
             ))}
-          </SelectContent>
-        </SelectPositioner>
-      
+          </SelectItemGroup>
+        ))}
+      </SelectContent>
     </Select>
   )
 }

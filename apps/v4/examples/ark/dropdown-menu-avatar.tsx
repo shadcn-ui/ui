@@ -28,21 +28,21 @@ export function DropdownMenuAvatar() {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <DropdownMenuGroup>
-          <DropdownMenuItem>
+          <DropdownMenuItem value="account">
             <BadgeCheckIcon />
             Account
           </DropdownMenuItem>
-          <DropdownMenuItem>
+          <DropdownMenuItem value="billing">
             <CreditCardIcon />
             Billing
           </DropdownMenuItem>
-          <DropdownMenuItem>
+          <DropdownMenuItem value="notifications">
             <BellIcon />
             Notifications
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
+        <DropdownMenuItem value="sign-out">
           <LogOutIcon />
           Sign Out
         </DropdownMenuItem>

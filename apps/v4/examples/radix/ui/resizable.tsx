@@ -1,7 +1,8 @@
 "use client"
 
-import { cn } from "@/examples/radix/lib/utils"
 import * as ResizablePrimitive from "react-resizable-panels"
+
+import { cn } from "@/examples/radix/lib/utils"
 
 function ResizablePanelGroup({
   className,

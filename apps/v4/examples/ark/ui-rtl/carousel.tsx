@@ -10,11 +10,17 @@ import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react"
 const Carousel = React.forwardRef<
   React.ElementRef<typeof ArkCarousel.Root>,
   React.ComponentPropsWithoutRef<typeof ArkCarousel.Root>
->(({ className, ...props }, ref) => (
+>(({ className, spacing = "1rem", loop = false, page, ...props }, ref) => (
   <ArkCarousel.Root
     ref={ref}
     data-slot="carousel"
-    className={cn("relative", className)}
+    spacing={spacing}
+    loop={loop}
+    page={page}
+    className={cn(
+      "relative flex w-full flex-col gap-4 data-[orientation=vertical]:flex-row",
+      className
+    )}
     {...props}
   />
 ))
@@ -27,7 +33,10 @@ const CarouselContent = React.forwardRef<
   <ArkCarousel.ItemGroup
     ref={ref}
     data-slot="carousel-content"
-    className={cn("flex", className)}
+    className={cn(
+      "flex min-w-0 flex-1 overflow-hidden rounded-lg [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
+      className
+    )}
     {...props}
   />
 ))
@@ -46,6 +55,22 @@ const CarouselItem = React.forwardRef<
 ))
 CarouselItem.displayName = "CarouselItem"
 
+const CarouselControl = React.forwardRef<
+  React.ElementRef<typeof ArkCarousel.Control>,
+  React.ComponentPropsWithoutRef<typeof ArkCarousel.Control>
+>(({ className, ...props }, ref) => (
+  <ArkCarousel.Control
+    ref={ref}
+    data-slot="carousel-control"
+    className={cn(
+      "flex items-center justify-center gap-2 data-[orientation=vertical]:flex-col",
+      className
+    )}
+    {...props}
+  />
+))
+CarouselControl.displayName = "CarouselControl"
+
 const CarouselPrevious = React.forwardRef<
   HTMLButtonElement,
   React.ComponentProps<typeof Button>
@@ -56,10 +81,13 @@ const CarouselPrevious = React.forwardRef<
       data-slot="carousel-previous"
       variant={variant}
       size={size}
-      className={cn("absolute touch-manipulation rounded-full", className)}
+      className={cn(
+        "touch-manipulation rounded-full disabled:opacity-50",
+        className
+      )}
       {...props}
     >
-      <ChevronLeftIcon className="rtl:rotate-180" />
+      <ChevronLeftIcon className="rtl:rotate-180 size-4" />
       <span className="sr-only">Previous slide</span>
     </Button>
   </ArkCarousel.PrevTrigger>
@@ -76,28 +104,18 @@ const CarouselNext = React.forwardRef<
       data-slot="carousel-next"
       variant={variant}
       size={size}
-      className={cn("absolute touch-manipulation rounded-full", className)}
+      className={cn(
+        "touch-manipulation rounded-full disabled:opacity-50",
+        className
+      )}
       {...props}
     >
-      <ChevronRightIcon className="rtl:rotate-180" />
+      <ChevronRightIcon className="rtl:rotate-180 size-4" />
       <span className="sr-only">Next slide</span>
     </Button>
   </ArkCarousel.NextTrigger>
 ))
 CarouselNext.displayName = "CarouselNext"
-
-const CarouselControl = React.forwardRef<
-  React.ElementRef<typeof ArkCarousel.Control>,
-  React.ComponentPropsWithoutRef<typeof ArkCarousel.Control>
->(({ className, ...props }, ref) => (
-  <ArkCarousel.Control
-    ref={ref}
-    data-slot="carousel-control"
-    className={cn(className)}
-    {...props}
-  />
-))
-CarouselControl.displayName = "CarouselControl"
 
 const CarouselIndicatorGroup = React.forwardRef<
   React.ElementRef<typeof ArkCarousel.IndicatorGroup>,
@@ -106,7 +124,10 @@ const CarouselIndicatorGroup = React.forwardRef<
   <ArkCarousel.IndicatorGroup
     ref={ref}
     data-slot="carousel-indicator-group"
-    className={cn(className)}
+    className={cn(
+      "flex justify-center gap-2 data-[orientation=vertical]:flex-col",
+      className
+    )}
     {...props}
   />
 ))
@@ -119,25 +140,16 @@ const CarouselIndicator = React.forwardRef<
   <ArkCarousel.Indicator
     ref={ref}
     data-slot="carousel-indicator"
-    className={cn(className)}
+    className={cn(
+      "size-2.5 cursor-pointer rounded-full border-0 bg-muted-foreground/30 p-0 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring data-current:bg-primary",
+      className
+    )}
     {...props}
   />
 ))
 CarouselIndicator.displayName = "CarouselIndicator"
 
-function CarouselAutoplayTrigger({
-  className,
-  ...props
-}: React.ComponentProps<typeof ArkCarousel.AutoplayTrigger>) {
-  return (
-    <ArkCarousel.AutoplayTrigger
-      data-slot="carousel-autoplay-trigger"
-      className={cn(className)}
-      {...props}
-    />
-  )
-}
-
+const CarouselAutoplayTrigger = ArkCarousel.AutoplayTrigger
 const CarouselContext = ArkCarousel.Context
 const CarouselRootProvider = ArkCarousel.RootProvider
 
@@ -145,9 +157,9 @@ export {
   Carousel,
   CarouselContent,
   CarouselItem,
+  CarouselControl,
   CarouselPrevious,
   CarouselNext,
-  CarouselControl,
   CarouselIndicatorGroup,
   CarouselIndicator,
   CarouselAutoplayTrigger,
@@ -158,5 +170,4 @@ export {
 export {
   useCarousel as useCarouselApi,
   useCarouselContext,
-  type CarouselPageChangeDetails,
 } from "@ark-ui/react/carousel"

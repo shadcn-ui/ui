@@ -107,6 +107,18 @@
       "type": "registry:ui"
     },
     {
+      "name": "date-picker",
+      "dependencies": ["@ark-ui/react", "@internationalized/date"],
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/ark-maia/ui/date-picker.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
       "name": "card",
       "files": [
         {

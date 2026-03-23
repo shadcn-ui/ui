@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import { ark } from "@ark-ui/react/factory"
+import { Portal } from "@ark-ui/react/portal"
 import { Select as SelectPrimitive } from "@ark-ui/react/select"
 
 import { cn } from "@/examples/ark/lib/utils"
@@ -137,22 +138,29 @@ const SelectContent = React.forwardRef<
   HTMLDivElement,
   React.ComponentProps<typeof SelectPrimitive.Content>
 >(({ className, children, ...props }, ref) => (
-  <SelectPrimitive.Content
-    ref={ref}
-    data-slot="select-content"
-    className={cn(
-      "flex flex-col gap-0.5 rounded-lg border bg-popover p-1 text-popover-foreground shadow-lg outline-none",
-      "min-w-(--reference-width)",
-      "max-h-[min(var(--available-height,300px),300px)] overflow-y-auto",
-      "origin-(--transform-origin)",
-      "data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-[98%]",
-      "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-[98%]",
-      className
-    )}
-    {...props}
-  >
-    {children}
-  </SelectPrimitive.Content>
+  <Portal>
+    <SelectPrimitive.Positioner
+      data-slot="select-positioner"
+      className="z-50 outline-none"
+    >
+      <SelectPrimitive.Content
+        ref={ref}
+        data-slot="select-content"
+        className={cn(
+          "flex flex-col gap-0.5 rounded-lg border bg-popover p-1 text-popover-foreground shadow-lg outline-none",
+          "min-w-(--reference-width)",
+          "max-h-[min(var(--available-height,300px),300px)] overflow-y-auto",
+          "origin-(--transform-origin)",
+          "data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-[98%]",
+          "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-[98%]",
+          className
+        )}
+        {...props}
+      >
+        {children}
+      </SelectPrimitive.Content>
+    </SelectPrimitive.Positioner>
+  </Portal>
 ))
 SelectContent.displayName = "SelectContent"
 

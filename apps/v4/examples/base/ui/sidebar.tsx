@@ -1,6 +1,10 @@
 "use client"
 
 import * as React from "react"
+import { mergeProps } from "@base-ui/react/merge-props"
+import { useRender } from "@base-ui/react/use-render"
+import { cva, type VariantProps } from "class-variance-authority"
+
 import { useIsMobile } from "@/examples/base/hooks/use-mobile"
 import { cn } from "@/examples/base/lib/utils"
 import { Button } from "@/examples/base/ui/button"
@@ -19,9 +23,6 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/examples/base/ui/tooltip"
-import { mergeProps } from "@base-ui/react/merge-props"
-import { useRender } from "@base-ui/react/use-render"
-import { cva, type VariantProps } from "class-variance-authority"
 import { PanelLeftIcon } from "lucide-react"
 
 const SIDEBAR_COOKIE_NAME = "sidebar_state"
