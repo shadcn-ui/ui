@@ -312,6 +312,12 @@
     "description": "Collection of stunning components built with Tailwind CSS, shadcn/ui and Motion to use on your websites."
   },
   {
+    "name": "@launchui",
+    "homepage": "https://www.launchuicomponents.com/",
+    "url": "https://www.launchuicomponents.com/r/{name}.json",
+    "description": "Carefully crafted landing page components and templates built with React, Shadcn/ui and Tailwind."
+  },
+  {
     "name": "@lens-blocks",
     "homepage": "https://lensblocks.com",
     "url": "https://lensblocks.com/r/{name}.json",
