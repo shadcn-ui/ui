@@ -145,12 +145,12 @@ export const columns: ColumnDef<Payment>[] = [
       return (
         <DropdownMenu>
           <DropdownMenuTrigger
-            render={<Button variant="ghost" className="h-8 w-8 p-0" />}
+            render={<Button variant="ghost" size="icon-xs" />}
           >
             <span className="sr-only">Open menu</span>
             <MoreHorizontal />
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
+          <DropdownMenuContent align="end" className="w-44">
             <DropdownMenuGroup>
               <DropdownMenuLabel>Actions</DropdownMenuLabel>
               <DropdownMenuItem
@@ -216,7 +216,7 @@ export function DataTableDemo() {
           >
             Columns <ChevronDown />
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
+          <DropdownMenuContent align="end" className="w-44">
             <DropdownMenuGroup>
               {table
                 .getAllColumns()
@@ -290,7 +290,7 @@ export function DataTableDemo() {
         </Table>
       </div>
       <div className="flex items-center justify-end space-x-2 py-4">
-        <div className="text-muted-foreground flex-1 text-sm">
+        <div className="flex-1 text-sm text-muted-foreground">
           {table.getFilteredSelectedRowModel().rows.length} of{" "}
           {table.getFilteredRowModel().rows.length} row(s) selected.
         </div>

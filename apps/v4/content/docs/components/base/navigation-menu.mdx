@@ -37,7 +37,7 @@ npx shadcn@latest add navigation-menu
 <Step>Install the following dependencies:</Step>
 
 ```bash
-npm install @base-ui-components/react
+npm install @base-ui/react
 ```
 
 <Step>Copy and paste the following code into your project.</Step>
@@ -45,6 +45,7 @@ npm install @base-ui-components/react
 <ComponentSource
   name="navigation-menu"
   title="components/ui/navigation-menu.tsx"
+  styleName="base-nova"
 />
 
 <Step>Update the import paths to match your project setup.</Step>
@@ -107,6 +108,17 @@ export function NavigationMenuDemo() {
   )
 }
 ```
+
+## RTL
+
+To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview
+  styleName="base-nova"
+  name="navigation-menu-rtl"
+  direction="rtl"
+  previewClassName="h-96"
+/>
 
 ## API Reference
 

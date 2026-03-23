@@ -5,7 +5,7 @@ description: Install and configure shadcn/ui for TanStack Start.
 
 <Callout className="mb-6 border-emerald-600 bg-emerald-100 dark:border-emerald-400 dark:bg-emerald-900">
 
-**Want custom themes?** Use [shadcn/create](/create) for an interactive setup with custom themes, icon libraries, and presets.
+**Starting a new project?** Use [shadcn/create](/create) for a fully configured TanStack Start app with custom themes, Base UI or Radix, and icon libraries.
 
 </Callout>
 
@@ -16,7 +16,13 @@ description: Install and configure shadcn/ui for TanStack Start.
 Run the following command to create a new TanStack Start project with shadcn/ui:
 
 ```bash
-npm create @tanstack/start@latest --tailwind --add-ons shadcn
+npx shadcn@latest init -t start
+```
+
+**For a monorepo project, use `--monorepo` flag:**
+
+```bash
+npx shadcn@latest init -t start --monorepo
 ```
 
 ### Add Components
@@ -42,9 +48,3 @@ function App() {
 ```
 
 </Steps>
-
-If you want to add all `shadcn/ui` components, you can run the following command:
-
-```bash
-npx shadcn@latest add --all
-```

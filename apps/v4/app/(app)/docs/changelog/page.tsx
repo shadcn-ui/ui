@@ -57,7 +57,7 @@ export default function ChangelogPage() {
                 </a>
               </Button>
             </div>
-            <p className="text-muted-foreground text-[1.05rem] sm:text-base sm:text-balance md:max-w-[80%]">
+            <p className="text-[1.05rem] text-muted-foreground sm:text-base sm:text-balance md:max-w-[80%]">
               Latest updates and announcements.
             </p>
           </div>
@@ -79,24 +79,28 @@ export default function ChangelogPage() {
             })}
             {olderPages.length > 0 && (
               <div id="more-updates" className="mb-24 scroll-mt-24">
-                <h2 className="font-heading mb-6 text-xl font-semibold tracking-tight">
+                <h2 className="mb-6 font-heading text-xl font-semibold tracking-tight">
                   More Updates
                 </h2>
-                <ul className="flex flex-col gap-4">
+                <div className="grid auto-rows-fr gap-3 sm:grid-cols-2">
                   {olderPages.map((page) => {
                     const data = page.data as ChangelogPageData
+                    const [date, ...titleParts] = data.title.split(" - ")
+                    const title = titleParts.join(" - ")
                     return (
-                      <li key={page.url} className="flex items-center gap-3">
-                        <Link
-                          href={page.url}
-                          className="font-medium hover:underline"
-                        >
-                          {data.title}
-                        </Link>
-                      </li>
+                      <Link
+                        key={page.url}
+                        href={page.url}
+                        className="flex w-full flex-col rounded-xl bg-surface px-4 py-3 text-surface-foreground transition-colors hover:bg-surface/80"
+                      >
+                        <span className="text-xs text-muted-foreground">
+                          {date}
+                        </span>
+                        <span className="text-sm font-medium">{title}</span>
+                      </Link>
                     )
                   })}
-                </ul>
+                </div>
               </div>
             )}
           </div>
@@ -106,7 +110,7 @@ export default function ChangelogPage() {
         <div className="h-(--top-spacing) shrink-0"></div>
         <div className="no-scrollbar flex flex-col gap-8 overflow-y-auto px-8">
           <div className="flex flex-col gap-2 p-4 pt-0 text-sm">
-            <p className="text-muted-foreground bg-background sticky top-0 h-6 text-xs font-medium">
+            <p className="sticky top-0 h-6 bg-background text-xs font-medium text-muted-foreground">
               On This Page
             </p>
             {latestPages.map((page) => {
@@ -115,7 +119,7 @@ export default function ChangelogPage() {
                 <Link
                   key={page.url}
                   href={page.url}
-                  className="text-muted-foreground hover:text-foreground text-[0.8rem] no-underline transition-colors"
+                  className="text-[0.8rem] text-muted-foreground no-underline transition-colors hover:text-foreground"
                 >
                   {data.title}
                 </Link>
@@ -124,7 +128,7 @@ export default function ChangelogPage() {
             {olderPages.length > 0 && (
               <a
                 href="#more-updates"
-                className="text-muted-foreground hover:text-foreground text-[0.8rem] no-underline transition-colors"
+                className="text-[0.8rem] text-muted-foreground no-underline transition-colors hover:text-foreground"
               >
                 More Updates
               </a>

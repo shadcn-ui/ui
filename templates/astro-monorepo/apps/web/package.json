@@ -1,0 +1,35 @@
+{
+  "name": "web",
+  "version": "0.0.1",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "lint": "eslint",
+    "format": "prettier --write \"**/*.{ts,tsx,astro}\"",
+    "typecheck": "astro check"
+  },
+  "dependencies": {
+    "@astrojs/react": "^4.4.2",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@workspace/ui": "workspace:*",
+    "astro": "^5.17.1",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.2",
+    "@tailwindcss/vite": "^4.1.18",
+    "@types/node": "^25.1.0",
+    "eslint": "^9.39.2",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.4.24",
+    "globals": "^17.2.0",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.54.0"
+  }
+}

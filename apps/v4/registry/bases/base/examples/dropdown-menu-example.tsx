@@ -55,6 +55,7 @@ export default function DropdownMenuExample() {
       <DropdownMenuWithDestructive />
       <DropdownMenuWithAvatar />
       <DropdownMenuInDialog />
+      <DropdownMenuWithInset />
     </ExampleWrapper>
   )
 }
@@ -619,7 +620,7 @@ function DropdownMenuWithAvatar() {
             </Avatar>
             <div className="grid flex-1 text-left text-sm leading-tight">
               <span className="truncate font-semibold">shadcn</span>
-              <span className="text-muted-foreground truncate text-xs">
+              <span className="truncate text-xs text-muted-foreground">
                 shadcn@example.com
               </span>
             </div>
@@ -629,7 +630,7 @@ function DropdownMenuWithAvatar() {
               hugeicons="UnfoldMoreIcon"
               phosphor="CaretUpDownIcon"
               remixicon="RiArrowUpDownLine"
-              className="text-muted-foreground ml-auto"
+              className="ml-auto text-muted-foreground"
             />
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-(--anchor-width) min-w-56">
@@ -739,6 +740,95 @@ function DropdownMenuInDialog() {
   )
 }
 
+function DropdownMenuWithInset() {
+  const [showBookmarks, setShowBookmarks] = React.useState(true)
+  const [showUrls, setShowUrls] = React.useState(false)
+  const [theme, setTheme] = React.useState("system")
+
+  return (
+    <Example title="With Inset">
+      <DropdownMenu>
+        <DropdownMenuTrigger
+          render={<Button variant="outline" className="w-fit" />}
+        >
+          Open
+        </DropdownMenuTrigger>
+        <DropdownMenuContent className="w-44">
+          <DropdownMenuGroup>
+            <DropdownMenuLabel>Actions</DropdownMenuLabel>
+            <DropdownMenuItem>
+              <IconPlaceholder
+                lucide="CopyIcon"
+                tabler="IconCopy"
+                hugeicons="CopyIcon"
+                phosphor="CopyIcon"
+                remixicon="RiFileCopyLine"
+              />
+              Copy
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <IconPlaceholder
+                lucide="ScissorsIcon"
+                tabler="IconCut"
+                hugeicons="ScissorIcon"
+                phosphor="ScissorsIcon"
+                remixicon="RiScissorsLine"
+              />
+              Cut
+            </DropdownMenuItem>
+            <DropdownMenuItem inset>Paste</DropdownMenuItem>
+          </DropdownMenuGroup>
+          <DropdownMenuSeparator />
+          <DropdownMenuGroup>
+            <DropdownMenuLabel inset>Appearance</DropdownMenuLabel>
+            <DropdownMenuCheckboxItem
+              inset
+              checked={showBookmarks}
+              onCheckedChange={setShowBookmarks}
+            >
+              Bookmarks
+            </DropdownMenuCheckboxItem>
+            <DropdownMenuCheckboxItem
+              inset
+              checked={showUrls}
+              onCheckedChange={setShowUrls}
+            >
+              Full URLs
+            </DropdownMenuCheckboxItem>
+          </DropdownMenuGroup>
+          <DropdownMenuSeparator />
+          <DropdownMenuGroup>
+            <DropdownMenuLabel inset>Theme</DropdownMenuLabel>
+            <DropdownMenuRadioGroup value={theme} onValueChange={setTheme}>
+              <DropdownMenuRadioItem inset value="light">
+                Light
+              </DropdownMenuRadioItem>
+              <DropdownMenuRadioItem inset value="dark">
+                Dark
+              </DropdownMenuRadioItem>
+              <DropdownMenuRadioItem inset value="system">
+                System
+              </DropdownMenuRadioItem>
+            </DropdownMenuRadioGroup>
+          </DropdownMenuGroup>
+          <DropdownMenuSeparator />
+          <DropdownMenuSub>
+            <DropdownMenuSubTrigger inset>More Options</DropdownMenuSubTrigger>
+            <DropdownMenuPortal>
+              <DropdownMenuSubContent>
+                <DropdownMenuGroup>
+                  <DropdownMenuItem>Save Page...</DropdownMenuItem>
+                  <DropdownMenuItem>Create Shortcut...</DropdownMenuItem>
+                </DropdownMenuGroup>
+              </DropdownMenuSubContent>
+            </DropdownMenuPortal>
+          </DropdownMenuSub>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    </Example>
+  )
+}
+
 function DropdownMenuComplex() {
   const [notifications, setNotifications] = React.useState({
     email: true,
@@ -755,7 +845,7 @@ function DropdownMenuComplex() {
         >
           Complex Menu
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="style-maia:w-56 style-mira:w-48 style-nova:w-48 style-vega:w-56 style-lyra:w-48">
+        <DropdownMenuContent className="style-vega:w-56 style-nova:w-48 style-lyra:w-48 style-maia:w-56 style-mira:w-48">
           <DropdownMenuGroup>
             <DropdownMenuLabel>File</DropdownMenuLabel>
             <DropdownMenuItem>

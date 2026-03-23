@@ -79,7 +79,7 @@ export const columns: ColumnDef<Task>[] = [
       return (
         <div className="flex w-[100px] items-center gap-2">
           {status.icon && (
-            <status.icon className="text-muted-foreground size-4" />
+            <status.icon className="size-4 text-muted-foreground" />
           )}
           <span>{status.label}</span>
         </div>
@@ -106,7 +106,7 @@ export const columns: ColumnDef<Task>[] = [
       return (
         <div className="flex items-center gap-2">
           {priority.icon && (
-            <priority.icon className="text-muted-foreground size-4" />
+            <priority.icon className="size-4 text-muted-foreground" />
           )}
           <span>{priority.label}</span>
         </div>
