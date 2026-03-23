@@ -35,6 +35,7 @@ export function ComboboxMultiple() {
       onInputValueChange={(details) => filter(details.inputValue)}
       multiple
       defaultValue={["nextjs"]}
+      className="w-full max-w-64"
     >
       <ComboboxControl>
         <ComboboxInput placeholder="Select frameworks" />

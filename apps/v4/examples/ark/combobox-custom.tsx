@@ -53,6 +53,7 @@ export function ComboboxWithCustomItems() {
     <Combobox
       collection={collection}
       onInputValueChange={(details) => filter(details.inputValue)}
+      className="w-full max-w-48"
     >
       <ComboboxControl>
         <ComboboxInput placeholder="Search countries..." />

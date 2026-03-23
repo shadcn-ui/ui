@@ -21,7 +21,7 @@ const Combobox = React.forwardRef(function Combobox<
 ) {
   const { children, ...rest } = props
   return (
-    <ComboboxPrimitive.Root<T> ref={ref} data-slot="combobox" {...rest}>
+    <ComboboxPrimitive.Root<T> ref={ref} data-slot="combobox" lazyMount unmountOnExit {...rest}>
       {children}
     </ComboboxPrimitive.Root>
   )

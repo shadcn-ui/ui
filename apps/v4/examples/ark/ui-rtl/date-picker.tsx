@@ -8,7 +8,11 @@ import { cn } from "@/examples/ark/lib/utils"
 import { Button } from "@/examples/ark/ui-rtl/button"
 import { CalendarIcon, ChevronLeftIcon, ChevronRightIcon } from "lucide-react"
 
-const DatePicker = DatePickerPrimitive.Root
+function DatePicker(
+  props: React.ComponentProps<typeof DatePickerPrimitive.Root>
+) {
+  return <DatePickerPrimitive.Root lazyMount unmountOnExit {...props} />
+}
 
 const DatePickerLabel = React.forwardRef<
   HTMLLabelElement,
@@ -101,7 +105,7 @@ const DatePickerPositioner = React.forwardRef<
   <DatePickerPrimitive.Positioner
     ref={ref}
     data-slot="date-picker-positioner"
-    className={cn("z-50", className)}
+    className={className}
     {...props}
   />
 ))
@@ -114,13 +118,12 @@ const DatePickerContent = React.forwardRef<
   <Portal>
     <DatePickerPrimitive.Positioner
       data-slot="date-picker-positioner"
-      className="z-50"
     >
       <DatePickerPrimitive.Content
         ref={ref}
         data-slot="date-picker-content"
         className={cn(
-          "flex flex-col gap-3 rounded-lg border bg-popover p-3 text-popover-foreground shadow-lg outline-none",
+          "z-50 flex flex-col gap-3 rounded-lg border bg-popover p-3 text-popover-foreground shadow-lg outline-none",
           "min-w-[17.5rem]",
           "origin-[var(--transform-origin)]",
           "data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-[98%]",

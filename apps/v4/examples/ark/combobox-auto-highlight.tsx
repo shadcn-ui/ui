@@ -34,6 +34,7 @@ export function ComboboxAutoHighlight() {
       collection={collection}
       onInputValueChange={(details) => filter(details.inputValue)}
       autoFocus
+      className="w-full max-w-48"
     >
       <ComboboxControl>
         <ComboboxInput placeholder="Select a framework" />

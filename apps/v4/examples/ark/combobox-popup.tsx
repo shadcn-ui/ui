@@ -48,6 +48,7 @@ export function ComboboxPopup() {
     <Combobox
       collection={collection}
       onInputValueChange={(details) => filter(details.inputValue)}
+      className="w-full max-w-48"
     >
       <ComboboxControl>
         <ComboboxTrigger asChild>

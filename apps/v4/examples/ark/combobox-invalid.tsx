@@ -34,6 +34,7 @@ export function ComboboxInvalid() {
       collection={collection}
       onInputValueChange={(details) => filter(details.inputValue)}
       invalid
+      className="w-full max-w-48"
     >
       <ComboboxControl>
         <ComboboxInput placeholder="Select a framework" />

@@ -16,8 +16,8 @@ export function DatePickerSimple() {
         </DatePicker.Trigger>
       </DatePicker.Control>
       <Portal>
-        <DatePicker.Positioner className="z-50">
-          <DatePicker.Content className="flex flex-col gap-3 rounded-lg border bg-popover p-3 text-popover-foreground shadow-lg outline-none origin-[var(--transform-origin)] data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-[98%] data-[state=open]:zoom-in-[98%]">
+        <DatePicker.Positioner>
+          <DatePicker.Content className="z-50 flex flex-col gap-3 rounded-lg border bg-popover p-3 text-popover-foreground shadow-lg outline-none origin-[var(--transform-origin)] data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-[98%] data-[state=open]:zoom-in-[98%]">
             <DatePicker.View view="day">
               <DatePicker.Context>
                 {(api) => (

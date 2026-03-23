@@ -71,6 +71,7 @@ export function ComboxboxInputGroup() {
     <Combobox
       collection={collection}
       onInputValueChange={(details) => filter(details.inputValue)}
+      className="w-full max-w-64"
     >
       <ComboboxControl>
         <GlobeIcon className="size-4" />

@@ -19,7 +19,13 @@ const Combobox = React.forwardRef(function Combobox<T extends CollectionItem>(
 ) {
   const { children, ...rest } = props
   return (
-    <ComboboxPrimitive.Root<T> ref={ref} data-slot="combobox" {...rest}>
+    <ComboboxPrimitive.Root<T>
+      ref={ref}
+      data-slot="combobox"
+      lazyMount
+      unmountOnExit
+      {...rest}
+    >
       {children}
     </ComboboxPrimitive.Root>
   )
@@ -56,7 +62,11 @@ const ComboboxInput = React.forwardRef<
     ref={ref}
     data-slot="combobox-input"
     className={cn(
-      "flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50",
+      "flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-xs transition-[border-color,box-shadow] duration-150 ease-in-out outline-none",
+      "placeholder:text-muted-foreground",
+      "hover:border-ring/50",
+      "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/20",
+      "disabled:cursor-not-allowed disabled:opacity-50",
       className
     )}
     {...props}
@@ -73,11 +83,14 @@ const ComboboxTrigger = React.forwardRef<
   <ComboboxPrimitive.Trigger
     ref={ref}
     data-slot="combobox-trigger"
-    className={cn("[&_svg:not([class*='size-'])]:size-4", className)}
+    className={cn(
+      "absolute inset-y-0 end-0 flex items-center px-2.5 text-muted-foreground/60 [&_svg:not([class*='size-'])]:size-4",
+      className
+    )}
     {...props}
   >
     {children ?? (
-      <ChevronDownIcon className="pointer-events-none size-4 text-muted-foreground" />
+      <ChevronDownIcon className="pointer-events-none size-4" />
     )}
   </ComboboxPrimitive.Trigger>
 ))
@@ -95,7 +108,10 @@ const ComboboxContent = React.forwardRef<
         ref={ref}
         data-slot="combobox-content"
         className={cn(
-          "max-h-72 min-w-36 overflow-hidden rounded-lg bg-popover text-popover-foreground shadow-md ring-1 ring-foreground/10 duration-100 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 *:data-[slot=input-group]:m-1 *:data-[slot=input-group]:mb-0 *:data-[slot=input-group]:h-8 *:data-[slot=input-group]:border-input/30 *:data-[slot=input-group]:bg-input/30 *:data-[slot=input-group]:shadow-none data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95",
+          "z-50 max-h-72 min-w-36 overflow-hidden rounded-lg border bg-popover p-0 text-popover-foreground shadow-lg outline-none",
+          "origin-(--transform-origin)",
+          "data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95",
+          "data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95",
           className
         )}
         {...props}
@@ -117,7 +133,10 @@ const ComboboxItem = React.forwardRef<
     ref={ref}
     data-slot="combobox-item"
     className={cn(
-      "gap-2 rounded-md py-1 pe-8 ps-1.5 text-sm data-highlighted:bg-accent data-highlighted:text-accent-foreground not-data-[variant=destructive]:data-highlighted:**:text-accent-foreground [&_svg:not([class*='size-'])]:size-4",
+      "relative flex w-full cursor-default items-center gap-2 rounded-md py-1 pe-8 ps-1.5 text-sm outline-hidden select-none",
+      "data-highlighted:bg-accent data-highlighted:text-accent-foreground",
+      "data-disabled:pointer-events-none data-disabled:opacity-50",
+      "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
       className
     )}
     {...props}
