@@ -5,9 +5,9 @@ base: base
 component: true
 ---
 
-<Callout>
+<Callout className="mt-4">
 
-**Recharts v3:** The `chart` component now targets Recharts v3. Use `ChartTooltip.defaultIndex` for initial tooltip state, but keep persistent active shapes in your own chart state. Also remove `layout` from `<Bar>` when `BarChart` already sets it, and keep a height or `min-h-*` on `ChartContainer`.
+**Updated:** The `chart` component now uses Recharts v3. If you're upgrading existing chart code, see [Updating to Recharts v3](#updating-to-recharts-v3).
 
 </Callout>
 
@@ -50,6 +50,15 @@ export function MyChart() {
 We do not wrap Recharts. This means you're not locked into an abstraction. When a new Recharts version is released, you can follow the official upgrade path to upgrade your charts.
 
 **The components are yours**.
+
+## Updating to Recharts v3
+
+If you're updating older chart code to Recharts v3:
+
+- Use `var(--chart-1)` instead of `hsl(var(--chart-1))` when you reference chart tokens from your CSS variables.
+- Use `ChartTooltip.defaultIndex` for initial tooltip state only. Keep persistent active shapes in your own chart state.
+- Remove `layout` from `<Bar>` when the parent `<BarChart>` already defines it.
+- Keep a height, `min-h-*`, or `aspect-*` on `ChartContainer` so `ResponsiveContainer` can measure on first render.
 
 ## Installation
 
