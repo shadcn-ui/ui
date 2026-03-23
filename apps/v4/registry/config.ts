@@ -7,7 +7,7 @@ import { z } from "zod"
 
 import { BASE_COLORS, type BaseColor } from "@/registry/base-colors"
 import { BASES, type Base } from "@/registry/bases"
-import { fonts } from "@/registry/fonts"
+import { bodyFonts, fonts, headingFonts } from "@/registry/fonts"
 import { STYLES, type Style } from "@/registry/styles"
 import { THEMES, type Theme } from "@/registry/themes"
 
@@ -17,21 +17,40 @@ export { BASES, type Base }
 export { STYLES, type Style }
 export { THEMES, type Theme }
 export { BASE_COLORS, type BaseColor }
-export { fonts }
+export { bodyFonts, headingFonts, fonts }
 export { iconLibraries, type IconLibrary, type IconLibraryName }
 
 export type BaseName = Base["name"]
 export type StyleName = Style["name"]
 export type ThemeName = Theme["name"]
 export type BaseColorName = BaseColor["name"]
+export type ChartColorName = Theme["name"]
 
 // Derive font values from registry fonts (e.g., "font-inter" -> "inter").
-const fontValues = fonts.map((f) => f.name.replace("font-", "")) as [
+const fontValues = bodyFonts.map((f) => f.name.replace("font-", "")) as [
   string,
   ...string[],
 ]
+const fontHeadingValues = ["inherit", ...fontValues] as const
 
 export type FontValue = (typeof fontValues)[number]
+export type FontHeadingValue = (typeof fontHeadingValues)[number]
+
+export function getBodyFont(font: FontValue) {
+  return bodyFonts.find((item) => item.name === `font-${font}`)
+}
+
+export function getHeadingFont(
+  fontHeading: Exclude<FontHeadingValue, "inherit">
+) {
+  return headingFonts.find(
+    (item) => item.name === `font-heading-${fontHeading}`
+  )
+}
+
+export function getInheritedHeadingFontValue(font: FontValue) {
+  return `var(${getBodyFont(font)?.font.variable ?? "--font-sans"})`
+}
 
 export const MENU_ACCENTS = [
   { value: "subtle", label: "Subtle" },
@@ -77,7 +96,11 @@ export const designSystemConfigSchema = z
       )
       .default("neutral"),
     theme: z.enum(THEMES.map((t) => t.name) as [ThemeName, ...ThemeName[]]),
+    chartColor: z
+      .enum(THEMES.map((t) => t.name) as [ChartColorName, ...ChartColorName[]])
+      .default("neutral"),
     font: z.enum(fontValues).default("inter"),
+    fontHeading: z.enum(fontHeadingValues).default("inherit"),
     item: z.string().optional(),
     rtl: z.boolean().default(false),
     menuAccent: z
@@ -123,6 +146,16 @@ export const designSystemConfigSchema = z
       path: ["theme"],
     })
   )
+  .refine(
+    (data) => {
+      const availableThemes = getThemesForBaseColor(data.baseColor)
+      return availableThemes.some((t) => t.name === data.chartColor)
+    },
+    (data) => ({
+      message: `Chart color "${data.chartColor}" is not available for base color "${data.baseColor}"`,
+      path: ["chartColor"],
+    })
+  )
 
 export type DesignSystemConfig = z.infer<typeof designSystemConfigSchema>
 
@@ -131,8 +164,10 @@ export const DEFAULT_CONFIG: DesignSystemConfig = {
   style: "nova",
   baseColor: "neutral",
   theme: "neutral",
+  chartColor: "neutral",
   iconLibrary: "lucide",
   font: "inter",
+  fontHeading: "inherit",
   item: "Item",
   rtl: false,
   menuAccent: "subtle",
@@ -157,8 +192,10 @@ export const PRESETS: Preset[] = [
     style: "vega",
     baseColor: "neutral",
     theme: "neutral",
+    chartColor: "neutral",
     iconLibrary: "lucide",
     font: "inter",
+    fontHeading: "inherit",
     item: "Item",
     rtl: false,
     menuAccent: "subtle",
@@ -173,8 +210,10 @@ export const PRESETS: Preset[] = [
     style: "nova",
     baseColor: "neutral",
     theme: "neutral",
+    chartColor: "neutral",
     iconLibrary: "lucide",
     font: "geist",
+    fontHeading: "inherit",
     item: "Item",
     rtl: false,
     menuAccent: "subtle",
@@ -189,8 +228,10 @@ export const PRESETS: Preset[] = [
     style: "maia",
     baseColor: "neutral",
     theme: "neutral",
+    chartColor: "neutral",
     iconLibrary: "hugeicons",
     font: "figtree",
+    fontHeading: "inherit",
     item: "Item",
     rtl: false,
     menuAccent: "subtle",
@@ -205,8 +246,10 @@ export const PRESETS: Preset[] = [
     style: "lyra",
     baseColor: "neutral",
     theme: "neutral",
+    chartColor: "neutral",
     iconLibrary: "phosphor",
     font: "jetbrains-mono",
+    fontHeading: "inherit",
     item: "Item",
     rtl: false,
     menuAccent: "subtle",
@@ -222,8 +265,10 @@ export const PRESETS: Preset[] = [
     style: "vega",
     baseColor: "neutral",
     theme: "neutral",
+    chartColor: "neutral",
     iconLibrary: "lucide",
     font: "inter",
+    fontHeading: "inherit",
     item: "Item",
     rtl: false,
     menuAccent: "subtle",
@@ -238,8 +283,10 @@ export const PRESETS: Preset[] = [
     style: "nova",
     baseColor: "neutral",
     theme: "neutral",
+    chartColor: "neutral",
     iconLibrary: "lucide",
     font: "geist",
+    fontHeading: "inherit",
     item: "Item",
     rtl: false,
     menuAccent: "subtle",
@@ -254,8 +301,10 @@ export const PRESETS: Preset[] = [
     style: "maia",
     baseColor: "neutral",
     theme: "neutral",
+    chartColor: "neutral",
     iconLibrary: "hugeicons",
     font: "figtree",
+    fontHeading: "inherit",
     item: "Item",
     rtl: false,
     menuAccent: "subtle",
@@ -270,8 +319,10 @@ export const PRESETS: Preset[] = [
     style: "lyra",
     baseColor: "neutral",
     theme: "neutral",
+    chartColor: "neutral",
     iconLibrary: "phosphor",
     font: "jetbrains-mono",
+    fontHeading: "inherit",
     item: "Item",
     rtl: false,
     menuAccent: "subtle",
@@ -286,8 +337,10 @@ export const PRESETS: Preset[] = [
     style: "mira",
     baseColor: "neutral",
     theme: "neutral",
+    chartColor: "neutral",
     iconLibrary: "hugeicons",
     font: "inter",
+    fontHeading: "inherit",
     item: "Item",
     rtl: false,
     menuAccent: "subtle",
@@ -302,8 +355,10 @@ export const PRESETS: Preset[] = [
     style: "mira",
     baseColor: "neutral",
     theme: "neutral",
+    chartColor: "neutral",
     iconLibrary: "hugeicons",
     font: "inter",
+    fontHeading: "inherit",
     item: "Item",
     rtl: false,
     menuAccent: "subtle",
@@ -365,6 +420,18 @@ export function buildRegistryTheme(config: DesignSystemConfig) {
   }
   const themeVars: Record<string, string> = {}
 
+  // Apply chart color override.
+  const chartTheme = getTheme(config.chartColor)
+  if (chartTheme) {
+    const chartLight = chartTheme.cssVars?.light as Record<string, string>
+    const chartDark = chartTheme.cssVars?.dark as Record<string, string>
+    for (let i = 1; i <= 5; i++) {
+      const key = `chart-${i}`
+      if (chartLight?.[key]) lightVars[key] = chartLight[key]
+      if (chartDark?.[key]) darkVars[key] = chartDark[key]
+    }
+  }
+
   // Apply menu accent transformation.
   if (config.menuAccent === "bold") {
     lightVars.accent = lightVars.primary
@@ -400,6 +467,8 @@ export function buildRegistryTheme(config: DesignSystemConfig) {
 export function buildRegistryBase(config: DesignSystemConfig) {
   const baseItem = getBase(config.base)
   const iconLibraryItem = getIconLibrary(config.iconLibrary)
+  const normalizedFontHeading =
+    config.fontHeading === config.font ? "inherit" : config.fontHeading
 
   if (!baseItem || !iconLibraryItem) {
     throw new Error(
@@ -419,9 +488,19 @@ export function buildRegistryBase(config: DesignSystemConfig) {
   ]
 
   const registryDependencies = ["utils"]
+  const themeVars = {
+    ...(registryTheme.cssVars?.theme ?? {}),
+    ...(normalizedFontHeading === "inherit"
+      ? { "--font-heading": getInheritedHeadingFontValue(config.font) }
+      : {}),
+  }
 
   if (config.font) {
     registryDependencies.push(`font-${config.font}`)
+  }
+
+  if (normalizedFontHeading !== "inherit") {
+    registryDependencies.push(`font-heading-${normalizedFontHeading}`)
   }
 
   return {
@@ -440,7 +519,10 @@ export function buildRegistryBase(config: DesignSystemConfig) {
     },
     dependencies,
     registryDependencies,
-    cssVars: registryTheme.cssVars,
+    cssVars: {
+      ...registryTheme.cssVars,
+      theme: Object.keys(themeVars).length > 0 ? themeVars : undefined,
+    },
     css: {
       '@import "tw-animate-css"': {},
       '@import "shadcn/tailwind.css"': {},

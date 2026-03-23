@@ -918,15 +918,27 @@
     "description": "A collection of customizable UI blocks with interactive live previews"
   },
   {
+    "name": "@nexus-ui",
+    "homepage": "https://nexus-ui.dev",
+    "url": "https://nexus-ui.dev/r/{name}.json",
+    "description": "Open-source component library of composable, copy-paste primitives for building AI interfaces (chat, streaming, multimodal)"
+  },
+  {
     "name": "@sabraman",
     "homepage": "https://sabraman.ru/components",
     "url": "https://sabraman.ru/r/{name}.json",
     "description": "Legacy skeuomorphic UI components and blocks for shadcn."
   },
   {
-    "name":"@odysseyui",
-    "homepage":"https://www.odysseyui.com/docs",
-    "url":"https://odysseyui.com/r/{name}.json",
-    "description":"A design focused component library for Next.js, built for speed, flexibility and developer experience."
+    "name": "@odysseyui",
+    "homepage": "https://www.odysseyui.com/docs",
+    "url": "https://www.odysseyui.com/r/{name}.json",
+    "description": "A design focused component library for Next.js, built for speed, flexibility and developer experience."
+  },
+  {
+    "name": "@rescript-shadcn",
+    "homepage": "https://rescript-shadcn.miriad.studio",
+    "url": "https://rescript-shadcn.miriad.studio/r/{name}.json",
+    "description": "Shadcn components rewritten in Rescript, compatible with shadcn CLI."
   }
 ]
