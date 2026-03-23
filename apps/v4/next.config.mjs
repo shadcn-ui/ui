@@ -1,3 +1,4 @@
+import path from "path"
 import { createMDX } from "fumadocs-mdx/next"
 
 /** @type {import('next').NextConfig} */
@@ -24,6 +25,9 @@ const nextConfig = {
         hostname: "avatar.vercel.sh",
       },
     ],
+  },
+  turbopack: {
+    root: path.resolve(import.meta.dirname, "../.."),
   },
   experimental: {
     turbopackFileSystemCacheForDev: true,
