@@ -7,7 +7,7 @@ component: true
 
 <Callout>
 
-**Recharts v3:** The `chart` component now targets Recharts v3. If you're upgrading from v2, move default active states to `ChartTooltip.defaultIndex`, remove `layout` from `<Bar>` when `BarChart` already sets it, and keep a height or `min-h-*` on `ChartContainer`.
+**Recharts v3:** The `chart` component now targets Recharts v3. Use `ChartTooltip.defaultIndex` for initial tooltip state, but keep persistent active shapes in your own chart state. Also remove `layout` from `<Bar>` when `BarChart` already sets it, and keep a height or `min-h-*` on `ChartContainer`.
 
 </Callout>
 
