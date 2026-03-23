@@ -498,6 +498,12 @@
     "description": "Modal component for react-easy-modals. Integrates with shadcn Dialog for a simple, powerful modal system with TypeScript support and promise-based API."
   },
   {
+    "name": "@react-slot",
+    "homepage": "https://react-slot.vercel.app/",
+    "url": "https://react-slot.vercel.app/r/{name}.json",
+    "description": "Vue-style slot composition for React - Fine-grained control over component composition"
+  },
+  {
     "name": "@retroui",
     "homepage": "https://retroui.dev",
     "url": "https://retroui.dev/r/{name}.json",
