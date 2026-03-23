@@ -684,6 +684,12 @@
     "description": "Fullstack registry items to start those big features. Utilcn has ChatGPT Apps, file uploading (with progress bars) and downloading, and a way to make your env vars typesafe on the backend."
   },
   {
+    "name": "@w3-kit",
+    "homepage": "https://w3-kit.com",
+    "url": "https://w3-kit.com/registry/{name}.json",
+    "description": "Web3 UI components for blockchain dApps. Includes wallet connection, token swaps, NFT cards, staking interfaces, and 20+ more crypto components."
+  },
+  {
     "name": "@wandry-ui",
     "homepage": "http://ui.wandry.com.ua/",
     "url": "https://ui.wandry.com.ua/r/{name}.json",
@@ -922,5 +928,29 @@
     "homepage": "https://ui.flexnative.com",
     "url": "https://ui.flexnative.com/r/{name}.json",
     "description": "A collection of customizable UI blocks with interactive live previews"
+  },
+  {
+    "name": "@nexus-ui",
+    "homepage": "https://nexus-ui.dev",
+    "url": "https://nexus-ui.dev/r/{name}.json",
+    "description": "Open-source component library of composable, copy-paste primitives for building AI interfaces (chat, streaming, multimodal)"
+  },
+  {
+    "name": "@sabraman",
+    "homepage": "https://sabraman.ru/components",
+    "url": "https://sabraman.ru/r/{name}.json",
+    "description": "Legacy skeuomorphic UI components and blocks for shadcn."
+  },
+  {
+    "name": "@odysseyui",
+    "homepage": "https://www.odysseyui.com/docs",
+    "url": "https://www.odysseyui.com/r/{name}.json",
+    "description": "A design focused component library for Next.js, built for speed, flexibility and developer experience."
+  },
+  {
+    "name": "@rescript-shadcn",
+    "homepage": "https://rescript-shadcn.miriad.studio",
+    "url": "https://rescript-shadcn.miriad.studio/r/{name}.json",
+    "description": "Shadcn components rewritten in Rescript, compatible with shadcn CLI."
   }
 ]
