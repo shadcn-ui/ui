@@ -1,0 +1,22 @@
+---
+description: Keep registry base and radix trees in sync when editing shared UI
+globs: apps/v4/registry/bases/**/*
+alwaysApply: false
+---
+
+# Registry bases: Base UI ↔ Radix parity
+
+`apps/v4/registry/bases/base` and `apps/v4/registry/bases/radix` are **parallel registries**. Anything that exists in both trees for the same purpose (preview blocks, mirrored examples, shared card layouts, etc.) **must stay in sync**.
+
+## When editing
+
+- If you change a file under **`bases/base/...`**, apply the **same behavioral and visual change** to the matching path under **`bases/radix/...`** (and the reverse).
+- Only diverge where APIs differ (e.g. import paths like `@/registry/bases/base/ui/*` vs `@/registry/bases/radix/ui/*`, or Base UI vs Radix component props).
+- Do **not** update only one side unless the user explicitly asks for a single-base change.
+
+## Typical mirrored paths
+
+- `blocks/preview/**` — preview cards and blocks
+- Parallel `ui/*` components when both exist for the same component
+
+After edits, briefly confirm both trees were updated (or state why one side is intentionally unchanged).

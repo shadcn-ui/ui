@@ -316,13 +316,13 @@ You can use the same approach to format other cells and headers.
 
 ## Row Actions
 
-Let's add row actions to our table. We'll use a `<Dropdown />` component for this.
+Let's add row actions to our table. We'll use a `<DropdownMenu />` component for this.
 
 <Steps className="mb-0 pt-2">
 
 ### Update columns definition
 
-Update our columns definition to add a new `actions` column. The `actions` cell returns a `<Dropdown />` component.
+Update our columns definition to add a new `actions` column. The `actions` cell returns a `<DropdownMenu />` component.
 
 ```tsx showLineNumbers title="app/payments/columns.tsx" {4,6-14,18-45}
 "use client"
@@ -472,7 +472,7 @@ Let's make the email column sortable.
 
 ### Update `<DataTable>`
 
-```tsx showLineNumbers title="app/payments/data-table.tsx" showLineNumbers {3,6,10,18,25-28}
+```tsx showLineNumbers title="app/payments/data-table.tsx" {3,6,10,18,25-29}
 "use client"
 
 import * as React from "react"
@@ -827,7 +827,7 @@ This adds a checkbox to each row and a checkbox in the header to select all rows
 You can show the number of selected rows using the `table.getFilteredSelectedRowModel()` API.
 
 ```tsx
-<div className="text-muted-foreground flex-1 text-sm">
+<div className="flex-1 text-sm text-muted-foreground">
   {table.getFilteredSelectedRowModel().rows.length} of{" "}
   {table.getFilteredRowModel().rows.length} row(s) selected.
 </div>

@@ -81,7 +81,7 @@ export function HoverCardRtl() {
               dir={dir}
             >
               <div className="font-semibold">{t.name}</div>
-              <div className="text-muted-foreground text-sm">{t.price}</div>
+              <div className="text-sm text-muted-foreground">{t.price}</div>
             </HoverCardContent>
           </HoverCard>
         ))}
@@ -102,7 +102,7 @@ export function HoverCardRtl() {
               dir={dir}
             >
               <div className="font-semibold">{t.name}</div>
-              <div className="text-muted-foreground text-sm">{t.price}</div>
+              <div className="text-sm text-muted-foreground">{t.price}</div>
             </HoverCardContent>
           </HoverCard>
         ))}

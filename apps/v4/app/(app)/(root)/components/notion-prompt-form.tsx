@@ -190,12 +190,12 @@ export function NotionPromptForm() {
         <FieldLabel htmlFor="notion-prompt" className="sr-only">
           Prompt
         </FieldLabel>
-        <InputGroup>
+        <InputGroup className="rounded-xl">
           <InputGroupTextarea
             id="notion-prompt"
             placeholder="Ask, search, or make anything..."
           />
-          <InputGroupAddon align="block-start">
+          <InputGroupAddon align="block-start" className="pt-3">
             <Popover
               open={mentionPopoverOpen}
               onOpenChange={setMentionPopoverOpen}
@@ -209,7 +209,7 @@ export function NotionPromptForm() {
                     <InputGroupButton
                       variant="outline"
                       size={!hasMentions ? "sm" : "icon-sm"}
-                      className="rounded-full transition-transform"
+                      className="transition-transform"
                     >
                       <IconAt /> {!hasMentions && "Add context"}
                     </InputGroupButton>
@@ -235,6 +235,7 @@ export function NotionPromptForm() {
                               setMentions((prev) => [...prev, currentValue])
                               setMentionPopoverOpen(false)
                             }}
+                            className="rounded-lg"
                           >
                             <MentionableIcon item={item} />
                             {item.title}
@@ -246,7 +247,7 @@ export function NotionPromptForm() {
                 </Command>
               </PopoverContent>
             </Popover>
-            <div className="no-scrollbar -m-1.5 flex gap-1 overflow-y-auto p-1.5">
+            <div className="-m-1.5 no-scrollbar flex gap-1 overflow-y-auto p-1.5">
               {mentions.map((mention) => {
                 const item = SAMPLE_DATA.mentionable.find(
                   (item) => item.title === mention
@@ -261,7 +262,7 @@ export function NotionPromptForm() {
                     key={mention}
                     size="sm"
                     variant="secondary"
-                    className="rounded-full !pl-2"
+                    className="rounded-full pl-2!"
                     onClick={() => {
                       setMentions((prev) => prev.filter((m) => m !== mention))
                     }}
@@ -301,9 +302,13 @@ export function NotionPromptForm() {
                 </TooltipTrigger>
                 <TooltipContent>Select AI model</TooltipContent>
               </Tooltip>
-              <DropdownMenuContent side="top" align="start" className="w-48">
-                <DropdownMenuGroup className="w-48">
-                  <DropdownMenuLabel className="text-muted-foreground text-xs">
+              <DropdownMenuContent
+                side="top"
+                align="start"
+                className="min-w-48"
+              >
+                <DropdownMenuGroup>
+                  <DropdownMenuLabel className="text-xs text-muted-foreground">
                     Select Agent Mode
                   </DropdownMenuLabel>
                   {SAMPLE_DATA.models.map((model) => (
@@ -421,7 +426,7 @@ export function NotionPromptForm() {
                   <DropdownMenuItem>
                     <IconPlus /> Connect Apps
                   </DropdownMenuItem>
-                  <DropdownMenuLabel className="text-muted-foreground text-xs">
+                  <DropdownMenuLabel className="text-xs text-muted-foreground">
                     We&apos;ll only search in the sources selected here.
                   </DropdownMenuLabel>
                 </DropdownMenuGroup>
