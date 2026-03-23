@@ -143,15 +143,15 @@ export function DropdownMenuRtl() {
                 data-lang={dir === "rtl" ? language : undefined}
               >
                 <DropdownMenuGroup>
-                  <DropdownMenuItem>
+                  <DropdownMenuItem value="profile">
                     <UserIcon />
                     {t.profile}
                   </DropdownMenuItem>
-                  <DropdownMenuItem>
+                  <DropdownMenuItem value="billing">
                     <CreditCardIcon />
                     {t.billing}
                   </DropdownMenuItem>
-                  <DropdownMenuItem>
+                  <DropdownMenuItem value="settings">
                     <SettingsIcon />
                     {t.settings}
                   </DropdownMenuItem>
@@ -163,34 +163,34 @@ export function DropdownMenuRtl() {
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuLabel>{t.team}</DropdownMenuLabel>
-          <DropdownMenuItem>{t.team}</DropdownMenuItem>
+          <DropdownMenuItem value="team">{t.team}</DropdownMenuItem>
           <DropdownMenuSub>
             <DropdownMenuSubTrigger>{t.inviteUsers}</DropdownMenuSubTrigger>
             <DropdownMenuPortal>
               <DropdownMenuSubContent
                 data-lang={dir === "rtl" ? language : undefined}
               >
-                <DropdownMenuItem>{t.email}</DropdownMenuItem>
-                <DropdownMenuItem>{t.message}</DropdownMenuItem>
+                <DropdownMenuItem value="email">{t.email}</DropdownMenuItem>
+                <DropdownMenuItem value="message">{t.message}</DropdownMenuItem>
                 <DropdownMenuSub>
                   <DropdownMenuSubTrigger>{t.more}</DropdownMenuSubTrigger>
                   <DropdownMenuPortal>
                     <DropdownMenuSubContent
                       data-lang={dir === "rtl" ? language : undefined}
                     >
-                      <DropdownMenuItem>{t.calendar}</DropdownMenuItem>
-                      <DropdownMenuItem>{t.chat}</DropdownMenuItem>
+                      <DropdownMenuItem value="calendar">{t.calendar}</DropdownMenuItem>
+                      <DropdownMenuItem value="chat">{t.chat}</DropdownMenuItem>
                       <DropdownMenuSeparator />
-                      <DropdownMenuItem>{t.webhook}</DropdownMenuItem>
+                      <DropdownMenuItem value="webhook">{t.webhook}</DropdownMenuItem>
                     </DropdownMenuSubContent>
                   </DropdownMenuPortal>
                 </DropdownMenuSub>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>{t.advanced}</DropdownMenuItem>
+                <DropdownMenuItem value="advanced">{t.advanced}</DropdownMenuItem>
               </DropdownMenuSubContent>
             </DropdownMenuPortal>
           </DropdownMenuSub>
-          <DropdownMenuItem>
+          <DropdownMenuItem value="new-team">
             {t.newTeam}
             <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
           </DropdownMenuItem>
@@ -199,18 +199,21 @@ export function DropdownMenuRtl() {
         <DropdownMenuGroup>
           <DropdownMenuLabel>{t.view}</DropdownMenuLabel>
           <DropdownMenuCheckboxItem
+            value="status-bar"
             checked={showStatusBar}
             onCheckedChange={setShowStatusBar}
           >
             {t.statusBar}
           </DropdownMenuCheckboxItem>
           <DropdownMenuCheckboxItem
+            value="activity-bar"
             checked={showActivityBar}
             onCheckedChange={setShowActivityBar}
           >
             {t.activityBar}
           </DropdownMenuCheckboxItem>
           <DropdownMenuCheckboxItem
+            value="panel"
             checked={showPanel}
             onCheckedChange={setShowPanel}
           >
@@ -233,7 +236,7 @@ export function DropdownMenuRtl() {
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem variant="destructive">{t.logout}</DropdownMenuItem>
+          <DropdownMenuItem value="logout" variant="destructive">{t.logout}</DropdownMenuItem>
         </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>

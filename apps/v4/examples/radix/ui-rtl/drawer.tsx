@@ -1,8 +1,9 @@
 "use client"
 
 import * as React from "react"
-import { cn } from "@/examples/radix/lib/utils"
 import { Drawer as DrawerPrimitive } from "vaul"
+
+import { cn } from "@/examples/radix/lib/utils"
 
 function Drawer({
   ...props

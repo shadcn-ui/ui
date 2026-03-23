@@ -13,7 +13,6 @@ import {
   SelectItemGroupLabel,
   SelectItemIndicator,
   SelectItemText,
-  SelectPositioner,
   SelectSeparator,
   SelectTrigger,
   SelectValue,
@@ -48,26 +47,22 @@ export function SelectGroups() {
           <SelectIndicator />
         </SelectIndicatorGroup>
       </SelectControl>
-      
-        <SelectPositioner>
-          <SelectContent>
-            {collection.group().map(([type, group], index) => (
-              <SelectItemGroup key={type}>
-                {index > 0 && <SelectSeparator />}
-                <SelectItemGroupLabel>
-                  {groupLabels[type] ?? type}
-                </SelectItemGroupLabel>
-                {group.map((item) => (
-                  <SelectItem key={item.value} item={item}>
-                    <SelectItemText>{item.label}</SelectItemText>
-                    <SelectItemIndicator />
-                  </SelectItem>
-                ))}
-              </SelectItemGroup>
+      <SelectContent>
+        {collection.group().map(([type, group], index) => (
+          <SelectItemGroup key={type}>
+            {index > 0 && <SelectSeparator />}
+            <SelectItemGroupLabel>
+              {groupLabels[type] ?? type}
+            </SelectItemGroupLabel>
+            {group.map((item) => (
+              <SelectItem key={item.value} item={item}>
+                <SelectItemText>{item.label}</SelectItemText>
+                <SelectItemIndicator />
+              </SelectItem>
             ))}
-          </SelectContent>
-        </SelectPositioner>
-      
+          </SelectItemGroup>
+        ))}
+      </SelectContent>
     </Select>
   )
 }

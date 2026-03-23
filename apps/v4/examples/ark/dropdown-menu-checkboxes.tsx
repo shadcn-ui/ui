@@ -25,12 +25,14 @@ export function DropdownMenuCheckboxes() {
         <DropdownMenuGroup>
           <DropdownMenuLabel>Appearance</DropdownMenuLabel>
           <DropdownMenuCheckboxItem
+            value="status-bar"
             checked={showStatusBar ?? false}
             onCheckedChange={setShowStatusBar}
           >
             Status Bar
           </DropdownMenuCheckboxItem>
           <DropdownMenuCheckboxItem
+            value="activity-bar"
             checked={showActivityBar}
             onCheckedChange={setShowActivityBar}
             disabled
@@ -38,6 +40,7 @@ export function DropdownMenuCheckboxes() {
             Activity Bar
           </DropdownMenuCheckboxItem>
           <DropdownMenuCheckboxItem
+            value="panel"
             checked={showPanel}
             onCheckedChange={setShowPanel}
           >

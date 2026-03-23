@@ -20,20 +20,20 @@ export function DropdownMenuIcons() {
         <Button variant="outline">Open</Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        <DropdownMenuItem>
+        <DropdownMenuItem value="profile">
           <UserIcon />
           Profile
         </DropdownMenuItem>
-        <DropdownMenuItem>
+        <DropdownMenuItem value="billing">
           <CreditCardIcon />
           Billing
         </DropdownMenuItem>
-        <DropdownMenuItem>
+        <DropdownMenuItem value="settings">
           <SettingsIcon />
           Settings
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem variant="destructive">
+        <DropdownMenuItem value="logout" variant="destructive">
           <LogOutIcon />
           Log out
         </DropdownMenuItem>

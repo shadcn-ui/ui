@@ -63,12 +63,12 @@ export function DropdownMenuComplex() {
       <DropdownMenuContent className="w-44">
         <DropdownMenuGroup>
           <DropdownMenuLabel>File</DropdownMenuLabel>
-          <DropdownMenuItem>
+          <DropdownMenuItem value="new-file">
             <FileIcon />
             New File
             <DropdownMenuShortcut>⌘N</DropdownMenuShortcut>
           </DropdownMenuItem>
-          <DropdownMenuItem>
+          <DropdownMenuItem value="new-folder">
             <FolderIcon />
             New Folder
             <DropdownMenuShortcut>⇧⌘N</DropdownMenuShortcut>
@@ -82,11 +82,11 @@ export function DropdownMenuComplex() {
               <DropdownMenuSubContent>
                 <DropdownMenuGroup>
                   <DropdownMenuLabel>Recent Projects</DropdownMenuLabel>
-                  <DropdownMenuItem>
+                  <DropdownMenuItem value="project-alpha">
                     <FileCodeIcon />
                     Project Alpha
                   </DropdownMenuItem>
-                  <DropdownMenuItem>
+                  <DropdownMenuItem value="project-beta">
                     <FileCodeIcon />
                     Project Beta
                   </DropdownMenuItem>
@@ -97,11 +97,11 @@ export function DropdownMenuComplex() {
                     </DropdownMenuSubTrigger>
                     <DropdownMenuPortal>
                       <DropdownMenuSubContent>
-                        <DropdownMenuItem>
+                        <DropdownMenuItem value="project-gamma">
                           <FileCodeIcon />
                           Project Gamma
                         </DropdownMenuItem>
-                        <DropdownMenuItem>
+                        <DropdownMenuItem value="project-delta">
                           <FileCodeIcon />
                           Project Delta
                         </DropdownMenuItem>
@@ -111,7 +111,7 @@ export function DropdownMenuComplex() {
                 </DropdownMenuGroup>
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>
-                  <DropdownMenuItem>
+                  <DropdownMenuItem value="browse">
                     <FolderSearchIcon />
                     Browse...
                   </DropdownMenuItem>
@@ -120,12 +120,12 @@ export function DropdownMenuComplex() {
             </DropdownMenuPortal>
           </DropdownMenuSub>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>
+          <DropdownMenuItem value="save">
             <SaveIcon />
             Save
             <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
           </DropdownMenuItem>
-          <DropdownMenuItem>
+          <DropdownMenuItem value="export">
             <DownloadIcon />
             Export
             <DropdownMenuShortcut>⇧⌘E</DropdownMenuShortcut>
@@ -135,6 +135,7 @@ export function DropdownMenuComplex() {
         <DropdownMenuGroup>
           <DropdownMenuLabel>View</DropdownMenuLabel>
           <DropdownMenuCheckboxItem
+            value="show-sidebar"
             checked={notifications.email}
             onCheckedChange={(checked) =>
               setNotifications({ ...notifications, email: checked === true })
@@ -144,6 +145,7 @@ export function DropdownMenuComplex() {
             Show Sidebar
           </DropdownMenuCheckboxItem>
           <DropdownMenuCheckboxItem
+            value="show-status-bar"
             checked={notifications.sms}
             onCheckedChange={(checked) =>
               setNotifications({ ...notifications, sms: checked === true })
@@ -163,7 +165,7 @@ export function DropdownMenuComplex() {
                   <DropdownMenuLabel>Appearance</DropdownMenuLabel>
                   <DropdownMenuRadioGroup
                     value={theme}
-                    onValueChange={setTheme}
+                    onValueChange={(details) => setTheme(details.value)}
                   >
                     <DropdownMenuRadioItem value="light">
                       <SunIcon />
@@ -186,12 +188,12 @@ export function DropdownMenuComplex() {
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuLabel>Account</DropdownMenuLabel>
-          <DropdownMenuItem>
+          <DropdownMenuItem value="profile">
             <UserIcon />
             Profile
             <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
           </DropdownMenuItem>
-          <DropdownMenuItem>
+          <DropdownMenuItem value="billing">
             <CreditCardIcon />
             Billing
           </DropdownMenuItem>
@@ -204,11 +206,11 @@ export function DropdownMenuComplex() {
               <DropdownMenuSubContent>
                 <DropdownMenuGroup>
                   <DropdownMenuLabel>Preferences</DropdownMenuLabel>
-                  <DropdownMenuItem>
+                  <DropdownMenuItem value="keyboard-shortcuts">
                     <KeyboardIcon />
                     Keyboard Shortcuts
                   </DropdownMenuItem>
-                  <DropdownMenuItem>
+                  <DropdownMenuItem value="language">
                     <LanguagesIcon />
                     Language
                   </DropdownMenuItem>
@@ -224,6 +226,7 @@ export function DropdownMenuComplex() {
                             Notification Types
                           </DropdownMenuLabel>
                           <DropdownMenuCheckboxItem
+                            value="push-notifications"
                             checked={notifications.push}
                             onCheckedChange={(checked) =>
                               setNotifications({
@@ -236,6 +239,7 @@ export function DropdownMenuComplex() {
                             Push Notifications
                           </DropdownMenuCheckboxItem>
                           <DropdownMenuCheckboxItem
+                            value="email-notifications"
                             checked={notifications.email}
                             onCheckedChange={(checked) =>
                               setNotifications({
@@ -254,7 +258,7 @@ export function DropdownMenuComplex() {
                 </DropdownMenuGroup>
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>
-                  <DropdownMenuItem>
+                  <DropdownMenuItem value="privacy-security">
                     <ShieldIcon />
                     Privacy & Security
                   </DropdownMenuItem>
@@ -265,18 +269,18 @@ export function DropdownMenuComplex() {
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem>
+          <DropdownMenuItem value="help-support">
             <HelpCircleIcon />
             Help & Support
           </DropdownMenuItem>
-          <DropdownMenuItem>
+          <DropdownMenuItem value="documentation">
             <FileTextIcon />
             Documentation
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem variant="destructive">
+          <DropdownMenuItem value="sign-out" variant="destructive">
             <LogOutIcon />
             Sign Out
             <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>

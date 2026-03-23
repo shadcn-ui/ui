@@ -21,30 +21,30 @@ export function DropdownMenuSubmenu() {
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuGroup>
-          <DropdownMenuItem>Team</DropdownMenuItem>
+          <DropdownMenuItem value="team">Team</DropdownMenuItem>
           <DropdownMenuSub>
             <DropdownMenuSubTrigger>Invite users</DropdownMenuSubTrigger>
             <DropdownMenuPortal>
               <DropdownMenuSubContent>
-                <DropdownMenuItem>Email</DropdownMenuItem>
-                <DropdownMenuItem>Message</DropdownMenuItem>
+                <DropdownMenuItem value="email">Email</DropdownMenuItem>
+                <DropdownMenuItem value="message">Message</DropdownMenuItem>
                 <DropdownMenuSub>
                   <DropdownMenuSubTrigger>More options</DropdownMenuSubTrigger>
                   <DropdownMenuPortal>
                     <DropdownMenuSubContent>
-                      <DropdownMenuItem>Calendly</DropdownMenuItem>
-                      <DropdownMenuItem>Slack</DropdownMenuItem>
+                      <DropdownMenuItem value="calendly">Calendly</DropdownMenuItem>
+                      <DropdownMenuItem value="slack">Slack</DropdownMenuItem>
                       <DropdownMenuSeparator />
-                      <DropdownMenuItem>Webhook</DropdownMenuItem>
+                      <DropdownMenuItem value="webhook">Webhook</DropdownMenuItem>
                     </DropdownMenuSubContent>
                   </DropdownMenuPortal>
                 </DropdownMenuSub>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>Advanced...</DropdownMenuItem>
+                <DropdownMenuItem value="advanced">Advanced...</DropdownMenuItem>
               </DropdownMenuSubContent>
             </DropdownMenuPortal>
           </DropdownMenuSub>
-          <DropdownMenuItem>
+          <DropdownMenuItem value="new-team">
             New Team
             <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
           </DropdownMenuItem>

@@ -17,18 +17,18 @@ export function DropdownMenuDestructive() {
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuGroup>
-          <DropdownMenuItem>
+          <DropdownMenuItem value="edit">
             <PencilIcon />
             Edit
           </DropdownMenuItem>
-          <DropdownMenuItem>
+          <DropdownMenuItem value="share">
             <ShareIcon />
             Share
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem variant="destructive">
+          <DropdownMenuItem value="delete" variant="destructive">
             <TrashIcon />
             Delete
           </DropdownMenuItem>

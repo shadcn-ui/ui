@@ -1,8 +1,9 @@
 import * as React from "react"
-import { cn } from "@/examples/radix/lib/utils"
-import { Separator } from "@/examples/radix/ui/separator"
 import { cva, type VariantProps } from "class-variance-authority"
 import { Slot } from "radix-ui"
+
+import { cn } from "@/examples/radix/lib/utils"
+import { Separator } from "@/examples/radix/ui/separator"
 
 function ItemGroup({ className, ...props }: React.ComponentProps<"div">) {
   return (

@@ -1,11 +1,12 @@
 "use client"
 
 import * as React from "react"
-import { cn } from "@/examples/radix/lib/utils"
-import { Button } from "@/examples/radix/ui-rtl/button"
 import useEmblaCarousel, {
   type UseEmblaCarouselType,
 } from "embla-carousel-react"
+
+import { cn } from "@/examples/radix/lib/utils"
+import { Button } from "@/examples/radix/ui-rtl/button"
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react"
 
 type CarouselApi = UseEmblaCarouselType[1]
@@ -186,8 +187,8 @@ function CarouselPrevious({
       className={cn(
         "absolute touch-manipulation rounded-full",
         orientation === "horizontal"
-          ? "-start-12 top-1/2 -translate-y-1/2"
-          : "start-1/2 -top-12 -translate-x-1/2 rotate-90 rtl:translate-x-1/2",
+          ? "top-1/2 -start-12 -translate-y-1/2"
+          : "-top-12 start-1/2 -translate-x-1/2 rtl:translate-x-1/2 rotate-90",
         className
       )}
       disabled={!canScrollPrev}
@@ -216,8 +217,8 @@ function CarouselNext({
       className={cn(
         "absolute touch-manipulation rounded-full",
         orientation === "horizontal"
-          ? "-end-12 top-1/2 -translate-y-1/2"
-          : "start-1/2 -bottom-12 -translate-x-1/2 rotate-90 rtl:translate-x-1/2",
+          ? "top-1/2 -end-12 -translate-y-1/2"
+          : "-bottom-12 start-1/2 -translate-x-1/2 rtl:translate-x-1/2 rotate-90",
         className
       )}
       disabled={!canScrollNext}
