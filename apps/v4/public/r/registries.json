@@ -246,6 +246,12 @@
     "description": "SolidJS port of shadcn-ui components built with Kobalte primitives. 57+ components with full TypeScript support and Vega theme."
   },
   {
+    "name": "@gamifykit",
+    "homepage": "https://gamifykit.com",
+    "url": "https://gamifykit.com/r/{name}.json",
+    "description": "A collection of fully composable components that extend shadcn/ui with a focus on common gamification UI patterns."
+  },
+  {
     "name": "@glass-ui",
     "homepage": "https://glass-ui.crenspire.com",
     "url": "https://glass-ui.crenspire.com/r/{name}.json",
