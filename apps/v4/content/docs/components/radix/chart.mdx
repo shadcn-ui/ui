@@ -7,7 +7,7 @@ component: true
 
 <Callout>
 
-**Note:** We're working on upgrading to Recharts v3. In the meantime, if you'd like to start testing v3, see the code in the comment [here](https://github.com/shadcn-ui/ui/issues/7669#issuecomment-2998299159). We'll have an official release soon.
+**Recharts v3:** The `chart` component now targets Recharts v3. If you're upgrading from v2, move default active states to `ChartTooltip.defaultIndex`, remove `layout` from `<Bar>` when `BarChart` already sets it, and keep a height or `min-h-*` on `ChartContainer`.
 
 </Callout>
 
@@ -455,7 +455,7 @@ const chartData = [
 #### Tailwind
 
 ```tsx title="components/example-chart.tsx"
-<LabelList className="fill-[--color-desktop]" />
+<LabelList className="fill-(--color-desktop)" />
 ```
 
 ## Tooltip
