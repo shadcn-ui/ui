@@ -46,7 +46,7 @@ export function FieldHear() {
                   <FieldLabel
                     htmlFor={option.value}
                     key={option.value}
-                    className="!w-fit"
+                    className="w-fit!"
                   >
                     <Field
                       orientation="horizontal"

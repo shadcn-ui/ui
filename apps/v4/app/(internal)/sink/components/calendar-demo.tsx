@@ -14,7 +14,7 @@ import { Label } from "@/registry/new-york-v4/ui/label"
 
 export function CalendarDemo() {
   return (
-    <div className="bg-muted flex flex-1 flex-col flex-wrap justify-center gap-8 p-10 lg:flex-row">
+    <div className="flex flex-1 flex-col flex-wrap justify-center gap-8 bg-muted p-10 lg:flex-row">
       <CalendarSingle />
       <CalendarMultiple />
       <CalendarRange />
@@ -150,7 +150,7 @@ function CalendarWithTime() {
           <div className="flex w-full flex-col gap-2">
             <Label htmlFor="time-from">Start Time</Label>
             <div className="relative flex w-full items-center gap-2">
-              <Clock2Icon className="text-muted-foreground pointer-events-none absolute left-2.5 size-4 select-none" />
+              <Clock2Icon className="pointer-events-none absolute left-2.5 size-4 text-muted-foreground select-none" />
               <Input
                 id="time-from"
                 type="time"
@@ -163,7 +163,7 @@ function CalendarWithTime() {
           <div className="flex w-full flex-col gap-2">
             <Label htmlFor="time-to">End Time</Label>
             <div className="relative flex w-full items-center gap-2">
-              <Clock2Icon className="text-muted-foreground pointer-events-none absolute left-2.5 size-4 select-none" />
+              <Clock2Icon className="pointer-events-none absolute left-2.5 size-4 text-muted-foreground select-none" />
               <Input
                 id="time-to"
                 type="time"

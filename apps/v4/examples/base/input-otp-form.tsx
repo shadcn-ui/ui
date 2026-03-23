@@ -60,11 +60,11 @@ export function InputOTPForm() {
           <Button type="submit" className="w-full">
             Verify
           </Button>
-          <div className="text-muted-foreground text-sm">
+          <div className="text-sm text-muted-foreground">
             Having trouble signing in?{" "}
             <a
               href="#"
-              className="hover:text-primary underline underline-offset-4 transition-colors"
+              className="underline underline-offset-4 transition-colors hover:text-primary"
             >
               Contact support
             </a>

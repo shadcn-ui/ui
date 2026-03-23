@@ -98,7 +98,7 @@ export function DirectoryAddButton({
       className="gap-0 overflow-hidden rounded-lg border"
     >
       <div className="flex items-center gap-2 border-b p-2">
-        <TabsList className="*:data-[slot=tabs-trigger]:data-[state=active]:border-input h-auto rounded-none bg-transparent p-0 font-mono *:data-[slot=tabs-trigger]:border *:data-[slot=tabs-trigger]:border-transparent *:data-[slot=tabs-trigger]:pt-0.5 *:data-[slot=tabs-trigger]:shadow-none!">
+        <TabsList className="h-auto rounded-none bg-transparent p-0 font-mono *:data-[slot=tabs-trigger]:border *:data-[slot=tabs-trigger]:border-transparent *:data-[slot=tabs-trigger]:pt-0.5 *:data-[slot=tabs-trigger]:shadow-none! *:data-[slot=tabs-trigger]:data-[state=active]:border-input">
           <TabsTrigger value="pnpm">pnpm</TabsTrigger>
           <TabsTrigger value="npm">npm</TabsTrigger>
           <TabsTrigger value="yarn">yarn</TabsTrigger>
@@ -127,7 +127,7 @@ export function DirectoryAddButton({
       </div>
       {Object.entries(commands).map(([key, cmd]) => (
         <TabsContent key={key} value={key} className="mt-0">
-          <div className="bg-surface text-surface-foreground px-3 py-3">
+          <div className="bg-surface px-3 py-3 text-surface-foreground">
             <div className="no-scrollbar overflow-x-auto">
               <code className="font-mono text-sm whitespace-nowrap">{cmd}</code>
             </div>

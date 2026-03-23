@@ -7,6 +7,10 @@
     "family": "'Noto Sans Variable', sans-serif",
     "provider": "google",
     "import": "Noto_Sans",
-    "variable": "--font-sans"
+    "variable": "--font-sans",
+    "subsets": [
+      "latin"
+    ],
+    "dependency": "@fontsource-variable/noto-sans"
   }
 }

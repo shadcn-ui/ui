@@ -7,11 +7,61 @@ import { trackEvent, type Event } from "@/lib/events"
 import { cn } from "@/lib/utils"
 import { Button } from "@/registry/new-york-v4/ui/button"
 
-export function copyToClipboardWithMeta(value: string, event?: Event) {
-  navigator.clipboard.writeText(value)
+function legacyCopyToClipboard(value: string) {
+  const textArea = document.createElement("textarea")
+  textArea.value = value
+  textArea.setAttribute("readonly", "")
+  textArea.style.position = "fixed"
+  textArea.style.opacity = "0"
+  textArea.style.pointerEvents = "none"
+
+  document.body.appendChild(textArea)
+  textArea.focus()
+  textArea.select()
+  textArea.setSelectionRange(0, value.length)
+
+  let hasCopied = false
+  try {
+    hasCopied = document.execCommand("copy")
+  } catch {
+    hasCopied = false
+  }
+
+  document.body.removeChild(textArea)
+  return hasCopied
+}
+
+export async function copyToClipboardWithMeta(value: string, event?: Event) {
+  if (typeof window === "undefined") {
+    return false
+  }
+
+  if (!value) {
+    return false
+  }
+
+  let hasCopied = false
+
+  if (navigator.clipboard?.writeText) {
+    try {
+      await navigator.clipboard.writeText(value)
+      hasCopied = true
+    } catch {
+      hasCopied = legacyCopyToClipboard(value)
+    }
+  } else {
+    hasCopied = legacyCopyToClipboard(value)
+  }
+
+  if (!hasCopied) {
+    return false
+  }
+
   if (event) {
     trackEvent(event)
   }
+
+  return true
 }
 
 export function CopyButton({
@@ -42,11 +92,11 @@ export function CopyButton({
       size="icon"
       variant={variant}
       className={cn(
-        "bg-code absolute top-3 right-2 z-10 size-7 hover:opacity-100 focus-visible:opacity-100",
+        "absolute top-3 right-2 z-10 size-7 bg-code hover:opacity-100 focus-visible:opacity-100",
         className
       )}
-      onClick={() => {
-        copyToClipboardWithMeta(
+      onClick={async () => {
+        const hasCopied = await copyToClipboardWithMeta(
           value,
           event
             ? {
@@ -57,7 +107,10 @@ export function CopyButton({
               }
             : undefined
         )
-        setHasCopied(true)
+
+        if (hasCopied) {
+          setHasCopied(true)
+        }
       }}
       {...props}
     >
