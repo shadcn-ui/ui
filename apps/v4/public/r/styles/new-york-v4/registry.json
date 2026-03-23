@@ -2957,6 +2957,17 @@
       "type": "registry:example"
     },
     {
+      "name": "button-accent",
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/button-accent.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
       "name": "button-destructive",
       "registryDependencies": ["button"],
       "files": [
