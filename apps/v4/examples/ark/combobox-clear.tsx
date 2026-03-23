@@ -35,6 +35,7 @@ export function ComboboxWithClear() {
       collection={collection}
       onInputValueChange={(details) => filter(details.inputValue)}
       defaultValue={["nextjs"]}
+      className="w-full max-w-48"
     >
       <ComboboxControl>
         <ComboboxInput placeholder="Select a framework" />

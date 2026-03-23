@@ -27,7 +27,7 @@ export function ComboboxDisabled() {
   })
 
   return (
-    <Combobox collection={collection} disabled>
+    <Combobox collection={collection} disabled className="w-full max-w-48">
       <ComboboxControl>
         <ComboboxInput placeholder="Select a framework" />
         <ComboboxTrigger />

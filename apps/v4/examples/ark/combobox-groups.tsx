@@ -70,6 +70,7 @@ export function ComboboxWithGroupsAndSeparator() {
     <Combobox
       collection={collection}
       onInputValueChange={(details) => filter(details.inputValue)}
+      className="w-full max-w-52"
     >
       <ComboboxControl>
         <ComboboxInput placeholder="Select a timezone" />

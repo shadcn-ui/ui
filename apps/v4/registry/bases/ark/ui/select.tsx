@@ -10,7 +10,9 @@ import {
 import { cn } from "@/registry/bases/ark/lib/utils"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
-const Select = SelectPrimitive.Root
+function Select(props: React.ComponentProps<typeof SelectPrimitive.Root>) {
+  return <SelectPrimitive.Root lazyMount unmountOnExit {...props} />
+}
 
 const SelectControl = React.forwardRef<
   HTMLDivElement,
@@ -140,7 +142,7 @@ const SelectPositioner = React.forwardRef<
   <SelectPrimitive.Positioner
     ref={ref}
     data-slot="select-positioner"
-    className={cn("z-50 outline-none", className)}
+    className={cn("outline-none", className)}
     {...props}
   />
 ))
@@ -151,12 +153,12 @@ const SelectContent = React.forwardRef<
   React.ComponentProps<typeof SelectPrimitive.Content>
 >(({ className, children, ...props }, ref) => (
   <Portal>
-    <SelectPrimitive.Positioner data-slot="select-positioner" className="z-50 outline-none">
+    <SelectPrimitive.Positioner data-slot="select-positioner" className="outline-none">
       <SelectPrimitive.Content
         ref={ref}
         data-slot="select-content"
         className={cn(
-          "flex flex-col gap-0.5 rounded-lg border bg-popover p-1 text-popover-foreground shadow-lg outline-none",
+          "z-50 flex flex-col gap-0.5 rounded-lg border bg-popover p-1 text-popover-foreground shadow-lg outline-none",
           "min-w-(--reference-width)",
           "max-h-[min(var(--available-height,300px),300px)] overflow-y-auto",
           "origin-(--transform-origin)",

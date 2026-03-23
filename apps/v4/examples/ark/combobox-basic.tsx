@@ -33,6 +33,7 @@ export default function ComboboxBasic() {
     <Combobox
       collection={collection}
       onInputValueChange={(details) => filter(details.inputValue)}
+      className="w-full max-w-48"
     >
       <ComboboxControl>
         <ComboboxInput placeholder="Select a framework" />

@@ -8,7 +8,9 @@ import { cn } from "@/registry/bases/ark/lib/utils"
 import { Button } from "@/registry/bases/ark/ui/button"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
-const DatePicker = DatePickerPrimitive.Root
+function DatePicker(props: React.ComponentProps<typeof DatePickerPrimitive.Root>) {
+  return <DatePickerPrimitive.Root lazyMount unmountOnExit {...props} />
+}
 
 const DatePickerLabel = React.forwardRef<
   HTMLLabelElement,
@@ -106,7 +108,7 @@ const DatePickerPositioner = React.forwardRef<
   <DatePickerPrimitive.Positioner
     ref={ref}
     data-slot="date-picker-positioner"
-    className={cn("z-50", className)}
+    className={className}
     {...props}
   />
 ))
@@ -117,12 +119,12 @@ const DatePickerContent = React.forwardRef<
   React.ComponentProps<typeof DatePickerPrimitive.Content>
 >(({ className, ...props }, ref) => (
   <Portal>
-    <DatePickerPrimitive.Positioner data-slot="date-picker-positioner" className="z-50">
+    <DatePickerPrimitive.Positioner data-slot="date-picker-positioner">
       <DatePickerPrimitive.Content
         ref={ref}
         data-slot="date-picker-content"
         className={cn(
-          "flex flex-col gap-3 rounded-lg border bg-popover p-3 text-popover-foreground shadow-lg outline-none",
+          "z-50 flex flex-col gap-3 rounded-lg border bg-popover p-3 text-popover-foreground shadow-lg outline-none",
           "min-w-[17.5rem]",
           "origin-[var(--transform-origin)]",
           "data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-[98%]",
