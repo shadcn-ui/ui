@@ -2,7 +2,7 @@ import { spawn } from "child_process"
 import { promises as fs } from "fs"
 import path from "path"
 import { rimraf } from "rimraf"
-import { registrySchema } from "shadcn/schema"
+import { registrySchema, type RegistryItem } from "shadcn/schema"
 import {
   createStyleMap,
   transformDirection,
@@ -13,6 +13,7 @@ import { Project, ScriptKind } from "ts-morph"
 
 import { getAllBlocks } from "@/lib/blocks"
 import { legacyStyles } from "@/registry/_legacy-styles"
+import { BASE_COLORS } from "@/registry/base-colors"
 import { BASES, type Base } from "@/registry/bases"
 import { PRESETS } from "@/registry/config"
 import { STYLES } from "@/registry/styles"
@@ -51,6 +52,15 @@ try {
   await buildBasesIndex(Array.from(BASES))
   await buildBases(Array.from(BASES))
 
+  // Format base files before building styles so the JSON output contains formatted code.
+  const baseDirs = Array.from(BASES).flatMap((base) =>
+    STYLES.map((style) =>
+      path.join(process.cwd(), `registry/${base.name}-${style.name}`)
+    )
+  )
+  console.log("\n✨ Formatting base files...")
+  await batchPrettier(baseDirs)
+
   const stylesToBuild = getStylesToBuild()
 
   // Build index for legacy styles and whitelisted base-style combinations.
@@ -85,8 +95,14 @@ try {
   console.log("\n🔄 Building RTL examples...")
   await buildRtlExamples()
 
+  console.log("\n📦 Building public/r/index.json...")
+  await buildIndex()
+
   console.log("\n📋 Building public/r/registries.json...")
   await buildRegistriesJson()
+
+  console.log("\n🎨 Building public/r/colors...")
+  await buildColors()
 
   // Batch format all collected files with prettier at the end.
   if (prettierPaths.length > 0) {
@@ -523,13 +539,19 @@ async function applyIconTransform(content: string, filename: string) {
   // Create a minimal config with just iconLibrary.
   // transformIcons only uses config.iconLibrary, so we can safely cast this.
   type TransformIconsConfig = Parameters<typeof transformIcons>[0]["config"]
+  type IconTransformInput = {
+    filename: string
+    raw: string
+    sourceFile: typeof sourceFile
+    config: TransformIconsConfig
+  }
   const config = { iconLibrary: "lucide" } as TransformIconsConfig
 
-  await transformIcons({
-    sourceFile,
-    config,
+  await (transformIcons as (opts: IconTransformInput) => Promise<unknown>)({
     filename,
     raw: content,
+    sourceFile,
+    config,
   })
 
   return sourceFile.getText()
@@ -588,6 +610,51 @@ async function copyUIToExamples() {
       )
     })
   )
+}
+
+async function buildIndex() {
+  // Import ui/_registry.ts from each base.
+  const baseUiRegistries = await Promise.all(
+    Array.from(BASES).map(async (base) => {
+      const { ui } = await import(
+        `../registry/bases/${base.name}/ui/_registry.ts`
+      )
+      return { baseName: base.name, items: ui as RegistryItem[] }
+    })
+  )
+
+  // Dedupe components by name and merge links across bases.
+  type IndexItem = Omit<RegistryItem, "meta"> & {
+    meta?: { links?: Record<string, RegistryItem["meta"]> }
+  }
+  const componentMap = new Map<string, IndexItem>()
+  for (const { baseName, items } of baseUiRegistries) {
+    for (const item of items) {
+      if (!componentMap.has(item.name)) {
+        const { meta, ...rest } = item
+        componentMap.set(item.name, {
+          ...rest,
+          ...(meta?.links
+            ? { meta: { links: { [baseName]: meta.links } } }
+            : {}),
+        })
+      } else if (item.meta?.links) {
+        const existing = componentMap.get(item.name)!
+        existing.meta = existing.meta || {}
+        existing.meta.links = existing.meta.links || {}
+        existing.meta.links[baseName] = item.meta.links
+      }
+    }
+  }
+
+  // Sort alphabetically by name.
+  const index = Array.from(componentMap.values()).sort((a, b) =>
+    a.name.localeCompare(b.name)
+  )
+
+  const outputPath = path.join(process.cwd(), "public/r/index.json")
+  await fs.writeFile(outputPath, JSON.stringify(index, null, 2))
+  prettierPaths.push(outputPath)
 }
 
 async function buildRegistriesJson() {
@@ -658,11 +725,50 @@ async function batchPrettier(paths: string[]) {
   if (paths.length === 0) return
 
   await new Promise<void>((resolve, reject) => {
-    const proc = spawn("npx", ["prettier", "--write", ...paths], {
+    const prettierBin = path.join(process.cwd(), "node_modules/.bin/prettier")
+    const proc = spawn(prettierBin, ["--write", ...paths], {
       cwd: process.cwd(),
-      stdio: "pipe",
+      stdio: "inherit",
     })
     proc.on("close", () => resolve())
     proc.on("error", reject)
   })
+}
+
+async function buildColors() {
+  const colorsTargetPath = path.join(process.cwd(), "public/r/colors")
+  await fs.mkdir(colorsTargetPath, { recursive: true })
+
+  await Promise.all(
+    BASE_COLORS.map(async (baseColor) => {
+      const light = (baseColor.cssVars?.light ?? {}) as Record<string, string>
+      const dark = (baseColor.cssVars?.dark ?? {}) as Record<string, string>
+
+      const cssVarKeys = Object.keys(light).filter(
+        (key) => !key.startsWith("sidebar")
+      )
+
+      const rootVars = cssVarKeys
+        .map((key) => `    --${key}: ${light[key]};`)
+        .join("\n")
+      const darkVars = cssVarKeys
+        .filter((key) => dark[key])
+        .map((key) => `    --${key}: ${dark[key]};`)
+        .join("\n")
+
+      const payload = {
+        inlineColors: { light, dark },
+        cssVars: { light, dark },
+        cssVarsV4: baseColor.cssVars,
+        inlineColorsTemplate:
+          "@tailwind base;\n@tailwind components;\n@tailwind utilities;\n  ",
+        cssVarsTemplate: `@tailwind base;\n@tailwind components;\n@tailwind utilities;\n\n@layer base {\n  :root {\n${rootVars}\n  }\n\n  .dark {\n${darkVars}\n  }\n}\n\n@layer base {\n  * {\n    @apply border-border;\n  }\n  body {\n    @apply bg-background text-foreground;\n  }\n}`,
+      }
+
+      const outputPath = path.join(colorsTargetPath, `${baseColor.name}.json`)
+      await fs.writeFile(outputPath, JSON.stringify(payload, null, 2))
+      prettierPaths.push(outputPath)
+      console.log(`   ✅ ${baseColor.name}.json`)
+    })
+  )
 }

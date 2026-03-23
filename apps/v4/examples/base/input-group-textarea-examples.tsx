@@ -77,7 +77,7 @@ export function InputGroupTextareaExamples() {
           <InputGroupTextarea id="prompt-31" />
           <InputGroupAddon align="block-start">
             <InputGroupText>Ask, Search or Chat...</InputGroupText>
-            <InfoIcon className="text-muted-foreground ml-auto" />
+            <InfoIcon className="ml-auto text-muted-foreground" />
           </InputGroupAddon>
         </InputGroup>
         <FieldDescription>

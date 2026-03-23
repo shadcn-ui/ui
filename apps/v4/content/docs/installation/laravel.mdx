@@ -1,17 +1,33 @@
 ---
 title: Laravel
-description: Install and configure shadcn/ui for Laravel
+description: Install and configure shadcn/ui for Laravel.
 ---
+
+<Callout className="mb-6 border-emerald-600 bg-emerald-100 dark:border-emerald-400 dark:bg-emerald-900">
+
+**Starting a new project?** Use [shadcn/create](/create) for a fully configured Laravel app with custom themes, Base UI or Radix, and icon libraries.
+
+</Callout>
 
 <Steps>
 
-### Create project
+### Create Project
 
-Start by creating a new Laravel project with Inertia and React using the laravel installer `laravel new my-app`:
+Start by creating a new Laravel project with Inertia and React using the Laravel installer:
 
 ```bash
 laravel new my-app --react
 ```
+
+### Run the shadcn/ui CLI
+
+Run the `init` command to configure shadcn/ui in your Laravel project:
+
+```bash
+npx shadcn@latest init --force
+```
+
+If asked to overwrite the existing components, answer `y` to continue.
 
 ### Add Components
 

@@ -46,7 +46,7 @@ export function DocsBreadcrumb({
                 <BreadcrumbLink asChild>
                   <Link
                     href={item.url}
-                    className="hover:text-accent-foreground truncate"
+                    className="truncate hover:text-accent-foreground"
                   >
                     {item.name}
                   </Link>
