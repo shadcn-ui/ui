@@ -77,7 +77,7 @@ export function ExampleForm() {
       password: "",
     },
     validators: {
-      onChange: exampleFormSchema,
+      onBlur: exampleFormSchema,
     },
     onSubmit: async ({ value }) => {
       setValues(value)

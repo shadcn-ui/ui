@@ -2,10 +2,11 @@
 
 import * as React from "react"
 import Link, { type LinkProps } from "next/link"
-import { useRouter } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 
 import { PAGES_NEW } from "@/lib/docs"
 import { showMcpDocs } from "@/lib/flags"
+import { getCurrentBase, getPagesFromFolder } from "@/lib/page-tree"
 import { type source } from "@/lib/source"
 import { cn } from "@/lib/utils"
 import { Button } from "@/registry/new-york-v4/ui/button"
@@ -16,18 +17,38 @@ import {
 } from "@/registry/new-york-v4/ui/popover"
 
 const TOP_LEVEL_SECTIONS = [
-  { name: "Get Started", href: "/docs" },
+  { name: "Introduction", href: "/docs" },
   {
     name: "Components",
     href: "/docs/components",
   },
   {
-    name: "Directory",
-    href: "/docs/directory",
+    name: "Installation",
+    href: "/docs/installation",
+  },
+  {
+    name: "Theming",
+    href: "/docs/theming",
+  },
+  {
+    name: "CLI",
+    href: "/docs/cli",
+  },
+  {
+    name: "RTL",
+    href: "/docs/rtl",
+  },
+  {
+    name: "Skills",
+    href: "/docs/skills",
   },
   {
     name: "MCP Server",
     href: "/docs/mcp",
+  },
+  {
+    name: "Registry",
+    href: "/docs/registry",
   },
   {
     name: "Forms",
@@ -49,6 +70,8 @@ export function MobileNav({
   className?: string
 }) {
   const [open, setOpen] = React.useState(false)
+  const pathname = usePathname()
+  const currentBase = getCurrentBase(pathname)
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -56,7 +79,7 @@ export function MobileNav({
         <Button
           variant="ghost"
           className={cn(
-            "extend-touch-target h-8 touch-manipulation items-center justify-start gap-2.5 !p-0 hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 active:bg-transparent dark:hover:bg-transparent",
+            "extend-touch-target h-8 touch-manipulation items-center justify-start gap-2.5 p-0! hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 active:bg-transparent dark:hover:bg-transparent",
             className
           )}
         >
@@ -64,13 +87,13 @@ export function MobileNav({
             <div className="relative size-4">
               <span
                 className={cn(
-                  "bg-foreground absolute left-0 block h-0.5 w-4 transition-all duration-100",
+                  "absolute left-0 block h-0.5 w-4 bg-foreground transition-all duration-100",
                   open ? "top-[0.4rem] -rotate-45" : "top-1"
                 )}
               />
               <span
                 className={cn(
-                  "bg-foreground absolute left-0 block h-0.5 w-4 transition-all duration-100",
+                  "absolute left-0 block h-0.5 w-4 bg-foreground transition-all duration-100",
                   open ? "top-[0.4rem] rotate-45" : "top-2.5"
                 )}
               />
@@ -83,7 +106,7 @@ export function MobileNav({
         </Button>
       </PopoverTrigger>
       <PopoverContent
-        className="bg-background/90 no-scrollbar h-(--radix-popper-available-height) w-(--radix-popper-available-width) overflow-y-auto rounded-none border-none p-0 shadow-none backdrop-blur duration-100"
+        className="no-scrollbar h-(--radix-popper-available-height) w-(--radix-popper-available-width) overflow-y-auto rounded-none border-none bg-background/90 p-0 shadow-none backdrop-blur duration-100 data-open:animate-none!"
         align="start"
         side="bottom"
         alignOffset={-16}
@@ -91,7 +114,7 @@ export function MobileNav({
       >
         <div className="flex flex-col gap-12 overflow-auto px-6 py-6">
           <div className="flex flex-col gap-4">
-            <div className="text-muted-foreground text-sm font-medium">
+            <div className="text-sm font-medium text-muted-foreground">
               Menu
             </div>
             <div className="flex flex-col gap-3">
@@ -106,7 +129,7 @@ export function MobileNav({
             </div>
           </div>
           <div className="flex flex-col gap-4">
-            <div className="text-muted-foreground text-sm font-medium">
+            <div className="text-sm font-medium text-muted-foreground">
               Sections
             </div>
             <div className="flex flex-col gap-3">
@@ -117,6 +140,12 @@ export function MobileNav({
                 return (
                   <MobileLink key={name} href={href} onOpenChange={setOpen}>
                     {name}
+                    {PAGES_NEW.includes(href) && (
+                      <span
+                        className="flex size-2 rounded-full bg-blue-500"
+                        title="New"
+                      />
+                    )}
                   </MobileLink>
                 )
               })}
@@ -125,31 +154,30 @@ export function MobileNav({
           <div className="flex flex-col gap-8">
             {tree?.children?.map((group, index) => {
               if (group.type === "folder") {
+                const pages = getPagesFromFolder(group, currentBase)
                 return (
                   <div key={index} className="flex flex-col gap-4">
-                    <div className="text-muted-foreground text-sm font-medium">
+                    <div className="text-sm font-medium text-muted-foreground">
                       {group.name}
                     </div>
                     <div className="flex flex-col gap-3">
-                      {group.children.map((item) => {
-                        if (item.type === "page") {
-                          if (!showMcpDocs && item.url.includes("/mcp")) {
-                            return null
-                          }
-                          return (
-                            <MobileLink
-                              key={`${item.url}-${index}`}
-                              href={item.url}
-                              onOpenChange={setOpen}
-                              className="flex items-center gap-2"
-                            >
-                              {item.name}{" "}
-                              {PAGES_NEW.includes(item.url) && (
-                                <span className="flex size-2 rounded-full bg-blue-500" />
-                              )}
-                            </MobileLink>
-                          )
+                      {pages.map((item) => {
+                        if (!showMcpDocs && item.url.includes("/mcp")) {
+                          return null
                         }
+                        return (
+                          <MobileLink
+                            key={`${item.url}-${index}`}
+                            href={item.url}
+                            onOpenChange={setOpen}
+                            className="flex items-center gap-2"
+                          >
+                            {item.name}{" "}
+                            {PAGES_NEW.includes(item.url) && (
+                              <span className="flex size-2 rounded-full bg-blue-500" />
+                            )}
+                          </MobileLink>
+                        )
                       })}
                     </div>
                   </div>
@@ -182,7 +210,7 @@ function MobileLink({
         router.push(href.toString())
         onOpenChange?.(false)
       }}
-      className={cn("text-2xl font-medium", className)}
+      className={cn("flex items-center gap-2 text-2xl font-medium", className)}
       {...props}
     >
       {children}

@@ -31,8 +31,10 @@ export function PresetPicker({
         preset.style === params.style &&
         preset.baseColor === params.baseColor &&
         preset.theme === params.theme &&
+        preset.chartColor === params.chartColor &&
         preset.iconLibrary === params.iconLibrary &&
         preset.font === params.font &&
+        preset.fontHeading === params.fontHeading &&
         preset.menuAccent === params.menuAccent &&
         preset.menuColor === params.menuColor &&
         preset.radius === params.radius
@@ -43,8 +45,10 @@ export function PresetPicker({
     params.style,
     params.baseColor,
     params.theme,
+    params.chartColor,
     params.iconLibrary,
     params.font,
+    params.fontHeading,
     params.menuAccent,
     params.menuColor,
     params.radius,
@@ -67,8 +71,10 @@ export function PresetPicker({
       style: preset.style,
       baseColor: preset.baseColor,
       theme: preset.theme,
+      chartColor: preset.chartColor,
       iconLibrary: preset.iconLibrary,
       font: preset.font,
+      fontHeading: preset.fontHeading,
       menuAccent: preset.menuAccent,
       menuColor: preset.menuColor,
       radius: preset.radius,
@@ -80,8 +86,8 @@ export function PresetPicker({
     <Picker>
       <PickerTrigger>
         <div className="flex flex-col justify-start text-left">
-          <div className="text-muted-foreground text-xs">Preset</div>
-          <div className="text-foreground line-clamp-1 text-sm font-medium">
+          <div className="text-xs text-muted-foreground">Preset</div>
+          <div className="line-clamp-1 text-sm font-medium text-foreground">
             {currentPreset?.description ?? "Custom"}
           </div>
         </div>
@@ -100,7 +106,11 @@ export function PresetPicker({
             {currentBasePresets.map((preset) => {
               const style = STYLES.find((s) => s.name === preset.style)
               return (
-                <PickerRadioItem key={preset.title} value={preset.title}>
+                <PickerRadioItem
+                  key={preset.title}
+                  value={preset.title}
+                  closeOnClick={isMobile}
+                >
                   <div className="flex items-center gap-2">
                     {style?.icon && (
                       <div className="flex size-4 shrink-0 items-center justify-center">

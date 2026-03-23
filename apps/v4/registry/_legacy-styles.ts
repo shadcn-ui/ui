@@ -3,6 +3,14 @@ export const legacyStyles = [
     name: "new-york-v4",
     title: "New York",
   },
+  {
+    name: "base-nova",
+    title: "Base Nova",
+  },
+  {
+    name: "radix-nova",
+    title: "Radix Nova",
+  },
 ] as const
 
 export type Style = (typeof legacyStyles)[number]

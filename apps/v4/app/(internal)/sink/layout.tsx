@@ -50,9 +50,9 @@ export default async function SinkLayout({
     >
       <AppSidebar />
       <SidebarInset>
-        <header className="bg-background sticky top-0 z-10 flex h-14 items-center border-b p-4">
+        <header className="sticky top-0 z-10 flex h-14 items-center border-b bg-background p-4">
           <SidebarTrigger />
-          <Separator orientation="vertical" className="mr-4 ml-2 !h-4" />
+          <Separator orientation="vertical" className="mr-4 ml-2 h-4!" />
           <AppBreadcrumbs />
           <div className="ml-auto flex items-center gap-2">
             <ModeSwitcher />

@@ -1,0 +1,82 @@
+---
+title: January 2026 - RTL Support
+description: The shadcn CLI now supports RTL (right-to-left) layouts by automatically converting physical CSS classes to logical equivalents.
+date: 2026-01-28
+---
+
+shadcn/ui now has first-class support for right-to-left (RTL) layouts. Your components automatically adapt for languages like Arabic, Hebrew, and Persian.
+
+**This works with the [shadcn/ui components](/docs/components) as well as any component distributed on the shadcn registry.**
+
+<ComponentPreview
+  styleName="base-nova"
+  name="alert-rtl"
+  direction="rtl"
+  previewClassName="h-auto sm:h-72 p-6"
+/>
+
+### Our approach to RTL
+
+Traditionally, component libraries that support RTL ship with logical classes baked in. This means everyone has to work with classes like `ms-4` and `start-2`, even if they're only building for LTR layouts.
+
+We took a different approach. The shadcn CLI transforms classes at install time, so you only see logical classes when you actually need them. If you're not building for RTL, you work with familiar classes like `ml-4` and `left-2`. When you enable RTL, the CLI handles the conversion for you.
+
+**You don't have to learn RTL until you need it.**
+
+### How it works
+
+When you add components with `rtl: true` set in your `components.json`, the CLI automatically converts physical CSS classes like `ml-4` and `text-left` to their logical equivalents like `ms-4` and `text-start`.
+
+- Physical positioning classes like `left-*` and `right-*` become `start-*` and `end-*`.
+- Margin and padding classes like `ml-*` and `pr-*` become `ms-*` and `pe-*`.
+- Text alignment classes like `text-left` become `text-start`.
+- Directional props are updated to use logical values.
+- Supported icons are automatically flipped using `rtl:rotate-180`.
+- Animations like `slide-in-from-left` become `slide-in-from-start`.
+
+### RTL examples for every component
+
+We've added RTL examples for every component. You'll find live previews and code on each [component page](/docs/components).
+
+<ComponentPreview
+  styleName="base-nova"
+  name="card-rtl"
+  direction="rtl"
+  previewClassName="h-auto"
+/>
+
+### CLI updates
+
+**New projects**: Use the `--rtl` flag with `init` or `create` to enable RTL from the start.
+
+```bash
+npx shadcn@latest init --rtl
+```
+
+```bash
+npx shadcn@latest create --rtl
+```
+
+**Existing projects**: Migrate your components with the `migrate rtl` command.
+
+```bash
+npx shadcn@latest migrate rtl
+```
+
+This transforms all components in your `ui` directory to use logical classes. You can also pass a specific path or glob pattern.
+
+## Try it out
+
+Click the link below to open a Next.js project with RTL support in v0.
+
+[![Open in v0](https://v0.app/chat-static/button.svg)](https://v0.app/chat/api/open?url=https://github.com/shadcn-ui/next-template-rtl)
+
+### Links
+
+- [RTL Documentation](/docs/rtl)
+- [Font Recommendations](/docs/rtl#font-recommendations)
+- [Animations](/docs/rtl#animations)
+- [Migrating Existing Components](/docs/rtl#migrating-existing-components)
+- [Next.js Setup](/docs/rtl/next)
+- [Vite Setup](/docs/rtl/vite)
+- [TanStack Start Setup](/docs/rtl/start)

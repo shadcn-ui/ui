@@ -1,9 +1,8 @@
 "use client"
 
+import { Button } from "@/examples/radix/ui/button"
+import { ButtonGroup } from "@/examples/radix/ui/button-group"
 import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react"
-
-import { Button } from "@/registry/new-york-v4/ui/button"
-import { ButtonGroup } from "@/registry/new-york-v4/ui/button-group"
 
 export function ButtonGroupNested() {
   return (

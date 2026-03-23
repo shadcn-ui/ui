@@ -116,6 +116,7 @@ function NavigationMenuBasic() {
                       tabler="IconExclamationCircle"
                       hugeicons="AlertCircleIcon"
                       phosphor="WarningCircleIcon"
+                      remixicon="RiErrorWarningLine"
                     />
                     Backlog
                   </NavigationMenuLink>
@@ -129,6 +130,7 @@ function NavigationMenuBasic() {
                       tabler="IconExclamationCircle"
                       hugeicons="AlertCircleIcon"
                       phosphor="WarningCircleIcon"
+                      remixicon="RiErrorWarningLine"
                     />
                     To Do
                   </NavigationMenuLink>
@@ -142,6 +144,7 @@ function NavigationMenuBasic() {
                       tabler="IconExclamationCircle"
                       hugeicons="AlertCircleIcon"
                       phosphor="WarningCircleIcon"
+                      remixicon="RiErrorWarningLine"
                     />
                     Done
                   </NavigationMenuLink>
@@ -172,9 +175,9 @@ function ListItem({
   return (
     <li {...props}>
       <NavigationMenuLink render={<Link href={href} />}>
-        <div className="style-vega:text-sm style-maia:text-sm style-nova:text-sm style-lyra:text-xs style-mira:text-xs flex flex-col gap-1">
+        <div className="flex flex-col gap-1 style-vega:text-sm style-nova:text-sm style-lyra:text-xs style-maia:text-sm style-mira:text-xs">
           <div className="leading-none font-medium">{title}</div>
-          <div className="text-muted-foreground line-clamp-2">{children}</div>
+          <div className="line-clamp-2 text-muted-foreground">{children}</div>
         </div>
       </NavigationMenuLink>
     </li>
