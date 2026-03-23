@@ -149,7 +149,10 @@ export function ChartVisitors() {
           className="mx-auto aspect-square w-full max-w-[300px]"
         >
           <PieChart>
-            <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
+            <ChartTooltip
+              cursor={false}
+              content={<ChartTooltipContent hideLabel />}
+            />
             <Pie
               data={desktopData}
               dataKey="desktop"
