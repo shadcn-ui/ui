@@ -2,42 +2,23 @@
   {
     "name": "accordion",
     "type": "registry:ui",
-    "dependencies": [
-      "@radix-ui/react-accordion"
-    ],
     "files": [
       {
         "path": "ui/accordion.tsx",
         "type": "registry:ui"
       }
     ],
-    "tailwind": {
-      "config": {
-        "theme": {
-          "extend": {
-            "keyframes": {
-              "accordion-down": {
-                "from": {
-                  "height": "0"
-                },
-                "to": {
-                  "height": "var(--radix-accordion-content-height)"
-                }
-              },
-              "accordion-up": {
-                "from": {
-                  "height": "var(--radix-accordion-content-height)"
-                },
-                "to": {
-                  "height": "0"
-                }
-              }
-            },
-            "animation": {
-              "accordion-down": "accordion-down 0.2s ease-out",
-              "accordion-up": "accordion-up 0.2s ease-out"
-            }
-          }
+    "meta": {
+      "links": {
+        "radix": {
+          "docs": "https://ui.shadcn.com/docs/components/radix/accordion",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/accordion-example.tsx",
+          "api": "https://www.radix-ui.com/primitives/docs/components/accordion.md"
+        },
+        "base": {
+          "docs": "https://ui.shadcn.com/docs/components/base/accordion",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/accordion-example.tsx",
+          "api": "https://base-ui.com/react/components/accordion.md"
         }
       }
     }
@@ -50,119 +31,206 @@
         "path": "ui/alert.tsx",
         "type": "registry:ui"
       }
-    ]
+    ],
+    "meta": {
+      "links": {
+        "radix": {
+          "docs": "https://ui.shadcn.com/docs/components/radix/alert",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/alert-example.tsx"
+        },
+        "base": {
+          "docs": "https://ui.shadcn.com/docs/components/base/alert",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/alert-example.tsx"
+        }
+      }
+    }
   },
   {
     "name": "alert-dialog",
     "type": "registry:ui",
-    "dependencies": [
-      "@radix-ui/react-alert-dialog"
-    ],
-    "registryDependencies": [
-      "button"
-    ],
+    "registryDependencies": ["button"],
     "files": [
       {
         "path": "ui/alert-dialog.tsx",
         "type": "registry:ui"
       }
-    ]
+    ],
+    "meta": {
+      "links": {
+        "radix": {
+          "docs": "https://ui.shadcn.com/docs/components/radix/alert-dialog",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/alert-dialog-example.tsx",
+          "api": "https://www.radix-ui.com/primitives/docs/components/alert-dialog.md"
+        },
+        "base": {
+          "docs": "https://ui.shadcn.com/docs/components/base/alert-dialog",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/alert-dialog-example.tsx",
+          "api": "https://base-ui.com/react/components/alert-dialog.md"
+        }
+      }
+    }
   },
   {
     "name": "aspect-ratio",
     "type": "registry:ui",
-    "dependencies": [
-      "@radix-ui/react-aspect-ratio"
-    ],
     "files": [
       {
         "path": "ui/aspect-ratio.tsx",
         "type": "registry:ui"
       }
-    ]
+    ],
+    "meta": {
+      "links": {
+        "radix": {
+          "docs": "https://ui.shadcn.com/docs/components/radix/aspect-ratio",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/aspect-ratio-example.tsx",
+          "api": "https://www.radix-ui.com/primitives/docs/components/aspect-ratio.md"
+        },
+        "base": {
+          "docs": "https://ui.shadcn.com/docs/components/base/aspect-ratio",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/aspect-ratio-example.tsx"
+        }
+      }
+    }
   },
   {
     "name": "avatar",
     "type": "registry:ui",
-    "dependencies": [
-      "@radix-ui/react-avatar"
-    ],
     "files": [
       {
         "path": "ui/avatar.tsx",
         "type": "registry:ui"
       }
-    ]
+    ],
+    "meta": {
+      "links": {
+        "radix": {
+          "docs": "https://ui.shadcn.com/docs/components/radix/avatar",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/avatar-example.tsx",
+          "api": "https://www.radix-ui.com/primitives/docs/components/avatar.md"
+        },
+        "base": {
+          "docs": "https://ui.shadcn.com/docs/components/base/avatar",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/avatar-example.tsx",
+          "api": "https://base-ui.com/react/components/avatar.md"
+        }
+      }
+    }
   },
   {
     "name": "badge",
     "type": "registry:ui",
-    "dependencies": [
-      "@radix-ui/react-slot"
-    ],
     "files": [
       {
         "path": "ui/badge.tsx",
         "type": "registry:ui"
       }
-    ]
+    ],
+    "meta": {
+      "links": {
+        "radix": {
+          "docs": "https://ui.shadcn.com/docs/components/radix/badge",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/badge-example.tsx"
+        },
+        "base": {
+          "docs": "https://ui.shadcn.com/docs/components/base/badge",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/badge-example.tsx"
+        }
+      }
+    }
   },
   {
     "name": "breadcrumb",
     "type": "registry:ui",
-    "dependencies": [
-      "@radix-ui/react-slot"
-    ],
     "files": [
       {
         "path": "ui/breadcrumb.tsx",
         "type": "registry:ui"
       }
-    ]
+    ],
+    "meta": {
+      "links": {
+        "radix": {
+          "docs": "https://ui.shadcn.com/docs/components/radix/breadcrumb",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/breadcrumb-example.tsx"
+        },
+        "base": {
+          "docs": "https://ui.shadcn.com/docs/components/base/breadcrumb",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/breadcrumb-example.tsx"
+        }
+      }
+    }
   },
   {
     "name": "button",
     "type": "registry:ui",
-    "dependencies": [
-      "@radix-ui/react-slot"
-    ],
     "files": [
       {
         "path": "ui/button.tsx",
         "type": "registry:ui"
       }
-    ]
+    ],
+    "meta": {
+      "links": {
+        "radix": {
+          "docs": "https://ui.shadcn.com/docs/components/radix/button",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/button-example.tsx"
+        },
+        "base": {
+          "docs": "https://ui.shadcn.com/docs/components/base/button",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/button-example.tsx"
+        }
+      }
+    }
   },
   {
     "name": "button-group",
     "type": "registry:ui",
-    "registryDependencies": [
-      "button",
-      "separator"
-    ],
+    "registryDependencies": ["separator"],
     "files": [
       {
         "path": "ui/button-group.tsx",
         "type": "registry:ui"
       }
-    ]
+    ],
+    "meta": {
+      "links": {
+        "radix": {
+          "docs": "https://ui.shadcn.com/docs/components/radix/button-group",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/button-group-example.tsx"
+        },
+        "base": {
+          "docs": "https://ui.shadcn.com/docs/components/base/button-group",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/button-group-example.tsx"
+        }
+      }
+    }
   },
   {
     "name": "calendar",
     "type": "registry:ui",
-    "dependencies": [
-      "react-day-picker@latest",
-      "date-fns"
-    ],
-    "registryDependencies": [
-      "button"
-    ],
+    "dependencies": ["react-day-picker@latest", "date-fns"],
+    "registryDependencies": ["button"],
     "files": [
       {
         "path": "ui/calendar.tsx",
         "type": "registry:ui"
       }
-    ]
+    ],
+    "meta": {
+      "links": {
+        "radix": {
+          "docs": "https://ui.shadcn.com/docs/components/radix/calendar",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/calendar-example.tsx",
+          "api": "https://react-day-picker.js.org"
+        },
+        "base": {
+          "docs": "https://ui.shadcn.com/docs/components/base/calendar",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/calendar-example.tsx",
+          "api": "https://react-day-picker.js.org"
+        }
+      }
+    }
   },
   {
     "name": "card",
@@ -172,165 +240,288 @@
         "path": "ui/card.tsx",
         "type": "registry:ui"
       }
-    ]
+    ],
+    "meta": {
+      "links": {
+        "radix": {
+          "docs": "https://ui.shadcn.com/docs/components/radix/card",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/card-example.tsx"
+        },
+        "base": {
+          "docs": "https://ui.shadcn.com/docs/components/base/card",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/card-example.tsx"
+        }
+      }
+    }
   },
   {
     "name": "carousel",
     "type": "registry:ui",
-    "dependencies": [
-      "embla-carousel-react"
-    ],
-    "registryDependencies": [
-      "button"
-    ],
     "files": [
       {
         "path": "ui/carousel.tsx",
         "type": "registry:ui"
       }
-    ]
+    ],
+    "registryDependencies": ["button"],
+    "dependencies": ["embla-carousel-react"],
+    "meta": {
+      "links": {
+        "radix": {
+          "docs": "https://ui.shadcn.com/docs/components/radix/carousel",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/carousel-example.tsx",
+          "api": "https://www.embla-carousel.com/get-started/react"
+        },
+        "base": {
+          "docs": "https://ui.shadcn.com/docs/components/base/carousel",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/carousel-example.tsx",
+          "api": "https://www.embla-carousel.com/get-started/react"
+        }
+      }
+    }
   },
   {
     "name": "chart",
     "type": "registry:ui",
-    "dependencies": [
-      "recharts@2.15.4",
-      "lucide-react"
-    ],
-    "registryDependencies": [
-      "card"
-    ],
     "files": [
       {
         "path": "ui/chart.tsx",
         "type": "registry:ui"
       }
-    ]
+    ],
+    "dependencies": ["recharts@3.8.0"],
+    "meta": {
+      "links": {
+        "radix": {
+          "docs": "https://ui.shadcn.com/docs/components/radix/chart",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/chart-example.tsx"
+        },
+        "base": {
+          "docs": "https://ui.shadcn.com/docs/components/base/chart",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/chart-example.tsx"
+        }
+      }
+    }
   },
   {
     "name": "checkbox",
     "type": "registry:ui",
-    "dependencies": [
-      "@radix-ui/react-checkbox"
-    ],
     "files": [
       {
         "path": "ui/checkbox.tsx",
         "type": "registry:ui"
       }
-    ]
+    ],
+    "meta": {
+      "links": {
+        "radix": {
+          "docs": "https://ui.shadcn.com/docs/components/radix/checkbox",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/checkbox-example.tsx",
+          "api": "https://www.radix-ui.com/docs/primitives/components/checkbox.md"
+        },
+        "base": {
+          "docs": "https://ui.shadcn.com/docs/components/base/checkbox",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/checkbox-example.tsx",
+          "api": "https://base-ui.com/react/components/checkbox.md"
+        }
+      }
+    }
   },
   {
     "name": "collapsible",
     "type": "registry:ui",
-    "dependencies": [
-      "@radix-ui/react-collapsible"
-    ],
     "files": [
       {
         "path": "ui/collapsible.tsx",
         "type": "registry:ui"
       }
-    ]
+    ],
+    "meta": {
+      "links": {
+        "radix": {
+          "docs": "https://ui.shadcn.com/docs/components/radix/collapsible",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/collapsible-example.tsx",
+          "api": "https://www.radix-ui.com/docs/primitives/components/collapsible.md"
+        },
+        "base": {
+          "docs": "https://ui.shadcn.com/docs/components/base/collapsible",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/collapsible-example.tsx",
+          "api": "https://base-ui.com/react/components/collapsible.md"
+        }
+      }
+    }
   },
   {
     "name": "combobox",
     "type": "registry:ui",
-    "dependencies": [
-      "@base-ui/react"
-    ],
-    "registryDependencies": [
-      "button",
-      "input-group"
-    ],
+    "registryDependencies": ["button", "input-group"],
+    "dependencies": ["@base-ui/react"],
     "files": [
       {
         "path": "ui/combobox.tsx",
         "type": "registry:ui"
       }
-    ]
+    ],
+    "meta": {
+      "links": {
+        "radix": {
+          "docs": "https://ui.shadcn.com/docs/components/radix/combobox",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/combobox-example.tsx",
+          "api": "https://base-ui.com/react/components/combobox"
+        },
+        "base": {
+          "docs": "https://ui.shadcn.com/docs/components/base/combobox",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/combobox-example.tsx",
+          "api": "https://base-ui.com/react/components/combobox.md"
+        }
+      }
+    }
   },
   {
     "name": "command",
     "type": "registry:ui",
-    "dependencies": [
-      "cmdk"
-    ],
-    "registryDependencies": [
-      "dialog"
-    ],
+    "dependencies": ["cmdk"],
+    "registryDependencies": ["dialog", "input-group"],
     "files": [
       {
         "path": "ui/command.tsx",
         "type": "registry:ui"
       }
-    ]
+    ],
+    "meta": {
+      "links": {
+        "radix": {
+          "docs": "https://ui.shadcn.com/docs/components/radix/command",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/command-example.tsx",
+          "api": "https://github.com/dip/cmdk"
+        },
+        "base": {
+          "docs": "https://ui.shadcn.com/docs/components/base/command",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/command-example.tsx",
+          "api": "https://github.com/dip/cmdk"
+        }
+      }
+    }
   },
   {
     "name": "context-menu",
     "type": "registry:ui",
-    "dependencies": [
-      "@radix-ui/react-context-menu"
-    ],
     "files": [
       {
         "path": "ui/context-menu.tsx",
         "type": "registry:ui"
       }
-    ]
+    ],
+    "meta": {
+      "links": {
+        "radix": {
+          "docs": "https://ui.shadcn.com/docs/components/radix/context-menu",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/context-menu-example.tsx",
+          "api": "https://www.radix-ui.com/docs/primitives/components/context-menu.md"
+        },
+        "base": {
+          "docs": "https://ui.shadcn.com/docs/components/base/context-menu",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/context-menu-example.tsx",
+          "api": "https://base-ui.com/react/components/context-menu.md"
+        }
+      }
+    }
   },
   {
     "name": "dialog",
     "type": "registry:ui",
-    "dependencies": [
-      "@radix-ui/react-dialog"
-    ],
+    "registryDependencies": ["button"],
     "files": [
       {
         "path": "ui/dialog.tsx",
         "type": "registry:ui"
       }
-    ]
+    ],
+    "meta": {
+      "links": {
+        "radix": {
+          "docs": "https://ui.shadcn.com/docs/components/radix/dialog",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/dialog-example.tsx",
+          "api": "https://www.radix-ui.com/docs/primitives/components/dialog.md"
+        },
+        "base": {
+          "docs": "https://ui.shadcn.com/docs/components/base/dialog",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/dialog-example.tsx",
+          "api": "https://base-ui.com/react/components/dialog.md"
+        }
+      }
+    }
   },
   {
     "name": "direction",
     "type": "registry:ui",
-    "dependencies": [
-      "radix-ui"
-    ],
     "files": [
       {
         "path": "ui/direction.tsx",
         "type": "registry:ui"
       }
-    ]
+    ],
+    "meta": {
+      "links": {
+        "radix": {
+          "docs": "https://ui.shadcn.com/docs/components/radix/direction",
+          "api": "https://www.radix-ui.com/primitives/docs/utilities/direction-provider.md"
+        },
+        "base": {
+          "docs": "https://ui.shadcn.com/docs/components/base/direction",
+          "api": "https://base-ui.com/react/utils/direction-provider.md"
+        }
+      }
+    }
   },
   {
     "name": "drawer",
     "type": "registry:ui",
-    "dependencies": [
-      "vaul",
-      "@radix-ui/react-dialog"
-    ],
+    "dependencies": ["vaul"],
     "files": [
       {
         "path": "ui/drawer.tsx",
         "type": "registry:ui"
       }
-    ]
+    ],
+    "meta": {
+      "links": {
+        "radix": {
+          "docs": "https://ui.shadcn.com/docs/components/radix/drawer",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/drawer-example.tsx",
+          "api": "https://vaul.emilkowal.ski/getting-started"
+        },
+        "base": {
+          "docs": "https://ui.shadcn.com/docs/components/base/drawer",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/drawer-example.tsx",
+          "api": "https://vaul.emilkowal.ski/getting-started"
+        }
+      }
+    }
   },
   {
     "name": "dropdown-menu",
     "type": "registry:ui",
-    "dependencies": [
-      "@radix-ui/react-dropdown-menu"
-    ],
     "files": [
       {
         "path": "ui/dropdown-menu.tsx",
         "type": "registry:ui"
       }
-    ]
+    ],
+    "meta": {
+      "links": {
+        "radix": {
+          "docs": "https://ui.shadcn.com/docs/components/radix/dropdown-menu",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/dropdown-menu-example.tsx",
+          "api": "https://www.radix-ui.com/docs/primitives/components/dropdown-menu.md"
+        },
+        "base": {
+          "docs": "https://ui.shadcn.com/docs/components/base/dropdown-menu",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/dropdown-menu-example.tsx",
+          "api": "https://base-ui.com/react/components/menu.md"
+        }
+      }
+    }
   },
   {
     "name": "empty",
@@ -340,55 +531,70 @@
         "path": "ui/empty.tsx",
         "type": "registry:ui"
       }
-    ]
+    ],
+    "meta": {
+      "links": {
+        "radix": {
+          "docs": "https://ui.shadcn.com/docs/components/radix/empty",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/empty-example.tsx"
+        },
+        "base": {
+          "docs": "https://ui.shadcn.com/docs/components/base/empty",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/empty-example.tsx"
+        }
+      }
+    }
   },
   {
     "name": "field",
     "type": "registry:ui",
-    "registryDependencies": [
-      "label",
-      "separator"
-    ],
+    "registryDependencies": ["label", "separator"],
     "files": [
       {
         "path": "ui/field.tsx",
         "type": "registry:ui"
       }
-    ]
+    ],
+    "meta": {
+      "links": {
+        "radix": {
+          "docs": "https://ui.shadcn.com/docs/components/radix/field",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/field-example.tsx"
+        },
+        "base": {
+          "docs": "https://ui.shadcn.com/docs/components/base/field",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/field-example.tsx"
+        }
+      }
+    }
   },
   {
     "name": "form",
-    "type": "registry:ui",
-    "dependencies": [
-      "@radix-ui/react-label",
-      "@radix-ui/react-slot",
-      "@hookform/resolvers",
-      "zod",
-      "react-hook-form"
-    ],
-    "registryDependencies": [
-      "button",
-      "label"
-    ],
-    "files": [
-      {
-        "path": "ui/form.tsx",
-        "type": "registry:ui"
-      }
-    ]
+    "type": "registry:ui"
   },
   {
     "name": "hover-card",
     "type": "registry:ui",
-    "dependencies": [
-      "@radix-ui/react-hover-card"
-    ],
     "files": [
       {
         "path": "ui/hover-card.tsx",
         "type": "registry:ui"
       }
-    ]
+    ],
+    "meta": {
+      "links": {
+        "radix": {
+          "docs": "https://ui.shadcn.com/docs/components/radix/hover-card",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/hover-card-example.tsx",
+          "api": "https://www.radix-ui.com/docs/primitives/components/hover-card.md"
+        },
+        "base": {
+          "docs": "https://ui.shadcn.com/docs/components/base/hover-card",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/hover-card-example.tsx",
+          "api": "https://base-ui.com/react/components/hover-card.md"
+        }
+      }
+    }
   },
   {
     "name": "input",
@@ -398,48 +604,90 @@
         "path": "ui/input.tsx",
         "type": "registry:ui"
       }
-    ]
+    ],
+    "meta": {
+      "links": {
+        "radix": {
+          "docs": "https://ui.shadcn.com/docs/components/radix/input",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/input-example.tsx"
+        },
+        "base": {
+          "docs": "https://ui.shadcn.com/docs/components/base/input",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/input-example.tsx"
+        }
+      }
+    }
   },
   {
     "name": "input-group",
     "type": "registry:ui",
-    "registryDependencies": [
-      "button",
-      "input",
-      "textarea"
-    ],
+    "registryDependencies": ["button", "input", "textarea"],
     "files": [
       {
         "path": "ui/input-group.tsx",
         "type": "registry:ui"
       }
-    ]
+    ],
+    "meta": {
+      "links": {
+        "radix": {
+          "docs": "https://ui.shadcn.com/docs/components/radix/input-group",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/input-group-example.tsx"
+        },
+        "base": {
+          "docs": "https://ui.shadcn.com/docs/components/base/input-group",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/input-group-example.tsx"
+        }
+      }
+    }
   },
   {
     "name": "input-otp",
     "type": "registry:ui",
-    "dependencies": [
-      "input-otp"
-    ],
+    "dependencies": ["input-otp"],
     "files": [
       {
         "path": "ui/input-otp.tsx",
         "type": "registry:ui"
       }
-    ]
+    ],
+    "meta": {
+      "links": {
+        "radix": {
+          "docs": "https://ui.shadcn.com/docs/components/radix/input-otp",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/input-otp-example.tsx",
+          "api": "https://input-otp.rodz.dev"
+        },
+        "base": {
+          "docs": "https://ui.shadcn.com/docs/components/base/input-otp",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/input-otp-example.tsx",
+          "api": "https://input-otp.rodz.dev"
+        }
+      }
+    }
   },
   {
     "name": "item",
     "type": "registry:ui",
-    "registryDependencies": [
-      "separator"
-    ],
+    "registryDependencies": ["separator"],
     "files": [
       {
         "path": "ui/item.tsx",
         "type": "registry:ui"
       }
-    ]
+    ],
+    "meta": {
+      "links": {
+        "radix": {
+          "docs": "https://ui.shadcn.com/docs/components/radix/item",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/item-example.tsx"
+        },
+        "base": {
+          "docs": "https://ui.shadcn.com/docs/components/base/item",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/item-example.tsx"
+        }
+      }
+    }
   },
   {
     "name": "kbd",
@@ -449,46 +697,67 @@
         "path": "ui/kbd.tsx",
         "type": "registry:ui"
       }
-    ]
+    ],
+    "meta": {
+      "links": {
+        "radix": {
+          "docs": "https://ui.shadcn.com/docs/components/radix/kbd",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/kbd-example.tsx"
+        },
+        "base": {
+          "docs": "https://ui.shadcn.com/docs/components/base/kbd",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/kbd-example.tsx"
+        }
+      }
+    }
   },
   {
     "name": "label",
     "type": "registry:ui",
-    "dependencies": [
-      "@radix-ui/react-label"
-    ],
     "files": [
       {
         "path": "ui/label.tsx",
         "type": "registry:ui"
       }
-    ]
+    ],
+    "meta": {
+      "links": {
+        "radix": {
+          "docs": "https://ui.shadcn.com/docs/components/radix/label",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/label-example.tsx",
+          "api": "https://www.radix-ui.com/docs/primitives/components/label.md"
+        },
+        "base": {
+          "docs": "https://ui.shadcn.com/docs/components/base/label",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/label-example.tsx",
+          "api": "https://base-ui.com/react/components/label.md"
+        }
+      }
+    }
   },
   {
     "name": "menubar",
     "type": "registry:ui",
-    "dependencies": [
-      "@radix-ui/react-menubar"
-    ],
     "files": [
       {
         "path": "ui/menubar.tsx",
         "type": "registry:ui"
       }
-    ]
-  },
-  {
-    "name": "navigation-menu",
-    "type": "registry:ui",
-    "dependencies": [
-      "@radix-ui/react-navigation-menu"
     ],
-    "files": [
-      {
-        "path": "ui/navigation-menu.tsx",
-        "type": "registry:ui"
+    "meta": {
+      "links": {
+        "radix": {
+          "docs": "https://ui.shadcn.com/docs/components/radix/menubar",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/menubar-example.tsx",
+          "api": "https://www.radix-ui.com/docs/primitives/components/menubar.md"
+        },
+        "base": {
+          "docs": "https://ui.shadcn.com/docs/components/base/menubar",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/menubar-example.tsx",
+          "api": "https://base-ui.com/react/components/menubar.md"
+        }
       }
-    ]
+    }
   },
   {
     "name": "native-select",
@@ -498,133 +767,264 @@
         "path": "ui/native-select.tsx",
         "type": "registry:ui"
       }
-    ]
+    ],
+    "meta": {
+      "links": {
+        "radix": {
+          "docs": "https://ui.shadcn.com/docs/components/radix/native-select",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/native-select-example.tsx"
+        },
+        "base": {
+          "docs": "https://ui.shadcn.com/docs/components/base/native-select",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/native-select-example.tsx"
+        }
+      }
+    }
+  },
+  {
+    "name": "navigation-menu",
+    "type": "registry:ui",
+    "files": [
+      {
+        "path": "ui/navigation-menu.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "radix": {
+          "docs": "https://ui.shadcn.com/docs/components/radix/navigation-menu",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/navigation-menu-example.tsx",
+          "api": "https://www.radix-ui.com/docs/primitives/components/navigation-menu.md"
+        },
+        "base": {
+          "docs": "https://ui.shadcn.com/docs/components/base/navigation-menu",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/navigation-menu-example.tsx",
+          "api": "https://base-ui.com/react/components/navigation-menu.md"
+        }
+      }
+    }
   },
   {
     "name": "pagination",
     "type": "registry:ui",
-    "registryDependencies": [
-      "button"
-    ],
+    "registryDependencies": ["button"],
     "files": [
       {
         "path": "ui/pagination.tsx",
         "type": "registry:ui"
       }
-    ]
+    ],
+    "meta": {
+      "links": {
+        "radix": {
+          "docs": "https://ui.shadcn.com/docs/components/radix/pagination",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/pagination-example.tsx"
+        },
+        "base": {
+          "docs": "https://ui.shadcn.com/docs/components/base/pagination",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/pagination-example.tsx"
+        }
+      }
+    }
   },
   {
     "name": "popover",
     "type": "registry:ui",
-    "dependencies": [
-      "@radix-ui/react-popover"
-    ],
     "files": [
       {
         "path": "ui/popover.tsx",
         "type": "registry:ui"
       }
-    ]
+    ],
+    "meta": {
+      "links": {
+        "radix": {
+          "docs": "https://ui.shadcn.com/docs/components/radix/popover",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/popover-example.tsx",
+          "api": "https://www.radix-ui.com/docs/primitives/components/popover.md"
+        },
+        "base": {
+          "docs": "https://ui.shadcn.com/docs/components/base/popover",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/popover-example.tsx",
+          "api": "https://base-ui.com/react/components/popover.md"
+        }
+      }
+    }
   },
   {
     "name": "progress",
     "type": "registry:ui",
-    "dependencies": [
-      "@radix-ui/react-progress"
-    ],
     "files": [
       {
         "path": "ui/progress.tsx",
         "type": "registry:ui"
       }
-    ]
+    ],
+    "meta": {
+      "links": {
+        "radix": {
+          "docs": "https://ui.shadcn.com/docs/components/radix/progress",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/progress-example.tsx",
+          "api": "https://www.radix-ui.com/docs/primitives/components/progress.md"
+        },
+        "base": {
+          "docs": "https://ui.shadcn.com/docs/components/base/progress",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/progress-example.tsx",
+          "api": "https://base-ui.com/react/components/progress.md"
+        }
+      }
+    }
   },
   {
     "name": "radio-group",
     "type": "registry:ui",
-    "dependencies": [
-      "@radix-ui/react-radio-group"
-    ],
     "files": [
       {
         "path": "ui/radio-group.tsx",
         "type": "registry:ui"
       }
-    ]
+    ],
+    "meta": {
+      "links": {
+        "radix": {
+          "docs": "https://ui.shadcn.com/docs/components/radix/radio-group",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/radio-group-example.tsx",
+          "api": "https://www.radix-ui.com/docs/primitives/components/radio-group.md"
+        },
+        "base": {
+          "docs": "https://ui.shadcn.com/docs/components/base/radio-group",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/radio-group-example.tsx",
+          "api": "https://base-ui.com/react/components/radio-group.md"
+        }
+      }
+    }
   },
   {
     "name": "resizable",
     "type": "registry:ui",
-    "dependencies": [
-      "react-resizable-panels"
-    ],
+    "dependencies": ["react-resizable-panels"],
     "files": [
       {
         "path": "ui/resizable.tsx",
         "type": "registry:ui"
       }
-    ]
+    ],
+    "meta": {
+      "links": {
+        "radix": {
+          "docs": "https://ui.shadcn.com/docs/components/radix/resizable",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/resizable-example.tsx",
+          "api": "https://github.com/bvaughn/react-resizable-panels"
+        },
+        "base": {
+          "docs": "https://ui.shadcn.com/docs/components/base/resizable",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/resizable-example.tsx",
+          "api": "https://github.com/bvaughn/react-resizable-panels"
+        }
+      }
+    }
   },
   {
     "name": "scroll-area",
     "type": "registry:ui",
-    "dependencies": [
-      "@radix-ui/react-scroll-area"
-    ],
     "files": [
       {
         "path": "ui/scroll-area.tsx",
         "type": "registry:ui"
       }
-    ]
+    ],
+    "meta": {
+      "links": {
+        "radix": {
+          "docs": "https://ui.shadcn.com/docs/components/radix/scroll-area",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/scroll-area-example.tsx",
+          "api": "https://www.radix-ui.com/docs/primitives/components/scroll-area.md"
+        },
+        "base": {
+          "docs": "https://ui.shadcn.com/docs/components/base/scroll-area",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/scroll-area-example.tsx",
+          "api": "https://base-ui.com/react/components/scroll-area.md"
+        }
+      }
+    }
   },
   {
     "name": "select",
     "type": "registry:ui",
-    "dependencies": [
-      "@radix-ui/react-select"
-    ],
     "files": [
       {
         "path": "ui/select.tsx",
         "type": "registry:ui"
       }
-    ]
+    ],
+    "meta": {
+      "links": {
+        "radix": {
+          "docs": "https://ui.shadcn.com/docs/components/radix/select",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/select-example.tsx",
+          "api": "https://www.radix-ui.com/docs/primitives/components/select.md"
+        },
+        "base": {
+          "docs": "https://ui.shadcn.com/docs/components/base/select",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/select-example.tsx",
+          "api": "https://base-ui.com/react/components/select.md"
+        }
+      }
+    }
   },
   {
     "name": "separator",
     "type": "registry:ui",
-    "dependencies": [
-      "@radix-ui/react-separator"
-    ],
     "files": [
       {
         "path": "ui/separator.tsx",
         "type": "registry:ui"
       }
-    ]
+    ],
+    "meta": {
+      "links": {
+        "radix": {
+          "docs": "https://ui.shadcn.com/docs/components/radix/separator",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/separator-example.tsx",
+          "api": "https://www.radix-ui.com/docs/primitives/components/separator.md"
+        },
+        "base": {
+          "docs": "https://ui.shadcn.com/docs/components/base/separator",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/separator-example.tsx",
+          "api": "https://base-ui.com/react/components/separator.md"
+        }
+      }
+    }
   },
   {
     "name": "sheet",
     "type": "registry:ui",
-    "dependencies": [
-      "@radix-ui/react-dialog"
-    ],
+    "registryDependencies": ["button"],
     "files": [
       {
         "path": "ui/sheet.tsx",
         "type": "registry:ui"
       }
-    ]
+    ],
+    "meta": {
+      "links": {
+        "radix": {
+          "docs": "https://ui.shadcn.com/docs/components/radix/sheet",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/sheet-example.tsx",
+          "api": "https://www.radix-ui.com/docs/primitives/components/dialog.md"
+        },
+        "base": {
+          "docs": "https://ui.shadcn.com/docs/components/base/sheet",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/sheet-example.tsx",
+          "api": "https://base-ui.com/react/components/dialog.md"
+        }
+      }
+    }
   },
   {
     "name": "sidebar",
     "type": "registry:ui",
-    "dependencies": [
-      "@radix-ui/react-slot",
-      "class-variance-authority",
-      "lucide-react"
-    ],
     "registryDependencies": [
       "button",
       "separator",
@@ -640,46 +1040,16 @@
         "type": "registry:ui"
       }
     ],
-    "tailwind": {
-      "config": {
-        "theme": {
-          "extend": {
-            "colors": {
-              "sidebar": {
-                "DEFAULT": "hsl(var(--sidebar-background))",
-                "foreground": "hsl(var(--sidebar-foreground))",
-                "primary": "hsl(var(--sidebar-primary))",
-                "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
-                "accent": "hsl(var(--sidebar-accent))",
-                "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
-                "border": "hsl(var(--sidebar-border))",
-                "ring": "hsl(var(--sidebar-ring))"
-              }
-            }
-          }
+    "meta": {
+      "links": {
+        "radix": {
+          "docs": "https://ui.shadcn.com/docs/components/radix/sidebar",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/sidebar-example.tsx"
+        },
+        "base": {
+          "docs": "https://ui.shadcn.com/docs/components/base/sidebar",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/sidebar-example.tsx"
         }
-      }
-    },
-    "cssVars": {
-      "light": {
-        "sidebar-background": "0 0% 98%",
-        "sidebar-foreground": "240 5.3% 26.1%",
-        "sidebar-primary": "240 5.9% 10%",
-        "sidebar-primary-foreground": "0 0% 98%",
-        "sidebar-accent": "240 4.8% 95.9%",
-        "sidebar-accent-foreground": "240 5.9% 10%",
-        "sidebar-border": "220 13% 91%",
-        "sidebar-ring": "217.2 91.2% 59.8%"
-      },
-      "dark": {
-        "sidebar-background": "240 5.9% 10%",
-        "sidebar-foreground": "240 4.8% 95.9%",
-        "sidebar-primary": "224.3 76.3% 48%",
-        "sidebar-primary-foreground": "0 0% 100%",
-        "sidebar-accent": "240 3.7% 15.9%",
-        "sidebar-accent-foreground": "240 4.8% 95.9%",
-        "sidebar-border": "240 3.7% 15.9%",
-        "sidebar-ring": "217.2 91.2% 59.8%"
       }
     }
   },
@@ -691,60 +1061,114 @@
         "path": "ui/skeleton.tsx",
         "type": "registry:ui"
       }
-    ]
+    ],
+    "meta": {
+      "links": {
+        "radix": {
+          "docs": "https://ui.shadcn.com/docs/components/radix/skeleton",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/skeleton-example.tsx"
+        },
+        "base": {
+          "docs": "https://ui.shadcn.com/docs/components/base/skeleton",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/skeleton-example.tsx"
+        }
+      }
+    }
   },
   {
     "name": "slider",
     "type": "registry:ui",
-    "dependencies": [
-      "@radix-ui/react-slider"
-    ],
     "files": [
       {
         "path": "ui/slider.tsx",
         "type": "registry:ui"
       }
-    ]
+    ],
+    "meta": {
+      "links": {
+        "radix": {
+          "docs": "https://ui.shadcn.com/docs/components/radix/slider",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/slider-example.tsx",
+          "api": "https://www.radix-ui.com/docs/primitives/components/slider.md"
+        },
+        "base": {
+          "docs": "https://ui.shadcn.com/docs/components/base/slider",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/slider-example.tsx",
+          "api": "https://base-ui.com/react/components/slider.md"
+        }
+      }
+    }
   },
   {
     "name": "sonner",
     "type": "registry:ui",
-    "dependencies": [
-      "sonner",
-      "next-themes"
-    ],
+    "dependencies": ["sonner", "next-themes"],
     "files": [
       {
         "path": "ui/sonner.tsx",
         "type": "registry:ui"
       }
-    ]
+    ],
+    "meta": {
+      "links": {
+        "radix": {
+          "docs": "https://ui.shadcn.com/docs/components/radix/sonner",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/sonner-example.tsx",
+          "api": "https://sonner.emilkowal.ski"
+        },
+        "base": {
+          "docs": "https://ui.shadcn.com/docs/components/base/sonner",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/sonner-example.tsx",
+          "api": "https://sonner.emilkowal.ski"
+        }
+      }
+    }
   },
   {
     "name": "spinner",
     "type": "registry:ui",
-    "dependencies": [
-      "class-variance-authority"
-    ],
     "files": [
       {
         "path": "ui/spinner.tsx",
         "type": "registry:ui"
       }
-    ]
+    ],
+    "meta": {
+      "links": {
+        "radix": {
+          "docs": "https://ui.shadcn.com/docs/components/radix/spinner",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/spinner-example.tsx"
+        },
+        "base": {
+          "docs": "https://ui.shadcn.com/docs/components/base/spinner",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/spinner-example.tsx"
+        }
+      }
+    }
   },
   {
     "name": "switch",
     "type": "registry:ui",
-    "dependencies": [
-      "@radix-ui/react-switch"
-    ],
     "files": [
       {
         "path": "ui/switch.tsx",
         "type": "registry:ui"
       }
-    ]
+    ],
+    "meta": {
+      "links": {
+        "radix": {
+          "docs": "https://ui.shadcn.com/docs/components/radix/switch",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/switch-example.tsx",
+          "api": "https://www.radix-ui.com/docs/primitives/components/switch.md"
+        },
+        "base": {
+          "docs": "https://ui.shadcn.com/docs/components/base/switch",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/switch-example.tsx",
+          "api": "https://base-ui.com/react/components/switch.md"
+        }
+      }
+    }
   },
   {
     "name": "table",
@@ -754,20 +1178,43 @@
         "path": "ui/table.tsx",
         "type": "registry:ui"
       }
-    ]
+    ],
+    "meta": {
+      "links": {
+        "radix": {
+          "docs": "https://ui.shadcn.com/docs/components/radix/table",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/table-example.tsx"
+        },
+        "base": {
+          "docs": "https://ui.shadcn.com/docs/components/base/table",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/table-example.tsx"
+        }
+      }
+    }
   },
   {
     "name": "tabs",
     "type": "registry:ui",
-    "dependencies": [
-      "@radix-ui/react-tabs"
-    ],
     "files": [
       {
         "path": "ui/tabs.tsx",
         "type": "registry:ui"
       }
-    ]
+    ],
+    "meta": {
+      "links": {
+        "radix": {
+          "docs": "https://ui.shadcn.com/docs/components/radix/tabs",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/tabs-example.tsx",
+          "api": "https://www.radix-ui.com/docs/primitives/components/tabs.md"
+        },
+        "base": {
+          "docs": "https://ui.shadcn.com/docs/components/base/tabs",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/tabs-example.tsx",
+          "api": "https://base-ui.com/react/components/tabs.md"
+        }
+      }
+    }
   },
   {
     "name": "textarea",
@@ -777,69 +1224,92 @@
         "path": "ui/textarea.tsx",
         "type": "registry:ui"
       }
-    ]
-  },
-  {
-    "name": "toast",
-    "type": "registry:ui",
-    "dependencies": [
-      "@radix-ui/react-toast"
     ],
-    "files": [
-      {
-        "path": "ui/toast.tsx",
-        "type": "registry:ui"
-      },
-      {
-        "path": "hooks/use-toast.ts",
-        "type": "registry:hook"
-      },
-      {
-        "path": "ui/toaster.tsx",
-        "type": "registry:ui"
+    "meta": {
+      "links": {
+        "radix": {
+          "docs": "https://ui.shadcn.com/docs/components/radix/textarea",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/textarea-example.tsx"
+        },
+        "base": {
+          "docs": "https://ui.shadcn.com/docs/components/base/textarea",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/textarea-example.tsx"
+        }
       }
-    ]
+    }
   },
   {
     "name": "toggle",
     "type": "registry:ui",
-    "dependencies": [
-      "@radix-ui/react-toggle"
-    ],
     "files": [
       {
         "path": "ui/toggle.tsx",
         "type": "registry:ui"
       }
-    ]
+    ],
+    "meta": {
+      "links": {
+        "radix": {
+          "docs": "https://ui.shadcn.com/docs/components/radix/toggle",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/toggle-example.tsx",
+          "api": "https://www.radix-ui.com/docs/primitives/components/toggle.md"
+        },
+        "base": {
+          "docs": "https://ui.shadcn.com/docs/components/base/toggle",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/toggle-example.tsx",
+          "api": "https://base-ui.com/react/components/toggle.md"
+        }
+      }
+    }
   },
   {
     "name": "toggle-group",
     "type": "registry:ui",
-    "dependencies": [
-      "@radix-ui/react-toggle-group"
-    ],
-    "registryDependencies": [
-      "toggle"
-    ],
+    "registryDependencies": ["toggle"],
     "files": [
       {
         "path": "ui/toggle-group.tsx",
         "type": "registry:ui"
       }
-    ]
+    ],
+    "meta": {
+      "links": {
+        "radix": {
+          "docs": "https://ui.shadcn.com/docs/components/radix/toggle-group",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/toggle-group-example.tsx",
+          "api": "https://www.radix-ui.com/docs/primitives/components/toggle-group.md"
+        },
+        "base": {
+          "docs": "https://ui.shadcn.com/docs/components/base/toggle-group",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/toggle-group-example.tsx",
+          "api": "https://base-ui.com/react/components/toggle-group.md"
+        }
+      }
+    }
   },
   {
     "name": "tooltip",
     "type": "registry:ui",
-    "dependencies": [
-      "@radix-ui/react-tooltip"
-    ],
+    "docs": "The `tooltip` component has been added. Remember to wrap your app with the `TooltipProvider` component.\n\n```tsx title=\"app/layout.tsx\"\nimport { TooltipProvider } from \"@/components/ui/tooltip\"\n\nexport default function RootLayout({ children }: { children: React.ReactNode }) {\n  return (\n    <html lang=\"en\">\n      <body>\n        <TooltipProvider>{children}</TooltipProvider>\n      </body>\n    </html>\n  )\n}\n```\n",
     "files": [
       {
         "path": "ui/tooltip.tsx",
         "type": "registry:ui"
       }
-    ]
+    ],
+    "meta": {
+      "links": {
+        "radix": {
+          "docs": "https://ui.shadcn.com/docs/components/radix/tooltip",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/tooltip-example.tsx",
+          "api": "https://www.radix-ui.com/docs/primitives/components/tooltip.md"
+        },
+        "base": {
+          "docs": "https://ui.shadcn.com/docs/components/base/tooltip",
+          "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/tooltip-example.tsx",
+          "api": "https://base-ui.com/react/components/tooltip.md"
+        }
+      }
+    }
   }
 ]

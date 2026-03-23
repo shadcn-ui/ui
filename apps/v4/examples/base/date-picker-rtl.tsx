@@ -72,7 +72,7 @@ export function DatePickerRtl() {
           <Button
             variant={"outline"}
             data-empty={!date}
-            className="data-[empty=true]:text-muted-foreground w-[212px] justify-between text-left font-normal"
+            className="w-[212px] justify-between text-left font-normal data-[empty=true]:text-muted-foreground"
             dir={dir}
           />
         }

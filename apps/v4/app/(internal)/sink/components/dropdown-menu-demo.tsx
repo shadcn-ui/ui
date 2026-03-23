@@ -222,7 +222,7 @@ function DropdownMenuWithAvatar() {
           </Avatar>
           <div className="grid flex-1 text-left text-sm leading-tight">
             <span className="truncate font-semibold">shadcn</span>
-            <span className="text-muted-foreground truncate text-xs">
+            <span className="truncate text-xs text-muted-foreground">
               shadcn@example.com
             </span>
           </div>
@@ -232,7 +232,7 @@ function DropdownMenuWithAvatar() {
             hugeicons="ChevronUpDownIcon"
             phosphor="CaretUpDownIcon"
             remixicon="RiExpandUpDownLine"
-            className="text-muted-foreground ml-auto"
+            className="ml-auto text-muted-foreground"
           />
         </Button>
       </DropdownMenuTrigger>
@@ -248,7 +248,7 @@ function DropdownMenuWithAvatar() {
             </Avatar>
             <div className="grid flex-1 text-left text-sm leading-tight">
               <span className="truncate font-semibold">shadcn</span>
-              <span className="text-muted-foreground truncate text-xs">
+              <span className="truncate text-xs text-muted-foreground">
                 shadcn@example.com
               </span>
             </div>
@@ -348,7 +348,7 @@ function DropdownMenuAvatarOnly() {
             </Avatar>
             <div className="grid flex-1 text-left text-sm leading-tight">
               <span className="truncate font-semibold">maxleiter</span>
-              <span className="text-muted-foreground truncate text-xs">
+              <span className="truncate text-xs text-muted-foreground">
                 maxleiter@example.com
               </span>
             </div>

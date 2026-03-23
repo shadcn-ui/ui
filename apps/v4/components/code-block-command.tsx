@@ -78,9 +78,9 @@ export function CodeBlockCommand({
           })
         }}
       >
-        <div className="border-border/50 flex items-center gap-2 border-b px-3 py-1">
-          <div className="bg-foreground flex size-4 items-center justify-center rounded-[1px] opacity-70">
-            <IconTerminal className="text-code size-3" />
+        <div className="flex items-center gap-2 border-b border-border/50 px-3 py-1">
+          <div className="flex size-4 items-center justify-center rounded-[1px] bg-foreground opacity-70">
+            <IconTerminal className="size-3 text-code" />
           </div>
           <TabsList className="rounded-none bg-transparent p-0">
             {Object.entries(tabs).map(([key]) => {
@@ -88,7 +88,7 @@ export function CodeBlockCommand({
                 <TabsTrigger
                   key={key}
                   value={key}
-                  className="data-[state=active]:bg-background! data-[state=active]:border-input h-7 border border-transparent pt-0.5 shadow-none!"
+                  className="h-7 border border-transparent pt-0.5 shadow-none! data-[state=active]:border-input data-[state=active]:bg-background!"
                 >
                   {key}
                 </TabsTrigger>
@@ -113,23 +113,16 @@ export function CodeBlockCommand({
           })}
         </div>
       </Tabs>
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <Button
-            data-slot="copy-button"
-            size="icon"
-            variant="ghost"
-            className="absolute top-2 right-2 z-10 size-7 opacity-70 hover:opacity-100 focus-visible:opacity-100"
-            onClick={copyCommand}
-          >
-            <span className="sr-only">Copy</span>
-            {hasCopied ? <IconCheck /> : <IconCopy />}
-          </Button>
-        </TooltipTrigger>
-        <TooltipContent>
-          {hasCopied ? "Copied" : "Copy to Clipboard"}
-        </TooltipContent>
-      </Tooltip>
+      <Button
+        data-slot="copy-button"
+        size="icon"
+        variant="ghost"
+        className="absolute top-2 right-2 z-10 size-7 opacity-70 hover:opacity-100 focus-visible:opacity-100"
+        onClick={copyCommand}
+      >
+        <span className="sr-only">Copy</span>
+        {hasCopied ? <IconCheck /> : <IconCopy />}
+      </Button>
     </div>
   )
 }

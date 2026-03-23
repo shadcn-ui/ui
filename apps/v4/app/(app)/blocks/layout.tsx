@@ -71,7 +71,7 @@ export default function BlocksLayout({
           <Link href="/blocks/sidebar">Browse all blocks</Link>
         </Button>
       </PageNav>
-      <div className="container-wrapper section-soft flex-1 md:py-12">
+      <div className="container-wrapper flex-1 section-soft md:py-12">
         <div className="container">{children}</div>
       </div>
     </>

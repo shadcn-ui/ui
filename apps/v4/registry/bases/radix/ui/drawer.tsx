@@ -58,7 +58,7 @@ function DrawerContent({
         )}
         {...props}
       >
-        <div className="cn-drawer-handle bg-muted mx-auto hidden shrink-0 group-data-[vaul-drawer-direction=bottom]/drawer-content:block" />
+        <div className="cn-drawer-handle mx-auto hidden shrink-0 group-data-[vaul-drawer-direction=bottom]/drawer-content:block" />
         {children}
       </DrawerPrimitive.Content>
     </DrawerPortal>
@@ -92,7 +92,7 @@ function DrawerTitle({
   return (
     <DrawerPrimitive.Title
       data-slot="drawer-title"
-      className={cn("cn-drawer-title", className)}
+      className={cn("cn-drawer-title cn-font-heading", className)}
       {...props}
     />
   )

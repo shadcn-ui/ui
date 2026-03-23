@@ -1,6 +1,8 @@
 "use client"
 
 import * as React from "react"
+import { Menu02Icon } from "@hugeicons/core-free-icons"
+import { HugeiconsIcon } from "@hugeicons/react"
 import { useTheme } from "next-themes"
 
 import { useMounted } from "@/hooks/use-mounted"
@@ -10,99 +12,37 @@ import {
   Picker,
   PickerContent,
   PickerGroup,
+  PickerLabel,
   PickerRadioGroup,
   PickerRadioItem,
+  PickerSeparator,
   PickerTrigger,
 } from "@/app/(create)/components/picker"
-import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
+import {
+  isTranslucentMenuColor,
+  useDesignSystemSearchParams,
+} from "@/app/(create)/lib/search-params"
 
-const MENU_OPTIONS = [
-  {
-    value: "default" as const,
-    label: "Default",
-    icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="128"
-        height="128"
-        viewBox="0 0 24 24"
-        fill="none"
-        role="img"
-        stroke="currentColor"
-        className="text-foreground"
-      >
-        <path
-          d="M2 11.5C2 7.02166 2 4.78249 3.39124 3.39124C4.78249 2 7.02166 2 11.5 2C15.9783 2 18.2175 2 19.6088 3.39124C21 4.78249 21 7.02166 21 11.5C21 15.9783 21 18.2175 19.6088 19.6088C18.2175 21 15.9783 21 11.5 21C7.02166 21 4.78249 21 3.39124 19.6088C2 18.2175 2 15.9783 2 11.5Z"
-          stroke="currentColor"
-          strokeWidth="2"
-        />
-        <path
-          d="M8.5 11.5L14.5001 11.5"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M9.5 15H13.5"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M7.5 8H15.5"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-    ),
-  },
-  {
-    value: "inverted" as const,
-    label: "Inverted",
-    icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="128"
-        height="128"
-        viewBox="0 0 24 24"
-        fill="none"
-        role="img"
-        className="fill-foreground text-foreground"
-      >
-        <path
-          d="M2 11.5C2 7.02166 2 4.78249 3.39124 3.39124C4.78249 2 7.02166 2 11.5 2C15.9783 2 18.2175 2 19.6088 3.39124C21 4.78249 21 7.02166 21 11.5C21 15.9783 21 18.2175 19.6088 19.6088C18.2175 21 15.9783 21 11.5 21C7.02166 21 4.78249 21 3.39124 19.6088C2 18.2175 2 15.9783 2 11.5Z"
-          stroke="currentColor"
-          strokeWidth="2"
-        />
-        <path
-          d="M8.5 11.5L14.5001 11.5"
-          stroke="var(--background)"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M9.5 15H13.5"
-          stroke="var(--background)"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M7.5 8H15.5"
-          stroke="var(--background)"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-    ),
-  },
-] as const
+type ColorChoice = "default" | "inverted"
+type SurfaceChoice = "solid" | "translucent"
+
+function getMenuColorValue(
+  color: ColorChoice,
+  translucent: boolean
+): MenuColorValue {
+  if (color === "default") {
+    return translucent ? "default-translucent" : "default"
+  }
+
+  return translucent ? "inverted-translucent" : "inverted"
+}
+
+const MENU_OPTIONS: { value: MenuColorValue; label: string }[] = [
+  { value: "default", label: "Default / Solid" },
+  { value: "default-translucent", label: "Default / Translucent" },
+  { value: "inverted", label: "Inverted / Solid" },
+  { value: "inverted-translucent", label: "Inverted / Translucent" },
+]
 
 export function MenuColorPicker({
   isMobile,
@@ -111,25 +51,69 @@ export function MenuColorPicker({
   isMobile: boolean
   anchorRef: React.RefObject<HTMLDivElement | null>
 }) {
+  const [params, setParams] = useDesignSystemSearchParams()
   const { resolvedTheme } = useTheme()
   const mounted = useMounted()
-  const [params, setParams] = useDesignSystemSearchParams()
+  const lastSolidMenuAccentRef = React.useRef(params.menuAccent)
+  const isDark = mounted && resolvedTheme === "dark"
   const currentMenu = MENU_OPTIONS.find(
     (menu) => menu.value === params.menuColor
   )
+  const colorChoice: ColorChoice =
+    params.menuColor === "inverted" ||
+    params.menuColor === "inverted-translucent"
+      ? "inverted"
+      : "default"
+  const surfaceChoice: SurfaceChoice =
+    params.menuColor === "default-translucent" ||
+    params.menuColor === "inverted-translucent"
+      ? "translucent"
+      : "solid"
+
+  React.useEffect(() => {
+    if (surfaceChoice === "solid") {
+      lastSolidMenuAccentRef.current = params.menuAccent
+    }
+  }, [params.menuAccent, surfaceChoice])
+
+  const setColor = (color: ColorChoice) => {
+    const nextMenuColor = getMenuColorValue(
+      color,
+      surfaceChoice === "translucent"
+    )
+
+    setParams({
+      menuColor: nextMenuColor,
+      ...(isTranslucentMenuColor(nextMenuColor) && { menuAccent: "subtle" }),
+    })
+  }
+
+  const setSurface = (choice: SurfaceChoice) => {
+    const isTranslucent = choice === "translucent"
+    const nextMenuColor = getMenuColorValue(colorChoice, isTranslucent)
+
+    setParams({
+      menuColor: nextMenuColor,
+      menuAccent: isTranslucent ? "subtle" : lastSolidMenuAccentRef.current,
+    })
+  }
 
   return (
     <div className="group/picker relative">
       <Picker>
-        <PickerTrigger disabled={mounted && resolvedTheme === "dark"}>
+        <PickerTrigger>
           <div className="flex flex-col justify-start text-left">
-            <div className="text-muted-foreground text-xs">Menu Color</div>
-            <div className="text-foreground text-sm font-medium">
+            <div className="text-xs text-muted-foreground">Menu</div>
+            <div className="line-clamp-1 max-w-[80%] truncate text-sm font-medium text-foreground">
               {currentMenu?.label}
             </div>
           </div>
-          <div className="text-foreground pointer-events-none absolute top-1/2 right-4 flex size-4 -translate-y-1/2 items-center justify-center text-base select-none">
-            {currentMenu?.icon}
+          <div className="pointer-events-none absolute top-1/2 right-4 flex size-4 -translate-y-1/2 items-center justify-center text-base text-foreground select-none md:right-2.5">
+            <HugeiconsIcon
+              icon={Menu02Icon}
+              strokeWidth={2}
+              className="size-4"
+            />
           </div>
         </PickerTrigger>
         <PickerContent
@@ -137,26 +121,48 @@ export function MenuColorPicker({
           side={isMobile ? "top" : "right"}
           align={isMobile ? "center" : "start"}
         >
-          <PickerRadioGroup
-            value={currentMenu?.value}
-            onValueChange={(value) => {
-              setParams({ menuColor: value as MenuColorValue })
-            }}
-          >
-            <PickerGroup>
-              {MENU_OPTIONS.map((menu) => (
-                <PickerRadioItem key={menu.value} value={menu.value}>
-                  {menu.icon}
-                  {menu.label}
-                </PickerRadioItem>
-              ))}
-            </PickerGroup>
-          </PickerRadioGroup>
+          <PickerGroup>
+            <PickerLabel>Color</PickerLabel>
+            <PickerRadioGroup
+              value={colorChoice}
+              onValueChange={(value) => {
+                setColor(value as ColorChoice)
+              }}
+            >
+              <PickerRadioItem value="default" closeOnClick={isMobile}>
+                Default
+              </PickerRadioItem>
+              <PickerRadioItem
+                value="inverted"
+                closeOnClick={isMobile}
+                disabled={isDark}
+              >
+                Inverted
+              </PickerRadioItem>
+            </PickerRadioGroup>
+          </PickerGroup>
+          <PickerSeparator />
+          <PickerGroup>
+            <PickerLabel>Appearance</PickerLabel>
+            <PickerRadioGroup
+              value={surfaceChoice}
+              onValueChange={(value) => {
+                setSurface(value as SurfaceChoice)
+              }}
+            >
+              <PickerRadioItem value="solid" closeOnClick={isMobile}>
+                Solid
+              </PickerRadioItem>
+              <PickerRadioItem value="translucent" closeOnClick={isMobile}>
+                Translucent
+              </PickerRadioItem>
+            </PickerRadioGroup>
+          </PickerGroup>
         </PickerContent>
       </Picker>
       <LockButton
         param="menuColor"
-        className="absolute top-1/2 right-10 -translate-y-1/2"
+        className="absolute top-1/2 right-8 -translate-y-1/2"
       />
     </div>
   )

@@ -1,3 +1,4 @@
+import path from "path"
 import { createMDX } from "fumadocs-mdx/next"
 
 /** @type {import('next').NextConfig} */
@@ -24,6 +25,9 @@ const nextConfig = {
         hostname: "avatar.vercel.sh",
       },
     ],
+  },
+  turbopack: {
+    root: path.resolve(import.meta.dirname, "../.."),
   },
   experimental: {
     turbopackFileSystemCacheForDev: true,
@@ -108,6 +112,21 @@ const nextConfig = {
         destination: "/docs/directory",
         permanent: false,
       },
+      {
+        source: "/new",
+        destination: "/docs/new",
+        permanent: false,
+      },
+      {
+        source: "/skills",
+        destination: "/docs/skills",
+        permanent: true,
+      },
+      {
+        source: "/cli",
+        destination: "/docs/cli",
+        permanent: true,
+      },
     ]
   },
   rewrites() {
@@ -115,6 +134,10 @@ const nextConfig = {
       {
         source: "/docs/:path*.md",
         destination: "/llm/:path*",
+      },
+      {
+        source: "/init.md",
+        destination: "/init/md",
       },
     ]
   },

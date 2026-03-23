@@ -1,7 +1,13 @@
 ---
 title: Astro
-description: Install and configure shadcn/ui for Astro
+description: Install and configure shadcn/ui for Astro.
 ---
+
+<Callout className="mb-6 border-emerald-600 bg-emerald-100 dark:border-emerald-400 dark:bg-emerald-900">
+
+**Starting a new project?** Use [shadcn/create](/create) for a fully configured Astro app with custom themes, Base UI or Radix, and icon libraries.
+
+</Callout>
 
 <Steps>
 
@@ -10,34 +16,13 @@ description: Install and configure shadcn/ui for Astro
 Start by creating a new Astro project:
 
 ```bash
-npx create-astro@latest astro-app  --template with-tailwindcss --install --add react --git
+npx shadcn@latest init -t astro
 ```
 
-### Edit tsconfig.json file
-
-Add the following code to the `tsconfig.json` file to resolve paths:
-
-```ts title="tsconfig.json" {4-9} showLineNumbers
-{
-  "compilerOptions": {
-    // ...
-    "baseUrl": ".",
-    "paths": {
-      "@/*": [
-        "./src/*"
-      ]
-    }
-    // ...
-  }
-}
-```
-
-### Run the CLI
-
-Run the `shadcn` init command to setup your project:
+**For a monorepo project, use `--monorepo` flag:**
 
 ```bash
-npx shadcn@latest init
+npx shadcn@latest init -t astro --monorepo
 ```
 
 ### Add Components
@@ -61,11 +46,11 @@ import { Button } from "@/components/ui/button"
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro + TailwindCSS</title>
+		<title>Astro + Tailwind CSS</title>
 	</head>
 
 	<body>
-		<div className="grid place-items-center h-screen content-center">
+		<div class="grid place-items-center h-screen content-center">
 			<Button>Button</Button>
 		</div>
 	</body>

@@ -38,7 +38,7 @@ export function SiteHeader() {
   return (
     <header
       data-slot="site-header"
-      className="bg-background sticky top-0 z-50 flex w-full items-center border-b"
+      className="sticky top-0 z-50 flex w-full items-center border-b bg-background"
     >
       <div className="flex h-(--header-height) w-full items-center gap-2 px-2 pr-4">
         <Button

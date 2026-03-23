@@ -22,7 +22,7 @@ import { Textarea } from "@/examples/radix/ui/textarea"
 
 export function FieldDemo() {
   return (
-    <div className="w-full max-w-md rounded-lg border p-6">
+    <div className="w-full max-w-md rounded-xl border p-6">
       <form>
         <FieldGroup>
           <FieldSet>

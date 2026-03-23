@@ -18,6 +18,7 @@ The `registry-item.json` schema is used to define your custom registry items.
     "https://example.com/r/foo"
   ],
   "dependencies": ["is-even@3.0.0", "motion"],
+  "devDependencies": ["tw-animate-css"],
   "files": [
     {
       "path": "registry/new-york/hello-world/hello-world.tsx",
@@ -33,10 +34,10 @@ The `registry-item.json` schema is used to define your custom registry items.
       "font-heading": "Poppins, sans-serif"
     },
     "light": {
-      "brand": "20 14.3% 4.1%"
+      "brand": "oklch(0.205 0.015 18)"
     },
     "dark": {
-      "brand": "20 14.3% 4.1%"
+      "brand": "oklch(0.205 0.015 18)"
     }
   }
 }
@@ -102,18 +103,20 @@ The `type` property is used to specify the type of your registry item. This is u
 
 The following types are supported:
 
-| Type                 | Description                                      |
-| -------------------- | ------------------------------------------------ |
-| `registry:block`     | Use for complex components with multiple files.  |
-| `registry:component` | Use for simple components.                       |
-| `registry:lib`       | Use for lib and utils.                           |
-| `registry:hook`      | Use for hooks.                                   |
-| `registry:ui`        | Use for UI components and single-file primitives |
-| `registry:page`      | Use for page or file-based routes.               |
-| `registry:file`      | Use for miscellaneous files.                     |
-| `registry:style`     | Use for registry styles. eg. `new-york`          |
-| `registry:theme`     | Use for themes.                                  |
-| `registry:item`      | Use for universal registry items.                |
+| Type                 | Description                                       |
+| -------------------- | ------------------------------------------------- |
+| `registry:base`      | Use for entire design systems.                    |
+| `registry:block`     | Use for complex components with multiple files.   |
+| `registry:component` | Use for simple components.                        |
+| `registry:font`      | Use for fonts.                                    |
+| `registry:lib`       | Use for lib and utils.                            |
+| `registry:hook`      | Use for hooks.                                    |
+| `registry:ui`        | Use for UI components and single-file primitives. |
+| `registry:page`      | Use for page or file-based routes.                |
+| `registry:file`      | Use for miscellaneous files.                      |
+| `registry:style`     | Use for registry styles. eg. `new-york`.          |
+| `registry:theme`     | Use for themes.                                   |
+| `registry:item`      | Use for universal registry items.                 |
 
 ### author
 
@@ -141,6 +144,18 @@ Use `@version` to specify the version of your registry item.
     "lucide-react",
     "name@1.0.2"
   ]
+}
+```
+
+### devDependencies
+
+The `devDependencies` property is used to specify the dev dependencies of your registry item. These are `npm` packages that are only needed during development.
+
+Use `@version` to specify the version of the package.
+
+```json title="registry-item.json" showLineNumbers
+{
+  "devDependencies": ["tw-animate-css", "name@1.2.0"]
 }
 ```
 
@@ -323,6 +338,34 @@ Environment variables are added to the `.env.local` or `.env` file. Existing var
 **IMPORTANT:** Use `envVars` to add development or example variables. Do NOT use it to add production variables.
 
 </Callout>
+
+### font
+
+The `font` property is required for `registry:font` items. It configures the font family, provider, import name, CSS variable, and the npm package to install for non-Next.js projects.
+
+```json title="registry-item.json" showLineNumbers
+{
+  "font": {
+    "family": "'Inter Variable', sans-serif",
+    "provider": "google",
+    "import": "Inter",
+    "variable": "--font-sans",
+    "subsets": ["latin"],
+    "dependency": "@fontsource-variable/inter"
+  }
+}
+```
+
+| Property     | Type       | Required | Description                                                                               |
+| ------------ | ---------- | -------- | ----------------------------------------------------------------------------------------- |
+| `family`     | `string`   | Yes      | The CSS font-family value.                                                                |
+| `provider`   | `string`   | Yes      | The font provider. Currently only `google` is supported.                                  |
+| `import`     | `string`   | Yes      | The import name for the font from `next/font/google`.                                     |
+| `variable`   | `string`   | Yes      | The CSS variable name for the font (e.g., `--font-sans`, `--font-mono`).                  |
+| `weight`     | `string[]` | No       | Array of font weights to include.                                                         |
+| `subsets`    | `string[]` | No       | Array of font subsets to include.                                                         |
+| `selector`   | `string`   | No       | CSS selector to apply the font to. Defaults to `html`.                                    |
+| `dependency` | `string`   | No       | The npm package to install for non-Next.js projects (e.g., `@fontsource-variable/inter`). |
 
 ### docs
 
