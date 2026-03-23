@@ -486,6 +486,12 @@
     "description": "A large collection of animated, interactive & fully customizable React components for building memorable websites. From smooth text animations all the way to eye-catching backgrounds, you can find it here."
   },
   {
+    "name": "@react-easy-modals",
+    "homepage": "https://react-easy-modals-docs.vercel.app",
+    "url": "https://react-easy-modals-docs.vercel.app/r/styles/{style}/{name}.json",
+    "description": "Modal component for react-easy-modals. Integrates with shadcn Dialog for a simple, powerful modal system with TypeScript support and promise-based API."
+  },
+  {
     "name": "@retroui",
     "homepage": "https://retroui.dev",
     "url": "https://retroui.dev/r/{name}.json",
