@@ -954,6 +954,12 @@
     "description": "A design focused component library for Next.js, built for speed, flexibility and developer experience."
   },
   {
+    "name": "@pulkitxm",
+    "homepage": "https://pulkitxm.com",
+    "url": "https://pulkitxm.com/components/{name}.json",
+    "description": "Animated shadcn components powered by GSAP and Framer Motion. Built for expressive UIs."
+  },
+  {
     "name": "@rescript-shadcn",
     "homepage": "https://rescript-shadcn.miriad.studio",
     "url": "https://rescript-shadcn.miriad.studio/r/{name}.json",
