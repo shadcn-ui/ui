@@ -9,8 +9,8 @@ import {
 } from "@/app/(create)/components/history-buttons"
 import { DARK_MODE_FORWARD_TYPE } from "@/app/(create)/components/mode-switcher"
 import { RANDOMIZE_FORWARD_TYPE } from "@/app/(create)/components/random-button"
-import { RESET_FORWARD_TYPE } from "@/app/(create)/hooks/use-reset"
 import { sendToIframe } from "@/app/(create)/hooks/use-iframe-sync"
+import { RESET_FORWARD_TYPE } from "@/app/(create)/hooks/use-reset"
 import {
   serializeDesignSystemSearchParams,
   useDesignSystemSearchParams,
