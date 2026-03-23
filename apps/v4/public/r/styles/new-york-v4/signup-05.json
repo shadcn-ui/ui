@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/new-york-v4/blocks/signup-05/page.tsx",
-      "content": "import { SignupForm } from \"@/registry/new-york-v4/blocks/signup-05/components/signup-form\"\n\nexport default function SignupPage() {\n  return (\n    <div className=\"flex min-h-svh flex-col items-center justify-center gap-6 bg-background p-6 md:p-10\">\n      <div className=\"w-full max-w-sm\">\n        <SignupForm />\n      </div>\n    </div>\n  )\n}\n",
+      "content": "import { SignupForm } from \"@/registry/new-york-v4/blocks/signup-05/components/signup-form\"\r\n\r\nexport default function SignupPage() {\r\n  return (\r\n    <div className=\"flex min-h-svh flex-col items-center justify-center gap-6 bg-background p-6 md:p-10\">\r\n      <div className=\"w-full max-w-sm\">\r\n        <SignupForm />\r\n      </div>\r\n    </div>\r\n  )\r\n}\r\n",
       "type": "registry:page",
       "target": "app/signup/page.tsx"
     },
