@@ -6,15 +6,17 @@
     "components-json",
     "theming",
     "[Dark Mode](/docs/dark-mode)",
+    "[RTL](/docs/rtl)",
     "[CLI](/docs/cli)",
     "monorepo",
-    "typography",
+    "skills",
     "v0",
     "javascript",
     "blocks",
     "figma",
-    "changelog",
+    "[Changelog](/docs/changelog)",
     "[llms.txt](/llms.txt)",
-    "legacy"
+    "legacy",
+    "!new"
   ]
 }

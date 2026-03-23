@@ -37,7 +37,7 @@ function PopoverContent({
         <PopoverPrimitive.Popup
           data-slot="popover-content"
           className={cn(
-            "cn-popover-content z-50 w-72 origin-(--transform-origin) outline-hidden",
+            "cn-popover-content cn-popover-content-logical z-50 w-72 origin-(--transform-origin) outline-hidden",
             className
           )}
           {...props}
@@ -61,7 +61,7 @@ function PopoverTitle({ className, ...props }: PopoverPrimitive.Title.Props) {
   return (
     <PopoverPrimitive.Title
       data-slot="popover-title"
-      className={cn("cn-popover-title", className)}
+      className={cn("cn-popover-title cn-font-heading", className)}
       {...props}
     />
   )

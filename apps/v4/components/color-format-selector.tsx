@@ -32,13 +32,13 @@ export function ColorFormatSelector({
       <SelectTrigger
         size="sm"
         className={cn(
-          "bg-secondary text-secondary-foreground border-secondary shadow-none",
+          "border-secondary bg-secondary text-secondary-foreground shadow-none",
           className
         )}
         {...props}
       >
         <span className="font-medium">Format: </span>
-        <span className="text-muted-foreground font-mono">{format}</span>
+        <span className="font-mono text-muted-foreground">{format}</span>
       </SelectTrigger>
       <SelectContent align="end" position="popper" className="rounded-xl">
         {Object.entries(formats).map(([format, value]) => (
@@ -48,7 +48,7 @@ export function ColorFormatSelector({
             className="gap-2 rounded-lg [&>span]:flex [&>span]:items-center [&>span]:gap-2"
           >
             <span className="font-medium">{format}</span>
-            <span className="text-muted-foreground font-mono text-xs">
+            <span className="font-mono text-xs text-muted-foreground">
               {value}
             </span>
           </SelectItem>
