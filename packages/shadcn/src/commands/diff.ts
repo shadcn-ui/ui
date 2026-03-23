@@ -7,11 +7,26 @@ import {
   getShadcnRegistryIndex,
 } from "@/src/registry/api"
 import { registryIndexSchema } from "@/src/schema"
+import { getSupportedFontMarkers } from "@/src/utils/font-markers"
 import { Config, getConfig } from "@/src/utils/get-config"
+import {
+  formatMonorepoMessage,
+  getMonorepoTargets,
+  isMonorepoRoot,
+} from "@/src/utils/get-monorepo-info"
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import { transform } from "@/src/utils/transformers"
+import { transformCleanup } from "@/src/utils/transformers/transform-cleanup"
+import { transformCssVars } from "@/src/utils/transformers/transform-css-vars"
+import { transformFont } from "@/src/utils/transformers/transform-font"
+import { transformIcons } from "@/src/utils/transformers/transform-icons"
+import { transformImport } from "@/src/utils/transformers/transform-import"
+import { transformMenu } from "@/src/utils/transformers/transform-menu"
+import { transformRsc } from "@/src/utils/transformers/transform-rsc"
+import { transformRtl } from "@/src/utils/transformers/transform-rtl"
+import { transformTwPrefixes } from "@/src/utils/transformers/transform-tw-prefix"
 import { Command } from "commander"
 import { diffLines, type Change } from "diff"
 import { z } from "zod"
@@ -25,7 +40,7 @@ const updateOptionsSchema = z.object({
 
 export const diff = new Command()
   .name("diff")
-  .description("check for updates against the registry")
+  .description("[DEPRECATED] Use `add [component] --diff` instead.")
   .argument("[component]", "the component name")
   .option("-y, --yes", "skip confirmation prompt.", false)
   .option(
@@ -49,6 +64,15 @@ export const diff = new Command()
 
       const config = await getConfig(cwd)
       if (!config) {
+        // Check if we're in a monorepo root.
+        if (await isMonorepoRoot(cwd)) {
+          const targets = await getMonorepoTargets(cwd)
+          if (targets.length > 0) {
+            formatMonorepoMessage("diff [component]", targets)
+            process.exit(1)
+          }
+        }
+
         logger.warn(
           `Configuration is missing. Please run ${highlighter.success(
             `init`
@@ -150,6 +174,7 @@ async function diffComponent(
 ) {
   const payload = await fetchTree(config.style, [component])
   const baseColor = await getRegistryBaseColor(config.tailwind.baseColor)
+  const supportedFontMarkers = getSupportedFontMarkers(payload)
 
   if (!payload) {
     return []
@@ -180,12 +205,26 @@ async function diffComponent(
         continue
       }
 
-      const registryContent = await transform({
-        filename: file.path,
-        raw: file.content,
-        config,
-        baseColor,
-      })
+      const registryContent = await transform(
+        {
+          filename: file.path,
+          raw: file.content,
+          config,
+          baseColor,
+          supportedFontMarkers,
+        },
+        [
+          transformImport,
+          transformRsc,
+          transformCssVars,
+          transformTwPrefixes,
+          transformIcons,
+          transformMenu,
+          transformRtl,
+          transformFont,
+          transformCleanup,
+        ]
+      )
 
       const patch = diffLines(registryContent as string, fileContent)
       if (patch.length > 1) {

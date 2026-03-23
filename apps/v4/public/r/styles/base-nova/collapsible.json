@@ -8,5 +8,12 @@
       "type": "registry:ui"
     }
   ],
+  "meta": {
+    "links": {
+      "docs": "https://ui.shadcn.com/docs/components/base/collapsible",
+      "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/collapsible-example.tsx",
+      "api": "https://base-ui.com/react/components/collapsible.md"
+    }
+  },
   "type": "registry:ui"
 }

@@ -22,14 +22,15 @@
   --breakpoint-3xl: 1600px;
   --breakpoint-4xl: 2000px;
   --font-sans: var(--font-sans);
+  --font-heading: var(--font-heading);
   --font-mono: var(--font-mono);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --radius-2xl: calc(var(--radius) + 8px);
-  --radius-3xl: calc(var(--radius) + 12px);
-  --radius-4xl: calc(var(--radius) + 16px);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -173,6 +174,9 @@
     font-synthesis-weight: none;
     text-rendering: optimizeLegibility;
   }
+  .cn-font-heading {
+    @apply font-heading;
+  }
 
   [data-slot="layout"] {
     @apply overscroll-none;
@@ -203,7 +207,7 @@
 }
 
 @utility section-soft {
-  @apply from-background to-surface/40 dark:bg-background 3xl:fixed:bg-none bg-gradient-to-b;
+  @apply from-background to-surface/40 dark:bg-background 3xl:fixed:bg-none bg-linear-to-b;
 }
 
 @utility theme-container {
