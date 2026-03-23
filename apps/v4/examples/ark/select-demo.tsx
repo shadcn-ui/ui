@@ -18,6 +18,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/examples/ark/ui/select"
+import { Portal } from "@ark-ui/react/portal"
 
 const fruits = createListCollection({
   items: [
@@ -42,7 +43,8 @@ export function SelectDemo() {
           <SelectIndicator />
         </SelectIndicatorGroup>
       </SelectControl>
-      <SelectPositioner>
+      <Portal>
+        <SelectPositioner>
         <SelectContent>
           <SelectItemGroup>
             <SelectItemGroupLabel>Fruits</SelectItemGroupLabel>
@@ -55,6 +57,7 @@ export function SelectDemo() {
           </SelectItemGroup>
         </SelectContent>
       </SelectPositioner>
+      </Portal>
     </Select>
   )
 }
