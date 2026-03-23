@@ -12,6 +12,12 @@
     "description": "A set of beautifully designed components designed for developers who want niche, high-utility UI elements that you won't find in standard libraries."
   },
   {
+    "name": "@unlumen-ui",
+    "homepage": "https://ui.unlumen.com",
+    "url": "https://ui.unlumen.com/r/{name}.json",
+    "description": "Primitives and components with serious attention to animation and design. Copy, own, ship."
+  },
+  {
     "name": "@auth0",
     "homepage": "https://auth0.com",
     "url": "https://ui.auth0.com/r/{name}.json",
@@ -258,7 +264,7 @@
     "description": "Ready-to-use foundation components/blocks built on top of shadcn/ui."
   },
   {
-    "name": "@hooks",
+    "name": "@shadcnhooks",
     "homepage": "https://shadcn-hooks.com",
     "url": "https://shadcn-hooks.com/r/{name}.json",
     "description": "A comprehensive React Hooks Collection built with Shadcn."
@@ -486,6 +492,12 @@
     "description": "A large collection of animated, interactive & fully customizable React components for building memorable websites. From smooth text animations all the way to eye-catching backgrounds, you can find it here."
   },
   {
+    "name": "@react-easy-modals",
+    "homepage": "https://react-easy-modals-docs.vercel.app",
+    "url": "https://react-easy-modals-docs.vercel.app/r/styles/{style}/{name}.json",
+    "description": "Modal component for react-easy-modals. Integrates with shadcn Dialog for a simple, powerful modal system with TypeScript support and promise-based API."
+  },
+  {
     "name": "@retroui",
     "homepage": "https://retroui.dev",
     "url": "https://retroui.dev/r/{name}.json",
@@ -676,6 +688,12 @@
     "homepage": "https://utilcn.dev",
     "url": "https://utilcn.dev/r/{name}.json",
     "description": "Fullstack registry items to start those big features. Utilcn has ChatGPT Apps, file uploading (with progress bars) and downloading, and a way to make your env vars typesafe on the backend."
+  },
+  {
+    "name": "@w3-kit",
+    "homepage": "https://w3-kit.com",
+    "url": "https://w3-kit.com/registry/{name}.json",
+    "description": "Web3 UI components for blockchain dApps. Includes wallet connection, token swaps, NFT cards, staking interfaces, and 20+ more crypto components."
   },
   {
     "name": "@wandry-ui",
@@ -916,5 +934,29 @@
     "homepage": "https://ui.flexnative.com",
     "url": "https://ui.flexnative.com/r/{name}.json",
     "description": "A collection of customizable UI blocks with interactive live previews"
+  },
+  {
+    "name": "@nexus-ui",
+    "homepage": "https://nexus-ui.dev",
+    "url": "https://nexus-ui.dev/r/{name}.json",
+    "description": "Open-source component library of composable, copy-paste primitives for building AI interfaces (chat, streaming, multimodal)"
+  },
+  {
+    "name": "@sabraman",
+    "homepage": "https://sabraman.ru/components",
+    "url": "https://sabraman.ru/r/{name}.json",
+    "description": "Legacy skeuomorphic UI components and blocks for shadcn."
+  },
+  {
+    "name": "@odysseyui",
+    "homepage": "https://www.odysseyui.com/docs",
+    "url": "https://www.odysseyui.com/r/{name}.json",
+    "description": "A design focused component library for Next.js, built for speed, flexibility and developer experience."
+  },
+  {
+    "name": "@rescript-shadcn",
+    "homepage": "https://rescript-shadcn.miriad.studio",
+    "url": "https://rescript-shadcn.miriad.studio/r/{name}.json",
+    "description": "Shadcn components rewritten in Rescript, compatible with shadcn CLI."
   }
 ]
