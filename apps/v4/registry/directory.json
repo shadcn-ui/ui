@@ -1033,8 +1033,8 @@
     "name": "@code-blocks",
     "homepage": "https://code-blocks.pheralb.dev",
     "url": "https://code-blocks.pheralb.dev/r/{name}.json",
-    "description": "A set of UI components & utilities to show your code beautifully",
-    "logo": "<svg width='512' height='512' viewBox='0 0 512 512' fill='none' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='><rect id='_r_9_' width='512' height='512' x='0' y='0' rx='128' fill='url(#_r_a_)' stroke='#FFFFFF' stroke-width='0' stroke-opacity='100%' paint-order='stroke'></rect><clipPath id='clip'><use xlink:href='#_r_9_'></use></clipPath><defs><radialGradient id='_r_a_' cx='50%' cy='50%' r='100%' fx='50%' fy='0%' gradientUnits='objectBoundingBox'><stop stop-color='#171717'></stop><stop offset='1' stop-color='#000000'></stop></radialGradient><radialGradient id='_r_b_' cx='0' cy='0' r='1' gradientUnits='userSpaceOnUse' gradientTransform='translate(256) rotate(90) scale(512)'><stop stop-color='white'></stop><stop offset='1' stop-color='white' stop-opacity='0'></stop></radialGradient></defs><svg xmlns='http://www.w3.org/2000/svg' width='352' height='352' viewBox='0 0 256 256' x='80' y='80' alignment-baseline='middle' style='color: rgb(230, 230, 230); width: 352px; height: 352px;'><path fill='currentColor' d='m96 73l-61.94 55L96 183a12 12 0 1 1-16 18L8 137a12 12 0 0 1 0-18l72-64a12 12 0 0 1 16 18m152 46l-72-64a12 12 0 1 0-16 18l61.91 55L160 183a12 12 0 1 0 16 18l72-64a12 12 0 0 0 0-18'></path></svg></svg>"
+    "description": "A set of UI components & utilities to show your code beautifully.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='var(--foreground)'/><path fill='var(--background)' d='m12.7 9.8-5.6 6.2 5.6 6.2 1.5-1.3-4.4-4.9 4.4-4.9zm6.6 0-1.5 1.3 4.4 4.9-4.4 4.9 1.5 1.3 5.6-6.2zm-3.7-1.2h1.8l-3.9 14.8h-1.8z'/></svg>"
   },
   {
     "name": "@pixelact-ui",
