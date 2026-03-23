@@ -16,7 +16,13 @@ import {
 import { Badge } from "@/registry/bases/base/ui/badge"
 import { Button } from "@/registry/bases/base/ui/button"
 import { ButtonGroup } from "@/registry/bases/base/ui/button-group"
-import { Card, CardContent } from "@/registry/bases/base/ui/card"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/registry/bases/base/ui/card"
 import { Checkbox } from "@/registry/bases/base/ui/checkbox"
 import {
   DropdownMenu,
@@ -68,14 +74,14 @@ export function Demo() {
       <div className="grid max-w-3xl gap-4 sm:grid-cols-2">
         <div className="flex flex-col gap-4">
           <Card>
-            <CardContent className="flex flex-col gap-6">
-              <div className="flex flex-col gap-1">
-                <div className="text-2xl font-medium">Style Overview</div>
-                <div className="line-clamp-2 text-base text-muted-foreground">
-                  Designers love packing quirky glyphs into test phrases. This
-                  is a preview of the typography styles.
-                </div>
-              </div>
+            <CardHeader>
+              <CardTitle>Style Overview</CardTitle>
+              <CardDescription className="line-clamp-2">
+                Designers love packing quirky glyphs into test phrases. This is
+                a preview of the typography styles.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
               <div className="grid grid-cols-6 gap-3">
                 {[
                   "--background",
@@ -84,7 +90,7 @@ export function Demo() {
                   "--secondary",
                   "--muted",
                   "--accent",
-                  "--destructive",
+                  "--border",
                   "--chart-1",
                   "--chart-2",
                   "--chart-3",
@@ -270,7 +276,7 @@ export function Demo() {
                   <Button>Button</Button>
                   <Button variant="secondary">Secondary</Button>
                   <Button variant="outline">Outline</Button>
-                  <Button variant="destructive">Delete</Button>
+                  <Button variant="ghost">Ghost</Button>
                 </div>
                 <Item variant="outline">
                   <ItemContent>
@@ -373,7 +379,7 @@ export function Demo() {
                     <DropdownMenuContent
                       align="end"
                       side="top"
-                      className="w-40"
+                      className="w-fit"
                     >
                       <DropdownMenuGroup>
                         <DropdownMenuLabel>Quick Actions</DropdownMenuLabel>

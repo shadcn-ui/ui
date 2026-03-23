@@ -79,7 +79,7 @@ export default function ChangelogPage() {
             })}
             {olderPages.length > 0 && (
               <div id="more-updates" className="mb-24 scroll-mt-24">
-                <h2 className="font-heading mb-6 text-xl font-semibold tracking-tight">
+                <h2 className="mb-6 font-heading text-xl font-semibold tracking-tight">
                   More Updates
                 </h2>
                 <div className="grid auto-rows-fr gap-3 sm:grid-cols-2">
