@@ -32,9 +32,9 @@ function Badge({
   VariantProps<typeof badgeVariants> & {
     asChild?: boolean
   }) {
-  const Comp = asChild ? ark.span : ark.span
   return (
-    <Comp
+    <ark.span
+      asChild={asChild}
       data-slot="badge"
       data-variant={variant}
       className={cn(badgeVariants({ className, variant }))}

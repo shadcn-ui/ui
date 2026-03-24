@@ -1,13 +1,14 @@
 "use client"
 
 import { Button } from "@/examples/ark/ui/button"
-import { toast } from "sonner"
+import { toast } from "@/examples/ark/ui/sonner"
 
 export function SonnerDescription() {
   return (
     <Button
       onClick={() =>
-        toast("Event has been created", {
+        toast.create({
+          title: "Event has been created",
           description: "Monday, January 3rd at 6:00pm",
         })
       }

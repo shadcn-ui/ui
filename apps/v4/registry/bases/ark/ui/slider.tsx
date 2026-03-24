@@ -98,7 +98,7 @@ SliderLabel.displayName = "SliderLabel"
 // --- ValueText ---
 
 const SliderValueText = React.forwardRef<
-  HTMLSpanElement,
+  HTMLDivElement,
   React.ComponentProps<typeof SliderPrimitive.ValueText>
 >(({ className, ...props }, ref) => (
   <SliderPrimitive.ValueText

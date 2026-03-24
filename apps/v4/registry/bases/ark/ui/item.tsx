@@ -63,9 +63,9 @@ function Item({
   ...props
 }: React.ComponentProps<typeof ark.div> &
   VariantProps<typeof itemVariants> & { asChild?: boolean }) {
-  const Comp = asChild ? ark.div : ark.div
   return (
-    <Comp
+    <ark.div
+      asChild={asChild}
       data-slot="item"
       data-variant={variant}
       data-size={size}

@@ -45,10 +45,9 @@ function BreadcrumbLink({
 }: React.ComponentProps<typeof ark.a> & {
   asChild?: boolean
 }) {
-  const Comp = asChild ? ark.a : ark.a
-
   return (
-    <Comp
+    <ark.a
+      asChild={asChild}
       data-slot="breadcrumb-link"
       className={cn("cn-breadcrumb-link", className)}
       {...props}

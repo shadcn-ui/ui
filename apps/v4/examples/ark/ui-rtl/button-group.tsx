@@ -45,10 +45,9 @@ function ButtonGroupText({
 }: React.ComponentProps<typeof ark.div> & {
   asChild?: boolean
 }) {
-  const Comp = asChild ? ark.div : ark.div
-
   return (
-    <Comp
+    <ark.div
+      asChild={asChild}
       className={cn(
         "flex items-center gap-2 rounded-lg border bg-muted px-2.5 text-sm font-medium [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4",
         className
