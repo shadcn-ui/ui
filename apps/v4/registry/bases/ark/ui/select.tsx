@@ -11,7 +11,7 @@ import { cn } from "@/registry/bases/ark/lib/utils"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 function Select(props: React.ComponentProps<typeof SelectPrimitive.Root>) {
-  return <SelectPrimitive.Root lazyMount unmountOnExit {...props} />
+  return <SelectPrimitive.Root {...props} />
 }
 
 const SelectControl = React.forwardRef<
@@ -78,7 +78,7 @@ const SelectIndicator = React.forwardRef<
     ref={ref}
     data-slot="select-indicator"
     className={cn(
-      "flex shrink-0 items-center justify-center text-muted-foreground/60 [&_svg]:size-4",
+      "pointer-events-none absolute inset-y-0 right-0 flex items-center px-2.5 text-muted-foreground/60 [&_svg]:size-4",
       className
     )}
     {...props}

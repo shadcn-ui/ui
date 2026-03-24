@@ -74,8 +74,8 @@ export function ComboxboxInputGroup() {
       className="w-full max-w-64"
     >
       <ComboboxControl>
-        <GlobeIcon className="size-4" />
-        <ComboboxInput placeholder="Select a timezone" />
+        <GlobeIcon className="ml-2 size-4 text-muted-foreground" />
+        <ComboboxInput placeholder="Select a timezone" className="pl-1.5" />
         <ComboboxTrigger />
       </ComboboxControl>
       <ComboboxContent>

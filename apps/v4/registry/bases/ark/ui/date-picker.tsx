@@ -5,11 +5,10 @@ import { DatePicker as DatePickerPrimitive } from "@ark-ui/react/date-picker"
 import { Portal } from "@ark-ui/react/portal"
 
 import { cn } from "@/registry/bases/ark/lib/utils"
-import { Button } from "@/registry/bases/ark/ui/button"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 function DatePicker(props: React.ComponentProps<typeof DatePickerPrimitive.Root>) {
-  return <DatePickerPrimitive.Root lazyMount unmountOnExit {...props} />
+  return <DatePickerPrimitive.Root {...props} />
 }
 
 const DatePickerLabel = React.forwardRef<
@@ -125,8 +124,8 @@ const DatePickerContent = React.forwardRef<
         data-slot="date-picker-content"
         className={cn(
           "z-50 flex flex-col gap-3 rounded-lg border bg-popover p-3 text-popover-foreground shadow-lg outline-none",
-          "min-w-[17.5rem]",
-          "origin-[var(--transform-origin)]",
+          "min-w-70",
+          "origin-(--transform-origin)",
           "data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-[98%]",
           "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-[98%]",
           className

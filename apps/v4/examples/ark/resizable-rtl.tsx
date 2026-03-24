@@ -2,9 +2,9 @@
 
 import * as React from "react"
 import {
-  ResizableHandle,
-  ResizablePanel,
-  ResizablePanelGroup,
+  SplitterPanel,
+  SplitterResizeTrigger,
+  SplitterRoot,
 } from "@/examples/ark/ui-rtl/resizable"
 
 import {
@@ -43,36 +43,36 @@ export function ResizableRtl() {
   const { dir, t } = useTranslation(translations, "ar")
 
   return (
-    <ResizablePanelGroup
+    <SplitterRoot
       panels={[{ id: "a" }, { id: "b" }]}
       className="max-w-sm rounded-lg border"
       dir={dir}
     >
-      <ResizablePanel id="a">
+      <SplitterPanel id="a">
         <div className="flex h-[200px] items-center justify-center p-6">
           <span className="font-semibold">{t.one}</span>
         </div>
-      </ResizablePanel>
-      <ResizableHandle id="a:b" withHandle />
-      <ResizablePanel id="b">
-        <ResizablePanelGroup
+      </SplitterPanel>
+      <SplitterResizeTrigger id="a:b" withHandle />
+      <SplitterPanel id="b">
+        <SplitterRoot
           panels={[{ id: "c" }, { id: "d" }]}
           orientation="vertical"
           dir={dir}
         >
-          <ResizablePanel id="c">
+          <SplitterPanel id="c">
             <div className="flex h-full items-center justify-center p-6">
               <span className="font-semibold">{t.two}</span>
             </div>
-          </ResizablePanel>
-          <ResizableHandle id="c:d" withHandle />
-          <ResizablePanel id="d">
+          </SplitterPanel>
+          <SplitterResizeTrigger id="c:d" withHandle />
+          <SplitterPanel id="d">
             <div className="flex h-full items-center justify-center p-6">
               <span className="font-semibold">{t.three}</span>
             </div>
-          </ResizablePanel>
-        </ResizablePanelGroup>
-      </ResizablePanel>
-    </ResizablePanelGroup>
+          </SplitterPanel>
+        </SplitterRoot>
+      </SplitterPanel>
+    </SplitterRoot>
   )
 }

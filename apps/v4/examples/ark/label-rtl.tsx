@@ -1,7 +1,11 @@
 "use client"
 
-import * as React from "react"
-import { Checkbox } from "@/examples/ark/ui-rtl/checkbox"
+import {
+  Checkbox,
+  CheckboxControl,
+  CheckboxHiddenInput,
+  CheckboxIndicator,
+} from "@/examples/ark/ui-rtl/checkbox"
 import { Label } from "@/examples/ark/ui-rtl/label"
 
 import {
@@ -35,8 +39,13 @@ export function LabelRtl() {
 
   return (
     <div className="flex gap-2" dir={dir}>
-      <Checkbox id="terms-rtl" dir={dir} />
-      <Label htmlFor="terms-rtl" dir={dir}>
+      <Checkbox id="terms-rtl">
+        <CheckboxControl>
+          <CheckboxIndicator />
+        </CheckboxControl>
+        <CheckboxHiddenInput />
+      </Checkbox>
+      <Label htmlFor="terms-rtl">
         {t.label}
       </Label>
     </div>

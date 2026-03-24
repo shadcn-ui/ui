@@ -4,10 +4,12 @@ import {
   CheckboxGroup as CheckboxGroupPrimitive,
   CheckboxHiddenInput,
   CheckboxIndicator,
-  CheckboxLabel,
 } from "@/examples/ark/ui/checkbox"
 import {
+  Field,
   FieldDescription,
+  FieldGroup,
+  FieldLabel,
   FieldLegend,
   FieldSet,
 } from "@/examples/ark/ui/field"
@@ -24,40 +26,68 @@ export function CheckboxGroup() {
       <CheckboxGroupPrimitive
         defaultValue={["hard-disks", "external-disks"]}
         name="finder-pref"
-        className="flex flex-col gap-3"
       >
-        <Checkbox value="hard-disks">
-          <CheckboxControl>
-            <CheckboxIndicator />
-          </CheckboxControl>
-          <CheckboxLabel className="font-normal">Hard disks</CheckboxLabel>
-          <CheckboxHiddenInput />
-        </Checkbox>
-        <Checkbox value="external-disks">
-          <CheckboxControl>
-            <CheckboxIndicator />
-          </CheckboxControl>
-          <CheckboxLabel className="font-normal">External disks</CheckboxLabel>
-          <CheckboxHiddenInput />
-        </Checkbox>
-        <Checkbox value="cds-dvds">
-          <CheckboxControl>
-            <CheckboxIndicator />
-          </CheckboxControl>
-          <CheckboxLabel className="font-normal">
-            CDs, DVDs, and iPods
-          </CheckboxLabel>
-          <CheckboxHiddenInput />
-        </Checkbox>
-        <Checkbox value="connected-servers">
-          <CheckboxControl>
-            <CheckboxIndicator />
-          </CheckboxControl>
-          <CheckboxLabel className="font-normal">
-            Connected servers
-          </CheckboxLabel>
-          <CheckboxHiddenInput />
-        </Checkbox>
+        <FieldGroup className="gap-3">
+          <Field orientation="horizontal">
+            <Checkbox value="hard-disks" id="finder-pref-hard-disks">
+              <CheckboxControl>
+                <CheckboxIndicator />
+              </CheckboxControl>
+              <CheckboxHiddenInput />
+            </Checkbox>
+            <FieldLabel
+              htmlFor="finder-pref-hard-disks"
+              className="font-normal"
+            >
+              Hard disks
+            </FieldLabel>
+          </Field>
+          <Field orientation="horizontal">
+            <Checkbox value="external-disks" id="finder-pref-external-disks">
+              <CheckboxControl>
+                <CheckboxIndicator />
+              </CheckboxControl>
+              <CheckboxHiddenInput />
+            </Checkbox>
+            <FieldLabel
+              htmlFor="finder-pref-external-disks"
+              className="font-normal"
+            >
+              External disks
+            </FieldLabel>
+          </Field>
+          <Field orientation="horizontal">
+            <Checkbox value="cds-dvds" id="finder-pref-cds-dvds">
+              <CheckboxControl>
+                <CheckboxIndicator />
+              </CheckboxControl>
+              <CheckboxHiddenInput />
+            </Checkbox>
+            <FieldLabel
+              htmlFor="finder-pref-cds-dvds"
+              className="font-normal"
+            >
+              CDs, DVDs, and iPods
+            </FieldLabel>
+          </Field>
+          <Field orientation="horizontal">
+            <Checkbox
+              value="connected-servers"
+              id="finder-pref-connected-servers"
+            >
+              <CheckboxControl>
+                <CheckboxIndicator />
+              </CheckboxControl>
+              <CheckboxHiddenInput />
+            </Checkbox>
+            <FieldLabel
+              htmlFor="finder-pref-connected-servers"
+              className="font-normal"
+            >
+              Connected servers
+            </FieldLabel>
+          </Field>
+        </FieldGroup>
       </CheckboxGroupPrimitive>
     </FieldSet>
   )

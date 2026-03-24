@@ -27,6 +27,7 @@ import {
   SelectItemGroup,
   SelectItemIndicator,
   SelectItemText,
+  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "@/examples/ark/ui/select"
@@ -96,12 +97,10 @@ export default function FieldDemo() {
               </Field>
               <div className="grid grid-cols-3 gap-4">
                 <Field>
-                  <FieldLabel htmlFor="checkout-exp-month-ts6">
-                    Month
-                  </FieldLabel>
                   <Select collection={monthItems}>
+                    <SelectLabel>Month</SelectLabel>
                     <SelectControl>
-                      <SelectTrigger id="checkout-exp-month-ts6">
+                      <SelectTrigger>
                         <SelectValue placeholder="MM" />
                       </SelectTrigger>
                       <SelectIndicator />
@@ -119,12 +118,10 @@ export default function FieldDemo() {
                   </Select>
                 </Field>
                 <Field>
-                  <FieldLabel htmlFor="checkout-7j9-exp-year-f59">
-                    Year
-                  </FieldLabel>
                   <Select collection={yearItems}>
+                    <SelectLabel>Year</SelectLabel>
                     <SelectControl>
-                      <SelectTrigger id="checkout-7j9-exp-year-f59">
+                      <SelectTrigger>
                         <SelectValue placeholder="YYYY" />
                       </SelectTrigger>
                       <SelectIndicator />

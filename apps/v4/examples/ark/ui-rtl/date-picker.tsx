@@ -5,13 +5,12 @@ import { DatePicker as DatePickerPrimitive } from "@ark-ui/react/date-picker"
 import { Portal } from "@ark-ui/react/portal"
 
 import { cn } from "@/examples/ark/lib/utils"
-import { Button } from "@/examples/ark/ui-rtl/button"
 import { CalendarIcon, ChevronLeftIcon, ChevronRightIcon } from "lucide-react"
 
 function DatePicker(
   props: React.ComponentProps<typeof DatePickerPrimitive.Root>
 ) {
-  return <DatePickerPrimitive.Root lazyMount unmountOnExit {...props} />
+  return <DatePickerPrimitive.Root {...props} />
 }
 
 const DatePickerLabel = React.forwardRef<
@@ -116,16 +115,14 @@ const DatePickerContent = React.forwardRef<
   React.ComponentProps<typeof DatePickerPrimitive.Content>
 >(({ className, ...props }, ref) => (
   <Portal>
-    <DatePickerPrimitive.Positioner
-      data-slot="date-picker-positioner"
-    >
+    <DatePickerPrimitive.Positioner data-slot="date-picker-positioner">
       <DatePickerPrimitive.Content
         ref={ref}
         data-slot="date-picker-content"
         className={cn(
           "z-50 flex flex-col gap-3 rounded-lg border bg-popover p-3 text-popover-foreground shadow-lg outline-none",
-          "min-w-[17.5rem]",
-          "origin-[var(--transform-origin)]",
+          "min-w-70",
+          "origin-(--transform-origin)",
           "data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-[98%]",
           "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-[98%]",
           className

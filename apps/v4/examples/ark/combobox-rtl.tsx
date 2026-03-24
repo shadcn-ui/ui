@@ -75,33 +75,16 @@ const translations: Translations = {
 export function ComboboxRtl() {
   const { dir, t, language } = useTranslation(translations, "ar")
 
-  const categoryLabels: Record<string, string> = {
-    technology: t.technology,
-    design: t.design,
-    business: t.business,
-    marketing: t.marketing,
-    education: t.education,
-    health: t.health,
-  }
-
-  const categoryItems = React.useMemo(
-    () =>
-      categories.map((cat) => ({
-        label: categoryLabels[cat] || cat,
-        value: cat,
-      })),
-    [categoryLabels]
-  )
+  const categoryItems = categories.map((cat) => ({
+    label: t[cat] || cat,
+    value: cat,
+  }))
 
   const { contains } = useFilter({ sensitivity: "base" })
-  const { collection, filter, set } = useListCollection({
+  const { collection, filter } = useListCollection({
     initialItems: categoryItems,
     filter: contains,
   })
-
-  React.useEffect(() => {
-    set(categoryItems)
-  }, [categoryItems, set])
 
   return (
     <Field className="mx-auto w-full max-w-xs">

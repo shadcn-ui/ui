@@ -50,7 +50,7 @@ export function ComboboxPopup() {
       onInputValueChange={(details) => filter(details.inputValue)}
       className="w-full max-w-48"
     >
-      <ComboboxControl>
+      <ComboboxControl className="h-auto w-auto border-0 bg-transparent ring-0 dark:bg-transparent">
         <ComboboxTrigger asChild>
           <Button
             variant="outline"
