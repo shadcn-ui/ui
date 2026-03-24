@@ -10,6 +10,7 @@ import {
 import { DARK_MODE_FORWARD_TYPE } from "@/app/(create)/components/mode-switcher"
 import { RANDOMIZE_FORWARD_TYPE } from "@/app/(create)/components/random-button"
 import { sendToIframe } from "@/app/(create)/hooks/use-iframe-sync"
+import { RESET_FORWARD_TYPE } from "@/app/(create)/hooks/use-reset"
 import {
   serializeDesignSystemSearchParams,
   useDesignSystemSearchParams,
@@ -66,6 +67,15 @@ function handleMessage(event: MessageEvent) {
         shiftKey: true,
         metaKey: isMac,
         ctrlKey: !isMac,
+        bubbles: true,
+        cancelable: true,
+      })
+    )
+  } else if (type === RESET_FORWARD_TYPE) {
+    document.dispatchEvent(
+      new KeyboardEvent("keydown", {
+        key: "R",
+        shiftKey: true,
         bubbles: true,
         cancelable: true,
       })

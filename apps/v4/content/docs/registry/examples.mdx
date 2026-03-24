@@ -44,7 +44,7 @@ The following registry item is a custom style that extends shadcn/ui. On `npx sh
 
 The following registry item is a custom style that doesn't extend shadcn/ui. See the `extends: none` field.
 
-It can be used to create a new style from scratch i.e custom components, css vars, dependencies, etc.
+It can be used to create a new style from scratch, i.e. custom components, css vars, dependencies, etc.
 
 On `npx shadcn add`, the following will:
 
@@ -69,21 +69,21 @@ On `npx shadcn add`, the following will:
   ],
   "cssVars": {
     "theme": {
-      "font-sans": "Inter, sans-serif",
-    }
+      "font-sans": "Inter, sans-serif"
+    },
     "light": {
       "main": "#88aaee",
       "bg": "#dfe5f2",
       "border": "#000",
       "text": "#000",
-      "ring": "#000",
+      "ring": "#000"
     },
     "dark": {
       "main": "#88aaee",
       "bg": "#272933",
       "border": "#000",
       "text": "#e6e6e6",
-      "ring": "#fff",
+      "ring": "#fff"
     }
   }
 }
@@ -147,7 +147,7 @@ The following style will init using shadcn/ui defaults and then add a custom `br
 
 ### Custom block
 
-This blocks installs the `login-01` block from the shadcn/ui registry.
+This block installs the `login-01` block from the shadcn/ui registry.
 
 ```json title="login-01.json" showLineNumbers
 {
@@ -174,7 +174,7 @@ This blocks installs the `login-01` block from the shadcn/ui registry.
 
 ### Install a block and override primitives
 
-You can install a block fromt the shadcn/ui registry and override the primitives using your custom ones.
+You can install a block from the shadcn/ui registry and override the primitives using your custom ones.
 
 On `npx shadcn add`, the following will:
 
@@ -877,7 +877,7 @@ Note: you need to define both `@keyframes` in css and `theme` in cssVars to use 
 You can add environment variables using the `envVars` field.
 
 ```json title="example-item.json" showLineNumbers {5-9}
-{»
+{
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "custom-item",
   "type": "registry:item",
@@ -921,7 +921,7 @@ Here's an example of a registry item that installs custom Cursor rules for _pyth
 }
 ```
 
-Here's another example for installation custom ESLint config:
+Here's another example for installing a custom ESLint config:
 
 ```json title=".eslintrc.json" showLineNumbers {9}
 {
@@ -944,7 +944,7 @@ You can also have a universal item that installs multiple files:
 ```json title="my-custom-starter-template.json" showLineNumbers {9}
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "my-custom-start-template",
+  "name": "my-custom-starter-template",
   "type": "registry:item",
   "dependencies": ["better-auth"],
   "files": [

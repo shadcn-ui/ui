@@ -10,6 +10,7 @@ import {
   MENU_COLORS,
   RADII,
   STYLES,
+  type FontHeadingValue,
 } from "@/registry/config"
 import { useLocks } from "@/app/(create)/hooks/use-locks"
 import { FONTS } from "@/app/(create)/lib/fonts"
@@ -62,9 +63,41 @@ export function useRandom() {
     const selectedTheme = locks.has("theme")
       ? paramsRef.current.theme
       : randomItem(availableThemes).name
+    context.theme = selectedTheme
+
+    const availableChartColors = applyBias(
+      getThemesForBaseColor(baseColor),
+      context,
+      RANDOMIZE_BIASES.chartColors
+    )
+    const selectedChartColor = locks.has("chartColor")
+      ? paramsRef.current.chartColor
+      : randomItem(availableChartColors).name
+    context.chartColor = selectedChartColor
     const selectedFont = locks.has("font")
       ? paramsRef.current.font
       : randomItem(availableFonts).value
+    context.font = selectedFont
+
+    // Pick heading font: ~70% inherit, ~30% distinct with cross-category contrast.
+    let selectedFontHeading: FontHeadingValue
+    if (locks.has("fontHeading")) {
+      selectedFontHeading = paramsRef.current.fontHeading
+    } else if (Math.random() < 0.7) {
+      selectedFontHeading = "inherit"
+    } else {
+      const bodyType = availableFonts.find(
+        (f) => f.value === selectedFont
+      )?.type
+      const contrastFonts = availableFonts.filter(
+        (f) => f.type !== bodyType && f.value !== selectedFont
+      )
+      selectedFontHeading = (
+        contrastFonts.length > 0
+          ? randomItem(contrastFonts)
+          : randomItem(availableFonts)
+      ).value as FontHeadingValue
+    }
     const selectedRadius = locks.has("radius")
       ? paramsRef.current.radius
       : randomItem(availableRadii).name
@@ -91,16 +124,16 @@ export function useRandom() {
           : paramsRef.current.menuAccent
         : randomItem(MENU_ACCENTS).value
 
-    context.theme = selectedTheme
-    context.font = selectedFont
     context.radius = selectedRadius
 
     const nextParams = {
       style: selectedStyle,
       baseColor,
       theme: selectedTheme,
+      chartColor: selectedChartColor,
       iconLibrary: selectedIconLibrary,
       font: selectedFont,
+      fontHeading: selectedFontHeading,
       menuAccent: selectedMenuAccent,
       menuColor: selectedMenuColor,
       radius: selectedRadius,
@@ -123,7 +156,7 @@ export function useRandom() {
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
-      if ((e.key === "r" || e.key === "R") && !e.metaKey && !e.ctrlKey) {
+      if (e.key === "r" && !e.shiftKey && !e.metaKey && !e.ctrlKey) {
         if (
           (e.target instanceof HTMLElement && e.target.isContentEditable) ||
           e.target instanceof HTMLInputElement ||
