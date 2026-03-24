@@ -515,8 +515,8 @@ function ChartRadialExample() {
             <RadialBarChart
               data={radialChartData}
               endAngle={100}
-              innerRadius={80}
-              outerRadius={140}
+              innerRadius={64}
+              outerRadius={94}
             >
               <PolarGrid
                 gridType="circle"
