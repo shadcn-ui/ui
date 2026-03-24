@@ -114,6 +114,7 @@ function TabsWithIcons() {
               hugeicons="CursorInWindowIcon"
               phosphor="AppWindowIcon"
               remixicon="RiWindowLine"
+              data-icon="inline-start"
             />
             Preview
           </TabsTrigger>
@@ -124,6 +125,7 @@ function TabsWithIcons() {
               hugeicons="CodeIcon"
               phosphor="CodeIcon"
               remixicon="RiCodeLine"
+              data-icon="inline-start"
             />
             Code
           </TabsTrigger>
