@@ -64,6 +64,7 @@ export default function ChartExample() {
       <ChartAreaExample />
       <ChartBarExample />
       <ChartLineExample />
+      <ChartPieExample />
       <ChartRadialExample />
       <ChartRadarExample />
     </ExampleWrapper>

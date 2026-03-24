@@ -22,7 +22,7 @@ export function useReset() {
   const reset = React.useCallback(() => {
     setParams({
       base: params.base,
-      style: DEFAULT_CONFIG.style,
+      style: params.style,
       baseColor: DEFAULT_CONFIG.baseColor,
       theme: DEFAULT_CONFIG.theme,
       chartColor: DEFAULT_CONFIG.chartColor,
@@ -35,7 +35,7 @@ export function useReset() {
       template: DEFAULT_CONFIG.template,
       item: params.item,
     })
-  }, [setParams, params.base, params.item])
+  }, [setParams, params.base, params.style, params.item])
 
   const handleShowResetDialogChange = React.useCallback(
     (open: boolean) => {

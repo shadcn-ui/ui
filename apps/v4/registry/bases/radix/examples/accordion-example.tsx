@@ -277,7 +277,7 @@ function AccordionInCard() {
             type="single"
             collapsible
             defaultValue="plans"
-            className="style-maia:rounded-md style-mira:rounded-md style-luma:rounded-md"
+            className="style-maia:rounded-md style-mira:rounded-md"
           >
             {items.map((item) => (
               <AccordionItem key={item.value} value={item.value}>
