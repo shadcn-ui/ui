@@ -131,7 +131,7 @@ export const STYLES = [
         color="currentColor"
       >
         <path
-          d="M12 2C15.866 2 19 5.134 19 9V15C19 18.866 15.866 22 12 22C8.134 22 5 18.866 5 15V9C5 5.134 8.134 2 12 2Z"
+          d="M2 12C2 8.134 5.134 5 9 5H15C18.866 5 22 8.134 22 12C22 15.866 18.866 19 15 19H9C5.134 19 2 15.866 2 12Z"
           stroke="currentColor"
           strokeWidth="2"
           strokeLinejoin="round"

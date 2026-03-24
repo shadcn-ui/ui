@@ -23,6 +23,7 @@ import {
   ComboboxChipsInput,
   ComboboxContent,
   ComboboxEmpty,
+  ComboboxGroup,
   ComboboxItem,
   ComboboxList,
   ComboboxValue,
@@ -107,18 +108,20 @@ export function AssignIssue() {
           <ComboboxContent anchor={anchor}>
             <ComboboxEmpty>No users found.</ComboboxEmpty>
             <ComboboxList>
-              {(username) => (
-                <ComboboxItem key={username} value={username}>
-                  <Avatar className="size-5">
-                    <AvatarImage
-                      src={`https://github.com/${username}.png`}
-                      alt={username}
-                    />
-                    <AvatarFallback>{username.charAt(0)}</AvatarFallback>
-                  </Avatar>
-                  {username}
-                </ComboboxItem>
-              )}
+              <ComboboxGroup>
+                {(username) => (
+                  <ComboboxItem key={username} value={username}>
+                    <Avatar className="size-5">
+                      <AvatarImage
+                        src={`https://github.com/${username}.png`}
+                        alt={username}
+                      />
+                      <AvatarFallback>{username.charAt(0)}</AvatarFallback>
+                    </Avatar>
+                    {username}
+                  </ComboboxItem>
+                )}
+              </ComboboxGroup>
             </ComboboxList>
           </ComboboxContent>
         </Combobox>
