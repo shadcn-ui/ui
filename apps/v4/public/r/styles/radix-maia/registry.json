@@ -250,7 +250,7 @@
     },
     {
       "name": "chart",
-      "dependencies": ["recharts@2.15.4"],
+      "dependencies": ["recharts@3.8.0"],
       "files": [
         {
           "path": "registry/radix-maia/ui/chart.tsx",
