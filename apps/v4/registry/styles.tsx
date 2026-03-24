@@ -116,6 +116,29 @@ export const STYLES = [
       </svg>
     ),
   },
+  {
+    name: "luma",
+    title: "Luma",
+    description: "Fluid, luminous, and glassy.",
+    icon: (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="128"
+        height="128"
+        viewBox="0 0 24 24"
+        fill="none"
+        role="img"
+        color="currentColor"
+      >
+        <path
+          d="M12 2C15.866 2 19 5.134 19 9V15C19 18.866 15.866 22 12 22C8.134 22 5 18.866 5 15V9C5 5.134 8.134 2 12 2Z"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinejoin="round"
+        ></path>
+      </svg>
+    ),
+  },
 ] as const
 
 export type Style = (typeof STYLES)[number]

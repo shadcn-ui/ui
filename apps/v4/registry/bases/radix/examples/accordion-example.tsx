@@ -143,10 +143,10 @@ function AccordionWithBorders() {
             value={item.value}
             className="style-vega:rounded-lg style-vega:border style-nova:rounded-lg style-nova:border style-lyra:border"
           >
-            <AccordionTrigger className="font-medium style-vega:px-4 style-vega:text-sm style-nova:px-2.5 style-nova:text-sm style-lyra:px-2 style-lyra:text-xs style-maia:text-sm style-mira:text-xs">
+            <AccordionTrigger className="font-medium style-vega:px-4 style-vega:text-sm style-nova:px-2.5 style-nova:text-sm style-lyra:px-2 style-lyra:text-xs style-maia:text-sm style-mira:text-xs style-luma:text-sm">
               {item.trigger}
             </AccordionTrigger>
-            <AccordionContent className="text-muted-foreground style-vega:px-4 style-nova:px-2.5 style-nova:text-sm style-lyra:px-2 style-lyra:text-xs style-maia:px-0 style-mira:px-0">
+            <AccordionContent className="text-muted-foreground style-vega:px-4 style-nova:px-2.5 style-nova:text-sm style-lyra:px-2 style-lyra:text-xs style-maia:px-0 style-mira:px-0 style-luma:px-0">
               {item.content}
             </AccordionContent>
           </AccordionItem>
@@ -277,7 +277,7 @@ function AccordionInCard() {
             type="single"
             collapsible
             defaultValue="plans"
-            className="style-maia:rounded-md style-mira:rounded-md"
+            className="style-maia:rounded-md style-mira:rounded-md style-luma:rounded-md"
           >
             {items.map((item) => (
               <AccordionItem key={item.value} value={item.value}>
@@ -322,7 +322,7 @@ function AccordionWithDisabled() {
       <Accordion
         type="single"
         collapsible
-        className="mx-auto max-w-lg overflow-hidden border style-vega:rounded-lg style-nova:rounded-lg style-lyra:rounded-none style-maia:rounded-lg style-mira:rounded-lg"
+        className="mx-auto max-w-lg overflow-hidden border style-vega:rounded-lg style-nova:rounded-lg style-lyra:rounded-none style-maia:rounded-lg style-mira:rounded-lg style-luma:rounded-xl"
       >
         {items.map((item) => (
           <AccordionItem
