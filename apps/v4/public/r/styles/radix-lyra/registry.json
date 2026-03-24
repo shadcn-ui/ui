@@ -250,7 +250,7 @@
     },
     {
       "name": "chart",
-      "dependencies": ["recharts@2.15.4"],
+      "dependencies": ["recharts@3.8.0"],
       "files": [
         {
           "path": "registry/radix-lyra/ui/chart.tsx",
@@ -2827,7 +2827,8 @@
         "provider": "google",
         "import": "Geist",
         "variable": "--font-sans",
-        "subsets": ["latin"]
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/geist"
       }
     },
     {
@@ -2839,7 +2840,8 @@
         "provider": "google",
         "import": "Inter",
         "variable": "--font-sans",
-        "subsets": ["latin"]
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/inter"
       }
     },
     {
@@ -2850,7 +2852,9 @@
         "family": "'Noto Sans Variable', sans-serif",
         "provider": "google",
         "import": "Noto_Sans",
-        "variable": "--font-sans"
+        "variable": "--font-sans",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/noto-sans"
       }
     },
     {
@@ -2861,7 +2865,9 @@
         "family": "'Nunito Sans Variable', sans-serif",
         "provider": "google",
         "import": "Nunito_Sans",
-        "variable": "--font-sans"
+        "variable": "--font-sans",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/nunito-sans"
       }
     },
     {
@@ -2873,7 +2879,8 @@
         "provider": "google",
         "import": "Figtree",
         "variable": "--font-sans",
-        "subsets": ["latin"]
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/figtree"
       }
     },
     {
@@ -2885,7 +2892,8 @@
         "provider": "google",
         "import": "Roboto",
         "variable": "--font-sans",
-        "subsets": ["latin"]
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/roboto"
       }
     },
     {
@@ -2897,7 +2905,8 @@
         "provider": "google",
         "import": "Raleway",
         "variable": "--font-sans",
-        "subsets": ["latin"]
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/raleway"
       }
     },
     {
@@ -2909,7 +2918,8 @@
         "provider": "google",
         "import": "DM_Sans",
         "variable": "--font-sans",
-        "subsets": ["latin"]
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/dm-sans"
       }
     },
     {
@@ -2921,7 +2931,8 @@
         "provider": "google",
         "import": "Public_Sans",
         "variable": "--font-sans",
-        "subsets": ["latin"]
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/public-sans"
       }
     },
     {
@@ -2933,7 +2944,99 @@
         "provider": "google",
         "import": "Outfit",
         "variable": "--font-sans",
-        "subsets": ["latin"]
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/outfit"
+      }
+    },
+    {
+      "name": "font-oxanium",
+      "title": "Oxanium",
+      "type": "registry:font",
+      "font": {
+        "family": "'Oxanium Variable', sans-serif",
+        "provider": "google",
+        "import": "Oxanium",
+        "variable": "--font-sans",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/oxanium"
+      }
+    },
+    {
+      "name": "font-manrope",
+      "title": "Manrope",
+      "type": "registry:font",
+      "font": {
+        "family": "'Manrope Variable', sans-serif",
+        "provider": "google",
+        "import": "Manrope",
+        "variable": "--font-sans",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/manrope"
+      }
+    },
+    {
+      "name": "font-space-grotesk",
+      "title": "Space Grotesk",
+      "type": "registry:font",
+      "font": {
+        "family": "'Space Grotesk Variable', sans-serif",
+        "provider": "google",
+        "import": "Space_Grotesk",
+        "variable": "--font-sans",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/space-grotesk"
+      }
+    },
+    {
+      "name": "font-montserrat",
+      "title": "Montserrat",
+      "type": "registry:font",
+      "font": {
+        "family": "'Montserrat Variable', sans-serif",
+        "provider": "google",
+        "import": "Montserrat",
+        "variable": "--font-sans",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/montserrat"
+      }
+    },
+    {
+      "name": "font-ibm-plex-sans",
+      "title": "IBM Plex Sans",
+      "type": "registry:font",
+      "font": {
+        "family": "'IBM Plex Sans Variable', sans-serif",
+        "provider": "google",
+        "import": "IBM_Plex_Sans",
+        "variable": "--font-sans",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/ibm-plex-sans"
+      }
+    },
+    {
+      "name": "font-source-sans-3",
+      "title": "Source Sans 3",
+      "type": "registry:font",
+      "font": {
+        "family": "'Source Sans 3 Variable', sans-serif",
+        "provider": "google",
+        "import": "Source_Sans_3",
+        "variable": "--font-sans",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/source-sans-3"
+      }
+    },
+    {
+      "name": "font-instrument-sans",
+      "title": "Instrument Sans",
+      "type": "registry:font",
+      "font": {
+        "family": "'Instrument Sans Variable', sans-serif",
+        "provider": "google",
+        "import": "Instrument_Sans",
+        "variable": "--font-sans",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/instrument-sans"
       }
     },
     {
@@ -2945,7 +3048,8 @@
         "provider": "google",
         "import": "JetBrains_Mono",
         "variable": "--font-mono",
-        "subsets": ["latin"]
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/jetbrains-mono"
       }
     },
     {
@@ -2957,7 +3061,8 @@
         "provider": "google",
         "import": "Geist_Mono",
         "variable": "--font-mono",
-        "subsets": ["latin"]
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/geist-mono"
       }
     },
     {
@@ -2969,7 +3074,8 @@
         "provider": "google",
         "import": "Noto_Serif",
         "variable": "--font-serif",
-        "subsets": ["latin"]
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/noto-serif"
       }
     },
     {
@@ -2981,7 +3087,8 @@
         "provider": "google",
         "import": "Roboto_Slab",
         "variable": "--font-serif",
-        "subsets": ["latin"]
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/roboto-slab"
       }
     },
     {
@@ -2993,7 +3100,8 @@
         "provider": "google",
         "import": "Merriweather",
         "variable": "--font-serif",
-        "subsets": ["latin"]
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/merriweather"
       }
     },
     {
@@ -3005,7 +3113,8 @@
         "provider": "google",
         "import": "Lora",
         "variable": "--font-serif",
-        "subsets": ["latin"]
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/lora"
       }
     },
     {
@@ -3017,7 +3126,320 @@
         "provider": "google",
         "import": "Playfair_Display",
         "variable": "--font-serif",
-        "subsets": ["latin"]
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/playfair-display"
+      }
+    },
+    {
+      "name": "font-heading-geist",
+      "title": "Geist (Heading)",
+      "type": "registry:font",
+      "font": {
+        "family": "'Geist Variable', sans-serif",
+        "provider": "google",
+        "import": "Geist",
+        "variable": "--font-heading",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/geist"
+      }
+    },
+    {
+      "name": "font-heading-inter",
+      "title": "Inter (Heading)",
+      "type": "registry:font",
+      "font": {
+        "family": "'Inter Variable', sans-serif",
+        "provider": "google",
+        "import": "Inter",
+        "variable": "--font-heading",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/inter"
+      }
+    },
+    {
+      "name": "font-heading-noto-sans",
+      "title": "Noto Sans (Heading)",
+      "type": "registry:font",
+      "font": {
+        "family": "'Noto Sans Variable', sans-serif",
+        "provider": "google",
+        "import": "Noto_Sans",
+        "variable": "--font-heading",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/noto-sans"
+      }
+    },
+    {
+      "name": "font-heading-nunito-sans",
+      "title": "Nunito Sans (Heading)",
+      "type": "registry:font",
+      "font": {
+        "family": "'Nunito Sans Variable', sans-serif",
+        "provider": "google",
+        "import": "Nunito_Sans",
+        "variable": "--font-heading",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/nunito-sans"
+      }
+    },
+    {
+      "name": "font-heading-figtree",
+      "title": "Figtree (Heading)",
+      "type": "registry:font",
+      "font": {
+        "family": "'Figtree Variable', sans-serif",
+        "provider": "google",
+        "import": "Figtree",
+        "variable": "--font-heading",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/figtree"
+      }
+    },
+    {
+      "name": "font-heading-roboto",
+      "title": "Roboto (Heading)",
+      "type": "registry:font",
+      "font": {
+        "family": "'Roboto Variable', sans-serif",
+        "provider": "google",
+        "import": "Roboto",
+        "variable": "--font-heading",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/roboto"
+      }
+    },
+    {
+      "name": "font-heading-raleway",
+      "title": "Raleway (Heading)",
+      "type": "registry:font",
+      "font": {
+        "family": "'Raleway Variable', sans-serif",
+        "provider": "google",
+        "import": "Raleway",
+        "variable": "--font-heading",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/raleway"
+      }
+    },
+    {
+      "name": "font-heading-dm-sans",
+      "title": "DM Sans (Heading)",
+      "type": "registry:font",
+      "font": {
+        "family": "'DM Sans Variable', sans-serif",
+        "provider": "google",
+        "import": "DM_Sans",
+        "variable": "--font-heading",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/dm-sans"
+      }
+    },
+    {
+      "name": "font-heading-public-sans",
+      "title": "Public Sans (Heading)",
+      "type": "registry:font",
+      "font": {
+        "family": "'Public Sans Variable', sans-serif",
+        "provider": "google",
+        "import": "Public_Sans",
+        "variable": "--font-heading",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/public-sans"
+      }
+    },
+    {
+      "name": "font-heading-outfit",
+      "title": "Outfit (Heading)",
+      "type": "registry:font",
+      "font": {
+        "family": "'Outfit Variable', sans-serif",
+        "provider": "google",
+        "import": "Outfit",
+        "variable": "--font-heading",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/outfit"
+      }
+    },
+    {
+      "name": "font-heading-oxanium",
+      "title": "Oxanium (Heading)",
+      "type": "registry:font",
+      "font": {
+        "family": "'Oxanium Variable', sans-serif",
+        "provider": "google",
+        "import": "Oxanium",
+        "variable": "--font-heading",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/oxanium"
+      }
+    },
+    {
+      "name": "font-heading-manrope",
+      "title": "Manrope (Heading)",
+      "type": "registry:font",
+      "font": {
+        "family": "'Manrope Variable', sans-serif",
+        "provider": "google",
+        "import": "Manrope",
+        "variable": "--font-heading",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/manrope"
+      }
+    },
+    {
+      "name": "font-heading-space-grotesk",
+      "title": "Space Grotesk (Heading)",
+      "type": "registry:font",
+      "font": {
+        "family": "'Space Grotesk Variable', sans-serif",
+        "provider": "google",
+        "import": "Space_Grotesk",
+        "variable": "--font-heading",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/space-grotesk"
+      }
+    },
+    {
+      "name": "font-heading-montserrat",
+      "title": "Montserrat (Heading)",
+      "type": "registry:font",
+      "font": {
+        "family": "'Montserrat Variable', sans-serif",
+        "provider": "google",
+        "import": "Montserrat",
+        "variable": "--font-heading",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/montserrat"
+      }
+    },
+    {
+      "name": "font-heading-ibm-plex-sans",
+      "title": "IBM Plex Sans (Heading)",
+      "type": "registry:font",
+      "font": {
+        "family": "'IBM Plex Sans Variable', sans-serif",
+        "provider": "google",
+        "import": "IBM_Plex_Sans",
+        "variable": "--font-heading",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/ibm-plex-sans"
+      }
+    },
+    {
+      "name": "font-heading-source-sans-3",
+      "title": "Source Sans 3 (Heading)",
+      "type": "registry:font",
+      "font": {
+        "family": "'Source Sans 3 Variable', sans-serif",
+        "provider": "google",
+        "import": "Source_Sans_3",
+        "variable": "--font-heading",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/source-sans-3"
+      }
+    },
+    {
+      "name": "font-heading-instrument-sans",
+      "title": "Instrument Sans (Heading)",
+      "type": "registry:font",
+      "font": {
+        "family": "'Instrument Sans Variable', sans-serif",
+        "provider": "google",
+        "import": "Instrument_Sans",
+        "variable": "--font-heading",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/instrument-sans"
+      }
+    },
+    {
+      "name": "font-heading-jetbrains-mono",
+      "title": "JetBrains Mono (Heading)",
+      "type": "registry:font",
+      "font": {
+        "family": "'JetBrains Mono Variable', monospace",
+        "provider": "google",
+        "import": "JetBrains_Mono",
+        "variable": "--font-heading",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/jetbrains-mono"
+      }
+    },
+    {
+      "name": "font-heading-geist-mono",
+      "title": "Geist Mono (Heading)",
+      "type": "registry:font",
+      "font": {
+        "family": "'Geist Mono Variable', monospace",
+        "provider": "google",
+        "import": "Geist_Mono",
+        "variable": "--font-heading",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/geist-mono"
+      }
+    },
+    {
+      "name": "font-heading-noto-serif",
+      "title": "Noto Serif (Heading)",
+      "type": "registry:font",
+      "font": {
+        "family": "'Noto Serif Variable', serif",
+        "provider": "google",
+        "import": "Noto_Serif",
+        "variable": "--font-heading",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/noto-serif"
+      }
+    },
+    {
+      "name": "font-heading-roboto-slab",
+      "title": "Roboto Slab (Heading)",
+      "type": "registry:font",
+      "font": {
+        "family": "'Roboto Slab Variable', serif",
+        "provider": "google",
+        "import": "Roboto_Slab",
+        "variable": "--font-heading",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/roboto-slab"
+      }
+    },
+    {
+      "name": "font-heading-merriweather",
+      "title": "Merriweather (Heading)",
+      "type": "registry:font",
+      "font": {
+        "family": "'Merriweather Variable', serif",
+        "provider": "google",
+        "import": "Merriweather",
+        "variable": "--font-heading",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/merriweather"
+      }
+    },
+    {
+      "name": "font-heading-lora",
+      "title": "Lora (Heading)",
+      "type": "registry:font",
+      "font": {
+        "family": "'Lora Variable', serif",
+        "provider": "google",
+        "import": "Lora",
+        "variable": "--font-heading",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/lora"
+      }
+    },
+    {
+      "name": "font-heading-playfair-display",
+      "title": "Playfair Display (Heading)",
+      "type": "registry:font",
+      "font": {
+        "family": "'Playfair Display Variable', serif",
+        "provider": "google",
+        "import": "Playfair_Display",
+        "variable": "--font-heading",
+        "subsets": ["latin"],
+        "dependency": "@fontsource-variable/playfair-display"
       }
     }
   ]

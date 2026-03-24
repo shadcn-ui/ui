@@ -16,7 +16,13 @@ import { type StyleMap } from "./create-style-map"
  * that require the class name to remain in the code.
  */
 // TODO: all cn-* classes to be allowedlisted.
-const ALLOWLIST = new Set(["cn-menu-target", "cn-logical-sides", "cn-rtl-flip"])
+const ALLOWLIST = new Set([
+  "cn-menu-target",
+  "cn-menu-translucent",
+  "cn-logical-sides",
+  "cn-rtl-flip",
+  "cn-font-heading",
+])
 
 function isStringLiteralLike(
   node: Node
@@ -63,7 +69,12 @@ function applyStyleToCvaString(
     return
   }
 
-  const tailwindClassesToApply = unmatchedClasses
+  // Skip allowlisted classes — they are handled at CLI install time.
+  const classesToInline = unmatchedClasses.filter(
+    (cnClass) => !ALLOWLIST.has(cnClass)
+  )
+
+  const tailwindClassesToApply = classesToInline
     .map((cnClass) => styleMap[cnClass])
     .filter((classes): classes is string => Boolean(classes))
 
@@ -73,7 +84,7 @@ function applyStyleToCvaString(
     stringNode.setLiteralValue(updated)
     unmatchedClasses.forEach((cnClass) => matchedClasses.add(cnClass))
   } else {
-    // No styles to apply, but still need to clean up non-allowlisted classes
+    // No styles to apply, but still need to clean up non-allowlisted classes.
     const updated = removeCnClasses(stringValue)
     stringNode.setLiteralValue(updated)
   }
@@ -189,7 +200,12 @@ function applyToClassNameAttributes(
       return
     }
 
-    const tailwindClassesToApply = unmatchedClasses
+    // Skip allowlisted classes — they are handled at CLI install time.
+    const classesToInline = unmatchedClasses.filter(
+      (cnClass) => !ALLOWLIST.has(cnClass)
+    )
+
+    const tailwindClassesToApply = classesToInline
       .map((cnClass) => styleMap[cnClass])
       .filter((classes): classes is string => Boolean(classes))
 
@@ -488,7 +504,12 @@ function applyToMergePropsCalls(
           continue
         }
 
-        const tailwindClassesToApply = unmatchedClasses
+        // Skip allowlisted classes — they are handled at CLI install time.
+        const classesToInline = unmatchedClasses.filter(
+          (cnClass) => !ALLOWLIST.has(cnClass)
+        )
+
+        const tailwindClassesToApply = classesToInline
           .map((cnClass) => styleMap[cnClass])
           .filter((classes): classes is string => Boolean(classes))
 

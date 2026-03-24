@@ -209,24 +209,17 @@ describe("defaultScaffold", () => {
 
     await template.scaffold({
       projectPath: "/test/my-app",
-      packageManager: "npm",
+      packageManager: "bun",
       cwd: "/test",
     })
 
-    expect(vi.mocked(execa)).toHaveBeenCalledWith("npm", ["install"], {
+    expect(vi.mocked(execa)).toHaveBeenCalledWith("bun", ["install"], {
       cwd: "/test/my-app",
     })
   })
 
-  it("should pass custom install args", async () => {
-    const template = createTemplate({
-      name: "start",
-      title: "TanStack Start",
-      defaultProjectName: "start-app",
-      templateDir: "start-app",
-      installArgs: ["--shamefully-hoist"],
-      create: vi.fn(),
-    })
+  it("should pass --no-frozen-lockfile for pnpm", async () => {
+    const template = createTestTemplate()
 
     await template.scaffold({
       projectPath: "/test/my-app",
@@ -236,9 +229,166 @@ describe("defaultScaffold", () => {
 
     expect(vi.mocked(execa)).toHaveBeenCalledWith(
       "pnpm",
-      ["install", "--shamefully-hoist"],
+      ["install", "--no-frozen-lockfile"],
       { cwd: "/test/my-app" }
     )
+  })
+
+  it("should strip packageManager field from package.json for non-pnpm", async () => {
+    vi.mocked(fs.existsSync).mockImplementation((p: any) =>
+      p.toString().includes("package.json")
+    )
+    vi.mocked(fs.readFile).mockResolvedValue(
+      JSON.stringify({
+        name: "my-app",
+        packageManager: "pnpm@9.0.0",
+      }) as any
+    )
+
+    const template = createTestTemplate()
+
+    await template.scaffold({
+      projectPath: "/test/my-app",
+      packageManager: "bun",
+      cwd: "/test",
+    })
+
+    // The first writeFile call is from adaptWorkspaceConfig.
+    const writeCalls = vi.mocked(fs.writeFile).mock.calls
+    const adaptCall = writeCalls.find(
+      (call) => call[0] === path.join("/test/my-app", "package.json")
+    )
+    expect(adaptCall).toBeDefined()
+    const written = JSON.parse(adaptCall![1] as string)
+    expect(written.packageManager).toBeUndefined()
+  })
+
+  it("should convert pnpm-workspace.yaml to workspaces field for non-pnpm monorepo", async () => {
+    vi.mocked(fs.existsSync).mockImplementation((p: any) => {
+      const s = p.toString()
+      return s.includes("pnpm-workspace.yaml") || s.includes("package.json")
+    })
+
+    // Return different content based on which file is being read.
+    vi.mocked(fs.readFile).mockImplementation(((filePath: string) => {
+      if (filePath.includes("pnpm-workspace.yaml")) {
+        return Promise.resolve("packages:\n  - 'apps/*'\n  - 'packages/*'\n")
+      }
+      return Promise.resolve(
+        JSON.stringify({ name: "my-mono", packageManager: "pnpm@9.0.0" })
+      )
+    }) as any)
+
+    const template = createTestTemplate()
+
+    await template.scaffold({
+      projectPath: "/test/my-app",
+      packageManager: "bun",
+      cwd: "/test",
+    })
+
+    // Should remove pnpm-workspace.yaml.
+    expect(vi.mocked(fs.remove)).toHaveBeenCalledWith(
+      path.join("/test/my-app", "pnpm-workspace.yaml")
+    )
+
+    // Should write workspaces array to package.json.
+    const writeCalls = vi.mocked(fs.writeFile).mock.calls
+    const adaptCall = writeCalls.find(
+      (call) => call[0] === path.join("/test/my-app", "package.json")
+    )
+    expect(adaptCall).toBeDefined()
+    const written = JSON.parse(adaptCall![1] as string)
+    expect(written.workspaces).toEqual(["apps/*", "packages/*"])
+    expect(written.packageManager).toBeUndefined()
+  })
+
+  it("should rewrite workspace: protocol refs to * for npm monorepo", async () => {
+    vi.mocked(fs.existsSync).mockImplementation((p: any) => {
+      const s = p.toString()
+      return s.includes("pnpm-workspace.yaml") || s.includes("package.json")
+    })
+
+    const rootPkg = JSON.stringify({
+      name: "my-mono",
+      packageManager: "pnpm@9.0.0",
+    })
+    const nestedPkg = JSON.stringify({
+      name: "web",
+      dependencies: { "@workspace/ui": "workspace:*" },
+    })
+
+    vi.mocked(fs.readFile).mockImplementation(((filePath: string) => {
+      if (filePath.includes("pnpm-workspace.yaml")) {
+        return Promise.resolve("packages:\n  - 'apps/*'\n")
+      }
+      if (filePath.includes("apps")) {
+        return Promise.resolve(nestedPkg)
+      }
+      return Promise.resolve(rootPkg)
+    }) as any)
+
+    // Mock readdir for the recursive rewriteWorkspaceProtocol walk.
+    vi.mocked(fs.readdir).mockImplementation(((dir: string) => {
+      if (dir === "/test/my-app") {
+        return Promise.resolve([
+          { name: "apps", isDirectory: () => true },
+          { name: "package.json", isDirectory: () => false },
+        ])
+      }
+      if (dir.includes("apps")) {
+        return Promise.resolve([
+          { name: "package.json", isDirectory: () => false },
+        ])
+      }
+      return Promise.resolve([])
+    }) as any)
+
+    const template = createTestTemplate()
+
+    await template.scaffold({
+      projectPath: "/test/my-app",
+      packageManager: "npm",
+      cwd: "/test",
+    })
+
+    // Should have rewritten workspace:* to * in nested package.json.
+    const writeCalls = vi.mocked(fs.writeFile).mock.calls
+    const nestedWrite = writeCalls.find(
+      (call) =>
+        (call[0] as string).includes("apps") &&
+        (call[0] as string).includes("package.json")
+    )
+    expect(nestedWrite).toBeDefined()
+    const written = JSON.parse(nestedWrite![1] as string)
+    expect(written.dependencies["@workspace/ui"]).toBe("*")
+  })
+
+  it("should not rewrite workspace: protocol refs for bun", async () => {
+    vi.mocked(fs.existsSync).mockImplementation((p: any) => {
+      const s = p.toString()
+      return s.includes("pnpm-workspace.yaml") || s.includes("package.json")
+    })
+
+    vi.mocked(fs.readFile).mockImplementation(((filePath: string) => {
+      if (filePath.includes("pnpm-workspace.yaml")) {
+        return Promise.resolve("packages:\n  - 'apps/*'\n")
+      }
+      return Promise.resolve(
+        JSON.stringify({ name: "my-mono", packageManager: "pnpm@9.0.0" })
+      )
+    }) as any)
+
+    const template = createTestTemplate()
+
+    await template.scaffold({
+      projectPath: "/test/my-app",
+      packageManager: "bun",
+      cwd: "/test",
+    })
+
+    // readdir should not be called since rewriteWorkspaceProtocol is skipped for bun.
+    expect(vi.mocked(fs.readdir)).not.toHaveBeenCalled()
   })
 
   it("should write project name to package.json", async () => {
@@ -259,7 +409,7 @@ describe("defaultScaffold", () => {
 
     expect(vi.mocked(fs.writeFile)).toHaveBeenCalledWith(
       path.join("/test/my-app", "package.json"),
-      JSON.stringify({ name: "my-app" }, null, 2)
+      JSON.stringify({ name: "my-app" }, null, 2) + "\n"
     )
   })
 })
