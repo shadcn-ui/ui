@@ -61,28 +61,51 @@ npm install @ark-ui/react
 import {
   Combobox,
   ComboboxContent,
-  ComboboxEmpty,
+  ComboboxControl,
   ComboboxInput,
   ComboboxItem,
+  ComboboxItemIndicator,
+  ComboboxItemText,
   ComboboxList,
+  ComboboxTrigger,
+  useFilter,
+  useListCollection,
 } from "@/components/ui/combobox"
 ```
 
 ```tsx showLineNumbers
-const frameworks = ["Next.js", "SvelteKit", "Nuxt.js", "Remix", "Astro"]
+const frameworkItems = [
+  { label: "Next.js", value: "nextjs" },
+  { label: "SvelteKit", value: "sveltekit" },
+  { label: "Nuxt.js", value: "nuxtjs" },
+  { label: "Remix", value: "remix" },
+  { label: "Astro", value: "astro" },
+]
 
 export function ExampleCombobox() {
+  const { contains } = useFilter({ sensitivity: "base" })
+  const { collection, filter } = useListCollection({
+    initialItems: frameworkItems,
+    filter: contains,
+  })
+
   return (
-    <Combobox items={frameworks}>
-      <ComboboxInput placeholder="Select a framework" />
+    <Combobox
+      collection={collection}
+      onInputValueChange={(details) => filter(details.inputValue)}
+    >
+      <ComboboxControl>
+        <ComboboxInput placeholder="Select a framework" />
+        <ComboboxTrigger />
+      </ComboboxControl>
       <ComboboxContent>
-        <ComboboxEmpty>No items found.</ComboboxEmpty>
         <ComboboxList>
-          {(item) => (
-            <ComboboxItem key={item} value={item}>
-              {item}
+          {collection.items.map((item) => (
+            <ComboboxItem key={item.value} item={item}>
+              <ComboboxItemText>{item.label}</ComboboxItemText>
+              <ComboboxItemIndicator />
             </ComboboxItem>
-          )}
+          ))}
         </ComboboxList>
       </ComboboxContent>
     </Combobox>
@@ -92,46 +115,53 @@ export function ExampleCombobox() {
 
 ## Custom Items
 
-Use `itemToStringValue` when your items are objects.
+Use `useListCollection` with custom item objects. The `label` field is used for filtering and display.
 
 ```tsx showLineNumbers
-import * as React from "react"
-
 import {
   Combobox,
   ComboboxContent,
-  ComboboxEmpty,
+  ComboboxControl,
   ComboboxInput,
   ComboboxItem,
+  ComboboxItemIndicator,
+  ComboboxItemText,
   ComboboxList,
+  ComboboxTrigger,
+  useFilter,
+  useListCollection,
 } from "@/components/ui/combobox"
 
-type Framework = {
-  label: string
-  value: string
-}
-
-const frameworks: Framework[] = [
-  { label: "Next.js", value: "next" },
-  { label: "SvelteKit", value: "sveltekit" },
-  { label: "Nuxt", value: "nuxt" },
+const countryItems = [
+  { label: "Argentina", value: "argentina", continent: "South America" },
+  { label: "Australia", value: "australia", continent: "Oceania" },
+  { label: "Brazil", value: "brazil", continent: "South America" },
 ]
 
 export function ExampleComboboxCustomItems() {
+  const { contains } = useFilter({ sensitivity: "base" })
+  const { collection, filter } = useListCollection({
+    initialItems: countryItems,
+    filter: contains,
+  })
+
   return (
     <Combobox
-      items={frameworks}
-      itemToStringValue={(framework) => framework.label}
+      collection={collection}
+      onInputValueChange={(details) => filter(details.inputValue)}
     >
-      <ComboboxInput placeholder="Select a framework" />
+      <ComboboxControl>
+        <ComboboxInput placeholder="Search countries..." />
+        <ComboboxTrigger />
+      </ComboboxControl>
       <ComboboxContent>
-        <ComboboxEmpty>No items found.</ComboboxEmpty>
         <ComboboxList>
-          {(framework) => (
-            <ComboboxItem key={framework.value} value={framework}>
-              {framework.label}
+          {collection.items.map((item) => (
+            <ComboboxItem key={item.value} item={item}>
+              <ComboboxItemText>{item.label}</ComboboxItemText>
+              <ComboboxItemIndicator />
             </ComboboxItem>
-          )}
+          ))}
         </ComboboxList>
       </ComboboxContent>
     </Combobox>
@@ -141,52 +171,57 @@ export function ExampleComboboxCustomItems() {
 
 ## Multiple Selection
 
-Use `multiple` with chips for multi-select behavior.
+Use the `multiple` prop for multi-select behavior.
 
 ```tsx showLineNumbers
-import * as React from "react"
-
 import {
   Combobox,
-  ComboboxChip,
-  ComboboxChips,
-  ComboboxChipsInput,
   ComboboxContent,
-  ComboboxEmpty,
+  ComboboxControl,
   ComboboxInput,
   ComboboxItem,
+  ComboboxItemIndicator,
+  ComboboxItemText,
   ComboboxList,
-  ComboboxValue,
+  ComboboxTrigger,
+  useFilter,
+  useListCollection,
 } from "@/components/ui/combobox"
 
-const frameworks = ["Next.js", "SvelteKit", "Nuxt.js", "Remix", "Astro"]
+const frameworkItems = [
+  { label: "Next.js", value: "nextjs" },
+  { label: "SvelteKit", value: "sveltekit" },
+  { label: "Nuxt.js", value: "nuxtjs" },
+  { label: "Remix", value: "remix" },
+  { label: "Astro", value: "astro" },
+]
 
 export function ExampleComboboxMultiple() {
-  const [value, setValue] = React.useState<string[]>([])
+  const { contains } = useFilter({ sensitivity: "base" })
+  const { collection, filter } = useListCollection({
+    initialItems: frameworkItems,
+    filter: contains,
+  })
 
   return (
     <Combobox
-      items={frameworks}
+      collection={collection}
+      onInputValueChange={(details) => filter(details.inputValue)}
       multiple
-      value={value}
-      onValueChange={setValue}
+      defaultValue={["nextjs"]}
     >
-      <ComboboxChips>
-        <ComboboxValue>
-          {value.map((item) => (
-            <ComboboxChip key={item}>{item}</ComboboxChip>
-          ))}
-        </ComboboxValue>
-        <ComboboxChipsInput placeholder="Add framework" />
-      </ComboboxChips>
+      <ComboboxControl>
+        <ComboboxInput placeholder="Select frameworks" />
+        <ComboboxTrigger />
+      </ComboboxControl>
       <ComboboxContent>
-        <ComboboxEmpty>No items found.</ComboboxEmpty>
         <ComboboxList>
-          {(item) => (
-            <ComboboxItem key={item} value={item}>
-              {item}
+          {collection.items.map((item) => (
+            <ComboboxItem key={item.value} item={item}>
+              <ComboboxItemText>{item.label}</ComboboxItemText>
+              <ComboboxItemIndicator />
             </ComboboxItem>
-          )}
+          ))}
         </ComboboxList>
       </ComboboxContent>
     </Combobox>
@@ -204,31 +239,31 @@ A simple combobox with a list of frameworks.
 
 ### Multiple
 
-A combobox with multiple selection using `multiple` and `ComboboxChips`.
+A combobox with multiple selection using the `multiple` prop.
 
 <ComponentPreview styleName="ark-nova" name="combobox-multiple" />
 
 ### Clear Button
 
-Use the `showClear` prop to show a clear button.
+Use the `ComboboxClearTrigger` to show a clear button.
 
 <ComponentPreview styleName="ark-nova" name="combobox-clear" />
 
 ### Groups
 
-Use `ComboboxGroup` and `ComboboxSeparator` to group items.
+Use `ComboboxItemGroup` and `ComboboxItemGroupLabel` to group items.
 
 <ComponentPreview styleName="ark-nova" name="combobox-groups" />
 
 ### Custom Items
 
-You can render custom component inside `ComboboxItem`.
+You can render custom components inside `ComboboxItemText`.
 
 <ComponentPreview styleName="ark-nova" name="combobox-custom" />
 
 ### Invalid
 
-Use the `aria-invalid` prop to make the combobox invalid.
+Use the `invalid` prop to make the combobox invalid.
 
 <ComponentPreview styleName="ark-nova" name="combobox-invalid" />
 
@@ -240,19 +275,19 @@ Use the `disabled` prop to disable the combobox.
 
 ### Auto Highlight
 
-Use the `autoHighlight` prop automatically highlight the first item on filter.
+Use the `autoFocus` prop to automatically highlight the first item on open.
 
 <ComponentPreview styleName="ark-nova" name="combobox-auto-highlight" />
 
 ### Popup
 
-You can trigger the combobox from a button or any other component by using the `render` prop. Move the `ComboboxInput` inside the `ComboboxContent`.
+You can trigger the combobox from a button using the `asChild` prop on `ComboboxTrigger`. Move the `ComboboxInput` inside the `ComboboxContent`.
 
 <ComponentPreview styleName="ark-nova" name="combobox-popup" />
 
 ### Input Group
 
-You can add an addon to the combobox by using the `InputGroupAddon` component inside the `ComboboxInput`.
+You can add a prefix icon to the combobox by placing it inside `ComboboxControl`.
 
 <ComponentPreview styleName="ark-nova" name="combobox-input-group" />
 

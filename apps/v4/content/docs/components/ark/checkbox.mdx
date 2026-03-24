@@ -59,11 +59,21 @@ npm install @ark-ui/react
 ## Usage
 
 ```tsx
-import { Checkbox } from "@/components/ui/checkbox"
+import {
+  Checkbox,
+  CheckboxControl,
+  CheckboxHiddenInput,
+  CheckboxIndicator,
+} from "@/components/ui/checkbox"
 ```
 
 ```tsx
-<Checkbox />
+<Checkbox>
+  <CheckboxControl>
+    <CheckboxIndicator />
+  </CheckboxControl>
+  <CheckboxHiddenInput />
+</Checkbox>
 ```
 
 ## Checked State
@@ -73,11 +83,30 @@ Use `defaultChecked` for uncontrolled checkboxes, or `checked` and
 
 ```tsx showLineNumbers
 import * as React from "react"
+import {
+  Checkbox,
+  CheckboxControl,
+  CheckboxHiddenInput,
+  CheckboxIndicator,
+  type CheckboxCheckedChangeDetails,
+} from "@/components/ui/checkbox"
 
 export function Example() {
   const [checked, setChecked] = React.useState(false)
 
-  return <Checkbox checked={checked} onCheckedChange={setChecked} />
+  return (
+    <Checkbox
+      checked={checked}
+      onCheckedChange={(details: CheckboxCheckedChangeDetails) =>
+        setChecked(!!details.checked)
+      }
+    >
+      <CheckboxControl>
+        <CheckboxIndicator />
+      </CheckboxControl>
+      <CheckboxHiddenInput />
+    </Checkbox>
+  )
 }
 ```
 
@@ -110,7 +139,7 @@ Use the `disabled` prop to prevent interaction and add the `data-disabled` attri
 
 ### Group
 
-Use multiple fields to create a checkbox list.
+Use `CheckboxGroup` with multiple fields to create a checkbox list.
 
 <ComponentPreview styleName="ark-nova" name="checkbox-group" />
 

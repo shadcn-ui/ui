@@ -1,37 +1,15 @@
 "use client"
 
 import * as React from "react"
-import { ark } from "@ark-ui/react/factory"
 import { Portal } from "@ark-ui/react/portal"
-import {
-  Combobox as ComboboxPrimitive,
-  type CollectionItem,
-} from "@ark-ui/react/combobox"
+import { Combobox as ComboboxPrimitive } from "@ark-ui/react/combobox"
 
 import { cn } from "@/registry/bases/ark/lib/utils"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 // --- Root ---
 
-const Combobox = React.forwardRef(function Combobox<
-  T extends CollectionItem,
->(
-  props: ComboboxPrimitive.RootProps<T> & { children: React.ReactNode },
-  ref: React.Ref<HTMLDivElement>
-) {
-  const { children, ...rest } = props
-  return (
-    <ComboboxPrimitive.Root<T> ref={ref} data-slot="combobox" lazyMount unmountOnExit {...rest}>
-      {children}
-    </ComboboxPrimitive.Root>
-  )
-}) as <T extends CollectionItem>(
-  props: ComboboxPrimitive.RootProps<T> & {
-    children: React.ReactNode
-    ref?: React.Ref<HTMLDivElement>
-  }
-) => React.ReactElement
-;(Combobox as { displayName?: string }).displayName = "Combobox"
+const Combobox = ComboboxPrimitive.Root
 
 // --- Control ---
 

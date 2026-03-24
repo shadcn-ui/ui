@@ -1,39 +1,39 @@
 import {
-  ResizableHandle,
-  ResizablePanel,
-  ResizablePanelGroup,
+  SplitterPanel,
+  SplitterResizeTrigger,
+  SplitterRoot,
 } from "@/examples/ark/ui/resizable"
 
 export default function ResizableDemo() {
   return (
-    <ResizablePanelGroup
+    <SplitterRoot
       panels={[{ id: "a" }, { id: "b" }]}
       className="max-w-sm rounded-lg border"
     >
-      <ResizablePanel id="a">
-        <div className="flex h-[200px] items-center justify-center p-6">
+      <SplitterPanel id="a">
+        <div className="flex h-50 items-center justify-center p-6">
           <span className="font-semibold">One</span>
         </div>
-      </ResizablePanel>
-      <ResizableHandle id="a:b" withHandle />
-      <ResizablePanel id="b">
-        <ResizablePanelGroup
+      </SplitterPanel>
+      <SplitterResizeTrigger id="a:b" withHandle />
+      <SplitterPanel id="b">
+        <SplitterRoot
           panels={[{ id: "c" }, { id: "d" }]}
           orientation="vertical"
         >
-          <ResizablePanel id="c">
+          <SplitterPanel id="c">
             <div className="flex h-full items-center justify-center p-6">
               <span className="font-semibold">Two</span>
             </div>
-          </ResizablePanel>
-          <ResizableHandle id="c:d" withHandle />
-          <ResizablePanel id="d">
+          </SplitterPanel>
+          <SplitterResizeTrigger id="c:d" withHandle />
+          <SplitterPanel id="d">
             <div className="flex h-full items-center justify-center p-6">
               <span className="font-semibold">Three</span>
             </div>
-          </ResizablePanel>
-        </ResizablePanelGroup>
-      </ResizablePanel>
-    </ResizablePanelGroup>
+          </SplitterPanel>
+        </SplitterRoot>
+      </SplitterPanel>
+    </SplitterRoot>
   )
 }

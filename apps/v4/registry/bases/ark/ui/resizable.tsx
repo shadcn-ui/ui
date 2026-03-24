@@ -1,18 +1,19 @@
 "use client"
 
 import * as React from "react"
-import { ark } from "@ark-ui/react/factory"
 import { Splitter } from "@ark-ui/react/splitter"
 
 import { cn } from "@/registry/bases/ark/lib/utils"
 
-const ResizablePanelGroup = React.forwardRef<
-  React.ElementRef<typeof Splitter.Root>,
-  React.ComponentPropsWithoutRef<typeof Splitter.Root>
+// --- Root ---
+
+const SplitterRoot = React.forwardRef<
+  React.ComponentRef<typeof Splitter.Root>,
+  React.ComponentProps<typeof Splitter.Root>
 >(({ className, ...props }, ref) => (
   <Splitter.Root
     ref={ref}
-    data-slot="resizable-panel-group"
+    data-slot="splitter"
     className={cn(
       "cn-resizable-panel-group flex h-full w-full data-[orientation=vertical]:flex-col",
       className
@@ -20,46 +21,60 @@ const ResizablePanelGroup = React.forwardRef<
     {...props}
   />
 ))
-ResizablePanelGroup.displayName = "ResizablePanelGroup"
+SplitterRoot.displayName = "SplitterRoot"
 
-const ResizablePanel = React.forwardRef<
-  React.ElementRef<typeof Splitter.Panel>,
-  React.ComponentPropsWithoutRef<typeof Splitter.Panel>
+// --- Panel ---
+
+const SplitterPanel = React.forwardRef<
+  React.ComponentRef<typeof Splitter.Panel>,
+  React.ComponentProps<typeof Splitter.Panel>
 >(({ className, ...props }, ref) => (
   <Splitter.Panel
     ref={ref}
-    data-slot="resizable-panel"
-    className={className}
+    data-slot="splitter-panel"
+    className={cn("overflow-hidden", className)}
     {...props}
   />
 ))
-ResizablePanel.displayName = "ResizablePanel"
+SplitterPanel.displayName = "SplitterPanel"
 
-const ResizableHandle = React.forwardRef<
-  React.ElementRef<typeof Splitter.ResizeTrigger>,
-  React.ComponentPropsWithoutRef<typeof Splitter.ResizeTrigger> & {
+// --- ResizeTrigger ---
+
+const SplitterResizeTrigger = React.forwardRef<
+  React.ComponentRef<typeof Splitter.ResizeTrigger>,
+  React.ComponentProps<typeof Splitter.ResizeTrigger> & {
     withHandle?: boolean
   }
 >(({ withHandle, className, ...props }, ref) => (
   <Splitter.ResizeTrigger
     ref={ref}
-    data-slot="resizable-handle"
+    data-slot="splitter-resize-trigger"
     className={cn(
-      "cn-resizable-handle relative flex w-px items-center justify-center bg-border ring-offset-background after:absolute after:inset-y-0 after:left-1/2 after:w-1 after:-translate-x-1/2 focus-visible:ring-1 focus-visible:ring-ring focus-visible:outline-hidden data-[orientation=horizontal]:h-px data-[orientation=horizontal]:w-full data-[orientation=horizontal]:after:left-0 data-[orientation=horizontal]:after:h-1 data-[orientation=horizontal]:after:w-full data-[orientation=horizontal]:after:translate-x-0 data-[orientation=horizontal]:after:-translate-y-1/2 [&[data-orientation=horizontal]>div]:rotate-90",
+      "cn-resizable-handle relative grid place-items-center bg-transparent outline-none",
+      "before:absolute before:bg-border",
+      "data-[orientation=vertical]:min-h-2 data-[orientation=vertical]:-my-1 data-[orientation=vertical]:cursor-row-resize",
+      "data-[orientation=vertical]:before:inset-x-0 data-[orientation=vertical]:before:bottom-1 data-[orientation=vertical]:before:top-auto data-[orientation=vertical]:before:h-px",
+      "data-[orientation=horizontal]:min-w-2 data-[orientation=horizontal]:-mx-1 data-[orientation=horizontal]:cursor-col-resize",
+      "data-[orientation=horizontal]:before:inset-y-0 data-[orientation=horizontal]:before:right-1 data-[orientation=horizontal]:before:left-auto data-[orientation=horizontal]:before:w-px",
+      "focus-visible:ring-1 focus-visible:ring-ring",
       className
     )}
     {...props}
   >
     {withHandle && (
-      <Splitter.ResizeTriggerIndicator>
-        <ark.div className="cn-resizable-handle-icon z-10 flex shrink-0" />
-      </Splitter.ResizeTriggerIndicator>
+      <div
+        className={cn(
+          "cn-resizable-handle-icon relative z-10 rounded-full border bg-background shadow-xs",
+          "[[data-orientation=horizontal]>&]:h-6 [[data-orientation=horizontal]>&]:w-full",
+          "[[data-orientation=vertical]>&]:w-6 [[data-orientation=vertical]>&]:h-full"
+        )}
+      />
     )}
   </Splitter.ResizeTrigger>
 ))
-ResizableHandle.displayName = "ResizableHandle"
+SplitterResizeTrigger.displayName = "SplitterResizeTrigger"
 
-export { ResizablePanelGroup, ResizablePanel, ResizableHandle }
+export { SplitterRoot, SplitterPanel, SplitterResizeTrigger }
 
 export {
   useSplitter,
