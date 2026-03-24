@@ -629,6 +629,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "button-accent": {
+      name: "button-accent",
+      filePath: "examples/radix/button-accent.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/button-accent")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "button-accent"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "button-aschild": {
       name: "button-aschild",
       filePath: "examples/radix/button-aschild.tsx",
@@ -6257,6 +6270,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "breadcrumb-separator"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "button-accent": {
+      name: "button-accent",
+      filePath: "examples/base/button-accent.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/button-accent")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "button-accent"
         return { default: mod.default || mod[exportName] }
       }),
     },

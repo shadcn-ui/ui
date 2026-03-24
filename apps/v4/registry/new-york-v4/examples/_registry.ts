@@ -211,6 +211,17 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "button-accent",
+    type: "registry:example",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "examples/button-accent.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "button-destructive",
     type: "registry:example",
     registryDependencies: ["button"],

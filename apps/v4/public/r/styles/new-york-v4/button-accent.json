@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-accent",
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/button-accent.tsx",
+      "content": "import { Button } from \"@/registry/new-york-v4/ui/button\"\n\nexport default function ButtonAccent() {\n  return <Button variant=\"accent\">Accent</Button>\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

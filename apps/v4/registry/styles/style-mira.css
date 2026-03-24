@@ -162,6 +162,10 @@
     @apply bg-secondary text-secondary-foreground hover:bg-secondary/80 aria-expanded:bg-secondary aria-expanded:text-secondary-foreground;
   }
 
+  .cn-button-variant-accent {
+    @apply bg-accent text-accent-foreground hover:bg-accent/80 aria-expanded:bg-accent aria-expanded:text-accent-foreground;
+  }
+
   .cn-button-variant-ghost {
     @apply hover:bg-muted hover:text-foreground dark:hover:bg-muted/50 aria-expanded:bg-muted aria-expanded:text-foreground;
   }
@@ -190,6 +194,10 @@
     @apply h-8 gap-1 px-2.5 text-xs/relaxed has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2 [&_svg:not([class*='size-'])]:size-4;
   }
 
+  .cn-button-size-xl {
+    @apply h-9 gap-1 px-3 text-xs/relaxed has-data-[icon=inline-end]:pr-2.5 has-data-[icon=inline-start]:pl-2.5 [&_svg:not([class*='size-'])]:size-4.5;
+  }
+
   .cn-button-size-icon-xs {
     @apply size-5 rounded-sm [&_svg:not([class*='size-'])]:size-2.5;
   }
@@ -204,6 +212,10 @@
 
   .cn-button-size-icon-lg {
     @apply size-8 [&_svg:not([class*='size-'])]:size-4;
+  }
+
+  .cn-button-size-icon-xl {
+    @apply size-9 [&_svg:not([class*='size-'])]:size-4.5;
   }
 
   /* MARK: Button Group */

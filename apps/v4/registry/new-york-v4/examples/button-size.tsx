@@ -27,6 +27,15 @@ export default function ButtonSize() {
           <ArrowUpRightIcon />
         </Button>
       </div>
+
+      <div className="flex items-start gap-2">
+        <Button variant="outline" size="xl">
+          Extra Large
+        </Button>
+        <Button size="icon-xl" aria-label="Submit" variant="outline">
+          <ArrowUpRightIcon />
+        </Button>
+      </div>
     </div>
   )
 }

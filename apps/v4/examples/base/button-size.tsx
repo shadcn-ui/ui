@@ -3,7 +3,7 @@ import { ArrowUpRightIcon } from "lucide-react"
 
 export default function ButtonSize() {
   return (
-    <div className="flex flex-col items-start gap-8 sm:flex-row">
+    <div className="flex flex-col flex-wrap items-start gap-8 sm:flex-row">
       <div className="flex items-start gap-2">
         <Button size="xs" variant="outline">
           Extra Small
@@ -31,6 +31,15 @@ export default function ButtonSize() {
           Large
         </Button>
         <Button size="icon-lg" aria-label="Submit" variant="outline">
+          <ArrowUpRightIcon />
+        </Button>
+      </div>
+
+      <div className="flex items-start gap-2">
+        <Button variant="outline" size="xl">
+          Extra Large
+        </Button>
+        <Button size="icon-xl" aria-label="Submit" variant="outline">
           <ArrowUpRightIcon />
         </Button>
       </div>
