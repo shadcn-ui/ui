@@ -15,9 +15,18 @@ function TooltipProvider({ children }: { children: React.ReactNode }) {
 }
 
 function Tooltip({
+  side,
   ...props
-}: React.ComponentProps<typeof TooltipPrimitive.Root>) {
-  return <TooltipPrimitive.Root data-slot="tooltip" {...props} />
+}: React.ComponentProps<typeof TooltipPrimitive.Root> & {
+  side?: "top" | "right" | "bottom" | "left"
+}) {
+  return (
+    <TooltipPrimitive.Root
+      data-slot="tooltip"
+      {...(side ? { positioning: { placement: side, ...props.positioning } } : {})}
+      {...props}
+    />
+  )
 }
 
 function TooltipTrigger({
