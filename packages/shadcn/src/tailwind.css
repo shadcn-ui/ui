@@ -93,3 +93,14 @@
     display: none;
   }
 }
+
+/* Fix for iOS Safari: native date picker elements need explicit
+   color-scheme to render correctly in dark mode. */
+@layer base {
+  .dark input[type="date"],
+  .dark input[type="datetime-local"],
+  .dark input[type="time"],
+  .dark input[type="month"] {
+    color-scheme: dark;
+  }
+}
