@@ -1,6 +1,6 @@
 ---
 title: Remix
-description: Adding dark mode to your remix app.
+description: Adding dark mode to your Remix app.
 ---
 
 <Steps>
@@ -103,7 +103,7 @@ export function App() {
 
 ## Add an action route
 
-Create a file in `/routes/action.set-theme.ts`. Ensure that you pass the filename to the ThemeProvider component. This route it's used to store the preferred theme in the session storage when the user changes it.
+Create a file in `/routes/action.set-theme.ts`. Ensure that you pass the filename to the ThemeProvider component. This route is used to store the preferred theme in the session storage when the user changes it.
 
 ```tsx title="app/routes/action.set-theme.ts" showLineNumbers
 import { createThemeAction } from "remix-themes"

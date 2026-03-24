@@ -21,6 +21,7 @@ export const DEFAULT_PRESETS = {
     theme: "neutral",
     iconLibrary: "lucide",
     font: "geist",
+    fontHeading: "inherit",
     menuAccent: "subtle" as const,
     menuColor: "default" as const,
 
@@ -35,6 +36,7 @@ export const DEFAULT_PRESETS = {
     theme: "neutral",
     iconLibrary: "lucide",
     font: "inter",
+    fontHeading: "inherit",
     menuAccent: "subtle" as const,
     menuColor: "default" as const,
 
@@ -49,6 +51,7 @@ export const DEFAULT_PRESETS = {
     theme: "neutral",
     iconLibrary: "hugeicons",
     font: "figtree",
+    fontHeading: "inherit",
     menuAccent: "subtle" as const,
     menuColor: "default" as const,
 
@@ -63,6 +66,7 @@ export const DEFAULT_PRESETS = {
     theme: "neutral",
     iconLibrary: "phosphor",
     font: "jetbrains-mono",
+    fontHeading: "inherit",
     menuAccent: "subtle" as const,
     menuColor: "default" as const,
 
@@ -77,6 +81,7 @@ export const DEFAULT_PRESETS = {
     theme: "neutral",
     iconLibrary: "hugeicons",
     font: "inter",
+    fontHeading: "inherit",
     menuAccent: "subtle" as const,
     menuColor: "default" as const,
 
@@ -116,14 +121,16 @@ export function resolveInitUrl(
     style: string
     baseColor: string
     theme: string
+    chartColor?: string
     iconLibrary: string
     font: string
+    fontHeading?: string
     rtl: boolean
     menuAccent: string
     menuColor: string
     radius: string
   },
-  options?: { template?: string }
+  options?: { template?: string; preset?: string }
 ) {
   const params = new URLSearchParams({
     base: preset.base,
@@ -137,6 +144,20 @@ export function resolveInitUrl(
     menuColor: preset.menuColor,
     radius: preset.radius,
   })
+
+  if (preset.chartColor) {
+    params.set("chartColor", preset.chartColor)
+  }
+
+  if (preset.fontHeading && preset.fontHeading !== "inherit") {
+    params.set("fontHeading", preset.fontHeading)
+  }
+
+  // Pass the original preset code so the server can apply
+  // version-specific backward-compat fixups.
+  if (options?.preset) {
+    params.set("preset", options.preset)
+  }
 
   if (options?.template) {
     params.set("template", options.template)
