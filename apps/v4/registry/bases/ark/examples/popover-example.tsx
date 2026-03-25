@@ -40,7 +40,7 @@ function PopoverBasic() {
         <PopoverTrigger asChild>
           <Button variant="outline">Open Popover</Button>
         </PopoverTrigger>
-        <PopoverContent align="start">
+        <PopoverContent>
           <PopoverHeader>
             <PopoverTitle>Dimensions</PopoverTitle>
             <PopoverDescription>
@@ -60,7 +60,7 @@ function PopoverWithForm() {
         <PopoverTrigger asChild>
           <Button variant="outline">Open Popover</Button>
         </PopoverTrigger>
-        <PopoverContent className="w-64" align="start">
+        <PopoverContent className="w-64">
           <PopoverHeader>
             <PopoverTitle>Dimensions</PopoverTitle>
             <PopoverDescription>
@@ -97,7 +97,7 @@ function PopoverAlignments() {
               Start
             </Button>
           </PopoverTrigger>
-          <PopoverContent align="start" className="w-40">
+          <PopoverContent className="w-40">
             Aligned to start
           </PopoverContent>
         </Popover>
@@ -107,7 +107,7 @@ function PopoverAlignments() {
               Center
             </Button>
           </PopoverTrigger>
-          <PopoverContent align="center" className="w-40">
+          <PopoverContent className="w-40">
             Aligned to center
           </PopoverContent>
         </Popover>
@@ -117,7 +117,7 @@ function PopoverAlignments() {
               End
             </Button>
           </PopoverTrigger>
-          <PopoverContent align="end" className="w-40">
+          <PopoverContent className="w-40">
             Aligned to end
           </PopoverContent>
         </Popover>
@@ -146,7 +146,7 @@ function PopoverInDialog() {
                 Open Popover
               </Button>
             </PopoverTrigger>
-            <PopoverContent align="start">
+            <PopoverContent>
               <PopoverHeader>
                 <PopoverTitle>Popover in Dialog</PopoverTitle>
                 <PopoverDescription>
