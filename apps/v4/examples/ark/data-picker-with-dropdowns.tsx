@@ -2,18 +2,32 @@
 
 import * as React from "react"
 import { Button } from "@/examples/ark/ui/button"
-import { Calendar, CalendarDate, DatePickerValueChangeDetails, DateValue } from "@/examples/ark/ui/calendar"
+import {
+  Calendar,
+  CalendarDate,
+  type DatePickerValueChangeDetails,
+  type DateValue,
+} from "@/examples/ark/ui/calendar"
 import { Field, FieldLabel } from "@/examples/ark/ui/field"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/examples/ark/ui/popover"
-import { format } from "date-fns"
 import { ChevronDownIcon } from "lucide-react"
 
+function formatDate(dv: DateValue): string {
+  return new Date(dv.year, dv.month - 1, dv.day).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  })
+}
+
 export function DataPickerWithDropdowns() {
-  const [date, setDate] = React.useState<DateValue[]>([new CalendarDate(2026, 3, 21)])
+  const [date, setDate] = React.useState<DateValue[]>([
+    new CalendarDate(2026, 3, 21),
+  ])
   const [open, setOpen] = React.useState(false)
 
   return (
@@ -28,20 +42,17 @@ export function DataPickerWithDropdowns() {
             id="date-picker-with-dropdowns-desktop"
             className="justify-start px-2.5 font-normal"
           >
-            {date ? format(date, "PPP") : <span>Pick a date</span>}
+            {date.length ? formatDate(date[0]) : <span>Pick a date</span>}
             <ChevronDownIcon className="ml-auto" />
           </Button>
         </PopoverTrigger>
         <PopoverContent className="w-auto p-0">
           <Calendar
-            mode="single"
-            selected={date}
             selectionMode="single"
-      value={value}
-      onValueChange={(details: DatePickerValueChangeDetails) =>
-        setDate(details.value)
-      }
-            captionLayout="dropdown"
+            value={date}
+            onValueChange={(details: DatePickerValueChangeDetails) =>
+              setDate(details.value)
+            }
           />
           <div className="flex gap-2 border-t p-2">
             <Button

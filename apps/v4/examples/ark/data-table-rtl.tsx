@@ -262,13 +262,13 @@ export function DataTableRtl() {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent
-                align="end"
                 className="w-40"
                 data-lang={dir === "rtl" ? language : undefined}
               >
                 <DropdownMenuGroup>
                   <DropdownMenuLabel>{t.actions}</DropdownMenuLabel>
                   <DropdownMenuItem
+                    value="1"
                     onClick={() => navigator.clipboard.writeText(payment.id)}
                   >
                     {t.copyPaymentId}
@@ -325,7 +325,6 @@ export function DataTableRtl() {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent
-            align={dir === "rtl" ? "start" : "end"}
             data-lang={dir === "rtl" ? language : undefined}
           >
             <DropdownMenuGroup>
@@ -335,6 +334,7 @@ export function DataTableRtl() {
                 .map((column) => {
                   return (
                     <DropdownMenuCheckboxItem
+                      value={column.id}
                       key={column.id}
                       className="capitalize"
                       checked={column.getIsVisible()}

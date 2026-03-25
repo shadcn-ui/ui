@@ -166,10 +166,11 @@ export const columns: ColumnDef<Payment>[] = [
               <MoreHorizontal />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-40">
+          <DropdownMenuContent className="w-40">
             <DropdownMenuGroup>
               <DropdownMenuLabel>Actions</DropdownMenuLabel>
               <DropdownMenuItem
+                value="1"
                 onClick={() => navigator.clipboard.writeText(payment.id)}
               >
                 Copy payment ID
@@ -231,7 +232,7 @@ export function DataTableDemo() {
               Columns <ChevronDown />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
+          <DropdownMenuContent>
             <DropdownMenuGroup>
               {table
                 .getAllColumns()
@@ -239,6 +240,7 @@ export function DataTableDemo() {
                 .map((column) => {
                   return (
                     <DropdownMenuCheckboxItem
+                      value={column.id}
                       key={column.id}
                       className="capitalize"
                       checked={column.getIsVisible()}
