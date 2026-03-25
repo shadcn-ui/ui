@@ -3,35 +3,88 @@ title: Laravel
 description: Install and configure shadcn/ui for Laravel.
 ---
 
-<Callout className="mb-6 border-emerald-600 bg-emerald-100 dark:border-emerald-400 dark:bg-emerald-900">
-
-**Starting a new project?** Use [shadcn/create](/create) for a fully configured Laravel app with custom themes, Base UI or Radix, and icon libraries.
-
-</Callout>
+The shadcn CLI does not scaffold a new Laravel app. Start by creating a Laravel app with the React starter kit, then choose how you want to configure shadcn/ui.
 
 <Steps>
 
 ### Create Project
 
-Start by creating a new Laravel project with Inertia and React using the Laravel installer:
+Create a new Laravel app using the Laravel installer:
 
 ```bash
-laravel new my-app --react
+laravel new my-app
 ```
 
-### Run the shadcn/ui CLI
+If you already have a Laravel app with React and Inertia configured, skip this step.
 
-Run the `init` command to configure shadcn/ui in your Laravel project:
+Choose the **React** starter kit when prompted. For more information, see the official [Laravel frontend documentation](https://laravel.com/docs/12.x/frontend).
+
+Then move into your project directory:
 
 ```bash
-npx shadcn@latest init --force
+cd my-app
 ```
 
-If asked to overwrite the existing components, answer `y` to continue.
+</Steps>
+
+<div className="mt-10 grid gap-4 sm:grid-cols-2 sm:gap-6">
+  <LinkedCard
+    href="#configure-with-create"
+    className="items-start gap-1 p-6 text-sm md:p-6"
+  >
+    <div className="font-medium">Use shadcn/create</div>
+    <div className="leading-relaxed text-muted-foreground">
+      Build your preset visually and generate a Laravel init command.
+    </div>
+  </LinkedCard>
+  <LinkedCard
+    href="#configure-with-cli"
+    className="items-start gap-1 p-6 text-sm md:p-6"
+  >
+    <div className="font-medium">Use the CLI</div>
+    <div className="leading-relaxed text-muted-foreground">
+      Configure shadcn/ui in your Laravel app directly from the terminal.
+    </div>
+  </LinkedCard>
+</div>
+
+<div id="configure-with-create" className="scroll-mt-24" />
+## Use shadcn/create
+
+<Steps>
+
+### Build Your Preset
+
+Open [shadcn/create](/create?template=laravel) and build your preset visually. Choose your style, colors, fonts, icons, and more.
+
+<Button asChild size="sm">
+  <Link
+    href="/create?template=laravel"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="mt-6 no-underline!"
+  >
+    Open shadcn/create
+  </Link>
+</Button>
+
+### Run the Command
+
+Click `Create Project`, choose your package manager, and copy the generated command.
+
+The generated command will look similar to this:
+
+```bash
+npx shadcn@latest init --preset [CODE] --template laravel
+```
+
+Run the command from the root of your Laravel app.
+
+When asked to overwrite `components.json` and components, choose `Yes`.
 
 ### Add Components
 
-You can now start adding components to your project.
+Add the `Switch` component to your project:
 
 ```bash
 npx shadcn@latest add switch
@@ -39,7 +92,48 @@ npx shadcn@latest add switch
 
 The command above will add the `Switch` component to `resources/js/components/ui/switch.tsx`. You can then import it like this:
 
-```tsx title="resources/js/pages/index.tsx" {1,6} showLineNumbers
+```tsx title="resources/js/pages/index.tsx" showLineNumbers {1,6}
+import { Switch } from "@/components/ui/switch"
+
+const MyPage = () => {
+  return (
+    <div>
+      <Switch />
+    </div>
+  )
+}
+
+export default MyPage
+```
+
+</Steps>
+
+<div id="configure-with-cli" className="scroll-mt-24" />
+## Use the CLI
+
+<Steps>
+
+### Run the CLI
+
+Run the `shadcn` init command from the root of your Laravel app:
+
+```bash
+npx shadcn@latest init
+```
+
+When asked to overwrite `components.json` and components, choose `Yes`.
+
+### Add Components
+
+Add the `Switch` component to your project:
+
+```bash
+npx shadcn@latest add switch
+```
+
+The command above will add the `Switch` component to `resources/js/components/ui/switch.tsx`. You can then import it like this:
+
+```tsx title="resources/js/pages/index.tsx" showLineNumbers {1,6}
 import { Switch } from "@/components/ui/switch"
 
 const MyPage = () => {
