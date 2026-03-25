@@ -58,38 +58,23 @@ npm install @ark-ui/react
 
 ## Usage
 
+The `Checkbox` component renders the control, indicator, and hidden input internally. Pass children to add a label.
+
 ```tsx
-import {
-  Checkbox,
-  CheckboxControl,
-  CheckboxHiddenInput,
-  CheckboxIndicator,
-} from "@/components/ui/checkbox"
+import { Checkbox } from "@/components/ui/checkbox"
 ```
 
 ```tsx
-<Checkbox>
-  <CheckboxControl>
-    <CheckboxIndicator />
-  </CheckboxControl>
-  <CheckboxHiddenInput />
-</Checkbox>
+<Checkbox>Accept terms and conditions</Checkbox>
 ```
 
 ## Checked State
 
-Use `defaultChecked` for uncontrolled checkboxes, or `checked` and
-`onCheckedChange` to control the state.
+Use `defaultChecked` for uncontrolled checkboxes, or `checked` and `onCheckedChange` to control the state.
 
 ```tsx showLineNumbers
 import * as React from "react"
-import {
-  Checkbox,
-  CheckboxControl,
-  CheckboxHiddenInput,
-  CheckboxIndicator,
-  type CheckboxCheckedChangeDetails,
-} from "@/components/ui/checkbox"
+import { Checkbox, type CheckboxCheckedChangeDetails } from "@/components/ui/checkbox"
 
 export function Example() {
   const [checked, setChecked] = React.useState(false)
@@ -101,10 +86,7 @@ export function Example() {
         setChecked(!!details.checked)
       }
     >
-      <CheckboxControl>
-        <CheckboxIndicator />
-      </CheckboxControl>
-      <CheckboxHiddenInput />
+      Accept terms
     </Checkbox>
   )
 }
@@ -112,8 +94,7 @@ export function Example() {
 
 ## Invalid State
 
-Set `aria-invalid` on the checkbox and `data-invalid` on the field wrapper to
-show the invalid styles.
+Use the `invalid` prop on the checkbox to show invalid styles.
 
 <ComponentPreview styleName="ark-nova" name="checkbox-invalid" />
 
@@ -121,25 +102,23 @@ show the invalid styles.
 
 ### Basic
 
-Pair the checkbox with `Field` and `FieldLabel` for proper layout and labeling.
-
 <ComponentPreview styleName="ark-nova" name="checkbox-basic" />
 
 ### Description
 
-Use `FieldContent` and `FieldDescription` for helper text.
+Use `FieldContent` and `FieldDescription` as children for helper text.
 
 <ComponentPreview styleName="ark-nova" name="checkbox-description" />
 
 ### Disabled
 
-Use the `disabled` prop to prevent interaction and add the `data-disabled` attribute to the `<Field>` component for disabled styles.
+Use the `disabled` prop to prevent interaction.
 
 <ComponentPreview styleName="ark-nova" name="checkbox-disabled" />
 
 ### Group
 
-Use `CheckboxGroup` with multiple fields to create a checkbox list.
+Use `CheckboxGroup` with multiple checkboxes.
 
 <ComponentPreview styleName="ark-nova" name="checkbox-group" />
 
@@ -164,4 +143,4 @@ To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl)
 
 ## API Reference
 
-See the [Ark UI](https://ark-ui.com/docs/components/checkbox#api-reference) documentation for more information.
+See the [Ark UI Checkbox](https://ark-ui.com/docs/components/checkbox#api-reference) documentation for more information.
