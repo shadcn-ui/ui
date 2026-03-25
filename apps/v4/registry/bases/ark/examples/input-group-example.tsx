@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { toast } from "sonner"
+import { toast } from "@/registry/bases/ark/ui/sonner"
 
 import {
   Example,
@@ -410,18 +410,18 @@ function InputGroupWithTooltip({
                   </InputGroupButton>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent
-                  align="start"
+                 
                   className="min-w-16"
-                  sideOffset={10}
-                  alignOffset={-8}
+                 
+                 
                 >
-                  <DropdownMenuItem onClick={() => setCountry("+1")}>
+                  <DropdownMenuItem value="1" onClick={() => setCountry("+1")}>
                     +1
                   </DropdownMenuItem>
-                  <DropdownMenuItem onClick={() => setCountry("+44")}>
+                  <DropdownMenuItem value="2" onClick={() => setCountry("+44")}>
                     +44
                   </DropdownMenuItem>
-                  <DropdownMenuItem onClick={() => setCountry("+46")}>
+                  <DropdownMenuItem value="3" onClick={() => setCountry("+46")}>
                     +46
                   </DropdownMenuItem>
                 </DropdownMenuContent>
@@ -449,7 +449,7 @@ function InputGroupWithTooltip({
                   </InputGroupButton>
                 </InputGroupAddon>
               </PopoverTrigger>
-              <PopoverContent align="start">
+              <PopoverContent>
                 <PopoverHeader>
                   <PopoverTitle>Your connection is not secure.</PopoverTitle>
                   <PopoverDescription>
