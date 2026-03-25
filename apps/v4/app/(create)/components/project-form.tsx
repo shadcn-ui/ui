@@ -1,6 +1,13 @@
 "use client"
 
 import * as React from "react"
+import { Copy01Icon, Globe02Icon, Tick02Icon } from "@hugeicons/core-free-icons"
+import { HugeiconsIcon } from "@hugeicons/react"
+
+import { cn } from "@/lib/utils"
+import { useConfig } from "@/hooks/use-config"
+import { copyToClipboardWithMeta } from "@/components/copy-button"
+import { BASES, type BaseName } from "@/registry/config"
 import { Button } from "@/styles/base-nova/ui/button"
 import {
   Dialog,
@@ -29,13 +36,6 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/styles/base-nova/ui/tabs"
-import { Copy01Icon, Globe02Icon, Tick02Icon } from "@hugeicons/core-free-icons"
-import { HugeiconsIcon } from "@hugeicons/react"
-
-import { cn } from "@/lib/utils"
-import { useConfig } from "@/hooks/use-config"
-import { copyToClipboardWithMeta } from "@/components/copy-button"
-import { BASES, type BaseName } from "@/registry/config"
 import { usePresetCode } from "@/app/(create)/hooks/use-design-system"
 import {
   useDesignSystemSearchParams,

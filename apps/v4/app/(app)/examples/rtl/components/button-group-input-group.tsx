@@ -1,6 +1,9 @@
 "use client"
 
 import * as React from "react"
+import { AudioLinesIcon, PlusIcon } from "lucide-react"
+
+import { useLanguageContext } from "@/components/language-selector"
 import { Button } from "@/styles/base-nova/ui-rtl/button"
 import { ButtonGroup } from "@/styles/base-nova/ui-rtl/button-group"
 import {
@@ -14,9 +17,6 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/styles/base-nova/ui-rtl/tooltip"
-import { AudioLinesIcon, PlusIcon } from "lucide-react"
-
-import { useLanguageContext } from "@/components/language-selector"
 
 const translations = {
   ar: {

@@ -2,6 +2,19 @@
 
 import { useMemo, useState } from "react"
 import {
+  IconApps,
+  IconArrowUp,
+  IconAt,
+  IconBook,
+  IconCircleDashedPlus,
+  IconPaperclip,
+  IconPlus,
+  IconWorld,
+  IconX,
+} from "@tabler/icons-react"
+
+import { useLanguageContext } from "@/components/language-selector"
+import {
   Avatar,
   AvatarFallback,
   AvatarImage,
@@ -42,19 +55,6 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/styles/base-nova/ui-rtl/tooltip"
-import {
-  IconApps,
-  IconArrowUp,
-  IconAt,
-  IconBook,
-  IconCircleDashedPlus,
-  IconPaperclip,
-  IconPlus,
-  IconWorld,
-  IconX,
-} from "@tabler/icons-react"
-
-import { useLanguageContext } from "@/components/language-selector"
 
 const translations = {
   ar: {
