@@ -7,10 +7,9 @@ import {
 import { Field, FieldLabel } from "@/registry/bases/ark/ui/field"
 import {
   Pagination,
-  PaginationContent,
+  PaginationContext,
   PaginationEllipsis,
   PaginationItem,
-  PaginationLink,
   PaginationNext,
   PaginationPrevious,
 } from "@/registry/bases/ark/ui/pagination"
@@ -41,29 +40,24 @@ export default function PaginationExample() {
 function PaginationBasic() {
   return (
     <Example title="Basic">
-      <Pagination>
-        <PaginationContent>
-          <PaginationItem>
-            <PaginationPrevious href="#" />
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationLink href="#">1</PaginationLink>
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationLink href="#" isActive>
-              2
-            </PaginationLink>
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationLink href="#">3</PaginationLink>
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationEllipsis />
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationNext href="#" />
-          </PaginationItem>
-        </PaginationContent>
+      <Pagination count={100} pageSize={10} siblingCount={1}>
+        <PaginationPrevious />
+        <PaginationContext>
+          {(api) =>
+            api.pages.map((page, index) =>
+              page.type === "page" ? (
+                <PaginationItem key={index} {...page}>
+                  {page.value}
+                </PaginationItem>
+              ) : (
+                <PaginationEllipsis key={index} index={index}>
+                  &#8230;
+                </PaginationEllipsis>
+              )
+            )
+          }
+        </PaginationContext>
+        <PaginationNext />
       </Pagination>
     </Example>
   )
@@ -72,26 +66,24 @@ function PaginationBasic() {
 function PaginationSimple() {
   return (
     <Example title="Simple">
-      <Pagination>
-        <PaginationContent>
-          <PaginationItem>
-            <PaginationLink href="#">1</PaginationLink>
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationLink href="#" isActive>
-              2
-            </PaginationLink>
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationLink href="#">3</PaginationLink>
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationLink href="#">4</PaginationLink>
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationLink href="#">5</PaginationLink>
-          </PaginationItem>
-        </PaginationContent>
+      <Pagination count={50} pageSize={10} siblingCount={1}>
+        <PaginationPrevious />
+        <PaginationContext>
+          {(api) =>
+            api.pages.map((page, index) =>
+              page.type === "page" ? (
+                <PaginationItem key={index} {...page}>
+                  {page.value}
+                </PaginationItem>
+              ) : (
+                <PaginationEllipsis key={index} index={index}>
+                  &#8230;
+                </PaginationEllipsis>
+              )
+            )
+          }
+        </PaginationContext>
+        <PaginationNext />
       </Pagination>
     </Example>
   )
@@ -125,21 +117,15 @@ function PaginationIconsOnly() {
                   <SelectItem key={item.value} item={item}>
                     <SelectItemText>{item.label}</SelectItemText>
                     <SelectItemIndicator />
-                  </SelectItem>
+                  </SelectItemComponent>
                 ))}
               </SelectItemGroup>
             </SelectContent>
           </Select>
         </Field>
-        <Pagination className="mx-0 w-auto">
-          <PaginationContent>
-            <PaginationItem>
-              <PaginationPrevious href="#" />
-            </PaginationItem>
-            <PaginationItem>
-              <PaginationNext href="#" />
-            </PaginationItem>
-          </PaginationContent>
+        <Pagination count={100} pageSize={25} className="mx-0 w-auto">
+          <PaginationPrevious />
+          <PaginationNext />
         </Pagination>
       </div>
     </Example>

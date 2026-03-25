@@ -70,7 +70,7 @@ function NavigationMenuWithViewport() {
     <Example title="With Viewport">
       <NavigationMenu>
         <NavigationMenuList>
-          <NavigationMenuItem>
+          <NavigationMenuItem value="item-1">
             <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="w-96">
@@ -86,7 +86,7 @@ function NavigationMenuWithViewport() {
               </ul>
             </NavigationMenuContent>
           </NavigationMenuItem>
-          <NavigationMenuItem>
+          <NavigationMenuItem value="item-2">
             <NavigationMenuTrigger>Components</NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="grid w-[400px] gap-1 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
@@ -102,7 +102,7 @@ function NavigationMenuWithViewport() {
               </ul>
             </NavigationMenuContent>
           </NavigationMenuItem>
-          <NavigationMenuItem>
+          <NavigationMenuItem value="item-3">
             <NavigationMenuLink
               asChild
               className={navigationMenuTriggerStyle()}
@@ -121,7 +121,7 @@ function NavigationMenuWithoutViewport() {
     <Example title="Without Viewport">
       <NavigationMenu viewport={false}>
         <NavigationMenuList>
-          <NavigationMenuItem>
+          <NavigationMenuItem value="item-4">
             <NavigationMenuLink
               asChild
               className={navigationMenuTriggerStyle()}
@@ -129,7 +129,7 @@ function NavigationMenuWithoutViewport() {
               <Link href="/docs">Documentation</Link>
             </NavigationMenuLink>
           </NavigationMenuItem>
-          <NavigationMenuItem>
+          <NavigationMenuItem value="item-5">
             <NavigationMenuTrigger>List</NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="w-72">
@@ -168,7 +168,7 @@ function NavigationMenuWithoutViewport() {
               </ul>
             </NavigationMenuContent>
           </NavigationMenuItem>
-          <NavigationMenuItem>
+          <NavigationMenuItem value="item-6">
             <NavigationMenuTrigger>Simple List</NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul>
@@ -186,7 +186,7 @@ function NavigationMenuWithoutViewport() {
               </ul>
             </NavigationMenuContent>
           </NavigationMenuItem>
-          <NavigationMenuItem>
+          <NavigationMenuItem value="item-7">
             <NavigationMenuTrigger>With Icon</NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="grid w-[200px]">

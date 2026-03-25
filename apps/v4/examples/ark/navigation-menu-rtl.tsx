@@ -162,7 +162,7 @@ export function NavigationMenuRtl() {
   return (
     <NavigationMenu dir={dir}>
       <NavigationMenuList>
-        <NavigationMenuItem>
+        <NavigationMenuItem value="item-1">
           <NavigationMenuTrigger>{t.gettingStarted}</NavigationMenuTrigger>
           <NavigationMenuContent
             dir={dir}
@@ -181,7 +181,7 @@ export function NavigationMenuRtl() {
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
-        <NavigationMenuItem className="hidden md:flex">
+        <NavigationMenuItem value="item-2" className="hidden md:flex">
           <NavigationMenuTrigger>{t.components}</NavigationMenuTrigger>
           <NavigationMenuContent
             dir={dir}
@@ -200,7 +200,7 @@ export function NavigationMenuRtl() {
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
-        <NavigationMenuItem>
+        <NavigationMenuItem value="item-3">
           <NavigationMenuLink
             asChild
             className={navigationMenuTriggerStyle()}

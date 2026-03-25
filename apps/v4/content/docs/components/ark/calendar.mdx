@@ -64,16 +64,20 @@ The `Calendar` component uses the `Button` component. Make sure you have it inst
 
 ```tsx showLineNumbers
 import { Calendar } from "@/components/ui/calendar"
+import { CalendarDate, type DateValue } from "@internationalized/date"
+import { type DatePickerValueChangeDetails } from "@ark-ui/react/date-picker"
 ```
 
 ```tsx showLineNumbers
-const [date, setDate] = React.useState<Date | undefined>(new Date())
+const [value, setValue] = React.useState<DateValue[]>([
+  new CalendarDate(2026, 3, 21),
+])
 
 return (
   <Calendar
-    mode="single"
-    selected={date}
-    onSelect={setDate}
+    selectionMode="single"
+    value={value}
+    onValueChange={(details) => setValue(details.value)}
     className="rounded-lg border"
   />
 )
@@ -83,7 +87,7 @@ See the [Ark UI DatePicker](https://ark-ui.com/docs/components/date-picker) docu
 
 ## About
 
-The `Calendar` component is built on top of [Ark UI's DatePicker](https://ark-ui.com/docs/components/date-picker) primitive, which uses [`@internationalized/date`](https://react-spectrum.adobe.com/internationalized/date/) for date handling. The component bridges the `Date` API to Ark's `DateValue` internally.
+The `Calendar` component is built on top of [Ark UI's DatePicker](https://ark-ui.com/docs/components/date-picker) primitive with `inline` mode. It uses [`@internationalized/date`](https://react-spectrum.adobe.com/internationalized/date/) for date values — use `CalendarDate` for dates, `CalendarDateTime` for date+time, and `ZonedDateTime` for timezone-aware values.
 
 ## Date Picker
 
@@ -103,7 +107,7 @@ A basic calendar component. We used `className="rounded-lg border"` to style the
 
 ### Range Calendar
 
-Use the `mode="range"` prop to enable range selection.
+Use `selectionMode="range"` to enable range selection.
 
 <ComponentPreview
   styleName="ark-nova"
@@ -137,7 +141,7 @@ Use the `mode="range"` prop to enable range selection.
 
 ### Week Numbers
 
-Use `showWeekNumber` to show week numbers.
+Use `showWeekNumbers` to show week numbers.
 
 <ComponentPreview
   styleName="ark-nova"
@@ -156,13 +160,13 @@ To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl)
   previewClassName="h-96"
 />
 
-When using RTL, pass the `locale` prop as a string (e.g. `"ar-SA"`) and `dir="rtl"` to the Calendar component:
+Pass the `locale` and `dir` props for RTL support:
 
 ```tsx showLineNumbers
 <Calendar
-  mode="single"
-  selected={date}
-  onSelect={setDate}
+  selectionMode="single"
+  value={value}
+  onValueChange={(details) => setValue(details.value)}
   locale="ar-SA"
   dir="rtl"
 />
