@@ -73,7 +73,7 @@ export function MainMenu({ className }: React.ComponentProps<typeof Button>) {
             </PickerItem>
             <PickerSeparator />
             <PickerItem onClick={() => setShowResetDialog(true)}>
-              Reset <PickerShortcut>⇧R</PickerShortcut>
+              Reset
             </PickerItem>
           </PickerGroup>
         </PickerContent>

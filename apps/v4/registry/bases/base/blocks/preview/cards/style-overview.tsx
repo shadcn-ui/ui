@@ -15,11 +15,6 @@ export function StyleOverview() {
     [params.font]
   )
 
-  const currentFontHeading = React.useMemo(
-    () => FONTS.find((font) => font.value === params.fontHeading),
-    [params.fontHeading]
-  )
-
   const currentStyle = React.useMemo(
     () => STYLES.find((style) => style.name === params.style),
     [params.style]
@@ -27,16 +22,12 @@ export function StyleOverview() {
 
   return (
     <Card>
-      <CardContent className="flex flex-col gap-6 style-lyra:gap-4 style-mira:gap-4">
+      <CardContent className="flex flex-col gap-6">
         <div className="flex flex-col gap-1">
-          <div className="cn-font-heading text-2xl font-medium style-lyra:text-lg style-mira:text-lg">
-            {currentStyle?.title} -{" "}
-            {currentFontHeading?.name &&
-            currentFontHeading.name !== currentFont?.name
-              ? currentFontHeading.name
-              : currentFont?.name}
+          <div className="text-2xl font-medium">
+            {currentStyle?.title} - {currentFont?.name}
           </div>
-          <div className="line-clamp-2 text-base text-muted-foreground style-lyra:text-sm style-mira:text-sm">
+          <div className="line-clamp-2 text-base text-muted-foreground">
             Designers love packing quirky glyphs into test phrases. This is a
             preview of the typography styles.
           </div>
@@ -49,7 +40,7 @@ export function StyleOverview() {
             "--secondary",
             "--muted",
             "--accent",
-            "--border",
+            "--destructive",
             "--chart-1",
             "--chart-2",
             "--chart-3",
@@ -68,7 +59,7 @@ export function StyleOverview() {
                   } as React.CSSProperties
                 }
               />
-              <div className="hidden max-w-14 truncate font-mono text-[0.60rem] md:block style-lyra:max-w-10 style-mira:max-w-10">
+              <div className="hidden max-w-14 truncate font-mono text-[0.60rem] md:block">
                 {variant}
               </div>
             </div>

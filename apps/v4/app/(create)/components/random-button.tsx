@@ -7,7 +7,6 @@ import { HugeiconsIcon } from "@hugeicons/react"
 
 import { cn } from "@/lib/utils"
 import { useRandom } from "@/app/(create)/hooks/use-random"
-import { RESET_FORWARD_TYPE } from "@/app/(create)/hooks/use-reset"
 
 export const RANDOMIZE_FORWARD_TYPE = "randomize-forward"
 
@@ -41,7 +40,7 @@ export function RandomizeScript() {
       dangerouslySetInnerHTML={{
         __html: `
             (function() {
-              // Forward r key (shuffle) and Shift+R (reset).
+              // Forward R key
               document.addEventListener('keydown', function(e) {
                 if ((e.key === 'r' || e.key === 'R') && !e.metaKey && !e.ctrlKey) {
                   if (
@@ -54,11 +53,8 @@ export function RandomizeScript() {
                   }
                   e.preventDefault();
                   if (window.parent && window.parent !== window) {
-                    var type = e.shiftKey
-                      ? '${RESET_FORWARD_TYPE}'
-                      : '${RANDOMIZE_FORWARD_TYPE}';
                     window.parent.postMessage({
-                      type: type,
+                      type: '${RANDOMIZE_FORWARD_TYPE}',
                       key: e.key
                     }, '*');
                   }

@@ -2,12 +2,10 @@
 
 import * as React from "react"
 
-import { Button } from "@/registry/bases/radix/ui/button"
 import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/registry/bases/radix/ui/card"
@@ -51,9 +49,6 @@ export function WeeklyFitnessSummary() {
           ))}
         </div>
       </CardContent>
-      <CardFooter>
-        <Button className="w-full">View details</Button>
-      </CardFooter>
     </Card>
   )
 }

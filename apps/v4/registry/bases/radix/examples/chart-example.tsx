@@ -64,7 +64,6 @@ export default function ChartExample() {
       <ChartAreaExample />
       <ChartBarExample />
       <ChartLineExample />
-      <ChartPieExample />
       <ChartRadialExample />
       <ChartRadarExample />
     </ExampleWrapper>
@@ -515,8 +514,8 @@ function ChartRadialExample() {
             <RadialBarChart
               data={radialChartData}
               endAngle={100}
-              innerRadius={64}
-              outerRadius={94}
+              innerRadius={80}
+              outerRadius={140}
             >
               <PolarGrid
                 gridType="circle"

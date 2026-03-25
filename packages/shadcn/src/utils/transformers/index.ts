@@ -22,7 +22,6 @@ export type TransformOpts = {
   baseColor?: z.infer<typeof registryBaseColorSchema>
   transformJsx?: boolean
   isRemote?: boolean
-  supportedFontMarkers?: string[]
 }
 
 export type Transformer<Output = SourceFile> = (

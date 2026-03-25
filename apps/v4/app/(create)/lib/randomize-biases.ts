@@ -3,7 +3,6 @@ import type {
   BaseColorName,
   Radius,
   StyleName,
-  Theme,
   ThemeName,
 } from "@/registry/config"
 
@@ -13,7 +12,6 @@ export type RandomizeContext = {
   style?: StyleName
   baseColor?: BaseColorName
   theme?: ThemeName
-  chartColor?: string
   iconLibrary?: string
   font?: string
   menuAccent?: string
@@ -28,30 +26,12 @@ export type BiasFilter<T> = (
 
 export type RandomizeBiases = {
   baseColors?: BiasFilter<BaseColor>
-  chartColors?: BiasFilter<Theme>
   fonts?: BiasFilter<(typeof FONTS)[number]>
   radius?: BiasFilter<Radius>
-}
-
-// Theme → chart color pairings for randomization.
-const CHART_COLOR_PAIRINGS: Record<string, string[]> = {
-  red: ["teal", "sky"],
-  orange: ["teal", "blue"],
-  amber: ["cyan", "indigo"],
-  yellow: ["sky", "violet"],
-  lime: ["indigo", "pink"],
-  green: ["purple", "rose"],
-  emerald: ["purple", "red"],
-  teal: ["fuchsia", "red"],
-  cyan: ["rose", "amber"],
-  sky: ["red", "yellow"],
-  blue: ["orange", "yellow"],
-  indigo: ["amber", "yellow"],
-  violet: ["yellow", "lime"],
-  purple: ["green", "lime"],
-  fuchsia: ["lime", "teal"],
-  pink: ["green", "cyan"],
-  rose: ["emerald", "sky"],
+  // Add more bias filters as needed:
+  // styles?: BiasFilter<Style>
+  // themes?: BiasFilter<Theme>
+  // etc.
 }
 
 /**
@@ -71,25 +51,21 @@ export const RANDOMIZE_BIASES: RandomizeBiases = {
     return fonts
   },
   radius: (radii, context) => {
-    // When style is lyra, always use "none" radius.
+    // When style is lyra, always use "none" radius
     if (context.style === "lyra") {
       return radii.filter((radius) => radius.name === "none")
     }
 
     return radii
   },
-  chartColors: (chartColors, context) => {
-    // When theme has a pairing, restrict chart colors to the paired values.
-    const pairing = context.theme ? CHART_COLOR_PAIRINGS[context.theme] : null
-    if (pairing) {
-      const filtered = chartColors.filter((c) => pairing.includes(c.name))
-      if (filtered.length > 0) {
-        return filtered
-      }
-    }
-
-    return chartColors
-  },
+  // Add more biases here as needed:
+  // Example: When baseColor is "blue", prefer certain themes
+  // themes: (themes, context) => {
+  //   if (context.baseColor === "blue") {
+  //     return themes.filter(theme => theme.name.includes("dark"))
+  //   }
+  //   return themes
+  // },
 }
 
 /**

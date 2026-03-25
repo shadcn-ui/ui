@@ -7,7 +7,7 @@ import {
   transformRender,
   transformStyle,
 } from "shadcn/utils"
-import { Project, ScriptKind, type SourceFile } from "ts-morph"
+import { Project, ScriptKind } from "ts-morph"
 
 import { BASES } from "@/registry/bases"
 
@@ -49,13 +49,6 @@ function buildDisplayConfig(styleName: string) {
     },
   }
 }
-
-type DisplayTransformer = (opts: {
-  filename: string
-  raw: string
-  sourceFile: SourceFile
-  config: ReturnType<typeof buildDisplayConfig>
-}) => Promise<unknown>
 
 const styleMapCache = new Map<string, Record<string, string>>()
 
@@ -101,11 +94,7 @@ export async function formatCode(code: string, styleName: string) {
       scriptKind: ScriptKind.TSX,
     })
 
-    const transformers: DisplayTransformer[] = [
-      transformIcons as DisplayTransformer,
-      transformMenu as DisplayTransformer,
-      transformRender as DisplayTransformer,
-    ]
+    const transformers = [transformIcons, transformMenu, transformRender]
     for (const transformer of transformers) {
       await transformer({
         filename: "component.tsx",

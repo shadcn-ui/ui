@@ -1,13 +1,5 @@
 # @shadcn/ui
 
-## 4.1.0
-
-### Minor Changes
-
-- [#10115](https://github.com/shadcn-ui/ui/pull/10115) [`687f09817b614a3450f0f56779edf367082e1e53`](https://github.com/shadcn-ui/ui/commit/687f09817b614a3450f0f56779edf367082e1e53) Thanks [@shadcn](https://github.com/shadcn)! - add fontHeading to presets
-
-- [#10115](https://github.com/shadcn-ui/ui/pull/10115) [`687f09817b614a3450f0f56779edf367082e1e53`](https://github.com/shadcn-ui/ui/commit/687f09817b614a3450f0f56779edf367082e1e53) Thanks [@shadcn](https://github.com/shadcn)! - add chartColor
-
 ## 4.0.8
 
 ### Patch Changes

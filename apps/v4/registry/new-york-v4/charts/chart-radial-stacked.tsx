@@ -1,13 +1,7 @@
 "use client"
 
 import { TrendingUp } from "lucide-react"
-import {
-  Label,
-  PolarGrid,
-  PolarRadiusAxis,
-  RadialBar,
-  RadialBarChart,
-} from "recharts"
+import { Label, PolarRadiusAxis, RadialBar, RadialBarChart } from "recharts"
 
 import {
   Card,
@@ -26,7 +20,7 @@ import {
 
 export const description = "A radial chart with stacked sections"
 
-const chartData = [{ month: "january", mobile: 570, desktop: 1260 }]
+const chartData = [{ month: "january", desktop: 1260, mobile: 570 }]
 
 const chartConfig = {
   desktop: {
@@ -57,22 +51,8 @@ export function ChartRadialStacked() {
             data={chartData}
             endAngle={180}
             innerRadius={80}
-            outerRadius={110}
+            outerRadius={130}
           >
-            <RadialBar
-              dataKey="mobile"
-              fill="var(--color-mobile)"
-              stackId="a"
-              cornerRadius={5}
-              className="stroke-transparent stroke-2"
-            />
-            <RadialBar
-              dataKey="desktop"
-              stackId="a"
-              cornerRadius={5}
-              fill="var(--color-desktop)"
-              className="stroke-transparent stroke-2"
-            />
             <ChartTooltip
               cursor={false}
               content={<ChartTooltipContent hideLabel />}
@@ -103,6 +83,20 @@ export function ChartRadialStacked() {
                 }}
               />
             </PolarRadiusAxis>
+            <RadialBar
+              dataKey="desktop"
+              stackId="a"
+              cornerRadius={5}
+              fill="var(--color-desktop)"
+              className="stroke-transparent stroke-2"
+            />
+            <RadialBar
+              dataKey="mobile"
+              fill="var(--color-mobile)"
+              stackId="a"
+              cornerRadius={5}
+              className="stroke-transparent stroke-2"
+            />
           </RadialBarChart>
         </ChartContainer>
       </CardContent>
