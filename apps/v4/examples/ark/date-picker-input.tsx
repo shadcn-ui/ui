@@ -3,7 +3,7 @@
 import {
   DatePicker,
   DatePickerControl,
-  DatePickerInput,
+  DatePickerInput as DatePickerInputComponent,
   DatePickerTrigger,
   DatePickerContent,
   DatePickerDayView,
@@ -15,7 +15,7 @@ export function DatePickerInput() {
   return (
     <DatePicker>
       <DatePickerControl>
-        <DatePickerInput />
+        <DatePickerInputComponent />
         <DatePickerTrigger />
       </DatePickerControl>
       <DatePickerContent>
