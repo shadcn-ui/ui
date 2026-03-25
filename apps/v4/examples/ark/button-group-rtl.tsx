@@ -114,26 +114,26 @@ export function ButtonGroupRtl() {
               className="w-40"
             >
               <DropdownMenuGroup>
-                <DropdownMenuItem>
+                <DropdownMenuItem value="1">
                   <MailCheckIcon />
                   {t.markAsRead}
                 </DropdownMenuItem>
-                <DropdownMenuItem>
+                <DropdownMenuItem value="2">
                   <ArchiveIcon />
                   {t.archive}
                 </DropdownMenuItem>
               </DropdownMenuGroup>
               <DropdownMenuSeparator />
               <DropdownMenuGroup>
-                <DropdownMenuItem>
+                <DropdownMenuItem value="3">
                   <ClockIcon />
                   {t.snooze}
                 </DropdownMenuItem>
-                <DropdownMenuItem>
+                <DropdownMenuItem value="4">
                   <CalendarPlusIcon />
                   {t.addToCalendar}
                 </DropdownMenuItem>
-                <DropdownMenuItem>
+                <DropdownMenuItem value="5">
                   <ListFilterIcon />
                   {t.addToList}
                 </DropdownMenuItem>

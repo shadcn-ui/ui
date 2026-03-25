@@ -20,13 +20,13 @@ export function MenubarSubmenu() {
           <MenubarSub>
             <MenubarSubTrigger>Share</MenubarSubTrigger>
             <MenubarSubContent>
-              <MenubarItem>Email link</MenubarItem>
-              <MenubarItem>Messages</MenubarItem>
-              <MenubarItem>Notes</MenubarItem>
+              <MenubarItem value="1">Email link</MenubarItem>
+              <MenubarItem value="2">Messages</MenubarItem>
+              <MenubarItem value="3">Notes</MenubarItem>
             </MenubarSubContent>
           </MenubarSub>
           <MenubarSeparator />
-          <MenubarItem>
+          <MenubarItem value="4">
             Print... <MenubarShortcut>⌘P</MenubarShortcut>
           </MenubarItem>
         </MenubarContent>
@@ -34,25 +34,25 @@ export function MenubarSubmenu() {
       <MenubarMenu>
         <MenubarTrigger>Edit</MenubarTrigger>
         <MenubarContent>
-          <MenubarItem>
+          <MenubarItem value="5">
             Undo <MenubarShortcut>⌘Z</MenubarShortcut>
           </MenubarItem>
-          <MenubarItem>
+          <MenubarItem value="6">
             Redo <MenubarShortcut>⇧⌘Z</MenubarShortcut>
           </MenubarItem>
           <MenubarSeparator />
           <MenubarSub>
             <MenubarSubTrigger>Find</MenubarSubTrigger>
             <MenubarSubContent>
-              <MenubarItem>Find...</MenubarItem>
-              <MenubarItem>Find Next</MenubarItem>
-              <MenubarItem>Find Previous</MenubarItem>
+              <MenubarItem value="7">Find...</MenubarItem>
+              <MenubarItem value="8">Find Next</MenubarItem>
+              <MenubarItem value="9">Find Previous</MenubarItem>
             </MenubarSubContent>
           </MenubarSub>
           <MenubarSeparator />
-          <MenubarItem>Cut</MenubarItem>
-          <MenubarItem>Copy</MenubarItem>
-          <MenubarItem>Paste</MenubarItem>
+          <MenubarItem value="10">Cut</MenubarItem>
+          <MenubarItem value="11">Copy</MenubarItem>
+          <MenubarItem value="12">Paste</MenubarItem>
         </MenubarContent>
       </MenubarMenu>
     </Menubar>

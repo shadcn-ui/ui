@@ -276,10 +276,10 @@ function TabsWithDropdown() {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuItem>Settings</DropdownMenuItem>
-              <DropdownMenuItem>Export</DropdownMenuItem>
+              <DropdownMenuItem value="1">Settings</DropdownMenuItem>
+              <DropdownMenuItem value="2">Export</DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>Archive</DropdownMenuItem>
+              <DropdownMenuItem value="3">Archive</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>

@@ -22,10 +22,10 @@ export default function MenubarDemo() {
         <MenubarTrigger>File</MenubarTrigger>
         <MenubarContent>
           <MenubarGroup>
-            <MenubarItem>
+            <MenubarItem value="1">
               New Tab <MenubarShortcut>⌘T</MenubarShortcut>
             </MenubarItem>
-            <MenubarItem>
+            <MenubarItem value="2">
               New Window <MenubarShortcut>⌘N</MenubarShortcut>
             </MenubarItem>
             <MenubarItem disabled>New Incognito Window</MenubarItem>
@@ -36,16 +36,16 @@ export default function MenubarDemo() {
               <MenubarSubTrigger>Share</MenubarSubTrigger>
               <MenubarSubContent>
                 <MenubarGroup>
-                  <MenubarItem>Email link</MenubarItem>
-                  <MenubarItem>Messages</MenubarItem>
-                  <MenubarItem>Notes</MenubarItem>
+                  <MenubarItem value="3">Email link</MenubarItem>
+                  <MenubarItem value="4">Messages</MenubarItem>
+                  <MenubarItem value="5">Notes</MenubarItem>
                 </MenubarGroup>
               </MenubarSubContent>
             </MenubarSub>
           </MenubarGroup>
           <MenubarSeparator />
           <MenubarGroup>
-            <MenubarItem>
+            <MenubarItem value="6">
               Print... <MenubarShortcut>⌘P</MenubarShortcut>
             </MenubarItem>
           </MenubarGroup>
@@ -55,10 +55,10 @@ export default function MenubarDemo() {
         <MenubarTrigger>Edit</MenubarTrigger>
         <MenubarContent>
           <MenubarGroup>
-            <MenubarItem>
+            <MenubarItem value="7">
               Undo <MenubarShortcut>⌘Z</MenubarShortcut>
             </MenubarItem>
-            <MenubarItem>
+            <MenubarItem value="8">
               Redo <MenubarShortcut>⇧⌘Z</MenubarShortcut>
             </MenubarItem>
           </MenubarGroup>
@@ -68,22 +68,22 @@ export default function MenubarDemo() {
               <MenubarSubTrigger>Find</MenubarSubTrigger>
               <MenubarSubContent>
                 <MenubarGroup>
-                  <MenubarItem>Search the web</MenubarItem>
+                  <MenubarItem value="9">Search the web</MenubarItem>
                 </MenubarGroup>
                 <MenubarSeparator />
                 <MenubarGroup>
-                  <MenubarItem>Find...</MenubarItem>
-                  <MenubarItem>Find Next</MenubarItem>
-                  <MenubarItem>Find Previous</MenubarItem>
+                  <MenubarItem value="10">Find...</MenubarItem>
+                  <MenubarItem value="11">Find Next</MenubarItem>
+                  <MenubarItem value="12">Find Previous</MenubarItem>
                 </MenubarGroup>
               </MenubarSubContent>
             </MenubarSub>
           </MenubarGroup>
           <MenubarSeparator />
           <MenubarGroup>
-            <MenubarItem>Cut</MenubarItem>
-            <MenubarItem>Copy</MenubarItem>
-            <MenubarItem>Paste</MenubarItem>
+            <MenubarItem value="13">Cut</MenubarItem>
+            <MenubarItem value="14">Copy</MenubarItem>
+            <MenubarItem value="15">Paste</MenubarItem>
           </MenubarGroup>
         </MenubarContent>
       </MenubarMenu>
@@ -91,7 +91,7 @@ export default function MenubarDemo() {
         <MenubarTrigger>View</MenubarTrigger>
         <MenubarContent className="w-44">
           <MenubarGroup>
-            <MenubarCheckboxItem>Bookmarks Bar</MenubarCheckboxItem>
+            <MenubarCheckboxItem value="cb-1">Bookmarks Bar</MenubarCheckboxItem>
             <MenubarCheckboxItem checked>Full URLs</MenubarCheckboxItem>
           </MenubarGroup>
           <MenubarSeparator />

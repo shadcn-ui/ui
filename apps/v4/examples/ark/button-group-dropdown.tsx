@@ -33,27 +33,27 @@ export default function ButtonGroupDropdown() {
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-44">
           <DropdownMenuGroup>
-            <DropdownMenuItem>
+            <DropdownMenuItem value="1">
               <VolumeOffIcon />
               Mute Conversation
             </DropdownMenuItem>
-            <DropdownMenuItem>
+            <DropdownMenuItem value="2">
               <CheckIcon />
               Mark as Read
             </DropdownMenuItem>
-            <DropdownMenuItem>
+            <DropdownMenuItem value="3">
               <AlertTriangleIcon />
               Report Conversation
             </DropdownMenuItem>
-            <DropdownMenuItem>
+            <DropdownMenuItem value="4">
               <UserRoundXIcon />
               Block User
             </DropdownMenuItem>
-            <DropdownMenuItem>
+            <DropdownMenuItem value="5">
               <ShareIcon />
               Share Conversation
             </DropdownMenuItem>
-            <DropdownMenuItem>
+            <DropdownMenuItem value="6">
               <CopyIcon />
               Copy Conversation
             </DropdownMenuItem>

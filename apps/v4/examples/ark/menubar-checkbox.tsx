@@ -15,7 +15,7 @@ export function MenubarCheckbox() {
       <MenubarMenu>
         <MenubarTrigger>View</MenubarTrigger>
         <MenubarContent className="w-64">
-          <MenubarCheckboxItem>Always Show Bookmarks Bar</MenubarCheckboxItem>
+          <MenubarCheckboxItem value="cb-1">Always Show Bookmarks Bar</MenubarCheckboxItem>
           <MenubarCheckboxItem checked>
             Always Show Full URLs
           </MenubarCheckboxItem>
@@ -32,8 +32,8 @@ export function MenubarCheckbox() {
         <MenubarTrigger>Format</MenubarTrigger>
         <MenubarContent>
           <MenubarCheckboxItem checked>Strikethrough</MenubarCheckboxItem>
-          <MenubarCheckboxItem>Code</MenubarCheckboxItem>
-          <MenubarCheckboxItem>Superscript</MenubarCheckboxItem>
+          <MenubarCheckboxItem value="cb-2">Code</MenubarCheckboxItem>
+          <MenubarCheckboxItem value="cb-3">Superscript</MenubarCheckboxItem>
         </MenubarContent>
       </MenubarMenu>
     </Menubar>

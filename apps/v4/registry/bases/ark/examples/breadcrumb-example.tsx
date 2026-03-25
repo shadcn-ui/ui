@@ -71,9 +71,9 @@ function BreadcrumbWithDropdown() {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="start">
-                <DropdownMenuItem>Documentation</DropdownMenuItem>
-                <DropdownMenuItem>Themes</DropdownMenuItem>
-                <DropdownMenuItem>GitHub</DropdownMenuItem>
+                <DropdownMenuItem value="1">Documentation</DropdownMenuItem>
+                <DropdownMenuItem value="2">Themes</DropdownMenuItem>
+                <DropdownMenuItem value="3">GitHub</DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           </BreadcrumbItem>

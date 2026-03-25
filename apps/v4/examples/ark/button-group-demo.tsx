@@ -52,26 +52,26 @@ export default function ButtonGroupDemo() {
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-40">
             <DropdownMenuGroup>
-              <DropdownMenuItem>
+              <DropdownMenuItem value="1">
                 <MailCheckIcon />
                 Mark as Read
               </DropdownMenuItem>
-              <DropdownMenuItem>
+              <DropdownMenuItem value="2">
                 <ArchiveIcon />
                 Archive
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
-              <DropdownMenuItem>
+              <DropdownMenuItem value="3">
                 <ClockIcon />
                 Snooze
               </DropdownMenuItem>
-              <DropdownMenuItem>
+              <DropdownMenuItem value="4">
                 <CalendarPlusIcon />
                 Add to Calendar
               </DropdownMenuItem>
-              <DropdownMenuItem>
+              <DropdownMenuItem value="5">
                 <ListFilterIcon />
                 Add to List
               </DropdownMenuItem>

@@ -26,15 +26,15 @@ export function ContextMenuIcons() {
       </ContextMenuTrigger>
       <ContextMenuContent>
         <ContextMenuGroup>
-          <ContextMenuItem>
+          <ContextMenuItem value="1">
             <CopyIcon />
             Copy
           </ContextMenuItem>
-          <ContextMenuItem>
+          <ContextMenuItem value="2">
             <ScissorsIcon />
             Cut
           </ContextMenuItem>
-          <ContextMenuItem>
+          <ContextMenuItem value="3">
             <ClipboardPasteIcon />
             Paste
           </ContextMenuItem>

@@ -71,14 +71,14 @@ function DropdownMenuBasic() {
         <DropdownMenuContent>
           <DropdownMenuGroup>
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
-            <DropdownMenuItem>Profile</DropdownMenuItem>
-            <DropdownMenuItem>Billing</DropdownMenuItem>
-            <DropdownMenuItem>Settings</DropdownMenuItem>
+            <DropdownMenuItem value="dm-menuitem1">Profile</DropdownMenuItem>
+            <DropdownMenuItem value="dm-menuitem2">Billing</DropdownMenuItem>
+            <DropdownMenuItem value="dm-menuitem3">Settings</DropdownMenuItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
-            <DropdownMenuItem>GitHub</DropdownMenuItem>
-            <DropdownMenuItem>Support</DropdownMenuItem>
+            <DropdownMenuItem value="dm-menuitem4">GitHub</DropdownMenuItem>
+            <DropdownMenuItem value="dm-menuitem5">Support</DropdownMenuItem>
             <DropdownMenuItem disabled>API</DropdownMenuItem>
           </DropdownMenuGroup>
         </DropdownMenuContent>
@@ -98,7 +98,7 @@ function DropdownMenuWithIcons() {
         </DropdownMenuTrigger>
         <DropdownMenuContent>
           <DropdownMenuGroup>
-            <DropdownMenuItem>
+            <DropdownMenuItem value="dm-menuitem6">
               <IconPlaceholder
                 lucide="UserIcon"
                 tabler="IconUser"
@@ -108,7 +108,7 @@ function DropdownMenuWithIcons() {
               />
               Profile
             </DropdownMenuItem>
-            <DropdownMenuItem>
+            <DropdownMenuItem value="dm-menuitem7">
               <IconPlaceholder
                 lucide="CreditCardIcon"
                 tabler="IconCreditCard"
@@ -118,7 +118,7 @@ function DropdownMenuWithIcons() {
               />
               Billing
             </DropdownMenuItem>
-            <DropdownMenuItem>
+            <DropdownMenuItem value="dm-menuitem8">
               <IconPlaceholder
                 lucide="SettingsIcon"
                 tabler="IconSettings"
@@ -160,26 +160,26 @@ function DropdownMenuWithShortcuts() {
         <DropdownMenuContent>
           <DropdownMenuGroup>
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
-            <DropdownMenuItem>
+            <DropdownMenuItem value="dm-menuitem9">
               Profile
               <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
             </DropdownMenuItem>
-            <DropdownMenuItem>
+            <DropdownMenuItem value="dm-menuitem10">
               Billing
               <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
             </DropdownMenuItem>
-            <DropdownMenuItem>
+            <DropdownMenuItem value="dm-menuitem11">
               Settings
               <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
             </DropdownMenuItem>
-            <DropdownMenuItem>
+            <DropdownMenuItem value="dm-menuitem12">
               Keyboard shortcuts
               <DropdownMenuShortcut>⌘K</DropdownMenuShortcut>
             </DropdownMenuItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
-            <DropdownMenuItem>
+            <DropdownMenuItem value="dm-menuitem13">
               Log out
               <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
             </DropdownMenuItem>
@@ -201,23 +201,23 @@ function DropdownMenuWithSubmenu() {
         </DropdownMenuTrigger>
         <DropdownMenuContent>
           <DropdownMenuGroup>
-            <DropdownMenuItem>Team</DropdownMenuItem>
+            <DropdownMenuItem value="dm-menuitem14">Team</DropdownMenuItem>
             <DropdownMenuSub>
               <DropdownMenuSubTrigger>Invite users</DropdownMenuSubTrigger>
               <DropdownMenuPortal>
                 <DropdownMenuSubContent>
                   <DropdownMenuGroup>
-                    <DropdownMenuItem>Email</DropdownMenuItem>
-                    <DropdownMenuItem>Message</DropdownMenuItem>
+                    <DropdownMenuItem value="dm-menuitem15">Email</DropdownMenuItem>
+                    <DropdownMenuItem value="dm-menuitem16">Message</DropdownMenuItem>
                   </DropdownMenuGroup>
                   <DropdownMenuSeparator />
                   <DropdownMenuGroup>
-                    <DropdownMenuItem>More...</DropdownMenuItem>
+                    <DropdownMenuItem value="dm-menuitem17">More...</DropdownMenuItem>
                   </DropdownMenuGroup>
                 </DropdownMenuSubContent>
               </DropdownMenuPortal>
             </DropdownMenuSub>
-            <DropdownMenuItem>
+            <DropdownMenuItem value="dm-menuitem18">
               New Team
               <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
             </DropdownMenuItem>
@@ -482,7 +482,7 @@ function DropdownMenuWithDestructive() {
         </DropdownMenuTrigger>
         <DropdownMenuContent>
           <DropdownMenuGroup>
-            <DropdownMenuItem>
+            <DropdownMenuItem value="dm-menuitem19">
               <IconPlaceholder
                 lucide="PencilIcon"
                 tabler="IconPencil"
@@ -492,7 +492,7 @@ function DropdownMenuWithDestructive() {
               />
               Edit
             </DropdownMenuItem>
-            <DropdownMenuItem>
+            <DropdownMenuItem value="dm-menuitem20">
               <IconPlaceholder
                 lucide="ShareIcon"
                 tabler="IconShare"
@@ -505,7 +505,7 @@ function DropdownMenuWithDestructive() {
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
-            <DropdownMenuItem>
+            <DropdownMenuItem value="dm-menuitem21">
               <IconPlaceholder
                 lucide="ArchiveIcon"
                 tabler="IconArchive"
@@ -536,7 +536,7 @@ function DropdownMenuWithAvatar() {
   const menuContent = (
     <>
       <DropdownMenuGroup>
-        <DropdownMenuItem>
+        <DropdownMenuItem value="dm-menuitem22">
           <IconPlaceholder
             lucide="BadgeCheckIcon"
             tabler="IconRosetteDiscountCheck"
@@ -546,7 +546,7 @@ function DropdownMenuWithAvatar() {
           />
           Account
         </DropdownMenuItem>
-        <DropdownMenuItem>
+        <DropdownMenuItem value="dm-menuitem23">
           <IconPlaceholder
             lucide="CreditCardIcon"
             tabler="IconCreditCard"
@@ -556,7 +556,7 @@ function DropdownMenuWithAvatar() {
           />
           Billing
         </DropdownMenuItem>
-        <DropdownMenuItem>
+        <DropdownMenuItem value="dm-menuitem24">
           <IconPlaceholder
             lucide="BellIcon"
             tabler="IconBell"
@@ -569,7 +569,7 @@ function DropdownMenuWithAvatar() {
       </DropdownMenuGroup>
       <DropdownMenuSeparator />
       <DropdownMenuGroup>
-        <DropdownMenuItem>
+        <DropdownMenuItem value="dm-menuitem25">
           <IconPlaceholder
             lucide="LogOutIcon"
             tabler="IconLogout"
@@ -656,7 +656,7 @@ function DropdownMenuInDialog() {
             </DropdownMenuTrigger>
             <DropdownMenuContent>
               <DropdownMenuGroup>
-                <DropdownMenuItem>
+                <DropdownMenuItem value="dm-menuitem26">
                   <IconPlaceholder
                     lucide="CopyIcon"
                     tabler="IconCopy"
@@ -666,7 +666,7 @@ function DropdownMenuInDialog() {
                   />
                   Copy
                 </DropdownMenuItem>
-                <DropdownMenuItem>
+                <DropdownMenuItem value="dm-menuitem27">
                   <IconPlaceholder
                     lucide="ScissorsIcon"
                     tabler="IconCut"
@@ -676,7 +676,7 @@ function DropdownMenuInDialog() {
                   />
                   Cut
                 </DropdownMenuItem>
-                <DropdownMenuItem>
+                <DropdownMenuItem value="dm-menuitem28">
                   <IconPlaceholder
                     lucide="ClipboardPasteIcon"
                     tabler="IconClipboard"
@@ -693,13 +693,13 @@ function DropdownMenuInDialog() {
                 <DropdownMenuPortal>
                   <DropdownMenuSubContent>
                     <DropdownMenuGroup>
-                      <DropdownMenuItem>Save Page...</DropdownMenuItem>
-                      <DropdownMenuItem>Create Shortcut...</DropdownMenuItem>
-                      <DropdownMenuItem>Name Window...</DropdownMenuItem>
+                      <DropdownMenuItem value="dm-menuitem29">Save Page...</DropdownMenuItem>
+                      <DropdownMenuItem value="dm-menuitem30">Create Shortcut...</DropdownMenuItem>
+                      <DropdownMenuItem value="dm-menuitem31">Name Window...</DropdownMenuItem>
                     </DropdownMenuGroup>
                     <DropdownMenuSeparator />
                     <DropdownMenuGroup>
-                      <DropdownMenuItem>Developer Tools</DropdownMenuItem>
+                      <DropdownMenuItem value="dm-menuitem32">Developer Tools</DropdownMenuItem>
                     </DropdownMenuGroup>
                   </DropdownMenuSubContent>
                 </DropdownMenuPortal>
@@ -741,7 +741,7 @@ function DropdownMenuWithInset() {
         <DropdownMenuContent className="w-44">
           <DropdownMenuGroup>
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem>
+            <DropdownMenuItem value="dm-menuitem33">
               <IconPlaceholder
                 lucide="CopyIcon"
                 tabler="IconCopy"
@@ -751,7 +751,7 @@ function DropdownMenuWithInset() {
               />
               Copy
             </DropdownMenuItem>
-            <DropdownMenuItem>
+            <DropdownMenuItem value="dm-menuitem34">
               <IconPlaceholder
                 lucide="ScissorsIcon"
                 tabler="IconCut"
@@ -802,8 +802,8 @@ function DropdownMenuWithInset() {
             <DropdownMenuPortal>
               <DropdownMenuSubContent>
                 <DropdownMenuGroup>
-                  <DropdownMenuItem>Save Page...</DropdownMenuItem>
-                  <DropdownMenuItem>Create Shortcut...</DropdownMenuItem>
+                  <DropdownMenuItem value="dm-menuitem35">Save Page...</DropdownMenuItem>
+                  <DropdownMenuItem value="dm-menuitem36">Create Shortcut...</DropdownMenuItem>
                 </DropdownMenuGroup>
               </DropdownMenuSubContent>
             </DropdownMenuPortal>
@@ -833,7 +833,7 @@ function DropdownMenuComplex() {
         <DropdownMenuContent className="style-vega:w-56 style-nova:w-48 style-lyra:w-48 style-maia:w-56 style-mira:w-48">
           <DropdownMenuGroup>
             <DropdownMenuLabel>File</DropdownMenuLabel>
-            <DropdownMenuItem>
+            <DropdownMenuItem value="dm-menuitem37">
               <IconPlaceholder
                 lucide="FileIcon"
                 tabler="IconFile"
@@ -844,7 +844,7 @@ function DropdownMenuComplex() {
               New File
               <DropdownMenuShortcut>⌘N</DropdownMenuShortcut>
             </DropdownMenuItem>
-            <DropdownMenuItem>
+            <DropdownMenuItem value="dm-menuitem38">
               <IconPlaceholder
                 lucide="FolderIcon"
                 tabler="IconFolder"
@@ -870,7 +870,7 @@ function DropdownMenuComplex() {
                 <DropdownMenuSubContent>
                   <DropdownMenuGroup>
                     <DropdownMenuLabel>Recent Projects</DropdownMenuLabel>
-                    <DropdownMenuItem>
+                    <DropdownMenuItem value="dm-menuitem39">
                       <IconPlaceholder
                         lucide="FileCodeIcon"
                         tabler="IconFileCode"
@@ -880,7 +880,7 @@ function DropdownMenuComplex() {
                       />
                       Project Alpha
                     </DropdownMenuItem>
-                    <DropdownMenuItem>
+                    <DropdownMenuItem value="dm-menuitem40">
                       <IconPlaceholder
                         lucide="FileCodeIcon"
                         tabler="IconFileCode"
@@ -903,7 +903,7 @@ function DropdownMenuComplex() {
                       </DropdownMenuSubTrigger>
                       <DropdownMenuPortal>
                         <DropdownMenuSubContent>
-                          <DropdownMenuItem>
+                          <DropdownMenuItem value="dm-menuitem41">
                             <IconPlaceholder
                               lucide="FileCodeIcon"
                               tabler="IconFileCode"
@@ -913,7 +913,7 @@ function DropdownMenuComplex() {
                             />
                             Project Gamma
                           </DropdownMenuItem>
-                          <DropdownMenuItem>
+                          <DropdownMenuItem value="dm-menuitem42">
                             <IconPlaceholder
                               lucide="FileCodeIcon"
                               tabler="IconFileCode"
@@ -929,7 +929,7 @@ function DropdownMenuComplex() {
                   </DropdownMenuGroup>
                   <DropdownMenuSeparator />
                   <DropdownMenuGroup>
-                    <DropdownMenuItem>
+                    <DropdownMenuItem value="dm-menuitem43">
                       <IconPlaceholder
                         lucide="FolderSearchIcon"
                         tabler="IconFolderSearch"
@@ -944,7 +944,7 @@ function DropdownMenuComplex() {
               </DropdownMenuPortal>
             </DropdownMenuSub>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
+            <DropdownMenuItem value="dm-menuitem44">
               <IconPlaceholder
                 lucide="SaveIcon"
                 tabler="IconDeviceFloppy"
@@ -955,7 +955,7 @@ function DropdownMenuComplex() {
               Save
               <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
             </DropdownMenuItem>
-            <DropdownMenuItem>
+            <DropdownMenuItem value="dm-menuitem45">
               <IconPlaceholder
                 lucide="DownloadIcon"
                 tabler="IconDownload"
@@ -1058,7 +1058,7 @@ function DropdownMenuComplex() {
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
             <DropdownMenuLabel>Account</DropdownMenuLabel>
-            <DropdownMenuItem>
+            <DropdownMenuItem value="dm-menuitem46">
               <IconPlaceholder
                 lucide="UserIcon"
                 tabler="IconUser"
@@ -1069,7 +1069,7 @@ function DropdownMenuComplex() {
               Profile
               <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
             </DropdownMenuItem>
-            <DropdownMenuItem>
+            <DropdownMenuItem value="dm-menuitem47">
               <IconPlaceholder
                 lucide="CreditCardIcon"
                 tabler="IconCreditCard"
@@ -1094,7 +1094,7 @@ function DropdownMenuComplex() {
                 <DropdownMenuSubContent>
                   <DropdownMenuGroup>
                     <DropdownMenuLabel>Preferences</DropdownMenuLabel>
-                    <DropdownMenuItem>
+                    <DropdownMenuItem value="dm-menuitem48">
                       <IconPlaceholder
                         lucide="KeyboardIcon"
                         tabler="IconKeyboard"
@@ -1104,7 +1104,7 @@ function DropdownMenuComplex() {
                       />
                       Keyboard Shortcuts
                     </DropdownMenuItem>
-                    <DropdownMenuItem>
+                    <DropdownMenuItem value="dm-menuitem49">
                       <IconPlaceholder
                         lucide="LanguagesIcon"
                         tabler="IconLanguage"
@@ -1174,7 +1174,7 @@ function DropdownMenuComplex() {
                   </DropdownMenuGroup>
                   <DropdownMenuSeparator />
                   <DropdownMenuGroup>
-                    <DropdownMenuItem>
+                    <DropdownMenuItem value="dm-menuitem50">
                       <IconPlaceholder
                         lucide="ShieldIcon"
                         tabler="IconShield"
@@ -1191,7 +1191,7 @@ function DropdownMenuComplex() {
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
-            <DropdownMenuItem>
+            <DropdownMenuItem value="dm-menuitem51">
               <IconPlaceholder
                 lucide="HelpCircleIcon"
                 tabler="IconHelpCircle"
@@ -1201,7 +1201,7 @@ function DropdownMenuComplex() {
               />
               Help & Support
             </DropdownMenuItem>
-            <DropdownMenuItem>
+            <DropdownMenuItem value="dm-menuitem52">
               <IconPlaceholder
                 lucide="FileTextIcon"
                 tabler="IconFileText"

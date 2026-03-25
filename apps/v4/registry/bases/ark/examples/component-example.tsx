@@ -199,7 +199,7 @@ function FormExample() {
               <DropdownMenuContent align="end" className="w-56">
                 <DropdownMenuGroup>
                   <DropdownMenuLabel>File</DropdownMenuLabel>
-                  <DropdownMenuItem>
+                  <DropdownMenuItem value="1">
                     <IconPlaceholder
                       lucide="FileIcon"
                       tabler="IconFile"
@@ -210,7 +210,7 @@ function FormExample() {
                     New File
                     <DropdownMenuShortcut>⌘N</DropdownMenuShortcut>
                   </DropdownMenuItem>
-                  <DropdownMenuItem>
+                  <DropdownMenuItem value="2">
                     <IconPlaceholder
                       lucide="FolderIcon"
                       tabler="IconFolder"
@@ -236,7 +236,7 @@ function FormExample() {
                       <DropdownMenuSubContent>
                         <DropdownMenuGroup>
                           <DropdownMenuLabel>Recent Projects</DropdownMenuLabel>
-                          <DropdownMenuItem>
+                          <DropdownMenuItem value="3">
                             <IconPlaceholder
                               lucide="FileCodeIcon"
                               tabler="IconFileCode"
@@ -246,7 +246,7 @@ function FormExample() {
                             />
                             Project Alpha
                           </DropdownMenuItem>
-                          <DropdownMenuItem>
+                          <DropdownMenuItem value="4">
                             <IconPlaceholder
                               lucide="FileCodeIcon"
                               tabler="IconFileCode"
@@ -269,7 +269,7 @@ function FormExample() {
                             </DropdownMenuSubTrigger>
                             <DropdownMenuPortal>
                               <DropdownMenuSubContent>
-                                <DropdownMenuItem>
+                                <DropdownMenuItem value="5">
                                   <IconPlaceholder
                                     lucide="FileCodeIcon"
                                     tabler="IconFileCode"
@@ -279,7 +279,7 @@ function FormExample() {
                                   />
                                   Project Gamma
                                 </DropdownMenuItem>
-                                <DropdownMenuItem>
+                                <DropdownMenuItem value="6">
                                   <IconPlaceholder
                                     lucide="FileCodeIcon"
                                     tabler="IconFileCode"
@@ -295,7 +295,7 @@ function FormExample() {
                         </DropdownMenuGroup>
                         <DropdownMenuSeparator />
                         <DropdownMenuGroup>
-                          <DropdownMenuItem>
+                          <DropdownMenuItem value="7">
                             <IconPlaceholder
                               lucide="FolderSearchIcon"
                               tabler="IconFolderSearch"
@@ -310,7 +310,7 @@ function FormExample() {
                     </DropdownMenuPortal>
                   </DropdownMenuSub>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem>
+                  <DropdownMenuItem value="8">
                     <IconPlaceholder
                       lucide="SaveIcon"
                       tabler="IconDeviceFloppy"
@@ -321,7 +321,7 @@ function FormExample() {
                     Save
                     <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
                   </DropdownMenuItem>
-                  <DropdownMenuItem>
+                  <DropdownMenuItem value="9">
                     <IconPlaceholder
                       lucide="DownloadIcon"
                       tabler="IconDownload"
@@ -430,7 +430,7 @@ function FormExample() {
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>
                   <DropdownMenuLabel>Account</DropdownMenuLabel>
-                  <DropdownMenuItem>
+                  <DropdownMenuItem value="10">
                     <IconPlaceholder
                       lucide="UserIcon"
                       tabler="IconUser"
@@ -441,7 +441,7 @@ function FormExample() {
                     Profile
                     <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
                   </DropdownMenuItem>
-                  <DropdownMenuItem>
+                  <DropdownMenuItem value="11">
                     <IconPlaceholder
                       lucide="CreditCardIcon"
                       tabler="IconCreditCard"
@@ -466,7 +466,7 @@ function FormExample() {
                       <DropdownMenuSubContent>
                         <DropdownMenuGroup>
                           <DropdownMenuLabel>Preferences</DropdownMenuLabel>
-                          <DropdownMenuItem>
+                          <DropdownMenuItem value="12">
                             <IconPlaceholder
                               lucide="KeyboardIcon"
                               tabler="IconKeyboard"
@@ -476,7 +476,7 @@ function FormExample() {
                             />
                             Keyboard Shortcuts
                           </DropdownMenuItem>
-                          <DropdownMenuItem>
+                          <DropdownMenuItem value="13">
                             <IconPlaceholder
                               lucide="LanguagesIcon"
                               tabler="IconLanguage"
@@ -546,7 +546,7 @@ function FormExample() {
                         </DropdownMenuGroup>
                         <DropdownMenuSeparator />
                         <DropdownMenuGroup>
-                          <DropdownMenuItem>
+                          <DropdownMenuItem value="14">
                             <IconPlaceholder
                               lucide="ShieldIcon"
                               tabler="IconShield"
@@ -563,7 +563,7 @@ function FormExample() {
                 </DropdownMenuGroup>
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>
-                  <DropdownMenuItem>
+                  <DropdownMenuItem value="15">
                     <IconPlaceholder
                       lucide="HelpCircleIcon"
                       tabler="IconHelpCircle"
@@ -573,7 +573,7 @@ function FormExample() {
                     />
                     Help & Support
                   </DropdownMenuItem>
-                  <DropdownMenuItem>
+                  <DropdownMenuItem value="16">
                     <IconPlaceholder
                       lucide="FileTextIcon"
                       tabler="IconFileText"

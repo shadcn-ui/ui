@@ -60,17 +60,17 @@ function MenubarBasic() {
           <MenubarTrigger>File</MenubarTrigger>
           <MenubarContent>
             <MenubarGroup>
-              <MenubarItem>
+              <MenubarItem value="menu-item1">
                 New Tab <MenubarShortcut>⌘T</MenubarShortcut>
               </MenubarItem>
-              <MenubarItem>
+              <MenubarItem value="menu-item2">
                 New Window <MenubarShortcut>⌘N</MenubarShortcut>
               </MenubarItem>
-              <MenubarItem disabled>New Incognito Window</MenubarItem>
+              <MenubarItem disabled value="new-incognito-window">New Incognito Window</MenubarItem>
             </MenubarGroup>
             <MenubarSeparator />
             <MenubarGroup>
-              <MenubarItem>
+              <MenubarItem value="menu-item3">
                 Print... <MenubarShortcut>⌘P</MenubarShortcut>
               </MenubarItem>
             </MenubarGroup>
@@ -80,18 +80,18 @@ function MenubarBasic() {
           <MenubarTrigger>Edit</MenubarTrigger>
           <MenubarContent>
             <MenubarGroup>
-              <MenubarItem>
+              <MenubarItem value="menu-item4">
                 Undo <MenubarShortcut>⌘Z</MenubarShortcut>
               </MenubarItem>
-              <MenubarItem>
+              <MenubarItem value="menu-item5">
                 Redo <MenubarShortcut>⇧⌘Z</MenubarShortcut>
               </MenubarItem>
             </MenubarGroup>
             <MenubarSeparator />
             <MenubarGroup>
-              <MenubarItem>Cut</MenubarItem>
-              <MenubarItem>Copy</MenubarItem>
-              <MenubarItem>Paste</MenubarItem>
+              <MenubarItem value="menu-item6">Cut</MenubarItem>
+              <MenubarItem value="menu-item7">Copy</MenubarItem>
+              <MenubarItem value="menu-item8">Paste</MenubarItem>
             </MenubarGroup>
           </MenubarContent>
         </MenubarMenu>
@@ -111,15 +111,15 @@ function MenubarWithSubmenu() {
               <MenubarSubTrigger>Share</MenubarSubTrigger>
               <MenubarSubContent>
                 <MenubarGroup>
-                  <MenubarItem>Email link</MenubarItem>
-                  <MenubarItem>Messages</MenubarItem>
-                  <MenubarItem>Notes</MenubarItem>
+                  <MenubarItem value="menu-item9">Email link</MenubarItem>
+                  <MenubarItem value="menu-item10">Messages</MenubarItem>
+                  <MenubarItem value="menu-item11">Notes</MenubarItem>
                 </MenubarGroup>
               </MenubarSubContent>
             </MenubarSub>
             <MenubarSeparator />
             <MenubarGroup>
-              <MenubarItem>
+              <MenubarItem value="menu-item12">
                 Print... <MenubarShortcut>⌘P</MenubarShortcut>
               </MenubarItem>
             </MenubarGroup>
@@ -129,10 +129,10 @@ function MenubarWithSubmenu() {
           <MenubarTrigger>Edit</MenubarTrigger>
           <MenubarContent>
             <MenubarGroup>
-              <MenubarItem>
+              <MenubarItem value="menu-item13">
                 Undo <MenubarShortcut>⌘Z</MenubarShortcut>
               </MenubarItem>
-              <MenubarItem>
+              <MenubarItem value="menu-item14">
                 Redo <MenubarShortcut>⇧⌘Z</MenubarShortcut>
               </MenubarItem>
             </MenubarGroup>
@@ -141,17 +141,17 @@ function MenubarWithSubmenu() {
               <MenubarSubTrigger>Find</MenubarSubTrigger>
               <MenubarSubContent>
                 <MenubarGroup>
-                  <MenubarItem>Find...</MenubarItem>
-                  <MenubarItem>Find Next</MenubarItem>
-                  <MenubarItem>Find Previous</MenubarItem>
+                  <MenubarItem value="menu-item15">Find...</MenubarItem>
+                  <MenubarItem value="menu-item16">Find Next</MenubarItem>
+                  <MenubarItem value="menu-item17">Find Previous</MenubarItem>
                 </MenubarGroup>
               </MenubarSubContent>
             </MenubarSub>
             <MenubarSeparator />
             <MenubarGroup>
-              <MenubarItem>Cut</MenubarItem>
-              <MenubarItem>Copy</MenubarItem>
-              <MenubarItem>Paste</MenubarItem>
+              <MenubarItem value="menu-item18">Cut</MenubarItem>
+              <MenubarItem value="menu-item19">Copy</MenubarItem>
+              <MenubarItem value="menu-item20">Paste</MenubarItem>
             </MenubarGroup>
           </MenubarContent>
         </MenubarMenu>
@@ -168,7 +168,7 @@ function MenubarWithCheckboxes() {
           <MenubarTrigger>View</MenubarTrigger>
           <MenubarContent className="w-64">
             <MenubarGroup>
-              <MenubarCheckboxItem>
+              <MenubarCheckboxItem value="cb-1">
                 Always Show Bookmarks Bar
               </MenubarCheckboxItem>
               <MenubarCheckboxItem checked>
@@ -190,8 +190,8 @@ function MenubarWithCheckboxes() {
           <MenubarTrigger>Format</MenubarTrigger>
           <MenubarContent>
             <MenubarCheckboxItem checked>Strikethrough</MenubarCheckboxItem>
-            <MenubarCheckboxItem>Code</MenubarCheckboxItem>
-            <MenubarCheckboxItem>Superscript</MenubarCheckboxItem>
+            <MenubarCheckboxItem value="cb-2">Code</MenubarCheckboxItem>
+            <MenubarCheckboxItem value="cb-3">Superscript</MenubarCheckboxItem>
           </MenubarContent>
         </MenubarMenu>
       </Menubar>
@@ -244,7 +244,7 @@ function MenubarWithIcons() {
           <MenubarTrigger>File</MenubarTrigger>
           <MenubarContent>
             <MenubarGroup>
-              <MenubarItem>
+              <MenubarItem value="menu-item21">
                 <IconPlaceholder
                   lucide="FileIcon"
                   tabler="IconFile"
@@ -254,7 +254,7 @@ function MenubarWithIcons() {
                 />
                 New File <MenubarShortcut>⌘N</MenubarShortcut>
               </MenubarItem>
-              <MenubarItem>
+              <MenubarItem value="menu-item22">
                 <IconPlaceholder
                   lucide="FolderIcon"
                   tabler="IconFolder"
@@ -267,7 +267,7 @@ function MenubarWithIcons() {
             </MenubarGroup>
             <MenubarSeparator />
             <MenubarGroup>
-              <MenubarItem>
+              <MenubarItem value="menu-item23">
                 <IconPlaceholder
                   lucide="SaveIcon"
                   tabler="IconDeviceFloppy"
@@ -284,7 +284,7 @@ function MenubarWithIcons() {
           <MenubarTrigger>More</MenubarTrigger>
           <MenubarContent>
             <MenubarGroup>
-              <MenubarItem>
+              <MenubarItem value="menu-item24">
                 <IconPlaceholder
                   lucide="CircleDashedIcon"
                   tabler="IconCircleDashed"
@@ -294,7 +294,7 @@ function MenubarWithIcons() {
                 />
                 Settings
               </MenubarItem>
-              <MenubarItem>
+              <MenubarItem value="menu-item25">
                 <IconPlaceholder
                   lucide="CircleDashedIcon"
                   tabler="IconCircleDashed"
@@ -331,13 +331,13 @@ function MenubarWithShortcuts() {
           <MenubarTrigger>File</MenubarTrigger>
           <MenubarContent>
             <MenubarGroup>
-              <MenubarItem>
+              <MenubarItem value="menu-item26">
                 New Tab <MenubarShortcut>⌘T</MenubarShortcut>
               </MenubarItem>
-              <MenubarItem>
+              <MenubarItem value="menu-item27">
                 New Window <MenubarShortcut>⌘N</MenubarShortcut>
               </MenubarItem>
-              <MenubarItem>
+              <MenubarItem value="menu-item28">
                 Print... <MenubarShortcut>⌘P</MenubarShortcut>
               </MenubarItem>
             </MenubarGroup>
@@ -347,22 +347,22 @@ function MenubarWithShortcuts() {
           <MenubarTrigger>Edit</MenubarTrigger>
           <MenubarContent>
             <MenubarGroup>
-              <MenubarItem>
+              <MenubarItem value="menu-item29">
                 Undo <MenubarShortcut>⌘Z</MenubarShortcut>
               </MenubarItem>
-              <MenubarItem>
+              <MenubarItem value="menu-item30">
                 Redo <MenubarShortcut>⇧⌘Z</MenubarShortcut>
               </MenubarItem>
             </MenubarGroup>
             <MenubarSeparator />
             <MenubarGroup>
-              <MenubarItem>
+              <MenubarItem value="menu-item31">
                 Cut <MenubarShortcut>⌘X</MenubarShortcut>
               </MenubarItem>
-              <MenubarItem>
+              <MenubarItem value="menu-item32">
                 Copy <MenubarShortcut>⌘C</MenubarShortcut>
               </MenubarItem>
-              <MenubarItem>
+              <MenubarItem value="menu-item33">
                 Paste <MenubarShortcut>⌘V</MenubarShortcut>
               </MenubarItem>
             </MenubarGroup>
@@ -381,7 +381,7 @@ function MenubarFormat() {
           <MenubarTrigger>Format</MenubarTrigger>
           <MenubarContent>
             <MenubarGroup>
-              <MenubarItem>
+              <MenubarItem value="menu-item34">
                 <IconPlaceholder
                   lucide="BoldIcon"
                   tabler="IconBold"
@@ -391,7 +391,7 @@ function MenubarFormat() {
                 />
                 Bold <MenubarShortcut>⌘B</MenubarShortcut>
               </MenubarItem>
-              <MenubarItem>
+              <MenubarItem value="menu-item35">
                 <IconPlaceholder
                   lucide="ItalicIcon"
                   tabler="IconItalic"
@@ -401,7 +401,7 @@ function MenubarFormat() {
                 />
                 Italic <MenubarShortcut>⌘I</MenubarShortcut>
               </MenubarItem>
-              <MenubarItem>
+              <MenubarItem value="menu-item36">
                 <IconPlaceholder
                   lucide="UnderlineIcon"
                   tabler="IconUnderline"
@@ -415,14 +415,14 @@ function MenubarFormat() {
             <MenubarSeparator />
             <MenubarGroup>
               <MenubarCheckboxItem checked>Strikethrough</MenubarCheckboxItem>
-              <MenubarCheckboxItem>Code</MenubarCheckboxItem>
+              <MenubarCheckboxItem value="cb-4">Code</MenubarCheckboxItem>
             </MenubarGroup>
           </MenubarContent>
         </MenubarMenu>
         <MenubarMenu>
           <MenubarTrigger>View</MenubarTrigger>
           <MenubarContent>
-            <MenubarCheckboxItem>Show Ruler</MenubarCheckboxItem>
+            <MenubarCheckboxItem value="cb-5">Show Ruler</MenubarCheckboxItem>
             <MenubarCheckboxItem checked>Show Grid</MenubarCheckboxItem>
             <MenubarSeparator />
             <MenubarGroup>
@@ -456,15 +456,15 @@ function MenubarInsert() {
               </MenubarSubTrigger>
               <MenubarSubContent>
                 <MenubarGroup>
-                  <MenubarItem>Image</MenubarItem>
-                  <MenubarItem>Video</MenubarItem>
-                  <MenubarItem>Audio</MenubarItem>
+                  <MenubarItem value="menu-item37">Image</MenubarItem>
+                  <MenubarItem value="menu-item38">Video</MenubarItem>
+                  <MenubarItem value="menu-item39">Audio</MenubarItem>
                 </MenubarGroup>
               </MenubarSubContent>
             </MenubarSub>
             <MenubarSeparator />
             <MenubarGroup>
-              <MenubarItem>
+              <MenubarItem value="menu-item40">
                 <IconPlaceholder
                   lucide="LinkIcon"
                   tabler="IconLink"
@@ -474,7 +474,7 @@ function MenubarInsert() {
                 />
                 Link <MenubarShortcut>⌘K</MenubarShortcut>
               </MenubarItem>
-              <MenubarItem>
+              <MenubarItem value="menu-item41">
                 <IconPlaceholder
                   lucide="TableIcon"
                   tabler="IconTable"
@@ -491,7 +491,7 @@ function MenubarInsert() {
           <MenubarTrigger>Tools</MenubarTrigger>
           <MenubarContent className="w-44">
             <MenubarGroup>
-              <MenubarItem>
+              <MenubarItem value="menu-item42">
                 <IconPlaceholder
                   lucide="SearchIcon"
                   tabler="IconSearch"
@@ -501,7 +501,7 @@ function MenubarInsert() {
                 />
                 Find & Replace <MenubarShortcut>⌘F</MenubarShortcut>
               </MenubarItem>
-              <MenubarItem>
+              <MenubarItem value="menu-item43">
                 <IconPlaceholder
                   lucide="CheckIcon"
                   tabler="IconCheck"
@@ -527,7 +527,7 @@ function MenubarDestructive() {
           <MenubarTrigger>File</MenubarTrigger>
           <MenubarContent className="w-40">
             <MenubarGroup>
-              <MenubarItem>
+              <MenubarItem value="menu-item44">
                 <IconPlaceholder
                   lucide="FileIcon"
                   tabler="IconFile"
@@ -537,7 +537,7 @@ function MenubarDestructive() {
                 />
                 New File <MenubarShortcut>⌘N</MenubarShortcut>
               </MenubarItem>
-              <MenubarItem>
+              <MenubarItem value="menu-item45">
                 <IconPlaceholder
                   lucide="FolderIcon"
                   tabler="IconFolder"
@@ -567,7 +567,7 @@ function MenubarDestructive() {
           <MenubarTrigger>Account</MenubarTrigger>
           <MenubarContent>
             <MenubarGroup>
-              <MenubarItem>
+              <MenubarItem value="menu-item46">
                 <IconPlaceholder
                   lucide="UserIcon"
                   tabler="IconUser"
@@ -577,7 +577,7 @@ function MenubarDestructive() {
                 />
                 Profile
               </MenubarItem>
-              <MenubarItem>
+              <MenubarItem value="menu-item47">
                 <IconPlaceholder
                   lucide="SettingsIcon"
                   tabler="IconSettings"
@@ -640,7 +640,7 @@ function MenubarInDialog() {
               <MenubarTrigger>File</MenubarTrigger>
               <MenubarContent>
                 <MenubarGroup>
-                  <MenubarItem>
+                  <MenubarItem value="menu-item48">
                     <IconPlaceholder
                       lucide="CopyIcon"
                       tabler="IconCopy"
@@ -650,7 +650,7 @@ function MenubarInDialog() {
                     />
                     Copy
                   </MenubarItem>
-                  <MenubarItem>
+                  <MenubarItem value="menu-item49">
                     <IconPlaceholder
                       lucide="ScissorsIcon"
                       tabler="IconCut"
@@ -660,7 +660,7 @@ function MenubarInDialog() {
                     />
                     Cut
                   </MenubarItem>
-                  <MenubarItem>
+                  <MenubarItem value="menu-item50">
                     <IconPlaceholder
                       lucide="ClipboardPasteIcon"
                       tabler="IconClipboard"
@@ -676,13 +676,13 @@ function MenubarInDialog() {
                   <MenubarSubTrigger>More Options</MenubarSubTrigger>
                   <MenubarSubContent>
                     <MenubarGroup>
-                      <MenubarItem>Save Page...</MenubarItem>
-                      <MenubarItem>Create Shortcut...</MenubarItem>
-                      <MenubarItem>Name Window...</MenubarItem>
+                      <MenubarItem value="menu-item51">Save Page...</MenubarItem>
+                      <MenubarItem value="menu-item52">Create Shortcut...</MenubarItem>
+                      <MenubarItem value="menu-item53">Name Window...</MenubarItem>
                     </MenubarGroup>
                     <MenubarSeparator />
                     <MenubarGroup>
-                      <MenubarItem>Developer Tools</MenubarItem>
+                      <MenubarItem value="menu-item54">Developer Tools</MenubarItem>
                     </MenubarGroup>
                   </MenubarSubContent>
                 </MenubarSub>
@@ -705,10 +705,10 @@ function MenubarInDialog() {
               <MenubarTrigger>Edit</MenubarTrigger>
               <MenubarContent>
                 <MenubarGroup>
-                  <MenubarItem>
+                  <MenubarItem value="menu-item55">
                     Undo <MenubarShortcut>⌘Z</MenubarShortcut>
                   </MenubarItem>
-                  <MenubarItem>
+                  <MenubarItem value="menu-item56">
                     Redo <MenubarShortcut>⇧⌘Z</MenubarShortcut>
                   </MenubarItem>
                 </MenubarGroup>
@@ -734,7 +734,7 @@ function MenubarWithInset() {
           <MenubarContent className="w-44">
             <MenubarGroup>
               <MenubarLabel>Actions</MenubarLabel>
-              <MenubarItem>
+              <MenubarItem value="menu-item57">
                 <IconPlaceholder
                   lucide="CopyIcon"
                   tabler="IconCopy"
@@ -744,7 +744,7 @@ function MenubarWithInset() {
                 />
                 Copy
               </MenubarItem>
-              <MenubarItem>
+              <MenubarItem value="menu-item58">
                 <IconPlaceholder
                   lucide="ScissorsIcon"
                   tabler="IconCut"
@@ -794,8 +794,8 @@ function MenubarWithInset() {
               <MenubarSubTrigger inset>More Options</MenubarSubTrigger>
               <MenubarSubContent>
                 <MenubarGroup>
-                  <MenubarItem>Save Page...</MenubarItem>
-                  <MenubarItem>Create Shortcut...</MenubarItem>
+                  <MenubarItem value="menu-item59">Save Page...</MenubarItem>
+                  <MenubarItem value="menu-item60">Create Shortcut...</MenubarItem>
                 </MenubarGroup>
               </MenubarSubContent>
             </MenubarSub>

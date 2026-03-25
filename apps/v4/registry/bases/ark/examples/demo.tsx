@@ -416,16 +416,16 @@ export function Demo() {
                     >
                       <DropdownMenuGroup>
                         <DropdownMenuLabel>Quick Actions</DropdownMenuLabel>
-                        <DropdownMenuItem>Mute Conversation</DropdownMenuItem>
-                        <DropdownMenuItem>Mark as Read</DropdownMenuItem>
-                        <DropdownMenuItem>Block User</DropdownMenuItem>
+                        <DropdownMenuItem value="1">Mute Conversation</DropdownMenuItem>
+                        <DropdownMenuItem value="2">Mark as Read</DropdownMenuItem>
+                        <DropdownMenuItem value="3">Block User</DropdownMenuItem>
                       </DropdownMenuGroup>
                       <DropdownMenuSeparator />
                       <DropdownMenuGroup>
                         <DropdownMenuLabel>Conversation</DropdownMenuLabel>
-                        <DropdownMenuItem>Share Conversation</DropdownMenuItem>
-                        <DropdownMenuItem>Copy Conversation</DropdownMenuItem>
-                        <DropdownMenuItem>Report Conversation</DropdownMenuItem>
+                        <DropdownMenuItem value="4">Share Conversation</DropdownMenuItem>
+                        <DropdownMenuItem value="5">Copy Conversation</DropdownMenuItem>
+                        <DropdownMenuItem value="6">Report Conversation</DropdownMenuItem>
                       </DropdownMenuGroup>
                       <DropdownMenuSeparator />
                       <DropdownMenuGroup>

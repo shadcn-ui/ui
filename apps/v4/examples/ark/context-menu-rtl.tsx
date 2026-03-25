@@ -117,7 +117,7 @@ export function ContextMenuRtl() {
               data-lang={dir === "rtl" ? language : undefined}
             >
               <ContextMenuGroup>
-                <ContextMenuItem>
+                <ContextMenuItem value="1">
                   <ArrowLeftIcon />
                   {t.back}
                   <ContextMenuShortcut>⌘[</ContextMenuShortcut>
@@ -127,7 +127,7 @@ export function ContextMenuRtl() {
                   {t.forward}
                   <ContextMenuShortcut>⌘]</ContextMenuShortcut>
                 </ContextMenuItem>
-                <ContextMenuItem>
+                <ContextMenuItem value="2">
                   <RotateCwIcon />
                   {t.reload}
                   <ContextMenuShortcut>⌘R</ContextMenuShortcut>
@@ -142,13 +142,13 @@ export function ContextMenuRtl() {
               data-lang={dir === "rtl" ? language : undefined}
             >
               <ContextMenuGroup>
-                <ContextMenuItem>{t.savePage}</ContextMenuItem>
-                <ContextMenuItem>{t.createShortcut}</ContextMenuItem>
-                <ContextMenuItem>{t.nameWindow}</ContextMenuItem>
+                <ContextMenuItem value="3">{t.savePage}</ContextMenuItem>
+                <ContextMenuItem value="4">{t.createShortcut}</ContextMenuItem>
+                <ContextMenuItem value="5">{t.nameWindow}</ContextMenuItem>
               </ContextMenuGroup>
               <ContextMenuSeparator />
               <ContextMenuGroup>
-                <ContextMenuItem>{t.developerTools}</ContextMenuItem>
+                <ContextMenuItem value="6">{t.developerTools}</ContextMenuItem>
               </ContextMenuGroup>
               <ContextMenuSeparator />
               <ContextMenuGroup>
@@ -164,7 +164,7 @@ export function ContextMenuRtl() {
           <ContextMenuCheckboxItem checked>
             {t.showBookmarks}
           </ContextMenuCheckboxItem>
-          <ContextMenuCheckboxItem>{t.showFullUrls}</ContextMenuCheckboxItem>
+          <ContextMenuCheckboxItem value="cb-1">{t.showFullUrls}</ContextMenuCheckboxItem>
         </ContextMenuGroup>
         <ContextMenuSeparator />
         <ContextMenuGroup>
