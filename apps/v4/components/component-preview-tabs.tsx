@@ -259,7 +259,8 @@ function DirectionProviderWrapper({
   const dir = explicitDir ?? translation.dir
 
   if (base === "ark") {
-    return <LocaleProvider locale="en-US">{children}</LocaleProvider>
+    const locale = dir === "rtl" ? "ar-SA" : "en-US"
+    return <LocaleProvider locale={locale}>{children}</LocaleProvider>
   }
 
   if (base === "base") {
