@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/base/ui/button"
+import { Button } from "@/styles/base-nova/ui/button"
 import {
   Dialog,
   DialogContent,
@@ -10,7 +10,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/examples/base/ui/dialog"
+} from "@/styles/base-nova/ui/dialog"
 import {
   Field,
   FieldContent,
@@ -20,15 +20,15 @@ import {
   FieldSeparator,
   FieldSet,
   FieldTitle,
-} from "@/examples/base/ui/field"
-import { RadioGroup, RadioGroupItem } from "@/examples/base/ui/radio-group"
-import { Switch } from "@/examples/base/ui/switch"
+} from "@/styles/base-nova/ui/field"
+import { RadioGroup, RadioGroupItem } from "@/styles/base-nova/ui/radio-group"
+import { Switch } from "@/styles/base-nova/ui/switch"
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@/examples/base/ui/tabs"
+} from "@/styles/base-nova/ui/tabs"
 import { Copy01Icon, Globe02Icon, Tick02Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 

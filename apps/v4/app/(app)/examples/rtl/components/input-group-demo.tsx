@@ -5,7 +5,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/examples/base/ui-rtl/dropdown-menu"
+} from "@/styles/base-nova/ui-rtl/dropdown-menu"
 import {
   InputGroup,
   InputGroupAddon,
@@ -13,13 +13,13 @@ import {
   InputGroupInput,
   InputGroupText,
   InputGroupTextarea,
-} from "@/examples/base/ui-rtl/input-group"
-import { Separator } from "@/examples/base/ui-rtl/separator"
+} from "@/styles/base-nova/ui-rtl/input-group"
+import { Separator } from "@/styles/base-nova/ui-rtl/separator"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/examples/base/ui-rtl/tooltip"
+} from "@/styles/base-nova/ui-rtl/tooltip"
 import {
   IconCheck,
   IconChevronDown,
@@ -131,7 +131,7 @@ export function InputGroupDemo() {
         <InputGroupInput placeholder="shadcn" />
         <InputGroupAddon align="inline-end">
           <div className="flex size-4 items-center justify-center rounded-full bg-primary text-foreground">
-            <IconCheck className="size-3 text-background" />
+            <IconCheck className="size-3 text-white" />
           </div>
         </InputGroupAddon>
       </InputGroup>

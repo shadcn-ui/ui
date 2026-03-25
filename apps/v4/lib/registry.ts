@@ -10,8 +10,6 @@ import { Index as StylesIndex } from "@/registry/__index__"
 import { BASES } from "@/registry/bases"
 import { Index as BasesIndex } from "@/registry/bases/__index__"
 
-const INDEXED_STYLES = ["new-york-v4"]
-
 // LRU cache for cross-request caching of registry items.
 // File reads are I/O-bound, so caching improves dev server performance.
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -29,17 +27,27 @@ function getBaseForStyle(styleName: string) {
   return null
 }
 
-export function getDemoComponent(name: string, styleName: string) {
+function getDemoIndexKey(styleName: string) {
+  if (ExamplesIndex[styleName]) {
+    return styleName
+  }
+
   const base = getBaseForStyle(styleName)
-  if (!base) return undefined
-  return ExamplesIndex[base]?.[name]?.component
+  if (base && ExamplesIndex[base]) {
+    return base
+  }
+
+  return styleName
+}
+
+export function getDemoComponent(name: string, styleName: string) {
+  const key = getDemoIndexKey(styleName)
+  return ExamplesIndex[key]?.[name]?.component
 }
 
 export async function getDemoItem(name: string, styleName: string) {
-  const base = getBaseForStyle(styleName)
-  if (!base) return null
-
-  const demo = ExamplesIndex[base]?.[name]
+  const key = getDemoIndexKey(styleName)
+  const demo = ExamplesIndex[key]?.[name]
   if (!demo) {
     return null
   }
@@ -60,12 +68,12 @@ export async function getDemoItem(name: string, styleName: string) {
 }
 
 function getIndexForStyle(styleName: string) {
-  if (INDEXED_STYLES.includes(styleName)) {
+  if (StylesIndex[styleName]) {
     return { index: StylesIndex, key: styleName }
   }
 
   const base = getBaseForStyle(styleName)
-  if (base) {
+  if (base && BasesIndex[base]) {
     return { index: BasesIndex, key: base }
   }
 
@@ -231,6 +239,17 @@ function fixFilePaths(files: z.infer<typeof registryItemSchema>["files"]) {
 }
 
 export function fixImport(content: string) {
+  content = content.replace(
+    /@\/styles\/([\w-]+)\/(ui-rtl|ui)\/([\w-]+)/g,
+    (match, _styleName, type, component) => {
+      if (type === "ui" || type === "ui-rtl") {
+        return `@/components/ui/${component}`
+      }
+
+      return match
+    }
+  )
+
   const regex = /@\/(.+?)\/((?:.*?\/)?(?:components|ui|hooks|lib))\/([\w-]+)/g
 
   const replacement = (

@@ -1,24 +1,24 @@
 "use client"
 
 import * as React from "react"
+
+import {
+  useTranslation,
+  type Translations,
+} from "@/components/language-selector"
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/examples/base/ui-rtl/card"
+} from "@/styles/base-nova/ui-rtl/card"
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@/examples/base/ui-rtl/tabs"
-
-import {
-  useTranslation,
-  type Translations,
-} from "@/components/language-selector"
+} from "@/styles/base-nova/ui-rtl/tabs"
 
 const translations: Translations = {
   en: {

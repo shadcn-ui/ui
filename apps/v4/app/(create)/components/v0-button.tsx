@@ -1,8 +1,8 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/base/ui/button"
-import { Skeleton } from "@/examples/base/ui/skeleton"
+import { Button } from "@/styles/base-nova/ui/button"
+import { Skeleton } from "@/styles/base-nova/ui/skeleton"
 
 import { cn } from "@/lib/utils"
 import { useIsMobile } from "@/hooks/use-mobile"

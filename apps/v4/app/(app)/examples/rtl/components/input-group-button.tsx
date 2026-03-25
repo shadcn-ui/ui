@@ -6,13 +6,13 @@ import {
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
-} from "@/examples/base/ui-rtl/input-group"
-import { Label } from "@/examples/base/ui-rtl/label"
+} from "@/styles/base-nova/ui-rtl/input-group"
+import { Label } from "@/styles/base-nova/ui-rtl/label"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/examples/base/ui-rtl/popover"
+} from "@/styles/base-nova/ui-rtl/popover"
 import { IconInfoCircle, IconStar } from "@tabler/icons-react"
 
 import { useLanguageContext } from "@/components/language-selector"

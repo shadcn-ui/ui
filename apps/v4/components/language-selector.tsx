@@ -1,6 +1,8 @@
 "use client"
 
 import * as React from "react"
+
+import { cn } from "@/lib/utils"
 import {
   Select,
   SelectContent,
@@ -8,9 +10,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/examples/base/ui/select"
-
-import { cn } from "@/lib/utils"
+} from "@/styles/base-nova/ui/select"
 
 export type Language = "en" | "ar" | "he"
 
@@ -94,7 +94,6 @@ export function LanguageSelector({
 }) {
   return (
     <Select
-      items={languageOptions}
       value={value}
       onValueChange={(value) => onValueChange(value as Language)}
     >

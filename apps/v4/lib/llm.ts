@@ -18,10 +18,9 @@ function getBaseForStyle(styleName: string) {
 
 function getDemoFilePath(name: string, styleName: string) {
   const base = getBaseForStyle(styleName)
-  if (!base) {
-    return null
-  }
-  const demo = ExamplesIndex[base]?.[name]
+  const demo =
+    ExamplesIndex[styleName]?.[name] ??
+    (base ? ExamplesIndex[base]?.[name] : undefined)
   if (!demo) {
     return null
   }
@@ -29,10 +28,15 @@ function getDemoFilePath(name: string, styleName: string) {
 }
 
 function getIndexForStyle(styleName: string) {
+  if (StylesIndex[styleName]) {
+    return { index: StylesIndex, key: styleName }
+  }
+
   const base = getBaseForStyle(styleName)
-  if (base) {
+  if (base && BasesIndex[base]) {
     return { index: BasesIndex, key: base }
   }
+
   return { index: StylesIndex, key: styleName }
 }
 
@@ -92,12 +96,26 @@ export function processMdxForLLMs(content: string, style: Style["name"]) {
           "@/components/"
         )
         source = source.replaceAll(
+          `@/examples/${base.name}/ui-rtl/`,
+          "@/components/ui/"
+        )
+        source = source.replaceAll(
           `@/examples/${base.name}/ui/`,
           "@/components/ui/"
         )
         source = source.replaceAll(`@/examples/${base.name}/lib/`, "@/lib/")
         source = source.replaceAll(`@/examples/${base.name}/hooks/`, "@/hooks/")
       }
+      source = source.replace(
+        /@\/styles\/([\w-]+)\/(ui-rtl|ui)\/([\w-]+)/g,
+        (match, _styleName, type, component) => {
+          if (type === "ui" || type === "ui-rtl") {
+            return `@/components/ui/${component}`
+          }
+
+          return match
+        }
+      )
       source = source.replaceAll(
         `@/registry/${effectiveStyle}/`,
         "@/components/"

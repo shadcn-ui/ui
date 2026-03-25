@@ -1,7 +1,7 @@
 "use client"
 
-import { DirectionProvider } from "@/examples/base/ui-rtl/direction"
-import { FieldSeparator } from "@/examples/base/ui-rtl/field"
+import { DirectionProvider } from "@/styles/base-nova/ui-rtl/direction"
+import { FieldSeparator } from "@/styles/base-nova/ui-rtl/field"
 
 import {
   LanguageProvider,

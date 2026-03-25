@@ -1,19 +1,19 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/base/ui-rtl/button"
-import { ButtonGroup } from "@/examples/base/ui-rtl/button-group"
+import { Button } from "@/styles/base-nova/ui-rtl/button"
+import { ButtonGroup } from "@/styles/base-nova/ui-rtl/button-group"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
-} from "@/examples/base/ui-rtl/input-group"
+} from "@/styles/base-nova/ui-rtl/input-group"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/examples/base/ui-rtl/tooltip"
+} from "@/styles/base-nova/ui-rtl/tooltip"
 import { AudioLinesIcon, PlusIcon } from "lucide-react"
 
 import { useLanguageContext } from "@/components/language-selector"

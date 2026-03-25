@@ -6,7 +6,7 @@ import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/examples/base/ui/popover"
+} from "@/styles/base-nova/ui/popover"
 import { IconAlertCircle } from "@tabler/icons-react"
 
 import { cn } from "@/lib/utils"

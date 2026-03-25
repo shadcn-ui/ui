@@ -18,24 +18,30 @@ function getBaseForStyle(styleName: string) {
       return base.name
     }
   }
+
   return null
 }
 
 function getDemoFilePath(name: string, styleName: string) {
   const base = getBaseForStyle(styleName)
-  if (!base) return null
-
-  const demo = ExamplesIndex[base]?.[name]
+  const demo =
+    ExamplesIndex[styleName]?.[name] ??
+    (base ? ExamplesIndex[base]?.[name] : undefined)
   if (!demo) return null
 
-  return path.join(process.cwd(), demo.filePath)
+  return demo.filePath
 }
 
 function getIndexForStyle(styleName: string) {
-  const base = getBaseForStyle(styleName)
-  if (base) {
+  if (StylesIndex[styleName]) {
+    return { index: StylesIndex, key: styleName }
+  }
+
+  const base = styleName.split("-")[0]
+  if (BasesIndex[base]) {
     return { index: BasesIndex, key: base }
   }
+
   return { index: StylesIndex, key: styleName }
 }
 
@@ -162,7 +168,7 @@ export function rehypeComponent() {
             return
           }
 
-          const raw = fs.readFileSync(src, "utf8")
+          const raw = fs.readFileSync(path.join(process.cwd(), src), "utf8")
           const source = await formatCode(raw, item.styleName)
 
           item.node.children?.push(

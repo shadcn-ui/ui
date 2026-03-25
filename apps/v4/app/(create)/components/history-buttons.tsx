@@ -1,10 +1,10 @@
 "use client"
 
 import Script from "next/script"
-import { Button } from "@/examples/base/ui/button"
 import { Redo02Icon, Undo02Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 
+import { Button } from "@/styles/base-nova/ui/button"
 import { useHistory } from "@/app/(create)/hooks/use-history"
 
 export const UNDO_FORWARD_TYPE = "undo-forward"

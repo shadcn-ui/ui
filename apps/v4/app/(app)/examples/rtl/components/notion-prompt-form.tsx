@@ -5,8 +5,8 @@ import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "@/examples/base/ui-rtl/avatar"
-import { Badge } from "@/examples/base/ui-rtl/badge"
+} from "@/styles/base-nova/ui-rtl/avatar"
+import { Badge } from "@/styles/base-nova/ui-rtl/badge"
 import {
   Command,
   CommandEmpty,
@@ -14,7 +14,7 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@/examples/base/ui-rtl/command"
+} from "@/styles/base-nova/ui-rtl/command"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -27,21 +27,21 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@/examples/base/ui-rtl/dropdown-menu"
-import { Field, FieldLabel } from "@/examples/base/ui-rtl/field"
+} from "@/styles/base-nova/ui-rtl/dropdown-menu"
+import { Field, FieldLabel } from "@/styles/base-nova/ui-rtl/field"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupTextarea,
-} from "@/examples/base/ui-rtl/input-group"
-import { Popover, PopoverContent } from "@/examples/base/ui-rtl/popover"
-import { Switch } from "@/examples/base/ui-rtl/switch"
+} from "@/styles/base-nova/ui-rtl/input-group"
+import { Popover, PopoverContent } from "@/styles/base-nova/ui-rtl/popover"
+import { Switch } from "@/styles/base-nova/ui-rtl/switch"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/examples/base/ui-rtl/tooltip"
+} from "@/styles/base-nova/ui-rtl/tooltip"
 import {
   IconApps,
   IconArrowUp,
