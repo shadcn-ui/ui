@@ -14,14 +14,17 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/examples/ark/ui/popover"
+import { DateFormatter } from "@internationalized/date"
 import { ChevronDownIcon } from "lucide-react"
 
+const formatter = new DateFormatter("en-US", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+})
+
 function formatDate(dv: DateValue): string {
-  return new Date(dv.year, dv.month - 1, dv.day).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  })
+  return formatter.format(dv.toDate("UTC"))
 }
 
 export function DataPickerWithDropdowns() {
