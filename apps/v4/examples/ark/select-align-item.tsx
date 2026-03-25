@@ -41,21 +41,21 @@ const fruits = createListCollection({
 })
 
 export function SelectAlignItem() {
-  const [sameWidth, setSameWidth] = React.useState(true)
+  const [top, setTop] = React.useState(false)
 
   return (
     <FieldGroup className="w-full max-w-xs">
       <Field orientation="horizontal">
         <FieldContent>
-          <FieldLabel htmlFor="same-width">Same Width</FieldLabel>
+          <FieldLabel htmlFor="placement-top">Top Placement</FieldLabel>
           <FieldDescription>
-            Toggle to match the dropdown width with the trigger.
+            Toggle to open the dropdown above the trigger.
           </FieldDescription>
         </FieldContent>
         <Switch
-          id="same-width"
-          checked={sameWidth}
-          onCheckedChange={(details) => setSameWidth(!!details.checked)}
+          id="placement-top"
+          checked={top}
+          onCheckedChange={(details) => setTop(!!details.checked)}
         >
           <SwitchControl>
             <SwitchThumb />
@@ -67,7 +67,7 @@ export function SelectAlignItem() {
         <Select
           collection={fruits}
           defaultValue={["banana"]}
-          positioning={{ sameWidth }}
+          positioning={{ placement: top ? "top" : "bottom" }}
         >
           <SelectHiddenSelect />
           <SelectControl>

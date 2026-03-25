@@ -3,6 +3,7 @@ import {
   Carousel,
   CarouselContent,
   CarouselControl,
+  CarouselIndicators,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
@@ -28,6 +29,7 @@ export default function CarouselDemo() {
         </CarouselContent>
         <CarouselNext />
       </CarouselControl>
+      <CarouselIndicators />
     </Carousel>
   )
 }

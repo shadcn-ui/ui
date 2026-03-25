@@ -1,11 +1,6 @@
 "use client"
 
-import {
-  Checkbox,
-  CheckboxControl,
-  CheckboxHiddenInput,
-  CheckboxIndicator,
-} from "@/examples/ark/ui/checkbox"
+import { Checkbox } from "@/examples/ark/ui/checkbox"
 import {
   Field,
   FieldContent,
@@ -20,12 +15,7 @@ export default function CheckboxDemo() {
   return (
     <FieldGroup className="max-w-sm">
       <Field orientation="horizontal">
-        <Checkbox id="terms-checkbox" name="terms-checkbox">
-          <CheckboxControl>
-            <CheckboxIndicator />
-          </CheckboxControl>
-          <CheckboxHiddenInput />
-        </Checkbox>
+        <Checkbox id="terms-checkbox" name="terms-checkbox" />
         <Label htmlFor="terms-checkbox">Accept terms and conditions</Label>
       </Field>
       <Field orientation="horizontal">
@@ -33,12 +23,7 @@ export default function CheckboxDemo() {
           id="terms-checkbox-2"
           name="terms-checkbox-2"
           defaultChecked
-        >
-          <CheckboxControl>
-            <CheckboxIndicator />
-          </CheckboxControl>
-          <CheckboxHiddenInput />
-        </Checkbox>
+        />
         <FieldContent>
           <FieldLabel htmlFor="terms-checkbox-2">
             Accept terms and conditions
@@ -49,22 +34,12 @@ export default function CheckboxDemo() {
         </FieldContent>
       </Field>
       <Field orientation="horizontal" data-disabled>
-        <Checkbox id="toggle-checkbox" name="toggle-checkbox" disabled>
-          <CheckboxControl>
-            <CheckboxIndicator />
-          </CheckboxControl>
-          <CheckboxHiddenInput />
-        </Checkbox>
+        <Checkbox id="toggle-checkbox" name="toggle-checkbox" disabled />
         <FieldLabel htmlFor="toggle-checkbox">Enable notifications</FieldLabel>
       </Field>
       <FieldLabel>
         <Field orientation="horizontal">
-          <Checkbox id="toggle-checkbox-2" name="toggle-checkbox-2">
-            <CheckboxControl>
-              <CheckboxIndicator />
-            </CheckboxControl>
-            <CheckboxHiddenInput />
-          </Checkbox>
+          <Checkbox id="toggle-checkbox-2" name="toggle-checkbox-2" />
           <FieldContent>
             <FieldTitle>Enable notifications</FieldTitle>
             <FieldDescription>

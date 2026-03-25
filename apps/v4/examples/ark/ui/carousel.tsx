@@ -149,6 +149,24 @@ const CarouselIndicator = React.forwardRef<
 ))
 CarouselIndicator.displayName = "CarouselIndicator"
 
+const CarouselIndicators = React.forwardRef<
+  React.ElementRef<typeof ArkCarousel.IndicatorGroup>,
+  Omit<React.ComponentPropsWithoutRef<typeof ArkCarousel.Indicator>, "index">
+>(function CarouselIndicators(props, ref) {
+  return (
+    <ArkCarousel.Context>
+      {(api) => (
+        <CarouselIndicatorGroup ref={ref}>
+          {api.pageSnapPoints.map((_, index) => (
+            <CarouselIndicator key={index} index={index} {...props} />
+          ))}
+        </CarouselIndicatorGroup>
+      )}
+    </ArkCarousel.Context>
+  )
+})
+CarouselIndicators.displayName = "CarouselIndicators"
+
 const CarouselAutoplayTrigger = ArkCarousel.AutoplayTrigger
 const CarouselContext = ArkCarousel.Context
 const CarouselRootProvider = ArkCarousel.RootProvider
@@ -162,6 +180,7 @@ export {
   CarouselNext,
   CarouselIndicatorGroup,
   CarouselIndicator,
+  CarouselIndicators,
   CarouselAutoplayTrigger,
   CarouselContext,
   CarouselRootProvider,
