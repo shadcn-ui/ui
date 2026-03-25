@@ -1,9 +1,6 @@
 import {
   Checkbox,
-  CheckboxControl,
   CheckboxGroup as CheckboxGroupPrimitive,
-  CheckboxHiddenInput,
-  CheckboxIndicator,
 } from "@/examples/ark/ui/checkbox"
 import {
   Field,
@@ -30,62 +27,26 @@ export function CheckboxGroup() {
         <FieldGroup className="gap-3">
           <Field orientation="horizontal">
             <Checkbox value="hard-disks" id="finder-pref-hard-disks">
-              <CheckboxControl>
-                <CheckboxIndicator />
-              </CheckboxControl>
-              <CheckboxHiddenInput />
-            </Checkbox>
-            <FieldLabel
-              htmlFor="finder-pref-hard-disks"
-              className="font-normal"
-            >
               Hard disks
-            </FieldLabel>
+            </Checkbox>
           </Field>
           <Field orientation="horizontal">
             <Checkbox value="external-disks" id="finder-pref-external-disks">
-              <CheckboxControl>
-                <CheckboxIndicator />
-              </CheckboxControl>
-              <CheckboxHiddenInput />
-            </Checkbox>
-            <FieldLabel
-              htmlFor="finder-pref-external-disks"
-              className="font-normal"
-            >
               External disks
-            </FieldLabel>
+            </Checkbox>
           </Field>
           <Field orientation="horizontal">
             <Checkbox value="cds-dvds" id="finder-pref-cds-dvds">
-              <CheckboxControl>
-                <CheckboxIndicator />
-              </CheckboxControl>
-              <CheckboxHiddenInput />
-            </Checkbox>
-            <FieldLabel
-              htmlFor="finder-pref-cds-dvds"
-              className="font-normal"
-            >
               CDs, DVDs, and iPods
-            </FieldLabel>
+            </Checkbox>
           </Field>
           <Field orientation="horizontal">
             <Checkbox
               value="connected-servers"
               id="finder-pref-connected-servers"
             >
-              <CheckboxControl>
-                <CheckboxIndicator />
-              </CheckboxControl>
-              <CheckboxHiddenInput />
-            </Checkbox>
-            <FieldLabel
-              htmlFor="finder-pref-connected-servers"
-              className="font-normal"
-            >
               Connected servers
-            </FieldLabel>
+            </Checkbox>
           </Field>
         </FieldGroup>
       </CheckboxGroupPrimitive>

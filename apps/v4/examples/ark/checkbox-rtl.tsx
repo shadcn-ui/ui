@@ -1,12 +1,7 @@
 "use client"
 
 import * as React from "react"
-import {
-  Checkbox,
-  CheckboxControl,
-  CheckboxHiddenInput,
-  CheckboxIndicator,
-} from "@/examples/ark/ui-rtl/checkbox"
+import { Checkbox } from "@/examples/ark/ui-rtl/checkbox"
 import {
   Field,
   FieldContent,
@@ -64,24 +59,15 @@ export function CheckboxRtl() {
     <FieldGroup className="max-w-sm" dir={dir}>
       <Field orientation="horizontal">
         <Checkbox id="terms-checkbox-rtl" name="terms-checkbox">
-          <CheckboxControl>
-            <CheckboxIndicator />
-          </CheckboxControl>
-          <CheckboxHiddenInput />
+          {t.acceptTerms}
         </Checkbox>
-        <Label htmlFor="terms-checkbox-rtl">{t.acceptTerms}</Label>
       </Field>
       <Field orientation="horizontal">
         <Checkbox
           id="terms-checkbox-2-rtl"
           name="terms-checkbox-2"
           defaultChecked
-        >
-          <CheckboxControl>
-            <CheckboxIndicator />
-          </CheckboxControl>
-          <CheckboxHiddenInput />
-        </Checkbox>
+        />
         <FieldContent>
           <FieldLabel htmlFor="terms-checkbox-2-rtl">
             {t.acceptTerms}
@@ -91,23 +77,12 @@ export function CheckboxRtl() {
       </Field>
       <Field orientation="horizontal" data-disabled>
         <Checkbox id="toggle-checkbox-rtl" name="toggle-checkbox" disabled>
-          <CheckboxControl>
-            <CheckboxIndicator />
-          </CheckboxControl>
-          <CheckboxHiddenInput />
-        </Checkbox>
-        <FieldLabel htmlFor="toggle-checkbox-rtl">
           {t.enableNotifications}
-        </FieldLabel>
+        </Checkbox>
       </Field>
       <FieldLabel>
         <Field orientation="horizontal">
-          <Checkbox id="toggle-checkbox-2" name="toggle-checkbox-2">
-            <CheckboxControl>
-              <CheckboxIndicator />
-            </CheckboxControl>
-            <CheckboxHiddenInput />
-          </Checkbox>
+          <Checkbox id="toggle-checkbox-2" name="toggle-checkbox-2" />
           <FieldContent>
             <FieldTitle>{t.enableNotifications}</FieldTitle>
             <FieldDescription>

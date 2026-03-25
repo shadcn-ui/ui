@@ -1,9 +1,4 @@
-import {
-  Checkbox,
-  CheckboxControl,
-  CheckboxHiddenInput,
-  CheckboxIndicator,
-} from "@/examples/ark/ui/checkbox"
+import { Checkbox } from "@/examples/ark/ui/checkbox"
 import { Field, FieldGroup, FieldLabel } from "@/examples/ark/ui/field"
 
 export function CheckboxDisabled() {
@@ -15,14 +10,8 @@ export function CheckboxDisabled() {
           name="toggle-checkbox-disabled"
           disabled
         >
-          <CheckboxControl>
-            <CheckboxIndicator />
-          </CheckboxControl>
-          <CheckboxHiddenInput />
-        </Checkbox>
-        <FieldLabel htmlFor="toggle-checkbox-disabled">
           Enable notifications
-        </FieldLabel>
+        </Checkbox>
       </Field>
     </FieldGroup>
   )
