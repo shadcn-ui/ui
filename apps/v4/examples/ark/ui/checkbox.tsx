@@ -4,25 +4,42 @@ import * as React from "react"
 import { Checkbox as CheckboxPrimitive } from "@ark-ui/react/checkbox"
 
 import { cn } from "@/examples/ark/lib/utils"
-import { CheckIcon } from "lucide-react"
+import { CheckIcon, MinusIcon } from "lucide-react"
 
-// --- Root ---
-
-const Checkbox = React.forwardRef<
-  HTMLLabelElement,
-  React.ComponentProps<typeof CheckboxPrimitive.Root>
->(({ className, ...props }, ref) => (
-  <CheckboxPrimitive.Root
-    ref={ref}
-    data-slot="checkbox"
-    className={cn(
-      "group/checkbox inline-flex items-center gap-2 data-[disabled]:opacity-50",
-      className
-    )}
-    {...props}
-  />
-))
-Checkbox.displayName = "Checkbox"
+function Checkbox({
+  className,
+  children,
+  ...props
+}: React.ComponentProps<typeof CheckboxPrimitive.Root>) {
+  return (
+    <CheckboxPrimitive.Root
+      data-slot="checkbox"
+      className={cn(
+        "inline-flex items-center gap-2 data-[disabled]:opacity-50",
+        className
+      )}
+      {...props}
+    >
+      <CheckboxPrimitive.Control
+        data-slot="checkbox-control"
+        className="inline-flex size-4 shrink-0 items-center justify-center rounded-[4px] border border-input transition-colors data-[state=checked]:border-primary data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground dark:data-[state=checked]:bg-primary dark:bg-input/30 focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
+      >
+        <CheckboxPrimitive.Indicator className="[&>svg]:size-3.5">
+          <CheckIcon />
+        </CheckboxPrimitive.Indicator>
+        <CheckboxPrimitive.Indicator indeterminate className="[&>svg]:size-3.5">
+          <MinusIcon />
+        </CheckboxPrimitive.Indicator>
+      </CheckboxPrimitive.Control>
+      {children && (
+        <CheckboxPrimitive.Label className="text-sm font-medium leading-none select-none">
+          {children}
+        </CheckboxPrimitive.Label>
+      )}
+      <CheckboxPrimitive.HiddenInput />
+    </CheckboxPrimitive.Root>
+  )
+}
 
 // --- Control ---
 

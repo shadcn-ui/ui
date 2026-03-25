@@ -9,43 +9,44 @@ import {
   FieldLabel,
   FieldTitle,
 } from "@/examples/ark/ui/field"
-import { Label } from "@/examples/ark/ui/label"
 
 export default function CheckboxDemo() {
   return (
     <FieldGroup className="max-w-sm">
       <Field orientation="horizontal">
-        <Checkbox id="terms-checkbox" name="terms-checkbox" />
-        <Label htmlFor="terms-checkbox">Accept terms and conditions</Label>
+        <Checkbox id="terms-checkbox" name="terms-checkbox">
+          Accept terms and conditions
+        </Checkbox>
       </Field>
       <Field orientation="horizontal">
         <Checkbox
           id="terms-checkbox-2"
           name="terms-checkbox-2"
           defaultChecked
-        />
-        <FieldContent>
-          <FieldLabel htmlFor="terms-checkbox-2">
-            Accept terms and conditions
-          </FieldLabel>
-          <FieldDescription>
-            By clicking this checkbox, you agree to the terms.
-          </FieldDescription>
-        </FieldContent>
+        >
+          <FieldContent>
+            <FieldTitle>Accept terms and conditions</FieldTitle>
+            <FieldDescription>
+              By clicking this checkbox, you agree to the terms.
+            </FieldDescription>
+          </FieldContent>
+        </Checkbox>
       </Field>
       <Field orientation="horizontal" data-disabled>
-        <Checkbox id="toggle-checkbox" name="toggle-checkbox" disabled />
-        <FieldLabel htmlFor="toggle-checkbox">Enable notifications</FieldLabel>
+        <Checkbox id="toggle-checkbox" name="toggle-checkbox" disabled>
+          Enable notifications
+        </Checkbox>
       </Field>
       <FieldLabel>
         <Field orientation="horizontal">
-          <Checkbox id="toggle-checkbox-2" name="toggle-checkbox-2" />
-          <FieldContent>
-            <FieldTitle>Enable notifications</FieldTitle>
-            <FieldDescription>
-              You can enable or disable notifications at any time.
-            </FieldDescription>
-          </FieldContent>
+          <Checkbox id="toggle-checkbox-2" name="toggle-checkbox-2">
+            <FieldContent>
+              <FieldTitle>Enable notifications</FieldTitle>
+              <FieldDescription>
+                You can enable or disable notifications at any time.
+              </FieldDescription>
+            </FieldContent>
+          </Checkbox>
         </Field>
       </FieldLabel>
     </FieldGroup>
