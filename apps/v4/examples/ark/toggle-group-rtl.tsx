@@ -41,7 +41,7 @@ export function ToggleGroupRtl() {
   const { dir, t } = useTranslation(translations, "ar")
 
   return (
-    <ToggleGroup variant="outline" type="single" defaultValue="list">
+    <ToggleGroup variant="outline"  defaultValue={["list"]}>
       <ToggleGroupItem value="list" aria-label={t.list}>
         {t.list}
       </ToggleGroupItem>

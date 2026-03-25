@@ -275,7 +275,7 @@ function TabsWithDropdown() {
                 <span className="sr-only">More options</span>
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
+            <DropdownMenuContent>
               <DropdownMenuItem value="1">Settings</DropdownMenuItem>
               <DropdownMenuItem value="2">Export</DropdownMenuItem>
               <DropdownMenuSeparator />

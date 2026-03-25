@@ -56,7 +56,7 @@ export default function ToggleGroupExample() {
 function ToggleGroupBasic() {
   return (
     <Example title="Basic">
-      <ToggleGroup type="multiple" spacing={1}>
+      <ToggleGroup multiple spacing={1}>
         <ToggleGroupItem value="bold" aria-label="Toggle bold">
           <IconPlaceholder
             lucide="BoldIcon"
@@ -92,7 +92,7 @@ function ToggleGroupBasic() {
 function ToggleGroupOutline() {
   return (
     <Example title="Outline">
-      <ToggleGroup variant="outline" type="single" defaultValue="all">
+      <ToggleGroup variant="outline"  defaultValue={["all"]}>
         <ToggleGroupItem value="all" aria-label="Toggle all">
           All
         </ToggleGroupItem>
@@ -107,7 +107,7 @@ function ToggleGroupOutline() {
 function ToggleGroupOutlineWithIcons() {
   return (
     <Example title="Outline With Icons">
-      <ToggleGroup variant="outline" type="multiple" size="sm">
+      <ToggleGroup variant="outline" multiple size="sm">
         <ToggleGroupItem value="bold" aria-label="Toggle bold">
           <IconPlaceholder
             lucide="BoldIcon"
@@ -145,9 +145,9 @@ function ToggleGroupSizes() {
     <Example title="Sizes">
       <div className="flex flex-col gap-4">
         <ToggleGroup
-          type="single"
+
           size="sm"
-          defaultValue="top"
+          defaultValue={["top"]}
           variant="outline"
         >
           <ToggleGroupItem value="top" aria-label="Toggle top">
@@ -163,7 +163,7 @@ function ToggleGroupSizes() {
             Right
           </ToggleGroupItem>
         </ToggleGroup>
-        <ToggleGroup type="single" defaultValue="top" variant="outline">
+        <ToggleGroup  defaultValue={["top"]} variant="outline">
           <ToggleGroupItem value="top" aria-label="Toggle top">
             Top
           </ToggleGroupItem>
@@ -186,9 +186,9 @@ function ToggleGroupSpacing() {
   return (
     <Example title="With Spacing">
       <ToggleGroup
-        type="single"
+
         size="sm"
-        defaultValue="top"
+        defaultValue={["top"]}
         variant="outline"
         spacing={2}
       >
@@ -212,7 +212,7 @@ function ToggleGroupSpacing() {
 function ToggleGroupWithIcons() {
   return (
     <Example title="With Icons">
-      <ToggleGroup type="multiple" variant="outline" spacing={1} size="sm">
+      <ToggleGroup multiple variant="outline" spacing={1} size="sm">
         <ToggleGroupItem
           value="star"
           aria-label="Toggle star"
@@ -263,7 +263,7 @@ function ToggleGroupWithIcons() {
 function ToggleGroupFilter() {
   return (
     <Example title="Filter">
-      <ToggleGroup type="single" defaultValue="all" variant="outline" size="sm">
+      <ToggleGroup  defaultValue={["all"]} variant="outline" size="sm">
         <ToggleGroupItem value="all" aria-label="All">
           All
         </ToggleGroupItem>
@@ -285,8 +285,8 @@ function ToggleGroupDateRange() {
   return (
     <Example title="Date Range">
       <ToggleGroup
-        type="single"
-        defaultValue="today"
+
+        defaultValue={["today"]}
         variant="outline"
         size="sm"
         spacing={2}
@@ -312,8 +312,8 @@ function ToggleGroupSort() {
   return (
     <Example title="Sort">
       <ToggleGroup
-        type="single"
-        defaultValue="newest"
+
+        defaultValue={["newest"]}
         variant="outline"
         size="sm"
       >
@@ -383,7 +383,7 @@ function ToggleGroupWithInputAndSelect() {
             </SelectItemGroup>
           </SelectContent>
         </Select>
-        <ToggleGroup type="single" defaultValue="grid" variant="outline">
+        <ToggleGroup  defaultValue={["grid"]} variant="outline">
           <ToggleGroupItem value="grid" aria-label="Grid view">
             Grid
           </ToggleGroupItem>
@@ -399,7 +399,7 @@ function ToggleGroupWithInputAndSelect() {
 function ToggleGroupVertical() {
   return (
     <Example title="Vertical">
-      <ToggleGroup type="multiple" orientation="vertical" spacing={2}>
+      <ToggleGroup multiple orientation="vertical" spacing={2}>
         <ToggleGroupItem value="bold" aria-label="Toggle bold">
           <IconPlaceholder
             lucide="BoldIcon"
@@ -437,8 +437,8 @@ function ToggleGroupVerticalOutline() {
     <Example title="Vertical Outline">
       <ToggleGroup
         variant="outline"
-        type="single"
-        defaultValue="all"
+
+        defaultValue={["all"]}
         orientation="vertical"
         size="sm"
       >
@@ -464,7 +464,7 @@ function ToggleGroupVerticalOutlineWithIcons() {
     <Example title="Vertical Outline With Icons">
       <ToggleGroup
         variant="outline"
-        type="multiple"
+        multiple
         orientation="vertical"
         size="sm"
       >
@@ -507,8 +507,7 @@ function ToggleGroupFontWeightSelector() {
       <Field>
         <FieldLabel>Font Weight</FieldLabel>
         <ToggleGroup
-          type="single"
-          value={fontWeight}
+          value={[fontWeight]}
           onValueChange={(details) => setFontWeight(details.value[0] ?? "normal")}
           variant="outline"
           spacing={2}
@@ -563,9 +562,9 @@ function ToggleGroupVerticalWithSpacing() {
   return (
     <Example title="Vertical With Spacing">
       <ToggleGroup
-        type="single"
+
         size="sm"
-        defaultValue="top"
+        defaultValue={["top"]}
         variant="outline"
         orientation="vertical"
         spacing={2}

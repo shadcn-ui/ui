@@ -3,9 +3,9 @@ import { ToggleGroup, ToggleGroupItem } from "@/examples/ark/ui/toggle-group"
 export function ToggleGroupSpacing() {
   return (
     <ToggleGroup
-      type="single"
+      
       size="sm"
-      defaultValue="top"
+      defaultValue={["top"]}
       variant="outline"
       spacing={2}
     >
