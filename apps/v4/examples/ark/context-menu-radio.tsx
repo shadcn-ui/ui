@@ -29,7 +29,7 @@ export function ContextMenuRadio() {
       <ContextMenuContent>
         <ContextMenuGroup>
           <ContextMenuLabel>People</ContextMenuLabel>
-          <ContextMenuRadioGroup value={user} onValueChange={setUser}>
+          <ContextMenuRadioGroup value={user} onValueChange={(details) => setUser(details.value)}>
             <ContextMenuRadioItem value="pedro">
               Pedro Duarte
             </ContextMenuRadioItem>
@@ -39,7 +39,7 @@ export function ContextMenuRadio() {
         <ContextMenuSeparator />
         <ContextMenuGroup>
           <ContextMenuLabel>Theme</ContextMenuLabel>
-          <ContextMenuRadioGroup value={theme} onValueChange={setTheme}>
+          <ContextMenuRadioGroup value={theme} onValueChange={(details) => setTheme(details.value)}>
             <ContextMenuRadioItem value="light">Light</ContextMenuRadioItem>
             <ContextMenuRadioItem value="dark">Dark</ContextMenuRadioItem>
             <ContextMenuRadioItem value="system">System</ContextMenuRadioItem>
