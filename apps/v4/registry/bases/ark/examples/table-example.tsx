@@ -282,11 +282,11 @@ function TableWithActions() {
                     <span className="sr-only">Open menu</span>
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent align="end">
+                <DropdownMenuContent>
                   <DropdownMenuItem value="1">Edit</DropdownMenuItem>
                   <DropdownMenuItem value="2">Duplicate</DropdownMenuItem>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem variant="destructive">
+                  <DropdownMenuItem value="delete" variant="destructive">
                     Delete
                   </DropdownMenuItem>
                 </DropdownMenuContent>
@@ -310,11 +310,11 @@ function TableWithActions() {
                     <span className="sr-only">Open menu</span>
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent align="end">
+                <DropdownMenuContent>
                   <DropdownMenuItem value="3">Edit</DropdownMenuItem>
                   <DropdownMenuItem value="4">Duplicate</DropdownMenuItem>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem variant="destructive">
+                  <DropdownMenuItem value="delete" variant="destructive">
                     Delete
                   </DropdownMenuItem>
                 </DropdownMenuContent>
@@ -338,11 +338,11 @@ function TableWithActions() {
                     <span className="sr-only">Open menu</span>
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent align="end">
+                <DropdownMenuContent>
                   <DropdownMenuItem value="5">Edit</DropdownMenuItem>
                   <DropdownMenuItem value="6">Duplicate</DropdownMenuItem>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem variant="destructive">
+                  <DropdownMenuItem value="delete" variant="destructive">
                     Delete
                   </DropdownMenuItem>
                 </DropdownMenuContent>
@@ -381,7 +381,7 @@ function TableWithSelect() {
             <TableCell>
               <Select collection={assigneeItems} defaultValue={["sarah"]}>
                 <SelectControl className="w-40">
-                  <SelectTrigger size="sm">
+                  <SelectTrigger className="h-8 text-xs">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectIndicator />
@@ -405,7 +405,7 @@ function TableWithSelect() {
             <TableCell>
               <Select collection={assigneeItems} defaultValue={["marcus"]}>
                 <SelectControl className="w-40">
-                  <SelectTrigger size="sm">
+                  <SelectTrigger className="h-8 text-xs">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectIndicator />
@@ -429,7 +429,7 @@ function TableWithSelect() {
             <TableCell>
               <Select collection={assigneeItems} defaultValue={["emily"]}>
                 <SelectControl className="w-40">
-                  <SelectTrigger size="sm">
+                  <SelectTrigger className="h-8 text-xs">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectIndicator />
