@@ -18,31 +18,105 @@ import { BASES, type Base } from "@/registry/bases"
 import { PRESETS } from "@/registry/config"
 import { STYLES } from "@/registry/styles"
 
-// This is a list of styles that we want to check into tracking.
-// This is used by the v4 site.
-const WHITELISTED_STYLES = ["new-york-v4"]
+/*
+ * build-registry.mts is the single v4 registry pipeline.
+ *
+ * Source of truth:
+ * - Authored raw component/registry source lives in registry/bases/base and
+ *   registry/bases/radix.
+ * - Authored demo source lives in examples/base and examples/radix.
+ * - Style tokens live in registry/styles/style-*.css.
+ *
+ * Persistent outputs:
+ * - registry/bases/__index__.tsx
+ * - registry/__index__.tsx
+ * - examples/__index__.tsx
+ * - styles/<base-style>/ui/*
+ * - styles/<base-style>/ui-rtl/* for base-nova and radix-nova only
+ * - public/r/*
+ *
+ * Temporary outputs:
+ * - registry/<base-style>/*
+ * - registry-<style>.json
+ *
+ * Execution order:
+ * 1. Build registry/bases/__index__.tsx from the authored base registries.
+ * 2. Build temporary styled registries under registry/<base-style>.
+ * 3. Format those temporary registries so the CLI sees stable source.
+ * 4. Build registry/__index__.tsx for runtime lookup across legacy styles and
+ *    generated base-style combinations.
+ * 5. Build examples/__index__.tsx from authored demos.
+ * 6. Export public/r/* for every style through the shadcn CLI.
+ * 7. Copy compiled ui/* from the temporary registries into styles/<style>/ui.
+ * 8. Build styles/<style>/ui-rtl for base-nova and radix-nova only.
+ * 9. Format the generated persistent outputs.
+ * 10. Clean up the temporary registry/<base-style> trees and registry-*.json.
+ */
 
-// Collect paths for batch prettier formatting at the end.
+const STYLE_COMBINATIONS = Array.from(BASES).flatMap((base) =>
+  STYLES.map((style) => ({
+    base,
+    style,
+    name: `${base.name}-${style.name}`,
+    title: `${base.title} ${style.title}`,
+  }))
+)
+
 const prettierPaths: string[] = []
 
-// Create a ts-morph project for icon transformations.
 const iconProject = new Project({
   compilerOptions: {},
 })
 
 function getStylesToBuild() {
-  const stylesToBuild: { name: string; title: string }[] = [...legacyStyles]
+  const stylesToBuild = new Map<string, { name: string; title: string }>()
 
-  for (const base of BASES) {
-    for (const style of STYLES) {
-      stylesToBuild.push({
-        name: `${base.name}-${style.name}`,
-        title: `${base.title} ${style.title}`,
-      })
-    }
+  for (const style of legacyStyles) {
+    stylesToBuild.set(style.name, style)
   }
 
-  return stylesToBuild
+  for (const style of STYLE_COMBINATIONS) {
+    stylesToBuild.set(style.name, {
+      name: style.name,
+      title: style.title,
+    })
+  }
+
+  return Array.from(stylesToBuild.values())
+}
+
+function getStyleCombination(styleName: string) {
+  return STYLE_COMBINATIONS.find((style) => style.name === styleName) ?? null
+}
+
+function stripFileExtension(filePath: string) {
+  return filePath.replace(/\.(tsx|ts|json|mdx)$/, "")
+}
+
+function normalizeRegistryFiles(item: RegistryItem): Array<{
+  path: string
+  type: string
+  target?: string
+}> {
+  return (
+    item.files?.map((file) => ({
+      path: typeof file === "string" ? file : file.path,
+      type: typeof file === "string" ? item.type : file.type,
+      target: typeof file === "string" ? undefined : file.target,
+    })) ?? []
+  )
+}
+
+function shouldGenerateRtlStyles(styleName: string) {
+  return styleName === "base-nova" || styleName === "radix-nova"
+}
+
+function getTemporaryRegistryRoot(styleName: string) {
+  return path.join(process.cwd(), `registry/${styleName}`)
+}
+
+function getPersistentStyleRoot(styleName: string) {
+  return path.join(process.cwd(), "styles", styleName)
 }
 
 try {
@@ -52,27 +126,22 @@ try {
   await buildBasesIndex(Array.from(BASES))
   await buildBases(Array.from(BASES))
 
-  // Format base files before building styles so the JSON output contains formatted code.
-  const baseDirs = Array.from(BASES).flatMap((base) =>
-    STYLES.map((style) =>
-      path.join(process.cwd(), `registry/${base.name}-${style.name}`)
-    )
+  const temporaryRegistryDirs = STYLE_COMBINATIONS.map(({ name }) =>
+    getTemporaryRegistryRoot(name)
   )
-  console.log("\n✨ Formatting base files...")
-  await batchPrettier(baseDirs)
+
+  console.log("\n✨ Formatting temporary registries...")
+  await batchPrettier(temporaryRegistryDirs)
 
   const stylesToBuild = getStylesToBuild()
 
-  // Build index for legacy styles and whitelisted base-style combinations.
-  console.log(`📦 Building registry/__index__.tsx...`)
-  const stylesForIndex = WHITELISTED_STYLES.map((name) => ({
-    name,
-    title: name,
-  }))
-  await buildRegistryIndex(stylesForIndex)
+  console.log("\n📦 Building registry/__index__.tsx...")
+  await buildRegistryIndex(stylesToBuild)
 
-  console.log("💅 Building styles...")
-  // Build all styles in parallel.
+  console.log("\n📋 Building examples/__index__.tsx...")
+  await buildExamplesIndex()
+
+  console.log("\n💅 Building styles...")
   await Promise.all(
     stylesToBuild.map(async (style) => {
       await buildRegistryJsonFile(style.name)
@@ -87,14 +156,6 @@ try {
   console.log("\n⚙️ Building public/r/config.json...")
   await buildConfig()
 
-  // Copy UI to examples before cleanup.
-  console.log("\n📋 Copying UI to examples...")
-  await copyUIToExamples()
-
-  // Build RTL variants of examples.
-  console.log("\n🔄 Building RTL examples...")
-  await buildRtlExamples()
-
   console.log("\n📦 Building public/r/index.json...")
   await buildIndex()
 
@@ -104,13 +165,17 @@ try {
   console.log("\n🎨 Building public/r/colors...")
   await buildColors()
 
-  // Batch format all collected files with prettier at the end.
+  console.log("\n📋 Copying compiled ui to styles...")
+  await copyUIToStyles()
+
+  console.log("\n🔄 Building RTL styles...")
+  await buildRtlStyles()
+
   if (prettierPaths.length > 0) {
-    console.log(`\n✨ Formatting ${prettierPaths.length} files...`)
+    console.log(`\n✨ Formatting ${prettierPaths.length} generated paths...`)
     await batchPrettier(prettierPaths)
   }
 
-  // Clean up intermediate files and generated base directories.
   console.log("\n🧹 Cleaning up...")
   await cleanUp(stylesToBuild)
 
@@ -122,7 +187,6 @@ try {
 }
 
 async function buildBasesIndex(bases: Base[]) {
-  // Import all registries in parallel.
   const registryImports = await Promise.all(
     bases.map(async (base) => {
       const { registry: importedRegistry } = await import(
@@ -141,7 +205,6 @@ import * as React from "react"
 export const Index: Record<string, Record<string, any>> = {`
 
   for (const { base, importedRegistry } of registryImports) {
-    // Validate the registry schema.
     const parseResult = registrySchema.safeParse(importedRegistry)
     if (!parseResult.success) {
       console.error(`❌ Registry validation failed for ${base.name}:`)
@@ -155,24 +218,18 @@ export const Index: Record<string, Record<string, any>> = {`
   "${base.name}": {`
 
     for (const item of registry.items) {
-      // Skip demos - they're handled by the examples index.
       if (item.type === "registry:internal") {
         continue
       }
 
-      const files =
-        item.files?.map((file) => ({
-          path: typeof file === "string" ? file : file.path,
-          type: typeof file === "string" ? item.type : file.type,
-          target: typeof file === "string" ? undefined : file.target,
-        })) ?? []
+      const files = normalizeRegistryFiles(item)
 
       if (files.length === 0) {
         continue
       }
 
-      const componentPath = item.files?.[0]?.path
-        ? `@/registry/bases/${base.name}/${item.files[0].path}`
+      const componentPath = files[0]?.path
+        ? `@/registry/bases/${base.name}/${stripFileExtension(files[0].path)}`
         : ""
 
       index += `
@@ -194,7 +251,7 @@ export const Index: Record<string, Record<string, any>> = {`
         componentPath
           ? `React.lazy(async () => {
         const mod = await import("${componentPath}")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "${item.name}"
         return { default: mod.default || mod[exportName] }
       })`
           : "null"
@@ -211,16 +268,13 @@ export const Index: Record<string, Record<string, any>> = {`
   index += `
 }`
 
-  // Write unified index.
-  await rimraf(path.join(process.cwd(), "registry/bases/__index__.tsx"))
-  await fs.writeFile(
-    path.join(process.cwd(), "registry/bases/__index__.tsx"),
-    index
-  )
+  const outputPath = path.join(process.cwd(), "registry/bases/__index__.tsx")
+  await rimraf(outputPath)
+  await fs.writeFile(outputPath, index)
+  prettierPaths.push(outputPath)
 }
 
 async function buildBases(bases: Base[]) {
-  // Pre-import all base registries and style CSS files in parallel.
   const [baseImports, styleMaps] = await Promise.all([
     Promise.all(
       bases.map(async (base) => {
@@ -233,9 +287,11 @@ async function buildBases(bases: Base[]) {
           console.error(result.error.format())
           throw new Error(`Invalid registry schema for ${base.name}`)
         }
+
         const registryItems = result.data.items.filter(
           (item) => item.type !== "registry:internal"
         )
+
         return { base, baseRegistry, registryItems }
       })
     ),
@@ -250,7 +306,6 @@ async function buildBases(bases: Base[]) {
     ),
   ])
 
-  // Build all base-style combinations in parallel.
   const combinations: Array<{
     base: Base
     style: (typeof STYLES)[number]
@@ -268,27 +323,26 @@ async function buildBases(bases: Base[]) {
   await Promise.all(
     combinations.map(
       async ({ base, style, baseRegistry, registryItems, styleMap }) => {
-        console.log(`   ✅ ${base.name}-${style.name}...`)
+        const styleName = `${base.name}-${style.name}`
+        const styleOutputDir = getTemporaryRegistryRoot(styleName)
 
-        const styleOutputDir = path.join(
-          process.cwd(),
-          `registry/${base.name}-${style.name}`
-        )
+        console.log(`   ✅ ${styleName}...`)
+
         await rimraf(styleOutputDir)
         await fs.mkdir(styleOutputDir, { recursive: true })
 
-        // Create a registry.ts file in the output directory.
         const styleRegistry = { ...baseRegistry, items: registryItems }
         const registryTs = `export const registry = ${JSON.stringify(styleRegistry, null, 2)}\n`
         await fs.writeFile(path.join(styleOutputDir, "registry.ts"), registryTs)
 
-        // Process all files in parallel.
         await Promise.all(
           registryItems.flatMap((registryItem) => {
-            if (!registryItem.files || registryItem.files.length === 0) {
+            const files = normalizeRegistryFiles(registryItem)
+            if (files.length === 0) {
               return []
             }
-            return registryItem.files.map(async (file: { path: string }) => {
+
+            return files.map(async (file) => {
               const source = await fs.readFile(
                 path.join(
                   process.cwd(),
@@ -305,18 +359,15 @@ async function buildBases(bases: Base[]) {
 
               if (shouldTransform) {
                 transformedContent = await transformStyle(source, {
-                  styleMap: styleMap,
+                  styleMap,
                 })
                 transformedContent = transformedContent.replace(
                   new RegExp(`@/registry/bases/${base.name}/`, "g"),
-                  `@/registry/${base.name}-${style.name}/`
+                  `@/registry/${styleName}/`
                 )
               }
 
-              const outputPath = path.join(
-                process.cwd(),
-                `registry/${base.name}-${style.name}/${file.path}`
-              )
+              const outputPath = path.join(styleOutputDir, file.path)
               await fs.mkdir(path.dirname(outputPath), { recursive: true })
               await fs.writeFile(outputPath, transformedContent)
             })
@@ -327,17 +378,77 @@ async function buildBases(bases: Base[]) {
   )
 }
 
-async function buildRegistryIndex(styles: { name: string; title: string }[]) {
-  // Import all registries in parallel.
-  const registryImports = await Promise.all(
-    styles.map(async (style) => {
-      const { registry: importedRegistry } = await import(
-        `../registry/${style.name}/registry.ts`
-      )
-      return { style, importedRegistry }
+async function buildExamplesIndex() {
+  const examplesDir = path.join(process.cwd(), "examples")
+
+  const baseResults = await Promise.all(
+    Array.from(BASES).map(async (base) => {
+      const baseDir = path.join(examplesDir, base.name)
+
+      try {
+        await fs.access(baseDir)
+      } catch {
+        console.log(`   Skipping ${base.name} - directory does not exist`)
+        return null
+      }
+
+      const allEntries = await fs.readdir(baseDir, { withFileTypes: true })
+      const files = allEntries
+        .filter((entry) => entry.isFile() && entry.name.endsWith(".tsx"))
+        .map((entry) => entry.name)
+        .sort()
+
+      console.log(`   Found ${files.length} demos for ${base.name}`)
+
+      return { baseName: base.name, files }
     })
   )
 
+  let index = `// @ts-nocheck
+// This file is autogenerated by scripts/build-registry.mts
+// Do not edit this file directly.
+import * as React from "react"
+
+export const ExamplesIndex: Record<string, Record<string, any>> = {`
+
+  for (const result of baseResults) {
+    if (!result) continue
+
+    const { baseName, files } = result
+
+    index += `
+  "${baseName}": {`
+
+    for (const file of files) {
+      const name = file.replace(/\.tsx$/, "")
+
+      index += `
+    "${name}": {
+      name: "${name}",
+      filePath: "examples/${baseName}/${file}",
+      component: React.lazy(async () => {
+        const mod = await import("./${baseName}/${name}")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "${name}"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },`
+    }
+
+    index += `
+  },`
+  }
+
+  index += `
+}
+`
+
+  const outputPath = path.join(examplesDir, "__index__.tsx")
+  await rimraf(outputPath)
+  await fs.writeFile(outputPath, index)
+  prettierPaths.push(outputPath)
+}
+
+async function buildRegistryIndex(styles: { name: string; title: string }[]) {
   let index = `// @ts-nocheck
 // This file is autogenerated by scripts/build-registry.ts
 // Do not edit this file directly.
@@ -345,7 +456,14 @@ import * as React from "react"
 
 export const Index: Record<string, Record<string, any>> = {`
 
-  for (const { style, importedRegistry } of registryImports) {
+  for (const style of styles) {
+    const styleCombination = getStyleCombination(style.name)
+    const { registry: importedRegistry } = styleCombination
+      ? await import(
+          `../registry/bases/${styleCombination.base.name}/registry.ts`
+        )
+      : await import(`../registry/${style.name}/registry.ts`)
+
     const parseResult = registrySchema.safeParse(importedRegistry)
     if (!parseResult.success) {
       console.error(`❌ Registry validation failed for ${style.name}:`)
@@ -363,19 +481,30 @@ export const Index: Record<string, Record<string, any>> = {`
         continue
       }
 
-      const files =
-        item.files?.map((file) => ({
-          path: typeof file === "string" ? file : file.path,
-          type: typeof file === "string" ? item.type : file.type,
-          target: typeof file === "string" ? undefined : file.target,
-        })) ?? []
+      const files = normalizeRegistryFiles(item)
 
       if (files.length === 0) {
         continue
       }
 
-      const componentPath = item.files?.[0]?.path
-        ? `@/registry/${style.name}/${item.files[0].path}`
+      const resolvedFiles = styleCombination
+        ? files.map((file) => ({
+            ...file,
+            path: file.path.startsWith("ui/")
+              ? `styles/${style.name}/${file.path}`
+              : `registry/bases/${styleCombination.base.name}/${file.path}`,
+          }))
+        : files.map((file) => ({
+            ...file,
+            path: `registry/${style.name}/${file.path}`,
+          }))
+
+      const componentPath = files[0]?.path
+        ? styleCombination
+          ? files[0].path.startsWith("ui/")
+            ? `@/styles/${style.name}/${stripFileExtension(files[0].path)}`
+            : `@/registry/bases/${styleCombination.base.name}/${stripFileExtension(files[0].path)}`
+          : `@/registry/${style.name}/${stripFileExtension(files[0].path)}`
         : ""
 
       index += `
@@ -385,10 +514,9 @@ export const Index: Record<string, Record<string, any>> = {`
       description: "${item.description ?? ""}",
       type: "${item.type}",
       registryDependencies: ${JSON.stringify(item.registryDependencies)},
-      files: [${files.map((file) => {
-        const filePath = `registry/${style.name}/${file.path}`
+      files: [${resolvedFiles.map((file) => {
         return `{
-        path: "${filePath}",
+        path: "${file.path}",
         type: "${file.type}",
         target: "${file.target ?? ""}"
       }`
@@ -397,7 +525,7 @@ export const Index: Record<string, Record<string, any>> = {`
         componentPath
           ? `React.lazy(async () => {
         const mod = await import("${componentPath}")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "${item.name}"
         return { default: mod.default || mod[exportName] }
       })`
           : "null"
@@ -414,8 +542,10 @@ export const Index: Record<string, Record<string, any>> = {`
   index += `
 }`
 
-  await rimraf(path.join(process.cwd(), "registry/__index__.tsx"))
-  await fs.writeFile(path.join(process.cwd(), "registry/__index__.tsx"), index)
+  const outputPath = path.join(process.cwd(), "registry/__index__.tsx")
+  await rimraf(outputPath)
+  await fs.writeFile(outputPath, index)
+  prettierPaths.push(outputPath)
 }
 
 async function buildRegistryJsonFile(styleName: string) {
@@ -435,11 +565,11 @@ async function buildRegistryJsonFile(styleName: string) {
   const fixedRegistry = {
     ...registry,
     items: registry.items.map((item) => {
-      const files = item.files?.map((file) => ({
+      const files = normalizeRegistryFiles(item).map((file) => ({
         ...file,
         path: `registry/${styleName}/${file.path}`,
       }))
-      return { ...item, files }
+      return files.length > 0 ? { ...item, files } : item
     }),
   }
 
@@ -493,34 +623,24 @@ async function buildBlocksIndex() {
     categories: block.categories,
   }))
 
-  await rimraf(path.join(process.cwd(), "registry/__blocks__.json"))
   const blocksJsonPath = path.join(process.cwd(), "registry/__blocks__.json")
+  await rimraf(blocksJsonPath)
   await fs.writeFile(blocksJsonPath, JSON.stringify(payload, null, 2))
   prettierPaths.push(blocksJsonPath)
 }
 
 async function cleanUp(stylesToBuild: { name: string; title: string }[]) {
-  // Clean up all in parallel.
-  const cleanupPromises: Promise<boolean>[] = []
+  const cleanupTasks: Promise<boolean>[] = stylesToBuild.map((style) =>
+    rimraf(path.join(process.cwd(), `registry-${style.name}.json`))
+  )
 
-  for (const style of stylesToBuild) {
-    cleanupPromises.push(
-      rimraf(path.join(process.cwd(), `registry-${style.name}.json`))
-    )
+  for (const style of STYLE_COMBINATIONS) {
+    const tempRegistryRoot = getTemporaryRegistryRoot(style.name)
+    console.log(`   🗑️ registry/${style.name}`)
+    cleanupTasks.push(rimraf(tempRegistryRoot))
   }
 
-  for (const base of BASES) {
-    for (const style of STYLES) {
-      const baseName = `${base.name}-${style.name}`
-      if (!WHITELISTED_STYLES.includes(baseName)) {
-        const baseDir = path.join(process.cwd(), `registry/${baseName}`)
-        console.log(`   🗑️ ${baseName}`)
-        cleanupPromises.push(rimraf(baseDir))
-      }
-    }
-  }
-
-  await Promise.all(cleanupPromises)
+  await Promise.all(cleanupTasks)
 }
 
 async function buildConfig() {
@@ -536,8 +656,6 @@ async function applyIconTransform(content: string, filename: string) {
     overwrite: true,
   })
 
-  // Create a minimal config with just iconLibrary.
-  // transformIcons only uses config.iconLibrary, so we can safely cast this.
   type TransformIconsConfig = Parameters<typeof transformIcons>[0]["config"]
   type IconTransformInput = {
     filename: string
@@ -557,63 +675,87 @@ async function applyIconTransform(content: string, filename: string) {
   return sourceFile.getText()
 }
 
-async function copyUIToExamples() {
-  const defaultStyle = "nova"
-  const directories = ["ui", "lib", "hooks"]
-
-  // Build all copy tasks.
-  const copyTasks: Array<{ base: Base; dir: string }> = []
-  for (const base of BASES) {
-    for (const dir of directories) {
-      copyTasks.push({ base, dir })
-    }
-  }
-
+async function copyUIToStyles() {
   await Promise.all(
-    copyTasks.map(async ({ base, dir }) => {
-      const sourceStyle = `${base.name}-${defaultStyle}`
-      const fromDir = path.join(process.cwd(), `registry/${sourceStyle}/${dir}`)
-      const toDir = path.join(process.cwd(), `examples/${base.name}/${dir}`)
+    STYLE_COMBINATIONS.map(async ({ name: styleName }) => {
+      const sourceDir = path.join(getTemporaryRegistryRoot(styleName), "ui")
+      const styleRoot = getPersistentStyleRoot(styleName)
+      const targetDir = path.join(styleRoot, "ui")
 
       try {
-        await fs.access(fromDir)
+        await fs.access(sourceDir)
       } catch {
-        console.log(`   ⚠️ registry/${sourceStyle}/${dir} not found, skipping`)
+        console.log(`   ⚠️ registry/${styleName}/ui not found, skipping`)
         return
       }
 
-      await rimraf(toDir)
-      await fs.mkdir(toDir, { recursive: true })
+      await rimraf(styleRoot)
+      await fs.mkdir(targetDir, { recursive: true })
 
-      const files = await fs.readdir(fromDir)
-      await Promise.all(
-        files.map(async (file) => {
-          const sourcePath = path.join(fromDir, file)
-          const targetPath = path.join(toDir, file)
-          let content = await fs.readFile(sourcePath, "utf-8")
-          content = content.replace(
-            new RegExp(`@/registry/${sourceStyle}/`, "g"),
-            `@/examples/${base.name}/`
-          )
+      await copyDirectory({
+        fromDir: sourceDir,
+        toDir: targetDir,
+        transformContent: async (content, filePath) => {
+          let nextContent = rewriteRegistryUiImportsToStyle(content, styleName)
 
-          // Transform icons for TSX files.
-          if (file.endsWith(".tsx")) {
-            content = await applyIconTransform(content, file)
+          if (filePath.endsWith(".tsx")) {
+            nextContent = await applyIconTransform(
+              nextContent,
+              path.basename(filePath)
+            )
           }
 
-          await fs.writeFile(targetPath, content)
-        })
-      )
+          return nextContent
+        },
+      })
 
-      console.log(
-        `   ✅ registry/${sourceStyle}/${dir} → examples/${base.name}/${dir}`
-      )
+      prettierPaths.push(styleRoot)
+      console.log(`   ✅ registry/${styleName}/ui → styles/${styleName}/ui`)
     })
   )
 }
 
+async function buildRtlStyles() {
+  await Promise.all(
+    STYLE_COMBINATIONS.filter((style) => shouldGenerateRtlStyles(style.name)).map(
+      async ({ name: styleName }) => {
+        const sourceDir = path.join(getPersistentStyleRoot(styleName), "ui")
+        const targetDir = path.join(
+          getPersistentStyleRoot(styleName),
+          "ui-rtl"
+        )
+
+        try {
+          await fs.access(sourceDir)
+        } catch {
+          console.log(`   ⚠️ styles/${styleName}/ui not found, skipping`)
+          return
+        }
+
+        await rimraf(targetDir)
+        await copyDirectory({
+          fromDir: sourceDir,
+          toDir: targetDir,
+          transformContent: async (content, filePath) => {
+            if (!filePath.endsWith(".ts") && !filePath.endsWith(".tsx")) {
+              return content
+            }
+
+            return rewriteStyleDirectionImports(
+              await transformDirection(content, true),
+              styleName
+            )
+          },
+        })
+
+        prettierPaths.push(targetDir)
+        console.log(`   ✅ styles/${styleName}/ui-rtl`)
+      }
+    )
+  )
+}
+
 async function buildIndex() {
-  // Import ui/_registry.ts from each base.
   const baseUiRegistries = await Promise.all(
     Array.from(BASES).map(async (base) => {
       const { ui } = await import(
@@ -623,10 +765,10 @@ async function buildIndex() {
     })
   )
 
-  // Dedupe components by name and merge links across bases.
   type IndexItem = Omit<RegistryItem, "meta"> & {
     meta?: { links?: Record<string, RegistryItem["meta"]> }
   }
+
   const componentMap = new Map<string, IndexItem>()
   for (const { baseName, items } of baseUiRegistries) {
     for (const item of items) {
@@ -647,7 +789,6 @@ async function buildIndex() {
     }
   }
 
-  // Sort alphabetically by name.
   const index = Array.from(componentMap.values()).sort((a, b) =>
     a.name.localeCompare(b.name)
   )
@@ -681,43 +822,58 @@ async function buildRegistriesJson() {
   prettierPaths.push(outputPath)
 }
 
-async function buildRtlExamples() {
-  // Process all bases in parallel.
-  await Promise.all(
-    Array.from(BASES).map(async (base) => {
-      const sourceDir = path.join(process.cwd(), `examples/${base.name}/ui`)
-      const targetDir = path.join(process.cwd(), `examples/${base.name}/ui-rtl`)
+async function copyDirectory({
+  fromDir,
+  toDir,
+  transformContent,
+}: {
+  fromDir: string
+  toDir: string
+  transformContent?: (content: string, filePath: string) => Promise<string>
+}) {
+  const entries = await fs.readdir(fromDir, { withFileTypes: true })
 
-      try {
-        await fs.access(sourceDir)
-      } catch {
-        console.log(`   ⚠️ examples/${base.name}/ui not found, skipping...`)
+  await fs.mkdir(toDir, { recursive: true })
+
+  await Promise.all(
+    entries.map(async (entry) => {
+      const sourcePath = path.join(fromDir, entry.name)
+      const targetPath = path.join(toDir, entry.name)
+
+      if (entry.isDirectory()) {
+        await copyDirectory({
+          fromDir: sourcePath,
+          toDir: targetPath,
+          transformContent,
+        })
         return
       }
 
-      await rimraf(targetDir)
-      await fs.mkdir(targetDir, { recursive: true })
+      let content = await fs.readFile(sourcePath, "utf8")
 
-      const files = await fs.readdir(sourceDir)
-      await Promise.all(
-        files
-          .filter((file) => file.endsWith(".tsx") || file.endsWith(".ts"))
-          .map(async (file) => {
-            const sourcePath = path.join(sourceDir, file)
-            const targetPath = path.join(targetDir, file)
+      if (transformContent) {
+        content = await transformContent(content, sourcePath)
+      }
 
-            let content = await fs.readFile(sourcePath, "utf-8")
-            content = await transformDirection(content, true)
-            content = content.replace(
-              new RegExp(`@/examples/${base.name}/ui/`, "g"),
-              `@/examples/${base.name}/ui-rtl/`
-            )
-            await fs.writeFile(targetPath, content)
-          })
-      )
-
-      console.log(`   ✅ examples/${base.name}/ui-rtl`)
+      await fs.mkdir(path.dirname(targetPath), { recursive: true })
+      await fs.writeFile(targetPath, content)
     })
+  )
+}
+
+function rewriteRegistryUiImportsToStyle(content: string, styleName: string) {
+  return content
+    .replaceAll(`@/registry/${styleName}/ui/`, `@/styles/${styleName}/ui/`)
+    .replaceAll(`@/registry/${styleName}/lib/utils`, `@/lib/utils`)
+    .replaceAll(`@/registry/${styleName}/hooks/use-mobile`, `@/hooks/use-mobile`)
+    .replaceAll(`@/registry/${styleName}/lib/`, `@/lib/`)
+    .replaceAll(`@/registry/${styleName}/hooks/`, `@/hooks/`)
+}
+
+function rewriteStyleDirectionImports(content: string, styleName: string) {
+  return content.replaceAll(
+    `@/styles/${styleName}/ui/`,
+    `@/styles/${styleName}/ui-rtl/`
   )
 }
 
