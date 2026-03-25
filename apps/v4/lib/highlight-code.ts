@@ -45,8 +45,16 @@ export const transformers = [
           node.properties["__bun__"] = raw.replace("npm create", "bun create")
         }
 
+        const isShadcnNpxCommand = raw.startsWith("npx shadcn")
+        if (isShadcnNpxCommand) {
+          node.properties["__npm__"] = raw
+          node.properties["__yarn__"] = raw.replace("npx", "yarn dlx")
+          node.properties["__pnpm__"] = raw.replace("npx", "pnpm dlx")
+          node.properties["__bun__"] = raw.replace("npx", "bunx --bun")
+        }
+
         // npx.
-        if (raw.startsWith("npx")) {
+        if (raw.startsWith("npx") && !isShadcnNpxCommand) {
           node.properties["__npm__"] = raw
           node.properties["__yarn__"] = raw.replace("npx", "yarn")
           node.properties["__pnpm__"] = raw.replace("npx", "pnpm dlx")
