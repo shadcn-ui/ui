@@ -3,9 +3,6 @@
 import * as React from "react"
 import {
   Checkbox,
-  CheckboxControl,
-  CheckboxHiddenInput,
-  CheckboxIndicator,
   type CheckboxCheckedChangeDetails,
 } from "@/examples/ark/ui/checkbox"
 import {
@@ -82,12 +79,8 @@ export function CheckboxInTable() {
               name="select-all-checkbox"
               checked={selectAll}
               onCheckedChange={handleSelectAll}
-            >
-              <CheckboxControl>
-                <CheckboxIndicator />
-              </CheckboxControl>
-              <CheckboxHiddenInput />
-            </Checkbox>
+              aria-label="Select all"
+            />
           </TableHead>
           <TableHead>Name</TableHead>
           <TableHead>Email</TableHead>
@@ -108,12 +101,8 @@ export function CheckboxInTable() {
                 onCheckedChange={(details) =>
                   handleSelectRow(row.id, details)
                 }
-              >
-                <CheckboxControl>
-                  <CheckboxIndicator />
-                </CheckboxControl>
-                <CheckboxHiddenInput />
-              </Checkbox>
+                aria-label={`Select ${row.name}`}
+              />
             </TableCell>
             <TableCell className="font-medium">{row.name}</TableCell>
             <TableCell>{row.email}</TableCell>

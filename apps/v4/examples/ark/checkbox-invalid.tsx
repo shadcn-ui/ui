@@ -1,9 +1,4 @@
-import {
-  Checkbox,
-  CheckboxControl,
-  CheckboxHiddenInput,
-  CheckboxIndicator,
-} from "@/examples/ark/ui/checkbox"
+import { Checkbox } from "@/examples/ark/ui/checkbox"
 import { Field, FieldGroup, FieldLabel } from "@/examples/ark/ui/field"
 
 export function CheckboxInvalid() {
@@ -15,14 +10,8 @@ export function CheckboxInvalid() {
           name="terms-checkbox-invalid"
           aria-invalid
         >
-          <CheckboxControl>
-            <CheckboxIndicator />
-          </CheckboxControl>
-          <CheckboxHiddenInput />
-        </Checkbox>
-        <FieldLabel htmlFor="terms-checkbox-invalid">
           Accept terms and conditions
-        </FieldLabel>
+        </Checkbox>
       </Field>
     </FieldGroup>
   )

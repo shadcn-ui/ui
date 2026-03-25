@@ -8,11 +8,7 @@ import {
 } from "@/registry/bases/ark/components/example"
 import {
   Checkbox,
-  CheckboxControl,
   CheckboxGroup,
-  CheckboxHiddenInput,
-  CheckboxIndicator,
-  CheckboxLabel,
   type CheckboxCheckedChangeDetails,
 } from "@/registry/bases/ark/ui/checkbox"
 import {
@@ -40,13 +36,7 @@ export default function CheckboxExample() {
 function CheckboxBasic() {
   return (
     <Example title="Basic">
-      <Checkbox id="terms">
-        <CheckboxControl>
-          <CheckboxIndicator />
-        </CheckboxControl>
-        <CheckboxLabel>Accept terms and conditions</CheckboxLabel>
-        <CheckboxHiddenInput />
-      </Checkbox>
+      <Checkbox id="terms">Accept terms and conditions</Checkbox>
     </Example>
   )
 }
@@ -55,11 +45,7 @@ function CheckboxWithDescription() {
   return (
     <Example title="With Description">
       <Checkbox id="terms-2" defaultChecked>
-        <CheckboxControl>
-          <CheckboxIndicator />
-        </CheckboxControl>
-        <CheckboxLabel>Accept terms and conditions</CheckboxLabel>
-        <CheckboxHiddenInput />
+        Accept terms and conditions
       </Checkbox>
     </Example>
   )
@@ -69,11 +55,7 @@ function CheckboxInvalid() {
   return (
     <Example title="Invalid">
       <Checkbox id="terms-3" aria-invalid>
-        <CheckboxControl>
-          <CheckboxIndicator />
-        </CheckboxControl>
-        <CheckboxLabel>Accept terms and conditions</CheckboxLabel>
-        <CheckboxHiddenInput />
+        Accept terms and conditions
       </Checkbox>
     </Example>
   )
@@ -83,11 +65,7 @@ function CheckboxDisabled() {
   return (
     <Example title="Disabled">
       <Checkbox id="toggle" disabled>
-        <CheckboxControl>
-          <CheckboxIndicator />
-        </CheckboxControl>
-        <CheckboxLabel>Enable notifications</CheckboxLabel>
-        <CheckboxHiddenInput />
+        Enable notifications
       </Checkbox>
     </Example>
   )
@@ -158,12 +136,8 @@ function CheckboxInTable() {
                 id="select-all"
                 checked={selectAll}
                 onCheckedChange={handleSelectAll}
-              >
-                <CheckboxControl>
-                  <CheckboxIndicator />
-                </CheckboxControl>
-                <CheckboxHiddenInput />
-              </Checkbox>
+                aria-label="Select all"
+              />
             </TableHead>
             <TableHead>Name</TableHead>
             <TableHead>Email</TableHead>
@@ -183,12 +157,8 @@ function CheckboxInTable() {
                   onCheckedChange={(details) =>
                     handleSelectRow(row.id, details)
                   }
-                >
-                  <CheckboxControl>
-                    <CheckboxIndicator />
-                  </CheckboxControl>
-                  <CheckboxHiddenInput />
-                </Checkbox>
+                  aria-label={`Select ${row.name}`}
+                />
               </TableCell>
               <TableCell className="font-medium">{row.name}</TableCell>
               <TableCell>{row.email}</TableCell>
@@ -204,39 +174,15 @@ function CheckboxInTable() {
 function CheckboxGroupDemo() {
   return (
     <Example title="Group">
-      <CheckboxGroup defaultValue={["hard-disks"]} name="finder-pref" className="flex flex-col gap-3">
-        <Checkbox value="hard-disks">
-          <CheckboxControl>
-            <CheckboxIndicator />
-          </CheckboxControl>
-          <CheckboxLabel className="font-normal">Hard disks</CheckboxLabel>
-          <CheckboxHiddenInput />
-        </Checkbox>
-        <Checkbox value="external-disks">
-          <CheckboxControl>
-            <CheckboxIndicator />
-          </CheckboxControl>
-          <CheckboxLabel className="font-normal">External disks</CheckboxLabel>
-          <CheckboxHiddenInput />
-        </Checkbox>
-        <Checkbox value="cds-dvds">
-          <CheckboxControl>
-            <CheckboxIndicator />
-          </CheckboxControl>
-          <CheckboxLabel className="font-normal">
-            CDs, DVDs, and iPods
-          </CheckboxLabel>
-          <CheckboxHiddenInput />
-        </Checkbox>
-        <Checkbox value="connected-servers">
-          <CheckboxControl>
-            <CheckboxIndicator />
-          </CheckboxControl>
-          <CheckboxLabel className="font-normal">
-            Connected servers
-          </CheckboxLabel>
-          <CheckboxHiddenInput />
-        </Checkbox>
+      <CheckboxGroup
+        defaultValue={["hard-disks"]}
+        name="finder-pref"
+        className="flex flex-col gap-3"
+      >
+        <Checkbox value="hard-disks">Hard disks</Checkbox>
+        <Checkbox value="external-disks">External disks</Checkbox>
+        <Checkbox value="cds-dvds">CDs, DVDs, and iPods</Checkbox>
+        <Checkbox value="connected-servers">Connected servers</Checkbox>
       </CheckboxGroup>
     </Example>
   )

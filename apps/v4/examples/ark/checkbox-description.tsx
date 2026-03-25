@@ -1,10 +1,4 @@
-import {
-  Checkbox,
-  CheckboxControl,
-  CheckboxHiddenInput,
-  CheckboxIndicator,
-  CheckboxLabel,
-} from "@/examples/ark/ui/checkbox"
+import { Checkbox } from "@/examples/ark/ui/checkbox"
 import {
   Field,
   FieldContent,
@@ -21,12 +15,7 @@ export function CheckboxDescription() {
           id="terms-checkbox-desc"
           name="terms-checkbox-desc"
           defaultChecked
-        >
-          <CheckboxControl>
-            <CheckboxIndicator />
-          </CheckboxControl>
-          <CheckboxHiddenInput />
-        </Checkbox>
+        />
         <FieldContent>
           <FieldLabel htmlFor="terms-checkbox-desc">
             Accept terms and conditions
