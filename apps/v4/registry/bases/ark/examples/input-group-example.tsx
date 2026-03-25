@@ -231,7 +231,9 @@ function InputGroupWithAddons() {
               />
               <InputGroupButton
                 size="icon-xs"
-                onClick={() => toast("Copied to clipboard")}
+                onClick={() => toast.success({
+                  title: "Copied to clipboard"
+                })}
               >
                 <IconPlaceholder
                   lucide="CopyIcon"
@@ -410,10 +412,10 @@ function InputGroupWithTooltip({
                   </InputGroupButton>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent
-                 
+
                   className="min-w-16"
-                 
-                 
+
+
                 >
                   <DropdownMenuItem value="1" onClick={() => setCountry("+1")}>
                     +1
@@ -465,7 +467,9 @@ function InputGroupWithTooltip({
             <InputGroupAddon align="inline-end">
               <InputGroupButton
                 size="icon-xs"
-                onClick={() => toast("Added to favorites")}
+                onClick={() => toast.success({
+                  title: "Added to favorites"
+                })}
               >
                 <IconPlaceholder
                   lucide="StarIcon"
