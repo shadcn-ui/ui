@@ -82,45 +82,6 @@ export const add = new Command()
         })
       }
 
-      // Check for restricted component prefixes with base-, radix-, or ark- styles.
-      const restrictedComponentPrefixes = [
-        "sidebar-",
-        "login-",
-        "signup-",
-        "otp-",
-        "calendar-",
-      ]
-      const restrictedStylePrefixes = ["base-", "radix-", "ark-"]
-
-      if (components.length > 0 && initialConfig?.style) {
-        const isRestrictedStyle = restrictedStylePrefixes.some((prefix) =>
-          initialConfig?.style.startsWith(prefix)
-        )
-
-        if (isRestrictedStyle) {
-          const restrictedComponents = components.filter((component: string) =>
-            restrictedComponentPrefixes.some((prefix) =>
-              component.startsWith(prefix)
-            )
-          )
-
-          if (restrictedComponents.length) {
-            logger.warn(
-              `The ${highlighter.info(
-                restrictedComponents.join(", ")
-              )} component(s) are not available for the ${highlighter.info(
-                initialConfig.style
-              )} style yet. They are coming soon.`
-            )
-            logger.warn(
-              "In the meantime, you can visit the blocks page on https://ui.shadcn.com/blocks and copy the code."
-            )
-            logger.break()
-            process.exit(1)
-          }
-        }
-      }
-
       let hasNewRegistries = false
       if (components.length > 0) {
         const { config: updatedConfig, newRegistries } =
@@ -166,7 +127,7 @@ export const add = new Command()
           })
           if (!confirm) {
             logger.break()
-            logger.log("Installation cancelled.")
+            logger.log(`Installation cancelled.`)
             logger.break()
             process.exit(1)
           }
@@ -183,7 +144,7 @@ export const add = new Command()
           options.components?.includes(component.name)
         )
 
-        if (deprecatedComponents.length) {
+        if (deprecatedComponents?.length) {
           logger.break()
           deprecatedComponents.forEach((component) => {
             logger.warn(highlighter.warn(component.message))
@@ -195,6 +156,7 @@ export const add = new Command()
 
       let { errors, config } = await preFlightAdd(options)
 
+      // No components.json file. Prompt the user to run init.
       let initHasRun = false
       if (errors[ERRORS.MISSING_CONFIG]) {
         const { proceed } = await prompts({
@@ -256,12 +218,10 @@ export const add = new Command()
           force: options.overwrite,
           components: options.components,
         })
-
         if (!projectPath) {
           logger.break()
           process.exit(1)
         }
-
         options.cwd = projectPath
 
         // Prompt for base and preset.
@@ -342,6 +302,8 @@ export const add = new Command()
         await addComponents(options.components, config, options)
       }
 
+      // If we're adding a single component and it's from the v0 registry,
+      // let's update the app/page.tsx file to import the component.
       if (shouldUpdateAppIndex) {
         await updateAppIndex(options.components[0], config)
       }
@@ -392,9 +354,7 @@ async function promptForRegistryComponents(
       .map((entry) => ({
         title: entry.name,
         value: entry.name,
-        selected: options.all
-          ? true
-          : options.components?.includes(entry.name),
+        selected: options.all ? true : options.components?.includes(entry.name),
       })),
   })
 
@@ -410,6 +370,5 @@ async function promptForRegistryComponents(
     handleError(new Error("Something went wrong. Please try again."))
     return []
   }
-
   return result.data
 }
