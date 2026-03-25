@@ -176,8 +176,8 @@ export const columns: ColumnDef<Payment>[] = [
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuGroup>
-              <DropdownMenuItem>View customer</DropdownMenuItem>
-              <DropdownMenuItem>View payment details</DropdownMenuItem>
+              <DropdownMenuItem value="1">View customer</DropdownMenuItem>
+              <DropdownMenuItem value="2">View payment details</DropdownMenuItem>
             </DropdownMenuGroup>
           </DropdownMenuContent>
         </DropdownMenu>

@@ -276,8 +276,8 @@ export function DataTableRtl() {
                 </DropdownMenuGroup>
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>
-                  <DropdownMenuItem>{t.viewCustomer}</DropdownMenuItem>
-                  <DropdownMenuItem>{t.viewPaymentDetails}</DropdownMenuItem>
+                  <DropdownMenuItem value="1">{t.viewCustomer}</DropdownMenuItem>
+                  <DropdownMenuItem value="2">{t.viewPaymentDetails}</DropdownMenuItem>
                 </DropdownMenuGroup>
               </DropdownMenuContent>
             </DropdownMenu>

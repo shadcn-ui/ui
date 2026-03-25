@@ -23,16 +23,16 @@ export function MenubarIcons() {
       <MenubarMenu>
         <MenubarTrigger>File</MenubarTrigger>
         <MenubarContent>
-          <MenubarItem>
+          <MenubarItem value="1">
             <FileIcon />
             New File <MenubarShortcut>⌘N</MenubarShortcut>
           </MenubarItem>
-          <MenubarItem>
+          <MenubarItem value="2">
             <FolderIcon />
             Open Folder
           </MenubarItem>
           <MenubarSeparator />
-          <MenubarItem>
+          <MenubarItem value="3">
             <SaveIcon />
             Save <MenubarShortcut>⌘S</MenubarShortcut>
           </MenubarItem>
@@ -42,11 +42,11 @@ export function MenubarIcons() {
         <MenubarTrigger>More</MenubarTrigger>
         <MenubarContent>
           <MenubarGroup>
-            <MenubarItem>
+            <MenubarItem value="4">
               <SettingsIcon />
               Settings
             </MenubarItem>
-            <MenubarItem>
+            <MenubarItem value="5">
               <HelpCircleIcon />
               Help
             </MenubarItem>

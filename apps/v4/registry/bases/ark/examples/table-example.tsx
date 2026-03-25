@@ -283,8 +283,8 @@ function TableWithActions() {
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
-                  <DropdownMenuItem>Edit</DropdownMenuItem>
-                  <DropdownMenuItem>Duplicate</DropdownMenuItem>
+                  <DropdownMenuItem value="1">Edit</DropdownMenuItem>
+                  <DropdownMenuItem value="2">Duplicate</DropdownMenuItem>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem variant="destructive">
                     Delete
@@ -311,8 +311,8 @@ function TableWithActions() {
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
-                  <DropdownMenuItem>Edit</DropdownMenuItem>
-                  <DropdownMenuItem>Duplicate</DropdownMenuItem>
+                  <DropdownMenuItem value="3">Edit</DropdownMenuItem>
+                  <DropdownMenuItem value="4">Duplicate</DropdownMenuItem>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem variant="destructive">
                     Delete
@@ -339,8 +339,8 @@ function TableWithActions() {
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
-                  <DropdownMenuItem>Edit</DropdownMenuItem>
-                  <DropdownMenuItem>Duplicate</DropdownMenuItem>
+                  <DropdownMenuItem value="5">Edit</DropdownMenuItem>
+                  <DropdownMenuItem value="6">Duplicate</DropdownMenuItem>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem variant="destructive">
                     Delete

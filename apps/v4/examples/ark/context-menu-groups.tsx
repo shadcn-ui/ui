@@ -23,15 +23,15 @@ export function ContextMenuGroups() {
       <ContextMenuContent>
         <ContextMenuGroup>
           <ContextMenuLabel>File</ContextMenuLabel>
-          <ContextMenuItem>
+          <ContextMenuItem value="1">
             New File
             <ContextMenuShortcut>⌘N</ContextMenuShortcut>
           </ContextMenuItem>
-          <ContextMenuItem>
+          <ContextMenuItem value="2">
             Open File
             <ContextMenuShortcut>⌘O</ContextMenuShortcut>
           </ContextMenuItem>
-          <ContextMenuItem>
+          <ContextMenuItem value="3">
             Save
             <ContextMenuShortcut>⌘S</ContextMenuShortcut>
           </ContextMenuItem>
@@ -39,26 +39,26 @@ export function ContextMenuGroups() {
         <ContextMenuSeparator />
         <ContextMenuGroup>
           <ContextMenuLabel>Edit</ContextMenuLabel>
-          <ContextMenuItem>
+          <ContextMenuItem value="4">
             Undo
             <ContextMenuShortcut>⌘Z</ContextMenuShortcut>
           </ContextMenuItem>
-          <ContextMenuItem>
+          <ContextMenuItem value="5">
             Redo
             <ContextMenuShortcut>⇧⌘Z</ContextMenuShortcut>
           </ContextMenuItem>
         </ContextMenuGroup>
         <ContextMenuSeparator />
         <ContextMenuGroup>
-          <ContextMenuItem>
+          <ContextMenuItem value="6">
             Cut
             <ContextMenuShortcut>⌘X</ContextMenuShortcut>
           </ContextMenuItem>
-          <ContextMenuItem>
+          <ContextMenuItem value="7">
             Copy
             <ContextMenuShortcut>⌘C</ContextMenuShortcut>
           </ContextMenuItem>
-          <ContextMenuItem>
+          <ContextMenuItem value="8">
             Paste
             <ContextMenuShortcut>⌘V</ContextMenuShortcut>
           </ContextMenuItem>

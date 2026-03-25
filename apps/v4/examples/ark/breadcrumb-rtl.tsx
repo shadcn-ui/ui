@@ -86,9 +86,9 @@ export function BreadcrumbRtl() {
               data-lang={dir === "rtl" ? language : undefined}
             >
               <DropdownMenuGroup>
-                <DropdownMenuItem>{t.documentation}</DropdownMenuItem>
-                <DropdownMenuItem>{t.themes}</DropdownMenuItem>
-                <DropdownMenuItem>{t.github}</DropdownMenuItem>
+                <DropdownMenuItem value="1">{t.documentation}</DropdownMenuItem>
+                <DropdownMenuItem value="2">{t.themes}</DropdownMenuItem>
+                <DropdownMenuItem value="3">{t.github}</DropdownMenuItem>
               </DropdownMenuGroup>
             </DropdownMenuContent>
           </DropdownMenu>

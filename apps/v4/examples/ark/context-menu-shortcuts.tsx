@@ -21,7 +21,7 @@ export function ContextMenuShortcuts() {
       </ContextMenuTrigger>
       <ContextMenuContent>
         <ContextMenuGroup>
-          <ContextMenuItem>
+          <ContextMenuItem value="1">
             Back
             <ContextMenuShortcut>⌘[</ContextMenuShortcut>
           </ContextMenuItem>
@@ -29,18 +29,18 @@ export function ContextMenuShortcuts() {
             Forward
             <ContextMenuShortcut>⌘]</ContextMenuShortcut>
           </ContextMenuItem>
-          <ContextMenuItem>
+          <ContextMenuItem value="2">
             Reload
             <ContextMenuShortcut>⌘R</ContextMenuShortcut>
           </ContextMenuItem>
         </ContextMenuGroup>
         <ContextMenuSeparator />
         <ContextMenuGroup>
-          <ContextMenuItem>
+          <ContextMenuItem value="3">
             Save
             <ContextMenuShortcut>⌘S</ContextMenuShortcut>
           </ContextMenuItem>
-          <ContextMenuItem>
+          <ContextMenuItem value="4">
             Save As...
             <ContextMenuShortcut>⇧⌘S</ContextMenuShortcut>
           </ContextMenuItem>

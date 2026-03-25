@@ -139,7 +139,7 @@ function ButtonGroupWithDropdown() {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuItem>Disable</DropdownMenuItem>
+              <DropdownMenuItem value="1">Disable</DropdownMenuItem>
               <DropdownMenuItem variant="destructive">
                 Uninstall
               </DropdownMenuItem>
@@ -162,7 +162,7 @@ function ButtonGroupWithDropdown() {
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-50">
               <DropdownMenuGroup>
-                <DropdownMenuItem>
+                <DropdownMenuItem value="2">
                   <IconPlaceholder
                     lucide="VolumeOffIcon"
                     tabler="IconVolume"
@@ -172,7 +172,7 @@ function ButtonGroupWithDropdown() {
                   />
                   Mute Conversation
                 </DropdownMenuItem>
-                <DropdownMenuItem>
+                <DropdownMenuItem value="3">
                   <IconPlaceholder
                     lucide="CheckIcon"
                     tabler="IconCheck"
@@ -182,7 +182,7 @@ function ButtonGroupWithDropdown() {
                   />
                   Mark as Read
                 </DropdownMenuItem>
-                <DropdownMenuItem>
+                <DropdownMenuItem value="4">
                   <IconPlaceholder
                     lucide="AlertTriangleIcon"
                     tabler="IconAlertTriangle"
@@ -192,7 +192,7 @@ function ButtonGroupWithDropdown() {
                   />
                   Report Conversation
                 </DropdownMenuItem>
-                <DropdownMenuItem>
+                <DropdownMenuItem value="5">
                   <IconPlaceholder
                     lucide="UserRoundXIcon"
                     tabler="IconUserX"
@@ -202,7 +202,7 @@ function ButtonGroupWithDropdown() {
                   />
                   Block User
                 </DropdownMenuItem>
-                <DropdownMenuItem>
+                <DropdownMenuItem value="6">
                   <IconPlaceholder
                     lucide="ShareIcon"
                     tabler="IconShare"
@@ -212,7 +212,7 @@ function ButtonGroupWithDropdown() {
                   />
                   Share Conversation
                 </DropdownMenuItem>
-                <DropdownMenuItem>
+                <DropdownMenuItem value="7">
                   <IconPlaceholder
                     lucide="CopyIcon"
                     tabler="IconCopy"

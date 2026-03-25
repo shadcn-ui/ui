@@ -150,10 +150,10 @@ export function MenubarRtl() {
         <MenubarTrigger>{t.file}</MenubarTrigger>
         <MenubarContent data-lang={dir === "rtl" ? language : undefined}>
           <MenubarGroup>
-            <MenubarItem>
+            <MenubarItem value="1">
               {t.newTab} <MenubarShortcut>⌘T</MenubarShortcut>
             </MenubarItem>
-            <MenubarItem>
+            <MenubarItem value="2">
               {t.newWindow} <MenubarShortcut>⌘N</MenubarShortcut>
             </MenubarItem>
             <MenubarItem disabled>{t.newIncognitoWindow}</MenubarItem>
@@ -166,16 +166,16 @@ export function MenubarRtl() {
                 data-lang={dir === "rtl" ? language : undefined}
               >
                 <MenubarGroup>
-                  <MenubarItem>{t.emailLink}</MenubarItem>
-                  <MenubarItem>{t.messages}</MenubarItem>
-                  <MenubarItem>{t.notes}</MenubarItem>
+                  <MenubarItem value="3">{t.emailLink}</MenubarItem>
+                  <MenubarItem value="4">{t.messages}</MenubarItem>
+                  <MenubarItem value="5">{t.notes}</MenubarItem>
                 </MenubarGroup>
               </MenubarSubContent>
             </MenubarSub>
           </MenubarGroup>
           <MenubarSeparator />
           <MenubarGroup>
-            <MenubarItem>
+            <MenubarItem value="6">
               {t.print} <MenubarShortcut>⌘P</MenubarShortcut>
             </MenubarItem>
           </MenubarGroup>
@@ -185,10 +185,10 @@ export function MenubarRtl() {
         <MenubarTrigger>{t.edit}</MenubarTrigger>
         <MenubarContent data-lang={dir === "rtl" ? language : undefined}>
           <MenubarGroup>
-            <MenubarItem>
+            <MenubarItem value="7">
               {t.undo} <MenubarShortcut>⌘Z</MenubarShortcut>
             </MenubarItem>
-            <MenubarItem>
+            <MenubarItem value="8">
               {t.redo} <MenubarShortcut>⇧⌘Z</MenubarShortcut>
             </MenubarItem>
           </MenubarGroup>
@@ -200,22 +200,22 @@ export function MenubarRtl() {
                 data-lang={dir === "rtl" ? language : undefined}
               >
                 <MenubarGroup>
-                  <MenubarItem>{t.searchTheWeb}</MenubarItem>
+                  <MenubarItem value="9">{t.searchTheWeb}</MenubarItem>
                 </MenubarGroup>
                 <MenubarSeparator />
                 <MenubarGroup>
-                  <MenubarItem>{t.findItem}</MenubarItem>
-                  <MenubarItem>{t.findNext}</MenubarItem>
-                  <MenubarItem>{t.findPrevious}</MenubarItem>
+                  <MenubarItem value="10">{t.findItem}</MenubarItem>
+                  <MenubarItem value="11">{t.findNext}</MenubarItem>
+                  <MenubarItem value="12">{t.findPrevious}</MenubarItem>
                 </MenubarGroup>
               </MenubarSubContent>
             </MenubarSub>
           </MenubarGroup>
           <MenubarSeparator />
           <MenubarGroup>
-            <MenubarItem>{t.cut}</MenubarItem>
-            <MenubarItem>{t.copy}</MenubarItem>
-            <MenubarItem>{t.paste}</MenubarItem>
+            <MenubarItem value="13">{t.cut}</MenubarItem>
+            <MenubarItem value="14">{t.copy}</MenubarItem>
+            <MenubarItem value="15">{t.paste}</MenubarItem>
           </MenubarGroup>
         </MenubarContent>
       </MenubarMenu>
@@ -226,7 +226,7 @@ export function MenubarRtl() {
           data-lang={dir === "rtl" ? language : undefined}
         >
           <MenubarGroup>
-            <MenubarCheckboxItem>{t.bookmarksBar}</MenubarCheckboxItem>
+            <MenubarCheckboxItem value="cb-1">{t.bookmarksBar}</MenubarCheckboxItem>
             <MenubarCheckboxItem checked>{t.fullUrls}</MenubarCheckboxItem>
           </MenubarGroup>
           <MenubarSeparator />

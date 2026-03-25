@@ -28,7 +28,7 @@ export function ContextMenuDemo() {
       </ContextMenuTrigger>
       <ContextMenuContent className="w-48">
         <ContextMenuGroup>
-          <ContextMenuItem>
+          <ContextMenuItem value="1">
             Back
             <ContextMenuShortcut>⌘[</ContextMenuShortcut>
           </ContextMenuItem>
@@ -36,7 +36,7 @@ export function ContextMenuDemo() {
             Forward
             <ContextMenuShortcut>⌘]</ContextMenuShortcut>
           </ContextMenuItem>
-          <ContextMenuItem>
+          <ContextMenuItem value="2">
             Reload
             <ContextMenuShortcut>⌘R</ContextMenuShortcut>
           </ContextMenuItem>
@@ -44,13 +44,13 @@ export function ContextMenuDemo() {
             <ContextMenuSubTrigger>More Tools</ContextMenuSubTrigger>
             <ContextMenuSubContent className="w-44">
               <ContextMenuGroup>
-                <ContextMenuItem>Save Page...</ContextMenuItem>
-                <ContextMenuItem>Create Shortcut...</ContextMenuItem>
-                <ContextMenuItem>Name Window...</ContextMenuItem>
+                <ContextMenuItem value="3">Save Page...</ContextMenuItem>
+                <ContextMenuItem value="4">Create Shortcut...</ContextMenuItem>
+                <ContextMenuItem value="5">Name Window...</ContextMenuItem>
               </ContextMenuGroup>
               <ContextMenuSeparator />
               <ContextMenuGroup>
-                <ContextMenuItem>Developer Tools</ContextMenuItem>
+                <ContextMenuItem value="6">Developer Tools</ContextMenuItem>
               </ContextMenuGroup>
               <ContextMenuSeparator />
               <ContextMenuGroup>
@@ -64,7 +64,7 @@ export function ContextMenuDemo() {
           <ContextMenuCheckboxItem checked>
             Show Bookmarks
           </ContextMenuCheckboxItem>
-          <ContextMenuCheckboxItem>Show Full URLs</ContextMenuCheckboxItem>
+          <ContextMenuCheckboxItem value="cb-1">Show Full URLs</ContextMenuCheckboxItem>
         </ContextMenuGroup>
         <ContextMenuSeparator />
         <ContextMenuGroup>

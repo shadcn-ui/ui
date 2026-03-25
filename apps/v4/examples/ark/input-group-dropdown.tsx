@@ -31,9 +31,9 @@ export default function InputGroupDropdown() {
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               <DropdownMenuGroup>
-                <DropdownMenuItem>Settings</DropdownMenuItem>
-                <DropdownMenuItem>Copy path</DropdownMenuItem>
-                <DropdownMenuItem>Open location</DropdownMenuItem>
+                <DropdownMenuItem value="1">Settings</DropdownMenuItem>
+                <DropdownMenuItem value="2">Copy path</DropdownMenuItem>
+                <DropdownMenuItem value="3">Open location</DropdownMenuItem>
               </DropdownMenuGroup>
             </DropdownMenuContent>
           </DropdownMenu>
@@ -50,9 +50,9 @@ export default function InputGroupDropdown() {
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="[--radius:0.95rem]">
               <DropdownMenuGroup>
-                <DropdownMenuItem>Documentation</DropdownMenuItem>
-                <DropdownMenuItem>Blog Posts</DropdownMenuItem>
-                <DropdownMenuItem>Changelog</DropdownMenuItem>
+                <DropdownMenuItem value="4">Documentation</DropdownMenuItem>
+                <DropdownMenuItem value="5">Blog Posts</DropdownMenuItem>
+                <DropdownMenuItem value="6">Changelog</DropdownMenuItem>
               </DropdownMenuGroup>
             </DropdownMenuContent>
           </DropdownMenu>

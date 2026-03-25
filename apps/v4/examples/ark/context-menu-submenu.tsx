@@ -24,11 +24,11 @@ export function ContextMenuSubmenu() {
       </ContextMenuTrigger>
       <ContextMenuContent>
         <ContextMenuGroup>
-          <ContextMenuItem>
+          <ContextMenuItem value="1">
             Copy
             <ContextMenuShortcut>⌘C</ContextMenuShortcut>
           </ContextMenuItem>
-          <ContextMenuItem>
+          <ContextMenuItem value="2">
             Cut
             <ContextMenuShortcut>⌘X</ContextMenuShortcut>
           </ContextMenuItem>
@@ -37,13 +37,13 @@ export function ContextMenuSubmenu() {
           <ContextMenuSubTrigger>More Tools</ContextMenuSubTrigger>
           <ContextMenuSubContent>
             <ContextMenuGroup>
-              <ContextMenuItem>Save Page...</ContextMenuItem>
-              <ContextMenuItem>Create Shortcut...</ContextMenuItem>
-              <ContextMenuItem>Name Window...</ContextMenuItem>
+              <ContextMenuItem value="3">Save Page...</ContextMenuItem>
+              <ContextMenuItem value="4">Create Shortcut...</ContextMenuItem>
+              <ContextMenuItem value="5">Name Window...</ContextMenuItem>
             </ContextMenuGroup>
             <ContextMenuSeparator />
             <ContextMenuGroup>
-              <ContextMenuItem>Developer Tools</ContextMenuItem>
+              <ContextMenuItem value="6">Developer Tools</ContextMenuItem>
             </ContextMenuGroup>
             <ContextMenuSeparator />
             <ContextMenuGroup>

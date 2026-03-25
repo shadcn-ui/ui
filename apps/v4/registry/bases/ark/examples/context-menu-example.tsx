@@ -60,9 +60,9 @@ function ContextMenuBasic() {
         </ContextMenuTrigger>
         <ContextMenuContent>
           <ContextMenuGroup>
-            <ContextMenuItem>Back</ContextMenuItem>
+            <ContextMenuItem value="ctx-menuitem1">Back</ContextMenuItem>
             <ContextMenuItem disabled>Forward</ContextMenuItem>
-            <ContextMenuItem>Reload</ContextMenuItem>
+            <ContextMenuItem value="ctx-menuitem2">Reload</ContextMenuItem>
           </ContextMenuGroup>
         </ContextMenuContent>
       </ContextMenu>
@@ -79,7 +79,7 @@ function ContextMenuWithIcons() {
         </ContextMenuTrigger>
         <ContextMenuContent>
           <ContextMenuGroup>
-            <ContextMenuItem>
+            <ContextMenuItem value="ctx-menuitem3">
               <IconPlaceholder
                 lucide="CopyIcon"
                 tabler="IconCopy"
@@ -89,7 +89,7 @@ function ContextMenuWithIcons() {
               />
               Copy
             </ContextMenuItem>
-            <ContextMenuItem>
+            <ContextMenuItem value="ctx-menuitem4">
               <IconPlaceholder
                 lucide="ScissorsIcon"
                 tabler="IconCut"
@@ -99,7 +99,7 @@ function ContextMenuWithIcons() {
               />
               Cut
             </ContextMenuItem>
-            <ContextMenuItem>
+            <ContextMenuItem value="ctx-menuitem5">
               <IconPlaceholder
                 lucide="ClipboardPasteIcon"
                 tabler="IconClipboard"
@@ -138,7 +138,7 @@ function ContextMenuWithShortcuts() {
         </ContextMenuTrigger>
         <ContextMenuContent>
           <ContextMenuGroup>
-            <ContextMenuItem>
+            <ContextMenuItem value="ctx-menuitem6">
               Back
               <ContextMenuShortcut>⌘[</ContextMenuShortcut>
             </ContextMenuItem>
@@ -146,18 +146,18 @@ function ContextMenuWithShortcuts() {
               Forward
               <ContextMenuShortcut>⌘]</ContextMenuShortcut>
             </ContextMenuItem>
-            <ContextMenuItem>
+            <ContextMenuItem value="ctx-menuitem7">
               Reload
               <ContextMenuShortcut>⌘R</ContextMenuShortcut>
             </ContextMenuItem>
           </ContextMenuGroup>
           <ContextMenuSeparator />
           <ContextMenuGroup>
-            <ContextMenuItem>
+            <ContextMenuItem value="ctx-menuitem8">
               Save
               <ContextMenuShortcut>⌘S</ContextMenuShortcut>
             </ContextMenuItem>
-            <ContextMenuItem>
+            <ContextMenuItem value="ctx-menuitem9">
               Save As...
               <ContextMenuShortcut>⇧⌘S</ContextMenuShortcut>
             </ContextMenuItem>
@@ -177,11 +177,11 @@ function ContextMenuWithSubmenu() {
         </ContextMenuTrigger>
         <ContextMenuContent>
           <ContextMenuGroup>
-            <ContextMenuItem>
+            <ContextMenuItem value="ctx-menuitem10">
               Copy
               <ContextMenuShortcut>⌘C</ContextMenuShortcut>
             </ContextMenuItem>
-            <ContextMenuItem>
+            <ContextMenuItem value="ctx-menuitem11">
               Cut
               <ContextMenuShortcut>⌘X</ContextMenuShortcut>
             </ContextMenuItem>
@@ -190,13 +190,13 @@ function ContextMenuWithSubmenu() {
             <ContextMenuSubTrigger>More Tools</ContextMenuSubTrigger>
             <ContextMenuSubContent>
               <ContextMenuGroup>
-                <ContextMenuItem>Save Page...</ContextMenuItem>
-                <ContextMenuItem>Create Shortcut...</ContextMenuItem>
-                <ContextMenuItem>Name Window...</ContextMenuItem>
+                <ContextMenuItem value="ctx-menuitem12">Save Page...</ContextMenuItem>
+                <ContextMenuItem value="ctx-menuitem13">Create Shortcut...</ContextMenuItem>
+                <ContextMenuItem value="ctx-menuitem14">Name Window...</ContextMenuItem>
               </ContextMenuGroup>
               <ContextMenuSeparator />
               <ContextMenuGroup>
-                <ContextMenuItem>Developer Tools</ContextMenuItem>
+                <ContextMenuItem value="ctx-menuitem15">Developer Tools</ContextMenuItem>
               </ContextMenuGroup>
               <ContextMenuSeparator />
               <ContextMenuGroup>
@@ -220,15 +220,15 @@ function ContextMenuWithGroups() {
         <ContextMenuContent>
           <ContextMenuGroup>
             <ContextMenuLabel>File</ContextMenuLabel>
-            <ContextMenuItem>
+            <ContextMenuItem value="ctx-menuitem16">
               New File
               <ContextMenuShortcut>⌘N</ContextMenuShortcut>
             </ContextMenuItem>
-            <ContextMenuItem>
+            <ContextMenuItem value="ctx-menuitem17">
               Open File
               <ContextMenuShortcut>⌘O</ContextMenuShortcut>
             </ContextMenuItem>
-            <ContextMenuItem>
+            <ContextMenuItem value="ctx-menuitem18">
               Save
               <ContextMenuShortcut>⌘S</ContextMenuShortcut>
             </ContextMenuItem>
@@ -236,24 +236,24 @@ function ContextMenuWithGroups() {
           <ContextMenuSeparator />
           <ContextMenuGroup>
             <ContextMenuLabel>Edit</ContextMenuLabel>
-            <ContextMenuItem>
+            <ContextMenuItem value="ctx-menuitem19">
               Undo
               <ContextMenuShortcut>⌘Z</ContextMenuShortcut>
             </ContextMenuItem>
-            <ContextMenuItem>
+            <ContextMenuItem value="ctx-menuitem20">
               Redo
               <ContextMenuShortcut>⇧⌘Z</ContextMenuShortcut>
             </ContextMenuItem>
             <ContextMenuSeparator />
-            <ContextMenuItem>
+            <ContextMenuItem value="ctx-menuitem21">
               Cut
               <ContextMenuShortcut>⌘X</ContextMenuShortcut>
             </ContextMenuItem>
-            <ContextMenuItem>
+            <ContextMenuItem value="ctx-menuitem22">
               Copy
               <ContextMenuShortcut>⌘C</ContextMenuShortcut>
             </ContextMenuItem>
-            <ContextMenuItem>
+            <ContextMenuItem value="ctx-menuitem23">
               Paste
               <ContextMenuShortcut>⌘V</ContextMenuShortcut>
             </ContextMenuItem>
@@ -355,7 +355,7 @@ function ContextMenuWithDestructive() {
         </ContextMenuTrigger>
         <ContextMenuContent>
           <ContextMenuGroup>
-            <ContextMenuItem>
+            <ContextMenuItem value="ctx-menuitem24">
               <IconPlaceholder
                 lucide="PencilIcon"
                 tabler="IconPencil"
@@ -365,7 +365,7 @@ function ContextMenuWithDestructive() {
               />
               Edit
             </ContextMenuItem>
-            <ContextMenuItem>
+            <ContextMenuItem value="ctx-menuitem25">
               <IconPlaceholder
                 lucide="ShareIcon"
                 tabler="IconShare"
@@ -378,7 +378,7 @@ function ContextMenuWithDestructive() {
           </ContextMenuGroup>
           <ContextMenuSeparator />
           <ContextMenuGroup>
-            <ContextMenuItem>
+            <ContextMenuItem value="ctx-menuitem26">
               <IconPlaceholder
                 lucide="ArchiveIcon"
                 tabler="IconArchive"
@@ -415,9 +415,9 @@ function ContextMenuWithSides() {
           </ContextMenuTrigger>
           <ContextMenuContent side="top">
             <ContextMenuGroup>
-              <ContextMenuItem>Back</ContextMenuItem>
-              <ContextMenuItem>Forward</ContextMenuItem>
-              <ContextMenuItem>Reload</ContextMenuItem>
+              <ContextMenuItem value="ctx-menuitem27">Back</ContextMenuItem>
+              <ContextMenuItem value="ctx-menuitem28">Forward</ContextMenuItem>
+              <ContextMenuItem value="ctx-menuitem29">Reload</ContextMenuItem>
             </ContextMenuGroup>
           </ContextMenuContent>
         </ContextMenu>
@@ -427,9 +427,9 @@ function ContextMenuWithSides() {
           </ContextMenuTrigger>
           <ContextMenuContent side="right">
             <ContextMenuGroup>
-              <ContextMenuItem>Back</ContextMenuItem>
-              <ContextMenuItem>Forward</ContextMenuItem>
-              <ContextMenuItem>Reload</ContextMenuItem>
+              <ContextMenuItem value="ctx-menuitem30">Back</ContextMenuItem>
+              <ContextMenuItem value="ctx-menuitem31">Forward</ContextMenuItem>
+              <ContextMenuItem value="ctx-menuitem32">Reload</ContextMenuItem>
             </ContextMenuGroup>
           </ContextMenuContent>
         </ContextMenu>
@@ -439,9 +439,9 @@ function ContextMenuWithSides() {
           </ContextMenuTrigger>
           <ContextMenuContent side="bottom">
             <ContextMenuGroup>
-              <ContextMenuItem>Back</ContextMenuItem>
-              <ContextMenuItem>Forward</ContextMenuItem>
-              <ContextMenuItem>Reload</ContextMenuItem>
+              <ContextMenuItem value="ctx-menuitem33">Back</ContextMenuItem>
+              <ContextMenuItem value="ctx-menuitem34">Forward</ContextMenuItem>
+              <ContextMenuItem value="ctx-menuitem35">Reload</ContextMenuItem>
             </ContextMenuGroup>
           </ContextMenuContent>
         </ContextMenu>
@@ -451,9 +451,9 @@ function ContextMenuWithSides() {
           </ContextMenuTrigger>
           <ContextMenuContent side="left">
             <ContextMenuGroup>
-              <ContextMenuItem>Back</ContextMenuItem>
-              <ContextMenuItem>Forward</ContextMenuItem>
-              <ContextMenuItem>Reload</ContextMenuItem>
+              <ContextMenuItem value="ctx-menuitem36">Back</ContextMenuItem>
+              <ContextMenuItem value="ctx-menuitem37">Forward</ContextMenuItem>
+              <ContextMenuItem value="ctx-menuitem38">Reload</ContextMenuItem>
             </ContextMenuGroup>
           </ContextMenuContent>
         </ContextMenu>
@@ -482,7 +482,7 @@ function ContextMenuInDialog() {
             </ContextMenuTrigger>
             <ContextMenuContent>
               <ContextMenuGroup>
-                <ContextMenuItem>
+                <ContextMenuItem value="ctx-menuitem39">
                   <IconPlaceholder
                     lucide="CopyIcon"
                     tabler="IconCopy"
@@ -492,7 +492,7 @@ function ContextMenuInDialog() {
                   />
                   Copy
                 </ContextMenuItem>
-                <ContextMenuItem>
+                <ContextMenuItem value="ctx-menuitem40">
                   <IconPlaceholder
                     lucide="ScissorsIcon"
                     tabler="IconCut"
@@ -502,7 +502,7 @@ function ContextMenuInDialog() {
                   />
                   Cut
                 </ContextMenuItem>
-                <ContextMenuItem>
+                <ContextMenuItem value="ctx-menuitem41">
                   <IconPlaceholder
                     lucide="ClipboardPasteIcon"
                     tabler="IconClipboard"
@@ -518,13 +518,13 @@ function ContextMenuInDialog() {
                 <ContextMenuSubTrigger>More Options</ContextMenuSubTrigger>
                 <ContextMenuSubContent>
                   <ContextMenuGroup>
-                    <ContextMenuItem>Save Page...</ContextMenuItem>
-                    <ContextMenuItem>Create Shortcut...</ContextMenuItem>
-                    <ContextMenuItem>Name Window...</ContextMenuItem>
+                    <ContextMenuItem value="ctx-menuitem42">Save Page...</ContextMenuItem>
+                    <ContextMenuItem value="ctx-menuitem43">Create Shortcut...</ContextMenuItem>
+                    <ContextMenuItem value="ctx-menuitem44">Name Window...</ContextMenuItem>
                   </ContextMenuGroup>
                   <ContextMenuSeparator />
                   <ContextMenuGroup>
-                    <ContextMenuItem>Developer Tools</ContextMenuItem>
+                    <ContextMenuItem value="ctx-menuitem45">Developer Tools</ContextMenuItem>
                   </ContextMenuGroup>
                 </ContextMenuSubContent>
               </ContextMenuSub>
@@ -563,7 +563,7 @@ function ContextMenuWithInset() {
         <ContextMenuContent className="w-44">
           <ContextMenuGroup>
             <ContextMenuLabel>Actions</ContextMenuLabel>
-            <ContextMenuItem>
+            <ContextMenuItem value="ctx-menuitem46">
               <IconPlaceholder
                 lucide="CopyIcon"
                 tabler="IconCopy"
@@ -573,7 +573,7 @@ function ContextMenuWithInset() {
               />
               Copy
             </ContextMenuItem>
-            <ContextMenuItem>
+            <ContextMenuItem value="ctx-menuitem47">
               <IconPlaceholder
                 lucide="ScissorsIcon"
                 tabler="IconCut"
@@ -623,8 +623,8 @@ function ContextMenuWithInset() {
             <ContextMenuSubTrigger inset>More Options</ContextMenuSubTrigger>
             <ContextMenuSubContent>
               <ContextMenuGroup>
-                <ContextMenuItem>Save Page...</ContextMenuItem>
-                <ContextMenuItem>Create Shortcut...</ContextMenuItem>
+                <ContextMenuItem value="ctx-menuitem48">Save Page...</ContextMenuItem>
+                <ContextMenuItem value="ctx-menuitem49">Create Shortcut...</ContextMenuItem>
               </ContextMenuGroup>
             </ContextMenuSubContent>
           </ContextMenuSub>

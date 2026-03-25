@@ -20,9 +20,9 @@ export function ContextMenuSides() {
         </ContextMenuTrigger>
         <ContextMenuContent side="top">
           <ContextMenuGroup>
-            <ContextMenuItem>Back</ContextMenuItem>
-            <ContextMenuItem>Forward</ContextMenuItem>
-            <ContextMenuItem>Reload</ContextMenuItem>
+            <ContextMenuItem value="1">Back</ContextMenuItem>
+            <ContextMenuItem value="2">Forward</ContextMenuItem>
+            <ContextMenuItem value="3">Reload</ContextMenuItem>
           </ContextMenuGroup>
         </ContextMenuContent>
       </ContextMenu>
@@ -37,9 +37,9 @@ export function ContextMenuSides() {
         </ContextMenuTrigger>
         <ContextMenuContent side="right">
           <ContextMenuGroup>
-            <ContextMenuItem>Back</ContextMenuItem>
-            <ContextMenuItem>Forward</ContextMenuItem>
-            <ContextMenuItem>Reload</ContextMenuItem>
+            <ContextMenuItem value="4">Back</ContextMenuItem>
+            <ContextMenuItem value="5">Forward</ContextMenuItem>
+            <ContextMenuItem value="6">Reload</ContextMenuItem>
           </ContextMenuGroup>
         </ContextMenuContent>
       </ContextMenu>
@@ -54,9 +54,9 @@ export function ContextMenuSides() {
         </ContextMenuTrigger>
         <ContextMenuContent side="bottom">
           <ContextMenuGroup>
-            <ContextMenuItem>Back</ContextMenuItem>
-            <ContextMenuItem>Forward</ContextMenuItem>
-            <ContextMenuItem>Reload</ContextMenuItem>
+            <ContextMenuItem value="7">Back</ContextMenuItem>
+            <ContextMenuItem value="8">Forward</ContextMenuItem>
+            <ContextMenuItem value="9">Reload</ContextMenuItem>
           </ContextMenuGroup>
         </ContextMenuContent>
       </ContextMenu>
@@ -71,9 +71,9 @@ export function ContextMenuSides() {
         </ContextMenuTrigger>
         <ContextMenuContent side="left">
           <ContextMenuGroup>
-            <ContextMenuItem>Back</ContextMenuItem>
-            <ContextMenuItem>Forward</ContextMenuItem>
-            <ContextMenuItem>Reload</ContextMenuItem>
+            <ContextMenuItem value="10">Back</ContextMenuItem>
+            <ContextMenuItem value="11">Forward</ContextMenuItem>
+            <ContextMenuItem value="12">Reload</ContextMenuItem>
           </ContextMenuGroup>
         </ContextMenuContent>
       </ContextMenu>

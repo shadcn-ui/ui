@@ -21,11 +21,11 @@ export function ContextMenuDestructive() {
       </ContextMenuTrigger>
       <ContextMenuContent>
         <ContextMenuGroup>
-          <ContextMenuItem>
+          <ContextMenuItem value="1">
             <PencilIcon />
             Edit
           </ContextMenuItem>
-          <ContextMenuItem>
+          <ContextMenuItem value="2">
             <ShareIcon />
             Share
           </ContextMenuItem>

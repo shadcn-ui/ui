@@ -19,9 +19,9 @@ export function ContextMenuBasic() {
       </ContextMenuTrigger>
       <ContextMenuContent>
         <ContextMenuGroup>
-          <ContextMenuItem>Back</ContextMenuItem>
+          <ContextMenuItem value="1">Back</ContextMenuItem>
           <ContextMenuItem disabled>Forward</ContextMenuItem>
-          <ContextMenuItem>Reload</ContextMenuItem>
+          <ContextMenuItem value="2">Reload</ContextMenuItem>
         </ContextMenuGroup>
       </ContextMenuContent>
     </ContextMenu>

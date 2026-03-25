@@ -22,7 +22,7 @@ export function ContextMenuCheckboxes() {
           <ContextMenuCheckboxItem defaultChecked>
             Show Bookmarks Bar
           </ContextMenuCheckboxItem>
-          <ContextMenuCheckboxItem>Show Full URLs</ContextMenuCheckboxItem>
+          <ContextMenuCheckboxItem value="cb-1">Show Full URLs</ContextMenuCheckboxItem>
           <ContextMenuCheckboxItem defaultChecked>
             Show Developer Tools
           </ContextMenuCheckboxItem>
