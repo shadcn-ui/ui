@@ -94,6 +94,7 @@ export function LanguageSelector({
 }) {
   return (
     <Select
+      items={languageOptions}
       value={value}
       onValueChange={(value) => onValueChange(value as Language)}
     >
