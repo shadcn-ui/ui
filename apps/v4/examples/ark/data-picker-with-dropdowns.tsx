@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { Button } from "@/examples/ark/ui/button"
-import { Calendar } from "@/examples/ark/ui/calendar"
+import { Calendar, CalendarDate, DatePickerValueChangeDetails, DateValue } from "@/examples/ark/ui/calendar"
 import { Field, FieldLabel } from "@/examples/ark/ui/field"
 import {
   Popover,
@@ -13,12 +13,12 @@ import { format } from "date-fns"
 import { ChevronDownIcon } from "lucide-react"
 
 export function DataPickerWithDropdowns() {
-  const [date, setDate] = React.useState<Date>()
+  const [date, setDate] = React.useState<DateValue[]>([new CalendarDate(2026, 3, 21)])
   const [open, setOpen] = React.useState(false)
 
   return (
     <Field className="mx-auto w-72">
-      <Popover open={open} onOpenChange={setOpen}>
+      <Popover open={open} onOpenChange={(details) => setOpen(details.open)}>
         <FieldLabel htmlFor="date-picker-with-dropdowns-desktop">
           Date
         </FieldLabel>
@@ -32,11 +32,15 @@ export function DataPickerWithDropdowns() {
             <ChevronDownIcon className="ml-auto" />
           </Button>
         </PopoverTrigger>
-        <PopoverContent className="w-auto p-0" align="start">
+        <PopoverContent className="w-auto p-0">
           <Calendar
             mode="single"
             selected={date}
-            onSelect={setDate}
+            selectionMode="single"
+      value={value}
+      onValueChange={(details: DatePickerValueChangeDetails) =>
+        setDate(details.value)
+      }
             captionLayout="dropdown"
           />
           <div className="flex gap-2 border-t p-2">
