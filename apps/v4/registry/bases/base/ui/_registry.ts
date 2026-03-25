@@ -226,7 +226,7 @@ export const ui: Registry["items"] = [
       },
     ],
     registryDependencies: ["card"],
-    dependencies: ["recharts@3.8.0"],
+    dependencies: ["recharts@2.15.4"],
     meta: {
       links: {
         docs: "https://ui.shadcn.com/docs/components/base/chart",

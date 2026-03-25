@@ -8,9 +8,6 @@
     "provider": "google",
     "import": "Nunito_Sans",
     "variable": "--font-sans",
-    "subsets": [
-      "latin"
-    ],
     "dependency": "@fontsource-variable/nunito-sans"
   }
 }

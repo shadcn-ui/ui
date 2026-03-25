@@ -1,12 +1,11 @@
 "use client"
 
 import * as React from "react"
-import { cva, type VariantProps } from "class-variance-authority"
-
 import { cn } from "@/examples/radix/lib/utils"
 import { Button } from "@/examples/radix/ui-rtl/button"
 import { Input } from "@/examples/radix/ui-rtl/input"
 import { Textarea } from "@/examples/radix/ui-rtl/textarea"
+import { cva, type VariantProps } from "class-variance-authority"
 
 function InputGroup({ className, ...props }: React.ComponentProps<"div">) {
   return (

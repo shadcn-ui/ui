@@ -71,7 +71,7 @@ export function UIElements() {
             <Button>Button</Button>
             <Button variant="secondary">Secondary</Button>
             <Button variant="outline">Outline</Button>
-            <Button variant="ghost">Ghost</Button>
+            <Button variant="destructive">Delete</Button>
           </div>
           <Item variant="outline">
             <ItemContent>

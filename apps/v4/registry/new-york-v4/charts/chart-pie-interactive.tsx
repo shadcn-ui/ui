@@ -2,10 +2,7 @@
 
 import * as React from "react"
 import { Label, Pie, PieChart, Sector } from "recharts"
-import type {
-  PieSectorDataItem,
-  PieSectorShapeProps,
-} from "recharts/types/polar/Pie"
+import { type PieSectorDataItem } from "recharts/types/polar/Pie"
 
 import {
   Card,
@@ -81,26 +78,6 @@ export function ChartPieInteractive() {
   )
   const months = React.useMemo(() => desktopData.map((item) => item.month), [])
 
-  const renderPieShape = React.useCallback(
-    ({ index, outerRadius = 0, ...props }: PieSectorShapeProps) => {
-      if (index === activeIndex) {
-        return (
-          <g>
-            <Sector {...props} outerRadius={outerRadius + 10} />
-            <Sector
-              {...props}
-              outerRadius={outerRadius + 25}
-              innerRadius={outerRadius + 12}
-            />
-          </g>
-        )
-      }
-
-      return <Sector {...props} outerRadius={outerRadius} />
-    },
-    [activeIndex]
-  )
-
   return (
     <Card data-chart={id} className="flex flex-col">
       <ChartStyle id={id} config={chartConfig} />
@@ -162,7 +139,20 @@ export function ChartPieInteractive() {
               nameKey="month"
               innerRadius={60}
               strokeWidth={5}
-              shape={renderPieShape}
+              activeIndex={activeIndex}
+              activeShape={({
+                outerRadius = 0,
+                ...props
+              }: PieSectorDataItem) => (
+                <g>
+                  <Sector {...props} outerRadius={outerRadius + 10} />
+                  <Sector
+                    {...props}
+                    outerRadius={outerRadius + 25}
+                    innerRadius={outerRadius + 12}
+                  />
+                </g>
+              )}
             >
               <Label
                 content={({ viewBox }) => {

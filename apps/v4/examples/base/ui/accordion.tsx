@@ -1,8 +1,7 @@
 "use client"
 
-import { Accordion as AccordionPrimitive } from "@base-ui/react/accordion"
-
 import { cn } from "@/examples/base/lib/utils"
+import { Accordion as AccordionPrimitive } from "@base-ui/react/accordion"
 import { ChevronDownIcon, ChevronUpIcon } from "lucide-react"
 
 function Accordion({ className, ...props }: AccordionPrimitive.Root.Props) {
@@ -41,8 +40,14 @@ function AccordionTrigger({
         {...props}
       >
         {children}
-        <ChevronDownIcon data-slot="accordion-trigger-icon" className="pointer-events-none shrink-0 group-aria-expanded/accordion-trigger:hidden" />
-        <ChevronUpIcon data-slot="accordion-trigger-icon" className="pointer-events-none hidden shrink-0 group-aria-expanded/accordion-trigger:inline" />
+        <ChevronDownIcon
+          data-slot="accordion-trigger-icon"
+          className="pointer-events-none shrink-0 group-aria-expanded/accordion-trigger:hidden"
+        />
+        <ChevronUpIcon
+          data-slot="accordion-trigger-icon"
+          className="pointer-events-none hidden shrink-0 group-aria-expanded/accordion-trigger:inline"
+        />
       </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>
   )

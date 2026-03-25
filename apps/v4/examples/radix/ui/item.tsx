@@ -1,9 +1,8 @@
 import * as React from "react"
-import { cva, type VariantProps } from "class-variance-authority"
-import { Slot } from "radix-ui"
-
 import { cn } from "@/examples/radix/lib/utils"
 import { Separator } from "@/examples/radix/ui/separator"
+import { cva, type VariantProps } from "class-variance-authority"
+import { Slot } from "radix-ui"
 
 function ItemGroup({ className, ...props }: React.ComponentProps<"div">) {
   return (
@@ -125,7 +124,7 @@ function ItemTitle({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="item-title"
       className={cn(
-        "cn-font-heading line-clamp-1 flex w-fit items-center gap-2 text-sm leading-snug font-medium underline-offset-4",
+        "line-clamp-1 flex w-fit items-center gap-2 text-sm leading-snug font-medium underline-offset-4",
         className
       )}
       {...props}

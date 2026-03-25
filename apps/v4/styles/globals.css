@@ -22,7 +22,6 @@
   --breakpoint-3xl: 1600px;
   --breakpoint-4xl: 2000px;
   --font-sans: var(--font-sans);
-  --font-heading: var(--font-heading);
   --font-mono: var(--font-mono);
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
@@ -173,9 +172,6 @@
   body {
     font-synthesis-weight: none;
     text-rendering: optimizeLegibility;
-  }
-  .cn-font-heading {
-    @apply font-heading;
   }
 
   [data-slot="layout"] {
