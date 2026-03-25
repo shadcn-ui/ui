@@ -111,13 +111,13 @@ function PaginationIconsOnly() {
               </SelectTrigger>
               <SelectIndicator />
             </SelectControl>
-            <SelectContent align="start">
+            <SelectContent>
               <SelectItemGroup>
                 {rowsPerPageItems.items.map((item) => (
                   <SelectItem key={item.value} item={item}>
                     <SelectItemText>{item.label}</SelectItemText>
                     <SelectItemIndicator />
-                  </SelectItemComponent>
+                  </SelectItem>
                 ))}
               </SelectItemGroup>
             </SelectContent>
