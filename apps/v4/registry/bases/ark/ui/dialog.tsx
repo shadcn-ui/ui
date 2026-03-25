@@ -37,7 +37,7 @@ function DialogOverlay({
   return (
     <DialogPrimitive.Backdrop
       data-slot="dialog-overlay"
-      className={cn("cn-dialog-overlay fixed inset-0 isolate z-50", className)}
+      className={cn("fixed inset-0 isolate z-50 bg-black/50 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:fade-out-0", className)}
       {...props}
     />
   )
@@ -58,24 +58,28 @@ function DialogContent({
         <DialogPrimitive.Content
           data-slot="dialog-content"
           className={cn(
-            "cn-dialog-content z-50 w-full outline-none",
+            "bg-popover text-popover-foreground relative z-50 grid w-full max-w-[calc(100%-2rem)] gap-4 rounded-xl p-4 text-sm shadow-lg ring-1 ring-foreground/10 outline-none sm:max-w-sm",
+            "data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95",
+            "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95",
             className
           )}
           {...props}
         >
           {children}
           {showCloseButton && (
-            <DialogPrimitive.CloseTrigger data-slot="dialog-close" asChild>
-              <Button variant="ghost" className="cn-dialog-close" size="icon-sm">
-                <IconPlaceholder
-                  lucide="XIcon"
-                  tabler="IconX"
-                  hugeicons="Cancel01Icon"
-                  phosphor="XIcon"
-                  remixicon="RiCloseLine"
-                />
-                <span className="sr-only">Close</span>
-              </Button>
+            <DialogPrimitive.CloseTrigger
+              data-slot="dialog-close"
+              className="cn-dialog-close absolute top-3 right-3 inline-flex size-7 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            >
+              <IconPlaceholder
+                lucide="XIcon"
+                tabler="IconX"
+                hugeicons="Cancel01Icon"
+                phosphor="XIcon"
+                remixicon="RiCloseLine"
+                className="size-4"
+              />
+              <span className="sr-only">Close</span>
             </DialogPrimitive.CloseTrigger>
           )}
         </DialogPrimitive.Content>

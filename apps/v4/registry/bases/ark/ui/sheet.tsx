@@ -65,17 +65,19 @@ function SheetContent({
         >
           {children}
           {showCloseButton && (
-            <DialogPrimitive.CloseTrigger data-slot="sheet-close" asChild>
-              <Button variant="ghost" className="cn-sheet-close" size="icon-sm">
-                <IconPlaceholder
-                  lucide="XIcon"
-                  tabler="IconX"
-                  hugeicons="Cancel01Icon"
-                  phosphor="XIcon"
-                  remixicon="RiCloseLine"
-                />
-                <span className="sr-only">Close</span>
-              </Button>
+            <DialogPrimitive.CloseTrigger
+              data-slot="sheet-close"
+              className="cn-sheet-close absolute top-3 right-3 inline-flex size-7 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            >
+              <IconPlaceholder
+                lucide="XIcon"
+                tabler="IconX"
+                hugeicons="Cancel01Icon"
+                phosphor="XIcon"
+                remixicon="RiCloseLine"
+                className="size-4"
+              />
+              <span className="sr-only">Close</span>
             </DialogPrimitive.CloseTrigger>
           )}
         </DialogPrimitive.Content>
