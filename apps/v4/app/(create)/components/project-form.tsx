@@ -130,7 +130,7 @@ export function ProjectForm({
       <DialogTrigger render={<Button className={cn(className)} />}>
         Create Project
       </DialogTrigger>
-      <DialogContent className="dark no-scrollbar max-h-[calc(100svh-2rem)] overflow-y-auto rounded-2xl border-0 bg-neutral-800 p-6 text-foreground shadow-xl ring-1 ring-neutral-950/80 backdrop-blur-xl [--border:var(--color-neutral-700)]! sm:max-w-sm">
+      <DialogContent className="dark no-scrollbar max-h-[calc(100svh-2rem)] overflow-y-auto rounded-2xl p-6 shadow-xl **:data-[slot=field-separator]:h-2 sm:max-w-sm">
         <DialogHeader>
           <DialogTitle>Create Project</DialogTitle>
           <DialogDescription>
@@ -209,7 +209,7 @@ export function ProjectForm({
                   packageManager: value as PackageManager,
                 }))
               }}
-              className="min-w-0 gap-0 overflow-hidden rounded-xl border-0 bg-neutral-950/20 ring-1 ring-neutral-950/80 dark:bg-neutral-900/50 dark:ring-neutral-700/50"
+              className="min-w-0 gap-0 overflow-hidden rounded-xl border-0 ring-1 ring-border"
             >
               <div className="flex items-center gap-2 py-1 pr-1.5 pl-1">
                 <TabsList className="bg-transparent font-mono">
@@ -242,7 +242,7 @@ export function ProjectForm({
               {Object.entries(commands).map(([key, cmd]) => {
                 return (
                   <TabsContent key={key} value={key}>
-                    <div className="relative overflow-hidden border-t border-neutral-700/50 bg-neutral-900/50 px-3 py-3 text-neutral-100">
+                    <div className="relative overflow-hidden border-t bg-popover p-3">
                       <div className="no-scrollbar overflow-x-auto">
                         <code className="font-mono text-sm whitespace-nowrap">
                           {cmd}

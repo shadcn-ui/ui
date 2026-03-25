@@ -44,7 +44,7 @@ export default async function CreatePage() {
   return (
     <div
       data-slot="layout"
-      className="group/layout relative z-10 flex h-svh flex-col overflow-hidden section-soft [--customizer-width:--spacing(56)] [--gap:--spacing(4)] md:[--gap:--spacing(6)]"
+      className="group/layout relative z-10 flex h-svh flex-col overflow-hidden section-soft [--customizer-width:--spacing(48)] [--gap:--spacing(4)] md:[--gap:--spacing(6)] 2xl:[--customizer-width:--spacing(56)]"
     >
       <SiteHeader />
       <main

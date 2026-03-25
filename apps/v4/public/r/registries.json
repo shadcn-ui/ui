@@ -156,6 +156,12 @@
     "description": "The easiest way to add authentication and user management to your application. Purpose-built for React, Next.js, Remix, and The Modern Web."
   },
   {
+    "name": "@ramonclaudio-coderabbit",
+    "homepage": "https://ramonclaudio.com/registries/coderabbit",
+    "url": "https://coderabbit-shadcn-registry.vercel.app/r/{name}.json",
+    "description": "A framework-agnostic API client, pluggable storage adapters (LocalStorage, Convex, Supabase, PostgreSQL, MySQL), and React components for generating developer activity reports."
+  },
+  {
     "name": "@commercn",
     "homepage": "https://commercn.com",
     "url": "https://commercn.com/r/{name}.json",
@@ -190,6 +196,12 @@
     "homepage": "https://ui.doras.to/",
     "url": "https://ui.doras.to/r/{name}.json",
     "description": "A collection of beautiful, reusable component blocks built with React"
+  },
+  {
+    "name": "@dsikeres1",
+    "homepage": "https://dsikeres1.github.io/react-date-range-picker/",
+    "url": "https://dsikeres1.github.io/react-date-range-picker/r/{name}.json",
+    "description": "A headless, composable date & date range picker for React. 5 picker types, 15 locales, dark mode, accessible. Zero dependencies."
   },
   {
     "name": "@elements",
@@ -238,6 +250,12 @@
     "homepage": "https://binnodon.github.io/gc-solid-ui",
     "url": "https://binnodon.github.io/gc-solid-ui/r/{name}.json",
     "description": "SolidJS port of shadcn-ui components built with Kobalte primitives. 57+ components with full TypeScript support and Vega theme."
+  },
+  {
+    "name": "@gamifykit",
+    "homepage": "https://gamifykit.com",
+    "url": "https://gamifykit.com/r/{name}.json",
+    "description": "A collection of fully composable components that extend shadcn/ui with a focus on common gamification UI patterns."
   },
   {
     "name": "@glass-ui",
@@ -304,6 +322,12 @@
     "homepage": "https://kokonutui.com",
     "url": "https://kokonutui.com/r/{name}.json",
     "description": "Collection of stunning components built with Tailwind CSS, shadcn/ui and Motion to use on your websites."
+  },
+  {
+    "name": "@launchui",
+    "homepage": "https://www.launchuicomponents.com/",
+    "url": "https://www.launchuicomponents.com/r/{name}.json",
+    "description": "Carefully crafted landing page components and templates built with React, Shadcn/ui and Tailwind."
   },
   {
     "name": "@lens-blocks",
@@ -486,6 +510,18 @@
     "description": "A large collection of animated, interactive & fully customizable React components for building memorable websites. From smooth text animations all the way to eye-catching backgrounds, you can find it here."
   },
   {
+    "name": "@react-easy-modals",
+    "homepage": "https://react-easy-modals-docs.vercel.app",
+    "url": "https://react-easy-modals-docs.vercel.app/r/styles/{style}/{name}.json",
+    "description": "Modal component for react-easy-modals. Integrates with shadcn Dialog for a simple, powerful modal system with TypeScript support and promise-based API."
+  },
+  {
+    "name": "@react-slot",
+    "homepage": "https://react-slot.vercel.app/",
+    "url": "https://react-slot.vercel.app/r/{name}.json",
+    "description": "Vue-style slot composition for React - Fine-grained control over component composition"
+  },
+  {
     "name": "@retroui",
     "homepage": "https://retroui.dev",
     "url": "https://retroui.dev/r/{name}.json",
@@ -606,10 +642,10 @@
     "description": "Launch your projects faster with admin dashboards, website templates, components, blocks, and pre-built real-world examples."
   },
   {
-    "name": "@shadcraft",
-    "homepage": "https://free.shadcraft.com",
-    "url": "https://free.shadcraft.com/r/{name}.json",
-    "description": "A collection of polished shadcn/ui components and marketing blocks built to production standards. Fast to use, easy to extend, and ready for any modern web project."
+    "name": "@shadcncraft",
+    "homepage": "https://shadcncraft.com",
+    "url": "https://shadcncraft.com/r/{name}.json",
+    "description": "A starter collection of polished shadcn/ui components and blocks built to production standards. Part of a larger Figma + React system designed to scale with your product."
   },
   {
     "name": "@smoothui",
@@ -676,6 +712,12 @@
     "homepage": "https://utilcn.dev",
     "url": "https://utilcn.dev/r/{name}.json",
     "description": "Fullstack registry items to start those big features. Utilcn has ChatGPT Apps, file uploading (with progress bars) and downloading, and a way to make your env vars typesafe on the backend."
+  },
+  {
+    "name": "@w3-kit",
+    "homepage": "https://w3-kit.com",
+    "url": "https://w3-kit.com/registry/{name}.json",
+    "description": "Web3 UI components for blockchain dApps. Includes wallet connection, token swaps, NFT cards, staking interfaces, and 20+ more crypto components."
   },
   {
     "name": "@wandry-ui",
@@ -928,5 +970,23 @@
     "homepage": "https://sabraman.ru/components",
     "url": "https://sabraman.ru/r/{name}.json",
     "description": "Legacy skeuomorphic UI components and blocks for shadcn."
+  },
+  {
+    "name": "@odysseyui",
+    "homepage": "https://www.odysseyui.com/docs",
+    "url": "https://www.odysseyui.com/r/{name}.json",
+    "description": "A design focused component library for Next.js, built for speed, flexibility and developer experience."
+  },
+  {
+    "name": "@pulkitxm",
+    "homepage": "https://pulkitxm.com",
+    "url": "https://pulkitxm.com/components/{name}.json",
+    "description": "Animated shadcn components powered by GSAP and Framer Motion. Built for expressive UIs."
+  },
+  {
+    "name": "@rescript-shadcn",
+    "homepage": "https://rescript-shadcn.miriad.studio",
+    "url": "https://rescript-shadcn.miriad.studio/r/{name}.json",
+    "description": "Shadcn components rewritten in Rescript, compatible with shadcn CLI."
   }
 ]
