@@ -54,28 +54,18 @@ npm install @ark-ui/react @internationalized/date
 
 ## Usage
 
+The date picker ships with convenience view components (`DatePickerDayView`, `DatePickerMonthView`, `DatePickerYearView`) that compose the full calendar views in a single line.
+
 ```tsx showLineNumbers
 import {
   DatePicker,
   DatePickerContent,
-  DatePickerContext,
   DatePickerControl,
+  DatePickerDayView,
   DatePickerInput,
-  DatePickerNextTrigger,
-  DatePickerPositioner,
-  DatePickerPrevTrigger,
-  DatePickerRangeText,
-  DatePickerTable,
-  DatePickerTableBody,
-  DatePickerTableCell,
-  DatePickerTableCellTrigger,
-  DatePickerTableHead,
-  DatePickerTableHeader,
-  DatePickerTableRow,
+  DatePickerMonthView,
   DatePickerTrigger,
-  DatePickerView,
-  DatePickerViewControl,
-  DatePickerViewTrigger,
+  DatePickerYearView,
 } from "@/components/ui/date-picker"
 ```
 
@@ -85,51 +75,15 @@ import {
     <DatePickerInput />
     <DatePickerTrigger />
   </DatePickerControl>
-  <DatePickerPositioner>
-    <DatePickerContent>
-      <DatePickerView view="day">
-        <DatePickerContext>
-          {(api) => (
-            <>
-              <DatePickerViewControl>
-                <DatePickerPrevTrigger />
-                <DatePickerViewTrigger>
-                  <DatePickerRangeText />
-                </DatePickerViewTrigger>
-                <DatePickerNextTrigger />
-              </DatePickerViewControl>
-              <DatePickerTable>
-                <DatePickerTableHead>
-                  <DatePickerTableRow>
-                    {api.weekDays.map((day, i) => (
-                      <DatePickerTableHeader key={i}>
-                        {day.short}
-                      </DatePickerTableHeader>
-                    ))}
-                  </DatePickerTableRow>
-                </DatePickerTableHead>
-                <DatePickerTableBody>
-                  {api.weeks.map((week, i) => (
-                    <DatePickerTableRow key={i}>
-                      {week.map((day, j) => (
-                        <DatePickerTableCell key={j} value={day}>
-                          <DatePickerTableCellTrigger>
-                            {day.day}
-                          </DatePickerTableCellTrigger>
-                        </DatePickerTableCell>
-                      ))}
-                    </DatePickerTableRow>
-                  ))}
-                </DatePickerTableBody>
-              </DatePickerTable>
-            </>
-          )}
-        </DatePickerContext>
-      </DatePickerView>
-    </DatePickerContent>
-  </DatePickerPositioner>
+  <DatePickerContent>
+    <DatePickerDayView />
+    <DatePickerMonthView />
+    <DatePickerYearView />
+  </DatePickerContent>
 </DatePicker>
 ```
+
+Each view component encapsulates the navigation controls, table headers, and cell rendering. For custom layouts, you can use the lower-level primitives (`DatePickerContext`, `DatePickerTable`, `DatePickerViewControl`, etc.) directly.
 
 The Date Picker is built on [Ark UI's DatePicker](https://ark-ui.com/docs/components/date-picker), which uses [`@internationalized/date`](https://react-spectrum.adobe.com/internationalized/date/) for date handling.
 
@@ -143,7 +97,7 @@ A basic date picker component.
 
 ### Range Picker
 
-A date picker component for selecting a range of dates. Use `selectionMode="range"` with two inputs.
+Use `selectionMode="range"` with two inputs for date range selection.
 
 <ComponentPreview styleName="ark-nova" name="date-picker-range" />
 
@@ -155,19 +109,19 @@ A date picker with month and year dropdowns using `DatePickerMonthSelect` and `D
 
 ### Input
 
-A date picker component with an input field for typing dates directly.
+A date picker with an input field for typing dates directly.
 
 <ComponentPreview styleName="ark-nova" name="date-picker-input" />
 
 ### Time Picker
 
-A date picker component with a time input field for selecting a time.
+A date picker with a time input field.
 
 <ComponentPreview styleName="ark-nova" name="date-picker-time" />
 
 ### Natural Language Picker
 
-This component uses the `chrono-node` library to parse natural language dates.
+Uses the `chrono-node` library to parse natural language dates via the `parse` prop.
 
 <ComponentPreview styleName="ark-nova" name="date-picker-natural-language" />
 
@@ -180,8 +134,6 @@ To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl)
   name="date-picker-rtl"
   direction="rtl"
 />
-
-Pass the `locale` and `dir` props for RTL languages:
 
 ```tsx showLineNumbers
 <DatePicker locale="ar-SA" dir="rtl">
