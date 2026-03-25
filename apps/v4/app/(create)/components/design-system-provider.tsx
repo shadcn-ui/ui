@@ -64,18 +64,37 @@ export function DesignSystemProvider({
     history: "replace", // …or push updates into the iframe history.
   })
   const [isReady, setIsReady] = React.useState(false)
-  const { style, theme, font, baseColor, menuAccent, menuColor, radius } =
-    searchParams
+  const {
+    style,
+    theme,
+    font,
+    fontHeading,
+    baseColor,
+    chartColor,
+    menuAccent,
+    menuColor,
+    radius,
+  } = searchParams
   const effectiveRadius = style === "lyra" ? "none" : radius
   const selectedFont = React.useMemo(
     () => FONTS.find((fontOption) => fontOption.value === font),
     [font]
   )
+  const selectedHeadingFont = React.useMemo(() => {
+    if (fontHeading === "inherit" || fontHeading === font) {
+      return selectedFont
+    }
+
+    return FONTS.find((fontOption) => fontOption.value === fontHeading)
+  }, [font, fontHeading, selectedFont])
   const initialFontSansRef = React.useRef<string | null>(null)
+  const initialFontHeadingRef = React.useRef<string | null>(null)
 
   React.useEffect(() => {
     initialFontSansRef.current =
       document.documentElement.style.getPropertyValue("--font-sans")
+    initialFontHeadingRef.current =
+      document.documentElement.style.getPropertyValue("--font-heading")
 
     return () => {
       removeManagedBodyClasses(document.body)
@@ -86,10 +105,18 @@ export function DesignSystemProvider({
           "--font-sans",
           initialFontSansRef.current
         )
-        return
+      } else {
+        document.documentElement.style.removeProperty("--font-sans")
       }
 
-      document.documentElement.style.removeProperty("--font-sans")
+      if (initialFontHeadingRef.current) {
+        document.documentElement.style.setProperty(
+          "--font-heading",
+          initialFontHeadingRef.current
+        )
+      } else {
+        document.documentElement.style.removeProperty("--font-heading")
+      }
     }
   }, [])
 
@@ -124,12 +151,29 @@ export function DesignSystemProvider({
     // Always set --font-sans for the preview so the selected font is visible.
     // The font type (sans/serif/mono) is metadata for the CLI updater.
     if (selectedFont) {
-      const fontFamily = selectedFont.font.style.fontFamily
-      document.documentElement.style.setProperty("--font-sans", fontFamily)
+      document.documentElement.style.setProperty(
+        "--font-sans",
+        selectedFont.font.style.fontFamily
+      )
+    }
+
+    if (selectedHeadingFont) {
+      document.documentElement.style.setProperty(
+        "--font-heading",
+        selectedHeadingFont.font.style.fontFamily
+      )
     }
 
     setIsReady(true)
-  }, [style, theme, font, baseColor, selectedFont])
+  }, [
+    style,
+    theme,
+    font,
+    fontHeading,
+    baseColor,
+    selectedFont,
+    selectedHeadingFont,
+  ])
 
   const registryTheme = React.useMemo(() => {
     if (!baseColor || !theme || !menuAccent || !effectiveRadius) {
@@ -140,12 +184,13 @@ export function DesignSystemProvider({
       ...DEFAULT_CONFIG,
       baseColor,
       theme,
+      chartColor,
       menuAccent,
       radius: effectiveRadius,
     }
 
     return buildRegistryTheme(config)
-  }, [baseColor, theme, menuAccent, effectiveRadius])
+  }, [baseColor, theme, chartColor, menuAccent, effectiveRadius])
 
   // Use useLayoutEffect for synchronous CSS var updates.
   React.useLayoutEffect(() => {
