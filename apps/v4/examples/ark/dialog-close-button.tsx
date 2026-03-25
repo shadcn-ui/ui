@@ -18,7 +18,7 @@ export function DialogCloseButton() {
       <DialogTrigger asChild>
         <Button variant="outline">Share</Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="sm:max-w-md" showCloseButton>
         <DialogHeader>
           <DialogTitle>Share link</DialogTitle>
           <DialogDescription>
