@@ -3,8 +3,6 @@
 import { Field, FieldLabel } from "@/examples/ark/ui/field"
 import {
   Pagination,
-  PaginationContent,
-  PaginationItem,
   PaginationNext,
   PaginationPrevious,
 } from "@/examples/ark/ui/pagination"
@@ -55,15 +53,9 @@ export function PaginationIconsOnly() {
           </SelectContent>
         </Select>
       </Field>
-      <Pagination className="mx-0 w-auto">
-        <PaginationContent>
-          <PaginationItem>
-            <PaginationPrevious href="#" />
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationNext href="#" />
-          </PaginationItem>
-        </PaginationContent>
+      <Pagination count={100} pageSize={25} className="mx-0 w-auto">
+        <PaginationPrevious />
+        <PaginationNext />
       </Pagination>
     </div>
   )

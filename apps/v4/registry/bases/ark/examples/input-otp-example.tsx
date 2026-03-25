@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { REGEXP_ONLY_DIGITS, REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp"
+
 
 import {
   Example,
@@ -50,7 +50,7 @@ function InputOTPSimple() {
     <Example title="Simple">
       <Field>
         <FieldLabel htmlFor="simple">Simple</FieldLabel>
-        <InputOTP id="simple" maxLength={6}>
+        <InputOTP id="simple" count={6}>
           <InputOTPGroup>
             <InputOTPSlot index={0} />
             <InputOTPSlot index={1} />
@@ -73,7 +73,7 @@ function InputOTPPattern() {
     <Example title="Digits Only">
       <Field>
         <FieldLabel htmlFor="digits-only">Digits Only</FieldLabel>
-        <InputOTP id="digits-only" maxLength={6} pattern={REGEXP_ONLY_DIGITS}>
+        <InputOTP id="digits-only" count={6} type="numeric">
           <InputOTPGroup>
             <InputOTPSlot index={0} />
             <InputOTPSlot index={1} />
@@ -89,7 +89,7 @@ function InputOTPPattern() {
 }
 
 function InputOTPWithSeparator() {
-  const [value, setValue] = React.useState("123456")
+  const [value, setValue] = React.useState(["1","2","3","4","5","6"])
 
   return (
     <Example title="With Separator">
@@ -97,9 +97,9 @@ function InputOTPWithSeparator() {
         <FieldLabel htmlFor="with-separator">With Separator</FieldLabel>
         <InputOTP
           id="with-separator"
-          maxLength={6}
+          count={6}
           value={value}
-          onChange={setValue}
+          onValueChange={(details) => setValue(details.value)}
         >
           <InputOTPGroup>
             <InputOTPSlot index={0} />
@@ -129,8 +129,8 @@ function InputOTPAlphanumeric() {
         <FieldDescription>Accepts both letters and numbers.</FieldDescription>
         <InputOTP
           id="alphanumeric"
-          maxLength={6}
-          pattern={REGEXP_ONLY_DIGITS_AND_CHARS}
+          count={6}
+          type="alphanumeric"
         >
           <InputOTPGroup>
             <InputOTPSlot index={0} />
@@ -154,7 +154,7 @@ function InputOTPDisabled() {
     <Example title="Disabled">
       <Field>
         <FieldLabel htmlFor="disabled">Disabled</FieldLabel>
-        <InputOTP id="disabled" maxLength={6} disabled value="123456">
+        <InputOTP id="disabled" count={6} disabled value={["1","2","3","4","5","6"]}>
           <InputOTPGroup>
             <InputOTPSlot index={0} />
             <InputOTPSlot index={1} />
@@ -178,7 +178,7 @@ function InputOTPFourDigits() {
       <Field>
         <FieldLabel htmlFor="four-digits">4 Digits</FieldLabel>
         <FieldDescription>Common pattern for PIN codes.</FieldDescription>
-        <InputOTP id="four-digits" maxLength={4} pattern={REGEXP_ONLY_DIGITS}>
+        <InputOTP id="four-digits" count={4} type="numeric">
           <InputOTPGroup>
             <InputOTPSlot index={0} />
             <InputOTPSlot index={1} />
@@ -192,7 +192,7 @@ function InputOTPFourDigits() {
 }
 
 function InputOTPInvalid() {
-  const [value, setValue] = React.useState("000000")
+  const [value, setValue] = React.useState(["0","0","0","0","0","0"])
 
   return (
     <Example title="Invalid State">
@@ -201,7 +201,7 @@ function InputOTPInvalid() {
         <FieldDescription>
           Example showing the invalid error state.
         </FieldDescription>
-        <InputOTP id="invalid" maxLength={6} value={value} onChange={setValue}>
+        <InputOTP id="invalid" count={6} value={value} onValueChange={(details) => setValue(details.value)}>
           <InputOTPGroup>
             <InputOTPSlot index={0} aria-invalid />
             <InputOTPSlot index={1} aria-invalid />
@@ -253,7 +253,7 @@ function InputOTPForm() {
                   Resend Code
                 </Button>
               </div>
-              <InputOTP maxLength={6} id="otp-verification" required>
+              <InputOTP count={6} id="otp-verification" required>
                 <InputOTPGroup className="*:data-[slot=input-otp-slot]:text-xl style-vega:*:data-[slot=input-otp-slot]:h-16 style-vega:*:data-[slot=input-otp-slot]:w-12 style-nova:*:data-[slot=input-otp-slot]:h-12 style-nova:*:data-[slot=input-otp-slot]:w-11 style-lyra:*:data-[slot=input-otp-slot]:h-12 style-lyra:*:data-[slot=input-otp-slot]:w-11 style-maia:*:data-[slot=input-otp-slot]:h-16 style-maia:*:data-[slot=input-otp-slot]:w-12 style-mira:*:data-[slot=input-otp-slot]:h-12 style-mira:*:data-[slot=input-otp-slot]:w-11">
                   <InputOTPSlot index={0} />
                   <InputOTPSlot index={1} />

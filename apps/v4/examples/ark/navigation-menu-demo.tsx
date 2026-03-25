@@ -54,7 +54,7 @@ export default function NavigationMenuDemo() {
   return (
     <NavigationMenu>
       <NavigationMenuList>
-        <NavigationMenuItem>
+        <NavigationMenuItem value="item-1">
           <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="w-96">
@@ -70,7 +70,7 @@ export default function NavigationMenuDemo() {
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
-        <NavigationMenuItem className="hidden md:flex">
+        <NavigationMenuItem value="item-2" className="hidden md:flex">
           <NavigationMenuTrigger>Components</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-2 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
@@ -86,7 +86,7 @@ export default function NavigationMenuDemo() {
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
-        <NavigationMenuItem>
+        <NavigationMenuItem value="item-3">
           <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
             <Link href="/docs">Docs</Link>
           </NavigationMenuLink>

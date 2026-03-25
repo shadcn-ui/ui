@@ -1,32 +1,32 @@
 import {
   Pagination,
-  PaginationContent,
+  PaginationContext,
+  PaginationEllipsis,
   PaginationItem,
-  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
 } from "@/examples/ark/ui/pagination"
 
 export function PaginationSimple() {
   return (
-    <Pagination>
-      <PaginationContent>
-        <PaginationItem>
-          <PaginationLink href="#">1</PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink href="#" isActive>
-            2
-          </PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink href="#">3</PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink href="#">4</PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink href="#">5</PaginationLink>
-        </PaginationItem>
-      </PaginationContent>
+    <Pagination count={50} pageSize={10} siblingCount={1}>
+      <PaginationPrevious />
+      <PaginationContext>
+        {(api) =>
+          api.pages.map((page, index) =>
+            page.type === "page" ? (
+              <PaginationItem key={index} {...page}>
+                {page.value}
+              </PaginationItem>
+            ) : (
+              <PaginationEllipsis key={index} index={index}>
+                &#8230;
+              </PaginationEllipsis>
+            )
+          )
+        }
+      </PaginationContext>
+      <PaginationNext />
     </Pagination>
   )
 }

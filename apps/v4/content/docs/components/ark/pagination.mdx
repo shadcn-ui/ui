@@ -48,39 +48,33 @@ npx shadcn@latest add pagination
 ```tsx showLineNumbers
 import {
   Pagination,
-  PaginationContent,
+  PaginationContext,
   PaginationEllipsis,
   PaginationItem,
-  PaginationLink,
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination"
 ```
 
 ```tsx showLineNumbers
-<Pagination>
-  <PaginationContent>
-    <PaginationItem>
-      <PaginationPrevious href="#" />
-    </PaginationItem>
-    <PaginationItem>
-      <PaginationLink href="#">1</PaginationLink>
-    </PaginationItem>
-    <PaginationItem>
-      <PaginationLink href="#" isActive>
-        2
-      </PaginationLink>
-    </PaginationItem>
-    <PaginationItem>
-      <PaginationLink href="#">3</PaginationLink>
-    </PaginationItem>
-    <PaginationItem>
-      <PaginationEllipsis />
-    </PaginationItem>
-    <PaginationItem>
-      <PaginationNext href="#" />
-    </PaginationItem>
-  </PaginationContent>
+<Pagination count={100} pageSize={10} siblingCount={1}>
+  <PaginationPrevious />
+  <PaginationContext>
+    {(api) =>
+      api.pages.map((page, index) =>
+        page.type === "page" ? (
+          <PaginationItem key={index} {...page}>
+            {page.value}
+          </PaginationItem>
+        ) : (
+          <PaginationEllipsis key={index} index={index}>
+            &#8230;
+          </PaginationEllipsis>
+        )
+      )
+    }
+  </PaginationContext>
+  <PaginationNext />
 </Pagination>
 ```
 
@@ -97,36 +91,6 @@ A simple pagination with only page numbers.
 Use just the previous and next buttons without page numbers. This is useful for data tables with a rows per page selector.
 
 <ComponentPreview styleName="ark-nova" name="pagination-icons-only" />
-
-## Next.js
-
-By default the `<PaginationLink />` component will render an `<a />` tag.
-
-To use the Next.js `<Link />` component, make the following updates to `pagination.tsx`.
-
-```diff showLineNumbers /typeof Link/ {1}
-+ import Link from "next/link"
-
-- type PaginationLinkProps = ... & React.ComponentProps<"a">
-+ type PaginationLinkProps = ... & React.ComponentProps<typeof Link>
-
-const PaginationLink = ({...props }: ) => (
-  <PaginationItem>
--   <a>
-+   <Link>
-      // ...
--   </a>
-+   </Link>
-  </PaginationItem>
-)
-
-```
-
-<Callout className="mt-6">
-
-**Note:** We are making updates to the cli to automatically do this for you.
-
-</Callout>
 
 ## RTL
 
@@ -153,23 +117,7 @@ If you're upgrading from a previous version of the `Pagination` component, you'l
     className,
 +   text = "Previous",
     ...props
-- }: React.ComponentProps<typeof PaginationLink>) {
-+ }: React.ComponentProps<typeof PaginationLink> & { text?: string }) {
-    return (
-      <PaginationLink
-        aria-label="Go to previous page"
-        size="default"
-        className={cn("cn-pagination-previous", className)}
-        {...props}
-      >
-        <ChevronLeftIcon />
-        <span className="cn-pagination-previous-text hidden sm:block">
--         Previous
-+         {text}
-        </span>
-      </PaginationLink>
-    )
-  }
+  })
 ```
 
 <Step>Update `PaginationNext`.</Step>
@@ -179,21 +127,7 @@ If you're upgrading from a previous version of the `Pagination` component, you'l
     className,
 +   text = "Next",
     ...props
-- }: React.ComponentProps<typeof PaginationLink>) {
-+ }: React.ComponentProps<typeof PaginationLink> & { text?: string }) {
-    return (
-      <PaginationLink
-        aria-label="Go to next page"
-        size="default"
-        className={cn("cn-pagination-next", className)}
-        {...props}
-      >
--       <span className="cn-pagination-next-text hidden sm:block">Next</span>
-+       <span className="cn-pagination-next-text hidden sm:block">{text}</span>
-        <ChevronRightIcon />
-      </PaginationLink>
-    )
-  }
+  })
 ```
 
 </Steps>

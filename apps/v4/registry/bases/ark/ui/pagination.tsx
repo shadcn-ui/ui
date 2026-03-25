@@ -44,34 +44,18 @@ function PaginationContent({
   )
 }
 
-function PaginationItem({ ...props }: React.ComponentProps<typeof ark.li>) {
-  return <ark.li data-slot="pagination-item" {...props} />
-}
-
-type PaginationLinkProps = {
-  isActive?: boolean
-} & Pick<React.ComponentProps<typeof Button>, "size"> &
-  React.ComponentProps<typeof PaginationPrimitive.Item>
-
-function PaginationLink({
+function PaginationItem({
   className,
-  isActive,
-  size = "icon",
+  children,
   ...props
-}: PaginationLinkProps) {
+}: React.ComponentProps<typeof PaginationPrimitive.Item>) {
   return (
     <PaginationPrimitive.Item
-      asChild
+      data-slot="pagination-item"
+      className={cn("cn-pagination-link", className)}
       {...props}
     >
-      <Button
-        variant={isActive ? "outline" : "ghost"}
-        size={size}
-        aria-current={isActive ? "page" : undefined}
-        data-slot="pagination-link"
-        data-active={isActive}
-        className={cn("cn-pagination-link", className)}
-      />
+      {children}
     </PaginationPrimitive.Item>
   )
 }
@@ -240,12 +224,10 @@ const PaginationRootProvider = PaginationPrimitive.RootProvider
 
 export {
   Pagination,
-  PaginationContent,
   PaginationEllipsis,
   PaginationFirst,
   PaginationItem,
   PaginationLast,
-  PaginationLink,
   PaginationNext,
   PaginationPrevious,
   PaginationContext,

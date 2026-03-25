@@ -1,12 +1,10 @@
 "use client"
 
-import * as React from "react"
 import {
   Pagination,
-  PaginationContent,
+  PaginationContext,
   PaginationEllipsis,
   PaginationItem,
-  PaginationLink,
   PaginationNext,
   PaginationPrevious,
 } from "@/examples/ark/ui-rtl/pagination"
@@ -40,49 +38,28 @@ const translations: Translations = {
   },
 }
 
-function toArabicNumerals(num: number): string {
-  const arabicNumerals = ["٠", "١", "٢", "٣", "٤", "٥", "٦", "٧", "٨", "٩"]
-  return num
-    .toString()
-    .split("")
-    .map((digit) => arabicNumerals[parseInt(digit, 10)])
-    .join("")
-}
-
 export function PaginationRtl() {
-  const { dir, t, language } = useTranslation(translations, "ar")
-
-  const formatNumber = (num: number): string => {
-    if (language === "ar") {
-      return toArabicNumerals(num)
-    }
-    return num.toString()
-  }
+  const { dir, t } = useTranslation(translations, "ar")
 
   return (
-    <Pagination dir={dir}>
-      <PaginationContent>
-        <PaginationItem>
-          <PaginationPrevious href="#" text={t.previous} />
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink href="#">{formatNumber(1)}</PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink href="#" isActive>
-            {formatNumber(2)}
-          </PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink href="#">{formatNumber(3)}</PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationEllipsis />
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationNext href="#" text={t.next} />
-        </PaginationItem>
-      </PaginationContent>
+    <Pagination dir={dir} count={100} pageSize={10} siblingCount={1}>
+      <PaginationPrevious text={t.previous} />
+      <PaginationContext>
+        {(api) =>
+          api.pages.map((page, index) =>
+            page.type === "page" ? (
+              <PaginationItem key={index} {...page}>
+                {page.value}
+              </PaginationItem>
+            ) : (
+              <PaginationEllipsis key={index} index={index}>
+                &#8230;
+              </PaginationEllipsis>
+            )
+          )
+        }
+      </PaginationContext>
+      <PaginationNext text={t.next} />
     </Pagination>
   )
 }
