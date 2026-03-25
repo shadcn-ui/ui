@@ -201,21 +201,8 @@ function SelectWithIcons() {
       <div className="flex flex-col gap-4">
         <Select collection={chartCollection}>
           <SelectControl>
-            <SelectTrigger size="sm">
-              <SelectValue
-                placeholder={
-                  <>
-                    <IconPlaceholder
-                      lucide="ChartLineIcon"
-                      tabler="IconChartLine"
-                      hugeicons="Chart03Icon"
-                      phosphor="ChartLineIcon"
-                      remixicon="RiLineChartLine"
-                    />
-                    Chart Type
-                  </>
-                }
-              />
+            <SelectTrigger className="h-8 text-xs">
+              <SelectValue placeholder="Chart Type" />
             </SelectTrigger>
             <SelectIndicator />
           </SelectControl>
@@ -235,21 +222,8 @@ function SelectWithIcons() {
         </Select>
         <Select collection={chartCollection}>
           <SelectControl>
-            <SelectTrigger size="default">
-              <SelectValue
-                placeholder={
-                  <>
-                    <IconPlaceholder
-                      lucide="ChartLineIcon"
-                      tabler="IconChartLine"
-                      hugeicons="Chart03Icon"
-                      phosphor="ChartLineIcon"
-                      remixicon="RiLineChartLine"
-                    />
-                    Chart Type
-                  </>
-                }
-              />
+            <SelectTrigger>
+              <SelectValue placeholder="Chart Type" />
             </SelectTrigger>
             <SelectIndicator />
           </SelectControl>
@@ -334,7 +308,7 @@ function SelectSizes() {
       <div className="flex flex-col gap-4">
         <Select collection={fruitsCollection}>
           <SelectControl>
-            <SelectTrigger size="sm">
+            <SelectTrigger className="h-8 text-xs">
               <SelectValue placeholder="Small size" />
             </SelectTrigger>
             <SelectIndicator />
@@ -352,7 +326,7 @@ function SelectSizes() {
         </Select>
         <Select collection={fruitsCollection}>
           <SelectControl>
-            <SelectTrigger size="default">
+            <SelectTrigger>
               <SelectValue placeholder="Default size" />
             </SelectTrigger>
             <SelectIndicator />
@@ -380,7 +354,7 @@ function SelectWithButton() {
         <div className="flex items-center gap-2">
           <Select collection={fruitsCollection}>
             <SelectControl>
-              <SelectTrigger size="sm">
+              <SelectTrigger className="h-8 text-xs">
                 <SelectValue placeholder="Small" />
               </SelectTrigger>
               <SelectIndicator />
@@ -436,7 +410,7 @@ function SelectItemAligned() {
           </SelectTrigger>
           <SelectIndicator />
         </SelectControl>
-        <SelectContent position="popper">
+        <SelectContent>
           <SelectItemGroup>
             {fruitsWithDisabledCollection.items.map((item) => (
               <SelectItem key={item.value} item={item}>
@@ -488,7 +462,7 @@ function SelectInvalid() {
       <div className="flex flex-col gap-4">
         <Select collection={fruitsCollection}>
           <SelectControl>
-            <SelectTrigger aria-invalid="true">
+            <SelectTrigger >
               <SelectValue placeholder="Select a fruit" />
             </SelectTrigger>
             <SelectIndicator />
@@ -508,7 +482,7 @@ function SelectInvalid() {
           <FieldLabel htmlFor="select-fruit-invalid">Favorite Fruit</FieldLabel>
           <Select collection={fruitsCollection}>
             <SelectControl>
-              <SelectTrigger id="select-fruit-invalid" aria-invalid>
+              <SelectTrigger id="select-fruit-invalid" >
                 <SelectValue placeholder="Select a fruit" />
               </SelectTrigger>
               <SelectIndicator />
