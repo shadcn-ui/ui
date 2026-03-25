@@ -17,7 +17,7 @@ import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
-import { EnvironmentProvider } from "@ark-ui/react/environment"
+import { LocaleProvider } from "@ark-ui/react/locale"
 import { DirectionProvider as BaseDirectionProvider } from "@/registry/bases/base/ui/direction"
 import { DirectionProvider as RadixDirectionProvider } from "@/registry/bases/radix/ui/direction"
 import { Button } from "@/registry/new-york-v4/ui/button"
@@ -259,7 +259,7 @@ function DirectionProviderWrapper({
   const dir = explicitDir ?? translation.dir
 
   if (base === "ark") {
-    return <EnvironmentProvider>{children}</EnvironmentProvider>
+    return <LocaleProvider locale="en-US">{children}</LocaleProvider>
   }
 
   if (base === "base") {
