@@ -4,7 +4,7 @@ import { BoldIcon, ItalicIcon, UnderlineIcon } from "lucide-react"
 export function ToggleGroupVertical() {
   return (
     <ToggleGroup
-      type="multiple"
+      multiple
       orientation="vertical"
       spacing={1}
       defaultValue={["bold", "italic"]}

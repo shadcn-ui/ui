@@ -3,7 +3,7 @@ import { Bold, Italic, Underline } from "lucide-react"
 
 export function ToggleGroupDisabled() {
   return (
-    <ToggleGroup disabled type="multiple">
+    <ToggleGroup disabled multiple>
       <ToggleGroupItem value="bold" aria-label="Toggle bold">
         <Bold />
       </ToggleGroupItem>
