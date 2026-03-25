@@ -5,23 +5,80 @@ description: How to install dependencies and structure your app.
 
 <Callout className="mb-6 border-emerald-600 bg-emerald-100 dark:border-emerald-400 dark:bg-emerald-900">
 
-**Starting a new project?** Use [shadcn/create](/create) to scaffold a complete app with custom themes, components, and presets. For Next.js, Vite, Laravel, React Router, Astro, and TanStack Start.
+**Recommended for new projects:** Use [shadcn/create](/create) to build your preset visually and generate the right setup command for your framework.
 
 </Callout>
 
-## Quick Start
+Choose the setup that matches your starting point.
 
-Run the following command to create a new project with shadcn/ui:
+<div className="mt-6 grid gap-4 sm:grid-cols-3 sm:gap-6">
+  <LinkedCard
+    href="#use-create"
+    className="items-start gap-1 p-6 text-sm md:p-6"
+  >
+    <div className="font-medium">Use shadcn/create</div>
+    <div className="leading-relaxed text-muted-foreground">
+      Build your preset visually and generate a setup command.
+    </div>
+  </LinkedCard>
+  <LinkedCard href="#use-cli" className="items-start gap-1 p-6 text-sm md:p-6">
+    <div className="font-medium">Use the CLI</div>
+    <div className="leading-relaxed text-muted-foreground">
+      Scaffold a supported template directly from the terminal.
+    </div>
+  </LinkedCard>
+  <LinkedCard
+    href="#existing-project"
+    className="items-start gap-1 p-6 text-sm md:p-6"
+  >
+    <div className="font-medium">Existing Project</div>
+    <div className="leading-relaxed text-muted-foreground">
+      Add shadcn/ui to an app you already created.
+    </div>
+  </LinkedCard>
+</div>
+
+<div id="use-create" className="scroll-mt-24" />
+## Use shadcn/create
+
+Build your preset visually, preview your choices, and generate a framework-specific setup command.
+
+<Button asChild size="sm">
+  <Link
+    href="/create"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="mt-6 no-underline!"
+  >
+    Open shadcn/create
+  </Link>
+</Button>
+
+Available for Next.js, Vite, Laravel, React Router, Astro, and TanStack Start.
+
+<div id="use-cli" className="scroll-mt-24" />
+## Use the CLI
+
+Use the CLI to scaffold a new project directly from the terminal:
 
 ```bash
-npx shadcn@latest init
+npx shadcn@latest init -t [framework]
 ```
 
-This will guide you through the process of creating a new project with shadcn/ui with your preferred framework, icon library, and theme.
+Supported templates: `next`, `vite`, `start`, `react-router`, and `astro`.
 
-## Pick Your Framework
+For Laravel, create the app first with `laravel new`, then run `npx shadcn@latest init`.
 
-Start by selecting your framework of choice. Then follow the instructions to install the dependencies and structure your app. shadcn/ui is built to work with all React frameworks.
+<div id="existing-project" className="scroll-mt-24" />
+## Existing Project
+
+Each framework guide includes an `Existing Project` section with the manual setup steps for that framework.
+
+Pick your framework below and follow that path.
+
+## Choose Your Framework
+
+For Laravel, start with `laravel new` before using `shadcn/create` or `shadcn init`.
 
 <div className="mt-8 grid gap-4 sm:grid-cols-2 sm:gap-6">
   <LinkedCard href="/docs/installation/next">
