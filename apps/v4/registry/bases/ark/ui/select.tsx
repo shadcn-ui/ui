@@ -10,9 +10,7 @@ import {
 import { cn } from "@/registry/bases/ark/lib/utils"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
-function Select(props: React.ComponentProps<typeof SelectPrimitive.Root>) {
-  return <SelectPrimitive.Root {...props} />
-}
+const Select = SelectPrimitive.Root
 
 const SelectControl = React.forwardRef<
   HTMLDivElement,

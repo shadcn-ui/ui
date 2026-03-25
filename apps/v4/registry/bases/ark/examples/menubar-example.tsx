@@ -168,19 +168,19 @@ function MenubarWithCheckboxes() {
           <MenubarTrigger>View</MenubarTrigger>
           <MenubarContent className="w-64">
             <MenubarGroup>
-              <MenubarCheckboxItem value="cb-1">
+              <MenubarCheckboxItem checked value="cb-1">
                 Always Show Bookmarks Bar
               </MenubarCheckboxItem>
-              <MenubarCheckboxItem checked>
+              <MenubarCheckboxItem value="cb-show-urls" checked>
                 Always Show Full URLs
               </MenubarCheckboxItem>
             </MenubarGroup>
             <MenubarSeparator />
             <MenubarGroup>
-              <MenubarItem inset>
+              <MenubarItem value="reload" inset>
                 Reload <MenubarShortcut>⌘R</MenubarShortcut>
               </MenubarItem>
-              <MenubarItem disabled inset>
+              <MenubarItem value="force-reload" disabled inset>
                 Force Reload <MenubarShortcut>⇧⌘R</MenubarShortcut>
               </MenubarItem>
             </MenubarGroup>
@@ -189,9 +189,9 @@ function MenubarWithCheckboxes() {
         <MenubarMenu>
           <MenubarTrigger>Format</MenubarTrigger>
           <MenubarContent>
-            <MenubarCheckboxItem checked>Strikethrough</MenubarCheckboxItem>
-            <MenubarCheckboxItem value="cb-2">Code</MenubarCheckboxItem>
-            <MenubarCheckboxItem value="cb-3">Superscript</MenubarCheckboxItem>
+            <MenubarCheckboxItem value="cb-strikethrough" checked>Strikethrough</MenubarCheckboxItem>
+            <MenubarCheckboxItem checked value="cb-2">Code</MenubarCheckboxItem>
+            <MenubarCheckboxItem checked value="cb-3">Superscript</MenubarCheckboxItem>
           </MenubarContent>
         </MenubarMenu>
       </Menubar>
@@ -209,22 +209,22 @@ function MenubarWithRadio() {
         <MenubarMenu>
           <MenubarTrigger>Profiles</MenubarTrigger>
           <MenubarContent>
-            <MenubarRadioGroup value={user} onValueChange={setUser}>
+            <MenubarRadioGroup value={user} onValueChange={(details) => setUser(details.value)}>
               <MenubarRadioItem value="andy">Andy</MenubarRadioItem>
               <MenubarRadioItem value="benoit">Benoit</MenubarRadioItem>
               <MenubarRadioItem value="luis">Luis</MenubarRadioItem>
             </MenubarRadioGroup>
             <MenubarSeparator />
             <MenubarGroup>
-              <MenubarItem inset>Edit...</MenubarItem>
-              <MenubarItem inset>Add Profile...</MenubarItem>
+              <MenubarItem value="edit" inset>Edit...</MenubarItem>
+              <MenubarItem value="add" inset>Add Profile...</MenubarItem>
             </MenubarGroup>
           </MenubarContent>
         </MenubarMenu>
         <MenubarMenu>
           <MenubarTrigger>Theme</MenubarTrigger>
           <MenubarContent>
-            <MenubarRadioGroup value={theme} onValueChange={setTheme}>
+            <MenubarRadioGroup value={theme} onValueChange={(details) => setTheme(details.value)}>
               <MenubarRadioItem value="light">Light</MenubarRadioItem>
               <MenubarRadioItem value="dark">Dark</MenubarRadioItem>
               <MenubarRadioItem value="system">System</MenubarRadioItem>
@@ -305,7 +305,7 @@ function MenubarWithIcons() {
                 Help
               </MenubarItem>
               <MenubarSeparator />
-              <MenubarItem variant="destructive">
+              <MenubarItem value="delete-more" variant="destructive">
                 <IconPlaceholder
                   lucide="CircleDashedIcon"
                   tabler="IconCircleDashed"
@@ -414,20 +414,20 @@ function MenubarFormat() {
             </MenubarGroup>
             <MenubarSeparator />
             <MenubarGroup>
-              <MenubarCheckboxItem checked>Strikethrough</MenubarCheckboxItem>
-              <MenubarCheckboxItem value="cb-4">Code</MenubarCheckboxItem>
+              <MenubarCheckboxItem value="cb-strikethrough-2" checked>Strikethrough</MenubarCheckboxItem>
+              <MenubarCheckboxItem checked value="cb-4">Code</MenubarCheckboxItem>
             </MenubarGroup>
           </MenubarContent>
         </MenubarMenu>
         <MenubarMenu>
           <MenubarTrigger>View</MenubarTrigger>
           <MenubarContent>
-            <MenubarCheckboxItem value="cb-5">Show Ruler</MenubarCheckboxItem>
-            <MenubarCheckboxItem checked>Show Grid</MenubarCheckboxItem>
+            <MenubarCheckboxItem checked value="cb-5">Show Ruler</MenubarCheckboxItem>
+            <MenubarCheckboxItem value="cb-show-grid" checked>Show Grid</MenubarCheckboxItem>
             <MenubarSeparator />
             <MenubarGroup>
-              <MenubarItem inset>Zoom In</MenubarItem>
-              <MenubarItem inset>Zoom Out</MenubarItem>
+              <MenubarItem value="zoom-in" inset>Zoom In</MenubarItem>
+              <MenubarItem value="zoom-out" inset>Zoom Out</MenubarItem>
             </MenubarGroup>
           </MenubarContent>
         </MenubarMenu>
@@ -550,7 +550,7 @@ function MenubarDestructive() {
             </MenubarGroup>
             <MenubarSeparator />
             <MenubarGroup>
-              <MenubarItem variant="destructive">
+              <MenubarItem value="delete-file" variant="destructive">
                 <IconPlaceholder
                   lucide="TrashIcon"
                   tabler="IconTrash"
@@ -590,7 +590,7 @@ function MenubarDestructive() {
             </MenubarGroup>
             <MenubarSeparator />
             <MenubarGroup>
-              <MenubarItem variant="destructive">
+              <MenubarItem value="sign-out" variant="destructive">
                 <IconPlaceholder
                   lucide="LogOutIcon"
                   tabler="IconLogout"
@@ -603,7 +603,7 @@ function MenubarDestructive() {
             </MenubarGroup>
             <MenubarSeparator />
             <MenubarGroup>
-              <MenubarItem variant="destructive">
+              <MenubarItem value="delete-account" variant="destructive">
                 <IconPlaceholder
                   lucide="TrashIcon"
                   tabler="IconTrash"
@@ -688,7 +688,7 @@ function MenubarInDialog() {
                 </MenubarSub>
                 <MenubarSeparator />
                 <MenubarGroup>
-                  <MenubarItem variant="destructive">
+                  <MenubarItem value="delete-dialog" variant="destructive">
                     <IconPlaceholder
                       lucide="TrashIcon"
                       tabler="IconTrash"
@@ -754,12 +754,13 @@ function MenubarWithInset() {
                 />
                 Cut
               </MenubarItem>
-              <MenubarItem inset>Paste</MenubarItem>
+              <MenubarItem value="paste-inset" inset>Paste</MenubarItem>
             </MenubarGroup>
             <MenubarSeparator />
             <MenubarGroup>
               <MenubarLabel inset>Appearance</MenubarLabel>
               <MenubarCheckboxItem
+                value="cb-bookmarks"
                 inset
                 checked={showBookmarks}
                 onCheckedChange={setShowBookmarks}
@@ -767,6 +768,7 @@ function MenubarWithInset() {
                 Bookmarks
               </MenubarCheckboxItem>
               <MenubarCheckboxItem
+                value="cb-full-urls"
                 inset
                 checked={showUrls}
                 onCheckedChange={setShowUrls}
@@ -777,7 +779,7 @@ function MenubarWithInset() {
             <MenubarSeparator />
             <MenubarGroup>
               <MenubarLabel inset>Theme</MenubarLabel>
-              <MenubarRadioGroup value={theme} onValueChange={setTheme}>
+              <MenubarRadioGroup value={theme} onValueChange={(details) => setTheme(details.value)}>
                 <MenubarRadioItem inset value="light">
                   Light
                 </MenubarRadioItem>
