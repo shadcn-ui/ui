@@ -1,13 +1,8 @@
 "use client"
 
 import * as React from "react"
-
-import {
-  Field,
-  FieldDescription,
-  FieldTitle,
-} from "@/styles/base-nova/ui/field"
-import { Slider } from "@/styles/base-nova/ui/slider"
+import { Field, FieldDescription, FieldTitle } from "@/examples/base/ui/field"
+import { Slider } from "@/examples/base/ui/slider"
 
 export default function FieldSlider() {
   const [value, setValue] = React.useState([200, 800])

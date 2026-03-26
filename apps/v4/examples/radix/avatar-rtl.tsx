@@ -1,11 +1,6 @@
 "use client"
 
 import * as React from "react"
-
-import {
-  useTranslation,
-  type Translations,
-} from "@/components/language-selector"
 import {
   Avatar,
   AvatarBadge,
@@ -13,7 +8,12 @@ import {
   AvatarGroup,
   AvatarGroupCount,
   AvatarImage,
-} from "@/styles/radix-nova/ui-rtl/avatar"
+} from "@/examples/radix/ui-rtl/avatar"
+
+import {
+  useTranslation,
+  type Translations,
+} from "@/components/language-selector"
 
 const translations: Translations = {
   en: {

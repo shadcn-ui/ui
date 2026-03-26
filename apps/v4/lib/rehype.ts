@@ -18,26 +18,25 @@ function getBaseForStyle(styleName: string) {
       return base.name
     }
   }
-
   return null
 }
 
 function getDemoFilePath(name: string, styleName: string) {
   const base = getBaseForStyle(styleName)
-  const demo =
-    ExamplesIndex[styleName]?.[name] ??
-    (base ? ExamplesIndex[base]?.[name] : undefined)
+  if (!base) return null
+
+  const demo = ExamplesIndex[base]?.[name]
   if (!demo) return null
 
-  return demo.filePath
+  return path.join(process.cwd(), demo.filePath)
 }
 
-function getRegistryEntry(name: string, styleName: string) {
+function getIndexForStyle(styleName: string) {
   const base = getBaseForStyle(styleName)
-  return (
-    StylesIndex[styleName]?.[name] ??
-    (base ? BasesIndex[base]?.[name] : undefined)
-  )
+  if (base) {
+    return { index: BasesIndex, key: base }
+  }
+  return { index: StylesIndex, key: styleName }
 }
 
 interface UnistNode {
@@ -139,11 +138,8 @@ export function rehypeComponent() {
             src = getDemoFilePath(item.name, item.styleName)
 
             if (!src) {
-              const component = getRegistryEntry(item.name, item.styleName)
-
-              if (!component?.files) {
-                return
-              }
+              const { index, key } = getIndexForStyle(item.styleName)
+              const component = index[key]?.[item.name]
 
               if (item.type === "ComponentSource" && item.fileName) {
                 src =
@@ -166,7 +162,7 @@ export function rehypeComponent() {
             return
           }
 
-          const raw = fs.readFileSync(path.join(process.cwd(), src), "utf8")
+          const raw = fs.readFileSync(src, "utf8")
           const source = await formatCode(raw, item.styleName)
 
           item.node.children?.push(

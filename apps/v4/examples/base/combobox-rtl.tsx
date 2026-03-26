@@ -1,11 +1,6 @@
 "use client"
 
 import * as React from "react"
-
-import {
-  useTranslation,
-  type Translations,
-} from "@/components/language-selector"
 import {
   Combobox,
   ComboboxChip,
@@ -17,8 +12,13 @@ import {
   ComboboxList,
   ComboboxValue,
   useComboboxAnchor,
-} from "@/styles/base-nova/ui-rtl/combobox"
-import { Field, FieldLabel } from "@/styles/base-nova/ui-rtl/field"
+} from "@/examples/base/ui-rtl/combobox"
+import { Field, FieldLabel } from "@/examples/base/ui-rtl/field"
+
+import {
+  useTranslation,
+  type Translations,
+} from "@/components/language-selector"
 
 const categories = [
   "technology",

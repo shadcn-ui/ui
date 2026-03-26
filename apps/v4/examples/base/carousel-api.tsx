@@ -1,8 +1,7 @@
 "use client"
 
 import * as React from "react"
-
-import { Card, CardContent } from "@/styles/base-nova/ui/card"
+import { Card, CardContent } from "@/examples/base/ui/card"
 import {
   Carousel,
   CarouselContent,
@@ -10,7 +9,7 @@ import {
   CarouselNext,
   CarouselPrevious,
   type CarouselApi,
-} from "@/styles/base-nova/ui/carousel"
+} from "@/examples/base/ui/carousel"
 
 export default function CarouselDApiDemo() {
   const [api, setApi] = React.useState<CarouselApi>()

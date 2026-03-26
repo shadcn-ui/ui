@@ -1,9 +1,5 @@
+import { ToggleGroup, ToggleGroupItem } from "@/examples/radix/ui/toggle-group"
 import { Bold, Italic, Underline } from "lucide-react"
-
-import {
-  ToggleGroup,
-  ToggleGroupItem,
-} from "@/styles/radix-nova/ui/toggle-group"
 
 export function ToggleGroupDemo() {
   return (

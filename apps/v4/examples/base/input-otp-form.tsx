@@ -1,6 +1,4 @@
-import { RefreshCwIcon } from "lucide-react"
-
-import { Button } from "@/styles/base-nova/ui/button"
+import { Button } from "@/examples/base/ui/button"
 import {
   Card,
   CardContent,
@@ -8,18 +6,15 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/styles/base-nova/ui/card"
-import {
-  Field,
-  FieldDescription,
-  FieldLabel,
-} from "@/styles/base-nova/ui/field"
+} from "@/examples/base/ui/card"
+import { Field, FieldDescription, FieldLabel } from "@/examples/base/ui/field"
 import {
   InputOTP,
   InputOTPGroup,
   InputOTPSeparator,
   InputOTPSlot,
-} from "@/styles/base-nova/ui/input-otp"
+} from "@/examples/base/ui/input-otp"
+import { RefreshCwIcon } from "lucide-react"
 
 export function InputOTPForm() {
   return (

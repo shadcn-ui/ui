@@ -1,16 +1,7 @@
 "use client"
 
 import * as React from "react"
-import {
-  CalculatorIcon,
-  CalendarIcon,
-  CreditCardIcon,
-  SettingsIcon,
-  SmileIcon,
-  UserIcon,
-} from "lucide-react"
-
-import { Button } from "@/styles/base-nova/ui/button"
+import { Button } from "@/examples/base/ui/button"
 import {
   Command,
   CommandDialog,
@@ -21,7 +12,15 @@ import {
   CommandList,
   CommandSeparator,
   CommandShortcut,
-} from "@/styles/base-nova/ui/command"
+} from "@/examples/base/ui/command"
+import {
+  CalculatorIcon,
+  CalendarIcon,
+  CreditCardIcon,
+  SettingsIcon,
+  SmileIcon,
+  UserIcon,
+} from "lucide-react"
 
 export function CommandWithGroups() {
   const [open, setOpen] = React.useState(false)

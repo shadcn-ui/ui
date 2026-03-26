@@ -1,4 +1,4 @@
-import { Toggle } from "@/styles/radix-nova/ui/toggle"
+import { Toggle } from "@/examples/radix/ui/toggle"
 
 export function ToggleSizes() {
   return (

@@ -1,11 +1,6 @@
 "use client"
 
 import * as React from "react"
-
-import {
-  useTranslation,
-  type Translations,
-} from "@/components/language-selector"
 import {
   Select,
   SelectContent,
@@ -15,7 +10,12 @@ import {
   SelectSeparator,
   SelectTrigger,
   SelectValue,
-} from "@/styles/radix-nova/ui-rtl/select"
+} from "@/examples/radix/ui-rtl/select"
+
+import {
+  useTranslation,
+  type Translations,
+} from "@/components/language-selector"
 
 const translations: Translations = {
   en: {

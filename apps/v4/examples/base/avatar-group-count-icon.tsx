@@ -1,12 +1,11 @@
-import { PlusIcon } from "lucide-react"
-
 import {
   Avatar,
   AvatarFallback,
   AvatarGroup,
   AvatarGroupCount,
   AvatarImage,
-} from "@/styles/base-nova/ui/avatar"
+} from "@/examples/base/ui/avatar"
+import { PlusIcon } from "lucide-react"
 
 export function AvatarGroupCountIconExample() {
   return (

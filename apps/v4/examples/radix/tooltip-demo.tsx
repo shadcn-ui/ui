@@ -1,9 +1,9 @@
-import { Button } from "@/styles/radix-nova/ui/button"
+import { Button } from "@/examples/radix/ui/button"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/styles/radix-nova/ui/tooltip"
+} from "@/examples/radix/ui/tooltip"
 
 export function TooltipDemo() {
   return (

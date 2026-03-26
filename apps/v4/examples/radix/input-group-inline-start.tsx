@@ -1,15 +1,10 @@
-import { SearchIcon } from "lucide-react"
-
-import {
-  Field,
-  FieldDescription,
-  FieldLabel,
-} from "@/styles/radix-nova/ui/field"
+import { Field, FieldDescription, FieldLabel } from "@/examples/radix/ui/field"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
-} from "@/styles/radix-nova/ui/input-group"
+} from "@/examples/radix/ui/input-group"
+import { SearchIcon } from "lucide-react"
 
 export function InputGroupInlineStart() {
   return (

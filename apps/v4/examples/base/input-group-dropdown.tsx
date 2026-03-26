@@ -1,20 +1,19 @@
 "use client"
 
-import { ChevronDownIcon, MoreHorizontal } from "lucide-react"
-
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/styles/base-nova/ui/dropdown-menu"
+} from "@/examples/base/ui/dropdown-menu"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
-} from "@/styles/base-nova/ui/input-group"
+} from "@/examples/base/ui/input-group"
+import { ChevronDownIcon, MoreHorizontal } from "lucide-react"
 
 export function InputGroupDropdown() {
   return (

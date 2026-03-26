@@ -4,7 +4,7 @@ import {
   ContextMenuGroup,
   ContextMenuItem,
   ContextMenuTrigger,
-} from "@/styles/radix-nova/ui/context-menu"
+} from "@/examples/radix/ui/context-menu"
 
 export function ContextMenuBasic() {
   return (

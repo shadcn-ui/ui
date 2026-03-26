@@ -4,7 +4,7 @@ import {
   AvatarGroup,
   AvatarGroupCount,
   AvatarImage,
-} from "@/styles/radix-nova/ui/avatar"
+} from "@/examples/radix/ui/avatar"
 
 export function AvatarGroupCountExample() {
   return (

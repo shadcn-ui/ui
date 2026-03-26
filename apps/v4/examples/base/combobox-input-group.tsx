@@ -1,7 +1,5 @@
 "use client"
 
-import { GlobeIcon } from "lucide-react"
-
 import {
   Combobox,
   ComboboxCollection,
@@ -12,8 +10,9 @@ import {
   ComboboxItem,
   ComboboxLabel,
   ComboboxList,
-} from "@/styles/base-nova/ui/combobox"
-import { InputGroupAddon } from "@/styles/base-nova/ui/input-group"
+} from "@/examples/base/ui/combobox"
+import { InputGroupAddon } from "@/examples/base/ui/input-group"
+import { GlobeIcon } from "lucide-react"
 
 const timezones = [
   {

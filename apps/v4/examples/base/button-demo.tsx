@@ -1,6 +1,5 @@
+import { Button } from "@/examples/base/ui/button"
 import { ArrowUpIcon } from "lucide-react"
-
-import { Button } from "@/styles/base-nova/ui/button"
 
 export default function ButtonDemo() {
   return (

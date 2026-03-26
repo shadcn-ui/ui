@@ -1,11 +1,6 @@
 "use client"
 
 import * as React from "react"
-
-import {
-  useTranslation,
-  type Translations,
-} from "@/components/language-selector"
 import {
   Pagination,
   PaginationContent,
@@ -14,7 +9,12 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from "@/styles/base-nova/ui-rtl/pagination"
+} from "@/examples/base/ui-rtl/pagination"
+
+import {
+  useTranslation,
+  type Translations,
+} from "@/components/language-selector"
 
 const translations: Translations = {
   en: {

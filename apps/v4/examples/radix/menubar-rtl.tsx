@@ -1,11 +1,6 @@
 "use client"
 
 import * as React from "react"
-
-import {
-  useTranslation,
-  type Translations,
-} from "@/components/language-selector"
 import {
   Menubar,
   MenubarCheckboxItem,
@@ -21,7 +16,12 @@ import {
   MenubarSubContent,
   MenubarSubTrigger,
   MenubarTrigger,
-} from "@/styles/radix-nova/ui-rtl/menubar"
+} from "@/examples/radix/ui-rtl/menubar"
+
+import {
+  useTranslation,
+  type Translations,
+} from "@/components/language-selector"
 
 const translations: Translations = {
   en: {

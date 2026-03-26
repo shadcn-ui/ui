@@ -3,8 +3,8 @@ import {
   ItemContent,
   ItemMedia,
   ItemTitle,
-} from "@/styles/radix-nova/ui/item"
-import { Spinner } from "@/styles/radix-nova/ui/spinner"
+} from "@/examples/radix/ui/item"
+import { Spinner } from "@/examples/radix/ui/spinner"
 
 export function SpinnerDemo() {
   return (

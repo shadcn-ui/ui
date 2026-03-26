@@ -1,10 +1,8 @@
 "use client"
 
 import * as React from "react"
-import { IconMinus, IconPlus } from "@tabler/icons-react"
-
-import { Button } from "@/styles/radix-nova/ui/button"
-import { ButtonGroup } from "@/styles/radix-nova/ui/button-group"
+import { Button } from "@/examples/radix/ui/button"
+import { ButtonGroup } from "@/examples/radix/ui/button-group"
 import {
   Field,
   FieldContent,
@@ -15,10 +13,11 @@ import {
   FieldSeparator,
   FieldSet,
   FieldTitle,
-} from "@/styles/radix-nova/ui/field"
-import { Input } from "@/styles/radix-nova/ui/input"
-import { RadioGroup, RadioGroupItem } from "@/styles/radix-nova/ui/radio-group"
-import { Switch } from "@/styles/radix-nova/ui/switch"
+} from "@/examples/radix/ui/field"
+import { Input } from "@/examples/radix/ui/input"
+import { RadioGroup, RadioGroupItem } from "@/examples/radix/ui/radio-group"
+import { Switch } from "@/examples/radix/ui/switch"
+import { IconMinus, IconPlus } from "@tabler/icons-react"
 
 export function AppearanceSettings() {
   const [gpuCount, setGpuCount] = React.useState(8)

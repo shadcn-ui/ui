@@ -1,6 +1,4 @@
-import { ExternalLinkIcon, MailIcon } from "lucide-react"
-
-import { Button } from "@/styles/base-nova/ui/button"
+import { Button } from "@/examples/base/ui/button"
 import {
   Card,
   CardContent,
@@ -8,16 +6,17 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/styles/base-nova/ui/card"
-import { Field, FieldGroup, FieldLabel } from "@/styles/base-nova/ui/field"
-import { Input } from "@/styles/base-nova/ui/input"
+} from "@/examples/base/ui/card"
+import { Field, FieldGroup, FieldLabel } from "@/examples/base/ui/field"
+import { Input } from "@/examples/base/ui/input"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
   InputGroupText,
   InputGroupTextarea,
-} from "@/styles/base-nova/ui/input-group"
+} from "@/examples/base/ui/input-group"
+import { ExternalLinkIcon, MailIcon } from "lucide-react"
 
 export function InputGroupInCard() {
   return (

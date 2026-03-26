@@ -1,4 +1,4 @@
-import { Slider } from "@/styles/radix-nova/ui/slider"
+import { Slider } from "@/examples/radix/ui/slider"
 
 export function SliderMultiple() {
   return (

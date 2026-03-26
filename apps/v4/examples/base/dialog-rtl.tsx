@@ -1,10 +1,6 @@
 "use client"
 
-import {
-  useTranslation,
-  type Translations,
-} from "@/components/language-selector"
-import { Button } from "@/styles/base-nova/ui-rtl/button"
+import { Button } from "@/examples/base/ui-rtl/button"
 import {
   Dialog,
   DialogClose,
@@ -14,10 +10,15 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/styles/base-nova/ui-rtl/dialog"
-import { Field, FieldGroup } from "@/styles/base-nova/ui-rtl/field"
-import { Input } from "@/styles/base-nova/ui-rtl/input"
-import { Label } from "@/styles/base-nova/ui-rtl/label"
+} from "@/examples/base/ui-rtl/dialog"
+import { Field, FieldGroup } from "@/examples/base/ui-rtl/field"
+import { Input } from "@/examples/base/ui-rtl/input"
+import { Label } from "@/examples/base/ui-rtl/label"
+
+import {
+  useTranslation,
+  type Translations,
+} from "@/components/language-selector"
 
 const translations: Translations = {
   en: {

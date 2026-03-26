@@ -1,12 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { BluetoothIcon } from "lucide-react"
-
-import {
-  useTranslation,
-  type Translations,
-} from "@/components/language-selector"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -18,8 +12,14 @@ import {
   AlertDialogMedia,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/styles/radix-nova/ui-rtl/alert-dialog"
-import { Button } from "@/styles/radix-nova/ui-rtl/button"
+} from "@/examples/radix/ui-rtl/alert-dialog"
+import { Button } from "@/examples/radix/ui-rtl/button"
+import { BluetoothIcon } from "lucide-react"
+
+import {
+  useTranslation,
+  type Translations,
+} from "@/components/language-selector"
 
 const translations: Translations = {
   en: {

@@ -2,7 +2,7 @@ import {
   InputOTP,
   InputOTPGroup,
   InputOTPSlot,
-} from "@/styles/radix-nova/ui/input-otp"
+} from "@/examples/radix/ui/input-otp"
 
 export function InputOTPDemo() {
   return (

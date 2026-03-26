@@ -1,5 +1,4 @@
 import Link from "next/link"
-
 import {
   Breadcrumb,
   BreadcrumbEllipsis,
@@ -8,7 +7,7 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/styles/radix-nova/ui/breadcrumb"
+} from "@/examples/radix/ui/breadcrumb"
 
 export function BreadcrumbEllipsisDemo() {
   return (

@@ -1,7 +1,5 @@
 "use client"
 
-import { GlobeIcon } from "lucide-react"
-
 import {
   Combobox,
   ComboboxCollection,
@@ -12,8 +10,9 @@ import {
   ComboboxItem,
   ComboboxLabel,
   ComboboxList,
-} from "@/styles/radix-nova/ui/combobox"
-import { InputGroupAddon } from "@/styles/radix-nova/ui/input-group"
+} from "@/examples/radix/ui/combobox"
+import { InputGroupAddon } from "@/examples/radix/ui/input-group"
+import { GlobeIcon } from "lucide-react"
 
 const timezones = [
   {

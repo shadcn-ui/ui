@@ -1,4 +1,4 @@
-import { Button } from "@/styles/radix-nova/ui/button"
+import { Button } from "@/examples/radix/ui/button"
 import {
   Popover,
   PopoverContent,
@@ -6,7 +6,7 @@ import {
   PopoverHeader,
   PopoverTitle,
   PopoverTrigger,
-} from "@/styles/radix-nova/ui/popover"
+} from "@/examples/radix/ui/popover"
 
 export function PopoverBasic() {
   return (

@@ -2,16 +2,11 @@
 
 import * as React from "react"
 import Link from "next/link"
-import { ChevronRightIcon } from "lucide-react"
-import { type RegistryItem } from "shadcn/schema"
-
-import { cn } from "@/lib/utils"
-import { type Base } from "@/registry/bases"
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/styles/base-nova/ui/collapsible"
+} from "@/examples/base/ui/collapsible"
 import {
   Sidebar,
   SidebarContent,
@@ -20,7 +15,12 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/styles/base-nova/ui/sidebar"
+} from "@/examples/base/ui/sidebar"
+import { ChevronRightIcon } from "lucide-react"
+import { type RegistryItem } from "shadcn/schema"
+
+import { cn } from "@/lib/utils"
+import { type Base } from "@/registry/bases"
 import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
 import { groupItemsByType } from "@/app/(create)/lib/utils"
 

@@ -2,24 +2,11 @@
 
 import { useMemo, useState } from "react"
 import {
-  IconApps,
-  IconArrowUp,
-  IconAt,
-  IconBook,
-  IconCircleDashedPlus,
-  IconPaperclip,
-  IconPlus,
-  IconWorld,
-  IconX,
-} from "@tabler/icons-react"
-
-import { useLanguageContext } from "@/components/language-selector"
-import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "@/styles/base-nova/ui-rtl/avatar"
-import { Badge } from "@/styles/base-nova/ui-rtl/badge"
+} from "@/examples/base/ui-rtl/avatar"
+import { Badge } from "@/examples/base/ui-rtl/badge"
 import {
   Command,
   CommandEmpty,
@@ -27,7 +14,7 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@/styles/base-nova/ui-rtl/command"
+} from "@/examples/base/ui-rtl/command"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -40,21 +27,34 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@/styles/base-nova/ui-rtl/dropdown-menu"
-import { Field, FieldLabel } from "@/styles/base-nova/ui-rtl/field"
+} from "@/examples/base/ui-rtl/dropdown-menu"
+import { Field, FieldLabel } from "@/examples/base/ui-rtl/field"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupTextarea,
-} from "@/styles/base-nova/ui-rtl/input-group"
-import { Popover, PopoverContent } from "@/styles/base-nova/ui-rtl/popover"
-import { Switch } from "@/styles/base-nova/ui-rtl/switch"
+} from "@/examples/base/ui-rtl/input-group"
+import { Popover, PopoverContent } from "@/examples/base/ui-rtl/popover"
+import { Switch } from "@/examples/base/ui-rtl/switch"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/styles/base-nova/ui-rtl/tooltip"
+} from "@/examples/base/ui-rtl/tooltip"
+import {
+  IconApps,
+  IconArrowUp,
+  IconAt,
+  IconBook,
+  IconCircleDashedPlus,
+  IconPaperclip,
+  IconPlus,
+  IconWorld,
+  IconX,
+} from "@tabler/icons-react"
+
+import { useLanguageContext } from "@/components/language-selector"
 
 const translations = {
   ar: {

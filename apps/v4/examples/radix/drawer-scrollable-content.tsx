@@ -1,4 +1,4 @@
-import { Button } from "@/styles/radix-nova/ui/button"
+import { Button } from "@/examples/radix/ui/button"
 import {
   Drawer,
   DrawerClose,
@@ -8,7 +8,7 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "@/styles/radix-nova/ui/drawer"
+} from "@/examples/radix/ui/drawer"
 
 export function DrawerScrollableContent() {
   return (

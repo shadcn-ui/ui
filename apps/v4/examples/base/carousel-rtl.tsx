@@ -1,19 +1,19 @@
 "use client"
 
 import * as React from "react"
-
-import {
-  useTranslation,
-  type Translations,
-} from "@/components/language-selector"
-import { Card, CardContent } from "@/styles/base-nova/ui-rtl/card"
+import { Card, CardContent } from "@/examples/base/ui-rtl/card"
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/styles/base-nova/ui-rtl/carousel"
+} from "@/examples/base/ui-rtl/carousel"
+
+import {
+  useTranslation,
+  type Translations,
+} from "@/components/language-selector"
 
 const translations: Translations = {
   en: {

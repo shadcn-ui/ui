@@ -1,11 +1,6 @@
 "use client"
 
 import * as React from "react"
-
-import {
-  useTranslation,
-  type Translations,
-} from "@/components/language-selector"
 import {
   Table,
   TableBody,
@@ -15,7 +10,12 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/styles/base-nova/ui-rtl/table"
+} from "@/examples/base/ui-rtl/table"
+
+import {
+  useTranslation,
+  type Translations,
+} from "@/components/language-selector"
 
 const translations: Translations = {
   en: {

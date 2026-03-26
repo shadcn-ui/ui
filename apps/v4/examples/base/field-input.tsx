@@ -4,8 +4,8 @@ import {
   FieldGroup,
   FieldLabel,
   FieldSet,
-} from "@/styles/base-nova/ui/field"
-import { Input } from "@/styles/base-nova/ui/input"
+} from "@/examples/base/ui/field"
+import { Input } from "@/examples/base/ui/input"
 
 export default function FieldInput() {
   return (

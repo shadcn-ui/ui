@@ -1,21 +1,20 @@
 "use client"
 
 import * as React from "react"
-import { AudioLinesIcon, PlusIcon } from "lucide-react"
-
-import { Button } from "@/styles/base-nova/ui/button"
-import { ButtonGroup } from "@/styles/base-nova/ui/button-group"
+import { Button } from "@/examples/base/ui/button"
+import { ButtonGroup } from "@/examples/base/ui/button-group"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
-} from "@/styles/base-nova/ui/input-group"
+} from "@/examples/base/ui/input-group"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/styles/base-nova/ui/tooltip"
+} from "@/examples/base/ui/tooltip"
+import { AudioLinesIcon, PlusIcon } from "lucide-react"
 
 export default function ButtonGroupInputGroup() {
   const [voiceEnabled, setVoiceEnabled] = React.useState(false)

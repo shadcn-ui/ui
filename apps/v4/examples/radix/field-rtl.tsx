@@ -1,11 +1,7 @@
 "use client"
 
-import {
-  useTranslation,
-  type Translations,
-} from "@/components/language-selector"
-import { Button } from "@/styles/radix-nova/ui-rtl/button"
-import { Checkbox } from "@/styles/radix-nova/ui-rtl/checkbox"
+import { Button } from "@/examples/radix/ui-rtl/button"
+import { Checkbox } from "@/examples/radix/ui-rtl/checkbox"
 import {
   Field,
   FieldDescription,
@@ -14,8 +10,8 @@ import {
   FieldLegend,
   FieldSeparator,
   FieldSet,
-} from "@/styles/radix-nova/ui-rtl/field"
-import { Input } from "@/styles/radix-nova/ui-rtl/input"
+} from "@/examples/radix/ui-rtl/field"
+import { Input } from "@/examples/radix/ui-rtl/input"
 import {
   Select,
   SelectContent,
@@ -23,8 +19,13 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/styles/radix-nova/ui-rtl/select"
-import { Textarea } from "@/styles/radix-nova/ui-rtl/textarea"
+} from "@/examples/radix/ui-rtl/select"
+import { Textarea } from "@/examples/radix/ui-rtl/textarea"
+
+import {
+  useTranslation,
+  type Translations,
+} from "@/components/language-selector"
 
 const months = [
   { label: "MM", value: null },

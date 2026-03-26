@@ -1,7 +1,4 @@
-import {
-  ToggleGroup,
-  ToggleGroupItem,
-} from "@/styles/base-nova/ui/toggle-group"
+import { ToggleGroup, ToggleGroupItem } from "@/examples/base/ui/toggle-group"
 
 export function ToggleGroupOutline() {
   return (

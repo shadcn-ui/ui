@@ -1,6 +1,4 @@
-import { IconCloud } from "@tabler/icons-react"
-
-import { Button } from "@/styles/radix-nova/ui/button"
+import { Button } from "@/examples/radix/ui/button"
 import {
   Empty,
   EmptyContent,
@@ -8,7 +6,8 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@/styles/radix-nova/ui/empty"
+} from "@/examples/radix/ui/empty"
+import { IconCloud } from "@tabler/icons-react"
 
 export default function EmptyOutline() {
   return (

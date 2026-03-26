@@ -1,5 +1,4 @@
 import Link from "next/link"
-
 import {
   Breadcrumb,
   BreadcrumbEllipsis,
@@ -8,15 +7,15 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/styles/base-nova/ui/breadcrumb"
-import { Button } from "@/styles/base-nova/ui/button"
+} from "@/examples/base/ui/breadcrumb"
+import { Button } from "@/examples/base/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/styles/base-nova/ui/dropdown-menu"
+} from "@/examples/base/ui/dropdown-menu"
 
 export function BreadcrumbDemo() {
   return (

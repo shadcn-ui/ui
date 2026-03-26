@@ -7,7 +7,7 @@ import {
   ContextMenuSeparator,
   ContextMenuShortcut,
   ContextMenuTrigger,
-} from "@/styles/radix-nova/ui/context-menu"
+} from "@/examples/radix/ui/context-menu"
 
 export function ContextMenuGroups() {
   return (

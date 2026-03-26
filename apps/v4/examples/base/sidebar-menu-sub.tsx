@@ -12,7 +12,7 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
   SidebarProvider,
-} from "@/styles/base-nova/ui/sidebar"
+} from "@/examples/base/ui/sidebar"
 
 const items = [
   {

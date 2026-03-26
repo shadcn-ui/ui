@@ -1,4 +1,4 @@
-import { Checkbox } from "@/styles/radix-nova/ui/checkbox"
+import { Checkbox } from "@/examples/radix/ui/checkbox"
 import {
   Field,
   FieldContent,
@@ -8,7 +8,7 @@ import {
   FieldLegend,
   FieldSeparator,
   FieldSet,
-} from "@/styles/radix-nova/ui/field"
+} from "@/examples/radix/ui/field"
 
 export function FieldCheckbox() {
   return (

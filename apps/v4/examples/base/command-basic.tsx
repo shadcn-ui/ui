@@ -1,8 +1,7 @@
 "use client"
 
 import * as React from "react"
-
-import { Button } from "@/styles/base-nova/ui/button"
+import { Button } from "@/examples/base/ui/button"
 import {
   Command,
   CommandDialog,
@@ -11,7 +10,7 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@/styles/base-nova/ui/command"
+} from "@/examples/base/ui/command"
 
 export function CommandBasic() {
   const [open, setOpen] = React.useState(false)

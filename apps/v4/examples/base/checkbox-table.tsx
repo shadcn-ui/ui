@@ -1,8 +1,7 @@
 "use client"
 
 import * as React from "react"
-
-import { Checkbox } from "@/styles/base-nova/ui/checkbox"
+import { Checkbox } from "@/examples/base/ui/checkbox"
 import {
   Table,
   TableBody,
@@ -10,7 +9,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/styles/base-nova/ui/table"
+} from "@/examples/base/ui/table"
 
 const tableData = [
   {

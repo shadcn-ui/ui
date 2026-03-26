@@ -1,13 +1,4 @@
 import {
-  Calculator,
-  Calendar,
-  CreditCard,
-  Settings,
-  Smile,
-  User,
-} from "lucide-react"
-
-import {
   Command,
   CommandEmpty,
   CommandGroup,
@@ -16,7 +7,15 @@ import {
   CommandList,
   CommandSeparator,
   CommandShortcut,
-} from "@/styles/base-nova/ui/command"
+} from "@/examples/base/ui/command"
+import {
+  Calculator,
+  Calendar,
+  CreditCard,
+  Settings,
+  Smile,
+  User,
+} from "lucide-react"
 
 export function CommandDemo() {
   return (

@@ -1,6 +1,21 @@
 "use client"
 
 import * as React from "react"
+import { Button } from "@/examples/radix/ui-rtl/button"
+import { ButtonGroup } from "@/examples/radix/ui-rtl/button-group"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuSeparator,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger,
+} from "@/examples/radix/ui-rtl/dropdown-menu"
 import {
   ArchiveIcon,
   ArrowLeftIcon,
@@ -17,21 +32,6 @@ import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
-import { Button } from "@/styles/radix-nova/ui-rtl/button"
-import { ButtonGroup } from "@/styles/radix-nova/ui-rtl/button-group"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuRadioGroup,
-  DropdownMenuRadioItem,
-  DropdownMenuSeparator,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
-  DropdownMenuTrigger,
-} from "@/styles/radix-nova/ui-rtl/dropdown-menu"
 
 const translations: Translations = {
   en: {

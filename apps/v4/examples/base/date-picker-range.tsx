@@ -1,18 +1,17 @@
 "use client"
 
 import * as React from "react"
-import { addDays, format } from "date-fns"
-import { CalendarIcon } from "lucide-react"
-import { type DateRange } from "react-day-picker"
-
-import { Button } from "@/styles/base-nova/ui/button"
-import { Calendar } from "@/styles/base-nova/ui/calendar"
-import { Field, FieldLabel } from "@/styles/base-nova/ui/field"
+import { Button } from "@/examples/base/ui/button"
+import { Calendar } from "@/examples/base/ui/calendar"
+import { Field, FieldLabel } from "@/examples/base/ui/field"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/styles/base-nova/ui/popover"
+} from "@/examples/base/ui/popover"
+import { addDays, format } from "date-fns"
+import { CalendarIcon } from "lucide-react"
+import { type DateRange } from "react-day-picker"
 
 export function DatePickerWithRange() {
   const [date, setDate] = React.useState<DateRange | undefined>({

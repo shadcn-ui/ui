@@ -1,12 +1,11 @@
 "use client"
 
-import TextareaAutosize from "react-textarea-autosize"
-
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
-} from "@/styles/base-nova/ui/input-group"
+} from "@/examples/base/ui/input-group"
+import TextareaAutosize from "react-textarea-autosize"
 
 export default function InputGroupCustom() {
   return (

@@ -1,8 +1,6 @@
 "use client"
 
-import { PencilIcon, ShareIcon, TrashIcon } from "lucide-react"
-
-import { Button } from "@/styles/base-nova/ui/button"
+import { Button } from "@/examples/base/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,7 +8,8 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/styles/base-nova/ui/dropdown-menu"
+} from "@/examples/base/ui/dropdown-menu"
+import { PencilIcon, ShareIcon, TrashIcon } from "lucide-react"
 
 export function DropdownMenuDestructive() {
   return (

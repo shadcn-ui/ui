@@ -1,8 +1,4 @@
-import {
-  Field,
-  FieldDescription,
-  FieldLabel,
-} from "@/styles/base-nova/ui/field"
+import { Field, FieldDescription, FieldLabel } from "@/examples/base/ui/field"
 import {
   Select,
   SelectContent,
@@ -10,7 +6,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/styles/base-nova/ui/select"
+} from "@/examples/base/ui/select"
 
 const items = [
   { label: "Choose department", value: null },

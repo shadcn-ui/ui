@@ -6,7 +6,7 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from "@/styles/radix-nova/ui/pagination"
+} from "@/examples/radix/ui/pagination"
 
 export default function PaginationDemo() {
   return (

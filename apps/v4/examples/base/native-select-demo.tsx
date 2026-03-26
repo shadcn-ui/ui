@@ -1,7 +1,7 @@
 import {
   NativeSelect,
   NativeSelectOption,
-} from "@/styles/base-nova/ui/native-select"
+} from "@/examples/base/ui/native-select"
 
 export default function NativeSelectDemo() {
   return (

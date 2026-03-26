@@ -1,6 +1,5 @@
 import Image from "next/image"
-
-import { AspectRatio } from "@/styles/radix-nova/ui/aspect-ratio"
+import { AspectRatio } from "@/examples/radix/ui/aspect-ratio"
 
 export default function AspectRatioDemo() {
   return (

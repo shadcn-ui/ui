@@ -3,8 +3,8 @@ import {
   FieldContent,
   FieldDescription,
   FieldLabel,
-} from "@/styles/base-nova/ui/field"
-import { Switch } from "@/styles/base-nova/ui/switch"
+} from "@/examples/base/ui/field"
+import { Switch } from "@/examples/base/ui/switch"
 
 export function SwitchDescription() {
   return (

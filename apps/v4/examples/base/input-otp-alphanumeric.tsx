@@ -1,13 +1,12 @@
 "use client"
 
-import { REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp"
-
 import {
   InputOTP,
   InputOTPGroup,
   InputOTPSeparator,
   InputOTPSlot,
-} from "@/styles/base-nova/ui/input-otp"
+} from "@/examples/base/ui/input-otp"
+import { REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp"
 
 export function InputOTPAlphanumeric() {
   return (

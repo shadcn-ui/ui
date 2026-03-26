@@ -10,6 +10,8 @@ import { Index as StylesIndex } from "@/registry/__index__"
 import { BASES } from "@/registry/bases"
 import { Index as BasesIndex } from "@/registry/bases/__index__"
 
+const INDEXED_STYLES = ["new-york-v4"]
+
 // LRU cache for cross-request caching of registry items.
 // File reads are I/O-bound, so caching improves dev server performance.
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -27,51 +29,17 @@ function getBaseForStyle(styleName: string) {
   return null
 }
 
-function getDemoIndexKey(styleName: string) {
-  if (ExamplesIndex[styleName]) {
-    return styleName
-  }
-
-  const base = getBaseForStyle(styleName)
-  if (base && ExamplesIndex[base]) {
-    return base
-  }
-
-  return styleName
-}
-
-function getBaseIndex(styleName: string) {
-  const base = getBaseForStyle(styleName)
-  return base ? BasesIndex[base] : null
-}
-
-function getStyleIndex(styleName: string) {
-  return StylesIndex[styleName] ?? null
-}
-
-function getMergedIndexForStyle(styleName: string) {
-  const styleIndex = getStyleIndex(styleName)
-  const baseIndex = getBaseIndex(styleName)
-
-  if (styleIndex && baseIndex) {
-    return { ...baseIndex, ...styleIndex }
-  }
-
-  return styleIndex ?? baseIndex
-}
-
-function getRegistryEntry(name: string, styleName: string) {
-  return getStyleIndex(styleName)?.[name] ?? getBaseIndex(styleName)?.[name]
-}
-
 export function getDemoComponent(name: string, styleName: string) {
-  const key = getDemoIndexKey(styleName)
-  return ExamplesIndex[key]?.[name]?.component
+  const base = getBaseForStyle(styleName)
+  if (!base) return undefined
+  return ExamplesIndex[base]?.[name]?.component
 }
 
 export async function getDemoItem(name: string, styleName: string) {
-  const key = getDemoIndexKey(styleName)
-  const demo = ExamplesIndex[key]?.[name]
+  const base = getBaseForStyle(styleName)
+  if (!base) return null
+
+  const demo = ExamplesIndex[base]?.[name]
   if (!demo) {
     return null
   }
@@ -91,20 +59,35 @@ export async function getDemoItem(name: string, styleName: string) {
   }
 }
 
+function getIndexForStyle(styleName: string) {
+  if (INDEXED_STYLES.includes(styleName)) {
+    return { index: StylesIndex, key: styleName }
+  }
+
+  const base = getBaseForStyle(styleName)
+  if (base) {
+    return { index: BasesIndex, key: base }
+  }
+
+  return { index: StylesIndex, key: styleName }
+}
+
 export function getRegistryComponent(name: string, styleName: string) {
   const demoComponent = getDemoComponent(name, styleName)
   if (demoComponent) {
     return demoComponent
   }
 
-  return getRegistryEntry(name, styleName)?.component
+  const { index, key } = getIndexForStyle(styleName)
+  return index[key]?.[name]?.component
 }
 
 export async function getRegistryItems(
   styleName: string,
   filter?: (item: z.infer<typeof registryItemSchema>) => boolean
 ) {
-  const styleIndex = getMergedIndexForStyle(styleName)
+  const { index, key } = getIndexForStyle(styleName)
+  const styleIndex = index[key]
 
   if (!styleIndex) {
     return []
@@ -130,24 +113,22 @@ export async function getRegistryItem(name: string, styleName: string) {
     return registryCache.get(cacheKey)
   }
 
-  const item = getRegistryEntry(name, styleName)
+  const { index, key } = getIndexForStyle(styleName)
+  const item = index[key]?.[name]
 
   if (!item) {
     registryCache.set(cacheKey, null)
     return null
   }
 
-  const normalizedItem = {
-    ...item,
-    files: item.files.map((file: unknown) =>
-      typeof file === "string" ? { path: file } : file
-    ),
-  }
-
   // Convert all file paths to object.
   // TODO: remove when we migrate to new registry.
+  item.files = item.files.map((file: unknown) =>
+    typeof file === "string" ? { path: file } : file
+  )
+
   // Fail early before doing expensive file operations.
-  const result = registryItemSchema.safeParse(normalizedItem)
+  const result = registryItemSchema.safeParse(item)
   if (!result.success) {
     registryCache.set(cacheKey, null)
     return null
@@ -250,17 +231,6 @@ function fixFilePaths(files: z.infer<typeof registryItemSchema>["files"]) {
 }
 
 export function fixImport(content: string) {
-  content = content.replace(
-    /@\/styles\/([\w-]+)\/(ui-rtl|ui)\/([\w-]+)/g,
-    (match, _styleName, type, component) => {
-      if (type === "ui" || type === "ui-rtl") {
-        return `@/components/ui/${component}`
-      }
-
-      return match
-    }
-  )
-
   const regex = /@\/(.+?)\/((?:.*?\/)?(?:components|ui|hooks|lib))\/([\w-]+)/g
 
   const replacement = (

@@ -7,7 +7,7 @@ import {
   MenubarSeparator,
   MenubarShortcut,
   MenubarTrigger,
-} from "@/styles/radix-nova/ui/menubar"
+} from "@/examples/radix/ui/menubar"
 
 export function MenubarCheckbox() {
   return (

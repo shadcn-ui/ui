@@ -1,10 +1,5 @@
+import { Alert, AlertDescription, AlertTitle } from "@/examples/base/ui/alert"
 import { CheckCircle2Icon, InfoIcon } from "lucide-react"
-
-import {
-  Alert,
-  AlertDescription,
-  AlertTitle,
-} from "@/styles/base-nova/ui/alert"
 
 export default function AlertDemo() {
   return (

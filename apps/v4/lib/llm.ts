@@ -18,21 +18,22 @@ function getBaseForStyle(styleName: string) {
 
 function getDemoFilePath(name: string, styleName: string) {
   const base = getBaseForStyle(styleName)
-  const demo =
-    ExamplesIndex[styleName]?.[name] ??
-    (base ? ExamplesIndex[base]?.[name] : undefined)
+  if (!base) {
+    return null
+  }
+  const demo = ExamplesIndex[base]?.[name]
   if (!demo) {
     return null
   }
   return demo.filePath
 }
 
-function getRegistryEntry(name: string, styleName: string) {
+function getIndexForStyle(styleName: string) {
   const base = getBaseForStyle(styleName)
-  return (
-    StylesIndex[styleName]?.[name] ??
-    (base ? BasesIndex[base]?.[name] : undefined)
-  )
+  if (base) {
+    return { index: BasesIndex, key: base }
+  }
+  return { index: StylesIndex, key: styleName }
 }
 
 function getComponentsList() {
@@ -70,7 +71,8 @@ export function processMdxForLLMs(content: string, style: Style["name"]) {
       let src = getDemoFilePath(name, effectiveStyle)
 
       if (!src) {
-        const component = getRegistryEntry(name, effectiveStyle)
+        const { index, key } = getIndexForStyle(effectiveStyle)
+        const component = index[key]?.[name]
         if (!component?.files) {
           return match
         }
@@ -90,26 +92,12 @@ export function processMdxForLLMs(content: string, style: Style["name"]) {
           "@/components/"
         )
         source = source.replaceAll(
-          `@/examples/${base.name}/ui-rtl/`,
-          "@/components/ui/"
-        )
-        source = source.replaceAll(
           `@/examples/${base.name}/ui/`,
           "@/components/ui/"
         )
         source = source.replaceAll(`@/examples/${base.name}/lib/`, "@/lib/")
         source = source.replaceAll(`@/examples/${base.name}/hooks/`, "@/hooks/")
       }
-      source = source.replace(
-        /@\/styles\/([\w-]+)\/(ui-rtl|ui)\/([\w-]+)/g,
-        (match, _styleName, type, component) => {
-          if (type === "ui" || type === "ui-rtl") {
-            return `@/components/ui/${component}`
-          }
-
-          return match
-        }
-      )
       source = source.replaceAll(
         `@/registry/${effectiveStyle}/`,
         "@/components/"

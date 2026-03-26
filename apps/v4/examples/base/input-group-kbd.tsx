@@ -1,11 +1,10 @@
-import { SearchIcon } from "lucide-react"
-
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
-} from "@/styles/base-nova/ui/input-group"
-import { Kbd } from "@/styles/base-nova/ui/kbd"
+} from "@/examples/base/ui/input-group"
+import { Kbd } from "@/examples/base/ui/kbd"
+import { SearchIcon } from "lucide-react"
 
 export function InputGroupKbd() {
   return (

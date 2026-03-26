@@ -1,8 +1,7 @@
 "use client"
 
-import { useLanguageContext } from "@/components/language-selector"
-import { Button } from "@/styles/base-nova/ui-rtl/button"
-import { Checkbox } from "@/styles/base-nova/ui-rtl/checkbox"
+import { Button } from "@/examples/base/ui-rtl/button"
+import { Checkbox } from "@/examples/base/ui-rtl/checkbox"
 import {
   Field,
   FieldDescription,
@@ -11,8 +10,8 @@ import {
   FieldLegend,
   FieldSeparator,
   FieldSet,
-} from "@/styles/base-nova/ui-rtl/field"
-import { Input } from "@/styles/base-nova/ui-rtl/input"
+} from "@/examples/base/ui-rtl/field"
+import { Input } from "@/examples/base/ui-rtl/input"
 import {
   Select,
   SelectContent,
@@ -20,8 +19,10 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/styles/base-nova/ui-rtl/select"
-import { Textarea } from "@/styles/base-nova/ui-rtl/textarea"
+} from "@/examples/base/ui-rtl/select"
+import { Textarea } from "@/examples/base/ui-rtl/textarea"
+
+import { useLanguageContext } from "@/components/language-selector"
 
 const translations = {
   ar: {
@@ -139,7 +140,7 @@ export function FieldDemo() {
               <div className="grid grid-cols-2 gap-4">
                 <Field>
                   <FieldLabel htmlFor="rtl-exp-month">{t.month}</FieldLabel>
-                  <Select defaultValue="">
+                  <Select defaultValue="" items={months}>
                     <SelectTrigger id="rtl-exp-month">
                       <SelectValue placeholder="MM" />
                     </SelectTrigger>
@@ -156,7 +157,7 @@ export function FieldDemo() {
                 </Field>
                 <Field>
                   <FieldLabel htmlFor="rtl-exp-year">{t.year}</FieldLabel>
-                  <Select defaultValue="">
+                  <Select defaultValue="" items={years}>
                     <SelectTrigger id="rtl-exp-year">
                       <SelectValue placeholder="YYYY" />
                     </SelectTrigger>

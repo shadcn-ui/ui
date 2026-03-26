@@ -1,6 +1,4 @@
-import { ArrowUpRightIcon, FolderIcon } from "lucide-react"
-
-import { Button } from "@/styles/radix-nova/ui/button"
+import { Button } from "@/examples/radix/ui/button"
 import {
   Empty,
   EmptyContent,
@@ -8,7 +6,8 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@/styles/radix-nova/ui/empty"
+} from "@/examples/radix/ui/empty"
+import { ArrowUpRightIcon, FolderIcon } from "lucide-react"
 
 export function EmptyInCard() {
   return (

@@ -1,12 +1,11 @@
-import { InboxIcon } from "lucide-react"
-
 import {
   Item,
   ItemContent,
   ItemDescription,
   ItemMedia,
   ItemTitle,
-} from "@/styles/radix-nova/ui/item"
+} from "@/examples/radix/ui/item"
+import { InboxIcon } from "lucide-react"
 
 export function ItemVariant() {
   return (

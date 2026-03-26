@@ -1,9 +1,5 @@
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/styles/radix-nova/ui/avatar"
-import { Button } from "@/styles/radix-nova/ui/button"
+import { Avatar, AvatarFallback, AvatarImage } from "@/examples/radix/ui/avatar"
+import { Button } from "@/examples/radix/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,7 +7,7 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/styles/radix-nova/ui/dropdown-menu"
+} from "@/examples/radix/ui/dropdown-menu"
 
 export function AvatarDropdown() {
   return (

@@ -1,11 +1,5 @@
 "use client"
 
-import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
-
-import {
-  useTranslation,
-  type Translations,
-} from "@/components/language-selector"
 import {
   ChartContainer,
   ChartLegend,
@@ -13,7 +7,13 @@ import {
   ChartTooltip,
   ChartTooltipContent,
   type ChartConfig,
-} from "@/styles/radix-nova/ui-rtl/chart"
+} from "@/examples/radix/ui-rtl/chart"
+import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
+
+import {
+  useTranslation,
+  type Translations,
+} from "@/components/language-selector"
 
 const translations: Translations = {
   en: {

@@ -1,13 +1,11 @@
 "use client"
 
-import { ChevronUpIcon } from "lucide-react"
-
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/styles/base-nova/ui/dropdown-menu"
+} from "@/examples/base/ui/dropdown-menu"
 import {
   Sidebar,
   SidebarContent,
@@ -19,7 +17,8 @@ import {
   SidebarMenuItem,
   SidebarProvider,
   SidebarTrigger,
-} from "@/styles/base-nova/ui/sidebar"
+} from "@/examples/base/ui/sidebar"
+import { ChevronUpIcon } from "lucide-react"
 
 export default function AppSidebar() {
   return (
