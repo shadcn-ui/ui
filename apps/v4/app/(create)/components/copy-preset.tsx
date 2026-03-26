@@ -1,10 +1,10 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/base/ui/button"
 
 import { cn } from "@/lib/utils"
 import { copyToClipboardWithMeta } from "@/components/copy-button"
+import { Button } from "@/styles/base-nova/ui/button"
 import { usePresetCode } from "@/app/(create)/hooks/use-design-system"
 
 export function CopyPreset({ className }: React.ComponentProps<typeof Button>) {
