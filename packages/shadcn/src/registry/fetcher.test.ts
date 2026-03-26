@@ -75,6 +75,27 @@ describe("fetchRegistry", () => {
     })
   })
 
+  it("should send Accept: application/json when fetching external URLs", async () => {
+    server.use(
+      http.get("https://external.com/accept.json", ({ request }) => {
+        expect(request.headers.get("accept")).toBe("application/json")
+
+        return HttpResponse.json({
+          name: "accept",
+          type: "registry:ui",
+        })
+      })
+    )
+
+    const result = await fetchRegistry(["https://external.com/accept.json"])
+
+    expect(result).toHaveLength(1)
+    expect(result[0]).toMatchObject({
+      name: "accept",
+      type: "registry:ui",
+    })
+  })
+
   it("should use cache when enabled", async () => {
     // First fetch - should hit the server
     const result1 = await fetchRegistry(["test.json"], { useCache: true })

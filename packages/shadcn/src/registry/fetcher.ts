@@ -54,6 +54,7 @@ export async function fetchRegistry(
           const response = await fetch(url, {
             agent,
             headers: {
+              accept: "application/json",
               ...headers,
             },
           })
