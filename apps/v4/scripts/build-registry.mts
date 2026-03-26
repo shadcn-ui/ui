@@ -1,6 +1,9 @@
 import { spawn } from "child_process"
+import { createHash } from "crypto"
 import { promises as fs } from "fs"
+import { availableParallelism } from "os"
 import path from "path"
+import prettier from "prettier"
 import { rimraf } from "rimraf"
 import { registrySchema, type RegistryItem } from "shadcn/schema"
 import {
@@ -42,15 +45,14 @@ import { STYLES } from "@/registry/styles"
  * Execution order:
  * 1. Build registry/bases/__index__.tsx from the authored base registries.
  * 2. Build temporary styled registries under registry/<base-style>.
- * 3. Format those temporary registries so the CLI sees stable source.
- * 4. Build registry/__index__.tsx for runtime lookup across legacy styles and
+ * 3. Build registry/__index__.tsx for runtime lookup across legacy styles and
  *    generated base-style combinations.
- * 5. Build examples/__index__.tsx from authored demos.
- * 6. Export public/r/* for every style through the shadcn CLI.
- * 7. Copy compiled ui/* from the temporary registries into styles/<style>/ui.
- * 8. Build styles/<style>/ui-rtl for base-nova and radix-nova only.
- * 9. Format the generated persistent outputs.
- * 10. Clean up the temporary registry/<base-style> trees and registry-*.json.
+ * 4. Build examples/__index__.tsx from authored demos.
+ * 5. Export public/r/* for every style through the shadcn CLI.
+ * 6. Copy compiled ui/* from the temporary registries into styles/<style>/ui.
+ * 7. Build styles/<style>/ui-rtl for base-nova and radix-nova only.
+ * 8. Format the generated persistent outputs.
+ * 9. Clean up the temporary registry/<base-style> trees and registry-*.json.
  */
 
 const STYLE_COMBINATIONS = Array.from(BASES).flatMap((base) =>
@@ -62,7 +64,28 @@ const STYLE_COMBINATIONS = Array.from(BASES).flatMap((base) =>
   }))
 )
 
-const prettierPaths: string[] = []
+const CPU_COUNT = availableParallelism()
+const STYLE_BUILD_CONCURRENCY = Math.max(1, Math.min(CPU_COUNT, 4))
+const FILE_BUILD_CONCURRENCY = Math.max(4, Math.min(CPU_COUNT, 8))
+const COPY_CONCURRENCY = Math.max(4, Math.min(CPU_COUNT, 8))
+const CLI_BUILD_CONCURRENCY = Math.max(
+  1,
+  Math.min(Math.floor(CPU_COUNT / 2), 4)
+)
+const TRANSFORM_CACHE_VERSION = "2"
+const CACHE_ROOT = path.join(
+  process.cwd(),
+  "node_modules/.cache/build-registry"
+)
+const TRANSFORM_CACHE_ROOT = path.join(CACHE_ROOT, "transforms")
+const TRANSFORM_CACHE_MANIFEST_PATH = path.join(
+  CACHE_ROOT,
+  "transform-manifest.json"
+)
+
+const transformCacheManifest = new Map<string, string>()
+let transformCacheDirty = false
+let prettierConfigPromise: Promise<prettier.Options | null> | null = null
 
 const iconProject = new Project({
   compilerOptions: {},
@@ -119,19 +142,174 @@ function getPersistentStyleRoot(styleName: string) {
   return path.join(process.cwd(), "styles", styleName)
 }
 
+function hashContent(...parts: string[]) {
+  const hash = createHash("sha256")
+
+  for (const part of parts) {
+    hash.update(part)
+    hash.update("\0")
+  }
+
+  return hash.digest("hex")
+}
+
+async function readFileIfExists(filePath: string) {
+  try {
+    return await fs.readFile(filePath, "utf8")
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code === "ENOENT") {
+      return null
+    }
+
+    throw error
+  }
+}
+
+async function writeIfChanged(filePath: string, content: string) {
+  const existingContent = await readFileIfExists(filePath)
+  if (existingContent === content) {
+    return false
+  }
+
+  await fs.mkdir(path.dirname(filePath), { recursive: true })
+  await fs.writeFile(filePath, content)
+
+  return true
+}
+
+async function formatGeneratedSource(content: string, filePath: string) {
+  prettierConfigPromise ??= prettier.resolveConfig(
+    path.join(process.cwd(), "package.json")
+  )
+
+  const prettierConfig = (await prettierConfigPromise) ?? {}
+
+  return prettier.format(content, {
+    ...prettierConfig,
+    filepath: filePath,
+  })
+}
+
+async function loadTransformCache() {
+  const existingManifest = await readFileIfExists(TRANSFORM_CACHE_MANIFEST_PATH)
+  if (!existingManifest) {
+    return
+  }
+
+  const payload = JSON.parse(existingManifest) as Record<string, string>
+
+  for (const [key, value] of Object.entries(payload)) {
+    transformCacheManifest.set(key, value)
+  }
+}
+
+async function saveTransformCache() {
+  if (!transformCacheDirty) {
+    return
+  }
+
+  await fs.mkdir(CACHE_ROOT, { recursive: true })
+
+  const payload = Object.fromEntries(
+    Array.from(transformCacheManifest.entries()).sort(([a], [b]) =>
+      a.localeCompare(b)
+    )
+  )
+
+  await fs.writeFile(
+    TRANSFORM_CACHE_MANIFEST_PATH,
+    JSON.stringify(payload, null, 2)
+  )
+
+  transformCacheDirty = false
+}
+
+async function getCachedStyledContent({
+  styleName,
+  baseName,
+  filePath,
+  source,
+  styleHash,
+  styleMap,
+}: {
+  styleName: string
+  baseName: string
+  filePath: string
+  source: string
+  styleHash: string
+  styleMap: Record<string, string>
+}) {
+  const cacheKey = `${styleName}:${filePath}`
+  const cachePath = path.join(TRANSFORM_CACHE_ROOT, styleName, filePath)
+  const inputHash = hashContent(
+    TRANSFORM_CACHE_VERSION,
+    styleName,
+    baseName,
+    filePath,
+    styleHash,
+    source
+  )
+
+  if (transformCacheManifest.get(cacheKey) === inputHash) {
+    const cachedContent = await readFileIfExists(cachePath)
+    if (cachedContent !== null) {
+      return cachedContent
+    }
+  }
+
+  let transformedContent = await transformStyle(source, { styleMap })
+  transformedContent = transformedContent.replace(
+    new RegExp(`@/registry/bases/${baseName}/`, "g"),
+    `@/registry/${styleName}/`
+  )
+  transformedContent = await formatGeneratedSource(
+    transformedContent,
+    path.join(getTemporaryRegistryRoot(styleName), filePath)
+  )
+
+  await fs.mkdir(path.dirname(cachePath), { recursive: true })
+  await fs.writeFile(cachePath, transformedContent)
+
+  if (transformCacheManifest.get(cacheKey) !== inputHash) {
+    transformCacheManifest.set(cacheKey, inputHash)
+    transformCacheDirty = true
+  }
+
+  return transformedContent
+}
+
+async function runWithConcurrency<T, R>(
+  items: T[],
+  limit: number,
+  worker: (item: T, index: number) => Promise<R>
+) {
+  const results = new Array<R>(items.length)
+  let currentIndex = 0
+
+  await Promise.all(
+    Array.from({ length: Math.min(limit, items.length) }, async () => {
+      while (true) {
+        const index = currentIndex++
+        if (index >= items.length) {
+          return
+        }
+
+        results[index] = await worker(items[index], index)
+      }
+    })
+  )
+
+  return results
+}
+
 try {
   const totalStart = performance.now()
+
+  await loadTransformCache()
 
   console.log("🏗️ Building bases...")
   await buildBasesIndex(Array.from(BASES))
   await buildBases(Array.from(BASES))
-
-  const temporaryRegistryDirs = STYLE_COMBINATIONS.map(({ name }) =>
-    getTemporaryRegistryRoot(name)
-  )
-
-  console.log("\n✨ Formatting temporary registries...")
-  await batchPrettier(temporaryRegistryDirs)
 
   const stylesToBuild = getStylesToBuild()
 
@@ -142,12 +320,14 @@ try {
   await buildExamplesIndex()
 
   console.log("\n💅 Building styles...")
-  await Promise.all(
-    stylesToBuild.map(async (style) => {
+  await runWithConcurrency(
+    stylesToBuild,
+    CLI_BUILD_CONCURRENCY,
+    async (style) => {
       await buildRegistryJsonFile(style.name)
       await buildRegistry(style.name)
       console.log(`   ✅ ${style.name}`)
-    })
+    }
   )
 
   console.log("\n🗂️ Building registry/__blocks__.json...")
@@ -171,17 +351,14 @@ try {
   console.log("\n🔄 Building RTL styles...")
   await buildRtlStyles()
 
-  if (prettierPaths.length > 0) {
-    console.log(`\n✨ Formatting ${prettierPaths.length} generated paths...`)
-    await batchPrettier(prettierPaths)
-  }
-
   console.log("\n🧹 Cleaning up...")
   await cleanUp(stylesToBuild)
+  await saveTransformCache()
 
   const elapsed = ((performance.now() - totalStart) / 1000).toFixed(2)
   console.log(`\n✅ Build complete in ${elapsed}s!`)
 } catch (error) {
+  await saveTransformCache().catch(console.error)
   console.error(error)
   process.exit(1)
 }
@@ -269,9 +446,10 @@ export const Index: Record<string, Record<string, any>> = {`
 }`
 
   const outputPath = path.join(process.cwd(), "registry/bases/__index__.tsx")
-  await rimraf(outputPath)
-  await fs.writeFile(outputPath, index)
-  prettierPaths.push(outputPath)
+  await writeIfChanged(
+    outputPath,
+    await formatGeneratedSource(index, outputPath)
+  )
 }
 
 async function buildBases(bases: Base[]) {
@@ -292,7 +470,33 @@ async function buildBases(bases: Base[]) {
           (item) => item.type !== "registry:internal"
         )
 
-        return { base, baseRegistry, registryItems }
+        const sourceFilePaths = Array.from(
+          new Set(
+            registryItems.flatMap((item) =>
+              normalizeRegistryFiles(item).map((file) => file.path)
+            )
+          )
+        )
+
+        const sourceFiles = new Map(
+          await Promise.all(
+            sourceFilePaths.map(
+              async (filePath): Promise<readonly [string, string]> =>
+                [
+                  filePath,
+                  await fs.readFile(
+                    path.join(
+                      process.cwd(),
+                      `registry/bases/${base.name}/${filePath}`
+                    ),
+                    "utf8"
+                  ),
+                ] as const
+            )
+          )
+        )
+
+        return { base, baseRegistry, registryItems, sourceFiles }
       })
     ),
     Promise.all(
@@ -301,7 +505,11 @@ async function buildBases(bases: Base[]) {
           path.join(process.cwd(), `registry/styles/style-${style.name}.css`),
           "utf8"
         )
-        return { style, styleMap: createStyleMap(styleContent) }
+        return {
+          style,
+          styleHash: hashContent(styleContent),
+          styleMap: createStyleMap(styleContent),
+        }
       })
     ),
   ])
@@ -311,70 +519,90 @@ async function buildBases(bases: Base[]) {
     style: (typeof STYLES)[number]
     baseRegistry: (typeof baseImports)[number]["baseRegistry"]
     registryItems: (typeof baseImports)[number]["registryItems"]
+    sourceFiles: (typeof baseImports)[number]["sourceFiles"]
+    styleHash: string
     styleMap: Record<string, string>
   }> = []
 
-  for (const { base, baseRegistry, registryItems } of baseImports) {
-    for (const { style, styleMap } of styleMaps) {
-      combinations.push({ base, style, baseRegistry, registryItems, styleMap })
+  for (const {
+    base,
+    baseRegistry,
+    registryItems,
+    sourceFiles,
+  } of baseImports) {
+    for (const { style, styleHash, styleMap } of styleMaps) {
+      combinations.push({
+        base,
+        style,
+        baseRegistry,
+        registryItems,
+        sourceFiles,
+        styleHash,
+        styleMap,
+      })
     }
   }
 
-  await Promise.all(
-    combinations.map(
-      async ({ base, style, baseRegistry, registryItems, styleMap }) => {
-        const styleName = `${base.name}-${style.name}`
-        const styleOutputDir = getTemporaryRegistryRoot(styleName)
+  await runWithConcurrency(
+    combinations,
+    STYLE_BUILD_CONCURRENCY,
+    async ({
+      base,
+      style,
+      baseRegistry,
+      registryItems,
+      sourceFiles,
+      styleHash,
+      styleMap,
+    }) => {
+      const styleName = `${base.name}-${style.name}`
+      const styleOutputDir = getTemporaryRegistryRoot(styleName)
 
-        console.log(`   ✅ ${styleName}...`)
+      console.log(`   ✅ ${styleName}...`)
 
-        await rimraf(styleOutputDir)
-        await fs.mkdir(styleOutputDir, { recursive: true })
+      await rimraf(styleOutputDir)
+      await fs.mkdir(styleOutputDir, { recursive: true })
 
-        const styleRegistry = { ...baseRegistry, items: registryItems }
-        const registryTs = `export const registry = ${JSON.stringify(styleRegistry, null, 2)}\n`
-        await fs.writeFile(path.join(styleOutputDir, "registry.ts"), registryTs)
+      const styleRegistry = { ...baseRegistry, items: registryItems }
+      const registryTs = `export const registry = ${JSON.stringify(styleRegistry, null, 2)}\n`
+      await fs.writeFile(path.join(styleOutputDir, "registry.ts"), registryTs)
 
-        await Promise.all(
-          registryItems.flatMap((registryItem) => {
-            const files = normalizeRegistryFiles(registryItem)
-            if (files.length === 0) {
-              return []
-            }
+      const filesToBuild = registryItems.flatMap((registryItem) =>
+        normalizeRegistryFiles(registryItem)
+      )
 
-            return files.map(async (file) => {
-              const source = await fs.readFile(
-                path.join(
-                  process.cwd(),
-                  `registry/bases/${base.name}/${file.path}`
-                ),
-                "utf8"
-              )
+      await runWithConcurrency(
+        filesToBuild,
+        FILE_BUILD_CONCURRENCY,
+        async (file) => {
+          const source = sourceFiles.get(file.path)
+          if (typeof source !== "string") {
+            throw new Error(
+              `Missing cached source for ${base.name}/${file.path}`
+            )
+          }
 
-              const fileExtension = path.extname(file.path)
-              const shouldTransform =
-                fileExtension === ".tsx" || fileExtension === ".ts"
+          const fileExtension = path.extname(file.path)
+          const shouldTransform =
+            fileExtension === ".tsx" || fileExtension === ".ts"
 
-              let transformedContent = source
+          const transformedContent = shouldTransform
+            ? await getCachedStyledContent({
+                styleName,
+                baseName: base.name,
+                filePath: file.path,
+                source,
+                styleHash,
+                styleMap,
+              })
+            : source
 
-              if (shouldTransform) {
-                transformedContent = await transformStyle(source, {
-                  styleMap,
-                })
-                transformedContent = transformedContent.replace(
-                  new RegExp(`@/registry/bases/${base.name}/`, "g"),
-                  `@/registry/${styleName}/`
-                )
-              }
-
-              const outputPath = path.join(styleOutputDir, file.path)
-              await fs.mkdir(path.dirname(outputPath), { recursive: true })
-              await fs.writeFile(outputPath, transformedContent)
-            })
-          })
-        )
-      }
-    )
+          const outputPath = path.join(styleOutputDir, file.path)
+          await fs.mkdir(path.dirname(outputPath), { recursive: true })
+          await fs.writeFile(outputPath, transformedContent)
+        }
+      )
+    }
   )
 }
 
@@ -443,9 +671,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {`
 `
 
   const outputPath = path.join(examplesDir, "__index__.tsx")
-  await rimraf(outputPath)
-  await fs.writeFile(outputPath, index)
-  prettierPaths.push(outputPath)
+  await writeIfChanged(
+    outputPath,
+    await formatGeneratedSource(index, outputPath)
+  )
 }
 
 async function buildRegistryIndex(styles: { name: string; title: string }[]) {
@@ -547,9 +776,10 @@ export const Index: Record<string, Record<string, any>> = {`
 }`
 
   const outputPath = path.join(process.cwd(), "registry/__index__.tsx")
-  await rimraf(outputPath)
-  await fs.writeFile(outputPath, index)
-  prettierPaths.push(outputPath)
+  await writeIfChanged(
+    outputPath,
+    await formatGeneratedSource(index, outputPath)
+  )
 }
 
 async function buildRegistryJsonFile(styleName: string) {
@@ -581,14 +811,14 @@ async function buildRegistryJsonFile(styleName: string) {
   await fs.mkdir(outputDir, { recursive: true })
 
   const registryJsonPath = path.join(outputDir, "registry.json")
-  await fs.writeFile(registryJsonPath, JSON.stringify(fixedRegistry, null, 2))
-  prettierPaths.push(registryJsonPath)
+  const fixedRegistryJson = JSON.stringify(fixedRegistry, null, 2)
+  await writeIfChanged(registryJsonPath, fixedRegistryJson)
 
   const tempRegistryPath = path.join(
     process.cwd(),
     `registry-${styleName}.json`
   )
-  await fs.writeFile(tempRegistryPath, JSON.stringify(fixedRegistry, null, 2))
+  await fs.writeFile(tempRegistryPath, fixedRegistryJson)
 }
 
 async function buildRegistry(styleName: string) {
@@ -628,9 +858,7 @@ async function buildBlocksIndex() {
   }))
 
   const blocksJsonPath = path.join(process.cwd(), "registry/__blocks__.json")
-  await rimraf(blocksJsonPath)
-  await fs.writeFile(blocksJsonPath, JSON.stringify(payload, null, 2))
-  prettierPaths.push(blocksJsonPath)
+  await writeIfChanged(blocksJsonPath, JSON.stringify(payload, null, 2))
 }
 
 async function cleanUp(stylesToBuild: { name: string; title: string }[]) {
@@ -650,11 +878,14 @@ async function cleanUp(stylesToBuild: { name: string; title: string }[]) {
 async function buildConfig() {
   const config = { presets: PRESETS }
   const outputPath = path.join(process.cwd(), "public/r/config.json")
-  await fs.writeFile(outputPath, JSON.stringify(config, null, 2))
-  prettierPaths.push(outputPath)
+  await writeIfChanged(outputPath, JSON.stringify(config, null, 2))
 }
 
 async function applyIconTransform(content: string, filename: string) {
+  if (!content.includes("IconPlaceholder")) {
+    return content
+  }
+
   const sourceFile = iconProject.createSourceFile(filename, content, {
     scriptKind: ScriptKind.TSX,
     overwrite: true,
@@ -680,8 +911,10 @@ async function applyIconTransform(content: string, filename: string) {
 }
 
 async function copyUIToStyles() {
-  await Promise.all(
-    STYLE_COMBINATIONS.map(async ({ name: styleName }) => {
+  await runWithConcurrency(
+    STYLE_COMBINATIONS,
+    COPY_CONCURRENCY,
+    async ({ name: styleName }) => {
       const sourceDir = path.join(getTemporaryRegistryRoot(styleName), "ui")
       const styleRoot = getPersistentStyleRoot(styleName)
       const targetDir = path.join(styleRoot, "ui")
@@ -693,13 +926,10 @@ async function copyUIToStyles() {
         return
       }
 
-      await rimraf(styleRoot)
-      await fs.mkdir(targetDir, { recursive: true })
-
-      await copyDirectory({
+      await syncDirectory({
         fromDir: sourceDir,
         toDir: targetDir,
-        transformContent: async (content, filePath) => {
+        transformContent: async (content, filePath, targetPath) => {
           let nextContent = rewriteRegistryUiImportsToStyle(content, styleName)
 
           if (filePath.endsWith(".tsx")) {
@@ -709,53 +939,58 @@ async function copyUIToStyles() {
             )
           }
 
+          if (targetPath.endsWith(".ts") || targetPath.endsWith(".tsx")) {
+            return formatGeneratedSource(nextContent, targetPath)
+          }
+
           return nextContent
         },
       })
 
-      prettierPaths.push(styleRoot)
+      if (!shouldGenerateRtlStyles(styleName)) {
+        await rimraf(path.join(styleRoot, "ui-rtl"))
+      }
+
       console.log(`   ✅ registry/${styleName}/ui → styles/${styleName}/ui`)
-    })
+    }
   )
 }
 
 async function buildRtlStyles() {
-  await Promise.all(
-    STYLE_COMBINATIONS.filter((style) => shouldGenerateRtlStyles(style.name)).map(
-      async ({ name: styleName }) => {
-        const sourceDir = path.join(getPersistentStyleRoot(styleName), "ui")
-        const targetDir = path.join(
-          getPersistentStyleRoot(styleName),
-          "ui-rtl"
-        )
+  await runWithConcurrency(
+    STYLE_COMBINATIONS.filter((style) => shouldGenerateRtlStyles(style.name)),
+    COPY_CONCURRENCY,
+    async ({ name: styleName }) => {
+      const sourceDir = path.join(getPersistentStyleRoot(styleName), "ui")
+      const targetDir = path.join(getPersistentStyleRoot(styleName), "ui-rtl")
 
-        try {
-          await fs.access(sourceDir)
-        } catch {
-          console.log(`   ⚠️ styles/${styleName}/ui not found, skipping`)
-          return
-        }
+      try {
+        await fs.access(sourceDir)
+      } catch {
+        console.log(`   ⚠️ styles/${styleName}/ui not found, skipping`)
+        return
+      }
 
-        await rimraf(targetDir)
-        await copyDirectory({
-          fromDir: sourceDir,
-          toDir: targetDir,
-          transformContent: async (content, filePath) => {
-            if (!filePath.endsWith(".ts") && !filePath.endsWith(".tsx")) {
-              return content
-            }
+      await syncDirectory({
+        fromDir: sourceDir,
+        toDir: targetDir,
+        transformContent: async (content, filePath, targetPath) => {
+          if (!filePath.endsWith(".ts") && !filePath.endsWith(".tsx")) {
+            return content
+          }
 
-            return rewriteStyleDirectionImports(
+          return formatGeneratedSource(
+            rewriteStyleDirectionImports(
               await transformDirection(content, true),
               styleName
-            )
-          },
-        })
+            ),
+            targetPath
+          )
+        },
+      })
 
-        prettierPaths.push(targetDir)
-        console.log(`   ✅ styles/${styleName}/ui-rtl`)
-      }
-    )
+      console.log(`   ✅ styles/${styleName}/ui-rtl`)
+    }
   )
 }
 
@@ -798,8 +1033,7 @@ async function buildIndex() {
   )
 
   const outputPath = path.join(process.cwd(), "public/r/index.json")
-  await fs.writeFile(outputPath, JSON.stringify(index, null, 2))
-  prettierPaths.push(outputPath)
+  await writeIfChanged(outputPath, JSON.stringify(index, null, 2))
 }
 
 async function buildRegistriesJson() {
@@ -822,54 +1056,99 @@ async function buildRegistriesJson() {
   }))
 
   const outputPath = path.join(process.cwd(), "public/r/registries.json")
-  await fs.writeFile(outputPath, JSON.stringify(registries, null, 2))
-  prettierPaths.push(outputPath)
+  await writeIfChanged(outputPath, JSON.stringify(registries, null, 2))
 }
 
-async function copyDirectory({
+async function readDirectoryEntries(dirPath: string) {
+  try {
+    return await fs.readdir(dirPath, { withFileTypes: true })
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code === "ENOENT") {
+      return []
+    }
+
+    throw error
+  }
+}
+
+async function syncDirectory({
   fromDir,
   toDir,
   transformContent,
 }: {
   fromDir: string
   toDir: string
-  transformContent?: (content: string, filePath: string) => Promise<string>
-}) {
-  const entries = await fs.readdir(fromDir, { withFileTypes: true })
-
+  transformContent?: (
+    content: string,
+    filePath: string,
+    targetPath: string
+  ) => Promise<string>
+}): Promise<string[]> {
   await fs.mkdir(toDir, { recursive: true })
 
+  const [sourceEntries, targetEntries] = await Promise.all([
+    fs.readdir(fromDir, { withFileTypes: true }),
+    readDirectoryEntries(toDir),
+  ])
+
+  const targetEntriesByName = new Map(
+    targetEntries.map((entry) => [entry.name, entry])
+  )
+  const sourceNames = new Set(sourceEntries.map((entry) => entry.name))
+
   await Promise.all(
-    entries.map(async (entry) => {
+    targetEntries.map(async (entry) => {
+      if (!sourceNames.has(entry.name)) {
+        await rimraf(path.join(toDir, entry.name))
+      }
+    })
+  )
+
+  const changedPaths: string[][] = await runWithConcurrency(
+    sourceEntries,
+    COPY_CONCURRENCY,
+    async (entry) => {
       const sourcePath = path.join(fromDir, entry.name)
       const targetPath = path.join(toDir, entry.name)
+      const existingTargetEntry = targetEntriesByName.get(entry.name)
 
       if (entry.isDirectory()) {
-        await copyDirectory({
+        if (existingTargetEntry && !existingTargetEntry.isDirectory()) {
+          await rimraf(targetPath)
+        }
+
+        return await syncDirectory({
           fromDir: sourcePath,
           toDir: targetPath,
           transformContent,
         })
-        return
+      }
+
+      if (existingTargetEntry?.isDirectory()) {
+        await rimraf(targetPath)
       }
 
       let content = await fs.readFile(sourcePath, "utf8")
 
       if (transformContent) {
-        content = await transformContent(content, sourcePath)
+        content = await transformContent(content, sourcePath, targetPath)
       }
 
-      await fs.mkdir(path.dirname(targetPath), { recursive: true })
-      await fs.writeFile(targetPath, content)
-    })
+      return (await writeIfChanged(targetPath, content)) ? [targetPath] : []
+    }
   )
+
+  return changedPaths.flat()
 }
 
 function rewriteRegistryUiImportsToStyle(content: string, styleName: string) {
   return content
     .replaceAll(`@/registry/${styleName}/ui/`, `@/styles/${styleName}/ui/`)
     .replaceAll(`@/registry/${styleName}/lib/utils`, `@/lib/utils`)
-    .replaceAll(`@/registry/${styleName}/hooks/use-mobile`, `@/hooks/use-mobile`)
+    .replaceAll(
+      `@/registry/${styleName}/hooks/use-mobile`,
+      `@/hooks/use-mobile`
+    )
     .replaceAll(`@/registry/${styleName}/lib/`, `@/lib/`)
     .replaceAll(`@/registry/${styleName}/hooks/`, `@/hooks/`)
 }
@@ -879,20 +1158,6 @@ function rewriteStyleDirectionImports(content: string, styleName: string) {
     `@/styles/${styleName}/ui/`,
     `@/styles/${styleName}/ui-rtl/`
   )
-}
-
-async function batchPrettier(paths: string[]) {
-  if (paths.length === 0) return
-
-  await new Promise<void>((resolve, reject) => {
-    const prettierBin = path.join(process.cwd(), "node_modules/.bin/prettier")
-    const proc = spawn(prettierBin, ["--write", ...paths], {
-      cwd: process.cwd(),
-      stdio: "inherit",
-    })
-    proc.on("close", () => resolve())
-    proc.on("error", reject)
-  })
 }
 
 async function buildColors() {
@@ -926,8 +1191,7 @@ async function buildColors() {
       }
 
       const outputPath = path.join(colorsTargetPath, `${baseColor.name}.json`)
-      await fs.writeFile(outputPath, JSON.stringify(payload, null, 2))
-      prettierPaths.push(outputPath)
+      await writeIfChanged(outputPath, JSON.stringify(payload, null, 2))
       console.log(`   ✅ ${baseColor.name}.json`)
     })
   )

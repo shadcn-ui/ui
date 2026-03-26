@@ -29,7 +29,10 @@ function getDemoFilePath(name: string, styleName: string) {
 
 function getRegistryEntry(name: string, styleName: string) {
   const base = getBaseForStyle(styleName)
-  return StylesIndex[styleName]?.[name] ?? (base ? BasesIndex[base]?.[name] : undefined)
+  return (
+    StylesIndex[styleName]?.[name] ??
+    (base ? BasesIndex[base]?.[name] : undefined)
+  )
 }
 
 function getComponentsList() {
