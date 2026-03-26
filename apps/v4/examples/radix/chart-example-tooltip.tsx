@@ -1,13 +1,12 @@
 "use client"
 
-import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
-
 import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
   type ChartConfig,
-} from "@/styles/radix-nova/ui/chart"
+} from "@/examples/radix/ui/chart"
+import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
 
 const chartData = [
   { month: "January", desktop: 186, mobile: 80 },

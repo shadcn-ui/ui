@@ -1,11 +1,5 @@
-import { PlusIcon } from "lucide-react"
-
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/styles/base-nova/ui/avatar"
-import { Button } from "@/styles/base-nova/ui/button"
+import { Avatar, AvatarFallback, AvatarImage } from "@/examples/base/ui/avatar"
+import { Button } from "@/examples/base/ui/button"
 import {
   Empty,
   EmptyContent,
@@ -13,7 +7,8 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@/styles/base-nova/ui/empty"
+} from "@/examples/base/ui/empty"
+import { PlusIcon } from "lucide-react"
 
 export default function EmptyAvatarGroup() {
   return (

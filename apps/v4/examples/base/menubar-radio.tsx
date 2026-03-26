@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-
 import {
   Menubar,
   MenubarContent,
@@ -11,7 +10,7 @@ import {
   MenubarRadioItem,
   MenubarSeparator,
   MenubarTrigger,
-} from "@/styles/base-nova/ui/menubar"
+} from "@/examples/base/ui/menubar"
 
 export function MenubarRadio() {
   const [user, setUser] = React.useState("benoit")

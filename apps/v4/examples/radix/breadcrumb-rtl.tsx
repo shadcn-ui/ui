@@ -2,12 +2,6 @@
 
 import * as React from "react"
 import Link from "next/link"
-import { ChevronDownIcon, DotIcon } from "lucide-react"
-
-import {
-  useTranslation,
-  type Translations,
-} from "@/components/language-selector"
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -15,14 +9,20 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/styles/radix-nova/ui-rtl/breadcrumb"
+} from "@/examples/radix/ui-rtl/breadcrumb"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/styles/radix-nova/ui-rtl/dropdown-menu"
+} from "@/examples/radix/ui-rtl/dropdown-menu"
+import { ChevronDownIcon, DotIcon } from "lucide-react"
+
+import {
+  useTranslation,
+  type Translations,
+} from "@/components/language-selector"
 
 const translations: Translations = {
   en: {

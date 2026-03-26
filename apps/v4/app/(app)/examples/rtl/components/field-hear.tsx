@@ -1,8 +1,7 @@
 "use client"
 
-import { useLanguageContext } from "@/components/language-selector"
-import { Card, CardContent } from "@/styles/base-nova/ui-rtl/card"
-import { Checkbox } from "@/styles/base-nova/ui-rtl/checkbox"
+import { Card, CardContent } from "@/examples/base/ui-rtl/card"
+import { Checkbox } from "@/examples/base/ui-rtl/checkbox"
 import {
   Field,
   FieldDescription,
@@ -11,7 +10,9 @@ import {
   FieldLegend,
   FieldSet,
   FieldTitle,
-} from "@/styles/base-nova/ui-rtl/field"
+} from "@/examples/base/ui-rtl/field"
+
+import { useLanguageContext } from "@/components/language-selector"
 
 const translations = {
   ar: {

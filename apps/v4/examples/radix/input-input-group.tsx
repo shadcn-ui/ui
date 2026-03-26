@@ -1,12 +1,11 @@
-import { InfoIcon } from "lucide-react"
-
-import { Field, FieldLabel } from "@/styles/radix-nova/ui/field"
+import { Field, FieldLabel } from "@/examples/radix/ui/field"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
   InputGroupText,
-} from "@/styles/radix-nova/ui/input-group"
+} from "@/examples/radix/ui/input-group"
+import { InfoIcon } from "lucide-react"
 
 export function InputInputGroup() {
   return (

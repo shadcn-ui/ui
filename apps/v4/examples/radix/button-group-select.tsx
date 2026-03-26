@@ -1,18 +1,17 @@
 "use client"
 
 import * as React from "react"
-import { ArrowRightIcon } from "lucide-react"
-
-import { Button } from "@/styles/radix-nova/ui/button"
-import { ButtonGroup } from "@/styles/radix-nova/ui/button-group"
-import { Input } from "@/styles/radix-nova/ui/input"
+import { Button } from "@/examples/radix/ui/button"
+import { ButtonGroup } from "@/examples/radix/ui/button-group"
+import { Input } from "@/examples/radix/ui/input"
 import {
   Select,
   SelectContent,
   SelectGroup,
   SelectItem,
   SelectTrigger,
-} from "@/styles/radix-nova/ui/select"
+} from "@/examples/radix/ui/select"
+import { ArrowRightIcon } from "lucide-react"
 
 const CURRENCIES = [
   {

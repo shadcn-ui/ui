@@ -8,7 +8,7 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   outputFileTracingIncludes: {
-    "/*": ["./registry/**/*", "./styles/**/*"],
+    "/*": ["./registry/**/*"],
   },
   images: {
     remotePatterns: [

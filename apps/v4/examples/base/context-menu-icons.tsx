@@ -1,18 +1,17 @@
 import {
-  ClipboardPasteIcon,
-  CopyIcon,
-  ScissorsIcon,
-  TrashIcon,
-} from "lucide-react"
-
-import {
   ContextMenu,
   ContextMenuContent,
   ContextMenuGroup,
   ContextMenuItem,
   ContextMenuSeparator,
   ContextMenuTrigger,
-} from "@/styles/base-nova/ui/context-menu"
+} from "@/examples/base/ui/context-menu"
+import {
+  ClipboardPasteIcon,
+  CopyIcon,
+  ScissorsIcon,
+  TrashIcon,
+} from "lucide-react"
 
 export function ContextMenuIcons() {
   return (

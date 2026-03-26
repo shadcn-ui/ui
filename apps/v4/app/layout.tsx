@@ -13,7 +13,7 @@ import { TooltipProvider as BaseTooltipProvider } from "@/registry/bases/base/ui
 import { Toaster } from "@/registry/bases/radix/ui/sonner"
 import { TooltipProvider as RadixTooltipProvider } from "@/registry/bases/radix/ui/tooltip"
 
-import "@/app/globals.css"
+import "@/styles/globals.css"
 
 export const metadata: Metadata = {
   title: {

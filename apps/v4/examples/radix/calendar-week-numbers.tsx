@@ -1,9 +1,8 @@
 "use client"
 
 import * as React from "react"
-
-import { Calendar } from "@/styles/radix-nova/ui/calendar"
-import { Card, CardContent } from "@/styles/radix-nova/ui/card"
+import { Calendar } from "@/examples/radix/ui/calendar"
+import { Card, CardContent } from "@/examples/radix/ui/card"
 
 export function CalendarWeekNumbers() {
   const [date, setDate] = React.useState<Date | undefined>(

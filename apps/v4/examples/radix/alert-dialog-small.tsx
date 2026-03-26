@@ -8,8 +8,8 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/styles/radix-nova/ui/alert-dialog"
-import { Button } from "@/styles/radix-nova/ui/button"
+} from "@/examples/radix/ui/alert-dialog"
+import { Button } from "@/examples/radix/ui/button"
 
 export function AlertDialogSmall() {
   return (

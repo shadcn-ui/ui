@@ -6,7 +6,7 @@ import {
   ContextMenuSeparator,
   ContextMenuShortcut,
   ContextMenuTrigger,
-} from "@/styles/base-nova/ui/context-menu"
+} from "@/examples/base/ui/context-menu"
 
 export function ContextMenuShortcuts() {
   return (

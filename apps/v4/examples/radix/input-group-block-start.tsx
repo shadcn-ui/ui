@@ -1,11 +1,9 @@
-import { CopyIcon, FileCodeIcon } from "lucide-react"
-
 import {
   Field,
   FieldDescription,
   FieldGroup,
   FieldLabel,
-} from "@/styles/radix-nova/ui/field"
+} from "@/examples/radix/ui/field"
 import {
   InputGroup,
   InputGroupAddon,
@@ -13,7 +11,8 @@ import {
   InputGroupInput,
   InputGroupText,
   InputGroupTextarea,
-} from "@/styles/radix-nova/ui/input-group"
+} from "@/examples/radix/ui/input-group"
+import { CopyIcon, FileCodeIcon } from "lucide-react"
 
 export function InputGroupBlockStart() {
   return (

@@ -1,4 +1,4 @@
-import { Spinner } from "@/styles/base-nova/ui/spinner"
+import { Spinner } from "@/examples/base/ui/spinner"
 
 export function SpinnerSize() {
   return (

@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { Button } from "@/examples/radix/ui/button"
 import { PlusSignIcon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 
@@ -13,7 +14,6 @@ import { MobileNav } from "@/components/mobile-nav"
 import { ModeSwitcher } from "@/components/mode-switcher"
 import { SiteConfig } from "@/components/site-config"
 import { Separator } from "@/registry/new-york-v4/ui/separator"
-import { Button } from "@/styles/radix-nova/ui/button"
 import { ProjectForm } from "@/app/(create)/components/project-form"
 import { V0Button } from "@/app/(create)/components/v0-button"
 

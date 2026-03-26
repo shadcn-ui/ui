@@ -1,16 +1,15 @@
 "use client"
 
 import * as React from "react"
-import { Clock2Icon } from "lucide-react"
-
-import { Calendar } from "@/styles/radix-nova/ui/calendar"
-import { Card, CardContent, CardFooter } from "@/styles/radix-nova/ui/card"
-import { Field, FieldGroup, FieldLabel } from "@/styles/radix-nova/ui/field"
+import { Calendar } from "@/examples/radix/ui/calendar"
+import { Card, CardContent, CardFooter } from "@/examples/radix/ui/card"
+import { Field, FieldGroup, FieldLabel } from "@/examples/radix/ui/field"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
-} from "@/styles/radix-nova/ui/input-group"
+} from "@/examples/radix/ui/input-group"
+import { Clock2Icon } from "lucide-react"
 
 export function CalendarWithTime() {
   const [date, setDate] = React.useState<Date | undefined>(

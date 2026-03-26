@@ -1,6 +1,18 @@
 "use client"
 
 import * as React from "react"
+import { Button } from "@/examples/base/ui/button"
+import {
+  Command,
+  CommandDialog,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+  CommandSeparator,
+  CommandShortcut,
+} from "@/examples/base/ui/command"
 import {
   BellIcon,
   CalculatorIcon,
@@ -26,19 +38,6 @@ import {
   ZoomInIcon,
   ZoomOutIcon,
 } from "lucide-react"
-
-import { Button } from "@/styles/base-nova/ui/button"
-import {
-  Command,
-  CommandDialog,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-  CommandSeparator,
-  CommandShortcut,
-} from "@/styles/base-nova/ui/command"
 
 export function CommandManyItems() {
   const [open, setOpen] = React.useState(false)

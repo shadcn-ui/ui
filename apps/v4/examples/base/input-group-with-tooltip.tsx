@@ -1,30 +1,24 @@
 "use client"
 
-import { ChevronDownIcon, InfoIcon, StarIcon } from "lucide-react"
-import { toast } from "sonner"
-
-import {
-  ButtonGroup,
-  ButtonGroupText,
-} from "@/styles/base-nova/ui/button-group"
+import { ButtonGroup, ButtonGroupText } from "@/examples/base/ui/button-group"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/styles/base-nova/ui/dropdown-menu"
+} from "@/examples/base/ui/dropdown-menu"
 import {
   Field,
   FieldDescription,
   FieldGroup,
   FieldLabel,
-} from "@/styles/base-nova/ui/field"
+} from "@/examples/base/ui/field"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
-} from "@/styles/base-nova/ui/input-group"
+} from "@/examples/base/ui/input-group"
 import {
   Popover,
   PopoverContent,
@@ -32,12 +26,14 @@ import {
   PopoverHeader,
   PopoverTitle,
   PopoverTrigger,
-} from "@/styles/base-nova/ui/popover"
+} from "@/examples/base/ui/popover"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/styles/base-nova/ui/tooltip"
+} from "@/examples/base/ui/tooltip"
+import { ChevronDownIcon, InfoIcon, StarIcon } from "lucide-react"
+import { toast } from "sonner"
 
 export function InputGroupWithTooltip({
   country,

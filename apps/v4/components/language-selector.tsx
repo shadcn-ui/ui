@@ -1,8 +1,6 @@
 "use client"
 
 import * as React from "react"
-
-import { cn } from "@/lib/utils"
 import {
   Select,
   SelectContent,
@@ -10,7 +8,9 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/styles/base-nova/ui/select"
+} from "@/examples/base/ui/select"
+
+import { cn } from "@/lib/utils"
 
 export type Language = "en" | "ar" | "he"
 

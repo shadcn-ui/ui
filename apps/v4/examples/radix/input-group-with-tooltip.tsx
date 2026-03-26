@@ -1,32 +1,26 @@
 "use client"
 
-import { ChevronDownIcon, InfoIcon, StarIcon } from "lucide-react"
-import { toast } from "sonner"
-
-import { Button } from "@/styles/radix-nova/ui/button"
-import {
-  ButtonGroup,
-  ButtonGroupText,
-} from "@/styles/radix-nova/ui/button-group"
+import { Button } from "@/examples/radix/ui/button"
+import { ButtonGroup, ButtonGroupText } from "@/examples/radix/ui/button-group"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/styles/radix-nova/ui/dropdown-menu"
+} from "@/examples/radix/ui/dropdown-menu"
 import {
   Field,
   FieldDescription,
   FieldGroup,
   FieldLabel,
-} from "@/styles/radix-nova/ui/field"
-import { Input } from "@/styles/radix-nova/ui/input"
+} from "@/examples/radix/ui/field"
+import { Input } from "@/examples/radix/ui/input"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
-} from "@/styles/radix-nova/ui/input-group"
+} from "@/examples/radix/ui/input-group"
 import {
   Popover,
   PopoverContent,
@@ -34,12 +28,14 @@ import {
   PopoverHeader,
   PopoverTitle,
   PopoverTrigger,
-} from "@/styles/radix-nova/ui/popover"
+} from "@/examples/radix/ui/popover"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/styles/radix-nova/ui/tooltip"
+} from "@/examples/radix/ui/tooltip"
+import { ChevronDownIcon, InfoIcon, StarIcon } from "lucide-react"
+import { toast } from "sonner"
 
 export function InputGroupWithTooltip({
   country,

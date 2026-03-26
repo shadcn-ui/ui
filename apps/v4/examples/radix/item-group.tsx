@@ -1,12 +1,6 @@
 import * as React from "react"
-import { PlusIcon } from "lucide-react"
-
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/styles/radix-nova/ui/avatar"
-import { Button } from "@/styles/radix-nova/ui/button"
+import { Avatar, AvatarFallback, AvatarImage } from "@/examples/radix/ui/avatar"
+import { Button } from "@/examples/radix/ui/button"
 import {
   Item,
   ItemActions,
@@ -16,7 +10,8 @@ import {
   ItemMedia,
   ItemSeparator,
   ItemTitle,
-} from "@/styles/radix-nova/ui/item"
+} from "@/examples/radix/ui/item"
+import { PlusIcon } from "lucide-react"
 
 const people = [
   {

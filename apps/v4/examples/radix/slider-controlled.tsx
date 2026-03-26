@@ -1,9 +1,8 @@
 "use client"
 
 import * as React from "react"
-
-import { Label } from "@/styles/radix-nova/ui/label"
-import { Slider } from "@/styles/radix-nova/ui/slider"
+import { Label } from "@/examples/radix/ui/label"
+import { Slider } from "@/examples/radix/ui/slider"
 
 export function SliderControlled() {
   const [value, setValue] = React.useState([0.3, 0.7])

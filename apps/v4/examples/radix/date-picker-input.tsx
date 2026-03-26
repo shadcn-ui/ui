@@ -1,21 +1,20 @@
 "use client"
 
 import * as React from "react"
-import { CalendarIcon } from "lucide-react"
-
-import { Calendar } from "@/styles/radix-nova/ui/calendar"
-import { Field, FieldLabel } from "@/styles/radix-nova/ui/field"
+import { Calendar } from "@/examples/radix/ui/calendar"
+import { Field, FieldLabel } from "@/examples/radix/ui/field"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
-} from "@/styles/radix-nova/ui/input-group"
+} from "@/examples/radix/ui/input-group"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/styles/radix-nova/ui/popover"
+} from "@/examples/radix/ui/popover"
+import { CalendarIcon } from "lucide-react"
 
 function formatDate(date: Date | undefined) {
   if (!date) {

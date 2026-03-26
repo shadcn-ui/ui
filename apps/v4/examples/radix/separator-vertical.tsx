@@ -1,4 +1,4 @@
-import { Separator } from "@/styles/radix-nova/ui/separator"
+import { Separator } from "@/examples/radix/ui/separator"
 
 export function SeparatorVertical() {
   return (

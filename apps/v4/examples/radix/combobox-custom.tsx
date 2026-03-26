@@ -7,13 +7,13 @@ import {
   ComboboxInput,
   ComboboxItem,
   ComboboxList,
-} from "@/styles/radix-nova/ui/combobox"
+} from "@/examples/radix/ui/combobox"
 import {
   Item,
   ItemContent,
   ItemDescription,
   ItemTitle,
-} from "@/styles/radix-nova/ui/item"
+} from "@/examples/radix/ui/item"
 
 const countries = [
   { code: "", value: "", continent: "", label: "Select country" },

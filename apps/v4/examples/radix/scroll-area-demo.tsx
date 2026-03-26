@@ -1,7 +1,6 @@
 import * as React from "react"
-
-import { ScrollArea } from "@/styles/radix-nova/ui/scroll-area"
-import { Separator } from "@/styles/radix-nova/ui/separator"
+import { ScrollArea } from "@/examples/radix/ui/scroll-area"
+import { Separator } from "@/examples/radix/ui/separator"
 
 const tags = Array.from({ length: 50 }).map(
   (_, i, a) => `v1.2.0-beta.${a.length - i}`

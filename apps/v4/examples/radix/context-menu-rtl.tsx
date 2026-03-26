@@ -1,12 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { ArrowLeftIcon, ArrowRightIcon, RotateCwIcon } from "lucide-react"
-
-import {
-  useTranslation,
-  type Translations,
-} from "@/components/language-selector"
 import {
   ContextMenu,
   ContextMenuCheckboxItem,
@@ -22,7 +16,13 @@ import {
   ContextMenuSubContent,
   ContextMenuSubTrigger,
   ContextMenuTrigger,
-} from "@/styles/radix-nova/ui-rtl/context-menu"
+} from "@/examples/radix/ui-rtl/context-menu"
+import { ArrowLeftIcon, ArrowRightIcon, RotateCwIcon } from "lucide-react"
+
+import {
+  useTranslation,
+  type Translations,
+} from "@/components/language-selector"
 
 const translations: Translations = {
   en: {

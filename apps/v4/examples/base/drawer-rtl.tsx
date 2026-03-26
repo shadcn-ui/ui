@@ -1,14 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Minus, Plus } from "lucide-react"
-import { Bar, BarChart, ResponsiveContainer, XAxis } from "recharts"
-
-import {
-  useTranslation,
-  type Translations,
-} from "@/components/language-selector"
-import { Button } from "@/styles/base-nova/ui-rtl/button"
+import { Button } from "@/examples/base/ui-rtl/button"
 import {
   Drawer,
   DrawerClose,
@@ -18,7 +11,14 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "@/styles/base-nova/ui-rtl/drawer"
+} from "@/examples/base/ui-rtl/drawer"
+import { Minus, Plus } from "lucide-react"
+import { Bar, BarChart, ResponsiveContainer, XAxis } from "recharts"
+
+import {
+  useTranslation,
+  type Translations,
+} from "@/components/language-selector"
 
 const data = [
   {

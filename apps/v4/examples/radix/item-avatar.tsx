@@ -1,11 +1,5 @@
-import { Plus } from "lucide-react"
-
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/styles/radix-nova/ui/avatar"
-import { Button } from "@/styles/radix-nova/ui/button"
+import { Avatar, AvatarFallback, AvatarImage } from "@/examples/radix/ui/avatar"
+import { Button } from "@/examples/radix/ui/button"
 import {
   Item,
   ItemActions,
@@ -13,7 +7,8 @@ import {
   ItemDescription,
   ItemMedia,
   ItemTitle,
-} from "@/styles/radix-nova/ui/item"
+} from "@/examples/radix/ui/item"
+import { Plus } from "lucide-react"
 
 export function ItemAvatar() {
   return (

@@ -1,22 +1,21 @@
 "use client"
 
 import * as React from "react"
-import { parseDate } from "chrono-node"
-import { CalendarIcon } from "lucide-react"
-
-import { Calendar } from "@/styles/base-nova/ui/calendar"
-import { Field, FieldLabel } from "@/styles/base-nova/ui/field"
+import { Calendar } from "@/examples/base/ui/calendar"
+import { Field, FieldLabel } from "@/examples/base/ui/field"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
-} from "@/styles/base-nova/ui/input-group"
+} from "@/examples/base/ui/input-group"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/styles/base-nova/ui/popover"
+} from "@/examples/base/ui/popover"
+import { parseDate } from "chrono-node"
+import { CalendarIcon } from "lucide-react"
 
 function formatDate(date: Date | undefined) {
   if (!date) {

@@ -4,7 +4,7 @@ import {
   AvatarGroup,
   AvatarGroupCount,
   AvatarImage,
-} from "@/styles/base-nova/ui/avatar"
+} from "@/examples/base/ui/avatar"
 
 export function AvatarGroupCountExample() {
   return (

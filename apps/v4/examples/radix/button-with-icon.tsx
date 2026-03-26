@@ -1,6 +1,5 @@
+import { Button } from "@/examples/radix/ui/button"
 import { IconGitBranch } from "@tabler/icons-react"
-
-import { Button } from "@/styles/radix-nova/ui/button"
 
 export default function ButtonWithIcon() {
   return (

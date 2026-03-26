@@ -1,14 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Copy01Icon, Globe02Icon, Tick02Icon } from "@hugeicons/core-free-icons"
-import { HugeiconsIcon } from "@hugeicons/react"
-
-import { cn } from "@/lib/utils"
-import { useConfig } from "@/hooks/use-config"
-import { copyToClipboardWithMeta } from "@/components/copy-button"
-import { BASES, type BaseName } from "@/registry/config"
-import { Button } from "@/styles/base-nova/ui/button"
+import { Button } from "@/examples/base/ui/button"
 import {
   Dialog,
   DialogContent,
@@ -17,7 +10,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/styles/base-nova/ui/dialog"
+} from "@/examples/base/ui/dialog"
 import {
   Field,
   FieldContent,
@@ -27,15 +20,22 @@ import {
   FieldSeparator,
   FieldSet,
   FieldTitle,
-} from "@/styles/base-nova/ui/field"
-import { RadioGroup, RadioGroupItem } from "@/styles/base-nova/ui/radio-group"
-import { Switch } from "@/styles/base-nova/ui/switch"
+} from "@/examples/base/ui/field"
+import { RadioGroup, RadioGroupItem } from "@/examples/base/ui/radio-group"
+import { Switch } from "@/examples/base/ui/switch"
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@/styles/base-nova/ui/tabs"
+} from "@/examples/base/ui/tabs"
+import { Copy01Icon, Globe02Icon, Tick02Icon } from "@hugeicons/core-free-icons"
+import { HugeiconsIcon } from "@hugeicons/react"
+
+import { cn } from "@/lib/utils"
+import { useConfig } from "@/hooks/use-config"
+import { copyToClipboardWithMeta } from "@/components/copy-button"
+import { BASES, type BaseName } from "@/registry/config"
 import { usePresetCode } from "@/app/(create)/hooks/use-design-system"
 import {
   useDesignSystemSearchParams,

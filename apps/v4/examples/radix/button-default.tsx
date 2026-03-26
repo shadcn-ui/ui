@@ -1,4 +1,4 @@
-import { Button } from "@/styles/radix-nova/ui/button"
+import { Button } from "@/examples/radix/ui/button"
 
 export default function ButtonDefault() {
   return <Button>Button</Button>

@@ -3,7 +3,7 @@ import {
   AvatarBadge,
   AvatarFallback,
   AvatarImage,
-} from "@/styles/base-nova/ui/avatar"
+} from "@/examples/base/ui/avatar"
 
 export function AvatarWithBadge() {
   return (

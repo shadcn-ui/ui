@@ -1,6 +1,5 @@
+import { Badge } from "@/examples/base/ui/badge"
 import { BadgeCheck, BookmarkIcon } from "lucide-react"
-
-import { Badge } from "@/styles/base-nova/ui/badge"
 
 export function BadgeWithIconLeft() {
   return (

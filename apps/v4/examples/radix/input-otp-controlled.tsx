@@ -1,12 +1,11 @@
 "use client"
 
 import * as React from "react"
-
 import {
   InputOTP,
   InputOTPGroup,
   InputOTPSlot,
-} from "@/styles/radix-nova/ui/input-otp"
+} from "@/examples/radix/ui/input-otp"
 
 export default function InputOTPControlled() {
   const [value, setValue] = React.useState("")

@@ -4,7 +4,7 @@ import {
   InputGroupInput,
   InputGroupText,
   InputGroupTextarea,
-} from "@/styles/base-nova/ui/input-group"
+} from "@/examples/base/ui/input-group"
 
 export default function InputGroupTextExample() {
   return (

@@ -4,8 +4,8 @@ import {
   FieldLabel,
   FieldLegend,
   FieldSet,
-} from "@/styles/base-nova/ui/field"
-import { RadioGroup, RadioGroupItem } from "@/styles/base-nova/ui/radio-group"
+} from "@/examples/base/ui/field"
+import { RadioGroup, RadioGroupItem } from "@/examples/base/ui/radio-group"
 
 export function FieldRadio() {
   return (

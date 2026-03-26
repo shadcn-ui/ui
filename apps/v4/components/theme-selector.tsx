@@ -1,9 +1,6 @@
 "use client"
 
-import { THEMES } from "@/lib/themes"
-import { cn } from "@/lib/utils"
-import { useThemeConfig } from "@/components/active-theme"
-import { Label } from "@/styles/base-nova/ui/label"
+import { Label } from "@/examples/base/ui/label"
 import {
   Select,
   SelectContent,
@@ -12,7 +9,11 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from "@/styles/base-nova/ui/select"
+} from "@/examples/base/ui/select"
+
+import { THEMES } from "@/lib/themes"
+import { cn } from "@/lib/utils"
+import { useThemeConfig } from "@/components/active-theme"
 
 import { CopyCodeButton } from "./theme-customizer"
 

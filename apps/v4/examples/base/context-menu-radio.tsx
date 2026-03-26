@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-
 import {
   ContextMenu,
   ContextMenuContent,
@@ -11,7 +10,7 @@ import {
   ContextMenuRadioItem,
   ContextMenuSeparator,
   ContextMenuTrigger,
-} from "@/styles/base-nova/ui/context-menu"
+} from "@/examples/base/ui/context-menu"
 
 export function ContextMenuRadio() {
   const [user, setUser] = React.useState("pedro")

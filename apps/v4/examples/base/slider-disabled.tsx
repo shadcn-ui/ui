@@ -1,4 +1,4 @@
-import { Slider } from "@/styles/base-nova/ui/slider"
+import { Slider } from "@/examples/base/ui/slider"
 
 export function SliderDisabled() {
   return (

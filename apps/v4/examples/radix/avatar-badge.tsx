@@ -3,7 +3,7 @@ import {
   AvatarBadge,
   AvatarFallback,
   AvatarImage,
-} from "@/styles/radix-nova/ui/avatar"
+} from "@/examples/radix/ui/avatar"
 
 export function AvatarWithBadge() {
   return (

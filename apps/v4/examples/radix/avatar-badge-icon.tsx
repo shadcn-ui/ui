@@ -1,11 +1,10 @@
-import { PlusIcon } from "lucide-react"
-
 import {
   Avatar,
   AvatarBadge,
   AvatarFallback,
   AvatarImage,
-} from "@/styles/radix-nova/ui/avatar"
+} from "@/examples/radix/ui/avatar"
+import { PlusIcon } from "lucide-react"
 
 export function AvatarBadgeIconExample() {
   return (

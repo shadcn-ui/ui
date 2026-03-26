@@ -1,12 +1,10 @@
 "use client"
 
-import { ChevronDownIcon, LifeBuoyIcon, SendIcon } from "lucide-react"
-
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/styles/base-nova/ui/collapsible"
+} from "@/examples/base/ui/collapsible"
 import {
   Sidebar,
   SidebarContent,
@@ -17,7 +15,8 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarProvider,
-} from "@/styles/base-nova/ui/sidebar"
+} from "@/examples/base/ui/sidebar"
+import { ChevronDownIcon, LifeBuoyIcon, SendIcon } from "lucide-react"
 
 export default function AppSidebar() {
   return (

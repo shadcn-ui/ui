@@ -1,15 +1,14 @@
 "use client"
 
 import * as React from "react"
-
 import {
   Field,
   FieldContent,
   FieldDescription,
   FieldGroup,
   FieldLabel,
-} from "@/styles/base-nova/ui/field"
-import { Label } from "@/styles/base-nova/ui/label"
+} from "@/examples/base/ui/field"
+import { Label } from "@/examples/base/ui/label"
 import {
   Select,
   SelectContent,
@@ -17,8 +16,8 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/styles/base-nova/ui/select"
-import { Switch } from "@/styles/base-nova/ui/switch"
+} from "@/examples/base/ui/select"
+import { Switch } from "@/examples/base/ui/switch"
 
 const items = [
   { label: "Select a fruit", value: null },

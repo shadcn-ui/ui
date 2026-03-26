@@ -1,11 +1,9 @@
-import { CopyIcon, FileCodeIcon } from "lucide-react"
-
 import {
   Field,
   FieldDescription,
   FieldGroup,
   FieldLabel,
-} from "@/styles/base-nova/ui/field"
+} from "@/examples/base/ui/field"
 import {
   InputGroup,
   InputGroupAddon,
@@ -13,7 +11,8 @@ import {
   InputGroupInput,
   InputGroupText,
   InputGroupTextarea,
-} from "@/styles/base-nova/ui/input-group"
+} from "@/examples/base/ui/input-group"
+import { CopyIcon, FileCodeIcon } from "lucide-react"
 
 export function InputGroupBlockStart() {
   return (

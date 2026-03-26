@@ -1,16 +1,8 @@
 "use client"
 
 import * as React from "react"
-
-import {
-  Field,
-  FieldDescription,
-  FieldLabel,
-} from "@/styles/radix-nova/ui/field"
-import {
-  ToggleGroup,
-  ToggleGroupItem,
-} from "@/styles/radix-nova/ui/toggle-group"
+import { Field, FieldDescription, FieldLabel } from "@/examples/radix/ui/field"
+import { ToggleGroup, ToggleGroupItem } from "@/examples/radix/ui/toggle-group"
 
 export function ToggleGroupFontWeightSelector() {
   const [fontWeight, setFontWeight] = React.useState("normal")
