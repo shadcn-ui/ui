@@ -1,5 +1,3 @@
-"use client"
-
 import { buttonVariants } from "@/examples/base/ui/button"
 
 export default function ButtonRender() {
