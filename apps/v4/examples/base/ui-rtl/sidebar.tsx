@@ -522,7 +522,7 @@ function SidebarMenuButton({
       slot: "sidebar-menu-button",
       sidebar: "menu-button",
       size,
-      active: isActive,
+      active: isActive || undefined,
     },
   })
 
@@ -689,7 +689,7 @@ function SidebarMenuSubButton({
       slot: "sidebar-menu-sub-button",
       sidebar: "menu-sub-button",
       size,
-      active: isActive,
+      active: isActive || undefined,
     },
   })
 }
