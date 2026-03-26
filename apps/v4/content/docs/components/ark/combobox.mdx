@@ -1,0 +1,307 @@
+---
+title: Combobox
+description: Autocomplete input with a list of suggestions.
+base: ark
+component: true
+links:
+  doc: https://ark-ui.com/docs/components/combobox
+  api: https://ark-ui.com/docs/components/combobox#api-reference
+---
+
+<ComponentPreview
+  styleName="ark-nova"
+  name="combobox-demo"
+  description="A combobox with a list of frameworks."
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add combobox
+```
+
+</TabsContent>
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="combobox"
+  title="components/ui/combobox.tsx"
+  styleName="ark-nova"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import {
+  Combobox,
+  ComboboxContent,
+  ComboboxControl,
+  ComboboxInput,
+  ComboboxItem,
+  ComboboxItemIndicator,
+  ComboboxItemText,
+  ComboboxList,
+  ComboboxTrigger,
+  useFilter,
+  useListCollection,
+} from "@/components/ui/combobox"
+```
+
+```tsx showLineNumbers
+const frameworkItems = [
+  { label: "Next.js", value: "nextjs" },
+  { label: "SvelteKit", value: "sveltekit" },
+  { label: "Nuxt.js", value: "nuxtjs" },
+  { label: "Remix", value: "remix" },
+  { label: "Astro", value: "astro" },
+]
+
+export function ExampleCombobox() {
+  const { contains } = useFilter({ sensitivity: "base" })
+  const { collection, filter } = useListCollection({
+    initialItems: frameworkItems,
+    filter: contains,
+  })
+
+  return (
+    <Combobox
+      collection={collection}
+      onInputValueChange={(details) => filter(details.inputValue)}
+    >
+      <ComboboxControl>
+        <ComboboxInput placeholder="Select a framework" />
+        <ComboboxTrigger />
+      </ComboboxControl>
+      <ComboboxContent>
+        <ComboboxList>
+          {collection.items.map((item) => (
+            <ComboboxItem key={item.value} item={item}>
+              <ComboboxItemText>{item.label}</ComboboxItemText>
+              <ComboboxItemIndicator />
+            </ComboboxItem>
+          ))}
+        </ComboboxList>
+      </ComboboxContent>
+    </Combobox>
+  )
+}
+```
+
+## Custom Items
+
+Use `useListCollection` with custom item objects. The `label` field is used for filtering and display.
+
+```tsx showLineNumbers
+import {
+  Combobox,
+  ComboboxContent,
+  ComboboxControl,
+  ComboboxInput,
+  ComboboxItem,
+  ComboboxItemIndicator,
+  ComboboxItemText,
+  ComboboxList,
+  ComboboxTrigger,
+  useFilter,
+  useListCollection,
+} from "@/components/ui/combobox"
+
+const countryItems = [
+  { label: "Argentina", value: "argentina", continent: "South America" },
+  { label: "Australia", value: "australia", continent: "Oceania" },
+  { label: "Brazil", value: "brazil", continent: "South America" },
+]
+
+export function ExampleComboboxCustomItems() {
+  const { contains } = useFilter({ sensitivity: "base" })
+  const { collection, filter } = useListCollection({
+    initialItems: countryItems,
+    filter: contains,
+  })
+
+  return (
+    <Combobox
+      collection={collection}
+      onInputValueChange={(details) => filter(details.inputValue)}
+    >
+      <ComboboxControl>
+        <ComboboxInput placeholder="Search countries..." />
+        <ComboboxTrigger />
+      </ComboboxControl>
+      <ComboboxContent>
+        <ComboboxList>
+          {collection.items.map((item) => (
+            <ComboboxItem key={item.value} item={item}>
+              <ComboboxItemText>{item.label}</ComboboxItemText>
+              <ComboboxItemIndicator />
+            </ComboboxItem>
+          ))}
+        </ComboboxList>
+      </ComboboxContent>
+    </Combobox>
+  )
+}
+```
+
+## Multiple Selection
+
+Use the `multiple` prop for multi-select behavior.
+
+```tsx showLineNumbers
+import {
+  Combobox,
+  ComboboxContent,
+  ComboboxControl,
+  ComboboxInput,
+  ComboboxItem,
+  ComboboxItemIndicator,
+  ComboboxItemText,
+  ComboboxList,
+  ComboboxTrigger,
+  useFilter,
+  useListCollection,
+} from "@/components/ui/combobox"
+
+const frameworkItems = [
+  { label: "Next.js", value: "nextjs" },
+  { label: "SvelteKit", value: "sveltekit" },
+  { label: "Nuxt.js", value: "nuxtjs" },
+  { label: "Remix", value: "remix" },
+  { label: "Astro", value: "astro" },
+]
+
+export function ExampleComboboxMultiple() {
+  const { contains } = useFilter({ sensitivity: "base" })
+  const { collection, filter } = useListCollection({
+    initialItems: frameworkItems,
+    filter: contains,
+  })
+
+  return (
+    <Combobox
+      collection={collection}
+      onInputValueChange={(details) => filter(details.inputValue)}
+      multiple
+      defaultValue={["nextjs"]}
+    >
+      <ComboboxControl>
+        <ComboboxInput placeholder="Select frameworks" />
+        <ComboboxTrigger />
+      </ComboboxControl>
+      <ComboboxContent>
+        <ComboboxList>
+          {collection.items.map((item) => (
+            <ComboboxItem key={item.value} item={item}>
+              <ComboboxItemText>{item.label}</ComboboxItemText>
+              <ComboboxItemIndicator />
+            </ComboboxItem>
+          ))}
+        </ComboboxList>
+      </ComboboxContent>
+    </Combobox>
+  )
+}
+```
+
+## Examples
+
+### Basic
+
+A simple combobox with a list of frameworks.
+
+<ComponentPreview styleName="ark-nova" name="combobox-basic" />
+
+### Multiple
+
+A combobox with multiple selection using the `multiple` prop.
+
+<ComponentPreview styleName="ark-nova" name="combobox-multiple" />
+
+### Clear Button
+
+Use the `ComboboxClearTrigger` to show a clear button.
+
+<ComponentPreview styleName="ark-nova" name="combobox-clear" />
+
+### Groups
+
+Use `ComboboxItemGroup` and `ComboboxItemGroupLabel` to group items.
+
+<ComponentPreview styleName="ark-nova" name="combobox-groups" />
+
+### Custom Items
+
+You can render custom components inside `ComboboxItemText`.
+
+<ComponentPreview styleName="ark-nova" name="combobox-custom" />
+
+### Invalid
+
+Use the `invalid` prop to make the combobox invalid.
+
+<ComponentPreview styleName="ark-nova" name="combobox-invalid" />
+
+### Disabled
+
+Use the `disabled` prop to disable the combobox.
+
+<ComponentPreview styleName="ark-nova" name="combobox-disabled" />
+
+### Auto Highlight
+
+Use the `autoFocus` prop to automatically highlight the first item on open.
+
+<ComponentPreview styleName="ark-nova" name="combobox-auto-highlight" />
+
+### Popup
+
+You can trigger the combobox from a button using the `asChild` prop on `ComboboxTrigger`. Move the `ComboboxInput` inside the `ComboboxContent`.
+
+<ComponentPreview styleName="ark-nova" name="combobox-popup" />
+
+### Input Group
+
+You can add a prefix icon to the combobox by placing it inside `ComboboxControl`.
+
+<ComponentPreview styleName="ark-nova" name="combobox-input-group" />
+
+## RTL
+
+To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview
+  styleName="ark-nova"
+  name="combobox-rtl"
+  direction="rtl"
+  align="start"
+/>
+
+## API Reference
+
+See the [Ark UI Combobox documentation](https://ark-ui.com/docs/components/combobox#api-reference) for more information.
