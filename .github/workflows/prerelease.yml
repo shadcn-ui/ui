@@ -28,7 +28,7 @@ jobs:
           fetch-depth: 0
 
       - name: Use PNPM
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@fc06bc1257f339d1d5d8b3a19a8cae5388b55320 # v4
         with:
           version: 9.0.6
 
@@ -53,7 +53,7 @@ jobs:
 
       - name: get-npm-version
         id: package-version
-        uses: martinbeentjes/npm-get-version-action@main
+        uses: martinbeentjes/npm-get-version-action@3cf273023a0dda27efcd3164bdfb51908dd46a5b # main
         with:
           path: packages/shadcn
 
