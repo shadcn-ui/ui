@@ -1,10 +1,13 @@
 import type { Metadata } from "next"
+import { cookies } from "next/headers"
 import { NuqsAdapter } from "nuqs/adapters/next/app"
 
 import { META_THEME_COLORS, siteConfig } from "@/lib/config"
 import { fontVariables } from "@/lib/fonts"
+import { getLocale, LANGUAGE_STORAGE_KEY } from "@/lib/localization"
 import { cn } from "@/lib/utils"
 import { LayoutProvider } from "@/hooks/use-layout"
+import { LocaleProvider } from "@/hooks/use-locale"
 import { ActiveThemeProvider } from "@/components/active-theme"
 import { Analytics } from "@/components/analytics"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
@@ -66,18 +69,39 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const cookieStore = await cookies()
+  const locale = getLocale(cookieStore.get(LANGUAGE_STORAGE_KEY)?.value)
+
   return (
-    <html lang="en" suppressHydrationWarning className={fontVariables}>
+    <html
+      lang={locale.lang}
+      dir={locale.dir}
+      data-lang={locale.language}
+      suppressHydrationWarning
+      className={fontVariables}
+    >
       <head>
         <script
           dangerouslySetInnerHTML={{
             __html: `
               try {
+                const language = localStorage.getItem('${LANGUAGE_STORAGE_KEY}')
+
+                if (language === 'ar' || language === 'he') {
+                  document.documentElement.lang = language
+                  document.documentElement.dir = 'rtl'
+                  document.documentElement.dataset.lang = language
+                } else {
+                  document.documentElement.lang = 'en'
+                  document.documentElement.dir = 'ltr'
+                  document.documentElement.dataset.lang = 'en'
+                }
+
                 if (localStorage.theme === 'dark' || ((!('theme' in localStorage) || localStorage.theme === 'system') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
                   document.querySelector('meta[name="theme-color"]').setAttribute('content', '${META_THEME_COLORS.dark}')
                 }
@@ -96,20 +120,22 @@ export default function RootLayout({
         )}
       >
         <ThemeProvider>
-          <LayoutProvider>
-            <ActiveThemeProvider>
-              <NuqsAdapter>
-                <BaseTooltipProvider delay={0}>
-                  <RadixTooltipProvider delayDuration={0}>
-                    {children}
-                    <Toaster position="top-center" />
-                  </RadixTooltipProvider>
-                </BaseTooltipProvider>
-              </NuqsAdapter>
-              <TailwindIndicator />
-              <Analytics />
-            </ActiveThemeProvider>
-          </LayoutProvider>
+          <LocaleProvider defaultLanguage={locale.language}>
+            <LayoutProvider>
+              <ActiveThemeProvider>
+                <NuqsAdapter>
+                  <BaseTooltipProvider delay={0}>
+                    <RadixTooltipProvider delayDuration={0}>
+                      {children}
+                      <Toaster position="top-center" />
+                    </RadixTooltipProvider>
+                  </BaseTooltipProvider>
+                </NuqsAdapter>
+                <TailwindIndicator />
+                <Analytics />
+              </ActiveThemeProvider>
+            </LayoutProvider>
+          </LocaleProvider>
         </ThemeProvider>
       </body>
     </html>

@@ -66,7 +66,7 @@ export default function ExamplesLayout({
       </PageHeader>
       <PageNav id="examples" className="hidden md:flex">
         <ExamplesNav className="flex-1 overflow-hidden [&>a:first-child]:text-primary" />
-        <ThemeSelector className="mr-4 hidden md:flex" />
+        <ThemeSelector className="me-4 hidden md:flex" />
       </PageNav>
       <div className="container-wrapper flex flex-1 flex-col section-soft pb-6">
         <div className="container flex flex-1 scroll-mt-20 flex-col theme-container">

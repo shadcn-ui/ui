@@ -65,7 +65,7 @@ export default function IndexPage() {
       </PageHeader>
       <PageNav className="hidden md:flex">
         <ExamplesNav className="flex-1 overflow-hidden [&>a:first-child]:text-primary" />
-        <ThemeSelector className="mr-4 hidden md:flex" />
+        <ThemeSelector className="me-4 hidden md:flex" />
       </PageNav>
       <div className="container-wrapper flex-1 section-soft pb-6">
         <div className="container overflow-hidden">

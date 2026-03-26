@@ -96,14 +96,17 @@ export default async function Page(props: {
           <div className="flex flex-col gap-2">
             <div className="flex flex-col gap-2">
               <div className="flex items-center justify-between md:items-start">
-                <h1 className="scroll-m-24 text-3xl font-semibold tracking-tight sm:text-3xl">
+                <h1
+                  dir="auto"
+                  className="scroll-m-24 text-3xl font-semibold tracking-tight sm:text-3xl"
+                >
                   {doc.title}
                 </h1>
                 <div className="docs-nav flex items-center gap-2">
                   <div className="hidden sm:block">
                     <DocsCopyPage page={raw} url={absoluteUrl(page.url)} />
                   </div>
-                  <div className="ml-auto flex gap-2">
+                  <div className="ms-auto flex gap-2">
                     {neighbours.previous && (
                       <Button
                         variant="secondary"
@@ -112,7 +115,7 @@ export default async function Page(props: {
                         asChild
                       >
                         <Link href={neighbours.previous.url}>
-                          <IconArrowLeft />
+                          <IconArrowLeft className="rtl:-scale-x-100" />
                           <span className="sr-only">Previous</span>
                         </Link>
                       </Button>
@@ -126,7 +129,7 @@ export default async function Page(props: {
                       >
                         <Link href={neighbours.next.url}>
                           <span className="sr-only">Next</span>
-                          <IconArrowRight />
+                          <IconArrowRight className="rtl:-scale-x-100" />
                         </Link>
                       </Button>
                     )}
@@ -134,7 +137,10 @@ export default async function Page(props: {
                 </div>
               </div>
               {doc.description && (
-                <p className="text-[1.05rem] text-muted-foreground sm:text-base sm:text-balance md:max-w-[80%]">
+                <p
+                  dir="auto"
+                  className="text-[1.05rem] text-muted-foreground sm:text-base sm:text-balance md:max-w-[80%]"
+                >
                   {doc.description}
                 </p>
               )}
@@ -162,7 +168,8 @@ export default async function Page(props: {
                 className="shadow-none"
               >
                 <Link href={neighbours.previous.url}>
-                  <IconArrowLeft /> {neighbours.previous.name}
+                  <IconArrowLeft className="rtl:-scale-x-100" />{" "}
+                  <bdi>{neighbours.previous.name}</bdi>
                 </Link>
               </Button>
             )}
@@ -170,18 +177,19 @@ export default async function Page(props: {
               <Button
                 variant="secondary"
                 size="sm"
-                className="ml-auto shadow-none"
+                className="ms-auto shadow-none"
                 asChild
               >
                 <Link href={neighbours.next.url}>
-                  {neighbours.next.name} <IconArrowRight />
+                  <bdi>{neighbours.next.name}</bdi>{" "}
+                  <IconArrowRight className="rtl:-scale-x-100" />
                 </Link>
               </Button>
             )}
           </div>
         </div>
       </div>
-      <div className="sticky top-[calc(var(--header-height)+1px)] z-30 ml-auto hidden h-[90svh] w-(--sidebar-width) flex-col gap-4 overflow-hidden overscroll-none pb-8 xl:flex">
+      <div className="sticky top-[calc(var(--header-height)+1px)] z-30 ms-auto hidden h-[90svh] w-(--sidebar-width) flex-col gap-4 overflow-hidden overscroll-none pb-8 xl:flex">
         <div className="h-(--top-spacing) shrink-0"></div>
         {doc.toc?.length ? (
           <div className="no-scrollbar flex flex-col gap-8 overflow-y-auto px-8">

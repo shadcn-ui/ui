@@ -7,7 +7,8 @@ export function Announcement() {
   return (
     <Badge asChild variant="secondary" className="bg-muted">
       <Link href="/docs/changelog/2026-03-cli-v4">
-        shadcn/skills, presets and more <ArrowRightIcon />
+        shadcn/skills, presets and more{" "}
+        <ArrowRightIcon className="rtl:-scale-x-100" />
       </Link>
     </Badge>
   )
