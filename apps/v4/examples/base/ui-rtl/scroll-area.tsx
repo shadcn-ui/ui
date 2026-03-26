@@ -1,6 +1,3 @@
-"use client"
-
-import * as React from "react"
 import { cn } from "@/examples/base/lib/utils"
 import { ScrollArea as ScrollAreaPrimitive } from "@base-ui/react/scroll-area"
 
