@@ -13,7 +13,7 @@
   }
 
   .cn-slider-thumb {
-    @apply ring-black/5 not-dark:bg-clip-padding ring-1 h-4 w-7 rounded-full bg-white shadow-md transition-[color,box-shadow,background-color] hover:ring-4 hover:ring-ring/30 focus-visible:ring-4 focus-visible:ring-ring/30 focus-visible:outline-hidden data-vertical:h-6 data-vertical:w-4;
+    @apply ring-black/10 not-dark:bg-clip-padding ring-1 h-4 w-7 rounded-full bg-white shadow-md transition-[color,box-shadow,background-color] hover:ring-4 hover:ring-ring/30 focus-visible:ring-4 focus-visible:ring-ring/30 focus-visible:outline-hidden data-vertical:h-6 data-vertical:w-4;
   }
 
   /* MARK: Switch */

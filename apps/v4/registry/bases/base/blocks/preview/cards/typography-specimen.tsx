@@ -66,10 +66,10 @@ export function TypographySpecimen() {
       </CardContent>
       <CardFooter>
         <Dialog>
-          <DialogTrigger asChild>
-            <Button variant="outline" className="w-full">
-              Share Feedback
-            </Button>
+          <DialogTrigger
+            render={<Button variant="outline" className="w-full" />}
+          >
+            Share Feedback
           </DialogTrigger>
           <DialogContent>
             <DialogHeader>
