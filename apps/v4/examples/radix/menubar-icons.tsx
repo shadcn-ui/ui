@@ -1,4 +1,13 @@
 import {
+  FileIcon,
+  FolderIcon,
+  HelpCircleIcon,
+  SaveIcon,
+  SettingsIcon,
+  TrashIcon,
+} from "lucide-react"
+
+import {
   Menubar,
   MenubarContent,
   MenubarGroup,
@@ -7,15 +16,7 @@ import {
   MenubarSeparator,
   MenubarShortcut,
   MenubarTrigger,
-} from "@/examples/radix/ui/menubar"
-import {
-  FileIcon,
-  FolderIcon,
-  HelpCircleIcon,
-  SaveIcon,
-  SettingsIcon,
-  TrashIcon,
-} from "lucide-react"
+} from "@/styles/radix-nova/ui/menubar"
 
 export function MenubarIcons() {
   return (

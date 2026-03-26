@@ -2,7 +2,7 @@ import {
   NativeSelect,
   NativeSelectOptGroup,
   NativeSelectOption,
-} from "@/examples/radix/ui/native-select"
+} from "@/styles/radix-nova/ui/native-select"
 
 export default function NativeSelectGroups() {
   return (

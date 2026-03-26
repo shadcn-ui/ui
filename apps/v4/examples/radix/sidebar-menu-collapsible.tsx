@@ -1,10 +1,12 @@
 "use client"
 
+import { ChevronRightIcon } from "lucide-react"
+
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/examples/radix/ui/collapsible"
+} from "@/styles/radix-nova/ui/collapsible"
 import {
   Sidebar,
   SidebarContent,
@@ -17,8 +19,7 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
   SidebarProvider,
-} from "@/examples/radix/ui/sidebar"
-import { ChevronRightIcon } from "lucide-react"
+} from "@/styles/radix-nova/ui/sidebar"
 
 const items = [
   {
