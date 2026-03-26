@@ -32,17 +32,9 @@ function getDemoFilePath(name: string, styleName: string) {
   return demo.filePath
 }
 
-function getIndexForStyle(styleName: string) {
-  if (StylesIndex[styleName]) {
-    return { index: StylesIndex, key: styleName }
-  }
-
-  const base = styleName.split("-")[0]
-  if (BasesIndex[base]) {
-    return { index: BasesIndex, key: base }
-  }
-
-  return { index: StylesIndex, key: styleName }
+function getRegistryEntry(name: string, styleName: string) {
+  const base = getBaseForStyle(styleName)
+  return StylesIndex[styleName]?.[name] ?? (base ? BasesIndex[base]?.[name] : undefined)
 }
 
 interface UnistNode {
@@ -144,8 +136,11 @@ export function rehypeComponent() {
             src = getDemoFilePath(item.name, item.styleName)
 
             if (!src) {
-              const { index, key } = getIndexForStyle(item.styleName)
-              const component = index[key]?.[item.name]
+              const component = getRegistryEntry(item.name, item.styleName)
+
+              if (!component?.files) {
+                return
+              }
 
               if (item.type === "ComponentSource" && item.fileName) {
                 src =

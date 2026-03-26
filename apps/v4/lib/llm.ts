@@ -27,17 +27,9 @@ function getDemoFilePath(name: string, styleName: string) {
   return demo.filePath
 }
 
-function getIndexForStyle(styleName: string) {
-  if (StylesIndex[styleName]) {
-    return { index: StylesIndex, key: styleName }
-  }
-
+function getRegistryEntry(name: string, styleName: string) {
   const base = getBaseForStyle(styleName)
-  if (base && BasesIndex[base]) {
-    return { index: BasesIndex, key: base }
-  }
-
-  return { index: StylesIndex, key: styleName }
+  return StylesIndex[styleName]?.[name] ?? (base ? BasesIndex[base]?.[name] : undefined)
 }
 
 function getComponentsList() {
@@ -75,8 +67,7 @@ export function processMdxForLLMs(content: string, style: Style["name"]) {
       let src = getDemoFilePath(name, effectiveStyle)
 
       if (!src) {
-        const { index, key } = getIndexForStyle(effectiveStyle)
-        const component = index[key]?.[name]
+        const component = getRegistryEntry(name, effectiveStyle)
         if (!component?.files) {
           return match
         }

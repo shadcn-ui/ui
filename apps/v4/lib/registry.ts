@@ -40,6 +40,30 @@ function getDemoIndexKey(styleName: string) {
   return styleName
 }
 
+function getBaseIndex(styleName: string) {
+  const base = getBaseForStyle(styleName)
+  return base ? BasesIndex[base] : null
+}
+
+function getStyleIndex(styleName: string) {
+  return StylesIndex[styleName] ?? null
+}
+
+function getMergedIndexForStyle(styleName: string) {
+  const styleIndex = getStyleIndex(styleName)
+  const baseIndex = getBaseIndex(styleName)
+
+  if (styleIndex && baseIndex) {
+    return { ...baseIndex, ...styleIndex }
+  }
+
+  return styleIndex ?? baseIndex
+}
+
+function getRegistryEntry(name: string, styleName: string) {
+  return getStyleIndex(styleName)?.[name] ?? getBaseIndex(styleName)?.[name]
+}
+
 export function getDemoComponent(name: string, styleName: string) {
   const key = getDemoIndexKey(styleName)
   return ExamplesIndex[key]?.[name]?.component
@@ -67,35 +91,20 @@ export async function getDemoItem(name: string, styleName: string) {
   }
 }
 
-function getIndexForStyle(styleName: string) {
-  if (StylesIndex[styleName]) {
-    return { index: StylesIndex, key: styleName }
-  }
-
-  const base = getBaseForStyle(styleName)
-  if (base && BasesIndex[base]) {
-    return { index: BasesIndex, key: base }
-  }
-
-  return { index: StylesIndex, key: styleName }
-}
-
 export function getRegistryComponent(name: string, styleName: string) {
   const demoComponent = getDemoComponent(name, styleName)
   if (demoComponent) {
     return demoComponent
   }
 
-  const { index, key } = getIndexForStyle(styleName)
-  return index[key]?.[name]?.component
+  return getRegistryEntry(name, styleName)?.component
 }
 
 export async function getRegistryItems(
   styleName: string,
   filter?: (item: z.infer<typeof registryItemSchema>) => boolean
 ) {
-  const { index, key } = getIndexForStyle(styleName)
-  const styleIndex = index[key]
+  const styleIndex = getMergedIndexForStyle(styleName)
 
   if (!styleIndex) {
     return []
@@ -121,22 +130,24 @@ export async function getRegistryItem(name: string, styleName: string) {
     return registryCache.get(cacheKey)
   }
 
-  const { index, key } = getIndexForStyle(styleName)
-  const item = index[key]?.[name]
+  const item = getRegistryEntry(name, styleName)
 
   if (!item) {
     registryCache.set(cacheKey, null)
     return null
   }
 
+  const normalizedItem = {
+    ...item,
+    files: item.files.map((file: unknown) =>
+      typeof file === "string" ? { path: file } : file
+    ),
+  }
+
   // Convert all file paths to object.
   // TODO: remove when we migrate to new registry.
-  item.files = item.files.map((file: unknown) =>
-    typeof file === "string" ? { path: file } : file
-  )
-
   // Fail early before doing expensive file operations.
-  const result = registryItemSchema.safeParse(item)
+  const result = registryItemSchema.safeParse(normalizedItem)
   if (!result.success) {
     registryCache.set(cacheKey, null)
     return null

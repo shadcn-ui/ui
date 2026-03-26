@@ -481,6 +481,10 @@ export const Index: Record<string, Record<string, any>> = {`
         continue
       }
 
+      if (styleCombination && item.type !== "registry:ui") {
+        continue
+      }
+
       const files = normalizeRegistryFiles(item)
 
       if (files.length === 0) {
