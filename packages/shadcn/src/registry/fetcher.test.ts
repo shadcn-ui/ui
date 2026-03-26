@@ -204,6 +204,73 @@ describe("fetchRegistry", () => {
     expect(result[0]).toMatchObject({ name: "button" })
     expect(result[1]).toMatchObject({ name: "card" })
   })
+
+  it("should send specific Accept and User-Agent headers", async () => {
+    let acceptHeader: string | null = null
+    let userAgentHeader: string | null = null
+    server.use(
+      http.get(`${REGISTRY_URL}/header-test.json`, ({ request }) => {
+        acceptHeader = request.headers.get("accept")
+        userAgentHeader = request.headers.get("user-agent")
+        return HttpResponse.json({
+          name: "header-test",
+          type: "registry:ui",
+        })
+      })
+    )
+
+    await fetchRegistry(["header-test.json"], { useCache: false })
+    expect(acceptHeader).toBe(
+      "application/vnd.shadcn.v1+json, application/json;q=0.9"
+    )
+    expect(userAgentHeader).toBe("shadcn-ui")
+  })
+
+  it("should send specific Accept header for direct external URLs", async () => {
+    let acceptHeader: string | null = null
+    server.use(
+      http.get("https://external.com/registry/item.json", ({ request }) => {
+        acceptHeader = request.headers.get("accept")
+        return HttpResponse.json({
+          name: "item",
+          type: "registry:ui",
+        })
+      })
+    )
+
+    await fetchRegistry(["https://external.com/registry/item.json"], {
+      useCache: false,
+    })
+    expect(acceptHeader).toBe(
+      "application/vnd.shadcn.v1+json, application/json;q=0.9"
+    )
+  })
+
+  it("should successfully fetch when the server requires the specific Shadcn Accept header (Content Negotiation)", async () => {
+    server.use(
+      http.get(`${REGISTRY_URL}/content-negotiation.json`, ({ request }) => {
+        const accept = request.headers.get("accept")
+        if (!accept?.includes("application/vnd.shadcn.v1+json")) {
+          return new HttpResponse(
+            "<!DOCTYPE html><html><body>Error: Specific header missing</body></html>",
+            {
+              status: 200,
+              headers: { "Content-Type": "text/html" },
+            }
+          )
+        }
+        return HttpResponse.json({
+          name: "content-negotiation",
+          type: "registry:ui",
+        })
+      })
+    )
+
+    const [result] = await fetchRegistry(["content-negotiation.json"], {
+      useCache: false,
+    })
+    expect(result).toMatchObject({ name: "content-negotiation" })
+  })
 })
 
 describe("clearRegistryCache", () => {
