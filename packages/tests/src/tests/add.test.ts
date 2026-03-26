@@ -96,6 +96,35 @@ describe("shadcn add", () => {
     ).toBe(true)
   })
 
+  it("should add legacy new-york combobox example from registry url", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app-init")
+    const registryUrl = getRegistryUrl()
+
+    await npxShadcn(fixturePath, [
+      "add",
+      `${registryUrl}/styles/new-york/combobox-popover.json`,
+      "--yes",
+    ])
+
+    expect(
+      await fs.pathExists(path.join(fixturePath, "components/ui/combobox.tsx"))
+    ).toBe(true)
+    expect(
+      await fs.pathExists(path.join(fixturePath, "components/ui/popover.tsx"))
+    ).toBe(true)
+    expect(
+      await fs.pathExists(
+        path.join(fixturePath, "components/combobox-popover.tsx")
+      )
+    ).toBe(true)
+
+    const packageJson = await fs.readJson(
+      path.join(fixturePath, "package.json")
+    )
+
+    expect(packageJson.dependencies["@base-ui/react"]).toBeDefined()
+  })
+
   it("should add item with npm dependencies", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
     await npxShadcn(fixturePath, ["init", "--defaults"])
