@@ -190,6 +190,10 @@ async function formatGeneratedSource(content: string, filePath: string) {
   })
 }
 
+async function formatGeneratedJson(value: unknown, filePath: string) {
+  return formatGeneratedSource(JSON.stringify(value, null, 2), filePath)
+}
+
 async function loadTransformCache() {
   const existingManifest = await readFileIfExists(TRANSFORM_CACHE_MANIFEST_PATH)
   if (!existingManifest) {
@@ -811,7 +815,10 @@ async function buildRegistryJsonFile(styleName: string) {
   await fs.mkdir(outputDir, { recursive: true })
 
   const registryJsonPath = path.join(outputDir, "registry.json")
-  const fixedRegistryJson = JSON.stringify(fixedRegistry, null, 2)
+  const fixedRegistryJson = await formatGeneratedJson(
+    fixedRegistry,
+    registryJsonPath
+  )
   await writeIfChanged(registryJsonPath, fixedRegistryJson)
 
   const tempRegistryPath = path.join(
@@ -858,7 +865,10 @@ async function buildBlocksIndex() {
   }))
 
   const blocksJsonPath = path.join(process.cwd(), "registry/__blocks__.json")
-  await writeIfChanged(blocksJsonPath, JSON.stringify(payload, null, 2))
+  await writeIfChanged(
+    blocksJsonPath,
+    await formatGeneratedJson(payload, blocksJsonPath)
+  )
 }
 
 async function cleanUp(stylesToBuild: { name: string; title: string }[]) {
@@ -878,7 +888,10 @@ async function cleanUp(stylesToBuild: { name: string; title: string }[]) {
 async function buildConfig() {
   const config = { presets: PRESETS }
   const outputPath = path.join(process.cwd(), "public/r/config.json")
-  await writeIfChanged(outputPath, JSON.stringify(config, null, 2))
+  await writeIfChanged(
+    outputPath,
+    await formatGeneratedJson(config, outputPath)
+  )
 }
 
 async function applyIconTransform(content: string, filename: string) {
@@ -1033,7 +1046,7 @@ async function buildIndex() {
   )
 
   const outputPath = path.join(process.cwd(), "public/r/index.json")
-  await writeIfChanged(outputPath, JSON.stringify(index, null, 2))
+  await writeIfChanged(outputPath, await formatGeneratedJson(index, outputPath))
 }
 
 async function buildRegistriesJson() {
@@ -1056,7 +1069,10 @@ async function buildRegistriesJson() {
   }))
 
   const outputPath = path.join(process.cwd(), "public/r/registries.json")
-  await writeIfChanged(outputPath, JSON.stringify(registries, null, 2))
+  await writeIfChanged(
+    outputPath,
+    await formatGeneratedJson(registries, outputPath)
+  )
 }
 
 async function readDirectoryEntries(dirPath: string) {
@@ -1191,7 +1207,10 @@ async function buildColors() {
       }
 
       const outputPath = path.join(colorsTargetPath, `${baseColor.name}.json`)
-      await writeIfChanged(outputPath, JSON.stringify(payload, null, 2))
+      await writeIfChanged(
+        outputPath,
+        await formatGeneratedJson(payload, outputPath)
+      )
       console.log(`   ✅ ${baseColor.name}.json`)
     })
   )
