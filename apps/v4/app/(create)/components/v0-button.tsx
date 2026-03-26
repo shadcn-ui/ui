@@ -1,13 +1,13 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/base/ui/button"
-import { Skeleton } from "@/examples/base/ui/skeleton"
 
 import { cn } from "@/lib/utils"
 import { useIsMobile } from "@/hooks/use-mobile"
 import { useMounted } from "@/hooks/use-mounted"
 import { Icons } from "@/components/icons"
+import { Button } from "@/styles/base-nova/ui/button"
+import { Skeleton } from "@/styles/base-nova/ui/skeleton"
 import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
 
 export function V0Button({ className }: { className?: string }) {

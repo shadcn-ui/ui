@@ -1,17 +1,17 @@
 "use client"
 
 import * as React from "react"
+import { type RegistryItem } from "shadcn/schema"
+
+import { useIsMobile } from "@/hooks/use-mobile"
+import { getThemesForBaseColor, STYLES } from "@/registry/config"
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
-} from "@/examples/base/ui/card"
-import { FieldGroup, FieldSeparator } from "@/examples/base/ui/field"
-import { type RegistryItem } from "shadcn/schema"
-
-import { useIsMobile } from "@/hooks/use-mobile"
-import { getThemesForBaseColor, STYLES } from "@/registry/config"
+} from "@/styles/base-nova/ui/card"
+import { FieldGroup, FieldSeparator } from "@/styles/base-nova/ui/field"
 import { MenuAccentPicker } from "@/app/(create)/components/accent-picker"
 import { ActionMenu } from "@/app/(create)/components/action-menu"
 import { BaseColorPicker } from "@/app/(create)/components/base-color-picker"

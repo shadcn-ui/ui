@@ -1,16 +1,15 @@
 "use client"
 
-import { Button } from "@/examples/base/ui-rtl/button"
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "@/examples/base/ui-rtl/hover-card"
-
 import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
+import { Button } from "@/styles/base-nova/ui-rtl/button"
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/styles/base-nova/ui-rtl/hover-card"
 
 const translations: Translations = {
   en: {
