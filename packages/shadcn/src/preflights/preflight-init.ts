@@ -6,7 +6,10 @@ import {
   getMonorepoTargets,
   isMonorepoRoot,
 } from "@/src/utils/get-monorepo-info"
-import { getProjectInfo } from "@/src/utils/get-project-info"
+import {
+  configureTsConfigAlias,
+  getProjectInfo,
+} from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import { spinner } from "@/src/utils/spinner"
@@ -133,8 +136,21 @@ export async function preFlightInit(
     silent: options.silent,
   }).start()
   if (!projectInfo?.aliasPrefix) {
-    errors[ERRORS.IMPORT_ALIAS_MISSING] = true
-    tsConfigSpinner?.fail()
+    tsConfigSpinner?.stop()
+    const configureSpinner = spinner(`Configuring import alias.`, {
+      silent: options.silent,
+    }).start()
+    const configuredPrefix = await configureTsConfigAlias(
+      options.cwd,
+      projectInfo.isSrcDir
+    )
+    if (configuredPrefix) {
+      projectInfo.aliasPrefix = configuredPrefix
+      configureSpinner?.succeed()
+    } else {
+      errors[ERRORS.IMPORT_ALIAS_MISSING] = true
+      configureSpinner?.fail()
+    }
   } else {
     tsConfigSpinner?.succeed()
   }
