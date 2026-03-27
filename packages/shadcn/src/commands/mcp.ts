@@ -87,6 +87,13 @@ args = ["shadcn@${SHADCN_MCP_VERSION}", "mcp"]
 
 const DEPENDENCIES = [`shadcn@${SHADCN_MCP_VERSION}`]
 
+export function setMcpWorkingDirectory(cwd = process.cwd()) {
+  const resolvedCwd = path.resolve(cwd)
+  process.chdir(resolvedCwd)
+
+  return resolvedCwd
+}
+
 export const mcp = new Command()
   .name("mcp")
   .description("MCP server and configuration commands")
@@ -97,7 +104,8 @@ export const mcp = new Command()
   )
   .action(async (options) => {
     try {
-      await loadEnvFiles(options.cwd)
+      const cwd = setMcpWorkingDirectory(options.cwd)
+      await loadEnvFiles(cwd)
       const transport = new StdioServerTransport()
       await server.connect(transport)
     } catch (error) {
