@@ -147,6 +147,30 @@ You can read more about the MCP server in the [MCP documentation](/docs/mcp).
 
 ---
 
+## Available Tools
+
+When your registry is configured, AI assistants get access to the following tools:
+
+| Tool | Description |
+|------|-------------|
+| `get_project_registries` | List configured registries from `components.json` |
+| `list_items_in_registries` | Browse all items in a registry |
+| `search_items_in_registries` | Fuzzy search across registries |
+| `view_items_in_registries` | View item details and file contents |
+| `get_item_examples_from_registries` | Find usage examples and demos |
+| `get_add_command_for_items` | Get the CLI install command |
+| `get_project_info` | Get framework, Tailwind config, installed components |
+| `dry_run_add` | Preview changes before installing |
+| `add_component` | Install components (writes files, installs deps, updates CSS) |
+| `get_component_diff` | Show per-file diff before updating an existing component |
+| `apply_component_diff` | Apply selective per-file updates |
+| `get_component_docs` | Get documentation links for shadcn components |
+| `get_audit_checklist` | Post-install verification checklist |
+
+See the [MCP documentation](/docs/mcp) for usage details.
+
+---
+
 ## Best Practices
 
 Here are some best practices for MCP-compatible registries:

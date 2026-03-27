@@ -1,4 +1,7 @@
+import fs from "fs/promises"
+import path from "path"
 import { getRegistryItems, searchRegistries } from "@/src/registry"
+import { getShadcnRegistryIndex } from "@/src/registry/api"
 import { RegistryError } from "@/src/registry/errors"
 import { Server } from "@modelcontextprotocol/sdk/server/index.js"
 import {
@@ -9,12 +12,31 @@ import dedent from "dedent"
 import { z } from "zod"
 import { zodToJsonSchema } from "zod-to-json-schema"
 
+import { collectInfo } from "@/src/commands/info"
+import { addComponents } from "@/src/utils/add-components"
+import { dryRunComponents } from "@/src/utils/dry-run"
+import { getBase, getConfig } from "@/src/utils/get-config"
 import {
+  getProjectComponents,
+  getProjectInfo,
+} from "@/src/utils/get-project-info"
+import { ensureRegistriesInConfig } from "@/src/utils/registries"
+
+import {
+  findSkillsDirectory,
+  formatAddResult,
+  formatApplyResult,
+  formatComponentDiff,
+  formatComponentDocs,
+  formatDryRunForMcp,
   formatItemExamples,
+  formatProjectInfo,
   formatRegistryItems,
   formatSearchResultsWithPagination,
   getMcpConfig,
   npxShadcn,
+  readSkillsContent,
+  SKILLS_TOPICS,
 } from "./utils"
 
 export const server = new Server(
@@ -141,6 +163,120 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
           "After creating new components or generating new code files, use this tool for a quick checklist to verify that everything is working as expected. Make sure to run the tool after all required steps have been completed.",
         inputSchema: zodToJsonSchema(z.object({})),
       },
+      {
+        name: "get_project_info",
+        description:
+          "Get project context: framework, Tailwind config, import aliases, installed components, and components.json settings. Use this to understand the project structure before adding or modifying components.",
+        inputSchema: zodToJsonSchema(z.object({})),
+      },
+      {
+        name: "get_component_docs",
+        description:
+          "Get documentation links for shadcn components: official docs, API reference, source code, and usage examples. Use this to learn how to use a component before adding it to your project.",
+        inputSchema: zodToJsonSchema(
+          z.object({
+            components: z
+              .array(z.string())
+              .describe(
+                "Array of shadcn component names (e.g., ['button', 'card', 'dialog'])"
+              ),
+          })
+        ),
+      },
+      {
+        name: "get_skills_context",
+        description:
+          "Get shadcn best practices and patterns from skills files installed in the project. Returns guidelines for styling, forms, icons, composition, and more. If no skills are installed, returns installation instructions.",
+        inputSchema: zodToJsonSchema(
+          z.object({
+            topics: z
+              .array(z.enum(SKILLS_TOPICS))
+              .optional()
+              .describe(
+                `Optional list of topics to filter. Omit to get the main overview (SKILL.md). Available: ${SKILLS_TOPICS.join(", ")}`
+              ),
+          })
+        ),
+      },
+      {
+        name: "dry_run_add",
+        description:
+          "Preview what 'shadcn add' would change without writing any files. Returns files to create/overwrite, npm dependencies, CSS variables, and env vars. Requires components.json to exist.",
+        inputSchema: zodToJsonSchema(
+          z.object({
+            components: z
+              .array(z.string())
+              .describe(
+                "Array of component identifiers with registry prefix (e.g., ['@shadcn/button', '@shadcn/card'])"
+              ),
+            overwrite: z
+              .boolean()
+              .optional()
+              .describe(
+                "If true, existing files are marked as 'overwrite' instead of 'skip'. Default: false"
+              ),
+          })
+        ),
+      },
+      {
+        name: "add_component",
+        description:
+          "Install shadcn components into the project. Writes files, installs dependencies, and updates CSS. Requires components.json to exist. Use dry_run_add first to preview changes.",
+        inputSchema: zodToJsonSchema(
+          z.object({
+            components: z
+              .array(z.string())
+              .describe(
+                "Array of component identifiers with registry prefix (e.g., ['@shadcn/button', '@shadcn/card'])"
+              ),
+            overwrite: z
+              .boolean()
+              .optional()
+              .describe(
+                "If true, overwrite existing files. Default: false"
+              ),
+          })
+        ),
+      },
+      {
+        name: "get_component_diff",
+        description: dedent`Show a per-file diff between what is currently in the project and what 'shadcn add' would write.
+          New files show full content; existing files show a unified diff (current → incoming); unchanged files are listed as skipped.
+          After showing this diff to the user and asking which files to accept or skip, call \`apply_component_diff\` with their choices.`,
+        inputSchema: zodToJsonSchema(
+          z.object({
+            components: z
+              .array(z.string())
+              .describe(
+                "Array of component identifiers with registry prefix (e.g., ['@shadcn/button', '@shadcn/card'])"
+              ),
+          })
+        ),
+      },
+      {
+        name: "apply_component_diff",
+        description:
+          "Apply per-file resolutions from get_component_diff. Writes accepted files, skips rejected ones, and always installs dependencies and updates CSS/env vars.",
+        inputSchema: zodToJsonSchema(
+          z.object({
+            components: z
+              .array(z.string())
+              .describe(
+                "Array of component identifiers with registry prefix (e.g., ['@shadcn/button', '@shadcn/card'])"
+              ),
+            resolutions: z
+              .array(
+                z.object({
+                  path: z.string().describe("Relative file path from the diff"),
+                  resolution: z
+                    .enum(["accept", "skip"])
+                    .describe("accept to write the file, skip to leave it unchanged"),
+                })
+              )
+              .describe("Per-file resolutions from the user"),
+          })
+        ),
+      },
     ],
   }
 })
@@ -153,6 +289,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 
     switch (request.params.name) {
       case "get_project_registries": {
+
         const config = await getMcpConfig(process.cwd())
 
         if (!config?.registries) {
@@ -184,10 +321,10 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
                 \`${await npxShadcn("view @name-of-registry")}\`
 
                 For example: \`${await npxShadcn(
-                  "view @shadcn"
-                )}\` or \`${await npxShadcn(
-                  "view @shadcn @acme"
-                )}\` to view multiple registries.
+                    "view @shadcn"
+                  )}\` or \`${await npxShadcn(
+                    "view @shadcn @acme"
+                  )}\` to view multiple registries.
                 `,
             },
           ],
@@ -216,11 +353,10 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
             content: [
               {
                 type: "text",
-                text: dedent`No items found matching "${
-                  args.query
-                }" in registries ${args.registries.join(
-                  ", "
-                )}, Try searching with a different query or registry.`,
+                text: dedent`No items found matching "${args.query
+                  }" in registries ${args.registries.join(
+                    ", "
+                  )}, Try searching with a different query or registry.`,
               },
             ],
           }
@@ -402,6 +538,345 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
               - [ ] Check for TypeScript errors
               - [ ] Use the Playwright MCP if available.
               `,
+            },
+          ],
+        }
+      }
+
+      case "add_component": {
+        const { components, overwrite } = z
+          .object({
+            components: z.array(z.string()),
+            overwrite: z.boolean().optional(),
+          })
+          .parse(request.params.arguments)
+
+        const cwd = process.cwd()
+        const config = await getConfig(cwd)
+
+        if (!config) {
+          return {
+            content: [
+              {
+                type: "text",
+                text: dedent`No components.json found in ${cwd}.
+
+                Run 'shadcn init' to create one before adding components.`,
+              },
+            ],
+            isError: true,
+          }
+        }
+
+        const { config: updatedConfig } = await ensureRegistriesInConfig(
+          components,
+          config,
+          { silent: true, writeFile: true }
+        )
+
+        // Collect what will be added before applying.
+        const preview = await dryRunComponents(components, updatedConfig, {
+          overwrite,
+        })
+
+        await addComponents(components, updatedConfig, {
+          overwrite,
+          silent: true,
+        })
+
+        return {
+          content: [
+            {
+              type: "text",
+              text: formatAddResult(preview, components),
+            },
+          ],
+        }
+      }
+
+      case "dry_run_add": {
+        const { components, overwrite } = z
+          .object({
+            components: z.array(z.string()),
+            overwrite: z.boolean().optional(),
+          })
+          .parse(request.params.arguments)
+
+        const cwd = process.cwd()
+        const config = await getConfig(cwd)
+
+        if (!config) {
+          return {
+            content: [
+              {
+                type: "text",
+                text: dedent`No components.json found in ${cwd}.
+
+                Run 'shadcn init' to create one before previewing component changes.`,
+              },
+            ],
+            isError: true,
+          }
+        }
+
+        const { config: updatedConfig } = await ensureRegistriesInConfig(
+          components,
+          config,
+          { silent: true, writeFile: false }
+        )
+
+        const result = await dryRunComponents(components, updatedConfig, {
+          overwrite,
+        })
+
+        return {
+          content: [
+            {
+              type: "text",
+              text: formatDryRunForMcp(result, components),
+            },
+          ],
+        }
+      }
+
+      case "get_skills_context": {
+        const { topics } = z
+          .object({ topics: z.array(z.enum(SKILLS_TOPICS)).optional() })
+          .parse(request.params.arguments)
+
+        const cwd = process.cwd()
+        const skillsDir = await findSkillsDirectory(cwd)
+
+        if (!skillsDir) {
+          return {
+            content: [
+              {
+                type: "text",
+                text: dedent`No shadcn skills found in this project.
+
+                To install shadcn skills, run:
+                \`npx skills add shadcn/ui\`
+
+                Skills provide best practices and patterns for:
+                - styling, forms, icons, composition
+                - base-vs-radix, cli, customization, mcp`,
+              },
+            ],
+          }
+        }
+
+        const content = await readSkillsContent(skillsDir, topics)
+
+        if (!content) {
+          return {
+            content: [
+              {
+                type: "text",
+                text: "Skills directory found but no content available for the requested topics.",
+              },
+            ],
+          }
+        }
+
+        return {
+          content: [
+            {
+              type: "text",
+              text: content,
+            },
+          ],
+        }
+      }
+
+      case "get_component_docs": {
+        const { components } = z
+          .object({ components: z.array(z.string()) })
+          .parse(request.params.arguments)
+
+        const cwd = process.cwd()
+        const config = await getConfig(cwd)
+        const base = getBase(config?.style)
+
+        const index = await getShadcnRegistryIndex()
+        if (!index) {
+          return {
+            content: [
+              {
+                type: "text",
+                text: "Failed to fetch the registry index.",
+              },
+            ],
+            isError: true,
+          }
+        }
+
+        const results: {
+          component: string
+          base: string
+          links: Record<string, string>
+        }[] = []
+        const notFound: string[] = []
+
+        const metaLinksSchema = z.record(
+          z.string(),
+          z.record(z.string(), z.string())
+        )
+
+        for (const component of components) {
+          const item = index.find((entry) => entry.name === component)
+          if (!item) {
+            notFound.push(component)
+            continue
+          }
+          const parsed = metaLinksSchema.safeParse(item.meta?.links)
+          const links = parsed.success ? parsed.data[base] : undefined
+          if (links && Object.keys(links).length > 0) {
+            results.push({ component, base, links })
+          }
+        }
+
+        return {
+          content: [
+            {
+              type: "text",
+              text: formatComponentDocs(results, notFound),
+            },
+          ],
+        }
+      }
+
+      case "get_project_info": {
+        const cwd = process.cwd()
+        const projectInfo = await getProjectInfo(cwd)
+        const config = await getConfig(cwd)
+        const components = await getProjectComponents(cwd)
+        const base = getBase(config?.style)
+        const data = collectInfo(projectInfo, config, components, base)
+
+        return {
+          content: [
+            {
+              type: "text",
+              text: formatProjectInfo(data),
+            },
+          ],
+        }
+      }
+
+      case "get_component_diff": {
+        const { components } = z
+          .object({ components: z.array(z.string()) })
+          .parse(request.params.arguments)
+
+        const cwd = process.cwd()
+        const config = await getConfig(cwd)
+
+        if (!config) {
+          return {
+            content: [
+              {
+                type: "text",
+                text: dedent`No components.json found in ${cwd}.
+
+                Run 'shadcn init' to create one before previewing component changes.`,
+              },
+            ],
+            isError: true,
+          }
+        }
+
+        const { config: updatedConfig } = await ensureRegistriesInConfig(
+          components,
+          config,
+          { silent: true, writeFile: false }
+        )
+
+        const result = await dryRunComponents(components, updatedConfig, {
+          overwrite: true,
+        })
+
+        return {
+          content: [
+            {
+              type: "text",
+              text: formatComponentDiff(result, components),
+            },
+          ],
+        }
+      }
+
+      case "apply_component_diff": {
+        const { components, resolutions } = z
+          .object({
+            components: z.array(z.string()),
+            resolutions: z.array(
+              z.object({
+                path: z.string(),
+                resolution: z.enum(["accept", "skip"]),
+              })
+            ),
+          })
+          .parse(request.params.arguments)
+
+        const cwd = process.cwd()
+        const config = await getConfig(cwd)
+
+        if (!config) {
+          return {
+            content: [
+              {
+                type: "text",
+                text: dedent`No components.json found in ${cwd}.
+
+                Run 'shadcn init' to create one before applying component changes.`,
+              },
+            ],
+            isError: true,
+          }
+        }
+
+        const { config: updatedConfig } = await ensureRegistriesInConfig(
+          components,
+          config,
+          { silent: true, writeFile: true }
+        )
+
+        const result = await dryRunComponents(components, updatedConfig, {
+          overwrite: true,
+        })
+
+        const resolutionMap = new Map(
+          resolutions.map((r) => [r.path, r.resolution])
+        )
+
+        const written: string[] = []
+        const skipped: string[] = []
+
+        for (const file of result.files) {
+          const resolution =
+            resolutionMap.get(file.path) ??
+            (file.action === "create" ? "accept" : "skip")
+
+          if (resolution === "accept" && file.action !== "skip") {
+            const absPath = path.join(cwd, file.path)
+            await fs.mkdir(path.dirname(absPath), { recursive: true })
+            await fs.writeFile(absPath, file.content, "utf-8")
+            written.push(file.path)
+          } else {
+            skipped.push(file.path)
+          }
+        }
+
+        await addComponents(components, updatedConfig, {
+          overwrite: false,
+          silent: true,
+        })
+
+        return {
+          content: [
+            {
+              type: "text",
+              text: formatApplyResult(written, skipped, result),
             },
           ],
         }
