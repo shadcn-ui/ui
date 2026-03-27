@@ -46,7 +46,7 @@ async function loadMultiple() {
 
 exports[`transform dynamic imports with cn utility 2`] = `
 "async function loadWorkspaceCn() {
-  const { cn } = await import("@workspace/lib/utils")
+  const { cn } = await import("@workspace/ui/lib/utils")
   return cn
 }
     "
@@ -114,11 +114,11 @@ import { Foo } from "bar"
 exports[`transform import 6`] = `
 "import * as React from "react"
 import { Foo } from "bar"
-    import { Button } from "@custom-alias/components/ui/button"
+    import { Button } from "@custom-alias/components/components/ui/button"
     import { Label} from "ui/label"
     import { Box } from "@custom-alias/components/box"
 
-    import { cn } from "@custom-alias/lib/utils"
+    import { cn } from "@custom-alias/components/lib/utils"
     "
 `;
 
