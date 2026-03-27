@@ -96,6 +96,12 @@
     "description": "Radix-style React primitives for AI chat with adapters for AI SDK, LangGraph, Mastra, and custom backends."
   },
   {
+    "name": "@audio",
+    "homepage": "https://audio-ui.xyz",
+    "url": "https://audio-ui.xyz/r/{name}.json",
+    "description": "A set of accessible and composable Audio UI components. Built on top of shadcn/ui, it's designed for you to copy, paste, and own."
+  },
+  {
     "name": "@tool-ui",
     "homepage": "https://www.tool-ui.com",
     "url": "https://www.tool-ui.com/r/{name}.json",
