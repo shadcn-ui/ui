@@ -6,9 +6,16 @@ import { cn } from "@/lib/utils"
 import { copyToClipboardWithMeta } from "@/components/copy-button"
 import { Button } from "@/styles/base-nova/ui/button"
 import { usePresetCode } from "@/app/(create)/hooks/use-design-system"
+import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
+import { buildPresetArgs } from "@/app/(create)/lib/preset-links"
 
 export function CopyPreset({ className }: React.ComponentProps<typeof Button>) {
+  const [params] = useDesignSystemSearchParams()
   const presetCode = usePresetCode()
+  const presetArgs = React.useMemo(
+    () => buildPresetArgs(presetCode, { base: params.base }),
+    [params.base, presetCode]
+  )
   const [hasCopied, setHasCopied] = React.useState(false)
 
   React.useEffect(() => {
@@ -19,14 +26,14 @@ export function CopyPreset({ className }: React.ComponentProps<typeof Button>) {
   }, [hasCopied])
 
   const handleCopy = React.useCallback(() => {
-    copyToClipboardWithMeta(`--preset ${presetCode}`, {
+    copyToClipboardWithMeta(presetArgs, {
       name: "copy_preset_command",
       properties: {
         preset: presetCode,
       },
     })
     setHasCopied(true)
-  }, [presetCode])
+  }, [presetArgs, presetCode])
 
   return (
     <Button
@@ -37,7 +44,7 @@ export function CopyPreset({ className }: React.ComponentProps<typeof Button>) {
         className
       )}
     >
-      <span>{hasCopied ? "Copied" : `--preset ${presetCode}`}</span>
+      <span>{hasCopied ? "Copied" : presetArgs}</span>
     </Button>
   )
 }
