@@ -1,3 +1,6 @@
+import { readFile } from "node:fs/promises"
+import path from "node:path"
+
 import { expect, test } from "vitest"
 import { z } from "zod"
 
@@ -69,4 +72,15 @@ test("resolve tree", async () => {
       .map((entry) => entry.name)
       .sort()
   ).toEqual(["button"])
+})
+
+test("new-york-v4 dialog registry includes button dependency", async () => {
+  const registryPath = path.resolve(
+    process.cwd(),
+    "../../apps/v4/public/r/styles/new-york-v4/dialog.json"
+  )
+  const registryItem = JSON.parse(await readFile(registryPath, "utf8"))
+
+  expect(registryItem.name).toBe("dialog")
+  expect(registryItem.registryDependencies).toContain("button")
 })

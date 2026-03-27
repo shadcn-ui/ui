@@ -206,6 +206,7 @@ export const ui: Registry["items"] = [
   {
     name: "dialog",
     type: "registry:ui",
+    registryDependencies: ["button"],
     dependencies: ["radix-ui"],
     files: [
       {
