@@ -401,8 +401,8 @@ describe("registries", () => {
     expect(output.stdout).toContain('Unknown registry "@non-existent"')
     expect(output.stdout).toContain(
       '"registries": {\n' +
-        '    "@non-existent": "[URL_TO_REGISTRY]"\n' +
-        "  }\n"
+      '    "@non-existent": "[URL_TO_REGISTRY]"\n' +
+      "  }\n"
     )
   })
 
@@ -1345,5 +1345,72 @@ describe("registries:init", () => {
         },
       ])
     ).toBe(true)
+  })
+})
+
+describe("style variants support", () => {
+  it("should add components with multiple style variants", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app-init")
+
+    // Create a registry server with style variants
+    const styleVariantRegistry = await createRegistryServer(
+      [
+        {
+          name: "accordion",
+          type: "registry:ui",
+          description: "Accordion with style variants",
+          files: [
+            {
+              path: "components/ui/base-lyra/accordion.tsx",
+              content: `"use client"\n\nimport { Accordion as AccordionPrimitive } from "@base-ui/react/accordion"\nimport { cn } from "@/lib/utils"\n\nfunction Accordion({ className, ...props }: AccordionPrimitive.Root.Props) {\n  return (\n    <AccordionPrimitive.Root\n      data-slot="accordion"\n      className={cn("flex w-full flex-col", className)}\n      {...props}\n    />\n  )\n}\n\nexport { Accordion }`,
+              type: "registry:ui",
+            },
+            {
+              path: "components/ui/radix-nova/accordion.tsx",
+              content: `"use client"\n\nimport * as React from "react"\nimport { Accordion as AccordionPrimitive } from "radix-ui"\nimport { cn } from "@/lib/utils"\n\nfunction Accordion({\n  className,\n  ...props\n}: React.ComponentProps<typeof AccordionPrimitive.Root>) {\n  return (\n    <AccordionPrimitive.Root\n      data-slot="accordion"\n      className={cn("flex w-full flex-col", className)}\n      {...props}\n    />\n  )\n}\n\nexport { Accordion }`,
+              type: "registry:ui",
+            },
+          ],
+        },
+      ],
+      {
+        port: 7777,
+        path: "/style-variants",
+      }
+    )
+
+    await styleVariantRegistry.start()
+
+    try {
+      await configureRegistries(fixturePath, {
+        "@style-variants": "http://localhost:7777/style-variants/{name}",
+      })
+
+      await npxShadcn(fixturePath, ["add", "@style-variants/accordion"])
+
+      // Check both variants were created
+      expect(
+        await fs.pathExists(path.join(fixturePath, "components/ui/base-lyra/accordion.tsx"))
+      ).toBe(true)
+      expect(
+        await fs.pathExists(path.join(fixturePath, "components/ui/radix-nova/accordion.tsx"))
+      ).toBe(true)
+
+      // Verify content differences
+      const baseLyraContent = await fs.readFile(
+        path.join(fixturePath, "components/ui/base-lyra/accordion.tsx"),
+        "utf-8"
+      )
+      const radixNovaContent = await fs.readFile(
+        path.join(fixturePath, "components/ui/radix-nova/accordion.tsx"),
+        "utf-8"
+      )
+
+      expect(baseLyraContent).toContain("@base-ui/react/accordion")
+      expect(radixNovaContent).toContain("radix-ui")
+      expect(radixNovaContent).toContain("React.ComponentProps")
+    } finally {
+      await styleVariantRegistry.stop()
+    }
   })
 })
