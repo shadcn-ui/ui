@@ -110,4 +110,53 @@ import { Foo } from 'bar'
       },
     })
   ).toMatchSnapshot()
+
+  expect(
+    await transform({
+      filename: "test.ts",
+      raw: `/**
+ * This is a JSDoc comment at the beginning
+ */
+export const foo = 'bar';
+    `,
+      config: {
+        tsx: true,
+        rsc: false,
+      },
+    })
+  ).toMatchSnapshot()
+
+  expect(
+    await transform({
+      filename: "test.ts",
+      raw: `/**
+ * This is a JSDoc comment at the beginning
+ */
+"use client"
+
+export const foo = 'bar';
+    `,
+      config: {
+        tsx: true,
+        rsc: false,
+      },
+    })
+  ).toMatchSnapshot()
+
+  expect(
+    await transform({
+      filename: "test.ts",
+      raw: `/**
+ * This is a JSDoc comment at the beginning
+ */
+"use client"
+
+export const foo = 'bar';
+    `,
+      config: {
+        tsx: true,
+        rsc: true,
+      },
+    })
+  ).toMatchSnapshot()
 })
