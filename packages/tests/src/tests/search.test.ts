@@ -117,9 +117,8 @@ const registryLarge = await createRegistryServer(
     files: [
       {
         path: `components/ui/component-${i + 1}.tsx`,
-        content: `export function Component${i + 1}() { return <div>Component ${
-          i + 1
-        }</div> }`,
+        content: `export function Component${i + 1}() { return <div>Component ${i + 1
+          }</div> }`,
         type: "registry:ui",
       },
     ],
@@ -1000,5 +999,192 @@ describe("shadcn search", () => {
       (item: any) => item.name === "item" && item.registry === "@two"
     )
     expect(itemItem.addCommandArgument).toBe("@two/item")
+  })
+
+  describe("style variants search", () => {
+    it("should search across style variant registries", async () => {
+      // Create a style variant registry
+      const styleVariantRegistry = await createRegistryServer(
+        [
+          {
+            name: "accordion",
+            type: "registry:ui",
+            description: "Accordion component with style variants",
+            files: [
+              {
+                path: "components/ui/base-lyra/accordion.tsx",
+                content: "export function Accordion() { return <div>Base Lyra Accordion</div> }",
+                type: "registry:ui",
+              },
+              {
+                path: "components/ui/radix-nova/accordion.tsx",
+                content: "export function Accordion() { return <div>Radix Nova Accordion</div> }",
+                type: "registry:ui",
+              },
+            ],
+          },
+          {
+            name: "button",
+            type: "registry:ui",
+            description: "Button component with style variants",
+            files: [
+              {
+                path: "components/ui/base-lyra/button.tsx",
+                content: "export function Button() { return <button>Base Lyra Button</button> }",
+                type: "registry:ui",
+              },
+              {
+                path: "components/ui/radix-nova/button.tsx",
+                content: "export function Button() { return <button>Radix Nova Button</button> }",
+                type: "registry:ui",
+              },
+            ],
+          },
+        ],
+        {
+          port: 9185,
+          path: "/style-variants",
+        }
+      )
+
+      await styleVariantRegistry.start()
+
+      try {
+        const fixturePath = await createFixtureTestDirectory("next-app-init")
+        await configureRegistries(fixturePath, {
+          "@style-variants": "http://localhost:9185/style-variants/{name}",
+        })
+
+        const output = await npxShadcn(fixturePath, ["search", "@style-variants"])
+        const parsed = JSON.parse(output.stdout)
+
+        expect(parsed.items).toEqual(
+          expect.arrayContaining([
+            expect.objectContaining({
+              name: "accordion",
+              type: "registry:ui",
+              description: "Accordion component with style variants",
+              registry: "@style-variants",
+              addCommandArgument: "@style-variants/accordion",
+            }),
+            expect.objectContaining({
+              name: "button",
+              type: "registry:ui",
+              description: "Button component with style variants",
+              registry: "@style-variants",
+              addCommandArgument: "@style-variants/button",
+            }),
+          ])
+        )
+      } finally {
+        await styleVariantRegistry.stop()
+      }
+    })
+
+    it("should handle fuzzy search for style variant components", async () => {
+      const styleVariantRegistry = await createRegistryServer(
+        [
+          {
+            name: "accordion",
+            type: "registry:ui",
+            description: "Accordion component with style variants",
+            files: [
+              {
+                path: "components/ui/base-lyra/accordion.tsx",
+                content: "export function Accordion() { return <div>Base Lyra Accordion</div> }",
+                type: "registry:ui",
+              },
+            ],
+          },
+        ],
+        {
+          port: 9186,
+          path: "/style-fuzzy",
+        }
+      )
+
+      await styleVariantRegistry.start()
+
+      try {
+        const fixturePath = await createFixtureTestDirectory("next-app-init")
+        await configureRegistries(fixturePath, {
+          "@style-fuzzy": "http://localhost:9186/style-fuzzy/{name}",
+        })
+
+        // Test fuzzy matching for "accordion"
+        const output = await npxShadcn(fixturePath, [
+          "search",
+          "@style-fuzzy",
+          "--query",
+          "acordn", // typo
+        ])
+
+        const parsed = JSON.parse(output.stdout)
+        expect(
+          parsed.items.some((item: any) => item.name === "accordion"),
+          "Fuzzy search should find 'accordion' with typo 'acordn'"
+        ).toBe(true)
+      } finally {
+        await styleVariantRegistry.stop()
+      }
+    })
+
+    it("should paginate style variant search results", async () => {
+      // Create a registry with many style variant components
+      const manyStyleComponents = Array.from({ length: 15 }, (_, i) => ({
+        name: `component-${i + 1}`,
+        type: "registry:ui",
+        description: `Style variant component ${i + 1}`,
+        files: [
+          {
+            path: `components/ui/base-lyra/component-${i + 1}.tsx`,
+            content: `export function Component${i + 1}() { return <div>Component ${i + 1}</div> }`,
+            type: "registry:ui",
+          },
+          {
+            path: `components/ui/radix-nova/component-${i + 1}.tsx`,
+            content: `export function Component${i + 1}() { return <div>Component ${i + 1}</div> }`,
+            type: "registry:ui",
+          },
+        ],
+      }))
+
+      const manyStyleRegistry = await createRegistryServer(manyStyleComponents, {
+        port: 9187,
+        path: "/many-styles",
+      })
+
+      await manyStyleRegistry.start()
+
+      try {
+        const fixturePath = await createFixtureTestDirectory("next-app-init")
+        await configureRegistries(fixturePath, {
+          "@many-styles": "http://localhost:9187/many-styles/{name}",
+        })
+
+        // Test pagination
+        const output = await npxShadcn(fixturePath, [
+          "search",
+          "@many-styles",
+          "--limit",
+          "5",
+          "--offset",
+          "0",
+        ])
+
+        const parsed = JSON.parse(output.stdout)
+        expect(parsed.items).toHaveLength(5)
+        expect(parsed.pagination.limit).toBe(5)
+        expect(parsed.pagination.offset).toBe(0)
+        expect(parsed.pagination.total).toBe(15)
+        expect(parsed.pagination.hasMore).toBe(true)
+
+        // Check first page items
+        expect(parsed.items[0].name).toBe("component-1")
+        expect(parsed.items[4].name).toBe("component-5")
+      } finally {
+        await manyStyleRegistry.stop()
+      }
+    })
   })
 })
