@@ -8,6 +8,10 @@ export default defineConfig({
     globals: true,
     environment: "node",
     globalSetup: ["./src/utils/setup.ts"],
+    // These integration tests spawn real CLI processes and local servers.
+    // Keep file-level parallelism bounded so CI doesn't time out under load.
+    minWorkers: 1,
+    maxWorkers: 4,
     maxConcurrency: 4,
     isolate: false,
   },
