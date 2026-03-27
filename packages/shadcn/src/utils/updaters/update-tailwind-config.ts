@@ -10,7 +10,7 @@ import { TailwindVersion } from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"
 import { spinner } from "@/src/utils/spinner"
 import deepmerge from "deepmerge"
-import objectToString from "stringify-object"
+import objectToString from "nano-stringify-object"
 import { type Config as TailwindConfig } from "tailwindcss"
 import {
   ArrayLiteralExpression,
