@@ -47,7 +47,7 @@ export async function runCommand(
       },
       input: options?.input,
       reject: false,
-      timeout: options?.timeout ?? 60000,
+      timeout: options?.timeout ?? 120000,
     })
 
     const result = await childProcess
