@@ -1,54 +1,57 @@
 "use client"
 
+import * as React from "react"
+
 import { cn } from "@/lib/utils"
 import { useIsMobile } from "@/hooks/use-mobile"
 import { useMounted } from "@/hooks/use-mounted"
 import { Icons } from "@/components/icons"
-import { Button } from "@/registry/new-york-v4/ui/button"
-import { Skeleton } from "@/registry/new-york-v4/ui/skeleton"
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/registry/new-york-v4/ui/tooltip"
+import { Button } from "@/styles/base-nova/ui/button"
+import { Skeleton } from "@/styles/base-nova/ui/skeleton"
 import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
 
 export function V0Button({ className }: { className?: string }) {
-  const [params, setParams] = useDesignSystemSearchParams()
+  const [params] = useDesignSystemSearchParams()
   const isMobile = useIsMobile()
   const isMounted = useMounted()
 
-  const url = `${process.env.NEXT_PUBLIC_APP_URL}/create/v0?base=${params.base}&style=${params.style}&baseColor=${params.baseColor}&theme=${params.theme}&iconLibrary=${params.iconLibrary}&font=${params.font}&menuAccent=${params.menuAccent}&menuColor=${params.menuColor}&radius=${params.radius}&item=${params.item}`
+  const url = React.useMemo(() => {
+    const searchParams = new URLSearchParams()
+
+    if (params.preset) {
+      searchParams.set("preset", params.preset)
+    }
+
+    searchParams.set("base", params.base)
+
+    return `${process.env.NEXT_PUBLIC_APP_URL}/init/v0?${searchParams.toString()}`
+  }, [params.preset, params.base])
+
+  const title = React.useMemo(() => {
+    return params.base && params.style
+      ? `New ${params.base}-${params.style} project`
+      : "New Project"
+  }, [params.base, params.style])
 
   if (!isMounted) {
     return <Skeleton className="h-8 w-24 rounded-lg" />
   }
 
   return (
-    <>
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <Button
-            size="sm"
-            variant={isMobile ? "default" : "outline"}
-            className={cn(
-              "w-24 rounded-lg shadow-none data-[variant=default]:h-[31px]",
-              className
-            )}
-            asChild
-          >
-            <a
-              href={`${process.env.NEXT_PUBLIC_V0_URL}/chat/api/open?url=${encodeURIComponent(url)}&title=${params.item}`}
-              target="_blank"
-            >
-              Open in <Icons.v0 className="size-5" />
-            </a>
-          </Button>
-        </TooltipTrigger>
-        <TooltipContent>
-          <p>Open current design in v0</p>
-        </TooltipContent>
-      </Tooltip>
-    </>
+    <Button
+      nativeButton={false}
+      role="link"
+      variant={isMobile ? "default" : "outline"}
+      className={cn("h-[31px] gap-1 rounded-lg", className)}
+      render={
+        <a
+          href={`${process.env.NEXT_PUBLIC_V0_URL}/chat/api/open?url=${url}&title=${title}`}
+          target="_blank"
+        />
+      }
+    >
+      <span>Open in</span>
+      <Icons.v0 className="size-5" data-icon="inline-end" />
+    </Button>
   )
 }

@@ -34,7 +34,7 @@ const data = {
       ],
     },
     {
-      title: "Building Your Application",
+      title: "Build Your Application",
       url: "#",
       items: [
         {

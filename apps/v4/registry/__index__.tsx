@@ -17,8 +17,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/ui/accordion.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/ui/accordion")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "accordion"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -36,8 +36,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/ui/alert.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/ui/alert")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "alert"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -55,8 +55,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/ui/alert-dialog.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/ui/alert-dialog")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "alert-dialog"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -74,8 +74,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/ui/aspect-ratio.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/ui/aspect-ratio")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "aspect-ratio"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -93,8 +93,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/ui/avatar.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/ui/avatar")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "avatar"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -112,8 +112,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/ui/badge.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/ui/badge")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "badge"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -131,8 +131,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/ui/breadcrumb.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/ui/breadcrumb")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "breadcrumb"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -150,8 +150,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/ui/button.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/ui/button")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "button"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -169,8 +169,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/ui/button-group.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/ui/button-group")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "button-group"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -188,8 +188,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/ui/calendar.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/ui/calendar")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "calendar"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -207,8 +207,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/ui/card.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/ui/card")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "card"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -226,8 +226,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/ui/carousel.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/ui/carousel")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "carousel"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -245,8 +245,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/ui/chart.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/ui/chart")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -264,8 +264,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/ui/checkbox.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/ui/checkbox")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "checkbox"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -283,8 +283,27 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/ui/collapsible.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/ui/collapsible")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "collapsible"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "combobox": {
+      name: "combobox",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","input-group"],
+      files: [{
+        path: "registry/new-york-v4/ui/combobox.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/new-york-v4/ui/combobox")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "combobox"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -302,8 +321,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/ui/command.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/ui/command")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "command"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -321,8 +340,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/ui/context-menu.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/ui/context-menu")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "context-menu"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -340,8 +359,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/ui/dialog.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/ui/dialog")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "dialog"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -359,8 +378,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/ui/drawer.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/ui/drawer")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "drawer"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -378,8 +397,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/ui/dropdown-menu.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/ui/dropdown-menu")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "dropdown-menu"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -397,8 +416,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/ui/empty.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/ui/empty")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "empty"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -416,8 +435,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/ui/field.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/ui/field")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "field"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -435,8 +454,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/ui/form.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/ui/form")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "form"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -454,8 +473,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/ui/hover-card.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/ui/hover-card")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "hover-card"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -473,8 +492,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/ui/input.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/ui/input")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "input"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -492,8 +511,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/ui/input-group.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/ui/input-group")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "input-group"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -511,8 +530,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/ui/input-otp.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/ui/input-otp")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "input-otp"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -530,8 +549,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/ui/item.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/ui/item")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "item"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -549,8 +568,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/ui/label.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/ui/label")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "label"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -568,8 +587,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/ui/menubar.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/ui/menubar")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "menubar"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -587,8 +606,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/ui/navigation-menu.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/ui/navigation-menu")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "navigation-menu"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -606,8 +625,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/ui/pagination.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/ui/pagination")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "pagination"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -625,8 +644,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/ui/popover.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/ui/popover")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "popover"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -644,8 +663,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/ui/progress.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/ui/progress")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "progress"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -663,8 +682,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/ui/radio-group.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/ui/radio-group")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "radio-group"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -682,8 +701,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/ui/resizable.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/ui/resizable")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "resizable"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -701,8 +720,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/ui/scroll-area.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/ui/scroll-area")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "scroll-area"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -720,8 +739,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/ui/select.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/ui/select")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "select"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -739,8 +758,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/ui/separator.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/ui/separator")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "separator"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -758,8 +777,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/ui/sheet.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/ui/sheet")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "sheet"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -777,8 +796,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/ui/sidebar.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/ui/sidebar")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "sidebar"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -796,8 +815,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/ui/skeleton.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/ui/skeleton")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "skeleton"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -815,8 +834,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/ui/slider.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/ui/slider")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "slider"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -834,8 +853,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/ui/sonner.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/ui/sonner")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "sonner"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -853,8 +872,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/ui/spinner.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/ui/spinner")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "spinner"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -872,8 +891,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/ui/switch.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/ui/switch")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "switch"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -891,8 +910,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/ui/table.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/ui/table")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "table"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -910,8 +929,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/ui/tabs.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/ui/tabs")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "tabs"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -929,8 +948,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/ui/textarea.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/ui/textarea")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "textarea"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -948,8 +967,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/ui/toggle.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/ui/toggle")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "toggle"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -967,8 +986,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/ui/toggle-group.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/ui/toggle-group")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "toggle-group"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -986,8 +1005,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/ui/tooltip.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/ui/tooltip")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "tooltip"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -1005,8 +1024,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/ui/kbd.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/ui/kbd")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "kbd"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -1024,8 +1043,27 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/ui/native-select.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/ui/native-select")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "native-select"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "direction": {
+      name: "direction",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/new-york-v4/ui/direction.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/new-york-v4/ui/direction")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "direction"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -1083,8 +1121,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/dashboard-01/page.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/blocks/dashboard-01/page")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "dashboard-01"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["dashboard"],
@@ -1114,8 +1152,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/sidebar-01/page.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/blocks/sidebar-01/page")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "sidebar-01"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["sidebar","dashboard"],
@@ -1145,8 +1183,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/sidebar-02/page.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/blocks/sidebar-02/page")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "sidebar-02"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["sidebar","dashboard"],
@@ -1168,8 +1206,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/sidebar-03/page.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/blocks/sidebar-03/page")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "sidebar-03"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["sidebar","dashboard"],
@@ -1191,8 +1229,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/sidebar-04/page.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/blocks/sidebar-04/page")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "sidebar-04"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["sidebar","dashboard"],
@@ -1218,8 +1256,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/sidebar-05/page.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/blocks/sidebar-05/page")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "sidebar-05"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["sidebar","dashboard"],
@@ -1249,8 +1287,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/sidebar-06/page.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/blocks/sidebar-06/page")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "sidebar-06"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["sidebar","dashboard"],
@@ -1288,8 +1326,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/sidebar-07/page.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/blocks/sidebar-07/page")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "sidebar-07"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["sidebar","dashboard"],
@@ -1327,8 +1365,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/sidebar-08/page.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/blocks/sidebar-08/page")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "sidebar-08"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["sidebar","dashboard"],
@@ -1354,8 +1392,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/sidebar-09/page.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/blocks/sidebar-09/page")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "sidebar-09"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["sidebar","dashboard"],
@@ -1401,8 +1439,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/sidebar-10/page.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/blocks/sidebar-10/page")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "sidebar-10"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["sidebar","dashboard"],
@@ -1424,8 +1462,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/sidebar-11/page.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/blocks/sidebar-11/page")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "sidebar-11"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["sidebar","dashboard"],
@@ -1459,8 +1497,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/sidebar-12/page.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/blocks/sidebar-12/page")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "sidebar-12"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["sidebar","dashboard"],
@@ -1482,8 +1520,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/sidebar-13/page.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/blocks/sidebar-13/page")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "sidebar-13"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["sidebar","dashboard"],
@@ -1505,8 +1543,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/sidebar-14/page.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/blocks/sidebar-14/page")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "sidebar-14"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["sidebar","dashboard"],
@@ -1564,8 +1602,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/sidebar-15/page.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/blocks/sidebar-15/page")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "sidebar-15"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["sidebar","dashboard"],
@@ -1611,8 +1649,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/sidebar-16/page.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/blocks/sidebar-16/page")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "sidebar-16"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["sidebar","dashboard"],
@@ -1634,8 +1672,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/login-01/page.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/blocks/login-01/page")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "login-01"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["authentication","login"],
@@ -1657,8 +1695,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/login-02/page.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/blocks/login-02/page")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "login-02"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["authentication","login"],
@@ -1680,8 +1718,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/login-03/page.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/blocks/login-03/page")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "login-03"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["authentication","login"],
@@ -1703,8 +1741,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/login-04/page.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/blocks/login-04/page")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "login-04"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["authentication","login"],
@@ -1726,620 +1764,12 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/login-05/page.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/blocks/login-05/page")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "login-05"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["authentication","login"],
       meta: undefined,
-    },
-    "calendar-01": {
-      name: "calendar-01",
-      title: "undefined",
-      description: "A simple calendar.",
-      type: "registry:block",
-      registryDependencies: ["calendar"],
-      files: [{
-        path: "registry/new-york-v4/blocks/calendar-01.tsx",
-        type: "registry:component",
-        target: ""
-      }],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/calendar-01.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: ["calendar","date"],
-      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0","mobile":"component"},
-    },
-    "calendar-02": {
-      name: "calendar-02",
-      title: "undefined",
-      description: "Multiple months with single selection.",
-      type: "registry:block",
-      registryDependencies: ["calendar"],
-      files: [{
-        path: "registry/new-york-v4/blocks/calendar-02.tsx",
-        type: "registry:component",
-        target: ""
-      }],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/calendar-02.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: ["calendar","date"],
-      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0","mobile":"component"},
-    },
-    "calendar-03": {
-      name: "calendar-03",
-      title: "undefined",
-      description: "Multiple months with multiple selection.",
-      type: "registry:block",
-      registryDependencies: ["calendar"],
-      files: [{
-        path: "registry/new-york-v4/blocks/calendar-03.tsx",
-        type: "registry:component",
-        target: ""
-      }],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/calendar-03.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: ["calendar","date"],
-      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0","mobile":"component"},
-    },
-    "calendar-04": {
-      name: "calendar-04",
-      title: "undefined",
-      description: "Single month with range selection",
-      type: "registry:block",
-      registryDependencies: ["calendar"],
-      files: [{
-        path: "registry/new-york-v4/blocks/calendar-04.tsx",
-        type: "registry:component",
-        target: ""
-      }],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/calendar-04.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: ["calendar","date"],
-      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0 xl:pt-28","mobile":"component"},
-    },
-    "calendar-05": {
-      name: "calendar-05",
-      title: "undefined",
-      description: "Multiple months with range selection",
-      type: "registry:block",
-      registryDependencies: ["calendar"],
-      files: [{
-        path: "registry/new-york-v4/blocks/calendar-05.tsx",
-        type: "registry:component",
-        target: ""
-      }],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/calendar-05.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: ["calendar","date"],
-      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
-    },
-    "calendar-06": {
-      name: "calendar-06",
-      title: "undefined",
-      description: "Range selection with minimum days",
-      type: "registry:block",
-      registryDependencies: ["calendar"],
-      files: [{
-        path: "registry/new-york-v4/blocks/calendar-06.tsx",
-        type: "registry:component",
-        target: ""
-      }],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/calendar-06.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: ["calendar","date"],
-      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
-    },
-    "calendar-07": {
-      name: "calendar-07",
-      title: "undefined",
-      description: "Range selection with minimum and maximum days",
-      type: "registry:block",
-      registryDependencies: ["calendar"],
-      files: [{
-        path: "registry/new-york-v4/blocks/calendar-07.tsx",
-        type: "registry:component",
-        target: ""
-      }],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/calendar-07.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: ["calendar","date"],
-      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
-    },
-    "calendar-08": {
-      name: "calendar-08",
-      title: "undefined",
-      description: "Calendar with disabled days",
-      type: "registry:block",
-      registryDependencies: ["calendar"],
-      files: [{
-        path: "registry/new-york-v4/blocks/calendar-08.tsx",
-        type: "registry:component",
-        target: ""
-      }],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/calendar-08.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: ["calendar","date"],
-      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
-    },
-    "calendar-09": {
-      name: "calendar-09",
-      title: "undefined",
-      description: "Calendar with disabled weekends",
-      type: "registry:block",
-      registryDependencies: ["calendar"],
-      files: [{
-        path: "registry/new-york-v4/blocks/calendar-09.tsx",
-        type: "registry:component",
-        target: ""
-      }],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/calendar-09.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: ["calendar","date"],
-      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
-    },
-    "calendar-10": {
-      name: "calendar-10",
-      title: "undefined",
-      description: "Today button",
-      type: "registry:block",
-      registryDependencies: ["calendar","card","button"],
-      files: [{
-        path: "registry/new-york-v4/blocks/calendar-10.tsx",
-        type: "registry:component",
-        target: ""
-      }],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/calendar-10.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: ["calendar","date"],
-      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
-    },
-    "calendar-11": {
-      name: "calendar-11",
-      title: "undefined",
-      description: "Start and end of month",
-      type: "registry:block",
-      registryDependencies: ["calendar"],
-      files: [{
-        path: "registry/new-york-v4/blocks/calendar-11.tsx",
-        type: "registry:component",
-        target: ""
-      }],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/calendar-11.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: ["calendar","date"],
-      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
-    },
-    "calendar-12": {
-      name: "calendar-12",
-      title: "undefined",
-      description: "Localized calendar",
-      type: "registry:block",
-      registryDependencies: ["calendar","card","select"],
-      files: [{
-        path: "registry/new-york-v4/blocks/calendar-12.tsx",
-        type: "registry:component",
-        target: ""
-      }],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/calendar-12.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: ["calendar","date"],
-      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
-    },
-    "calendar-13": {
-      name: "calendar-13",
-      title: "undefined",
-      description: "With Month and Year Dropdown",
-      type: "registry:block",
-      registryDependencies: ["calendar","label","select"],
-      files: [{
-        path: "registry/new-york-v4/blocks/calendar-13.tsx",
-        type: "registry:component",
-        target: ""
-      }],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/calendar-13.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: ["calendar","date"],
-      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
-    },
-    "calendar-14": {
-      name: "calendar-14",
-      title: "undefined",
-      description: "With Booked/Unavailable Days",
-      type: "registry:block",
-      registryDependencies: ["calendar"],
-      files: [{
-        path: "registry/new-york-v4/blocks/calendar-14.tsx",
-        type: "registry:component",
-        target: ""
-      }],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/calendar-14.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: ["calendar","date"],
-      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
-    },
-    "calendar-15": {
-      name: "calendar-15",
-      title: "undefined",
-      description: "With Week Numbers",
-      type: "registry:block",
-      registryDependencies: ["calendar"],
-      files: [{
-        path: "registry/new-york-v4/blocks/calendar-15.tsx",
-        type: "registry:component",
-        target: ""
-      }],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/calendar-15.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: ["calendar","date"],
-      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
-    },
-    "calendar-16": {
-      name: "calendar-16",
-      title: "undefined",
-      description: "With time picker",
-      type: "registry:block",
-      registryDependencies: ["calendar","card","input","label"],
-      files: [{
-        path: "registry/new-york-v4/blocks/calendar-16.tsx",
-        type: "registry:component",
-        target: ""
-      }],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/calendar-16.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: ["calendar","date"],
-      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start justify-center min-w-0","mobile":"component"},
-    },
-    "calendar-17": {
-      name: "calendar-17",
-      title: "undefined",
-      description: "With time picker inline",
-      type: "registry:block",
-      registryDependencies: ["calendar","card","input","label"],
-      files: [{
-        path: "registry/new-york-v4/blocks/calendar-17.tsx",
-        type: "registry:component",
-        target: ""
-      }],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/calendar-17.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: ["calendar","date"],
-      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
-    },
-    "calendar-18": {
-      name: "calendar-18",
-      title: "undefined",
-      description: "Variable size",
-      type: "registry:block",
-      registryDependencies: ["calendar"],
-      files: [{
-        path: "registry/new-york-v4/blocks/calendar-18.tsx",
-        type: "registry:component",
-        target: ""
-      }],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/calendar-18.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: ["calendar","date"],
-      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
-    },
-    "calendar-19": {
-      name: "calendar-19",
-      title: "undefined",
-      description: "With presets",
-      type: "registry:block",
-      registryDependencies: ["calendar","card","input","label"],
-      files: [{
-        path: "registry/new-york-v4/blocks/calendar-19.tsx",
-        type: "registry:component",
-        target: ""
-      }],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/calendar-19.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: ["calendar","date"],
-      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start justify-center min-w-0","mobile":"component"},
-    },
-    "calendar-20": {
-      name: "calendar-20",
-      title: "undefined",
-      description: "With time presets",
-      type: "registry:block",
-      registryDependencies: ["calendar","card","button"],
-      files: [{
-        path: "registry/new-york-v4/blocks/calendar-20.tsx",
-        type: "registry:component",
-        target: ""
-      }],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/calendar-20.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: ["calendar","date"],
-      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start justify-center min-w-0","mobile":"component"},
-    },
-    "calendar-21": {
-      name: "calendar-21",
-      title: "undefined",
-      description: "Custom days and formatters",
-      type: "registry:block",
-      registryDependencies: ["calendar"],
-      files: [{
-        path: "registry/new-york-v4/blocks/calendar-21.tsx",
-        type: "registry:component",
-        target: ""
-      }],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/calendar-21.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: ["calendar","date"],
-      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start justify-center min-w-0","mobile":"component"},
-    },
-    "calendar-22": {
-      name: "calendar-22",
-      title: "undefined",
-      description: "Date picker",
-      type: "registry:block",
-      registryDependencies: ["calendar","popover","button","label"],
-      files: [{
-        path: "registry/new-york-v4/blocks/calendar-22.tsx",
-        type: "registry:component",
-        target: ""
-      }],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/calendar-22.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: ["calendar","date"],
-      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
-    },
-    "calendar-23": {
-      name: "calendar-23",
-      title: "undefined",
-      description: "Date range picker",
-      type: "registry:block",
-      registryDependencies: ["calendar","popover","button","label"],
-      files: [{
-        path: "registry/new-york-v4/blocks/calendar-23.tsx",
-        type: "registry:component",
-        target: ""
-      }],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/calendar-23.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: ["calendar","date"],
-      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
-    },
-    "calendar-24": {
-      name: "calendar-24",
-      title: "undefined",
-      description: "Date and Time picker",
-      type: "registry:block",
-      registryDependencies: ["calendar","popover","button","label"],
-      files: [{
-        path: "registry/new-york-v4/blocks/calendar-24.tsx",
-        type: "registry:component",
-        target: ""
-      }],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/calendar-24.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: ["calendar","date"],
-      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
-    },
-    "calendar-25": {
-      name: "calendar-25",
-      title: "undefined",
-      description: "Date and Time range picker",
-      type: "registry:block",
-      registryDependencies: ["calendar","popover","button","label"],
-      files: [{
-        path: "registry/new-york-v4/blocks/calendar-25.tsx",
-        type: "registry:component",
-        target: ""
-      }],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/calendar-25.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: ["calendar","date"],
-      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
-    },
-    "calendar-26": {
-      name: "calendar-26",
-      title: "undefined",
-      description: "Date range picker with time",
-      type: "registry:block",
-      registryDependencies: ["calendar","popover","button","input","label"],
-      files: [{
-        path: "registry/new-york-v4/blocks/calendar-26.tsx",
-        type: "registry:component",
-        target: ""
-      }],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/calendar-26.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: ["calendar","date"],
-      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
-    },
-    "calendar-27": {
-      name: "calendar-27",
-      title: "undefined",
-      description: "Chart filter",
-      type: "registry:block",
-      registryDependencies: ["calendar","chart","card","popover","button"],
-      files: [{
-        path: "registry/new-york-v4/blocks/calendar-27.tsx",
-        type: "registry:component",
-        target: ""
-      }],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/calendar-27.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: ["calendar","date"],
-      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start justify-center min-w-0","mobile":"component"},
-    },
-    "calendar-28": {
-      name: "calendar-28",
-      title: "undefined",
-      description: "Input with date picker",
-      type: "registry:block",
-      registryDependencies: ["calendar","input","label","popover","button"],
-      files: [{
-        path: "registry/new-york-v4/blocks/calendar-28.tsx",
-        type: "registry:component",
-        target: ""
-      }],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/calendar-28.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: ["calendar","date"],
-      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
-    },
-    "calendar-29": {
-      name: "calendar-29",
-      title: "undefined",
-      description: "Natural language date picker",
-      type: "registry:block",
-      registryDependencies: ["calendar","input","label","popover","button"],
-      files: [{
-        path: "registry/new-york-v4/blocks/calendar-29.tsx",
-        type: "registry:component",
-        target: ""
-      }],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/calendar-29.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: ["calendar","date"],
-      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
-    },
-    "calendar-30": {
-      name: "calendar-30",
-      title: "undefined",
-      description: "With little-date",
-      type: "registry:block",
-      registryDependencies: ["calendar","input","label","popover","button"],
-      files: [{
-        path: "registry/new-york-v4/blocks/calendar-30.tsx",
-        type: "registry:component",
-        target: ""
-      }],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/calendar-30.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: ["calendar","date"],
-      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
-    },
-    "calendar-31": {
-      name: "calendar-31",
-      title: "undefined",
-      description: "With event slots",
-      type: "registry:block",
-      registryDependencies: ["calendar","card","button"],
-      files: [{
-        path: "registry/new-york-v4/blocks/calendar-31.tsx",
-        type: "registry:component",
-        target: ""
-      }],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/calendar-31.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: ["calendar","date"],
-      meta: {"iframeHeight":"700px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0","mobile":"component"},
-    },
-    "calendar-32": {
-      name: "calendar-32",
-      title: "undefined",
-      description: "Date picker in a drawer",
-      type: "registry:block",
-      registryDependencies: ["calendar","button","drawer"],
-      files: [{
-        path: "registry/new-york-v4/blocks/calendar-32.tsx",
-        type: "registry:component",
-        target: ""
-      }],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/calendar-32.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: ["calendar","date"],
-      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
     },
     "signup-01": {
       name: "signup-01",
@@ -2357,8 +1787,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/signup-01/page.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/blocks/signup-01/page")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "signup-01"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["authentication","signup"],
@@ -2380,8 +1810,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/signup-02/page.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/blocks/signup-02/page")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "signup-02"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["authentication","signup"],
@@ -2403,8 +1833,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/signup-03/page.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/blocks/signup-03/page")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "signup-03"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["authentication","signup"],
@@ -2426,8 +1856,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/signup-04/page.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/blocks/signup-04/page")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "signup-04"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["authentication","signup"],
@@ -2449,126 +1879,11 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/signup-05/page.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/blocks/signup-05/page")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "signup-05"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["authentication","signup"],
-      meta: undefined,
-    },
-    "otp-01": {
-      name: "otp-01",
-      title: "undefined",
-      description: "A simple OTP verification form.",
-      type: "registry:block",
-      registryDependencies: ["button","card","input-otp","label","field"],
-      files: [{
-        path: "registry/new-york-v4/blocks/otp-01/page.tsx",
-        type: "registry:page",
-        target: "app/otp/page.tsx"
-      },{
-        path: "registry/new-york-v4/blocks/otp-01/components/otp-form.tsx",
-        type: "registry:component",
-        target: ""
-      }],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/otp-01/page.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: ["authentication","otp"],
-      meta: undefined,
-    },
-    "otp-02": {
-      name: "otp-02",
-      title: "undefined",
-      description: "A two column OTP page with a cover image.",
-      type: "registry:block",
-      registryDependencies: ["button","input-otp","label","field"],
-      files: [{
-        path: "registry/new-york-v4/blocks/otp-02/page.tsx",
-        type: "registry:page",
-        target: "app/otp/page.tsx"
-      },{
-        path: "registry/new-york-v4/blocks/otp-02/components/otp-form.tsx",
-        type: "registry:component",
-        target: ""
-      }],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/otp-02/page.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: ["authentication","otp"],
-      meta: undefined,
-    },
-    "otp-03": {
-      name: "otp-03",
-      title: "undefined",
-      description: "An OTP page with a muted background color.",
-      type: "registry:block",
-      registryDependencies: ["button","card","input-otp","label","field"],
-      files: [{
-        path: "registry/new-york-v4/blocks/otp-03/page.tsx",
-        type: "registry:page",
-        target: "app/otp/page.tsx"
-      },{
-        path: "registry/new-york-v4/blocks/otp-03/components/otp-form.tsx",
-        type: "registry:component",
-        target: ""
-      }],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/otp-03/page.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: ["authentication","otp"],
-      meta: undefined,
-    },
-    "otp-04": {
-      name: "otp-04",
-      title: "undefined",
-      description: "An OTP page with form and image.",
-      type: "registry:block",
-      registryDependencies: ["button","card","input-otp","label","field"],
-      files: [{
-        path: "registry/new-york-v4/blocks/otp-04/page.tsx",
-        type: "registry:page",
-        target: "app/otp/page.tsx"
-      },{
-        path: "registry/new-york-v4/blocks/otp-04/components/otp-form.tsx",
-        type: "registry:component",
-        target: ""
-      }],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/otp-04/page.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: ["authentication","otp"],
-      meta: undefined,
-    },
-    "otp-05": {
-      name: "otp-05",
-      title: "undefined",
-      description: "A simple OTP form with social providers.",
-      type: "registry:block",
-      registryDependencies: ["button","input-otp","label","field"],
-      files: [{
-        path: "registry/new-york-v4/blocks/otp-05/page.tsx",
-        type: "registry:page",
-        target: "app/otp/page.tsx"
-      },{
-        path: "registry/new-york-v4/blocks/otp-05/components/otp-form.tsx",
-        type: "registry:component",
-        target: ""
-      }],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/blocks/otp-05/page.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: ["authentication","otp"],
       meta: undefined,
     },
     "chart-area-axes": {
@@ -2583,8 +1898,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-area-axes.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-area-axes")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-area-axes"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-area"],
@@ -2602,8 +1917,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-area-default.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-area-default")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-area-default"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-area"],
@@ -2621,8 +1936,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-area-gradient.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-area-gradient")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-area-gradient"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-area"],
@@ -2640,8 +1955,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-area-icons.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-area-icons")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-area-icons"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-area"],
@@ -2659,8 +1974,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-area-interactive.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-area-interactive")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-area-interactive"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-area"],
@@ -2678,8 +1993,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-area-legend.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-area-legend")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-area-legend"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-area"],
@@ -2697,8 +2012,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-area-linear.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-area-linear")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-area-linear"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-area"],
@@ -2716,8 +2031,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-area-stacked-expand.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-area-stacked-expand")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-area-stacked-expand"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-area"],
@@ -2735,8 +2050,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-area-stacked.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-area-stacked")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-area-stacked"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-area"],
@@ -2754,8 +2069,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-area-step.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-area-step")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-area-step"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-area"],
@@ -2773,8 +2088,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-bar-active.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-bar-active")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-bar-active"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-bar"],
@@ -2792,8 +2107,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-bar-default.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-bar-default")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-bar-default"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-bar"],
@@ -2811,8 +2126,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-bar-horizontal.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-bar-horizontal")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-bar-horizontal"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-bar"],
@@ -2830,8 +2145,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-bar-interactive.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-bar-interactive")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-bar-interactive"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-bar"],
@@ -2849,8 +2164,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-bar-label-custom.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-bar-label-custom")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-bar-label-custom"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-bar"],
@@ -2868,8 +2183,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-bar-label.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-bar-label")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-bar-label"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-bar"],
@@ -2887,8 +2202,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-bar-mixed.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-bar-mixed")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-bar-mixed"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-bar"],
@@ -2906,8 +2221,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-bar-multiple.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-bar-multiple")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-bar-multiple"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-bar"],
@@ -2925,8 +2240,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-bar-negative.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-bar-negative")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-bar-negative"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-bar"],
@@ -2944,8 +2259,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-bar-stacked.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-bar-stacked")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-bar-stacked"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-bar"],
@@ -2963,8 +2278,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-line-default.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-line-default")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-line-default"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-line"],
@@ -2982,8 +2297,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-line-dots-colors.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-line-dots-colors")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-line-dots-colors"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-line"],
@@ -3001,8 +2316,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-line-dots-custom.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-line-dots-custom")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-line-dots-custom"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-line"],
@@ -3020,8 +2335,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-line-dots.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-line-dots")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-line-dots"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-line"],
@@ -3039,8 +2354,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-line-interactive.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-line-interactive")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-line-interactive"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-line"],
@@ -3058,8 +2373,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-line-label-custom.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-line-label-custom")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-line-label-custom"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-line"],
@@ -3077,8 +2392,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-line-label.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-line-label")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-line-label"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-line"],
@@ -3096,8 +2411,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-line-linear.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-line-linear")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-line-linear"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-line"],
@@ -3115,8 +2430,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-line-multiple.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-line-multiple")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-line-multiple"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-line"],
@@ -3134,8 +2449,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-line-step.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-line-step")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-line-step"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-line"],
@@ -3153,8 +2468,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-pie-donut-active.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-pie-donut-active")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-pie-donut-active"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-pie"],
@@ -3172,8 +2487,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-pie-donut-text.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-pie-donut-text")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-pie-donut-text"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-pie"],
@@ -3191,8 +2506,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-pie-donut.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-pie-donut")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-pie-donut"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-pie"],
@@ -3210,8 +2525,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-pie-interactive.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-pie-interactive")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-pie-interactive"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-pie"],
@@ -3229,8 +2544,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-pie-label-custom.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-pie-label-custom")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-pie-label-custom"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-pie"],
@@ -3248,8 +2563,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-pie-label-list.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-pie-label-list")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-pie-label-list"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-pie"],
@@ -3267,8 +2582,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-pie-label.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-pie-label")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-pie-label"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-pie"],
@@ -3286,8 +2601,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-pie-legend.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-pie-legend")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-pie-legend"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-pie"],
@@ -3305,8 +2620,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-pie-separator-none.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-pie-separator-none")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-pie-separator-none"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-pie"],
@@ -3324,8 +2639,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-pie-simple.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-pie-simple")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-pie-simple"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-pie"],
@@ -3343,8 +2658,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-pie-stacked.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-pie-stacked")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-pie-stacked"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-pie"],
@@ -3362,8 +2677,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-radar-default.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-radar-default")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-radar-default"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-radar"],
@@ -3381,8 +2696,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-radar-dots.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-radar-dots")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-radar-dots"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-radar"],
@@ -3400,8 +2715,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-radar-grid-circle-fill.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-radar-grid-circle-fill")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-radar-grid-circle-fill"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-radar"],
@@ -3419,8 +2734,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-radar-grid-circle-no-lines.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-radar-grid-circle-no-lines")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-radar-grid-circle-no-lines"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-radar"],
@@ -3438,8 +2753,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-radar-grid-circle.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-radar-grid-circle")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-radar-grid-circle"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-radar"],
@@ -3457,8 +2772,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-radar-grid-custom.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-radar-grid-custom")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-radar-grid-custom"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-radar"],
@@ -3476,8 +2791,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-radar-grid-fill.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-radar-grid-fill")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-radar-grid-fill"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-radar"],
@@ -3495,8 +2810,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-radar-grid-none.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-radar-grid-none")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-radar-grid-none"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-radar"],
@@ -3514,8 +2829,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-radar-icons.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-radar-icons")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-radar-icons"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-radar"],
@@ -3533,8 +2848,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-radar-label-custom.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-radar-label-custom")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-radar-label-custom"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-radar"],
@@ -3552,8 +2867,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-radar-legend.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-radar-legend")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-radar-legend"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-radar"],
@@ -3571,8 +2886,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-radar-lines-only.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-radar-lines-only")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-radar-lines-only"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-radar"],
@@ -3590,8 +2905,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-radar-multiple.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-radar-multiple")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-radar-multiple"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-radar"],
@@ -3609,8 +2924,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-radar-radius.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-radar-radius")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-radar-radius"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-radar"],
@@ -3628,8 +2943,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-radial-grid.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-radial-grid")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-radial-grid"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-radial"],
@@ -3647,8 +2962,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-radial-label.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-radial-label")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-radial-label"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-radial"],
@@ -3666,8 +2981,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-radial-shape.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-radial-shape")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-radial-shape"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-radial"],
@@ -3685,8 +3000,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-radial-simple.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-radial-simple")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-radial-simple"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-radial"],
@@ -3704,8 +3019,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-radial-stacked.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-radial-stacked")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-radial-stacked"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-radial"],
@@ -3723,8 +3038,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-radial-text.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-radial-text")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-radial-text"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-radial"],
@@ -3742,8 +3057,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-tooltip-default.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-tooltip-default")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-tooltip-default"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-tooltip"],
@@ -3761,8 +3076,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-tooltip-indicator-line.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-tooltip-indicator-line")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-tooltip-indicator-line"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-tooltip"],
@@ -3780,8 +3095,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-tooltip-indicator-none.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-tooltip-indicator-none")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-tooltip-indicator-none"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-tooltip"],
@@ -3799,8 +3114,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-tooltip-label-none.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-tooltip-label-none")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-tooltip-label-none"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-tooltip"],
@@ -3818,8 +3133,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-tooltip-label-custom.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-tooltip-label-custom")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-tooltip-label-custom"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-tooltip"],
@@ -3837,8 +3152,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-tooltip-label-formatter.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-tooltip-label-formatter")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-tooltip-label-formatter"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-tooltip"],
@@ -3856,8 +3171,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-tooltip-formatter.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-tooltip-formatter")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-tooltip-formatter"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-tooltip"],
@@ -3875,8 +3190,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-tooltip-icons.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-tooltip-icons")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-tooltip-icons"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-tooltip"],
@@ -3894,8 +3209,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/charts/chart-tooltip-advanced.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/charts/chart-tooltip-advanced")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-tooltip-advanced"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["charts","charts-tooltip"],
@@ -3913,8 +3228,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/lib/utils.ts")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/lib/utils")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "utils"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -3932,8 +3247,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/hooks/use-mobile.ts")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/hooks/use-mobile")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "use-mobile"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -3951,8 +3266,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/accordion-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/accordion-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "accordion-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -3970,8 +3285,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/alert-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/alert-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "alert-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -3989,8 +3304,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/alert-destructive.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/alert-destructive")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "alert-destructive"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -4008,8 +3323,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/alert-dialog-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/alert-dialog-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "alert-dialog-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -4027,8 +3342,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/aspect-ratio-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/aspect-ratio-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "aspect-ratio-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -4046,8 +3361,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/avatar-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/avatar-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "avatar-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -4065,8 +3380,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/badge-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/badge-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "badge-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -4084,8 +3399,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/badge-destructive.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/badge-destructive")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "badge-destructive"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -4103,8 +3418,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/badge-outline.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/badge-outline")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "badge-outline"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -4122,8 +3437,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/badge-secondary.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/badge-secondary")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "badge-secondary"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -4141,8 +3456,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/breadcrumb-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/breadcrumb-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "breadcrumb-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -4160,8 +3475,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/breadcrumb-separator.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/breadcrumb-separator")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "breadcrumb-separator"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -4179,8 +3494,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/breadcrumb-dropdown.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/breadcrumb-dropdown")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "breadcrumb-dropdown"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -4198,8 +3513,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/breadcrumb-ellipsis.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/breadcrumb-ellipsis")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "breadcrumb-ellipsis"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -4217,8 +3532,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/breadcrumb-link.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/breadcrumb-link")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "breadcrumb-link"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -4236,8 +3551,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/breadcrumb-responsive.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/breadcrumb-responsive")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "breadcrumb-responsive"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -4255,8 +3570,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/button-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/button-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "button-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -4274,8 +3589,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/button-default.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/button-default")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "button-default"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -4293,8 +3608,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/button-secondary.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/button-secondary")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "button-secondary"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -4312,8 +3627,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/button-destructive.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/button-destructive")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "button-destructive"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -4331,8 +3646,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/button-outline.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/button-outline")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "button-outline"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -4350,8 +3665,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/button-ghost.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/button-ghost")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "button-ghost"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -4369,8 +3684,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/button-link.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/button-link")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "button-link"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -4388,8 +3703,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/button-with-icon.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/button-with-icon")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "button-with-icon"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -4407,8 +3722,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/button-loading.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/button-loading")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "button-loading"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -4426,8 +3741,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/button-icon.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/button-icon")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "button-icon"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -4445,8 +3760,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/button-as-child.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/button-as-child")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "button-as-child"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -4464,8 +3779,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/button-rounded.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/button-rounded")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "button-rounded"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -4483,8 +3798,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/button-size.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/button-size")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "button-size"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -4502,8 +3817,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/button-group-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/button-group-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "button-group-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -4521,8 +3836,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/button-group-nested.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/button-group-nested")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "button-group-nested"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -4540,8 +3855,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/button-group-size.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/button-group-size")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "button-group-size"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -4559,8 +3874,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/button-group-separator.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/button-group-separator")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "button-group-separator"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -4578,8 +3893,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/button-group-split.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/button-group-split")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "button-group-split"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -4597,8 +3912,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/button-group-input.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/button-group-input")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "button-group-input"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -4616,8 +3931,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/button-group-dropdown.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/button-group-dropdown")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "button-group-dropdown"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -4635,8 +3950,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/button-group-select.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/button-group-select")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "button-group-select"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -4654,8 +3969,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/button-group-popover.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/button-group-popover")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "button-group-popover"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -4673,8 +3988,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/button-group-input-group.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/button-group-input-group")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "button-group-input-group"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -4692,8 +4007,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/button-group-orientation.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/button-group-orientation")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "button-group-orientation"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -4711,8 +4026,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/calendar-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/calendar-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "calendar-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -4730,8 +4045,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/card-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/card-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "card-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -4749,8 +4064,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/card-with-form.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/card-with-form")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "card-with-form"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -4768,8 +4083,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/carousel-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/carousel-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "carousel-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -4787,8 +4102,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/carousel-size.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/carousel-size")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "carousel-size"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -4806,8 +4121,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/carousel-spacing.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/carousel-spacing")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "carousel-spacing"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -4825,8 +4140,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/carousel-orientation.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/carousel-orientation")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "carousel-orientation"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -4844,8 +4159,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/carousel-api.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/carousel-api")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "carousel-api"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -4863,8 +4178,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/carousel-plugin.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/carousel-plugin")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "carousel-plugin"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -4882,8 +4197,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/checkbox-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/checkbox-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "checkbox-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -4901,8 +4216,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/checkbox-disabled.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/checkbox-disabled")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "checkbox-disabled"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -4920,8 +4235,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/checkbox-with-text.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/checkbox-with-text")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "checkbox-with-text"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -4939,8 +4254,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/collapsible-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/collapsible-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "collapsible-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -4958,8 +4273,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/combobox-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/combobox-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "combobox-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -4977,8 +4292,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/combobox-dropdown-menu.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/combobox-dropdown-menu")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "combobox-dropdown-menu"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -4996,8 +4311,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/combobox-popover.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/combobox-popover")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "combobox-popover"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -5015,8 +4330,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/combobox-responsive.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/combobox-responsive")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "combobox-responsive"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -5034,8 +4349,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/command-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/command-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "command-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -5053,8 +4368,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/command-dialog.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/command-dialog")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "command-dialog"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -5072,8 +4387,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/context-menu-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/context-menu-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "context-menu-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -5091,8 +4406,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/data-table-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/data-table-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "data-table-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -5110,8 +4425,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/date-picker-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/date-picker-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "date-picker-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -5129,8 +4444,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/date-picker-with-presets.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/date-picker-with-presets")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "date-picker-with-presets"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -5148,8 +4463,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/date-picker-with-range.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/date-picker-with-range")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "date-picker-with-range"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -5167,8 +4482,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/dialog-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/dialog-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "dialog-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -5186,8 +4501,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/dialog-close-button.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/dialog-close-button")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "dialog-close-button"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -5205,8 +4520,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/drawer-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/drawer-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "drawer-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -5224,8 +4539,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/empty-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/empty-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "empty-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -5243,8 +4558,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/empty-icon.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/empty-icon")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "empty-icon"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -5262,8 +4577,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/empty-avatar.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/empty-avatar")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "empty-avatar"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -5281,8 +4596,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/empty-avatar-group.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/empty-avatar-group")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "empty-avatar-group"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -5300,8 +4615,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/empty-input-group.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/empty-input-group")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "empty-input-group"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -5319,8 +4634,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/empty-outline.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/empty-outline")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "empty-outline"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -5338,8 +4653,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/empty-background.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/empty-background")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "empty-background"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -5357,8 +4672,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/field-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/field-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "field-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -5376,8 +4691,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/field-input.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/field-input")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "field-input"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -5395,8 +4710,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/field-textarea.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/field-textarea")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "field-textarea"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -5414,8 +4729,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/field-fieldset.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/field-fieldset")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "field-fieldset"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -5433,8 +4748,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/field-radio.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/field-radio")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "field-radio"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -5452,8 +4767,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/field-checkbox.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/field-checkbox")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "field-checkbox"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -5471,8 +4786,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/field-switch.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/field-switch")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "field-switch"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -5490,8 +4805,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/field-slider.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/field-slider")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "field-slider"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -5509,8 +4824,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/field-select.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/field-select")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "field-select"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -5528,8 +4843,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/field-choice-card.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/field-choice-card")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "field-choice-card"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -5547,8 +4862,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/field-group.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/field-group")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "field-group"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -5566,8 +4881,46 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/field-responsive.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/field-responsive")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "field-responsive"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "form-next-demo": {
+      name: "form-next-demo",
+      title: "undefined",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["field","input","textarea","button","card","spinner"],
+      files: [{
+        path: "registry/new-york-v4/examples/form-next-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/new-york-v4/examples/form-next-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "form-next-demo"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "form-next-complex": {
+      name: "form-next-complex",
+      title: "undefined",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["field","input","textarea","button","card","spinner","checkbox","dialog","radio-group","select","switch"],
+      files: [{
+        path: "registry/new-york-v4/examples/form-next-complex.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/new-york-v4/examples/form-next-complex")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "form-next-complex"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -5585,8 +4938,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/form-rhf-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/form-rhf-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "form-rhf-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -5604,8 +4957,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/form-rhf-input.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/form-rhf-input")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "form-rhf-input"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -5623,8 +4976,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/form-rhf-select.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/form-rhf-select")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "form-rhf-select"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -5642,8 +4995,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/form-rhf-checkbox.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/form-rhf-checkbox")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "form-rhf-checkbox"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -5661,8 +5014,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/form-rhf-switch.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/form-rhf-switch")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "form-rhf-switch"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -5680,8 +5033,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/form-rhf-textarea.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/form-rhf-textarea")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "form-rhf-textarea"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -5699,8 +5052,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/form-rhf-radiogroup.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/form-rhf-radiogroup")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "form-rhf-radiogroup"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -5718,8 +5071,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/form-rhf-array.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/form-rhf-array")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "form-rhf-array"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -5737,8 +5090,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/form-rhf-complex.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/form-rhf-complex")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "form-rhf-complex"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -5756,8 +5109,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/form-rhf-password.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/form-rhf-password")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "form-rhf-password"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -5775,8 +5128,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/form-tanstack-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/form-tanstack-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "form-tanstack-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -5794,8 +5147,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/form-tanstack-input.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/form-tanstack-input")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "form-tanstack-input"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -5813,8 +5166,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/form-tanstack-textarea.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/form-tanstack-textarea")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "form-tanstack-textarea"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -5832,8 +5185,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/form-tanstack-select.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/form-tanstack-select")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "form-tanstack-select"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -5851,8 +5204,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/form-tanstack-checkbox.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/form-tanstack-checkbox")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "form-tanstack-checkbox"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -5870,8 +5223,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/form-tanstack-switch.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/form-tanstack-switch")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "form-tanstack-switch"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -5889,8 +5242,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/form-tanstack-radiogroup.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/form-tanstack-radiogroup")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "form-tanstack-radiogroup"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -5908,8 +5261,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/form-tanstack-array.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/form-tanstack-array")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "form-tanstack-array"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -5927,8 +5280,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/form-tanstack-complex.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/form-tanstack-complex")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "form-tanstack-complex"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -5946,8 +5299,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/drawer-dialog.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/drawer-dialog")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "drawer-dialog"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -5965,8 +5318,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/dropdown-menu-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/dropdown-menu-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "dropdown-menu-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -5984,8 +5337,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/dropdown-menu-checkboxes.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/dropdown-menu-checkboxes")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "dropdown-menu-checkboxes"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -6003,8 +5356,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/dropdown-menu-radio-group.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/dropdown-menu-radio-group")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "dropdown-menu-radio-group"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -6022,8 +5375,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/dropdown-menu-dialog.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/dropdown-menu-dialog")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "dropdown-menu-dialog"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -6041,8 +5394,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/hover-card-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/hover-card-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "hover-card-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -6060,8 +5413,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/input-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/input-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "input-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -6079,8 +5432,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/input-disabled.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/input-disabled")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "input-disabled"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -6098,8 +5451,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/input-file.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/input-file")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "input-file"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -6117,8 +5470,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/input-with-button.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/input-with-button")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "input-with-button"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -6136,8 +5489,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/input-with-label.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/input-with-label")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "input-with-label"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -6155,8 +5508,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/input-with-text.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/input-with-text")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "input-with-text"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -6174,8 +5527,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/input-group-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/input-group-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "input-group-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -6193,8 +5546,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/input-group-label.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/input-group-label")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "input-group-label"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -6212,8 +5565,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/input-group-text.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/input-group-text")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "input-group-text"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -6231,8 +5584,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/input-group-tooltip.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/input-group-tooltip")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "input-group-tooltip"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -6250,8 +5603,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/input-group-button.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/input-group-button")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "input-group-button"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -6269,8 +5622,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/input-group-button-group.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/input-group-button-group")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "input-group-button-group"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -6288,8 +5641,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/input-group-dropdown.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/input-group-dropdown")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "input-group-dropdown"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -6307,8 +5660,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/input-group-spinner.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/input-group-spinner")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "input-group-spinner"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -6326,8 +5679,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/input-group-textarea.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/input-group-textarea")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "input-group-textarea"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -6345,8 +5698,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/input-group-icon.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/input-group-icon")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "input-group-icon"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -6364,8 +5717,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/input-group-custom.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/input-group-custom")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "input-group-custom"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -6383,8 +5736,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/input-otp-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/input-otp-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "input-otp-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -6402,8 +5755,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/input-otp-pattern.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/input-otp-pattern")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "input-otp-pattern"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -6421,8 +5774,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/input-otp-separator.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/input-otp-separator")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "input-otp-separator"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -6440,8 +5793,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/input-otp-controlled.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/input-otp-controlled")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "input-otp-controlled"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -6459,8 +5812,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/item-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/item-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "item-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -6478,8 +5831,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/item-size.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/item-size")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "item-size"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -6497,8 +5850,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/item-variant.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/item-variant")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "item-variant"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -6516,8 +5869,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/item-icon.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/item-icon")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "item-icon"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -6535,8 +5888,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/item-image.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/item-image")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "item-image"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -6554,8 +5907,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/item-avatar.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/item-avatar")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "item-avatar"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -6573,8 +5926,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/item-group.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/item-group")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "item-group"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -6592,8 +5945,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/item-header.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/item-header")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "item-header"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -6611,8 +5964,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/item-dropdown.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/item-dropdown")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "item-dropdown"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -6630,8 +5983,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/item-link.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/item-link")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "item-link"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -6649,8 +6002,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/kbd-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/kbd-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "kbd-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -6668,8 +6021,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/kbd-tooltip.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/kbd-tooltip")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "kbd-tooltip"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -6687,8 +6040,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/kbd-input-group.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/kbd-input-group")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "kbd-input-group"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -6706,8 +6059,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/kbd-button.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/kbd-button")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "kbd-button"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -6725,8 +6078,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/kbd-group.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/kbd-group")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "kbd-group"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -6744,8 +6097,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/label-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/label-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "label-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -6763,8 +6116,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/menubar-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/menubar-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "menubar-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -6782,8 +6135,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/navigation-menu-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/navigation-menu-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "navigation-menu-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -6801,8 +6154,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/native-select-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/native-select-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "native-select-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -6820,8 +6173,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/native-select-groups.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/native-select-groups")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "native-select-groups"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -6839,8 +6192,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/native-select-disabled.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/native-select-disabled")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "native-select-disabled"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -6858,8 +6211,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/native-select-invalid.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/native-select-invalid")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "native-select-invalid"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -6877,8 +6230,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/pagination-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/pagination-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "pagination-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -6896,8 +6249,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/popover-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/popover-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "popover-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -6915,8 +6268,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/progress-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/progress-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "progress-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -6934,8 +6287,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/radio-group-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/radio-group-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "radio-group-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -6953,8 +6306,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/resizable-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/resizable-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "resizable-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -6972,8 +6325,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/resizable-demo-with-handle.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/resizable-demo-with-handle")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "resizable-demo-with-handle"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -6991,8 +6344,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/resizable-vertical.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/resizable-vertical")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "resizable-vertical"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -7010,8 +6363,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/resizable-handle.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/resizable-handle")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "resizable-handle"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -7029,8 +6382,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/scroll-area-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/scroll-area-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "scroll-area-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -7048,8 +6401,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/scroll-area-horizontal-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/scroll-area-horizontal-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "scroll-area-horizontal-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -7067,8 +6420,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/select-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/select-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "select-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -7086,8 +6439,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/select-scrollable.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/select-scrollable")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "select-scrollable"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -7105,8 +6458,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/separator-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/separator-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "separator-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -7124,8 +6477,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/sheet-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/sheet-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "sheet-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -7143,8 +6496,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/sheet-side.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/sheet-side")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "sheet-side"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -7162,8 +6515,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/skeleton-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/skeleton-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "skeleton-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -7181,8 +6534,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/skeleton-card.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/skeleton-card")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "skeleton-card"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -7200,8 +6553,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/slider-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/slider-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "slider-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -7219,8 +6572,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/sonner-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/sonner-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "sonner-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -7238,8 +6591,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/sonner-types.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/sonner-types")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "sonner-types"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -7257,8 +6610,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/spinner-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/spinner-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "spinner-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -7276,8 +6629,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/spinner-basic.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/spinner-basic")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "spinner-basic"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -7295,8 +6648,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/spinner-button.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/spinner-button")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "spinner-button"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -7314,8 +6667,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/spinner-badge.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/spinner-badge")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "spinner-badge"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -7333,8 +6686,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/spinner-input-group.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/spinner-input-group")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "spinner-input-group"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -7352,8 +6705,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/spinner-empty.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/spinner-empty")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "spinner-empty"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -7371,8 +6724,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/spinner-color.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/spinner-color")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "spinner-color"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -7390,8 +6743,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/spinner-custom.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/spinner-custom")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "spinner-custom"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -7409,8 +6762,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/spinner-size.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/spinner-size")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "spinner-size"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -7428,8 +6781,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/spinner-item.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/spinner-item")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "spinner-item"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -7447,8 +6800,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/switch-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/switch-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "switch-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -7466,8 +6819,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/table-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/table-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "table-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -7485,8 +6838,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/tabs-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/tabs-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "tabs-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -7504,8 +6857,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/textarea-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/textarea-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "textarea-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -7523,8 +6876,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/textarea-disabled.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/textarea-disabled")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "textarea-disabled"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -7542,8 +6895,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/textarea-with-button.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/textarea-with-button")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "textarea-with-button"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -7561,8 +6914,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/textarea-with-label.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/textarea-with-label")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "textarea-with-label"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -7580,8 +6933,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/textarea-with-text.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/textarea-with-text")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "textarea-with-text"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -7599,8 +6952,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/toggle-group-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/toggle-group-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "toggle-group-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -7618,8 +6971,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/toggle-group-disabled.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/toggle-group-disabled")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "toggle-group-disabled"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -7637,8 +6990,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/toggle-group-lg.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/toggle-group-lg")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "toggle-group-lg"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -7656,8 +7009,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/toggle-group-outline.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/toggle-group-outline")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "toggle-group-outline"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -7675,8 +7028,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/toggle-group-sm.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/toggle-group-sm")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "toggle-group-sm"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -7694,8 +7047,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/toggle-group-single.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/toggle-group-single")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "toggle-group-single"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -7713,8 +7066,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/toggle-group-spacing.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/toggle-group-spacing")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "toggle-group-spacing"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -7732,8 +7085,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/toggle-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/toggle-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "toggle-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -7751,8 +7104,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/toggle-disabled.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/toggle-disabled")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "toggle-disabled"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -7770,8 +7123,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/toggle-lg.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/toggle-lg")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "toggle-lg"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -7789,8 +7142,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/toggle-outline.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/toggle-outline")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "toggle-outline"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -7808,8 +7161,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/toggle-sm.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/toggle-sm")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "toggle-sm"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -7827,8 +7180,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/toggle-with-text.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/toggle-with-text")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "toggle-with-text"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -7846,8 +7199,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/tooltip-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/tooltip-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "tooltip-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -7865,8 +7218,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/typography-blockquote.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/typography-blockquote")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "typography-blockquote"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -7884,8 +7237,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/typography-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/typography-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "typography-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -7903,8 +7256,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/typography-h1.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/typography-h1")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "typography-h1"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -7922,8 +7275,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/typography-h2.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/typography-h2")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "typography-h2"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -7941,8 +7294,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/typography-h3.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/typography-h3")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "typography-h3"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -7960,8 +7313,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/typography-h4.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/typography-h4")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "typography-h4"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -7979,8 +7332,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/typography-inline-code.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/typography-inline-code")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "typography-inline-code"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -7998,8 +7351,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/typography-large.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/typography-large")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "typography-large"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -8017,8 +7370,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/typography-lead.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/typography-lead")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "typography-lead"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -8036,8 +7389,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/typography-list.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/typography-list")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "typography-list"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -8055,8 +7408,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/typography-muted.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/typography-muted")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "typography-muted"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -8074,8 +7427,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/typography-p.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/typography-p")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "typography-p"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -8093,8 +7446,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/typography-small.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/typography-small")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "typography-small"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -8112,8 +7465,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/typography-table.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/typography-table")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "typography-table"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -8131,8 +7484,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/mode-toggle.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/mode-toggle")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "mode-toggle"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -8150,8 +7503,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/chart-bar-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/chart-bar-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-bar-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -8169,8 +7522,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/chart-bar-demo-grid.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/chart-bar-demo-grid")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-bar-demo-grid"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -8188,8 +7541,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/chart-bar-demo-axis.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/chart-bar-demo-axis")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-bar-demo-axis"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -8207,8 +7560,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/chart-bar-demo-tooltip.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/chart-bar-demo-tooltip")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-bar-demo-tooltip"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -8226,8 +7579,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/chart-bar-demo-legend.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/chart-bar-demo-legend")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-bar-demo-legend"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -8245,8 +7598,8 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/chart-tooltip-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/chart-tooltip-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart-tooltip-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -8264,259 +7617,10482 @@ export const Index: Record<string, Record<string, any>> = {
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/examples/calendar-hijri.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/registry/new-york-v4/examples/calendar-hijri")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "calendar-hijri"
         return { default: mod.default || mod[exportName] }
       }),
       categories: ["calendar","date"],
       meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0","mobile":"component"},
     },
-    "sidebar-demo": {
-      name: "sidebar-demo",
+  },
+  "base-nova": {
+    "accordion": {
+      name: "accordion",
       title: "undefined",
       description: "",
-      type: "registry:internal",
+      type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "registry/new-york-v4/internal/sidebar-demo.tsx",
-        type: "registry:component",
+        path: "styles/base-nova/ui/accordion.tsx",
+        type: "registry:ui",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/internal/sidebar-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/styles/base-nova/ui/accordion")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "accordion"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/accordion","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/accordion-example.tsx","api":"https://base-ui.com/react/components/accordion.md"}},
     },
-    "sidebar-header": {
-      name: "sidebar-header",
+    "alert": {
+      name: "alert",
       title: "undefined",
       description: "",
-      type: "registry:internal",
+      type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "registry/new-york-v4/internal/sidebar-header.tsx",
-        type: "registry:component",
+        path: "styles/base-nova/ui/alert.tsx",
+        type: "registry:ui",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/internal/sidebar-header.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/styles/base-nova/ui/alert")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "alert"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/alert","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/alert-example.tsx"}},
     },
-    "sidebar-footer": {
-      name: "sidebar-footer",
+    "alert-dialog": {
+      name: "alert-dialog",
       title: "undefined",
       description: "",
-      type: "registry:internal",
-      registryDependencies: undefined,
+      type: "registry:ui",
+      registryDependencies: ["button"],
       files: [{
-        path: "registry/new-york-v4/internal/sidebar-footer.tsx",
-        type: "registry:component",
+        path: "styles/base-nova/ui/alert-dialog.tsx",
+        type: "registry:ui",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/internal/sidebar-footer.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/styles/base-nova/ui/alert-dialog")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "alert-dialog"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/alert-dialog","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/alert-dialog-example.tsx","api":"https://base-ui.com/react/components/alert-dialog.md"}},
     },
-    "sidebar-group": {
-      name: "sidebar-group",
+    "aspect-ratio": {
+      name: "aspect-ratio",
       title: "undefined",
       description: "",
-      type: "registry:internal",
+      type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "registry/new-york-v4/internal/sidebar-group.tsx",
-        type: "registry:component",
+        path: "styles/base-nova/ui/aspect-ratio.tsx",
+        type: "registry:ui",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/internal/sidebar-group.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/styles/base-nova/ui/aspect-ratio")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "aspect-ratio"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/aspect-ratio","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/aspect-ratio-example.tsx"}},
     },
-    "sidebar-group-collapsible": {
-      name: "sidebar-group-collapsible",
+    "avatar": {
+      name: "avatar",
       title: "undefined",
       description: "",
-      type: "registry:internal",
+      type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "registry/new-york-v4/internal/sidebar-group-collapsible.tsx",
-        type: "registry:component",
+        path: "styles/base-nova/ui/avatar.tsx",
+        type: "registry:ui",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/internal/sidebar-group-collapsible.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/styles/base-nova/ui/avatar")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "avatar"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/avatar","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/avatar-example.tsx","api":"https://base-ui.com/react/components/avatar.md"}},
     },
-    "sidebar-group-action": {
-      name: "sidebar-group-action",
+    "badge": {
+      name: "badge",
       title: "undefined",
       description: "",
-      type: "registry:internal",
+      type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "registry/new-york-v4/internal/sidebar-group-action.tsx",
-        type: "registry:component",
+        path: "styles/base-nova/ui/badge.tsx",
+        type: "registry:ui",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/internal/sidebar-group-action.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/styles/base-nova/ui/badge")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "badge"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/badge","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/badge-example.tsx"}},
     },
-    "sidebar-menu": {
-      name: "sidebar-menu",
+    "breadcrumb": {
+      name: "breadcrumb",
       title: "undefined",
       description: "",
-      type: "registry:internal",
+      type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "registry/new-york-v4/internal/sidebar-menu.tsx",
-        type: "registry:component",
+        path: "styles/base-nova/ui/breadcrumb.tsx",
+        type: "registry:ui",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/internal/sidebar-menu.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/styles/base-nova/ui/breadcrumb")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "breadcrumb"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/breadcrumb","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/breadcrumb-example.tsx"}},
     },
-    "sidebar-menu-action": {
-      name: "sidebar-menu-action",
+    "button": {
+      name: "button",
       title: "undefined",
       description: "",
-      type: "registry:internal",
+      type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "registry/new-york-v4/internal/sidebar-menu-action.tsx",
-        type: "registry:component",
+        path: "styles/base-nova/ui/button.tsx",
+        type: "registry:ui",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/internal/sidebar-menu-action.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/styles/base-nova/ui/button")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "button"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/button","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/button-example.tsx"}},
     },
-    "sidebar-menu-sub": {
-      name: "sidebar-menu-sub",
+    "button-group": {
+      name: "button-group",
       title: "undefined",
       description: "",
-      type: "registry:internal",
-      registryDependencies: undefined,
+      type: "registry:ui",
+      registryDependencies: ["separator"],
       files: [{
-        path: "registry/new-york-v4/internal/sidebar-menu-sub.tsx",
-        type: "registry:component",
+        path: "styles/base-nova/ui/button-group.tsx",
+        type: "registry:ui",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/internal/sidebar-menu-sub.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/styles/base-nova/ui/button-group")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "button-group"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/button-group","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/button-group-example.tsx"}},
     },
-    "sidebar-menu-collapsible": {
-      name: "sidebar-menu-collapsible",
+    "calendar": {
+      name: "calendar",
       title: "undefined",
       description: "",
-      type: "registry:internal",
-      registryDependencies: undefined,
+      type: "registry:ui",
+      registryDependencies: ["button"],
       files: [{
-        path: "registry/new-york-v4/internal/sidebar-menu-collapsible.tsx",
-        type: "registry:component",
+        path: "styles/base-nova/ui/calendar.tsx",
+        type: "registry:ui",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/internal/sidebar-menu-collapsible.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/styles/base-nova/ui/calendar")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "calendar"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/calendar","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/calendar-example.tsx","api":"https://react-day-picker.js.org"}},
     },
-    "sidebar-menu-badge": {
-      name: "sidebar-menu-badge",
+    "card": {
+      name: "card",
       title: "undefined",
       description: "",
-      type: "registry:internal",
+      type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "registry/new-york-v4/internal/sidebar-menu-badge.tsx",
-        type: "registry:component",
+        path: "styles/base-nova/ui/card.tsx",
+        type: "registry:ui",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/internal/sidebar-menu-badge.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/styles/base-nova/ui/card")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "card"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/card","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/card-example.tsx"}},
     },
-    "sidebar-rsc": {
-      name: "sidebar-rsc",
+    "carousel": {
+      name: "carousel",
       title: "undefined",
       description: "",
-      type: "registry:internal",
-      registryDependencies: undefined,
+      type: "registry:ui",
+      registryDependencies: ["button"],
       files: [{
-        path: "registry/new-york-v4/internal/sidebar-rsc.tsx",
-        type: "registry:component",
+        path: "styles/base-nova/ui/carousel.tsx",
+        type: "registry:ui",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/internal/sidebar-rsc.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/styles/base-nova/ui/carousel")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "carousel"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/carousel","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/carousel-example.tsx","api":"https://www.embla-carousel.com/get-started/react"}},
     },
-    "sidebar-controlled": {
-      name: "sidebar-controlled",
+    "chart": {
+      name: "chart",
       title: "undefined",
       description: "",
-      type: "registry:internal",
-      registryDependencies: undefined,
+      type: "registry:ui",
+      registryDependencies: ["card"],
       files: [{
-        path: "registry/new-york-v4/internal/sidebar-controlled.tsx",
-        type: "registry:component",
+        path: "styles/base-nova/ui/chart.tsx",
+        type: "registry:ui",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/internal/sidebar-controlled.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        const mod = await import("@/styles/base-nova/ui/chart")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/chart","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/chart-example.tsx"}},
+    },
+    "checkbox": {
+      name: "checkbox",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-nova/ui/checkbox.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-nova/ui/checkbox")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "checkbox"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/checkbox","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/checkbox-example.tsx","api":"https://base-ui.com/react/components/checkbox.md"}},
+    },
+    "collapsible": {
+      name: "collapsible",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-nova/ui/collapsible.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-nova/ui/collapsible")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "collapsible"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/collapsible","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/collapsible-example.tsx","api":"https://base-ui.com/react/components/collapsible.md"}},
+    },
+    "combobox": {
+      name: "combobox",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","input-group"],
+      files: [{
+        path: "styles/base-nova/ui/combobox.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-nova/ui/combobox")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "combobox"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/combobox","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/combobox-example.tsx","api":"https://base-ui.com/react/components/combobox.md"}},
+    },
+    "command": {
+      name: "command",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["dialog","input-group"],
+      files: [{
+        path: "styles/base-nova/ui/command.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-nova/ui/command")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "command"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/command","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/command-example.tsx","api":"https://github.com/dip/cmdk"}},
+    },
+    "context-menu": {
+      name: "context-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-nova/ui/context-menu.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-nova/ui/context-menu")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "context-menu"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/context-menu","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/context-menu-example.tsx","api":"https://base-ui.com/react/components/context-menu.md"}},
+    },
+    "dialog": {
+      name: "dialog",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "styles/base-nova/ui/dialog.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-nova/ui/dialog")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "dialog"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/dialog","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/dialog-example.tsx","api":"https://base-ui.com/react/components/dialog.md"}},
+    },
+    "drawer": {
+      name: "drawer",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-nova/ui/drawer.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-nova/ui/drawer")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "drawer"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/drawer","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/drawer-example.tsx","api":"https://vaul.emilkowal.ski/getting-started"}},
+    },
+    "dropdown-menu": {
+      name: "dropdown-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-nova/ui/dropdown-menu.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-nova/ui/dropdown-menu")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "dropdown-menu"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/dropdown-menu","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/dropdown-menu-example.tsx","api":"https://base-ui.com/react/components/menu.md"}},
+    },
+    "empty": {
+      name: "empty",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-nova/ui/empty.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-nova/ui/empty")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "empty"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/empty","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/empty-example.tsx"}},
+    },
+    "field": {
+      name: "field",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["label","separator"],
+      files: [{
+        path: "styles/base-nova/ui/field.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-nova/ui/field")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "field"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/field","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/field-example.tsx"}},
+    },
+    "hover-card": {
+      name: "hover-card",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-nova/ui/hover-card.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-nova/ui/hover-card")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "hover-card"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/hover-card","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/hover-card-example.tsx","api":"https://base-ui.com/react/components/hover-card.md"}},
+    },
+    "input": {
+      name: "input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-nova/ui/input.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-nova/ui/input")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "input"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/input","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/input-example.tsx"}},
+    },
+    "input-group": {
+      name: "input-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","input","textarea"],
+      files: [{
+        path: "styles/base-nova/ui/input-group.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-nova/ui/input-group")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "input-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/input-group","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/input-group-example.tsx"}},
+    },
+    "input-otp": {
+      name: "input-otp",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-nova/ui/input-otp.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-nova/ui/input-otp")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "input-otp"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/input-otp","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/input-otp-example.tsx","api":"https://input-otp.rodz.dev"}},
+    },
+    "item": {
+      name: "item",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["separator"],
+      files: [{
+        path: "styles/base-nova/ui/item.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-nova/ui/item")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "item"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/item","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/item-example.tsx"}},
+    },
+    "label": {
+      name: "label",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-nova/ui/label.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-nova/ui/label")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "label"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/label","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/label-example.tsx","api":"https://base-ui.com/react/components/label.md"}},
+    },
+    "menubar": {
+      name: "menubar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["dropdown-menu"],
+      files: [{
+        path: "styles/base-nova/ui/menubar.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-nova/ui/menubar")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "menubar"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/menubar","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/menubar-example.tsx","api":"https://base-ui.com/react/components/menubar.md"}},
+    },
+    "navigation-menu": {
+      name: "navigation-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-nova/ui/navigation-menu.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-nova/ui/navigation-menu")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "navigation-menu"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/navigation-menu","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/navigation-menu-example.tsx","api":"https://base-ui.com/react/components/navigation-menu.md"}},
+    },
+    "pagination": {
+      name: "pagination",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "styles/base-nova/ui/pagination.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-nova/ui/pagination")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "pagination"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/pagination","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/pagination-example.tsx"}},
+    },
+    "popover": {
+      name: "popover",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-nova/ui/popover.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-nova/ui/popover")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "popover"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/popover","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/popover-example.tsx","api":"https://base-ui.com/react/components/popover.md"}},
+    },
+    "progress": {
+      name: "progress",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-nova/ui/progress.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-nova/ui/progress")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "progress"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/progress","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/progress-example.tsx","api":"https://base-ui.com/react/components/progress.md"}},
+    },
+    "radio-group": {
+      name: "radio-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-nova/ui/radio-group.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-nova/ui/radio-group")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "radio-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/radio-group","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/radio-group-example.tsx","api":"https://base-ui.com/react/components/radio-group.md"}},
+    },
+    "resizable": {
+      name: "resizable",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-nova/ui/resizable.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-nova/ui/resizable")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "resizable"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/resizable","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/resizable-example.tsx","api":"https://github.com/bvaughn/react-resizable-panels"}},
+    },
+    "scroll-area": {
+      name: "scroll-area",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-nova/ui/scroll-area.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-nova/ui/scroll-area")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "scroll-area"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/scroll-area","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/scroll-area-example.tsx","api":"https://base-ui.com/react/components/scroll-area.md"}},
+    },
+    "select": {
+      name: "select",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-nova/ui/select.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-nova/ui/select")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "select"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/select","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/select-example.tsx","api":"https://base-ui.com/react/components/select.md"}},
+    },
+    "separator": {
+      name: "separator",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-nova/ui/separator.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-nova/ui/separator")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "separator"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/separator","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/separator-example.tsx","api":"https://base-ui.com/react/components/separator.md"}},
+    },
+    "sheet": {
+      name: "sheet",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "styles/base-nova/ui/sheet.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-nova/ui/sheet")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "sheet"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/sheet","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/sheet-example.tsx","api":"https://base-ui.com/react/components/dialog.md"}},
+    },
+    "sidebar": {
+      name: "sidebar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","input","separator","sheet","skeleton","tooltip","use-mobile"],
+      files: [{
+        path: "styles/base-nova/ui/sidebar.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-nova/ui/sidebar")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "sidebar"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/sidebar","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/sidebar-example.tsx"}},
+    },
+    "skeleton": {
+      name: "skeleton",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-nova/ui/skeleton.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-nova/ui/skeleton")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "skeleton"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/skeleton","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/skeleton-example.tsx"}},
+    },
+    "slider": {
+      name: "slider",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-nova/ui/slider.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-nova/ui/slider")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "slider"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/slider","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/slider-example.tsx","api":"https://base-ui.com/react/components/slider.md"}},
+    },
+    "sonner": {
+      name: "sonner",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-nova/ui/sonner.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-nova/ui/sonner")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "sonner"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/sonner","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/sonner-example.tsx","api":"https://sonner.emilkowal.ski"}},
+    },
+    "spinner": {
+      name: "spinner",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-nova/ui/spinner.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-nova/ui/spinner")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "spinner"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/spinner","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/spinner-example.tsx"}},
+    },
+    "switch": {
+      name: "switch",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-nova/ui/switch.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-nova/ui/switch")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "switch"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/switch","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/switch-example.tsx","api":"https://base-ui.com/react/components/switch.md"}},
+    },
+    "table": {
+      name: "table",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-nova/ui/table.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-nova/ui/table")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "table"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/table","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/table-example.tsx"}},
+    },
+    "tabs": {
+      name: "tabs",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-nova/ui/tabs.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-nova/ui/tabs")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "tabs"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/tabs","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/tabs-example.tsx","api":"https://base-ui.com/react/components/tabs.md"}},
+    },
+    "textarea": {
+      name: "textarea",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-nova/ui/textarea.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-nova/ui/textarea")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "textarea"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/textarea","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/textarea-example.tsx"}},
+    },
+    "toggle": {
+      name: "toggle",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-nova/ui/toggle.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-nova/ui/toggle")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "toggle"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/toggle","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/toggle-example.tsx","api":"https://base-ui.com/react/components/toggle.md"}},
+    },
+    "toggle-group": {
+      name: "toggle-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["toggle"],
+      files: [{
+        path: "styles/base-nova/ui/toggle-group.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-nova/ui/toggle-group")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "toggle-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/toggle-group","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/toggle-group-example.tsx","api":"https://base-ui.com/react/components/toggle-group.md"}},
+    },
+    "tooltip": {
+      name: "tooltip",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-nova/ui/tooltip.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-nova/ui/tooltip")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "tooltip"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/tooltip","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/tooltip-example.tsx","api":"https://base-ui.com/react/components/tooltip.md"}},
+    },
+    "kbd": {
+      name: "kbd",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-nova/ui/kbd.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-nova/ui/kbd")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "kbd"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/kbd","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/kbd-example.tsx"}},
+    },
+    "native-select": {
+      name: "native-select",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-nova/ui/native-select.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-nova/ui/native-select")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "native-select"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/native-select","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/native-select-example.tsx"}},
+    },
+    "direction": {
+      name: "direction",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-nova/ui/direction.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-nova/ui/direction")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "direction"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/direction","api":"https://base-ui.com/react/utils/direction-provider.md"}},
+    },
+  },
+  "radix-nova": {
+    "accordion": {
+      name: "accordion",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-nova/ui/accordion.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-nova/ui/accordion")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "accordion"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/accordion","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/accordion-example.tsx","api":"https://www.radix-ui.com/primitives/docs/components/accordion.md"}},
+    },
+    "alert": {
+      name: "alert",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-nova/ui/alert.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-nova/ui/alert")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "alert"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/alert","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/alert-example.tsx"}},
+    },
+    "alert-dialog": {
+      name: "alert-dialog",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "styles/radix-nova/ui/alert-dialog.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-nova/ui/alert-dialog")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "alert-dialog"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/alert-dialog","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/alert-dialog-example.tsx","api":"https://www.radix-ui.com/primitives/docs/components/alert-dialog.md"}},
+    },
+    "aspect-ratio": {
+      name: "aspect-ratio",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-nova/ui/aspect-ratio.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-nova/ui/aspect-ratio")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "aspect-ratio"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/aspect-ratio","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/aspect-ratio-example.tsx","api":"https://www.radix-ui.com/primitives/docs/components/aspect-ratio.md"}},
+    },
+    "avatar": {
+      name: "avatar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-nova/ui/avatar.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-nova/ui/avatar")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "avatar"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/avatar","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/avatar-example.tsx","api":"https://www.radix-ui.com/primitives/docs/components/avatar.md"}},
+    },
+    "badge": {
+      name: "badge",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-nova/ui/badge.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-nova/ui/badge")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "badge"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/badge","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/badge-example.tsx"}},
+    },
+    "breadcrumb": {
+      name: "breadcrumb",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-nova/ui/breadcrumb.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-nova/ui/breadcrumb")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "breadcrumb"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/breadcrumb","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/breadcrumb-example.tsx"}},
+    },
+    "button": {
+      name: "button",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-nova/ui/button.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-nova/ui/button")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "button"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/button","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/button-example.tsx"}},
+    },
+    "button-group": {
+      name: "button-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["separator"],
+      files: [{
+        path: "styles/radix-nova/ui/button-group.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-nova/ui/button-group")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "button-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/button-group","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/button-group-example.tsx"}},
+    },
+    "calendar": {
+      name: "calendar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "styles/radix-nova/ui/calendar.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-nova/ui/calendar")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "calendar"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/calendar","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/calendar-example.tsx","api":"https://react-day-picker.js.org"}},
+    },
+    "card": {
+      name: "card",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-nova/ui/card.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-nova/ui/card")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "card"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/card","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/card-example.tsx"}},
+    },
+    "carousel": {
+      name: "carousel",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "styles/radix-nova/ui/carousel.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-nova/ui/carousel")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "carousel"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/carousel","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/carousel-example.tsx","api":"https://www.embla-carousel.com/get-started/react"}},
+    },
+    "chart": {
+      name: "chart",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-nova/ui/chart.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-nova/ui/chart")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/chart","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/chart-example.tsx"}},
+    },
+    "checkbox": {
+      name: "checkbox",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-nova/ui/checkbox.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-nova/ui/checkbox")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "checkbox"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/checkbox","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/checkbox-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/checkbox.md"}},
+    },
+    "collapsible": {
+      name: "collapsible",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-nova/ui/collapsible.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-nova/ui/collapsible")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "collapsible"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/collapsible","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/collapsible-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/collapsible.md"}},
+    },
+    "combobox": {
+      name: "combobox",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","input-group"],
+      files: [{
+        path: "styles/radix-nova/ui/combobox.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-nova/ui/combobox")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "combobox"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/combobox","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/combobox-example.tsx","api":"https://base-ui.com/react/components/combobox"}},
+    },
+    "command": {
+      name: "command",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["dialog","input-group"],
+      files: [{
+        path: "styles/radix-nova/ui/command.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-nova/ui/command")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "command"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/command","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/command-example.tsx","api":"https://github.com/dip/cmdk"}},
+    },
+    "context-menu": {
+      name: "context-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-nova/ui/context-menu.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-nova/ui/context-menu")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "context-menu"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/context-menu","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/context-menu-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/context-menu.md"}},
+    },
+    "dialog": {
+      name: "dialog",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "styles/radix-nova/ui/dialog.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-nova/ui/dialog")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "dialog"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/dialog","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/dialog-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/dialog.md"}},
+    },
+    "drawer": {
+      name: "drawer",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-nova/ui/drawer.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-nova/ui/drawer")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "drawer"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/drawer","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/drawer-example.tsx","api":"https://vaul.emilkowal.ski/getting-started"}},
+    },
+    "dropdown-menu": {
+      name: "dropdown-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-nova/ui/dropdown-menu.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-nova/ui/dropdown-menu")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "dropdown-menu"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/dropdown-menu","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/dropdown-menu-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/dropdown-menu.md"}},
+    },
+    "empty": {
+      name: "empty",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-nova/ui/empty.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-nova/ui/empty")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "empty"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/empty","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/empty-example.tsx"}},
+    },
+    "field": {
+      name: "field",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["label","separator"],
+      files: [{
+        path: "styles/radix-nova/ui/field.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-nova/ui/field")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "field"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/field","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/field-example.tsx"}},
+    },
+    "hover-card": {
+      name: "hover-card",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-nova/ui/hover-card.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-nova/ui/hover-card")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "hover-card"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/hover-card","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/hover-card-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/hover-card.md"}},
+    },
+    "input": {
+      name: "input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-nova/ui/input.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-nova/ui/input")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "input"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/input","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/input-example.tsx"}},
+    },
+    "input-group": {
+      name: "input-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","input","textarea"],
+      files: [{
+        path: "styles/radix-nova/ui/input-group.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-nova/ui/input-group")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "input-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/input-group","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/input-group-example.tsx"}},
+    },
+    "input-otp": {
+      name: "input-otp",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-nova/ui/input-otp.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-nova/ui/input-otp")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "input-otp"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/input-otp","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/input-otp-example.tsx","api":"https://input-otp.rodz.dev"}},
+    },
+    "item": {
+      name: "item",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["separator"],
+      files: [{
+        path: "styles/radix-nova/ui/item.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-nova/ui/item")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "item"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/item","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/item-example.tsx"}},
+    },
+    "label": {
+      name: "label",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-nova/ui/label.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-nova/ui/label")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "label"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/label","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/label-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/label.md"}},
+    },
+    "menubar": {
+      name: "menubar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-nova/ui/menubar.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-nova/ui/menubar")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "menubar"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/menubar","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/menubar-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/menubar.md"}},
+    },
+    "navigation-menu": {
+      name: "navigation-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-nova/ui/navigation-menu.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-nova/ui/navigation-menu")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "navigation-menu"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/navigation-menu","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/navigation-menu-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/navigation-menu.md"}},
+    },
+    "pagination": {
+      name: "pagination",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "styles/radix-nova/ui/pagination.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-nova/ui/pagination")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "pagination"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/pagination","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/pagination-example.tsx"}},
+    },
+    "popover": {
+      name: "popover",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-nova/ui/popover.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-nova/ui/popover")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "popover"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/popover","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/popover-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/popover.md"}},
+    },
+    "progress": {
+      name: "progress",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-nova/ui/progress.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-nova/ui/progress")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "progress"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/progress","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/progress-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/progress.md"}},
+    },
+    "radio-group": {
+      name: "radio-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-nova/ui/radio-group.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-nova/ui/radio-group")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "radio-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/radio-group","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/radio-group-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/radio-group.md"}},
+    },
+    "resizable": {
+      name: "resizable",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-nova/ui/resizable.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-nova/ui/resizable")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "resizable"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/resizable","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/resizable-example.tsx","api":"https://github.com/bvaughn/react-resizable-panels"}},
+    },
+    "scroll-area": {
+      name: "scroll-area",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-nova/ui/scroll-area.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-nova/ui/scroll-area")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "scroll-area"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/scroll-area","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/scroll-area-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/scroll-area.md"}},
+    },
+    "select": {
+      name: "select",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-nova/ui/select.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-nova/ui/select")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "select"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/select","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/select-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/select.md"}},
+    },
+    "separator": {
+      name: "separator",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-nova/ui/separator.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-nova/ui/separator")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "separator"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/separator","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/separator-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/separator.md"}},
+    },
+    "sheet": {
+      name: "sheet",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "styles/radix-nova/ui/sheet.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-nova/ui/sheet")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "sheet"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/sheet","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/sheet-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/dialog.md"}},
+    },
+    "sidebar": {
+      name: "sidebar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","separator","sheet","tooltip","input","use-mobile","skeleton"],
+      files: [{
+        path: "styles/radix-nova/ui/sidebar.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-nova/ui/sidebar")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "sidebar"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/sidebar","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/sidebar-example.tsx"}},
+    },
+    "skeleton": {
+      name: "skeleton",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-nova/ui/skeleton.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-nova/ui/skeleton")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "skeleton"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/skeleton","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/skeleton-example.tsx"}},
+    },
+    "slider": {
+      name: "slider",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-nova/ui/slider.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-nova/ui/slider")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "slider"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/slider","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/slider-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/slider.md"}},
+    },
+    "sonner": {
+      name: "sonner",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-nova/ui/sonner.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-nova/ui/sonner")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "sonner"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/sonner","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/sonner-example.tsx","api":"https://sonner.emilkowal.ski"}},
+    },
+    "spinner": {
+      name: "spinner",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-nova/ui/spinner.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-nova/ui/spinner")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "spinner"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/spinner","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/spinner-example.tsx"}},
+    },
+    "switch": {
+      name: "switch",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-nova/ui/switch.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-nova/ui/switch")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "switch"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/switch","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/switch-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/switch.md"}},
+    },
+    "table": {
+      name: "table",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-nova/ui/table.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-nova/ui/table")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "table"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/table","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/table-example.tsx"}},
+    },
+    "tabs": {
+      name: "tabs",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-nova/ui/tabs.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-nova/ui/tabs")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "tabs"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/tabs","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/tabs-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/tabs.md"}},
+    },
+    "textarea": {
+      name: "textarea",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-nova/ui/textarea.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-nova/ui/textarea")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "textarea"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/textarea","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/textarea-example.tsx"}},
+    },
+    "toggle": {
+      name: "toggle",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-nova/ui/toggle.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-nova/ui/toggle")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "toggle"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/toggle","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/toggle-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/toggle.md"}},
+    },
+    "toggle-group": {
+      name: "toggle-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["toggle"],
+      files: [{
+        path: "styles/radix-nova/ui/toggle-group.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-nova/ui/toggle-group")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "toggle-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/toggle-group","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/toggle-group-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/toggle-group.md"}},
+    },
+    "tooltip": {
+      name: "tooltip",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-nova/ui/tooltip.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-nova/ui/tooltip")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "tooltip"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/tooltip","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/tooltip-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/tooltip.md"}},
+    },
+    "kbd": {
+      name: "kbd",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-nova/ui/kbd.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-nova/ui/kbd")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "kbd"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/kbd","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/kbd-example.tsx"}},
+    },
+    "native-select": {
+      name: "native-select",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-nova/ui/native-select.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-nova/ui/native-select")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "native-select"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/native-select","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/native-select-example.tsx"}},
+    },
+    "direction": {
+      name: "direction",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-nova/ui/direction.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-nova/ui/direction")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "direction"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/direction","api":"https://www.radix-ui.com/primitives/docs/utilities/direction-provider.md"}},
+    },
+  },
+  "radix-vega": {
+    "accordion": {
+      name: "accordion",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-vega/ui/accordion.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-vega/ui/accordion")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "accordion"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/accordion","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/accordion-example.tsx","api":"https://www.radix-ui.com/primitives/docs/components/accordion.md"}},
+    },
+    "alert": {
+      name: "alert",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-vega/ui/alert.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-vega/ui/alert")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "alert"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/alert","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/alert-example.tsx"}},
+    },
+    "alert-dialog": {
+      name: "alert-dialog",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "styles/radix-vega/ui/alert-dialog.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-vega/ui/alert-dialog")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "alert-dialog"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/alert-dialog","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/alert-dialog-example.tsx","api":"https://www.radix-ui.com/primitives/docs/components/alert-dialog.md"}},
+    },
+    "aspect-ratio": {
+      name: "aspect-ratio",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-vega/ui/aspect-ratio.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-vega/ui/aspect-ratio")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "aspect-ratio"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/aspect-ratio","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/aspect-ratio-example.tsx","api":"https://www.radix-ui.com/primitives/docs/components/aspect-ratio.md"}},
+    },
+    "avatar": {
+      name: "avatar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-vega/ui/avatar.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-vega/ui/avatar")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "avatar"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/avatar","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/avatar-example.tsx","api":"https://www.radix-ui.com/primitives/docs/components/avatar.md"}},
+    },
+    "badge": {
+      name: "badge",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-vega/ui/badge.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-vega/ui/badge")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "badge"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/badge","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/badge-example.tsx"}},
+    },
+    "breadcrumb": {
+      name: "breadcrumb",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-vega/ui/breadcrumb.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-vega/ui/breadcrumb")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "breadcrumb"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/breadcrumb","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/breadcrumb-example.tsx"}},
+    },
+    "button": {
+      name: "button",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-vega/ui/button.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-vega/ui/button")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "button"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/button","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/button-example.tsx"}},
+    },
+    "button-group": {
+      name: "button-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["separator"],
+      files: [{
+        path: "styles/radix-vega/ui/button-group.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-vega/ui/button-group")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "button-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/button-group","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/button-group-example.tsx"}},
+    },
+    "calendar": {
+      name: "calendar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "styles/radix-vega/ui/calendar.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-vega/ui/calendar")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "calendar"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/calendar","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/calendar-example.tsx","api":"https://react-day-picker.js.org"}},
+    },
+    "card": {
+      name: "card",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-vega/ui/card.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-vega/ui/card")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "card"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/card","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/card-example.tsx"}},
+    },
+    "carousel": {
+      name: "carousel",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "styles/radix-vega/ui/carousel.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-vega/ui/carousel")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "carousel"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/carousel","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/carousel-example.tsx","api":"https://www.embla-carousel.com/get-started/react"}},
+    },
+    "chart": {
+      name: "chart",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-vega/ui/chart.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-vega/ui/chart")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/chart","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/chart-example.tsx"}},
+    },
+    "checkbox": {
+      name: "checkbox",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-vega/ui/checkbox.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-vega/ui/checkbox")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "checkbox"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/checkbox","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/checkbox-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/checkbox.md"}},
+    },
+    "collapsible": {
+      name: "collapsible",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-vega/ui/collapsible.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-vega/ui/collapsible")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "collapsible"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/collapsible","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/collapsible-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/collapsible.md"}},
+    },
+    "combobox": {
+      name: "combobox",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","input-group"],
+      files: [{
+        path: "styles/radix-vega/ui/combobox.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-vega/ui/combobox")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "combobox"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/combobox","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/combobox-example.tsx","api":"https://base-ui.com/react/components/combobox"}},
+    },
+    "command": {
+      name: "command",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["dialog","input-group"],
+      files: [{
+        path: "styles/radix-vega/ui/command.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-vega/ui/command")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "command"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/command","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/command-example.tsx","api":"https://github.com/dip/cmdk"}},
+    },
+    "context-menu": {
+      name: "context-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-vega/ui/context-menu.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-vega/ui/context-menu")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "context-menu"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/context-menu","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/context-menu-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/context-menu.md"}},
+    },
+    "dialog": {
+      name: "dialog",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "styles/radix-vega/ui/dialog.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-vega/ui/dialog")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "dialog"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/dialog","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/dialog-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/dialog.md"}},
+    },
+    "drawer": {
+      name: "drawer",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-vega/ui/drawer.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-vega/ui/drawer")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "drawer"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/drawer","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/drawer-example.tsx","api":"https://vaul.emilkowal.ski/getting-started"}},
+    },
+    "dropdown-menu": {
+      name: "dropdown-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-vega/ui/dropdown-menu.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-vega/ui/dropdown-menu")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "dropdown-menu"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/dropdown-menu","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/dropdown-menu-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/dropdown-menu.md"}},
+    },
+    "empty": {
+      name: "empty",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-vega/ui/empty.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-vega/ui/empty")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "empty"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/empty","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/empty-example.tsx"}},
+    },
+    "field": {
+      name: "field",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["label","separator"],
+      files: [{
+        path: "styles/radix-vega/ui/field.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-vega/ui/field")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "field"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/field","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/field-example.tsx"}},
+    },
+    "hover-card": {
+      name: "hover-card",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-vega/ui/hover-card.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-vega/ui/hover-card")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "hover-card"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/hover-card","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/hover-card-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/hover-card.md"}},
+    },
+    "input": {
+      name: "input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-vega/ui/input.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-vega/ui/input")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "input"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/input","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/input-example.tsx"}},
+    },
+    "input-group": {
+      name: "input-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","input","textarea"],
+      files: [{
+        path: "styles/radix-vega/ui/input-group.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-vega/ui/input-group")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "input-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/input-group","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/input-group-example.tsx"}},
+    },
+    "input-otp": {
+      name: "input-otp",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-vega/ui/input-otp.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-vega/ui/input-otp")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "input-otp"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/input-otp","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/input-otp-example.tsx","api":"https://input-otp.rodz.dev"}},
+    },
+    "item": {
+      name: "item",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["separator"],
+      files: [{
+        path: "styles/radix-vega/ui/item.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-vega/ui/item")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "item"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/item","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/item-example.tsx"}},
+    },
+    "label": {
+      name: "label",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-vega/ui/label.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-vega/ui/label")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "label"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/label","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/label-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/label.md"}},
+    },
+    "menubar": {
+      name: "menubar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-vega/ui/menubar.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-vega/ui/menubar")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "menubar"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/menubar","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/menubar-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/menubar.md"}},
+    },
+    "navigation-menu": {
+      name: "navigation-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-vega/ui/navigation-menu.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-vega/ui/navigation-menu")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "navigation-menu"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/navigation-menu","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/navigation-menu-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/navigation-menu.md"}},
+    },
+    "pagination": {
+      name: "pagination",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "styles/radix-vega/ui/pagination.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-vega/ui/pagination")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "pagination"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/pagination","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/pagination-example.tsx"}},
+    },
+    "popover": {
+      name: "popover",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-vega/ui/popover.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-vega/ui/popover")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "popover"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/popover","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/popover-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/popover.md"}},
+    },
+    "progress": {
+      name: "progress",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-vega/ui/progress.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-vega/ui/progress")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "progress"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/progress","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/progress-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/progress.md"}},
+    },
+    "radio-group": {
+      name: "radio-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-vega/ui/radio-group.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-vega/ui/radio-group")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "radio-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/radio-group","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/radio-group-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/radio-group.md"}},
+    },
+    "resizable": {
+      name: "resizable",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-vega/ui/resizable.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-vega/ui/resizable")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "resizable"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/resizable","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/resizable-example.tsx","api":"https://github.com/bvaughn/react-resizable-panels"}},
+    },
+    "scroll-area": {
+      name: "scroll-area",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-vega/ui/scroll-area.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-vega/ui/scroll-area")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "scroll-area"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/scroll-area","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/scroll-area-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/scroll-area.md"}},
+    },
+    "select": {
+      name: "select",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-vega/ui/select.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-vega/ui/select")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "select"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/select","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/select-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/select.md"}},
+    },
+    "separator": {
+      name: "separator",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-vega/ui/separator.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-vega/ui/separator")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "separator"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/separator","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/separator-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/separator.md"}},
+    },
+    "sheet": {
+      name: "sheet",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "styles/radix-vega/ui/sheet.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-vega/ui/sheet")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "sheet"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/sheet","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/sheet-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/dialog.md"}},
+    },
+    "sidebar": {
+      name: "sidebar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","separator","sheet","tooltip","input","use-mobile","skeleton"],
+      files: [{
+        path: "styles/radix-vega/ui/sidebar.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-vega/ui/sidebar")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "sidebar"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/sidebar","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/sidebar-example.tsx"}},
+    },
+    "skeleton": {
+      name: "skeleton",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-vega/ui/skeleton.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-vega/ui/skeleton")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "skeleton"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/skeleton","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/skeleton-example.tsx"}},
+    },
+    "slider": {
+      name: "slider",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-vega/ui/slider.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-vega/ui/slider")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "slider"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/slider","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/slider-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/slider.md"}},
+    },
+    "sonner": {
+      name: "sonner",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-vega/ui/sonner.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-vega/ui/sonner")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "sonner"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/sonner","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/sonner-example.tsx","api":"https://sonner.emilkowal.ski"}},
+    },
+    "spinner": {
+      name: "spinner",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-vega/ui/spinner.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-vega/ui/spinner")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "spinner"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/spinner","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/spinner-example.tsx"}},
+    },
+    "switch": {
+      name: "switch",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-vega/ui/switch.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-vega/ui/switch")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "switch"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/switch","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/switch-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/switch.md"}},
+    },
+    "table": {
+      name: "table",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-vega/ui/table.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-vega/ui/table")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "table"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/table","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/table-example.tsx"}},
+    },
+    "tabs": {
+      name: "tabs",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-vega/ui/tabs.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-vega/ui/tabs")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "tabs"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/tabs","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/tabs-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/tabs.md"}},
+    },
+    "textarea": {
+      name: "textarea",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-vega/ui/textarea.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-vega/ui/textarea")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "textarea"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/textarea","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/textarea-example.tsx"}},
+    },
+    "toggle": {
+      name: "toggle",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-vega/ui/toggle.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-vega/ui/toggle")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "toggle"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/toggle","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/toggle-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/toggle.md"}},
+    },
+    "toggle-group": {
+      name: "toggle-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["toggle"],
+      files: [{
+        path: "styles/radix-vega/ui/toggle-group.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-vega/ui/toggle-group")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "toggle-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/toggle-group","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/toggle-group-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/toggle-group.md"}},
+    },
+    "tooltip": {
+      name: "tooltip",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-vega/ui/tooltip.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-vega/ui/tooltip")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "tooltip"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/tooltip","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/tooltip-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/tooltip.md"}},
+    },
+    "kbd": {
+      name: "kbd",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-vega/ui/kbd.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-vega/ui/kbd")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "kbd"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/kbd","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/kbd-example.tsx"}},
+    },
+    "native-select": {
+      name: "native-select",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-vega/ui/native-select.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-vega/ui/native-select")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "native-select"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/native-select","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/native-select-example.tsx"}},
+    },
+    "direction": {
+      name: "direction",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-vega/ui/direction.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-vega/ui/direction")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "direction"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/direction","api":"https://www.radix-ui.com/primitives/docs/utilities/direction-provider.md"}},
+    },
+  },
+  "radix-maia": {
+    "accordion": {
+      name: "accordion",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-maia/ui/accordion.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-maia/ui/accordion")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "accordion"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/accordion","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/accordion-example.tsx","api":"https://www.radix-ui.com/primitives/docs/components/accordion.md"}},
+    },
+    "alert": {
+      name: "alert",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-maia/ui/alert.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-maia/ui/alert")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "alert"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/alert","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/alert-example.tsx"}},
+    },
+    "alert-dialog": {
+      name: "alert-dialog",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "styles/radix-maia/ui/alert-dialog.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-maia/ui/alert-dialog")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "alert-dialog"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/alert-dialog","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/alert-dialog-example.tsx","api":"https://www.radix-ui.com/primitives/docs/components/alert-dialog.md"}},
+    },
+    "aspect-ratio": {
+      name: "aspect-ratio",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-maia/ui/aspect-ratio.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-maia/ui/aspect-ratio")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "aspect-ratio"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/aspect-ratio","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/aspect-ratio-example.tsx","api":"https://www.radix-ui.com/primitives/docs/components/aspect-ratio.md"}},
+    },
+    "avatar": {
+      name: "avatar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-maia/ui/avatar.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-maia/ui/avatar")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "avatar"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/avatar","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/avatar-example.tsx","api":"https://www.radix-ui.com/primitives/docs/components/avatar.md"}},
+    },
+    "badge": {
+      name: "badge",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-maia/ui/badge.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-maia/ui/badge")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "badge"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/badge","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/badge-example.tsx"}},
+    },
+    "breadcrumb": {
+      name: "breadcrumb",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-maia/ui/breadcrumb.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-maia/ui/breadcrumb")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "breadcrumb"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/breadcrumb","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/breadcrumb-example.tsx"}},
+    },
+    "button": {
+      name: "button",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-maia/ui/button.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-maia/ui/button")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "button"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/button","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/button-example.tsx"}},
+    },
+    "button-group": {
+      name: "button-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["separator"],
+      files: [{
+        path: "styles/radix-maia/ui/button-group.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-maia/ui/button-group")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "button-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/button-group","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/button-group-example.tsx"}},
+    },
+    "calendar": {
+      name: "calendar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "styles/radix-maia/ui/calendar.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-maia/ui/calendar")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "calendar"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/calendar","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/calendar-example.tsx","api":"https://react-day-picker.js.org"}},
+    },
+    "card": {
+      name: "card",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-maia/ui/card.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-maia/ui/card")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "card"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/card","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/card-example.tsx"}},
+    },
+    "carousel": {
+      name: "carousel",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "styles/radix-maia/ui/carousel.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-maia/ui/carousel")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "carousel"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/carousel","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/carousel-example.tsx","api":"https://www.embla-carousel.com/get-started/react"}},
+    },
+    "chart": {
+      name: "chart",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-maia/ui/chart.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-maia/ui/chart")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/chart","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/chart-example.tsx"}},
+    },
+    "checkbox": {
+      name: "checkbox",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-maia/ui/checkbox.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-maia/ui/checkbox")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "checkbox"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/checkbox","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/checkbox-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/checkbox.md"}},
+    },
+    "collapsible": {
+      name: "collapsible",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-maia/ui/collapsible.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-maia/ui/collapsible")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "collapsible"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/collapsible","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/collapsible-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/collapsible.md"}},
+    },
+    "combobox": {
+      name: "combobox",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","input-group"],
+      files: [{
+        path: "styles/radix-maia/ui/combobox.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-maia/ui/combobox")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "combobox"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/combobox","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/combobox-example.tsx","api":"https://base-ui.com/react/components/combobox"}},
+    },
+    "command": {
+      name: "command",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["dialog","input-group"],
+      files: [{
+        path: "styles/radix-maia/ui/command.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-maia/ui/command")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "command"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/command","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/command-example.tsx","api":"https://github.com/dip/cmdk"}},
+    },
+    "context-menu": {
+      name: "context-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-maia/ui/context-menu.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-maia/ui/context-menu")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "context-menu"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/context-menu","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/context-menu-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/context-menu.md"}},
+    },
+    "dialog": {
+      name: "dialog",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "styles/radix-maia/ui/dialog.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-maia/ui/dialog")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "dialog"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/dialog","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/dialog-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/dialog.md"}},
+    },
+    "drawer": {
+      name: "drawer",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-maia/ui/drawer.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-maia/ui/drawer")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "drawer"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/drawer","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/drawer-example.tsx","api":"https://vaul.emilkowal.ski/getting-started"}},
+    },
+    "dropdown-menu": {
+      name: "dropdown-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-maia/ui/dropdown-menu.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-maia/ui/dropdown-menu")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "dropdown-menu"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/dropdown-menu","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/dropdown-menu-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/dropdown-menu.md"}},
+    },
+    "empty": {
+      name: "empty",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-maia/ui/empty.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-maia/ui/empty")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "empty"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/empty","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/empty-example.tsx"}},
+    },
+    "field": {
+      name: "field",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["label","separator"],
+      files: [{
+        path: "styles/radix-maia/ui/field.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-maia/ui/field")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "field"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/field","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/field-example.tsx"}},
+    },
+    "hover-card": {
+      name: "hover-card",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-maia/ui/hover-card.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-maia/ui/hover-card")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "hover-card"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/hover-card","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/hover-card-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/hover-card.md"}},
+    },
+    "input": {
+      name: "input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-maia/ui/input.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-maia/ui/input")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "input"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/input","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/input-example.tsx"}},
+    },
+    "input-group": {
+      name: "input-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","input","textarea"],
+      files: [{
+        path: "styles/radix-maia/ui/input-group.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-maia/ui/input-group")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "input-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/input-group","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/input-group-example.tsx"}},
+    },
+    "input-otp": {
+      name: "input-otp",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-maia/ui/input-otp.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-maia/ui/input-otp")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "input-otp"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/input-otp","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/input-otp-example.tsx","api":"https://input-otp.rodz.dev"}},
+    },
+    "item": {
+      name: "item",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["separator"],
+      files: [{
+        path: "styles/radix-maia/ui/item.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-maia/ui/item")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "item"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/item","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/item-example.tsx"}},
+    },
+    "label": {
+      name: "label",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-maia/ui/label.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-maia/ui/label")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "label"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/label","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/label-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/label.md"}},
+    },
+    "menubar": {
+      name: "menubar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-maia/ui/menubar.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-maia/ui/menubar")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "menubar"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/menubar","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/menubar-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/menubar.md"}},
+    },
+    "navigation-menu": {
+      name: "navigation-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-maia/ui/navigation-menu.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-maia/ui/navigation-menu")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "navigation-menu"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/navigation-menu","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/navigation-menu-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/navigation-menu.md"}},
+    },
+    "pagination": {
+      name: "pagination",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "styles/radix-maia/ui/pagination.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-maia/ui/pagination")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "pagination"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/pagination","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/pagination-example.tsx"}},
+    },
+    "popover": {
+      name: "popover",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-maia/ui/popover.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-maia/ui/popover")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "popover"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/popover","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/popover-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/popover.md"}},
+    },
+    "progress": {
+      name: "progress",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-maia/ui/progress.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-maia/ui/progress")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "progress"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/progress","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/progress-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/progress.md"}},
+    },
+    "radio-group": {
+      name: "radio-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-maia/ui/radio-group.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-maia/ui/radio-group")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "radio-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/radio-group","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/radio-group-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/radio-group.md"}},
+    },
+    "resizable": {
+      name: "resizable",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-maia/ui/resizable.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-maia/ui/resizable")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "resizable"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/resizable","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/resizable-example.tsx","api":"https://github.com/bvaughn/react-resizable-panels"}},
+    },
+    "scroll-area": {
+      name: "scroll-area",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-maia/ui/scroll-area.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-maia/ui/scroll-area")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "scroll-area"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/scroll-area","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/scroll-area-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/scroll-area.md"}},
+    },
+    "select": {
+      name: "select",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-maia/ui/select.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-maia/ui/select")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "select"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/select","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/select-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/select.md"}},
+    },
+    "separator": {
+      name: "separator",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-maia/ui/separator.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-maia/ui/separator")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "separator"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/separator","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/separator-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/separator.md"}},
+    },
+    "sheet": {
+      name: "sheet",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "styles/radix-maia/ui/sheet.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-maia/ui/sheet")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "sheet"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/sheet","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/sheet-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/dialog.md"}},
+    },
+    "sidebar": {
+      name: "sidebar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","separator","sheet","tooltip","input","use-mobile","skeleton"],
+      files: [{
+        path: "styles/radix-maia/ui/sidebar.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-maia/ui/sidebar")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "sidebar"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/sidebar","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/sidebar-example.tsx"}},
+    },
+    "skeleton": {
+      name: "skeleton",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-maia/ui/skeleton.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-maia/ui/skeleton")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "skeleton"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/skeleton","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/skeleton-example.tsx"}},
+    },
+    "slider": {
+      name: "slider",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-maia/ui/slider.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-maia/ui/slider")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "slider"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/slider","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/slider-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/slider.md"}},
+    },
+    "sonner": {
+      name: "sonner",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-maia/ui/sonner.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-maia/ui/sonner")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "sonner"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/sonner","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/sonner-example.tsx","api":"https://sonner.emilkowal.ski"}},
+    },
+    "spinner": {
+      name: "spinner",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-maia/ui/spinner.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-maia/ui/spinner")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "spinner"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/spinner","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/spinner-example.tsx"}},
+    },
+    "switch": {
+      name: "switch",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-maia/ui/switch.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-maia/ui/switch")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "switch"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/switch","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/switch-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/switch.md"}},
+    },
+    "table": {
+      name: "table",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-maia/ui/table.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-maia/ui/table")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "table"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/table","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/table-example.tsx"}},
+    },
+    "tabs": {
+      name: "tabs",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-maia/ui/tabs.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-maia/ui/tabs")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "tabs"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/tabs","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/tabs-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/tabs.md"}},
+    },
+    "textarea": {
+      name: "textarea",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-maia/ui/textarea.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-maia/ui/textarea")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "textarea"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/textarea","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/textarea-example.tsx"}},
+    },
+    "toggle": {
+      name: "toggle",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-maia/ui/toggle.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-maia/ui/toggle")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "toggle"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/toggle","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/toggle-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/toggle.md"}},
+    },
+    "toggle-group": {
+      name: "toggle-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["toggle"],
+      files: [{
+        path: "styles/radix-maia/ui/toggle-group.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-maia/ui/toggle-group")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "toggle-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/toggle-group","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/toggle-group-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/toggle-group.md"}},
+    },
+    "tooltip": {
+      name: "tooltip",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-maia/ui/tooltip.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-maia/ui/tooltip")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "tooltip"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/tooltip","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/tooltip-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/tooltip.md"}},
+    },
+    "kbd": {
+      name: "kbd",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-maia/ui/kbd.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-maia/ui/kbd")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "kbd"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/kbd","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/kbd-example.tsx"}},
+    },
+    "native-select": {
+      name: "native-select",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-maia/ui/native-select.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-maia/ui/native-select")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "native-select"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/native-select","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/native-select-example.tsx"}},
+    },
+    "direction": {
+      name: "direction",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-maia/ui/direction.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-maia/ui/direction")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "direction"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/direction","api":"https://www.radix-ui.com/primitives/docs/utilities/direction-provider.md"}},
+    },
+  },
+  "radix-lyra": {
+    "accordion": {
+      name: "accordion",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-lyra/ui/accordion.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-lyra/ui/accordion")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "accordion"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/accordion","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/accordion-example.tsx","api":"https://www.radix-ui.com/primitives/docs/components/accordion.md"}},
+    },
+    "alert": {
+      name: "alert",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-lyra/ui/alert.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-lyra/ui/alert")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "alert"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/alert","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/alert-example.tsx"}},
+    },
+    "alert-dialog": {
+      name: "alert-dialog",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "styles/radix-lyra/ui/alert-dialog.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-lyra/ui/alert-dialog")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "alert-dialog"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/alert-dialog","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/alert-dialog-example.tsx","api":"https://www.radix-ui.com/primitives/docs/components/alert-dialog.md"}},
+    },
+    "aspect-ratio": {
+      name: "aspect-ratio",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-lyra/ui/aspect-ratio.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-lyra/ui/aspect-ratio")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "aspect-ratio"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/aspect-ratio","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/aspect-ratio-example.tsx","api":"https://www.radix-ui.com/primitives/docs/components/aspect-ratio.md"}},
+    },
+    "avatar": {
+      name: "avatar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-lyra/ui/avatar.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-lyra/ui/avatar")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "avatar"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/avatar","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/avatar-example.tsx","api":"https://www.radix-ui.com/primitives/docs/components/avatar.md"}},
+    },
+    "badge": {
+      name: "badge",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-lyra/ui/badge.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-lyra/ui/badge")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "badge"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/badge","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/badge-example.tsx"}},
+    },
+    "breadcrumb": {
+      name: "breadcrumb",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-lyra/ui/breadcrumb.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-lyra/ui/breadcrumb")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "breadcrumb"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/breadcrumb","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/breadcrumb-example.tsx"}},
+    },
+    "button": {
+      name: "button",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-lyra/ui/button.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-lyra/ui/button")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "button"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/button","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/button-example.tsx"}},
+    },
+    "button-group": {
+      name: "button-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["separator"],
+      files: [{
+        path: "styles/radix-lyra/ui/button-group.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-lyra/ui/button-group")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "button-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/button-group","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/button-group-example.tsx"}},
+    },
+    "calendar": {
+      name: "calendar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "styles/radix-lyra/ui/calendar.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-lyra/ui/calendar")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "calendar"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/calendar","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/calendar-example.tsx","api":"https://react-day-picker.js.org"}},
+    },
+    "card": {
+      name: "card",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-lyra/ui/card.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-lyra/ui/card")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "card"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/card","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/card-example.tsx"}},
+    },
+    "carousel": {
+      name: "carousel",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "styles/radix-lyra/ui/carousel.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-lyra/ui/carousel")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "carousel"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/carousel","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/carousel-example.tsx","api":"https://www.embla-carousel.com/get-started/react"}},
+    },
+    "chart": {
+      name: "chart",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-lyra/ui/chart.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-lyra/ui/chart")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/chart","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/chart-example.tsx"}},
+    },
+    "checkbox": {
+      name: "checkbox",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-lyra/ui/checkbox.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-lyra/ui/checkbox")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "checkbox"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/checkbox","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/checkbox-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/checkbox.md"}},
+    },
+    "collapsible": {
+      name: "collapsible",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-lyra/ui/collapsible.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-lyra/ui/collapsible")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "collapsible"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/collapsible","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/collapsible-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/collapsible.md"}},
+    },
+    "combobox": {
+      name: "combobox",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","input-group"],
+      files: [{
+        path: "styles/radix-lyra/ui/combobox.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-lyra/ui/combobox")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "combobox"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/combobox","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/combobox-example.tsx","api":"https://base-ui.com/react/components/combobox"}},
+    },
+    "command": {
+      name: "command",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["dialog","input-group"],
+      files: [{
+        path: "styles/radix-lyra/ui/command.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-lyra/ui/command")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "command"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/command","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/command-example.tsx","api":"https://github.com/dip/cmdk"}},
+    },
+    "context-menu": {
+      name: "context-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-lyra/ui/context-menu.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-lyra/ui/context-menu")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "context-menu"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/context-menu","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/context-menu-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/context-menu.md"}},
+    },
+    "dialog": {
+      name: "dialog",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "styles/radix-lyra/ui/dialog.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-lyra/ui/dialog")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "dialog"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/dialog","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/dialog-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/dialog.md"}},
+    },
+    "drawer": {
+      name: "drawer",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-lyra/ui/drawer.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-lyra/ui/drawer")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "drawer"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/drawer","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/drawer-example.tsx","api":"https://vaul.emilkowal.ski/getting-started"}},
+    },
+    "dropdown-menu": {
+      name: "dropdown-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-lyra/ui/dropdown-menu.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-lyra/ui/dropdown-menu")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "dropdown-menu"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/dropdown-menu","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/dropdown-menu-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/dropdown-menu.md"}},
+    },
+    "empty": {
+      name: "empty",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-lyra/ui/empty.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-lyra/ui/empty")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "empty"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/empty","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/empty-example.tsx"}},
+    },
+    "field": {
+      name: "field",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["label","separator"],
+      files: [{
+        path: "styles/radix-lyra/ui/field.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-lyra/ui/field")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "field"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/field","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/field-example.tsx"}},
+    },
+    "hover-card": {
+      name: "hover-card",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-lyra/ui/hover-card.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-lyra/ui/hover-card")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "hover-card"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/hover-card","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/hover-card-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/hover-card.md"}},
+    },
+    "input": {
+      name: "input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-lyra/ui/input.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-lyra/ui/input")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "input"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/input","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/input-example.tsx"}},
+    },
+    "input-group": {
+      name: "input-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","input","textarea"],
+      files: [{
+        path: "styles/radix-lyra/ui/input-group.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-lyra/ui/input-group")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "input-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/input-group","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/input-group-example.tsx"}},
+    },
+    "input-otp": {
+      name: "input-otp",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-lyra/ui/input-otp.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-lyra/ui/input-otp")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "input-otp"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/input-otp","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/input-otp-example.tsx","api":"https://input-otp.rodz.dev"}},
+    },
+    "item": {
+      name: "item",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["separator"],
+      files: [{
+        path: "styles/radix-lyra/ui/item.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-lyra/ui/item")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "item"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/item","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/item-example.tsx"}},
+    },
+    "label": {
+      name: "label",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-lyra/ui/label.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-lyra/ui/label")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "label"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/label","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/label-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/label.md"}},
+    },
+    "menubar": {
+      name: "menubar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-lyra/ui/menubar.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-lyra/ui/menubar")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "menubar"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/menubar","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/menubar-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/menubar.md"}},
+    },
+    "navigation-menu": {
+      name: "navigation-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-lyra/ui/navigation-menu.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-lyra/ui/navigation-menu")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "navigation-menu"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/navigation-menu","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/navigation-menu-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/navigation-menu.md"}},
+    },
+    "pagination": {
+      name: "pagination",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "styles/radix-lyra/ui/pagination.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-lyra/ui/pagination")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "pagination"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/pagination","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/pagination-example.tsx"}},
+    },
+    "popover": {
+      name: "popover",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-lyra/ui/popover.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-lyra/ui/popover")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "popover"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/popover","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/popover-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/popover.md"}},
+    },
+    "progress": {
+      name: "progress",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-lyra/ui/progress.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-lyra/ui/progress")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "progress"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/progress","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/progress-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/progress.md"}},
+    },
+    "radio-group": {
+      name: "radio-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-lyra/ui/radio-group.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-lyra/ui/radio-group")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "radio-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/radio-group","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/radio-group-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/radio-group.md"}},
+    },
+    "resizable": {
+      name: "resizable",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-lyra/ui/resizable.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-lyra/ui/resizable")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "resizable"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/resizable","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/resizable-example.tsx","api":"https://github.com/bvaughn/react-resizable-panels"}},
+    },
+    "scroll-area": {
+      name: "scroll-area",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-lyra/ui/scroll-area.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-lyra/ui/scroll-area")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "scroll-area"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/scroll-area","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/scroll-area-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/scroll-area.md"}},
+    },
+    "select": {
+      name: "select",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-lyra/ui/select.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-lyra/ui/select")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "select"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/select","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/select-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/select.md"}},
+    },
+    "separator": {
+      name: "separator",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-lyra/ui/separator.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-lyra/ui/separator")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "separator"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/separator","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/separator-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/separator.md"}},
+    },
+    "sheet": {
+      name: "sheet",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "styles/radix-lyra/ui/sheet.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-lyra/ui/sheet")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "sheet"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/sheet","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/sheet-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/dialog.md"}},
+    },
+    "sidebar": {
+      name: "sidebar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","separator","sheet","tooltip","input","use-mobile","skeleton"],
+      files: [{
+        path: "styles/radix-lyra/ui/sidebar.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-lyra/ui/sidebar")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "sidebar"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/sidebar","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/sidebar-example.tsx"}},
+    },
+    "skeleton": {
+      name: "skeleton",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-lyra/ui/skeleton.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-lyra/ui/skeleton")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "skeleton"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/skeleton","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/skeleton-example.tsx"}},
+    },
+    "slider": {
+      name: "slider",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-lyra/ui/slider.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-lyra/ui/slider")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "slider"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/slider","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/slider-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/slider.md"}},
+    },
+    "sonner": {
+      name: "sonner",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-lyra/ui/sonner.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-lyra/ui/sonner")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "sonner"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/sonner","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/sonner-example.tsx","api":"https://sonner.emilkowal.ski"}},
+    },
+    "spinner": {
+      name: "spinner",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-lyra/ui/spinner.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-lyra/ui/spinner")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "spinner"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/spinner","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/spinner-example.tsx"}},
+    },
+    "switch": {
+      name: "switch",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-lyra/ui/switch.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-lyra/ui/switch")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "switch"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/switch","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/switch-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/switch.md"}},
+    },
+    "table": {
+      name: "table",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-lyra/ui/table.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-lyra/ui/table")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "table"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/table","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/table-example.tsx"}},
+    },
+    "tabs": {
+      name: "tabs",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-lyra/ui/tabs.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-lyra/ui/tabs")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "tabs"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/tabs","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/tabs-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/tabs.md"}},
+    },
+    "textarea": {
+      name: "textarea",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-lyra/ui/textarea.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-lyra/ui/textarea")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "textarea"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/textarea","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/textarea-example.tsx"}},
+    },
+    "toggle": {
+      name: "toggle",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-lyra/ui/toggle.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-lyra/ui/toggle")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "toggle"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/toggle","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/toggle-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/toggle.md"}},
+    },
+    "toggle-group": {
+      name: "toggle-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["toggle"],
+      files: [{
+        path: "styles/radix-lyra/ui/toggle-group.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-lyra/ui/toggle-group")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "toggle-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/toggle-group","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/toggle-group-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/toggle-group.md"}},
+    },
+    "tooltip": {
+      name: "tooltip",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-lyra/ui/tooltip.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-lyra/ui/tooltip")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "tooltip"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/tooltip","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/tooltip-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/tooltip.md"}},
+    },
+    "kbd": {
+      name: "kbd",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-lyra/ui/kbd.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-lyra/ui/kbd")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "kbd"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/kbd","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/kbd-example.tsx"}},
+    },
+    "native-select": {
+      name: "native-select",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-lyra/ui/native-select.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-lyra/ui/native-select")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "native-select"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/native-select","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/native-select-example.tsx"}},
+    },
+    "direction": {
+      name: "direction",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-lyra/ui/direction.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-lyra/ui/direction")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "direction"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/direction","api":"https://www.radix-ui.com/primitives/docs/utilities/direction-provider.md"}},
+    },
+  },
+  "radix-mira": {
+    "accordion": {
+      name: "accordion",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-mira/ui/accordion.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-mira/ui/accordion")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "accordion"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/accordion","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/accordion-example.tsx","api":"https://www.radix-ui.com/primitives/docs/components/accordion.md"}},
+    },
+    "alert": {
+      name: "alert",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-mira/ui/alert.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-mira/ui/alert")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "alert"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/alert","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/alert-example.tsx"}},
+    },
+    "alert-dialog": {
+      name: "alert-dialog",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "styles/radix-mira/ui/alert-dialog.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-mira/ui/alert-dialog")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "alert-dialog"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/alert-dialog","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/alert-dialog-example.tsx","api":"https://www.radix-ui.com/primitives/docs/components/alert-dialog.md"}},
+    },
+    "aspect-ratio": {
+      name: "aspect-ratio",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-mira/ui/aspect-ratio.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-mira/ui/aspect-ratio")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "aspect-ratio"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/aspect-ratio","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/aspect-ratio-example.tsx","api":"https://www.radix-ui.com/primitives/docs/components/aspect-ratio.md"}},
+    },
+    "avatar": {
+      name: "avatar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-mira/ui/avatar.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-mira/ui/avatar")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "avatar"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/avatar","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/avatar-example.tsx","api":"https://www.radix-ui.com/primitives/docs/components/avatar.md"}},
+    },
+    "badge": {
+      name: "badge",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-mira/ui/badge.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-mira/ui/badge")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "badge"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/badge","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/badge-example.tsx"}},
+    },
+    "breadcrumb": {
+      name: "breadcrumb",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-mira/ui/breadcrumb.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-mira/ui/breadcrumb")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "breadcrumb"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/breadcrumb","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/breadcrumb-example.tsx"}},
+    },
+    "button": {
+      name: "button",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-mira/ui/button.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-mira/ui/button")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "button"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/button","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/button-example.tsx"}},
+    },
+    "button-group": {
+      name: "button-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["separator"],
+      files: [{
+        path: "styles/radix-mira/ui/button-group.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-mira/ui/button-group")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "button-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/button-group","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/button-group-example.tsx"}},
+    },
+    "calendar": {
+      name: "calendar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "styles/radix-mira/ui/calendar.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-mira/ui/calendar")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "calendar"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/calendar","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/calendar-example.tsx","api":"https://react-day-picker.js.org"}},
+    },
+    "card": {
+      name: "card",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-mira/ui/card.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-mira/ui/card")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "card"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/card","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/card-example.tsx"}},
+    },
+    "carousel": {
+      name: "carousel",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "styles/radix-mira/ui/carousel.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-mira/ui/carousel")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "carousel"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/carousel","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/carousel-example.tsx","api":"https://www.embla-carousel.com/get-started/react"}},
+    },
+    "chart": {
+      name: "chart",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-mira/ui/chart.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-mira/ui/chart")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/chart","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/chart-example.tsx"}},
+    },
+    "checkbox": {
+      name: "checkbox",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-mira/ui/checkbox.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-mira/ui/checkbox")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "checkbox"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/checkbox","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/checkbox-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/checkbox.md"}},
+    },
+    "collapsible": {
+      name: "collapsible",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-mira/ui/collapsible.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-mira/ui/collapsible")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "collapsible"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/collapsible","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/collapsible-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/collapsible.md"}},
+    },
+    "combobox": {
+      name: "combobox",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","input-group"],
+      files: [{
+        path: "styles/radix-mira/ui/combobox.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-mira/ui/combobox")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "combobox"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/combobox","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/combobox-example.tsx","api":"https://base-ui.com/react/components/combobox"}},
+    },
+    "command": {
+      name: "command",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["dialog","input-group"],
+      files: [{
+        path: "styles/radix-mira/ui/command.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-mira/ui/command")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "command"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/command","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/command-example.tsx","api":"https://github.com/dip/cmdk"}},
+    },
+    "context-menu": {
+      name: "context-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-mira/ui/context-menu.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-mira/ui/context-menu")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "context-menu"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/context-menu","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/context-menu-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/context-menu.md"}},
+    },
+    "dialog": {
+      name: "dialog",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "styles/radix-mira/ui/dialog.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-mira/ui/dialog")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "dialog"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/dialog","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/dialog-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/dialog.md"}},
+    },
+    "drawer": {
+      name: "drawer",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-mira/ui/drawer.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-mira/ui/drawer")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "drawer"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/drawer","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/drawer-example.tsx","api":"https://vaul.emilkowal.ski/getting-started"}},
+    },
+    "dropdown-menu": {
+      name: "dropdown-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-mira/ui/dropdown-menu.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-mira/ui/dropdown-menu")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "dropdown-menu"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/dropdown-menu","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/dropdown-menu-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/dropdown-menu.md"}},
+    },
+    "empty": {
+      name: "empty",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-mira/ui/empty.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-mira/ui/empty")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "empty"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/empty","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/empty-example.tsx"}},
+    },
+    "field": {
+      name: "field",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["label","separator"],
+      files: [{
+        path: "styles/radix-mira/ui/field.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-mira/ui/field")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "field"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/field","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/field-example.tsx"}},
+    },
+    "hover-card": {
+      name: "hover-card",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-mira/ui/hover-card.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-mira/ui/hover-card")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "hover-card"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/hover-card","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/hover-card-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/hover-card.md"}},
+    },
+    "input": {
+      name: "input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-mira/ui/input.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-mira/ui/input")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "input"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/input","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/input-example.tsx"}},
+    },
+    "input-group": {
+      name: "input-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","input","textarea"],
+      files: [{
+        path: "styles/radix-mira/ui/input-group.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-mira/ui/input-group")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "input-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/input-group","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/input-group-example.tsx"}},
+    },
+    "input-otp": {
+      name: "input-otp",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-mira/ui/input-otp.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-mira/ui/input-otp")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "input-otp"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/input-otp","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/input-otp-example.tsx","api":"https://input-otp.rodz.dev"}},
+    },
+    "item": {
+      name: "item",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["separator"],
+      files: [{
+        path: "styles/radix-mira/ui/item.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-mira/ui/item")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "item"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/item","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/item-example.tsx"}},
+    },
+    "label": {
+      name: "label",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-mira/ui/label.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-mira/ui/label")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "label"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/label","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/label-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/label.md"}},
+    },
+    "menubar": {
+      name: "menubar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-mira/ui/menubar.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-mira/ui/menubar")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "menubar"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/menubar","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/menubar-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/menubar.md"}},
+    },
+    "navigation-menu": {
+      name: "navigation-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-mira/ui/navigation-menu.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-mira/ui/navigation-menu")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "navigation-menu"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/navigation-menu","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/navigation-menu-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/navigation-menu.md"}},
+    },
+    "pagination": {
+      name: "pagination",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "styles/radix-mira/ui/pagination.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-mira/ui/pagination")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "pagination"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/pagination","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/pagination-example.tsx"}},
+    },
+    "popover": {
+      name: "popover",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-mira/ui/popover.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-mira/ui/popover")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "popover"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/popover","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/popover-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/popover.md"}},
+    },
+    "progress": {
+      name: "progress",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-mira/ui/progress.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-mira/ui/progress")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "progress"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/progress","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/progress-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/progress.md"}},
+    },
+    "radio-group": {
+      name: "radio-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-mira/ui/radio-group.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-mira/ui/radio-group")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "radio-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/radio-group","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/radio-group-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/radio-group.md"}},
+    },
+    "resizable": {
+      name: "resizable",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-mira/ui/resizable.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-mira/ui/resizable")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "resizable"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/resizable","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/resizable-example.tsx","api":"https://github.com/bvaughn/react-resizable-panels"}},
+    },
+    "scroll-area": {
+      name: "scroll-area",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-mira/ui/scroll-area.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-mira/ui/scroll-area")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "scroll-area"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/scroll-area","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/scroll-area-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/scroll-area.md"}},
+    },
+    "select": {
+      name: "select",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-mira/ui/select.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-mira/ui/select")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "select"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/select","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/select-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/select.md"}},
+    },
+    "separator": {
+      name: "separator",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-mira/ui/separator.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-mira/ui/separator")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "separator"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/separator","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/separator-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/separator.md"}},
+    },
+    "sheet": {
+      name: "sheet",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "styles/radix-mira/ui/sheet.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-mira/ui/sheet")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "sheet"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/sheet","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/sheet-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/dialog.md"}},
+    },
+    "sidebar": {
+      name: "sidebar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","separator","sheet","tooltip","input","use-mobile","skeleton"],
+      files: [{
+        path: "styles/radix-mira/ui/sidebar.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-mira/ui/sidebar")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "sidebar"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/sidebar","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/sidebar-example.tsx"}},
+    },
+    "skeleton": {
+      name: "skeleton",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-mira/ui/skeleton.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-mira/ui/skeleton")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "skeleton"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/skeleton","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/skeleton-example.tsx"}},
+    },
+    "slider": {
+      name: "slider",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-mira/ui/slider.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-mira/ui/slider")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "slider"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/slider","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/slider-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/slider.md"}},
+    },
+    "sonner": {
+      name: "sonner",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-mira/ui/sonner.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-mira/ui/sonner")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "sonner"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/sonner","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/sonner-example.tsx","api":"https://sonner.emilkowal.ski"}},
+    },
+    "spinner": {
+      name: "spinner",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-mira/ui/spinner.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-mira/ui/spinner")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "spinner"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/spinner","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/spinner-example.tsx"}},
+    },
+    "switch": {
+      name: "switch",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-mira/ui/switch.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-mira/ui/switch")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "switch"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/switch","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/switch-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/switch.md"}},
+    },
+    "table": {
+      name: "table",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-mira/ui/table.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-mira/ui/table")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "table"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/table","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/table-example.tsx"}},
+    },
+    "tabs": {
+      name: "tabs",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-mira/ui/tabs.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-mira/ui/tabs")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "tabs"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/tabs","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/tabs-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/tabs.md"}},
+    },
+    "textarea": {
+      name: "textarea",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-mira/ui/textarea.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-mira/ui/textarea")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "textarea"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/textarea","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/textarea-example.tsx"}},
+    },
+    "toggle": {
+      name: "toggle",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-mira/ui/toggle.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-mira/ui/toggle")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "toggle"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/toggle","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/toggle-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/toggle.md"}},
+    },
+    "toggle-group": {
+      name: "toggle-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["toggle"],
+      files: [{
+        path: "styles/radix-mira/ui/toggle-group.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-mira/ui/toggle-group")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "toggle-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/toggle-group","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/toggle-group-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/toggle-group.md"}},
+    },
+    "tooltip": {
+      name: "tooltip",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-mira/ui/tooltip.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-mira/ui/tooltip")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "tooltip"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/tooltip","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/tooltip-example.tsx","api":"https://www.radix-ui.com/docs/primitives/components/tooltip.md"}},
+    },
+    "kbd": {
+      name: "kbd",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-mira/ui/kbd.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-mira/ui/kbd")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "kbd"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/kbd","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/kbd-example.tsx"}},
+    },
+    "native-select": {
+      name: "native-select",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-mira/ui/native-select.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-mira/ui/native-select")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "native-select"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/native-select","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/radix/examples/native-select-example.tsx"}},
+    },
+    "direction": {
+      name: "direction",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/radix-mira/ui/direction.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/radix-mira/ui/direction")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "direction"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/radix/direction","api":"https://www.radix-ui.com/primitives/docs/utilities/direction-provider.md"}},
+    },
+  },
+  "base-vega": {
+    "accordion": {
+      name: "accordion",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-vega/ui/accordion.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-vega/ui/accordion")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "accordion"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/accordion","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/accordion-example.tsx","api":"https://base-ui.com/react/components/accordion.md"}},
+    },
+    "alert": {
+      name: "alert",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-vega/ui/alert.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-vega/ui/alert")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "alert"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/alert","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/alert-example.tsx"}},
+    },
+    "alert-dialog": {
+      name: "alert-dialog",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "styles/base-vega/ui/alert-dialog.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-vega/ui/alert-dialog")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "alert-dialog"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/alert-dialog","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/alert-dialog-example.tsx","api":"https://base-ui.com/react/components/alert-dialog.md"}},
+    },
+    "aspect-ratio": {
+      name: "aspect-ratio",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-vega/ui/aspect-ratio.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-vega/ui/aspect-ratio")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "aspect-ratio"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/aspect-ratio","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/aspect-ratio-example.tsx"}},
+    },
+    "avatar": {
+      name: "avatar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-vega/ui/avatar.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-vega/ui/avatar")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "avatar"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/avatar","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/avatar-example.tsx","api":"https://base-ui.com/react/components/avatar.md"}},
+    },
+    "badge": {
+      name: "badge",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-vega/ui/badge.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-vega/ui/badge")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "badge"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/badge","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/badge-example.tsx"}},
+    },
+    "breadcrumb": {
+      name: "breadcrumb",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-vega/ui/breadcrumb.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-vega/ui/breadcrumb")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "breadcrumb"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/breadcrumb","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/breadcrumb-example.tsx"}},
+    },
+    "button": {
+      name: "button",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-vega/ui/button.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-vega/ui/button")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "button"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/button","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/button-example.tsx"}},
+    },
+    "button-group": {
+      name: "button-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["separator"],
+      files: [{
+        path: "styles/base-vega/ui/button-group.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-vega/ui/button-group")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "button-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/button-group","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/button-group-example.tsx"}},
+    },
+    "calendar": {
+      name: "calendar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "styles/base-vega/ui/calendar.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-vega/ui/calendar")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "calendar"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/calendar","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/calendar-example.tsx","api":"https://react-day-picker.js.org"}},
+    },
+    "card": {
+      name: "card",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-vega/ui/card.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-vega/ui/card")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "card"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/card","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/card-example.tsx"}},
+    },
+    "carousel": {
+      name: "carousel",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "styles/base-vega/ui/carousel.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-vega/ui/carousel")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "carousel"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/carousel","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/carousel-example.tsx","api":"https://www.embla-carousel.com/get-started/react"}},
+    },
+    "chart": {
+      name: "chart",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["card"],
+      files: [{
+        path: "styles/base-vega/ui/chart.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-vega/ui/chart")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/chart","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/chart-example.tsx"}},
+    },
+    "checkbox": {
+      name: "checkbox",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-vega/ui/checkbox.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-vega/ui/checkbox")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "checkbox"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/checkbox","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/checkbox-example.tsx","api":"https://base-ui.com/react/components/checkbox.md"}},
+    },
+    "collapsible": {
+      name: "collapsible",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-vega/ui/collapsible.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-vega/ui/collapsible")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "collapsible"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/collapsible","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/collapsible-example.tsx","api":"https://base-ui.com/react/components/collapsible.md"}},
+    },
+    "combobox": {
+      name: "combobox",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","input-group"],
+      files: [{
+        path: "styles/base-vega/ui/combobox.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-vega/ui/combobox")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "combobox"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/combobox","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/combobox-example.tsx","api":"https://base-ui.com/react/components/combobox.md"}},
+    },
+    "command": {
+      name: "command",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["dialog","input-group"],
+      files: [{
+        path: "styles/base-vega/ui/command.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-vega/ui/command")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "command"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/command","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/command-example.tsx","api":"https://github.com/dip/cmdk"}},
+    },
+    "context-menu": {
+      name: "context-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-vega/ui/context-menu.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-vega/ui/context-menu")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "context-menu"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/context-menu","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/context-menu-example.tsx","api":"https://base-ui.com/react/components/context-menu.md"}},
+    },
+    "dialog": {
+      name: "dialog",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "styles/base-vega/ui/dialog.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-vega/ui/dialog")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "dialog"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/dialog","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/dialog-example.tsx","api":"https://base-ui.com/react/components/dialog.md"}},
+    },
+    "drawer": {
+      name: "drawer",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-vega/ui/drawer.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-vega/ui/drawer")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "drawer"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/drawer","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/drawer-example.tsx","api":"https://vaul.emilkowal.ski/getting-started"}},
+    },
+    "dropdown-menu": {
+      name: "dropdown-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-vega/ui/dropdown-menu.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-vega/ui/dropdown-menu")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "dropdown-menu"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/dropdown-menu","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/dropdown-menu-example.tsx","api":"https://base-ui.com/react/components/menu.md"}},
+    },
+    "empty": {
+      name: "empty",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-vega/ui/empty.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-vega/ui/empty")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "empty"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/empty","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/empty-example.tsx"}},
+    },
+    "field": {
+      name: "field",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["label","separator"],
+      files: [{
+        path: "styles/base-vega/ui/field.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-vega/ui/field")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "field"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/field","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/field-example.tsx"}},
+    },
+    "hover-card": {
+      name: "hover-card",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-vega/ui/hover-card.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-vega/ui/hover-card")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "hover-card"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/hover-card","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/hover-card-example.tsx","api":"https://base-ui.com/react/components/hover-card.md"}},
+    },
+    "input": {
+      name: "input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-vega/ui/input.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-vega/ui/input")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "input"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/input","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/input-example.tsx"}},
+    },
+    "input-group": {
+      name: "input-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","input","textarea"],
+      files: [{
+        path: "styles/base-vega/ui/input-group.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-vega/ui/input-group")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "input-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/input-group","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/input-group-example.tsx"}},
+    },
+    "input-otp": {
+      name: "input-otp",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-vega/ui/input-otp.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-vega/ui/input-otp")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "input-otp"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/input-otp","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/input-otp-example.tsx","api":"https://input-otp.rodz.dev"}},
+    },
+    "item": {
+      name: "item",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["separator"],
+      files: [{
+        path: "styles/base-vega/ui/item.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-vega/ui/item")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "item"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/item","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/item-example.tsx"}},
+    },
+    "label": {
+      name: "label",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-vega/ui/label.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-vega/ui/label")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "label"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/label","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/label-example.tsx","api":"https://base-ui.com/react/components/label.md"}},
+    },
+    "menubar": {
+      name: "menubar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["dropdown-menu"],
+      files: [{
+        path: "styles/base-vega/ui/menubar.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-vega/ui/menubar")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "menubar"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/menubar","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/menubar-example.tsx","api":"https://base-ui.com/react/components/menubar.md"}},
+    },
+    "navigation-menu": {
+      name: "navigation-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-vega/ui/navigation-menu.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-vega/ui/navigation-menu")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "navigation-menu"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/navigation-menu","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/navigation-menu-example.tsx","api":"https://base-ui.com/react/components/navigation-menu.md"}},
+    },
+    "pagination": {
+      name: "pagination",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "styles/base-vega/ui/pagination.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-vega/ui/pagination")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "pagination"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/pagination","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/pagination-example.tsx"}},
+    },
+    "popover": {
+      name: "popover",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-vega/ui/popover.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-vega/ui/popover")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "popover"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/popover","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/popover-example.tsx","api":"https://base-ui.com/react/components/popover.md"}},
+    },
+    "progress": {
+      name: "progress",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-vega/ui/progress.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-vega/ui/progress")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "progress"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/progress","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/progress-example.tsx","api":"https://base-ui.com/react/components/progress.md"}},
+    },
+    "radio-group": {
+      name: "radio-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-vega/ui/radio-group.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-vega/ui/radio-group")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "radio-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/radio-group","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/radio-group-example.tsx","api":"https://base-ui.com/react/components/radio-group.md"}},
+    },
+    "resizable": {
+      name: "resizable",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-vega/ui/resizable.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-vega/ui/resizable")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "resizable"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/resizable","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/resizable-example.tsx","api":"https://github.com/bvaughn/react-resizable-panels"}},
+    },
+    "scroll-area": {
+      name: "scroll-area",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-vega/ui/scroll-area.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-vega/ui/scroll-area")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "scroll-area"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/scroll-area","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/scroll-area-example.tsx","api":"https://base-ui.com/react/components/scroll-area.md"}},
+    },
+    "select": {
+      name: "select",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-vega/ui/select.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-vega/ui/select")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "select"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/select","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/select-example.tsx","api":"https://base-ui.com/react/components/select.md"}},
+    },
+    "separator": {
+      name: "separator",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-vega/ui/separator.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-vega/ui/separator")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "separator"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/separator","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/separator-example.tsx","api":"https://base-ui.com/react/components/separator.md"}},
+    },
+    "sheet": {
+      name: "sheet",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "styles/base-vega/ui/sheet.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-vega/ui/sheet")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "sheet"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/sheet","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/sheet-example.tsx","api":"https://base-ui.com/react/components/dialog.md"}},
+    },
+    "sidebar": {
+      name: "sidebar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","input","separator","sheet","skeleton","tooltip","use-mobile"],
+      files: [{
+        path: "styles/base-vega/ui/sidebar.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-vega/ui/sidebar")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "sidebar"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/sidebar","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/sidebar-example.tsx"}},
+    },
+    "skeleton": {
+      name: "skeleton",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-vega/ui/skeleton.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-vega/ui/skeleton")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "skeleton"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/skeleton","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/skeleton-example.tsx"}},
+    },
+    "slider": {
+      name: "slider",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-vega/ui/slider.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-vega/ui/slider")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "slider"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/slider","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/slider-example.tsx","api":"https://base-ui.com/react/components/slider.md"}},
+    },
+    "sonner": {
+      name: "sonner",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-vega/ui/sonner.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-vega/ui/sonner")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "sonner"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/sonner","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/sonner-example.tsx","api":"https://sonner.emilkowal.ski"}},
+    },
+    "spinner": {
+      name: "spinner",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-vega/ui/spinner.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-vega/ui/spinner")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "spinner"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/spinner","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/spinner-example.tsx"}},
+    },
+    "switch": {
+      name: "switch",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-vega/ui/switch.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-vega/ui/switch")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "switch"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/switch","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/switch-example.tsx","api":"https://base-ui.com/react/components/switch.md"}},
+    },
+    "table": {
+      name: "table",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-vega/ui/table.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-vega/ui/table")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "table"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/table","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/table-example.tsx"}},
+    },
+    "tabs": {
+      name: "tabs",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-vega/ui/tabs.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-vega/ui/tabs")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "tabs"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/tabs","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/tabs-example.tsx","api":"https://base-ui.com/react/components/tabs.md"}},
+    },
+    "textarea": {
+      name: "textarea",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-vega/ui/textarea.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-vega/ui/textarea")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "textarea"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/textarea","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/textarea-example.tsx"}},
+    },
+    "toggle": {
+      name: "toggle",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-vega/ui/toggle.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-vega/ui/toggle")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "toggle"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/toggle","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/toggle-example.tsx","api":"https://base-ui.com/react/components/toggle.md"}},
+    },
+    "toggle-group": {
+      name: "toggle-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["toggle"],
+      files: [{
+        path: "styles/base-vega/ui/toggle-group.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-vega/ui/toggle-group")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "toggle-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/toggle-group","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/toggle-group-example.tsx","api":"https://base-ui.com/react/components/toggle-group.md"}},
+    },
+    "tooltip": {
+      name: "tooltip",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-vega/ui/tooltip.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-vega/ui/tooltip")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "tooltip"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/tooltip","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/tooltip-example.tsx","api":"https://base-ui.com/react/components/tooltip.md"}},
+    },
+    "kbd": {
+      name: "kbd",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-vega/ui/kbd.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-vega/ui/kbd")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "kbd"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/kbd","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/kbd-example.tsx"}},
+    },
+    "native-select": {
+      name: "native-select",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-vega/ui/native-select.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-vega/ui/native-select")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "native-select"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/native-select","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/native-select-example.tsx"}},
+    },
+    "direction": {
+      name: "direction",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-vega/ui/direction.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-vega/ui/direction")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "direction"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/direction","api":"https://base-ui.com/react/utils/direction-provider.md"}},
+    },
+  },
+  "base-maia": {
+    "accordion": {
+      name: "accordion",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-maia/ui/accordion.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-maia/ui/accordion")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "accordion"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/accordion","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/accordion-example.tsx","api":"https://base-ui.com/react/components/accordion.md"}},
+    },
+    "alert": {
+      name: "alert",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-maia/ui/alert.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-maia/ui/alert")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "alert"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/alert","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/alert-example.tsx"}},
+    },
+    "alert-dialog": {
+      name: "alert-dialog",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "styles/base-maia/ui/alert-dialog.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-maia/ui/alert-dialog")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "alert-dialog"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/alert-dialog","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/alert-dialog-example.tsx","api":"https://base-ui.com/react/components/alert-dialog.md"}},
+    },
+    "aspect-ratio": {
+      name: "aspect-ratio",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-maia/ui/aspect-ratio.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-maia/ui/aspect-ratio")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "aspect-ratio"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/aspect-ratio","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/aspect-ratio-example.tsx"}},
+    },
+    "avatar": {
+      name: "avatar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-maia/ui/avatar.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-maia/ui/avatar")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "avatar"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/avatar","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/avatar-example.tsx","api":"https://base-ui.com/react/components/avatar.md"}},
+    },
+    "badge": {
+      name: "badge",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-maia/ui/badge.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-maia/ui/badge")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "badge"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/badge","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/badge-example.tsx"}},
+    },
+    "breadcrumb": {
+      name: "breadcrumb",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-maia/ui/breadcrumb.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-maia/ui/breadcrumb")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "breadcrumb"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/breadcrumb","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/breadcrumb-example.tsx"}},
+    },
+    "button": {
+      name: "button",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-maia/ui/button.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-maia/ui/button")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "button"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/button","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/button-example.tsx"}},
+    },
+    "button-group": {
+      name: "button-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["separator"],
+      files: [{
+        path: "styles/base-maia/ui/button-group.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-maia/ui/button-group")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "button-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/button-group","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/button-group-example.tsx"}},
+    },
+    "calendar": {
+      name: "calendar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "styles/base-maia/ui/calendar.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-maia/ui/calendar")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "calendar"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/calendar","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/calendar-example.tsx","api":"https://react-day-picker.js.org"}},
+    },
+    "card": {
+      name: "card",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-maia/ui/card.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-maia/ui/card")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "card"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/card","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/card-example.tsx"}},
+    },
+    "carousel": {
+      name: "carousel",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "styles/base-maia/ui/carousel.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-maia/ui/carousel")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "carousel"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/carousel","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/carousel-example.tsx","api":"https://www.embla-carousel.com/get-started/react"}},
+    },
+    "chart": {
+      name: "chart",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["card"],
+      files: [{
+        path: "styles/base-maia/ui/chart.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-maia/ui/chart")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/chart","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/chart-example.tsx"}},
+    },
+    "checkbox": {
+      name: "checkbox",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-maia/ui/checkbox.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-maia/ui/checkbox")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "checkbox"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/checkbox","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/checkbox-example.tsx","api":"https://base-ui.com/react/components/checkbox.md"}},
+    },
+    "collapsible": {
+      name: "collapsible",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-maia/ui/collapsible.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-maia/ui/collapsible")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "collapsible"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/collapsible","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/collapsible-example.tsx","api":"https://base-ui.com/react/components/collapsible.md"}},
+    },
+    "combobox": {
+      name: "combobox",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","input-group"],
+      files: [{
+        path: "styles/base-maia/ui/combobox.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-maia/ui/combobox")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "combobox"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/combobox","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/combobox-example.tsx","api":"https://base-ui.com/react/components/combobox.md"}},
+    },
+    "command": {
+      name: "command",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["dialog","input-group"],
+      files: [{
+        path: "styles/base-maia/ui/command.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-maia/ui/command")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "command"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/command","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/command-example.tsx","api":"https://github.com/dip/cmdk"}},
+    },
+    "context-menu": {
+      name: "context-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-maia/ui/context-menu.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-maia/ui/context-menu")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "context-menu"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/context-menu","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/context-menu-example.tsx","api":"https://base-ui.com/react/components/context-menu.md"}},
+    },
+    "dialog": {
+      name: "dialog",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "styles/base-maia/ui/dialog.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-maia/ui/dialog")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "dialog"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/dialog","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/dialog-example.tsx","api":"https://base-ui.com/react/components/dialog.md"}},
+    },
+    "drawer": {
+      name: "drawer",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-maia/ui/drawer.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-maia/ui/drawer")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "drawer"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/drawer","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/drawer-example.tsx","api":"https://vaul.emilkowal.ski/getting-started"}},
+    },
+    "dropdown-menu": {
+      name: "dropdown-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-maia/ui/dropdown-menu.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-maia/ui/dropdown-menu")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "dropdown-menu"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/dropdown-menu","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/dropdown-menu-example.tsx","api":"https://base-ui.com/react/components/menu.md"}},
+    },
+    "empty": {
+      name: "empty",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-maia/ui/empty.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-maia/ui/empty")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "empty"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/empty","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/empty-example.tsx"}},
+    },
+    "field": {
+      name: "field",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["label","separator"],
+      files: [{
+        path: "styles/base-maia/ui/field.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-maia/ui/field")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "field"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/field","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/field-example.tsx"}},
+    },
+    "hover-card": {
+      name: "hover-card",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-maia/ui/hover-card.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-maia/ui/hover-card")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "hover-card"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/hover-card","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/hover-card-example.tsx","api":"https://base-ui.com/react/components/hover-card.md"}},
+    },
+    "input": {
+      name: "input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-maia/ui/input.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-maia/ui/input")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "input"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/input","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/input-example.tsx"}},
+    },
+    "input-group": {
+      name: "input-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","input","textarea"],
+      files: [{
+        path: "styles/base-maia/ui/input-group.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-maia/ui/input-group")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "input-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/input-group","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/input-group-example.tsx"}},
+    },
+    "input-otp": {
+      name: "input-otp",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-maia/ui/input-otp.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-maia/ui/input-otp")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "input-otp"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/input-otp","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/input-otp-example.tsx","api":"https://input-otp.rodz.dev"}},
+    },
+    "item": {
+      name: "item",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["separator"],
+      files: [{
+        path: "styles/base-maia/ui/item.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-maia/ui/item")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "item"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/item","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/item-example.tsx"}},
+    },
+    "label": {
+      name: "label",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-maia/ui/label.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-maia/ui/label")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "label"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/label","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/label-example.tsx","api":"https://base-ui.com/react/components/label.md"}},
+    },
+    "menubar": {
+      name: "menubar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["dropdown-menu"],
+      files: [{
+        path: "styles/base-maia/ui/menubar.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-maia/ui/menubar")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "menubar"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/menubar","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/menubar-example.tsx","api":"https://base-ui.com/react/components/menubar.md"}},
+    },
+    "navigation-menu": {
+      name: "navigation-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-maia/ui/navigation-menu.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-maia/ui/navigation-menu")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "navigation-menu"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/navigation-menu","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/navigation-menu-example.tsx","api":"https://base-ui.com/react/components/navigation-menu.md"}},
+    },
+    "pagination": {
+      name: "pagination",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "styles/base-maia/ui/pagination.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-maia/ui/pagination")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "pagination"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/pagination","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/pagination-example.tsx"}},
+    },
+    "popover": {
+      name: "popover",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-maia/ui/popover.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-maia/ui/popover")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "popover"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/popover","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/popover-example.tsx","api":"https://base-ui.com/react/components/popover.md"}},
+    },
+    "progress": {
+      name: "progress",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-maia/ui/progress.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-maia/ui/progress")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "progress"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/progress","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/progress-example.tsx","api":"https://base-ui.com/react/components/progress.md"}},
+    },
+    "radio-group": {
+      name: "radio-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-maia/ui/radio-group.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-maia/ui/radio-group")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "radio-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/radio-group","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/radio-group-example.tsx","api":"https://base-ui.com/react/components/radio-group.md"}},
+    },
+    "resizable": {
+      name: "resizable",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-maia/ui/resizable.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-maia/ui/resizable")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "resizable"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/resizable","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/resizable-example.tsx","api":"https://github.com/bvaughn/react-resizable-panels"}},
+    },
+    "scroll-area": {
+      name: "scroll-area",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-maia/ui/scroll-area.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-maia/ui/scroll-area")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "scroll-area"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/scroll-area","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/scroll-area-example.tsx","api":"https://base-ui.com/react/components/scroll-area.md"}},
+    },
+    "select": {
+      name: "select",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-maia/ui/select.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-maia/ui/select")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "select"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/select","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/select-example.tsx","api":"https://base-ui.com/react/components/select.md"}},
+    },
+    "separator": {
+      name: "separator",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-maia/ui/separator.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-maia/ui/separator")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "separator"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/separator","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/separator-example.tsx","api":"https://base-ui.com/react/components/separator.md"}},
+    },
+    "sheet": {
+      name: "sheet",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "styles/base-maia/ui/sheet.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-maia/ui/sheet")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "sheet"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/sheet","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/sheet-example.tsx","api":"https://base-ui.com/react/components/dialog.md"}},
+    },
+    "sidebar": {
+      name: "sidebar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","input","separator","sheet","skeleton","tooltip","use-mobile"],
+      files: [{
+        path: "styles/base-maia/ui/sidebar.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-maia/ui/sidebar")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "sidebar"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/sidebar","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/sidebar-example.tsx"}},
+    },
+    "skeleton": {
+      name: "skeleton",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-maia/ui/skeleton.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-maia/ui/skeleton")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "skeleton"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/skeleton","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/skeleton-example.tsx"}},
+    },
+    "slider": {
+      name: "slider",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-maia/ui/slider.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-maia/ui/slider")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "slider"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/slider","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/slider-example.tsx","api":"https://base-ui.com/react/components/slider.md"}},
+    },
+    "sonner": {
+      name: "sonner",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-maia/ui/sonner.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-maia/ui/sonner")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "sonner"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/sonner","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/sonner-example.tsx","api":"https://sonner.emilkowal.ski"}},
+    },
+    "spinner": {
+      name: "spinner",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-maia/ui/spinner.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-maia/ui/spinner")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "spinner"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/spinner","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/spinner-example.tsx"}},
+    },
+    "switch": {
+      name: "switch",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-maia/ui/switch.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-maia/ui/switch")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "switch"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/switch","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/switch-example.tsx","api":"https://base-ui.com/react/components/switch.md"}},
+    },
+    "table": {
+      name: "table",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-maia/ui/table.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-maia/ui/table")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "table"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/table","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/table-example.tsx"}},
+    },
+    "tabs": {
+      name: "tabs",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-maia/ui/tabs.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-maia/ui/tabs")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "tabs"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/tabs","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/tabs-example.tsx","api":"https://base-ui.com/react/components/tabs.md"}},
+    },
+    "textarea": {
+      name: "textarea",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-maia/ui/textarea.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-maia/ui/textarea")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "textarea"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/textarea","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/textarea-example.tsx"}},
+    },
+    "toggle": {
+      name: "toggle",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-maia/ui/toggle.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-maia/ui/toggle")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "toggle"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/toggle","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/toggle-example.tsx","api":"https://base-ui.com/react/components/toggle.md"}},
+    },
+    "toggle-group": {
+      name: "toggle-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["toggle"],
+      files: [{
+        path: "styles/base-maia/ui/toggle-group.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-maia/ui/toggle-group")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "toggle-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/toggle-group","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/toggle-group-example.tsx","api":"https://base-ui.com/react/components/toggle-group.md"}},
+    },
+    "tooltip": {
+      name: "tooltip",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-maia/ui/tooltip.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-maia/ui/tooltip")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "tooltip"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/tooltip","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/tooltip-example.tsx","api":"https://base-ui.com/react/components/tooltip.md"}},
+    },
+    "kbd": {
+      name: "kbd",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-maia/ui/kbd.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-maia/ui/kbd")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "kbd"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/kbd","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/kbd-example.tsx"}},
+    },
+    "native-select": {
+      name: "native-select",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-maia/ui/native-select.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-maia/ui/native-select")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "native-select"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/native-select","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/native-select-example.tsx"}},
+    },
+    "direction": {
+      name: "direction",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-maia/ui/direction.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-maia/ui/direction")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "direction"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/direction","api":"https://base-ui.com/react/utils/direction-provider.md"}},
+    },
+  },
+  "base-lyra": {
+    "accordion": {
+      name: "accordion",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-lyra/ui/accordion.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-lyra/ui/accordion")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "accordion"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/accordion","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/accordion-example.tsx","api":"https://base-ui.com/react/components/accordion.md"}},
+    },
+    "alert": {
+      name: "alert",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-lyra/ui/alert.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-lyra/ui/alert")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "alert"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/alert","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/alert-example.tsx"}},
+    },
+    "alert-dialog": {
+      name: "alert-dialog",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "styles/base-lyra/ui/alert-dialog.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-lyra/ui/alert-dialog")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "alert-dialog"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/alert-dialog","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/alert-dialog-example.tsx","api":"https://base-ui.com/react/components/alert-dialog.md"}},
+    },
+    "aspect-ratio": {
+      name: "aspect-ratio",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-lyra/ui/aspect-ratio.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-lyra/ui/aspect-ratio")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "aspect-ratio"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/aspect-ratio","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/aspect-ratio-example.tsx"}},
+    },
+    "avatar": {
+      name: "avatar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-lyra/ui/avatar.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-lyra/ui/avatar")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "avatar"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/avatar","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/avatar-example.tsx","api":"https://base-ui.com/react/components/avatar.md"}},
+    },
+    "badge": {
+      name: "badge",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-lyra/ui/badge.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-lyra/ui/badge")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "badge"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/badge","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/badge-example.tsx"}},
+    },
+    "breadcrumb": {
+      name: "breadcrumb",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-lyra/ui/breadcrumb.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-lyra/ui/breadcrumb")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "breadcrumb"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/breadcrumb","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/breadcrumb-example.tsx"}},
+    },
+    "button": {
+      name: "button",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-lyra/ui/button.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-lyra/ui/button")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "button"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/button","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/button-example.tsx"}},
+    },
+    "button-group": {
+      name: "button-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["separator"],
+      files: [{
+        path: "styles/base-lyra/ui/button-group.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-lyra/ui/button-group")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "button-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/button-group","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/button-group-example.tsx"}},
+    },
+    "calendar": {
+      name: "calendar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "styles/base-lyra/ui/calendar.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-lyra/ui/calendar")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "calendar"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/calendar","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/calendar-example.tsx","api":"https://react-day-picker.js.org"}},
+    },
+    "card": {
+      name: "card",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-lyra/ui/card.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-lyra/ui/card")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "card"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/card","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/card-example.tsx"}},
+    },
+    "carousel": {
+      name: "carousel",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "styles/base-lyra/ui/carousel.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-lyra/ui/carousel")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "carousel"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/carousel","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/carousel-example.tsx","api":"https://www.embla-carousel.com/get-started/react"}},
+    },
+    "chart": {
+      name: "chart",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["card"],
+      files: [{
+        path: "styles/base-lyra/ui/chart.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-lyra/ui/chart")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/chart","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/chart-example.tsx"}},
+    },
+    "checkbox": {
+      name: "checkbox",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-lyra/ui/checkbox.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-lyra/ui/checkbox")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "checkbox"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/checkbox","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/checkbox-example.tsx","api":"https://base-ui.com/react/components/checkbox.md"}},
+    },
+    "collapsible": {
+      name: "collapsible",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-lyra/ui/collapsible.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-lyra/ui/collapsible")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "collapsible"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/collapsible","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/collapsible-example.tsx","api":"https://base-ui.com/react/components/collapsible.md"}},
+    },
+    "combobox": {
+      name: "combobox",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","input-group"],
+      files: [{
+        path: "styles/base-lyra/ui/combobox.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-lyra/ui/combobox")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "combobox"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/combobox","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/combobox-example.tsx","api":"https://base-ui.com/react/components/combobox.md"}},
+    },
+    "command": {
+      name: "command",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["dialog","input-group"],
+      files: [{
+        path: "styles/base-lyra/ui/command.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-lyra/ui/command")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "command"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/command","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/command-example.tsx","api":"https://github.com/dip/cmdk"}},
+    },
+    "context-menu": {
+      name: "context-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-lyra/ui/context-menu.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-lyra/ui/context-menu")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "context-menu"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/context-menu","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/context-menu-example.tsx","api":"https://base-ui.com/react/components/context-menu.md"}},
+    },
+    "dialog": {
+      name: "dialog",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "styles/base-lyra/ui/dialog.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-lyra/ui/dialog")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "dialog"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/dialog","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/dialog-example.tsx","api":"https://base-ui.com/react/components/dialog.md"}},
+    },
+    "drawer": {
+      name: "drawer",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-lyra/ui/drawer.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-lyra/ui/drawer")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "drawer"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/drawer","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/drawer-example.tsx","api":"https://vaul.emilkowal.ski/getting-started"}},
+    },
+    "dropdown-menu": {
+      name: "dropdown-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-lyra/ui/dropdown-menu.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-lyra/ui/dropdown-menu")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "dropdown-menu"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/dropdown-menu","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/dropdown-menu-example.tsx","api":"https://base-ui.com/react/components/menu.md"}},
+    },
+    "empty": {
+      name: "empty",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-lyra/ui/empty.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-lyra/ui/empty")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "empty"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/empty","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/empty-example.tsx"}},
+    },
+    "field": {
+      name: "field",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["label","separator"],
+      files: [{
+        path: "styles/base-lyra/ui/field.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-lyra/ui/field")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "field"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/field","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/field-example.tsx"}},
+    },
+    "hover-card": {
+      name: "hover-card",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-lyra/ui/hover-card.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-lyra/ui/hover-card")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "hover-card"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/hover-card","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/hover-card-example.tsx","api":"https://base-ui.com/react/components/hover-card.md"}},
+    },
+    "input": {
+      name: "input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-lyra/ui/input.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-lyra/ui/input")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "input"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/input","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/input-example.tsx"}},
+    },
+    "input-group": {
+      name: "input-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","input","textarea"],
+      files: [{
+        path: "styles/base-lyra/ui/input-group.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-lyra/ui/input-group")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "input-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/input-group","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/input-group-example.tsx"}},
+    },
+    "input-otp": {
+      name: "input-otp",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-lyra/ui/input-otp.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-lyra/ui/input-otp")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "input-otp"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/input-otp","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/input-otp-example.tsx","api":"https://input-otp.rodz.dev"}},
+    },
+    "item": {
+      name: "item",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["separator"],
+      files: [{
+        path: "styles/base-lyra/ui/item.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-lyra/ui/item")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "item"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/item","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/item-example.tsx"}},
+    },
+    "label": {
+      name: "label",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-lyra/ui/label.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-lyra/ui/label")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "label"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/label","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/label-example.tsx","api":"https://base-ui.com/react/components/label.md"}},
+    },
+    "menubar": {
+      name: "menubar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["dropdown-menu"],
+      files: [{
+        path: "styles/base-lyra/ui/menubar.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-lyra/ui/menubar")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "menubar"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/menubar","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/menubar-example.tsx","api":"https://base-ui.com/react/components/menubar.md"}},
+    },
+    "navigation-menu": {
+      name: "navigation-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-lyra/ui/navigation-menu.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-lyra/ui/navigation-menu")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "navigation-menu"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/navigation-menu","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/navigation-menu-example.tsx","api":"https://base-ui.com/react/components/navigation-menu.md"}},
+    },
+    "pagination": {
+      name: "pagination",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "styles/base-lyra/ui/pagination.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-lyra/ui/pagination")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "pagination"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/pagination","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/pagination-example.tsx"}},
+    },
+    "popover": {
+      name: "popover",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-lyra/ui/popover.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-lyra/ui/popover")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "popover"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/popover","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/popover-example.tsx","api":"https://base-ui.com/react/components/popover.md"}},
+    },
+    "progress": {
+      name: "progress",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-lyra/ui/progress.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-lyra/ui/progress")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "progress"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/progress","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/progress-example.tsx","api":"https://base-ui.com/react/components/progress.md"}},
+    },
+    "radio-group": {
+      name: "radio-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-lyra/ui/radio-group.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-lyra/ui/radio-group")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "radio-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/radio-group","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/radio-group-example.tsx","api":"https://base-ui.com/react/components/radio-group.md"}},
+    },
+    "resizable": {
+      name: "resizable",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-lyra/ui/resizable.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-lyra/ui/resizable")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "resizable"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/resizable","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/resizable-example.tsx","api":"https://github.com/bvaughn/react-resizable-panels"}},
+    },
+    "scroll-area": {
+      name: "scroll-area",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-lyra/ui/scroll-area.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-lyra/ui/scroll-area")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "scroll-area"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/scroll-area","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/scroll-area-example.tsx","api":"https://base-ui.com/react/components/scroll-area.md"}},
+    },
+    "select": {
+      name: "select",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-lyra/ui/select.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-lyra/ui/select")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "select"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/select","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/select-example.tsx","api":"https://base-ui.com/react/components/select.md"}},
+    },
+    "separator": {
+      name: "separator",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-lyra/ui/separator.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-lyra/ui/separator")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "separator"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/separator","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/separator-example.tsx","api":"https://base-ui.com/react/components/separator.md"}},
+    },
+    "sheet": {
+      name: "sheet",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "styles/base-lyra/ui/sheet.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-lyra/ui/sheet")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "sheet"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/sheet","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/sheet-example.tsx","api":"https://base-ui.com/react/components/dialog.md"}},
+    },
+    "sidebar": {
+      name: "sidebar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","input","separator","sheet","skeleton","tooltip","use-mobile"],
+      files: [{
+        path: "styles/base-lyra/ui/sidebar.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-lyra/ui/sidebar")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "sidebar"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/sidebar","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/sidebar-example.tsx"}},
+    },
+    "skeleton": {
+      name: "skeleton",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-lyra/ui/skeleton.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-lyra/ui/skeleton")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "skeleton"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/skeleton","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/skeleton-example.tsx"}},
+    },
+    "slider": {
+      name: "slider",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-lyra/ui/slider.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-lyra/ui/slider")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "slider"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/slider","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/slider-example.tsx","api":"https://base-ui.com/react/components/slider.md"}},
+    },
+    "sonner": {
+      name: "sonner",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-lyra/ui/sonner.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-lyra/ui/sonner")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "sonner"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/sonner","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/sonner-example.tsx","api":"https://sonner.emilkowal.ski"}},
+    },
+    "spinner": {
+      name: "spinner",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-lyra/ui/spinner.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-lyra/ui/spinner")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "spinner"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/spinner","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/spinner-example.tsx"}},
+    },
+    "switch": {
+      name: "switch",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-lyra/ui/switch.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-lyra/ui/switch")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "switch"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/switch","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/switch-example.tsx","api":"https://base-ui.com/react/components/switch.md"}},
+    },
+    "table": {
+      name: "table",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-lyra/ui/table.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-lyra/ui/table")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "table"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/table","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/table-example.tsx"}},
+    },
+    "tabs": {
+      name: "tabs",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-lyra/ui/tabs.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-lyra/ui/tabs")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "tabs"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/tabs","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/tabs-example.tsx","api":"https://base-ui.com/react/components/tabs.md"}},
+    },
+    "textarea": {
+      name: "textarea",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-lyra/ui/textarea.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-lyra/ui/textarea")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "textarea"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/textarea","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/textarea-example.tsx"}},
+    },
+    "toggle": {
+      name: "toggle",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-lyra/ui/toggle.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-lyra/ui/toggle")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "toggle"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/toggle","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/toggle-example.tsx","api":"https://base-ui.com/react/components/toggle.md"}},
+    },
+    "toggle-group": {
+      name: "toggle-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["toggle"],
+      files: [{
+        path: "styles/base-lyra/ui/toggle-group.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-lyra/ui/toggle-group")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "toggle-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/toggle-group","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/toggle-group-example.tsx","api":"https://base-ui.com/react/components/toggle-group.md"}},
+    },
+    "tooltip": {
+      name: "tooltip",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-lyra/ui/tooltip.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-lyra/ui/tooltip")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "tooltip"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/tooltip","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/tooltip-example.tsx","api":"https://base-ui.com/react/components/tooltip.md"}},
+    },
+    "kbd": {
+      name: "kbd",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-lyra/ui/kbd.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-lyra/ui/kbd")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "kbd"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/kbd","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/kbd-example.tsx"}},
+    },
+    "native-select": {
+      name: "native-select",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-lyra/ui/native-select.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-lyra/ui/native-select")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "native-select"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/native-select","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/native-select-example.tsx"}},
+    },
+    "direction": {
+      name: "direction",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-lyra/ui/direction.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-lyra/ui/direction")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "direction"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/direction","api":"https://base-ui.com/react/utils/direction-provider.md"}},
+    },
+  },
+  "base-mira": {
+    "accordion": {
+      name: "accordion",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-mira/ui/accordion.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-mira/ui/accordion")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "accordion"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/accordion","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/accordion-example.tsx","api":"https://base-ui.com/react/components/accordion.md"}},
+    },
+    "alert": {
+      name: "alert",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-mira/ui/alert.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-mira/ui/alert")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "alert"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/alert","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/alert-example.tsx"}},
+    },
+    "alert-dialog": {
+      name: "alert-dialog",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "styles/base-mira/ui/alert-dialog.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-mira/ui/alert-dialog")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "alert-dialog"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/alert-dialog","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/alert-dialog-example.tsx","api":"https://base-ui.com/react/components/alert-dialog.md"}},
+    },
+    "aspect-ratio": {
+      name: "aspect-ratio",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-mira/ui/aspect-ratio.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-mira/ui/aspect-ratio")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "aspect-ratio"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/aspect-ratio","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/aspect-ratio-example.tsx"}},
+    },
+    "avatar": {
+      name: "avatar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-mira/ui/avatar.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-mira/ui/avatar")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "avatar"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/avatar","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/avatar-example.tsx","api":"https://base-ui.com/react/components/avatar.md"}},
+    },
+    "badge": {
+      name: "badge",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-mira/ui/badge.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-mira/ui/badge")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "badge"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/badge","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/badge-example.tsx"}},
+    },
+    "breadcrumb": {
+      name: "breadcrumb",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-mira/ui/breadcrumb.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-mira/ui/breadcrumb")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "breadcrumb"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/breadcrumb","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/breadcrumb-example.tsx"}},
+    },
+    "button": {
+      name: "button",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-mira/ui/button.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-mira/ui/button")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "button"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/button","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/button-example.tsx"}},
+    },
+    "button-group": {
+      name: "button-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["separator"],
+      files: [{
+        path: "styles/base-mira/ui/button-group.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-mira/ui/button-group")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "button-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/button-group","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/button-group-example.tsx"}},
+    },
+    "calendar": {
+      name: "calendar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "styles/base-mira/ui/calendar.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-mira/ui/calendar")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "calendar"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/calendar","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/calendar-example.tsx","api":"https://react-day-picker.js.org"}},
+    },
+    "card": {
+      name: "card",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-mira/ui/card.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-mira/ui/card")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "card"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/card","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/card-example.tsx"}},
+    },
+    "carousel": {
+      name: "carousel",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "styles/base-mira/ui/carousel.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-mira/ui/carousel")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "carousel"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/carousel","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/carousel-example.tsx","api":"https://www.embla-carousel.com/get-started/react"}},
+    },
+    "chart": {
+      name: "chart",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["card"],
+      files: [{
+        path: "styles/base-mira/ui/chart.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-mira/ui/chart")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "chart"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/chart","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/chart-example.tsx"}},
+    },
+    "checkbox": {
+      name: "checkbox",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-mira/ui/checkbox.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-mira/ui/checkbox")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "checkbox"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/checkbox","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/checkbox-example.tsx","api":"https://base-ui.com/react/components/checkbox.md"}},
+    },
+    "collapsible": {
+      name: "collapsible",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-mira/ui/collapsible.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-mira/ui/collapsible")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "collapsible"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/collapsible","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/collapsible-example.tsx","api":"https://base-ui.com/react/components/collapsible.md"}},
+    },
+    "combobox": {
+      name: "combobox",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","input-group"],
+      files: [{
+        path: "styles/base-mira/ui/combobox.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-mira/ui/combobox")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "combobox"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/combobox","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/combobox-example.tsx","api":"https://base-ui.com/react/components/combobox.md"}},
+    },
+    "command": {
+      name: "command",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["dialog","input-group"],
+      files: [{
+        path: "styles/base-mira/ui/command.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-mira/ui/command")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "command"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/command","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/command-example.tsx","api":"https://github.com/dip/cmdk"}},
+    },
+    "context-menu": {
+      name: "context-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-mira/ui/context-menu.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-mira/ui/context-menu")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "context-menu"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/context-menu","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/context-menu-example.tsx","api":"https://base-ui.com/react/components/context-menu.md"}},
+    },
+    "dialog": {
+      name: "dialog",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "styles/base-mira/ui/dialog.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-mira/ui/dialog")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "dialog"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/dialog","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/dialog-example.tsx","api":"https://base-ui.com/react/components/dialog.md"}},
+    },
+    "drawer": {
+      name: "drawer",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-mira/ui/drawer.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-mira/ui/drawer")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "drawer"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/drawer","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/drawer-example.tsx","api":"https://vaul.emilkowal.ski/getting-started"}},
+    },
+    "dropdown-menu": {
+      name: "dropdown-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-mira/ui/dropdown-menu.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-mira/ui/dropdown-menu")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "dropdown-menu"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/dropdown-menu","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/dropdown-menu-example.tsx","api":"https://base-ui.com/react/components/menu.md"}},
+    },
+    "empty": {
+      name: "empty",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-mira/ui/empty.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-mira/ui/empty")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "empty"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/empty","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/empty-example.tsx"}},
+    },
+    "field": {
+      name: "field",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["label","separator"],
+      files: [{
+        path: "styles/base-mira/ui/field.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-mira/ui/field")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "field"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/field","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/field-example.tsx"}},
+    },
+    "hover-card": {
+      name: "hover-card",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-mira/ui/hover-card.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-mira/ui/hover-card")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "hover-card"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/hover-card","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/hover-card-example.tsx","api":"https://base-ui.com/react/components/hover-card.md"}},
+    },
+    "input": {
+      name: "input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-mira/ui/input.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-mira/ui/input")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "input"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/input","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/input-example.tsx"}},
+    },
+    "input-group": {
+      name: "input-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","input","textarea"],
+      files: [{
+        path: "styles/base-mira/ui/input-group.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-mira/ui/input-group")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "input-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/input-group","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/input-group-example.tsx"}},
+    },
+    "input-otp": {
+      name: "input-otp",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-mira/ui/input-otp.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-mira/ui/input-otp")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "input-otp"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/input-otp","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/input-otp-example.tsx","api":"https://input-otp.rodz.dev"}},
+    },
+    "item": {
+      name: "item",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["separator"],
+      files: [{
+        path: "styles/base-mira/ui/item.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-mira/ui/item")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "item"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/item","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/item-example.tsx"}},
+    },
+    "label": {
+      name: "label",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-mira/ui/label.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-mira/ui/label")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "label"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/label","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/label-example.tsx","api":"https://base-ui.com/react/components/label.md"}},
+    },
+    "menubar": {
+      name: "menubar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["dropdown-menu"],
+      files: [{
+        path: "styles/base-mira/ui/menubar.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-mira/ui/menubar")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "menubar"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/menubar","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/menubar-example.tsx","api":"https://base-ui.com/react/components/menubar.md"}},
+    },
+    "navigation-menu": {
+      name: "navigation-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-mira/ui/navigation-menu.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-mira/ui/navigation-menu")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "navigation-menu"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/navigation-menu","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/navigation-menu-example.tsx","api":"https://base-ui.com/react/components/navigation-menu.md"}},
+    },
+    "pagination": {
+      name: "pagination",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "styles/base-mira/ui/pagination.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-mira/ui/pagination")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "pagination"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/pagination","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/pagination-example.tsx"}},
+    },
+    "popover": {
+      name: "popover",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-mira/ui/popover.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-mira/ui/popover")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "popover"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/popover","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/popover-example.tsx","api":"https://base-ui.com/react/components/popover.md"}},
+    },
+    "progress": {
+      name: "progress",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-mira/ui/progress.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-mira/ui/progress")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "progress"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/progress","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/progress-example.tsx","api":"https://base-ui.com/react/components/progress.md"}},
+    },
+    "radio-group": {
+      name: "radio-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-mira/ui/radio-group.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-mira/ui/radio-group")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "radio-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/radio-group","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/radio-group-example.tsx","api":"https://base-ui.com/react/components/radio-group.md"}},
+    },
+    "resizable": {
+      name: "resizable",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-mira/ui/resizable.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-mira/ui/resizable")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "resizable"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/resizable","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/resizable-example.tsx","api":"https://github.com/bvaughn/react-resizable-panels"}},
+    },
+    "scroll-area": {
+      name: "scroll-area",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-mira/ui/scroll-area.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-mira/ui/scroll-area")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "scroll-area"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/scroll-area","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/scroll-area-example.tsx","api":"https://base-ui.com/react/components/scroll-area.md"}},
+    },
+    "select": {
+      name: "select",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-mira/ui/select.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-mira/ui/select")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "select"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/select","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/select-example.tsx","api":"https://base-ui.com/react/components/select.md"}},
+    },
+    "separator": {
+      name: "separator",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-mira/ui/separator.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-mira/ui/separator")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "separator"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/separator","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/separator-example.tsx","api":"https://base-ui.com/react/components/separator.md"}},
+    },
+    "sheet": {
+      name: "sheet",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "styles/base-mira/ui/sheet.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-mira/ui/sheet")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "sheet"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/sheet","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/sheet-example.tsx","api":"https://base-ui.com/react/components/dialog.md"}},
+    },
+    "sidebar": {
+      name: "sidebar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","input","separator","sheet","skeleton","tooltip","use-mobile"],
+      files: [{
+        path: "styles/base-mira/ui/sidebar.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-mira/ui/sidebar")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "sidebar"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/sidebar","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/sidebar-example.tsx"}},
+    },
+    "skeleton": {
+      name: "skeleton",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-mira/ui/skeleton.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-mira/ui/skeleton")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "skeleton"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/skeleton","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/skeleton-example.tsx"}},
+    },
+    "slider": {
+      name: "slider",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-mira/ui/slider.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-mira/ui/slider")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "slider"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/slider","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/slider-example.tsx","api":"https://base-ui.com/react/components/slider.md"}},
+    },
+    "sonner": {
+      name: "sonner",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-mira/ui/sonner.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-mira/ui/sonner")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "sonner"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/sonner","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/sonner-example.tsx","api":"https://sonner.emilkowal.ski"}},
+    },
+    "spinner": {
+      name: "spinner",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-mira/ui/spinner.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-mira/ui/spinner")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "spinner"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/spinner","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/spinner-example.tsx"}},
+    },
+    "switch": {
+      name: "switch",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-mira/ui/switch.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-mira/ui/switch")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "switch"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/switch","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/switch-example.tsx","api":"https://base-ui.com/react/components/switch.md"}},
+    },
+    "table": {
+      name: "table",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-mira/ui/table.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-mira/ui/table")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "table"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/table","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/table-example.tsx"}},
+    },
+    "tabs": {
+      name: "tabs",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-mira/ui/tabs.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-mira/ui/tabs")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "tabs"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/tabs","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/tabs-example.tsx","api":"https://base-ui.com/react/components/tabs.md"}},
+    },
+    "textarea": {
+      name: "textarea",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-mira/ui/textarea.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-mira/ui/textarea")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "textarea"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/textarea","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/textarea-example.tsx"}},
+    },
+    "toggle": {
+      name: "toggle",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-mira/ui/toggle.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-mira/ui/toggle")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "toggle"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/toggle","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/toggle-example.tsx","api":"https://base-ui.com/react/components/toggle.md"}},
+    },
+    "toggle-group": {
+      name: "toggle-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["toggle"],
+      files: [{
+        path: "styles/base-mira/ui/toggle-group.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-mira/ui/toggle-group")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "toggle-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/toggle-group","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/toggle-group-example.tsx","api":"https://base-ui.com/react/components/toggle-group.md"}},
+    },
+    "tooltip": {
+      name: "tooltip",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-mira/ui/tooltip.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-mira/ui/tooltip")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "tooltip"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/tooltip","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/tooltip-example.tsx","api":"https://base-ui.com/react/components/tooltip.md"}},
+    },
+    "kbd": {
+      name: "kbd",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-mira/ui/kbd.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-mira/ui/kbd")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "kbd"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/kbd","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/kbd-example.tsx"}},
+    },
+    "native-select": {
+      name: "native-select",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-mira/ui/native-select.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-mira/ui/native-select")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "native-select"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/native-select","examples":"https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/native-select-example.tsx"}},
+    },
+    "direction": {
+      name: "direction",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "styles/base-mira/ui/direction.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/base-mira/ui/direction")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "direction"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"links":{"docs":"https://ui.shadcn.com/docs/components/base/direction","api":"https://base-ui.com/react/utils/direction-provider.md"}},
     },
   },
 }

@@ -23,7 +23,7 @@ export function TextareaDemo() {
           placeholder="Type your message here."
           rows={6}
         />
-        <div className="text-muted-foreground text-sm">
+        <div className="text-sm text-muted-foreground">
           Type your message and press enter to send.
         </div>
       </div>

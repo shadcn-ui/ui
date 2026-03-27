@@ -58,6 +58,7 @@ function EmptyBasic() {
                 tabler="IconArrowUpRight"
                 hugeicons="ArrowUpRight01Icon"
                 phosphor="ArrowUpRightIcon"
+                remixicon="RiArrowRightUpLine"
               />
             </a>
           </Button>
@@ -87,6 +88,7 @@ function EmptyWithMutedBackground() {
                 tabler="IconArrowUpRight"
                 hugeicons="ArrowUpRight01Icon"
                 phosphor="ArrowUpRightIcon"
+                remixicon="RiArrowRightUpLine"
               />
             </a>
           </Button>
@@ -116,6 +118,7 @@ function EmptyWithBorder() {
                 tabler="IconCircleDashed"
                 hugeicons="DashedLineCircleIcon"
                 phosphor="CircleDashedIcon"
+                remixicon="RiLoaderLine"
               />
             </InputGroupAddon>
             <InputGroupAddon align="inline-end">
@@ -142,6 +145,7 @@ function EmptyWithIcon() {
               tabler="IconFolder"
               hugeicons="Folder01Icon"
               phosphor="FolderIcon"
+              remixicon="RiFolderLine"
             />
           </EmptyMedia>
           <EmptyTitle>Nothing to see here</EmptyTitle>
@@ -157,6 +161,7 @@ function EmptyWithIcon() {
               tabler="IconPlus"
               hugeicons="PlusSignIcon"
               phosphor="PlusIcon"
+              remixicon="RiAddLine"
               data-icon="inline-start"
             />
             New Post
@@ -187,6 +192,7 @@ function EmptyWithMutedBackgroundAlt() {
                 tabler="IconCircleDashed"
                 hugeicons="DashedLineCircleIcon"
                 phosphor="CircleDashedIcon"
+                remixicon="RiLoaderLine"
               />
             </InputGroupAddon>
             <InputGroupAddon align="inline-end">
@@ -213,6 +219,7 @@ function EmptyInCard() {
               tabler="IconFolder"
               hugeicons="Folder01Icon"
               phosphor="FolderIcon"
+              remixicon="RiFolderLine"
             />
           </EmptyMedia>
           <EmptyTitle>No projects yet</EmptyTitle>
@@ -236,6 +243,7 @@ function EmptyInCard() {
                 tabler="IconArrowUpRight"
                 hugeicons="ArrowUpRight01Icon"
                 phosphor="ArrowUpRightIcon"
+                remixicon="RiArrowRightUpLine"
               />
             </a>
           </Button>

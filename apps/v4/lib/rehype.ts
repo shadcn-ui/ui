@@ -1,10 +1,44 @@
 import fs from "fs"
 import path from "path"
+import { ExamplesIndex } from "@/examples/__index__"
 import { u } from "unist-builder"
 import { visit } from "unist-util-visit"
 
-import { Index } from "@/registry/__index__"
+import { formatCode } from "@/lib/format-code"
+import { Index as StylesIndex } from "@/registry/__index__"
 import { getActiveStyle } from "@/registry/_legacy-styles"
+import { BASES } from "@/registry/bases"
+import { Index as BasesIndex } from "@/registry/bases/__index__"
+
+export { formatCode } from "@/lib/format-code"
+
+function getBaseForStyle(styleName: string) {
+  for (const base of BASES) {
+    if (styleName.startsWith(`${base.name}-`)) {
+      return base.name
+    }
+  }
+
+  return null
+}
+
+function getDemoFilePath(name: string, styleName: string) {
+  const base = getBaseForStyle(styleName)
+  const demo =
+    ExamplesIndex[styleName]?.[name] ??
+    (base ? ExamplesIndex[base]?.[name] : undefined)
+  if (!demo) return null
+
+  return demo.filePath
+}
+
+function getRegistryEntry(name: string, styleName: string) {
+  const base = getBaseForStyle(styleName)
+  return (
+    StylesIndex[styleName]?.[name] ??
+    (base ? BasesIndex[base]?.[name] : undefined)
+  )
+}
 
 interface UnistNode {
   type: string
@@ -25,12 +59,22 @@ export interface UnistTree {
   children: UnistNode[]
 }
 
+interface NodeToProcess {
+  node: UnistNode
+  type: "ComponentSource" | "ComponentPreview"
+  name: string
+  styleName: string
+  fileName?: string
+  srcPath?: string
+  hideCode?: boolean
+}
+
 export function rehypeComponent() {
   return async (tree: UnistTree) => {
     const activeStyle = await getActiveStyle()
+    const nodesToProcess: NodeToProcess[] = []
 
     visit(tree, (node: UnistNode) => {
-      // src prop overrides both name and fileName.
       const { value: srcPath } =
         (getNodeAttributeByName(node, "src") as {
           name: string
@@ -43,92 +87,89 @@ export function rehypeComponent() {
         const fileName = getNodeAttributeByName(node, "fileName")?.value as
           | string
           | undefined
+        const styleName =
+          (getNodeAttributeByName(node, "styleName")?.value as string) ||
+          activeStyle.name
 
-        if (!name && !srcPath) {
-          return null
-        }
-
-        try {
-          let src: string
-
-          if (srcPath) {
-            src = path.join(process.cwd(), srcPath)
-          } else {
-            const component = Index[name]
-            src = fileName
-              ? component.files.find((file: unknown) => {
-                  if (typeof file === "string") {
-                    return (
-                      file.endsWith(`${fileName}.tsx`) ||
-                      file.endsWith(`${fileName}.ts`)
-                    )
-                  }
-                  return false
-                }) || component.files[0]?.path
-              : component.files[0]?.path
-          }
-
-          // Read the source file.
-          const filePath = src
-          let source = fs.readFileSync(filePath, "utf8")
-
-          // Replace imports.
-          // TODO: Use @swc/core and a visitor to replace this.
-          // For now a simple regex should do.
-          source = source.replaceAll(`@/registry/new-york-v4/`, "@/components/")
-          source = source.replaceAll("export default", "export")
-
-          // Add code as children so that rehype can take over at build time.
-          node.children?.push(
-            u("element", {
-              tagName: "pre",
-              properties: {
-                __src__: src,
-              },
-              children: [
-                u("element", {
-                  tagName: "code",
-                  properties: {
-                    className: ["language-tsx"],
-                  },
-                  children: [
-                    {
-                      type: "text",
-                      value: source,
-                    },
-                  ],
-                }),
-              ],
-            })
-          )
-        } catch (error) {
-          console.error(error)
+        if (name || srcPath) {
+          nodesToProcess.push({
+            node,
+            type: "ComponentSource",
+            name,
+            styleName,
+            fileName,
+            srcPath,
+          })
         }
       }
 
       if (node.name === "ComponentPreview") {
         const name = getNodeAttributeByName(node, "name")?.value as string
+        const styleName =
+          (getNodeAttributeByName(node, "styleName")?.value as string) ||
+          activeStyle.name
+        const hideCode = isTruthyMdxAttribute(
+          getNodeAttributeByName(node, "hideCode")
+        )
 
-        if (!name) {
-          return null
+        if (name) {
+          nodesToProcess.push({
+            node,
+            type: "ComponentPreview",
+            name,
+            styleName,
+            hideCode,
+          })
         }
+      }
+    })
 
+    await Promise.all(
+      nodesToProcess.map(async (item) => {
         try {
-          const component = Index[activeStyle.name]?.[name]
-          const src = component.files[0]?.path
+          if (item.type === "ComponentPreview" && item.hideCode) {
+            return
+          }
 
-          // Read the source file.
-          const filePath = src
-          let source = fs.readFileSync(filePath, "utf8")
+          let src: string | null = null
 
-          // Replace imports.
-          // TODO: Use @swc/core and a visitor to replace this.
-          // For now a simple regex should do.
-          source = source.replaceAll(`@/registry/new-york-v4/`, "@/components/")
-          source = source.replaceAll("export default", "export")
+          if (item.srcPath) {
+            src = path.join(process.cwd(), item.srcPath)
+          } else {
+            src = getDemoFilePath(item.name, item.styleName)
 
-          // Add code as children so that rehype can take over at build time.
-          node.children?.push(
+            if (!src) {
+              const component = getRegistryEntry(item.name, item.styleName)
+
+              if (!component?.files) {
+                return
+              }
+
+              if (item.type === "ComponentSource" && item.fileName) {
+                src =
+                  component.files.find((file: unknown) => {
+                    if (typeof file === "string") {
+                      return (
+                        file.endsWith(`${item.fileName}.tsx`) ||
+                        file.endsWith(`${item.fileName}.ts`)
+                      )
+                    }
+                    return false
+                  }) || component.files[0]?.path
+              } else {
+                src = component.files[0]?.path
+              }
+            }
+          }
+
+          if (!src) {
+            return
+          }
+
+          const raw = fs.readFileSync(path.join(process.cwd(), src), "utf8")
+          const source = await formatCode(raw, item.styleName)
+
+          item.node.children?.push(
             u("element", {
               tagName: "pre",
               properties: {
@@ -153,11 +194,28 @@ export function rehypeComponent() {
         } catch (error) {
           console.error(error)
         }
-      }
-    })
+      })
+    )
   }
 }
 
 function getNodeAttributeByName(node: UnistNode, name: string) {
   return node.attributes?.find((attribute) => attribute.name === name)
+}
+
+function isTruthyMdxAttribute(
+  attribute?: {
+    value?: unknown
+  } | null
+) {
+  if (!attribute) return false
+
+  if (!("value" in attribute)) return true
+
+  const { value } = attribute
+
+  if (value === undefined || value === null) return true
+  if (typeof value === "boolean") return value
+  if (typeof value === "string") return value !== "false"
+  return Boolean(value)
 }

@@ -64,6 +64,7 @@ export default function ChartExample() {
       <ChartAreaExample />
       <ChartBarExample />
       <ChartLineExample />
+      <ChartPieExample />
       <ChartRadialExample />
       <ChartRadarExample />
     </ExampleWrapper>
@@ -122,10 +123,11 @@ function ChartAreaExample() {
                   tabler="IconTrendingUp"
                   hugeicons="ChartUpIcon"
                   phosphor="TrendUpIcon"
+                  remixicon="RiLineChartLine"
                   className="size-4"
                 />
               </div>
-              <div className="text-muted-foreground flex items-center gap-2 leading-none">
+              <div className="flex items-center gap-2 leading-none text-muted-foreground">
                 January - June 2024
               </div>
             </div>
@@ -192,10 +194,11 @@ function ChartBarExample() {
               tabler="IconTrendingUp"
               hugeicons="ChartUpIcon"
               phosphor="TrendUpIcon"
+              remixicon="RiLineChartLine"
               className="size-4"
             />
           </div>
-          <div className="text-muted-foreground leading-none">
+          <div className="leading-none text-muted-foreground">
             Showing total visitors for the last 6 months
           </div>
         </CardFooter>
@@ -278,10 +281,11 @@ function ChartLineExample() {
                   tabler="IconTrendingUp"
                   hugeicons="ChartUpIcon"
                   phosphor="TrendUpIcon"
+                  remixicon="RiLineChartLine"
                   className="size-4"
                 />
               </div>
-              <div className="text-muted-foreground flex items-center gap-2 leading-none">
+              <div className="flex items-center gap-2 leading-none text-muted-foreground">
                 Showing total visitors for the last 6 months
               </div>
             </div>
@@ -396,10 +400,11 @@ function ChartPieExample() {
               tabler="IconTrendingUp"
               hugeicons="ChartUpIcon"
               phosphor="TrendUpIcon"
+              remixicon="RiLineChartLine"
               className="size-4"
             />
           </div>
-          <div className="text-muted-foreground leading-none">
+          <div className="leading-none text-muted-foreground">
             Showing total visitors for the last 6 months
           </div>
         </CardFooter>
@@ -467,10 +472,11 @@ function ChartRadarExample() {
               tabler="IconTrendingUp"
               hugeicons="ChartUpIcon"
               phosphor="TrendUpIcon"
+              remixicon="RiLineChartLine"
               className="size-4"
             />
           </div>
-          <div className="text-muted-foreground flex items-center gap-2 leading-none">
+          <div className="flex items-center gap-2 leading-none text-muted-foreground">
             January - June 2024
           </div>
         </CardFooter>
@@ -509,8 +515,8 @@ function ChartRadialExample() {
             <RadialBarChart
               data={radialChartData}
               endAngle={100}
-              innerRadius={80}
-              outerRadius={140}
+              innerRadius={64}
+              outerRadius={94}
             >
               <PolarGrid
                 gridType="circle"
@@ -562,10 +568,11 @@ function ChartRadialExample() {
               tabler="IconTrendingUp"
               hugeicons="ChartUpIcon"
               phosphor="TrendUpIcon"
+              remixicon="RiLineChartLine"
               className="size-4"
             />
           </div>
-          <div className="text-muted-foreground leading-none">
+          <div className="leading-none text-muted-foreground">
             Showing total visitors for the last 6 months
           </div>
         </CardFooter>
