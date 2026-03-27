@@ -6,32 +6,35 @@ export async function getPackageManager(
     withFallback: false,
   }
 ): Promise<"yarn" | "pnpm" | "bun" | "npm" | "deno"> {
-  const packageManager = await detect({ programmatic: true, cwd: targetDir })
+  const detected = await detect({ programmatic: true, cwd: targetDir })
 
-  if (packageManager === "yarn@berry") return "yarn"
-  if (packageManager === "pnpm@6") return "pnpm"
-  if (packageManager === "bun") return "bun"
-  if (packageManager === "deno") return "deno"
-  if (!withFallback) {
-    return packageManager ?? "npm"
+  let packageManager: "yarn" | "pnpm" | "bun" | "npm" | "deno" | null =
+    null
+
+  if (detected === "yarn@berry") packageManager = "yarn"
+  else if (detected === "pnpm@6") packageManager = "pnpm"
+  else if (
+    detected === "yarn" ||
+    detected === "pnpm" ||
+    detected === "bun" ||
+    detected === "npm" ||
+    detected === "deno"
+  ) {
+    packageManager = detected
   }
 
-  // Fallback to user agent if not detected.
-  const userAgent = process.env.npm_config_user_agent || ""
+  if (withFallback) {
+    // When fallback is enabled (new project scaffolding),
+    // prefer the package manager used to invoke the CLI.
+    const userAgent = process.env.npm_config_user_agent || ""
 
-  if (userAgent.startsWith("yarn")) {
-    return "yarn"
+    if (userAgent.startsWith("yarn")) return "yarn"
+    if (userAgent.startsWith("pnpm")) return "pnpm"
+    if (userAgent.startsWith("bun")) return "bun"
+    if (userAgent.startsWith("npm")) return "npm"
   }
 
-  if (userAgent.startsWith("pnpm")) {
-    return "pnpm"
-  }
-
-  if (userAgent.startsWith("bun")) {
-    return "bun"
-  }
-
-  return "npm"
+  return packageManager ?? "npm"
 }
 
 export async function getPackageRunner(cwd: string) {
