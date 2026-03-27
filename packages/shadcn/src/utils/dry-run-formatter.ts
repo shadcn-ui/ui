@@ -16,7 +16,7 @@ const ACTION_GLYPHS: Record<DryRunFile["action"], string> = {
 const ACTION_LABELS: Record<DryRunFile["action"], string> = {
   create: "create",
   overwrite: "overwrite",
-  skip: "skip (identical)",
+  skip: "skip",
 }
 
 // Color an action label.

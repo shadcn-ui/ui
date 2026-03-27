@@ -12,6 +12,8 @@ import {
   updateFiles,
 } from "../../../src/utils/updaters/update-files"
 
+import prompts from "prompts"
+
 vi.mock("fs/promises", async () => {
   const actual = (await vi.importActual(
     "fs/promises"
@@ -1071,6 +1073,53 @@ return <div>Hello World</div>
         ],
       }
     `)
+  })
+
+  test("should skip existing files without prompting when noOverwrite is enabled", async () => {
+    const config = await getConfig(
+      path.resolve(__dirname, "../../fixtures/vite-with-tailwind")
+    )
+
+    const promptsMock = vi.mocked(prompts)
+
+    const result = await updateFiles(
+      [
+        {
+          path: "src/components/hello-world.tsx",
+          type: "registry:component",
+          content: `export function HelloWorld() {
+return <div>Hello World</div>
+}`,
+        },
+        {
+          path: "registry/default/ui/button.tsx",
+          type: "registry:ui",
+          content: `export function Button() {
+  return <button>Click this button</button>
+}`,
+        },
+      ],
+      config,
+      {
+        overwrite: false,
+        noOverwrite: true,
+        silent: true,
+      }
+    )
+
+    expect(result).toMatchInlineSnapshot(`
+      {
+        "filesCreated": [
+          "src/components/hello-world.tsx",
+        ],
+        "filesSkipped": [
+          "src/components/ui/button.tsx",
+        ],
+        "filesUpdated": [],
+      }
+    `)
+
+    expect(promptsMock).not.toHaveBeenCalled()
   })
 
   test("should mark .env file as created when it doesn't exist", async () => {
