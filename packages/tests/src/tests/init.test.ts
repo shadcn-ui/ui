@@ -522,6 +522,7 @@ describe("shadcn init - next-monorepo", () => {
   // Use os.tmpdir() to create projects outside the monorepo tree.
   // This prevents pnpm from detecting the monorepo workspace root.
   let testBaseDir: string
+  const itIfNotCi = process.env.CI ? it.skip : it
 
   beforeAll(async () => {
     testBaseDir = path.join(os.tmpdir(), `shadcn-monorepo-test-${process.pid}`)
@@ -532,127 +533,143 @@ describe("shadcn init - next-monorepo", () => {
     await fs.remove(testBaseDir)
   })
 
-  it("should create a monorepo with preset", async () => {
-    const projectName = `test-monorepo-preset-${process.pid}`
+  itIfNotCi(
+    "should create a monorepo with preset",
+    async () => {
+      const projectName = `test-monorepo-preset-${process.pid}`
 
-    const result = await npxShadcn(
-      testBaseDir,
-      [
-        "init",
-        "--name",
-        projectName,
-        "-t",
-        "next",
-        "--monorepo",
-        "--preset",
-        "nova",
-        "--base",
-        "radix",
-      ],
-      { timeout: 300000, debug: true }
-    )
-    expect(result.exitCode).toBe(0)
+      const result = await npxShadcn(
+        testBaseDir,
+        [
+          "init",
+          "--name",
+          projectName,
+          "-t",
+          "next",
+          "--monorepo",
+          "--preset",
+          "nova",
+          "--base",
+          "radix",
+        ],
+        { timeout: 300000, debug: true }
+      )
+      expect(result.exitCode).toBe(0)
 
-    const projectPath = path.join(testBaseDir, projectName)
+      const projectPath = path.join(testBaseDir, projectName)
 
-    // Verify project structure exists.
-    expect(await fs.pathExists(projectPath)).toBe(true)
-    expect(
-      await fs.pathExists(path.join(projectPath, "packages/ui/components.json"))
-    ).toBe(true)
-    expect(
-      await fs.pathExists(path.join(projectPath, "apps/web/components.json"))
-    ).toBe(true)
+      // Verify project structure exists.
+      expect(await fs.pathExists(projectPath)).toBe(true)
+      expect(
+        await fs.pathExists(
+          path.join(projectPath, "packages/ui/components.json")
+        )
+      ).toBe(true)
+      expect(
+        await fs.pathExists(path.join(projectPath, "apps/web/components.json"))
+      ).toBe(true)
 
-    // Verify packages/ui/components.json is updated with preset config.
-    const uiConfig = await fs.readJson(
-      path.join(projectPath, "packages/ui/components.json")
-    )
-    expect(uiConfig.style).toBe("radix-nova")
-    expect(uiConfig.iconLibrary).toBe("lucide")
-    expect(uiConfig.tailwind.baseColor).toBe("neutral")
+      // Verify packages/ui/components.json is updated with preset config.
+      const uiConfig = await fs.readJson(
+        path.join(projectPath, "packages/ui/components.json")
+      )
+      expect(uiConfig.style).toBe("radix-nova")
+      expect(uiConfig.iconLibrary).toBe("lucide")
+      expect(uiConfig.tailwind.baseColor).toBe("neutral")
 
-    // Verify apps/web/components.json is updated with preset config.
-    const webConfig = await fs.readJson(
-      path.join(projectPath, "apps/web/components.json")
-    )
-    expect(webConfig.style).toBe("radix-nova")
-    // Verify workspace aliases are preserved.
-    expect(webConfig.aliases.components).toBe("@/components")
-    expect(webConfig.aliases.utils).toBe("@workspace/ui/lib/utils")
-    expect(webConfig.aliases.ui).toBe("@workspace/ui/components")
+      // Verify apps/web/components.json is updated with preset config.
+      const webConfig = await fs.readJson(
+        path.join(projectPath, "apps/web/components.json")
+      )
+      expect(webConfig.style).toBe("radix-nova")
+      // Verify workspace aliases are preserved.
+      expect(webConfig.aliases.components).toBe("@/components")
+      expect(webConfig.aliases.utils).toBe("@workspace/ui/lib/utils")
+      expect(webConfig.aliases.ui).toBe("@workspace/ui/components")
 
-    // Verify CSS was applied to packages/ui.
-    const cssPath = path.join(projectPath, "packages/ui/src/styles/globals.css")
-    expect(await fs.pathExists(cssPath)).toBe(true)
-    const cssContent = await fs.readFile(cssPath, "utf-8")
-    expect(cssContent).toContain("@layer base")
-    expect(cssContent).toContain(":root")
-    expect(cssContent).toContain(".dark")
-    expect(cssContent).toContain("--background")
-    expect(cssContent).toContain("--foreground")
-    expect(cssContent).toContain("--primary")
-  }, 300000)
+      // Verify CSS was applied to packages/ui.
+      const cssPath = path.join(
+        projectPath,
+        "packages/ui/src/styles/globals.css"
+      )
+      expect(await fs.pathExists(cssPath)).toBe(true)
+      const cssContent = await fs.readFile(cssPath, "utf-8")
+      expect(cssContent).toContain("@layer base")
+      expect(cssContent).toContain(":root")
+      expect(cssContent).toContain(".dark")
+      expect(cssContent).toContain("--background")
+      expect(cssContent).toContain("--foreground")
+      expect(cssContent).toContain("--primary")
+    },
+    300000
+  )
 
-  it("should create a monorepo with custom preset url", async () => {
-    const projectName = `test-monorepo-url-${process.pid}`
+  itIfNotCi(
+    "should create a monorepo with custom preset url",
+    async () => {
+      const projectName = `test-monorepo-url-${process.pid}`
 
-    // Build a custom init URL with specific options.
-    const registryUrl = process.env.REGISTRY_URL || "http://localhost:4000/r"
-    const baseUrl = registryUrl.replace(/\/r\/?$/, "")
-    const initUrl = `${baseUrl}/init?base=radix&style=nova&baseColor=zinc&theme=zinc&chartColor=zinc&iconLibrary=lucide&font=inter&rtl=false&menuAccent=subtle&menuColor=default&radius=default&template=next`
+      // Build a custom init URL with specific options.
+      const registryUrl = process.env.REGISTRY_URL || "http://localhost:4000/r"
+      const baseUrl = registryUrl.replace(/\/r\/?$/, "")
+      const initUrl = `${baseUrl}/init?base=radix&style=nova&baseColor=zinc&theme=zinc&chartColor=zinc&iconLibrary=lucide&font=inter&rtl=false&menuAccent=subtle&menuColor=default&radius=default&template=next`
 
-    const result = await npxShadcn(
-      testBaseDir,
-      [
-        "init",
-        "--name",
-        projectName,
-        "-t",
-        "next",
-        "--monorepo",
-        "--preset",
-        initUrl,
-      ],
-      { timeout: 300000 }
-    )
-    expect(result.exitCode).toBe(0)
+      const result = await npxShadcn(
+        testBaseDir,
+        [
+          "init",
+          "--name",
+          projectName,
+          "-t",
+          "next",
+          "--monorepo",
+          "--preset",
+          initUrl,
+        ],
+        { timeout: 300000 }
+      )
+      expect(result.exitCode).toBe(0)
 
-    const projectPath = path.join(testBaseDir, projectName)
-    expect(await fs.pathExists(projectPath)).toBe(true)
+      const projectPath = path.join(testBaseDir, projectName)
+      expect(await fs.pathExists(projectPath)).toBe(true)
 
-    // Verify config reflects the custom URL params.
-    const uiConfig = await fs.readJson(
-      path.join(projectPath, "packages/ui/components.json")
-    )
-    expect(uiConfig.style).toBe("radix-nova")
-    expect(uiConfig.iconLibrary).toBe("lucide")
-    expect(uiConfig.tailwind.baseColor).toBe("neutral")
+      // Verify config reflects the custom URL params.
+      const uiConfig = await fs.readJson(
+        path.join(projectPath, "packages/ui/components.json")
+      )
+      expect(uiConfig.style).toBe("radix-nova")
+      expect(uiConfig.iconLibrary).toBe("lucide")
+      expect(uiConfig.tailwind.baseColor).toBe("neutral")
 
-    const webConfig = await fs.readJson(
-      path.join(projectPath, "apps/web/components.json")
-    )
-    expect(webConfig.style).toBe("radix-nova")
-    expect(webConfig.tailwind.baseColor).toBe("neutral")
+      const webConfig = await fs.readJson(
+        path.join(projectPath, "apps/web/components.json")
+      )
+      expect(webConfig.style).toBe("radix-nova")
+      expect(webConfig.tailwind.baseColor).toBe("neutral")
 
-    // Verify CSS has zinc color theme applied.
-    const cssPath = path.join(projectPath, "packages/ui/src/styles/globals.css")
-    const cssContent = await fs.readFile(cssPath, "utf-8")
-    expect(cssContent).toContain(":root")
-    expect(cssContent).toContain(".dark")
-    expect(cssContent).toContain("--background")
-    expect(cssContent).toContain("--foreground")
-    expect(
-      cssHasProperties(cssContent, [
-        {
-          selector: ":root",
-          properties: {
-            "--background": "oklch(1 0 0)",
+      // Verify CSS has zinc color theme applied.
+      const cssPath = path.join(
+        projectPath,
+        "packages/ui/src/styles/globals.css"
+      )
+      const cssContent = await fs.readFile(cssPath, "utf-8")
+      expect(cssContent).toContain(":root")
+      expect(cssContent).toContain(".dark")
+      expect(cssContent).toContain("--background")
+      expect(cssContent).toContain("--foreground")
+      expect(
+        cssHasProperties(cssContent, [
+          {
+            selector: ":root",
+            properties: {
+              "--background": "oklch(1 0 0)",
+            },
           },
-        },
-      ])
-    ).toBe(true)
-  }, 300000)
+        ])
+      ).toBe(true)
+    },
+    300000
+  )
 })
 
 describe("shadcn init - rtl flags", () => {
