@@ -18,6 +18,7 @@ import {
 import { createRegistryServer } from "../../../tests/src/utils/registry"
 import { setRegistryHeaders } from "./context"
 import {
+  fetchRegistryItems,
   resolveRegistryItemsFromRegistries,
   resolveRegistryTree,
 } from "./resolver"
@@ -384,6 +385,67 @@ describe("resolveRegistryItemsFromRegistries", () => {
       "https://api.com/button.json?existing=true&version=1.0",
     ])
     expect(setRegistryHeaders).toHaveBeenCalledWith({})
+  })
+})
+
+describe("fetchRegistryItems", () => {
+  it("uses the Tailwind v4 style registry for direct item fetches", async () => {
+    const registryUrl = process.env.REGISTRY_URL || "http://localhost:4000/r"
+    const mockServer = setupServer(
+      http.get(`${registryUrl}/styles/new-york-v4/combobox.json`, () => {
+        return HttpResponse.json({
+          name: "combobox",
+          type: "registry:ui",
+          files: [
+            {
+              path: "components/ui/combobox.tsx",
+              type: "registry:ui",
+              content: "export function Combobox() { return null }",
+            },
+          ],
+        })
+      }),
+      http.get(`${registryUrl}/styles/new-york/combobox.json`, () => {
+        return HttpResponse.json({ error: "Item not found" }, { status: 404 })
+      })
+    )
+
+    mockServer.listen({ onUnhandledRequest: "error" })
+
+    const tempDir = await fs.mkdtemp(path.join(tmpdir(), "shadcn-tailwind-v4-"))
+    await fs.writeFile(
+      path.join(tempDir, "package.json"),
+      JSON.stringify(
+        {
+          name: "tailwind-v4-project",
+          private: true,
+          dependencies: {
+            tailwindcss: "^4.1.0",
+          },
+        },
+        null,
+        2
+      )
+    )
+
+    try {
+      const [result] = await fetchRegistryItems(
+        ["combobox"],
+        {
+          style: "new-york",
+          resolvedPaths: {
+            cwd: tempDir,
+          },
+        } as any,
+        { useCache: false }
+      )
+
+      expect(result.name).toBe("combobox")
+      expect(result.files?.[0]?.path).toContain("new-york-v4/ui/combobox.tsx")
+    } finally {
+      await fs.rm(tempDir, { recursive: true, force: true })
+      mockServer.close()
+    }
   })
 })
 
