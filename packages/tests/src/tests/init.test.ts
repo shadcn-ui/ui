@@ -600,7 +600,7 @@ describe("shadcn init - next-monorepo", () => {
     // Build a custom init URL with specific options.
     const registryUrl = process.env.REGISTRY_URL || "http://localhost:4000/r"
     const baseUrl = registryUrl.replace(/\/r\/?$/, "")
-    const initUrl = `${baseUrl}/init?base=radix&style=nova&baseColor=zinc&theme=zinc&iconLibrary=lucide&font=inter&rtl=false&menuAccent=subtle&menuColor=default&radius=default&template=next`
+    const initUrl = `${baseUrl}/init?base=radix&style=nova&baseColor=zinc&theme=zinc&chartColor=zinc&iconLibrary=lucide&font=inter&rtl=false&menuAccent=subtle&menuColor=default&radius=default&template=next`
 
     const result = await npxShadcn(
       testBaseDir,
