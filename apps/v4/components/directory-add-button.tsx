@@ -52,11 +52,13 @@ export function DirectoryAddButton({
   const packageManager = config.packageManager || "pnpm"
 
   const commands = React.useMemo(() => {
+    const quotedRegistryName = JSON.stringify(registry.name)
+
     return {
-      pnpm: `pnpm dlx shadcn@latest registry add ${registry.name}`,
-      npm: `npx shadcn@latest registry add ${registry.name}`,
-      yarn: `yarn dlx shadcn@latest registry add ${registry.name}`,
-      bun: `bunx --bun shadcn@latest registry add ${registry.name}`,
+      pnpm: `pnpm dlx shadcn@latest registry add ${quotedRegistryName}`,
+      npm: `npx shadcn@latest registry add ${quotedRegistryName}`,
+      yarn: `yarn dlx shadcn@latest registry add ${quotedRegistryName}`,
+      bun: `bunx --bun shadcn@latest registry add ${quotedRegistryName}`,
     }
   }, [registry.name])
 
