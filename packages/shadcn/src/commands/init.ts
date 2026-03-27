@@ -21,6 +21,7 @@ import {
   templates,
 } from "@/src/templates/index"
 import { addComponents } from "@/src/utils/add-components"
+import { applyBaseToStyle } from "@/src/utils/base-style"
 import { createProject } from "@/src/utils/create-project"
 import { loadEnvFiles } from "@/src/utils/env-loader"
 import * as ERRORS from "@/src/utils/errors"
@@ -709,6 +710,11 @@ export async function runInit(
   // Ensure rtl is set from CLI option (takes priority over registryBaseConfig).
   if (options.rtl !== undefined) {
     config.rtl = options.rtl
+  }
+
+  // Ensure --base flag wins when style has a base prefix.
+  if (options.base) {
+    config.style = applyBaseToStyle(config.style, options.base)
   }
 
   // Make sure to filter out built-in registries.
