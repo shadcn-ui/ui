@@ -20,6 +20,11 @@ import { ChartBarMixed } from "@/registry/new-york-v4/charts/chart-bar-mixed"
 import { ChartBarMultiple } from "@/registry/new-york-v4/charts/chart-bar-multiple"
 import { ChartBarNegative } from "@/registry/new-york-v4/charts/chart-bar-negative"
 import { ChartBarStacked } from "@/registry/new-york-v4/charts/chart-bar-stacked"
+import { ChartComposedAxes } from "@/registry/new-york-v4/charts/chart-composed-axes"
+import { ChartComposedBarLine } from "@/registry/new-york-v4/charts/chart-composed-bar-line"
+import { ChartComposedDashed } from "@/registry/new-york-v4/charts/chart-composed-dashed"
+import { ChartComposedDefault } from "@/registry/new-york-v4/charts/chart-composed-default"
+import { ChartComposedStacked } from "@/registry/new-york-v4/charts/chart-composed-stacked"
 import { ChartLineDefault } from "@/registry/new-york-v4/charts/chart-line-default"
 import { ChartLineDots } from "@/registry/new-york-v4/charts/chart-line-dots"
 import { ChartLineDotsColors } from "@/registry/new-york-v4/charts/chart-line-dots-colors"
@@ -87,6 +92,7 @@ interface ChartGroups {
   radar: ChartItem[]
   radial: ChartItem[]
   tooltip: ChartItem[]
+  composed: ChartItem[]
 }
 
 export const charts: ChartGroups = {
@@ -198,6 +204,13 @@ export const charts: ChartGroups = {
     { id: "chart-tooltip-icons", component: ChartTooltipIcons },
     { id: "chart-tooltip-advanced", component: ChartTooltipAdvanced },
   ],
+  composed: [
+    { id: "chart-composed-default", component: ChartComposedDefault },
+    { id: "chart-composed-bar-line", component: ChartComposedBarLine },
+    { id: "chart-composed-dashed", component: ChartComposedDashed },
+    { id: "chart-composed-axes", component: ChartComposedAxes },
+    { id: "chart-composed-stacked", component: ChartComposedStacked },
+  ],
 }
 
 // Export individual components for backward compatibility
@@ -272,4 +285,9 @@ export {
   ChartTooltipFormatter,
   ChartTooltipIcons,
   ChartTooltipAdvanced,
+  ChartComposedDefault,
+  ChartComposedRevenue,
+  ChartComposedWeather,
+  ChartComposedPerformance,
+  ChartComposedStacked,
 }

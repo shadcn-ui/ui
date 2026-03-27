@@ -852,4 +852,65 @@ export const charts: Registry["items"] = [
     ],
     categories: ["charts", "charts-tooltip"],
   },
+  // Composed Charts
+  {
+    name: "chart-composed-default",
+    type: "registry:block",
+    registryDependencies: ["card", "chart"],
+    files: [
+      {
+        path: "charts/chart-composed-default.tsx",
+        type: "registry:block",
+      },
+    ],
+    categories: ["charts", "charts-composed"],
+  },
+  {
+    name: "chart-composed-bar-line",
+    type: "registry:block",
+    registryDependencies: ["card", "chart"],
+    files: [
+      {
+        path: "charts/chart-composed-bar-line.tsx",
+        type: "registry:block",
+      },
+    ],
+    categories: ["charts", "charts-composed"],
+  },
+  {
+    name: "chart-composed-dashed",
+    type: "registry:block",
+    registryDependencies: ["card", "chart"],
+    files: [
+      {
+        path: "charts/chart-composed-dashed.tsx",
+        type: "registry:block",
+      },
+    ],
+    categories: ["charts", "charts-composed"],
+  },
+  {
+    name: "chart-composed-axes",
+    type: "registry:block",
+    registryDependencies: ["card", "chart"],
+    files: [
+      {
+        path: "charts/chart-composed-axes.tsx",
+        type: "registry:block",
+      },
+    ],
+    categories: ["charts", "charts-composed"],
+  },
+  {
+    name: "chart-composed-stacked",
+    type: "registry:block",
+    registryDependencies: ["card", "chart"],
+    files: [
+      {
+        path: "charts/chart-composed-stacked.tsx",
+        type: "registry:block",
+      },
+    ],
+    categories: ["charts", "charts-composed"],
+  },
 ]

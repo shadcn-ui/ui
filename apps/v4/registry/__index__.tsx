@@ -3216,6 +3216,101 @@ export const Index: Record<string, Record<string, any>> = {
       categories: ["charts","charts-tooltip"],
       meta: undefined,
     },
+    "chart-composed-default": {
+      name: "chart-composed-default",
+      title: "undefined",
+      description: "",
+      type: "registry:block",
+      registryDependencies: ["card","chart"],
+      files: [{
+        path: "registry/new-york-v4/charts/chart-composed-default.tsx",
+        type: "registry:block",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/new-york-v4/charts/chart-composed-default.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: ["charts","charts-composed"],
+      meta: undefined,
+    },
+    "chart-composed-bar-line": {
+      name: "chart-composed-bar-line",
+      title: "undefined",
+      description: "",
+      type: "registry:block",
+      registryDependencies: ["card","chart"],
+      files: [{
+        path: "registry/new-york-v4/charts/chart-composed-bar-line.tsx",
+        type: "registry:block",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/new-york-v4/charts/chart-composed-bar-line.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: ["charts","charts-composed"],
+      meta: undefined,
+    },
+    "chart-composed-dashed": {
+      name: "chart-composed-dashed",
+      title: "undefined",
+      description: "",
+      type: "registry:block",
+      registryDependencies: ["card","chart"],
+      files: [{
+        path: "registry/new-york-v4/charts/chart-composed-dashed.tsx",
+        type: "registry:block",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/new-york-v4/charts/chart-composed-dashed.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: ["charts","charts-composed"],
+      meta: undefined,
+    },
+    "chart-composed-axes": {
+      name: "chart-composed-axes",
+      title: "undefined",
+      description: "",
+      type: "registry:block",
+      registryDependencies: ["card","chart"],
+      files: [{
+        path: "registry/new-york-v4/charts/chart-composed-axes.tsx",
+        type: "registry:block",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/new-york-v4/charts/chart-composed-axes.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: ["charts","charts-composed"],
+      meta: undefined,
+    },
+    "chart-composed-stacked": {
+      name: "chart-composed-stacked",
+      title: "undefined",
+      description: "",
+      type: "registry:block",
+      registryDependencies: ["card","chart"],
+      files: [{
+        path: "registry/new-york-v4/charts/chart-composed-stacked.tsx",
+        type: "registry:block",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/new-york-v4/charts/chart-composed-stacked.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: ["charts","charts-composed"],
+      meta: undefined,
+    },
     "utils": {
       name: "utils",
       title: "undefined",

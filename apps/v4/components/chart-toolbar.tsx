@@ -3,6 +3,7 @@
 import {
   AreaChartIcon,
   BarChartBigIcon,
+  ChartNoAxesCombinedIcon,
   HexagonIcon,
   LineChartIcon,
   MousePointer2Icon,
@@ -99,6 +100,14 @@ function ChartTitle({ chart }: { chart: Chart }) {
       <>
         <MousePointer2Icon />
         Tooltip
+      </>
+    )
+  }
+
+  if (chart.name.includes("chart-composed")) {
+    return (
+      <>
+        <ChartNoAxesCombinedIcon /> Composed Chart
       </>
     )
   }
