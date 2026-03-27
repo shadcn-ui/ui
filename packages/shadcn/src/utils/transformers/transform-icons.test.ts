@@ -367,6 +367,35 @@ export function Component() {
       `)
     })
 
+    test("does not add strokeWidth if already forwarded as expression (Spinner pattern)", async () => {
+      expect(
+        await transform(
+          {
+            filename: "test.tsx",
+            raw: `import * as React from "react"
+import { IconPlaceholder } from "@/app/(create)/create/components/icon-placeholder"
+
+function Spinner({ className, strokeWidth = 2, ...props }: React.ComponentProps<"svg"> & { strokeWidth?: number }) {
+  return <IconPlaceholder hugeicons="Loading03Icon" strokeWidth={strokeWidth} className={className} {...props} />
+}`,
+            config: {
+              ...testConfig,
+              iconLibrary: "hugeicons",
+            },
+          },
+          [transformIcons]
+        )
+      ).toMatchInlineSnapshot(`
+        "import * as React from "react"
+        import { HugeiconsIcon } from "@hugeicons/react"
+        import { Loading03Icon } from "@hugeicons/core-free-icons"
+
+        function Spinner({ className, strokeWidth = 2, ...props }: React.ComponentProps<"svg"> & { strokeWidth?: number }) {
+          return <HugeiconsIcon icon={Loading03Icon} strokeWidth={strokeWidth} className={className} {...props} />
+        }"
+      `)
+    })
+
     test("handles multiple icons", async () => {
       expect(
         await transform(
