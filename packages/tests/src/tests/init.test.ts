@@ -745,6 +745,7 @@ describe("shadcn init - existing components.json", () => {
     // Run init with an invalid component - this should fail and restore.
     await npxShadcn(fixturePath, [
       "init",
+      "--force",
       "invalid-component-that-does-not-exist",
     ])
 
