@@ -11,14 +11,13 @@ import { Button } from "@/registry/bases/ark/ui/button"
 import { Card, CardContent, CardFooter } from "@/registry/bases/ark/ui/card"
 import {
   Combobox,
-  ComboboxClearTrigger,
   ComboboxContent,
   ComboboxControl,
+  ComboboxEmpty,
   ComboboxInput,
   ComboboxItem,
   ComboboxItemGroup,
   ComboboxItemGroupLabel,
-  ComboboxItemIndicator,
   ComboboxItemText,
   ComboboxList,
   ComboboxTrigger,
@@ -109,22 +108,42 @@ const countryItems = [
   { code: "dz", value: "algeria", label: "Algeria", continent: "Africa" },
   { code: "ad", value: "andorra", label: "Andorra", continent: "Europe" },
   { code: "ao", value: "angola", label: "Angola", continent: "Africa" },
-  { code: "ar", value: "argentina", label: "Argentina", continent: "South America" },
+  {
+    code: "ar",
+    value: "argentina",
+    label: "Argentina",
+    continent: "South America",
+  },
   { code: "am", value: "armenia", label: "Armenia", continent: "Asia" },
   { code: "au", value: "australia", label: "Australia", continent: "Oceania" },
   { code: "at", value: "austria", label: "Austria", continent: "Europe" },
   { code: "az", value: "azerbaijan", label: "Azerbaijan", continent: "Asia" },
-  { code: "bs", value: "bahamas", label: "Bahamas", continent: "North America" },
+  {
+    code: "bs",
+    value: "bahamas",
+    label: "Bahamas",
+    continent: "North America",
+  },
   { code: "bh", value: "bahrain", label: "Bahrain", continent: "Asia" },
   { code: "bd", value: "bangladesh", label: "Bangladesh", continent: "Asia" },
-  { code: "bb", value: "barbados", label: "Barbados", continent: "North America" },
+  {
+    code: "bb",
+    value: "barbados",
+    label: "Barbados",
+    continent: "North America",
+  },
   { code: "by", value: "belarus", label: "Belarus", continent: "Europe" },
   { code: "be", value: "belgium", label: "Belgium", continent: "Europe" },
   { code: "bz", value: "belize", label: "Belize", continent: "North America" },
   { code: "br", value: "brazil", label: "Brazil", continent: "South America" },
   { code: "ca", value: "canada", label: "Canada", continent: "North America" },
   { code: "cn", value: "china", label: "China", continent: "Asia" },
-  { code: "co", value: "colombia", label: "Colombia", continent: "South America" },
+  {
+    code: "co",
+    value: "colombia",
+    label: "Colombia",
+    continent: "South America",
+  },
   { code: "eg", value: "egypt", label: "Egypt", continent: "Africa" },
   { code: "fr", value: "france", label: "France", continent: "Europe" },
   { code: "de", value: "germany", label: "Germany", continent: "Europe" },
@@ -136,8 +155,18 @@ const countryItems = [
   { code: "ng", value: "nigeria", label: "Nigeria", continent: "Africa" },
   { code: "kr", value: "south-korea", label: "South Korea", continent: "Asia" },
   { code: "es", value: "spain", label: "Spain", continent: "Europe" },
-  { code: "gb", value: "united-kingdom", label: "United Kingdom", continent: "Europe" },
-  { code: "us", value: "united-states", label: "United States", continent: "North America" },
+  {
+    code: "gb",
+    value: "united-kingdom",
+    label: "United Kingdom",
+    continent: "Europe",
+  },
+  {
+    code: "us",
+    value: "united-states",
+    label: "United States",
+    continent: "North America",
+  },
 ]
 
 const americasItems = [
@@ -186,16 +215,13 @@ function ComboboxBasic() {
         collection={collection}
         onInputValueChange={(details) => filter(details.inputValue)}
       >
-        <ComboboxControl>
-          <ComboboxInput placeholder="Select a framework" />
-          <ComboboxTrigger />
-        </ComboboxControl>
+        <ComboboxInput placeholder="Select a framework" />
         <ComboboxContent>
+          <ComboboxEmpty>No items found.</ComboboxEmpty>
           <ComboboxList>
             {collection.items.map((item) => (
               <ComboboxItem key={item.value} item={item}>
                 <ComboboxItemText>{item.label}</ComboboxItemText>
-                <ComboboxItemIndicator />
               </ComboboxItem>
             ))}
           </ComboboxList>
@@ -213,16 +239,12 @@ function ComboboxDisabled() {
   return (
     <Example title="Disabled">
       <Combobox collection={collection} disabled>
-        <ComboboxControl>
-          <ComboboxInput placeholder="Select a framework" />
-          <ComboboxTrigger />
-        </ComboboxControl>
+        <ComboboxInput placeholder="Select a framework" />
         <ComboboxContent>
           <ComboboxList>
             {collection.items.map((item) => (
               <ComboboxItem key={item.value} item={item}>
                 <ComboboxItemText>{item.label}</ComboboxItemText>
-                <ComboboxItemIndicator />
               </ComboboxItem>
             ))}
           </ComboboxList>
@@ -237,6 +259,7 @@ function ComboboxDisabledItems() {
   const { collection, filter } = useListCollection({
     initialItems: frameworkItems,
     filter: contains,
+    isItemDisabled: (item) => disabledFrameworks.includes(item.value),
   })
 
   return (
@@ -245,20 +268,12 @@ function ComboboxDisabledItems() {
         collection={collection}
         onInputValueChange={(details) => filter(details.inputValue)}
       >
-        <ComboboxControl>
-          <ComboboxInput placeholder="Select a framework" />
-          <ComboboxTrigger />
-        </ComboboxControl>
+        <ComboboxInput placeholder="Select a framework" />
         <ComboboxContent>
           <ComboboxList>
             {collection.items.map((item) => (
-              <ComboboxItem
-                key={item.value}
-                item={item}
-                disabled={disabledFrameworks.includes(item.value)}
-              >
+              <ComboboxItem key={item.value} item={item}>
                 <ComboboxItemText>{item.label}</ComboboxItemText>
-                <ComboboxItemIndicator />
               </ComboboxItem>
             ))}
           </ComboboxList>
@@ -283,16 +298,12 @@ function ComboboxInvalid() {
           onInputValueChange={(details) => filter(details.inputValue)}
           invalid
         >
-          <ComboboxControl>
-            <ComboboxInput placeholder="Select a framework" />
-            <ComboboxTrigger />
-          </ComboboxControl>
+          <ComboboxInput placeholder="Select a framework" />
           <ComboboxContent>
             <ComboboxList>
               {collection.items.map((item) => (
                 <ComboboxItem key={item.value} item={item}>
                   <ComboboxItemText>{item.label}</ComboboxItemText>
-                  <ComboboxItemIndicator />
                 </ComboboxItem>
               ))}
             </ComboboxList>
@@ -307,19 +318,15 @@ function ComboboxInvalid() {
             onInputValueChange={(details) => filter(details.inputValue)}
             invalid
           >
-            <ComboboxControl>
-              <ComboboxInput
-                id="combobox-framework-invalid"
-                placeholder="Select a framework"
-              />
-              <ComboboxTrigger />
-            </ComboboxControl>
+            <ComboboxInput
+              id="combobox-framework-invalid"
+              placeholder="Select a framework"
+            />
             <ComboboxContent>
               <ComboboxList>
                 {collection.items.map((item) => (
                   <ComboboxItem key={item.value} item={item}>
                     <ComboboxItemText>{item.label}</ComboboxItemText>
-                    <ComboboxItemIndicator />
                   </ComboboxItem>
                 ))}
               </ComboboxList>
@@ -347,17 +354,12 @@ function ComboboxWithClear() {
         onInputValueChange={(details) => filter(details.inputValue)}
         defaultValue={["nextjs"]}
       >
-        <ComboboxControl>
-          <ComboboxInput placeholder="Select a framework" />
-          <ComboboxClearTrigger />
-          <ComboboxTrigger />
-        </ComboboxControl>
+        <ComboboxInput placeholder="Select a framework" showClear />
         <ComboboxContent>
           <ComboboxList>
             {collection.items.map((item) => (
               <ComboboxItem key={item.value} item={item}>
                 <ComboboxItemText>{item.label}</ComboboxItemText>
-                <ComboboxItemIndicator />
               </ComboboxItem>
             ))}
           </ComboboxList>
@@ -390,10 +392,7 @@ function ComboboxWithGroups() {
         collection={collection}
         onInputValueChange={(details) => filter(details.inputValue)}
       >
-        <ComboboxControl>
-          <ComboboxInput placeholder="Select a timezone" />
-          <ComboboxTrigger />
-        </ComboboxControl>
+        <ComboboxInput placeholder="Select a timezone" />
         <ComboboxContent>
           <ComboboxList>
             {filteredAmericas.length > 0 && (
@@ -402,7 +401,6 @@ function ComboboxWithGroups() {
                 {filteredAmericas.map((item) => (
                   <ComboboxItem key={item.value} item={item}>
                     <ComboboxItemText>{item.label}</ComboboxItemText>
-                    <ComboboxItemIndicator />
                   </ComboboxItem>
                 ))}
               </ComboboxItemGroup>
@@ -413,7 +411,6 @@ function ComboboxWithGroups() {
                 {filteredEurope.map((item) => (
                   <ComboboxItem key={item.value} item={item}>
                     <ComboboxItemText>{item.label}</ComboboxItemText>
-                    <ComboboxItemIndicator />
                   </ComboboxItem>
                 ))}
               </ComboboxItemGroup>
@@ -424,7 +421,6 @@ function ComboboxWithGroups() {
                 {filteredAsiaPacific.map((item) => (
                   <ComboboxItem key={item.value} item={item}>
                     <ComboboxItemText>{item.label}</ComboboxItemText>
-                    <ComboboxItemIndicator />
                   </ComboboxItem>
                 ))}
               </ComboboxItemGroup>
@@ -459,10 +455,7 @@ function ComboboxWithGroupsAndSeparator() {
         collection={collection}
         onInputValueChange={(details) => filter(details.inputValue)}
       >
-        <ComboboxControl>
-          <ComboboxInput placeholder="Select a timezone" />
-          <ComboboxTrigger />
-        </ComboboxControl>
+        <ComboboxInput placeholder="Select a timezone" />
         <ComboboxContent>
           <ComboboxList>
             {filteredAmericas.length > 0 && (
@@ -471,7 +464,6 @@ function ComboboxWithGroupsAndSeparator() {
                 {filteredAmericas.map((item) => (
                   <ComboboxItem key={item.value} item={item}>
                     <ComboboxItemText>{item.label}</ComboboxItemText>
-                    <ComboboxItemIndicator />
                   </ComboboxItem>
                 ))}
               </ComboboxItemGroup>
@@ -482,7 +474,6 @@ function ComboboxWithGroupsAndSeparator() {
                 {filteredEurope.map((item) => (
                   <ComboboxItem key={item.value} item={item}>
                     <ComboboxItemText>{item.label}</ComboboxItemText>
-                    <ComboboxItemIndicator />
                   </ComboboxItem>
                 ))}
               </ComboboxItemGroup>
@@ -493,7 +484,6 @@ function ComboboxWithGroupsAndSeparator() {
                 {filteredAsiaPacific.map((item) => (
                   <ComboboxItem key={item.value} item={item}>
                     <ComboboxItemText>{item.label}</ComboboxItemText>
-                    <ComboboxItemIndicator />
                   </ComboboxItem>
                 ))}
               </ComboboxItemGroup>
@@ -536,19 +526,15 @@ function ComboboxWithForm() {
                   onInputValueChange={(details) => filter(details.inputValue)}
                   name="framework"
                 >
-                  <ComboboxControl>
-                    <ComboboxInput
-                      id="framework"
-                      placeholder="Select a framework"
-                    />
-                    <ComboboxTrigger />
-                  </ComboboxControl>
+                  <ComboboxInput
+                    id="framework"
+                    placeholder="Select a framework"
+                  />
                   <ComboboxContent>
                     <ComboboxList>
                       {collection.items.map((item) => (
                         <ComboboxItem key={item.value} item={item}>
                           <ComboboxItemText>{item.label}</ComboboxItemText>
-                          <ComboboxItemIndicator />
                         </ComboboxItem>
                       ))}
                     </ComboboxList>
@@ -586,16 +572,12 @@ function ComboboxLargeList() {
         collection={collection}
         onInputValueChange={(details) => filter(details.inputValue)}
       >
-        <ComboboxControl>
-          <ComboboxInput placeholder="Search from 100 items" />
-          <ComboboxTrigger />
-        </ComboboxControl>
+        <ComboboxInput placeholder="Search from 100 items" />
         <ComboboxContent>
           <ComboboxList>
             {collection.items.map((item) => (
               <ComboboxItem key={item.value} item={item}>
                 <ComboboxItemText>{item.label}</ComboboxItemText>
-                <ComboboxItemIndicator />
               </ComboboxItem>
             ))}
           </ComboboxList>
@@ -619,16 +601,12 @@ function ComboboxAutoHighlight() {
         onInputValueChange={(details) => filter(details.inputValue)}
         autoFocus
       >
-        <ComboboxControl>
-          <ComboboxInput placeholder="Select a framework" />
-          <ComboboxTrigger />
-        </ComboboxControl>
+        <ComboboxInput placeholder="Select a framework" />
         <ComboboxContent>
           <ComboboxList>
             {collection.items.map((item) => (
               <ComboboxItem key={item.value} item={item}>
                 <ComboboxItemText>{item.label}</ComboboxItemText>
-                <ComboboxItemIndicator />
               </ComboboxItem>
             ))}
           </ComboboxList>
@@ -661,17 +639,7 @@ function ComboxboxInputAddon() {
         collection={collection}
         onInputValueChange={(details) => filter(details.inputValue)}
       >
-        <ComboboxControl>
-          <IconPlaceholder
-            lucide="GlobeIcon"
-            tabler="IconGlobe"
-            hugeicons="Globe02Icon"
-            phosphor="GlobeIcon"
-            remixicon="RiGlobeLine"
-          />
-          <ComboboxInput placeholder="Select a timezone" />
-          <ComboboxTrigger />
-        </ComboboxControl>
+        <ComboboxInput placeholder="Select a timezone" />
         <ComboboxContent>
           <ComboboxList>
             {filteredAmericas.length > 0 && (
@@ -680,7 +648,6 @@ function ComboxboxInputAddon() {
                 {filteredAmericas.map((item) => (
                   <ComboboxItem key={item.value} item={item}>
                     <ComboboxItemText>{item.label}</ComboboxItemText>
-                    <ComboboxItemIndicator />
                   </ComboboxItem>
                 ))}
               </ComboboxItemGroup>
@@ -691,7 +658,6 @@ function ComboxboxInputAddon() {
                 {filteredEurope.map((item) => (
                   <ComboboxItem key={item.value} item={item}>
                     <ComboboxItemText>{item.label}</ComboboxItemText>
-                    <ComboboxItemIndicator />
                   </ComboboxItem>
                 ))}
               </ComboboxItemGroup>
@@ -702,7 +668,6 @@ function ComboxboxInputAddon() {
                 {filteredAsiaPacific.map((item) => (
                   <ComboboxItem key={item.value} item={item}>
                     <ComboboxItemText>{item.label}</ComboboxItemText>
-                    <ComboboxItemIndicator />
                   </ComboboxItem>
                 ))}
               </ComboboxItemGroup>
@@ -728,7 +693,7 @@ function ComboboxInPopup() {
         onInputValueChange={(details) => filter(details.inputValue)}
       >
         <ComboboxControl>
-          <ComboboxTrigger asChild>
+          <ComboboxTrigger>
             <Button
               variant="outline"
               className="w-64 justify-between font-normal"
@@ -738,12 +703,11 @@ function ComboboxInPopup() {
           </ComboboxTrigger>
         </ComboboxControl>
         <ComboboxContent>
-          <ComboboxInput placeholder="Search" />
+          <ComboboxInput placeholder="Search" showTrigger={false} />
           <ComboboxList>
             {collection.items.map((item) => (
               <ComboboxItem key={item.value} item={item}>
                 <ComboboxItemText>{item.label}</ComboboxItemText>
-                <ComboboxItemIndicator />
               </ComboboxItem>
             ))}
           </ComboboxList>
@@ -768,16 +732,12 @@ function ComboboxMultiple() {
         multiple
         defaultValue={["nextjs"]}
       >
-        <ComboboxControl>
-          <ComboboxInput placeholder="Select frameworks" />
-          <ComboboxTrigger />
-        </ComboboxControl>
+        <ComboboxInput placeholder="Select frameworks" />
         <ComboboxContent>
           <ComboboxList>
             {collection.items.map((item) => (
               <ComboboxItem key={item.value} item={item}>
                 <ComboboxItemText>{item.label}</ComboboxItemText>
-                <ComboboxItemIndicator />
               </ComboboxItem>
             ))}
           </ComboboxList>
@@ -800,16 +760,12 @@ function ComboboxMultipleDisabled() {
         defaultValue={["nextjs", "sveltekit"]}
         disabled
       >
-        <ComboboxControl>
-          <ComboboxInput placeholder="Select frameworks" />
-          <ComboboxTrigger />
-        </ComboboxControl>
+        <ComboboxInput placeholder="Select frameworks" />
         <ComboboxContent>
           <ComboboxList>
             {collection.items.map((item) => (
               <ComboboxItem key={item.value} item={item}>
                 <ComboboxItemText>{item.label}</ComboboxItemText>
-                <ComboboxItemIndicator />
               </ComboboxItem>
             ))}
           </ComboboxList>
@@ -836,16 +792,12 @@ function ComboboxMultipleInvalid() {
           defaultValue={["nextjs", "sveltekit"]}
           invalid
         >
-          <ComboboxControl>
-            <ComboboxInput placeholder="Select frameworks" />
-            <ComboboxTrigger />
-          </ComboboxControl>
+          <ComboboxInput placeholder="Select frameworks" />
           <ComboboxContent>
             <ComboboxList>
               {collection.items.map((item) => (
                 <ComboboxItem key={item.value} item={item}>
                   <ComboboxItemText>{item.label}</ComboboxItemText>
-                  <ComboboxItemIndicator />
                 </ComboboxItem>
               ))}
             </ComboboxList>
@@ -862,19 +814,15 @@ function ComboboxMultipleInvalid() {
             defaultValue={["nextjs", "sveltekit", "nuxtjs"]}
             invalid
           >
-            <ComboboxControl>
-              <ComboboxInput
-                id="combobox-multiple-invalid"
-                placeholder="Select frameworks"
-              />
-              <ComboboxTrigger />
-            </ComboboxControl>
+            <ComboboxInput
+              id="combobox-multiple-invalid"
+              placeholder="Select frameworks"
+            />
             <ComboboxContent>
               <ComboboxList>
                 {collection.items.map((item) => (
                   <ComboboxItem key={item.value} item={item}>
                     <ComboboxItemText>{item.label}</ComboboxItemText>
-                    <ComboboxItemIndicator />
                   </ComboboxItem>
                 ))}
               </ComboboxList>
@@ -903,10 +851,7 @@ function ComboboxWithCustomItems() {
         collection={collection}
         onInputValueChange={(details) => filter(details.inputValue)}
       >
-        <ComboboxControl>
-          <ComboboxInput placeholder="Search countries..." />
-          <ComboboxTrigger />
-        </ComboboxControl>
+        <ComboboxInput placeholder="Search countries..." />
         <ComboboxContent>
           <ComboboxList>
             {collection.items.map((country) => (
@@ -923,7 +868,6 @@ function ComboboxWithCustomItems() {
                     </ItemContent>
                   </Item>
                 </ComboboxItemText>
-                <ComboboxItemIndicator />
               </ComboboxItem>
             ))}
           </ComboboxList>
@@ -943,7 +887,11 @@ function ComboboxInDialog() {
 
   return (
     <Example title="Combobox in Dialog">
-      <Dialog open={open} onOpenChange={setOpen} modal={false}>
+      <Dialog
+        open={open}
+        onOpenChange={(details) => setOpen(details.open)}
+        modal={false}
+      >
         <DialogTrigger asChild>
           <Button variant="outline">Open Dialog</Button>
         </DialogTrigger>
@@ -962,19 +910,15 @@ function ComboboxInDialog() {
               collection={collection}
               onInputValueChange={(details) => filter(details.inputValue)}
             >
-              <ComboboxControl>
-                <ComboboxInput
-                  id="framework-dialog"
-                  placeholder="Select a framework"
-                />
-                <ComboboxTrigger />
-              </ComboboxControl>
+              <ComboboxInput
+                id="framework-dialog"
+                placeholder="Select a framework"
+              />
               <ComboboxContent>
                 <ComboboxList>
                   {collection.items.map((item) => (
                     <ComboboxItem key={item.value} item={item}>
                       <ComboboxItemText>{item.label}</ComboboxItemText>
-                      <ComboboxItemIndicator />
                     </ComboboxItem>
                   ))}
                 </ComboboxList>
@@ -1022,19 +966,12 @@ function ComboboxWithOtherInputs() {
         collection={collection}
         onInputValueChange={(details) => filter(details.inputValue)}
       >
-        <ComboboxControl>
-          <ComboboxInput
-            placeholder="Select a framework"
-            className="w-52"
-          />
-          <ComboboxTrigger />
-        </ComboboxControl>
+        <ComboboxInput placeholder="Select a framework" className="w-52" />
         <ComboboxContent>
           <ComboboxList>
             {collection.items.map((item) => (
               <ComboboxItem key={item.value} item={item}>
                 <ComboboxItemText>{item.label}</ComboboxItemText>
-                <ComboboxItemIndicator />
               </ComboboxItem>
             ))}
           </ComboboxList>

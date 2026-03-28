@@ -2,14 +2,17 @@
 
 import * as React from "react"
 import {
+  Command,
   CommandDialog,
   CommandEmpty,
   CommandGroup,
+  CommandGroupLabel,
   CommandInput,
   CommandItem,
+  CommandItemText,
   CommandList,
-  CommandSeparator,
   CommandShortcut,
+  useListCollection,
 } from "@/examples/ark/ui/command"
 import {
   Calculator,
@@ -22,6 +25,45 @@ import {
 
 export function CommandDialogDemo() {
   const [open, setOpen] = React.useState(false)
+
+  const { collection, filter } = useListCollection({
+    initialItems: [
+      { label: "Calendar", value: "calendar", group: "suggestions" },
+      { label: "Search Emoji", value: "search-emoji", group: "suggestions" },
+      { label: "Calculator", value: "calculator", group: "suggestions" },
+      {
+        label: "Profile",
+        value: "profile",
+        group: "settings",
+        shortcut: "⌘P",
+      },
+      {
+        label: "Billing",
+        value: "billing",
+        group: "settings",
+        shortcut: "⌘B",
+      },
+      {
+        label: "Settings",
+        value: "settings",
+        group: "settings",
+        shortcut: "⌘S",
+      },
+    ],
+    filter: (itemString, query) =>
+      itemString.toLowerCase().includes(query.toLowerCase()),
+    groupBy: (item) => item.group,
+    groupSort: ["suggestions", "settings"],
+  })
+
+  const icons: Record<string, React.ReactNode> = {
+    calendar: <Calendar />,
+    "search-emoji": <Smile />,
+    calculator: <Calculator />,
+    profile: <User />,
+    billing: <CreditCard />,
+    settings: <Settings />,
+  }
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -44,42 +86,37 @@ export function CommandDialogDemo() {
         </kbd>
       </p>
       <CommandDialog open={open} onOpenChange={setOpen}>
-        <CommandInput placeholder="Type a command or search..." />
-        <CommandList>
-          <CommandEmpty>No results found.</CommandEmpty>
-          <CommandGroup heading="Suggestions">
-            <CommandItem>
-              <Calendar />
-              <span>Calendar</span>
-            </CommandItem>
-            <CommandItem>
-              <Smile />
-              <span>Search Emoji</span>
-            </CommandItem>
-            <CommandItem>
-              <Calculator />
-              <span>Calculator</span>
-            </CommandItem>
-          </CommandGroup>
-          <CommandSeparator />
-          <CommandGroup heading="Settings">
-            <CommandItem>
-              <User />
-              <span>Profile</span>
-              <CommandShortcut>⌘P</CommandShortcut>
-            </CommandItem>
-            <CommandItem>
-              <CreditCard />
-              <span>Billing</span>
-              <CommandShortcut>⌘B</CommandShortcut>
-            </CommandItem>
-            <CommandItem>
-              <Settings />
-              <span>Settings</span>
-              <CommandShortcut>⌘S</CommandShortcut>
-            </CommandItem>
-          </CommandGroup>
-        </CommandList>
+        <Command
+          collection={collection}
+          onValueChange={() => {
+            setOpen(false)
+            filter("")
+          }}
+        >
+          <CommandInput
+            placeholder="Type a command or search..."
+            onFilter={filter}
+          />
+          <CommandList>
+            <CommandEmpty>No results found.</CommandEmpty>
+            {collection.group().map(([group, items]) => (
+              <CommandGroup key={group}>
+                <CommandGroupLabel className="capitalize">
+                  {group}
+                </CommandGroupLabel>
+                {items.map((item) => (
+                  <CommandItem key={item.value} item={item}>
+                    {icons[item.value]}
+                    <CommandItemText>{item.label}</CommandItemText>
+                    {item.shortcut && (
+                      <CommandShortcut>{item.shortcut}</CommandShortcut>
+                    )}
+                  </CommandItem>
+                ))}
+              </CommandGroup>
+            ))}
+          </CommandList>
+        </Command>
       </CommandDialog>
     </>
   )
