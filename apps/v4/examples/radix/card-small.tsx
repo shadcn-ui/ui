@@ -1,4 +1,4 @@
-import { Button } from "@/examples/radix/ui/button"
+import { Button } from "@/styles/radix-nova/ui/button"
 import {
   Card,
   CardContent,
@@ -6,7 +6,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/examples/radix/ui/card"
+} from "@/styles/radix-nova/ui/card"
 
 export function CardSmall() {
   return (

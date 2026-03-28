@@ -1,25 +1,26 @@
 import {
-  Field,
-  FieldDescription,
-  FieldGroup,
-  FieldLabel,
-} from "@/examples/base/ui/field"
-import { Input } from "@/examples/base/ui/input"
-import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupButton,
-  InputGroupText,
-  InputGroupTextarea,
-} from "@/examples/base/ui/input-group"
-import { Textarea } from "@/examples/base/ui/textarea"
-import {
   ArrowUpIcon,
   CodeIcon,
   CopyIcon,
   InfoIcon,
   RefreshCwIcon,
 } from "lucide-react"
+
+import {
+  Field,
+  FieldDescription,
+  FieldGroup,
+  FieldLabel,
+} from "@/styles/base-nova/ui/field"
+import { Input } from "@/styles/base-nova/ui/input"
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButton,
+  InputGroupText,
+  InputGroupTextarea,
+} from "@/styles/base-nova/ui/input-group"
+import { Textarea } from "@/styles/base-nova/ui/textarea"
 
 export function InputGroupTextareaExamples() {
   return (

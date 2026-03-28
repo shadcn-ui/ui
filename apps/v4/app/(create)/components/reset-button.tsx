@@ -9,8 +9,7 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from "@/examples/base/ui/alert-dialog"
-
+} from "@/styles/base-nova/ui/alert-dialog"
 import { useReset } from "@/app/(create)/hooks/use-reset"
 
 export function ResetDialog() {

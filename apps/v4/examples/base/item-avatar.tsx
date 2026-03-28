@@ -1,5 +1,11 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/examples/base/ui/avatar"
-import { Button } from "@/examples/base/ui/button"
+import { Plus } from "lucide-react"
+
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/styles/base-nova/ui/avatar"
+import { Button } from "@/styles/base-nova/ui/button"
 import {
   Item,
   ItemActions,
@@ -7,8 +13,7 @@ import {
   ItemDescription,
   ItemMedia,
   ItemTitle,
-} from "@/examples/base/ui/item"
-import { Plus } from "lucide-react"
+} from "@/styles/base-nova/ui/item"
 
 export function ItemAvatar() {
   return (
