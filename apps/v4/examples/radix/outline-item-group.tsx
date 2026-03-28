@@ -1,3 +1,5 @@
+import { InboxIcon } from "lucide-react"
+
 import {
   Item,
   ItemContent,
@@ -5,8 +7,7 @@ import {
   ItemGroup,
   ItemMedia,
   ItemTitle,
-} from "@/examples/radix/ui/item"
-import { InboxIcon } from "lucide-react"
+} from "@/styles/radix-nova/ui/item"
 
 export function OutlineItemGroup() {
   return (

@@ -1,4 +1,4 @@
-import { Skeleton } from "@/examples/base/ui/skeleton"
+import { Skeleton } from "@/styles/base-nova/ui/skeleton"
 
 export function SkeletonForm() {
   return (
