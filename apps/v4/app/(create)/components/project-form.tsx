@@ -1,7 +1,14 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/base/ui/button"
+import { Copy01Icon, Globe02Icon, Tick02Icon } from "@hugeicons/core-free-icons"
+import { HugeiconsIcon } from "@hugeicons/react"
+
+import { cn } from "@/lib/utils"
+import { useConfig } from "@/hooks/use-config"
+import { copyToClipboardWithMeta } from "@/components/copy-button"
+import { BASES, type BaseName } from "@/registry/config"
+import { Button } from "@/styles/base-nova/ui/button"
 import {
   Dialog,
   DialogContent,
@@ -10,7 +17,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/examples/base/ui/dialog"
+} from "@/styles/base-nova/ui/dialog"
 import {
   Field,
   FieldContent,
@@ -20,21 +27,15 @@ import {
   FieldSeparator,
   FieldSet,
   FieldTitle,
-} from "@/examples/base/ui/field"
-import { RadioGroup, RadioGroupItem } from "@/examples/base/ui/radio-group"
-import { Switch } from "@/examples/base/ui/switch"
+} from "@/styles/base-nova/ui/field"
+import { RadioGroup, RadioGroupItem } from "@/styles/base-nova/ui/radio-group"
+import { Switch } from "@/styles/base-nova/ui/switch"
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@/examples/base/ui/tabs"
-import { Copy01Icon, Globe02Icon, Tick02Icon } from "@hugeicons/core-free-icons"
-import { HugeiconsIcon } from "@hugeicons/react"
-
-import { cn } from "@/lib/utils"
-import { useConfig } from "@/hooks/use-config"
-import { copyToClipboardWithMeta } from "@/components/copy-button"
+} from "@/styles/base-nova/ui/tabs"
 import { usePresetCode } from "@/app/(create)/hooks/use-design-system"
 import {
   useDesignSystemSearchParams,
@@ -86,7 +87,7 @@ export function ProjectForm({
     const rtlFlag = params.rtl ? " --rtl" : ""
     const flags = `${presetFlag}${baseFlag}${templateFlag}${monorepoFlag}${rtlFlag}`
 
-    return IS_LOCAL_DEV && !process.env.NEXT_PUBLIC_RC
+    return IS_LOCAL_DEV
       ? {
           pnpm: `shadcn init${flags}`,
           npm: `shadcn init${flags}`,
@@ -129,69 +130,76 @@ export function ProjectForm({
       <DialogTrigger render={<Button className={cn(className)} />}>
         Create Project
       </DialogTrigger>
-      <DialogContent className="min-w-0 sm:max-w-sm">
+      <DialogContent className="dark no-scrollbar max-h-[calc(100svh-2rem)] overflow-y-auto rounded-2xl p-6 shadow-xl **:data-[slot=field-separator]:h-2 sm:max-w-sm">
         <DialogHeader>
           <DialogTitle>Create Project</DialogTitle>
           <DialogDescription>
-            Pick a template and configure your project. Available for all major
-            React frameworks.
+            Pick a template and configure your project.
           </DialogDescription>
         </DialogHeader>
-        <FieldGroup>
-          <Field>
-            <FieldLabel className="sr-only">Template</FieldLabel>
-            <TemplateGrid template={params.template} setParams={setParams} />
-          </Field>
-          <FieldSeparator />
-          <FieldSet>
-            <FieldLegend variant="label" className="sr-only">
-              Options
-            </FieldLegend>
-            <Field
-              orientation="horizontal"
-              data-disabled={hasMonorepo ? undefined : "true"}
-            >
-              <FieldLabel htmlFor="monorepo">
-                <span
-                  className="size-4 text-foreground [&_svg]:size-4 [&_svg]:fill-current"
-                  dangerouslySetInnerHTML={{
-                    __html: TURBOREPO_LOGO,
+        <div>
+          <FieldGroup>
+            <FieldSeparator className="-mx-6" />
+            <Field className="-mt-2 gap-3">
+              <FieldLabel>Template</FieldLabel>
+              <TemplateGrid template={params.template} setParams={setParams} />
+            </Field>
+            <FieldSeparator className="-mx-6" />
+            <Field className="-mt-2">
+              <FieldLabel>Base</FieldLabel>
+              <BaseGrid base={params.base} setParams={setParams} />
+            </Field>
+            <FieldSeparator className="-mx-6" />
+            <FieldSet>
+              <FieldLegend variant="label" className="sr-only">
+                Options
+              </FieldLegend>
+              <Field
+                orientation="horizontal"
+                data-disabled={hasMonorepo ? undefined : "true"}
+              >
+                <FieldLabel htmlFor="monorepo">
+                  <span
+                    className="size-4 text-neutral-100 [&_svg]:size-4 [&_svg]:fill-current"
+                    dangerouslySetInnerHTML={{
+                      __html: TURBOREPO_LOGO,
+                    }}
+                  />
+                  Create a monorepo
+                </FieldLabel>
+                <Switch
+                  id="monorepo"
+                  checked={params.template?.endsWith("-monorepo") ?? false}
+                  disabled={!hasMonorepo}
+                  onCheckedChange={(checked) => {
+                    const framework = getFramework(params.template ?? "next")
+                    setParams({
+                      template: getTemplateValue(
+                        framework,
+                        checked === true
+                      ) as typeof params.template,
+                    })
                   }}
                 />
-                Create a monorepo
-              </FieldLabel>
-              <Switch
-                id="monorepo"
-                checked={params.template?.endsWith("-monorepo") ?? false}
-                disabled={!hasMonorepo}
-                onCheckedChange={(checked) => {
-                  const framework = getFramework(params.template ?? "next")
-                  setParams({
-                    template: getTemplateValue(
-                      framework,
-                      checked === true
-                    ) as typeof params.template,
-                  })
-                }}
-              />
-            </Field>
-            <FieldSeparator />
-            <Field orientation="horizontal">
-              <FieldLabel htmlFor="rtl">
-                <HugeiconsIcon icon={Globe02Icon} className="size-4" />
-                Enable RTL support
-              </FieldLabel>
-              <Switch
-                id="rtl"
-                checked={params.rtl}
-                onCheckedChange={(checked) =>
-                  setParams({ rtl: checked === true })
-                }
-              />
-            </Field>
-          </FieldSet>
-        </FieldGroup>
-        <DialogFooter className="min-w-0">
+              </Field>
+              <FieldSeparator className="-mx-6" />
+              <Field orientation="horizontal">
+                <FieldLabel htmlFor="rtl">
+                  <HugeiconsIcon icon={Globe02Icon} className="size-4" />
+                  Enable RTL support
+                </FieldLabel>
+                <Switch
+                  id="rtl"
+                  checked={params.rtl}
+                  onCheckedChange={(checked) =>
+                    setParams({ rtl: checked === true })
+                  }
+                />
+              </Field>
+            </FieldSet>
+          </FieldGroup>
+        </div>
+        <DialogFooter className="-mx-6 -mb-6 min-w-0">
           <div className="flex w-full min-w-0 flex-col gap-3">
             <Tabs
               value={packageManager}
@@ -201,16 +209,16 @@ export function ProjectForm({
                   packageManager: value as PackageManager,
                 }))
               }}
-              className="min-w-0 gap-0 overflow-hidden rounded-lg border bg-surface"
+              className="min-w-0 gap-0 overflow-hidden rounded-xl border-0 ring-1 ring-border"
             >
-              <div className="flex items-center gap-2 px-1 py-1">
-                <TabsList className="font-mono">
+              <div className="flex items-center gap-2 py-1 pr-1.5 pl-1">
+                <TabsList className="bg-transparent font-mono">
                   {PACKAGE_MANAGERS.map((manager) => {
                     return (
                       <TabsTrigger
                         key={manager}
                         value={manager}
-                        className="data-[state=active]:shadow-none"
+                        className="py-0 leading-none data-[state=active]:shadow-none"
                       >
                         {manager}
                       </TabsTrigger>
@@ -234,7 +242,7 @@ export function ProjectForm({
               {Object.entries(commands).map(([key, cmd]) => {
                 return (
                   <TabsContent key={key} value={key}>
-                    <div className="relative overflow-hidden border-t border-border/50 bg-surface px-3 py-3 text-surface-foreground">
+                    <div className="relative overflow-hidden border-t bg-popover p-3">
                       <div className="no-scrollbar overflow-x-auto">
                         <code className="font-mono text-sm whitespace-nowrap">
                           {cmd}
@@ -281,27 +289,82 @@ const TemplateGrid = React.memo(function TemplateGrid({
     <RadioGroup
       value={framework}
       onValueChange={handleTemplateChange}
-      className="grid grid-cols-3 gap-2"
+      className="grid grid-cols-2 gap-2"
     >
       {TEMPLATES.map((item) => (
         <FieldLabel
           key={item.value}
           htmlFor={`template-${item.value}`}
-          className="py-1"
+          className="block w-full"
         >
-          <Field className="gap-0" orientation="horizontal">
-            <FieldContent className="flex flex-col items-center justify-center gap-2">
+          <Field
+            orientation="horizontal"
+            className="w-full rounded-md transition-colors duration-150 hover:bg-neutral-700/45"
+          >
+            <FieldContent className="flex flex-row items-center gap-2 px-2.5 py-1.5">
               <div
-                className="size-6 text-foreground [&_svg]:size-6 *:[svg]:text-foreground!"
+                className="size-4 text-neutral-100 [&_svg]:size-4 *:[svg]:text-neutral-100!"
                 dangerouslySetInnerHTML={{
                   __html: item.logo,
                 }}
               ></div>
-              <FieldTitle className="text-xs">{item.title}</FieldTitle>
+              <FieldTitle>{item.title}</FieldTitle>
             </FieldContent>
             <RadioGroupItem
               value={item.value}
               id={`template-${item.value}`}
+              className="sr-only absolute"
+            />
+          </Field>
+        </FieldLabel>
+      ))}
+    </RadioGroup>
+  )
+})
+
+const BaseGrid = React.memo(function BaseGrid({
+  base,
+  setParams,
+}: {
+  base: DesignSystemSearchParams["base"]
+  setParams: ReturnType<typeof useDesignSystemSearchParams>[1]
+}) {
+  const handleBaseChange = React.useCallback(
+    (value: string) => {
+      setParams({ base: value as BaseName })
+    },
+    [setParams]
+  )
+
+  return (
+    <RadioGroup
+      value={base}
+      onValueChange={handleBaseChange}
+      aria-label="Base"
+      className="grid grid-cols-2 gap-2"
+    >
+      {BASES.map((item) => (
+        <FieldLabel
+          key={item.name}
+          htmlFor={`base-${item.name}`}
+          className="block w-full"
+        >
+          <Field
+            orientation="horizontal"
+            className="w-full rounded-md transition-colors duration-150 hover:bg-neutral-700/45"
+          >
+            <FieldContent className="flex flex-row items-center gap-2 px-2.5 py-1.5">
+              <div
+                className="size-4 text-neutral-100 [&_svg]:size-4 *:[svg]:text-neutral-100!"
+                dangerouslySetInnerHTML={{
+                  __html: item.meta?.logo ?? "",
+                }}
+              />
+              <FieldTitle>{item.title}</FieldTitle>
+            </FieldContent>
+            <RadioGroupItem
+              value={item.name}
+              id={`base-${item.name}`}
               className="sr-only absolute"
             />
           </Field>

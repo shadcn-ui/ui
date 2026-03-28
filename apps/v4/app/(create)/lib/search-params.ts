@@ -1,4 +1,5 @@
 import * as React from "react"
+import { useSearchParams } from "next/navigation"
 import { useQueryStates } from "nuqs"
 import {
   createLoader,
@@ -10,12 +11,13 @@ import {
   type inferParserType,
   type Options,
 } from "nuqs/server"
-import { decodePreset, encodePreset, isPresetCode } from "shadcn/preset"
+import { decodePreset, isPresetCode } from "shadcn/preset"
 
 import {
   BASE_COLORS,
   BASES,
   DEFAULT_CONFIG,
+  getThemesForBaseColor,
   iconLibraries,
   MENU_ACCENTS,
   MENU_COLORS,
@@ -24,6 +26,8 @@ import {
   THEMES,
   type BaseColorName,
   type BaseName,
+  type ChartColorName,
+  type FontHeadingValue,
   type FontValue,
   type IconLibraryName,
   type MenuAccentValue,
@@ -33,9 +37,11 @@ import {
   type ThemeName,
 } from "@/registry/config"
 import { FONTS } from "@/app/(create)/lib/fonts"
+import { getPresetCode } from "@/app/(create)/lib/preset-code"
+import { resolvePresetOverrides } from "@/app/(create)/lib/preset-query"
 
 const designSystemSearchParams = {
-  preset: parseAsString.withDefault("a0"),
+  preset: parseAsString.withDefault("b0"),
   base: parseAsStringLiteral<BaseName>(BASES.map((b) => b.name)).withDefault(
     DEFAULT_CONFIG.base
   ),
@@ -49,9 +55,16 @@ const designSystemSearchParams = {
   theme: parseAsStringLiteral<ThemeName>(THEMES.map((t) => t.name)).withDefault(
     DEFAULT_CONFIG.theme
   ),
+  chartColor: parseAsStringLiteral<ChartColorName>(
+    THEMES.map((t) => t.name)
+  ).withDefault(DEFAULT_CONFIG.chartColor ?? "neutral"),
   font: parseAsStringLiteral<FontValue>(FONTS.map((f) => f.value)).withDefault(
     DEFAULT_CONFIG.font
   ),
+  fontHeading: parseAsStringLiteral<FontHeadingValue>([
+    "inherit",
+    ...FONTS.map((f) => f.value),
+  ]).withDefault(DEFAULT_CONFIG.fontHeading),
   baseColor: parseAsStringLiteral<BaseColorName>(
     BASE_COLORS.map((b) => b.name)
   ).withDefault(DEFAULT_CONFIG.baseColor),
@@ -87,12 +100,23 @@ const DESIGN_SYSTEM_KEYS = [
   "style",
   "baseColor",
   "theme",
+  "chartColor",
   "iconLibrary",
   "font",
+  "fontHeading",
   "radius",
   "menuAccent",
   "menuColor",
 ] as const
+
+function normalizeFontHeading(
+  font: FontValue,
+  fontHeading: FontHeadingValue
+): FontHeadingValue {
+  // Persist "same as body" as an explicit inherit sentinel so the body font
+  // can change later without freezing headings to a concrete previous value.
+  return fontHeading === font ? "inherit" : fontHeading
+}
 
 // Non-design-system keys that get passed through as-is.
 // `base` is not encoded in preset codes — it's an architectural choice, not visual.
@@ -145,39 +169,83 @@ function normalizePartialDesignSystemParams(
 function normalizeDesignSystemParams(
   params: DesignSystemSearchParams
 ): DesignSystemSearchParams {
+  let result = {
+    ...params,
+    fontHeading: normalizeFontHeading(params.font, params.fontHeading),
+  }
+
+  // Validate theme and chartColor against baseColor.
+  if (result.baseColor) {
+    const available = getThemesForBaseColor(result.baseColor)
+    const themeValid = available.some((t) => t.name === result.theme)
+    const chartColorValid = available.some((t) => t.name === result.chartColor)
+
+    if (!themeValid || !chartColorValid) {
+      const fallback = (available[0]?.name ?? result.baseColor) as ThemeName
+      result = {
+        ...result,
+        ...(!themeValid && { theme: fallback }),
+        ...(!chartColorValid && { chartColor: fallback as ChartColorName }),
+      }
+    }
+  }
+
   if (
-    params.menuAccent === "bold" &&
-    isTranslucentMenuColor(params.menuColor)
+    result.menuAccent === "bold" &&
+    isTranslucentMenuColor(result.menuColor)
   ) {
     return {
-      ...params,
+      ...result,
       menuAccent: "subtle",
     }
   }
 
-  return params
+  return result
+}
+
+// If preset param exists, decode it and overlay on raw params.
+// V1 presets don't encode chartColor — fall back to the colored
+// theme that base-color themes originally borrowed charts from.
+type SearchParamsLike = Pick<URLSearchParams, "get" | "has">
+
+function resolvePresetParams(
+  rawParams: DesignSystemSearchParams,
+  searchParams: SearchParamsLike
+) {
+  if (rawParams.preset && isPresetCode(rawParams.preset)) {
+    const decoded = decodePreset(rawParams.preset)
+    if (decoded) {
+      const presetOverrides = resolvePresetOverrides(searchParams, decoded)
+      return normalizeDesignSystemParams({
+        ...decoded,
+        ...presetOverrides,
+        base: rawParams.base,
+        item: rawParams.item,
+        preset: rawParams.preset,
+        template: rawParams.template,
+        rtl: rawParams.rtl,
+        size: rawParams.size,
+        custom: rawParams.custom,
+      })
+    }
+  }
+  return normalizeDesignSystemParams(rawParams)
 }
 
 // Wraps nuqs useQueryStates with transparent preset encoding/decoding.
 // - Reads: if ?preset=CODE is in the URL, decodes it and returns individual values.
 // - Writes: when design system params are set, encodes them into a preset code.
 export function useDesignSystemSearchParams(options: Options = {}) {
+  const searchParams = useSearchParams()
   const [rawParams, rawSetParams] = useQueryStates(designSystemSearchParams, {
     shallow: false,
     history: "push",
     ...options,
   })
 
-  // If preset param exists, decode it and overlay on raw params.
   const params = React.useMemo(
-    () =>
-      rawParams.preset && isPresetCode(rawParams.preset)
-        ? normalizeDesignSystemParams({
-            ...rawParams,
-            ...(decodePreset(rawParams.preset) ?? {}),
-          })
-        : normalizeDesignSystemParams(rawParams),
-    [rawParams]
+    () => resolvePresetParams(rawParams, searchParams),
+    [rawParams, searchParams]
   )
 
   // Use ref so setParams callback stays stable across renders.
@@ -215,21 +283,10 @@ export function useDesignSystemSearchParams(options: Options = {}) {
         ...paramsRef.current,
         ...resolvedUpdates,
       })
-
       // Encode design system fields into a preset code.
       // Cast needed: merged values may include null from nuqs resets,
       // but encodePreset handles missing values by falling back to defaults.
-      const code = encodePreset({
-        style: merged.style ?? undefined,
-        baseColor: merged.baseColor ?? undefined,
-        theme: merged.theme ?? undefined,
-        iconLibrary: merged.iconLibrary ?? undefined,
-        font: merged.font ?? undefined,
-        radius: merged.radius ?? undefined,
-        menuAccent: merged.menuAccent ?? undefined,
-        menuColor: merged.menuColor ?? undefined,
-      } as Parameters<typeof encodePreset>[0])
-
+      const code = getPresetCode(merged)
       // Build update: set preset, clear individual DS params from URL.
       const rawUpdate: Record<string, unknown> = { preset: code }
       for (const key of DESIGN_SYSTEM_KEYS) {

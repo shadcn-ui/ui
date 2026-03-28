@@ -1,5 +1,9 @@
-import { ToggleGroup, ToggleGroupItem } from "@/examples/base/ui/toggle-group"
 import { Bold, Italic, Underline } from "lucide-react"
+
+import {
+  ToggleGroup,
+  ToggleGroupItem,
+} from "@/styles/base-nova/ui/toggle-group"
 
 export function ToggleGroupDemo() {
   return (

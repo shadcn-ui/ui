@@ -1,11 +1,11 @@
 import Link from "next/link"
-import { Button } from "@/examples/radix/ui/button"
 import { mdxComponents } from "@/mdx-components"
 import { IconRss } from "@tabler/icons-react"
 
 import { getChangelogPages, type ChangelogPageData } from "@/lib/changelog"
 import { absoluteUrl } from "@/lib/utils"
 import { OpenInV0Cta } from "@/components/open-in-v0-cta"
+import { Button } from "@/styles/radix-nova/ui/button"
 
 export const revalidate = false
 export const dynamic = "force-static"
@@ -79,7 +79,7 @@ export default function ChangelogPage() {
             })}
             {olderPages.length > 0 && (
               <div id="more-updates" className="mb-24 scroll-mt-24">
-                <h2 className="font-heading mb-6 text-xl font-semibold tracking-tight">
+                <h2 className="mb-6 font-heading text-xl font-semibold tracking-tight">
                   More Updates
                 </h2>
                 <div className="grid auto-rows-fr gap-3 sm:grid-cols-2">

@@ -2,7 +2,6 @@
 
 import * as React from "react"
 import { Vazirmatn } from "next/font/google"
-import { Button, buttonVariants } from "@/examples/radix/ui/button"
 import {
   ChevronDownIcon,
   ChevronLeftIcon,
@@ -12,6 +11,7 @@ import { getDefaultClassNames, type DayButton } from "react-day-picker"
 import { DayPicker } from "react-day-picker/persian"
 
 import { cn } from "@/lib/utils"
+import { Button, buttonVariants } from "@/styles/radix-nova/ui/button"
 
 const vazirmatn = Vazirmatn({ subsets: ["arabic"] })
 
