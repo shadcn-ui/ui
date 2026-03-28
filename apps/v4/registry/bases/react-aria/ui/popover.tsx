@@ -5,42 +5,10 @@ import {
   DialogTrigger,
   Heading,
   Popover as PopoverPrimitive,
-  Text,
   type DialogTriggerProps,
   type PopoverProps as PopoverPrimitiveProps,
 } from "react-aria-components"
-
-import { cn } from "@/registry/bases/react-aria/lib/utils"
-
-type PopoverSide =
-  | "top"
-  | "right"
-  | "bottom"
-  | "left"
-  | "inline-start"
-  | "inline-end"
-type PopoverAlign = "start" | "center" | "end"
-
-function getPlacement(side: PopoverSide, align: PopoverAlign) {
-  if (side === "inline-start") {
-    return "start"
-  }
-
-  if (side === "inline-end") {
-    return "end"
-  }
-
-  if (align === "center") {
-    return side
-  }
-
-  if (side === "left" || side === "right") {
-    const crossPlacement = align === "start" ? "top" : "bottom"
-    return `${side} ${crossPlacement}` as const
-  }
-
-  return `${side} ${align}` as const
-}
+import { cn, getPlacement, type PlacementSide, type PlacementAlign } from "@/registry/bases/react-aria/lib/utils"
 
 function PopoverTrigger({ children, ...props }: DialogTriggerProps) {
   return <DialogTrigger {...props}>{children}</DialogTrigger>
@@ -56,9 +24,9 @@ function Popover({
 }: Omit<PopoverPrimitiveProps, "className" | "children" | "placement"> & {
   className?: string
   children?: React.ReactNode
-  align?: PopoverAlign
+  align?: PlacementAlign
   alignOffset?: number
-  side?: PopoverSide
+  side?: PlacementSide
   sideOffset?: number
 }) {
   return (

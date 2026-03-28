@@ -19,7 +19,6 @@ import {
   TagList as TagListPrimitive,
   Tag as TagPrimitive,
   type ButtonProps,
-  type ComboBoxProps,
   type HeaderProps,
   type InputProps,
   type ListBoxItemProps,
@@ -30,8 +29,7 @@ import {
   type TagListProps,
   type TagProps,
 } from "react-aria-components"
-
-import { cn } from "@/registry/bases/react-aria/lib/utils"
+import { cn, getPlacement, type PlacementSide, type PlacementAlign } from "@/registry/bases/react-aria/lib/utils"
 import { Button } from "@/registry/bases/react-aria/ui/button"
 import {
   InputGroup,
@@ -135,36 +133,6 @@ function ComboboxInput({
   )
 }
 
-type SelectSide =
-  | "top"
-  | "right"
-  | "bottom"
-  | "left"
-  | "inline-start"
-  | "inline-end"
-type SelectAlign = "start" | "center" | "end"
-
-function getPlacement(side: SelectSide, align: SelectAlign) {
-  if (side === "inline-start") {
-    return "start"
-  }
-
-  if (side === "inline-end") {
-    return "end"
-  }
-
-  if (align === "center") {
-    return side
-  }
-
-  if (side === "left" || side === "right") {
-    const crossPlacement = align === "start" ? "top" : "bottom"
-    return `${side} ${crossPlacement}` as const
-  }
-
-  return `${side} ${align}` as const
-}
-
 function ComboboxContent({
   className,
   side = "bottom",
@@ -179,9 +147,9 @@ function ComboboxContent({
 > & {
   className?: string
   children?: React.ReactNode
-  align?: SelectAlign
+  align?: PlacementAlign
   alignOffset?: number
-  side?: SelectSide
+  side?: PlacementSide
   sideOffset?: number
   anchor?: React.RefObject<HTMLDivElement | null>
 }) {

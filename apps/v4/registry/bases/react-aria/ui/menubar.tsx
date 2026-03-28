@@ -6,7 +6,6 @@ import { Menubar as MenubarPrimitive } from "@base-ui/react/menubar"
 
 import {
   DropdownMenu,
-  DropdownMenu,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,

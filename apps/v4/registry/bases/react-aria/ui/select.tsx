@@ -17,38 +17,8 @@ import {
   type SelectValueProps,
 } from "react-aria-components"
 
-import { cn } from "@/registry/bases/react-aria/lib/utils"
+import { cn, getPlacement, type PlacementSide, type PlacementAlign } from "@/registry/bases/react-aria/lib/utils"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
-
-type SelectSide =
-  | "top"
-  | "right"
-  | "bottom"
-  | "left"
-  | "inline-start"
-  | "inline-end"
-type SelectAlign = "start" | "center" | "end"
-
-function getPlacement(side: SelectSide, align: SelectAlign) {
-  if (side === "inline-start") {
-    return "start"
-  }
-
-  if (side === "inline-end") {
-    return "end"
-  }
-
-  if (align === "center") {
-    return side
-  }
-
-  if (side === "left" || side === "right") {
-    const crossPlacement = align === "start" ? "top" : "bottom"
-    return `${side} ${crossPlacement}` as const
-  }
-
-  return `${side} ${align}` as const
-}
 
 function Select<T extends object, M extends "single" | "multiple" = "single">({
   className,
@@ -141,9 +111,9 @@ function SelectContent({
 > & {
   className?: string
   children?: React.ReactNode
-  align?: SelectAlign
+  align?: PlacementAlign
   alignOffset?: number
-  side?: SelectSide
+  side?: PlacementSide
   sideOffset?: number
 }) {
   return (
