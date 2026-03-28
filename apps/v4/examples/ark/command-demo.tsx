@@ -1,12 +1,16 @@
+"use client"
+
 import {
   Command,
   CommandEmpty,
   CommandGroup,
+  CommandGroupLabel,
   CommandInput,
   CommandItem,
+  CommandItemText,
   CommandList,
-  CommandSeparator,
   CommandShortcut,
+  useListCollection,
 } from "@/examples/ark/ui/command"
 import {
   Calculator,
@@ -18,43 +22,74 @@ import {
 } from "lucide-react"
 
 export function CommandDemo() {
+  const { collection, filter } = useListCollection({
+    initialItems: [
+      { label: "Calendar", value: "calendar", group: "suggestions" },
+      { label: "Search Emoji", value: "search-emoji", group: "suggestions" },
+      {
+        label: "Calculator",
+        value: "calculator",
+        group: "suggestions",
+        disabled: true,
+      },
+      {
+        label: "Profile",
+        value: "profile",
+        group: "settings",
+        shortcut: "⌘P",
+      },
+      {
+        label: "Billing",
+        value: "billing",
+        group: "settings",
+        shortcut: "⌘B",
+      },
+      {
+        label: "Settings",
+        value: "settings",
+        group: "settings",
+        shortcut: "⌘S",
+      },
+    ],
+    filter: (itemString, query) =>
+      itemString.toLowerCase().includes(query.toLowerCase()),
+    groupBy: (item) => item.group,
+    groupSort: ["suggestions", "settings"],
+  })
+
+  const icons: Record<string, React.ReactNode> = {
+    calendar: <Calendar />,
+    "search-emoji": <Smile />,
+    calculator: <Calculator />,
+    profile: <User />,
+    billing: <CreditCard />,
+    settings: <Settings />,
+  }
+
   return (
-    <Command className="max-w-sm rounded-lg border">
-      <CommandInput placeholder="Type a command or search..." />
+    <Command className="max-w-sm rounded-lg border" collection={collection}>
+      <CommandInput
+        placeholder="Type a command or search..."
+        onFilter={filter}
+      />
       <CommandList>
         <CommandEmpty>No results found.</CommandEmpty>
-        <CommandGroup heading="Suggestions">
-          <CommandItem>
-            <Calendar />
-            <span>Calendar</span>
-          </CommandItem>
-          <CommandItem>
-            <Smile />
-            <span>Search Emoji</span>
-          </CommandItem>
-          <CommandItem disabled>
-            <Calculator />
-            <span>Calculator</span>
-          </CommandItem>
-        </CommandGroup>
-        <CommandSeparator />
-        <CommandGroup heading="Settings">
-          <CommandItem>
-            <User />
-            <span>Profile</span>
-            <CommandShortcut>⌘P</CommandShortcut>
-          </CommandItem>
-          <CommandItem>
-            <CreditCard />
-            <span>Billing</span>
-            <CommandShortcut>⌘B</CommandShortcut>
-          </CommandItem>
-          <CommandItem>
-            <Settings />
-            <span>Settings</span>
-            <CommandShortcut>⌘S</CommandShortcut>
-          </CommandItem>
-        </CommandGroup>
+        {collection.group().map(([group, items]) => (
+          <CommandGroup key={group}>
+            <CommandGroupLabel className="capitalize">
+              {group}
+            </CommandGroupLabel>
+            {items.map((item) => (
+              <CommandItem key={item.value} item={item}>
+                {icons[item.value]}
+                <CommandItemText>{item.label}</CommandItemText>
+                {item.shortcut && (
+                  <CommandShortcut>{item.shortcut}</CommandShortcut>
+                )}
+              </CommandItem>
+            ))}
+          </CommandGroup>
+        ))}
       </CommandList>
     </Command>
   )

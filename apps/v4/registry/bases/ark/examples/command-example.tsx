@@ -13,11 +13,15 @@ import {
   CommandDialog,
   CommandEmpty,
   CommandGroup,
+  CommandGroupLabel,
   CommandInput,
   CommandItem,
+  CommandItemText,
   CommandList,
   CommandSeparator,
   CommandShortcut,
+  createListCollection,
+  useListCollection,
 } from "@/registry/bases/ark/ui/command"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
@@ -34,82 +38,51 @@ export default function CommandExample() {
 }
 
 function CommandInline() {
+  const { collection, filter } = useListCollection({
+    initialItems: [
+      { label: "Calendar", value: "calendar", group: "suggestions" },
+      { label: "Search Emoji", value: "search-emoji", group: "suggestions" },
+      { label: "Calculator", value: "calculator", group: "suggestions" },
+      { label: "Profile", value: "profile", group: "settings", shortcut: "⌘P" },
+      { label: "Billing", value: "billing", group: "settings", shortcut: "⌘B" },
+      {
+        label: "Settings",
+        value: "settings",
+        group: "settings",
+        shortcut: "⌘S",
+      },
+    ],
+    filter: (itemString, query) =>
+      itemString.toLowerCase().includes(query.toLowerCase()),
+    groupBy: (item) => item.group,
+  })
+
   return (
     <Example title="Inline">
       <Card className="w-full p-0">
         <CardContent className="p-0">
-          <Command>
-            <CommandInput placeholder="Type a command or search..." />
+          <Command collection={collection}>
+            <CommandInput
+              placeholder="Type a command or search..."
+              onFilter={filter}
+            />
             <CommandList>
               <CommandEmpty>No results found.</CommandEmpty>
-              <CommandGroup heading="Suggestions">
-                <CommandItem>
-                  <IconPlaceholder
-                    lucide="CalendarIcon"
-                    tabler="IconCalendar"
-                    hugeicons="CalendarIcon"
-                    phosphor="CalendarBlankIcon"
-                    remixicon="RiCalendarLine"
-                  />
-                  <span>Calendar</span>
-                </CommandItem>
-                <CommandItem>
-                  <IconPlaceholder
-                    lucide="SmileIcon"
-                    tabler="IconMoodSmile"
-                    hugeicons="SmileIcon"
-                    phosphor="SmileyIcon"
-                    remixicon="RiEmotionLine"
-                  />
-                  <span>Search Emoji</span>
-                </CommandItem>
-                <CommandItem>
-                  <IconPlaceholder
-                    lucide="CalculatorIcon"
-                    tabler="IconCalculator"
-                    hugeicons="CalculatorIcon"
-                    phosphor="CalculatorIcon"
-                    remixicon="RiCalculatorLine"
-                  />
-                  <span>Calculator</span>
-                </CommandItem>
-              </CommandGroup>
-              <CommandSeparator />
-              <CommandGroup heading="Settings">
-                <CommandItem>
-                  <IconPlaceholder
-                    lucide="UserIcon"
-                    tabler="IconUser"
-                    hugeicons="UserIcon"
-                    phosphor="UserIcon"
-                    remixicon="RiUserLine"
-                  />
-                  <span>Profile</span>
-                  <CommandShortcut>⌘P</CommandShortcut>
-                </CommandItem>
-                <CommandItem>
-                  <IconPlaceholder
-                    lucide="CreditCardIcon"
-                    tabler="IconCreditCard"
-                    hugeicons="CreditCardIcon"
-                    phosphor="CreditCardIcon"
-                    remixicon="RiBankCardLine"
-                  />
-                  <span>Billing</span>
-                  <CommandShortcut>⌘B</CommandShortcut>
-                </CommandItem>
-                <CommandItem>
-                  <IconPlaceholder
-                    lucide="SettingsIcon"
-                    tabler="IconSettings"
-                    hugeicons="SettingsIcon"
-                    phosphor="GearIcon"
-                    remixicon="RiSettingsLine"
-                  />
-                  <span>Settings</span>
-                  <CommandShortcut>⌘S</CommandShortcut>
-                </CommandItem>
-              </CommandGroup>
+              {collection.group().map(([group, items]) => (
+                <CommandGroup key={group}>
+                  <CommandGroupLabel className="capitalize">
+                    {group}
+                  </CommandGroupLabel>
+                  {items.map((item) => (
+                    <CommandItem key={item.value} item={item}>
+                      <CommandItemText>{item.label}</CommandItemText>
+                      {item.shortcut && (
+                        <CommandShortcut>{item.shortcut}</CommandShortcut>
+                      )}
+                    </CommandItem>
+                  ))}
+                </CommandGroup>
+              ))}
             </CommandList>
           </Command>
         </CardContent>
@@ -120,6 +93,16 @@ function CommandInline() {
 
 function CommandBasic() {
   const [open, setOpen] = React.useState(false)
+
+  const { collection, filter } = useListCollection({
+    initialItems: [
+      { label: "Calendar", value: "calendar" },
+      { label: "Search Emoji", value: "search-emoji" },
+      { label: "Calculator", value: "calculator" },
+    ],
+    filter: (itemString, query) =>
+      itemString.toLowerCase().includes(query.toLowerCase()),
+  })
 
   return (
     <Example title="Basic">
@@ -132,15 +115,24 @@ function CommandBasic() {
           Open Menu
         </Button>
         <CommandDialog open={open} onOpenChange={setOpen}>
-          <Command>
-            <CommandInput placeholder="Type a command or search..." />
+          <Command
+            collection={collection}
+            onValueChange={() => {
+              setOpen(false)
+              filter("")
+            }}
+          >
+            <CommandInput
+              placeholder="Type a command or search..."
+              onFilter={filter}
+            />
             <CommandList>
               <CommandEmpty>No results found.</CommandEmpty>
-              <CommandGroup heading="Suggestions">
-                <CommandItem>Calendar</CommandItem>
-                <CommandItem>Search Emoji</CommandItem>
-                <CommandItem>Calculator</CommandItem>
-              </CommandGroup>
+              {collection.items.map((item) => (
+                <CommandItem key={item.value} item={item}>
+                  <CommandItemText>{item.label}</CommandItemText>
+                </CommandItem>
+              ))}
             </CommandList>
           </Command>
         </CommandDialog>
@@ -151,6 +143,16 @@ function CommandBasic() {
 
 function CommandWithShortcuts() {
   const [open, setOpen] = React.useState(false)
+
+  const { collection, filter } = useListCollection({
+    initialItems: [
+      { label: "Profile", value: "profile", shortcut: "⌘P" },
+      { label: "Billing", value: "billing", shortcut: "⌘B" },
+      { label: "Settings", value: "settings", shortcut: "⌘S" },
+    ],
+    filter: (itemString, query) =>
+      itemString.toLowerCase().includes(query.toLowerCase()),
+  })
 
   return (
     <Example title="With Shortcuts">
@@ -163,44 +165,64 @@ function CommandWithShortcuts() {
           Open Menu
         </Button>
         <CommandDialog open={open} onOpenChange={setOpen}>
-          <Command>
-            <CommandInput placeholder="Type a command or search..." />
+          <Command
+            collection={collection}
+            onValueChange={() => {
+              setOpen(false)
+              filter("")
+            }}
+          >
+            <CommandInput
+              placeholder="Type a command or search..."
+              onFilter={filter}
+            />
             <CommandList>
               <CommandEmpty>No results found.</CommandEmpty>
-              <CommandGroup heading="Settings">
-                <CommandItem>
-                  <IconPlaceholder
-                    lucide="UserIcon"
-                    tabler="IconUser"
-                    hugeicons="UserIcon"
-                    phosphor="UserIcon"
-                    remixicon="RiUserLine"
-                  />
-                  <span>Profile</span>
-                  <CommandShortcut>⌘P</CommandShortcut>
-                </CommandItem>
-                <CommandItem>
-                  <IconPlaceholder
-                    lucide="CreditCardIcon"
-                    tabler="IconCreditCard"
-                    hugeicons="CreditCardIcon"
-                    phosphor="CreditCardIcon"
-                    remixicon="RiBankCardLine"
-                  />
-                  <span>Billing</span>
-                  <CommandShortcut>⌘B</CommandShortcut>
-                </CommandItem>
-                <CommandItem>
-                  <IconPlaceholder
-                    lucide="SettingsIcon"
-                    tabler="IconSettings"
-                    hugeicons="SettingsIcon"
-                    phosphor="GearIcon"
-                    remixicon="RiSettingsLine"
-                  />
-                  <span>Settings</span>
-                  <CommandShortcut>⌘S</CommandShortcut>
-                </CommandItem>
+              <CommandGroup>
+                <CommandGroupLabel>Settings</CommandGroupLabel>
+                {collection.items.map((item) => (
+                  <CommandItem key={item.value} item={item}>
+                    <IconPlaceholder
+                      lucide={
+                        item.value === "profile"
+                          ? "UserIcon"
+                          : item.value === "billing"
+                            ? "CreditCardIcon"
+                            : "SettingsIcon"
+                      }
+                      tabler={
+                        item.value === "profile"
+                          ? "IconUser"
+                          : item.value === "billing"
+                            ? "IconCreditCard"
+                            : "IconSettings"
+                      }
+                      hugeicons={
+                        item.value === "profile"
+                          ? "UserIcon"
+                          : item.value === "billing"
+                            ? "CreditCardIcon"
+                            : "SettingsIcon"
+                      }
+                      phosphor={
+                        item.value === "profile"
+                          ? "UserIcon"
+                          : item.value === "billing"
+                            ? "CreditCardIcon"
+                            : "GearIcon"
+                      }
+                      remixicon={
+                        item.value === "profile"
+                          ? "RiUserLine"
+                          : item.value === "billing"
+                            ? "RiBankCardLine"
+                            : "RiSettingsLine"
+                      }
+                    />
+                    <CommandItemText>{item.label}</CommandItemText>
+                    <CommandShortcut>{item.shortcut}</CommandShortcut>
+                  </CommandItem>
+                ))}
               </CommandGroup>
             </CommandList>
           </Command>
@@ -213,6 +235,35 @@ function CommandWithShortcuts() {
 function CommandWithGroups() {
   const [open, setOpen] = React.useState(false)
 
+  const { collection, filter } = useListCollection({
+    initialItems: [
+      { label: "Calendar", value: "calendar", group: "suggestions" },
+      { label: "Search Emoji", value: "search-emoji", group: "suggestions" },
+      { label: "Calculator", value: "calculator", group: "suggestions" },
+      {
+        label: "Profile",
+        value: "profile",
+        group: "settings",
+        shortcut: "⌘P",
+      },
+      {
+        label: "Billing",
+        value: "billing",
+        group: "settings",
+        shortcut: "⌘B",
+      },
+      {
+        label: "Settings",
+        value: "settings",
+        group: "settings",
+        shortcut: "⌘S",
+      },
+    ],
+    filter: (itemString, query) =>
+      itemString.toLowerCase().includes(query.toLowerCase()),
+    groupBy: (item) => item.group,
+  })
+
   return (
     <Example title="With Groups">
       <div className="flex flex-col gap-4">
@@ -224,78 +275,34 @@ function CommandWithGroups() {
           Open Menu
         </Button>
         <CommandDialog open={open} onOpenChange={setOpen}>
-          <Command>
-            <CommandInput placeholder="Type a command or search..." />
+          <Command
+            collection={collection}
+            onValueChange={() => {
+              setOpen(false)
+              filter("")
+            }}
+          >
+            <CommandInput
+              placeholder="Type a command or search..."
+              onFilter={filter}
+            />
             <CommandList>
               <CommandEmpty>No results found.</CommandEmpty>
-              <CommandGroup heading="Suggestions">
-                <CommandItem>
-                  <IconPlaceholder
-                    lucide="CalendarIcon"
-                    tabler="IconCalendar"
-                    hugeicons="CalendarIcon"
-                    phosphor="CalendarBlankIcon"
-                    remixicon="RiCalendarLine"
-                  />
-                  <span>Calendar</span>
-                </CommandItem>
-                <CommandItem>
-                  <IconPlaceholder
-                    lucide="SmileIcon"
-                    tabler="IconMoodSmile"
-                    hugeicons="SmileIcon"
-                    phosphor="SmileyIcon"
-                    remixicon="RiEmotionLine"
-                  />
-                  <span>Search Emoji</span>
-                </CommandItem>
-                <CommandItem>
-                  <IconPlaceholder
-                    lucide="CalculatorIcon"
-                    tabler="IconCalculator"
-                    hugeicons="CalculatorIcon"
-                    phosphor="CalculatorIcon"
-                    remixicon="RiCalculatorLine"
-                  />
-                  <span>Calculator</span>
-                </CommandItem>
-              </CommandGroup>
-              <CommandSeparator />
-              <CommandGroup heading="Settings">
-                <CommandItem>
-                  <IconPlaceholder
-                    lucide="UserIcon"
-                    tabler="IconUser"
-                    hugeicons="UserIcon"
-                    phosphor="UserIcon"
-                    remixicon="RiUserLine"
-                  />
-                  <span>Profile</span>
-                  <CommandShortcut>⌘P</CommandShortcut>
-                </CommandItem>
-                <CommandItem>
-                  <IconPlaceholder
-                    lucide="CreditCardIcon"
-                    tabler="IconCreditCard"
-                    hugeicons="CreditCardIcon"
-                    phosphor="CreditCardIcon"
-                    remixicon="RiBankCardLine"
-                  />
-                  <span>Billing</span>
-                  <CommandShortcut>⌘B</CommandShortcut>
-                </CommandItem>
-                <CommandItem>
-                  <IconPlaceholder
-                    lucide="SettingsIcon"
-                    tabler="IconSettings"
-                    hugeicons="SettingsIcon"
-                    phosphor="GearIcon"
-                    remixicon="RiSettingsLine"
-                  />
-                  <span>Settings</span>
-                  <CommandShortcut>⌘S</CommandShortcut>
-                </CommandItem>
-              </CommandGroup>
+              {collection.group().map(([group, items]) => (
+                <CommandGroup key={group}>
+                  <CommandGroupLabel className="capitalize">
+                    {group}
+                  </CommandGroupLabel>
+                  {items.map((item) => (
+                    <CommandItem key={item.value} item={item}>
+                      <CommandItemText>{item.label}</CommandItemText>
+                      {item.shortcut && (
+                        <CommandShortcut>{item.shortcut}</CommandShortcut>
+                      )}
+                    </CommandItem>
+                  ))}
+                </CommandGroup>
+              ))}
             </CommandList>
           </Command>
         </CommandDialog>
@@ -306,6 +313,87 @@ function CommandWithGroups() {
 
 function CommandManyItems() {
   const [open, setOpen] = React.useState(false)
+
+  const { collection, filter } = useListCollection({
+    initialItems: [
+      { label: "Home", value: "home", group: "navigation", shortcut: "⌘H" },
+      { label: "Inbox", value: "inbox", group: "navigation", shortcut: "⌘I" },
+      {
+        label: "Documents",
+        value: "documents",
+        group: "navigation",
+        shortcut: "⌘D",
+      },
+      {
+        label: "Folders",
+        value: "folders",
+        group: "navigation",
+        shortcut: "⌘F",
+      },
+      {
+        label: "New File",
+        value: "new-file",
+        group: "actions",
+        shortcut: "⌘N",
+      },
+      {
+        label: "New Folder",
+        value: "new-folder",
+        group: "actions",
+        shortcut: "⇧⌘N",
+      },
+      { label: "Copy", value: "copy", group: "actions", shortcut: "⌘C" },
+      { label: "Cut", value: "cut", group: "actions", shortcut: "⌘X" },
+      { label: "Paste", value: "paste", group: "actions", shortcut: "⌘V" },
+      { label: "Delete", value: "delete", group: "actions", shortcut: "⌫" },
+      { label: "Grid View", value: "grid-view", group: "view" },
+      { label: "List View", value: "list-view", group: "view" },
+      {
+        label: "Zoom In",
+        value: "zoom-in",
+        group: "view",
+        shortcut: "⌘+",
+      },
+      {
+        label: "Zoom Out",
+        value: "zoom-out",
+        group: "view",
+        shortcut: "⌘-",
+      },
+      {
+        label: "Profile",
+        value: "profile",
+        group: "account",
+        shortcut: "⌘P",
+      },
+      {
+        label: "Billing",
+        value: "billing",
+        group: "account",
+        shortcut: "⌘B",
+      },
+      {
+        label: "Settings",
+        value: "settings",
+        group: "account",
+        shortcut: "⌘S",
+      },
+      { label: "Notifications", value: "notifications", group: "account" },
+      {
+        label: "Help & Support",
+        value: "help-support",
+        group: "account",
+      },
+      { label: "Calculator", value: "calculator", group: "tools" },
+      { label: "Calendar", value: "calendar", group: "tools" },
+      { label: "Image Editor", value: "image-editor", group: "tools" },
+      { label: "Code Editor", value: "code-editor", group: "tools" },
+    ],
+    filter: (itemString, query) =>
+      itemString.toLowerCase().includes(query.toLowerCase()),
+    groupBy: (item) => item.group,
+    groupSort: ["navigation", "actions", "view", "account", "tools"],
+  })
 
   return (
     <Example title="Many Groups & Items">
@@ -318,269 +406,34 @@ function CommandManyItems() {
           Open Menu
         </Button>
         <CommandDialog open={open} onOpenChange={setOpen}>
-          <Command>
-            <CommandInput placeholder="Type a command or search..." />
+          <Command
+            collection={collection}
+            onValueChange={() => {
+              setOpen(false)
+              filter("")
+            }}
+          >
+            <CommandInput
+              placeholder="Type a command or search..."
+              onFilter={filter}
+            />
             <CommandList>
               <CommandEmpty>No results found.</CommandEmpty>
-              <CommandGroup heading="Navigation">
-                <CommandItem>
-                  <IconPlaceholder
-                    lucide="HomeIcon"
-                    tabler="IconHome"
-                    hugeicons="HomeIcon"
-                    phosphor="HouseIcon"
-                    remixicon="RiHomeLine"
-                  />
-                  <span>Home</span>
-                  <CommandShortcut>⌘H</CommandShortcut>
-                </CommandItem>
-                <CommandItem>
-                  <IconPlaceholder
-                    lucide="InboxIcon"
-                    tabler="IconInbox"
-                    hugeicons="InboxIcon"
-                    phosphor="TrayIcon"
-                    remixicon="RiInboxLine"
-                  />
-                  <span>Inbox</span>
-                  <CommandShortcut>⌘I</CommandShortcut>
-                </CommandItem>
-                <CommandItem>
-                  <IconPlaceholder
-                    lucide="FileTextIcon"
-                    tabler="IconFileText"
-                    hugeicons="File02Icon"
-                    phosphor="FileTextIcon"
-                    remixicon="RiFileTextLine"
-                  />
-                  <span>Documents</span>
-                  <CommandShortcut>⌘D</CommandShortcut>
-                </CommandItem>
-                <CommandItem>
-                  <IconPlaceholder
-                    lucide="FolderIcon"
-                    tabler="IconFolder"
-                    hugeicons="FolderIcon"
-                    phosphor="FolderIcon"
-                    remixicon="RiFolderLine"
-                  />
-                  <span>Folders</span>
-                  <CommandShortcut>⌘F</CommandShortcut>
-                </CommandItem>
-              </CommandGroup>
-              <CommandSeparator />
-              <CommandGroup heading="Actions">
-                <CommandItem>
-                  <IconPlaceholder
-                    lucide="PlusIcon"
-                    tabler="IconPlus"
-                    hugeicons="PlusSignIcon"
-                    phosphor="PlusIcon"
-                    remixicon="RiAddLine"
-                  />
-                  <span>New File</span>
-                  <CommandShortcut>⌘N</CommandShortcut>
-                </CommandItem>
-                <CommandItem>
-                  <IconPlaceholder
-                    lucide="FolderPlusIcon"
-                    tabler="IconFolderPlus"
-                    hugeicons="FolderAddIcon"
-                    phosphor="FolderPlusIcon"
-                    remixicon="RiFolderAddLine"
-                  />
-                  <span>New Folder</span>
-                  <CommandShortcut>⇧⌘N</CommandShortcut>
-                </CommandItem>
-                <CommandItem>
-                  <IconPlaceholder
-                    lucide="CopyIcon"
-                    tabler="IconCopy"
-                    hugeicons="CopyIcon"
-                    phosphor="CopyIcon"
-                    remixicon="RiFileCopyLine"
-                  />
-                  <span>Copy</span>
-                  <CommandShortcut>⌘C</CommandShortcut>
-                </CommandItem>
-                <CommandItem>
-                  <IconPlaceholder
-                    lucide="ScissorsIcon"
-                    tabler="IconCut"
-                    hugeicons="ScissorIcon"
-                    phosphor="ScissorsIcon"
-                    remixicon="RiScissorsLine"
-                  />
-                  <span>Cut</span>
-                  <CommandShortcut>⌘X</CommandShortcut>
-                </CommandItem>
-                <CommandItem>
-                  <IconPlaceholder
-                    lucide="ClipboardPasteIcon"
-                    tabler="IconClipboard"
-                    hugeicons="ClipboardIcon"
-                    phosphor="ClipboardIcon"
-                    remixicon="RiClipboardLine"
-                  />
-                  <span>Paste</span>
-                  <CommandShortcut>⌘V</CommandShortcut>
-                </CommandItem>
-                <CommandItem>
-                  <IconPlaceholder
-                    lucide="TrashIcon"
-                    tabler="IconTrash"
-                    hugeicons="DeleteIcon"
-                    phosphor="TrashIcon"
-                    remixicon="RiDeleteBinLine"
-                  />
-                  <span>Delete</span>
-                  <CommandShortcut>⌫</CommandShortcut>
-                </CommandItem>
-              </CommandGroup>
-              <CommandSeparator />
-              <CommandGroup heading="View">
-                <CommandItem>
-                  <IconPlaceholder
-                    lucide="LayoutGridIcon"
-                    tabler="IconLayoutGrid"
-                    hugeicons="GridIcon"
-                    phosphor="GridFourIcon"
-                    remixicon="RiGridLine"
-                  />
-                  <span>Grid View</span>
-                </CommandItem>
-                <CommandItem>
-                  <IconPlaceholder
-                    lucide="ListIcon"
-                    tabler="IconList"
-                    hugeicons="Menu05Icon"
-                    phosphor="ListIcon"
-                    remixicon="RiListUnordered"
-                  />
-                  <span>List View</span>
-                </CommandItem>
-                <CommandItem>
-                  <IconPlaceholder
-                    lucide="ZoomInIcon"
-                    tabler="IconZoomIn"
-                    hugeicons="ZoomInAreaIcon"
-                    phosphor="MagnifyingGlassMinusIcon"
-                    remixicon="RiSearchEyeLine"
-                  />
-                  <span>Zoom In</span>
-                  <CommandShortcut>⌘+</CommandShortcut>
-                </CommandItem>
-                <CommandItem>
-                  <IconPlaceholder
-                    lucide="ZoomOutIcon"
-                    tabler="IconZoomOut"
-                    hugeicons="ZoomOutAreaIcon"
-                    phosphor="MagnifyingGlassPlusIcon"
-                    remixicon="RiZoomInLine"
-                  />
-                  <span>Zoom Out</span>
-                  <CommandShortcut>⌘-</CommandShortcut>
-                </CommandItem>
-              </CommandGroup>
-              <CommandSeparator />
-              <CommandGroup heading="Account">
-                <CommandItem>
-                  <IconPlaceholder
-                    lucide="UserIcon"
-                    tabler="IconUser"
-                    hugeicons="UserIcon"
-                    phosphor="UserIcon"
-                    remixicon="RiUserLine"
-                  />
-                  <span>Profile</span>
-                  <CommandShortcut>⌘P</CommandShortcut>
-                </CommandItem>
-                <CommandItem>
-                  <IconPlaceholder
-                    lucide="CreditCardIcon"
-                    tabler="IconCreditCard"
-                    hugeicons="CreditCardIcon"
-                    phosphor="CreditCardIcon"
-                    remixicon="RiBankCardLine"
-                  />
-                  <span>Billing</span>
-                  <CommandShortcut>⌘B</CommandShortcut>
-                </CommandItem>
-                <CommandItem>
-                  <IconPlaceholder
-                    lucide="SettingsIcon"
-                    tabler="IconSettings"
-                    hugeicons="SettingsIcon"
-                    phosphor="GearIcon"
-                    remixicon="RiSettingsLine"
-                  />
-                  <span>Settings</span>
-                  <CommandShortcut>⌘S</CommandShortcut>
-                </CommandItem>
-                <CommandItem>
-                  <IconPlaceholder
-                    lucide="BellIcon"
-                    tabler="IconBell"
-                    hugeicons="NotificationIcon"
-                    phosphor="BellIcon"
-                    remixicon="RiNotificationLine"
-                  />
-                  <span>Notifications</span>
-                </CommandItem>
-                <CommandItem>
-                  <IconPlaceholder
-                    lucide="HelpCircleIcon"
-                    tabler="IconHelpCircle"
-                    hugeicons="HelpCircleIcon"
-                    phosphor="QuestionIcon"
-                    remixicon="RiQuestionLine"
-                  />
-                  <span>Help & Support</span>
-                </CommandItem>
-              </CommandGroup>
-              <CommandSeparator />
-              <CommandGroup heading="Tools">
-                <CommandItem>
-                  <IconPlaceholder
-                    lucide="CalculatorIcon"
-                    tabler="IconCalculator"
-                    hugeicons="CalculatorIcon"
-                    phosphor="CalculatorIcon"
-                    remixicon="RiCalculatorLine"
-                  />
-                  <span>Calculator</span>
-                </CommandItem>
-                <CommandItem>
-                  <IconPlaceholder
-                    lucide="CalendarIcon"
-                    tabler="IconCalendar"
-                    hugeicons="CalendarIcon"
-                    phosphor="CalendarBlankIcon"
-                    remixicon="RiCalendarLine"
-                  />
-                  <span>Calendar</span>
-                </CommandItem>
-                <CommandItem>
-                  <IconPlaceholder
-                    lucide="ImageIcon"
-                    tabler="IconPhoto"
-                    hugeicons="ImageIcon"
-                    phosphor="ImageIcon"
-                    remixicon="RiImageLine"
-                  />
-                  <span>Image Editor</span>
-                </CommandItem>
-                <CommandItem>
-                  <IconPlaceholder
-                    lucide="CodeIcon"
-                    tabler="IconCode"
-                    hugeicons="CodeIcon"
-                    phosphor="CodeIcon"
-                    remixicon="RiCodeLine"
-                  />
-                  <span>Code Editor</span>
-                </CommandItem>
-              </CommandGroup>
+              {collection.group().map(([group, items]) => (
+                <CommandGroup key={group}>
+                  <CommandGroupLabel className="capitalize">
+                    {group}
+                  </CommandGroupLabel>
+                  {items.map((item) => (
+                    <CommandItem key={item.value} item={item}>
+                      <CommandItemText>{item.label}</CommandItemText>
+                      {item.shortcut && (
+                        <CommandShortcut>{item.shortcut}</CommandShortcut>
+                      )}
+                    </CommandItem>
+                  ))}
+                </CommandGroup>
+              ))}
             </CommandList>
           </Command>
         </CommandDialog>

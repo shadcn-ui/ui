@@ -5,11 +5,13 @@ import {
   Command,
   CommandEmpty,
   CommandGroup,
+  CommandGroupLabel,
   CommandInput,
   CommandItem,
+  CommandItemText,
   CommandList,
-  CommandSeparator,
   CommandShortcut,
+  useListCollection,
 } from "@/examples/ark/ui-rtl/command"
 import {
   Calculator,
@@ -73,43 +75,78 @@ const translations: Translations = {
 export function CommandRtl() {
   const { dir, t } = useTranslation(translations, "ar")
 
+  const { collection, filter } = useListCollection({
+    initialItems: [
+      { label: t.calendar, value: "calendar", group: "suggestions" },
+      { label: t.searchEmoji, value: "search-emoji", group: "suggestions" },
+      {
+        label: t.calculator,
+        value: "calculator",
+        group: "suggestions",
+        disabled: true,
+      },
+      {
+        label: t.profile,
+        value: "profile",
+        group: "settings",
+        shortcut: "⌘P",
+      },
+      {
+        label: t.billing,
+        value: "billing",
+        group: "settings",
+        shortcut: "⌘B",
+      },
+      {
+        label: t.settings,
+        value: "settings",
+        group: "settings",
+        shortcut: "⌘S",
+      },
+    ],
+    filter: (itemString, query) =>
+      itemString.toLowerCase().includes(query.toLowerCase()),
+    groupBy: (item) => item.group,
+    groupSort: ["suggestions", "settings"],
+  })
+
+  const icons: Record<string, React.ReactNode> = {
+    calendar: <Calendar />,
+    "search-emoji": <Smile />,
+    calculator: <Calculator />,
+    profile: <User />,
+    billing: <CreditCard />,
+    settings: <Settings />,
+  }
+
+  const groupLabels: Record<string, string> = {
+    suggestions: t.suggestions,
+    settings: t.settings,
+  }
+
   return (
-    <Command className="max-w-sm rounded-lg border" dir={dir}>
-      <CommandInput placeholder={t.placeholder} dir={dir} />
+    <Command
+      className="max-w-sm rounded-lg border"
+      collection={collection}
+      dir={dir}
+    >
+      <CommandInput placeholder={t.placeholder} dir={dir} onFilter={filter} />
       <CommandList>
         <CommandEmpty>{t.empty}</CommandEmpty>
-        <CommandGroup heading={t.suggestions}>
-          <CommandItem>
-            <Calendar />
-            <span>{t.calendar}</span>
-          </CommandItem>
-          <CommandItem>
-            <Smile />
-            <span>{t.searchEmoji}</span>
-          </CommandItem>
-          <CommandItem disabled>
-            <Calculator />
-            <span>{t.calculator}</span>
-          </CommandItem>
-        </CommandGroup>
-        <CommandSeparator />
-        <CommandGroup heading={t.settings}>
-          <CommandItem>
-            <User />
-            <span>{t.profile}</span>
-            <CommandShortcut>⌘P</CommandShortcut>
-          </CommandItem>
-          <CommandItem>
-            <CreditCard />
-            <span>{t.billing}</span>
-            <CommandShortcut>⌘B</CommandShortcut>
-          </CommandItem>
-          <CommandItem>
-            <Settings />
-            <span>{t.settings}</span>
-            <CommandShortcut>⌘S</CommandShortcut>
-          </CommandItem>
-        </CommandGroup>
+        {collection.group().map(([group, items]) => (
+          <CommandGroup key={group}>
+            <CommandGroupLabel>{groupLabels[group]}</CommandGroupLabel>
+            {items.map((item) => (
+              <CommandItem key={item.value} item={item}>
+                {icons[item.value]}
+                <CommandItemText>{item.label}</CommandItemText>
+                {item.shortcut && (
+                  <CommandShortcut>{item.shortcut}</CommandShortcut>
+                )}
+              </CommandItem>
+            ))}
+          </CommandGroup>
+        ))}
       </CommandList>
     </Command>
   )

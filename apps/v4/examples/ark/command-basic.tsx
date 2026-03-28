@@ -6,14 +6,25 @@ import {
   Command,
   CommandDialog,
   CommandEmpty,
-  CommandGroup,
   CommandInput,
   CommandItem,
+  CommandItemText,
   CommandList,
+  useListCollection,
 } from "@/examples/ark/ui/command"
 
 export function CommandBasic() {
   const [open, setOpen] = React.useState(false)
+
+  const { collection, filter } = useListCollection({
+    initialItems: [
+      { label: "Calendar", value: "calendar" },
+      { label: "Search Emoji", value: "search-emoji" },
+      { label: "Calculator", value: "calculator" },
+    ],
+    filter: (itemString, query) =>
+      itemString.toLowerCase().includes(query.toLowerCase()),
+  })
 
   return (
     <div className="flex flex-col gap-4">
@@ -21,15 +32,24 @@ export function CommandBasic() {
         Open Menu
       </Button>
       <CommandDialog open={open} onOpenChange={setOpen}>
-        <Command>
-          <CommandInput placeholder="Type a command or search..." />
+        <Command
+          collection={collection}
+          onValueChange={() => {
+            setOpen(false)
+            filter("")
+          }}
+        >
+          <CommandInput
+            placeholder="Type a command or search..."
+            onFilter={filter}
+          />
           <CommandList>
             <CommandEmpty>No results found.</CommandEmpty>
-            <CommandGroup heading="Suggestions">
-              <CommandItem>Calendar</CommandItem>
-              <CommandItem>Search Emoji</CommandItem>
-              <CommandItem>Calculator</CommandItem>
-            </CommandGroup>
+            {collection.items.map((item) => (
+              <CommandItem key={item.value} item={item}>
+                <CommandItemText>{item.label}</CommandItemText>
+              </CommandItem>
+            ))}
           </CommandList>
         </Command>
       </CommandDialog>
