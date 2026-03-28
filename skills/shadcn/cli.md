@@ -27,7 +27,7 @@ Initializes shadcn/ui in an existing project or creates a new project (when `--n
 
 | Flag                    | Short | Description                                               | Default |
 | ----------------------- | ----- | --------------------------------------------------------- | ------- |
-| `--template <template>` | `-t`  | Template (next, start, vite, next-monorepo, react-router) | —       |
+| `--template <template>` | `-t`  | Starter template (next, start, vite, next-monorepo, react-router) | —       |
 | `--preset [name]`       | `-p`  | Preset configuration (named, code, or URL)                | —       |
 | `--yes`                 | `-y`  | Skip confirmation prompt                                  | `true`  |
 | `--defaults`            | `-d`  | Use defaults (`--template=next --preset=base-nova`)       | `false` |
