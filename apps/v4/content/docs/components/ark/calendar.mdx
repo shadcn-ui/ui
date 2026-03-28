@@ -105,6 +105,14 @@ A basic calendar component. We used `className="rounded-lg border"` to style the
   previewClassName="h-96"
 />
 
+### Views
+
+<ComponentPreview
+  styleName="ark-nova"
+  name="calendar-views"
+  previewClassName="h-96"
+/>
+
 ### Range Calendar
 
 Use `selectionMode="range"` to enable range selection.
@@ -137,6 +145,16 @@ Use `selectionMode="range"` to enable range selection.
   styleName="ark-nova"
   name="calendar-booked-dates"
   previewClassName="h-96"
+/>
+
+### Custom Cell Size
+
+Use the `cell` render prop on `CalendarDayView` to customize how each day cell is rendered.
+
+<ComponentPreview
+  styleName="ark-nova"
+  name="calendar-custom-days"
+  previewClassName="h-[30rem]"
 />
 
 ### Week Numbers

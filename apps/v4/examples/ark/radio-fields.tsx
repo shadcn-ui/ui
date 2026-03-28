@@ -144,23 +144,15 @@ export function RadioFields() {
       <FieldSet>
         <FieldLegend variant="label">Invalid Radio Group</FieldLegend>
         <RadioGroup>
-          <Field data-invalid orientation="horizontal">
-            <RadioGroupItem
-              value="invalid1"
-              id="radio-invalid-1"
-              aria-invalid
-            >
+          <Field invalid orientation="horizontal">
+            <RadioGroupItem value="invalid1" id="radio-invalid-1">
               <RadioGroupItemControl />
               <RadioGroupItemHiddenInput />
             </RadioGroupItem>
             <FieldLabel htmlFor="radio-invalid-1">Invalid Option 1</FieldLabel>
           </Field>
-          <Field data-invalid orientation="horizontal">
-            <RadioGroupItem
-              value="invalid2"
-              id="radio-invalid-2"
-              aria-invalid
-            >
+          <Field invalid orientation="horizontal">
+            <RadioGroupItem value="invalid2" id="radio-invalid-2">
               <RadioGroupItemControl />
               <RadioGroupItemHiddenInput />
             </RadioGroupItem>
@@ -171,8 +163,8 @@ export function RadioFields() {
       <FieldSet>
         <FieldLegend variant="label">Disabled Radio Group</FieldLegend>
         <RadioGroup disabled>
-          <Field data-disabled orientation="horizontal">
-            <RadioGroupItem value="disabled1" id="radio-disabled-1" disabled>
+          <Field disabled orientation="horizontal">
+            <RadioGroupItem value="disabled1" id="radio-disabled-1">
               <RadioGroupItemControl />
               <RadioGroupItemHiddenInput />
             </RadioGroupItem>
@@ -180,8 +172,8 @@ export function RadioFields() {
               Disabled Option 1
             </FieldLabel>
           </Field>
-          <Field data-disabled orientation="horizontal">
-            <RadioGroupItem value="disabled2" id="radio-disabled-2" disabled>
+          <Field disabled orientation="horizontal">
+            <RadioGroupItem value="disabled2" id="radio-disabled-2">
               <RadioGroupItemControl />
               <RadioGroupItemHiddenInput />
             </RadioGroupItem>

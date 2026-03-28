@@ -45,27 +45,19 @@ export function InputGroupTextareaExamples() {
           This is a description of the input group.
         </FieldDescription>
       </Field>
-      <Field data-invalid="true">
-        <FieldLabel htmlFor="textarea-header-footer-14">Invalid</FieldLabel>
+      <Field invalid>
+        <FieldLabel>Invalid</FieldLabel>
         <InputGroup>
-          <InputGroupTextarea
-            id="textarea-header-footer-14"
-            placeholder="Enter your text here..."
-            aria-invalid="true"
-          />
+          <InputGroupTextarea placeholder="Enter your text here..." />
         </InputGroup>
         <FieldDescription>
           This is a description of the input group.
         </FieldDescription>
       </Field>
-      <Field data-disabled="true">
-        <FieldLabel htmlFor="textarea-header-footer-15">Disabled</FieldLabel>
+      <Field disabled>
+        <FieldLabel>Disabled</FieldLabel>
         <InputGroup>
-          <InputGroupTextarea
-            id="textarea-header-footer-15"
-            placeholder="Enter your text here..."
-            disabled
-          />
+          <InputGroupTextarea placeholder="Enter your text here..." />
         </InputGroup>
         <FieldDescription>
           This is a description of the input group.

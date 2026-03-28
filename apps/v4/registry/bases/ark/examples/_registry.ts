@@ -122,6 +122,26 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "calendar-example",
+    title: "Calendar",
+    type: "registry:example",
+    registryDependencies: [
+      "button",
+      "calendar",
+      "card",
+      "field",
+      "input-group",
+      "popover",
+      "example",
+    ],
+    files: [
+      {
+        path: "examples/calendar-example.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "card-example",
     title: "Card",
     type: "registry:example",

@@ -17,24 +17,16 @@ export function InputGroupBasic() {
           <InputGroupInput id="input-group-02" placeholder="Placeholder" />
         </InputGroup>
       </Field>
-      <Field data-disabled="true">
-        <FieldLabel htmlFor="input-disabled-03">Disabled</FieldLabel>
+      <Field disabled>
+        <FieldLabel>Disabled</FieldLabel>
         <InputGroup>
-          <InputGroupInput
-            id="input-disabled-03"
-            placeholder="This field is disabled"
-            disabled
-          />
+          <InputGroupInput placeholder="This field is disabled" />
         </InputGroup>
       </Field>
-      <Field data-invalid="true">
-        <FieldLabel htmlFor="input-invalid-04">Invalid</FieldLabel>
+      <Field invalid>
+        <FieldLabel>Invalid</FieldLabel>
         <InputGroup>
-          <InputGroupInput
-            id="input-invalid-04"
-            placeholder="This field is invalid"
-            aria-invalid="true"
-          />
+          <InputGroupInput placeholder="This field is invalid" />
         </InputGroup>
       </Field>
     </FieldGroup>

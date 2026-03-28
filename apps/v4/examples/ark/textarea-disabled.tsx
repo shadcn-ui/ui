@@ -3,13 +3,9 @@ import { Textarea } from "@/examples/ark/ui/textarea"
 
 export function TextareaDisabled() {
   return (
-    <Field data-disabled>
-      <FieldLabel htmlFor="textarea-disabled">Message</FieldLabel>
-      <Textarea
-        id="textarea-disabled"
-        placeholder="Type your message here."
-        disabled
-      />
+    <Field disabled>
+      <FieldLabel>Message</FieldLabel>
+      <Textarea placeholder="Type your message here." />
     </Field>
   )
 }
