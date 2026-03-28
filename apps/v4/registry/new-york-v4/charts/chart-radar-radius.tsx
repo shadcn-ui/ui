@@ -76,7 +76,7 @@ export function ChartRadarRadius() {
             <Radar dataKey="mobile" fill="var(--color-mobile)" />
             <PolarRadiusAxis
               angle={60}
-              stroke="hsla(var(--foreground))"
+              stroke="var(--foreground)"
               orientation="middle"
               axisLine={false}
             />

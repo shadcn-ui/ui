@@ -1,12 +1,13 @@
 "use client"
 
 import Script from "next/script"
-import { Button } from "@/examples/base/ui/button"
 import { DiceFaces05Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 
 import { cn } from "@/lib/utils"
+import { Button } from "@/styles/base-nova/ui/button"
 import { useRandom } from "@/app/(create)/hooks/use-random"
+import { RESET_FORWARD_TYPE } from "@/app/(create)/hooks/use-reset"
 
 export const RANDOMIZE_FORWARD_TYPE = "randomize-forward"
 
@@ -40,7 +41,7 @@ export function RandomizeScript() {
       dangerouslySetInnerHTML={{
         __html: `
             (function() {
-              // Forward R key
+              // Forward r key (shuffle) and Shift+R (reset).
               document.addEventListener('keydown', function(e) {
                 if ((e.key === 'r' || e.key === 'R') && !e.metaKey && !e.ctrlKey) {
                   if (
@@ -53,8 +54,11 @@ export function RandomizeScript() {
                   }
                   e.preventDefault();
                   if (window.parent && window.parent !== window) {
+                    var type = e.shiftKey
+                      ? '${RESET_FORWARD_TYPE}'
+                      : '${RANDOMIZE_FORWARD_TYPE}';
                     window.parent.postMessage({
-                      type: '${RANDOMIZE_FORWARD_TYPE}',
+                      type: type,
                       key: e.key
                     }, '*');
                   }

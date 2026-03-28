@@ -1,6 +1,6 @@
 "use client"
 
-import { buttonVariants } from "@/examples/base/ui/button"
+import { buttonVariants } from "@/styles/base-nova/ui/button"
 
 export default function ButtonRender() {
   return (

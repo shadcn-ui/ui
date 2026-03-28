@@ -1,7 +1,9 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/base/ui/button"
+
+import { Icons } from "@/components/icons"
+import { Button } from "@/styles/base-nova/ui/button"
 import {
   Dialog,
   DialogClose,
@@ -10,9 +12,7 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@/examples/base/ui/dialog"
-
-import { Icons } from "@/components/icons"
+} from "@/styles/base-nova/ui/dialog"
 
 const STORAGE_KEY = "shadcn-create-welcome-dialog"
 
