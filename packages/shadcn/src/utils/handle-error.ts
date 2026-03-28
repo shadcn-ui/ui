@@ -36,13 +36,24 @@ export function handleError(error: unknown) {
   }
 
   if (error instanceof z.ZodError) {
-    for (const [key, value] of Object.entries(error.flatten().fieldErrors)) {
+    const { fieldErrors, formErrors } = error.flatten()
+    for (const [key, value] of Object.entries(fieldErrors)) {
       const messages = value ? (Array.isArray(value) ? value : [value]) : []
       const formattedMessage = messages
+        .map((m) => m.trim())
         .map((m) => (m.endsWith(".") ? m : `${m}.`))
         .join(" ")
       logger.error(`- ${highlighter.info(key)}: ${formattedMessage}`)
     }
+
+    if (formErrors.length > 0) {
+      const formattedMessage = formErrors
+        .map((m) => m.trim())
+        .map((m) => (m.endsWith(".") ? m : `${m}.`))
+        .join(" ")
+      logger.error(`- ${formattedMessage}`)
+    }
+
     logger.break()
     process.exit(1)
   }
@@ -53,6 +64,7 @@ export function handleError(error: unknown) {
     process.exit(1)
   }
 
+  logger.error(`An unknown error occurred. Please check the logs for more details.`)
   logger.break()
   process.exit(1)
 }
