@@ -2,9 +2,9 @@
 
 import * as React from "react"
 import Script from "next/script"
-import { Button } from "@/examples/base/ui/button"
 
 import { cn } from "@/lib/utils"
+import { Button } from "@/styles/base-nova/ui/button"
 import { useThemeToggle } from "@/app/(create)/hooks/use-theme-toggle"
 
 export const DARK_MODE_FORWARD_TYPE = "dark-mode-forward"

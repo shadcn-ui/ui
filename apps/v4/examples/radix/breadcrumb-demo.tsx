@@ -1,4 +1,5 @@
 import Link from "next/link"
+
 import {
   Breadcrumb,
   BreadcrumbEllipsis,
@@ -7,15 +8,15 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/examples/radix/ui/breadcrumb"
-import { Button } from "@/examples/radix/ui/button"
+} from "@/styles/radix-nova/ui/breadcrumb"
+import { Button } from "@/styles/radix-nova/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/examples/radix/ui/dropdown-menu"
+} from "@/styles/radix-nova/ui/dropdown-menu"
 
 export function BreadcrumbDemo() {
   return (
