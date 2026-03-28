@@ -1,3 +1,4 @@
+import { Suspense } from "react"
 import Link from "next/link"
 import { PlusSignIcon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
@@ -64,12 +65,18 @@ export function SiteHeader() {
             <ModeSwitcher />
             <div className="hidden items-center gap-2 group-has-data-[slot=designer]/layout:md:flex">
               <Separator orientation="vertical" />
-              <V0Button />
-              <ProjectForm />
+              <Suspense fallback={null}>
+                <V0Button />
+              </Suspense>
+              <Suspense fallback={null}>
+                <ProjectForm />
+              </Suspense>
             </div>
             <div className="hidden items-center gap-2 group-has-data-[slot=designer]/layout:flex group-has-data-[slot=designer]/layout:md:hidden">
               <Separator orientation="vertical" />
-              <V0Button />
+              <Suspense fallback={null}>
+                <V0Button />
+              </Suspense>
             </div>
             <div className="flex items-center gap-2 group-has-data-[slot=designer]/layout:hidden">
               <Separator orientation="vertical" />
