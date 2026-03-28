@@ -1,9 +1,8 @@
 "use client"
 
 import * as React from "react"
-import { Switch as SwitchPrimitive } from "@ark-ui/react/switch"
-
 import { cn } from "@/examples/ark/lib/utils"
+import { Switch as SwitchPrimitive } from "@ark-ui/react/switch"
 
 const Switch = React.forwardRef<
   HTMLLabelElement,
@@ -45,7 +44,7 @@ const SwitchThumb = React.forwardRef<
     ref={ref}
     data-slot="switch-thumb"
     className={cn(
-      "pointer-events-none block size-5 rounded-full bg-background shadow-xs ring-0 transition-transform data-[state=checked]:translate-x-4 rtl:data-[state=checked]:-translate-x-4 data-[state=unchecked]:translate-x-0 rtl:data-[state=unchecked]:-translate-x-0 dark:data-[state=checked]:bg-primary-foreground dark:data-[state=unchecked]:bg-foreground",
+      "pointer-events-none block size-5 rounded-full bg-background shadow-xs ring-0 transition-transform data-[state=checked]:translate-x-4 data-[state=unchecked]:translate-x-0 rtl:data-[state=checked]:-translate-x-4 rtl:data-[state=unchecked]:-translate-x-0 dark:data-[state=checked]:bg-primary-foreground dark:data-[state=unchecked]:bg-foreground",
       className
     )}
     {...props}

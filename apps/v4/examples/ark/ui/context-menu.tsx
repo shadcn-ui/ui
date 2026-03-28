@@ -1,12 +1,11 @@
 "use client"
 
 import * as React from "react"
+import { cn } from "@/examples/ark/lib/utils"
 import { ark } from "@ark-ui/react/factory"
 import { Menu as MenuPrimitive } from "@ark-ui/react/menu"
 import { Portal } from "@ark-ui/react/portal"
-
-import { cn } from "@/examples/ark/lib/utils"
-import { ChevronRightIcon, CheckIcon } from "lucide-react"
+import { CheckIcon, ChevronRightIcon } from "lucide-react"
 
 function ContextMenu({
   ...props
@@ -163,8 +162,7 @@ function ContextMenuCheckboxItem({
     >
       <ark.span className="pointer-events-none absolute right-2">
         <MenuPrimitive.ItemIndicator>
-          <CheckIcon
-          />
+          <CheckIcon />
         </MenuPrimitive.ItemIndicator>
       </ark.span>
       {children}
@@ -192,8 +190,7 @@ function ContextMenuRadioItem({
     >
       <ark.span className="pointer-events-none absolute right-2">
         <MenuPrimitive.ItemIndicator>
-          <CheckIcon
-          />
+          <CheckIcon />
         </MenuPrimitive.ItemIndicator>
       </ark.span>
       {children}

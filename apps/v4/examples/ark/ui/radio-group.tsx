@@ -1,9 +1,8 @@
 "use client"
 
 import * as React from "react"
-import { RadioGroup as RadioGroupPrimitive } from "@ark-ui/react/radio-group"
-
 import { cn } from "@/examples/ark/lib/utils"
+import { RadioGroup as RadioGroupPrimitive } from "@ark-ui/react/radio-group"
 
 // --- Root ---
 

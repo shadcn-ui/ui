@@ -1,11 +1,10 @@
 "use client"
 
 import * as React from "react"
+import { cn } from "@/examples/ark/lib/utils"
 import { ark } from "@ark-ui/react/factory"
 import { Menu as MenuPrimitive } from "@ark-ui/react/menu"
 import { Portal } from "@ark-ui/react/portal"
-
-import { cn } from "@/examples/ark/lib/utils"
 import { CheckIcon, ChevronRightIcon } from "lucide-react"
 
 function DropdownMenu({
@@ -98,8 +97,7 @@ function DropdownMenuCheckboxItem({
         data-slot="dropdown-menu-checkbox-item-indicator"
       >
         <MenuPrimitive.ItemIndicator>
-          <CheckIcon
-          />
+          <CheckIcon />
         </MenuPrimitive.ItemIndicator>
       </ark.span>
       {children}
@@ -141,8 +139,7 @@ function DropdownMenuRadioItem({
         data-slot="dropdown-menu-radio-item-indicator"
       >
         <MenuPrimitive.ItemIndicator>
-          <CheckIcon
-          />
+          <CheckIcon />
         </MenuPrimitive.ItemIndicator>
       </ark.span>
       {children}

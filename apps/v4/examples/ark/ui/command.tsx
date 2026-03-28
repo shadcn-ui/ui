@@ -1,9 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { ark } from "@ark-ui/react/factory"
-import { Command as CommandPrimitive } from "cmdk"
-
 import { cn } from "@/examples/ark/lib/utils"
 import {
   Dialog,
@@ -13,7 +10,9 @@ import {
   DialogTitle,
 } from "@/examples/ark/ui/dialog"
 import { InputGroup, InputGroupAddon } from "@/examples/ark/ui/input-group"
-import { SearchIcon, CheckIcon } from "lucide-react"
+import { ark } from "@ark-ui/react/factory"
+import { Command as CommandPrimitive } from "cmdk"
+import { CheckIcon, SearchIcon } from "lucide-react"
 
 function Command({
   className,

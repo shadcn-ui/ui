@@ -1,9 +1,8 @@
 "use client"
 
 import * as React from "react"
-import { Accordion as AccordionPrimitive } from "@ark-ui/react/accordion"
-
 import { cn } from "@/examples/ark/lib/utils"
+import { Accordion as AccordionPrimitive } from "@ark-ui/react/accordion"
 import { ChevronDownIcon, ChevronUpIcon } from "lucide-react"
 
 const Accordion = React.forwardRef<
@@ -46,8 +45,14 @@ const AccordionTrigger = React.forwardRef<
     {...props}
   >
     {children}
-    <ChevronDownIcon data-slot="accordion-trigger-icon" className="pointer-events-none shrink-0 group-aria-expanded/accordion-trigger:hidden" />
-    <ChevronUpIcon data-slot="accordion-trigger-icon" className="pointer-events-none hidden shrink-0 group-aria-expanded/accordion-trigger:inline" />
+    <ChevronDownIcon
+      data-slot="accordion-trigger-icon"
+      className="pointer-events-none shrink-0 group-aria-expanded/accordion-trigger:hidden"
+    />
+    <ChevronUpIcon
+      data-slot="accordion-trigger-icon"
+      className="pointer-events-none hidden shrink-0 group-aria-expanded/accordion-trigger:inline"
+    />
   </AccordionPrimitive.ItemTrigger>
 ))
 AccordionTrigger.displayName = "AccordionTrigger"

@@ -1,11 +1,10 @@
 "use client"
 
 import * as React from "react"
+import { cn } from "@/examples/ark/lib/utils"
 import { ark } from "@ark-ui/react/factory"
 import { Menu as MenuPrimitive } from "@ark-ui/react/menu"
 import { Portal } from "@ark-ui/react/portal"
-
-import { cn } from "@/examples/ark/lib/utils"
 import { CheckIcon, ChevronRightIcon } from "lucide-react"
 
 function Menubar({
@@ -132,8 +131,7 @@ function MenubarCheckboxItem({
     >
       <ark.span className="pointer-events-none absolute left-1.5 flex size-4 items-center justify-center [&_svg:not([class*='size-'])]:size-4">
         <MenuPrimitive.ItemIndicator>
-          <CheckIcon
-          />
+          <CheckIcon />
         </MenuPrimitive.ItemIndicator>
       </ark.span>
       {children}
@@ -161,8 +159,7 @@ function MenubarRadioItem({
     >
       <ark.span className="pointer-events-none absolute left-1.5 flex size-4 items-center justify-center [&_svg:not([class*='size-'])]:size-4">
         <MenuPrimitive.ItemIndicator>
-          <CheckIcon
-          />
+          <CheckIcon />
         </MenuPrimitive.ItemIndicator>
       </ark.span>
       {children}

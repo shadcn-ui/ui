@@ -1,10 +1,9 @@
 "use client"
 
 import * as React from "react"
+import { cn } from "@/examples/ark/lib/utils"
 import { Avatar as AvatarPrimitive } from "@ark-ui/react/avatar"
 import { ark } from "@ark-ui/react/factory"
-
-import { cn } from "@/examples/ark/lib/utils"
 
 function Avatar({
   className,

@@ -1,10 +1,9 @@
 "use client"
 
 import * as React from "react"
+import { cn } from "@/examples/ark/lib/utils"
 import { DatePicker as DatePickerPrimitive } from "@ark-ui/react/date-picker"
 import { Portal } from "@ark-ui/react/portal"
-
-import { cn } from "@/examples/ark/lib/utils"
 import { CalendarIcon, ChevronLeftIcon, ChevronRightIcon } from "lucide-react"
 
 function DatePicker(
@@ -71,10 +70,7 @@ const DatePickerTrigger = React.forwardRef<
     )}
     {...props}
   >
-    {children ?? (
-      <CalendarIcon
-      />
-    )}
+    {children ?? <CalendarIcon />}
   </DatePickerPrimitive.Trigger>
 ))
 DatePickerTrigger.displayName = "DatePickerTrigger"
@@ -178,10 +174,7 @@ const DatePickerPrevTrigger = React.forwardRef<
     )}
     {...props}
   >
-    {children ?? (
-      <ChevronLeftIcon
-      />
-    )}
+    {children ?? <ChevronLeftIcon />}
   </DatePickerPrimitive.PrevTrigger>
 ))
 DatePickerPrevTrigger.displayName = "DatePickerPrevTrigger"
@@ -199,10 +192,7 @@ const DatePickerNextTrigger = React.forwardRef<
     )}
     {...props}
   >
-    {children ?? (
-      <ChevronRightIcon
-      />
-    )}
+    {children ?? <ChevronRightIcon />}
   </DatePickerPrimitive.NextTrigger>
 ))
 DatePickerNextTrigger.displayName = "DatePickerNextTrigger"
@@ -351,17 +341,19 @@ function DatePickerMonthView({ className }: { className?: string }) {
             </DatePickerViewControl>
             <DatePickerTable>
               <DatePickerTableBody>
-                {api.getMonthsGrid({ columns: 4, format: "short" }).map((months, i) => (
-                  <DatePickerTableRow key={i}>
-                    {months.map((month, j) => (
-                      <DatePickerTableCell key={j} value={month.value}>
-                        <DatePickerTableCellTrigger>
-                          {month.label}
-                        </DatePickerTableCellTrigger>
-                      </DatePickerTableCell>
-                    ))}
-                  </DatePickerTableRow>
-                ))}
+                {api
+                  .getMonthsGrid({ columns: 4, format: "short" })
+                  .map((months, i) => (
+                    <DatePickerTableRow key={i}>
+                      {months.map((month, j) => (
+                        <DatePickerTableCell key={j} value={month.value}>
+                          <DatePickerTableCellTrigger>
+                            {month.label}
+                          </DatePickerTableCellTrigger>
+                        </DatePickerTableCell>
+                      ))}
+                    </DatePickerTableRow>
+                  ))}
               </DatePickerTableBody>
             </DatePickerTable>
           </>

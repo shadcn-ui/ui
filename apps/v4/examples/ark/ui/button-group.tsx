@@ -1,8 +1,7 @@
-import { ark } from "@ark-ui/react/factory"
-import { cva, type VariantProps } from "class-variance-authority"
-
 import { cn } from "@/examples/ark/lib/utils"
 import { Separator } from "@/examples/ark/ui/separator"
+import { ark } from "@ark-ui/react/factory"
+import { cva, type VariantProps } from "class-variance-authority"
 
 const buttonGroupVariants = cva(
   "flex w-fit items-stretch *:focus-visible:relative *:focus-visible:z-10 has-[>[data-slot=button-group]]:gap-2 has-[select[aria-hidden=true]:last-child]:[&>[data-slot=select-trigger]:last-of-type]:rounded-r-lg [&>[data-slot=select-trigger]:not([class*='w-'])]:w-fit [&>input]:flex-1",

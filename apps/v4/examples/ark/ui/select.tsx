@@ -1,16 +1,13 @@
 "use client"
 
 import * as React from "react"
+import { cn } from "@/examples/ark/lib/utils"
 import { ark } from "@ark-ui/react/factory"
 import { Portal } from "@ark-ui/react/portal"
 import { Select as SelectPrimitive } from "@ark-ui/react/select"
+import { CheckIcon, ChevronsUpDownIcon, XIcon } from "lucide-react"
 
-import { cn } from "@/examples/ark/lib/utils"
-import { ChevronsUpDownIcon, XIcon, CheckIcon } from "lucide-react"
-
-function Select(props: React.ComponentProps<typeof SelectPrimitive.Root>) {
-  return <SelectPrimitive.Root {...props} />
-}
+const Select = SelectPrimitive.Root
 
 const SelectControl = React.forwardRef<
   HTMLDivElement,
@@ -81,10 +78,7 @@ const SelectIndicator = React.forwardRef<
     )}
     {...props}
   >
-    {children ?? (
-      <ChevronsUpDownIcon
-      />
-    )}
+    {children ?? <ChevronsUpDownIcon />}
   </SelectPrimitive.Indicator>
 ))
 SelectIndicator.displayName = "SelectIndicator"
@@ -102,10 +96,7 @@ const SelectClearTrigger = React.forwardRef<
     )}
     {...props}
   >
-    {children ?? (
-      <XIcon
-      />
-    )}
+    {children ?? <XIcon />}
   </SelectPrimitive.ClearTrigger>
 ))
 SelectClearTrigger.displayName = "SelectClearTrigger"
@@ -204,10 +195,7 @@ const SelectItemIndicator = React.forwardRef<
     )}
     {...props}
   >
-    {children ?? (
-      <CheckIcon
-      />
-    )}
+    {children ?? <CheckIcon />}
   </SelectPrimitive.ItemIndicator>
 ))
 SelectItemIndicator.displayName = "SelectItemIndicator"

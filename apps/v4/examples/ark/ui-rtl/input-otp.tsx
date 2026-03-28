@@ -1,10 +1,9 @@
 "use client"
 
 import * as React from "react"
+import { cn } from "@/examples/ark/lib/utils"
 import { ark } from "@ark-ui/react/factory"
 import { PinInput } from "@ark-ui/react/pin-input"
-
-import { cn } from "@/examples/ark/lib/utils"
 import { MinusIcon } from "lucide-react"
 
 const InputOTP = React.forwardRef<
@@ -66,8 +65,7 @@ const InputOTPSeparator = React.forwardRef<
     role="separator"
     {...props}
   >
-    <MinusIcon
-    />
+    <MinusIcon />
   </ark.div>
 ))
 InputOTPSeparator.displayName = "InputOTPSeparator"

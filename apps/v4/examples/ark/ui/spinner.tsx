@@ -1,5 +1,4 @@
 import * as React from "react"
-
 import { cn } from "@/examples/ark/lib/utils"
 
 function Spinner({ className, ...props }: React.ComponentProps<"svg">) {

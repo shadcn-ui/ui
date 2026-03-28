@@ -1,9 +1,8 @@
 "use client"
 
 import * as React from "react"
-import { Splitter } from "@ark-ui/react/splitter"
-
 import { cn } from "@/examples/ark/lib/utils"
+import { Splitter } from "@ark-ui/react/splitter"
 
 // --- Root ---
 
@@ -55,7 +54,7 @@ const SplitterResizeTrigger = React.forwardRef<
       "data-[orientation=vertical]:-my-1 data-[orientation=vertical]:min-h-2 data-[orientation=vertical]:cursor-row-resize",
       "data-[orientation=vertical]:before:inset-x-0 data-[orientation=vertical]:before:top-auto data-[orientation=vertical]:before:bottom-1 data-[orientation=vertical]:before:h-px",
       "data-[orientation=horizontal]:-mx-1 data-[orientation=horizontal]:min-w-2 data-[orientation=horizontal]:cursor-col-resize",
-      "data-[orientation=horizontal]:before:inset-y-0 data-[orientation=horizontal]:before:end-1 data-[orientation=horizontal]:before:start-auto data-[orientation=horizontal]:before:w-px",
+      "data-[orientation=horizontal]:before:inset-y-0 data-[orientation=horizontal]:before:start-auto data-[orientation=horizontal]:before:end-1 data-[orientation=horizontal]:before:w-px",
       "focus-visible:ring-1 focus-visible:ring-ring",
       className
     )}
