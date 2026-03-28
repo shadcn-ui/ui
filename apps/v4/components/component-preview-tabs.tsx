@@ -102,7 +102,15 @@ export function ComponentPreviewTabs({
             previewClassName={previewClassName}
           >
             <DirectionProviderWrapper base={base}>
-              {component}
+              <React.Suspense
+                fallback={
+                  <span className="text-sm text-muted-foreground">
+                    Loading preview...
+                  </span>
+                }
+              >
+                {component}
+              </React.Suspense>
             </DirectionProviderWrapper>
           </PreviewWrapper>
         </LanguageProvider>
@@ -114,7 +122,15 @@ export function ComponentPreviewTabs({
             previewClassName={previewClassName}
             dir="ltr"
           >
-            {component}
+            <React.Suspense
+              fallback={
+                <span className="text-sm text-muted-foreground">
+                  Loading preview...
+                </span>
+              }
+            >
+              {component}
+            </React.Suspense>
           </PreviewWrapper>
         </DirectionProviderWrapper>
       )}
@@ -122,7 +138,7 @@ export function ComponentPreviewTabs({
         <div
           data-slot="code"
           data-mobile-code-visible={isMobileCodeVisible}
-          className="relative overflow-hidden **:data-[slot=copy-button]:right-4 **:data-[slot=copy-button]:hidden data-[mobile-code-visible=true]:**:data-[slot=copy-button]:flex [&_[data-rehype-pretty-code-figure]]:m-0! [&_[data-rehype-pretty-code-figure]]:rounded-t-none [&_[data-rehype-pretty-code-figure]]:border-t [&_pre]:max-h-72"
+          className="relative overflow-hidden **:data-rehype-pretty-code-figure:m-0! **:data-rehype-pretty-code-figure:rounded-t-none **:data-rehype-pretty-code-figure:border-t **:data-[slot=copy-button]:right-4 **:data-[slot=copy-button]:hidden data-[mobile-code-visible=true]:**:data-[slot=copy-button]:flex [&_pre]:max-h-72"
         >
           {isMobileCodeVisible ? (
             <>

@@ -132,6 +132,14 @@ const nextConfig = {
   rewrites() {
     return [
       {
+        source: "/r/styles/new-york/:path*",
+        destination: "/r/styles/new-york-v4/:path*",
+      },
+      {
+        source: "/r/styles/default/:path*",
+        destination: "/r/styles/new-york-v4/:path*",
+      },
+      {
         source: "/docs/:path*.md",
         destination: "/llm/:path*",
       },
