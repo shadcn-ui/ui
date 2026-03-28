@@ -48,6 +48,9 @@ import {
 import { Spinner } from "@/registry/new-york-v4/ui/spinner"
 import { Switch } from "@/registry/new-york-v4/ui/switch"
 import { Textarea } from "@/registry/new-york-v4/ui/textarea"
+import { Calendar } from "@/registry/new-york-v4/ui/calendar"
+import { Popover, PopoverTrigger, PopoverContent } from "@/registry/new-york-v4/ui/popover"
+import { format } from "date-fns"
 import {
   addons,
   type exampleFormSchema,
@@ -64,6 +67,7 @@ export type FormState = {
 }
 
 export function ExampleForm() {
+  const [date, setDate] = React.useState<Date | undefined>(new Date())
   const formId = React.useId()
   const [formKey, setFormKey] = React.useState(formId)
   const [showResults, setShowResults] = React.useState(false)
@@ -273,19 +277,21 @@ export function ExampleForm() {
               <FieldSeparator />
               <Field data-invalid={!!formState.errors?.startDate?.length}>
                 <FieldLabel htmlFor="startDate">Start Date</FieldLabel>
-                <Input
-                  id="startDate"
-                  name="startDate"
-                  type="date"
-                  defaultValue={
-                    formState.values.startDate.toISOString().split("T")[0]
-                  }
-                  disabled={pending}
-                  aria-invalid={!!formState.errors?.startDate?.length}
-                />
-                <FieldDescription>
-                  Choose when your subscription should start
-                </FieldDescription>
+                <input type="hidden" name="startDate" value={date ? date.toISOString() : ""} />
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <Button variant="outline" className="w-full justify-start" disabled={pending}>
+                      {date ? format(date, "PPP") : "Select date"}
+                    </Button>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-auto p-0" align="start">
+                    <Calendar
+                      mode="single"
+                      selected={date}
+                      onSelect={setDate}
+                    />
+                  </PopoverContent>
+                </Popover>
                 {formState.errors?.startDate && (
                   <FieldError>{formState.errors.startDate[0]}</FieldError>
                 )}
