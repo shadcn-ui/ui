@@ -1,11 +1,11 @@
 "use client"
 
 import Script from "next/script"
-import { Button } from "@/examples/base/ui/button"
 import { DiceFaces05Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 
 import { cn } from "@/lib/utils"
+import { Button } from "@/styles/base-nova/ui/button"
 import { useRandom } from "@/app/(create)/hooks/use-random"
 import { RESET_FORWARD_TYPE } from "@/app/(create)/hooks/use-reset"
 

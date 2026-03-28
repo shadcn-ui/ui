@@ -1,11 +1,11 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/base/ui/button"
 import { Share03Icon, Tick02Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 
 import { copyToClipboardWithMeta } from "@/components/copy-button"
+import { Button } from "@/styles/base-nova/ui/button"
 import { usePresetCode } from "@/app/(create)/hooks/use-design-system"
 import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
 

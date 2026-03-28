@@ -1,6 +1,8 @@
 "use client"
 
 import Script from "next/script"
+import { type RegistryItem } from "shadcn/schema"
+
 import {
   Command,
   CommandDialog,
@@ -9,9 +11,7 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@/examples/base/ui/command"
-import { type RegistryItem } from "shadcn/schema"
-
+} from "@/styles/base-nova/ui/command"
 import { useActionMenu } from "@/app/(create)/hooks/use-action-menu"
 
 export const CMD_K_FORWARD_TYPE = "cmd-k-forward"
