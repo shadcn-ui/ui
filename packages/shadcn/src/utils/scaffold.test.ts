@@ -234,7 +234,7 @@ describe("defaultScaffold", () => {
     )
   })
 
-  it("should strip packageManager field from package.json for non-pnpm", async () => {
+  it("should strip packageManager field from package.json for non-pnpm non-monorepo", async () => {
     vi.mocked(fs.existsSync).mockImplementation((p: any) =>
       p.toString().includes("package.json")
     )
@@ -279,6 +279,14 @@ describe("defaultScaffold", () => {
       )
     }) as any)
 
+    // Mock execa to return a version for bun --version.
+    vi.mocked(execa).mockImplementation(((cmd: string, args: string[]) => {
+      if (cmd === "bun" && args[0] === "--version") {
+        return Promise.resolve({ stdout: "1.2.0" } as any)
+      }
+      return Promise.resolve({ stdout: "", exitCode: 0 } as any)
+    }) as any)
+
     const template = createTestTemplate()
 
     await template.scaffold({
@@ -300,7 +308,7 @@ describe("defaultScaffold", () => {
     expect(adaptCall).toBeDefined()
     const written = JSON.parse(adaptCall![1] as string)
     expect(written.workspaces).toEqual(["apps/*", "packages/*"])
-    expect(written.packageManager).toBeUndefined()
+    expect(written.packageManager).toBe("bun@1.2.0")
   })
 
   it("should rewrite workspace: protocol refs to * for npm monorepo", async () => {
@@ -389,6 +397,165 @@ describe("defaultScaffold", () => {
 
     // readdir should not be called since rewriteWorkspaceProtocol is skipped for bun.
     expect(vi.mocked(fs.readdir)).not.toHaveBeenCalled()
+  })
+
+  it("should set packageManager to detected version for monorepo with bun", async () => {
+    vi.mocked(fs.existsSync).mockImplementation((p: any) => {
+      const s = p.toString()
+      return s.includes("pnpm-workspace.yaml") || s.includes("package.json")
+    })
+
+    vi.mocked(fs.readFile).mockImplementation(((filePath: string) => {
+      if (filePath.includes("pnpm-workspace.yaml")) {
+        return Promise.resolve("packages:\n  - 'apps/*'\n")
+      }
+      return Promise.resolve(
+        JSON.stringify({ name: "my-mono", packageManager: "pnpm@9.0.0" })
+      )
+    }) as any)
+
+    vi.mocked(execa).mockImplementation(((cmd: string, args: string[]) => {
+      if (cmd === "bun" && args[0] === "--version") {
+        return Promise.resolve({ stdout: "1.2.5" } as any)
+      }
+      return Promise.resolve({ stdout: "", exitCode: 0 } as any)
+    }) as any)
+
+    const template = createTestTemplate()
+
+    await template.scaffold({
+      projectPath: "/test/my-app",
+      packageManager: "bun",
+      cwd: "/test",
+    })
+
+    const writeCalls = vi.mocked(fs.writeFile).mock.calls
+    const adaptCall = writeCalls.find(
+      (call) => call[0] === path.join("/test/my-app", "package.json")
+    )
+    expect(adaptCall).toBeDefined()
+    const written = JSON.parse(adaptCall![1] as string)
+    expect(written.packageManager).toBe("bun@1.2.5")
+  })
+
+  it("should set packageManager to detected version for monorepo with npm", async () => {
+    vi.mocked(fs.existsSync).mockImplementation((p: any) => {
+      const s = p.toString()
+      return s.includes("pnpm-workspace.yaml") || s.includes("package.json")
+    })
+
+    vi.mocked(fs.readFile).mockImplementation(((filePath: string) => {
+      if (filePath.includes("pnpm-workspace.yaml")) {
+        return Promise.resolve("packages:\n  - 'apps/*'\n")
+      }
+      return Promise.resolve(
+        JSON.stringify({ name: "my-mono", packageManager: "pnpm@9.0.0" })
+      )
+    }) as any)
+
+    // Mock readdir for rewriteWorkspaceProtocol.
+    vi.mocked(fs.readdir).mockResolvedValue([] as any)
+
+    vi.mocked(execa).mockImplementation(((cmd: string, args: string[]) => {
+      if (cmd === "npm" && args[0] === "--version") {
+        return Promise.resolve({ stdout: "10.8.1" } as any)
+      }
+      return Promise.resolve({ stdout: "", exitCode: 0 } as any)
+    }) as any)
+
+    const template = createTestTemplate()
+
+    await template.scaffold({
+      projectPath: "/test/my-app",
+      packageManager: "npm",
+      cwd: "/test",
+    })
+
+    const writeCalls = vi.mocked(fs.writeFile).mock.calls
+    const adaptCall = writeCalls.find(
+      (call) => call[0] === path.join("/test/my-app", "package.json")
+    )
+    expect(adaptCall).toBeDefined()
+    const written = JSON.parse(adaptCall![1] as string)
+    expect(written.packageManager).toBe("npm@10.8.1")
+  })
+
+  it("should set packageManager to yarn version for monorepo with yarn", async () => {
+    vi.mocked(fs.existsSync).mockImplementation((p: any) => {
+      const s = p.toString()
+      return s.includes("pnpm-workspace.yaml") || s.includes("package.json")
+    })
+
+    vi.mocked(fs.readFile).mockImplementation(((filePath: string) => {
+      if (filePath.includes("pnpm-workspace.yaml")) {
+        return Promise.resolve("packages:\n  - 'apps/*'\n")
+      }
+      return Promise.resolve(
+        JSON.stringify({ name: "my-mono", packageManager: "pnpm@9.0.0" })
+      )
+    }) as any)
+
+    vi.mocked(execa).mockImplementation(((cmd: string, args: string[]) => {
+      if (cmd === "yarn" && args[0] === "--version") {
+        return Promise.resolve({ stdout: "4.6.0" } as any)
+      }
+      return Promise.resolve({ stdout: "", exitCode: 0 } as any)
+    }) as any)
+
+    const template = createTestTemplate()
+
+    await template.scaffold({
+      projectPath: "/test/my-app",
+      packageManager: "yarn",
+      cwd: "/test",
+    })
+
+    const writeCalls = vi.mocked(fs.writeFile).mock.calls
+    const adaptCall = writeCalls.find(
+      (call) => call[0] === path.join("/test/my-app", "package.json")
+    )
+    expect(adaptCall).toBeDefined()
+    const written = JSON.parse(adaptCall![1] as string)
+    expect(written.packageManager).toBe("yarn@4.6.0")
+  })
+
+  it("should fallback to wildcard version if version detection fails", async () => {
+    vi.mocked(fs.existsSync).mockImplementation((p: any) => {
+      const s = p.toString()
+      return s.includes("pnpm-workspace.yaml") || s.includes("package.json")
+    })
+
+    vi.mocked(fs.readFile).mockImplementation(((filePath: string) => {
+      if (filePath.includes("pnpm-workspace.yaml")) {
+        return Promise.resolve("packages:\n  - 'apps/*'\n")
+      }
+      return Promise.resolve(
+        JSON.stringify({ name: "my-mono", packageManager: "pnpm@9.0.0" })
+      )
+    }) as any)
+
+    vi.mocked(execa).mockImplementation(((cmd: string, args: string[]) => {
+      if (args[0] === "--version") {
+        return Promise.reject(new Error("command not found"))
+      }
+      return Promise.resolve({ stdout: "", exitCode: 0 } as any)
+    }) as any)
+
+    const template = createTestTemplate()
+
+    await template.scaffold({
+      projectPath: "/test/my-app",
+      packageManager: "bun",
+      cwd: "/test",
+    })
+
+    const writeCalls = vi.mocked(fs.writeFile).mock.calls
+    const adaptCall = writeCalls.find(
+      (call) => call[0] === path.join("/test/my-app", "package.json")
+    )
+    expect(adaptCall).toBeDefined()
+    const written = JSON.parse(adaptCall![1] as string)
+    expect(written.packageManager).toBe("bun@*")
   })
 
   it("should write project name to package.json", async () => {

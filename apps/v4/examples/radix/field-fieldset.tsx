@@ -5,8 +5,8 @@ import {
   FieldLabel,
   FieldLegend,
   FieldSet,
-} from "@/examples/radix/ui/field"
-import { Input } from "@/examples/radix/ui/input"
+} from "@/styles/radix-nova/ui/field"
+import { Input } from "@/styles/radix-nova/ui/input"
 
 export function FieldFieldset() {
   return (

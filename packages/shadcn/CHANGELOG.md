@@ -1,5 +1,11 @@
 # @shadcn/ui
 
+## 4.1.1
+
+### Patch Changes
+
+- [#10202](https://github.com/shadcn-ui/ui/pull/10202) [`12b49c986fcf7e6db9be7f515df6142f822f2236`](https://github.com/shadcn-ui/ui/commit/12b49c986fcf7e6db9be7f515df6142f822f2236) Thanks [@shadcn](https://github.com/shadcn)! - fix packageManager in package.json
+
 ## 4.1.0
 
 ### Minor Changes

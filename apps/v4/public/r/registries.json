@@ -988,5 +988,11 @@
     "homepage": "https://rescript-shadcn.miriad.studio",
     "url": "https://rescript-shadcn.miriad.studio/r/{name}.json",
     "description": "Shadcn components rewritten in Rescript, compatible with shadcn CLI."
+  },
+  {
+    "name": "@openpolicy",
+    "homepage": "https://www.openpolicy.sh",
+    "url": "https://www.openpolicy.sh/r/{name}.json",
+    "description": "Open-source components for building terms, privacy policies and cookie banners."
   }
 ]

@@ -1,10 +1,11 @@
 "use client"
 
 import * as React from "react"
-import { Calendar, CalendarDayButton } from "@/examples/radix/ui/calendar"
-import { Card, CardContent } from "@/examples/radix/ui/card"
 import { addDays } from "date-fns"
 import { type DateRange } from "react-day-picker"
+
+import { Calendar, CalendarDayButton } from "@/styles/radix-nova/ui/calendar"
+import { Card, CardContent } from "@/styles/radix-nova/ui/card"
 
 export function CalendarCustomDays() {
   const [range, setRange] = React.useState<DateRange | undefined>({
