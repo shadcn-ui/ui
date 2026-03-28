@@ -14,8 +14,8 @@ import { ModeSwitcher } from "@/components/mode-switcher"
 import { SiteConfig } from "@/components/site-config"
 import { Separator } from "@/registry/new-york-v4/ui/separator"
 import { Button } from "@/styles/radix-nova/ui/button"
-import { ProjectForm } from "@/app/(create)/components/project-form"
-import { V0Button } from "@/app/(create)/components/v0-button"
+import { ProjectForm } from "@/app/(app)/create/components/project-form"
+import { V0Button } from "@/app/(app)/create/components/v0-button"
 
 export function SiteHeader() {
   const colors = getColors()
@@ -23,8 +23,8 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50 w-full bg-background">
-      <div className="container-wrapper px-6 3xl:fixed:px-0">
-        <div className="flex h-(--header-height) items-center **:data-[slot=separator]:h-4! 3xl:fixed:container">
+      <div className="container-wrapper px-6 group-has-data-[slot=designer]/layout:max-w-none 3xl:fixed:px-0">
+        <div className="flex h-(--header-height) items-center **:data-[slot=separator]:h-4! group-has-data-[slot=designer]/layout:fixed:max-w-none 3xl:fixed:container">
           <MobileNav
             tree={pageTree}
             items={siteConfig.navItems}
@@ -55,8 +55,11 @@ export function SiteHeader() {
               className="ml-2 hidden lg:block"
             />
             <GitHubLink />
-            <Separator orientation="vertical" className="hidden 3xl:flex" />
-            <SiteConfig className="hidden 3xl:flex" />
+            <Separator
+              orientation="vertical"
+              className="hidden group-has-data-[slot=designer]/layout:hidden 3xl:flex"
+            />
+            <SiteConfig className="hidden 3xl:flex 3xl:group-has-data-[slot=designer]/layout:hidden" />
             <Separator orientation="vertical" />
             <ModeSwitcher />
             <div className="hidden items-center gap-2 group-has-data-[slot=designer]/layout:md:flex">
