@@ -75,8 +75,8 @@ export function CheckboxRtl() {
           <FieldDescription>{t.acceptTermsDescription}</FieldDescription>
         </FieldContent>
       </Field>
-      <Field orientation="horizontal" data-disabled>
-        <Checkbox id="toggle-checkbox-rtl" name="toggle-checkbox" disabled>
+      <Field orientation="horizontal" disabled>
+        <Checkbox id="toggle-checkbox-rtl" name="toggle-checkbox">
           {t.enableNotifications}
         </Checkbox>
       </Field>

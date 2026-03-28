@@ -27,9 +27,9 @@ const fruits = createListCollection({
 
 export function SelectInvalid() {
   return (
-    <Field data-invalid className="w-full max-w-48">
+    <Field invalid className="w-full max-w-48">
       <FieldLabel>Fruit</FieldLabel>
-      <Select collection={fruits} invalid>
+      <Select collection={fruits}>
         <SelectHiddenSelect />
         <SelectControl>
           <SelectTrigger>

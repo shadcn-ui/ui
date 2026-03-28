@@ -4,8 +4,8 @@ import * as React from "react"
 import {
   Calendar,
   CalendarDate,
-  type DateValue,
   type DatePickerValueChangeDetails,
+  type DateValue,
 } from "@/examples/ark/ui/calendar"
 
 export default function CalendarDemo() {

@@ -112,12 +112,10 @@ export function InputGroupWithKbd() {
           </InputGroup>
         </Field>
       </FieldGroup>
-      <Field data-disabled="true">
-        <FieldLabel htmlFor="input-group-29">
-          Loading (&quot;data-disabled=&quot;true&quot;)
-        </FieldLabel>
+      <Field disabled>
+        <FieldLabel>Loading</FieldLabel>
         <InputGroup>
-          <InputGroupInput id="input-group-29" disabled defaultValue="shadcn" />
+          <InputGroupInput defaultValue="shadcn" />
           <InputGroupAddon align="inline-end">
             <Spinner />
           </InputGroupAddon>

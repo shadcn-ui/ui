@@ -74,7 +74,7 @@ CarouselControl.displayName = "CarouselControl"
 const CarouselPrevious = React.forwardRef<
   HTMLButtonElement,
   React.ComponentProps<typeof Button>
->(({ className, variant = "outline", size = "icon-sm", ...props }, ref) => (
+>(({ className, children, variant = "outline", size = "icon-sm", ...props }, ref) => (
   <ArkCarousel.PrevTrigger asChild>
     <Button
       ref={ref}
@@ -87,14 +87,16 @@ const CarouselPrevious = React.forwardRef<
       )}
       {...props}
     >
-      <IconPlaceholder
-        lucide="ChevronLeftIcon"
-        tabler="IconChevronLeft"
-        hugeicons="ArrowLeftIcon"
-        phosphor="CaretLeftIcon"
-        remixicon="RiArrowLeftSLine"
-        className="cn-rtl-flip size-4"
-      />
+      {children ?? (
+        <IconPlaceholder
+          lucide="ChevronLeftIcon"
+          tabler="IconChevronLeft"
+          hugeicons="ArrowLeftIcon"
+          phosphor="CaretLeftIcon"
+          remixicon="RiArrowLeftSLine"
+          className="cn-rtl-flip size-4"
+        />
+      )}
       <span className="sr-only">Previous slide</span>
     </Button>
   </ArkCarousel.PrevTrigger>
@@ -104,7 +106,7 @@ CarouselPrevious.displayName = "CarouselPrevious"
 const CarouselNext = React.forwardRef<
   HTMLButtonElement,
   React.ComponentProps<typeof Button>
->(({ className, variant = "outline", size = "icon-sm", ...props }, ref) => (
+>(({ className, children, variant = "outline", size = "icon-sm", ...props }, ref) => (
   <ArkCarousel.NextTrigger asChild>
     <Button
       ref={ref}
@@ -117,14 +119,16 @@ const CarouselNext = React.forwardRef<
       )}
       {...props}
     >
-      <IconPlaceholder
-        lucide="ChevronRightIcon"
-        tabler="IconChevronRight"
-        hugeicons="ArrowRightIcon"
-        phosphor="CaretRightIcon"
-        remixicon="RiArrowRightSLine"
-        className="cn-rtl-flip size-4"
-      />
+      {children ?? (
+        <IconPlaceholder
+          lucide="ChevronRightIcon"
+          tabler="IconChevronRight"
+          hugeicons="ArrowRightIcon"
+          phosphor="CaretRightIcon"
+          remixicon="RiArrowRightSLine"
+          className="cn-rtl-flip size-4"
+        />
+      )}
       <span className="sr-only">Next slide</span>
     </Button>
   </ArkCarousel.NextTrigger>

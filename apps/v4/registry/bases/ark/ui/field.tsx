@@ -1,16 +1,21 @@
 "use client"
 
+import * as React from "react"
 import { useMemo } from "react"
+import { Field as ArkField } from "@ark-ui/react/field"
+import { Fieldset as ArkFieldset } from "@ark-ui/react/fieldset"
 import { ark } from "@ark-ui/react/factory"
 import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/registry/bases/ark/lib/utils"
-import { Label } from "@/registry/bases/ark/ui/label"
 import { Separator } from "@/registry/bases/ark/ui/separator"
 
-function FieldSet({ className, ...props }: React.ComponentProps<typeof ark.fieldset>) {
+function FieldSet({
+  className,
+  ...props
+}: React.ComponentProps<typeof ArkFieldset.Root>) {
   return (
-    <ark.fieldset
+    <ArkFieldset.Root
       data-slot="field-set"
       className={cn("cn-field-set flex flex-col", className)}
       {...props}
@@ -22,9 +27,11 @@ function FieldLegend({
   className,
   variant = "legend",
   ...props
-}: React.ComponentProps<typeof ark.legend> & { variant?: "legend" | "label" }) {
+}: React.ComponentProps<typeof ArkFieldset.Legend> & {
+  variant?: "legend" | "label"
+}) {
   return (
-    <ark.legend
+    <ArkFieldset.Legend
       data-slot="field-legend"
       data-variant={variant}
       className={cn("cn-field-legend", className)}
@@ -33,7 +40,10 @@ function FieldLegend({
   )
 }
 
-function FieldGroup({ className, ...props }: React.ComponentProps<typeof ark.div>) {
+function FieldGroup({
+  className,
+  ...props
+}: React.ComponentProps<typeof ark.div>) {
   return (
     <ark.div
       data-slot="field-group"
@@ -66,10 +76,10 @@ function Field({
   className,
   orientation = "vertical",
   ...props
-}: React.ComponentProps<typeof ark.div> & VariantProps<typeof fieldVariants>) {
+}: React.ComponentProps<typeof ArkField.Root> &
+  VariantProps<typeof fieldVariants>) {
   return (
-    <ark.div
-      role="group"
+    <ArkField.Root
       data-slot="field"
       data-orientation={orientation}
       className={cn(fieldVariants({ orientation }), className)}
@@ -78,7 +88,10 @@ function Field({
   )
 }
 
-function FieldContent({ className, ...props }: React.ComponentProps<typeof ark.div>) {
+function FieldContent({
+  className,
+  ...props
+}: React.ComponentProps<typeof ark.div>) {
   return (
     <ark.div
       data-slot="field-content"
@@ -94,9 +107,9 @@ function FieldContent({ className, ...props }: React.ComponentProps<typeof ark.d
 function FieldLabel({
   className,
   ...props
-}: React.ComponentProps<typeof Label>) {
+}: React.ComponentProps<typeof ArkField.Label>) {
   return (
-    <Label
+    <ArkField.Label
       data-slot="field-label"
       className={cn(
         "cn-field-label group/field-label peer/field-label flex w-fit leading-snug",
@@ -108,7 +121,10 @@ function FieldLabel({
   )
 }
 
-function FieldTitle({ className, ...props }: React.ComponentProps<typeof ark.div>) {
+function FieldTitle({
+  className,
+  ...props
+}: React.ComponentProps<typeof ark.div>) {
   return (
     <ark.div
       data-slot="field-label"
@@ -121,9 +137,12 @@ function FieldTitle({ className, ...props }: React.ComponentProps<typeof ark.div
   )
 }
 
-function FieldDescription({ className, ...props }: React.ComponentProps<typeof ark.p>) {
+function FieldDescription({
+  className,
+  ...props
+}: React.ComponentProps<typeof ArkField.HelperText>) {
   return (
-    <ark.p
+    <ArkField.HelperText
       data-slot="field-description"
       className={cn(
         "cn-field-description leading-normal font-normal group-has-data-horizontal/field:text-balance",
@@ -168,7 +187,7 @@ function FieldError({
   children,
   errors,
   ...props
-}: React.ComponentProps<typeof ark.div> & {
+}: React.ComponentProps<typeof ArkField.ErrorText> & {
   errors?: Array<{ message?: string } | undefined>
 }) {
   const content = useMemo(() => {
@@ -203,14 +222,26 @@ function FieldError({
   }
 
   return (
-    <ark.div
-      role="alert"
+    <ArkField.ErrorText
       data-slot="field-error"
       className={cn("cn-field-error font-normal", className)}
       {...props}
     >
       {content}
-    </ark.div>
+    </ArkField.ErrorText>
+  )
+}
+
+function FieldRequiredIndicator({
+  className,
+  ...props
+}: React.ComponentProps<typeof ArkField.RequiredIndicator>) {
+  return (
+    <ArkField.RequiredIndicator
+      data-slot="field-required-indicator"
+      className={cn("text-destructive", className)}
+      {...props}
+    />
   )
 }
 
@@ -225,4 +256,5 @@ export {
   FieldSet,
   FieldContent,
   FieldTitle,
+  FieldRequiredIndicator,
 }

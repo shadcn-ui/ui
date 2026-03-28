@@ -19,11 +19,7 @@ export default function CheckboxDemo() {
         </Checkbox>
       </Field>
       <Field orientation="horizontal">
-        <Checkbox
-          id="terms-checkbox-2"
-          name="terms-checkbox-2"
-          defaultChecked
-        >
+        <Checkbox id="terms-checkbox-2" name="terms-checkbox-2" defaultChecked>
           <FieldContent>
             <FieldTitle>Accept terms and conditions</FieldTitle>
             <FieldDescription>
@@ -32,8 +28,8 @@ export default function CheckboxDemo() {
           </FieldContent>
         </Checkbox>
       </Field>
-      <Field orientation="horizontal" data-disabled>
-        <Checkbox id="toggle-checkbox" name="toggle-checkbox" disabled>
+      <Field orientation="horizontal" disabled>
+        <Checkbox id="toggle-checkbox" name="toggle-checkbox">
           Enable notifications
         </Checkbox>
       </Field>
