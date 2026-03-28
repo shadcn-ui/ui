@@ -1,7 +1,6 @@
 import * as React from "react"
-import { ark } from "@ark-ui/react/factory"
-
 import { cn } from "@/examples/ark/lib/utils"
+import { ark } from "@ark-ui/react/factory"
 import { ChevronRightIcon, MoreHorizontalIcon } from "lucide-react"
 
 function Breadcrumb({
@@ -93,9 +92,7 @@ function BreadcrumbSeparator({
       className={cn("[&>svg]:size-3.5", className)}
       {...props}
     >
-      {children ?? (
-        <ChevronRightIcon className="rtl:rotate-180" />
-      )}
+      {children ?? <ChevronRightIcon className="rtl:rotate-180" />}
     </ark.li>
   )
 }
@@ -115,8 +112,7 @@ function BreadcrumbEllipsis({
       )}
       {...props}
     >
-      <MoreHorizontalIcon
-      />
+      <MoreHorizontalIcon />
       <ark.span className="sr-only">More</ark.span>
     </ark.span>
   )

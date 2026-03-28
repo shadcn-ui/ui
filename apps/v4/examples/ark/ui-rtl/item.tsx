@@ -1,9 +1,8 @@
 import * as React from "react"
-import { ark } from "@ark-ui/react/factory"
-import { cva, type VariantProps } from "class-variance-authority"
-
 import { cn } from "@/examples/ark/lib/utils"
 import { Separator } from "@/examples/ark/ui-rtl/separator"
+import { ark } from "@ark-ui/react/factory"
+import { cva, type VariantProps } from "class-variance-authority"
 
 function ItemGroup({
   className,

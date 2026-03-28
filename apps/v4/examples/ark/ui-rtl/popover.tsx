@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { cn } from "@/examples/ark/lib/utils"
 import { ark } from "@ark-ui/react/factory"
 import {
   Popover as PopoverPrimitive,
@@ -9,8 +10,6 @@ import {
   type PopoverOpenChangeDetails,
 } from "@ark-ui/react/popover"
 import { Portal } from "@ark-ui/react/portal"
-
-import { cn } from "@/examples/ark/lib/utils"
 
 function Popover({
   ...props
@@ -48,7 +47,7 @@ const PopoverContent = React.forwardRef<
         ref={ref}
         data-slot="popover-content"
         className={cn(
-          "z-50 flex w-72 origin-(--transform-origin) flex-col gap-2.5 rounded-lg bg-popover p-2.5 text-sm text-popover-foreground shadow-md ring-1 ring-foreground/10 outline-hidden duration-100 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95",
+          "flex flex-col gap-2.5 rounded-lg bg-popover p-2.5 text-sm text-popover-foreground shadow-md ring-1 ring-foreground/10 duration-100 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95",
           className
         )}
         {...props}

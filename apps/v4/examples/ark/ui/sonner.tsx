@@ -1,30 +1,26 @@
 "use client"
 
+import { cn } from "@/examples/ark/lib/utils"
 import {
   Toaster as ArkToaster,
   createToaster,
   Toast,
 } from "@ark-ui/react/toast"
-
-import { cn } from "@/examples/ark/lib/utils"
-import { CircleCheckIcon, InfoIcon, TriangleAlertIcon, OctagonXIcon, Loader2Icon, XIcon } from "lucide-react"
+import {
+  CircleCheckIcon,
+  InfoIcon,
+  Loader2Icon,
+  OctagonXIcon,
+  TriangleAlertIcon,
+  XIcon,
+} from "lucide-react"
 
 const icons = {
-  success: (
-    <CircleCheckIcon className="size-4" />
-  ),
-  info: (
-    <InfoIcon className="size-4" />
-  ),
-  warning: (
-    <TriangleAlertIcon className="size-4" />
-  ),
-  error: (
-    <OctagonXIcon className="size-4" />
-  ),
-  loading: (
-    <Loader2Icon className="size-4 animate-spin" />
-  ),
+  success: <CircleCheckIcon className="size-4" />,
+  info: <InfoIcon className="size-4" />,
+  warning: <TriangleAlertIcon className="size-4" />,
+  error: <OctagonXIcon className="size-4" />,
+  loading: <Loader2Icon className="size-4 animate-spin" />,
 } as const
 
 const toaster = createToaster({

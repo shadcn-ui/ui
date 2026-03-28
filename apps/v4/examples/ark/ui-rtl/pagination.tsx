@@ -1,12 +1,17 @@
 "use client"
 
 import * as React from "react"
-import { ark } from "@ark-ui/react/factory"
-import { Pagination as PaginationPrimitive } from "@ark-ui/react/pagination"
-
 import { cn } from "@/examples/ark/lib/utils"
 import { Button } from "@/examples/ark/ui-rtl/button"
-import { ChevronLeftIcon, ChevronRightIcon, MoreHorizontalIcon, ChevronsLeftIcon, ChevronsRightIcon } from "lucide-react"
+import { ark } from "@ark-ui/react/factory"
+import { Pagination as PaginationPrimitive } from "@ark-ui/react/pagination"
+import {
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  ChevronsLeftIcon,
+  ChevronsRightIcon,
+  MoreHorizontalIcon,
+} from "lucide-react"
 
 function Pagination({
   className,
@@ -38,31 +43,18 @@ function PaginationContent({
   )
 }
 
-function PaginationItem({ ...props }: React.ComponentProps<typeof ark.li>) {
-  return <ark.li data-slot="pagination-item" {...props} />
-}
-
-type PaginationLinkProps = {
-  isActive?: boolean
-} & Pick<React.ComponentProps<typeof Button>, "size"> &
-  React.ComponentProps<typeof PaginationPrimitive.Item>
-
-function PaginationLink({
+function PaginationItem({
   className,
-  isActive,
-  size = "icon",
+  children,
   ...props
-}: PaginationLinkProps) {
+}: React.ComponentProps<typeof PaginationPrimitive.Item>) {
   return (
-    <PaginationPrimitive.Item asChild {...props}>
-      <Button
-        variant={isActive ? "outline" : "ghost"}
-        size={size}
-        aria-current={isActive ? "page" : undefined}
-        data-slot="pagination-link"
-        data-active={isActive}
-        className={cn(className)}
-      />
+    <PaginationPrimitive.Item
+      data-slot="pagination-item"
+      className={cn(className)}
+      {...props}
+    >
+      {children}
     </PaginationPrimitive.Item>
   )
 }
@@ -132,8 +124,7 @@ function PaginationEllipsis({
       )}
       {...props}
     >
-      <MoreHorizontalIcon
-      />
+      <MoreHorizontalIcon />
       <ark.span className="sr-only">More pages</ark.span>
     </PaginationPrimitive.Ellipsis>
   )
@@ -198,12 +189,10 @@ const PaginationRootProvider = PaginationPrimitive.RootProvider
 
 export {
   Pagination,
-  PaginationContent,
   PaginationEllipsis,
   PaginationFirst,
   PaginationItem,
   PaginationLast,
-  PaginationLink,
   PaginationNext,
   PaginationPrevious,
   PaginationContext,

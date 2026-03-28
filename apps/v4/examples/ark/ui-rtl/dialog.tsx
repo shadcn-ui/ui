@@ -1,6 +1,8 @@
 "use client"
 
 import * as React from "react"
+import { cn } from "@/examples/ark/lib/utils"
+import { Button } from "@/examples/ark/ui-rtl/button"
 import {
   Dialog as DialogPrimitive,
   useDialog,
@@ -9,9 +11,6 @@ import {
 } from "@ark-ui/react/dialog"
 import { ark } from "@ark-ui/react/factory"
 import { Portal } from "@ark-ui/react/portal"
-
-import { cn } from "@/examples/ark/lib/utils"
-import { Button } from "@/examples/ark/ui-rtl/button"
 import { XIcon } from "lucide-react"
 
 function Dialog({
@@ -40,7 +39,7 @@ function DialogOverlay({
     <DialogPrimitive.Backdrop
       data-slot="dialog-overlay"
       className={cn(
-        "fixed inset-0 isolate z-50 bg-black/50 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
+        "fixed inset-0 isolate z-50 bg-black/50 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:fade-in-0",
         className
       )}
       {...props}
@@ -63,7 +62,9 @@ function DialogContent({
         <DialogPrimitive.Content
           data-slot="dialog-content"
           className={cn(
-            "bg-popover text-popover-foreground relative z-50 grid w-full max-w-[calc(100%-2rem)] gap-4 rounded-xl p-4 text-sm shadow-lg ring-1 ring-foreground/10 outline-none sm:max-w-sm data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95",
+            "relative z-50 grid w-full max-w-[calc(100%-2rem)] gap-4 rounded-xl bg-popover p-4 text-sm text-popover-foreground shadow-lg ring-1 ring-foreground/10 outline-none sm:max-w-sm",
+            "data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95",
+            "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95",
             className
           )}
           {...props}
@@ -72,7 +73,7 @@ function DialogContent({
           {showCloseButton && (
             <DialogPrimitive.CloseTrigger
               data-slot="dialog-close"
-              className="absolute top-3 end-3 inline-flex size-7 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              className="absolute end-3 top-3 inline-flex size-7 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
             >
               <XIcon className="size-4" />
               <span className="sr-only">Close</span>

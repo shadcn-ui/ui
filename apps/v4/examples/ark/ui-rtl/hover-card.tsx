@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { cn } from "@/examples/ark/lib/utils"
 import {
   HoverCard as HoverCardPrimitive,
   useHoverCard,
@@ -8,8 +9,6 @@ import {
   type HoverCardOpenChangeDetails,
 } from "@ark-ui/react/hover-card"
 import { Portal } from "@ark-ui/react/portal"
-
-import { cn } from "@/examples/ark/lib/utils"
 
 function HoverCard({
   ...props

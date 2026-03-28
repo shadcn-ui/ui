@@ -1,9 +1,8 @@
 "use client"
 
 import * as React from "react"
-import { ScrollArea as ScrollAreaPrimitive } from "@ark-ui/react/scroll-area"
-
 import { cn } from "@/examples/ark/lib/utils"
+import { ScrollArea as ScrollAreaPrimitive } from "@ark-ui/react/scroll-area"
 
 function ScrollArea({
   className,

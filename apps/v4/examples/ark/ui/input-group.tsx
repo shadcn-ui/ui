@@ -1,13 +1,12 @@
 "use client"
 
 import * as React from "react"
-import { ark } from "@ark-ui/react/factory"
-import { cva, type VariantProps } from "class-variance-authority"
-
 import { cn } from "@/examples/ark/lib/utils"
 import { Button } from "@/examples/ark/ui/button"
 import { Input } from "@/examples/ark/ui/input"
 import { Textarea } from "@/examples/ark/ui/textarea"
+import { ark } from "@ark-ui/react/factory"
+import { cva, type VariantProps } from "class-variance-authority"
 
 function InputGroup({
   className,

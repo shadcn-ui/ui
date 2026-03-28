@@ -1,9 +1,8 @@
 "use client"
 
 import * as React from "react"
-import { ark } from "@ark-ui/react/factory"
-
 import { cn } from "@/examples/ark/lib/utils"
+import { ark } from "@ark-ui/react/factory"
 
 function Table({
   className,

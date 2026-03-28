@@ -1,10 +1,8 @@
 "use client"
 
-import * as React from "react"
+import { LocaleProvider, useLocaleContext } from "@ark-ui/react/locale"
 
 type Direction = "ltr" | "rtl"
-
-const DirectionContext = React.createContext<Direction>("ltr")
 
 function DirectionProvider({
   dir,
@@ -15,15 +13,15 @@ function DirectionProvider({
   direction?: Direction
   children: React.ReactNode
 }) {
-  return (
-    <DirectionContext.Provider value={direction ?? dir ?? "ltr"}>
-      {children}
-    </DirectionContext.Provider>
-  )
+  const resolvedDir = direction ?? dir ?? "ltr"
+  const locale = resolvedDir === "rtl" ? "ar" : "en-US"
+
+  return <LocaleProvider locale={locale}>{children}</LocaleProvider>
 }
 
-function useDirection() {
-  return React.useContext(DirectionContext)
+function useDirection(): Direction {
+  const { dir } = useLocaleContext()
+  return dir as Direction
 }
 
 export { DirectionProvider, useDirection }

@@ -1,10 +1,9 @@
 "use client"
 
 import * as React from "react"
-import { Carousel as ArkCarousel } from "@ark-ui/react/carousel"
-
 import { cn } from "@/examples/ark/lib/utils"
 import { Button } from "@/examples/ark/ui/button"
+import { Carousel as ArkCarousel } from "@ark-ui/react/carousel"
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react"
 
 const Carousel = React.forwardRef<
@@ -74,47 +73,57 @@ CarouselControl.displayName = "CarouselControl"
 const CarouselPrevious = React.forwardRef<
   HTMLButtonElement,
   React.ComponentProps<typeof Button>
->(({ className, variant = "outline", size = "icon-sm", ...props }, ref) => (
-  <ArkCarousel.PrevTrigger asChild>
-    <Button
-      ref={ref}
-      data-slot="carousel-previous"
-      variant={variant}
-      size={size}
-      className={cn(
-        "touch-manipulation rounded-full disabled:opacity-50",
-        className
-      )}
-      {...props}
-    >
-      <ChevronLeftIcon className="cn-rtl-flip size-4" />
-      <span className="sr-only">Previous slide</span>
-    </Button>
-  </ArkCarousel.PrevTrigger>
-))
+>(
+  (
+    { className, children, variant = "outline", size = "icon-sm", ...props },
+    ref
+  ) => (
+    <ArkCarousel.PrevTrigger asChild>
+      <Button
+        ref={ref}
+        data-slot="carousel-previous"
+        variant={variant}
+        size={size}
+        className={cn(
+          "touch-manipulation rounded-full disabled:opacity-50",
+          className
+        )}
+        {...props}
+      >
+        {children ?? <ChevronLeftIcon className="cn-rtl-flip size-4" />}
+        <span className="sr-only">Previous slide</span>
+      </Button>
+    </ArkCarousel.PrevTrigger>
+  )
+)
 CarouselPrevious.displayName = "CarouselPrevious"
 
 const CarouselNext = React.forwardRef<
   HTMLButtonElement,
   React.ComponentProps<typeof Button>
->(({ className, variant = "outline", size = "icon-sm", ...props }, ref) => (
-  <ArkCarousel.NextTrigger asChild>
-    <Button
-      ref={ref}
-      data-slot="carousel-next"
-      variant={variant}
-      size={size}
-      className={cn(
-        "touch-manipulation rounded-full disabled:opacity-50",
-        className
-      )}
-      {...props}
-    >
-      <ChevronRightIcon className="cn-rtl-flip size-4" />
-      <span className="sr-only">Next slide</span>
-    </Button>
-  </ArkCarousel.NextTrigger>
-))
+>(
+  (
+    { className, children, variant = "outline", size = "icon-sm", ...props },
+    ref
+  ) => (
+    <ArkCarousel.NextTrigger asChild>
+      <Button
+        ref={ref}
+        data-slot="carousel-next"
+        variant={variant}
+        size={size}
+        className={cn(
+          "touch-manipulation rounded-full disabled:opacity-50",
+          className
+        )}
+        {...props}
+      >
+        {children ?? <ChevronRightIcon className="cn-rtl-flip size-4" />}
+        <span className="sr-only">Next slide</span>
+      </Button>
+    </ArkCarousel.NextTrigger>
+  )
+)
 CarouselNext.displayName = "CarouselNext"
 
 const CarouselIndicatorGroup = React.forwardRef<

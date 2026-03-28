@@ -1,10 +1,9 @@
 "use client"
 
 import * as React from "react"
-import { Carousel as ArkCarousel } from "@ark-ui/react/carousel"
-
 import { cn } from "@/examples/ark/lib/utils"
 import { Button } from "@/examples/ark/ui-rtl/button"
+import { Carousel as ArkCarousel } from "@ark-ui/react/carousel"
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react"
 
 const Carousel = React.forwardRef<
@@ -74,47 +73,57 @@ CarouselControl.displayName = "CarouselControl"
 const CarouselPrevious = React.forwardRef<
   HTMLButtonElement,
   React.ComponentProps<typeof Button>
->(({ className, variant = "outline", size = "icon-sm", ...props }, ref) => (
-  <ArkCarousel.PrevTrigger asChild>
-    <Button
-      ref={ref}
-      data-slot="carousel-previous"
-      variant={variant}
-      size={size}
-      className={cn(
-        "touch-manipulation rounded-full disabled:opacity-50",
-        className
-      )}
-      {...props}
-    >
-      <ChevronLeftIcon className="rtl:rotate-180 size-4" />
-      <span className="sr-only">Previous slide</span>
-    </Button>
-  </ArkCarousel.PrevTrigger>
-))
+>(
+  (
+    { className, children, variant = "outline", size = "icon-sm", ...props },
+    ref
+  ) => (
+    <ArkCarousel.PrevTrigger asChild>
+      <Button
+        ref={ref}
+        data-slot="carousel-previous"
+        variant={variant}
+        size={size}
+        className={cn(
+          "touch-manipulation rounded-full disabled:opacity-50",
+          className
+        )}
+        {...props}
+      >
+        {children ?? <ChevronLeftIcon className="size-4 rtl:rotate-180" />}
+        <span className="sr-only">Previous slide</span>
+      </Button>
+    </ArkCarousel.PrevTrigger>
+  )
+)
 CarouselPrevious.displayName = "CarouselPrevious"
 
 const CarouselNext = React.forwardRef<
   HTMLButtonElement,
   React.ComponentProps<typeof Button>
->(({ className, variant = "outline", size = "icon-sm", ...props }, ref) => (
-  <ArkCarousel.NextTrigger asChild>
-    <Button
-      ref={ref}
-      data-slot="carousel-next"
-      variant={variant}
-      size={size}
-      className={cn(
-        "touch-manipulation rounded-full disabled:opacity-50",
-        className
-      )}
-      {...props}
-    >
-      <ChevronRightIcon className="rtl:rotate-180 size-4" />
-      <span className="sr-only">Next slide</span>
-    </Button>
-  </ArkCarousel.NextTrigger>
-))
+>(
+  (
+    { className, children, variant = "outline", size = "icon-sm", ...props },
+    ref
+  ) => (
+    <ArkCarousel.NextTrigger asChild>
+      <Button
+        ref={ref}
+        data-slot="carousel-next"
+        variant={variant}
+        size={size}
+        className={cn(
+          "touch-manipulation rounded-full disabled:opacity-50",
+          className
+        )}
+        {...props}
+      >
+        {children ?? <ChevronRightIcon className="size-4 rtl:rotate-180" />}
+        <span className="sr-only">Next slide</span>
+      </Button>
+    </ArkCarousel.NextTrigger>
+  )
+)
 CarouselNext.displayName = "CarouselNext"
 
 const CarouselIndicatorGroup = React.forwardRef<
@@ -149,6 +158,24 @@ const CarouselIndicator = React.forwardRef<
 ))
 CarouselIndicator.displayName = "CarouselIndicator"
 
+const CarouselIndicators = React.forwardRef<
+  React.ElementRef<typeof ArkCarousel.IndicatorGroup>,
+  Omit<React.ComponentPropsWithoutRef<typeof ArkCarousel.Indicator>, "index">
+>(function CarouselIndicators(props, ref) {
+  return (
+    <ArkCarousel.Context>
+      {(api) => (
+        <CarouselIndicatorGroup ref={ref}>
+          {api.pageSnapPoints.map((_, index) => (
+            <CarouselIndicator key={index} index={index} {...props} />
+          ))}
+        </CarouselIndicatorGroup>
+      )}
+    </ArkCarousel.Context>
+  )
+})
+CarouselIndicators.displayName = "CarouselIndicators"
+
 const CarouselAutoplayTrigger = ArkCarousel.AutoplayTrigger
 const CarouselContext = ArkCarousel.Context
 const CarouselRootProvider = ArkCarousel.RootProvider
@@ -162,6 +189,7 @@ export {
   CarouselNext,
   CarouselIndicatorGroup,
   CarouselIndicator,
+  CarouselIndicators,
   CarouselAutoplayTrigger,
   CarouselContext,
   CarouselRootProvider,

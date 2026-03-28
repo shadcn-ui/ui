@@ -1,7 +1,6 @@
+import { cn } from "@/examples/ark/lib/utils"
 import { ark } from "@ark-ui/react/factory"
 import { cva, type VariantProps } from "class-variance-authority"
-
-import { cn } from "@/examples/ark/lib/utils"
 
 function Empty({ className, ...props }: React.ComponentProps<typeof ark.div>) {
   return (
@@ -35,7 +34,7 @@ const emptyMediaVariants = cva(
     variants: {
       variant: {
         default: "bg-transparent",
-        icon: "flex size-10 shrink-0 items-center justify-center rounded-lg bg-muted text-foreground [&_svg:not([class*='size-'])]:size-5",
+        icon: "flex size-8 shrink-0 items-center justify-center rounded-lg bg-muted text-foreground [&_svg:not([class*='size-'])]:size-4",
       },
     },
     defaultVariants: {

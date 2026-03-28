@@ -1,6 +1,8 @@
 "use client"
 
 import * as React from "react"
+import { cn } from "@/examples/ark/lib/utils"
+import { Button } from "@/examples/ark/ui-rtl/button"
 import {
   Dialog as DialogPrimitive,
   useDialog as useAlertDialog,
@@ -9,9 +11,6 @@ import {
 } from "@ark-ui/react/dialog"
 import { ark } from "@ark-ui/react/factory"
 import { Portal } from "@ark-ui/react/portal"
-
-import { cn } from "@/examples/ark/lib/utils"
-import { Button } from "@/examples/ark/ui-rtl/button"
 
 function AlertDialog({
   ...props
@@ -57,7 +56,7 @@ function AlertDialogContent({
           data-size={size}
           role="alertdialog"
           className={cn(
-            "group/alert-dialog-content z-50 grid w-full gap-4 rounded-xl bg-background p-4 ring-1 ring-foreground/10 duration-100 outline-none data-[size=default]:max-w-xs data-[size=sm]:max-w-xs data-[size=default]:sm:max-w-sm data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95",
+            "group/alert-dialog-content z-50 grid w-full gap-4 rounded-xl bg-popover p-4 text-popover-foreground ring-1 ring-foreground/10 duration-100 outline-none data-[size=default]:max-w-xs data-[size=sm]:max-w-xs data-[size=default]:sm:max-w-sm data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95",
             className
           )}
           {...props}

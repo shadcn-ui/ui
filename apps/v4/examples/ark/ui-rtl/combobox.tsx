@@ -1,11 +1,10 @@
 "use client"
 
 import * as React from "react"
+import { cn } from "@/examples/ark/lib/utils"
 import { Combobox as ComboboxPrimitive } from "@ark-ui/react/combobox"
 import { Portal } from "@ark-ui/react/portal"
-
-import { cn } from "@/examples/ark/lib/utils"
-import { ChevronDownIcon, CheckIcon, XIcon } from "lucide-react"
+import { CheckIcon, ChevronDownIcon, XIcon } from "lucide-react"
 
 // --- Root ---
 
@@ -97,7 +96,7 @@ const ComboboxItem = React.forwardRef<
     ref={ref}
     data-slot="combobox-item"
     className={cn(
-      "gap-2 rounded-md py-1 pe-8 ps-1.5 text-sm data-highlighted:bg-accent data-highlighted:text-accent-foreground not-data-[variant=destructive]:data-highlighted:**:text-accent-foreground [&_svg:not([class*='size-'])]:size-4",
+      "gap-2 rounded-md py-1 ps-1.5 pe-8 text-sm data-highlighted:bg-accent data-highlighted:text-accent-foreground not-data-[variant=destructive]:data-highlighted:**:text-accent-foreground [&_svg:not([class*='size-'])]:size-4",
       className
     )}
     {...props}
@@ -127,9 +126,7 @@ const ComboboxItemIndicator = React.forwardRef<
     )}
     {...props}
   >
-    {children ?? (
-      <CheckIcon className="pointer-events-none" />
-    )}
+    {children ?? <CheckIcon className="pointer-events-none" />}
   </ComboboxPrimitive.ItemIndicator>
 ))
 ComboboxItemIndicator.displayName = "ComboboxItemIndicator"
@@ -191,9 +188,7 @@ const ComboboxClearTrigger = React.forwardRef<
     className={cn(className)}
     {...props}
   >
-    {children ?? (
-      <XIcon className="pointer-events-none" />
-    )}
+    {children ?? <XIcon className="pointer-events-none" />}
   </ComboboxPrimitive.ClearTrigger>
 ))
 ComboboxClearTrigger.displayName = "ComboboxClearTrigger"

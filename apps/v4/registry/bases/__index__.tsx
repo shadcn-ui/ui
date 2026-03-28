@@ -7344,6 +7344,25 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "calendar-example": {
+      name: "calendar-example",
+      title: "Calendar",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button","calendar","card","field","input-group","popover","example"],
+      files: [{
+        path: "registry/bases/ark/examples/calendar-example.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/bases/ark/examples/calendar-example.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     "card-example": {
       name: "card-example",
       title: "Card",

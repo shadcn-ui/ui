@@ -1,10 +1,9 @@
 "use client"
 
 import * as React from "react"
+import { cn } from "@/examples/ark/lib/utils"
 import { DatePicker as DatePickerPrimitive } from "@ark-ui/react/date-picker"
 import { Portal } from "@ark-ui/react/portal"
-
-import { cn } from "@/examples/ark/lib/utils"
 import { CalendarIcon, ChevronLeftIcon, ChevronRightIcon } from "lucide-react"
 
 function DatePicker(
@@ -71,10 +70,7 @@ const DatePickerTrigger = React.forwardRef<
     )}
     {...props}
   >
-    {children ?? (
-      <CalendarIcon
-      />
-    )}
+    {children ?? <CalendarIcon />}
   </DatePickerPrimitive.Trigger>
 ))
 DatePickerTrigger.displayName = "DatePickerTrigger"
@@ -178,10 +174,7 @@ const DatePickerPrevTrigger = React.forwardRef<
     )}
     {...props}
   >
-    {children ?? (
-      <ChevronLeftIcon
-      />
-    )}
+    {children ?? <ChevronLeftIcon />}
   </DatePickerPrimitive.PrevTrigger>
 ))
 DatePickerPrevTrigger.displayName = "DatePickerPrevTrigger"
@@ -199,10 +192,7 @@ const DatePickerNextTrigger = React.forwardRef<
     )}
     {...props}
   >
-    {children ?? (
-      <ChevronRightIcon
-      />
-    )}
+    {children ?? <ChevronRightIcon />}
   </DatePickerPrimitive.NextTrigger>
 ))
 DatePickerNextTrigger.displayName = "DatePickerNextTrigger"
@@ -289,6 +279,128 @@ const DatePickerPresetTrigger = DatePickerPrimitive.PresetTrigger
 const DatePickerContext = DatePickerPrimitive.Context
 const DatePickerRootProvider = DatePickerPrimitive.RootProvider
 
+function DatePickerDayView({ className }: { className?: string }) {
+  return (
+    <DatePickerView view="day" className={cn("flex flex-col gap-3", className)}>
+      <DatePickerContext>
+        {(api) => (
+          <>
+            <DatePickerViewControl>
+              <DatePickerPrevTrigger />
+              <DatePickerViewTrigger>
+                <DatePickerRangeText />
+              </DatePickerViewTrigger>
+              <DatePickerNextTrigger />
+            </DatePickerViewControl>
+            <DatePickerTable>
+              <DatePickerTableHead>
+                <DatePickerTableRow>
+                  {api.weekDays.map((day, i) => (
+                    <DatePickerTableHeader key={i}>
+                      {day.short}
+                    </DatePickerTableHeader>
+                  ))}
+                </DatePickerTableRow>
+              </DatePickerTableHead>
+              <DatePickerTableBody>
+                {api.weeks.map((week, i) => (
+                  <DatePickerTableRow key={i}>
+                    {week.map((day, j) => (
+                      <DatePickerTableCell key={j} value={day}>
+                        <DatePickerTableCellTrigger>
+                          {day.day}
+                        </DatePickerTableCellTrigger>
+                      </DatePickerTableCell>
+                    ))}
+                  </DatePickerTableRow>
+                ))}
+              </DatePickerTableBody>
+            </DatePickerTable>
+          </>
+        )}
+      </DatePickerContext>
+    </DatePickerView>
+  )
+}
+
+function DatePickerMonthView({ className }: { className?: string }) {
+  return (
+    <DatePickerView
+      view="month"
+      className={cn("flex flex-col gap-3", className)}
+    >
+      <DatePickerContext>
+        {(api) => (
+          <>
+            <DatePickerViewControl>
+              <DatePickerPrevTrigger />
+              <DatePickerViewTrigger>
+                <DatePickerRangeText />
+              </DatePickerViewTrigger>
+              <DatePickerNextTrigger />
+            </DatePickerViewControl>
+            <DatePickerTable>
+              <DatePickerTableBody>
+                {api
+                  .getMonthsGrid({ columns: 4, format: "short" })
+                  .map((months, i) => (
+                    <DatePickerTableRow key={i}>
+                      {months.map((month, j) => (
+                        <DatePickerTableCell key={j} value={month.value}>
+                          <DatePickerTableCellTrigger>
+                            {month.label}
+                          </DatePickerTableCellTrigger>
+                        </DatePickerTableCell>
+                      ))}
+                    </DatePickerTableRow>
+                  ))}
+              </DatePickerTableBody>
+            </DatePickerTable>
+          </>
+        )}
+      </DatePickerContext>
+    </DatePickerView>
+  )
+}
+
+function DatePickerYearView({ className }: { className?: string }) {
+  return (
+    <DatePickerView
+      view="year"
+      className={cn("flex flex-col gap-3", className)}
+    >
+      <DatePickerContext>
+        {(api) => (
+          <>
+            <DatePickerViewControl>
+              <DatePickerPrevTrigger />
+              <DatePickerViewTrigger>
+                <DatePickerRangeText />
+              </DatePickerViewTrigger>
+              <DatePickerNextTrigger />
+            </DatePickerViewControl>
+            <DatePickerTable>
+              <DatePickerTableBody>
+                {api.getYearsGrid({ columns: 4 }).map((years, i) => (
+                  <DatePickerTableRow key={i}>
+                    {years.map((year, j) => (
+                      <DatePickerTableCell key={j} value={year.value}>
+                        <DatePickerTableCellTrigger>
+                          {year.label}
+                        </DatePickerTableCellTrigger>
+                      </DatePickerTableCell>
+                    ))}
+                  </DatePickerTableRow>
+                ))}
+              </DatePickerTableBody>
+            </DatePickerTable>
+          </>
+        )}
+      </DatePickerContext>
+    </DatePickerView>
+  )
+}
+
 export {
   DatePicker,
   DatePickerLabel,
@@ -317,6 +429,9 @@ export {
   DatePickerPresetTrigger,
   DatePickerContext,
   DatePickerRootProvider,
+  DatePickerDayView,
+  DatePickerMonthView,
+  DatePickerYearView,
 }
 
 export {

@@ -1,9 +1,8 @@
 "use client"
 
 import * as React from "react"
-import { Switch as SwitchPrimitive } from "@ark-ui/react/switch"
-
 import { cn } from "@/examples/ark/lib/utils"
+import { Switch as SwitchPrimitive } from "@ark-ui/react/switch"
 
 const Switch = React.forwardRef<
   HTMLLabelElement,

@@ -1,9 +1,8 @@
 "use client"
 
 import * as React from "react"
-import { Slider as SliderPrimitive } from "@ark-ui/react/slider"
-
 import { cn } from "@/examples/ark/lib/utils"
+import { Slider as SliderPrimitive } from "@ark-ui/react/slider"
 
 // --- Root ---
 
@@ -110,7 +109,7 @@ SliderLabel.displayName = "SliderLabel"
 // --- ValueText ---
 
 const SliderValueText = React.forwardRef<
-  HTMLSpanElement,
+  HTMLDivElement,
   React.ComponentProps<typeof SliderPrimitive.ValueText>
 >(({ className, ...props }, ref) => (
   <SliderPrimitive.ValueText

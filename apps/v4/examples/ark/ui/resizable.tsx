@@ -1,9 +1,8 @@
 "use client"
 
 import * as React from "react"
-import { Splitter } from "@ark-ui/react/splitter"
-
 import { cn } from "@/examples/ark/lib/utils"
+import { Splitter } from "@ark-ui/react/splitter"
 
 // --- Root ---
 
