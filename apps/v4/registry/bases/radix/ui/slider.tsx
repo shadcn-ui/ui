@@ -49,6 +49,7 @@ function Slider({
         <SliderPrimitive.Thumb
           data-slot="slider-thumb"
           key={index}
+          aria-label={`Slider thumb ${index + 1} of ${_values.length}`}
           className="cn-slider-thumb block shrink-0 select-none disabled:pointer-events-none disabled:opacity-50"
         />
       ))}
