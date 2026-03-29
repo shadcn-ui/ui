@@ -404,7 +404,7 @@
   }
 
   .cn-card-header {
-    @apply gap-2 rounded-t-4xl px-6 group-data-[size=sm]/card:px-4 [.border-b]:pb-6 group-data-[size=sm]/card:[.border-b]:pb-4;
+    @apply gap-1.5 rounded-t-4xl px-6 group-data-[size=sm]/card:px-4 [.border-b]:pb-6 group-data-[size=sm]/card:[.border-b]:pb-4;
   }
 
   .cn-card-title {
@@ -681,7 +681,7 @@
   }
 
   .cn-dialog-header {
-    @apply gap-2;
+    @apply gap-1.5;
   }
 
   .cn-dialog-footer {
@@ -1324,11 +1324,11 @@
 
   /* MARK: Calendar */
   .cn-calendar {
-    @apply p-3 [--cell-radius:var(--radius-lg)] [--cell-size:--spacing(8)];
+    @apply p-3 [--cell-radius:var(--radius-4xl)] [--cell-size:--spacing(8)];
   }
 
   .cn-calendar-dropdown-root {
-    @apply has-focus:border-ring border-transparent has-focus:ring-ring/30 border has-focus:ring-3;
+    @apply has-focus:border-ring border-input has-focus:ring-ring/30 border has-focus:ring-3;
   }
 
   .cn-calendar-caption-label {

@@ -1994,6 +1994,17 @@
       "type": "registry:block"
     },
     {
+      "name": "preview-02",
+      "title": "Preview 02",
+      "files": [
+        {
+          "path": "registry/base-mira/blocks/preview-02/index.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "type": "registry:block"
+    },
+    {
       "name": "login-01",
       "title": "Login 01",
       "description": "A simple login form.",
