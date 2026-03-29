@@ -5,10 +5,7 @@ import {
   Example,
   ExampleWrapper,
 } from "@/registry/bases/react-aria/components/example"
-import {
-  ScrollArea,
-  ScrollBar,
-} from "@/registry/bases/react-aria/ui/scroll-area"
+import { ScrollArea } from "@/registry/bases/react-aria/ui/scroll-area"
 import { Separator } from "@/registry/bases/react-aria/ui/separator"
 
 const tags = Array.from({ length: 50 }).map(
@@ -82,7 +79,6 @@ function ScrollAreaHorizontal() {
             </figure>
           ))}
         </div>
-        <ScrollBar orientation="horizontal" />
       </ScrollArea>
     </Example>
   )

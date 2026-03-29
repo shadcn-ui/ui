@@ -1,6 +1,6 @@
 import * as React from "react"
 import Image from "next/image"
-import { ScrollArea, ScrollBar } from "@/examples/react-aria/ui/scroll-area"
+import { ScrollArea } from "@/examples/react-aria/ui/scroll-area"
 
 export interface Artwork {
   artist: string
@@ -46,7 +46,6 @@ export function ScrollAreaHorizontalDemo() {
           </figure>
         ))}
       </div>
-      <ScrollBar orientation="horizontal" />
     </ScrollArea>
   )
 }

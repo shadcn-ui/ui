@@ -18,23 +18,23 @@ const horizontalPlacement = {
   left: "left",
   right: "right",
   "inline-start": "start",
-  "inline-end": "end"
-} as const;
+  "inline-end": "end",
+} as const
 
 const verticalAlignment = {
   start: "top",
   center: "center",
-  end: "bottom"
-} as const;
+  end: "bottom",
+} as const
 
 export function getPlacement(side: PlacementSide, align: PlacementAlign) {
   switch (side) {
     case "top":
     case "bottom":
-      return align === "center" ? side : `${side} ${align}` as const;
+      return align === "center" ? side : (`${side} ${align}` as const)
     default:
-      return align === "center" 
+      return align === "center"
         ? horizontalPlacement[side]
-        : `${horizontalPlacement[side]} ${verticalAlignment[align]}` as const
+        : (`${horizontalPlacement[side]} ${verticalAlignment[align]}` as const)
   }
 }
