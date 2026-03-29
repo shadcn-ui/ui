@@ -1,0 +1,129 @@
+name: Validate Registries
+
+on:
+  pull_request:
+    paths:
+      - "apps/v4/public/r/registries.json"
+      - "apps/v4/registry/directory.json"
+  push:
+    branches:
+      - main
+    paths:
+      - "apps/v4/public/r/registries.json"
+      - "apps/v4/registry/directory.json"
+
+jobs:
+  check-registry-sync:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    name: check-registry-sync
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - name: Check changed files
+        id: changed
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          CHANGED_FILES=$(gh pr diff ${{ github.event.pull_request.number }} --repo ${{ github.repository }} --name-only)
+
+          DIRECTORY_CHANGED=false
+          REGISTRIES_CHANGED=false
+
+          if echo "$CHANGED_FILES" | grep -q "^apps/v4/registry/directory.json$"; then
+            DIRECTORY_CHANGED=true
+          fi
+
+          if echo "$CHANGED_FILES" | grep -q "^apps/v4/public/r/registries.json$"; then
+            REGISTRIES_CHANGED=true
+          fi
+
+          echo "directory_changed=$DIRECTORY_CHANGED" >> $GITHUB_OUTPUT
+          echo "registries_changed=$REGISTRIES_CHANGED" >> $GITHUB_OUTPUT
+
+      - name: Flag missing registries.json update
+        if: steps.changed.outputs.directory_changed == 'true' && steps.changed.outputs.registries_changed == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh pr edit ${{ github.event.pull_request.number }} --repo ${{ github.repository }} --add-label "registries: invalid"
+          gh pr comment ${{ github.event.pull_request.number }} --repo ${{ github.repository }} --body "can you run \`pnpm registry:build\` and commit the json files please?"
+          exit 1
+
+  validate:
+    runs-on: ubuntu-latest
+    name: pnpm validate:registries
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Block reserved registry namespaces
+        env:
+          RESERVED_NAMESPACES: "@shadcn,@ui,@blocks,@components,@block,@component,@util,@utils,@registry,@lib,@hook,@hooks,@theme,@themes,@chart,@charts"
+        run: |
+          node <<'EOF'
+          const fs = require("node:fs")
+
+          const files = [
+            "apps/v4/public/r/registries.json",
+            "apps/v4/registry/directory.json",
+          ]
+          const reservedNamespaces = new Set(
+            process.env.RESERVED_NAMESPACES.split(",").filter(Boolean)
+          )
+
+          function readNames(filePath) {
+            return JSON.parse(fs.readFileSync(filePath, "utf8")).map(
+              (entry) => entry.name
+            )
+          }
+
+          const violations = files.flatMap((filePath) => {
+            return readNames(filePath)
+              .filter((name) => reservedNamespaces.has(name))
+              .map((name) => `${filePath}: ${name}`)
+          })
+
+          if (violations.length > 0) {
+            console.error("Reserved registry namespaces are not allowed:")
+
+            for (const violation of violations) {
+              console.error(`- ${violation}`)
+            }
+
+            process.exit(1)
+          }
+          EOF
+
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 9.0.6
+          run_install: false
+
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        run: |
+          echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Validate registries
+        run: pnpm --filter=v4 validate:registries

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "switch-example",
+  "title": "Switch",
+  "registryDependencies": [
+    "field",
+    "label",
+    "switch",
+    "example"
+  ],
+  "files": [
+    {
+      "path": "registry/base-vega/examples/switch-example.tsx",
+      "content": "import {\n  Example,\n  ExampleWrapper,\n} from \"@/registry/base-vega/components/example\"\nimport {\n  Field,\n  FieldContent,\n  FieldDescription,\n  FieldLabel,\n  FieldTitle,\n} from \"@/registry/base-vega/ui/field\"\nimport { Label } from \"@/registry/base-vega/ui/label\"\nimport { Switch } from \"@/registry/base-vega/ui/switch\"\n\nexport default function SwitchExample() {\n  return (\n    <ExampleWrapper>\n      <SwitchBasic />\n      <SwitchWithDescription />\n      <SwitchDisabled />\n      <SwitchSizes />\n    </ExampleWrapper>\n  )\n}\n\nfunction SwitchBasic() {\n  return (\n    <Example title=\"Basic\">\n      <Field orientation=\"horizontal\">\n        <Switch id=\"switch-basic\" />\n        <FieldLabel htmlFor=\"switch-basic\">Airplane Mode</FieldLabel>\n      </Field>\n    </Example>\n  )\n}\n\nfunction SwitchWithLabel() {\n  return (\n    <Example title=\"With Label\">\n      <div className=\"flex items-center gap-2\">\n        <Switch id=\"switch-bluetooth\" defaultChecked />\n        <Label htmlFor=\"switch-bluetooth\">Bluetooth</Label>\n      </div>\n    </Example>\n  )\n}\n\nfunction SwitchWithDescription() {\n  return (\n    <Example title=\"With Description\">\n      <FieldLabel htmlFor=\"switch-focus-mode\">\n        <Field orientation=\"horizontal\">\n          <FieldContent>\n            <FieldTitle>Share across devices</FieldTitle>\n            <FieldDescription>\n              Focus is shared across devices, and turns off when you leave the\n              app.\n            </FieldDescription>\n          </FieldContent>\n          <Switch id=\"switch-focus-mode\" />\n        </Field>\n      </FieldLabel>\n    </Example>\n  )\n}\n\nfunction SwitchDisabled() {\n  return (\n    <Example title=\"Disabled\">\n      <div className=\"flex flex-col gap-12\">\n        <div className=\"flex items-center gap-2\">\n          <Switch id=\"switch-disabled-unchecked\" disabled />\n          <Label htmlFor=\"switch-disabled-unchecked\">\n            Disabled (Unchecked)\n          </Label>\n        </div>\n        <div className=\"flex items-center gap-2\">\n          <Switch id=\"switch-disabled-checked\" defaultChecked disabled />\n          <Label htmlFor=\"switch-disabled-checked\">Disabled (Checked)</Label>\n        </div>\n      </div>\n    </Example>\n  )\n}\n\nfunction SwitchSizes() {\n  return (\n    <Example title=\"Sizes\">\n      <div className=\"flex flex-col gap-12\">\n        <div className=\"flex items-center gap-2\">\n          <Switch id=\"switch-size-sm\" size=\"sm\" />\n          <Label htmlFor=\"switch-size-sm\">Small</Label>\n        </div>\n        <div className=\"flex items-center gap-2\">\n          <Switch id=\"switch-size-default\" size=\"default\" />\n          <Label htmlFor=\"switch-size-default\">Default</Label>\n        </div>\n      </div>\n    </Example>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

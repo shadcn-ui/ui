@@ -1,0 +1,20 @@
+{
+  "eslint.workingDirectories": [
+    { "pattern": "apps/*/" },
+    { "pattern": "packages/*/" }
+  ],
+  "tailwindCSS.classFunctions": ["cva", "cn"],
+  "vitest.debugExclude": [
+    "<node_internals>/**",
+    "**/node_modules/**",
+    "**/fixtures/**"
+  ],
+  "files.exclude": {
+    "deprecated": true
+  },
+  "search.exclude": {
+    "apps/v4/registry/radix-*": true,
+    "apps/v4/public/r/*": true,
+    "packages/shadcn/test/fixtures/*": true
+  }
+}

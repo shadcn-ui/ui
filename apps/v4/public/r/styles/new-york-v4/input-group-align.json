@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-group-align",
+  "type": "registry:example",
+  "registryDependencies": [
+    "input-group"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/input-group-align.tsx",
+      "content": "import { Info, User } from \"lucide-react\"\n\nimport { Input } from \"@/registry/new-york-v4/ui/input\"\nimport {\n  InputGroup,\n  InputGroupAddon,\n  InputGroupText,\n} from \"@/registry/new-york-v4/ui/input-group\"\n\nexport default function InputGroupAlign() {\n  return (\n    <div className=\"grid w-full max-w-sm gap-4\">\n      <InputGroup>\n        <Input placeholder=\"Inline start alignment\" />\n        <InputGroupAddon align=\"inline-start\">\n          <User className=\"h-4 w-4\" />\n        </InputGroupAddon>\n      </InputGroup>\n\n      <InputGroup>\n        <Input placeholder=\"Inline end alignment\" />\n        <InputGroupAddon align=\"inline-end\">\n          <Info className=\"h-4 w-4\" />\n        </InputGroupAddon>\n      </InputGroup>\n\n      <InputGroup className=\"h-auto\">\n        <Input placeholder=\"Block start alignment\" />\n        <InputGroupAddon align=\"block-start\">\n          <InputGroupText>Block Start Label</InputGroupText>\n        </InputGroupAddon>\n      </InputGroup>\n\n      <InputGroup className=\"h-auto\">\n        <Input placeholder=\"Block end alignment\" />\n        <InputGroupAddon align=\"block-end\">\n          <InputGroupText>Block End Helper Text</InputGroupText>\n        </InputGroupAddon>\n      </InputGroup>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

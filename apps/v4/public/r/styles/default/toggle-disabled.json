@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toggle-disabled",
+  "type": "registry:example",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "registryDependencies": [
+    "toggle"
+  ],
+  "files": [
+    {
+      "path": "examples/toggle-disabled.tsx",
+      "content": "import { Underline } from \"lucide-react\"\n\nimport { Toggle } from \"@/registry/default/ui/toggle\"\n\nexport default function ToggleDisabled() {\n  return (\n    <Toggle aria-label=\"Toggle underline\" disabled>\n      <Underline className=\"h-4 w-4\" />\n    </Toggle>\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

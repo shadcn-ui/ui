@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "login-02",
+  "type": "registry:block",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "description": "A two column login page with a cover image.",
+  "registryDependencies": [
+    "button",
+    "card",
+    "input",
+    "label"
+  ],
+  "files": [
+    {
+      "path": "blocks/login-02/page.tsx",
+      "content": "import { GalleryVerticalEnd } from \"lucide-react\"\n\nimport { LoginForm } from \"@/registry/default/blocks/login-02/components/login-form\"\n\nexport default function LoginPage() {\n  return (\n    <div className=\"grid min-h-svh lg:grid-cols-2\">\n      <div className=\"flex flex-col gap-4 p-6 md:p-10\">\n        <div className=\"flex justify-center gap-2 md:justify-start\">\n          <a href=\"#\" className=\"flex items-center gap-2 font-medium\">\n            <div className=\"flex h-6 w-6 items-center justify-center rounded-md bg-primary text-primary-foreground\">\n              <GalleryVerticalEnd className=\"size-4\" />\n            </div>\n            Acme Inc.\n          </a>\n        </div>\n        <div className=\"flex flex-1 items-center justify-center\">\n          <div className=\"w-full max-w-xs\">\n            <LoginForm />\n          </div>\n        </div>\n      </div>\n      <div className=\"relative hidden bg-muted lg:block\">\n        <img\n          src=\"/placeholder.svg\"\n          alt=\"Image\"\n          className=\"absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale\"\n        />\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:page",
+      "target": "app/login/page.tsx"
+    },
+    {
+      "path": "blocks/login-02/components/login-form.tsx",
+      "content": "import { cn } from \"@/registry/default/lib/utils\"\nimport { Button } from \"@/registry/default/ui/button\"\nimport { Input } from \"@/registry/default/ui/input\"\nimport { Label } from \"@/registry/default/ui/label\"\n\nexport function LoginForm({\n  className,\n  ...props\n}: React.ComponentPropsWithoutRef<\"form\">) {\n  return (\n    <form className={cn(\"flex flex-col gap-6\", className)} {...props}>\n      <div className=\"flex flex-col items-center gap-2 text-center\">\n        <h1 className=\"text-2xl font-bold\">Login to your account</h1>\n        <p className=\"text-balance text-sm text-muted-foreground\">\n          Enter your email below to login to your account\n        </p>\n      </div>\n      <div className=\"grid gap-6\">\n        <div className=\"grid gap-2\">\n          <Label htmlFor=\"email\">Email</Label>\n          <Input id=\"email\" type=\"email\" placeholder=\"m@example.com\" required />\n        </div>\n        <div className=\"grid gap-2\">\n          <div className=\"flex items-center\">\n            <Label htmlFor=\"password\">Password</Label>\n            <a\n              href=\"#\"\n              className=\"ml-auto text-sm underline-offset-4 hover:underline\"\n            >\n              Forgot your password?\n            </a>\n          </div>\n          <Input id=\"password\" type=\"password\" required />\n        </div>\n        <Button type=\"submit\" className=\"w-full\">\n          Login\n        </Button>\n        <div className=\"relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t after:border-border\">\n          <span className=\"relative z-10 bg-background px-2 text-muted-foreground\">\n            Or continue with\n          </span>\n        </div>\n        <Button variant=\"outline\" className=\"w-full\">\n          <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\">\n            <path\n              d=\"M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12\"\n              fill=\"currentColor\"\n            />\n          </svg>\n          Login with GitHub\n        </Button>\n      </div>\n      <div className=\"text-center text-sm\">\n        Don&apos;t have an account?{\" \"}\n        <a href=\"#\" className=\"underline underline-offset-4\">\n          Sign up\n        </a>\n      </div>\n    </form>\n  )\n}\n",
+      "type": "registry:component",
+      "target": ""
+    }
+  ],
+  "categories": [
+    "authentication",
+    "login"
+  ]
+}

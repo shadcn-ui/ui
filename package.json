@@ -1,0 +1,90 @@
+{
+  "name": "ui",
+  "version": "0.0.1",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "author": {
+    "name": "shadcn",
+    "url": "https://twitter.com/shadcn"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "registry:build": "pnpm --filter=v4 registry:build && pnpm lint:fix && pnpm format:write -- --loglevel silent",
+    "registry:capture": "pnpm --filter=v4 registry:capture",
+    "explore:capture": "pnpm --filter=v4 explore:capture",
+    "dev": "turbo run dev --parallel",
+    "shadcn:dev": "turbo --filter=shadcn dev",
+    "shadcn": "pnpm --filter=shadcn start:dev",
+    "shadcn:prod": "pnpm --filter=shadcn start:prod",
+    "shadcn:build": "pnpm --filter=shadcn build",
+    "shadcn:test": "pnpm --filter=shadcn test",
+    "v4:dev": "pnpm --filter=v4 dev",
+    "v4:build": "pnpm --filter=v4 build",
+    "lint": "turbo run lint",
+    "lint:fix": "turbo run lint:fix",
+    "preview": "turbo run preview",
+    "typecheck": "turbo run typecheck",
+    "format:write": "turbo run format:write",
+    "format:check": "turbo run format:check",
+    "sync:templates": "./scripts/sync-templates.sh \"templates/*\"",
+    "check": "turbo lint typecheck format:check",
+    "release": "changeset version",
+    "pub:beta": "cd packages/shadcn && pnpm pub:beta",
+    "pub:release": "cd packages/shadcn && pnpm pub:release",
+    "test:dev": "turbo run test --filter=!shadcn-ui --force",
+    "test": "start-server-and-test v4:dev http://localhost:4000 test:dev",
+    "validate:registries": "pnpm --filter=v4 validate:registries",
+    "test:apps": "pnpm --filter=v4 test:apps"
+  },
+  "packageManager": "pnpm@9.0.6",
+  "dependencies": {
+    "@babel/core": "^7.22.1",
+    "@changesets/changelog-github": "^0.4.8",
+    "@changesets/cli": "^2.26.1",
+    "@commitlint/cli": "^20.1.0",
+    "@commitlint/config-conventional": "^17.6.3",
+    "@ianvs/prettier-plugin-sort-imports": "^4.6.1",
+    "@manypkg/cli": "^0.20.0",
+    "@typescript-eslint/eslint-plugin": "^8.49.0",
+    "@typescript-eslint/parser": "^8.49.0",
+    "autoprefixer": "^10.4.14",
+    "chokidar": "^4.0.3",
+    "concurrently": "^8.0.1",
+    "cross-env": "^7.0.3",
+    "eslint": "^9.26.0",
+    "eslint-config-next": "^15.0.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-config-turbo": "^1.9.9",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-tailwindcss": "3.13.1",
+    "motion": "^12.12.1",
+    "prettier": "^3.4.2",
+    "pretty-quick": "^4.0.0",
+    "puppeteer": "^23.6.0",
+    "tailwindcss": "^3.4.18",
+    "tsx": "^4.1.4",
+    "turbo": "^1.9.9",
+    "vite": "^7.1.12",
+    "vite-tsconfig-paths": "^4.2.0",
+    "vitest": "^2.1.9"
+  },
+  "devDependencies": {
+    "@types/hast": "^3.0.4",
+    "@types/node": "^20.11.27",
+    "@types/react": "^18.2.65",
+    "@types/react-dom": "^18.2.22",
+    "start-server-and-test": "^2.0.12",
+    "typescript": "^5.5.3"
+  },
+  "pnpm": {
+    "overrides": {
+      "@types/react": "19.2.2",
+      "@types/react-dom": "19.2.2"
+    }
+  }
+}

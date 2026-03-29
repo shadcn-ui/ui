@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "label-example",
+  "title": "Label",
+  "registryDependencies": [
+    "checkbox",
+    "field",
+    "input",
+    "label",
+    "textarea",
+    "example"
+  ],
+  "files": [
+    {
+      "path": "registry/radix-mira/examples/label-example.tsx",
+      "content": "import {\n  Example,\n  ExampleWrapper,\n} from \"@/registry/radix-mira/components/example\"\nimport { Checkbox } from \"@/registry/radix-mira/ui/checkbox\"\nimport { Field } from \"@/registry/radix-mira/ui/field\"\nimport { Input } from \"@/registry/radix-mira/ui/input\"\nimport { Label } from \"@/registry/radix-mira/ui/label\"\nimport { Textarea } from \"@/registry/radix-mira/ui/textarea\"\n\nexport default function LabelExample() {\n  return (\n    <ExampleWrapper>\n      <LabelWithCheckbox />\n      <LabelWithInput />\n      <LabelDisabled />\n      <LabelWithTextarea />\n    </ExampleWrapper>\n  )\n}\n\nfunction LabelWithCheckbox() {\n  return (\n    <Example title=\"With Checkbox\">\n      <Field orientation=\"horizontal\">\n        <Checkbox id=\"label-demo-terms\" />\n        <Label htmlFor=\"label-demo-terms\">Accept terms and conditions</Label>\n      </Field>\n    </Example>\n  )\n}\n\nfunction LabelWithInput() {\n  return (\n    <Example title=\"With Input\">\n      <Field>\n        <Label htmlFor=\"label-demo-username\">Username</Label>\n        <Input id=\"label-demo-username\" placeholder=\"Username\" />\n      </Field>\n    </Example>\n  )\n}\n\nfunction LabelDisabled() {\n  return (\n    <Example title=\"Disabled\">\n      <Field data-disabled={true}>\n        <Label htmlFor=\"label-demo-disabled\">Disabled</Label>\n        <Input id=\"label-demo-disabled\" placeholder=\"Disabled\" disabled />\n      </Field>\n    </Example>\n  )\n}\n\nfunction LabelWithTextarea() {\n  return (\n    <Example title=\"With Textarea\">\n      <Field>\n        <Label htmlFor=\"label-demo-message\">Message</Label>\n        <Textarea id=\"label-demo-message\" placeholder=\"Message\" />\n      </Field>\n    </Example>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

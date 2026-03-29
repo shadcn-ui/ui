@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sidebar-menu",
+  "type": "registry:internal",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "files": [
+    {
+      "path": "internal/sidebar-menu.tsx",
+      "content": "\"use client\"\n\nimport { Frame, LifeBuoy, Map, PieChart, Send } from \"lucide-react\"\n\nimport {\n  Sidebar,\n  SidebarContent,\n  SidebarGroup,\n  SidebarGroupContent,\n  SidebarGroupLabel,\n  SidebarMenu,\n  SidebarMenuButton,\n  SidebarMenuItem,\n  SidebarProvider,\n} from \"@/registry/new-york/ui/sidebar\"\n\nconst projects = [\n  {\n    name: \"Design Engineering\",\n    url: \"#\",\n    icon: Frame,\n  },\n  {\n    name: \"Sales & Marketing\",\n    url: \"#\",\n    icon: PieChart,\n  },\n  {\n    name: \"Travel\",\n    url: \"#\",\n    icon: Map,\n  },\n  {\n    name: \"Support\",\n    url: \"#\",\n    icon: LifeBuoy,\n  },\n  {\n    name: \"Feedback\",\n    url: \"#\",\n    icon: Send,\n  },\n]\n\nexport default function AppSidebar() {\n  return (\n    <SidebarProvider>\n      <Sidebar>\n        <SidebarContent>\n          <SidebarGroup>\n            <SidebarGroupLabel>Projects</SidebarGroupLabel>\n            <SidebarGroupContent>\n              <SidebarMenu>\n                {projects.map((project) => (\n                  <SidebarMenuItem key={project.name}>\n                    <SidebarMenuButton asChild>\n                      <a href={project.url}>\n                        <project.icon />\n                        <span>{project.name}</span>\n                      </a>\n                    </SidebarMenuButton>\n                  </SidebarMenuItem>\n                ))}\n              </SidebarMenu>\n            </SidebarGroupContent>\n          </SidebarGroup>\n        </SidebarContent>\n      </Sidebar>\n    </SidebarProvider>\n  )\n}\n",
+      "type": "registry:component",
+      "target": ""
+    }
+  ]
+}

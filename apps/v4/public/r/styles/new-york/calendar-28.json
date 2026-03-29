@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "calendar-28",
+  "type": "registry:block",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "description": "Input with date picker",
+  "registryDependencies": [
+    "calendar",
+    "input",
+    "label",
+    "popover",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "blocks/calendar-28.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { CalendarIcon } from \"lucide-react\"\n\nimport { Button } from \"@/registry/new-york/ui/button\"\nimport { Calendar } from \"@/registry/new-york/ui/calendar\"\nimport { Input } from \"@/registry/new-york/ui/input\"\nimport { Label } from \"@/registry/new-york/ui/label\"\nimport {\n  Popover,\n  PopoverContent,\n  PopoverTrigger,\n} from \"@/registry/new-york/ui/popover\"\n\nfunction formatDate(date: Date | undefined) {\n  if (!date) {\n    return \"\"\n  }\n\n  return date.toLocaleDateString(\"en-US\", {\n    day: \"2-digit\",\n    month: \"long\",\n    year: \"numeric\",\n  })\n}\n\nfunction isValidDate(date: Date | undefined) {\n  if (!date) {\n    return false\n  }\n  return !isNaN(date.getTime())\n}\n\nexport default function Calendar28() {\n  const [open, setOpen] = React.useState(false)\n  const [date, setDate] = React.useState<Date | undefined>(\n    new Date(\"2025-06-01\")\n  )\n  const [month, setMonth] = React.useState<Date | undefined>(date)\n  const [value, setValue] = React.useState(formatDate(date))\n\n  return (\n    <div className=\"flex flex-col gap-3\">\n      <Label htmlFor=\"date\" className=\"px-1\">\n        Subscription Date\n      </Label>\n      <div className=\"relative flex gap-2\">\n        <Input\n          id=\"date\"\n          value={value}\n          placeholder=\"June 01, 2025\"\n          className=\"bg-background pr-10\"\n          onChange={(e) => {\n            const date = new Date(e.target.value)\n            setValue(e.target.value)\n            if (isValidDate(date)) {\n              setDate(date)\n              setMonth(date)\n            }\n          }}\n          onKeyDown={(e) => {\n            if (e.key === \"ArrowDown\") {\n              e.preventDefault()\n              setOpen(true)\n            }\n          }}\n        />\n        <Popover open={open} onOpenChange={setOpen}>\n          <PopoverTrigger asChild>\n            <Button\n              id=\"date-picker\"\n              variant=\"ghost\"\n              size=\"icon\"\n              className=\"absolute right-2 top-1/2 h-6 w-6 -translate-y-1/2\"\n            >\n              <CalendarIcon className=\"size-3\" />\n              <span className=\"sr-only\">Select date</span>\n            </Button>\n          </PopoverTrigger>\n          <PopoverContent\n            className=\"w-auto overflow-hidden p-0\"\n            align=\"end\"\n            alignOffset={-8}\n            sideOffset={10}\n          >\n            <Calendar\n              mode=\"single\"\n              selected={date}\n              captionLayout=\"dropdown\"\n              month={month}\n              onMonthChange={setMonth}\n              onSelect={(date) => {\n                setDate(date)\n                setValue(formatDate(date))\n                setOpen(false)\n              }}\n            />\n          </PopoverContent>\n        </Popover>\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:component",
+      "target": ""
+    }
+  ],
+  "meta": {
+    "iframeHeight": "600px",
+    "container": "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+    "mobile": "component"
+  },
+  "categories": [
+    "calendar",
+    "date"
+  ]
+}

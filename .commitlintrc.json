@@ -1,0 +1,3 @@
+{
+  "extends": ["@commitlint/config-conventional"]
+}

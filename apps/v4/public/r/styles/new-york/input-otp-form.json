@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-otp-form",
+  "type": "registry:example",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "registryDependencies": [
+    "input-otp",
+    "form"
+  ],
+  "files": [
+    {
+      "path": "examples/input-otp-form.tsx",
+      "content": "\"use client\"\n\nimport { zodResolver } from \"@hookform/resolvers/zod\"\nimport { useForm } from \"react-hook-form\"\nimport { z } from \"zod\"\n\nimport { toast } from \"@/registry/new-york/hooks/use-toast\"\nimport { Button } from \"@/registry/new-york/ui/button\"\nimport {\n  Form,\n  FormControl,\n  FormDescription,\n  FormField,\n  FormItem,\n  FormLabel,\n  FormMessage,\n} from \"@/registry/new-york/ui/form\"\nimport {\n  InputOTP,\n  InputOTPGroup,\n  InputOTPSlot,\n} from \"@/registry/new-york/ui/input-otp\"\n\nconst FormSchema = z.object({\n  pin: z.string().min(6, {\n    message: \"Your one-time password must be 6 characters.\",\n  }),\n})\n\nexport default function InputOTPForm() {\n  const form = useForm<z.infer<typeof FormSchema>>({\n    resolver: zodResolver(FormSchema),\n    defaultValues: {\n      pin: \"\",\n    },\n  })\n\n  function onSubmit(data: z.infer<typeof FormSchema>) {\n    toast({\n      title: \"You submitted the following values:\",\n      description: (\n        <pre className=\"mt-2 w-[340px] rounded-md bg-slate-950 p-4\">\n          <code className=\"text-white\">{JSON.stringify(data, null, 2)}</code>\n        </pre>\n      ),\n    })\n  }\n\n  return (\n    <Form {...form}>\n      <form onSubmit={form.handleSubmit(onSubmit)} className=\"w-2/3 space-y-6\">\n        <FormField\n          control={form.control}\n          name=\"pin\"\n          render={({ field }) => (\n            <FormItem>\n              <FormLabel>One-Time Password</FormLabel>\n              <FormControl>\n                <InputOTP maxLength={6} {...field}>\n                  <InputOTPGroup>\n                    <InputOTPSlot index={0} />\n                    <InputOTPSlot index={1} />\n                    <InputOTPSlot index={2} />\n                    <InputOTPSlot index={3} />\n                    <InputOTPSlot index={4} />\n                    <InputOTPSlot index={5} />\n                  </InputOTPGroup>\n                </InputOTP>\n              </FormControl>\n              <FormDescription>\n                Please enter the one-time password sent to your phone.\n              </FormDescription>\n              <FormMessage />\n            </FormItem>\n          )}\n        />\n\n        <Button type=\"submit\">Submit</Button>\n      </form>\n    </Form>\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

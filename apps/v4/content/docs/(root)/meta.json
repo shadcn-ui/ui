@@ -1,0 +1,22 @@
+{
+  "title": "Get Started",
+  "pages": [
+    "index",
+    "[Installation](/docs/installation)",
+    "components-json",
+    "theming",
+    "[Dark Mode](/docs/dark-mode)",
+    "[RTL](/docs/rtl)",
+    "[CLI](/docs/cli)",
+    "monorepo",
+    "skills",
+    "v0",
+    "javascript",
+    "blocks",
+    "figma",
+    "[Changelog](/docs/changelog)",
+    "[llms.txt](/llms.txt)",
+    "legacy",
+    "!new"
+  ]
+}
