@@ -74,21 +74,21 @@ Path to the CSS file that imports Tailwind CSS into your project.
 
 ### tailwind.baseColor
 
-This is used to generate the default color palette for your components. **This cannot be changed after initialization.**
+This is used to generate the default theme tokens for your components. **This cannot be changed after initialization.**
 
 ```json title="components.json"
 {
   "tailwind": {
-    "baseColor": "gray" | "neutral" | "slate" | "stone" | "zinc" | "mauve" | "olive" | "mist" | "taupe"
+    "baseColor": "neutral" | "stone" | "zinc" | "mauve" | "olive" | "mist" | "taupe"
   }
 }
 ```
 
 ### tailwind.cssVariables
 
-You can choose between using CSS variables or Tailwind CSS utility classes for theming.
+We use and recommend CSS variables for theming.
 
-To use utility classes for theming set `tailwind.cssVariables` to `false`. For CSS variables, set `tailwind.cssVariables` to `true`.
+Set `tailwind.cssVariables` to `true` to generate semantic theme tokens like `background`, `foreground`, and `primary`. Set it to `false` to generate inline Tailwind color utilities instead.
 
 ```json title="components.json"
 {

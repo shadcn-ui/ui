@@ -1,17 +1,18 @@
-import { Button } from "@/examples/radix/ui/button"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/examples/radix/ui/dropdown-menu"
 import {
   CreditCardIcon,
   LogOutIcon,
   SettingsIcon,
   UserIcon,
 } from "lucide-react"
+
+import { Button } from "@/styles/radix-nova/ui/button"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/styles/radix-nova/ui/dropdown-menu"
 
 export function DropdownMenuIcons() {
   return (

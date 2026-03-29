@@ -1,7 +1,8 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/base/ui/button"
+
+import { Button } from "@/styles/base-nova/ui/button"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -9,7 +10,7 @@ import {
   DropdownMenuGroup,
   DropdownMenuLabel,
   DropdownMenuTrigger,
-} from "@/examples/base/ui/dropdown-menu"
+} from "@/styles/base-nova/ui/dropdown-menu"
 
 export function DropdownMenuCheckboxes() {
   const [showStatusBar, setShowStatusBar] = React.useState(true)

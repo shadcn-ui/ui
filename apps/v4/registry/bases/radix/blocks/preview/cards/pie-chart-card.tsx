@@ -101,17 +101,18 @@ export function PieChartCard() {
                         y={viewBox.cy}
                         textAnchor="middle"
                         dominantBaseline="middle"
+                        fill="red"
                       >
                         <tspan
                           x={viewBox.cx}
-                          y={viewBox.cy}
+                          y={viewBox.cy - 16}
                           className="fill-foreground text-2xl font-bold"
                         >
                           {totalVisitors.toLocaleString()}
                         </tspan>
                         <tspan
                           x={viewBox.cx}
-                          y={(viewBox.cy || 0) + 20}
+                          y={(viewBox.cy || 0) + 4}
                           className="fill-muted-foreground text-xs"
                         >
                           Visitors

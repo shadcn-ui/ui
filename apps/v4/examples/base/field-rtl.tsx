@@ -1,8 +1,13 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/base/ui-rtl/button"
-import { Checkbox } from "@/examples/base/ui-rtl/checkbox"
+
+import {
+  useTranslation,
+  type Translations,
+} from "@/components/language-selector"
+import { Button } from "@/styles/base-nova/ui-rtl/button"
+import { Checkbox } from "@/styles/base-nova/ui-rtl/checkbox"
 import {
   Field,
   FieldDescription,
@@ -11,8 +16,8 @@ import {
   FieldLegend,
   FieldSeparator,
   FieldSet,
-} from "@/examples/base/ui-rtl/field"
-import { Input } from "@/examples/base/ui-rtl/input"
+} from "@/styles/base-nova/ui-rtl/field"
+import { Input } from "@/styles/base-nova/ui-rtl/input"
 import {
   Select,
   SelectContent,
@@ -20,13 +25,8 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/examples/base/ui-rtl/select"
-import { Textarea } from "@/examples/base/ui-rtl/textarea"
-
-import {
-  useTranslation,
-  type Translations,
-} from "@/components/language-selector"
+} from "@/styles/base-nova/ui-rtl/select"
+import { Textarea } from "@/styles/base-nova/ui-rtl/textarea"
 
 const months = [
   { label: "MM", value: null },
