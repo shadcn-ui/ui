@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { Pressable, type Selection } from "react-aria-components"
 
 import {
   Example,
@@ -9,13 +10,9 @@ import {
 import { Button } from "@/registry/bases/react-aria/ui/button"
 import {
   ContextMenu,
-  ContextMenuCheckboxItem,
-  ContextMenuContent,
   ContextMenuGroup,
   ContextMenuItem,
   ContextMenuLabel,
-  ContextMenuRadioGroup,
-  ContextMenuRadioItem,
   ContextMenuSeparator,
   ContextMenuShortcut,
   ContextMenuSub,
@@ -53,18 +50,23 @@ export default function ContextMenuExample() {
 function ContextMenuBasic() {
   return (
     <Example title="Basic">
-      <ContextMenu>
-        <ContextMenuTrigger className="flex aspect-[2/0.5] w-full items-center justify-center rounded-lg border text-sm">
-          Right click here
-        </ContextMenuTrigger>
-        <ContextMenuContent>
+      <ContextMenuTrigger>
+        <Pressable>
+          <div
+            role="button"
+            className="flex aspect-[2/0.5] w-full items-center justify-center rounded-lg border text-sm"
+          >
+            Right click here
+          </div>
+        </Pressable>
+        <ContextMenu>
           <ContextMenuGroup>
             <ContextMenuItem>Back</ContextMenuItem>
-            <ContextMenuItem disabled>Forward</ContextMenuItem>
+            <ContextMenuItem isDisabled>Forward</ContextMenuItem>
             <ContextMenuItem>Reload</ContextMenuItem>
           </ContextMenuGroup>
-        </ContextMenuContent>
-      </ContextMenu>
+        </ContextMenu>
+      </ContextMenuTrigger>
     </Example>
   )
 }
@@ -72,11 +74,16 @@ function ContextMenuBasic() {
 function ContextMenuWithIcons() {
   return (
     <Example title="With Icons">
-      <ContextMenu>
-        <ContextMenuTrigger className="flex aspect-[2/0.5] w-full items-center justify-center rounded-lg border text-sm">
-          Right click here
-        </ContextMenuTrigger>
-        <ContextMenuContent>
+      <ContextMenuTrigger>
+        <Pressable>
+          <div
+            role="button"
+            className="flex aspect-[2/0.5] w-full items-center justify-center rounded-lg border text-sm"
+          >
+            Right click here
+          </div>
+        </Pressable>
+        <ContextMenu>
           <ContextMenuGroup>
             <ContextMenuItem>
               <IconPlaceholder
@@ -122,8 +129,8 @@ function ContextMenuWithIcons() {
               Delete
             </ContextMenuItem>
           </ContextMenuGroup>
-        </ContextMenuContent>
-      </ContextMenu>
+        </ContextMenu>
+      </ContextMenuTrigger>
     </Example>
   )
 }
@@ -131,17 +138,22 @@ function ContextMenuWithIcons() {
 function ContextMenuWithShortcuts() {
   return (
     <Example title="With Shortcuts">
-      <ContextMenu>
-        <ContextMenuTrigger className="flex aspect-[2/0.5] w-full items-center justify-center rounded-lg border text-sm">
-          Right click here
-        </ContextMenuTrigger>
-        <ContextMenuContent>
+      <ContextMenuTrigger>
+        <Pressable>
+          <div
+            role="button"
+            className="flex aspect-[2/0.5] w-full items-center justify-center rounded-lg border text-sm"
+          >
+            Right click here
+          </div>
+        </Pressable>
+        <ContextMenu>
           <ContextMenuGroup>
             <ContextMenuItem>
               Back
               <ContextMenuShortcut>⌘[</ContextMenuShortcut>
             </ContextMenuItem>
-            <ContextMenuItem disabled>
+            <ContextMenuItem isDisabled>
               Forward
               <ContextMenuShortcut>⌘]</ContextMenuShortcut>
             </ContextMenuItem>
@@ -161,8 +173,8 @@ function ContextMenuWithShortcuts() {
               <ContextMenuShortcut>⇧⌘S</ContextMenuShortcut>
             </ContextMenuItem>
           </ContextMenuGroup>
-        </ContextMenuContent>
-      </ContextMenu>
+        </ContextMenu>
+      </ContextMenuTrigger>
     </Example>
   )
 }
@@ -170,11 +182,16 @@ function ContextMenuWithShortcuts() {
 function ContextMenuWithSubmenu() {
   return (
     <Example title="With Submenu">
-      <ContextMenu>
-        <ContextMenuTrigger className="flex aspect-[2/0.5] w-full items-center justify-center rounded-lg border text-sm">
-          Right click here
-        </ContextMenuTrigger>
-        <ContextMenuContent>
+      <ContextMenuTrigger>
+        <Pressable>
+          <div
+            role="button"
+            className="flex aspect-[2/0.5] w-full items-center justify-center rounded-lg border text-sm"
+          >
+            Right click here
+          </div>
+        </Pressable>
+        <ContextMenu>
           <ContextMenuGroup>
             <ContextMenuItem>
               Copy
@@ -203,8 +220,8 @@ function ContextMenuWithSubmenu() {
               </ContextMenuGroup>
             </ContextMenuSubContent>
           </ContextMenuSub>
-        </ContextMenuContent>
-      </ContextMenu>
+        </ContextMenu>
+      </ContextMenuTrigger>
     </Example>
   )
 }
@@ -212,11 +229,16 @@ function ContextMenuWithSubmenu() {
 function ContextMenuWithGroups() {
   return (
     <Example title="With Groups, Labels & Separators">
-      <ContextMenu>
-        <ContextMenuTrigger className="flex aspect-[2/0.5] w-full items-center justify-center rounded-lg border text-sm">
-          Right click here
-        </ContextMenuTrigger>
-        <ContextMenuContent>
+      <ContextMenuTrigger>
+        <Pressable>
+          <div
+            role="button"
+            className="flex aspect-[2/0.5] w-full items-center justify-center rounded-lg border text-sm"
+          >
+            Right click here
+          </div>
+        </Pressable>
+        <ContextMenu>
           <ContextMenuGroup>
             <ContextMenuLabel>File</ContextMenuLabel>
             <ContextMenuItem>
@@ -266,31 +288,44 @@ function ContextMenuWithGroups() {
               <ContextMenuShortcut>⌫</ContextMenuShortcut>
             </ContextMenuItem>
           </ContextMenuGroup>
-        </ContextMenuContent>
-      </ContextMenu>
+        </ContextMenu>
+      </ContextMenuTrigger>
     </Example>
   )
 }
 
 function ContextMenuWithCheckboxes() {
+  const [selectedKeys, setSelectedKeys] = React.useState<Selection>(
+    new Set(["bookmarks-bar", "developer-tools"])
+  )
+
   return (
     <Example title="With Checkboxes">
-      <ContextMenu>
-        <ContextMenuTrigger className="flex aspect-[2/0.5] w-full items-center justify-center rounded-lg border text-sm">
-          Right click here
-        </ContextMenuTrigger>
-        <ContextMenuContent>
-          <ContextMenuGroup>
-            <ContextMenuCheckboxItem defaultChecked>
+      <ContextMenuTrigger>
+        <Pressable>
+          <div
+            role="button"
+            className="flex aspect-[2/0.5] w-full items-center justify-center rounded-lg border text-sm"
+          >
+            Right click here
+          </div>
+        </Pressable>
+        <ContextMenu>
+          <ContextMenuGroup
+            selectionMode="multiple"
+            selectedKeys={selectedKeys}
+            onSelectionChange={setSelectedKeys}
+          >
+            <ContextMenuItem id="bookmarks-bar">
               Show Bookmarks Bar
-            </ContextMenuCheckboxItem>
-            <ContextMenuCheckboxItem>Show Full URLs</ContextMenuCheckboxItem>
-            <ContextMenuCheckboxItem defaultChecked>
+            </ContextMenuItem>
+            <ContextMenuItem>Show Full URLs</ContextMenuItem>
+            <ContextMenuItem id="developer-tools">
               Show Developer Tools
-            </ContextMenuCheckboxItem>
+            </ContextMenuItem>
           </ContextMenuGroup>
-        </ContextMenuContent>
-      </ContextMenu>
+        </ContextMenu>
+      </ContextMenuTrigger>
     </Example>
   )
 }
@@ -301,33 +336,54 @@ function ContextMenuWithRadio() {
 
   return (
     <Example title="With Radio Group">
-      <ContextMenu>
-        <ContextMenuTrigger className="flex aspect-[2/0.5] w-full items-center justify-center rounded-lg border text-sm">
-          Right click here
-        </ContextMenuTrigger>
-        <ContextMenuContent>
+      <ContextMenuTrigger>
+        <Pressable>
+          <div
+            role="button"
+            className="flex aspect-[2/0.5] w-full items-center justify-center rounded-lg border text-sm"
+          >
+            Right click here
+          </div>
+        </Pressable>
+        <ContextMenu>
           <ContextMenuGroup>
             <ContextMenuLabel>People</ContextMenuLabel>
-            <ContextMenuRadioGroup value={user} onValueChange={setUser}>
-              <ContextMenuRadioItem value="pedro">
-                Pedro Duarte
-              </ContextMenuRadioItem>
-              <ContextMenuRadioItem value="colm">
-                Colm Tuite
-              </ContextMenuRadioItem>
-            </ContextMenuRadioGroup>
+            <ContextMenuGroup
+              selectionMode="single"
+              selectedKeys={[user]}
+              onSelectionChange={(keys) =>
+                setUser(
+                  keys === "all"
+                    ? "pedro"
+                    : (keys.values().next().value as string)
+                )
+              }
+            >
+              <ContextMenuItem id="pedro">Pedro Duarte</ContextMenuItem>
+              <ContextMenuItem id="colm">Colm Tuite</ContextMenuItem>
+            </ContextMenuGroup>
           </ContextMenuGroup>
           <ContextMenuSeparator />
           <ContextMenuGroup>
             <ContextMenuLabel>Theme</ContextMenuLabel>
-            <ContextMenuRadioGroup value={theme} onValueChange={setTheme}>
-              <ContextMenuRadioItem value="light">Light</ContextMenuRadioItem>
-              <ContextMenuRadioItem value="dark">Dark</ContextMenuRadioItem>
-              <ContextMenuRadioItem value="system">System</ContextMenuRadioItem>
-            </ContextMenuRadioGroup>
+            <ContextMenuGroup
+              selectionMode="single"
+              selectedKeys={theme}
+              onSelectionChange={(keys) =>
+                setTheme(
+                  keys === "all"
+                    ? "light"
+                    : (keys.values().next().value as string)
+                )
+              }
+            >
+              <ContextMenuItem id="light">Light</ContextMenuItem>
+              <ContextMenuItem id="dark">Dark</ContextMenuItem>
+              <ContextMenuItem id="system">System</ContextMenuItem>
+            </ContextMenuGroup>
           </ContextMenuGroup>
-        </ContextMenuContent>
-      </ContextMenu>
+        </ContextMenu>
+      </ContextMenuTrigger>
     </Example>
   )
 }
@@ -335,11 +391,16 @@ function ContextMenuWithRadio() {
 function ContextMenuWithDestructive() {
   return (
     <Example title="With Destructive Items">
-      <ContextMenu>
-        <ContextMenuTrigger className="flex aspect-[2/0.5] w-full items-center justify-center rounded-lg border text-sm">
-          Right click here
-        </ContextMenuTrigger>
-        <ContextMenuContent>
+      <ContextMenuTrigger>
+        <Pressable>
+          <div
+            role="button"
+            className="flex aspect-[2/0.5] w-full items-center justify-center rounded-lg border text-sm"
+          >
+            Right click here
+          </div>
+        </Pressable>
+        <ContextMenu>
           <ContextMenuGroup>
             <ContextMenuItem>
               <IconPlaceholder
@@ -385,8 +446,8 @@ function ContextMenuWithDestructive() {
               Delete
             </ContextMenuItem>
           </ContextMenuGroup>
-        </ContextMenuContent>
-      </ContextMenu>
+        </ContextMenu>
+      </ContextMenuTrigger>
     </Example>
   )
 }
@@ -405,18 +466,23 @@ function ContextMenuWithSides() {
             "inline-end",
           ] as const
         ).map((side) => (
-          <ContextMenu key={side}>
-            <ContextMenuTrigger className="flex aspect-[2/0.5] items-center justify-center rounded-lg border p-4 text-sm capitalize">
-              {side.replace("-", " ")}
-            </ContextMenuTrigger>
-            <ContextMenuContent side={side}>
+          <ContextMenuTrigger key={side}>
+            <Pressable>
+              <div
+                role="button"
+                className="flex aspect-[2/0.5] items-center justify-center rounded-lg border p-4 text-sm capitalize"
+              >
+                {side.replace("-", " ")}
+              </div>
+            </Pressable>
+            <ContextMenu side={side}>
               <ContextMenuGroup>
                 <ContextMenuItem>Back</ContextMenuItem>
                 <ContextMenuItem>Forward</ContextMenuItem>
                 <ContextMenuItem>Reload</ContextMenuItem>
               </ContextMenuGroup>
-            </ContextMenuContent>
-          </ContextMenu>
+            </ContextMenu>
+          </ContextMenuTrigger>
         ))}
       </div>
     </Example>
@@ -435,11 +501,16 @@ function ContextMenuInDialog() {
               Right click on the area below to see the context menu.
             </DialogDescription>
           </DialogHeader>
-          <ContextMenu>
-            <ContextMenuTrigger className="flex aspect-[2/0.5] w-full items-center justify-center rounded-lg border text-sm">
-              Right click here
-            </ContextMenuTrigger>
-            <ContextMenuContent>
+          <ContextMenuTrigger>
+            <Pressable>
+              <div
+                role="button"
+                className="flex aspect-[2/0.5] w-full items-center justify-center rounded-lg border text-sm"
+              >
+                Right click here
+              </div>
+            </Pressable>
+            <ContextMenu>
               <ContextMenuGroup>
                 <ContextMenuItem>
                   <IconPlaceholder
@@ -500,8 +571,8 @@ function ContextMenuInDialog() {
                   Delete
                 </ContextMenuItem>
               </ContextMenuGroup>
-            </ContextMenuContent>
-          </ContextMenu>
+            </ContextMenu>
+          </ContextMenuTrigger>
         </Dialog>
       </DialogTrigger>
     </Example>
@@ -509,17 +580,23 @@ function ContextMenuInDialog() {
 }
 
 function ContextMenuWithInset() {
-  const [showBookmarks, setShowBookmarks] = React.useState(true)
-  const [showUrls, setShowUrls] = React.useState(false)
+  const [selectedKeys, setSelectedKeys] = React.useState<Selection>(
+    new Set(["bookmarks"])
+  )
   const [theme, setTheme] = React.useState("system")
 
   return (
     <Example title="With Inset">
-      <ContextMenu>
-        <ContextMenuTrigger className="flex aspect-[2/0.5] w-full items-center justify-center rounded-lg border text-sm">
-          Right click here
-        </ContextMenuTrigger>
-        <ContextMenuContent className="w-44">
+      <ContextMenuTrigger>
+        <Pressable>
+          <div
+            role="button"
+            className="flex aspect-[2/0.5] w-full items-center justify-center rounded-lg border text-sm"
+          >
+            Right click here
+          </div>
+        </Pressable>
+        <ContextMenu className="w-44">
           <ContextMenuGroup>
             <ContextMenuLabel>Actions</ContextMenuLabel>
             <ContextMenuItem>
@@ -545,37 +622,41 @@ function ContextMenuWithInset() {
             <ContextMenuItem inset>Paste</ContextMenuItem>
           </ContextMenuGroup>
           <ContextMenuSeparator />
-          <ContextMenuGroup>
+          <ContextMenuGroup
+            selectionMode="multiple"
+            selectedKeys={selectedKeys}
+            onSelectionChange={setSelectedKeys}
+          >
             <ContextMenuLabel inset>Appearance</ContextMenuLabel>
-            <ContextMenuCheckboxItem
-              inset
-              checked={showBookmarks}
-              onCheckedChange={setShowBookmarks}
-            >
+            <ContextMenuItem inset id="bookmarks">
               Bookmarks
-            </ContextMenuCheckboxItem>
-            <ContextMenuCheckboxItem
-              inset
-              checked={showUrls}
-              onCheckedChange={setShowUrls}
-            >
+            </ContextMenuItem>
+            <ContextMenuItem inset id="urls">
               Full URLs
-            </ContextMenuCheckboxItem>
+            </ContextMenuItem>
           </ContextMenuGroup>
           <ContextMenuSeparator />
-          <ContextMenuGroup>
+          <ContextMenuGroup
+            selectionMode="single"
+            selectedKeys={[theme]}
+            onSelectionChange={(keys) =>
+              setTheme(
+                keys === "all"
+                  ? "system"
+                  : (keys.values().next().value as string)
+              )
+            }
+          >
             <ContextMenuLabel inset>Theme</ContextMenuLabel>
-            <ContextMenuRadioGroup value={theme} onValueChange={setTheme}>
-              <ContextMenuRadioItem inset value="light">
-                Light
-              </ContextMenuRadioItem>
-              <ContextMenuRadioItem inset value="dark">
-                Dark
-              </ContextMenuRadioItem>
-              <ContextMenuRadioItem inset value="system">
-                System
-              </ContextMenuRadioItem>
-            </ContextMenuRadioGroup>
+            <ContextMenuItem inset id="light">
+              Light
+            </ContextMenuItem>
+            <ContextMenuItem inset id="dark">
+              Dark
+            </ContextMenuItem>
+            <ContextMenuItem inset id="system">
+              System
+            </ContextMenuItem>
           </ContextMenuGroup>
           <ContextMenuSeparator />
           <ContextMenuSub>
@@ -587,8 +668,8 @@ function ContextMenuWithInset() {
               </ContextMenuGroup>
             </ContextMenuSubContent>
           </ContextMenuSub>
-        </ContextMenuContent>
-      </ContextMenu>
+        </ContextMenu>
+      </ContextMenuTrigger>
     </Example>
   )
 }

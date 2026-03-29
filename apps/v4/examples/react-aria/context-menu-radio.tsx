@@ -3,49 +3,63 @@
 import * as React from "react"
 import {
   ContextMenu,
-  ContextMenuContent,
   ContextMenuGroup,
+  ContextMenuItem,
   ContextMenuLabel,
-  ContextMenuRadioGroup,
-  ContextMenuRadioItem,
   ContextMenuSeparator,
   ContextMenuTrigger,
 } from "@/examples/react-aria/ui/context-menu"
+import { Pressable } from "react-aria-components"
 
 export function ContextMenuRadio() {
   const [user, setUser] = React.useState("pedro")
   const [theme, setTheme] = React.useState("light")
 
   return (
-    <ContextMenu>
-      <ContextMenuTrigger className="flex aspect-video w-full max-w-xs items-center justify-center rounded-xl border border-dashed text-sm">
-        <span className="hidden pointer-fine:inline-block">
-          Right click here
-        </span>
-        <span className="hidden pointer-coarse:inline-block">
-          Long press here
-        </span>
-      </ContextMenuTrigger>
-      <ContextMenuContent>
-        <ContextMenuGroup>
+    <ContextMenuTrigger>
+      <Pressable>
+        <div
+          role="button"
+          className="flex aspect-video w-full max-w-xs items-center justify-center rounded-xl border border-dashed text-sm"
+        >
+          <span className="hidden pointer-fine:inline-block">
+            Right click here
+          </span>
+          <span className="hidden pointer-coarse:inline-block">
+            Long press here
+          </span>
+        </div>
+      </Pressable>
+      <ContextMenu>
+        <ContextMenuGroup
+          selectionMode="single"
+          selectedKeys={[user]}
+          onSelectionChange={(keys) =>
+            setUser(
+              keys === "all" ? "pedro" : (keys.values().next().value as string)
+            )
+          }
+        >
           <ContextMenuLabel>People</ContextMenuLabel>
-          <ContextMenuRadioGroup value={user} onValueChange={setUser}>
-            <ContextMenuRadioItem value="pedro">
-              Pedro Duarte
-            </ContextMenuRadioItem>
-            <ContextMenuRadioItem value="colm">Colm Tuite</ContextMenuRadioItem>
-          </ContextMenuRadioGroup>
+          <ContextMenuItem id="pedro">Pedro Duarte</ContextMenuItem>
+          <ContextMenuItem id="colm">Colm Tuite</ContextMenuItem>
         </ContextMenuGroup>
         <ContextMenuSeparator />
-        <ContextMenuGroup>
+        <ContextMenuGroup
+          selectionMode="single"
+          selectedKeys={[theme]}
+          onSelectionChange={(keys) =>
+            setTheme(
+              keys === "all" ? "system" : (keys.values().next().value as string)
+            )
+          }
+        >
           <ContextMenuLabel>Theme</ContextMenuLabel>
-          <ContextMenuRadioGroup value={theme} onValueChange={setTheme}>
-            <ContextMenuRadioItem value="light">Light</ContextMenuRadioItem>
-            <ContextMenuRadioItem value="dark">Dark</ContextMenuRadioItem>
-            <ContextMenuRadioItem value="system">System</ContextMenuRadioItem>
-          </ContextMenuRadioGroup>
+          <ContextMenuItem id="light">Light</ContextMenuItem>
+          <ContextMenuItem id="dark">Dark</ContextMenuItem>
+          <ContextMenuItem id="system">System</ContextMenuItem>
         </ContextMenuGroup>
-      </ContextMenuContent>
-    </ContextMenu>
+      </ContextMenu>
+    </ContextMenuTrigger>
   )
 }

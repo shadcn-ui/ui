@@ -3,13 +3,9 @@
 import * as React from "react"
 import {
   ContextMenu,
-  ContextMenuCheckboxItem,
-  ContextMenuContent,
   ContextMenuGroup,
   ContextMenuItem,
   ContextMenuLabel,
-  ContextMenuRadioGroup,
-  ContextMenuRadioItem,
   ContextMenuSeparator,
   ContextMenuShortcut,
   ContextMenuSub,
@@ -18,6 +14,7 @@ import {
   ContextMenuTrigger,
 } from "@/examples/react-aria/ui-rtl/context-menu"
 import { ArrowLeftIcon, ArrowRightIcon, RotateCwIcon } from "lucide-react"
+import { Pressable, type Selection } from "react-aria-components"
 
 import {
   useTranslation,
@@ -95,17 +92,27 @@ const translations: Translations = {
 
 export function ContextMenuRtl() {
   const { dir, t, language } = useTranslation(translations, "ar")
+  const [selectedKeys, setSelectedKeys] = React.useState<Selection>(
+    new Set(["bookmarks"])
+  )
   const [people, setPeople] = React.useState("pedro")
 
   return (
-    <ContextMenu>
-      <ContextMenuTrigger className="flex aspect-video w-full max-w-xs items-center justify-center rounded-xl border border-dashed text-sm">
-        <span className="hidden pointer-fine:inline-block">{t.rightClick}</span>
-        <span className="hidden pointer-coarse:inline-block">
-          {t.longPress}
-        </span>
-      </ContextMenuTrigger>
-      <ContextMenuContent
+    <ContextMenuTrigger>
+      <Pressable>
+        <div
+          role="button"
+          className="flex aspect-video w-full max-w-xs items-center justify-center rounded-xl border border-dashed text-sm"
+        >
+          <span className="hidden pointer-fine:inline-block">
+            {t.rightClick}
+          </span>
+          <span className="hidden pointer-coarse:inline-block">
+            {t.longPress}
+          </span>
+        </div>
+      </Pressable>
+      <ContextMenu
         className="w-48"
         dir={dir}
         data-lang={dir === "rtl" ? language : undefined}
@@ -124,7 +131,7 @@ export function ContextMenuRtl() {
                   {t.back}
                   <ContextMenuShortcut>⌘[</ContextMenuShortcut>
                 </ContextMenuItem>
-                <ContextMenuItem disabled>
+                <ContextMenuItem isDisabled>
                   <ArrowRightIcon />
                   {t.forward}
                   <ContextMenuShortcut>⌘]</ContextMenuShortcut>
@@ -163,21 +170,28 @@ export function ContextMenuRtl() {
           </ContextMenuSub>
         </ContextMenuGroup>
         <ContextMenuSeparator />
-        <ContextMenuGroup>
-          <ContextMenuCheckboxItem checked>
-            {t.showBookmarks}
-          </ContextMenuCheckboxItem>
-          <ContextMenuCheckboxItem>{t.showFullUrls}</ContextMenuCheckboxItem>
+        <ContextMenuGroup
+          selectionMode="multiple"
+          selectedKeys={selectedKeys}
+          onSelectionChange={setSelectedKeys}
+        >
+          <ContextMenuItem id="bookmarks">{t.showBookmarks}</ContextMenuItem>
+          <ContextMenuItem id="urls">{t.showFullUrls}</ContextMenuItem>
         </ContextMenuGroup>
         <ContextMenuSeparator />
-        <ContextMenuGroup>
-          <ContextMenuRadioGroup value={people} onValueChange={setPeople}>
-            <ContextMenuLabel>{t.people}</ContextMenuLabel>
-            <ContextMenuRadioItem value="pedro">{t.pedro}</ContextMenuRadioItem>
-            <ContextMenuRadioItem value="colm">{t.colm}</ContextMenuRadioItem>
-          </ContextMenuRadioGroup>
+        <ContextMenuGroup
+          selectionMode="single"
+          selectedKeys={[people]}
+          onSelectionChange={(keys) =>
+            setPeople(
+              keys === "all" ? "pedro" : (keys.values().next().value as string)
+            )
+          }
+        >
+          <ContextMenuItem id="pedro">{t.pedro}</ContextMenuItem>
+          <ContextMenuItem id="colm">{t.colm}</ContextMenuItem>
         </ContextMenuGroup>
-      </ContextMenuContent>
-    </ContextMenu>
+      </ContextMenu>
+    </ContextMenuTrigger>
   )
 }

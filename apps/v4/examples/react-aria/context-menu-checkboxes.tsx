@@ -1,33 +1,49 @@
+"use client"
+
+import { useState } from "react"
 import {
   ContextMenu,
-  ContextMenuCheckboxItem,
-  ContextMenuContent,
   ContextMenuGroup,
+  ContextMenuItem,
   ContextMenuTrigger,
 } from "@/examples/react-aria/ui/context-menu"
+import { Pressable, type Selection } from "react-aria-components"
 
 export function ContextMenuCheckboxes() {
+  const [selectedKeys, setSelectedKeys] = useState<Selection>(
+    new Set(["bookmarks-bar", "developer-tools"])
+  )
+
   return (
-    <ContextMenu>
-      <ContextMenuTrigger className="flex aspect-video w-full max-w-xs items-center justify-center rounded-xl border border-dashed text-sm">
-        <span className="hidden pointer-fine:inline-block">
-          Right click here
-        </span>
-        <span className="hidden pointer-coarse:inline-block">
-          Long press here
-        </span>
-      </ContextMenuTrigger>
-      <ContextMenuContent>
-        <ContextMenuGroup>
-          <ContextMenuCheckboxItem defaultChecked>
+    <ContextMenuTrigger>
+      <Pressable>
+        <div
+          role="button"
+          className="flex aspect-video w-full max-w-xs items-center justify-center rounded-xl border border-dashed text-sm"
+        >
+          <span className="hidden pointer-fine:inline-block">
+            Right click here
+          </span>
+          <span className="hidden pointer-coarse:inline-block">
+            Long press here
+          </span>
+        </div>
+      </Pressable>
+      <ContextMenu>
+        <ContextMenuGroup
+          selectionMode="multiple"
+          selectedKeys={selectedKeys}
+          onSelectionChange={setSelectedKeys}
+        >
+          <ContextMenuItem id="bookmarks-bar">
             Show Bookmarks Bar
-          </ContextMenuCheckboxItem>
-          <ContextMenuCheckboxItem>Show Full URLs</ContextMenuCheckboxItem>
-          <ContextMenuCheckboxItem defaultChecked>
+          </ContextMenuItem>
+          <ContextMenuItem>Show Full URLs</ContextMenuItem>
+          <ContextMenuItem id="developer-tools">
             Show Developer Tools
-          </ContextMenuCheckboxItem>
+          </ContextMenuItem>
         </ContextMenuGroup>
-      </ContextMenuContent>
-    </ContextMenu>
+      </ContextMenu>
+    </ContextMenuTrigger>
   )
 }

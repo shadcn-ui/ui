@@ -1,6 +1,7 @@
+"use client";
+
 import {
   ContextMenu,
-  ContextMenuContent,
   ContextMenuGroup,
   ContextMenuItem,
   ContextMenuLabel,
@@ -8,19 +9,25 @@ import {
   ContextMenuShortcut,
   ContextMenuTrigger,
 } from "@/examples/react-aria/ui/context-menu"
+import { Pressable } from "react-aria-components"
 
 export function ContextMenuGroups() {
   return (
-    <ContextMenu>
-      <ContextMenuTrigger className="flex aspect-video w-full max-w-xs items-center justify-center rounded-xl border border-dashed text-sm">
-        <span className="hidden pointer-fine:inline-block">
-          Right click here
-        </span>
-        <span className="hidden pointer-coarse:inline-block">
-          Long press here
-        </span>
-      </ContextMenuTrigger>
-      <ContextMenuContent>
+    <ContextMenuTrigger>
+      <Pressable>
+        <div
+          role="button"
+          className="flex aspect-video w-full max-w-xs items-center justify-center rounded-xl border border-dashed text-sm"
+        >
+          <span className="hidden pointer-fine:inline-block">
+            Right click here
+          </span>
+          <span className="hidden pointer-coarse:inline-block">
+            Long press here
+          </span>
+        </div>
+      </Pressable>
+      <ContextMenu>
         <ContextMenuGroup>
           <ContextMenuLabel>File</ContextMenuLabel>
           <ContextMenuItem>
@@ -70,7 +77,7 @@ export function ContextMenuGroups() {
             <ContextMenuShortcut>⌫</ContextMenuShortcut>
           </ContextMenuItem>
         </ContextMenuGroup>
-      </ContextMenuContent>
-    </ContextMenu>
+      </ContextMenu>
+    </ContextMenuTrigger>
   )
 }
