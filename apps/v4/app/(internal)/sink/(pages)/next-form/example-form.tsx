@@ -48,6 +48,9 @@ import {
 import { Spinner } from "@/registry/new-york-v4/ui/spinner"
 import { Switch } from "@/registry/new-york-v4/ui/switch"
 import { Textarea } from "@/registry/new-york-v4/ui/textarea"
+import { Calendar } from "@/registry/new-york-v4/ui/calendar"
+import { Popover, PopoverTrigger, PopoverContent } from "@/registry/new-york-v4/ui/popover"
+import { format } from "date-fns"
 import {
   addons,
   type exampleFormSchema,
@@ -87,6 +90,14 @@ export function ExampleForm() {
     errors: null,
     success: false,
   })
+
+  const [date, setDate] = React.useState<Date>(
+    new Date(formState.values.startDate)
+  )
+
+  React.useEffect(() => {
+    setDate(new Date(formState.values.startDate))
+  }, [formState.values.startDate])
 
   React.useEffect(() => {
     if (formState.success) {
@@ -273,16 +284,21 @@ export function ExampleForm() {
               <FieldSeparator />
               <Field data-invalid={!!formState.errors?.startDate?.length}>
                 <FieldLabel htmlFor="startDate">Start Date</FieldLabel>
-                <Input
-                  id="startDate"
-                  name="startDate"
-                  type="date"
-                  defaultValue={
-                    formState.values.startDate.toISOString().split("T")[0]
-                  }
-                  disabled={pending}
-                  aria-invalid={!!formState.errors?.startDate?.length}
-                />
+                <input type="hidden" name="startDate" value={date.toISOString()} />
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <Button variant="outline" className="w-full justify-start" disabled={pending}>
+                      {format(date, "PPP")}
+                    </Button>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-auto p-0" align="start">
+                    <Calendar
+                      mode="single"
+                      selected={date}
+                      onSelect={(d) => d && setDate(d)}
+                    />
+                  </PopoverContent>
+                </Popover>
                 <FieldDescription>
                   Choose when your subscription should start
                 </FieldDescription>

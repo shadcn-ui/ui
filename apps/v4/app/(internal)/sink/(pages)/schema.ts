@@ -56,7 +56,7 @@ export const exampleFormSchema = z.object({
     .min(1, "Please select at least one add-on")
     .max(3, "You can select up to 3 add-ons"),
 
-  teamSize: z.number().min(1).max(10),
+  teamSize: z.number().min(1).max(50),
   emailNotifications: z.boolean({
     required_error: "Please choose email notification preference",
   }),
