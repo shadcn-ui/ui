@@ -14,23 +14,27 @@ export type PlacementSide =
   | "inline-end"
 export type PlacementAlign = "start" | "center" | "end"
 
+const horizontalPlacement = {
+  left: "left",
+  right: "right",
+  "inline-start": "start",
+  "inline-end": "end"
+} as const;
+
+const verticalAlignment = {
+  start: "top",
+  center: "center",
+  end: "bottom"
+} as const;
+
 export function getPlacement(side: PlacementSide, align: PlacementAlign) {
-  if (side === "inline-start") {
-    return "start"
+  switch (side) {
+    case "top":
+    case "bottom":
+      return align === "center" ? side : `${side} ${align}` as const;
+    default:
+      return align === "center" 
+        ? horizontalPlacement[side]
+        : `${horizontalPlacement[side]} ${verticalAlignment[align]}` as const
   }
-
-  if (side === "inline-end") {
-    return "end"
-  }
-
-  if (align === "center") {
-    return side
-  }
-
-  if (side === "left" || side === "right") {
-    const crossPlacement = align === "start" ? "top" : "bottom"
-    return `${side} ${crossPlacement}` as const
-  }
-
-  return `${side} ${align}` as const
 }

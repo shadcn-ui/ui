@@ -19,6 +19,7 @@ import {
 } from "@/components/language-selector"
 import { DirectionProvider as BaseDirectionProvider } from "@/registry/bases/base/ui/direction"
 import { DirectionProvider as RadixDirectionProvider } from "@/registry/bases/radix/ui/direction"
+import { DirectionProvider as ReactAriaDirectionProvider } from "@/registry/bases/react-aria/ui/direction"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import { Separator } from "@/registry/new-york-v4/ui/separator"
 
@@ -46,7 +47,7 @@ export function ComponentPreviewTabs({
   styleName?: string
 }) {
   const [isMobileCodeVisible, setIsMobileCodeVisible] = React.useState(false)
-  const base = styleName?.split("-")[0]
+  const base = styleName?.match(/^(base|radix|react-aria)-/)?.[1] || 'radix'
 
   return (
     <div
@@ -260,6 +261,14 @@ function DirectionProviderWrapper({
   if (base === "base") {
     return (
       <BaseDirectionProvider direction={dir}>{children}</BaseDirectionProvider>
+    )
+  }
+
+  if (base === "react-aria") {
+    return (
+      <ReactAriaDirectionProvider direction={dir}>
+        {children}
+      </ReactAriaDirectionProvider>
     )
   }
 

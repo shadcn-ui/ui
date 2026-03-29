@@ -192,10 +192,13 @@ export function SidebarRtl() {
 }
 
 function AppSidebarWithProvider() {
-  const { language, setLanguage, dir } = useTranslation(translations, "ar")
+  const { language, locale, setLanguage, dir } = useTranslation(
+    translations,
+    "ar"
+  )
 
   return (
-    <DirectionProvider direction={dir}>
+    <DirectionProvider locale={locale}>
       <div className="relative" dir={dir}>
         <LanguageSelector
           value={language}
