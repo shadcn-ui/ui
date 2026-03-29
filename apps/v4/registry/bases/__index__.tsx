@@ -10522,58 +10522,6 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
-    menubar: {
-      name: "menubar",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: ["dropdown-menu"],
-      files: [
-        {
-          path: "registry/bases/react-aria/ui/menubar.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/bases/react-aria/ui/menubar.tsx")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: undefined,
-      meta: undefined,
-    },
-    "navigation-menu": {
-      name: "navigation-menu",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/bases/react-aria/ui/navigation-menu.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      component: React.lazy(async () => {
-        const mod = await import(
-          "@/registry/bases/react-aria/ui/navigation-menu.tsx"
-        )
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: undefined,
-      meta: undefined,
-    },
     pagination: {
       name: "pagination",
       title: "undefined",
@@ -12123,33 +12071,6 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
-    "menubar-example": {
-      name: "menubar-example",
-      title: "Menubar",
-      description: "",
-      type: "registry:example",
-      registryDependencies: ["button", "dialog", "menubar", "example"],
-      files: [
-        {
-          path: "registry/bases/react-aria/examples/menubar-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      component: React.lazy(async () => {
-        const mod = await import(
-          "@/registry/bases/react-aria/examples/menubar-example.tsx"
-        )
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: undefined,
-      meta: undefined,
-    },
     "native-select-example": {
       name: "native-select-example",
       title: "Native Select",
@@ -12166,33 +12087,6 @@ export const Index: Record<string, Record<string, any>> = {
       component: React.lazy(async () => {
         const mod = await import(
           "@/registry/bases/react-aria/examples/native-select-example.tsx"
-        )
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: undefined,
-      meta: undefined,
-    },
-    "navigation-menu-example": {
-      name: "navigation-menu-example",
-      title: "Navigation Menu",
-      description: "",
-      type: "registry:example",
-      registryDependencies: ["button", "dialog", "navigation-menu", "example"],
-      files: [
-        {
-          path: "registry/bases/react-aria/examples/navigation-menu-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      component: React.lazy(async () => {
-        const mod = await import(
-          "@/registry/bases/react-aria/examples/navigation-menu-example.tsx"
         )
         const exportName =
           Object.keys(mod).find(
