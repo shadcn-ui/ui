@@ -1,18 +1,18 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/base/ui-rtl/button"
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/examples/base/ui-rtl/collapsible"
 import { ChevronsUpDown } from "lucide-react"
 
 import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
+import { Button } from "@/styles/base-nova/ui-rtl/button"
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/styles/base-nova/ui-rtl/collapsible"
 
 const translations: Translations = {
   en: {

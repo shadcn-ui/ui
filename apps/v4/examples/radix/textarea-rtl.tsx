@@ -1,17 +1,17 @@
 "use client"
 
 import * as React from "react"
-import {
-  Field,
-  FieldDescription,
-  FieldLabel,
-} from "@/examples/radix/ui-rtl/field"
-import { Textarea } from "@/examples/radix/ui-rtl/textarea"
 
 import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
+import {
+  Field,
+  FieldDescription,
+  FieldLabel,
+} from "@/styles/radix-nova/ui-rtl/field"
+import { Textarea } from "@/styles/radix-nova/ui-rtl/textarea"
 
 const translations: Translations = {
   en: {
