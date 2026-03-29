@@ -6,7 +6,7 @@ function Component({ href, ...props }: React.ComponentProps<typeof Link>) {
   return <Link href={href} className="group flex flex-col gap-2" {...props} />
 }
 
-function ComponentContent({ ...props }: React.ComponentProps<typeof Atom>) {
+function ComponentContent(props: React.ComponentProps<typeof Atom>) {
   return (
     <Atom
       shade="50"
@@ -16,7 +16,7 @@ function ComponentContent({ ...props }: React.ComponentProps<typeof Atom>) {
   )
 }
 
-function ComponentName({ ...props }: React.ComponentProps<"div">) {
+function ComponentName(props: React.ComponentProps<"div">) {
   return (
     <div
       className="text-center font-medium text-foreground underline-offset-2 group-hover:underline"

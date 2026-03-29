@@ -6,7 +6,7 @@ export function AlertLoFi() {
   return (
     <Atom
       shade="100"
-      className="rounder-lg flex items-start justify-between gap-2 border p-2"
+      className="rounded-lg flex items-start justify-between gap-2 border p-2"
     >
       <CircleAlertIcon className="size-3" />
       <div className="flex flex-1 flex-col gap-1">

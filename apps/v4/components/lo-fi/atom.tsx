@@ -33,7 +33,7 @@ function Atom({
 }: React.ComponentProps<"div"> & VariantProps<typeof atomVariants>) {
   return (
     <div
-      data-slot="button"
+      data-slot="atom"
       className={cn(atomVariants({ shade, className }))}
       {...props}
     />
