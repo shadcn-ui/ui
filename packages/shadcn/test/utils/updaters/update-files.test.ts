@@ -1,6 +1,9 @@
 import { existsSync, promises as fs } from "fs"
 import path from "path"
-import { afterAll, afterEach, describe, expect, test, vi } from "vitest"
+import { afterAll, afterEach, beforeEach, describe, expect, test, vi } from "vitest"
+import neutral from "../../fixtures/colors/neutral.json"
+import slate from "../../fixtures/colors/slate.json"
+import * as registryApi from "../../../src/registry/api"
 
 import { getConfig } from "../../../src/utils/get-config"
 import {
@@ -38,6 +41,14 @@ vi.mock("fs", async () => {
 })
 
 vi.mock("prompts")
+
+beforeEach(() => {
+  vi.spyOn(registryApi, "getRegistryBaseColor").mockImplementation(
+    async (baseColor: string) => {
+      return baseColor === "slate" ? slate : neutral
+    }
+  )
+})
 
 afterEach(async () => {
   vi.clearAllMocks()

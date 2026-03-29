@@ -146,7 +146,7 @@ When adding or modifying components, please ensure that:
 Before you create a Pull Request, please check whether your commits comply with
 the commit conventions used in this repository.
 
-When you create a commit we kindly ask you to follow the convention
+When you create a commit, we kindly ask you to follow the convention
 `category(scope or module): message` in your commit message while using one of
 the following categories:
 
