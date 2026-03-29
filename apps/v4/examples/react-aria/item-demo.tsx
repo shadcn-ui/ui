@@ -37,5 +37,5 @@ export function ItemDemo() {
         </ItemActions>
       </Item>
     </div>
-  );
+  )
 }

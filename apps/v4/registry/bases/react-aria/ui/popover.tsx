@@ -8,7 +8,13 @@ import {
   type DialogTriggerProps,
   type PopoverProps as PopoverPrimitiveProps,
 } from "react-aria-components"
-import { cn, getPlacement, type PlacementSide, type PlacementAlign } from "@/registry/bases/react-aria/lib/utils"
+
+import {
+  cn,
+  getPlacement,
+  type PlacementAlign,
+  type PlacementSide,
+} from "@/registry/bases/react-aria/lib/utils"
 
 function PopoverTrigger({ children, ...props }: DialogTriggerProps) {
   return <DialogTrigger {...props}>{children}</DialogTrigger>

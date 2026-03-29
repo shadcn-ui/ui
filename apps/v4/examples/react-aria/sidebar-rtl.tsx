@@ -354,9 +354,7 @@ function SidebarContentInner({
                       <SidebarMenuSub>
                         {item.items?.map((subItem) => (
                           <SidebarMenuSubItem key={subItem.title}>
-                            <SidebarMenuSubButton
-                              href={subItem.url}
-                            >
+                            <SidebarMenuSubButton href={subItem.url}>
                               <span>{subItem.title}</span>
                             </SidebarMenuSubButton>
                           </SidebarMenuSubItem>
@@ -508,5 +506,5 @@ function SidebarContentInner({
         </header>
       </SidebarInset>
     </>
-  );
+  )
 }

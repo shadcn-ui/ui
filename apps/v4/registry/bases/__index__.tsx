@@ -10219,7 +10219,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["dropdown-menu"],
       files: [
         {
           path: "registry/bases/react-aria/ui/context-menu.tsx",

@@ -1,6 +1,6 @@
 import * as React from "react"
 import { cn } from "@/examples/react-aria/lib/utils"
-import { Button, LinkButton } from "@/examples/react-aria/ui-rtl/button"
+import { LinkButton } from "@/examples/react-aria/ui-rtl/button"
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
@@ -38,8 +38,7 @@ function PaginationItem({ ...props }: React.ComponentProps<"li">) {
 
 type PaginationLinkProps = {
   isActive?: boolean
-} & Pick<React.ComponentProps<typeof Button>, "size"> &
-  Omit<React.ComponentProps<typeof LinkButton>, "size" | "variant">
+} & Omit<React.ComponentProps<typeof LinkButton>, "variant">
 
 function PaginationLink({
   className,

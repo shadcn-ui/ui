@@ -1,7 +1,12 @@
 "use client"
 
 import * as React from "react"
-import { cn } from "@/examples/react-aria/lib/utils"
+import {
+  cn,
+  getPlacement,
+  type PlacementAlign,
+  type PlacementSide,
+} from "@/examples/react-aria/lib/utils"
 import { Button } from "@/examples/react-aria/ui-rtl/button"
 import {
   InputGroup,
@@ -28,7 +33,6 @@ import {
   TagList as TagListPrimitive,
   Tag as TagPrimitive,
   type ButtonProps,
-  type ComboBoxProps,
   type HeaderProps,
   type InputProps,
   type ListBoxItemProps,
@@ -113,36 +117,6 @@ function ComboboxInput({
   )
 }
 
-type SelectSide =
-  | "top"
-  | "right"
-  | "bottom"
-  | "left"
-  | "inline-start"
-  | "inline-end"
-type SelectAlign = "start" | "center" | "end"
-
-function getPlacement(side: SelectSide, align: SelectAlign) {
-  if (side === "inline-start") {
-    return "start"
-  }
-
-  if (side === "inline-end") {
-    return "end"
-  }
-
-  if (align === "center") {
-    return side
-  }
-
-  if (side === "left" || side === "right") {
-    const crossPlacement = align === "start" ? "top" : "bottom"
-    return `${side} ${crossPlacement}` as const
-  }
-
-  return `${side} ${align}` as const
-}
-
 function ComboboxContent({
   className,
   side = "bottom",
@@ -157,9 +131,9 @@ function ComboboxContent({
 > & {
   className?: string
   children?: React.ReactNode
-  align?: SelectAlign
+  align?: PlacementAlign
   alignOffset?: number
-  side?: SelectSide
+  side?: PlacementSide
   sideOffset?: number
   anchor?: React.RefObject<HTMLDivElement | null>
 }) {

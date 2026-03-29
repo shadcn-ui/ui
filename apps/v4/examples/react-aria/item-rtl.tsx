@@ -75,5 +75,5 @@ export function ItemRtl() {
         </ItemActions>
       </Item>
     </div>
-  );
+  )
 }

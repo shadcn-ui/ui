@@ -477,18 +477,6 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "menubar-example",
-    title: "Menubar",
-    type: "registry:example",
-    registryDependencies: ["button", "dialog", "menubar", "example"],
-    files: [
-      {
-        path: "examples/menubar-example.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
     name: "native-select-example",
     title: "Native Select",
     type: "registry:example",
@@ -496,18 +484,6 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "examples/native-select-example.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
-    name: "navigation-menu-example",
-    title: "Navigation Menu",
-    type: "registry:example",
-    registryDependencies: ["button", "dialog", "navigation-menu", "example"],
-    files: [
-      {
-        path: "examples/navigation-menu-example.tsx",
         type: "registry:example",
       },
     ],

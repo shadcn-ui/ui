@@ -185,6 +185,7 @@ export const ui: Registry["items"] = [
   {
     name: "context-menu",
     type: "registry:ui",
+    registryDependencies: ["dropdown-menu"],
     files: [
       {
         path: "ui/context-menu.tsx",
@@ -308,27 +309,6 @@ export const ui: Registry["items"] = [
     files: [
       {
         path: "ui/label.tsx",
-        type: "registry:ui",
-      },
-    ],
-  },
-  {
-    name: "menubar",
-    type: "registry:ui",
-    registryDependencies: ["dropdown-menu"],
-    files: [
-      {
-        path: "ui/menubar.tsx",
-        type: "registry:ui",
-      },
-    ],
-  },
-  {
-    name: "navigation-menu",
-    type: "registry:ui",
-    files: [
-      {
-        path: "ui/navigation-menu.tsx",
         type: "registry:ui",
       },
     ],

@@ -103,5 +103,5 @@ async function NavProjects() {
         </SidebarMenuItem>
       ))}
     </SidebarMenu>
-  );
+  )
 }

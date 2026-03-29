@@ -1,7 +1,12 @@
 "use client"
 
 import * as React from "react"
-import { cn } from "@/examples/react-aria/lib/utils"
+import {
+  cn,
+  getPlacement,
+  type PlacementAlign,
+  type PlacementSide,
+} from "@/examples/react-aria/lib/utils"
 import { CheckIcon, ChevronDownIcon } from "lucide-react"
 import {
   Button as ButtonPrimitive,
@@ -18,36 +23,6 @@ import {
   type SelectProps,
   type SelectValueProps,
 } from "react-aria-components"
-
-type SelectSide =
-  | "top"
-  | "right"
-  | "bottom"
-  | "left"
-  | "inline-start"
-  | "inline-end"
-type SelectAlign = "start" | "center" | "end"
-
-function getPlacement(side: SelectSide, align: SelectAlign) {
-  if (side === "inline-start") {
-    return "start"
-  }
-
-  if (side === "inline-end") {
-    return "end"
-  }
-
-  if (align === "center") {
-    return side
-  }
-
-  if (side === "left" || side === "right") {
-    const crossPlacement = align === "start" ? "top" : "bottom"
-    return `${side} ${crossPlacement}` as const
-  }
-
-  return `${side} ${align}` as const
-}
 
 function Select<T extends object, M extends "single" | "multiple" = "single">({
   className,
@@ -136,9 +111,9 @@ function SelectContent({
 > & {
   className?: string
   children?: React.ReactNode
-  align?: SelectAlign
+  align?: PlacementAlign
   alignOffset?: number
-  side?: SelectSide
+  side?: PlacementSide
   sideOffset?: number
 }) {
   return (

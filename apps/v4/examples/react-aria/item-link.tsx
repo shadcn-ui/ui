@@ -21,7 +21,12 @@ export function ItemLink() {
           <ChevronRightIcon className="size-4" />
         </ItemActions>
       </Item>
-      <Item href="#" target="_blank" rel="noopener noreferrer" variant="outline">
+      <Item
+        href="#"
+        target="_blank"
+        rel="noopener noreferrer"
+        variant="outline"
+      >
         <ItemContent>
           <ItemTitle>External resource</ItemTitle>
           <ItemDescription>
@@ -33,5 +38,5 @@ export function ItemLink() {
         </ItemActions>
       </Item>
     </div>
-  );
+  )
 }

@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { cn, getPlacement, type PlacementSide, type PlacementAlign } from "@/registry/bases/react-aria/lib/utils"
 import { cva } from "class-variance-authority"
 import { CheckIcon, ChevronRightIcon } from "lucide-react"
 import {
@@ -17,6 +16,13 @@ import {
   type MenuItemProps as MenuItemPrimitiveProps,
   type MenuSectionProps as MenuSectionPrimitiveProps,
 } from "react-aria-components"
+
+import {
+  cn,
+  getPlacement,
+  type PlacementAlign,
+  type PlacementSide,
+} from "@/registry/bases/react-aria/lib/utils"
 
 function DropdownMenuTrigger({
   ...props

@@ -29,7 +29,13 @@ import {
   type TagListProps,
   type TagProps,
 } from "react-aria-components"
-import { cn, getPlacement, type PlacementSide, type PlacementAlign } from "@/registry/bases/react-aria/lib/utils"
+
+import {
+  cn,
+  getPlacement,
+  type PlacementAlign,
+  type PlacementSide,
+} from "@/registry/bases/react-aria/lib/utils"
 import { Button } from "@/registry/bases/react-aria/ui/button"
 import {
   InputGroup,

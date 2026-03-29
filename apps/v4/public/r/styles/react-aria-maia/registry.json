@@ -185,6 +185,7 @@
     },
     {
       "name": "context-menu",
+      "registryDependencies": ["dropdown-menu"],
       "files": [
         {
           "path": "registry/react-aria-maia/ui/context-menu.tsx",
@@ -308,27 +309,6 @@
       "files": [
         {
           "path": "registry/react-aria-maia/ui/label.tsx",
-          "type": "registry:ui"
-        }
-      ],
-      "type": "registry:ui"
-    },
-    {
-      "name": "menubar",
-      "registryDependencies": ["dropdown-menu"],
-      "files": [
-        {
-          "path": "registry/react-aria-maia/ui/menubar.tsx",
-          "type": "registry:ui"
-        }
-      ],
-      "type": "registry:ui"
-    },
-    {
-      "name": "navigation-menu",
-      "files": [
-        {
-          "path": "registry/react-aria-maia/ui/navigation-menu.tsx",
           "type": "registry:ui"
         }
       ],
@@ -1076,41 +1056,12 @@
       "type": "registry:example"
     },
     {
-      "name": "menubar-example",
-      "title": "Menubar",
-      "registryDependencies": ["button", "dialog", "menubar", "example"],
-      "files": [
-        {
-          "path": "registry/react-aria-maia/examples/menubar-example.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "type": "registry:example"
-    },
-    {
       "name": "native-select-example",
       "title": "Native Select",
       "registryDependencies": ["field", "native-select", "example"],
       "files": [
         {
           "path": "registry/react-aria-maia/examples/native-select-example.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "type": "registry:example"
-    },
-    {
-      "name": "navigation-menu-example",
-      "title": "Navigation Menu",
-      "registryDependencies": [
-        "button",
-        "dialog",
-        "navigation-menu",
-        "example"
-      ],
-      "files": [
-        {
-          "path": "registry/react-aria-maia/examples/navigation-menu-example.tsx",
           "type": "registry:example"
         }
       ],

@@ -17,7 +17,12 @@ import {
   type SelectValueProps,
 } from "react-aria-components"
 
-import { cn, getPlacement, type PlacementSide, type PlacementAlign } from "@/registry/bases/react-aria/lib/utils"
+import {
+  cn,
+  getPlacement,
+  type PlacementAlign,
+  type PlacementSide,
+} from "@/registry/bases/react-aria/lib/utils"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 function Select<T extends object, M extends "single" | "multiple" = "single">({

@@ -8,7 +8,7 @@
   "files": [
     {
       "path": "registry/react-aria-mira/lib/utils.ts",
-      "content": "import { clsx, type ClassValue } from \"clsx\"\nimport { twMerge } from \"tailwind-merge\"\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs))\n}\n",
+      "content": "import { clsx, type ClassValue } from \"clsx\"\nimport { twMerge } from \"tailwind-merge\"\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs))\n}\n\nexport type PlacementSide =\n  | \"top\"\n  | \"right\"\n  | \"bottom\"\n  | \"left\"\n  | \"inline-start\"\n  | \"inline-end\"\nexport type PlacementAlign = \"start\" | \"center\" | \"end\"\n\nexport function getPlacement(side: PlacementSide, align: PlacementAlign) {\n  if (side === \"inline-start\") {\n    return \"start\"\n  }\n\n  if (side === \"inline-end\") {\n    return \"end\"\n  }\n\n  if (align === \"center\") {\n    return side\n  }\n\n  if (side === \"left\" || side === \"right\") {\n    const crossPlacement = align === \"start\" ? \"top\" : \"bottom\"\n    return `${side} ${crossPlacement}` as const\n  }\n\n  return `${side} ${align}` as const\n}\n",
       "type": "registry:lib"
     }
   ],

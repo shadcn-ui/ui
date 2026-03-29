@@ -14868,84 +14868,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "menubar-checkbox": {
-      name: "menubar-checkbox",
-      filePath: "examples/react-aria/menubar-checkbox.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./react-aria/menubar-checkbox")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "menubar-checkbox"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "menubar-demo": {
-      name: "menubar-demo",
-      filePath: "examples/react-aria/menubar-demo.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./react-aria/menubar-demo")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "menubar-demo"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "menubar-icons": {
-      name: "menubar-icons",
-      filePath: "examples/react-aria/menubar-icons.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./react-aria/menubar-icons")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "menubar-icons"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "menubar-radio": {
-      name: "menubar-radio",
-      filePath: "examples/react-aria/menubar-radio.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./react-aria/menubar-radio")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "menubar-radio"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "menubar-rtl": {
-      name: "menubar-rtl",
-      filePath: "examples/react-aria/menubar-rtl.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./react-aria/menubar-rtl")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "menubar-rtl"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "menubar-submenu": {
-      name: "menubar-submenu",
-      filePath: "examples/react-aria/menubar-submenu.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./react-aria/menubar-submenu")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "menubar-submenu"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "muted-item-group": {
       name: "muted-item-group",
       filePath: "examples/react-aria/muted-item-group.tsx",
@@ -15021,32 +14943,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "native-select-rtl"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "navigation-menu-demo": {
-      name: "navigation-menu-demo",
-      filePath: "examples/react-aria/navigation-menu-demo.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./react-aria/navigation-menu-demo")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "navigation-menu-demo"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "navigation-menu-rtl": {
-      name: "navigation-menu-rtl",
-      filePath: "examples/react-aria/navigation-menu-rtl.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./react-aria/navigation-menu-rtl")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "navigation-menu-rtl"
         return { default: mod.default || mod[exportName] }
       }),
     },

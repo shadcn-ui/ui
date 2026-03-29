@@ -158,9 +158,7 @@ export default function AppSidebar() {
                     <SidebarMenuSub>
                       {item.items.map((subItem, subIndex) => (
                         <SidebarMenuSubItem key={subIndex}>
-                          <SidebarMenuSubButton
-                            href={subItem.url}
-                          >
+                          <SidebarMenuSubButton href={subItem.url}>
                             <span>{subItem.title}</span>
                           </SidebarMenuSubButton>
                         </SidebarMenuSubItem>
@@ -174,5 +172,5 @@ export default function AppSidebar() {
         </SidebarContent>
       </Sidebar>
     </SidebarProvider>
-  );
+  )
 }

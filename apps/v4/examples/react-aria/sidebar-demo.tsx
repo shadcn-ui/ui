@@ -316,7 +316,7 @@ function NavMain({
         ))}
       </SidebarMenu>
     </SidebarGroup>
-  );
+  )
 }
 
 function NavProjects({
@@ -375,7 +375,7 @@ function NavProjects({
         </SidebarMenuItem>
       </SidebarMenu>
     </SidebarGroup>
-  );
+  )
 }
 
 function NavUser({

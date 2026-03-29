@@ -11,13 +11,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/examples/react-aria/ui-rtl/select"
+import { type Key } from "react-aria-components"
 
 import {
   useTranslation,
   type Language,
   type Translations,
 } from "@/components/language-selector"
-import { type Key } from "react-aria-components"
 
 const translations: Translations = {
   en: {

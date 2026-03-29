@@ -1,42 +1,17 @@
 "use client"
 
 import * as React from "react"
-import { cn } from "@/examples/react-aria/lib/utils"
+import {
+  cn,
+  getPlacement,
+  type PlacementAlign,
+  type PlacementSide,
+} from "@/examples/react-aria/lib/utils"
 import {
   OverlayArrow,
   Tooltip as TooltipPrimitive,
   TooltipTrigger as TooltipTriggerPrimitive,
 } from "react-aria-components"
-
-type TooltipSide =
-  | "top"
-  | "right"
-  | "bottom"
-  | "left"
-  | "inline-start"
-  | "inline-end"
-type TooltipAlign = "start" | "center" | "end"
-
-function getPlacement(side: TooltipSide, align: TooltipAlign) {
-  if (side === "inline-start") {
-    return "start"
-  }
-
-  if (side === "inline-end") {
-    return "end"
-  }
-
-  if (align === "center") {
-    return side
-  }
-
-  if (side === "left" || side === "right") {
-    const crossPlacement = align === "start" ? "top" : "bottom"
-    return `${side} ${crossPlacement}` as const
-  }
-
-  return `${side} ${align}` as const
-}
 
 function TooltipTrigger({
   ...props
@@ -58,9 +33,9 @@ function Tooltip({
 > & {
   className?: string
   children?: React.ReactNode
-  side?: TooltipSide
+  side?: PlacementSide
   sideOffset?: number
-  align?: TooltipAlign
+  align?: PlacementAlign
   alignOffset?: number
 }) {
   return (

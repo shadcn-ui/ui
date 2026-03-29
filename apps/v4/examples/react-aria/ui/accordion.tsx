@@ -9,7 +9,6 @@ import {
   Disclosure as AccordionItemPrimitive,
   DisclosureGroup as AccordionPrimitive,
   Button as AccordionTriggerPrimitive,
-  DisclosureStateContext,
   type ButtonProps,
   type DisclosureGroupProps,
   type DisclosurePanelProps,

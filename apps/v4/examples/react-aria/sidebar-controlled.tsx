@@ -89,5 +89,5 @@ export default function AppSidebar() {
         </header>
       </SidebarInset>
     </SidebarProvider>
-  );
+  )
 }

@@ -1,7 +1,12 @@
 "use client"
 
 import * as React from "react"
-import { cn } from "@/examples/react-aria/lib/utils"
+import {
+  cn,
+  getPlacement,
+  type PlacementAlign,
+  type PlacementSide,
+} from "@/examples/react-aria/lib/utils"
 import { cva } from "class-variance-authority"
 import { CheckIcon, ChevronRightIcon } from "lucide-react"
 import {
@@ -17,36 +22,6 @@ import {
   type MenuItemProps as MenuItemPrimitiveProps,
   type MenuSectionProps as MenuSectionPrimitiveProps,
 } from "react-aria-components"
-
-type DropdownMenuSide =
-  | "top"
-  | "right"
-  | "bottom"
-  | "left"
-  | "inline-start"
-  | "inline-end"
-type DropdownMenuAlign = "start" | "center" | "end"
-
-function getPlacement(side: DropdownMenuSide, align: DropdownMenuAlign) {
-  if (side === "inline-start") {
-    return "start"
-  }
-
-  if (side === "inline-end") {
-    return "end"
-  }
-
-  if (align === "center") {
-    return side
-  }
-
-  if (side === "left" || side === "right") {
-    const crossPlacement = align === "start" ? "top" : "bottom"
-    return `${side} ${crossPlacement}` as const
-  }
-
-  return `${side} ${align}` as const
-}
 
 function DropdownMenuTrigger({
   ...props
@@ -68,9 +43,9 @@ function DropdownMenu({
 > & {
   className?: string
   children?: React.ReactNode
-  align?: DropdownMenuAlign
+  align?: PlacementAlign
   alignOffset?: number
-  side?: DropdownMenuSide
+  side?: PlacementSide
   sideOffset?: number
 }) {
   return (
