@@ -28173,4 +28173,214 @@ export const Index: Record<string, Record<string, any>> = {
       },
     },
   },
+  "vue-vega": {
+    button: {
+      name: "button",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/vue-vega/ui/button.vue",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/vue/button" },
+      },
+    },
+  },
+  "vue-nova": {
+    button: {
+      name: "button",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/vue-nova/ui/button.vue",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/vue/button" },
+      },
+    },
+  },
+  "vue-maia": {
+    button: {
+      name: "button",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/vue-maia/ui/button.vue",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/vue/button" },
+      },
+    },
+  },
+  "vue-lyra": {
+    button: {
+      name: "button",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/vue-lyra/ui/button.vue",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/vue/button" },
+      },
+    },
+  },
+  "vue-mira": {
+    button: {
+      name: "button",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/vue-mira/ui/button.vue",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/vue/button" },
+      },
+    },
+  },
+  "svelte-vega": {
+    button: {
+      name: "button",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-vega/ui/button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/button" },
+      },
+    },
+  },
+  "svelte-nova": {
+    button: {
+      name: "button",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-nova/ui/button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/button" },
+      },
+    },
+  },
+  "svelte-maia": {
+    button: {
+      name: "button",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-maia/ui/button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/button" },
+      },
+    },
+  },
+  "svelte-lyra": {
+    button: {
+      name: "button",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-lyra/ui/button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/button" },
+      },
+    },
+  },
+  "svelte-mira": {
+    button: {
+      name: "button",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-mira/ui/button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/button" },
+      },
+    },
+  },
 }

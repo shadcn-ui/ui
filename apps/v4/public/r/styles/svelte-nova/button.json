@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button",
+  "dependencies": [
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-nova/ui/button.svelte",
+      "content": "<script lang=\"ts\">\n  import { cva, type VariantProps } from \"class-variance-authority\"\n  import type { Snippet } from \"svelte\"\n  import type { HTMLButtonAttributes } from \"svelte/elements\"\n\n  import { cn } from \"@/lib/utils\"\n\n  const buttonVariants = cva(\n    \"cn-button group/button inline-flex shrink-0 items-center justify-center whitespace-nowrap transition-all outline-none select-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0\",\n    {\n      variants: {\n        variant: {\n          default: \"cn-button-variant-default\",\n          outline: \"cn-button-variant-outline\",\n          secondary: \"cn-button-variant-secondary\",\n          ghost: \"cn-button-variant-ghost\",\n          destructive: \"cn-button-variant-destructive\",\n          link: \"cn-button-variant-link\",\n        },\n        size: {\n          default: \"cn-button-size-default\",\n          xs: \"cn-button-size-xs\",\n          sm: \"cn-button-size-sm\",\n          lg: \"cn-button-size-lg\",\n          icon: \"cn-button-size-icon\",\n          \"icon-xs\": \"cn-button-size-icon-xs\",\n          \"icon-sm\": \"cn-button-size-icon-sm\",\n          \"icon-lg\": \"cn-button-size-icon-lg\",\n        },\n      },\n      defaultVariants: {\n        variant: \"default\",\n        size: \"default\",\n      },\n    }\n  )\n\n  type ButtonVariants = VariantProps<typeof buttonVariants>\n\n  type Props = HTMLButtonAttributes & {\n    variant?: NonNullable<ButtonVariants>[\"variant\"]\n    size?: NonNullable<ButtonVariants>[\"size\"]\n    children?: Snippet\n  }\n\n  let {\n    children,\n    class: className,\n    variant = \"default\",\n    size = \"default\",\n    ...restProps\n  }: Props = $props()\n</script>\n\n<button\n  data-slot=\"button\"\n  data-variant={variant}\n  data-size={size}\n  class={cn(buttonVariants({ variant, size }), className)}\n  {...restProps}\n>\n  {#if children}\n    {@render children()}\n  {/if}\n</button>\n",
+      "type": "registry:ui"
+    }
+  ],
+  "meta": {
+    "links": {
+      "docs": "https://force-ui.com/docs/components/svelte/button"
+    }
+  },
+  "type": "registry:ui"
+}

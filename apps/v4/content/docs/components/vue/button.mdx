@@ -1,0 +1,189 @@
+---
+title: Button
+description: Displays a button or a component that looks like a button.
+featured: true
+base: vue
+component: true
+---
+
+<ComponentPreview framework="vue" name="button-demo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @force-ui-vue/button
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install class-variance-authority clsx tailwind-merge
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+```vue showLineNumbers title="components/ui/button.vue"
+<script setup lang="ts">
+  import { cva, type VariantProps } from "class-variance-authority"
+  import { cn } from "@/lib/utils"
+
+  const buttonVariants = cva(
+    "cn-button inline-flex shrink-0 items-center justify-center whitespace-nowrap transition-all outline-none select-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+    {
+      variants: {
+        variant: {
+          default: "cn-button-variant-default",
+          outline: "cn-button-variant-outline",
+          secondary: "cn-button-variant-secondary",
+          ghost: "cn-button-variant-ghost",
+          destructive: "cn-button-variant-destructive",
+          link: "cn-button-variant-link",
+        },
+        size: {
+          default: "cn-button-size-default",
+          xs: "cn-button-size-xs",
+          sm: "cn-button-size-sm",
+          lg: "cn-button-size-lg",
+          icon: "cn-button-size-icon",
+          "icon-xs": "cn-button-size-icon-xs",
+          "icon-sm": "cn-button-size-icon-sm",
+          "icon-lg": "cn-button-size-icon-lg",
+        },
+      },
+      defaultVariants: { variant: "default", size: "default" },
+    }
+  )
+
+  type ButtonVariants = VariantProps<typeof buttonVariants>
+
+  const props = withDefaults(
+    defineProps<{
+      variant?: NonNullable<ButtonVariants>["variant"]
+      size?: NonNullable<ButtonVariants>["size"]
+      as?: string
+    }>(),
+    { as: "button", variant: "default", size: "default" }
+  )
+</script>
+
+<template>
+  <component
+    :is="props.as"
+    data-slot="button"
+    :data-variant="props.variant"
+    :data-size="props.size"
+    :class="cn(buttonVariants({ variant: props.variant, size: props.size }), ($attrs.class as string) ?? '')"
+  >
+    <slot />
+  </component>
+</template>
+```
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```vue
+<script setup lang="ts">
+  import Button from "@/components/ui/button.vue"
+</script>
+```
+
+```vue
+<template>
+  <Button variant="outline">Button</Button>
+</template>
+```
+
+## Cursor
+
+Tailwind v4 [switched](https://tailwindcss.com/docs/upgrade-guide#buttons-use-the-default-cursor) from `cursor: pointer` to `cursor: default` for the button component.
+
+If you want to keep the `cursor: pointer` behavior, add the following code to your CSS file:
+
+```css showLineNumbers title="globals.css"
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+```
+
+## Examples
+
+### Size
+
+Use the `size` prop to change the size of the button.
+
+<ComponentPreview framework="vue" name="button-size" />
+
+### Default
+
+<ComponentPreview framework="vue" name="button-default" />
+
+### Outline
+
+<ComponentPreview framework="vue" name="button-outline" />
+
+### Secondary
+
+<ComponentPreview framework="vue" name="button-secondary" />
+
+### Ghost
+
+<ComponentPreview framework="vue" name="button-ghost" />
+
+### Destructive
+
+<ComponentPreview framework="vue" name="button-destructive" />
+
+### Link
+
+<ComponentPreview framework="vue" name="button-link" />
+
+### Icon
+
+<ComponentPreview framework="vue" name="button-icon" />
+
+### With Icon
+
+<ComponentPreview framework="vue" name="button-with-icon" />
+
+### Rounded
+
+Use the `rounded-full` class to make the button rounded.
+
+<ComponentPreview framework="vue" name="button-rounded" />
+
+## API Reference
+
+### Button
+
+The `Button` component is a wrapper around the `button` element that adds a variety of styles and functionality.
+
+| Prop      | Type                                                                                 | Default     |
+| --------- | ------------------------------------------------------------------------------------ | ----------- |
+| `variant` | `"default" \| "outline" \| "ghost" \| "destructive" \| "secondary" \| "link"`        | `"default"` |
+| `size`    | `"default" \| "xs" \| "sm" \| "lg" \| "icon" \| "icon-xs" \| "icon-sm" \| "icon-lg"` | `"default"` |
+| `as`      | `string`                                                                              | `"button"`  |

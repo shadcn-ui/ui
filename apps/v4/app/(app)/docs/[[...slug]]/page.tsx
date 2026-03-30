@@ -7,6 +7,7 @@ import { findNeighbour } from "fumadocs-core/page-tree"
 import { source } from "@/lib/source"
 import { absoluteUrl } from "@/lib/utils"
 import { DocsBaseSwitcher } from "@/components/docs-base-switcher"
+import { isReactBase } from "@/registry/frameworks"
 import { DocsCopyPage } from "@/components/docs-copy-page"
 import { DocsTableOfContents } from "@/components/docs-toc"
 import { OpenInV0Cta } from "@/components/open-in-v0-cta"
@@ -144,12 +145,14 @@ export default async function Page(props: {
             {params.slug &&
               params.slug[0] === "components" &&
               params.slug[1] &&
-              params.slug[2] && (
-                <DocsBaseSwitcher
-                  base={params.slug[1]}
-                  component={params.slug[2]}
-                  className="mb-4"
-                />
+              params.slug[2] &&
+              isReactBase(params.slug[1]) && (
+                <div className="mb-4 flex flex-col gap-4">
+                  <DocsBaseSwitcher
+                    base={params.slug[1]}
+                    component={params.slug[2]}
+                  />
+                </div>
               )}
             <MDX components={mdxComponents} />
           </div>

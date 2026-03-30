@@ -1,7 +1,7 @@
 import Link from "next/link"
 
 import { cn } from "@/lib/utils"
-import { BASES } from "@/registry/bases"
+import { REACT_BASES } from "@/registry/bases"
 
 export function DocsBaseSwitcher({
   base,
@@ -12,11 +12,11 @@ export function DocsBaseSwitcher({
   component: string
   className?: string
 }) {
-  const activeBase = BASES.find((baseItem) => base === baseItem.name)
+  const activeBase = REACT_BASES.find((baseItem) => base === baseItem.name)
 
   return (
     <div className={cn("inline-flex w-full items-center gap-6", className)}>
-      {BASES.map((baseItem) => (
+      {REACT_BASES.map((baseItem) => (
         <Link
           key={baseItem.name}
           href={`/docs/components/${baseItem.name}/${component}`}

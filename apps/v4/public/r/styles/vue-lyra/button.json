@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button",
+  "dependencies": [
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-lyra/ui/button.vue",
+      "content": "<script setup lang=\"ts\">\nimport { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst buttonVariants = cva(\n  \"cn-button group/button inline-flex shrink-0 items-center justify-center whitespace-nowrap transition-all outline-none select-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0\",\n  {\n    variants: {\n      variant: {\n        default: \"cn-button-variant-default\",\n        outline: \"cn-button-variant-outline\",\n        secondary: \"cn-button-variant-secondary\",\n        ghost: \"cn-button-variant-ghost\",\n        destructive: \"cn-button-variant-destructive\",\n        link: \"cn-button-variant-link\",\n      },\n      size: {\n        default: \"cn-button-size-default\",\n        xs: \"cn-button-size-xs\",\n        sm: \"cn-button-size-sm\",\n        lg: \"cn-button-size-lg\",\n        icon: \"cn-button-size-icon\",\n        \"icon-xs\": \"cn-button-size-icon-xs\",\n        \"icon-sm\": \"cn-button-size-icon-sm\",\n        \"icon-lg\": \"cn-button-size-icon-lg\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n      size: \"default\",\n    },\n  }\n)\n\ntype ButtonVariants = VariantProps<typeof buttonVariants>\n\ninterface Props {\n  variant?: NonNullable<ButtonVariants>[\"variant\"]\n  size?: NonNullable<ButtonVariants>[\"size\"]\n  as?: string\n}\n\nconst props = withDefaults(defineProps<Props>(), {\n  as: \"button\",\n  variant: \"default\",\n  size: \"default\",\n})\n</script>\n\n<template>\n  <component\n    :is=\"props.as\"\n    data-slot=\"button\"\n    :data-variant=\"props.variant\"\n    :data-size=\"props.size\"\n    :class=\"\n      cn(\n        buttonVariants({ variant: props.variant, size: props.size }),\n        ($attrs.class as string) ?? ''\n      )\n    \"\n  >\n    <slot />\n  </component>\n</template>\n",
+      "type": "registry:ui"
+    }
+  ],
+  "meta": {
+    "links": {
+      "docs": "https://force-ui.com/docs/components/vue/button"
+    }
+  },
+  "type": "registry:ui"
+}

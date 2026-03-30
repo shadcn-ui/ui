@@ -179,6 +179,12 @@
         "base": {
           "docs": "https://ui.shadcn.com/docs/components/base/button",
           "examples": "https://raw.githubusercontent.com/shadcn-ui/ui/refs/heads/main/apps/v4/registry/bases/base/examples/button-example.tsx"
+        },
+        "vue": {
+          "docs": "https://force-ui.com/docs/components/vue/button"
+        },
+        "svelte": {
+          "docs": "https://force-ui.com/docs/components/svelte/button"
         }
       }
     }

@@ -113,7 +113,7 @@ function getStyleCombination(styleName: string) {
 }
 
 function stripFileExtension(filePath: string) {
-  return filePath.replace(/\.(tsx|ts|json|mdx)$/, "")
+  return filePath.replace(/\.(tsx|ts|json|mdx|vue|svelte)$/, "")
 }
 
 function normalizeRegistryFiles(item: RegistryItem): Array<{
@@ -187,6 +187,11 @@ async function formatGeneratedSource(content: string, filePath: string) {
   return prettier.format(content, {
     ...prettierConfig,
     filepath: filePath,
+    plugins: [
+      "@ianvs/prettier-plugin-sort-imports",
+      "prettier-plugin-tailwindcss",
+      "prettier-plugin-svelte",
+    ],
   })
 }
 
@@ -412,6 +417,8 @@ export const Index: Record<string, Record<string, any>> = {`
       const componentPath = files[0]?.path
         ? `@/registry/bases/${base.name}/${stripFileExtension(files[0].path)}`
         : ""
+      const firstFileExt = files[0]?.path ? path.extname(files[0].path) : ""
+      const isReactComponent = firstFileExt === ".tsx" || firstFileExt === ".ts"
 
       index += `
     "${item.name}": {
@@ -429,7 +436,7 @@ export const Index: Record<string, Record<string, any>> = {`
       }`
       })}],
       component: ${
-        componentPath
+        componentPath && isReactComponent
           ? `React.lazy(async () => {
         const mod = await import("${componentPath}")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "${item.name}"
@@ -588,7 +595,10 @@ async function buildBases(bases: Base[]) {
 
           const fileExtension = path.extname(file.path)
           const shouldTransform =
-            fileExtension === ".tsx" || fileExtension === ".ts"
+            fileExtension === ".tsx" ||
+            fileExtension === ".ts" ||
+            fileExtension === ".vue" ||
+            fileExtension === ".svelte"
 
           const transformedContent = shouldTransform
             ? await getCachedStyledContent({
@@ -625,8 +635,13 @@ async function buildExamplesIndex() {
       }
 
       const allEntries = await fs.readdir(baseDir, { withFileTypes: true })
+      const DEMO_EXTENSIONS = [".tsx", ".vue", ".svelte"]
       const files = allEntries
-        .filter((entry) => entry.isFile() && entry.name.endsWith(".tsx"))
+        .filter(
+          (entry) =>
+            entry.isFile() &&
+            DEMO_EXTENSIONS.some((ext) => entry.name.endsWith(ext))
+        )
         .map((entry) => entry.name)
         .sort()
 
@@ -652,17 +667,22 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {`
   "${baseName}": {`
 
     for (const file of files) {
-      const name = file.replace(/\.tsx$/, "")
+      const name = file.replace(/\.(tsx|vue|svelte)$/, "")
+      const isReactFile = file.endsWith(".tsx")
 
       index += `
     "${name}": {
       name: "${name}",
       filePath: "examples/${baseName}/${file}",
-      component: React.lazy(async () => {
+      component: ${
+        isReactFile
+          ? `React.lazy(async () => {
         const mod = await import("./${baseName}/${name}")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "${name}"
         return { default: mod.default || mod[exportName] }
-      }),
+      })`
+          : "null"
+      },
     },`
     }
 
@@ -743,6 +763,8 @@ export const Index: Record<string, Record<string, any>> = {`
             : `@/registry/bases/${styleCombination.base.name}/${stripFileExtension(files[0].path)}`
           : `@/registry/${style.name}/${stripFileExtension(files[0].path)}`
         : ""
+      const firstFileExt = files[0]?.path ? path.extname(files[0].path) : ""
+      const isReactComponent = firstFileExt === ".tsx" || firstFileExt === ".ts"
 
       index += `
     "${item.name}": {
@@ -759,7 +781,7 @@ export const Index: Record<string, Record<string, any>> = {`
       }`
       })}],
       component: ${
-        componentPath
+        componentPath && isReactComponent
           ? `React.lazy(async () => {
         const mod = await import("${componentPath}")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "${item.name}"

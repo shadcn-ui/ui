@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-destructive",
+  "title": "Button Destructive",
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-mira/examples/button-destructive.vue",
+      "content": "<script setup lang=\"ts\">\nimport Button from \"@/ui/button.vue\"\n</script>\n\n<template>\n  <Button variant=\"destructive\">Destructive</Button>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

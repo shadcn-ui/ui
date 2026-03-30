@@ -1,0 +1,1 @@
+import{_ as o}from"./button.vue_vue_type_script_setup_true_lang-BeKwJLS2.js";import{w as a,r as e,a3 as r,U as s,u as n}from"./runtime-core.esm-bundler-Clqs0z22.js";import"./utils-D2jV1zSv.js";const u=a({__name:"button-ghost",setup(_){return(m,t)=>(s(),e(o,{variant:"ghost"},{default:r(()=>[...t[0]||(t[0]=[n("Ghost",-1)])]),_:1}))}});export{u as default};

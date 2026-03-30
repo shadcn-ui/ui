@@ -1,0 +1,208 @@
+{
+  "name": "force-ui/vue",
+  "homepage": "https://force-ui.com",
+  "items": [
+    {
+      "name": "index",
+      "dependencies": ["class-variance-authority", "vue"],
+      "devDependencies": ["tw-animate-css", "shadcn"],
+      "registryDependencies": ["utils"],
+      "files": [],
+      "cssVars": {},
+      "css": {
+        "@import \"tw-animate-css\"": {},
+        "@import \"shadcn/tailwind.css\"": {},
+        "@layer base": {
+          "*": {
+            "@apply border-border outline-ring/50": {}
+          },
+          "body": {
+            "@apply bg-background text-foreground": {}
+          }
+        }
+      },
+      "type": "registry:style"
+    },
+    {
+      "name": "style",
+      "dependencies": ["class-variance-authority", "vue"],
+      "devDependencies": ["tw-animate-css", "shadcn"],
+      "registryDependencies": ["utils"],
+      "files": [],
+      "cssVars": {},
+      "css": {
+        "@import \"tw-animate-css\"": {},
+        "@import \"shadcn/tailwind.css\"": {},
+        "@layer base": {
+          "*": {
+            "@apply border-border outline-ring/50": {}
+          },
+          "body": {
+            "@apply bg-background text-foreground": {}
+          }
+        }
+      },
+      "type": "registry:style"
+    },
+    {
+      "name": "button",
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/vue-vega/ui/button.vue",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "links": {
+          "docs": "https://force-ui.com/docs/components/vue/button"
+        }
+      },
+      "type": "registry:ui"
+    },
+    {
+      "name": "button-demo",
+      "title": "Button Demo",
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/vue-vega/examples/button-demo.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-default",
+      "title": "Button Default",
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/vue-vega/examples/button-default.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-destructive",
+      "title": "Button Destructive",
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/vue-vega/examples/button-destructive.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-ghost",
+      "title": "Button Ghost",
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/vue-vega/examples/button-ghost.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-icon",
+      "title": "Button Icon",
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/vue-vega/examples/button-icon.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-link",
+      "title": "Button Link",
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/vue-vega/examples/button-link.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-outline",
+      "title": "Button Outline",
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/vue-vega/examples/button-outline.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-rounded",
+      "title": "Button Rounded",
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/vue-vega/examples/button-rounded.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-secondary",
+      "title": "Button Secondary",
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/vue-vega/examples/button-secondary.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-size",
+      "title": "Button Size",
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/vue-vega/examples/button-size.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-with-icon",
+      "title": "Button With Icon",
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/vue-vega/examples/button-with-icon.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "utils",
+      "dependencies": ["clsx", "tailwind-merge"],
+      "files": [
+        {
+          "path": "registry/vue-vega/lib/utils.ts",
+          "type": "registry:lib"
+        }
+      ],
+      "type": "registry:lib"
+    }
+  ]
+}

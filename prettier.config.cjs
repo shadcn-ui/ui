@@ -6,6 +6,7 @@ module.exports = {
   tabWidth: 2,
   trailingComma: "es5",
   printWidth: 80,
+  overrides: [{ files: "*.svelte", options: { parser: "svelte" } }],
   importOrder: [
     "^(react/(.*)$)|^(react$)",
     "^(next/(.*)$)|^(next$)",
@@ -31,6 +32,7 @@ module.exports = {
   plugins: [
     "@ianvs/prettier-plugin-sort-imports",
     "prettier-plugin-tailwindcss",
+    "prettier-plugin-svelte",
   ],
   tailwindStylesheet: "./apps/v4/app/globals.css",
   tailwindFunctions: ["cn", "cva"],

@@ -1,0 +1,1 @@
+import{_ as e}from"./button.vue_vue_type_script_setup_true_lang-BeKwJLS2.js";import{w as r,r as a,a3 as o,U as s,u as n}from"./runtime-core.esm-bundler-Clqs0z22.js";import"./utils-D2jV1zSv.js";const p=r({__name:"button-destructive",setup(i){return(u,t)=>(s(),a(e,{variant:"destructive"},{default:o(()=>[...t[0]||(t[0]=[n("Destructive",-1)])]),_:1}))}});export{p as default};

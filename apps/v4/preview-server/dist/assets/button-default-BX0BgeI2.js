@@ -1,0 +1,1 @@
+import{_ as e}from"./button.vue_vue_type_script_setup_true_lang-BeKwJLS2.js";import{w as o,r as a,a3 as r,U as n,u as s}from"./runtime-core.esm-bundler-Clqs0z22.js";import"./utils-D2jV1zSv.js";const i=o({__name:"button-default",setup(u){return(_,t)=>(n(),a(e,null,{default:r(()=>[...t[0]||(t[0]=[s("Button",-1)])]),_:1}))}});export{i as default};

@@ -9,6 +9,8 @@ import { showMcpDocs } from "@/lib/flags"
 import { getCurrentBase, getPagesFromFolder } from "@/lib/page-tree"
 import { type source } from "@/lib/source"
 import { cn } from "@/lib/utils"
+import { useFramework } from "@/hooks/use-framework"
+import { getDefaultBaseForFramework, isReactBase } from "@/registry/frameworks"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import {
   Popover,
@@ -71,7 +73,12 @@ export function MobileNav({
 }) {
   const [open, setOpen] = React.useState(false)
   const pathname = usePathname()
-  const currentBase = getCurrentBase(pathname)
+  const { framework } = useFramework()
+  const isOnComponentPage =
+    /\/docs\/components\/(radix|base|vue|svelte)\//.test(pathname)
+  const currentBase = isOnComponentPage
+    ? getCurrentBase(pathname)
+    : getDefaultBaseForFramework(framework)
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -154,21 +161,54 @@ export function MobileNav({
           <div className="flex flex-col gap-8">
             {tree?.children?.map((group, index) => {
               if (group.type === "folder") {
-                const pages = getPagesFromFolder(group, currentBase)
+                const isComponentsSection =
+                  group.$id === "components" || group.name === "Components"
+
+                // For components: show canonical list, mark unavailable.
+                const canonicalPages =
+                  isComponentsSection && !isReactBase(currentBase)
+                    ? getPagesFromFolder(group, "radix")
+                    : getPagesFromFolder(group, currentBase)
+
+                const availablePages = isComponentsSection
+                  ? getPagesFromFolder(group, currentBase)
+                  : canonicalPages
+                const availableNames = new Set(
+                  availablePages.map((p) => p.name)
+                )
+                const availableUrlMap = new Map(
+                  availablePages.map((p) => [p.name, p.url])
+                )
+
                 return (
                   <div key={index} className="flex flex-col gap-4">
                     <div className="text-sm font-medium text-muted-foreground">
                       {group.name}
                     </div>
                     <div className="flex flex-col gap-3">
-                      {pages.map((item) => {
+                      {canonicalPages.map((item) => {
                         if (!showMcpDocs && item.url.includes("/mcp")) {
                           return null
                         }
+
+                        const isAvailable = availableNames.has(item.name)
+                        const href = availableUrlMap.get(item.name) ?? item.url
+
+                        if (!isAvailable) {
+                          return (
+                            <span
+                              key={`${item.url}-${index}`}
+                              className="flex items-center gap-2 text-2xl font-medium text-muted-foreground/40"
+                            >
+                              {item.name}
+                            </span>
+                          )
+                        }
+
                         return (
                           <MobileLink
                             key={`${item.url}-${index}`}
-                            href={item.url}
+                            href={href}
                             onOpenChange={setOpen}
                             className="flex items-center gap-2"
                           >

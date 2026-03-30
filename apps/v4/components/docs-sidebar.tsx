@@ -7,6 +7,9 @@ import { PAGES_NEW } from "@/lib/docs"
 import { showMcpDocs } from "@/lib/flags"
 import { getCurrentBase, getPagesFromFolder } from "@/lib/page-tree"
 import type { source } from "@/lib/source"
+import { cn } from "@/lib/utils"
+import { useFramework } from "@/hooks/use-framework"
+import { getDefaultBaseForFramework, isReactBase } from "@/registry/frameworks"
 import {
   Sidebar,
   SidebarContent,
@@ -69,7 +72,12 @@ export function DocsSidebar({
   ...props
 }: React.ComponentProps<typeof Sidebar> & { tree: typeof source.pageTree }) {
   const pathname = usePathname()
-  const currentBase = getCurrentBase(pathname)
+  const { framework } = useFramework()
+  const isOnComponentPage =
+    /\/docs\/components\/(radix|base|vue|svelte)\//.test(pathname)
+  const currentBase = isOnComponentPage
+    ? getCurrentBase(pathname)
+    : getDefaultBaseForFramework(framework)
 
   return (
     <Sidebar
@@ -124,6 +132,9 @@ export function DocsSidebar({
             return null
           }
 
+          const isComponentsSection =
+            item.$id === "components" || item.name === "Components"
+
           return (
             <SidebarGroup key={item.$id}>
               <SidebarGroupLabel className="font-medium text-muted-foreground">
@@ -132,36 +143,71 @@ export function DocsSidebar({
               <SidebarGroupContent>
                 {item.type === "folder" && (
                   <SidebarMenu className="gap-0.5">
-                    {getPagesFromFolder(item, currentBase).map((page) => {
-                      if (!showMcpDocs && page.url.includes("/mcp")) {
-                        return null
-                      }
+                    {(() => {
+                      // For the components section, show all components (canonical from radix)
+                      // and mark unavailable ones for the current framework.
+                      const canonicalPages =
+                        isComponentsSection && !isReactBase(currentBase)
+                          ? getPagesFromFolder(item, "radix")
+                          : getPagesFromFolder(item, currentBase)
 
-                      if (EXCLUDED_PAGES.includes(page.url)) {
-                        return null
-                      }
-
-                      return (
-                        <SidebarMenuItem key={page.url}>
-                          <SidebarMenuButton
-                            asChild
-                            isActive={page.url === pathname}
-                            className="relative h-[30px] w-fit overflow-visible border border-transparent text-[0.8rem] font-medium after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md data-[active=true]:border-accent data-[active=true]:bg-accent 3xl:fixed:w-full 3xl:fixed:max-w-48"
-                          >
-                            <Link href={page.url}>
-                              <span className="absolute inset-0 flex w-(--sidebar-menu-width) bg-transparent" />
-                              {page.name}
-                              {PAGES_NEW.includes(page.url) && (
-                                <span
-                                  className="flex size-2 rounded-full bg-blue-500"
-                                  title="New"
-                                />
-                              )}
-                            </Link>
-                          </SidebarMenuButton>
-                        </SidebarMenuItem>
+                      const availablePages = isComponentsSection
+                        ? getPagesFromFolder(item, currentBase)
+                        : canonicalPages
+                      const availableNames = new Set(
+                        availablePages.map((p) => p.name)
                       )
-                    })}
+                      const availableUrlMap = new Map(
+                        availablePages.map((p) => [p.name, p.url])
+                      )
+
+                      return canonicalPages.map((page) => {
+                        if (!showMcpDocs && page.url.includes("/mcp")) {
+                          return null
+                        }
+
+                        if (EXCLUDED_PAGES.includes(page.url)) {
+                          return null
+                        }
+
+                        const isAvailable = availableNames.has(page.name)
+                        const href = availableUrlMap.get(page.name) ?? page.url
+
+                        if (!isAvailable) {
+                          return (
+                            <SidebarMenuItem key={page.url}>
+                              <SidebarMenuButton
+                                disabled
+                                className="relative h-[30px] w-fit overflow-visible text-[0.8rem] font-medium opacity-40"
+                              >
+                                {page.name}
+                              </SidebarMenuButton>
+                            </SidebarMenuItem>
+                          )
+                        }
+
+                        return (
+                          <SidebarMenuItem key={page.url}>
+                            <SidebarMenuButton
+                              asChild
+                              isActive={href === pathname}
+                              className="relative h-[30px] w-fit overflow-visible border border-transparent text-[0.8rem] font-medium after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md data-[active=true]:border-accent data-[active=true]:bg-accent 3xl:fixed:w-full 3xl:fixed:max-w-48"
+                            >
+                              <Link href={href}>
+                                <span className="absolute inset-0 flex w-(--sidebar-menu-width) bg-transparent" />
+                                {page.name}
+                                {PAGES_NEW.includes(page.url) && (
+                                  <span
+                                    className="flex size-2 rounded-full bg-blue-500"
+                                    title="New"
+                                  />
+                                )}
+                              </Link>
+                            </SidebarMenuButton>
+                          </SidebarMenuItem>
+                        )
+                      })
+                    })()}
                   </SidebarMenu>
                 )}
               </SidebarGroupContent>

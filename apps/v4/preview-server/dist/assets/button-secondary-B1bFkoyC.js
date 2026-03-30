@@ -1,0 +1,1 @@
+import{_ as a}from"./button.vue_vue_type_script_setup_true_lang-BeKwJLS2.js";import{w as e,r as o,a3 as r,U as n,u as s}from"./runtime-core.esm-bundler-Clqs0z22.js";import"./utils-D2jV1zSv.js";const d=e({__name:"button-secondary",setup(_){return(c,t)=>(n(),o(a,{variant:"secondary"},{default:r(()=>[...t[0]||(t[0]=[s("Secondary",-1)])]),_:1}))}});export{d as default};

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-icon",
+  "title": "Button Icon",
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-maia/examples/button-icon.svelte",
+      "content": "<script lang=\"ts\">\n  import Button from \"@/ui/button.svelte\"\n</script>\n\n<Button variant=\"outline\" size=\"icon\">\n  <svg\n    xmlns=\"http://www.w3.org/2000/svg\"\n    width=\"16\"\n    height=\"16\"\n    viewBox=\"0 0 24 24\"\n    fill=\"none\"\n    stroke=\"currentColor\"\n    stroke-width=\"2\"\n    stroke-linecap=\"round\"\n    stroke-linejoin=\"round\"\n    ><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><path d=\"m8 12 4 4 4-4\"\n    ></path><path d=\"M12 8v7\"></path></svg\n  >\n</Button>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

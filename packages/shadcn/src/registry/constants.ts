@@ -46,6 +46,9 @@ export const BASE_COLORS = [
 // Built-in registries that are always available and cannot be overridden
 export const BUILTIN_REGISTRIES: z.infer<typeof registryConfigSchema> = {
   "@shadcn": `${REGISTRY_URL}/styles/{style}/{name}.json`,
+  "@force-ui": `${REGISTRY_URL}/styles/{style}/{name}.json`,
+  "@force-ui-vue": `${REGISTRY_URL}/vue/styles/{style}/{name}.json`,
+  "@force-ui-svelte": `${REGISTRY_URL}/svelte/styles/{style}/{name}.json`,
 }
 
 export const BUILTIN_MODULES = new Set([
