@@ -3,6 +3,7 @@
 import * as React from "react"
 import { usePathname, useRouter } from "next/navigation"
 
+import { hasComponentForBase } from "@/lib/framework-components"
 import { cn } from "@/lib/utils"
 import { useFramework } from "@/hooks/use-framework"
 import {
@@ -23,11 +24,7 @@ const FRAMEWORK_OPTIONS = [
   { value: "svelte" as const, label: "Svelte" },
 ]
 
-export function FrameworkSwitcher({
-  className,
-}: {
-  className?: string
-}) {
+export function FrameworkSwitcher({ className }: { className?: string }) {
   const { framework, setFramework } = useFramework()
   const pathname = usePathname()
   const router = useRouter()
@@ -57,7 +54,14 @@ export function FrameworkSwitcher({
     if (componentMatch) {
       const component = componentMatch[2]
       const targetBase = getDefaultBaseForFramework(value)
-      router.push(`/docs/components/${targetBase}/${component}`)
+
+      if (hasComponentForBase(targetBase, component)) {
+        router.push(`/docs/components/${targetBase}/${component}`)
+      } else {
+        // Component doesn't exist for this framework yet.
+        // Navigate to the components index page.
+        router.push("/docs/components")
+      }
     }
   }
 

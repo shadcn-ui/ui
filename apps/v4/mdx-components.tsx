@@ -37,7 +37,7 @@ import {
 } from "@/registry/new-york-v4/ui/tabs"
 
 // Wrapper component that passes the components folder from the server.
-// This is only used on /docs/components/ index page, so default to radix.
+// The ComponentsList client component handles framework-aware rendering.
 function ComponentsListWrapper() {
   const componentsFolder = source.pageTree.children.find(
     (page) => page.$id === "components"
@@ -48,10 +48,7 @@ function ComponentsListWrapper() {
   }
 
   return (
-    <ComponentsList
-      componentsFolder={componentsFolder as PageTreeFolder}
-      currentBase="radix"
-    />
+    <ComponentsList componentsFolder={componentsFolder as PageTreeFolder} />
   )
 }
 

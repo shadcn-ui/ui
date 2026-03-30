@@ -56,9 +56,9 @@ To help you build custom presets, we rebuilt [shadcn/create](/create). It now in
 Inspect what a registry will add to your project before anything gets written. Review the payload yourself or pipe it to your coding agent for a second look.
 
 ```bash
-npx shadcn@latest add button --dry-run
-npx shadcn@latest add button --diff
-npx shadcn@latest add button --view
+npx shadcn@latest add @force-ui/button --dry-run
+npx shadcn@latest add @force-ui/button --diff
+npx shadcn@latest add @force-ui/button --view
 ```
 
 ## Updating primitives
@@ -66,7 +66,7 @@ npx shadcn@latest add button --view
 You can use the `--diff` flag to check for registry updates. Or ask your agent: "check for updates from @shadcn and merge with my local changes".
 
 ```bash
-npx shadcn@latest add button --diff
+npx shadcn@latest add @force-ui/button --diff
 ```
 
 ## shadcn init --template
@@ -142,7 +142,7 @@ Fonts are now a first-class registry type. Install and configure them the same w
 ```
 
 ```bash
-npx shadcn@latest add font-inter
+npx shadcn@latest add @force-ui/font-inter
 ```
 
 ## Links
