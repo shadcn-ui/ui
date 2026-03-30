@@ -14,6 +14,7 @@ import {
 import { Project, ScriptKind, type SourceFile } from "ts-morph"
 import { z } from "zod"
 
+import { getAppUrl } from "@/lib/utils"
 import {
   buildRegistryBase,
   getBodyFont,
@@ -565,7 +566,7 @@ async function getRegistryItemFile(
   config: z.infer<typeof configSchema>
 ) {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_APP_URL}/r/styles/${getStyle(designSystemConfig)}/${name}.json`
+    `${getAppUrl()}/r/styles/${getStyle(designSystemConfig)}/${name}.json`
   )
 
   if (!response.ok) {

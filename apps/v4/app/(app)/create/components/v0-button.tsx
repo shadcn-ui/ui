@@ -2,7 +2,7 @@
 
 import * as React from "react"
 
-import { cn } from "@/lib/utils"
+import { cn, getAppUrl } from "@/lib/utils"
 import { useIsMobile } from "@/hooks/use-mobile"
 import { useMounted } from "@/hooks/use-mounted"
 import { Icons } from "@/components/icons"
@@ -24,7 +24,7 @@ export function V0Button({ className }: { className?: string }) {
 
     searchParams.set("base", params.base)
 
-    return `${process.env.NEXT_PUBLIC_APP_URL}/init/v0?${searchParams.toString()}`
+    return `${getAppUrl()}/init/v0?${searchParams.toString()}`
   }, [params.preset, params.base])
 
   const title = React.useMemo(() => {

@@ -4,6 +4,7 @@ import * as React from "react"
 import { Share03Icon, Tick02Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 
+import { getAppUrl } from "@/lib/utils"
 import { copyToClipboardWithMeta } from "@/components/copy-button"
 import { Button } from "@/styles/base-nova/ui/button"
 import { usePresetCode } from "@/app/(app)/create/hooks/use-design-system"
@@ -15,7 +16,7 @@ export function ShareButton() {
   const [hasCopied, setHasCopied] = React.useState(false)
 
   const shareUrl = React.useMemo(() => {
-    const origin = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"
+    const origin = getAppUrl()
     return `${origin}/create?preset=${presetCode}&item=${params.item}`
   }, [presetCode, params.item])
 
