@@ -1,11 +1,11 @@
 import Link from "next/link"
-import { Button } from "@/examples/radix/ui/button"
 import { mdxComponents } from "@/mdx-components"
 import { IconRss } from "@tabler/icons-react"
 
 import { getChangelogPages, type ChangelogPageData } from "@/lib/changelog"
 import { absoluteUrl } from "@/lib/utils"
 import { OpenInV0Cta } from "@/components/open-in-v0-cta"
+import { Button } from "@/styles/radix-nova/ui/button"
 
 export const revalidate = false
 export const dynamic = "force-static"

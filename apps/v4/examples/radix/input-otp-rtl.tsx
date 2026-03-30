@@ -1,17 +1,17 @@
 "use client"
 
 import * as React from "react"
-import { Field, FieldLabel } from "@/examples/radix/ui-rtl/field"
-import {
-  InputOTP,
-  InputOTPGroup,
-  InputOTPSlot,
-} from "@/examples/radix/ui-rtl/input-otp"
 
 import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
+import { Field, FieldLabel } from "@/styles/radix-nova/ui-rtl/field"
+import {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSlot,
+} from "@/styles/radix-nova/ui-rtl/input-otp"
 
 const translations: Translations = {
   en: {

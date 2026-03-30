@@ -1,5 +1,7 @@
 "use client"
 
+import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
+
 import {
   ChartContainer,
   ChartLegend,
@@ -7,8 +9,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
   type ChartConfig,
-} from "@/examples/base/ui/chart"
-import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
+} from "@/styles/base-nova/ui/chart"
 
 const chartData = [
   { month: "January", desktop: 186, mobile: 80 },
