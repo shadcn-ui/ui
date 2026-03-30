@@ -41,7 +41,9 @@ export function RollerShades() {
           </span>
           <Slider
             value={position}
-            onValueChange={setPosition}
+            onValueChange={(value) =>
+              setPosition(Array.isArray(value) ? [...value] : [value])
+            }
             max={100}
             className="flex-1"
           />
@@ -52,12 +54,12 @@ export function RollerShades() {
       </CardContent>
       <CardFooter>
         <ToggleGroup
-          type="single"
-          value={preset}
+          value={[preset]}
           onValueChange={(value) => {
-            if (value === "open") setPosition([0])
-            if (value === "half") setPosition([50])
-            if (value === "closed") setPosition([100])
+            const v = value[0]
+            if (v === "open") setPosition([0])
+            if (v === "half") setPosition([50])
+            if (v === "closed") setPosition([100])
           }}
           variant="outline"
           spacing={1}

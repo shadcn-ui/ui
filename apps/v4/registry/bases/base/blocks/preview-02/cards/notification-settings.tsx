@@ -76,7 +76,8 @@ export function NotificationSettings() {
           <Field orientation="horizontal">
             <Checkbox
               id="notify-all"
-              checked={someChecked ? "indeterminate" : allChecked}
+              checked={allChecked}
+              indeterminate={someChecked}
               onCheckedChange={(v) => handleSelectAll(!!v)}
             />
             <FieldContent>

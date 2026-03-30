@@ -74,8 +74,7 @@ export function ReleaseCatalog() {
             <InputGroupInput placeholder="Search holdings or tickers..." />
           </InputGroup>
           <ToggleGroup
-            type="single"
-            defaultValue="etfs"
+            defaultValue={["etfs"]}
             variant="outline"
             spacing={1}
           >

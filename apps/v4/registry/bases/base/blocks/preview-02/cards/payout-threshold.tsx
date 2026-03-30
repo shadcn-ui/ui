@@ -86,7 +86,9 @@ export function PayoutThreshold() {
             <Slider
               id="min-payout"
               value={amount}
-              onValueChange={setAmount}
+              onValueChange={(value) =>
+                setAmount(Array.isArray(value) ? [...value] : [value])
+              }
               min={50}
               max={10000}
               step={50}

@@ -127,8 +127,8 @@ export function TypographySpecimen() {
               </Field>
             </FieldGroup>
             <DialogFooter>
-              <DialogClose asChild>
-                <Button variant="outline">Cancel</Button>
+              <DialogClose render={<Button variant="outline" />}>
+                Cancel
               </DialogClose>
               <Button>Submit</Button>
             </DialogFooter>

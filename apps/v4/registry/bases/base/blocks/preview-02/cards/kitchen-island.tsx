@@ -64,9 +64,8 @@ export function KitchenIsland() {
         <div className="flex flex-col gap-2">
           <span className="sr-only">Scenes</span>
           <ToggleGroup
-            type="single"
-            value={scene}
-            onValueChange={handleSceneChange}
+            value={[scene]}
+            onValueChange={(value) => handleSceneChange(value[0] ?? "cooking")}
             variant="outline"
             spacing={1}
             className="flex-wrap"
@@ -102,7 +101,9 @@ export function KitchenIsland() {
             <ItemActions className="flex-1">
               <Slider
                 value={brightness}
-                onValueChange={setBrightness}
+                onValueChange={(value) =>
+                  setBrightness(Array.isArray(value) ? [...value] : [value])
+                }
                 max={100}
                 disabled={!enabled}
                 className="w-full"
@@ -125,7 +126,9 @@ export function KitchenIsland() {
             <ItemActions className="flex-1">
               <Slider
                 value={colorTemp}
-                onValueChange={setColorTemp}
+                onValueChange={(value) =>
+                  setColorTemp(Array.isArray(value) ? [...value] : [value])
+                }
                 max={100}
                 disabled={!enabled}
               />
@@ -147,7 +150,9 @@ export function KitchenIsland() {
             <ItemActions className="flex-1">
               <Slider
                 value={volume}
-                onValueChange={setVolume}
+                onValueChange={(value) =>
+                  setVolume(Array.isArray(value) ? [...value] : [value])
+                }
                 max={100}
                 disabled={!enabled}
               />
@@ -169,7 +174,9 @@ export function KitchenIsland() {
             <ItemActions className="flex-1">
               <Slider
                 value={fade}
-                onValueChange={setFade}
+                onValueChange={(value) =>
+                  setFade(Array.isArray(value) ? [...value] : [value])
+                }
                 max={100}
                 disabled={!enabled}
               />

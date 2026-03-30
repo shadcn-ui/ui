@@ -79,7 +79,7 @@ export function StockPerformance() {
         <FieldGroup>
           <Field>
             <FieldLabel htmlFor="ticker-select">Ticker</FieldLabel>
-            <Combobox items={TICKERS} value={ticker} onValueChange={setTicker}>
+            <Combobox items={TICKERS} value={ticker} onValueChange={(value) => { if (value !== null) setTicker(value) }}>
               <ComboboxInput
                 id="ticker-select"
                 placeholder="Search ticker..."
