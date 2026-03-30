@@ -15,6 +15,7 @@ import {
   InputGroupInput,
   InputGroupText,
 } from "@/registry/bases/radix/ui/input-group"
+import { Item, ItemContent } from "@/registry/bases/radix/ui/item"
 import {
   Select,
   SelectContent,
@@ -56,10 +57,7 @@ export function TransferFunds() {
               <InputGroupAddon>
                 <InputGroupText>$</InputGroupText>
               </InputGroupAddon>
-              <InputGroupInput
-                id="transfer-amount"
-                defaultValue="1,200.00"
-              />
+              <InputGroupInput id="transfer-amount" defaultValue="1,200.00" />
             </InputGroup>
           </Field>
           <Field>
@@ -98,28 +96,30 @@ export function TransferFunds() {
               </SelectContent>
             </Select>
           </Field>
-          <div className="flex flex-col gap-3 rounded-lg bg-muted p-4">
-            <div className="flex items-center justify-between">
-              <span className="text-sm text-muted-foreground">
-                Estimated arrival
-              </span>
-              <span className="text-sm font-medium">Today, Apr 14</span>
-            </div>
-            <Separator />
-            <div className="flex items-center justify-between">
-              <span className="text-sm text-muted-foreground">
-                Transaction fee
-              </span>
-              <span className="text-sm font-medium tabular-nums">$0.00</span>
-            </div>
-            <Separator />
-            <div className="flex items-center justify-between">
-              <span className="text-sm font-medium">Total amount</span>
-              <span className="text-sm font-semibold tabular-nums">
-                $1,200.00
-              </span>
-            </div>
-          </div>
+          <Item variant="muted" className="flex-col items-stretch">
+            <ItemContent className="gap-3">
+              <div className="flex items-center justify-between">
+                <span className="text-sm text-muted-foreground">
+                  Estimated arrival
+                </span>
+                <span className="text-sm font-medium">Today, Apr 14</span>
+              </div>
+              <Separator />
+              <div className="flex items-center justify-between">
+                <span className="text-sm text-muted-foreground">
+                  Transaction fee
+                </span>
+                <span className="text-sm font-medium tabular-nums">$0.00</span>
+              </div>
+              <Separator />
+              <div className="flex items-center justify-between">
+                <span className="text-sm font-medium">Total amount</span>
+                <span className="text-sm font-semibold tabular-nums">
+                  $1,200.00
+                </span>
+              </div>
+            </ItemContent>
+          </Item>
         </FieldGroup>
       </CardContent>
       <CardFooter>

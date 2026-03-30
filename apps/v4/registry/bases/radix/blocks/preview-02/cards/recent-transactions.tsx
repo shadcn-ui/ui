@@ -4,13 +4,6 @@ import * as React from "react"
 
 import { Button } from "@/registry/bases/radix/ui/button"
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/registry/bases/radix/ui/dropdown-menu"
-import {
   Card,
   CardAction,
   CardContent,
@@ -18,6 +11,13 @@ import {
   CardHeader,
   CardTitle,
 } from "@/registry/bases/radix/ui/card"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/registry/bases/radix/ui/dropdown-menu"
 import {
   Table,
   TableBody,
@@ -43,9 +43,9 @@ export function RecentTransactions() {
           <TableBody>
             <TableRow>
               <TableCell className="w-10">
-                <div className="flex size-8 items-center justify-center rounded-lg bg-muted">
+                <div className="flex size-10 items-center justify-center rounded-lg bg-muted">
                   <IconPlaceholder
-                    className="size-3.5 shrink-0"
+                    className="size-4 shrink-0"
                     lucide="CoffeeIcon"
                     tabler="IconCoffee"
                     hugeicons="CoffeeIcon"
@@ -95,9 +95,9 @@ export function RecentTransactions() {
             </TableRow>
             <TableRow>
               <TableCell className="w-10">
-                <div className="flex size-8 items-center justify-center rounded-lg bg-muted">
+                <div className="flex size-10 items-center justify-center rounded-lg bg-muted">
                   <IconPlaceholder
-                    className="size-3.5 shrink-0"
+                    className="size-4 shrink-0"
                     lucide="ShoppingCartIcon"
                     tabler="IconShoppingCart"
                     hugeicons="ShoppingCart01Icon"
@@ -147,9 +147,9 @@ export function RecentTransactions() {
             </TableRow>
             <TableRow>
               <TableCell className="w-10">
-                <div className="flex size-8 items-center justify-center rounded-lg bg-muted">
+                <div className="flex size-10 items-center justify-center rounded-lg bg-muted">
                   <IconPlaceholder
-                    className="size-3.5 shrink-0"
+                    className="size-4 shrink-0"
                     lucide="WalletIcon"
                     tabler="IconWallet"
                     hugeicons="Wallet01Icon"
@@ -168,7 +168,7 @@ export function RecentTransactions() {
                 Oct 12
               </TableCell>
               <TableCell className="text-right">
-                <span className="text-sm font-semibold tabular-nums text-emerald-500">
+                <span className="text-sm font-semibold text-emerald-500 tabular-nums">
                   +$4,200.00
                 </span>
               </TableCell>
@@ -197,9 +197,9 @@ export function RecentTransactions() {
             </TableRow>
             <TableRow>
               <TableCell className="w-10">
-                <div className="flex size-8 items-center justify-center rounded-lg bg-muted">
+                <div className="flex size-10 items-center justify-center rounded-lg bg-muted">
                   <IconPlaceholder
-                    className="size-3.5 shrink-0"
+                    className="size-4 shrink-0"
                     lucide="CarIcon"
                     tabler="IconCar"
                     hugeicons="Car01Icon"
@@ -249,9 +249,9 @@ export function RecentTransactions() {
             </TableRow>
             <TableRow>
               <TableCell className="w-10">
-                <div className="flex size-8 items-center justify-center rounded-lg bg-muted">
+                <div className="flex size-10 items-center justify-center rounded-lg bg-muted">
                   <IconPlaceholder
-                    className="size-3.5 shrink-0"
+                    className="size-4 shrink-0"
                     lucide="TvIcon"
                     tabler="IconDeviceTv"
                     hugeicons="Tv01Icon"

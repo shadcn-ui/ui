@@ -4,7 +4,6 @@ import { Bar, BarChart, XAxis } from "recharts"
 
 import {
   Card,
-  CardAction,
   CardContent,
   CardDescription,
   CardFooter,
@@ -19,7 +18,6 @@ import {
 } from "@/registry/bases/radix/ui/chart"
 import { Progress } from "@/registry/bases/radix/ui/progress"
 import { Separator } from "@/registry/bases/radix/ui/separator"
-import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 const chartData = [
   { hour: "6a", usage: 1.2 },
@@ -35,7 +33,7 @@ const chartData = [
 const chartConfig = {
   usage: {
     label: "Usage (kW)",
-    color: "var(--chart-1)",
+    color: "var(--chart-2)",
   },
 } satisfies ChartConfig
 
@@ -45,16 +43,6 @@ export function PowerUsage() {
       <CardHeader>
         <CardTitle>Power Usage</CardTitle>
         <CardDescription>Whole Home</CardDescription>
-        <CardAction>
-          <IconPlaceholder
-            lucide="ZapIcon"
-            tabler="IconBolt"
-            hugeicons="FlashIcon"
-            phosphor="LightningIcon"
-            remixicon="RiFlashlightLine"
-            className="size-5"
-          />
-        </CardAction>
       </CardHeader>
       <CardContent className="flex flex-col gap-4">
         <ChartContainer config={chartConfig} className="h-[140px] w-full">
@@ -90,7 +78,7 @@ export function PowerUsage() {
           </div>
           <div className="flex flex-col gap-0.5">
             <span className="text-sm text-muted-foreground">Solar Gen</span>
-            <span className="text-lg font-semibold tabular-nums text-chart-1">
+            <span className="text-lg font-semibold text-chart-1 tabular-nums">
               +1.2 kW
             </span>
           </div>

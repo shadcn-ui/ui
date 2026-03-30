@@ -1,11 +1,9 @@
 import { Badge } from "@/registry/bases/radix/ui/badge"
-import { Button } from "@/registry/bases/radix/ui/button"
 import {
   Card,
   CardAction,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/registry/bases/radix/ui/card"
@@ -38,15 +36,6 @@ export function FrontDoor() {
           </Badge>
         </div>
       </CardContent>
-      <CardFooter>
-        <div className="flex w-full items-center justify-center gap-2 rounded-lg bg-muted p-3">
-          <span className="text-sm font-medium">Security System</span>
-          <Button size="sm">Armed</Button>
-          <Button variant="ghost" size="sm">
-            Disarm
-          </Button>
-        </div>
-      </CardFooter>
     </Card>
   )
 }

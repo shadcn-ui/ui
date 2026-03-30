@@ -1,8 +1,4 @@
-import {
-  Card,
-  CardContent,
-  CardHeader,
-} from "@/registry/bases/radix/ui/card"
+import { Card, CardContent, CardHeader } from "@/registry/bases/radix/ui/card"
 import { Skeleton } from "@/registry/bases/radix/ui/skeleton"
 
 export function LoadingCard() {

@@ -35,7 +35,7 @@ const activityData = [
 const chartConfig = {
   amount: {
     label: "Activity",
-    color: "var(--chart-1)",
+    color: "var(--chart-2)",
   },
 } satisfies ChartConfig
 

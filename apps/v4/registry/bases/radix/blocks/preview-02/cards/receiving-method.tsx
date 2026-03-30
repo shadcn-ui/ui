@@ -57,9 +57,12 @@ export function ReceivingMethod() {
           </Field>
           <FieldSet>
             <FieldLegend variant="label">Receiving Method</FieldLegend>
-            <RadioGroup defaultValue="bank" className="grid grid-cols-2 gap-3">
+            <RadioGroup
+              defaultValue="bank"
+              className="grid grid-cols-2 items-start gap-3"
+            >
               <FieldLabel htmlFor="method-bank">
-                <Field orientation="horizontal">
+                <Field orientation="horizontal" className="pb-2.5">
                   <RadioGroupItem value="bank" id="method-bank" />
                   <FieldContent>
                     <FieldDescription className="font-medium text-foreground">
@@ -70,13 +73,15 @@ export function ReceivingMethod() {
                 </Field>
               </FieldLabel>
               <FieldLabel htmlFor="method-paypal">
-                <Field orientation="horizontal">
+                <Field orientation="horizontal" className="pb-2.5">
                   <RadioGroupItem value="paypal" id="method-paypal" />
                   <FieldContent>
                     <FieldDescription className="font-medium text-foreground">
                       PayPal
                     </FieldDescription>
-                    <FieldDescription>Instant Payout</FieldDescription>
+                    <FieldDescription className="line-clamp-1">
+                      Instant Payout
+                    </FieldDescription>
                   </FieldContent>
                 </Field>
               </FieldLabel>

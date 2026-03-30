@@ -1,10 +1,22 @@
-import { Button } from "@/registry/bases/radix/ui/button"
+"use client"
+
 import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/registry/bases/radix/ui/card"
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/registry/bases/radix/ui/breadcrumb"
+import { Button } from "@/registry/bases/radix/ui/button"
+import { Card, CardContent, CardHeader } from "@/registry/bases/radix/ui/card"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/registry/bases/radix/ui/dropdown-menu"
 import {
   Item,
   ItemContent,
@@ -18,14 +30,42 @@ import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 export function Payments() {
   return (
     <Card>
-      <CardHeader>
-        <CardTitle>Payments</CardTitle>
-        <div className="flex gap-2">
-          <Button size="sm">Send</Button>
-          <Button size="sm" variant="secondary">
-            Request
-          </Button>
-        </div>
+      <CardHeader className="flex flex-col gap-3">
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="#">Home</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button size="icon-sm" variant="ghost">
+                    <IconPlaceholder
+                      lucide="MoreHorizontalIcon"
+                      tabler="IconDots"
+                      hugeicons="MoreHorizontalCircle01Icon"
+                      phosphor="DotsThreeIcon"
+                      remixicon="RiMoreLine"
+                    />
+                    <span className="sr-only">Account options</span>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="start">
+                  <DropdownMenuGroup>
+                    <DropdownMenuItem>Profile</DropdownMenuItem>
+                    <DropdownMenuItem>Statements</DropdownMenuItem>
+                    <DropdownMenuItem>Documents</DropdownMenuItem>
+                  </DropdownMenuGroup>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>Payments</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
       </CardHeader>
       <CardContent>
         <ItemGroup>

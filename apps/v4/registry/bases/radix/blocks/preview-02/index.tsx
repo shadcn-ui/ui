@@ -14,20 +14,21 @@ import { KitchenIsland } from "@/registry/bases/radix/blocks/preview-02/cards/ki
 import { LoadingCard } from "@/registry/bases/radix/blocks/preview-02/cards/loading-card"
 import { NewMilestone } from "@/registry/bases/radix/blocks/preview-02/cards/new-milestone"
 import { NotificationSettings } from "@/registry/bases/radix/blocks/preview-02/cards/notification-settings"
+import { Payments } from "@/registry/bases/radix/blocks/preview-02/cards/payments"
 import { PayoutThreshold } from "@/registry/bases/radix/blocks/preview-02/cards/payout-threshold"
 import { PowerUsage } from "@/registry/bases/radix/blocks/preview-02/cards/power-usage"
 import { Preferences } from "@/registry/bases/radix/blocks/preview-02/cards/preferences"
+import { QrConnect } from "@/registry/bases/radix/blocks/preview-02/cards/qr-connect"
 import { ReceivingMethod } from "@/registry/bases/radix/blocks/preview-02/cards/receiving-method"
 import { RecentTransactions } from "@/registry/bases/radix/blocks/preview-02/cards/recent-transactions"
 import { ReleaseCatalog } from "@/registry/bases/radix/blocks/preview-02/cards/release-catalog"
 import { RollerShades } from "@/registry/bases/radix/blocks/preview-02/cards/roller-shades"
 import { SavingsProgress } from "@/registry/bases/radix/blocks/preview-02/cards/savings-progress"
 import { SavingsTargets } from "@/registry/bases/radix/blocks/preview-02/cards/savings-targets"
-import { Payments } from "@/registry/bases/radix/blocks/preview-02/cards/payments"
-import { QrConnect } from "@/registry/bases/radix/blocks/preview-02/cards/qr-connect"
 import { SidebarNav } from "@/registry/bases/radix/blocks/preview-02/cards/sidebar-nav"
 import { SocialLinks } from "@/registry/bases/radix/blocks/preview-02/cards/social-links"
-import { VerifySms } from "@/registry/bases/radix/blocks/preview-02/cards/verify-sms"
+import { StockPerformance } from "@/registry/bases/radix/blocks/preview-02/cards/stock-performance"
+import { SyncingState } from "@/registry/bases/radix/blocks/preview-02/cards/syncing-state"
 import { TransferFunds } from "@/registry/bases/radix/blocks/preview-02/cards/transfer-funds"
 import { UpcomingPayments } from "@/registry/bases/radix/blocks/preview-02/cards/upcoming-payments"
 
@@ -40,26 +41,34 @@ export default function Preview02Example() {
           data-slot="capture-target"
         >
           <div className="flex flex-col p-1 [contain-intrinsic-size:380px_1200px] [content-visibility:auto]">
-            <SidebarNav />
+            <ContributionHistory />
             <EmptyDistributeTrack />
             <QrConnect />
-            <PayoutThreshold />
-          </div>
-          <div className="col-span-2 flex flex-col p-1 [contain-intrinsic-size:760px_1200px] [content-visibility:auto]">
-            <RecentTransactions />
-            <SavingsTargets />
-            <ReleaseCatalog />
-            <div className="grid grid-cols-2 items-start gap-(--gap)">
-              <ContributionHistory />
-              <Faq />
-            </div>
+            <DividendIncome />
+            <IndexInvesting />
+            <SyncingState />
           </div>
           <div className="flex flex-col p-1 [contain-intrinsic-size:380px_1200px] [content-visibility:auto]">
+            <PayoutThreshold />
+            <ClaimableBalance />
             <Preferences />
             <SavingsProgress />
             <KitchenIsland />
-            <IndexInvesting />
-            <NotificationSettings />
+          </div>
+          <div className="col-span-2 flex flex-col p-1 [contain-intrinsic-size:760px_1200px] [content-visibility:auto]">
+            <SavingsTargets />
+            <RecentTransactions />
+            <div className="grid grid-cols-2 items-start gap-(--gap)">
+              <div className="flex flex-col gap-(--gap)">
+                <SidebarNav />
+                <Faq />
+              </div>
+              <div className="flex flex-col gap-(--gap)">
+                <Payments />
+                <FrontDoor />
+              </div>
+            </div>
+            <ReleaseCatalog />
           </div>
           <div className="flex flex-col p-1 [contain-intrinsic-size:380px_1200px] [content-visibility:auto]">
             <AccountAccess />
@@ -70,20 +79,17 @@ export default function Preview02Example() {
           </div>
           <div className="flex flex-col p-1 [contain-intrinsic-size:380px_1200px] [content-visibility:auto]">
             <ReceivingMethod />
-            <ClaimableBalance />
             <PowerUsage />
-            <VerifySms />
             <EmptyConnectBank />
+            <UpcomingPayments />
+            <RollerShades />
           </div>
           <div className="flex flex-col p-1 [contain-intrinsic-size:380px_1200px] [content-visibility:auto]">
+            <StockPerformance />
             <EmptyExploreCatalog />
             <NewMilestone />
-            <UpcomingPayments />
             <SocialLinks />
-            <Payments />
-            <RollerShades />
-            <FrontDoor />
-            <DividendIncome />
+            <NotificationSettings />
           </div>
         </div>
       </div>

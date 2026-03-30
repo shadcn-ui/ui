@@ -19,7 +19,8 @@ import {
 export function RollerShades() {
   const [position, setPosition] = React.useState([50])
 
-  const preset = position[0] <= 10 ? "open" : position[0] >= 90 ? "closed" : "half"
+  const preset =
+    position[0] <= 10 ? "open" : position[0] >= 90 ? "closed" : "half"
 
   return (
     <Card>

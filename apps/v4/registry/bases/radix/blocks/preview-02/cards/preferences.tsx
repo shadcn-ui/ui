@@ -49,6 +49,25 @@ export function Preferences() {
       </CardHeader>
       <CardContent>
         <FieldGroup>
+          <Field>
+            <FieldLabel htmlFor="default-currency">Default Currency</FieldLabel>
+            <Select defaultValue="usd">
+              <SelectTrigger id="default-currency" className="w-full">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup>
+                  <SelectItem value="usd">
+                    USD — United States Dollar
+                  </SelectItem>
+                  <SelectItem value="eur">EUR — Euro</SelectItem>
+                  <SelectItem value="gbp">GBP — British Pound</SelectItem>
+                  <SelectItem value="jpy">JPY — Japanese Yen</SelectItem>
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+          </Field>
+          <FieldSeparator className="-my-4" />
           <Field orientation="horizontal">
             <FieldContent>
               <FieldLabel htmlFor="public-statistics">
@@ -73,40 +92,11 @@ export function Preferences() {
             </FieldContent>
             <Switch id="email-notifications" defaultChecked />
           </Field>
-          <FieldSeparator className="-my-4" />
-          <Field orientation="horizontal">
-            <FieldContent>
-              <FieldLabel htmlFor="two-factor-auth">Two-Factor Auth</FieldLabel>
-              <FieldDescription>
-                Secure your catalog with SMS verification
-              </FieldDescription>
-            </FieldContent>
-            <Switch id="two-factor-auth" />
-          </Field>
-          <FieldSeparator className="-my-4" />
-          <Field>
-            <FieldLabel htmlFor="default-currency">Default Currency</FieldLabel>
-            <Select defaultValue="usd">
-              <SelectTrigger id="default-currency" className="w-full">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                  <SelectItem value="usd">
-                    USD — United States Dollar
-                  </SelectItem>
-                  <SelectItem value="eur">EUR — Euro</SelectItem>
-                  <SelectItem value="gbp">GBP — British Pound</SelectItem>
-                  <SelectItem value="jpy">JPY — Japanese Yen</SelectItem>
-                </SelectGroup>
-              </SelectContent>
-            </Select>
-          </Field>
         </FieldGroup>
       </CardContent>
       <CardFooter>
         <Button variant="outline">Reset</Button>
-        <Button className="ml-auto">Save</Button>
+        <Button className="ml-auto">Save Preferences</Button>
       </CardFooter>
     </Card>
   )

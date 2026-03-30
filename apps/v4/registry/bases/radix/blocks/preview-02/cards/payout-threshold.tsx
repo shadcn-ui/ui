@@ -27,6 +27,7 @@ import {
   SelectValue,
 } from "@/registry/bases/radix/ui/select"
 import { Slider } from "@/registry/bases/radix/ui/slider"
+import { Textarea } from "@/registry/bases/radix/ui/textarea"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export function PayoutThreshold() {
@@ -94,6 +95,13 @@ export function PayoutThreshold() {
               <FieldDescription>$50 (MIN)</FieldDescription>
               <FieldDescription>$10,000 (MAX)</FieldDescription>
             </div>
+          </Field>
+          <Field>
+            <FieldLabel htmlFor="payout-notes">Notes</FieldLabel>
+            <Textarea
+              id="payout-notes"
+              placeholder="Add any notes for this payout configuration..."
+            />
           </Field>
         </FieldGroup>
       </CardContent>

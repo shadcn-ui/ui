@@ -3,6 +3,7 @@
 import * as React from "react"
 
 import { Badge } from "@/registry/bases/radix/ui/badge"
+import { Calendar } from "@/registry/bases/radix/ui/calendar"
 import {
   Card,
   CardContent,
@@ -10,7 +11,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/registry/bases/radix/ui/card"
-import { Calendar } from "@/registry/bases/radix/ui/calendar"
 import {
   Item,
   ItemContent,

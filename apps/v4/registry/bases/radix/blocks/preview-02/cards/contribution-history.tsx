@@ -3,6 +3,7 @@
 import { Bar, BarChart, XAxis } from "recharts"
 
 import { Badge } from "@/registry/bases/radix/ui/badge"
+import { Button } from "@/registry/bases/radix/ui/button"
 import {
   Card,
   CardAction,
@@ -18,6 +19,11 @@ import {
   ChartTooltipContent,
   type ChartConfig,
 } from "@/registry/bases/radix/ui/chart"
+import {
+  Item,
+  ItemContent,
+  ItemDescription,
+} from "@/registry/bases/radix/ui/item"
 
 const chartData = [
   { month: "Dec", amount: 800 },
@@ -70,27 +76,32 @@ export function ContributionHistory() {
           </BarChart>
         </ChartContainer>
       </CardContent>
-      <CardFooter>
+      <CardFooter className="flex-col gap-4">
         <div className="grid w-full grid-cols-2 gap-3">
-          <div className="flex flex-col gap-1 rounded-lg bg-muted p-4">
-            <span className="text-xs tracking-wider text-muted-foreground uppercase">
-              Upcoming
-            </span>
-            <span className="text-lg font-semibold">May 25, 2024</span>
-            <span className="text-sm text-muted-foreground">
-              $1,000 scheduled
-            </span>
-          </div>
-          <div className="flex flex-col gap-1 rounded-lg bg-muted p-4">
-            <span className="text-xs tracking-wider text-muted-foreground uppercase">
-              Auto-Save Plan
-            </span>
-            <span className="text-lg font-semibold">Accelerated</span>
-            <span className="text-sm text-muted-foreground">
-              Recurring weekly
-            </span>
-          </div>
+          <Item variant="muted" className="flex-col items-stretch">
+            <ItemContent className="gap-1">
+              <ItemDescription className="text-xs font-medium tracking-wider text-muted-foreground uppercase">
+                Upcoming
+              </ItemDescription>
+              <span className="text-lg font-semibold">May 25, 2024</span>
+              <span className="text-sm text-muted-foreground">
+                $1,000 scheduled
+              </span>
+            </ItemContent>
+          </Item>
+          <Item variant="muted" className="flex-col items-stretch">
+            <ItemContent className="gap-1">
+              <ItemDescription className="text-xs font-medium tracking-wider text-muted-foreground uppercase">
+                Auto-Save Plan
+              </ItemDescription>
+              <span className="text-lg font-semibold">Accelerated</span>
+              <span className="text-sm text-muted-foreground">
+                Recurring weekly
+              </span>
+            </ItemContent>
+          </Item>
         </div>
+        <Button className="w-full">View Full Report</Button>
       </CardFooter>
     </Card>
   )

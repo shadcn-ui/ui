@@ -1,11 +1,7 @@
 "use client"
 
 import { Badge } from "@/registry/bases/radix/ui/badge"
-import {
-  Card,
-  CardContent,
-  CardHeader,
-} from "@/registry/bases/radix/ui/card"
+import { Card, CardContent, CardHeader } from "@/registry/bases/radix/ui/card"
 import {
   InputGroup,
   InputGroupAddon,
@@ -79,11 +75,10 @@ export function ReleaseCatalog() {
           </InputGroup>
           <ToggleGroup
             type="single"
-            defaultValue="all"
+            defaultValue="etfs"
             variant="outline"
             spacing={1}
           >
-            <ToggleGroupItem value="all">All</ToggleGroupItem>
             <ToggleGroupItem value="stocks">Stocks</ToggleGroupItem>
             <ToggleGroupItem value="etfs">ETFs</ToggleGroupItem>
             <ToggleGroupItem value="reits">REITs</ToggleGroupItem>

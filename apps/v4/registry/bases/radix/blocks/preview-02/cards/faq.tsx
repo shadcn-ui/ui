@@ -25,7 +25,7 @@ import {
 const GENERAL_QUESTIONS = [
   {
     q: "How secure is my financial data with Ledger?",
-    a: "We use bank-level AES-256 encryption, SOC 2 Type II certified infrastructure, and never store your credentials. All connections use read-only access tokens.",
+    a: "We use bank-level AES-256 encryption, SOC 2 Type II certified infrastructure, and never store your credentials. All connections use read-only access tokens. We are a SEC registered investment advisor.",
   },
   {
     q: "How do I connect my bank or investment accounts?",
@@ -114,6 +114,9 @@ export function Faq() {
       <CardFooter>
         <Button variant="outline" className="w-full">
           Contact Support
+        </Button>
+        <Button variant="link" className="w-full">
+          Learn More
         </Button>
       </CardFooter>
     </Card>

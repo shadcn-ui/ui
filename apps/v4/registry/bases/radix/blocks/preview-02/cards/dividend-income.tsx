@@ -21,7 +21,7 @@ import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 const HOLDINGS = [
   {
-    name: "Vanguard Div Appreciation (VIG)",
+    name: "Vanguard VIG",
     shares: "450 Shares",
     amount: "$1,842.10",
     data: [
@@ -32,7 +32,7 @@ const HOLDINGS = [
     ],
   },
   {
-    name: "S&P 500 Index (VOO)",
+    name: "S&P 500 VOO",
     shares: "112 Shares",
     amount: "$928.40",
     data: [
@@ -43,7 +43,7 @@ const HOLDINGS = [
     ],
   },
   {
-    name: "Apple Inc. (AAPL)",
+    name: "Apple AAPL",
     shares: "85 Shares",
     amount: "$340.00",
     data: [
@@ -54,7 +54,7 @@ const HOLDINGS = [
     ],
   },
   {
-    name: "Realty Income Corp (O)",
+    name: "Realty Income",
     shares: "320 Shares",
     amount: "$1,139.50",
     data: [
@@ -77,10 +77,10 @@ export function DividendIncome() {
   return (
     <Card>
       <CardHeader>
-        <CardDescription className="text-xs tracking-wider uppercase">
-          Performance Breakdown
-        </CardDescription>
         <CardTitle>Q2 Dividend Income</CardTitle>
+        <CardDescription>
+          Quarterly dividend payouts across your portfolio holdings.
+        </CardDescription>
         <CardAction>
           <Button variant="ghost" size="icon-sm" className="bg-muted">
             <IconPlaceholder
@@ -122,7 +122,7 @@ export function DividendIncome() {
                   />
                 </BarChart>
               </ChartContainer>
-              <span className="text-sm font-semibold tabular-nums">
+              <span className="w-16 flex-1 text-right text-sm font-semibold tabular-nums">
                 {holding.amount}
               </span>
             </div>

@@ -4,7 +4,6 @@ import {
   CardAction,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/registry/bases/radix/ui/card"
@@ -14,36 +13,25 @@ export function IndexInvesting() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>What&apos;s index investing?</CardTitle>
-        <CardAction>
-          <Button variant="ghost" size="icon-sm" className="bg-muted">
-            <IconPlaceholder
-              lucide="XIcon"
-              tabler="IconX"
-              hugeicons="Cancel01Icon"
-              phosphor="XIcon"
-              remixicon="RiCloseLine"
-            />
-          </Button>
-        </CardAction>
+        <CardTitle>Dollar-Cost Averaging</CardTitle>
+        <CardDescription>
+          A strategy for building wealth over time.
+        </CardDescription>
       </CardHeader>
       <CardContent>
-        <CardDescription className="text-sm leading-relaxed">
-          The MSCI World Index measures the performance of the global stock
-          market. It includes hundreds of the world&apos;s biggest companies.
-        </CardDescription>
         <CardDescription className="mt-3 text-sm leading-relaxed">
-          Your money will be in a fund that tracks this index. So you&apos;re
-          investing in all the companies it includes — and your investment will
-          go up and down with the market.
+          <a
+            href="#"
+            className="underline underline-offset-4 hover:text-primary"
+          >
+            Over time
+          </a>
+          , this smooths out the average cost of your investments. When prices
+          drop, your fixed amount buys more shares. When prices rise, you buy
+          fewer. The result is a lower average cost per share compared to
+          lump-sum investing during volatile periods.
         </CardDescription>
       </CardContent>
-      <CardFooter className="gap-2">
-        <Button variant="outline" className="flex-1">
-          Save
-        </Button>
-        <Button className="flex-1">Copy</Button>
-      </CardFooter>
     </Card>
   )
 }
