@@ -36,7 +36,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/styles/base-nova/ui/tabs"
-import { usePresetCode } from "@/app/(app)/create/hooks/use-design-system"
+import { useInitUrl } from "@/app/(app)/create/hooks/use-design-system"
 import {
   useDesignSystemSearchParams,
   type DesignSystemSearchParams,
@@ -61,7 +61,7 @@ export function ProjectForm({
 }: React.ComponentProps<typeof Button>) {
   const [open, setOpen] = React.useState(false)
   const [params, setParams] = useDesignSystemSearchParams()
-  const presetCode = usePresetCode()
+  const initUrl = useInitUrl()
   const [config, setConfig] = useConfig()
   const [hasCopied, setHasCopied] = React.useState(false)
 
@@ -80,12 +80,10 @@ export function ProjectForm({
   )
 
   const commands = React.useMemo(() => {
-    const presetFlag = ` --preset ${presetCode}`
-    const baseFlag = params.base !== "radix" ? ` --base ${params.base}` : ""
+    const presetFlag = ` --preset ${initUrl}`
     const templateFlag = ` --template ${framework}`
     const monorepoFlag = isMonorepo ? " --monorepo" : ""
-    const rtlFlag = params.rtl ? " --rtl" : ""
-    const flags = `${presetFlag}${baseFlag}${templateFlag}${monorepoFlag}${rtlFlag}`
+    const flags = `${presetFlag}${templateFlag}${monorepoFlag}`
 
     return IS_LOCAL_DEV
       ? {
@@ -100,7 +98,7 @@ export function ProjectForm({
           yarn: `yarn dlx shadcn${SHADCN_VERSION} init${flags}`,
           bun: `bunx --bun shadcn${SHADCN_VERSION} init${flags}`,
         }
-  }, [framework, isMonorepo, params.base, params.rtl, presetCode])
+  }, [framework, isMonorepo, initUrl])
 
   const command = commands[packageManager]
 

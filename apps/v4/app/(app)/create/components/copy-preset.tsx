@@ -5,10 +5,14 @@ import * as React from "react"
 import { cn } from "@/lib/utils"
 import { copyToClipboardWithMeta } from "@/components/copy-button"
 import { Button } from "@/styles/base-nova/ui/button"
-import { usePresetCode } from "@/app/(app)/create/hooks/use-design-system"
+import {
+  useInitUrl,
+  usePresetCode,
+} from "@/app/(app)/create/hooks/use-design-system"
 
 export function CopyPreset({ className }: React.ComponentProps<typeof Button>) {
   const presetCode = usePresetCode()
+  const initUrl = useInitUrl()
   const [hasCopied, setHasCopied] = React.useState(false)
 
   React.useEffect(() => {
@@ -19,14 +23,14 @@ export function CopyPreset({ className }: React.ComponentProps<typeof Button>) {
   }, [hasCopied])
 
   const handleCopy = React.useCallback(() => {
-    copyToClipboardWithMeta(`--preset ${presetCode}`, {
+    copyToClipboardWithMeta(`--preset ${initUrl}`, {
       name: "copy_preset_command",
       properties: {
         preset: presetCode,
       },
     })
     setHasCopied(true)
-  }, [presetCode])
+  }, [initUrl, presetCode])
 
   return (
     <Button
