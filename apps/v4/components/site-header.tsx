@@ -7,6 +7,7 @@ import { getColors } from "@/lib/colors"
 import { siteConfig } from "@/lib/config"
 import { source } from "@/lib/source"
 import { CommandMenu } from "@/components/command-menu"
+import { FrameworkSwitcher } from "@/components/framework-switcher"
 import { GitHubLink } from "@/components/github-link"
 import { Icons } from "@/components/icons"
 import { MainNav } from "@/components/main-nav"
@@ -61,6 +62,8 @@ export function SiteHeader() {
               className="hidden group-has-data-[slot=designer]/layout:hidden 3xl:flex"
             />
             <SiteConfig className="hidden 3xl:flex 3xl:group-has-data-[slot=designer]/layout:hidden" />
+            <Separator orientation="vertical" />
+            <FrameworkSwitcher />
             <Separator orientation="vertical" />
             <ModeSwitcher />
             <div className="hidden items-center gap-2 group-has-data-[slot=designer]/layout:md:flex">

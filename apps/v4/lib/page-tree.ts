@@ -31,10 +31,14 @@ export function getPagesFromFolder(
         // Match by $id or by name.
         const isRadix = child.$id === "radix" || child.name === "Radix UI"
         const isBase = child.$id === "base" || child.name === "Base UI"
+        const isVue = child.$id === "vue" || child.name === "Vue"
+        const isSvelte = child.$id === "svelte" || child.name === "Svelte"
 
         if (
           (currentBase === "radix" && isRadix) ||
-          (currentBase === "base" && isBase)
+          (currentBase === "base" && isBase) ||
+          (currentBase === "vue" && isVue) ||
+          (currentBase === "svelte" && isSvelte)
         ) {
           return child.children.filter(
             (c): c is PageTreePage => c.type === "page"
@@ -55,8 +59,10 @@ export function getPagesFromFolder(
   )
 }
 
-// Get current base (radix or base) from pathname.
+// Get current base (radix, base, vue, or svelte) from pathname.
 export function getCurrentBase(pathname: string): string {
-  const baseMatch = pathname.match(/\/docs\/components\/(radix|base)\//)
+  const baseMatch = pathname.match(
+    /\/docs\/components\/(radix|base|vue|svelte)\//
+  )
   return baseMatch ? baseMatch[1] : "radix" // Default to radix.
 }

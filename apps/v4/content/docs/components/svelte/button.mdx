@@ -1,0 +1,194 @@
+---
+title: Button
+description: Displays a button or a component that looks like a button.
+featured: true
+base: svelte
+component: true
+---
+
+<ComponentPreview framework="svelte" name="button-demo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add button
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install class-variance-authority clsx tailwind-merge
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+```svelte showLineNumbers title="components/ui/button.svelte"
+<script lang="ts">
+  import { cva, type VariantProps } from "class-variance-authority"
+  import type { Snippet } from "svelte"
+  import type { HTMLButtonAttributes } from "svelte/elements"
+  import { cn } from "$lib/utils"
+
+  const buttonVariants = cva(
+    "cn-button inline-flex shrink-0 items-center justify-center whitespace-nowrap transition-all outline-none select-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+    {
+      variants: {
+        variant: {
+          default: "cn-button-variant-default",
+          outline: "cn-button-variant-outline",
+          secondary: "cn-button-variant-secondary",
+          ghost: "cn-button-variant-ghost",
+          destructive: "cn-button-variant-destructive",
+          link: "cn-button-variant-link",
+        },
+        size: {
+          default: "cn-button-size-default",
+          xs: "cn-button-size-xs",
+          sm: "cn-button-size-sm",
+          lg: "cn-button-size-lg",
+          icon: "cn-button-size-icon",
+          "icon-xs": "cn-button-size-icon-xs",
+          "icon-sm": "cn-button-size-icon-sm",
+          "icon-lg": "cn-button-size-icon-lg",
+        },
+      },
+      defaultVariants: { variant: "default", size: "default" },
+    }
+  )
+
+  type ButtonVariants = VariantProps<typeof buttonVariants>
+
+  type Props = HTMLButtonAttributes & {
+    variant?: NonNullable<ButtonVariants>["variant"]
+    size?: NonNullable<ButtonVariants>["size"]
+    children?: Snippet
+  }
+
+  let {
+    children,
+    class: className,
+    variant = "default",
+    size = "default",
+    ...restProps
+  }: Props = $props()
+</script>
+
+<button
+  data-slot="button"
+  data-variant={variant}
+  data-size={size}
+  class={cn(buttonVariants({ variant, size }), className)}
+  {...restProps}
+>
+  {#if children}
+    {@render children()}
+  {/if}
+</button>
+```
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```svelte
+<script lang="ts">
+  import Button from "$lib/components/ui/button.svelte"
+</script>
+```
+
+```svelte
+<Button variant="outline">Button</Button>
+```
+
+## Cursor
+
+Tailwind v4 [switched](https://tailwindcss.com/docs/upgrade-guide#buttons-use-the-default-cursor) from `cursor: pointer` to `cursor: default` for the button component.
+
+If you want to keep the `cursor: pointer` behavior, add the following code to your CSS file:
+
+```css showLineNumbers title="globals.css"
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+```
+
+## Examples
+
+### Size
+
+Use the `size` prop to change the size of the button.
+
+<ComponentPreview framework="svelte" name="button-size" />
+
+### Default
+
+<ComponentPreview framework="svelte" name="button-default" />
+
+### Outline
+
+<ComponentPreview framework="svelte" name="button-outline" />
+
+### Secondary
+
+<ComponentPreview framework="svelte" name="button-secondary" />
+
+### Ghost
+
+<ComponentPreview framework="svelte" name="button-ghost" />
+
+### Destructive
+
+<ComponentPreview framework="svelte" name="button-destructive" />
+
+### Link
+
+<ComponentPreview framework="svelte" name="button-link" />
+
+### Icon
+
+<ComponentPreview framework="svelte" name="button-icon" />
+
+### With Icon
+
+<ComponentPreview framework="svelte" name="button-with-icon" />
+
+### Rounded
+
+Use the `rounded-full` class to make the button rounded.
+
+<ComponentPreview framework="svelte" name="button-rounded" />
+
+## API Reference
+
+### Button
+
+The `Button` component is a wrapper around the `button` element that adds a variety of styles and functionality.
+
+| Prop      | Type                                                                                 | Default     |
+| --------- | ------------------------------------------------------------------------------------ | ----------- |
+| `variant` | `"default" \| "outline" \| "ghost" \| "destructive" \| "secondary" \| "link"`        | `"default"` |
+| `size`    | `"default" \| "xs" \| "sm" \| "lg" \| "icon" \| "icon-xs" \| "icon-sm" \| "icon-lg"` | `"default"` |
+| `class`   | `string`                                                                              | `""`        |

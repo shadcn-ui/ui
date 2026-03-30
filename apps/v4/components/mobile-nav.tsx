@@ -8,6 +8,8 @@ import { PAGES_NEW } from "@/lib/docs"
 import { showMcpDocs } from "@/lib/flags"
 import { getCurrentBase, getPagesFromFolder } from "@/lib/page-tree"
 import { type source } from "@/lib/source"
+import { useFramework } from "@/hooks/use-framework"
+import { getDefaultBaseForFramework } from "@/registry/frameworks"
 import { cn } from "@/lib/utils"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import {
@@ -71,7 +73,13 @@ export function MobileNav({
 }) {
   const [open, setOpen] = React.useState(false)
   const pathname = usePathname()
-  const currentBase = getCurrentBase(pathname)
+  const { framework } = useFramework()
+  const isOnComponentPage = /\/docs\/components\/(radix|base|vue|svelte)\//.test(
+    pathname
+  )
+  const currentBase = isOnComponentPage
+    ? getCurrentBase(pathname)
+    : getDefaultBaseForFramework(framework)
 
   return (
     <Popover open={open} onOpenChange={setOpen}>

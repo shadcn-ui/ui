@@ -4,6 +4,10 @@ import Image from "next/image"
 import { getRegistryComponent } from "@/lib/registry"
 import { ComponentPreviewTabs } from "@/components/component-preview-tabs"
 import { ComponentSource } from "@/components/component-source"
+import { FrameworkPreviewIframe } from "@/components/framework-preview-iframe"
+
+const PREVIEW_SERVER_URL =
+  process.env.NEXT_PUBLIC_PREVIEW_SERVER_URL ?? "http://localhost:3001"
 
 export function ComponentPreview({
   name,
@@ -14,12 +18,14 @@ export function ComponentPreview({
   hideCode = false,
   chromeLessOnMobile = false,
   styleName = "new-york-v4",
+  framework,
   direction = "ltr",
   caption,
   ...props
 }: React.ComponentProps<"div"> & {
   name: string
   styleName?: string
+  framework?: "vue" | "svelte"
   align?: "center" | "start" | "end"
   description?: string
   hideCode?: boolean
@@ -57,6 +63,62 @@ export function ComponentPreview({
         <figure className="flex flex-col gap-4">
           {content}
           <figcaption className="text-center text-sm text-muted-foreground">
+            {caption}
+          </figcaption>
+        </figure>
+      )
+    }
+
+    return content
+  }
+
+  if (framework) {
+    const iframeSrc = `${PREVIEW_SERVER_URL}/${framework}/${name}`
+    const ext = framework === "vue" ? "vue" : "svelte"
+    const srcPath = `preview-server/src/${framework}/${name}.${ext}`
+    const content = (
+      <ComponentPreviewTabs
+        className={className}
+        previewClassName={previewClassName}
+        align={align}
+        hideCode={hideCode}
+        component={
+          <FrameworkPreviewIframe
+            src={iframeSrc}
+            title={`${framework} preview: ${name}`}
+          />
+        }
+        source={
+          <ComponentSource
+            src={srcPath}
+            title={`${name}.${ext}`}
+            language={ext}
+            collapsible={false}
+          />
+        }
+        sourcePreview={
+          <ComponentSource
+            src={srcPath}
+            title={`${name}.${ext}`}
+            language={ext}
+            collapsible={false}
+            maxLines={3}
+          />
+        }
+        chromeLessOnMobile={chromeLessOnMobile}
+        direction={direction}
+        {...props}
+      />
+    )
+
+    if (caption) {
+      return (
+        <figure
+          data-hide-code={hideCode}
+          className="flex flex-col data-[hide-code=true]:gap-4"
+        >
+          {content}
+          <figcaption className="-mt-8 text-center text-sm text-muted-foreground data-[hide-code=true]:mt-0">
             {caption}
           </figcaption>
         </figure>

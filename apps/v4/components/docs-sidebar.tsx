@@ -7,6 +7,8 @@ import { PAGES_NEW } from "@/lib/docs"
 import { showMcpDocs } from "@/lib/flags"
 import { getCurrentBase, getPagesFromFolder } from "@/lib/page-tree"
 import type { source } from "@/lib/source"
+import { useFramework } from "@/hooks/use-framework"
+import { getDefaultBaseForFramework } from "@/registry/frameworks"
 import {
   Sidebar,
   SidebarContent,
@@ -69,7 +71,13 @@ export function DocsSidebar({
   ...props
 }: React.ComponentProps<typeof Sidebar> & { tree: typeof source.pageTree }) {
   const pathname = usePathname()
-  const currentBase = getCurrentBase(pathname)
+  const { framework } = useFramework()
+  const isOnComponentPage = /\/docs\/components\/(radix|base|vue|svelte)\//.test(
+    pathname
+  )
+  const currentBase = isOnComponentPage
+    ? getCurrentBase(pathname)
+    : getDefaultBaseForFramework(framework)
 
   return (
     <Sidebar

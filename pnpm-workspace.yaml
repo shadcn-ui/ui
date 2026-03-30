@@ -1,5 +1,6 @@
 packages:
   - "apps/*"
+  - "apps/v4/preview-server"
   - "packages/*"
   - "!**/test/**"
   - "!**/fixtures/**"

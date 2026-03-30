@@ -48,15 +48,17 @@ export async function ComponentSource({
     return null
   }
 
-  code = await formatCode(code, styleName)
-  code = code.replaceAll("/* eslint-disable react/no-children-prop */\n", "")
+  const lang = language ?? title?.split(".").pop() ?? "tsx"
+
+  if (["tsx", "ts", "jsx", "js"].includes(lang)) {
+    code = await formatCode(code, styleName)
+    code = code.replaceAll("/* eslint-disable react/no-children-prop */\n", "")
+  }
 
   // Truncate code if maxLines is set.
   if (maxLines) {
     code = code.split("\n").slice(0, maxLines).join("\n")
   }
-
-  const lang = language ?? title?.split(".").pop() ?? "tsx"
   const highlightedCode = await highlightCode(code, lang)
 
   if (!collapsible) {
