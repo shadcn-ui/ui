@@ -13,6 +13,21 @@ import prompts from "prompts"
 import { type z } from "zod"
 
 export const DEFAULT_PRESETS = {
+  "force-ui": {
+    title: "Force UI",
+    description: "Lucide / Inter / Indigo Brand",
+    style: "nova",
+    baseColor: "force-ui",
+    theme: "force-ui",
+    iconLibrary: "lucide",
+    font: "inter",
+    fontHeading: "inherit",
+    menuAccent: "subtle" as const,
+    menuColor: "default" as const,
+
+    radius: "default",
+    rtl: false,
+  },
   nova: {
     title: "Nova",
     description: "Lucide / Geist",

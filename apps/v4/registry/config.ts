@@ -162,9 +162,9 @@ export type DesignSystemConfig = z.infer<typeof designSystemConfigSchema>
 export const DEFAULT_CONFIG: DesignSystemConfig = {
   base: "radix",
   style: "nova",
-  baseColor: "neutral",
-  theme: "neutral",
-  chartColor: "neutral",
+  baseColor: "force-ui",
+  theme: "force-ui",
+  chartColor: "force-ui",
   iconLibrary: "lucide",
   font: "inter",
   fontHeading: "inherit",
@@ -183,6 +183,43 @@ export type Preset = {
 } & DesignSystemConfig
 
 export const PRESETS: Preset[] = [
+  // Force UI.
+  {
+    name: "radix-force-ui",
+    title: "Force UI (Radix)",
+    description: "Nova / Lucide / Inter / Force UI",
+    base: "radix",
+    style: "nova",
+    baseColor: "force-ui",
+    theme: "force-ui",
+    chartColor: "force-ui",
+    iconLibrary: "lucide",
+    font: "inter",
+    fontHeading: "inherit",
+    item: "Item",
+    rtl: false,
+    menuAccent: "subtle",
+    menuColor: "default",
+    radius: "default",
+  },
+  {
+    name: "base-force-ui",
+    title: "Force UI (Base)",
+    description: "Nova / Lucide / Inter / Force UI",
+    base: "base",
+    style: "nova",
+    baseColor: "force-ui",
+    theme: "force-ui",
+    chartColor: "force-ui",
+    iconLibrary: "lucide",
+    font: "inter",
+    fontHeading: "inherit",
+    item: "Item",
+    rtl: false,
+    menuAccent: "subtle",
+    menuColor: "default",
+    radius: "default",
+  },
   // Radix.
   {
     name: "radix-vega",

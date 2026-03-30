@@ -23,6 +23,7 @@ export const PRESET_BASE_COLORS = [
   "olive",
   "mist",
   "taupe",
+  "force-ui",
 ] as const
 
 export const PRESET_THEMES = [
@@ -51,6 +52,7 @@ export const PRESET_THEMES = [
   "olive",
   "mist",
   "taupe",
+  "force-ui",
 ] as const
 
 export const PRESET_CHART_COLORS = PRESET_THEMES
@@ -66,6 +68,7 @@ export const V1_CHART_COLOR_MAP: Record<string, string> = {
   olive: "violet",
   mist: "rose",
   taupe: "cyan",
+  "force-ui": "force-ui",
 }
 
 export const PRESET_ICON_LIBRARIES = [

@@ -10,6 +10,10 @@ export const FALLBACK_STYLE = "new-york-v4"
 
 export const BASE_COLORS = [
   {
+    name: "force-ui",
+    label: "Force UI",
+  },
+  {
     name: "neutral",
     label: "Neutral",
   },
