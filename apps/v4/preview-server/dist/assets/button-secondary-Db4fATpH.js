@@ -1,0 +1,1 @@
+import{B as r,t as e,a as n}from"./button-D-SwzDQ3.js";import"./utils-D2jV1zSv.js";function u(t){r(t,{variant:"secondary",children:(a,s)=>{var o=e("Secondary");n(a,o)},$$slots:{default:!0}})}export{u as default};

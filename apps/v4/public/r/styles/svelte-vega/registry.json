@@ -1,0 +1,208 @@
+{
+  "name": "force-ui/svelte",
+  "homepage": "https://force-ui.com",
+  "items": [
+    {
+      "name": "index",
+      "dependencies": ["class-variance-authority", "svelte"],
+      "devDependencies": ["tw-animate-css", "shadcn"],
+      "registryDependencies": ["utils"],
+      "files": [],
+      "cssVars": {},
+      "css": {
+        "@import \"tw-animate-css\"": {},
+        "@import \"shadcn/tailwind.css\"": {},
+        "@layer base": {
+          "*": {
+            "@apply border-border outline-ring/50": {}
+          },
+          "body": {
+            "@apply bg-background text-foreground": {}
+          }
+        }
+      },
+      "type": "registry:style"
+    },
+    {
+      "name": "style",
+      "dependencies": ["class-variance-authority", "svelte"],
+      "devDependencies": ["tw-animate-css", "shadcn"],
+      "registryDependencies": ["utils"],
+      "files": [],
+      "cssVars": {},
+      "css": {
+        "@import \"tw-animate-css\"": {},
+        "@import \"shadcn/tailwind.css\"": {},
+        "@layer base": {
+          "*": {
+            "@apply border-border outline-ring/50": {}
+          },
+          "body": {
+            "@apply bg-background text-foreground": {}
+          }
+        }
+      },
+      "type": "registry:style"
+    },
+    {
+      "name": "button",
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/ui/button.svelte",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "links": {
+          "docs": "https://force-ui.com/docs/components/svelte/button"
+        }
+      },
+      "type": "registry:ui"
+    },
+    {
+      "name": "button-demo",
+      "title": "Button Demo",
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/button-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-default",
+      "title": "Button Default",
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/button-default.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-destructive",
+      "title": "Button Destructive",
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/button-destructive.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-ghost",
+      "title": "Button Ghost",
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/button-ghost.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-icon",
+      "title": "Button Icon",
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/button-icon.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-link",
+      "title": "Button Link",
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/button-link.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-outline",
+      "title": "Button Outline",
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/button-outline.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-rounded",
+      "title": "Button Rounded",
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/button-rounded.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-secondary",
+      "title": "Button Secondary",
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/button-secondary.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-size",
+      "title": "Button Size",
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/button-size.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-with-icon",
+      "title": "Button With Icon",
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/button-with-icon.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "utils",
+      "dependencies": ["clsx", "tailwind-merge"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/lib/utils.ts",
+          "type": "registry:lib"
+        }
+      ],
+      "type": "registry:lib"
+    }
+  ]
+}

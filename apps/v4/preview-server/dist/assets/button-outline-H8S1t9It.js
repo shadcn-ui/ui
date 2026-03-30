@@ -1,0 +1,1 @@
+import{B as e,t as n,a as r}from"./button-D-SwzDQ3.js";import"./utils-D2jV1zSv.js";function s(t){e(t,{variant:"outline",children:(o,u)=>{var a=n("Outline");r(o,a)},$$slots:{default:!0}})}export{s as default};

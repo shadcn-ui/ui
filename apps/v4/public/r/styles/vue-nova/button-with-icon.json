@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-with-icon",
+  "title": "Button With Icon",
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-nova/examples/button-with-icon.vue",
+      "content": "<script setup lang=\"ts\">\nimport Button from \"@/ui/button.vue\"\n</script>\n\n<template>\n  <Button variant=\"outline\" size=\"sm\">\n    <svg\n      data-icon=\"inline-start\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      width=\"16\"\n      height=\"16\"\n      viewBox=\"0 0 24 24\"\n      fill=\"none\"\n      stroke=\"currentColor\"\n      stroke-width=\"2\"\n      stroke-linecap=\"round\"\n      stroke-linejoin=\"round\"\n    >\n      <line x1=\"6\" x2=\"6\" y1=\"3\" y2=\"15\" />\n      <circle cx=\"18\" cy=\"6\" r=\"3\" />\n      <circle cx=\"6\" cy=\"18\" r=\"3\" />\n      <path d=\"M18 9a9 9 0 0 1-9 9\" />\n    </svg>\n    New Branch\n  </Button>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

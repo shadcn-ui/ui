@@ -9664,4 +9664,470 @@ export const Index: Record<string, Record<string, any>> = {
       meta: undefined,
     },
   },
+  vue: {
+    button: {
+      name: "button",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "registry/bases/vue/ui/button.vue",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/vue/button" },
+      },
+    },
+    "button-demo": {
+      name: "button-demo",
+      title: "Button Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "registry/bases/vue/examples/button-demo.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "button-default": {
+      name: "button-default",
+      title: "Button Default",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "registry/bases/vue/examples/button-default.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "button-destructive": {
+      name: "button-destructive",
+      title: "Button Destructive",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "registry/bases/vue/examples/button-destructive.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "button-ghost": {
+      name: "button-ghost",
+      title: "Button Ghost",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "registry/bases/vue/examples/button-ghost.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "button-icon": {
+      name: "button-icon",
+      title: "Button Icon",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "registry/bases/vue/examples/button-icon.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "button-link": {
+      name: "button-link",
+      title: "Button Link",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "registry/bases/vue/examples/button-link.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "button-outline": {
+      name: "button-outline",
+      title: "Button Outline",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "registry/bases/vue/examples/button-outline.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "button-rounded": {
+      name: "button-rounded",
+      title: "Button Rounded",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "registry/bases/vue/examples/button-rounded.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "button-secondary": {
+      name: "button-secondary",
+      title: "Button Secondary",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "registry/bases/vue/examples/button-secondary.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "button-size": {
+      name: "button-size",
+      title: "Button Size",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "registry/bases/vue/examples/button-size.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "button-with-icon": {
+      name: "button-with-icon",
+      title: "Button With Icon",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "registry/bases/vue/examples/button-with-icon.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    utils: {
+      name: "utils",
+      title: "undefined",
+      description: "",
+      type: "registry:lib",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/vue/lib/utils.ts",
+          type: "registry:lib",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/bases/vue/lib/utils")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "utils"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+  },
+  svelte: {
+    button: {
+      name: "button",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "registry/bases/svelte/ui/button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/button" },
+      },
+    },
+    "button-demo": {
+      name: "button-demo",
+      title: "Button Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/button-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "button-default": {
+      name: "button-default",
+      title: "Button Default",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/button-default.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "button-destructive": {
+      name: "button-destructive",
+      title: "Button Destructive",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/button-destructive.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "button-ghost": {
+      name: "button-ghost",
+      title: "Button Ghost",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/button-ghost.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "button-icon": {
+      name: "button-icon",
+      title: "Button Icon",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/button-icon.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "button-link": {
+      name: "button-link",
+      title: "Button Link",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/button-link.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "button-outline": {
+      name: "button-outline",
+      title: "Button Outline",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/button-outline.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "button-rounded": {
+      name: "button-rounded",
+      title: "Button Rounded",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/button-rounded.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "button-secondary": {
+      name: "button-secondary",
+      title: "Button Secondary",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/button-secondary.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "button-size": {
+      name: "button-size",
+      title: "Button Size",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/button-size.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "button-with-icon": {
+      name: "button-with-icon",
+      title: "Button With Icon",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/button-with-icon.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    utils: {
+      name: "utils",
+      title: "undefined",
+      description: "",
+      type: "registry:lib",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/svelte/lib/utils.ts",
+          type: "registry:lib",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/bases/svelte/lib/utils")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "utils"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+  },
 }

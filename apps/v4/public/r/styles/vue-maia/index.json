@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "index",
+  "dependencies": [
+    "class-variance-authority",
+    "vue"
+  ],
+  "devDependencies": [
+    "tw-animate-css",
+    "shadcn"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [],
+  "cssVars": {},
+  "css": {
+    "@import \"tw-animate-css\"": {},
+    "@import \"shadcn/tailwind.css\"": {},
+    "@layer base": {
+      "*": {
+        "@apply border-border outline-ring/50": {}
+      },
+      "body": {
+        "@apply bg-background text-foreground": {}
+      }
+    }
+  },
+  "type": "registry:style"
+}

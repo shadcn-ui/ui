@@ -1,0 +1,1 @@
+import{B as a,t as s,a as o}from"./button-D-SwzDQ3.js";import"./utils-D2jV1zSv.js";function d(t){a(t,{variant:"destructive",children:(e,u)=>{var r=s("Destructive");o(e,r)},$$slots:{default:!0}})}export{d as default};
