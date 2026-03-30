@@ -9,7 +9,7 @@
     "preview-server:build": "cd preview-server && pnpm exec vite build && rm -rf ../public/preview && cp -r dist ../public/preview",
     "build": "pnpm registry:build && pnpm preview-server:build && next build",
     "start": "next start --port 4000",
-    "preview": "pnpm registry:build && next build && next start --port 4000",
+    "preview": "pnpm registry:build && pnpm preview-server:build && next build && next start --port 4000",
     "lint": "eslint . --cache --cache-location .eslintcache",
     "lint:fix": "eslint --fix . --cache --cache-location .eslintcache",
     "typecheck": "tsc --noEmit",
