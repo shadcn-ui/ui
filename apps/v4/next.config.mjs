@@ -137,6 +137,10 @@ const nextConfig = {
   rewrites() {
     return [
       {
+        source: "/preview/:path*",
+        destination: "/preview/index.html",
+      },
+      {
         source: "/docs/:path*.md",
         destination: "/llm/:path*",
       },

@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "pnpm registry:build && pnpm icons:dev & pnpm preview-server:dev & next dev --turbopack --port 4000",
     "preview-server:dev": "cd preview-server && pnpm exec vite --port 3001",
-    "build": "pnpm registry:build && next build",
+    "preview-server:build": "cd preview-server && pnpm exec vite build && rm -rf ../public/preview && cp -r dist ../public/preview",
+    "build": "pnpm registry:build && pnpm preview-server:build && next build",
     "start": "next start --port 4000",
     "preview": "pnpm registry:build && next build && next start --port 4000",
     "lint": "eslint . --cache --cache-location .eslintcache",

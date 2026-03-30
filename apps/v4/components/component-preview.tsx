@@ -7,7 +7,7 @@ import { ComponentSource } from "@/components/component-source"
 import { FrameworkPreviewIframe } from "@/components/framework-preview-iframe"
 
 const PREVIEW_SERVER_URL =
-  process.env.NEXT_PUBLIC_PREVIEW_SERVER_URL ?? "http://localhost:3001"
+  process.env.NEXT_PUBLIC_PREVIEW_SERVER_URL ?? "/preview"
 
 export function ComponentPreview({
   name,
