@@ -15,12 +15,12 @@ import { type z } from "zod"
 export const DEFAULT_PRESETS = {
   "force-ui": {
     title: "Force UI",
-    description: "Lucide / Inter / Indigo Brand",
+    description: "Lucide / Noto Sans / Indigo Brand",
     style: "nova",
     baseColor: "force-ui",
     theme: "force-ui",
     iconLibrary: "lucide",
-    font: "inter",
+    font: "noto-sans",
     fontHeading: "inherit",
     menuAccent: "subtle" as const,
     menuColor: "default" as const,
