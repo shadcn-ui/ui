@@ -135,16 +135,24 @@ const nextConfig = {
     ]
   },
   rewrites() {
-    return [
-      {
-        source: "/docs/:path*.md",
-        destination: "/llm/:path*",
-      },
-      {
-        source: "/init.md",
-        destination: "/init/md",
-      },
-    ]
+    return {
+      beforeFiles: [
+        {
+          source: "/preview/:path*",
+          destination: "/preview/index.html",
+        },
+      ],
+      afterFiles: [
+        {
+          source: "/docs/:path*.md",
+          destination: "/llm/:path*",
+        },
+        {
+          source: "/init.md",
+          destination: "/init/md",
+        },
+      ],
+    }
   },
 }
 

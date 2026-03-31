@@ -42,6 +42,9 @@ yarn-error.log*
 next-env.d.ts
 
 
+# generated preview server assets
+/public/preview
+
 # generated content
 .contentlayer
 .content-collections

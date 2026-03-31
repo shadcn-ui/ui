@@ -29,15 +29,16 @@ function syncTheme() {
   // Listen for theme messages from parent
   window.addEventListener("message", (e) => {
     if (e.data?.type === "theme-change") {
-      document.documentElement.classList.toggle(
-        "dark",
-        e.data.theme === "dark"
-      )
+      document.documentElement.classList.toggle("dark", e.data.theme === "dark")
     }
   })
 }
 
-const path = window.location.pathname
+const base = import.meta.env.BASE_URL ?? "/"
+const path = window.location.pathname.replace(
+  new RegExp(`^${base.replace(/\/$/, "")}`),
+  ""
+)
 
 async function renderPreview() {
   syncTheme()
