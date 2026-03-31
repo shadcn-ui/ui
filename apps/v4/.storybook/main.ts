@@ -16,6 +16,11 @@ const config: StorybookConfig = {
       "@": path.resolve(__dirname, ".."),
       // Mock next-themes for sonner component
       "next-themes": path.resolve(__dirname, "mocks/next-themes.ts"),
+      // Resolve shadcn/tailwind.css to source (avoids needing to build the shadcn package)
+      "shadcn/tailwind.css": path.resolve(
+        __dirname,
+        "../../../packages/shadcn/src/tailwind.css"
+      ),
     }
 
     // Tailwind v4 PostCSS
