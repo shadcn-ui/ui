@@ -56,7 +56,6 @@ export function Customizer({
       </CardHeader>
       <CardContent className="no-scrollbar min-h-0 flex-1 overflow-x-auto overflow-y-hidden md:overflow-y-auto">
         <FieldGroup className="flex-row gap-2.5 py-px **:data-[slot=field-separator]:-mx-4 **:data-[slot=field-separator]:w-auto md:flex-col md:gap-3.25">
-          {isMobile && <BasePicker isMobile={isMobile} anchorRef={anchorRef} />}
           <StylePicker
             styles={STYLES}
             isMobile={isMobile}
@@ -91,6 +90,7 @@ export function Customizer({
           <FieldSeparator className="hidden md:block" />
           <MenuColorPicker isMobile={isMobile} anchorRef={anchorRef} />
           <MenuAccentPicker isMobile={isMobile} anchorRef={anchorRef} />
+          {isMobile && <BasePicker isMobile={isMobile} anchorRef={anchorRef} />}
         </FieldGroup>
       </CardContent>
       <CardFooter className="flex min-w-0 gap-2 md:flex-col md:**:[button,a]:w-full">
