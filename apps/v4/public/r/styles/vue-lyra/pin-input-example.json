@@ -8,23 +8,8 @@
   ],
   "files": [
     {
-      "path": "registry/vue-lyra/examples/pin-input/PinInputBasic.vue",
-      "content": "<script setup lang=\"ts\">\nimport { PinInput, PinInputGroup, PinInputSlot } from \"@/ui/pin-input\"\n\nimport { Example } from \"@/components/example\"\n</script>\n\n<template>\n  <Example title=\"Basic Pin Input\">\n    <PinInput>\n      <PinInputGroup>\n        <PinInputSlot v-for=\"(id, index) in 4\" :key=\"id\" :index=\"index\" />\n      </PinInputGroup>\n    </PinInput>\n  </Example>\n</template>\n",
-      "type": "registry:example"
-    },
-    {
-      "path": "registry/vue-lyra/examples/pin-input/PinInputExample.vue",
-      "content": "<script setup lang=\"ts\">\nimport { ExampleWrapper } from \"@/components/example\"\n\nimport PinInputBasic from \"./PinInputBasic.vue\"\nimport PinInputMasked from \"./PinInputMasked.vue\"\nimport PinInputWithSeparator from \"./PinInputWithSeparator.vue\"\n</script>\n\n<template>\n  <ExampleWrapper>\n    <PinInputBasic />\n    <PinInputWithSeparator />\n    <PinInputMasked />\n  </ExampleWrapper>\n</template>\n",
-      "type": "registry:example"
-    },
-    {
-      "path": "registry/vue-lyra/examples/pin-input/PinInputMasked.vue",
-      "content": "<script setup lang=\"ts\">\nimport { PinInput, PinInputGroup, PinInputSlot } from \"@/ui/pin-input\"\n\nimport { Example } from \"@/components/example\"\n</script>\n\n<template>\n  <Example title=\"Masked Pin Input\">\n    <PinInput :mask=\"true\" type=\"text\">\n      <PinInputGroup>\n        <PinInputSlot v-for=\"(id, index) in 6\" :key=\"id\" :index=\"index\" />\n      </PinInputGroup>\n    </PinInput>\n  </Example>\n</template>\n",
-      "type": "registry:example"
-    },
-    {
-      "path": "registry/vue-lyra/examples/pin-input/PinInputWithSeparator.vue",
-      "content": "<script setup lang=\"ts\">\nimport {\n  PinInput,\n  PinInputGroup,\n  PinInputSeparator,\n  PinInputSlot,\n} from \"@/ui/pin-input\"\n\nimport { Example } from \"@/components/example\"\n</script>\n\n<template>\n  <Example title=\"Pin Input with Separator\">\n    <PinInput>\n      <PinInputGroup>\n        <PinInputSlot v-for=\"(id, index) in 3\" :key=\"id\" :index=\"index\" />\n      </PinInputGroup>\n      <PinInputSeparator />\n      <PinInputGroup>\n        <PinInputSlot v-for=\"(id, index) in 3\" :key=\"id\" :index=\"index + 3\" />\n      </PinInputGroup>\n    </PinInput>\n  </Example>\n</template>\n",
+      "path": "registry/vue-lyra/examples/pin-input/PinInputDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport {\n  PinInput,\n  PinInputGroup,\n  PinInputSeparator,\n  PinInputSlot,\n} from \"@/ui/pin-input\"\n</script>\n\n<template>\n  <PinInput :max-length=\"6\">\n    <PinInputGroup>\n      <PinInputSlot :index=\"0\" />\n      <PinInputSlot :index=\"1\" />\n      <PinInputSlot :index=\"2\" />\n    </PinInputGroup>\n    <PinInputSeparator />\n    <PinInputGroup>\n      <PinInputSlot :index=\"3\" />\n      <PinInputSlot :index=\"4\" />\n      <PinInputSlot :index=\"5\" />\n    </PinInputGroup>\n  </PinInput>\n</template>\n",
       "type": "registry:example"
     }
   ],

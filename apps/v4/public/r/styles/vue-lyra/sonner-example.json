@@ -6,13 +6,23 @@
     "vue-sonner"
   ],
   "registryDependencies": [
-    "example",
-    "button"
+    "button",
+    "dialog"
   ],
   "files": [
     {
-      "path": "registry/vue-lyra/examples/sonner/SonnerExample.vue",
-      "content": "<script setup lang=\"ts\">\nimport { Button } from \"@/ui/button\"\nimport { toast } from \"vue-sonner\"\n\nimport { Example, ExampleWrapper } from \"@/components/example\"\n\nfunction showBasicToast() {\n  toast(\"Event has been created\")\n}\n\nfunction showDescriptionToast() {\n  toast(\"Event has been created\", {\n    description: \"Monday, January 3rd at 6:00pm\",\n  })\n}\n\nfunction showSuccessToast() {\n  toast.success(\"Event has been created\")\n}\n\nfunction showErrorToast() {\n  toast.error(\"Something went wrong\")\n}\n</script>\n\n<template>\n  <ExampleWrapper>\n    <Example title=\"Basic\" class=\"items-center justify-center\">\n      <Button variant=\"outline\" class=\"w-fit\" @click=\"showBasicToast\">\n        Show Toast\n      </Button>\n    </Example>\n\n    <Example title=\"With Description\" class=\"items-center justify-center\">\n      <Button variant=\"outline\" class=\"w-fit\" @click=\"showDescriptionToast\">\n        Show Toast\n      </Button>\n    </Example>\n\n    <Example title=\"Success\" class=\"items-center justify-center\">\n      <Button variant=\"outline\" class=\"w-fit\" @click=\"showSuccessToast\">\n        Show Success Toast\n      </Button>\n    </Example>\n\n    <Example title=\"Error\" class=\"items-center justify-center\">\n      <Button variant=\"outline\" class=\"w-fit\" @click=\"showErrorToast\">\n        Show Error Toast\n      </Button>\n    </Example>\n  </ExampleWrapper>\n</template>\n",
+      "path": "registry/vue-lyra/examples/sonner/SonnerDemo.vue",
+      "content": "<!-- eslint-disable no-console -->\n<!-- eslint-disable no-template-curly-in-string -->\n<script setup lang=\"ts\">\nimport { Button } from \"@/ui/button\"\nimport { toast } from \"vue-sonner\"\n</script>\n\n<template>\n  <Button\n    variant=\"outline\"\n    @click=\"\n      () =>\n        toast('Event has been created', {\n          description: 'Sunday, December 03, 2023 at 9:00 AM',\n          action: {\n            label: 'Undo',\n            onClick: () => console.log('Undo'),\n          },\n        })\n    \"\n  >\n    Show Toast\n  </Button>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-lyra/examples/sonner/SonnerTypesDemo.vue",
+      "content": "<!-- eslint-disable no-console -->\n<!-- eslint-disable no-template-curly-in-string -->\n<script setup lang=\"ts\">\nimport { Button } from \"@/ui/button\"\nimport { toast } from \"vue-sonner\"\n\nfunction handlePromiseClick() {\n  toast.promise<{ name: string }>(\n    () =>\n      new Promise((resolve) =>\n        setTimeout(() => resolve({ name: \"Event\" }), 2000)\n      ),\n    {\n      loading: \"Loading...\",\n      success: (data: { name: string }) => `${data.name} has been created`,\n      error: \"Error\",\n    }\n  )\n}\n</script>\n\n<template>\n  <div class=\"flex flex-wrap gap-2\">\n    <Button variant=\"outline\" @click=\"() => toast('Event has been created')\">\n      Default\n    </Button>\n    <Button\n      variant=\"outline\"\n      @click=\"() => toast.success('Event has been created')\"\n    >\n      Success\n    </Button>\n    <Button\n      variant=\"outline\"\n      @click=\"\n        () => toast.info('Be at the area 10 minutes before the event time')\n      \"\n    >\n      Info\n    </Button>\n    <Button\n      variant=\"outline\"\n      @click=\"\n        () => toast.warning('Event start time cannot be earlier than 8am')\n      \"\n    >\n      Warning\n    </Button>\n    <Button\n      variant=\"outline\"\n      @click=\"() => toast.error('Event has not been created')\"\n    >\n      Error\n    </Button>\n    <Button variant=\"outline\" @click=\"handlePromiseClick\"> Promise </Button>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-lyra/examples/sonner/SonnerWithDialogDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Button } from \"@/ui/button\"\nimport {\n  Dialog,\n  DialogContent,\n  DialogDescription,\n  DialogHeader,\n  DialogTitle,\n  DialogTrigger,\n} from \"@/ui/dialog\"\nimport { toast } from \"vue-sonner\"\n</script>\n\n<template>\n  <Dialog>\n    <DialogTrigger as-child>\n      <Button variant=\"outline\"> Dialog with toast </Button>\n    </DialogTrigger>\n    <DialogContent\n      class=\"sm:max-w-md\"\n      @interact-outside=\"\n        (event) => {\n          const target = event.target as HTMLElement\n          if (target?.closest('[data-sonner-toaster]'))\n            return event.preventDefault()\n        }\n      \"\n    >\n      <DialogHeader>\n        <DialogTitle>Vue Sonner Toast</DialogTitle>\n        <DialogDescription> Dialog with toast </DialogDescription>\n      </DialogHeader>\n      <div class=\"grid gap-4\">\n        <Button\n          size=\"sm\"\n          class=\"px-3\"\n          @click=\"\n            () => {\n              toast('Event has been created', {\n                description: 'Sunday, December 03, 2023 at 9:00 AM',\n                action: {\n                  label: 'Undo',\n                  onClick: () => console.log('Undo'),\n                },\n              })\n            }\n          \"\n        >\n          Toast\n        </Button>\n      </div>\n    </DialogContent>\n  </Dialog>\n</template>\n",
       "type": "registry:example"
     }
   ],

@@ -4,33 +4,12 @@
   "title": "Separator",
   "dependencies": [],
   "registryDependencies": [
-    "example",
     "separator"
   ],
   "files": [
     {
-      "path": "registry/vue-nova/examples/separator/SeparatorExample.vue",
-      "content": "<script setup lang=\"ts\">\nimport SeparatorHorizontal from \"@/examples/separator/SeparatorHorizontal.vue\"\nimport SeparatorInList from \"@/examples/separator/SeparatorInList.vue\"\nimport SeparatorVertical from \"@/examples/separator/SeparatorVertical.vue\"\nimport SeparatorVerticalMenu from \"@/examples/separator/SeparatorVerticalMenu.vue\"\n\nimport { ExampleWrapper } from \"@/components/example\"\n</script>\n\n<template>\n  <ExampleWrapper>\n    <SeparatorHorizontal />\n    <SeparatorVertical />\n    <SeparatorVerticalMenu />\n    <SeparatorInList />\n  </ExampleWrapper>\n</template>\n",
-      "type": "registry:example"
-    },
-    {
-      "path": "registry/vue-nova/examples/separator/SeparatorHorizontal.vue",
-      "content": "<script setup lang=\"ts\">\nimport { Separator } from \"@/ui/separator\"\n\nimport { Example } from \"@/components/example\"\n</script>\n\n<template>\n  <Example title=\"Horizontal\">\n    <div class=\"flex flex-col gap-4 text-sm style-lyra:text-xs/relaxed\">\n      <div class=\"flex flex-col gap-1\">\n        <div class=\"leading-none font-medium\">shadcn/ui</div>\n        <div class=\"text-muted-foreground\">\n          The Foundation for your Design System\n        </div>\n      </div>\n      <Separator />\n      <div>\n        A set of beautifully designed components that you can customize, extend,\n        and build on.\n      </div>\n    </div>\n  </Example>\n</template>\n",
-      "type": "registry:example"
-    },
-    {
-      "path": "registry/vue-nova/examples/separator/SeparatorInList.vue",
-      "content": "<script setup lang=\"ts\">\nimport { Separator } from \"@/ui/separator\"\n\nimport { Example } from \"@/components/example\"\n</script>\n\n<template>\n  <Example title=\"In List\">\n    <div class=\"flex flex-col gap-2 text-sm style-lyra:text-xs/relaxed\">\n      <dl class=\"flex items-center justify-between\">\n        <dt>Item 1</dt>\n        <dd class=\"text-muted-foreground\">Value 1</dd>\n      </dl>\n      <Separator />\n      <dl class=\"flex items-center justify-between\">\n        <dt>Item 2</dt>\n        <dd class=\"text-muted-foreground\">Value 2</dd>\n      </dl>\n      <Separator />\n      <dl class=\"flex items-center justify-between\">\n        <dt>Item 3</dt>\n        <dd class=\"text-muted-foreground\">Value 3</dd>\n      </dl>\n    </div>\n  </Example>\n</template>\n",
-      "type": "registry:example"
-    },
-    {
-      "path": "registry/vue-nova/examples/separator/SeparatorVertical.vue",
-      "content": "<script setup lang=\"ts\">\nimport { Separator } from \"@/ui/separator\"\n\nimport { Example } from \"@/components/example\"\n</script>\n\n<template>\n  <Example title=\"Vertical\">\n    <div class=\"flex h-5 items-center gap-4 text-sm style-lyra:text-xs/relaxed\">\n      <div>Blog</div>\n      <Separator orientation=\"vertical\" />\n      <div>Docs</div>\n      <Separator orientation=\"vertical\" />\n      <div>Source</div>\n    </div>\n  </Example>\n</template>\n",
-      "type": "registry:example"
-    },
-    {
-      "path": "registry/vue-nova/examples/separator/SeparatorVerticalMenu.vue",
-      "content": "<script setup lang=\"ts\">\nimport { Separator } from \"@/ui/separator\"\n\nimport { Example } from \"@/components/example\"\n</script>\n\n<template>\n  <Example title=\"Vertical Menu\">\n    <div\n      class=\"flex items-center gap-2 text-sm md:gap-4 style-lyra:text-xs/relaxed\"\n    >\n      <div class=\"flex flex-col gap-1\">\n        <span class=\"font-medium\">Settings</span>\n        <span class=\"text-xs text-muted-foreground\"> Manage preferences </span>\n      </div>\n      <Separator orientation=\"vertical\" />\n      <div class=\"flex flex-col gap-1\">\n        <span class=\"font-medium\">Account</span>\n        <span class=\"text-xs text-muted-foreground\"> Profile & security </span>\n      </div>\n      <Separator orientation=\"vertical\" />\n      <div class=\"flex flex-col gap-1\">\n        <span class=\"font-medium\">Help</span>\n        <span class=\"text-xs text-muted-foreground\">Support & docs</span>\n      </div>\n    </div>\n  </Example>\n</template>\n",
+      "path": "registry/vue-nova/examples/separator/SeparatorDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Separator } from \"@/ui/separator\"\n</script>\n\n<template>\n  <div>\n    <div class=\"space-y-1\">\n      <h4 class=\"text-sm leading-none font-medium\">Radix Primitives</h4>\n      <p class=\"text-sm text-muted-foreground\">\n        An open-source UI component library.\n      </p>\n    </div>\n    <Separator class=\"my-4\" />\n    <div class=\"flex h-5 items-center space-x-4 text-sm\">\n      <div>Blog</div>\n      <Separator orientation=\"vertical\" />\n      <div>Docs</div>\n      <Separator orientation=\"vertical\" />\n      <div>Source</div>\n    </div>\n  </div>\n</template>\n",
       "type": "registry:example"
     }
   ],

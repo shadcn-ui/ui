@@ -4,30 +4,12 @@
   "title": "Pagination",
   "dependencies": [],
   "registryDependencies": [
-    "pagination",
-    "example",
-    "field",
-    "select"
+    "pagination"
   ],
   "files": [
     {
-      "path": "registry/vue-lyra/examples/pagination/PaginationBasic.vue",
-      "content": "<script setup lang=\"ts\">\nimport {\n  Pagination,\n  PaginationContent,\n  PaginationEllipsis,\n  PaginationItem,\n  PaginationLink,\n  PaginationNext,\n  PaginationPrevious,\n} from \"@/ui/pagination\"\n</script>\n\n<template>\n  <Pagination>\n    <PaginationContent>\n      <PaginationItem>\n        <PaginationPrevious href=\"#\" />\n      </PaginationItem>\n      <PaginationItem>\n        <PaginationLink href=\"#\"> 1 </PaginationLink>\n      </PaginationItem>\n      <PaginationItem>\n        <PaginationLink href=\"#\" :is-active=\"true\"> 2 </PaginationLink>\n      </PaginationItem>\n      <PaginationItem>\n        <PaginationLink href=\"#\"> 3 </PaginationLink>\n      </PaginationItem>\n      <PaginationItem>\n        <PaginationEllipsis />\n      </PaginationItem>\n      <PaginationItem>\n        <PaginationNext href=\"#\" />\n      </PaginationItem>\n    </PaginationContent>\n  </Pagination>\n</template>\n",
-      "type": "registry:example"
-    },
-    {
-      "path": "registry/vue-lyra/examples/pagination/PaginationExample.vue",
-      "content": "<script setup lang=\"ts\">\nimport PaginationBasic from \"@/examples/pagination/PaginationBasic.vue\"\nimport PaginationSimple from \"@/examples/pagination/PaginationSimple.vue\"\nimport PaginationWithSelect from \"@/examples/pagination/PaginationWithSelect.vue\"\n\nimport { Example, ExampleWrapper } from \"@/components/example\"\n</script>\n\n<template>\n  <ExampleWrapper>\n    <Example title=\"Basic\">\n      <PaginationBasic />\n    </Example>\n    <Example title=\"Simple\">\n      <PaginationSimple />\n    </Example>\n    <Example title=\"With Select\">\n      <PaginationWithSelect />\n    </Example>\n  </ExampleWrapper>\n</template>\n",
-      "type": "registry:example"
-    },
-    {
-      "path": "registry/vue-lyra/examples/pagination/PaginationSimple.vue",
-      "content": "<script setup lang=\"ts\">\nimport {\n  Pagination,\n  PaginationContent,\n  PaginationItem,\n  PaginationLink,\n} from \"@/ui/pagination\"\n</script>\n\n<template>\n  <Pagination>\n    <PaginationContent>\n      <PaginationItem>\n        <PaginationLink href=\"#\"> 1 </PaginationLink>\n      </PaginationItem>\n      <PaginationItem>\n        <PaginationLink href=\"#\" :is-active=\"true\"> 2 </PaginationLink>\n      </PaginationItem>\n      <PaginationItem>\n        <PaginationLink href=\"#\"> 3 </PaginationLink>\n      </PaginationItem>\n      <PaginationItem>\n        <PaginationLink href=\"#\"> 4 </PaginationLink>\n      </PaginationItem>\n      <PaginationItem>\n        <PaginationLink href=\"#\"> 5 </PaginationLink>\n      </PaginationItem>\n    </PaginationContent>\n  </Pagination>\n</template>\n",
-      "type": "registry:example"
-    },
-    {
-      "path": "registry/vue-lyra/examples/pagination/PaginationWithSelect.vue",
-      "content": "<script setup lang=\"ts\">\nimport { Field, FieldLabel } from \"@/ui/field\"\nimport {\n  Pagination,\n  PaginationContent,\n  PaginationItem,\n  PaginationNext,\n  PaginationPrevious,\n} from \"@/ui/pagination\"\nimport {\n  Select,\n  SelectContent,\n  SelectGroup,\n  SelectItem,\n  SelectTrigger,\n  SelectValue,\n} from \"@/ui/select\"\n</script>\n\n<template>\n  <div class=\"flex items-center justify-between gap-4\">\n    <Field orientation=\"horizontal\" class=\"w-fit\">\n      <FieldLabel html-for=\"select-rows-per-page\"> Rows per page </FieldLabel>\n      <Select default-value=\"25\">\n        <SelectTrigger id=\"select-rows-per-page\" class=\"w-20\">\n          <SelectValue />\n        </SelectTrigger>\n        <SelectContent align=\"start\">\n          <SelectGroup>\n            <SelectItem value=\"10\"> 10 </SelectItem>\n            <SelectItem value=\"25\"> 25 </SelectItem>\n            <SelectItem value=\"50\"> 50 </SelectItem>\n            <SelectItem value=\"100\"> 100 </SelectItem>\n          </SelectGroup>\n        </SelectContent>\n      </Select>\n    </Field>\n    <Pagination class=\"mx-0 w-auto\">\n      <PaginationContent>\n        <PaginationItem>\n          <PaginationPrevious href=\"#\" />\n        </PaginationItem>\n        <PaginationItem>\n          <PaginationNext href=\"#\" />\n        </PaginationItem>\n      </PaginationContent>\n    </Pagination>\n  </div>\n</template>\n",
+      "path": "registry/vue-lyra/examples/pagination/PaginationDemo.vue",
+      "content": "<script setup lang=\"ts\">\nimport {\n  Pagination,\n  PaginationContent,\n  PaginationEllipsis,\n  PaginationItem,\n  PaginationNext,\n  PaginationPrevious,\n} from \"@/ui/pagination\"\n</script>\n\n<template>\n  <div class=\"flex flex-col gap-6\">\n    <Pagination\n      v-slot=\"{ page }\"\n      :items-per-page=\"10\"\n      :total=\"30\"\n      :default-page=\"2\"\n    >\n      <PaginationContent v-slot=\"{ items }\">\n        <PaginationPrevious />\n\n        <template v-for=\"(item, index) in items\" :key=\"index\">\n          <PaginationItem\n            v-if=\"item.type === 'page'\"\n            :value=\"item.value\"\n            :is-active=\"item.value === page\"\n          >\n            {{ item.value }}\n          </PaginationItem>\n        </template>\n\n        <PaginationEllipsis :index=\"4\" />\n\n        <PaginationNext />\n      </PaginationContent>\n    </Pagination>\n  </div>\n</template>\n",
       "type": "registry:example"
     }
   ],

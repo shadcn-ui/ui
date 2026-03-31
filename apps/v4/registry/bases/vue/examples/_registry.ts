@@ -7,35 +7,12 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
-        path: "examples/accordion/AccordionBasic.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/accordion/AccordionExample.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/accordion/AccordionInCard.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/accordion/AccordionMultiple.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/accordion/AccordionWithBorders.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/accordion/AccordionWithDisabled.vue",
+        path: "examples/accordion/AccordionDemo.vue",
         type: "registry:example",
       },
     ],
     registryDependencies: [
       "accordion",
-      "example",
-      "button",
-      "card",
     ],
     dependencies: [],
   },
@@ -45,33 +22,20 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
-        path: "examples/alert/AlertBasic.vue",
+        path: "examples/alert/AlertDemo.vue",
         type: "registry:example",
       },
       {
         path: "examples/alert/AlertDestructive.vue",
         type: "registry:example",
       },
-      {
-        path: "examples/alert/AlertExample.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/alert/AlertWithActions.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/alert/AlertWithIcons.vue",
-        type: "registry:example",
-      },
     ],
     registryDependencies: [
       "alert",
-      "example",
-      "badge",
-      "button",
     ],
-    dependencies: [],
+    dependencies: [
+      "lucide-vue-next",
+    ],
   },
   {
     name: "alert-dialog-example",
@@ -79,39 +43,13 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
-        path: "examples/alert-dialog/AlertDialogBasic.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/alert-dialog/AlertDialogDestructive.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/alert-dialog/AlertDialogExample.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/alert-dialog/AlertDialogInDialog.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/alert-dialog/AlertDialogSmall.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/alert-dialog/AlertDialogSmallWithMedia.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/alert-dialog/AlertDialogWithMedia.vue",
+        path: "examples/alert-dialog/AlertDialogDemo.vue",
         type: "registry:example",
       },
     ],
     registryDependencies: [
       "alert-dialog",
       "button",
-      "example",
-      "dialog",
     ],
     dependencies: [],
   },
@@ -121,29 +59,12 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
-        path: "examples/aspect-ratio/AspectRatio16x9.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/aspect-ratio/AspectRatio1x1.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/aspect-ratio/AspectRatio21x9.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/aspect-ratio/AspectRatio9x16.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/aspect-ratio/AspectRatioExample.vue",
+        path: "examples/aspect-ratio/AspectRatioDemo.vue",
         type: "registry:example",
       },
     ],
     registryDependencies: [
       "aspect-ratio",
-      "example",
     ],
     dependencies: [],
   },
@@ -153,43 +74,12 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
-        path: "examples/avatar/AvatarExample.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/avatar/AvatarGroupExample.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/avatar/AvatarGroupWithCount.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/avatar/AvatarGroupWithIconCount.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/avatar/AvatarInEmpty.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/avatar/AvatarSizes.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/avatar/AvatarWithBadge.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/avatar/AvatarWithBadgeIcon.vue",
+        path: "examples/avatar/AvatarDemo.vue",
         type: "registry:example",
       },
     ],
     registryDependencies: [
-      "example",
       "avatar",
-      "button",
-      "empty",
     ],
     dependencies: [],
   },
@@ -199,44 +89,28 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
-        path: "examples/badge/BadgeAsLink.vue",
+        path: "examples/badge/BadgeDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/badge/BadgeCustomColors.vue",
+        path: "examples/badge/BadgeDestructive.vue",
         type: "registry:example",
       },
       {
-        path: "examples/badge/BadgeExample.vue",
+        path: "examples/badge/BadgeOutline.vue",
         type: "registry:example",
       },
       {
-        path: "examples/badge/BadgeLongText.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/badge/BadgeVariants.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/badge/BadgeWithIconLeft.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/badge/BadgeWithIconRight.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/badge/BadgeWithSpinner.vue",
+        path: "examples/badge/BadgeSecondary.vue",
         type: "registry:example",
       },
     ],
     registryDependencies: [
       "badge",
-      "example",
-      "spinner",
     ],
-    dependencies: [],
+    dependencies: [
+      "lucide-vue-next",
+    ],
   },
   {
     name: "breadcrumb-example",
@@ -244,29 +118,39 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
-        path: "examples/breadcrumb/BreadcrumbBasic.vue",
+        path: "examples/breadcrumb/BreadcrumbCollapsedDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/breadcrumb/BreadcrumbExample.vue",
+        path: "examples/breadcrumb/BreadcrumbCustomSeparatorDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/breadcrumb/BreadcrumbWithDropdown.vue",
+        path: "examples/breadcrumb/BreadcrumbDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/breadcrumb/BreadcrumbWithLink.vue",
+        path: "examples/breadcrumb/BreadcrumbDropdownDemo.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/breadcrumb/BreadcrumbLinkDemo.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/breadcrumb/BreadcrumbResponsiveDemo.vue",
         type: "registry:example",
       },
     ],
     registryDependencies: [
       "breadcrumb",
-      "example",
       "button",
+      "drawer",
       "dropdown-menu",
     ],
-    dependencies: [],
+    dependencies: [
+      "lucide-vue-next",
+    ],
   },
   {
     name: "button-example",
@@ -274,39 +158,61 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
-        path: "examples/button/ButtonExample.vue",
+        path: "examples/button/ButtonDefault.vue",
         type: "registry:example",
       },
       {
-        path: "examples/button/ButtonExamples.vue",
+        path: "examples/button/ButtonDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/button/ButtonIconLeft.vue",
+        path: "examples/button/ButtonDestructive.vue",
         type: "registry:example",
       },
       {
-        path: "examples/button/ButtonIconOnly.vue",
+        path: "examples/button/ButtonGhost.vue",
         type: "registry:example",
       },
       {
-        path: "examples/button/ButtonIconRight.vue",
+        path: "examples/button/ButtonIcon.vue",
         type: "registry:example",
       },
       {
-        path: "examples/button/ButtonInvalidStates.vue",
+        path: "examples/button/ButtonLink.vue",
         type: "registry:example",
       },
       {
-        path: "examples/button/ButtonVariantsAndSizes.vue",
+        path: "examples/button/ButtonLoading.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/button/ButtonOutline.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/button/ButtonRounded.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/button/ButtonSecondary.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/button/ButtonSize.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/button/ButtonWithIcon.vue",
         type: "registry:example",
       },
     ],
     registryDependencies: [
-      "example",
       "button",
+      "spinner",
     ],
-    dependencies: [],
+    dependencies: [
+      "lucide-vue-next",
+    ],
   },
   {
     name: "button-group-example",
@@ -314,91 +220,65 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
-        path: "examples/button-group/ButtonGroupBasic.vue",
+        path: "examples/button-group/ButtonGroupDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/button-group/ButtonGroupExample.vue",
+        path: "examples/button-group/ButtonGroupInputGroupDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/button-group/ButtonGroupNavigation.vue",
+        path: "examples/button-group/ButtonGroupNestedDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/button-group/ButtonGroupNested.vue",
+        path: "examples/button-group/ButtonGroupOrientationDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/button-group/ButtonGroupPagination.vue",
+        path: "examples/button-group/ButtonGroupSeparatorDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/button-group/ButtonGroupPaginationSplit.vue",
+        path: "examples/button-group/ButtonGroupSizeDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/button-group/ButtonGroupTextAlignment.vue",
+        path: "examples/button-group/ButtonGroupSplitDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/button-group/ButtonGroupVertical.vue",
+        path: "examples/button-group/ButtonGroupWithDropdownMenuDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/button-group/ButtonGroupVerticalNested.vue",
+        path: "examples/button-group/ButtonGroupWithInputDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/button-group/ButtonGroupWithDropdown.vue",
+        path: "examples/button-group/ButtonGroupWithPopoverDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/button-group/ButtonGroupWithFields.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/button-group/ButtonGroupWithIcons.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/button-group/ButtonGroupWithInput.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/button-group/ButtonGroupWithInputGroup.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/button-group/ButtonGroupWithLike.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/button-group/ButtonGroupWithSelect.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/button-group/ButtonGroupWithSelectAndInput.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/button-group/ButtonGroupWithText.vue",
+        path: "examples/button-group/ButtonGroupWithSelectDemo.vue",
         type: "registry:example",
       },
     ],
     registryDependencies: [
       "button",
       "button-group",
-      "example",
-      "input-group",
-      "tooltip",
-      "field",
-      "label",
       "dropdown-menu",
       "input",
+      "input-group",
+      "popover",
       "select",
+      "separator",
+      "textarea",
+      "tooltip",
     ],
-    dependencies: [],
+    dependencies: [
+      "lucide-vue-next",
+    ],
   },
   {
     name: "calendar-example",
@@ -406,70 +286,56 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
-        path: "examples/calendar/CalendarBookedDates.vue",
+        path: "examples/calendar/CalendarCustomCellSize.vue",
         type: "registry:example",
       },
       {
-        path: "examples/calendar/CalendarCustomDays.vue",
+        path: "examples/calendar/CalendarDateAndTimePicker.vue",
         type: "registry:example",
       },
       {
-        path: "examples/calendar/CalendarExample.vue",
+        path: "examples/calendar/CalendarDateBirth.vue",
         type: "registry:example",
       },
       {
-        path: "examples/calendar/CalendarMultiple.vue",
+        path: "examples/calendar/CalendarDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/calendar/CalendarRange.vue",
+        path: "examples/calendar/CalendarNaturalLanguagePicker.vue",
         type: "registry:example",
       },
       {
-        path: "examples/calendar/CalendarRangeMultipleMonths.vue",
+        path: "examples/calendar/CalendarPersianDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/calendar/CalendarSingle.vue",
+        path: "examples/calendar/CalendarRangeDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/calendar/CalendarWeekNumbers.vue",
+        path: "examples/calendar/CalendarSystems.vue",
         type: "registry:example",
       },
       {
-        path: "examples/calendar/CalendarWithPresets.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/calendar/CalendarWithTime.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/calendar/DatePickerSimple.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/calendar/DatePickerWithDropdowns.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/calendar/DatePickerWithRange.vue",
+        path: "examples/calendar/CalendarYearAndMonthSelector.vue",
         type: "registry:example",
       },
     ],
     registryDependencies: [
-      "calendar",
-      "card",
-      "range-calendar",
-      "example",
       "button",
-      "field",
-      "input-group",
+      "calendar",
+      "input",
+      "label",
       "popover",
+      "range-calendar",
+      "select",
     ],
     dependencies: [
+      "chrono-node",
+      "lucide-vue-next",
       "reka-ui",
+      "reka-ui/date",
     ],
   },
   {
@@ -478,57 +344,15 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
-        path: "examples/card/CardDefault.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/card/CardExample.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/card/CardFooterWithBorder.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/card/CardFooterWithBorderSmall.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/card/CardHeaderWithBorder.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/card/CardHeaderWithBorderSmall.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/card/CardLogin.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/card/CardMeetingNotes.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/card/CardSmall.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/card/CardWithImage.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/card/CardWithImageSmall.vue",
+        path: "examples/card/CardDemo.vue",
         type: "registry:example",
       },
     ],
     registryDependencies: [
       "button",
       "card",
-      "example",
-      "field",
       "input",
-      "avatar",
+      "label",
     ],
     dependencies: [],
   },
@@ -538,28 +362,37 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
-        path: "examples/carousel/CarouselBasic.vue",
+        path: "examples/carousel/CarouselApi.vue",
         type: "registry:example",
       },
       {
-        path: "examples/carousel/CarouselExample.vue",
+        path: "examples/carousel/CarouselDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/carousel/CarouselMultiple.vue",
+        path: "examples/carousel/CarouselOrientation.vue",
         type: "registry:example",
       },
       {
-        path: "examples/carousel/CarouselWithGap.vue",
+        path: "examples/carousel/CarouselPlugin.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/carousel/CarouselSize.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/carousel/CarouselSpacing.vue",
         type: "registry:example",
       },
     ],
     registryDependencies: [
       "card",
       "carousel",
-      "example",
     ],
-    dependencies: [],
+    dependencies: [
+      "embla-carousel-autoplay",
+    ],
   },
   {
     name: "chart-example",
@@ -567,34 +400,32 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
-        path: "examples/chart/ChartAreaExample.vue",
+        path: "examples/chart/ChartBarDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/chart/ChartBarExample.vue",
+        path: "examples/chart/ChartBarDemoAxis.vue",
         type: "registry:example",
       },
       {
-        path: "examples/chart/ChartExample.vue",
+        path: "examples/chart/ChartBarDemoLegend.vue",
         type: "registry:example",
       },
       {
-        path: "examples/chart/ChartLineExample.vue",
+        path: "examples/chart/ChartBarDemoTooltip.vue",
         type: "registry:example",
       },
       {
-        path: "examples/chart/ChartRadialExample.vue",
+        path: "examples/chart/ChartDemo.vue",
         type: "registry:example",
       },
     ],
     registryDependencies: [
-      "chart",
-      "example",
       "card",
+      "chart",
     ],
     dependencies: [
-      "@unovis/vue",
-      "@unovis/ts",
+      "lucide-vue-next",
     ],
   },
   {
@@ -603,43 +434,17 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
-        path: "examples/checkbox/CheckboxBasic.vue",
+        path: "examples/checkbox/CheckboxDemo.vue",
         type: "registry:example",
       },
       {
         path: "examples/checkbox/CheckboxDisabled.vue",
         type: "registry:example",
       },
-      {
-        path: "examples/checkbox/CheckboxExample.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/checkbox/CheckboxGroup.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/checkbox/CheckboxInTable.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/checkbox/CheckboxInvalid.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/checkbox/CheckboxWithDescription.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/checkbox/CheckboxWithTitle.vue",
-        type: "registry:example",
-      },
     ],
     registryDependencies: [
       "checkbox",
-      "field",
-      "example",
-      "table",
+      "label",
     ],
     dependencies: [],
   },
@@ -649,28 +454,17 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
-        path: "examples/collapsible/CollapsibleExample.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/collapsible/CollapsibleFileTree.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/collapsible/CollapsibleSettings.vue",
+        path: "examples/collapsible/CollapsibleDemo.vue",
         type: "registry:example",
       },
     ],
     registryDependencies: [
-      "example",
       "button",
-      "card",
       "collapsible",
-      "tabs",
-      "field",
-      "input",
     ],
-    dependencies: [],
+    dependencies: [
+      "lucide-vue-next",
+    ],
   },
   {
     name: "combobox-example",
@@ -678,75 +472,17 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
-        path: "examples/combobox/ComboboxAutoHighlight.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/combobox/ComboboxBasic.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/combobox/ComboboxDisabled.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/combobox/ComboboxExample.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/combobox/ComboboxInDialog.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/combobox/ComboboxInPopup.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/combobox/ComboboxInputAddon.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/combobox/ComboboxInvalid.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/combobox/ComboboxLargeList.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/combobox/ComboboxWithClear.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/combobox/ComboboxWithForm.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/combobox/ComboboxWithGroups.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/combobox/ComboboxWithGroupsAndSeparator.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/combobox/ComboboxWithOtherInputs.vue",
+        path: "examples/combobox/ComboboxDemo.vue",
         type: "registry:example",
       },
     ],
     registryDependencies: [
-      "example",
-      "combobox",
       "button",
-      "dialog",
-      "field",
-      "input-group",
-      "card",
-      "input",
-      "select",
+      "command",
+      "popover",
     ],
     dependencies: [
-      "vue-sonner",
+      "lucide-vue-next",
     ],
   },
   {
@@ -755,32 +491,16 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
-        path: "examples/command/CommandBasic.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/command/CommandExample.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/command/CommandManyItems.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/command/CommandWithGroups.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/command/CommandWithShortcuts.vue",
+        path: "examples/command/CommandDemo.vue",
         type: "registry:example",
       },
     ],
     registryDependencies: [
-      "example",
-      "button",
       "command",
     ],
-    dependencies: [],
+    dependencies: [
+      "lucide-vue-next",
+    ],
   },
   {
     name: "context-menu-example",
@@ -788,57 +508,56 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
-        path: "examples/context-menu/ContextMenuBasic.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/context-menu/ContextMenuExample.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/context-menu/ContextMenuInDialog.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/context-menu/ContextMenuWithCheckboxes.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/context-menu/ContextMenuWithDestructive.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/context-menu/ContextMenuWithGroups.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/context-menu/ContextMenuWithIcons.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/context-menu/ContextMenuWithRadio.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/context-menu/ContextMenuWithShortcuts.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/context-menu/ContextMenuWithSides.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/context-menu/ContextMenuWithSubmenu.vue",
+        path: "examples/context-menu/ContextMenuDemo.vue",
         type: "registry:example",
       },
     ],
     registryDependencies: [
       "context-menu",
-      "example",
-      "button",
-      "dialog",
     ],
-    dependencies: [],
+    dependencies: [
+      "lucide-vue-next",
+    ],
+  },
+  {
+    name: "data-table-example",
+    title: "Data Table",
+    type: "registry:example",
+    files: [
+      {
+        path: "examples/data-table/DataTableDemo.vue",
+        type: "registry:example",
+      },
+    ],
+    registryDependencies: [
+      "button",
+      "checkbox",
+      "dropdown-menu",
+      "input",
+      "table",
+    ],
+    dependencies: [
+      "lucide-vue-next",
+    ],
+  },
+  {
+    name: "date-picker-example",
+    title: "Date Picker",
+    type: "registry:example",
+    files: [
+      {
+        path: "examples/date-picker/DatePickerDemo.vue",
+        type: "registry:example",
+      },
+    ],
+    registryDependencies: [
+      "button",
+      "calendar",
+      "popover",
+    ],
+    dependencies: [
+      "lucide-vue-next",
+    ],
   },
   {
     name: "dialog-example",
@@ -846,47 +565,35 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
-        path: "examples/dialog/DialogChatSettings.vue",
+        path: "examples/dialog/DialogCloseButton.vue",
         type: "registry:example",
       },
       {
-        path: "examples/dialog/DialogExample.vue",
+        path: "examples/dialog/DialogDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/dialog/DialogNoCloseButton.vue",
+        path: "examples/dialog/DialogForm.vue",
         type: "registry:example",
       },
       {
-        path: "examples/dialog/DialogScrollableContent.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/dialog/DialogWithForm.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/dialog/DialogWithStickyFooter.vue",
+        path: "examples/dialog/DialogResponsive.vue",
         type: "registry:example",
       },
     ],
     registryDependencies: [
       "button",
-      "checkbox",
       "dialog",
+      "drawer",
       "field",
-      "input-group",
-      "kbd",
-      "native-select",
-      "select",
-      "switch",
-      "tabs",
-      "textarea",
-      "tooltip",
-      "example",
       "input",
+      "label",
     ],
-    dependencies: [],
+    dependencies: [
+      "vee-validate",
+      "vue-sonner",
+      "zod",
+    ],
   },
   {
     name: "drawer-example",
@@ -894,24 +601,17 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
-        path: "examples/drawer/DrawerExample.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/drawer/DrawerScrollableContent.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/drawer/DrawerWithSides.vue",
+        path: "examples/drawer/DrawerDemo.vue",
         type: "registry:example",
       },
     ],
     registryDependencies: [
-      "example",
       "button",
       "drawer",
     ],
-    dependencies: [],
+    dependencies: [
+      "lucide-vue-next",
+    ],
   },
   {
     name: "dropdown-menu-example",
@@ -919,64 +619,13 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
-        path: "examples/dropdown-menu/DropdownMenuBasic.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/dropdown-menu/DropdownMenuComplex.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/dropdown-menu/DropdownMenuExample.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/dropdown-menu/DropdownMenuInDialog.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/dropdown-menu/DropdownMenuWithAvatar.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/dropdown-menu/DropdownMenuWithCheckboxes.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/dropdown-menu/DropdownMenuWithCheckboxesIcons.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/dropdown-menu/DropdownMenuWithDestructive.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/dropdown-menu/DropdownMenuWithIcons.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/dropdown-menu/DropdownMenuWithRadio.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/dropdown-menu/DropdownMenuWithRadioIcons.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/dropdown-menu/DropdownMenuWithShortcuts.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/dropdown-menu/DropdownMenuWithSubmenu.vue",
+        path: "examples/dropdown-menu/DropdownMenuDemo.vue",
         type: "registry:example",
       },
     ],
     registryDependencies: [
-      "example",
       "button",
       "dropdown-menu",
-      "dialog",
-      "avatar",
     ],
     dependencies: [],
   },
@@ -986,42 +635,40 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
-        path: "examples/empty/EmptyBasic.vue",
+        path: "examples/empty/EmptyAvatarDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/empty/EmptyExample.vue",
+        path: "examples/empty/EmptyAvatarGroupDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/empty/EmptyInCard.vue",
+        path: "examples/empty/EmptyBackgroundDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/empty/EmptyWithBorder.vue",
+        path: "examples/empty/EmptyDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/empty/EmptyWithIcon.vue",
+        path: "examples/empty/EmptyInputGroupDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/empty/EmptyWithMutedBackground.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/empty/EmptyWithMutedBackgroundAlt.vue",
+        path: "examples/empty/EmptyOutlineDemo.vue",
         type: "registry:example",
       },
     ],
     registryDependencies: [
-      "example",
+      "avatar",
       "button",
       "empty",
       "input-group",
       "kbd",
     ],
-    dependencies: [],
+    dependencies: [
+      "lucide-vue-next",
+    ],
   },
   {
     name: "field-example",
@@ -1029,54 +676,59 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
-        path: "examples/field/CheckboxFields.vue",
+        path: "examples/field/FieldCheckboxDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/field/FieldExample.vue",
+        path: "examples/field/FieldChoiceCardDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/field/InputFields.vue",
+        path: "examples/field/FieldDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/field/InputOTPFields.vue",
+        path: "examples/field/FieldFieldsetDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/field/NativeSelectFields.vue",
+        path: "examples/field/FieldGroupDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/field/RadioFields.vue",
+        path: "examples/field/FieldInputDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/field/SelectFields.vue",
+        path: "examples/field/FieldRadioDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/field/SliderFields.vue",
+        path: "examples/field/FieldResponsiveDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/field/SwitchFields.vue",
+        path: "examples/field/FieldSelectDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/field/TextareaFields.vue",
+        path: "examples/field/FieldSliderDemo.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/field/FieldSwitchDemo.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/field/FieldTextareaDemo.vue",
         type: "registry:example",
       },
     ],
     registryDependencies: [
-      "example",
+      "button",
       "checkbox",
       "field",
-      "badge",
       "input",
-      "input-otp",
-      "native-select",
       "radio-group",
       "select",
       "slider",
@@ -1091,15 +743,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
-        path: "examples/form/FormBasic.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/form/FormExample.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/form/FormWithCheckbox.vue",
+        path: "examples/form/FormDemo.vue",
         type: "registry:example",
       },
     ],
@@ -1107,12 +751,11 @@ export const examples: Registry["items"] = [
       "button",
       "form",
       "input",
-      "checkbox",
+      "textarea",
     ],
     dependencies: [
       "vee-validate",
-      "@vee-validate/zod",
-      "zod@3.25.76",
+      "zod",
     ],
   },
   {
@@ -1121,25 +764,18 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
-        path: "examples/hover-card/HoverCardExample.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/hover-card/HoverCardInDialog.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/hover-card/HoverCardSides.vue",
+        path: "examples/hover-card/HoverCardDemo.vue",
         type: "registry:example",
       },
     ],
     registryDependencies: [
-      "example",
+      "avatar",
       "button",
-      "dialog",
       "hover-card",
     ],
-    dependencies: [],
+    dependencies: [
+      "lucide-vue-next",
+    ],
   },
   {
     name: "input-example",
@@ -1147,7 +783,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
-        path: "examples/input/InputBasic.vue",
+        path: "examples/input/InputDemo.vue",
         type: "registry:example",
       },
       {
@@ -1155,7 +791,7 @@ export const examples: Registry["items"] = [
         type: "registry:example",
       },
       {
-        path: "examples/input/InputExample.vue",
+        path: "examples/input/InputFile.vue",
         type: "registry:example",
       },
       {
@@ -1163,11 +799,7 @@ export const examples: Registry["items"] = [
         type: "registry:example",
       },
       {
-        path: "examples/input/InputInvalid.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/input/InputTypes.vue",
+        path: "examples/input/InputFormAutoAnimate.vue",
         type: "registry:example",
       },
       {
@@ -1175,31 +807,24 @@ export const examples: Registry["items"] = [
         type: "registry:example",
       },
       {
-        path: "examples/input/InputWithDescription.vue",
-        type: "registry:example",
-      },
-      {
         path: "examples/input/InputWithLabel.vue",
         type: "registry:example",
       },
       {
-        path: "examples/input/InputWithNativeSelect.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/input/InputWithSelect.vue",
+        path: "examples/input/InputWithText.vue",
         type: "registry:example",
       },
     ],
     registryDependencies: [
-      "input",
-      "field",
-      "example",
       "button",
-      "select",
-      "native-select",
+      "form",
+      "input",
+      "label",
     ],
-    dependencies: [],
+    dependencies: [
+      "vee-validate",
+      "zod",
+    ],
   },
   {
     name: "input-group-example",
@@ -1207,11 +832,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
-        path: "examples/input-group/InputGroupBasic.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/input-group/InputGroupExample.vue",
+        path: "examples/input-group/InputGroupDemo.vue",
         type: "registry:example",
       },
       {
@@ -1219,15 +840,55 @@ export const examples: Registry["items"] = [
         type: "registry:example",
       },
       {
+        path: "examples/input-group/InputGroupWithButtonGroup.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/input-group/InputGroupWithCustomInput.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/input-group/InputGroupWithDropdown.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/input-group/InputGroupWithIcon.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/input-group/InputGroupWithLabel.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/input-group/InputGroupWithSpinner.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/input-group/InputGroupWithText.vue",
+        type: "registry:example",
+      },
+      {
         path: "examples/input-group/InputGroupWithTextarea.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/input-group/InputGroupWithTooltip.vue",
         type: "registry:example",
       },
     ],
     registryDependencies: [
+      "button-group",
+      "dropdown-menu",
       "input-group",
-      "button",
+      "label",
+      "popover",
+      "separator",
+      "spinner",
+      "tooltip",
     ],
-    dependencies: [],
+    dependencies: [
+      "lucide-vue-next",
+    ],
   },
   {
     name: "input-otp-example",
@@ -1235,18 +896,37 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
-        path: "examples/input-otp/InputOTPExample.vue",
+        path: "examples/input-otp/InputOTPControlledDemo.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/input-otp/InputOTPDemo.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/input-otp/InputOTPFormDemo.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/input-otp/InputOTPPatternDemo.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/input-otp/InputOTPSeparatorDemo.vue",
         type: "registry:example",
       },
     ],
     registryDependencies: [
-      "example",
       "button",
-      "card",
       "field",
       "input-otp",
     ],
-    dependencies: [],
+    dependencies: [
+      "vee-validate",
+      "vue-input-otp",
+      "vue-sonner",
+      "zod",
+    ],
   },
   {
     name: "item-example",
@@ -1254,23 +934,55 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
-        path: "examples/item/ItemBasic.vue",
+        path: "examples/item/ItemAvatarDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/item/ItemExample.vue",
+        path: "examples/item/ItemDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/item/ItemWithActions.vue",
+        path: "examples/item/ItemDropdownDemo.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/item/ItemGroupDemo.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/item/ItemHeaderDemo.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/item/ItemIconDemo.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/item/ItemImageDemo.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/item/ItemLinkDemo.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/item/ItemSizeDemo.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/item/ItemVariantDemo.vue",
         type: "registry:example",
       },
     ],
     registryDependencies: [
-      "item",
+      "avatar",
       "button",
+      "dropdown-menu",
+      "item",
     ],
-    dependencies: [],
+    dependencies: [
+      "lucide-vue-next",
+    ],
   },
   {
     name: "kbd-example",
@@ -1278,22 +990,36 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
-        path: "examples/kbd/KbdBasic.vue",
+        path: "examples/kbd/KbdDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/kbd/KbdExample.vue",
+        path: "examples/kbd/KbdGroupDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/kbd/KbdWithGroup.vue",
+        path: "examples/kbd/KbdWithButton.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/kbd/KbdWithInputGroup.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/kbd/KbdWithTooltip.vue",
         type: "registry:example",
       },
     ],
     registryDependencies: [
+      "button",
+      "button-group",
+      "input-group",
       "kbd",
+      "tooltip",
     ],
-    dependencies: [],
+    dependencies: [
+      "lucide-vue-next",
+    ],
   },
   {
     name: "label-example",
@@ -1301,33 +1027,13 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
-        path: "examples/label/LabelDisabled.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/label/LabelExample.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/label/LabelWithCheckbox.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/label/LabelWithInput.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/label/LabelWithTextarea.vue",
+        path: "examples/label/LabelDemo.vue",
         type: "registry:example",
       },
     ],
     registryDependencies: [
-      "example",
-      "field",
-      "input",
-      "label",
       "checkbox",
-      "textarea",
+      "label",
     ],
     dependencies: [],
   },
@@ -1337,33 +1043,12 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
-        path: "examples/menubar/MenubarBasic.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/menubar/MenubarExample.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/menubar/MenubarWithCheckboxes.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/menubar/MenubarWithIcons.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/menubar/MenubarWithRadio.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/menubar/MenubarWithSubmenu.vue",
+        path: "examples/menubar/MenubarDemo.vue",
         type: "registry:example",
       },
     ],
     registryDependencies: [
       "menubar",
-      "example",
     ],
     dependencies: [],
   },
@@ -1373,22 +1058,40 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
-        path: "examples/native-select/NativeSelectBasic.vue",
+        path: "examples/native-select/NativeSelectDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/native-select/NativeSelectExample.vue",
+        path: "examples/native-select/NativeSelectDisabledDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/native-select/NativeSelectWithOptGroup.vue",
+        path: "examples/native-select/NativeSelectFormDemo.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/native-select/NativeSelectGroupsDemo.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/native-select/NativeSelectInputGroupDemo.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/native-select/NativeSelectInvalidDemo.vue",
         type: "registry:example",
       },
     ],
     registryDependencies: [
+      "button",
+      "form",
       "native-select",
     ],
-    dependencies: [],
+    dependencies: [
+      "vee-validate",
+      "vue-sonner",
+      "zod",
+    ],
   },
   {
     name: "navigation-menu-example",
@@ -1396,18 +1099,20 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
-        path: "examples/navigation-menu/NavigationMenuBasic.vue",
+        path: "examples/navigation-menu/NavigationMenuDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/navigation-menu/NavigationMenuExample.vue",
+        path: "examples/navigation-menu/NavigationMenuItem.vue",
         type: "registry:example",
       },
     ],
     registryDependencies: [
       "navigation-menu",
     ],
-    dependencies: [],
+    dependencies: [
+      "lucide-vue-next",
+    ],
   },
   {
     name: "number-field-example",
@@ -1415,27 +1120,41 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
-        path: "examples/number-field/NumberFieldBasic.vue",
+        path: "examples/number-field/NumberFieldCurrencyDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/number-field/NumberFieldDisabled.vue",
+        path: "examples/number-field/NumberFieldDecimalDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/number-field/NumberFieldExample.vue",
+        path: "examples/number-field/NumberFieldDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/number-field/NumberFieldWithLabel.vue",
+        path: "examples/number-field/NumberFieldDisabledDemo.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/number-field/NumberFieldFormDemo.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/number-field/NumberFieldPercentageDemo.vue",
         type: "registry:example",
       },
     ],
     registryDependencies: [
-      "number-field",
+      "button",
+      "field",
       "label",
+      "number-field",
     ],
-    dependencies: [],
+    dependencies: [
+      "vee-validate",
+      "vue-sonner",
+      "zod",
+    ],
   },
   {
     name: "pagination-example",
@@ -1443,27 +1162,12 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
-        path: "examples/pagination/PaginationBasic.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/pagination/PaginationExample.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/pagination/PaginationSimple.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/pagination/PaginationWithSelect.vue",
+        path: "examples/pagination/PaginationDemo.vue",
         type: "registry:example",
       },
     ],
     registryDependencies: [
       "pagination",
-      "example",
-      "field",
-      "select",
     ],
     dependencies: [],
   },
@@ -1473,19 +1177,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
-        path: "examples/pin-input/PinInputBasic.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/pin-input/PinInputExample.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/pin-input/PinInputMasked.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/pin-input/PinInputWithSeparator.vue",
+        path: "examples/pin-input/PinInputDemo.vue",
         type: "registry:example",
       },
     ],
@@ -1500,33 +1192,15 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
-        path: "examples/popover/PopoverAlignments.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/popover/PopoverBasic.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/popover/PopoverExample.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/popover/PopoverInDialog.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/popover/PopoverWithForm.vue",
+        path: "examples/popover/PopoverDemo.vue",
         type: "registry:example",
       },
     ],
     registryDependencies: [
       "button",
-      "popover",
-      "example",
-      "dialog",
-      "field",
       "input",
+      "label",
+      "popover",
     ],
     dependencies: [],
   },
@@ -1536,32 +1210,12 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
-        path: "examples/progress/FileUploadList.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/progress/ProgressControlled.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/progress/ProgressExample.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/progress/ProgressValues.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/progress/ProgressWithLabel.vue",
+        path: "examples/progress/ProgressDemo.vue",
         type: "registry:example",
       },
     ],
     registryDependencies: [
-      "example",
-      "item",
       "progress",
-      "slider",
-      "field",
     ],
     dependencies: [],
   },
@@ -1571,65 +1225,15 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
-        path: "examples/radio-group/RadioGroupBasic.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/radio-group/RadioGroupDisabled.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/radio-group/RadioGroupExample.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/radio-group/RadioGroupGrid.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/radio-group/RadioGroupInvalid.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/radio-group/RadioGroupWithDescriptions.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/radio-group/RadioGroupWithFieldSet.vue",
+        path: "examples/radio-group/RadioGroupDemo.vue",
         type: "registry:example",
       },
     ],
     registryDependencies: [
-      "field",
+      "label",
       "radio-group",
-      "example",
     ],
     dependencies: [],
-  },
-  {
-    name: "range-calendar-example",
-    title: "Range Calendar",
-    type: "registry:example",
-    files: [
-      {
-        path: "examples/range-calendar/RangeCalendarBasic.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/range-calendar/RangeCalendarExample.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/range-calendar/RangeCalendarMultipleMonths.vue",
-        type: "registry:example",
-      },
-    ],
-    registryDependencies: [
-      "range-calendar",
-    ],
-    dependencies: [
-      "reka-ui",
-    ],
   },
   {
     name: "resizable-example",
@@ -1637,12 +1241,11 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
-        path: "examples/resizable/ResizableExample.vue",
+        path: "examples/resizable/ResizableDemo.vue",
         type: "registry:example",
       },
     ],
     registryDependencies: [
-      "example",
       "resizable",
     ],
     dependencies: [],
@@ -1653,20 +1256,11 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
-        path: "examples/scroll-area/ScrollAreaExample.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/scroll-area/ScrollAreaHorizontal.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/scroll-area/ScrollAreaVertical.vue",
+        path: "examples/scroll-area/ScrollAreaDemo.vue",
         type: "registry:example",
       },
     ],
     registryDependencies: [
-      "example",
       "scroll-area",
       "separator",
     ],
@@ -1678,71 +1272,20 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
-        path: "examples/select/SelectBasic.vue",
+        path: "examples/select/SelectDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/select/SelectDisabled.vue",
+        path: "examples/select/SelectMultipleDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/select/SelectExample.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/select/SelectInDialog.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/select/SelectInline.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/select/SelectInvalid.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/select/SelectLargeList.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/select/SelectPlan.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/select/SelectPopper.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/select/SelectSizes.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/select/SelectWithButton.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/select/SelectWithField.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/select/SelectWithGroups.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/select/SelectWithIcons.vue",
+        path: "examples/select/SelectScrollable.vue",
         type: "registry:example",
       },
     ],
     registryDependencies: [
       "select",
-      "example",
-      "button",
-      "dialog",
-      "input",
-      "native-select",
-      "field",
-      "item",
     ],
     dependencies: [],
   },
@@ -1752,28 +1295,11 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
-        path: "examples/separator/SeparatorExample.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/separator/SeparatorHorizontal.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/separator/SeparatorInList.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/separator/SeparatorVertical.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/separator/SeparatorVerticalMenu.vue",
+        path: "examples/separator/SeparatorDemo.vue",
         type: "registry:example",
       },
     ],
     registryDependencies: [
-      "example",
       "separator",
     ],
     dependencies: [],
@@ -1784,23 +1310,14 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
-        path: "examples/sheet/SheetExample.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/sheet/SheetWithForm.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/sheet/SheetWithSides.vue",
+        path: "examples/sheet/SheetDemo.vue",
         type: "registry:example",
       },
     ],
     registryDependencies: [
-      "example",
       "button",
-      "field",
       "input",
+      "label",
       "sheet",
     ],
     dependencies: [],
@@ -1811,22 +1328,16 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
-        path: "examples/sidebar/SidebarBasic.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/sidebar/SidebarCollapsible.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/sidebar/SidebarExample.vue",
+        path: "examples/sidebar/SidebarDemo.vue",
         type: "registry:example",
       },
     ],
     registryDependencies: [
       "sidebar",
     ],
-    dependencies: [],
+    dependencies: [
+      "lucide-vue-next",
+    ],
   },
   {
     name: "skeleton-example",
@@ -1834,34 +1345,12 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
-        path: "examples/skeleton/SkeletonAvatar.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/skeleton/SkeletonCard.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/skeleton/SkeletonExample.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/skeleton/SkeletonForm.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/skeleton/SkeletonTable.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/skeleton/SkeletonText.vue",
+        path: "examples/skeleton/SkeletonDemo.vue",
         type: "registry:example",
       },
     ],
     registryDependencies: [
-      "example",
       "skeleton",
-      "card",
     ],
     dependencies: [],
   },
@@ -1871,38 +1360,12 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
-        path: "examples/slider/SliderBasic.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/slider/SliderControlled.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/slider/SliderDisabled.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/slider/SliderExample.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/slider/SliderMultiple.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/slider/SliderRange.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/slider/SliderVertical.vue",
+        path: "examples/slider/SliderDemo.vue",
         type: "registry:example",
       },
     ],
     registryDependencies: [
       "slider",
-      "label",
-      "example",
     ],
     dependencies: [],
   },
@@ -1912,13 +1375,21 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
-        path: "examples/sonner/SonnerExample.vue",
+        path: "examples/sonner/SonnerDemo.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/sonner/SonnerTypesDemo.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/sonner/SonnerWithDialogDemo.vue",
         type: "registry:example",
       },
     ],
     registryDependencies: [
-      "example",
       "button",
+      "dialog",
     ],
     dependencies: [
       "vue-sonner",
@@ -1930,40 +1401,58 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
+        path: "examples/spinner/SpinnerBadgeDemo.vue",
+        type: "registry:example",
+      },
+      {
         path: "examples/spinner/SpinnerBasic.vue",
         type: "registry:example",
       },
       {
-        path: "examples/spinner/SpinnerExample.vue",
+        path: "examples/spinner/SpinnerButtonDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/spinner/SpinnerInBadges.vue",
+        path: "examples/spinner/SpinnerColorDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/spinner/SpinnerInButtons.vue",
+        path: "examples/spinner/SpinnerCustomDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/spinner/SpinnerInEmpty.vue",
+        path: "examples/spinner/SpinnerDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/spinner/SpinnerInInputGroup.vue",
+        path: "examples/spinner/SpinnerEmptyDemo.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/spinner/SpinnerInputGroupDemo.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/spinner/SpinnerItemDemo.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/spinner/SpinnerSizeDemo.vue",
         type: "registry:example",
       },
     ],
     registryDependencies: [
-      "example",
-      "spinner",
       "badge",
       "button",
       "empty",
-      "field",
       "input-group",
+      "item",
+      "progress",
+      "spinner",
     ],
-    dependencies: [],
+    dependencies: [
+      "lucide-vue-next",
+    ],
   },
   {
     name: "stepper-example",
@@ -1971,11 +1460,15 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
-        path: "examples/stepper/StepperBasic.vue",
+        path: "examples/stepper/StepperDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/stepper/StepperExample.vue",
+        path: "examples/stepper/StepperForm.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/stepper/StepperHorizental.vue",
         type: "registry:example",
       },
       {
@@ -1984,9 +1477,17 @@ export const examples: Registry["items"] = [
       },
     ],
     registryDependencies: [
+      "button",
+      "form",
+      "input",
+      "select",
       "stepper",
     ],
-    dependencies: [],
+    dependencies: [
+      "lucide-vue-next",
+      "vue-sonner",
+      "zod",
+    ],
   },
   {
     name: "switch-example",
@@ -1994,31 +1495,13 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
-        path: "examples/switch/SwitchBasic.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/switch/SwitchDisabled.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/switch/SwitchExample.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/switch/SwitchSizes.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/switch/SwitchWithDescription.vue",
+        path: "examples/switch/SwitchDemo.vue",
         type: "registry:example",
       },
     ],
     registryDependencies: [
-      "field",
-      "switch",
       "label",
-      "example",
+      "switch",
     ],
     dependencies: [],
   },
@@ -2028,45 +1511,12 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
-        path: "examples/table/TableBasic.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/table/TableExample.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/table/TableSimple.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/table/TableWithActions.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/table/TableWithBadges.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/table/TableWithFooter.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/table/TableWithInput.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/table/TableWithSelect.vue",
+        path: "examples/table/TableDemo.vue",
         type: "registry:example",
       },
     ],
     registryDependencies: [
       "table",
-      "example",
-      "button",
-      "dropdown-menu",
-      "input",
-      "select",
     ],
     dependencies: [],
   },
@@ -2076,68 +1526,16 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
-        path: "examples/tabs/TabsBasic.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/tabs/TabsDisabled.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/tabs/TabsExample.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/tabs/TabsIconOnly.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/tabs/TabsLine.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/tabs/TabsLineDisabled.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/tabs/TabsLineWithContent.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/tabs/TabsMultiple.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/tabs/TabsVariantsComparison.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/tabs/TabsVertical.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/tabs/TabsWithContent.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/tabs/TabsWithDropdown.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/tabs/TabsWithIcons.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/tabs/TabsWithInputAndButton.vue",
+        path: "examples/tabs/TabsDemo.vue",
         type: "registry:example",
       },
     ],
     registryDependencies: [
-      "tabs",
-      "example",
       "button",
-      "dropdown-menu",
+      "card",
       "input",
+      "label",
+      "tabs",
     ],
     dependencies: [],
   },
@@ -2147,23 +1545,83 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
-        path: "examples/tags-input/TagsInputBasic.vue",
+        path: "examples/tags-input/TagsInputDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/tags-input/TagsInputExample.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/tags-input/TagsInputWithLabel.vue",
+        path: "examples/tags-input/TagsInputWithListbox.vue",
         type: "registry:example",
       },
     ],
     registryDependencies: [
+      "button",
+      "popover",
       "tags-input",
-      "label",
     ],
-    dependencies: [],
+    dependencies: [
+      "lucide-vue-next",
+      "reka-ui",
+    ],
+  },
+  {
+    name: "tanstack-form-example",
+    title: "Tanstack Form",
+    type: "registry:example",
+    files: [
+      {
+        path: "examples/tanstack-form/TanStackFormArray.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/tanstack-form/TanStackFormCheckbox.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/tanstack-form/TanStackFormComplex.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/tanstack-form/TanStackFormDemo.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/tanstack-form/TanStackFormInput.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/tanstack-form/TanStackFormRadioGroup.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/tanstack-form/TanStackFormSelect.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/tanstack-form/TanStackFormSwitch.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/tanstack-form/TanStackFormTextarea.vue",
+        type: "registry:example",
+      },
+    ],
+    registryDependencies: [
+      "button",
+      "card",
+      "checkbox",
+      "field",
+      "input",
+      "input-group",
+      "radio-group",
+      "select",
+      "switch",
+      "textarea",
+    ],
+    dependencies: [
+      "lucide-vue-next",
+      "vue-sonner",
+      "zod",
+    ],
   },
   {
     name: "textarea-example",
@@ -2171,34 +1629,16 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
-        path: "examples/textarea/TextareaBasic.vue",
+        path: "examples/textarea/TextareaDemo.vue",
         type: "registry:example",
       },
       {
         path: "examples/textarea/TextareaDisabled.vue",
         type: "registry:example",
       },
-      {
-        path: "examples/textarea/TextareaExample.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/textarea/TextareaInvalid.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/textarea/TextareaWithDescription.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/textarea/TextareaWithLabel.vue",
-        type: "registry:example",
-      },
     ],
     registryDependencies: [
       "textarea",
-      "field",
-      "example",
     ],
     dependencies: [],
   },
@@ -2208,48 +1648,36 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
-        path: "examples/toggle/ToggleBasic.vue",
+        path: "examples/toggle/ToggleDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/toggle/ToggleDisabled.vue",
+        path: "examples/toggle/ToggleDisabledDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/toggle/ToggleExample.vue",
+        path: "examples/toggle/ToggleLargeDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/toggle/ToggleOutline.vue",
+        path: "examples/toggle/ToggleOutlineDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/toggle/ToggleSizes.vue",
+        path: "examples/toggle/ToggleSmallDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/toggle/ToggleWithButtonIcon.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/toggle/ToggleWithButtonIconText.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/toggle/ToggleWithButtonText.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/toggle/ToggleWithIcon.vue",
+        path: "examples/toggle/ToggleTextDemo.vue",
         type: "registry:example",
       },
     ],
     registryDependencies: [
       "toggle",
-      "example",
-      "button",
     ],
-    dependencies: [],
+    dependencies: [
+      "lucide-vue-next",
+    ],
   },
   {
     name: "toggle-group-example",
@@ -2257,73 +1685,36 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
-        path: "examples/toggle-group/ToggleGroupBasic.vue",
+        path: "examples/toggle-group/ToggleGroupDefaultDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/toggle-group/ToggleGroupDateRange.vue",
+        path: "examples/toggle-group/ToggleGroupDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/toggle-group/ToggleGroupExample.vue",
+        path: "examples/toggle-group/ToggleGroupDisabledDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/toggle-group/ToggleGroupFilter.vue",
+        path: "examples/toggle-group/ToggleGroupLargeDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/toggle-group/ToggleGroupOutline.vue",
+        path: "examples/toggle-group/ToggleGroupSingleDemo.vue",
         type: "registry:example",
       },
       {
-        path: "examples/toggle-group/ToggleGroupOutlineWithIcons.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/toggle-group/ToggleGroupSizes.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/toggle-group/ToggleGroupSort.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/toggle-group/ToggleGroupSpacing.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/toggle-group/ToggleGroupVertical.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/toggle-group/ToggleGroupVerticalOutline.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/toggle-group/ToggleGroupVerticalOutlineWithIcons.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/toggle-group/ToggleGroupVerticalWithSpacing.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/toggle-group/ToggleGroupWithIcons.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/toggle-group/ToggleGroupWithInputAndSelect.vue",
+        path: "examples/toggle-group/ToggleGroupSmallDemo.vue",
         type: "registry:example",
       },
     ],
     registryDependencies: [
       "toggle-group",
-      "example",
-      "input",
-      "select",
     ],
-    dependencies: [],
+    dependencies: [
+      "lucide-vue-next",
+    ],
   },
   {
     name: "tooltip-example",
@@ -2331,48 +1722,145 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     files: [
       {
-        path: "examples/tooltip/TooltipBasic.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/tooltip/TooltipDisabled.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/tooltip/TooltipExample.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/tooltip/TooltipFormatted.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/tooltip/TooltipLongContent.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/tooltip/TooltipOnLink.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/tooltip/TooltipSides.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/tooltip/TooltipWithIcon.vue",
-        type: "registry:example",
-      },
-      {
-        path: "examples/tooltip/TooltipWithKeyboard.vue",
+        path: "examples/tooltip/TooltipDemo.vue",
         type: "registry:example",
       },
     ],
     registryDependencies: [
-      "example",
       "button",
       "tooltip",
-      "kbd",
     ],
     dependencies: [],
+  },
+  {
+    name: "typography-example",
+    title: "Typography",
+    type: "registry:example",
+    files: [
+      {
+        path: "examples/typography/TypographyBlockquote.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/typography/TypographyDemo.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/typography/TypographyH1.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/typography/TypographyH2.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/typography/TypographyH3.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/typography/TypographyH4.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/typography/TypographyInlineCode.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/typography/TypographyLarge.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/typography/TypographyLead.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/typography/TypographyList.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/typography/TypographyMuted.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/typography/TypographyP.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/typography/TypographySmall.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/typography/TypographyTable.vue",
+        type: "registry:example",
+      },
+    ],
+    registryDependencies: [],
+    dependencies: [],
+  },
+  {
+    name: "vee-validate-example",
+    title: "Vee Validate",
+    type: "registry:example",
+    files: [
+      {
+        path: "examples/vee-validate/VeeValidateArrayDemo.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/vee-validate/VeeValidateCheckboxDemo.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/vee-validate/VeeValidateComplexDemo.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/vee-validate/VeeValidateDemo.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/vee-validate/VeeValidateInputDemo.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/vee-validate/VeeValidatePasswordDemo.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/vee-validate/VeeValidateRadioGroupDemo.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/vee-validate/VeeValidateSelectDemo.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/vee-validate/VeeValidateSwitchDemo.vue",
+        type: "registry:example",
+      },
+      {
+        path: "examples/vee-validate/VeeValidateTextareaDemo.vue",
+        type: "registry:example",
+      },
+    ],
+    registryDependencies: [
+      "button",
+      "card",
+      "checkbox",
+      "field",
+      "input",
+      "input-group",
+      "progress",
+      "radio-group",
+      "select",
+      "switch",
+      "textarea",
+    ],
+    dependencies: [
+      "lucide-vue-next",
+      "vee-validate",
+      "vue-sonner",
+      "zod",
+    ],
   },
 ]

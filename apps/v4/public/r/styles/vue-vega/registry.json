@@ -2132,30 +2132,10 @@
       "name": "accordion-example",
       "title": "Accordion",
       "dependencies": [],
-      "registryDependencies": ["accordion", "example", "button", "card"],
+      "registryDependencies": ["accordion"],
       "files": [
         {
-          "path": "registry/vue-vega/examples/accordion/AccordionBasic.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/accordion/AccordionExample.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/accordion/AccordionInCard.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/accordion/AccordionMultiple.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/accordion/AccordionWithBorders.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/accordion/AccordionWithDisabled.vue",
+          "path": "registry/vue-vega/examples/accordion/AccordionDemo.vue",
           "type": "registry:example"
         }
       ],
@@ -2164,27 +2144,15 @@
     {
       "name": "alert-example",
       "title": "Alert",
-      "dependencies": [],
-      "registryDependencies": ["alert", "example", "badge", "button"],
+      "dependencies": ["lucide-vue-next"],
+      "registryDependencies": ["alert"],
       "files": [
         {
-          "path": "registry/vue-vega/examples/alert/AlertBasic.vue",
+          "path": "registry/vue-vega/examples/alert/AlertDemo.vue",
           "type": "registry:example"
         },
         {
           "path": "registry/vue-vega/examples/alert/AlertDestructive.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/alert/AlertExample.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/alert/AlertWithActions.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/alert/AlertWithIcons.vue",
           "type": "registry:example"
         }
       ],
@@ -2194,34 +2162,10 @@
       "name": "alert-dialog-example",
       "title": "Alert Dialog",
       "dependencies": [],
-      "registryDependencies": ["alert-dialog", "button", "example", "dialog"],
+      "registryDependencies": ["alert-dialog", "button"],
       "files": [
         {
-          "path": "registry/vue-vega/examples/alert-dialog/AlertDialogBasic.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/alert-dialog/AlertDialogDestructive.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/alert-dialog/AlertDialogExample.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/alert-dialog/AlertDialogInDialog.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/alert-dialog/AlertDialogSmall.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/alert-dialog/AlertDialogSmallWithMedia.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/alert-dialog/AlertDialogWithMedia.vue",
+          "path": "registry/vue-vega/examples/alert-dialog/AlertDialogDemo.vue",
           "type": "registry:example"
         }
       ],
@@ -2231,26 +2175,10 @@
       "name": "aspect-ratio-example",
       "title": "Aspect Ratio",
       "dependencies": [],
-      "registryDependencies": ["aspect-ratio", "example"],
+      "registryDependencies": ["aspect-ratio"],
       "files": [
         {
-          "path": "registry/vue-vega/examples/aspect-ratio/AspectRatio16x9.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/aspect-ratio/AspectRatio1x1.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/aspect-ratio/AspectRatio21x9.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/aspect-ratio/AspectRatio9x16.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/aspect-ratio/AspectRatioExample.vue",
+          "path": "registry/vue-vega/examples/aspect-ratio/AspectRatioDemo.vue",
           "type": "registry:example"
         }
       ],
@@ -2260,38 +2188,10 @@
       "name": "avatar-example",
       "title": "Avatar",
       "dependencies": [],
-      "registryDependencies": ["example", "avatar", "button", "empty"],
+      "registryDependencies": ["avatar"],
       "files": [
         {
-          "path": "registry/vue-vega/examples/avatar/AvatarExample.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/avatar/AvatarGroupExample.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/avatar/AvatarGroupWithCount.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/avatar/AvatarGroupWithIconCount.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/avatar/AvatarInEmpty.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/avatar/AvatarSizes.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/avatar/AvatarWithBadge.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/avatar/AvatarWithBadgeIcon.vue",
+          "path": "registry/vue-vega/examples/avatar/AvatarDemo.vue",
           "type": "registry:example"
         }
       ],
@@ -2300,39 +2200,23 @@
     {
       "name": "badge-example",
       "title": "Badge",
-      "dependencies": [],
-      "registryDependencies": ["badge", "example", "spinner"],
+      "dependencies": ["lucide-vue-next"],
+      "registryDependencies": ["badge"],
       "files": [
         {
-          "path": "registry/vue-vega/examples/badge/BadgeAsLink.vue",
+          "path": "registry/vue-vega/examples/badge/BadgeDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/badge/BadgeCustomColors.vue",
+          "path": "registry/vue-vega/examples/badge/BadgeDestructive.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/badge/BadgeExample.vue",
+          "path": "registry/vue-vega/examples/badge/BadgeOutline.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/badge/BadgeLongText.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/badge/BadgeVariants.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/badge/BadgeWithIconLeft.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/badge/BadgeWithIconRight.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/badge/BadgeWithSpinner.vue",
+          "path": "registry/vue-vega/examples/badge/BadgeSecondary.vue",
           "type": "registry:example"
         }
       ],
@@ -2341,28 +2225,36 @@
     {
       "name": "breadcrumb-example",
       "title": "Breadcrumb",
-      "dependencies": [],
+      "dependencies": ["lucide-vue-next"],
       "registryDependencies": [
         "breadcrumb",
-        "example",
         "button",
+        "drawer",
         "dropdown-menu"
       ],
       "files": [
         {
-          "path": "registry/vue-vega/examples/breadcrumb/BreadcrumbBasic.vue",
+          "path": "registry/vue-vega/examples/breadcrumb/BreadcrumbCollapsedDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/breadcrumb/BreadcrumbExample.vue",
+          "path": "registry/vue-vega/examples/breadcrumb/BreadcrumbCustomSeparatorDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/breadcrumb/BreadcrumbWithDropdown.vue",
+          "path": "registry/vue-vega/examples/breadcrumb/BreadcrumbDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/breadcrumb/BreadcrumbWithLink.vue",
+          "path": "registry/vue-vega/examples/breadcrumb/BreadcrumbDropdownDemo.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/breadcrumb/BreadcrumbLinkDemo.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/breadcrumb/BreadcrumbResponsiveDemo.vue",
           "type": "registry:example"
         }
       ],
@@ -2371,35 +2263,55 @@
     {
       "name": "button-example",
       "title": "Button",
-      "dependencies": [],
-      "registryDependencies": ["example", "button"],
+      "dependencies": ["lucide-vue-next"],
+      "registryDependencies": ["button", "spinner"],
       "files": [
         {
-          "path": "registry/vue-vega/examples/button/ButtonExample.vue",
+          "path": "registry/vue-vega/examples/button/ButtonDefault.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/button/ButtonExamples.vue",
+          "path": "registry/vue-vega/examples/button/ButtonDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/button/ButtonIconLeft.vue",
+          "path": "registry/vue-vega/examples/button/ButtonDestructive.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/button/ButtonIconOnly.vue",
+          "path": "registry/vue-vega/examples/button/ButtonGhost.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/button/ButtonIconRight.vue",
+          "path": "registry/vue-vega/examples/button/ButtonIcon.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/button/ButtonInvalidStates.vue",
+          "path": "registry/vue-vega/examples/button/ButtonLink.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/button/ButtonVariantsAndSizes.vue",
+          "path": "registry/vue-vega/examples/button/ButtonLoading.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/button/ButtonOutline.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/button/ButtonRounded.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/button/ButtonSecondary.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/button/ButtonSize.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/button/ButtonWithIcon.vue",
           "type": "registry:example"
         }
       ],
@@ -2408,90 +2320,62 @@
     {
       "name": "button-group-example",
       "title": "Button Group",
-      "dependencies": [],
+      "dependencies": ["lucide-vue-next"],
       "registryDependencies": [
         "button",
         "button-group",
-        "example",
-        "input-group",
-        "tooltip",
-        "field",
-        "label",
         "dropdown-menu",
         "input",
-        "select"
+        "input-group",
+        "popover",
+        "select",
+        "separator",
+        "textarea",
+        "tooltip"
       ],
       "files": [
         {
-          "path": "registry/vue-vega/examples/button-group/ButtonGroupBasic.vue",
+          "path": "registry/vue-vega/examples/button-group/ButtonGroupDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/button-group/ButtonGroupExample.vue",
+          "path": "registry/vue-vega/examples/button-group/ButtonGroupInputGroupDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/button-group/ButtonGroupNavigation.vue",
+          "path": "registry/vue-vega/examples/button-group/ButtonGroupNestedDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/button-group/ButtonGroupNested.vue",
+          "path": "registry/vue-vega/examples/button-group/ButtonGroupOrientationDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/button-group/ButtonGroupPagination.vue",
+          "path": "registry/vue-vega/examples/button-group/ButtonGroupSeparatorDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/button-group/ButtonGroupPaginationSplit.vue",
+          "path": "registry/vue-vega/examples/button-group/ButtonGroupSizeDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/button-group/ButtonGroupTextAlignment.vue",
+          "path": "registry/vue-vega/examples/button-group/ButtonGroupSplitDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/button-group/ButtonGroupVertical.vue",
+          "path": "registry/vue-vega/examples/button-group/ButtonGroupWithDropdownMenuDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/button-group/ButtonGroupVerticalNested.vue",
+          "path": "registry/vue-vega/examples/button-group/ButtonGroupWithInputDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/button-group/ButtonGroupWithDropdown.vue",
+          "path": "registry/vue-vega/examples/button-group/ButtonGroupWithPopoverDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/button-group/ButtonGroupWithFields.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/button-group/ButtonGroupWithIcons.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/button-group/ButtonGroupWithInput.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/button-group/ButtonGroupWithInputGroup.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/button-group/ButtonGroupWithLike.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/button-group/ButtonGroupWithSelect.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/button-group/ButtonGroupWithSelectAndInput.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/button-group/ButtonGroupWithText.vue",
+          "path": "registry/vue-vega/examples/button-group/ButtonGroupWithSelectDemo.vue",
           "type": "registry:example"
         }
       ],
@@ -2500,68 +2384,56 @@
     {
       "name": "calendar-example",
       "title": "Calendar",
-      "dependencies": ["reka-ui"],
+      "dependencies": [
+        "chrono-node",
+        "lucide-vue-next",
+        "reka-ui",
+        "reka-ui/date"
+      ],
       "registryDependencies": [
-        "calendar",
-        "card",
-        "range-calendar",
-        "example",
         "button",
-        "field",
-        "input-group",
-        "popover"
+        "calendar",
+        "input",
+        "label",
+        "popover",
+        "range-calendar",
+        "select"
       ],
       "files": [
         {
-          "path": "registry/vue-vega/examples/calendar/CalendarBookedDates.vue",
+          "path": "registry/vue-vega/examples/calendar/CalendarCustomCellSize.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/calendar/CalendarCustomDays.vue",
+          "path": "registry/vue-vega/examples/calendar/CalendarDateAndTimePicker.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/calendar/CalendarExample.vue",
+          "path": "registry/vue-vega/examples/calendar/CalendarDateBirth.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/calendar/CalendarMultiple.vue",
+          "path": "registry/vue-vega/examples/calendar/CalendarDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/calendar/CalendarRange.vue",
+          "path": "registry/vue-vega/examples/calendar/CalendarNaturalLanguagePicker.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/calendar/CalendarRangeMultipleMonths.vue",
+          "path": "registry/vue-vega/examples/calendar/CalendarPersianDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/calendar/CalendarSingle.vue",
+          "path": "registry/vue-vega/examples/calendar/CalendarRangeDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/calendar/CalendarWeekNumbers.vue",
+          "path": "registry/vue-vega/examples/calendar/CalendarSystems.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/calendar/CalendarWithPresets.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/calendar/CalendarWithTime.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/calendar/DatePickerSimple.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/calendar/DatePickerWithDropdowns.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/calendar/DatePickerWithRange.vue",
+          "path": "registry/vue-vega/examples/calendar/CalendarYearAndMonthSelector.vue",
           "type": "registry:example"
         }
       ],
@@ -2571,57 +2443,10 @@
       "name": "card-example",
       "title": "Card",
       "dependencies": [],
-      "registryDependencies": [
-        "button",
-        "card",
-        "example",
-        "field",
-        "input",
-        "avatar"
-      ],
+      "registryDependencies": ["button", "card", "input", "label"],
       "files": [
         {
-          "path": "registry/vue-vega/examples/card/CardDefault.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/card/CardExample.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/card/CardFooterWithBorder.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/card/CardFooterWithBorderSmall.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/card/CardHeaderWithBorder.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/card/CardHeaderWithBorderSmall.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/card/CardLogin.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/card/CardMeetingNotes.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/card/CardSmall.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/card/CardWithImage.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/card/CardWithImageSmall.vue",
+          "path": "registry/vue-vega/examples/card/CardDemo.vue",
           "type": "registry:example"
         }
       ],
@@ -2630,23 +2455,31 @@
     {
       "name": "carousel-example",
       "title": "Carousel",
-      "dependencies": [],
-      "registryDependencies": ["card", "carousel", "example"],
+      "dependencies": ["embla-carousel-autoplay"],
+      "registryDependencies": ["card", "carousel"],
       "files": [
         {
-          "path": "registry/vue-vega/examples/carousel/CarouselBasic.vue",
+          "path": "registry/vue-vega/examples/carousel/CarouselApi.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/carousel/CarouselExample.vue",
+          "path": "registry/vue-vega/examples/carousel/CarouselDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/carousel/CarouselMultiple.vue",
+          "path": "registry/vue-vega/examples/carousel/CarouselOrientation.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/carousel/CarouselWithGap.vue",
+          "path": "registry/vue-vega/examples/carousel/CarouselPlugin.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/carousel/CarouselSize.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/carousel/CarouselSpacing.vue",
           "type": "registry:example"
         }
       ],
@@ -2655,27 +2488,27 @@
     {
       "name": "chart-example",
       "title": "Chart",
-      "dependencies": ["@unovis/vue", "@unovis/ts"],
-      "registryDependencies": ["chart", "example", "card"],
+      "dependencies": ["lucide-vue-next"],
+      "registryDependencies": ["card", "chart"],
       "files": [
         {
-          "path": "registry/vue-vega/examples/chart/ChartAreaExample.vue",
+          "path": "registry/vue-vega/examples/chart/ChartBarDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/chart/ChartBarExample.vue",
+          "path": "registry/vue-vega/examples/chart/ChartBarDemoAxis.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/chart/ChartExample.vue",
+          "path": "registry/vue-vega/examples/chart/ChartBarDemoLegend.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/chart/ChartLineExample.vue",
+          "path": "registry/vue-vega/examples/chart/ChartBarDemoTooltip.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/chart/ChartRadialExample.vue",
+          "path": "registry/vue-vega/examples/chart/ChartDemo.vue",
           "type": "registry:example"
         }
       ],
@@ -2685,38 +2518,14 @@
       "name": "checkbox-example",
       "title": "Checkbox",
       "dependencies": [],
-      "registryDependencies": ["checkbox", "field", "example", "table"],
+      "registryDependencies": ["checkbox", "label"],
       "files": [
         {
-          "path": "registry/vue-vega/examples/checkbox/CheckboxBasic.vue",
+          "path": "registry/vue-vega/examples/checkbox/CheckboxDemo.vue",
           "type": "registry:example"
         },
         {
           "path": "registry/vue-vega/examples/checkbox/CheckboxDisabled.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/checkbox/CheckboxExample.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/checkbox/CheckboxGroup.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/checkbox/CheckboxInTable.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/checkbox/CheckboxInvalid.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/checkbox/CheckboxWithDescription.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/checkbox/CheckboxWithTitle.vue",
           "type": "registry:example"
         }
       ],
@@ -2725,27 +2534,11 @@
     {
       "name": "collapsible-example",
       "title": "Collapsible",
-      "dependencies": [],
-      "registryDependencies": [
-        "example",
-        "button",
-        "card",
-        "collapsible",
-        "tabs",
-        "field",
-        "input"
-      ],
+      "dependencies": ["lucide-vue-next"],
+      "registryDependencies": ["button", "collapsible"],
       "files": [
         {
-          "path": "registry/vue-vega/examples/collapsible/CollapsibleExample.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/collapsible/CollapsibleFileTree.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/collapsible/CollapsibleSettings.vue",
+          "path": "registry/vue-vega/examples/collapsible/CollapsibleDemo.vue",
           "type": "registry:example"
         }
       ],
@@ -2754,73 +2547,11 @@
     {
       "name": "combobox-example",
       "title": "Combobox",
-      "dependencies": ["vue-sonner"],
-      "registryDependencies": [
-        "example",
-        "combobox",
-        "button",
-        "dialog",
-        "field",
-        "input-group",
-        "card",
-        "input",
-        "select"
-      ],
+      "dependencies": ["lucide-vue-next"],
+      "registryDependencies": ["button", "command", "popover"],
       "files": [
         {
-          "path": "registry/vue-vega/examples/combobox/ComboboxAutoHighlight.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/combobox/ComboboxBasic.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/combobox/ComboboxDisabled.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/combobox/ComboboxExample.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/combobox/ComboboxInDialog.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/combobox/ComboboxInPopup.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/combobox/ComboboxInputAddon.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/combobox/ComboboxInvalid.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/combobox/ComboboxLargeList.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/combobox/ComboboxWithClear.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/combobox/ComboboxWithForm.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/combobox/ComboboxWithGroups.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/combobox/ComboboxWithGroupsAndSeparator.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/combobox/ComboboxWithOtherInputs.vue",
+          "path": "registry/vue-vega/examples/combobox/ComboboxDemo.vue",
           "type": "registry:example"
         }
       ],
@@ -2829,27 +2560,11 @@
     {
       "name": "command-example",
       "title": "Command",
-      "dependencies": [],
-      "registryDependencies": ["example", "button", "command"],
+      "dependencies": ["lucide-vue-next"],
+      "registryDependencies": ["command"],
       "files": [
         {
-          "path": "registry/vue-vega/examples/command/CommandBasic.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/command/CommandExample.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/command/CommandManyItems.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/command/CommandWithGroups.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/command/CommandWithShortcuts.vue",
+          "path": "registry/vue-vega/examples/command/CommandDemo.vue",
           "type": "registry:example"
         }
       ],
@@ -2858,51 +2573,43 @@
     {
       "name": "context-menu-example",
       "title": "Context Menu",
-      "dependencies": [],
-      "registryDependencies": ["context-menu", "example", "button", "dialog"],
+      "dependencies": ["lucide-vue-next"],
+      "registryDependencies": ["context-menu"],
       "files": [
         {
-          "path": "registry/vue-vega/examples/context-menu/ContextMenuBasic.vue",
+          "path": "registry/vue-vega/examples/context-menu/ContextMenuDemo.vue",
           "type": "registry:example"
-        },
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "data-table-example",
+      "title": "Data Table",
+      "dependencies": ["lucide-vue-next"],
+      "registryDependencies": [
+        "button",
+        "checkbox",
+        "dropdown-menu",
+        "input",
+        "table"
+      ],
+      "files": [
         {
-          "path": "registry/vue-vega/examples/context-menu/ContextMenuExample.vue",
+          "path": "registry/vue-vega/examples/data-table/DataTableDemo.vue",
           "type": "registry:example"
-        },
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "date-picker-example",
+      "title": "Date Picker",
+      "dependencies": ["lucide-vue-next"],
+      "registryDependencies": ["button", "calendar", "popover"],
+      "files": [
         {
-          "path": "registry/vue-vega/examples/context-menu/ContextMenuInDialog.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/context-menu/ContextMenuWithCheckboxes.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/context-menu/ContextMenuWithDestructive.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/context-menu/ContextMenuWithGroups.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/context-menu/ContextMenuWithIcons.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/context-menu/ContextMenuWithRadio.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/context-menu/ContextMenuWithShortcuts.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/context-menu/ContextMenuWithSides.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/context-menu/ContextMenuWithSubmenu.vue",
+          "path": "registry/vue-vega/examples/date-picker/DatePickerDemo.vue",
           "type": "registry:example"
         }
       ],
@@ -2911,46 +2618,30 @@
     {
       "name": "dialog-example",
       "title": "Dialog",
-      "dependencies": [],
+      "dependencies": ["vee-validate", "vue-sonner", "zod"],
       "registryDependencies": [
         "button",
-        "checkbox",
         "dialog",
+        "drawer",
         "field",
-        "input-group",
-        "kbd",
-        "native-select",
-        "select",
-        "switch",
-        "tabs",
-        "textarea",
-        "tooltip",
-        "example",
-        "input"
+        "input",
+        "label"
       ],
       "files": [
         {
-          "path": "registry/vue-vega/examples/dialog/DialogChatSettings.vue",
+          "path": "registry/vue-vega/examples/dialog/DialogCloseButton.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/dialog/DialogExample.vue",
+          "path": "registry/vue-vega/examples/dialog/DialogDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/dialog/DialogNoCloseButton.vue",
+          "path": "registry/vue-vega/examples/dialog/DialogForm.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/dialog/DialogScrollableContent.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/dialog/DialogWithForm.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/dialog/DialogWithStickyFooter.vue",
+          "path": "registry/vue-vega/examples/dialog/DialogResponsive.vue",
           "type": "registry:example"
         }
       ],
@@ -2959,19 +2650,11 @@
     {
       "name": "drawer-example",
       "title": "Drawer",
-      "dependencies": [],
-      "registryDependencies": ["example", "button", "drawer"],
+      "dependencies": ["lucide-vue-next"],
+      "registryDependencies": ["button", "drawer"],
       "files": [
         {
-          "path": "registry/vue-vega/examples/drawer/DrawerExample.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/drawer/DrawerScrollableContent.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/drawer/DrawerWithSides.vue",
+          "path": "registry/vue-vega/examples/drawer/DrawerDemo.vue",
           "type": "registry:example"
         }
       ],
@@ -2981,64 +2664,10 @@
       "name": "dropdown-menu-example",
       "title": "Dropdown Menu",
       "dependencies": [],
-      "registryDependencies": [
-        "example",
-        "button",
-        "dropdown-menu",
-        "dialog",
-        "avatar"
-      ],
+      "registryDependencies": ["button", "dropdown-menu"],
       "files": [
         {
-          "path": "registry/vue-vega/examples/dropdown-menu/DropdownMenuBasic.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/dropdown-menu/DropdownMenuComplex.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/dropdown-menu/DropdownMenuExample.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/dropdown-menu/DropdownMenuInDialog.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/dropdown-menu/DropdownMenuWithAvatar.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/dropdown-menu/DropdownMenuWithCheckboxes.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/dropdown-menu/DropdownMenuWithCheckboxesIcons.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/dropdown-menu/DropdownMenuWithDestructive.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/dropdown-menu/DropdownMenuWithIcons.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/dropdown-menu/DropdownMenuWithRadio.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/dropdown-menu/DropdownMenuWithRadioIcons.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/dropdown-menu/DropdownMenuWithShortcuts.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/dropdown-menu/DropdownMenuWithSubmenu.vue",
+          "path": "registry/vue-vega/examples/dropdown-menu/DropdownMenuDemo.vue",
           "type": "registry:example"
         }
       ],
@@ -3047,9 +2676,9 @@
     {
       "name": "empty-example",
       "title": "Empty",
-      "dependencies": [],
+      "dependencies": ["lucide-vue-next"],
       "registryDependencies": [
-        "example",
+        "avatar",
         "button",
         "empty",
         "input-group",
@@ -3057,31 +2686,27 @@
       ],
       "files": [
         {
-          "path": "registry/vue-vega/examples/empty/EmptyBasic.vue",
+          "path": "registry/vue-vega/examples/empty/EmptyAvatarDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/empty/EmptyExample.vue",
+          "path": "registry/vue-vega/examples/empty/EmptyAvatarGroupDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/empty/EmptyInCard.vue",
+          "path": "registry/vue-vega/examples/empty/EmptyBackgroundDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/empty/EmptyWithBorder.vue",
+          "path": "registry/vue-vega/examples/empty/EmptyDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/empty/EmptyWithIcon.vue",
+          "path": "registry/vue-vega/examples/empty/EmptyInputGroupDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/empty/EmptyWithMutedBackground.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/empty/EmptyWithMutedBackgroundAlt.vue",
+          "path": "registry/vue-vega/examples/empty/EmptyOutlineDemo.vue",
           "type": "registry:example"
         }
       ],
@@ -3092,13 +2717,10 @@
       "title": "Field",
       "dependencies": [],
       "registryDependencies": [
-        "example",
+        "button",
         "checkbox",
         "field",
-        "badge",
         "input",
-        "input-otp",
-        "native-select",
         "radio-group",
         "select",
         "slider",
@@ -3107,43 +2729,51 @@
       ],
       "files": [
         {
-          "path": "registry/vue-vega/examples/field/CheckboxFields.vue",
+          "path": "registry/vue-vega/examples/field/FieldCheckboxDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/field/FieldExample.vue",
+          "path": "registry/vue-vega/examples/field/FieldChoiceCardDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/field/InputFields.vue",
+          "path": "registry/vue-vega/examples/field/FieldDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/field/InputOTPFields.vue",
+          "path": "registry/vue-vega/examples/field/FieldFieldsetDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/field/NativeSelectFields.vue",
+          "path": "registry/vue-vega/examples/field/FieldGroupDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/field/RadioFields.vue",
+          "path": "registry/vue-vega/examples/field/FieldInputDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/field/SelectFields.vue",
+          "path": "registry/vue-vega/examples/field/FieldRadioDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/field/SliderFields.vue",
+          "path": "registry/vue-vega/examples/field/FieldResponsiveDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/field/SwitchFields.vue",
+          "path": "registry/vue-vega/examples/field/FieldSelectDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/field/TextareaFields.vue",
+          "path": "registry/vue-vega/examples/field/FieldSliderDemo.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/field/FieldSwitchDemo.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/field/FieldTextareaDemo.vue",
           "type": "registry:example"
         }
       ],
@@ -3152,19 +2782,11 @@
     {
       "name": "form-example",
       "title": "Form",
-      "dependencies": ["vee-validate", "@vee-validate/zod", "zod@3.25.76"],
-      "registryDependencies": ["button", "form", "input", "checkbox"],
+      "dependencies": ["vee-validate", "zod"],
+      "registryDependencies": ["button", "form", "input", "textarea"],
       "files": [
         {
-          "path": "registry/vue-vega/examples/form/FormBasic.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/form/FormExample.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/form/FormWithCheckbox.vue",
+          "path": "registry/vue-vega/examples/form/FormDemo.vue",
           "type": "registry:example"
         }
       ],
@@ -3173,19 +2795,11 @@
     {
       "name": "hover-card-example",
       "title": "Hover Card",
-      "dependencies": [],
-      "registryDependencies": ["example", "button", "dialog", "hover-card"],
+      "dependencies": ["lucide-vue-next"],
+      "registryDependencies": ["avatar", "button", "hover-card"],
       "files": [
         {
-          "path": "registry/vue-vega/examples/hover-card/HoverCardExample.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/hover-card/HoverCardInDialog.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/hover-card/HoverCardSides.vue",
+          "path": "registry/vue-vega/examples/hover-card/HoverCardDemo.vue",
           "type": "registry:example"
         }
       ],
@@ -3194,18 +2808,11 @@
     {
       "name": "input-example",
       "title": "Input",
-      "dependencies": [],
-      "registryDependencies": [
-        "input",
-        "field",
-        "example",
-        "button",
-        "select",
-        "native-select"
-      ],
+      "dependencies": ["vee-validate", "zod"],
+      "registryDependencies": ["button", "form", "input", "label"],
       "files": [
         {
-          "path": "registry/vue-vega/examples/input/InputBasic.vue",
+          "path": "registry/vue-vega/examples/input/InputDemo.vue",
           "type": "registry:example"
         },
         {
@@ -3213,7 +2820,7 @@
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/input/InputExample.vue",
+          "path": "registry/vue-vega/examples/input/InputFile.vue",
           "type": "registry:example"
         },
         {
@@ -3221,11 +2828,7 @@
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/input/InputInvalid.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/input/InputTypes.vue",
+          "path": "registry/vue-vega/examples/input/InputFormAutoAnimate.vue",
           "type": "registry:example"
         },
         {
@@ -3233,19 +2836,11 @@
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/input/InputWithDescription.vue",
-          "type": "registry:example"
-        },
-        {
           "path": "registry/vue-vega/examples/input/InputWithLabel.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/input/InputWithNativeSelect.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/input/InputWithSelect.vue",
+          "path": "registry/vue-vega/examples/input/InputWithText.vue",
           "type": "registry:example"
         }
       ],
@@ -3254,15 +2849,20 @@
     {
       "name": "input-group-example",
       "title": "Input Group",
-      "dependencies": [],
-      "registryDependencies": ["input-group", "button"],
+      "dependencies": ["lucide-vue-next"],
+      "registryDependencies": [
+        "button-group",
+        "dropdown-menu",
+        "input-group",
+        "label",
+        "popover",
+        "separator",
+        "spinner",
+        "tooltip"
+      ],
       "files": [
         {
-          "path": "registry/vue-vega/examples/input-group/InputGroupBasic.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/input-group/InputGroupExample.vue",
+          "path": "registry/vue-vega/examples/input-group/InputGroupDemo.vue",
           "type": "registry:example"
         },
         {
@@ -3270,7 +2870,39 @@
           "type": "registry:example"
         },
         {
+          "path": "registry/vue-vega/examples/input-group/InputGroupWithButtonGroup.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/input-group/InputGroupWithCustomInput.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/input-group/InputGroupWithDropdown.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/input-group/InputGroupWithIcon.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/input-group/InputGroupWithLabel.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/input-group/InputGroupWithSpinner.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/input-group/InputGroupWithText.vue",
+          "type": "registry:example"
+        },
+        {
           "path": "registry/vue-vega/examples/input-group/InputGroupWithTextarea.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/input-group/InputGroupWithTooltip.vue",
           "type": "registry:example"
         }
       ],
@@ -3279,17 +2911,27 @@
     {
       "name": "input-otp-example",
       "title": "Input Otp",
-      "dependencies": [],
-      "registryDependencies": [
-        "example",
-        "button",
-        "card",
-        "field",
-        "input-otp"
-      ],
+      "dependencies": ["vee-validate", "vue-input-otp", "vue-sonner", "zod"],
+      "registryDependencies": ["button", "field", "input-otp"],
       "files": [
         {
-          "path": "registry/vue-vega/examples/input-otp/InputOTPExample.vue",
+          "path": "registry/vue-vega/examples/input-otp/InputOTPControlledDemo.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/input-otp/InputOTPDemo.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/input-otp/InputOTPFormDemo.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/input-otp/InputOTPPatternDemo.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/input-otp/InputOTPSeparatorDemo.vue",
           "type": "registry:example"
         }
       ],
@@ -3298,19 +2940,47 @@
     {
       "name": "item-example",
       "title": "Item",
-      "dependencies": [],
-      "registryDependencies": ["item", "button"],
+      "dependencies": ["lucide-vue-next"],
+      "registryDependencies": ["avatar", "button", "dropdown-menu", "item"],
       "files": [
         {
-          "path": "registry/vue-vega/examples/item/ItemBasic.vue",
+          "path": "registry/vue-vega/examples/item/ItemAvatarDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/item/ItemExample.vue",
+          "path": "registry/vue-vega/examples/item/ItemDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/item/ItemWithActions.vue",
+          "path": "registry/vue-vega/examples/item/ItemDropdownDemo.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/item/ItemGroupDemo.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/item/ItemHeaderDemo.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/item/ItemIconDemo.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/item/ItemImageDemo.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/item/ItemLinkDemo.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/item/ItemSizeDemo.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/item/ItemVariantDemo.vue",
           "type": "registry:example"
         }
       ],
@@ -3319,19 +2989,33 @@
     {
       "name": "kbd-example",
       "title": "Kbd",
-      "dependencies": [],
-      "registryDependencies": ["kbd"],
+      "dependencies": ["lucide-vue-next"],
+      "registryDependencies": [
+        "button",
+        "button-group",
+        "input-group",
+        "kbd",
+        "tooltip"
+      ],
       "files": [
         {
-          "path": "registry/vue-vega/examples/kbd/KbdBasic.vue",
+          "path": "registry/vue-vega/examples/kbd/KbdDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/kbd/KbdExample.vue",
+          "path": "registry/vue-vega/examples/kbd/KbdGroupDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/kbd/KbdWithGroup.vue",
+          "path": "registry/vue-vega/examples/kbd/KbdWithButton.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/kbd/KbdWithInputGroup.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/kbd/KbdWithTooltip.vue",
           "type": "registry:example"
         }
       ],
@@ -3341,33 +3025,10 @@
       "name": "label-example",
       "title": "Label",
       "dependencies": [],
-      "registryDependencies": [
-        "example",
-        "field",
-        "input",
-        "label",
-        "checkbox",
-        "textarea"
-      ],
+      "registryDependencies": ["checkbox", "label"],
       "files": [
         {
-          "path": "registry/vue-vega/examples/label/LabelDisabled.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/label/LabelExample.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/label/LabelWithCheckbox.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/label/LabelWithInput.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/label/LabelWithTextarea.vue",
+          "path": "registry/vue-vega/examples/label/LabelDemo.vue",
           "type": "registry:example"
         }
       ],
@@ -3377,30 +3038,10 @@
       "name": "menubar-example",
       "title": "Menubar",
       "dependencies": [],
-      "registryDependencies": ["menubar", "example"],
+      "registryDependencies": ["menubar"],
       "files": [
         {
-          "path": "registry/vue-vega/examples/menubar/MenubarBasic.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/menubar/MenubarExample.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/menubar/MenubarWithCheckboxes.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/menubar/MenubarWithIcons.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/menubar/MenubarWithRadio.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/menubar/MenubarWithSubmenu.vue",
+          "path": "registry/vue-vega/examples/menubar/MenubarDemo.vue",
           "type": "registry:example"
         }
       ],
@@ -3409,19 +3050,31 @@
     {
       "name": "native-select-example",
       "title": "Native Select",
-      "dependencies": [],
-      "registryDependencies": ["native-select"],
+      "dependencies": ["vee-validate", "vue-sonner", "zod"],
+      "registryDependencies": ["button", "form", "native-select"],
       "files": [
         {
-          "path": "registry/vue-vega/examples/native-select/NativeSelectBasic.vue",
+          "path": "registry/vue-vega/examples/native-select/NativeSelectDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/native-select/NativeSelectExample.vue",
+          "path": "registry/vue-vega/examples/native-select/NativeSelectDisabledDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/native-select/NativeSelectWithOptGroup.vue",
+          "path": "registry/vue-vega/examples/native-select/NativeSelectFormDemo.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/native-select/NativeSelectGroupsDemo.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/native-select/NativeSelectInputGroupDemo.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/native-select/NativeSelectInvalidDemo.vue",
           "type": "registry:example"
         }
       ],
@@ -3430,15 +3083,15 @@
     {
       "name": "navigation-menu-example",
       "title": "Navigation Menu",
-      "dependencies": [],
+      "dependencies": ["lucide-vue-next"],
       "registryDependencies": ["navigation-menu"],
       "files": [
         {
-          "path": "registry/vue-vega/examples/navigation-menu/NavigationMenuBasic.vue",
+          "path": "registry/vue-vega/examples/navigation-menu/NavigationMenuDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/navigation-menu/NavigationMenuExample.vue",
+          "path": "registry/vue-vega/examples/navigation-menu/NavigationMenuItem.vue",
           "type": "registry:example"
         }
       ],
@@ -3447,23 +3100,31 @@
     {
       "name": "number-field-example",
       "title": "Number Field",
-      "dependencies": [],
-      "registryDependencies": ["number-field", "label"],
+      "dependencies": ["vee-validate", "vue-sonner", "zod"],
+      "registryDependencies": ["button", "field", "label", "number-field"],
       "files": [
         {
-          "path": "registry/vue-vega/examples/number-field/NumberFieldBasic.vue",
+          "path": "registry/vue-vega/examples/number-field/NumberFieldCurrencyDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/number-field/NumberFieldDisabled.vue",
+          "path": "registry/vue-vega/examples/number-field/NumberFieldDecimalDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/number-field/NumberFieldExample.vue",
+          "path": "registry/vue-vega/examples/number-field/NumberFieldDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/number-field/NumberFieldWithLabel.vue",
+          "path": "registry/vue-vega/examples/number-field/NumberFieldDisabledDemo.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/number-field/NumberFieldFormDemo.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/number-field/NumberFieldPercentageDemo.vue",
           "type": "registry:example"
         }
       ],
@@ -3473,22 +3134,10 @@
       "name": "pagination-example",
       "title": "Pagination",
       "dependencies": [],
-      "registryDependencies": ["pagination", "example", "field", "select"],
+      "registryDependencies": ["pagination"],
       "files": [
         {
-          "path": "registry/vue-vega/examples/pagination/PaginationBasic.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/pagination/PaginationExample.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/pagination/PaginationSimple.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/pagination/PaginationWithSelect.vue",
+          "path": "registry/vue-vega/examples/pagination/PaginationDemo.vue",
           "type": "registry:example"
         }
       ],
@@ -3501,19 +3150,7 @@
       "registryDependencies": ["pin-input"],
       "files": [
         {
-          "path": "registry/vue-vega/examples/pin-input/PinInputBasic.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/pin-input/PinInputExample.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/pin-input/PinInputMasked.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/pin-input/PinInputWithSeparator.vue",
+          "path": "registry/vue-vega/examples/pin-input/PinInputDemo.vue",
           "type": "registry:example"
         }
       ],
@@ -3523,33 +3160,10 @@
       "name": "popover-example",
       "title": "Popover",
       "dependencies": [],
-      "registryDependencies": [
-        "button",
-        "popover",
-        "example",
-        "dialog",
-        "field",
-        "input"
-      ],
+      "registryDependencies": ["button", "input", "label", "popover"],
       "files": [
         {
-          "path": "registry/vue-vega/examples/popover/PopoverAlignments.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/popover/PopoverBasic.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/popover/PopoverExample.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/popover/PopoverInDialog.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/popover/PopoverWithForm.vue",
+          "path": "registry/vue-vega/examples/popover/PopoverDemo.vue",
           "type": "registry:example"
         }
       ],
@@ -3559,32 +3173,10 @@
       "name": "progress-example",
       "title": "Progress",
       "dependencies": [],
-      "registryDependencies": [
-        "example",
-        "item",
-        "progress",
-        "slider",
-        "field"
-      ],
+      "registryDependencies": ["progress"],
       "files": [
         {
-          "path": "registry/vue-vega/examples/progress/FileUploadList.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/progress/ProgressControlled.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/progress/ProgressExample.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/progress/ProgressValues.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/progress/ProgressWithLabel.vue",
+          "path": "registry/vue-vega/examples/progress/ProgressDemo.vue",
           "type": "registry:example"
         }
       ],
@@ -3594,55 +3186,10 @@
       "name": "radio-group-example",
       "title": "Radio Group",
       "dependencies": [],
-      "registryDependencies": ["field", "radio-group", "example"],
+      "registryDependencies": ["label", "radio-group"],
       "files": [
         {
-          "path": "registry/vue-vega/examples/radio-group/RadioGroupBasic.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/radio-group/RadioGroupDisabled.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/radio-group/RadioGroupExample.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/radio-group/RadioGroupGrid.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/radio-group/RadioGroupInvalid.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/radio-group/RadioGroupWithDescriptions.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/radio-group/RadioGroupWithFieldSet.vue",
-          "type": "registry:example"
-        }
-      ],
-      "type": "registry:example"
-    },
-    {
-      "name": "range-calendar-example",
-      "title": "Range Calendar",
-      "dependencies": ["reka-ui"],
-      "registryDependencies": ["range-calendar"],
-      "files": [
-        {
-          "path": "registry/vue-vega/examples/range-calendar/RangeCalendarBasic.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/range-calendar/RangeCalendarExample.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/range-calendar/RangeCalendarMultipleMonths.vue",
+          "path": "registry/vue-vega/examples/radio-group/RadioGroupDemo.vue",
           "type": "registry:example"
         }
       ],
@@ -3652,10 +3199,10 @@
       "name": "resizable-example",
       "title": "Resizable",
       "dependencies": [],
-      "registryDependencies": ["example", "resizable"],
+      "registryDependencies": ["resizable"],
       "files": [
         {
-          "path": "registry/vue-vega/examples/resizable/ResizableExample.vue",
+          "path": "registry/vue-vega/examples/resizable/ResizableDemo.vue",
           "type": "registry:example"
         }
       ],
@@ -3665,18 +3212,10 @@
       "name": "scroll-area-example",
       "title": "Scroll Area",
       "dependencies": [],
-      "registryDependencies": ["example", "scroll-area", "separator"],
+      "registryDependencies": ["scroll-area", "separator"],
       "files": [
         {
-          "path": "registry/vue-vega/examples/scroll-area/ScrollAreaExample.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/scroll-area/ScrollAreaHorizontal.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/scroll-area/ScrollAreaVertical.vue",
+          "path": "registry/vue-vega/examples/scroll-area/ScrollAreaDemo.vue",
           "type": "registry:example"
         }
       ],
@@ -3686,71 +3225,18 @@
       "name": "select-example",
       "title": "Select",
       "dependencies": [],
-      "registryDependencies": [
-        "select",
-        "example",
-        "button",
-        "dialog",
-        "input",
-        "native-select",
-        "field",
-        "item"
-      ],
+      "registryDependencies": ["select"],
       "files": [
         {
-          "path": "registry/vue-vega/examples/select/SelectBasic.vue",
+          "path": "registry/vue-vega/examples/select/SelectDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/select/SelectDisabled.vue",
+          "path": "registry/vue-vega/examples/select/SelectMultipleDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/select/SelectExample.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/select/SelectInDialog.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/select/SelectInline.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/select/SelectInvalid.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/select/SelectLargeList.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/select/SelectPlan.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/select/SelectPopper.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/select/SelectSizes.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/select/SelectWithButton.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/select/SelectWithField.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/select/SelectWithGroups.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/select/SelectWithIcons.vue",
+          "path": "registry/vue-vega/examples/select/SelectScrollable.vue",
           "type": "registry:example"
         }
       ],
@@ -3760,26 +3246,10 @@
       "name": "separator-example",
       "title": "Separator",
       "dependencies": [],
-      "registryDependencies": ["example", "separator"],
+      "registryDependencies": ["separator"],
       "files": [
         {
-          "path": "registry/vue-vega/examples/separator/SeparatorExample.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/separator/SeparatorHorizontal.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/separator/SeparatorInList.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/separator/SeparatorVertical.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/separator/SeparatorVerticalMenu.vue",
+          "path": "registry/vue-vega/examples/separator/SeparatorDemo.vue",
           "type": "registry:example"
         }
       ],
@@ -3789,18 +3259,10 @@
       "name": "sheet-example",
       "title": "Sheet",
       "dependencies": [],
-      "registryDependencies": ["example", "button", "field", "input", "sheet"],
+      "registryDependencies": ["button", "input", "label", "sheet"],
       "files": [
         {
-          "path": "registry/vue-vega/examples/sheet/SheetExample.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/sheet/SheetWithForm.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/sheet/SheetWithSides.vue",
+          "path": "registry/vue-vega/examples/sheet/SheetDemo.vue",
           "type": "registry:example"
         }
       ],
@@ -3809,19 +3271,11 @@
     {
       "name": "sidebar-example",
       "title": "Sidebar",
-      "dependencies": [],
+      "dependencies": ["lucide-vue-next"],
       "registryDependencies": ["sidebar"],
       "files": [
         {
-          "path": "registry/vue-vega/examples/sidebar/SidebarBasic.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/sidebar/SidebarCollapsible.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/sidebar/SidebarExample.vue",
+          "path": "registry/vue-vega/examples/sidebar/SidebarDemo.vue",
           "type": "registry:example"
         }
       ],
@@ -3831,30 +3285,10 @@
       "name": "skeleton-example",
       "title": "Skeleton",
       "dependencies": [],
-      "registryDependencies": ["example", "skeleton", "card"],
+      "registryDependencies": ["skeleton"],
       "files": [
         {
-          "path": "registry/vue-vega/examples/skeleton/SkeletonAvatar.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/skeleton/SkeletonCard.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/skeleton/SkeletonExample.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/skeleton/SkeletonForm.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/skeleton/SkeletonTable.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/skeleton/SkeletonText.vue",
+          "path": "registry/vue-vega/examples/skeleton/SkeletonDemo.vue",
           "type": "registry:example"
         }
       ],
@@ -3864,34 +3298,10 @@
       "name": "slider-example",
       "title": "Slider",
       "dependencies": [],
-      "registryDependencies": ["slider", "label", "example"],
+      "registryDependencies": ["slider"],
       "files": [
         {
-          "path": "registry/vue-vega/examples/slider/SliderBasic.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/slider/SliderControlled.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/slider/SliderDisabled.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/slider/SliderExample.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/slider/SliderMultiple.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/slider/SliderRange.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/slider/SliderVertical.vue",
+          "path": "registry/vue-vega/examples/slider/SliderDemo.vue",
           "type": "registry:example"
         }
       ],
@@ -3901,10 +3311,18 @@
       "name": "sonner-example",
       "title": "Sonner",
       "dependencies": ["vue-sonner"],
-      "registryDependencies": ["example", "button"],
+      "registryDependencies": ["button", "dialog"],
       "files": [
         {
-          "path": "registry/vue-vega/examples/sonner/SonnerExample.vue",
+          "path": "registry/vue-vega/examples/sonner/SonnerDemo.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/sonner/SonnerTypesDemo.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/sonner/SonnerWithDialogDemo.vue",
           "type": "registry:example"
         }
       ],
@@ -3913,39 +3331,55 @@
     {
       "name": "spinner-example",
       "title": "Spinner",
-      "dependencies": [],
+      "dependencies": ["lucide-vue-next"],
       "registryDependencies": [
-        "example",
-        "spinner",
         "badge",
         "button",
         "empty",
-        "field",
-        "input-group"
+        "input-group",
+        "item",
+        "progress",
+        "spinner"
       ],
       "files": [
+        {
+          "path": "registry/vue-vega/examples/spinner/SpinnerBadgeDemo.vue",
+          "type": "registry:example"
+        },
         {
           "path": "registry/vue-vega/examples/spinner/SpinnerBasic.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/spinner/SpinnerExample.vue",
+          "path": "registry/vue-vega/examples/spinner/SpinnerButtonDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/spinner/SpinnerInBadges.vue",
+          "path": "registry/vue-vega/examples/spinner/SpinnerColorDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/spinner/SpinnerInButtons.vue",
+          "path": "registry/vue-vega/examples/spinner/SpinnerCustomDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/spinner/SpinnerInEmpty.vue",
+          "path": "registry/vue-vega/examples/spinner/SpinnerDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/spinner/SpinnerInInputGroup.vue",
+          "path": "registry/vue-vega/examples/spinner/SpinnerEmptyDemo.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/spinner/SpinnerInputGroupDemo.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/spinner/SpinnerItemDemo.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/spinner/SpinnerSizeDemo.vue",
           "type": "registry:example"
         }
       ],
@@ -3954,15 +3388,19 @@
     {
       "name": "stepper-example",
       "title": "Stepper",
-      "dependencies": [],
-      "registryDependencies": ["stepper"],
+      "dependencies": ["lucide-vue-next", "vue-sonner", "zod"],
+      "registryDependencies": ["button", "form", "input", "select", "stepper"],
       "files": [
         {
-          "path": "registry/vue-vega/examples/stepper/StepperBasic.vue",
+          "path": "registry/vue-vega/examples/stepper/StepperDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/stepper/StepperExample.vue",
+          "path": "registry/vue-vega/examples/stepper/StepperForm.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/stepper/StepperHorizental.vue",
           "type": "registry:example"
         },
         {
@@ -3976,26 +3414,10 @@
       "name": "switch-example",
       "title": "Switch",
       "dependencies": [],
-      "registryDependencies": ["field", "switch", "label", "example"],
+      "registryDependencies": ["label", "switch"],
       "files": [
         {
-          "path": "registry/vue-vega/examples/switch/SwitchBasic.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/switch/SwitchDisabled.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/switch/SwitchExample.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/switch/SwitchSizes.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/switch/SwitchWithDescription.vue",
+          "path": "registry/vue-vega/examples/switch/SwitchDemo.vue",
           "type": "registry:example"
         }
       ],
@@ -4005,45 +3427,10 @@
       "name": "table-example",
       "title": "Table",
       "dependencies": [],
-      "registryDependencies": [
-        "table",
-        "example",
-        "button",
-        "dropdown-menu",
-        "input",
-        "select"
-      ],
+      "registryDependencies": ["table"],
       "files": [
         {
-          "path": "registry/vue-vega/examples/table/TableBasic.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/table/TableExample.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/table/TableSimple.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/table/TableWithActions.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/table/TableWithBadges.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/table/TableWithFooter.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/table/TableWithInput.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/table/TableWithSelect.vue",
+          "path": "registry/vue-vega/examples/table/TableDemo.vue",
           "type": "registry:example"
         }
       ],
@@ -4053,68 +3440,10 @@
       "name": "tabs-example",
       "title": "Tabs",
       "dependencies": [],
-      "registryDependencies": [
-        "tabs",
-        "example",
-        "button",
-        "dropdown-menu",
-        "input"
-      ],
+      "registryDependencies": ["button", "card", "input", "label", "tabs"],
       "files": [
         {
-          "path": "registry/vue-vega/examples/tabs/TabsBasic.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/tabs/TabsDisabled.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/tabs/TabsExample.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/tabs/TabsIconOnly.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/tabs/TabsLine.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/tabs/TabsLineDisabled.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/tabs/TabsLineWithContent.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/tabs/TabsMultiple.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/tabs/TabsVariantsComparison.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/tabs/TabsVertical.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/tabs/TabsWithContent.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/tabs/TabsWithDropdown.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/tabs/TabsWithIcons.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/tabs/TabsWithInputAndButton.vue",
+          "path": "registry/vue-vega/examples/tabs/TabsDemo.vue",
           "type": "registry:example"
         }
       ],
@@ -4123,19 +3452,71 @@
     {
       "name": "tags-input-example",
       "title": "Tags Input",
-      "dependencies": [],
-      "registryDependencies": ["tags-input", "label"],
+      "dependencies": ["lucide-vue-next", "reka-ui"],
+      "registryDependencies": ["button", "popover", "tags-input"],
       "files": [
         {
-          "path": "registry/vue-vega/examples/tags-input/TagsInputBasic.vue",
+          "path": "registry/vue-vega/examples/tags-input/TagsInputDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/tags-input/TagsInputExample.vue",
+          "path": "registry/vue-vega/examples/tags-input/TagsInputWithListbox.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "tanstack-form-example",
+      "title": "Tanstack Form",
+      "dependencies": ["lucide-vue-next", "vue-sonner", "zod"],
+      "registryDependencies": [
+        "button",
+        "card",
+        "checkbox",
+        "field",
+        "input",
+        "input-group",
+        "radio-group",
+        "select",
+        "switch",
+        "textarea"
+      ],
+      "files": [
+        {
+          "path": "registry/vue-vega/examples/tanstack-form/TanStackFormArray.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/tags-input/TagsInputWithLabel.vue",
+          "path": "registry/vue-vega/examples/tanstack-form/TanStackFormCheckbox.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/tanstack-form/TanStackFormComplex.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/tanstack-form/TanStackFormDemo.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/tanstack-form/TanStackFormInput.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/tanstack-form/TanStackFormRadioGroup.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/tanstack-form/TanStackFormSelect.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/tanstack-form/TanStackFormSwitch.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/tanstack-form/TanStackFormTextarea.vue",
           "type": "registry:example"
         }
       ],
@@ -4145,30 +3526,14 @@
       "name": "textarea-example",
       "title": "Textarea",
       "dependencies": [],
-      "registryDependencies": ["textarea", "field", "example"],
+      "registryDependencies": ["textarea"],
       "files": [
         {
-          "path": "registry/vue-vega/examples/textarea/TextareaBasic.vue",
+          "path": "registry/vue-vega/examples/textarea/TextareaDemo.vue",
           "type": "registry:example"
         },
         {
           "path": "registry/vue-vega/examples/textarea/TextareaDisabled.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/textarea/TextareaExample.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/textarea/TextareaInvalid.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/textarea/TextareaWithDescription.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/textarea/TextareaWithLabel.vue",
           "type": "registry:example"
         }
       ],
@@ -4177,43 +3542,31 @@
     {
       "name": "toggle-example",
       "title": "Toggle",
-      "dependencies": [],
-      "registryDependencies": ["toggle", "example", "button"],
+      "dependencies": ["lucide-vue-next"],
+      "registryDependencies": ["toggle"],
       "files": [
         {
-          "path": "registry/vue-vega/examples/toggle/ToggleBasic.vue",
+          "path": "registry/vue-vega/examples/toggle/ToggleDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/toggle/ToggleDisabled.vue",
+          "path": "registry/vue-vega/examples/toggle/ToggleDisabledDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/toggle/ToggleExample.vue",
+          "path": "registry/vue-vega/examples/toggle/ToggleLargeDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/toggle/ToggleOutline.vue",
+          "path": "registry/vue-vega/examples/toggle/ToggleOutlineDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/toggle/ToggleSizes.vue",
+          "path": "registry/vue-vega/examples/toggle/ToggleSmallDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/toggle/ToggleWithButtonIcon.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/toggle/ToggleWithButtonIconText.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/toggle/ToggleWithButtonText.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/toggle/ToggleWithIcon.vue",
+          "path": "registry/vue-vega/examples/toggle/ToggleTextDemo.vue",
           "type": "registry:example"
         }
       ],
@@ -4222,67 +3575,31 @@
     {
       "name": "toggle-group-example",
       "title": "Toggle Group",
-      "dependencies": [],
-      "registryDependencies": ["toggle-group", "example", "input", "select"],
+      "dependencies": ["lucide-vue-next"],
+      "registryDependencies": ["toggle-group"],
       "files": [
         {
-          "path": "registry/vue-vega/examples/toggle-group/ToggleGroupBasic.vue",
+          "path": "registry/vue-vega/examples/toggle-group/ToggleGroupDefaultDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/toggle-group/ToggleGroupDateRange.vue",
+          "path": "registry/vue-vega/examples/toggle-group/ToggleGroupDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/toggle-group/ToggleGroupExample.vue",
+          "path": "registry/vue-vega/examples/toggle-group/ToggleGroupDisabledDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/toggle-group/ToggleGroupFilter.vue",
+          "path": "registry/vue-vega/examples/toggle-group/ToggleGroupLargeDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/toggle-group/ToggleGroupOutline.vue",
+          "path": "registry/vue-vega/examples/toggle-group/ToggleGroupSingleDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/toggle-group/ToggleGroupOutlineWithIcons.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/toggle-group/ToggleGroupSizes.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/toggle-group/ToggleGroupSort.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/toggle-group/ToggleGroupSpacing.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/toggle-group/ToggleGroupVertical.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/toggle-group/ToggleGroupVerticalOutline.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/toggle-group/ToggleGroupVerticalOutlineWithIcons.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/toggle-group/ToggleGroupVerticalWithSpacing.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/toggle-group/ToggleGroupWithIcons.vue",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/vue-vega/examples/toggle-group/ToggleGroupWithInputAndSelect.vue",
+          "path": "registry/vue-vega/examples/toggle-group/ToggleGroupSmallDemo.vue",
           "type": "registry:example"
         }
       ],
@@ -4292,42 +3609,136 @@
       "name": "tooltip-example",
       "title": "Tooltip",
       "dependencies": [],
-      "registryDependencies": ["example", "button", "tooltip", "kbd"],
+      "registryDependencies": ["button", "tooltip"],
       "files": [
         {
-          "path": "registry/vue-vega/examples/tooltip/TooltipBasic.vue",
+          "path": "registry/vue-vega/examples/tooltip/TooltipDemo.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "typography-example",
+      "title": "Typography",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/vue-vega/examples/typography/TypographyBlockquote.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/tooltip/TooltipDisabled.vue",
+          "path": "registry/vue-vega/examples/typography/TypographyDemo.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/tooltip/TooltipExample.vue",
+          "path": "registry/vue-vega/examples/typography/TypographyH1.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/tooltip/TooltipFormatted.vue",
+          "path": "registry/vue-vega/examples/typography/TypographyH2.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/tooltip/TooltipLongContent.vue",
+          "path": "registry/vue-vega/examples/typography/TypographyH3.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/tooltip/TooltipOnLink.vue",
+          "path": "registry/vue-vega/examples/typography/TypographyH4.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/tooltip/TooltipSides.vue",
+          "path": "registry/vue-vega/examples/typography/TypographyInlineCode.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/tooltip/TooltipWithIcon.vue",
+          "path": "registry/vue-vega/examples/typography/TypographyLarge.vue",
           "type": "registry:example"
         },
         {
-          "path": "registry/vue-vega/examples/tooltip/TooltipWithKeyboard.vue",
+          "path": "registry/vue-vega/examples/typography/TypographyLead.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/typography/TypographyList.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/typography/TypographyMuted.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/typography/TypographyP.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/typography/TypographySmall.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/typography/TypographyTable.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "vee-validate-example",
+      "title": "Vee Validate",
+      "dependencies": ["lucide-vue-next", "vee-validate", "vue-sonner", "zod"],
+      "registryDependencies": [
+        "button",
+        "card",
+        "checkbox",
+        "field",
+        "input",
+        "input-group",
+        "progress",
+        "radio-group",
+        "select",
+        "switch",
+        "textarea"
+      ],
+      "files": [
+        {
+          "path": "registry/vue-vega/examples/vee-validate/VeeValidateArrayDemo.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/vee-validate/VeeValidateCheckboxDemo.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/vee-validate/VeeValidateComplexDemo.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/vee-validate/VeeValidateDemo.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/vee-validate/VeeValidateInputDemo.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/vee-validate/VeeValidatePasswordDemo.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/vee-validate/VeeValidateRadioGroupDemo.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/vee-validate/VeeValidateSelectDemo.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/vee-validate/VeeValidateSwitchDemo.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-vega/examples/vee-validate/VeeValidateTextareaDemo.vue",
           "type": "registry:example"
         }
       ],
