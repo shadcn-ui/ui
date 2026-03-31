@@ -15,7 +15,17 @@
     "clsx": "^2.1.1",
     "tailwind-merge": "^3.0.0",
     "tw-animate-css": "^1.0.0",
-    "shadcn": "workspace:*"
+    "shadcn": "workspace:*",
+    "reka-ui": "^2.0.0",
+    "lucide-vue-next": "^0.474.0",
+    "@vueuse/core": "^12.0.0",
+    "embla-carousel-vue": "^8.0.0",
+    "vaul-vue": "^0.2.0",
+    "vue-sonner": "^1.0.0",
+    "vue-input-otp": "^0.1.0",
+    "@internationalized/date": "^3.7.0",
+    "@unovis/vue": "^1.5.0",
+    "@unovis/ts": "^1.5.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.2.0",

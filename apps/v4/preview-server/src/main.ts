@@ -56,7 +56,9 @@ async function renderPreview() {
 
   if (framework === "vue") {
     const { createApp } = await import("vue")
-    const modules = import.meta.glob("./vue/*.vue")
+    const flatModules = import.meta.glob("./vue/*.vue")
+    const dirModules = import.meta.glob("./vue/**/*.vue")
+    const modules = { ...flatModules, ...dirModules }
     const modulePath = `./vue/${componentName}.vue`
 
     if (modules[modulePath]) {
