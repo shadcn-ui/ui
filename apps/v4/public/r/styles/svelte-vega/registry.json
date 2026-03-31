@@ -4,7 +4,7 @@
   "items": [
     {
       "name": "index",
-      "dependencies": ["class-variance-authority", "svelte"],
+      "dependencies": ["class-variance-authority", "svelte", "bits-ui"],
       "devDependencies": ["tw-animate-css", "shadcn"],
       "registryDependencies": ["utils"],
       "files": [],
@@ -25,7 +25,7 @@
     },
     {
       "name": "style",
-      "dependencies": ["class-variance-authority", "svelte"],
+      "dependencies": ["class-variance-authority", "svelte", "bits-ui"],
       "devDependencies": ["tw-animate-css", "shadcn"],
       "registryDependencies": ["utils"],
       "files": [],
@@ -45,12 +45,270 @@
       "type": "registry:style"
     },
     {
-      "name": "button",
-      "dependencies": ["class-variance-authority"],
+      "name": "accordion",
+      "dependencies": ["bits-ui"],
       "registryDependencies": ["utils"],
       "files": [
         {
-          "path": "registry/svelte-vega/ui/button.svelte",
+          "path": "registry/svelte-vega/ui/accordion/accordion-content.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/accordion/accordion-item.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/accordion/accordion-trigger.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/accordion/accordion.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/accordion/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "links": {
+          "docs": "https://force-ui.com/docs/components/svelte/accordion"
+        }
+      },
+      "type": "registry:ui"
+    },
+    {
+      "name": "alert",
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/ui/alert/alert-action.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/alert/alert-description.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/alert/alert-title.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/alert/alert.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/alert/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "links": {
+          "docs": "https://force-ui.com/docs/components/svelte/alert"
+        }
+      },
+      "type": "registry:ui"
+    },
+    {
+      "name": "alert-dialog",
+      "dependencies": ["bits-ui"],
+      "registryDependencies": ["button", "utils"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/ui/alert-dialog/alert-dialog-action.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/alert-dialog/alert-dialog-cancel.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/alert-dialog/alert-dialog-content.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/alert-dialog/alert-dialog-description.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/alert-dialog/alert-dialog-footer.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/alert-dialog/alert-dialog-header.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/alert-dialog/alert-dialog-media.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/alert-dialog/alert-dialog-overlay.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/alert-dialog/alert-dialog-portal.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/alert-dialog/alert-dialog-title.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/alert-dialog/alert-dialog-trigger.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/alert-dialog/alert-dialog.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/alert-dialog/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "links": {
+          "docs": "https://force-ui.com/docs/components/svelte/alert-dialog"
+        }
+      },
+      "type": "registry:ui"
+    },
+    {
+      "name": "aspect-ratio",
+      "dependencies": ["bits-ui"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/ui/aspect-ratio/aspect-ratio.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/aspect-ratio/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "links": {
+          "docs": "https://force-ui.com/docs/components/svelte/aspect-ratio"
+        }
+      },
+      "type": "registry:ui"
+    },
+    {
+      "name": "avatar",
+      "dependencies": ["bits-ui"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/ui/avatar/avatar-badge.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/avatar/avatar-fallback.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/avatar/avatar-group-count.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/avatar/avatar-group.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/avatar/avatar-image.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/avatar/avatar.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/avatar/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "links": {
+          "docs": "https://force-ui.com/docs/components/svelte/avatar"
+        }
+      },
+      "type": "registry:ui"
+    },
+    {
+      "name": "badge",
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/ui/badge/badge.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/badge/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "links": {
+          "docs": "https://force-ui.com/docs/components/svelte/badge"
+        }
+      },
+      "type": "registry:ui"
+    },
+    {
+      "name": "breadcrumb",
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/ui/breadcrumb/breadcrumb-ellipsis.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/breadcrumb/breadcrumb-item.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/breadcrumb/breadcrumb-link.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/breadcrumb/breadcrumb-list.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/breadcrumb/breadcrumb-page.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/breadcrumb/breadcrumb-separator.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/breadcrumb/breadcrumb.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/breadcrumb/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "links": {
+          "docs": "https://force-ui.com/docs/components/svelte/breadcrumb"
+        }
+      },
+      "type": "registry:ui"
+    },
+    {
+      "name": "button",
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/ui/button/button.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/button/index.ts",
           "type": "registry:ui"
         }
       ],
@@ -62,12 +320,2147 @@
       "type": "registry:ui"
     },
     {
-      "name": "button-demo",
-      "title": "Button Demo",
-      "registryDependencies": ["button"],
+      "name": "button-group",
+      "registryDependencies": ["separator", "utils"],
       "files": [
         {
-          "path": "registry/svelte-vega/examples/button-demo.svelte",
+          "path": "registry/svelte-vega/ui/button-group/button-group-separator.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/button-group/button-group-text.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/button-group/button-group.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/button-group/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "links": {
+          "docs": "https://force-ui.com/docs/components/svelte/button-group"
+        }
+      },
+      "type": "registry:ui"
+    },
+    {
+      "name": "calendar",
+      "dependencies": ["@internationalized/date", "bits-ui"],
+      "registryDependencies": ["button", "utils"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/ui/calendar/calendar-caption.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/calendar/calendar-cell.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/calendar/calendar-day.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/calendar/calendar-grid-body.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/calendar/calendar-grid-head.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/calendar/calendar-grid-row.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/calendar/calendar-grid.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/calendar/calendar-head-cell.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/calendar/calendar-header.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/calendar/calendar-heading.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/calendar/calendar-month-select.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/calendar/calendar-month.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/calendar/calendar-months.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/calendar/calendar-nav.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/calendar/calendar-next-button.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/calendar/calendar-prev-button.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/calendar/calendar-year-select.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/calendar/calendar.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/calendar/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "links": {
+          "docs": "https://force-ui.com/docs/components/svelte/calendar"
+        }
+      },
+      "type": "registry:ui"
+    },
+    {
+      "name": "card",
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/ui/card/card-action.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/card/card-content.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/card/card-description.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/card/card-footer.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/card/card-header.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/card/card-title.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/card/card.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/card/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "links": {
+          "docs": "https://force-ui.com/docs/components/svelte/card"
+        }
+      },
+      "type": "registry:ui"
+    },
+    {
+      "name": "carousel",
+      "dependencies": ["bits-ui", "embla-carousel-svelte"],
+      "registryDependencies": ["button", "utils"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/ui/carousel/carousel-content.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/carousel/carousel-item.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/carousel/carousel-next.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/carousel/carousel-previous.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/carousel/carousel.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/carousel/context.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/carousel/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "links": {
+          "docs": "https://force-ui.com/docs/components/svelte/carousel"
+        }
+      },
+      "type": "registry:ui"
+    },
+    {
+      "name": "chart",
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/ui/chart/chart-container.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/chart/chart-style.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/chart/chart-tooltip.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/chart/chart-utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/chart/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "links": {
+          "docs": "https://force-ui.com/docs/components/svelte/chart"
+        }
+      },
+      "type": "registry:ui"
+    },
+    {
+      "name": "checkbox",
+      "dependencies": ["bits-ui"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/ui/checkbox/checkbox.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/checkbox/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "links": {
+          "docs": "https://force-ui.com/docs/components/svelte/checkbox"
+        }
+      },
+      "type": "registry:ui"
+    },
+    {
+      "name": "collapsible",
+      "dependencies": ["bits-ui"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/ui/collapsible/collapsible-content.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/collapsible/collapsible-trigger.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/collapsible/collapsible.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/collapsible/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "links": {
+          "docs": "https://force-ui.com/docs/components/svelte/collapsible"
+        }
+      },
+      "type": "registry:ui"
+    },
+    {
+      "name": "command",
+      "dependencies": ["bits-ui"],
+      "registryDependencies": ["dialog", "input-group", "utils"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/ui/command/command-dialog.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/command/command-empty.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/command/command-group.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/command/command-input.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/command/command-item.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/command/command-link-item.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/command/command-list.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/command/command-loading.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/command/command-separator.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/command/command-shortcut.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/command/command.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/command/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "links": {
+          "docs": "https://force-ui.com/docs/components/svelte/command"
+        }
+      },
+      "type": "registry:ui"
+    },
+    {
+      "name": "context-menu",
+      "dependencies": ["bits-ui"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/ui/context-menu/context-menu-checkbox-item.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/context-menu/context-menu-content.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/context-menu/context-menu-group-heading.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/context-menu/context-menu-group.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/context-menu/context-menu-item.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/context-menu/context-menu-label.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/context-menu/context-menu-portal.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/context-menu/context-menu-radio-group.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/context-menu/context-menu-radio-item.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/context-menu/context-menu-separator.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/context-menu/context-menu-shortcut.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/context-menu/context-menu-sub-content.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/context-menu/context-menu-sub-trigger.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/context-menu/context-menu-sub.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/context-menu/context-menu-trigger.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/context-menu/context-menu.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/context-menu/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "links": {
+          "docs": "https://force-ui.com/docs/components/svelte/context-menu"
+        }
+      },
+      "type": "registry:ui"
+    },
+    {
+      "name": "dialog",
+      "dependencies": ["bits-ui"],
+      "registryDependencies": ["button", "utils"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/ui/dialog/dialog-close.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/dialog/dialog-content.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/dialog/dialog-description.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/dialog/dialog-footer.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/dialog/dialog-header.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/dialog/dialog-overlay.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/dialog/dialog-portal.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/dialog/dialog-title.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/dialog/dialog-trigger.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/dialog/dialog.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/dialog/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "links": {
+          "docs": "https://force-ui.com/docs/components/svelte/dialog"
+        }
+      },
+      "type": "registry:ui"
+    },
+    {
+      "name": "drawer",
+      "dependencies": ["vaul-svelte"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/ui/drawer/drawer-close.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/drawer/drawer-content.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/drawer/drawer-description.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/drawer/drawer-footer.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/drawer/drawer-header.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/drawer/drawer-nested.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/drawer/drawer-overlay.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/drawer/drawer-portal.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/drawer/drawer-title.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/drawer/drawer-trigger.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/drawer/drawer.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/drawer/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "links": {
+          "docs": "https://force-ui.com/docs/components/svelte/drawer"
+        }
+      },
+      "type": "registry:ui"
+    },
+    {
+      "name": "dropdown-menu",
+      "dependencies": ["bits-ui"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/ui/dropdown-menu/dropdown-menu-checkbox-group.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/dropdown-menu/dropdown-menu-checkbox-item.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/dropdown-menu/dropdown-menu-content.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/dropdown-menu/dropdown-menu-group-heading.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/dropdown-menu/dropdown-menu-group.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/dropdown-menu/dropdown-menu-item.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/dropdown-menu/dropdown-menu-label.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/dropdown-menu/dropdown-menu-portal.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/dropdown-menu/dropdown-menu-radio-group.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/dropdown-menu/dropdown-menu-radio-item.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/dropdown-menu/dropdown-menu-separator.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/dropdown-menu/dropdown-menu-shortcut.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/dropdown-menu/dropdown-menu-sub-content.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/dropdown-menu/dropdown-menu-sub-trigger.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/dropdown-menu/dropdown-menu-sub.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/dropdown-menu/dropdown-menu-trigger.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/dropdown-menu/dropdown-menu.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/dropdown-menu/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "links": {
+          "docs": "https://force-ui.com/docs/components/svelte/dropdown-menu"
+        }
+      },
+      "type": "registry:ui"
+    },
+    {
+      "name": "empty",
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/ui/empty/empty-content.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/empty/empty-description.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/empty/empty-header.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/empty/empty-media.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/empty/empty-title.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/empty/empty.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/empty/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "links": {
+          "docs": "https://force-ui.com/docs/components/svelte/empty"
+        }
+      },
+      "type": "registry:ui"
+    },
+    {
+      "name": "field",
+      "registryDependencies": ["label", "separator", "utils"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/ui/field/field-content.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/field/field-description.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/field/field-error.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/field/field-group.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/field/field-label.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/field/field-legend.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/field/field-separator.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/field/field-set.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/field/field-title.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/field/field.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/field/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "links": {
+          "docs": "https://force-ui.com/docs/components/svelte/field"
+        }
+      },
+      "type": "registry:ui"
+    },
+    {
+      "name": "hover-card",
+      "dependencies": ["bits-ui"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/ui/hover-card/hover-card-content.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/hover-card/hover-card-portal.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/hover-card/hover-card-trigger.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/hover-card/hover-card.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/hover-card/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "links": {
+          "docs": "https://force-ui.com/docs/components/svelte/hover-card"
+        }
+      },
+      "type": "registry:ui"
+    },
+    {
+      "name": "input",
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/ui/input/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/input/input.svelte",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "links": {
+          "docs": "https://force-ui.com/docs/components/svelte/input"
+        }
+      },
+      "type": "registry:ui"
+    },
+    {
+      "name": "input-group",
+      "registryDependencies": ["button", "input", "textarea", "utils"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/ui/input-group/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/input-group/input-group-addon.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/input-group/input-group-button.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/input-group/input-group-input.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/input-group/input-group-text.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/input-group/input-group-textarea.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/input-group/input-group.svelte",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "links": {
+          "docs": "https://force-ui.com/docs/components/svelte/input-group"
+        }
+      },
+      "type": "registry:ui"
+    },
+    {
+      "name": "input-otp",
+      "dependencies": ["bits-ui"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/ui/input-otp/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/input-otp/input-otp-group.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/input-otp/input-otp-separator.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/input-otp/input-otp-slot.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/input-otp/input-otp.svelte",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "links": {
+          "docs": "https://force-ui.com/docs/components/svelte/input-otp"
+        }
+      },
+      "type": "registry:ui"
+    },
+    {
+      "name": "item",
+      "registryDependencies": ["separator", "utils"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/ui/item/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/item/item-actions.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/item/item-content.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/item/item-description.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/item/item-footer.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/item/item-group.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/item/item-header.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/item/item-media.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/item/item-separator.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/item/item-title.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/item/item.svelte",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "links": {
+          "docs": "https://force-ui.com/docs/components/svelte/item"
+        }
+      },
+      "type": "registry:ui"
+    },
+    {
+      "name": "kbd",
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/ui/kbd/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/kbd/kbd-group.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/kbd/kbd.svelte",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "links": {
+          "docs": "https://force-ui.com/docs/components/svelte/kbd"
+        }
+      },
+      "type": "registry:ui"
+    },
+    {
+      "name": "label",
+      "dependencies": ["bits-ui"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/ui/label/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/label/label.svelte",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "links": {
+          "docs": "https://force-ui.com/docs/components/svelte/label"
+        }
+      },
+      "type": "registry:ui"
+    },
+    {
+      "name": "menubar",
+      "dependencies": ["bits-ui"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/ui/menubar/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/menubar/menubar-checkbox-item.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/menubar/menubar-content.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/menubar/menubar-group-heading.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/menubar/menubar-group.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/menubar/menubar-item.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/menubar/menubar-label.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/menubar/menubar-menu.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/menubar/menubar-portal.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/menubar/menubar-radio-group.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/menubar/menubar-radio-item.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/menubar/menubar-separator.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/menubar/menubar-shortcut.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/menubar/menubar-sub-content.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/menubar/menubar-sub-trigger.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/menubar/menubar-sub.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/menubar/menubar-trigger.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/menubar/menubar.svelte",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "links": {
+          "docs": "https://force-ui.com/docs/components/svelte/menubar"
+        }
+      },
+      "type": "registry:ui"
+    },
+    {
+      "name": "native-select",
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/ui/native-select/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/native-select/native-select-opt-group.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/native-select/native-select-option.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/native-select/native-select.svelte",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "links": {
+          "docs": "https://force-ui.com/docs/components/svelte/native-select"
+        }
+      },
+      "type": "registry:ui"
+    },
+    {
+      "name": "navigation-menu",
+      "dependencies": ["bits-ui"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/ui/navigation-menu/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/navigation-menu/navigation-menu-content.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/navigation-menu/navigation-menu-indicator.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/navigation-menu/navigation-menu-item.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/navigation-menu/navigation-menu-link.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/navigation-menu/navigation-menu-list.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/navigation-menu/navigation-menu-trigger.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/navigation-menu/navigation-menu-viewport.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/navigation-menu/navigation-menu.svelte",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "links": {
+          "docs": "https://force-ui.com/docs/components/svelte/navigation-menu"
+        }
+      },
+      "type": "registry:ui"
+    },
+    {
+      "name": "pagination",
+      "dependencies": ["bits-ui"],
+      "registryDependencies": ["button", "utils"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/ui/pagination/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/pagination/pagination-content.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/pagination/pagination-ellipsis.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/pagination/pagination-item.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/pagination/pagination-link.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/pagination/pagination-next-button.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/pagination/pagination-next.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/pagination/pagination-prev-button.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/pagination/pagination-previous.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/pagination/pagination.svelte",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "links": {
+          "docs": "https://force-ui.com/docs/components/svelte/pagination"
+        }
+      },
+      "type": "registry:ui"
+    },
+    {
+      "name": "popover",
+      "dependencies": ["bits-ui"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/ui/popover/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/popover/popover-close.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/popover/popover-content.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/popover/popover-description.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/popover/popover-header.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/popover/popover-portal.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/popover/popover-title.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/popover/popover-trigger.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/popover/popover.svelte",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "links": {
+          "docs": "https://force-ui.com/docs/components/svelte/popover"
+        }
+      },
+      "type": "registry:ui"
+    },
+    {
+      "name": "progress",
+      "dependencies": ["bits-ui"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/ui/progress/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/progress/progress.svelte",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "links": {
+          "docs": "https://force-ui.com/docs/components/svelte/progress"
+        }
+      },
+      "type": "registry:ui"
+    },
+    {
+      "name": "radio-group",
+      "dependencies": ["bits-ui"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/ui/radio-group/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/radio-group/radio-group-item.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/radio-group/radio-group.svelte",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "links": {
+          "docs": "https://force-ui.com/docs/components/svelte/radio-group"
+        }
+      },
+      "type": "registry:ui"
+    },
+    {
+      "name": "range-calendar",
+      "dependencies": ["@internationalized/date", "bits-ui"],
+      "registryDependencies": ["button", "utils"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/ui/range-calendar/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/range-calendar/range-calendar-caption.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/range-calendar/range-calendar-cell.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/range-calendar/range-calendar-day.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/range-calendar/range-calendar-grid-body.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/range-calendar/range-calendar-grid-head.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/range-calendar/range-calendar-grid-row.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/range-calendar/range-calendar-grid.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/range-calendar/range-calendar-head-cell.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/range-calendar/range-calendar-header.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/range-calendar/range-calendar-heading.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/range-calendar/range-calendar-month-select.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/range-calendar/range-calendar-month.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/range-calendar/range-calendar-months.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/range-calendar/range-calendar-nav.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/range-calendar/range-calendar-next-button.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/range-calendar/range-calendar-prev-button.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/range-calendar/range-calendar-year-select.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/range-calendar/range-calendar.svelte",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "links": {
+          "docs": "https://force-ui.com/docs/components/svelte/range-calendar"
+        }
+      },
+      "type": "registry:ui"
+    },
+    {
+      "name": "resizable",
+      "dependencies": ["paneforge"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/ui/resizable/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/resizable/resizable-handle.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/resizable/resizable-pane-group.svelte",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "links": {
+          "docs": "https://force-ui.com/docs/components/svelte/resizable"
+        }
+      },
+      "type": "registry:ui"
+    },
+    {
+      "name": "scroll-area",
+      "dependencies": ["bits-ui"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/ui/scroll-area/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/scroll-area/scroll-area-scrollbar.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/scroll-area/scroll-area.svelte",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "links": {
+          "docs": "https://force-ui.com/docs/components/svelte/scroll-area"
+        }
+      },
+      "type": "registry:ui"
+    },
+    {
+      "name": "select",
+      "dependencies": ["bits-ui"],
+      "registryDependencies": ["separator", "utils"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/ui/select/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/select/select-content.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/select/select-group-heading.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/select/select-group.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/select/select-item.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/select/select-label.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/select/select-portal.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/select/select-scroll-down-button.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/select/select-scroll-up-button.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/select/select-separator.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/select/select-trigger.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/select/select.svelte",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "links": {
+          "docs": "https://force-ui.com/docs/components/svelte/select"
+        }
+      },
+      "type": "registry:ui"
+    },
+    {
+      "name": "separator",
+      "dependencies": ["bits-ui"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/ui/separator/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/separator/separator.svelte",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "links": {
+          "docs": "https://force-ui.com/docs/components/svelte/separator"
+        }
+      },
+      "type": "registry:ui"
+    },
+    {
+      "name": "sheet",
+      "dependencies": ["bits-ui"],
+      "registryDependencies": ["button", "utils"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/ui/sheet/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/sheet/sheet-close.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/sheet/sheet-content.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/sheet/sheet-description.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/sheet/sheet-footer.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/sheet/sheet-header.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/sheet/sheet-overlay.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/sheet/sheet-portal.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/sheet/sheet-title.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/sheet/sheet-trigger.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/sheet/sheet.svelte",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "links": {
+          "docs": "https://force-ui.com/docs/components/svelte/sheet"
+        }
+      },
+      "type": "registry:ui"
+    },
+    {
+      "name": "sidebar",
+      "dependencies": ["bits-ui"],
+      "registryDependencies": [
+        "button",
+        "input",
+        "separator",
+        "sheet",
+        "skeleton",
+        "tooltip",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/svelte-vega/ui/sidebar/constants.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/sidebar/context.svelte.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/sidebar/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/sidebar/sidebar-content.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/sidebar/sidebar-footer.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/sidebar/sidebar-group-action.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/sidebar/sidebar-group-content.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/sidebar/sidebar-group-label.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/sidebar/sidebar-group.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/sidebar/sidebar-header.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/sidebar/sidebar-input.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/sidebar/sidebar-inset.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/sidebar/sidebar-menu-action.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/sidebar/sidebar-menu-badge.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/sidebar/sidebar-menu-button.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/sidebar/sidebar-menu-item.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/sidebar/sidebar-menu-skeleton.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/sidebar/sidebar-menu-sub-button.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/sidebar/sidebar-menu-sub-item.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/sidebar/sidebar-menu-sub.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/sidebar/sidebar-menu.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/sidebar/sidebar-provider.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/sidebar/sidebar-rail.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/sidebar/sidebar-separator.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/sidebar/sidebar-trigger.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/sidebar/sidebar.svelte",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "links": {
+          "docs": "https://force-ui.com/docs/components/svelte/sidebar"
+        }
+      },
+      "type": "registry:ui"
+    },
+    {
+      "name": "skeleton",
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/ui/skeleton/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/skeleton/skeleton.svelte",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "links": {
+          "docs": "https://force-ui.com/docs/components/svelte/skeleton"
+        }
+      },
+      "type": "registry:ui"
+    },
+    {
+      "name": "slider",
+      "dependencies": ["bits-ui"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/ui/slider/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/slider/slider.svelte",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "links": {
+          "docs": "https://force-ui.com/docs/components/svelte/slider"
+        }
+      },
+      "type": "registry:ui"
+    },
+    {
+      "name": "sonner",
+      "dependencies": ["svelte-sonner"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/ui/sonner/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/sonner/sonner.svelte",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "links": {
+          "docs": "https://force-ui.com/docs/components/svelte/sonner"
+        }
+      },
+      "type": "registry:ui"
+    },
+    {
+      "name": "spinner",
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/ui/spinner/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/spinner/spinner.svelte",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "links": {
+          "docs": "https://force-ui.com/docs/components/svelte/spinner"
+        }
+      },
+      "type": "registry:ui"
+    },
+    {
+      "name": "switch",
+      "dependencies": ["bits-ui"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/ui/switch/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/switch/switch.svelte",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "links": {
+          "docs": "https://force-ui.com/docs/components/svelte/switch"
+        }
+      },
+      "type": "registry:ui"
+    },
+    {
+      "name": "table",
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/ui/table/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/table/table-body.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/table/table-caption.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/table/table-cell.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/table/table-footer.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/table/table-head.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/table/table-header.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/table/table-row.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/table/table.svelte",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "links": {
+          "docs": "https://force-ui.com/docs/components/svelte/table"
+        }
+      },
+      "type": "registry:ui"
+    },
+    {
+      "name": "tabs",
+      "dependencies": ["bits-ui"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/ui/tabs/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/tabs/tabs-content.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/tabs/tabs-list.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/tabs/tabs-trigger.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/tabs/tabs.svelte",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "links": {
+          "docs": "https://force-ui.com/docs/components/svelte/tabs"
+        }
+      },
+      "type": "registry:ui"
+    },
+    {
+      "name": "textarea",
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/ui/textarea/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/textarea/textarea.svelte",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "links": {
+          "docs": "https://force-ui.com/docs/components/svelte/textarea"
+        }
+      },
+      "type": "registry:ui"
+    },
+    {
+      "name": "toggle",
+      "dependencies": ["bits-ui"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/ui/toggle/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/toggle/toggle.svelte",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "links": {
+          "docs": "https://force-ui.com/docs/components/svelte/toggle"
+        }
+      },
+      "type": "registry:ui"
+    },
+    {
+      "name": "toggle-group",
+      "dependencies": ["bits-ui"],
+      "registryDependencies": ["toggle", "utils"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/ui/toggle-group/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/toggle-group/toggle-group-item.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/toggle-group/toggle-group.svelte",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "links": {
+          "docs": "https://force-ui.com/docs/components/svelte/toggle-group"
+        }
+      },
+      "type": "registry:ui"
+    },
+    {
+      "name": "tooltip",
+      "dependencies": ["bits-ui"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/ui/tooltip/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/tooltip/tooltip-content.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/tooltip/tooltip-portal.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/tooltip/tooltip-provider.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/tooltip/tooltip-trigger.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/svelte-vega/ui/tooltip/tooltip.svelte",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "links": {
+          "docs": "https://force-ui.com/docs/components/svelte/tooltip"
+        }
+      },
+      "type": "registry:ui"
+    },
+    {
+      "name": "accordion-demo",
+      "title": "Accordion Demo",
+      "registryDependencies": ["accordion"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/accordion-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "alert-demo",
+      "title": "Alert Demo",
+      "registryDependencies": ["alert"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/alert-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "alert-destructive",
+      "title": "Alert Destructive",
+      "registryDependencies": ["alert"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/alert-destructive.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "alert-dialog-demo",
+      "title": "Alert Dialog Demo",
+      "registryDependencies": ["alert-dialog", "button"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/alert-dialog-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "aspect-ratio-demo",
+      "title": "Aspect Ratio Demo",
+      "registryDependencies": ["aspect-ratio"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/aspect-ratio-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "avatar-demo",
+      "title": "Avatar Demo",
+      "registryDependencies": ["avatar"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/avatar-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "badge-demo",
+      "title": "Badge Demo",
+      "registryDependencies": ["badge"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/badge-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "badge-destructive",
+      "title": "Badge Destructive",
+      "registryDependencies": ["badge"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/badge-destructive.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "badge-outline",
+      "title": "Badge Outline",
+      "registryDependencies": ["badge"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/badge-outline.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "badge-secondary",
+      "title": "Badge Secondary",
+      "registryDependencies": ["badge"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/badge-secondary.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "breadcrumb-demo",
+      "title": "Breadcrumb Demo",
+      "registryDependencies": ["breadcrumb", "dropdown-menu"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/breadcrumb-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "breadcrumb-dropdown",
+      "title": "Breadcrumb Dropdown",
+      "registryDependencies": ["breadcrumb", "dropdown-menu"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/breadcrumb-dropdown.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "breadcrumb-ellipsis",
+      "title": "Breadcrumb Ellipsis",
+      "registryDependencies": ["breadcrumb"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/breadcrumb-ellipsis.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "breadcrumb-link",
+      "title": "Breadcrumb Link",
+      "registryDependencies": ["breadcrumb"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/breadcrumb-link.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "breadcrumb-responsive",
+      "title": "Breadcrumb Responsive",
+      "registryDependencies": [
+        "breadcrumb",
+        "button",
+        "drawer",
+        "dropdown-menu"
+      ],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/breadcrumb-responsive.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "breadcrumb-separator",
+      "title": "Breadcrumb Separator",
+      "registryDependencies": ["breadcrumb"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/breadcrumb-separator.svelte",
           "type": "registry:example"
         }
       ],
@@ -80,6 +2473,18 @@
       "files": [
         {
           "path": "registry/svelte-vega/examples/button-default.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-demo",
+      "title": "Button Demo",
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/button-demo.svelte",
           "type": "registry:example"
         }
       ],
@@ -110,6 +2515,149 @@
       "type": "registry:example"
     },
     {
+      "name": "button-group-demo",
+      "title": "Button Group Demo",
+      "registryDependencies": ["button", "button-group", "dropdown-menu"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/button-group-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-group-dropdown-menu-demo",
+      "title": "Button Group Dropdown Menu Demo",
+      "registryDependencies": ["button", "button-group", "dropdown-menu"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/button-group-dropdown-menu-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-group-input-demo",
+      "title": "Button Group Input Demo",
+      "registryDependencies": ["button", "button-group", "input"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/button-group-input-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-group-input-group-demo",
+      "title": "Button Group Input Group Demo",
+      "registryDependencies": [
+        "button",
+        "button-group",
+        "input-group",
+        "tooltip"
+      ],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/button-group-input-group-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-group-nested-demo",
+      "title": "Button Group Nested Demo",
+      "registryDependencies": ["button", "button-group"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/button-group-nested-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-group-orientation-demo",
+      "title": "Button Group Orientation Demo",
+      "registryDependencies": ["button", "button-group"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/button-group-orientation-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-group-popover-demo",
+      "title": "Button Group Popover Demo",
+      "registryDependencies": [
+        "button",
+        "button-group",
+        "popover",
+        "separator",
+        "textarea"
+      ],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/button-group-popover-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-group-select-demo",
+      "title": "Button Group Select Demo",
+      "registryDependencies": ["button", "button-group", "input", "select"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/button-group-select-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-group-separator-demo",
+      "title": "Button Group Separator Demo",
+      "registryDependencies": ["button", "button-group"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/button-group-separator-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-group-size-demo",
+      "title": "Button Group Size Demo",
+      "registryDependencies": ["button", "button-group"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/button-group-size-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-group-split-demo",
+      "title": "Button Group Split Demo",
+      "registryDependencies": ["button", "button-group"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/button-group-split-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
       "name": "button-icon",
       "title": "Button Icon",
       "registryDependencies": ["button"],
@@ -128,6 +2676,18 @@
       "files": [
         {
           "path": "registry/svelte-vega/examples/button-link.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-loading",
+      "title": "Button Loading",
+      "registryDependencies": ["button", "spinner"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/button-loading.svelte",
           "type": "registry:example"
         }
       ],
@@ -188,6 +2748,2321 @@
       "files": [
         {
           "path": "registry/svelte-vega/examples/button-with-icon.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "calendar-demo",
+      "title": "Calendar Demo",
+      "dependencies": ["@internationalized/date"],
+      "registryDependencies": ["calendar"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/calendar-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "calendar-with-selects",
+      "title": "Calendar With Selects",
+      "dependencies": ["bits-ui"],
+      "registryDependencies": ["calendar", "select", "utils"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/calendar-with-selects.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "card-demo",
+      "title": "Card Demo",
+      "registryDependencies": ["button", "card", "input", "label"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/card-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "card-with-form",
+      "title": "Card With Form",
+      "registryDependencies": ["button", "card", "input", "label", "select"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/card-with-form.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "carousel-api",
+      "title": "Carousel Api",
+      "registryDependencies": ["card", "carousel"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/carousel-api.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "carousel-demo",
+      "title": "Carousel Demo",
+      "registryDependencies": ["card", "carousel"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/carousel-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "carousel-orientation",
+      "title": "Carousel Orientation",
+      "registryDependencies": ["card", "carousel"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/carousel-orientation.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "carousel-plugin",
+      "title": "Carousel Plugin",
+      "registryDependencies": ["card", "carousel"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/carousel-plugin.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "carousel-size",
+      "title": "Carousel Size",
+      "registryDependencies": ["card", "carousel"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/carousel-size.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "carousel-spacing",
+      "title": "Carousel Spacing",
+      "registryDependencies": ["card", "carousel"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/carousel-spacing.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "chart-bar-axis-tick-demo",
+      "title": "Chart Bar Axis Tick Demo",
+      "registryDependencies": ["chart"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/chart-bar-axis-tick-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "chart-bar-demo",
+      "title": "Chart Bar Demo",
+      "registryDependencies": ["chart"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/chart-bar-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "chart-bar-legend-demo",
+      "title": "Chart Bar Legend Demo",
+      "registryDependencies": ["chart"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/chart-bar-legend-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "chart-bar-tooltip-demo",
+      "title": "Chart Bar Tooltip Demo",
+      "registryDependencies": ["chart"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/chart-bar-tooltip-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "chart-tooltip-demo",
+      "title": "Chart Tooltip Demo",
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/chart-tooltip-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "checkbox-demo",
+      "title": "Checkbox Demo",
+      "registryDependencies": ["checkbox", "label"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/checkbox-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "checkbox-disabled",
+      "title": "Checkbox Disabled",
+      "registryDependencies": ["checkbox", "label"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/checkbox-disabled.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "checkbox-form-multiple",
+      "title": "Checkbox Form Multiple",
+      "dependencies": ["svelte-sonner", "sveltekit-superforms", "zod"],
+      "registryDependencies": ["checkbox", "form"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/checkbox-form-multiple.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "checkbox-form-single",
+      "title": "Checkbox Form Single",
+      "dependencies": ["svelte-sonner", "sveltekit-superforms", "zod"],
+      "registryDependencies": ["checkbox", "form"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/checkbox-form-single.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "checkbox-with-text",
+      "title": "Checkbox With Text",
+      "registryDependencies": ["checkbox", "label"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/checkbox-with-text.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "collapsible-demo",
+      "title": "Collapsible Demo",
+      "registryDependencies": ["button", "collapsible"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/collapsible-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "combobox-demo",
+      "title": "Combobox Demo",
+      "registryDependencies": ["button", "command", "popover", "utils"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/combobox-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "combobox-dropdown-menu",
+      "title": "Combobox Dropdown Menu",
+      "registryDependencies": ["button", "command", "dropdown-menu"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/combobox-dropdown-menu.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "combobox-form",
+      "title": "Combobox Form",
+      "dependencies": [
+        "bits-ui",
+        "svelte-sonner",
+        "sveltekit-superforms",
+        "zod"
+      ],
+      "registryDependencies": ["button", "command", "form", "popover", "utils"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/combobox-form.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "combobox-popover",
+      "title": "Combobox Popover",
+      "dependencies": ["bits-ui"],
+      "registryDependencies": ["button", "command", "popover", "utils"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/combobox-popover.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "combobox-responsive",
+      "title": "Combobox Responsive",
+      "registryDependencies": ["button", "command", "drawer", "popover"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/combobox-responsive.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "command-demo",
+      "title": "Command Demo",
+      "registryDependencies": ["command"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/command-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "command-dialog",
+      "title": "Command Dialog",
+      "registryDependencies": ["command"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/command-dialog.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "context-menu-demo",
+      "title": "Context Menu Demo",
+      "registryDependencies": ["context-menu"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/context-menu-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "dark-mode-dropdown-menu",
+      "title": "Dark Mode Dropdown Menu",
+      "registryDependencies": ["button", "dropdown-menu"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/dark-mode-dropdown-menu.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "dark-mode-light-switch",
+      "title": "Dark Mode Light Switch",
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/dark-mode-light-switch.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "data-table-demo",
+      "title": "Data Table Demo",
+      "registryDependencies": [
+        "button",
+        "data-table",
+        "dropdown-menu",
+        "input",
+        "table"
+      ],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/data-table-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "date-picker-demo",
+      "title": "Date Picker Demo",
+      "dependencies": ["@internationalized/date"],
+      "registryDependencies": ["button", "calendar", "popover", "utils"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/date-picker-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "date-picker-form",
+      "title": "Date Picker Form",
+      "dependencies": ["svelte-sonner", "sveltekit-superforms", "zod"],
+      "registryDependencies": [
+        "button",
+        "calendar",
+        "form",
+        "popover",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/date-picker-form.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "date-picker-with-presets",
+      "title": "Date Picker With Presets",
+      "registryDependencies": [
+        "button",
+        "calendar",
+        "popover",
+        "select",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/date-picker-with-presets.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "date-picker-with-range",
+      "title": "Date Picker With Range",
+      "dependencies": ["bits-ui"],
+      "registryDependencies": ["button", "popover", "range-calendar", "utils"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/date-picker-with-range.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "dialog-close-button",
+      "title": "Dialog Close Button",
+      "registryDependencies": ["button", "dialog", "input", "label"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/dialog-close-button.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "dialog-demo",
+      "title": "Dialog Demo",
+      "registryDependencies": ["button", "dialog", "input", "label"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/dialog-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "drawer-demo",
+      "title": "Drawer Demo",
+      "registryDependencies": ["button", "drawer"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/drawer-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "drawer-dialog",
+      "title": "Drawer Dialog",
+      "registryDependencies": ["button", "dialog", "drawer", "input", "label"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/drawer-dialog.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "dropdown-menu-checkboxes",
+      "title": "Dropdown Menu Checkboxes",
+      "registryDependencies": ["button", "dropdown-menu"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/dropdown-menu-checkboxes.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "dropdown-menu-demo",
+      "title": "Dropdown Menu Demo",
+      "registryDependencies": ["button", "dropdown-menu"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/dropdown-menu-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "dropdown-menu-dialog",
+      "title": "Dropdown Menu Dialog",
+      "registryDependencies": [
+        "button",
+        "dialog",
+        "dropdown-menu",
+        "field",
+        "input",
+        "label",
+        "textarea"
+      ],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/dropdown-menu-dialog.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "dropdown-menu-radio-group",
+      "title": "Dropdown Menu Radio Group",
+      "registryDependencies": ["button", "dropdown-menu"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/dropdown-menu-radio-group.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "empty-avatar-demo",
+      "title": "Empty Avatar Demo",
+      "registryDependencies": ["avatar", "button", "empty"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/empty-avatar-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "empty-avatar-group-demo",
+      "title": "Empty Avatar Group Demo",
+      "registryDependencies": ["avatar", "button", "empty"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/empty-avatar-group-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "empty-background-demo",
+      "title": "Empty Background Demo",
+      "registryDependencies": ["button", "empty"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/empty-background-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "empty-demo",
+      "title": "Empty Demo",
+      "registryDependencies": ["button", "empty"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/empty-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "empty-input-group-demo",
+      "title": "Empty Input Group Demo",
+      "registryDependencies": ["empty", "input-group", "kbd"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/empty-input-group-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "empty-outline-demo",
+      "title": "Empty Outline Demo",
+      "registryDependencies": ["button", "empty"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/empty-outline-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "field-checkbox-demo",
+      "title": "Field Checkbox Demo",
+      "registryDependencies": ["checkbox", "field"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/field-checkbox-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "field-checkbox",
+      "title": "Field Checkbox",
+      "registryDependencies": ["checkbox", "field"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/field-checkbox.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "field-choice-card",
+      "title": "Field Choice Card",
+      "registryDependencies": ["field", "radio-group"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/field-choice-card.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "field-demo",
+      "title": "Field Demo",
+      "registryDependencies": [
+        "button",
+        "checkbox",
+        "field",
+        "input",
+        "select",
+        "textarea"
+      ],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/field-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "field-field-group-demo",
+      "title": "Field Field Group Demo",
+      "registryDependencies": ["checkbox", "field"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/field-field-group-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "field-field-set-demo",
+      "title": "Field Field Set Demo",
+      "registryDependencies": ["field", "input"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/field-field-set-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "field-input-demo",
+      "title": "Field Input Demo",
+      "registryDependencies": ["field", "input"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/field-input-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "field-input",
+      "title": "Field Input",
+      "registryDependencies": ["field", "input"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/field-input.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "field-radio-demo",
+      "title": "Field Radio Demo",
+      "registryDependencies": ["field", "radio-group"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/field-radio-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "field-radio",
+      "title": "Field Radio",
+      "registryDependencies": ["field", "radio-group"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/field-radio.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "field-responsive-layout-demo",
+      "title": "Field Responsive Layout Demo",
+      "registryDependencies": ["button", "field", "input", "textarea"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/field-responsive-layout-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "field-select-demo",
+      "title": "Field Select Demo",
+      "registryDependencies": ["field", "select"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/field-select-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "field-select",
+      "title": "Field Select",
+      "registryDependencies": ["field", "select"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/field-select.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "field-slider-demo",
+      "title": "Field Slider Demo",
+      "registryDependencies": ["field", "slider"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/field-slider-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "field-slider",
+      "title": "Field Slider",
+      "registryDependencies": ["field", "slider"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/field-slider.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "field-switch-demo",
+      "title": "Field Switch Demo",
+      "registryDependencies": ["field", "switch"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/field-switch-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "field-switch",
+      "title": "Field Switch",
+      "registryDependencies": ["field", "switch"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/field-switch.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "field-textarea-demo",
+      "title": "Field Textarea Demo",
+      "registryDependencies": ["field", "textarea"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/field-textarea-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "field-textarea",
+      "title": "Field Textarea",
+      "registryDependencies": ["field", "textarea"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/field-textarea.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "form-demo",
+      "title": "Form Demo",
+      "dependencies": ["svelte-sonner", "sveltekit-superforms", "zod"],
+      "registryDependencies": ["form", "input"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/form-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "hover-card-demo",
+      "title": "Hover Card Demo",
+      "registryDependencies": ["avatar", "hover-card"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/hover-card-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-demo",
+      "title": "Input Demo",
+      "registryDependencies": ["input"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/input-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-disabled",
+      "title": "Input Disabled",
+      "registryDependencies": ["input"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/input-disabled.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-file",
+      "title": "Input File",
+      "registryDependencies": ["input", "label"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/input-file.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-group-button-demo",
+      "title": "Input Group Button Demo",
+      "registryDependencies": ["input-group", "popover"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/input-group-button-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-group-button-group-demo",
+      "title": "Input Group Button Group Demo",
+      "registryDependencies": ["button-group", "input-group", "label"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/input-group-button-group-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-group-custom-input-demo",
+      "title": "Input Group Custom Input Demo",
+      "registryDependencies": ["input-group"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/input-group-custom-input-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-group-demo",
+      "title": "Input Group Demo",
+      "registryDependencies": [
+        "dropdown-menu",
+        "input-group",
+        "separator",
+        "tooltip"
+      ],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/input-group-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-group-dropdown-demo",
+      "title": "Input Group Dropdown Demo",
+      "registryDependencies": ["dropdown-menu", "input-group"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/input-group-dropdown-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-group-icon-demo",
+      "title": "Input Group Icon Demo",
+      "registryDependencies": ["input-group"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/input-group-icon-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-group-label-demo",
+      "title": "Input Group Label Demo",
+      "registryDependencies": ["input-group", "label", "tooltip"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/input-group-label-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-group-spinner-demo",
+      "title": "Input Group Spinner Demo",
+      "registryDependencies": ["input-group", "spinner"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/input-group-spinner-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-group-text-demo",
+      "title": "Input Group Text Demo",
+      "registryDependencies": ["input-group"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/input-group-text-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-group-textarea-demo",
+      "title": "Input Group Textarea Demo",
+      "registryDependencies": ["input-group"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/input-group-textarea-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-group-tooltip-demo",
+      "title": "Input Group Tooltip Demo",
+      "registryDependencies": ["input-group", "tooltip"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/input-group-tooltip-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-invalid",
+      "title": "Input Invalid",
+      "registryDependencies": ["input"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/input-invalid.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-otp-controlled",
+      "title": "Input Otp Controlled",
+      "registryDependencies": ["input-otp"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/input-otp-controlled.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-otp-demo",
+      "title": "Input Otp Demo",
+      "registryDependencies": ["input-otp"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/input-otp-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-otp-form",
+      "title": "Input Otp Form",
+      "dependencies": ["svelte-sonner", "sveltekit-superforms", "zod"],
+      "registryDependencies": ["form", "input-otp"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/input-otp-form.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-otp-invalid",
+      "title": "Input Otp Invalid",
+      "registryDependencies": ["input-otp"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/input-otp-invalid.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-otp-pattern",
+      "title": "Input Otp Pattern",
+      "dependencies": ["bits-ui"],
+      "registryDependencies": ["input-otp"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/input-otp-pattern.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-otp-separator",
+      "title": "Input Otp Separator",
+      "registryDependencies": ["input-otp"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/input-otp-separator.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-with-button",
+      "title": "Input With Button",
+      "registryDependencies": ["button", "input"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/input-with-button.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-with-label",
+      "title": "Input With Label",
+      "registryDependencies": ["input", "label"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/input-with-label.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-with-text",
+      "title": "Input With Text",
+      "registryDependencies": ["input", "label"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/input-with-text.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "item-avatar-demo",
+      "title": "Item Avatar Demo",
+      "registryDependencies": ["avatar", "button", "item"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/item-avatar-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "item-demo",
+      "title": "Item Demo",
+      "registryDependencies": ["button", "item"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/item-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "item-dropdown-demo",
+      "title": "Item Dropdown Demo",
+      "registryDependencies": ["avatar", "button", "dropdown-menu", "item"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/item-dropdown-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "item-group-demo",
+      "title": "Item Group Demo",
+      "registryDependencies": ["avatar", "button", "item"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/item-group-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "item-header-demo",
+      "title": "Item Header Demo",
+      "registryDependencies": ["item"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/item-header-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "item-icon-demo",
+      "title": "Item Icon Demo",
+      "registryDependencies": ["button", "item"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/item-icon-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "item-image-demo",
+      "title": "Item Image Demo",
+      "registryDependencies": ["item"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/item-image-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "item-link-demo",
+      "title": "Item Link Demo",
+      "registryDependencies": ["item"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/item-link-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "item-size-demo",
+      "title": "Item Size Demo",
+      "registryDependencies": ["button", "item"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/item-size-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "item-variants-demo",
+      "title": "Item Variants Demo",
+      "registryDependencies": ["button", "item"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/item-variants-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "kbd-button-demo",
+      "title": "Kbd Button Demo",
+      "registryDependencies": ["button", "kbd"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/kbd-button-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "kbd-demo",
+      "title": "Kbd Demo",
+      "registryDependencies": ["kbd"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/kbd-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "kbd-group-demo",
+      "title": "Kbd Group Demo",
+      "registryDependencies": ["kbd"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/kbd-group-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "kbd-input-group-demo",
+      "title": "Kbd Input Group Demo",
+      "registryDependencies": ["input-group", "kbd"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/kbd-input-group-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "kbd-tooltip-demo",
+      "title": "Kbd Tooltip Demo",
+      "registryDependencies": ["button", "button-group", "kbd", "tooltip"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/kbd-tooltip-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "label-demo",
+      "title": "Label Demo",
+      "registryDependencies": ["checkbox", "label"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/label-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "menubar-demo",
+      "title": "Menubar Demo",
+      "registryDependencies": ["menubar"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/menubar-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "native-select-demo",
+      "title": "Native Select Demo",
+      "registryDependencies": ["native-select"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/native-select-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "native-select-disabled",
+      "title": "Native Select Disabled",
+      "registryDependencies": ["native-select"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/native-select-disabled.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "native-select-groups",
+      "title": "Native Select Groups",
+      "registryDependencies": ["native-select"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/native-select-groups.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "native-select-invalid",
+      "title": "Native Select Invalid",
+      "registryDependencies": ["native-select"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/native-select-invalid.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "navigation-menu-demo",
+      "title": "Navigation Menu Demo",
+      "registryDependencies": ["navigation-menu", "utils"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/navigation-menu-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "pagination-demo",
+      "title": "Pagination Demo",
+      "registryDependencies": ["pagination"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/pagination-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "popover-demo",
+      "title": "Popover Demo",
+      "registryDependencies": ["button", "input", "label", "popover"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/popover-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "progress-demo",
+      "title": "Progress Demo",
+      "registryDependencies": ["progress"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/progress-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "radio-group-demo",
+      "title": "Radio Group Demo",
+      "registryDependencies": ["label", "radio-group"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/radio-group-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "radio-group-form",
+      "title": "Radio Group Form",
+      "dependencies": ["svelte-sonner", "sveltekit-superforms", "zod"],
+      "registryDependencies": ["form", "radio-group"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/radio-group-form.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "range-calendar-demo",
+      "title": "Range Calendar Demo",
+      "dependencies": ["@internationalized/date"],
+      "registryDependencies": ["range-calendar"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/range-calendar-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "resizable-demo",
+      "title": "Resizable Demo",
+      "registryDependencies": ["resizable"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/resizable-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "resizable-handle",
+      "title": "Resizable Handle",
+      "registryDependencies": ["resizable"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/resizable-handle.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "resizable-vertical",
+      "title": "Resizable Vertical",
+      "registryDependencies": ["resizable"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/resizable-vertical.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "scroll-area-both",
+      "title": "Scroll Area Both",
+      "registryDependencies": ["scroll-area"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/scroll-area-both.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "scroll-area-demo",
+      "title": "Scroll Area Demo",
+      "registryDependencies": ["scroll-area", "separator"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/scroll-area-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "scroll-area-horizontal",
+      "title": "Scroll Area Horizontal",
+      "registryDependencies": ["scroll-area"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/scroll-area-horizontal.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "select-demo",
+      "title": "Select Demo",
+      "registryDependencies": ["select"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/select-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "select-form",
+      "title": "Select Form",
+      "dependencies": ["svelte-sonner", "sveltekit-superforms", "zod"],
+      "registryDependencies": ["form", "select"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/select-form.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "select-scrollable",
+      "title": "Select Scrollable",
+      "registryDependencies": ["select"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/select-scrollable.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "separator-demo",
+      "title": "Separator Demo",
+      "registryDependencies": ["separator"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/separator-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "sheet-demo",
+      "title": "Sheet Demo",
+      "registryDependencies": ["button", "input", "label", "sheet"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/sheet-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "sheet-side",
+      "title": "Sheet Side",
+      "registryDependencies": ["button", "sheet"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/sheet-side.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "skeleton-card",
+      "title": "Skeleton Card",
+      "registryDependencies": ["skeleton"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/skeleton-card.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "skeleton-demo",
+      "title": "Skeleton Demo",
+      "registryDependencies": ["skeleton"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/skeleton-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "slider-demo",
+      "title": "Slider Demo",
+      "registryDependencies": ["slider"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/slider-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "slider-multiple",
+      "title": "Slider Multiple",
+      "registryDependencies": ["slider"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/slider-multiple.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "slider-vertical",
+      "title": "Slider Vertical",
+      "registryDependencies": ["slider"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/slider-vertical.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "sonner-demo",
+      "title": "Sonner Demo",
+      "dependencies": ["svelte-sonner"],
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/sonner-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "sonner-types",
+      "title": "Sonner Types",
+      "dependencies": ["svelte-sonner"],
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/sonner-types.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "spinner-badge-demo",
+      "title": "Spinner Badge Demo",
+      "registryDependencies": ["badge", "spinner"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/spinner-badge-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "spinner-button-demo",
+      "title": "Spinner Button Demo",
+      "registryDependencies": ["button", "spinner"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/spinner-button-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "spinner-color-demo",
+      "title": "Spinner Color Demo",
+      "registryDependencies": ["spinner"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/spinner-color-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "spinner-custom-demo",
+      "title": "Spinner Custom Demo",
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/spinner-custom-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "spinner-demo",
+      "title": "Spinner Demo",
+      "registryDependencies": ["item", "spinner"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/spinner-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "spinner-empty-demo",
+      "title": "Spinner Empty Demo",
+      "registryDependencies": ["button", "empty", "spinner"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/spinner-empty-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "spinner-input-group-demo",
+      "title": "Spinner Input Group Demo",
+      "registryDependencies": ["input-group", "spinner"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/spinner-input-group-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "spinner-item-demo",
+      "title": "Spinner Item Demo",
+      "registryDependencies": ["button", "item", "progress", "spinner"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/spinner-item-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "spinner-size-demo",
+      "title": "Spinner Size Demo",
+      "registryDependencies": ["spinner"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/spinner-size-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "switch-demo",
+      "title": "Switch Demo",
+      "registryDependencies": ["label", "switch"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/switch-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "switch-form",
+      "title": "Switch Form",
+      "dependencies": ["svelte-sonner", "sveltekit-superforms", "zod"],
+      "registryDependencies": ["form", "switch"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/switch-form.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "table-demo",
+      "title": "Table Demo",
+      "registryDependencies": ["table"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/table-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "tabs-demo",
+      "title": "Tabs Demo",
+      "registryDependencies": ["button", "card", "input", "label", "tabs"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/tabs-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "textarea-demo",
+      "title": "Textarea Demo",
+      "registryDependencies": ["textarea"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/textarea-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "textarea-disabled",
+      "title": "Textarea Disabled",
+      "registryDependencies": ["textarea"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/textarea-disabled.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "textarea-form",
+      "title": "Textarea Form",
+      "dependencies": ["svelte-sonner", "sveltekit-superforms", "zod"],
+      "registryDependencies": ["form", "textarea"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/textarea-form.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "textarea-with-button",
+      "title": "Textarea With Button",
+      "registryDependencies": ["button", "textarea"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/textarea-with-button.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "textarea-with-label",
+      "title": "Textarea With Label",
+      "registryDependencies": ["label", "textarea"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/textarea-with-label.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "textarea-with-text",
+      "title": "Textarea With Text",
+      "registryDependencies": ["label", "textarea"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/textarea-with-text.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "toggle-demo",
+      "title": "Toggle Demo",
+      "registryDependencies": ["toggle"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/toggle-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "toggle-disabled",
+      "title": "Toggle Disabled",
+      "registryDependencies": ["toggle"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/toggle-disabled.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "toggle-group-demo",
+      "title": "Toggle Group Demo",
+      "registryDependencies": ["toggle-group"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/toggle-group-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "toggle-group-disabled",
+      "title": "Toggle Group Disabled",
+      "registryDependencies": ["toggle-group"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/toggle-group-disabled.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "toggle-group-lg",
+      "title": "Toggle Group Lg",
+      "registryDependencies": ["toggle-group"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/toggle-group-lg.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "toggle-group-outline",
+      "title": "Toggle Group Outline",
+      "registryDependencies": ["toggle-group"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/toggle-group-outline.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "toggle-group-single",
+      "title": "Toggle Group Single",
+      "registryDependencies": ["toggle-group"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/toggle-group-single.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "toggle-group-sm",
+      "title": "Toggle Group Sm",
+      "registryDependencies": ["toggle-group"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/toggle-group-sm.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "toggle-group-spacing",
+      "title": "Toggle Group Spacing",
+      "registryDependencies": ["toggle-group"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/toggle-group-spacing.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "toggle-lg",
+      "title": "Toggle Lg",
+      "registryDependencies": ["toggle"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/toggle-lg.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "toggle-outline",
+      "title": "Toggle Outline",
+      "registryDependencies": ["toggle"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/toggle-outline.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "toggle-sm",
+      "title": "Toggle Sm",
+      "registryDependencies": ["toggle"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/toggle-sm.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "toggle-with-text",
+      "title": "Toggle With Text",
+      "registryDependencies": ["toggle"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/toggle-with-text.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "tooltip-demo",
+      "title": "Tooltip Demo",
+      "registryDependencies": ["button", "tooltip"],
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/tooltip-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "typography-blockquote",
+      "title": "Typography Blockquote",
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/typography-blockquote.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "typography-demo",
+      "title": "Typography Demo",
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/typography-demo.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "typography-h1",
+      "title": "Typography H1",
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/typography-h1.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "typography-h2",
+      "title": "Typography H2",
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/typography-h2.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "typography-h3",
+      "title": "Typography H3",
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/typography-h3.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "typography-h4",
+      "title": "Typography H4",
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/typography-h4.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "typography-inline-code",
+      "title": "Typography Inline Code",
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/typography-inline-code.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "typography-large",
+      "title": "Typography Large",
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/typography-large.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "typography-lead",
+      "title": "Typography Lead",
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/typography-lead.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "typography-list",
+      "title": "Typography List",
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/typography-list.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "typography-muted",
+      "title": "Typography Muted",
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/typography-muted.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "typography-p",
+      "title": "Typography P",
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/typography-p.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "typography-small",
+      "title": "Typography Small",
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/typography-small.svelte",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "typography-table",
+      "title": "Typography Table",
+      "files": [
+        {
+          "path": "registry/svelte-vega/examples/typography-table.svelte",
           "type": "registry:example"
         }
       ],

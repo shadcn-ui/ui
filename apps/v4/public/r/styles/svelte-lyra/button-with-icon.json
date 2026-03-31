@@ -8,7 +8,7 @@
   "files": [
     {
       "path": "registry/svelte-lyra/examples/button-with-icon.svelte",
-      "content": "<script lang=\"ts\">\n  import Button from \"@/ui/button.svelte\"\n</script>\n\n<Button variant=\"outline\" size=\"sm\">\n  <svg\n    data-icon=\"inline-start\"\n    xmlns=\"http://www.w3.org/2000/svg\"\n    width=\"16\"\n    height=\"16\"\n    viewBox=\"0 0 24 24\"\n    fill=\"none\"\n    stroke=\"currentColor\"\n    stroke-width=\"2\"\n    stroke-linecap=\"round\"\n    stroke-linejoin=\"round\"\n    ><line x1=\"6\" x2=\"6\" y1=\"3\" y2=\"15\"></line><circle cx=\"18\" cy=\"6\" r=\"3\"\n    ></circle><circle cx=\"6\" cy=\"18\" r=\"3\"></circle><path\n      d=\"M18 9a9 9 0 0 1-9 9\"\n    ></path></svg\n  >\n  New Branch\n</Button>\n",
+      "content": "<script lang=\"ts\">\n  import IconGitBranch from \"@lucide/svelte/icons/git-branch\"\n  import { Button } from \"$lib/registry/ui/button/index.js\"\n</script>\n\n<Button variant=\"outline\" size=\"sm\">\n  <IconGitBranch /> New Branch\n</Button>\n",
       "type": "registry:example"
     }
   ],

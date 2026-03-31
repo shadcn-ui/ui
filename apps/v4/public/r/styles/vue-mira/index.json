@@ -3,7 +3,9 @@
   "name": "index",
   "dependencies": [
     "class-variance-authority",
-    "vue"
+    "vue",
+    "reka-ui",
+    "@vueuse/core"
   ],
   "devDependencies": [
     "tw-animate-css",

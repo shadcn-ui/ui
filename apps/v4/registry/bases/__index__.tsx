@@ -12431,32 +12431,32 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["accordion", "example", "button", "card"],
       files: [
         {
-          path: "registry/bases/vue/accordion/AccordionBasic.vue",
+          path: "registry/bases/vue/examples/accordion/AccordionBasic.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/accordion/AccordionExample.vue",
+          path: "registry/bases/vue/examples/accordion/AccordionExample.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/accordion/AccordionInCard.vue",
+          path: "registry/bases/vue/examples/accordion/AccordionInCard.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/accordion/AccordionMultiple.vue",
+          path: "registry/bases/vue/examples/accordion/AccordionMultiple.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/accordion/AccordionWithBorders.vue",
+          path: "registry/bases/vue/examples/accordion/AccordionWithBorders.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/accordion/AccordionWithDisabled.vue",
+          path: "registry/bases/vue/examples/accordion/AccordionWithDisabled.vue",
           type: "registry:example",
           target: "",
         },
@@ -12473,27 +12473,27 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["alert", "example", "badge", "button"],
       files: [
         {
-          path: "registry/bases/vue/alert/AlertBasic.vue",
+          path: "registry/bases/vue/examples/alert/AlertBasic.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/alert/AlertDestructive.vue",
+          path: "registry/bases/vue/examples/alert/AlertDestructive.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/alert/AlertExample.vue",
+          path: "registry/bases/vue/examples/alert/AlertExample.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/alert/AlertWithActions.vue",
+          path: "registry/bases/vue/examples/alert/AlertWithActions.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/alert/AlertWithIcons.vue",
+          path: "registry/bases/vue/examples/alert/AlertWithIcons.vue",
           type: "registry:example",
           target: "",
         },
@@ -12510,37 +12510,37 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["alert-dialog", "button", "example", "dialog"],
       files: [
         {
-          path: "registry/bases/vue/alert-dialog/AlertDialogBasic.vue",
+          path: "registry/bases/vue/examples/alert-dialog/AlertDialogBasic.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/alert-dialog/AlertDialogDestructive.vue",
+          path: "registry/bases/vue/examples/alert-dialog/AlertDialogDestructive.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/alert-dialog/AlertDialogExample.vue",
+          path: "registry/bases/vue/examples/alert-dialog/AlertDialogExample.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/alert-dialog/AlertDialogInDialog.vue",
+          path: "registry/bases/vue/examples/alert-dialog/AlertDialogInDialog.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/alert-dialog/AlertDialogSmall.vue",
+          path: "registry/bases/vue/examples/alert-dialog/AlertDialogSmall.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/alert-dialog/AlertDialogSmallWithMedia.vue",
+          path: "registry/bases/vue/examples/alert-dialog/AlertDialogSmallWithMedia.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/alert-dialog/AlertDialogWithMedia.vue",
+          path: "registry/bases/vue/examples/alert-dialog/AlertDialogWithMedia.vue",
           type: "registry:example",
           target: "",
         },
@@ -12557,27 +12557,27 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["aspect-ratio", "example"],
       files: [
         {
-          path: "registry/bases/vue/aspect-ratio/AspectRatio16x9.vue",
+          path: "registry/bases/vue/examples/aspect-ratio/AspectRatio16x9.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/aspect-ratio/AspectRatio1x1.vue",
+          path: "registry/bases/vue/examples/aspect-ratio/AspectRatio1x1.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/aspect-ratio/AspectRatio21x9.vue",
+          path: "registry/bases/vue/examples/aspect-ratio/AspectRatio21x9.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/aspect-ratio/AspectRatio9x16.vue",
+          path: "registry/bases/vue/examples/aspect-ratio/AspectRatio9x16.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/aspect-ratio/AspectRatioExample.vue",
+          path: "registry/bases/vue/examples/aspect-ratio/AspectRatioExample.vue",
           type: "registry:example",
           target: "",
         },
@@ -12594,42 +12594,42 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["example", "avatar", "button", "empty"],
       files: [
         {
-          path: "registry/bases/vue/avatar/AvatarExample.vue",
+          path: "registry/bases/vue/examples/avatar/AvatarExample.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/avatar/AvatarGroupExample.vue",
+          path: "registry/bases/vue/examples/avatar/AvatarGroupExample.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/avatar/AvatarGroupWithCount.vue",
+          path: "registry/bases/vue/examples/avatar/AvatarGroupWithCount.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/avatar/AvatarGroupWithIconCount.vue",
+          path: "registry/bases/vue/examples/avatar/AvatarGroupWithIconCount.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/avatar/AvatarInEmpty.vue",
+          path: "registry/bases/vue/examples/avatar/AvatarInEmpty.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/avatar/AvatarSizes.vue",
+          path: "registry/bases/vue/examples/avatar/AvatarSizes.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/avatar/AvatarWithBadge.vue",
+          path: "registry/bases/vue/examples/avatar/AvatarWithBadge.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/avatar/AvatarWithBadgeIcon.vue",
+          path: "registry/bases/vue/examples/avatar/AvatarWithBadgeIcon.vue",
           type: "registry:example",
           target: "",
         },
@@ -12646,42 +12646,42 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["badge", "example", "spinner"],
       files: [
         {
-          path: "registry/bases/vue/badge/BadgeAsLink.vue",
+          path: "registry/bases/vue/examples/badge/BadgeAsLink.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/badge/BadgeCustomColors.vue",
+          path: "registry/bases/vue/examples/badge/BadgeCustomColors.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/badge/BadgeExample.vue",
+          path: "registry/bases/vue/examples/badge/BadgeExample.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/badge/BadgeLongText.vue",
+          path: "registry/bases/vue/examples/badge/BadgeLongText.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/badge/BadgeVariants.vue",
+          path: "registry/bases/vue/examples/badge/BadgeVariants.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/badge/BadgeWithIconLeft.vue",
+          path: "registry/bases/vue/examples/badge/BadgeWithIconLeft.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/badge/BadgeWithIconRight.vue",
+          path: "registry/bases/vue/examples/badge/BadgeWithIconRight.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/badge/BadgeWithSpinner.vue",
+          path: "registry/bases/vue/examples/badge/BadgeWithSpinner.vue",
           type: "registry:example",
           target: "",
         },
@@ -12703,22 +12703,22 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
-          path: "registry/bases/vue/breadcrumb/BreadcrumbBasic.vue",
+          path: "registry/bases/vue/examples/breadcrumb/BreadcrumbBasic.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/breadcrumb/BreadcrumbExample.vue",
+          path: "registry/bases/vue/examples/breadcrumb/BreadcrumbExample.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/breadcrumb/BreadcrumbWithDropdown.vue",
+          path: "registry/bases/vue/examples/breadcrumb/BreadcrumbWithDropdown.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/breadcrumb/BreadcrumbWithLink.vue",
+          path: "registry/bases/vue/examples/breadcrumb/BreadcrumbWithLink.vue",
           type: "registry:example",
           target: "",
         },
@@ -12735,37 +12735,37 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["example", "button"],
       files: [
         {
-          path: "registry/bases/vue/button/ButtonExample.vue",
+          path: "registry/bases/vue/examples/button/ButtonExample.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/button/ButtonExamples.vue",
+          path: "registry/bases/vue/examples/button/ButtonExamples.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/button/ButtonIconLeft.vue",
+          path: "registry/bases/vue/examples/button/ButtonIconLeft.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/button/ButtonIconOnly.vue",
+          path: "registry/bases/vue/examples/button/ButtonIconOnly.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/button/ButtonIconRight.vue",
+          path: "registry/bases/vue/examples/button/ButtonIconRight.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/button/ButtonInvalidStates.vue",
+          path: "registry/bases/vue/examples/button/ButtonInvalidStates.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/button/ButtonVariantsAndSizes.vue",
+          path: "registry/bases/vue/examples/button/ButtonVariantsAndSizes.vue",
           type: "registry:example",
           target: "",
         },
@@ -12793,92 +12793,92 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
-          path: "registry/bases/vue/button-group/ButtonGroupBasic.vue",
+          path: "registry/bases/vue/examples/button-group/ButtonGroupBasic.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/button-group/ButtonGroupExample.vue",
+          path: "registry/bases/vue/examples/button-group/ButtonGroupExample.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/button-group/ButtonGroupNavigation.vue",
+          path: "registry/bases/vue/examples/button-group/ButtonGroupNavigation.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/button-group/ButtonGroupNested.vue",
+          path: "registry/bases/vue/examples/button-group/ButtonGroupNested.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/button-group/ButtonGroupPagination.vue",
+          path: "registry/bases/vue/examples/button-group/ButtonGroupPagination.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/button-group/ButtonGroupPaginationSplit.vue",
+          path: "registry/bases/vue/examples/button-group/ButtonGroupPaginationSplit.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/button-group/ButtonGroupTextAlignment.vue",
+          path: "registry/bases/vue/examples/button-group/ButtonGroupTextAlignment.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/button-group/ButtonGroupVertical.vue",
+          path: "registry/bases/vue/examples/button-group/ButtonGroupVertical.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/button-group/ButtonGroupVerticalNested.vue",
+          path: "registry/bases/vue/examples/button-group/ButtonGroupVerticalNested.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/button-group/ButtonGroupWithDropdown.vue",
+          path: "registry/bases/vue/examples/button-group/ButtonGroupWithDropdown.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/button-group/ButtonGroupWithFields.vue",
+          path: "registry/bases/vue/examples/button-group/ButtonGroupWithFields.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/button-group/ButtonGroupWithIcons.vue",
+          path: "registry/bases/vue/examples/button-group/ButtonGroupWithIcons.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/button-group/ButtonGroupWithInput.vue",
+          path: "registry/bases/vue/examples/button-group/ButtonGroupWithInput.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/button-group/ButtonGroupWithInputGroup.vue",
+          path: "registry/bases/vue/examples/button-group/ButtonGroupWithInputGroup.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/button-group/ButtonGroupWithLike.vue",
+          path: "registry/bases/vue/examples/button-group/ButtonGroupWithLike.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/button-group/ButtonGroupWithSelect.vue",
+          path: "registry/bases/vue/examples/button-group/ButtonGroupWithSelect.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/button-group/ButtonGroupWithSelectAndInput.vue",
+          path: "registry/bases/vue/examples/button-group/ButtonGroupWithSelectAndInput.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/button-group/ButtonGroupWithText.vue",
+          path: "registry/bases/vue/examples/button-group/ButtonGroupWithText.vue",
           type: "registry:example",
           target: "",
         },
@@ -12904,67 +12904,67 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
-          path: "registry/bases/vue/calendar/CalendarBookedDates.vue",
+          path: "registry/bases/vue/examples/calendar/CalendarBookedDates.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/calendar/CalendarCustomDays.vue",
+          path: "registry/bases/vue/examples/calendar/CalendarCustomDays.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/calendar/CalendarExample.vue",
+          path: "registry/bases/vue/examples/calendar/CalendarExample.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/calendar/CalendarMultiple.vue",
+          path: "registry/bases/vue/examples/calendar/CalendarMultiple.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/calendar/CalendarRange.vue",
+          path: "registry/bases/vue/examples/calendar/CalendarRange.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/calendar/CalendarRangeMultipleMonths.vue",
+          path: "registry/bases/vue/examples/calendar/CalendarRangeMultipleMonths.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/calendar/CalendarSingle.vue",
+          path: "registry/bases/vue/examples/calendar/CalendarSingle.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/calendar/CalendarWeekNumbers.vue",
+          path: "registry/bases/vue/examples/calendar/CalendarWeekNumbers.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/calendar/CalendarWithPresets.vue",
+          path: "registry/bases/vue/examples/calendar/CalendarWithPresets.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/calendar/CalendarWithTime.vue",
+          path: "registry/bases/vue/examples/calendar/CalendarWithTime.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/calendar/DatePickerSimple.vue",
+          path: "registry/bases/vue/examples/calendar/DatePickerSimple.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/calendar/DatePickerWithDropdowns.vue",
+          path: "registry/bases/vue/examples/calendar/DatePickerWithDropdowns.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/calendar/DatePickerWithRange.vue",
+          path: "registry/bases/vue/examples/calendar/DatePickerWithRange.vue",
           type: "registry:example",
           target: "",
         },
@@ -12988,57 +12988,57 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
-          path: "registry/bases/vue/card/CardDefault.vue",
+          path: "registry/bases/vue/examples/card/CardDefault.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/card/CardExample.vue",
+          path: "registry/bases/vue/examples/card/CardExample.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/card/CardFooterWithBorder.vue",
+          path: "registry/bases/vue/examples/card/CardFooterWithBorder.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/card/CardFooterWithBorderSmall.vue",
+          path: "registry/bases/vue/examples/card/CardFooterWithBorderSmall.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/card/CardHeaderWithBorder.vue",
+          path: "registry/bases/vue/examples/card/CardHeaderWithBorder.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/card/CardHeaderWithBorderSmall.vue",
+          path: "registry/bases/vue/examples/card/CardHeaderWithBorderSmall.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/card/CardLogin.vue",
+          path: "registry/bases/vue/examples/card/CardLogin.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/card/CardMeetingNotes.vue",
+          path: "registry/bases/vue/examples/card/CardMeetingNotes.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/card/CardSmall.vue",
+          path: "registry/bases/vue/examples/card/CardSmall.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/card/CardWithImage.vue",
+          path: "registry/bases/vue/examples/card/CardWithImage.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/card/CardWithImageSmall.vue",
+          path: "registry/bases/vue/examples/card/CardWithImageSmall.vue",
           type: "registry:example",
           target: "",
         },
@@ -13055,22 +13055,22 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["card", "carousel", "example"],
       files: [
         {
-          path: "registry/bases/vue/carousel/CarouselBasic.vue",
+          path: "registry/bases/vue/examples/carousel/CarouselBasic.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/carousel/CarouselExample.vue",
+          path: "registry/bases/vue/examples/carousel/CarouselExample.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/carousel/CarouselMultiple.vue",
+          path: "registry/bases/vue/examples/carousel/CarouselMultiple.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/carousel/CarouselWithGap.vue",
+          path: "registry/bases/vue/examples/carousel/CarouselWithGap.vue",
           type: "registry:example",
           target: "",
         },
@@ -13087,27 +13087,27 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["chart", "example", "card"],
       files: [
         {
-          path: "registry/bases/vue/chart/ChartAreaExample.vue",
+          path: "registry/bases/vue/examples/chart/ChartAreaExample.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/chart/ChartBarExample.vue",
+          path: "registry/bases/vue/examples/chart/ChartBarExample.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/chart/ChartExample.vue",
+          path: "registry/bases/vue/examples/chart/ChartExample.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/chart/ChartLineExample.vue",
+          path: "registry/bases/vue/examples/chart/ChartLineExample.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/chart/ChartRadialExample.vue",
+          path: "registry/bases/vue/examples/chart/ChartRadialExample.vue",
           type: "registry:example",
           target: "",
         },
@@ -13124,42 +13124,42 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["checkbox", "field", "example", "table"],
       files: [
         {
-          path: "registry/bases/vue/checkbox/CheckboxBasic.vue",
+          path: "registry/bases/vue/examples/checkbox/CheckboxBasic.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/checkbox/CheckboxDisabled.vue",
+          path: "registry/bases/vue/examples/checkbox/CheckboxDisabled.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/checkbox/CheckboxExample.vue",
+          path: "registry/bases/vue/examples/checkbox/CheckboxExample.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/checkbox/CheckboxGroup.vue",
+          path: "registry/bases/vue/examples/checkbox/CheckboxGroup.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/checkbox/CheckboxInTable.vue",
+          path: "registry/bases/vue/examples/checkbox/CheckboxInTable.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/checkbox/CheckboxInvalid.vue",
+          path: "registry/bases/vue/examples/checkbox/CheckboxInvalid.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/checkbox/CheckboxWithDescription.vue",
+          path: "registry/bases/vue/examples/checkbox/CheckboxWithDescription.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/checkbox/CheckboxWithTitle.vue",
+          path: "registry/bases/vue/examples/checkbox/CheckboxWithTitle.vue",
           type: "registry:example",
           target: "",
         },
@@ -13184,17 +13184,17 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
-          path: "registry/bases/vue/collapsible/CollapsibleExample.vue",
+          path: "registry/bases/vue/examples/collapsible/CollapsibleExample.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/collapsible/CollapsibleFileTree.vue",
+          path: "registry/bases/vue/examples/collapsible/CollapsibleFileTree.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/collapsible/CollapsibleSettings.vue",
+          path: "registry/bases/vue/examples/collapsible/CollapsibleSettings.vue",
           type: "registry:example",
           target: "",
         },
@@ -13221,72 +13221,72 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
-          path: "registry/bases/vue/combobox/ComboboxAutoHighlight.vue",
+          path: "registry/bases/vue/examples/combobox/ComboboxAutoHighlight.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/combobox/ComboboxBasic.vue",
+          path: "registry/bases/vue/examples/combobox/ComboboxBasic.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/combobox/ComboboxDisabled.vue",
+          path: "registry/bases/vue/examples/combobox/ComboboxDisabled.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/combobox/ComboboxExample.vue",
+          path: "registry/bases/vue/examples/combobox/ComboboxExample.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/combobox/ComboboxInDialog.vue",
+          path: "registry/bases/vue/examples/combobox/ComboboxInDialog.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/combobox/ComboboxInPopup.vue",
+          path: "registry/bases/vue/examples/combobox/ComboboxInPopup.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/combobox/ComboboxInputAddon.vue",
+          path: "registry/bases/vue/examples/combobox/ComboboxInputAddon.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/combobox/ComboboxInvalid.vue",
+          path: "registry/bases/vue/examples/combobox/ComboboxInvalid.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/combobox/ComboboxLargeList.vue",
+          path: "registry/bases/vue/examples/combobox/ComboboxLargeList.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/combobox/ComboboxWithClear.vue",
+          path: "registry/bases/vue/examples/combobox/ComboboxWithClear.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/combobox/ComboboxWithForm.vue",
+          path: "registry/bases/vue/examples/combobox/ComboboxWithForm.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/combobox/ComboboxWithGroups.vue",
+          path: "registry/bases/vue/examples/combobox/ComboboxWithGroups.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/combobox/ComboboxWithGroupsAndSeparator.vue",
+          path: "registry/bases/vue/examples/combobox/ComboboxWithGroupsAndSeparator.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/combobox/ComboboxWithOtherInputs.vue",
+          path: "registry/bases/vue/examples/combobox/ComboboxWithOtherInputs.vue",
           type: "registry:example",
           target: "",
         },
@@ -13303,27 +13303,27 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["example", "button", "command"],
       files: [
         {
-          path: "registry/bases/vue/command/CommandBasic.vue",
+          path: "registry/bases/vue/examples/command/CommandBasic.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/command/CommandExample.vue",
+          path: "registry/bases/vue/examples/command/CommandExample.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/command/CommandManyItems.vue",
+          path: "registry/bases/vue/examples/command/CommandManyItems.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/command/CommandWithGroups.vue",
+          path: "registry/bases/vue/examples/command/CommandWithGroups.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/command/CommandWithShortcuts.vue",
+          path: "registry/bases/vue/examples/command/CommandWithShortcuts.vue",
           type: "registry:example",
           target: "",
         },
@@ -13340,57 +13340,57 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["context-menu", "example", "button", "dialog"],
       files: [
         {
-          path: "registry/bases/vue/context-menu/ContextMenuBasic.vue",
+          path: "registry/bases/vue/examples/context-menu/ContextMenuBasic.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/context-menu/ContextMenuExample.vue",
+          path: "registry/bases/vue/examples/context-menu/ContextMenuExample.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/context-menu/ContextMenuInDialog.vue",
+          path: "registry/bases/vue/examples/context-menu/ContextMenuInDialog.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/context-menu/ContextMenuWithCheckboxes.vue",
+          path: "registry/bases/vue/examples/context-menu/ContextMenuWithCheckboxes.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/context-menu/ContextMenuWithDestructive.vue",
+          path: "registry/bases/vue/examples/context-menu/ContextMenuWithDestructive.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/context-menu/ContextMenuWithGroups.vue",
+          path: "registry/bases/vue/examples/context-menu/ContextMenuWithGroups.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/context-menu/ContextMenuWithIcons.vue",
+          path: "registry/bases/vue/examples/context-menu/ContextMenuWithIcons.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/context-menu/ContextMenuWithRadio.vue",
+          path: "registry/bases/vue/examples/context-menu/ContextMenuWithRadio.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/context-menu/ContextMenuWithShortcuts.vue",
+          path: "registry/bases/vue/examples/context-menu/ContextMenuWithShortcuts.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/context-menu/ContextMenuWithSides.vue",
+          path: "registry/bases/vue/examples/context-menu/ContextMenuWithSides.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/context-menu/ContextMenuWithSubmenu.vue",
+          path: "registry/bases/vue/examples/context-menu/ContextMenuWithSubmenu.vue",
           type: "registry:example",
           target: "",
         },
@@ -13422,32 +13422,32 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
-          path: "registry/bases/vue/dialog/DialogChatSettings.vue",
+          path: "registry/bases/vue/examples/dialog/DialogChatSettings.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/dialog/DialogExample.vue",
+          path: "registry/bases/vue/examples/dialog/DialogExample.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/dialog/DialogNoCloseButton.vue",
+          path: "registry/bases/vue/examples/dialog/DialogNoCloseButton.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/dialog/DialogScrollableContent.vue",
+          path: "registry/bases/vue/examples/dialog/DialogScrollableContent.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/dialog/DialogWithForm.vue",
+          path: "registry/bases/vue/examples/dialog/DialogWithForm.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/dialog/DialogWithStickyFooter.vue",
+          path: "registry/bases/vue/examples/dialog/DialogWithStickyFooter.vue",
           type: "registry:example",
           target: "",
         },
@@ -13464,17 +13464,17 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["example", "button", "drawer"],
       files: [
         {
-          path: "registry/bases/vue/drawer/DrawerExample.vue",
+          path: "registry/bases/vue/examples/drawer/DrawerExample.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/drawer/DrawerScrollableContent.vue",
+          path: "registry/bases/vue/examples/drawer/DrawerScrollableContent.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/drawer/DrawerWithSides.vue",
+          path: "registry/bases/vue/examples/drawer/DrawerWithSides.vue",
           type: "registry:example",
           target: "",
         },
@@ -13497,67 +13497,67 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
-          path: "registry/bases/vue/dropdown-menu/DropdownMenuBasic.vue",
+          path: "registry/bases/vue/examples/dropdown-menu/DropdownMenuBasic.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/dropdown-menu/DropdownMenuComplex.vue",
+          path: "registry/bases/vue/examples/dropdown-menu/DropdownMenuComplex.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/dropdown-menu/DropdownMenuExample.vue",
+          path: "registry/bases/vue/examples/dropdown-menu/DropdownMenuExample.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/dropdown-menu/DropdownMenuInDialog.vue",
+          path: "registry/bases/vue/examples/dropdown-menu/DropdownMenuInDialog.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/dropdown-menu/DropdownMenuWithAvatar.vue",
+          path: "registry/bases/vue/examples/dropdown-menu/DropdownMenuWithAvatar.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/dropdown-menu/DropdownMenuWithCheckboxes.vue",
+          path: "registry/bases/vue/examples/dropdown-menu/DropdownMenuWithCheckboxes.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/dropdown-menu/DropdownMenuWithCheckboxesIcons.vue",
+          path: "registry/bases/vue/examples/dropdown-menu/DropdownMenuWithCheckboxesIcons.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/dropdown-menu/DropdownMenuWithDestructive.vue",
+          path: "registry/bases/vue/examples/dropdown-menu/DropdownMenuWithDestructive.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/dropdown-menu/DropdownMenuWithIcons.vue",
+          path: "registry/bases/vue/examples/dropdown-menu/DropdownMenuWithIcons.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/dropdown-menu/DropdownMenuWithRadio.vue",
+          path: "registry/bases/vue/examples/dropdown-menu/DropdownMenuWithRadio.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/dropdown-menu/DropdownMenuWithRadioIcons.vue",
+          path: "registry/bases/vue/examples/dropdown-menu/DropdownMenuWithRadioIcons.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/dropdown-menu/DropdownMenuWithShortcuts.vue",
+          path: "registry/bases/vue/examples/dropdown-menu/DropdownMenuWithShortcuts.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/dropdown-menu/DropdownMenuWithSubmenu.vue",
+          path: "registry/bases/vue/examples/dropdown-menu/DropdownMenuWithSubmenu.vue",
           type: "registry:example",
           target: "",
         },
@@ -13580,37 +13580,37 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
-          path: "registry/bases/vue/empty/EmptyBasic.vue",
+          path: "registry/bases/vue/examples/empty/EmptyBasic.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/empty/EmptyExample.vue",
+          path: "registry/bases/vue/examples/empty/EmptyExample.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/empty/EmptyInCard.vue",
+          path: "registry/bases/vue/examples/empty/EmptyInCard.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/empty/EmptyWithBorder.vue",
+          path: "registry/bases/vue/examples/empty/EmptyWithBorder.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/empty/EmptyWithIcon.vue",
+          path: "registry/bases/vue/examples/empty/EmptyWithIcon.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/empty/EmptyWithMutedBackground.vue",
+          path: "registry/bases/vue/examples/empty/EmptyWithMutedBackground.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/empty/EmptyWithMutedBackgroundAlt.vue",
+          path: "registry/bases/vue/examples/empty/EmptyWithMutedBackgroundAlt.vue",
           type: "registry:example",
           target: "",
         },
@@ -13640,52 +13640,52 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
-          path: "registry/bases/vue/field/CheckboxFields.vue",
+          path: "registry/bases/vue/examples/field/CheckboxFields.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/field/FieldExample.vue",
+          path: "registry/bases/vue/examples/field/FieldExample.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/field/InputFields.vue",
+          path: "registry/bases/vue/examples/field/InputFields.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/field/InputOTPFields.vue",
+          path: "registry/bases/vue/examples/field/InputOTPFields.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/field/NativeSelectFields.vue",
+          path: "registry/bases/vue/examples/field/NativeSelectFields.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/field/RadioFields.vue",
+          path: "registry/bases/vue/examples/field/RadioFields.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/field/SelectFields.vue",
+          path: "registry/bases/vue/examples/field/SelectFields.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/field/SliderFields.vue",
+          path: "registry/bases/vue/examples/field/SliderFields.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/field/SwitchFields.vue",
+          path: "registry/bases/vue/examples/field/SwitchFields.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/field/TextareaFields.vue",
+          path: "registry/bases/vue/examples/field/TextareaFields.vue",
           type: "registry:example",
           target: "",
         },
@@ -13702,17 +13702,17 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["button", "form", "input", "checkbox"],
       files: [
         {
-          path: "registry/bases/vue/form/FormBasic.vue",
+          path: "registry/bases/vue/examples/form/FormBasic.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/form/FormExample.vue",
+          path: "registry/bases/vue/examples/form/FormExample.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/form/FormWithCheckbox.vue",
+          path: "registry/bases/vue/examples/form/FormWithCheckbox.vue",
           type: "registry:example",
           target: "",
         },
@@ -13729,17 +13729,17 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["example", "button", "dialog", "hover-card"],
       files: [
         {
-          path: "registry/bases/vue/hover-card/HoverCardExample.vue",
+          path: "registry/bases/vue/examples/hover-card/HoverCardExample.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/hover-card/HoverCardInDialog.vue",
+          path: "registry/bases/vue/examples/hover-card/HoverCardInDialog.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/hover-card/HoverCardSides.vue",
+          path: "registry/bases/vue/examples/hover-card/HoverCardSides.vue",
           type: "registry:example",
           target: "",
         },
@@ -13763,57 +13763,57 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
-          path: "registry/bases/vue/input/InputBasic.vue",
+          path: "registry/bases/vue/examples/input/InputBasic.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/input/InputDisabled.vue",
+          path: "registry/bases/vue/examples/input/InputDisabled.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/input/InputExample.vue",
+          path: "registry/bases/vue/examples/input/InputExample.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/input/InputForm.vue",
+          path: "registry/bases/vue/examples/input/InputForm.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/input/InputInvalid.vue",
+          path: "registry/bases/vue/examples/input/InputInvalid.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/input/InputTypes.vue",
+          path: "registry/bases/vue/examples/input/InputTypes.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/input/InputWithButton.vue",
+          path: "registry/bases/vue/examples/input/InputWithButton.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/input/InputWithDescription.vue",
+          path: "registry/bases/vue/examples/input/InputWithDescription.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/input/InputWithLabel.vue",
+          path: "registry/bases/vue/examples/input/InputWithLabel.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/input/InputWithNativeSelect.vue",
+          path: "registry/bases/vue/examples/input/InputWithNativeSelect.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/input/InputWithSelect.vue",
+          path: "registry/bases/vue/examples/input/InputWithSelect.vue",
           type: "registry:example",
           target: "",
         },
@@ -13830,22 +13830,22 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["input-group", "button"],
       files: [
         {
-          path: "registry/bases/vue/input-group/InputGroupBasic.vue",
+          path: "registry/bases/vue/examples/input-group/InputGroupBasic.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/input-group/InputGroupExample.vue",
+          path: "registry/bases/vue/examples/input-group/InputGroupExample.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/input-group/InputGroupWithButton.vue",
+          path: "registry/bases/vue/examples/input-group/InputGroupWithButton.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/input-group/InputGroupWithTextarea.vue",
+          path: "registry/bases/vue/examples/input-group/InputGroupWithTextarea.vue",
           type: "registry:example",
           target: "",
         },
@@ -13862,7 +13862,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["example", "button", "card", "field", "input-otp"],
       files: [
         {
-          path: "registry/bases/vue/input-otp/InputOTPExample.vue",
+          path: "registry/bases/vue/examples/input-otp/InputOTPExample.vue",
           type: "registry:example",
           target: "",
         },
@@ -13879,17 +13879,17 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["item", "button"],
       files: [
         {
-          path: "registry/bases/vue/item/ItemBasic.vue",
+          path: "registry/bases/vue/examples/item/ItemBasic.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/item/ItemExample.vue",
+          path: "registry/bases/vue/examples/item/ItemExample.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/item/ItemWithActions.vue",
+          path: "registry/bases/vue/examples/item/ItemWithActions.vue",
           type: "registry:example",
           target: "",
         },
@@ -13906,17 +13906,17 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["kbd"],
       files: [
         {
-          path: "registry/bases/vue/kbd/KbdBasic.vue",
+          path: "registry/bases/vue/examples/kbd/KbdBasic.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/kbd/KbdExample.vue",
+          path: "registry/bases/vue/examples/kbd/KbdExample.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/kbd/KbdWithGroup.vue",
+          path: "registry/bases/vue/examples/kbd/KbdWithGroup.vue",
           type: "registry:example",
           target: "",
         },
@@ -13940,27 +13940,27 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
-          path: "registry/bases/vue/label/LabelDisabled.vue",
+          path: "registry/bases/vue/examples/label/LabelDisabled.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/label/LabelExample.vue",
+          path: "registry/bases/vue/examples/label/LabelExample.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/label/LabelWithCheckbox.vue",
+          path: "registry/bases/vue/examples/label/LabelWithCheckbox.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/label/LabelWithInput.vue",
+          path: "registry/bases/vue/examples/label/LabelWithInput.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/label/LabelWithTextarea.vue",
+          path: "registry/bases/vue/examples/label/LabelWithTextarea.vue",
           type: "registry:example",
           target: "",
         },
@@ -13977,32 +13977,32 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["menubar", "example"],
       files: [
         {
-          path: "registry/bases/vue/menubar/MenubarBasic.vue",
+          path: "registry/bases/vue/examples/menubar/MenubarBasic.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/menubar/MenubarExample.vue",
+          path: "registry/bases/vue/examples/menubar/MenubarExample.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/menubar/MenubarWithCheckboxes.vue",
+          path: "registry/bases/vue/examples/menubar/MenubarWithCheckboxes.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/menubar/MenubarWithIcons.vue",
+          path: "registry/bases/vue/examples/menubar/MenubarWithIcons.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/menubar/MenubarWithRadio.vue",
+          path: "registry/bases/vue/examples/menubar/MenubarWithRadio.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/menubar/MenubarWithSubmenu.vue",
+          path: "registry/bases/vue/examples/menubar/MenubarWithSubmenu.vue",
           type: "registry:example",
           target: "",
         },
@@ -14019,17 +14019,17 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["native-select"],
       files: [
         {
-          path: "registry/bases/vue/native-select/NativeSelectBasic.vue",
+          path: "registry/bases/vue/examples/native-select/NativeSelectBasic.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/native-select/NativeSelectExample.vue",
+          path: "registry/bases/vue/examples/native-select/NativeSelectExample.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/native-select/NativeSelectWithOptGroup.vue",
+          path: "registry/bases/vue/examples/native-select/NativeSelectWithOptGroup.vue",
           type: "registry:example",
           target: "",
         },
@@ -14046,12 +14046,12 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["navigation-menu"],
       files: [
         {
-          path: "registry/bases/vue/navigation-menu/NavigationMenuBasic.vue",
+          path: "registry/bases/vue/examples/navigation-menu/NavigationMenuBasic.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/navigation-menu/NavigationMenuExample.vue",
+          path: "registry/bases/vue/examples/navigation-menu/NavigationMenuExample.vue",
           type: "registry:example",
           target: "",
         },
@@ -14068,22 +14068,22 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["number-field", "label"],
       files: [
         {
-          path: "registry/bases/vue/number-field/NumberFieldBasic.vue",
+          path: "registry/bases/vue/examples/number-field/NumberFieldBasic.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/number-field/NumberFieldDisabled.vue",
+          path: "registry/bases/vue/examples/number-field/NumberFieldDisabled.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/number-field/NumberFieldExample.vue",
+          path: "registry/bases/vue/examples/number-field/NumberFieldExample.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/number-field/NumberFieldWithLabel.vue",
+          path: "registry/bases/vue/examples/number-field/NumberFieldWithLabel.vue",
           type: "registry:example",
           target: "",
         },
@@ -14100,22 +14100,22 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["pagination", "example", "field", "select"],
       files: [
         {
-          path: "registry/bases/vue/pagination/PaginationBasic.vue",
+          path: "registry/bases/vue/examples/pagination/PaginationBasic.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/pagination/PaginationExample.vue",
+          path: "registry/bases/vue/examples/pagination/PaginationExample.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/pagination/PaginationSimple.vue",
+          path: "registry/bases/vue/examples/pagination/PaginationSimple.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/pagination/PaginationWithSelect.vue",
+          path: "registry/bases/vue/examples/pagination/PaginationWithSelect.vue",
           type: "registry:example",
           target: "",
         },
@@ -14132,22 +14132,22 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["pin-input"],
       files: [
         {
-          path: "registry/bases/vue/pin-input/PinInputBasic.vue",
+          path: "registry/bases/vue/examples/pin-input/PinInputBasic.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/pin-input/PinInputExample.vue",
+          path: "registry/bases/vue/examples/pin-input/PinInputExample.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/pin-input/PinInputMasked.vue",
+          path: "registry/bases/vue/examples/pin-input/PinInputMasked.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/pin-input/PinInputWithSeparator.vue",
+          path: "registry/bases/vue/examples/pin-input/PinInputWithSeparator.vue",
           type: "registry:example",
           target: "",
         },
@@ -14171,27 +14171,27 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
-          path: "registry/bases/vue/popover/PopoverAlignments.vue",
+          path: "registry/bases/vue/examples/popover/PopoverAlignments.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/popover/PopoverBasic.vue",
+          path: "registry/bases/vue/examples/popover/PopoverBasic.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/popover/PopoverExample.vue",
+          path: "registry/bases/vue/examples/popover/PopoverExample.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/popover/PopoverInDialog.vue",
+          path: "registry/bases/vue/examples/popover/PopoverInDialog.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/popover/PopoverWithForm.vue",
+          path: "registry/bases/vue/examples/popover/PopoverWithForm.vue",
           type: "registry:example",
           target: "",
         },
@@ -14208,27 +14208,27 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["example", "item", "progress", "slider", "field"],
       files: [
         {
-          path: "registry/bases/vue/progress/FileUploadList.vue",
+          path: "registry/bases/vue/examples/progress/FileUploadList.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/progress/ProgressControlled.vue",
+          path: "registry/bases/vue/examples/progress/ProgressControlled.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/progress/ProgressExample.vue",
+          path: "registry/bases/vue/examples/progress/ProgressExample.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/progress/ProgressValues.vue",
+          path: "registry/bases/vue/examples/progress/ProgressValues.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/progress/ProgressWithLabel.vue",
+          path: "registry/bases/vue/examples/progress/ProgressWithLabel.vue",
           type: "registry:example",
           target: "",
         },
@@ -14245,37 +14245,37 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["field", "radio-group", "example"],
       files: [
         {
-          path: "registry/bases/vue/radio-group/RadioGroupBasic.vue",
+          path: "registry/bases/vue/examples/radio-group/RadioGroupBasic.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/radio-group/RadioGroupDisabled.vue",
+          path: "registry/bases/vue/examples/radio-group/RadioGroupDisabled.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/radio-group/RadioGroupExample.vue",
+          path: "registry/bases/vue/examples/radio-group/RadioGroupExample.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/radio-group/RadioGroupGrid.vue",
+          path: "registry/bases/vue/examples/radio-group/RadioGroupGrid.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/radio-group/RadioGroupInvalid.vue",
+          path: "registry/bases/vue/examples/radio-group/RadioGroupInvalid.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/radio-group/RadioGroupWithDescriptions.vue",
+          path: "registry/bases/vue/examples/radio-group/RadioGroupWithDescriptions.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/radio-group/RadioGroupWithFieldSet.vue",
+          path: "registry/bases/vue/examples/radio-group/RadioGroupWithFieldSet.vue",
           type: "registry:example",
           target: "",
         },
@@ -14292,17 +14292,17 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["range-calendar"],
       files: [
         {
-          path: "registry/bases/vue/range-calendar/RangeCalendarBasic.vue",
+          path: "registry/bases/vue/examples/range-calendar/RangeCalendarBasic.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/range-calendar/RangeCalendarExample.vue",
+          path: "registry/bases/vue/examples/range-calendar/RangeCalendarExample.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/range-calendar/RangeCalendarMultipleMonths.vue",
+          path: "registry/bases/vue/examples/range-calendar/RangeCalendarMultipleMonths.vue",
           type: "registry:example",
           target: "",
         },
@@ -14319,7 +14319,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["example", "resizable"],
       files: [
         {
-          path: "registry/bases/vue/resizable/ResizableExample.vue",
+          path: "registry/bases/vue/examples/resizable/ResizableExample.vue",
           type: "registry:example",
           target: "",
         },
@@ -14336,17 +14336,17 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["example", "scroll-area", "separator"],
       files: [
         {
-          path: "registry/bases/vue/scroll-area/ScrollAreaExample.vue",
+          path: "registry/bases/vue/examples/scroll-area/ScrollAreaExample.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/scroll-area/ScrollAreaHorizontal.vue",
+          path: "registry/bases/vue/examples/scroll-area/ScrollAreaHorizontal.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/scroll-area/ScrollAreaVertical.vue",
+          path: "registry/bases/vue/examples/scroll-area/ScrollAreaVertical.vue",
           type: "registry:example",
           target: "",
         },
@@ -14372,72 +14372,72 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
-          path: "registry/bases/vue/select/SelectBasic.vue",
+          path: "registry/bases/vue/examples/select/SelectBasic.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/select/SelectDisabled.vue",
+          path: "registry/bases/vue/examples/select/SelectDisabled.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/select/SelectExample.vue",
+          path: "registry/bases/vue/examples/select/SelectExample.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/select/SelectInDialog.vue",
+          path: "registry/bases/vue/examples/select/SelectInDialog.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/select/SelectInline.vue",
+          path: "registry/bases/vue/examples/select/SelectInline.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/select/SelectInvalid.vue",
+          path: "registry/bases/vue/examples/select/SelectInvalid.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/select/SelectLargeList.vue",
+          path: "registry/bases/vue/examples/select/SelectLargeList.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/select/SelectPlan.vue",
+          path: "registry/bases/vue/examples/select/SelectPlan.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/select/SelectPopper.vue",
+          path: "registry/bases/vue/examples/select/SelectPopper.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/select/SelectSizes.vue",
+          path: "registry/bases/vue/examples/select/SelectSizes.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/select/SelectWithButton.vue",
+          path: "registry/bases/vue/examples/select/SelectWithButton.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/select/SelectWithField.vue",
+          path: "registry/bases/vue/examples/select/SelectWithField.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/select/SelectWithGroups.vue",
+          path: "registry/bases/vue/examples/select/SelectWithGroups.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/select/SelectWithIcons.vue",
+          path: "registry/bases/vue/examples/select/SelectWithIcons.vue",
           type: "registry:example",
           target: "",
         },
@@ -14454,27 +14454,27 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["example", "separator"],
       files: [
         {
-          path: "registry/bases/vue/separator/SeparatorExample.vue",
+          path: "registry/bases/vue/examples/separator/SeparatorExample.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/separator/SeparatorHorizontal.vue",
+          path: "registry/bases/vue/examples/separator/SeparatorHorizontal.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/separator/SeparatorInList.vue",
+          path: "registry/bases/vue/examples/separator/SeparatorInList.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/separator/SeparatorVertical.vue",
+          path: "registry/bases/vue/examples/separator/SeparatorVertical.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/separator/SeparatorVerticalMenu.vue",
+          path: "registry/bases/vue/examples/separator/SeparatorVerticalMenu.vue",
           type: "registry:example",
           target: "",
         },
@@ -14491,17 +14491,17 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["example", "button", "field", "input", "sheet"],
       files: [
         {
-          path: "registry/bases/vue/sheet/SheetExample.vue",
+          path: "registry/bases/vue/examples/sheet/SheetExample.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/sheet/SheetWithForm.vue",
+          path: "registry/bases/vue/examples/sheet/SheetWithForm.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/sheet/SheetWithSides.vue",
+          path: "registry/bases/vue/examples/sheet/SheetWithSides.vue",
           type: "registry:example",
           target: "",
         },
@@ -14518,17 +14518,17 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["sidebar"],
       files: [
         {
-          path: "registry/bases/vue/sidebar/SidebarBasic.vue",
+          path: "registry/bases/vue/examples/sidebar/SidebarBasic.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/sidebar/SidebarCollapsible.vue",
+          path: "registry/bases/vue/examples/sidebar/SidebarCollapsible.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/sidebar/SidebarExample.vue",
+          path: "registry/bases/vue/examples/sidebar/SidebarExample.vue",
           type: "registry:example",
           target: "",
         },
@@ -14545,32 +14545,32 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["example", "skeleton", "card"],
       files: [
         {
-          path: "registry/bases/vue/skeleton/SkeletonAvatar.vue",
+          path: "registry/bases/vue/examples/skeleton/SkeletonAvatar.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/skeleton/SkeletonCard.vue",
+          path: "registry/bases/vue/examples/skeleton/SkeletonCard.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/skeleton/SkeletonExample.vue",
+          path: "registry/bases/vue/examples/skeleton/SkeletonExample.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/skeleton/SkeletonForm.vue",
+          path: "registry/bases/vue/examples/skeleton/SkeletonForm.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/skeleton/SkeletonTable.vue",
+          path: "registry/bases/vue/examples/skeleton/SkeletonTable.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/skeleton/SkeletonText.vue",
+          path: "registry/bases/vue/examples/skeleton/SkeletonText.vue",
           type: "registry:example",
           target: "",
         },
@@ -14587,37 +14587,37 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["slider", "label", "example"],
       files: [
         {
-          path: "registry/bases/vue/slider/SliderBasic.vue",
+          path: "registry/bases/vue/examples/slider/SliderBasic.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/slider/SliderControlled.vue",
+          path: "registry/bases/vue/examples/slider/SliderControlled.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/slider/SliderDisabled.vue",
+          path: "registry/bases/vue/examples/slider/SliderDisabled.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/slider/SliderExample.vue",
+          path: "registry/bases/vue/examples/slider/SliderExample.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/slider/SliderMultiple.vue",
+          path: "registry/bases/vue/examples/slider/SliderMultiple.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/slider/SliderRange.vue",
+          path: "registry/bases/vue/examples/slider/SliderRange.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/slider/SliderVertical.vue",
+          path: "registry/bases/vue/examples/slider/SliderVertical.vue",
           type: "registry:example",
           target: "",
         },
@@ -14634,7 +14634,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["example", "button"],
       files: [
         {
-          path: "registry/bases/vue/sonner/SonnerExample.vue",
+          path: "registry/bases/vue/examples/sonner/SonnerExample.vue",
           type: "registry:example",
           target: "",
         },
@@ -14659,32 +14659,32 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
-          path: "registry/bases/vue/spinner/SpinnerBasic.vue",
+          path: "registry/bases/vue/examples/spinner/SpinnerBasic.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/spinner/SpinnerExample.vue",
+          path: "registry/bases/vue/examples/spinner/SpinnerExample.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/spinner/SpinnerInBadges.vue",
+          path: "registry/bases/vue/examples/spinner/SpinnerInBadges.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/spinner/SpinnerInButtons.vue",
+          path: "registry/bases/vue/examples/spinner/SpinnerInButtons.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/spinner/SpinnerInEmpty.vue",
+          path: "registry/bases/vue/examples/spinner/SpinnerInEmpty.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/spinner/SpinnerInInputGroup.vue",
+          path: "registry/bases/vue/examples/spinner/SpinnerInInputGroup.vue",
           type: "registry:example",
           target: "",
         },
@@ -14701,17 +14701,17 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["stepper"],
       files: [
         {
-          path: "registry/bases/vue/stepper/StepperBasic.vue",
+          path: "registry/bases/vue/examples/stepper/StepperBasic.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/stepper/StepperExample.vue",
+          path: "registry/bases/vue/examples/stepper/StepperExample.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/stepper/StepperVertical.vue",
+          path: "registry/bases/vue/examples/stepper/StepperVertical.vue",
           type: "registry:example",
           target: "",
         },
@@ -14728,27 +14728,27 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["field", "switch", "label", "example"],
       files: [
         {
-          path: "registry/bases/vue/switch/SwitchBasic.vue",
+          path: "registry/bases/vue/examples/switch/SwitchBasic.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/switch/SwitchDisabled.vue",
+          path: "registry/bases/vue/examples/switch/SwitchDisabled.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/switch/SwitchExample.vue",
+          path: "registry/bases/vue/examples/switch/SwitchExample.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/switch/SwitchSizes.vue",
+          path: "registry/bases/vue/examples/switch/SwitchSizes.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/switch/SwitchWithDescription.vue",
+          path: "registry/bases/vue/examples/switch/SwitchWithDescription.vue",
           type: "registry:example",
           target: "",
         },
@@ -14772,42 +14772,42 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
-          path: "registry/bases/vue/table/TableBasic.vue",
+          path: "registry/bases/vue/examples/table/TableBasic.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/table/TableExample.vue",
+          path: "registry/bases/vue/examples/table/TableExample.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/table/TableSimple.vue",
+          path: "registry/bases/vue/examples/table/TableSimple.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/table/TableWithActions.vue",
+          path: "registry/bases/vue/examples/table/TableWithActions.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/table/TableWithBadges.vue",
+          path: "registry/bases/vue/examples/table/TableWithBadges.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/table/TableWithFooter.vue",
+          path: "registry/bases/vue/examples/table/TableWithFooter.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/table/TableWithInput.vue",
+          path: "registry/bases/vue/examples/table/TableWithInput.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/table/TableWithSelect.vue",
+          path: "registry/bases/vue/examples/table/TableWithSelect.vue",
           type: "registry:example",
           target: "",
         },
@@ -14830,72 +14830,72 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
-          path: "registry/bases/vue/tabs/TabsBasic.vue",
+          path: "registry/bases/vue/examples/tabs/TabsBasic.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/tabs/TabsDisabled.vue",
+          path: "registry/bases/vue/examples/tabs/TabsDisabled.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/tabs/TabsExample.vue",
+          path: "registry/bases/vue/examples/tabs/TabsExample.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/tabs/TabsIconOnly.vue",
+          path: "registry/bases/vue/examples/tabs/TabsIconOnly.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/tabs/TabsLine.vue",
+          path: "registry/bases/vue/examples/tabs/TabsLine.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/tabs/TabsLineDisabled.vue",
+          path: "registry/bases/vue/examples/tabs/TabsLineDisabled.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/tabs/TabsLineWithContent.vue",
+          path: "registry/bases/vue/examples/tabs/TabsLineWithContent.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/tabs/TabsMultiple.vue",
+          path: "registry/bases/vue/examples/tabs/TabsMultiple.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/tabs/TabsVariantsComparison.vue",
+          path: "registry/bases/vue/examples/tabs/TabsVariantsComparison.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/tabs/TabsVertical.vue",
+          path: "registry/bases/vue/examples/tabs/TabsVertical.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/tabs/TabsWithContent.vue",
+          path: "registry/bases/vue/examples/tabs/TabsWithContent.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/tabs/TabsWithDropdown.vue",
+          path: "registry/bases/vue/examples/tabs/TabsWithDropdown.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/tabs/TabsWithIcons.vue",
+          path: "registry/bases/vue/examples/tabs/TabsWithIcons.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/tabs/TabsWithInputAndButton.vue",
+          path: "registry/bases/vue/examples/tabs/TabsWithInputAndButton.vue",
           type: "registry:example",
           target: "",
         },
@@ -14912,17 +14912,17 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["tags-input", "label"],
       files: [
         {
-          path: "registry/bases/vue/tags-input/TagsInputBasic.vue",
+          path: "registry/bases/vue/examples/tags-input/TagsInputBasic.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/tags-input/TagsInputExample.vue",
+          path: "registry/bases/vue/examples/tags-input/TagsInputExample.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/tags-input/TagsInputWithLabel.vue",
+          path: "registry/bases/vue/examples/tags-input/TagsInputWithLabel.vue",
           type: "registry:example",
           target: "",
         },
@@ -14939,32 +14939,32 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["textarea", "field", "example"],
       files: [
         {
-          path: "registry/bases/vue/textarea/TextareaBasic.vue",
+          path: "registry/bases/vue/examples/textarea/TextareaBasic.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/textarea/TextareaDisabled.vue",
+          path: "registry/bases/vue/examples/textarea/TextareaDisabled.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/textarea/TextareaExample.vue",
+          path: "registry/bases/vue/examples/textarea/TextareaExample.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/textarea/TextareaInvalid.vue",
+          path: "registry/bases/vue/examples/textarea/TextareaInvalid.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/textarea/TextareaWithDescription.vue",
+          path: "registry/bases/vue/examples/textarea/TextareaWithDescription.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/textarea/TextareaWithLabel.vue",
+          path: "registry/bases/vue/examples/textarea/TextareaWithLabel.vue",
           type: "registry:example",
           target: "",
         },
@@ -14981,47 +14981,47 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["toggle", "example", "button"],
       files: [
         {
-          path: "registry/bases/vue/toggle/ToggleBasic.vue",
+          path: "registry/bases/vue/examples/toggle/ToggleBasic.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/toggle/ToggleDisabled.vue",
+          path: "registry/bases/vue/examples/toggle/ToggleDisabled.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/toggle/ToggleExample.vue",
+          path: "registry/bases/vue/examples/toggle/ToggleExample.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/toggle/ToggleOutline.vue",
+          path: "registry/bases/vue/examples/toggle/ToggleOutline.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/toggle/ToggleSizes.vue",
+          path: "registry/bases/vue/examples/toggle/ToggleSizes.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/toggle/ToggleWithButtonIcon.vue",
+          path: "registry/bases/vue/examples/toggle/ToggleWithButtonIcon.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/toggle/ToggleWithButtonIconText.vue",
+          path: "registry/bases/vue/examples/toggle/ToggleWithButtonIconText.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/toggle/ToggleWithButtonText.vue",
+          path: "registry/bases/vue/examples/toggle/ToggleWithButtonText.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/toggle/ToggleWithIcon.vue",
+          path: "registry/bases/vue/examples/toggle/ToggleWithIcon.vue",
           type: "registry:example",
           target: "",
         },
@@ -15038,77 +15038,77 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["toggle-group", "example", "input", "select"],
       files: [
         {
-          path: "registry/bases/vue/toggle-group/ToggleGroupBasic.vue",
+          path: "registry/bases/vue/examples/toggle-group/ToggleGroupBasic.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/toggle-group/ToggleGroupDateRange.vue",
+          path: "registry/bases/vue/examples/toggle-group/ToggleGroupDateRange.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/toggle-group/ToggleGroupExample.vue",
+          path: "registry/bases/vue/examples/toggle-group/ToggleGroupExample.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/toggle-group/ToggleGroupFilter.vue",
+          path: "registry/bases/vue/examples/toggle-group/ToggleGroupFilter.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/toggle-group/ToggleGroupOutline.vue",
+          path: "registry/bases/vue/examples/toggle-group/ToggleGroupOutline.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/toggle-group/ToggleGroupOutlineWithIcons.vue",
+          path: "registry/bases/vue/examples/toggle-group/ToggleGroupOutlineWithIcons.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/toggle-group/ToggleGroupSizes.vue",
+          path: "registry/bases/vue/examples/toggle-group/ToggleGroupSizes.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/toggle-group/ToggleGroupSort.vue",
+          path: "registry/bases/vue/examples/toggle-group/ToggleGroupSort.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/toggle-group/ToggleGroupSpacing.vue",
+          path: "registry/bases/vue/examples/toggle-group/ToggleGroupSpacing.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/toggle-group/ToggleGroupVertical.vue",
+          path: "registry/bases/vue/examples/toggle-group/ToggleGroupVertical.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/toggle-group/ToggleGroupVerticalOutline.vue",
+          path: "registry/bases/vue/examples/toggle-group/ToggleGroupVerticalOutline.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/toggle-group/ToggleGroupVerticalOutlineWithIcons.vue",
+          path: "registry/bases/vue/examples/toggle-group/ToggleGroupVerticalOutlineWithIcons.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/toggle-group/ToggleGroupVerticalWithSpacing.vue",
+          path: "registry/bases/vue/examples/toggle-group/ToggleGroupVerticalWithSpacing.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/toggle-group/ToggleGroupWithIcons.vue",
+          path: "registry/bases/vue/examples/toggle-group/ToggleGroupWithIcons.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/toggle-group/ToggleGroupWithInputAndSelect.vue",
+          path: "registry/bases/vue/examples/toggle-group/ToggleGroupWithInputAndSelect.vue",
           type: "registry:example",
           target: "",
         },
@@ -15125,47 +15125,47 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["example", "button", "tooltip", "kbd"],
       files: [
         {
-          path: "registry/bases/vue/tooltip/TooltipBasic.vue",
+          path: "registry/bases/vue/examples/tooltip/TooltipBasic.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/tooltip/TooltipDisabled.vue",
+          path: "registry/bases/vue/examples/tooltip/TooltipDisabled.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/tooltip/TooltipExample.vue",
+          path: "registry/bases/vue/examples/tooltip/TooltipExample.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/tooltip/TooltipFormatted.vue",
+          path: "registry/bases/vue/examples/tooltip/TooltipFormatted.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/tooltip/TooltipLongContent.vue",
+          path: "registry/bases/vue/examples/tooltip/TooltipLongContent.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/tooltip/TooltipOnLink.vue",
+          path: "registry/bases/vue/examples/tooltip/TooltipOnLink.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/tooltip/TooltipSides.vue",
+          path: "registry/bases/vue/examples/tooltip/TooltipSides.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/tooltip/TooltipWithIcon.vue",
+          path: "registry/bases/vue/examples/tooltip/TooltipWithIcon.vue",
           type: "registry:example",
           target: "",
         },
         {
-          path: "registry/bases/vue/tooltip/TooltipWithKeyboard.vue",
+          path: "registry/bases/vue/examples/tooltip/TooltipWithKeyboard.vue",
           type: "registry:example",
           target: "",
         },

@@ -8,7 +8,7 @@
   "files": [
     {
       "path": "registry/svelte-maia/examples/button-demo.svelte",
-      "content": "<script lang=\"ts\">\n  import Button from \"@/ui/button.svelte\"\n</script>\n\n<div class=\"flex flex-wrap items-center gap-2 md:flex-row\">\n  <Button variant=\"outline\">Button</Button>\n  <Button variant=\"outline\" size=\"icon\" aria-label=\"Submit\">\n    <svg\n      xmlns=\"http://www.w3.org/2000/svg\"\n      width=\"16\"\n      height=\"16\"\n      viewBox=\"0 0 24 24\"\n      fill=\"none\"\n      stroke=\"currentColor\"\n      stroke-width=\"2\"\n      stroke-linecap=\"round\"\n      stroke-linejoin=\"round\"\n      ><path d=\"m5 12 7-7 7 7\"></path><path d=\"M12 19V5\"></path></svg\n    >\n  </Button>\n</div>\n",
+      "content": "<script lang=\"ts\">\n  import ArrowUpIcon from \"@lucide/svelte/icons/arrow-up\"\n  import { Button } from \"$lib/registry/ui/button/index.js\"\n</script>\n\n<div class=\"flex flex-wrap items-center gap-2 md:flex-row\">\n  <Button variant=\"outline\">Button</Button>\n  <Button variant=\"outline\" size=\"icon\" aria-label=\"Submit\">\n    <ArrowUpIcon />\n  </Button>\n</div>\n",
       "type": "registry:example"
     }
   ],

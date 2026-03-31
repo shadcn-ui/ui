@@ -3,7 +3,8 @@
   "name": "index",
   "dependencies": [
     "class-variance-authority",
-    "svelte"
+    "svelte",
+    "bits-ui"
   ],
   "devDependencies": [
     "tw-animate-css",

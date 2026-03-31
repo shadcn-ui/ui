@@ -4,7 +4,12 @@
   "items": [
     {
       "name": "index",
-      "dependencies": ["class-variance-authority", "vue"],
+      "dependencies": [
+        "class-variance-authority",
+        "vue",
+        "reka-ui",
+        "@vueuse/core"
+      ],
       "devDependencies": ["tw-animate-css", "shadcn"],
       "registryDependencies": ["utils"],
       "files": [],
@@ -25,7 +30,12 @@
     },
     {
       "name": "style",
-      "dependencies": ["class-variance-authority", "vue"],
+      "dependencies": [
+        "class-variance-authority",
+        "vue",
+        "reka-ui",
+        "@vueuse/core"
+      ],
       "devDependencies": ["tw-animate-css", "shadcn"],
       "registryDependencies": ["utils"],
       "files": [],
@@ -45,149 +55,4279 @@
       "type": "registry:style"
     },
     {
-      "name": "button",
-      "dependencies": ["class-variance-authority"],
-      "registryDependencies": ["utils"],
+      "name": "accordion",
+      "dependencies": ["reka-ui", "@vueuse/core"],
       "files": [
         {
-          "path": "registry/vue-mira/ui/button.vue",
+          "path": "registry/vue-mira/ui/accordion/Accordion.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/accordion/AccordionContent.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/accordion/AccordionItem.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/accordion/AccordionTrigger.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/accordion/index.ts",
           "type": "registry:ui"
         }
       ],
-      "meta": {
-        "links": {
-          "docs": "https://force-ui.com/docs/components/vue/button"
-        }
-      },
       "type": "registry:ui"
     },
     {
-      "name": "button-demo",
-      "title": "Button Demo",
+      "name": "alert",
+      "files": [
+        {
+          "path": "registry/vue-mira/ui/alert/Alert.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/alert/AlertAction.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/alert/AlertDescription.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/alert/AlertTitle.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/alert/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "alert-dialog",
+      "dependencies": ["reka-ui", "@vueuse/core"],
       "registryDependencies": ["button"],
       "files": [
         {
-          "path": "registry/vue-mira/examples/button-demo.vue",
+          "path": "registry/vue-mira/ui/alert-dialog/AlertDialog.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/alert-dialog/AlertDialogAction.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/alert-dialog/AlertDialogCancel.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/alert-dialog/AlertDialogContent.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/alert-dialog/AlertDialogDescription.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/alert-dialog/AlertDialogFooter.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/alert-dialog/AlertDialogHeader.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/alert-dialog/AlertDialogMedia.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/alert-dialog/AlertDialogTitle.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/alert-dialog/AlertDialogTrigger.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/alert-dialog/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "aspect-ratio",
+      "dependencies": ["reka-ui"],
+      "files": [
+        {
+          "path": "registry/vue-mira/ui/aspect-ratio/AspectRatio.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/aspect-ratio/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "avatar",
+      "dependencies": ["reka-ui", "@vueuse/core"],
+      "files": [
+        {
+          "path": "registry/vue-mira/ui/avatar/Avatar.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/avatar/AvatarBadge.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/avatar/AvatarFallback.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/avatar/AvatarGroup.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/avatar/AvatarGroupCount.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/avatar/AvatarImage.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/avatar/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "badge",
+      "dependencies": ["reka-ui", "@vueuse/core"],
+      "files": [
+        {
+          "path": "registry/vue-mira/ui/badge/Badge.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/badge/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "breadcrumb",
+      "dependencies": ["reka-ui"],
+      "files": [
+        {
+          "path": "registry/vue-mira/ui/breadcrumb/Breadcrumb.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/breadcrumb/BreadcrumbEllipsis.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/breadcrumb/BreadcrumbItem.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/breadcrumb/BreadcrumbLink.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/breadcrumb/BreadcrumbList.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/breadcrumb/BreadcrumbPage.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/breadcrumb/BreadcrumbSeparator.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/breadcrumb/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "button",
+      "dependencies": ["reka-ui"],
+      "files": [
+        {
+          "path": "registry/vue-mira/ui/button/Button.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/button/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "button-group",
+      "dependencies": ["reka-ui", "@vueuse/core"],
+      "registryDependencies": ["separator"],
+      "files": [
+        {
+          "path": "registry/vue-mira/ui/button-group/ButtonGroup.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/button-group/ButtonGroupSeparator.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/button-group/ButtonGroupText.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/button-group/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "calendar",
+      "dependencies": ["reka-ui", "@vueuse/core"],
+      "registryDependencies": ["native-select", "button", "icon-placeholder"],
+      "files": [
+        {
+          "path": "registry/vue-mira/ui/calendar/Calendar.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/calendar/CalendarCell.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/calendar/CalendarCellTrigger.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/calendar/CalendarGrid.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/calendar/CalendarGridBody.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/calendar/CalendarGridHead.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/calendar/CalendarGridRow.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/calendar/CalendarHeadCell.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/calendar/CalendarHeader.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/calendar/CalendarHeading.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/calendar/CalendarNextButton.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/calendar/CalendarPrevButton.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/calendar/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "card",
+      "files": [
+        {
+          "path": "registry/vue-mira/ui/card/Card.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/card/CardAction.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/card/CardContent.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/card/CardDescription.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/card/CardFooter.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/card/CardHeader.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/card/CardTitle.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/card/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "carousel",
+      "dependencies": ["embla-carousel-vue", "@vueuse/core"],
+      "registryDependencies": ["button", "icon-placeholder"],
+      "files": [
+        {
+          "path": "registry/vue-mira/ui/carousel/Carousel.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/carousel/CarouselContent.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/carousel/CarouselItem.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/carousel/CarouselNext.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/carousel/CarouselPrevious.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/carousel/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/carousel/interface.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/carousel/useCarousel.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "chart",
+      "dependencies": ["reka-ui", "@vueuse/core"],
+      "files": [
+        {
+          "path": "registry/vue-mira/ui/chart/ChartContainer.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/chart/ChartLegendContent.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/chart/ChartStyle.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/chart/ChartTooltipContent.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/chart/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/chart/utils.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "checkbox",
+      "dependencies": ["reka-ui", "@vueuse/core"],
+      "files": [
+        {
+          "path": "registry/vue-mira/ui/checkbox/Checkbox.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/checkbox/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "collapsible",
+      "dependencies": ["reka-ui"],
+      "files": [
+        {
+          "path": "registry/vue-mira/ui/collapsible/Collapsible.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/collapsible/CollapsibleContent.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/collapsible/CollapsibleTrigger.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/collapsible/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "combobox",
+      "dependencies": ["reka-ui", "@vueuse/core"],
+      "registryDependencies": ["icon-placeholder"],
+      "files": [
+        {
+          "path": "registry/vue-mira/ui/combobox/Combobox.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/combobox/ComboboxAnchor.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/combobox/ComboboxEmpty.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/combobox/ComboboxGroup.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/combobox/ComboboxInput.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/combobox/ComboboxItem.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/combobox/ComboboxItemIndicator.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/combobox/ComboboxList.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/combobox/ComboboxSeparator.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/combobox/ComboboxTrigger.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/combobox/ComboboxViewport.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/combobox/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "command",
+      "dependencies": ["reka-ui", "@vueuse/core"],
+      "registryDependencies": ["dialog", "input-group"],
+      "files": [
+        {
+          "path": "registry/vue-mira/ui/command/Command.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/command/CommandDialog.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/command/CommandEmpty.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/command/CommandGroup.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/command/CommandInput.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/command/CommandItem.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/command/CommandList.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/command/CommandSeparator.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/command/CommandShortcut.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/command/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "context-menu",
+      "dependencies": ["reka-ui", "@vueuse/core"],
+      "files": [
+        {
+          "path": "registry/vue-mira/ui/context-menu/ContextMenu.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/context-menu/ContextMenuCheckboxItem.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/context-menu/ContextMenuContent.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/context-menu/ContextMenuGroup.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/context-menu/ContextMenuItem.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/context-menu/ContextMenuLabel.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/context-menu/ContextMenuPortal.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/context-menu/ContextMenuRadioGroup.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/context-menu/ContextMenuRadioItem.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/context-menu/ContextMenuSeparator.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/context-menu/ContextMenuShortcut.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/context-menu/ContextMenuSub.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/context-menu/ContextMenuSubContent.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/context-menu/ContextMenuSubTrigger.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/context-menu/ContextMenuTrigger.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/context-menu/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "dialog",
+      "dependencies": ["reka-ui", "@vueuse/core"],
+      "registryDependencies": ["button", "icon-placeholder"],
+      "files": [
+        {
+          "path": "registry/vue-mira/ui/dialog/Dialog.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/dialog/DialogClose.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/dialog/DialogContent.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/dialog/DialogDescription.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/dialog/DialogFooter.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/dialog/DialogHeader.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/dialog/DialogOverlay.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/dialog/DialogScrollContent.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/dialog/DialogTitle.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/dialog/DialogTrigger.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/dialog/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "drawer",
+      "dependencies": ["vaul-vue", "reka-ui", "@vueuse/core"],
+      "files": [
+        {
+          "path": "registry/vue-mira/ui/drawer/Drawer.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/drawer/DrawerClose.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/drawer/DrawerContent.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/drawer/DrawerDescription.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/drawer/DrawerFooter.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/drawer/DrawerHeader.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/drawer/DrawerOverlay.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/drawer/DrawerTitle.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/drawer/DrawerTrigger.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/drawer/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "dropdown-menu",
+      "dependencies": ["reka-ui", "@vueuse/core"],
+      "files": [
+        {
+          "path": "registry/vue-mira/ui/dropdown-menu/DropdownMenu.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/dropdown-menu/DropdownMenuCheckboxItem.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/dropdown-menu/DropdownMenuContent.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/dropdown-menu/DropdownMenuGroup.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/dropdown-menu/DropdownMenuItem.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/dropdown-menu/DropdownMenuLabel.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/dropdown-menu/DropdownMenuRadioGroup.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/dropdown-menu/DropdownMenuRadioItem.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/dropdown-menu/DropdownMenuSeparator.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/dropdown-menu/DropdownMenuShortcut.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/dropdown-menu/DropdownMenuSub.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/dropdown-menu/DropdownMenuSubContent.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/dropdown-menu/DropdownMenuSubTrigger.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/dropdown-menu/DropdownMenuTrigger.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/dropdown-menu/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "empty",
+      "files": [
+        {
+          "path": "registry/vue-mira/ui/empty/Empty.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/empty/EmptyContent.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/empty/EmptyDescription.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/empty/EmptyHeader.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/empty/EmptyMedia.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/empty/EmptyTitle.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/empty/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "field",
+      "registryDependencies": ["label", "separator"],
+      "files": [
+        {
+          "path": "registry/vue-mira/ui/field/Field.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/field/FieldContent.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/field/FieldDescription.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/field/FieldError.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/field/FieldGroup.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/field/FieldLabel.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/field/FieldLegend.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/field/FieldSeparator.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/field/FieldSet.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/field/FieldTitle.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/field/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "form",
+      "dependencies": [
+        "reka-ui",
+        "vee-validate",
+        "@vee-validate/zod",
+        "zod@3.25.76"
+      ],
+      "registryDependencies": ["label"],
+      "files": [
+        {
+          "path": "registry/vue-mira/ui/form/FormControl.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/form/FormDescription.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/form/FormItem.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/form/FormLabel.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/form/FormMessage.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/form/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/form/injectionKeys.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/form/useFormField.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "hover-card",
+      "dependencies": ["reka-ui", "@vueuse/core"],
+      "files": [
+        {
+          "path": "registry/vue-mira/ui/hover-card/HoverCard.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/hover-card/HoverCardContent.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/hover-card/HoverCardTrigger.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/hover-card/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "input",
+      "dependencies": ["@vueuse/core"],
+      "files": [
+        {
+          "path": "registry/vue-mira/ui/input/Input.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/input/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "input-group",
+      "registryDependencies": ["button", "input", "textarea"],
+      "files": [
+        {
+          "path": "registry/vue-mira/ui/input-group/InputGroup.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/input-group/InputGroupAddon.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/input-group/InputGroupButton.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/input-group/InputGroupInput.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/input-group/InputGroupText.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/input-group/InputGroupTextarea.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/input-group/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "input-otp",
+      "dependencies": ["vue-input-otp", "@vueuse/core", "reka-ui"],
+      "registryDependencies": ["icon-placeholder"],
+      "files": [
+        {
+          "path": "registry/vue-mira/ui/input-otp/InputOTP.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/input-otp/InputOTPGroup.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/input-otp/InputOTPSeparator.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/input-otp/InputOTPSlot.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/input-otp/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "item",
+      "dependencies": ["reka-ui"],
+      "registryDependencies": ["separator"],
+      "files": [
+        {
+          "path": "registry/vue-mira/ui/item/Item.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/item/ItemActions.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/item/ItemContent.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/item/ItemDescription.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/item/ItemFooter.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/item/ItemGroup.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/item/ItemHeader.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/item/ItemMedia.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/item/ItemSeparator.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/item/ItemTitle.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/item/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "kbd",
+      "files": [
+        {
+          "path": "registry/vue-mira/ui/kbd/Kbd.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/kbd/KbdGroup.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/kbd/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "label",
+      "dependencies": ["reka-ui", "@vueuse/core"],
+      "files": [
+        {
+          "path": "registry/vue-mira/ui/label/Label.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/label/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "menubar",
+      "dependencies": ["reka-ui", "@vueuse/core"],
+      "registryDependencies": ["icon-placeholder"],
+      "files": [
+        {
+          "path": "registry/vue-mira/ui/menubar/Menubar.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/menubar/MenubarCheckboxItem.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/menubar/MenubarContent.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/menubar/MenubarGroup.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/menubar/MenubarItem.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/menubar/MenubarLabel.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/menubar/MenubarMenu.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/menubar/MenubarRadioGroup.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/menubar/MenubarRadioItem.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/menubar/MenubarSeparator.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/menubar/MenubarShortcut.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/menubar/MenubarSub.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/menubar/MenubarSubContent.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/menubar/MenubarSubTrigger.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/menubar/MenubarTrigger.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/menubar/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "native-select",
+      "dependencies": ["reka-ui", "@vueuse/core"],
+      "registryDependencies": ["icon-placeholder"],
+      "files": [
+        {
+          "path": "registry/vue-mira/ui/native-select/NativeSelect.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/native-select/NativeSelectOptGroup.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/native-select/NativeSelectOption.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/native-select/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "navigation-menu",
+      "dependencies": ["reka-ui", "@vueuse/core"],
+      "registryDependencies": ["icon-placeholder"],
+      "files": [
+        {
+          "path": "registry/vue-mira/ui/navigation-menu/NavigationMenu.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/navigation-menu/NavigationMenuContent.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/navigation-menu/NavigationMenuIndicator.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/navigation-menu/NavigationMenuItem.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/navigation-menu/NavigationMenuLink.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/navigation-menu/NavigationMenuList.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/navigation-menu/NavigationMenuTrigger.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/navigation-menu/NavigationMenuViewport.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/navigation-menu/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "number-field",
+      "dependencies": ["reka-ui", "@vueuse/core"],
+      "registryDependencies": ["icon-placeholder"],
+      "files": [
+        {
+          "path": "registry/vue-mira/ui/number-field/NumberField.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/number-field/NumberFieldContent.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/number-field/NumberFieldDecrement.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/number-field/NumberFieldIncrement.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/number-field/NumberFieldInput.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/number-field/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "pagination",
+      "dependencies": ["reka-ui", "@vueuse/core"],
+      "registryDependencies": ["button", "icon-placeholder"],
+      "files": [
+        {
+          "path": "registry/vue-mira/ui/pagination/Pagination.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/pagination/PaginationContent.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/pagination/PaginationEllipsis.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/pagination/PaginationFirst.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/pagination/PaginationItem.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/pagination/PaginationLast.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/pagination/PaginationLink.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/pagination/PaginationNext.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/pagination/PaginationPrevious.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/pagination/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "pin-input",
+      "dependencies": ["reka-ui", "@vueuse/core"],
+      "registryDependencies": ["icon-placeholder"],
+      "files": [
+        {
+          "path": "registry/vue-mira/ui/pin-input/PinInput.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/pin-input/PinInputGroup.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/pin-input/PinInputSeparator.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/pin-input/PinInputSlot.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/pin-input/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "popover",
+      "dependencies": ["reka-ui", "@vueuse/core"],
+      "files": [
+        {
+          "path": "registry/vue-mira/ui/popover/Popover.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/popover/PopoverAnchor.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/popover/PopoverContent.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/popover/PopoverDescription.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/popover/PopoverHeader.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/popover/PopoverTitle.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/popover/PopoverTrigger.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/popover/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "progress",
+      "dependencies": ["reka-ui", "@vueuse/core"],
+      "files": [
+        {
+          "path": "registry/vue-mira/ui/progress/Progress.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/progress/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "radio-group",
+      "dependencies": ["reka-ui", "@vueuse/core"],
+      "files": [
+        {
+          "path": "registry/vue-mira/ui/radio-group/RadioGroup.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/radio-group/RadioGroupItem.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/radio-group/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "range-calendar",
+      "dependencies": ["reka-ui", "@vueuse/core"],
+      "registryDependencies": ["button", "icon-placeholder"],
+      "files": [
+        {
+          "path": "registry/vue-mira/ui/range-calendar/RangeCalendar.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/range-calendar/RangeCalendarCell.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/range-calendar/RangeCalendarCellTrigger.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/range-calendar/RangeCalendarGrid.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/range-calendar/RangeCalendarGridBody.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/range-calendar/RangeCalendarGridHead.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/range-calendar/RangeCalendarGridRow.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/range-calendar/RangeCalendarHeadCell.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/range-calendar/RangeCalendarHeader.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/range-calendar/RangeCalendarHeading.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/range-calendar/RangeCalendarNextButton.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/range-calendar/RangeCalendarPrevButton.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/range-calendar/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "resizable",
+      "dependencies": ["reka-ui", "@vueuse/core"],
+      "files": [
+        {
+          "path": "registry/vue-mira/ui/resizable/ResizableHandle.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/resizable/ResizablePanel.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/resizable/ResizablePanelGroup.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/resizable/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "scroll-area",
+      "dependencies": ["reka-ui", "@vueuse/core"],
+      "files": [
+        {
+          "path": "registry/vue-mira/ui/scroll-area/ScrollArea.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/scroll-area/ScrollBar.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/scroll-area/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "select",
+      "dependencies": ["reka-ui", "@vueuse/core"],
+      "files": [
+        {
+          "path": "registry/vue-mira/ui/select/Select.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/select/SelectContent.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/select/SelectGroup.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/select/SelectItem.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/select/SelectItemText.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/select/SelectLabel.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/select/SelectScrollDownButton.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/select/SelectScrollUpButton.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/select/SelectSeparator.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/select/SelectTrigger.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/select/SelectValue.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/select/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "separator",
+      "dependencies": ["reka-ui", "@vueuse/core"],
+      "files": [
+        {
+          "path": "registry/vue-mira/ui/separator/Separator.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/separator/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "sheet",
+      "dependencies": ["reka-ui", "@vueuse/core"],
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/vue-mira/ui/sheet/Sheet.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/sheet/SheetClose.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/sheet/SheetContent.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/sheet/SheetDescription.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/sheet/SheetFooter.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/sheet/SheetHeader.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/sheet/SheetOverlay.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/sheet/SheetTitle.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/sheet/SheetTrigger.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/sheet/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "sidebar",
+      "dependencies": ["reka-ui", "@vueuse/core"],
+      "registryDependencies": [
+        "sheet",
+        "input",
+        "tooltip",
+        "skeleton",
+        "separator",
+        "icon-placeholder",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/vue-mira/ui/sidebar/Sidebar.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/sidebar/SidebarContent.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/sidebar/SidebarFooter.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/sidebar/SidebarGroup.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/sidebar/SidebarGroupAction.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/sidebar/SidebarGroupContent.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/sidebar/SidebarGroupLabel.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/sidebar/SidebarHeader.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/sidebar/SidebarInput.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/sidebar/SidebarInset.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/sidebar/SidebarMenu.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/sidebar/SidebarMenuAction.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/sidebar/SidebarMenuBadge.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/sidebar/SidebarMenuButton.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/sidebar/SidebarMenuButtonChild.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/sidebar/SidebarMenuItem.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/sidebar/SidebarMenuSkeleton.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/sidebar/SidebarMenuSub.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/sidebar/SidebarMenuSubButton.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/sidebar/SidebarMenuSubItem.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/sidebar/SidebarProvider.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/sidebar/SidebarRail.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/sidebar/SidebarSeparator.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/sidebar/SidebarTrigger.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/sidebar/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/sidebar/utils.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "skeleton",
+      "files": [
+        {
+          "path": "registry/vue-mira/ui/skeleton/Skeleton.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/skeleton/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "slider",
+      "dependencies": ["reka-ui", "@vueuse/core"],
+      "files": [
+        {
+          "path": "registry/vue-mira/ui/slider/Slider.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/slider/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "sonner",
+      "dependencies": ["vue-sonner"],
+      "registryDependencies": ["icon-placeholder"],
+      "files": [
+        {
+          "path": "registry/vue-mira/ui/sonner/Sonner.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/sonner/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "spinner",
+      "registryDependencies": ["icon-placeholder"],
+      "files": [
+        {
+          "path": "registry/vue-mira/ui/spinner/Spinner.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/spinner/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "stepper",
+      "dependencies": ["reka-ui", "@vueuse/core"],
+      "files": [
+        {
+          "path": "registry/vue-mira/ui/stepper/Stepper.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/stepper/StepperDescription.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/stepper/StepperIndicator.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/stepper/StepperItem.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/stepper/StepperSeparator.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/stepper/StepperTitle.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/stepper/StepperTrigger.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/stepper/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "switch",
+      "dependencies": ["reka-ui", "@vueuse/core"],
+      "files": [
+        {
+          "path": "registry/vue-mira/ui/switch/Switch.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/switch/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "table",
+      "dependencies": ["@vueuse/core", "@tanstack/vue-table"],
+      "files": [
+        {
+          "path": "registry/vue-mira/ui/table/Table.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/table/TableBody.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/table/TableCaption.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/table/TableCell.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/table/TableEmpty.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/table/TableFooter.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/table/TableHead.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/table/TableHeader.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/table/TableRow.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/table/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/table/utils.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "tabs",
+      "dependencies": ["reka-ui", "@vueuse/core"],
+      "files": [
+        {
+          "path": "registry/vue-mira/ui/tabs/Tabs.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/tabs/TabsContent.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/tabs/TabsList.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/tabs/TabsTrigger.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/tabs/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "tags-input",
+      "dependencies": ["reka-ui", "@vueuse/core"],
+      "registryDependencies": ["icon-placeholder"],
+      "files": [
+        {
+          "path": "registry/vue-mira/ui/tags-input/TagsInput.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/tags-input/TagsInputInput.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/tags-input/TagsInputItem.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/tags-input/TagsInputItemDelete.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/tags-input/TagsInputItemText.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/tags-input/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "textarea",
+      "dependencies": ["@vueuse/core"],
+      "files": [
+        {
+          "path": "registry/vue-mira/ui/textarea/Textarea.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/textarea/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "toggle",
+      "dependencies": ["reka-ui", "@vueuse/core"],
+      "files": [
+        {
+          "path": "registry/vue-mira/ui/toggle/Toggle.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/toggle/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "toggle-group",
+      "dependencies": ["reka-ui", "@vueuse/core"],
+      "registryDependencies": ["toggle"],
+      "files": [
+        {
+          "path": "registry/vue-mira/ui/toggle-group/ToggleGroup.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/toggle-group/ToggleGroupItem.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/toggle-group/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "tooltip",
+      "dependencies": ["reka-ui", "@vueuse/core"],
+      "files": [
+        {
+          "path": "registry/vue-mira/ui/tooltip/Tooltip.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/tooltip/TooltipContent.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/tooltip/TooltipProvider.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/tooltip/TooltipTrigger.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/vue-mira/ui/tooltip/index.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "accordion-example",
+      "title": "Accordion",
+      "dependencies": [],
+      "registryDependencies": ["accordion", "example", "button", "card"],
+      "files": [
+        {
+          "path": "registry/vue-mira/examples/accordion/AccordionBasic.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/accordion/AccordionExample.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/accordion/AccordionInCard.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/accordion/AccordionMultiple.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/accordion/AccordionWithBorders.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/accordion/AccordionWithDisabled.vue",
           "type": "registry:example"
         }
       ],
       "type": "registry:example"
     },
     {
-      "name": "button-default",
-      "title": "Button Default",
-      "registryDependencies": ["button"],
+      "name": "alert-example",
+      "title": "Alert",
+      "dependencies": [],
+      "registryDependencies": ["alert", "example", "badge", "button"],
       "files": [
         {
-          "path": "registry/vue-mira/examples/button-default.vue",
+          "path": "registry/vue-mira/examples/alert/AlertBasic.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/alert/AlertDestructive.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/alert/AlertExample.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/alert/AlertWithActions.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/alert/AlertWithIcons.vue",
           "type": "registry:example"
         }
       ],
       "type": "registry:example"
     },
     {
-      "name": "button-destructive",
-      "title": "Button Destructive",
-      "registryDependencies": ["button"],
+      "name": "alert-dialog-example",
+      "title": "Alert Dialog",
+      "dependencies": [],
+      "registryDependencies": ["alert-dialog", "button", "example", "dialog"],
       "files": [
         {
-          "path": "registry/vue-mira/examples/button-destructive.vue",
+          "path": "registry/vue-mira/examples/alert-dialog/AlertDialogBasic.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/alert-dialog/AlertDialogDestructive.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/alert-dialog/AlertDialogExample.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/alert-dialog/AlertDialogInDialog.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/alert-dialog/AlertDialogSmall.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/alert-dialog/AlertDialogSmallWithMedia.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/alert-dialog/AlertDialogWithMedia.vue",
           "type": "registry:example"
         }
       ],
       "type": "registry:example"
     },
     {
-      "name": "button-ghost",
-      "title": "Button Ghost",
-      "registryDependencies": ["button"],
+      "name": "aspect-ratio-example",
+      "title": "Aspect Ratio",
+      "dependencies": [],
+      "registryDependencies": ["aspect-ratio", "example"],
       "files": [
         {
-          "path": "registry/vue-mira/examples/button-ghost.vue",
+          "path": "registry/vue-mira/examples/aspect-ratio/AspectRatio16x9.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/aspect-ratio/AspectRatio1x1.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/aspect-ratio/AspectRatio21x9.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/aspect-ratio/AspectRatio9x16.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/aspect-ratio/AspectRatioExample.vue",
           "type": "registry:example"
         }
       ],
       "type": "registry:example"
     },
     {
-      "name": "button-icon",
-      "title": "Button Icon",
-      "registryDependencies": ["button"],
+      "name": "avatar-example",
+      "title": "Avatar",
+      "dependencies": [],
+      "registryDependencies": ["example", "avatar", "button", "empty"],
       "files": [
         {
-          "path": "registry/vue-mira/examples/button-icon.vue",
+          "path": "registry/vue-mira/examples/avatar/AvatarExample.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/avatar/AvatarGroupExample.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/avatar/AvatarGroupWithCount.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/avatar/AvatarGroupWithIconCount.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/avatar/AvatarInEmpty.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/avatar/AvatarSizes.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/avatar/AvatarWithBadge.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/avatar/AvatarWithBadgeIcon.vue",
           "type": "registry:example"
         }
       ],
       "type": "registry:example"
     },
     {
-      "name": "button-link",
-      "title": "Button Link",
-      "registryDependencies": ["button"],
+      "name": "badge-example",
+      "title": "Badge",
+      "dependencies": [],
+      "registryDependencies": ["badge", "example", "spinner"],
       "files": [
         {
-          "path": "registry/vue-mira/examples/button-link.vue",
+          "path": "registry/vue-mira/examples/badge/BadgeAsLink.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/badge/BadgeCustomColors.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/badge/BadgeExample.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/badge/BadgeLongText.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/badge/BadgeVariants.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/badge/BadgeWithIconLeft.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/badge/BadgeWithIconRight.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/badge/BadgeWithSpinner.vue",
           "type": "registry:example"
         }
       ],
       "type": "registry:example"
     },
     {
-      "name": "button-outline",
-      "title": "Button Outline",
-      "registryDependencies": ["button"],
+      "name": "breadcrumb-example",
+      "title": "Breadcrumb",
+      "dependencies": [],
+      "registryDependencies": [
+        "breadcrumb",
+        "example",
+        "button",
+        "dropdown-menu"
+      ],
       "files": [
         {
-          "path": "registry/vue-mira/examples/button-outline.vue",
+          "path": "registry/vue-mira/examples/breadcrumb/BreadcrumbBasic.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/breadcrumb/BreadcrumbExample.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/breadcrumb/BreadcrumbWithDropdown.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/breadcrumb/BreadcrumbWithLink.vue",
           "type": "registry:example"
         }
       ],
       "type": "registry:example"
     },
     {
-      "name": "button-rounded",
-      "title": "Button Rounded",
-      "registryDependencies": ["button"],
+      "name": "button-example",
+      "title": "Button",
+      "dependencies": [],
+      "registryDependencies": ["example", "button"],
       "files": [
         {
-          "path": "registry/vue-mira/examples/button-rounded.vue",
+          "path": "registry/vue-mira/examples/button/ButtonExample.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/button/ButtonExamples.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/button/ButtonIconLeft.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/button/ButtonIconOnly.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/button/ButtonIconRight.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/button/ButtonInvalidStates.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/button/ButtonVariantsAndSizes.vue",
           "type": "registry:example"
         }
       ],
       "type": "registry:example"
     },
     {
-      "name": "button-secondary",
-      "title": "Button Secondary",
-      "registryDependencies": ["button"],
+      "name": "button-group-example",
+      "title": "Button Group",
+      "dependencies": [],
+      "registryDependencies": [
+        "button",
+        "button-group",
+        "example",
+        "input-group",
+        "tooltip",
+        "field",
+        "label",
+        "dropdown-menu",
+        "input",
+        "select"
+      ],
       "files": [
         {
-          "path": "registry/vue-mira/examples/button-secondary.vue",
+          "path": "registry/vue-mira/examples/button-group/ButtonGroupBasic.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/button-group/ButtonGroupExample.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/button-group/ButtonGroupNavigation.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/button-group/ButtonGroupNested.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/button-group/ButtonGroupPagination.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/button-group/ButtonGroupPaginationSplit.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/button-group/ButtonGroupTextAlignment.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/button-group/ButtonGroupVertical.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/button-group/ButtonGroupVerticalNested.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/button-group/ButtonGroupWithDropdown.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/button-group/ButtonGroupWithFields.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/button-group/ButtonGroupWithIcons.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/button-group/ButtonGroupWithInput.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/button-group/ButtonGroupWithInputGroup.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/button-group/ButtonGroupWithLike.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/button-group/ButtonGroupWithSelect.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/button-group/ButtonGroupWithSelectAndInput.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/button-group/ButtonGroupWithText.vue",
           "type": "registry:example"
         }
       ],
       "type": "registry:example"
     },
     {
-      "name": "button-size",
-      "title": "Button Size",
-      "registryDependencies": ["button"],
+      "name": "calendar-example",
+      "title": "Calendar",
+      "dependencies": ["reka-ui"],
+      "registryDependencies": [
+        "calendar",
+        "card",
+        "range-calendar",
+        "example",
+        "button",
+        "field",
+        "input-group",
+        "popover"
+      ],
       "files": [
         {
-          "path": "registry/vue-mira/examples/button-size.vue",
+          "path": "registry/vue-mira/examples/calendar/CalendarBookedDates.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/calendar/CalendarCustomDays.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/calendar/CalendarExample.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/calendar/CalendarMultiple.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/calendar/CalendarRange.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/calendar/CalendarRangeMultipleMonths.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/calendar/CalendarSingle.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/calendar/CalendarWeekNumbers.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/calendar/CalendarWithPresets.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/calendar/CalendarWithTime.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/calendar/DatePickerSimple.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/calendar/DatePickerWithDropdowns.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/calendar/DatePickerWithRange.vue",
           "type": "registry:example"
         }
       ],
       "type": "registry:example"
     },
     {
-      "name": "button-with-icon",
-      "title": "Button With Icon",
-      "registryDependencies": ["button"],
+      "name": "card-example",
+      "title": "Card",
+      "dependencies": [],
+      "registryDependencies": [
+        "button",
+        "card",
+        "example",
+        "field",
+        "input",
+        "avatar"
+      ],
       "files": [
         {
-          "path": "registry/vue-mira/examples/button-with-icon.vue",
+          "path": "registry/vue-mira/examples/card/CardDefault.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/card/CardExample.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/card/CardFooterWithBorder.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/card/CardFooterWithBorderSmall.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/card/CardHeaderWithBorder.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/card/CardHeaderWithBorderSmall.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/card/CardLogin.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/card/CardMeetingNotes.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/card/CardSmall.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/card/CardWithImage.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/card/CardWithImageSmall.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "carousel-example",
+      "title": "Carousel",
+      "dependencies": [],
+      "registryDependencies": ["card", "carousel", "example"],
+      "files": [
+        {
+          "path": "registry/vue-mira/examples/carousel/CarouselBasic.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/carousel/CarouselExample.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/carousel/CarouselMultiple.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/carousel/CarouselWithGap.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "chart-example",
+      "title": "Chart",
+      "dependencies": ["@unovis/vue", "@unovis/ts"],
+      "registryDependencies": ["chart", "example", "card"],
+      "files": [
+        {
+          "path": "registry/vue-mira/examples/chart/ChartAreaExample.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/chart/ChartBarExample.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/chart/ChartExample.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/chart/ChartLineExample.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/chart/ChartRadialExample.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "checkbox-example",
+      "title": "Checkbox",
+      "dependencies": [],
+      "registryDependencies": ["checkbox", "field", "example", "table"],
+      "files": [
+        {
+          "path": "registry/vue-mira/examples/checkbox/CheckboxBasic.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/checkbox/CheckboxDisabled.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/checkbox/CheckboxExample.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/checkbox/CheckboxGroup.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/checkbox/CheckboxInTable.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/checkbox/CheckboxInvalid.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/checkbox/CheckboxWithDescription.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/checkbox/CheckboxWithTitle.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "collapsible-example",
+      "title": "Collapsible",
+      "dependencies": [],
+      "registryDependencies": [
+        "example",
+        "button",
+        "card",
+        "collapsible",
+        "tabs",
+        "field",
+        "input"
+      ],
+      "files": [
+        {
+          "path": "registry/vue-mira/examples/collapsible/CollapsibleExample.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/collapsible/CollapsibleFileTree.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/collapsible/CollapsibleSettings.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "combobox-example",
+      "title": "Combobox",
+      "dependencies": ["vue-sonner"],
+      "registryDependencies": [
+        "example",
+        "combobox",
+        "button",
+        "dialog",
+        "field",
+        "input-group",
+        "card",
+        "input",
+        "select"
+      ],
+      "files": [
+        {
+          "path": "registry/vue-mira/examples/combobox/ComboboxAutoHighlight.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/combobox/ComboboxBasic.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/combobox/ComboboxDisabled.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/combobox/ComboboxExample.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/combobox/ComboboxInDialog.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/combobox/ComboboxInPopup.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/combobox/ComboboxInputAddon.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/combobox/ComboboxInvalid.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/combobox/ComboboxLargeList.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/combobox/ComboboxWithClear.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/combobox/ComboboxWithForm.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/combobox/ComboboxWithGroups.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/combobox/ComboboxWithGroupsAndSeparator.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/combobox/ComboboxWithOtherInputs.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "command-example",
+      "title": "Command",
+      "dependencies": [],
+      "registryDependencies": ["example", "button", "command"],
+      "files": [
+        {
+          "path": "registry/vue-mira/examples/command/CommandBasic.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/command/CommandExample.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/command/CommandManyItems.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/command/CommandWithGroups.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/command/CommandWithShortcuts.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "context-menu-example",
+      "title": "Context Menu",
+      "dependencies": [],
+      "registryDependencies": ["context-menu", "example", "button", "dialog"],
+      "files": [
+        {
+          "path": "registry/vue-mira/examples/context-menu/ContextMenuBasic.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/context-menu/ContextMenuExample.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/context-menu/ContextMenuInDialog.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/context-menu/ContextMenuWithCheckboxes.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/context-menu/ContextMenuWithDestructive.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/context-menu/ContextMenuWithGroups.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/context-menu/ContextMenuWithIcons.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/context-menu/ContextMenuWithRadio.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/context-menu/ContextMenuWithShortcuts.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/context-menu/ContextMenuWithSides.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/context-menu/ContextMenuWithSubmenu.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "dialog-example",
+      "title": "Dialog",
+      "dependencies": [],
+      "registryDependencies": [
+        "button",
+        "checkbox",
+        "dialog",
+        "field",
+        "input-group",
+        "kbd",
+        "native-select",
+        "select",
+        "switch",
+        "tabs",
+        "textarea",
+        "tooltip",
+        "example",
+        "input"
+      ],
+      "files": [
+        {
+          "path": "registry/vue-mira/examples/dialog/DialogChatSettings.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/dialog/DialogExample.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/dialog/DialogNoCloseButton.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/dialog/DialogScrollableContent.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/dialog/DialogWithForm.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/dialog/DialogWithStickyFooter.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "drawer-example",
+      "title": "Drawer",
+      "dependencies": [],
+      "registryDependencies": ["example", "button", "drawer"],
+      "files": [
+        {
+          "path": "registry/vue-mira/examples/drawer/DrawerExample.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/drawer/DrawerScrollableContent.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/drawer/DrawerWithSides.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "dropdown-menu-example",
+      "title": "Dropdown Menu",
+      "dependencies": [],
+      "registryDependencies": [
+        "example",
+        "button",
+        "dropdown-menu",
+        "dialog",
+        "avatar"
+      ],
+      "files": [
+        {
+          "path": "registry/vue-mira/examples/dropdown-menu/DropdownMenuBasic.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/dropdown-menu/DropdownMenuComplex.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/dropdown-menu/DropdownMenuExample.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/dropdown-menu/DropdownMenuInDialog.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/dropdown-menu/DropdownMenuWithAvatar.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/dropdown-menu/DropdownMenuWithCheckboxes.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/dropdown-menu/DropdownMenuWithCheckboxesIcons.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/dropdown-menu/DropdownMenuWithDestructive.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/dropdown-menu/DropdownMenuWithIcons.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/dropdown-menu/DropdownMenuWithRadio.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/dropdown-menu/DropdownMenuWithRadioIcons.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/dropdown-menu/DropdownMenuWithShortcuts.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/dropdown-menu/DropdownMenuWithSubmenu.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "empty-example",
+      "title": "Empty",
+      "dependencies": [],
+      "registryDependencies": [
+        "example",
+        "button",
+        "empty",
+        "input-group",
+        "kbd"
+      ],
+      "files": [
+        {
+          "path": "registry/vue-mira/examples/empty/EmptyBasic.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/empty/EmptyExample.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/empty/EmptyInCard.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/empty/EmptyWithBorder.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/empty/EmptyWithIcon.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/empty/EmptyWithMutedBackground.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/empty/EmptyWithMutedBackgroundAlt.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "field-example",
+      "title": "Field",
+      "dependencies": [],
+      "registryDependencies": [
+        "example",
+        "checkbox",
+        "field",
+        "badge",
+        "input",
+        "input-otp",
+        "native-select",
+        "radio-group",
+        "select",
+        "slider",
+        "switch",
+        "textarea"
+      ],
+      "files": [
+        {
+          "path": "registry/vue-mira/examples/field/CheckboxFields.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/field/FieldExample.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/field/InputFields.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/field/InputOTPFields.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/field/NativeSelectFields.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/field/RadioFields.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/field/SelectFields.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/field/SliderFields.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/field/SwitchFields.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/field/TextareaFields.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "form-example",
+      "title": "Form",
+      "dependencies": ["vee-validate", "@vee-validate/zod", "zod@3.25.76"],
+      "registryDependencies": ["button", "form", "input", "checkbox"],
+      "files": [
+        {
+          "path": "registry/vue-mira/examples/form/FormBasic.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/form/FormExample.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/form/FormWithCheckbox.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "hover-card-example",
+      "title": "Hover Card",
+      "dependencies": [],
+      "registryDependencies": ["example", "button", "dialog", "hover-card"],
+      "files": [
+        {
+          "path": "registry/vue-mira/examples/hover-card/HoverCardExample.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/hover-card/HoverCardInDialog.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/hover-card/HoverCardSides.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-example",
+      "title": "Input",
+      "dependencies": [],
+      "registryDependencies": [
+        "input",
+        "field",
+        "example",
+        "button",
+        "select",
+        "native-select"
+      ],
+      "files": [
+        {
+          "path": "registry/vue-mira/examples/input/InputBasic.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/input/InputDisabled.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/input/InputExample.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/input/InputForm.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/input/InputInvalid.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/input/InputTypes.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/input/InputWithButton.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/input/InputWithDescription.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/input/InputWithLabel.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/input/InputWithNativeSelect.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/input/InputWithSelect.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-group-example",
+      "title": "Input Group",
+      "dependencies": [],
+      "registryDependencies": ["input-group", "button"],
+      "files": [
+        {
+          "path": "registry/vue-mira/examples/input-group/InputGroupBasic.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/input-group/InputGroupExample.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/input-group/InputGroupWithButton.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/input-group/InputGroupWithTextarea.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-otp-example",
+      "title": "Input Otp",
+      "dependencies": [],
+      "registryDependencies": [
+        "example",
+        "button",
+        "card",
+        "field",
+        "input-otp"
+      ],
+      "files": [
+        {
+          "path": "registry/vue-mira/examples/input-otp/InputOTPExample.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "item-example",
+      "title": "Item",
+      "dependencies": [],
+      "registryDependencies": ["item", "button"],
+      "files": [
+        {
+          "path": "registry/vue-mira/examples/item/ItemBasic.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/item/ItemExample.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/item/ItemWithActions.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "kbd-example",
+      "title": "Kbd",
+      "dependencies": [],
+      "registryDependencies": ["kbd"],
+      "files": [
+        {
+          "path": "registry/vue-mira/examples/kbd/KbdBasic.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/kbd/KbdExample.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/kbd/KbdWithGroup.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "label-example",
+      "title": "Label",
+      "dependencies": [],
+      "registryDependencies": [
+        "example",
+        "field",
+        "input",
+        "label",
+        "checkbox",
+        "textarea"
+      ],
+      "files": [
+        {
+          "path": "registry/vue-mira/examples/label/LabelDisabled.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/label/LabelExample.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/label/LabelWithCheckbox.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/label/LabelWithInput.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/label/LabelWithTextarea.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "menubar-example",
+      "title": "Menubar",
+      "dependencies": [],
+      "registryDependencies": ["menubar", "example"],
+      "files": [
+        {
+          "path": "registry/vue-mira/examples/menubar/MenubarBasic.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/menubar/MenubarExample.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/menubar/MenubarWithCheckboxes.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/menubar/MenubarWithIcons.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/menubar/MenubarWithRadio.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/menubar/MenubarWithSubmenu.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "native-select-example",
+      "title": "Native Select",
+      "dependencies": [],
+      "registryDependencies": ["native-select"],
+      "files": [
+        {
+          "path": "registry/vue-mira/examples/native-select/NativeSelectBasic.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/native-select/NativeSelectExample.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/native-select/NativeSelectWithOptGroup.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "navigation-menu-example",
+      "title": "Navigation Menu",
+      "dependencies": [],
+      "registryDependencies": ["navigation-menu"],
+      "files": [
+        {
+          "path": "registry/vue-mira/examples/navigation-menu/NavigationMenuBasic.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/navigation-menu/NavigationMenuExample.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "number-field-example",
+      "title": "Number Field",
+      "dependencies": [],
+      "registryDependencies": ["number-field", "label"],
+      "files": [
+        {
+          "path": "registry/vue-mira/examples/number-field/NumberFieldBasic.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/number-field/NumberFieldDisabled.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/number-field/NumberFieldExample.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/number-field/NumberFieldWithLabel.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "pagination-example",
+      "title": "Pagination",
+      "dependencies": [],
+      "registryDependencies": ["pagination", "example", "field", "select"],
+      "files": [
+        {
+          "path": "registry/vue-mira/examples/pagination/PaginationBasic.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/pagination/PaginationExample.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/pagination/PaginationSimple.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/pagination/PaginationWithSelect.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "pin-input-example",
+      "title": "Pin Input",
+      "dependencies": [],
+      "registryDependencies": ["pin-input"],
+      "files": [
+        {
+          "path": "registry/vue-mira/examples/pin-input/PinInputBasic.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/pin-input/PinInputExample.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/pin-input/PinInputMasked.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/pin-input/PinInputWithSeparator.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "popover-example",
+      "title": "Popover",
+      "dependencies": [],
+      "registryDependencies": [
+        "button",
+        "popover",
+        "example",
+        "dialog",
+        "field",
+        "input"
+      ],
+      "files": [
+        {
+          "path": "registry/vue-mira/examples/popover/PopoverAlignments.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/popover/PopoverBasic.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/popover/PopoverExample.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/popover/PopoverInDialog.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/popover/PopoverWithForm.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "progress-example",
+      "title": "Progress",
+      "dependencies": [],
+      "registryDependencies": [
+        "example",
+        "item",
+        "progress",
+        "slider",
+        "field"
+      ],
+      "files": [
+        {
+          "path": "registry/vue-mira/examples/progress/FileUploadList.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/progress/ProgressControlled.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/progress/ProgressExample.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/progress/ProgressValues.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/progress/ProgressWithLabel.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "radio-group-example",
+      "title": "Radio Group",
+      "dependencies": [],
+      "registryDependencies": ["field", "radio-group", "example"],
+      "files": [
+        {
+          "path": "registry/vue-mira/examples/radio-group/RadioGroupBasic.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/radio-group/RadioGroupDisabled.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/radio-group/RadioGroupExample.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/radio-group/RadioGroupGrid.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/radio-group/RadioGroupInvalid.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/radio-group/RadioGroupWithDescriptions.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/radio-group/RadioGroupWithFieldSet.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "range-calendar-example",
+      "title": "Range Calendar",
+      "dependencies": ["reka-ui"],
+      "registryDependencies": ["range-calendar"],
+      "files": [
+        {
+          "path": "registry/vue-mira/examples/range-calendar/RangeCalendarBasic.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/range-calendar/RangeCalendarExample.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/range-calendar/RangeCalendarMultipleMonths.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "resizable-example",
+      "title": "Resizable",
+      "dependencies": [],
+      "registryDependencies": ["example", "resizable"],
+      "files": [
+        {
+          "path": "registry/vue-mira/examples/resizable/ResizableExample.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "scroll-area-example",
+      "title": "Scroll Area",
+      "dependencies": [],
+      "registryDependencies": ["example", "scroll-area", "separator"],
+      "files": [
+        {
+          "path": "registry/vue-mira/examples/scroll-area/ScrollAreaExample.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/scroll-area/ScrollAreaHorizontal.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/scroll-area/ScrollAreaVertical.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "select-example",
+      "title": "Select",
+      "dependencies": [],
+      "registryDependencies": [
+        "select",
+        "example",
+        "button",
+        "dialog",
+        "input",
+        "native-select",
+        "field",
+        "item"
+      ],
+      "files": [
+        {
+          "path": "registry/vue-mira/examples/select/SelectBasic.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/select/SelectDisabled.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/select/SelectExample.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/select/SelectInDialog.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/select/SelectInline.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/select/SelectInvalid.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/select/SelectLargeList.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/select/SelectPlan.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/select/SelectPopper.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/select/SelectSizes.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/select/SelectWithButton.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/select/SelectWithField.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/select/SelectWithGroups.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/select/SelectWithIcons.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "separator-example",
+      "title": "Separator",
+      "dependencies": [],
+      "registryDependencies": ["example", "separator"],
+      "files": [
+        {
+          "path": "registry/vue-mira/examples/separator/SeparatorExample.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/separator/SeparatorHorizontal.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/separator/SeparatorInList.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/separator/SeparatorVertical.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/separator/SeparatorVerticalMenu.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "sheet-example",
+      "title": "Sheet",
+      "dependencies": [],
+      "registryDependencies": ["example", "button", "field", "input", "sheet"],
+      "files": [
+        {
+          "path": "registry/vue-mira/examples/sheet/SheetExample.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/sheet/SheetWithForm.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/sheet/SheetWithSides.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "sidebar-example",
+      "title": "Sidebar",
+      "dependencies": [],
+      "registryDependencies": ["sidebar"],
+      "files": [
+        {
+          "path": "registry/vue-mira/examples/sidebar/SidebarBasic.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/sidebar/SidebarCollapsible.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/sidebar/SidebarExample.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "skeleton-example",
+      "title": "Skeleton",
+      "dependencies": [],
+      "registryDependencies": ["example", "skeleton", "card"],
+      "files": [
+        {
+          "path": "registry/vue-mira/examples/skeleton/SkeletonAvatar.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/skeleton/SkeletonCard.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/skeleton/SkeletonExample.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/skeleton/SkeletonForm.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/skeleton/SkeletonTable.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/skeleton/SkeletonText.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "slider-example",
+      "title": "Slider",
+      "dependencies": [],
+      "registryDependencies": ["slider", "label", "example"],
+      "files": [
+        {
+          "path": "registry/vue-mira/examples/slider/SliderBasic.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/slider/SliderControlled.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/slider/SliderDisabled.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/slider/SliderExample.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/slider/SliderMultiple.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/slider/SliderRange.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/slider/SliderVertical.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "sonner-example",
+      "title": "Sonner",
+      "dependencies": ["vue-sonner"],
+      "registryDependencies": ["example", "button"],
+      "files": [
+        {
+          "path": "registry/vue-mira/examples/sonner/SonnerExample.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "spinner-example",
+      "title": "Spinner",
+      "dependencies": [],
+      "registryDependencies": [
+        "example",
+        "spinner",
+        "badge",
+        "button",
+        "empty",
+        "field",
+        "input-group"
+      ],
+      "files": [
+        {
+          "path": "registry/vue-mira/examples/spinner/SpinnerBasic.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/spinner/SpinnerExample.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/spinner/SpinnerInBadges.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/spinner/SpinnerInButtons.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/spinner/SpinnerInEmpty.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/spinner/SpinnerInInputGroup.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "stepper-example",
+      "title": "Stepper",
+      "dependencies": [],
+      "registryDependencies": ["stepper"],
+      "files": [
+        {
+          "path": "registry/vue-mira/examples/stepper/StepperBasic.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/stepper/StepperExample.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/stepper/StepperVertical.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "switch-example",
+      "title": "Switch",
+      "dependencies": [],
+      "registryDependencies": ["field", "switch", "label", "example"],
+      "files": [
+        {
+          "path": "registry/vue-mira/examples/switch/SwitchBasic.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/switch/SwitchDisabled.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/switch/SwitchExample.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/switch/SwitchSizes.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/switch/SwitchWithDescription.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "table-example",
+      "title": "Table",
+      "dependencies": [],
+      "registryDependencies": [
+        "table",
+        "example",
+        "button",
+        "dropdown-menu",
+        "input",
+        "select"
+      ],
+      "files": [
+        {
+          "path": "registry/vue-mira/examples/table/TableBasic.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/table/TableExample.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/table/TableSimple.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/table/TableWithActions.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/table/TableWithBadges.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/table/TableWithFooter.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/table/TableWithInput.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/table/TableWithSelect.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "tabs-example",
+      "title": "Tabs",
+      "dependencies": [],
+      "registryDependencies": [
+        "tabs",
+        "example",
+        "button",
+        "dropdown-menu",
+        "input"
+      ],
+      "files": [
+        {
+          "path": "registry/vue-mira/examples/tabs/TabsBasic.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/tabs/TabsDisabled.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/tabs/TabsExample.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/tabs/TabsIconOnly.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/tabs/TabsLine.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/tabs/TabsLineDisabled.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/tabs/TabsLineWithContent.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/tabs/TabsMultiple.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/tabs/TabsVariantsComparison.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/tabs/TabsVertical.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/tabs/TabsWithContent.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/tabs/TabsWithDropdown.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/tabs/TabsWithIcons.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/tabs/TabsWithInputAndButton.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "tags-input-example",
+      "title": "Tags Input",
+      "dependencies": [],
+      "registryDependencies": ["tags-input", "label"],
+      "files": [
+        {
+          "path": "registry/vue-mira/examples/tags-input/TagsInputBasic.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/tags-input/TagsInputExample.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/tags-input/TagsInputWithLabel.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "textarea-example",
+      "title": "Textarea",
+      "dependencies": [],
+      "registryDependencies": ["textarea", "field", "example"],
+      "files": [
+        {
+          "path": "registry/vue-mira/examples/textarea/TextareaBasic.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/textarea/TextareaDisabled.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/textarea/TextareaExample.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/textarea/TextareaInvalid.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/textarea/TextareaWithDescription.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/textarea/TextareaWithLabel.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "toggle-example",
+      "title": "Toggle",
+      "dependencies": [],
+      "registryDependencies": ["toggle", "example", "button"],
+      "files": [
+        {
+          "path": "registry/vue-mira/examples/toggle/ToggleBasic.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/toggle/ToggleDisabled.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/toggle/ToggleExample.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/toggle/ToggleOutline.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/toggle/ToggleSizes.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/toggle/ToggleWithButtonIcon.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/toggle/ToggleWithButtonIconText.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/toggle/ToggleWithButtonText.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/toggle/ToggleWithIcon.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "toggle-group-example",
+      "title": "Toggle Group",
+      "dependencies": [],
+      "registryDependencies": ["toggle-group", "example", "input", "select"],
+      "files": [
+        {
+          "path": "registry/vue-mira/examples/toggle-group/ToggleGroupBasic.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/toggle-group/ToggleGroupDateRange.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/toggle-group/ToggleGroupExample.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/toggle-group/ToggleGroupFilter.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/toggle-group/ToggleGroupOutline.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/toggle-group/ToggleGroupOutlineWithIcons.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/toggle-group/ToggleGroupSizes.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/toggle-group/ToggleGroupSort.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/toggle-group/ToggleGroupSpacing.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/toggle-group/ToggleGroupVertical.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/toggle-group/ToggleGroupVerticalOutline.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/toggle-group/ToggleGroupVerticalOutlineWithIcons.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/toggle-group/ToggleGroupVerticalWithSpacing.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/toggle-group/ToggleGroupWithIcons.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/toggle-group/ToggleGroupWithInputAndSelect.vue",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "tooltip-example",
+      "title": "Tooltip",
+      "dependencies": [],
+      "registryDependencies": ["example", "button", "tooltip", "kbd"],
+      "files": [
+        {
+          "path": "registry/vue-mira/examples/tooltip/TooltipBasic.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/tooltip/TooltipDisabled.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/tooltip/TooltipExample.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/tooltip/TooltipFormatted.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/tooltip/TooltipLongContent.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/tooltip/TooltipOnLink.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/tooltip/TooltipSides.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/tooltip/TooltipWithIcon.vue",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/vue-mira/examples/tooltip/TooltipWithKeyboard.vue",
           "type": "registry:example"
         }
       ],
@@ -195,7 +4335,6 @@
     },
     {
       "name": "utils",
-      "dependencies": ["clsx", "tailwind-merge"],
       "files": [
         {
           "path": "registry/vue-mira/lib/utils.ts",

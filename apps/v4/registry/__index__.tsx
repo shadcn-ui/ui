@@ -28174,99 +28174,13835 @@ export const Index: Record<string, Record<string, any>> = {
     },
   },
   "vue-vega": {
-    button: {
-      name: "button",
+    accordion: {
+      name: "accordion",
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["utils"],
+      registryDependencies: undefined,
       files: [
         {
-          path: "styles/vue-vega/ui/button.vue",
+          path: "styles/vue-vega/ui/accordion/Accordion.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/accordion/AccordionContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/accordion/AccordionItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/accordion/AccordionTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/accordion/index.ts",
           type: "registry:ui",
           target: "",
         },
       ],
       component: null,
       categories: undefined,
-      meta: {
-        links: { docs: "https://force-ui.com/docs/components/vue/button" },
-      },
+      meta: undefined,
+    },
+    alert: {
+      name: "alert",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-vega/ui/alert/Alert.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/alert/AlertAction.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/alert/AlertDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/alert/AlertTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/alert/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "alert-dialog": {
+      name: "alert-dialog",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "styles/vue-vega/ui/alert-dialog/AlertDialog.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/alert-dialog/AlertDialogAction.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/alert-dialog/AlertDialogCancel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/alert-dialog/AlertDialogContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/alert-dialog/AlertDialogDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/alert-dialog/AlertDialogFooter.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/alert-dialog/AlertDialogHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/alert-dialog/AlertDialogMedia.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/alert-dialog/AlertDialogTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/alert-dialog/AlertDialogTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/alert-dialog/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "aspect-ratio": {
+      name: "aspect-ratio",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-vega/ui/aspect-ratio/AspectRatio.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/aspect-ratio/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    avatar: {
+      name: "avatar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-vega/ui/avatar/Avatar.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/avatar/AvatarBadge.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/avatar/AvatarFallback.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/avatar/AvatarGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/avatar/AvatarGroupCount.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/avatar/AvatarImage.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/avatar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    badge: {
+      name: "badge",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-vega/ui/badge/Badge.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/badge/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    breadcrumb: {
+      name: "breadcrumb",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-vega/ui/breadcrumb/Breadcrumb.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/breadcrumb/BreadcrumbEllipsis.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/breadcrumb/BreadcrumbItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/breadcrumb/BreadcrumbLink.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/breadcrumb/BreadcrumbList.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/breadcrumb/BreadcrumbPage.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/breadcrumb/BreadcrumbSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/breadcrumb/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    button: {
+      name: "button",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-vega/ui/button/Button.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/button/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "button-group": {
+      name: "button-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["separator"],
+      files: [
+        {
+          path: "styles/vue-vega/ui/button-group/ButtonGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/button-group/ButtonGroupSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/button-group/ButtonGroupText.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/button-group/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    calendar: {
+      name: "calendar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["native-select", "button", "icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-vega/ui/calendar/Calendar.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/calendar/CalendarCell.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/calendar/CalendarCellTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/calendar/CalendarGrid.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/calendar/CalendarGridBody.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/calendar/CalendarGridHead.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/calendar/CalendarGridRow.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/calendar/CalendarHeadCell.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/calendar/CalendarHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/calendar/CalendarHeading.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/calendar/CalendarNextButton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/calendar/CalendarPrevButton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/calendar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    card: {
+      name: "card",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-vega/ui/card/Card.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/card/CardAction.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/card/CardContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/card/CardDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/card/CardFooter.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/card/CardHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/card/CardTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/card/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    carousel: {
+      name: "carousel",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-vega/ui/carousel/Carousel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/carousel/CarouselContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/carousel/CarouselItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/carousel/CarouselNext.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/carousel/CarouselPrevious.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/carousel/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/carousel/interface.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/carousel/useCarousel.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    chart: {
+      name: "chart",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-vega/ui/chart/ChartContainer.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/chart/ChartLegendContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/chart/ChartStyle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/chart/ChartTooltipContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/chart/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/chart/utils.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    checkbox: {
+      name: "checkbox",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-vega/ui/checkbox/Checkbox.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/checkbox/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    collapsible: {
+      name: "collapsible",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-vega/ui/collapsible/Collapsible.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/collapsible/CollapsibleContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/collapsible/CollapsibleTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/collapsible/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    combobox: {
+      name: "combobox",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-vega/ui/combobox/Combobox.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/combobox/ComboboxAnchor.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/combobox/ComboboxEmpty.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/combobox/ComboboxGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/combobox/ComboboxInput.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/combobox/ComboboxItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/combobox/ComboboxItemIndicator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/combobox/ComboboxList.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/combobox/ComboboxSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/combobox/ComboboxTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/combobox/ComboboxViewport.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/combobox/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    command: {
+      name: "command",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["dialog", "input-group"],
+      files: [
+        {
+          path: "styles/vue-vega/ui/command/Command.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/command/CommandDialog.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/command/CommandEmpty.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/command/CommandGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/command/CommandInput.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/command/CommandItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/command/CommandList.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/command/CommandSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/command/CommandShortcut.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/command/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "context-menu": {
+      name: "context-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-vega/ui/context-menu/ContextMenu.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/context-menu/ContextMenuCheckboxItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/context-menu/ContextMenuContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/context-menu/ContextMenuGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/context-menu/ContextMenuItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/context-menu/ContextMenuLabel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/context-menu/ContextMenuPortal.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/context-menu/ContextMenuRadioGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/context-menu/ContextMenuRadioItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/context-menu/ContextMenuSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/context-menu/ContextMenuShortcut.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/context-menu/ContextMenuSub.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/context-menu/ContextMenuSubContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/context-menu/ContextMenuSubTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/context-menu/ContextMenuTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/context-menu/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    dialog: {
+      name: "dialog",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-vega/ui/dialog/Dialog.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/dialog/DialogClose.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/dialog/DialogContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/dialog/DialogDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/dialog/DialogFooter.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/dialog/DialogHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/dialog/DialogOverlay.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/dialog/DialogScrollContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/dialog/DialogTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/dialog/DialogTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/dialog/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    drawer: {
+      name: "drawer",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-vega/ui/drawer/Drawer.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/drawer/DrawerClose.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/drawer/DrawerContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/drawer/DrawerDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/drawer/DrawerFooter.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/drawer/DrawerHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/drawer/DrawerOverlay.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/drawer/DrawerTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/drawer/DrawerTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/drawer/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "dropdown-menu": {
+      name: "dropdown-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-vega/ui/dropdown-menu/DropdownMenu.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/dropdown-menu/DropdownMenuCheckboxItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/dropdown-menu/DropdownMenuContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/dropdown-menu/DropdownMenuGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/dropdown-menu/DropdownMenuItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/dropdown-menu/DropdownMenuLabel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/dropdown-menu/DropdownMenuRadioGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/dropdown-menu/DropdownMenuRadioItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/dropdown-menu/DropdownMenuSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/dropdown-menu/DropdownMenuShortcut.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/dropdown-menu/DropdownMenuSub.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/dropdown-menu/DropdownMenuSubContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/dropdown-menu/DropdownMenuSubTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/dropdown-menu/DropdownMenuTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/dropdown-menu/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    empty: {
+      name: "empty",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-vega/ui/empty/Empty.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/empty/EmptyContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/empty/EmptyDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/empty/EmptyHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/empty/EmptyMedia.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/empty/EmptyTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/empty/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    field: {
+      name: "field",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["label", "separator"],
+      files: [
+        {
+          path: "styles/vue-vega/ui/field/Field.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/field/FieldContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/field/FieldDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/field/FieldError.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/field/FieldGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/field/FieldLabel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/field/FieldLegend.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/field/FieldSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/field/FieldSet.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/field/FieldTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/field/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    form: {
+      name: "form",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["label"],
+      files: [
+        {
+          path: "styles/vue-vega/ui/form/FormControl.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/form/FormDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/form/FormItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/form/FormLabel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/form/FormMessage.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/form/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/form/injectionKeys.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/form/useFormField.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "hover-card": {
+      name: "hover-card",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-vega/ui/hover-card/HoverCard.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/hover-card/HoverCardContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/hover-card/HoverCardTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/hover-card/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    input: {
+      name: "input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-vega/ui/input/Input.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/input/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "input-group": {
+      name: "input-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "input", "textarea"],
+      files: [
+        {
+          path: "styles/vue-vega/ui/input-group/InputGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/input-group/InputGroupAddon.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/input-group/InputGroupButton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/input-group/InputGroupInput.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/input-group/InputGroupText.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/input-group/InputGroupTextarea.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/input-group/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "input-otp": {
+      name: "input-otp",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-vega/ui/input-otp/InputOTP.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/input-otp/InputOTPGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/input-otp/InputOTPSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/input-otp/InputOTPSlot.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/input-otp/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    item: {
+      name: "item",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["separator"],
+      files: [
+        {
+          path: "styles/vue-vega/ui/item/Item.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/item/ItemActions.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/item/ItemContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/item/ItemDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/item/ItemFooter.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/item/ItemGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/item/ItemHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/item/ItemMedia.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/item/ItemSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/item/ItemTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/item/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    kbd: {
+      name: "kbd",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-vega/ui/kbd/Kbd.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/kbd/KbdGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/kbd/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    label: {
+      name: "label",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-vega/ui/label/Label.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/label/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    menubar: {
+      name: "menubar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-vega/ui/menubar/Menubar.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/menubar/MenubarCheckboxItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/menubar/MenubarContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/menubar/MenubarGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/menubar/MenubarItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/menubar/MenubarLabel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/menubar/MenubarMenu.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/menubar/MenubarRadioGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/menubar/MenubarRadioItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/menubar/MenubarSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/menubar/MenubarShortcut.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/menubar/MenubarSub.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/menubar/MenubarSubContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/menubar/MenubarSubTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/menubar/MenubarTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/menubar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "native-select": {
+      name: "native-select",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-vega/ui/native-select/NativeSelect.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/native-select/NativeSelectOptGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/native-select/NativeSelectOption.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/native-select/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "navigation-menu": {
+      name: "navigation-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-vega/ui/navigation-menu/NavigationMenu.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/navigation-menu/NavigationMenuContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/navigation-menu/NavigationMenuIndicator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/navigation-menu/NavigationMenuItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/navigation-menu/NavigationMenuLink.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/navigation-menu/NavigationMenuList.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/navigation-menu/NavigationMenuTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/navigation-menu/NavigationMenuViewport.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/navigation-menu/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "number-field": {
+      name: "number-field",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-vega/ui/number-field/NumberField.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/number-field/NumberFieldContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/number-field/NumberFieldDecrement.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/number-field/NumberFieldIncrement.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/number-field/NumberFieldInput.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/number-field/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    pagination: {
+      name: "pagination",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-vega/ui/pagination/Pagination.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/pagination/PaginationContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/pagination/PaginationEllipsis.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/pagination/PaginationFirst.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/pagination/PaginationItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/pagination/PaginationLast.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/pagination/PaginationLink.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/pagination/PaginationNext.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/pagination/PaginationPrevious.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/pagination/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "pin-input": {
+      name: "pin-input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-vega/ui/pin-input/PinInput.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/pin-input/PinInputGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/pin-input/PinInputSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/pin-input/PinInputSlot.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/pin-input/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    popover: {
+      name: "popover",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-vega/ui/popover/Popover.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/popover/PopoverAnchor.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/popover/PopoverContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/popover/PopoverDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/popover/PopoverHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/popover/PopoverTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/popover/PopoverTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/popover/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    progress: {
+      name: "progress",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-vega/ui/progress/Progress.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/progress/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "radio-group": {
+      name: "radio-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-vega/ui/radio-group/RadioGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/radio-group/RadioGroupItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/radio-group/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "range-calendar": {
+      name: "range-calendar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-vega/ui/range-calendar/RangeCalendar.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/range-calendar/RangeCalendarCell.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/range-calendar/RangeCalendarCellTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/range-calendar/RangeCalendarGrid.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/range-calendar/RangeCalendarGridBody.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/range-calendar/RangeCalendarGridHead.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/range-calendar/RangeCalendarGridRow.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/range-calendar/RangeCalendarHeadCell.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/range-calendar/RangeCalendarHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/range-calendar/RangeCalendarHeading.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/range-calendar/RangeCalendarNextButton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/range-calendar/RangeCalendarPrevButton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/range-calendar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    resizable: {
+      name: "resizable",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-vega/ui/resizable/ResizableHandle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/resizable/ResizablePanel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/resizable/ResizablePanelGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/resizable/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "scroll-area": {
+      name: "scroll-area",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-vega/ui/scroll-area/ScrollArea.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/scroll-area/ScrollBar.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/scroll-area/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    select: {
+      name: "select",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-vega/ui/select/Select.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/select/SelectContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/select/SelectGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/select/SelectItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/select/SelectItemText.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/select/SelectLabel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/select/SelectScrollDownButton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/select/SelectScrollUpButton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/select/SelectSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/select/SelectTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/select/SelectValue.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/select/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    separator: {
+      name: "separator",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-vega/ui/separator/Separator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/separator/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    sheet: {
+      name: "sheet",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "styles/vue-vega/ui/sheet/Sheet.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/sheet/SheetClose.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/sheet/SheetContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/sheet/SheetDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/sheet/SheetFooter.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/sheet/SheetHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/sheet/SheetOverlay.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/sheet/SheetTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/sheet/SheetTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/sheet/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    sidebar: {
+      name: "sidebar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: [
+        "sheet",
+        "input",
+        "tooltip",
+        "skeleton",
+        "separator",
+        "icon-placeholder",
+        "button",
+      ],
+      files: [
+        {
+          path: "styles/vue-vega/ui/sidebar/Sidebar.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/sidebar/SidebarContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/sidebar/SidebarFooter.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/sidebar/SidebarGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/sidebar/SidebarGroupAction.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/sidebar/SidebarGroupContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/sidebar/SidebarGroupLabel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/sidebar/SidebarHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/sidebar/SidebarInput.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/sidebar/SidebarInset.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/sidebar/SidebarMenu.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/sidebar/SidebarMenuAction.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/sidebar/SidebarMenuBadge.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/sidebar/SidebarMenuButton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/sidebar/SidebarMenuButtonChild.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/sidebar/SidebarMenuItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/sidebar/SidebarMenuSkeleton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/sidebar/SidebarMenuSub.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/sidebar/SidebarMenuSubButton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/sidebar/SidebarMenuSubItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/sidebar/SidebarProvider.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/sidebar/SidebarRail.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/sidebar/SidebarSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/sidebar/SidebarTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/sidebar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/sidebar/utils.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    skeleton: {
+      name: "skeleton",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-vega/ui/skeleton/Skeleton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/skeleton/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    slider: {
+      name: "slider",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-vega/ui/slider/Slider.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/slider/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    sonner: {
+      name: "sonner",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-vega/ui/sonner/Sonner.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/sonner/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    spinner: {
+      name: "spinner",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-vega/ui/spinner/Spinner.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/spinner/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    stepper: {
+      name: "stepper",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-vega/ui/stepper/Stepper.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/stepper/StepperDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/stepper/StepperIndicator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/stepper/StepperItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/stepper/StepperSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/stepper/StepperTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/stepper/StepperTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/stepper/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    switch: {
+      name: "switch",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-vega/ui/switch/Switch.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/switch/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    table: {
+      name: "table",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-vega/ui/table/Table.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/table/TableBody.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/table/TableCaption.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/table/TableCell.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/table/TableEmpty.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/table/TableFooter.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/table/TableHead.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/table/TableHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/table/TableRow.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/table/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/table/utils.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    tabs: {
+      name: "tabs",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-vega/ui/tabs/Tabs.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/tabs/TabsContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/tabs/TabsList.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/tabs/TabsTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/tabs/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "tags-input": {
+      name: "tags-input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-vega/ui/tags-input/TagsInput.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/tags-input/TagsInputInput.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/tags-input/TagsInputItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/tags-input/TagsInputItemDelete.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/tags-input/TagsInputItemText.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/tags-input/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    textarea: {
+      name: "textarea",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-vega/ui/textarea/Textarea.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/textarea/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    toggle: {
+      name: "toggle",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-vega/ui/toggle/Toggle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/toggle/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "toggle-group": {
+      name: "toggle-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["toggle"],
+      files: [
+        {
+          path: "styles/vue-vega/ui/toggle-group/ToggleGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/toggle-group/ToggleGroupItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/toggle-group/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    tooltip: {
+      name: "tooltip",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-vega/ui/tooltip/Tooltip.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/tooltip/TooltipContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/tooltip/TooltipProvider.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/tooltip/TooltipTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-vega/ui/tooltip/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
     },
   },
   "vue-nova": {
-    button: {
-      name: "button",
+    accordion: {
+      name: "accordion",
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["utils"],
+      registryDependencies: undefined,
       files: [
         {
-          path: "styles/vue-nova/ui/button.vue",
+          path: "styles/vue-nova/ui/accordion/Accordion.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/accordion/AccordionContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/accordion/AccordionItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/accordion/AccordionTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/accordion/index.ts",
           type: "registry:ui",
           target: "",
         },
       ],
       component: null,
       categories: undefined,
-      meta: {
-        links: { docs: "https://force-ui.com/docs/components/vue/button" },
-      },
+      meta: undefined,
+    },
+    alert: {
+      name: "alert",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-nova/ui/alert/Alert.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/alert/AlertAction.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/alert/AlertDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/alert/AlertTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/alert/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "alert-dialog": {
+      name: "alert-dialog",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "styles/vue-nova/ui/alert-dialog/AlertDialog.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/alert-dialog/AlertDialogAction.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/alert-dialog/AlertDialogCancel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/alert-dialog/AlertDialogContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/alert-dialog/AlertDialogDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/alert-dialog/AlertDialogFooter.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/alert-dialog/AlertDialogHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/alert-dialog/AlertDialogMedia.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/alert-dialog/AlertDialogTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/alert-dialog/AlertDialogTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/alert-dialog/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "aspect-ratio": {
+      name: "aspect-ratio",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-nova/ui/aspect-ratio/AspectRatio.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/aspect-ratio/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    avatar: {
+      name: "avatar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-nova/ui/avatar/Avatar.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/avatar/AvatarBadge.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/avatar/AvatarFallback.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/avatar/AvatarGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/avatar/AvatarGroupCount.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/avatar/AvatarImage.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/avatar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    badge: {
+      name: "badge",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-nova/ui/badge/Badge.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/badge/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    breadcrumb: {
+      name: "breadcrumb",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-nova/ui/breadcrumb/Breadcrumb.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/breadcrumb/BreadcrumbEllipsis.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/breadcrumb/BreadcrumbItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/breadcrumb/BreadcrumbLink.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/breadcrumb/BreadcrumbList.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/breadcrumb/BreadcrumbPage.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/breadcrumb/BreadcrumbSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/breadcrumb/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    button: {
+      name: "button",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-nova/ui/button/Button.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/button/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "button-group": {
+      name: "button-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["separator"],
+      files: [
+        {
+          path: "styles/vue-nova/ui/button-group/ButtonGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/button-group/ButtonGroupSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/button-group/ButtonGroupText.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/button-group/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    calendar: {
+      name: "calendar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["native-select", "button", "icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-nova/ui/calendar/Calendar.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/calendar/CalendarCell.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/calendar/CalendarCellTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/calendar/CalendarGrid.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/calendar/CalendarGridBody.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/calendar/CalendarGridHead.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/calendar/CalendarGridRow.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/calendar/CalendarHeadCell.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/calendar/CalendarHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/calendar/CalendarHeading.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/calendar/CalendarNextButton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/calendar/CalendarPrevButton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/calendar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    card: {
+      name: "card",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-nova/ui/card/Card.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/card/CardAction.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/card/CardContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/card/CardDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/card/CardFooter.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/card/CardHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/card/CardTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/card/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    carousel: {
+      name: "carousel",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-nova/ui/carousel/Carousel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/carousel/CarouselContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/carousel/CarouselItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/carousel/CarouselNext.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/carousel/CarouselPrevious.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/carousel/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/carousel/interface.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/carousel/useCarousel.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    chart: {
+      name: "chart",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-nova/ui/chart/ChartContainer.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/chart/ChartLegendContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/chart/ChartStyle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/chart/ChartTooltipContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/chart/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/chart/utils.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    checkbox: {
+      name: "checkbox",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-nova/ui/checkbox/Checkbox.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/checkbox/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    collapsible: {
+      name: "collapsible",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-nova/ui/collapsible/Collapsible.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/collapsible/CollapsibleContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/collapsible/CollapsibleTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/collapsible/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    combobox: {
+      name: "combobox",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-nova/ui/combobox/Combobox.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/combobox/ComboboxAnchor.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/combobox/ComboboxEmpty.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/combobox/ComboboxGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/combobox/ComboboxInput.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/combobox/ComboboxItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/combobox/ComboboxItemIndicator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/combobox/ComboboxList.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/combobox/ComboboxSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/combobox/ComboboxTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/combobox/ComboboxViewport.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/combobox/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    command: {
+      name: "command",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["dialog", "input-group"],
+      files: [
+        {
+          path: "styles/vue-nova/ui/command/Command.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/command/CommandDialog.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/command/CommandEmpty.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/command/CommandGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/command/CommandInput.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/command/CommandItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/command/CommandList.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/command/CommandSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/command/CommandShortcut.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/command/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "context-menu": {
+      name: "context-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-nova/ui/context-menu/ContextMenu.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/context-menu/ContextMenuCheckboxItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/context-menu/ContextMenuContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/context-menu/ContextMenuGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/context-menu/ContextMenuItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/context-menu/ContextMenuLabel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/context-menu/ContextMenuPortal.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/context-menu/ContextMenuRadioGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/context-menu/ContextMenuRadioItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/context-menu/ContextMenuSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/context-menu/ContextMenuShortcut.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/context-menu/ContextMenuSub.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/context-menu/ContextMenuSubContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/context-menu/ContextMenuSubTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/context-menu/ContextMenuTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/context-menu/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    dialog: {
+      name: "dialog",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-nova/ui/dialog/Dialog.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/dialog/DialogClose.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/dialog/DialogContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/dialog/DialogDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/dialog/DialogFooter.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/dialog/DialogHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/dialog/DialogOverlay.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/dialog/DialogScrollContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/dialog/DialogTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/dialog/DialogTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/dialog/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    drawer: {
+      name: "drawer",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-nova/ui/drawer/Drawer.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/drawer/DrawerClose.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/drawer/DrawerContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/drawer/DrawerDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/drawer/DrawerFooter.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/drawer/DrawerHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/drawer/DrawerOverlay.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/drawer/DrawerTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/drawer/DrawerTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/drawer/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "dropdown-menu": {
+      name: "dropdown-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-nova/ui/dropdown-menu/DropdownMenu.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/dropdown-menu/DropdownMenuCheckboxItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/dropdown-menu/DropdownMenuContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/dropdown-menu/DropdownMenuGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/dropdown-menu/DropdownMenuItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/dropdown-menu/DropdownMenuLabel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/dropdown-menu/DropdownMenuRadioGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/dropdown-menu/DropdownMenuRadioItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/dropdown-menu/DropdownMenuSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/dropdown-menu/DropdownMenuShortcut.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/dropdown-menu/DropdownMenuSub.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/dropdown-menu/DropdownMenuSubContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/dropdown-menu/DropdownMenuSubTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/dropdown-menu/DropdownMenuTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/dropdown-menu/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    empty: {
+      name: "empty",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-nova/ui/empty/Empty.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/empty/EmptyContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/empty/EmptyDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/empty/EmptyHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/empty/EmptyMedia.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/empty/EmptyTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/empty/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    field: {
+      name: "field",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["label", "separator"],
+      files: [
+        {
+          path: "styles/vue-nova/ui/field/Field.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/field/FieldContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/field/FieldDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/field/FieldError.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/field/FieldGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/field/FieldLabel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/field/FieldLegend.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/field/FieldSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/field/FieldSet.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/field/FieldTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/field/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    form: {
+      name: "form",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["label"],
+      files: [
+        {
+          path: "styles/vue-nova/ui/form/FormControl.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/form/FormDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/form/FormItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/form/FormLabel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/form/FormMessage.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/form/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/form/injectionKeys.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/form/useFormField.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "hover-card": {
+      name: "hover-card",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-nova/ui/hover-card/HoverCard.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/hover-card/HoverCardContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/hover-card/HoverCardTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/hover-card/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    input: {
+      name: "input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-nova/ui/input/Input.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/input/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "input-group": {
+      name: "input-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "input", "textarea"],
+      files: [
+        {
+          path: "styles/vue-nova/ui/input-group/InputGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/input-group/InputGroupAddon.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/input-group/InputGroupButton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/input-group/InputGroupInput.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/input-group/InputGroupText.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/input-group/InputGroupTextarea.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/input-group/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "input-otp": {
+      name: "input-otp",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-nova/ui/input-otp/InputOTP.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/input-otp/InputOTPGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/input-otp/InputOTPSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/input-otp/InputOTPSlot.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/input-otp/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    item: {
+      name: "item",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["separator"],
+      files: [
+        {
+          path: "styles/vue-nova/ui/item/Item.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/item/ItemActions.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/item/ItemContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/item/ItemDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/item/ItemFooter.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/item/ItemGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/item/ItemHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/item/ItemMedia.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/item/ItemSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/item/ItemTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/item/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    kbd: {
+      name: "kbd",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-nova/ui/kbd/Kbd.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/kbd/KbdGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/kbd/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    label: {
+      name: "label",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-nova/ui/label/Label.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/label/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    menubar: {
+      name: "menubar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-nova/ui/menubar/Menubar.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/menubar/MenubarCheckboxItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/menubar/MenubarContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/menubar/MenubarGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/menubar/MenubarItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/menubar/MenubarLabel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/menubar/MenubarMenu.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/menubar/MenubarRadioGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/menubar/MenubarRadioItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/menubar/MenubarSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/menubar/MenubarShortcut.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/menubar/MenubarSub.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/menubar/MenubarSubContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/menubar/MenubarSubTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/menubar/MenubarTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/menubar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "native-select": {
+      name: "native-select",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-nova/ui/native-select/NativeSelect.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/native-select/NativeSelectOptGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/native-select/NativeSelectOption.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/native-select/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "navigation-menu": {
+      name: "navigation-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-nova/ui/navigation-menu/NavigationMenu.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/navigation-menu/NavigationMenuContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/navigation-menu/NavigationMenuIndicator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/navigation-menu/NavigationMenuItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/navigation-menu/NavigationMenuLink.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/navigation-menu/NavigationMenuList.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/navigation-menu/NavigationMenuTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/navigation-menu/NavigationMenuViewport.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/navigation-menu/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "number-field": {
+      name: "number-field",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-nova/ui/number-field/NumberField.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/number-field/NumberFieldContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/number-field/NumberFieldDecrement.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/number-field/NumberFieldIncrement.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/number-field/NumberFieldInput.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/number-field/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    pagination: {
+      name: "pagination",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-nova/ui/pagination/Pagination.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/pagination/PaginationContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/pagination/PaginationEllipsis.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/pagination/PaginationFirst.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/pagination/PaginationItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/pagination/PaginationLast.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/pagination/PaginationLink.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/pagination/PaginationNext.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/pagination/PaginationPrevious.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/pagination/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "pin-input": {
+      name: "pin-input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-nova/ui/pin-input/PinInput.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/pin-input/PinInputGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/pin-input/PinInputSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/pin-input/PinInputSlot.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/pin-input/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    popover: {
+      name: "popover",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-nova/ui/popover/Popover.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/popover/PopoverAnchor.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/popover/PopoverContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/popover/PopoverDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/popover/PopoverHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/popover/PopoverTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/popover/PopoverTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/popover/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    progress: {
+      name: "progress",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-nova/ui/progress/Progress.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/progress/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "radio-group": {
+      name: "radio-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-nova/ui/radio-group/RadioGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/radio-group/RadioGroupItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/radio-group/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "range-calendar": {
+      name: "range-calendar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-nova/ui/range-calendar/RangeCalendar.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/range-calendar/RangeCalendarCell.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/range-calendar/RangeCalendarCellTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/range-calendar/RangeCalendarGrid.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/range-calendar/RangeCalendarGridBody.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/range-calendar/RangeCalendarGridHead.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/range-calendar/RangeCalendarGridRow.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/range-calendar/RangeCalendarHeadCell.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/range-calendar/RangeCalendarHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/range-calendar/RangeCalendarHeading.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/range-calendar/RangeCalendarNextButton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/range-calendar/RangeCalendarPrevButton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/range-calendar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    resizable: {
+      name: "resizable",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-nova/ui/resizable/ResizableHandle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/resizable/ResizablePanel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/resizable/ResizablePanelGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/resizable/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "scroll-area": {
+      name: "scroll-area",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-nova/ui/scroll-area/ScrollArea.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/scroll-area/ScrollBar.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/scroll-area/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    select: {
+      name: "select",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-nova/ui/select/Select.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/select/SelectContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/select/SelectGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/select/SelectItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/select/SelectItemText.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/select/SelectLabel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/select/SelectScrollDownButton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/select/SelectScrollUpButton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/select/SelectSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/select/SelectTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/select/SelectValue.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/select/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    separator: {
+      name: "separator",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-nova/ui/separator/Separator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/separator/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    sheet: {
+      name: "sheet",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "styles/vue-nova/ui/sheet/Sheet.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/sheet/SheetClose.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/sheet/SheetContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/sheet/SheetDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/sheet/SheetFooter.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/sheet/SheetHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/sheet/SheetOverlay.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/sheet/SheetTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/sheet/SheetTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/sheet/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    sidebar: {
+      name: "sidebar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: [
+        "sheet",
+        "input",
+        "tooltip",
+        "skeleton",
+        "separator",
+        "icon-placeholder",
+        "button",
+      ],
+      files: [
+        {
+          path: "styles/vue-nova/ui/sidebar/Sidebar.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/sidebar/SidebarContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/sidebar/SidebarFooter.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/sidebar/SidebarGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/sidebar/SidebarGroupAction.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/sidebar/SidebarGroupContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/sidebar/SidebarGroupLabel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/sidebar/SidebarHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/sidebar/SidebarInput.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/sidebar/SidebarInset.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/sidebar/SidebarMenu.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/sidebar/SidebarMenuAction.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/sidebar/SidebarMenuBadge.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/sidebar/SidebarMenuButton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/sidebar/SidebarMenuButtonChild.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/sidebar/SidebarMenuItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/sidebar/SidebarMenuSkeleton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/sidebar/SidebarMenuSub.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/sidebar/SidebarMenuSubButton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/sidebar/SidebarMenuSubItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/sidebar/SidebarProvider.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/sidebar/SidebarRail.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/sidebar/SidebarSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/sidebar/SidebarTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/sidebar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/sidebar/utils.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    skeleton: {
+      name: "skeleton",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-nova/ui/skeleton/Skeleton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/skeleton/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    slider: {
+      name: "slider",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-nova/ui/slider/Slider.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/slider/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    sonner: {
+      name: "sonner",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-nova/ui/sonner/Sonner.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/sonner/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    spinner: {
+      name: "spinner",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-nova/ui/spinner/Spinner.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/spinner/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    stepper: {
+      name: "stepper",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-nova/ui/stepper/Stepper.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/stepper/StepperDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/stepper/StepperIndicator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/stepper/StepperItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/stepper/StepperSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/stepper/StepperTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/stepper/StepperTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/stepper/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    switch: {
+      name: "switch",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-nova/ui/switch/Switch.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/switch/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    table: {
+      name: "table",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-nova/ui/table/Table.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/table/TableBody.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/table/TableCaption.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/table/TableCell.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/table/TableEmpty.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/table/TableFooter.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/table/TableHead.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/table/TableHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/table/TableRow.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/table/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/table/utils.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    tabs: {
+      name: "tabs",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-nova/ui/tabs/Tabs.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/tabs/TabsContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/tabs/TabsList.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/tabs/TabsTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/tabs/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "tags-input": {
+      name: "tags-input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-nova/ui/tags-input/TagsInput.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/tags-input/TagsInputInput.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/tags-input/TagsInputItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/tags-input/TagsInputItemDelete.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/tags-input/TagsInputItemText.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/tags-input/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    textarea: {
+      name: "textarea",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-nova/ui/textarea/Textarea.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/textarea/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    toggle: {
+      name: "toggle",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-nova/ui/toggle/Toggle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/toggle/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "toggle-group": {
+      name: "toggle-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["toggle"],
+      files: [
+        {
+          path: "styles/vue-nova/ui/toggle-group/ToggleGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/toggle-group/ToggleGroupItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/toggle-group/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    tooltip: {
+      name: "tooltip",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-nova/ui/tooltip/Tooltip.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/tooltip/TooltipContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/tooltip/TooltipProvider.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/tooltip/TooltipTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-nova/ui/tooltip/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
     },
   },
   "vue-maia": {
-    button: {
-      name: "button",
+    accordion: {
+      name: "accordion",
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["utils"],
+      registryDependencies: undefined,
       files: [
         {
-          path: "styles/vue-maia/ui/button.vue",
+          path: "styles/vue-maia/ui/accordion/Accordion.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/accordion/AccordionContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/accordion/AccordionItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/accordion/AccordionTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/accordion/index.ts",
           type: "registry:ui",
           target: "",
         },
       ],
       component: null,
       categories: undefined,
-      meta: {
-        links: { docs: "https://force-ui.com/docs/components/vue/button" },
-      },
+      meta: undefined,
+    },
+    alert: {
+      name: "alert",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-maia/ui/alert/Alert.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/alert/AlertAction.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/alert/AlertDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/alert/AlertTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/alert/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "alert-dialog": {
+      name: "alert-dialog",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "styles/vue-maia/ui/alert-dialog/AlertDialog.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/alert-dialog/AlertDialogAction.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/alert-dialog/AlertDialogCancel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/alert-dialog/AlertDialogContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/alert-dialog/AlertDialogDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/alert-dialog/AlertDialogFooter.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/alert-dialog/AlertDialogHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/alert-dialog/AlertDialogMedia.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/alert-dialog/AlertDialogTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/alert-dialog/AlertDialogTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/alert-dialog/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "aspect-ratio": {
+      name: "aspect-ratio",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-maia/ui/aspect-ratio/AspectRatio.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/aspect-ratio/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    avatar: {
+      name: "avatar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-maia/ui/avatar/Avatar.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/avatar/AvatarBadge.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/avatar/AvatarFallback.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/avatar/AvatarGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/avatar/AvatarGroupCount.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/avatar/AvatarImage.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/avatar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    badge: {
+      name: "badge",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-maia/ui/badge/Badge.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/badge/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    breadcrumb: {
+      name: "breadcrumb",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-maia/ui/breadcrumb/Breadcrumb.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/breadcrumb/BreadcrumbEllipsis.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/breadcrumb/BreadcrumbItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/breadcrumb/BreadcrumbLink.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/breadcrumb/BreadcrumbList.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/breadcrumb/BreadcrumbPage.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/breadcrumb/BreadcrumbSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/breadcrumb/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    button: {
+      name: "button",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-maia/ui/button/Button.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/button/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "button-group": {
+      name: "button-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["separator"],
+      files: [
+        {
+          path: "styles/vue-maia/ui/button-group/ButtonGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/button-group/ButtonGroupSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/button-group/ButtonGroupText.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/button-group/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    calendar: {
+      name: "calendar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["native-select", "button", "icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-maia/ui/calendar/Calendar.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/calendar/CalendarCell.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/calendar/CalendarCellTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/calendar/CalendarGrid.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/calendar/CalendarGridBody.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/calendar/CalendarGridHead.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/calendar/CalendarGridRow.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/calendar/CalendarHeadCell.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/calendar/CalendarHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/calendar/CalendarHeading.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/calendar/CalendarNextButton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/calendar/CalendarPrevButton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/calendar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    card: {
+      name: "card",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-maia/ui/card/Card.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/card/CardAction.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/card/CardContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/card/CardDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/card/CardFooter.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/card/CardHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/card/CardTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/card/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    carousel: {
+      name: "carousel",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-maia/ui/carousel/Carousel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/carousel/CarouselContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/carousel/CarouselItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/carousel/CarouselNext.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/carousel/CarouselPrevious.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/carousel/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/carousel/interface.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/carousel/useCarousel.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    chart: {
+      name: "chart",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-maia/ui/chart/ChartContainer.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/chart/ChartLegendContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/chart/ChartStyle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/chart/ChartTooltipContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/chart/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/chart/utils.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    checkbox: {
+      name: "checkbox",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-maia/ui/checkbox/Checkbox.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/checkbox/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    collapsible: {
+      name: "collapsible",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-maia/ui/collapsible/Collapsible.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/collapsible/CollapsibleContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/collapsible/CollapsibleTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/collapsible/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    combobox: {
+      name: "combobox",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-maia/ui/combobox/Combobox.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/combobox/ComboboxAnchor.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/combobox/ComboboxEmpty.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/combobox/ComboboxGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/combobox/ComboboxInput.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/combobox/ComboboxItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/combobox/ComboboxItemIndicator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/combobox/ComboboxList.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/combobox/ComboboxSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/combobox/ComboboxTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/combobox/ComboboxViewport.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/combobox/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    command: {
+      name: "command",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["dialog", "input-group"],
+      files: [
+        {
+          path: "styles/vue-maia/ui/command/Command.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/command/CommandDialog.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/command/CommandEmpty.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/command/CommandGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/command/CommandInput.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/command/CommandItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/command/CommandList.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/command/CommandSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/command/CommandShortcut.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/command/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "context-menu": {
+      name: "context-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-maia/ui/context-menu/ContextMenu.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/context-menu/ContextMenuCheckboxItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/context-menu/ContextMenuContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/context-menu/ContextMenuGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/context-menu/ContextMenuItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/context-menu/ContextMenuLabel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/context-menu/ContextMenuPortal.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/context-menu/ContextMenuRadioGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/context-menu/ContextMenuRadioItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/context-menu/ContextMenuSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/context-menu/ContextMenuShortcut.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/context-menu/ContextMenuSub.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/context-menu/ContextMenuSubContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/context-menu/ContextMenuSubTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/context-menu/ContextMenuTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/context-menu/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    dialog: {
+      name: "dialog",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-maia/ui/dialog/Dialog.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/dialog/DialogClose.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/dialog/DialogContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/dialog/DialogDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/dialog/DialogFooter.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/dialog/DialogHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/dialog/DialogOverlay.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/dialog/DialogScrollContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/dialog/DialogTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/dialog/DialogTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/dialog/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    drawer: {
+      name: "drawer",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-maia/ui/drawer/Drawer.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/drawer/DrawerClose.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/drawer/DrawerContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/drawer/DrawerDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/drawer/DrawerFooter.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/drawer/DrawerHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/drawer/DrawerOverlay.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/drawer/DrawerTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/drawer/DrawerTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/drawer/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "dropdown-menu": {
+      name: "dropdown-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-maia/ui/dropdown-menu/DropdownMenu.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/dropdown-menu/DropdownMenuCheckboxItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/dropdown-menu/DropdownMenuContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/dropdown-menu/DropdownMenuGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/dropdown-menu/DropdownMenuItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/dropdown-menu/DropdownMenuLabel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/dropdown-menu/DropdownMenuRadioGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/dropdown-menu/DropdownMenuRadioItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/dropdown-menu/DropdownMenuSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/dropdown-menu/DropdownMenuShortcut.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/dropdown-menu/DropdownMenuSub.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/dropdown-menu/DropdownMenuSubContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/dropdown-menu/DropdownMenuSubTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/dropdown-menu/DropdownMenuTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/dropdown-menu/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    empty: {
+      name: "empty",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-maia/ui/empty/Empty.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/empty/EmptyContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/empty/EmptyDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/empty/EmptyHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/empty/EmptyMedia.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/empty/EmptyTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/empty/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    field: {
+      name: "field",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["label", "separator"],
+      files: [
+        {
+          path: "styles/vue-maia/ui/field/Field.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/field/FieldContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/field/FieldDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/field/FieldError.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/field/FieldGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/field/FieldLabel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/field/FieldLegend.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/field/FieldSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/field/FieldSet.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/field/FieldTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/field/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    form: {
+      name: "form",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["label"],
+      files: [
+        {
+          path: "styles/vue-maia/ui/form/FormControl.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/form/FormDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/form/FormItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/form/FormLabel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/form/FormMessage.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/form/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/form/injectionKeys.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/form/useFormField.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "hover-card": {
+      name: "hover-card",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-maia/ui/hover-card/HoverCard.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/hover-card/HoverCardContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/hover-card/HoverCardTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/hover-card/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    input: {
+      name: "input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-maia/ui/input/Input.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/input/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "input-group": {
+      name: "input-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "input", "textarea"],
+      files: [
+        {
+          path: "styles/vue-maia/ui/input-group/InputGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/input-group/InputGroupAddon.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/input-group/InputGroupButton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/input-group/InputGroupInput.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/input-group/InputGroupText.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/input-group/InputGroupTextarea.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/input-group/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "input-otp": {
+      name: "input-otp",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-maia/ui/input-otp/InputOTP.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/input-otp/InputOTPGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/input-otp/InputOTPSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/input-otp/InputOTPSlot.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/input-otp/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    item: {
+      name: "item",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["separator"],
+      files: [
+        {
+          path: "styles/vue-maia/ui/item/Item.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/item/ItemActions.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/item/ItemContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/item/ItemDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/item/ItemFooter.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/item/ItemGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/item/ItemHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/item/ItemMedia.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/item/ItemSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/item/ItemTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/item/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    kbd: {
+      name: "kbd",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-maia/ui/kbd/Kbd.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/kbd/KbdGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/kbd/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    label: {
+      name: "label",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-maia/ui/label/Label.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/label/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    menubar: {
+      name: "menubar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-maia/ui/menubar/Menubar.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/menubar/MenubarCheckboxItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/menubar/MenubarContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/menubar/MenubarGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/menubar/MenubarItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/menubar/MenubarLabel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/menubar/MenubarMenu.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/menubar/MenubarRadioGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/menubar/MenubarRadioItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/menubar/MenubarSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/menubar/MenubarShortcut.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/menubar/MenubarSub.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/menubar/MenubarSubContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/menubar/MenubarSubTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/menubar/MenubarTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/menubar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "native-select": {
+      name: "native-select",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-maia/ui/native-select/NativeSelect.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/native-select/NativeSelectOptGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/native-select/NativeSelectOption.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/native-select/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "navigation-menu": {
+      name: "navigation-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-maia/ui/navigation-menu/NavigationMenu.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/navigation-menu/NavigationMenuContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/navigation-menu/NavigationMenuIndicator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/navigation-menu/NavigationMenuItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/navigation-menu/NavigationMenuLink.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/navigation-menu/NavigationMenuList.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/navigation-menu/NavigationMenuTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/navigation-menu/NavigationMenuViewport.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/navigation-menu/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "number-field": {
+      name: "number-field",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-maia/ui/number-field/NumberField.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/number-field/NumberFieldContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/number-field/NumberFieldDecrement.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/number-field/NumberFieldIncrement.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/number-field/NumberFieldInput.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/number-field/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    pagination: {
+      name: "pagination",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-maia/ui/pagination/Pagination.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/pagination/PaginationContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/pagination/PaginationEllipsis.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/pagination/PaginationFirst.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/pagination/PaginationItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/pagination/PaginationLast.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/pagination/PaginationLink.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/pagination/PaginationNext.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/pagination/PaginationPrevious.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/pagination/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "pin-input": {
+      name: "pin-input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-maia/ui/pin-input/PinInput.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/pin-input/PinInputGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/pin-input/PinInputSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/pin-input/PinInputSlot.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/pin-input/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    popover: {
+      name: "popover",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-maia/ui/popover/Popover.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/popover/PopoverAnchor.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/popover/PopoverContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/popover/PopoverDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/popover/PopoverHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/popover/PopoverTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/popover/PopoverTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/popover/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    progress: {
+      name: "progress",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-maia/ui/progress/Progress.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/progress/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "radio-group": {
+      name: "radio-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-maia/ui/radio-group/RadioGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/radio-group/RadioGroupItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/radio-group/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "range-calendar": {
+      name: "range-calendar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-maia/ui/range-calendar/RangeCalendar.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/range-calendar/RangeCalendarCell.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/range-calendar/RangeCalendarCellTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/range-calendar/RangeCalendarGrid.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/range-calendar/RangeCalendarGridBody.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/range-calendar/RangeCalendarGridHead.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/range-calendar/RangeCalendarGridRow.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/range-calendar/RangeCalendarHeadCell.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/range-calendar/RangeCalendarHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/range-calendar/RangeCalendarHeading.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/range-calendar/RangeCalendarNextButton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/range-calendar/RangeCalendarPrevButton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/range-calendar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    resizable: {
+      name: "resizable",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-maia/ui/resizable/ResizableHandle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/resizable/ResizablePanel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/resizable/ResizablePanelGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/resizable/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "scroll-area": {
+      name: "scroll-area",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-maia/ui/scroll-area/ScrollArea.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/scroll-area/ScrollBar.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/scroll-area/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    select: {
+      name: "select",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-maia/ui/select/Select.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/select/SelectContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/select/SelectGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/select/SelectItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/select/SelectItemText.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/select/SelectLabel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/select/SelectScrollDownButton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/select/SelectScrollUpButton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/select/SelectSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/select/SelectTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/select/SelectValue.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/select/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    separator: {
+      name: "separator",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-maia/ui/separator/Separator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/separator/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    sheet: {
+      name: "sheet",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "styles/vue-maia/ui/sheet/Sheet.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/sheet/SheetClose.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/sheet/SheetContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/sheet/SheetDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/sheet/SheetFooter.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/sheet/SheetHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/sheet/SheetOverlay.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/sheet/SheetTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/sheet/SheetTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/sheet/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    sidebar: {
+      name: "sidebar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: [
+        "sheet",
+        "input",
+        "tooltip",
+        "skeleton",
+        "separator",
+        "icon-placeholder",
+        "button",
+      ],
+      files: [
+        {
+          path: "styles/vue-maia/ui/sidebar/Sidebar.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/sidebar/SidebarContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/sidebar/SidebarFooter.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/sidebar/SidebarGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/sidebar/SidebarGroupAction.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/sidebar/SidebarGroupContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/sidebar/SidebarGroupLabel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/sidebar/SidebarHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/sidebar/SidebarInput.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/sidebar/SidebarInset.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/sidebar/SidebarMenu.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/sidebar/SidebarMenuAction.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/sidebar/SidebarMenuBadge.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/sidebar/SidebarMenuButton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/sidebar/SidebarMenuButtonChild.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/sidebar/SidebarMenuItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/sidebar/SidebarMenuSkeleton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/sidebar/SidebarMenuSub.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/sidebar/SidebarMenuSubButton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/sidebar/SidebarMenuSubItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/sidebar/SidebarProvider.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/sidebar/SidebarRail.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/sidebar/SidebarSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/sidebar/SidebarTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/sidebar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/sidebar/utils.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    skeleton: {
+      name: "skeleton",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-maia/ui/skeleton/Skeleton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/skeleton/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    slider: {
+      name: "slider",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-maia/ui/slider/Slider.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/slider/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    sonner: {
+      name: "sonner",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-maia/ui/sonner/Sonner.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/sonner/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    spinner: {
+      name: "spinner",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-maia/ui/spinner/Spinner.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/spinner/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    stepper: {
+      name: "stepper",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-maia/ui/stepper/Stepper.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/stepper/StepperDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/stepper/StepperIndicator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/stepper/StepperItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/stepper/StepperSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/stepper/StepperTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/stepper/StepperTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/stepper/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    switch: {
+      name: "switch",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-maia/ui/switch/Switch.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/switch/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    table: {
+      name: "table",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-maia/ui/table/Table.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/table/TableBody.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/table/TableCaption.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/table/TableCell.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/table/TableEmpty.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/table/TableFooter.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/table/TableHead.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/table/TableHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/table/TableRow.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/table/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/table/utils.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    tabs: {
+      name: "tabs",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-maia/ui/tabs/Tabs.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/tabs/TabsContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/tabs/TabsList.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/tabs/TabsTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/tabs/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "tags-input": {
+      name: "tags-input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-maia/ui/tags-input/TagsInput.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/tags-input/TagsInputInput.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/tags-input/TagsInputItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/tags-input/TagsInputItemDelete.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/tags-input/TagsInputItemText.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/tags-input/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    textarea: {
+      name: "textarea",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-maia/ui/textarea/Textarea.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/textarea/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    toggle: {
+      name: "toggle",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-maia/ui/toggle/Toggle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/toggle/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "toggle-group": {
+      name: "toggle-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["toggle"],
+      files: [
+        {
+          path: "styles/vue-maia/ui/toggle-group/ToggleGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/toggle-group/ToggleGroupItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/toggle-group/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    tooltip: {
+      name: "tooltip",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-maia/ui/tooltip/Tooltip.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/tooltip/TooltipContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/tooltip/TooltipProvider.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/tooltip/TooltipTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-maia/ui/tooltip/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
     },
   },
   "vue-lyra": {
-    button: {
-      name: "button",
+    accordion: {
+      name: "accordion",
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["utils"],
+      registryDependencies: undefined,
       files: [
         {
-          path: "styles/vue-lyra/ui/button.vue",
+          path: "styles/vue-lyra/ui/accordion/Accordion.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/accordion/AccordionContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/accordion/AccordionItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/accordion/AccordionTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/accordion/index.ts",
           type: "registry:ui",
           target: "",
         },
       ],
       component: null,
       categories: undefined,
-      meta: {
-        links: { docs: "https://force-ui.com/docs/components/vue/button" },
-      },
+      meta: undefined,
+    },
+    alert: {
+      name: "alert",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-lyra/ui/alert/Alert.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/alert/AlertAction.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/alert/AlertDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/alert/AlertTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/alert/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "alert-dialog": {
+      name: "alert-dialog",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "styles/vue-lyra/ui/alert-dialog/AlertDialog.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/alert-dialog/AlertDialogAction.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/alert-dialog/AlertDialogCancel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/alert-dialog/AlertDialogContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/alert-dialog/AlertDialogDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/alert-dialog/AlertDialogFooter.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/alert-dialog/AlertDialogHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/alert-dialog/AlertDialogMedia.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/alert-dialog/AlertDialogTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/alert-dialog/AlertDialogTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/alert-dialog/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "aspect-ratio": {
+      name: "aspect-ratio",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-lyra/ui/aspect-ratio/AspectRatio.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/aspect-ratio/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    avatar: {
+      name: "avatar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-lyra/ui/avatar/Avatar.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/avatar/AvatarBadge.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/avatar/AvatarFallback.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/avatar/AvatarGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/avatar/AvatarGroupCount.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/avatar/AvatarImage.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/avatar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    badge: {
+      name: "badge",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-lyra/ui/badge/Badge.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/badge/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    breadcrumb: {
+      name: "breadcrumb",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-lyra/ui/breadcrumb/Breadcrumb.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/breadcrumb/BreadcrumbEllipsis.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/breadcrumb/BreadcrumbItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/breadcrumb/BreadcrumbLink.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/breadcrumb/BreadcrumbList.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/breadcrumb/BreadcrumbPage.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/breadcrumb/BreadcrumbSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/breadcrumb/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    button: {
+      name: "button",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-lyra/ui/button/Button.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/button/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "button-group": {
+      name: "button-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["separator"],
+      files: [
+        {
+          path: "styles/vue-lyra/ui/button-group/ButtonGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/button-group/ButtonGroupSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/button-group/ButtonGroupText.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/button-group/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    calendar: {
+      name: "calendar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["native-select", "button", "icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-lyra/ui/calendar/Calendar.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/calendar/CalendarCell.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/calendar/CalendarCellTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/calendar/CalendarGrid.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/calendar/CalendarGridBody.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/calendar/CalendarGridHead.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/calendar/CalendarGridRow.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/calendar/CalendarHeadCell.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/calendar/CalendarHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/calendar/CalendarHeading.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/calendar/CalendarNextButton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/calendar/CalendarPrevButton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/calendar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    card: {
+      name: "card",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-lyra/ui/card/Card.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/card/CardAction.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/card/CardContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/card/CardDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/card/CardFooter.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/card/CardHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/card/CardTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/card/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    carousel: {
+      name: "carousel",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-lyra/ui/carousel/Carousel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/carousel/CarouselContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/carousel/CarouselItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/carousel/CarouselNext.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/carousel/CarouselPrevious.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/carousel/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/carousel/interface.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/carousel/useCarousel.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    chart: {
+      name: "chart",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-lyra/ui/chart/ChartContainer.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/chart/ChartLegendContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/chart/ChartStyle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/chart/ChartTooltipContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/chart/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/chart/utils.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    checkbox: {
+      name: "checkbox",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-lyra/ui/checkbox/Checkbox.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/checkbox/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    collapsible: {
+      name: "collapsible",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-lyra/ui/collapsible/Collapsible.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/collapsible/CollapsibleContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/collapsible/CollapsibleTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/collapsible/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    combobox: {
+      name: "combobox",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-lyra/ui/combobox/Combobox.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/combobox/ComboboxAnchor.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/combobox/ComboboxEmpty.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/combobox/ComboboxGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/combobox/ComboboxInput.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/combobox/ComboboxItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/combobox/ComboboxItemIndicator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/combobox/ComboboxList.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/combobox/ComboboxSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/combobox/ComboboxTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/combobox/ComboboxViewport.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/combobox/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    command: {
+      name: "command",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["dialog", "input-group"],
+      files: [
+        {
+          path: "styles/vue-lyra/ui/command/Command.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/command/CommandDialog.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/command/CommandEmpty.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/command/CommandGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/command/CommandInput.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/command/CommandItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/command/CommandList.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/command/CommandSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/command/CommandShortcut.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/command/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "context-menu": {
+      name: "context-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-lyra/ui/context-menu/ContextMenu.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/context-menu/ContextMenuCheckboxItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/context-menu/ContextMenuContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/context-menu/ContextMenuGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/context-menu/ContextMenuItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/context-menu/ContextMenuLabel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/context-menu/ContextMenuPortal.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/context-menu/ContextMenuRadioGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/context-menu/ContextMenuRadioItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/context-menu/ContextMenuSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/context-menu/ContextMenuShortcut.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/context-menu/ContextMenuSub.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/context-menu/ContextMenuSubContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/context-menu/ContextMenuSubTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/context-menu/ContextMenuTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/context-menu/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    dialog: {
+      name: "dialog",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-lyra/ui/dialog/Dialog.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/dialog/DialogClose.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/dialog/DialogContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/dialog/DialogDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/dialog/DialogFooter.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/dialog/DialogHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/dialog/DialogOverlay.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/dialog/DialogScrollContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/dialog/DialogTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/dialog/DialogTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/dialog/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    drawer: {
+      name: "drawer",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-lyra/ui/drawer/Drawer.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/drawer/DrawerClose.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/drawer/DrawerContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/drawer/DrawerDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/drawer/DrawerFooter.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/drawer/DrawerHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/drawer/DrawerOverlay.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/drawer/DrawerTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/drawer/DrawerTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/drawer/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "dropdown-menu": {
+      name: "dropdown-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-lyra/ui/dropdown-menu/DropdownMenu.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/dropdown-menu/DropdownMenuCheckboxItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/dropdown-menu/DropdownMenuContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/dropdown-menu/DropdownMenuGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/dropdown-menu/DropdownMenuItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/dropdown-menu/DropdownMenuLabel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/dropdown-menu/DropdownMenuRadioGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/dropdown-menu/DropdownMenuRadioItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/dropdown-menu/DropdownMenuSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/dropdown-menu/DropdownMenuShortcut.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/dropdown-menu/DropdownMenuSub.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/dropdown-menu/DropdownMenuSubContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/dropdown-menu/DropdownMenuSubTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/dropdown-menu/DropdownMenuTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/dropdown-menu/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    empty: {
+      name: "empty",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-lyra/ui/empty/Empty.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/empty/EmptyContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/empty/EmptyDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/empty/EmptyHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/empty/EmptyMedia.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/empty/EmptyTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/empty/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    field: {
+      name: "field",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["label", "separator"],
+      files: [
+        {
+          path: "styles/vue-lyra/ui/field/Field.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/field/FieldContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/field/FieldDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/field/FieldError.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/field/FieldGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/field/FieldLabel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/field/FieldLegend.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/field/FieldSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/field/FieldSet.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/field/FieldTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/field/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    form: {
+      name: "form",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["label"],
+      files: [
+        {
+          path: "styles/vue-lyra/ui/form/FormControl.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/form/FormDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/form/FormItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/form/FormLabel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/form/FormMessage.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/form/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/form/injectionKeys.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/form/useFormField.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "hover-card": {
+      name: "hover-card",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-lyra/ui/hover-card/HoverCard.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/hover-card/HoverCardContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/hover-card/HoverCardTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/hover-card/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    input: {
+      name: "input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-lyra/ui/input/Input.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/input/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "input-group": {
+      name: "input-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "input", "textarea"],
+      files: [
+        {
+          path: "styles/vue-lyra/ui/input-group/InputGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/input-group/InputGroupAddon.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/input-group/InputGroupButton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/input-group/InputGroupInput.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/input-group/InputGroupText.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/input-group/InputGroupTextarea.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/input-group/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "input-otp": {
+      name: "input-otp",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-lyra/ui/input-otp/InputOTP.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/input-otp/InputOTPGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/input-otp/InputOTPSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/input-otp/InputOTPSlot.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/input-otp/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    item: {
+      name: "item",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["separator"],
+      files: [
+        {
+          path: "styles/vue-lyra/ui/item/Item.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/item/ItemActions.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/item/ItemContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/item/ItemDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/item/ItemFooter.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/item/ItemGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/item/ItemHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/item/ItemMedia.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/item/ItemSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/item/ItemTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/item/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    kbd: {
+      name: "kbd",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-lyra/ui/kbd/Kbd.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/kbd/KbdGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/kbd/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    label: {
+      name: "label",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-lyra/ui/label/Label.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/label/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    menubar: {
+      name: "menubar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-lyra/ui/menubar/Menubar.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/menubar/MenubarCheckboxItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/menubar/MenubarContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/menubar/MenubarGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/menubar/MenubarItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/menubar/MenubarLabel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/menubar/MenubarMenu.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/menubar/MenubarRadioGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/menubar/MenubarRadioItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/menubar/MenubarSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/menubar/MenubarShortcut.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/menubar/MenubarSub.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/menubar/MenubarSubContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/menubar/MenubarSubTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/menubar/MenubarTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/menubar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "native-select": {
+      name: "native-select",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-lyra/ui/native-select/NativeSelect.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/native-select/NativeSelectOptGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/native-select/NativeSelectOption.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/native-select/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "navigation-menu": {
+      name: "navigation-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-lyra/ui/navigation-menu/NavigationMenu.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/navigation-menu/NavigationMenuContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/navigation-menu/NavigationMenuIndicator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/navigation-menu/NavigationMenuItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/navigation-menu/NavigationMenuLink.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/navigation-menu/NavigationMenuList.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/navigation-menu/NavigationMenuTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/navigation-menu/NavigationMenuViewport.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/navigation-menu/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "number-field": {
+      name: "number-field",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-lyra/ui/number-field/NumberField.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/number-field/NumberFieldContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/number-field/NumberFieldDecrement.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/number-field/NumberFieldIncrement.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/number-field/NumberFieldInput.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/number-field/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    pagination: {
+      name: "pagination",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-lyra/ui/pagination/Pagination.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/pagination/PaginationContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/pagination/PaginationEllipsis.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/pagination/PaginationFirst.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/pagination/PaginationItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/pagination/PaginationLast.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/pagination/PaginationLink.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/pagination/PaginationNext.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/pagination/PaginationPrevious.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/pagination/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "pin-input": {
+      name: "pin-input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-lyra/ui/pin-input/PinInput.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/pin-input/PinInputGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/pin-input/PinInputSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/pin-input/PinInputSlot.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/pin-input/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    popover: {
+      name: "popover",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-lyra/ui/popover/Popover.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/popover/PopoverAnchor.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/popover/PopoverContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/popover/PopoverDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/popover/PopoverHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/popover/PopoverTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/popover/PopoverTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/popover/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    progress: {
+      name: "progress",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-lyra/ui/progress/Progress.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/progress/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "radio-group": {
+      name: "radio-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-lyra/ui/radio-group/RadioGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/radio-group/RadioGroupItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/radio-group/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "range-calendar": {
+      name: "range-calendar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-lyra/ui/range-calendar/RangeCalendar.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/range-calendar/RangeCalendarCell.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/range-calendar/RangeCalendarCellTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/range-calendar/RangeCalendarGrid.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/range-calendar/RangeCalendarGridBody.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/range-calendar/RangeCalendarGridHead.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/range-calendar/RangeCalendarGridRow.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/range-calendar/RangeCalendarHeadCell.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/range-calendar/RangeCalendarHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/range-calendar/RangeCalendarHeading.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/range-calendar/RangeCalendarNextButton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/range-calendar/RangeCalendarPrevButton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/range-calendar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    resizable: {
+      name: "resizable",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-lyra/ui/resizable/ResizableHandle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/resizable/ResizablePanel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/resizable/ResizablePanelGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/resizable/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "scroll-area": {
+      name: "scroll-area",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-lyra/ui/scroll-area/ScrollArea.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/scroll-area/ScrollBar.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/scroll-area/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    select: {
+      name: "select",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-lyra/ui/select/Select.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/select/SelectContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/select/SelectGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/select/SelectItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/select/SelectItemText.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/select/SelectLabel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/select/SelectScrollDownButton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/select/SelectScrollUpButton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/select/SelectSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/select/SelectTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/select/SelectValue.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/select/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    separator: {
+      name: "separator",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-lyra/ui/separator/Separator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/separator/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    sheet: {
+      name: "sheet",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "styles/vue-lyra/ui/sheet/Sheet.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/sheet/SheetClose.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/sheet/SheetContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/sheet/SheetDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/sheet/SheetFooter.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/sheet/SheetHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/sheet/SheetOverlay.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/sheet/SheetTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/sheet/SheetTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/sheet/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    sidebar: {
+      name: "sidebar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: [
+        "sheet",
+        "input",
+        "tooltip",
+        "skeleton",
+        "separator",
+        "icon-placeholder",
+        "button",
+      ],
+      files: [
+        {
+          path: "styles/vue-lyra/ui/sidebar/Sidebar.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/sidebar/SidebarContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/sidebar/SidebarFooter.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/sidebar/SidebarGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/sidebar/SidebarGroupAction.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/sidebar/SidebarGroupContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/sidebar/SidebarGroupLabel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/sidebar/SidebarHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/sidebar/SidebarInput.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/sidebar/SidebarInset.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/sidebar/SidebarMenu.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/sidebar/SidebarMenuAction.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/sidebar/SidebarMenuBadge.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/sidebar/SidebarMenuButton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/sidebar/SidebarMenuButtonChild.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/sidebar/SidebarMenuItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/sidebar/SidebarMenuSkeleton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/sidebar/SidebarMenuSub.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/sidebar/SidebarMenuSubButton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/sidebar/SidebarMenuSubItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/sidebar/SidebarProvider.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/sidebar/SidebarRail.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/sidebar/SidebarSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/sidebar/SidebarTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/sidebar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/sidebar/utils.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    skeleton: {
+      name: "skeleton",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-lyra/ui/skeleton/Skeleton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/skeleton/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    slider: {
+      name: "slider",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-lyra/ui/slider/Slider.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/slider/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    sonner: {
+      name: "sonner",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-lyra/ui/sonner/Sonner.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/sonner/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    spinner: {
+      name: "spinner",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-lyra/ui/spinner/Spinner.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/spinner/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    stepper: {
+      name: "stepper",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-lyra/ui/stepper/Stepper.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/stepper/StepperDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/stepper/StepperIndicator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/stepper/StepperItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/stepper/StepperSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/stepper/StepperTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/stepper/StepperTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/stepper/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    switch: {
+      name: "switch",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-lyra/ui/switch/Switch.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/switch/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    table: {
+      name: "table",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-lyra/ui/table/Table.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/table/TableBody.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/table/TableCaption.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/table/TableCell.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/table/TableEmpty.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/table/TableFooter.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/table/TableHead.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/table/TableHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/table/TableRow.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/table/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/table/utils.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    tabs: {
+      name: "tabs",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-lyra/ui/tabs/Tabs.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/tabs/TabsContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/tabs/TabsList.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/tabs/TabsTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/tabs/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "tags-input": {
+      name: "tags-input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-lyra/ui/tags-input/TagsInput.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/tags-input/TagsInputInput.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/tags-input/TagsInputItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/tags-input/TagsInputItemDelete.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/tags-input/TagsInputItemText.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/tags-input/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    textarea: {
+      name: "textarea",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-lyra/ui/textarea/Textarea.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/textarea/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    toggle: {
+      name: "toggle",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-lyra/ui/toggle/Toggle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/toggle/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "toggle-group": {
+      name: "toggle-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["toggle"],
+      files: [
+        {
+          path: "styles/vue-lyra/ui/toggle-group/ToggleGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/toggle-group/ToggleGroupItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/toggle-group/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    tooltip: {
+      name: "tooltip",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-lyra/ui/tooltip/Tooltip.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/tooltip/TooltipContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/tooltip/TooltipProvider.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/tooltip/TooltipTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-lyra/ui/tooltip/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
     },
   },
   "vue-mira": {
+    accordion: {
+      name: "accordion",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-mira/ui/accordion/Accordion.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/accordion/AccordionContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/accordion/AccordionItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/accordion/AccordionTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/accordion/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    alert: {
+      name: "alert",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-mira/ui/alert/Alert.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/alert/AlertAction.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/alert/AlertDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/alert/AlertTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/alert/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "alert-dialog": {
+      name: "alert-dialog",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "styles/vue-mira/ui/alert-dialog/AlertDialog.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/alert-dialog/AlertDialogAction.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/alert-dialog/AlertDialogCancel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/alert-dialog/AlertDialogContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/alert-dialog/AlertDialogDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/alert-dialog/AlertDialogFooter.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/alert-dialog/AlertDialogHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/alert-dialog/AlertDialogMedia.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/alert-dialog/AlertDialogTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/alert-dialog/AlertDialogTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/alert-dialog/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "aspect-ratio": {
+      name: "aspect-ratio",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-mira/ui/aspect-ratio/AspectRatio.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/aspect-ratio/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    avatar: {
+      name: "avatar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-mira/ui/avatar/Avatar.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/avatar/AvatarBadge.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/avatar/AvatarFallback.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/avatar/AvatarGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/avatar/AvatarGroupCount.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/avatar/AvatarImage.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/avatar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    badge: {
+      name: "badge",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-mira/ui/badge/Badge.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/badge/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    breadcrumb: {
+      name: "breadcrumb",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-mira/ui/breadcrumb/Breadcrumb.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/breadcrumb/BreadcrumbEllipsis.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/breadcrumb/BreadcrumbItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/breadcrumb/BreadcrumbLink.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/breadcrumb/BreadcrumbList.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/breadcrumb/BreadcrumbPage.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/breadcrumb/BreadcrumbSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/breadcrumb/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
     button: {
       name: "button",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-mira/ui/button/Button.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/button/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "button-group": {
+      name: "button-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["separator"],
+      files: [
+        {
+          path: "styles/vue-mira/ui/button-group/ButtonGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/button-group/ButtonGroupSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/button-group/ButtonGroupText.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/button-group/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    calendar: {
+      name: "calendar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["native-select", "button", "icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-mira/ui/calendar/Calendar.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/calendar/CalendarCell.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/calendar/CalendarCellTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/calendar/CalendarGrid.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/calendar/CalendarGridBody.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/calendar/CalendarGridHead.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/calendar/CalendarGridRow.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/calendar/CalendarHeadCell.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/calendar/CalendarHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/calendar/CalendarHeading.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/calendar/CalendarNextButton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/calendar/CalendarPrevButton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/calendar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    card: {
+      name: "card",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-mira/ui/card/Card.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/card/CardAction.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/card/CardContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/card/CardDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/card/CardFooter.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/card/CardHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/card/CardTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/card/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    carousel: {
+      name: "carousel",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-mira/ui/carousel/Carousel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/carousel/CarouselContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/carousel/CarouselItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/carousel/CarouselNext.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/carousel/CarouselPrevious.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/carousel/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/carousel/interface.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/carousel/useCarousel.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    chart: {
+      name: "chart",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-mira/ui/chart/ChartContainer.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/chart/ChartLegendContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/chart/ChartStyle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/chart/ChartTooltipContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/chart/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/chart/utils.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    checkbox: {
+      name: "checkbox",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-mira/ui/checkbox/Checkbox.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/checkbox/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    collapsible: {
+      name: "collapsible",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-mira/ui/collapsible/Collapsible.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/collapsible/CollapsibleContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/collapsible/CollapsibleTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/collapsible/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    combobox: {
+      name: "combobox",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-mira/ui/combobox/Combobox.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/combobox/ComboboxAnchor.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/combobox/ComboboxEmpty.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/combobox/ComboboxGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/combobox/ComboboxInput.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/combobox/ComboboxItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/combobox/ComboboxItemIndicator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/combobox/ComboboxList.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/combobox/ComboboxSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/combobox/ComboboxTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/combobox/ComboboxViewport.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/combobox/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    command: {
+      name: "command",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["dialog", "input-group"],
+      files: [
+        {
+          path: "styles/vue-mira/ui/command/Command.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/command/CommandDialog.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/command/CommandEmpty.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/command/CommandGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/command/CommandInput.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/command/CommandItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/command/CommandList.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/command/CommandSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/command/CommandShortcut.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/command/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "context-menu": {
+      name: "context-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-mira/ui/context-menu/ContextMenu.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/context-menu/ContextMenuCheckboxItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/context-menu/ContextMenuContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/context-menu/ContextMenuGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/context-menu/ContextMenuItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/context-menu/ContextMenuLabel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/context-menu/ContextMenuPortal.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/context-menu/ContextMenuRadioGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/context-menu/ContextMenuRadioItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/context-menu/ContextMenuSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/context-menu/ContextMenuShortcut.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/context-menu/ContextMenuSub.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/context-menu/ContextMenuSubContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/context-menu/ContextMenuSubTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/context-menu/ContextMenuTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/context-menu/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    dialog: {
+      name: "dialog",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-mira/ui/dialog/Dialog.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/dialog/DialogClose.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/dialog/DialogContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/dialog/DialogDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/dialog/DialogFooter.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/dialog/DialogHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/dialog/DialogOverlay.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/dialog/DialogScrollContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/dialog/DialogTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/dialog/DialogTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/dialog/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    drawer: {
+      name: "drawer",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-mira/ui/drawer/Drawer.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/drawer/DrawerClose.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/drawer/DrawerContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/drawer/DrawerDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/drawer/DrawerFooter.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/drawer/DrawerHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/drawer/DrawerOverlay.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/drawer/DrawerTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/drawer/DrawerTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/drawer/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "dropdown-menu": {
+      name: "dropdown-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-mira/ui/dropdown-menu/DropdownMenu.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/dropdown-menu/DropdownMenuCheckboxItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/dropdown-menu/DropdownMenuContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/dropdown-menu/DropdownMenuGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/dropdown-menu/DropdownMenuItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/dropdown-menu/DropdownMenuLabel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/dropdown-menu/DropdownMenuRadioGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/dropdown-menu/DropdownMenuRadioItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/dropdown-menu/DropdownMenuSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/dropdown-menu/DropdownMenuShortcut.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/dropdown-menu/DropdownMenuSub.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/dropdown-menu/DropdownMenuSubContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/dropdown-menu/DropdownMenuSubTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/dropdown-menu/DropdownMenuTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/dropdown-menu/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    empty: {
+      name: "empty",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-mira/ui/empty/Empty.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/empty/EmptyContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/empty/EmptyDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/empty/EmptyHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/empty/EmptyMedia.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/empty/EmptyTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/empty/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    field: {
+      name: "field",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["label", "separator"],
+      files: [
+        {
+          path: "styles/vue-mira/ui/field/Field.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/field/FieldContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/field/FieldDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/field/FieldError.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/field/FieldGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/field/FieldLabel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/field/FieldLegend.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/field/FieldSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/field/FieldSet.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/field/FieldTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/field/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    form: {
+      name: "form",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["label"],
+      files: [
+        {
+          path: "styles/vue-mira/ui/form/FormControl.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/form/FormDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/form/FormItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/form/FormLabel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/form/FormMessage.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/form/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/form/injectionKeys.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/form/useFormField.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "hover-card": {
+      name: "hover-card",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-mira/ui/hover-card/HoverCard.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/hover-card/HoverCardContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/hover-card/HoverCardTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/hover-card/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    input: {
+      name: "input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-mira/ui/input/Input.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/input/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "input-group": {
+      name: "input-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "input", "textarea"],
+      files: [
+        {
+          path: "styles/vue-mira/ui/input-group/InputGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/input-group/InputGroupAddon.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/input-group/InputGroupButton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/input-group/InputGroupInput.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/input-group/InputGroupText.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/input-group/InputGroupTextarea.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/input-group/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "input-otp": {
+      name: "input-otp",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-mira/ui/input-otp/InputOTP.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/input-otp/InputOTPGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/input-otp/InputOTPSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/input-otp/InputOTPSlot.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/input-otp/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    item: {
+      name: "item",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["separator"],
+      files: [
+        {
+          path: "styles/vue-mira/ui/item/Item.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/item/ItemActions.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/item/ItemContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/item/ItemDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/item/ItemFooter.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/item/ItemGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/item/ItemHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/item/ItemMedia.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/item/ItemSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/item/ItemTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/item/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    kbd: {
+      name: "kbd",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-mira/ui/kbd/Kbd.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/kbd/KbdGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/kbd/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    label: {
+      name: "label",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-mira/ui/label/Label.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/label/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    menubar: {
+      name: "menubar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-mira/ui/menubar/Menubar.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/menubar/MenubarCheckboxItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/menubar/MenubarContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/menubar/MenubarGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/menubar/MenubarItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/menubar/MenubarLabel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/menubar/MenubarMenu.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/menubar/MenubarRadioGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/menubar/MenubarRadioItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/menubar/MenubarSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/menubar/MenubarShortcut.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/menubar/MenubarSub.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/menubar/MenubarSubContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/menubar/MenubarSubTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/menubar/MenubarTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/menubar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "native-select": {
+      name: "native-select",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-mira/ui/native-select/NativeSelect.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/native-select/NativeSelectOptGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/native-select/NativeSelectOption.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/native-select/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "navigation-menu": {
+      name: "navigation-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-mira/ui/navigation-menu/NavigationMenu.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/navigation-menu/NavigationMenuContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/navigation-menu/NavigationMenuIndicator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/navigation-menu/NavigationMenuItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/navigation-menu/NavigationMenuLink.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/navigation-menu/NavigationMenuList.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/navigation-menu/NavigationMenuTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/navigation-menu/NavigationMenuViewport.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/navigation-menu/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "number-field": {
+      name: "number-field",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-mira/ui/number-field/NumberField.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/number-field/NumberFieldContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/number-field/NumberFieldDecrement.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/number-field/NumberFieldIncrement.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/number-field/NumberFieldInput.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/number-field/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    pagination: {
+      name: "pagination",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-mira/ui/pagination/Pagination.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/pagination/PaginationContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/pagination/PaginationEllipsis.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/pagination/PaginationFirst.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/pagination/PaginationItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/pagination/PaginationLast.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/pagination/PaginationLink.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/pagination/PaginationNext.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/pagination/PaginationPrevious.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/pagination/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "pin-input": {
+      name: "pin-input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-mira/ui/pin-input/PinInput.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/pin-input/PinInputGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/pin-input/PinInputSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/pin-input/PinInputSlot.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/pin-input/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    popover: {
+      name: "popover",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-mira/ui/popover/Popover.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/popover/PopoverAnchor.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/popover/PopoverContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/popover/PopoverDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/popover/PopoverHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/popover/PopoverTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/popover/PopoverTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/popover/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    progress: {
+      name: "progress",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-mira/ui/progress/Progress.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/progress/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "radio-group": {
+      name: "radio-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-mira/ui/radio-group/RadioGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/radio-group/RadioGroupItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/radio-group/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "range-calendar": {
+      name: "range-calendar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-mira/ui/range-calendar/RangeCalendar.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/range-calendar/RangeCalendarCell.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/range-calendar/RangeCalendarCellTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/range-calendar/RangeCalendarGrid.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/range-calendar/RangeCalendarGridBody.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/range-calendar/RangeCalendarGridHead.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/range-calendar/RangeCalendarGridRow.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/range-calendar/RangeCalendarHeadCell.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/range-calendar/RangeCalendarHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/range-calendar/RangeCalendarHeading.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/range-calendar/RangeCalendarNextButton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/range-calendar/RangeCalendarPrevButton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/range-calendar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    resizable: {
+      name: "resizable",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-mira/ui/resizable/ResizableHandle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/resizable/ResizablePanel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/resizable/ResizablePanelGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/resizable/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "scroll-area": {
+      name: "scroll-area",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-mira/ui/scroll-area/ScrollArea.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/scroll-area/ScrollBar.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/scroll-area/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    select: {
+      name: "select",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-mira/ui/select/Select.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/select/SelectContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/select/SelectGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/select/SelectItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/select/SelectItemText.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/select/SelectLabel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/select/SelectScrollDownButton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/select/SelectScrollUpButton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/select/SelectSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/select/SelectTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/select/SelectValue.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/select/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    separator: {
+      name: "separator",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-mira/ui/separator/Separator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/separator/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    sheet: {
+      name: "sheet",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "styles/vue-mira/ui/sheet/Sheet.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/sheet/SheetClose.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/sheet/SheetContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/sheet/SheetDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/sheet/SheetFooter.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/sheet/SheetHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/sheet/SheetOverlay.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/sheet/SheetTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/sheet/SheetTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/sheet/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    sidebar: {
+      name: "sidebar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: [
+        "sheet",
+        "input",
+        "tooltip",
+        "skeleton",
+        "separator",
+        "icon-placeholder",
+        "button",
+      ],
+      files: [
+        {
+          path: "styles/vue-mira/ui/sidebar/Sidebar.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/sidebar/SidebarContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/sidebar/SidebarFooter.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/sidebar/SidebarGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/sidebar/SidebarGroupAction.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/sidebar/SidebarGroupContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/sidebar/SidebarGroupLabel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/sidebar/SidebarHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/sidebar/SidebarInput.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/sidebar/SidebarInset.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/sidebar/SidebarMenu.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/sidebar/SidebarMenuAction.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/sidebar/SidebarMenuBadge.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/sidebar/SidebarMenuButton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/sidebar/SidebarMenuButtonChild.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/sidebar/SidebarMenuItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/sidebar/SidebarMenuSkeleton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/sidebar/SidebarMenuSub.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/sidebar/SidebarMenuSubButton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/sidebar/SidebarMenuSubItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/sidebar/SidebarProvider.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/sidebar/SidebarRail.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/sidebar/SidebarSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/sidebar/SidebarTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/sidebar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/sidebar/utils.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    skeleton: {
+      name: "skeleton",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-mira/ui/skeleton/Skeleton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/skeleton/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    slider: {
+      name: "slider",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-mira/ui/slider/Slider.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/slider/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    sonner: {
+      name: "sonner",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-mira/ui/sonner/Sonner.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/sonner/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    spinner: {
+      name: "spinner",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-mira/ui/spinner/Spinner.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/spinner/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    stepper: {
+      name: "stepper",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-mira/ui/stepper/Stepper.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/stepper/StepperDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/stepper/StepperIndicator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/stepper/StepperItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/stepper/StepperSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/stepper/StepperTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/stepper/StepperTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/stepper/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    switch: {
+      name: "switch",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-mira/ui/switch/Switch.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/switch/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    table: {
+      name: "table",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-mira/ui/table/Table.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/table/TableBody.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/table/TableCaption.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/table/TableCell.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/table/TableEmpty.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/table/TableFooter.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/table/TableHead.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/table/TableHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/table/TableRow.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/table/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/table/utils.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    tabs: {
+      name: "tabs",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-mira/ui/tabs/Tabs.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/tabs/TabsContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/tabs/TabsList.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/tabs/TabsTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/tabs/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "tags-input": {
+      name: "tags-input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "styles/vue-mira/ui/tags-input/TagsInput.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/tags-input/TagsInputInput.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/tags-input/TagsInputItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/tags-input/TagsInputItemDelete.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/tags-input/TagsInputItemText.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/tags-input/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    textarea: {
+      name: "textarea",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-mira/ui/textarea/Textarea.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/textarea/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    toggle: {
+      name: "toggle",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-mira/ui/toggle/Toggle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/toggle/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "toggle-group": {
+      name: "toggle-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["toggle"],
+      files: [
+        {
+          path: "styles/vue-mira/ui/toggle-group/ToggleGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/toggle-group/ToggleGroupItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/toggle-group/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    tooltip: {
+      name: "tooltip",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/vue-mira/ui/tooltip/Tooltip.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/tooltip/TooltipContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/tooltip/TooltipProvider.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/tooltip/TooltipTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/vue-mira/ui/tooltip/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+  },
+  "svelte-vega": {
+    accordion: {
+      name: "accordion",
       title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: ["utils"],
       files: [
         {
-          path: "styles/vue-mira/ui/button.vue",
+          path: "styles/svelte-vega/ui/accordion/accordion-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/accordion/accordion-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/accordion/accordion-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/accordion/accordion.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/accordion/index.ts",
           type: "registry:ui",
           target: "",
         },
@@ -28274,11 +42010,286 @@ export const Index: Record<string, Record<string, any>> = {
       component: null,
       categories: undefined,
       meta: {
-        links: { docs: "https://force-ui.com/docs/components/vue/button" },
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/accordion",
+        },
       },
     },
-  },
-  "svelte-vega": {
+    alert: {
+      name: "alert",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-vega/ui/alert/alert-action.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/alert/alert-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/alert/alert-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/alert/alert.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/alert/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/alert" },
+      },
+    },
+    "alert-dialog": {
+      name: "alert-dialog",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "utils"],
+      files: [
+        {
+          path: "styles/svelte-vega/ui/alert-dialog/alert-dialog-action.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/alert-dialog/alert-dialog-cancel.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/alert-dialog/alert-dialog-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/alert-dialog/alert-dialog-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/alert-dialog/alert-dialog-footer.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/alert-dialog/alert-dialog-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/alert-dialog/alert-dialog-media.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/alert-dialog/alert-dialog-overlay.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/alert-dialog/alert-dialog-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/alert-dialog/alert-dialog-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/alert-dialog/alert-dialog-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/alert-dialog/alert-dialog.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/alert-dialog/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/alert-dialog",
+        },
+      },
+    },
+    "aspect-ratio": {
+      name: "aspect-ratio",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/svelte-vega/ui/aspect-ratio/aspect-ratio.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/aspect-ratio/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/aspect-ratio",
+        },
+      },
+    },
+    avatar: {
+      name: "avatar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-vega/ui/avatar/avatar-badge.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/avatar/avatar-fallback.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/avatar/avatar-group-count.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/avatar/avatar-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/avatar/avatar-image.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/avatar/avatar.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/avatar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/avatar" },
+      },
+    },
+    badge: {
+      name: "badge",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-vega/ui/badge/badge.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/badge/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/badge" },
+      },
+    },
+    breadcrumb: {
+      name: "breadcrumb",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-vega/ui/breadcrumb/breadcrumb-ellipsis.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/breadcrumb/breadcrumb-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/breadcrumb/breadcrumb-link.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/breadcrumb/breadcrumb-list.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/breadcrumb/breadcrumb-page.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/breadcrumb/breadcrumb-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/breadcrumb/breadcrumb.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/breadcrumb/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/breadcrumb",
+        },
+      },
+    },
     button: {
       name: "button",
       title: "undefined",
@@ -28287,7 +42298,12 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["utils"],
       files: [
         {
-          path: "styles/svelte-vega/ui/button.svelte",
+          path: "styles/svelte-vega/ui/button/button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/button/index.ts",
           type: "registry:ui",
           target: "",
         },
@@ -28296,10 +42312,2960 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: {
         links: { docs: "https://force-ui.com/docs/components/svelte/button" },
+      },
+    },
+    "button-group": {
+      name: "button-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["separator", "utils"],
+      files: [
+        {
+          path: "styles/svelte-vega/ui/button-group/button-group-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/button-group/button-group-text.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/button-group/button-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/button-group/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/button-group",
+        },
+      },
+    },
+    calendar: {
+      name: "calendar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "utils"],
+      files: [
+        {
+          path: "styles/svelte-vega/ui/calendar/calendar-caption.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/calendar/calendar-cell.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/calendar/calendar-day.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/calendar/calendar-grid-body.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/calendar/calendar-grid-head.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/calendar/calendar-grid-row.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/calendar/calendar-grid.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/calendar/calendar-head-cell.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/calendar/calendar-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/calendar/calendar-heading.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/calendar/calendar-month-select.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/calendar/calendar-month.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/calendar/calendar-months.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/calendar/calendar-nav.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/calendar/calendar-next-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/calendar/calendar-prev-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/calendar/calendar-year-select.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/calendar/calendar.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/calendar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/calendar" },
+      },
+    },
+    card: {
+      name: "card",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-vega/ui/card/card-action.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/card/card-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/card/card-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/card/card-footer.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/card/card-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/card/card-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/card/card.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/card/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/card" },
+      },
+    },
+    carousel: {
+      name: "carousel",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "utils"],
+      files: [
+        {
+          path: "styles/svelte-vega/ui/carousel/carousel-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/carousel/carousel-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/carousel/carousel-next.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/carousel/carousel-previous.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/carousel/carousel.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/carousel/context.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/carousel/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/carousel" },
+      },
+    },
+    chart: {
+      name: "chart",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-vega/ui/chart/chart-container.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/chart/chart-style.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/chart/chart-tooltip.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/chart/chart-utils.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/chart/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/chart" },
+      },
+    },
+    checkbox: {
+      name: "checkbox",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-vega/ui/checkbox/checkbox.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/checkbox/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/checkbox" },
+      },
+    },
+    collapsible: {
+      name: "collapsible",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/svelte-vega/ui/collapsible/collapsible-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/collapsible/collapsible-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/collapsible/collapsible.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/collapsible/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/collapsible",
+        },
+      },
+    },
+    command: {
+      name: "command",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["dialog", "input-group", "utils"],
+      files: [
+        {
+          path: "styles/svelte-vega/ui/command/command-dialog.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/command/command-empty.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/command/command-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/command/command-input.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/command/command-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/command/command-link-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/command/command-list.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/command/command-loading.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/command/command-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/command/command-shortcut.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/command/command.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/command/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/command" },
+      },
+    },
+    "context-menu": {
+      name: "context-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-vega/ui/context-menu/context-menu-checkbox-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/context-menu/context-menu-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/context-menu/context-menu-group-heading.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/context-menu/context-menu-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/context-menu/context-menu-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/context-menu/context-menu-label.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/context-menu/context-menu-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/context-menu/context-menu-radio-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/context-menu/context-menu-radio-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/context-menu/context-menu-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/context-menu/context-menu-shortcut.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/context-menu/context-menu-sub-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/context-menu/context-menu-sub-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/context-menu/context-menu-sub.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/context-menu/context-menu-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/context-menu/context-menu.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/context-menu/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/context-menu",
+        },
+      },
+    },
+    dialog: {
+      name: "dialog",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "utils"],
+      files: [
+        {
+          path: "styles/svelte-vega/ui/dialog/dialog-close.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/dialog/dialog-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/dialog/dialog-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/dialog/dialog-footer.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/dialog/dialog-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/dialog/dialog-overlay.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/dialog/dialog-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/dialog/dialog-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/dialog/dialog-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/dialog/dialog.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/dialog/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/dialog" },
+      },
+    },
+    drawer: {
+      name: "drawer",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-vega/ui/drawer/drawer-close.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/drawer/drawer-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/drawer/drawer-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/drawer/drawer-footer.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/drawer/drawer-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/drawer/drawer-nested.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/drawer/drawer-overlay.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/drawer/drawer-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/drawer/drawer-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/drawer/drawer-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/drawer/drawer.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/drawer/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/drawer" },
+      },
+    },
+    "dropdown-menu": {
+      name: "dropdown-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-vega/ui/dropdown-menu/dropdown-menu-checkbox-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/dropdown-menu/dropdown-menu-checkbox-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/dropdown-menu/dropdown-menu-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/dropdown-menu/dropdown-menu-group-heading.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/dropdown-menu/dropdown-menu-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/dropdown-menu/dropdown-menu-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/dropdown-menu/dropdown-menu-label.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/dropdown-menu/dropdown-menu-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/dropdown-menu/dropdown-menu-radio-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/dropdown-menu/dropdown-menu-radio-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/dropdown-menu/dropdown-menu-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/dropdown-menu/dropdown-menu-shortcut.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/dropdown-menu/dropdown-menu-sub-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/dropdown-menu/dropdown-menu-sub-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/dropdown-menu/dropdown-menu-sub.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/dropdown-menu/dropdown-menu-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/dropdown-menu/dropdown-menu.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/dropdown-menu/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/dropdown-menu",
+        },
+      },
+    },
+    empty: {
+      name: "empty",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-vega/ui/empty/empty-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/empty/empty-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/empty/empty-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/empty/empty-media.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/empty/empty-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/empty/empty.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/empty/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/empty" },
+      },
+    },
+    field: {
+      name: "field",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["label", "separator", "utils"],
+      files: [
+        {
+          path: "styles/svelte-vega/ui/field/field-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/field/field-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/field/field-error.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/field/field-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/field/field-label.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/field/field-legend.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/field/field-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/field/field-set.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/field/field-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/field/field.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/field/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/field" },
+      },
+    },
+    "hover-card": {
+      name: "hover-card",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-vega/ui/hover-card/hover-card-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/hover-card/hover-card-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/hover-card/hover-card-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/hover-card/hover-card.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/hover-card/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/hover-card",
+        },
+      },
+    },
+    input: {
+      name: "input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-vega/ui/input/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/input/input.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-vega/ui/input/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "input"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/input" },
+      },
+    },
+    "input-group": {
+      name: "input-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "input", "textarea", "utils"],
+      files: [
+        {
+          path: "styles/svelte-vega/ui/input-group/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/input-group/input-group-addon.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/input-group/input-group-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/input-group/input-group-input.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/input-group/input-group-text.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/input-group/input-group-textarea.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/input-group/input-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-vega/ui/input-group/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "input-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/input-group",
+        },
+      },
+    },
+    "input-otp": {
+      name: "input-otp",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-vega/ui/input-otp/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/input-otp/input-otp-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/input-otp/input-otp-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/input-otp/input-otp-slot.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/input-otp/input-otp.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-vega/ui/input-otp/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "input-otp"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/input-otp",
+        },
+      },
+    },
+    item: {
+      name: "item",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["separator", "utils"],
+      files: [
+        {
+          path: "styles/svelte-vega/ui/item/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/item/item-actions.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/item/item-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/item/item-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/item/item-footer.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/item/item-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/item/item-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/item/item-media.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/item/item-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/item/item-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/item/item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-vega/ui/item/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "item"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/item" },
+      },
+    },
+    kbd: {
+      name: "kbd",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-vega/ui/kbd/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/kbd/kbd-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/kbd/kbd.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-vega/ui/kbd/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "kbd"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/kbd" },
+      },
+    },
+    label: {
+      name: "label",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-vega/ui/label/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/label/label.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-vega/ui/label/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "label"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/label" },
+      },
+    },
+    menubar: {
+      name: "menubar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-vega/ui/menubar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/menubar/menubar-checkbox-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/menubar/menubar-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/menubar/menubar-group-heading.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/menubar/menubar-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/menubar/menubar-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/menubar/menubar-label.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/menubar/menubar-menu.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/menubar/menubar-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/menubar/menubar-radio-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/menubar/menubar-radio-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/menubar/menubar-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/menubar/menubar-shortcut.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/menubar/menubar-sub-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/menubar/menubar-sub-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/menubar/menubar-sub.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/menubar/menubar-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/menubar/menubar.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-vega/ui/menubar/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "menubar"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/menubar" },
+      },
+    },
+    "native-select": {
+      name: "native-select",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-vega/ui/native-select/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/native-select/native-select-opt-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/native-select/native-select-option.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/native-select/native-select.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-vega/ui/native-select/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "native-select"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/native-select",
+        },
+      },
+    },
+    "navigation-menu": {
+      name: "navigation-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-vega/ui/navigation-menu/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/navigation-menu/navigation-menu-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/navigation-menu/navigation-menu-indicator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/navigation-menu/navigation-menu-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/navigation-menu/navigation-menu-link.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/navigation-menu/navigation-menu-list.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/navigation-menu/navigation-menu-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/navigation-menu/navigation-menu-viewport.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/navigation-menu/navigation-menu.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import(
+          "@/styles/svelte-vega/ui/navigation-menu/index"
+        )
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "navigation-menu"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/navigation-menu",
+        },
+      },
+    },
+    pagination: {
+      name: "pagination",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "utils"],
+      files: [
+        {
+          path: "styles/svelte-vega/ui/pagination/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/pagination/pagination-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/pagination/pagination-ellipsis.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/pagination/pagination-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/pagination/pagination-link.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/pagination/pagination-next-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/pagination/pagination-next.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/pagination/pagination-prev-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/pagination/pagination-previous.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/pagination/pagination.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-vega/ui/pagination/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "pagination"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/pagination",
+        },
+      },
+    },
+    popover: {
+      name: "popover",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-vega/ui/popover/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/popover/popover-close.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/popover/popover-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/popover/popover-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/popover/popover-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/popover/popover-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/popover/popover-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/popover/popover-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/popover/popover.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-vega/ui/popover/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "popover"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/popover" },
+      },
+    },
+    progress: {
+      name: "progress",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-vega/ui/progress/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/progress/progress.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-vega/ui/progress/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "progress"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/progress" },
+      },
+    },
+    "radio-group": {
+      name: "radio-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-vega/ui/radio-group/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/radio-group/radio-group-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/radio-group/radio-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-vega/ui/radio-group/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "radio-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/radio-group",
+        },
+      },
+    },
+    "range-calendar": {
+      name: "range-calendar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "utils"],
+      files: [
+        {
+          path: "styles/svelte-vega/ui/range-calendar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/range-calendar/range-calendar-caption.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/range-calendar/range-calendar-cell.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/range-calendar/range-calendar-day.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/range-calendar/range-calendar-grid-body.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/range-calendar/range-calendar-grid-head.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/range-calendar/range-calendar-grid-row.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/range-calendar/range-calendar-grid.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/range-calendar/range-calendar-head-cell.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/range-calendar/range-calendar-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/range-calendar/range-calendar-heading.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/range-calendar/range-calendar-month-select.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/range-calendar/range-calendar-month.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/range-calendar/range-calendar-months.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/range-calendar/range-calendar-nav.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/range-calendar/range-calendar-next-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/range-calendar/range-calendar-prev-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/range-calendar/range-calendar-year-select.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/range-calendar/range-calendar.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-vega/ui/range-calendar/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "range-calendar"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/range-calendar",
+        },
+      },
+    },
+    resizable: {
+      name: "resizable",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-vega/ui/resizable/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/resizable/resizable-handle.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/resizable/resizable-pane-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-vega/ui/resizable/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "resizable"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/resizable",
+        },
+      },
+    },
+    "scroll-area": {
+      name: "scroll-area",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-vega/ui/scroll-area/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/scroll-area/scroll-area-scrollbar.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/scroll-area/scroll-area.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-vega/ui/scroll-area/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "scroll-area"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/scroll-area",
+        },
+      },
+    },
+    select: {
+      name: "select",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["separator", "utils"],
+      files: [
+        {
+          path: "styles/svelte-vega/ui/select/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/select/select-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/select/select-group-heading.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/select/select-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/select/select-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/select/select-label.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/select/select-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/select/select-scroll-down-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/select/select-scroll-up-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/select/select-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/select/select-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/select/select.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-vega/ui/select/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "select"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/select" },
+      },
+    },
+    separator: {
+      name: "separator",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-vega/ui/separator/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/separator/separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-vega/ui/separator/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "separator"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/separator",
+        },
+      },
+    },
+    sheet: {
+      name: "sheet",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "utils"],
+      files: [
+        {
+          path: "styles/svelte-vega/ui/sheet/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/sheet/sheet-close.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/sheet/sheet-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/sheet/sheet-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/sheet/sheet-footer.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/sheet/sheet-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/sheet/sheet-overlay.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/sheet/sheet-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/sheet/sheet-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/sheet/sheet-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/sheet/sheet.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-vega/ui/sheet/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "sheet"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/sheet" },
+      },
+    },
+    sidebar: {
+      name: "sidebar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: [
+        "button",
+        "input",
+        "separator",
+        "sheet",
+        "skeleton",
+        "tooltip",
+        "utils",
+      ],
+      files: [
+        {
+          path: "styles/svelte-vega/ui/sidebar/constants.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/sidebar/context.svelte.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/sidebar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/sidebar/sidebar-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/sidebar/sidebar-footer.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/sidebar/sidebar-group-action.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/sidebar/sidebar-group-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/sidebar/sidebar-group-label.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/sidebar/sidebar-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/sidebar/sidebar-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/sidebar/sidebar-input.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/sidebar/sidebar-inset.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/sidebar/sidebar-menu-action.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/sidebar/sidebar-menu-badge.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/sidebar/sidebar-menu-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/sidebar/sidebar-menu-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/sidebar/sidebar-menu-skeleton.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/sidebar/sidebar-menu-sub-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/sidebar/sidebar-menu-sub-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/sidebar/sidebar-menu-sub.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/sidebar/sidebar-menu.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/sidebar/sidebar-provider.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/sidebar/sidebar-rail.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/sidebar/sidebar-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/sidebar/sidebar-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/sidebar/sidebar.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-vega/ui/sidebar/constants")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "sidebar"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/sidebar" },
+      },
+    },
+    skeleton: {
+      name: "skeleton",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-vega/ui/skeleton/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/skeleton/skeleton.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-vega/ui/skeleton/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "skeleton"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/skeleton" },
+      },
+    },
+    slider: {
+      name: "slider",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-vega/ui/slider/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/slider/slider.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-vega/ui/slider/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "slider"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/slider" },
+      },
+    },
+    sonner: {
+      name: "sonner",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/svelte-vega/ui/sonner/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/sonner/sonner.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-vega/ui/sonner/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "sonner"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/sonner" },
+      },
+    },
+    spinner: {
+      name: "spinner",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-vega/ui/spinner/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/spinner/spinner.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-vega/ui/spinner/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "spinner"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/spinner" },
+      },
+    },
+    switch: {
+      name: "switch",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-vega/ui/switch/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/switch/switch.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-vega/ui/switch/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "switch"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/switch" },
+      },
+    },
+    table: {
+      name: "table",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-vega/ui/table/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/table/table-body.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/table/table-caption.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/table/table-cell.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/table/table-footer.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/table/table-head.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/table/table-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/table/table-row.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/table/table.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-vega/ui/table/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "table"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/table" },
+      },
+    },
+    tabs: {
+      name: "tabs",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-vega/ui/tabs/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/tabs/tabs-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/tabs/tabs-list.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/tabs/tabs-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/tabs/tabs.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-vega/ui/tabs/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "tabs"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/tabs" },
+      },
+    },
+    textarea: {
+      name: "textarea",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-vega/ui/textarea/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/textarea/textarea.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-vega/ui/textarea/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "textarea"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/textarea" },
+      },
+    },
+    toggle: {
+      name: "toggle",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-vega/ui/toggle/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/toggle/toggle.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-vega/ui/toggle/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "toggle"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/toggle" },
+      },
+    },
+    "toggle-group": {
+      name: "toggle-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["toggle", "utils"],
+      files: [
+        {
+          path: "styles/svelte-vega/ui/toggle-group/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/toggle-group/toggle-group-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/toggle-group/toggle-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-vega/ui/toggle-group/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "toggle-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/toggle-group",
+        },
+      },
+    },
+    tooltip: {
+      name: "tooltip",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-vega/ui/tooltip/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/tooltip/tooltip-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/tooltip/tooltip-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/tooltip/tooltip-provider.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/tooltip/tooltip-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-vega/ui/tooltip/tooltip.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-vega/ui/tooltip/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "tooltip"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/tooltip" },
       },
     },
   },
   "svelte-nova": {
+    accordion: {
+      name: "accordion",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-nova/ui/accordion/accordion-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/accordion/accordion-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/accordion/accordion-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/accordion/accordion.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/accordion/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/accordion",
+        },
+      },
+    },
+    alert: {
+      name: "alert",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-nova/ui/alert/alert-action.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/alert/alert-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/alert/alert-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/alert/alert.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/alert/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/alert" },
+      },
+    },
+    "alert-dialog": {
+      name: "alert-dialog",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "utils"],
+      files: [
+        {
+          path: "styles/svelte-nova/ui/alert-dialog/alert-dialog-action.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/alert-dialog/alert-dialog-cancel.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/alert-dialog/alert-dialog-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/alert-dialog/alert-dialog-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/alert-dialog/alert-dialog-footer.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/alert-dialog/alert-dialog-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/alert-dialog/alert-dialog-media.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/alert-dialog/alert-dialog-overlay.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/alert-dialog/alert-dialog-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/alert-dialog/alert-dialog-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/alert-dialog/alert-dialog-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/alert-dialog/alert-dialog.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/alert-dialog/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/alert-dialog",
+        },
+      },
+    },
+    "aspect-ratio": {
+      name: "aspect-ratio",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/svelte-nova/ui/aspect-ratio/aspect-ratio.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/aspect-ratio/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/aspect-ratio",
+        },
+      },
+    },
+    avatar: {
+      name: "avatar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-nova/ui/avatar/avatar-badge.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/avatar/avatar-fallback.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/avatar/avatar-group-count.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/avatar/avatar-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/avatar/avatar-image.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/avatar/avatar.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/avatar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/avatar" },
+      },
+    },
+    badge: {
+      name: "badge",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-nova/ui/badge/badge.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/badge/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/badge" },
+      },
+    },
+    breadcrumb: {
+      name: "breadcrumb",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-nova/ui/breadcrumb/breadcrumb-ellipsis.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/breadcrumb/breadcrumb-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/breadcrumb/breadcrumb-link.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/breadcrumb/breadcrumb-list.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/breadcrumb/breadcrumb-page.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/breadcrumb/breadcrumb-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/breadcrumb/breadcrumb.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/breadcrumb/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/breadcrumb",
+        },
+      },
+    },
     button: {
       name: "button",
       title: "undefined",
@@ -28308,7 +45274,12 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["utils"],
       files: [
         {
-          path: "styles/svelte-nova/ui/button.svelte",
+          path: "styles/svelte-nova/ui/button/button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/button/index.ts",
           type: "registry:ui",
           target: "",
         },
@@ -28317,10 +45288,2960 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: {
         links: { docs: "https://force-ui.com/docs/components/svelte/button" },
+      },
+    },
+    "button-group": {
+      name: "button-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["separator", "utils"],
+      files: [
+        {
+          path: "styles/svelte-nova/ui/button-group/button-group-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/button-group/button-group-text.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/button-group/button-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/button-group/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/button-group",
+        },
+      },
+    },
+    calendar: {
+      name: "calendar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "utils"],
+      files: [
+        {
+          path: "styles/svelte-nova/ui/calendar/calendar-caption.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/calendar/calendar-cell.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/calendar/calendar-day.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/calendar/calendar-grid-body.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/calendar/calendar-grid-head.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/calendar/calendar-grid-row.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/calendar/calendar-grid.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/calendar/calendar-head-cell.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/calendar/calendar-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/calendar/calendar-heading.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/calendar/calendar-month-select.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/calendar/calendar-month.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/calendar/calendar-months.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/calendar/calendar-nav.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/calendar/calendar-next-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/calendar/calendar-prev-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/calendar/calendar-year-select.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/calendar/calendar.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/calendar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/calendar" },
+      },
+    },
+    card: {
+      name: "card",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-nova/ui/card/card-action.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/card/card-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/card/card-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/card/card-footer.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/card/card-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/card/card-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/card/card.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/card/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/card" },
+      },
+    },
+    carousel: {
+      name: "carousel",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "utils"],
+      files: [
+        {
+          path: "styles/svelte-nova/ui/carousel/carousel-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/carousel/carousel-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/carousel/carousel-next.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/carousel/carousel-previous.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/carousel/carousel.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/carousel/context.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/carousel/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/carousel" },
+      },
+    },
+    chart: {
+      name: "chart",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-nova/ui/chart/chart-container.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/chart/chart-style.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/chart/chart-tooltip.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/chart/chart-utils.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/chart/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/chart" },
+      },
+    },
+    checkbox: {
+      name: "checkbox",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-nova/ui/checkbox/checkbox.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/checkbox/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/checkbox" },
+      },
+    },
+    collapsible: {
+      name: "collapsible",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/svelte-nova/ui/collapsible/collapsible-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/collapsible/collapsible-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/collapsible/collapsible.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/collapsible/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/collapsible",
+        },
+      },
+    },
+    command: {
+      name: "command",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["dialog", "input-group", "utils"],
+      files: [
+        {
+          path: "styles/svelte-nova/ui/command/command-dialog.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/command/command-empty.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/command/command-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/command/command-input.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/command/command-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/command/command-link-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/command/command-list.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/command/command-loading.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/command/command-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/command/command-shortcut.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/command/command.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/command/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/command" },
+      },
+    },
+    "context-menu": {
+      name: "context-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-nova/ui/context-menu/context-menu-checkbox-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/context-menu/context-menu-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/context-menu/context-menu-group-heading.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/context-menu/context-menu-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/context-menu/context-menu-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/context-menu/context-menu-label.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/context-menu/context-menu-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/context-menu/context-menu-radio-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/context-menu/context-menu-radio-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/context-menu/context-menu-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/context-menu/context-menu-shortcut.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/context-menu/context-menu-sub-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/context-menu/context-menu-sub-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/context-menu/context-menu-sub.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/context-menu/context-menu-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/context-menu/context-menu.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/context-menu/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/context-menu",
+        },
+      },
+    },
+    dialog: {
+      name: "dialog",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "utils"],
+      files: [
+        {
+          path: "styles/svelte-nova/ui/dialog/dialog-close.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/dialog/dialog-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/dialog/dialog-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/dialog/dialog-footer.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/dialog/dialog-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/dialog/dialog-overlay.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/dialog/dialog-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/dialog/dialog-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/dialog/dialog-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/dialog/dialog.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/dialog/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/dialog" },
+      },
+    },
+    drawer: {
+      name: "drawer",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-nova/ui/drawer/drawer-close.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/drawer/drawer-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/drawer/drawer-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/drawer/drawer-footer.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/drawer/drawer-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/drawer/drawer-nested.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/drawer/drawer-overlay.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/drawer/drawer-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/drawer/drawer-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/drawer/drawer-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/drawer/drawer.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/drawer/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/drawer" },
+      },
+    },
+    "dropdown-menu": {
+      name: "dropdown-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-nova/ui/dropdown-menu/dropdown-menu-checkbox-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/dropdown-menu/dropdown-menu-checkbox-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/dropdown-menu/dropdown-menu-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/dropdown-menu/dropdown-menu-group-heading.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/dropdown-menu/dropdown-menu-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/dropdown-menu/dropdown-menu-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/dropdown-menu/dropdown-menu-label.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/dropdown-menu/dropdown-menu-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/dropdown-menu/dropdown-menu-radio-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/dropdown-menu/dropdown-menu-radio-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/dropdown-menu/dropdown-menu-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/dropdown-menu/dropdown-menu-shortcut.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/dropdown-menu/dropdown-menu-sub-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/dropdown-menu/dropdown-menu-sub-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/dropdown-menu/dropdown-menu-sub.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/dropdown-menu/dropdown-menu-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/dropdown-menu/dropdown-menu.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/dropdown-menu/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/dropdown-menu",
+        },
+      },
+    },
+    empty: {
+      name: "empty",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-nova/ui/empty/empty-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/empty/empty-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/empty/empty-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/empty/empty-media.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/empty/empty-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/empty/empty.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/empty/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/empty" },
+      },
+    },
+    field: {
+      name: "field",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["label", "separator", "utils"],
+      files: [
+        {
+          path: "styles/svelte-nova/ui/field/field-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/field/field-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/field/field-error.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/field/field-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/field/field-label.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/field/field-legend.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/field/field-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/field/field-set.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/field/field-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/field/field.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/field/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/field" },
+      },
+    },
+    "hover-card": {
+      name: "hover-card",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-nova/ui/hover-card/hover-card-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/hover-card/hover-card-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/hover-card/hover-card-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/hover-card/hover-card.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/hover-card/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/hover-card",
+        },
+      },
+    },
+    input: {
+      name: "input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-nova/ui/input/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/input/input.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-nova/ui/input/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "input"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/input" },
+      },
+    },
+    "input-group": {
+      name: "input-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "input", "textarea", "utils"],
+      files: [
+        {
+          path: "styles/svelte-nova/ui/input-group/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/input-group/input-group-addon.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/input-group/input-group-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/input-group/input-group-input.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/input-group/input-group-text.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/input-group/input-group-textarea.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/input-group/input-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-nova/ui/input-group/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "input-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/input-group",
+        },
+      },
+    },
+    "input-otp": {
+      name: "input-otp",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-nova/ui/input-otp/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/input-otp/input-otp-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/input-otp/input-otp-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/input-otp/input-otp-slot.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/input-otp/input-otp.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-nova/ui/input-otp/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "input-otp"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/input-otp",
+        },
+      },
+    },
+    item: {
+      name: "item",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["separator", "utils"],
+      files: [
+        {
+          path: "styles/svelte-nova/ui/item/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/item/item-actions.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/item/item-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/item/item-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/item/item-footer.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/item/item-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/item/item-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/item/item-media.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/item/item-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/item/item-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/item/item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-nova/ui/item/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "item"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/item" },
+      },
+    },
+    kbd: {
+      name: "kbd",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-nova/ui/kbd/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/kbd/kbd-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/kbd/kbd.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-nova/ui/kbd/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "kbd"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/kbd" },
+      },
+    },
+    label: {
+      name: "label",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-nova/ui/label/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/label/label.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-nova/ui/label/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "label"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/label" },
+      },
+    },
+    menubar: {
+      name: "menubar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-nova/ui/menubar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/menubar/menubar-checkbox-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/menubar/menubar-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/menubar/menubar-group-heading.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/menubar/menubar-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/menubar/menubar-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/menubar/menubar-label.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/menubar/menubar-menu.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/menubar/menubar-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/menubar/menubar-radio-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/menubar/menubar-radio-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/menubar/menubar-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/menubar/menubar-shortcut.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/menubar/menubar-sub-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/menubar/menubar-sub-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/menubar/menubar-sub.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/menubar/menubar-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/menubar/menubar.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-nova/ui/menubar/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "menubar"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/menubar" },
+      },
+    },
+    "native-select": {
+      name: "native-select",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-nova/ui/native-select/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/native-select/native-select-opt-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/native-select/native-select-option.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/native-select/native-select.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-nova/ui/native-select/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "native-select"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/native-select",
+        },
+      },
+    },
+    "navigation-menu": {
+      name: "navigation-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-nova/ui/navigation-menu/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/navigation-menu/navigation-menu-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/navigation-menu/navigation-menu-indicator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/navigation-menu/navigation-menu-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/navigation-menu/navigation-menu-link.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/navigation-menu/navigation-menu-list.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/navigation-menu/navigation-menu-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/navigation-menu/navigation-menu-viewport.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/navigation-menu/navigation-menu.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import(
+          "@/styles/svelte-nova/ui/navigation-menu/index"
+        )
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "navigation-menu"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/navigation-menu",
+        },
+      },
+    },
+    pagination: {
+      name: "pagination",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "utils"],
+      files: [
+        {
+          path: "styles/svelte-nova/ui/pagination/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/pagination/pagination-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/pagination/pagination-ellipsis.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/pagination/pagination-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/pagination/pagination-link.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/pagination/pagination-next-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/pagination/pagination-next.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/pagination/pagination-prev-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/pagination/pagination-previous.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/pagination/pagination.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-nova/ui/pagination/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "pagination"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/pagination",
+        },
+      },
+    },
+    popover: {
+      name: "popover",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-nova/ui/popover/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/popover/popover-close.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/popover/popover-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/popover/popover-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/popover/popover-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/popover/popover-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/popover/popover-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/popover/popover-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/popover/popover.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-nova/ui/popover/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "popover"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/popover" },
+      },
+    },
+    progress: {
+      name: "progress",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-nova/ui/progress/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/progress/progress.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-nova/ui/progress/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "progress"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/progress" },
+      },
+    },
+    "radio-group": {
+      name: "radio-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-nova/ui/radio-group/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/radio-group/radio-group-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/radio-group/radio-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-nova/ui/radio-group/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "radio-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/radio-group",
+        },
+      },
+    },
+    "range-calendar": {
+      name: "range-calendar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "utils"],
+      files: [
+        {
+          path: "styles/svelte-nova/ui/range-calendar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/range-calendar/range-calendar-caption.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/range-calendar/range-calendar-cell.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/range-calendar/range-calendar-day.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/range-calendar/range-calendar-grid-body.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/range-calendar/range-calendar-grid-head.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/range-calendar/range-calendar-grid-row.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/range-calendar/range-calendar-grid.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/range-calendar/range-calendar-head-cell.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/range-calendar/range-calendar-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/range-calendar/range-calendar-heading.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/range-calendar/range-calendar-month-select.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/range-calendar/range-calendar-month.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/range-calendar/range-calendar-months.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/range-calendar/range-calendar-nav.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/range-calendar/range-calendar-next-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/range-calendar/range-calendar-prev-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/range-calendar/range-calendar-year-select.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/range-calendar/range-calendar.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-nova/ui/range-calendar/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "range-calendar"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/range-calendar",
+        },
+      },
+    },
+    resizable: {
+      name: "resizable",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-nova/ui/resizable/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/resizable/resizable-handle.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/resizable/resizable-pane-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-nova/ui/resizable/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "resizable"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/resizable",
+        },
+      },
+    },
+    "scroll-area": {
+      name: "scroll-area",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-nova/ui/scroll-area/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/scroll-area/scroll-area-scrollbar.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/scroll-area/scroll-area.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-nova/ui/scroll-area/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "scroll-area"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/scroll-area",
+        },
+      },
+    },
+    select: {
+      name: "select",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["separator", "utils"],
+      files: [
+        {
+          path: "styles/svelte-nova/ui/select/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/select/select-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/select/select-group-heading.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/select/select-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/select/select-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/select/select-label.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/select/select-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/select/select-scroll-down-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/select/select-scroll-up-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/select/select-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/select/select-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/select/select.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-nova/ui/select/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "select"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/select" },
+      },
+    },
+    separator: {
+      name: "separator",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-nova/ui/separator/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/separator/separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-nova/ui/separator/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "separator"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/separator",
+        },
+      },
+    },
+    sheet: {
+      name: "sheet",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "utils"],
+      files: [
+        {
+          path: "styles/svelte-nova/ui/sheet/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/sheet/sheet-close.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/sheet/sheet-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/sheet/sheet-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/sheet/sheet-footer.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/sheet/sheet-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/sheet/sheet-overlay.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/sheet/sheet-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/sheet/sheet-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/sheet/sheet-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/sheet/sheet.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-nova/ui/sheet/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "sheet"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/sheet" },
+      },
+    },
+    sidebar: {
+      name: "sidebar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: [
+        "button",
+        "input",
+        "separator",
+        "sheet",
+        "skeleton",
+        "tooltip",
+        "utils",
+      ],
+      files: [
+        {
+          path: "styles/svelte-nova/ui/sidebar/constants.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/sidebar/context.svelte.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/sidebar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/sidebar/sidebar-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/sidebar/sidebar-footer.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/sidebar/sidebar-group-action.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/sidebar/sidebar-group-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/sidebar/sidebar-group-label.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/sidebar/sidebar-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/sidebar/sidebar-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/sidebar/sidebar-input.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/sidebar/sidebar-inset.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/sidebar/sidebar-menu-action.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/sidebar/sidebar-menu-badge.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/sidebar/sidebar-menu-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/sidebar/sidebar-menu-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/sidebar/sidebar-menu-skeleton.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/sidebar/sidebar-menu-sub-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/sidebar/sidebar-menu-sub-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/sidebar/sidebar-menu-sub.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/sidebar/sidebar-menu.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/sidebar/sidebar-provider.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/sidebar/sidebar-rail.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/sidebar/sidebar-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/sidebar/sidebar-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/sidebar/sidebar.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-nova/ui/sidebar/constants")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "sidebar"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/sidebar" },
+      },
+    },
+    skeleton: {
+      name: "skeleton",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-nova/ui/skeleton/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/skeleton/skeleton.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-nova/ui/skeleton/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "skeleton"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/skeleton" },
+      },
+    },
+    slider: {
+      name: "slider",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-nova/ui/slider/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/slider/slider.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-nova/ui/slider/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "slider"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/slider" },
+      },
+    },
+    sonner: {
+      name: "sonner",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/svelte-nova/ui/sonner/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/sonner/sonner.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-nova/ui/sonner/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "sonner"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/sonner" },
+      },
+    },
+    spinner: {
+      name: "spinner",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-nova/ui/spinner/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/spinner/spinner.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-nova/ui/spinner/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "spinner"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/spinner" },
+      },
+    },
+    switch: {
+      name: "switch",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-nova/ui/switch/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/switch/switch.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-nova/ui/switch/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "switch"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/switch" },
+      },
+    },
+    table: {
+      name: "table",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-nova/ui/table/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/table/table-body.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/table/table-caption.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/table/table-cell.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/table/table-footer.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/table/table-head.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/table/table-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/table/table-row.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/table/table.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-nova/ui/table/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "table"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/table" },
+      },
+    },
+    tabs: {
+      name: "tabs",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-nova/ui/tabs/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/tabs/tabs-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/tabs/tabs-list.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/tabs/tabs-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/tabs/tabs.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-nova/ui/tabs/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "tabs"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/tabs" },
+      },
+    },
+    textarea: {
+      name: "textarea",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-nova/ui/textarea/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/textarea/textarea.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-nova/ui/textarea/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "textarea"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/textarea" },
+      },
+    },
+    toggle: {
+      name: "toggle",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-nova/ui/toggle/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/toggle/toggle.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-nova/ui/toggle/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "toggle"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/toggle" },
+      },
+    },
+    "toggle-group": {
+      name: "toggle-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["toggle", "utils"],
+      files: [
+        {
+          path: "styles/svelte-nova/ui/toggle-group/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/toggle-group/toggle-group-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/toggle-group/toggle-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-nova/ui/toggle-group/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "toggle-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/toggle-group",
+        },
+      },
+    },
+    tooltip: {
+      name: "tooltip",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-nova/ui/tooltip/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/tooltip/tooltip-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/tooltip/tooltip-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/tooltip/tooltip-provider.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/tooltip/tooltip-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-nova/ui/tooltip/tooltip.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-nova/ui/tooltip/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "tooltip"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/tooltip" },
       },
     },
   },
   "svelte-maia": {
+    accordion: {
+      name: "accordion",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-maia/ui/accordion/accordion-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/accordion/accordion-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/accordion/accordion-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/accordion/accordion.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/accordion/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/accordion",
+        },
+      },
+    },
+    alert: {
+      name: "alert",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-maia/ui/alert/alert-action.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/alert/alert-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/alert/alert-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/alert/alert.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/alert/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/alert" },
+      },
+    },
+    "alert-dialog": {
+      name: "alert-dialog",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "utils"],
+      files: [
+        {
+          path: "styles/svelte-maia/ui/alert-dialog/alert-dialog-action.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/alert-dialog/alert-dialog-cancel.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/alert-dialog/alert-dialog-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/alert-dialog/alert-dialog-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/alert-dialog/alert-dialog-footer.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/alert-dialog/alert-dialog-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/alert-dialog/alert-dialog-media.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/alert-dialog/alert-dialog-overlay.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/alert-dialog/alert-dialog-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/alert-dialog/alert-dialog-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/alert-dialog/alert-dialog-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/alert-dialog/alert-dialog.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/alert-dialog/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/alert-dialog",
+        },
+      },
+    },
+    "aspect-ratio": {
+      name: "aspect-ratio",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/svelte-maia/ui/aspect-ratio/aspect-ratio.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/aspect-ratio/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/aspect-ratio",
+        },
+      },
+    },
+    avatar: {
+      name: "avatar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-maia/ui/avatar/avatar-badge.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/avatar/avatar-fallback.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/avatar/avatar-group-count.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/avatar/avatar-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/avatar/avatar-image.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/avatar/avatar.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/avatar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/avatar" },
+      },
+    },
+    badge: {
+      name: "badge",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-maia/ui/badge/badge.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/badge/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/badge" },
+      },
+    },
+    breadcrumb: {
+      name: "breadcrumb",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-maia/ui/breadcrumb/breadcrumb-ellipsis.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/breadcrumb/breadcrumb-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/breadcrumb/breadcrumb-link.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/breadcrumb/breadcrumb-list.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/breadcrumb/breadcrumb-page.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/breadcrumb/breadcrumb-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/breadcrumb/breadcrumb.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/breadcrumb/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/breadcrumb",
+        },
+      },
+    },
     button: {
       name: "button",
       title: "undefined",
@@ -28329,7 +48250,12 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["utils"],
       files: [
         {
-          path: "styles/svelte-maia/ui/button.svelte",
+          path: "styles/svelte-maia/ui/button/button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/button/index.ts",
           type: "registry:ui",
           target: "",
         },
@@ -28338,10 +48264,2960 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: {
         links: { docs: "https://force-ui.com/docs/components/svelte/button" },
+      },
+    },
+    "button-group": {
+      name: "button-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["separator", "utils"],
+      files: [
+        {
+          path: "styles/svelte-maia/ui/button-group/button-group-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/button-group/button-group-text.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/button-group/button-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/button-group/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/button-group",
+        },
+      },
+    },
+    calendar: {
+      name: "calendar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "utils"],
+      files: [
+        {
+          path: "styles/svelte-maia/ui/calendar/calendar-caption.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/calendar/calendar-cell.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/calendar/calendar-day.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/calendar/calendar-grid-body.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/calendar/calendar-grid-head.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/calendar/calendar-grid-row.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/calendar/calendar-grid.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/calendar/calendar-head-cell.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/calendar/calendar-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/calendar/calendar-heading.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/calendar/calendar-month-select.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/calendar/calendar-month.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/calendar/calendar-months.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/calendar/calendar-nav.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/calendar/calendar-next-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/calendar/calendar-prev-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/calendar/calendar-year-select.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/calendar/calendar.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/calendar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/calendar" },
+      },
+    },
+    card: {
+      name: "card",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-maia/ui/card/card-action.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/card/card-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/card/card-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/card/card-footer.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/card/card-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/card/card-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/card/card.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/card/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/card" },
+      },
+    },
+    carousel: {
+      name: "carousel",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "utils"],
+      files: [
+        {
+          path: "styles/svelte-maia/ui/carousel/carousel-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/carousel/carousel-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/carousel/carousel-next.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/carousel/carousel-previous.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/carousel/carousel.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/carousel/context.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/carousel/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/carousel" },
+      },
+    },
+    chart: {
+      name: "chart",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-maia/ui/chart/chart-container.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/chart/chart-style.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/chart/chart-tooltip.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/chart/chart-utils.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/chart/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/chart" },
+      },
+    },
+    checkbox: {
+      name: "checkbox",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-maia/ui/checkbox/checkbox.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/checkbox/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/checkbox" },
+      },
+    },
+    collapsible: {
+      name: "collapsible",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/svelte-maia/ui/collapsible/collapsible-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/collapsible/collapsible-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/collapsible/collapsible.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/collapsible/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/collapsible",
+        },
+      },
+    },
+    command: {
+      name: "command",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["dialog", "input-group", "utils"],
+      files: [
+        {
+          path: "styles/svelte-maia/ui/command/command-dialog.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/command/command-empty.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/command/command-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/command/command-input.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/command/command-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/command/command-link-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/command/command-list.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/command/command-loading.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/command/command-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/command/command-shortcut.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/command/command.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/command/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/command" },
+      },
+    },
+    "context-menu": {
+      name: "context-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-maia/ui/context-menu/context-menu-checkbox-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/context-menu/context-menu-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/context-menu/context-menu-group-heading.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/context-menu/context-menu-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/context-menu/context-menu-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/context-menu/context-menu-label.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/context-menu/context-menu-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/context-menu/context-menu-radio-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/context-menu/context-menu-radio-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/context-menu/context-menu-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/context-menu/context-menu-shortcut.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/context-menu/context-menu-sub-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/context-menu/context-menu-sub-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/context-menu/context-menu-sub.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/context-menu/context-menu-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/context-menu/context-menu.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/context-menu/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/context-menu",
+        },
+      },
+    },
+    dialog: {
+      name: "dialog",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "utils"],
+      files: [
+        {
+          path: "styles/svelte-maia/ui/dialog/dialog-close.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/dialog/dialog-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/dialog/dialog-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/dialog/dialog-footer.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/dialog/dialog-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/dialog/dialog-overlay.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/dialog/dialog-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/dialog/dialog-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/dialog/dialog-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/dialog/dialog.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/dialog/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/dialog" },
+      },
+    },
+    drawer: {
+      name: "drawer",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-maia/ui/drawer/drawer-close.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/drawer/drawer-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/drawer/drawer-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/drawer/drawer-footer.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/drawer/drawer-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/drawer/drawer-nested.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/drawer/drawer-overlay.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/drawer/drawer-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/drawer/drawer-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/drawer/drawer-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/drawer/drawer.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/drawer/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/drawer" },
+      },
+    },
+    "dropdown-menu": {
+      name: "dropdown-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-maia/ui/dropdown-menu/dropdown-menu-checkbox-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/dropdown-menu/dropdown-menu-checkbox-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/dropdown-menu/dropdown-menu-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/dropdown-menu/dropdown-menu-group-heading.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/dropdown-menu/dropdown-menu-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/dropdown-menu/dropdown-menu-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/dropdown-menu/dropdown-menu-label.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/dropdown-menu/dropdown-menu-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/dropdown-menu/dropdown-menu-radio-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/dropdown-menu/dropdown-menu-radio-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/dropdown-menu/dropdown-menu-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/dropdown-menu/dropdown-menu-shortcut.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/dropdown-menu/dropdown-menu-sub-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/dropdown-menu/dropdown-menu-sub-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/dropdown-menu/dropdown-menu-sub.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/dropdown-menu/dropdown-menu-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/dropdown-menu/dropdown-menu.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/dropdown-menu/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/dropdown-menu",
+        },
+      },
+    },
+    empty: {
+      name: "empty",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-maia/ui/empty/empty-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/empty/empty-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/empty/empty-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/empty/empty-media.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/empty/empty-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/empty/empty.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/empty/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/empty" },
+      },
+    },
+    field: {
+      name: "field",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["label", "separator", "utils"],
+      files: [
+        {
+          path: "styles/svelte-maia/ui/field/field-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/field/field-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/field/field-error.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/field/field-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/field/field-label.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/field/field-legend.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/field/field-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/field/field-set.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/field/field-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/field/field.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/field/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/field" },
+      },
+    },
+    "hover-card": {
+      name: "hover-card",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-maia/ui/hover-card/hover-card-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/hover-card/hover-card-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/hover-card/hover-card-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/hover-card/hover-card.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/hover-card/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/hover-card",
+        },
+      },
+    },
+    input: {
+      name: "input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-maia/ui/input/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/input/input.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-maia/ui/input/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "input"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/input" },
+      },
+    },
+    "input-group": {
+      name: "input-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "input", "textarea", "utils"],
+      files: [
+        {
+          path: "styles/svelte-maia/ui/input-group/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/input-group/input-group-addon.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/input-group/input-group-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/input-group/input-group-input.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/input-group/input-group-text.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/input-group/input-group-textarea.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/input-group/input-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-maia/ui/input-group/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "input-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/input-group",
+        },
+      },
+    },
+    "input-otp": {
+      name: "input-otp",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-maia/ui/input-otp/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/input-otp/input-otp-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/input-otp/input-otp-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/input-otp/input-otp-slot.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/input-otp/input-otp.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-maia/ui/input-otp/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "input-otp"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/input-otp",
+        },
+      },
+    },
+    item: {
+      name: "item",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["separator", "utils"],
+      files: [
+        {
+          path: "styles/svelte-maia/ui/item/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/item/item-actions.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/item/item-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/item/item-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/item/item-footer.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/item/item-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/item/item-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/item/item-media.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/item/item-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/item/item-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/item/item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-maia/ui/item/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "item"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/item" },
+      },
+    },
+    kbd: {
+      name: "kbd",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-maia/ui/kbd/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/kbd/kbd-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/kbd/kbd.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-maia/ui/kbd/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "kbd"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/kbd" },
+      },
+    },
+    label: {
+      name: "label",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-maia/ui/label/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/label/label.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-maia/ui/label/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "label"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/label" },
+      },
+    },
+    menubar: {
+      name: "menubar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-maia/ui/menubar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/menubar/menubar-checkbox-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/menubar/menubar-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/menubar/menubar-group-heading.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/menubar/menubar-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/menubar/menubar-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/menubar/menubar-label.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/menubar/menubar-menu.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/menubar/menubar-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/menubar/menubar-radio-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/menubar/menubar-radio-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/menubar/menubar-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/menubar/menubar-shortcut.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/menubar/menubar-sub-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/menubar/menubar-sub-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/menubar/menubar-sub.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/menubar/menubar-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/menubar/menubar.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-maia/ui/menubar/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "menubar"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/menubar" },
+      },
+    },
+    "native-select": {
+      name: "native-select",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-maia/ui/native-select/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/native-select/native-select-opt-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/native-select/native-select-option.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/native-select/native-select.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-maia/ui/native-select/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "native-select"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/native-select",
+        },
+      },
+    },
+    "navigation-menu": {
+      name: "navigation-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-maia/ui/navigation-menu/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/navigation-menu/navigation-menu-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/navigation-menu/navigation-menu-indicator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/navigation-menu/navigation-menu-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/navigation-menu/navigation-menu-link.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/navigation-menu/navigation-menu-list.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/navigation-menu/navigation-menu-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/navigation-menu/navigation-menu-viewport.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/navigation-menu/navigation-menu.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import(
+          "@/styles/svelte-maia/ui/navigation-menu/index"
+        )
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "navigation-menu"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/navigation-menu",
+        },
+      },
+    },
+    pagination: {
+      name: "pagination",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "utils"],
+      files: [
+        {
+          path: "styles/svelte-maia/ui/pagination/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/pagination/pagination-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/pagination/pagination-ellipsis.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/pagination/pagination-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/pagination/pagination-link.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/pagination/pagination-next-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/pagination/pagination-next.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/pagination/pagination-prev-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/pagination/pagination-previous.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/pagination/pagination.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-maia/ui/pagination/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "pagination"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/pagination",
+        },
+      },
+    },
+    popover: {
+      name: "popover",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-maia/ui/popover/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/popover/popover-close.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/popover/popover-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/popover/popover-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/popover/popover-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/popover/popover-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/popover/popover-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/popover/popover-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/popover/popover.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-maia/ui/popover/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "popover"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/popover" },
+      },
+    },
+    progress: {
+      name: "progress",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-maia/ui/progress/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/progress/progress.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-maia/ui/progress/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "progress"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/progress" },
+      },
+    },
+    "radio-group": {
+      name: "radio-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-maia/ui/radio-group/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/radio-group/radio-group-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/radio-group/radio-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-maia/ui/radio-group/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "radio-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/radio-group",
+        },
+      },
+    },
+    "range-calendar": {
+      name: "range-calendar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "utils"],
+      files: [
+        {
+          path: "styles/svelte-maia/ui/range-calendar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/range-calendar/range-calendar-caption.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/range-calendar/range-calendar-cell.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/range-calendar/range-calendar-day.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/range-calendar/range-calendar-grid-body.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/range-calendar/range-calendar-grid-head.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/range-calendar/range-calendar-grid-row.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/range-calendar/range-calendar-grid.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/range-calendar/range-calendar-head-cell.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/range-calendar/range-calendar-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/range-calendar/range-calendar-heading.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/range-calendar/range-calendar-month-select.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/range-calendar/range-calendar-month.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/range-calendar/range-calendar-months.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/range-calendar/range-calendar-nav.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/range-calendar/range-calendar-next-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/range-calendar/range-calendar-prev-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/range-calendar/range-calendar-year-select.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/range-calendar/range-calendar.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-maia/ui/range-calendar/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "range-calendar"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/range-calendar",
+        },
+      },
+    },
+    resizable: {
+      name: "resizable",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-maia/ui/resizable/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/resizable/resizable-handle.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/resizable/resizable-pane-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-maia/ui/resizable/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "resizable"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/resizable",
+        },
+      },
+    },
+    "scroll-area": {
+      name: "scroll-area",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-maia/ui/scroll-area/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/scroll-area/scroll-area-scrollbar.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/scroll-area/scroll-area.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-maia/ui/scroll-area/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "scroll-area"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/scroll-area",
+        },
+      },
+    },
+    select: {
+      name: "select",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["separator", "utils"],
+      files: [
+        {
+          path: "styles/svelte-maia/ui/select/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/select/select-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/select/select-group-heading.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/select/select-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/select/select-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/select/select-label.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/select/select-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/select/select-scroll-down-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/select/select-scroll-up-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/select/select-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/select/select-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/select/select.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-maia/ui/select/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "select"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/select" },
+      },
+    },
+    separator: {
+      name: "separator",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-maia/ui/separator/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/separator/separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-maia/ui/separator/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "separator"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/separator",
+        },
+      },
+    },
+    sheet: {
+      name: "sheet",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "utils"],
+      files: [
+        {
+          path: "styles/svelte-maia/ui/sheet/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/sheet/sheet-close.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/sheet/sheet-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/sheet/sheet-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/sheet/sheet-footer.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/sheet/sheet-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/sheet/sheet-overlay.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/sheet/sheet-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/sheet/sheet-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/sheet/sheet-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/sheet/sheet.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-maia/ui/sheet/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "sheet"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/sheet" },
+      },
+    },
+    sidebar: {
+      name: "sidebar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: [
+        "button",
+        "input",
+        "separator",
+        "sheet",
+        "skeleton",
+        "tooltip",
+        "utils",
+      ],
+      files: [
+        {
+          path: "styles/svelte-maia/ui/sidebar/constants.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/sidebar/context.svelte.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/sidebar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/sidebar/sidebar-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/sidebar/sidebar-footer.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/sidebar/sidebar-group-action.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/sidebar/sidebar-group-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/sidebar/sidebar-group-label.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/sidebar/sidebar-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/sidebar/sidebar-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/sidebar/sidebar-input.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/sidebar/sidebar-inset.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/sidebar/sidebar-menu-action.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/sidebar/sidebar-menu-badge.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/sidebar/sidebar-menu-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/sidebar/sidebar-menu-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/sidebar/sidebar-menu-skeleton.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/sidebar/sidebar-menu-sub-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/sidebar/sidebar-menu-sub-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/sidebar/sidebar-menu-sub.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/sidebar/sidebar-menu.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/sidebar/sidebar-provider.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/sidebar/sidebar-rail.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/sidebar/sidebar-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/sidebar/sidebar-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/sidebar/sidebar.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-maia/ui/sidebar/constants")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "sidebar"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/sidebar" },
+      },
+    },
+    skeleton: {
+      name: "skeleton",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-maia/ui/skeleton/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/skeleton/skeleton.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-maia/ui/skeleton/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "skeleton"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/skeleton" },
+      },
+    },
+    slider: {
+      name: "slider",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-maia/ui/slider/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/slider/slider.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-maia/ui/slider/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "slider"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/slider" },
+      },
+    },
+    sonner: {
+      name: "sonner",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/svelte-maia/ui/sonner/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/sonner/sonner.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-maia/ui/sonner/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "sonner"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/sonner" },
+      },
+    },
+    spinner: {
+      name: "spinner",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-maia/ui/spinner/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/spinner/spinner.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-maia/ui/spinner/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "spinner"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/spinner" },
+      },
+    },
+    switch: {
+      name: "switch",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-maia/ui/switch/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/switch/switch.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-maia/ui/switch/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "switch"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/switch" },
+      },
+    },
+    table: {
+      name: "table",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-maia/ui/table/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/table/table-body.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/table/table-caption.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/table/table-cell.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/table/table-footer.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/table/table-head.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/table/table-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/table/table-row.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/table/table.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-maia/ui/table/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "table"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/table" },
+      },
+    },
+    tabs: {
+      name: "tabs",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-maia/ui/tabs/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/tabs/tabs-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/tabs/tabs-list.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/tabs/tabs-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/tabs/tabs.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-maia/ui/tabs/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "tabs"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/tabs" },
+      },
+    },
+    textarea: {
+      name: "textarea",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-maia/ui/textarea/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/textarea/textarea.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-maia/ui/textarea/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "textarea"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/textarea" },
+      },
+    },
+    toggle: {
+      name: "toggle",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-maia/ui/toggle/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/toggle/toggle.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-maia/ui/toggle/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "toggle"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/toggle" },
+      },
+    },
+    "toggle-group": {
+      name: "toggle-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["toggle", "utils"],
+      files: [
+        {
+          path: "styles/svelte-maia/ui/toggle-group/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/toggle-group/toggle-group-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/toggle-group/toggle-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-maia/ui/toggle-group/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "toggle-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/toggle-group",
+        },
+      },
+    },
+    tooltip: {
+      name: "tooltip",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-maia/ui/tooltip/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/tooltip/tooltip-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/tooltip/tooltip-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/tooltip/tooltip-provider.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/tooltip/tooltip-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-maia/ui/tooltip/tooltip.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-maia/ui/tooltip/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "tooltip"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/tooltip" },
       },
     },
   },
   "svelte-lyra": {
+    accordion: {
+      name: "accordion",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-lyra/ui/accordion/accordion-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/accordion/accordion-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/accordion/accordion-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/accordion/accordion.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/accordion/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/accordion",
+        },
+      },
+    },
+    alert: {
+      name: "alert",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-lyra/ui/alert/alert-action.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/alert/alert-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/alert/alert-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/alert/alert.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/alert/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/alert" },
+      },
+    },
+    "alert-dialog": {
+      name: "alert-dialog",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "utils"],
+      files: [
+        {
+          path: "styles/svelte-lyra/ui/alert-dialog/alert-dialog-action.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/alert-dialog/alert-dialog-cancel.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/alert-dialog/alert-dialog-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/alert-dialog/alert-dialog-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/alert-dialog/alert-dialog-footer.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/alert-dialog/alert-dialog-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/alert-dialog/alert-dialog-media.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/alert-dialog/alert-dialog-overlay.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/alert-dialog/alert-dialog-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/alert-dialog/alert-dialog-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/alert-dialog/alert-dialog-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/alert-dialog/alert-dialog.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/alert-dialog/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/alert-dialog",
+        },
+      },
+    },
+    "aspect-ratio": {
+      name: "aspect-ratio",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/svelte-lyra/ui/aspect-ratio/aspect-ratio.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/aspect-ratio/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/aspect-ratio",
+        },
+      },
+    },
+    avatar: {
+      name: "avatar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-lyra/ui/avatar/avatar-badge.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/avatar/avatar-fallback.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/avatar/avatar-group-count.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/avatar/avatar-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/avatar/avatar-image.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/avatar/avatar.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/avatar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/avatar" },
+      },
+    },
+    badge: {
+      name: "badge",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-lyra/ui/badge/badge.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/badge/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/badge" },
+      },
+    },
+    breadcrumb: {
+      name: "breadcrumb",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-lyra/ui/breadcrumb/breadcrumb-ellipsis.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/breadcrumb/breadcrumb-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/breadcrumb/breadcrumb-link.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/breadcrumb/breadcrumb-list.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/breadcrumb/breadcrumb-page.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/breadcrumb/breadcrumb-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/breadcrumb/breadcrumb.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/breadcrumb/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/breadcrumb",
+        },
+      },
+    },
     button: {
       name: "button",
       title: "undefined",
@@ -28350,7 +51226,12 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["utils"],
       files: [
         {
-          path: "styles/svelte-lyra/ui/button.svelte",
+          path: "styles/svelte-lyra/ui/button/button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/button/index.ts",
           type: "registry:ui",
           target: "",
         },
@@ -28361,8 +51242,2958 @@ export const Index: Record<string, Record<string, any>> = {
         links: { docs: "https://force-ui.com/docs/components/svelte/button" },
       },
     },
+    "button-group": {
+      name: "button-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["separator", "utils"],
+      files: [
+        {
+          path: "styles/svelte-lyra/ui/button-group/button-group-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/button-group/button-group-text.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/button-group/button-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/button-group/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/button-group",
+        },
+      },
+    },
+    calendar: {
+      name: "calendar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "utils"],
+      files: [
+        {
+          path: "styles/svelte-lyra/ui/calendar/calendar-caption.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/calendar/calendar-cell.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/calendar/calendar-day.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/calendar/calendar-grid-body.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/calendar/calendar-grid-head.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/calendar/calendar-grid-row.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/calendar/calendar-grid.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/calendar/calendar-head-cell.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/calendar/calendar-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/calendar/calendar-heading.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/calendar/calendar-month-select.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/calendar/calendar-month.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/calendar/calendar-months.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/calendar/calendar-nav.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/calendar/calendar-next-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/calendar/calendar-prev-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/calendar/calendar-year-select.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/calendar/calendar.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/calendar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/calendar" },
+      },
+    },
+    card: {
+      name: "card",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-lyra/ui/card/card-action.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/card/card-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/card/card-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/card/card-footer.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/card/card-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/card/card-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/card/card.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/card/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/card" },
+      },
+    },
+    carousel: {
+      name: "carousel",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "utils"],
+      files: [
+        {
+          path: "styles/svelte-lyra/ui/carousel/carousel-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/carousel/carousel-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/carousel/carousel-next.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/carousel/carousel-previous.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/carousel/carousel.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/carousel/context.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/carousel/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/carousel" },
+      },
+    },
+    chart: {
+      name: "chart",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-lyra/ui/chart/chart-container.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/chart/chart-style.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/chart/chart-tooltip.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/chart/chart-utils.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/chart/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/chart" },
+      },
+    },
+    checkbox: {
+      name: "checkbox",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-lyra/ui/checkbox/checkbox.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/checkbox/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/checkbox" },
+      },
+    },
+    collapsible: {
+      name: "collapsible",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/svelte-lyra/ui/collapsible/collapsible-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/collapsible/collapsible-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/collapsible/collapsible.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/collapsible/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/collapsible",
+        },
+      },
+    },
+    command: {
+      name: "command",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["dialog", "input-group", "utils"],
+      files: [
+        {
+          path: "styles/svelte-lyra/ui/command/command-dialog.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/command/command-empty.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/command/command-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/command/command-input.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/command/command-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/command/command-link-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/command/command-list.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/command/command-loading.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/command/command-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/command/command-shortcut.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/command/command.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/command/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/command" },
+      },
+    },
+    "context-menu": {
+      name: "context-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-lyra/ui/context-menu/context-menu-checkbox-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/context-menu/context-menu-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/context-menu/context-menu-group-heading.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/context-menu/context-menu-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/context-menu/context-menu-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/context-menu/context-menu-label.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/context-menu/context-menu-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/context-menu/context-menu-radio-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/context-menu/context-menu-radio-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/context-menu/context-menu-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/context-menu/context-menu-shortcut.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/context-menu/context-menu-sub-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/context-menu/context-menu-sub-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/context-menu/context-menu-sub.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/context-menu/context-menu-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/context-menu/context-menu.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/context-menu/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/context-menu",
+        },
+      },
+    },
+    dialog: {
+      name: "dialog",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "utils"],
+      files: [
+        {
+          path: "styles/svelte-lyra/ui/dialog/dialog-close.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/dialog/dialog-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/dialog/dialog-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/dialog/dialog-footer.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/dialog/dialog-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/dialog/dialog-overlay.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/dialog/dialog-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/dialog/dialog-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/dialog/dialog-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/dialog/dialog.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/dialog/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/dialog" },
+      },
+    },
+    drawer: {
+      name: "drawer",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-lyra/ui/drawer/drawer-close.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/drawer/drawer-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/drawer/drawer-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/drawer/drawer-footer.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/drawer/drawer-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/drawer/drawer-nested.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/drawer/drawer-overlay.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/drawer/drawer-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/drawer/drawer-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/drawer/drawer-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/drawer/drawer.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/drawer/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/drawer" },
+      },
+    },
+    "dropdown-menu": {
+      name: "dropdown-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-lyra/ui/dropdown-menu/dropdown-menu-checkbox-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/dropdown-menu/dropdown-menu-checkbox-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/dropdown-menu/dropdown-menu-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/dropdown-menu/dropdown-menu-group-heading.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/dropdown-menu/dropdown-menu-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/dropdown-menu/dropdown-menu-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/dropdown-menu/dropdown-menu-label.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/dropdown-menu/dropdown-menu-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/dropdown-menu/dropdown-menu-radio-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/dropdown-menu/dropdown-menu-radio-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/dropdown-menu/dropdown-menu-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/dropdown-menu/dropdown-menu-shortcut.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/dropdown-menu/dropdown-menu-sub-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/dropdown-menu/dropdown-menu-sub-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/dropdown-menu/dropdown-menu-sub.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/dropdown-menu/dropdown-menu-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/dropdown-menu/dropdown-menu.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/dropdown-menu/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/dropdown-menu",
+        },
+      },
+    },
+    empty: {
+      name: "empty",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-lyra/ui/empty/empty-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/empty/empty-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/empty/empty-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/empty/empty-media.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/empty/empty-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/empty/empty.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/empty/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/empty" },
+      },
+    },
+    field: {
+      name: "field",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["label", "separator", "utils"],
+      files: [
+        {
+          path: "styles/svelte-lyra/ui/field/field-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/field/field-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/field/field-error.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/field/field-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/field/field-label.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/field/field-legend.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/field/field-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/field/field-set.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/field/field-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/field/field.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/field/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/field" },
+      },
+    },
+    "hover-card": {
+      name: "hover-card",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-lyra/ui/hover-card/hover-card-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/hover-card/hover-card-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/hover-card/hover-card-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/hover-card/hover-card.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/hover-card/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/hover-card",
+        },
+      },
+    },
+    input: {
+      name: "input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-lyra/ui/input/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/input/input.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-lyra/ui/input/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "input"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/input" },
+      },
+    },
+    "input-group": {
+      name: "input-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "input", "textarea", "utils"],
+      files: [
+        {
+          path: "styles/svelte-lyra/ui/input-group/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/input-group/input-group-addon.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/input-group/input-group-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/input-group/input-group-input.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/input-group/input-group-text.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/input-group/input-group-textarea.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/input-group/input-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-lyra/ui/input-group/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "input-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/input-group",
+        },
+      },
+    },
+    "input-otp": {
+      name: "input-otp",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-lyra/ui/input-otp/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/input-otp/input-otp-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/input-otp/input-otp-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/input-otp/input-otp-slot.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/input-otp/input-otp.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-lyra/ui/input-otp/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "input-otp"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/input-otp",
+        },
+      },
+    },
+    item: {
+      name: "item",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["separator", "utils"],
+      files: [
+        {
+          path: "styles/svelte-lyra/ui/item/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/item/item-actions.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/item/item-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/item/item-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/item/item-footer.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/item/item-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/item/item-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/item/item-media.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/item/item-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/item/item-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/item/item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-lyra/ui/item/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "item"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/item" },
+      },
+    },
+    kbd: {
+      name: "kbd",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-lyra/ui/kbd/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/kbd/kbd-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/kbd/kbd.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-lyra/ui/kbd/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "kbd"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/kbd" },
+      },
+    },
+    label: {
+      name: "label",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-lyra/ui/label/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/label/label.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-lyra/ui/label/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "label"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/label" },
+      },
+    },
+    menubar: {
+      name: "menubar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-lyra/ui/menubar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/menubar/menubar-checkbox-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/menubar/menubar-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/menubar/menubar-group-heading.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/menubar/menubar-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/menubar/menubar-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/menubar/menubar-label.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/menubar/menubar-menu.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/menubar/menubar-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/menubar/menubar-radio-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/menubar/menubar-radio-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/menubar/menubar-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/menubar/menubar-shortcut.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/menubar/menubar-sub-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/menubar/menubar-sub-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/menubar/menubar-sub.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/menubar/menubar-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/menubar/menubar.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-lyra/ui/menubar/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "menubar"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/menubar" },
+      },
+    },
+    "native-select": {
+      name: "native-select",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-lyra/ui/native-select/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/native-select/native-select-opt-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/native-select/native-select-option.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/native-select/native-select.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-lyra/ui/native-select/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "native-select"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/native-select",
+        },
+      },
+    },
+    "navigation-menu": {
+      name: "navigation-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-lyra/ui/navigation-menu/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/navigation-menu/navigation-menu-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/navigation-menu/navigation-menu-indicator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/navigation-menu/navigation-menu-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/navigation-menu/navigation-menu-link.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/navigation-menu/navigation-menu-list.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/navigation-menu/navigation-menu-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/navigation-menu/navigation-menu-viewport.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/navigation-menu/navigation-menu.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import(
+          "@/styles/svelte-lyra/ui/navigation-menu/index"
+        )
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "navigation-menu"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/navigation-menu",
+        },
+      },
+    },
+    pagination: {
+      name: "pagination",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "utils"],
+      files: [
+        {
+          path: "styles/svelte-lyra/ui/pagination/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/pagination/pagination-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/pagination/pagination-ellipsis.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/pagination/pagination-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/pagination/pagination-link.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/pagination/pagination-next-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/pagination/pagination-next.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/pagination/pagination-prev-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/pagination/pagination-previous.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/pagination/pagination.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-lyra/ui/pagination/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "pagination"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/pagination",
+        },
+      },
+    },
+    popover: {
+      name: "popover",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-lyra/ui/popover/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/popover/popover-close.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/popover/popover-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/popover/popover-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/popover/popover-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/popover/popover-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/popover/popover-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/popover/popover-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/popover/popover.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-lyra/ui/popover/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "popover"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/popover" },
+      },
+    },
+    progress: {
+      name: "progress",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-lyra/ui/progress/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/progress/progress.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-lyra/ui/progress/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "progress"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/progress" },
+      },
+    },
+    "radio-group": {
+      name: "radio-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-lyra/ui/radio-group/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/radio-group/radio-group-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/radio-group/radio-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-lyra/ui/radio-group/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "radio-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/radio-group",
+        },
+      },
+    },
+    "range-calendar": {
+      name: "range-calendar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "utils"],
+      files: [
+        {
+          path: "styles/svelte-lyra/ui/range-calendar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/range-calendar/range-calendar-caption.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/range-calendar/range-calendar-cell.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/range-calendar/range-calendar-day.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/range-calendar/range-calendar-grid-body.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/range-calendar/range-calendar-grid-head.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/range-calendar/range-calendar-grid-row.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/range-calendar/range-calendar-grid.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/range-calendar/range-calendar-head-cell.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/range-calendar/range-calendar-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/range-calendar/range-calendar-heading.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/range-calendar/range-calendar-month-select.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/range-calendar/range-calendar-month.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/range-calendar/range-calendar-months.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/range-calendar/range-calendar-nav.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/range-calendar/range-calendar-next-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/range-calendar/range-calendar-prev-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/range-calendar/range-calendar-year-select.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/range-calendar/range-calendar.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-lyra/ui/range-calendar/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "range-calendar"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/range-calendar",
+        },
+      },
+    },
+    resizable: {
+      name: "resizable",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-lyra/ui/resizable/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/resizable/resizable-handle.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/resizable/resizable-pane-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-lyra/ui/resizable/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "resizable"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/resizable",
+        },
+      },
+    },
+    "scroll-area": {
+      name: "scroll-area",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-lyra/ui/scroll-area/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/scroll-area/scroll-area-scrollbar.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/scroll-area/scroll-area.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-lyra/ui/scroll-area/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "scroll-area"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/scroll-area",
+        },
+      },
+    },
+    select: {
+      name: "select",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["separator", "utils"],
+      files: [
+        {
+          path: "styles/svelte-lyra/ui/select/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/select/select-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/select/select-group-heading.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/select/select-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/select/select-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/select/select-label.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/select/select-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/select/select-scroll-down-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/select/select-scroll-up-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/select/select-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/select/select-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/select/select.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-lyra/ui/select/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "select"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/select" },
+      },
+    },
+    separator: {
+      name: "separator",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-lyra/ui/separator/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/separator/separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-lyra/ui/separator/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "separator"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/separator",
+        },
+      },
+    },
+    sheet: {
+      name: "sheet",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "utils"],
+      files: [
+        {
+          path: "styles/svelte-lyra/ui/sheet/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/sheet/sheet-close.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/sheet/sheet-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/sheet/sheet-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/sheet/sheet-footer.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/sheet/sheet-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/sheet/sheet-overlay.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/sheet/sheet-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/sheet/sheet-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/sheet/sheet-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/sheet/sheet.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-lyra/ui/sheet/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "sheet"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/sheet" },
+      },
+    },
+    sidebar: {
+      name: "sidebar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: [
+        "button",
+        "input",
+        "separator",
+        "sheet",
+        "skeleton",
+        "tooltip",
+        "utils",
+      ],
+      files: [
+        {
+          path: "styles/svelte-lyra/ui/sidebar/constants.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/sidebar/context.svelte.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/sidebar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/sidebar/sidebar-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/sidebar/sidebar-footer.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/sidebar/sidebar-group-action.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/sidebar/sidebar-group-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/sidebar/sidebar-group-label.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/sidebar/sidebar-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/sidebar/sidebar-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/sidebar/sidebar-input.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/sidebar/sidebar-inset.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/sidebar/sidebar-menu-action.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/sidebar/sidebar-menu-badge.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/sidebar/sidebar-menu-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/sidebar/sidebar-menu-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/sidebar/sidebar-menu-skeleton.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/sidebar/sidebar-menu-sub-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/sidebar/sidebar-menu-sub-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/sidebar/sidebar-menu-sub.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/sidebar/sidebar-menu.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/sidebar/sidebar-provider.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/sidebar/sidebar-rail.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/sidebar/sidebar-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/sidebar/sidebar-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/sidebar/sidebar.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-lyra/ui/sidebar/constants")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "sidebar"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/sidebar" },
+      },
+    },
+    skeleton: {
+      name: "skeleton",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-lyra/ui/skeleton/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/skeleton/skeleton.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-lyra/ui/skeleton/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "skeleton"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/skeleton" },
+      },
+    },
+    slider: {
+      name: "slider",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-lyra/ui/slider/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/slider/slider.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-lyra/ui/slider/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "slider"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/slider" },
+      },
+    },
+    sonner: {
+      name: "sonner",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/svelte-lyra/ui/sonner/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/sonner/sonner.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-lyra/ui/sonner/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "sonner"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/sonner" },
+      },
+    },
+    spinner: {
+      name: "spinner",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-lyra/ui/spinner/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/spinner/spinner.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-lyra/ui/spinner/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "spinner"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/spinner" },
+      },
+    },
+    switch: {
+      name: "switch",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-lyra/ui/switch/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/switch/switch.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-lyra/ui/switch/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "switch"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/switch" },
+      },
+    },
+    table: {
+      name: "table",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-lyra/ui/table/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/table/table-body.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/table/table-caption.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/table/table-cell.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/table/table-footer.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/table/table-head.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/table/table-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/table/table-row.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/table/table.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-lyra/ui/table/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "table"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/table" },
+      },
+    },
+    tabs: {
+      name: "tabs",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-lyra/ui/tabs/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/tabs/tabs-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/tabs/tabs-list.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/tabs/tabs-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/tabs/tabs.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-lyra/ui/tabs/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "tabs"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/tabs" },
+      },
+    },
+    textarea: {
+      name: "textarea",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-lyra/ui/textarea/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/textarea/textarea.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-lyra/ui/textarea/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "textarea"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/textarea" },
+      },
+    },
+    toggle: {
+      name: "toggle",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-lyra/ui/toggle/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/toggle/toggle.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-lyra/ui/toggle/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "toggle"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/toggle" },
+      },
+    },
+    "toggle-group": {
+      name: "toggle-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["toggle", "utils"],
+      files: [
+        {
+          path: "styles/svelte-lyra/ui/toggle-group/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/toggle-group/toggle-group-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/toggle-group/toggle-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-lyra/ui/toggle-group/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "toggle-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/toggle-group",
+        },
+      },
+    },
+    tooltip: {
+      name: "tooltip",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-lyra/ui/tooltip/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/tooltip/tooltip-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/tooltip/tooltip-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/tooltip/tooltip-provider.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/tooltip/tooltip-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-lyra/ui/tooltip/tooltip.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-lyra/ui/tooltip/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "tooltip"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/tooltip" },
+      },
+    },
   },
   "svelte-mira": {
+    accordion: {
+      name: "accordion",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-mira/ui/accordion/accordion-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/accordion/accordion-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/accordion/accordion-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/accordion/accordion.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/accordion/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/accordion",
+        },
+      },
+    },
+    alert: {
+      name: "alert",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-mira/ui/alert/alert-action.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/alert/alert-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/alert/alert-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/alert/alert.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/alert/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/alert" },
+      },
+    },
+    "alert-dialog": {
+      name: "alert-dialog",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "utils"],
+      files: [
+        {
+          path: "styles/svelte-mira/ui/alert-dialog/alert-dialog-action.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/alert-dialog/alert-dialog-cancel.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/alert-dialog/alert-dialog-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/alert-dialog/alert-dialog-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/alert-dialog/alert-dialog-footer.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/alert-dialog/alert-dialog-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/alert-dialog/alert-dialog-media.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/alert-dialog/alert-dialog-overlay.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/alert-dialog/alert-dialog-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/alert-dialog/alert-dialog-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/alert-dialog/alert-dialog-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/alert-dialog/alert-dialog.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/alert-dialog/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/alert-dialog",
+        },
+      },
+    },
+    "aspect-ratio": {
+      name: "aspect-ratio",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/svelte-mira/ui/aspect-ratio/aspect-ratio.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/aspect-ratio/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/aspect-ratio",
+        },
+      },
+    },
+    avatar: {
+      name: "avatar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-mira/ui/avatar/avatar-badge.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/avatar/avatar-fallback.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/avatar/avatar-group-count.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/avatar/avatar-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/avatar/avatar-image.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/avatar/avatar.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/avatar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/avatar" },
+      },
+    },
+    badge: {
+      name: "badge",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-mira/ui/badge/badge.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/badge/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/badge" },
+      },
+    },
+    breadcrumb: {
+      name: "breadcrumb",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-mira/ui/breadcrumb/breadcrumb-ellipsis.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/breadcrumb/breadcrumb-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/breadcrumb/breadcrumb-link.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/breadcrumb/breadcrumb-list.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/breadcrumb/breadcrumb-page.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/breadcrumb/breadcrumb-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/breadcrumb/breadcrumb.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/breadcrumb/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/breadcrumb",
+        },
+      },
+    },
     button: {
       name: "button",
       title: "undefined",
@@ -28371,7 +54202,12 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["utils"],
       files: [
         {
-          path: "styles/svelte-mira/ui/button.svelte",
+          path: "styles/svelte-mira/ui/button/button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/button/index.ts",
           type: "registry:ui",
           target: "",
         },
@@ -28380,6 +54216,2640 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: {
         links: { docs: "https://force-ui.com/docs/components/svelte/button" },
+      },
+    },
+    "button-group": {
+      name: "button-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["separator", "utils"],
+      files: [
+        {
+          path: "styles/svelte-mira/ui/button-group/button-group-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/button-group/button-group-text.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/button-group/button-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/button-group/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/button-group",
+        },
+      },
+    },
+    calendar: {
+      name: "calendar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "utils"],
+      files: [
+        {
+          path: "styles/svelte-mira/ui/calendar/calendar-caption.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/calendar/calendar-cell.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/calendar/calendar-day.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/calendar/calendar-grid-body.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/calendar/calendar-grid-head.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/calendar/calendar-grid-row.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/calendar/calendar-grid.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/calendar/calendar-head-cell.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/calendar/calendar-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/calendar/calendar-heading.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/calendar/calendar-month-select.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/calendar/calendar-month.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/calendar/calendar-months.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/calendar/calendar-nav.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/calendar/calendar-next-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/calendar/calendar-prev-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/calendar/calendar-year-select.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/calendar/calendar.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/calendar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/calendar" },
+      },
+    },
+    card: {
+      name: "card",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-mira/ui/card/card-action.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/card/card-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/card/card-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/card/card-footer.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/card/card-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/card/card-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/card/card.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/card/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/card" },
+      },
+    },
+    carousel: {
+      name: "carousel",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "utils"],
+      files: [
+        {
+          path: "styles/svelte-mira/ui/carousel/carousel-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/carousel/carousel-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/carousel/carousel-next.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/carousel/carousel-previous.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/carousel/carousel.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/carousel/context.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/carousel/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/carousel" },
+      },
+    },
+    chart: {
+      name: "chart",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-mira/ui/chart/chart-container.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/chart/chart-style.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/chart/chart-tooltip.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/chart/chart-utils.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/chart/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/chart" },
+      },
+    },
+    checkbox: {
+      name: "checkbox",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-mira/ui/checkbox/checkbox.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/checkbox/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/checkbox" },
+      },
+    },
+    collapsible: {
+      name: "collapsible",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/svelte-mira/ui/collapsible/collapsible-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/collapsible/collapsible-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/collapsible/collapsible.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/collapsible/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/collapsible",
+        },
+      },
+    },
+    command: {
+      name: "command",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["dialog", "input-group", "utils"],
+      files: [
+        {
+          path: "styles/svelte-mira/ui/command/command-dialog.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/command/command-empty.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/command/command-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/command/command-input.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/command/command-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/command/command-link-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/command/command-list.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/command/command-loading.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/command/command-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/command/command-shortcut.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/command/command.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/command/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/command" },
+      },
+    },
+    "context-menu": {
+      name: "context-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-mira/ui/context-menu/context-menu-checkbox-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/context-menu/context-menu-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/context-menu/context-menu-group-heading.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/context-menu/context-menu-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/context-menu/context-menu-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/context-menu/context-menu-label.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/context-menu/context-menu-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/context-menu/context-menu-radio-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/context-menu/context-menu-radio-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/context-menu/context-menu-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/context-menu/context-menu-shortcut.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/context-menu/context-menu-sub-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/context-menu/context-menu-sub-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/context-menu/context-menu-sub.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/context-menu/context-menu-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/context-menu/context-menu.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/context-menu/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/context-menu",
+        },
+      },
+    },
+    dialog: {
+      name: "dialog",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "utils"],
+      files: [
+        {
+          path: "styles/svelte-mira/ui/dialog/dialog-close.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/dialog/dialog-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/dialog/dialog-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/dialog/dialog-footer.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/dialog/dialog-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/dialog/dialog-overlay.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/dialog/dialog-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/dialog/dialog-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/dialog/dialog-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/dialog/dialog.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/dialog/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/dialog" },
+      },
+    },
+    drawer: {
+      name: "drawer",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-mira/ui/drawer/drawer-close.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/drawer/drawer-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/drawer/drawer-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/drawer/drawer-footer.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/drawer/drawer-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/drawer/drawer-nested.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/drawer/drawer-overlay.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/drawer/drawer-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/drawer/drawer-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/drawer/drawer-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/drawer/drawer.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/drawer/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/drawer" },
+      },
+    },
+    "dropdown-menu": {
+      name: "dropdown-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-mira/ui/dropdown-menu/dropdown-menu-checkbox-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/dropdown-menu/dropdown-menu-checkbox-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/dropdown-menu/dropdown-menu-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/dropdown-menu/dropdown-menu-group-heading.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/dropdown-menu/dropdown-menu-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/dropdown-menu/dropdown-menu-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/dropdown-menu/dropdown-menu-label.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/dropdown-menu/dropdown-menu-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/dropdown-menu/dropdown-menu-radio-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/dropdown-menu/dropdown-menu-radio-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/dropdown-menu/dropdown-menu-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/dropdown-menu/dropdown-menu-shortcut.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/dropdown-menu/dropdown-menu-sub-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/dropdown-menu/dropdown-menu-sub-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/dropdown-menu/dropdown-menu-sub.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/dropdown-menu/dropdown-menu-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/dropdown-menu/dropdown-menu.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/dropdown-menu/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/dropdown-menu",
+        },
+      },
+    },
+    empty: {
+      name: "empty",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-mira/ui/empty/empty-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/empty/empty-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/empty/empty-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/empty/empty-media.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/empty/empty-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/empty/empty.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/empty/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/empty" },
+      },
+    },
+    field: {
+      name: "field",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["label", "separator", "utils"],
+      files: [
+        {
+          path: "styles/svelte-mira/ui/field/field-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/field/field-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/field/field-error.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/field/field-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/field/field-label.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/field/field-legend.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/field/field-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/field/field-set.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/field/field-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/field/field.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/field/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/field" },
+      },
+    },
+    "hover-card": {
+      name: "hover-card",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-mira/ui/hover-card/hover-card-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/hover-card/hover-card-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/hover-card/hover-card-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/hover-card/hover-card.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/hover-card/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/hover-card",
+        },
+      },
+    },
+    input: {
+      name: "input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-mira/ui/input/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/input/input.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-mira/ui/input/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "input"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/input" },
+      },
+    },
+    "input-group": {
+      name: "input-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "input", "textarea", "utils"],
+      files: [
+        {
+          path: "styles/svelte-mira/ui/input-group/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/input-group/input-group-addon.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/input-group/input-group-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/input-group/input-group-input.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/input-group/input-group-text.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/input-group/input-group-textarea.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/input-group/input-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-mira/ui/input-group/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "input-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/input-group",
+        },
+      },
+    },
+    "input-otp": {
+      name: "input-otp",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-mira/ui/input-otp/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/input-otp/input-otp-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/input-otp/input-otp-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/input-otp/input-otp-slot.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/input-otp/input-otp.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-mira/ui/input-otp/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "input-otp"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/input-otp",
+        },
+      },
+    },
+    item: {
+      name: "item",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["separator", "utils"],
+      files: [
+        {
+          path: "styles/svelte-mira/ui/item/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/item/item-actions.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/item/item-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/item/item-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/item/item-footer.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/item/item-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/item/item-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/item/item-media.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/item/item-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/item/item-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/item/item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-mira/ui/item/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "item"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/item" },
+      },
+    },
+    kbd: {
+      name: "kbd",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-mira/ui/kbd/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/kbd/kbd-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/kbd/kbd.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-mira/ui/kbd/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "kbd"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/kbd" },
+      },
+    },
+    label: {
+      name: "label",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-mira/ui/label/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/label/label.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-mira/ui/label/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "label"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/label" },
+      },
+    },
+    menubar: {
+      name: "menubar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-mira/ui/menubar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/menubar/menubar-checkbox-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/menubar/menubar-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/menubar/menubar-group-heading.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/menubar/menubar-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/menubar/menubar-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/menubar/menubar-label.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/menubar/menubar-menu.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/menubar/menubar-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/menubar/menubar-radio-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/menubar/menubar-radio-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/menubar/menubar-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/menubar/menubar-shortcut.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/menubar/menubar-sub-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/menubar/menubar-sub-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/menubar/menubar-sub.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/menubar/menubar-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/menubar/menubar.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-mira/ui/menubar/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "menubar"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/menubar" },
+      },
+    },
+    "native-select": {
+      name: "native-select",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-mira/ui/native-select/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/native-select/native-select-opt-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/native-select/native-select-option.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/native-select/native-select.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-mira/ui/native-select/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "native-select"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/native-select",
+        },
+      },
+    },
+    "navigation-menu": {
+      name: "navigation-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-mira/ui/navigation-menu/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/navigation-menu/navigation-menu-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/navigation-menu/navigation-menu-indicator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/navigation-menu/navigation-menu-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/navigation-menu/navigation-menu-link.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/navigation-menu/navigation-menu-list.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/navigation-menu/navigation-menu-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/navigation-menu/navigation-menu-viewport.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/navigation-menu/navigation-menu.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import(
+          "@/styles/svelte-mira/ui/navigation-menu/index"
+        )
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "navigation-menu"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/navigation-menu",
+        },
+      },
+    },
+    pagination: {
+      name: "pagination",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "utils"],
+      files: [
+        {
+          path: "styles/svelte-mira/ui/pagination/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/pagination/pagination-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/pagination/pagination-ellipsis.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/pagination/pagination-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/pagination/pagination-link.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/pagination/pagination-next-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/pagination/pagination-next.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/pagination/pagination-prev-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/pagination/pagination-previous.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/pagination/pagination.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-mira/ui/pagination/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "pagination"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/pagination",
+        },
+      },
+    },
+    popover: {
+      name: "popover",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-mira/ui/popover/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/popover/popover-close.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/popover/popover-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/popover/popover-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/popover/popover-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/popover/popover-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/popover/popover-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/popover/popover-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/popover/popover.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-mira/ui/popover/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "popover"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/popover" },
+      },
+    },
+    progress: {
+      name: "progress",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-mira/ui/progress/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/progress/progress.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-mira/ui/progress/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "progress"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/progress" },
+      },
+    },
+    "radio-group": {
+      name: "radio-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-mira/ui/radio-group/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/radio-group/radio-group-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/radio-group/radio-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-mira/ui/radio-group/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "radio-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/radio-group",
+        },
+      },
+    },
+    "range-calendar": {
+      name: "range-calendar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "utils"],
+      files: [
+        {
+          path: "styles/svelte-mira/ui/range-calendar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/range-calendar/range-calendar-caption.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/range-calendar/range-calendar-cell.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/range-calendar/range-calendar-day.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/range-calendar/range-calendar-grid-body.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/range-calendar/range-calendar-grid-head.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/range-calendar/range-calendar-grid-row.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/range-calendar/range-calendar-grid.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/range-calendar/range-calendar-head-cell.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/range-calendar/range-calendar-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/range-calendar/range-calendar-heading.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/range-calendar/range-calendar-month-select.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/range-calendar/range-calendar-month.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/range-calendar/range-calendar-months.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/range-calendar/range-calendar-nav.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/range-calendar/range-calendar-next-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/range-calendar/range-calendar-prev-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/range-calendar/range-calendar-year-select.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/range-calendar/range-calendar.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-mira/ui/range-calendar/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "range-calendar"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/range-calendar",
+        },
+      },
+    },
+    resizable: {
+      name: "resizable",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-mira/ui/resizable/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/resizable/resizable-handle.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/resizable/resizable-pane-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-mira/ui/resizable/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "resizable"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/resizable",
+        },
+      },
+    },
+    "scroll-area": {
+      name: "scroll-area",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-mira/ui/scroll-area/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/scroll-area/scroll-area-scrollbar.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/scroll-area/scroll-area.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-mira/ui/scroll-area/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "scroll-area"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/scroll-area",
+        },
+      },
+    },
+    select: {
+      name: "select",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["separator", "utils"],
+      files: [
+        {
+          path: "styles/svelte-mira/ui/select/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/select/select-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/select/select-group-heading.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/select/select-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/select/select-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/select/select-label.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/select/select-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/select/select-scroll-down-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/select/select-scroll-up-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/select/select-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/select/select-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/select/select.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-mira/ui/select/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "select"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/select" },
+      },
+    },
+    separator: {
+      name: "separator",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-mira/ui/separator/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/separator/separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-mira/ui/separator/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "separator"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/separator",
+        },
+      },
+    },
+    sheet: {
+      name: "sheet",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "utils"],
+      files: [
+        {
+          path: "styles/svelte-mira/ui/sheet/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/sheet/sheet-close.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/sheet/sheet-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/sheet/sheet-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/sheet/sheet-footer.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/sheet/sheet-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/sheet/sheet-overlay.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/sheet/sheet-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/sheet/sheet-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/sheet/sheet-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/sheet/sheet.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-mira/ui/sheet/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "sheet"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/sheet" },
+      },
+    },
+    sidebar: {
+      name: "sidebar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: [
+        "button",
+        "input",
+        "separator",
+        "sheet",
+        "skeleton",
+        "tooltip",
+        "utils",
+      ],
+      files: [
+        {
+          path: "styles/svelte-mira/ui/sidebar/constants.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/sidebar/context.svelte.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/sidebar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/sidebar/sidebar-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/sidebar/sidebar-footer.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/sidebar/sidebar-group-action.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/sidebar/sidebar-group-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/sidebar/sidebar-group-label.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/sidebar/sidebar-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/sidebar/sidebar-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/sidebar/sidebar-input.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/sidebar/sidebar-inset.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/sidebar/sidebar-menu-action.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/sidebar/sidebar-menu-badge.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/sidebar/sidebar-menu-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/sidebar/sidebar-menu-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/sidebar/sidebar-menu-skeleton.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/sidebar/sidebar-menu-sub-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/sidebar/sidebar-menu-sub-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/sidebar/sidebar-menu-sub.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/sidebar/sidebar-menu.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/sidebar/sidebar-provider.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/sidebar/sidebar-rail.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/sidebar/sidebar-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/sidebar/sidebar-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/sidebar/sidebar.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-mira/ui/sidebar/constants")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "sidebar"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/sidebar" },
+      },
+    },
+    skeleton: {
+      name: "skeleton",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-mira/ui/skeleton/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/skeleton/skeleton.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-mira/ui/skeleton/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "skeleton"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/skeleton" },
+      },
+    },
+    slider: {
+      name: "slider",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-mira/ui/slider/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/slider/slider.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-mira/ui/slider/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "slider"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/slider" },
+      },
+    },
+    sonner: {
+      name: "sonner",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/svelte-mira/ui/sonner/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/sonner/sonner.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-mira/ui/sonner/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "sonner"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/sonner" },
+      },
+    },
+    spinner: {
+      name: "spinner",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-mira/ui/spinner/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/spinner/spinner.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-mira/ui/spinner/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "spinner"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/spinner" },
+      },
+    },
+    switch: {
+      name: "switch",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-mira/ui/switch/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/switch/switch.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-mira/ui/switch/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "switch"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/switch" },
+      },
+    },
+    table: {
+      name: "table",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-mira/ui/table/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/table/table-body.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/table/table-caption.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/table/table-cell.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/table/table-footer.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/table/table-head.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/table/table-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/table/table-row.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/table/table.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-mira/ui/table/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "table"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/table" },
+      },
+    },
+    tabs: {
+      name: "tabs",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-mira/ui/tabs/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/tabs/tabs-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/tabs/tabs-list.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/tabs/tabs-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/tabs/tabs.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-mira/ui/tabs/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "tabs"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/tabs" },
+      },
+    },
+    textarea: {
+      name: "textarea",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-mira/ui/textarea/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/textarea/textarea.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-mira/ui/textarea/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "textarea"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/textarea" },
+      },
+    },
+    toggle: {
+      name: "toggle",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-mira/ui/toggle/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/toggle/toggle.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-mira/ui/toggle/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "toggle"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/toggle" },
+      },
+    },
+    "toggle-group": {
+      name: "toggle-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["toggle", "utils"],
+      files: [
+        {
+          path: "styles/svelte-mira/ui/toggle-group/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/toggle-group/toggle-group-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/toggle-group/toggle-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-mira/ui/toggle-group/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "toggle-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/toggle-group",
+        },
+      },
+    },
+    tooltip: {
+      name: "tooltip",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "styles/svelte-mira/ui/tooltip/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/tooltip/tooltip-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/tooltip/tooltip-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/tooltip/tooltip-provider.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/tooltip/tooltip-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "styles/svelte-mira/ui/tooltip/tooltip.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/styles/svelte-mira/ui/tooltip/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "tooltip"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/tooltip" },
       },
     },
   },

@@ -8,7 +8,7 @@
   "files": [
     {
       "path": "registry/svelte-maia/examples/button-default.svelte",
-      "content": "<script lang=\"ts\">\n  import Button from \"@/ui/button.svelte\"\n</script>\n\n<Button>Button</Button>\n",
+      "content": "<script lang=\"ts\">\n  import { Button } from \"$lib/registry/ui/button/index.js\"\n</script>\n\n<Button>Button</Button>\n",
       "type": "registry:example"
     }
   ],

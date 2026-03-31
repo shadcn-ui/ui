@@ -8,7 +8,7 @@
   "files": [
     {
       "path": "registry/svelte-lyra/examples/button-secondary.svelte",
-      "content": "<script lang=\"ts\">\n  import Button from \"@/ui/button.svelte\"\n</script>\n\n<Button variant=\"secondary\">Secondary</Button>\n",
+      "content": "<script lang=\"ts\">\n  import { Button } from \"$lib/registry/ui/button/index.js\"\n</script>\n\n<Button variant=\"secondary\">Secondary</Button>\n",
       "type": "registry:example"
     }
   ],
