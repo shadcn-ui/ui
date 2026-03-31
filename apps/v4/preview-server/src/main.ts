@@ -69,14 +69,15 @@ async function renderPreview() {
       app.innerHTML = `<p>Vue component "${componentName}" not found.</p>`
     }
   } else if (framework === "svelte") {
+    const { mount } = await import("svelte")
     const modules = import.meta.glob("./svelte/*.svelte")
     const modulePath = `./svelte/${componentName}.svelte`
 
     if (modules[modulePath]) {
       const mod = (await modules[modulePath]()) as {
-        default: new (opts: { target: HTMLElement }) => unknown
+        default: Parameters<typeof mount>[0]
       }
-      new mod.default({ target: app })
+      mount(mod.default, { target: app })
     } else {
       app.innerHTML = `<p>Svelte component "${componentName}" not found.</p>`
     }

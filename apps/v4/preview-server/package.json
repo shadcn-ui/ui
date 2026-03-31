@@ -25,7 +25,21 @@
     "vue-input-otp": "^0.1.0",
     "@internationalized/date": "^3.7.0",
     "@unovis/vue": "^1.5.0",
-    "@unovis/ts": "^1.5.0"
+    "@unovis/ts": "^1.5.0",
+    "bits-ui": "^1.0.0",
+    "@lucide/svelte": "^0.474.0",
+    "embla-carousel-svelte": "^8.0.0",
+    "vaul-svelte": "^1.0.0",
+    "paneforge": "^1.0.0",
+    "svelte-sonner": "^0.3.0",
+    "layerchart": "^2.0.0",
+    "d3-scale": "^4.0.0",
+    "mode-watcher": "^0.5.0",
+    "tailwind-variants": "^0.3.0",
+    "@tabler/icons-svelte": "^3.0.0",
+    "@tanstack/table-core": "^8.0.0",
+    "embla-carousel-autoplay": "^8.0.0",
+    "zod": "^3.0.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.2.0",
