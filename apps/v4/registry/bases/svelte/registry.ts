@@ -7,7 +7,7 @@ import { ui } from "./ui/_registry"
 
 const SVELTE_STYLE = {
   type: "registry:style",
-  dependencies: ["class-variance-authority", "svelte"],
+  dependencies: ["class-variance-authority", "svelte", "bits-ui"],
   devDependencies: ["tw-animate-css", "shadcn"],
   registryDependencies: ["utils"],
   css: {
