@@ -41,7 +41,7 @@ import { getPresetCode } from "@/app/(app)/create/lib/preset-code"
 import { resolvePresetOverrides } from "@/app/(app)/create/lib/preset-query"
 
 const designSystemSearchParams = {
-  preset: parseAsString.withDefault("b2D0wq4FE"),
+  preset: parseAsString.withDefault("b2D0wqNxT"),
   base: parseAsStringLiteral<BaseName>(BASES.map((b) => b.name)).withDefault(
     DEFAULT_CONFIG.base
   ),
