@@ -136,11 +136,17 @@ const nextConfig = {
   },
   rewrites() {
     return {
-      afterFiles: [
+      beforeFiles: [
         {
-          source: "/preview/:path*",
+          source: "/preview/vue/:path*",
           destination: "/preview/index.html",
         },
+        {
+          source: "/preview/svelte/:path*",
+          destination: "/preview/index.html",
+        },
+      ],
+      afterFiles: [
         {
           source: "/docs/:path*.md",
           destination: "/llm/:path*",
