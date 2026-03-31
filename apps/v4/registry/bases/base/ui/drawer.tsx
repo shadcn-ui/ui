@@ -1,7 +1,8 @@
 "use client"
 
 import * as React from "react"
-import { Drawer as DrawerPrimitive } from "vaul"
+// base-vaul (not vaul): Base UI Select and similar overlays do not open correctly inside vaul’s Radix-based drawer; base-vaul uses Base UI primitives and fixes that.
+import { Drawer as DrawerPrimitive } from "base-vaul"
 
 import { cn } from "@/registry/bases/base/lib/utils"
 
