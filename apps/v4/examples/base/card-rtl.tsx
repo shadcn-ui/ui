@@ -1,7 +1,12 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/base/ui-rtl/button"
+
+import {
+  useTranslation,
+  type Translations,
+} from "@/components/language-selector"
+import { Button } from "@/styles/base-nova/ui-rtl/button"
 import {
   Card,
   CardAction,
@@ -10,14 +15,9 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/examples/base/ui-rtl/card"
-import { Input } from "@/examples/base/ui-rtl/input"
-import { Label } from "@/examples/base/ui-rtl/label"
-
-import {
-  useTranslation,
-  type Translations,
-} from "@/components/language-selector"
+} from "@/styles/base-nova/ui-rtl/card"
+import { Input } from "@/styles/base-nova/ui-rtl/input"
+import { Label } from "@/styles/base-nova/ui-rtl/label"
 
 const translations: Translations = {
   en: {

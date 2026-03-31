@@ -1,8 +1,12 @@
 "use client"
 
-import { Button } from "@/examples/radix/ui-rtl/button"
-import { Field, FieldGroup, FieldLabel } from "@/examples/radix/ui-rtl/field"
-import { Input } from "@/examples/radix/ui-rtl/input"
+import {
+  useTranslation,
+  type Translations,
+} from "@/components/language-selector"
+import { Button } from "@/styles/radix-nova/ui-rtl/button"
+import { Field, FieldGroup, FieldLabel } from "@/styles/radix-nova/ui-rtl/field"
+import { Input } from "@/styles/radix-nova/ui-rtl/input"
 import {
   Sheet,
   SheetClose,
@@ -12,12 +16,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/examples/radix/ui-rtl/sheet"
-
-import {
-  useTranslation,
-  type Translations,
-} from "@/components/language-selector"
+} from "@/styles/radix-nova/ui-rtl/sheet"
 
 const translations: Translations = {
   en: {

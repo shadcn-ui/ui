@@ -1,26 +1,6 @@
 "use client"
 
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/examples/base/ui-rtl/dropdown-menu"
-import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupButton,
-  InputGroupInput,
-  InputGroupText,
-  InputGroupTextarea,
-} from "@/examples/base/ui-rtl/input-group"
-import { Separator } from "@/examples/base/ui-rtl/separator"
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/examples/base/ui-rtl/tooltip"
-import {
   IconCheck,
   IconChevronDown,
   IconInfoCircle,
@@ -29,6 +9,26 @@ import {
 import { ArrowUpIcon, Search } from "lucide-react"
 
 import { useLanguageContext } from "@/components/language-selector"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/styles/base-nova/ui-rtl/dropdown-menu"
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButton,
+  InputGroupInput,
+  InputGroupText,
+  InputGroupTextarea,
+} from "@/styles/base-nova/ui-rtl/input-group"
+import { Separator } from "@/styles/base-nova/ui-rtl/separator"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/styles/base-nova/ui-rtl/tooltip"
 
 const translations = {
   ar: {

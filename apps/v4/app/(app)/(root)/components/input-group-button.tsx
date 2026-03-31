@@ -1,19 +1,20 @@
 "use client"
 
 import * as React from "react"
+import { IconInfoCircle, IconStar } from "@tabler/icons-react"
+
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
-} from "@/examples/radix/ui/input-group"
-import { Label } from "@/examples/radix/ui/label"
+} from "@/styles/radix-nova/ui/input-group"
+import { Label } from "@/styles/radix-nova/ui/label"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/examples/radix/ui/popover"
-import { IconInfoCircle, IconStar } from "@tabler/icons-react"
+} from "@/styles/radix-nova/ui/popover"
 
 export function InputGroupButtonExample() {
   const [isFavorite, setIsFavorite] = React.useState(false)
