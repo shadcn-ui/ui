@@ -418,7 +418,8 @@ export const Index: Record<string, Record<string, any>> = {`
         ? `@/registry/bases/${base.name}/${stripFileExtension(files[0].path)}`
         : ""
       const firstFileExt = files[0]?.path ? path.extname(files[0].path) : ""
-      const isReactComponent = firstFileExt === ".tsx" || firstFileExt === ".ts"
+      const isNonReactBase = base.name === "vue" || base.name === "svelte"
+      const isReactComponent = !isNonReactBase && (firstFileExt === ".tsx" || firstFileExt === ".ts")
 
       index += `
     "${item.name}": {
@@ -764,7 +765,8 @@ export const Index: Record<string, Record<string, any>> = {`
           : `@/registry/${style.name}/${stripFileExtension(files[0].path)}`
         : ""
       const firstFileExt = files[0]?.path ? path.extname(files[0].path) : ""
-      const isReactComponent = firstFileExt === ".tsx" || firstFileExt === ".ts"
+      const isNonReactBase = styleCombination && (styleCombination.base.name === "vue" || styleCombination.base.name === "svelte")
+      const isReactComponent = !isNonReactBase && (firstFileExt === ".tsx" || firstFileExt === ".ts")
 
       index += `
     "${item.name}": {

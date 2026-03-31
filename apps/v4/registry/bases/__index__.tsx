@@ -15187,15 +15187,7 @@ export const Index: Record<string, Record<string, any>> = {
           target: "",
         },
       ],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/bases/vue/lib/utils")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "utils"
-        return { default: mod.default || mod[exportName] }
-      }),
+      component: null,
       categories: undefined,
       meta: undefined,
     },
@@ -16489,15 +16481,7 @@ export const Index: Record<string, Record<string, any>> = {
           target: "",
         },
       ],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/bases/svelte/ui/input/index")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "input"
-        return { default: mod.default || mod[exportName] }
-      }),
+      component: null,
       categories: undefined,
       meta: {
         links: { docs: "https://force-ui.com/docs/components/svelte/input" },
@@ -16546,15 +16530,7 @@ export const Index: Record<string, Record<string, any>> = {
           target: "",
         },
       ],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/bases/svelte/ui/input-group/index")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "input-group"
-        return { default: mod.default || mod[exportName] }
-      }),
+      component: null,
       categories: undefined,
       meta: {
         links: {
@@ -16595,15 +16571,7 @@ export const Index: Record<string, Record<string, any>> = {
           target: "",
         },
       ],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/bases/svelte/ui/input-otp/index")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "input-otp"
-        return { default: mod.default || mod[exportName] }
-      }),
+      component: null,
       categories: undefined,
       meta: {
         links: {
@@ -16674,15 +16642,7 @@ export const Index: Record<string, Record<string, any>> = {
           target: "",
         },
       ],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/bases/svelte/ui/item/index")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "item"
-        return { default: mod.default || mod[exportName] }
-      }),
+      component: null,
       categories: undefined,
       meta: {
         links: { docs: "https://force-ui.com/docs/components/svelte/item" },
@@ -16711,15 +16671,7 @@ export const Index: Record<string, Record<string, any>> = {
           target: "",
         },
       ],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/bases/svelte/ui/kbd/index")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "kbd"
-        return { default: mod.default || mod[exportName] }
-      }),
+      component: null,
       categories: undefined,
       meta: {
         links: { docs: "https://force-ui.com/docs/components/svelte/kbd" },
@@ -16743,15 +16695,7 @@ export const Index: Record<string, Record<string, any>> = {
           target: "",
         },
       ],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/bases/svelte/ui/label/index")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "label"
-        return { default: mod.default || mod[exportName] }
-      }),
+      component: null,
       categories: undefined,
       meta: {
         links: { docs: "https://force-ui.com/docs/components/svelte/label" },
@@ -16855,15 +16799,7 @@ export const Index: Record<string, Record<string, any>> = {
           target: "",
         },
       ],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/bases/svelte/ui/menubar/index")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "menubar"
-        return { default: mod.default || mod[exportName] }
-      }),
+      component: null,
       categories: undefined,
       meta: {
         links: { docs: "https://force-ui.com/docs/components/svelte/menubar" },
@@ -16897,17 +16833,7 @@ export const Index: Record<string, Record<string, any>> = {
           target: "",
         },
       ],
-      component: React.lazy(async () => {
-        const mod = await import(
-          "@/registry/bases/svelte/ui/native-select/index"
-        )
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "native-select"
-        return { default: mod.default || mod[exportName] }
-      }),
+      component: null,
       categories: undefined,
       meta: {
         links: {
@@ -16968,17 +16894,7 @@ export const Index: Record<string, Record<string, any>> = {
           target: "",
         },
       ],
-      component: React.lazy(async () => {
-        const mod = await import(
-          "@/registry/bases/svelte/ui/navigation-menu/index"
-        )
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "navigation-menu"
-        return { default: mod.default || mod[exportName] }
-      }),
+      component: null,
       categories: undefined,
       meta: {
         links: {
@@ -17044,15 +16960,7 @@ export const Index: Record<string, Record<string, any>> = {
           target: "",
         },
       ],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/bases/svelte/ui/pagination/index")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "pagination"
-        return { default: mod.default || mod[exportName] }
-      }),
+      component: null,
       categories: undefined,
       meta: {
         links: {
@@ -17113,15 +17021,7 @@ export const Index: Record<string, Record<string, any>> = {
           target: "",
         },
       ],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/bases/svelte/ui/popover/index")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "popover"
-        return { default: mod.default || mod[exportName] }
-      }),
+      component: null,
       categories: undefined,
       meta: {
         links: { docs: "https://force-ui.com/docs/components/svelte/popover" },
@@ -17145,15 +17045,7 @@ export const Index: Record<string, Record<string, any>> = {
           target: "",
         },
       ],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/bases/svelte/ui/progress/index")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "progress"
-        return { default: mod.default || mod[exportName] }
-      }),
+      component: null,
       categories: undefined,
       meta: {
         links: { docs: "https://force-ui.com/docs/components/svelte/progress" },
@@ -17182,15 +17074,7 @@ export const Index: Record<string, Record<string, any>> = {
           target: "",
         },
       ],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/bases/svelte/ui/radio-group/index")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "radio-group"
-        return { default: mod.default || mod[exportName] }
-      }),
+      component: null,
       categories: undefined,
       meta: {
         links: {
@@ -17301,17 +17185,7 @@ export const Index: Record<string, Record<string, any>> = {
           target: "",
         },
       ],
-      component: React.lazy(async () => {
-        const mod = await import(
-          "@/registry/bases/svelte/ui/range-calendar/index"
-        )
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "range-calendar"
-        return { default: mod.default || mod[exportName] }
-      }),
+      component: null,
       categories: undefined,
       meta: {
         links: {
@@ -17342,15 +17216,7 @@ export const Index: Record<string, Record<string, any>> = {
           target: "",
         },
       ],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/bases/svelte/ui/resizable/index")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "resizable"
-        return { default: mod.default || mod[exportName] }
-      }),
+      component: null,
       categories: undefined,
       meta: {
         links: {
@@ -17381,15 +17247,7 @@ export const Index: Record<string, Record<string, any>> = {
           target: "",
         },
       ],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/bases/svelte/ui/scroll-area/index")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "scroll-area"
-        return { default: mod.default || mod[exportName] }
-      }),
+      component: null,
       categories: undefined,
       meta: {
         links: {
@@ -17465,15 +17323,7 @@ export const Index: Record<string, Record<string, any>> = {
           target: "",
         },
       ],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/bases/svelte/ui/select/index")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "select"
-        return { default: mod.default || mod[exportName] }
-      }),
+      component: null,
       categories: undefined,
       meta: {
         links: { docs: "https://force-ui.com/docs/components/svelte/select" },
@@ -17497,15 +17347,7 @@ export const Index: Record<string, Record<string, any>> = {
           target: "",
         },
       ],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/bases/svelte/ui/separator/index")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "separator"
-        return { default: mod.default || mod[exportName] }
-      }),
+      component: null,
       categories: undefined,
       meta: {
         links: {
@@ -17576,15 +17418,7 @@ export const Index: Record<string, Record<string, any>> = {
           target: "",
         },
       ],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/bases/svelte/ui/sheet/index")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "sheet"
-        return { default: mod.default || mod[exportName] }
-      }),
+      component: null,
       categories: undefined,
       meta: {
         links: { docs: "https://force-ui.com/docs/components/svelte/sheet" },
@@ -17736,15 +17570,7 @@ export const Index: Record<string, Record<string, any>> = {
           target: "",
         },
       ],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/bases/svelte/ui/sidebar/constants")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "sidebar"
-        return { default: mod.default || mod[exportName] }
-      }),
+      component: null,
       categories: undefined,
       meta: {
         links: { docs: "https://force-ui.com/docs/components/svelte/sidebar" },
@@ -17768,15 +17594,7 @@ export const Index: Record<string, Record<string, any>> = {
           target: "",
         },
       ],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/bases/svelte/ui/skeleton/index")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "skeleton"
-        return { default: mod.default || mod[exportName] }
-      }),
+      component: null,
       categories: undefined,
       meta: {
         links: { docs: "https://force-ui.com/docs/components/svelte/skeleton" },
@@ -17800,15 +17618,7 @@ export const Index: Record<string, Record<string, any>> = {
           target: "",
         },
       ],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/bases/svelte/ui/slider/index")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "slider"
-        return { default: mod.default || mod[exportName] }
-      }),
+      component: null,
       categories: undefined,
       meta: {
         links: { docs: "https://force-ui.com/docs/components/svelte/slider" },
@@ -17832,15 +17642,7 @@ export const Index: Record<string, Record<string, any>> = {
           target: "",
         },
       ],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/bases/svelte/ui/sonner/index")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "sonner"
-        return { default: mod.default || mod[exportName] }
-      }),
+      component: null,
       categories: undefined,
       meta: {
         links: { docs: "https://force-ui.com/docs/components/svelte/sonner" },
@@ -17864,15 +17666,7 @@ export const Index: Record<string, Record<string, any>> = {
           target: "",
         },
       ],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/bases/svelte/ui/spinner/index")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "spinner"
-        return { default: mod.default || mod[exportName] }
-      }),
+      component: null,
       categories: undefined,
       meta: {
         links: { docs: "https://force-ui.com/docs/components/svelte/spinner" },
@@ -17896,15 +17690,7 @@ export const Index: Record<string, Record<string, any>> = {
           target: "",
         },
       ],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/bases/svelte/ui/switch/index")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "switch"
-        return { default: mod.default || mod[exportName] }
-      }),
+      component: null,
       categories: undefined,
       meta: {
         links: { docs: "https://force-ui.com/docs/components/svelte/switch" },
@@ -17963,15 +17749,7 @@ export const Index: Record<string, Record<string, any>> = {
           target: "",
         },
       ],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/bases/svelte/ui/table/index")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "table"
-        return { default: mod.default || mod[exportName] }
-      }),
+      component: null,
       categories: undefined,
       meta: {
         links: { docs: "https://force-ui.com/docs/components/svelte/table" },
@@ -18010,15 +17788,7 @@ export const Index: Record<string, Record<string, any>> = {
           target: "",
         },
       ],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/bases/svelte/ui/tabs/index")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "tabs"
-        return { default: mod.default || mod[exportName] }
-      }),
+      component: null,
       categories: undefined,
       meta: {
         links: { docs: "https://force-ui.com/docs/components/svelte/tabs" },
@@ -18042,15 +17812,7 @@ export const Index: Record<string, Record<string, any>> = {
           target: "",
         },
       ],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/bases/svelte/ui/textarea/index")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "textarea"
-        return { default: mod.default || mod[exportName] }
-      }),
+      component: null,
       categories: undefined,
       meta: {
         links: { docs: "https://force-ui.com/docs/components/svelte/textarea" },
@@ -18074,15 +17836,7 @@ export const Index: Record<string, Record<string, any>> = {
           target: "",
         },
       ],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/bases/svelte/ui/toggle/index")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "toggle"
-        return { default: mod.default || mod[exportName] }
-      }),
+      component: null,
       categories: undefined,
       meta: {
         links: { docs: "https://force-ui.com/docs/components/svelte/toggle" },
@@ -18111,17 +17865,7 @@ export const Index: Record<string, Record<string, any>> = {
           target: "",
         },
       ],
-      component: React.lazy(async () => {
-        const mod = await import(
-          "@/registry/bases/svelte/ui/toggle-group/index"
-        )
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "toggle-group"
-        return { default: mod.default || mod[exportName] }
-      }),
+      component: null,
       categories: undefined,
       meta: {
         links: {
@@ -18167,15 +17911,7 @@ export const Index: Record<string, Record<string, any>> = {
           target: "",
         },
       ],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/bases/svelte/ui/tooltip/index")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "tooltip"
-        return { default: mod.default || mod[exportName] }
-      }),
+      component: null,
       categories: undefined,
       meta: {
         links: { docs: "https://force-ui.com/docs/components/svelte/tooltip" },
@@ -22113,15 +21849,7 @@ export const Index: Record<string, Record<string, any>> = {
           target: "",
         },
       ],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/bases/svelte/lib/utils")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "utils"
-        return { default: mod.default || mod[exportName] }
-      }),
+      component: null,
       categories: undefined,
       meta: undefined,
     },
