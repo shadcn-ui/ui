@@ -1,12 +1,12 @@
 export const siteConfig = {
-  name: "shadcn/ui",
-  url: "https://ui.shadcn.com",
-  ogImage: "https://ui.shadcn.com/og.jpg",
+  name: "Force UI",
+  url: "https://github.com/lobiklukas/shadcn-ui",
+  ogImage: "https://github.com/lobiklukas/shadcn-ui/og.jpg",
   description:
     "A set of beautifully designed components that you can customize, extend, and build on. Start here then make it your own. Open Source. Open Code.",
   links: {
-    twitter: "https://twitter.com/shadcn",
-    github: "https://github.com/shadcn-ui/ui",
+    twitter: "https://twitter.com/lobiklukas",
+    github: "https://github.com/lobiklukas/shadcn-ui",
   },
   navItems: [
     {
@@ -37,6 +37,6 @@ export const siteConfig = {
 }
 
 export const META_THEME_COLORS = {
-  light: "#ffffff",
-  dark: "#09090b",
+  light: "#f8f9fb",
+  dark: "#0f1024",
 }

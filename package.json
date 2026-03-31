@@ -5,8 +5,8 @@
   "license": "MIT",
   "type": "module",
   "author": {
-    "name": "shadcn",
-    "url": "https://twitter.com/shadcn"
+    "name": "Force UI",
+    "url": "https://github.com/lobiklukas/shadcn-ui"
   },
   "workspaces": [
     "apps/*",

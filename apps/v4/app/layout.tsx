@@ -24,14 +24,14 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL(appUrl),
   description: siteConfig.description,
-  keywords: ["Next.js", "React", "Tailwind CSS", "Components", "shadcn"],
+  keywords: ["Next.js", "React", "Tailwind CSS", "Components", "Force UI"],
   authors: [
     {
-      name: "shadcn",
-      url: "https://shadcn.com",
+      name: "Force UI",
+      url: "https://github.com/lobiklukas/shadcn-ui",
     },
   ],
-  creator: "shadcn",
+  creator: "Force UI",
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     title: siteConfig.name,
     description: siteConfig.description,
     images: [`${appUrl}/opengraph-image.png`],
-    creator: "@shadcn",
+    creator: "@lobiklukas",
   },
   icons: {
     icon: "/favicon.ico",

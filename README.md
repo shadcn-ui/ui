@@ -1,4 +1,4 @@
-# shadcn/ui
+# Force UI
 
 A set of beautifully designed components that you can customize, extend, and build on. Start here then make it your own. Open Source. Open Code. **Use this to build your own component library**.
 
@@ -6,7 +6,7 @@ A set of beautifully designed components that you can customize, extend, and bui
 
 ## Documentation
 
-Visit https://ui.shadcn.com/docs to view the documentation.
+Visit https://github.com/lobiklukas/shadcn-ui to view the documentation.
 
 ## Contributing
 

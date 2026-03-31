@@ -5,9 +5,9 @@ description: "Examples of registry items: styles, components, css vars, etc."
 
 ## registry:style
 
-### Custom style that extends shadcn/ui
+### Custom style that extends Force UI
 
-The following registry item is a custom style that extends shadcn/ui. On `npx shadcn init`, it will:
+The following registry item is a custom style that extends Force UI. On `npx shadcn init`, it will:
 
 - Install `@tabler/icons-react` as a dependency.
 - Add the `login-01` block and `calendar` component to the project.
@@ -42,14 +42,14 @@ The following registry item is a custom style that extends shadcn/ui. On `npx sh
 
 ### Custom style from scratch
 
-The following registry item is a custom style that doesn't extend shadcn/ui. See the `extends: none` field.
+The following registry item is a custom style that doesn't extend Force UI. See the `extends: none` field.
 
 It can be used to create a new style from scratch, i.e. custom components, css vars, dependencies, etc.
 
 On `npx shadcn add`, the following will:
 
 - Install `tailwind-merge` and `clsx` as dependencies.
-- Add the `utils` registry item from the shadcn/ui registry.
+- Add the `utils` registry item from the Force UI registry.
 - Add the `button`, `input`, `label`, and `select` components from a remote registry.
 - Install new css vars: `main`, `bg`, `border`, `text`, `ring`.
 
@@ -125,7 +125,7 @@ On `npx shadcn add`, the following will:
 
 ### Custom colors
 
-The following style will init using shadcn/ui defaults and then add a custom `brand` color.
+The following style will init using Force UI defaults and then add a custom `brand` color.
 
 ```json title="example-style.json" showLineNumbers
 {
@@ -147,7 +147,7 @@ The following style will init using shadcn/ui defaults and then add a custom `br
 
 ### Custom block
 
-This block installs the `login-01` block from the shadcn/ui registry.
+This block installs the `login-01` block from the Force UI registry.
 
 ```json title="login-01.json" showLineNumbers
 {
@@ -174,11 +174,11 @@ This block installs the `login-01` block from the shadcn/ui registry.
 
 ### Install a block and override primitives
 
-You can install a block from the shadcn/ui registry and override the primitives using your custom ones.
+You can install a block from the Force UI registry and override the primitives using your custom ones.
 
 On `npx shadcn add`, the following will:
 
-- Add the `login-01` block from the shadcn/ui registry.
+- Add the `login-01` block from the Force UI registry.
 - Override the `button`, `input`, and `label` primitives with the ones from the remote registry.
 
 ```json title="example-style.json" showLineNumbers
@@ -466,7 +466,7 @@ The `config` field accepts the following properties (all optional):
 
 ### Base from scratch
 
-Use `extends: none` to create a base that doesn't extend shadcn/ui defaults.
+Use `extends: none` to create a base that doesn't extend Force UI defaults.
 
 ```json title="custom-base.json" showLineNumbers
 {

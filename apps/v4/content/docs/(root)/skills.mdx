@@ -1,9 +1,9 @@
 ---
 title: Skills
-description: Give your AI assistant deep knowledge of shadcn/ui components, patterns, and best practices.
+description: Give your AI assistant deep knowledge of Force UI components, patterns, and best practices.
 ---
 
-Skills give AI assistants like Claude Code project-aware context about shadcn/ui. When installed, your AI assistant knows how to find, install, compose, and customize components using the correct APIs and patterns for your project.
+Skills give AI assistants like Claude Code project-aware context about Force UI. When installed, your AI assistant knows how to find, install, compose, and customize components using the correct APIs and patterns for your project.
 
 For example, you can ask your AI assistant to:
 
@@ -23,7 +23,7 @@ The skill reads your project's `components.json` and provides the assistant with
 npx skills add shadcn/ui
 ```
 
-This installs the shadcn skill into your project. Once installed, your AI assistant automatically loads it when working with shadcn/ui components.
+This installs the shadcn skill into your project. Once installed, your AI assistant automatically loads it when working with Force UI components.
 
 Learn more about skills at [skills.sh](https://skills.sh).
 
@@ -59,7 +59,7 @@ Setup and tools for the shadcn MCP server, which lets AI assistants search, brow
 
 1. **Project detection** — The skill activates when it finds a `components.json` file in your project.
 2. **Context injection** — It runs `shadcn info --json` to read your project configuration and injects the result into the assistant's context.
-3. **Pattern enforcement** — The assistant follows shadcn/ui composition rules: using `FieldGroup` for forms, `ToggleGroup` for option sets, semantic colors, and correct base-specific APIs.
+3. **Pattern enforcement** — The assistant follows Force UI composition rules: using `FieldGroup` for forms, `ToggleGroup` for option sets, semantic colors, and correct base-specific APIs.
 4. **Component discovery** — The assistant uses `shadcn docs`, `shadcn search`, or MCP tools to find components and their documentation before generating code.
 
 ## Learn More
