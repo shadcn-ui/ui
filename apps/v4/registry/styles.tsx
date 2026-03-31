@@ -118,7 +118,7 @@ export const STYLES = [
   },
   {
     name: "luma",
-    title: "Luma (Preview)",
+    title: "Luma",
     description: "Fluid, luminous, and glassy.",
     icon: (
       <svg
