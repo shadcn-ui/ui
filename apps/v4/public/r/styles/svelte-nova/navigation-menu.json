@@ -1,0 +1,63 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "navigation-menu",
+  "dependencies": [
+    "bits-ui"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-nova/ui/navigation-menu/index.ts",
+      "content": "import Content from \"./navigation-menu-content.svelte\"\nimport Indicator from \"./navigation-menu-indicator.svelte\"\nimport Item from \"./navigation-menu-item.svelte\"\nimport Link from \"./navigation-menu-link.svelte\"\nimport List from \"./navigation-menu-list.svelte\"\nimport Trigger from \"./navigation-menu-trigger.svelte\"\nimport Viewport from \"./navigation-menu-viewport.svelte\"\nimport Root from \"./navigation-menu.svelte\"\n\nexport {\n  Root,\n  Content,\n  Indicator,\n  Item,\n  Link,\n  List,\n  Trigger,\n  Viewport,\n  //\n  Root as NavigationMenuRoot,\n  Content as NavigationMenuContent,\n  Indicator as NavigationMenuIndicator,\n  Item as NavigationMenuItem,\n  Link as NavigationMenuLink,\n  List as NavigationMenuList,\n  Trigger as NavigationMenuTrigger,\n  Viewport as NavigationMenuViewport,\n}\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/navigation-menu/navigation-menu-content.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { NavigationMenu as NavigationMenuPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    ...restProps\n  }: NavigationMenuPrimitive.ContentProps = $props()\n</script>\n\n<NavigationMenuPrimitive.Content\n  bind:ref\n  data-slot=\"navigation-menu-content\"\n  class={cn(\n    \"cn-navigation-menu-content top-0 left-0 w-full group-data-[viewport=false]/navigation-menu:top-full group-data-[viewport=false]/navigation-menu:mt-1.5 group-data-[viewport=false]/navigation-menu:overflow-hidden **:data-[slot=navigation-menu-link]:focus:ring-0 **:data-[slot=navigation-menu-link]:focus:outline-none md:absolute md:w-auto\",\n    className\n  )}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/navigation-menu/navigation-menu-indicator.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { NavigationMenu as NavigationMenuPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    ...restProps\n  }: NavigationMenuPrimitive.IndicatorProps = $props()\n</script>\n\n<NavigationMenuPrimitive.Indicator\n  bind:ref\n  data-slot=\"navigation-menu-indicator\"\n  class={cn(\n    \"cn-navigation-menu-indicator top-full z-[1] flex h-1.5 items-end justify-center overflow-hidden\",\n    className\n  )}\n  {...restProps}\n>\n  <div\n    class=\"cn-navigation-menu-indicator-arrow relative top-[60%] h-2 w-2 rotate-45\"\n  ></div>\n</NavigationMenuPrimitive.Indicator>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/navigation-menu/navigation-menu-item.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { NavigationMenu as NavigationMenuPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    ...restProps\n  }: NavigationMenuPrimitive.ItemProps = $props()\n</script>\n\n<NavigationMenuPrimitive.Item\n  bind:ref\n  data-slot=\"navigation-menu-item\"\n  class={cn(\"cn-navigation-menu-item relative\", className)}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/navigation-menu/navigation-menu-link.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { NavigationMenu as NavigationMenuPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    ...restProps\n  }: NavigationMenuPrimitive.LinkProps = $props()\n</script>\n\n<NavigationMenuPrimitive.Link\n  bind:ref\n  data-slot=\"navigation-menu-link\"\n  class={cn(\"cn-navigation-menu-link\", className)}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/navigation-menu/navigation-menu-list.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { NavigationMenu as NavigationMenuPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    ...restProps\n  }: NavigationMenuPrimitive.ListProps = $props()\n</script>\n\n<NavigationMenuPrimitive.List\n  bind:ref\n  data-slot=\"navigation-menu-list\"\n  class={cn(\n    \"cn-navigation-menu-list group flex flex-1 list-none items-center justify-center\",\n    className\n  )}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/navigation-menu/navigation-menu-trigger.svelte",
+      "content": "<script lang=\"ts\" module>\n  import { cn } from \"$lib/utils.js\"\n  import { tv } from \"tailwind-variants\"\n\n  export const navigationMenuTriggerStyle = tv({\n    base: \"cn-navigation-menu-trigger group/navigation-menu-trigger inline-flex h-9 w-max items-center justify-center outline-none disabled:pointer-events-none\",\n  })\n</script>\n\n<script lang=\"ts\">\n  import IconPlaceholder from \"$lib/components/icon-placeholder/icon-placeholder.svelte\"\n  import { NavigationMenu as NavigationMenuPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...restProps\n  }: NavigationMenuPrimitive.TriggerProps = $props()\n</script>\n\n<NavigationMenuPrimitive.Trigger\n  bind:ref\n  data-slot=\"navigation-menu-trigger\"\n  class={cn(navigationMenuTriggerStyle(), \"group\", className)}\n  {...restProps}\n>\n  {@render children?.()}\n  <IconPlaceholder\n    lucide=\"ChevronDownIcon\"\n    tabler=\"IconChevronDown\"\n    hugeicons=\"ArrowDown01Icon\"\n    phosphor=\"CaretDownIcon\"\n    remixicon=\"RiArrowDownSLine\"\n    class=\"cn-navigation-menu-trigger-icon\"\n    aria-hidden=\"true\"\n  />\n</NavigationMenuPrimitive.Trigger>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/navigation-menu/navigation-menu-viewport.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { NavigationMenu as NavigationMenuPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    ...restProps\n  }: NavigationMenuPrimitive.ViewportProps = $props()\n</script>\n\n<div class={cn(\"absolute start-0 top-full isolate z-50 flex justify-center\")}>\n  <NavigationMenuPrimitive.Viewport\n    bind:ref\n    data-slot=\"navigation-menu-viewport\"\n    class={cn(\n      \"cn-navigation-menu-viewport origin-top-center relative mt-1.5 h-[calc(var(--bits-navigation-menu-viewport-height)+1rem)] w-full overflow-hidden md:w-[calc(var(--bits-navigation-menu-viewport-width)+1rem)]\",\n      className\n    )}\n    {...restProps}\n  />\n</div>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/navigation-menu/navigation-menu.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { NavigationMenu as NavigationMenuPrimitive } from \"bits-ui\"\n\n  import NavigationMenuViewport from \"./navigation-menu-viewport.svelte\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    viewport = true,\n    children,\n    ...restProps\n  }: NavigationMenuPrimitive.RootProps & {\n    viewport?: boolean\n  } = $props()\n</script>\n\n<NavigationMenuPrimitive.Root\n  bind:ref\n  data-slot=\"navigation-menu\"\n  data-viewport={viewport}\n  class={cn(\n    \"cn-navigation-menu group/navigation-menu relative flex max-w-max flex-1 items-center justify-center\",\n    className\n  )}\n  {...restProps}\n>\n  {@render children?.()}\n  {#if viewport}\n    <NavigationMenuViewport />\n  {/if}\n</NavigationMenuPrimitive.Root>\n",
+      "type": "registry:ui"
+    }
+  ],
+  "meta": {
+    "links": {
+      "docs": "https://force-ui.com/docs/components/svelte/navigation-menu"
+    }
+  },
+  "type": "registry:ui"
+}

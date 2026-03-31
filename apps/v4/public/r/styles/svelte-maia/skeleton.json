@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "skeleton",
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-maia/ui/skeleton/index.ts",
+      "content": "import Root from \"./skeleton.svelte\"\n\nexport {\n  Root,\n  //\n  Root as Skeleton,\n}\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-maia/ui/skeleton/skeleton.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithElementRef, type WithoutChildren } from \"$lib/utils.js\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    ...restProps\n  }: WithoutChildren<WithElementRef<HTMLAttributes<HTMLDivElement>>> = $props()\n</script>\n\n<div\n  bind:this={ref}\n  data-slot=\"skeleton\"\n  class={cn(\"cn-skeleton animate-pulse\", className)}\n  {...restProps}\n></div>\n",
+      "type": "registry:ui"
+    }
+  ],
+  "meta": {
+    "links": {
+      "docs": "https://force-ui.com/docs/components/svelte/skeleton"
+    }
+  },
+  "type": "registry:ui"
+}

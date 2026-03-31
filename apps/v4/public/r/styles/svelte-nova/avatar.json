@@ -1,0 +1,53 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "avatar",
+  "dependencies": [
+    "bits-ui"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-nova/ui/avatar/avatar-badge.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...restProps\n  }: WithElementRef<HTMLAttributes<HTMLSpanElement>> = $props()\n</script>\n\n<span\n  bind:this={ref}\n  data-slot=\"avatar-badge\"\n  class={cn(\n    \"cn-avatar-badge absolute right-0 bottom-0 z-10 inline-flex items-center justify-center rounded-full bg-blend-color ring-2 select-none\",\n    \"group-data-[size=sm]/avatar:size-2 group-data-[size=sm]/avatar:[&>svg]:hidden\",\n    \"group-data-[size=default]/avatar:size-2.5 group-data-[size=default]/avatar:[&>svg]:size-2\",\n    \"group-data-[size=lg]/avatar:size-3 group-data-[size=lg]/avatar:[&>svg]:size-2\",\n    className\n  )}\n  {...restProps}\n>\n  {@render children?.()}\n</span>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/avatar/avatar-fallback.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { Avatar as AvatarPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    ...restProps\n  }: AvatarPrimitive.FallbackProps = $props()\n</script>\n\n<AvatarPrimitive.Fallback\n  bind:ref\n  data-slot=\"avatar-fallback\"\n  class={cn(\n    \"cn-avatar-fallback flex size-full items-center justify-center text-sm group-data-[size=sm]/avatar:text-xs\",\n    className\n  )}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/avatar/avatar-group-count.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...restProps\n  }: WithElementRef<HTMLAttributes<HTMLDivElement>> = $props()\n</script>\n\n<div\n  bind:this={ref}\n  data-slot=\"avatar-group-count\"\n  class={cn(\n    \"cn-avatar-group-count ring-background relative flex shrink-0 items-center justify-center ring-2\",\n    className\n  )}\n  {...restProps}\n>\n  {@render children?.()}\n</div>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/avatar/avatar-group.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...restProps\n  }: WithElementRef<HTMLAttributes<HTMLDivElement>> = $props()\n</script>\n\n<div\n  bind:this={ref}\n  data-slot=\"avatar-group\"\n  class={cn(\n    \"cn-avatar-group *:data-[slot=avatar]:ring-background group/avatar-group flex -space-x-2 *:data-[slot=avatar]:ring-2\",\n    className\n  )}\n  {...restProps}\n>\n  {@render children?.()}\n</div>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/avatar/avatar-image.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { Avatar as AvatarPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    ...restProps\n  }: AvatarPrimitive.ImageProps = $props()\n</script>\n\n<AvatarPrimitive.Image\n  bind:ref\n  data-slot=\"avatar-image\"\n  class={cn(\"cn-avatar-image aspect-square size-full object-cover\", className)}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/avatar/avatar.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { Avatar as AvatarPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    loadingStatus = $bindable(\"loading\"),\n    size = \"default\",\n    class: className,\n    ...restProps\n  }: AvatarPrimitive.RootProps & {\n    size?: \"default\" | \"sm\" | \"lg\"\n  } = $props()\n</script>\n\n<AvatarPrimitive.Root\n  bind:ref\n  bind:loadingStatus\n  data-slot=\"avatar\"\n  data-size={size}\n  class={cn(\n    \"cn-avatar after:border-border group/avatar relative flex shrink-0 select-none after:absolute after:inset-0 after:border after:mix-blend-darken dark:after:mix-blend-lighten\",\n    className\n  )}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/avatar/index.ts",
+      "content": "import Badge from \"./avatar-badge.svelte\"\nimport Fallback from \"./avatar-fallback.svelte\"\nimport GroupCount from \"./avatar-group-count.svelte\"\nimport Group from \"./avatar-group.svelte\"\nimport Image from \"./avatar-image.svelte\"\nimport Root from \"./avatar.svelte\"\n\nexport {\n  Root,\n  Image,\n  Fallback,\n  Badge,\n  Group,\n  GroupCount,\n  //\n  Root as Avatar,\n  Image as AvatarImage,\n  Fallback as AvatarFallback,\n  Badge as AvatarBadge,\n  Group as AvatarGroup,\n  GroupCount as AvatarGroupCount,\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "meta": {
+    "links": {
+      "docs": "https://force-ui.com/docs/components/svelte/avatar"
+    }
+  },
+  "type": "registry:ui"
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-otp",
+  "dependencies": [
+    "vue-input-otp",
+    "@vueuse/core",
+    "reka-ui"
+  ],
+  "registryDependencies": [
+    "icon-placeholder"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-maia/ui/input-otp/InputOTP.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport { useForwardPropsEmits } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\nimport type { OTPInputEmits, OTPInputProps } from \"vue-input-otp\"\nimport { OTPInput } from \"vue-input-otp\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<OTPInputProps & { class?: HTMLAttributes[\"class\"] }>()\n\nconst emits = defineEmits<OTPInputEmits>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n\nconst forwarded = useForwardPropsEmits(delegatedProps, emits)\n</script>\n\n<template>\n  <OTPInput\n    v-slot=\"slotProps\"\n    v-bind=\"forwarded\"\n    :container-class=\"\n      cn('flex items-center gap-2 has-disabled:opacity-50', props.class)\n    \"\n    data-slot=\"input-otp\"\n    class=\"disabled:cursor-not-allowed\"\n  >\n    <slot v-bind=\"slotProps\" />\n  </OTPInput>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-maia/ui/input-otp/InputOTPGroup.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport { useForwardProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{ class?: HTMLAttributes[\"class\"] }>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n\nconst forwarded = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <div\n    data-slot=\"input-otp-group\"\n    v-bind=\"forwarded\"\n    :class=\"cn('flex items-center', props.class)\"\n  >\n    <slot />\n  </div>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-maia/ui/input-otp/InputOTPSeparator.vue",
+      "content": "<script setup lang=\"ts\">\nimport { useForwardProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { IconPlaceholder } from \"@/components/icon-placeholder\"\n\nconst props = defineProps<{ class?: HTMLAttributes[\"class\"] }>()\n\nconst forwarded = useForwardProps(props)\n</script>\n\n<template>\n  <div data-slot=\"input-otp-separator\" role=\"separator\" v-bind=\"forwarded\">\n    <slot>\n      <IconPlaceholder\n        lucide=\"MinusIcon\"\n        tabler=\"IconMinus\"\n        hugeicons=\"Minus01Icon\"\n        phosphor=\"MinusIcon\"\n        remixicon=\"RiSubtractLine\"\n      />\n    </slot>\n  </div>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-maia/ui/input-otp/InputOTPSlot.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport { useForwardProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\nimport { computed } from \"vue\"\nimport { useVueOTPContext } from \"vue-input-otp\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{ index: number; class?: HTMLAttributes[\"class\"] }>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n\nconst forwarded = useForwardProps(delegatedProps)\n\nconst context = useVueOTPContext()\n\nconst slot = computed(() => context?.value.slots[props.index])\n</script>\n\n<template>\n  <div\n    v-bind=\"forwarded\"\n    data-slot=\"input-otp-slot\"\n    :data-active=\"slot?.isActive\"\n    :class=\"\n      cn(\n        'relative flex h-9 w-9 items-center justify-center border-y border-r border-input text-sm shadow-xs transition-all outline-none first:rounded-l-md first:border-l last:rounded-r-md aria-invalid:border-destructive data-[active=true]:z-10 data-[active=true]:border-ring data-[active=true]:ring-[3px] data-[active=true]:ring-ring/50 data-[active=true]:aria-invalid:border-destructive data-[active=true]:aria-invalid:ring-destructive/20 dark:bg-input/30 dark:data-[active=true]:aria-invalid:ring-destructive/40',\n        props.class\n      )\n    \"\n  >\n    {{ slot?.char }}\n    <div\n      v-if=\"slot?.hasFakeCaret\"\n      class=\"pointer-events-none absolute inset-0 flex items-center justify-center\"\n    >\n      <div class=\"h-4 w-px animate-caret-blink bg-foreground duration-1000\" />\n    </div>\n  </div>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-maia/ui/input-otp/index.ts",
+      "content": "export { default as InputOTP } from \"./InputOTP.vue\"\nexport { default as InputOTPGroup } from \"./InputOTPGroup.vue\"\nexport { default as InputOTPSeparator } from \"./InputOTPSeparator.vue\"\nexport { default as InputOTPSlot } from \"./InputOTPSlot.vue\"\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

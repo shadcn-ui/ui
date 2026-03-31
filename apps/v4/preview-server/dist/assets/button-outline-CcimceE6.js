@@ -1,1 +1,0 @@
-import{_ as e}from"./button.vue_vue_type_script_setup_true_lang-BeKwJLS2.js";import{w as o,r as a,a3 as n,U as r,u as s}from"./runtime-core.esm-bundler-Clqs0z22.js";import"./utils-D2jV1zSv.js";const f=o({__name:"button-outline",setup(i){return(u,t)=>(r(),a(e,{variant:"outline"},{default:n(()=>[...t[0]||(t[0]=[s("Outline",-1)])]),_:1}))}});export{f as default};

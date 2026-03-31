@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "badge",
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-vega/ui/badge/badge.svelte",
+      "content": "<script lang=\"ts\" module>\n  import { tv, type VariantProps } from \"tailwind-variants\"\n\n  export const badgeVariants = tv({\n    base: \"cn-badge focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive group/badge inline-flex w-fit shrink-0 items-center justify-center overflow-hidden whitespace-nowrap transition-colors focus-visible:ring-[3px] [&>svg]:pointer-events-none\",\n    variants: {\n      variant: {\n        default: \"cn-badge-variant-default\",\n        secondary: \"cn-badge-variant-secondary\",\n        destructive: \"cn-badge-variant-destructive\",\n        outline: \"cn-badge-variant-outline\",\n        ghost: \"cn-badge-variant-ghost\",\n        link: \"cn-badge-variant-link\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n    },\n  })\n\n  export type BadgeVariant = VariantProps<typeof badgeVariants>[\"variant\"]\n</script>\n\n<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLAnchorAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    href,\n    class: className,\n    variant = \"default\",\n    children,\n    ...restProps\n  }: WithElementRef<HTMLAnchorAttributes> & {\n    variant?: BadgeVariant\n  } = $props()\n</script>\n\n<svelte:element\n  this={href ? \"a\" : \"span\"}\n  bind:this={ref}\n  data-slot=\"badge\"\n  {href}\n  class={cn(badgeVariants({ variant }), className)}\n  {...restProps}\n>\n  {@render children?.()}\n</svelte:element>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/badge/index.ts",
+      "content": "export { default as Badge } from \"./badge.svelte\"\nexport { badgeVariants, type BadgeVariant } from \"./badge.svelte\"\n",
+      "type": "registry:ui"
+    }
+  ],
+  "meta": {
+    "links": {
+      "docs": "https://force-ui.com/docs/components/svelte/badge"
+    }
+  },
+  "type": "registry:ui"
+}

@@ -1,0 +1,69 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pagination",
+  "dependencies": [
+    "bits-ui"
+  ],
+  "registryDependencies": [
+    "button",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-nova/ui/pagination/index.ts",
+      "content": "import Content from \"./pagination-content.svelte\"\nimport Ellipsis from \"./pagination-ellipsis.svelte\"\nimport Item from \"./pagination-item.svelte\"\nimport Link from \"./pagination-link.svelte\"\nimport NextButton from \"./pagination-next-button.svelte\"\nimport Next from \"./pagination-next.svelte\"\nimport PrevButton from \"./pagination-prev-button.svelte\"\nimport Previous from \"./pagination-previous.svelte\"\nimport Root from \"./pagination.svelte\"\n\nexport {\n  Root,\n  Content,\n  Item,\n  Link,\n  PrevButton, // old\n  NextButton, // old\n  Ellipsis,\n  Previous,\n  Next,\n  //\n  Root as Pagination,\n  Content as PaginationContent,\n  Item as PaginationItem,\n  Link as PaginationLink,\n  PrevButton as PaginationPrevButton, // old\n  NextButton as PaginationNextButton, // old\n  Ellipsis as PaginationEllipsis,\n  Previous as PaginationPrevious,\n  Next as PaginationNext,\n}\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/pagination/pagination-content.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...restProps\n  }: WithElementRef<HTMLAttributes<HTMLUListElement>> = $props()\n</script>\n\n<ul\n  bind:this={ref}\n  data-slot=\"pagination-content\"\n  class={cn(\"cn-pagination-content flex items-center\", className)}\n  {...restProps}\n>\n  {@render children?.()}\n</ul>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/pagination/pagination-ellipsis.svelte",
+      "content": "<script lang=\"ts\">\n  import IconPlaceholder from \"$lib/components/icon-placeholder/icon-placeholder.svelte\"\n  import { cn, type WithElementRef, type WithoutChildren } from \"$lib/utils.js\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    ...restProps\n  }: WithoutChildren<WithElementRef<HTMLAttributes<HTMLSpanElement>>> = $props()\n</script>\n\n<span\n  bind:this={ref}\n  aria-hidden=\"true\"\n  data-slot=\"pagination-ellipsis\"\n  class={cn(\n    \"cn-pagination-ellipsis flex items-center justify-center\",\n    className\n  )}\n  {...restProps}\n>\n  <IconPlaceholder\n    lucide=\"MoreHorizontalIcon\"\n    tabler=\"IconDots\"\n    hugeicons=\"MoreHorizontalCircle01Icon\"\n    phosphor=\"DotsThreeIcon\"\n    remixicon=\"RiMoreLine\"\n  />\n  <span class=\"sr-only\">More pages</span>\n</span>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/pagination/pagination-item.svelte",
+      "content": "<script lang=\"ts\">\n  import type { WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLLiAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    children,\n    ...restProps\n  }: WithElementRef<HTMLLiAttributes> = $props()\n</script>\n\n<li bind:this={ref} data-slot=\"pagination-item\" {...restProps}>\n  {@render children?.()}\n</li>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/pagination/pagination-link.svelte",
+      "content": "<script lang=\"ts\">\n  import {\n    buttonVariants,\n    type ButtonSize,\n  } from \"$lib/registry/ui/button/index.js\"\n  import { cn } from \"$lib/utils.js\"\n  import { Pagination as PaginationPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    size = \"icon\",\n    isActive,\n    page,\n    children,\n    ...restProps\n  }: PaginationPrimitive.PageProps & {\n    size?: ButtonSize\n    isActive: boolean\n  } = $props()\n</script>\n\n{#snippet Fallback()}\n  {page.value}\n{/snippet}\n\n<PaginationPrimitive.Page\n  bind:ref\n  {page}\n  aria-current={isActive ? \"page\" : undefined}\n  data-slot=\"pagination-link\"\n  data-active={isActive}\n  data-size={size}\n  class={cn(\n    buttonVariants({ size, variant: isActive ? \"outline\" : \"ghost\" }),\n    \"cn-pagination-link\",\n    className\n  )}\n  {...restProps}\n>\n  {#if children}\n    {@render children?.()}\n  {:else}\n    {@render Fallback()}\n  {/if}\n</PaginationPrimitive.Page>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/pagination/pagination-next-button.svelte",
+      "content": "<script lang=\"ts\">\n  import ChevronRightIcon from \"@lucide/svelte/icons/chevron-right\"\n  import { cn } from \"$lib/utils.js\"\n  import { Pagination as PaginationPrimitive } from \"bits-ui\"\n\n  import { buttonVariants } from \"../button/index.js\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...restProps\n  }: PaginationPrimitive.NextButtonProps = $props()\n</script>\n\n{#snippet Fallback()}\n  <span>Next</span>\n  <ChevronRightIcon class=\"size-4\" />\n{/snippet}\n\n<PaginationPrimitive.NextButton\n  bind:ref\n  aria-label=\"Go to next page\"\n  class={cn(\n    buttonVariants({ variant: \"ghost\" }),\n    \"cn-pagination-next\",\n    className\n  )}\n  {...restProps}\n>\n  {#if children}\n    {@render children?.()}\n  {:else}\n    {@render Fallback()}\n  {/if}\n</PaginationPrimitive.NextButton>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/pagination/pagination-next.svelte",
+      "content": "<script lang=\"ts\">\n  import IconPlaceholder from \"$lib/components/icon-placeholder/icon-placeholder.svelte\"\n  import { cn } from \"$lib/utils.js\"\n  import type { ComponentProps } from \"svelte\"\n\n  import { PaginationLink } from \"./index.js\"\n\n  type PaginationNextProps = ComponentProps<typeof PaginationLink>\n\n  let { class: className, ...restProps }: PaginationNextProps = $props()\n</script>\n\n<PaginationLink\n  aria-label=\"Go to next page\"\n  size=\"default\"\n  class={cn(\"cn-pagination-next\", className)}\n  {...restProps}\n>\n  <span class=\"cn-pagination-next-text hidden sm:block\">Next</span>\n  <IconPlaceholder\n    lucide=\"ChevronRightIcon\"\n    tabler=\"IconChevronRight\"\n    hugeicons=\"ArrowRight01Icon\"\n    phosphor=\"CaretRightIcon\"\n    remixicon=\"RiArrowRightSLine\"\n    data-icon=\"inline-end\"\n  />\n</PaginationLink>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/pagination/pagination-prev-button.svelte",
+      "content": "<script lang=\"ts\">\n  import ChevronLeftIcon from \"@lucide/svelte/icons/chevron-left\"\n  import { cn } from \"$lib/utils.js\"\n  import { Pagination as PaginationPrimitive } from \"bits-ui\"\n\n  import { buttonVariants } from \"../button/index.js\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...restProps\n  }: PaginationPrimitive.PrevButtonProps = $props()\n</script>\n\n{#snippet Fallback()}\n  <ChevronLeftIcon class=\"size-4\" />\n  <span>Previous</span>\n{/snippet}\n\n<PaginationPrimitive.PrevButton\n  bind:ref\n  aria-label=\"Go to previous page\"\n  class={cn(\n    buttonVariants({ variant: \"ghost\" }),\n    \"cn-pagination-previous\",\n    className\n  )}\n  {...restProps}\n>\n  {#if children}\n    {@render children?.()}\n  {:else}\n    {@render Fallback()}\n  {/if}\n</PaginationPrimitive.PrevButton>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/pagination/pagination-previous.svelte",
+      "content": "<script lang=\"ts\">\n  import IconPlaceholder from \"$lib/components/icon-placeholder/icon-placeholder.svelte\"\n  import { cn } from \"$lib/utils.js\"\n  import type { ComponentProps } from \"svelte\"\n\n  import { PaginationLink } from \"./index.js\"\n\n  type PaginationPreviousProps = ComponentProps<typeof PaginationLink>\n\n  let { class: className, ...restProps }: PaginationPreviousProps = $props()\n</script>\n\n<PaginationLink\n  aria-label=\"Go to previous page\"\n  size=\"default\"\n  class={cn(\"cn-pagination-previous\", className)}\n  {...restProps}\n>\n  <IconPlaceholder\n    lucide=\"ChevronLeftIcon\"\n    tabler=\"IconChevronLeft\"\n    hugeicons=\"ArrowLeft01Icon\"\n    phosphor=\"CaretLeftIcon\"\n    remixicon=\"RiArrowLeftSLine\"\n    data-icon=\"inline-start\"\n  />\n  <span class=\"cn-pagination-previous-text hidden sm:block\">Previous</span>\n</PaginationLink>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/pagination/pagination.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { Pagination as PaginationPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    count = 0,\n    perPage = 10,\n    page = $bindable(1),\n    siblingCount = 1,\n    ...restProps\n  }: PaginationPrimitive.RootProps = $props()\n</script>\n\n<PaginationPrimitive.Root\n  bind:ref\n  bind:page\n  role=\"navigation\"\n  aria-label=\"pagination\"\n  data-slot=\"pagination\"\n  {count}\n  {perPage}\n  {siblingCount}\n  class={cn(\"cn-pagination mx-auto flex w-full justify-center\", className)}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    }
+  ],
+  "meta": {
+    "links": {
+      "docs": "https://force-ui.com/docs/components/svelte/pagination"
+    }
+  },
+  "type": "registry:ui"
+}

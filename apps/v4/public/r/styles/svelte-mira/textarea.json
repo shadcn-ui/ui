@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "textarea",
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-mira/ui/textarea/index.ts",
+      "content": "import Root from \"./textarea.svelte\"\n\nexport {\n  Root,\n  //\n  Root as Textarea,\n}\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-mira/ui/textarea/textarea.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithElementRef, type WithoutChildren } from \"$lib/utils.js\"\n  import type { HTMLTextareaAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    value = $bindable(),\n    class: className,\n    \"data-slot\": dataSlot = \"textarea\",\n    ...restProps\n  }: WithoutChildren<WithElementRef<HTMLTextareaAttributes>> = $props()\n</script>\n\n<textarea\n  bind:this={ref}\n  data-slot={dataSlot}\n  class={cn(\n    \"cn-textarea placeholder:text-muted-foreground flex field-sizing-content min-h-16 w-full outline-none disabled:cursor-not-allowed disabled:opacity-50\",\n    className\n  )}\n  bind:value\n  {...restProps}\n></textarea>\n",
+      "type": "registry:ui"
+    }
+  ],
+  "meta": {
+    "links": {
+      "docs": "https://force-ui.com/docs/components/svelte/textarea"
+    }
+  },
+  "type": "registry:ui"
+}

@@ -1,0 +1,43 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "accordion",
+  "dependencies": [
+    "bits-ui"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-lyra/ui/accordion/accordion-content.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithoutChild } from \"$lib/utils.js\"\n  import { Accordion as AccordionPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...restProps\n  }: WithoutChild<AccordionPrimitive.ContentProps> = $props()\n</script>\n\n<AccordionPrimitive.Content\n  bind:ref\n  data-slot=\"accordion-content\"\n  class=\"cn-accordion-content overflow-hidden\"\n  {...restProps}\n>\n  <div\n    class={cn(\n      \"cn-accordion-content-inner [&_a]:hover:text-foreground [&_a]:underline [&_a]:underline-offset-3 [&_p:not(:last-child)]:mb-4\",\n      className\n    )}\n  >\n    {@render children?.()}\n  </div>\n</AccordionPrimitive.Content>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-lyra/ui/accordion/accordion-item.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { Accordion as AccordionPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    ...restProps\n  }: AccordionPrimitive.ItemProps = $props()\n</script>\n\n<AccordionPrimitive.Item\n  bind:ref\n  data-slot=\"accordion-item\"\n  class={cn(\"cn-accordion-item\", className)}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-lyra/ui/accordion/accordion-trigger.svelte",
+      "content": "<script lang=\"ts\">\n  import IconPlaceholder from \"$lib/components/icon-placeholder/icon-placeholder.svelte\"\n  import { cn, type WithoutChild } from \"$lib/utils.js\"\n  import { Accordion as AccordionPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    level = 3,\n    children,\n    ...restProps\n  }: WithoutChild<AccordionPrimitive.TriggerProps> & {\n    level?: AccordionPrimitive.HeaderProps[\"level\"]\n  } = $props()\n</script>\n\n<AccordionPrimitive.Header {level} class=\"flex\">\n  <AccordionPrimitive.Trigger\n    data-slot=\"accordion-trigger\"\n    bind:ref\n    class={cn(\n      \"cn-accordion-trigger group/accordion-trigger relative flex flex-1 items-start justify-between border border-transparent transition-all outline-none disabled:pointer-events-none disabled:opacity-50\",\n      className\n    )}\n    {...restProps}\n  >\n    {@render children?.()}\n    <IconPlaceholder\n      lucide=\"ChevronDownIcon\"\n      tabler=\"IconChevronDown\"\n      data-slot=\"accordion-trigger-icon\"\n      hugeicons=\"ArrowDown01Icon\"\n      phosphor=\"CaretDownIcon\"\n      remixicon=\"RiArrowDownSLine\"\n      class=\"cn-accordion-trigger-icon pointer-events-none shrink-0 group-aria-expanded/accordion-trigger:hidden\"\n    />\n    <IconPlaceholder\n      lucide=\"ChevronUpIcon\"\n      tabler=\"IconChevronUp\"\n      data-slot=\"accordion-trigger-icon\"\n      hugeicons=\"ArrowUp01Icon\"\n      phosphor=\"CaretUpIcon\"\n      remixicon=\"RiArrowUpSLine\"\n      class=\"cn-accordion-trigger-icon pointer-events-none hidden shrink-0 group-aria-expanded/accordion-trigger:inline\"\n    />\n  </AccordionPrimitive.Trigger>\n</AccordionPrimitive.Header>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-lyra/ui/accordion/accordion.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { Accordion as AccordionPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    value = $bindable(),\n    class: className,\n    ...restProps\n  }: AccordionPrimitive.RootProps = $props()\n</script>\n\n<AccordionPrimitive.Root\n  bind:ref\n  bind:value={value as never}\n  data-slot=\"accordion\"\n  class={cn(\"cn-accordion flex w-full flex-col\", className)}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-lyra/ui/accordion/index.ts",
+      "content": "import Content from \"./accordion-content.svelte\"\nimport Item from \"./accordion-item.svelte\"\nimport Trigger from \"./accordion-trigger.svelte\"\nimport Root from \"./accordion.svelte\"\n\nexport {\n  Root,\n  Content,\n  Item,\n  Trigger,\n  //\n  Root as Accordion,\n  Content as AccordionContent,\n  Item as AccordionItem,\n  Trigger as AccordionTrigger,\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "meta": {
+    "links": {
+      "docs": "https://force-ui.com/docs/components/svelte/accordion"
+    }
+  },
+  "type": "registry:ui"
+}

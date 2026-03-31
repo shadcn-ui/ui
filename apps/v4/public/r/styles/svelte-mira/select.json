@@ -1,0 +1,79 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "select",
+  "dependencies": [
+    "bits-ui"
+  ],
+  "registryDependencies": [
+    "separator",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-mira/ui/select/index.ts",
+      "content": "import Content from \"./select-content.svelte\"\nimport GroupHeading from \"./select-group-heading.svelte\"\nimport Group from \"./select-group.svelte\"\nimport Item from \"./select-item.svelte\"\nimport Label from \"./select-label.svelte\"\nimport Portal from \"./select-portal.svelte\"\nimport ScrollDownButton from \"./select-scroll-down-button.svelte\"\nimport ScrollUpButton from \"./select-scroll-up-button.svelte\"\nimport Separator from \"./select-separator.svelte\"\nimport Trigger from \"./select-trigger.svelte\"\nimport Root from \"./select.svelte\"\n\nexport {\n  Root,\n  Group,\n  Label,\n  Item,\n  Content,\n  Trigger,\n  Separator,\n  ScrollDownButton,\n  ScrollUpButton,\n  GroupHeading,\n  Portal,\n  //\n  Root as Select,\n  Group as SelectGroup,\n  Label as SelectLabel,\n  Item as SelectItem,\n  Content as SelectContent,\n  Trigger as SelectTrigger,\n  Separator as SelectSeparator,\n  ScrollDownButton as SelectScrollDownButton,\n  ScrollUpButton as SelectScrollUpButton,\n  GroupHeading as SelectGroupHeading,\n  Portal as SelectPortal,\n}\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-mira/ui/select/select-content.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithoutChild } from \"$lib/utils.js\"\n  import type { WithoutChildrenOrChild } from \"$lib/utils.js\"\n  import { Select as SelectPrimitive } from \"bits-ui\"\n  import type { ComponentProps } from \"svelte\"\n\n  import SelectPortal from \"./select-portal.svelte\"\n  import SelectScrollDownButton from \"./select-scroll-down-button.svelte\"\n  import SelectScrollUpButton from \"./select-scroll-up-button.svelte\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    sideOffset = 4,\n    portalProps,\n    children,\n    preventScroll = true,\n    ...restProps\n  }: WithoutChild<SelectPrimitive.ContentProps> & {\n    portalProps?: WithoutChildrenOrChild<ComponentProps<typeof SelectPortal>>\n  } = $props()\n</script>\n\n<SelectPortal {...portalProps}>\n  <SelectPrimitive.Content\n    bind:ref\n    {sideOffset}\n    {preventScroll}\n    data-slot=\"select-content\"\n    class={cn(\n      \"cn-select-content cn-select-content-logical cn-menu-target cn-menu-translucent relative isolate z-50 overflow-x-hidden overflow-y-auto\",\n      className\n    )}\n    {...restProps}\n  >\n    <SelectScrollUpButton />\n    <SelectPrimitive.Viewport\n      class={cn(\n        \"h-(--bits-select-anchor-height) w-full min-w-(--bits-select-anchor-width) scroll-my-1\"\n      )}\n    >\n      {@render children?.()}\n    </SelectPrimitive.Viewport>\n    <SelectScrollDownButton />\n  </SelectPrimitive.Content>\n</SelectPortal>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-mira/ui/select/select-group-heading.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { Select as SelectPrimitive } from \"bits-ui\"\n  import type { ComponentProps } from \"svelte\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...restProps\n  }: ComponentProps<typeof SelectPrimitive.GroupHeading> = $props()\n</script>\n\n<SelectPrimitive.GroupHeading\n  bind:ref\n  data-slot=\"select-group-heading\"\n  class={cn(\"text-muted-foreground px-2 py-1.5 text-xs\", className)}\n  {...restProps}\n>\n  {@render children?.()}\n</SelectPrimitive.GroupHeading>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-mira/ui/select/select-group.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { Select as SelectPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    ...restProps\n  }: SelectPrimitive.GroupProps = $props()\n</script>\n\n<SelectPrimitive.Group\n  bind:ref\n  data-slot=\"select-group\"\n  class={cn(\"cn-select-group\", className)}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-mira/ui/select/select-item.svelte",
+      "content": "<script lang=\"ts\">\n  import IconPlaceholder from \"$lib/components/icon-placeholder/icon-placeholder.svelte\"\n  import { cn, type WithoutChild } from \"$lib/utils.js\"\n  import { Select as SelectPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    value,\n    label,\n    children: childrenProp,\n    ...restProps\n  }: WithoutChild<SelectPrimitive.ItemProps> = $props()\n</script>\n\n<SelectPrimitive.Item\n  bind:ref\n  {value}\n  data-slot=\"select-item\"\n  class={cn(\n    \"cn-select-item focus:bg-accent data-highlighted:bg-accent data-highlighted:text-accent-foreground focus:text-accent-foreground relative flex w-full cursor-default items-center outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0\",\n    className\n  )}\n  {...restProps}\n>\n  {#snippet children({ selected, highlighted })}\n    <span class=\"absolute end-2 flex size-3.5 items-center justify-center\">\n      {#if selected}\n        <IconPlaceholder\n          lucide=\"CheckIcon\"\n          tabler=\"IconCheck\"\n          hugeicons=\"Tick02Icon\"\n          phosphor=\"CheckIcon\"\n          remixicon=\"RiCheckLine\"\n          class=\"cn-select-item-indicator-icon\"\n        />\n      {/if}\n    </span>\n    {#if childrenProp}\n      {@render childrenProp({ selected, highlighted })}\n    {:else}\n      {label || value}\n    {/if}\n  {/snippet}\n</SelectPrimitive.Item>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-mira/ui/select/select-label.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...restProps\n  }: WithElementRef<HTMLAttributes<HTMLDivElement>> & {} = $props()\n</script>\n\n<div\n  bind:this={ref}\n  data-slot=\"select-label\"\n  class={cn(\"cn-select-label\", className)}\n  {...restProps}\n>\n  {@render children?.()}\n</div>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-mira/ui/select/select-portal.svelte",
+      "content": "<script lang=\"ts\">\n  import { Select as SelectPrimitive } from \"bits-ui\"\n\n  let { ...restProps }: SelectPrimitive.PortalProps = $props()\n</script>\n\n<SelectPrimitive.Portal {...restProps} />\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-mira/ui/select/select-scroll-down-button.svelte",
+      "content": "<script lang=\"ts\">\n  import IconPlaceholder from \"$lib/components/icon-placeholder/icon-placeholder.svelte\"\n  import { cn, type WithoutChildrenOrChild } from \"$lib/utils.js\"\n  import { Select as SelectPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    ...restProps\n  }: WithoutChildrenOrChild<SelectPrimitive.ScrollDownButtonProps> = $props()\n</script>\n\n<SelectPrimitive.ScrollDownButton\n  bind:ref\n  data-slot=\"select-scroll-down-button\"\n  class={cn(\"cn-select-scroll-down-button bottom-0 w-full\", className)}\n  {...restProps}\n>\n  <IconPlaceholder\n    lucide=\"ChevronDownIcon\"\n    tabler=\"IconChevronDown\"\n    hugeicons=\"ArrowDown01Icon\"\n    phosphor=\"CaretDownIcon\"\n    remixicon=\"RiArrowDownSLine\"\n  />\n</SelectPrimitive.ScrollDownButton>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-mira/ui/select/select-scroll-up-button.svelte",
+      "content": "<script lang=\"ts\">\n  import IconPlaceholder from \"$lib/components/icon-placeholder/icon-placeholder.svelte\"\n  import { cn, type WithoutChildrenOrChild } from \"$lib/utils.js\"\n  import { Select as SelectPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    ...restProps\n  }: WithoutChildrenOrChild<SelectPrimitive.ScrollUpButtonProps> = $props()\n</script>\n\n<SelectPrimitive.ScrollUpButton\n  bind:ref\n  data-slot=\"select-scroll-up-button\"\n  class={cn(\"cn-select-scroll-up-button top-0 w-full\", className)}\n  {...restProps}\n>\n  <IconPlaceholder\n    lucide=\"ChevronUpIcon\"\n    tabler=\"IconChevronUp\"\n    hugeicons=\"ArrowUp01Icon\"\n    phosphor=\"CaretUpIcon\"\n    remixicon=\"RiArrowUpSLine\"\n  />\n</SelectPrimitive.ScrollUpButton>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-mira/ui/select/select-separator.svelte",
+      "content": "<script lang=\"ts\">\n  import { Separator } from \"$lib/registry/ui/separator/index.js\"\n  import { cn } from \"$lib/utils.js\"\n  import type { Separator as SeparatorPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    ...restProps\n  }: SeparatorPrimitive.RootProps = $props()\n</script>\n\n<Separator\n  bind:ref\n  data-slot=\"select-separator\"\n  class={cn(\"cn-select-separator pointer-events-none\", className)}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-mira/ui/select/select-trigger.svelte",
+      "content": "<script lang=\"ts\">\n  import IconPlaceholder from \"$lib/components/icon-placeholder/icon-placeholder.svelte\"\n  import { cn, type WithoutChild } from \"$lib/utils.js\"\n  import { Select as SelectPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    size = \"default\",\n    ...restProps\n  }: WithoutChild<SelectPrimitive.TriggerProps> & {\n    size?: \"sm\" | \"default\"\n  } = $props()\n</script>\n\n<SelectPrimitive.Trigger\n  bind:ref\n  data-slot=\"select-trigger\"\n  data-size={size}\n  class={cn(\n    \"cn-select-trigger flex w-fit items-center justify-between whitespace-nowrap outline-none disabled:cursor-not-allowed disabled:opacity-50 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center [&_svg]:pointer-events-none [&_svg]:shrink-0\",\n    className\n  )}\n  {...restProps}\n>\n  {@render children?.()}\n  <IconPlaceholder\n    lucide=\"ChevronDownIcon\"\n    tabler=\"IconSelector\"\n    hugeicons=\"UnfoldMoreIcon\"\n    phosphor=\"CaretDownIcon\"\n    remixicon=\"RiArrowDownSLine\"\n    class=\"cn-select-trigger-icon pointer-events-none\"\n  />\n</SelectPrimitive.Trigger>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-mira/ui/select/select.svelte",
+      "content": "<script lang=\"ts\">\n  import { Select as SelectPrimitive } from \"bits-ui\"\n\n  let {\n    open = $bindable(false),\n    value = $bindable(),\n    ...restProps\n  }: SelectPrimitive.RootProps = $props()\n</script>\n\n<SelectPrimitive.Root bind:open bind:value={value as never} {...restProps} />\n",
+      "type": "registry:ui"
+    }
+  ],
+  "meta": {
+    "links": {
+      "docs": "https://force-ui.com/docs/components/svelte/select"
+    }
+  },
+  "type": "registry:ui"
+}

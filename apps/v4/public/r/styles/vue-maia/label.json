@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "label",
+  "dependencies": [
+    "reka-ui",
+    "@vueuse/core"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-maia/ui/label/Label.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { LabelProps } from \"reka-ui\"\nimport { Label } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<LabelProps & { class?: HTMLAttributes[\"class\"] }>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n</script>\n\n<template>\n  <Label\n    data-slot=\"label\"\n    v-bind=\"delegatedProps\"\n    :class=\"\n      cn(\n        'cn-label flex items-center select-none group-data-[disabled=true]:pointer-events-none peer-disabled:cursor-not-allowed',\n        props.class\n      )\n    \"\n  >\n    <slot />\n  </Label>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-maia/ui/label/index.ts",
+      "content": "export { default as Label } from \"./Label.vue\"\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

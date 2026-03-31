@@ -1,0 +1,41 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "progress-example",
+  "title": "Progress",
+  "dependencies": [],
+  "registryDependencies": [
+    "example",
+    "item",
+    "progress",
+    "slider",
+    "field"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-vega/examples/progress/FileUploadList.vue",
+      "content": "<script setup lang=\"ts\">\nimport {\n  Item,\n  ItemActions,\n  ItemContent,\n  ItemGroup,\n  ItemMedia,\n  ItemTitle,\n} from \"@/ui/item\"\nimport { Progress } from \"@/ui/progress\"\nimport { computed } from \"vue\"\n\nimport { Example } from \"@/components/example\"\nimport IconPlaceholder from \"@/components/IconPlaceholder.vue\"\n\nconst files = computed(() => [\n  {\n    id: \"1\",\n    name: \"document.pdf\",\n    progress: 45,\n    timeRemaining: \"2m 30s\",\n  },\n  {\n    id: \"2\",\n    name: \"presentation.pptx\",\n    progress: 78,\n    timeRemaining: \"45s\",\n  },\n  {\n    id: \"3\",\n    name: \"spreadsheet.xlsx\",\n    progress: 12,\n    timeRemaining: \"5m 12s\",\n  },\n  {\n    id: \"4\",\n    name: \"image.jpg\",\n    progress: 100,\n    timeRemaining: \"Complete\",\n  },\n])\n</script>\n\n<template>\n  <Example title=\"File Upload List\">\n    <ItemGroup>\n      <Item v-for=\"file in files\" :key=\"file.id\" size=\"xs\" class=\"px-0\">\n        <ItemMedia variant=\"icon\">\n          <IconPlaceholder\n            lucide=\"FileIcon\"\n            tabler=\"IconFile\"\n            hugeicons=\"FileIcon\"\n            phosphor=\"FileIcon\"\n            remixicon=\"RiFileLine\"\n            class=\"size-5\"\n          />\n        </ItemMedia>\n        <ItemContent class=\"inline-block truncate\">\n          <ItemTitle class=\"inline\">\n            {{ file.name }}\n          </ItemTitle>\n        </ItemContent>\n        <ItemContent>\n          <Progress :value=\"file.progress\" class=\"w-32\" />\n        </ItemContent>\n        <ItemActions class=\"w-16 justify-end\">\n          <span class=\"text-sm text-muted-foreground\">\n            {{ file.timeRemaining }}\n          </span>\n        </ItemActions>\n      </Item>\n    </ItemGroup>\n  </Example>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-vega/examples/progress/ProgressControlled.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Progress } from \"@/ui/progress\"\nimport { Slider } from \"@/ui/slider\"\nimport { ref } from \"vue\"\n\nimport { Example } from \"@/components/example\"\n\nconst value = ref([50])\n</script>\n\n<template>\n  <Example title=\"Controlled\">\n    <div class=\"flex w-full flex-col gap-4\">\n      <Progress :value=\"value[0]\" class=\"w-full\" />\n      <Slider v-model=\"value\" :min=\"0\" :max=\"100\" :step=\"1\" />\n    </div>\n  </Example>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-vega/examples/progress/ProgressExample.vue",
+      "content": "<script setup lang=\"ts\">\nimport FileUploadList from \"@/examples/progress/FileUploadList.vue\"\nimport ProgressControlled from \"@/examples/progress/ProgressControlled.vue\"\nimport ProgressValues from \"@/examples/progress/ProgressValues.vue\"\nimport ProgressWithLabel from \"@/examples/progress/ProgressWithLabel.vue\"\n\nimport { ExampleWrapper } from \"@/components/example\"\n</script>\n\n<template>\n  <ExampleWrapper>\n    <ProgressValues />\n    <ProgressWithLabel />\n    <ProgressControlled />\n    <FileUploadList />\n  </ExampleWrapper>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-vega/examples/progress/ProgressValues.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Progress } from \"@/ui/progress\"\n\nimport { Example } from \"@/components/example\"\n</script>\n\n<template>\n  <Example title=\"Progress Bar\">\n    <div class=\"flex w-full flex-col gap-4\">\n      <Progress :value=\"0\" />\n      <Progress :value=\"25\" class=\"w-full\" />\n      <Progress :value=\"50\" />\n      <Progress :value=\"75\" />\n      <Progress :value=\"100\" />\n    </div>\n  </Example>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-vega/examples/progress/ProgressWithLabel.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Field, FieldLabel } from \"@/ui/field\"\nimport { Progress } from \"@/ui/progress\"\n\nimport { Example } from \"@/components/example\"\n</script>\n\n<template>\n  <Example title=\"With Label\">\n    <Field>\n      <FieldLabel html-for=\"progress-upload\">\n        <span>Upload progress</span>\n        <span class=\"ml-auto\">66%</span>\n      </FieldLabel>\n      <Progress id=\"progress-upload\" :model-value=\"66\" class=\"w-full\" />\n    </Field>\n  </Example>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

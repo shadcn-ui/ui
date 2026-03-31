@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aspect-ratio-example",
+  "title": "Aspect Ratio",
+  "dependencies": [],
+  "registryDependencies": [
+    "aspect-ratio",
+    "example"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-nova/examples/aspect-ratio/AspectRatio16x9.vue",
+      "content": "<script setup lang=\"ts\">\nimport { AspectRatio } from \"@/ui/aspect-ratio\"\n\nimport { Example } from \"@/components/example\"\n</script>\n\n<template>\n  <Example title=\"16:9\" class=\"items-center justify-center\">\n    <AspectRatio :ratio=\"16 / 9\" class=\"rounded-lg bg-muted\">\n      <img\n        src=\"https://avatar.vercel.sh/shadcn1\"\n        alt=\"Photo\"\n        class=\"h-full w-full rounded-lg object-cover grayscale dark:brightness-20\"\n      />\n    </AspectRatio>\n  </Example>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-nova/examples/aspect-ratio/AspectRatio1x1.vue",
+      "content": "<script setup lang=\"ts\">\nimport { AspectRatio } from \"@/ui/aspect-ratio\"\n\nimport { Example } from \"@/components/example\"\n</script>\n\n<template>\n  <Example title=\"1:1\" class=\"items-start\">\n    <AspectRatio :ratio=\"1 / 1\" class=\"rounded-lg bg-muted\">\n      <img\n        src=\"https://avatar.vercel.sh/shadcn1\"\n        alt=\"Photo\"\n        class=\"h-full w-full rounded-lg object-cover grayscale dark:brightness-20\"\n      />\n    </AspectRatio>\n  </Example>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-nova/examples/aspect-ratio/AspectRatio21x9.vue",
+      "content": "<script setup lang=\"ts\">\nimport { AspectRatio } from \"@/ui/aspect-ratio\"\n\nimport { Example } from \"@/components/example\"\n</script>\n\n<template>\n  <Example title=\"21:9\" class=\"items-center justify-center\">\n    <AspectRatio :ratio=\"21 / 9\" class=\"rounded-lg bg-muted\">\n      <img\n        src=\"https://avatar.vercel.sh/shadcn1\"\n        alt=\"Photo\"\n        class=\"h-full w-full rounded-lg object-cover grayscale dark:brightness-20\"\n      />\n    </AspectRatio>\n  </Example>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-nova/examples/aspect-ratio/AspectRatio9x16.vue",
+      "content": "<script setup lang=\"ts\">\nimport { AspectRatio } from \"@/ui/aspect-ratio\"\n\nimport { Example } from \"@/components/example\"\n</script>\n\n<template>\n  <Example title=\"9:16\" class=\"items-center justify-center\">\n    <AspectRatio :ratio=\"9 / 16\" class=\"rounded-lg bg-muted\">\n      <img\n        src=\"https://avatar.vercel.sh/shadcn1\"\n        alt=\"Photo\"\n        class=\"h-full w-full rounded-lg object-cover grayscale dark:brightness-20\"\n      />\n    </AspectRatio>\n  </Example>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-nova/examples/aspect-ratio/AspectRatioExample.vue",
+      "content": "<script setup lang=\"ts\">\nimport { ExampleWrapper } from \"@/components/example\"\n\nimport AspectRatio1x1 from \"./AspectRatio1x1.vue\"\nimport AspectRatio9x16 from \"./AspectRatio9x16.vue\"\nimport AspectRatio16x9 from \"./AspectRatio16x9.vue\"\nimport AspectRatio21x9 from \"./AspectRatio21x9.vue\"\n</script>\n\n<template>\n  <ExampleWrapper class=\"max-w-4xl 2xl:max-w-4xl\">\n    <AspectRatio16x9 />\n    <AspectRatio21x9 />\n    <AspectRatio1x1 />\n    <AspectRatio9x16 />\n  </ExampleWrapper>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

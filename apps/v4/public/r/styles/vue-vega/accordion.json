@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "accordion",
+  "dependencies": [
+    "reka-ui",
+    "@vueuse/core"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-vega/ui/accordion/Accordion.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { AccordionRootEmits, AccordionRootProps } from \"reka-ui\"\nimport { AccordionRoot, useForwardPropsEmits } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<\n  AccordionRootProps & { class?: HTMLAttributes[\"class\"] }\n>()\nconst emits = defineEmits<AccordionRootEmits>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\nconst forwarded = useForwardPropsEmits(delegatedProps, emits)\n</script>\n\n<template>\n  <AccordionRoot\n    v-slot=\"slotProps\"\n    data-slot=\"accordion\"\n    v-bind=\"forwarded\"\n    :class=\"cn('cn-accordion flex w-full flex-col', props.class)\"\n  >\n    <slot v-bind=\"slotProps\" />\n  </AccordionRoot>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-vega/ui/accordion/AccordionContent.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { AccordionContentProps } from \"reka-ui\"\nimport { AccordionContent } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<\n  AccordionContentProps & { class?: HTMLAttributes[\"class\"] }\n>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n</script>\n\n<template>\n  <AccordionContent\n    data-slot=\"accordion-content\"\n    v-bind=\"delegatedProps\"\n    class=\"cn-accordion-content overflow-hidden\"\n  >\n    <div\n      :class=\"\n        cn(\n          'cn-accordion-content-inner h-(--reka-accordion-content-height) [&_a]:underline [&_a]:underline-offset-3 [&_a]:hover:text-foreground [&_p:not(:last-child)]:mb-4',\n          props.class\n        )\n      \"\n    >\n      <slot />\n    </div>\n  </AccordionContent>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-vega/ui/accordion/AccordionItem.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { AccordionItemProps } from \"reka-ui\"\nimport { AccordionItem, useForwardProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<\n  AccordionItemProps & { class?: HTMLAttributes[\"class\"] }\n>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <AccordionItem\n    v-slot=\"slotProps\"\n    data-slot=\"accordion-item\"\n    v-bind=\"forwardedProps\"\n    :class=\"cn('cn-accordion-item', props.class)\"\n  >\n    <slot v-bind=\"slotProps\" />\n  </AccordionItem>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-vega/ui/accordion/AccordionTrigger.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { AccordionTriggerProps } from \"reka-ui\"\nimport { AccordionHeader, AccordionTrigger } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\nimport IconPlaceholder from \"@/components/icon-placeholder/IconPlaceholder.vue\"\n\nconst props = defineProps<\n  AccordionTriggerProps & { class?: HTMLAttributes[\"class\"] }\n>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n</script>\n\n<template>\n  <AccordionHeader class=\"flex\">\n    <AccordionTrigger\n      data-slot=\"accordion-trigger\"\n      v-bind=\"delegatedProps\"\n      :class=\"\n        cn(\n          'cn-accordion-trigger group/accordion-trigger relative flex flex-1 items-start justify-between border border-transparent transition-all outline-none disabled:pointer-events-none disabled:opacity-50',\n          props.class\n        )\n      \"\n    >\n      <slot />\n      <slot name=\"icon\">\n        <IconPlaceholder\n          lucide=\"ChevronDownIcon\"\n          tabler=\"IconChevronDown\"\n          data-slot=\"accordion-trigger-icon\"\n          hugeicons=\"ArrowDown01Icon\"\n          phosphor=\"CaretDownIcon\"\n          remixicon=\"RiArrowDownSLine\"\n          class=\"cn-accordion-trigger-icon pointer-events-none shrink-0 group-aria-expanded/accordion-trigger:hidden\"\n        />\n        <IconPlaceholder\n          lucide=\"ChevronUpIcon\"\n          tabler=\"IconChevronUp\"\n          data-slot=\"accordion-trigger-icon\"\n          hugeicons=\"ArrowUp01Icon\"\n          phosphor=\"CaretUpIcon\"\n          remixicon=\"RiArrowUpSLine\"\n          class=\"cn-accordion-trigger-icon pointer-events-none hidden shrink-0 group-aria-expanded/accordion-trigger:inline\"\n        />\n      </slot>\n    </AccordionTrigger>\n  </AccordionHeader>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-vega/ui/accordion/index.ts",
+      "content": "export { default as Accordion } from \"./Accordion.vue\"\nexport { default as AccordionContent } from \"./AccordionContent.vue\"\nexport { default as AccordionItem } from \"./AccordionItem.vue\"\nexport { default as AccordionTrigger } from \"./AccordionTrigger.vue\"\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

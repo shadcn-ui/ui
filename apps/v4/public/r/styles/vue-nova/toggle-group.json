@@ -1,0 +1,29 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toggle-group",
+  "dependencies": [
+    "reka-ui",
+    "@vueuse/core"
+  ],
+  "registryDependencies": [
+    "toggle"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-nova/ui/toggle-group/ToggleGroup.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { toggleVariants } from \"@/ui/toggle\"\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { VariantProps } from \"class-variance-authority\"\nimport type { ToggleGroupRootEmits, ToggleGroupRootProps } from \"reka-ui\"\nimport { ToggleGroupRoot, useForwardPropsEmits } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\nimport { provide } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\ntype ToggleGroupVariants = VariantProps<typeof toggleVariants>\n\nconst props = withDefaults(\n  defineProps<\n    ToggleGroupRootProps & {\n      class?: HTMLAttributes[\"class\"]\n      variant?: ToggleGroupVariants[\"variant\"]\n      size?: ToggleGroupVariants[\"size\"]\n      spacing?: number\n    }\n  >(),\n  {\n    spacing: 0,\n  }\n)\n\nconst emits = defineEmits<ToggleGroupRootEmits>()\n\nprovide(\"toggleGroup\", {\n  variant: props.variant,\n  size: props.size,\n  spacing: props.spacing,\n})\n\nconst delegatedProps = reactiveOmit(props, \"class\", \"size\", \"variant\")\nconst forwarded = useForwardPropsEmits(delegatedProps, emits)\n</script>\n\n<template>\n  <ToggleGroupRoot\n    v-slot=\"slotProps\"\n    data-slot=\"toggle-group\"\n    :data-size=\"size\"\n    :data-variant=\"variant\"\n    :data-spacing=\"spacing\"\n    :style=\"{\n      '--gap': spacing,\n    }\"\n    v-bind=\"forwarded\"\n    :class=\"\n      cn(\n        'cn-toggle-group group/toggle-group flex w-fit flex-row items-center gap-[--spacing(var(--gap))] data-[orientation=vertical]:flex-col data-[orientation=vertical]:items-stretch',\n        props.class\n      )\n    \"\n  >\n    <slot v-bind=\"slotProps\" />\n  </ToggleGroupRoot>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-nova/ui/toggle-group/ToggleGroupItem.vue",
+      "content": "<script setup lang=\"ts\">\nimport { toggleVariants } from \"@/ui/toggle\"\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { VariantProps } from \"class-variance-authority\"\nimport type { ToggleGroupItemProps } from \"reka-ui\"\nimport { ToggleGroupItem, useForwardProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\nimport { inject } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\ntype ToggleGroupVariants = VariantProps<typeof toggleVariants> & {\n  spacing?: number\n}\n\nconst props = defineProps<\n  ToggleGroupItemProps & {\n    class?: HTMLAttributes[\"class\"]\n    variant?: ToggleGroupVariants[\"variant\"]\n    size?: ToggleGroupVariants[\"size\"]\n  }\n>()\n\nconst context = inject<ToggleGroupVariants>(\"toggleGroup\")\n\nconst delegatedProps = reactiveOmit(props, \"class\", \"size\", \"variant\")\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <ToggleGroupItem\n    v-slot=\"slotProps\"\n    data-slot=\"toggle-group-item\"\n    :data-variant=\"context?.variant || variant\"\n    :data-size=\"context?.size || size\"\n    :data-spacing=\"context?.spacing\"\n    v-bind=\"forwardedProps\"\n    :class=\"\n      cn(\n        'cn-toggle-group-item shrink-0 focus:z-10 focus-visible:z-10 group-data-horizontal/toggle-group:data-[spacing=0]:data-[variant=outline]:border-l-0 group-data-vertical/toggle-group:data-[spacing=0]:data-[variant=outline]:border-t-0 group-data-horizontal/toggle-group:data-[spacing=0]:data-[variant=outline]:first:border-l group-data-vertical/toggle-group:data-[spacing=0]:data-[variant=outline]:first:border-t',\n        toggleVariants({\n          variant: context?.variant || variant,\n          size: context?.size || size,\n        }),\n        props.class\n      )\n    \"\n  >\n    <slot v-bind=\"slotProps\" />\n  </ToggleGroupItem>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-nova/ui/toggle-group/index.ts",
+      "content": "export { default as ToggleGroup } from \"./ToggleGroup.vue\"\nexport { default as ToggleGroupItem } from \"./ToggleGroupItem.vue\"\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

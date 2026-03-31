@@ -1,0 +1,35 @@
+<script setup lang="ts">
+import { reactiveOmit } from "@vueuse/core"
+import type {
+  DropdownMenuSubContentEmits,
+  DropdownMenuSubContentProps,
+} from "reka-ui"
+import { ContextMenuSubContent, useForwardPropsEmits } from "reka-ui"
+import type { HTMLAttributes } from "vue"
+
+import { cn } from "@/lib/utils"
+
+const props = defineProps<
+  DropdownMenuSubContentProps & { class?: HTMLAttributes["class"] }
+>()
+const emits = defineEmits<DropdownMenuSubContentEmits>()
+
+const delegatedProps = reactiveOmit(props, "class")
+
+const forwarded = useForwardPropsEmits(delegatedProps, emits)
+</script>
+
+<template>
+  <ContextMenuSubContent
+    data-slot="context-menu-sub-content"
+    v-bind="forwarded"
+    :class="
+      cn(
+        'cn-context-menu-sub-content cn-menu-target z-50 origin-(--reka-context-menu-content-transform-origin) overflow-hidden',
+        props.class
+      )
+    "
+  >
+    <slot />
+  </ContextMenuSubContent>
+</template>

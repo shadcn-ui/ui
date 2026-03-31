@@ -1,0 +1,34 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "native-select",
+  "dependencies": [
+    "reka-ui",
+    "@vueuse/core"
+  ],
+  "registryDependencies": [
+    "icon-placeholder"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-lyra/ui/native-select/NativeSelect.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit, useVModel } from \"@vueuse/core\"\nimport type { AcceptableValue } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\nimport { IconPlaceholder } from \"@/components/icon-placeholder\"\n\ndefineOptions({\n  inheritAttrs: false,\n})\n\nconst props = defineProps<{\n  modelValue?: AcceptableValue | AcceptableValue[]\n  class?: HTMLAttributes[\"class\"]\n}>()\n\nconst emit = defineEmits<{\n  \"update:modelValue\": AcceptableValue\n}>()\n\nconst modelValue = useVModel(props, \"modelValue\", emit, {\n  passive: true,\n  defaultValue: \"\",\n})\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n</script>\n\n<template>\n  <div\n    class=\"group/native-select relative w-fit has-[select:disabled]:opacity-50\"\n    data-slot=\"native-select-wrapper\"\n  >\n    <select\n      v-bind=\"{ ...$attrs, ...delegatedProps }\"\n      v-model=\"modelValue\"\n      data-slot=\"native-select\"\n      :class=\"\n        cn(\n          'h-9 w-full min-w-0 appearance-none rounded-md border border-input bg-transparent px-3 py-2 pr-9 text-sm shadow-xs transition-[color,box-shadow] outline-none selection:bg-primary selection:text-primary-foreground placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed dark:bg-input/30 dark:hover:bg-input/50',\n          'focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50',\n          'aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40',\n          props.class\n        )\n      \"\n    >\n      <slot />\n    </select>\n    <IconPlaceholder\n      lucide=\"ChevronDownIcon\"\n      tabler=\"IconChevronDown\"\n      hugeicons=\"ArrowDown01Icon\"\n      phosphor=\"CaretDownIcon\"\n      remixicon=\"RiArrowDownSLine\"\n      class=\"pointer-events-none absolute top-1/2 right-3.5 size-4 -translate-y-1/2 text-muted-foreground opacity-50 select-none\"\n      aria-hidden=\"true\"\n      data-slot=\"native-select-icon\"\n    />\n  </div>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-lyra/ui/native-select/NativeSelectOptGroup.vue",
+      "content": "<!-- @fallthroughAttributes true -->\n<!-- @strictTemplates true -->\n\n<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{ class?: HTMLAttributes[\"class\"] }>()\n</script>\n\n<template>\n  <optgroup\n    data-slot=\"native-select-optgroup\"\n    :class=\"cn('bg-popover text-popover-foreground', props.class)\"\n  >\n    <slot />\n  </optgroup>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-lyra/ui/native-select/NativeSelectOption.vue",
+      "content": "<!-- @fallthroughAttributes true -->\n<!-- @strictTemplates true -->\n\n<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{ class?: HTMLAttributes[\"class\"] }>()\n</script>\n\n<template>\n  <option\n    data-slot=\"native-select-option\"\n    :class=\"cn('bg-popover text-popover-foreground', props.class)\"\n  >\n    <slot />\n  </option>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-lyra/ui/native-select/index.ts",
+      "content": "export { default as NativeSelect } from \"./NativeSelect.vue\"\nexport { default as NativeSelectOptGroup } from \"./NativeSelectOptGroup.vue\"\nexport { default as NativeSelectOption } from \"./NativeSelectOption.vue\"\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,33 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-group-example",
+  "title": "Input Group",
+  "dependencies": [],
+  "registryDependencies": [
+    "input-group",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-maia/examples/input-group/InputGroupBasic.vue",
+      "content": "<script setup lang=\"ts\">\nimport { InputGroup, InputGroupAddon, InputGroupInput } from \"@/ui/input-group\"\n\nimport { Example } from \"@/components/example\"\nimport IconPlaceholder from \"@/components/IconPlaceholder.vue\"\n</script>\n\n<template>\n  <Example title=\"Basic Input Group\">\n    <div class=\"grid w-full max-w-sm items-center gap-4\">\n      <InputGroup>\n        <InputGroupAddon align=\"inline-start\">\n          <IconPlaceholder\n            lucide=\"MailIcon\"\n            tabler=\"IconMail\"\n            hugeicons=\"Mail01Icon\"\n            phosphor=\"EnvelopeIcon\"\n            remixicon=\"RiMailLine\"\n          />\n        </InputGroupAddon>\n        <InputGroupInput type=\"email\" placeholder=\"Email\" />\n      </InputGroup>\n\n      <InputGroup>\n        <InputGroupInput type=\"text\" placeholder=\"Username\" />\n        <InputGroupAddon align=\"inline-end\"> @example.com </InputGroupAddon>\n      </InputGroup>\n\n      <InputGroup>\n        <InputGroupAddon align=\"inline-start\"> https:// </InputGroupAddon>\n        <InputGroupInput type=\"text\" placeholder=\"example.com\" />\n      </InputGroup>\n    </div>\n  </Example>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-maia/examples/input-group/InputGroupExample.vue",
+      "content": "<script setup lang=\"ts\">\nimport { ExampleWrapper } from \"@/components/example\"\n\nimport InputGroupBasic from \"./InputGroupBasic.vue\"\nimport InputGroupWithButton from \"./InputGroupWithButton.vue\"\nimport InputGroupWithTextarea from \"./InputGroupWithTextarea.vue\"\n</script>\n\n<template>\n  <ExampleWrapper>\n    <InputGroupBasic />\n    <InputGroupWithButton />\n    <InputGroupWithTextarea />\n  </ExampleWrapper>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-maia/examples/input-group/InputGroupWithButton.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Button } from \"@/ui/button\"\nimport { InputGroup, InputGroupButton, InputGroupInput } from \"@/ui/input-group\"\n\nimport { Example } from \"@/components/example\"\nimport IconPlaceholder from \"@/components/IconPlaceholder.vue\"\n</script>\n\n<template>\n  <Example title=\"Input Group with Button\">\n    <div class=\"grid w-full max-w-sm items-center gap-4\">\n      <InputGroup>\n        <InputGroupInput type=\"text\" placeholder=\"Search...\" />\n        <InputGroupButton>\n          <Button>\n            <IconPlaceholder\n              lucide=\"SearchIcon\"\n              tabler=\"IconSearch\"\n              hugeicons=\"Search01Icon\"\n              phosphor=\"MagnifyingGlassIcon\"\n              remixicon=\"RiSearchLine\"\n            />\n          </Button>\n        </InputGroupButton>\n      </InputGroup>\n\n      <InputGroup>\n        <InputGroupButton>\n          <Button variant=\"outline\">\n            <IconPlaceholder\n              lucide=\"CopyIcon\"\n              tabler=\"IconCopy\"\n              hugeicons=\"Copy01Icon\"\n              phosphor=\"CopyIcon\"\n              remixicon=\"RiFileCopyLine\"\n            />\n          </Button>\n        </InputGroupButton>\n        <InputGroupInput type=\"text\" placeholder=\"Copy this text\" />\n      </InputGroup>\n\n      <InputGroup>\n        <InputGroupButton>\n          <Button variant=\"outline\" size=\"sm\"> - </Button>\n        </InputGroupButton>\n        <InputGroupInput type=\"number\" placeholder=\"0\" />\n        <InputGroupButton>\n          <Button variant=\"outline\" size=\"sm\"> + </Button>\n        </InputGroupButton>\n      </InputGroup>\n    </div>\n  </Example>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-maia/examples/input-group/InputGroupWithTextarea.vue",
+      "content": "<script setup lang=\"ts\">\nimport {\n  InputGroup,\n  InputGroupAddon,\n  InputGroupTextarea,\n} from \"@/ui/input-group\"\n\nimport { Example } from \"@/components/example\"\nimport IconPlaceholder from \"@/components/IconPlaceholder.vue\"\n</script>\n\n<template>\n  <Example title=\"Input Group with Textarea\">\n    <div class=\"grid w-full max-w-sm items-center gap-4\">\n      <InputGroup>\n        <InputGroupAddon align=\"inline-start\">\n          <IconPlaceholder\n            lucide=\"MessageSquareIcon\"\n            tabler=\"IconMessageSquare\"\n            hugeicons=\"Message01Icon\"\n            phosphor=\"ChatIcon\"\n            remixicon=\"RiChat1Line\"\n          />\n        </InputGroupAddon>\n        <InputGroupTextarea placeholder=\"Type your message here...\" />\n      </InputGroup>\n\n      <InputGroup>\n        <InputGroupTextarea placeholder=\"Add a comment...\" rows=\"4\" />\n        <InputGroupAddon align=\"inline-end\">\n          <IconPlaceholder\n            lucide=\"SendIcon\"\n            tabler=\"IconSend\"\n            hugeicons=\"Send01Icon\"\n            phosphor=\"PaperPlaneRightIcon\"\n            remixicon=\"RiSendPlaneLine\"\n          />\n        </InputGroupAddon>\n      </InputGroup>\n    </div>\n  </Example>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

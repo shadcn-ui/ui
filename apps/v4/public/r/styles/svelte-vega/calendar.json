@@ -1,0 +1,115 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "calendar",
+  "dependencies": [
+    "@internationalized/date",
+    "bits-ui"
+  ],
+  "registryDependencies": [
+    "button",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-vega/ui/calendar/calendar-caption.svelte",
+      "content": "<script lang=\"ts\">\n  import {\n    DateFormatter,\n    getLocalTimeZone,\n    type DateValue,\n  } from \"@internationalized/date\"\n  import type { ComponentProps } from \"svelte\"\n\n  import CalendarMonthSelect from \"./calendar-month-select.svelte\"\n  import CalendarYearSelect from \"./calendar-year-select.svelte\"\n  import type Calendar from \"./calendar.svelte\"\n\n  let {\n    captionLayout,\n    months,\n    monthFormat,\n    years,\n    yearFormat,\n    month,\n    locale,\n    placeholder = $bindable(),\n    monthIndex = 0,\n  }: {\n    captionLayout: ComponentProps<typeof Calendar>[\"captionLayout\"]\n    months: ComponentProps<typeof CalendarMonthSelect>[\"months\"]\n    monthFormat: ComponentProps<typeof CalendarMonthSelect>[\"monthFormat\"]\n    years: ComponentProps<typeof CalendarYearSelect>[\"years\"]\n    yearFormat: ComponentProps<typeof CalendarYearSelect>[\"yearFormat\"]\n    month: DateValue\n    placeholder: DateValue | undefined\n    locale: string\n    monthIndex: number\n  } = $props()\n\n  function formatYear(date: DateValue) {\n    const dateObj = date.toDate(getLocalTimeZone())\n    if (typeof yearFormat === \"function\")\n      return yearFormat(dateObj.getFullYear())\n    return new DateFormatter(locale, { year: yearFormat }).format(dateObj)\n  }\n\n  function formatMonth(date: DateValue) {\n    const dateObj = date.toDate(getLocalTimeZone())\n    if (typeof monthFormat === \"function\")\n      return monthFormat(dateObj.getMonth() + 1)\n    return new DateFormatter(locale, { month: monthFormat }).format(dateObj)\n  }\n</script>\n\n{#snippet MonthSelect()}\n  <CalendarMonthSelect\n    {months}\n    {monthFormat}\n    value={month.month}\n    onchange={(e) => {\n      if (!placeholder) return\n      const v = Number.parseInt(e.currentTarget.value)\n      const newPlaceholder = placeholder.set({ month: v })\n      placeholder = newPlaceholder.subtract({ months: monthIndex })\n    }}\n  />\n{/snippet}\n\n{#snippet YearSelect()}\n  <CalendarYearSelect {years} {yearFormat} value={month.year} />\n{/snippet}\n\n{#if captionLayout === \"dropdown\"}\n  {@render MonthSelect()}\n  {@render YearSelect()}\n{:else if captionLayout === \"dropdown-months\"}\n  {@render MonthSelect()}\n  {#if placeholder}\n    {formatYear(placeholder)}\n  {/if}\n{:else if captionLayout === \"dropdown-years\"}\n  {#if placeholder}\n    {formatMonth(placeholder)}\n  {/if}\n  {@render YearSelect()}\n{:else}\n  {formatMonth(month)} {formatYear(month)}\n{/if}\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/calendar/calendar-cell.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { Calendar as CalendarPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    ...restProps\n  }: CalendarPrimitive.CellProps = $props()\n</script>\n\n<CalendarPrimitive.Cell\n  bind:ref\n  class={cn(\n    \"relative size-(--cell-size) p-0 text-center text-sm focus-within:z-20 [&:first-child[data-selected]_[data-bits-day]]:rounded-s-(--cell-radius) [&:last-child[data-selected]_[data-bits-day]]:rounded-e-(--cell-radius)\",\n    className\n  )}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/calendar/calendar-day.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { Calendar as CalendarPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    ...restProps\n  }: CalendarPrimitive.DayProps = $props()\n</script>\n\n<CalendarPrimitive.Day\n  bind:ref\n  class={cn(\n    \"flex size-(--cell-size) flex-col items-center justify-center gap-1 rounded-(--cell-radius) p-0 leading-none font-normal whitespace-nowrap select-none\",\n    \"[&:last-child[data-selected=true]_button]:rounded-r-(--cell-radius)\",\n    \"not-data-selected:hover:bg-accent/50 not-data-selected:hover:text-accent-foreground\",\n    \"[&[data-today]:not([data-selected])]:bg-accent [&[data-today]:not([data-selected])]:text-accent-foreground [&[data-today][data-disabled]]:text-muted-foreground\",\n    \"data-[selected]:bg-primary data-[selected]:text-primary-foreground data-[selected]:hover:text-foreground\",\n    // Outside months\n    \"[&[data-outside-month]:not([data-selected])]:text-muted-foreground [&[data-outside-month]:not([data-selected])]:hover:text-accent-foreground\",\n    // Disabled\n    \"data-[disabled]:text-muted-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50\",\n    // Unavailable\n    \"data-[unavailable]:text-muted-foreground data-[unavailable]:line-through\",\n    // focus\n    \"focus:border-ring focus:ring-ring/50 focus:relative\",\n    // inner spans\n    \"[&>span]:text-xs [&>span]:opacity-70\",\n    className\n  )}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/calendar/calendar-grid-body.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { Calendar as CalendarPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    ...restProps\n  }: CalendarPrimitive.GridBodyProps = $props()\n</script>\n\n<CalendarPrimitive.GridBody bind:ref class={cn(className)} {...restProps} />\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/calendar/calendar-grid-head.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { Calendar as CalendarPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    ...restProps\n  }: CalendarPrimitive.GridHeadProps = $props()\n</script>\n\n<CalendarPrimitive.GridHead bind:ref class={cn(className)} {...restProps} />\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/calendar/calendar-grid-row.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { Calendar as CalendarPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    ...restProps\n  }: CalendarPrimitive.GridRowProps = $props()\n</script>\n\n<CalendarPrimitive.GridRow\n  bind:ref\n  class={cn(\"flex\", className)}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/calendar/calendar-grid.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { Calendar as CalendarPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    ...restProps\n  }: CalendarPrimitive.GridProps = $props()\n</script>\n\n<CalendarPrimitive.Grid\n  bind:ref\n  class={cn(\"flex w-full border-collapse flex-col\", className)}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/calendar/calendar-head-cell.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { Calendar as CalendarPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    ...restProps\n  }: CalendarPrimitive.HeadCellProps = $props()\n</script>\n\n<CalendarPrimitive.HeadCell\n  bind:ref\n  class={cn(\n    \"text-muted-foreground w-(--cell-size) rounded-md text-[0.8rem] font-normal\",\n    className\n  )}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/calendar/calendar-header.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { Calendar as CalendarPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    ...restProps\n  }: CalendarPrimitive.HeaderProps = $props()\n</script>\n\n<CalendarPrimitive.Header\n  bind:ref\n  class={cn(\n    \"flex h-(--cell-size) w-full items-center justify-center gap-1.5 text-sm font-medium\",\n    className\n  )}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/calendar/calendar-heading.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { Calendar as CalendarPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    ...restProps\n  }: CalendarPrimitive.HeadingProps = $props()\n</script>\n\n<CalendarPrimitive.Heading\n  bind:ref\n  class={cn(\"px-(--cell-size) text-sm font-medium\", className)}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/calendar/calendar-month-select.svelte",
+      "content": "<script lang=\"ts\">\n  import ChevronDownIcon from \"@lucide/svelte/icons/chevron-down\"\n  import { cn, type WithoutChildrenOrChild } from \"$lib/utils.js\"\n  import { Calendar as CalendarPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    value,\n    onchange,\n    ...restProps\n  }: WithoutChildrenOrChild<CalendarPrimitive.MonthSelectProps> = $props()\n</script>\n\n<span\n  class={cn(\n    \"has-focus:border-ring border-input has-focus:ring-ring/50 relative flex rounded-md border shadow-xs has-focus:ring-[3px]\",\n    className\n  )}\n>\n  <CalendarPrimitive.MonthSelect\n    bind:ref\n    class=\"bg-background dark:bg-popover dark:text-popover-foreground absolute inset-0 opacity-0\"\n    {...restProps}\n  >\n    {#snippet child({ props, monthItems, selectedMonthItem })}\n      <select {...props} {value} {onchange}>\n        {#each monthItems as monthItem (monthItem.value)}\n          <option\n            value={monthItem.value}\n            selected={value !== undefined\n              ? monthItem.value === value\n              : monthItem.value === selectedMonthItem.value}\n          >\n            {monthItem.label}\n          </option>\n        {/each}\n      </select>\n      <span\n        class=\"[&>svg]:text-muted-foreground flex h-(--cell-size) items-center gap-1 rounded-md ps-2 pe-1 text-sm font-medium select-none [&>svg]:size-3.5\"\n        aria-hidden=\"true\"\n      >\n        {monthItems.find((item) => item.value === value)?.label ||\n          selectedMonthItem.label}\n        <ChevronDownIcon class=\"size-4\" />\n      </span>\n    {/snippet}\n  </CalendarPrimitive.MonthSelect>\n</span>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/calendar/calendar-month.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...restProps\n  }: WithElementRef<HTMLAttributes<HTMLElement>> = $props()\n</script>\n\n<div\n  {...restProps}\n  bind:this={ref}\n  class={cn(\"flex w-full flex-col gap-4\", className)}\n>\n  {@render children?.()}\n</div>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/calendar/calendar-months.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...restProps\n  }: WithElementRef<HTMLAttributes<HTMLDivElement>> = $props()\n</script>\n\n<div\n  bind:this={ref}\n  class={cn(\"relative flex flex-col gap-4 md:flex-row\", className)}\n  {...restProps}\n>\n  {@render children?.()}\n</div>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/calendar/calendar-nav.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...restProps\n  }: WithElementRef<HTMLAttributes<HTMLElement>> = $props()\n</script>\n\n<nav\n  {...restProps}\n  bind:this={ref}\n  class={cn(\n    \"absolute inset-x-0 top-0 flex w-full items-center justify-between gap-1\",\n    className\n  )}\n>\n  {@render children?.()}\n</nav>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/calendar/calendar-next-button.svelte",
+      "content": "<script lang=\"ts\">\n  import ChevronRightIcon from \"@lucide/svelte/icons/chevron-right\"\n  import {\n    buttonVariants,\n    type ButtonVariant,\n  } from \"$lib/registry/ui/button/index.js\"\n  import { cn } from \"$lib/utils.js\"\n  import { Calendar as CalendarPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    variant = \"ghost\",\n    ...restProps\n  }: CalendarPrimitive.NextButtonProps & {\n    variant?: ButtonVariant\n  } = $props()\n</script>\n\n{#snippet Fallback()}\n  <ChevronRightIcon class=\"size-4\" />\n{/snippet}\n\n<CalendarPrimitive.NextButton\n  bind:ref\n  class={cn(\n    buttonVariants({ variant }),\n    \"size-(--cell-size) bg-transparent p-0 select-none disabled:opacity-50 rtl:rotate-180\",\n    className\n  )}\n  {...restProps}\n>\n  {#if children}\n    {@render children?.()}\n  {:else}\n    {@render Fallback()}\n  {/if}\n</CalendarPrimitive.NextButton>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/calendar/calendar-prev-button.svelte",
+      "content": "<script lang=\"ts\">\n  import ChevronLeftIcon from \"@lucide/svelte/icons/chevron-left\"\n  import {\n    buttonVariants,\n    type ButtonVariant,\n  } from \"$lib/registry/ui/button/index.js\"\n  import { cn } from \"$lib/utils.js\"\n  import { Calendar as CalendarPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    variant = \"ghost\",\n    ...restProps\n  }: CalendarPrimitive.PrevButtonProps & {\n    variant?: ButtonVariant\n  } = $props()\n</script>\n\n{#snippet Fallback()}\n  <ChevronLeftIcon class=\"size-4\" />\n{/snippet}\n\n<CalendarPrimitive.PrevButton\n  bind:ref\n  class={cn(\n    buttonVariants({ variant }),\n    \"size-(--cell-size) bg-transparent p-0 select-none disabled:opacity-50 rtl:rotate-180\",\n    className\n  )}\n  {...restProps}\n>\n  {#if children}\n    {@render children?.()}\n  {:else}\n    {@render Fallback()}\n  {/if}\n</CalendarPrimitive.PrevButton>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/calendar/calendar-year-select.svelte",
+      "content": "<script lang=\"ts\">\n  import ChevronDownIcon from \"@lucide/svelte/icons/chevron-down\"\n  import { cn, type WithoutChildrenOrChild } from \"$lib/utils.js\"\n  import { Calendar as CalendarPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    value,\n    ...restProps\n  }: WithoutChildrenOrChild<CalendarPrimitive.YearSelectProps> = $props()\n</script>\n\n<span\n  class={cn(\n    \"has-focus:border-ring border-input has-focus:ring-ring/50 relative flex rounded-md border shadow-xs has-focus:ring-[3px]\",\n    className\n  )}\n>\n  <CalendarPrimitive.YearSelect\n    bind:ref\n    class=\"dark:bg-popover dark:text-popover-foreground absolute inset-0 opacity-0\"\n    {...restProps}\n  >\n    {#snippet child({ props, yearItems, selectedYearItem })}\n      <select {...props} {value}>\n        {#each yearItems as yearItem (yearItem.value)}\n          <option\n            value={yearItem.value}\n            selected={value !== undefined\n              ? yearItem.value === value\n              : yearItem.value === selectedYearItem.value}\n          >\n            {yearItem.label}\n          </option>\n        {/each}\n      </select>\n      <span\n        class=\"[&>svg]:text-muted-foreground flex h-(--cell-size) items-center gap-1 rounded-md ps-2 pe-1 text-sm font-medium select-none [&>svg]:size-3.5\"\n        aria-hidden=\"true\"\n      >\n        {yearItems.find((item) => item.value === value)?.label ||\n          selectedYearItem.label}\n        <ChevronDownIcon class=\"size-4\" />\n      </span>\n    {/snippet}\n  </CalendarPrimitive.YearSelect>\n</span>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/calendar/calendar.svelte",
+      "content": "<script lang=\"ts\">\n  import { isEqualMonth, type DateValue } from \"@internationalized/date\"\n  import { cn, type WithoutChildrenOrChild } from \"$lib/utils.js\"\n  import { Calendar as CalendarPrimitive } from \"bits-ui\"\n  import type { Snippet } from \"svelte\"\n\n  import type { ButtonVariant } from \"../button/button.svelte\"\n  import * as Calendar from \"./index.js\"\n\n  let {\n    ref = $bindable(null),\n    value = $bindable(),\n    placeholder = $bindable(),\n    class: className,\n    weekdayFormat = \"short\",\n    buttonVariant = \"ghost\",\n    captionLayout = \"label\",\n    locale = \"en-US\",\n    months: monthsProp,\n    years,\n    monthFormat: monthFormatProp,\n    yearFormat = \"numeric\",\n    day,\n    disableDaysOutsideMonth = false,\n    ...restProps\n  }: WithoutChildrenOrChild<CalendarPrimitive.RootProps> & {\n    buttonVariant?: ButtonVariant\n    captionLayout?: \"dropdown\" | \"dropdown-months\" | \"dropdown-years\" | \"label\"\n    months?: CalendarPrimitive.MonthSelectProps[\"months\"]\n    years?: CalendarPrimitive.YearSelectProps[\"years\"]\n    monthFormat?: CalendarPrimitive.MonthSelectProps[\"monthFormat\"]\n    yearFormat?: CalendarPrimitive.YearSelectProps[\"yearFormat\"]\n    day?: Snippet<[{ day: DateValue; outsideMonth: boolean }]>\n  } = $props()\n\n  const monthFormat = $derived.by(() => {\n    if (monthFormatProp) return monthFormatProp\n    if (captionLayout.startsWith(\"dropdown\")) return \"short\"\n    return \"long\"\n  })\n</script>\n\n<!--\nDiscriminated Unions + Destructing (required for bindable) do not\nget along, so we shut typescript up by casting `value` to `never`.\n-->\n<CalendarPrimitive.Root\n  bind:value={value as never}\n  bind:ref\n  bind:placeholder\n  {weekdayFormat}\n  {disableDaysOutsideMonth}\n  class={cn(\n    \"cn-calendar bg-background group/calendar in-data-[slot=card-content]:bg-transparent in-data-[slot=popover-content]:bg-transparent\",\n    className\n  )}\n  {locale}\n  {monthFormat}\n  {yearFormat}\n  {...restProps}\n>\n  {#snippet children({ months, weekdays })}\n    <Calendar.Months>\n      <Calendar.Nav>\n        <Calendar.PrevButton variant={buttonVariant} />\n        <Calendar.NextButton variant={buttonVariant} />\n      </Calendar.Nav>\n      {#each months as month, monthIndex (month)}\n        <Calendar.Month>\n          <Calendar.Header>\n            <Calendar.Caption\n              {captionLayout}\n              months={monthsProp}\n              {monthFormat}\n              {years}\n              {yearFormat}\n              month={month.value}\n              bind:placeholder\n              {locale}\n              {monthIndex}\n            />\n          </Calendar.Header>\n          <Calendar.Grid>\n            <Calendar.GridHead>\n              <Calendar.GridRow class=\"select-none\">\n                {#each weekdays as weekday (weekday)}\n                  <Calendar.HeadCell>\n                    {weekday.slice(0, 2)}\n                  </Calendar.HeadCell>\n                {/each}\n              </Calendar.GridRow>\n            </Calendar.GridHead>\n            <Calendar.GridBody>\n              {#each month.weeks as weekDates (weekDates)}\n                <Calendar.GridRow class=\"mt-2 w-full\">\n                  {#each weekDates as date (date)}\n                    <Calendar.Cell {date} month={month.value}>\n                      {#if day}\n                        {@render day({\n                          day: date,\n                          outsideMonth: !isEqualMonth(date, month.value),\n                        })}\n                      {:else}\n                        <Calendar.Day />\n                      {/if}\n                    </Calendar.Cell>\n                  {/each}\n                </Calendar.GridRow>\n              {/each}\n            </Calendar.GridBody>\n          </Calendar.Grid>\n        </Calendar.Month>\n      {/each}\n    </Calendar.Months>\n  {/snippet}\n</CalendarPrimitive.Root>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/calendar/index.ts",
+      "content": "import Caption from \"./calendar-caption.svelte\"\nimport Cell from \"./calendar-cell.svelte\"\nimport Day from \"./calendar-day.svelte\"\nimport GridBody from \"./calendar-grid-body.svelte\"\nimport GridHead from \"./calendar-grid-head.svelte\"\nimport GridRow from \"./calendar-grid-row.svelte\"\nimport Grid from \"./calendar-grid.svelte\"\nimport HeadCell from \"./calendar-head-cell.svelte\"\nimport Header from \"./calendar-header.svelte\"\nimport Heading from \"./calendar-heading.svelte\"\nimport MonthSelect from \"./calendar-month-select.svelte\"\nimport Month from \"./calendar-month.svelte\"\nimport Months from \"./calendar-months.svelte\"\nimport Nav from \"./calendar-nav.svelte\"\nimport NextButton from \"./calendar-next-button.svelte\"\nimport PrevButton from \"./calendar-prev-button.svelte\"\nimport YearSelect from \"./calendar-year-select.svelte\"\nimport Root from \"./calendar.svelte\"\n\nexport {\n  Day,\n  Cell,\n  Grid,\n  Header,\n  Months,\n  GridRow,\n  Heading,\n  GridBody,\n  GridHead,\n  HeadCell,\n  NextButton,\n  PrevButton,\n  Nav,\n  Month,\n  YearSelect,\n  MonthSelect,\n  Caption,\n  //\n  Root as Calendar,\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "meta": {
+    "links": {
+      "docs": "https://force-ui.com/docs/components/svelte/calendar"
+    }
+  },
+  "type": "registry:ui"
+}

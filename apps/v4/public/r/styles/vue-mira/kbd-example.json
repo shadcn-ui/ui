@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "kbd-example",
+  "title": "Kbd",
+  "dependencies": [],
+  "registryDependencies": [
+    "kbd"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-mira/examples/kbd/KbdBasic.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Kbd } from \"@/ui/kbd\"\n\nimport { Example } from \"@/components/example\"\n</script>\n\n<template>\n  <Example title=\"Basic Kbd\">\n    <div class=\"flex flex-wrap items-center gap-4\">\n      <div class=\"flex items-center gap-2\">\n        <span class=\"text-sm\">Save:</span>\n        <Kbd>Ctrl</Kbd>\n        <span>+</span>\n        <Kbd>S</Kbd>\n      </div>\n\n      <div class=\"flex items-center gap-2\">\n        <span class=\"text-sm\">Copy:</span>\n        <Kbd>Ctrl</Kbd>\n        <span>+</span>\n        <Kbd>C</Kbd>\n      </div>\n\n      <div class=\"flex items-center gap-2\">\n        <span class=\"text-sm\">Paste:</span>\n        <Kbd>Ctrl</Kbd>\n        <span>+</span>\n        <Kbd>V</Kbd>\n      </div>\n\n      <div class=\"flex items-center gap-2\">\n        <span class=\"text-sm\">Undo:</span>\n        <Kbd>Ctrl</Kbd>\n        <span>+</span>\n        <Kbd>Z</Kbd>\n      </div>\n\n      <div class=\"flex items-center gap-2\">\n        <span class=\"text-sm\">Search:</span>\n        <Kbd>/</Kbd>\n      </div>\n\n      <div class=\"flex items-center gap-2\">\n        <span class=\"text-sm\">Escape:</span>\n        <Kbd>Esc</Kbd>\n      </div>\n    </div>\n  </Example>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-mira/examples/kbd/KbdExample.vue",
+      "content": "<script setup lang=\"ts\">\nimport { ExampleWrapper } from \"@/components/example\"\n\nimport KbdBasic from \"./KbdBasic.vue\"\nimport KbdWithGroup from \"./KbdWithGroup.vue\"\n</script>\n\n<template>\n  <ExampleWrapper>\n    <KbdBasic />\n    <KbdWithGroup />\n  </ExampleWrapper>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-mira/examples/kbd/KbdWithGroup.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Kbd, KbdGroup } from \"@/ui/kbd\"\n\nimport { Example } from \"@/components/example\"\n</script>\n\n<template>\n  <Example title=\"Kbd with Group\">\n    <div class=\"flex flex-col gap-4\">\n      <div class=\"flex items-center gap-2\">\n        <span class=\"text-sm\">Select all:</span>\n        <KbdGroup>\n          <Kbd>Ctrl</Kbd>\n          <Kbd>A</Kbd>\n        </KbdGroup>\n      </div>\n\n      <div class=\"flex items-center gap-2\">\n        <span class=\"text-sm\">Open command palette:</span>\n        <KbdGroup>\n          <Kbd>Ctrl</Kbd>\n          <Kbd>K</Kbd>\n        </KbdGroup>\n      </div>\n\n      <div class=\"flex items-center gap-2\">\n        <span class=\"text-sm\">Find and replace:</span>\n        <KbdGroup>\n          <Kbd>Ctrl</Kbd>\n          <Kbd>H</Kbd>\n        </KbdGroup>\n      </div>\n\n      <div class=\"flex items-center gap-2\">\n        <span class=\"text-sm\">Multiple selection:</span>\n        <KbdGroup>\n          <Kbd>Ctrl</Kbd>\n          <Kbd>Shift</Kbd>\n          <Kbd>L</Kbd>\n        </KbdGroup>\n      </div>\n\n      <div class=\"flex items-center gap-2\">\n        <span class=\"text-sm\">Toggle terminal:</span>\n        <KbdGroup>\n          <Kbd>Ctrl</Kbd>\n          <Kbd>`</Kbd>\n        </KbdGroup>\n      </div>\n    </div>\n  </Example>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "kbd",
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-lyra/ui/kbd/index.ts",
+      "content": "import Group from \"./kbd-group.svelte\"\nimport Root from \"./kbd.svelte\"\n\nexport {\n  Root,\n  Group,\n  //\n  Root as Kbd,\n  Group as KbdGroup,\n}\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-lyra/ui/kbd/kbd-group.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...restProps\n  }: WithElementRef<HTMLAttributes<HTMLElement>> = $props()\n</script>\n\n<kbd\n  bind:this={ref}\n  data-slot=\"kbd-group\"\n  class={cn(\"cn-kbd-group inline-flex items-center\", className)}\n  {...restProps}\n>\n  {@render children?.()}\n</kbd>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-lyra/ui/kbd/kbd.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...restProps\n  }: WithElementRef<HTMLAttributes<HTMLElement>> = $props()\n</script>\n\n<kbd\n  bind:this={ref}\n  data-slot=\"kbd\"\n  class={cn(\n    \"cn-kbd pointer-events-none inline-flex items-center justify-center select-none\",\n    className\n  )}\n  {...restProps}\n>\n  {@render children?.()}\n</kbd>\n",
+      "type": "registry:ui"
+    }
+  ],
+  "meta": {
+    "links": {
+      "docs": "https://force-ui.com/docs/components/svelte/kbd"
+    }
+  },
+  "type": "registry:ui"
+}

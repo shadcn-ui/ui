@@ -1,0 +1,71 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "select",
+  "dependencies": [
+    "reka-ui",
+    "@vueuse/core"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-lyra/ui/select/Select.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { SelectRootEmits, SelectRootProps } from \"reka-ui\"\nimport { SelectRoot, useForwardPropsEmits } from \"reka-ui\"\n\nconst props = defineProps<SelectRootProps>()\nconst emits = defineEmits<SelectRootEmits>()\n\nconst forwarded = useForwardPropsEmits(props, emits)\n</script>\n\n<template>\n  <SelectRoot v-slot=\"slotProps\" data-slot=\"select\" v-bind=\"forwarded\">\n    <slot v-bind=\"slotProps\" />\n  </SelectRoot>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-lyra/ui/select/SelectContent.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { SelectContentEmits, SelectContentProps } from \"reka-ui\"\nimport {\n  SelectContent,\n  SelectPortal,\n  SelectViewport,\n  useForwardPropsEmits,\n} from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nimport { SelectScrollDownButton, SelectScrollUpButton } from \".\"\n\ndefineOptions({\n  inheritAttrs: false,\n})\n\nconst props = withDefaults(\n  defineProps<SelectContentProps & { class?: HTMLAttributes[\"class\"] }>(),\n  {\n    position: \"popper\",\n  }\n)\nconst emits = defineEmits<SelectContentEmits>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n\nconst forwarded = useForwardPropsEmits(delegatedProps, emits)\n</script>\n\n<template>\n  <SelectPortal>\n    <SelectContent\n      data-slot=\"select-content\"\n      v-bind=\"{ ...$attrs, ...forwarded }\"\n      :class=\"\n        cn(\n          'cn-select-content cn-menu-target relative z-50 max-h-(--reka-select-content-available-height) origin-(--reka-select-content-transform-origin) overflow-x-hidden overflow-y-auto',\n          position === 'popper' &&\n            'data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1',\n          props.class\n        )\n      \"\n    >\n      <SelectScrollUpButton />\n      <SelectViewport\n        :data-position=\"position\"\n        :class=\"\n          cn(\n            'cn-select-viewport data-[position=popper]:h-[var(--reka-select-trigger-height)] data-[position=popper]:w-full data-[position=popper]:min-w-[var(--reka-select-trigger-width)]'\n          )\n        \"\n      >\n        <slot />\n      </SelectViewport>\n      <SelectScrollDownButton />\n    </SelectContent>\n  </SelectPortal>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-lyra/ui/select/SelectGroup.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { SelectGroupProps } from \"reka-ui\"\nimport { SelectGroup } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<\n  SelectGroupProps & { class?: HTMLAttributes[\"class\"] }\n>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n</script>\n\n<template>\n  <SelectGroup\n    data-slot=\"select-group\"\n    v-bind=\"delegatedProps\"\n    :class=\"cn('cn-select-group', props.class)\"\n  >\n    <slot />\n  </SelectGroup>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-lyra/ui/select/SelectItem.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { SelectItemProps } from \"reka-ui\"\nimport {\n  SelectItem,\n  SelectItemIndicator,\n  SelectItemText,\n  useForwardProps,\n} from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\nimport IconPlaceholder from \"@/components/icon-placeholder/IconPlaceholder.vue\"\n\nconst props = defineProps<\n  SelectItemProps & { class?: HTMLAttributes[\"class\"] }\n>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <SelectItem\n    data-slot=\"select-item\"\n    v-bind=\"forwardedProps\"\n    :class=\"\n      cn(\n        'cn-select-item relative flex w-full cursor-default items-center outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0',\n        props.class\n      )\n    \"\n  >\n    <span class=\"cn-select-item-indicator\">\n      <SelectItemIndicator>\n        <slot name=\"indicator-icon\">\n          <IconPlaceholder\n            lucide=\"CheckIcon\"\n            tabler=\"IconCheck\"\n            hugeicons=\"Tick02Icon\"\n            phosphor=\"CheckIcon\"\n            remixicon=\"RiCheckLine\"\n            class=\"cn-select-item-indicator-icon pointer-events-none\"\n          />\n        </slot>\n      </SelectItemIndicator>\n    </span>\n\n    <SelectItemText>\n      <slot />\n    </SelectItemText>\n  </SelectItem>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-lyra/ui/select/SelectItemText.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { SelectItemTextProps } from \"reka-ui\"\nimport { SelectItemText } from \"reka-ui\"\n\nconst props = defineProps<SelectItemTextProps>()\n</script>\n\n<template>\n  <SelectItemText data-slot=\"select-item-text\" v-bind=\"props\">\n    <slot />\n  </SelectItemText>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-lyra/ui/select/SelectLabel.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { SelectLabelProps } from \"reka-ui\"\nimport { SelectLabel } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<\n  SelectLabelProps & { class?: HTMLAttributes[\"class\"] }\n>()\n</script>\n\n<template>\n  <SelectLabel\n    data-slot=\"select-label\"\n    :class=\"cn('cn-select-label', props.class)\"\n  >\n    <slot />\n  </SelectLabel>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-lyra/ui/select/SelectScrollDownButton.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { SelectScrollDownButtonProps } from \"reka-ui\"\nimport { SelectScrollDownButton, useForwardProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\nimport IconPlaceholder from \"@/components/icon-placeholder/IconPlaceholder.vue\"\n\nconst props = defineProps<\n  SelectScrollDownButtonProps & { class?: HTMLAttributes[\"class\"] }\n>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <SelectScrollDownButton\n    data-slot=\"select-scroll-down-button\"\n    v-bind=\"forwardedProps\"\n    :class=\"cn('cn-select-scroll-down-button', props.class)\"\n  >\n    <slot>\n      <IconPlaceholder\n        lucide=\"ChevronDownIcon\"\n        tabler=\"IconChevronDown\"\n        hugeicons=\"ArrowDown01Icon\"\n        phosphor=\"CaretDownIcon\"\n        remixicon=\"RiArrowDownSLine\"\n      />\n    </slot>\n  </SelectScrollDownButton>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-lyra/ui/select/SelectScrollUpButton.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { SelectScrollUpButtonProps } from \"reka-ui\"\nimport { SelectScrollUpButton, useForwardProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\nimport IconPlaceholder from \"@/components/icon-placeholder/IconPlaceholder.vue\"\n\nconst props = defineProps<\n  SelectScrollUpButtonProps & { class?: HTMLAttributes[\"class\"] }\n>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <SelectScrollUpButton\n    data-slot=\"select-scroll-up-button\"\n    v-bind=\"forwardedProps\"\n    :class=\"cn('cn-select-scroll-up-button', props.class)\"\n  >\n    <slot>\n      <IconPlaceholder\n        lucide=\"ChevronUpIcon\"\n        tabler=\"IconChevronUp\"\n        hugeicons=\"ArrowUp01Icon\"\n        phosphor=\"CaretUpIcon\"\n        remixicon=\"RiArrowUpSLine\"\n      />\n    </slot>\n  </SelectScrollUpButton>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-lyra/ui/select/SelectSeparator.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { SelectSeparatorProps } from \"reka-ui\"\nimport { SelectSeparator } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<\n  SelectSeparatorProps & { class?: HTMLAttributes[\"class\"] }\n>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n</script>\n\n<template>\n  <SelectSeparator\n    data-slot=\"select-separator\"\n    v-bind=\"delegatedProps\"\n    :class=\"cn('cn-select-separator pointer-events-none', props.class)\"\n  />\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-lyra/ui/select/SelectTrigger.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { SelectTriggerProps } from \"reka-ui\"\nimport { SelectIcon, SelectTrigger, useForwardProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\nimport IconPlaceholder from \"@/components/icon-placeholder/IconPlaceholder.vue\"\n\nconst props = withDefaults(\n  defineProps<\n    SelectTriggerProps & {\n      class?: HTMLAttributes[\"class\"]\n      size?: \"sm\" | \"default\"\n    }\n  >(),\n  { size: \"default\" }\n)\n\nconst delegatedProps = reactiveOmit(props, \"class\", \"size\")\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <SelectTrigger\n    data-slot=\"select-trigger\"\n    :data-size=\"size\"\n    v-bind=\"forwardedProps\"\n    :class=\"\n      cn(\n        'cn-select-trigger flex w-fit items-center justify-between whitespace-nowrap outline-none disabled:cursor-not-allowed disabled:opacity-50 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center [&_svg]:pointer-events-none [&_svg]:shrink-0',\n        props.class\n      )\n    \"\n  >\n    <slot />\n    <SelectIcon as-child>\n      <IconPlaceholder\n        lucide=\"ChevronDownIcon\"\n        tabler=\"IconSelector\"\n        hugeicons=\"UnfoldMoreIcon\"\n        phosphor=\"CaretDownIcon\"\n        remixicon=\"RiArrowDownSLine\"\n        class=\"cn-select-trigger-icon pointer-events-none\"\n      />\n    </SelectIcon>\n  </SelectTrigger>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-lyra/ui/select/SelectValue.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { SelectValueProps } from \"reka-ui\"\nimport { SelectValue } from \"reka-ui\"\n\nconst props = defineProps<SelectValueProps>()\n</script>\n\n<template>\n  <SelectValue data-slot=\"select-value\" v-bind=\"props\">\n    <slot />\n  </SelectValue>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-lyra/ui/select/index.ts",
+      "content": "export { default as Select } from \"./Select.vue\"\nexport { default as SelectContent } from \"./SelectContent.vue\"\nexport { default as SelectGroup } from \"./SelectGroup.vue\"\nexport { default as SelectItem } from \"./SelectItem.vue\"\nexport { default as SelectItemText } from \"./SelectItemText.vue\"\nexport { default as SelectLabel } from \"./SelectLabel.vue\"\nexport { default as SelectScrollDownButton } from \"./SelectScrollDownButton.vue\"\nexport { default as SelectScrollUpButton } from \"./SelectScrollUpButton.vue\"\nexport { default as SelectSeparator } from \"./SelectSeparator.vue\"\nexport { default as SelectTrigger } from \"./SelectTrigger.vue\"\nexport { default as SelectValue } from \"./SelectValue.vue\"\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,59 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "navigation-menu",
+  "dependencies": [
+    "reka-ui",
+    "@vueuse/core"
+  ],
+  "registryDependencies": [
+    "icon-placeholder"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-mira/ui/navigation-menu/NavigationMenu.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { NavigationMenuRootEmits, NavigationMenuRootProps } from \"reka-ui\"\nimport { NavigationMenuRoot, useForwardPropsEmits } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nimport NavigationMenuViewport from \"./NavigationMenuViewport.vue\"\n\nconst props = withDefaults(\n  defineProps<\n    NavigationMenuRootProps & {\n      class?: HTMLAttributes[\"class\"]\n      viewport?: boolean\n    }\n  >(),\n  {\n    viewport: true,\n  }\n)\nconst emits = defineEmits<NavigationMenuRootEmits>()\n\nconst delegatedProps = reactiveOmit(props, \"class\", \"viewport\")\nconst forwarded = useForwardPropsEmits(delegatedProps, emits)\n</script>\n\n<template>\n  <NavigationMenuRoot\n    v-slot=\"slotProps\"\n    data-slot=\"navigation-menu\"\n    :data-viewport=\"viewport\"\n    v-bind=\"forwarded\"\n    :class=\"\n      cn(\n        'cn-navigation-menu group/navigation-menu relative flex max-w-max flex-1 items-center justify-center',\n        props.class\n      )\n    \"\n  >\n    <slot v-bind=\"slotProps\" />\n    <NavigationMenuViewport v-if=\"viewport\" />\n  </NavigationMenuRoot>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-mira/ui/navigation-menu/NavigationMenuContent.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type {\n  NavigationMenuContentEmits,\n  NavigationMenuContentProps,\n} from \"reka-ui\"\nimport { NavigationMenuContent, useForwardPropsEmits } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<\n  NavigationMenuContentProps & { class?: HTMLAttributes[\"class\"] }\n>()\nconst emits = defineEmits<NavigationMenuContentEmits>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n\nconst forwarded = useForwardPropsEmits(delegatedProps, emits)\n</script>\n\n<template>\n  <NavigationMenuContent\n    data-slot=\"navigation-menu-content\"\n    v-bind=\"forwarded\"\n    :class=\"\n      cn(\n        'cn-navigation-menu-content top-0 left-0 w-full group-data-[viewport=false]/navigation-menu:top-full group-data-[viewport=false]/navigation-menu:mt-1.5 group-data-[viewport=false]/navigation-menu:overflow-hidden **:data-[slot=navigation-menu-link]:focus:ring-0 **:data-[slot=navigation-menu-link]:focus:outline-none md:absolute md:w-auto',\n        props.class\n      )\n    \"\n  >\n    <slot />\n  </NavigationMenuContent>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-mira/ui/navigation-menu/NavigationMenuIndicator.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { NavigationMenuIndicatorProps } from \"reka-ui\"\nimport { NavigationMenuIndicator, useForwardProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<\n  NavigationMenuIndicatorProps & { class?: HTMLAttributes[\"class\"] }\n>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <NavigationMenuIndicator\n    data-slot=\"navigation-menu-indicator\"\n    v-bind=\"forwardedProps\"\n    :class=\"\n      cn(\n        'cn-navigation-menu-indicator top-full z-[1] flex h-1.5 items-end justify-center overflow-hidden',\n        props.class\n      )\n    \"\n  >\n    <div\n      class=\"cn-navigation-menu-indicator-arrow relative top-[60%] h-2 w-2 rotate-45\"\n    />\n  </NavigationMenuIndicator>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-mira/ui/navigation-menu/NavigationMenuItem.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { NavigationMenuItemProps } from \"reka-ui\"\nimport { NavigationMenuItem } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<\n  NavigationMenuItemProps & { class?: HTMLAttributes[\"class\"] }\n>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n</script>\n\n<template>\n  <NavigationMenuItem\n    data-slot=\"navigation-menu-item\"\n    v-bind=\"delegatedProps\"\n    :class=\"cn('relative', props.class)\"\n  >\n    <slot />\n  </NavigationMenuItem>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-mira/ui/navigation-menu/NavigationMenuLink.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { NavigationMenuLinkEmits, NavigationMenuLinkProps } from \"reka-ui\"\nimport { NavigationMenuLink, useForwardPropsEmits } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<\n  NavigationMenuLinkProps & { class?: HTMLAttributes[\"class\"] }\n>()\nconst emits = defineEmits<NavigationMenuLinkEmits>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\nconst forwarded = useForwardPropsEmits(delegatedProps, emits)\n</script>\n\n<template>\n  <NavigationMenuLink\n    data-slot=\"navigation-menu-link\"\n    v-bind=\"forwarded\"\n    :class=\"cn('cn-navigation-menu-link', props.class)\"\n  >\n    <slot />\n  </NavigationMenuLink>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-mira/ui/navigation-menu/NavigationMenuList.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { NavigationMenuListProps } from \"reka-ui\"\nimport { NavigationMenuList, useForwardProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<\n  NavigationMenuListProps & { class?: HTMLAttributes[\"class\"] }\n>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <NavigationMenuList\n    data-slot=\"navigation-menu-list\"\n    v-bind=\"forwardedProps\"\n    :class=\"\n      cn(\n        'cn-navigation-menu-list group flex flex-1 list-none items-center justify-center',\n        props.class\n      )\n    \"\n  >\n    <slot />\n  </NavigationMenuList>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-mira/ui/navigation-menu/NavigationMenuTrigger.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { NavigationMenuTriggerProps } from \"reka-ui\"\nimport { NavigationMenuTrigger, useForwardProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\nimport { IconPlaceholder } from \"@/components/icon-placeholder\"\n\nimport { navigationMenuTriggerStyle } from \".\"\n\nconst props = defineProps<\n  NavigationMenuTriggerProps & { class?: HTMLAttributes[\"class\"] }\n>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <NavigationMenuTrigger\n    data-slot=\"navigation-menu-trigger\"\n    v-bind=\"forwardedProps\"\n    :class=\"cn(navigationMenuTriggerStyle(), 'group', props.class)\"\n  >\n    <slot />\n    <IconPlaceholder\n      lucide=\"ChevronDownIcon\"\n      tabler=\"IconChevronDown\"\n      hugeicons=\"ArrowDown01Icon\"\n      phosphor=\"CaretDownIcon\"\n      remixicon=\"RiArrowDownSLine\"\n      class=\"cn-navigation-menu-trigger-icon\"\n      aria-hidden=\"true\"\n    />\n  </NavigationMenuTrigger>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-mira/ui/navigation-menu/NavigationMenuViewport.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { NavigationMenuViewportProps } from \"reka-ui\"\nimport { NavigationMenuViewport, useForwardProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<\n  NavigationMenuViewportProps & { class?: HTMLAttributes[\"class\"] }\n>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <div\n    class=\"cn-navigation-menu-viewport-wrapper absolute top-full left-0 isolate z-50 flex justify-center\"\n  >\n    <NavigationMenuViewport\n      data-slot=\"navigation-menu-viewport\"\n      v-bind=\"forwardedProps\"\n      :class=\"\n        cn(\n          'cn-navigation-menu-viewport origin-top-center relative mt-1.5 h-[var(--reka-navigation-menu-viewport-height)] w-full overflow-hidden md:w-[var(--reka-navigation-menu-viewport-width)]',\n          props.class\n        )\n      \"\n    />\n  </div>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-mira/ui/navigation-menu/index.ts",
+      "content": "import { cva } from \"class-variance-authority\"\n\nexport { default as NavigationMenu } from \"./NavigationMenu.vue\"\nexport { default as NavigationMenuContent } from \"./NavigationMenuContent.vue\"\nexport { default as NavigationMenuIndicator } from \"./NavigationMenuIndicator.vue\"\nexport { default as NavigationMenuItem } from \"./NavigationMenuItem.vue\"\nexport { default as NavigationMenuLink } from \"./NavigationMenuLink.vue\"\nexport { default as NavigationMenuList } from \"./NavigationMenuList.vue\"\nexport { default as NavigationMenuTrigger } from \"./NavigationMenuTrigger.vue\"\nexport { default as NavigationMenuViewport } from \"./NavigationMenuViewport.vue\"\n\nexport const navigationMenuTriggerStyle = cva(\n  \"group/navigation-menu-trigger inline-flex h-9 w-max items-center justify-center rounded-lg px-2.5 py-1.5 text-xs/relaxed font-medium transition-all outline-none hover:bg-muted focus:bg-muted focus-visible:ring-2 focus-visible:ring-ring/30 focus-visible:outline-1 disabled:pointer-events-none disabled:opacity-50 data-popup-open:bg-muted/50 data-popup-open:hover:bg-muted data-open:bg-muted/50 data-open:hover:bg-muted data-open:focus:bg-muted\"\n)\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

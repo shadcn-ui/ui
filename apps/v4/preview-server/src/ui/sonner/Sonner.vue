@@ -2,7 +2,7 @@
 import type { ToasterProps } from "vue-sonner"
 import { Toaster as Sonner } from "vue-sonner"
 import { cn } from "@/lib/utils"
-import { IconPlaceholder } from "@/components/IconPlaceholder.vue"
+import IconPlaceholder from "@/components/IconPlaceholder.vue"
 
 const props = defineProps<ToasterProps>()
 </script>

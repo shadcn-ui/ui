@@ -1,0 +1,69 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "alert-dialog",
+  "dependencies": [
+    "reka-ui",
+    "@vueuse/core"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-vega/ui/alert-dialog/AlertDialog.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { AlertDialogEmits, AlertDialogProps } from \"reka-ui\"\nimport { AlertDialogRoot, useForwardPropsEmits } from \"reka-ui\"\n\nconst props = defineProps<AlertDialogProps>()\nconst emits = defineEmits<AlertDialogEmits>()\n\nconst forwarded = useForwardPropsEmits(props, emits)\n</script>\n\n<template>\n  <AlertDialogRoot\n    v-slot=\"slotProps\"\n    data-slot=\"alert-dialog\"\n    v-bind=\"forwarded\"\n  >\n    <slot v-bind=\"slotProps\" />\n  </AlertDialogRoot>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-vega/ui/alert-dialog/AlertDialogAction.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { ButtonVariants } from \"@/ui/button\"\nimport { buttonVariants } from \"@/ui/button\"\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { AlertDialogActionProps } from \"reka-ui\"\nimport { AlertDialogAction } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = withDefaults(\n  defineProps<\n    AlertDialogActionProps & {\n      class?: HTMLAttributes[\"class\"]\n      variant?: ButtonVariants[\"variant\"]\n      size?: ButtonVariants[\"size\"]\n    }\n  >(),\n  {\n    variant: \"default\",\n    size: \"default\",\n  }\n)\n\nconst delegatedProps = reactiveOmit(props, \"class\", \"variant\", \"size\")\n</script>\n\n<template>\n  <AlertDialogAction\n    data-slot=\"alert-dialog-action\"\n    v-bind=\"delegatedProps\"\n    :class=\"\n      cn(\n        'cn-alert-dialog-action',\n        buttonVariants({ variant, size }),\n        props.class\n      )\n    \"\n  >\n    <slot />\n  </AlertDialogAction>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-vega/ui/alert-dialog/AlertDialogCancel.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { ButtonVariants } from \"@/ui/button\"\nimport { buttonVariants } from \"@/ui/button\"\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { AlertDialogCancelProps } from \"reka-ui\"\nimport { AlertDialogCancel } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = withDefaults(\n  defineProps<\n    AlertDialogCancelProps & {\n      class?: HTMLAttributes[\"class\"]\n      variant?: ButtonVariants[\"variant\"]\n      size?: ButtonVariants[\"size\"]\n    }\n  >(),\n  {\n    variant: \"outline\",\n    size: \"default\",\n  }\n)\n\nconst delegatedProps = reactiveOmit(props, \"class\", \"variant\", \"size\")\n</script>\n\n<template>\n  <AlertDialogCancel\n    data-slot=\"alert-dialog-cancel\"\n    v-bind=\"delegatedProps\"\n    :class=\"\n      cn(\n        'cn-alert-dialog-cancel',\n        buttonVariants({ variant, size }),\n        props.class\n      )\n    \"\n  >\n    <slot />\n  </AlertDialogCancel>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-vega/ui/alert-dialog/AlertDialogContent.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { AlertDialogContentEmits, AlertDialogContentProps } from \"reka-ui\"\nimport {\n  AlertDialogContent,\n  AlertDialogOverlay,\n  AlertDialogPortal,\n  useForwardPropsEmits,\n} from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\ndefineOptions({\n  inheritAttrs: false,\n})\n\nconst props = withDefaults(\n  defineProps<\n    AlertDialogContentProps & {\n      class?: HTMLAttributes[\"class\"]\n      size?: \"default\" | \"sm\"\n    }\n  >(),\n  {\n    size: \"default\",\n  }\n)\nconst emits = defineEmits<AlertDialogContentEmits>()\n\nconst delegatedProps = reactiveOmit(props, \"class\", \"size\")\n\nconst forwarded = useForwardPropsEmits(delegatedProps, emits)\n</script>\n\n<template>\n  <AlertDialogPortal>\n    <AlertDialogOverlay\n      data-slot=\"alert-dialog-overlay\"\n      class=\"cn-alert-dialog-overlay fixed inset-0 z-50\"\n    />\n    <AlertDialogContent\n      data-slot=\"alert-dialog-content\"\n      :data-size=\"size\"\n      v-bind=\"{ ...$attrs, ...forwarded }\"\n      :class=\"\n        cn(\n          'cn-alert-dialog-content group/alert-dialog-content fixed top-1/2 left-1/2 z-50 grid w-full -translate-x-1/2 -translate-y-1/2 outline-none',\n          props.class\n        )\n      \"\n    >\n      <slot />\n    </AlertDialogContent>\n  </AlertDialogPortal>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-vega/ui/alert-dialog/AlertDialogDescription.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { AlertDialogDescriptionProps } from \"reka-ui\"\nimport { AlertDialogDescription } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<\n  AlertDialogDescriptionProps & { class?: HTMLAttributes[\"class\"] }\n>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n</script>\n\n<template>\n  <AlertDialogDescription\n    data-slot=\"alert-dialog-description\"\n    v-bind=\"delegatedProps\"\n    :class=\"cn('cn-alert-dialog-description', props.class)\"\n  >\n    <slot />\n  </AlertDialogDescription>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-vega/ui/alert-dialog/AlertDialogFooter.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <div\n    data-slot=\"alert-dialog-footer\"\n    :class=\"\n      cn(\n        'cn-alert-dialog-footer flex flex-col-reverse gap-2 group-data-[size=sm]/alert-dialog-content:grid group-data-[size=sm]/alert-dialog-content:grid-cols-2 sm:flex-row sm:justify-end',\n        props.class\n      )\n    \"\n  >\n    <slot />\n  </div>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-vega/ui/alert-dialog/AlertDialogHeader.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <div\n    data-slot=\"alert-dialog-header\"\n    :class=\"cn('cn-alert-dialog-header', props.class)\"\n  >\n    <slot />\n  </div>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-vega/ui/alert-dialog/AlertDialogMedia.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <div\n    data-slot=\"alert-dialog-media\"\n    :class=\"cn('cn-alert-dialog-media', props.class)\"\n  >\n    <slot />\n  </div>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-vega/ui/alert-dialog/AlertDialogTitle.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { AlertDialogTitleProps } from \"reka-ui\"\nimport { AlertDialogTitle } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<\n  AlertDialogTitleProps & { class?: HTMLAttributes[\"class\"] }\n>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n</script>\n\n<template>\n  <AlertDialogTitle\n    data-slot=\"alert-dialog-title\"\n    v-bind=\"delegatedProps\"\n    :class=\"cn('cn-alert-dialog-title', props.class)\"\n  >\n    <slot />\n  </AlertDialogTitle>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-vega/ui/alert-dialog/AlertDialogTrigger.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { AlertDialogTriggerProps } from \"reka-ui\"\nimport { AlertDialogTrigger } from \"reka-ui\"\n\nconst props = defineProps<AlertDialogTriggerProps>()\n</script>\n\n<template>\n  <AlertDialogTrigger data-slot=\"alert-dialog-trigger\" v-bind=\"props\">\n    <slot />\n  </AlertDialogTrigger>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-vega/ui/alert-dialog/index.ts",
+      "content": "export { default as AlertDialog } from \"./AlertDialog.vue\"\nexport { default as AlertDialogAction } from \"./AlertDialogAction.vue\"\nexport { default as AlertDialogCancel } from \"./AlertDialogCancel.vue\"\nexport { default as AlertDialogContent } from \"./AlertDialogContent.vue\"\nexport { default as AlertDialogDescription } from \"./AlertDialogDescription.vue\"\nexport { default as AlertDialogFooter } from \"./AlertDialogFooter.vue\"\nexport { default as AlertDialogHeader } from \"./AlertDialogHeader.vue\"\nexport { default as AlertDialogMedia } from \"./AlertDialogMedia.vue\"\nexport { default as AlertDialogTitle } from \"./AlertDialogTitle.vue\"\nexport { default as AlertDialogTrigger } from \"./AlertDialogTrigger.vue\"\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "drawer-example",
+  "title": "Drawer",
+  "dependencies": [],
+  "registryDependencies": [
+    "example",
+    "button",
+    "drawer"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-mira/examples/drawer/DrawerExample.vue",
+      "content": "<script setup lang=\"ts\">\nimport DrawerScrollableContent from \"@/examples/drawer/DrawerScrollableContent.vue\"\nimport DrawerWithSides from \"@/examples/drawer/DrawerWithSides.vue\"\n\nimport { ExampleWrapper } from \"@/components/example\"\n</script>\n\n<template>\n  <ExampleWrapper>\n    <DrawerScrollableContent />\n    <DrawerWithSides />\n  </ExampleWrapper>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-mira/examples/drawer/DrawerScrollableContent.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Button } from \"@/ui/button\"\nimport {\n  Drawer,\n  DrawerClose,\n  DrawerContent,\n  DrawerDescription,\n  DrawerFooter,\n  DrawerHeader,\n  DrawerTitle,\n  DrawerTrigger,\n} from \"@/ui/drawer\"\n\nimport { Example } from \"@/components/example\"\n</script>\n\n<template>\n  <Example title=\"Scrollable Content\">\n    <Drawer direction=\"right\">\n      <DrawerTrigger :as-child=\"true\">\n        <Button variant=\"outline\"> Scrollable Content </Button>\n      </DrawerTrigger>\n      <DrawerContent>\n        <DrawerHeader>\n          <DrawerTitle>Move Goal</DrawerTitle>\n          <DrawerDescription>Set your daily activity goal.</DrawerDescription>\n        </DrawerHeader>\n        <div class=\"no-scrollbar overflow-y-auto px-4\">\n          <p\n            v-for=\"index in 10\"\n            :key=\"index\"\n            class=\"mb-4 leading-normal style-lyra:mb-2 style-lyra:leading-relaxed\"\n          >\n            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do\n            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim\n            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n            aliquip ex ea commodo consequat. Duis aute irure dolor in\n            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla\n            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in\n            culpa qui officia deserunt mollit anim id est laborum.\n          </p>\n        </div>\n        <DrawerFooter>\n          <Button>Submit</Button>\n          <DrawerClose :as-child=\"true\">\n            <Button variant=\"outline\"> Cancel </Button>\n          </DrawerClose>\n        </DrawerFooter>\n      </DrawerContent>\n    </Drawer>\n  </Example>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-mira/examples/drawer/DrawerWithSides.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Button } from \"@/ui/button\"\nimport {\n  Drawer,\n  DrawerClose,\n  DrawerContent,\n  DrawerDescription,\n  DrawerFooter,\n  DrawerHeader,\n  DrawerTitle,\n  DrawerTrigger,\n} from \"@/ui/drawer\"\n\nimport { Example } from \"@/components/example\"\n\nconst DRAWER_SIDES = [\"top\", \"right\", \"bottom\", \"left\"] as const\n</script>\n\n<template>\n  <Example title=\"Sides\">\n    <div class=\"flex flex-wrap gap-2\">\n      <Drawer\n        v-for=\"side in DRAWER_SIDES\"\n        :key=\"side\"\n        :direction=\"\n          side === 'bottom' ? undefined : (side as 'top' | 'right' | 'left')\n        \"\n      >\n        <DrawerTrigger :as-child=\"true\">\n          <Button variant=\"outline\" class=\"capitalize\">\n            {{ side }}\n          </Button>\n        </DrawerTrigger>\n        <DrawerContent\n          class=\"data-[vaul-drawer-direction=bottom]:max-h-[50vh] data-[vaul-drawer-direction=top]:max-h-[50vh]\"\n        >\n          <DrawerHeader>\n            <DrawerTitle>Move Goal</DrawerTitle>\n            <DrawerDescription>\n              Set your daily activity goal.\n            </DrawerDescription>\n          </DrawerHeader>\n          <div class=\"no-scrollbar overflow-y-auto px-4\">\n            <p\n              v-for=\"index in 10\"\n              :key=\"index\"\n              class=\"mb-4 leading-normal style-lyra:mb-2 style-lyra:leading-relaxed\"\n            >\n              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do\n              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut\n              enim ad minim veniam, quis nostrud exercitation ullamco laboris\n              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in\n              reprehenderit in voluptate velit esse cillum dolore eu fugiat\n              nulla pariatur. Excepteur sint occaecat cupidatat non proident,\n              sunt in culpa qui officia deserunt mollit anim id est laborum.\n            </p>\n          </div>\n          <DrawerFooter>\n            <Button>Submit</Button>\n            <DrawerClose :as-child=\"true\">\n              <Button variant=\"outline\"> Cancel </Button>\n            </DrawerClose>\n          </DrawerFooter>\n        </DrawerContent>\n      </Drawer>\n    </div>\n  </Example>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,65 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pagination",
+  "dependencies": [
+    "reka-ui",
+    "@vueuse/core"
+  ],
+  "registryDependencies": [
+    "button",
+    "icon-placeholder"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-mira/ui/pagination/Pagination.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { PaginationRootEmits, PaginationRootProps } from \"reka-ui\"\nimport { PaginationRoot, useForwardPropsEmits } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<\n  PaginationRootProps & {\n    class?: HTMLAttributes[\"class\"]\n  }\n>()\nconst emits = defineEmits<PaginationRootEmits>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\nconst forwarded = useForwardPropsEmits(delegatedProps, emits)\n</script>\n\n<template>\n  <PaginationRoot\n    v-slot=\"slotProps\"\n    data-slot=\"pagination\"\n    v-bind=\"forwarded\"\n    :class=\"cn('cn-pagination mx-auto flex w-full justify-center', props.class)\"\n  >\n    <slot v-bind=\"slotProps\" />\n  </PaginationRoot>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-mira/ui/pagination/PaginationContent.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { PaginationListProps } from \"reka-ui\"\nimport { PaginationList } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<\n  PaginationListProps & { class?: HTMLAttributes[\"class\"] }\n>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n</script>\n\n<template>\n  <PaginationList\n    v-slot=\"slotProps\"\n    data-slot=\"pagination-content\"\n    v-bind=\"delegatedProps\"\n    :class=\"cn('cn-pagination-content flex items-center', props.class)\"\n  >\n    <slot v-bind=\"slotProps\" />\n  </PaginationList>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-mira/ui/pagination/PaginationEllipsis.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { PaginationEllipsisProps } from \"reka-ui\"\nimport { PaginationEllipsis } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\nimport IconPlaceholder from \"@/components/icon-placeholder/IconPlaceholder.vue\"\n\nconst props = defineProps<\n  PaginationEllipsisProps & { class?: HTMLAttributes[\"class\"] }\n>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n</script>\n\n<template>\n  <PaginationEllipsis\n    data-slot=\"pagination-ellipsis\"\n    v-bind=\"delegatedProps\"\n    :class=\"\n      cn('cn-pagination-ellipsis flex items-center justify-center', props.class)\n    \"\n  >\n    <slot>\n      <IconPlaceholder\n        lucide=\"MoreHorizontalIcon\"\n        tabler=\"IconDots\"\n        hugeicons=\"MoreHorizontalCircle01Icon\"\n        phosphor=\"DotsThreeIcon\"\n        remixicon=\"RiMoreLine\"\n      />\n      <span class=\"sr-only\">More pages</span>\n    </slot>\n  </PaginationEllipsis>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-mira/ui/pagination/PaginationFirst.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { ButtonVariants } from \"@/ui/button\"\nimport { buttonVariants } from \"@/ui/button\"\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { PaginationFirstProps } from \"reka-ui\"\nimport { PaginationFirst, useForwardProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\nimport { IconPlaceholder } from \"@/components/icon-placeholder\"\n\nconst props = withDefaults(\n  defineProps<\n    PaginationFirstProps & {\n      size?: ButtonVariants[\"size\"]\n      class?: HTMLAttributes[\"class\"]\n    }\n  >(),\n  {\n    size: \"default\",\n  }\n)\n\nconst delegatedProps = reactiveOmit(props, \"class\", \"size\")\nconst forwarded = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <PaginationFirst\n    data-slot=\"pagination-first\"\n    :class=\"\n      cn(\n        buttonVariants({ variant: 'ghost', size }),\n        'cn-pagination-first',\n        props.class\n      )\n    \"\n    v-bind=\"forwarded\"\n  >\n    <slot>\n      <IconPlaceholder\n        lucide=\"ChevronsLeftIcon\"\n        tabler=\"IconChevronsLeft\"\n        hugeicons=\"ArrowLeftDoubleIcon\"\n        phosphor=\"CaretDoubleLeftIcon\"\n        remixicon=\"RiArrowLeftDoubleLine\"\n        data-icon=\"inline-start\"\n      />\n      <span class=\"cn-pagination-first-text hidden sm:block\">First</span>\n    </slot>\n  </PaginationFirst>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-mira/ui/pagination/PaginationItem.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { ButtonVariants } from \"@/ui/button\"\nimport { buttonVariants } from \"@/ui/button\"\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { PaginationListItemProps } from \"reka-ui\"\nimport { PaginationListItem } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = withDefaults(\n  defineProps<\n    PaginationListItemProps & {\n      size?: ButtonVariants[\"size\"]\n      class?: HTMLAttributes[\"class\"]\n      isActive?: boolean\n    }\n  >(),\n  {\n    size: \"icon\",\n  }\n)\n\nconst delegatedProps = reactiveOmit(props, \"class\", \"size\", \"isActive\")\n</script>\n\n<template>\n  <PaginationListItem\n    data-slot=\"pagination-item\"\n    v-bind=\"delegatedProps\"\n    :class=\"\n      cn(\n        buttonVariants({\n          variant: isActive ? 'outline' : 'ghost',\n          size,\n        }),\n        props.class\n      )\n    \"\n  >\n    <slot />\n  </PaginationListItem>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-mira/ui/pagination/PaginationLast.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { ButtonVariants } from \"@/ui/button\"\nimport { buttonVariants } from \"@/ui/button\"\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { PaginationLastProps } from \"reka-ui\"\nimport { PaginationLast, useForwardProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\nimport { IconPlaceholder } from \"@/components/icon-placeholder\"\n\nconst props = withDefaults(\n  defineProps<\n    PaginationLastProps & {\n      size?: ButtonVariants[\"size\"]\n      class?: HTMLAttributes[\"class\"]\n    }\n  >(),\n  {\n    size: \"default\",\n  }\n)\n\nconst delegatedProps = reactiveOmit(props, \"class\", \"size\")\nconst forwarded = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <PaginationLast\n    data-slot=\"pagination-last\"\n    :class=\"\n      cn(\n        buttonVariants({ variant: 'ghost', size }),\n        'cn-pagination-last',\n        props.class\n      )\n    \"\n    v-bind=\"forwarded\"\n  >\n    <slot>\n      <span class=\"cn-pagination-last-text hidden sm:block\">Last</span>\n      <IconPlaceholder\n        lucide=\"ChevronsRightIcon\"\n        tabler=\"IconChevronsRight\"\n        hugeicons=\"ArrowRightDoubleIcon\"\n        phosphor=\"CaretDoubleRightIcon\"\n        remixicon=\"RiArrowRightDoubleLine\"\n        data-icon=\"inline-end\"\n      />\n    </slot>\n  </PaginationLast>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-mira/ui/pagination/PaginationLink.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { ButtonVariants } from \"@/ui/button\"\nimport { buttonVariants } from \"@/ui/button\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = withDefaults(\n  defineProps<{\n    href?: string\n    size?: ButtonVariants[\"size\"]\n    isActive?: boolean\n    class?: HTMLAttributes[\"class\"]\n  }>(),\n  {\n    size: \"icon\",\n    isActive: false,\n  }\n)\n</script>\n\n<template>\n  <a\n    :href=\"href\"\n    data-slot=\"pagination-link\"\n    :data-active=\"isActive\"\n    :aria-current=\"isActive ? 'page' : undefined\"\n    :class=\"\n      cn(\n        buttonVariants({\n          variant: isActive ? 'outline' : 'ghost',\n          size,\n        }),\n        'cn-pagination-link',\n        props.class\n      )\n    \"\n  >\n    <slot />\n  </a>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-mira/ui/pagination/PaginationNext.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { ButtonVariants } from \"@/ui/button\"\nimport { buttonVariants } from \"@/ui/button\"\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { PaginationNextProps } from \"reka-ui\"\nimport { PaginationNext, useForwardProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\nimport IconPlaceholder from \"@/components/icon-placeholder/IconPlaceholder.vue\"\n\nconst props = withDefaults(\n  defineProps<\n    PaginationNextProps & {\n      size?: ButtonVariants[\"size\"]\n      class?: HTMLAttributes[\"class\"]\n    }\n  >(),\n  {\n    size: \"default\",\n  }\n)\n\nconst delegatedProps = reactiveOmit(props, \"class\", \"size\")\nconst forwarded = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <PaginationNext\n    data-slot=\"pagination-next\"\n    :class=\"\n      cn(\n        buttonVariants({ variant: 'ghost', size }),\n        'cn-pagination-next',\n        props.class\n      )\n    \"\n    v-bind=\"forwarded\"\n  >\n    <slot>\n      <span class=\"cn-pagination-next-text hidden sm:block\">Next</span>\n      <IconPlaceholder\n        lucide=\"ChevronRightIcon\"\n        tabler=\"IconChevronRight\"\n        hugeicons=\"ArrowRight01Icon\"\n        phosphor=\"CaretRightIcon\"\n        remixicon=\"RiArrowRightSLine\"\n        data-icon=\"inline-end\"\n      />\n    </slot>\n  </PaginationNext>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-mira/ui/pagination/PaginationPrevious.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { ButtonVariants } from \"@/ui/button\"\nimport { buttonVariants } from \"@/ui/button\"\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { PaginationPrevProps } from \"reka-ui\"\nimport { PaginationPrev, useForwardProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\nimport IconPlaceholder from \"@/components/icon-placeholder/IconPlaceholder.vue\"\n\nconst props = withDefaults(\n  defineProps<\n    PaginationPrevProps & {\n      size?: ButtonVariants[\"size\"]\n      class?: HTMLAttributes[\"class\"]\n    }\n  >(),\n  {\n    size: \"default\",\n  }\n)\n\nconst delegatedProps = reactiveOmit(props, \"class\", \"size\")\nconst forwarded = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <PaginationPrev\n    data-slot=\"pagination-previous\"\n    :class=\"\n      cn(\n        buttonVariants({ variant: 'ghost', size }),\n        'cn-pagination-previous',\n        props.class\n      )\n    \"\n    v-bind=\"forwarded\"\n  >\n    <slot>\n      <IconPlaceholder\n        lucide=\"ChevronLeftIcon\"\n        tabler=\"IconChevronLeft\"\n        hugeicons=\"ArrowLeft01Icon\"\n        phosphor=\"CaretLeftIcon\"\n        remixicon=\"RiArrowLeftSLine\"\n        data-icon=\"inline-start\"\n      />\n      <span class=\"cn-pagination-previous-text hidden sm:block\">Previous</span>\n    </slot>\n  </PaginationPrev>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-mira/ui/pagination/index.ts",
+      "content": "export { default as Pagination } from \"./Pagination.vue\"\nexport { default as PaginationContent } from \"./PaginationContent.vue\"\nexport { default as PaginationEllipsis } from \"./PaginationEllipsis.vue\"\nexport { default as PaginationFirst } from \"./PaginationFirst.vue\"\nexport { default as PaginationItem } from \"./PaginationItem.vue\"\nexport { default as PaginationLast } from \"./PaginationLast.vue\"\nexport { default as PaginationLink } from \"./PaginationLink.vue\"\nexport { default as PaginationNext } from \"./PaginationNext.vue\"\nexport { default as PaginationPrevious } from \"./PaginationPrevious.vue\"\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

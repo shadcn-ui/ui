@@ -1,0 +1,72 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-example",
+  "title": "Input",
+  "dependencies": [],
+  "registryDependencies": [
+    "input",
+    "field",
+    "example",
+    "button",
+    "select",
+    "native-select"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-mira/examples/input/InputBasic.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Input } from \"@/ui/input\"\n</script>\n\n<template>\n  <Input type=\"email\" placeholder=\"Email\" />\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-mira/examples/input/InputDisabled.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Field, FieldLabel } from \"@/ui/field\"\nimport { Input } from \"@/ui/input\"\n</script>\n\n<template>\n  <Field>\n    <FieldLabel html-for=\"input-demo-disabled\"> Email </FieldLabel>\n    <Input\n      id=\"input-demo-disabled\"\n      type=\"email\"\n      placeholder=\"Email\"\n      :disabled=\"true\"\n    />\n  </Field>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-mira/examples/input/InputExample.vue",
+      "content": "<script setup lang=\"ts\">\nimport InputBasic from \"@/examples/input/InputBasic.vue\"\nimport InputDisabled from \"@/examples/input/InputDisabled.vue\"\nimport InputForm from \"@/examples/input/InputForm.vue\"\nimport InputInvalid from \"@/examples/input/InputInvalid.vue\"\nimport InputTypes from \"@/examples/input/InputTypes.vue\"\nimport InputWithButton from \"@/examples/input/InputWithButton.vue\"\nimport InputWithDescription from \"@/examples/input/InputWithDescription.vue\"\nimport InputWithLabel from \"@/examples/input/InputWithLabel.vue\"\nimport InputWithNativeSelect from \"@/examples/input/InputWithNativeSelect.vue\"\nimport InputWithSelect from \"@/examples/input/InputWithSelect.vue\"\n\nimport { Example, ExampleWrapper } from \"@/components/example\"\n</script>\n\n<template>\n  <ExampleWrapper>\n    <Example title=\"Basic\">\n      <InputBasic />\n    </Example>\n    <Example title=\"Invalid\">\n      <InputInvalid />\n    </Example>\n    <Example title=\"With Label\">\n      <InputWithLabel />\n    </Example>\n    <Example title=\"With Description\">\n      <InputWithDescription />\n    </Example>\n    <Example title=\"Disabled\">\n      <InputDisabled />\n    </Example>\n    <Example title=\"Input Types\">\n      <InputTypes />\n    </Example>\n    <Example title=\"With Select\">\n      <InputWithSelect />\n    </Example>\n    <Example title=\"With Button\">\n      <InputWithButton />\n    </Example>\n    <Example title=\"With Native Select\">\n      <InputWithNativeSelect />\n    </Example>\n    <Example title=\"Form\">\n      <InputForm />\n    </Example>\n  </ExampleWrapper>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-mira/examples/input/InputForm.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Button } from \"@/ui/button\"\nimport { Field, FieldDescription, FieldGroup, FieldLabel } from \"@/ui/field\"\nimport { Input } from \"@/ui/input\"\nimport {\n  Select,\n  SelectContent,\n  SelectItem,\n  SelectTrigger,\n  SelectValue,\n} from \"@/ui/select\"\n</script>\n\n<template>\n  <form class=\"w-full\">\n    <FieldGroup>\n      <Field>\n        <FieldLabel html-for=\"form-name\"> Name </FieldLabel>\n        <Input id=\"form-name\" type=\"text\" placeholder=\"John Doe\" />\n      </Field>\n      <Field>\n        <FieldLabel html-for=\"form-email\"> Email </FieldLabel>\n        <Input id=\"form-email\" type=\"email\" placeholder=\"john@example.com\" />\n        <FieldDescription>\n          We'll never share your email with anyone.\n        </FieldDescription>\n      </Field>\n      <div class=\"grid grid-cols-2 gap-4\">\n        <Field>\n          <FieldLabel html-for=\"form-phone\"> Phone </FieldLabel>\n          <Input id=\"form-phone\" type=\"tel\" placeholder=\"+1 (555) 123-4567\" />\n        </Field>\n        <Field>\n          <FieldLabel html-for=\"form-country\"> Country </FieldLabel>\n          <Select default-value=\"us\">\n            <SelectTrigger id=\"form-country\">\n              <SelectValue />\n            </SelectTrigger>\n            <SelectContent>\n              <SelectItem value=\"us\"> United States </SelectItem>\n              <SelectItem value=\"uk\"> United Kingdom </SelectItem>\n              <SelectItem value=\"ca\"> Canada </SelectItem>\n            </SelectContent>\n          </Select>\n        </Field>\n      </div>\n      <Field>\n        <FieldLabel html-for=\"form-address\"> Address </FieldLabel>\n        <Input id=\"form-address\" type=\"text\" placeholder=\"123 Main St\" />\n      </Field>\n      <Field orientation=\"horizontal\">\n        <Button type=\"button\" variant=\"outline\"> Cancel </Button>\n        <Button type=\"submit\"> Submit </Button>\n      </Field>\n    </FieldGroup>\n  </form>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-mira/examples/input/InputInvalid.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Input } from \"@/ui/input\"\n</script>\n\n<template>\n  <Input type=\"text\" placeholder=\"Error\" :aria-invalid=\"true\" />\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-mira/examples/input/InputTypes.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Field, FieldLabel } from \"@/ui/field\"\nimport { Input } from \"@/ui/input\"\n</script>\n\n<template>\n  <div class=\"flex w-full flex-col gap-6\">\n    <Field>\n      <FieldLabel html-for=\"input-demo-password\"> Password </FieldLabel>\n      <Input id=\"input-demo-password\" type=\"password\" placeholder=\"Password\" />\n    </Field>\n    <Field>\n      <FieldLabel html-for=\"input-demo-tel\"> Phone </FieldLabel>\n      <Input id=\"input-demo-tel\" type=\"tel\" placeholder=\"+1 (555) 123-4567\" />\n    </Field>\n    <Field>\n      <FieldLabel html-for=\"input-demo-url\"> URL </FieldLabel>\n      <Input id=\"input-demo-url\" type=\"url\" placeholder=\"https://example.com\" />\n    </Field>\n    <Field>\n      <FieldLabel html-for=\"input-demo-search\"> Search </FieldLabel>\n      <Input id=\"input-demo-search\" type=\"search\" placeholder=\"Search\" />\n    </Field>\n    <Field>\n      <FieldLabel html-for=\"input-demo-number\"> Number </FieldLabel>\n      <Input id=\"input-demo-number\" type=\"number\" placeholder=\"123\" />\n    </Field>\n    <Field>\n      <FieldLabel html-for=\"input-demo-date\"> Date </FieldLabel>\n      <Input id=\"input-demo-date\" type=\"date\" />\n    </Field>\n    <Field>\n      <FieldLabel html-for=\"input-demo-time\"> Time </FieldLabel>\n      <Input id=\"input-demo-time\" type=\"time\" />\n    </Field>\n    <Field>\n      <FieldLabel html-for=\"input-demo-file\"> File </FieldLabel>\n      <Input id=\"input-demo-file\" type=\"file\" />\n    </Field>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-mira/examples/input/InputWithButton.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Button } from \"@/ui/button\"\nimport { Input } from \"@/ui/input\"\n</script>\n\n<template>\n  <div class=\"flex w-full gap-2\">\n    <Input type=\"search\" placeholder=\"Search...\" class=\"flex-1\" />\n    <Button>Search</Button>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-mira/examples/input/InputWithDescription.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Field, FieldDescription, FieldLabel } from \"@/ui/field\"\nimport { Input } from \"@/ui/input\"\n</script>\n\n<template>\n  <Field>\n    <FieldLabel html-for=\"input-demo-username\"> Username </FieldLabel>\n    <Input\n      id=\"input-demo-username\"\n      type=\"text\"\n      placeholder=\"Enter your username\"\n    />\n    <FieldDescription>\n      Choose a unique username for your account.\n    </FieldDescription>\n  </Field>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-mira/examples/input/InputWithLabel.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Field, FieldLabel } from \"@/ui/field\"\nimport { Input } from \"@/ui/input\"\n</script>\n\n<template>\n  <Field>\n    <FieldLabel html-for=\"input-demo-email\"> Email </FieldLabel>\n    <Input id=\"input-demo-email\" type=\"email\" placeholder=\"name@example.com\" />\n  </Field>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-mira/examples/input/InputWithNativeSelect.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Input } from \"@/ui/input\"\nimport { NativeSelect, NativeSelectOption } from \"@/ui/native-select\"\n</script>\n\n<template>\n  <div class=\"flex w-full gap-2\">\n    <Input type=\"tel\" placeholder=\"(555) 123-4567\" class=\"flex-1\" />\n    <NativeSelect default-value=\"+1\">\n      <NativeSelectOption value=\"+1\"> +1 </NativeSelectOption>\n      <NativeSelectOption value=\"+44\"> +44 </NativeSelectOption>\n      <NativeSelectOption value=\"+46\"> +46 </NativeSelectOption>\n    </NativeSelect>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-mira/examples/input/InputWithSelect.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Input } from \"@/ui/input\"\nimport {\n  Select,\n  SelectContent,\n  SelectItem,\n  SelectTrigger,\n  SelectValue,\n} from \"@/ui/select\"\n</script>\n\n<template>\n  <div class=\"flex w-full gap-2\">\n    <Input type=\"text\" placeholder=\"Enter amount\" class=\"flex-1\" />\n    <Select default-value=\"usd\">\n      <SelectTrigger class=\"w-32\">\n        <SelectValue />\n      </SelectTrigger>\n      <SelectContent>\n        <SelectItem value=\"usd\"> USD </SelectItem>\n        <SelectItem value=\"eur\"> EUR </SelectItem>\n        <SelectItem value=\"gbp\"> GBP </SelectItem>\n      </SelectContent>\n    </Select>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

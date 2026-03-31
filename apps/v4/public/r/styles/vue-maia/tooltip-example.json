@@ -1,0 +1,60 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tooltip-example",
+  "title": "Tooltip",
+  "dependencies": [],
+  "registryDependencies": [
+    "example",
+    "button",
+    "tooltip",
+    "kbd"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-maia/examples/tooltip/TooltipBasic.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Button } from \"@/ui/button\"\nimport { Tooltip, TooltipContent, TooltipTrigger } from \"@/ui/tooltip\"\n\nimport { Example } from \"@/components/example\"\n</script>\n\n<template>\n  <Example title=\"Basic\">\n    <Tooltip>\n      <TooltipTrigger :as-child=\"true\">\n        <Button variant=\"outline\" class=\"w-fit\"> Show Tooltip </Button>\n      </TooltipTrigger>\n      <TooltipContent>\n        <p>Add to library</p>\n      </TooltipContent>\n    </Tooltip>\n  </Example>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-maia/examples/tooltip/TooltipDisabled.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Button } from \"@/ui/button\"\nimport { Tooltip, TooltipContent, TooltipTrigger } from \"@/ui/tooltip\"\n\nimport { Example } from \"@/components/example\"\n</script>\n\n<template>\n  <Example title=\"Disabled\">\n    <Tooltip>\n      <TooltipTrigger :as-child=\"true\">\n        <span class=\"inline-block w-fit\">\n          <Button variant=\"outline\" disabled> Disabled </Button>\n        </span>\n      </TooltipTrigger>\n      <TooltipContent>\n        <p>This feature is currently unavailable</p>\n      </TooltipContent>\n    </Tooltip>\n  </Example>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-maia/examples/tooltip/TooltipExample.vue",
+      "content": "<script setup lang=\"ts\">\nimport TooltipBasic from \"@/examples/tooltip/TooltipBasic.vue\"\nimport TooltipDisabled from \"@/examples/tooltip/TooltipDisabled.vue\"\nimport TooltipFormatted from \"@/examples/tooltip/TooltipFormatted.vue\"\nimport TooltipLongContent from \"@/examples/tooltip/TooltipLongContent.vue\"\nimport TooltipOnLink from \"@/examples/tooltip/TooltipOnLink.vue\"\nimport TooltipSides from \"@/examples/tooltip/TooltipSides.vue\"\nimport TooltipWithIcon from \"@/examples/tooltip/TooltipWithIcon.vue\"\nimport TooltipWithKeyboard from \"@/examples/tooltip/TooltipWithKeyboard.vue\"\n\nimport { ExampleWrapper } from \"@/components/example\"\n</script>\n\n<template>\n  <ExampleWrapper>\n    <TooltipBasic />\n    <TooltipSides />\n    <TooltipWithIcon />\n    <TooltipLongContent />\n    <TooltipDisabled />\n    <TooltipWithKeyboard />\n    <TooltipOnLink />\n    <TooltipFormatted />\n  </ExampleWrapper>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-maia/examples/tooltip/TooltipFormatted.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Button } from \"@/ui/button\"\nimport { Tooltip, TooltipContent, TooltipTrigger } from \"@/ui/tooltip\"\n\nimport { Example } from \"@/components/example\"\n</script>\n\n<template>\n  <Example title=\"Formatted Content\">\n    <Tooltip>\n      <TooltipTrigger :as-child=\"true\">\n        <Button variant=\"outline\" class=\"w-fit\"> Status </Button>\n      </TooltipTrigger>\n      <TooltipContent>\n        <div class=\"flex flex-col gap-1\">\n          <p class=\"font-semibold\">Active</p>\n          <p class=\"text-xs opacity-80\">Last updated 2 hours ago</p>\n        </div>\n      </TooltipContent>\n    </Tooltip>\n  </Example>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-maia/examples/tooltip/TooltipLongContent.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Button } from \"@/ui/button\"\nimport { Tooltip, TooltipContent, TooltipTrigger } from \"@/ui/tooltip\"\n\nimport { Example } from \"@/components/example\"\n</script>\n\n<template>\n  <Example title=\"Long Content\">\n    <Tooltip>\n      <TooltipTrigger :as-child=\"true\">\n        <Button variant=\"outline\" class=\"w-fit\"> Show Tooltip </Button>\n      </TooltipTrigger>\n      <TooltipContent>\n        To learn more about how this works, check out the docs. If you have any\n        questions, please reach out to us.\n      </TooltipContent>\n    </Tooltip>\n  </Example>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-maia/examples/tooltip/TooltipOnLink.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Tooltip, TooltipContent, TooltipTrigger } from \"@/ui/tooltip\"\n\nimport { Example } from \"@/components/example\"\n</script>\n\n<template>\n  <Example title=\"On Link\">\n    <Tooltip>\n      <TooltipTrigger :as-child=\"true\">\n        <a\n          href=\"#\"\n          class=\"w-fit text-sm text-primary underline-offset-4 hover:underline\"\n          @click.prevent\n        >\n          Learn more\n        </a>\n      </TooltipTrigger>\n      <TooltipContent>\n        <p>Click to read the documentation</p>\n      </TooltipContent>\n    </Tooltip>\n  </Example>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-maia/examples/tooltip/TooltipSides.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Button } from \"@/ui/button\"\nimport { Tooltip, TooltipContent, TooltipTrigger } from \"@/ui/tooltip\"\n\nimport { Example } from \"@/components/example\"\n\nconst sides = [\"top\", \"right\", \"bottom\", \"left\"] as const\n</script>\n\n<template>\n  <Example title=\"Sides\">\n    <div class=\"flex flex-wrap gap-2\">\n      <Tooltip v-for=\"side in sides\" :key=\"side\">\n        <TooltipTrigger :as-child=\"true\">\n          <Button variant=\"outline\" class=\"w-fit capitalize\">\n            {{ side }}\n          </Button>\n        </TooltipTrigger>\n        <TooltipContent :side=\"side\">\n          <p>Add to library</p>\n        </TooltipContent>\n      </Tooltip>\n    </div>\n  </Example>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-maia/examples/tooltip/TooltipWithIcon.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Button } from \"@/ui/button\"\nimport { Tooltip, TooltipContent, TooltipTrigger } from \"@/ui/tooltip\"\n\nimport { Example } from \"@/components/example\"\nimport IconPlaceholder from \"@/components/IconPlaceholder.vue\"\n</script>\n\n<template>\n  <Example title=\"With Icon\">\n    <Tooltip>\n      <TooltipTrigger :as-child=\"true\">\n        <Button variant=\"ghost\" size=\"icon\">\n          <IconPlaceholder\n            lucide=\"InfoIcon\"\n            tabler=\"IconInfoCircle\"\n            hugeicons=\"AlertCircleIcon\"\n            phosphor=\"InfoIcon\"\n            remixicon=\"RiInformationLine\"\n          />\n          <span class=\"sr-only\">Info</span>\n        </Button>\n      </TooltipTrigger>\n      <TooltipContent>\n        <p>Additional information</p>\n      </TooltipContent>\n    </Tooltip>\n  </Example>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-maia/examples/tooltip/TooltipWithKeyboard.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Button } from \"@/ui/button\"\nimport { Kbd } from \"@/ui/kbd\"\nimport { Tooltip, TooltipContent, TooltipTrigger } from \"@/ui/tooltip\"\n\nimport { Example } from \"@/components/example\"\nimport IconPlaceholder from \"@/components/IconPlaceholder.vue\"\n</script>\n\n<template>\n  <Example title=\"With Keyboard Shortcut\">\n    <Tooltip>\n      <TooltipTrigger :as-child=\"true\">\n        <Button variant=\"outline\" size=\"icon-sm\">\n          <IconPlaceholder\n            lucide=\"SaveIcon\"\n            tabler=\"IconDeviceFloppy\"\n            hugeicons=\"FloppyDiskIcon\"\n            phosphor=\"FloppyDiskIcon\"\n            remixicon=\"RiSave3Line\"\n          />\n        </Button>\n      </TooltipTrigger>\n      <TooltipContent class=\"pr-1.5\">\n        <div class=\"flex items-center gap-2\">Save Changes <Kbd>S</Kbd></div>\n      </TooltipContent>\n    </Tooltip>\n  </Example>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

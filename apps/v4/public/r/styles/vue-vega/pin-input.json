@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pin-input",
+  "dependencies": [
+    "reka-ui",
+    "@vueuse/core"
+  ],
+  "registryDependencies": [
+    "icon-placeholder"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-vega/ui/pin-input/PinInput.vue",
+      "content": "<script setup lang=\"ts\" generic=\"Type extends 'text' | 'number' = 'text'\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { PinInputRootEmits, PinInputRootProps } from \"reka-ui\"\nimport { PinInputRoot, useForwardPropsEmits } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = withDefaults(\n  defineProps<PinInputRootProps<Type> & { class?: HTMLAttributes[\"class\"] }>(),\n  {\n    otp: true,\n  }\n)\nconst emits = defineEmits<PinInputRootEmits<Type>>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n\nconst forwarded = useForwardPropsEmits(delegatedProps, emits)\n</script>\n\n<template>\n  <PinInputRoot\n    :otp=\"props.otp\"\n    data-slot=\"pin-input\"\n    v-bind=\"forwarded\"\n    :class=\"\n      cn(\n        'flex items-center gap-2 disabled:cursor-not-allowed has-disabled:opacity-50',\n        props.class\n      )\n    \"\n  >\n    <slot />\n  </PinInputRoot>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-vega/ui/pin-input/PinInputGroup.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { PrimitiveProps } from \"reka-ui\"\nimport { Primitive, useForwardProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<\n  PrimitiveProps & { class?: HTMLAttributes[\"class\"] }\n>()\nconst delegatedProps = reactiveOmit(props, \"class\")\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <Primitive\n    data-slot=\"pin-input-group\"\n    v-bind=\"forwardedProps\"\n    :class=\"cn('flex items-center', props.class)\"\n  >\n    <slot />\n  </Primitive>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-vega/ui/pin-input/PinInputSeparator.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { PrimitiveProps } from \"reka-ui\"\nimport { Primitive, useForwardProps } from \"reka-ui\"\n\nimport { IconPlaceholder } from \"@/registry/bases/reka/components/icon-placeholder\"\n\nconst props = defineProps<PrimitiveProps>()\nconst forwardedProps = useForwardProps(props)\n</script>\n\n<template>\n  <Primitive data-slot=\"pin-input-separator\" v-bind=\"forwardedProps\">\n    <slot>\n      <IconPlaceholder\n        lucide=\"MinusIcon\"\n        tabler=\"IconMinus\"\n        hugeicons=\"Minus01Icon\"\n        phosphor=\"MinusIcon\"\n        remixicon=\"RiSubtractLine\"\n      />\n    </slot>\n  </Primitive>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-vega/ui/pin-input/PinInputSlot.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { PinInputInputProps } from \"reka-ui\"\nimport { PinInputInput, useForwardProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<\n  PinInputInputProps & { class?: HTMLAttributes[\"class\"] }\n>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <PinInputInput\n    data-slot=\"pin-input-slot\"\n    v-bind=\"forwardedProps\"\n    :class=\"\n      cn(\n        'relative flex h-9 w-9 items-center justify-center border-y border-r border-input text-center text-sm shadow-xs transition-all outline-none first:rounded-l-md first:border-l last:rounded-r-md focus:z-10 focus:border-ring focus:ring-[3px] focus:ring-ring/50 aria-invalid:border-destructive focus:aria-invalid:border-destructive focus:aria-invalid:ring-destructive/20 dark:bg-input/30 dark:focus:aria-invalid:ring-destructive/40',\n        props.class\n      )\n    \"\n  />\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-vega/ui/pin-input/index.ts",
+      "content": "export { default as PinInput } from \"./PinInput.vue\"\nexport { default as PinInputGroup } from \"./PinInputGroup.vue\"\nexport { default as PinInputSeparator } from \"./PinInputSeparator.vue\"\nexport { default as PinInputSlot } from \"./PinInputSlot.vue\"\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

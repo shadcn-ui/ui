@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aspect-ratio",
+  "dependencies": [
+    "bits-ui"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-nova/ui/aspect-ratio/aspect-ratio.svelte",
+      "content": "<script lang=\"ts\">\n  import { AspectRatio as AspectRatioPrimitive } from \"bits-ui\"\n\n  let { ref = $bindable(null), ...restProps }: AspectRatioPrimitive.RootProps =\n    $props()\n</script>\n\n<AspectRatioPrimitive.Root bind:ref data-slot=\"aspect-ratio\" {...restProps} />\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/aspect-ratio/index.ts",
+      "content": "import Root from \"./aspect-ratio.svelte\"\n\nexport { Root, Root as AspectRatio }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "meta": {
+    "links": {
+      "docs": "https://force-ui.com/docs/components/svelte/aspect-ratio"
+    }
+  },
+  "type": "registry:ui"
+}

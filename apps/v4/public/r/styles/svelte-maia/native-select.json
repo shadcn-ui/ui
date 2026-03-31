@@ -1,0 +1,35 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "native-select",
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-maia/ui/native-select/index.ts",
+      "content": "import OptGroup from \"./native-select-opt-group.svelte\"\nimport Option from \"./native-select-option.svelte\"\nimport Root from \"./native-select.svelte\"\n\nexport {\n  Root,\n  Option,\n  OptGroup,\n  Root as NativeSelect,\n  Option as NativeSelectOption,\n  OptGroup as NativeSelectOptGroup,\n}\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-maia/ui/native-select/native-select-opt-group.svelte",
+      "content": "<script lang=\"ts\">\n  import type { WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLOptgroupAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    children,\n    ...restProps\n  }: WithElementRef<HTMLOptgroupAttributes> = $props()\n</script>\n\n<optgroup bind:this={ref} data-slot=\"native-select-opt-group\" {...restProps}>\n  {@render children?.()}\n</optgroup>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-maia/ui/native-select/native-select-option.svelte",
+      "content": "<script lang=\"ts\">\n  import type { WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLOptionAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    children,\n    ...restProps\n  }: WithElementRef<HTMLOptionAttributes> = $props()\n</script>\n\n<option bind:this={ref} data-slot=\"native-select-option\" {...restProps}>\n  {@render children?.()}\n</option>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-maia/ui/native-select/native-select.svelte",
+      "content": "<script lang=\"ts\">\n  import IconPlaceholder from \"$lib/components/icon-placeholder/icon-placeholder.svelte\"\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLSelectAttributes } from \"svelte/elements\"\n\n  type NativeSelectProps = Omit<\n    WithElementRef<HTMLSelectAttributes>,\n    \"size\"\n  > & {\n    size?: \"sm\" | \"default\"\n  }\n\n  let {\n    ref = $bindable(null),\n    value = $bindable(),\n    class: className,\n    size = \"default\",\n    children,\n    ...restProps\n  }: NativeSelectProps = $props()\n</script>\n\n<div\n  class={cn(\n    \"cn-native-select-wrapper group/native-select relative w-fit has-[select:disabled]:opacity-50\",\n    className\n  )}\n  data-slot=\"native-select-wrapper\"\n  data-size={size}\n>\n  <select\n    bind:value\n    bind:this={ref}\n    data-slot=\"native-select\"\n    data-size={size}\n    class=\"cn-native-select outline-none disabled:pointer-events-none disabled:cursor-not-allowed\"\n    {...restProps}\n  >\n    {@render children?.()}\n  </select>\n  <IconPlaceholder\n    lucide=\"ChevronDownIcon\"\n    tabler=\"IconSelector\"\n    hugeicons=\"UnfoldMoreIcon\"\n    phosphor=\"CaretDownIcon\"\n    remixicon=\"RiArrowDownSLine\"\n    class=\"cn-native-select-icon pointer-events-none absolute select-none\"\n    aria-hidden\n    data-slot=\"native-select-icon\"\n  />\n</div>\n",
+      "type": "registry:ui"
+    }
+  ],
+  "meta": {
+    "links": {
+      "docs": "https://force-ui.com/docs/components/svelte/native-select"
+    }
+  },
+  "type": "registry:ui"
+}

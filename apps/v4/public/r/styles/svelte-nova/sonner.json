@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sonner",
+  "dependencies": [
+    "svelte-sonner"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-nova/ui/sonner/index.ts",
+      "content": "export { default as Toaster } from \"./sonner.svelte\"\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/sonner/sonner.svelte",
+      "content": "<script lang=\"ts\">\n  import IconPlaceholder from \"$lib/components/icon-placeholder/icon-placeholder.svelte\"\n  import { mode } from \"mode-watcher\"\n  import {\n    Toaster as Sonner,\n    type ToasterProps as SonnerProps,\n  } from \"svelte-sonner\"\n\n  let { ...restProps }: SonnerProps = $props()\n</script>\n\n<Sonner\n  theme={mode.current}\n  class=\"toaster group\"\n  style=\"--normal-bg: var(--color-popover); --normal-text: var(--color-popover-foreground); --normal-border: var(--color-border);\"\n  {...restProps}\n>\n  {#snippet loadingIcon()}\n    <IconPlaceholder\n      lucide=\"Loader2Icon\"\n      tabler=\"IconLoader\"\n      hugeicons=\"Loading03Icon\"\n      phosphor=\"SpinnerIcon\"\n      remixicon=\"RiLoaderLine\"\n      class=\"size-4 animate-spin\"\n    />\n  {/snippet}\n  {#snippet successIcon()}\n    <IconPlaceholder\n      lucide=\"CircleCheckIcon\"\n      tabler=\"IconCircleCheck\"\n      hugeicons=\"CheckmarkCircle02Icon\"\n      phosphor=\"CheckCircleIcon\"\n      remixicon=\"RiCheckboxCircleLine\"\n      class=\"size-4\"\n    />\n  {/snippet}\n  {#snippet errorIcon()}\n    <IconPlaceholder\n      lucide=\"OctagonXIcon\"\n      tabler=\"IconAlertOctagon\"\n      hugeicons=\"MultiplicationSignCircleIcon\"\n      phosphor=\"XCircleIcon\"\n      remixicon=\"RiErrorWarningLine\"\n      class=\"size-4\"\n    />\n  {/snippet}\n  {#snippet infoIcon()}\n    <IconPlaceholder\n      lucide=\"InfoIcon\"\n      tabler=\"IconInfoCircle\"\n      hugeicons=\"InformationCircleIcon\"\n      phosphor=\"InfoIcon\"\n      remixicon=\"RiInformationLine\"\n      class=\"size-4\"\n    />\n  {/snippet}\n  {#snippet warningIcon()}\n    <IconPlaceholder\n      lucide=\"TriangleAlertIcon\"\n      tabler=\"IconAlertTriangle\"\n      hugeicons=\"Alert02Icon\"\n      phosphor=\"WarningIcon\"\n      remixicon=\"RiCloseCircleLine\"\n      class=\"size-4\"\n    />\n  {/snippet}\n</Sonner>\n",
+      "type": "registry:ui"
+    }
+  ],
+  "meta": {
+    "links": {
+      "docs": "https://force-ui.com/docs/components/svelte/sonner"
+    }
+  },
+  "type": "registry:ui"
+}

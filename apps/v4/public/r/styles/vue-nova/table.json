@@ -1,0 +1,66 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "table",
+  "dependencies": [
+    "@vueuse/core",
+    "@tanstack/vue-table"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-nova/ui/table/Table.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <div data-slot=\"table-container\" class=\"cn-table-container\">\n    <table data-slot=\"table\" :class=\"cn('cn-table', props.class)\">\n      <slot />\n    </table>\n  </div>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-nova/ui/table/TableBody.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <tbody data-slot=\"table-body\" :class=\"cn('cn-table-body', props.class)\">\n    <slot />\n  </tbody>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-nova/ui/table/TableCaption.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <caption\n    data-slot=\"table-caption\"\n    :class=\"cn('cn-table-caption', props.class)\"\n  >\n    <slot />\n  </caption>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-nova/ui/table/TableCell.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <td data-slot=\"table-cell\" :class=\"cn('cn-table-cell', props.class)\">\n    <slot />\n  </td>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-nova/ui/table/TableEmpty.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nimport TableCell from \"./TableCell.vue\"\nimport TableRow from \"./TableRow.vue\"\n\nconst props = withDefaults(\n  defineProps<{\n    class?: HTMLAttributes[\"class\"]\n    colspan?: number\n  }>(),\n  {\n    colspan: 1,\n  }\n)\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n</script>\n\n<template>\n  <TableRow>\n    <TableCell\n      :class=\"\n        cn(\n          'p-4 align-middle text-sm whitespace-nowrap text-foreground',\n          props.class\n        )\n      \"\n      v-bind=\"delegatedProps\"\n    >\n      <div class=\"flex items-center justify-center py-10\">\n        <slot />\n      </div>\n    </TableCell>\n  </TableRow>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-nova/ui/table/TableFooter.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <tfoot data-slot=\"table-footer\" :class=\"cn('cn-table-footer', props.class)\">\n    <slot />\n  </tfoot>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-nova/ui/table/TableHead.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <th data-slot=\"table-head\" :class=\"cn('cn-table-head', props.class)\">\n    <slot />\n  </th>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-nova/ui/table/TableHeader.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <thead data-slot=\"table-header\" :class=\"cn('cn-table-header', props.class)\">\n    <slot />\n  </thead>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-nova/ui/table/TableRow.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <tr data-slot=\"table-row\" :class=\"cn('cn-table-row', props.class)\">\n    <slot />\n  </tr>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-nova/ui/table/index.ts",
+      "content": "export { default as Table } from \"./Table.vue\"\nexport { default as TableBody } from \"./TableBody.vue\"\nexport { default as TableCaption } from \"./TableCaption.vue\"\nexport { default as TableCell } from \"./TableCell.vue\"\nexport { default as TableEmpty } from \"./TableEmpty.vue\"\nexport { default as TableFooter } from \"./TableFooter.vue\"\nexport { default as TableHead } from \"./TableHead.vue\"\nexport { default as TableHeader } from \"./TableHeader.vue\"\nexport { default as TableRow } from \"./TableRow.vue\"\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-nova/ui/table/utils.ts",
+      "content": "import type { Updater } from \"@tanstack/vue-table\"\nimport { isFunction } from \"@tanstack/vue-table\"\nimport type { Ref } from \"vue\"\n\nexport function valueUpdater<T>(updaterOrValue: Updater<T>, ref: Ref<T>) {\n  ref.value = isFunction(updaterOrValue)\n    ? updaterOrValue(ref.value)\n    : updaterOrValue\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

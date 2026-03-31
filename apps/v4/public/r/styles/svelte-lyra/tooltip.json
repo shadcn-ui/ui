@@ -1,0 +1,48 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tooltip",
+  "dependencies": [
+    "bits-ui"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-lyra/ui/tooltip/index.ts",
+      "content": "import Content from \"./tooltip-content.svelte\"\nimport Portal from \"./tooltip-portal.svelte\"\nimport Provider from \"./tooltip-provider.svelte\"\nimport Trigger from \"./tooltip-trigger.svelte\"\nimport Root from \"./tooltip.svelte\"\n\nexport {\n  Root,\n  Trigger,\n  Content,\n  Provider,\n  Portal,\n  //\n  Root as Tooltip,\n  Content as TooltipContent,\n  Trigger as TooltipTrigger,\n  Provider as TooltipProvider,\n  Portal as TooltipPortal,\n}\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-lyra/ui/tooltip/tooltip-content.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import type { WithoutChildrenOrChild } from \"$lib/utils.js\"\n  import { Tooltip as TooltipPrimitive } from \"bits-ui\"\n  import type { ComponentProps } from \"svelte\"\n\n  import TooltipPortal from \"./tooltip-portal.svelte\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    sideOffset = 0,\n    side = \"top\",\n    children,\n    arrowClasses,\n    portalProps,\n    ...restProps\n  }: TooltipPrimitive.ContentProps & {\n    arrowClasses?: string\n    portalProps?: WithoutChildrenOrChild<ComponentProps<typeof TooltipPortal>>\n  } = $props()\n</script>\n\n<TooltipPortal {...portalProps}>\n  <TooltipPrimitive.Content\n    bind:ref\n    data-slot=\"tooltip-content\"\n    {sideOffset}\n    {side}\n    class={cn(\n      \"cn-tooltip-content bg-foreground text-background z-50 w-fit max-w-xs origin-(--bits-tooltip-content-transform-origin)\",\n      className\n    )}\n    {...restProps}\n  >\n    {@render children?.()}\n    <TooltipPrimitive.Arrow>\n      {#snippet child({ props })}\n        <div\n          class={cn(\n            \"cn-tooltip-arrow bg-foreground fill-foreground z-50\",\n            \"data-[side=top]:translate-x-1/2 data-[side=top]:translate-y-[calc(-50%+2px)]\",\n            \"data-[side=bottom]:-translate-x-1/2 data-[side=bottom]:-translate-y-[calc(-50%+1px)]\",\n            \"data-[side=right]:translate-x-[calc(50%+2px)] data-[side=right]:translate-y-1/2\",\n            \"data-[side=left]:-translate-y-[calc(50%-3px)]\",\n            arrowClasses\n          )}\n          {...props}\n        ></div>\n      {/snippet}\n    </TooltipPrimitive.Arrow>\n  </TooltipPrimitive.Content>\n</TooltipPortal>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-lyra/ui/tooltip/tooltip-portal.svelte",
+      "content": "<script lang=\"ts\">\n  import { Tooltip as TooltipPrimitive } from \"bits-ui\"\n\n  let { ...restProps }: TooltipPrimitive.PortalProps = $props()\n</script>\n\n<TooltipPrimitive.Portal {...restProps} />\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-lyra/ui/tooltip/tooltip-provider.svelte",
+      "content": "<script lang=\"ts\">\n  import { Tooltip as TooltipPrimitive } from \"bits-ui\"\n\n  let { delayDuration = 0, ...restProps }: TooltipPrimitive.ProviderProps =\n    $props()\n</script>\n\n<TooltipPrimitive.Provider {delayDuration} {...restProps} />\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-lyra/ui/tooltip/tooltip-trigger.svelte",
+      "content": "<script lang=\"ts\">\n  import { Tooltip as TooltipPrimitive } from \"bits-ui\"\n\n  let { ref = $bindable(null), ...restProps }: TooltipPrimitive.TriggerProps =\n    $props()\n</script>\n\n<TooltipPrimitive.Trigger bind:ref data-slot=\"tooltip-trigger\" {...restProps} />\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-lyra/ui/tooltip/tooltip.svelte",
+      "content": "<script lang=\"ts\">\n  import { Tooltip as TooltipPrimitive } from \"bits-ui\"\n\n  import TooltipProvider from \"./tooltip-provider.svelte\"\n\n  let { open = $bindable(false), ...restProps }: TooltipPrimitive.RootProps =\n    $props()\n</script>\n\n<TooltipProvider>\n  <TooltipPrimitive.Root bind:open {...restProps} />\n</TooltipProvider>\n",
+      "type": "registry:ui"
+    }
+  ],
+  "meta": {
+    "links": {
+      "docs": "https://force-ui.com/docs/components/svelte/tooltip"
+    }
+  },
+  "type": "registry:ui"
+}

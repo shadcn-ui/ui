@@ -1,0 +1,44 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "skeleton-example",
+  "title": "Skeleton",
+  "dependencies": [],
+  "registryDependencies": [
+    "example",
+    "skeleton",
+    "card"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-nova/examples/skeleton/SkeletonAvatar.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Skeleton } from \"@/ui/skeleton\"\n\nimport { Example } from \"@/components/example\"\n</script>\n\n<template>\n  <Example title=\"Avatar\">\n    <div class=\"flex w-full items-center gap-4\">\n      <Skeleton class=\"size-10 shrink-0 rounded-full\" />\n      <div class=\"grid gap-2\">\n        <Skeleton class=\"h-4 w-[150px]\" />\n        <Skeleton class=\"h-4 w-[100px]\" />\n      </div>\n    </div>\n  </Example>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-nova/examples/skeleton/SkeletonCard.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Card, CardContent, CardHeader } from \"@/ui/card\"\nimport { Skeleton } from \"@/ui/skeleton\"\n\nimport { Example } from \"@/components/example\"\n</script>\n\n<template>\n  <Example title=\"Card\">\n    <Card class=\"w-full\">\n      <CardHeader>\n        <Skeleton class=\"h-4 w-2/3\" />\n        <Skeleton class=\"h-4 w-1/2\" />\n      </CardHeader>\n      <CardContent>\n        <Skeleton class=\"aspect-square w-full\" />\n      </CardContent>\n    </Card>\n  </Example>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-nova/examples/skeleton/SkeletonExample.vue",
+      "content": "<script setup lang=\"ts\">\nimport SkeletonAvatar from \"@/examples/skeleton/SkeletonAvatar.vue\"\nimport SkeletonCard from \"@/examples/skeleton/SkeletonCard.vue\"\nimport SkeletonForm from \"@/examples/skeleton/SkeletonForm.vue\"\nimport SkeletonTable from \"@/examples/skeleton/SkeletonTable.vue\"\nimport SkeletonText from \"@/examples/skeleton/SkeletonText.vue\"\n\nimport { ExampleWrapper } from \"@/components/example\"\n</script>\n\n<template>\n  <ExampleWrapper>\n    <SkeletonAvatar />\n    <SkeletonCard />\n    <SkeletonText />\n    <SkeletonForm />\n    <SkeletonTable />\n  </ExampleWrapper>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-nova/examples/skeleton/SkeletonForm.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Skeleton } from \"@/ui/skeleton\"\n\nimport { Example } from \"@/components/example\"\n</script>\n\n<template>\n  <Example title=\"Form\">\n    <div class=\"flex w-full flex-col gap-7\">\n      <div class=\"flex flex-col gap-3\">\n        <Skeleton class=\"h-4 w-20\" />\n        <Skeleton class=\"h-10 w-full\" />\n      </div>\n      <div class=\"flex flex-col gap-3\">\n        <Skeleton class=\"h-4 w-24\" />\n        <Skeleton class=\"h-10 w-full\" />\n      </div>\n      <Skeleton class=\"h-9 w-24\" />\n    </div>\n  </Example>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-nova/examples/skeleton/SkeletonTable.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Skeleton } from \"@/ui/skeleton\"\n\nimport { Example } from \"@/components/example\"\n</script>\n\n<template>\n  <Example title=\"Table\">\n    <div class=\"flex w-full flex-col gap-2\">\n      <div class=\"flex gap-4\">\n        <Skeleton class=\"h-4 flex-1\" />\n        <Skeleton class=\"h-4 w-24\" />\n        <Skeleton class=\"h-4 w-20\" />\n      </div>\n      <div class=\"flex gap-4\">\n        <Skeleton class=\"h-4 flex-1\" />\n        <Skeleton class=\"h-4 w-24\" />\n        <Skeleton class=\"h-4 w-20\" />\n      </div>\n      <div class=\"flex gap-4\">\n        <Skeleton class=\"h-4 flex-1\" />\n        <Skeleton class=\"h-4 w-24\" />\n        <Skeleton class=\"h-4 w-20\" />\n      </div>\n    </div>\n  </Example>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-nova/examples/skeleton/SkeletonText.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Skeleton } from \"@/ui/skeleton\"\n\nimport { Example } from \"@/components/example\"\n</script>\n\n<template>\n  <Example title=\"Text\">\n    <div class=\"flex w-full flex-col gap-2\">\n      <Skeleton class=\"h-4 w-full\" />\n      <Skeleton class=\"h-4 w-full\" />\n      <Skeleton class=\"h-4 w-3/4\" />\n    </div>\n  </Example>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

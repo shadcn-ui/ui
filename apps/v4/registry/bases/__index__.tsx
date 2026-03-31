@@ -9665,34 +9665,2798 @@ export const Index: Record<string, Record<string, any>> = {
     },
   },
   vue: {
-    button: {
-      name: "button",
+    accordion: {
+      name: "accordion",
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["utils"],
+      registryDependencies: undefined,
       files: [
         {
-          path: "registry/bases/vue/ui/button.vue",
+          path: "registry/bases/vue/ui/accordion/Accordion.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/accordion/AccordionContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/accordion/AccordionItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/accordion/AccordionTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/accordion/index.ts",
           type: "registry:ui",
           target: "",
         },
       ],
       component: null,
       categories: undefined,
-      meta: {
-        links: { docs: "https://force-ui.com/docs/components/vue/button" },
-      },
+      meta: undefined,
     },
-    "button-demo": {
-      name: "button-demo",
-      title: "Button Demo",
+    alert: {
+      name: "alert",
+      title: "undefined",
       description: "",
-      type: "registry:example",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/vue/ui/alert/Alert.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/alert/AlertAction.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/alert/AlertDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/alert/AlertTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/alert/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "alert-dialog": {
+      name: "alert-dialog",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
       registryDependencies: ["button"],
       files: [
         {
-          path: "registry/bases/vue/examples/button-demo.vue",
+          path: "registry/bases/vue/ui/alert-dialog/AlertDialog.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/alert-dialog/AlertDialogAction.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/alert-dialog/AlertDialogCancel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/alert-dialog/AlertDialogContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/alert-dialog/AlertDialogDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/alert-dialog/AlertDialogFooter.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/alert-dialog/AlertDialogHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/alert-dialog/AlertDialogMedia.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/alert-dialog/AlertDialogTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/alert-dialog/AlertDialogTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/alert-dialog/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "aspect-ratio": {
+      name: "aspect-ratio",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/vue/ui/aspect-ratio/AspectRatio.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/aspect-ratio/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    avatar: {
+      name: "avatar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/vue/ui/avatar/Avatar.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/avatar/AvatarBadge.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/avatar/AvatarFallback.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/avatar/AvatarGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/avatar/AvatarGroupCount.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/avatar/AvatarImage.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/avatar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    badge: {
+      name: "badge",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/vue/ui/badge/Badge.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/badge/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    breadcrumb: {
+      name: "breadcrumb",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/vue/ui/breadcrumb/Breadcrumb.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/breadcrumb/BreadcrumbEllipsis.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/breadcrumb/BreadcrumbItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/breadcrumb/BreadcrumbLink.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/breadcrumb/BreadcrumbList.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/breadcrumb/BreadcrumbPage.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/breadcrumb/BreadcrumbSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/breadcrumb/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    button: {
+      name: "button",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/vue/ui/button/Button.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/button/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "button-group": {
+      name: "button-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["separator"],
+      files: [
+        {
+          path: "registry/bases/vue/ui/button-group/ButtonGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/button-group/ButtonGroupSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/button-group/ButtonGroupText.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/button-group/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    calendar: {
+      name: "calendar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["native-select", "button", "icon-placeholder"],
+      files: [
+        {
+          path: "registry/bases/vue/ui/calendar/Calendar.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/calendar/CalendarCell.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/calendar/CalendarCellTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/calendar/CalendarGrid.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/calendar/CalendarGridBody.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/calendar/CalendarGridHead.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/calendar/CalendarGridRow.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/calendar/CalendarHeadCell.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/calendar/CalendarHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/calendar/CalendarHeading.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/calendar/CalendarNextButton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/calendar/CalendarPrevButton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/calendar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    card: {
+      name: "card",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/vue/ui/card/Card.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/card/CardAction.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/card/CardContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/card/CardDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/card/CardFooter.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/card/CardHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/card/CardTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/card/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    carousel: {
+      name: "carousel",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "icon-placeholder"],
+      files: [
+        {
+          path: "registry/bases/vue/ui/carousel/Carousel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/carousel/CarouselContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/carousel/CarouselItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/carousel/CarouselNext.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/carousel/CarouselPrevious.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/carousel/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/carousel/interface.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/carousel/useCarousel.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    chart: {
+      name: "chart",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/vue/ui/chart/ChartContainer.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/chart/ChartLegendContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/chart/ChartStyle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/chart/ChartTooltipContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/chart/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/chart/utils.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    checkbox: {
+      name: "checkbox",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/vue/ui/checkbox/Checkbox.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/checkbox/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    collapsible: {
+      name: "collapsible",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/vue/ui/collapsible/Collapsible.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/collapsible/CollapsibleContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/collapsible/CollapsibleTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/collapsible/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    combobox: {
+      name: "combobox",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "registry/bases/vue/ui/combobox/Combobox.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/combobox/ComboboxAnchor.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/combobox/ComboboxEmpty.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/combobox/ComboboxGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/combobox/ComboboxInput.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/combobox/ComboboxItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/combobox/ComboboxItemIndicator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/combobox/ComboboxList.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/combobox/ComboboxSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/combobox/ComboboxTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/combobox/ComboboxViewport.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/combobox/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    command: {
+      name: "command",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["dialog", "input-group"],
+      files: [
+        {
+          path: "registry/bases/vue/ui/command/Command.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/command/CommandDialog.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/command/CommandEmpty.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/command/CommandGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/command/CommandInput.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/command/CommandItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/command/CommandList.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/command/CommandSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/command/CommandShortcut.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/command/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "context-menu": {
+      name: "context-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/vue/ui/context-menu/ContextMenu.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/context-menu/ContextMenuCheckboxItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/context-menu/ContextMenuContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/context-menu/ContextMenuGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/context-menu/ContextMenuItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/context-menu/ContextMenuLabel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/context-menu/ContextMenuPortal.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/context-menu/ContextMenuRadioGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/context-menu/ContextMenuRadioItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/context-menu/ContextMenuSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/context-menu/ContextMenuShortcut.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/context-menu/ContextMenuSub.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/context-menu/ContextMenuSubContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/context-menu/ContextMenuSubTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/context-menu/ContextMenuTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/context-menu/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    dialog: {
+      name: "dialog",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "icon-placeholder"],
+      files: [
+        {
+          path: "registry/bases/vue/ui/dialog/Dialog.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/dialog/DialogClose.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/dialog/DialogContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/dialog/DialogDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/dialog/DialogFooter.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/dialog/DialogHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/dialog/DialogOverlay.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/dialog/DialogScrollContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/dialog/DialogTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/dialog/DialogTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/dialog/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    drawer: {
+      name: "drawer",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/vue/ui/drawer/Drawer.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/drawer/DrawerClose.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/drawer/DrawerContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/drawer/DrawerDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/drawer/DrawerFooter.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/drawer/DrawerHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/drawer/DrawerOverlay.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/drawer/DrawerTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/drawer/DrawerTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/drawer/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "dropdown-menu": {
+      name: "dropdown-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/vue/ui/dropdown-menu/DropdownMenu.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/dropdown-menu/DropdownMenuCheckboxItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/dropdown-menu/DropdownMenuContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/dropdown-menu/DropdownMenuGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/dropdown-menu/DropdownMenuItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/dropdown-menu/DropdownMenuLabel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/dropdown-menu/DropdownMenuRadioGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/dropdown-menu/DropdownMenuRadioItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/dropdown-menu/DropdownMenuSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/dropdown-menu/DropdownMenuShortcut.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/dropdown-menu/DropdownMenuSub.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/dropdown-menu/DropdownMenuSubContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/dropdown-menu/DropdownMenuSubTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/dropdown-menu/DropdownMenuTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/dropdown-menu/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    empty: {
+      name: "empty",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/vue/ui/empty/Empty.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/empty/EmptyContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/empty/EmptyDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/empty/EmptyHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/empty/EmptyMedia.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/empty/EmptyTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/empty/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    field: {
+      name: "field",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["label", "separator"],
+      files: [
+        {
+          path: "registry/bases/vue/ui/field/Field.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/field/FieldContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/field/FieldDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/field/FieldError.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/field/FieldGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/field/FieldLabel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/field/FieldLegend.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/field/FieldSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/field/FieldSet.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/field/FieldTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/field/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    form: {
+      name: "form",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["label"],
+      files: [
+        {
+          path: "registry/bases/vue/ui/form/FormControl.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/form/FormDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/form/FormItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/form/FormLabel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/form/FormMessage.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/form/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/form/injectionKeys.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/form/useFormField.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "hover-card": {
+      name: "hover-card",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/vue/ui/hover-card/HoverCard.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/hover-card/HoverCardContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/hover-card/HoverCardTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/hover-card/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    input: {
+      name: "input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/vue/ui/input/Input.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/input/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "input-group": {
+      name: "input-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "input", "textarea"],
+      files: [
+        {
+          path: "registry/bases/vue/ui/input-group/InputGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/input-group/InputGroupAddon.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/input-group/InputGroupButton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/input-group/InputGroupInput.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/input-group/InputGroupText.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/input-group/InputGroupTextarea.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/input-group/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "input-otp": {
+      name: "input-otp",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "registry/bases/vue/ui/input-otp/InputOTP.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/input-otp/InputOTPGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/input-otp/InputOTPSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/input-otp/InputOTPSlot.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/input-otp/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    item: {
+      name: "item",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["separator"],
+      files: [
+        {
+          path: "registry/bases/vue/ui/item/Item.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/item/ItemActions.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/item/ItemContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/item/ItemDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/item/ItemFooter.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/item/ItemGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/item/ItemHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/item/ItemMedia.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/item/ItemSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/item/ItemTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/item/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    kbd: {
+      name: "kbd",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/vue/ui/kbd/Kbd.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/kbd/KbdGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/kbd/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    label: {
+      name: "label",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/vue/ui/label/Label.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/label/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    menubar: {
+      name: "menubar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "registry/bases/vue/ui/menubar/Menubar.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/menubar/MenubarCheckboxItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/menubar/MenubarContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/menubar/MenubarGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/menubar/MenubarItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/menubar/MenubarLabel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/menubar/MenubarMenu.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/menubar/MenubarRadioGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/menubar/MenubarRadioItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/menubar/MenubarSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/menubar/MenubarShortcut.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/menubar/MenubarSub.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/menubar/MenubarSubContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/menubar/MenubarSubTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/menubar/MenubarTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/menubar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "native-select": {
+      name: "native-select",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "registry/bases/vue/ui/native-select/NativeSelect.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/native-select/NativeSelectOptGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/native-select/NativeSelectOption.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/native-select/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "navigation-menu": {
+      name: "navigation-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "registry/bases/vue/ui/navigation-menu/NavigationMenu.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/navigation-menu/NavigationMenuContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/navigation-menu/NavigationMenuIndicator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/navigation-menu/NavigationMenuItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/navigation-menu/NavigationMenuLink.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/navigation-menu/NavigationMenuList.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/navigation-menu/NavigationMenuTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/navigation-menu/NavigationMenuViewport.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/navigation-menu/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "number-field": {
+      name: "number-field",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "registry/bases/vue/ui/number-field/NumberField.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/number-field/NumberFieldContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/number-field/NumberFieldDecrement.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/number-field/NumberFieldIncrement.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/number-field/NumberFieldInput.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/number-field/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    pagination: {
+      name: "pagination",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "icon-placeholder"],
+      files: [
+        {
+          path: "registry/bases/vue/ui/pagination/Pagination.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/pagination/PaginationContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/pagination/PaginationEllipsis.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/pagination/PaginationFirst.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/pagination/PaginationItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/pagination/PaginationLast.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/pagination/PaginationLink.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/pagination/PaginationNext.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/pagination/PaginationPrevious.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/pagination/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "pin-input": {
+      name: "pin-input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "registry/bases/vue/ui/pin-input/PinInput.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/pin-input/PinInputGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/pin-input/PinInputSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/pin-input/PinInputSlot.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/pin-input/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    popover: {
+      name: "popover",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/vue/ui/popover/Popover.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/popover/PopoverAnchor.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/popover/PopoverContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/popover/PopoverDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/popover/PopoverHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/popover/PopoverTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/popover/PopoverTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/popover/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    progress: {
+      name: "progress",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/vue/ui/progress/Progress.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/progress/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "radio-group": {
+      name: "radio-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/vue/ui/radio-group/RadioGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/radio-group/RadioGroupItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/radio-group/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "range-calendar": {
+      name: "range-calendar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "icon-placeholder"],
+      files: [
+        {
+          path: "registry/bases/vue/ui/range-calendar/RangeCalendar.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/range-calendar/RangeCalendarCell.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/range-calendar/RangeCalendarCellTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/range-calendar/RangeCalendarGrid.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/range-calendar/RangeCalendarGridBody.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/range-calendar/RangeCalendarGridHead.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/range-calendar/RangeCalendarGridRow.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/range-calendar/RangeCalendarHeadCell.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/range-calendar/RangeCalendarHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/range-calendar/RangeCalendarHeading.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/range-calendar/RangeCalendarNextButton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/range-calendar/RangeCalendarPrevButton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/range-calendar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    resizable: {
+      name: "resizable",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/vue/ui/resizable/ResizableHandle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/resizable/ResizablePanel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/resizable/ResizablePanelGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/resizable/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "scroll-area": {
+      name: "scroll-area",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/vue/ui/scroll-area/ScrollArea.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/scroll-area/ScrollBar.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/scroll-area/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    select: {
+      name: "select",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/vue/ui/select/Select.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/select/SelectContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/select/SelectGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/select/SelectItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/select/SelectItemText.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/select/SelectLabel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/select/SelectScrollDownButton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/select/SelectScrollUpButton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/select/SelectSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/select/SelectTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/select/SelectValue.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/select/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    separator: {
+      name: "separator",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/vue/ui/separator/Separator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/separator/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    sheet: {
+      name: "sheet",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "registry/bases/vue/ui/sheet/Sheet.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/sheet/SheetClose.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/sheet/SheetContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/sheet/SheetDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/sheet/SheetFooter.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/sheet/SheetHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/sheet/SheetOverlay.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/sheet/SheetTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/sheet/SheetTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/sheet/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    sidebar: {
+      name: "sidebar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: [
+        "sheet",
+        "input",
+        "tooltip",
+        "skeleton",
+        "separator",
+        "icon-placeholder",
+        "button",
+      ],
+      files: [
+        {
+          path: "registry/bases/vue/ui/sidebar/Sidebar.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/sidebar/SidebarContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/sidebar/SidebarFooter.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/sidebar/SidebarGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/sidebar/SidebarGroupAction.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/sidebar/SidebarGroupContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/sidebar/SidebarGroupLabel.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/sidebar/SidebarHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/sidebar/SidebarInput.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/sidebar/SidebarInset.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/sidebar/SidebarMenu.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/sidebar/SidebarMenuAction.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/sidebar/SidebarMenuBadge.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/sidebar/SidebarMenuButton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/sidebar/SidebarMenuButtonChild.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/sidebar/SidebarMenuItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/sidebar/SidebarMenuSkeleton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/sidebar/SidebarMenuSub.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/sidebar/SidebarMenuSubButton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/sidebar/SidebarMenuSubItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/sidebar/SidebarProvider.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/sidebar/SidebarRail.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/sidebar/SidebarSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/sidebar/SidebarTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/sidebar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/sidebar/utils.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    skeleton: {
+      name: "skeleton",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/vue/ui/skeleton/Skeleton.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/skeleton/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    slider: {
+      name: "slider",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/vue/ui/slider/Slider.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/slider/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    sonner: {
+      name: "sonner",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "registry/bases/vue/ui/sonner/Sonner.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/sonner/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    spinner: {
+      name: "spinner",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "registry/bases/vue/ui/spinner/Spinner.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/spinner/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    stepper: {
+      name: "stepper",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/vue/ui/stepper/Stepper.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/stepper/StepperDescription.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/stepper/StepperIndicator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/stepper/StepperItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/stepper/StepperSeparator.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/stepper/StepperTitle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/stepper/StepperTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/stepper/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    switch: {
+      name: "switch",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/vue/ui/switch/Switch.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/switch/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    table: {
+      name: "table",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/vue/ui/table/Table.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/table/TableBody.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/table/TableCaption.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/table/TableCell.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/table/TableEmpty.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/table/TableFooter.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/table/TableHead.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/table/TableHeader.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/table/TableRow.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/table/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/table/utils.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    tabs: {
+      name: "tabs",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/vue/ui/tabs/Tabs.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/tabs/TabsContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/tabs/TabsList.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/tabs/TabsTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/tabs/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "tags-input": {
+      name: "tags-input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["icon-placeholder"],
+      files: [
+        {
+          path: "registry/bases/vue/ui/tags-input/TagsInput.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/tags-input/TagsInputInput.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/tags-input/TagsInputItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/tags-input/TagsInputItemDelete.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/tags-input/TagsInputItemText.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/tags-input/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    textarea: {
+      name: "textarea",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/vue/ui/textarea/Textarea.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/textarea/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    toggle: {
+      name: "toggle",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/vue/ui/toggle/Toggle.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/toggle/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "toggle-group": {
+      name: "toggle-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["toggle"],
+      files: [
+        {
+          path: "registry/bases/vue/ui/toggle-group/ToggleGroup.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/toggle-group/ToggleGroupItem.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/toggle-group/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    tooltip: {
+      name: "tooltip",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/vue/ui/tooltip/Tooltip.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/tooltip/TooltipContent.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/tooltip/TooltipProvider.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/tooltip/TooltipTrigger.vue",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/ui/tooltip/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "accordion-example": {
+      name: "accordion-example",
+      title: "Accordion",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["accordion", "example", "button", "card"],
+      files: [
+        {
+          path: "registry/bases/vue/accordion/AccordionBasic.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/accordion/AccordionExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/accordion/AccordionInCard.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/accordion/AccordionMultiple.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/accordion/AccordionWithBorders.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/accordion/AccordionWithDisabled.vue",
           type: "registry:example",
           target: "",
         },
@@ -9701,15 +12465,35 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
-    "button-default": {
-      name: "button-default",
-      title: "Button Default",
+    "alert-example": {
+      name: "alert-example",
+      title: "Alert",
       description: "",
       type: "registry:example",
-      registryDependencies: ["button"],
+      registryDependencies: ["alert", "example", "badge", "button"],
       files: [
         {
-          path: "registry/bases/vue/examples/button-default.vue",
+          path: "registry/bases/vue/alert/AlertBasic.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/alert/AlertDestructive.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/alert/AlertExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/alert/AlertWithActions.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/alert/AlertWithIcons.vue",
           type: "registry:example",
           target: "",
         },
@@ -9718,15 +12502,45 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
-    "button-destructive": {
-      name: "button-destructive",
-      title: "Button Destructive",
+    "alert-dialog-example": {
+      name: "alert-dialog-example",
+      title: "Alert Dialog",
       description: "",
       type: "registry:example",
-      registryDependencies: ["button"],
+      registryDependencies: ["alert-dialog", "button", "example", "dialog"],
       files: [
         {
-          path: "registry/bases/vue/examples/button-destructive.vue",
+          path: "registry/bases/vue/alert-dialog/AlertDialogBasic.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/alert-dialog/AlertDialogDestructive.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/alert-dialog/AlertDialogExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/alert-dialog/AlertDialogInDialog.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/alert-dialog/AlertDialogSmall.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/alert-dialog/AlertDialogSmallWithMedia.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/alert-dialog/AlertDialogWithMedia.vue",
           type: "registry:example",
           target: "",
         },
@@ -9735,15 +12549,35 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
-    "button-ghost": {
-      name: "button-ghost",
-      title: "Button Ghost",
+    "aspect-ratio-example": {
+      name: "aspect-ratio-example",
+      title: "Aspect Ratio",
       description: "",
       type: "registry:example",
-      registryDependencies: ["button"],
+      registryDependencies: ["aspect-ratio", "example"],
       files: [
         {
-          path: "registry/bases/vue/examples/button-ghost.vue",
+          path: "registry/bases/vue/aspect-ratio/AspectRatio16x9.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/aspect-ratio/AspectRatio1x1.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/aspect-ratio/AspectRatio21x9.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/aspect-ratio/AspectRatio9x16.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/aspect-ratio/AspectRatioExample.vue",
           type: "registry:example",
           target: "",
         },
@@ -9752,15 +12586,50 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
-    "button-icon": {
-      name: "button-icon",
-      title: "Button Icon",
+    "avatar-example": {
+      name: "avatar-example",
+      title: "Avatar",
       description: "",
       type: "registry:example",
-      registryDependencies: ["button"],
+      registryDependencies: ["example", "avatar", "button", "empty"],
       files: [
         {
-          path: "registry/bases/vue/examples/button-icon.vue",
+          path: "registry/bases/vue/avatar/AvatarExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/avatar/AvatarGroupExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/avatar/AvatarGroupWithCount.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/avatar/AvatarGroupWithIconCount.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/avatar/AvatarInEmpty.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/avatar/AvatarSizes.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/avatar/AvatarWithBadge.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/avatar/AvatarWithBadgeIcon.vue",
           type: "registry:example",
           target: "",
         },
@@ -9769,15 +12638,50 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
-    "button-link": {
-      name: "button-link",
-      title: "Button Link",
+    "badge-example": {
+      name: "badge-example",
+      title: "Badge",
       description: "",
       type: "registry:example",
-      registryDependencies: ["button"],
+      registryDependencies: ["badge", "example", "spinner"],
       files: [
         {
-          path: "registry/bases/vue/examples/button-link.vue",
+          path: "registry/bases/vue/badge/BadgeAsLink.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/badge/BadgeCustomColors.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/badge/BadgeExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/badge/BadgeLongText.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/badge/BadgeVariants.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/badge/BadgeWithIconLeft.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/badge/BadgeWithIconRight.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/badge/BadgeWithSpinner.vue",
           type: "registry:example",
           target: "",
         },
@@ -9786,15 +12690,35 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
-    "button-outline": {
-      name: "button-outline",
-      title: "Button Outline",
+    "breadcrumb-example": {
+      name: "breadcrumb-example",
+      title: "Breadcrumb",
       description: "",
       type: "registry:example",
-      registryDependencies: ["button"],
+      registryDependencies: [
+        "breadcrumb",
+        "example",
+        "button",
+        "dropdown-menu",
+      ],
       files: [
         {
-          path: "registry/bases/vue/examples/button-outline.vue",
+          path: "registry/bases/vue/breadcrumb/BreadcrumbBasic.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/breadcrumb/BreadcrumbExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/breadcrumb/BreadcrumbWithDropdown.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/breadcrumb/BreadcrumbWithLink.vue",
           type: "registry:example",
           target: "",
         },
@@ -9803,15 +12727,45 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
-    "button-rounded": {
-      name: "button-rounded",
-      title: "Button Rounded",
+    "button-example": {
+      name: "button-example",
+      title: "Button",
       description: "",
       type: "registry:example",
-      registryDependencies: ["button"],
+      registryDependencies: ["example", "button"],
       files: [
         {
-          path: "registry/bases/vue/examples/button-rounded.vue",
+          path: "registry/bases/vue/button/ButtonExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/button/ButtonExamples.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/button/ButtonIconLeft.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/button/ButtonIconOnly.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/button/ButtonIconRight.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/button/ButtonInvalidStates.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/button/ButtonVariantsAndSizes.vue",
           type: "registry:example",
           target: "",
         },
@@ -9820,15 +12774,111 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
-    "button-secondary": {
-      name: "button-secondary",
-      title: "Button Secondary",
+    "button-group-example": {
+      name: "button-group-example",
+      title: "Button Group",
       description: "",
       type: "registry:example",
-      registryDependencies: ["button"],
+      registryDependencies: [
+        "button",
+        "button-group",
+        "example",
+        "input-group",
+        "tooltip",
+        "field",
+        "label",
+        "dropdown-menu",
+        "input",
+        "select",
+      ],
       files: [
         {
-          path: "registry/bases/vue/examples/button-secondary.vue",
+          path: "registry/bases/vue/button-group/ButtonGroupBasic.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/button-group/ButtonGroupExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/button-group/ButtonGroupNavigation.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/button-group/ButtonGroupNested.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/button-group/ButtonGroupPagination.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/button-group/ButtonGroupPaginationSplit.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/button-group/ButtonGroupTextAlignment.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/button-group/ButtonGroupVertical.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/button-group/ButtonGroupVerticalNested.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/button-group/ButtonGroupWithDropdown.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/button-group/ButtonGroupWithFields.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/button-group/ButtonGroupWithIcons.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/button-group/ButtonGroupWithInput.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/button-group/ButtonGroupWithInputGroup.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/button-group/ButtonGroupWithLike.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/button-group/ButtonGroupWithSelect.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/button-group/ButtonGroupWithSelectAndInput.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/button-group/ButtonGroupWithText.vue",
           type: "registry:example",
           target: "",
         },
@@ -9837,15 +12887,84 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
-    "button-size": {
-      name: "button-size",
-      title: "Button Size",
+    "calendar-example": {
+      name: "calendar-example",
+      title: "Calendar",
       description: "",
       type: "registry:example",
-      registryDependencies: ["button"],
+      registryDependencies: [
+        "calendar",
+        "card",
+        "range-calendar",
+        "example",
+        "button",
+        "field",
+        "input-group",
+        "popover",
+      ],
       files: [
         {
-          path: "registry/bases/vue/examples/button-size.vue",
+          path: "registry/bases/vue/calendar/CalendarBookedDates.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/calendar/CalendarCustomDays.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/calendar/CalendarExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/calendar/CalendarMultiple.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/calendar/CalendarRange.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/calendar/CalendarRangeMultipleMonths.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/calendar/CalendarSingle.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/calendar/CalendarWeekNumbers.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/calendar/CalendarWithPresets.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/calendar/CalendarWithTime.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/calendar/DatePickerSimple.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/calendar/DatePickerWithDropdowns.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/calendar/DatePickerWithRange.vue",
           type: "registry:example",
           target: "",
         },
@@ -9854,15 +12973,2199 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
-    "button-with-icon": {
-      name: "button-with-icon",
-      title: "Button With Icon",
+    "card-example": {
+      name: "card-example",
+      title: "Card",
       description: "",
       type: "registry:example",
-      registryDependencies: ["button"],
+      registryDependencies: [
+        "button",
+        "card",
+        "example",
+        "field",
+        "input",
+        "avatar",
+      ],
       files: [
         {
-          path: "registry/bases/vue/examples/button-with-icon.vue",
+          path: "registry/bases/vue/card/CardDefault.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/card/CardExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/card/CardFooterWithBorder.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/card/CardFooterWithBorderSmall.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/card/CardHeaderWithBorder.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/card/CardHeaderWithBorderSmall.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/card/CardLogin.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/card/CardMeetingNotes.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/card/CardSmall.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/card/CardWithImage.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/card/CardWithImageSmall.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "carousel-example": {
+      name: "carousel-example",
+      title: "Carousel",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["card", "carousel", "example"],
+      files: [
+        {
+          path: "registry/bases/vue/carousel/CarouselBasic.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/carousel/CarouselExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/carousel/CarouselMultiple.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/carousel/CarouselWithGap.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "chart-example": {
+      name: "chart-example",
+      title: "Chart",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["chart", "example", "card"],
+      files: [
+        {
+          path: "registry/bases/vue/chart/ChartAreaExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/chart/ChartBarExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/chart/ChartExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/chart/ChartLineExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/chart/ChartRadialExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "checkbox-example": {
+      name: "checkbox-example",
+      title: "Checkbox",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["checkbox", "field", "example", "table"],
+      files: [
+        {
+          path: "registry/bases/vue/checkbox/CheckboxBasic.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/checkbox/CheckboxDisabled.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/checkbox/CheckboxExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/checkbox/CheckboxGroup.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/checkbox/CheckboxInTable.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/checkbox/CheckboxInvalid.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/checkbox/CheckboxWithDescription.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/checkbox/CheckboxWithTitle.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "collapsible-example": {
+      name: "collapsible-example",
+      title: "Collapsible",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "example",
+        "button",
+        "card",
+        "collapsible",
+        "tabs",
+        "field",
+        "input",
+      ],
+      files: [
+        {
+          path: "registry/bases/vue/collapsible/CollapsibleExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/collapsible/CollapsibleFileTree.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/collapsible/CollapsibleSettings.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "combobox-example": {
+      name: "combobox-example",
+      title: "Combobox",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "example",
+        "combobox",
+        "button",
+        "dialog",
+        "field",
+        "input-group",
+        "card",
+        "input",
+        "select",
+      ],
+      files: [
+        {
+          path: "registry/bases/vue/combobox/ComboboxAutoHighlight.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/combobox/ComboboxBasic.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/combobox/ComboboxDisabled.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/combobox/ComboboxExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/combobox/ComboboxInDialog.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/combobox/ComboboxInPopup.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/combobox/ComboboxInputAddon.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/combobox/ComboboxInvalid.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/combobox/ComboboxLargeList.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/combobox/ComboboxWithClear.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/combobox/ComboboxWithForm.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/combobox/ComboboxWithGroups.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/combobox/ComboboxWithGroupsAndSeparator.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/combobox/ComboboxWithOtherInputs.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "command-example": {
+      name: "command-example",
+      title: "Command",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["example", "button", "command"],
+      files: [
+        {
+          path: "registry/bases/vue/command/CommandBasic.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/command/CommandExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/command/CommandManyItems.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/command/CommandWithGroups.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/command/CommandWithShortcuts.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "context-menu-example": {
+      name: "context-menu-example",
+      title: "Context Menu",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["context-menu", "example", "button", "dialog"],
+      files: [
+        {
+          path: "registry/bases/vue/context-menu/ContextMenuBasic.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/context-menu/ContextMenuExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/context-menu/ContextMenuInDialog.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/context-menu/ContextMenuWithCheckboxes.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/context-menu/ContextMenuWithDestructive.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/context-menu/ContextMenuWithGroups.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/context-menu/ContextMenuWithIcons.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/context-menu/ContextMenuWithRadio.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/context-menu/ContextMenuWithShortcuts.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/context-menu/ContextMenuWithSides.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/context-menu/ContextMenuWithSubmenu.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "dialog-example": {
+      name: "dialog-example",
+      title: "Dialog",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "button",
+        "checkbox",
+        "dialog",
+        "field",
+        "input-group",
+        "kbd",
+        "native-select",
+        "select",
+        "switch",
+        "tabs",
+        "textarea",
+        "tooltip",
+        "example",
+        "input",
+      ],
+      files: [
+        {
+          path: "registry/bases/vue/dialog/DialogChatSettings.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/dialog/DialogExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/dialog/DialogNoCloseButton.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/dialog/DialogScrollableContent.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/dialog/DialogWithForm.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/dialog/DialogWithStickyFooter.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "drawer-example": {
+      name: "drawer-example",
+      title: "Drawer",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["example", "button", "drawer"],
+      files: [
+        {
+          path: "registry/bases/vue/drawer/DrawerExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/drawer/DrawerScrollableContent.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/drawer/DrawerWithSides.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "dropdown-menu-example": {
+      name: "dropdown-menu-example",
+      title: "Dropdown Menu",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "example",
+        "button",
+        "dropdown-menu",
+        "dialog",
+        "avatar",
+      ],
+      files: [
+        {
+          path: "registry/bases/vue/dropdown-menu/DropdownMenuBasic.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/dropdown-menu/DropdownMenuComplex.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/dropdown-menu/DropdownMenuExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/dropdown-menu/DropdownMenuInDialog.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/dropdown-menu/DropdownMenuWithAvatar.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/dropdown-menu/DropdownMenuWithCheckboxes.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/dropdown-menu/DropdownMenuWithCheckboxesIcons.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/dropdown-menu/DropdownMenuWithDestructive.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/dropdown-menu/DropdownMenuWithIcons.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/dropdown-menu/DropdownMenuWithRadio.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/dropdown-menu/DropdownMenuWithRadioIcons.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/dropdown-menu/DropdownMenuWithShortcuts.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/dropdown-menu/DropdownMenuWithSubmenu.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "empty-example": {
+      name: "empty-example",
+      title: "Empty",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "example",
+        "button",
+        "empty",
+        "input-group",
+        "kbd",
+      ],
+      files: [
+        {
+          path: "registry/bases/vue/empty/EmptyBasic.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/empty/EmptyExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/empty/EmptyInCard.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/empty/EmptyWithBorder.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/empty/EmptyWithIcon.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/empty/EmptyWithMutedBackground.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/empty/EmptyWithMutedBackgroundAlt.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "field-example": {
+      name: "field-example",
+      title: "Field",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "example",
+        "checkbox",
+        "field",
+        "badge",
+        "input",
+        "input-otp",
+        "native-select",
+        "radio-group",
+        "select",
+        "slider",
+        "switch",
+        "textarea",
+      ],
+      files: [
+        {
+          path: "registry/bases/vue/field/CheckboxFields.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/field/FieldExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/field/InputFields.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/field/InputOTPFields.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/field/NativeSelectFields.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/field/RadioFields.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/field/SelectFields.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/field/SliderFields.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/field/SwitchFields.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/field/TextareaFields.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "form-example": {
+      name: "form-example",
+      title: "Form",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "form", "input", "checkbox"],
+      files: [
+        {
+          path: "registry/bases/vue/form/FormBasic.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/form/FormExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/form/FormWithCheckbox.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "hover-card-example": {
+      name: "hover-card-example",
+      title: "Hover Card",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["example", "button", "dialog", "hover-card"],
+      files: [
+        {
+          path: "registry/bases/vue/hover-card/HoverCardExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/hover-card/HoverCardInDialog.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/hover-card/HoverCardSides.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "input-example": {
+      name: "input-example",
+      title: "Input",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "input",
+        "field",
+        "example",
+        "button",
+        "select",
+        "native-select",
+      ],
+      files: [
+        {
+          path: "registry/bases/vue/input/InputBasic.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/input/InputDisabled.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/input/InputExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/input/InputForm.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/input/InputInvalid.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/input/InputTypes.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/input/InputWithButton.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/input/InputWithDescription.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/input/InputWithLabel.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/input/InputWithNativeSelect.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/input/InputWithSelect.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "input-group-example": {
+      name: "input-group-example",
+      title: "Input Group",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["input-group", "button"],
+      files: [
+        {
+          path: "registry/bases/vue/input-group/InputGroupBasic.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/input-group/InputGroupExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/input-group/InputGroupWithButton.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/input-group/InputGroupWithTextarea.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "input-otp-example": {
+      name: "input-otp-example",
+      title: "Input Otp",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["example", "button", "card", "field", "input-otp"],
+      files: [
+        {
+          path: "registry/bases/vue/input-otp/InputOTPExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "item-example": {
+      name: "item-example",
+      title: "Item",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["item", "button"],
+      files: [
+        {
+          path: "registry/bases/vue/item/ItemBasic.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/item/ItemExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/item/ItemWithActions.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "kbd-example": {
+      name: "kbd-example",
+      title: "Kbd",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["kbd"],
+      files: [
+        {
+          path: "registry/bases/vue/kbd/KbdBasic.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/kbd/KbdExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/kbd/KbdWithGroup.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "label-example": {
+      name: "label-example",
+      title: "Label",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "example",
+        "field",
+        "input",
+        "label",
+        "checkbox",
+        "textarea",
+      ],
+      files: [
+        {
+          path: "registry/bases/vue/label/LabelDisabled.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/label/LabelExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/label/LabelWithCheckbox.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/label/LabelWithInput.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/label/LabelWithTextarea.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "menubar-example": {
+      name: "menubar-example",
+      title: "Menubar",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["menubar", "example"],
+      files: [
+        {
+          path: "registry/bases/vue/menubar/MenubarBasic.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/menubar/MenubarExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/menubar/MenubarWithCheckboxes.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/menubar/MenubarWithIcons.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/menubar/MenubarWithRadio.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/menubar/MenubarWithSubmenu.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "native-select-example": {
+      name: "native-select-example",
+      title: "Native Select",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["native-select"],
+      files: [
+        {
+          path: "registry/bases/vue/native-select/NativeSelectBasic.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/native-select/NativeSelectExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/native-select/NativeSelectWithOptGroup.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "navigation-menu-example": {
+      name: "navigation-menu-example",
+      title: "Navigation Menu",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["navigation-menu"],
+      files: [
+        {
+          path: "registry/bases/vue/navigation-menu/NavigationMenuBasic.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/navigation-menu/NavigationMenuExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "number-field-example": {
+      name: "number-field-example",
+      title: "Number Field",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["number-field", "label"],
+      files: [
+        {
+          path: "registry/bases/vue/number-field/NumberFieldBasic.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/number-field/NumberFieldDisabled.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/number-field/NumberFieldExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/number-field/NumberFieldWithLabel.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "pagination-example": {
+      name: "pagination-example",
+      title: "Pagination",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["pagination", "example", "field", "select"],
+      files: [
+        {
+          path: "registry/bases/vue/pagination/PaginationBasic.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/pagination/PaginationExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/pagination/PaginationSimple.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/pagination/PaginationWithSelect.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "pin-input-example": {
+      name: "pin-input-example",
+      title: "Pin Input",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["pin-input"],
+      files: [
+        {
+          path: "registry/bases/vue/pin-input/PinInputBasic.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/pin-input/PinInputExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/pin-input/PinInputMasked.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/pin-input/PinInputWithSeparator.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "popover-example": {
+      name: "popover-example",
+      title: "Popover",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "button",
+        "popover",
+        "example",
+        "dialog",
+        "field",
+        "input",
+      ],
+      files: [
+        {
+          path: "registry/bases/vue/popover/PopoverAlignments.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/popover/PopoverBasic.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/popover/PopoverExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/popover/PopoverInDialog.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/popover/PopoverWithForm.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "progress-example": {
+      name: "progress-example",
+      title: "Progress",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["example", "item", "progress", "slider", "field"],
+      files: [
+        {
+          path: "registry/bases/vue/progress/FileUploadList.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/progress/ProgressControlled.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/progress/ProgressExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/progress/ProgressValues.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/progress/ProgressWithLabel.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "radio-group-example": {
+      name: "radio-group-example",
+      title: "Radio Group",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["field", "radio-group", "example"],
+      files: [
+        {
+          path: "registry/bases/vue/radio-group/RadioGroupBasic.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/radio-group/RadioGroupDisabled.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/radio-group/RadioGroupExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/radio-group/RadioGroupGrid.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/radio-group/RadioGroupInvalid.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/radio-group/RadioGroupWithDescriptions.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/radio-group/RadioGroupWithFieldSet.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "range-calendar-example": {
+      name: "range-calendar-example",
+      title: "Range Calendar",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["range-calendar"],
+      files: [
+        {
+          path: "registry/bases/vue/range-calendar/RangeCalendarBasic.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/range-calendar/RangeCalendarExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/range-calendar/RangeCalendarMultipleMonths.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "resizable-example": {
+      name: "resizable-example",
+      title: "Resizable",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["example", "resizable"],
+      files: [
+        {
+          path: "registry/bases/vue/resizable/ResizableExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "scroll-area-example": {
+      name: "scroll-area-example",
+      title: "Scroll Area",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["example", "scroll-area", "separator"],
+      files: [
+        {
+          path: "registry/bases/vue/scroll-area/ScrollAreaExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/scroll-area/ScrollAreaHorizontal.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/scroll-area/ScrollAreaVertical.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "select-example": {
+      name: "select-example",
+      title: "Select",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "select",
+        "example",
+        "button",
+        "dialog",
+        "input",
+        "native-select",
+        "field",
+        "item",
+      ],
+      files: [
+        {
+          path: "registry/bases/vue/select/SelectBasic.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/select/SelectDisabled.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/select/SelectExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/select/SelectInDialog.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/select/SelectInline.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/select/SelectInvalid.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/select/SelectLargeList.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/select/SelectPlan.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/select/SelectPopper.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/select/SelectSizes.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/select/SelectWithButton.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/select/SelectWithField.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/select/SelectWithGroups.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/select/SelectWithIcons.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "separator-example": {
+      name: "separator-example",
+      title: "Separator",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["example", "separator"],
+      files: [
+        {
+          path: "registry/bases/vue/separator/SeparatorExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/separator/SeparatorHorizontal.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/separator/SeparatorInList.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/separator/SeparatorVertical.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/separator/SeparatorVerticalMenu.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "sheet-example": {
+      name: "sheet-example",
+      title: "Sheet",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["example", "button", "field", "input", "sheet"],
+      files: [
+        {
+          path: "registry/bases/vue/sheet/SheetExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/sheet/SheetWithForm.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/sheet/SheetWithSides.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "sidebar-example": {
+      name: "sidebar-example",
+      title: "Sidebar",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["sidebar"],
+      files: [
+        {
+          path: "registry/bases/vue/sidebar/SidebarBasic.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/sidebar/SidebarCollapsible.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/sidebar/SidebarExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "skeleton-example": {
+      name: "skeleton-example",
+      title: "Skeleton",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["example", "skeleton", "card"],
+      files: [
+        {
+          path: "registry/bases/vue/skeleton/SkeletonAvatar.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/skeleton/SkeletonCard.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/skeleton/SkeletonExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/skeleton/SkeletonForm.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/skeleton/SkeletonTable.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/skeleton/SkeletonText.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "slider-example": {
+      name: "slider-example",
+      title: "Slider",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["slider", "label", "example"],
+      files: [
+        {
+          path: "registry/bases/vue/slider/SliderBasic.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/slider/SliderControlled.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/slider/SliderDisabled.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/slider/SliderExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/slider/SliderMultiple.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/slider/SliderRange.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/slider/SliderVertical.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "sonner-example": {
+      name: "sonner-example",
+      title: "Sonner",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["example", "button"],
+      files: [
+        {
+          path: "registry/bases/vue/sonner/SonnerExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "spinner-example": {
+      name: "spinner-example",
+      title: "Spinner",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "example",
+        "spinner",
+        "badge",
+        "button",
+        "empty",
+        "field",
+        "input-group",
+      ],
+      files: [
+        {
+          path: "registry/bases/vue/spinner/SpinnerBasic.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/spinner/SpinnerExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/spinner/SpinnerInBadges.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/spinner/SpinnerInButtons.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/spinner/SpinnerInEmpty.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/spinner/SpinnerInInputGroup.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "stepper-example": {
+      name: "stepper-example",
+      title: "Stepper",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["stepper"],
+      files: [
+        {
+          path: "registry/bases/vue/stepper/StepperBasic.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/stepper/StepperExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/stepper/StepperVertical.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "switch-example": {
+      name: "switch-example",
+      title: "Switch",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["field", "switch", "label", "example"],
+      files: [
+        {
+          path: "registry/bases/vue/switch/SwitchBasic.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/switch/SwitchDisabled.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/switch/SwitchExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/switch/SwitchSizes.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/switch/SwitchWithDescription.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "table-example": {
+      name: "table-example",
+      title: "Table",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "table",
+        "example",
+        "button",
+        "dropdown-menu",
+        "input",
+        "select",
+      ],
+      files: [
+        {
+          path: "registry/bases/vue/table/TableBasic.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/table/TableExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/table/TableSimple.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/table/TableWithActions.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/table/TableWithBadges.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/table/TableWithFooter.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/table/TableWithInput.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/table/TableWithSelect.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "tabs-example": {
+      name: "tabs-example",
+      title: "Tabs",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "tabs",
+        "example",
+        "button",
+        "dropdown-menu",
+        "input",
+      ],
+      files: [
+        {
+          path: "registry/bases/vue/tabs/TabsBasic.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/tabs/TabsDisabled.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/tabs/TabsExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/tabs/TabsIconOnly.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/tabs/TabsLine.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/tabs/TabsLineDisabled.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/tabs/TabsLineWithContent.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/tabs/TabsMultiple.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/tabs/TabsVariantsComparison.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/tabs/TabsVertical.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/tabs/TabsWithContent.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/tabs/TabsWithDropdown.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/tabs/TabsWithIcons.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/tabs/TabsWithInputAndButton.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "tags-input-example": {
+      name: "tags-input-example",
+      title: "Tags Input",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["tags-input", "label"],
+      files: [
+        {
+          path: "registry/bases/vue/tags-input/TagsInputBasic.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/tags-input/TagsInputExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/tags-input/TagsInputWithLabel.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "textarea-example": {
+      name: "textarea-example",
+      title: "Textarea",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["textarea", "field", "example"],
+      files: [
+        {
+          path: "registry/bases/vue/textarea/TextareaBasic.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/textarea/TextareaDisabled.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/textarea/TextareaExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/textarea/TextareaInvalid.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/textarea/TextareaWithDescription.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/textarea/TextareaWithLabel.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "toggle-example": {
+      name: "toggle-example",
+      title: "Toggle",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["toggle", "example", "button"],
+      files: [
+        {
+          path: "registry/bases/vue/toggle/ToggleBasic.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/toggle/ToggleDisabled.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/toggle/ToggleExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/toggle/ToggleOutline.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/toggle/ToggleSizes.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/toggle/ToggleWithButtonIcon.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/toggle/ToggleWithButtonIconText.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/toggle/ToggleWithButtonText.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/toggle/ToggleWithIcon.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "toggle-group-example": {
+      name: "toggle-group-example",
+      title: "Toggle Group",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["toggle-group", "example", "input", "select"],
+      files: [
+        {
+          path: "registry/bases/vue/toggle-group/ToggleGroupBasic.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/toggle-group/ToggleGroupDateRange.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/toggle-group/ToggleGroupExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/toggle-group/ToggleGroupFilter.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/toggle-group/ToggleGroupOutline.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/toggle-group/ToggleGroupOutlineWithIcons.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/toggle-group/ToggleGroupSizes.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/toggle-group/ToggleGroupSort.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/toggle-group/ToggleGroupSpacing.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/toggle-group/ToggleGroupVertical.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/toggle-group/ToggleGroupVerticalOutline.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/toggle-group/ToggleGroupVerticalOutlineWithIcons.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/toggle-group/ToggleGroupVerticalWithSpacing.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/toggle-group/ToggleGroupWithIcons.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/toggle-group/ToggleGroupWithInputAndSelect.vue",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "tooltip-example": {
+      name: "tooltip-example",
+      title: "Tooltip",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["example", "button", "tooltip", "kbd"],
+      files: [
+        {
+          path: "registry/bases/vue/tooltip/TooltipBasic.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/tooltip/TooltipDisabled.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/tooltip/TooltipExample.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/tooltip/TooltipFormatted.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/tooltip/TooltipLongContent.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/tooltip/TooltipOnLink.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/tooltip/TooltipSides.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/tooltip/TooltipWithIcon.vue",
+          type: "registry:example",
+          target: "",
+        },
+        {
+          path: "registry/bases/vue/tooltip/TooltipWithKeyboard.vue",
           type: "registry:example",
           target: "",
         },
@@ -9898,6 +15201,322 @@ export const Index: Record<string, Record<string, any>> = {
     },
   },
   svelte: {
+    accordion: {
+      name: "accordion",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "registry/bases/svelte/ui/accordion/accordion-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/accordion/accordion-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/accordion/accordion-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/accordion/accordion.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/accordion/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/accordion",
+        },
+      },
+    },
+    alert: {
+      name: "alert",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "registry/bases/svelte/ui/alert/alert-action.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/alert/alert-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/alert/alert-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/alert/alert.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/alert/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/alert" },
+      },
+    },
+    "alert-dialog": {
+      name: "alert-dialog",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "utils"],
+      files: [
+        {
+          path: "registry/bases/svelte/ui/alert-dialog/alert-dialog-action.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/alert-dialog/alert-dialog-cancel.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/alert-dialog/alert-dialog-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/alert-dialog/alert-dialog-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/alert-dialog/alert-dialog-footer.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/alert-dialog/alert-dialog-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/alert-dialog/alert-dialog-media.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/alert-dialog/alert-dialog-overlay.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/alert-dialog/alert-dialog-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/alert-dialog/alert-dialog-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/alert-dialog/alert-dialog-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/alert-dialog/alert-dialog.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/alert-dialog/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/alert-dialog",
+        },
+      },
+    },
+    "aspect-ratio": {
+      name: "aspect-ratio",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/svelte/ui/aspect-ratio/aspect-ratio.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/aspect-ratio/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/aspect-ratio",
+        },
+      },
+    },
+    avatar: {
+      name: "avatar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "registry/bases/svelte/ui/avatar/avatar-badge.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/avatar/avatar-fallback.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/avatar/avatar-group-count.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/avatar/avatar-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/avatar/avatar-image.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/avatar/avatar.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/avatar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/avatar" },
+      },
+    },
+    badge: {
+      name: "badge",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "registry/bases/svelte/ui/badge/badge.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/badge/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/badge" },
+      },
+    },
+    breadcrumb: {
+      name: "breadcrumb",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "registry/bases/svelte/ui/breadcrumb/breadcrumb-ellipsis.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/breadcrumb/breadcrumb-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/breadcrumb/breadcrumb-link.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/breadcrumb/breadcrumb-list.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/breadcrumb/breadcrumb-page.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/breadcrumb/breadcrumb-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/breadcrumb/breadcrumb.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/breadcrumb/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/breadcrumb",
+        },
+      },
+    },
     button: {
       name: "button",
       title: "undefined",
@@ -9906,7 +15525,12 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["utils"],
       files: [
         {
-          path: "registry/bases/svelte/ui/button.svelte",
+          path: "registry/bases/svelte/ui/button/button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/button/index.ts",
           type: "registry:ui",
           target: "",
         },
@@ -9917,15 +15541,2910 @@ export const Index: Record<string, Record<string, any>> = {
         links: { docs: "https://force-ui.com/docs/components/svelte/button" },
       },
     },
-    "button-demo": {
-      name: "button-demo",
-      title: "Button Demo",
+    "button-group": {
+      name: "button-group",
+      title: "undefined",
       description: "",
-      type: "registry:example",
-      registryDependencies: ["button"],
+      type: "registry:ui",
+      registryDependencies: ["separator", "utils"],
       files: [
         {
-          path: "registry/bases/svelte/examples/button-demo.svelte",
+          path: "registry/bases/svelte/ui/button-group/button-group-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/button-group/button-group-text.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/button-group/button-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/button-group/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/button-group",
+        },
+      },
+    },
+    calendar: {
+      name: "calendar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "utils"],
+      files: [
+        {
+          path: "registry/bases/svelte/ui/calendar/calendar-caption.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/calendar/calendar-cell.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/calendar/calendar-day.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/calendar/calendar-grid-body.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/calendar/calendar-grid-head.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/calendar/calendar-grid-row.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/calendar/calendar-grid.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/calendar/calendar-head-cell.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/calendar/calendar-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/calendar/calendar-heading.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/calendar/calendar-month-select.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/calendar/calendar-month.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/calendar/calendar-months.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/calendar/calendar-nav.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/calendar/calendar-next-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/calendar/calendar-prev-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/calendar/calendar-year-select.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/calendar/calendar.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/calendar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/calendar" },
+      },
+    },
+    card: {
+      name: "card",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "registry/bases/svelte/ui/card/card-action.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/card/card-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/card/card-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/card/card-footer.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/card/card-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/card/card-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/card/card.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/card/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/card" },
+      },
+    },
+    carousel: {
+      name: "carousel",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "utils"],
+      files: [
+        {
+          path: "registry/bases/svelte/ui/carousel/carousel-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/carousel/carousel-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/carousel/carousel-next.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/carousel/carousel-previous.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/carousel/carousel.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/carousel/context.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/carousel/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/carousel" },
+      },
+    },
+    chart: {
+      name: "chart",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "registry/bases/svelte/ui/chart/chart-container.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/chart/chart-style.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/chart/chart-tooltip.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/chart/chart-utils.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/chart/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/chart" },
+      },
+    },
+    checkbox: {
+      name: "checkbox",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "registry/bases/svelte/ui/checkbox/checkbox.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/checkbox/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/checkbox" },
+      },
+    },
+    collapsible: {
+      name: "collapsible",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/svelte/ui/collapsible/collapsible-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/collapsible/collapsible-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/collapsible/collapsible.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/collapsible/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/collapsible",
+        },
+      },
+    },
+    command: {
+      name: "command",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["dialog", "input-group", "utils"],
+      files: [
+        {
+          path: "registry/bases/svelte/ui/command/command-dialog.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/command/command-empty.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/command/command-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/command/command-input.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/command/command-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/command/command-link-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/command/command-list.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/command/command-loading.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/command/command-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/command/command-shortcut.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/command/command.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/command/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/command" },
+      },
+    },
+    "context-menu": {
+      name: "context-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "registry/bases/svelte/ui/context-menu/context-menu-checkbox-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/context-menu/context-menu-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/context-menu/context-menu-group-heading.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/context-menu/context-menu-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/context-menu/context-menu-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/context-menu/context-menu-label.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/context-menu/context-menu-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/context-menu/context-menu-radio-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/context-menu/context-menu-radio-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/context-menu/context-menu-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/context-menu/context-menu-shortcut.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/context-menu/context-menu-sub-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/context-menu/context-menu-sub-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/context-menu/context-menu-sub.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/context-menu/context-menu-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/context-menu/context-menu.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/context-menu/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/context-menu",
+        },
+      },
+    },
+    dialog: {
+      name: "dialog",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "utils"],
+      files: [
+        {
+          path: "registry/bases/svelte/ui/dialog/dialog-close.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/dialog/dialog-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/dialog/dialog-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/dialog/dialog-footer.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/dialog/dialog-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/dialog/dialog-overlay.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/dialog/dialog-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/dialog/dialog-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/dialog/dialog-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/dialog/dialog.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/dialog/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/dialog" },
+      },
+    },
+    drawer: {
+      name: "drawer",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "registry/bases/svelte/ui/drawer/drawer-close.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/drawer/drawer-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/drawer/drawer-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/drawer/drawer-footer.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/drawer/drawer-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/drawer/drawer-nested.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/drawer/drawer-overlay.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/drawer/drawer-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/drawer/drawer-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/drawer/drawer-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/drawer/drawer.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/drawer/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/drawer" },
+      },
+    },
+    "dropdown-menu": {
+      name: "dropdown-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "registry/bases/svelte/ui/dropdown-menu/dropdown-menu-checkbox-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/dropdown-menu/dropdown-menu-checkbox-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/dropdown-menu/dropdown-menu-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/dropdown-menu/dropdown-menu-group-heading.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/dropdown-menu/dropdown-menu-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/dropdown-menu/dropdown-menu-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/dropdown-menu/dropdown-menu-label.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/dropdown-menu/dropdown-menu-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/dropdown-menu/dropdown-menu-radio-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/dropdown-menu/dropdown-menu-radio-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/dropdown-menu/dropdown-menu-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/dropdown-menu/dropdown-menu-shortcut.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/dropdown-menu/dropdown-menu-sub-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/dropdown-menu/dropdown-menu-sub-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/dropdown-menu/dropdown-menu-sub.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/dropdown-menu/dropdown-menu-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/dropdown-menu/dropdown-menu.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/dropdown-menu/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/dropdown-menu",
+        },
+      },
+    },
+    empty: {
+      name: "empty",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "registry/bases/svelte/ui/empty/empty-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/empty/empty-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/empty/empty-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/empty/empty-media.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/empty/empty-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/empty/empty.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/empty/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/empty" },
+      },
+    },
+    field: {
+      name: "field",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["label", "separator", "utils"],
+      files: [
+        {
+          path: "registry/bases/svelte/ui/field/field-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/field/field-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/field/field-error.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/field/field-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/field/field-label.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/field/field-legend.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/field/field-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/field/field-set.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/field/field-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/field/field.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/field/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/field" },
+      },
+    },
+    "hover-card": {
+      name: "hover-card",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "registry/bases/svelte/ui/hover-card/hover-card-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/hover-card/hover-card-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/hover-card/hover-card-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/hover-card/hover-card.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/hover-card/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/hover-card",
+        },
+      },
+    },
+    input: {
+      name: "input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "registry/bases/svelte/ui/input/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/input/input.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/bases/svelte/ui/input/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "input"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/input" },
+      },
+    },
+    "input-group": {
+      name: "input-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "input", "textarea", "utils"],
+      files: [
+        {
+          path: "registry/bases/svelte/ui/input-group/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/input-group/input-group-addon.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/input-group/input-group-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/input-group/input-group-input.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/input-group/input-group-text.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/input-group/input-group-textarea.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/input-group/input-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/bases/svelte/ui/input-group/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "input-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/input-group",
+        },
+      },
+    },
+    "input-otp": {
+      name: "input-otp",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "registry/bases/svelte/ui/input-otp/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/input-otp/input-otp-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/input-otp/input-otp-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/input-otp/input-otp-slot.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/input-otp/input-otp.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/bases/svelte/ui/input-otp/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "input-otp"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/input-otp",
+        },
+      },
+    },
+    item: {
+      name: "item",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["separator", "utils"],
+      files: [
+        {
+          path: "registry/bases/svelte/ui/item/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/item/item-actions.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/item/item-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/item/item-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/item/item-footer.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/item/item-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/item/item-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/item/item-media.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/item/item-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/item/item-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/item/item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/bases/svelte/ui/item/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "item"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/item" },
+      },
+    },
+    kbd: {
+      name: "kbd",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "registry/bases/svelte/ui/kbd/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/kbd/kbd-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/kbd/kbd.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/bases/svelte/ui/kbd/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "kbd"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/kbd" },
+      },
+    },
+    label: {
+      name: "label",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "registry/bases/svelte/ui/label/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/label/label.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/bases/svelte/ui/label/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "label"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/label" },
+      },
+    },
+    menubar: {
+      name: "menubar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "registry/bases/svelte/ui/menubar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/menubar/menubar-checkbox-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/menubar/menubar-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/menubar/menubar-group-heading.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/menubar/menubar-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/menubar/menubar-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/menubar/menubar-label.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/menubar/menubar-menu.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/menubar/menubar-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/menubar/menubar-radio-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/menubar/menubar-radio-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/menubar/menubar-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/menubar/menubar-shortcut.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/menubar/menubar-sub-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/menubar/menubar-sub-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/menubar/menubar-sub.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/menubar/menubar-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/menubar/menubar.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/bases/svelte/ui/menubar/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "menubar"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/menubar" },
+      },
+    },
+    "native-select": {
+      name: "native-select",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "registry/bases/svelte/ui/native-select/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/native-select/native-select-opt-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/native-select/native-select-option.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/native-select/native-select.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import(
+          "@/registry/bases/svelte/ui/native-select/index"
+        )
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "native-select"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/native-select",
+        },
+      },
+    },
+    "navigation-menu": {
+      name: "navigation-menu",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "registry/bases/svelte/ui/navigation-menu/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/navigation-menu/navigation-menu-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/navigation-menu/navigation-menu-indicator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/navigation-menu/navigation-menu-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/navigation-menu/navigation-menu-link.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/navigation-menu/navigation-menu-list.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/navigation-menu/navigation-menu-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/navigation-menu/navigation-menu-viewport.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/navigation-menu/navigation-menu.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import(
+          "@/registry/bases/svelte/ui/navigation-menu/index"
+        )
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "navigation-menu"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/navigation-menu",
+        },
+      },
+    },
+    pagination: {
+      name: "pagination",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "utils"],
+      files: [
+        {
+          path: "registry/bases/svelte/ui/pagination/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/pagination/pagination-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/pagination/pagination-ellipsis.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/pagination/pagination-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/pagination/pagination-link.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/pagination/pagination-next-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/pagination/pagination-next.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/pagination/pagination-prev-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/pagination/pagination-previous.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/pagination/pagination.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/bases/svelte/ui/pagination/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "pagination"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/pagination",
+        },
+      },
+    },
+    popover: {
+      name: "popover",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "registry/bases/svelte/ui/popover/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/popover/popover-close.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/popover/popover-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/popover/popover-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/popover/popover-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/popover/popover-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/popover/popover-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/popover/popover-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/popover/popover.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/bases/svelte/ui/popover/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "popover"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/popover" },
+      },
+    },
+    progress: {
+      name: "progress",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "registry/bases/svelte/ui/progress/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/progress/progress.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/bases/svelte/ui/progress/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "progress"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/progress" },
+      },
+    },
+    "radio-group": {
+      name: "radio-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "registry/bases/svelte/ui/radio-group/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/radio-group/radio-group-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/radio-group/radio-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/bases/svelte/ui/radio-group/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "radio-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/radio-group",
+        },
+      },
+    },
+    "range-calendar": {
+      name: "range-calendar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "utils"],
+      files: [
+        {
+          path: "registry/bases/svelte/ui/range-calendar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/range-calendar/range-calendar-caption.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/range-calendar/range-calendar-cell.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/range-calendar/range-calendar-day.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/range-calendar/range-calendar-grid-body.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/range-calendar/range-calendar-grid-head.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/range-calendar/range-calendar-grid-row.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/range-calendar/range-calendar-grid.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/range-calendar/range-calendar-head-cell.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/range-calendar/range-calendar-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/range-calendar/range-calendar-heading.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/range-calendar/range-calendar-month-select.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/range-calendar/range-calendar-month.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/range-calendar/range-calendar-months.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/range-calendar/range-calendar-nav.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/range-calendar/range-calendar-next-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/range-calendar/range-calendar-prev-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/range-calendar/range-calendar-year-select.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/range-calendar/range-calendar.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import(
+          "@/registry/bases/svelte/ui/range-calendar/index"
+        )
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "range-calendar"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/range-calendar",
+        },
+      },
+    },
+    resizable: {
+      name: "resizable",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "registry/bases/svelte/ui/resizable/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/resizable/resizable-handle.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/resizable/resizable-pane-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/bases/svelte/ui/resizable/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "resizable"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/resizable",
+        },
+      },
+    },
+    "scroll-area": {
+      name: "scroll-area",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "registry/bases/svelte/ui/scroll-area/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/scroll-area/scroll-area-scrollbar.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/scroll-area/scroll-area.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/bases/svelte/ui/scroll-area/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "scroll-area"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/scroll-area",
+        },
+      },
+    },
+    select: {
+      name: "select",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["separator", "utils"],
+      files: [
+        {
+          path: "registry/bases/svelte/ui/select/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/select/select-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/select/select-group-heading.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/select/select-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/select/select-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/select/select-label.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/select/select-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/select/select-scroll-down-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/select/select-scroll-up-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/select/select-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/select/select-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/select/select.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/bases/svelte/ui/select/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "select"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/select" },
+      },
+    },
+    separator: {
+      name: "separator",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "registry/bases/svelte/ui/separator/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/separator/separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/bases/svelte/ui/separator/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "separator"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/separator",
+        },
+      },
+    },
+    sheet: {
+      name: "sheet",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "utils"],
+      files: [
+        {
+          path: "registry/bases/svelte/ui/sheet/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/sheet/sheet-close.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/sheet/sheet-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/sheet/sheet-description.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/sheet/sheet-footer.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/sheet/sheet-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/sheet/sheet-overlay.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/sheet/sheet-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/sheet/sheet-title.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/sheet/sheet-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/sheet/sheet.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/bases/svelte/ui/sheet/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "sheet"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/sheet" },
+      },
+    },
+    sidebar: {
+      name: "sidebar",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: [
+        "button",
+        "input",
+        "separator",
+        "sheet",
+        "skeleton",
+        "tooltip",
+        "utils",
+      ],
+      files: [
+        {
+          path: "registry/bases/svelte/ui/sidebar/constants.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/sidebar/context.svelte.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/sidebar/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/sidebar/sidebar-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/sidebar/sidebar-footer.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/sidebar/sidebar-group-action.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/sidebar/sidebar-group-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/sidebar/sidebar-group-label.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/sidebar/sidebar-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/sidebar/sidebar-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/sidebar/sidebar-input.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/sidebar/sidebar-inset.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/sidebar/sidebar-menu-action.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/sidebar/sidebar-menu-badge.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/sidebar/sidebar-menu-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/sidebar/sidebar-menu-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/sidebar/sidebar-menu-skeleton.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/sidebar/sidebar-menu-sub-button.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/sidebar/sidebar-menu-sub-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/sidebar/sidebar-menu-sub.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/sidebar/sidebar-menu.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/sidebar/sidebar-provider.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/sidebar/sidebar-rail.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/sidebar/sidebar-separator.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/sidebar/sidebar-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/sidebar/sidebar.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/bases/svelte/ui/sidebar/constants")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "sidebar"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/sidebar" },
+      },
+    },
+    skeleton: {
+      name: "skeleton",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "registry/bases/svelte/ui/skeleton/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/skeleton/skeleton.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/bases/svelte/ui/skeleton/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "skeleton"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/skeleton" },
+      },
+    },
+    slider: {
+      name: "slider",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "registry/bases/svelte/ui/slider/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/slider/slider.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/bases/svelte/ui/slider/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "slider"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/slider" },
+      },
+    },
+    sonner: {
+      name: "sonner",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/svelte/ui/sonner/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/sonner/sonner.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/bases/svelte/ui/sonner/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "sonner"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/sonner" },
+      },
+    },
+    spinner: {
+      name: "spinner",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "registry/bases/svelte/ui/spinner/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/spinner/spinner.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/bases/svelte/ui/spinner/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "spinner"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/spinner" },
+      },
+    },
+    switch: {
+      name: "switch",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "registry/bases/svelte/ui/switch/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/switch/switch.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/bases/svelte/ui/switch/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "switch"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/switch" },
+      },
+    },
+    table: {
+      name: "table",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "registry/bases/svelte/ui/table/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/table/table-body.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/table/table-caption.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/table/table-cell.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/table/table-footer.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/table/table-head.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/table/table-header.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/table/table-row.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/table/table.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/bases/svelte/ui/table/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "table"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/table" },
+      },
+    },
+    tabs: {
+      name: "tabs",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "registry/bases/svelte/ui/tabs/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/tabs/tabs-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/tabs/tabs-list.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/tabs/tabs-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/tabs/tabs.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/bases/svelte/ui/tabs/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "tabs"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/tabs" },
+      },
+    },
+    textarea: {
+      name: "textarea",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "registry/bases/svelte/ui/textarea/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/textarea/textarea.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/bases/svelte/ui/textarea/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "textarea"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/textarea" },
+      },
+    },
+    toggle: {
+      name: "toggle",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "registry/bases/svelte/ui/toggle/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/toggle/toggle.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/bases/svelte/ui/toggle/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "toggle"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/toggle" },
+      },
+    },
+    "toggle-group": {
+      name: "toggle-group",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["toggle", "utils"],
+      files: [
+        {
+          path: "registry/bases/svelte/ui/toggle-group/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/toggle-group/toggle-group-item.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/toggle-group/toggle-group.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import(
+          "@/registry/bases/svelte/ui/toggle-group/index"
+        )
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "toggle-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://force-ui.com/docs/components/svelte/toggle-group",
+        },
+      },
+    },
+    tooltip: {
+      name: "tooltip",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "registry/bases/svelte/ui/tooltip/index.ts",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/tooltip/tooltip-content.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/tooltip/tooltip-portal.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/tooltip/tooltip-provider.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/tooltip/tooltip-trigger.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+        {
+          path: "registry/bases/svelte/ui/tooltip/tooltip.svelte",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/bases/svelte/ui/tooltip/index")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "tooltip"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {
+        links: { docs: "https://force-ui.com/docs/components/svelte/tooltip" },
+      },
+    },
+    "accordion-demo": {
+      name: "accordion-demo",
+      title: "Accordion Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["accordion"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/accordion-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "alert-demo": {
+      name: "alert-demo",
+      title: "Alert Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["alert"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/alert-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "alert-destructive": {
+      name: "alert-destructive",
+      title: "Alert Destructive",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["alert"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/alert-destructive.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "alert-dialog-demo": {
+      name: "alert-dialog-demo",
+      title: "Alert Dialog Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["alert-dialog", "button"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/alert-dialog-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "aspect-ratio-demo": {
+      name: "aspect-ratio-demo",
+      title: "Aspect Ratio Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["aspect-ratio"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/aspect-ratio-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "avatar-demo": {
+      name: "avatar-demo",
+      title: "Avatar Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["avatar"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/avatar-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "badge-demo": {
+      name: "badge-demo",
+      title: "Badge Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["badge"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/badge-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "badge-destructive": {
+      name: "badge-destructive",
+      title: "Badge Destructive",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["badge"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/badge-destructive.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "badge-outline": {
+      name: "badge-outline",
+      title: "Badge Outline",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["badge"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/badge-outline.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "badge-secondary": {
+      name: "badge-secondary",
+      title: "Badge Secondary",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["badge"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/badge-secondary.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "breadcrumb-demo": {
+      name: "breadcrumb-demo",
+      title: "Breadcrumb Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["breadcrumb", "dropdown-menu"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/breadcrumb-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "breadcrumb-dropdown": {
+      name: "breadcrumb-dropdown",
+      title: "Breadcrumb Dropdown",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["breadcrumb", "dropdown-menu"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/breadcrumb-dropdown.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "breadcrumb-ellipsis": {
+      name: "breadcrumb-ellipsis",
+      title: "Breadcrumb Ellipsis",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["breadcrumb"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/breadcrumb-ellipsis.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "breadcrumb-link": {
+      name: "breadcrumb-link",
+      title: "Breadcrumb Link",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["breadcrumb"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/breadcrumb-link.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "breadcrumb-responsive": {
+      name: "breadcrumb-responsive",
+      title: "Breadcrumb Responsive",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["breadcrumb", "button", "drawer", "dropdown-menu"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/breadcrumb-responsive.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "breadcrumb-separator": {
+      name: "breadcrumb-separator",
+      title: "Breadcrumb Separator",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["breadcrumb"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/breadcrumb-separator.svelte",
           type: "registry:example",
           target: "",
         },
@@ -9943,6 +18462,23 @@ export const Index: Record<string, Record<string, any>> = {
       files: [
         {
           path: "registry/bases/svelte/examples/button-default.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "button-demo": {
+      name: "button-demo",
+      title: "Button Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/button-demo.svelte",
           type: "registry:example",
           target: "",
         },
@@ -9985,6 +18521,204 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "button-group-demo": {
+      name: "button-group-demo",
+      title: "Button Group Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "button-group", "dropdown-menu"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/button-group-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "button-group-dropdown-menu-demo": {
+      name: "button-group-dropdown-menu-demo",
+      title: "Button Group Dropdown Menu Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "button-group", "dropdown-menu"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/button-group-dropdown-menu-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "button-group-input-demo": {
+      name: "button-group-input-demo",
+      title: "Button Group Input Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "button-group", "input"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/button-group-input-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "button-group-input-group-demo": {
+      name: "button-group-input-group-demo",
+      title: "Button Group Input Group Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "button",
+        "button-group",
+        "input-group",
+        "tooltip",
+      ],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/button-group-input-group-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "button-group-nested-demo": {
+      name: "button-group-nested-demo",
+      title: "Button Group Nested Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "button-group"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/button-group-nested-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "button-group-orientation-demo": {
+      name: "button-group-orientation-demo",
+      title: "Button Group Orientation Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "button-group"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/button-group-orientation-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "button-group-popover-demo": {
+      name: "button-group-popover-demo",
+      title: "Button Group Popover Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "button",
+        "button-group",
+        "popover",
+        "separator",
+        "textarea",
+      ],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/button-group-popover-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "button-group-select-demo": {
+      name: "button-group-select-demo",
+      title: "Button Group Select Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "button-group", "input", "select"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/button-group-select-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "button-group-separator-demo": {
+      name: "button-group-separator-demo",
+      title: "Button Group Separator Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "button-group"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/button-group-separator-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "button-group-size-demo": {
+      name: "button-group-size-demo",
+      title: "Button Group Size Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "button-group"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/button-group-size-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "button-group-split-demo": {
+      name: "button-group-split-demo",
+      title: "Button Group Split Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "button-group"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/button-group-split-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
     "button-icon": {
       name: "button-icon",
       title: "Button Icon",
@@ -10011,6 +18745,23 @@ export const Index: Record<string, Record<string, any>> = {
       files: [
         {
           path: "registry/bases/svelte/examples/button-link.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "button-loading": {
+      name: "button-loading",
+      title: "Button Loading",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "spinner"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/button-loading.svelte",
           type: "registry:example",
           target: "",
         },
@@ -10096,6 +18847,3251 @@ export const Index: Record<string, Record<string, any>> = {
       files: [
         {
           path: "registry/bases/svelte/examples/button-with-icon.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "calendar-demo": {
+      name: "calendar-demo",
+      title: "Calendar Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["calendar"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/calendar-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "calendar-with-selects": {
+      name: "calendar-with-selects",
+      title: "Calendar With Selects",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["calendar", "select", "utils"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/calendar-with-selects.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "card-demo": {
+      name: "card-demo",
+      title: "Card Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "card", "input", "label"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/card-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "card-with-form": {
+      name: "card-with-form",
+      title: "Card With Form",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "card", "input", "label", "select"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/card-with-form.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "carousel-api": {
+      name: "carousel-api",
+      title: "Carousel Api",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["card", "carousel"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/carousel-api.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "carousel-demo": {
+      name: "carousel-demo",
+      title: "Carousel Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["card", "carousel"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/carousel-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "carousel-orientation": {
+      name: "carousel-orientation",
+      title: "Carousel Orientation",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["card", "carousel"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/carousel-orientation.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "carousel-plugin": {
+      name: "carousel-plugin",
+      title: "Carousel Plugin",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["card", "carousel"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/carousel-plugin.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "carousel-size": {
+      name: "carousel-size",
+      title: "Carousel Size",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["card", "carousel"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/carousel-size.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "carousel-spacing": {
+      name: "carousel-spacing",
+      title: "Carousel Spacing",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["card", "carousel"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/carousel-spacing.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "chart-bar-axis-tick-demo": {
+      name: "chart-bar-axis-tick-demo",
+      title: "Chart Bar Axis Tick Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["chart"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/chart-bar-axis-tick-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "chart-bar-demo": {
+      name: "chart-bar-demo",
+      title: "Chart Bar Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["chart"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/chart-bar-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "chart-bar-legend-demo": {
+      name: "chart-bar-legend-demo",
+      title: "Chart Bar Legend Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["chart"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/chart-bar-legend-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "chart-bar-tooltip-demo": {
+      name: "chart-bar-tooltip-demo",
+      title: "Chart Bar Tooltip Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["chart"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/chart-bar-tooltip-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "chart-tooltip-demo": {
+      name: "chart-tooltip-demo",
+      title: "Chart Tooltip Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/svelte/examples/chart-tooltip-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "checkbox-demo": {
+      name: "checkbox-demo",
+      title: "Checkbox Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["checkbox", "label"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/checkbox-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "checkbox-disabled": {
+      name: "checkbox-disabled",
+      title: "Checkbox Disabled",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["checkbox", "label"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/checkbox-disabled.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "checkbox-form-multiple": {
+      name: "checkbox-form-multiple",
+      title: "Checkbox Form Multiple",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["checkbox", "form"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/checkbox-form-multiple.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "checkbox-form-single": {
+      name: "checkbox-form-single",
+      title: "Checkbox Form Single",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["checkbox", "form"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/checkbox-form-single.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "checkbox-with-text": {
+      name: "checkbox-with-text",
+      title: "Checkbox With Text",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["checkbox", "label"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/checkbox-with-text.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "collapsible-demo": {
+      name: "collapsible-demo",
+      title: "Collapsible Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "collapsible"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/collapsible-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "combobox-demo": {
+      name: "combobox-demo",
+      title: "Combobox Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "command", "popover", "utils"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/combobox-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "combobox-dropdown-menu": {
+      name: "combobox-dropdown-menu",
+      title: "Combobox Dropdown Menu",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "command", "dropdown-menu"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/combobox-dropdown-menu.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "combobox-form": {
+      name: "combobox-form",
+      title: "Combobox Form",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "command", "form", "popover", "utils"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/combobox-form.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "combobox-popover": {
+      name: "combobox-popover",
+      title: "Combobox Popover",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "command", "popover", "utils"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/combobox-popover.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "combobox-responsive": {
+      name: "combobox-responsive",
+      title: "Combobox Responsive",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "command", "drawer", "popover"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/combobox-responsive.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "command-demo": {
+      name: "command-demo",
+      title: "Command Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["command"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/command-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "command-dialog": {
+      name: "command-dialog",
+      title: "Command Dialog",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["command"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/command-dialog.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "context-menu-demo": {
+      name: "context-menu-demo",
+      title: "Context Menu Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["context-menu"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/context-menu-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "dark-mode-dropdown-menu": {
+      name: "dark-mode-dropdown-menu",
+      title: "Dark Mode Dropdown Menu",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "dropdown-menu"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/dark-mode-dropdown-menu.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "dark-mode-light-switch": {
+      name: "dark-mode-light-switch",
+      title: "Dark Mode Light Switch",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/dark-mode-light-switch.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "data-table-demo": {
+      name: "data-table-demo",
+      title: "Data Table Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "button",
+        "data-table",
+        "dropdown-menu",
+        "input",
+        "table",
+      ],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/data-table-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "date-picker-demo": {
+      name: "date-picker-demo",
+      title: "Date Picker Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "calendar", "popover", "utils"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/date-picker-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "date-picker-form": {
+      name: "date-picker-form",
+      title: "Date Picker Form",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "calendar", "form", "popover", "utils"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/date-picker-form.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "date-picker-with-presets": {
+      name: "date-picker-with-presets",
+      title: "Date Picker With Presets",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "button",
+        "calendar",
+        "popover",
+        "select",
+        "utils",
+      ],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/date-picker-with-presets.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "date-picker-with-range": {
+      name: "date-picker-with-range",
+      title: "Date Picker With Range",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "popover", "range-calendar", "utils"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/date-picker-with-range.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "dialog-close-button": {
+      name: "dialog-close-button",
+      title: "Dialog Close Button",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "dialog", "input", "label"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/dialog-close-button.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "dialog-demo": {
+      name: "dialog-demo",
+      title: "Dialog Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "dialog", "input", "label"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/dialog-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "drawer-demo": {
+      name: "drawer-demo",
+      title: "Drawer Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "drawer"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/drawer-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "drawer-dialog": {
+      name: "drawer-dialog",
+      title: "Drawer Dialog",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "dialog", "drawer", "input", "label"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/drawer-dialog.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "dropdown-menu-checkboxes": {
+      name: "dropdown-menu-checkboxes",
+      title: "Dropdown Menu Checkboxes",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "dropdown-menu"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/dropdown-menu-checkboxes.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "dropdown-menu-demo": {
+      name: "dropdown-menu-demo",
+      title: "Dropdown Menu Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "dropdown-menu"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/dropdown-menu-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "dropdown-menu-dialog": {
+      name: "dropdown-menu-dialog",
+      title: "Dropdown Menu Dialog",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "button",
+        "dialog",
+        "dropdown-menu",
+        "field",
+        "input",
+        "label",
+        "textarea",
+      ],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/dropdown-menu-dialog.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "dropdown-menu-radio-group": {
+      name: "dropdown-menu-radio-group",
+      title: "Dropdown Menu Radio Group",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "dropdown-menu"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/dropdown-menu-radio-group.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "empty-avatar-demo": {
+      name: "empty-avatar-demo",
+      title: "Empty Avatar Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["avatar", "button", "empty"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/empty-avatar-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "empty-avatar-group-demo": {
+      name: "empty-avatar-group-demo",
+      title: "Empty Avatar Group Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["avatar", "button", "empty"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/empty-avatar-group-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "empty-background-demo": {
+      name: "empty-background-demo",
+      title: "Empty Background Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "empty"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/empty-background-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "empty-demo": {
+      name: "empty-demo",
+      title: "Empty Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "empty"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/empty-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "empty-input-group-demo": {
+      name: "empty-input-group-demo",
+      title: "Empty Input Group Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["empty", "input-group", "kbd"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/empty-input-group-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "empty-outline-demo": {
+      name: "empty-outline-demo",
+      title: "Empty Outline Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "empty"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/empty-outline-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "field-checkbox-demo": {
+      name: "field-checkbox-demo",
+      title: "Field Checkbox Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["checkbox", "field"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/field-checkbox-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "field-checkbox": {
+      name: "field-checkbox",
+      title: "Field Checkbox",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["checkbox", "field"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/field-checkbox.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "field-choice-card": {
+      name: "field-choice-card",
+      title: "Field Choice Card",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["field", "radio-group"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/field-choice-card.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "field-demo": {
+      name: "field-demo",
+      title: "Field Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "button",
+        "checkbox",
+        "field",
+        "input",
+        "select",
+        "textarea",
+      ],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/field-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "field-field-group-demo": {
+      name: "field-field-group-demo",
+      title: "Field Field Group Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["checkbox", "field"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/field-field-group-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "field-field-set-demo": {
+      name: "field-field-set-demo",
+      title: "Field Field Set Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["field", "input"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/field-field-set-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "field-input-demo": {
+      name: "field-input-demo",
+      title: "Field Input Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["field", "input"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/field-input-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "field-input": {
+      name: "field-input",
+      title: "Field Input",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["field", "input"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/field-input.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "field-radio-demo": {
+      name: "field-radio-demo",
+      title: "Field Radio Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["field", "radio-group"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/field-radio-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "field-radio": {
+      name: "field-radio",
+      title: "Field Radio",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["field", "radio-group"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/field-radio.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "field-responsive-layout-demo": {
+      name: "field-responsive-layout-demo",
+      title: "Field Responsive Layout Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "field", "input", "textarea"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/field-responsive-layout-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "field-select-demo": {
+      name: "field-select-demo",
+      title: "Field Select Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["field", "select"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/field-select-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "field-select": {
+      name: "field-select",
+      title: "Field Select",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["field", "select"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/field-select.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "field-slider-demo": {
+      name: "field-slider-demo",
+      title: "Field Slider Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["field", "slider"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/field-slider-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "field-slider": {
+      name: "field-slider",
+      title: "Field Slider",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["field", "slider"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/field-slider.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "field-switch-demo": {
+      name: "field-switch-demo",
+      title: "Field Switch Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["field", "switch"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/field-switch-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "field-switch": {
+      name: "field-switch",
+      title: "Field Switch",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["field", "switch"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/field-switch.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "field-textarea-demo": {
+      name: "field-textarea-demo",
+      title: "Field Textarea Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["field", "textarea"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/field-textarea-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "field-textarea": {
+      name: "field-textarea",
+      title: "Field Textarea",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["field", "textarea"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/field-textarea.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "form-demo": {
+      name: "form-demo",
+      title: "Form Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["form", "input"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/form-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "hover-card-demo": {
+      name: "hover-card-demo",
+      title: "Hover Card Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["avatar", "hover-card"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/hover-card-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "input-demo": {
+      name: "input-demo",
+      title: "Input Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["input"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/input-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "input-disabled": {
+      name: "input-disabled",
+      title: "Input Disabled",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["input"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/input-disabled.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "input-file": {
+      name: "input-file",
+      title: "Input File",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["input", "label"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/input-file.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "input-group-button-demo": {
+      name: "input-group-button-demo",
+      title: "Input Group Button Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["input-group", "popover"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/input-group-button-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "input-group-button-group-demo": {
+      name: "input-group-button-group-demo",
+      title: "Input Group Button Group Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button-group", "input-group", "label"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/input-group-button-group-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "input-group-custom-input-demo": {
+      name: "input-group-custom-input-demo",
+      title: "Input Group Custom Input Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["input-group"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/input-group-custom-input-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "input-group-demo": {
+      name: "input-group-demo",
+      title: "Input Group Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "dropdown-menu",
+        "input-group",
+        "separator",
+        "tooltip",
+      ],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/input-group-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "input-group-dropdown-demo": {
+      name: "input-group-dropdown-demo",
+      title: "Input Group Dropdown Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["dropdown-menu", "input-group"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/input-group-dropdown-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "input-group-icon-demo": {
+      name: "input-group-icon-demo",
+      title: "Input Group Icon Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["input-group"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/input-group-icon-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "input-group-label-demo": {
+      name: "input-group-label-demo",
+      title: "Input Group Label Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["input-group", "label", "tooltip"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/input-group-label-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "input-group-spinner-demo": {
+      name: "input-group-spinner-demo",
+      title: "Input Group Spinner Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["input-group", "spinner"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/input-group-spinner-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "input-group-text-demo": {
+      name: "input-group-text-demo",
+      title: "Input Group Text Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["input-group"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/input-group-text-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "input-group-textarea-demo": {
+      name: "input-group-textarea-demo",
+      title: "Input Group Textarea Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["input-group"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/input-group-textarea-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "input-group-tooltip-demo": {
+      name: "input-group-tooltip-demo",
+      title: "Input Group Tooltip Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["input-group", "tooltip"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/input-group-tooltip-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "input-invalid": {
+      name: "input-invalid",
+      title: "Input Invalid",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["input"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/input-invalid.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "input-otp-controlled": {
+      name: "input-otp-controlled",
+      title: "Input Otp Controlled",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["input-otp"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/input-otp-controlled.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "input-otp-demo": {
+      name: "input-otp-demo",
+      title: "Input Otp Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["input-otp"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/input-otp-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "input-otp-form": {
+      name: "input-otp-form",
+      title: "Input Otp Form",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["form", "input-otp"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/input-otp-form.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "input-otp-invalid": {
+      name: "input-otp-invalid",
+      title: "Input Otp Invalid",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["input-otp"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/input-otp-invalid.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "input-otp-pattern": {
+      name: "input-otp-pattern",
+      title: "Input Otp Pattern",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["input-otp"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/input-otp-pattern.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "input-otp-separator": {
+      name: "input-otp-separator",
+      title: "Input Otp Separator",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["input-otp"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/input-otp-separator.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "input-with-button": {
+      name: "input-with-button",
+      title: "Input With Button",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "input"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/input-with-button.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "input-with-label": {
+      name: "input-with-label",
+      title: "Input With Label",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["input", "label"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/input-with-label.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "input-with-text": {
+      name: "input-with-text",
+      title: "Input With Text",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["input", "label"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/input-with-text.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "item-avatar-demo": {
+      name: "item-avatar-demo",
+      title: "Item Avatar Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["avatar", "button", "item"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/item-avatar-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "item-demo": {
+      name: "item-demo",
+      title: "Item Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "item"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/item-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "item-dropdown-demo": {
+      name: "item-dropdown-demo",
+      title: "Item Dropdown Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["avatar", "button", "dropdown-menu", "item"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/item-dropdown-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "item-group-demo": {
+      name: "item-group-demo",
+      title: "Item Group Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["avatar", "button", "item"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/item-group-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "item-header-demo": {
+      name: "item-header-demo",
+      title: "Item Header Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["item"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/item-header-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "item-icon-demo": {
+      name: "item-icon-demo",
+      title: "Item Icon Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "item"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/item-icon-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "item-image-demo": {
+      name: "item-image-demo",
+      title: "Item Image Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["item"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/item-image-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "item-link-demo": {
+      name: "item-link-demo",
+      title: "Item Link Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["item"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/item-link-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "item-size-demo": {
+      name: "item-size-demo",
+      title: "Item Size Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "item"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/item-size-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "item-variants-demo": {
+      name: "item-variants-demo",
+      title: "Item Variants Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "item"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/item-variants-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "kbd-button-demo": {
+      name: "kbd-button-demo",
+      title: "Kbd Button Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "kbd"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/kbd-button-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "kbd-demo": {
+      name: "kbd-demo",
+      title: "Kbd Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["kbd"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/kbd-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "kbd-group-demo": {
+      name: "kbd-group-demo",
+      title: "Kbd Group Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["kbd"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/kbd-group-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "kbd-input-group-demo": {
+      name: "kbd-input-group-demo",
+      title: "Kbd Input Group Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["input-group", "kbd"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/kbd-input-group-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "kbd-tooltip-demo": {
+      name: "kbd-tooltip-demo",
+      title: "Kbd Tooltip Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "button-group", "kbd", "tooltip"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/kbd-tooltip-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "label-demo": {
+      name: "label-demo",
+      title: "Label Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["checkbox", "label"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/label-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "menubar-demo": {
+      name: "menubar-demo",
+      title: "Menubar Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["menubar"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/menubar-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "native-select-demo": {
+      name: "native-select-demo",
+      title: "Native Select Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["native-select"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/native-select-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "native-select-disabled": {
+      name: "native-select-disabled",
+      title: "Native Select Disabled",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["native-select"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/native-select-disabled.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "native-select-groups": {
+      name: "native-select-groups",
+      title: "Native Select Groups",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["native-select"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/native-select-groups.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "native-select-invalid": {
+      name: "native-select-invalid",
+      title: "Native Select Invalid",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["native-select"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/native-select-invalid.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "navigation-menu-demo": {
+      name: "navigation-menu-demo",
+      title: "Navigation Menu Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["navigation-menu", "utils"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/navigation-menu-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "pagination-demo": {
+      name: "pagination-demo",
+      title: "Pagination Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["pagination"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/pagination-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "popover-demo": {
+      name: "popover-demo",
+      title: "Popover Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "input", "label", "popover"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/popover-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "progress-demo": {
+      name: "progress-demo",
+      title: "Progress Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["progress"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/progress-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "radio-group-demo": {
+      name: "radio-group-demo",
+      title: "Radio Group Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["label", "radio-group"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/radio-group-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "radio-group-form": {
+      name: "radio-group-form",
+      title: "Radio Group Form",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["form", "radio-group"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/radio-group-form.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "range-calendar-demo": {
+      name: "range-calendar-demo",
+      title: "Range Calendar Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["range-calendar"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/range-calendar-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "resizable-demo": {
+      name: "resizable-demo",
+      title: "Resizable Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["resizable"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/resizable-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "resizable-handle": {
+      name: "resizable-handle",
+      title: "Resizable Handle",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["resizable"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/resizable-handle.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "resizable-vertical": {
+      name: "resizable-vertical",
+      title: "Resizable Vertical",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["resizable"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/resizable-vertical.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "scroll-area-both": {
+      name: "scroll-area-both",
+      title: "Scroll Area Both",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["scroll-area"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/scroll-area-both.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "scroll-area-demo": {
+      name: "scroll-area-demo",
+      title: "Scroll Area Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["scroll-area", "separator"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/scroll-area-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "scroll-area-horizontal": {
+      name: "scroll-area-horizontal",
+      title: "Scroll Area Horizontal",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["scroll-area"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/scroll-area-horizontal.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "select-demo": {
+      name: "select-demo",
+      title: "Select Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["select"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/select-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "select-form": {
+      name: "select-form",
+      title: "Select Form",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["form", "select"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/select-form.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "select-scrollable": {
+      name: "select-scrollable",
+      title: "Select Scrollable",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["select"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/select-scrollable.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "separator-demo": {
+      name: "separator-demo",
+      title: "Separator Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["separator"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/separator-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "sheet-demo": {
+      name: "sheet-demo",
+      title: "Sheet Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "input", "label", "sheet"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/sheet-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "sheet-side": {
+      name: "sheet-side",
+      title: "Sheet Side",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "sheet"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/sheet-side.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "skeleton-card": {
+      name: "skeleton-card",
+      title: "Skeleton Card",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["skeleton"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/skeleton-card.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "skeleton-demo": {
+      name: "skeleton-demo",
+      title: "Skeleton Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["skeleton"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/skeleton-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "slider-demo": {
+      name: "slider-demo",
+      title: "Slider Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["slider"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/slider-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "slider-multiple": {
+      name: "slider-multiple",
+      title: "Slider Multiple",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["slider"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/slider-multiple.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "slider-vertical": {
+      name: "slider-vertical",
+      title: "Slider Vertical",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["slider"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/slider-vertical.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "sonner-demo": {
+      name: "sonner-demo",
+      title: "Sonner Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/sonner-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "sonner-types": {
+      name: "sonner-types",
+      title: "Sonner Types",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/sonner-types.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "spinner-badge-demo": {
+      name: "spinner-badge-demo",
+      title: "Spinner Badge Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["badge", "spinner"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/spinner-badge-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "spinner-button-demo": {
+      name: "spinner-button-demo",
+      title: "Spinner Button Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "spinner"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/spinner-button-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "spinner-color-demo": {
+      name: "spinner-color-demo",
+      title: "Spinner Color Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["spinner"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/spinner-color-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "spinner-custom-demo": {
+      name: "spinner-custom-demo",
+      title: "Spinner Custom Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["utils"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/spinner-custom-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "spinner-demo": {
+      name: "spinner-demo",
+      title: "Spinner Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["item", "spinner"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/spinner-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "spinner-empty-demo": {
+      name: "spinner-empty-demo",
+      title: "Spinner Empty Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "empty", "spinner"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/spinner-empty-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "spinner-input-group-demo": {
+      name: "spinner-input-group-demo",
+      title: "Spinner Input Group Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["input-group", "spinner"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/spinner-input-group-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "spinner-item-demo": {
+      name: "spinner-item-demo",
+      title: "Spinner Item Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "item", "progress", "spinner"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/spinner-item-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "spinner-size-demo": {
+      name: "spinner-size-demo",
+      title: "Spinner Size Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["spinner"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/spinner-size-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "switch-demo": {
+      name: "switch-demo",
+      title: "Switch Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["label", "switch"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/switch-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "switch-form": {
+      name: "switch-form",
+      title: "Switch Form",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["form", "switch"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/switch-form.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "table-demo": {
+      name: "table-demo",
+      title: "Table Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["table"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/table-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "tabs-demo": {
+      name: "tabs-demo",
+      title: "Tabs Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "card", "input", "label", "tabs"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/tabs-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "textarea-demo": {
+      name: "textarea-demo",
+      title: "Textarea Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["textarea"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/textarea-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "textarea-disabled": {
+      name: "textarea-disabled",
+      title: "Textarea Disabled",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["textarea"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/textarea-disabled.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "textarea-form": {
+      name: "textarea-form",
+      title: "Textarea Form",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["form", "textarea"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/textarea-form.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "textarea-with-button": {
+      name: "textarea-with-button",
+      title: "Textarea With Button",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "textarea"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/textarea-with-button.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "textarea-with-label": {
+      name: "textarea-with-label",
+      title: "Textarea With Label",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["label", "textarea"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/textarea-with-label.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "textarea-with-text": {
+      name: "textarea-with-text",
+      title: "Textarea With Text",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["label", "textarea"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/textarea-with-text.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "toggle-demo": {
+      name: "toggle-demo",
+      title: "Toggle Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["toggle"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/toggle-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "toggle-disabled": {
+      name: "toggle-disabled",
+      title: "Toggle Disabled",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["toggle"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/toggle-disabled.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "toggle-group-demo": {
+      name: "toggle-group-demo",
+      title: "Toggle Group Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["toggle-group"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/toggle-group-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "toggle-group-disabled": {
+      name: "toggle-group-disabled",
+      title: "Toggle Group Disabled",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["toggle-group"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/toggle-group-disabled.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "toggle-group-lg": {
+      name: "toggle-group-lg",
+      title: "Toggle Group Lg",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["toggle-group"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/toggle-group-lg.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "toggle-group-outline": {
+      name: "toggle-group-outline",
+      title: "Toggle Group Outline",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["toggle-group"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/toggle-group-outline.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "toggle-group-single": {
+      name: "toggle-group-single",
+      title: "Toggle Group Single",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["toggle-group"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/toggle-group-single.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "toggle-group-sm": {
+      name: "toggle-group-sm",
+      title: "Toggle Group Sm",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["toggle-group"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/toggle-group-sm.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "toggle-group-spacing": {
+      name: "toggle-group-spacing",
+      title: "Toggle Group Spacing",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["toggle-group"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/toggle-group-spacing.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "toggle-lg": {
+      name: "toggle-lg",
+      title: "Toggle Lg",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["toggle"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/toggle-lg.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "toggle-outline": {
+      name: "toggle-outline",
+      title: "Toggle Outline",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["toggle"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/toggle-outline.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "toggle-sm": {
+      name: "toggle-sm",
+      title: "Toggle Sm",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["toggle"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/toggle-sm.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "toggle-with-text": {
+      name: "toggle-with-text",
+      title: "Toggle With Text",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["toggle"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/toggle-with-text.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "tooltip-demo": {
+      name: "tooltip-demo",
+      title: "Tooltip Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button", "tooltip"],
+      files: [
+        {
+          path: "registry/bases/svelte/examples/tooltip-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "typography-blockquote": {
+      name: "typography-blockquote",
+      title: "Typography Blockquote",
+      description: "",
+      type: "registry:example",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/svelte/examples/typography-blockquote.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "typography-demo": {
+      name: "typography-demo",
+      title: "Typography Demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/svelte/examples/typography-demo.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "typography-h1": {
+      name: "typography-h1",
+      title: "Typography H1",
+      description: "",
+      type: "registry:example",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/svelte/examples/typography-h1.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "typography-h2": {
+      name: "typography-h2",
+      title: "Typography H2",
+      description: "",
+      type: "registry:example",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/svelte/examples/typography-h2.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "typography-h3": {
+      name: "typography-h3",
+      title: "Typography H3",
+      description: "",
+      type: "registry:example",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/svelte/examples/typography-h3.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "typography-h4": {
+      name: "typography-h4",
+      title: "Typography H4",
+      description: "",
+      type: "registry:example",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/svelte/examples/typography-h4.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "typography-inline-code": {
+      name: "typography-inline-code",
+      title: "Typography Inline Code",
+      description: "",
+      type: "registry:example",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/svelte/examples/typography-inline-code.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "typography-large": {
+      name: "typography-large",
+      title: "Typography Large",
+      description: "",
+      type: "registry:example",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/svelte/examples/typography-large.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "typography-lead": {
+      name: "typography-lead",
+      title: "Typography Lead",
+      description: "",
+      type: "registry:example",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/svelte/examples/typography-lead.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "typography-list": {
+      name: "typography-list",
+      title: "Typography List",
+      description: "",
+      type: "registry:example",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/svelte/examples/typography-list.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "typography-muted": {
+      name: "typography-muted",
+      title: "Typography Muted",
+      description: "",
+      type: "registry:example",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/svelte/examples/typography-muted.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "typography-p": {
+      name: "typography-p",
+      title: "Typography P",
+      description: "",
+      type: "registry:example",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/svelte/examples/typography-p.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "typography-small": {
+      name: "typography-small",
+      title: "Typography Small",
+      description: "",
+      type: "registry:example",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/svelte/examples/typography-small.svelte",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: null,
+      categories: undefined,
+      meta: undefined,
+    },
+    "typography-table": {
+      name: "typography-table",
+      title: "Typography Table",
+      description: "",
+      type: "registry:example",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/svelte/examples/typography-table.svelte",
           type: "registry:example",
           target: "",
         },

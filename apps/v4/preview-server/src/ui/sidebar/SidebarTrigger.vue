@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from "vue"
 import { cn } from "@/lib/utils"
-import { IconPlaceholder } from "@/components/IconPlaceholder.vue"
+import IconPlaceholder from "@/components/IconPlaceholder.vue"
 import { Button } from "@/ui/button"
 import { useSidebar } from "./utils"
 

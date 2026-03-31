@@ -1,0 +1,28 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "checkbox",
+  "dependencies": [
+    "bits-ui"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-mira/ui/checkbox/checkbox.svelte",
+      "content": "<script lang=\"ts\">\n  import IconPlaceholder from \"$lib/components/icon-placeholder/icon-placeholder.svelte\"\n  import { cn, type WithoutChildrenOrChild } from \"$lib/utils.js\"\n  import { Checkbox as CheckboxPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    checked = $bindable(false),\n    indeterminate = $bindable(false),\n    class: className,\n    ...restProps\n  }: WithoutChildrenOrChild<CheckboxPrimitive.RootProps> = $props()\n</script>\n\n<CheckboxPrimitive.Root\n  bind:ref\n  data-slot=\"checkbox\"\n  class={cn(\n    \"cn-checkbox peer relative shrink-0 outline-none after:absolute after:-inset-x-3 after:-inset-y-2 disabled:cursor-not-allowed disabled:opacity-50\",\n    className\n  )}\n  bind:checked\n  bind:indeterminate\n  {...restProps}\n>\n  {#snippet children({ checked, indeterminate })}\n    <div\n      data-slot=\"checkbox-indicator\"\n      class=\"cn-checkbox-indicator grid place-content-center text-current transition-none\"\n    >\n      {#if checked}\n        <IconPlaceholder\n          lucide=\"CheckIcon\"\n          tabler=\"IconCheck\"\n          hugeicons=\"Tick02Icon\"\n          phosphor=\"CheckIcon\"\n          remixicon=\"RiCheckLine\"\n        />\n      {:else if indeterminate}\n        <IconPlaceholder\n          lucide=\"MinusIcon\"\n          tabler=\"IconMinus\"\n          hugeicons=\"MinusSignIcon\"\n          phosphor=\"MinusIcon\"\n          remixicon=\"RiSubtractLine\"\n        />\n      {/if}\n    </div>\n  {/snippet}\n</CheckboxPrimitive.Root>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-mira/ui/checkbox/index.ts",
+      "content": "import Root from \"./checkbox.svelte\"\n\nexport {\n  Root,\n  //\n  Root as Checkbox,\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "meta": {
+    "links": {
+      "docs": "https://force-ui.com/docs/components/svelte/checkbox"
+    }
+  },
+  "type": "registry:ui"
+}

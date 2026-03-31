@@ -1,0 +1,34 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "form-example",
+  "title": "Form",
+  "dependencies": [
+    "vee-validate",
+    "@vee-validate/zod",
+    "zod@3.25.76"
+  ],
+  "registryDependencies": [
+    "button",
+    "form",
+    "input",
+    "checkbox"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-maia/examples/form/FormBasic.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Button } from \"@/ui/button\"\nimport {\n  FormControl,\n  FormDescription,\n  FormField,\n  FormItem,\n  FormLabel,\n  FormMessage,\n} from \"@/ui/form\"\nimport { Input } from \"@/ui/input\"\nimport { toTypedSchema } from \"@vee-validate/zod\"\nimport { useForm } from \"vee-validate\"\nimport { z } from \"zod\"\n\nimport { Example } from \"@/components/example\"\n\nconst formSchema = toTypedSchema(\n  z.object({\n    username: z.string().min(2, {\n      message: \"Username must be at least 2 characters.\",\n    }),\n    email: z.string().email({\n      message: \"Please enter a valid email address.\",\n    }),\n  })\n)\n\nconst form = useForm({\n  validationSchema: formSchema,\n})\n\nconst onSubmit = form.handleSubmit((values) => {\n  console.log(\"Form submitted:\", values)\n})\n</script>\n\n<template>\n  <Example title=\"Basic Form\">\n    <form class=\"w-full max-w-sm space-y-6\" @submit=\"onSubmit\">\n      <FormField v-slot=\"{ componentField }\" name=\"username\">\n        <FormItem>\n          <FormLabel>Username</FormLabel>\n          <FormControl>\n            <Input type=\"text\" placeholder=\"johndoe\" v-bind=\"componentField\" />\n          </FormControl>\n          <FormDescription> This is your public display name. </FormDescription>\n          <FormMessage />\n        </FormItem>\n      </FormField>\n\n      <FormField v-slot=\"{ componentField }\" name=\"email\">\n        <FormItem>\n          <FormLabel>Email</FormLabel>\n          <FormControl>\n            <Input\n              type=\"email\"\n              placeholder=\"john@example.com\"\n              v-bind=\"componentField\"\n            />\n          </FormControl>\n          <FormDescription>\n            We'll never share your email with anyone else.\n          </FormDescription>\n          <FormMessage />\n        </FormItem>\n      </FormField>\n\n      <Button type=\"submit\"> Submit </Button>\n    </form>\n  </Example>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-maia/examples/form/FormExample.vue",
+      "content": "<script setup lang=\"ts\">\nimport { ExampleWrapper } from \"@/components/example\"\n\nimport FormBasic from \"./FormBasic.vue\"\nimport FormWithCheckbox from \"./FormWithCheckbox.vue\"\n</script>\n\n<template>\n  <ExampleWrapper>\n    <FormBasic />\n    <FormWithCheckbox />\n  </ExampleWrapper>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-maia/examples/form/FormWithCheckbox.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Button } from \"@/ui/button\"\nimport { Checkbox } from \"@/ui/checkbox\"\nimport {\n  FormControl,\n  FormDescription,\n  FormField,\n  FormItem,\n  FormLabel,\n  FormMessage,\n} from \"@/ui/form\"\nimport { Input } from \"@/ui/input\"\nimport { toTypedSchema } from \"@vee-validate/zod\"\nimport { useForm } from \"vee-validate\"\nimport { z } from \"zod\"\n\nimport { Example } from \"@/components/example\"\n\nconst formSchema = toTypedSchema(\n  z.object({\n    username: z.string().min(2, {\n      message: \"Username must be at least 2 characters.\",\n    }),\n    mobile: z.boolean().default(false).optional(),\n    marketing: z.boolean().refine((val) => val === true, {\n      message: \"You must accept marketing emails.\",\n    }),\n  })\n)\n\nconst form = useForm({\n  validationSchema: formSchema,\n})\n\nconst onSubmit = form.handleSubmit((values) => {\n  console.log(\"Form submitted:\", values)\n})\n</script>\n\n<template>\n  <Example title=\"Form with Checkbox\">\n    <form class=\"w-full max-w-sm space-y-6\" @submit=\"onSubmit\">\n      <FormField v-slot=\"{ componentField }\" name=\"username\">\n        <FormItem>\n          <FormLabel>Username</FormLabel>\n          <FormControl>\n            <Input type=\"text\" placeholder=\"johndoe\" v-bind=\"componentField\" />\n          </FormControl>\n          <FormMessage />\n        </FormItem>\n      </FormField>\n\n      <FormField v-slot=\"{ value, handleChange }\" type=\"checkbox\" name=\"mobile\">\n        <FormItem\n          class=\"flex flex-row items-start space-y-0 space-x-3 rounded-md border p-4\"\n        >\n          <FormControl>\n            <Checkbox :checked=\"value\" @update:checked=\"handleChange\" />\n          </FormControl>\n          <div class=\"space-y-1 leading-none\">\n            <FormLabel>\n              Use different settings for my mobile devices\n            </FormLabel>\n            <FormDescription>\n              You can manage your mobile notifications in the mobile settings\n              page.\n            </FormDescription>\n          </div>\n        </FormItem>\n      </FormField>\n\n      <FormField\n        v-slot=\"{ value, handleChange }\"\n        type=\"checkbox\"\n        name=\"marketing\"\n      >\n        <FormItem class=\"flex flex-row items-start space-y-0 space-x-3\">\n          <FormControl>\n            <Checkbox :checked=\"value\" @update:checked=\"handleChange\" />\n          </FormControl>\n          <div class=\"space-y-1 leading-none\">\n            <FormLabel> Marketing emails </FormLabel>\n            <FormDescription>\n              Receive emails about new products, features, and more.\n            </FormDescription>\n            <FormMessage />\n          </div>\n        </FormItem>\n      </FormField>\n\n      <Button type=\"submit\"> Submit </Button>\n    </form>\n  </Example>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

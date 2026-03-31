@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "skeleton",
+  "files": [
+    {
+      "path": "registry/vue-nova/ui/skeleton/Skeleton.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\ninterface SkeletonProps {\n  class?: HTMLAttributes[\"class\"]\n}\n\nconst props = defineProps<SkeletonProps>()\n</script>\n\n<template>\n  <div\n    data-slot=\"skeleton\"\n    :class=\"cn('cn-skeleton animate-pulse', props.class)\"\n  />\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-nova/ui/skeleton/index.ts",
+      "content": "export { default as Skeleton } from \"./Skeleton.vue\"\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

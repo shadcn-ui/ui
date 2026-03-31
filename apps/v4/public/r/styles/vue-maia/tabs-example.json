@@ -1,0 +1,86 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tabs-example",
+  "title": "Tabs",
+  "dependencies": [],
+  "registryDependencies": [
+    "tabs",
+    "example",
+    "button",
+    "dropdown-menu",
+    "input"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-maia/examples/tabs/TabsBasic.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Tabs, TabsList, TabsTrigger } from \"@/ui/tabs\"\n</script>\n\n<template>\n  <Tabs default-value=\"home\">\n    <TabsList>\n      <TabsTrigger value=\"home\"> Home </TabsTrigger>\n      <TabsTrigger value=\"settings\"> Settings </TabsTrigger>\n    </TabsList>\n  </Tabs>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-maia/examples/tabs/TabsDisabled.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Tabs, TabsList, TabsTrigger } from \"@/ui/tabs\"\n</script>\n\n<template>\n  <Tabs default-value=\"home\">\n    <TabsList>\n      <TabsTrigger value=\"home\"> Home </TabsTrigger>\n      <TabsTrigger value=\"settings\" :disabled=\"true\"> Disabled </TabsTrigger>\n    </TabsList>\n  </Tabs>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-maia/examples/tabs/TabsExample.vue",
+      "content": "<script setup lang=\"ts\">\nimport TabsBasic from \"@/examples/tabs/TabsBasic.vue\"\nimport TabsDisabled from \"@/examples/tabs/TabsDisabled.vue\"\nimport TabsIconOnly from \"@/examples/tabs/TabsIconOnly.vue\"\nimport TabsLine from \"@/examples/tabs/TabsLine.vue\"\nimport TabsLineDisabled from \"@/examples/tabs/TabsLineDisabled.vue\"\nimport TabsLineWithContent from \"@/examples/tabs/TabsLineWithContent.vue\"\nimport TabsMultiple from \"@/examples/tabs/TabsMultiple.vue\"\nimport TabsVariantsComparison from \"@/examples/tabs/TabsVariantsComparison.vue\"\nimport TabsVertical from \"@/examples/tabs/TabsVertical.vue\"\nimport TabsWithContent from \"@/examples/tabs/TabsWithContent.vue\"\nimport TabsWithDropdown from \"@/examples/tabs/TabsWithDropdown.vue\"\nimport TabsWithIcons from \"@/examples/tabs/TabsWithIcons.vue\"\nimport TabsWithInputAndButton from \"@/examples/tabs/TabsWithInputAndButton.vue\"\n\nimport { Example, ExampleWrapper } from \"@/components/example\"\n</script>\n\n<template>\n  <ExampleWrapper>\n    <Example title=\"Basic\">\n      <TabsBasic />\n    </Example>\n    <Example title=\"Line\">\n      <TabsLine />\n    </Example>\n    <Example title=\"Variants Alignment\">\n      <TabsVariantsComparison />\n    </Example>\n    <Example title=\"Disabled\">\n      <TabsDisabled />\n    </Example>\n    <Example title=\"With Icons\">\n      <TabsWithIcons />\n    </Example>\n    <Example title=\"Icon Only\">\n      <TabsIconOnly />\n    </Example>\n    <Example title=\"Multiple\">\n      <TabsMultiple />\n    </Example>\n    <Example title=\"With Content\">\n      <TabsWithContent />\n    </Example>\n    <Example title=\"Line With Content\">\n      <TabsLineWithContent />\n    </Example>\n    <Example title=\"Line Disabled\">\n      <TabsLineDisabled />\n    </Example>\n    <Example title=\"With Dropdown\">\n      <TabsWithDropdown />\n    </Example>\n    <Example title=\"Vertical\">\n      <TabsVertical />\n    </Example>\n    <Example title=\"With Input and Button\" container-class=\"col-span-full\">\n      <TabsWithInputAndButton />\n    </Example>\n  </ExampleWrapper>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-maia/examples/tabs/TabsIconOnly.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Tabs, TabsList, TabsTrigger } from \"@/ui/tabs\"\n\nimport IconPlaceholder from \"@/components/IconPlaceholder.vue\"\n</script>\n\n<template>\n  <Tabs default-value=\"home\">\n    <TabsList>\n      <TabsTrigger value=\"home\">\n        <IconPlaceholder\n          lucide=\"HomeIcon\"\n          tabler=\"IconHome\"\n          hugeicons=\"HomeIcon\"\n          phosphor=\"HouseIcon\"\n          remixicon=\"RiHomeLine\"\n        />\n      </TabsTrigger>\n      <TabsTrigger value=\"search\">\n        <IconPlaceholder\n          lucide=\"SearchIcon\"\n          tabler=\"IconSearch\"\n          hugeicons=\"SearchIcon\"\n          phosphor=\"MagnifyingGlassIcon\"\n          remixicon=\"RiSearchLine\"\n        />\n      </TabsTrigger>\n      <TabsTrigger value=\"settings\">\n        <IconPlaceholder\n          lucide=\"SettingsIcon\"\n          tabler=\"IconSettings\"\n          hugeicons=\"SettingsIcon\"\n          phosphor=\"GearIcon\"\n          remixicon=\"RiSettings3Line\"\n        />\n      </TabsTrigger>\n    </TabsList>\n  </Tabs>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-maia/examples/tabs/TabsLine.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Tabs, TabsList, TabsTrigger } from \"@/ui/tabs\"\n</script>\n\n<template>\n  <Tabs default-value=\"overview\">\n    <TabsList variant=\"line\">\n      <TabsTrigger value=\"overview\"> Overview </TabsTrigger>\n      <TabsTrigger value=\"analytics\"> Analytics </TabsTrigger>\n      <TabsTrigger value=\"reports\"> Reports </TabsTrigger>\n    </TabsList>\n  </Tabs>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-maia/examples/tabs/TabsLineDisabled.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Tabs, TabsList, TabsTrigger } from \"@/ui/tabs\"\n</script>\n\n<template>\n  <Tabs default-value=\"overview\">\n    <TabsList variant=\"line\">\n      <TabsTrigger value=\"overview\"> Overview </TabsTrigger>\n      <TabsTrigger value=\"analytics\"> Analytics </TabsTrigger>\n      <TabsTrigger value=\"reports\" :disabled=\"true\"> Reports </TabsTrigger>\n    </TabsList>\n  </Tabs>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-maia/examples/tabs/TabsLineWithContent.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Tabs, TabsContent, TabsList, TabsTrigger } from \"@/ui/tabs\"\n</script>\n\n<template>\n  <Tabs default-value=\"account\">\n    <TabsList variant=\"line\">\n      <TabsTrigger value=\"account\"> Account </TabsTrigger>\n      <TabsTrigger value=\"password\"> Password </TabsTrigger>\n      <TabsTrigger value=\"notifications\"> Notifications </TabsTrigger>\n    </TabsList>\n    <div\n      class=\"border style-vega:rounded-lg style-vega:p-6 style-nova:rounded-lg style-nova:p-4 style-lyra:rounded-none style-lyra:p-4 style-maia:rounded-xl style-maia:p-6 style-mira:rounded-md style-mira:p-4\"\n    >\n      <TabsContent value=\"account\">\n        Manage your account preferences and profile information.\n      </TabsContent>\n      <TabsContent value=\"password\">\n        Update your password to keep your account secure.\n      </TabsContent>\n      <TabsContent value=\"notifications\">\n        Configure how you receive notifications and alerts.\n      </TabsContent>\n    </div>\n  </Tabs>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-maia/examples/tabs/TabsMultiple.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Tabs, TabsList, TabsTrigger } from \"@/ui/tabs\"\n</script>\n\n<template>\n  <Tabs default-value=\"overview\">\n    <TabsList>\n      <TabsTrigger value=\"overview\"> Overview </TabsTrigger>\n      <TabsTrigger value=\"analytics\"> Analytics </TabsTrigger>\n      <TabsTrigger value=\"reports\"> Reports </TabsTrigger>\n      <TabsTrigger value=\"settings\"> Settings </TabsTrigger>\n    </TabsList>\n  </Tabs>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-maia/examples/tabs/TabsVariantsComparison.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Tabs, TabsList, TabsTrigger } from \"@/ui/tabs\"\n</script>\n\n<template>\n  <div class=\"flex gap-4\">\n    <Tabs default-value=\"overview\">\n      <TabsList>\n        <TabsTrigger value=\"overview\"> Overview </TabsTrigger>\n        <TabsTrigger value=\"analytics\"> Analytics </TabsTrigger>\n      </TabsList>\n    </Tabs>\n    <Tabs default-value=\"overview\">\n      <TabsList variant=\"line\">\n        <TabsTrigger value=\"overview\"> Overview </TabsTrigger>\n        <TabsTrigger value=\"analytics\"> Analytics </TabsTrigger>\n      </TabsList>\n    </Tabs>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-maia/examples/tabs/TabsVertical.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Tabs, TabsContent, TabsList, TabsTrigger } from \"@/ui/tabs\"\n</script>\n\n<template>\n  <Tabs default-value=\"account\" orientation=\"vertical\">\n    <TabsList>\n      <TabsTrigger value=\"account\"> Account </TabsTrigger>\n      <TabsTrigger value=\"password\"> Password </TabsTrigger>\n      <TabsTrigger value=\"notifications\"> Notifications </TabsTrigger>\n    </TabsList>\n    <div\n      class=\"border style-vega:rounded-lg style-vega:p-6 style-nova:rounded-lg style-nova:p-4 style-lyra:rounded-none style-lyra:p-4 style-maia:rounded-xl style-maia:p-6 style-mira:rounded-md style-mira:p-4\"\n    >\n      <TabsContent value=\"account\">\n        Manage your account preferences and profile information.\n      </TabsContent>\n      <TabsContent value=\"password\">\n        Update your password to keep your account secure. Use a strong password\n        with a mix of letters, numbers, and symbols.\n      </TabsContent>\n      <TabsContent value=\"notifications\">\n        Configure how you receive notifications and alerts. Choose which types\n        of notifications you want to receive and how you want to receive them.\n      </TabsContent>\n    </div>\n  </Tabs>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-maia/examples/tabs/TabsWithContent.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Tabs, TabsContent, TabsList, TabsTrigger } from \"@/ui/tabs\"\n</script>\n\n<template>\n  <Tabs default-value=\"account\">\n    <TabsList>\n      <TabsTrigger value=\"account\"> Account </TabsTrigger>\n      <TabsTrigger value=\"password\"> Password </TabsTrigger>\n      <TabsTrigger value=\"notifications\"> Notifications </TabsTrigger>\n    </TabsList>\n    <div\n      class=\"border style-vega:rounded-lg style-vega:p-6 style-nova:rounded-lg style-nova:p-4 style-lyra:rounded-none style-lyra:p-4 style-maia:rounded-xl style-maia:p-6 style-mira:rounded-md style-mira:p-4\"\n    >\n      <TabsContent value=\"account\">\n        Manage your account preferences and profile information.\n      </TabsContent>\n      <TabsContent value=\"password\">\n        Update your password to keep your account secure.\n      </TabsContent>\n      <TabsContent value=\"notifications\">\n        Configure how you receive notifications and alerts.\n      </TabsContent>\n    </div>\n  </Tabs>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-maia/examples/tabs/TabsWithDropdown.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Button } from \"@/ui/button\"\nimport {\n  DropdownMenu,\n  DropdownMenuContent,\n  DropdownMenuItem,\n  DropdownMenuSeparator,\n  DropdownMenuTrigger,\n} from \"@/ui/dropdown-menu\"\nimport { Tabs, TabsContent, TabsList, TabsTrigger } from \"@/ui/tabs\"\n\nimport IconPlaceholder from \"@/components/IconPlaceholder.vue\"\n</script>\n\n<template>\n  <Tabs default-value=\"overview\">\n    <div class=\"flex items-center justify-between\">\n      <TabsList>\n        <TabsTrigger value=\"overview\"> Overview </TabsTrigger>\n        <TabsTrigger value=\"analytics\"> Analytics </TabsTrigger>\n        <TabsTrigger value=\"reports\"> Reports </TabsTrigger>\n      </TabsList>\n      <DropdownMenu>\n        <DropdownMenuTrigger :as-child=\"true\">\n          <Button variant=\"ghost\" size=\"icon\" class=\"size-8\">\n            <IconPlaceholder\n              lucide=\"MoreHorizontalIcon\"\n              tabler=\"IconDots\"\n              hugeicons=\"MoreHorizontalCircle01Icon\"\n              phosphor=\"DotsThreeIcon\"\n              remixicon=\"RiMoreLine\"\n            />\n            <span class=\"sr-only\">More options</span>\n          </Button>\n        </DropdownMenuTrigger>\n        <DropdownMenuContent align=\"end\">\n          <DropdownMenuItem>Settings</DropdownMenuItem>\n          <DropdownMenuItem>Export</DropdownMenuItem>\n          <DropdownMenuSeparator />\n          <DropdownMenuItem>Archive</DropdownMenuItem>\n        </DropdownMenuContent>\n      </DropdownMenu>\n    </div>\n\n    <div\n      class=\"border style-vega:rounded-lg style-vega:p-6 style-nova:rounded-lg style-nova:p-4 style-lyra:rounded-none style-lyra:p-4 style-maia:rounded-xl style-maia:p-6 style-mira:rounded-md style-mira:p-4\"\n    >\n      <TabsContent value=\"overview\">\n        View your dashboard metrics and key performance indicators.\n      </TabsContent>\n      <TabsContent value=\"analytics\">\n        Detailed analytics and insights about your data.\n      </TabsContent>\n      <TabsContent value=\"reports\">\n        Generate and view custom reports.\n      </TabsContent>\n    </div>\n  </Tabs>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-maia/examples/tabs/TabsWithIcons.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Tabs, TabsList, TabsTrigger } from \"@/ui/tabs\"\n\nimport IconPlaceholder from \"@/components/IconPlaceholder.vue\"\n</script>\n\n<template>\n  <Tabs default-value=\"preview\">\n    <TabsList>\n      <TabsTrigger value=\"preview\">\n        <IconPlaceholder\n          lucide=\"AppWindowIcon\"\n          tabler=\"IconAppWindow\"\n          hugeicons=\"CursorInWindowIcon\"\n          phosphor=\"AppWindowIcon\"\n          remixicon=\"RiWindow2Line\"\n        />\n        Preview\n      </TabsTrigger>\n      <TabsTrigger value=\"code\">\n        <IconPlaceholder\n          lucide=\"CodeIcon\"\n          tabler=\"IconCode\"\n          hugeicons=\"CodeIcon\"\n          phosphor=\"CodeIcon\"\n          remixicon=\"RiCodeLine\"\n        />\n        Code\n      </TabsTrigger>\n    </TabsList>\n  </Tabs>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-maia/examples/tabs/TabsWithInputAndButton.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Button } from \"@/ui/button\"\nimport { Input } from \"@/ui/input\"\nimport { Tabs, TabsContent, TabsList, TabsTrigger } from \"@/ui/tabs\"\n</script>\n\n<template>\n  <Tabs default-value=\"overview\" class=\"mx-auto w-full max-w-lg\">\n    <div class=\"flex items-center gap-4\">\n      <TabsList>\n        <TabsTrigger value=\"overview\"> Overview </TabsTrigger>\n        <TabsTrigger value=\"analytics\"> Analytics </TabsTrigger>\n      </TabsList>\n      <div class=\"ml-auto flex items-center gap-2\">\n        <Input placeholder=\"Search...\" class=\"w-44\" />\n        <Button>Action</Button>\n      </div>\n    </div>\n    <div\n      class=\"border style-vega:rounded-lg style-vega:p-6 style-nova:rounded-lg style-nova:p-4 style-lyra:rounded-none style-lyra:p-4 style-maia:rounded-xl style-maia:p-6 style-mira:rounded-md style-mira:p-4\"\n    >\n      <TabsContent value=\"overview\">\n        View your dashboard metrics and key performance indicators.\n      </TabsContent>\n      <TabsContent value=\"analytics\">\n        Detailed analytics and insights about your data.\n      </TabsContent>\n      <TabsContent value=\"reports\">\n        Generate and view custom reports.\n      </TabsContent>\n    </div>\n  </Tabs>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -1,1 +1,0 @@
-import{_ as a}from"./button.vue_vue_type_script_setup_true_lang-BeKwJLS2.js";import{w as e,r as n,a3 as o,U as r,u as s}from"./runtime-core.esm-bundler-Clqs0z22.js";import"./utils-D2jV1zSv.js";const u=e({__name:"button-link",setup(i){return(_,t)=>(r(),n(a,{variant:"link"},{default:o(()=>[...t[0]||(t[0]=[s("Link",-1)])]),_:1}))}});export{u as default};

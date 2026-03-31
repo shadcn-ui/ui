@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "native-select-example",
+  "title": "Native Select",
+  "dependencies": [],
+  "registryDependencies": [
+    "native-select"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-nova/examples/native-select/NativeSelectBasic.vue",
+      "content": "<script setup lang=\"ts\">\nimport { NativeSelect, NativeSelectOption } from \"@/ui/native-select\"\n\nimport { Example } from \"@/components/example\"\n</script>\n\n<template>\n  <Example title=\"Basic Native Select\">\n    <div class=\"grid w-full max-w-sm items-center gap-4\">\n      <NativeSelect>\n        <NativeSelectOption value=\"\"> Choose an option </NativeSelectOption>\n        <NativeSelectOption value=\"option1\"> Option 1 </NativeSelectOption>\n        <NativeSelectOption value=\"option2\"> Option 2 </NativeSelectOption>\n        <NativeSelectOption value=\"option3\"> Option 3 </NativeSelectOption>\n      </NativeSelect>\n\n      <NativeSelect>\n        <NativeSelectOption value=\"\"> Select a country </NativeSelectOption>\n        <NativeSelectOption value=\"us\"> United States </NativeSelectOption>\n        <NativeSelectOption value=\"uk\"> United Kingdom </NativeSelectOption>\n        <NativeSelectOption value=\"ca\"> Canada </NativeSelectOption>\n        <NativeSelectOption value=\"au\"> Australia </NativeSelectOption>\n      </NativeSelect>\n    </div>\n  </Example>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-nova/examples/native-select/NativeSelectExample.vue",
+      "content": "<script setup lang=\"ts\">\nimport { ExampleWrapper } from \"@/components/example\"\n\nimport NativeSelectBasic from \"./NativeSelectBasic.vue\"\nimport NativeSelectWithOptGroup from \"./NativeSelectWithOptGroup.vue\"\n</script>\n\n<template>\n  <ExampleWrapper>\n    <NativeSelectBasic />\n    <NativeSelectWithOptGroup />\n  </ExampleWrapper>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-nova/examples/native-select/NativeSelectWithOptGroup.vue",
+      "content": "<script setup lang=\"ts\">\nimport {\n  NativeSelect,\n  NativeSelectOptGroup,\n  NativeSelectOption,\n} from \"@/ui/native-select\"\n\nimport { Example } from \"@/components/example\"\n</script>\n\n<template>\n  <Example title=\"Native Select with OptGroup\">\n    <div class=\"grid w-full max-w-sm items-center gap-4\">\n      <NativeSelect>\n        <NativeSelectOption value=\"\"> Select a fruit </NativeSelectOption>\n        <NativeSelectOptGroup label=\"Citrus\">\n          <NativeSelectOption value=\"orange\"> Orange </NativeSelectOption>\n          <NativeSelectOption value=\"lemon\"> Lemon </NativeSelectOption>\n          <NativeSelectOption value=\"lime\"> Lime </NativeSelectOption>\n        </NativeSelectOptGroup>\n        <NativeSelectOptGroup label=\"Berries\">\n          <NativeSelectOption value=\"strawberry\">\n            Strawberry\n          </NativeSelectOption>\n          <NativeSelectOption value=\"blueberry\"> Blueberry </NativeSelectOption>\n          <NativeSelectOption value=\"raspberry\"> Raspberry </NativeSelectOption>\n        </NativeSelectOptGroup>\n      </NativeSelect>\n\n      <NativeSelect>\n        <NativeSelectOption value=\"\">\n          Select a programming language\n        </NativeSelectOption>\n        <NativeSelectOptGroup label=\"Frontend\">\n          <NativeSelectOption value=\"javascript\">\n            JavaScript\n          </NativeSelectOption>\n          <NativeSelectOption value=\"typescript\">\n            TypeScript\n          </NativeSelectOption>\n        </NativeSelectOptGroup>\n        <NativeSelectOptGroup label=\"Backend\">\n          <NativeSelectOption value=\"python\"> Python </NativeSelectOption>\n          <NativeSelectOption value=\"java\"> Java </NativeSelectOption>\n          <NativeSelectOption value=\"go\"> Go </NativeSelectOption>\n        </NativeSelectOptGroup>\n      </NativeSelect>\n    </div>\n  </Example>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

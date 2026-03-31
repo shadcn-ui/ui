@@ -1,0 +1,70 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dialog",
+  "dependencies": [
+    "reka-ui",
+    "@vueuse/core"
+  ],
+  "registryDependencies": [
+    "button",
+    "icon-placeholder"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-nova/ui/dialog/Dialog.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { DialogRootEmits, DialogRootProps } from \"reka-ui\"\nimport { DialogRoot, useForwardPropsEmits } from \"reka-ui\"\n\nconst props = defineProps<DialogRootProps>()\nconst emits = defineEmits<DialogRootEmits>()\n\nconst forwarded = useForwardPropsEmits(props, emits)\n</script>\n\n<template>\n  <DialogRoot v-slot=\"slotProps\" data-slot=\"dialog\" v-bind=\"forwarded\">\n    <slot v-bind=\"slotProps\" />\n  </DialogRoot>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-nova/ui/dialog/DialogClose.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { DialogCloseProps } from \"reka-ui\"\nimport { DialogClose } from \"reka-ui\"\n\nconst props = defineProps<DialogCloseProps>()\n</script>\n\n<template>\n  <DialogClose data-slot=\"dialog-close\" v-bind=\"props\">\n    <slot />\n  </DialogClose>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-nova/ui/dialog/DialogContent.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Button } from \"@/ui/button\"\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { DialogContentEmits, DialogContentProps } from \"reka-ui\"\nimport {\n  DialogClose,\n  DialogContent,\n  DialogPortal,\n  useForwardPropsEmits,\n} from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\nimport IconPlaceholder from \"@/components/icon-placeholder/IconPlaceholder.vue\"\n\nimport DialogOverlay from \"./DialogOverlay.vue\"\n\ndefineOptions({\n  inheritAttrs: false,\n})\n\nconst props = withDefaults(\n  defineProps<\n    DialogContentProps & {\n      class?: HTMLAttributes[\"class\"]\n      showCloseButton?: boolean\n    }\n  >(),\n  {\n    showCloseButton: true,\n  }\n)\nconst emits = defineEmits<DialogContentEmits>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n\nconst forwarded = useForwardPropsEmits(delegatedProps, emits)\n</script>\n\n<template>\n  <DialogPortal>\n    <DialogOverlay />\n    <DialogContent\n      data-slot=\"dialog-content\"\n      v-bind=\"{ ...$attrs, ...forwarded }\"\n      :class=\"\n        cn(\n          'cn-dialog-content fixed top-1/2 left-1/2 z-50 w-full -translate-x-1/2 -translate-y-1/2',\n          props.class\n        )\n      \"\n    >\n      <slot />\n\n      <DialogClose v-if=\"showCloseButton\" data-slot=\"dialog-close\" as-child>\n        <Button variant=\"ghost\" class=\"cn-dialog-close\" size=\"icon-sm\">\n          <IconPlaceholder\n            lucide=\"XIcon\"\n            tabler=\"IconX\"\n            hugeicons=\"Cancel01Icon\"\n            phosphor=\"XIcon\"\n            remixicon=\"RiCloseLine\"\n          />\n          <span class=\"sr-only\">Close</span>\n        </Button>\n      </DialogClose>\n    </DialogContent>\n  </DialogPortal>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-nova/ui/dialog/DialogDescription.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { DialogDescriptionProps } from \"reka-ui\"\nimport { DialogDescription, useForwardProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<\n  DialogDescriptionProps & { class?: HTMLAttributes[\"class\"] }\n>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <DialogDescription\n    data-slot=\"dialog-description\"\n    v-bind=\"forwardedProps\"\n    :class=\"cn('cn-dialog-description', props.class)\"\n  >\n    <slot />\n  </DialogDescription>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-nova/ui/dialog/DialogFooter.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Button } from \"@/ui/button\"\nimport { DialogClose } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = withDefaults(\n  defineProps<{\n    class?: HTMLAttributes[\"class\"]\n    showCloseButton?: boolean\n  }>(),\n  {\n    showCloseButton: false,\n  }\n)\n</script>\n\n<template>\n  <div\n    data-slot=\"dialog-footer\"\n    :class=\"\n      cn(\n        'cn-dialog-footer flex flex-col-reverse gap-2 sm:flex-row sm:justify-end',\n        props.class\n      )\n    \"\n  >\n    <slot />\n    <DialogClose v-if=\"showCloseButton\" as-child>\n      <Button variant=\"outline\"> Close </Button>\n    </DialogClose>\n  </div>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-nova/ui/dialog/DialogHeader.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <div\n    data-slot=\"dialog-header\"\n    :class=\"cn('cn-dialog-header flex flex-col', props.class)\"\n  >\n    <slot />\n  </div>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-nova/ui/dialog/DialogOverlay.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { DialogOverlayProps } from \"reka-ui\"\nimport { DialogOverlay } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<\n  DialogOverlayProps & { class?: HTMLAttributes[\"class\"] }\n>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n</script>\n\n<template>\n  <DialogOverlay\n    data-slot=\"dialog-overlay\"\n    v-bind=\"delegatedProps\"\n    :class=\"cn('cn-dialog-overlay fixed inset-0 isolate z-50', props.class)\"\n  >\n    <slot />\n  </DialogOverlay>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-nova/ui/dialog/DialogScrollContent.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { DialogContentEmits, DialogContentProps } from \"reka-ui\"\nimport {\n  DialogClose,\n  DialogContent,\n  DialogOverlay,\n  DialogPortal,\n  useForwardPropsEmits,\n} from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\nimport { IconPlaceholder } from \"@/components/icon-placeholder\"\n\ndefineOptions({\n  inheritAttrs: false,\n})\n\nconst props = defineProps<\n  DialogContentProps & { class?: HTMLAttributes[\"class\"] }\n>()\nconst emits = defineEmits<DialogContentEmits>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n\nconst forwarded = useForwardPropsEmits(delegatedProps, emits)\n</script>\n\n<template>\n  <DialogPortal>\n    <DialogOverlay\n      class=\"fixed inset-0 z-50 grid place-items-center overflow-y-auto bg-black/80 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:fade-in-0\"\n    >\n      <DialogContent\n        :class=\"\n          cn(\n            'relative z-50 my-8 grid w-full max-w-lg gap-4 border border-border bg-background p-6 shadow-lg duration-200 sm:rounded-lg md:w-full',\n            props.class\n          )\n        \"\n        v-bind=\"{ ...$attrs, ...forwarded }\"\n        @pointer-down-outside=\"\n          (event) => {\n            const originalEvent = event.detail.originalEvent\n            const target = originalEvent.target as HTMLElement\n            if (\n              originalEvent.offsetX > target.clientWidth ||\n              originalEvent.offsetY > target.clientHeight\n            ) {\n              event.preventDefault()\n            }\n          }\n        \"\n      >\n        <slot />\n\n        <DialogClose\n          class=\"absolute top-4 right-4 rounded-md p-0.5 transition-colors hover:bg-secondary\"\n        >\n          <IconPlaceholder\n            lucide=\"XIcon\"\n            tabler=\"IconX\"\n            hugeicons=\"Cancel01Icon\"\n            phosphor=\"XIcon\"\n            remixicon=\"RiCloseLine\"\n            class=\"h-4 w-4\"\n          />\n          <span class=\"sr-only\">Close</span>\n        </DialogClose>\n      </DialogContent>\n    </DialogOverlay>\n  </DialogPortal>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-nova/ui/dialog/DialogTitle.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { DialogTitleProps } from \"reka-ui\"\nimport { DialogTitle, useForwardProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<\n  DialogTitleProps & { class?: HTMLAttributes[\"class\"] }\n>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <DialogTitle\n    data-slot=\"dialog-title\"\n    v-bind=\"forwardedProps\"\n    :class=\"cn('cn-dialog-title', props.class)\"\n  >\n    <slot />\n  </DialogTitle>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-nova/ui/dialog/DialogTrigger.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { DialogTriggerProps } from \"reka-ui\"\nimport { DialogTrigger } from \"reka-ui\"\n\nconst props = defineProps<DialogTriggerProps>()\n</script>\n\n<template>\n  <DialogTrigger data-slot=\"dialog-trigger\" v-bind=\"props\">\n    <slot />\n  </DialogTrigger>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-nova/ui/dialog/index.ts",
+      "content": "export { default as Dialog } from \"./Dialog.vue\"\nexport { default as DialogClose } from \"./DialogClose.vue\"\nexport { default as DialogContent } from \"./DialogContent.vue\"\nexport { default as DialogDescription } from \"./DialogDescription.vue\"\nexport { default as DialogFooter } from \"./DialogFooter.vue\"\nexport { default as DialogHeader } from \"./DialogHeader.vue\"\nexport { default as DialogOverlay } from \"./DialogOverlay.vue\"\nexport { default as DialogScrollContent } from \"./DialogScrollContent.vue\"\nexport { default as DialogTitle } from \"./DialogTitle.vue\"\nexport { default as DialogTrigger } from \"./DialogTrigger.vue\"\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

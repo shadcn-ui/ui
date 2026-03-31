@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radio-group",
+  "dependencies": [
+    "reka-ui",
+    "@vueuse/core"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-vega/ui/radio-group/RadioGroup.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { RadioGroupRootEmits, RadioGroupRootProps } from \"reka-ui\"\nimport { RadioGroupRoot, useForwardPropsEmits } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<\n  RadioGroupRootProps & { class?: HTMLAttributes[\"class\"] }\n>()\nconst emits = defineEmits<RadioGroupRootEmits>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n\nconst forwarded = useForwardPropsEmits(delegatedProps, emits)\n</script>\n\n<template>\n  <RadioGroupRoot\n    v-slot=\"slotProps\"\n    data-slot=\"radio-group\"\n    :class=\"cn('cn-radio-group w-full', props.class)\"\n    v-bind=\"forwarded\"\n  >\n    <slot v-bind=\"slotProps\" />\n  </RadioGroupRoot>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-vega/ui/radio-group/RadioGroupItem.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { RadioGroupItemProps } from \"reka-ui\"\nimport { RadioGroupIndicator, RadioGroupItem, useForwardProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\nimport IconPlaceholder from \"@/components/icon-placeholder/IconPlaceholder.vue\"\n\nconst props = defineProps<\n  RadioGroupItemProps & { class?: HTMLAttributes[\"class\"] }\n>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <RadioGroupItem\n    data-slot=\"radio-group-item\"\n    v-bind=\"forwardedProps\"\n    :class=\"\n      cn(\n        'cn-radio-group-item group/radio-group-item peer relative aspect-square shrink-0 border outline-none after:absolute after:-inset-x-3 after:-inset-y-2 disabled:cursor-not-allowed disabled:opacity-50',\n        props.class\n      )\n    \"\n  >\n    <RadioGroupIndicator\n      data-slot=\"radio-group-indicator\"\n      class=\"cn-radio-group-indicator\"\n    >\n      <slot>\n        <IconPlaceholder\n          lucide=\"CircleIcon\"\n          tabler=\"IconCircle\"\n          hugeicons=\"CircleIcon\"\n          phosphor=\"CircleIcon\"\n          remixicon=\"RiCircleLine\"\n          class=\"cn-radio-group-indicator-icon\"\n        />\n      </slot>\n    </RadioGroupIndicator>\n  </RadioGroupItem>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-vega/ui/radio-group/index.ts",
+      "content": "export { default as RadioGroup } from \"./RadioGroup.vue\"\nexport { default as RadioGroupItem } from \"./RadioGroupItem.vue\"\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

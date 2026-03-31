@@ -1,0 +1,28 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "separator",
+  "dependencies": [
+    "bits-ui"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-maia/ui/separator/index.ts",
+      "content": "import Root from \"./separator.svelte\"\n\nexport {\n  Root,\n  //\n  Root as Separator,\n}\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-maia/ui/separator/separator.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { Separator as SeparatorPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    \"data-slot\": dataSlot = \"separator\",\n    ...restProps\n  }: SeparatorPrimitive.RootProps = $props()\n</script>\n\n<SeparatorPrimitive.Root\n  bind:ref\n  data-slot={dataSlot}\n  class={cn(\n    \"bg-border shrink-0 data-[orientation=horizontal]:h-px data-[orientation=horizontal]:w-full data-[orientation=vertical]:w-px\",\n    // this is different in shadcn/ui but self-stretch breaks things for us\n    \"data-[orientation=vertical]:h-full\",\n    className\n  )}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    }
+  ],
+  "meta": {
+    "links": {
+      "docs": "https://force-ui.com/docs/components/svelte/separator"
+    }
+  },
+  "type": "registry:ui"
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input",
+  "dependencies": [
+    "@vueuse/core"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-nova/ui/input/Input.vue",
+      "content": "<script setup lang=\"ts\">\nimport { useVModel } from \"@vueuse/core\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{\n  defaultValue?: string | number\n  modelValue?: string | number\n  class?: HTMLAttributes[\"class\"]\n}>()\n\nconst emits = defineEmits<{\n  (e: \"update:modelValue\", payload: string | number): void\n}>()\n\nconst modelValue = useVModel(props, \"modelValue\", emits, {\n  passive: true,\n  defaultValue: props.defaultValue,\n})\n</script>\n\n<template>\n  <input\n    v-model=\"modelValue\"\n    data-slot=\"input\"\n    :class=\"\n      cn(\n        'cn-input w-full min-w-0 outline-none file:inline-flex file:border-0 file:bg-transparent file:text-foreground placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50',\n        props.class\n      )\n    \"\n  />\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-nova/ui/input/index.ts",
+      "content": "export { default as Input } from \"./Input.vue\"\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

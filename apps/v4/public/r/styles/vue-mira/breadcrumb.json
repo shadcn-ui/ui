@@ -1,0 +1,50 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "breadcrumb",
+  "dependencies": [
+    "reka-ui"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-mira/ui/breadcrumb/Breadcrumb.vue",
+      "content": "<script lang=\"ts\" setup>\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <nav\n    aria-label=\"breadcrumb\"\n    data-slot=\"breadcrumb\"\n    :class=\"cn('cn-breadcrumb', props.class)\"\n  >\n    <slot />\n  </nav>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-mira/ui/breadcrumb/BreadcrumbEllipsis.vue",
+      "content": "<script lang=\"ts\" setup>\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\nimport IconPlaceholder from \"@/components/icon-placeholder/IconPlaceholder.vue\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <span\n    data-slot=\"breadcrumb-ellipsis\"\n    role=\"presentation\"\n    aria-hidden=\"true\"\n    :class=\"\n      cn('cn-breadcrumb-ellipsis flex items-center justify-center', props.class)\n    \"\n  >\n    <slot>\n      <IconPlaceholder\n        lucide=\"MoreHorizontalIcon\"\n        tabler=\"IconDots\"\n        hugeicons=\"MoreHorizontalCircle01Icon\"\n        phosphor=\"DotsThreeIcon\"\n        remixicon=\"RiMoreLine\"\n      />\n    </slot>\n    <span class=\"sr-only\">More</span>\n  </span>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-mira/ui/breadcrumb/BreadcrumbItem.vue",
+      "content": "<script lang=\"ts\" setup>\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <li\n    data-slot=\"breadcrumb-item\"\n    :class=\"cn('cn-breadcrumb-item inline-flex items-center', props.class)\"\n  >\n    <slot />\n  </li>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-mira/ui/breadcrumb/BreadcrumbLink.vue",
+      "content": "<script lang=\"ts\" setup>\nimport type { PrimitiveProps } from \"reka-ui\"\nimport { Primitive } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = withDefaults(\n  defineProps<PrimitiveProps & { class?: HTMLAttributes[\"class\"] }>(),\n  {\n    as: \"a\",\n  }\n)\n</script>\n\n<template>\n  <Primitive\n    data-slot=\"breadcrumb-link\"\n    :as=\"as\"\n    :as-child=\"asChild\"\n    :class=\"cn('cn-breadcrumb-link', props.class)\"\n  >\n    <slot />\n  </Primitive>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-mira/ui/breadcrumb/BreadcrumbList.vue",
+      "content": "<script lang=\"ts\" setup>\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <ol\n    data-slot=\"breadcrumb-list\"\n    :class=\"\n      cn(\n        'cn-breadcrumb-list flex flex-wrap items-center break-words',\n        props.class\n      )\n    \"\n  >\n    <slot />\n  </ol>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-mira/ui/breadcrumb/BreadcrumbPage.vue",
+      "content": "<script lang=\"ts\" setup>\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <span\n    data-slot=\"breadcrumb-page\"\n    role=\"link\"\n    aria-disabled=\"true\"\n    aria-current=\"page\"\n    :class=\"cn('cn-breadcrumb-page', props.class)\"\n  >\n    <slot />\n  </span>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-mira/ui/breadcrumb/BreadcrumbSeparator.vue",
+      "content": "<script lang=\"ts\" setup>\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\nimport IconPlaceholder from \"@/components/icon-placeholder/IconPlaceholder.vue\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <li\n    data-slot=\"breadcrumb-separator\"\n    role=\"presentation\"\n    aria-hidden=\"true\"\n    :class=\"cn('cn-breadcrumb-separator', props.class)\"\n  >\n    <slot>\n      <IconPlaceholder\n        lucide=\"ChevronRightIcon\"\n        tabler=\"IconChevronRight\"\n        hugeicons=\"ArrowRight01Icon\"\n        phosphor=\"CaretRightIcon\"\n        remixicon=\"RiArrowRightSLine\"\n      />\n    </slot>\n  </li>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-mira/ui/breadcrumb/index.ts",
+      "content": "export { default as Breadcrumb } from \"./Breadcrumb.vue\"\nexport { default as BreadcrumbEllipsis } from \"./BreadcrumbEllipsis.vue\"\nexport { default as BreadcrumbItem } from \"./BreadcrumbItem.vue\"\nexport { default as BreadcrumbLink } from \"./BreadcrumbLink.vue\"\nexport { default as BreadcrumbList } from \"./BreadcrumbList.vue\"\nexport { default as BreadcrumbPage } from \"./BreadcrumbPage.vue\"\nexport { default as BreadcrumbSeparator } from \"./BreadcrumbSeparator.vue\"\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

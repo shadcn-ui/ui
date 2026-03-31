@@ -1,0 +1,68 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "item",
+  "dependencies": [
+    "reka-ui"
+  ],
+  "registryDependencies": [
+    "separator"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-mira/ui/item/Item.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { PrimitiveProps } from \"reka-ui\"\nimport { Primitive } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nimport type { ItemVariants } from \".\"\nimport { itemVariants } from \".\"\n\nconst props = withDefaults(\n  defineProps<\n    PrimitiveProps & {\n      class?: HTMLAttributes[\"class\"]\n      variant?: ItemVariants[\"variant\"]\n      size?: ItemVariants[\"size\"]\n    }\n  >(),\n  {\n    as: \"div\",\n  }\n)\n</script>\n\n<template>\n  <Primitive\n    data-slot=\"item\"\n    :data-variant=\"variant\"\n    :data-size=\"size\"\n    :as=\"as\"\n    :as-child=\"asChild\"\n    :class=\"cn(itemVariants({ variant, size }), props.class)\"\n  >\n    <slot />\n  </Primitive>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-mira/ui/item/ItemActions.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <div\n    data-slot=\"item-actions\"\n    :class=\"cn('flex items-center gap-2', props.class)\"\n  >\n    <slot />\n  </div>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-mira/ui/item/ItemContent.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <div\n    data-slot=\"item-content\"\n    :class=\"\n      cn(\n        'flex flex-1 flex-col gap-1 [&+[data-slot=item-content]]:flex-none',\n        props.class\n      )\n    \"\n  >\n    <slot />\n  </div>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-mira/ui/item/ItemDescription.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <p\n    data-slot=\"item-description\"\n    :class=\"\n      cn(\n        'line-clamp-2 text-sm leading-normal font-normal text-balance text-muted-foreground',\n        '[&>a]:underline [&>a]:underline-offset-4 [&>a:hover]:text-primary',\n        props.class\n      )\n    \"\n  >\n    <slot />\n  </p>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-mira/ui/item/ItemFooter.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <div\n    data-slot=\"item-footer\"\n    :class=\"\n      cn('flex basis-full items-center justify-between gap-2', props.class)\n    \"\n  >\n    <slot />\n  </div>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-mira/ui/item/ItemGroup.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <div\n    role=\"list\"\n    data-slot=\"item-group\"\n    :class=\"cn('group/item-group flex flex-col', props.class)\"\n  >\n    <slot />\n  </div>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-mira/ui/item/ItemHeader.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <div\n    data-slot=\"item-header\"\n    :class=\"\n      cn('flex basis-full items-center justify-between gap-2', props.class)\n    \"\n  >\n    <slot />\n  </div>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-mira/ui/item/ItemMedia.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nimport type { ItemMediaVariants } from \".\"\nimport { itemMediaVariants } from \".\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n  variant?: ItemMediaVariants[\"variant\"]\n}>()\n</script>\n\n<template>\n  <div\n    data-slot=\"item-media\"\n    :data-variant=\"props.variant\"\n    :class=\"cn(itemMediaVariants({ variant }), props.class)\"\n  >\n    <slot />\n  </div>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-mira/ui/item/ItemSeparator.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Separator } from \"@/ui/separator\"\nimport type { SeparatorProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<\n  SeparatorProps & { class?: HTMLAttributes[\"class\"] }\n>()\n</script>\n\n<template>\n  <Separator\n    data-slot=\"item-separator\"\n    orientation=\"horizontal\"\n    :class=\"cn('my-0', props.class)\"\n  />\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-mira/ui/item/ItemTitle.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <div\n    data-slot=\"item-title\"\n    :class=\"\n      cn(\n        'flex w-fit items-center gap-2 text-sm leading-snug font-medium',\n        props.class\n      )\n    \"\n  >\n    <slot />\n  </div>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-mira/ui/item/index.ts",
+      "content": "import type { VariantProps } from \"class-variance-authority\"\nimport { cva } from \"class-variance-authority\"\n\nexport { default as Item } from \"./Item.vue\"\nexport { default as ItemActions } from \"./ItemActions.vue\"\nexport { default as ItemContent } from \"./ItemContent.vue\"\nexport { default as ItemDescription } from \"./ItemDescription.vue\"\nexport { default as ItemFooter } from \"./ItemFooter.vue\"\nexport { default as ItemGroup } from \"./ItemGroup.vue\"\nexport { default as ItemHeader } from \"./ItemHeader.vue\"\nexport { default as ItemMedia } from \"./ItemMedia.vue\"\nexport { default as ItemSeparator } from \"./ItemSeparator.vue\"\nexport { default as ItemTitle } from \"./ItemTitle.vue\"\n\nexport const itemVariants = cva(\n  \"group/item flex w-full flex-wrap items-center rounded-md border text-xs/relaxed transition-colors duration-100 outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 [a]:transition-colors [a]:hover:bg-muted\",\n  {\n    variants: {\n      variant: {\n        default: \"border-transparent\",\n        outline: \"border-border\",\n        muted: \"border-transparent bg-muted/50\",\n      },\n      size: {\n        default: \"gap-2.5 px-3 py-2.5\",\n        sm: \"gap-2.5 px-3 py-2.5\",\n        xs: \"gap-2.5 px-2.5 py-2 in-data-[slot=dropdown-menu-content]:p-0\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n      size: \"default\",\n    },\n  }\n)\n\nexport const itemMediaVariants = cva(\n  \"flex shrink-0 items-center justify-center gap-2 group-has-[[data-slot=item-description]]/item:translate-y-0.5 group-has-[[data-slot=item-description]]/item:self-start [&_svg]:pointer-events-none\",\n  {\n    variants: {\n      variant: {\n        default: \"bg-transparent\",\n        icon: \"size-8 rounded-sm border bg-muted [&_svg:not([class*='size-'])]:size-4\",\n        image:\n          \"size-10 overflow-hidden rounded-sm [&_img]:size-full [&_img]:object-cover\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n    },\n  }\n)\n\nexport type ItemVariants = VariantProps<typeof itemVariants>\nexport type ItemMediaVariants = VariantProps<typeof itemMediaVariants>\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

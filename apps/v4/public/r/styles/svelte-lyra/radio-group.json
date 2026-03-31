@@ -1,0 +1,33 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radio-group",
+  "dependencies": [
+    "bits-ui"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-lyra/ui/radio-group/index.ts",
+      "content": "import Item from \"./radio-group-item.svelte\"\nimport Root from \"./radio-group.svelte\"\n\nexport {\n  Root,\n  Item,\n  //\n  Root as RadioGroup,\n  Item as RadioGroupItem,\n}\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-lyra/ui/radio-group/radio-group-item.svelte",
+      "content": "<script lang=\"ts\">\n  import IconPlaceholder from \"$lib/components/icon-placeholder/icon-placeholder.svelte\"\n  import { cn, type WithoutChildrenOrChild } from \"$lib/utils.js\"\n  import { RadioGroup as RadioGroupPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    ...restProps\n  }: WithoutChildrenOrChild<RadioGroupPrimitive.ItemProps> = $props()\n</script>\n\n<RadioGroupPrimitive.Item\n  bind:ref\n  data-slot=\"radio-group-item\"\n  class={cn(\n    \"cn-radio-group-item group/radio-group-item peer relative aspect-square shrink-0 border outline-none after:absolute after:-inset-x-3 after:-inset-y-2 disabled:cursor-not-allowed disabled:opacity-50\",\n    className\n  )}\n  {...restProps}\n>\n  {#snippet children({ checked })}\n    <div data-slot=\"radio-group-indicator\" class=\"cn-radio-group-indicator\">\n      {#if checked}\n        <IconPlaceholder\n          lucide=\"CircleIcon\"\n          tabler=\"IconCircle\"\n          hugeicons=\"CircleIcon\"\n          phosphor=\"CircleIcon\"\n          remixicon=\"RiCircleLine\"\n          class=\"cn-radio-group-indicator-icon\"\n        />\n      {/if}\n    </div>\n  {/snippet}\n</RadioGroupPrimitive.Item>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-lyra/ui/radio-group/radio-group.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { RadioGroup as RadioGroupPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    value = $bindable(\"\"),\n    ...restProps\n  }: RadioGroupPrimitive.RootProps = $props()\n</script>\n\n<RadioGroupPrimitive.Root\n  bind:ref\n  bind:value\n  data-slot=\"radio-group\"\n  class={cn(\"cn-radio-group w-full\", className)}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    }
+  ],
+  "meta": {
+    "links": {
+      "docs": "https://force-ui.com/docs/components/svelte/radio-group"
+    }
+  },
+  "type": "registry:ui"
+}

@@ -1,0 +1,34 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toggle-group",
+  "dependencies": [
+    "bits-ui"
+  ],
+  "registryDependencies": [
+    "toggle",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-mira/ui/toggle-group/index.ts",
+      "content": "import Item from \"./toggle-group-item.svelte\"\nimport Root from \"./toggle-group.svelte\"\n\nexport {\n  Root,\n  Item,\n  //\n  Root as ToggleGroup,\n  Item as ToggleGroupItem,\n}\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-mira/ui/toggle-group/toggle-group-item.svelte",
+      "content": "<script lang=\"ts\">\n  import {\n    toggleVariants,\n    type ToggleVariants,\n  } from \"$lib/registry/ui/toggle/index.js\"\n  import { cn } from \"$lib/utils.js\"\n  import { ToggleGroup as ToggleGroupPrimitive } from \"bits-ui\"\n\n  import { getToggleGroupCtx } from \"./toggle-group.svelte\"\n\n  let {\n    ref = $bindable(null),\n    value = $bindable(),\n    class: className,\n    size,\n    variant,\n    ...restProps\n  }: ToggleGroupPrimitive.ItemProps & ToggleVariants = $props()\n\n  const ctx = getToggleGroupCtx()\n</script>\n\n<ToggleGroupPrimitive.Item\n  bind:ref\n  data-slot=\"toggle-group-item\"\n  data-variant={ctx.variant || variant}\n  data-size={ctx.size || size}\n  data-spacing={ctx.spacing}\n  class={cn(\n    \"cn-toggle-group-item shrink-0 focus:z-10 focus-visible:z-10 group-data-horizontal/toggle-group:data-[spacing=0]:data-[variant=outline]:border-l-0 group-data-vertical/toggle-group:data-[spacing=0]:data-[variant=outline]:border-t-0 group-data-horizontal/toggle-group:data-[spacing=0]:data-[variant=outline]:first:border-l group-data-vertical/toggle-group:data-[spacing=0]:data-[variant=outline]:first:border-t\",\n    toggleVariants({\n      variant: ctx.variant || variant,\n      size: ctx.size || size,\n    }),\n    className\n  )}\n  {value}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-mira/ui/toggle-group/toggle-group.svelte",
+      "content": "<script lang=\"ts\" module>\n  import { toggleVariants } from \"$lib/registry/ui/toggle/index.js\"\n  import { getContext, setContext } from \"svelte\"\n  import type { VariantProps } from \"tailwind-variants\"\n\n  type ToggleVariants = VariantProps<typeof toggleVariants>\n\n  interface ToggleGroupContext extends ToggleVariants {\n    spacing?: number\n    orientation?: \"horizontal\" | \"vertical\"\n  }\n\n  export function setToggleGroupCtx(props: ToggleGroupContext) {\n    setContext(\"toggleGroup\", props)\n  }\n\n  export function getToggleGroupCtx() {\n    return getContext<Required<ToggleGroupContext>>(\"toggleGroup\")\n  }\n</script>\n\n<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { ToggleGroup as ToggleGroupPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    value = $bindable(),\n    class: className,\n    size = \"default\",\n    spacing = 0,\n    orientation = \"horizontal\",\n    variant = \"default\",\n    ...restProps\n  }: ToggleGroupPrimitive.RootProps &\n    ToggleVariants & {\n      spacing?: number\n      orientation?: \"horizontal\" | \"vertical\"\n    } = $props()\n\n  setToggleGroupCtx({\n    get variant() {\n      return variant\n    },\n    get size() {\n      return size\n    },\n    get spacing() {\n      return spacing\n    },\n    get orientation() {\n      return orientation\n    },\n  })\n</script>\n\n<!--\nDiscriminated Unions + Destructing (required for bindable) do not\nget along, so we shut typescript up by casting `value` to `never`.\n-->\n<ToggleGroupPrimitive.Root\n  bind:value={value as never}\n  bind:ref\n  {orientation}\n  data-slot=\"toggle-group\"\n  data-variant={variant}\n  data-size={size}\n  data-spacing={spacing}\n  style={`--gap: ${spacing}`}\n  class={cn(\n    \"cn-toggle-group group/toggle-group flex w-fit flex-row items-center gap-[--spacing(var(--gap))] data-vertical:flex-col data-vertical:items-stretch\",\n    className\n  )}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    }
+  ],
+  "meta": {
+    "links": {
+      "docs": "https://force-ui.com/docs/components/svelte/toggle-group"
+    }
+  },
+  "type": "registry:ui"
+}

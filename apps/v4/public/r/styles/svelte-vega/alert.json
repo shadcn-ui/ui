@@ -1,0 +1,40 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "alert",
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-vega/ui/alert/alert-action.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...restProps\n  }: WithElementRef<HTMLAttributes<HTMLDivElement>> = $props()\n</script>\n\n<div\n  bind:this={ref}\n  data-slot=\"alert-action\"\n  class={cn(\"cn-alert-action\", className)}\n  {...restProps}\n>\n  {@render children?.()}\n</div>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/alert/alert-description.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...restProps\n  }: WithElementRef<HTMLAttributes<HTMLDivElement>> = $props()\n</script>\n\n<div\n  bind:this={ref}\n  data-slot=\"alert-description\"\n  class={cn(\n    \"cn-alert-description [&_a]:hover:text-foreground [&_a]:underline [&_a]:underline-offset-3\",\n    className\n  )}\n  {...restProps}\n>\n  {@render children?.()}\n</div>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/alert/alert-title.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...restProps\n  }: WithElementRef<HTMLAttributes<HTMLDivElement>> = $props()\n</script>\n\n<div\n  bind:this={ref}\n  data-slot=\"alert-title\"\n  class={cn(\n    \"cn-alert-title [&_a]:hover:text-foreground [&_a]:underline [&_a]:underline-offset-3\",\n    className\n  )}\n  {...restProps}\n>\n  {@render children?.()}\n</div>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/alert/alert.svelte",
+      "content": "<script lang=\"ts\" module>\n  import { tv, type VariantProps } from \"tailwind-variants\"\n\n  export const alertVariants = tv({\n    base: \"cn-alert group/alert relative w-full\",\n    variants: {\n      variant: {\n        default: \"cn-alert-variant-default\",\n        destructive: \"cn-alert-variant-destructive\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n    },\n  })\n\n  export type AlertVariant = VariantProps<typeof alertVariants>[\"variant\"]\n</script>\n\n<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    variant = \"default\",\n    children,\n    ...restProps\n  }: WithElementRef<HTMLAttributes<HTMLDivElement>> & {\n    variant?: AlertVariant\n  } = $props()\n</script>\n\n<div\n  bind:this={ref}\n  data-slot=\"alert\"\n  role=\"alert\"\n  class={cn(alertVariants({ variant }), className)}\n  {...restProps}\n>\n  {@render children?.()}\n</div>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/alert/index.ts",
+      "content": "import Action from \"./alert-action.svelte\"\nimport Description from \"./alert-description.svelte\"\nimport Title from \"./alert-title.svelte\"\nimport Root from \"./alert.svelte\"\n\nexport { alertVariants, type AlertVariant } from \"./alert.svelte\"\n\nexport {\n  Root,\n  Description,\n  Title,\n  Action,\n  //\n  Root as Alert,\n  Description as AlertDescription,\n  Title as AlertTitle,\n  Action as AlertAction,\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "meta": {
+    "links": {
+      "docs": "https://force-ui.com/docs/components/svelte/alert"
+    }
+  },
+  "type": "registry:ui"
+}

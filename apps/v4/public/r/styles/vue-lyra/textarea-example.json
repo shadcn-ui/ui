@@ -1,0 +1,44 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "textarea-example",
+  "title": "Textarea",
+  "dependencies": [],
+  "registryDependencies": [
+    "textarea",
+    "field",
+    "example"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-lyra/examples/textarea/TextareaBasic.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Textarea } from \"@/ui/textarea\"\n</script>\n\n<template>\n  <Textarea placeholder=\"Type your message here.\" />\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-lyra/examples/textarea/TextareaDisabled.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Field, FieldLabel } from \"@/ui/field\"\nimport { Textarea } from \"@/ui/textarea\"\n</script>\n\n<template>\n  <Field>\n    <FieldLabel html-for=\"textarea-demo-disabled\"> Message </FieldLabel>\n    <Textarea\n      id=\"textarea-demo-disabled\"\n      placeholder=\"Type your message here.\"\n      :disabled=\"true\"\n    />\n  </Field>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-lyra/examples/textarea/TextareaExample.vue",
+      "content": "<script setup lang=\"ts\">\nimport TextareaBasic from \"@/examples/textarea/TextareaBasic.vue\"\nimport TextareaDisabled from \"@/examples/textarea/TextareaDisabled.vue\"\nimport TextareaInvalid from \"@/examples/textarea/TextareaInvalid.vue\"\nimport TextareaWithDescription from \"@/examples/textarea/TextareaWithDescription.vue\"\nimport TextareaWithLabel from \"@/examples/textarea/TextareaWithLabel.vue\"\n\nimport { Example, ExampleWrapper } from \"@/components/example\"\n</script>\n\n<template>\n  <ExampleWrapper>\n    <Example title=\"Basic\">\n      <TextareaBasic />\n    </Example>\n    <Example title=\"Invalid\">\n      <TextareaInvalid />\n    </Example>\n    <Example title=\"With Label\">\n      <TextareaWithLabel />\n    </Example>\n    <Example title=\"With Description\">\n      <TextareaWithDescription />\n    </Example>\n    <Example title=\"Disabled\">\n      <TextareaDisabled />\n    </Example>\n  </ExampleWrapper>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-lyra/examples/textarea/TextareaInvalid.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Textarea } from \"@/ui/textarea\"\n</script>\n\n<template>\n  <Textarea placeholder=\"Type your message here.\" :aria-invalid=\"true\" />\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-lyra/examples/textarea/TextareaWithDescription.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Field, FieldDescription, FieldLabel } from \"@/ui/field\"\nimport { Textarea } from \"@/ui/textarea\"\n</script>\n\n<template>\n  <Field>\n    <FieldLabel html-for=\"textarea-demo-message-2\"> Message </FieldLabel>\n    <Textarea\n      id=\"textarea-demo-message-2\"\n      placeholder=\"Type your message here.\"\n      :rows=\"6\"\n    />\n    <FieldDescription>\n      Type your message and press enter to send.\n    </FieldDescription>\n  </Field>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-lyra/examples/textarea/TextareaWithLabel.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Field, FieldLabel } from \"@/ui/field\"\nimport { Textarea } from \"@/ui/textarea\"\n</script>\n\n<template>\n  <Field>\n    <FieldLabel html-for=\"textarea-demo-message\"> Message </FieldLabel>\n    <Textarea\n      id=\"textarea-demo-message\"\n      placeholder=\"Type your message here.\"\n      :rows=\"6\"\n    />\n  </Field>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,35 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "collapsible",
+  "dependencies": [
+    "bits-ui"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-nova/ui/collapsible/collapsible-content.svelte",
+      "content": "<script lang=\"ts\">\n  import { Collapsible as CollapsiblePrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    ...restProps\n  }: CollapsiblePrimitive.ContentProps = $props()\n</script>\n\n<CollapsiblePrimitive.Content\n  bind:ref\n  data-slot=\"collapsible-content\"\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/collapsible/collapsible-trigger.svelte",
+      "content": "<script lang=\"ts\">\n  import { Collapsible as CollapsiblePrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    ...restProps\n  }: CollapsiblePrimitive.TriggerProps = $props()\n</script>\n\n<CollapsiblePrimitive.Trigger\n  bind:ref\n  data-slot=\"collapsible-trigger\"\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/collapsible/collapsible.svelte",
+      "content": "<script lang=\"ts\">\n  import { Collapsible as CollapsiblePrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    open = $bindable(false),\n    ...restProps\n  }: CollapsiblePrimitive.RootProps = $props()\n</script>\n\n<CollapsiblePrimitive.Root\n  bind:ref\n  bind:open\n  data-slot=\"collapsible\"\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/collapsible/index.ts",
+      "content": "import Content from \"./collapsible-content.svelte\"\nimport Trigger from \"./collapsible-trigger.svelte\"\nimport Root from \"./collapsible.svelte\"\n\nexport {\n  Root,\n  Content,\n  Trigger,\n  //\n  Root as Collapsible,\n  Content as CollapsibleContent,\n  Trigger as CollapsibleTrigger,\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "meta": {
+    "links": {
+      "docs": "https://force-ui.com/docs/components/svelte/collapsible"
+    }
+  },
+  "type": "registry:ui"
+}

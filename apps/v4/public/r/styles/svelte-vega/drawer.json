@@ -1,0 +1,78 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "drawer",
+  "dependencies": [
+    "vaul-svelte"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-vega/ui/drawer/drawer-close.svelte",
+      "content": "<script lang=\"ts\">\n  import { Drawer as DrawerPrimitive } from \"vaul-svelte\"\n\n  let { ref = $bindable(null), ...restProps }: DrawerPrimitive.CloseProps =\n    $props()\n</script>\n\n<DrawerPrimitive.Close bind:ref data-slot=\"drawer-close\" {...restProps} />\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/drawer/drawer-content.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import type { WithoutChildrenOrChild } from \"$lib/utils.js\"\n  import type { ComponentProps } from \"svelte\"\n  import { Drawer as DrawerPrimitive } from \"vaul-svelte\"\n\n  import DrawerOverlay from \"./drawer-overlay.svelte\"\n  import DrawerPortal from \"./drawer-portal.svelte\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    portalProps,\n    children,\n    ...restProps\n  }: DrawerPrimitive.ContentProps & {\n    portalProps?: WithoutChildrenOrChild<ComponentProps<typeof DrawerPortal>>\n  } = $props()\n</script>\n\n<DrawerPortal {...portalProps}>\n  <DrawerOverlay />\n  <DrawerPrimitive.Content\n    bind:ref\n    data-slot=\"drawer-content\"\n    class={cn(\"cn-drawer-content group/drawer-content fixed z-50\", className)}\n    {...restProps}\n  >\n    <div\n      class=\"cn-drawer-handle bg-muted mx-auto hidden shrink-0 group-data-[vaul-drawer-direction=bottom]/drawer-content:block\"\n    ></div>\n    {@render children?.()}\n  </DrawerPrimitive.Content>\n</DrawerPortal>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/drawer/drawer-description.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { Drawer as DrawerPrimitive } from \"vaul-svelte\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    ...restProps\n  }: DrawerPrimitive.DescriptionProps = $props()\n</script>\n\n<DrawerPrimitive.Description\n  bind:ref\n  data-slot=\"drawer-description\"\n  class={cn(\"cn-drawer-description\", className)}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/drawer/drawer-footer.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...restProps\n  }: WithElementRef<HTMLAttributes<HTMLDivElement>> = $props()\n</script>\n\n<div\n  bind:this={ref}\n  data-slot=\"drawer-footer\"\n  class={cn(\"cn-drawer-footer mt-auto flex flex-col\", className)}\n  {...restProps}\n>\n  {@render children?.()}\n</div>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/drawer/drawer-header.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...restProps\n  }: WithElementRef<HTMLAttributes<HTMLDivElement>> = $props()\n</script>\n\n<div\n  bind:this={ref}\n  data-slot=\"drawer-header\"\n  class={cn(\"cn-drawer-header flex flex-col\", className)}\n  {...restProps}\n>\n  {@render children?.()}\n</div>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/drawer/drawer-nested.svelte",
+      "content": "<script lang=\"ts\">\n  import { Drawer as DrawerPrimitive } from \"vaul-svelte\"\n\n  let {\n    shouldScaleBackground = true,\n    open = $bindable(false),\n    activeSnapPoint = $bindable(null),\n    ...restProps\n  }: DrawerPrimitive.RootProps = $props()\n</script>\n\n<DrawerPrimitive.NestedRoot\n  {shouldScaleBackground}\n  bind:open\n  bind:activeSnapPoint\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/drawer/drawer-overlay.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { Drawer as DrawerPrimitive } from \"vaul-svelte\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    ...restProps\n  }: DrawerPrimitive.OverlayProps = $props()\n</script>\n\n<DrawerPrimitive.Overlay\n  bind:ref\n  data-slot=\"drawer-overlay\"\n  class={cn(\"cn-drawer-overlay fixed inset-0 z-50\", className)}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/drawer/drawer-portal.svelte",
+      "content": "<script lang=\"ts\">\n  import { Drawer as DrawerPrimitive } from \"vaul-svelte\"\n\n  let { ...restProps }: DrawerPrimitive.PortalProps = $props()\n</script>\n\n<DrawerPrimitive.Portal {...restProps} />\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/drawer/drawer-title.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { Drawer as DrawerPrimitive } from \"vaul-svelte\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    ...restProps\n  }: DrawerPrimitive.TitleProps = $props()\n</script>\n\n<DrawerPrimitive.Title\n  bind:ref\n  data-slot=\"drawer-title\"\n  class={cn(\"cn-drawer-title\", className)}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/drawer/drawer-trigger.svelte",
+      "content": "<script lang=\"ts\">\n  import { Drawer as DrawerPrimitive } from \"vaul-svelte\"\n\n  let { ref = $bindable(null), ...restProps }: DrawerPrimitive.TriggerProps =\n    $props()\n</script>\n\n<DrawerPrimitive.Trigger bind:ref data-slot=\"drawer-trigger\" {...restProps} />\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/drawer/drawer.svelte",
+      "content": "<script lang=\"ts\">\n  import { Drawer as DrawerPrimitive } from \"vaul-svelte\"\n\n  let {\n    shouldScaleBackground = true,\n    open = $bindable(false),\n    activeSnapPoint = $bindable(null),\n    ...restProps\n  }: DrawerPrimitive.RootProps = $props()\n</script>\n\n<DrawerPrimitive.Root\n  {shouldScaleBackground}\n  bind:open\n  bind:activeSnapPoint\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/drawer/index.ts",
+      "content": "import Close from \"./drawer-close.svelte\"\nimport Content from \"./drawer-content.svelte\"\nimport Description from \"./drawer-description.svelte\"\nimport Footer from \"./drawer-footer.svelte\"\nimport Header from \"./drawer-header.svelte\"\nimport NestedRoot from \"./drawer-nested.svelte\"\nimport Overlay from \"./drawer-overlay.svelte\"\nimport Portal from \"./drawer-portal.svelte\"\nimport Title from \"./drawer-title.svelte\"\nimport Trigger from \"./drawer-trigger.svelte\"\nimport Root from \"./drawer.svelte\"\n\nexport {\n  Root,\n  NestedRoot,\n  Content,\n  Description,\n  Overlay,\n  Footer,\n  Header,\n  Title,\n  Trigger,\n  Portal,\n  Close,\n\n  //\n  Root as Drawer,\n  NestedRoot as DrawerNestedRoot,\n  Content as DrawerContent,\n  Description as DrawerDescription,\n  Overlay as DrawerOverlay,\n  Footer as DrawerFooter,\n  Header as DrawerHeader,\n  Title as DrawerTitle,\n  Trigger as DrawerTrigger,\n  Portal as DrawerPortal,\n  Close as DrawerClose,\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "meta": {
+    "links": {
+      "docs": "https://force-ui.com/docs/components/svelte/drawer"
+    }
+  },
+  "type": "registry:ui"
+}

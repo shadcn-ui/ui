@@ -1,0 +1,42 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "popover-example",
+  "title": "Popover",
+  "dependencies": [],
+  "registryDependencies": [
+    "button",
+    "popover",
+    "example",
+    "dialog",
+    "field",
+    "input"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-lyra/examples/popover/PopoverAlignments.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Button } from \"@/ui/button\"\nimport { Popover, PopoverContent, PopoverTrigger } from \"@/ui/popover\"\n</script>\n\n<template>\n  <div class=\"flex gap-6\">\n    <Popover>\n      <PopoverTrigger :as-child=\"true\">\n        <Button variant=\"outline\" size=\"sm\"> Start </Button>\n      </PopoverTrigger>\n      <PopoverContent align=\"start\" class=\"w-40\">\n        Aligned to start\n      </PopoverContent>\n    </Popover>\n    <Popover>\n      <PopoverTrigger :as-child=\"true\">\n        <Button variant=\"outline\" size=\"sm\"> Center </Button>\n      </PopoverTrigger>\n      <PopoverContent align=\"center\" class=\"w-40\">\n        Aligned to center\n      </PopoverContent>\n    </Popover>\n    <Popover>\n      <PopoverTrigger :as-child=\"true\">\n        <Button variant=\"outline\" size=\"sm\"> End </Button>\n      </PopoverTrigger>\n      <PopoverContent align=\"end\" class=\"w-40\"> Aligned to end </PopoverContent>\n    </Popover>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-lyra/examples/popover/PopoverBasic.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Button } from \"@/ui/button\"\nimport {\n  Popover,\n  PopoverContent,\n  PopoverDescription,\n  PopoverHeader,\n  PopoverTitle,\n  PopoverTrigger,\n} from \"@/ui/popover\"\n</script>\n\n<template>\n  <Popover>\n    <PopoverTrigger :as-child=\"true\">\n      <Button variant=\"outline\"> Open Popover </Button>\n    </PopoverTrigger>\n    <PopoverContent align=\"start\">\n      <PopoverHeader>\n        <PopoverTitle>Dimensions</PopoverTitle>\n        <PopoverDescription>\n          Set the dimensions for the layer.\n        </PopoverDescription>\n      </PopoverHeader>\n    </PopoverContent>\n  </Popover>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-lyra/examples/popover/PopoverExample.vue",
+      "content": "<script setup lang=\"ts\">\nimport PopoverAlignments from \"@/examples/popover/PopoverAlignments.vue\"\nimport PopoverBasic from \"@/examples/popover/PopoverBasic.vue\"\nimport PopoverInDialog from \"@/examples/popover/PopoverInDialog.vue\"\nimport PopoverWithForm from \"@/examples/popover/PopoverWithForm.vue\"\n\nimport { Example, ExampleWrapper } from \"@/components/example\"\n</script>\n\n<template>\n  <ExampleWrapper>\n    <Example title=\"Basic\">\n      <PopoverBasic />\n    </Example>\n    <Example title=\"With Form\">\n      <PopoverWithForm />\n    </Example>\n    <Example title=\"Alignments\">\n      <PopoverAlignments />\n    </Example>\n    <Example title=\"In Dialog\">\n      <PopoverInDialog />\n    </Example>\n  </ExampleWrapper>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-lyra/examples/popover/PopoverInDialog.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Button } from \"@/ui/button\"\nimport {\n  Dialog,\n  DialogContent,\n  DialogDescription,\n  DialogHeader,\n  DialogTitle,\n  DialogTrigger,\n} from \"@/ui/dialog\"\nimport {\n  Popover,\n  PopoverContent,\n  PopoverDescription,\n  PopoverHeader,\n  PopoverTitle,\n  PopoverTrigger,\n} from \"@/ui/popover\"\n</script>\n\n<template>\n  <Dialog>\n    <DialogTrigger :as-child=\"true\">\n      <Button variant=\"outline\"> Open Dialog </Button>\n    </DialogTrigger>\n    <DialogContent>\n      <DialogHeader>\n        <DialogTitle>Popover Example</DialogTitle>\n        <DialogDescription>\n          Click the button below to see the popover.\n        </DialogDescription>\n      </DialogHeader>\n      <Popover>\n        <PopoverTrigger :as-child=\"true\">\n          <Button variant=\"outline\" class=\"w-fit\"> Open Popover </Button>\n        </PopoverTrigger>\n        <PopoverContent align=\"start\">\n          <PopoverHeader>\n            <PopoverTitle>Popover in Dialog</PopoverTitle>\n            <PopoverDescription>\n              This popover appears inside a dialog. Click the button to open it.\n            </PopoverDescription>\n          </PopoverHeader>\n        </PopoverContent>\n      </Popover>\n    </DialogContent>\n  </Dialog>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-lyra/examples/popover/PopoverWithForm.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Button } from \"@/ui/button\"\nimport { Field, FieldGroup, FieldLabel } from \"@/ui/field\"\nimport { Input } from \"@/ui/input\"\nimport {\n  Popover,\n  PopoverContent,\n  PopoverDescription,\n  PopoverHeader,\n  PopoverTitle,\n  PopoverTrigger,\n} from \"@/ui/popover\"\n</script>\n\n<template>\n  <Popover>\n    <PopoverTrigger :as-child=\"true\">\n      <Button variant=\"outline\"> Open Popover </Button>\n    </PopoverTrigger>\n    <PopoverContent class=\"w-64\" align=\"start\">\n      <PopoverHeader>\n        <PopoverTitle>Dimensions</PopoverTitle>\n        <PopoverDescription>\n          Set the dimensions for the layer.\n        </PopoverDescription>\n      </PopoverHeader>\n      <FieldGroup class=\"gap-4\">\n        <Field orientation=\"horizontal\">\n          <FieldLabel html-for=\"width\" class=\"w-1/2\"> Width </FieldLabel>\n          <Input id=\"width\" default-value=\"100%\" />\n        </Field>\n        <Field orientation=\"horizontal\">\n          <FieldLabel html-for=\"height\" class=\"w-1/2\"> Height </FieldLabel>\n          <Input id=\"height\" default-value=\"25px\" />\n        </Field>\n      </FieldGroup>\n    </PopoverContent>\n  </Popover>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

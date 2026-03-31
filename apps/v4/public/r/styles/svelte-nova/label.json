@@ -1,0 +1,28 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "label",
+  "dependencies": [
+    "bits-ui"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-nova/ui/label/index.ts",
+      "content": "import Root from \"./label.svelte\"\n\nexport {\n  Root,\n  //\n  Root as Label,\n}\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/label/label.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { Label as LabelPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    ...restProps\n  }: LabelPrimitive.RootProps = $props()\n</script>\n\n<LabelPrimitive.Root\n  bind:ref\n  data-slot=\"label\"\n  class={cn(\n    \"cn-label flex items-center select-none group-data-[disabled=true]:pointer-events-none peer-disabled:cursor-not-allowed\",\n    className\n  )}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    }
+  ],
+  "meta": {
+    "links": {
+      "docs": "https://force-ui.com/docs/components/svelte/label"
+    }
+  },
+  "type": "registry:ui"
+}

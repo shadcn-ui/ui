@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aspect-ratio",
+  "dependencies": [
+    "reka-ui"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-nova/ui/aspect-ratio/AspectRatio.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { AspectRatioProps } from \"reka-ui\"\nimport { AspectRatio } from \"reka-ui\"\n\nconst props = defineProps<AspectRatioProps>()\n</script>\n\n<template>\n  <AspectRatio v-slot=\"slotProps\" data-slot=\"aspect-ratio\" v-bind=\"props\">\n    <slot v-bind=\"slotProps\" />\n  </AspectRatio>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-nova/ui/aspect-ratio/index.ts",
+      "content": "export { default as AspectRatio } from \"./AspectRatio.vue\"\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

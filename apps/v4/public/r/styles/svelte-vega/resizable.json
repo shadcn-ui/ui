@@ -1,0 +1,33 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "resizable",
+  "dependencies": [
+    "paneforge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-vega/ui/resizable/index.ts",
+      "content": "import { Pane } from \"paneforge\"\n\nimport Handle from \"./resizable-handle.svelte\"\nimport PaneGroup from \"./resizable-pane-group.svelte\"\n\nexport {\n  PaneGroup,\n  Pane,\n  Handle,\n  //\n  PaneGroup as ResizablePaneGroup,\n  Pane as ResizablePane,\n  Handle as ResizableHandle,\n}\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/resizable/resizable-handle.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithoutChildrenOrChild } from \"$lib/utils.js\"\n  import * as ResizablePrimitive from \"paneforge\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    withHandle = false,\n    ...restProps\n  }: WithoutChildrenOrChild<ResizablePrimitive.PaneResizerProps> & {\n    withHandle?: boolean\n  } = $props()\n</script>\n\n<ResizablePrimitive.PaneResizer\n  bind:ref\n  data-slot=\"resizable-handle\"\n  class={cn(\n    \"cn-resizable-handle bg-border focus-visible:ring-ring relative flex w-px items-center justify-center after:absolute after:inset-y-0 after:left-1/2 after:w-1 after:-translate-x-1/2 focus-visible:ring-1 focus-visible:ring-offset-1 focus-visible:outline-hidden data-[direction=vertical]:h-px data-[direction=vertical]:w-full data-[direction=vertical]:after:left-0 data-[direction=vertical]:after:h-1 data-[direction=vertical]:after:w-full data-[direction=vertical]:after:translate-x-0 data-[direction=vertical]:after:-translate-y-1/2 [&[data-direction=vertical]>div]:rotate-90\",\n    className\n  )}\n  {...restProps}\n>\n  {#if withHandle}\n    <div class=\"cn-resizable-handle-icon z-10 flex shrink-0\"></div>\n  {/if}\n</ResizablePrimitive.PaneResizer>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/resizable/resizable-pane-group.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import * as ResizablePrimitive from \"paneforge\"\n\n  let {\n    ref = $bindable(null),\n    this: paneGroup = $bindable(),\n    class: className,\n    ...restProps\n  }: ResizablePrimitive.PaneGroupProps & {\n    this?: ResizablePrimitive.PaneGroup\n  } = $props()\n</script>\n\n<ResizablePrimitive.PaneGroup\n  bind:ref\n  bind:this={paneGroup}\n  data-slot=\"resizable-pane-group\"\n  class={cn(\n    \"cn-resizable-panel-group flex h-full w-full data-[direction=vertical]:flex-col\",\n    className\n  )}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    }
+  ],
+  "meta": {
+    "links": {
+      "docs": "https://force-ui.com/docs/components/svelte/resizable"
+    }
+  },
+  "type": "registry:ui"
+}

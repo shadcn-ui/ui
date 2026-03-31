@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sonner",
+  "dependencies": [
+    "vue-sonner"
+  ],
+  "registryDependencies": [
+    "icon-placeholder"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-vega/ui/sonner/Sonner.vue",
+      "content": "<script lang=\"ts\" setup>\nimport type { ToasterProps } from \"vue-sonner\"\nimport { Toaster as Sonner } from \"vue-sonner\"\n\nimport { cn } from \"@/lib/utils\"\nimport { IconPlaceholder } from \"@/components/icon-placeholder\"\n\nconst props = defineProps<ToasterProps>()\n</script>\n\n<template>\n  <Sonner\n    :class=\"cn('toaster group', props.class)\"\n    :style=\"{\n      '--normal-bg': 'var(--popover)',\n      '--normal-text': 'var(--popover-foreground)',\n      '--normal-border': 'var(--border)',\n      '--border-radius': 'var(--radius)',\n    }\"\n    v-bind=\"props\"\n  >\n    <template #success-icon>\n      <IconPlaceholder\n        lucide=\"CircleCheckIcon\"\n        tabler=\"IconCircleCheck\"\n        hugeicons=\"CheckmarkCircle01Icon\"\n        phosphor=\"CheckCircleIcon\"\n        remixicon=\"RiCheckboxCircleLine\"\n        class=\"size-4\"\n      />\n    </template>\n    <template #info-icon>\n      <IconPlaceholder\n        lucide=\"InfoIcon\"\n        tabler=\"IconInfoCircle\"\n        hugeicons=\"InformationCircleIcon\"\n        phosphor=\"InfoIcon\"\n        remixicon=\"RiInformationLine\"\n        class=\"size-4\"\n      />\n    </template>\n    <template #warning-icon>\n      <IconPlaceholder\n        lucide=\"TriangleAlertIcon\"\n        tabler=\"IconAlertTriangle\"\n        hugeicons=\"Alert02Icon\"\n        phosphor=\"WarningIcon\"\n        remixicon=\"RiAlertLine\"\n        class=\"size-4\"\n      />\n    </template>\n    <template #error-icon>\n      <IconPlaceholder\n        lucide=\"OctagonXIcon\"\n        tabler=\"IconOctagonOff\"\n        hugeicons=\"CancelCircleIcon\"\n        phosphor=\"XCircleIcon\"\n        remixicon=\"RiCloseCircleLine\"\n        class=\"size-4\"\n      />\n    </template>\n    <template #loading-icon>\n      <div>\n        <IconPlaceholder\n          lucide=\"Loader2Icon\"\n          tabler=\"IconLoader2\"\n          hugeicons=\"Loading03Icon\"\n          phosphor=\"SpinnerGapIcon\"\n          remixicon=\"RiLoader4Line\"\n          class=\"size-4 animate-spin\"\n        />\n      </div>\n    </template>\n    <template #close-icon>\n      <IconPlaceholder\n        lucide=\"XIcon\"\n        tabler=\"IconX\"\n        hugeicons=\"Cancel01Icon\"\n        phosphor=\"XIcon\"\n        remixicon=\"RiCloseLine\"\n        class=\"size-4\"\n      />\n    </template>\n  </Sonner>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-vega/ui/sonner/index.ts",
+      "content": "export { default as Toaster } from \"./Sonner.vue\"\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

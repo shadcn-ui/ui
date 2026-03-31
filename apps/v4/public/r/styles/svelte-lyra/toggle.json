@@ -1,0 +1,28 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toggle",
+  "dependencies": [
+    "bits-ui"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-lyra/ui/toggle/index.ts",
+      "content": "import Root from \"./toggle.svelte\"\n\nexport {\n  toggleVariants,\n  type ToggleSize,\n  type ToggleVariant,\n  type ToggleVariants,\n} from \"./toggle.svelte\"\n\nexport {\n  Root,\n  //\n  Root as Toggle,\n}\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-lyra/ui/toggle/toggle.svelte",
+      "content": "<script lang=\"ts\" module>\n  import { tv, type VariantProps } from \"tailwind-variants\"\n\n  export const toggleVariants = tv({\n    base: \"cn-toggle group/toggle hover:bg-muted inline-flex items-center justify-center whitespace-nowrap outline-none focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0\",\n    variants: {\n      variant: {\n        default: \"cn-toggle-variant-default\",\n        outline: \"cn-toggle-variant-outline\",\n      },\n      size: {\n        default: \"cn-toggle-size-default\",\n        sm: \"cn-toggle-size-sm\",\n        lg: \"cn-toggle-size-lg\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n      size: \"default\",\n    },\n  })\n\n  export type ToggleVariant = VariantProps<typeof toggleVariants>[\"variant\"]\n  export type ToggleSize = VariantProps<typeof toggleVariants>[\"size\"]\n  export type ToggleVariants = VariantProps<typeof toggleVariants>\n</script>\n\n<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { Toggle as TogglePrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    pressed = $bindable(false),\n    class: className,\n    size = \"default\",\n    variant = \"default\",\n    ...restProps\n  }: TogglePrimitive.RootProps & {\n    variant?: ToggleVariant\n    size?: ToggleSize\n  } = $props()\n</script>\n\n<TogglePrimitive.Root\n  bind:ref\n  bind:pressed\n  data-slot=\"toggle\"\n  class={cn(toggleVariants({ variant, size }), className)}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    }
+  ],
+  "meta": {
+    "links": {
+      "docs": "https://force-ui.com/docs/components/svelte/toggle"
+    }
+  },
+  "type": "registry:ui"
+}

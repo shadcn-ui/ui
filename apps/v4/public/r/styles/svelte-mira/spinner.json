@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spinner",
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-mira/ui/spinner/index.ts",
+      "content": "export { default as Spinner } from \"./spinner.svelte\"\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-mira/ui/spinner/spinner.svelte",
+      "content": "<script lang=\"ts\">\n  import IconPlaceholder from \"$lib/components/icon-placeholder/icon-placeholder.svelte\"\n  import { cn } from \"$lib/utils.js\"\n  import type { SVGAttributes } from \"svelte/elements\"\n\n  let {\n    class: className,\n    role = \"status\",\n    // we add color and stroke for compatibility with different icon libraries props\n    color,\n    stroke,\n    \"aria-label\": ariaLabel = \"Loading\",\n    ...restProps\n  }: SVGAttributes<SVGSVGElement> = $props()\n</script>\n\n<IconPlaceholder\n  lucide=\"Loader2Icon\"\n  tabler=\"IconLoader\"\n  hugeicons=\"Loading03Icon\"\n  phosphor=\"SpinnerIcon\"\n  remixicon=\"RiLoaderLine\"\n  {role}\n  color={color === null ? undefined : color}\n  stroke={stroke === null ? undefined : stroke}\n  aria-label={ariaLabel}\n  class={cn(\"size-4 animate-spin\", className)}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    }
+  ],
+  "meta": {
+    "links": {
+      "docs": "https://force-ui.com/docs/components/svelte/spinner"
+    }
+  },
+  "type": "registry:ui"
+}

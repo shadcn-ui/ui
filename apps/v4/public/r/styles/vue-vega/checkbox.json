@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "checkbox",
+  "dependencies": [
+    "reka-ui",
+    "@vueuse/core"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-vega/ui/checkbox/Checkbox.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { CheckboxRootEmits, CheckboxRootProps } from \"reka-ui\"\nimport { CheckboxIndicator, CheckboxRoot, useForwardPropsEmits } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\nimport IconPlaceholder from \"@/components/icon-placeholder/IconPlaceholder.vue\"\n\nconst props = defineProps<\n  CheckboxRootProps & { class?: HTMLAttributes[\"class\"] }\n>()\nconst emits = defineEmits<CheckboxRootEmits>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n\nconst forwarded = useForwardPropsEmits(delegatedProps, emits)\n</script>\n\n<template>\n  <CheckboxRoot\n    v-slot=\"slotProps\"\n    data-slot=\"checkbox\"\n    v-bind=\"forwarded\"\n    :class=\"\n      cn(\n        'cn-checkbox peer relative shrink-0 outline-none after:absolute after:-inset-x-3 after:-inset-y-2 disabled:cursor-not-allowed disabled:opacity-50',\n        props.class\n      )\n    \"\n  >\n    <CheckboxIndicator\n      data-slot=\"checkbox-indicator\"\n      class=\"cn-checkbox-indicator grid place-content-center text-current transition-none\"\n    >\n      <slot v-bind=\"slotProps\">\n        <IconPlaceholder\n          lucide=\"CheckIcon\"\n          tabler=\"IconCheck\"\n          hugeicons=\"Tick02Icon\"\n          phosphor=\"CheckIcon\"\n          remixicon=\"RiCheckLine\"\n        />\n      </slot>\n    </CheckboxIndicator>\n  </CheckboxRoot>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-vega/ui/checkbox/index.ts",
+      "content": "export { default as Checkbox } from \"./Checkbox.vue\"\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

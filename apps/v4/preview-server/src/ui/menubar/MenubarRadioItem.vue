@@ -8,7 +8,7 @@ import {
   useForwardPropsEmits,
 } from "reka-ui"
 import { cn } from "@/lib/utils"
-import { IconPlaceholder } from "@/components/IconPlaceholder.vue"
+import IconPlaceholder from "@/components/IconPlaceholder.vue"
 
 const props = defineProps<MenubarRadioItemProps & { class?: HTMLAttributes["class"] }>()
 const emits = defineEmits<MenubarRadioItemEmits>()

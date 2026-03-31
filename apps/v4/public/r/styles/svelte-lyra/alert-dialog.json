@@ -1,0 +1,84 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "alert-dialog",
+  "dependencies": [
+    "bits-ui"
+  ],
+  "registryDependencies": [
+    "button",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-lyra/ui/alert-dialog/alert-dialog-action.svelte",
+      "content": "<script lang=\"ts\">\n  import {\n    buttonVariants,\n    type ButtonSize,\n    type ButtonVariant,\n  } from \"$lib/registry/ui/button/index.js\"\n  import { cn } from \"$lib/utils.js\"\n  import { AlertDialog as AlertDialogPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    variant = \"default\",\n    size = \"default\",\n    ...restProps\n  }: AlertDialogPrimitive.ActionProps & {\n    variant?: ButtonVariant\n    size?: ButtonSize\n  } = $props()\n</script>\n\n<AlertDialogPrimitive.Action\n  bind:ref\n  data-slot=\"alert-dialog-action\"\n  class={cn(\n    buttonVariants({ variant, size }),\n    \"cn-alert-dialog-action\",\n    className\n  )}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-lyra/ui/alert-dialog/alert-dialog-cancel.svelte",
+      "content": "<script lang=\"ts\">\n  import {\n    buttonVariants,\n    type ButtonSize,\n    type ButtonVariant,\n  } from \"$lib/registry/ui/button/index.js\"\n  import { cn } from \"$lib/utils.js\"\n  import { AlertDialog as AlertDialogPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    variant = \"outline\",\n    size = \"default\",\n    ...restProps\n  }: AlertDialogPrimitive.CancelProps & {\n    variant?: ButtonVariant\n    size?: ButtonSize\n  } = $props()\n</script>\n\n<AlertDialogPrimitive.Cancel\n  bind:ref\n  data-slot=\"alert-dialog-cancel\"\n  class={cn(\n    buttonVariants({ variant, size }),\n    \"cn-alert-dialog-cancel\",\n    className\n  )}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-lyra/ui/alert-dialog/alert-dialog-content.svelte",
+      "content": "<script lang=\"ts\">\n  import {\n    cn,\n    type WithoutChild,\n    type WithoutChildrenOrChild,\n  } from \"$lib/utils.js\"\n  import { AlertDialog as AlertDialogPrimitive } from \"bits-ui\"\n  import type { ComponentProps } from \"svelte\"\n\n  import AlertDialogOverlay from \"./alert-dialog-overlay.svelte\"\n  import AlertDialogPortal from \"./alert-dialog-portal.svelte\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    size = \"default\",\n    portalProps,\n    ...restProps\n  }: WithoutChild<AlertDialogPrimitive.ContentProps> & {\n    size?: \"default\" | \"sm\"\n    portalProps?: WithoutChildrenOrChild<\n      ComponentProps<typeof AlertDialogPortal>\n    >\n  } = $props()\n</script>\n\n<AlertDialogPortal {...portalProps}>\n  <AlertDialogOverlay />\n  <AlertDialogPrimitive.Content\n    bind:ref\n    data-slot=\"alert-dialog-content\"\n    data-size={size}\n    class={cn(\n      \"cn-alert-dialog-content group/alert-dialog-content fixed top-1/2 left-1/2 z-50 grid w-full -translate-x-1/2 -translate-y-1/2 outline-none\",\n      className\n    )}\n    {...restProps}\n  />\n</AlertDialogPortal>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-lyra/ui/alert-dialog/alert-dialog-description.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { AlertDialog as AlertDialogPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    ...restProps\n  }: AlertDialogPrimitive.DescriptionProps = $props()\n</script>\n\n<AlertDialogPrimitive.Description\n  bind:ref\n  data-slot=\"alert-dialog-description\"\n  class={cn(\"cn-alert-dialog-description\", className)}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-lyra/ui/alert-dialog/alert-dialog-footer.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...restProps\n  }: WithElementRef<HTMLAttributes<HTMLDivElement>> = $props()\n</script>\n\n<div\n  bind:this={ref}\n  data-slot=\"alert-dialog-footer\"\n  class={cn(\n    \"cn-alert-dialog-footer flex flex-col-reverse gap-2 group-data-[size=sm]/alert-dialog-content:grid group-data-[size=sm]/alert-dialog-content:grid-cols-2 sm:flex-row sm:justify-end\",\n    className\n  )}\n  {...restProps}\n>\n  {@render children?.()}\n</div>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-lyra/ui/alert-dialog/alert-dialog-header.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...restProps\n  }: WithElementRef<HTMLAttributes<HTMLDivElement>> = $props()\n</script>\n\n<div\n  bind:this={ref}\n  data-slot=\"alert-dialog-header\"\n  class={cn(\"cn-alert-dialog-header\", className)}\n  {...restProps}\n>\n  {@render children?.()}\n</div>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-lyra/ui/alert-dialog/alert-dialog-media.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...restProps\n  }: WithElementRef<HTMLAttributes<HTMLDivElement>> = $props()\n</script>\n\n<div\n  bind:this={ref}\n  data-slot=\"alert-dialog-media\"\n  class={cn(\"cn-alert-dialog-media\", className)}\n  {...restProps}\n>\n  {@render children?.()}\n</div>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-lyra/ui/alert-dialog/alert-dialog-overlay.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { AlertDialog as AlertDialogPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    ...restProps\n  }: AlertDialogPrimitive.OverlayProps = $props()\n</script>\n\n<AlertDialogPrimitive.Overlay\n  bind:ref\n  data-slot=\"alert-dialog-overlay\"\n  class={cn(\"cn-alert-dialog-overlay fixed inset-0 z-50\", className)}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-lyra/ui/alert-dialog/alert-dialog-portal.svelte",
+      "content": "<script lang=\"ts\">\n  import { AlertDialog as AlertDialogPrimitive } from \"bits-ui\"\n\n  let { ...restProps }: AlertDialogPrimitive.PortalProps = $props()\n</script>\n\n<AlertDialogPrimitive.Portal {...restProps} />\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-lyra/ui/alert-dialog/alert-dialog-title.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { AlertDialog as AlertDialogPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    ...restProps\n  }: AlertDialogPrimitive.TitleProps = $props()\n</script>\n\n<AlertDialogPrimitive.Title\n  bind:ref\n  data-slot=\"alert-dialog-title\"\n  class={cn(\"cn-alert-dialog-title\", className)}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-lyra/ui/alert-dialog/alert-dialog-trigger.svelte",
+      "content": "<script lang=\"ts\">\n  import { AlertDialog as AlertDialogPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    ...restProps\n  }: AlertDialogPrimitive.TriggerProps = $props()\n</script>\n\n<AlertDialogPrimitive.Trigger\n  bind:ref\n  data-slot=\"alert-dialog-trigger\"\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-lyra/ui/alert-dialog/alert-dialog.svelte",
+      "content": "<script lang=\"ts\">\n  import { AlertDialog as AlertDialogPrimitive } from \"bits-ui\"\n\n  let {\n    open = $bindable(false),\n    ...restProps\n  }: AlertDialogPrimitive.RootProps = $props()\n</script>\n\n<AlertDialogPrimitive.Root bind:open {...restProps} />\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-lyra/ui/alert-dialog/index.ts",
+      "content": "import Action from \"./alert-dialog-action.svelte\"\nimport Cancel from \"./alert-dialog-cancel.svelte\"\nimport Content from \"./alert-dialog-content.svelte\"\nimport Description from \"./alert-dialog-description.svelte\"\nimport Footer from \"./alert-dialog-footer.svelte\"\nimport Header from \"./alert-dialog-header.svelte\"\nimport Media from \"./alert-dialog-media.svelte\"\nimport Overlay from \"./alert-dialog-overlay.svelte\"\nimport Portal from \"./alert-dialog-portal.svelte\"\nimport Title from \"./alert-dialog-title.svelte\"\nimport Trigger from \"./alert-dialog-trigger.svelte\"\nimport Root from \"./alert-dialog.svelte\"\n\nexport {\n  Root,\n  Title,\n  Action,\n  Cancel,\n  Portal,\n  Footer,\n  Header,\n  Trigger,\n  Overlay,\n  Content,\n  Description,\n  Media,\n  //\n  Root as AlertDialog,\n  Title as AlertDialogTitle,\n  Action as AlertDialogAction,\n  Cancel as AlertDialogCancel,\n  Portal as AlertDialogPortal,\n  Footer as AlertDialogFooter,\n  Header as AlertDialogHeader,\n  Trigger as AlertDialogTrigger,\n  Overlay as AlertDialogOverlay,\n  Content as AlertDialogContent,\n  Description as AlertDialogDescription,\n  Media as AlertDialogMedia,\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "meta": {
+    "links": {
+      "docs": "https://force-ui.com/docs/components/svelte/alert-dialog"
+    }
+  },
+  "type": "registry:ui"
+}

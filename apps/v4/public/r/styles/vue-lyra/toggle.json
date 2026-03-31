@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toggle",
+  "dependencies": [
+    "reka-ui",
+    "@vueuse/core"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-lyra/ui/toggle/Toggle.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { ToggleEmits, ToggleProps } from \"reka-ui\"\nimport { Toggle, useForwardPropsEmits } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nimport type { ToggleVariants } from \".\"\nimport { toggleVariants } from \".\"\n\nconst props = withDefaults(\n  defineProps<\n    ToggleProps & {\n      class?: HTMLAttributes[\"class\"]\n      variant?: ToggleVariants[\"variant\"]\n      size?: ToggleVariants[\"size\"]\n    }\n  >(),\n  {\n    variant: \"default\",\n    size: \"default\",\n    disabled: false,\n  }\n)\n\nconst emits = defineEmits<ToggleEmits>()\n\nconst delegatedProps = reactiveOmit(props, \"class\", \"size\", \"variant\")\nconst forwarded = useForwardPropsEmits(delegatedProps, emits)\n</script>\n\n<template>\n  <Toggle\n    v-slot=\"slotProps\"\n    data-slot=\"toggle\"\n    v-bind=\"forwarded\"\n    :class=\"cn(toggleVariants({ variant, size }), props.class)\"\n  >\n    <slot v-bind=\"slotProps\" />\n  </Toggle>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-lyra/ui/toggle/index.ts",
+      "content": "import type { VariantProps } from \"class-variance-authority\"\nimport { cva } from \"class-variance-authority\"\n\nexport { default as Toggle } from \"./Toggle.vue\"\n\nexport const toggleVariants = cva(\n  \"group/toggle inline-flex items-center justify-center gap-1 rounded-none text-xs font-medium whitespace-nowrap transition-all outline-none hover:bg-muted hover:text-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 aria-pressed:bg-muted data-[state=on]:bg-muted dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4\",\n  {\n    variants: {\n      variant: {\n        default: \"bg-transparent\",\n        outline: \"border border-input bg-transparent hover:bg-muted\",\n      },\n      size: {\n        default: \"h-8 min-w-8 px-2\",\n        sm: \"h-7 min-w-7 rounded-none px-1.5\",\n        lg: \"h-9 min-w-9 px-2.5\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n      size: \"default\",\n    },\n  }\n)\n\nexport type ToggleVariants = VariantProps<typeof toggleVariants>\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

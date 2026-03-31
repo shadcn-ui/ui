@@ -1,0 +1,28 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tags-input-example",
+  "title": "Tags Input",
+  "dependencies": [],
+  "registryDependencies": [
+    "tags-input",
+    "label"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-lyra/examples/tags-input/TagsInputBasic.vue",
+      "content": "<script setup lang=\"ts\">\nimport {\n  TagsInput,\n  TagsInputInput,\n  TagsInputItem,\n  TagsInputItemDelete,\n  TagsInputItemText,\n} from \"@/ui/tags-input\"\nimport { ref } from \"vue\"\n\nimport { Example } from \"@/components/example\"\nimport IconPlaceholder from \"@/components/IconPlaceholder.vue\"\n\nconst tags = ref([\"Vue\", \"React\", \"Angular\"])\n</script>\n\n<template>\n  <Example title=\"Basic Tags Input\">\n    <TagsInput v-model=\"tags\" class=\"w-full max-w-sm\">\n      <TagsInputItem v-for=\"tag in tags\" :key=\"tag\" :value=\"tag\">\n        <TagsInputItemText />\n        <TagsInputItemDelete>\n          <IconPlaceholder\n            lucide=\"XIcon\"\n            tabler=\"IconX\"\n            hugeicons=\"Cancel01Icon\"\n            phosphor=\"XIcon\"\n            remixicon=\"RiCloseLine\"\n          />\n        </TagsInputItemDelete>\n      </TagsInputItem>\n      <TagsInputInput placeholder=\"Add tag...\" />\n    </TagsInput>\n  </Example>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-lyra/examples/tags-input/TagsInputExample.vue",
+      "content": "<script setup lang=\"ts\">\nimport { ExampleWrapper } from \"@/components/example\"\n\nimport TagsInputBasic from \"./TagsInputBasic.vue\"\nimport TagsInputWithLabel from \"./TagsInputWithLabel.vue\"\n</script>\n\n<template>\n  <ExampleWrapper>\n    <TagsInputBasic />\n    <TagsInputWithLabel />\n  </ExampleWrapper>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-lyra/examples/tags-input/TagsInputWithLabel.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Label } from \"@/ui/label\"\nimport {\n  TagsInput,\n  TagsInputInput,\n  TagsInputItem,\n  TagsInputItemDelete,\n  TagsInputItemText,\n} from \"@/ui/tags-input\"\nimport { ref } from \"vue\"\n\nimport { Example } from \"@/components/example\"\nimport IconPlaceholder from \"@/components/IconPlaceholder.vue\"\n\nconst tags = ref([\"TypeScript\", \"JavaScript\", \"Python\"])\n</script>\n\n<template>\n  <Example title=\"Tags Input with Label\">\n    <div class=\"grid w-full max-w-sm items-center gap-1.5\">\n      <Label html-for=\"skills\">Skills</Label>\n      <TagsInput id=\"skills\" v-model=\"tags\">\n        <TagsInputItem v-for=\"tag in tags\" :key=\"tag\" :value=\"tag\">\n          <TagsInputItemText />\n          <TagsInputItemDelete>\n            <IconPlaceholder\n              lucide=\"XIcon\"\n              tabler=\"IconX\"\n              hugeicons=\"Cancel01Icon\"\n              phosphor=\"XIcon\"\n              remixicon=\"RiCloseLine\"\n            />\n          </TagsInputItemDelete>\n        </TagsInputItem>\n        <TagsInputInput placeholder=\"Add skill...\" />\n      </TagsInput>\n    </div>\n  </Example>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

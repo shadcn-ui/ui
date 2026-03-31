@@ -1,0 +1,55 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "breadcrumb",
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-vega/ui/breadcrumb/breadcrumb-ellipsis.svelte",
+      "content": "<script lang=\"ts\">\n  import IconPlaceholder from \"$lib/components/icon-placeholder/icon-placeholder.svelte\"\n  import { cn, type WithElementRef, type WithoutChildren } from \"$lib/utils.js\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    ...restProps\n  }: WithoutChildren<WithElementRef<HTMLAttributes<HTMLSpanElement>>> = $props()\n</script>\n\n<span\n  bind:this={ref}\n  data-slot=\"breadcrumb-ellipsis\"\n  role=\"presentation\"\n  aria-hidden=\"true\"\n  class={cn(\n    \"cn-breadcrumb-ellipsis flex items-center justify-center\",\n    className\n  )}\n  {...restProps}\n>\n  <IconPlaceholder\n    lucide=\"MoreHorizontalIcon\"\n    tabler=\"IconDots\"\n    hugeicons=\"MoreHorizontalCircle01Icon\"\n    phosphor=\"DotsThreeIcon\"\n    remixicon=\"RiMoreLine\"\n  />\n  <span class=\"sr-only\">More</span>\n</span>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/breadcrumb/breadcrumb-item.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLLiAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...restProps\n  }: WithElementRef<HTMLLiAttributes> = $props()\n</script>\n\n<li\n  bind:this={ref}\n  data-slot=\"breadcrumb-item\"\n  class={cn(\"cn-breadcrumb-item inline-flex items-center\", className)}\n  {...restProps}\n>\n  {@render children?.()}\n</li>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/breadcrumb/breadcrumb-link.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { Snippet } from \"svelte\"\n  import type { HTMLAnchorAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    href = undefined,\n    child,\n    children,\n    ...restProps\n  }: WithElementRef<HTMLAnchorAttributes> & {\n    child?: Snippet<[{ props: HTMLAnchorAttributes }]>\n  } = $props()\n\n  const attrs = $derived({\n    \"data-slot\": \"breadcrumb-link\",\n    class: cn(\"cn-breadcrumb-link\", className),\n    href,\n    ...restProps,\n  })\n</script>\n\n{#if child}\n  {@render child({ props: attrs })}\n{:else}\n  <a bind:this={ref} {...attrs}>\n    {@render children?.()}\n  </a>\n{/if}\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/breadcrumb/breadcrumb-list.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLOlAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...restProps\n  }: WithElementRef<HTMLOlAttributes> = $props()\n</script>\n\n<ol\n  bind:this={ref}\n  data-slot=\"breadcrumb-list\"\n  class={cn(\n    \"cn-breadcrumb-list flex flex-wrap items-center wrap-break-word\",\n    className\n  )}\n  {...restProps}\n>\n  {@render children?.()}\n</ol>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/breadcrumb/breadcrumb-page.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...restProps\n  }: WithElementRef<HTMLAttributes<HTMLSpanElement>> = $props()\n</script>\n\n<span\n  bind:this={ref}\n  data-slot=\"breadcrumb-page\"\n  role=\"link\"\n  aria-disabled=\"true\"\n  aria-current=\"page\"\n  class={cn(\"cn-breadcrumb-page\", className)}\n  {...restProps}\n>\n  {@render children?.()}\n</span>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/breadcrumb/breadcrumb-separator.svelte",
+      "content": "<script lang=\"ts\">\n  import IconPlaceholder from \"$lib/components/icon-placeholder/icon-placeholder.svelte\"\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLLiAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...restProps\n  }: WithElementRef<HTMLLiAttributes> = $props()\n</script>\n\n<li\n  bind:this={ref}\n  data-slot=\"breadcrumb-separator\"\n  role=\"presentation\"\n  aria-hidden=\"true\"\n  class={cn(\"cn-breadcrumb-separator\", className)}\n  {...restProps}\n>\n  {#if children}\n    {@render children?.()}\n  {:else}\n    <IconPlaceholder\n      lucide=\"ChevronRightIcon\"\n      tabler=\"IconChevronRight\"\n      hugeicons=\"ArrowRight01Icon\"\n      phosphor=\"CaretRightIcon\"\n      remixicon=\"RiArrowRightSLine\"\n    />\n  {/if}\n</li>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/breadcrumb/breadcrumb.svelte",
+      "content": "<script lang=\"ts\">\n  import type { WithElementRef } from \"$lib/utils.js\"\n  import { cn } from \"$lib/utils.js\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...restProps\n  }: WithElementRef<HTMLAttributes<HTMLElement>> = $props()\n</script>\n\n<nav\n  bind:this={ref}\n  data-slot=\"breadcrumb\"\n  aria-label=\"breadcrumb\"\n  class={cn(\"cn-breadcrumb\", className)}\n  {...restProps}\n>\n  {@render children?.()}\n</nav>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/breadcrumb/index.ts",
+      "content": "import Ellipsis from \"./breadcrumb-ellipsis.svelte\"\nimport Item from \"./breadcrumb-item.svelte\"\nimport Link from \"./breadcrumb-link.svelte\"\nimport List from \"./breadcrumb-list.svelte\"\nimport Page from \"./breadcrumb-page.svelte\"\nimport Separator from \"./breadcrumb-separator.svelte\"\nimport Root from \"./breadcrumb.svelte\"\n\nexport {\n  Root,\n  Ellipsis,\n  Item,\n  Separator,\n  Link,\n  List,\n  Page,\n  //\n  Root as Breadcrumb,\n  Ellipsis as BreadcrumbEllipsis,\n  Item as BreadcrumbItem,\n  Separator as BreadcrumbSeparator,\n  Link as BreadcrumbLink,\n  List as BreadcrumbList,\n  Page as BreadcrumbPage,\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "meta": {
+    "links": {
+      "docs": "https://force-ui.com/docs/components/svelte/breadcrumb"
+    }
+  },
+  "type": "registry:ui"
+}

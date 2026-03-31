@@ -1,0 +1,24 @@
+<script setup lang="ts">
+import { useForwardProps } from "reka-ui"
+import type { HTMLAttributes } from "vue"
+
+import { IconPlaceholder } from "@/components/icon-placeholder"
+
+const props = defineProps<{ class?: HTMLAttributes["class"] }>()
+
+const forwarded = useForwardProps(props)
+</script>
+
+<template>
+  <div data-slot="input-otp-separator" role="separator" v-bind="forwarded">
+    <slot>
+      <IconPlaceholder
+        lucide="MinusIcon"
+        tabler="IconMinus"
+        hugeicons="Minus01Icon"
+        phosphor="MinusIcon"
+        remixicon="RiSubtractLine"
+      />
+    </slot>
+  </div>
+</template>

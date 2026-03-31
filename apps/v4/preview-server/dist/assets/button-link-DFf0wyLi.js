@@ -1,1 +1,0 @@
-import{B as o,t as r,a as e}from"./button-D-SwzDQ3.js";import"./utils-D2jV1zSv.js";function p(t){o(t,{variant:"link",children:(a,i)=>{var n=r("Link");e(a,n)},$$slots:{default:!0}})}export{p as default};

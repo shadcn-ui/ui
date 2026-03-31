@@ -1,0 +1,86 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dropdown-menu",
+  "dependencies": [
+    "reka-ui",
+    "@vueuse/core"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-maia/ui/dropdown-menu/DropdownMenu.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { DropdownMenuRootEmits, DropdownMenuRootProps } from \"reka-ui\"\nimport { DropdownMenuRoot, useForwardPropsEmits } from \"reka-ui\"\n\nconst props = defineProps<DropdownMenuRootProps>()\nconst emits = defineEmits<DropdownMenuRootEmits>()\n\nconst forwarded = useForwardPropsEmits(props, emits)\n</script>\n\n<template>\n  <DropdownMenuRoot\n    v-slot=\"slotProps\"\n    data-slot=\"dropdown-menu\"\n    v-bind=\"forwarded\"\n  >\n    <slot v-bind=\"slotProps\" />\n  </DropdownMenuRoot>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-maia/ui/dropdown-menu/DropdownMenuCheckboxItem.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type {\n  DropdownMenuCheckboxItemEmits,\n  DropdownMenuCheckboxItemProps,\n} from \"reka-ui\"\nimport {\n  DropdownMenuCheckboxItem,\n  DropdownMenuItemIndicator,\n  useForwardPropsEmits,\n} from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\nimport IconPlaceholder from \"@/components/icon-placeholder/IconPlaceholder.vue\"\n\nconst props = defineProps<\n  DropdownMenuCheckboxItemProps & { class?: HTMLAttributes[\"class\"] }\n>()\nconst emits = defineEmits<DropdownMenuCheckboxItemEmits>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n\nconst forwarded = useForwardPropsEmits(delegatedProps, emits)\n</script>\n\n<template>\n  <DropdownMenuCheckboxItem\n    data-slot=\"dropdown-menu-checkbox-item\"\n    v-bind=\"forwarded\"\n    :class=\"\n      cn(\n        'cn-dropdown-menu-checkbox-item relative flex cursor-default items-center outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0',\n        props.class\n      )\n    \"\n  >\n    <span\n      class=\"cn-dropdown-menu-item-indicator pointer-events-none\"\n      data-slot=\"dropdown-menu-checkbox-item-indicator\"\n    >\n      <DropdownMenuItemIndicator>\n        <slot name=\"indicator-icon\">\n          <IconPlaceholder\n            lucide=\"CheckIcon\"\n            tabler=\"IconCheck\"\n            hugeicons=\"Tick02Icon\"\n            phosphor=\"CheckIcon\"\n            remixicon=\"RiCheckLine\"\n          />\n        </slot>\n      </DropdownMenuItemIndicator>\n    </span>\n    <slot />\n  </DropdownMenuCheckboxItem>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-maia/ui/dropdown-menu/DropdownMenuContent.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type {\n  DropdownMenuContentEmits,\n  DropdownMenuContentProps,\n} from \"reka-ui\"\nimport {\n  DropdownMenuContent,\n  DropdownMenuPortal,\n  useForwardPropsEmits,\n} from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\ndefineOptions({\n  inheritAttrs: false,\n})\n\nconst props = withDefaults(\n  defineProps<DropdownMenuContentProps & { class?: HTMLAttributes[\"class\"] }>(),\n  {\n    sideOffset: 4,\n  }\n)\nconst emits = defineEmits<DropdownMenuContentEmits>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n\nconst forwarded = useForwardPropsEmits(delegatedProps, emits)\n</script>\n\n<template>\n  <DropdownMenuPortal>\n    <DropdownMenuContent\n      data-slot=\"dropdown-menu-content\"\n      v-bind=\"{ ...$attrs, ...forwarded }\"\n      :class=\"\n        cn(\n          'cn-dropdown-menu-content cn-menu-target z-50 max-h-(--reka-dropdown-menu-content-available-height) w-(--reka-dropdown-menu-trigger-width) origin-(--reka-dropdown-menu-content-transform-origin) overflow-x-hidden overflow-y-auto data-[state=closed]:overflow-hidden',\n          props.class\n        )\n      \"\n    >\n      <slot />\n    </DropdownMenuContent>\n  </DropdownMenuPortal>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-maia/ui/dropdown-menu/DropdownMenuGroup.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { DropdownMenuGroupProps } from \"reka-ui\"\nimport { DropdownMenuGroup } from \"reka-ui\"\n\nconst props = defineProps<DropdownMenuGroupProps>()\n</script>\n\n<template>\n  <DropdownMenuGroup data-slot=\"dropdown-menu-group\" v-bind=\"props\">\n    <slot />\n  </DropdownMenuGroup>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-maia/ui/dropdown-menu/DropdownMenuItem.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { DropdownMenuItemProps } from \"reka-ui\"\nimport { DropdownMenuItem, useForwardProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = withDefaults(\n  defineProps<\n    DropdownMenuItemProps & {\n      class?: HTMLAttributes[\"class\"]\n      inset?: boolean\n      variant?: \"default\" | \"destructive\"\n    }\n  >(),\n  {\n    variant: \"default\",\n  }\n)\n\nconst delegatedProps = reactiveOmit(props, \"inset\", \"variant\", \"class\")\n\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <DropdownMenuItem\n    data-slot=\"dropdown-menu-item\"\n    :data-inset=\"inset ? '' : undefined\"\n    :data-variant=\"variant\"\n    v-bind=\"forwardedProps\"\n    :class=\"\n      cn(\n        'cn-dropdown-menu-item group/dropdown-menu-item relative flex cursor-default items-center outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[inset]:pl-8 [&_svg]:pointer-events-none [&_svg]:shrink-0',\n        props.class\n      )\n    \"\n  >\n    <slot />\n  </DropdownMenuItem>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-maia/ui/dropdown-menu/DropdownMenuLabel.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { DropdownMenuLabelProps } from \"reka-ui\"\nimport { DropdownMenuLabel, useForwardProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<\n  DropdownMenuLabelProps & { class?: HTMLAttributes[\"class\"]; inset?: boolean }\n>()\n\nconst delegatedProps = reactiveOmit(props, \"class\", \"inset\")\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <DropdownMenuLabel\n    data-slot=\"dropdown-menu-label\"\n    :data-inset=\"inset ? '' : undefined\"\n    v-bind=\"forwardedProps\"\n    :class=\"cn('cn-dropdown-menu-label data-[inset]:pl-8', props.class)\"\n  >\n    <slot />\n  </DropdownMenuLabel>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-maia/ui/dropdown-menu/DropdownMenuRadioGroup.vue",
+      "content": "<script setup lang=\"ts\">\nimport type {\n  DropdownMenuRadioGroupEmits,\n  DropdownMenuRadioGroupProps,\n} from \"reka-ui\"\nimport { DropdownMenuRadioGroup, useForwardPropsEmits } from \"reka-ui\"\n\nconst props = defineProps<DropdownMenuRadioGroupProps>()\nconst emits = defineEmits<DropdownMenuRadioGroupEmits>()\n\nconst forwarded = useForwardPropsEmits(props, emits)\n</script>\n\n<template>\n  <DropdownMenuRadioGroup\n    data-slot=\"dropdown-menu-radio-group\"\n    v-bind=\"forwarded\"\n  >\n    <slot />\n  </DropdownMenuRadioGroup>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-maia/ui/dropdown-menu/DropdownMenuRadioItem.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type {\n  DropdownMenuRadioItemEmits,\n  DropdownMenuRadioItemProps,\n} from \"reka-ui\"\nimport {\n  DropdownMenuItemIndicator,\n  DropdownMenuRadioItem,\n  useForwardPropsEmits,\n} from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\nimport IconPlaceholder from \"@/components/icon-placeholder/IconPlaceholder.vue\"\n\nconst props = defineProps<\n  DropdownMenuRadioItemProps & { class?: HTMLAttributes[\"class\"] }\n>()\n\nconst emits = defineEmits<DropdownMenuRadioItemEmits>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n\nconst forwarded = useForwardPropsEmits(delegatedProps, emits)\n</script>\n\n<template>\n  <DropdownMenuRadioItem\n    data-slot=\"dropdown-menu-radio-item\"\n    v-bind=\"forwarded\"\n    :class=\"\n      cn(\n        'cn-dropdown-menu-radio-item relative flex cursor-default items-center outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0',\n        props.class\n      )\n    \"\n  >\n    <span\n      class=\"cn-dropdown-menu-item-indicator pointer-events-none\"\n      data-slot=\"dropdown-menu-radio-item-indicator\"\n    >\n      <DropdownMenuItemIndicator>\n        <slot name=\"indicator-icon\">\n          <IconPlaceholder\n            lucide=\"CheckIcon\"\n            tabler=\"IconCheck\"\n            hugeicons=\"Tick02Icon\"\n            phosphor=\"CheckIcon\"\n            remixicon=\"RiCheckLine\"\n          />\n        </slot>\n      </DropdownMenuItemIndicator>\n    </span>\n    <slot />\n  </DropdownMenuRadioItem>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-maia/ui/dropdown-menu/DropdownMenuSeparator.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { DropdownMenuSeparatorProps } from \"reka-ui\"\nimport { DropdownMenuSeparator } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<\n  DropdownMenuSeparatorProps & {\n    class?: HTMLAttributes[\"class\"]\n  }\n>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n</script>\n\n<template>\n  <DropdownMenuSeparator\n    data-slot=\"dropdown-menu-separator\"\n    v-bind=\"delegatedProps\"\n    :class=\"cn('cn-dropdown-menu-separator', props.class)\"\n  />\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-maia/ui/dropdown-menu/DropdownMenuShortcut.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <span\n    data-slot=\"dropdown-menu-shortcut\"\n    :class=\"cn('cn-dropdown-menu-shortcut', props.class)\"\n  >\n    <slot />\n  </span>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-maia/ui/dropdown-menu/DropdownMenuSub.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { DropdownMenuSubEmits, DropdownMenuSubProps } from \"reka-ui\"\nimport { DropdownMenuSub, useForwardPropsEmits } from \"reka-ui\"\n\nconst props = defineProps<DropdownMenuSubProps>()\nconst emits = defineEmits<DropdownMenuSubEmits>()\n\nconst forwarded = useForwardPropsEmits(props, emits)\n</script>\n\n<template>\n  <DropdownMenuSub\n    v-slot=\"slotProps\"\n    data-slot=\"dropdown-menu-sub\"\n    v-bind=\"forwarded\"\n  >\n    <slot v-bind=\"slotProps\" />\n  </DropdownMenuSub>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-maia/ui/dropdown-menu/DropdownMenuSubContent.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type {\n  DropdownMenuSubContentEmits,\n  DropdownMenuSubContentProps,\n} from \"reka-ui\"\nimport { DropdownMenuSubContent, useForwardPropsEmits } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<\n  DropdownMenuSubContentProps & { class?: HTMLAttributes[\"class\"] }\n>()\nconst emits = defineEmits<DropdownMenuSubContentEmits>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n\nconst forwarded = useForwardPropsEmits(delegatedProps, emits)\n</script>\n\n<template>\n  <DropdownMenuSubContent\n    data-slot=\"dropdown-menu-sub-content\"\n    v-bind=\"forwarded\"\n    :class=\"\n      cn(\n        'cn-dropdown-menu-sub-content cn-menu-target z-50 origin-(--reka-dropdown-menu-content-transform-origin) overflow-hidden',\n        props.class\n      )\n    \"\n  >\n    <slot />\n  </DropdownMenuSubContent>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-maia/ui/dropdown-menu/DropdownMenuSubTrigger.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { DropdownMenuSubTriggerProps } from \"reka-ui\"\nimport { DropdownMenuSubTrigger, useForwardProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\nimport IconPlaceholder from \"@/components/icon-placeholder/IconPlaceholder.vue\"\n\nconst props = defineProps<\n  DropdownMenuSubTriggerProps & {\n    class?: HTMLAttributes[\"class\"]\n    inset?: boolean\n  }\n>()\n\nconst delegatedProps = reactiveOmit(props, \"class\", \"inset\")\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <DropdownMenuSubTrigger\n    data-slot=\"dropdown-menu-sub-trigger\"\n    :data-inset=\"inset ? '' : undefined\"\n    v-bind=\"forwardedProps\"\n    :class=\"\n      cn(\n        'cn-dropdown-menu-sub-trigger flex cursor-default items-center outline-hidden select-none data-[inset]:pl-8 [&_svg]:pointer-events-none [&_svg]:shrink-0',\n        props.class\n      )\n    \"\n  >\n    <slot />\n    <IconPlaceholder\n      lucide=\"ChevronRightIcon\"\n      tabler=\"IconChevronRight\"\n      hugeicons=\"ArrowRight01Icon\"\n      phosphor=\"CaretRightIcon\"\n      remixicon=\"RiArrowRightSLine\"\n      class=\"ml-auto\"\n    />\n  </DropdownMenuSubTrigger>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-maia/ui/dropdown-menu/DropdownMenuTrigger.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { DropdownMenuTriggerProps } from \"reka-ui\"\nimport { DropdownMenuTrigger, useForwardProps } from \"reka-ui\"\n\nconst props = defineProps<DropdownMenuTriggerProps>()\n\nconst forwardedProps = useForwardProps(props)\n</script>\n\n<template>\n  <DropdownMenuTrigger\n    data-slot=\"dropdown-menu-trigger\"\n    v-bind=\"forwardedProps\"\n  >\n    <slot />\n  </DropdownMenuTrigger>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-maia/ui/dropdown-menu/index.ts",
+      "content": "export { default as DropdownMenu } from \"./DropdownMenu.vue\"\n\nexport { default as DropdownMenuCheckboxItem } from \"./DropdownMenuCheckboxItem.vue\"\nexport { default as DropdownMenuContent } from \"./DropdownMenuContent.vue\"\nexport { default as DropdownMenuGroup } from \"./DropdownMenuGroup.vue\"\nexport { default as DropdownMenuItem } from \"./DropdownMenuItem.vue\"\nexport { default as DropdownMenuLabel } from \"./DropdownMenuLabel.vue\"\nexport { default as DropdownMenuRadioGroup } from \"./DropdownMenuRadioGroup.vue\"\nexport { default as DropdownMenuRadioItem } from \"./DropdownMenuRadioItem.vue\"\nexport { default as DropdownMenuSeparator } from \"./DropdownMenuSeparator.vue\"\nexport { default as DropdownMenuShortcut } from \"./DropdownMenuShortcut.vue\"\nexport { default as DropdownMenuSub } from \"./DropdownMenuSub.vue\"\nexport { default as DropdownMenuSubContent } from \"./DropdownMenuSubContent.vue\"\nexport { default as DropdownMenuSubTrigger } from \"./DropdownMenuSubTrigger.vue\"\nexport { default as DropdownMenuTrigger } from \"./DropdownMenuTrigger.vue\"\nexport { DropdownMenuPortal } from \"reka-ui\"\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,108 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "menubar",
+  "dependencies": [
+    "bits-ui"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-nova/ui/menubar/index.ts",
+      "content": "import CheckboxItem from \"./menubar-checkbox-item.svelte\"\nimport Content from \"./menubar-content.svelte\"\nimport GroupHeading from \"./menubar-group-heading.svelte\"\nimport Group from \"./menubar-group.svelte\"\nimport Item from \"./menubar-item.svelte\"\nimport Label from \"./menubar-label.svelte\"\nimport Menu from \"./menubar-menu.svelte\"\nimport Portal from \"./menubar-portal.svelte\"\nimport RadioGroup from \"./menubar-radio-group.svelte\"\nimport RadioItem from \"./menubar-radio-item.svelte\"\nimport Separator from \"./menubar-separator.svelte\"\nimport Shortcut from \"./menubar-shortcut.svelte\"\nimport SubContent from \"./menubar-sub-content.svelte\"\nimport SubTrigger from \"./menubar-sub-trigger.svelte\"\nimport Sub from \"./menubar-sub.svelte\"\nimport Trigger from \"./menubar-trigger.svelte\"\nimport Root from \"./menubar.svelte\"\n\nexport {\n  Root,\n  CheckboxItem,\n  Content,\n  Item,\n  RadioItem,\n  Separator,\n  Shortcut,\n  SubContent,\n  SubTrigger,\n  Trigger,\n  Menu,\n  Group,\n  Sub,\n  RadioGroup,\n  Label,\n  GroupHeading,\n  Portal,\n  //\n  Root as Menubar,\n  CheckboxItem as MenubarCheckboxItem,\n  Content as MenubarContent,\n  Item as MenubarItem,\n  RadioItem as MenubarRadioItem,\n  Separator as MenubarSeparator,\n  Shortcut as MenubarShortcut,\n  SubContent as MenubarSubContent,\n  SubTrigger as MenubarSubTrigger,\n  Trigger as MenubarTrigger,\n  Menu as MenubarMenu,\n  Group as MenubarGroup,\n  Sub as MenubarSub,\n  RadioGroup as MenubarRadioGroup,\n  Label as MenubarLabel,\n  GroupHeading as MenubarGroupHeading,\n  Portal as MenubarPortal,\n}\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/menubar/menubar-checkbox-item.svelte",
+      "content": "<script lang=\"ts\">\n  import IconPlaceholder from \"$lib/components/icon-placeholder/icon-placeholder.svelte\"\n  import { cn, type WithoutChildrenOrChild } from \"$lib/utils.js\"\n  import { Menubar as MenubarPrimitive } from \"bits-ui\"\n  import type { Snippet } from \"svelte\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    checked = $bindable(false),\n    indeterminate = $bindable(false),\n    inset,\n    children: childrenProp,\n    ...restProps\n  }: WithoutChildrenOrChild<MenubarPrimitive.CheckboxItemProps> & {\n    inset?: boolean\n    children?: Snippet\n  } = $props()\n</script>\n\n<MenubarPrimitive.CheckboxItem\n  bind:ref\n  bind:checked\n  bind:indeterminate\n  data-slot=\"menubar-checkbox-item\"\n  data-inset={inset}\n  class={cn(\n    \"cn-menubar-checkbox-item relative flex cursor-default items-center outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0\",\n    className\n  )}\n  {...restProps}\n>\n  {#snippet children({ checked: checked, indeterminate: indeterminate })}\n    <span\n      class=\"cn-menubar-checkbox-item-indicator pointer-events-none absolute flex items-center justify-center\"\n    >\n      {#if indeterminate}\n        <IconPlaceholder\n          lucide=\"MinusIcon\"\n          tabler=\"IconMinus\"\n          hugeicons=\"MinusSignIcon\"\n          phosphor=\"MinusIcon\"\n          remixicon=\"RiSubtractLine\"\n        />\n      {:else if checked}\n        <IconPlaceholder\n          lucide=\"CheckIcon\"\n          tabler=\"IconCheck\"\n          hugeicons=\"Tick02Icon\"\n          phosphor=\"CheckIcon\"\n          remixicon=\"RiCheckLine\"\n        />\n      {/if}\n    </span>\n    {@render childrenProp?.()}\n  {/snippet}\n</MenubarPrimitive.CheckboxItem>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/menubar/menubar-content.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithoutChildrenOrChild } from \"$lib/utils.js\"\n  import { Menubar as MenubarPrimitive } from \"bits-ui\"\n  import type { ComponentProps } from \"svelte\"\n\n  import MenubarPortal from \"./menubar-portal.svelte\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    sideOffset = 8,\n    alignOffset = -4,\n    align = \"start\",\n    side = \"bottom\",\n    portalProps,\n    ...restProps\n  }: MenubarPrimitive.ContentProps & {\n    portalProps?: WithoutChildrenOrChild<ComponentProps<typeof MenubarPortal>>\n  } = $props()\n</script>\n\n<MenubarPortal {...portalProps}>\n  <MenubarPrimitive.Content\n    bind:ref\n    data-slot=\"menubar-content\"\n    {align}\n    {alignOffset}\n    {side}\n    {sideOffset}\n    class={cn(\n      \"cn-menu-target cn-menu-translucent bg-popover text-popover-foreground ring-foreground/10 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 z-50 min-w-36 origin-(--bits-menubar-content-transform-origin) overflow-hidden rounded-lg p-1 shadow-md ring-1 duration-100\",\n      className\n    )}\n    {...restProps}\n  />\n</MenubarPortal>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/menubar/menubar-group-heading.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { Menubar as MenubarPrimitive } from \"bits-ui\"\n  import type { ComponentProps } from \"svelte\"\n\n  let {\n    ref = $bindable(null),\n    inset,\n    class: className,\n    ...restProps\n  }: ComponentProps<typeof MenubarPrimitive.GroupHeading> & {\n    inset?: boolean\n  } = $props()\n</script>\n\n<MenubarPrimitive.GroupHeading\n  bind:ref\n  data-slot=\"menubar-group-heading\"\n  data-inset={inset}\n  class={cn(\"px-2 py-1.5 text-sm font-medium data-[inset]:ps-8\", className)}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/menubar/menubar-group.svelte",
+      "content": "<script lang=\"ts\">\n  import { Menubar as MenubarPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    ...restProps\n  }: MenubarPrimitive.GroupProps & {\n    inset?: boolean\n  } = $props()\n</script>\n\n<MenubarPrimitive.Group bind:ref data-slot=\"menubar-group\" {...restProps} />\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/menubar/menubar-item.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { Menubar as MenubarPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    inset = undefined,\n    variant = \"default\",\n    ...restProps\n  }: MenubarPrimitive.ItemProps & {\n    inset?: boolean\n    variant?: \"default\" | \"destructive\"\n  } = $props()\n</script>\n\n<MenubarPrimitive.Item\n  bind:ref\n  data-slot=\"menubar-item\"\n  data-inset={inset}\n  data-variant={variant}\n  class={cn(\"cn-menubar-item group/menubar-item flex items-center\", className)}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/menubar/menubar-label.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { type WithElementRef } from \"bits-ui\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    inset,\n    children,\n    class: className,\n    ...restProps\n  }: WithElementRef<HTMLAttributes<HTMLElement>> & {\n    inset?: boolean\n  } = $props()\n</script>\n\n<div\n  bind:this={ref}\n  data-slot=\"menubar-label\"\n  data-inset={inset}\n  class={cn(\"cn-menubar-label\", className)}\n  {...restProps}\n>\n  {@render children?.()}\n</div>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/menubar/menubar-menu.svelte",
+      "content": "<script lang=\"ts\">\n  import { Menubar as MenubarPrimitive } from \"bits-ui\"\n\n  let { ...restProps }: MenubarPrimitive.MenuProps = $props()\n</script>\n\n<MenubarPrimitive.Menu {...restProps} />\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/menubar/menubar-portal.svelte",
+      "content": "<script lang=\"ts\">\n  import { Menubar as MenubarPrimitive } from \"bits-ui\"\n\n  let { ...restProps }: MenubarPrimitive.PortalProps = $props()\n</script>\n\n<MenubarPrimitive.Portal {...restProps} />\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/menubar/menubar-radio-group.svelte",
+      "content": "<script lang=\"ts\">\n  import { Menubar as MenubarPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    value = $bindable(\"\"),\n    ...restProps\n  }: MenubarPrimitive.RadioGroupProps = $props()\n</script>\n\n<MenubarPrimitive.RadioGroup\n  bind:ref\n  bind:value\n  data-slot=\"menubar-radio-group\"\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/menubar/menubar-radio-item.svelte",
+      "content": "<script lang=\"ts\">\n  import IconPlaceholder from \"$lib/components/icon-placeholder/icon-placeholder.svelte\"\n  import { cn, type WithoutChild } from \"$lib/utils.js\"\n  import { Menubar as MenubarPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    inset,\n    children: childrenProp,\n    ...restProps\n  }: WithoutChild<MenubarPrimitive.RadioItemProps> & {\n    inset?: boolean\n  } = $props()\n</script>\n\n<MenubarPrimitive.RadioItem\n  bind:ref\n  data-slot=\"menubar-radio-item\"\n  data-inset={inset}\n  class={cn(\n    \"cn-menubar-radio-item relative flex cursor-default items-center outline-hidden select-none data-disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0\",\n    className\n  )}\n  {...restProps}\n>\n  {#snippet children({ checked })}\n    <span\n      class=\"cn-menubar-radio-item-indicator pointer-events-none absolute flex items-center justify-center\"\n    >\n      {#if checked}\n        <IconPlaceholder\n          lucide=\"CheckIcon\"\n          tabler=\"IconCheck\"\n          hugeicons=\"Tick02Icon\"\n          phosphor=\"CheckIcon\"\n          remixicon=\"RiCheckLine\"\n        />\n      {/if}\n    </span>\n    {@render childrenProp?.({ checked })}\n  {/snippet}\n</MenubarPrimitive.RadioItem>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/menubar/menubar-separator.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { Menubar as MenubarPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    ...restProps\n  }: MenubarPrimitive.SeparatorProps = $props()\n</script>\n\n<MenubarPrimitive.Separator\n  bind:ref\n  data-slot=\"menubar-separator\"\n  class={cn(\"cn-menubar-separator -mx-1 my-1 h-px\", className)}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/menubar/menubar-shortcut.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...restProps\n  }: WithElementRef<HTMLAttributes<HTMLSpanElement>> = $props()\n</script>\n\n<span\n  bind:this={ref}\n  data-slot=\"menubar-shortcut\"\n  class={cn(\"cn-menubar-shortcut ml-auto\", className)}\n  {...restProps}\n>\n  {@render children?.()}\n</span>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/menubar/menubar-sub-content.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { Menubar as MenubarPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    ...restProps\n  }: MenubarPrimitive.SubContentProps = $props()\n</script>\n\n<MenubarPrimitive.SubContent\n  bind:ref\n  data-slot=\"menubar-sub-content\"\n  class={cn(\n    \"cn-menubar-sub-content cn-menu-target cn-menu-translucent\",\n    className\n  )}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/menubar/menubar-sub-trigger.svelte",
+      "content": "<script lang=\"ts\">\n  import IconPlaceholder from \"$lib/components/icon-placeholder/icon-placeholder.svelte\"\n  import { cn, type WithoutChild } from \"$lib/utils.js\"\n  import { Menubar as MenubarPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    inset = undefined,\n    children,\n    ...restProps\n  }: WithoutChild<MenubarPrimitive.SubTriggerProps> & {\n    inset?: boolean\n  } = $props()\n</script>\n\n<MenubarPrimitive.SubTrigger\n  bind:ref\n  data-slot=\"menubar-sub-trigger\"\n  data-inset={inset}\n  class={cn(\n    \"cn-menubar-sub-trigger flex cursor-default items-center outline-none select-none\",\n    className\n  )}\n  {...restProps}\n>\n  {@render children?.()}\n  <IconPlaceholder\n    lucide=\"ChevronRightIcon\"\n    tabler=\"IconChevronRight\"\n    hugeicons=\"ArrowRight01Icon\"\n    phosphor=\"CaretRightIcon\"\n    remixicon=\"RiArrowRightSLine\"\n    class=\"cn-rtl-flip ml-auto size-4\"\n  />\n</MenubarPrimitive.SubTrigger>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/menubar/menubar-sub.svelte",
+      "content": "<script lang=\"ts\">\n  import { Menubar as MenubarPrimitive } from \"bits-ui\"\n\n  let { open = $bindable(false), ...restProps }: MenubarPrimitive.SubProps =\n    $props()\n</script>\n\n<MenubarPrimitive.Sub bind:open {...restProps} />\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/menubar/menubar-trigger.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { Menubar as MenubarPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    ...restProps\n  }: MenubarPrimitive.TriggerProps = $props()\n</script>\n\n<MenubarPrimitive.Trigger\n  bind:ref\n  data-slot=\"menubar-trigger\"\n  class={cn(\n    \"cn-menubar-trigger flex items-center outline-hidden select-none\",\n    className\n  )}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/menubar/menubar.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { Menubar as MenubarPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    ...restProps\n  }: MenubarPrimitive.RootProps = $props()\n</script>\n\n<MenubarPrimitive.Root\n  bind:ref\n  data-slot=\"menubar\"\n  class={cn(\"cn-menubar flex items-center\", className)}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    }
+  ],
+  "meta": {
+    "links": {
+      "docs": "https://force-ui.com/docs/components/svelte/menubar"
+    }
+  },
+  "type": "registry:ui"
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "textarea",
+  "dependencies": [
+    "@vueuse/core"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-mira/ui/textarea/Textarea.vue",
+      "content": "<script setup lang=\"ts\">\nimport { useVModel } from \"@vueuse/core\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n  defaultValue?: string | number\n  modelValue?: string | number\n}>()\n\nconst emits = defineEmits<{\n  (e: \"update:modelValue\", payload: string | number): void\n}>()\n\nconst modelValue = useVModel(props, \"modelValue\", emits, {\n  passive: true,\n  defaultValue: props.defaultValue,\n})\n</script>\n\n<template>\n  <textarea\n    v-model=\"modelValue\"\n    data-slot=\"textarea\"\n    :class=\"\n      cn(\n        'cn-textarea flex field-sizing-content min-h-16 w-full outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50',\n        props.class\n      )\n    \"\n  />\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-mira/ui/textarea/index.ts",
+      "content": "export { default as Textarea } from \"./Textarea.vue\"\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

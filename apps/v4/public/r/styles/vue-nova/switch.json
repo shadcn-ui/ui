@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "switch",
+  "dependencies": [
+    "reka-ui",
+    "@vueuse/core"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-nova/ui/switch/Switch.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { SwitchRootEmits, SwitchRootProps } from \"reka-ui\"\nimport { SwitchRoot, SwitchThumb, useForwardPropsEmits } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = withDefaults(\n  defineProps<\n    SwitchRootProps & {\n      class?: HTMLAttributes[\"class\"]\n      size?: \"sm\" | \"default\"\n    }\n  >(),\n  {\n    size: \"default\",\n  }\n)\n\nconst emits = defineEmits<SwitchRootEmits>()\n\nconst delegatedProps = reactiveOmit(props, \"class\", \"size\")\n\nconst forwarded = useForwardPropsEmits(delegatedProps, emits)\n</script>\n\n<template>\n  <SwitchRoot\n    v-slot=\"slotProps\"\n    data-slot=\"switch\"\n    :data-size=\"size\"\n    v-bind=\"forwarded\"\n    :class=\"\n      cn(\n        'cn-switch peer group/switch relative inline-flex items-center transition-all outline-none after:absolute after:-inset-x-3 after:-inset-y-2 data-disabled:cursor-not-allowed data-disabled:opacity-50',\n        props.class\n      )\n    \"\n  >\n    <SwitchThumb\n      data-slot=\"switch-thumb\"\n      class=\"cn-switch-thumb pointer-events-none block ring-0 transition-transform\"\n    >\n      <slot name=\"thumb\" v-bind=\"slotProps\" />\n    </SwitchThumb>\n  </SwitchRoot>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-nova/ui/switch/index.ts",
+      "content": "export { default as Switch } from \"./Switch.vue\"\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

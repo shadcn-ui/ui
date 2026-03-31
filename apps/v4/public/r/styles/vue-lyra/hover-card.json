@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hover-card",
+  "dependencies": [
+    "reka-ui",
+    "@vueuse/core"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-lyra/ui/hover-card/HoverCard.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HoverCardRootEmits, HoverCardRootProps } from \"reka-ui\"\nimport { HoverCardRoot, useForwardPropsEmits } from \"reka-ui\"\n\nconst props = defineProps<HoverCardRootProps>()\nconst emits = defineEmits<HoverCardRootEmits>()\n\nconst forwarded = useForwardPropsEmits(props, emits)\n</script>\n\n<template>\n  <HoverCardRoot v-slot=\"slotProps\" data-slot=\"hover-card\" v-bind=\"forwarded\">\n    <slot v-bind=\"slotProps\" />\n  </HoverCardRoot>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-lyra/ui/hover-card/HoverCardContent.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { HoverCardContentProps } from \"reka-ui\"\nimport { HoverCardContent, HoverCardPortal, useForwardProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\ndefineOptions({\n  inheritAttrs: false,\n})\n\nconst props = withDefaults(\n  defineProps<HoverCardContentProps & { class?: HTMLAttributes[\"class\"] }>(),\n  {\n    sideOffset: 4,\n  }\n)\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <HoverCardPortal>\n    <HoverCardContent\n      data-slot=\"hover-card-content\"\n      v-bind=\"{ ...$attrs, ...forwardedProps }\"\n      :class=\"\n        cn(\n          'cn-hover-card-content z-50 origin-(--reka-hover-card-content-transform-origin) outline-hidden',\n          props.class\n        )\n      \"\n    >\n      <slot />\n    </HoverCardContent>\n  </HoverCardPortal>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-lyra/ui/hover-card/HoverCardTrigger.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HoverCardTriggerProps } from \"reka-ui\"\nimport { HoverCardTrigger } from \"reka-ui\"\n\nconst props = defineProps<HoverCardTriggerProps>()\n</script>\n\n<template>\n  <HoverCardTrigger data-slot=\"hover-card-trigger\" v-bind=\"props\">\n    <slot />\n  </HoverCardTrigger>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-lyra/ui/hover-card/index.ts",
+      "content": "export { default as HoverCard } from \"./HoverCard.vue\"\nexport { default as HoverCardContent } from \"./HoverCardContent.vue\"\nexport { default as HoverCardTrigger } from \"./HoverCardTrigger.vue\"\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scroll-area",
+  "dependencies": [
+    "reka-ui",
+    "@vueuse/core"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-nova/ui/scroll-area/ScrollArea.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { ScrollAreaRootProps } from \"reka-ui\"\nimport { ScrollAreaCorner, ScrollAreaRoot, ScrollAreaViewport } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nimport ScrollBar from \"./ScrollBar.vue\"\n\nconst props = defineProps<\n  ScrollAreaRootProps & { class?: HTMLAttributes[\"class\"] }\n>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n</script>\n\n<template>\n  <ScrollAreaRoot\n    data-slot=\"scroll-area\"\n    v-bind=\"delegatedProps\"\n    :class=\"cn('cn-scroll-area relative', props.class)\"\n  >\n    <ScrollAreaViewport\n      data-slot=\"scroll-area-viewport\"\n      class=\"cn-scroll-area-viewport size-full rounded-[inherit] transition-[color,box-shadow] outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-1\"\n    >\n      <slot />\n    </ScrollAreaViewport>\n    <ScrollBar />\n    <ScrollAreaCorner />\n  </ScrollAreaRoot>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-nova/ui/scroll-area/ScrollBar.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { ScrollAreaScrollbarProps } from \"reka-ui\"\nimport { ScrollAreaScrollbar, ScrollAreaThumb } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = withDefaults(\n  defineProps<ScrollAreaScrollbarProps & { class?: HTMLAttributes[\"class\"] }>(),\n  {\n    orientation: \"vertical\",\n  }\n)\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n</script>\n\n<template>\n  <ScrollAreaScrollbar\n    data-slot=\"scroll-area-scrollbar\"\n    :data-orientation=\"orientation\"\n    v-bind=\"delegatedProps\"\n    :class=\"\n      cn(\n        'cn-scroll-area-scrollbar flex touch-none p-px transition-colors select-none',\n        props.class\n      )\n    \"\n  >\n    <ScrollAreaThumb\n      data-slot=\"scroll-area-thumb\"\n      class=\"cn-scroll-area-thumb relative flex-1 bg-border\"\n    />\n  </ScrollAreaScrollbar>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-nova/ui/scroll-area/index.ts",
+      "content": "export { default as ScrollArea } from \"./ScrollArea.vue\"\nexport { default as ScrollBar } from \"./ScrollBar.vue\"\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

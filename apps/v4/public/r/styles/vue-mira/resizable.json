@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "resizable",
+  "dependencies": [
+    "reka-ui",
+    "@vueuse/core"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-mira/ui/resizable/ResizableHandle.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type {\n  SplitterResizeHandleEmits,\n  SplitterResizeHandleProps,\n} from \"reka-ui\"\nimport { SplitterResizeHandle, useForwardPropsEmits } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<\n  SplitterResizeHandleProps & {\n    class?: HTMLAttributes[\"class\"]\n    withHandle?: boolean\n  }\n>()\nconst emits = defineEmits<SplitterResizeHandleEmits>()\n\nconst delegatedProps = reactiveOmit(props, \"class\", \"withHandle\")\nconst forwarded = useForwardPropsEmits(delegatedProps, emits)\n</script>\n\n<template>\n  <SplitterResizeHandle\n    data-slot=\"resizable-handle\"\n    v-bind=\"forwarded\"\n    :class=\"\n      cn(\n        'cn-resizable-handle relative flex w-px items-center justify-center bg-border after:absolute after:inset-y-0 after:left-1/2 after:w-1 after:-translate-x-1/2 focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-1 focus-visible:outline-hidden data-[panel-group-direction=vertical]:h-px data-[panel-group-direction=vertical]:w-full data-[panel-group-direction=vertical]:after:left-0 data-[panel-group-direction=vertical]:after:h-1 data-[panel-group-direction=vertical]:after:w-full data-[panel-group-direction=vertical]:after:translate-x-0 data-[panel-group-direction=vertical]:after:-translate-y-1/2 [&[data-panel-group-direction=vertical]>div]:rotate-90',\n        props.class\n      )\n    \"\n  >\n    <template v-if=\"props.withHandle\">\n      <div class=\"cn-resizable-handle-icon z-10 flex shrink-0\">\n        <slot />\n      </div>\n    </template>\n  </SplitterResizeHandle>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-mira/ui/resizable/ResizablePanel.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { SplitterPanelEmits, SplitterPanelProps } from \"reka-ui\"\nimport { SplitterPanel, useForwardExpose, useForwardPropsEmits } from \"reka-ui\"\n\nconst props = defineProps<SplitterPanelProps>()\nconst emits = defineEmits<SplitterPanelEmits>()\n\nconst forwarded = useForwardPropsEmits(props, emits)\nuseForwardExpose()\n</script>\n\n<template>\n  <SplitterPanel\n    v-slot=\"slotProps\"\n    data-slot=\"resizable-panel\"\n    v-bind=\"forwarded\"\n  >\n    <slot v-bind=\"slotProps\" />\n  </SplitterPanel>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-mira/ui/resizable/ResizablePanelGroup.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { SplitterGroupEmits, SplitterGroupProps } from \"reka-ui\"\nimport { SplitterGroup, useForwardPropsEmits } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<\n  SplitterGroupProps & { class?: HTMLAttributes[\"class\"] }\n>()\nconst emits = defineEmits<SplitterGroupEmits>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n\nconst forwarded = useForwardPropsEmits(delegatedProps, emits)\n</script>\n\n<template>\n  <SplitterGroup\n    v-slot=\"slotProps\"\n    data-slot=\"resizable-panel-group\"\n    v-bind=\"forwarded\"\n    :class=\"\n      cn(\n        'cn-resizable-panel-group flex h-full w-full data-[panel-group-direction=vertical]:flex-col',\n        props.class\n      )\n    \"\n  >\n    <slot v-bind=\"slotProps\" />\n  </SplitterGroup>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-mira/ui/resizable/index.ts",
+      "content": "export { default as ResizableHandle } from \"./ResizableHandle.vue\"\nexport { default as ResizablePanel } from \"./ResizablePanel.vue\"\nexport { default as ResizablePanelGroup } from \"./ResizablePanelGroup.vue\"\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

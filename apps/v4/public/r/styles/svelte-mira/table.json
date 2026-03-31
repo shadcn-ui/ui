@@ -1,0 +1,60 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "table",
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-mira/ui/table/index.ts",
+      "content": "import Body from \"./table-body.svelte\"\nimport Caption from \"./table-caption.svelte\"\nimport Cell from \"./table-cell.svelte\"\nimport Footer from \"./table-footer.svelte\"\nimport Head from \"./table-head.svelte\"\nimport Header from \"./table-header.svelte\"\nimport Row from \"./table-row.svelte\"\nimport Root from \"./table.svelte\"\n\nexport {\n  Root,\n  Body,\n  Caption,\n  Cell,\n  Footer,\n  Head,\n  Header,\n  Row,\n  //\n  Root as Table,\n  Body as TableBody,\n  Caption as TableCaption,\n  Cell as TableCell,\n  Footer as TableFooter,\n  Head as TableHead,\n  Header as TableHeader,\n  Row as TableRow,\n}\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-mira/ui/table/table-body.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...restProps\n  }: WithElementRef<HTMLAttributes<HTMLTableSectionElement>> = $props()\n</script>\n\n<tbody\n  bind:this={ref}\n  data-slot=\"table-body\"\n  class={cn(\"cn-table-body\", className)}\n  {...restProps}\n>\n  {@render children?.()}\n</tbody>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-mira/ui/table/table-caption.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...restProps\n  }: WithElementRef<HTMLAttributes<HTMLElement>> = $props()\n</script>\n\n<caption\n  bind:this={ref}\n  data-slot=\"table-caption\"\n  class={cn(\"cn-table-caption\", className)}\n  {...restProps}\n>\n  {@render children?.()}\n</caption>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-mira/ui/table/table-cell.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLTdAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...restProps\n  }: WithElementRef<HTMLTdAttributes> = $props()\n</script>\n\n<td\n  bind:this={ref}\n  data-slot=\"table-cell\"\n  class={cn(\"cn-table-cell\", className)}\n  {...restProps}\n>\n  {@render children?.()}\n</td>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-mira/ui/table/table-footer.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...restProps\n  }: WithElementRef<HTMLAttributes<HTMLTableSectionElement>> = $props()\n</script>\n\n<tfoot\n  bind:this={ref}\n  data-slot=\"table-footer\"\n  class={cn(\"cn-table-footer\", className)}\n  {...restProps}\n>\n  {@render children?.()}\n</tfoot>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-mira/ui/table/table-head.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLThAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...restProps\n  }: WithElementRef<HTMLThAttributes> = $props()\n</script>\n\n<th\n  bind:this={ref}\n  data-slot=\"table-head\"\n  class={cn(\"cn-table-head\", className)}\n  {...restProps}\n>\n  {@render children?.()}\n</th>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-mira/ui/table/table-header.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...restProps\n  }: WithElementRef<HTMLAttributes<HTMLTableSectionElement>> = $props()\n</script>\n\n<thead\n  bind:this={ref}\n  data-slot=\"table-header\"\n  class={cn(\"cn-table-header\", className)}\n  {...restProps}\n>\n  {@render children?.()}\n</thead>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-mira/ui/table/table-row.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...restProps\n  }: WithElementRef<HTMLAttributes<HTMLTableRowElement>> = $props()\n</script>\n\n<tr\n  bind:this={ref}\n  data-slot=\"table-row\"\n  class={cn(\"cn-table-row\", className)}\n  {...restProps}\n>\n  {@render children?.()}\n</tr>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-mira/ui/table/table.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLTableAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...restProps\n  }: WithElementRef<HTMLTableAttributes> = $props()\n</script>\n\n<div data-slot=\"table-container\" class=\"cn-table-container\">\n  <table\n    bind:this={ref}\n    data-slot=\"table\"\n    class={cn(\"cn-table\", className)}\n    {...restProps}\n  >\n    {@render children?.()}\n  </table>\n</div>\n",
+      "type": "registry:ui"
+    }
+  ],
+  "meta": {
+    "links": {
+      "docs": "https://force-ui.com/docs/components/svelte/table"
+    }
+  },
+  "type": "registry:ui"
+}

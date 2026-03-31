@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "collapsible",
+  "dependencies": [
+    "reka-ui"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-lyra/ui/collapsible/Collapsible.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { CollapsibleRootEmits, CollapsibleRootProps } from \"reka-ui\"\nimport { CollapsibleRoot, useForwardPropsEmits } from \"reka-ui\"\n\nconst props = defineProps<CollapsibleRootProps>()\nconst emits = defineEmits<CollapsibleRootEmits>()\n\nconst forwarded = useForwardPropsEmits(props, emits)\n</script>\n\n<template>\n  <CollapsibleRoot\n    v-slot=\"slotProps\"\n    data-slot=\"collapsible\"\n    v-bind=\"forwarded\"\n  >\n    <slot v-bind=\"slotProps\" />\n  </CollapsibleRoot>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-lyra/ui/collapsible/CollapsibleContent.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { CollapsibleContentProps } from \"reka-ui\"\nimport { CollapsibleContent } from \"reka-ui\"\n\nconst props = defineProps<CollapsibleContentProps>()\n</script>\n\n<template>\n  <CollapsibleContent data-slot=\"collapsible-content\" v-bind=\"props\">\n    <slot />\n  </CollapsibleContent>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-lyra/ui/collapsible/CollapsibleTrigger.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { CollapsibleTriggerProps } from \"reka-ui\"\nimport { CollapsibleTrigger } from \"reka-ui\"\n\nconst props = defineProps<CollapsibleTriggerProps>()\n</script>\n\n<template>\n  <CollapsibleTrigger data-slot=\"collapsible-trigger\" v-bind=\"props\">\n    <slot />\n  </CollapsibleTrigger>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-lyra/ui/collapsible/index.ts",
+      "content": "export { default as Collapsible } from \"./Collapsible.vue\"\nexport { default as CollapsibleContent } from \"./CollapsibleContent.vue\"\nexport { default as CollapsibleTrigger } from \"./CollapsibleTrigger.vue\"\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

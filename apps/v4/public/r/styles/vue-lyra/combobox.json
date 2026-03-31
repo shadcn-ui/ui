@@ -1,0 +1,74 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "combobox",
+  "dependencies": [
+    "reka-ui",
+    "@vueuse/core"
+  ],
+  "registryDependencies": [
+    "icon-placeholder"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-lyra/ui/combobox/Combobox.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { ComboboxRootEmits, ComboboxRootProps } from \"reka-ui\"\nimport { ComboboxRoot, useForwardPropsEmits } from \"reka-ui\"\n\nconst props = defineProps<ComboboxRootProps>()\nconst emits = defineEmits<ComboboxRootEmits>()\n\nconst forwarded = useForwardPropsEmits(props, emits)\n</script>\n\n<template>\n  <ComboboxRoot v-slot=\"slotProps\" data-slot=\"combobox\" v-bind=\"forwarded\">\n    <slot v-bind=\"slotProps\" />\n  </ComboboxRoot>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-lyra/ui/combobox/ComboboxAnchor.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { ComboboxAnchorProps } from \"reka-ui\"\nimport { ComboboxAnchor, useForwardProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<\n  ComboboxAnchorProps & { class?: HTMLAttributes[\"class\"] }\n>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n\nconst forwarded = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <ComboboxAnchor\n    data-slot=\"combobox-anchor\"\n    v-bind=\"forwarded\"\n    :class=\"cn('w-[200px]', props.class)\"\n  >\n    <slot />\n  </ComboboxAnchor>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-lyra/ui/combobox/ComboboxEmpty.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { ComboboxEmptyProps } from \"reka-ui\"\nimport { ComboboxEmpty } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<\n  ComboboxEmptyProps & { class?: HTMLAttributes[\"class\"] }\n>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n</script>\n\n<template>\n  <ComboboxEmpty\n    data-slot=\"combobox-empty\"\n    v-bind=\"delegatedProps\"\n    :class=\"cn('py-6 text-center text-sm', props.class)\"\n  >\n    <slot />\n  </ComboboxEmpty>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-lyra/ui/combobox/ComboboxGroup.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { ComboboxGroupProps } from \"reka-ui\"\nimport { ComboboxGroup, ComboboxLabel } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<\n  ComboboxGroupProps & {\n    class?: HTMLAttributes[\"class\"]\n    heading?: string\n  }\n>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n</script>\n\n<template>\n  <ComboboxGroup\n    data-slot=\"combobox-group\"\n    v-bind=\"delegatedProps\"\n    :class=\"cn('overflow-hidden p-1 text-foreground', props.class)\"\n  >\n    <ComboboxLabel\n      v-if=\"heading\"\n      class=\"px-2 py-1.5 text-xs font-medium text-muted-foreground\"\n    >\n      {{ heading }}\n    </ComboboxLabel>\n    <slot />\n  </ComboboxGroup>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-lyra/ui/combobox/ComboboxInput.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { ComboboxInputEmits, ComboboxInputProps } from \"reka-ui\"\nimport { ComboboxInput, useForwardPropsEmits } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\nimport { IconPlaceholder } from \"@/components/icon-placeholder\"\n\ndefineOptions({\n  inheritAttrs: false,\n})\n\nconst props = defineProps<\n  ComboboxInputProps & {\n    class?: HTMLAttributes[\"class\"]\n  }\n>()\n\nconst emits = defineEmits<ComboboxInputEmits>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n\nconst forwarded = useForwardPropsEmits(delegatedProps, emits)\n</script>\n\n<template>\n  <div\n    data-slot=\"command-input-wrapper\"\n    class=\"flex h-9 items-center gap-2 border-b px-3\"\n  >\n    <IconPlaceholder\n      lucide=\"SearchIcon\"\n      tabler=\"IconSearch\"\n      hugeicons=\"Search01Icon\"\n      phosphor=\"MagnifyingGlassIcon\"\n      remixicon=\"RiSearchLine\"\n      class=\"size-4 shrink-0 opacity-50\"\n    />\n    <ComboboxInput\n      data-slot=\"command-input\"\n      :class=\"\n        cn(\n          'flex h-10 w-full rounded-md bg-transparent py-3 text-sm outline-hidden placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50',\n          props.class\n        )\n      \"\n      v-bind=\"{ ...$attrs, ...forwarded }\"\n    >\n      <slot />\n    </ComboboxInput>\n  </div>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-lyra/ui/combobox/ComboboxItem.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { ComboboxItemEmits, ComboboxItemProps } from \"reka-ui\"\nimport { ComboboxItem, useForwardPropsEmits } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<\n  ComboboxItemProps & { class?: HTMLAttributes[\"class\"] }\n>()\nconst emits = defineEmits<ComboboxItemEmits>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n\nconst forwarded = useForwardPropsEmits(delegatedProps, emits)\n</script>\n\n<template>\n  <ComboboxItem\n    data-slot=\"combobox-item\"\n    v-bind=\"forwarded\"\n    :class=\"\n      cn(\n        'relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*=\\'size-\\'])]:size-4 [&_svg:not([class*=\\'text-\\'])]:text-muted-foreground',\n        props.class\n      )\n    \"\n  >\n    <slot />\n  </ComboboxItem>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-lyra/ui/combobox/ComboboxItemIndicator.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { ComboboxItemIndicatorProps } from \"reka-ui\"\nimport { ComboboxItemIndicator, useForwardProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<\n  ComboboxItemIndicatorProps & { class?: HTMLAttributes[\"class\"] }\n>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n\nconst forwarded = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <ComboboxItemIndicator\n    data-slot=\"combobox-item-indicator\"\n    v-bind=\"forwarded\"\n    :class=\"cn('ml-auto', props.class)\"\n  >\n    <slot />\n  </ComboboxItemIndicator>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-lyra/ui/combobox/ComboboxList.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { ComboboxContentEmits, ComboboxContentProps } from \"reka-ui\"\nimport { ComboboxContent, ComboboxPortal, useForwardPropsEmits } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\ndefineOptions({\n  inheritAttrs: false,\n})\n\nconst props = withDefaults(\n  defineProps<ComboboxContentProps & { class?: HTMLAttributes[\"class\"] }>(),\n  {\n    position: \"popper\",\n    align: \"center\",\n    sideOffset: 4,\n  }\n)\nconst emits = defineEmits<ComboboxContentEmits>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\nconst forwarded = useForwardPropsEmits(delegatedProps, emits)\n</script>\n\n<template>\n  <ComboboxPortal>\n    <ComboboxContent\n      data-slot=\"combobox-list\"\n      v-bind=\"{ ...$attrs, ...forwarded }\"\n      :class=\"\n        cn(\n          'z-50 w-[200px] origin-(--reka-combobox-content-transform-origin) overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-md outline-none data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95',\n          props.class\n        )\n      \"\n    >\n      <slot />\n    </ComboboxContent>\n  </ComboboxPortal>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-lyra/ui/combobox/ComboboxSeparator.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { ComboboxSeparatorProps } from \"reka-ui\"\nimport { ComboboxSeparator } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<\n  ComboboxSeparatorProps & { class?: HTMLAttributes[\"class\"] }\n>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n</script>\n\n<template>\n  <ComboboxSeparator\n    data-slot=\"combobox-separator\"\n    v-bind=\"delegatedProps\"\n    :class=\"cn('-mx-1 h-px bg-border', props.class)\"\n  >\n    <slot />\n  </ComboboxSeparator>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-lyra/ui/combobox/ComboboxTrigger.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { ComboboxTriggerProps } from \"reka-ui\"\nimport { ComboboxTrigger, useForwardProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<\n  ComboboxTriggerProps & { class?: HTMLAttributes[\"class\"] }\n>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n\nconst forwarded = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <ComboboxTrigger\n    data-slot=\"combobox-trigger\"\n    v-bind=\"forwarded\"\n    :class=\"cn('', props.class)\"\n    tabindex=\"0\"\n  >\n    <slot />\n  </ComboboxTrigger>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-lyra/ui/combobox/ComboboxViewport.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { ComboboxViewportProps } from \"reka-ui\"\nimport { ComboboxViewport, useForwardProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<\n  ComboboxViewportProps & { class?: HTMLAttributes[\"class\"] }\n>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n\nconst forwarded = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <ComboboxViewport\n    data-slot=\"combobox-viewport\"\n    v-bind=\"forwarded\"\n    :class=\"\n      cn(\n        'max-h-[300px] scroll-py-1 overflow-x-hidden overflow-y-auto',\n        props.class\n      )\n    \"\n  >\n    <slot />\n  </ComboboxViewport>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-lyra/ui/combobox/index.ts",
+      "content": "export { default as Combobox } from \"./Combobox.vue\"\nexport { default as ComboboxAnchor } from \"./ComboboxAnchor.vue\"\nexport { default as ComboboxEmpty } from \"./ComboboxEmpty.vue\"\nexport { default as ComboboxGroup } from \"./ComboboxGroup.vue\"\nexport { default as ComboboxInput } from \"./ComboboxInput.vue\"\nexport { default as ComboboxItem } from \"./ComboboxItem.vue\"\nexport { default as ComboboxItemIndicator } from \"./ComboboxItemIndicator.vue\"\nexport { default as ComboboxList } from \"./ComboboxList.vue\"\nexport { default as ComboboxSeparator } from \"./ComboboxSeparator.vue\"\nexport { default as ComboboxViewport } from \"./ComboboxViewport.vue\"\n\nexport { ComboboxCancel, ComboboxTrigger } from \"reka-ui\"\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

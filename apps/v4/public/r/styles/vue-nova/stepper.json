@@ -1,0 +1,51 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stepper",
+  "dependencies": [
+    "reka-ui",
+    "@vueuse/core"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-nova/ui/stepper/Stepper.vue",
+      "content": "<script lang=\"ts\" setup>\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { StepperRootEmits, StepperRootProps } from \"reka-ui\"\nimport { StepperRoot, useForwardPropsEmits } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<\n  StepperRootProps & { class?: HTMLAttributes[\"class\"] }\n>()\nconst emits = defineEmits<StepperRootEmits>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n\nconst forwarded = useForwardPropsEmits(delegatedProps, emits)\n</script>\n\n<template>\n  <StepperRoot\n    v-slot=\"slotProps\"\n    :class=\"cn('flex gap-2', props.class)\"\n    v-bind=\"forwarded\"\n  >\n    <slot v-bind=\"slotProps\" />\n  </StepperRoot>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-nova/ui/stepper/StepperDescription.vue",
+      "content": "<script lang=\"ts\" setup>\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { StepperDescriptionProps } from \"reka-ui\"\nimport { StepperDescription, useForwardProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<\n  StepperDescriptionProps & { class?: HTMLAttributes[\"class\"] }\n>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n\nconst forwarded = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <StepperDescription\n    v-slot=\"slotProps\"\n    v-bind=\"forwarded\"\n    :class=\"cn('text-xs text-muted-foreground', props.class)\"\n  >\n    <slot v-bind=\"slotProps\" />\n  </StepperDescription>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-nova/ui/stepper/StepperIndicator.vue",
+      "content": "<script lang=\"ts\" setup>\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { StepperIndicatorProps } from \"reka-ui\"\nimport { StepperIndicator, useForwardProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<\n  StepperIndicatorProps & { class?: HTMLAttributes[\"class\"] }\n>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n\nconst forwarded = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <StepperIndicator\n    v-slot=\"slotProps\"\n    v-bind=\"forwarded\"\n    :class=\"\n      cn(\n        'inline-flex h-8 w-8 items-center justify-center rounded-full text-muted-foreground/50',\n        // Disabled\n        'group-data-[disabled]:text-muted-foreground group-data-[disabled]:opacity-50',\n        // Active\n        'group-data-[state=active]:bg-primary group-data-[state=active]:text-primary-foreground',\n        // Completed\n        'group-data-[state=completed]:bg-accent group-data-[state=completed]:text-accent-foreground',\n        props.class\n      )\n    \"\n  >\n    <slot v-bind=\"slotProps\" />\n  </StepperIndicator>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-nova/ui/stepper/StepperItem.vue",
+      "content": "<script lang=\"ts\" setup>\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { StepperItemProps } from \"reka-ui\"\nimport { StepperItem, useForwardProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<\n  StepperItemProps & { class?: HTMLAttributes[\"class\"] }\n>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n\nconst forwarded = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <StepperItem\n    v-slot=\"slotProps\"\n    v-bind=\"forwarded\"\n    :class=\"\n      cn(\n        'group flex items-center gap-2 data-[disabled]:pointer-events-none',\n        props.class\n      )\n    \"\n  >\n    <slot v-bind=\"slotProps\" />\n  </StepperItem>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-nova/ui/stepper/StepperSeparator.vue",
+      "content": "<script lang=\"ts\" setup>\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { StepperSeparatorProps } from \"reka-ui\"\nimport { StepperSeparator, useForwardProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<\n  StepperSeparatorProps & { class?: HTMLAttributes[\"class\"] }\n>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n\nconst forwarded = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <StepperSeparator\n    v-bind=\"forwarded\"\n    :class=\"\n      cn(\n        'bg-muted',\n        // Disabled\n        'group-data-[disabled]:bg-muted group-data-[disabled]:opacity-50',\n        // Completed\n        'group-data-[state=completed]:bg-accent',\n        props.class\n      )\n    \"\n  />\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-nova/ui/stepper/StepperTitle.vue",
+      "content": "<script lang=\"ts\" setup>\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { StepperTitleProps } from \"reka-ui\"\nimport { StepperTitle, useForwardProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<\n  StepperTitleProps & { class?: HTMLAttributes[\"class\"] }\n>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n\nconst forwarded = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <StepperTitle\n    v-bind=\"forwarded\"\n    :class=\"cn('text-md font-semibold whitespace-nowrap', props.class)\"\n  >\n    <slot />\n  </StepperTitle>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-nova/ui/stepper/StepperTrigger.vue",
+      "content": "<script lang=\"ts\" setup>\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { StepperTriggerProps } from \"reka-ui\"\nimport { StepperTrigger, useForwardProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<\n  StepperTriggerProps & { class?: HTMLAttributes[\"class\"] }\n>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n\nconst forwarded = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <StepperTrigger\n    v-bind=\"forwarded\"\n    :class=\"\n      cn(\n        'flex flex-col items-center gap-1 rounded-md p-1 text-center',\n        props.class\n      )\n    \"\n  >\n    <slot />\n  </StepperTrigger>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-nova/ui/stepper/index.ts",
+      "content": "export { default as Stepper } from \"./Stepper.vue\"\nexport { default as StepperDescription } from \"./StepperDescription.vue\"\nexport { default as StepperIndicator } from \"./StepperIndicator.vue\"\nexport { default as StepperItem } from \"./StepperItem.vue\"\nexport { default as StepperSeparator } from \"./StepperSeparator.vue\"\nexport { default as StepperTitle } from \"./StepperTitle.vue\"\nexport { default as StepperTrigger } from \"./StepperTrigger.vue\"\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

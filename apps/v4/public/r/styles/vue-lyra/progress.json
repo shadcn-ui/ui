@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "progress",
+  "dependencies": [
+    "reka-ui",
+    "@vueuse/core"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-lyra/ui/progress/Progress.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { ProgressRootProps } from \"reka-ui\"\nimport { ProgressIndicator, ProgressRoot } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = withDefaults(\n  defineProps<ProgressRootProps & { class?: HTMLAttributes[\"class\"] }>(),\n  {\n    modelValue: 0,\n  }\n)\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n</script>\n\n<template>\n  <ProgressRoot\n    data-slot=\"progress\"\n    v-bind=\"delegatedProps\"\n    :class=\"\n      cn(\n        'cn-progress relative flex w-full items-center overflow-x-hidden',\n        props.class\n      )\n    \"\n  >\n    <ProgressIndicator\n      data-slot=\"progress-indicator\"\n      class=\"cn-progress-indicator size-full flex-1 transition-all\"\n      :style=\"`transform: translateX(-${100 - (props.modelValue ?? 0)}%);`\"\n    />\n  </ProgressRoot>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-lyra/ui/progress/index.ts",
+      "content": "export { default as Progress } from \"./Progress.vue\"\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

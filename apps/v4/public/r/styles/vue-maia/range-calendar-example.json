@@ -1,0 +1,29 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "range-calendar-example",
+  "title": "Range Calendar",
+  "dependencies": [
+    "reka-ui"
+  ],
+  "registryDependencies": [
+    "range-calendar"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-maia/examples/range-calendar/RangeCalendarBasic.vue",
+      "content": "<script setup lang=\"ts\">\nimport { RangeCalendar } from \"@/ui/range-calendar\"\nimport { CalendarDate } from \"@internationalized/date\"\nimport type { DateRange } from \"reka-ui\"\nimport { ref } from \"vue\"\n\nimport { Example } from \"@/components/example\"\n\nconst range = ref<DateRange>({\n  start: new CalendarDate(new Date().getFullYear(), 1, 1),\n  end: new CalendarDate(new Date().getFullYear(), 1, 7),\n})\n</script>\n\n<template>\n  <Example title=\"Basic Range Calendar\">\n    <RangeCalendar v-model=\"range\" />\n  </Example>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-maia/examples/range-calendar/RangeCalendarExample.vue",
+      "content": "<script setup lang=\"ts\">\nimport { ExampleWrapper } from \"@/components/example\"\n\nimport RangeCalendarBasic from \"./RangeCalendarBasic.vue\"\nimport RangeCalendarMultipleMonths from \"./RangeCalendarMultipleMonths.vue\"\n</script>\n\n<template>\n  <ExampleWrapper>\n    <RangeCalendarBasic />\n    <RangeCalendarMultipleMonths />\n  </ExampleWrapper>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-maia/examples/range-calendar/RangeCalendarMultipleMonths.vue",
+      "content": "<script setup lang=\"ts\">\nimport { RangeCalendar } from \"@/ui/range-calendar\"\nimport { CalendarDate } from \"@internationalized/date\"\nimport type { DateRange } from \"reka-ui\"\nimport { ref } from \"vue\"\n\nimport { Example } from \"@/components/example\"\n\nconst range = ref<DateRange>({\n  start: new CalendarDate(new Date().getFullYear(), 1, 10),\n  end: new CalendarDate(new Date().getFullYear(), 2, 15),\n})\n</script>\n\n<template>\n  <Example title=\"Range Calendar with Multiple Months\">\n    <RangeCalendar v-model=\"range\" :number-of-months=\"2\" />\n  </Example>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

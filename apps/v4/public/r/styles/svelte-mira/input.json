@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input",
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-mira/ui/input/index.ts",
+      "content": "import Root from \"./input.svelte\"\n\nexport {\n  Root,\n  //\n  Root as Input,\n}\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-mira/ui/input/input.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type {\n    HTMLInputAttributes,\n    HTMLInputTypeAttribute,\n  } from \"svelte/elements\"\n\n  type InputType = Exclude<HTMLInputTypeAttribute, \"file\">\n\n  type Props = WithElementRef<\n    Omit<HTMLInputAttributes, \"type\"> &\n      (\n        | { type: \"file\"; files?: FileList }\n        | { type?: InputType; files?: undefined }\n      )\n  >\n\n  let {\n    ref = $bindable(null),\n    value = $bindable(),\n    type,\n    files = $bindable(),\n    class: className,\n    \"data-slot\": dataSlot = \"input\",\n    ...restProps\n  }: Props = $props()\n</script>\n\n{#if type === \"file\"}\n  <input\n    bind:this={ref}\n    data-slot={dataSlot}\n    class={cn(\n      \"cn-input file:text-foreground placeholder:text-muted-foreground w-full min-w-0 outline-none file:inline-flex file:border-0 file:bg-transparent disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50\",\n      className\n    )}\n    type=\"file\"\n    bind:files\n    bind:value\n    {...restProps}\n  />\n{:else}\n  <input\n    bind:this={ref}\n    data-slot={dataSlot}\n    class={cn(\n      \"cn-input file:text-foreground placeholder:text-muted-foreground w-full min-w-0 outline-none file:inline-flex file:border-0 file:bg-transparent disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50\",\n      className\n    )}\n    {type}\n    bind:value\n    {...restProps}\n  />\n{/if}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "meta": {
+    "links": {
+      "docs": "https://force-ui.com/docs/components/svelte/input"
+    }
+  },
+  "type": "registry:ui"
+}

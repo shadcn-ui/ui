@@ -1,0 +1,66 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "field",
+  "registryDependencies": [
+    "label",
+    "separator"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-mira/ui/field/Field.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nimport type { FieldVariants } from \".\"\nimport { fieldVariants } from \".\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n  orientation?: FieldVariants[\"orientation\"]\n}>()\n</script>\n\n<template>\n  <div\n    role=\"group\"\n    data-slot=\"field\"\n    :data-orientation=\"orientation\"\n    :class=\"cn(fieldVariants({ orientation }), props.class)\"\n  >\n    <slot />\n  </div>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-mira/ui/field/FieldContent.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <div\n    data-slot=\"field-content\"\n    :class=\"\n      cn(\n        'group/field-content flex flex-1 flex-col gap-1.5 leading-snug',\n        props.class\n      )\n    \"\n  >\n    <slot />\n  </div>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-mira/ui/field/FieldDescription.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <p\n    data-slot=\"field-description\"\n    :class=\"\n      cn(\n        'text-sm leading-normal font-normal text-muted-foreground group-has-[[data-orientation=horizontal]]/field:text-balance',\n        'last:mt-0 nth-last-2:-mt-1 [[data-variant=legend]+&]:-mt-1.5',\n        '[&>a]:underline [&>a]:underline-offset-4 [&>a:hover]:text-primary',\n        props.class\n      )\n    \"\n  >\n    <slot />\n  </p>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-mira/ui/field/FieldError.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\nimport { computed } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n  errors?: Array<string | { message: string | undefined } | undefined>\n}>()\n\nconst content = computed(() => {\n  if (!props.errors || props.errors.length === 0) return null\n\n  const uniqueErrors = [\n    ...new Map(\n      props.errors.filter(Boolean).map((error) => {\n        const message = typeof error === \"string\" ? error : error?.message\n        return [message, error]\n      })\n    ).values(),\n  ]\n\n  if (uniqueErrors.length === 1 && uniqueErrors[0]) {\n    return typeof uniqueErrors[0] === \"string\"\n      ? uniqueErrors[0]\n      : uniqueErrors[0].message\n  }\n\n  return uniqueErrors.map((error) =>\n    typeof error === \"string\" ? error : error?.message\n  )\n})\n</script>\n\n<template>\n  <div\n    v-if=\"$slots.default || content\"\n    role=\"alert\"\n    data-slot=\"field-error\"\n    :class=\"cn('text-sm font-normal text-destructive', props.class)\"\n  >\n    <slot v-if=\"$slots.default\" />\n\n    <template v-else-if=\"typeof content === 'string'\">\n      {{ content }}\n    </template>\n\n    <ul\n      v-else-if=\"Array.isArray(content)\"\n      class=\"ml-4 flex list-disc flex-col gap-1\"\n    >\n      <li v-for=\"(error, index) in content\" :key=\"index\">\n        {{ error }}\n      </li>\n    </ul>\n  </div>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-mira/ui/field/FieldGroup.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <div\n    data-slot=\"field-group\"\n    :class=\"\n      cn(\n        'group/field-group @container/field-group flex w-full flex-col gap-7 data-[slot=checkbox-group]:gap-3 [&>[data-slot=field-group]]:gap-4',\n        props.class\n      )\n    \"\n  >\n    <slot />\n  </div>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-mira/ui/field/FieldLabel.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Label } from \"@/ui/label\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <Label\n    data-slot=\"field-label\"\n    :class=\"\n      cn(\n        'group/field-label peer/field-label flex w-fit gap-2 leading-snug group-data-[disabled=true]/field:opacity-50',\n        'has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col has-[>[data-slot=field]]:rounded-md has-[>[data-slot=field]]:border [&>*]:data-[slot=field]:p-4',\n        'has-data-[state=checked]:border-primary has-data-[state=checked]:bg-primary/5 dark:has-data-[state=checked]:bg-primary/10',\n        props.class\n      )\n    \"\n  >\n    <slot />\n  </Label>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-mira/ui/field/FieldLegend.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n  variant?: \"legend\" | \"label\"\n}>()\n</script>\n\n<template>\n  <legend\n    data-slot=\"field-legend\"\n    :data-variant=\"variant\"\n    :class=\"\n      cn(\n        'mb-3 font-medium',\n        'data-[variant=legend]:text-base',\n        'data-[variant=label]:text-sm',\n        props.class\n      )\n    \"\n  >\n    <slot />\n  </legend>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-mira/ui/field/FieldSeparator.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Separator } from \"@/ui/separator\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <div\n    data-slot=\"field-separator\"\n    :data-content=\"!!$slots.default\"\n    :class=\"\n      cn(\n        'relative -my-2 h-5 text-sm group-data-[variant=outline]/field-group:-mb-2',\n        props.class\n      )\n    \"\n  >\n    <Separator class=\"absolute inset-0 top-1/2\" />\n    <span\n      v-if=\"$slots.default\"\n      class=\"relative mx-auto block w-fit bg-background px-2 text-muted-foreground\"\n      data-slot=\"field-separator-content\"\n    >\n      <slot />\n    </span>\n  </div>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-mira/ui/field/FieldSet.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <fieldset\n    data-slot=\"field-set\"\n    :class=\"\n      cn(\n        'flex flex-col gap-6',\n        'has-[>[data-slot=checkbox-group]]:gap-3 has-[>[data-slot=radio-group]]:gap-3',\n        props.class\n      )\n    \"\n  >\n    <slot />\n  </fieldset>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-mira/ui/field/FieldTitle.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <div\n    data-slot=\"field-label\"\n    :class=\"\n      cn(\n        'flex w-fit items-center gap-2 text-sm leading-snug font-medium group-data-[disabled=true]/field:opacity-50',\n        props.class\n      )\n    \"\n  >\n    <slot />\n  </div>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-mira/ui/field/index.ts",
+      "content": "import type { VariantProps } from \"class-variance-authority\"\nimport { cva } from \"class-variance-authority\"\n\nexport const fieldVariants = cva(\n  \"group/field flex w-full gap-3 data-[invalid=true]:text-destructive\",\n  {\n    variants: {\n      orientation: {\n        vertical: [\"flex-col [&>*]:w-full [&>.sr-only]:w-auto\"],\n        horizontal: [\n          \"flex-row items-center\",\n          \"[&>[data-slot=field-label]]:flex-auto\",\n          \"has-[>[data-slot=field-content]]:items-start has-[>[data-slot=field-content]]:[&>[role=checkbox],[role=radio]]:mt-px\",\n        ],\n        responsive: [\n          \"flex-col @md/field-group:flex-row @md/field-group:items-center [&>*]:w-full @md/field-group:[&>*]:w-auto [&>.sr-only]:w-auto\",\n          \"@md/field-group:[&>[data-slot=field-label]]:flex-auto\",\n          \"@md/field-group:has-[>[data-slot=field-content]]:items-start @md/field-group:has-[>[data-slot=field-content]]:[&>[role=checkbox],[role=radio]]:mt-px\",\n        ],\n      },\n    },\n    defaultVariants: {\n      orientation: \"vertical\",\n    },\n  }\n)\n\nexport type FieldVariants = VariantProps<typeof fieldVariants>\n\nexport { default as Field } from \"./Field.vue\"\nexport { default as FieldContent } from \"./FieldContent.vue\"\nexport { default as FieldDescription } from \"./FieldDescription.vue\"\nexport { default as FieldError } from \"./FieldError.vue\"\nexport { default as FieldGroup } from \"./FieldGroup.vue\"\nexport { default as FieldLabel } from \"./FieldLabel.vue\"\nexport { default as FieldLegend } from \"./FieldLegend.vue\"\nexport { default as FieldSeparator } from \"./FieldSeparator.vue\"\nexport { default as FieldSet } from \"./FieldSet.vue\"\nexport { default as FieldTitle } from \"./FieldTitle.vue\"\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

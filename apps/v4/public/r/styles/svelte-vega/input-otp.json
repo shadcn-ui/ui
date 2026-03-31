@@ -1,0 +1,43 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-otp",
+  "dependencies": [
+    "bits-ui"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-vega/ui/input-otp/index.ts",
+      "content": "import Group from \"./input-otp-group.svelte\"\nimport Separator from \"./input-otp-separator.svelte\"\nimport Slot from \"./input-otp-slot.svelte\"\nimport Root from \"./input-otp.svelte\"\n\nexport {\n  Root,\n  Group,\n  Slot,\n  Separator,\n  Root as InputOTP,\n  Group as InputOTPGroup,\n  Slot as InputOTPSlot,\n  Separator as InputOTPSeparator,\n}\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/input-otp/input-otp-group.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...restProps\n  }: WithElementRef<HTMLAttributes<HTMLDivElement>> = $props()\n</script>\n\n<div\n  bind:this={ref}\n  data-slot=\"input-otp-group\"\n  class={cn(\"cn-input-otp-group flex items-center\", className)}\n  {...restProps}\n>\n  {@render children?.()}\n</div>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/input-otp/input-otp-separator.svelte",
+      "content": "<script lang=\"ts\">\n  import IconPlaceholder from \"$lib/components/icon-placeholder/icon-placeholder.svelte\"\n  import type { WithElementRef } from \"$lib/utils.js\"\n  import { cn } from \"$lib/utils.js\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...restProps\n  }: WithElementRef<HTMLAttributes<HTMLDivElement>> = $props()\n</script>\n\n<div\n  bind:this={ref}\n  data-slot=\"input-otp-separator\"\n  role=\"separator\"\n  class={cn(\"cn-input-otp-separator flex items-center\", className)}\n  {...restProps}\n>\n  {#if children}\n    {@render children?.()}\n  {:else}\n    <IconPlaceholder\n      lucide=\"MinusIcon\"\n      tabler=\"IconMinus\"\n      hugeicons=\"MinusSignIcon\"\n      phosphor=\"MinusIcon\"\n      remixicon=\"RiSubtractLine\"\n    />\n  {/if}\n</div>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/input-otp/input-otp-slot.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { PinInput as InputOTPPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    cell,\n    class: className,\n    ...restProps\n  }: InputOTPPrimitive.CellProps = $props()\n</script>\n\n<InputOTPPrimitive.Cell\n  {cell}\n  bind:ref\n  data-slot=\"input-otp-slot\"\n  class={cn(\n    \"cn-input-otp-slot relative flex items-center justify-center data-[active=true]:z-10\",\n    className\n  )}\n  {...restProps}\n>\n  {cell.char}\n  {#if cell.hasFakeCaret}\n    <div\n      class=\"cn-input-otp-caret pointer-events-none absolute inset-0 flex items-center justify-center\"\n    >\n      <div class=\"cn-input-otp-caret-line bg-foreground h-4 w-px\"></div>\n    </div>\n  {/if}\n</InputOTPPrimitive.Cell>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/input-otp/input-otp.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { PinInput as InputOTPPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    value = $bindable(\"\"),\n    ...restProps\n  }: InputOTPPrimitive.RootProps = $props()\n</script>\n\n<InputOTPPrimitive.Root\n  bind:ref\n  bind:value\n  data-slot=\"input-otp\"\n  spellcheck={false}\n  class={cn(\n    \"cn-input-otp-input cn-input-otp flex items-center disabled:cursor-not-allowed has-disabled:opacity-50\",\n    className\n  )}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    }
+  ],
+  "meta": {
+    "links": {
+      "docs": "https://force-ui.com/docs/components/svelte/input-otp"
+    }
+  },
+  "type": "registry:ui"
+}

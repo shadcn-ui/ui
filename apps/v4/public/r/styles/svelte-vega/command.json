@@ -1,0 +1,80 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "command",
+  "dependencies": [
+    "bits-ui"
+  ],
+  "registryDependencies": [
+    "dialog",
+    "input-group",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-vega/ui/command/command-dialog.svelte",
+      "content": "<script lang=\"ts\">\n  import * as Dialog from \"$lib/registry/ui/dialog/index.js\"\n  import { cn, type WithoutChildrenOrChild } from \"$lib/utils.js\"\n  import type {\n    Command as CommandPrimitive,\n    Dialog as DialogPrimitive,\n  } from \"bits-ui\"\n  import type { Snippet } from \"svelte\"\n\n  import Command from \"./command.svelte\"\n\n  let {\n    open = $bindable(false),\n    ref = $bindable(null),\n    value = $bindable(\"\"),\n    title = \"Command Palette\",\n    description = \"Search for a command to run...\",\n    showCloseButton = false,\n    portalProps,\n    children,\n    class: className,\n    ...restProps\n  }: WithoutChildrenOrChild<DialogPrimitive.RootProps> &\n    WithoutChildrenOrChild<CommandPrimitive.RootProps> & {\n      portalProps?: DialogPrimitive.PortalProps\n      children: Snippet\n      title?: string\n      description?: string\n      showCloseButton?: boolean\n      class?: string\n    } = $props()\n</script>\n\n<Dialog.Root bind:open {...restProps}>\n  <Dialog.Header class=\"sr-only\">\n    <Dialog.Title>{title}</Dialog.Title>\n    <Dialog.Description>{description}</Dialog.Description>\n  </Dialog.Header>\n  <Dialog.Content\n    class={cn(\n      \"cn-command-dialog top-1/3 translate-y-0 overflow-hidden p-0\",\n      className\n    )}\n    {showCloseButton}\n    {portalProps}\n  >\n    <Command {...restProps} bind:value bind:ref {children} />\n  </Dialog.Content>\n</Dialog.Root>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/command/command-empty.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { Command as CommandPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    ...restProps\n  }: CommandPrimitive.EmptyProps = $props()\n</script>\n\n<CommandPrimitive.Empty\n  bind:ref\n  data-slot=\"command-empty\"\n  class={cn(\"cn-command-empty\", className)}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/command/command-group.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { Command as CommandPrimitive, useId } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    heading,\n    value,\n    ...restProps\n  }: CommandPrimitive.GroupProps & {\n    heading?: string\n  } = $props()\n</script>\n\n<CommandPrimitive.Group\n  bind:ref\n  data-slot=\"command-group\"\n  class={cn(\"cn-command-group\", className)}\n  value={value ?? heading ?? `----${useId()}`}\n  {...restProps}\n>\n  {#if heading}\n    <CommandPrimitive.GroupHeading\n      class=\"text-muted-foreground px-2 py-1.5 text-xs font-medium\"\n    >\n      {heading}\n    </CommandPrimitive.GroupHeading>\n  {/if}\n  <CommandPrimitive.GroupItems {children} />\n</CommandPrimitive.Group>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/command/command-input.svelte",
+      "content": "<script lang=\"ts\">\n  import IconPlaceholder from \"$lib/components/icon-placeholder/icon-placeholder.svelte\"\n  import * as InputGroup from \"$lib/registry/ui/input-group/index.js\"\n  import { cn } from \"$lib/utils.js\"\n  import { Command as CommandPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    value = $bindable(\"\"),\n    ...restProps\n  }: CommandPrimitive.InputProps = $props()\n</script>\n\n<div data-slot=\"command-input-wrapper\" class=\"cn-command-input-wrapper\">\n  <InputGroup.Root class=\"cn-command-input-group\">\n    <CommandPrimitive.Input\n      data-slot=\"command-input\"\n      class={cn(\n        \"cn-command-input outline-hidden disabled:cursor-not-allowed disabled:opacity-50\",\n        className\n      )}\n      bind:ref\n      {...restProps}\n      bind:value\n    />\n    <InputGroup.Addon>\n      <IconPlaceholder\n        lucide=\"SearchIcon\"\n        tabler=\"IconSearch\"\n        hugeicons=\"SearchIcon\"\n        phosphor=\"MagnifyingGlassIcon\"\n        remixicon=\"RiSearchLine\"\n        class=\"cn-command-input-icon\"\n      />\n    </InputGroup.Addon>\n  </InputGroup.Root>\n</div>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/command/command-item.svelte",
+      "content": "<script lang=\"ts\">\n  import IconPlaceholder from \"$lib/components/icon-placeholder/icon-placeholder.svelte\"\n  import { cn } from \"$lib/utils.js\"\n  import { Command as CommandPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...restProps\n  }: CommandPrimitive.ItemProps = $props()\n</script>\n\n<CommandPrimitive.Item\n  bind:ref\n  data-slot=\"command-item\"\n  class={cn(\n    \"group/command-item data-selected:bg-muted data-selected:text-foreground data-selected:*:[svg]:text-foreground relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none in-data-[slot=dialog-content]:rounded-lg! data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4\",\n    className\n  )}\n  {...restProps}\n>\n  {@render children?.()}\n  <IconPlaceholder\n    lucide=\"CheckIcon\"\n    tabler=\"IconCheck\"\n    hugeicons=\"Tick02Icon\"\n    phosphor=\"CheckIcon\"\n    remixicon=\"RiCheckLine\"\n    class=\"cn-command-item-indicator ml-auto opacity-0 group-has-[[data-slot=command-shortcut]]/command-item:hidden group-data-[checked=true]/command-item:opacity-100\"\n  />\n</CommandPrimitive.Item>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/command/command-link-item.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { Command as CommandPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    ...restProps\n  }: CommandPrimitive.LinkItemProps = $props()\n</script>\n\n<CommandPrimitive.LinkItem\n  bind:ref\n  data-slot=\"command-item\"\n  class={cn(\n    \"aria-selected:bg-accent aria-selected:text-accent-foreground [&_svg:not([class*='text-'])]:text-muted-foreground relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4\",\n    className\n  )}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/command/command-list.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { Command as CommandPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    ...restProps\n  }: CommandPrimitive.ListProps = $props()\n</script>\n\n<CommandPrimitive.List\n  bind:ref\n  data-slot=\"command-list\"\n  class={cn(\"cn-command-list overflow-x-hidden overflow-y-auto\", className)}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/command/command-loading.svelte",
+      "content": "<script lang=\"ts\">\n  import { Command as CommandPrimitive } from \"bits-ui\"\n\n  let { ref = $bindable(null), ...restProps }: CommandPrimitive.LoadingProps =\n    $props()\n</script>\n\n<CommandPrimitive.Loading bind:ref {...restProps} />\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/command/command-separator.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { Command as CommandPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    ...restProps\n  }: CommandPrimitive.SeparatorProps = $props()\n</script>\n\n<CommandPrimitive.Separator\n  bind:ref\n  data-slot=\"command-separator\"\n  class={cn(\"cn-command-separator\", className)}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/command/command-shortcut.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...restProps\n  }: WithElementRef<HTMLAttributes<HTMLSpanElement>> = $props()\n</script>\n\n<span\n  bind:this={ref}\n  data-slot=\"command-shortcut\"\n  class={cn(\"cn-command-shortcut\", className)}\n  {...restProps}\n>\n  {@render children?.()}\n</span>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/command/command.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { Command as CommandPrimitive } from \"bits-ui\"\n\n  export type CommandRootApi = CommandPrimitive.Root\n\n  let {\n    api = $bindable(null),\n    ref = $bindable(null),\n    value = $bindable(\"\"),\n    class: className,\n    ...restProps\n  }: CommandPrimitive.RootProps & {\n    api?: CommandRootApi | null\n  } = $props()\n</script>\n\n<CommandPrimitive.Root\n  bind:this={api}\n  bind:value\n  bind:ref\n  data-slot=\"command\"\n  class={cn(\"cn-command flex size-full flex-col overflow-hidden\", className)}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/command/index.ts",
+      "content": "import Dialog from \"./command-dialog.svelte\"\nimport Empty from \"./command-empty.svelte\"\nimport Group from \"./command-group.svelte\"\nimport Input from \"./command-input.svelte\"\nimport Item from \"./command-item.svelte\"\nimport LinkItem from \"./command-link-item.svelte\"\nimport List from \"./command-list.svelte\"\nimport Loading from \"./command-loading.svelte\"\nimport Separator from \"./command-separator.svelte\"\nimport Shortcut from \"./command-shortcut.svelte\"\nimport Root from \"./command.svelte\"\n\nexport {\n  Root,\n  Dialog,\n  Empty,\n  Group,\n  Item,\n  LinkItem,\n  Input,\n  List,\n  Separator,\n  Shortcut,\n  Loading,\n  //\n  Root as Command,\n  Dialog as CommandDialog,\n  Empty as CommandEmpty,\n  Group as CommandGroup,\n  Item as CommandItem,\n  LinkItem as CommandLinkItem,\n  Input as CommandInput,\n  List as CommandList,\n  Separator as CommandSeparator,\n  Shortcut as CommandShortcut,\n  Loading as CommandLoading,\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "meta": {
+    "links": {
+      "docs": "https://force-ui.com/docs/components/svelte/command"
+    }
+  },
+  "type": "registry:ui"
+}

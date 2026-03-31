@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tabs",
+  "dependencies": [
+    "reka-ui",
+    "@vueuse/core"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-nova/ui/tabs/Tabs.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { TabsRootEmits, TabsRootProps } from \"reka-ui\"\nimport { TabsRoot, useForwardPropsEmits } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<TabsRootProps & { class?: HTMLAttributes[\"class\"] }>()\nconst emits = defineEmits<TabsRootEmits>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\nconst forwarded = useForwardPropsEmits(delegatedProps, emits)\n</script>\n\n<template>\n  <TabsRoot\n    v-slot=\"slotProps\"\n    data-slot=\"tabs\"\n    :data-orientation=\"forwarded.orientation || 'horizontal'\"\n    v-bind=\"forwarded\"\n    :class=\"\n      cn(\n        'cn-tabs group/tabs flex data-[orientation=horizontal]:flex-col',\n        props.class\n      )\n    \"\n  >\n    <slot v-bind=\"slotProps\" />\n  </TabsRoot>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-nova/ui/tabs/TabsContent.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { TabsContentProps } from \"reka-ui\"\nimport { TabsContent } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<\n  TabsContentProps & { class?: HTMLAttributes[\"class\"] }\n>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n</script>\n\n<template>\n  <TabsContent\n    data-slot=\"tabs-content\"\n    :class=\"cn('cn-tabs-content flex-1 outline-none', props.class)\"\n    v-bind=\"delegatedProps\"\n  >\n    <slot />\n  </TabsContent>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-nova/ui/tabs/TabsList.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { TabsListProps } from \"reka-ui\"\nimport { TabsList } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = withDefaults(\n  defineProps<\n    TabsListProps & {\n      class?: HTMLAttributes[\"class\"]\n      variant?: \"default\" | \"line\"\n    }\n  >(),\n  {\n    variant: \"default\",\n  }\n)\n\nconst delegatedProps = reactiveOmit(props, \"class\", \"variant\")\n</script>\n\n<template>\n  <TabsList\n    data-slot=\"tabs-list\"\n    :data-variant=\"variant\"\n    v-bind=\"delegatedProps\"\n    :class=\"\n      cn(\n        'cn-tabs-list group/tabs-list inline-flex w-fit items-center justify-center text-muted-foreground group-data-[orientation=vertical]/tabs:h-fit group-data-[orientation=vertical]/tabs:flex-col',\n        variant === 'default' && 'cn-tabs-list-variant-default bg-muted',\n        variant === 'line' && 'cn-tabs-list-variant-line gap-1 bg-transparent',\n        props.class\n      )\n    \"\n  >\n    <slot />\n  </TabsList>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-nova/ui/tabs/TabsTrigger.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { TabsTriggerProps } from \"reka-ui\"\nimport { TabsTrigger, useForwardProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<\n  TabsTriggerProps & { class?: HTMLAttributes[\"class\"] }\n>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <TabsTrigger\n    data-slot=\"tabs-trigger\"\n    :class=\"\n      cn(\n        'cn-tabs-trigger relative inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center whitespace-nowrap text-foreground/60 transition-all group-data-[orientation=vertical]/tabs:w-full group-data-[orientation=vertical]/tabs:justify-start hover:text-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-1 focus-visible:outline-ring disabled:pointer-events-none disabled:opacity-50 dark:text-muted-foreground dark:hover:text-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0',\n        'group-data-[variant=line]/tabs-list:bg-transparent group-data-[variant=line]/tabs-list:data-active:bg-transparent dark:group-data-[variant=line]/tabs-list:data-active:border-transparent dark:group-data-[variant=line]/tabs-list:data-active:bg-transparent',\n        'data-active:bg-background data-active:text-foreground dark:data-active:border-input dark:data-active:bg-input/30 dark:data-active:text-foreground',\n        'after:absolute after:bg-foreground after:opacity-0 after:transition-opacity group-data-[orientation=horizontal]/tabs:after:inset-x-0 group-data-[orientation=horizontal]/tabs:after:bottom-[-5px] group-data-[orientation=horizontal]/tabs:after:h-0.5 group-data-[orientation=vertical]/tabs:after:inset-y-0 group-data-[orientation=vertical]/tabs:after:-right-1 group-data-[orientation=vertical]/tabs:after:w-0.5 group-data-[variant=line]/tabs-list:data-active:after:opacity-100',\n        props.class\n      )\n    \"\n    v-bind=\"forwardedProps\"\n  >\n    <slot />\n  </TabsTrigger>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-nova/ui/tabs/index.ts",
+      "content": "export { default as Tabs } from \"./Tabs.vue\"\nexport { default as TabsContent } from \"./TabsContent.vue\"\nexport { default as TabsList } from \"./TabsList.vue\"\nexport { default as TabsTrigger } from \"./TabsTrigger.vue\"\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,1 +1,0 @@
-import{B as s,t as r,a as e}from"./button-D-SwzDQ3.js";import"./utils-D2jV1zSv.js";function i(t){s(t,{variant:"ghost",children:(o,n)=>{var a=r("Ghost");e(o,a)},$$slots:{default:!0}})}export{i as default};

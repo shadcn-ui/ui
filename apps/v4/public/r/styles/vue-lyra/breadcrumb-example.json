@@ -1,0 +1,35 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "breadcrumb-example",
+  "title": "Breadcrumb",
+  "dependencies": [],
+  "registryDependencies": [
+    "breadcrumb",
+    "example",
+    "button",
+    "dropdown-menu"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-lyra/examples/breadcrumb/BreadcrumbBasic.vue",
+      "content": "<script setup lang=\"ts\">\nimport {\n  Breadcrumb,\n  BreadcrumbItem,\n  BreadcrumbLink,\n  BreadcrumbList,\n  BreadcrumbPage,\n  BreadcrumbSeparator,\n} from \"@/ui/breadcrumb\"\n\nimport { Example } from \"@/components/example\"\n</script>\n\n<template>\n  <Example title=\"Basic\" class=\"items-center justify-center\">\n    <Breadcrumb>\n      <BreadcrumbList>\n        <BreadcrumbItem>\n          <BreadcrumbLink href=\"#\"> Home </BreadcrumbLink>\n        </BreadcrumbItem>\n        <BreadcrumbSeparator />\n        <BreadcrumbItem>\n          <BreadcrumbLink href=\"#\"> Components </BreadcrumbLink>\n        </BreadcrumbItem>\n        <BreadcrumbSeparator />\n        <BreadcrumbItem>\n          <BreadcrumbPage>Breadcrumb</BreadcrumbPage>\n        </BreadcrumbItem>\n      </BreadcrumbList>\n    </Breadcrumb>\n  </Example>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-lyra/examples/breadcrumb/BreadcrumbExample.vue",
+      "content": "<script setup lang=\"ts\">\nimport { ExampleWrapper } from \"@/components/example\"\n\nimport BreadcrumbBasic from \"./BreadcrumbBasic.vue\"\nimport BreadcrumbWithDropdown from \"./BreadcrumbWithDropdown.vue\"\nimport BreadcrumbWithLink from \"./BreadcrumbWithLink.vue\"\n</script>\n\n<template>\n  <ExampleWrapper>\n    <BreadcrumbBasic />\n    <BreadcrumbWithDropdown />\n    <BreadcrumbWithLink />\n  </ExampleWrapper>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-lyra/examples/breadcrumb/BreadcrumbWithDropdown.vue",
+      "content": "<script setup lang=\"ts\">\nimport {\n  Breadcrumb,\n  BreadcrumbEllipsis,\n  BreadcrumbItem,\n  BreadcrumbLink,\n  BreadcrumbList,\n  BreadcrumbPage,\n  BreadcrumbSeparator,\n} from \"@/ui/breadcrumb\"\nimport { Button } from \"@/ui/button\"\nimport {\n  DropdownMenu,\n  DropdownMenuContent,\n  DropdownMenuItem,\n  DropdownMenuTrigger,\n} from \"@/ui/dropdown-menu\"\n\nimport { Example } from \"@/components/example\"\n</script>\n\n<template>\n  <Example title=\"With Dropdown\" class=\"items-center justify-center\">\n    <Breadcrumb>\n      <BreadcrumbList>\n        <BreadcrumbItem>\n          <BreadcrumbLink href=\"#\"> Home </BreadcrumbLink>\n        </BreadcrumbItem>\n        <BreadcrumbSeparator />\n        <BreadcrumbItem>\n          <DropdownMenu>\n            <DropdownMenuTrigger :as-child=\"true\">\n              <Button size=\"icon-sm\" variant=\"ghost\">\n                <BreadcrumbEllipsis />\n                <span class=\"sr-only\">Toggle menu</span>\n              </Button>\n            </DropdownMenuTrigger>\n            <DropdownMenuContent align=\"start\">\n              <DropdownMenuItem>Documentation</DropdownMenuItem>\n              <DropdownMenuItem>Themes</DropdownMenuItem>\n              <DropdownMenuItem>GitHub</DropdownMenuItem>\n            </DropdownMenuContent>\n          </DropdownMenu>\n        </BreadcrumbItem>\n        <BreadcrumbSeparator />\n        <BreadcrumbItem>\n          <BreadcrumbLink href=\"#\"> Components </BreadcrumbLink>\n        </BreadcrumbItem>\n        <BreadcrumbSeparator />\n        <BreadcrumbItem>\n          <BreadcrumbPage>Breadcrumb</BreadcrumbPage>\n        </BreadcrumbItem>\n      </BreadcrumbList>\n    </Breadcrumb>\n  </Example>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-lyra/examples/breadcrumb/BreadcrumbWithLink.vue",
+      "content": "<script setup lang=\"ts\">\nimport {\n  Breadcrumb,\n  BreadcrumbEllipsis,\n  BreadcrumbItem,\n  BreadcrumbLink,\n  BreadcrumbList,\n  BreadcrumbPage,\n  BreadcrumbSeparator,\n} from \"@/ui/breadcrumb\"\n\nimport { Example } from \"@/components/example\"\n</script>\n\n<template>\n  <Example title=\"With Link\" class=\"items-center justify-center\">\n    <Breadcrumb>\n      <BreadcrumbList>\n        <BreadcrumbItem>\n          <BreadcrumbLink :as-child=\"true\">\n            <a href=\"#\">Home</a>\n          </BreadcrumbLink>\n        </BreadcrumbItem>\n        <BreadcrumbSeparator />\n        <BreadcrumbItem>\n          <BreadcrumbEllipsis />\n        </BreadcrumbItem>\n        <BreadcrumbSeparator />\n        <BreadcrumbItem>\n          <BreadcrumbLink :as-child=\"true\">\n            <a href=\"#\">Components</a>\n          </BreadcrumbLink>\n        </BreadcrumbItem>\n        <BreadcrumbSeparator />\n        <BreadcrumbItem>\n          <BreadcrumbPage>Breadcrumb</BreadcrumbPage>\n        </BreadcrumbItem>\n      </BreadcrumbList>\n    </Breadcrumb>\n  </Example>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hover-card-example",
+  "title": "Hover Card",
+  "dependencies": [],
+  "registryDependencies": [
+    "example",
+    "button",
+    "dialog",
+    "hover-card"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-lyra/examples/hover-card/HoverCardExample.vue",
+      "content": "<script setup lang=\"ts\">\nimport HoverCardInDialog from \"@/examples/hover-card/HoverCardInDialog.vue\"\nimport HoverCardSides from \"@/examples/hover-card/HoverCardSides.vue\"\n\nimport { ExampleWrapper } from \"@/components/example\"\n</script>\n\n<template>\n  <ExampleWrapper>\n    <HoverCardSides />\n    <HoverCardInDialog />\n  </ExampleWrapper>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-lyra/examples/hover-card/HoverCardInDialog.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Button } from \"@/ui/button\"\nimport {\n  Dialog,\n  DialogContent,\n  DialogDescription,\n  DialogHeader,\n  DialogTitle,\n  DialogTrigger,\n} from \"@/ui/dialog\"\nimport { HoverCard, HoverCardContent, HoverCardTrigger } from \"@/ui/hover-card\"\n\nimport { Example } from \"@/components/example\"\n</script>\n\n<template>\n  <Example title=\"In Dialog\">\n    <Dialog>\n      <DialogTrigger :as-child=\"true\">\n        <Button variant=\"outline\"> Open Dialog </Button>\n      </DialogTrigger>\n      <DialogContent>\n        <DialogHeader>\n          <DialogTitle>Hover Card Example</DialogTitle>\n          <DialogDescription>\n            Hover over the button below to see the hover card.\n          </DialogDescription>\n        </DialogHeader>\n        <HoverCard :open-delay=\"100\" :close-delay=\"100\">\n          <HoverCardTrigger :as-child=\"true\">\n            <Button variant=\"outline\" class=\"w-fit\"> Hover me </Button>\n          </HoverCardTrigger>\n          <HoverCardContent class=\"w-64\">\n            <div\n              class=\"flex flex-col style-vega:gap-2 style-nova:gap-1.5 style-lyra:gap-1 style-maia:gap-2 style-mira:gap-1\"\n            >\n              <h4 class=\"font-medium\">Hover Card</h4>\n              <p>\n                This hover card appears inside a dialog. Hover over the button\n                to see it.\n              </p>\n            </div>\n          </HoverCardContent>\n        </HoverCard>\n      </DialogContent>\n    </Dialog>\n  </Example>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-lyra/examples/hover-card/HoverCardSides.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Button } from \"@/ui/button\"\nimport { HoverCard, HoverCardContent, HoverCardTrigger } from \"@/ui/hover-card\"\n\nimport { Example } from \"@/components/example\"\n\nconst HOVER_CARD_SIDES = [\"top\", \"right\", \"bottom\", \"left\"] as const\n</script>\n\n<template>\n  <Example title=\"Sides\">\n    <div class=\"flex flex-wrap items-center justify-center gap-4\">\n      <HoverCard\n        v-for=\"side in HOVER_CARD_SIDES\"\n        :key=\"side\"\n        :open-delay=\"100\"\n        :close-delay=\"100\"\n      >\n        <HoverCardTrigger :as-child=\"true\">\n          <Button variant=\"outline\" class=\"capitalize\">\n            {{ side }}\n          </Button>\n        </HoverCardTrigger>\n        <HoverCardContent :side=\"side\" class=\"w-64\">\n          <div\n            class=\"flex flex-col style-vega:gap-2 style-nova:gap-1.5 style-lyra:gap-1 style-maia:gap-2 style-mira:gap-1\"\n          >\n            <h4 class=\"font-medium\">Hover Card</h4>\n            <p>\n              This hover card appears on the {{ side }} side of the trigger.\n            </p>\n          </div>\n        </HoverCardContent>\n      </HoverCard>\n    </div>\n  </Example>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

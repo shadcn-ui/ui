@@ -1,0 +1,74 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sheet",
+  "dependencies": [
+    "bits-ui"
+  ],
+  "registryDependencies": [
+    "button",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-maia/ui/sheet/index.ts",
+      "content": "import Close from \"./sheet-close.svelte\"\nimport Content from \"./sheet-content.svelte\"\nimport Description from \"./sheet-description.svelte\"\nimport Footer from \"./sheet-footer.svelte\"\nimport Header from \"./sheet-header.svelte\"\nimport Overlay from \"./sheet-overlay.svelte\"\nimport Portal from \"./sheet-portal.svelte\"\nimport Title from \"./sheet-title.svelte\"\nimport Trigger from \"./sheet-trigger.svelte\"\nimport Root from \"./sheet.svelte\"\n\nexport {\n  Root,\n  Close,\n  Trigger,\n  Portal,\n  Overlay,\n  Content,\n  Header,\n  Footer,\n  Title,\n  Description,\n  //\n  Root as Sheet,\n  Close as SheetClose,\n  Trigger as SheetTrigger,\n  Portal as SheetPortal,\n  Overlay as SheetOverlay,\n  Content as SheetContent,\n  Header as SheetHeader,\n  Footer as SheetFooter,\n  Title as SheetTitle,\n  Description as SheetDescription,\n}\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-maia/ui/sheet/sheet-close.svelte",
+      "content": "<script lang=\"ts\">\n  import { Dialog as SheetPrimitive } from \"bits-ui\"\n\n  let { ref = $bindable(null), ...restProps }: SheetPrimitive.CloseProps =\n    $props()\n</script>\n\n<SheetPrimitive.Close bind:ref data-slot=\"sheet-close\" {...restProps} />\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-maia/ui/sheet/sheet-content.svelte",
+      "content": "<script lang=\"ts\" module>\n  export type Side = \"top\" | \"right\" | \"bottom\" | \"left\"\n</script>\n\n<script lang=\"ts\">\n  import IconPlaceholder from \"$lib/components/icon-placeholder/icon-placeholder.svelte\"\n  import { Button } from \"$lib/registry/ui/button/index.js\"\n  import { cn, type WithoutChildrenOrChild } from \"$lib/utils.js\"\n  import { Dialog as SheetPrimitive } from \"bits-ui\"\n  import type { ComponentProps, Snippet } from \"svelte\"\n\n  import SheetOverlay from \"./sheet-overlay.svelte\"\n  import SheetPortal from \"./sheet-portal.svelte\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    side = \"right\",\n    showCloseButton = true,\n    portalProps,\n    children,\n    ...restProps\n  }: WithoutChildrenOrChild<SheetPrimitive.ContentProps> & {\n    portalProps?: WithoutChildrenOrChild<ComponentProps<typeof SheetPortal>>\n    side?: Side\n    showCloseButton?: boolean\n    children: Snippet\n  } = $props()\n</script>\n\n<SheetPortal {...portalProps}>\n  <SheetOverlay />\n  <SheetPrimitive.Content\n    bind:ref\n    data-slot=\"sheet-content\"\n    data-side={side}\n    class={cn(\n      \"cn-sheet-content data-open:animate-in data-open:fade-in-0 data-[side=bottom]:data-open:slide-in-from-bottom-10 data-[side=left]:data-open:slide-in-from-left-10 data-[side=right]:data-open:slide-in-from-right-10 data-[side=top]:data-open:slide-in-from-top-10 data-closed:animate-out data-closed:fade-out-0 data-[side=bottom]:data-closed:slide-out-to-bottom-10 data-[side=left]:data-closed:slide-out-to-left-10 data-[side=right]:data-closed:slide-out-to-right-10 data-[side=top]:data-closed:slide-out-to-top-10\",\n      className\n    )}\n    {...restProps}\n  >\n    {@render children?.()}\n    {#if showCloseButton}\n      <SheetPrimitive.Close data-slot=\"sheet-close\">\n        {#snippet child({ props })}\n          <Button\n            variant=\"ghost\"\n            class=\"cn-sheet-close\"\n            size=\"icon-sm\"\n            {...props}\n          >\n            <IconPlaceholder\n              lucide=\"XIcon\"\n              tabler=\"IconX\"\n              hugeicons=\"Cancel01Icon\"\n              phosphor=\"XIcon\"\n              remixicon=\"RiCloseLine\"\n            />\n            <span class=\"sr-only\">Close</span>\n          </Button>\n        {/snippet}\n      </SheetPrimitive.Close>\n    {/if}\n  </SheetPrimitive.Content>\n</SheetPortal>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-maia/ui/sheet/sheet-description.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { Dialog as SheetPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    ...restProps\n  }: SheetPrimitive.DescriptionProps = $props()\n</script>\n\n<SheetPrimitive.Description\n  bind:ref\n  data-slot=\"sheet-description\"\n  class={cn(\"cn-sheet-description\", className)}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-maia/ui/sheet/sheet-footer.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...restProps\n  }: WithElementRef<HTMLAttributes<HTMLDivElement>> = $props()\n</script>\n\n<div\n  bind:this={ref}\n  data-slot=\"sheet-footer\"\n  class={cn(\"cn-sheet-footer mt-auto flex flex-col\", className)}\n  {...restProps}\n>\n  {@render children?.()}\n</div>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-maia/ui/sheet/sheet-header.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...restProps\n  }: WithElementRef<HTMLAttributes<HTMLDivElement>> = $props()\n</script>\n\n<div\n  bind:this={ref}\n  data-slot=\"sheet-header\"\n  class={cn(\"cn-sheet-header flex flex-col\", className)}\n  {...restProps}\n>\n  {@render children?.()}\n</div>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-maia/ui/sheet/sheet-overlay.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { Dialog as SheetPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    ...restProps\n  }: SheetPrimitive.OverlayProps = $props()\n</script>\n\n<SheetPrimitive.Overlay\n  bind:ref\n  data-slot=\"sheet-overlay\"\n  class={cn(\"cn-sheet-overlay fixed inset-0 z-50\", className)}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-maia/ui/sheet/sheet-portal.svelte",
+      "content": "<script lang=\"ts\">\n  import { Dialog as SheetPrimitive } from \"bits-ui\"\n\n  let { ...restProps }: SheetPrimitive.PortalProps = $props()\n</script>\n\n<SheetPrimitive.Portal {...restProps} />\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-maia/ui/sheet/sheet-title.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { Dialog as SheetPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    ...restProps\n  }: SheetPrimitive.TitleProps = $props()\n</script>\n\n<SheetPrimitive.Title\n  bind:ref\n  data-slot=\"sheet-title\"\n  class={cn(\"cn-sheet-title\", className)}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-maia/ui/sheet/sheet-trigger.svelte",
+      "content": "<script lang=\"ts\">\n  import { Dialog as SheetPrimitive } from \"bits-ui\"\n\n  let { ref = $bindable(null), ...restProps }: SheetPrimitive.TriggerProps =\n    $props()\n</script>\n\n<SheetPrimitive.Trigger bind:ref data-slot=\"sheet-trigger\" {...restProps} />\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-maia/ui/sheet/sheet.svelte",
+      "content": "<script lang=\"ts\">\n  import { Dialog as SheetPrimitive } from \"bits-ui\"\n\n  let { open = $bindable(false), ...restProps }: SheetPrimitive.RootProps =\n    $props()\n</script>\n\n<SheetPrimitive.Root bind:open {...restProps} />\n",
+      "type": "registry:ui"
+    }
+  ],
+  "meta": {
+    "links": {
+      "docs": "https://force-ui.com/docs/components/svelte/sheet"
+    }
+  },
+  "type": "registry:ui"
+}

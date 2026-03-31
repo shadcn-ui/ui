@@ -1,0 +1,74 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dialog",
+  "dependencies": [
+    "bits-ui"
+  ],
+  "registryDependencies": [
+    "button",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-nova/ui/dialog/dialog-close.svelte",
+      "content": "<script lang=\"ts\">\n  import { Dialog as DialogPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    type = \"button\",\n    ...restProps\n  }: DialogPrimitive.CloseProps = $props()\n</script>\n\n<DialogPrimitive.Close\n  bind:ref\n  data-slot=\"dialog-close\"\n  {type}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/dialog/dialog-content.svelte",
+      "content": "<script lang=\"ts\">\n  import IconPlaceholder from \"$lib/components/icon-placeholder/icon-placeholder.svelte\"\n  import { Button } from \"$lib/registry/ui/button/index.js\"\n  import { cn, type WithoutChildrenOrChild } from \"$lib/utils.js\"\n  import { Dialog as DialogPrimitive } from \"bits-ui\"\n  import type { ComponentProps, Snippet } from \"svelte\"\n\n  import DialogPortal from \"./dialog-portal.svelte\"\n  import * as Dialog from \"./index.js\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    portalProps,\n    children,\n    showCloseButton = true,\n    ...restProps\n  }: WithoutChildrenOrChild<DialogPrimitive.ContentProps> & {\n    portalProps?: WithoutChildrenOrChild<ComponentProps<typeof DialogPortal>>\n    children: Snippet\n    showCloseButton?: boolean\n  } = $props()\n</script>\n\n<DialogPortal {...portalProps}>\n  <Dialog.Overlay />\n  <DialogPrimitive.Content\n    bind:ref\n    data-slot=\"dialog-content\"\n    class={cn(\n      \"cn-dialog-content fixed top-1/2 left-1/2 z-50 w-full -translate-x-1/2 -translate-y-1/2 outline-none\",\n      className\n    )}\n    {...restProps}\n  >\n    {@render children?.()}\n    {#if showCloseButton}\n      <DialogPrimitive.Close data-slot=\"dialog-close\">\n        {#snippet child({ props })}\n          <Button\n            variant=\"ghost\"\n            class=\"cn-dialog-close\"\n            size=\"icon-sm\"\n            {...props}\n          >\n            <IconPlaceholder\n              lucide=\"XIcon\"\n              tabler=\"IconX\"\n              hugeicons=\"Cancel01Icon\"\n              phosphor=\"XIcon\"\n              remixicon=\"RiCloseLine\"\n            />\n            <span class=\"sr-only\">Close</span>\n          </Button>\n        {/snippet}\n      </DialogPrimitive.Close>\n    {/if}\n  </DialogPrimitive.Content>\n</DialogPortal>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/dialog/dialog-description.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { Dialog as DialogPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    ...restProps\n  }: DialogPrimitive.DescriptionProps = $props()\n</script>\n\n<DialogPrimitive.Description\n  bind:ref\n  data-slot=\"dialog-description\"\n  class={cn(\"cn-dialog-description\", className)}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/dialog/dialog-footer.svelte",
+      "content": "<script lang=\"ts\">\n  import { Button } from \"$lib/registry/ui/button/index.js\"\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import { Dialog as DialogPrimitive } from \"bits-ui\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    showCloseButton = false,\n    ...restProps\n  }: WithElementRef<HTMLAttributes<HTMLDivElement>> & {\n    showCloseButton?: boolean\n  } = $props()\n</script>\n\n<div\n  bind:this={ref}\n  data-slot=\"dialog-footer\"\n  class={cn(\n    \"cn-dialog-footer flex flex-col-reverse gap-2 sm:flex-row sm:justify-end\",\n    className\n  )}\n  {...restProps}\n>\n  {@render children?.()}\n  {#if showCloseButton}\n    <DialogPrimitive.Close>\n      {#snippet child({ props })}\n        <Button variant=\"outline\" {...props}>Close</Button>\n      {/snippet}\n    </DialogPrimitive.Close>\n  {/if}\n</div>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/dialog/dialog-header.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...restProps\n  }: WithElementRef<HTMLAttributes<HTMLDivElement>> = $props()\n</script>\n\n<div\n  bind:this={ref}\n  data-slot=\"dialog-header\"\n  class={cn(\"cn-dialog-header flex flex-col\", className)}\n  {...restProps}\n>\n  {@render children?.()}\n</div>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/dialog/dialog-overlay.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { Dialog as DialogPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    ...restProps\n  }: DialogPrimitive.OverlayProps = $props()\n</script>\n\n<DialogPrimitive.Overlay\n  bind:ref\n  data-slot=\"dialog-overlay\"\n  class={cn(\"cn-dialog-overlay fixed inset-0 isolate z-50\", className)}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/dialog/dialog-portal.svelte",
+      "content": "<script lang=\"ts\">\n  import { Dialog as DialogPrimitive } from \"bits-ui\"\n\n  let { ...restProps }: DialogPrimitive.PortalProps = $props()\n</script>\n\n<DialogPrimitive.Portal {...restProps} />\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/dialog/dialog-title.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { Dialog as DialogPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    ...restProps\n  }: DialogPrimitive.TitleProps = $props()\n</script>\n\n<DialogPrimitive.Title\n  bind:ref\n  data-slot=\"dialog-title\"\n  class={cn(\"cn-dialog-title\", className)}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/dialog/dialog-trigger.svelte",
+      "content": "<script lang=\"ts\">\n  import { Dialog as DialogPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    type = \"button\",\n    ...restProps\n  }: DialogPrimitive.TriggerProps = $props()\n</script>\n\n<DialogPrimitive.Trigger\n  bind:ref\n  data-slot=\"dialog-trigger\"\n  {type}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/dialog/dialog.svelte",
+      "content": "<script lang=\"ts\">\n  import { Dialog as DialogPrimitive } from \"bits-ui\"\n\n  let { open = $bindable(false), ...restProps }: DialogPrimitive.RootProps =\n    $props()\n</script>\n\n<DialogPrimitive.Root bind:open {...restProps} />\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/dialog/index.ts",
+      "content": "import Close from \"./dialog-close.svelte\"\nimport Content from \"./dialog-content.svelte\"\nimport Description from \"./dialog-description.svelte\"\nimport Footer from \"./dialog-footer.svelte\"\nimport Header from \"./dialog-header.svelte\"\nimport Overlay from \"./dialog-overlay.svelte\"\nimport Portal from \"./dialog-portal.svelte\"\nimport Title from \"./dialog-title.svelte\"\nimport Trigger from \"./dialog-trigger.svelte\"\nimport Root from \"./dialog.svelte\"\n\nexport {\n  Root,\n  Title,\n  Portal,\n  Footer,\n  Header,\n  Trigger,\n  Overlay,\n  Content,\n  Description,\n  Close,\n  //\n  Root as Dialog,\n  Title as DialogTitle,\n  Portal as DialogPortal,\n  Footer as DialogFooter,\n  Header as DialogHeader,\n  Trigger as DialogTrigger,\n  Overlay as DialogOverlay,\n  Content as DialogContent,\n  Description as DialogDescription,\n  Close as DialogClose,\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "meta": {
+    "links": {
+      "docs": "https://force-ui.com/docs/components/svelte/dialog"
+    }
+  },
+  "type": "registry:ui"
+}

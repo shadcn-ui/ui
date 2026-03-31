@@ -1,0 +1,43 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hover-card",
+  "dependencies": [
+    "bits-ui"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-maia/ui/hover-card/hover-card-content.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithoutChildrenOrChild } from \"$lib/utils.js\"\n  import { LinkPreview as HoverCardPrimitive } from \"bits-ui\"\n  import type { ComponentProps } from \"svelte\"\n\n  import HoverCardPortal from \"./hover-card-portal.svelte\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    align = \"center\",\n    sideOffset = 4,\n    portalProps,\n    ...restProps\n  }: HoverCardPrimitive.ContentProps & {\n    portalProps?: WithoutChildrenOrChild<ComponentProps<typeof HoverCardPortal>>\n  } = $props()\n</script>\n\n<HoverCardPortal {...portalProps}>\n  <HoverCardPrimitive.Content\n    bind:ref\n    data-slot=\"hover-card-content\"\n    {align}\n    {sideOffset}\n    class={cn(\n      \"cn-hover-card-content z-50 origin-(--transform-origin) outline-hidden\",\n      className\n    )}\n    {...restProps}\n  />\n</HoverCardPortal>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-maia/ui/hover-card/hover-card-portal.svelte",
+      "content": "<script lang=\"ts\">\n  import { LinkPreview as HoverCardPrimitive } from \"bits-ui\"\n\n  let { ...restProps }: HoverCardPrimitive.PortalProps = $props()\n</script>\n\n<HoverCardPrimitive.Portal {...restProps} />\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-maia/ui/hover-card/hover-card-trigger.svelte",
+      "content": "<script lang=\"ts\">\n  import { LinkPreview as HoverCardPrimitive } from \"bits-ui\"\n\n  let { ref = $bindable(null), ...restProps }: HoverCardPrimitive.TriggerProps =\n    $props()\n</script>\n\n<HoverCardPrimitive.Trigger\n  bind:ref\n  data-slot=\"hover-card-trigger\"\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-maia/ui/hover-card/hover-card.svelte",
+      "content": "<script lang=\"ts\">\n  import { LinkPreview as HoverCardPrimitive } from \"bits-ui\"\n\n  let { open = $bindable(false), ...restProps }: HoverCardPrimitive.RootProps =\n    $props()\n</script>\n\n<HoverCardPrimitive.Root bind:open {...restProps} />\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-maia/ui/hover-card/index.ts",
+      "content": "import Content from \"./hover-card-content.svelte\"\nimport Portal from \"./hover-card-portal.svelte\"\nimport Trigger from \"./hover-card-trigger.svelte\"\nimport Root from \"./hover-card.svelte\"\n\nexport {\n  Root,\n  Content,\n  Trigger,\n  Portal,\n  Root as HoverCard,\n  Content as HoverCardContent,\n  Trigger as HoverCardTrigger,\n  Portal as HoverCardPortal,\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "meta": {
+    "links": {
+      "docs": "https://force-ui.com/docs/components/svelte/hover-card"
+    }
+  },
+  "type": "registry:ui"
+}

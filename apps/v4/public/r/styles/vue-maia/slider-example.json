@@ -1,0 +1,49 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "slider-example",
+  "title": "Slider",
+  "dependencies": [],
+  "registryDependencies": [
+    "slider",
+    "label",
+    "example"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-maia/examples/slider/SliderBasic.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Slider } from \"@/ui/slider\"\n</script>\n\n<template>\n  <Slider :default-value=\"[50]\" :max=\"100\" :step=\"1\" />\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-maia/examples/slider/SliderControlled.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Label } from \"@/ui/label\"\nimport { Slider } from \"@/ui/slider\"\nimport { ref } from \"vue\"\n\nconst value = ref([0.3, 0.7])\n</script>\n\n<template>\n  <div class=\"grid w-full gap-3\">\n    <div class=\"flex items-center justify-between gap-2\">\n      <Label html-for=\"slider-demo-temperature\">Temperature</Label>\n      <span class=\"text-sm text-muted-foreground\">\n        {{ value.join(\", \") }}\n      </span>\n    </div>\n    <Slider\n      id=\"slider-demo-temperature\"\n      v-model=\"value\"\n      :min=\"0\"\n      :max=\"1\"\n      :step=\"0.1\"\n    />\n  </div>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-maia/examples/slider/SliderDisabled.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Slider } from \"@/ui/slider\"\n</script>\n\n<template>\n  <Slider :default-value=\"[50]\" :max=\"100\" :step=\"1\" :disabled=\"true\" />\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-maia/examples/slider/SliderExample.vue",
+      "content": "<script setup lang=\"ts\">\nimport SliderBasic from \"@/examples/slider/SliderBasic.vue\"\nimport SliderControlled from \"@/examples/slider/SliderControlled.vue\"\nimport SliderDisabled from \"@/examples/slider/SliderDisabled.vue\"\nimport SliderMultiple from \"@/examples/slider/SliderMultiple.vue\"\nimport SliderRange from \"@/examples/slider/SliderRange.vue\"\nimport SliderVertical from \"@/examples/slider/SliderVertical.vue\"\n\nimport { Example, ExampleWrapper } from \"@/components/example\"\n</script>\n\n<template>\n  <ExampleWrapper>\n    <Example title=\"Basic\">\n      <SliderBasic />\n    </Example>\n    <Example title=\"Range\">\n      <SliderRange />\n    </Example>\n    <Example title=\"Multiple Thumbs\">\n      <SliderMultiple />\n    </Example>\n    <Example title=\"Vertical\">\n      <SliderVertical />\n    </Example>\n    <Example title=\"Controlled\">\n      <SliderControlled />\n    </Example>\n    <Example title=\"Disabled\">\n      <SliderDisabled />\n    </Example>\n  </ExampleWrapper>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-maia/examples/slider/SliderMultiple.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Slider } from \"@/ui/slider\"\n</script>\n\n<template>\n  <Slider :default-value=\"[10, 20, 70]\" :max=\"100\" :step=\"10\" />\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-maia/examples/slider/SliderRange.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Slider } from \"@/ui/slider\"\n</script>\n\n<template>\n  <Slider :default-value=\"[25, 50]\" :max=\"100\" :step=\"5\" />\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-maia/examples/slider/SliderVertical.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Slider } from \"@/ui/slider\"\n</script>\n\n<template>\n  <div class=\"flex items-center gap-6\">\n    <Slider\n      :default-value=\"[50]\"\n      :max=\"100\"\n      :step=\"1\"\n      orientation=\"vertical\"\n      class=\"h-40\"\n    />\n    <Slider\n      :default-value=\"[25]\"\n      :max=\"100\"\n      :step=\"1\"\n      orientation=\"vertical\"\n      class=\"h-40\"\n    />\n  </div>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

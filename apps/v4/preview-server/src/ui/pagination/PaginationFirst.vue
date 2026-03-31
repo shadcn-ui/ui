@@ -5,7 +5,7 @@ import type { ButtonVariants } from "@/ui/button"
 import { reactiveOmit } from "@vueuse/core"
 import { PaginationFirst, useForwardProps } from "reka-ui"
 import { cn } from "@/lib/utils"
-import { IconPlaceholder } from "@/components/IconPlaceholder.vue"
+import IconPlaceholder from "@/components/IconPlaceholder.vue"
 import { buttonVariants } from "@/ui/button"
 
 const props = withDefaults(defineProps<PaginationFirstProps & {

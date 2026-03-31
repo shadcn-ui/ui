@@ -1,0 +1,108 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dropdown-menu",
+  "dependencies": [
+    "bits-ui"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-nova/ui/dropdown-menu/dropdown-menu-checkbox-group.svelte",
+      "content": "<script lang=\"ts\">\n  import { DropdownMenu as DropdownMenuPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    value = $bindable([]),\n    ...restProps\n  }: DropdownMenuPrimitive.CheckboxGroupProps = $props()\n</script>\n\n<DropdownMenuPrimitive.CheckboxGroup\n  bind:ref\n  bind:value\n  data-slot=\"dropdown-menu-checkbox-group\"\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/dropdown-menu/dropdown-menu-checkbox-item.svelte",
+      "content": "<script lang=\"ts\">\n  import IconPlaceholder from \"$lib/components/icon-placeholder/icon-placeholder.svelte\"\n  import { cn, type WithoutChildrenOrChild } from \"$lib/utils.js\"\n  import { DropdownMenu as DropdownMenuPrimitive } from \"bits-ui\"\n  import type { Snippet } from \"svelte\"\n\n  let {\n    ref = $bindable(null),\n    checked = $bindable(false),\n    indeterminate = $bindable(false),\n    class: className,\n    children: childrenProp,\n    ...restProps\n  }: WithoutChildrenOrChild<DropdownMenuPrimitive.CheckboxItemProps> & {\n    children?: Snippet\n  } = $props()\n</script>\n\n<DropdownMenuPrimitive.CheckboxItem\n  bind:ref\n  bind:checked\n  bind:indeterminate\n  data-slot=\"dropdown-menu-checkbox-item\"\n  class={cn(\n    \"cn-dropdown-menu-checkbox-item relative flex cursor-default items-center outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0\",\n    className\n  )}\n  {...restProps}\n>\n  {#snippet children({ checked, indeterminate })}\n    <span\n      class=\"cn-dropdown-menu-item-indicator pointer-events-none\"\n      data-slot=\"dropdown-menu-checkbox-item-indicator\"\n    >\n      {#if indeterminate}\n        <IconPlaceholder\n          lucide=\"MinusIcon\"\n          tabler=\"IconMinus\"\n          hugeicons=\"MinusSignIcon\"\n          phosphor=\"MinusIcon\"\n          remixicon=\"RiSubtractLine\"\n        />\n      {:else if checked}\n        <IconPlaceholder\n          lucide=\"CheckIcon\"\n          tabler=\"IconCheck\"\n          hugeicons=\"Tick02Icon\"\n          phosphor=\"CheckIcon\"\n          remixicon=\"RiCheckLine\"\n        />\n      {/if}\n    </span>\n    {@render childrenProp?.()}\n  {/snippet}\n</DropdownMenuPrimitive.CheckboxItem>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/dropdown-menu/dropdown-menu-content.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithoutChildrenOrChild } from \"$lib/utils.js\"\n  import { DropdownMenu as DropdownMenuPrimitive } from \"bits-ui\"\n  import type { ComponentProps } from \"svelte\"\n\n  import DropdownMenuPortal from \"./dropdown-menu-portal.svelte\"\n\n  let {\n    ref = $bindable(null),\n    sideOffset = 4,\n    align = \"start\",\n    portalProps,\n    class: className,\n    ...restProps\n  }: DropdownMenuPrimitive.ContentProps & {\n    portalProps?: WithoutChildrenOrChild<\n      ComponentProps<typeof DropdownMenuPortal>\n    >\n  } = $props()\n</script>\n\n<DropdownMenuPortal {...portalProps}>\n  <DropdownMenuPrimitive.Content\n    bind:ref\n    data-slot=\"dropdown-menu-content\"\n    {sideOffset}\n    {align}\n    class={cn(\n      \"cn-dropdown-menu-content cn-dropdown-menu-content-logical cn-menu-target cn-menu-translucent z-50 w-(--bits-dropdown-menu-anchor-width) overflow-x-hidden overflow-y-auto outline-none data-closed:overflow-hidden\",\n      className\n    )}\n    {...restProps}\n  />\n</DropdownMenuPortal>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/dropdown-menu/dropdown-menu-group-heading.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { DropdownMenu as DropdownMenuPrimitive } from \"bits-ui\"\n  import type { ComponentProps } from \"svelte\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    inset,\n    ...restProps\n  }: ComponentProps<typeof DropdownMenuPrimitive.GroupHeading> & {\n    inset?: boolean\n  } = $props()\n</script>\n\n<DropdownMenuPrimitive.GroupHeading\n  bind:ref\n  data-slot=\"dropdown-menu-group-heading\"\n  data-inset={inset}\n  class={cn(\"px-2 py-1.5 text-sm font-semibold data-[inset]:ps-8\", className)}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/dropdown-menu/dropdown-menu-group.svelte",
+      "content": "<script lang=\"ts\">\n  import { DropdownMenu as DropdownMenuPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    ...restProps\n  }: DropdownMenuPrimitive.GroupProps = $props()\n</script>\n\n<DropdownMenuPrimitive.Group\n  bind:ref\n  data-slot=\"dropdown-menu-group\"\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/dropdown-menu/dropdown-menu-item.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { DropdownMenu as DropdownMenuPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    inset,\n    variant = \"default\",\n    ...restProps\n  }: DropdownMenuPrimitive.ItemProps & {\n    inset?: boolean\n    variant?: \"default\" | \"destructive\"\n  } = $props()\n</script>\n\n<DropdownMenuPrimitive.Item\n  bind:ref\n  data-slot=\"dropdown-menu-item\"\n  data-inset={inset}\n  data-variant={variant}\n  class={cn(\n    \"cn-dropdown-menu-item group/dropdown-menu-item relative flex cursor-default items-center outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 data-[inset]:pl-8 [&_svg]:pointer-events-none [&_svg]:shrink-0\",\n    className\n  )}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/dropdown-menu/dropdown-menu-label.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    inset,\n    children,\n    ...restProps\n  }: WithElementRef<HTMLAttributes<HTMLDivElement>> & {\n    inset?: boolean\n  } = $props()\n</script>\n\n<div\n  bind:this={ref}\n  data-slot=\"dropdown-menu-label\"\n  data-inset={inset}\n  class={cn(\"cn-dropdown-menu-label data-[inset]:pl-8\", className)}\n  {...restProps}\n>\n  {@render children?.()}\n</div>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/dropdown-menu/dropdown-menu-portal.svelte",
+      "content": "<script lang=\"ts\">\n  import { DropdownMenu as DropdownMenuPrimitive } from \"bits-ui\"\n\n  let { ...restProps }: DropdownMenuPrimitive.PortalProps = $props()\n</script>\n\n<DropdownMenuPrimitive.Portal {...restProps} />\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/dropdown-menu/dropdown-menu-radio-group.svelte",
+      "content": "<script lang=\"ts\">\n  import { DropdownMenu as DropdownMenuPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    value = $bindable(),\n    ...restProps\n  }: DropdownMenuPrimitive.RadioGroupProps = $props()\n</script>\n\n<DropdownMenuPrimitive.RadioGroup\n  bind:ref\n  bind:value\n  data-slot=\"dropdown-menu-radio-group\"\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/dropdown-menu/dropdown-menu-radio-item.svelte",
+      "content": "<script lang=\"ts\">\n  import IconPlaceholder from \"$lib/components/icon-placeholder/icon-placeholder.svelte\"\n  import { cn, type WithoutChild } from \"$lib/utils.js\"\n  import { DropdownMenu as DropdownMenuPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children: childrenProp,\n    ...restProps\n  }: WithoutChild<DropdownMenuPrimitive.RadioItemProps> = $props()\n</script>\n\n<DropdownMenuPrimitive.RadioItem\n  bind:ref\n  data-slot=\"dropdown-menu-radio-item\"\n  class={cn(\n    \"cn-dropdown-menu-radio-item relative flex cursor-default items-center outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0\",\n    className\n  )}\n  {...restProps}\n>\n  {#snippet children({ checked })}\n    <span\n      class=\"cn-dropdown-menu-item-indicator pointer-events-none\"\n      data-slot=\"dropdown-menu-radio-item-indicator\"\n    >\n      {#if checked}\n        <IconPlaceholder\n          lucide=\"CheckIcon\"\n          tabler=\"IconCheck\"\n          hugeicons=\"Tick02Icon\"\n          phosphor=\"CheckIcon\"\n          remixicon=\"RiCheckLine\"\n        />\n      {/if}\n    </span>\n    {@render childrenProp?.({ checked })}\n  {/snippet}\n</DropdownMenuPrimitive.RadioItem>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/dropdown-menu/dropdown-menu-separator.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { DropdownMenu as DropdownMenuPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    ...restProps\n  }: DropdownMenuPrimitive.SeparatorProps = $props()\n</script>\n\n<DropdownMenuPrimitive.Separator\n  bind:ref\n  data-slot=\"dropdown-menu-separator\"\n  class={cn(\"cn-dropdown-menu-separator\", className)}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/dropdown-menu/dropdown-menu-shortcut.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...restProps\n  }: WithElementRef<HTMLAttributes<HTMLSpanElement>> = $props()\n</script>\n\n<span\n  bind:this={ref}\n  data-slot=\"dropdown-menu-shortcut\"\n  class={cn(\"cn-dropdown-menu-shortcut\", className)}\n  {...restProps}\n>\n  {@render children?.()}\n</span>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/dropdown-menu/dropdown-menu-sub-content.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { DropdownMenu as DropdownMenuPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    ...restProps\n  }: DropdownMenuPrimitive.SubContentProps = $props()\n</script>\n\n<DropdownMenuPrimitive.SubContent\n  bind:ref\n  data-slot=\"dropdown-menu-sub-content\"\n  class={cn(\n    \"cn-dropdown-menu-sub-content cn-menu-target cn-menu-translucent w-auto\",\n    className\n  )}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/dropdown-menu/dropdown-menu-sub-trigger.svelte",
+      "content": "<script lang=\"ts\">\n  import IconPlaceholder from \"$lib/components/icon-placeholder/icon-placeholder.svelte\"\n  import { cn } from \"$lib/utils.js\"\n  import { DropdownMenu as DropdownMenuPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    inset,\n    children,\n    ...restProps\n  }: DropdownMenuPrimitive.SubTriggerProps & {\n    inset?: boolean\n  } = $props()\n</script>\n\n<DropdownMenuPrimitive.SubTrigger\n  bind:ref\n  data-slot=\"dropdown-menu-sub-trigger\"\n  data-inset={inset}\n  class={cn(\n    \"cn-dropdown-menu-sub-trigger flex cursor-default items-center outline-hidden select-none data-[inset]:pl-8 [&_svg]:pointer-events-none [&_svg]:shrink-0\",\n    className\n  )}\n  {...restProps}\n>\n  {@render children?.()}\n  <IconPlaceholder\n    lucide=\"ChevronRightIcon\"\n    tabler=\"IconChevronRight\"\n    hugeicons=\"ArrowRight01Icon\"\n    phosphor=\"CaretRightIcon\"\n    remixicon=\"RiArrowRightSLine\"\n    class=\"ml-auto\"\n  />\n</DropdownMenuPrimitive.SubTrigger>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/dropdown-menu/dropdown-menu-sub.svelte",
+      "content": "<script lang=\"ts\">\n  import { DropdownMenu as DropdownMenuPrimitive } from \"bits-ui\"\n\n  let {\n    open = $bindable(false),\n    ...restProps\n  }: DropdownMenuPrimitive.SubProps = $props()\n</script>\n\n<DropdownMenuPrimitive.Sub bind:open {...restProps} />\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/dropdown-menu/dropdown-menu-trigger.svelte",
+      "content": "<script lang=\"ts\">\n  import { DropdownMenu as DropdownMenuPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    ...restProps\n  }: DropdownMenuPrimitive.TriggerProps = $props()\n</script>\n\n<DropdownMenuPrimitive.Trigger\n  bind:ref\n  data-slot=\"dropdown-menu-trigger\"\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/dropdown-menu/dropdown-menu.svelte",
+      "content": "<script lang=\"ts\">\n  import { DropdownMenu as DropdownMenuPrimitive } from \"bits-ui\"\n\n  let {\n    open = $bindable(false),\n    ...restProps\n  }: DropdownMenuPrimitive.RootProps = $props()\n</script>\n\n<DropdownMenuPrimitive.Root bind:open {...restProps} />\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/dropdown-menu/index.ts",
+      "content": "import CheckboxGroup from \"./dropdown-menu-checkbox-group.svelte\"\nimport CheckboxItem from \"./dropdown-menu-checkbox-item.svelte\"\nimport Content from \"./dropdown-menu-content.svelte\"\nimport GroupHeading from \"./dropdown-menu-group-heading.svelte\"\nimport Group from \"./dropdown-menu-group.svelte\"\nimport Item from \"./dropdown-menu-item.svelte\"\nimport Label from \"./dropdown-menu-label.svelte\"\nimport Portal from \"./dropdown-menu-portal.svelte\"\nimport RadioGroup from \"./dropdown-menu-radio-group.svelte\"\nimport RadioItem from \"./dropdown-menu-radio-item.svelte\"\nimport Separator from \"./dropdown-menu-separator.svelte\"\nimport Shortcut from \"./dropdown-menu-shortcut.svelte\"\nimport SubContent from \"./dropdown-menu-sub-content.svelte\"\nimport SubTrigger from \"./dropdown-menu-sub-trigger.svelte\"\nimport Sub from \"./dropdown-menu-sub.svelte\"\nimport Trigger from \"./dropdown-menu-trigger.svelte\"\nimport Root from \"./dropdown-menu.svelte\"\n\nexport {\n  CheckboxGroup,\n  CheckboxItem,\n  Content,\n  Portal,\n  Root as DropdownMenu,\n  CheckboxGroup as DropdownMenuCheckboxGroup,\n  CheckboxItem as DropdownMenuCheckboxItem,\n  Content as DropdownMenuContent,\n  Portal as DropdownMenuPortal,\n  Group as DropdownMenuGroup,\n  Item as DropdownMenuItem,\n  Label as DropdownMenuLabel,\n  RadioGroup as DropdownMenuRadioGroup,\n  RadioItem as DropdownMenuRadioItem,\n  Separator as DropdownMenuSeparator,\n  Shortcut as DropdownMenuShortcut,\n  Sub as DropdownMenuSub,\n  SubContent as DropdownMenuSubContent,\n  SubTrigger as DropdownMenuSubTrigger,\n  Trigger as DropdownMenuTrigger,\n  GroupHeading as DropdownMenuGroupHeading,\n  Group,\n  GroupHeading,\n  Item,\n  Label,\n  RadioGroup,\n  RadioItem,\n  Root,\n  Separator,\n  Shortcut,\n  Sub,\n  SubContent,\n  SubTrigger,\n  Trigger,\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "meta": {
+    "links": {
+      "docs": "https://force-ui.com/docs/components/svelte/dropdown-menu"
+    }
+  },
+  "type": "registry:ui"
+}

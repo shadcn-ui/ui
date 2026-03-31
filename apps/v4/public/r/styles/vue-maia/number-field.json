@@ -1,0 +1,44 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "number-field",
+  "dependencies": [
+    "reka-ui",
+    "@vueuse/core"
+  ],
+  "registryDependencies": [
+    "icon-placeholder"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-maia/ui/number-field/NumberField.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { NumberFieldRootEmits, NumberFieldRootProps } from \"reka-ui\"\nimport { NumberFieldRoot, useForwardPropsEmits } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<\n  NumberFieldRootProps & { class?: HTMLAttributes[\"class\"] }\n>()\nconst emits = defineEmits<NumberFieldRootEmits>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n\nconst forwarded = useForwardPropsEmits(delegatedProps, emits)\n</script>\n\n<template>\n  <NumberFieldRoot\n    v-slot=\"slotProps\"\n    v-bind=\"forwarded\"\n    :class=\"cn('grid gap-1.5', props.class)\"\n  >\n    <slot v-bind=\"slotProps\" />\n  </NumberFieldRoot>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-maia/ui/number-field/NumberFieldContent.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <div\n    :class=\"\n      cn(\n        'relative [&>[data-slot=input]]:has-[[data-slot=decrement]]:pl-5 [&>[data-slot=input]]:has-[[data-slot=increment]]:pr-5',\n        props.class\n      )\n    \"\n  >\n    <slot />\n  </div>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-maia/ui/number-field/NumberFieldDecrement.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { NumberFieldDecrementProps } from \"reka-ui\"\nimport { NumberFieldDecrement, useForwardProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\nimport { IconPlaceholder } from \"@/registry/bases/reka/components/icon-placeholder\"\n\nconst props = defineProps<\n  NumberFieldDecrementProps & { class?: HTMLAttributes[\"class\"] }\n>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n\nconst forwarded = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <NumberFieldDecrement\n    data-slot=\"decrement\"\n    v-bind=\"forwarded\"\n    :class=\"\n      cn(\n        'absolute top-1/2 left-0 -translate-y-1/2 p-3 disabled:cursor-not-allowed disabled:opacity-20',\n        props.class\n      )\n    \"\n  >\n    <slot>\n      <IconPlaceholder\n        lucide=\"MinusIcon\"\n        tabler=\"IconMinus\"\n        hugeicons=\"Minus01Icon\"\n        phosphor=\"MinusIcon\"\n        remixicon=\"RiSubtractLine\"\n        class=\"h-4 w-4\"\n      />\n    </slot>\n  </NumberFieldDecrement>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-maia/ui/number-field/NumberFieldIncrement.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { NumberFieldIncrementProps } from \"reka-ui\"\nimport { NumberFieldIncrement, useForwardProps } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\nimport { IconPlaceholder } from \"@/registry/bases/reka/components/icon-placeholder\"\n\nconst props = defineProps<\n  NumberFieldIncrementProps & { class?: HTMLAttributes[\"class\"] }\n>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n\nconst forwarded = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <NumberFieldIncrement\n    data-slot=\"increment\"\n    v-bind=\"forwarded\"\n    :class=\"\n      cn(\n        'absolute top-1/2 right-0 -translate-y-1/2 p-3 disabled:cursor-not-allowed disabled:opacity-20',\n        props.class\n      )\n    \"\n  >\n    <slot>\n      <IconPlaceholder\n        lucide=\"PlusIcon\"\n        tabler=\"IconPlus\"\n        hugeicons=\"Add01Icon\"\n        phosphor=\"PlusIcon\"\n        remixicon=\"RiAddLine\"\n        class=\"h-4 w-4\"\n      />\n    </slot>\n  </NumberFieldIncrement>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-maia/ui/number-field/NumberFieldInput.vue",
+      "content": "<script setup lang=\"ts\">\nimport { NumberFieldInput } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <NumberFieldInput\n    data-slot=\"input\"\n    :class=\"\n      cn(\n        'flex h-9 w-full rounded-md border border-input bg-transparent py-1 text-center text-sm shadow-sm transition-colors placeholder:text-muted-foreground focus-visible:ring-1 focus-visible:ring-ring focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50',\n        props.class\n      )\n    \"\n  />\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-maia/ui/number-field/index.ts",
+      "content": "export { default as NumberField } from \"./NumberField.vue\"\nexport { default as NumberFieldContent } from \"./NumberFieldContent.vue\"\nexport { default as NumberFieldDecrement } from \"./NumberFieldDecrement.vue\"\nexport { default as NumberFieldIncrement } from \"./NumberFieldIncrement.vue\"\nexport { default as NumberFieldInput } from \"./NumberFieldInput.vue\"\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

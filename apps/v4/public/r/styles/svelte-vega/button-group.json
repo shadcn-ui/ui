@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-group",
+  "registryDependencies": [
+    "separator",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-vega/ui/button-group/button-group-separator.svelte",
+      "content": "<script lang=\"ts\">\n  import { Separator } from \"$lib/registry/ui/separator/index.js\"\n  import { cn } from \"$lib/utils.js\"\n  import type { ComponentProps } from \"svelte\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    orientation = \"vertical\",\n    ...restProps\n  }: ComponentProps<typeof Separator> = $props()\n</script>\n\n<Separator\n  bind:ref\n  data-slot=\"button-group-separator\"\n  {orientation}\n  class={cn(\n    \"cn-button-group-separator relative self-stretch data-[orientation=horizontal]:mx-px data-[orientation=horizontal]:w-auto data-[orientation=vertical]:my-px data-[orientation=vertical]:h-auto\",\n    className\n  )}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/button-group/button-group-text.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { Snippet } from \"svelte\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    child,\n    ...restProps\n  }: WithElementRef<HTMLAttributes<HTMLDivElement>> & {\n    child?: Snippet<[{ props: Record<string, unknown> }]>\n  } = $props()\n\n  const mergedProps = $derived({\n    ...restProps,\n    class: cn(\n      \"cn-button-group-text flex items-center [&_svg]:pointer-events-none\",\n      className\n    ),\n    \"data-slot\": \"button-group-text\",\n  })\n</script>\n\n{#if child}\n  {@render child({ props: mergedProps })}\n{:else}\n  <div bind:this={ref} {...mergedProps}>\n    {@render mergedProps.children?.()}\n  </div>\n{/if}\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/button-group/button-group.svelte",
+      "content": "<script lang=\"ts\" module>\n  import { tv, type VariantProps } from \"tailwind-variants\"\n\n  export const buttonGroupVariants = tv({\n    base: \"cn-button-group flex w-fit items-stretch [&>*]:focus-visible:relative [&>*]:focus-visible:z-10 [&>[data-slot=select-trigger]:not([class*='w-'])]:w-fit [&>input]:flex-1\",\n    variants: {\n      orientation: {\n        horizontal:\n          \"cn-button-group-orientation-horizontal [&>[data-slot]]:rounded-r-none [&>[data-slot]~[data-slot]]:rounded-l-none [&>[data-slot]~[data-slot]]:border-l-0\",\n        vertical:\n          \"cn-button-group-orientation-vertical flex-col [&>[data-slot]]:rounded-b-none [&>[data-slot]~[data-slot]]:rounded-t-none [&>[data-slot]~[data-slot]]:border-t-0\",\n      },\n    },\n    defaultVariants: {\n      orientation: \"horizontal\",\n    },\n  })\n\n  export type ButtonGroupOrientation = VariantProps<\n    typeof buttonGroupVariants\n  >[\"orientation\"]\n</script>\n\n<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    orientation = \"horizontal\",\n    ...restProps\n  }: WithElementRef<HTMLAttributes<HTMLDivElement>> & {\n    orientation?: ButtonGroupOrientation\n  } = $props()\n</script>\n\n<div\n  bind:this={ref}\n  role=\"group\"\n  data-slot=\"button-group\"\n  data-orientation={orientation}\n  class={cn(buttonGroupVariants({ orientation }), className)}\n  {...restProps}\n>\n  {@render children?.()}\n</div>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/button-group/index.ts",
+      "content": "import Separator from \"./button-group-separator.svelte\"\nimport Text from \"./button-group-text.svelte\"\nimport Root, {\n  buttonGroupVariants,\n  type ButtonGroupOrientation,\n} from \"./button-group.svelte\"\n\nexport {\n  Root,\n  Text,\n  Separator,\n  buttonGroupVariants,\n  type ButtonGroupOrientation,\n  //\n  Root as ButtonGroup,\n  Text as ButtonGroupText,\n  Separator as ButtonGroupSeparator,\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "meta": {
+    "links": {
+      "docs": "https://force-ui.com/docs/components/svelte/button-group"
+    }
+  },
+  "type": "registry:ui"
+}

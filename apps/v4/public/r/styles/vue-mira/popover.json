@@ -1,0 +1,51 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "popover",
+  "dependencies": [
+    "reka-ui",
+    "@vueuse/core"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-mira/ui/popover/Popover.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { PopoverRootEmits, PopoverRootProps } from \"reka-ui\"\nimport { PopoverRoot, useForwardPropsEmits } from \"reka-ui\"\n\nconst props = defineProps<PopoverRootProps>()\nconst emits = defineEmits<PopoverRootEmits>()\n\nconst forwarded = useForwardPropsEmits(props, emits)\n</script>\n\n<template>\n  <PopoverRoot v-slot=\"slotProps\" data-slot=\"popover\" v-bind=\"forwarded\">\n    <slot v-bind=\"slotProps\" />\n  </PopoverRoot>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-mira/ui/popover/PopoverAnchor.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { PopoverAnchorProps } from \"reka-ui\"\nimport { PopoverAnchor } from \"reka-ui\"\n\nconst props = defineProps<PopoverAnchorProps>()\n</script>\n\n<template>\n  <PopoverAnchor data-slot=\"popover-anchor\" v-bind=\"props\">\n    <slot />\n  </PopoverAnchor>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-mira/ui/popover/PopoverContent.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { PopoverContentEmits, PopoverContentProps } from \"reka-ui\"\nimport { PopoverContent, PopoverPortal, useForwardPropsEmits } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\ndefineOptions({\n  inheritAttrs: false,\n})\n\nconst props = withDefaults(\n  defineProps<PopoverContentProps & { class?: HTMLAttributes[\"class\"] }>(),\n  {\n    align: \"center\",\n    sideOffset: 4,\n  }\n)\nconst emits = defineEmits<PopoverContentEmits>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n\nconst forwarded = useForwardPropsEmits(delegatedProps, emits)\n</script>\n\n<template>\n  <PopoverPortal>\n    <PopoverContent\n      data-slot=\"popover-content\"\n      v-bind=\"{ ...$attrs, ...forwarded }\"\n      :class=\"\n        cn(\n          'cn-popover-content z-50 w-72 origin-(--reka-popover-content-transform-origin) outline-hidden',\n          props.class\n        )\n      \"\n    >\n      <slot />\n    </PopoverContent>\n  </PopoverPortal>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-mira/ui/popover/PopoverDescription.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <p\n    data-slot=\"popover-description\"\n    :class=\"cn('cn-popover-description', props.class)\"\n  >\n    <slot />\n  </p>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-mira/ui/popover/PopoverHeader.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <div data-slot=\"popover-header\" :class=\"cn('cn-popover-header', props.class)\">\n    <slot />\n  </div>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-mira/ui/popover/PopoverTitle.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <div data-slot=\"popover-title\" :class=\"cn('cn-popover-title', props.class)\">\n    <slot />\n  </div>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-mira/ui/popover/PopoverTrigger.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { PopoverTriggerProps } from \"reka-ui\"\nimport { PopoverTrigger } from \"reka-ui\"\n\nconst props = defineProps<PopoverTriggerProps>()\n</script>\n\n<template>\n  <PopoverTrigger data-slot=\"popover-trigger\" v-bind=\"props\">\n    <slot />\n  </PopoverTrigger>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-mira/ui/popover/index.ts",
+      "content": "export { default as Popover } from \"./Popover.vue\"\nexport { default as PopoverAnchor } from \"./PopoverAnchor.vue\"\nexport { default as PopoverContent } from \"./PopoverContent.vue\"\nexport { default as PopoverDescription } from \"./PopoverDescription.vue\"\nexport { default as PopoverHeader } from \"./PopoverHeader.vue\"\nexport { default as PopoverTitle } from \"./PopoverTitle.vue\"\nexport { default as PopoverTrigger } from \"./PopoverTrigger.vue\"\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

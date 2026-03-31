@@ -1,0 +1,28 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "switch",
+  "dependencies": [
+    "bits-ui"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-maia/ui/switch/index.ts",
+      "content": "import Root from \"./switch.svelte\"\n\nexport {\n  Root,\n  //\n  Root as Switch,\n}\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-maia/ui/switch/switch.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithoutChildrenOrChild } from \"$lib/utils.js\"\n  import { Switch as SwitchPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    checked = $bindable(false),\n    size = \"default\",\n    ...restProps\n  }: WithoutChildrenOrChild<SwitchPrimitive.RootProps> & {\n    size?: \"sm\" | \"default\"\n  } = $props()\n</script>\n\n<SwitchPrimitive.Root\n  bind:ref\n  bind:checked\n  data-slot=\"switch\"\n  data-size={size}\n  class={cn(\n    \"cn-switch peer group/switch relative inline-flex items-center transition-all outline-none after:absolute after:-inset-x-3 after:-inset-y-2 data-disabled:cursor-not-allowed data-disabled:opacity-50\",\n    className\n  )}\n  {...restProps}\n>\n  <SwitchPrimitive.Thumb\n    data-slot=\"switch-thumb\"\n    class=\"cn-switch-thumb pointer-events-none block ring-0 transition-transform rtl:data-[state=checked]:translate-x-[calc(-100%)]\"\n  />\n</SwitchPrimitive.Root>\n",
+      "type": "registry:ui"
+    }
+  ],
+  "meta": {
+    "links": {
+      "docs": "https://force-ui.com/docs/components/svelte/switch"
+    }
+  },
+  "type": "registry:ui"
+}

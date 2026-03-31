@@ -1,0 +1,64 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sheet",
+  "dependencies": [
+    "reka-ui",
+    "@vueuse/core"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-vega/ui/sheet/Sheet.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { DialogRootEmits, DialogRootProps } from \"reka-ui\"\nimport { DialogRoot, useForwardPropsEmits } from \"reka-ui\"\n\nconst props = defineProps<DialogRootProps>()\nconst emits = defineEmits<DialogRootEmits>()\n\nconst forwarded = useForwardPropsEmits(props, emits)\n</script>\n\n<template>\n  <DialogRoot v-slot=\"slotProps\" data-slot=\"sheet\" v-bind=\"forwarded\">\n    <slot v-bind=\"slotProps\" />\n  </DialogRoot>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-vega/ui/sheet/SheetClose.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { DialogCloseProps } from \"reka-ui\"\nimport { DialogClose } from \"reka-ui\"\n\nconst props = defineProps<DialogCloseProps>()\n</script>\n\n<template>\n  <DialogClose data-slot=\"sheet-close\" v-bind=\"props\">\n    <slot />\n  </DialogClose>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-vega/ui/sheet/SheetContent.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Button } from \"@/ui/button\"\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { DialogContentEmits, DialogContentProps } from \"reka-ui\"\nimport {\n  DialogClose,\n  DialogContent,\n  DialogPortal,\n  useForwardPropsEmits,\n} from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\nimport IconPlaceholder from \"@/components/icon-placeholder/IconPlaceholder.vue\"\n\nimport SheetOverlay from \"./SheetOverlay.vue\"\n\ninterface SheetContentProps extends DialogContentProps {\n  class?: HTMLAttributes[\"class\"]\n  side?: \"top\" | \"right\" | \"bottom\" | \"left\"\n  showCloseButton?: boolean\n}\n\ndefineOptions({\n  inheritAttrs: false,\n})\n\nconst props = withDefaults(defineProps<SheetContentProps>(), {\n  side: \"right\",\n  showCloseButton: true,\n})\nconst emits = defineEmits<DialogContentEmits>()\n\nconst delegatedProps = reactiveOmit(props, \"class\", \"side\", \"showCloseButton\")\n\nconst forwarded = useForwardPropsEmits(delegatedProps, emits)\n</script>\n\n<template>\n  <DialogPortal>\n    <SheetOverlay />\n    <DialogContent\n      data-slot=\"sheet-content\"\n      :data-side=\"side\"\n      :class=\"cn('cn-sheet-content', props.class)\"\n      v-bind=\"{ ...$attrs, ...forwarded }\"\n    >\n      <slot />\n\n      <DialogClose v-if=\"showCloseButton\" data-slot=\"sheet-close\" as-child>\n        <Button variant=\"ghost\" class=\"cn-sheet-close\" size=\"icon-sm\">\n          <IconPlaceholder\n            lucide=\"XIcon\"\n            tabler=\"IconX\"\n            hugeicons=\"Cancel01Icon\"\n            phosphor=\"XIcon\"\n            remixicon=\"RiCloseLine\"\n          />\n          <span class=\"sr-only\">Close</span>\n        </Button>\n      </DialogClose>\n    </DialogContent>\n  </DialogPortal>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-vega/ui/sheet/SheetDescription.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { DialogDescriptionProps } from \"reka-ui\"\nimport { DialogDescription } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<\n  DialogDescriptionProps & { class?: HTMLAttributes[\"class\"] }\n>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n</script>\n\n<template>\n  <DialogDescription\n    data-slot=\"sheet-description\"\n    :class=\"cn('cn-sheet-description', props.class)\"\n    v-bind=\"delegatedProps\"\n  >\n    <slot />\n  </DialogDescription>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-vega/ui/sheet/SheetFooter.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{ class?: HTMLAttributes[\"class\"] }>()\n</script>\n\n<template>\n  <div\n    data-slot=\"sheet-footer\"\n    :class=\"cn('cn-sheet-footer mt-auto flex flex-col', props.class)\"\n  >\n    <slot />\n  </div>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-vega/ui/sheet/SheetHeader.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{ class?: HTMLAttributes[\"class\"] }>()\n</script>\n\n<template>\n  <div\n    data-slot=\"sheet-header\"\n    :class=\"cn('cn-sheet-header flex flex-col', props.class)\"\n  >\n    <slot />\n  </div>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-vega/ui/sheet/SheetOverlay.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { DialogOverlayProps } from \"reka-ui\"\nimport { DialogOverlay } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<\n  DialogOverlayProps & { class?: HTMLAttributes[\"class\"] }\n>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n</script>\n\n<template>\n  <DialogOverlay\n    data-slot=\"sheet-overlay\"\n    :class=\"cn('cn-sheet-overlay fixed inset-0 z-50', props.class)\"\n    v-bind=\"delegatedProps\"\n  >\n    <slot />\n  </DialogOverlay>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-vega/ui/sheet/SheetTitle.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { DialogTitleProps } from \"reka-ui\"\nimport { DialogTitle } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<\n  DialogTitleProps & { class?: HTMLAttributes[\"class\"] }\n>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n</script>\n\n<template>\n  <DialogTitle\n    data-slot=\"sheet-title\"\n    :class=\"cn('cn-sheet-title', props.class)\"\n    v-bind=\"delegatedProps\"\n  >\n    <slot />\n  </DialogTitle>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-vega/ui/sheet/SheetTrigger.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { DialogTriggerProps } from \"reka-ui\"\nimport { DialogTrigger } from \"reka-ui\"\n\nconst props = defineProps<DialogTriggerProps>()\n</script>\n\n<template>\n  <DialogTrigger data-slot=\"sheet-trigger\" v-bind=\"props\">\n    <slot />\n  </DialogTrigger>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-vega/ui/sheet/index.ts",
+      "content": "export { default as Sheet } from \"./Sheet.vue\"\nexport { default as SheetClose } from \"./SheetClose.vue\"\nexport { default as SheetContent } from \"./SheetContent.vue\"\nexport { default as SheetDescription } from \"./SheetDescription.vue\"\nexport { default as SheetFooter } from \"./SheetFooter.vue\"\nexport { default as SheetHeader } from \"./SheetHeader.vue\"\nexport { default as SheetTitle } from \"./SheetTitle.vue\"\nexport { default as SheetTrigger } from \"./SheetTrigger.vue\"\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

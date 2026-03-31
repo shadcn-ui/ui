@@ -1,0 +1,71 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "item",
+  "registryDependencies": [
+    "separator",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-nova/ui/item/index.ts",
+      "content": "import Actions from \"./item-actions.svelte\"\nimport Content from \"./item-content.svelte\"\nimport Description from \"./item-description.svelte\"\nimport Footer from \"./item-footer.svelte\"\nimport Group from \"./item-group.svelte\"\nimport Header from \"./item-header.svelte\"\nimport Media from \"./item-media.svelte\"\nimport Separator from \"./item-separator.svelte\"\nimport Title from \"./item-title.svelte\"\nimport Root from \"./item.svelte\"\n\nexport {\n  Root,\n  Group,\n  Separator,\n  Header,\n  Footer,\n  Content,\n  Title,\n  Description,\n  Actions,\n  Media,\n  //\n  Root as Item,\n  Group as ItemGroup,\n  Separator as ItemSeparator,\n  Header as ItemHeader,\n  Footer as ItemFooter,\n  Content as ItemContent,\n  Title as ItemTitle,\n  Description as ItemDescription,\n  Actions as ItemActions,\n  Media as ItemMedia,\n}\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/item/item-actions.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...restProps\n  }: WithElementRef<HTMLAttributes<HTMLDivElement>> = $props()\n</script>\n\n<div\n  bind:this={ref}\n  data-slot=\"item-actions\"\n  class={cn(\"cn-item-actions flex items-center\", className)}\n  {...restProps}\n>\n  {@render children?.()}\n</div>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/item/item-content.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...restProps\n  }: WithElementRef<HTMLAttributes<HTMLDivElement>> = $props()\n</script>\n\n<div\n  bind:this={ref}\n  data-slot=\"item-content\"\n  class={cn(\n    \"cn-item-content flex flex-1 flex-col [&+[data-slot=item-content]]:flex-none\",\n    className\n  )}\n  {...restProps}\n>\n  {@render children?.()}\n</div>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/item/item-description.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...restProps\n  }: WithElementRef<HTMLAttributes<HTMLParagraphElement>> = $props()\n</script>\n\n<p\n  bind:this={ref}\n  data-slot=\"item-description\"\n  class={cn(\n    \"cn-item-description [&>a:hover]:text-primary line-clamp-2 font-normal [&>a]:underline [&>a]:underline-offset-4\",\n    className\n  )}\n  {...restProps}\n>\n  {@render children?.()}\n</p>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/item/item-footer.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...restProps\n  }: WithElementRef<HTMLAttributes<HTMLDivElement>> = $props()\n</script>\n\n<div\n  bind:this={ref}\n  data-slot=\"item-footer\"\n  class={cn(\n    \"cn-item-footer flex basis-full items-center justify-between\",\n    className\n  )}\n  {...restProps}\n>\n  {@render children?.()}\n</div>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/item/item-group.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...restProps\n  }: WithElementRef<HTMLAttributes<HTMLDivElement>> = $props()\n</script>\n\n<div\n  bind:this={ref}\n  role=\"list\"\n  data-slot=\"item-group\"\n  class={cn(\"cn-item-group group/item-group flex w-full flex-col\", className)}\n  {...restProps}\n>\n  {@render children?.()}\n</div>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/item/item-header.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...restProps\n  }: WithElementRef<HTMLAttributes<HTMLDivElement>> = $props()\n</script>\n\n<div\n  bind:this={ref}\n  data-slot=\"item-header\"\n  class={cn(\n    \"cn-item-header flex basis-full items-center justify-between\",\n    className\n  )}\n  {...restProps}\n>\n  {@render children?.()}\n</div>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/item/item-media.svelte",
+      "content": "<script lang=\"ts\" module>\n  import { tv, type VariantProps } from \"tailwind-variants\"\n\n  export const itemMediaVariants = tv({\n    base: \"cn-item-media flex shrink-0 items-center justify-center [&_svg]:pointer-events-none\",\n    variants: {\n      variant: {\n        default: \"cn-item-media-variant-default\",\n        icon: \"cn-item-media-variant-icon\",\n        image: \"cn-item-media-variant-image\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n    },\n  })\n\n  export type ItemMediaVariant = VariantProps<\n    typeof itemMediaVariants\n  >[\"variant\"]\n</script>\n\n<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    variant = \"default\",\n    ...restProps\n  }: WithElementRef<HTMLAttributes<HTMLDivElement>> & {\n    variant?: ItemMediaVariant\n  } = $props()\n</script>\n\n<div\n  bind:this={ref}\n  data-slot=\"item-media\"\n  data-variant={variant}\n  class={cn(itemMediaVariants({ variant }), className)}\n  {...restProps}\n>\n  {@render children?.()}\n</div>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/item/item-separator.svelte",
+      "content": "<script lang=\"ts\">\n  import { Separator } from \"$lib/registry/ui/separator/index.js\"\n  import { cn } from \"$lib/utils.js\"\n  import type { ComponentProps } from \"svelte\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    ...restProps\n  }: ComponentProps<typeof Separator> = $props()\n</script>\n\n<Separator\n  bind:ref\n  data-slot=\"item-separator\"\n  orientation=\"horizontal\"\n  class={cn(\"cn-item-separator\", className)}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/item/item-title.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...restProps\n  }: WithElementRef<HTMLAttributes<HTMLDivElement>> = $props()\n</script>\n\n<div\n  bind:this={ref}\n  data-slot=\"item-title\"\n  class={cn(\"cn-item-title line-clamp-1 flex w-fit items-center\", className)}\n  {...restProps}\n>\n  {@render children?.()}\n</div>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-nova/ui/item/item.svelte",
+      "content": "<script lang=\"ts\" module>\n  import { tv, type VariantProps } from \"tailwind-variants\"\n\n  export const itemVariants = tv({\n    base: \"cn-item group/item focus-visible:border-ring focus-visible:ring-ring/50 flex w-full flex-wrap items-center transition-colors duration-100 outline-none focus-visible:ring-[3px] [a]:transition-colors\",\n    variants: {\n      variant: {\n        default: \"cn-item-variant-default\",\n        outline: \"cn-item-variant-outline\",\n        muted: \"cn-item-variant-muted\",\n      },\n      size: {\n        default: \"cn-item-size-default\",\n        sm: \"cn-item-size-sm\",\n        xs: \"cn-item-size-xs\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n      size: \"default\",\n    },\n  })\n\n  export type ItemSize = VariantProps<typeof itemVariants>[\"size\"]\n  export type ItemVariant = VariantProps<typeof itemVariants>[\"variant\"]\n</script>\n\n<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { Snippet } from \"svelte\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    child,\n    variant,\n    size,\n    ...restProps\n  }: WithElementRef<HTMLAttributes<HTMLDivElement>> & {\n    child?: Snippet<[{ props: Record<string, unknown> }]>\n    variant?: ItemVariant\n    size?: ItemSize\n  } = $props()\n\n  const mergedProps = $derived({\n    class: cn(itemVariants({ variant, size }), className),\n    \"data-slot\": \"item\",\n    \"data-variant\": variant,\n    \"data-size\": size,\n    ...restProps,\n  })\n</script>\n\n{#if child}\n  {@render child({ props: mergedProps })}\n{:else}\n  <div bind:this={ref} {...mergedProps}>\n    {@render mergedProps.children?.()}\n  </div>\n{/if}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "meta": {
+    "links": {
+      "docs": "https://force-ui.com/docs/components/svelte/item"
+    }
+  },
+  "type": "registry:ui"
+}

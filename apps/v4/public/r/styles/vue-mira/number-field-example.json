@@ -1,0 +1,33 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "number-field-example",
+  "title": "Number Field",
+  "dependencies": [],
+  "registryDependencies": [
+    "number-field",
+    "label"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-mira/examples/number-field/NumberFieldBasic.vue",
+      "content": "<script setup lang=\"ts\">\nimport {\n  NumberField,\n  NumberFieldContent,\n  NumberFieldDecrement,\n  NumberFieldIncrement,\n  NumberFieldInput,\n} from \"@/ui/number-field\"\n\nimport { Example } from \"@/components/example\"\nimport IconPlaceholder from \"@/components/IconPlaceholder.vue\"\n</script>\n\n<template>\n  <Example title=\"Basic Number Field\">\n    <NumberField :default-value=\"10\" :min=\"0\" :max=\"100\">\n      <NumberFieldContent>\n        <NumberFieldDecrement>\n          <IconPlaceholder\n            lucide=\"MinusIcon\"\n            tabler=\"IconMinus\"\n            hugeicons=\"RemoveCircleIcon\"\n            phosphor=\"MinusIcon\"\n            remixicon=\"RiSubtractLine\"\n          />\n        </NumberFieldDecrement>\n        <NumberFieldInput />\n        <NumberFieldIncrement>\n          <IconPlaceholder\n            lucide=\"PlusIcon\"\n            tabler=\"IconPlus\"\n            hugeicons=\"AddCircleIcon\"\n            phosphor=\"PlusIcon\"\n            remixicon=\"RiAddLine\"\n          />\n        </NumberFieldIncrement>\n      </NumberFieldContent>\n    </NumberField>\n  </Example>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-mira/examples/number-field/NumberFieldDisabled.vue",
+      "content": "<script setup lang=\"ts\">\nimport {\n  NumberField,\n  NumberFieldContent,\n  NumberFieldDecrement,\n  NumberFieldIncrement,\n  NumberFieldInput,\n} from \"@/ui/number-field\"\n\nimport { Example } from \"@/components/example\"\nimport IconPlaceholder from \"@/components/IconPlaceholder.vue\"\n</script>\n\n<template>\n  <Example title=\"Disabled Number Field\">\n    <NumberField :default-value=\"10\" :min=\"0\" :max=\"100\" :disabled=\"true\">\n      <NumberFieldContent>\n        <NumberFieldDecrement>\n          <IconPlaceholder\n            lucide=\"MinusIcon\"\n            tabler=\"IconMinus\"\n            hugeicons=\"RemoveCircleIcon\"\n            phosphor=\"MinusIcon\"\n            remixicon=\"RiSubtractLine\"\n          />\n        </NumberFieldDecrement>\n        <NumberFieldInput />\n        <NumberFieldIncrement>\n          <IconPlaceholder\n            lucide=\"PlusIcon\"\n            tabler=\"IconPlus\"\n            hugeicons=\"AddCircleIcon\"\n            phosphor=\"PlusIcon\"\n            remixicon=\"RiAddLine\"\n          />\n        </NumberFieldIncrement>\n      </NumberFieldContent>\n    </NumberField>\n  </Example>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-mira/examples/number-field/NumberFieldExample.vue",
+      "content": "<script setup lang=\"ts\">\nimport { ExampleWrapper } from \"@/components/example\"\n\nimport NumberFieldBasic from \"./NumberFieldBasic.vue\"\nimport NumberFieldDisabled from \"./NumberFieldDisabled.vue\"\nimport NumberFieldWithLabel from \"./NumberFieldWithLabel.vue\"\n</script>\n\n<template>\n  <ExampleWrapper>\n    <NumberFieldBasic />\n    <NumberFieldWithLabel />\n    <NumberFieldDisabled />\n  </ExampleWrapper>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-mira/examples/number-field/NumberFieldWithLabel.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Label } from \"@/ui/label\"\nimport {\n  NumberField,\n  NumberFieldContent,\n  NumberFieldDecrement,\n  NumberFieldIncrement,\n  NumberFieldInput,\n} from \"@/ui/number-field\"\n\nimport { Example } from \"@/components/example\"\nimport IconPlaceholder from \"@/components/IconPlaceholder.vue\"\n</script>\n\n<template>\n  <Example title=\"Number Field with Label\">\n    <div class=\"grid w-full max-w-sm items-center gap-1.5\">\n      <Label html-for=\"quantity\">Quantity</Label>\n      <NumberField id=\"quantity\" :default-value=\"5\" :min=\"1\" :max=\"50\">\n        <NumberFieldContent>\n          <NumberFieldDecrement>\n            <IconPlaceholder\n              lucide=\"MinusIcon\"\n              tabler=\"IconMinus\"\n              hugeicons=\"RemoveCircleIcon\"\n              phosphor=\"MinusIcon\"\n              remixicon=\"RiSubtractLine\"\n            />\n          </NumberFieldDecrement>\n          <NumberFieldInput />\n          <NumberFieldIncrement>\n            <IconPlaceholder\n              lucide=\"PlusIcon\"\n              tabler=\"IconPlus\"\n              hugeicons=\"AddCircleIcon\"\n              phosphor=\"PlusIcon\"\n              remixicon=\"RiAddLine\"\n            />\n          </NumberFieldIncrement>\n        </NumberFieldContent>\n      </NumberField>\n    </div>\n  </Example>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

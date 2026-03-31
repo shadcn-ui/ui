@@ -1,0 +1,62 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "drawer",
+  "dependencies": [
+    "vaul-vue",
+    "reka-ui",
+    "@vueuse/core"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-maia/ui/drawer/Drawer.vue",
+      "content": "<script lang=\"ts\" setup>\nimport { useForwardPropsEmits } from \"reka-ui\"\nimport type { DrawerRootEmits, DrawerRootProps } from \"vaul-vue\"\nimport { DrawerRoot } from \"vaul-vue\"\n\nconst props = withDefaults(defineProps<DrawerRootProps>(), {\n  shouldScaleBackground: true,\n})\n\nconst emits = defineEmits<DrawerRootEmits>()\n\nconst forwarded = useForwardPropsEmits(props, emits)\n</script>\n\n<template>\n  <DrawerRoot v-slot=\"slotProps\" data-slot=\"drawer\" v-bind=\"forwarded\">\n    <slot v-bind=\"slotProps\" />\n  </DrawerRoot>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-maia/ui/drawer/DrawerClose.vue",
+      "content": "<script lang=\"ts\" setup>\nimport type { DrawerCloseProps } from \"vaul-vue\"\nimport { DrawerClose } from \"vaul-vue\"\n\nconst props = defineProps<DrawerCloseProps>()\n</script>\n\n<template>\n  <DrawerClose data-slot=\"drawer-close\" v-bind=\"props\">\n    <slot />\n  </DrawerClose>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-maia/ui/drawer/DrawerContent.vue",
+      "content": "<script lang=\"ts\" setup>\nimport type { DialogContentEmits, DialogContentProps } from \"reka-ui\"\nimport { useForwardPropsEmits } from \"reka-ui\"\nimport { DrawerContent, DrawerPortal } from \"vaul-vue\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nimport DrawerOverlay from \"./DrawerOverlay.vue\"\n\ndefineOptions({\n  inheritAttrs: false,\n})\n\nconst props = defineProps<\n  DialogContentProps & { class?: HTMLAttributes[\"class\"] }\n>()\nconst emits = defineEmits<DialogContentEmits>()\n\nconst forwarded = useForwardPropsEmits(props, emits)\n</script>\n\n<template>\n  <DrawerPortal>\n    <DrawerOverlay />\n    <DrawerContent\n      data-slot=\"drawer-content\"\n      v-bind=\"{ ...$attrs, ...forwarded }\"\n      :class=\"\n        cn('cn-drawer-content group/drawer-content fixed z-50', props.class)\n      \"\n    >\n      <div\n        class=\"cn-drawer-handle mx-auto hidden shrink-0 bg-muted group-data-[vaul-drawer-direction=bottom]/drawer-content:block\"\n      />\n      <slot />\n    </DrawerContent>\n  </DrawerPortal>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-maia/ui/drawer/DrawerDescription.vue",
+      "content": "<script lang=\"ts\" setup>\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { DrawerDescriptionProps } from \"vaul-vue\"\nimport { DrawerDescription } from \"vaul-vue\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<\n  DrawerDescriptionProps & { class?: HTMLAttributes[\"class\"] }\n>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n</script>\n\n<template>\n  <DrawerDescription\n    data-slot=\"drawer-description\"\n    v-bind=\"delegatedProps\"\n    :class=\"cn('cn-drawer-description', props.class)\"\n  >\n    <slot />\n  </DrawerDescription>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-maia/ui/drawer/DrawerFooter.vue",
+      "content": "<script lang=\"ts\" setup>\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <div\n    data-slot=\"drawer-footer\"\n    :class=\"cn('cn-drawer-footer mt-auto flex flex-col', props.class)\"\n  >\n    <slot />\n  </div>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-maia/ui/drawer/DrawerHeader.vue",
+      "content": "<script lang=\"ts\" setup>\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <div\n    data-slot=\"drawer-header\"\n    :class=\"cn('cn-drawer-header flex flex-col', props.class)\"\n  >\n    <slot />\n  </div>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-maia/ui/drawer/DrawerOverlay.vue",
+      "content": "<script lang=\"ts\" setup>\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { DialogOverlayProps } from \"reka-ui\"\nimport { DrawerOverlay } from \"vaul-vue\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<\n  DialogOverlayProps & { class?: HTMLAttributes[\"class\"] }\n>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n</script>\n\n<template>\n  <DrawerOverlay\n    data-slot=\"drawer-overlay\"\n    v-bind=\"delegatedProps\"\n    :class=\"cn('cn-drawer-overlay fixed inset-0 z-50', props.class)\"\n  />\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-maia/ui/drawer/DrawerTitle.vue",
+      "content": "<script lang=\"ts\" setup>\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { DrawerTitleProps } from \"vaul-vue\"\nimport { DrawerTitle } from \"vaul-vue\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<\n  DrawerTitleProps & { class?: HTMLAttributes[\"class\"] }\n>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n</script>\n\n<template>\n  <DrawerTitle\n    data-slot=\"drawer-title\"\n    v-bind=\"delegatedProps\"\n    :class=\"cn('cn-drawer-title', props.class)\"\n  >\n    <slot />\n  </DrawerTitle>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-maia/ui/drawer/DrawerTrigger.vue",
+      "content": "<script lang=\"ts\" setup>\nimport type { DrawerTriggerProps } from \"vaul-vue\"\nimport { DrawerTrigger } from \"vaul-vue\"\n\nconst props = defineProps<DrawerTriggerProps>()\n</script>\n\n<template>\n  <DrawerTrigger data-slot=\"drawer-trigger\" v-bind=\"props\">\n    <slot />\n  </DrawerTrigger>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-maia/ui/drawer/index.ts",
+      "content": "export { default as Drawer } from \"./Drawer.vue\"\nexport { default as DrawerClose } from \"./DrawerClose.vue\"\nexport { default as DrawerContent } from \"./DrawerContent.vue\"\nexport { default as DrawerDescription } from \"./DrawerDescription.vue\"\nexport { default as DrawerFooter } from \"./DrawerFooter.vue\"\nexport { default as DrawerHeader } from \"./DrawerHeader.vue\"\nexport { default as DrawerOverlay } from \"./DrawerOverlay.vue\"\nexport { default as DrawerTitle } from \"./DrawerTitle.vue\"\nexport { default as DrawerTrigger } from \"./DrawerTrigger.vue\"\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

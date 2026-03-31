@@ -1,0 +1,46 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "avatar",
+  "dependencies": [
+    "reka-ui",
+    "@vueuse/core"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-lyra/ui/avatar/Avatar.vue",
+      "content": "<script setup lang=\"ts\">\nimport { AvatarRoot } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nimport type { AvatarVariants } from \".\"\nimport { avatarVariants } from \".\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n  size?: AvatarVariants[\"size\"]\n}>()\n</script>\n\n<template>\n  <AvatarRoot\n    data-slot=\"avatar\"\n    :data-size=\"size ?? 'default'\"\n    :class=\"cn(avatarVariants({ size }), props.class)\"\n  >\n    <slot />\n  </AvatarRoot>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-lyra/ui/avatar/AvatarBadge.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <span\n    data-slot=\"avatar-badge\"\n    :class=\"\n      cn(\n        'cn-avatar-badge absolute right-0 bottom-0 z-10 inline-flex items-center justify-center rounded-full bg-blend-color ring-2 select-none',\n        'group-data-[size=sm]/avatar:size-2 group-data-[size=sm]/avatar:[&>svg]:hidden',\n        'group-data-[size=default]/avatar:size-2.5 group-data-[size=default]/avatar:[&>svg]:size-2',\n        'group-data-[size=lg]/avatar:size-3 group-data-[size=lg]/avatar:[&>svg]:size-2',\n        props.class\n      )\n    \"\n  >\n    <slot />\n  </span>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-lyra/ui/avatar/AvatarFallback.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { AvatarFallbackProps } from \"reka-ui\"\nimport { AvatarFallback } from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<\n  AvatarFallbackProps & { class?: HTMLAttributes[\"class\"] }\n>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\n</script>\n\n<template>\n  <AvatarFallback\n    data-slot=\"avatar-fallback\"\n    v-bind=\"delegatedProps\"\n    :class=\"\n      cn(\n        'cn-avatar-fallback flex size-full items-center justify-center text-sm group-data-[size=sm]/avatar:text-xs',\n        props.class\n      )\n    \"\n  >\n    <slot />\n  </AvatarFallback>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-lyra/ui/avatar/AvatarGroup.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <div\n    data-slot=\"avatar-group\"\n    :class=\"\n      cn(\n        'cn-avatar-group group/avatar-group flex -space-x-2 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:ring-background',\n        props.class\n      )\n    \"\n  >\n    <slot />\n  </div>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-lyra/ui/avatar/AvatarGroupCount.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst props = defineProps<{\n  class?: HTMLAttributes[\"class\"]\n}>()\n</script>\n\n<template>\n  <div\n    data-slot=\"avatar-group-count\"\n    :class=\"\n      cn(\n        'cn-avatar-group-count relative flex shrink-0 items-center justify-center ring-2 ring-background',\n        props.class\n      )\n    \"\n  >\n    <slot />\n  </div>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-lyra/ui/avatar/AvatarImage.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { AvatarImageProps } from \"reka-ui\"\nimport { AvatarImage } from \"reka-ui\"\n\nconst props = defineProps<AvatarImageProps>()\n</script>\n\n<template>\n  <AvatarImage\n    data-slot=\"avatar-image\"\n    v-bind=\"props\"\n    class=\"cn-avatar-image aspect-square size-full object-cover\"\n  >\n    <slot />\n  </AvatarImage>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-lyra/ui/avatar/index.ts",
+      "content": "import type { VariantProps } from \"class-variance-authority\"\nimport { cva } from \"class-variance-authority\"\n\nexport { default as Avatar } from \"./Avatar.vue\"\nexport { default as AvatarBadge } from \"./AvatarBadge.vue\"\nexport { default as AvatarFallback } from \"./AvatarFallback.vue\"\nexport { default as AvatarGroup } from \"./AvatarGroup.vue\"\nexport { default as AvatarGroupCount } from \"./AvatarGroupCount.vue\"\nexport { default as AvatarImage } from \"./AvatarImage.vue\"\n\nexport const avatarVariants = cva(\n  \"group/avatar relative flex size-8 shrink-0 rounded-full select-none after:absolute after:inset-0 after:rounded-full after:border after:border-border after:mix-blend-darken data-[size=lg]:size-10 data-[size=sm]:size-6 dark:after:mix-blend-lighten\",\n  {\n    variants: {\n      size: {\n        sm: \"\",\n        default: \"\",\n        lg: \"\",\n      },\n    },\n    defaultVariants: {\n      size: \"default\",\n    },\n  }\n)\n\nexport type AvatarVariants = VariantProps<typeof avatarVariants>\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

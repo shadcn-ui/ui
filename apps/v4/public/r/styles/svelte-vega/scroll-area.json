@@ -1,0 +1,33 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scroll-area",
+  "dependencies": [
+    "bits-ui"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-vega/ui/scroll-area/index.ts",
+      "content": "import Scrollbar from \"./scroll-area-scrollbar.svelte\"\nimport Root from \"./scroll-area.svelte\"\n\nexport {\n  Root,\n  Scrollbar,\n  //,\n  Root as ScrollArea,\n  Scrollbar as ScrollAreaScrollbar,\n}\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/scroll-area/scroll-area-scrollbar.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithoutChild } from \"$lib/utils.js\"\n  import { ScrollArea as ScrollAreaPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    orientation = \"vertical\",\n    children,\n    ...restProps\n  }: WithoutChild<ScrollAreaPrimitive.ScrollbarProps> = $props()\n</script>\n\n<ScrollAreaPrimitive.Scrollbar\n  bind:ref\n  data-slot=\"scroll-area-scrollbar\"\n  data-orientation={orientation}\n  {orientation}\n  class={cn(\n    \"cn-scroll-area-scrollbar flex touch-none p-px transition-colors select-none\",\n    className\n  )}\n  {...restProps}\n>\n  {@render children?.()}\n  <ScrollAreaPrimitive.Thumb\n    data-slot=\"scroll-area-thumb\"\n    class=\"cn-scroll-area-thumb bg-border relative flex-1\"\n  />\n</ScrollAreaPrimitive.Scrollbar>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-vega/ui/scroll-area/scroll-area.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithoutChild } from \"$lib/utils.js\"\n  import { ScrollArea as ScrollAreaPrimitive } from \"bits-ui\"\n\n  import { Scrollbar } from \"./index.js\"\n\n  let {\n    ref = $bindable(null),\n    viewportRef = $bindable(null),\n    class: className,\n    orientation = \"vertical\",\n    scrollbarXClasses = \"\",\n    scrollbarYClasses = \"\",\n    children,\n    ...restProps\n  }: WithoutChild<ScrollAreaPrimitive.RootProps> & {\n    orientation?: \"vertical\" | \"horizontal\" | \"both\" | undefined\n    scrollbarXClasses?: string | undefined\n    scrollbarYClasses?: string | undefined\n    viewportRef?: HTMLElement | null\n  } = $props()\n</script>\n\n<ScrollAreaPrimitive.Root\n  bind:ref\n  data-slot=\"scroll-area\"\n  class={cn(\"relative\", className)}\n  {...restProps}\n>\n  <ScrollAreaPrimitive.Viewport\n    bind:ref={viewportRef}\n    data-slot=\"scroll-area-viewport\"\n    class=\"cn-scroll-area-viewport focus-visible:ring-ring/50 size-full rounded-[inherit] transition-[color,box-shadow] outline-none focus-visible:ring-[3px] focus-visible:outline-1\"\n  >\n    {@render children?.()}\n  </ScrollAreaPrimitive.Viewport>\n  {#if orientation === \"vertical\" || orientation === \"both\"}\n    <Scrollbar orientation=\"vertical\" class={scrollbarYClasses} />\n  {/if}\n  {#if orientation === \"horizontal\" || orientation === \"both\"}\n    <Scrollbar orientation=\"horizontal\" class={scrollbarXClasses} />\n  {/if}\n  <ScrollAreaPrimitive.Corner />\n</ScrollAreaPrimitive.Root>\n",
+      "type": "registry:ui"
+    }
+  ],
+  "meta": {
+    "links": {
+      "docs": "https://force-ui.com/docs/components/svelte/scroll-area"
+    }
+  },
+  "type": "registry:ui"
+}

@@ -1,0 +1,63 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "popover",
+  "dependencies": [
+    "bits-ui"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-mira/ui/popover/index.ts",
+      "content": "import Close from \"./popover-close.svelte\"\nimport Content from \"./popover-content.svelte\"\nimport Description from \"./popover-description.svelte\"\nimport Header from \"./popover-header.svelte\"\nimport Portal from \"./popover-portal.svelte\"\nimport Title from \"./popover-title.svelte\"\nimport Trigger from \"./popover-trigger.svelte\"\nimport Root from \"./popover.svelte\"\n\nexport {\n  Root,\n  Content,\n  Description,\n  Header,\n  Title,\n  Trigger,\n  Close,\n  Portal,\n  //\n  Root as Popover,\n  Content as PopoverContent,\n  Description as PopoverDescription,\n  Header as PopoverHeader,\n  Title as PopoverTitle,\n  Trigger as PopoverTrigger,\n  Close as PopoverClose,\n  Portal as PopoverPortal,\n}\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-mira/ui/popover/popover-close.svelte",
+      "content": "<script lang=\"ts\">\n  import { Popover as PopoverPrimitive } from \"bits-ui\"\n\n  let { ref = $bindable(null), ...restProps }: PopoverPrimitive.CloseProps =\n    $props()\n</script>\n\n<PopoverPrimitive.Close bind:ref data-slot=\"popover-close\" {...restProps} />\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-mira/ui/popover/popover-content.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithoutChildrenOrChild } from \"$lib/utils.js\"\n  import { Popover as PopoverPrimitive } from \"bits-ui\"\n  import type { ComponentProps } from \"svelte\"\n\n  import PopoverPortal from \"./popover-portal.svelte\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    sideOffset = 4,\n    align = \"center\",\n    portalProps,\n    ...restProps\n  }: PopoverPrimitive.ContentProps & {\n    portalProps?: WithoutChildrenOrChild<ComponentProps<typeof PopoverPortal>>\n  } = $props()\n</script>\n\n<PopoverPortal {...portalProps}>\n  <PopoverPrimitive.Content\n    bind:ref\n    data-slot=\"popover-content\"\n    {sideOffset}\n    {align}\n    class={cn(\n      \"cn-popover-content cn-popover-content-logical z-50 w-72 origin-(--transform-origin) outline-hidden\",\n      className\n    )}\n    {...restProps}\n  />\n</PopoverPortal>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-mira/ui/popover/popover-description.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...restProps\n  }: WithElementRef<HTMLAttributes<HTMLDivElement>> = $props()\n</script>\n\n<div\n  bind:this={ref}\n  data-slot=\"popover-description\"\n  class={cn(\"cn-popover-description\", className)}\n  {...restProps}\n>\n  {@render children?.()}\n</div>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-mira/ui/popover/popover-header.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...restProps\n  }: WithElementRef<HTMLAttributes<HTMLDivElement>> = $props()\n</script>\n\n<div\n  bind:this={ref}\n  data-slot=\"popover-header\"\n  class={cn(\"cn-popover-header\", className)}\n  {...restProps}\n>\n  {@render children?.()}\n</div>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-mira/ui/popover/popover-portal.svelte",
+      "content": "<script lang=\"ts\">\n  import { Popover as PopoverPrimitive } from \"bits-ui\"\n\n  let { ...restProps }: PopoverPrimitive.PortalProps = $props()\n</script>\n\n<PopoverPrimitive.Portal {...restProps} />\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-mira/ui/popover/popover-title.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...restProps\n  }: WithElementRef<HTMLAttributes<HTMLDivElement>> = $props()\n</script>\n\n<div\n  bind:this={ref}\n  data-slot=\"popover-title\"\n  class={cn(\"cn-popover-title\", className)}\n  {...restProps}\n>\n  {@render children?.()}\n</div>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-mira/ui/popover/popover-trigger.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn } from \"$lib/utils.js\"\n  import { Popover as PopoverPrimitive } from \"bits-ui\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    ...restProps\n  }: PopoverPrimitive.TriggerProps = $props()\n</script>\n\n<PopoverPrimitive.Trigger\n  bind:ref\n  data-slot=\"popover-trigger\"\n  class={cn(\"\", className)}\n  {...restProps}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-mira/ui/popover/popover.svelte",
+      "content": "<script lang=\"ts\">\n  import { Popover as PopoverPrimitive } from \"bits-ui\"\n\n  let { open = $bindable(false), ...restProps }: PopoverPrimitive.RootProps =\n    $props()\n</script>\n\n<PopoverPrimitive.Root bind:open {...restProps} />\n",
+      "type": "registry:ui"
+    }
+  ],
+  "meta": {
+    "links": {
+      "docs": "https://force-ui.com/docs/components/svelte/popover"
+    }
+  },
+  "type": "registry:ui"
+}

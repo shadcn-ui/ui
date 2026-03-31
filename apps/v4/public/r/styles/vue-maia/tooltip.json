@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tooltip",
+  "dependencies": [
+    "reka-ui",
+    "@vueuse/core"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-maia/ui/tooltip/Tooltip.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { TooltipRootEmits, TooltipRootProps } from \"reka-ui\"\nimport { TooltipRoot, useForwardPropsEmits } from \"reka-ui\"\n\nconst props = defineProps<TooltipRootProps>()\nconst emits = defineEmits<TooltipRootEmits>()\n\nconst forwarded = useForwardPropsEmits(props, emits)\n</script>\n\n<template>\n  <TooltipRoot v-slot=\"slotProps\" data-slot=\"tooltip\" v-bind=\"forwarded\">\n    <slot v-bind=\"slotProps\" />\n  </TooltipRoot>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-maia/ui/tooltip/TooltipContent.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from \"@vueuse/core\"\nimport type { TooltipContentEmits, TooltipContentProps } from \"reka-ui\"\nimport {\n  TooltipArrow,\n  TooltipContent,\n  TooltipPortal,\n  useForwardPropsEmits,\n} from \"reka-ui\"\nimport type { HTMLAttributes } from \"vue\"\n\nimport { cn } from \"@/lib/utils\"\n\ndefineOptions({\n  inheritAttrs: false,\n})\n\nconst props = withDefaults(\n  defineProps<TooltipContentProps & { class?: HTMLAttributes[\"class\"] }>(),\n  {\n    sideOffset: 4,\n  }\n)\n\nconst emits = defineEmits<TooltipContentEmits>()\n\nconst delegatedProps = reactiveOmit(props, \"class\")\nconst forwarded = useForwardPropsEmits(delegatedProps, emits)\n</script>\n\n<template>\n  <TooltipPortal>\n    <TooltipContent\n      data-slot=\"tooltip-content\"\n      v-bind=\"{ ...forwarded, ...$attrs }\"\n      :class=\"\n        cn(\n          'cn-tooltip-content z-50 w-fit max-w-xs origin-(--reka-tooltip-content-transform-origin) bg-foreground text-background',\n          props.class\n        )\n      \"\n    >\n      <slot />\n\n      <TooltipArrow\n        class=\"cn-tooltip-arrow z-50 translate-y-[calc(-50%_-_2px)] bg-foreground fill-foreground\"\n      />\n    </TooltipContent>\n  </TooltipPortal>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-maia/ui/tooltip/TooltipProvider.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { TooltipProviderProps } from \"reka-ui\"\nimport { TooltipProvider } from \"reka-ui\"\n\nconst props = withDefaults(defineProps<TooltipProviderProps>(), {\n  delayDuration: 0,\n})\n</script>\n\n<template>\n  <TooltipProvider v-bind=\"props\">\n    <slot />\n  </TooltipProvider>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-maia/ui/tooltip/TooltipTrigger.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { TooltipTriggerProps } from \"reka-ui\"\nimport { TooltipTrigger } from \"reka-ui\"\n\nconst props = defineProps<TooltipTriggerProps>()\n</script>\n\n<template>\n  <TooltipTrigger data-slot=\"tooltip-trigger\" v-bind=\"props\">\n    <slot />\n  </TooltipTrigger>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/vue-maia/ui/tooltip/index.ts",
+      "content": "export { default as Tooltip } from \"./Tooltip.vue\"\nexport { default as TooltipContent } from \"./TooltipContent.vue\"\nexport { default as TooltipProvider } from \"./TooltipProvider.vue\"\nexport { default as TooltipTrigger } from \"./TooltipTrigger.vue\"\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

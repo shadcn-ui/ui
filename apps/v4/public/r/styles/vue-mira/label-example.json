@@ -1,0 +1,42 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "label-example",
+  "title": "Label",
+  "dependencies": [],
+  "registryDependencies": [
+    "example",
+    "field",
+    "input",
+    "label",
+    "checkbox",
+    "textarea"
+  ],
+  "files": [
+    {
+      "path": "registry/vue-mira/examples/label/LabelDisabled.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Field } from \"@/ui/field\"\nimport { Input } from \"@/ui/input\"\nimport { Label } from \"@/ui/label\"\n\nimport { Example } from \"@/components/example\"\n</script>\n\n<template>\n  <Example title=\"Disabled\">\n    <Field :data-disabled=\"true\">\n      <Label html-for=\"label-demo-disabled\"> Disabled </Label>\n      <Input id=\"label-demo-disabled\" placeholder=\"Disabled\" disabled />\n    </Field>\n  </Example>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-mira/examples/label/LabelExample.vue",
+      "content": "<script setup lang=\"ts\">\nimport LabelDisabled from \"@/examples/label/LabelDisabled.vue\"\nimport LabelWithCheckbox from \"@/examples/label/LabelWithCheckbox.vue\"\nimport LabelWithInput from \"@/examples/label/LabelWithInput.vue\"\nimport LabelWithTextarea from \"@/examples/label/LabelWithTextarea.vue\"\n\nimport { ExampleWrapper } from \"@/components/example\"\n</script>\n\n<template>\n  <ExampleWrapper>\n    <LabelWithCheckbox />\n    <LabelWithInput />\n    <LabelDisabled />\n    <LabelWithTextarea />\n  </ExampleWrapper>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-mira/examples/label/LabelWithCheckbox.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Checkbox } from \"@/ui/checkbox\"\nimport { Field } from \"@/ui/field\"\nimport { Label } from \"@/ui/label\"\n\nimport { Example } from \"@/components/example\"\n</script>\n\n<template>\n  <Example title=\"With Checkbox\">\n    <Field orientation=\"horizontal\">\n      <Checkbox id=\"label-demo-terms\" />\n      <Label html-for=\"label-demo-terms\"> Accept terms and conditions </Label>\n    </Field>\n  </Example>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-mira/examples/label/LabelWithInput.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Field } from \"@/ui/field\"\nimport { Input } from \"@/ui/input\"\nimport { Label } from \"@/ui/label\"\n\nimport { Example } from \"@/components/example\"\n</script>\n\n<template>\n  <Example title=\"With Input\">\n    <Field>\n      <Label html-for=\"label-demo-username\">Username</Label>\n      <Input id=\"label-demo-username\" placeholder=\"Username\" />\n    </Field>\n  </Example>\n</template>\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/vue-mira/examples/label/LabelWithTextarea.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Field } from \"@/ui/field\"\nimport { Label } from \"@/ui/label\"\nimport { Textarea } from \"@/ui/textarea\"\n\nimport { Example } from \"@/components/example\"\n</script>\n\n<template>\n  <Example title=\"With Textarea\">\n    <Field>\n      <Label html-for=\"label-demo-message\"> Message </Label>\n      <Textarea id=\"label-demo-message\" placeholder=\"Message\" />\n    </Field>\n  </Example>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-group",
+  "registryDependencies": [
+    "button",
+    "input",
+    "textarea",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/svelte-maia/ui/input-group/index.ts",
+      "content": "import Addon from \"./input-group-addon.svelte\"\nimport Button from \"./input-group-button.svelte\"\nimport Input from \"./input-group-input.svelte\"\nimport Text from \"./input-group-text.svelte\"\nimport Textarea from \"./input-group-textarea.svelte\"\nimport Root from \"./input-group.svelte\"\n\nexport {\n  Root,\n  Addon,\n  Button,\n  Input,\n  Text,\n  Textarea,\n  //\n  Root as InputGroup,\n  Addon as InputGroupAddon,\n  Button as InputGroupButton,\n  Input as InputGroupInput,\n  Text as InputGroupText,\n  Textarea as InputGroupTextarea,\n}\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-maia/ui/input-group/input-group-addon.svelte",
+      "content": "<script lang=\"ts\" module>\n  import { tv, type VariantProps } from \"tailwind-variants\"\n\n  export const inputGroupAddonVariants = tv({\n    base: \"cn-input-group-addon flex cursor-text items-center justify-center select-none\",\n    variants: {\n      align: {\n        \"inline-start\": \"cn-input-group-addon-align-inline-start order-first\",\n        \"inline-end\": \"cn-input-group-addon-align-inline-end order-last\",\n        \"block-start\":\n          \"cn-input-group-addon-align-block-start order-first w-full justify-start\",\n        \"block-end\":\n          \"cn-input-group-addon-align-block-end order-last w-full justify-start\",\n      },\n    },\n    defaultVariants: {\n      align: \"inline-start\",\n    },\n  })\n\n  export type InputGroupAddonAlign = VariantProps<\n    typeof inputGroupAddonVariants\n  >[\"align\"]\n</script>\n\n<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    align = \"inline-start\",\n    ...restProps\n  }: WithElementRef<HTMLAttributes<HTMLDivElement>> & {\n    align?: InputGroupAddonAlign\n  } = $props()\n</script>\n\n<div\n  bind:this={ref}\n  role=\"group\"\n  data-slot=\"input-group-addon\"\n  data-align={align}\n  class={cn(inputGroupAddonVariants({ align }), className)}\n  onclick={(e) => {\n    if ((e.target as HTMLElement).closest(\"button\")) {\n      return\n    }\n    e.currentTarget.parentElement?.querySelector(\"input\")?.focus()\n  }}\n  {...restProps}\n>\n  {@render children?.()}\n</div>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-maia/ui/input-group/input-group-button.svelte",
+      "content": "<script lang=\"ts\" module>\n  import { tv, type VariantProps } from \"tailwind-variants\"\n\n  const inputGroupButtonVariants = tv({\n    base: \"cn-input-group-button flex items-center shadow-none\",\n    variants: {\n      size: {\n        xs: \"cn-input-group-button-size-xs\",\n        sm: \"cn-input-group-button-size-sm\",\n        \"icon-xs\": \"cn-input-group-button-size-icon-xs\",\n        \"icon-sm\": \"cn-input-group-button-size-icon-sm\",\n      },\n    },\n    defaultVariants: {\n      size: \"xs\",\n    },\n  })\n\n  export type InputGroupButtonSize = VariantProps<\n    typeof inputGroupButtonVariants\n  >[\"size\"]\n</script>\n\n<script lang=\"ts\">\n  import { Button } from \"$lib/registry/ui/button/index.js\"\n  import { cn } from \"$lib/utils.js\"\n  import type { ComponentProps } from \"svelte\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    type = \"button\",\n    variant = \"ghost\",\n    size = \"xs\",\n    ...restProps\n  }: Omit<ComponentProps<typeof Button>, \"href\" | \"size\"> & {\n    size?: InputGroupButtonSize\n  } = $props()\n</script>\n\n<Button\n  bind:ref\n  {type}\n  data-size={size}\n  {variant}\n  class={cn(inputGroupButtonVariants({ size }), className)}\n  {...restProps}\n>\n  {@render children?.()}\n</Button>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-maia/ui/input-group/input-group-input.svelte",
+      "content": "<script lang=\"ts\">\n  import { Input } from \"$lib/registry/ui/input/index.js\"\n  import { cn } from \"$lib/utils.js\"\n  import type { ComponentProps } from \"svelte\"\n\n  let {\n    ref = $bindable(null),\n    value = $bindable(),\n    class: className,\n    ...props\n  }: ComponentProps<typeof Input> = $props()\n</script>\n\n<Input\n  bind:ref\n  data-slot=\"input-group-control\"\n  class={cn(\"cn-input-group-input flex-1\", className)}\n  bind:value\n  {...props}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-maia/ui/input-group/input-group-text.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...restProps\n  }: WithElementRef<HTMLAttributes<HTMLSpanElement>> = $props()\n</script>\n\n<span\n  bind:this={ref}\n  class={cn(\n    \"cn-input-group-text flex items-center [&_svg]:pointer-events-none\",\n    className\n  )}\n  {...restProps}\n>\n  {@render children?.()}\n</span>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-maia/ui/input-group/input-group-textarea.svelte",
+      "content": "<script lang=\"ts\">\n  import { Textarea } from \"$lib/registry/ui/textarea/index.js\"\n  import { cn } from \"$lib/utils.js\"\n  import type { ComponentProps } from \"svelte\"\n\n  let {\n    ref = $bindable(null),\n    value = $bindable(),\n    class: className,\n    ...props\n  }: ComponentProps<typeof Textarea> = $props()\n</script>\n\n<Textarea\n  bind:ref\n  data-slot=\"input-group-control\"\n  class={cn(\"cn-input-group-textarea flex-1 resize-none\", className)}\n  bind:value\n  {...props}\n/>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/svelte-maia/ui/input-group/input-group.svelte",
+      "content": "<script lang=\"ts\">\n  import { cn, type WithElementRef } from \"$lib/utils.js\"\n  import type { HTMLAttributes } from \"svelte/elements\"\n\n  let {\n    ref = $bindable(null),\n    class: className,\n    children,\n    ...props\n  }: WithElementRef<HTMLAttributes<HTMLDivElement>> = $props()\n</script>\n\n<div\n  bind:this={ref}\n  data-slot=\"input-group\"\n  role=\"group\"\n  class={cn(\n    \"group/input-group cn-input-group relative flex w-full min-w-0 items-center outline-none has-[>textarea]:h-auto\",\n    className\n  )}\n  {...props}\n>\n  {@render children?.()}\n</div>\n",
+      "type": "registry:ui"
+    }
+  ],
+  "meta": {
+    "links": {
+      "docs": "https://force-ui.com/docs/components/svelte/input-group"
+    }
+  },
+  "type": "registry:ui"
+}
