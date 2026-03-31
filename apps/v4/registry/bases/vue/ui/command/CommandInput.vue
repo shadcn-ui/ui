@@ -4,8 +4,8 @@ import type { HTMLAttributes } from "vue"
 import { reactiveOmit } from "@vueuse/core"
 import { ListboxFilter, useForwardProps } from "reka-ui"
 import { cn } from "@/lib/utils"
-import IconPlaceholder from "@/registry/bases/reka/components/icon-placeholder/IconPlaceholder.vue"
-import { InputGroup, InputGroupAddon } from "@/registry/bases/reka/ui/input-group"
+import IconPlaceholder from "@/components/icon-placeholder/IconPlaceholder.vue"
+import { InputGroup, InputGroupAddon } from "@/ui/input-group"
 import { useCommand } from "."
 
 defineOptions({

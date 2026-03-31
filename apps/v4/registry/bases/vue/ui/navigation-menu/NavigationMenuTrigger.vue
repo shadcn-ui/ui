@@ -7,7 +7,7 @@ import {
   useForwardProps,
 } from "reka-ui"
 import { cn } from "@/lib/utils"
-import { IconPlaceholder } from "@/registry/bases/reka/components/icon-placeholder"
+import { IconPlaceholder } from "@/components/icon-placeholder"
 import { navigationMenuTriggerStyle } from "."
 
 const props = defineProps<NavigationMenuTriggerProps & { class?: HTMLAttributes["class"] }>()
