@@ -44,6 +44,7 @@ next-env.d.ts
 
 # generated preview server assets
 /public/preview
+/preview-server/dist
 
 # generated content
 .contentlayer
