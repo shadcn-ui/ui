@@ -9,7 +9,7 @@ export const FRAMEWORK_COMPONENTS: Record<string, Set<string>> = {
   base: new Set(["*"]),
   // Vue and Svelte: list available component slugs.
   vue: new Set(["accordion", "alert", "alert-dialog", "aspect-ratio", "avatar", "badge", "breadcrumb", "button", "button-group", "calendar", "card", "carousel", "chart", "checkbox", "collapsible", "combobox", "command", "context-menu", "dialog", "drawer", "dropdown-menu", "empty", "field", "hover-card", "input", "input-group", "input-otp", "item", "kbd", "label", "menubar", "native-select", "navigation-menu", "pagination", "popover", "progress", "radio-group", "resizable", "scroll-area", "select", "separator", "sheet", "sidebar", "skeleton", "slider", "sonner", "spinner", "switch", "table", "tabs", "textarea", "toggle", "toggle-group", "tooltip"]),
-  svelte: new Set(["button"]),
+  svelte: new Set(["accordion", "alert", "alert-dialog", "aspect-ratio", "avatar", "badge", "breadcrumb", "button", "button-group", "calendar", "card", "carousel", "chart", "checkbox", "collapsible", "command", "context-menu", "dialog", "drawer", "dropdown-menu", "empty", "field", "hover-card", "input", "input-group", "input-otp", "item", "kbd", "label", "menubar", "native-select", "navigation-menu", "pagination", "popover", "progress", "radio-group", "range-calendar", "resizable", "scroll-area", "select", "separator", "sheet", "sidebar", "skeleton", "slider", "sonner", "spinner", "switch", "table", "tabs", "textarea", "toggle", "toggle-group", "tooltip"]),
 }
 
 export function hasComponentForBase(
