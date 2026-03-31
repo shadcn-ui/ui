@@ -45,7 +45,7 @@ const designSystemSearchParams = {
   base: parseAsStringLiteral<BaseName>(BASES.map((b) => b.name)).withDefault(
     DEFAULT_CONFIG.base
   ),
-  item: parseAsString.withDefault("preview").withOptions({ shallow: true }),
+  item: parseAsString.withDefault("preview-02").withOptions({ shallow: true }),
   iconLibrary: parseAsStringLiteral<IconLibraryName>(
     Object.values(iconLibraries).map((i) => i.name)
   ).withDefault(DEFAULT_CONFIG.iconLibrary),

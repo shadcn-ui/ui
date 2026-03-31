@@ -27,6 +27,16 @@ import {
 import { Separator } from "@/registry/bases/base/ui/separator"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
+const FROM_ACCOUNTS = [
+  { label: "Main Checking (··8402) — $12,450.00", value: "checking" },
+  { label: "Business (··7731) — $8,920.00", value: "business" },
+]
+
+const TO_ACCOUNTS = [
+  { label: "High Yield Savings (··1192) — $42,100.00", value: "savings" },
+  { label: "Investment (··3349) — $18,200.00", value: "investment" },
+]
+
 export function TransferFunds() {
   return (
     <Card>
@@ -62,36 +72,34 @@ export function TransferFunds() {
           </Field>
           <Field>
             <FieldLabel htmlFor="from-account">From Account</FieldLabel>
-            <Select defaultValue="checking">
+            <Select items={FROM_ACCOUNTS} defaultValue="checking">
               <SelectTrigger id="from-account" className="w-full">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>
-                  <SelectItem value="checking">
-                    Main Checking (··8402) — $12,450.00
-                  </SelectItem>
-                  <SelectItem value="business">
-                    Business (··7731) — $8,920.00
-                  </SelectItem>
+                  {FROM_ACCOUNTS.map((item) => (
+                    <SelectItem key={item.value} value={item.value}>
+                      {item.label}
+                    </SelectItem>
+                  ))}
                 </SelectGroup>
               </SelectContent>
             </Select>
           </Field>
           <Field>
             <FieldLabel htmlFor="to-account">To Account</FieldLabel>
-            <Select defaultValue="savings">
+            <Select items={TO_ACCOUNTS} defaultValue="savings">
               <SelectTrigger id="to-account" className="w-full">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>
-                  <SelectItem value="savings">
-                    High Yield Savings (··1192) — $42,100.00
-                  </SelectItem>
-                  <SelectItem value="investment">
-                    Investment (··3349) — $18,200.00
-                  </SelectItem>
+                  {TO_ACCOUNTS.map((item) => (
+                    <SelectItem key={item.value} value={item.value}>
+                      {item.label}
+                    </SelectItem>
+                  ))}
                 </SelectGroup>
               </SelectContent>
             </Select>

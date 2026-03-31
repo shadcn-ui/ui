@@ -30,6 +30,13 @@ import { Slider } from "@/registry/bases/base/ui/slider"
 import { Textarea } from "@/registry/bases/base/ui/textarea"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
+const CURRENCIES = [
+  { label: "USD — United States Dollar", value: "usd" },
+  { label: "EUR — Euro", value: "eur" },
+  { label: "GBP — British Pound", value: "gbp" },
+  { label: "JPY — Japanese Yen", value: "jpy" },
+]
+
 export function PayoutThreshold() {
   const [amount, setAmount] = React.useState([2500])
 
@@ -58,18 +65,17 @@ export function PayoutThreshold() {
             <FieldLabel htmlFor="preferred-currency">
               Preferred Currency
             </FieldLabel>
-            <Select defaultValue="usd">
+            <Select items={CURRENCIES} defaultValue="usd">
               <SelectTrigger id="preferred-currency" className="w-full">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>
-                  <SelectItem value="usd">
-                    USD — United States Dollar
-                  </SelectItem>
-                  <SelectItem value="eur">EUR — Euro</SelectItem>
-                  <SelectItem value="gbp">GBP — British Pound</SelectItem>
-                  <SelectItem value="jpy">JPY — Japanese Yen</SelectItem>
+                  {CURRENCIES.map((item) => (
+                    <SelectItem key={item.value} value={item.value}>
+                      {item.label}
+                    </SelectItem>
+                  ))}
                 </SelectGroup>
               </SelectContent>
             </Select>

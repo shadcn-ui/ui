@@ -4,8 +4,8 @@ import { Button } from "@/registry/new-york-v4/ui/button"
 import { useDesignSystemSearchParams } from "@/app/(app)/create/lib/search-params"
 
 const PREVIEW_ITEMS = [
-  { label: "01", value: "preview" },
-  { label: "02", value: "preview-02" },
+  { label: "01", value: "preview-02" },
+  { label: "02", value: "preview" },
 ]
 
 export function PreviewSwitcher() {
