@@ -17,6 +17,13 @@ import {
   ChartTooltipContent,
   type ChartConfig,
 } from "@/registry/bases/radix/ui/chart"
+import {
+  Item,
+  ItemContent,
+  ItemDescription,
+  ItemGroup,
+  ItemTitle,
+} from "@/registry/bases/radix/ui/item"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 const HOLDINGS = [
@@ -93,20 +100,18 @@ export function DividendIncome() {
           </Button>
         </CardAction>
       </CardHeader>
-      <CardContent className="flex flex-col gap-4">
-        <div className="flex flex-col gap-1">
+      <CardContent>
+        <ItemGroup>
           {HOLDINGS.map((holding) => (
-            <div
-              key={holding.name}
-              className="grid grid-cols-[1fr_auto_auto] items-center gap-4 rounded-lg bg-muted p-4"
-            >
-              <div className="flex flex-col">
-                <span className="text-sm font-medium">{holding.name}</span>
-                <span className="text-sm text-muted-foreground">
-                  {holding.shares}
-                </span>
-              </div>
-              <ChartContainer config={miniChartConfig} className="h-8 w-24">
+            <Item key={holding.name} variant="muted">
+              <ItemContent>
+                <ItemTitle>{holding.name}</ItemTitle>
+                <ItemDescription>{holding.shares}</ItemDescription>
+              </ItemContent>
+              <ChartContainer
+                config={miniChartConfig}
+                className="hidden h-8 w-24 md:block"
+              >
                 <BarChart
                   data={holding.data}
                   margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
@@ -122,12 +127,12 @@ export function DividendIncome() {
                   />
                 </BarChart>
               </ChartContainer>
-              <span className="w-16 flex-1 text-right text-sm font-semibold tabular-nums">
+              <span className="hidden text-sm font-semibold tabular-nums md:block">
                 {holding.amount}
               </span>
-            </div>
+            </Item>
           ))}
-        </div>
+        </ItemGroup>
       </CardContent>
     </Card>
   )

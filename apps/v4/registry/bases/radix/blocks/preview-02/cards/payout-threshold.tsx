@@ -101,6 +101,7 @@ export function PayoutThreshold() {
             <Textarea
               id="payout-notes"
               placeholder="Add any notes for this payout configuration..."
+              className="min-h-[100px]"
             />
           </Field>
         </FieldGroup>

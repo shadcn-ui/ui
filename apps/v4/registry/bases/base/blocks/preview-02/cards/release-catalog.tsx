@@ -85,7 +85,7 @@ export function ReleaseCatalog() {
           {HOLDINGS.map((holding) => (
             <Item key={holding.ticker} variant="muted">
               <ItemMedia>
-                <div className="flex size-12 items-center justify-center rounded-lg bg-background font-semibold">
+                <div className="flex size-12 items-center justify-center rounded-lg border text-sm font-semibold">
                   {holding.ticker}
                 </div>
               </ItemMedia>

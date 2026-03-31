@@ -50,7 +50,7 @@ export function SavingsTargets() {
           <ItemGroup className="gap-3">
             <Item variant="muted" className="flex-col items-stretch">
               <ItemContent className="gap-3">
-                <ItemDescription className="text-xs font-medium tracking-wider text-muted-foreground uppercase">
+                <ItemDescription className="cn-font-heading text-xs font-medium tracking-wider text-muted-foreground uppercase">
                   Retirement
                 </ItemDescription>
                 <span className="text-3xl font-semibold tabular-nums">
@@ -69,7 +69,7 @@ export function SavingsTargets() {
             </Item>
             <Item variant="muted" className="flex-col items-stretch">
               <ItemContent className="gap-3">
-                <ItemDescription className="text-xs font-medium tracking-wider text-muted-foreground uppercase">
+                <ItemDescription className="cn-font-heading text-xs font-medium tracking-wider text-muted-foreground uppercase">
                   Real Estate
                 </ItemDescription>
                 <span className="text-3xl font-semibold tabular-nums">

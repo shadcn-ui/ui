@@ -66,24 +66,27 @@ export function ContributionHistory() {
             />
             <ChartTooltip
               cursor={false}
-              content={<ChartTooltipContent hideLabel />}
+              content={<ChartTooltipContent hideLabel className="min-w-40" />}
             />
             <Bar
               dataKey="amount"
               fill="var(--color-amount)"
               radius={[6, 6, 0, 0]}
+              maxBarSize={40}
             />
           </BarChart>
         </ChartContainer>
       </CardContent>
       <CardFooter className="flex-col gap-4">
-        <div className="grid w-full grid-cols-2 gap-3">
+        <div className="grid w-full grid-cols-1 gap-3 md:grid-cols-2">
           <Item variant="muted" className="flex-col items-stretch">
             <ItemContent className="gap-1">
               <ItemDescription className="text-xs font-medium tracking-wider text-muted-foreground uppercase">
                 Upcoming
               </ItemDescription>
-              <span className="text-lg font-semibold">May 25, 2024</span>
+              <span className="cn-font-heading text-lg font-semibold">
+                May 25, 2024
+              </span>
               <span className="text-sm text-muted-foreground">
                 $1,000 scheduled
               </span>
@@ -94,7 +97,9 @@ export function ContributionHistory() {
               <ItemDescription className="text-xs font-medium tracking-wider text-muted-foreground uppercase">
                 Auto-Save Plan
               </ItemDescription>
-              <span className="text-lg font-semibold">Accelerated</span>
+              <span className="cn-font-heading text-lg font-semibold">
+                Accelerated
+              </span>
               <span className="text-sm text-muted-foreground">
                 Recurring weekly
               </span>
