@@ -7,7 +7,7 @@ import { ui } from "./ui/_registry"
 
 const VUE_STYLE = {
   type: "registry:style",
-  dependencies: ["class-variance-authority", "vue"],
+  dependencies: ["class-variance-authority", "vue", "reka-ui", "@vueuse/core"],
   devDependencies: ["tw-animate-css", "shadcn"],
   registryDependencies: ["utils"],
   css: {
