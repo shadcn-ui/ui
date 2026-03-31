@@ -136,13 +136,11 @@ const nextConfig = {
   },
   rewrites() {
     return {
-      beforeFiles: [
+      afterFiles: [
         {
           source: "/preview/:path*",
           destination: "/preview/index.html",
         },
-      ],
-      afterFiles: [
         {
           source: "/docs/:path*.md",
           destination: "/llm/:path*",
