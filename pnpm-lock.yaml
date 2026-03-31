@@ -429,7 +429,7 @@ importers:
         specifier: ^0.5.0
         version: 0.5.1(svelte@5.55.1)
       paneforge:
-        specifier: ^1.0.0
+        specifier: ^1.0.2
         version: 1.0.2(svelte@5.55.1)
       reka-ui:
         specifier: ^2.0.0

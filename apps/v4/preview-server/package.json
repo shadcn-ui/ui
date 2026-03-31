@@ -31,7 +31,7 @@
     "layerchart": "2.0.0-next.43",
     "lucide-vue-next": "^0.474.0",
     "mode-watcher": "^0.5.0",
-    "paneforge": "^1.0.0",
+    "paneforge": "^1.0.2",
     "reka-ui": "^2.0.0",
     "shadcn": "workspace:*",
     "svelte": "^5.0.0",
