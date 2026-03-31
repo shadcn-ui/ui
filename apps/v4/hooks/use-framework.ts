@@ -11,37 +11,56 @@ function isValidFramework(value: string): value is Framework {
   return value === "react" || value === "vue" || value === "svelte"
 }
 
-function getStoredFramework(): Framework {
-  if (typeof window === "undefined") {
-    return DEFAULT_FRAMEWORK
-  }
-  const stored = localStorage.getItem(STORAGE_KEY)
-  if (stored && isValidFramework(stored)) {
-    return stored
-  }
+// Module-level shared store
+let currentFramework: Framework = DEFAULT_FRAMEWORK
+const listeners = new Set<() => void>()
+
+function getSnapshot(): Framework {
+  return currentFramework
+}
+
+function getServerSnapshot(): Framework {
   return DEFAULT_FRAMEWORK
 }
 
-export function useFramework() {
-  const [framework, setFrameworkState] = React.useState<Framework>(DEFAULT_FRAMEWORK)
+function subscribe(callback: () => void): () => void {
+  listeners.add(callback)
+  return () => listeners.delete(callback)
+}
 
-  React.useEffect(() => {
-    setFrameworkState(getStoredFramework())
-  }, [])
+function emitChange() {
+  for (const listener of listeners) {
+    listener()
+  }
+}
 
-  React.useEffect(() => {
-    function onStorage(e: StorageEvent) {
-      if (e.key === STORAGE_KEY && e.newValue && isValidFramework(e.newValue)) {
-        setFrameworkState(e.newValue)
-      }
+// Initialize from localStorage on module load (client only)
+if (typeof window !== "undefined") {
+  const stored = localStorage.getItem(STORAGE_KEY)
+  if (stored && isValidFramework(stored)) {
+    currentFramework = stored
+  }
+
+  // Listen for cross-tab changes
+  window.addEventListener("storage", (e) => {
+    if (e.key === STORAGE_KEY && e.newValue && isValidFramework(e.newValue)) {
+      currentFramework = e.newValue
+      emitChange()
     }
-    window.addEventListener("storage", onStorage)
-    return () => window.removeEventListener("storage", onStorage)
-  }, [])
+  })
+}
+
+export function useFramework() {
+  const framework = React.useSyncExternalStore(
+    subscribe,
+    getSnapshot,
+    getServerSnapshot
+  )
 
   const setFramework = React.useCallback((value: Framework) => {
-    setFrameworkState(value)
+    currentFramework = value
     localStorage.setItem(STORAGE_KEY, value)
+    emitChange()
   }, [])
 
   return { framework, setFramework } as const
