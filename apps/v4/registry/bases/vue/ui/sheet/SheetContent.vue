@@ -9,8 +9,8 @@ import {
   useForwardPropsEmits,
 } from "reka-ui"
 import { cn } from "@/lib/utils"
-import IconPlaceholder from "@/registry/bases/reka/components/icon-placeholder/IconPlaceholder.vue"
-import { Button } from "@/registry/bases/reka/ui/button"
+import IconPlaceholder from "@/components/icon-placeholder/IconPlaceholder.vue"
+import { Button } from "@/ui/button"
 import SheetOverlay from "./SheetOverlay.vue"
 
 interface SheetContentProps extends DialogContentProps {

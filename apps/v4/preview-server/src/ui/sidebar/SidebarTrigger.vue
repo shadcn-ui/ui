@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from "vue"
 import { cn } from "@/lib/utils"
-import { IconPlaceholder } from "@/registry/bases/reka/components/icon-placeholder"
-import { Button } from "@/registry/new-york-v4/ui/button"
+import { IconPlaceholder } from "@/components/IconPlaceholder.vue"
+import { Button } from "@/ui/button"
 import { useSidebar } from "./utils"
 
 const props = defineProps<{

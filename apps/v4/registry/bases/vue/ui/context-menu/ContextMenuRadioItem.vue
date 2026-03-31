@@ -8,7 +8,7 @@ import {
   useForwardPropsEmits,
 } from "reka-ui"
 import { cn } from "@/lib/utils"
-import IconPlaceholder from "@/registry/bases/reka/components/icon-placeholder/IconPlaceholder.vue"
+import IconPlaceholder from "@/components/icon-placeholder/IconPlaceholder.vue"
 
 const props = defineProps<ContextMenuRadioItemProps & { class?: HTMLAttributes["class"] }>()
 const emits = defineEmits<ContextMenuRadioItemEmits>()

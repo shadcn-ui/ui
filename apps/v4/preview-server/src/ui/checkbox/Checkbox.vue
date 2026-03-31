@@ -4,7 +4,7 @@ import type { HTMLAttributes } from "vue"
 import { reactiveOmit } from "@vueuse/core"
 import { CheckboxIndicator, CheckboxRoot, useForwardPropsEmits } from "reka-ui"
 import { cn } from "@/lib/utils"
-import IconPlaceholder from "@/registry/bases/reka/components/icon-placeholder/IconPlaceholder.vue"
+import IconPlaceholder from "@/components/IconPlaceholder.vue"
 
 const props = defineProps<CheckboxRootProps & { class?: HTMLAttributes["class"] }>()
 const emits = defineEmits<CheckboxRootEmits>()

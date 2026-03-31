@@ -8,7 +8,7 @@ import {
   useForwardPropsEmits,
 } from "reka-ui"
 import { cn } from "@/lib/utils"
-import { IconPlaceholder } from "@/registry/bases/reka/components/icon-placeholder"
+import { IconPlaceholder } from "@/components/icon-placeholder"
 
 const props = defineProps<MenubarCheckboxItemProps & { class?: HTMLAttributes["class"] }>()
 const emits = defineEmits<MenubarCheckboxItemEmits>()

@@ -5,7 +5,7 @@ import { reactiveOmit, useCurrentElement } from "@vueuse/core"
 import { ListboxItem, useForwardPropsEmits, useId } from "reka-ui"
 import { computed, onMounted, onUnmounted, ref } from "vue"
 import { cn } from "@/lib/utils"
-import IconPlaceholder from "@/registry/bases/reka/components/icon-placeholder/IconPlaceholder.vue"
+import IconPlaceholder from "@/components/icon-placeholder/IconPlaceholder.vue"
 import { useCommand, useCommandGroup } from "."
 
 const props = defineProps<ListboxItemProps & { class?: HTMLAttributes["class"] }>()
