@@ -38,3 +38,61 @@ npx shadcn@latest add @force-ui-svelte/input-otp
 </TabsContent>
 
 </CodeTabs>
+
+## About
+
+Input OTP is built on top of Bits UI's [PinInput](https://bits-ui.com/docs/components/pin-input) which is inspired by [@guilherme_rodz](https://twitter.com/guilherme_rodz)'s Input OTP component.
+
+## Usage
+
+```svelte showLineNumbers
+<script lang="ts">
+  import * as InputOTP from "$lib/components/ui/input-otp/index.js";
+</script>
+```
+
+```svelte showLineNumbers
+<InputOTP.Root maxlength={6}>
+  </InputOTP.Root>
+```
+
+## Examples
+
+### Pattern
+
+Use the `pattern` prop to define a custom pattern for the OTP input.
+
+<ComponentPreview framework="svelte" name="input-otp-pattern" />
+
+```svelte showLineNumbers {3,6}
+<script lang="ts">
+  import * as InputOTP from "$lib/components/ui/input-otp/index.js";
+  import { REGEXP_ONLY_DIGITS_AND_CHARS } from "bits-ui";
+</script>
+
+<InputOTP.Root maxlength={6} pattern={REGEXP_ONLY_DIGITS_AND_CHARS}>
+  </InputOTP.Root>
+```
+
+### Separator
+
+You can use the `InputOTP.Separator` component to add a separator between the groups of cells.
+
+<ComponentPreview framework="svelte" name="input-otp-separator" />
+
+```svelte showLineNumbers {12}
+<script lang="ts">
+  import * as InputOTP from "$lib/components/ui/input-otp/index.js";
+</script>
+
+<InputOTP.Root maxlength={4}>
+  </InputOTP.Root>
+```
+
+### Controlled
+
+<ComponentPreview framework="svelte" name="input-otp-controlled" />
+
+### Form
+
+<ComponentPreview framework="svelte" name="input-otp-form" />

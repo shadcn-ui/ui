@@ -38,3 +38,16 @@ npx shadcn@latest add @force-ui-svelte/pagination
 </TabsContent>
 
 </CodeTabs>
+
+## Usage
+
+```svelte showLineNumbers
+<script lang="ts">
+  import * as Pagination from "$lib/components/ui/pagination/index.js";
+</script>
+```
+
+```svelte showLineNumbers
+<Pagination.Root count={100} perPage={10}>
+  </Pagination.Root>
+```

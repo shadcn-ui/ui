@@ -38,3 +38,101 @@ npx shadcn@latest add @force-ui-vue/input-otp
 </TabsContent>
 
 </CodeTabs>
+
+## Usage
+
+```vue showLineNumbers
+<script setup lang="ts">
+import {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSeparator,
+  InputOTPSlot,
+} from '@/components/ui/input-otp'
+</script>
+
+<template>
+  <InputOTP v-model="value" :maxlength="6">
+    <InputOTPGroup>
+      <InputOTPSlot :index="0" />
+      <InputOTPSlot :index="1" />
+      <InputOTPSlot :index="2" />
+    </InputOTPGroup>
+    <InputOTPSeparator />
+    <InputOTPGroup>
+      <InputOTPSlot :index="3" />
+      <InputOTPSlot :index="4" />
+      <InputOTPSlot :index="5" />
+    </InputOTPGroup>
+  </InputOTP>
+</template>
+```
+
+## Examples
+
+### Pattern
+
+Use the `pattern` prop to define a custom pattern for the OTP input.
+
+<ComponentPreview framework="vue" name="input-otp-pattern-demo" />
+
+```vue showLineNumbers {2,9}
+<script setup lang="ts">
+import { REGEXP_ONLY_DIGITS_AND_CHARS } from 'vue-input-otp'
+// ...
+</script>
+
+<template>
+  <InputOTP
+    maxlength="6"
+    :pattern="REGEXP_ONLY_DIGITS_AND_CHARS"
+  >
+    <InputOTPGroup>
+      <InputOTPSlot :index="0" />
+      <!-- ... -->
+    </InputOTPGroup>
+  </InputOTP>
+</template>
+```
+
+### Separator
+You can use the `<InputOTPSeparator />` component to add a separator between the input groups.
+
+<ComponentPreview framework="vue" name="input-otp-separator-demo" />
+
+```vue showLineNumbers {5,17}
+<script setup lang="ts">
+import {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSeparator,
+  InputOTPSlot,
+} from '@/components/ui/input-otp'
+// ...
+</script>
+
+<template>
+  <InputOTP maxlength="4">
+    <InputOTPGroup>
+      <InputOTPSlot :index="0" />
+      <InputOTPSlot :index="1" />
+    </InputOTPGroup>
+    <InputOTPSeparator />
+    <InputOTPGroup>
+      <InputOTPSlot :index="2" />
+      <InputOTPSlot :index="3" />
+    </InputOTPGroup>
+  </InputOTP>
+</template>
+```
+
+### Controlled
+You can use the `v-model` directive to control the input value.
+
+<ComponentPreview framework="vue" name="input-otp-controlled-demo" />
+
+### Form
+
+You can use the InputOTP component within a form, for example with VeeValidate.
+
+<ComponentPreview framework="vue" name="input-otp-form-demo" />

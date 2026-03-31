@@ -38,3 +38,59 @@ npx shadcn@latest add @force-ui-svelte/empty
 </TabsContent>
 
 </CodeTabs>
+
+## Usage
+
+```svelte
+<script lang="ts">
+  import * as Empty from "$lib/components/ui/empty/index.js";
+  import FolderCodeIcon from "@tabler/icons-svelte/icons/folder-code";
+</script>
+```
+
+```svelte
+<Empty.Root>
+  <Empty.Header>
+    <Empty.Media variant="icon">
+      <FolderCodeIcon />
+    </Empty.Media>
+    <Empty.Title>No data</Empty.Title>
+    <Empty.Description>No data found</Empty.Description>
+  </Empty.Header>
+  <Empty.Content>
+    <Button>Add data</Button>
+  </Empty.Content>
+</Empty.Root>
+```
+
+## Examples
+
+### Outline
+
+Use the `border` utility class to create a outline empty state.
+
+<ComponentPreview framework="svelte" name="empty-outline-demo" />
+
+### Background
+
+Use the `bg-*` and `bg-gradient-*` utilities to add a background to the empty state.
+
+<ComponentPreview framework="svelte" name="empty-background-demo" />
+
+### Avatar
+
+Use the `EmptyMedia` component to display an avatar in the empty state.
+
+<ComponentPreview framework="svelte" name="empty-avatar-demo" />
+
+### Avatar Group
+
+Use the `EmptyMedia` component to display an avatar group in the empty state.
+
+<ComponentPreview framework="svelte" name="empty-avatar-group-demo" />
+
+### InputGroup
+
+You can add an `InputGroup` component to the `EmptyContent` component.
+
+<ComponentPreview framework="svelte" name="empty-input-group-demo" />

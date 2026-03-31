@@ -38,3 +38,86 @@ npx shadcn@latest add @force-ui-svelte/input-group
 </TabsContent>
 
 </CodeTabs>
+
+## Usage
+
+```svelte showLineNumbers
+<script lang="ts">
+  import * as InputGroup from "$lib/components/ui/input-group/index.js";
+  import SearchIcon from "@lucide/svelte/icons/search";
+</script>
+```
+
+```svelte showLineNumbers
+<InputGroup.Root>
+  <InputGroup.Input placeholder="Search..." />
+  <InputGroup.Addon>
+    <SearchIcon />
+  </InputGroup.Addon>
+  <InputGroup.Addon align="inline-end">
+    <InputGroup.Button>Search</InputGroup.Button>
+  </InputGroup.Addon>
+</InputGroup.Root>
+```
+
+## Examples
+
+### Icon
+
+<ComponentPreview framework="svelte" name="input-group-icon-demo" />
+
+### Text
+
+Display additional text information alongside inputs.
+
+<ComponentPreview framework="svelte" name="input-group-text-demo" />
+
+### Button
+
+Add buttons to perform actions within the input group.
+
+<ComponentPreview framework="svelte" name="input-group-button-demo" />
+
+### Tooltip
+
+Add tooltips to provide additional context or help.
+
+<ComponentPreview framework="svelte" name="input-group-tooltip-demo" />
+
+### Textarea
+
+Input groups also work with textarea components. Use `block-start` or `block-end` for alignment.
+
+<ComponentPreview framework="svelte" name="input-group-textarea-demo" />
+
+### Spinner
+
+Show loading indicators while processing input.
+
+<ComponentPreview framework="svelte" name="input-group-spinner-demo" />
+
+### Label
+
+Add labels within input groups to improve accessibility.
+
+<ComponentPreview framework="svelte" name="input-group-label-demo" />
+
+### Dropdown
+
+Pair input groups with dropdown menus for complex interactions.
+
+<ComponentPreview framework="svelte" name="input-group-dropdown-demo" />
+
+### Button Group
+
+Wrap input groups with button groups to create prefixes and suffixes.
+
+<ComponentPreview framework="svelte" name="input-group-button-group-demo" />
+
+### Custom Input
+
+Add the `data-slot="input-group-control"` attribute to your custom input for automatic behavior and focus state handling.
+
+No style is applied to the custom input. Apply your own styles using the `class` prop.
+
+<ComponentPreview framework="svelte" name="input-group-custom-input-demo" />

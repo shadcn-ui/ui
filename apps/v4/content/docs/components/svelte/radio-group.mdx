@@ -38,3 +38,25 @@ npx shadcn@latest add @force-ui-svelte/radio-group
 </TabsContent>
 
 </CodeTabs>
+
+## Usage
+
+```svelte showLineNumbers
+<script lang="ts">
+  import { Label } from "$lib/components/ui/label/index.js";
+  import * as RadioGroup from "$lib/components/ui/radio-group/index.js";
+</script>
+```
+
+```svelte showLineNumbers
+<RadioGroup.Root value="option-one">
+  <div class="flex items-center space-x-2">
+    <RadioGroup.Item value="option-one" id="option-one" />
+    <Label for="option-one">Option One</Label>
+  </div>
+  <div class="flex items-center space-x-2">
+    <RadioGroup.Item value="option-two" id="option-two" />
+    <Label for="option-two">Option Two</Label>
+  </div>
+</RadioGroup.Root>
+```

@@ -1,0 +1,57 @@
+---
+title: Range Calendar
+description: Presents a calendar view tailored for selecting date ranges.
+base: vue
+component: true
+---
+
+<ComponentPreview framework="vue" name="range-calendar-demo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @force-ui-vue/range-calendar
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource framework="vue" name="range-calendar" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## About
+
+The `<RangeCalendar />` component is built on top of the [Reka UI Range Calendar](https://www.reka-ui.com/docs/components/date-range-picker.html) component, which uses the [@internationalized/date](https://react-spectrum.adobe.com/internationalized/date/index.html) package to handle dates.
+
+If you're looking for a normal calendar, check out the [Calendar](./calendar.md) component.
+
+## Usage
+```vue
+<script setup lang="ts">
+import { RangeCalendar } from "@/components/ui/range-calendar";
+</script>
+
+<template>
+  <RangeCalendar />
+</template>
+```

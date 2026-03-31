@@ -1,0 +1,91 @@
+---
+title: Date Picker
+description: A date picker component with range and presets.
+base: svelte
+component: true
+---
+
+<ComponentPreview framework="svelte" name="date-picker-demo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @force-ui-svelte/date-picker
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource framework="svelte" name="date-picker" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```svelte showLineNumbers title="lib/components/example-date-picker.svelte"
+<script lang="ts">
+  import CalendarIcon from "@lucide/svelte/icons/calendar";
+  import {
+    type DateValue,
+    DateFormatter,
+    getLocalTimeZone,
+  } from "@internationalized/date";
+  import { cn } from "$lib/utils.js";
+  import { Button } from "$lib/components/ui/button/index.js";
+  import { Calendar } from "$lib/components/ui/calendar/index.js";
+  import * as Popover from "$lib/components/ui/popover/index.js";
+
+  const df = new DateFormatter("en-US", {
+    dateStyle: "long",
+  });
+
+  let value = $state<DateValue>();
+</script>
+
+<Popover.Root>
+  <Popover.Trigger>
+    </Popover.Trigger>
+  <Popover.Content class="w-auto p-0">
+    <Calendar bind:value type="single" initialFocus captionLayout="dropdown" />
+  </Popover.Content>
+</Popover.Root>
+```
+
+## Examples
+
+### Date of Birth Picker
+
+<ComponentPreview framework="svelte" name="calendar-22" />
+
+### Picker with Input
+
+<ComponentPreview framework="svelte" name="calendar-28" />
+
+### Date and Time Picker
+
+<ComponentPreview framework="svelte" name="calendar-24" />
+
+### Natural Language Picker
+
+This component uses the `chrono-node` library to parse natural language dates.
+
+<ComponentPreview framework="svelte" name="calendar-29" />

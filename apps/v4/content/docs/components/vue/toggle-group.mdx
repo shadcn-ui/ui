@@ -38,3 +38,51 @@ npx shadcn@latest add @force-ui-vue/toggle-group
 </TabsContent>
 
 </CodeTabs>
+
+## Usage
+
+```vue showLineNumbers
+<script setup lang="ts">
+import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
+</script>
+
+<template>
+  <ToggleGroup type="multiple">
+    <ToggleGroupItem value="a">
+      A
+    </ToggleGroupItem>
+    <ToggleGroupItem value="b">
+      B
+    </ToggleGroupItem>
+    <ToggleGroupItem value="c">
+      C
+    </ToggleGroupItem>
+  </ToggleGroup>
+</template>
+```
+
+## Examples
+
+### Default
+
+<ComponentPreview framework="vue" name="toggle-group-default-demo" />
+
+### Outline
+
+<ComponentPreview framework="vue" name="toggle-group-demo" />
+
+### Single
+
+<ComponentPreview framework="vue" name="toggle-group-single-demo" />
+
+### Small
+
+<ComponentPreview framework="vue" name="toggle-group-small-demo" />
+
+### Large
+
+<ComponentPreview framework="vue" name="toggle-group-large-demo" />
+
+### Disabled
+
+<ComponentPreview framework="vue" name="toggle-group-disabled-demo" />

@@ -38,3 +38,52 @@ npx shadcn@latest add @force-ui-vue/select
 </TabsContent>
 
 </CodeTabs>
+
+## Usage
+
+```vue showLineNumbers
+<script setup lang="ts">
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
+</script>
+
+<template>
+  <Select>
+    <SelectTrigger>
+      <SelectValue placeholder="Select a fruit" />
+    </SelectTrigger>
+    <SelectContent>
+      <SelectItem value="apple">
+        Apple
+      </SelectItem>
+      <SelectItem value="banana">
+        Banana
+      </SelectItem>
+      <SelectItem value="blueberry">
+        Blueberry
+      </SelectItem>
+      <SelectItem value="grapes">
+        Grapes
+      </SelectItem>
+      <SelectItem value="pineapple">
+        Pineapple
+      </SelectItem>
+    </SelectContent>
+  </Select>
+</template>
+```
+
+## Examples
+
+### Scrollable
+
+<ComponentPreview framework="vue" name="select-scrollable" />
+
+### Multiple
+
+<ComponentPreview framework="vue" name="select-multiple-demo" />

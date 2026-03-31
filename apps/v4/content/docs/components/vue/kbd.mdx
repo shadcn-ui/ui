@@ -38,3 +38,72 @@ npx shadcn@latest add @force-ui-vue/kbd
 </TabsContent>
 
 </CodeTabs>
+
+## Usage
+
+```vue
+<script setup lang="ts">
+import { Kbd } from '@/components/ui/kbd'
+</script>
+
+<template>
+  <Kbd>Ctrl</Kbd>
+</template>
+```
+
+## Examples
+
+### Group
+
+Use the `KbdGroup` component to group keyboard keys together.
+
+<ComponentPreview framework="vue" name="kbd-group-demo" />
+
+### Button
+
+Use the `Kbd` component inside a `Button` component to display a keyboard key inside a button.
+
+<ComponentPreview framework="vue" name="kbd-with-button" />
+
+### Tooltip
+
+You can use the `Kbd` component inside a `Tooltip` component to display a tooltip with a keyboard key.
+
+<ComponentPreview framework="vue" name="kbd-with-tooltip" />
+
+### Input Group
+
+You can use the `Kbd` component inside a `InputGroupAddon` component to display a keyboard key inside an input group.
+
+<ComponentPreview framework="vue" name="kbd-with-input-group" />
+
+## API Reference
+
+### Kbd
+
+Use the `Kbd` component to display a keyboard key.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `class` | `string` | ``      |
+
+```vue
+<Kbd>
+Ctrl
+</Kbd>
+```
+
+### KbdGroup
+
+Use the `KbdGroup` component to group `Kbd` components together.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `class` | `string` | ``      |
+
+```vue
+<KbdGroup>
+  <Kbd>Ctrl</Kbd>
+  <Kbd>B</Kbd>
+</KbdGroup>
+```

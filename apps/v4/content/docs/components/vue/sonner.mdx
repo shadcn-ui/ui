@@ -38,3 +38,48 @@ npx shadcn@latest add @force-ui-vue/sonner
 </TabsContent>
 
 </CodeTabs>
+
+## Usage
+
+```vue showLineNumbers
+<script setup lang="ts">
+import { toast } from 'vue-sonner'
+import { Button } from '@/components/ui/button'
+</script>
+
+<template>
+  <Button @click="() => toast('My first toast')">
+    Give me a toast
+  </Button>
+</template>
+```
+
+## Installation
+
+The `<Toaster />` component and its specific CSS are required to display toasts. Add them to your root layout.
+
+```vue showLineNumbers
+<script setup lang="ts">
+import 'vue-sonner/style.css'
+import { Toaster } from '@/components/ui/sonner'
+</script>
+
+<template>
+  <div>
+    <main>
+      <!-- Your app content -->
+    </main>
+    <Toaster />
+  </div>
+</template>
+```
+
+## Examples
+
+### Types
+
+<ComponentPreview framework="vue" name="sonner-types-demo" />
+
+### With Dialog
+
+<ComponentPreview framework="vue" name="sonner-with-dialog-demo" />

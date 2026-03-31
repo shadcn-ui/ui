@@ -16,13 +16,17 @@
     "chart",
     "checkbox",
     "collapsible",
+    "combobox",
     "command",
     "context-menu",
+    "data-table",
+    "date-picker",
     "dialog",
     "drawer",
     "dropdown-menu",
     "empty",
     "field",
+    "form",
     "hover-card",
     "input",
     "input-group",
@@ -54,6 +58,7 @@
     "textarea",
     "toggle",
     "toggle-group",
-    "tooltip"
+    "tooltip",
+    "typography"
   ]
 }

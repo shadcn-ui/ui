@@ -38,3 +38,63 @@ npx shadcn@latest add @force-ui-svelte/spinner
 </TabsContent>
 
 </CodeTabs>
+
+## Usage
+
+```svelte
+<script lang="ts">
+  import { Spinner } from "$lib/components/ui/spinner/index.js";
+</script>
+```
+
+```svelte
+<Spinner />
+```
+
+## Customization
+
+You can replace the default spinner icon with any other icon by editing the `Spinner` component.
+
+<ComponentPreview framework="svelte" name="spinner-custom-demo" />
+
+## Examples
+
+### Size
+
+Use the `size-*` utility class to change the size of the spinner.
+
+<ComponentPreview framework="svelte" name="spinner-size-demo" />
+
+### Color
+
+Use the `text-*` utility class to change the color of the spinner.
+
+<ComponentPreview framework="svelte" name="spinner-color-demo" />
+
+### Button
+
+Add a spinner to a button to indicate a loading state. The `<Button />` will handle the spacing between the spinner and the text.
+
+<ComponentPreview framework="svelte" name="spinner-button-demo" />
+
+### Badge
+
+You can also use a spinner inside a badge.
+
+<ComponentPreview framework="svelte" name="spinner-badge-demo" />
+
+### Input Group
+
+Input Group can have spinners inside `<InputGroup.Addon>`.
+
+<ComponentPreview framework="svelte" name="spinner-input-group-demo" />
+
+### Empty
+
+<ComponentPreview framework="svelte" name="spinner-empty-demo" />
+
+### Item
+
+Use the spinner inside `<Item.Media>` to indicate a loading state.
+
+<ComponentPreview framework="svelte" name="spinner-item-demo" />

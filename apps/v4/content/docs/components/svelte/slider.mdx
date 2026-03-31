@@ -38,3 +38,16 @@ npx shadcn@latest add @force-ui-svelte/slider
 </TabsContent>
 
 </CodeTabs>
+
+## Usage
+
+```svelte
+<script lang="ts">
+  import { Slider } from "$lib/components/ui/slider/index.js";
+  let value = $state(33);
+</script>
+```
+
+```svelte
+<Slider type="single" bind:value max={100} step={1} />
+```

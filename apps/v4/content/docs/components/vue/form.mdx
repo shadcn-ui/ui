@@ -1,0 +1,232 @@
+---
+title: Form
+description: Building forms with VeeValidate and Zod.
+base: vue
+component: true
+---
+
+<ComponentPreview framework="vue" name="form-demo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @force-ui-vue/form
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource framework="vue" name="form" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```vue showLineNumbers
+<script setup lang="ts">
+import {
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/form'
+</script>
+
+<template>
+  <FormField v-slot="{ componentField }" name="username">
+    <FormItem>
+      <FormLabel>Username</FormLabel>
+      <FormControl>
+        <Input placeholder="shadcn" v-bind="componentField" />
+      </FormControl>
+      <FormDescription>
+        This is your public display name.
+      </FormDescription>
+      <FormMessage />
+    </FormItem>
+  </FormField>
+</template>
+```
+
+### Create a form schema
+
+  Define the shape of your form using a Zod schema. You can read more about using Zod in the [Zod documentation](https://zod.dev).
+
+  Use `@vee-validate/zod` to integrate Zod schema validation with `vee-validate`
+
+  `toTypedSchema` also makes the form values and submitted values typed automatically and caters for both input and output types of that schema.
+
+  ```vue showLineNumbers {2-3,5-7}
+  <script setup lang="ts">
+  import { toTypedSchema } from '@vee-validate/zod'
+  import * as z from 'zod'
+
+  const formSchema = toTypedSchema(z.object({
+    username: z.string().min(2).max(50),
+  }))
+  </script>
+  ```
+
+### Define a form
+
+  Use the `useForm` composable from `vee-validate` or use `<Form />` component to create a form.
+
+```vue showLineNumbers {2,19-21}
+    <script setup lang="ts">
+    import { useForm } from 'vee-validate'
+    import { toTypedSchema } from '@vee-validate/zod'
+    import * as z from 'zod'
+
+    import {
+      FormControl,
+      FormDescription,
+      FormField,
+      FormItem,
+      FormLabel,
+      FormMessage
+    } from '@/components/ui/form'
+
+    const formSchema = toTypedSchema(z.object({
+      username: z.string().min(2).max(50),
+    }))
+
+    const form = useForm({
+      validationSchema: formSchema,
+    })
+
+    const onSubmit = form.handleSubmit((values) => {
+      console.log('Form submitted!', values)
+    })
+    </script>
+
+    <template>
+      <form @submit="onSubmit">
+        ...
+      </form>
+    </template>
+    ```
+
+```vue showLineNumbers {5,24-26}
+    <script setup lang="ts">
+    import { toTypedSchema } from '@vee-validate/zod'
+    import * as z from 'zod'
+    import {
+      Form,
+      FormControl,
+      FormDescription,
+      FormField,
+      FormItem,
+      FormLabel,
+      FormMessage
+    } from '@/components/ui/form'
+
+    const formSchema = toTypedSchema(z.object({
+      username: z.string().min(2).max(50),
+    }))
+
+    function onSubmit(values) {
+      console.log('Form submitted!', values)
+    }
+    </script>
+
+    <template>
+      <Form :validation-schema="formSchema" @submit="onSubmit">
+        ...
+      </Form>
+    </template>
+    ```
+
+### Build your form
+
+  Based on last step we can either use `<Form />` component or `useForm` composable
+  `useForm` is recommended because values are typed automatically
+
+  ```vue showLineNumbers {2}
+  <script setup lang="ts">
+  import { toTypedSchema } from '@vee-validate/zod'
+  import { useForm } from 'vee-validate'
+  import * as z from 'zod'
+
+  import { Button } from '@/components/ui/button'
+  import {
+    FormControl,
+    FormDescription,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
+  } from '@/components/ui/form'
+  import { Input } from '@/components/ui/input'
+
+  const formSchema = toTypedSchema(z.object({
+    username: z.string().min(2).max(50),
+  }))
+
+  const form = useForm({
+    validationSchema: formSchema,
+  })
+
+  const onSubmit = form.handleSubmit((values) => {
+    console.log('Form submitted!', values)
+  })
+  </script>
+
+  <template>
+    <form @submit="onSubmit">
+      <FormField v-slot="{ componentField }" name="username">
+        <FormItem>
+          <FormLabel>Username</FormLabel>
+          <FormControl>
+            <Input type="text" placeholder="shadcn" v-bind="componentField" />
+          </FormControl>
+          <FormDescription>
+            This is your public display name.
+          </FormDescription>
+          <FormMessage />
+        </FormItem>
+      </FormField>
+      <Button type="submit">
+        Submit
+      </Button>
+    </form>
+  </template>
+  ```
+
+### Done
+
+  That's it. You now have a fully accessible form that is type-safe with client-side validation.
+
+<ComponentPreview framework="vue" name="input-form" />
+
+{/* ## Extras
+
+This example shows how to add motion to your forms with [Formkit AutoAnimate](https://auto-animate.formkit.com/)
+
+**Note:** You need to install `@formkit/auto-animate` to use this feature:
+
+```bash
+npm install @formkit/auto-animate
+```
+
+<ComponentPreview framework="vue" name="input-form-auto-animate" /> */}

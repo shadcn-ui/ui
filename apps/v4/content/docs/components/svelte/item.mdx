@@ -38,3 +38,72 @@ npx shadcn@latest add @force-ui-svelte/item
 </TabsContent>
 
 </CodeTabs>
+
+## Usage
+
+```svelte showLineNumbers
+<script lang="ts">
+  import * as Item from "$lib/components/ui/item/index.js";
+</script>
+```
+
+```svelte showLineNumbers
+<Item.Root>
+  <Item.Header>Item Header</Item.Header>
+  <Item.Media />
+  <Item.Content>
+    <Item.Title>Item</Item.Title>
+    <Item.Description>Item</Item.Description>
+  </Item.Content>
+  <Item.Actions />
+  <Item.Footer>Item Footer</Item.Footer>
+</Item.Root>
+```
+
+## Item vs Field
+
+Use Field if you need to display a form input such as a checkbox, input, radio, or select.
+
+If you only need to display content such as a title, description, and actions, use `Item`.
+
+## Examples
+
+### Variants
+
+<ComponentPreview framework="svelte" name="item-variants-demo" />
+
+### Size
+
+The `Item` component has different sizes for different use cases. For example, you can use the `sm` size for a compact item or the default size for a standard item.
+
+<ComponentPreview framework="svelte" name="item-size-demo" />
+
+### Icon
+
+<ComponentPreview framework="svelte" name="item-icon-demo" />
+
+### Avatar
+
+<ComponentPreview framework="svelte" name="item-avatar-demo" />
+
+### Image
+
+<ComponentPreview framework="svelte" name="item-image-demo" />
+
+### Group
+
+<ComponentPreview framework="svelte" name="item-group-demo" />
+
+### Header
+
+<ComponentPreview framework="svelte" name="item-header-demo" />
+
+### Link
+
+To render an item as a link, use the the `child` snippet. The hover and focus states will be applied to the anchor element.
+
+<ComponentPreview framework="svelte" name="item-link-demo" />
+
+### Dropdown
+
+<ComponentPreview framework="svelte" name="item-dropdown-demo" />

@@ -38,3 +38,20 @@ npx shadcn@latest add @force-ui-svelte/hover-card
 </TabsContent>
 
 </CodeTabs>
+
+## Usage
+
+```svelte showLineNumbers
+<script lang="ts">
+  import * as HoverCard from "$lib/components/ui/hover-card/index.js";
+</script>
+```
+
+```svelte showLineNumbers
+<HoverCard.Root>
+  <HoverCard.Trigger>Hover</HoverCard.Trigger>
+  <HoverCard.Content>
+    SvelteKit - Web development, streamlined
+  </HoverCard.Content>
+</HoverCard.Root>
+```

@@ -38,3 +38,22 @@ npx shadcn@latest add @force-ui-svelte/accordion
 </TabsContent>
 
 </CodeTabs>
+
+## Usage
+
+```svelte showLineNumbers
+<script lang="ts">
+  import * as Accordion from "$lib/components/ui/accordion/index.js";
+</script>
+```
+
+```svelte showLineNumbers
+<Accordion.Root type="single">
+  <Accordion.Item value="item-1">
+    <Accordion.Trigger>Is it accessible?</Accordion.Trigger>
+    <Accordion.Content>
+      Yes. It adheres to the WAI-ARIA design pattern.
+    </Accordion.Content>
+  </Accordion.Item>
+</Accordion.Root>
+```

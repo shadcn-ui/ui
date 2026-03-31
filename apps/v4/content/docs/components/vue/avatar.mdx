@@ -38,3 +38,18 @@ npx shadcn@latest add @force-ui-vue/avatar
 </TabsContent>
 
 </CodeTabs>
+
+## Usage
+
+```vue showLineNumbers
+<script setup lang="ts">
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+</script>
+
+<template>
+  <Avatar>
+    <AvatarImage src="https://github.com/shadcn.png" />
+    <AvatarFallback>CN</AvatarFallback>
+  </Avatar>
+</template>
+```

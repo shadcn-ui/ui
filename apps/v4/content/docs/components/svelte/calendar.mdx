@@ -38,3 +38,49 @@ npx shadcn@latest add @force-ui-svelte/calendar
 </TabsContent>
 
 </CodeTabs>
+
+## About
+
+The `<Calendar />` component is built on top of the [Bits UI Calendar](https://www.bits-ui.com/docs/components/calendar) component, which uses the [@internationalized/date](https://react-spectrum.adobe.com/internationalized/date/index.html) package to handle dates.
+
+If you're looking for a range calendar, check out the [Range Calendar](/docs/components/range-calendar) component.
+
+## Date Picker
+
+You can use the `<Calendar />` component to build a date picker. See the [Date Picker](/docs/components/date-picker) page for more information.
+
+## Examples
+
+### Range Calendar
+
+<ComponentPreview framework="svelte" name="calendar-02" />
+
+### Month and Year Selector
+
+<ComponentPreview framework="svelte" name="calendar-13" />
+
+### Date of Birth Picker
+
+<ComponentPreview framework="svelte" name="calendar-22" />
+
+### Date and Time Picker
+
+<ComponentPreview framework="svelte" name="calendar-24" />
+
+### Natural Language Picker
+
+This component uses the `chrono-node` library to parse natural language dates.
+
+<ComponentPreview framework="svelte" name="calendar-29" />
+
+## Upgrade Guide
+
+You can upgrade to the latest version of the `<Calendar />` component by running the following command:
+
+When you're prompted to overwrite the existing files, select `Yes`. **If you have made any changes to the `Calendar` component, you will need to merge your changes with the new version.**
+
+#### Installing Blocks
+
+After upgrading the `Calendar` component, you can add the new blocks with the following:
+
+This will add the latest version of the calendar blocks.

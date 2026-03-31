@@ -38,3 +38,30 @@ npx shadcn@latest add @force-ui-svelte/card
 </TabsContent>
 
 </CodeTabs>
+
+## Usage
+
+```svelte showLineNumbers
+<script lang="ts">
+  import * as Card from "$lib/components/ui/card/index.js";
+</script>
+```
+
+```svelte showLineNumbers
+<Card.Root>
+  <Card.Header>
+    <Card.Title>Card Title</Card.Title>
+    <Card.Description>Card Description</Card.Description>
+  </Card.Header>
+  <Card.Content>
+    <p>Card Content</p>
+  </Card.Content>
+  <Card.Footer>
+    <p>Card Footer</p>
+  </Card.Footer>
+</Card.Root>
+```
+
+## Examples
+
+<ComponentPreview framework="svelte" name="card-demo" />

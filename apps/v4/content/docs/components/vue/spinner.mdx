@@ -38,3 +38,81 @@ npx shadcn@latest add @force-ui-vue/spinner
 </TabsContent>
 
 </CodeTabs>
+
+## Usage
+
+```vue showLineNumbers
+<script setup lang="ts">
+import { Spinner } from '@/components/ui/Spinner'
+</script>
+
+<template>
+  <Spinner />
+</template>
+```
+
+## Customization
+
+You can replace the default spinner icon with any other icon by editing the `Spinner` component.
+
+<ComponentPreview framework="vue" name="spinner-custom-demo" />
+
+## Examples
+
+### Size
+
+Use the `size-*` utility class to change the size of the spinner.
+
+<ComponentPreview framework="vue" name="spinner-size-demo" />
+
+### Color
+
+Use the `text-*` utility class to change the color of the spinner.
+
+<ComponentPreview framework="vue" name="spinner-color-demo" />
+
+### Button
+
+Add a spinner to a button to indicate a loading state. The `<Button />` will handle the spacing between the spinner and the text.
+
+<ComponentPreview framework="vue" name="spinner-button-demo" />
+
+### Badge
+
+You can also use a spinner inside a badge.
+
+<ComponentPreview framework="vue" name="spinner-badge-demo" />
+
+### Input Group
+
+Input Group can have spinners inside `<InputGroupAddon>`.
+
+<ComponentPreview framework="vue" name="spinner-input-group-demo" />
+
+### Empty
+
+You can place a spinner inside an empty state.
+
+<ComponentPreview framework="vue" name="spinner-empty-demo" />
+
+### Item
+
+Use the spinner inside `<ItemMedia>` to indicate a loading state.
+
+<ComponentPreview framework="vue" name="spinner-item-demo" />
+
+## API Reference
+
+### Spinner
+
+Use the `Spinner` component to display a spinner.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `class`     | `string` |         |
+
+```vue
+<template>
+  <Spinner />
+</template>
+```

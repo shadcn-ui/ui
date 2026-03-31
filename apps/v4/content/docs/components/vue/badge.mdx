@@ -38,3 +38,33 @@ npx shadcn@latest add @force-ui-vue/badge
 </TabsContent>
 
 </CodeTabs>
+
+## Usage
+
+```vue showLineNumbers
+<script setup lang="ts">
+import { Badge } from '@/components/ui/badge'
+</script>
+
+<template>
+  <Badge variant="default | outline | secondary | destructive">
+    Badge
+  </Badge>
+</template>
+```
+
+### Link
+
+You can use the `as-child` prop to make another component look like a badge. Here's an example of a link that looks like a badge.
+
+```vue showLineNumbers
+<script setup lang="ts">
+import { Badge } from '@/components/ui/badge'
+</script>
+
+<template>
+  <Badge as-child>
+    <a href="#">Badge</a>
+  </Badge>
+</template>
+```

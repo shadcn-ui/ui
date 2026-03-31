@@ -38,3 +38,18 @@ npx shadcn@latest add @force-ui-svelte/popover
 </TabsContent>
 
 </CodeTabs>
+
+## Usage
+
+```svelte showLineNumbers
+<script lang="ts">
+  import * as Popover from "$lib/components/ui/popover/index.js";
+</script>
+```
+
+```svelte showLineNumbers
+<Popover.Root>
+  <Popover.Trigger>Open</Popover.Trigger>
+  <Popover.Content>Place content for the popover here.</Popover.Content>
+</Popover.Root>
+```

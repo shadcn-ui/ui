@@ -38,3 +38,20 @@ npx shadcn@latest add @force-ui-svelte/alert
 </TabsContent>
 
 </CodeTabs>
+
+## Usage
+
+```svelte showLineNumbers
+<script lang="ts">
+  import * as Alert from "$lib/components/ui/alert/index.js";
+</script>
+```
+
+```svelte showLineNumbers
+<Alert.Root>
+  <Alert.Title>Heads up!</Alert.Title>
+  <Alert.Description>
+    You can add components to your app using the cli.
+  </Alert.Description>
+</Alert.Root>
+```

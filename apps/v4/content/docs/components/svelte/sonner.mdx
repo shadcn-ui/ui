@@ -38,3 +38,55 @@ npx shadcn@latest add @force-ui-svelte/sonner
 </TabsContent>
 
 </CodeTabs>
+
+## About
+
+The Sonner component is provided by [svelte-sonner](https://svelte-sonner.vercel.app/), which is a Svelte port of [Sonner](https://sonner.emilkowal.ski/), originally created by [Emil Kowalski](https://twitter.com/emilkowalski_) for React.
+
+## Usage
+
+```svelte
+<script lang="ts">
+  import { toast } from "svelte-sonner";
+  import { Button } from "$lib/components/ui/button/index.js";
+</script>
+```
+
+```svelte
+<Button onclick={() => toast("Hello world")}>Show toast</Button>
+```
+
+## Examples
+
+<ComponentPreview framework="svelte" name="sonner-types" />
+
+## Changelog
+
+### 2025-12 Icons
+
+We've updated the Sonner component to use icons from `lucide`. Update your `sonner.svelte` file to use the new icons.
+
+```svelte showLineNumbers title="components/ui/sonner.svelte" {2-6,22-36}
+<script lang="ts">
+  import CircleCheckIcon from "@lucide/svelte/icons/circle-check";
+  import InfoIcon from "@lucide/svelte/icons/info";
+  import Loader2Icon from "@lucide/svelte/icons/loader-2";
+  import OctagonXIcon from "@lucide/svelte/icons/octagon-x";
+  import TriangleAlertIcon from "@lucide/svelte/icons/triangle-alert";
+
+  import {
+    Toaster as Sonner,
+    type ToasterProps as SonnerProps,
+  } from "svelte-sonner";
+  import { mode } from "mode-watcher";
+
+  let { ...restProps }: SonnerProps = $props();
+</script>
+
+<Sonner
+  theme={mode.current}
+  class="toaster group"
+  style="--normal-bg: var(--color-popover); --normal-text: var(--color-popover-foreground); --normal-border: var(--color-border);"
+  {...restProps}
+  ></Sonner>
+```

@@ -1,0 +1,90 @@
+---
+title: Stepper
+description: A set of steps that are used to indicate progress through a multi-step process.
+base: vue
+component: true
+---
+
+<ComponentPreview framework="vue" name="stepper-demo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @force-ui-vue/stepper
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource framework="vue" name="stepper" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```vue
+<script setup lang="ts">
+import {
+  Stepper,
+  StepperDescription,
+  StepperIndicator,
+  StepperItem,
+  StepperSeparator,
+  StepperTitle,
+  StepperTrigger,
+} from '@/components/ui/stepper'
+</script>
+
+<template>
+  <Stepper>
+    <StepperItem :step="1">
+      <StepperTrigger>
+        <StepperIndicator>1</StepperIndicator>
+        <StepperTitle>Step 1</StepperTitle>
+        <StepperDescription>This is the first step</StepperDescription>
+      </StepperTrigger>
+      <StepperSeparator />
+    </StepperItem>
+    <StepperItem :step="2">
+      <StepperTrigger>
+        <StepperIndicator>2</StepperIndicator>
+        <StepperTitle>Step 2</StepperTitle>
+        <StepperDescription>This is the second step</StepperDescription>
+      </StepperTrigger>
+    </StepperItem>
+  </Stepper>
+</template>
+```
+
+## Examples
+
+### Horizontal
+
+<ComponentPreview framework="vue" name="stepper-horizental" />
+
+### Vertical
+
+<ComponentPreview framework="vue" name="stepper-vertical" />
+
+### Form
+
+<ComponentPreview framework="vue" name="stepper-form" />

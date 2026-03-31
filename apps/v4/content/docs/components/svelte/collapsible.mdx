@@ -38,3 +38,21 @@ npx shadcn@latest add @force-ui-svelte/collapsible
 </TabsContent>
 
 </CodeTabs>
+
+## Usage
+
+```svelte showLineNumbers
+<script lang="ts">
+  import * as Collapsible from "$lib/components/ui/collapsible/index.js";
+</script>
+```
+
+```svelte showLineNumbers
+<Collapsible.Root>
+  <Collapsible.Trigger>Can I use this in my project?</Collapsible.Trigger>
+  <Collapsible.Content>
+    Yes. Free to use for personal and commercial projects. No attribution
+    required.
+  </Collapsible.Content>
+</Collapsible.Root>
+```

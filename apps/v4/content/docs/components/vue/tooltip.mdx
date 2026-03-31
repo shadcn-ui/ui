@@ -38,3 +38,27 @@ npx shadcn@latest add @force-ui-vue/tooltip
 </TabsContent>
 
 </CodeTabs>
+
+## Usage
+
+```vue showLineNumbers
+<script setup lang="ts">
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip'
+</script>
+
+<template>
+  <TooltipProvider>
+    <Tooltip>
+      <TooltipTrigger>Hover</TooltipTrigger>
+      <TooltipContent>
+        <p>Add to library</p>
+      </TooltipContent>
+    </Tooltip>
+  </TooltipProvider>
+</template>
+```

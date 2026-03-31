@@ -38,3 +38,17 @@ npx shadcn@latest add @force-ui-vue/aspect-ratio
 </TabsContent>
 
 </CodeTabs>
+
+## Usage
+
+```vue showLineNumbers
+<script lang="ts">
+import { AspectRatio } from '@/components/ui/aspect-ratio'
+</script>
+
+<template>
+  <AspectRatio :ratio="16 / 9">
+    <img src="..." alt="Image" class="rounded-md object-cover">
+  </AspectRatio>
+</template>
+```

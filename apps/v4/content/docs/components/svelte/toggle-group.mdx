@@ -38,3 +38,47 @@ npx shadcn@latest add @force-ui-svelte/toggle-group
 </TabsContent>
 
 </CodeTabs>
+
+## Usage
+
+```svelte
+<script lang="ts">
+  import * as ToggleGroup from "$lib/components/ui/toggle-group/index.js";
+</script>
+```
+
+```svelte
+<ToggleGroup.Root type="single">
+  <ToggleGroup.Item value="a">A</ToggleGroup.Item>
+  <ToggleGroup.Item value="b">B</ToggleGroup.Item>
+  <ToggleGroup.Item value="c">C</ToggleGroup.Item>
+</ToggleGroup.Root>
+```
+
+## Examples
+
+### Outline
+
+<ComponentPreview framework="svelte" name="toggle-group-outline" />
+
+### Single
+
+<ComponentPreview framework="svelte" name="toggle-group-single" />
+
+### Small
+
+<ComponentPreview framework="svelte" name="toggle-group-sm" />
+
+### Large
+
+<ComponentPreview framework="svelte" name="toggle-group-lg" />
+
+### Disabled
+
+<ComponentPreview framework="svelte" name="toggle-group-disabled" />
+
+### Spacing
+
+Use `spacing={2}` to add spacing between toggle group items.
+
+<ComponentPreview framework="svelte" name="toggle-group-spacing" />

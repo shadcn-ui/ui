@@ -38,3 +38,24 @@ npx shadcn@latest add @force-ui-vue/hover-card
 </TabsContent>
 
 </CodeTabs>
+
+## Usage
+
+```vue showLineNumbers
+<script setup lang="ts">
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from '@/components/ui/hover-card'
+</script>
+
+<template>
+  <HoverCard>
+    <HoverCardTrigger>Hover</HoverCardTrigger>
+    <HoverCardContent>
+      The Vue Framework – created and maintained by Evan You.
+    </HoverCardContent>
+  </HoverCard>
+</template>
+```
