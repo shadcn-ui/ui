@@ -22,6 +22,7 @@ import { FontPicker } from "@/app/(app)/create/components/font-picker"
 import { IconLibraryPicker } from "@/app/(app)/create/components/icon-library-picker"
 import { MainMenu } from "@/app/(app)/create/components/main-menu"
 import { MenuColorPicker } from "@/app/(app)/create/components/menu-picker"
+import { ProjectForm } from "@/app/(app)/create/components/project-form"
 import { RadiusPicker } from "@/app/(app)/create/components/radius-picker"
 import { RandomButton } from "@/app/(app)/create/components/random-button"
 import { ResetDialog } from "@/app/(app)/create/components/reset-button"
@@ -93,11 +94,14 @@ export function Customizer({
           {isMobile && <BasePicker isMobile={isMobile} anchorRef={anchorRef} />}
         </FieldGroup>
       </CardContent>
-      <CardFooter className="flex min-w-0 gap-2 md:flex-col md:**:[button,a]:w-full">
+      <CardFooter className="flex min-w-0 gap-2 md:flex-col md:rounded-b-none md:**:[button,a]:w-full">
         <CopyPreset className="flex-1 md:flex-none" />
         <RandomButton className="flex-1 md:flex-none" />
         <ActionMenu itemsByBase={itemsByBase} />
         <ResetDialog />
+      </CardFooter>
+      <CardFooter className="-mt-3 hidden min-w-0 gap-2 md:flex md:flex-col md:**:[button,a]:w-full">
+        <ProjectForm />
       </CardFooter>
     </Card>
   )
