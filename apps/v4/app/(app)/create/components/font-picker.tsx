@@ -97,7 +97,7 @@ export function FontPicker({
         <PickerTrigger>
           <div className="flex flex-col justify-start text-left">
             <div className="text-xs text-muted-foreground">{label}</div>
-            <div className="text-sm font-medium text-foreground">
+            <div className="line-clamp-1 max-w-[80%] truncate text-sm font-medium text-foreground">
               {displayFontName}
             </div>
           </div>
