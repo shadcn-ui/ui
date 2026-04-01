@@ -74,7 +74,7 @@ export function DocsSidebar({
   const pathname = usePathname()
   const { framework } = useFramework()
   const isOnComponentPage =
-    /\/docs\/components\/(radix|base|vue|svelte)\//.test(pathname)
+    /\/docs\/components\/(radix|base|vue|svelte|ember)\//.test(pathname)
   const currentBase = isOnComponentPage
     ? getCurrentBase(pathname)
     : getDefaultBaseForFramework(framework)

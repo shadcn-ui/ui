@@ -5,10 +5,10 @@ import * as React from "react"
 const STORAGE_KEY = "framework"
 const DEFAULT_FRAMEWORK = "react"
 
-type Framework = "react" | "vue" | "svelte"
+type Framework = "react" | "vue" | "svelte" | "ember"
 
 function isValidFramework(value: string): value is Framework {
-  return value === "react" || value === "vue" || value === "svelte"
+  return value === "react" || value === "vue" || value === "svelte" || value === "ember"
 }
 
 // Module-level shared store
