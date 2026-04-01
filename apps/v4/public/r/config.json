@@ -179,6 +179,42 @@
       "menuAccent": "subtle",
       "menuColor": "default",
       "radius": "default"
+    },
+    {
+      "name": "radix-luma",
+      "title": "Luma (Radix)",
+      "description": "Luma / Lucide / Inter",
+      "base": "radix",
+      "style": "luma",
+      "baseColor": "neutral",
+      "theme": "neutral",
+      "chartColor": "neutral",
+      "iconLibrary": "lucide",
+      "font": "inter",
+      "fontHeading": "inherit",
+      "item": "Item",
+      "rtl": false,
+      "menuAccent": "subtle",
+      "menuColor": "default",
+      "radius": "default"
+    },
+    {
+      "name": "base-luma",
+      "title": "Luma (Base)",
+      "description": "Luma / Lucide / Inter",
+      "base": "base",
+      "style": "luma",
+      "baseColor": "neutral",
+      "theme": "neutral",
+      "chartColor": "neutral",
+      "iconLibrary": "lucide",
+      "font": "inter",
+      "fontHeading": "inherit",
+      "item": "Item",
+      "rtl": false,
+      "menuAccent": "subtle",
+      "menuColor": "default",
+      "radius": "default"
     }
   ]
 }
