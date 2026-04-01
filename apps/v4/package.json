@@ -21,6 +21,7 @@
     "explore:capture": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/capture-explore.mts",
     "validate:registries": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/validate-registries.mts",
     "test:apps": "bun run ./scripts/build-test-app.mts",
+    "theme:sync": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/sync-theme-css.mts",
     "postinstall": "fumadocs-mdx"
   },
   "dependencies": {
