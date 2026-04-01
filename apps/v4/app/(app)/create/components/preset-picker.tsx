@@ -112,13 +112,6 @@ export function PresetPicker({
                   closeOnClick={isMobile}
                 >
                   <div className="flex items-center gap-2">
-                    {style?.icon && (
-                      <div className="flex size-4 shrink-0 items-center justify-center">
-                        {React.cloneElement(style.icon, {
-                          className: "size-4",
-                        })}
-                      </div>
-                    )}
                     {preset.description}
                   </div>
                 </PickerRadioItem>
