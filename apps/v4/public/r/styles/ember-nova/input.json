@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input",
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/ember-nova/ui/input.gts",
+      "content": "import { cn } from '@/lib/utils';\n\nimport type { TOC } from '@ember/component/template-only';\n\nexport interface InputSignature {\n  Element: HTMLInputElement;\n  Args: {\n    type?: string;\n    class?: string;\n  };\n  Blocks: {\n    default: [];\n  };\n}\n\nconst Input: TOC<InputSignature> = <template>\n  <input\n    class={{cn\n      \"file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input h-9 w-full min-w-0 rounded-md border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm\"\n      \"focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]\"\n      \"aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive\"\n      @class\n    }}\n    data-slot=\"input\"\n    type={{@type}}\n    ...attributes\n  />\n</template>;\n\nexport { Input };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

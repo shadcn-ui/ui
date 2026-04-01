@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "skeleton-card",
+  "title": "Skeleton Card",
+  "dependencies": [],
+  "registryDependencies": [
+    "skeleton"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-vega/examples/skeleton-card.gts",
+      "content": "import { Skeleton } from '@/ui/skeleton';\n\n<template>\n  <div class=\"flex flex-col space-y-3\">\n    <Skeleton @class=\"h-[125px] w-[250px] rounded-xl\" />\n    <div class=\"space-y-2\">\n      <Skeleton @class=\"h-4 w-[250px]\" />\n      <Skeleton @class=\"h-4 w-[200px]\" />\n    </div>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

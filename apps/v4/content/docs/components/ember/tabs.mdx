@@ -1,0 +1,66 @@
+---
+title: Tabs
+description: A set of layered sections of content—known as tab panels—that are displayed one at a time.
+base: ember
+component: true
+---
+
+
+<ComponentPreview framework="ember" name="tabs-demo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @force-ui-ember/tabs
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+pnpm add ember-provide-consume-context
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource framework="ember" name="tabs" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+
+## Usage
+
+```gts showLineNumbers
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/ui/tabs';
+```
+
+```hbs showLineNumbers
+<Tabs @defaultValue="account" @class="w-[400px]">
+  <TabsList>
+    <TabsTrigger @value="account">Account</TabsTrigger>
+    <TabsTrigger @value="password">Password</TabsTrigger>
+  </TabsList>
+  <TabsContent @value="account">Make changes to your account here.</TabsContent>
+  <TabsContent @value="password">Change your password here.</TabsContent>
+</Tabs>
+```

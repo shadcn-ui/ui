@@ -1,0 +1,125 @@
+---
+title: Toggle Group
+description: A set of two-state buttons that can be toggled on or off.
+base: ember
+component: true
+---
+
+
+<ComponentPreview framework="ember" name="toggle-group-spacing" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @force-ui-ember/toggle-group
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+pnpm add ember-provide-consume-context
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource framework="ember" name="toggle-group" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+
+## Usage
+
+```gts showLineNumbers
+import { ToggleGroup, ToggleGroupItem } from '@/ui/toggle-group';
+```
+
+```hbs showLineNumbers
+<ToggleGroup @type="single">
+  <ToggleGroupItem @value="a">A</ToggleGroupItem>
+  <ToggleGroupItem @value="b">B</ToggleGroupItem>
+  <ToggleGroupItem @value="c">C</ToggleGroupItem>
+</ToggleGroup>
+```
+
+## Examples
+
+### Outline
+
+<ComponentPreview framework="ember" name="toggle-group-outline" />
+
+### Single
+
+<ComponentPreview framework="ember" name="toggle-group-single" />
+
+### Small
+
+<ComponentPreview framework="ember" name="toggle-group-sm" />
+
+### Large
+
+<ComponentPreview framework="ember" name="toggle-group-lg" />
+
+### Disabled
+
+<ComponentPreview framework="ember" name="toggle-group-disabled" />
+
+### Spacing
+
+Use `@spacing={{2}}` to add spacing between toggle group items.
+
+<ComponentPreview framework="ember" name="toggle-group-spacing" />
+
+## API Reference
+
+### ToggleGroup
+
+The main component that wraps toggle group items.
+
+| Prop             | Type                                  | Default     |
+| ---------------- | ------------------------------------- | ----------- |
+| `@type`          | `"single" \| "multiple"`              | `"single"`  |
+| `@variant`       | `"default" \| "outline"`              | `"default"` |
+| `@size`          | `"default" \| "sm" \| "lg"`           | `"default"` |
+| `@spacing`       | `number`                              | `0`         |
+| `@class`         | `string`                              |             |
+| `@disabled`      | `boolean`                             | `false`     |
+| `@value`         | `string \| string[]`                  |             |
+| `@onValueChange` | `(value: string \| string[]) => void` |             |
+
+```hbs
+<ToggleGroup @type="single" @variant="outline" @size="sm">
+  <ToggleGroupItem @value="a">A</ToggleGroupItem>
+  <ToggleGroupItem @value="b">B</ToggleGroupItem>
+</ToggleGroup>
+```
+
+### ToggleGroupItem
+
+Individual toggle items within a toggle group. Remember to add an `aria-label` to each item for accessibility.
+
+| Prop        | Type      | Default  |
+| ----------- | --------- | -------- |
+| `@value`    | `string`  | Required |
+| `@class`    | `string`  |          |
+| `@disabled` | `boolean` | `false`  |

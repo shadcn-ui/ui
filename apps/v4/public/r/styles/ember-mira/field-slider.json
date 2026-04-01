@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "field-slider",
+  "title": "Field Slider",
+  "dependencies": [],
+  "registryDependencies": [
+    "field",
+    "slider"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-mira/examples/field-slider.gts",
+      "content": "import Component from '@glimmer/component';\nimport { tracked } from '@glimmer/tracking';\n\nimport { Field, FieldDescription, FieldTitle } from '@/ui/field';\nimport { Slider } from '@/ui/slider';\n\nclass FieldSlider extends Component {\n  @tracked value = [200, 800];\n\n  handleValueChange = (newValue: number[]) => {\n    this.value = newValue;\n  };\n\n  get minValue() {\n    return this.value[0];\n  }\n\n  get maxValue() {\n    return this.value[1] ?? this.value[0];\n  }\n\n  <template>\n    <div class=\"w-full max-w-md\">\n      <Field>\n        <FieldTitle>Price Range</FieldTitle>\n        <FieldDescription>\n          Set your budget range ($<span\n            class=\"font-medium tabular-nums\"\n          >{{this.minValue}}</span>\n          -\n          <span class=\"font-medium tabular-nums\">{{this.maxValue}}</span>).\n        </FieldDescription>\n        <Slider\n          @class=\"mt-2 w-full\"\n          @max={{1000}}\n          @min={{0}}\n          @onValueChange={{this.handleValueChange}}\n          @step={{10}}\n          @value={{this.value}}\n          aria-label=\"Price Range\"\n        />\n      </Field>\n    </div>\n  </template>\n}\n\nexport default FieldSlider;\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

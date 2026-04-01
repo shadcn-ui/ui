@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "typography-table",
+  "title": "Typography Table",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/ember-nova/examples/typography-table.gts",
+      "content": "<template>\n  <div class=\"my-6 w-full overflow-y-auto\">\n    <table class=\"w-full\">\n      <thead>\n        <tr class=\"even:bg-muted m-0 border-t p-0\">\n          <th\n            class=\"border px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right\"\n          >\n            King's Treasury\n          </th>\n          <th\n            class=\"border px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right\"\n          >\n            People's happiness\n          </th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr class=\"even:bg-muted m-0 border-t p-0\">\n          <td\n            class=\"border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right\"\n          >\n            Empty\n          </td>\n          <td\n            class=\"border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right\"\n          >\n            Overflowing\n          </td>\n        </tr>\n        <tr class=\"even:bg-muted m-0 border-t p-0\">\n          <td\n            class=\"border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right\"\n          >\n            Modest\n          </td>\n          <td\n            class=\"border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right\"\n          >\n            Satisfied\n          </td>\n        </tr>\n        <tr class=\"even:bg-muted m-0 border-t p-0\">\n          <td\n            class=\"border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right\"\n          >\n            Full\n          </td>\n          <td\n            class=\"border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right\"\n          >\n            Ecstatic\n          </td>\n        </tr>\n      </tbody>\n    </table>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "label-demo",
+  "title": "Label Demo",
+  "dependencies": [],
+  "registryDependencies": [
+    "checkbox",
+    "label"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-mira/examples/label-demo.gts",
+      "content": "import { Checkbox } from '@/ui/checkbox';\nimport { Label } from '@/ui/label';\n\n<template>\n  <div class=\"flex items-center gap-3\">\n    <Checkbox id=\"terms\" />\n    <Label @for=\"terms\">Accept terms and conditions</Label>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

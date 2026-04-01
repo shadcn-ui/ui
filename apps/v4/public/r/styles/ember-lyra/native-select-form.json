@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "native-select-form",
+  "title": "Native Select Form",
+  "dependencies": [
+    "@ember/modifier"
+  ],
+  "registryDependencies": [
+    "button",
+    "field",
+    "native-select"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-lyra/examples/native-select-form.gts",
+      "content": "import { on } from '@ember/modifier';\nimport Component from '@glimmer/component';\nimport { tracked } from '@glimmer/tracking';\n\nimport { Button } from '@/ui/button';\nimport {\n  Field,\n  FieldContent,\n  FieldError,\n  FieldLabel,\n} from '@/ui/field';\nimport {\n  NativeSelect,\n  NativeSelectOption,\n} from '@/ui/native-select';\n\nexport default class NativeSelectFormDemo extends Component {\n  @tracked selectedRole = '';\n  @tracked errorMessage = '';\n\n  handleSubmit = (event: Event) => {\n    event.preventDefault();\n\n    if (!this.selectedRole) {\n      this.errorMessage = 'Please select a role';\n      return;\n    }\n\n    this.errorMessage = '';\n    alert(`Selected role: ${this.selectedRole}`);\n  };\n\n  handleChange = (event: Event) => {\n    const target = event.target as HTMLSelectElement;\n    this.selectedRole = target.value;\n    if (this.errorMessage) {\n      this.errorMessage = '';\n    }\n  };\n\n  <template>\n    <form {{on \"submit\" this.handleSubmit}} class=\"w-full max-w-sm space-y-4\">\n      <Field @invalid={{if this.errorMessage true false}}>\n        <FieldLabel>Role</FieldLabel>\n        <FieldContent>\n          <NativeSelect\n            aria-invalid={{if this.errorMessage \"true\" \"false\"}}\n            value={{this.selectedRole}}\n            {{on \"change\" this.handleChange}}\n          >\n            <NativeSelectOption value=\"\">Select a role</NativeSelectOption>\n            <NativeSelectOption value=\"admin\">Admin</NativeSelectOption>\n            <NativeSelectOption value=\"editor\">Editor</NativeSelectOption>\n            <NativeSelectOption value=\"viewer\">Viewer</NativeSelectOption>\n            <NativeSelectOption value=\"guest\">Guest</NativeSelectOption>\n          </NativeSelect>\n          {{#if this.errorMessage}}\n            <FieldError>{{this.errorMessage}}</FieldError>\n          {{/if}}\n        </FieldContent>\n      </Field>\n      <Button type=\"submit\">Submit</Button>\n    </form>\n  </template>\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

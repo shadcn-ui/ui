@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "combobox-demo",
+  "title": "Combobox Demo",
+  "dependencies": [
+    "ember-truth-helpers",
+    "@ember/helper"
+  ],
+  "registryDependencies": [
+    "button",
+    "command",
+    "popover"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-vega/examples/combobox-demo.gts",
+      "content": "import { fn } from '@ember/helper';\nimport Component from '@glimmer/component';\nimport { tracked } from '@glimmer/tracking';\nimport { eq } from 'ember-truth-helpers';\n\nimport { Button } from '@/ui/button';\nimport {\n  Command,\n  CommandEmpty,\n  CommandGroup,\n  CommandInput,\n  CommandItem,\n  CommandList,\n} from '@/ui/command';\nimport {\n  Popover,\n  PopoverContent,\n  PopoverTrigger,\n} from '@/ui/popover';\nimport { cn } from '@/lib/utils';\n\nimport CheckIcon from '~icons/lucide/check';\nimport ChevronsUpDownIcon from '~icons/lucide/chevrons-up-down';\n\nconst frameworks = [\n  { value: 'next.js', label: 'Next.js' },\n  { value: 'sveltekit', label: 'SvelteKit' },\n  { value: 'nuxt.js', label: 'Nuxt.js' },\n  { value: 'remix', label: 'Remix' },\n  { value: 'astro', label: 'Astro' },\n  { value: 'ember', label: 'Ember' },\n];\n\nexport default class ComboboxDemo extends Component {\n  @tracked open = false;\n  @tracked value = '';\n\n  get selectedLabel() {\n    const framework = frameworks.find((f) => f.value === this.value);\n    return framework?.label || 'Select framework...';\n  }\n\n  handleSelect = (currentValue: string) => {\n    this.value = currentValue === this.value ? '' : currentValue;\n    this.open = false;\n  };\n\n  <template>\n    <Popover @onOpenChange={{fn (mut this.open)}} @open={{this.open}}>\n      <PopoverTrigger>\n        {{! template-lint-disable require-mandatory-role-attributes }}\n        <Button\n          @class=\"w-[200px] justify-between\"\n          @variant=\"outline\"\n          aria-expanded={{this.open}}\n          role=\"combobox\"\n        >\n          {{this.selectedLabel}}\n          <ChevronsUpDownIcon class=\"opacity-50\" />\n        </Button>\n      </PopoverTrigger>\n      <PopoverContent @class=\"w-[200px] p-0\">\n        <Command>\n          <CommandInput @placeholder=\"Search framework...\" />\n          <CommandList>\n            <CommandEmpty>No framework found.</CommandEmpty>\n            <CommandGroup>\n              {{#each frameworks as |framework|}}\n                <CommandItem\n                  @onSelect={{this.handleSelect}}\n                  @value={{framework.value}}\n                >\n                  {{framework.label}}\n                  <CheckIcon\n                    class={{cn\n                      \"ml-auto size-4\"\n                      (if\n                        (eq this.value framework.value)\n                        \"opacity-100\"\n                        \"opacity-0\"\n                      )\n                    }}\n                  />\n                </CommandItem>\n              {{/each}}\n            </CommandGroup>\n          </CommandList>\n        </Command>\n      </PopoverContent>\n    </Popover>\n  </template>\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,104 @@
+---
+title: Sheet
+description: Extends the Dialog component to display content that complements the main content of the screen.
+base: ember
+component: true
+---
+
+
+<ComponentPreview framework="ember" name="sheet-demo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @force-ui-ember/sheet
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+pnpm add ember-provide-consume-context
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource framework="ember" name="sheet" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+
+## Usage
+
+```gts showLineNumbers
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from '@/ui/sheet';
+```
+
+```hbs showLineNumbers
+<Sheet as |isOpen setOpen|>
+  <SheetTrigger @setOpen={{setOpen}}>Open</SheetTrigger>
+  <SheetContent @isOpen={{isOpen}} @setOpen={{setOpen}}>
+    <SheetHeader>
+      <SheetTitle>Are you absolutely sure?</SheetTitle>
+      <SheetDescription>
+        This action cannot be undone. This will permanently delete your account
+        and remove your data from our servers.
+      </SheetDescription>
+    </SheetHeader>
+  </SheetContent>
+</Sheet>
+```
+
+## Examples
+
+### Side
+
+Use the `@side` argument to `<SheetContent />` to indicate the edge of the screen where the component will appear. The values can be `top`, `right`, `bottom` or `left`.
+
+<ComponentPreview framework="ember" name="sheet-side" />
+
+### Size
+
+You can adjust the size of the sheet using CSS classes:
+
+```hbs showLineNumbers {3}
+<Sheet as |isOpen setOpen|>
+  <SheetTrigger @setOpen={{setOpen}}>Open</SheetTrigger>
+  <SheetContent @isOpen={{isOpen}} @setOpen={{setOpen}} @class="w-[400px] sm:w-[540px]">
+    <SheetHeader>
+      <SheetTitle>Are you absolutely sure?</SheetTitle>
+      <SheetDescription>
+        This action cannot be undone. This will permanently delete your account
+        and remove your data from our servers.
+      </SheetDescription>
+    </SheetHeader>
+  </SheetContent>
+</Sheet>
+```

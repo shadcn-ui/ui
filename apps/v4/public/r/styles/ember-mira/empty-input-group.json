@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "empty-input-group",
+  "title": "Empty Input Group",
+  "dependencies": [],
+  "registryDependencies": [
+    "empty",
+    "input-group",
+    "kbd"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-mira/examples/empty-input-group.gts",
+      "content": "import {\n  Empty,\n  EmptyContent,\n  EmptyDescription,\n  EmptyHeader,\n  EmptyTitle,\n} from '@/ui/empty';\nimport {\n  InputGroup,\n  InputGroupAddon,\n  InputGroupInput,\n} from '@/ui/input-group';\nimport { Kbd } from '@/ui/kbd';\n\nimport Search from '~icons/lucide/search';\n\n<template>\n  <Empty>\n    <EmptyHeader>\n      <EmptyTitle>404 - Not Found</EmptyTitle>\n      <EmptyDescription>\n        The page you're looking for doesn't exist. Try searching for what you\n        need below.\n      </EmptyDescription>\n    </EmptyHeader>\n    <EmptyContent>\n      <InputGroup @class=\"sm:w-3/4\">\n        <InputGroupInput @placeholder=\"Try searching for pages...\" />\n        <InputGroupAddon>\n          <Search />\n        </InputGroupAddon>\n        <InputGroupAddon @align=\"inline-end\">\n          <Kbd>/</Kbd>\n        </InputGroupAddon>\n      </InputGroup>\n      <EmptyDescription>\n        Need help?\n        <a href=\"#\">Contact support</a>\n      </EmptyDescription>\n    </EmptyContent>\n  </Empty>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

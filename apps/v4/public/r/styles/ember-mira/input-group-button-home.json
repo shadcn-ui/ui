@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-group-button-home",
+  "title": "Input Group Button Home",
+  "dependencies": [
+    "@ember/modifier"
+  ],
+  "registryDependencies": [
+    "input-group",
+    "label",
+    "popover"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-mira/examples/input-group-button-home.gts",
+      "content": "import { on } from '@ember/modifier';\nimport Component from '@glimmer/component';\nimport { tracked } from '@glimmer/tracking';\n\nimport {\n  InputGroup,\n  InputGroupAddon,\n  InputGroupButton,\n  InputGroupInput,\n} from '@/ui/input-group';\nimport { Label } from '@/ui/label';\nimport {\n  Popover,\n  PopoverTrigger,\n  PopoverContent,\n} from '@/ui/popover';\n\nimport InfoIcon from '~icons/lucide/info';\nimport StarIcon from '~icons/lucide/star';\n\nexport default class InputGroupButtonHome extends Component {\n  @tracked isFavorite = false;\n\n  toggleFavorite = () => {\n    this.isFavorite = !this.isFavorite;\n  };\n\n  <template>\n    <div class=\"grid w-full max-w-sm gap-6\">\n      <Label @class=\"sr-only\" @for=\"input-secure-19\">\n        Input Secure\n      </Label>\n      <InputGroup @class=\"[--radius:9999px]\">\n        <Popover>\n          <PopoverTrigger @asChild={{true}} as |trigger|>\n            <InputGroupAddon @align=\"inline-start\">\n              <InputGroupButton\n                @size=\"icon-xs\"\n                @variant=\"secondary\"\n                aria-label=\"Info\"\n                {{trigger.modifiers}}\n              >\n                <InfoIcon />\n              </InputGroupButton>\n            </InputGroupAddon>\n          </PopoverTrigger>\n          <PopoverContent\n            @align=\"start\"\n            @class=\"flex flex-col gap-1 rounded-xl text-sm\"\n            @sideOffset={{10}}\n          >\n            <div class=\"font-medium\">Your connection is not secure.</div>\n            <div>You should not enter any sensitive information on this site.</div>\n          </PopoverContent>\n        </Popover>\n        <InputGroupAddon @class=\"text-muted-foreground !pl-1\">\n          https://\n        </InputGroupAddon>\n        <InputGroupInput @class=\"!pl-0.5\" id=\"input-secure-19\" />\n        <InputGroupAddon @align=\"inline-end\">\n          <InputGroupButton\n            {{on \"click\" this.toggleFavorite}}\n            @size=\"icon-xs\"\n            @variant=\"ghost\"\n            aria-label=\"Favorite\"\n          >\n            <StarIcon\n              class=\"data-[favorite=true]:[&_path]:fill-primary data-[favorite=true]:[&_path]:stroke-primary\"\n              data-favorite={{if this.isFavorite \"true\" \"false\"}}\n            />\n          </InputGroupButton>\n        </InputGroupAddon>\n      </InputGroup>\n    </div>\n  </template>\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

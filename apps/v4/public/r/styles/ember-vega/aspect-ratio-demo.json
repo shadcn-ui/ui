@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aspect-ratio-demo",
+  "title": "Aspect Ratio Demo",
+  "dependencies": [],
+  "registryDependencies": [
+    "aspect-ratio"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-vega/examples/aspect-ratio-demo.gts",
+      "content": "import { AspectRatio } from '@/ui/aspect-ratio';\n\nconst ratio = 16 / 9;\n\n<template>\n  <div class=\"w-full max-w-xl\">\n    <AspectRatio @ratio={{ratio}} class=\"bg-muted rounded-lg overflow-hidden\">\n      <img\n        alt=\"Decorative by Drew Beamer\"\n        class=\"h-full w-full rounded-lg object-cover\"\n        src=\"https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80\"\n      />\n    </AspectRatio>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

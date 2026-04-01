@@ -1,0 +1,69 @@
+---
+title: Radio Group
+description: A set of checkable buttons—known as radio buttons—where no more than one of the buttons can be checked at a time.
+base: ember
+component: true
+---
+
+
+<ComponentPreview framework="ember" name="radio-group-demo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @force-ui-ember/radio-group
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+pnpm add ember-provide-consume-context
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource framework="ember" name="radio-group" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+
+## Usage
+
+```gts showLineNumbers
+import { Label } from '@/ui/label';
+import { RadioGroup } from '@/ui/radio-group';
+```
+
+```hbs showLineNumbers
+<RadioGroup @defaultValue="option-one" as |rg|>
+  <div class="flex items-center gap-3">
+    <rg.Item @value="option-one" id="option-one" />
+    <Label @for="option-one">Option One</Label>
+  </div>
+  <div class="flex items-center gap-3">
+    <rg.Item @value="option-two" id="option-two" />
+    <Label @for="option-two">Option Two</Label>
+  </div>
+</RadioGroup>
+```

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "typography-lead",
+  "title": "Typography Lead",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/ember-mira/examples/typography-lead.gts",
+      "content": "<template>\n  <p class=\"text-muted-foreground text-xl\">\n    A modal dialog that interrupts the user with important content and expects a\n    response.\n  </p>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

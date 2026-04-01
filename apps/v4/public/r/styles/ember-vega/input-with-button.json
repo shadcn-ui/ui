@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-with-button",
+  "title": "Input With Button",
+  "dependencies": [],
+  "registryDependencies": [
+    "button",
+    "input"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-vega/examples/input-with-button.gts",
+      "content": "import { Button } from '@/ui/button';\nimport { Input } from '@/ui/input';\n\n<template>\n  <div class=\"flex w-full max-w-sm items-center gap-2\">\n    <Input placeholder=\"Email\" type=\"email\" />\n    <Button @variant=\"outline\" type=\"submit\">Subscribe</Button>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

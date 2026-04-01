@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "combobox-responsive",
+  "title": "Combobox Responsive",
+  "dependencies": [
+    "ember-modifier"
+  ],
+  "registryDependencies": [
+    "button",
+    "command",
+    "popover",
+    "sheet"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-nova/examples/combobox-responsive.gts",
+      "content": "import Component from '@glimmer/component';\nimport { tracked } from '@glimmer/tracking';\nimport { modifier } from 'ember-modifier';\n\nimport { Button } from '@/ui/button';\nimport {\n  Command,\n  CommandEmpty,\n  CommandGroup,\n  CommandInput,\n  CommandItem,\n  CommandList,\n} from '@/ui/command';\nimport {\n  Popover,\n  PopoverContent,\n  PopoverTrigger,\n} from '@/ui/popover';\nimport { Sheet, SheetContent, SheetTrigger } from '@/ui/sheet';\n\ninterface Status {\n  value: string;\n  label: string;\n}\n\nconst statuses: Status[] = [\n  { value: 'backlog', label: 'Backlog' },\n  { value: 'todo', label: 'Todo' },\n  { value: 'in progress', label: 'In Progress' },\n  { value: 'done', label: 'Done' },\n  { value: 'canceled', label: 'Canceled' },\n];\n\nconst mediaQuery = modifier(\n  (\n    _element: HTMLElement,\n    _positional: [],\n    { onChange }: { onChange: (matches: boolean) => void }\n  ) => {\n    const mediaQueryList = window.matchMedia('(min-width: 768px)');\n\n    const handler = (event: MediaQueryListEvent) => {\n      onChange(event.matches);\n    };\n\n    onChange(mediaQueryList.matches);\n\n    mediaQueryList.addEventListener('change', handler);\n\n    return () => {\n      mediaQueryList.removeEventListener('change', handler);\n    };\n  }\n);\n\ninterface StatusListSignature {\n  Args: {\n    setOpen: (open: boolean) => void;\n    setSelectedStatus: (status: Status | null) => void;\n  };\n}\n\nclass StatusList extends Component<StatusListSignature> {\n  handleSelect = (value: string) => {\n    const status = statuses.find((s) => s.value === value) || null;\n    this.args.setSelectedStatus(status);\n    this.args.setOpen(false);\n  };\n\n  <template>\n    <Command>\n      <CommandInput @placeholder=\"Filter status...\" />\n      <CommandList>\n        <CommandEmpty>No results found.</CommandEmpty>\n        <CommandGroup>\n          {{#each statuses as |status|}}\n            <CommandItem\n              @onSelect={{this.handleSelect}}\n              @value={{status.value}}\n            >\n              {{status.label}}\n            </CommandItem>\n          {{/each}}\n        </CommandGroup>\n      </CommandList>\n    </Command>\n  </template>\n}\n\nexport default class ComboboxResponsive extends Component {\n  @tracked open = false;\n  @tracked isDesktop = false;\n  @tracked selectedStatus: Status | null = null;\n\n  get buttonLabel() {\n    return this.selectedStatus ? this.selectedStatus.label : '+ Set status';\n  }\n\n  setOpen = (open: boolean) => {\n    this.open = open;\n  };\n\n  setSelectedStatus = (status: Status | null) => {\n    this.selectedStatus = status;\n  };\n\n  handleMediaQueryChange = (matches: boolean) => {\n    this.isDesktop = matches;\n  };\n\n  <template>\n    <div {{mediaQuery onChange=this.handleMediaQueryChange}}>\n      {{#if this.isDesktop}}\n        <Popover @onOpenChange={{this.setOpen}} @open={{this.open}}>\n          <PopoverTrigger>\n            <Button @class=\"w-[150px] justify-start\" @variant=\"outline\">\n              {{this.buttonLabel}}\n            </Button>\n          </PopoverTrigger>\n          <PopoverContent @align=\"start\" @class=\"w-[200px] p-0\">\n            <StatusList\n              @setOpen={{this.setOpen}}\n              @setSelectedStatus={{this.setSelectedStatus}}\n            />\n          </PopoverContent>\n        </Popover>\n      {{else}}\n        <Sheet @onOpenChange={{this.setOpen}} @open={{this.open}}>\n          <SheetTrigger @asChild={{true}}>\n            <Button @class=\"w-[150px] justify-start\" @variant=\"outline\">\n              {{this.buttonLabel}}\n            </Button>\n          </SheetTrigger>\n          <SheetContent @side=\"bottom\">\n            <div class=\"mt-4 border-t\">\n              <StatusList\n                @setOpen={{this.setOpen}}\n                @setSelectedStatus={{this.setSelectedStatus}}\n              />\n            </div>\n          </SheetContent>\n        </Sheet>\n      {{/if}}\n    </div>\n  </template>\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "popover-demo",
+  "title": "Popover Demo",
+  "dependencies": [],
+  "registryDependencies": [
+    "button",
+    "input",
+    "label",
+    "popover"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-vega/examples/popover-demo.gts",
+      "content": "import { Button } from '@/ui/button';\nimport { Input } from '@/ui/input';\nimport { Label } from '@/ui/label';\nimport {\n  Popover,\n  PopoverTrigger,\n  PopoverContent,\n} from '@/ui/popover';\n\n<template>\n  <Popover>\n    <PopoverTrigger>\n      <Button @variant=\"outline\">Open popover</Button>\n    </PopoverTrigger>\n    <PopoverContent @class=\"w-80\">\n      <div class=\"grid gap-4\">\n        <div class=\"space-y-2\">\n          <h4 class=\"font-medium leading-none\">Dimensions</h4>\n          <p class=\"text-sm text-muted-foreground\">\n            Set the dimensions for the layer.\n          </p>\n        </div>\n        <div class=\"grid gap-2\">\n          <div class=\"grid grid-cols-3 items-center gap-4\">\n            <Label for=\"width\">Width</Label>\n            <Input @class=\"col-span-2 h-8\" id=\"width\" value=\"100%\" />\n          </div>\n          <div class=\"grid grid-cols-3 items-center gap-4\">\n            <Label for=\"maxWidth\">Max. width</Label>\n            <Input @class=\"col-span-2 h-8\" id=\"maxWidth\" value=\"300px\" />\n          </div>\n          <div class=\"grid grid-cols-3 items-center gap-4\">\n            <Label for=\"height\">Height</Label>\n            <Input @class=\"col-span-2 h-8\" id=\"height\" value=\"25px\" />\n          </div>\n          <div class=\"grid grid-cols-3 items-center gap-4\">\n            <Label for=\"maxHeight\">Max. height</Label>\n            <Input @class=\"col-span-2 h-8\" id=\"maxHeight\" value=\"none\" />\n          </div>\n        </div>\n      </div>\n    </PopoverContent>\n  </Popover>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

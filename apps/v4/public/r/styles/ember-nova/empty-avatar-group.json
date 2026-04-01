@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "empty-avatar-group",
+  "title": "Empty Avatar Group",
+  "dependencies": [],
+  "registryDependencies": [
+    "avatar",
+    "button",
+    "empty"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-nova/examples/empty-avatar-group.gts",
+      "content": "import { Avatar, AvatarFallback, AvatarImage } from '@/ui/avatar';\nimport { Button } from '@/ui/button';\nimport {\n  Empty,\n  EmptyContent,\n  EmptyDescription,\n  EmptyHeader,\n  EmptyMedia,\n  EmptyTitle,\n} from '@/ui/empty';\n\nimport Plus from '~icons/lucide/plus';\n\n<template>\n  {{! template-lint-disable no-potential-path-strings }}\n  <Empty @class=\"flex-none border\">\n    <EmptyHeader>\n      <EmptyMedia>\n        <div\n          class=\"*:data-[slot=avatar]:ring-background flex -space-x-2 *:data-[slot=avatar]:size-12 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:grayscale\"\n        >\n          <Avatar>\n            <AvatarImage @alt=\"@shadcn\" @src=\"https://github.com/shadcn.png\" />\n            <AvatarFallback>CN</AvatarFallback>\n          </Avatar>\n          <Avatar>\n            <AvatarImage\n              @alt=\"@maxleiter\"\n              @src=\"https://github.com/maxleiter.png\"\n            />\n            <AvatarFallback>LR</AvatarFallback>\n          </Avatar>\n          <Avatar>\n            <AvatarImage\n              @alt=\"@evilrabbit\"\n              @src=\"https://github.com/evilrabbit.png\"\n            />\n            <AvatarFallback>ER</AvatarFallback>\n          </Avatar>\n        </div>\n      </EmptyMedia>\n      <EmptyTitle>No Team Members</EmptyTitle>\n      <EmptyDescription>\n        Invite your team to collaborate on this project.\n      </EmptyDescription>\n    </EmptyHeader>\n    <EmptyContent>\n      <Button @size=\"sm\">\n        <Plus />\n        Invite Members\n      </Button>\n    </EmptyContent>\n  </Empty>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

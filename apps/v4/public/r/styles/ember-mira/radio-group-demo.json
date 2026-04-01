@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radio-group-demo",
+  "title": "Radio Group Demo",
+  "dependencies": [],
+  "registryDependencies": [
+    "label",
+    "radio-group"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-mira/examples/radio-group-demo.gts",
+      "content": "import { Label } from '@/ui/label';\nimport { RadioGroup, RadioGroupItem } from '@/ui/radio-group';\n\n<template>\n  <RadioGroup @defaultValue=\"comfortable\">\n    <div class=\"flex items-center gap-3\">\n      <RadioGroupItem @value=\"default\" id=\"r1\" />\n      <Label @for=\"r1\">Default</Label>\n    </div>\n    <div class=\"flex items-center gap-3\">\n      <RadioGroupItem @value=\"comfortable\" id=\"r2\" />\n      <Label @for=\"r2\">Comfortable</Label>\n    </div>\n    <div class=\"flex items-center gap-3\">\n      <RadioGroupItem @value=\"compact\" id=\"r3\" />\n      <Label @for=\"r3\">Compact</Label>\n    </div>\n  </RadioGroup>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

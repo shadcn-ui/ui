@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pagination-demo",
+  "title": "Pagination Demo",
+  "dependencies": [],
+  "registryDependencies": [
+    "pagination"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-mira/examples/pagination-demo.gts",
+      "content": "import {\n  Pagination,\n  PaginationContent,\n  PaginationEllipsis,\n  PaginationItem,\n  PaginationLink,\n  PaginationNext,\n  PaginationPrevious,\n} from '@/ui/pagination';\n\n<template>\n  <Pagination>\n    <PaginationContent>\n      <PaginationItem>\n        <PaginationPrevious href=\"#\" />\n      </PaginationItem>\n      <PaginationItem>\n        <PaginationLink href=\"#\">1</PaginationLink>\n      </PaginationItem>\n      <PaginationItem>\n        <PaginationLink @isActive={{true}} href=\"#\">\n          2\n        </PaginationLink>\n      </PaginationItem>\n      <PaginationItem>\n        <PaginationLink href=\"#\">3</PaginationLink>\n      </PaginationItem>\n      <PaginationItem>\n        <PaginationEllipsis />\n      </PaginationItem>\n      <PaginationItem>\n        <PaginationNext href=\"#\" />\n      </PaginationItem>\n    </PaginationContent>\n  </Pagination>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

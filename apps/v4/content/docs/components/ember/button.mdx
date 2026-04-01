@@ -1,0 +1,149 @@
+---
+title: Button
+description: Displays a button or a component that looks like a button.
+featured: true
+base: ember
+component: true
+---
+
+
+<ComponentPreview framework="ember" name="button-demo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @force-ui-ember/button
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource framework="ember" name="button" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+
+## Usage
+
+```gts showLineNumbers
+import { Button } from '@/ui/button';
+```
+
+```hbs showLineNumbers
+<Button @variant="outline">Button</Button>
+<Button @variant="outline" @size="icon" aria-label="Submit">
+  <ArrowUpIcon />
+</Button>
+```
+
+## Cursor
+
+Tailwind v4 switched from `cursor: pointer` to `cursor: default` for the button component.
+
+If you want to keep the `cursor: pointer` behavior, add the following code to your CSS file:
+
+```css showLineNumbers title="app.css"
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+```
+
+## Examples
+
+### Size
+
+<ComponentPreview framework="ember" name="button-size" />
+
+### Default
+
+<ComponentPreview framework="ember" name="button-default" />
+
+### Outline
+
+<ComponentPreview framework="ember" name="button-outline" />
+
+### Secondary
+
+<ComponentPreview framework="ember" name="button-secondary" />
+
+### Ghost
+
+<ComponentPreview framework="ember" name="button-ghost" />
+
+### Destructive
+
+<ComponentPreview framework="ember" name="button-destructive" />
+
+### Link
+
+<ComponentPreview framework="ember" name="button-link" />
+
+### Icon
+
+<ComponentPreview framework="ember" name="button-icon" />
+
+### With Icon
+
+The spacing between the icon and the text is automatically adjusted based on the size of the button. You do not need any margin on the icon.
+
+<ComponentPreview framework="ember" name="button-with-icon" />
+
+### Rounded
+
+Use the `rounded-full` class to make the button rounded.
+
+<ComponentPreview framework="ember" name="button-rounded" />
+
+### Spinner
+
+<ComponentPreview framework="ember" name="button-loading" />
+
+### Button Group
+
+To create a button group, use the `ButtonGroup` component. See the [Button Group](/docs/components/button-group) documentation for more details.
+
+<ComponentPreview framework="ember" name="button-group-demo" />
+
+### Link Component
+
+You can use the `@asChild` argument to make another component look like a button. Here's an example of a link that looks like a button:
+
+<ComponentPreview framework="ember" name="button-as-link" />
+
+## API Reference
+
+### Button
+
+The `Button` component is a wrapper around the `button` element that adds a variety of styles and functionality.
+
+| Prop        | Type                                                                          | Default     |
+| ----------- | ----------------------------------------------------------------------------- | ----------- |
+| `@variant`  | `"default" \| "outline" \| "ghost" \| "destructive" \| "secondary" \| "link"` | `"default"` |
+| `@size`     | `"default" \| "sm" \| "lg" \| "icon" \| "icon-sm" \| "icon-lg"`               | `"default"` |
+| `@asChild`  | `boolean`                                                                     | `false`     |
+| `@disabled` | `boolean`                                                                     | `false`     |
+| `@type`     | `"button" \| "submit" \| "reset"`                                             | `"button"`  |
+| `@class`    | `string`                                                                      | `undefined` |

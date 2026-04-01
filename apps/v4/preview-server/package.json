@@ -9,6 +9,9 @@
     "preview": "vite preview --port 3001"
   },
   "dependencies": {
+    "@floating-ui/dom": "^1.7.6",
+    "@glimmer/component": "^2.0.0",
+    "@glimmer/tracking": "^1.1.2",
     "@internationalized/date": "^3.7.0",
     "@lucide/svelte": "^1.0.0",
     "@tabler/icons-svelte": "^3.0.0",
@@ -24,6 +27,10 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "d3-scale": "^4.0.0",
+    "ember-click-outside": "^6.1.1",
+    "ember-modifier": "^4.3.0",
+    "ember-provide-consume-context": "^0.9.0",
+    "ember-truth-helpers": "^5.0.0",
     "embla-carousel-autoplay": "^8.0.0",
     "embla-carousel-svelte": "^8.0.0",
     "embla-carousel-vue": "^8.0.0",
@@ -39,6 +46,7 @@
     "sveltekit-superforms": "^2.30.1",
     "tailwind-merge": "^3.0.0",
     "tailwind-variants": "^0.3.0",
+    "tracked-built-ins": "^4.1.2",
     "tw-animate-css": "^1.0.0",
     "vaul-svelte": "^0.3.2",
     "vaul-vue": "^0.2.0",

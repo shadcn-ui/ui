@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-otp-demo",
+  "title": "Input Otp Demo",
+  "dependencies": [],
+  "registryDependencies": [
+    "input-otp"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-nova/examples/input-otp-demo.gts",
+      "content": "import {\n  InputOTP,\n  InputOTPGroup,\n  InputOTPSeparator,\n  InputOTPSlot,\n} from '@/ui/input-otp';\n\n<template>\n  <InputOTP @maxLength={{6}}>\n    <InputOTPGroup>\n      <InputOTPSlot @index={{0}} />\n      <InputOTPSlot @index={{1}} />\n      <InputOTPSlot @index={{2}} />\n    </InputOTPGroup>\n    <InputOTPSeparator />\n    <InputOTPGroup>\n      <InputOTPSlot @index={{3}} />\n      <InputOTPSlot @index={{4}} />\n      <InputOTPSlot @index={{5}} />\n    </InputOTPGroup>\n  </InputOTP>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

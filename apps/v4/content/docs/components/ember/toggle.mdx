@@ -1,0 +1,77 @@
+---
+title: Toggle
+description: A two-state button that can be either on or off.
+base: ember
+component: true
+---
+
+
+<ComponentPreview framework="ember" name="toggle-demo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+pnpm dlx shadcn-ember@latest add toggle
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="toggle" title="components/ui/toggle.gts" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```gts
+import { Toggle } from '@/ui/toggle';
+```
+
+```hbs
+<Toggle>Toggle</Toggle>
+```
+
+## Examples
+
+### Default
+
+<ComponentPreview framework="ember" name="toggle-demo" />
+
+### Outline
+
+<ComponentPreview framework="ember" name="toggle-outline" />
+
+### With Text
+
+<ComponentPreview framework="ember" name="toggle-with-text" />
+
+### Small
+
+<ComponentPreview framework="ember" name="toggle-sm" />
+
+### Large
+
+<ComponentPreview framework="ember" name="toggle-lg" />
+
+### Disabled
+
+<ComponentPreview framework="ember" name="toggle-disabled" />

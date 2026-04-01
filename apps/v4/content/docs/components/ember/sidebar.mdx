@@ -1,0 +1,1010 @@
+---
+title: Sidebar
+description: A composable, themeable and customizable sidebar component.
+base: ember
+component: true
+---
+
+
+<ComponentPreview framework="ember" name="sidebar-demo" />
+
+Sidebars are one of the most complex components to build. They are central to any application and often contain a lot of moving parts.
+
+I don't like building sidebars. So I built 30+ of them. All kinds of configurations. Then I extracted the core components into `sidebar.gts`.
+
+We now have a solid foundation to build on top of. Composable. Themeable. Customizable.
+
+## Installation
+
+The sidebar component is already installed. If you need to reinstall it:
+
+```bash
+npx shadcn@latest add sidebar
+```
+
+### CSS Variables
+
+Add the following colors to your CSS file:
+
+```css
+@layer base {
+  :root {
+    --sidebar: oklch(0.985 0 0);
+    --sidebar-foreground: oklch(0.145 0 0);
+    --sidebar-primary: oklch(0.205 0 0);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.97 0 0);
+    --sidebar-accent-foreground: oklch(0.205 0 0);
+    --sidebar-border: oklch(0.922 0 0);
+    --sidebar-ring: oklch(0.708 0 0);
+  }
+
+  .dark {
+    --sidebar: oklch(0.205 0 0);
+    --sidebar-foreground: oklch(0.985 0 0);
+    --sidebar-primary: oklch(0.488 0.243 264.376);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.269 0 0);
+    --sidebar-accent-foreground: oklch(0.985 0 0);
+    --sidebar-border: oklch(1 0 0 / 10%);
+    --sidebar-ring: oklch(0.439 0 0);
+  }
+}
+```
+
+## Structure
+
+A `Sidebar` component is composed of the following parts:
+
+- `SidebarProvider` - Handles collapsible state.
+- `Sidebar` - The sidebar container.
+- `SidebarHeader` and `SidebarFooter` - Sticky at the top and bottom of the sidebar.
+- `SidebarContent` - Scrollable content.
+- `SidebarGroup` - Section within the `SidebarContent`.
+- `SidebarTrigger` - Trigger for the `Sidebar`.
+
+## Usage
+
+```gts
+import {
+  SidebarProvider,
+  SidebarTrigger,
+} from '@/ui/sidebar';
+import { AppSidebar } from '@/components/app-sidebar';
+
+<template>
+  <SidebarProvider>
+    <AppSidebar />
+    <main>
+      <SidebarTrigger />
+      {{yield}}
+    </main>
+  </SidebarProvider>
+</template>
+```
+
+```gts
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarGroup,
+  SidebarHeader,
+} from '@/ui/sidebar';
+
+<template>
+  <Sidebar>
+    <SidebarHeader />
+    <SidebarContent>
+      <SidebarGroup />
+      <SidebarGroup />
+    </SidebarContent>
+    <SidebarFooter />
+  </Sidebar>
+</template>
+```
+
+## Your First Sidebar
+
+Let's start with the most basic sidebar. A collapsible sidebar with a menu.
+
+**Add a `SidebarProvider` and `SidebarTrigger` at the root of your application.**
+
+```gts
+import {
+  SidebarProvider,
+  SidebarTrigger,
+} from '@/ui/sidebar';
+import { AppSidebar } from '@/components/app-sidebar';
+
+<template>
+  <SidebarProvider>
+    <AppSidebar />
+    <main>
+      <SidebarTrigger />
+      {{yield}}
+    </main>
+  </SidebarProvider>
+</template>
+```
+
+**Create a new sidebar component at `app/components/app-sidebar.gts`.**
+
+```gts
+import { Sidebar, SidebarContent } from '@/ui/sidebar';
+
+<template>
+  <Sidebar>
+    <SidebarContent />
+  </Sidebar>
+</template>
+```
+
+**Now, let's add a `SidebarMenu` to the sidebar.**
+
+We'll use the `SidebarMenu` component in a `SidebarGroup`.
+
+```gts
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarGroupLabel,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+} from '@/ui/sidebar';
+
+import Home from '~icons/lucide/home';
+import Inbox from '~icons/lucide/inbox';
+import Calendar from '~icons/lucide/calendar';
+import Search from '~icons/lucide/search';
+import Settings from '~icons/lucide/settings';
+
+const items = [
+  { title: 'Home', url: '#', icon: Home },
+  { title: 'Inbox', url: '#', icon: Inbox },
+  { title: 'Calendar', url: '#', icon: Calendar },
+  { title: 'Search', url: '#', icon: Search },
+  { title: 'Settings', url: '#', icon: Settings },
+];
+
+<template>
+  <Sidebar>
+    <SidebarContent>
+      <SidebarGroup>
+        <SidebarGroupLabel>Application</SidebarGroupLabel>
+        <SidebarGroupContent>
+          <SidebarMenu>
+            {{#each items as |item|}}
+              <SidebarMenuItem>
+                <SidebarMenuButton>
+                  <a href={{item.url}}>
+                    <item.icon />
+                    <span>{{item.title}}</span>
+                  </a>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            {{/each}}
+          </SidebarMenu>
+        </SidebarGroupContent>
+      </SidebarGroup>
+    </SidebarContent>
+  </Sidebar>
+</template>
+```
+
+<ComponentPreview framework="ember" name="sidebar-demo" />
+
+## Components
+
+The components in `sidebar.gts` are built to be composable i.e you build your sidebar by putting the provided components together. They also compose well with other shadcn-ember components such as `DropdownMenu`, `Collapsible` or `Dialog` etc.
+
+**If you need to change the code in `sidebar.gts`, you are encouraged to do so. The code is yours. Use `sidebar.gts` as a starting point and build your own.**
+
+In the next sections, we'll go over each component and how to use them.
+
+## SidebarProvider
+
+The `SidebarProvider` component is used to provide the sidebar context to the `Sidebar` component. You should always wrap your application in a `SidebarProvider` component.
+
+### Arguments
+
+| Name            | Type                      | Description                                  |
+| --------------- | ------------------------- | -------------------------------------------- |
+| `@defaultOpen`  | `boolean`                 | Default open state of the sidebar.           |
+| `@open`         | `boolean`                 | Open state of the sidebar (controlled).      |
+| `@onOpenChange` | `(open: boolean) => void` | Sets open state of the sidebar (controlled). |
+
+### Width
+
+If you have a single sidebar in your application, you can use the `SIDEBAR_WIDTH` and `SIDEBAR_WIDTH_MOBILE` variables in `sidebar.gts` to set the width of the sidebar.
+
+```ts
+const SIDEBAR_WIDTH = '16rem';
+const SIDEBAR_WIDTH_MOBILE = '18rem';
+```
+
+For multiple sidebars in your application, you can use the `@style` argument to set the width of the sidebar.
+
+To set the width of the sidebar, you can use the `--sidebar-width` and `--sidebar-width-mobile` CSS variables in the `@style` argument.
+
+```hbs
+<SidebarProvider
+  @style="--sidebar-width: 20rem; --sidebar-width-mobile: 20rem"
+>
+  <Sidebar />
+</SidebarProvider>
+```
+
+This will handle the width of the sidebar but also the layout spacing.
+
+### Keyboard Shortcut
+
+The `SIDEBAR_KEYBOARD_SHORTCUT` variable is used to set the keyboard shortcut used to open and close the sidebar.
+
+To trigger the sidebar, you use the `cmd+b` keyboard shortcut on Mac and `ctrl+b` on Windows.
+
+You can change the keyboard shortcut by updating the `SIDEBAR_KEYBOARD_SHORTCUT` variable.
+
+```ts
+const SIDEBAR_KEYBOARD_SHORTCUT = 'b';
+```
+
+### Persisted State
+
+The `SidebarProvider` supports persisting the sidebar state across page reloads. It uses cookies to store the current state of the sidebar. When the sidebar state changes, a default cookie named `sidebar_state` is set with the current open/closed state. This cookie is then read on subsequent page loads to restore the sidebar state.
+
+You can change the name of the cookie by updating the `SIDEBAR_COOKIE_NAME` variable in `sidebar.gts`.
+
+```ts
+const SIDEBAR_COOKIE_NAME = 'sidebar_state';
+```
+
+## Sidebar
+
+The main `Sidebar` component used to render a collapsible sidebar.
+
+```gts
+import { Sidebar } from '@/ui/sidebar';
+
+<template>
+  <Sidebar />
+</template>
+```
+
+### Arguments
+
+| Property       | Type                              | Description                       |
+| -------------- | --------------------------------- | --------------------------------- |
+| `@side`        | `left` or `right`                 | The side of the sidebar.          |
+| `@variant`     | `sidebar`, `floating`, or `inset` | The variant of the sidebar.       |
+| `@collapsible` | `offcanvas`, `icon`, or `none`    | Collapsible state of the sidebar. |
+
+### side
+
+Use the `@side` argument to change the side of the sidebar.
+
+Available options are `left` and `right`.
+
+```hbs
+<Sidebar @side="left" />
+<Sidebar @side="right" />
+```
+
+### variant
+
+Use the `@variant` argument to change the variant of the sidebar.
+
+Available options are `sidebar`, `floating` and `inset`.
+
+```hbs
+<Sidebar @variant="sidebar" />
+<Sidebar @variant="floating" />
+<Sidebar @variant="inset" />
+```
+
+<Callout>
+  **Note:** If you use the `inset` variant, remember to wrap your main content in a `SidebarInset` component.
+</Callout>
+
+```hbs
+<SidebarProvider>
+  <Sidebar @variant="inset" />
+  <SidebarInset>
+    <main>{{yield}}</main>
+  </SidebarInset>
+</SidebarProvider>
+```
+
+### collapsible
+
+Use the `@collapsible` argument to make the sidebar collapsible.
+
+Available options are `offcanvas`, `icon` and `none`.
+
+```hbs
+<Sidebar @collapsible="offcanvas" />
+<Sidebar @collapsible="icon" />
+<Sidebar @collapsible="none" />
+```
+
+| Prop        | Description                                                  |
+| ----------- | ------------------------------------------------------------ |
+| `offcanvas` | A collapsible sidebar that slides in from the left or right. |
+| `icon`      | A sidebar that collapses to icons.                           |
+| `none`      | A non-collapsible sidebar.                                   |
+
+## useSidebar
+
+The `useSidebar` hook is used to control the sidebar. Since this is Ember, you need to use the context via `ember-provide-consume-context`:
+
+```gts
+import { consume } from 'ember-provide-consume-context';
+
+const SidebarContext = 'sidebar-context';
+
+class MyComponent extends Component {
+  @consume(SidebarContext) sidebar;
+
+  handleToggle = () => {
+    this.sidebar.toggleSidebar();
+  };
+}
+```
+
+| Property        | Type                      | Description                                   |
+| --------------- | ------------------------- | --------------------------------------------- |
+| `state`         | `expanded` or `collapsed` | The current state of the sidebar.             |
+| `open`          | `boolean`                 | Whether the sidebar is open.                  |
+| `setOpen`       | `(open: boolean) => void` | Sets the open state of the sidebar.           |
+| `openMobile`    | `boolean`                 | Whether the sidebar is open on mobile.        |
+| `setOpenMobile` | `(open: boolean) => void` | Sets the open state of the sidebar on mobile. |
+| `isMobile`      | `boolean`                 | Whether the sidebar is on mobile.             |
+| `toggleSidebar` | `() => void`              | Toggles the sidebar. Desktop and mobile.      |
+
+## SidebarHeader
+
+Use the `SidebarHeader` component to add a sticky header to the sidebar.
+
+The following example adds a `DropdownMenu` to the `SidebarHeader`.
+
+<ComponentPreview framework="ember" name="sidebar-header" />
+
+```gts
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/ui/dropdown-menu';
+import {
+  Sidebar,
+  SidebarHeader,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+} from '@/ui/sidebar';
+
+import ChevronDown from '~icons/lucide/chevron-down';
+
+<template>
+  <Sidebar>
+    <SidebarHeader>
+      <SidebarMenu>
+        <SidebarMenuItem>
+          <DropdownMenu>
+            <DropdownMenuTrigger>
+              <SidebarMenuButton>
+                Select Workspace
+                <ChevronDown class="ml-auto" />
+              </SidebarMenuButton>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent class="w-[--radix-popper-anchor-width]">
+              <DropdownMenuItem>
+                <span>Acme Inc</span>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <span>Acme Corp.</span>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </SidebarMenuItem>
+      </SidebarMenu>
+    </SidebarHeader>
+  </Sidebar>
+</template>
+```
+
+## SidebarFooter
+
+Use the `SidebarFooter` component to add a sticky footer to the sidebar.
+
+The following example adds a `DropdownMenu` to the `SidebarFooter`.
+
+<ComponentPreview framework="ember" name="sidebar-footer" />
+
+```gts
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/ui/dropdown-menu';
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarHeader,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+} from '@/ui/sidebar';
+
+import ChevronUp from '~icons/lucide/chevron-up';
+import User2 from '~icons/lucide/user-2';
+
+<template>
+  <Sidebar>
+    <SidebarHeader />
+    <SidebarContent />
+    <SidebarFooter>
+      <SidebarMenu>
+        <SidebarMenuItem>
+          <DropdownMenu>
+            <DropdownMenuTrigger>
+              <SidebarMenuButton>
+                <User2 /> Username
+                <ChevronUp class="ml-auto" />
+              </SidebarMenuButton>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent
+              @side="top"
+              class="w-[--radix-popper-anchor-width]"
+            >
+              <DropdownMenuItem>
+                <span>Account</span>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <span>Billing</span>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <span>Sign out</span>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </SidebarMenuItem>
+      </SidebarMenu>
+    </SidebarFooter>
+  </Sidebar>
+</template>
+```
+
+## SidebarContent
+
+The `SidebarContent` component is used to wrap the content of the sidebar. This is where you add your `SidebarGroup` components. It is scrollable.
+
+```gts
+import { Sidebar, SidebarContent, SidebarGroup } from '@/ui/sidebar';
+
+<template>
+  <Sidebar>
+    <SidebarContent>
+      <SidebarGroup />
+      <SidebarGroup />
+    </SidebarContent>
+  </Sidebar>
+</template>
+```
+
+## SidebarGroup
+
+Use the `SidebarGroup` component to create a section within the sidebar.
+
+A `SidebarGroup` has a `SidebarGroupLabel`, a `SidebarGroupContent` and an optional `SidebarGroupAction`.
+
+<ComponentPreview framework="ember" name="sidebar-group" />
+
+```gts
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarGroup,
+  SidebarGroupAction,
+  SidebarGroupContent,
+  SidebarGroupLabel,
+} from '@/ui/sidebar';
+
+import Plus from '~icons/lucide/plus';
+
+<template>
+  <Sidebar>
+    <SidebarContent>
+      <SidebarGroup>
+        <SidebarGroupLabel>Application</SidebarGroupLabel>
+        <SidebarGroupAction title="Add Project">
+          <Plus />
+          <span class="sr-only">Add Project</span>
+        </SidebarGroupAction>
+        <SidebarGroupContent />
+      </SidebarGroup>
+    </SidebarContent>
+  </Sidebar>
+</template>
+```
+
+## Collapsible SidebarGroup
+
+To make a `SidebarGroup` collapsible, wrap it in a `Collapsible`.
+
+<ComponentPreview framework="ember" name="sidebar-group-collapsible" />
+
+```gts
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from '@/ui/collapsible';
+import {
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarGroupLabel,
+} from '@/ui/sidebar';
+
+import ChevronDown from '~icons/lucide/chevron-down';
+
+<template>
+  <Collapsible @defaultOpen={{true}} class="group/collapsible">
+    <SidebarGroup>
+      <SidebarGroupLabel @asChild={{true}}>
+        <CollapsibleTrigger>
+          Help
+          <ChevronDown
+            class="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180"
+          />
+        </CollapsibleTrigger>
+      </SidebarGroupLabel>
+      <CollapsibleContent>
+        <SidebarGroupContent />
+      </CollapsibleContent>
+    </SidebarGroup>
+  </Collapsible>
+</template>
+```
+
+<Callout>
+  **Note:** We wrap the `CollapsibleTrigger` in a `SidebarGroupLabel` to render a button.
+</Callout>
+
+## SidebarGroupAction
+
+Use the `SidebarGroupAction` component to add an action button to the `SidebarGroup`.
+
+<ComponentPreview framework="ember" name="sidebar-group-action" />
+
+```gts
+import {
+  SidebarGroup,
+  SidebarGroupAction,
+  SidebarGroupContent,
+  SidebarGroupLabel,
+} from '@/ui/sidebar';
+
+import Plus from '~icons/lucide/plus';
+
+<template>
+  <SidebarGroup>
+    <SidebarGroupLabel>Projects</SidebarGroupLabel>
+    <SidebarGroupAction title="Add Project">
+      <Plus />
+      <span class="sr-only">Add Project</span>
+    </SidebarGroupAction>
+    <SidebarGroupContent />
+  </SidebarGroup>
+</template>
+```
+
+## SidebarMenu
+
+The `SidebarMenu` component is used for building a menu within a `SidebarGroup`.
+
+A `SidebarMenu` component is composed of `SidebarMenuItem`, `SidebarMenuButton`, `SidebarMenuAction` and `SidebarMenuSub` components.
+
+Here's an example of a `SidebarMenu` component rendering a list of projects.
+
+<ComponentPreview framework="ember" name="sidebar-menu" />
+
+```gts
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarGroupLabel,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+} from '@/ui/sidebar';
+
+const projects = [
+  { name: 'Design Engineering', url: '#', icon: Frame },
+  { name: 'Sales & Marketing', url: '#', icon: PieChart },
+  { name: 'Travel', url: '#', icon: Map },
+];
+
+<template>
+  <Sidebar>
+    <SidebarContent>
+      <SidebarGroup>
+        <SidebarGroupLabel>Projects</SidebarGroupLabel>
+        <SidebarGroupContent>
+          <SidebarMenu>
+            {{#each projects as |project|}}
+              <SidebarMenuItem>
+                <SidebarMenuButton>
+                  <a href={{project.url}}>
+                    <project.icon />
+                    <span>{{project.name}}</span>
+                  </a>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            {{/each}}
+          </SidebarMenu>
+        </SidebarGroupContent>
+      </SidebarGroup>
+    </SidebarContent>
+  </Sidebar>
+</template>
+```
+
+## SidebarMenuButton
+
+The `SidebarMenuButton` component is used to render a menu button within a `SidebarMenuItem`.
+
+### Link or Anchor
+
+By default, the `SidebarMenuButton` renders a button but you should yield to it to render a different element such as a `LinkTo` or an `a` tag.
+
+```hbs
+<SidebarMenuButton>
+  <a href="#">Home</a>
+</SidebarMenuButton>
+```
+
+### Icon and Label
+
+You can render an icon and a truncated label inside the button. Remember to wrap the label in a `<span>`.
+
+```hbs
+<SidebarMenuButton>
+  <a href="#">
+    <Home />
+    <span>Home</span>
+  </a>
+</SidebarMenuButton>
+```
+
+### isActive
+
+Use the `@isActive` argument to mark a menu item as active.
+
+```hbs
+<SidebarMenuButton @isActive={{true}}>
+  <a href="#">Home</a>
+</SidebarMenuButton>
+```
+
+## SidebarMenuAction
+
+The `SidebarMenuAction` component is used to render a menu action within a `SidebarMenuItem`.
+
+This button works independently of the `SidebarMenuButton` i.e you can have the `SidebarMenuButton` as a clickable link and the `SidebarMenuAction` as a button.
+
+```gts
+import { SidebarMenuAction, SidebarMenuButton, SidebarMenuItem } from '@/ui/sidebar';
+
+import Home from '~icons/lucide/home';
+import Plus from '~icons/lucide/plus';
+
+<template>
+  <SidebarMenuItem>
+    <SidebarMenuButton>
+      <a href="#">
+        <Home />
+        <span>Home</span>
+      </a>
+    </SidebarMenuButton>
+    <SidebarMenuAction>
+      <Plus /> <span class="sr-only">Add Project</span>
+    </SidebarMenuAction>
+  </SidebarMenuItem>
+</template>
+```
+
+### DropdownMenu
+
+Here's an example of a `SidebarMenuAction` component rendering a `DropdownMenu`.
+
+<ComponentPreview framework="ember" name="sidebar-menu-action" />
+
+```gts
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/ui/dropdown-menu';
+import {
+  SidebarMenuAction,
+  SidebarMenuButton,
+  SidebarMenuItem,
+} from '@/ui/sidebar';
+
+import Home from '~icons/lucide/home';
+import MoreHorizontal from '~icons/lucide/more-horizontal';
+
+<template>
+  <SidebarMenuItem>
+    <SidebarMenuButton>
+      <a href="#">
+        <Home />
+        <span>Home</span>
+      </a>
+    </SidebarMenuButton>
+    <DropdownMenu>
+      <DropdownMenuTrigger>
+        <SidebarMenuAction>
+          <MoreHorizontal />
+        </SidebarMenuAction>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent @side="right" @align="start">
+        <DropdownMenuItem>
+          <span>Edit Project</span>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <span>Delete Project</span>
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  </SidebarMenuItem>
+</template>
+```
+
+## SidebarMenuSub
+
+The `SidebarMenuSub` component is used to render a submenu within a `SidebarMenu`.
+
+Use `SidebarMenuSubItem` and `SidebarMenuSubButton` to render a submenu item.
+
+<ComponentPreview framework="ember" name="sidebar-menu-sub" />
+
+```hbs
+<SidebarMenuItem>
+  <SidebarMenuButton />
+  <SidebarMenuSub>
+    <SidebarMenuSubItem>
+      <SidebarMenuSubButton />
+    </SidebarMenuSubItem>
+    <SidebarMenuSubItem>
+      <SidebarMenuSubButton />
+    </SidebarMenuSubItem>
+  </SidebarMenuSub>
+</SidebarMenuItem>
+```
+
+## Collapsible SidebarMenu
+
+To make a `SidebarMenu` component collapsible, wrap it and the `SidebarMenuSub` components in a `Collapsible`.
+
+<ComponentPreview framework="ember" name="sidebar-menu-collapsible" />
+
+```gts
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/ui/collapsible';
+import {
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarMenuSub,
+  SidebarMenuSubItem,
+} from '@/ui/sidebar';
+
+<template>
+  <SidebarMenu>
+    <Collapsible @defaultOpen={{true}} class="group/collapsible">
+      <SidebarMenuItem>
+        <CollapsibleTrigger>
+          <SidebarMenuButton />
+        </CollapsibleTrigger>
+        <CollapsibleContent>
+          <SidebarMenuSub>
+            <SidebarMenuSubItem />
+          </SidebarMenuSub>
+        </CollapsibleContent>
+      </SidebarMenuItem>
+    </Collapsible>
+  </SidebarMenu>
+</template>
+```
+
+## SidebarMenuBadge
+
+The `SidebarMenuBadge` component is used to render a badge within a `SidebarMenuItem`.
+
+<ComponentPreview framework="ember" name="sidebar-menu-badge" />
+
+```hbs
+<SidebarMenuItem>
+  <SidebarMenuButton />
+  <SidebarMenuBadge>24</SidebarMenuBadge>
+</SidebarMenuItem>
+```
+
+## SidebarMenuSkeleton
+
+The `SidebarMenuSkeleton` component is used to render a skeleton for a `SidebarMenu`. You can use this to show a loading state.
+
+```gts
+import {
+  SidebarMenu,
+  SidebarMenuItem,
+  SidebarMenuSkeleton,
+} from '@/ui/sidebar';
+
+<template>
+  <SidebarMenu>
+    {{#each (array 1 2 3 4 5) as |_|}}
+      <SidebarMenuItem>
+        <SidebarMenuSkeleton />
+      </SidebarMenuItem>
+    {{/each}}
+  </SidebarMenu>
+</template>
+```
+
+## SidebarSeparator
+
+The `SidebarSeparator` component is used to render a separator within a `Sidebar`.
+
+```hbs
+<Sidebar>
+  <SidebarHeader />
+  <SidebarSeparator />
+  <SidebarContent>
+    <SidebarGroup />
+    <SidebarSeparator />
+    <SidebarGroup />
+  </SidebarContent>
+</Sidebar>
+```
+
+## SidebarTrigger
+
+Use the `SidebarTrigger` component to render a button that toggles the sidebar.
+
+The `SidebarTrigger` component must be used within a `SidebarProvider`.
+
+```hbs
+<SidebarProvider>
+  <Sidebar />
+  <main>
+    <SidebarTrigger />
+  </main>
+</SidebarProvider>
+```
+
+### Custom Trigger
+
+To create a custom trigger, you can use the sidebar context.
+
+```gts
+import { consume } from 'ember-provide-consume-context';
+
+const SidebarContext = 'sidebar-context';
+
+class CustomTrigger extends Component {
+  @consume(SidebarContext) sidebar;
+
+  <template>
+    <button {{on "click" this.sidebar.toggleSidebar}}>
+      Toggle Sidebar
+    </button>
+  </template>
+}
+```
+
+## SidebarRail
+
+The `SidebarRail` component is used to render a rail within a `Sidebar`. This rail can be used to toggle the sidebar.
+
+```hbs
+<Sidebar>
+  <SidebarHeader />
+  <SidebarContent>
+    <SidebarGroup />
+  </SidebarContent>
+  <SidebarFooter />
+  <SidebarRail />
+</Sidebar>
+```
+
+## Controlled Sidebar
+
+Use the `@open` and `@onOpenChange` arguments to control the sidebar.
+
+<ComponentPreview framework="ember" name="sidebar-controlled" />
+
+```gts
+import { tracked } from '@glimmer/tracking';
+import Component from '@glimmer/component';
+import { Sidebar, SidebarProvider } from '@/ui/sidebar';
+
+export default class extends Component {
+  @tracked open = false;
+
+  setOpen = (value) => {
+    this.open = value;
+  };
+
+  <template>
+    <SidebarProvider @open={{this.open}} @onOpenChange={{this.setOpen}}>
+      <Sidebar />
+    </SidebarProvider>
+  </template>
+}
+```
+
+## Theming
+
+We use the following CSS variables to theme the sidebar.
+
+```css
+@layer base {
+  :root {
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 0 0% 98%;
+    --sidebar-primary-foreground: 240 5.9% 10%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+```
+
+**We intentionally use different variables for the sidebar and the rest of the application** to make it easy to have a sidebar that is styled differently from the rest of the application. Think a sidebar with a darker shade from the main application.
+
+## Styling
+
+Here are some tips for styling the sidebar based on different states.
+
+- **Styling an element based on the sidebar collapsible state.** The following will hide the `SidebarGroup` when the sidebar is in `icon` mode.
+
+```hbs
+<Sidebar @collapsible="icon">
+  <SidebarContent>
+    <SidebarGroup class="group-data-[collapsible=icon]:hidden" />
+  </SidebarContent>
+</Sidebar>
+```
+
+- **Styling a menu action based on the menu button active state.** The following will force the menu action to be visible when the menu button is active.
+
+```hbs
+<SidebarMenuItem>
+  <SidebarMenuButton />
+  <SidebarMenuAction class="peer-data-[active=true]/menu-button:opacity-100" />
+</SidebarMenuItem>
+```

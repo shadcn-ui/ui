@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sidebar-menu-sub",
+  "title": "Sidebar Menu Sub",
+  "dependencies": [],
+  "registryDependencies": [
+    "sidebar"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-maia/examples/sidebar-menu-sub.gts",
+      "content": "import {\n  Sidebar,\n  SidebarContent,\n  SidebarGroup,\n  SidebarGroupContent,\n  SidebarGroupLabel,\n  SidebarMenu,\n  SidebarMenuButton,\n  SidebarMenuItem,\n  SidebarMenuSub,\n  SidebarMenuSubButton,\n  SidebarMenuSubItem,\n  SidebarProvider,\n  SidebarTrigger,\n} from '@/ui/sidebar';\n\nimport Folder from '~icons/lucide/folder';\nimport Forward from '~icons/lucide/forward';\nimport Trash2 from '~icons/lucide/trash-2';\n\n<template>\n  <SidebarProvider class=\"!min-h-full h-full\">\n    <Sidebar>\n      <SidebarContent>\n        <SidebarGroup>\n          <SidebarGroupLabel>Platform</SidebarGroupLabel>\n          <SidebarGroupContent>\n            <SidebarMenu>\n              <SidebarMenuItem>\n                <SidebarMenuButton>\n                  <Folder />\n                  <span>Projects</span>\n                </SidebarMenuButton>\n                <SidebarMenuSub>\n                  <SidebarMenuSubItem>\n                    <SidebarMenuSubButton @href=\"#\">\n                      <span>Design</span>\n                    </SidebarMenuSubButton>\n                  </SidebarMenuSubItem>\n                  <SidebarMenuSubItem>\n                    <SidebarMenuSubButton @href=\"#\">\n                      <span>Development</span>\n                    </SidebarMenuSubButton>\n                  </SidebarMenuSubItem>\n                  <SidebarMenuSubItem>\n                    <SidebarMenuSubButton @href=\"#\">\n                      <span>Marketing</span>\n                    </SidebarMenuSubButton>\n                  </SidebarMenuSubItem>\n                </SidebarMenuSub>\n              </SidebarMenuItem>\n              <SidebarMenuItem>\n                <SidebarMenuButton>\n                  <Forward />\n                  <span>Inbox</span>\n                </SidebarMenuButton>\n              </SidebarMenuItem>\n              <SidebarMenuItem>\n                <SidebarMenuButton>\n                  <Trash2 />\n                  <span>Trash</span>\n                </SidebarMenuButton>\n              </SidebarMenuItem>\n            </SidebarMenu>\n          </SidebarGroupContent>\n        </SidebarGroup>\n      </SidebarContent>\n    </Sidebar>\n    <main class=\"flex h-full flex-1 flex-col\">\n      <div class=\"flex items-center gap-2 border-b p-4\">\n        <SidebarTrigger />\n      </div>\n    </main>\n  </SidebarProvider>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

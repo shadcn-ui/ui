@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "combobox-popover",
+  "title": "Combobox Popover",
+  "dependencies": [
+    "@ember/helper"
+  ],
+  "registryDependencies": [
+    "button",
+    "command",
+    "popover"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-vega/examples/combobox-popover.gts",
+      "content": "import { fn } from '@ember/helper';\nimport Component from '@glimmer/component';\nimport { tracked } from '@glimmer/tracking';\n\nimport { Button } from '@/ui/button';\nimport {\n  Command,\n  CommandEmpty,\n  CommandGroup,\n  CommandInput,\n  CommandItem,\n  CommandList,\n} from '@/ui/command';\nimport {\n  Popover,\n  PopoverContent,\n  PopoverTrigger,\n} from '@/ui/popover';\n\ninterface Status {\n  value: string;\n  label: string;\n}\n\nconst statuses: Status[] = [\n  { value: 'backlog', label: 'Backlog' },\n  { value: 'todo', label: 'Todo' },\n  { value: 'in progress', label: 'In Progress' },\n  { value: 'done', label: 'Done' },\n  { value: 'canceled', label: 'Canceled' },\n];\n\nexport default class ComboboxPopover extends Component {\n  @tracked open = false;\n  @tracked selectedStatus: Status | null = null;\n\n  handleSelect = (value: string) => {\n    this.selectedStatus =\n      statuses.find((status) => status.value === value) || null;\n    this.open = false;\n  };\n\n  <template>\n    <div class=\"flex items-center space-x-4\">\n      <p class=\"text-muted-foreground text-sm\">Status</p>\n      <Popover @onOpenChange={{fn (mut this.open)}} @open={{this.open}}>\n        <PopoverTrigger>\n          <Button @class=\"w-[150px] justify-start\" @variant=\"outline\">\n            {{#if this.selectedStatus}}\n              {{this.selectedStatus.label}}\n            {{else}}\n              + Set status\n            {{/if}}\n          </Button>\n        </PopoverTrigger>\n        <PopoverContent @align=\"start\" @class=\"p-0\" @side=\"right\">\n          <Command>\n            <CommandInput @placeholder=\"Change status...\" />\n            <CommandList>\n              <CommandEmpty>No results found.</CommandEmpty>\n              <CommandGroup>\n                {{#each statuses as |status|}}\n                  <CommandItem\n                    @onSelect={{this.handleSelect}}\n                    @value={{status.value}}\n                  >\n                    {{status.label}}\n                  </CommandItem>\n                {{/each}}\n              </CommandGroup>\n            </CommandList>\n          </Command>\n        </PopoverContent>\n      </Popover>\n    </div>\n  </template>\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

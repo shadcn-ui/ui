@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "native-select",
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/ember-nova/ui/native-select.gts",
+      "content": "import { cn } from '@/lib/utils';\n\nimport type { TOC } from '@ember/component/template-only';\n\nimport ChevronDown from '~icons/lucide/chevron-down';\n\ninterface NativeSelectSignature {\n  Element: HTMLSelectElement;\n  Args: {\n    class?: string;\n    size?: 'sm' | 'default';\n  };\n  Blocks: {\n    default: [];\n  };\n}\n\nconst NativeSelect: TOC<NativeSelectSignature> = <template>\n  <div\n    class=\"group/native-select relative w-fit has-[select:disabled]:opacity-50\"\n    data-slot=\"native-select-wrapper\"\n  >\n    <select\n      class={{cn\n        \"border-input placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 dark:hover:bg-input/50 h-9 w-full min-w-0 appearance-none rounded-md border bg-transparent px-3 py-2 pr-9 text-sm shadow-xs transition-[color,box-shadow] outline-none disabled:pointer-events-none disabled:cursor-not-allowed data-[size=sm]:h-8 data-[size=sm]:py-1\"\n        \"focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]\"\n        \"aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive\"\n        @class\n      }}\n      data-size={{if @size @size \"default\"}}\n      data-slot=\"native-select\"\n      ...attributes\n    >\n      {{yield}}\n    </select>\n    <ChevronDown\n      aria-hidden=\"true\"\n      class=\"text-muted-foreground pointer-events-none absolute top-1/2 right-3.5 size-4 -translate-y-1/2 opacity-50 select-none\"\n      data-slot=\"native-select-icon\"\n    />\n  </div>\n</template>;\n\ninterface NativeSelectOptionSignature {\n  Element: HTMLOptionElement;\n  Args: Record<string, never>;\n  Blocks: {\n    default: [];\n  };\n}\n\nconst NativeSelectOption: TOC<NativeSelectOptionSignature> = <template>\n  <option data-slot=\"native-select-option\" ...attributes>\n    {{yield}}\n  </option>\n</template>;\n\ninterface NativeSelectOptGroupSignature {\n  Element: HTMLOptGroupElement;\n  Args: {\n    class?: string;\n  };\n  Blocks: {\n    default: [];\n  };\n}\n\nconst NativeSelectOptGroup: TOC<NativeSelectOptGroupSignature> = <template>\n  <optgroup\n    class={{cn @class}}\n    data-slot=\"native-select-optgroup\"\n    ...attributes\n  >\n    {{yield}}\n  </optgroup>\n</template>;\n\nexport { NativeSelect, NativeSelectOption, NativeSelectOptGroup };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

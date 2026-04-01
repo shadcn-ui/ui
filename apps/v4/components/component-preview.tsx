@@ -25,7 +25,7 @@ export function ComponentPreview({
 }: React.ComponentProps<"div"> & {
   name: string
   styleName?: string
-  framework?: "vue" | "svelte"
+  framework?: "vue" | "svelte" | "ember"
   align?: "center" | "start" | "end"
   description?: string
   hideCode?: boolean
@@ -74,7 +74,7 @@ export function ComponentPreview({
 
   if (framework) {
     const iframeSrc = `${PREVIEW_SERVER_URL}/${framework}/${name}`
-    const ext = framework === "vue" ? "vue" : "svelte"
+    const ext = framework === "vue" ? "vue" : framework === "ember" ? "gts" : "svelte"
     const srcPath = `preview-server/src/${framework}/${name}.${ext}`
     const content = (
       <ComponentPreviewTabs

@@ -1,0 +1,73 @@
+---
+title: Textarea
+description: Displays a form textarea or a component that looks like a textarea.
+base: ember
+component: true
+---
+
+
+<ComponentPreview framework="ember" name="textarea-demo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @force-ui-ember/textarea
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="textarea" title="components/ui/textarea.gts" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```gts
+import { Textarea } from '@/ui/textarea';
+```
+
+```hbs
+<Textarea />
+```
+
+## Examples
+
+### Default
+
+<ComponentPreview framework="ember" name="textarea-demo" />
+
+### Disabled
+
+<ComponentPreview framework="ember" name="textarea-disabled" />
+
+### With Label
+
+<ComponentPreview framework="ember" name="textarea-with-label" />
+
+### With Text
+
+<ComponentPreview framework="ember" name="textarea-with-text" />
+
+### With Button
+
+<ComponentPreview framework="ember" name="textarea-with-button" />

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spinner-badge",
+  "title": "Spinner Badge",
+  "dependencies": [],
+  "registryDependencies": [
+    "badge",
+    "spinner"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-lyra/examples/spinner-badge.gts",
+      "content": "import { Badge } from '@/ui/badge';\nimport { Spinner } from '@/ui/spinner';\n\n<template>\n  <div class=\"flex items-center gap-2\">\n    <Badge>\n      <Spinner />\n      Syncing\n    </Badge>\n    <Badge @variant=\"secondary\">\n      <Spinner />\n      Updating\n    </Badge>\n    <Badge @variant=\"outline\">\n      <Spinner />\n      Loading\n    </Badge>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

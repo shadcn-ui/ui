@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "item-image",
+  "title": "Item Image",
+  "dependencies": [],
+  "registryDependencies": [
+    "item"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-maia/examples/item-image.gts",
+      "content": "import {\n  Item,\n  ItemContent,\n  ItemDescription,\n  ItemGroup,\n  ItemMedia,\n  ItemTitle,\n} from '@/ui/item';\n\nconst music = [\n  {\n    title: 'Midnight City Lights',\n    artist: 'Neon Dreams',\n    album: 'Electric Nights',\n    duration: '3:45',\n  },\n  {\n    title: 'Coffee Shop Conversations',\n    artist: 'The Morning Brew',\n    album: 'Urban Stories',\n    duration: '4:05',\n  },\n  {\n    title: 'Digital Rain',\n    artist: 'Cyber Symphony',\n    album: 'Binary Beats',\n    duration: '3:30',\n  },\n];\n\n<template>\n  <div class=\"flex w-full max-w-md flex-col gap-6\">\n    <ItemGroup @class=\"gap-4\">\n      {{#each music as |song|}}\n        <Item @asChild={{true}} @variant=\"outline\" as |item|>\n          <a\n            class={{item.class}}\n            data-size={{item.size}}\n            data-slot={{item.slot}}\n            data-variant={{item.variant}}\n            href=\"#\"\n          >\n            <ItemMedia @variant=\"image\">\n              <img\n                alt={{song.title}}\n                class=\"object-cover grayscale\"\n                height=\"32\"\n                src=\"https://avatar.vercel.sh/{{song.title}}\"\n                width=\"32\"\n              />\n            </ItemMedia>\n            <ItemContent>\n              <ItemTitle @class=\"line-clamp-1\">\n                {{song.title}}\n                -\n                <span class=\"text-muted-foreground\">{{song.album}}</span>\n              </ItemTitle>\n              <ItemDescription>{{song.artist}}</ItemDescription>\n            </ItemContent>\n            <ItemContent @class=\"flex-none text-center\">\n              <ItemDescription>{{song.duration}}</ItemDescription>\n            </ItemContent>\n          </a>\n        </Item>\n      {{/each}}\n    </ItemGroup>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "field-checkbox-demo",
+  "title": "Field Checkbox Demo",
+  "dependencies": [],
+  "registryDependencies": [
+    "checkbox",
+    "field"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-vega/examples/field-checkbox-demo.gts",
+      "content": "import { Checkbox } from '@/ui/checkbox';\nimport { Field, FieldLabel } from '@/ui/field';\n\n<template>\n  <FieldLabel for=\"checkbox-demo\">\n    <Field @orientation=\"horizontal\">\n      <Checkbox @checked={{true}} id=\"checkbox-demo\" />\n      <FieldLabel @class=\"line-clamp-1\" for=\"checkbox-demo\">\n        I agree to the terms and conditions\n      </FieldLabel>\n    </Field>\n  </FieldLabel>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

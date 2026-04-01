@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "switch-demo",
+  "title": "Switch Demo",
+  "dependencies": [],
+  "registryDependencies": [
+    "label",
+    "switch"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-mira/examples/switch-demo.gts",
+      "content": "import { Label } from '@/ui/label';\nimport { Switch } from '@/ui/switch';\n\n<template>\n  <div class=\"flex items-center gap-3\">\n    <Switch id=\"airplane-mode\" />\n    <Label @for=\"airplane-mode\">Airplane Mode</Label>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

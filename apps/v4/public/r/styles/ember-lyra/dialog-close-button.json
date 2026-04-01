@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dialog-close-button",
+  "title": "Dialog Close Button",
+  "dependencies": [],
+  "registryDependencies": [
+    "button",
+    "dialog",
+    "input",
+    "label"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-lyra/examples/dialog-close-button.gts",
+      "content": "import { Button } from '@/ui/button';\nimport {\n  Dialog,\n  DialogClose,\n  DialogContent,\n  DialogDescription,\n  DialogFooter,\n  DialogHeader,\n  DialogTitle,\n  DialogTrigger,\n} from '@/ui/dialog';\nimport { Input } from '@/ui/input';\nimport { Label } from '@/ui/label';\n\n<template>\n  <Dialog>\n    <DialogTrigger>\n      <Button @variant=\"outline\">Share</Button>\n    </DialogTrigger>\n    <DialogContent @class=\"sm:max-w-md\">\n      <DialogHeader>\n        <DialogTitle>Share link</DialogTitle>\n        <DialogDescription>\n          Anyone who has this link will be able to view this.\n        </DialogDescription>\n      </DialogHeader>\n      <div class=\"flex items-center gap-2\">\n        <div class=\"grid flex-1 gap-2\">\n          <Label @class=\"sr-only\" @for=\"link\">\n            Link\n          </Label>\n          <Input\n            id=\"link\"\n            readonly\n            value=\"https://ui.shadcn.com/docs/installation\"\n          />\n        </div>\n      </div>\n      <DialogFooter @class=\"sm:justify-start\">\n        <DialogClose>\n          <Button @variant=\"secondary\" type=\"button\">\n            Close\n          </Button>\n        </DialogClose>\n      </DialogFooter>\n    </DialogContent>\n  </Dialog>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

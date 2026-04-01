@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "skeleton",
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/ember-maia/ui/skeleton.gts",
+      "content": "import { cn } from '@/lib/utils';\n\nimport type { TOC } from '@ember/component/template-only';\n\ninterface SkeletonSignature {\n  Element: HTMLDivElement;\n  Args: {\n    class?: string;\n  };\n  Blocks: {\n    default: [];\n  };\n}\n\nconst Skeleton: TOC<SkeletonSignature> = <template>\n  <div\n    class={{cn \"bg-accent animate-pulse rounded-md\" @class}}\n    data-slot=\"skeleton\"\n    ...attributes\n  >\n    {{yield}}\n  </div>\n</template>;\n\nexport { Skeleton };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "item-link",
+  "title": "Item Link",
+  "dependencies": [],
+  "registryDependencies": [
+    "item"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-vega/examples/item-link.gts",
+      "content": "import {\n  Item,\n  ItemActions,\n  ItemContent,\n  ItemDescription,\n  ItemTitle,\n} from '@/ui/item';\n\nimport ChevronRightIcon from '~icons/lucide/chevron-right';\nimport ExternalLinkIcon from '~icons/lucide/external-link';\n\n<template>\n  <div class=\"flex w-full max-w-md flex-col gap-4\">\n    <Item @asChild={{true}} as |item|>\n      <a\n        class={{item.class}}\n        data-size={{item.size}}\n        data-slot={{item.slot}}\n        data-variant={{item.variant}}\n        href=\"#\"\n      >\n        <ItemContent>\n          <ItemTitle>Visit our documentation</ItemTitle>\n          <ItemDescription>\n            Learn how to get started with our components.\n          </ItemDescription>\n        </ItemContent>\n        <ItemActions>\n          <ChevronRightIcon class=\"size-4\" />\n        </ItemActions>\n      </a>\n    </Item>\n    <Item @asChild={{true}} @variant=\"outline\" as |item|>\n      <a\n        class={{item.class}}\n        data-size={{item.size}}\n        data-slot={{item.slot}}\n        data-variant={{item.variant}}\n        href=\"#\"\n        rel=\"noopener noreferrer\"\n        target=\"_blank\"\n      >\n        <ItemContent>\n          <ItemTitle>External resource</ItemTitle>\n          <ItemDescription>\n            Opens in a new tab with security attributes.\n          </ItemDescription>\n        </ItemContent>\n        <ItemActions>\n          <ExternalLinkIcon class=\"size-4\" />\n        </ItemActions>\n      </a>\n    </Item>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

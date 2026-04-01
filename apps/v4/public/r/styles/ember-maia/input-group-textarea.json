@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-group-textarea",
+  "title": "Input Group Textarea",
+  "dependencies": [],
+  "registryDependencies": [
+    "input-group"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-maia/examples/input-group-textarea.gts",
+      "content": "import {\n  InputGroup,\n  InputGroupAddon,\n  InputGroupButton,\n  InputGroupText,\n  InputGroupTextarea,\n} from '@/ui/input-group';\n\nimport Copy from '~icons/lucide/copy';\nimport CornerDownLeft from '~icons/lucide/corner-down-left';\nimport FileCode from '~icons/lucide/file-code-2';\nimport Refresh from '~icons/lucide/refresh-cw';\n\n<template>\n  <div class=\"grid w-full max-w-md gap-4\">\n    <InputGroup>\n      <InputGroupTextarea\n        @class=\"min-h-[200px]\"\n        placeholder=\"console.log('Hello, world!');\"\n      />\n      <InputGroupAddon @align=\"block-end\" @class=\"border-t\">\n        <InputGroupText>Line 1, Column 1</InputGroupText>\n        <InputGroupButton @class=\"ml-auto\" @size=\"sm\" @variant=\"default\">\n          Run\n          <CornerDownLeft />\n        </InputGroupButton>\n      </InputGroupAddon>\n      <InputGroupAddon @align=\"block-start\" @class=\"border-b\">\n        <InputGroupText @class=\"font-mono font-medium\">\n          <FileCode />\n          script.js\n        </InputGroupText>\n        <InputGroupButton @class=\"ml-auto\" @size=\"icon-xs\">\n          <Refresh />\n        </InputGroupButton>\n        <InputGroupButton @size=\"icon-xs\" @variant=\"ghost\">\n          <Copy />\n        </InputGroupButton>\n      </InputGroupAddon>\n    </InputGroup>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

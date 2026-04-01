@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "kbd-group",
+  "title": "Kbd Group",
+  "dependencies": [],
+  "registryDependencies": [
+    "kbd"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-vega/examples/kbd-group.gts",
+      "content": "import { Kbd, KbdGroup } from '@/ui/kbd';\n\n<template>\n  <div class=\"flex flex-col items-center gap-4\">\n    <p class=\"text-muted-foreground text-sm\">\n      Use\n      <KbdGroup>\n        <Kbd>Ctrl + B</Kbd>\n        <Kbd>Ctrl + K</Kbd>\n      </KbdGroup>\n      to open the command palette\n    </p>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

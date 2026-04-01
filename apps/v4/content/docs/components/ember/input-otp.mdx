@@ -1,0 +1,125 @@
+---
+title: Input OTP
+description: Accessible one-time password component with copy paste functionality.
+base: ember
+component: true
+---
+
+
+<ComponentPreview framework="ember" name="input-otp-demo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @force-ui-ember/input-otp
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+pnpm add ember-provide-consume-context
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource framework="ember" name="input-otp" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+
+## Usage
+
+```gts showLineNumbers
+import {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSeparator,
+  InputOTPSlot,
+} from '@/ui/input-otp';
+```
+
+```hbs showLineNumbers
+<InputOTP @maxLength={{6}}>
+  <InputOTPGroup>
+    <InputOTPSlot @index={{0}} />
+    <InputOTPSlot @index={{1}} />
+    <InputOTPSlot @index={{2}} />
+  </InputOTPGroup>
+  <InputOTPSeparator />
+  <InputOTPGroup>
+    <InputOTPSlot @index={{3}} />
+    <InputOTPSlot @index={{4}} />
+    <InputOTPSlot @index={{5}} />
+  </InputOTPGroup>
+</InputOTP>
+```
+
+## Examples
+
+### Pattern
+
+Use a custom pattern to validate the OTP input.
+
+<ComponentPreview framework="ember" name="input-otp-pattern" />
+
+The component uses a built-in pattern that only allows alphanumeric characters (letters and numbers).
+
+### Separator
+
+You can use the `<InputOTPSeparator />` component to add a separator between the input groups.
+
+<ComponentPreview framework="ember" name="input-otp-separator" />
+
+```gts showLineNumbers {4,15}
+import {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSeparator,
+  InputOTPSlot,
+} from '@/ui/input-otp';
+
+<template>
+  <InputOTP @maxLength={{4}}>
+    <InputOTPGroup>
+      <InputOTPSlot @index={{0}} />
+      <InputOTPSlot @index={{1}} />
+    </InputOTPGroup>
+    <InputOTPSeparator />
+    <InputOTPGroup>
+      <InputOTPSlot @index={{2}} />
+      <InputOTPSlot @index={{3}} />
+    </InputOTPGroup>
+  </InputOTP>
+</template>
+```
+
+### Controlled
+
+You can use the `@value` and `@onValueChange` arguments to control the input value.
+
+<ComponentPreview framework="ember" name="input-otp-controlled" />
+
+### Form
+
+<ComponentPreview framework="ember" name="input-otp-form" />

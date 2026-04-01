@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toggle-group-spacing",
+  "title": "Toggle Group Spacing",
+  "dependencies": [],
+  "registryDependencies": [
+    "toggle-group"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-nova/examples/toggle-group-spacing.gts",
+      "content": "import { ToggleGroup, ToggleGroupItem } from '@/ui/toggle-group';\n\nimport Bookmark from '~icons/lucide/bookmark';\nimport Heart from '~icons/lucide/heart';\nimport Star from '~icons/lucide/star';\n\n<template>\n  <ToggleGroup @size=\"sm\" @spacing={{2}} @type=\"multiple\" @variant=\"outline\">\n    <ToggleGroupItem\n      @class=\"data-[state=on]:bg-transparent data-[state=on]:[&_path]:fill-yellow-500 data-[state=on]:[&_path]:stroke-yellow-500\"\n      @value=\"star\"\n      aria-label=\"Toggle star\"\n    >\n      <Star />\n      Star\n    </ToggleGroupItem>\n    <ToggleGroupItem\n      @class=\"data-[state=on]:bg-transparent data-[state=on]:[&_path]:fill-red-500 data-[state=on]:[&_path]:stroke-red-500\"\n      @value=\"heart\"\n      aria-label=\"Toggle heart\"\n    >\n      <Heart />\n      Heart\n    </ToggleGroupItem>\n    <ToggleGroupItem\n      @class=\"data-[state=on]:bg-transparent data-[state=on]:[&_path]:fill-blue-500 data-[state=on]:[&_path]:stroke-blue-500\"\n      @value=\"bookmark\"\n      aria-label=\"Toggle bookmark\"\n    >\n      <Bookmark />\n      Bookmark\n    </ToggleGroupItem>\n  </ToggleGroup>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

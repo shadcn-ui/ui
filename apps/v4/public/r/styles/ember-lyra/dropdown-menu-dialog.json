@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dropdown-menu-dialog",
+  "title": "Dropdown Menu Dialog",
+  "dependencies": [
+    "@ember/helper"
+  ],
+  "registryDependencies": [
+    "button",
+    "dialog",
+    "dropdown-menu",
+    "field",
+    "input",
+    "label",
+    "textarea"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-lyra/examples/dropdown-menu-dialog.gts",
+      "content": "import { fn } from '@ember/helper';\nimport Component from '@glimmer/component';\nimport { tracked } from '@glimmer/tracking';\n\nimport { Button } from '@/ui/button';\nimport {\n  Dialog,\n  DialogClose,\n  DialogContent,\n  DialogDescription,\n  DialogFooter,\n  DialogHeader,\n  DialogTitle,\n} from '@/ui/dialog';\nimport {\n  DropdownMenu,\n  DropdownMenuContent,\n  DropdownMenuGroup,\n  DropdownMenuItem,\n  DropdownMenuLabel,\n  DropdownMenuTrigger,\n} from '@/ui/dropdown-menu';\nimport { Field, FieldGroup, FieldLabel } from '@/ui/field';\nimport { Input } from '@/ui/input';\nimport { Label } from '@/ui/label';\nimport { Textarea } from '@/ui/textarea';\n\nimport MoreHorizontal from '~icons/lucide/more-horizontal';\n\nexport default class DropdownMenuDialogDemo extends Component {\n  @tracked showNewDialog = false;\n  @tracked showShareDialog = false;\n\n  setShowNewDialog = (open: boolean) => {\n    this.showNewDialog = open;\n  };\n\n  setShowShareDialog = (open: boolean) => {\n    this.showShareDialog = open;\n  };\n\n  <template>\n    <DropdownMenu>\n      <DropdownMenuTrigger>\n        <Button @size=\"icon-sm\" @variant=\"outline\" aria-label=\"Open menu\">\n          <MoreHorizontal />\n        </Button>\n      </DropdownMenuTrigger>\n      <DropdownMenuContent @align=\"end\" @class=\"w-40\">\n        <DropdownMenuLabel>File Actions</DropdownMenuLabel>\n        <DropdownMenuGroup>\n          <DropdownMenuItem @onSelect={{fn this.setShowNewDialog true}}>\n            New File...\n          </DropdownMenuItem>\n          <DropdownMenuItem @onSelect={{fn this.setShowShareDialog true}}>\n            Share...\n          </DropdownMenuItem>\n          <DropdownMenuItem @disabled={{true}}>Download</DropdownMenuItem>\n        </DropdownMenuGroup>\n      </DropdownMenuContent>\n    </DropdownMenu>\n\n    <Dialog\n      @onOpenChange={{this.setShowNewDialog}}\n      @open={{this.showNewDialog}}\n    >\n      <DialogContent @class=\"sm:max-w-[425px]\">\n        <DialogHeader>\n          <DialogTitle>Create New File</DialogTitle>\n          <DialogDescription>\n            Provide a name for your new file. Click create when you're done.\n          </DialogDescription>\n        </DialogHeader>\n        <FieldGroup class=\"pb-3\">\n          <Field>\n            <FieldLabel for=\"filename\">File Name</FieldLabel>\n            <Input id=\"filename\" name=\"filename\" placeholder=\"document.txt\" />\n          </Field>\n        </FieldGroup>\n        <DialogFooter>\n          <DialogClose>\n            <Button @variant=\"outline\">Cancel</Button>\n          </DialogClose>\n          <Button type=\"submit\">Create</Button>\n        </DialogFooter>\n      </DialogContent>\n    </Dialog>\n\n    <Dialog\n      @onOpenChange={{this.setShowShareDialog}}\n      @open={{this.showShareDialog}}\n    >\n      <DialogContent @class=\"sm:max-w-[425px]\">\n        <DialogHeader>\n          <DialogTitle>Share File</DialogTitle>\n          <DialogDescription>\n            Anyone with the link will be able to view this file.\n          </DialogDescription>\n        </DialogHeader>\n        <FieldGroup class=\"py-3\">\n          <Field>\n            <Label for=\"email\">Email Address</Label>\n            <Input\n              autocomplete=\"off\"\n              id=\"email\"\n              name=\"email\"\n              placeholder=\"shadcn@vercel.com\"\n              type=\"email\"\n            />\n          </Field>\n          <Field>\n            <FieldLabel for=\"message\">Message (Optional)</FieldLabel>\n            <Textarea\n              id=\"message\"\n              name=\"message\"\n              placeholder=\"Check out this file\"\n            />\n          </Field>\n        </FieldGroup>\n        <DialogFooter>\n          <DialogClose>\n            <Button @variant=\"outline\">Cancel</Button>\n          </DialogClose>\n          <Button type=\"submit\">Send Invite</Button>\n        </DialogFooter>\n      </DialogContent>\n    </Dialog>\n  </template>\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

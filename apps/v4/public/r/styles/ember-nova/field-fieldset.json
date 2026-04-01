@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "field-fieldset",
+  "title": "Field Fieldset",
+  "dependencies": [],
+  "registryDependencies": [
+    "field",
+    "input"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-nova/examples/field-fieldset.gts",
+      "content": "import {\n  Field,\n  FieldDescription,\n  FieldGroup,\n  FieldLabel,\n  FieldLegend,\n  FieldSet,\n} from '@/ui/field';\nimport { Input } from '@/ui/input';\n\n<template>\n  <div class=\"w-full max-w-md space-y-6\">\n    <FieldSet>\n      <FieldLegend>Address Information</FieldLegend>\n      <FieldDescription>\n        We need your address to deliver your order.\n      </FieldDescription>\n      <FieldGroup>\n        <Field>\n          <FieldLabel @for=\"street\">Street Address</FieldLabel>\n          <Input id=\"street\" placeholder=\"123 Main St\" type=\"text\" />\n        </Field>\n        <div class=\"grid grid-cols-2 gap-4\">\n          <Field>\n            <FieldLabel @for=\"city\">City</FieldLabel>\n            <Input id=\"city\" placeholder=\"New York\" type=\"text\" />\n          </Field>\n          <Field>\n            <FieldLabel @for=\"zip\">Postal Code</FieldLabel>\n            <Input id=\"zip\" placeholder=\"90502\" type=\"text\" />\n          </Field>\n        </div>\n      </FieldGroup>\n    </FieldSet>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

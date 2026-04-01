@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "typography-muted",
+  "title": "Typography Muted",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/ember-nova/examples/typography-muted.gts",
+      "content": "<template>\n  <p class=\"text-muted-foreground text-sm\">Enter your email address.</p>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

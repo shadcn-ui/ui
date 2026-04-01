@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "native-select-demo",
+  "title": "Native Select Demo",
+  "dependencies": [],
+  "registryDependencies": [
+    "native-select"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-lyra/examples/native-select-demo.gts",
+      "content": "import {\n  NativeSelect,\n  NativeSelectOption,\n} from '@/ui/native-select';\n\n<template>\n  <NativeSelect>\n    <NativeSelectOption value=\"\">Select status</NativeSelectOption>\n    <NativeSelectOption value=\"todo\">Todo</NativeSelectOption>\n    <NativeSelectOption value=\"in-progress\">In Progress</NativeSelectOption>\n    <NativeSelectOption value=\"done\">Done</NativeSelectOption>\n    <NativeSelectOption value=\"cancelled\">Cancelled</NativeSelectOption>\n  </NativeSelect>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

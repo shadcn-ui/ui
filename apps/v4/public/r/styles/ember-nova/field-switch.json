@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "field-switch",
+  "title": "Field Switch",
+  "dependencies": [],
+  "registryDependencies": [
+    "field",
+    "switch"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-nova/examples/field-switch.gts",
+      "content": "import {\n  Field,\n  FieldContent,\n  FieldDescription,\n  FieldLabel,\n} from '@/ui/field';\nimport { Switch } from '@/ui/switch';\n\n<template>\n  <div class=\"w-full max-w-md\">\n    <Field @orientation=\"horizontal\">\n      <FieldContent>\n        <FieldLabel @for=\"2fa\">Multi-factor authentication</FieldLabel>\n        <FieldDescription>\n          Enable multi-factor authentication. If you do not have a two-factor\n          device, you can use a one-time code sent to your email.\n        </FieldDescription>\n      </FieldContent>\n      <Switch id=\"2fa\" />\n    </Field>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

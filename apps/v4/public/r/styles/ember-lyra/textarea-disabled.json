@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "textarea-disabled",
+  "title": "Textarea Disabled",
+  "dependencies": [],
+  "registryDependencies": [
+    "textarea"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-lyra/examples/textarea-disabled.gts",
+      "content": "import { Textarea } from '@/ui/textarea';\n\n<template><Textarea disabled placeholder=\"Type your message here.\" /></template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

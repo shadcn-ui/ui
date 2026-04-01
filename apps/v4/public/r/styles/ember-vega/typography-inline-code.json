@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "typography-inline-code",
+  "title": "Typography Inline Code",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/ember-vega/examples/typography-inline-code.gts",
+      "content": "<template>\n  <code\n    class=\"bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold\"\n  >\n    @radix-ui/react-alert-dialog\n  </code>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

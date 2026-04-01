@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "table-demo",
+  "title": "Table Demo",
+  "dependencies": [],
+  "registryDependencies": [
+    "table"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-maia/examples/table-demo.gts",
+      "content": "import {\n  Table,\n  TableBody,\n  TableCaption,\n  TableCell,\n  TableFooter,\n  TableHead,\n  TableHeader,\n  TableRow,\n} from '@/ui/table';\n\nconst invoices = [\n  {\n    invoice: 'INV001',\n    paymentStatus: 'Paid',\n    totalAmount: '$250.00',\n    paymentMethod: 'Credit Card',\n  },\n  {\n    invoice: 'INV002',\n    paymentStatus: 'Pending',\n    totalAmount: '$150.00',\n    paymentMethod: 'PayPal',\n  },\n  {\n    invoice: 'INV003',\n    paymentStatus: 'Unpaid',\n    totalAmount: '$350.00',\n    paymentMethod: 'Bank Transfer',\n  },\n  {\n    invoice: 'INV004',\n    paymentStatus: 'Paid',\n    totalAmount: '$450.00',\n    paymentMethod: 'Credit Card',\n  },\n  {\n    invoice: 'INV005',\n    paymentStatus: 'Paid',\n    totalAmount: '$550.00',\n    paymentMethod: 'PayPal',\n  },\n  {\n    invoice: 'INV006',\n    paymentStatus: 'Pending',\n    totalAmount: '$200.00',\n    paymentMethod: 'Bank Transfer',\n  },\n  {\n    invoice: 'INV007',\n    paymentStatus: 'Unpaid',\n    totalAmount: '$300.00',\n    paymentMethod: 'Credit Card',\n  },\n];\n\n<template>\n  <Table>\n    <TableCaption>A list of your recent invoices.</TableCaption>\n    <TableHeader>\n      <TableRow>\n        <TableHead @class=\"w-[100px]\">Invoice</TableHead>\n        <TableHead>Status</TableHead>\n        <TableHead>Method</TableHead>\n        <TableHead @class=\"text-right\">Amount</TableHead>\n      </TableRow>\n    </TableHeader>\n    <TableBody>\n      {{#each invoices as |invoice|}}\n        <TableRow>\n          <TableCell @class=\"font-medium\">{{invoice.invoice}}</TableCell>\n          <TableCell>{{invoice.paymentStatus}}</TableCell>\n          <TableCell>{{invoice.paymentMethod}}</TableCell>\n          <TableCell @class=\"text-right\">{{invoice.totalAmount}}</TableCell>\n        </TableRow>\n      {{/each}}\n    </TableBody>\n    <TableFooter>\n      <TableRow>\n        <TableCell colspan=\"3\">Total</TableCell>\n        <TableCell @class=\"text-right\">$2,500.00</TableCell>\n      </TableRow>\n    </TableFooter>\n  </Table>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

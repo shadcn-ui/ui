@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-group-popover",
+  "title": "Button Group Popover",
+  "dependencies": [
+    "ember-modifier"
+  ],
+  "registryDependencies": [
+    "button",
+    "button-group",
+    "popover",
+    "separator",
+    "textarea"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-vega/examples/button-group-popover.gts",
+      "content": "import { modifier } from 'ember-modifier';\n\nimport { Button } from '@/ui/button';\nimport { ButtonGroup } from '@/ui/button-group';\nimport {\n  Popover,\n  PopoverTrigger,\n  PopoverContent,\n} from '@/ui/popover';\nimport { Separator } from '@/ui/separator';\nimport { Textarea } from '@/ui/textarea';\n\nimport BotIcon from '~icons/lucide/bot';\nimport ChevronDownIcon from '~icons/lucide/chevron-down';\n\nconst autofocus = modifier((element: HTMLElement) => {\n  element.focus();\n});\n\n<template>\n  <ButtonGroup>\n    <Button @size=\"sm\" @variant=\"outline\">\n      <BotIcon />\n      Copilot\n    </Button>\n    <Popover>\n      <PopoverTrigger @asChild={{true}} as |trigger|>\n        <Button\n          @size=\"icon-sm\"\n          @variant=\"outline\"\n          aria-label=\"Open Popover\"\n          {{trigger.modifiers}}\n        >\n          <ChevronDownIcon />\n        </Button>\n      </PopoverTrigger>\n      <PopoverContent @align=\"end\" @class=\"rounded-xl p-0 text-sm\">\n        <div class=\"px-4 py-3\">\n          <div class=\"text-sm font-medium\">Agent Tasks</div>\n        </div>\n        <Separator />\n        <div class=\"p-4 text-sm *:[p:not(:last-child)]:mb-2\">\n          <Textarea\n            class=\"mb-4 resize-none\"\n            placeholder=\"Describe your task in natural language.\"\n            {{autofocus}}\n          />\n          <p class=\"font-medium\">Start a new task with Copilot</p>\n          <p class=\"text-muted-foreground\">\n            Describe your task in natural language. Copilot will work in the\n            background and open a pull request for your review.\n          </p>\n        </div>\n      </PopoverContent>\n    </Popover>\n  </ButtonGroup>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

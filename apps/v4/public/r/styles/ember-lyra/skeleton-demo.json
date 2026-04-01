@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "skeleton-demo",
+  "title": "Skeleton Demo",
+  "dependencies": [],
+  "registryDependencies": [
+    "skeleton"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-lyra/examples/skeleton-demo.gts",
+      "content": "import { Skeleton } from '@/ui/skeleton';\n\n<template>\n  <div class=\"flex items-center space-x-4\">\n    <Skeleton @class=\"h-12 w-12 rounded-full\" />\n    <div class=\"space-y-2\">\n      <Skeleton @class=\"h-4 w-[250px]\" />\n      <Skeleton @class=\"h-4 w-[200px]\" />\n    </div>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

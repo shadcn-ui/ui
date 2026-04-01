@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "textarea-demo",
+  "title": "Textarea Demo",
+  "dependencies": [],
+  "registryDependencies": [
+    "textarea"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-maia/examples/textarea-demo.gts",
+      "content": "import { Textarea } from '@/ui/textarea';\n\n<template><Textarea placeholder=\"Type your message here.\" /></template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

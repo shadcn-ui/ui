@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "field-choice-card",
+  "title": "Field Choice Card",
+  "dependencies": [],
+  "registryDependencies": [
+    "field",
+    "radio-group"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-maia/examples/field-choice-card.gts",
+      "content": "import {\n  Field,\n  FieldContent,\n  FieldDescription,\n  FieldGroup,\n  FieldLabel,\n  FieldSet,\n  FieldTitle,\n} from '@/ui/field';\nimport { RadioGroup, RadioGroupItem } from '@/ui/radio-group';\n\n<template>\n  <div class=\"w-full max-w-md\">\n    <FieldGroup>\n      <FieldSet>\n        <FieldLabel @for=\"compute-environment\">\n          Compute Environment\n        </FieldLabel>\n        <FieldDescription>\n          Select the compute environment for your cluster.\n        </FieldDescription>\n        <RadioGroup @defaultValue=\"kubernetes\">\n          <FieldLabel @for=\"kubernetes-radio\">\n            <Field @orientation=\"horizontal\">\n              <FieldContent>\n                <FieldTitle>Kubernetes</FieldTitle>\n                <FieldDescription>\n                  Run GPU workloads on a K8s configured cluster.\n                </FieldDescription>\n              </FieldContent>\n              <RadioGroupItem @value=\"kubernetes\" id=\"kubernetes-radio\" />\n            </Field>\n          </FieldLabel>\n          <FieldLabel @for=\"vm-radio\">\n            <Field @orientation=\"horizontal\">\n              <FieldContent>\n                <FieldTitle>Virtual Machine</FieldTitle>\n                <FieldDescription>\n                  Access a VM configured cluster to run GPU workloads.\n                </FieldDescription>\n              </FieldContent>\n              <RadioGroupItem @value=\"vm\" id=\"vm-radio\" />\n            </Field>\n          </FieldLabel>\n        </RadioGroup>\n      </FieldSet>\n    </FieldGroup>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

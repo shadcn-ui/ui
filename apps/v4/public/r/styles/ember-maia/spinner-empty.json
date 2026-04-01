@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spinner-empty",
+  "title": "Spinner Empty",
+  "dependencies": [],
+  "registryDependencies": [
+    "button",
+    "empty",
+    "spinner"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-maia/examples/spinner-empty.gts",
+      "content": "import { Button } from '@/ui/button';\nimport {\n  Empty,\n  EmptyContent,\n  EmptyDescription,\n  EmptyHeader,\n  EmptyMedia,\n  EmptyTitle,\n} from '@/ui/empty';\nimport { Spinner } from '@/ui/spinner';\n\n<template>\n  <Empty @class=\"w-full border md:p-6\">\n    <EmptyHeader>\n      <EmptyMedia @variant=\"icon\">\n        <Spinner />\n      </EmptyMedia>\n      <EmptyTitle>Processing your request</EmptyTitle>\n      <EmptyDescription>\n        Please wait while we process your request. Do not refresh the page.\n      </EmptyDescription>\n    </EmptyHeader>\n    <EmptyContent>\n      <Button @size=\"sm\" @variant=\"outline\">\n        Cancel\n      </Button>\n    </EmptyContent>\n  </Empty>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

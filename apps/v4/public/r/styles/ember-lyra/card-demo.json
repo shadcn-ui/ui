@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-demo",
+  "title": "Card Demo",
+  "dependencies": [],
+  "registryDependencies": [
+    "button",
+    "card",
+    "input",
+    "label"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-lyra/examples/card-demo.gts",
+      "content": "import { Button } from '@/ui/button';\nimport {\n  Card,\n  CardAction,\n  CardContent,\n  CardDescription,\n  CardFooter,\n  CardHeader,\n  CardTitle,\n} from '@/ui/card';\nimport { Input } from '@/ui/input';\nimport { Label } from '@/ui/label';\n\n<template>\n  <Card @class=\"w-full max-w-sm\">\n    <CardHeader>\n      <CardTitle>Login to your account</CardTitle>\n      <CardDescription>\n        Enter your email below to login to your account\n      </CardDescription>\n      <CardAction>\n        <Button @variant=\"link\">Sign Up</Button>\n      </CardAction>\n    </CardHeader>\n    <CardContent>\n      <form>\n        <div class=\"flex flex-col gap-6\">\n          <div class=\"grid gap-2\">\n            <Label @for=\"email\">Email</Label>\n            <Input\n              id=\"email\"\n              placeholder=\"m@example.com\"\n              required\n              type=\"email\"\n            />\n          </div>\n          <div class=\"grid gap-2\">\n            <div class=\"flex items-center\">\n              <Label @for=\"password\">Password</Label>\n              <a\n                class=\"ml-auto inline-block text-sm underline-offset-4 hover:underline\"\n                href=\"#\"\n              >\n                Forgot your password?\n              </a>\n            </div>\n            <Input id=\"password\" required type=\"password\" />\n          </div>\n        </div>\n      </form>\n    </CardContent>\n    <CardFooter @class=\"flex-col gap-2\">\n      <Button @class=\"w-full\" type=\"submit\">\n        Login\n      </Button>\n      <Button @class=\"w-full\" @variant=\"outline\">\n        Login with Google\n      </Button>\n    </CardFooter>\n  </Card>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

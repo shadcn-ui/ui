@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toggle-outline",
+  "title": "Toggle Outline",
+  "dependencies": [],
+  "registryDependencies": [
+    "toggle"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-nova/examples/toggle-outline.gts",
+      "content": "import { Toggle } from '@/ui/toggle';\n\nimport Italic from '~icons/lucide/italic';\n\n<template>\n  <Toggle @variant=\"outline\" aria-label=\"Toggle italic\">\n    <Italic />\n  </Toggle>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-loading",
+  "title": "Button Loading",
+  "dependencies": [],
+  "registryDependencies": [
+    "button",
+    "spinner"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-nova/examples/button-loading.gts",
+      "content": "import { Button } from '@/ui/button';\nimport { Spinner } from '@/ui/spinner';\n\n<template>\n  <Button @disabled={{true}} @size=\"sm\" @variant=\"outline\">\n    <Spinner />\n    Submit\n  </Button>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

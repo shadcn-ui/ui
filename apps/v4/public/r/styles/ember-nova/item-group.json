@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "item-group",
+  "title": "Item Group",
+  "dependencies": [
+    "ember-truth-helpers"
+  ],
+  "registryDependencies": [
+    "avatar",
+    "button",
+    "item"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-nova/examples/item-group.gts",
+      "content": "import { lt } from 'ember-truth-helpers';\n\nimport { Avatar, AvatarFallback, AvatarImage } from '@/ui/avatar';\nimport { Button } from '@/ui/button';\nimport {\n  Item,\n  ItemActions,\n  ItemContent,\n  ItemDescription,\n  ItemGroup,\n  ItemMedia,\n  ItemSeparator,\n  ItemTitle,\n} from '@/ui/item';\n\nimport PlusIcon from '~icons/lucide/plus';\n\nconst people = [\n  {\n    username: 'shadcn',\n    avatar: 'https://github.com/shadcn.png',\n    email: 'shadcn@vercel.com',\n  },\n  {\n    username: 'maxleiter',\n    avatar: 'https://github.com/maxleiter.png',\n    email: 'maxleiter@vercel.com',\n  },\n  {\n    username: 'evilrabbit',\n    avatar: 'https://github.com/evilrabbit.png',\n    email: 'evilrabbit@vercel.com',\n  },\n];\n\n<template>\n  <div class=\"flex w-full max-w-md flex-col gap-6\">\n    <ItemGroup>\n      {{#each people as |person index|}}\n        <Item>\n          <ItemMedia>\n            <Avatar>\n              <AvatarImage @class=\"grayscale\" @src={{person.avatar}} />\n              <AvatarFallback>{{person.username}}</AvatarFallback>\n            </Avatar>\n          </ItemMedia>\n          <ItemContent @class=\"gap-1\">\n            <ItemTitle>{{person.username}}</ItemTitle>\n            <ItemDescription>{{person.email}}</ItemDescription>\n          </ItemContent>\n          <ItemActions>\n            <Button @class=\"rounded-full\" @size=\"icon\" @variant=\"ghost\">\n              <PlusIcon />\n            </Button>\n          </ItemActions>\n        </Item>\n        {{#if (lt index 2)}}\n          <ItemSeparator />\n        {{/if}}\n      {{/each}}\n    </ItemGroup>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

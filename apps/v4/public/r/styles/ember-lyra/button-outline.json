@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-outline",
+  "title": "Button Outline",
+  "dependencies": [],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-lyra/examples/button-outline.gts",
+      "content": "import { Button } from '@/ui/button';\n\n<template>\n  <Button @variant=\"outline\">Outline</Button>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

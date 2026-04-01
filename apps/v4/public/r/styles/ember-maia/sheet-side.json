@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sheet-side",
+  "title": "Sheet Side",
+  "dependencies": [],
+  "registryDependencies": [
+    "button",
+    "sheet"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-maia/examples/sheet-side.gts",
+      "content": "import { Button } from '@/ui/button';\nimport {\n  Sheet,\n  SheetContent,\n  SheetDescription,\n  SheetHeader,\n  SheetTitle,\n  SheetTrigger,\n} from '@/ui/sheet';\n\nconst SHEET_SIDES = ['top', 'right', 'bottom', 'left'] as const;\n\n<template>\n  <div class=\"grid grid-cols-2 gap-2\">\n    {{#each SHEET_SIDES as |side|}}\n      <Sheet>\n        <SheetTrigger @asChild={{true}}>\n          <Button @variant=\"outline\">{{side}}</Button>\n        </SheetTrigger>\n        <SheetContent @side={{side}}>\n          <SheetHeader>\n            <SheetTitle>Edit profile</SheetTitle>\n            <SheetDescription>\n              Make changes to your profile here. Click save when you're done.\n            </SheetDescription>\n          </SheetHeader>\n        </SheetContent>\n      </Sheet>\n    {{/each}}\n  </div>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,84 @@
+---
+title: Accordion
+description: A vertically stacked set of interactive headings that each reveal a section of content.
+base: ember
+component: true
+---
+
+
+<ComponentPreview framework="ember" name="accordion-demo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @force-ui-ember/accordion
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+pnpm add ember-provide-consume-context
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource framework="ember" name="accordion" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+
+## Usage
+
+```gts showLineNumbers
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from '@/ui/accordion';
+```
+
+```hbs showLineNumbers
+<Accordion @type='single' @collapsible={{true}}>
+  <AccordionItem @value='item-1'>
+    <AccordionTrigger>Is it accessible?</AccordionTrigger>
+    <AccordionContent>Yes. It adheres to the WAI-ARIA design pattern.</AccordionContent>
+  </AccordionItem>
+
+  <AccordionItem @value='item-2'>
+    <AccordionTrigger>Is it styled?</AccordionTrigger>
+    <AccordionContent>
+      Yes. It comes with default styles that matches the other components'
+      aesthetic.
+    </AccordionContent>
+  </AccordionItem>
+
+  <AccordionItem @value='item-3'>
+    <AccordionTrigger>Is it animated?</AccordionTrigger>
+    <AccordionContent>
+      Yes. It's animated by default, but you can disable it if you prefer.
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+```

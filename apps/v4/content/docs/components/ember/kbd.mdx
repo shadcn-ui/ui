@@ -1,0 +1,108 @@
+---
+title: Kbd
+description: Used to display textual user input from keyboard.
+base: ember
+component: true
+---
+
+
+<ComponentPreview framework="ember" name="kbd-demo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @force-ui-ember/kbd
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource framework="ember" name="kbd" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+
+## Usage
+
+```gts showLineNumbers
+import { Kbd } from '@/ui/kbd';
+```
+
+```hbs showLineNumbers
+<Kbd>Ctrl</Kbd>
+```
+
+## Examples
+
+### Group
+
+Use the `KbdGroup` component to group keyboard keys together.
+
+<ComponentPreview framework="ember" name="kbd-group" />
+
+### Button
+
+Use the `Kbd` component inside a `Button` component to display a keyboard key inside a button.
+
+<ComponentPreview framework="ember" name="kbd-button" />
+
+### Tooltip
+
+You can use the `Kbd` component inside a `Tooltip` component to display a tooltip with a keyboard key.
+
+<ComponentPreview framework="ember" name="kbd-tooltip" />
+
+### Input Group
+
+You can use the `Kbd` component inside a `InputGroupAddon` component to display a keyboard key inside an input group.
+
+<ComponentPreview framework="ember" name="kbd-input-group" />
+
+## API Reference
+
+### Kbd
+
+Use the `Kbd` component to display a keyboard key.
+
+| Prop     | Type     | Default |
+| -------- | -------- | ------- |
+| `@class` | `string` | ``      |
+
+```hbs showLineNumbers
+<Kbd>Ctrl</Kbd>
+```
+
+### KbdGroup
+
+Use the `KbdGroup` component to group `Kbd` components together.
+
+| Prop     | Type     | Default |
+| -------- | -------- | ------- |
+| `@class` | `string` | ``      |
+
+```hbs showLineNumbers
+<KbdGroup>
+  <Kbd>Ctrl</Kbd>
+  <Kbd>B</Kbd>
+</KbdGroup>
+```

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "progress",
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/ember-lyra/ui/progress.gts",
+      "content": "import { htmlSafe } from '@ember/template';\nimport Component from '@glimmer/component';\n\nimport { cn } from '@/lib/utils';\n\ninterface ProgressSignature {\n  Element: HTMLDivElement;\n  Args: {\n    value?: number;\n    class?: string;\n  };\n  Blocks: {\n    default: [];\n  };\n}\n\nclass Progress extends Component<ProgressSignature> {\n  get indicatorStyle() {\n    const value = this.args.value ?? 0;\n    return htmlSafe(`transform: translateX(-${100 - value}%)`);\n  }\n\n  <template>\n    <div\n      class={{cn\n        \"bg-primary/20 relative h-2 w-full overflow-hidden rounded-full\"\n        @class\n      }}\n      data-slot=\"progress\"\n      ...attributes\n    >\n      <div\n        class=\"bg-primary h-full w-full flex-1 transition-all\"\n        data-slot=\"progress-indicator\"\n        style={{this.indicatorStyle}}\n      ></div>\n    </div>\n  </template>\n}\n\nexport { Progress };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

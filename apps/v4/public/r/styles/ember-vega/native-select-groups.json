@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "native-select-groups",
+  "title": "Native Select Groups",
+  "dependencies": [],
+  "registryDependencies": [
+    "native-select"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-vega/examples/native-select-groups.gts",
+      "content": "import {\n  NativeSelect,\n  NativeSelectOptGroup,\n  NativeSelectOption,\n} from '@/ui/native-select';\n\n<template>\n  <NativeSelect>\n    <NativeSelectOption value=\"\">Select department</NativeSelectOption>\n    <NativeSelectOptGroup label=\"Engineering\">\n      <NativeSelectOption value=\"frontend\">Frontend</NativeSelectOption>\n      <NativeSelectOption value=\"backend\">Backend</NativeSelectOption>\n      <NativeSelectOption value=\"devops\">DevOps</NativeSelectOption>\n    </NativeSelectOptGroup>\n    <NativeSelectOptGroup label=\"Sales\">\n      <NativeSelectOption value=\"sales-rep\">Sales Rep</NativeSelectOption>\n      <NativeSelectOption value=\"account-manager\">Account Manager</NativeSelectOption>\n      <NativeSelectOption value=\"sales-director\">Sales Director</NativeSelectOption>\n    </NativeSelectOptGroup>\n    <NativeSelectOptGroup label=\"Operations\">\n      <NativeSelectOption value=\"support\">Customer Support</NativeSelectOption>\n      <NativeSelectOption value=\"product-manager\">Product Manager</NativeSelectOption>\n      <NativeSelectOption value=\"ops-manager\">Operations Manager</NativeSelectOption>\n    </NativeSelectOptGroup>\n  </NativeSelect>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

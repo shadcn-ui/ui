@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "slider-demo",
+  "title": "Slider Demo",
+  "dependencies": [
+    "@ember/helper"
+  ],
+  "registryDependencies": [
+    "slider"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-maia/examples/slider-demo.gts",
+      "content": "import { array } from '@ember/helper';\n\nimport { Slider } from '@/ui/slider';\n\n<template>\n  <Slider\n    @class=\"w-[60%]\"\n    @defaultValue={{array 50}}\n    @max={{100}}\n    @step={{1}}\n  />\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

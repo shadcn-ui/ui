@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sonner-description",
+  "title": "Sonner Description",
+  "dependencies": [
+    "@ember/modifier",
+    "@ember/service"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-nova/examples/sonner-description.gts",
+      "content": "import { on } from '@ember/modifier';\nimport { service } from '@ember/service';\nimport Component from '@glimmer/component';\n\nimport { Button } from '@/ui/button';\n\nimport type ToastService from '@/services/toast';\n\nexport default class SonnerDescription extends Component {\n  @service declare toast: ToastService;\n\n  showToast = () => {\n    this.toast.add({\n      message: 'Event has been created',\n      description: 'Monday, January 3rd at 6:00pm',\n    });\n  };\n\n  <template>\n    <Button @variant=\"outline\" class=\"w-fit\" {{on \"click\" this.showToast}}>\n      Show Toast\n    </Button>\n  </template>\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

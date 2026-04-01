@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hover-card-demo",
+  "title": "Hover Card Demo",
+  "dependencies": [],
+  "registryDependencies": [
+    "avatar",
+    "button",
+    "hover-card"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-maia/examples/hover-card-demo.gts",
+      "content": "import { Avatar, AvatarFallback, AvatarImage } from '@/ui/avatar';\nimport { Button } from '@/ui/button';\nimport {\n  HoverCard,\n  HoverCardContent,\n  HoverCardTrigger,\n} from '@/ui/hover-card';\n\n<template>\n  <HoverCard>\n    <HoverCardTrigger @asChild={{true}} as |trigger|>\n      <Button @variant=\"link\" {{trigger.modifiers}}>@nextjs</Button>\n    </HoverCardTrigger>\n    <HoverCardContent @class=\"w-80\">\n      <div class=\"flex justify-between gap-4\">\n        <Avatar>\n          <AvatarImage @src=\"https://github.com/vercel.png\" />\n          <AvatarFallback>VC</AvatarFallback>\n        </Avatar>\n        <div class=\"space-y-1\">\n          <h4 class=\"text-sm font-semibold\">@nextjs</h4>\n          <p class=\"text-sm\">\n            The React Framework – created and maintained by @vercel.\n          </p>\n          <div\n            class=\"text-muted-foreground flex items-center gap-2 pt-2 text-xs\"\n          >\n            Joined December 2021\n          </div>\n        </div>\n      </div>\n    </HoverCardContent>\n  </HoverCard>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spinner-demo",
+  "title": "Spinner Demo",
+  "dependencies": [],
+  "registryDependencies": [
+    "item",
+    "spinner"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-nova/examples/spinner-demo.gts",
+      "content": "import { Item, ItemContent, ItemMedia, ItemTitle } from '@/ui/item';\nimport { Spinner } from '@/ui/spinner';\n\n<template>\n  <div class=\"flex w-full max-w-xs flex-col gap-4 [--radius:1rem]\">\n    <Item @variant=\"muted\">\n      <ItemMedia>\n        <Spinner />\n      </ItemMedia>\n      <ItemContent>\n        <ItemTitle class=\"line-clamp-1\">Processing payment...</ItemTitle>\n      </ItemContent>\n      <ItemContent class=\"flex-none justify-end\">\n        <span class=\"text-sm tabular-nums\">$100.00</span>\n      </ItemContent>\n    </Item>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

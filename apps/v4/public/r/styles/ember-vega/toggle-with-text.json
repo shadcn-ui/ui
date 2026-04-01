@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toggle-with-text",
+  "title": "Toggle With Text",
+  "dependencies": [],
+  "registryDependencies": [
+    "toggle"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-vega/examples/toggle-with-text.gts",
+      "content": "import { Toggle } from '@/ui/toggle';\n\nimport Italic from '~icons/lucide/italic';\n\n<template>\n  <Toggle aria-label=\"Toggle italic\">\n    <Italic />\n    Italic\n  </Toggle>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

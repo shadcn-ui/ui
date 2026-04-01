@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-icon",
+  "title": "Button Icon",
+  "dependencies": [],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-lyra/examples/button-icon.gts",
+      "content": "import { Button } from '@/ui/button';\n\nimport CircleFadingArrowUpIcon from '~icons/lucide/circle-fading-arrow-up';\n\n<template>\n  <Button @size=\"icon\" @variant=\"outline\" aria-label=\"Submit\">\n    <CircleFadingArrowUpIcon />\n  </Button>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

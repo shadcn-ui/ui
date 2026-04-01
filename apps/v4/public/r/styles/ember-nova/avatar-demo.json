@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "avatar-demo",
+  "title": "Avatar Demo",
+  "dependencies": [],
+  "registryDependencies": [
+    "avatar"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-nova/examples/avatar-demo.gts",
+      "content": "import { Avatar, AvatarFallback, AvatarImage } from '@/ui/avatar';\n\n<template>\n  {{! template-lint-disable no-potential-path-strings }}\n  <div class=\"flex flex-row flex-wrap items-center gap-12\">\n    <Avatar>\n      <AvatarImage @alt=\"@shadcn\" @src=\"https://github.com/shadcn.png\" />\n      <AvatarFallback>CN</AvatarFallback>\n    </Avatar>\n    <Avatar @class=\"rounded-lg\">\n      <AvatarImage\n        @alt=\"@evilrabbit\"\n        @src=\"https://github.com/evilrabbit.png\"\n      />\n      <AvatarFallback>ER</AvatarFallback>\n    </Avatar>\n    <div\n      class=\"*:data-[slot=avatar]:ring-background flex -space-x-2 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:grayscale\"\n    >\n      <Avatar>\n        <AvatarImage @alt=\"@shadcn\" @src=\"https://github.com/shadcn.png\" />\n        <AvatarFallback>CN</AvatarFallback>\n      </Avatar>\n      <Avatar>\n        <AvatarImage\n          @alt=\"@maxleiter\"\n          @src=\"https://github.com/maxleiter.png\"\n        />\n        <AvatarFallback>LR</AvatarFallback>\n      </Avatar>\n      <Avatar>\n        <AvatarImage\n          @alt=\"@evilrabbit\"\n          @src=\"https://github.com/evilrabbit.png\"\n        />\n        <AvatarFallback>ER</AvatarFallback>\n      </Avatar>\n    </div>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

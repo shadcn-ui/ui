@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dropdown-menu-checkboxes",
+  "title": "Dropdown Menu Checkboxes",
+  "dependencies": [],
+  "registryDependencies": [
+    "button",
+    "dropdown-menu"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-mira/examples/dropdown-menu-checkboxes.gts",
+      "content": "import Component from '@glimmer/component';\nimport { tracked } from '@glimmer/tracking';\n\nimport { Button } from '@/ui/button';\nimport {\n  DropdownMenu,\n  DropdownMenuCheckboxItem,\n  DropdownMenuContent,\n  DropdownMenuLabel,\n  DropdownMenuSeparator,\n  DropdownMenuTrigger,\n} from '@/ui/dropdown-menu';\n\nexport default class DropdownMenuCheckboxesDemo extends Component {\n  @tracked showStatusBar = true;\n  @tracked showActivityBar = false;\n  @tracked showPanel = false;\n\n  setShowStatusBar = (checked: boolean) => {\n    this.showStatusBar = checked;\n  };\n\n  setShowActivityBar = (checked: boolean) => {\n    this.showActivityBar = checked;\n  };\n\n  setShowPanel = (checked: boolean) => {\n    this.showPanel = checked;\n  };\n\n  <template>\n    <DropdownMenu>\n      <DropdownMenuTrigger>\n        <Button @variant=\"outline\">Open</Button>\n      </DropdownMenuTrigger>\n      <DropdownMenuContent @class=\"w-56\">\n        <DropdownMenuLabel>Appearance</DropdownMenuLabel>\n        <DropdownMenuSeparator />\n        <DropdownMenuCheckboxItem\n          @checked={{this.showStatusBar}}\n          @onCheckedChange={{this.setShowStatusBar}}\n        >\n          Status Bar\n        </DropdownMenuCheckboxItem>\n        <DropdownMenuCheckboxItem\n          @checked={{this.showActivityBar}}\n          @onCheckedChange={{this.setShowActivityBar}}\n        >\n          Activity Bar\n        </DropdownMenuCheckboxItem>\n        <DropdownMenuCheckboxItem\n          @checked={{this.showPanel}}\n          @onCheckedChange={{this.setShowPanel}}\n        >\n          Panel\n        </DropdownMenuCheckboxItem>\n      </DropdownMenuContent>\n    </DropdownMenu>\n  </template>\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

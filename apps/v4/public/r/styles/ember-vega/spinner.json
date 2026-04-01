@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spinner",
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/ember-vega/ui/spinner.gts",
+      "content": "import { cn } from '@/lib/utils';\n\nimport type { TOC } from '@ember/component/template-only';\n\nimport Loader2 from '~icons/lucide/loader-2';\n\ninterface SpinnerSignature {\n  Element: HTMLOrSVGElement;\n  Args: {\n    class?: string;\n  };\n}\n\nconst Spinner: TOC<SpinnerSignature> = <template>\n  <Loader2\n    aria-label=\"Loading\"\n    class={{cn \"size-4 animate-spin\" @class}}\n    role=\"status\"\n    ...attributes\n  />\n</template>;\n\nexport { Spinner };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

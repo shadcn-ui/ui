@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "textarea",
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/ember-mira/ui/textarea.gts",
+      "content": "import { cn } from '@/lib/utils';\n\nimport type { TOC } from '@ember/component/template-only';\n\nexport interface TextareaSignature {\n  Element: HTMLTextAreaElement;\n  Args: {\n    class?: string;\n  };\n  Blocks: {\n    default: [];\n  };\n}\n\nconst Textarea: TOC<TextareaSignature> = <template>\n  <textarea\n    class={{cn\n      \"border-input placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:bg-input/30 flex field-sizing-content min-h-16 w-full rounded-md border bg-transparent px-3 py-2 text-base shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50 md:text-sm\"\n      @class\n    }}\n    data-slot=\"textarea\"\n    ...attributes\n  />\n</template>;\n\nexport { Textarea };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

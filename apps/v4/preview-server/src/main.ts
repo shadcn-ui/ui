@@ -81,8 +81,12 @@ async function renderPreview() {
     } else {
       app.innerHTML = `<p>Svelte component "${componentName}" not found.</p>`
     }
+  } else if (framework === "ember") {
+    // Ember components require a full Ember runtime (owner/container) to render.
+    // Live preview is not yet supported — the code tab shows the source correctly.
+    app.innerHTML = `<p class="text-sm text-muted-foreground p-4">Ember live preview coming soon. See the Code tab for the source.</p>`
   } else {
-    app.innerHTML = `<p>Unknown framework "${framework}". Supported: vue, svelte</p>`
+    app.innerHTML = `<p>Unknown framework "${framework}". Supported: vue, svelte, ember</p>`
   }
 }
 

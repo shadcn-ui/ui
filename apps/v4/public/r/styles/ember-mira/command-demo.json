@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "command-demo",
+  "title": "Command Demo",
+  "dependencies": [],
+  "registryDependencies": [
+    "command"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-mira/examples/command-demo.gts",
+      "content": "import {\n  Command,\n  CommandEmpty,\n  CommandGroup,\n  CommandInput,\n  CommandItem,\n  CommandList,\n  CommandSeparator,\n  CommandShortcut,\n} from '@/ui/command';\n\nimport Calculator from '~icons/lucide/calculator';\nimport Calendar from '~icons/lucide/calendar';\nimport CreditCard from '~icons/lucide/credit-card';\nimport Settings from '~icons/lucide/settings';\nimport Smile from '~icons/lucide/smile';\nimport User from '~icons/lucide/user';\n\n<template>\n  <Command @class=\"rounded-lg border shadow-md md:min-w-[450px]\">\n    <CommandInput @placeholder=\"Type a command or search...\" />\n    <CommandList>\n      <CommandEmpty>No results found.</CommandEmpty>\n      <CommandGroup @heading=\"Suggestions\">\n        <CommandItem @value=\"calendar\">\n          <Calendar />\n          <span>Calendar</span>\n        </CommandItem>\n        <CommandItem @value=\"emoji\">\n          <Smile />\n          <span>Search Emoji</span>\n        </CommandItem>\n        <CommandItem @disabled={{true}} @value=\"calculator\">\n          <Calculator />\n          <span>Calculator</span>\n        </CommandItem>\n      </CommandGroup>\n      <CommandSeparator />\n      <CommandGroup @heading=\"Settings\">\n        <CommandItem @value=\"profile\">\n          <User />\n          <span>Profile</span>\n          <CommandShortcut>⌘P</CommandShortcut>\n        </CommandItem>\n        <CommandItem @value=\"billing\">\n          <CreditCard />\n          <span>Billing</span>\n          <CommandShortcut>⌘B</CommandShortcut>\n        </CommandItem>\n        <CommandItem @value=\"settings\">\n          <Settings />\n          <span>Settings</span>\n          <CommandShortcut>⌘S</CommandShortcut>\n        </CommandItem>\n      </CommandGroup>\n    </CommandList>\n  </Command>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-group-nested",
+  "title": "Button Group Nested",
+  "dependencies": [],
+  "registryDependencies": [
+    "button",
+    "button-group"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-vega/examples/button-group-nested.gts",
+      "content": "import { Button } from '@/ui/button';\nimport { ButtonGroup } from '@/ui/button-group';\n\nimport ArrowLeftIcon from '~icons/lucide/arrow-left';\nimport ArrowRightIcon from '~icons/lucide/arrow-right';\n\n<template>\n  <ButtonGroup>\n    <ButtonGroup>\n      <Button @size=\"sm\" @variant=\"outline\">\n        1\n      </Button>\n      <Button @size=\"sm\" @variant=\"outline\">\n        2\n      </Button>\n      <Button @size=\"sm\" @variant=\"outline\">\n        3\n      </Button>\n    </ButtonGroup>\n    <ButtonGroup>\n      <Button @size=\"icon-sm\" @variant=\"outline\" aria-label=\"Previous\">\n        <ArrowLeftIcon />\n      </Button>\n      <Button @size=\"icon-sm\" @variant=\"outline\" aria-label=\"Next\">\n        <ArrowRightIcon />\n      </Button>\n    </ButtonGroup>\n  </ButtonGroup>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

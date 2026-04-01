@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-group-label",
+  "title": "Input Group Label",
+  "dependencies": [],
+  "registryDependencies": [
+    "input-group",
+    "label",
+    "tooltip"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-lyra/examples/input-group-label.gts",
+      "content": "import {\n  InputGroup,\n  InputGroupAddon,\n  InputGroupButton,\n  InputGroupInput,\n} from '@/ui/input-group';\nimport { Label } from '@/ui/label';\nimport {\n  Tooltip,\n  TooltipContent,\n  TooltipTrigger,\n} from '@/ui/tooltip';\n\nimport Info from '~icons/lucide/info';\n\n<template>\n  <div class=\"grid w-full max-w-sm gap-4\">\n    <InputGroup>\n      <InputGroupInput id=\"email\" placeholder=\"shadcn\" />\n      <InputGroupAddon>\n        <Label for=\"email\">@</Label>\n      </InputGroupAddon>\n    </InputGroup>\n\n    <InputGroup>\n      <InputGroupInput id=\"email-2\" placeholder=\"shadcn@vercel.com\" />\n      <InputGroupAddon @align=\"block-start\">\n        <Label @class=\"text-foreground\" for=\"email-2\">\n          Email\n        </Label>\n        <Tooltip>\n          <TooltipTrigger>\n            <InputGroupButton\n              @class=\"ml-auto rounded-full\"\n              @size=\"icon-xs\"\n              @variant=\"ghost\"\n              aria-label=\"Help\"\n            >\n              <Info />\n            </InputGroupButton>\n          </TooltipTrigger>\n          <TooltipContent>\n            <p>We'll use this to send you notifications</p>\n          </TooltipContent>\n        </Tooltip>\n      </InputGroupAddon>\n    </InputGroup>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

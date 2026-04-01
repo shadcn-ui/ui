@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "switch",
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/ember-vega/ui/switch.gts",
+      "content": "import { on } from '@ember/modifier';\nimport Component from '@glimmer/component';\nimport { tracked } from '@glimmer/tracking';\n\nimport { cn } from '@/lib/utils';\n\ninterface SwitchSignature {\n  Element: HTMLButtonElement;\n  Args: {\n    checked?: boolean;\n    disabled?: boolean;\n    onCheckedChange?: (checked: boolean) => void;\n    class?: string;\n  };\n}\n\nclass Switch extends Component<SwitchSignature> {\n  @tracked internalChecked = false;\n\n  get isChecked() {\n    return this.args.checked ?? this.internalChecked;\n  }\n\n  get rootClasses() {\n    return cn(\n      'peer data-[state=checked]:bg-primary data-[state=unchecked]:bg-input focus-visible:border-ring focus-visible:ring-ring/50 dark:data-[state=unchecked]:bg-input/80 inline-flex h-[1.15rem] w-8 shrink-0 items-center rounded-full border border-transparent shadow-xs transition-all outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50',\n      this.args.class\n    );\n  }\n\n  get thumbClasses() {\n    return cn(\n      'bg-background dark:data-[state=unchecked]:bg-foreground dark:data-[state=checked]:bg-primary-foreground pointer-events-none block size-4 rounded-full ring-0 transition-transform data-[state=checked]:translate-x-[calc(100%-2px)] data-[state=unchecked]:translate-x-0'\n    );\n  }\n\n  handleClick = (event: Event) => {\n    event.preventDefault();\n    if (this.args.disabled) return;\n\n    const newChecked = !this.isChecked;\n\n    // Update internal state if not controlled\n    if (this.args.checked === undefined) {\n      this.internalChecked = newChecked;\n    }\n\n    // Call the callback\n    this.args.onCheckedChange?.(newChecked);\n  };\n\n  <template>\n    <button\n      aria-checked={{if this.isChecked \"true\" \"false\"}}\n      class={{this.rootClasses}}\n      data-slot=\"switch\"\n      data-state={{if this.isChecked \"checked\" \"unchecked\"}}\n      disabled={{@disabled}}\n      role=\"switch\"\n      type=\"button\"\n      {{on \"click\" this.handleClick}}\n      ...attributes\n    >\n      <span\n        class={{this.thumbClasses}}\n        data-slot=\"switch-thumb\"\n        data-state={{if this.isChecked \"checked\" \"unchecked\"}}\n      ></span>\n    </button>\n  </template>\n}\n\nexport { Switch };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

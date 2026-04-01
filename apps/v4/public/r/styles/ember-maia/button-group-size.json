@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-group-size",
+  "title": "Button Group Size",
+  "dependencies": [],
+  "registryDependencies": [
+    "button",
+    "button-group"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-maia/examples/button-group-size.gts",
+      "content": "import { Button } from '@/ui/button';\nimport { ButtonGroup } from '@/ui/button-group';\n\nimport PlusIcon from '~icons/lucide/plus';\n\n<template>\n  <div class=\"flex flex-col items-start gap-8\">\n    <ButtonGroup>\n      <Button @size=\"sm\" @variant=\"outline\">\n        Small\n      </Button>\n      <Button @size=\"sm\" @variant=\"outline\">\n        Button\n      </Button>\n      <Button @size=\"sm\" @variant=\"outline\">\n        Group\n      </Button>\n      <Button @size=\"icon-sm\" @variant=\"outline\">\n        <PlusIcon />\n      </Button>\n    </ButtonGroup>\n    <ButtonGroup>\n      <Button @variant=\"outline\">Default</Button>\n      <Button @variant=\"outline\">Button</Button>\n      <Button @variant=\"outline\">Group</Button>\n      <Button @size=\"icon\" @variant=\"outline\">\n        <PlusIcon />\n      </Button>\n    </ButtonGroup>\n    <ButtonGroup>\n      <Button @size=\"lg\" @variant=\"outline\">\n        Large\n      </Button>\n      <Button @size=\"lg\" @variant=\"outline\">\n        Button\n      </Button>\n      <Button @size=\"lg\" @variant=\"outline\">\n        Group\n      </Button>\n      <Button @size=\"icon-lg\" @variant=\"outline\">\n        <PlusIcon />\n      </Button>\n    </ButtonGroup>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

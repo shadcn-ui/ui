@@ -1,0 +1,3187 @@
+{
+  "name": "force-ui/ember",
+  "homepage": "https://force-ui.com",
+  "items": [
+    {
+      "name": "index",
+      "dependencies": [
+        "@glimmer/component",
+        "@glimmer/tracking",
+        "ember-modifier",
+        "ember-provide-consume-context",
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "devDependencies": ["tw-animate-css", "shadcn"],
+      "registryDependencies": ["utils"],
+      "files": [],
+      "cssVars": {},
+      "css": {
+        "@import \"tw-animate-css\"": {},
+        "@import \"shadcn/tailwind.css\"": {},
+        "@layer base": {
+          "*": {
+            "@apply border-border outline-ring/50": {}
+          },
+          "body": {
+            "@apply bg-background text-foreground": {}
+          }
+        }
+      },
+      "type": "registry:style"
+    },
+    {
+      "name": "style",
+      "dependencies": [
+        "@glimmer/component",
+        "@glimmer/tracking",
+        "ember-modifier",
+        "ember-provide-consume-context",
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "devDependencies": ["tw-animate-css", "shadcn"],
+      "registryDependencies": ["utils"],
+      "files": [],
+      "cssVars": {},
+      "css": {
+        "@import \"tw-animate-css\"": {},
+        "@import \"shadcn/tailwind.css\"": {},
+        "@layer base": {
+          "*": {
+            "@apply border-border outline-ring/50": {}
+          },
+          "body": {
+            "@apply bg-background text-foreground": {}
+          }
+        }
+      },
+      "type": "registry:style"
+    },
+    {
+      "name": "accordion",
+      "dependencies": ["ember-modifier", "ember-provide-consume-context"],
+      "files": [
+        {
+          "path": "registry/ember-mira/ui/accordion.gts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "alert-dialog",
+      "dependencies": ["ember-modifier", "ember-provide-consume-context"],
+      "files": [
+        {
+          "path": "registry/ember-mira/ui/alert-dialog.gts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "alert",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/ember-mira/ui/alert/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/ember-mira/ui/alert/alert.gts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "aspect-ratio",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/ember-mira/ui/aspect-ratio.gts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "avatar",
+      "dependencies": ["ember-truth-helpers"],
+      "files": [
+        {
+          "path": "registry/ember-mira/ui/avatar/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/ember-mira/ui/avatar/avatar.gts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "badge",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/ember-mira/ui/badge/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/ember-mira/ui/badge/badge.gts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "breadcrumb",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/ember-mira/ui/breadcrumb.gts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "button-group",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/ember-mira/ui/button-group/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/ember-mira/ui/button-group/button-group.gts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "button",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/ember-mira/ui/button/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/ember-mira/ui/button/button.gts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "card",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/ember-mira/ui/card.gts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "checkbox",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/ember-mira/ui/checkbox.gts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "collapsible",
+      "dependencies": ["ember-provide-consume-context"],
+      "files": [
+        {
+          "path": "registry/ember-mira/ui/collapsible.gts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "command",
+      "dependencies": [
+        "ember-modifier",
+        "ember-provide-consume-context",
+        "tracked-built-ins"
+      ],
+      "files": [
+        {
+          "path": "registry/ember-mira/ui/command.gts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "context-menu",
+      "dependencies": [
+        "@floating-ui/dom",
+        "ember-click-outside",
+        "ember-modifier",
+        "ember-provide-consume-context"
+      ],
+      "files": [
+        {
+          "path": "registry/ember-mira/ui/context-menu.gts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "dialog",
+      "dependencies": ["ember-modifier", "ember-provide-consume-context"],
+      "files": [
+        {
+          "path": "registry/ember-mira/ui/dialog.gts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "dropdown-menu",
+      "dependencies": [
+        "@floating-ui/dom",
+        "ember-click-outside",
+        "ember-modifier",
+        "ember-provide-consume-context"
+      ],
+      "files": [
+        {
+          "path": "registry/ember-mira/ui/dropdown-menu.gts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "empty",
+      "dependencies": ["class-variance-authority"],
+      "files": [
+        {
+          "path": "registry/ember-mira/ui/empty/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/ember-mira/ui/empty/empty.gts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "field",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/ember-mira/ui/field/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/ember-mira/ui/field/field.gts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "hover-card",
+      "dependencies": [
+        "@floating-ui/dom",
+        "ember-modifier",
+        "ember-provide-consume-context"
+      ],
+      "files": [
+        {
+          "path": "registry/ember-mira/ui/hover-card.gts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "input-group",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/ember-mira/ui/input-group/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/ember-mira/ui/input-group/input-group.gts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "input-otp",
+      "dependencies": ["ember-modifier", "ember-provide-consume-context"],
+      "files": [
+        {
+          "path": "registry/ember-mira/ui/input-otp.gts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "input",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/ember-mira/ui/input.gts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "item",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/ember-mira/ui/item/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/ember-mira/ui/item/item.gts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "kbd",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/ember-mira/ui/kbd.gts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "label",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/ember-mira/ui/label.gts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "native-select",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/ember-mira/ui/native-select.gts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "pagination",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/ember-mira/ui/pagination.gts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "popover",
+      "dependencies": [
+        "@floating-ui/dom",
+        "ember-click-outside",
+        "ember-modifier",
+        "ember-provide-consume-context"
+      ],
+      "files": [
+        {
+          "path": "registry/ember-mira/ui/popover.gts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "progress",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/ember-mira/ui/progress.gts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "radio-group",
+      "dependencies": ["ember-provide-consume-context"],
+      "files": [
+        {
+          "path": "registry/ember-mira/ui/radio-group.gts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "scroll-area",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/ember-mira/ui/scroll-area.gts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "select",
+      "dependencies": [
+        "@floating-ui/dom",
+        "ember-click-outside",
+        "ember-modifier",
+        "ember-provide-consume-context"
+      ],
+      "files": [
+        {
+          "path": "registry/ember-mira/ui/select.gts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "separator",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/ember-mira/ui/separator.gts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "sheet",
+      "dependencies": ["ember-modifier", "ember-provide-consume-context"],
+      "files": [
+        {
+          "path": "registry/ember-mira/ui/sheet.gts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "sidebar",
+      "dependencies": [
+        "ember-modifier",
+        "ember-provide-consume-context",
+        "ember-truth-helpers"
+      ],
+      "files": [
+        {
+          "path": "registry/ember-mira/ui/sidebar/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/ember-mira/ui/sidebar/sidebar.gts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "skeleton",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/ember-mira/ui/skeleton.gts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "slider",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/ember-mira/ui/slider.gts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "sonner",
+      "dependencies": [
+        "ember-click-outside",
+        "ember-modifier",
+        "ember-truth-helpers"
+      ],
+      "files": [
+        {
+          "path": "registry/ember-mira/ui/sonner.gts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "spinner",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/ember-mira/ui/spinner.gts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "switch",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/ember-mira/ui/switch.gts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "table",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/ember-mira/ui/table.gts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "tabs",
+      "dependencies": ["ember-provide-consume-context"],
+      "files": [
+        {
+          "path": "registry/ember-mira/ui/tabs.gts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "textarea",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/ember-mira/ui/textarea.gts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "toggle-group",
+      "dependencies": ["ember-provide-consume-context"],
+      "files": [
+        {
+          "path": "registry/ember-mira/ui/toggle-group/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/ember-mira/ui/toggle-group/toggle-group.gts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "toggle",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/ember-mira/ui/toggle/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/ember-mira/ui/toggle/toggle.gts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "tooltip",
+      "dependencies": [
+        "@floating-ui/dom",
+        "ember-modifier",
+        "ember-provide-consume-context"
+      ],
+      "files": [
+        {
+          "path": "registry/ember-mira/ui/tooltip.gts",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "accordion-demo",
+      "title": "Accordion Demo",
+      "dependencies": [],
+      "registryDependencies": ["accordion"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/accordion-demo.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "alert-demo",
+      "title": "Alert Demo",
+      "dependencies": [],
+      "registryDependencies": ["alert"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/alert-demo.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "alert-dialog-demo",
+      "title": "Alert Dialog Demo",
+      "dependencies": [],
+      "registryDependencies": ["alert-dialog", "button"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/alert-dialog-demo.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "appearance-settings",
+      "title": "Appearance Settings",
+      "dependencies": ["@ember/helper", "@ember/modifier"],
+      "registryDependencies": [
+        "button",
+        "button-group",
+        "field",
+        "input",
+        "radio-group",
+        "switch"
+      ],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/appearance-settings.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "aspect-ratio-demo",
+      "title": "Aspect Ratio Demo",
+      "dependencies": [],
+      "registryDependencies": ["aspect-ratio"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/aspect-ratio-demo.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "avatar-demo",
+      "title": "Avatar Demo",
+      "dependencies": [],
+      "registryDependencies": ["avatar"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/avatar-demo.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "badge-demo",
+      "title": "Badge Demo",
+      "dependencies": [],
+      "registryDependencies": ["badge"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/badge-demo.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "breadcrumb-demo",
+      "title": "Breadcrumb Demo",
+      "dependencies": ["@ember/routing"],
+      "registryDependencies": ["breadcrumb", "dropdown-menu"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/breadcrumb-demo.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "breadcrumb-dropdown",
+      "title": "Breadcrumb Dropdown",
+      "dependencies": [],
+      "registryDependencies": ["breadcrumb", "dropdown-menu"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/breadcrumb-dropdown.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "breadcrumb-ellipsis",
+      "title": "Breadcrumb Ellipsis",
+      "dependencies": [],
+      "registryDependencies": ["breadcrumb"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/breadcrumb-ellipsis.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "breadcrumb-link",
+      "title": "Breadcrumb Link",
+      "dependencies": ["@ember/routing"],
+      "registryDependencies": ["breadcrumb"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/breadcrumb-link.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "breadcrumb-responsive",
+      "title": "Breadcrumb Responsive",
+      "dependencies": ["@ember/routing"],
+      "registryDependencies": ["breadcrumb", "dropdown-menu"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/breadcrumb-responsive.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "breadcrumb-separator",
+      "title": "Breadcrumb Separator",
+      "dependencies": [],
+      "registryDependencies": ["breadcrumb"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/breadcrumb-separator.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-as-link",
+      "title": "Button As Link",
+      "dependencies": ["@ember/routing"],
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/button-as-link.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-default",
+      "title": "Button Default",
+      "dependencies": [],
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/button-default.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-demo",
+      "title": "Button Demo",
+      "dependencies": [],
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/button-demo.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-destructive",
+      "title": "Button Destructive",
+      "dependencies": [],
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/button-destructive.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-ghost",
+      "title": "Button Ghost",
+      "dependencies": [],
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/button-ghost.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-group-demo",
+      "title": "Button Group Demo",
+      "dependencies": [],
+      "registryDependencies": ["button", "button-group", "dropdown-menu"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/button-group-demo.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-group-dropdown",
+      "title": "Button Group Dropdown",
+      "dependencies": [],
+      "registryDependencies": ["button", "button-group", "dropdown-menu"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/button-group-dropdown.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-group-input-group",
+      "title": "Button Group Input Group",
+      "dependencies": ["@ember/modifier"],
+      "registryDependencies": [
+        "button",
+        "button-group",
+        "input-group",
+        "tooltip"
+      ],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/button-group-input-group.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-group-input",
+      "title": "Button Group Input",
+      "dependencies": [],
+      "registryDependencies": ["button", "button-group", "input"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/button-group-input.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-group-nested",
+      "title": "Button Group Nested",
+      "dependencies": [],
+      "registryDependencies": ["button", "button-group"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/button-group-nested.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-group-orientation",
+      "title": "Button Group Orientation",
+      "dependencies": [],
+      "registryDependencies": ["button", "button-group"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/button-group-orientation.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-group-popover",
+      "title": "Button Group Popover",
+      "dependencies": ["ember-modifier"],
+      "registryDependencies": [
+        "button",
+        "button-group",
+        "popover",
+        "separator",
+        "textarea"
+      ],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/button-group-popover.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-group-select",
+      "title": "Button Group Select",
+      "dependencies": [],
+      "registryDependencies": ["button", "button-group", "input", "select"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/button-group-select.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-group-separator",
+      "title": "Button Group Separator",
+      "dependencies": [],
+      "registryDependencies": ["button", "button-group"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/button-group-separator.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-group-size",
+      "title": "Button Group Size",
+      "dependencies": [],
+      "registryDependencies": ["button", "button-group"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/button-group-size.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-group-split",
+      "title": "Button Group Split",
+      "dependencies": [],
+      "registryDependencies": ["button", "button-group"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/button-group-split.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-icon",
+      "title": "Button Icon",
+      "dependencies": [],
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/button-icon.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-link",
+      "title": "Button Link",
+      "dependencies": [],
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/button-link.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-loading",
+      "title": "Button Loading",
+      "dependencies": [],
+      "registryDependencies": ["button", "spinner"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/button-loading.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-outline",
+      "title": "Button Outline",
+      "dependencies": [],
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/button-outline.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-rounded",
+      "title": "Button Rounded",
+      "dependencies": [],
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/button-rounded.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-secondary",
+      "title": "Button Secondary",
+      "dependencies": [],
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/button-secondary.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-size",
+      "title": "Button Size",
+      "dependencies": [],
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/button-size.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-with-icon",
+      "title": "Button With Icon",
+      "dependencies": [],
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/button-with-icon.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "card-demo",
+      "title": "Card Demo",
+      "dependencies": [],
+      "registryDependencies": ["button", "card", "input", "label"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/card-demo.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "checkbox-demo",
+      "title": "Checkbox Demo",
+      "dependencies": [],
+      "registryDependencies": ["checkbox", "label"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/checkbox-demo.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "collapsible-demo",
+      "title": "Collapsible Demo",
+      "dependencies": ["@ember/modifier"],
+      "registryDependencies": ["button", "collapsible"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/collapsible-demo.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "combobox-demo",
+      "title": "Combobox Demo",
+      "dependencies": ["ember-truth-helpers", "@ember/helper"],
+      "registryDependencies": ["button", "command", "popover"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/combobox-demo.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "combobox-dropdown-menu",
+      "title": "Combobox Dropdown Menu",
+      "dependencies": ["@ember/helper"],
+      "registryDependencies": ["button", "command", "dropdown-menu"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/combobox-dropdown-menu.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "combobox-popover",
+      "title": "Combobox Popover",
+      "dependencies": ["@ember/helper"],
+      "registryDependencies": ["button", "command", "popover"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/combobox-popover.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "combobox-responsive",
+      "title": "Combobox Responsive",
+      "dependencies": ["ember-modifier"],
+      "registryDependencies": ["button", "command", "popover", "sheet"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/combobox-responsive.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "command-demo",
+      "title": "Command Demo",
+      "dependencies": [],
+      "registryDependencies": ["command"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/command-demo.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "command-dialog",
+      "title": "Command Dialog",
+      "dependencies": ["ember-keyboard/helpers/on-key"],
+      "registryDependencies": ["command"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/command-dialog.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "context-menu-demo",
+      "title": "Context Menu Demo",
+      "dependencies": [],
+      "registryDependencies": ["context-menu"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/context-menu-demo.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "dialog-close-button",
+      "title": "Dialog Close Button",
+      "dependencies": [],
+      "registryDependencies": ["button", "dialog", "input", "label"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/dialog-close-button.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "dialog-demo",
+      "title": "Dialog Demo",
+      "dependencies": ["@ember/modifier"],
+      "registryDependencies": ["button", "dialog", "input", "label"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/dialog-demo.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "dropdown-menu-checkboxes",
+      "title": "Dropdown Menu Checkboxes",
+      "dependencies": [],
+      "registryDependencies": ["button", "dropdown-menu"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/dropdown-menu-checkboxes.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "dropdown-menu-demo",
+      "title": "Dropdown Menu Demo",
+      "dependencies": [],
+      "registryDependencies": ["button", "dropdown-menu"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/dropdown-menu-demo.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "dropdown-menu-dialog",
+      "title": "Dropdown Menu Dialog",
+      "dependencies": ["@ember/helper"],
+      "registryDependencies": [
+        "button",
+        "dialog",
+        "dropdown-menu",
+        "field",
+        "input",
+        "label",
+        "textarea"
+      ],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/dropdown-menu-dialog.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "dropdown-menu-radio-group",
+      "title": "Dropdown Menu Radio Group",
+      "dependencies": [],
+      "registryDependencies": ["button", "dropdown-menu"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/dropdown-menu-radio-group.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "empty-avatar-group",
+      "title": "Empty Avatar Group",
+      "dependencies": [],
+      "registryDependencies": ["avatar", "button", "empty"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/empty-avatar-group.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "empty-avatar",
+      "title": "Empty Avatar",
+      "dependencies": [],
+      "registryDependencies": ["avatar", "button", "empty"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/empty-avatar.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "empty-background",
+      "title": "Empty Background",
+      "dependencies": [],
+      "registryDependencies": ["button", "empty"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/empty-background.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "empty-demo",
+      "title": "Empty Demo",
+      "dependencies": [],
+      "registryDependencies": ["button", "empty"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/empty-demo.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "empty-input-group",
+      "title": "Empty Input Group",
+      "dependencies": [],
+      "registryDependencies": ["empty", "input-group", "kbd"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/empty-input-group.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "empty-outline",
+      "title": "Empty Outline",
+      "dependencies": [],
+      "registryDependencies": ["button", "empty"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/empty-outline.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "field-checkbox-demo",
+      "title": "Field Checkbox Demo",
+      "dependencies": [],
+      "registryDependencies": ["checkbox", "field"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/field-checkbox-demo.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "field-checkbox",
+      "title": "Field Checkbox",
+      "dependencies": [],
+      "registryDependencies": ["checkbox", "field"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/field-checkbox.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "field-choice-card",
+      "title": "Field Choice Card",
+      "dependencies": [],
+      "registryDependencies": ["field", "radio-group"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/field-choice-card.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "field-demo",
+      "title": "Field Demo",
+      "dependencies": ["@ember/modifier"],
+      "registryDependencies": [
+        "button",
+        "checkbox",
+        "field",
+        "input",
+        "select",
+        "textarea"
+      ],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/field-demo.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "field-fieldset",
+      "title": "Field Fieldset",
+      "dependencies": [],
+      "registryDependencies": ["field", "input"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/field-fieldset.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "field-group",
+      "title": "Field Group",
+      "dependencies": [],
+      "registryDependencies": ["checkbox", "field"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/field-group.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "field-hear",
+      "title": "Field Hear",
+      "dependencies": ["@ember/helper"],
+      "registryDependencies": ["card", "checkbox", "field"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/field-hear.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "field-input",
+      "title": "Field Input",
+      "dependencies": [],
+      "registryDependencies": ["field", "input"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/field-input.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "field-radio",
+      "title": "Field Radio",
+      "dependencies": [],
+      "registryDependencies": ["field", "radio-group"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/field-radio.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "field-responsive",
+      "title": "Field Responsive",
+      "dependencies": ["@ember/modifier"],
+      "registryDependencies": ["button", "field", "input", "textarea"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/field-responsive.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "field-select",
+      "title": "Field Select",
+      "dependencies": [],
+      "registryDependencies": ["field", "select"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/field-select.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "field-slider",
+      "title": "Field Slider",
+      "dependencies": [],
+      "registryDependencies": ["field", "slider"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/field-slider.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "field-switch",
+      "title": "Field Switch",
+      "dependencies": [],
+      "registryDependencies": ["field", "switch"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/field-switch.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "field-textarea",
+      "title": "Field Textarea",
+      "dependencies": [],
+      "registryDependencies": ["field", "textarea"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/field-textarea.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "hover-card-demo",
+      "title": "Hover Card Demo",
+      "dependencies": [],
+      "registryDependencies": ["avatar", "button", "hover-card"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/hover-card-demo.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-demo",
+      "title": "Input Demo",
+      "dependencies": [],
+      "registryDependencies": ["input"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/input-demo.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-disabled",
+      "title": "Input Disabled",
+      "dependencies": [],
+      "registryDependencies": ["input"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/input-disabled.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-file",
+      "title": "Input File",
+      "dependencies": [],
+      "registryDependencies": ["input", "label"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/input-file.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-group-button-group",
+      "title": "Input Group Button Group",
+      "dependencies": [],
+      "registryDependencies": ["button-group", "input-group", "label"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/input-group-button-group.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-group-button-home",
+      "title": "Input Group Button Home",
+      "dependencies": ["@ember/modifier"],
+      "registryDependencies": ["input-group", "label", "popover"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/input-group-button-home.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-group-button",
+      "title": "Input Group Button",
+      "dependencies": ["@ember/modifier"],
+      "registryDependencies": ["input-group", "popover"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/input-group-button.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-group-demo",
+      "title": "Input Group Demo",
+      "dependencies": [],
+      "registryDependencies": [
+        "dropdown-menu",
+        "input-group",
+        "separator",
+        "tooltip"
+      ],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/input-group-demo.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-group-dropdown",
+      "title": "Input Group Dropdown",
+      "dependencies": [],
+      "registryDependencies": ["dropdown-menu", "input-group"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/input-group-dropdown.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-group-icon",
+      "title": "Input Group Icon",
+      "dependencies": [],
+      "registryDependencies": ["input-group"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/input-group-icon.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-group-label",
+      "title": "Input Group Label",
+      "dependencies": [],
+      "registryDependencies": ["input-group", "label", "tooltip"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/input-group-label.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-group-spinner",
+      "title": "Input Group Spinner",
+      "dependencies": [],
+      "registryDependencies": ["input-group", "spinner"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/input-group-spinner.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-group-text",
+      "title": "Input Group Text",
+      "dependencies": [],
+      "registryDependencies": ["input-group"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/input-group-text.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-group-textarea",
+      "title": "Input Group Textarea",
+      "dependencies": [],
+      "registryDependencies": ["input-group"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/input-group-textarea.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-group-tooltip",
+      "title": "Input Group Tooltip",
+      "dependencies": [],
+      "registryDependencies": ["input-group", "tooltip"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/input-group-tooltip.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-otp-controlled",
+      "title": "Input Otp Controlled",
+      "dependencies": [],
+      "registryDependencies": ["input-otp"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/input-otp-controlled.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-otp-demo",
+      "title": "Input Otp Demo",
+      "dependencies": [],
+      "registryDependencies": ["input-otp"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/input-otp-demo.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-otp-form",
+      "title": "Input Otp Form",
+      "dependencies": ["@ember/modifier"],
+      "registryDependencies": ["button", "field", "input-otp"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/input-otp-form.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-otp-pattern",
+      "title": "Input Otp Pattern",
+      "dependencies": [],
+      "registryDependencies": ["input-otp"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/input-otp-pattern.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-otp-separator",
+      "title": "Input Otp Separator",
+      "dependencies": [],
+      "registryDependencies": ["input-otp"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/input-otp-separator.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-with-button",
+      "title": "Input With Button",
+      "dependencies": [],
+      "registryDependencies": ["button", "input"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/input-with-button.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-with-label",
+      "title": "Input With Label",
+      "dependencies": [],
+      "registryDependencies": ["input", "label"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/input-with-label.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "item-avatar",
+      "title": "Item Avatar",
+      "dependencies": [],
+      "registryDependencies": ["avatar", "button", "item"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/item-avatar.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "item-demo",
+      "title": "Item Demo",
+      "dependencies": [],
+      "registryDependencies": ["button", "item"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/item-demo.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "item-dropdown",
+      "title": "Item Dropdown",
+      "dependencies": [],
+      "registryDependencies": ["avatar", "button", "dropdown-menu", "item"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/item-dropdown.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "item-group",
+      "title": "Item Group",
+      "dependencies": ["ember-truth-helpers"],
+      "registryDependencies": ["avatar", "button", "item"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/item-group.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "item-header",
+      "title": "Item Header",
+      "dependencies": [],
+      "registryDependencies": ["item"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/item-header.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "item-icon",
+      "title": "Item Icon",
+      "dependencies": [],
+      "registryDependencies": ["button", "item"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/item-icon.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "item-image",
+      "title": "Item Image",
+      "dependencies": [],
+      "registryDependencies": ["item"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/item-image.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "item-link",
+      "title": "Item Link",
+      "dependencies": [],
+      "registryDependencies": ["item"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/item-link.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "item-size",
+      "title": "Item Size",
+      "dependencies": [],
+      "registryDependencies": ["button", "item"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/item-size.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "item-variant",
+      "title": "Item Variant",
+      "dependencies": [],
+      "registryDependencies": ["button", "item"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/item-variant.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "kbd-button",
+      "title": "Kbd Button",
+      "dependencies": [],
+      "registryDependencies": ["button", "kbd"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/kbd-button.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "kbd-demo",
+      "title": "Kbd Demo",
+      "dependencies": [],
+      "registryDependencies": ["kbd"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/kbd-demo.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "kbd-group",
+      "title": "Kbd Group",
+      "dependencies": [],
+      "registryDependencies": ["kbd"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/kbd-group.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "kbd-input-group",
+      "title": "Kbd Input Group",
+      "dependencies": [],
+      "registryDependencies": ["input-group", "kbd"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/kbd-input-group.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "kbd-tooltip",
+      "title": "Kbd Tooltip",
+      "dependencies": [],
+      "registryDependencies": ["button", "button-group", "kbd", "tooltip"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/kbd-tooltip.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "label-demo",
+      "title": "Label Demo",
+      "dependencies": [],
+      "registryDependencies": ["checkbox", "label"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/label-demo.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "native-select-demo",
+      "title": "Native Select Demo",
+      "dependencies": [],
+      "registryDependencies": ["native-select"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/native-select-demo.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "native-select-disabled",
+      "title": "Native Select Disabled",
+      "dependencies": [],
+      "registryDependencies": ["native-select"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/native-select-disabled.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "native-select-form",
+      "title": "Native Select Form",
+      "dependencies": ["@ember/modifier"],
+      "registryDependencies": ["button", "field", "native-select"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/native-select-form.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "native-select-groups",
+      "title": "Native Select Groups",
+      "dependencies": [],
+      "registryDependencies": ["native-select"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/native-select-groups.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "native-select-input-group",
+      "title": "Native Select Input Group",
+      "dependencies": [],
+      "registryDependencies": ["input-group", "native-select"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/native-select-input-group.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "native-select-invalid",
+      "title": "Native Select Invalid",
+      "dependencies": [],
+      "registryDependencies": ["native-select"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/native-select-invalid.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "notion-prompt-form",
+      "title": "Notion Prompt Form",
+      "dependencies": ["@ember/helper", "@ember/modifier"],
+      "registryDependencies": [
+        "avatar",
+        "badge",
+        "command",
+        "dropdown-menu",
+        "field",
+        "input-group",
+        "popover",
+        "switch",
+        "tooltip"
+      ],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/notion-prompt-form.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "pagination-demo",
+      "title": "Pagination Demo",
+      "dependencies": [],
+      "registryDependencies": ["pagination"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/pagination-demo.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "popover-demo",
+      "title": "Popover Demo",
+      "dependencies": [],
+      "registryDependencies": ["button", "input", "label", "popover"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/popover-demo.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "progress-demo",
+      "title": "Progress Demo",
+      "dependencies": ["@ember/owner"],
+      "registryDependencies": ["progress"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/progress-demo.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "radio-group-demo",
+      "title": "Radio Group Demo",
+      "dependencies": [],
+      "registryDependencies": ["label", "radio-group"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/radio-group-demo.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "select-demo",
+      "title": "Select Demo",
+      "dependencies": [],
+      "registryDependencies": ["select"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/select-demo.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "select-scrollable",
+      "title": "Select Scrollable",
+      "dependencies": [],
+      "registryDependencies": ["select"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/select-scrollable.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "separator-demo",
+      "title": "Separator Demo",
+      "dependencies": [],
+      "registryDependencies": ["separator"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/separator-demo.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "sheet-demo",
+      "title": "Sheet Demo",
+      "dependencies": [],
+      "registryDependencies": ["button", "input", "label", "sheet"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/sheet-demo.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "sheet-side",
+      "title": "Sheet Side",
+      "dependencies": [],
+      "registryDependencies": ["button", "sheet"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/sheet-side.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "sidebar-controlled",
+      "title": "Sidebar Controlled",
+      "dependencies": [],
+      "registryDependencies": ["sidebar"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/sidebar-controlled.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "sidebar-demo",
+      "title": "Sidebar Demo",
+      "dependencies": [],
+      "registryDependencies": ["breadcrumb", "separator", "sidebar"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/sidebar-demo.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "sidebar-footer",
+      "title": "Sidebar Footer",
+      "dependencies": [],
+      "registryDependencies": ["dropdown-menu", "sidebar"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/sidebar-footer.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "sidebar-group-action",
+      "title": "Sidebar Group Action",
+      "dependencies": [],
+      "registryDependencies": ["sidebar"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/sidebar-group-action.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "sidebar-group-collapsible",
+      "title": "Sidebar Group Collapsible",
+      "dependencies": [],
+      "registryDependencies": ["collapsible", "sidebar"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/sidebar-group-collapsible.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "sidebar-group",
+      "title": "Sidebar Group",
+      "dependencies": [],
+      "registryDependencies": ["sidebar"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/sidebar-group.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "sidebar-header",
+      "title": "Sidebar Header",
+      "dependencies": [],
+      "registryDependencies": ["dropdown-menu", "sidebar"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/sidebar-header.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "sidebar-menu-action",
+      "title": "Sidebar Menu Action",
+      "dependencies": [],
+      "registryDependencies": ["dropdown-menu", "sidebar"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/sidebar-menu-action.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "sidebar-menu-badge",
+      "title": "Sidebar Menu Badge",
+      "dependencies": [],
+      "registryDependencies": ["sidebar"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/sidebar-menu-badge.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "sidebar-menu-collapsible",
+      "title": "Sidebar Menu Collapsible",
+      "dependencies": [],
+      "registryDependencies": ["collapsible", "sidebar"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/sidebar-menu-collapsible.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "sidebar-menu-sub",
+      "title": "Sidebar Menu Sub",
+      "dependencies": [],
+      "registryDependencies": ["sidebar"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/sidebar-menu-sub.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "sidebar-menu",
+      "title": "Sidebar Menu",
+      "dependencies": [],
+      "registryDependencies": ["sidebar"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/sidebar-menu.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "skeleton-card",
+      "title": "Skeleton Card",
+      "dependencies": [],
+      "registryDependencies": ["skeleton"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/skeleton-card.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "skeleton-demo",
+      "title": "Skeleton Demo",
+      "dependencies": [],
+      "registryDependencies": ["skeleton"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/skeleton-demo.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "slider-demo",
+      "title": "Slider Demo",
+      "dependencies": ["@ember/helper"],
+      "registryDependencies": ["slider"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/slider-demo.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "sonner-demo",
+      "title": "Sonner Demo",
+      "dependencies": ["@ember/modifier", "@ember/service"],
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/sonner-demo.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "sonner-description",
+      "title": "Sonner Description",
+      "dependencies": ["@ember/modifier", "@ember/service"],
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/sonner-description.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "sonner-position",
+      "title": "Sonner Position",
+      "dependencies": ["@ember/modifier", "@ember/service"],
+      "registryDependencies": ["button", "sonner"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/sonner-position.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "sonner-types",
+      "title": "Sonner Types",
+      "dependencies": ["@ember/modifier", "@ember/service"],
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/sonner-types.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "spinner-badge",
+      "title": "Spinner Badge",
+      "dependencies": [],
+      "registryDependencies": ["badge", "spinner"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/spinner-badge.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "spinner-button",
+      "title": "Spinner Button",
+      "dependencies": [],
+      "registryDependencies": ["button", "spinner"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/spinner-button.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "spinner-color",
+      "title": "Spinner Color",
+      "dependencies": [],
+      "registryDependencies": ["spinner"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/spinner-color.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "spinner-custom",
+      "title": "Spinner Custom",
+      "dependencies": ["@ember/component"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/spinner-custom.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "spinner-demo",
+      "title": "Spinner Demo",
+      "dependencies": [],
+      "registryDependencies": ["item", "spinner"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/spinner-demo.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "spinner-empty",
+      "title": "Spinner Empty",
+      "dependencies": [],
+      "registryDependencies": ["button", "empty", "spinner"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/spinner-empty.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "spinner-input-group",
+      "title": "Spinner Input Group",
+      "dependencies": [],
+      "registryDependencies": ["input-group", "spinner"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/spinner-input-group.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "spinner-item",
+      "title": "Spinner Item",
+      "dependencies": [],
+      "registryDependencies": ["button", "item", "progress", "spinner"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/spinner-item.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "spinner-size",
+      "title": "Spinner Size",
+      "dependencies": [],
+      "registryDependencies": ["spinner"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/spinner-size.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "switch-demo",
+      "title": "Switch Demo",
+      "dependencies": [],
+      "registryDependencies": ["label", "switch"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/switch-demo.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "table-demo",
+      "title": "Table Demo",
+      "dependencies": [],
+      "registryDependencies": ["table"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/table-demo.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "tabs-demo",
+      "title": "Tabs Demo",
+      "dependencies": [],
+      "registryDependencies": ["button", "card", "input", "label", "tabs"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/tabs-demo.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "textarea-demo",
+      "title": "Textarea Demo",
+      "dependencies": [],
+      "registryDependencies": ["textarea"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/textarea-demo.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "textarea-disabled",
+      "title": "Textarea Disabled",
+      "dependencies": [],
+      "registryDependencies": ["textarea"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/textarea-disabled.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "textarea-with-button",
+      "title": "Textarea With Button",
+      "dependencies": [],
+      "registryDependencies": ["button", "textarea"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/textarea-with-button.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "textarea-with-label",
+      "title": "Textarea With Label",
+      "dependencies": [],
+      "registryDependencies": ["label", "textarea"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/textarea-with-label.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "textarea-with-text",
+      "title": "Textarea With Text",
+      "dependencies": [],
+      "registryDependencies": ["label", "textarea"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/textarea-with-text.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "toggle-demo",
+      "title": "Toggle Demo",
+      "dependencies": [],
+      "registryDependencies": ["toggle"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/toggle-demo.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "toggle-disabled",
+      "title": "Toggle Disabled",
+      "dependencies": [],
+      "registryDependencies": ["toggle"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/toggle-disabled.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "toggle-group-disabled",
+      "title": "Toggle Group Disabled",
+      "dependencies": [],
+      "registryDependencies": ["toggle-group"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/toggle-group-disabled.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "toggle-group-lg",
+      "title": "Toggle Group Lg",
+      "dependencies": [],
+      "registryDependencies": ["toggle-group"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/toggle-group-lg.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "toggle-group-outline",
+      "title": "Toggle Group Outline",
+      "dependencies": [],
+      "registryDependencies": ["toggle-group"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/toggle-group-outline.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "toggle-group-single",
+      "title": "Toggle Group Single",
+      "dependencies": [],
+      "registryDependencies": ["toggle-group"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/toggle-group-single.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "toggle-group-sm",
+      "title": "Toggle Group Sm",
+      "dependencies": [],
+      "registryDependencies": ["toggle-group"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/toggle-group-sm.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "toggle-group-spacing",
+      "title": "Toggle Group Spacing",
+      "dependencies": [],
+      "registryDependencies": ["toggle-group"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/toggle-group-spacing.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "toggle-lg",
+      "title": "Toggle Lg",
+      "dependencies": [],
+      "registryDependencies": ["toggle"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/toggle-lg.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "toggle-outline",
+      "title": "Toggle Outline",
+      "dependencies": [],
+      "registryDependencies": ["toggle"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/toggle-outline.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "toggle-sm",
+      "title": "Toggle Sm",
+      "dependencies": [],
+      "registryDependencies": ["toggle"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/toggle-sm.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "toggle-with-text",
+      "title": "Toggle With Text",
+      "dependencies": [],
+      "registryDependencies": ["toggle"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/toggle-with-text.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "tooltip-demo",
+      "title": "Tooltip Demo",
+      "dependencies": [],
+      "registryDependencies": ["button", "tooltip"],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/tooltip-demo.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "typography-blockquote",
+      "title": "Typography Blockquote",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/typography-blockquote.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "typography-demo",
+      "title": "Typography Demo",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/typography-demo.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "typography-h1",
+      "title": "Typography H1",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/typography-h1.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "typography-h2",
+      "title": "Typography H2",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/typography-h2.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "typography-h3",
+      "title": "Typography H3",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/typography-h3.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "typography-h4",
+      "title": "Typography H4",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/typography-h4.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "typography-inline-code",
+      "title": "Typography Inline Code",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/typography-inline-code.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "typography-large",
+      "title": "Typography Large",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/typography-large.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "typography-lead",
+      "title": "Typography Lead",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/typography-lead.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "typography-list",
+      "title": "Typography List",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/typography-list.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "typography-muted",
+      "title": "Typography Muted",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/typography-muted.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "typography-p",
+      "title": "Typography P",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/typography-p.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "typography-small",
+      "title": "Typography Small",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/typography-small.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "typography-table",
+      "title": "Typography Table",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/ember-mira/examples/typography-table.gts",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "utils",
+      "dependencies": ["clsx", "tailwind-merge"],
+      "files": [
+        {
+          "path": "registry/ember-mira/lib/utils.ts",
+          "type": "registry:lib"
+        }
+      ],
+      "type": "registry:lib"
+    }
+  ]
+}

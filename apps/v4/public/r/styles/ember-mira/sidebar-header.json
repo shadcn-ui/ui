@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sidebar-header",
+  "title": "Sidebar Header",
+  "dependencies": [],
+  "registryDependencies": [
+    "dropdown-menu",
+    "sidebar"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-mira/examples/sidebar-header.gts",
+      "content": "import {\n  DropdownMenu,\n  DropdownMenuContent,\n  DropdownMenuItem,\n  DropdownMenuTrigger,\n} from '@/ui/dropdown-menu';\nimport {\n  Sidebar,\n  SidebarContent,\n  SidebarGroup,\n  SidebarHeader,\n  SidebarMenu,\n  SidebarMenuButton,\n  SidebarMenuItem,\n  SidebarProvider,\n  SidebarTrigger,\n} from '@/ui/sidebar';\n\nimport ChevronDown from '~icons/lucide/chevron-down';\n\n<template>\n  <SidebarProvider class=\"!min-h-full h-full\">\n    <Sidebar>\n      <SidebarHeader>\n        <SidebarMenu>\n          <SidebarMenuItem>\n            <DropdownMenu>\n              <DropdownMenuTrigger @class=\"w-full\">\n                <SidebarMenuButton>\n                  <span>Select Workspace</span>\n                  <ChevronDown class=\"ml-auto\" />\n                </SidebarMenuButton>\n              </DropdownMenuTrigger>\n              <DropdownMenuContent class=\"w-[--radix-popper-anchor-width]\">\n                <DropdownMenuItem>\n                  <span>Acme Inc</span>\n                </DropdownMenuItem>\n                <DropdownMenuItem>\n                  <span>Acme Corp.</span>\n                </DropdownMenuItem>\n              </DropdownMenuContent>\n            </DropdownMenu>\n          </SidebarMenuItem>\n        </SidebarMenu>\n      </SidebarHeader>\n      <SidebarContent>\n        <SidebarGroup />\n      </SidebarContent>\n    </Sidebar>\n    <main class=\"flex h-full flex-1 flex-col\">\n      <div class=\"flex items-center gap-2 border-b p-4\">\n        <SidebarTrigger />\n      </div>\n    </main>\n  </SidebarProvider>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

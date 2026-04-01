@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-group-input-group",
+  "title": "Button Group Input Group",
+  "dependencies": [
+    "@ember/modifier"
+  ],
+  "registryDependencies": [
+    "button",
+    "button-group",
+    "input-group",
+    "tooltip"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-lyra/examples/button-group-input-group.gts",
+      "content": "import { on } from '@ember/modifier';\nimport Component from '@glimmer/component';\nimport { tracked } from '@glimmer/tracking';\n\nimport { Button } from '@/ui/button';\nimport { ButtonGroup } from '@/ui/button-group';\nimport {\n  InputGroup,\n  InputGroupAddon,\n  InputGroupButton,\n  InputGroupInput,\n} from '@/ui/input-group';\nimport {\n  Tooltip,\n  TooltipContent,\n  TooltipTrigger,\n} from '@/ui/tooltip';\n\nimport AudioLinesIcon from '~icons/lucide/audio-lines';\nimport PlusIcon from '~icons/lucide/plus';\n\nexport default class ButtonGroupInputGroup extends Component {\n  @tracked voiceEnabled = false;\n\n  toggleVoice = () => {\n    this.voiceEnabled = !this.voiceEnabled;\n  };\n\n  <template>\n    <ButtonGroup class=\"[--radius:9999rem]\">\n      <ButtonGroup>\n        <Button @size=\"icon\" @variant=\"outline\" aria-label=\"Add\">\n          <PlusIcon />\n        </Button>\n      </ButtonGroup>\n      <ButtonGroup class=\"flex-1\">\n        <InputGroup>\n          <InputGroupInput\n            disabled={{this.voiceEnabled}}\n            placeholder={{if\n              this.voiceEnabled\n              \"Record and send audio...\"\n              \"Send a message...\"\n            }}\n          />\n          <InputGroupAddon @align=\"inline-end\">\n            <Tooltip>\n              <TooltipTrigger>\n                <InputGroupButton\n                  @size=\"icon-xs\"\n                  @variant=\"ghost\"\n                  aria-label=\"Voice Mode\"\n                  aria-pressed={{this.voiceEnabled}}\n                  class=\"data-[active=true]:bg-primary data-[active=true]:text-primary-foreground\"\n                  data-active={{this.voiceEnabled}}\n                  {{on \"click\" this.toggleVoice}}\n                >\n                  <AudioLinesIcon />\n                </InputGroupButton>\n              </TooltipTrigger>\n              <TooltipContent>Voice Mode</TooltipContent>\n            </Tooltip>\n          </InputGroupAddon>\n        </InputGroup>\n      </ButtonGroup>\n    </ButtonGroup>\n  </template>\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

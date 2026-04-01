@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "textarea-with-text",
+  "title": "Textarea With Text",
+  "dependencies": [],
+  "registryDependencies": [
+    "label",
+    "textarea"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-mira/examples/textarea-with-text.gts",
+      "content": "import { Label } from '@/ui/label';\nimport { Textarea } from '@/ui/textarea';\n\n<template>\n  <div class=\"grid w-full gap-3\">\n    <Label @for=\"message-2\">Your Message</Label>\n    <Textarea id=\"message-2\" placeholder=\"Type your message here.\" />\n    <p class=\"text-muted-foreground text-sm\">\n      Your message will be copied to the support team.\n    </p>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

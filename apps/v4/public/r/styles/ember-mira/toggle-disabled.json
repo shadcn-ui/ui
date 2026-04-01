@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toggle-disabled",
+  "title": "Toggle Disabled",
+  "dependencies": [],
+  "registryDependencies": [
+    "toggle"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-mira/examples/toggle-disabled.gts",
+      "content": "import { Toggle } from '@/ui/toggle';\n\nimport Underline from '~icons/lucide/underline';\n\n<template>\n  <Toggle @disabled={{true}} aria-label=\"Toggle underline\">\n    <Underline />\n  </Toggle>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "command-dialog",
+  "title": "Command Dialog",
+  "dependencies": [
+    "ember-keyboard/helpers/on-key"
+  ],
+  "registryDependencies": [
+    "command"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-vega/examples/command-dialog.gts",
+      "content": "import Component from '@glimmer/component';\nimport { tracked } from '@glimmer/tracking';\nimport onKey from 'ember-keyboard/helpers/on-key';\n\nimport {\n  CommandDialog,\n  CommandEmpty,\n  CommandGroup,\n  CommandInput,\n  CommandItem,\n  CommandList,\n  CommandSeparator,\n  CommandShortcut,\n} from '@/ui/command';\n\nimport Calculator from '~icons/lucide/calculator';\nimport Calendar from '~icons/lucide/calendar';\nimport CreditCard from '~icons/lucide/credit-card';\nimport Settings from '~icons/lucide/settings';\nimport Smile from '~icons/lucide/smile';\nimport User from '~icons/lucide/user';\n\nexport default class CommandDialogDemo extends Component {\n  @tracked open = false;\n\n  toggleOpen = () => {\n    this.open = !this.open;\n  };\n\n  <template>\n    {{onKey \"cmd+j\" this.toggleOpen}}\n\n    <div>\n      <p class=\"text-muted-foreground text-sm\">\n        Press\n        <kbd\n          class=\"bg-muted text-muted-foreground pointer-events-none inline-flex h-5 items-center gap-1 rounded border px-1.5 font-mono text-[10px] font-medium opacity-100 select-none\"\n        >\n          <span class=\"text-xs\">⌘</span>J\n        </kbd>\n      </p>\n      <CommandDialog @onOpenChange={{this.toggleOpen}} @open={{this.open}}>\n        <CommandInput @placeholder=\"Type a command or search...\" />\n        <CommandList>\n          <CommandEmpty>No results found.</CommandEmpty>\n          <CommandGroup @heading=\"Suggestions\">\n            <CommandItem @value=\"calendar\">\n              <Calendar />\n              <span>Calendar</span>\n            </CommandItem>\n            <CommandItem @value=\"emoji\">\n              <Smile />\n              <span>Search Emoji</span>\n            </CommandItem>\n            <CommandItem @value=\"calculator\">\n              <Calculator />\n              <span>Calculator</span>\n            </CommandItem>\n          </CommandGroup>\n          <CommandSeparator />\n          <CommandGroup @heading=\"Settings\">\n            <CommandItem @value=\"profile\">\n              <User />\n              <span>Profile</span>\n              <CommandShortcut>⌘P</CommandShortcut>\n            </CommandItem>\n            <CommandItem @value=\"billing\">\n              <CreditCard />\n              <span>Billing</span>\n              <CommandShortcut>⌘B</CommandShortcut>\n            </CommandItem>\n            <CommandItem @value=\"settings\">\n              <Settings />\n              <span>Settings</span>\n              <CommandShortcut>⌘S</CommandShortcut>\n            </CommandItem>\n          </CommandGroup>\n        </CommandList>\n      </CommandDialog>\n    </div>\n  </template>\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

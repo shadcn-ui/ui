@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-group-input",
+  "title": "Button Group Input",
+  "dependencies": [],
+  "registryDependencies": [
+    "button",
+    "button-group",
+    "input"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-maia/examples/button-group-input.gts",
+      "content": "import { Button } from '@/ui/button';\nimport { ButtonGroup } from '@/ui/button-group';\nimport { Input } from '@/ui/input';\n\nimport SearchIcon from '~icons/lucide/search';\n\n<template>\n  <ButtonGroup>\n    <Input placeholder=\"Search...\" />\n    <Button @variant=\"outline\" aria-label=\"Search\">\n      <SearchIcon />\n    </Button>\n  </ButtonGroup>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

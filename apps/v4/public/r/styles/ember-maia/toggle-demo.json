@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toggle-demo",
+  "title": "Toggle Demo",
+  "dependencies": [],
+  "registryDependencies": [
+    "toggle"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-maia/examples/toggle-demo.gts",
+      "content": "import { Toggle } from '@/ui/toggle';\n\nimport Bookmark from '~icons/lucide/bookmark';\n\n<template>\n  <Toggle\n    @class=\"data-[state=on]:bg-transparent [&[data-state=on]_svg_*]:fill-blue-500 [&[data-state=on]_svg_*]:stroke-blue-500\"\n    @size=\"sm\"\n    @variant=\"outline\"\n    aria-label=\"Toggle bookmark\"\n  >\n    <Bookmark />\n    Bookmark\n  </Toggle>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

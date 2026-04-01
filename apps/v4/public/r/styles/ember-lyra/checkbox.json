@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "checkbox",
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/ember-lyra/ui/checkbox.gts",
+      "content": "import { on } from '@ember/modifier';\nimport Component from '@glimmer/component';\nimport { tracked } from '@glimmer/tracking';\n\nimport { cn } from '@/lib/utils';\n\nimport Check from '~icons/lucide/check';\n\ninterface CheckboxSignature {\n  Element: HTMLButtonElement;\n  Args: {\n    checked?: boolean;\n    disabled?: boolean;\n    onCheckedChange?: (checked: boolean) => void;\n    class?: string;\n  };\n}\n\nclass Checkbox extends Component<CheckboxSignature> {\n  @tracked internalChecked = this.args.checked ?? false;\n\n  get isControlled() {\n    return this.args.onCheckedChange !== undefined;\n  }\n\n  get isChecked() {\n    return this.isControlled && this.args.checked !== undefined\n      ? this.args.checked\n      : this.internalChecked;\n  }\n\n  get rootClasses() {\n    return cn(\n      'peer border-input dark:bg-input/30 focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive size-4 shrink-0 rounded-[4px] border shadow-xs transition-shadow outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50',\n      'data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground dark:data-[state=checked]:bg-primary data-[state=checked]:border-primary',\n      this.isChecked ? 'bg-primary text-primary-foreground' : '',\n      this.args.class\n    );\n  }\n\n  get indicatorClasses() {\n    return cn('grid place-content-center text-current');\n  }\n\n  handleClick = (event: Event) => {\n    event.preventDefault();\n    if (this.args.disabled) return;\n\n    const newChecked = !this.isChecked;\n\n    if (!this.isControlled) {\n      this.internalChecked = newChecked;\n    }\n\n    this.args.onCheckedChange?.(newChecked);\n  };\n\n  <template>\n    {{! template-lint-disable require-presentational-children }}\n    <button\n      aria-checked={{if this.isChecked \"true\" \"false\"}}\n      class={{this.rootClasses}}\n      data-state={{if this.isChecked \"checked\" \"unchecked\"}}\n      disabled={{@disabled}}\n      role=\"checkbox\"\n      type=\"button\"\n      {{on \"click\" this.handleClick}}\n      ...attributes\n    >\n      {{#if this.isChecked}}\n        <span\n          aria-hidden=\"true\"\n          class={{this.indicatorClasses}}\n          data-state=\"checked\"\n        >\n          <Check class=\"size-3.5\" />\n        </span>\n      {{/if}}\n    </button>\n  </template>\n}\n\nexport { Checkbox };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

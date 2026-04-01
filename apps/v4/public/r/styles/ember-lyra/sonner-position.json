@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sonner-position",
+  "title": "Sonner Position",
+  "dependencies": [
+    "@ember/modifier",
+    "@ember/service"
+  ],
+  "registryDependencies": [
+    "button",
+    "sonner"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-lyra/examples/sonner-position.gts",
+      "content": "import { on } from '@ember/modifier';\nimport { service } from '@ember/service';\nimport Component from '@glimmer/component';\nimport { tracked } from '@glimmer/tracking';\n\nimport { Button } from '@/ui/button';\nimport { Toaster } from '@/ui/sonner';\n\nimport type ToastService from '@/services/toast';\n\ntype Position =\n  | 'top-left'\n  | 'top-center'\n  | 'top-right'\n  | 'bottom-left'\n  | 'bottom-center'\n  | 'bottom-right';\n\nexport default class SonnerPosition extends Component {\n  @service declare toast: ToastService;\n  @tracked position: Position = 'top-center';\n\n  showToast = (position: Position) => {\n    this.position = position;\n    this.toast.add({\n      message: 'Event has been created',\n    });\n  };\n\n  showTopLeft = () => this.showToast('top-left');\n  showTopCenter = () => this.showToast('top-center');\n  showTopRight = () => this.showToast('top-right');\n  showBottomLeft = () => this.showToast('bottom-left');\n  showBottomCenter = () => this.showToast('bottom-center');\n  showBottomRight = () => this.showToast('bottom-right');\n\n  <template>\n    <div class=\"flex flex-wrap justify-center gap-2\">\n      <Button @variant=\"outline\" {{on \"click\" this.showTopLeft}}>\n        Top Left\n      </Button>\n      <Button @variant=\"outline\" {{on \"click\" this.showTopCenter}}>\n        Top Center\n      </Button>\n      <Button @variant=\"outline\" {{on \"click\" this.showTopRight}}>\n        Top Right\n      </Button>\n      <Button @variant=\"outline\" {{on \"click\" this.showBottomLeft}}>\n        Bottom Left\n      </Button>\n      <Button @variant=\"outline\" {{on \"click\" this.showBottomCenter}}>\n        Bottom Center\n      </Button>\n      <Button @variant=\"outline\" {{on \"click\" this.showBottomRight}}>\n        Bottom Right\n      </Button>\n    </div>\n    <Toaster @position={{this.position}} />\n  </template>\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

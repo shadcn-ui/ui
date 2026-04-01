@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "textarea-with-label",
+  "title": "Textarea With Label",
+  "dependencies": [],
+  "registryDependencies": [
+    "label",
+    "textarea"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-nova/examples/textarea-with-label.gts",
+      "content": "import { Label } from '@/ui/label';\nimport { Textarea } from '@/ui/textarea';\n\n<template>\n  <div class=\"grid w-full gap-3\">\n    <Label @for=\"message\">Your message</Label>\n    <Textarea id=\"message\" placeholder=\"Type your message here.\" />\n  </div>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

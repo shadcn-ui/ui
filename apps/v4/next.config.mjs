@@ -145,6 +145,10 @@ const nextConfig = {
           source: "/preview/svelte/:path*",
           destination: "/preview/index.html",
         },
+        {
+          source: "/preview/ember/:path*",
+          destination: "/preview/index.html",
+        },
       ],
       afterFiles: [
         {

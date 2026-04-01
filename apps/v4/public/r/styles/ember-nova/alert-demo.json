@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "alert-demo",
+  "title": "Alert Demo",
+  "dependencies": [],
+  "registryDependencies": [
+    "alert"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-nova/examples/alert-demo.gts",
+      "content": "import { Alert, AlertDescription, AlertTitle } from '@/ui/alert';\n\nimport AlertCircle from '~icons/lucide/alert-circle';\nimport CheckCircle2 from '~icons/lucide/check-circle-2';\nimport Popcorn from '~icons/lucide/popcorn';\n\n<template>\n  <div class=\"grid w-full max-w-xl items-start gap-4\">\n    <Alert>\n      <CheckCircle2 />\n      <AlertTitle>Success! Your changes have been saved</AlertTitle>\n      <AlertDescription>\n        This is an alert with icon, title and description.\n      </AlertDescription>\n    </Alert>\n    <Alert>\n      <Popcorn />\n      <AlertTitle>\n        This Alert has a title and an icon. No description.\n      </AlertTitle>\n    </Alert>\n    <Alert @variant=\"destructive\">\n      <AlertCircle />\n      <AlertTitle>Unable to process your payment.</AlertTitle>\n      <AlertDescription>\n        <p>Please verify your billing information and try again.</p>\n        <ul class=\"list-inside list-disc text-sm\">\n          <li>Check your card details</li>\n          <li>Ensure sufficient funds</li>\n          <li>Verify billing address</li>\n        </ul>\n      </AlertDescription>\n    </Alert>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

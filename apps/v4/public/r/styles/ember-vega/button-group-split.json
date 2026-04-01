@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-group-split",
+  "title": "Button Group Split",
+  "dependencies": [],
+  "registryDependencies": [
+    "button",
+    "button-group"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-vega/examples/button-group-split.gts",
+      "content": "import { Button } from '@/ui/button';\nimport {\n  ButtonGroup,\n  ButtonGroupSeparator,\n} from '@/ui/button-group';\n\nimport PlusIcon from '~icons/lucide/plus';\n\n<template>\n  <ButtonGroup>\n    <Button @variant=\"secondary\">Button</Button>\n    <ButtonGroupSeparator />\n    <Button @size=\"icon\" @variant=\"secondary\">\n      <PlusIcon />\n    </Button>\n  </ButtonGroup>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

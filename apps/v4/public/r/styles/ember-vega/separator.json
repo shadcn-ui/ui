@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "separator",
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/ember-vega/ui/separator.gts",
+      "content": "import Component from '@glimmer/component';\n\nimport { cn } from '@/lib/utils';\n\ntype Orientation = 'horizontal' | 'vertical';\n\ninterface SeparatorSignature {\n  Element: HTMLDivElement;\n  Args: {\n    orientation?: Orientation;\n    decorative?: boolean;\n    class?: string;\n  };\n  Blocks: {\n    default: [];\n  };\n}\n\nclass Separator extends Component<SeparatorSignature> {\n  get classes() {\n    return cn(\n      'bg-border shrink-0 data-[orientation=horizontal]:h-px data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-px',\n      this.args.class\n    );\n  }\n\n  get role() {\n    return (this.args.decorative ?? true) ? 'none' : 'separator';\n  }\n\n  get orientation() {\n    return this.args.orientation ?? 'horizontal';\n  }\n\n  <template>\n    <div\n      class={{this.classes}}\n      data-orientation={{this.orientation}}\n      data-slot=\"separator\"\n      role={{this.role}}\n      ...attributes\n    ></div>\n  </template>\n}\n\nexport { Separator };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

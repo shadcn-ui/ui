@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-ghost",
+  "title": "Button Ghost",
+  "dependencies": [],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-maia/examples/button-ghost.gts",
+      "content": "import { Button } from '@/ui/button';\n\n<template>\n  <Button @variant=\"ghost\">Ghost</Button>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

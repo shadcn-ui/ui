@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-disabled",
+  "title": "Input Disabled",
+  "dependencies": [],
+  "registryDependencies": [
+    "input"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-nova/examples/input-disabled.gts",
+      "content": "import { Input } from '@/ui/input';\n\n<template><Input disabled placeholder=\"Email\" type=\"email\" /></template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

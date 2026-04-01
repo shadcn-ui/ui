@@ -113,7 +113,7 @@ function getStyleCombination(styleName: string) {
 }
 
 function stripFileExtension(filePath: string) {
-  return filePath.replace(/\.(tsx|ts|json|mdx|vue|svelte)$/, "")
+  return filePath.replace(/\.(tsx|ts|json|mdx|vue|svelte|gts)$/, "")
 }
 
 function normalizeRegistryFiles(item: RegistryItem): Array<{
@@ -178,6 +178,11 @@ async function writeIfChanged(filePath: string, content: string) {
 }
 
 async function formatGeneratedSource(content: string, filePath: string) {
+  // Skip formatting for .gts files — no prettier parser available
+  if (filePath.endsWith(".gts")) {
+    return content
+  }
+
   prettierConfigPromise ??= prettier.resolveConfig(
     path.join(process.cwd(), "package.json")
   )
@@ -418,7 +423,7 @@ export const Index: Record<string, Record<string, any>> = {`
         ? `@/registry/bases/${base.name}/${stripFileExtension(files[0].path)}`
         : ""
       const firstFileExt = files[0]?.path ? path.extname(files[0].path) : ""
-      const isNonReactBase = base.name === "vue" || base.name === "svelte"
+      const isNonReactBase = base.name === "vue" || base.name === "svelte" || base.name === "ember"
       const isReactComponent = !isNonReactBase && (firstFileExt === ".tsx" || firstFileExt === ".ts")
 
       index += `
@@ -599,7 +604,8 @@ async function buildBases(bases: Base[]) {
             fileExtension === ".tsx" ||
             fileExtension === ".ts" ||
             fileExtension === ".vue" ||
-            fileExtension === ".svelte"
+            fileExtension === ".svelte" ||
+            fileExtension === ".gts"
 
           const transformedContent = shouldTransform
             ? await getCachedStyledContent({
@@ -636,7 +642,7 @@ async function buildExamplesIndex() {
       }
 
       const allEntries = await fs.readdir(baseDir, { withFileTypes: true })
-      const DEMO_EXTENSIONS = [".tsx", ".vue", ".svelte"]
+      const DEMO_EXTENSIONS = [".tsx", ".vue", ".svelte", ".gts"]
       const files = allEntries
         .filter(
           (entry) =>
@@ -668,7 +674,7 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {`
   "${baseName}": {`
 
     for (const file of files) {
-      const name = file.replace(/\.(tsx|vue|svelte)$/, "")
+      const name = file.replace(/\.(tsx|vue|svelte|gts)$/, "")
       const isReactFile = file.endsWith(".tsx")
 
       index += `
@@ -765,7 +771,7 @@ export const Index: Record<string, Record<string, any>> = {`
           : `@/registry/${style.name}/${stripFileExtension(files[0].path)}`
         : ""
       const firstFileExt = files[0]?.path ? path.extname(files[0].path) : ""
-      const isNonReactBase = styleCombination && (styleCombination.base.name === "vue" || styleCombination.base.name === "svelte")
+      const isNonReactBase = styleCombination && (styleCombination.base.name === "vue" || styleCombination.base.name === "svelte" || styleCombination.base.name === "ember")
       const isReactComponent = !isNonReactBase && (firstFileExt === ".tsx" || firstFileExt === ".ts")
 
       index += `

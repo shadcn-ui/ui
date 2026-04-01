@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-group-orientation",
+  "title": "Button Group Orientation",
+  "dependencies": [],
+  "registryDependencies": [
+    "button",
+    "button-group"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-mira/examples/button-group-orientation.gts",
+      "content": "import { Button } from '@/ui/button';\nimport { ButtonGroup } from '@/ui/button-group';\n\nimport MinusIcon from '~icons/lucide/minus';\nimport PlusIcon from '~icons/lucide/plus';\n\n<template>\n  <ButtonGroup\n    @orientation=\"vertical\"\n    aria-label=\"Media controls\"\n    class=\"h-fit\"\n  >\n    <Button @size=\"icon\" @variant=\"outline\">\n      <PlusIcon />\n    </Button>\n    <Button @size=\"icon\" @variant=\"outline\">\n      <MinusIcon />\n    </Button>\n  </ButtonGroup>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

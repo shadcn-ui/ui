@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "native-select-input-group",
+  "title": "Native Select Input Group",
+  "dependencies": [],
+  "registryDependencies": [
+    "input-group",
+    "native-select"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-lyra/examples/native-select-input-group.gts",
+      "content": "import { InputGroup, InputGroupAddon } from '@/ui/input-group';\nimport {\n  NativeSelect,\n  NativeSelectOption,\n} from '@/ui/native-select';\n\nimport DollarSign from '~icons/lucide/dollar-sign';\n\n<template>\n  <div class=\"w-full max-w-sm space-y-4\">\n    <InputGroup>\n      <InputGroupAddon>\n        <DollarSign class=\"size-4\" />\n      </InputGroupAddon>\n      <NativeSelect>\n        <NativeSelectOption value=\"\">Currency</NativeSelectOption>\n        <NativeSelectOption value=\"usd\">USD</NativeSelectOption>\n        <NativeSelectOption value=\"eur\">EUR</NativeSelectOption>\n        <NativeSelectOption value=\"gbp\">GBP</NativeSelectOption>\n        <NativeSelectOption value=\"jpy\">JPY</NativeSelectOption>\n      </NativeSelect>\n    </InputGroup>\n\n    <InputGroup>\n      <NativeSelect>\n        <NativeSelectOption value=\"\">Protocol</NativeSelectOption>\n        <NativeSelectOption value=\"https\">HTTPS</NativeSelectOption>\n        <NativeSelectOption value=\"http\">HTTP</NativeSelectOption>\n        <NativeSelectOption value=\"ftp\">FTP</NativeSelectOption>\n      </NativeSelect>\n      <InputGroupAddon>://</InputGroupAddon>\n    </InputGroup>\n\n    <InputGroup>\n      <NativeSelect>\n        <NativeSelectOption value=\"\">Country</NativeSelectOption>\n        <NativeSelectOption value=\"us\">United States</NativeSelectOption>\n        <NativeSelectOption value=\"uk\">United Kingdom</NativeSelectOption>\n        <NativeSelectOption value=\"ca\">Canada</NativeSelectOption>\n      </NativeSelect>\n      <InputGroupAddon>/</InputGroupAddon>\n      <NativeSelect>\n        <NativeSelectOption value=\"\">State</NativeSelectOption>\n        <NativeSelectOption value=\"ca\">California</NativeSelectOption>\n        <NativeSelectOption value=\"ny\">New York</NativeSelectOption>\n        <NativeSelectOption value=\"tx\">Texas</NativeSelectOption>\n      </NativeSelect>\n    </InputGroup>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

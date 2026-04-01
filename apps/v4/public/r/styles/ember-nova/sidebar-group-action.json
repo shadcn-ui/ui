@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sidebar-group-action",
+  "title": "Sidebar Group Action",
+  "dependencies": [],
+  "registryDependencies": [
+    "sidebar"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-nova/examples/sidebar-group-action.gts",
+      "content": "import {\n  Sidebar,\n  SidebarContent,\n  SidebarGroup,\n  SidebarGroupAction,\n  SidebarGroupContent,\n  SidebarGroupLabel,\n  SidebarMenu,\n  SidebarMenuButton,\n  SidebarMenuItem,\n  SidebarProvider,\n  SidebarTrigger,\n} from '@/ui/sidebar';\n\nimport type { ComponentLike } from '@glint/template';\n\nimport Frame from '~icons/lucide/frame';\nimport Map from '~icons/lucide/map';\nimport PieChart from '~icons/lucide/pie-chart';\nimport Plus from '~icons/lucide/plus';\n\nconst projects = [\n  { name: 'Design Engineering', url: '#', icon: Frame as ComponentLike },\n  { name: 'Sales & Marketing', url: '#', icon: PieChart as ComponentLike },\n  { name: 'Travel', url: '#', icon: Map as ComponentLike },\n];\n\n<template>\n  <SidebarProvider class=\"!min-h-full h-full\">\n    <Sidebar>\n      <SidebarContent>\n        <SidebarGroup>\n          <SidebarGroupLabel>Projects</SidebarGroupLabel>\n          <SidebarGroupAction title=\"Add Project\">\n            <Plus />\n            <span class=\"sr-only\">Add Project</span>\n          </SidebarGroupAction>\n          <SidebarGroupContent>\n            <SidebarMenu>\n              {{#each projects as |project|}}\n                <SidebarMenuItem>\n                  <SidebarMenuButton>\n                    <a class=\"flex items-center gap-2\" href={{project.url}}>\n                      <project.icon />\n                      <span>{{project.name}}</span>\n                    </a>\n                  </SidebarMenuButton>\n                </SidebarMenuItem>\n              {{/each}}\n            </SidebarMenu>\n          </SidebarGroupContent>\n        </SidebarGroup>\n      </SidebarContent>\n    </Sidebar>\n    <main class=\"flex h-full flex-1 flex-col\">\n      <div class=\"flex items-center gap-2 border-b p-4\">\n        <SidebarTrigger />\n      </div>\n    </main>\n  </SidebarProvider>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

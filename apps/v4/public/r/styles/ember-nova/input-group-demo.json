@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-group-demo",
+  "title": "Input Group Demo",
+  "dependencies": [],
+  "registryDependencies": [
+    "dropdown-menu",
+    "input-group",
+    "separator",
+    "tooltip"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-nova/examples/input-group-demo.gts",
+      "content": "import {\n  DropdownMenu,\n  DropdownMenuContent,\n  DropdownMenuItem,\n  DropdownMenuTrigger,\n} from '@/ui/dropdown-menu';\nimport {\n  InputGroup,\n  InputGroupAddon,\n  InputGroupButton,\n  InputGroupInput,\n  InputGroupText,\n  InputGroupTextarea,\n} from '@/ui/input-group';\nimport { Separator } from '@/ui/separator';\nimport {\n  Tooltip,\n  TooltipContent,\n  TooltipTrigger,\n} from '@/ui/tooltip';\n\nimport ArrowUp from '~icons/lucide/arrow-up';\nimport Check from '~icons/lucide/check';\nimport InfoCircle from '~icons/lucide/info';\nimport Plus from '~icons/lucide/plus';\nimport Search from '~icons/lucide/search';\n\n<template>\n  <div class=\"grid w-full max-w-sm gap-6\">\n    <InputGroup>\n      <InputGroupInput placeholder=\"Search...\" />\n      <InputGroupAddon>\n        <Search />\n      </InputGroupAddon>\n      <InputGroupAddon @align=\"inline-end\">12 results</InputGroupAddon>\n    </InputGroup>\n\n    <InputGroup>\n      <InputGroupInput @class=\"!pl-1\" placeholder=\"example.com\" />\n      <InputGroupAddon>\n        <InputGroupText>https://</InputGroupText>\n      </InputGroupAddon>\n      <InputGroupAddon @align=\"inline-end\">\n        <Tooltip>\n          <TooltipTrigger>\n            <InputGroupButton\n              @class=\"rounded-full\"\n              @size=\"icon-xs\"\n              @variant=\"ghost\"\n              aria-label=\"Info\"\n            >\n              <InfoCircle />\n            </InputGroupButton>\n          </TooltipTrigger>\n          <TooltipContent>This is content in a tooltip.</TooltipContent>\n        </Tooltip>\n      </InputGroupAddon>\n    </InputGroup>\n\n    <InputGroup>\n      <InputGroupTextarea placeholder=\"Ask, Search or Chat...\" />\n      <InputGroupAddon @align=\"block-end\">\n        <InputGroupButton\n          @class=\"rounded-full\"\n          @size=\"icon-xs\"\n          @variant=\"outline\"\n          aria-label=\"Add\"\n        >\n          <Plus />\n        </InputGroupButton>\n        <DropdownMenu>\n          <DropdownMenuTrigger>\n            <InputGroupButton @variant=\"ghost\">Auto</InputGroupButton>\n          </DropdownMenuTrigger>\n          <DropdownMenuContent\n            {{! @side=\"top\" }}\n            @align=\"start\"\n            @class=\"[--radius:0.95rem]\"\n          >\n            <DropdownMenuItem>Auto</DropdownMenuItem>\n            <DropdownMenuItem>Agent</DropdownMenuItem>\n            <DropdownMenuItem>Manual</DropdownMenuItem>\n          </DropdownMenuContent>\n        </DropdownMenu>\n        <InputGroupText @class=\"ml-auto\">52% used</InputGroupText>\n        <Separator @class=\"!h-4\" @orientation=\"vertical\" />\n        <InputGroupButton\n          @class=\"rounded-full\"\n          @size=\"icon-xs\"\n          @variant=\"default\"\n        >\n          <ArrowUp />\n          <span class=\"sr-only\">Send</span>\n        </InputGroupButton>\n      </InputGroupAddon>\n    </InputGroup>\n\n    <InputGroup>\n      <InputGroupInput placeholder=\"shadcn\" />\n      <InputGroupAddon @align=\"inline-end\">\n        <div\n          class=\"bg-primary text-foreground flex size-4 items-center justify-center rounded-full\"\n        >\n          <Check class=\"size-3 text-white\" />\n        </div>\n      </InputGroupAddon>\n    </InputGroup>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

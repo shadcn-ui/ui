@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "kbd-button",
+  "title": "Kbd Button",
+  "dependencies": [],
+  "registryDependencies": [
+    "button",
+    "kbd"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-nova/examples/kbd-button.gts",
+      "content": "import { Button } from '@/ui/button';\nimport { Kbd } from '@/ui/kbd';\n\n<template>\n  <div class=\"flex flex-wrap items-center gap-4\">\n    <Button @class=\"pr-2\" @size=\"sm\" @variant=\"outline\">\n      Accept\n      <Kbd>⏎</Kbd>\n    </Button>\n    <Button @class=\"pr-2\" @size=\"sm\" @variant=\"outline\">\n      Cancel\n      <Kbd>Esc</Kbd>\n    </Button>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toggle-lg",
+  "title": "Toggle Lg",
+  "dependencies": [],
+  "registryDependencies": [
+    "toggle"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-vega/examples/toggle-lg.gts",
+      "content": "import { Toggle } from '@/ui/toggle';\n\nimport Italic from '~icons/lucide/italic';\n\n<template>\n  <Toggle @size=\"lg\" aria-label=\"Toggle italic\">\n    <Italic />\n  </Toggle>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

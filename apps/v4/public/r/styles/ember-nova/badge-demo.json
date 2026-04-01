@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "badge-demo",
+  "title": "Badge Demo",
+  "dependencies": [],
+  "registryDependencies": [
+    "badge"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-nova/examples/badge-demo.gts",
+      "content": "import { Badge } from '@/ui/badge';\n\nimport BadgeCheck from '~icons/lucide/badge-check';\n\n<template>\n  <div class=\"flex flex-col items-center gap-2\">\n    <div class=\"flex w-full flex-wrap gap-2\">\n      <Badge>Badge</Badge>\n      <Badge @variant=\"secondary\">Secondary</Badge>\n      <Badge @variant=\"destructive\">Destructive</Badge>\n      <Badge @variant=\"outline\">Outline</Badge>\n    </div>\n    <div class=\"flex w-full flex-wrap gap-2\">\n      <Badge\n        @class=\"bg-blue-500 text-white dark:bg-blue-600\"\n        @variant=\"secondary\"\n      >\n        <BadgeCheck />\n        Verified\n      </Badge>\n      <Badge @class=\"h-5 min-w-5 rounded-full px-1 font-mono tabular-nums\">\n        8\n      </Badge>\n      <Badge\n        @class=\"h-5 min-w-5 rounded-full px-1 font-mono tabular-nums\"\n        @variant=\"destructive\"\n      >\n        99\n      </Badge>\n      <Badge\n        @class=\"h-5 min-w-5 rounded-full px-1 font-mono tabular-nums\"\n        @variant=\"outline\"\n      >\n        20+\n      </Badge>\n    </div>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

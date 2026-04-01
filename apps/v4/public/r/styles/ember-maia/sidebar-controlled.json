@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sidebar-controlled",
+  "title": "Sidebar Controlled",
+  "dependencies": [],
+  "registryDependencies": [
+    "sidebar"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-maia/examples/sidebar-controlled.gts",
+      "content": "import Component from '@glimmer/component';\nimport { tracked } from '@glimmer/tracking';\n\nimport {\n  Sidebar,\n  SidebarContent,\n  SidebarGroup,\n  SidebarGroupContent,\n  SidebarGroupLabel,\n  SidebarMenu,\n  SidebarMenuButton,\n  SidebarMenuItem,\n  SidebarProvider,\n  SidebarTrigger,\n} from '@/ui/sidebar';\n\nimport Home from '~icons/lucide/home';\nimport Inbox from '~icons/lucide/inbox';\nimport Settings from '~icons/lucide/settings';\n\nconst items = [\n  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment\n  { title: 'Home', url: '#', icon: Home },\n  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment\n  { title: 'Inbox', url: '#', icon: Inbox },\n  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment\n  { title: 'Settings', url: '#', icon: Settings },\n];\n\nexport default class SidebarControlled extends Component {\n  @tracked open = false;\n\n  setOpen = (value: boolean) => {\n    this.open = value;\n  };\n\n  <template>\n    <SidebarProvider\n      @onOpenChange={{this.setOpen}}\n      @open={{this.open}}\n      class=\"!min-h-full h-full\"\n    >\n      <Sidebar>\n        <SidebarContent>\n          <SidebarGroup>\n            <SidebarGroupLabel>Application</SidebarGroupLabel>\n            <SidebarGroupContent>\n              <SidebarMenu>\n                {{#each items as |item|}}\n                  <SidebarMenuItem>\n                    <SidebarMenuButton>\n                      <a class=\"flex items-center gap-2\" href={{item.url}}>\n                        <item.icon />\n                        <span>{{item.title}}</span>\n                      </a>\n                    </SidebarMenuButton>\n                  </SidebarMenuItem>\n                {{/each}}\n              </SidebarMenu>\n            </SidebarGroupContent>\n          </SidebarGroup>\n        </SidebarContent>\n      </Sidebar>\n      <main class=\"flex h-full flex-1 flex-col\">\n        <div class=\"flex items-center gap-2 border-b p-4\">\n          <SidebarTrigger />\n        </div>\n      </main>\n    </SidebarProvider>\n  </template>\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

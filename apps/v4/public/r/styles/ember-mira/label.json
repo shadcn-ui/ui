@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "label",
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/ember-mira/ui/label.gts",
+      "content": "import Component from '@glimmer/component';\n\nimport { cn } from '@/lib/utils';\n\ninterface LabelSignature {\n  Element: HTMLLabelElement;\n  Args: {\n    class?: string;\n    for?: string;\n  };\n  Blocks: {\n    default: [];\n  };\n}\n\nclass Label extends Component<LabelSignature> {\n  get classes() {\n    return cn(\n      'flex items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50',\n      this.args.class\n    );\n  }\n\n  <template>\n    <label class={{this.classes}} data-slot=\"label\" for={{@for}} ...attributes>\n      {{yield}}\n    </label>\n  </template>\n}\n\nexport { Label };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

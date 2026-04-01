@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "item-avatar",
+  "title": "Item Avatar",
+  "dependencies": [],
+  "registryDependencies": [
+    "avatar",
+    "button",
+    "item"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-nova/examples/item-avatar.gts",
+      "content": "import { Avatar, AvatarFallback, AvatarImage } from '@/ui/avatar';\nimport { Button } from '@/ui/button';\nimport {\n  Item,\n  ItemActions,\n  ItemContent,\n  ItemDescription,\n  ItemMedia,\n  ItemTitle,\n} from '@/ui/item';\n\nimport Plus from '~icons/lucide/plus';\n\n<template>\n  {{! template-lint-disable no-potential-path-strings }}\n  <div class=\"flex w-full max-w-lg flex-col gap-6\">\n    <Item @variant=\"outline\">\n      <ItemMedia>\n        <Avatar @class=\"size-10\">\n          <AvatarImage @src=\"https://github.com/evilrabbit.png\" />\n          <AvatarFallback>ER</AvatarFallback>\n        </Avatar>\n      </ItemMedia>\n      <ItemContent>\n        <ItemTitle>Evil Rabbit</ItemTitle>\n        <ItemDescription>Last seen 5 months ago</ItemDescription>\n      </ItemContent>\n      <ItemActions>\n        <Button\n          @class=\"rounded-full\"\n          @size=\"icon-sm\"\n          @variant=\"outline\"\n          aria-label=\"Invite\"\n        >\n          <Plus />\n        </Button>\n      </ItemActions>\n    </Item>\n    <Item @variant=\"outline\">\n      <ItemMedia>\n        <div\n          class=\"*:data-[slot=avatar]:ring-background flex -space-x-2 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:grayscale\"\n        >\n          <Avatar class=\"hidden sm:flex\">\n            <AvatarImage @alt=\"@shadcn\" @src=\"https://github.com/shadcn.png\" />\n            <AvatarFallback>CN</AvatarFallback>\n          </Avatar>\n          <Avatar class=\"hidden sm:flex\">\n            <AvatarImage\n              @alt=\"@maxleiter\"\n              @src=\"https://github.com/maxleiter.png\"\n            />\n            <AvatarFallback>LR</AvatarFallback>\n          </Avatar>\n          <Avatar>\n            <AvatarImage\n              @alt=\"@evilrabbit\"\n              @src=\"https://github.com/evilrabbit.png\"\n            />\n            <AvatarFallback>ER</AvatarFallback>\n          </Avatar>\n        </div>\n      </ItemMedia>\n      <ItemContent>\n        <ItemTitle>No Team Members</ItemTitle>\n        <ItemDescription>\n          Invite your team to collaborate on this project.\n        </ItemDescription>\n      </ItemContent>\n      <ItemActions>\n        <Button @size=\"sm\" @variant=\"outline\">\n          Invite\n        </Button>\n      </ItemActions>\n    </Item>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

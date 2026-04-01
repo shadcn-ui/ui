@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-otp-controlled",
+  "title": "Input Otp Controlled",
+  "dependencies": [],
+  "registryDependencies": [
+    "input-otp"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-nova/examples/input-otp-controlled.gts",
+      "content": "import Component from '@glimmer/component';\nimport { tracked } from '@glimmer/tracking';\n\nimport {\n  InputOTP,\n  InputOTPGroup,\n  InputOTPSlot,\n} from '@/ui/input-otp';\n\nexport default class InputOtpControlled extends Component {\n  @tracked value = '';\n\n  handleValueChange = (value: string) => {\n    this.value = value;\n  };\n\n  <template>\n    <div class=\"space-y-2\">\n      <InputOTP\n        @maxLength={{6}}\n        @onValueChange={{this.handleValueChange}}\n        @value={{this.value}}\n      >\n        <InputOTPGroup>\n          <InputOTPSlot @index={{0}} />\n          <InputOTPSlot @index={{1}} />\n          <InputOTPSlot @index={{2}} />\n          <InputOTPSlot @index={{3}} />\n          <InputOTPSlot @index={{4}} />\n          <InputOTPSlot @index={{5}} />\n        </InputOTPGroup>\n      </InputOTP>\n      <div class=\"text-center text-sm\">\n        {{#if this.value}}\n          You entered:\n          {{this.value}}\n        {{else}}\n          Enter your one-time password.\n        {{/if}}\n      </div>\n    </div>\n  </template>\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

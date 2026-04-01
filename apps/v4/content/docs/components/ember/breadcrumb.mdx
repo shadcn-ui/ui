@@ -1,0 +1,118 @@
+---
+title: Breadcrumb
+description: Displays the path to the current resource using a hierarchy of links.
+base: ember
+component: true
+---
+
+
+<ComponentPreview framework="ember" name="breadcrumb-demo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @force-ui-ember/breadcrumb
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource framework="ember" name="breadcrumb" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+
+## Usage
+
+```gts showLineNumbers
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from '@/ui/breadcrumb';
+```
+
+```gts showLineNumbers
+<template>
+  <Breadcrumb>
+    <BreadcrumbList>
+      <BreadcrumbItem>
+        <BreadcrumbLink @href="/">Home</BreadcrumbLink>
+      </BreadcrumbItem>
+      <BreadcrumbSeparator />
+      <BreadcrumbItem>
+        <BreadcrumbLink @href="/components">Components</BreadcrumbLink>
+      </BreadcrumbItem>
+      <BreadcrumbSeparator />
+      <BreadcrumbItem>
+        <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
+      </BreadcrumbItem>
+    </BreadcrumbList>
+  </Breadcrumb>
+</template>
+```
+
+## Examples
+
+### Custom separator
+
+Use a custom component as children for `<BreadcrumbSeparator />` to create a custom separator.
+
+<ComponentPreview framework="ember" name="breadcrumb-separator" />
+
+---
+
+### Dropdown
+
+You can compose `<BreadcrumbItem />` with a `<DropdownMenu />` to create a dropdown in the breadcrumb.
+
+<ComponentPreview framework="ember" name="breadcrumb-dropdown" />
+
+---
+
+### Collapsed
+
+We provide a `<BreadcrumbEllipsis />` component to show a collapsed state when the breadcrumb is too long.
+
+<ComponentPreview framework="ember" name="breadcrumb-ellipsis" />
+
+---
+
+### Link component
+
+To use a custom link component from your routing library, you can use the `@asChild` prop on `<BreadcrumbLink />`.
+
+<ComponentPreview framework="ember" name="breadcrumb-link" />
+
+---
+
+### Responsive
+
+Here's an example of a responsive breadcrumb that composes `<BreadcrumbItem />` with `<BreadcrumbEllipsis />`, `<DropdownMenu />`, and `<Drawer />`.
+
+It displays a dropdown on desktop and a drawer on mobile.
+
+<ComponentPreview framework="ember" name="breadcrumb-responsive" />

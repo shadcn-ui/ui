@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-file",
+  "title": "Input File",
+  "dependencies": [],
+  "registryDependencies": [
+    "input",
+    "label"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-lyra/examples/input-file.gts",
+      "content": "import { Input } from '@/ui/input';\nimport { Label } from '@/ui/label';\n\n<template>\n  <div class=\"grid w-full max-w-sm items-center gap-3\">\n    <Label for=\"picture\">Picture</Label>\n    <Input id=\"picture\" type=\"file\" />\n  </div>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

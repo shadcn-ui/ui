@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-as-link",
+  "title": "Button As Link",
+  "dependencies": [
+    "@ember/routing"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-mira/examples/button-as-link.gts",
+      "content": "import { LinkTo } from '@ember/routing';\n\nimport { Button } from '@/ui/button';\n\n<template>\n  <Button @asChild={{true}} as |button|>\n    <LinkTo @route=\"index\" class={{button.classes}}>Login</LinkTo>\n  </Button>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

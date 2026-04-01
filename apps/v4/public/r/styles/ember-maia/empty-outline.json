@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "empty-outline",
+  "title": "Empty Outline",
+  "dependencies": [],
+  "registryDependencies": [
+    "button",
+    "empty"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-maia/examples/empty-outline.gts",
+      "content": "import { Button } from '@/ui/button';\nimport {\n  Empty,\n  EmptyContent,\n  EmptyDescription,\n  EmptyHeader,\n  EmptyMedia,\n  EmptyTitle,\n} from '@/ui/empty';\n\nimport Cloud from '~icons/lucide/cloud';\n\n<template>\n  <Empty @class=\"border border-dashed\">\n    <EmptyHeader>\n      <EmptyMedia @variant=\"icon\">\n        <Cloud />\n      </EmptyMedia>\n      <EmptyTitle>Cloud Storage Empty</EmptyTitle>\n      <EmptyDescription>\n        Upload files to your cloud storage to access them anywhere.\n      </EmptyDescription>\n    </EmptyHeader>\n    <EmptyContent>\n      <Button @size=\"sm\" @variant=\"outline\">\n        Upload Files\n      </Button>\n    </EmptyContent>\n  </Empty>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

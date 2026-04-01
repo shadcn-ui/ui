@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "breadcrumb-dropdown",
+  "title": "Breadcrumb Dropdown",
+  "dependencies": [],
+  "registryDependencies": [
+    "breadcrumb",
+    "dropdown-menu"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-maia/examples/breadcrumb-dropdown.gts",
+      "content": "import {\n  Breadcrumb,\n  BreadcrumbItem,\n  BreadcrumbLink,\n  BreadcrumbList,\n  BreadcrumbPage,\n  BreadcrumbSeparator,\n} from '@/ui/breadcrumb';\nimport {\n  DropdownMenu,\n  DropdownMenuContent,\n  DropdownMenuItem,\n  DropdownMenuTrigger,\n} from '@/ui/dropdown-menu';\n\n<template>\n  <Breadcrumb>\n    <BreadcrumbList>\n      <BreadcrumbItem>\n        <BreadcrumbLink @href=\"/\">Home</BreadcrumbLink>\n      </BreadcrumbItem>\n      <BreadcrumbSeparator />\n      <BreadcrumbItem>\n        <DropdownMenu>\n          <DropdownMenuTrigger @class=\"flex items-center gap-1\">\n            Components\n          </DropdownMenuTrigger>\n          <DropdownMenuContent>\n            <DropdownMenuItem>Documentation</DropdownMenuItem>\n            <DropdownMenuItem>Themes</DropdownMenuItem>\n            <DropdownMenuItem>GitHub</DropdownMenuItem>\n          </DropdownMenuContent>\n        </DropdownMenu>\n      </BreadcrumbItem>\n      <BreadcrumbSeparator />\n      <BreadcrumbItem>\n        <BreadcrumbPage>Breadcrumb</BreadcrumbPage>\n      </BreadcrumbItem>\n    </BreadcrumbList>\n  </Breadcrumb>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

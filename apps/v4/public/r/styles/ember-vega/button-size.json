@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-size",
+  "title": "Button Size",
+  "dependencies": [],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-vega/examples/button-size.gts",
+      "content": "import { Button } from '@/ui/button';\n\nimport ArrowUpRightIcon from '~icons/lucide/arrow-up-right';\n\n<template>\n  <div class=\"flex flex-col items-start gap-8 sm:flex-row\">\n    <div class=\"flex items-start gap-2\">\n      <Button @size=\"sm\" @variant=\"outline\">\n        Small\n      </Button>\n      <Button @size=\"icon-sm\" @variant=\"outline\" aria-label=\"Submit\">\n        <ArrowUpRightIcon />\n      </Button>\n    </div>\n    <div class=\"flex items-start gap-2\">\n      <Button @variant=\"outline\">Default</Button>\n      <Button @size=\"icon\" @variant=\"outline\" aria-label=\"Submit\">\n        <ArrowUpRightIcon />\n      </Button>\n    </div>\n    <div class=\"flex items-start gap-2\">\n      <Button @size=\"lg\" @variant=\"outline\">\n        Large\n      </Button>\n      <Button @size=\"icon-lg\" @variant=\"outline\" aria-label=\"Submit\">\n        <ArrowUpRightIcon />\n      </Button>\n    </div>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

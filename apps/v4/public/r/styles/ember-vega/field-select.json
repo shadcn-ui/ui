@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "field-select",
+  "title": "Field Select",
+  "dependencies": [],
+  "registryDependencies": [
+    "field",
+    "select"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-vega/examples/field-select.gts",
+      "content": "import { Field, FieldDescription, FieldLabel } from '@/ui/field';\nimport {\n  Select,\n  SelectContent,\n  SelectItem,\n  SelectTrigger,\n  SelectValue,\n} from '@/ui/select';\n\n<template>\n  <div class=\"w-full max-w-md\">\n    <Field>\n      <FieldLabel>Department</FieldLabel>\n      <Select>\n        <SelectTrigger>\n          <SelectValue @placeholder=\"Choose department\" />\n        </SelectTrigger>\n        <SelectContent>\n          <SelectItem @value=\"engineering\">Engineering</SelectItem>\n          <SelectItem @value=\"design\">Design</SelectItem>\n          <SelectItem @value=\"marketing\">Marketing</SelectItem>\n          <SelectItem @value=\"sales\">Sales</SelectItem>\n          <SelectItem @value=\"support\">Customer Support</SelectItem>\n          <SelectItem @value=\"hr\">Human Resources</SelectItem>\n          <SelectItem @value=\"finance\">Finance</SelectItem>\n          <SelectItem @value=\"operations\">Operations</SelectItem>\n        </SelectContent>\n      </Select>\n      <FieldDescription>\n        Select your department or area of work.\n      </FieldDescription>\n    </Field>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

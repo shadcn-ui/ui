@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-group-select",
+  "title": "Button Group Select",
+  "dependencies": [],
+  "registryDependencies": [
+    "button",
+    "button-group",
+    "input",
+    "select"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-mira/examples/button-group-select.gts",
+      "content": "import Component from '@glimmer/component';\nimport { tracked } from '@glimmer/tracking';\n\nimport { Button } from '@/ui/button';\nimport { ButtonGroup } from '@/ui/button-group';\nimport { Input } from '@/ui/input';\nimport {\n  Select,\n  SelectContent,\n  SelectItem,\n  SelectTrigger,\n} from '@/ui/select';\n\nimport ArrowRightIcon from '~icons/lucide/arrow-right';\n\nconst CURRENCIES = [\n  {\n    value: '$',\n    label: 'US Dollar',\n  },\n  {\n    value: '€',\n    label: 'Euro',\n  },\n  {\n    value: '£',\n    label: 'British Pound',\n  },\n];\n\nexport default class ButtonGroupSelect extends Component {\n  @tracked currency = '$';\n\n  handleCurrencyChange = (value: string) => {\n    this.currency = value;\n  };\n\n  <template>\n    <ButtonGroup>\n      <ButtonGroup>\n        <Select\n          @onValueChange={{this.handleCurrencyChange}}\n          @value={{this.currency}}\n        >\n          <SelectTrigger class=\"font-mono\">{{this.currency}}</SelectTrigger>\n          <SelectContent @class=\"min-w-24\">\n            {{#each CURRENCIES as |currency|}}\n              <SelectItem @value={{currency.value}}>\n                {{currency.value}}\n                <span class=\"text-muted-foreground\">{{currency.label}}</span>\n              </SelectItem>\n            {{/each}}\n          </SelectContent>\n        </Select>\n        <Input pattern=\"[0-9]*\" placeholder=\"10.00\" />\n      </ButtonGroup>\n      <ButtonGroup>\n        <Button @size=\"icon\" @variant=\"outline\" aria-label=\"Send\">\n          <ArrowRightIcon />\n        </Button>\n      </ButtonGroup>\n    </ButtonGroup>\n  </template>\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

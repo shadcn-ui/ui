@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "avatar",
+  "dependencies": [
+    "ember-truth-helpers"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-maia/ui/avatar/index.ts",
+      "content": "import type { VariantProps } from \"class-variance-authority\"\nimport { cva } from \"class-variance-authority\"\n\nexport const avatarVariants = cva(\n  \"group/avatar relative flex size-8 shrink-0 rounded-full select-none after:absolute after:inset-0 after:rounded-full after:border after:border-border after:mix-blend-darken data-[size=lg]:size-10 data-[size=sm]:size-6 dark:after:mix-blend-lighten\",\n  {\n    variants: {\n      size: {\n        sm: \"\",\n        default: \"\",\n        lg: \"\",\n      },\n    },\n    defaultVariants: {\n      size: \"default\",\n    },\n  }\n)\n\nexport type AvatarVariants = VariantProps<typeof avatarVariants>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "registry/ember-maia/ui/avatar/avatar.gts",
+      "content": "import { on } from '@ember/modifier';\nimport Component from '@glimmer/component';\nimport { tracked } from '@glimmer/tracking';\nimport { eq } from 'ember-truth-helpers';\n\nimport { cn } from '@/lib/utils';\n\nimport type { TOC } from '@ember/component/template-only';\n\ninterface AvatarSignature {\n  Element: HTMLDivElement;\n  Args: {\n    class?: string;\n  };\n  Blocks: {\n    default: [];\n  };\n}\n\nconst Avatar: TOC<AvatarSignature> = <template>\n  <div\n    class={{cn\n      \"relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full\"\n      @class\n    }}\n    data-slot=\"avatar\"\n    ...attributes\n  >\n    {{yield}}\n  </div>\n</template>;\n\ninterface AvatarImageSignature {\n  Element: HTMLImageElement;\n  Args: {\n    src: string;\n    alt?: string;\n    class?: string;\n    onLoadingStatusChange?: (\n      status: 'idle' | 'loading' | 'loaded' | 'error'\n    ) => void;\n  };\n}\n\nclass AvatarImage extends Component<AvatarImageSignature> {\n  @tracked loadingStatus: 'idle' | 'loading' | 'loaded' | 'error' = 'loading';\n\n  handleLoad = () => {\n    this.loadingStatus = 'loaded';\n    this.args.onLoadingStatusChange?.('loaded');\n  };\n\n  handleError = () => {\n    this.loadingStatus = 'error';\n    this.args.onLoadingStatusChange?.('error');\n  };\n\n  <template>\n    {{#unless (eq this.loadingStatus \"error\")}}\n      <img\n        alt={{if @alt @alt \"\"}}\n        class={{cn \"aspect-square h-full w-full\" @class}}\n        src={{@src}}\n        {{on \"error\" this.handleError}}\n        {{on \"load\" this.handleLoad}}\n        ...attributes\n      />\n    {{/unless}}\n  </template>\n}\n\ninterface AvatarFallbackSignature {\n  Element: HTMLDivElement;\n  Args: {\n    class?: string;\n    delayMs?: number;\n  };\n  Blocks: {\n    default: [];\n  };\n}\n\nconst AvatarFallback: TOC<AvatarFallbackSignature> = <template>\n  <div\n    class={{cn\n      \"flex h-full w-full items-center justify-center rounded-full bg-muted\"\n      @class\n    }}\n    ...attributes\n  >\n    {{yield}}\n  </div>\n</template>;\n\nexport { Avatar, AvatarImage, AvatarFallback };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "field-input",
+  "title": "Field Input",
+  "dependencies": [],
+  "registryDependencies": [
+    "field",
+    "input"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-mira/examples/field-input.gts",
+      "content": "import {\n  Field,\n  FieldDescription,\n  FieldGroup,\n  FieldLabel,\n  FieldSet,\n} from '@/ui/field';\nimport { Input } from '@/ui/input';\n\n<template>\n  <div class=\"w-full max-w-md\">\n    <FieldSet>\n      <FieldGroup>\n        <Field>\n          <FieldLabel @for=\"username\">Username</FieldLabel>\n          <Input id=\"username\" placeholder=\"Max Leiter\" type=\"text\" />\n          <FieldDescription>\n            Choose a unique username for your account.\n          </FieldDescription>\n        </Field>\n        <Field>\n          <FieldLabel @for=\"password\">Password</FieldLabel>\n          <FieldDescription>\n            Must be at least 8 characters long.\n          </FieldDescription>\n          <Input id=\"password\" placeholder=\"••••••••\" type=\"password\" />\n        </Field>\n      </FieldGroup>\n    </FieldSet>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

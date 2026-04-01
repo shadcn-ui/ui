@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aspect-ratio",
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/ember-nova/ui/aspect-ratio.gts",
+      "content": "import { htmlSafe } from '@ember/template';\nimport Component from '@glimmer/component';\n\nimport { cn } from '@/lib/utils';\n\ninterface AspectRatioSignature {\n  Element: HTMLDivElement;\n  Args: {\n    ratio?: number;\n    class?: string;\n  };\n  Blocks: {\n    default: [];\n  };\n}\n\nclass AspectRatio extends Component<AspectRatioSignature> {\n  get style() {\n    const ratio = this.args.ratio ?? 1;\n    return htmlSafe(`padding-bottom: ${(1 / ratio) * 100}%`);\n  }\n\n  <template>\n    <div class={{cn \"relative w-full\" @class}} ...attributes>\n      <div style={{this.style}}></div>\n      <div class=\"absolute inset-0\">\n        {{yield}}\n      </div>\n    </div>\n  </template>\n}\n\nexport { AspectRatio };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

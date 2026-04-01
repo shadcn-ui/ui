@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dropdown-menu-radio-group",
+  "title": "Dropdown Menu Radio Group",
+  "dependencies": [],
+  "registryDependencies": [
+    "button",
+    "dropdown-menu"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-maia/examples/dropdown-menu-radio-group.gts",
+      "content": "import Component from '@glimmer/component';\nimport { tracked } from '@glimmer/tracking';\n\nimport { Button } from '@/ui/button';\nimport {\n  DropdownMenu,\n  DropdownMenuContent,\n  DropdownMenuLabel,\n  DropdownMenuRadioGroup,\n  DropdownMenuRadioItem,\n  DropdownMenuSeparator,\n  DropdownMenuTrigger,\n} from '@/ui/dropdown-menu';\n\nexport default class DropdownMenuRadioGroupDemo extends Component {\n  @tracked position = 'bottom';\n\n  setPosition = (value: string) => {\n    this.position = value;\n  };\n\n  <template>\n    <DropdownMenu>\n      <DropdownMenuTrigger>\n        <Button @variant=\"outline\">Open</Button>\n      </DropdownMenuTrigger>\n      <DropdownMenuContent @class=\"w-56\">\n        <DropdownMenuLabel>Panel Position</DropdownMenuLabel>\n        <DropdownMenuSeparator />\n        <DropdownMenuRadioGroup\n          @onValueChange={{this.setPosition}}\n          @value={{this.position}}\n          as |value setValue|\n        >\n          <DropdownMenuRadioItem\n            @currentValue={{value}}\n            @setValue={{setValue}}\n            @value=\"top\"\n          >\n            Top\n          </DropdownMenuRadioItem>\n          <DropdownMenuRadioItem\n            @currentValue={{value}}\n            @setValue={{setValue}}\n            @value=\"bottom\"\n          >\n            Bottom\n          </DropdownMenuRadioItem>\n          <DropdownMenuRadioItem\n            @currentValue={{value}}\n            @setValue={{setValue}}\n            @value=\"right\"\n          >\n            Right\n          </DropdownMenuRadioItem>\n        </DropdownMenuRadioGroup>\n      </DropdownMenuContent>\n    </DropdownMenu>\n  </template>\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

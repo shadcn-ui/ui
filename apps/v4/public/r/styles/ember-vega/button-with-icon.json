@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-with-icon",
+  "title": "Button With Icon",
+  "dependencies": [],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-vega/examples/button-with-icon.gts",
+      "content": "import { Button } from '@/ui/button';\n\nimport GitBranch from '~icons/lucide/git-branch';\n\n<template>\n  <Button @size=\"sm\" @variant=\"outline\">\n    <GitBranch />\n    New Branch\n  </Button>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

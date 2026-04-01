@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "field-radio",
+  "title": "Field Radio",
+  "dependencies": [],
+  "registryDependencies": [
+    "field",
+    "radio-group"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-nova/examples/field-radio.gts",
+      "content": "import {\n  Field,\n  FieldDescription,\n  FieldLabel,\n  FieldSet,\n} from '@/ui/field';\nimport { RadioGroup, RadioGroupItem } from '@/ui/radio-group';\n\n<template>\n  <div class=\"w-full max-w-md\">\n    <FieldSet>\n      <FieldLabel>Subscription Plan</FieldLabel>\n      <FieldDescription>\n        Yearly and lifetime plans offer significant savings.\n      </FieldDescription>\n      <RadioGroup @defaultValue=\"monthly\">\n        <Field @orientation=\"horizontal\">\n          <RadioGroupItem @value=\"monthly\" id=\"plan-monthly\" />\n          <FieldLabel @class=\"font-normal\" @for=\"plan-monthly\">\n            Monthly ($9.99/month)\n          </FieldLabel>\n        </Field>\n        <Field @orientation=\"horizontal\">\n          <RadioGroupItem @value=\"yearly\" id=\"plan-yearly\" />\n          <FieldLabel @class=\"font-normal\" @for=\"plan-yearly\">\n            Yearly ($99.99/year)\n          </FieldLabel>\n        </Field>\n        <Field @orientation=\"horizontal\">\n          <RadioGroupItem @value=\"lifetime\" id=\"plan-lifetime\" />\n          <FieldLabel @class=\"font-normal\" @for=\"plan-lifetime\">\n            Lifetime ($299.99)\n          </FieldLabel>\n        </Field>\n      </RadioGroup>\n    </FieldSet>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

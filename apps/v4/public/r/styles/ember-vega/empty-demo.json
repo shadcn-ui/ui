@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "empty-demo",
+  "title": "Empty Demo",
+  "dependencies": [],
+  "registryDependencies": [
+    "button",
+    "empty"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-vega/examples/empty-demo.gts",
+      "content": "import { Button } from '@/ui/button';\nimport {\n  Empty,\n  EmptyContent,\n  EmptyDescription,\n  EmptyHeader,\n  EmptyMedia,\n  EmptyTitle,\n} from '@/ui/empty';\n\nimport ArrowUpRight from '~icons/lucide/arrow-up-right';\nimport FolderCode from '~icons/lucide/folder-code';\n\n<template>\n  <Empty>\n    <EmptyHeader>\n      <EmptyMedia @variant=\"icon\">\n        <FolderCode />\n      </EmptyMedia>\n      <EmptyTitle>No Projects Yet</EmptyTitle>\n      <EmptyDescription>\n        You haven't created any projects yet. Get started by creating your first\n        project.\n      </EmptyDescription>\n    </EmptyHeader>\n    <EmptyContent>\n      <div class=\"flex gap-2\">\n        <Button>Create Project</Button>\n        <Button @variant=\"outline\">Import Project</Button>\n      </div>\n    </EmptyContent>\n    <Button\n      @asChild={{true}}\n      @class=\"text-muted-foreground\"\n      @size=\"sm\"\n      @variant=\"link\"\n      as |button|\n    >\n      <a class={{button.classes}} href=\"#\">\n        Learn More\n        <ArrowUpRight />\n      </a>\n    </Button>\n  </Empty>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

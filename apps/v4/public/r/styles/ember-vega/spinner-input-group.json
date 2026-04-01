@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spinner-input-group",
+  "title": "Spinner Input Group",
+  "dependencies": [],
+  "registryDependencies": [
+    "input-group",
+    "spinner"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-vega/examples/spinner-input-group.gts",
+      "content": "import {\n  InputGroup,\n  InputGroupAddon,\n  InputGroupButton,\n  InputGroupInput,\n  InputGroupTextarea,\n} from '@/ui/input-group';\nimport { Spinner } from '@/ui/spinner';\n\nimport ArrowUp from '~icons/lucide/arrow-up';\n\n<template>\n  <div class=\"flex w-full max-w-md flex-col gap-4\">\n    <InputGroup>\n      <InputGroupInput disabled placeholder=\"Send a message...\" />\n      <InputGroupAddon @align=\"inline-end\">\n        <Spinner />\n      </InputGroupAddon>\n    </InputGroup>\n    <InputGroup>\n      <InputGroupTextarea disabled placeholder=\"Send a message...\" />\n      <InputGroupAddon @align=\"block-end\">\n        <Spinner />\n        Validating...\n        <InputGroupButton @variant=\"default\" class=\"ml-auto\">\n          <ArrowUp />\n          <span class=\"sr-only\">Send</span>\n        </InputGroupButton>\n      </InputGroupAddon>\n    </InputGroup>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

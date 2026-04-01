@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "item-demo",
+  "title": "Item Demo",
+  "dependencies": [],
+  "registryDependencies": [
+    "button",
+    "item"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-mira/examples/item-demo.gts",
+      "content": "import { Button } from '@/ui/button';\nimport {\n  Item,\n  ItemActions,\n  ItemContent,\n  ItemDescription,\n  ItemMedia,\n  ItemTitle,\n} from '@/ui/item';\n\nimport BadgeCheck from '~icons/lucide/badge-check';\nimport ChevronRight from '~icons/lucide/chevron-right';\n\n<template>\n  <div class=\"flex w-full max-w-md flex-col gap-6\">\n    <Item @variant=\"outline\">\n      <ItemContent>\n        <ItemTitle>Two-factor authentication</ItemTitle>\n        <ItemDescription @class=\"text-pretty xl:hidden 2xl:block\">\n          Verify via email or phone number.\n        </ItemDescription>\n      </ItemContent>\n      <ItemActions>\n        <Button @size=\"sm\">Enable</Button>\n      </ItemActions>\n    </Item>\n    <Item @asChild={{true}} @size=\"sm\" @variant=\"outline\" as |item|>\n      <a\n        class={{item.class}}\n        data-size={{item.size}}\n        data-slot={{item.slot}}\n        data-variant={{item.variant}}\n        href=\"#\"\n      >\n        <ItemMedia>\n          <BadgeCheck class=\"size-5\" />\n        </ItemMedia>\n        <ItemContent>\n          <ItemTitle>Your profile has been verified.</ItemTitle>\n        </ItemContent>\n        <ItemActions>\n          <ChevronRight class=\"size-4\" />\n        </ItemActions>\n      </a>\n    </Item>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

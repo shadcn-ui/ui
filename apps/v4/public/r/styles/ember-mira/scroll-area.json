@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scroll-area",
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/ember-mira/ui/scroll-area.gts",
+      "content": "import Component from '@glimmer/component';\n\nimport { cn } from '@/lib/utils';\n\nimport type { TOC } from '@ember/component/template-only';\n\n// ScrollArea Root Component\ninterface ScrollAreaSignature {\n  Element: HTMLDivElement;\n  Args: {\n    class?: string;\n  };\n  Blocks: {\n    default: [];\n  };\n}\n\nconst ScrollArea: TOC<ScrollAreaSignature> = <template>\n  <div class={{cn \"relative overflow-hidden\" @class}} ...attributes>\n    <div class=\"h-full w-full rounded-[inherit] overflow-auto\">\n      {{yield}}\n    </div>\n    <ScrollBar />\n  </div>\n</template>;\n\n// ScrollBar Component\ninterface ScrollBarSignature {\n  Element: HTMLDivElement;\n  Args: {\n    class?: string;\n    orientation?: 'vertical' | 'horizontal';\n  };\n  Blocks: {\n    default: [];\n  };\n}\n\nclass ScrollBar extends Component<ScrollBarSignature> {\n  get orientationClasses() {\n    const orientation = this.args.orientation ?? 'vertical';\n    if (orientation === 'vertical') {\n      return 'h-full w-2.5 border-l border-l-transparent p-[1px]';\n    }\n    return 'h-2.5 flex-col border-t border-t-transparent p-[1px]';\n  }\n\n  <template>\n    <div\n      class={{cn\n        \"flex touch-none select-none transition-colors\"\n        this.orientationClasses\n        @class\n      }}\n      ...attributes\n    >\n      <div class=\"relative flex-1 rounded-full bg-border\"></div>\n    </div>\n  </template>\n}\n\nexport { ScrollArea, ScrollBar };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

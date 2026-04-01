@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "breadcrumb-demo",
+  "title": "Breadcrumb Demo",
+  "dependencies": [
+    "@ember/routing"
+  ],
+  "registryDependencies": [
+    "breadcrumb",
+    "dropdown-menu"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-vega/examples/breadcrumb-demo.gts",
+      "content": "import { LinkTo } from '@ember/routing';\n\nimport {\n  Breadcrumb,\n  BreadcrumbEllipsis,\n  BreadcrumbItem,\n  BreadcrumbLink,\n  BreadcrumbList,\n  BreadcrumbPage,\n  BreadcrumbSeparator,\n} from '@/ui/breadcrumb';\nimport {\n  DropdownMenu,\n  DropdownMenuContent,\n  DropdownMenuItem,\n  DropdownMenuTrigger,\n} from '@/ui/dropdown-menu';\n\n<template>\n  <Breadcrumb>\n    <BreadcrumbList>\n      <BreadcrumbItem>\n        <BreadcrumbLink @asChild={{true}} as |link|>\n          <LinkTo @route=\"index\" class={{link.classes}}>Home</LinkTo>\n        </BreadcrumbLink>\n      </BreadcrumbItem>\n      <BreadcrumbSeparator />\n      <BreadcrumbItem>\n        <DropdownMenu>\n          <DropdownMenuTrigger @class=\"flex items-center gap-1\">\n            <BreadcrumbEllipsis class=\"size-4\" />\n            <span class=\"sr-only\">Toggle menu</span>\n          </DropdownMenuTrigger>\n          <DropdownMenuContent>\n            <DropdownMenuItem>Documentation</DropdownMenuItem>\n            <DropdownMenuItem>Themes</DropdownMenuItem>\n            <DropdownMenuItem>GitHub</DropdownMenuItem>\n          </DropdownMenuContent>\n        </DropdownMenu>\n      </BreadcrumbItem>\n      <BreadcrumbSeparator />\n      <BreadcrumbItem>\n        <BreadcrumbLink @asChild={{true}} as |link|>\n          <LinkTo\n            @model=\"components\"\n            @route=\"docs.catch-all\"\n            class={{link.classes}}\n          >Components</LinkTo>\n        </BreadcrumbLink>\n      </BreadcrumbItem>\n      <BreadcrumbSeparator />\n      <BreadcrumbItem>\n        <BreadcrumbPage>Breadcrumb</BreadcrumbPage>\n      </BreadcrumbItem>\n    </BreadcrumbList>\n  </Breadcrumb>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-group-dropdown",
+  "title": "Button Group Dropdown",
+  "dependencies": [],
+  "registryDependencies": [
+    "button",
+    "button-group",
+    "dropdown-menu"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-maia/examples/button-group-dropdown.gts",
+      "content": "import { Button } from '@/ui/button';\nimport { ButtonGroup } from '@/ui/button-group';\nimport {\n  DropdownMenu,\n  DropdownMenuContent,\n  DropdownMenuGroup,\n  DropdownMenuItem,\n  DropdownMenuSeparator,\n  DropdownMenuTrigger,\n} from '@/ui/dropdown-menu';\n\nimport AlertTriangleIcon from '~icons/lucide/alert-triangle';\nimport CheckIcon from '~icons/lucide/check';\nimport ChevronDownIcon from '~icons/lucide/chevron-down';\nimport CopyIcon from '~icons/lucide/copy';\nimport ShareIcon from '~icons/lucide/share';\nimport TrashIcon from '~icons/lucide/trash';\nimport UserRoundXIcon from '~icons/lucide/user-round-x';\nimport VolumeOffIcon from '~icons/lucide/volume-off';\n\n<template>\n  <ButtonGroup>\n    <Button @variant=\"outline\">Follow</Button>\n    <DropdownMenu>\n      <DropdownMenuTrigger @asChild={{true}} as |trigger|>\n        <Button @variant=\"outline\" class=\"!pl-2\" {{trigger.modifiers}}>\n          <ChevronDownIcon />\n        </Button>\n      </DropdownMenuTrigger>\n      <DropdownMenuContent @class=\"[--radius:1rem]\">\n        <DropdownMenuGroup>\n          <DropdownMenuItem>\n            <VolumeOffIcon />\n            Mute Conversation\n          </DropdownMenuItem>\n          <DropdownMenuItem>\n            <CheckIcon />\n            Mark as Read\n          </DropdownMenuItem>\n          <DropdownMenuItem>\n            <AlertTriangleIcon />\n            Report Conversation\n          </DropdownMenuItem>\n          <DropdownMenuItem>\n            <UserRoundXIcon />\n            Block User\n          </DropdownMenuItem>\n          <DropdownMenuItem>\n            <ShareIcon />\n            Share Conversation\n          </DropdownMenuItem>\n          <DropdownMenuItem>\n            <CopyIcon />\n            Copy Conversation\n          </DropdownMenuItem>\n        </DropdownMenuGroup>\n        <DropdownMenuSeparator />\n        <DropdownMenuGroup>\n          <DropdownMenuItem @variant=\"destructive\">\n            <TrashIcon />\n            Delete Conversation\n          </DropdownMenuItem>\n        </DropdownMenuGroup>\n      </DropdownMenuContent>\n    </DropdownMenu>\n  </ButtonGroup>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

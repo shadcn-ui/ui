@@ -1,0 +1,53 @@
+---
+title: Checkbox
+description: A control that allows the user to toggle between checked and not checked.
+base: ember
+component: true
+---
+
+
+<ComponentPreview framework="ember" name="checkbox-demo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @force-ui-ember/checkbox
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource framework="ember" name="checkbox" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+
+## Usage
+
+```gts showLineNumbers
+import { Checkbox } from '@/ui/checkbox';
+```
+
+```hbs showLineNumbers
+<Checkbox />
+```

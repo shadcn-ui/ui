@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-otp-form",
+  "title": "Input Otp Form",
+  "dependencies": [
+    "@ember/modifier"
+  ],
+  "registryDependencies": [
+    "button",
+    "field",
+    "input-otp"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-nova/examples/input-otp-form.gts",
+      "content": "import { on } from '@ember/modifier';\nimport Component from '@glimmer/component';\nimport { tracked } from '@glimmer/tracking';\n\nimport { Button } from '@/ui/button';\nimport {\n  Field,\n  FieldContent,\n  FieldError,\n  FieldLabel,\n} from '@/ui/field';\nimport {\n  InputOTP,\n  InputOTPGroup,\n  InputOTPSlot,\n} from '@/ui/input-otp';\n\nexport default class InputOtpFormDemo extends Component {\n  @tracked pin = '';\n  @tracked errorMessage = '';\n\n  handleSubmit = (event: Event) => {\n    event.preventDefault();\n\n    if (this.pin.length !== 6) {\n      this.errorMessage = 'Please enter a 6-digit one-time password';\n      return;\n    }\n\n    this.errorMessage = '';\n    alert(`Submitted PIN: ${this.pin}`);\n  };\n\n  handleValueChange = (value: string) => {\n    this.pin = value;\n    if (this.errorMessage && value.length === 6) {\n      this.errorMessage = '';\n    }\n  };\n\n  <template>\n    <form {{on \"submit\" this.handleSubmit}} class=\"w-full max-w-sm space-y-4\">\n      <Field @invalid={{if this.errorMessage true false}}>\n        <FieldLabel>One-Time Password</FieldLabel>\n        <FieldContent>\n          <InputOTP\n            @maxLength={{6}}\n            @onValueChange={{this.handleValueChange}}\n            @value={{this.pin}}\n          >\n            <InputOTPGroup>\n              <InputOTPSlot @index={{0}} />\n              <InputOTPSlot @index={{1}} />\n              <InputOTPSlot @index={{2}} />\n              <InputOTPSlot @index={{3}} />\n              <InputOTPSlot @index={{4}} />\n              <InputOTPSlot @index={{5}} />\n            </InputOTPGroup>\n          </InputOTP>\n          {{#if this.errorMessage}}\n            <FieldError>{{this.errorMessage}}</FieldError>\n          {{/if}}\n        </FieldContent>\n      </Field>\n      <Button type=\"submit\">Submit</Button>\n    </form>\n  </template>\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

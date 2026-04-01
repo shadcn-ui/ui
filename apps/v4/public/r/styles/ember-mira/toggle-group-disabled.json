@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toggle-group-disabled",
+  "title": "Toggle Group Disabled",
+  "dependencies": [],
+  "registryDependencies": [
+    "toggle-group"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-mira/examples/toggle-group-disabled.gts",
+      "content": "import { ToggleGroup, ToggleGroupItem } from '@/ui/toggle-group';\n\nimport Bold from '~icons/lucide/bold';\nimport Italic from '~icons/lucide/italic';\nimport Underline from '~icons/lucide/underline';\n\n<template>\n  <ToggleGroup @disabled={{true}} @type=\"multiple\">\n    <ToggleGroupItem @value=\"bold\" aria-label=\"Toggle bold\">\n      <Bold class=\"h-4 w-4\" />\n    </ToggleGroupItem>\n    <ToggleGroupItem @value=\"italic\" aria-label=\"Toggle italic\">\n      <Italic class=\"h-4 w-4\" />\n    </ToggleGroupItem>\n    <ToggleGroupItem @value=\"strikethrough\" aria-label=\"Toggle strikethrough\">\n      <Underline class=\"h-4 w-4\" />\n    </ToggleGroupItem>\n  </ToggleGroup>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

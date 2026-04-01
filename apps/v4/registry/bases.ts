@@ -27,7 +27,7 @@ export const REACT_BASES: z.infer<typeof registryItemSchema>[] = [
   },
 ]
 
-// ALL_BASES includes all bases used by the build pipeline (React + Vue + Svelte).
+// ALL_BASES includes all bases used by the build pipeline (React + Vue + Svelte + Ember).
 export const BASES: z.infer<typeof registryItemSchema>[] = [
   ...REACT_BASES,
   {
@@ -43,6 +43,13 @@ export const BASES: z.infer<typeof registryItemSchema>[] = [
     title: "Svelte",
     description: "Cybernetically enhanced web apps.",
     dependencies: ["svelte", "class-variance-authority"],
+  },
+  {
+    name: "ember",
+    type: "registry:style",
+    title: "Ember",
+    description: "A framework for ambitious web applications.",
+    dependencies: ["ember-modifier", "ember-provide-consume-context", "class-variance-authority"],
   },
 ]
 

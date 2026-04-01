@@ -17,6 +17,12 @@ export const FRAMEWORKS = [
     bases: ["svelte"],
     registry: "@force-ui-svelte",
   },
+  {
+    name: "ember",
+    title: "Ember",
+    bases: ["ember"],
+    registry: "@force-ui-ember",
+  },
 ] as const
 
 export type Framework = (typeof FRAMEWORKS)[number]
@@ -43,6 +49,8 @@ export function getDefaultBaseForFramework(framework: string): string {
       return "vue"
     case "svelte":
       return "svelte"
+    case "ember":
+      return "ember"
     default:
       return "radix"
   }

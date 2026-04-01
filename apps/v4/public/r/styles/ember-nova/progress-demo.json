@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "progress-demo",
+  "title": "Progress Demo",
+  "dependencies": [
+    "@ember/owner"
+  ],
+  "registryDependencies": [
+    "progress"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-nova/examples/progress-demo.gts",
+      "content": "import Component from '@glimmer/component';\nimport { tracked } from '@glimmer/tracking';\n\nimport { Progress } from '@/ui/progress';\n\nimport type Owner from '@ember/owner';\n\nexport default class ProgressDemo extends Component {\n  @tracked progress = 13;\n\n  constructor(owner: Owner, args: object) {\n    super(owner, args);\n\n    setTimeout(() => {\n      this.progress = 66;\n    }, 500);\n  }\n\n  <template><Progress @class=\"w-[60%]\" @value={{this.progress}} /></template>\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "field-textarea",
+  "title": "Field Textarea",
+  "dependencies": [],
+  "registryDependencies": [
+    "field",
+    "textarea"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-lyra/examples/field-textarea.gts",
+      "content": "import {\n  Field,\n  FieldDescription,\n  FieldGroup,\n  FieldLabel,\n  FieldSet,\n} from '@/ui/field';\nimport { Textarea } from '@/ui/textarea';\n\n<template>\n  <div class=\"w-full max-w-md\">\n    <FieldSet>\n      <FieldGroup>\n        <Field>\n          <FieldLabel @for=\"feedback\">Feedback</FieldLabel>\n          <Textarea\n            id=\"feedback\"\n            placeholder=\"Your feedback helps us improve...\"\n            rows=\"4\"\n          />\n          <FieldDescription>\n            Share your thoughts about our service.\n          </FieldDescription>\n        </Field>\n      </FieldGroup>\n    </FieldSet>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

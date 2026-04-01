@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "select-scrollable",
+  "title": "Select Scrollable",
+  "dependencies": [],
+  "registryDependencies": [
+    "select"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-maia/examples/select-scrollable.gts",
+      "content": "import {\n  Select,\n  SelectContent,\n  SelectGroup,\n  SelectItem,\n  SelectLabel,\n  SelectTrigger,\n  SelectValue,\n} from '@/ui/select';\n\n<template>\n  <Select>\n    <SelectTrigger @class=\"w-[280px]\">\n      <SelectValue @placeholder=\"Select a timezone\" />\n    </SelectTrigger>\n    <SelectContent>\n      <SelectGroup>\n        <SelectLabel>North America</SelectLabel>\n        <SelectItem @value=\"est\">Eastern Standard Time (EST)</SelectItem>\n        <SelectItem @value=\"cst\">Central Standard Time (CST)</SelectItem>\n        <SelectItem @value=\"mst\">Mountain Standard Time (MST)</SelectItem>\n        <SelectItem @value=\"pst\">Pacific Standard Time (PST)</SelectItem>\n        <SelectItem @value=\"akst\">Alaska Standard Time (AKST)</SelectItem>\n        <SelectItem @value=\"hst\">Hawaii Standard Time (HST)</SelectItem>\n      </SelectGroup>\n      <SelectGroup>\n        <SelectLabel>Europe & Africa</SelectLabel>\n        <SelectItem @value=\"gmt\">Greenwich Mean Time (GMT)</SelectItem>\n        <SelectItem @value=\"cet\">Central European Time (CET)</SelectItem>\n        <SelectItem @value=\"eet\">Eastern European Time (EET)</SelectItem>\n        <SelectItem @value=\"west\">Western European Summer Time (WEST)</SelectItem>\n        <SelectItem @value=\"cat\">Central Africa Time (CAT)</SelectItem>\n        <SelectItem @value=\"eat\">East Africa Time (EAT)</SelectItem>\n      </SelectGroup>\n      <SelectGroup>\n        <SelectLabel>Asia</SelectLabel>\n        <SelectItem @value=\"msk\">Moscow Time (MSK)</SelectItem>\n        <SelectItem @value=\"ist\">India Standard Time (IST)</SelectItem>\n        <SelectItem @value=\"cst_china\">China Standard Time (CST)</SelectItem>\n        <SelectItem @value=\"jst\">Japan Standard Time (JST)</SelectItem>\n        <SelectItem @value=\"kst\">Korea Standard Time (KST)</SelectItem>\n        <SelectItem @value=\"ist_indonesia\">Indonesia Central Standard Time\n          (WITA)</SelectItem>\n      </SelectGroup>\n      <SelectGroup>\n        <SelectLabel>Australia & Pacific</SelectLabel>\n        <SelectItem @value=\"awst\">Australian Western Standard Time (AWST)</SelectItem>\n        <SelectItem @value=\"acst\">Australian Central Standard Time (ACST)</SelectItem>\n        <SelectItem @value=\"aest\">Australian Eastern Standard Time (AEST)</SelectItem>\n        <SelectItem @value=\"nzst\">New Zealand Standard Time (NZST)</SelectItem>\n        <SelectItem @value=\"fjt\">Fiji Time (FJT)</SelectItem>\n      </SelectGroup>\n      <SelectGroup>\n        <SelectLabel>South America</SelectLabel>\n        <SelectItem @value=\"art\">Argentina Time (ART)</SelectItem>\n        <SelectItem @value=\"bot\">Bolivia Time (BOT)</SelectItem>\n        <SelectItem @value=\"brt\">Brasilia Time (BRT)</SelectItem>\n        <SelectItem @value=\"clt\">Chile Standard Time (CLT)</SelectItem>\n      </SelectGroup>\n    </SelectContent>\n  </Select>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

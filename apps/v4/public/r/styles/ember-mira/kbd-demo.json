@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "kbd-demo",
+  "title": "Kbd Demo",
+  "dependencies": [],
+  "registryDependencies": [
+    "kbd"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-mira/examples/kbd-demo.gts",
+      "content": "import { Kbd, KbdGroup } from '@/ui/kbd';\n\n<template>\n  <div class=\"flex flex-col items-center gap-4\">\n    <KbdGroup>\n      <Kbd>⌘</Kbd>\n      <Kbd>⇧</Kbd>\n      <Kbd>⌥</Kbd>\n      <Kbd>⌃</Kbd>\n    </KbdGroup>\n    <KbdGroup>\n      <Kbd>Ctrl</Kbd>\n      <span>+</span>\n      <Kbd>B</Kbd>\n    </KbdGroup>\n  </div>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

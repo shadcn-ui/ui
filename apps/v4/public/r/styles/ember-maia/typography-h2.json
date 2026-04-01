@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "typography-h2",
+  "title": "Typography H2",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/ember-maia/examples/typography-h2.gts",
+      "content": "<template>\n  <h2\n    class=\"scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0\"\n  >\n    The People of the Kingdom\n  </h2>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "empty-background",
+  "title": "Empty Background",
+  "dependencies": [],
+  "registryDependencies": [
+    "button",
+    "empty"
+  ],
+  "files": [
+    {
+      "path": "registry/ember-maia/examples/empty-background.gts",
+      "content": "import { Button } from '@/ui/button';\nimport {\n  Empty,\n  EmptyContent,\n  EmptyDescription,\n  EmptyHeader,\n  EmptyMedia,\n  EmptyTitle,\n} from '@/ui/empty';\n\nimport Bell from '~icons/lucide/bell';\nimport RefreshCcw from '~icons/lucide/refresh-ccw';\n\n<template>\n  <Empty @class=\"from-muted/50 to-background h-full bg-gradient-to-b from-30%\">\n    <EmptyHeader>\n      <EmptyMedia @variant=\"icon\">\n        <Bell />\n      </EmptyMedia>\n      <EmptyTitle>No Notifications</EmptyTitle>\n      <EmptyDescription>\n        You're all caught up. New notifications will appear here.\n      </EmptyDescription>\n    </EmptyHeader>\n    <EmptyContent>\n      <Button @size=\"sm\" @variant=\"outline\">\n        <RefreshCcw />\n        Refresh\n      </Button>\n    </EmptyContent>\n  </Empty>\n</template>\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}
