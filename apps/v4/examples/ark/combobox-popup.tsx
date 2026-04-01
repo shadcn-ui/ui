@@ -1,13 +1,12 @@
 "use client"
 
-import { Button } from "@/examples/ark/ui/button"
 import {
   Combobox,
   ComboboxContent,
   ComboboxControl,
+  ComboboxEmpty,
   ComboboxInput,
   ComboboxItem,
-  ComboboxItemIndicator,
   ComboboxItemText,
   ComboboxList,
   ComboboxTrigger,
@@ -78,25 +77,19 @@ export function ComboboxPopup() {
     <Combobox
       collection={collection}
       onInputValueChange={(details) => filter(details.inputValue)}
-      className="w-full max-w-48"
+      openOnClick
+      className="w-full max-w-64"
     >
-      <ComboboxControl className="h-auto w-auto border-0 bg-transparent ring-0 dark:bg-transparent">
-        <ComboboxTrigger asChild>
-          <Button
-            variant="outline"
-            className="w-64 justify-between font-normal"
-          >
-            Select country
-          </Button>
-        </ComboboxTrigger>
+      <ComboboxControl>
+        <ComboboxInput placeholder="Search countries..." />
+        <ComboboxTrigger />
       </ComboboxControl>
       <ComboboxContent>
-        <ComboboxInput placeholder="Search" />
+        <ComboboxEmpty>No countries found.</ComboboxEmpty>
         <ComboboxList>
           {collection.items.map((item) => (
             <ComboboxItem key={item.value} item={item}>
               <ComboboxItemText>{item.label}</ComboboxItemText>
-              <ComboboxItemIndicator />
             </ComboboxItem>
           ))}
         </ComboboxList>

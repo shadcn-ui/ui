@@ -60,11 +60,11 @@ npm install @ark-ui/react
 ```tsx showLineNumbers
 import {
   Combobox,
+  ComboboxClearTrigger,
   ComboboxContent,
   ComboboxControl,
   ComboboxInput,
   ComboboxItem,
-  ComboboxItemIndicator,
   ComboboxItemText,
   ComboboxList,
   ComboboxTrigger,
@@ -96,6 +96,7 @@ export function ExampleCombobox() {
     >
       <ComboboxControl>
         <ComboboxInput placeholder="Select a framework" />
+        <ComboboxClearTrigger />
         <ComboboxTrigger />
       </ComboboxControl>
       <ComboboxContent>
@@ -103,7 +104,6 @@ export function ExampleCombobox() {
           {collection.items.map((item) => (
             <ComboboxItem key={item.value} item={item}>
               <ComboboxItemText>{item.label}</ComboboxItemText>
-              <ComboboxItemIndicator />
             </ComboboxItem>
           ))}
         </ComboboxList>
@@ -120,11 +120,11 @@ Use `useListCollection` with custom item objects. The `label` field is used for 
 ```tsx showLineNumbers
 import {
   Combobox,
+  ComboboxClearTrigger,
   ComboboxContent,
   ComboboxControl,
   ComboboxInput,
   ComboboxItem,
-  ComboboxItemIndicator,
   ComboboxItemText,
   ComboboxList,
   ComboboxTrigger,
@@ -152,6 +152,7 @@ export function ExampleComboboxCustomItems() {
     >
       <ComboboxControl>
         <ComboboxInput placeholder="Search countries..." />
+        <ComboboxClearTrigger />
         <ComboboxTrigger />
       </ComboboxControl>
       <ComboboxContent>
@@ -159,7 +160,6 @@ export function ExampleComboboxCustomItems() {
           {collection.items.map((item) => (
             <ComboboxItem key={item.value} item={item}>
               <ComboboxItemText>{item.label}</ComboboxItemText>
-              <ComboboxItemIndicator />
             </ComboboxItem>
           ))}
         </ComboboxList>
@@ -171,18 +171,19 @@ export function ExampleComboboxCustomItems() {
 
 ## Multiple Selection
 
-Use the `multiple` prop for multi-select behavior.
+Use the `multiple` prop for multi-select behavior. Use `ComboboxContext` to access `selectedItems` and render tags with `ComboboxTagsControl`, `ComboboxTag`, and `ComboboxTagsInput`.
 
 ```tsx showLineNumbers
 import {
   Combobox,
   ComboboxContent,
-  ComboboxControl,
-  ComboboxInput,
+  ComboboxContext,
   ComboboxItem,
-  ComboboxItemIndicator,
   ComboboxItemText,
   ComboboxList,
+  ComboboxTag,
+  ComboboxTagsControl,
+  ComboboxTagsInput,
   ComboboxTrigger,
   useFilter,
   useListCollection,
@@ -210,16 +211,28 @@ export function ExampleComboboxMultiple() {
       multiple
       defaultValue={["nextjs"]}
     >
-      <ComboboxControl>
-        <ComboboxInput placeholder="Select frameworks" />
-        <ComboboxTrigger />
-      </ComboboxControl>
+      <ComboboxContext>
+        {(context) => (
+          <ComboboxTagsControl>
+            {context.selectedItems.map((item) => (
+              <ComboboxTag
+                key={item.value}
+                value={item.value}
+                onRemove={(value) => context.clearValue(value)}
+              >
+                {item.label}
+              </ComboboxTag>
+            ))}
+            <ComboboxTagsInput placeholder="Select frameworks" />
+            <ComboboxTrigger />
+          </ComboboxTagsControl>
+        )}
+      </ComboboxContext>
       <ComboboxContent>
         <ComboboxList>
           {collection.items.map((item) => (
             <ComboboxItem key={item.value} item={item}>
               <ComboboxItemText>{item.label}</ComboboxItemText>
-              <ComboboxItemIndicator />
             </ComboboxItem>
           ))}
         </ComboboxList>
@@ -245,7 +258,7 @@ A combobox with multiple selection using the `multiple` prop.
 
 ### Clear Button
 
-Use the `ComboboxClearTrigger` to show a clear button.
+Use the `ComboboxClearTrigger` inside `ComboboxControl` to show a clear button.
 
 <ComponentPreview styleName="ark-nova" name="combobox-clear" />
 
@@ -275,13 +288,13 @@ Use the `disabled` prop to disable the combobox.
 
 ### Auto Highlight
 
-Use the `autoFocus` prop to automatically highlight the first item on open.
+Use the `inputBehavior="autohighlight"` prop to automatically highlight the first matching item as the user types.
 
 <ComponentPreview styleName="ark-nova" name="combobox-auto-highlight" />
 
-### Popup
+### Open on Click
 
-You can trigger the combobox from a button using the `asChild` prop on `ComboboxTrigger`. Move the `ComboboxInput` inside the `ComboboxContent`.
+Use the `openOnClick` prop to open the combobox dropdown when the input is clicked.
 
 <ComponentPreview styleName="ark-nova" name="combobox-popup" />
 

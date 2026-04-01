@@ -8,9 +8,9 @@ import {
   ComboboxItem,
   ComboboxItemGroup,
   ComboboxItemGroupLabel,
-  ComboboxItemIndicator,
   ComboboxItemText,
   ComboboxList,
+  ComboboxClearTrigger,
   ComboboxTrigger,
   useFilter,
   useListCollection,
@@ -74,8 +74,9 @@ export function ComboxboxInputGroup() {
       className="w-full max-w-64"
     >
       <ComboboxControl>
-        <GlobeIcon className="ml-2 size-4 text-muted-foreground" />
-        <ComboboxInput placeholder="Select a timezone" className="pl-1.5" />
+        <GlobeIcon className="ms-2.5 size-4 shrink-0 text-muted-foreground" />
+        <ComboboxInput placeholder="Select a timezone" className="ps-1.5" />
+        <ComboboxClearTrigger />
         <ComboboxTrigger />
       </ComboboxControl>
       <ComboboxContent>
@@ -86,7 +87,6 @@ export function ComboxboxInputGroup() {
               {filteredAmericas.map((item) => (
                 <ComboboxItem key={item.value} item={item}>
                   <ComboboxItemText>{item.label}</ComboboxItemText>
-                  <ComboboxItemIndicator />
                 </ComboboxItem>
               ))}
             </ComboboxItemGroup>
@@ -97,7 +97,6 @@ export function ComboxboxInputGroup() {
               {filteredEurope.map((item) => (
                 <ComboboxItem key={item.value} item={item}>
                   <ComboboxItemText>{item.label}</ComboboxItemText>
-                  <ComboboxItemIndicator />
                 </ComboboxItem>
               ))}
             </ComboboxItemGroup>
@@ -108,7 +107,6 @@ export function ComboxboxInputGroup() {
               {filteredAsiaPacific.map((item) => (
                 <ComboboxItem key={item.value} item={item}>
                   <ComboboxItemText>{item.label}</ComboboxItemText>
-                  <ComboboxItemIndicator />
                 </ComboboxItem>
               ))}
             </ComboboxItemGroup>

@@ -6,7 +6,6 @@ import {
   ComboboxControl,
   ComboboxInput,
   ComboboxItem,
-  ComboboxItemIndicator,
   ComboboxItemText,
   ComboboxList,
   ComboboxTrigger,
@@ -37,7 +36,6 @@ export function ComboboxDisabled() {
           {collection.items.map((item) => (
             <ComboboxItem key={item.value} item={item}>
               <ComboboxItemText>{item.label}</ComboboxItemText>
-              <ComboboxItemIndicator />
             </ComboboxItem>
           ))}
         </ComboboxList>
