@@ -4,7 +4,7 @@ import {
   designSystemConfigSchema,
   type DesignSystemConfig,
 } from "@/registry/config"
-import { resolvePresetOverrides } from "@/app/(create)/lib/preset-query"
+import { resolvePresetOverrides } from "@/app/(app)/create/lib/preset-query"
 
 // Parses design system config from URL search params.
 export function parseDesignSystemConfig(searchParams: URLSearchParams) {

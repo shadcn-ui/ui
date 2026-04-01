@@ -960,6 +960,12 @@
     "description": "A collection of customizable UI blocks with interactive live previews"
   },
   {
+    "name": "@tailgrids",
+    "homepage": "https://tailgrids.com",
+    "url": "https://tailgrids.com/docs/r/{name}.json",
+    "description": "React UI Components, Powered by Tailwind CSS"
+  },
+  {
     "name": "@nexus-ui",
     "homepage": "https://nexus-ui.dev",
     "url": "https://nexus-ui.dev/r/{name}.json",
