@@ -4,12 +4,13 @@ import * as React from "react"
 import {
   Combobox,
   ComboboxContent,
-  ComboboxControl,
-  ComboboxInput,
+  ComboboxContext,
   ComboboxItem,
-  ComboboxItemIndicator,
   ComboboxItemText,
   ComboboxList,
+  ComboboxTag,
+  ComboboxTagsControl,
+  ComboboxTagsInput,
   ComboboxTrigger,
   useFilter,
   useListCollection,
@@ -95,10 +96,25 @@ export function ComboboxRtl() {
         multiple
         defaultValue={[categories[0]]}
       >
-        <ComboboxControl>
-          <ComboboxInput placeholder={t.placeholder} />
-          <ComboboxTrigger />
-        </ComboboxControl>
+        <ComboboxContext>
+          {(context) => (
+            <ComboboxTagsControl>
+              {context.selectedItems.map(
+                (item: { label: string; value: string }) => (
+                  <ComboboxTag
+                    key={item.value}
+                    value={item.value}
+                    onRemove={(value) => context.clearValue(value)}
+                  >
+                    {item.label}
+                  </ComboboxTag>
+                )
+              )}
+              <ComboboxTagsInput placeholder={t.placeholder} />
+              <ComboboxTrigger />
+            </ComboboxTagsControl>
+          )}
+        </ComboboxContext>
         <ComboboxContent
           dir={dir}
           data-lang={dir === "rtl" ? language : undefined}
@@ -107,7 +123,6 @@ export function ComboboxRtl() {
             {collection.items.map((item) => (
               <ComboboxItem key={item.value} item={item}>
                 <ComboboxItemText>{item.label}</ComboboxItemText>
-                <ComboboxItemIndicator />
               </ComboboxItem>
             ))}
           </ComboboxList>

@@ -2,11 +2,11 @@
 
 import {
   Combobox,
+  ComboboxClearTrigger,
   ComboboxContent,
   ComboboxControl,
   ComboboxInput,
   ComboboxItem,
-  ComboboxItemIndicator,
   ComboboxItemText,
   ComboboxList,
   ComboboxTrigger,
@@ -37,6 +37,7 @@ export default function ComboboxBasic() {
     >
       <ComboboxControl>
         <ComboboxInput placeholder="Select a framework" />
+        <ComboboxClearTrigger />
         <ComboboxTrigger />
       </ComboboxControl>
       <ComboboxContent>
@@ -44,7 +45,6 @@ export default function ComboboxBasic() {
           {collection.items.map((item) => (
             <ComboboxItem key={item.value} item={item}>
               <ComboboxItemText>{item.label}</ComboboxItemText>
-              <ComboboxItemIndicator />
             </ComboboxItem>
           ))}
         </ComboboxList>

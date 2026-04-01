@@ -8,9 +8,9 @@ import {
   ComboboxItem,
   ComboboxItemGroup,
   ComboboxItemGroupLabel,
-  ComboboxItemIndicator,
   ComboboxItemText,
   ComboboxList,
+  ComboboxClearTrigger,
   ComboboxTrigger,
   useFilter,
   useListCollection,
@@ -74,6 +74,7 @@ export function ComboboxWithGroupsAndSeparator() {
     >
       <ComboboxControl>
         <ComboboxInput placeholder="Select a timezone" />
+        <ComboboxClearTrigger />
         <ComboboxTrigger />
       </ComboboxControl>
       <ComboboxContent>
@@ -84,7 +85,6 @@ export function ComboboxWithGroupsAndSeparator() {
               {filteredAmericas.map((item) => (
                 <ComboboxItem key={item.value} item={item}>
                   <ComboboxItemText>{item.label}</ComboboxItemText>
-                  <ComboboxItemIndicator />
                 </ComboboxItem>
               ))}
             </ComboboxItemGroup>
@@ -95,7 +95,6 @@ export function ComboboxWithGroupsAndSeparator() {
               {filteredEurope.map((item) => (
                 <ComboboxItem key={item.value} item={item}>
                   <ComboboxItemText>{item.label}</ComboboxItemText>
-                  <ComboboxItemIndicator />
                 </ComboboxItem>
               ))}
             </ComboboxItemGroup>
@@ -106,7 +105,6 @@ export function ComboboxWithGroupsAndSeparator() {
               {filteredAsiaPacific.map((item) => (
                 <ComboboxItem key={item.value} item={item}>
                   <ComboboxItemText>{item.label}</ComboboxItemText>
-                  <ComboboxItemIndicator />
                 </ComboboxItem>
               ))}
             </ComboboxItemGroup>

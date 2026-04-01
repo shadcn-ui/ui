@@ -2,11 +2,11 @@
 
 import {
   Combobox,
+  ComboboxClearTrigger,
   ComboboxContent,
   ComboboxControl,
   ComboboxInput,
   ComboboxItem,
-  ComboboxItemIndicator,
   ComboboxItemText,
   ComboboxList,
   ComboboxTrigger,
@@ -33,11 +33,13 @@ export function ComboboxAutoHighlight() {
     <Combobox
       collection={collection}
       onInputValueChange={(details) => filter(details.inputValue)}
-      autoFocus
+      inputBehavior="autohighlight"
+      openOnChange
       className="w-full max-w-48"
     >
       <ComboboxControl>
         <ComboboxInput placeholder="Select a framework" />
+        <ComboboxClearTrigger />
         <ComboboxTrigger />
       </ComboboxControl>
       <ComboboxContent>
@@ -45,7 +47,6 @@ export function ComboboxAutoHighlight() {
           {collection.items.map((item) => (
             <ComboboxItem key={item.value} item={item}>
               <ComboboxItemText>{item.label}</ComboboxItemText>
-              <ComboboxItemIndicator />
             </ComboboxItem>
           ))}
         </ComboboxList>

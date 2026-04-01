@@ -3,12 +3,13 @@
 import {
   Combobox,
   ComboboxContent,
-  ComboboxControl,
-  ComboboxInput,
+  ComboboxContext,
   ComboboxItem,
-  ComboboxItemIndicator,
   ComboboxItemText,
   ComboboxList,
+  ComboboxTag,
+  ComboboxTagsControl,
+  ComboboxTagsInput,
   ComboboxTrigger,
   useFilter,
   useListCollection,
@@ -35,18 +36,30 @@ export function ComboboxMultiple() {
       onInputValueChange={(details) => filter(details.inputValue)}
       multiple
       defaultValue={["nextjs"]}
-      className="w-full max-w-64"
+      className="w-full max-w-xs"
     >
-      <ComboboxControl>
-        <ComboboxInput placeholder="Select frameworks" />
-        <ComboboxTrigger />
-      </ComboboxControl>
+      <ComboboxContext>
+        {(context) => (
+          <ComboboxTagsControl>
+            {context.selectedItems.map((item: { label: string; value: string }) => (
+              <ComboboxTag
+                key={item.value}
+                value={item.value}
+                onRemove={(value) => context.clearValue(value)}
+              >
+                {item.label}
+              </ComboboxTag>
+            ))}
+            <ComboboxTagsInput placeholder="Select frameworks" />
+            <ComboboxTrigger />
+          </ComboboxTagsControl>
+        )}
+      </ComboboxContext>
       <ComboboxContent>
         <ComboboxList>
           {collection.items.map((item) => (
             <ComboboxItem key={item.value} item={item}>
               <ComboboxItemText>{item.label}</ComboboxItemText>
-              <ComboboxItemIndicator />
             </ComboboxItem>
           ))}
         </ComboboxList>
