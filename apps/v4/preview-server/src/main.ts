@@ -82,9 +82,19 @@ async function renderPreview() {
       app.innerHTML = `<p>Svelte component "${componentName}" not found.</p>`
     }
   } else if (framework === "ember") {
-    // Ember components require a full Ember runtime (owner/container) to render.
-    // Live preview is not yet supported — the code tab shows the source correctly.
-    app.innerHTML = `<p class="text-sm text-muted-foreground p-4">Ember live preview coming soon. See the Code tab for the source.</p>`
+    const { renderComponent, renderSettled } = await import("@ember/renderer")
+    const modules = import.meta.glob("./ember/*.gts")
+    const modulePath = `./ember/${componentName}.gts`
+
+    if (modules[modulePath]) {
+      const mod = (await modules[modulePath]()) as Record<string, unknown>
+      // The default export is the component class
+      const Component = mod.default as Parameters<typeof renderComponent>[0]
+      renderComponent(Component, { into: app, owner: {} })
+      await renderSettled()
+    } else {
+      app.innerHTML = `<p>Ember component "${componentName}" not found.</p>`
+    }
   } else {
     app.innerHTML = `<p>Unknown framework "${framework}". Supported: vue, svelte, ember</p>`
   }

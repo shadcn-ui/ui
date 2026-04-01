@@ -28,6 +28,7 @@
     "clsx": "^2.1.1",
     "d3-scale": "^4.0.0",
     "ember-click-outside": "^6.1.1",
+    "ember-keyboard": "^9.0.4",
     "ember-modifier": "^4.3.0",
     "ember-provide-consume-context": "^0.9.0",
     "ember-truth-helpers": "^5.0.0",
@@ -57,11 +58,22 @@
     "zod": "^3.0.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.29.0",
+    "@babel/plugin-transform-runtime": "^7.29.0",
+    "@babel/plugin-transform-typescript": "^7.28.0",
+    "@babel/runtime": "^7.29.2",
+    "@iconify-json/lucide": "^1.2.101",
+    "@rollup/plugin-babel": "^7.0.0",
     "@sveltejs/vite-plugin-svelte": "^5.0.0",
     "@tailwindcss/vite": "^4.0.0",
     "@vitejs/plugin-vue": "^5.2.0",
+    "babel-plugin-ember-template-compilation": "^4.0.0",
+    "content-tag": "^4.1.1",
+    "decorator-transforms": "^2.3.1",
+    "ember-source": "~6.9.0",
     "tailwindcss": "^4.0.0",
     "typescript": "^5.7.0",
+    "unplugin-icons": "^23.0.1",
     "vite": "^6.0.0"
   }
 }
