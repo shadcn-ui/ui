@@ -1,6 +1,6 @@
 ---
 name: import-shadcn-examples
-description: Import component examples and docs from a shadcn implementation repo (Vue, Svelte, or any framework) into force-ui. Copies demos, transforms imports, generates registry, adapts documentation, and updates the preview server.
+description: Import component examples and docs from a shadcn implementation repo into force-ui. Handles full framework onboarding including demos, import transforms, registry generation, cn-* theming, documentation, preview server setup, and config/navigation updates.
 ---
 
 # Import shadcn Examples & Docs
@@ -14,7 +14,7 @@ Import component demo/example files and documentation from an external shadcn im
 ```
 
 - `<source-repo-path>`: Path to the shadcn implementation repo (e.g., `/tmp/shadcn-vue`, `/tmp/shadcn-svelte`)
-- `<framework>`: Target framework in force-ui (`vue`, `svelte`)
+- `<framework>`: Target framework in force-ui (`vue`, `svelte`, or any new framework)
 
 If arguments are not provided, ask the user for both values before proceeding.
 
@@ -95,6 +95,38 @@ If arguments are not provided, ask the user for both values before proceeding.
     - Sort by length descending (longest match first)
     - Add explicit overrides for acronyms: `InputOTP` -> `input-otp` (not `input`)
 
+### Phase 3.5: Theming Pipeline (cn-* tokens)
+
+**CRITICAL**: force-ui uses abstract `cn-*` class tokens for multi-theme support (nova, lyra, mira, maia, vega). All source repos have **hardcoded Tailwind classes** — these MUST be rewritten to use cn-* tokens.
+
+**How the theming pipeline works:**
+1. Base components use `cn-*` tokens in templates: `cn('cn-dialog-content fixed left-1/2 ...', props.class)`
+2. Style CSS files (`registry/styles/style-{theme}.css`) map tokens to Tailwind: `.cn-dialog-content { @apply bg-popover rounded-xl p-4 ring-1 ... }`
+3. Build pipeline (`transformStyle` via ts-morph) processes `.ts` files with `cva()` calls — replaces cn-* tokens with real Tailwind classes for registry distribution
+4. Template cn-* classes in `.vue`/`.svelte`/other framework files are NOT transformed by ts-morph — they remain as CSS class names, resolved by theme CSS at runtime
+
+**For each UI component being imported:**
+
+1. Read the **Vue version** at `registry/bases/vue/ui/{component}/` to identify which `cn-*` tokens each sub-component uses and what structural classes accompany them
+2. **Replace** the source repo's hardcoded Tailwind with the same cn-* tokens + structural layout classes (flex, w-full, relative, z-50, etc.) — matching exactly what Vue does
+3. For **variant components** (button, badge, alert, toggle, avatar, etc.), create an `index.ts` with `cva()` using cn-* tokens — copy the cva definition from Vue's `index.ts`
+4. **Non-variant components** stay as single files with cn-* tokens directly in templates
+
+**Variant component directory structure:**
+```
+ui/{component}/
+├── index.ts           # cva() with cn-* tokens (gets transformed by build pipeline)
+└── {component}.{ext}  # imports buttonVariants from ./index
+```
+
+**Example cn-* token usage in a template:**
+```
+class="cn-accordion-item"
+class="cn-dialog-content fixed top-1/2 left-1/2 z-50 w-full -translate-x-1/2 -translate-y-1/2"
+```
+
+The cn-* token provides themed styling (colors, borders, shadows, animations). The structural classes alongside it provide layout that doesn't change between themes.
+
 ### Phase 4: Execute Migration
 
 11. **Write a Node.js migration script** (`/tmp/migrate-{framework}-examples.mjs`). Use Node.js, NOT Python (pyenv issues on this system).
@@ -107,7 +139,9 @@ If arguments are not provided, ask the user for both values before proceeding.
     e. Delete existing preview-server framework files
     f. Copy + transform files to registry examples
     g. Copy + transform files to preview server (kebab-case conversion for Vue)
-    h. Generate new `_registry.ts`
+    h. Handle subdirectory examples (not just flat files) — copy entire directory trees
+    i. For frameworks needing compilation plugins, install build dependencies in preview-server
+    j. Generate new `_registry.ts`
 
     **Registry entry format varies by framework:**
 
@@ -166,7 +200,30 @@ If arguments are not provided, ask the user for both values before proceeding.
     - Common errors: Zod validation failures in registry (empty arrays, missing fields)
     - Module not found: missing npm dependencies
 
-16. **Verify MDX references resolve**: All `ComponentPreview name="X"` in MDX must have `X.vue`/`X.svelte` in preview server.
+16. **Verify MDX references resolve**: All `ComponentPreview name="X"` in MDX must have a matching file in the preview server.
+
+### Phase 5.5: Config & Navigation Updates (new frameworks only)
+
+When adding a framework that doesn't already exist in force-ui, update these files:
+
+**Registry & Build:**
+1. `registry/frameworks.ts` — Add framework entry to `FRAMEWORKS` array, update `getDefaultBaseForFramework`
+2. `registry/bases.ts` — Add base entry to `BASES` array
+3. `scripts/build-registry.mts` — Add new file extension to: `stripFileExtension` regex, `isNonReactBase` checks (2 locations), `shouldTransform`, `DEMO_EXTENSIONS`, demo name extraction regex. If prettier can't parse the extension, skip formatting in `formatGeneratedSource`.
+
+**Preview & Routing:**
+4. `next.config.mjs` — Add `/preview/{framework}/*` rewrite rule
+5. `preview-server/src/main.ts` — Add framework rendering branch (dynamic import via `import.meta.glob`)
+6. `preview-server/vite.config.ts` — Add compilation plugins if the framework's file format needs a preprocessor/compiler
+
+**UI & Navigation:**
+7. `components/component-preview.tsx` — Add to `framework` type union + file extension mapping
+8. `hooks/use-framework.ts` — Add to `Framework` type union + `isValidFramework` function
+9. `components/framework-switcher.tsx` — Add to `FRAMEWORK_OPTIONS` array, update all regex patterns (3 locations), update type signatures
+10. `lib/framework-components.ts` — Add component manifest `Set` listing all available component slugs
+11. `lib/page-tree.ts` — Add to URL regex patterns + `getPagesFromFolder` folder detection
+12. `components/docs-sidebar.tsx` — Add to regex pattern
+13. `components/mobile-nav.tsx` — Add to regex pattern
 
 ---
 
@@ -315,3 +372,9 @@ If arguments are not provided, ask the user for both values before proceeding.
 7. **Use Node.js, NOT Python**: pyenv has issues on this system. Always use `node` for scripts.
 8. **Doc format mismatch**: Source uses `::` directives (Nuxt) or `{#snippet}` (Svelte), target uses JSX MDX. Don't copy verbatim -- translate the format.
 9. **Preview name case**: force-ui always uses kebab-case in MDX (`button-demo`), even if source uses PascalCase (`ButtonDemo`).
+10. **Prettier parser support**: If the framework uses a file extension prettier can't parse, skip formatting in `formatGeneratedSource` by checking the extension.
+11. **cn-* token rewrite**: Source repos have hardcoded Tailwind. They MUST be rewritten to use cn-* abstract tokens for force-ui's multi-theme system. See Phase 3.5.
+12. **Subdirectory examples**: Some examples have helper sub-components in subdirectories (e.g., sidebar demos with multiple files). The migration script must copy entire directory trees, not just flat files.
+13. **Preview server compilation**: New frameworks may need custom Vite plugins for their file format. Check if the framework needs a preprocessor/compiler and add it to `vite.config.ts`.
+14. **Module resolution**: Some frameworks resolve imports through their own meta-package. May need a custom Vite resolver plugin to map bare specifiers to actual file paths.
+15. **Build-time macros/stubs**: Framework ecosystems may have build-time-only packages that need runtime stubs in the preview server.
