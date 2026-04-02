@@ -2,24 +2,28 @@
 
 import { useState } from "react"
 import { CalendarDateTime } from "@internationalized/date"
+import { Button } from "@/examples/ark/ui/button"
 import {
   DatePicker,
-  DatePickerControl,
-  DatePickerInput,
-  DatePickerTrigger,
   DatePickerContent,
+  DatePickerControl,
   DatePickerDayView,
   DatePickerMonthView,
+  DatePickerTrigger,
+  DatePickerValueText,
   DatePickerYearView,
   type DatePickerValueChangeDetails,
 } from "@/examples/ark/ui/date-picker"
+import { Field, FieldGroup, FieldLabel } from "@/examples/ark/ui/field"
+import { Input } from "@/examples/ark/ui/input"
+import { ChevronDownIcon } from "lucide-react"
 
 export function DatePickerTime() {
   const [value, setValue] = useState<CalendarDateTime[]>([])
 
   const timeValue = value[0]
     ? `${String(value[0].hour).padStart(2, "0")}:${String(value[0].minute).padStart(2, "0")}`
-    : ""
+    : "10:30"
 
   const onTimeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const [hours, minutes] = e.currentTarget.value.split(":").map(Number)
@@ -45,40 +49,44 @@ export function DatePickerTime() {
   }
 
   return (
-    <div className="mx-auto flex max-w-xs flex-row items-end gap-3">
-      <DatePicker
-        value={value}
-        onValueChange={onDateChange}
-        closeOnSelect={false}
-      >
-        <div className="flex flex-col gap-1.5">
-          <DatePickerControl>
-            <DatePickerInput />
-            <DatePickerTrigger />
-          </DatePickerControl>
-        </div>
-        <DatePickerContent>
-          <DatePickerDayView />
-          <DatePickerMonthView />
-          <DatePickerYearView />
-        </DatePickerContent>
-      </DatePicker>
-      <div className="flex w-32 flex-col gap-1.5">
-        <label
-          htmlFor="time-picker-optional"
-          className="text-sm font-medium leading-none"
+    <FieldGroup className="mx-auto max-w-xs flex-row">
+      <Field className="flex-1">
+        <FieldLabel htmlFor="date-picker-time">Date</FieldLabel>
+        <DatePicker
+          value={value}
+          onValueChange={onDateChange}
+          closeOnSelect={false}
         >
-          Time
-        </label>
-        <input
+          <DatePickerControl>
+            <DatePickerTrigger asChild>
+              <Button
+                variant="outline"
+                id="date-picker-time"
+                className="w-full justify-between font-normal"
+              >
+                <DatePickerValueText placeholder="Select date" />
+                <ChevronDownIcon className="size-4 text-muted-foreground" />
+              </Button>
+            </DatePickerTrigger>
+          </DatePickerControl>
+          <DatePickerContent>
+            <DatePickerDayView />
+            <DatePickerMonthView />
+            <DatePickerYearView />
+          </DatePickerContent>
+        </DatePicker>
+      </Field>
+      <Field className="w-32">
+        <FieldLabel htmlFor="time-picker-optional">Time</FieldLabel>
+        <Input
           type="time"
           id="time-picker-optional"
           step="1"
           value={timeValue}
           onChange={onTimeChange}
-          className="flex h-9 w-full appearance-none rounded-md border border-input bg-background px-3 text-sm shadow-xs transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none"
+          className="appearance-none bg-background [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none"
         />
-      </div>
-    </div>
+      </Field>
+    </FieldGroup>
   )
 }

@@ -111,56 +111,13 @@ function CalendarDayView({
         {(api) => (
           <>
             {header ?? <CalendarSelectHeader />}
-            <DatePicker.Table className="w-full border-collapse">
-              <DatePicker.TableHead>
-                <DatePicker.TableRow className="flex">
-                  {api.weekDays.map((weekDay, i) => (
-                    <DatePicker.TableHeader
-                      key={i}
-                      className="flex-1 rounded-(--cell-radius) text-[0.8rem] font-normal text-muted-foreground select-none"
-                    >
-                      {weekDay.short}
-                    </DatePicker.TableHeader>
-                  ))}
-                </DatePicker.TableRow>
-              </DatePicker.TableHead>
-              <DatePicker.TableBody>
-                {api.weeks.map((week, weekIndex) => (
-                  <DatePicker.TableRow
-                    key={weekIndex}
-                    className="mt-2 flex w-full"
-                  >
-                    {week.map((day, dayIndex) => {
-                      const isOutside = day.month !== api.focusedValue.month
-                      if (!showOutsideDays && isOutside) {
-                        return (
-                          <td
-                            key={dayIndex}
-                            className="flex-1 p-0"
-                            aria-hidden
-                          />
-                        )
-                      }
-                      return (
-                        <DatePicker.TableCell
-                          key={dayIndex}
-                          value={day}
-                          className={cn(
-                            "group/day relative aspect-square h-full w-full flex-1 rounded-(--cell-radius) p-0 text-center select-none",
-                            "[&:last-child[data-selected]_div]:rounded-r-(--cell-radius)",
-                            "[&:first-child[data-selected]_div]:rounded-l-(--cell-radius)"
-                          )}
-                        >
-                          <CalendarDayButton>
-                            {cell ? cell(day) : day.day}
-                          </CalendarDayButton>
-                        </DatePicker.TableCell>
-                      )
-                    })}
-                  </DatePicker.TableRow>
-                ))}
-              </DatePicker.TableBody>
-            </DatePicker.Table>
+            <CalendarDayTable
+              weeks={api.weeks}
+              weekDays={api.weekDays}
+              focusedMonth={api.focusedValue.month}
+              showOutsideDays={showOutsideDays}
+              cell={cell}
+            />
           </>
         )}
       </DatePicker.Context>
@@ -292,18 +249,157 @@ function CalendarDayButton({
   )
 }
 
+function CalendarDayTable({
+  weeks,
+  weekDays,
+  focusedMonth,
+  showOutsideDays = true,
+  visibleRange,
+  cell,
+}: {
+  weeks: DateValue[][]
+  weekDays: { short: string }[]
+  focusedMonth: number
+  showOutsideDays?: boolean
+  visibleRange?: { start: DateValue; end: DateValue }
+  cell?: (day: DateValue) => React.ReactNode
+}) {
+  return (
+    <DatePicker.Table className="w-full border-collapse">
+      <DatePicker.TableHead>
+        <DatePicker.TableRow className="flex">
+          {weekDays.map((weekDay, i) => (
+            <DatePicker.TableHeader
+              key={i}
+              className="flex-1 rounded-(--cell-radius) text-[0.8rem] font-normal text-muted-foreground select-none"
+            >
+              {weekDay.short}
+            </DatePicker.TableHeader>
+          ))}
+        </DatePicker.TableRow>
+      </DatePicker.TableHead>
+      <DatePicker.TableBody>
+        {weeks.map((week, weekIndex) => (
+          <DatePicker.TableRow key={weekIndex} className="mt-2 flex w-full">
+            {week.map((day, dayIndex) => {
+              const isOutside = day.month !== focusedMonth
+              if (!showOutsideDays && isOutside) {
+                return (
+                  <td key={dayIndex} className="flex-1 p-0" aria-hidden />
+                )
+              }
+              return (
+                <DatePicker.TableCell
+                  key={dayIndex}
+                  value={day}
+                  visibleRange={visibleRange}
+                  className={cn(
+                    "group/day relative aspect-square h-full w-full flex-1 rounded-(--cell-radius) p-0 text-center select-none",
+                    "[&:last-child[data-selected]_div]:rounded-r-(--cell-radius)",
+                    "[&:first-child[data-selected]_div]:rounded-l-(--cell-radius)"
+                  )}
+                >
+                  <CalendarDayButton>
+                    {cell ? cell(day) : day.day}
+                  </CalendarDayButton>
+                </DatePicker.TableCell>
+              )
+            })}
+          </DatePicker.TableRow>
+        ))}
+      </DatePicker.TableBody>
+    </DatePicker.Table>
+  )
+}
+
+function CalendarDualMonthDayView({
+  showOutsideDays = true,
+  cell,
+}: {
+  showOutsideDays?: boolean
+  cell?: (day: DateValue) => React.ReactNode
+}) {
+  return (
+    <DatePicker.View view="day" className="flex flex-col gap-4">
+      <DatePicker.Context>
+        {(api) => {
+          const offset = api.getOffset({ months: 1 })
+          return (
+            <div className="flex flex-col gap-4 md:flex-row">
+              {/* First month */}
+              <div className="flex flex-col gap-4">
+                <div className="relative flex w-full items-center justify-between gap-1">
+                  <DatePicker.PrevTrigger asChild>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="size-(--cell-size) p-0 select-none aria-disabled:opacity-50"
+                    >
+                      <ChevronLeftIcon className="cn-rtl-flip size-4" />
+                    </Button>
+                  </DatePicker.PrevTrigger>
+                  <span className="text-sm font-medium select-none">
+                    {api.visibleRangeText.start}
+                  </span>
+                  <div className="size-(--cell-size)" />
+                </div>
+                <CalendarDayTable
+                  weeks={api.weeks}
+                  weekDays={api.weekDays}
+                  focusedMonth={api.focusedValue.month}
+                  showOutsideDays={showOutsideDays}
+                  cell={cell}
+                />
+              </div>
+              {/* Second month */}
+              <div className="flex flex-col gap-4">
+                <div className="relative flex w-full items-center justify-between gap-1">
+                  <div className="size-(--cell-size)" />
+                  <span className="text-sm font-medium select-none">
+                    {api.visibleRangeText.end}
+                  </span>
+                  <DatePicker.NextTrigger asChild>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="size-(--cell-size) p-0 select-none aria-disabled:opacity-50"
+                    >
+                      <ChevronRightIcon className="cn-rtl-flip size-4" />
+                    </Button>
+                  </DatePicker.NextTrigger>
+                </div>
+                <CalendarDayTable
+                  weeks={offset.weeks}
+                  weekDays={api.weekDays}
+                  focusedMonth={offset.visibleRange.start.month}
+                  showOutsideDays={showOutsideDays}
+                  visibleRange={offset.visibleRange}
+                  cell={cell}
+                />
+              </div>
+            </div>
+          )
+        }}
+      </DatePicker.Context>
+    </DatePicker.View>
+  )
+}
+
 function Calendar({
   className,
   showOutsideDays = true,
   children,
+  numOfMonths,
   ...props
 }: Omit<React.ComponentProps<typeof DatePicker.Root>, "inline"> & {
   className?: string
   showOutsideDays?: boolean
   children?: React.ReactNode
 }) {
+  const isDualMonth = numOfMonths && numOfMonths >= 2
+
   return (
-    <DatePicker.Root inline {...props}>
+    <DatePicker.Root inline numOfMonths={numOfMonths} {...props}>
       <div
         data-slot="calendar"
         className={cn(
@@ -313,7 +409,13 @@ function Calendar({
       >
         {children || (
           <>
-            <CalendarDayView showOutsideDays={showOutsideDays} />
+            {isDualMonth ? (
+              <CalendarDualMonthDayView
+                showOutsideDays={showOutsideDays}
+              />
+            ) : (
+              <CalendarDayView showOutsideDays={showOutsideDays} />
+            )}
             <CalendarMonthView />
             <CalendarYearView />
           </>
@@ -328,6 +430,8 @@ const CalendarPresetTrigger = DatePicker.PresetTrigger
 export {
   Calendar,
   CalendarDayView,
+  CalendarDualMonthDayView,
+  CalendarDayTable,
   CalendarMonthView,
   CalendarYearView,
   CalendarViewHeader,

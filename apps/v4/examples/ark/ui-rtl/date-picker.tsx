@@ -60,19 +60,35 @@ DatePickerInput.displayName = "DatePickerInput"
 const DatePickerTrigger = React.forwardRef<
   HTMLButtonElement,
   React.ComponentProps<typeof DatePickerPrimitive.Trigger>
->(({ className, children, ...props }, ref) => (
-  <DatePickerPrimitive.Trigger
-    ref={ref}
-    data-slot="date-picker-trigger"
-    className={cn(
-      "inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-input bg-transparent text-muted-foreground shadow-xs transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/20 focus-visible:outline-none [&_svg]:size-4",
-      className
-    )}
-    {...props}
-  >
-    {children ?? <CalendarIcon />}
-  </DatePickerPrimitive.Trigger>
-))
+>(({ className, children, asChild, ...props }, ref) => {
+  if (asChild) {
+    return (
+      <DatePickerPrimitive.Trigger
+        ref={ref}
+        asChild
+        data-slot="date-picker-trigger"
+        className={className}
+        {...props}
+      >
+        {children}
+      </DatePickerPrimitive.Trigger>
+    )
+  }
+
+  return (
+    <DatePickerPrimitive.Trigger
+      ref={ref}
+      data-slot="date-picker-trigger"
+      className={cn(
+        "inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-input bg-transparent text-muted-foreground shadow-xs transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/20 focus-visible:outline-none [&_svg]:size-4",
+        className
+      )}
+      {...props}
+    >
+      {children ?? <CalendarIcon />}
+    </DatePickerPrimitive.Trigger>
+  )
+})
 DatePickerTrigger.displayName = "DatePickerTrigger"
 
 const DatePickerClearTrigger = React.forwardRef<
