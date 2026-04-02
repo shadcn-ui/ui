@@ -59,9 +59,11 @@ const RadioGroupItemControl = React.forwardRef<
   <RadioGroupPrimitive.ItemControl
     ref={ref}
     data-slot="radio-group-item-control"
-    className={cn("cn-radio-group-item inline-flex shrink-0 items-center justify-center", className)}
+    className={cn("cn-radio-group-item relative inline-flex size-4 shrink-0 items-center justify-center rounded-full border border-input focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 aria-invalid:border-destructive dark:bg-input/30 data-checked:border-primary data-checked:bg-primary data-checked:text-primary-foreground dark:data-checked:bg-primary", className)}
     {...props}
-  />
+  >
+    <span className="absolute top-1/2 left-1/2 size-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary-foreground opacity-0 transition-opacity [[data-state=checked]_&]:opacity-100" />
+  </RadioGroupPrimitive.ItemControl>
 ))
 RadioGroupItemControl.displayName = "RadioGroupItemControl"
 
