@@ -581,4 +581,23 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "sidebar",
+    type: "registry:ui",
+    registryDependencies: [
+      "button",
+      "separator",
+      "sheet",
+      "tooltip",
+      "input",
+      "use-mobile",
+      "skeleton",
+    ],
+    files: [
+      {
+        path: "ui/sidebar.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
 ]
