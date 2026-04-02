@@ -15,7 +15,7 @@ import { Portal } from "@ark-ui/react/portal"
 function AlertDialog({
   ...props
 }: React.ComponentProps<typeof DialogPrimitive.Root>) {
-  return <DialogPrimitive.Root data-slot="alert-dialog" {...props} />
+  return <DialogPrimitive.Root data-slot="alert-dialog" role="alertdialog" {...props} />
 }
 
 function AlertDialogTrigger({
