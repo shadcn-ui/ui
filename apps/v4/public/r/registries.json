@@ -240,6 +240,12 @@
     "description": "Build production-ready forms with a few clicks using shadcn components and modern tools."
   },
   {
+    "name": "@flightcn",
+    "homepage": "https://flightcn.yencheng.dev",
+    "url": "https://flightcn.yencheng.dev/r/{name}.json",
+    "description": "Flight routes on interactive maps with great-circle arcs, airport markers, multi-leg journeys, and optional animation, built for mapcn."
+  },
+  {
     "name": "@gaia",
     "homepage": "https://ui.heygaia.io",
     "url": "https://ui.heygaia.io/r/{name}.json",
