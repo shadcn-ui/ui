@@ -33,10 +33,10 @@ export default function AppSidebar() {
                   </SidebarMenuButton>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="min-w-56">
-                  <DropdownMenuItem>
+                  <DropdownMenuItem value="acme-inc">
                     <span>Acme Inc</span>
                   </DropdownMenuItem>
-                  <DropdownMenuItem>
+                  <DropdownMenuItem value="acme-corp">
                     <span>Acme Corp.</span>
                   </DropdownMenuItem>
                 </DropdownMenuContent>

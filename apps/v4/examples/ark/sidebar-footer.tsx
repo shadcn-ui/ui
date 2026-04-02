@@ -37,16 +37,15 @@ export default function AppSidebar() {
                   </SidebarMenuButton>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent
-                  side="top"
                   className="min-w-56"
                 >
-                  <DropdownMenuItem>
+                  <DropdownMenuItem value="account">
                     <span>Account</span>
                   </DropdownMenuItem>
-                  <DropdownMenuItem>
+                  <DropdownMenuItem value="billing">
                     <span>Billing</span>
                   </DropdownMenuItem>
-                  <DropdownMenuItem>
+                  <DropdownMenuItem value="sign-out">
                     <span>Sign out</span>
                   </DropdownMenuItem>
                 </DropdownMenuContent>

@@ -82,11 +82,11 @@ export default function AppSidebar() {
                           <span className="sr-only">More</span>
                         </SidebarMenuAction>
                       </DropdownMenuTrigger>
-                      <DropdownMenuContent side="right">
-                        <DropdownMenuItem>
+                      <DropdownMenuContent>
+                        <DropdownMenuItem value="edit-project">
                           <span>Edit Project</span>
                         </DropdownMenuItem>
-                        <DropdownMenuItem>
+                        <DropdownMenuItem value="delete-project">
                           <span>Delete Project</span>
                         </DropdownMenuItem>
                       </DropdownMenuContent>
