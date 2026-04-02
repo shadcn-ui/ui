@@ -1,6 +1,13 @@
 "use client"
 
 import * as React from "react"
+import {
+  createListCollection,
+  useListCollection,
+} from "@ark-ui/react/collection"
+import { ark } from "@ark-ui/react/factory"
+import { Listbox } from "@ark-ui/react/listbox"
+
 import { cn } from "@/examples/ark/lib/utils"
 import {
   Dialog,
@@ -8,15 +15,9 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "@/examples/ark/ui-rtl/dialog"
-import { InputGroup, InputGroupAddon } from "@/examples/ark/ui-rtl/input-group"
-import {
-  createListCollection,
-  useListCollection,
-} from "@ark-ui/react/collection"
-import { ark } from "@ark-ui/react/factory"
-import { Listbox } from "@ark-ui/react/listbox"
-import { CheckIcon, SearchIcon } from "lucide-react"
+} from "@/examples/ark/ui/dialog"
+import { InputGroup, InputGroupAddon } from "@/examples/ark/ui/input-group"
+import { SearchIcon, CheckIcon } from "lucide-react"
 
 function Command({
   className,
@@ -41,22 +42,29 @@ function CommandDialog({
   children,
   className,
   showCloseButton = false,
+  open,
+  onOpenChange,
   ...props
-}: React.ComponentProps<typeof Dialog> & {
+}: Omit<React.ComponentProps<typeof Dialog>, "onOpenChange"> & {
   title?: string
   description?: string
   className?: string
   showCloseButton?: boolean
+  onOpenChange?: (open: boolean) => void
 }) {
   return (
-    <Dialog {...props}>
+    <Dialog
+      open={open}
+      onOpenChange={(details) => onOpenChange?.(details.open)}
+      {...props}
+    >
       <DialogHeader className="sr-only">
         <DialogTitle>{title}</DialogTitle>
         <DialogDescription>{description}</DialogDescription>
       </DialogHeader>
       <DialogContent
         className={cn(
-          "top-1/3 translate-y-0 overflow-hidden rounded-xl! p-0",
+          "overflow-hidden rounded-xl! p-0",
           className
         )}
         showCloseButton={showCloseButton}
@@ -76,7 +84,7 @@ function CommandInput({
 }) {
   return (
     <ark.div data-slot="command-input-wrapper" className="p-1 pb-0">
-      <InputGroup className="h-8! rounded-lg! border-input/30 bg-input/30 shadow-none! *:data-[slot=input-group-addon]:ps-2!">
+      <InputGroup className="h-8! rounded-lg! border-input/30 bg-input/30 shadow-none! *:data-[slot=input-group-addon]:pl-2!">
         <Listbox.Input
           data-slot="command-input"
           className={cn(
@@ -182,8 +190,9 @@ function CommandItem({
       {...props}
     >
       {children}
-      <Listbox.ItemIndicator className="ms-auto opacity-0 group-has-data-[slot=command-shortcut]/command-item:hidden group-data-[state=checked]/command-item:opacity-100">
-        <CheckIcon />
+      <Listbox.ItemIndicator className="ml-auto opacity-0 group-has-data-[slot=command-shortcut]/command-item:hidden group-data-[state=checked]/command-item:opacity-100">
+        <CheckIcon
+        />
       </Listbox.ItemIndicator>
     </Listbox.Item>
   )
@@ -210,7 +219,7 @@ function CommandShortcut({
     <ark.span
       data-slot="command-shortcut"
       className={cn(
-        "ms-auto text-xs tracking-widest text-muted-foreground group-data-highlighted/command-item:text-foreground group-data-selected/command-item:text-foreground",
+        "ml-auto text-xs tracking-widest text-muted-foreground group-data-highlighted/command-item:text-foreground group-data-selected/command-item:text-foreground",
         className
       )}
       {...props}
