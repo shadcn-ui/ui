@@ -16,11 +16,8 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/registry/bases/ark/ui/dialog"
-import {
-  InputGroup,
-  InputGroupAddon,
-} from "@/registry/bases/ark/ui/input-group"
-import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
+import { InputGroup, InputGroupAddon } from "@/registry/bases/ark/ui/input-group"
+import { SearchIcon, CheckIcon } from "lucide-react"
 
 function Command({
   className,
@@ -30,7 +27,7 @@ function Command({
     <Listbox.Root
       data-slot="command"
       className={cn(
-        "cn-command flex size-full flex-col overflow-hidden",
+        "flex size-full flex-col overflow-hidden rounded-xl! bg-popover p-1 text-popover-foreground",
         className
       )}
       selectionMode="single"
@@ -45,22 +42,29 @@ function CommandDialog({
   children,
   className,
   showCloseButton = false,
+  open,
+  onOpenChange,
   ...props
-}: React.ComponentProps<typeof Dialog> & {
+}: Omit<React.ComponentProps<typeof Dialog>, "onOpenChange"> & {
   title?: string
   description?: string
   className?: string
   showCloseButton?: boolean
+  onOpenChange?: (open: boolean) => void
 }) {
   return (
-    <Dialog {...props}>
+    <Dialog
+      open={open}
+      onOpenChange={(details) => onOpenChange?.(details.open)}
+      {...props}
+    >
       <DialogHeader className="sr-only">
         <DialogTitle>{title}</DialogTitle>
         <DialogDescription>{description}</DialogDescription>
       </DialogHeader>
       <DialogContent
         className={cn(
-          "cn-command-dialog top-1/3 translate-y-0 overflow-hidden p-0",
+          "overflow-hidden rounded-xl! p-0",
           className
         )}
         showCloseButton={showCloseButton}
@@ -79,15 +83,12 @@ function CommandInput({
   onFilter?: (value: string) => void
 }) {
   return (
-    <ark.div
-      data-slot="command-input-wrapper"
-      className="cn-command-input-wrapper"
-    >
-      <InputGroup className="cn-command-input-group">
+    <ark.div data-slot="command-input-wrapper" className="p-1 pb-0">
+      <InputGroup className="h-8! rounded-lg! border-input/30 bg-input/30 shadow-none! *:data-[slot=input-group-addon]:pl-2!">
         <Listbox.Input
           data-slot="command-input"
           className={cn(
-            "cn-command-input outline-hidden disabled:cursor-not-allowed disabled:opacity-50",
+            "w-full text-sm outline-hidden disabled:cursor-not-allowed disabled:opacity-50",
             className
           )}
           onChange={(e) => onFilter?.(e.currentTarget.value)}
@@ -95,14 +96,7 @@ function CommandInput({
           {...props}
         />
         <InputGroupAddon>
-          <IconPlaceholder
-            lucide="SearchIcon"
-            tabler="IconSearch"
-            hugeicons="SearchIcon"
-            phosphor="MagnifyingGlassIcon"
-            remixicon="RiSearchLine"
-            className="cn-command-input-icon"
-          />
+          <SearchIcon className="size-4 shrink-0 opacity-50" />
         </InputGroupAddon>
       </InputGroup>
     </ark.div>
@@ -117,7 +111,7 @@ function CommandList({
     <Listbox.Content
       data-slot="command-list"
       className={cn(
-        "cn-command-list overflow-x-hidden overflow-y-auto",
+        "no-scrollbar max-h-72 scroll-py-1 overflow-x-hidden overflow-y-auto outline-none",
         className
       )}
       {...props}
@@ -132,7 +126,7 @@ function CommandEmpty({
   return (
     <Listbox.Empty
       data-slot="command-empty"
-      className={cn("cn-command-empty", className)}
+      className={cn("py-6 text-center text-sm", className)}
       {...props}
     />
   )
@@ -145,7 +139,7 @@ function CommandGroup({
   return (
     <Listbox.ItemGroup
       data-slot="command-group"
-      className={cn("cn-command-group", className)}
+      className={cn("overflow-hidden p-1 text-foreground", className)}
       {...props}
     />
   )
@@ -158,7 +152,10 @@ function CommandGroupLabel({
   return (
     <Listbox.ItemGroupLabel
       data-slot="command-group-label"
-      className={cn("cn-command-group-label", className)}
+      className={cn(
+        "px-2 py-1.5 text-xs font-medium text-muted-foreground",
+        className
+      )}
       {...props}
     />
   )
@@ -171,7 +168,7 @@ function CommandSeparator({
   return (
     <ark.div
       data-slot="command-separator"
-      className={cn("cn-command-separator", className)}
+      className={cn("-mx-1 h-px bg-border", className)}
       {...props}
     />
   )
@@ -187,19 +184,14 @@ function CommandItem({
       data-slot="command-item"
       highlightOnHover
       className={cn(
-        "cn-command-item group/command-item data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+        "group/command-item relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none in-data-[slot=dialog-content]:rounded-lg! data-highlighted:bg-muted data-highlighted:text-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-selected:bg-muted data-selected:text-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 data-highlighted:*:[svg]:text-foreground data-selected:*:[svg]:text-foreground",
         className
       )}
       {...props}
     >
       {children}
-      <Listbox.ItemIndicator className="cn-command-item-indicator ml-auto opacity-0 group-has-data-[slot=command-shortcut]/command-item:hidden group-data-[state=checked]/command-item:opacity-100">
-        <IconPlaceholder
-          lucide="CheckIcon"
-          tabler="IconCheck"
-          hugeicons="Tick02Icon"
-          phosphor="CheckIcon"
-          remixicon="RiCheckLine"
+      <Listbox.ItemIndicator className="ml-auto opacity-0 group-has-data-[slot=command-shortcut]/command-item:hidden group-data-[state=checked]/command-item:opacity-100">
+        <CheckIcon
         />
       </Listbox.ItemIndicator>
     </Listbox.Item>
@@ -226,7 +218,10 @@ function CommandShortcut({
   return (
     <ark.span
       data-slot="command-shortcut"
-      className={cn("cn-command-shortcut", className)}
+      className={cn(
+        "ml-auto text-xs tracking-widest text-muted-foreground group-data-highlighted/command-item:text-foreground group-data-selected/command-item:text-foreground",
+        className
+      )}
       {...props}
     />
   )
