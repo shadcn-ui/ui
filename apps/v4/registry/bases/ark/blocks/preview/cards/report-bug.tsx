@@ -71,7 +71,7 @@ export function ReportBug() {
               >
                 <SelectHiddenSelect />
                 <SelectControl>
-                  <SelectTrigger id="bug-severity" className="w-full">
+                  <SelectTrigger className="w-full">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectIndicatorGroup>
@@ -98,7 +98,7 @@ export function ReportBug() {
               >
                 <SelectHiddenSelect />
                 <SelectControl>
-                  <SelectTrigger id="bug-component" className="w-full">
+                  <SelectTrigger className="w-full">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectIndicatorGroup>

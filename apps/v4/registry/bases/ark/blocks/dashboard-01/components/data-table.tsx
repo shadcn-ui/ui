@@ -70,10 +70,17 @@ import {
 import { Input } from "@/registry/bases/ark/ui/input"
 import { Label } from "@/registry/bases/ark/ui/label"
 import {
+  createListCollection,
   Select,
   SelectContent,
-  SelectItemGroup,
+  SelectControl,
+  SelectHiddenSelect,
+  SelectIndicator,
+  SelectIndicatorGroup,
   SelectItem,
+  SelectItemGroup,
+  SelectItemIndicator,
+  SelectItemText,
   SelectTrigger,
   SelectValue,
 } from "@/registry/bases/ark/ui/select"
@@ -102,6 +109,58 @@ export const schema = z.object({
   target: z.string(),
   limit: z.string(),
   reviewer: z.string(),
+})
+
+const reviewerColumnCollection = createListCollection({
+  items: [
+    { label: "Eddie Lake", value: "Eddie Lake" },
+    { label: "Jamik Tashpulatov", value: "Jamik Tashpulatov" },
+  ],
+})
+
+const viewCollection = createListCollection({
+  items: [
+    { label: "Outline", value: "outline" },
+    { label: "Past Performance", value: "past-performance" },
+    { label: "Key Personnel", value: "key-personnel" },
+    { label: "Focus Documents", value: "focus-documents" },
+  ],
+})
+
+const pageSizeCollection = createListCollection({
+  items: [10, 20, 30, 40, 50].map((size) => ({
+    label: `${size}`,
+    value: `${size}`,
+  })),
+})
+
+const typeCollection = createListCollection({
+  items: [
+    { label: "Table of Contents", value: "Table of Contents" },
+    { label: "Executive Summary", value: "Executive Summary" },
+    { label: "Technical Approach", value: "Technical Approach" },
+    { label: "Design", value: "Design" },
+    { label: "Capabilities", value: "Capabilities" },
+    { label: "Focus Documents", value: "Focus Documents" },
+    { label: "Narrative", value: "Narrative" },
+    { label: "Cover Page", value: "Cover Page" },
+  ],
+})
+
+const statusCollection = createListCollection({
+  items: [
+    { label: "Done", value: "Done" },
+    { label: "In Progress", value: "In Progress" },
+    { label: "Not Started", value: "Not Started" },
+  ],
+})
+
+const reviewerCollection = createListCollection({
+  items: [
+    { label: "Eddie Lake", value: "Eddie Lake" },
+    { label: "Jamik Tashpulatov", value: "Jamik Tashpulatov" },
+    { label: "Emily Whalen", value: "Emily Whalen" },
+  ],
 })
 
 // Create a separate component for the drag handle
@@ -274,20 +333,28 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
           <Label htmlFor={`${row.original.id}-reviewer`} className="sr-only">
             Reviewer
           </Label>
-          <Select>
-            <SelectTrigger
-              className="w-38 **:data-[slot=select-value]:block **:data-[slot=select-value]:truncate"
-              size="sm"
-              id={`${row.original.id}-reviewer`}
-            >
-              <SelectValue placeholder="Assign reviewer" />
-            </SelectTrigger>
+          <Select collection={reviewerColumnCollection}>
+            <SelectHiddenSelect />
+            <SelectControl>
+              <SelectTrigger
+                className="w-38 **:data-[slot=select-value]:block **:data-[slot=select-value]:truncate"
+                size="sm"
+                id={`${row.original.id}-reviewer`}
+              >
+                <SelectValue placeholder="Assign reviewer" />
+              </SelectTrigger>
+              <SelectIndicatorGroup>
+                <SelectIndicator />
+              </SelectIndicatorGroup>
+            </SelectControl>
             <SelectContent align="end">
               <SelectItemGroup>
-                <SelectItem value="Eddie Lake">Eddie Lake</SelectItem>
-                <SelectItem value="Jamik Tashpulatov">
-                  Jamik Tashpulatov
-                </SelectItem>
+                {reviewerColumnCollection.items.map((item) => (
+                  <SelectItem key={item.value} item={item}>
+                    <SelectItemText>{item.label}</SelectItemText>
+                    <SelectItemIndicator />
+                  </SelectItem>
+                ))}
               </SelectItemGroup>
             </SelectContent>
           </Select>
@@ -426,20 +493,28 @@ export function DataTable({
         <Label htmlFor="view-selector" className="sr-only">
           View
         </Label>
-        <Select defaultValue="outline">
-          <SelectTrigger
-            className="flex w-fit @4xl/main:hidden"
-            size="sm"
-            id="view-selector"
-          >
-            <SelectValue placeholder="Select a view" />
-          </SelectTrigger>
+        <Select collection={viewCollection} defaultValue={["outline"]}>
+          <SelectHiddenSelect />
+          <SelectControl>
+            <SelectTrigger
+              className="flex w-fit @4xl/main:hidden"
+              size="sm"
+              id="view-selector"
+            >
+              <SelectValue placeholder="Select a view" />
+            </SelectTrigger>
+            <SelectIndicatorGroup>
+              <SelectIndicator />
+            </SelectIndicatorGroup>
+          </SelectControl>
           <SelectContent>
             <SelectItemGroup>
-              <SelectItem value="outline">Outline</SelectItem>
-              <SelectItem value="past-performance">Past Performance</SelectItem>
-              <SelectItem value="key-personnel">Key Personnel</SelectItem>
-              <SelectItem value="focus-documents">Focus Documents</SelectItem>
+              {viewCollection.items.map((item) => (
+                <SelectItem key={item.value} item={item}>
+                  <SelectItemText>{item.label}</SelectItemText>
+                  <SelectItemIndicator />
+                </SelectItem>
+              ))}
             </SelectItemGroup>
           </SelectContent>
         </Select>
@@ -578,21 +653,29 @@ export function DataTable({
                 Rows per page
               </Label>
               <Select
-                value={`${table.getState().pagination.pageSize}`}
-                onValueChange={(value) => {
-                  table.setPageSize(Number(value))
+                collection={pageSizeCollection}
+                value={[`${table.getState().pagination.pageSize}`]}
+                onValueChange={({ value }) => {
+                  table.setPageSize(Number(value[0]))
                 }}
               >
-                <SelectTrigger size="sm" className="w-20" id="rows-per-page">
-                  <SelectValue
-                    placeholder={table.getState().pagination.pageSize}
-                  />
-                </SelectTrigger>
+                <SelectHiddenSelect />
+                <SelectControl>
+                  <SelectTrigger size="sm" className="w-20" id="rows-per-page">
+                    <SelectValue
+                      placeholder={table.getState().pagination.pageSize}
+                    />
+                  </SelectTrigger>
+                  <SelectIndicatorGroup>
+                    <SelectIndicator />
+                  </SelectIndicatorGroup>
+                </SelectControl>
                 <SelectContent side="top">
                   <SelectItemGroup>
-                    {[10, 20, 30, 40, 50].map((pageSize) => (
-                      <SelectItem key={pageSize} value={`${pageSize}`}>
-                        {pageSize}
+                    {pageSizeCollection.items.map((item) => (
+                      <SelectItem key={item.value} item={item}>
+                        <SelectItemText>{item.label}</SelectItemText>
+                        <SelectItemIndicator />
                       </SelectItem>
                     ))}
                   </SelectItemGroup>
@@ -800,43 +883,48 @@ function TableCellViewer({ item }: { item: z.infer<typeof schema> }) {
             <div className="grid grid-cols-2 gap-4">
               <div className="flex flex-col gap-3">
                 <Label htmlFor="type">Type</Label>
-                <Select defaultValue={item.type}>
-                  <SelectTrigger id="type" className="w-full">
-                    <SelectValue placeholder="Select a type" />
-                  </SelectTrigger>
+                <Select collection={typeCollection} defaultValue={[item.type]}>
+                  <SelectHiddenSelect />
+                  <SelectControl>
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder="Select a type" />
+                    </SelectTrigger>
+                    <SelectIndicatorGroup>
+                      <SelectIndicator />
+                    </SelectIndicatorGroup>
+                  </SelectControl>
                   <SelectContent>
                     <SelectItemGroup>
-                      <SelectItem value="Table of Contents">
-                        Table of Contents
-                      </SelectItem>
-                      <SelectItem value="Executive Summary">
-                        Executive Summary
-                      </SelectItem>
-                      <SelectItem value="Technical Approach">
-                        Technical Approach
-                      </SelectItem>
-                      <SelectItem value="Design">Design</SelectItem>
-                      <SelectItem value="Capabilities">Capabilities</SelectItem>
-                      <SelectItem value="Focus Documents">
-                        Focus Documents
-                      </SelectItem>
-                      <SelectItem value="Narrative">Narrative</SelectItem>
-                      <SelectItem value="Cover Page">Cover Page</SelectItem>
+                      {typeCollection.items.map((item) => (
+                        <SelectItem key={item.value} item={item}>
+                          <SelectItemText>{item.label}</SelectItemText>
+                          <SelectItemIndicator />
+                        </SelectItem>
+                      ))}
                     </SelectItemGroup>
                   </SelectContent>
                 </Select>
               </div>
               <div className="flex flex-col gap-3">
                 <Label htmlFor="status">Status</Label>
-                <Select defaultValue={item.status}>
-                  <SelectTrigger id="status" className="w-full">
-                    <SelectValue placeholder="Select a status" />
-                  </SelectTrigger>
+                <Select collection={statusCollection} defaultValue={[item.status]}>
+                  <SelectHiddenSelect />
+                  <SelectControl>
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder="Select a status" />
+                    </SelectTrigger>
+                    <SelectIndicatorGroup>
+                      <SelectIndicator />
+                    </SelectIndicatorGroup>
+                  </SelectControl>
                   <SelectContent>
                     <SelectItemGroup>
-                      <SelectItem value="Done">Done</SelectItem>
-                      <SelectItem value="In Progress">In Progress</SelectItem>
-                      <SelectItem value="Not Started">Not Started</SelectItem>
+                      {statusCollection.items.map((item) => (
+                        <SelectItem key={item.value} item={item}>
+                          <SelectItemText>{item.label}</SelectItemText>
+                          <SelectItemIndicator />
+                        </SelectItem>
+                      ))}
                     </SelectItemGroup>
                   </SelectContent>
                 </Select>
@@ -854,17 +942,24 @@ function TableCellViewer({ item }: { item: z.infer<typeof schema> }) {
             </div>
             <div className="flex flex-col gap-3">
               <Label htmlFor="reviewer">Reviewer</Label>
-              <Select defaultValue={item.reviewer}>
-                <SelectTrigger id="reviewer" className="w-full">
-                  <SelectValue placeholder="Select a reviewer" />
-                </SelectTrigger>
+              <Select collection={reviewerCollection} defaultValue={[item.reviewer]}>
+                <SelectHiddenSelect />
+                <SelectControl>
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="Select a reviewer" />
+                  </SelectTrigger>
+                  <SelectIndicatorGroup>
+                    <SelectIndicator />
+                  </SelectIndicatorGroup>
+                </SelectControl>
                 <SelectContent>
                   <SelectItemGroup>
-                    <SelectItem value="Eddie Lake">Eddie Lake</SelectItem>
-                    <SelectItem value="Jamik Tashpulatov">
-                      Jamik Tashpulatov
-                    </SelectItem>
-                    <SelectItem value="Emily Whalen">Emily Whalen</SelectItem>
+                    {reviewerCollection.items.map((item) => (
+                      <SelectItem key={item.value} item={item}>
+                        <SelectItemText>{item.label}</SelectItemText>
+                        <SelectItemIndicator />
+                      </SelectItem>
+                    ))}
                   </SelectItemGroup>
                 </SelectContent>
               </Select>
