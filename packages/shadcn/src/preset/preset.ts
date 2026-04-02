@@ -12,7 +12,14 @@
 // Value arrays — order matters for backward compat. Never reorder, only append.
 export const PRESET_BASES = ["radix", "base"] as const
 
-export const PRESET_STYLES = ["nova", "vega", "maia", "lyra", "mira"] as const
+export const PRESET_STYLES = [
+  "nova",
+  "vega",
+  "maia",
+  "lyra",
+  "mira",
+  "luma",
+] as const
 
 export const PRESET_BASE_COLORS = [
   "neutral",

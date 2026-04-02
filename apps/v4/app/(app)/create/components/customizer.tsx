@@ -22,6 +22,7 @@ import { FontPicker } from "@/app/(app)/create/components/font-picker"
 import { IconLibraryPicker } from "@/app/(app)/create/components/icon-library-picker"
 import { MainMenu } from "@/app/(app)/create/components/main-menu"
 import { MenuColorPicker } from "@/app/(app)/create/components/menu-picker"
+import { ProjectForm } from "@/app/(app)/create/components/project-form"
 import { RadiusPicker } from "@/app/(app)/create/components/radius-picker"
 import { RandomButton } from "@/app/(app)/create/components/random-button"
 import { ResetDialog } from "@/app/(app)/create/components/reset-button"
@@ -56,7 +57,6 @@ export function Customizer({
       </CardHeader>
       <CardContent className="no-scrollbar min-h-0 flex-1 overflow-x-auto overflow-y-hidden md:overflow-y-auto">
         <FieldGroup className="flex-row gap-2.5 py-px **:data-[slot=field-separator]:-mx-4 **:data-[slot=field-separator]:w-auto md:flex-col md:gap-3.25">
-          {isMobile && <BasePicker isMobile={isMobile} anchorRef={anchorRef} />}
           <StylePicker
             styles={STYLES}
             isMobile={isMobile}
@@ -91,13 +91,17 @@ export function Customizer({
           <FieldSeparator className="hidden md:block" />
           <MenuColorPicker isMobile={isMobile} anchorRef={anchorRef} />
           <MenuAccentPicker isMobile={isMobile} anchorRef={anchorRef} />
+          {isMobile && <BasePicker isMobile={isMobile} anchorRef={anchorRef} />}
         </FieldGroup>
       </CardContent>
-      <CardFooter className="flex min-w-0 gap-2 md:flex-col md:**:[button,a]:w-full">
+      <CardFooter className="flex min-w-0 gap-2 md:flex-col md:rounded-b-none md:**:[button,a]:w-full">
         <CopyPreset className="flex-1 md:flex-none" />
         <RandomButton className="flex-1 md:flex-none" />
         <ActionMenu itemsByBase={itemsByBase} />
         <ResetDialog />
+      </CardFooter>
+      <CardFooter className="-mt-3 hidden min-w-0 gap-2 md:flex md:flex-col md:**:[button,a]:w-full">
+        <ProjectForm />
       </CardFooter>
     </Card>
   )

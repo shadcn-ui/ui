@@ -4,6 +4,27 @@ import * as React from "react"
 
 import { Button } from "@/registry/bases/radix/ui/button"
 import { Card, CardContent, CardFooter } from "@/registry/bases/radix/ui/card"
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/registry/bases/radix/ui/dialog"
+import { Field, FieldGroup, FieldLabel } from "@/registry/bases/radix/ui/field"
+import { Input } from "@/registry/bases/radix/ui/input"
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/registry/bases/radix/ui/select"
+import { Textarea } from "@/registry/bases/radix/ui/textarea"
 import { FONTS } from "@/app/(create)/lib/fonts"
 import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
 
@@ -44,9 +65,67 @@ export function TypographySpecimen() {
         </p>
       </CardContent>
       <CardFooter>
-        <Button variant="outline" className="w-full">
-          Sample Button
-        </Button>
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button variant="outline" className="w-full">
+              Share Feedback
+            </Button>
+          </DialogTrigger>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Share Feedback</DialogTitle>
+              <DialogDescription>
+                Let us know how we can improve your experience.
+              </DialogDescription>
+            </DialogHeader>
+            <FieldGroup>
+              <div className="grid grid-cols-2 gap-3">
+                <Field>
+                  <FieldLabel htmlFor="feedback-name">Name</FieldLabel>
+                  <Input id="feedback-name" placeholder="Your name" />
+                </Field>
+                <Field>
+                  <FieldLabel htmlFor="feedback-email">Email</FieldLabel>
+                  <Input
+                    id="feedback-email"
+                    type="email"
+                    placeholder="you@example.com"
+                  />
+                </Field>
+              </div>
+              <Field>
+                <FieldLabel htmlFor="feedback-category">Category</FieldLabel>
+                <Select defaultValue="general">
+                  <SelectTrigger id="feedback-category" className="w-full">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectGroup>
+                      <SelectItem value="general">General</SelectItem>
+                      <SelectItem value="bug">Bug Report</SelectItem>
+                      <SelectItem value="feature">Feature Request</SelectItem>
+                      <SelectItem value="improvement">Improvement</SelectItem>
+                    </SelectGroup>
+                  </SelectContent>
+                </Select>
+              </Field>
+              <Field>
+                <FieldLabel htmlFor="feedback-message">Message</FieldLabel>
+                <Textarea
+                  id="feedback-message"
+                  placeholder="Tell us what's on your mind..."
+                  className="min-h-24 resize-none"
+                />
+              </Field>
+            </FieldGroup>
+            <DialogFooter>
+              <DialogClose asChild>
+                <Button variant="outline">Cancel</Button>
+              </DialogClose>
+              <Button>Submit</Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
       </CardFooter>
     </Card>
   )
