@@ -44,6 +44,8 @@ import {
 import {
   RadioGroup,
   RadioGroupItem,
+  RadioGroupItemControl,
+  RadioGroupItemHiddenInput,
 } from "@/registry/bases/ark/ui/radio-group"
 import { Slider } from "@/registry/bases/ark/ui/slider"
 import { Switch } from "@/registry/bases/ark/ui/switch"
@@ -124,8 +126,8 @@ export function UIElements() {
             <Badge variant="outline">Outline</Badge>
           </div>
           <RadioGroup defaultValue="apple" className="ml-auto flex w-fit gap-3">
-            <RadioGroupItem value="apple" />
-            <RadioGroupItem value="banana" />
+            <RadioGroupItem value="apple"><RadioGroupItemControl /><RadioGroupItemHiddenInput /></RadioGroupItem>
+            <RadioGroupItem value="banana"><RadioGroupItemControl /><RadioGroupItemHiddenInput /></RadioGroupItem>
           </RadioGroup>
           <div className="flex gap-3">
             <Checkbox defaultChecked />
