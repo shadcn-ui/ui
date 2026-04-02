@@ -9,7 +9,12 @@ import {
   CardHeader,
   CardTitle,
 } from "@/registry/bases/ark/ui/card"
-import { Checkbox } from "@/registry/bases/ark/ui/checkbox"
+import {
+  Checkbox,
+  CheckboxControl,
+  CheckboxHiddenInput,
+  CheckboxIndicator,
+} from "@/registry/bases/ark/ui/checkbox"
 import {
   Field,
   FieldContent,
@@ -38,7 +43,12 @@ export function ContributionsActivity() {
               </FieldLegend>
               <FieldGroup>
                 <Field orientation="horizontal">
-                  <Checkbox id="activity-private-profile" />
+                  <Checkbox id="activity-private-profile">
+                    <CheckboxControl>
+                      <CheckboxIndicator />
+                    </CheckboxControl>
+                    <CheckboxHiddenInput />
+                  </Checkbox>
                   <FieldContent>
                     <FieldLabel htmlFor="activity-private-profile">
                       Make profile private and hide activity

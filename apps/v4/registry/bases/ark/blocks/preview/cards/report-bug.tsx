@@ -12,14 +12,39 @@ import {
 import { Field, FieldGroup, FieldLabel } from "@/registry/bases/ark/ui/field"
 import { Input } from "@/registry/bases/ark/ui/input"
 import {
+  createListCollection,
   Select,
   SelectContent,
-  SelectItemGroup,
+  SelectControl,
+  SelectHiddenSelect,
+  SelectIndicator,
+  SelectIndicatorGroup,
   SelectItem,
+  SelectItemGroup,
+  SelectItemIndicator,
+  SelectItemText,
   SelectTrigger,
   SelectValue,
 } from "@/registry/bases/ark/ui/select"
 import { Textarea } from "@/registry/bases/ark/ui/textarea"
+
+const severityCollection = createListCollection({
+  items: [
+    { label: "Critical", value: "critical" },
+    { label: "High", value: "high" },
+    { label: "Medium", value: "medium" },
+    { label: "Low", value: "low" },
+  ],
+})
+
+const componentCollection = createListCollection({
+  items: [
+    { label: "Dashboard", value: "dashboard" },
+    { label: "Auth", value: "auth" },
+    { label: "API", value: "api" },
+    { label: "Billing", value: "billing" },
+  ],
+})
 
 export function ReportBug() {
   return (
@@ -40,32 +65,54 @@ export function ReportBug() {
           <div className="grid grid-cols-2 gap-3">
             <Field>
               <FieldLabel htmlFor="bug-severity">Severity</FieldLabel>
-              <Select defaultValue="medium">
-                <SelectTrigger id="bug-severity" className="w-full">
-                  <SelectValue />
-                </SelectTrigger>
+              <Select
+                collection={severityCollection}
+                defaultValue={["medium"]}
+              >
+                <SelectHiddenSelect />
+                <SelectControl>
+                  <SelectTrigger id="bug-severity" className="w-full">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectIndicatorGroup>
+                    <SelectIndicator />
+                  </SelectIndicatorGroup>
+                </SelectControl>
                 <SelectContent>
                   <SelectItemGroup>
-                    <SelectItem value="critical">Critical</SelectItem>
-                    <SelectItem value="high">High</SelectItem>
-                    <SelectItem value="medium">Medium</SelectItem>
-                    <SelectItem value="low">Low</SelectItem>
+                    {severityCollection.items.map((item) => (
+                      <SelectItem key={item.value} item={item}>
+                        <SelectItemText>{item.label}</SelectItemText>
+                        <SelectItemIndicator />
+                      </SelectItem>
+                    ))}
                   </SelectItemGroup>
                 </SelectContent>
               </Select>
             </Field>
             <Field>
               <FieldLabel htmlFor="bug-component">Component</FieldLabel>
-              <Select defaultValue="dashboard">
-                <SelectTrigger id="bug-component" className="w-full">
-                  <SelectValue />
-                </SelectTrigger>
+              <Select
+                collection={componentCollection}
+                defaultValue={["dashboard"]}
+              >
+                <SelectHiddenSelect />
+                <SelectControl>
+                  <SelectTrigger id="bug-component" className="w-full">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectIndicatorGroup>
+                    <SelectIndicator />
+                  </SelectIndicatorGroup>
+                </SelectControl>
                 <SelectContent>
                   <SelectItemGroup>
-                    <SelectItem value="dashboard">Dashboard</SelectItem>
-                    <SelectItem value="auth">Auth</SelectItem>
-                    <SelectItem value="api">API</SelectItem>
-                    <SelectItem value="billing">Billing</SelectItem>
+                    {componentCollection.items.map((item) => (
+                      <SelectItem key={item.value} item={item}>
+                        <SelectItemText>{item.label}</SelectItemText>
+                        <SelectItemIndicator />
+                      </SelectItem>
+                    ))}
                   </SelectItemGroup>
                 </SelectContent>
               </Select>

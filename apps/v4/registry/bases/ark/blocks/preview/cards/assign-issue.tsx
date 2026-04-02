@@ -18,15 +18,17 @@ import {
 } from "@/registry/bases/ark/ui/card"
 import {
   Combobox,
-  ComboboxChip,
-  ComboboxChips,
-  ComboboxChipsInput,
   ComboboxContent,
   ComboboxEmpty,
   ComboboxItem,
   ComboboxList,
-  ComboboxValue,
-  useComboboxAnchor,
+  ComboboxTag,
+  ComboboxTagsControl,
+  ComboboxTagsInput,
+  createListCollection,
+  useFilter,
+  type ComboboxInputValueChangeDetails,
+  type ComboboxValueChangeDetails,
 } from "@/registry/bases/ark/ui/combobox"
 import {
   Tooltip,
@@ -46,8 +48,44 @@ const users = [
   "rauchg",
 ]
 
+const initialCollection = createListCollection({ items: users })
+
 export function AssignIssue() {
-  const anchor = useComboboxAnchor()
+  const filter = useFilter({ sensitivity: "base" })
+  const [collection, setCollection] =
+    React.useState(initialCollection)
+  const [selectedUsers, setSelectedUsers] = React.useState<string[]>([
+    users[0],
+  ])
+
+  const handleInputValueChange = React.useCallback(
+    (details: ComboboxInputValueChangeDetails) => {
+      const filtered = users.filter((user) =>
+        filter.contains(user, details.inputValue)
+      )
+      setCollection(
+        createListCollection({
+          items: filtered.length > 0 ? filtered : users,
+        })
+      )
+    },
+    [filter]
+  )
+
+  const handleValueChange = React.useCallback(
+    (details: ComboboxValueChangeDetails) => {
+      setSelectedUsers(details.value)
+    },
+    []
+  )
+
+  const handleRemoveTag = React.useCallback(
+    (value: string) => {
+      setSelectedUsers((prev) => prev.filter((v) => v !== value))
+    },
+    []
+  )
+
   return (
     <Card className="w-full max-w-sm" size="sm">
       <CardHeader className="border-b">
@@ -75,40 +113,39 @@ export function AssignIssue() {
       <CardContent>
         <Combobox
           multiple
-          autoHighlight
-          items={users}
-          defaultValue={[users[0]]}
+          collection={collection}
+          value={selectedUsers}
+          onInputValueChange={handleInputValueChange}
+          onValueChange={handleValueChange}
         >
-          <ComboboxChips ref={anchor}>
-            <ComboboxValue>
-              {(values) => (
-                <React.Fragment>
-                  {values.map((username: string) => (
-                    <ComboboxChip key={username}>
-                      <Avatar className="size-4">
-                        <AvatarImage
-                          src={`https://github.com/${username}.png`}
-                          alt={username}
-                        />
-                        <AvatarFallback>{username.charAt(0)}</AvatarFallback>
-                      </Avatar>
-                      {username}
-                    </ComboboxChip>
-                  ))}
-                  <ComboboxChipsInput
-                    placeholder={
-                      values.length > 0 ? undefined : "Select a item..."
-                    }
+          <ComboboxTagsControl>
+            {selectedUsers.map((username) => (
+              <ComboboxTag
+                key={username}
+                value={username}
+                onRemove={handleRemoveTag}
+              >
+                <Avatar className="size-4">
+                  <AvatarImage
+                    src={`https://github.com/${username}.png`}
+                    alt={username}
                   />
-                </React.Fragment>
-              )}
-            </ComboboxValue>
-          </ComboboxChips>
-          <ComboboxContent anchor={anchor}>
+                  <AvatarFallback>{username.charAt(0)}</AvatarFallback>
+                </Avatar>
+                {username}
+              </ComboboxTag>
+            ))}
+            <ComboboxTagsInput
+              placeholder={
+                selectedUsers.length > 0 ? undefined : "Select a user..."
+              }
+            />
+          </ComboboxTagsControl>
+          <ComboboxContent>
             <ComboboxEmpty>No users found.</ComboboxEmpty>
             <ComboboxList>
-              {(username) => (
-                <ComboboxItem key={username} value={username}>
+              {collection.items.map((username) => (
+                <ComboboxItem key={username} item={username}>
                   <Avatar className="size-5">
                     <AvatarImage
                       src={`https://github.com/${username}.png`}
@@ -118,7 +155,7 @@ export function AssignIssue() {
                   </Avatar>
                   {username}
                 </ComboboxItem>
-              )}
+              ))}
             </ComboboxList>
           </ComboboxContent>
         </Combobox>

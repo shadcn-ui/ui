@@ -47,7 +47,14 @@ import {
   RadioGroupItemControl,
   RadioGroupItemHiddenInput,
 } from "@/registry/bases/ark/ui/radio-group"
-import { Slider } from "@/registry/bases/ark/ui/slider"
+import {
+  Slider,
+  SliderControl,
+  SliderRange,
+  SliderThumb,
+  SliderTrack,
+  type SliderValueChangeDetails,
+} from "@/registry/bases/ark/ui/slider"
 import { Switch } from "@/registry/bases/ark/ui/switch"
 import { Textarea } from "@/registry/bases/ark/ui/textarea"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
@@ -55,12 +62,8 @@ import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 export function UIElements() {
   const [sliderValue, setSliderValue] = React.useState<number[]>([500])
   const handleSliderValueChange = React.useCallback(
-    (value: number | readonly number[]) => {
-      if (typeof value === "number") {
-        setSliderValue([value])
-      } else {
-        setSliderValue([...value])
-      }
+    (details: SliderValueChangeDetails) => {
+      setSliderValue(details.value)
     },
     []
   )
@@ -97,7 +100,14 @@ export function UIElements() {
           step={10}
           className="flex-1"
           aria-label="Slider"
-        />
+        >
+          <SliderControl>
+            <SliderTrack>
+              <SliderRange />
+            </SliderTrack>
+            <SliderThumb index={0} />
+          </SliderControl>
+        </Slider>
         <FieldGroup>
           <Field>
             <InputGroup>
