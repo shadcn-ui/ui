@@ -34,14 +34,14 @@ export function PaginationIconsOnly() {
     <div className="flex items-center justify-between gap-4">
       <Field orientation="horizontal" className="w-fit">
         <FieldLabel htmlFor="select-rows-per-page">Rows per page</FieldLabel>
-        <Select collection={rowsPerPageItems} defaultValue={["25"]}>
+        <Select collection={rowsPerPageItems} defaultValue={["25"]} positioning={{ placement: "bottom-start" }}>
           <SelectControl className="w-20">
             <SelectTrigger id="select-rows-per-page">
               <SelectValue />
             </SelectTrigger>
             <SelectIndicator />
           </SelectControl>
-          <SelectContent align="start">
+          <SelectContent>
             <SelectItemGroup>
               {rowsPerPageItems.items.map((item) => (
                 <SelectItem key={item.value} item={item}>

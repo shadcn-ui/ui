@@ -31,14 +31,14 @@ export function TableActions() {
           <TableCell className="font-medium">Wireless Mouse</TableCell>
           <TableCell>$29.99</TableCell>
           <TableCell className="text-right">
-            <DropdownMenu>
+            <DropdownMenu positioning={{ placement: "bottom-end" }}>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="icon" className="size-8">
                   <MoreHorizontalIcon />
                   <span className="sr-only">Open menu</span>
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
+              <DropdownMenuContent>
                 <DropdownMenuItem value="1">Edit</DropdownMenuItem>
                 <DropdownMenuItem value="2">Duplicate</DropdownMenuItem>
                 <DropdownMenuSeparator />
@@ -53,14 +53,14 @@ export function TableActions() {
           <TableCell className="font-medium">Mechanical Keyboard</TableCell>
           <TableCell>$129.99</TableCell>
           <TableCell className="text-right">
-            <DropdownMenu>
+            <DropdownMenu positioning={{ placement: "bottom-end" }}>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="icon" className="size-8">
                   <MoreHorizontalIcon />
                   <span className="sr-only">Open menu</span>
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
+              <DropdownMenuContent>
                 <DropdownMenuItem value="3">Edit</DropdownMenuItem>
                 <DropdownMenuItem value="4">Duplicate</DropdownMenuItem>
                 <DropdownMenuSeparator />
@@ -75,14 +75,14 @@ export function TableActions() {
           <TableCell className="font-medium">USB-C Hub</TableCell>
           <TableCell>$49.99</TableCell>
           <TableCell className="text-right">
-            <DropdownMenu>
+            <DropdownMenu positioning={{ placement: "bottom-end" }}>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="icon" className="size-8">
                   <MoreHorizontalIcon />
                   <span className="sr-only">Open menu</span>
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
+              <DropdownMenuContent>
                 <DropdownMenuItem value="5">Edit</DropdownMenuItem>
                 <DropdownMenuItem value="6">Duplicate</DropdownMenuItem>
                 <DropdownMenuSeparator />

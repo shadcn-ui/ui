@@ -54,7 +54,7 @@ export default function InputGroupTooltip() {
       </InputGroup>
       <InputGroup>
         <InputGroupInput placeholder="Enter API key" />
-        <Tooltip>
+        <Tooltip positioning={{ placement: "left" }}>
           <TooltipTrigger asChild>
             <InputGroupAddon>
               <InputGroupButton
@@ -66,7 +66,7 @@ export default function InputGroupTooltip() {
               </InputGroupButton>
             </InputGroupAddon>
           </TooltipTrigger>
-          <TooltipContent side="left">
+          <TooltipContent>
             <p>Click for help with API keys</p>
           </TooltipContent>
         </Tooltip>

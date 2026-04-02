@@ -59,11 +59,11 @@ export function PopoverRtl() {
   return (
     <div className="flex flex-wrap justify-center gap-2">
       {physicalSides.map((side) => (
-        <Popover key={side}>
+        <Popover key={side} positioning={{ placement: side }}>
           <PopoverTrigger asChild>
             <Button variant="outline">{t[side]}</Button>
           </PopoverTrigger>
-          <PopoverContent side={side} dir={dir}>
+          <PopoverContent dir={dir}>
             <PopoverHeader>
               <PopoverTitle>{t.title}</PopoverTitle>
               <PopoverDescription>{t.description}</PopoverDescription>

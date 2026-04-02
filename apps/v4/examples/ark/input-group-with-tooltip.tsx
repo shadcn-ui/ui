@@ -70,17 +70,14 @@ export function InputGroupWithTooltip({
         <InputGroup>
           <InputGroupInput id="input-dropdown-21" />
           <InputGroupAddon>
-            <DropdownMenu>
+            <DropdownMenu positioning={{ placement: "bottom-start" }}>
               <DropdownMenuTrigger asChild>
                 <InputGroupButton className="text-muted-foreground tabular-nums">
                   {country} <ChevronDownIcon />
                 </InputGroupButton>
               </DropdownMenuTrigger>
               <DropdownMenuContent
-                align="start"
                 className="min-w-16"
-                sideOffset={10}
-                alignOffset={-8}
               >
                 <DropdownMenuItem onClick={() => setCountry("+1")}>
                   +1
@@ -102,7 +99,7 @@ export function InputGroupWithTooltip({
       <Field>
         <FieldLabel htmlFor="input-secure-19">Popover</FieldLabel>
         <InputGroup>
-          <Popover>
+          <Popover positioning={{ placement: "bottom-start" }}>
             <PopoverTrigger asChild>
               <InputGroupAddon>
                 <InputGroupButton variant="secondary" size="icon-xs">
@@ -110,7 +107,7 @@ export function InputGroupWithTooltip({
                 </InputGroupButton>
               </InputGroupAddon>
             </PopoverTrigger>
-            <PopoverContent align="start">
+            <PopoverContent>
               <PopoverHeader>
                 <PopoverTitle>Your connection is not secure.</PopoverTitle>
                 <PopoverDescription>

@@ -18,13 +18,13 @@ export default function ButtonGroupPopover() {
       <Button variant="outline">
         <BotIcon /> Copilot
       </Button>
-      <Popover>
+      <Popover positioning={{ placement: "bottom-end" }}>
         <PopoverTrigger asChild>
           <Button variant="outline" size="icon" aria-label="Open Popover">
             <ChevronDownIcon />
           </Button>
         </PopoverTrigger>
-        <PopoverContent align="end" className="rounded-xl text-sm">
+        <PopoverContent className="rounded-xl text-sm">
           <PopoverHeader>
             <PopoverTitle>Start a new task with Copilot</PopoverTitle>
             <PopoverDescription>
