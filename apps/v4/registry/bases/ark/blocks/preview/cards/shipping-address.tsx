@@ -13,13 +13,36 @@ import { Checkbox } from "@/registry/bases/ark/ui/checkbox"
 import { Field, FieldGroup, FieldLabel } from "@/registry/bases/ark/ui/field"
 import { Input } from "@/registry/bases/ark/ui/input"
 import {
+  createListCollection,
   Select,
   SelectContent,
-  SelectItemGroup,
+  SelectControl,
+  SelectIndicator,
+  SelectIndicatorGroup,
   SelectItem,
+  SelectItemGroup,
+  SelectItemIndicator,
+  SelectItemText,
+  SelectHiddenSelect,
   SelectTrigger,
   SelectValue,
 } from "@/registry/bases/ark/ui/select"
+
+const stateCollection = createListCollection({
+  items: [
+    { label: "California", value: "CA" },
+    { label: "New York", value: "NY" },
+    { label: "Texas", value: "TX" },
+  ],
+})
+
+const countryCollection = createListCollection({
+  items: [
+    { label: "United States", value: "US" },
+    { label: "Canada", value: "CA" },
+    { label: "United Kingdom", value: "UK" },
+  ],
+})
 
 export function ShippingAddress() {
   return (
@@ -44,16 +67,25 @@ export function ShippingAddress() {
               <Input id="shipping-city" placeholder="San Francisco" />
             </Field>
             <Field>
-              <FieldLabel htmlFor="shipping-state">State</FieldLabel>
-              <Select defaultValue="CA">
-                <SelectTrigger id="shipping-state" className="w-full">
-                  <SelectValue />
-                </SelectTrigger>
+              <FieldLabel>State</FieldLabel>
+              <Select collection={stateCollection} defaultValue={["CA"]}>
+                <SelectHiddenSelect />
+                <SelectControl>
+                  <SelectTrigger className="w-full">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectIndicatorGroup>
+                    <SelectIndicator />
+                  </SelectIndicatorGroup>
+                </SelectControl>
                 <SelectContent>
                   <SelectItemGroup>
-                    <SelectItem value="CA">California</SelectItem>
-                    <SelectItem value="NY">New York</SelectItem>
-                    <SelectItem value="TX">Texas</SelectItem>
+                    {stateCollection.items.map((item) => (
+                      <SelectItem key={item.value} item={item}>
+                        <SelectItemText>{item.label}</SelectItemText>
+                        <SelectItemIndicator />
+                      </SelectItem>
+                    ))}
                   </SelectItemGroup>
                 </SelectContent>
               </Select>
@@ -65,16 +97,25 @@ export function ShippingAddress() {
               <Input id="shipping-zip" placeholder="94102" />
             </Field>
             <Field>
-              <FieldLabel htmlFor="shipping-country">Country</FieldLabel>
-              <Select defaultValue="US">
-                <SelectTrigger id="shipping-country" className="w-full">
-                  <SelectValue />
-                </SelectTrigger>
+              <FieldLabel>Country</FieldLabel>
+              <Select collection={countryCollection} defaultValue={["US"]}>
+                <SelectHiddenSelect />
+                <SelectControl>
+                  <SelectTrigger className="w-full">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectIndicatorGroup>
+                    <SelectIndicator />
+                  </SelectIndicatorGroup>
+                </SelectControl>
                 <SelectContent>
                   <SelectItemGroup>
-                    <SelectItem value="US">United States</SelectItem>
-                    <SelectItem value="CA">Canada</SelectItem>
-                    <SelectItem value="UK">United Kingdom</SelectItem>
+                    {countryCollection.items.map((item) => (
+                      <SelectItem key={item.value} item={item}>
+                        <SelectItemText>{item.label}</SelectItemText>
+                        <SelectItemIndicator />
+                      </SelectItem>
+                    ))}
                   </SelectItemGroup>
                 </SelectContent>
               </Select>
