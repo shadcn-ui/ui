@@ -53,16 +53,7 @@ const AccordionTrigger = React.forwardRef<
       hugeicons="ArrowDown01Icon"
       phosphor="CaretDownIcon"
       remixicon="RiArrowDownSLine"
-      className="cn-accordion-trigger-icon pointer-events-none shrink-0 group-aria-expanded/accordion-trigger:hidden"
-    />
-    <IconPlaceholder
-      lucide="ChevronUpIcon"
-      tabler="IconChevronUp"
-      data-slot="accordion-trigger-icon"
-      hugeicons="ArrowUp01Icon"
-      phosphor="CaretUpIcon"
-      remixicon="RiArrowUpSLine"
-      className="cn-accordion-trigger-icon pointer-events-none hidden shrink-0 group-aria-expanded/accordion-trigger:inline"
+      className="cn-accordion-trigger-icon pointer-events-none shrink-0 transition-transform duration-200 group-aria-expanded/accordion-trigger:rotate-180"
     />
   </AccordionPrimitive.ItemTrigger>
 ))
@@ -75,7 +66,7 @@ const AccordionContent = React.forwardRef<
   <AccordionPrimitive.ItemContent
     ref={ref}
     data-slot="accordion-content"
-    className="cn-accordion-content overflow-hidden"
+    className="cn-accordion-content overflow-hidden [--accordion-panel-height:var(--height)]"
     {...props}
   >
     <div
