@@ -1,10 +1,11 @@
 "use client"
 
 import * as React from "react"
-import { cn } from "@/examples/ark/lib/utils"
 import { Combobox as ComboboxPrimitive } from "@ark-ui/react/combobox"
 import { Portal } from "@ark-ui/react/portal"
-import { CheckIcon, ChevronDownIcon, XIcon } from "lucide-react"
+
+import { cn } from "@/examples/ark/lib/utils"
+import { ChevronDownIcon, XIcon, CheckIcon } from "lucide-react"
 
 // --- Root ---
 
@@ -20,7 +21,7 @@ function ComboboxControl({
     <ComboboxPrimitive.Control
       data-slot="combobox-control"
       className={cn(
-        "relative flex h-8 w-full items-center rounded-lg border border-input bg-transparent shadow-xs transition-[color,box-shadow] focus-within:border-ring focus-within:ring-[3px] focus-within:ring-ring/50 data-disabled:bg-input/50 data-disabled:opacity-50 data-invalid:border-destructive data-invalid:ring-[3px] data-invalid:ring-destructive/20 dark:bg-input/30 dark:data-disabled:bg-input/80 dark:data-invalid:border-destructive/50 dark:data-invalid:ring-destructive/40",
+        "relative flex h-8 w-full items-center rounded-lg border border-input bg-transparent shadow-xs transition-[color,box-shadow] focus-within:border-ring focus-within:ring-[3px] focus-within:ring-ring/50 data-invalid:border-destructive data-invalid:ring-[3px] data-invalid:ring-destructive/20 dark:bg-input/30 dark:data-invalid:border-destructive/50 dark:data-invalid:ring-destructive/40 data-disabled:bg-input/50 data-disabled:opacity-50 dark:data-disabled:bg-input/80",
         className
       )}
       {...props}
@@ -57,13 +58,13 @@ function ComboboxTrigger({
     <ComboboxPrimitive.Trigger
       data-slot="combobox-trigger"
       className={cn(
-        "flex shrink-0 cursor-default items-center justify-center pe-2 text-muted-foreground/80 transition-colors hover:text-foreground data-disabled:pointer-events-none data-disabled:opacity-50",
+        "flex shrink-0 cursor-default items-center justify-center pe-2 text-muted-foreground/80 transition-colors hover:text-foreground data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg:not([class*='size-'])]:size-4",
         className
       )}
       {...props}
     >
       {children ?? (
-        <ChevronDownIcon className="size-4 pointer-events-none" />
+        <ChevronDownIcon className="pointer-events-none size-4 text-muted-foreground" />
       )}
     </ComboboxPrimitive.Trigger>
   )
@@ -85,7 +86,9 @@ function ComboboxClearTrigger({
       )}
       {...props}
     >
-      {children ?? <XIcon className="size-3.5 pointer-events-none" />}
+      {children ?? (
+        <XIcon className="pointer-events-none size-3.5" />
+      )}
     </ComboboxPrimitive.ClearTrigger>
   )
 }
@@ -103,7 +106,7 @@ function ComboboxContent({
         <ComboboxPrimitive.Content
           data-slot="combobox-content"
           className={cn(
-            "group/combobox-content z-50 max-h-72 min-w-[--reference-width] overflow-hidden rounded-lg bg-popover text-popover-foreground shadow-md ring-1 ring-foreground/10 duration-100 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95",
+            "group/combobox-content z-50 max-h-72 min-w-[--reference-width] overflow-hidden rounded-lg bg-popover text-popover-foreground shadow-md ring-1 ring-foreground/10 duration-100 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 *:data-[slot=input-group]:m-1 *:data-[slot=input-group]:mb-0 *:data-[slot=input-group]:h-8 *:data-[slot=input-group]:border-input/30 *:data-[slot=input-group]:bg-input/30 *:data-[slot=input-group]:shadow-none data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95",
             className
           )}
           {...props}
@@ -126,14 +129,14 @@ function ComboboxItem({
     <ComboboxPrimitive.Item
       data-slot="combobox-item"
       className={cn(
-        "relative flex w-full cursor-default items-center gap-2 rounded-md py-1.5 ps-2 pe-8 text-sm outline-hidden select-none data-highlighted:bg-accent data-highlighted:text-accent-foreground data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        "relative flex w-full cursor-default items-center gap-2 rounded-md py-1.5 pr-8 pl-2 text-sm outline-hidden select-none data-highlighted:bg-accent data-highlighted:text-accent-foreground not-data-[variant=destructive]:data-highlighted:**:text-accent-foreground data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
         className
       )}
       {...props}
     >
       {children}
-      <ComboboxPrimitive.ItemIndicator className="pointer-events-none absolute end-2 flex size-4 items-center justify-center">
-        <CheckIcon className="size-4 pointer-events-none" />
+      <ComboboxPrimitive.ItemIndicator className="pointer-events-none absolute right-2 flex size-4 items-center justify-center">
+        <CheckIcon className="pointer-events-none size-4" />
       </ComboboxPrimitive.ItemIndicator>
     </ComboboxPrimitive.Item>
   )
@@ -199,7 +202,7 @@ function ComboboxList({
     <ComboboxPrimitive.List
       data-slot="combobox-list"
       className={cn(
-        "max-h-[min(calc(--spacing(72)---spacing(2)),calc(var(--available-height)---spacing(2)))] scroll-py-1 overflow-y-auto overscroll-contain p-1 data-empty:p-0",
+        "no-scrollbar max-h-[min(calc(--spacing(72)---spacing(2)),calc(var(--available-height)---spacing(2)))] scroll-py-1 overflow-y-auto overscroll-contain p-1 data-empty:p-0",
         className
       )}
       {...props}
@@ -247,7 +250,7 @@ function ComboboxTagsControl({
     <ComboboxPrimitive.Control
       data-slot="combobox-tags-control"
       className={cn(
-        "flex min-h-8 w-full flex-wrap items-center gap-1.5 rounded-lg border border-input bg-transparent px-2.5 py-1.5 shadow-xs transition-[color,box-shadow] focus-within:border-ring focus-within:ring-[3px] focus-within:ring-ring/50 has-data-[slot=combobox-tag]:px-1.5 data-disabled:bg-input/50 data-disabled:opacity-50 data-invalid:border-destructive data-invalid:ring-[3px] data-invalid:ring-destructive/20 dark:bg-input/30 dark:data-disabled:bg-input/80 dark:data-invalid:border-destructive/50 dark:data-invalid:ring-destructive/40",
+        "flex min-h-8 w-full flex-wrap items-center gap-1.5 rounded-lg border border-input bg-transparent px-2.5 py-1.5 shadow-xs transition-[color,box-shadow] focus-within:border-ring focus-within:ring-[3px] focus-within:ring-ring/50 has-data-[slot=combobox-tag]:px-1.5 data-invalid:border-destructive data-invalid:ring-[3px] data-invalid:ring-destructive/20 dark:bg-input/30 dark:data-invalid:border-destructive/50 dark:data-invalid:ring-destructive/40 data-disabled:bg-input/50 data-disabled:opacity-50 dark:data-disabled:bg-input/80",
         className
       )}
       {...props}
@@ -285,7 +288,7 @@ function ComboboxTag({
           onClick={() => onRemove(value)}
           className="-ml-1 flex size-5.5 items-center justify-center rounded-sm opacity-50 hover:opacity-100"
         >
-          <XIcon className="size-3 pointer-events-none" />
+          <XIcon className="pointer-events-none size-3" />
         </button>
       )}
     </span>
