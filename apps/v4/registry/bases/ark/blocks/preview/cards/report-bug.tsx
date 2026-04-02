@@ -14,7 +14,7 @@ import { Input } from "@/registry/bases/ark/ui/input"
 import {
   Select,
   SelectContent,
-  SelectGroup,
+  SelectItemGroup,
   SelectItem,
   SelectTrigger,
   SelectValue,
@@ -45,12 +45,12 @@ export function ReportBug() {
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectGroup>
+                  <SelectItemGroup>
                     <SelectItem value="critical">Critical</SelectItem>
                     <SelectItem value="high">High</SelectItem>
                     <SelectItem value="medium">Medium</SelectItem>
                     <SelectItem value="low">Low</SelectItem>
-                  </SelectGroup>
+                  </SelectItemGroup>
                 </SelectContent>
               </Select>
             </Field>
@@ -61,12 +61,12 @@ export function ReportBug() {
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectGroup>
+                  <SelectItemGroup>
                     <SelectItem value="dashboard">Dashboard</SelectItem>
                     <SelectItem value="auth">Auth</SelectItem>
                     <SelectItem value="api">API</SelectItem>
                     <SelectItem value="billing">Billing</SelectItem>
-                  </SelectGroup>
+                  </SelectItemGroup>
                 </SelectContent>
               </Select>
             </Field>

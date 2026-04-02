@@ -20,7 +20,7 @@ import {
 import {
   Select,
   SelectContent,
-  SelectGroup,
+  SelectItemGroup,
   SelectItem,
   SelectTrigger,
   SelectValue,
@@ -48,11 +48,11 @@ export function InviteTeam() {
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent position="popper" align="end">
-                  <SelectGroup>
+                  <SelectItemGroup>
                     <SelectItem value="admin">Admin</SelectItem>
                     <SelectItem value="editor">Editor</SelectItem>
                     <SelectItem value="viewer">Viewer</SelectItem>
-                  </SelectGroup>
+                  </SelectItemGroup>
                 </SelectContent>
               </Select>
             </div>

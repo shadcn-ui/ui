@@ -15,7 +15,7 @@ import { Input } from "@/registry/bases/ark/ui/input"
 import {
   Select,
   SelectContent,
-  SelectGroup,
+  SelectItemGroup,
   SelectItem,
   SelectTrigger,
   SelectValue,
@@ -50,11 +50,11 @@ export function ShippingAddress() {
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectGroup>
+                  <SelectItemGroup>
                     <SelectItem value="CA">California</SelectItem>
                     <SelectItem value="NY">New York</SelectItem>
                     <SelectItem value="TX">Texas</SelectItem>
-                  </SelectGroup>
+                  </SelectItemGroup>
                 </SelectContent>
               </Select>
             </Field>
@@ -71,11 +71,11 @@ export function ShippingAddress() {
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectGroup>
+                  <SelectItemGroup>
                     <SelectItem value="US">United States</SelectItem>
                     <SelectItem value="CA">Canada</SelectItem>
                     <SelectItem value="UK">United Kingdom</SelectItem>
-                  </SelectGroup>
+                  </SelectItemGroup>
                 </SelectContent>
               </Select>
             </Field>
