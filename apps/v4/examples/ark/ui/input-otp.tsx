@@ -16,27 +16,32 @@ const InputOTP = React.forwardRef<
     className={cn("disabled:cursor-not-allowed", className)}
     {...props}
   >
-    {children}
+    <PinInput.Control
+      data-slot="input-otp-control"
+      className="flex items-center has-disabled:opacity-50"
+    >
+      {children}
+    </PinInput.Control>
     <PinInput.HiddenInput />
   </PinInput.Root>
 ))
 InputOTP.displayName = "InputOTP"
 
-const InputOTPGroup = React.forwardRef<
-  React.ElementRef<typeof PinInput.Control>,
-  React.ComponentPropsWithoutRef<typeof PinInput.Control>
->(({ className, ...props }, ref) => (
-  <PinInput.Control
-    ref={ref}
-    data-slot="input-otp-group"
-    className={cn(
-      "flex items-center rounded-lg has-disabled:opacity-50 has-aria-invalid:border-destructive has-aria-invalid:ring-3 has-aria-invalid:ring-destructive/20 dark:has-aria-invalid:ring-destructive/40",
-      className
-    )}
-    {...props}
-  />
-))
-InputOTPGroup.displayName = "InputOTPGroup"
+function InputOTPGroup({
+  className,
+  ...props
+}: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="input-otp-group"
+      className={cn(
+        "flex items-center rounded-lg has-aria-invalid:border-destructive has-aria-invalid:ring-3 has-aria-invalid:ring-destructive/20 dark:has-aria-invalid:ring-destructive/40",
+        className
+      )}
+      {...props}
+    />
+  )
+}
 
 const InputOTPSlot = React.forwardRef<
   React.ElementRef<typeof PinInput.Input>,
@@ -46,7 +51,7 @@ const InputOTPSlot = React.forwardRef<
     ref={ref}
     data-slot="input-otp-slot"
     className={cn(
-      "relative flex size-8 items-center justify-center border-y border-r border-input text-sm transition-all outline-none first:rounded-l-lg first:border-l last:rounded-r-lg aria-invalid:border-destructive data-[active=true]:z-10 data-[active=true]:border-ring data-[active=true]:ring-3 data-[active=true]:ring-ring/50 data-[active=true]:aria-invalid:border-destructive data-[active=true]:aria-invalid:ring-destructive/20 dark:bg-input/30 dark:data-[active=true]:aria-invalid:ring-destructive/40",
+      "relative flex size-8 items-center justify-center border-y border-r border-input bg-transparent text-center text-sm transition-all outline-none first:rounded-l-lg first:border-l last:rounded-r-lg aria-invalid:border-destructive focus-visible:z-10 focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:aria-invalid:border-destructive focus-visible:aria-invalid:ring-destructive/20 dark:bg-input/30 dark:focus-visible:aria-invalid:ring-destructive/40",
       className
     )}
     {...props}
@@ -61,7 +66,7 @@ const InputOTPSeparator = React.forwardRef<
   <ark.div
     ref={ref}
     data-slot="input-otp-separator"
-    className="flex items-center [&_svg:not([class*='size-'])]:size-4"
+    className="flex items-center px-1 [&_svg:not([class*='size-'])]:size-4"
     role="separator"
     {...props}
   >

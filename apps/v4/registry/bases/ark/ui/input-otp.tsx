@@ -20,27 +20,32 @@ const InputOTP = React.forwardRef<
     )}
     {...props}
   >
-    {children}
+    <PinInput.Control
+      data-slot="input-otp-control"
+      className="cn-input-otp-control flex items-center has-disabled:opacity-50"
+    >
+      {children}
+    </PinInput.Control>
     <PinInput.HiddenInput />
   </PinInput.Root>
 ))
 InputOTP.displayName = "InputOTP"
 
-const InputOTPGroup = React.forwardRef<
-  React.ElementRef<typeof PinInput.Control>,
-  React.ComponentPropsWithoutRef<typeof PinInput.Control>
->(({ className, ...props }, ref) => (
-  <PinInput.Control
-    ref={ref}
-    data-slot="input-otp-group"
-    className={cn(
-      "cn-input-otp-group flex items-center has-disabled:opacity-50",
-      className
-    )}
-    {...props}
-  />
-))
-InputOTPGroup.displayName = "InputOTPGroup"
+function InputOTPGroup({
+  className,
+  ...props
+}: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="input-otp-group"
+      className={cn(
+        "cn-input-otp-group flex items-center",
+        className
+      )}
+      {...props}
+    />
+  )
+}
 
 const InputOTPSlot = React.forwardRef<
   React.ElementRef<typeof PinInput.Input>,
@@ -50,7 +55,7 @@ const InputOTPSlot = React.forwardRef<
     ref={ref}
     data-slot="input-otp-slot"
     className={cn(
-      "cn-input-otp-slot relative flex items-center justify-center data-[active=true]:z-10",
+      "cn-input-otp-slot relative flex items-center justify-center focus-visible:z-10",
       className
     )}
     {...props}
