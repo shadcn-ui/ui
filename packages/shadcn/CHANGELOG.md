@@ -1,5 +1,11 @@
 # @shadcn/ui
 
+## 4.1.2
+
+### Patch Changes
+
+- [#10246](https://github.com/shadcn-ui/ui/pull/10246) [`44c09a19b0658cf8e72ac84bbba5b76e05192a0d`](https://github.com/shadcn-ui/ui/commit/44c09a19b0658cf8e72ac84bbba5b76e05192a0d) Thanks [@shadcn](https://github.com/shadcn)! - add style luma
+
 ## 4.1.1
 
 ### Patch Changes

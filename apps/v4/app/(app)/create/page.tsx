@@ -48,9 +48,9 @@ export default async function CreatePage() {
       >
         <Preview />
         <Customizer itemsByBase={itemsByBase} />
-        <PresetHandler />
-        <WelcomeDialog />
       </div>
+      <PresetHandler />
+      <WelcomeDialog />
     </div>
   )
 }
