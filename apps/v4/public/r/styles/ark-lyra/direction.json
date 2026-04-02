@@ -4,7 +4,7 @@
   "files": [
     {
       "path": "registry/ark-lyra/ui/direction.tsx",
-      "content": "\"use client\"\n\nimport * as React from \"react\"\n\ntype Direction = \"ltr\" | \"rtl\"\n\nconst DirectionContext = React.createContext<Direction>(\"ltr\")\n\nfunction DirectionProvider({\n  dir,\n  direction,\n  children,\n}: {\n  dir?: Direction\n  direction?: Direction\n  children: React.ReactNode\n}) {\n  return (\n    <DirectionContext.Provider value={direction ?? dir ?? \"ltr\"}>\n      {children}\n    </DirectionContext.Provider>\n  )\n}\n\nfunction useDirection() {\n  return React.useContext(DirectionContext)\n}\n\nexport { DirectionProvider, useDirection }\n",
+      "content": "\"use client\"\n\nimport { LocaleProvider, useLocaleContext } from \"@ark-ui/react/locale\"\n\ntype Direction = \"ltr\" | \"rtl\"\n\nfunction DirectionProvider({\n  dir,\n  direction,\n  children,\n}: {\n  dir?: Direction\n  direction?: Direction\n  children: React.ReactNode\n}) {\n  const resolvedDir = direction ?? dir ?? \"ltr\"\n  const locale = resolvedDir === \"rtl\" ? \"ar\" : \"en-US\"\n\n  return <LocaleProvider locale={locale}>{children}</LocaleProvider>\n}\n\nfunction useDirection(): Direction {\n  const { dir } = useLocaleContext()\n  return dir as Direction\n}\n\nexport { DirectionProvider, useDirection }\n",
       "type": "registry:ui"
     }
   ],
