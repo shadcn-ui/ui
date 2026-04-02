@@ -38,13 +38,13 @@ const people = [
 
 export function ItemDropdown() {
   return (
-    <DropdownMenu>
+    <DropdownMenu positioning={{ placement: "bottom-end" }}>
       <DropdownMenuTrigger asChild>
         <Button variant="outline">
           Select <ChevronDownIcon />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-48" align="end">
+      <DropdownMenuContent className="w-48">
         <DropdownMenuGroup>
           {people.map((person) => (
             <DropdownMenuItem key={person.username}>

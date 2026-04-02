@@ -17,7 +17,7 @@ import {
 
 export function DropdownMenuAvatar() {
   return (
-    <DropdownMenu>
+    <DropdownMenu positioning={{ placement: "bottom-end" }}>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" size="icon" className="rounded-full">
           <Avatar>
@@ -26,7 +26,7 @@ export function DropdownMenuAvatar() {
           </Avatar>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
+      <DropdownMenuContent>
         <DropdownMenuGroup>
           <DropdownMenuItem value="account">
             <BadgeCheckIcon />

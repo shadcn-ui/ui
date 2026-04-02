@@ -12,11 +12,11 @@ import {
 
 export function PopoverForm() {
   return (
-    <Popover>
+    <Popover positioning={{ placement: "bottom-start" }}>
       <PopoverTrigger asChild>
         <Button variant="outline">Open Popover</Button>
       </PopoverTrigger>
-      <PopoverContent className="w-64" align="start">
+      <PopoverContent className="w-64">
         <PopoverHeader>
           <PopoverTitle>Dimensions</PopoverTitle>
           <PopoverDescription>

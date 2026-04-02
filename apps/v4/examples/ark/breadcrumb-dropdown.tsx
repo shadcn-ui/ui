@@ -29,14 +29,14 @@ export function BreadcrumbDropdown() {
           <DotIcon />
         </BreadcrumbSeparator>
         <BreadcrumbItem>
-          <DropdownMenu>
+          <DropdownMenu positioning={{ placement: "bottom-start" }}>
             <DropdownMenuTrigger asChild>
               <button className="flex items-center gap-1">
                 Components
                 <ChevronDownIcon className="size-3.5" />
               </button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="start">
+            <DropdownMenuContent>
               <DropdownMenuGroup>
                 <DropdownMenuItem value="1">Documentation</DropdownMenuItem>
                 <DropdownMenuItem value="2">Themes</DropdownMenuItem>

@@ -25,13 +25,13 @@ export default function ButtonGroupDropdown() {
   return (
     <ButtonGroup>
       <Button variant="outline">Follow</Button>
-      <DropdownMenu>
+      <DropdownMenu positioning={{ placement: "bottom-end" }}>
         <DropdownMenuTrigger asChild>
           <Button variant="outline" className="pl-2!">
             <ChevronDownIcon />
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent align="end" className="w-44">
+        <DropdownMenuContent className="w-44">
           <DropdownMenuGroup>
             <DropdownMenuItem value="1">
               <VolumeOffIcon />

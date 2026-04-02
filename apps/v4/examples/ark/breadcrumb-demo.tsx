@@ -28,14 +28,14 @@ export function BreadcrumbDemo() {
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <DropdownMenu>
+          <DropdownMenu positioning={{ placement: "bottom-start" }}>
             <DropdownMenuTrigger asChild>
               <Button size="icon-sm" variant="ghost">
                 <BreadcrumbEllipsis />
                 <span className="sr-only">Toggle menu</span>
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="start">
+            <DropdownMenuContent>
               <DropdownMenuGroup>
                 <DropdownMenuItem value="1">Documentation</DropdownMenuItem>
                 <DropdownMenuItem value="2">Themes</DropdownMenuItem>

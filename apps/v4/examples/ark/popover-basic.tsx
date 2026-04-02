@@ -10,11 +10,11 @@ import {
 
 export function PopoverBasic() {
   return (
-    <Popover>
+    <Popover positioning={{ placement: "bottom-start" }}>
       <PopoverTrigger asChild>
         <Button variant="outline">Open Popover</Button>
       </PopoverTrigger>
-      <PopoverContent align="start">
+      <PopoverContent>
         <PopoverHeader>
           <PopoverTitle>Dimensions</PopoverTitle>
           <PopoverDescription>
