@@ -1,9 +1,10 @@
 "use client"
 
 import * as React from "react"
-import { cn } from "@/examples/ark/lib/utils"
 import { Accordion as AccordionPrimitive } from "@ark-ui/react/accordion"
-import { ChevronDownIcon, ChevronUpIcon } from "lucide-react"
+
+import { cn } from "@/examples/ark/lib/utils"
+import { ChevronDownIcon } from "lucide-react"
 
 const Accordion = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Root>,
@@ -45,14 +46,7 @@ const AccordionTrigger = React.forwardRef<
     {...props}
   >
     {children}
-    <ChevronDownIcon
-      data-slot="accordion-trigger-icon"
-      className="pointer-events-none shrink-0 group-aria-expanded/accordion-trigger:hidden"
-    />
-    <ChevronUpIcon
-      data-slot="accordion-trigger-icon"
-      className="pointer-events-none hidden shrink-0 group-aria-expanded/accordion-trigger:inline"
-    />
+    <ChevronDownIcon data-slot="accordion-trigger-icon" className="pointer-events-none shrink-0 transition-transform duration-200 group-aria-expanded/accordion-trigger:rotate-180" />
   </AccordionPrimitive.ItemTrigger>
 ))
 AccordionTrigger.displayName = "AccordionTrigger"
@@ -64,7 +58,7 @@ const AccordionContent = React.forwardRef<
   <AccordionPrimitive.ItemContent
     ref={ref}
     data-slot="accordion-content"
-    className="overflow-hidden text-sm data-open:animate-accordion-down data-closed:animate-accordion-up"
+    className="overflow-hidden text-sm [--accordion-panel-height:var(--height)] data-open:animate-accordion-down data-closed:animate-accordion-up"
     {...props}
   >
     <div
