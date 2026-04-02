@@ -2,9 +2,15 @@
 
 import * as React from "react"
 import { cn } from "@/examples/ark/lib/utils"
+import { Button } from "@/examples/ark/ui/button"
 import { DatePicker as DatePickerPrimitive } from "@ark-ui/react/date-picker"
 import { Portal } from "@ark-ui/react/portal"
-import { CalendarIcon, ChevronLeftIcon, ChevronRightIcon } from "lucide-react"
+import {
+  CalendarIcon,
+  ChevronDownIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+} from "lucide-react"
 
 function DatePicker(
   props: React.ComponentProps<typeof DatePickerPrimitive.Root>
@@ -132,8 +138,8 @@ const DatePickerContent = React.forwardRef<
         ref={ref}
         data-slot="date-picker-content"
         className={cn(
-          "z-50 flex flex-col gap-3 rounded-lg border bg-popover p-3 text-popover-foreground shadow-lg outline-none",
-          "min-w-70",
+          "z-50 rounded-lg border bg-popover p-2 text-popover-foreground shadow-lg outline-none",
+          "[--cell-size:--spacing(7)] [--cell-radius:var(--radius-md)]",
           "origin-(--transform-origin)",
           "data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-[98%]",
           "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-[98%]",
@@ -155,7 +161,10 @@ const DatePickerViewControl = React.forwardRef<
   <DatePickerPrimitive.ViewControl
     ref={ref}
     data-slot="date-picker-view-control"
-    className={cn("flex items-center justify-between gap-2", className)}
+    className={cn(
+      "relative flex w-full items-center justify-between gap-1",
+      className
+    )}
     {...props}
   />
 ))
@@ -169,7 +178,7 @@ const DatePickerViewTrigger = React.forwardRef<
     ref={ref}
     data-slot="date-picker-view-trigger"
     className={cn(
-      "inline-flex flex-1 items-center justify-center gap-1 rounded-md px-2 py-1.5 text-sm font-semibold transition-colors hover:bg-accent focus-visible:bg-accent focus-visible:ring-[3px] focus-visible:ring-ring/20 focus-visible:outline-none",
+      "flex h-(--cell-size) items-center justify-center text-sm font-medium select-none",
       className
     )}
     {...props}
@@ -183,14 +192,20 @@ const DatePickerPrevTrigger = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
   <DatePickerPrimitive.PrevTrigger
     ref={ref}
+    asChild
     data-slot="date-picker-prev-trigger"
-    className={cn(
-      "inline-flex size-8 items-center justify-center rounded-md border-transparent transition-colors hover:bg-accent focus-visible:ring-[3px] focus-visible:ring-ring/20 focus-visible:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:opacity-40 [&_svg]:size-4",
-      className
-    )}
     {...props}
   >
-    {children ?? <ChevronLeftIcon />}
+    <Button
+      variant="ghost"
+      size="icon"
+      className={cn(
+        "size-(--cell-size) p-0 select-none aria-disabled:opacity-50",
+        className
+      )}
+    >
+      {children ?? <ChevronLeftIcon className="size-4" />}
+    </Button>
   </DatePickerPrimitive.PrevTrigger>
 ))
 DatePickerPrevTrigger.displayName = "DatePickerPrevTrigger"
@@ -201,14 +216,20 @@ const DatePickerNextTrigger = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
   <DatePickerPrimitive.NextTrigger
     ref={ref}
+    asChild
     data-slot="date-picker-next-trigger"
-    className={cn(
-      "inline-flex size-8 items-center justify-center rounded-md border-transparent transition-colors hover:bg-accent focus-visible:ring-[3px] focus-visible:ring-ring/20 focus-visible:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:opacity-40 [&_svg]:size-4",
-      className
-    )}
     {...props}
   >
-    {children ?? <ChevronRightIcon />}
+    <Button
+      variant="ghost"
+      size="icon"
+      className={cn(
+        "size-(--cell-size) p-0 select-none aria-disabled:opacity-50",
+        className
+      )}
+    >
+      {children ?? <ChevronRightIcon className="size-4" />}
+    </Button>
   </DatePickerPrimitive.NextTrigger>
 ))
 DatePickerNextTrigger.displayName = "DatePickerNextTrigger"
@@ -223,7 +244,7 @@ const DatePickerTable = React.forwardRef<
   <DatePickerPrimitive.Table
     ref={ref}
     data-slot="date-picker-table"
-    className={cn("w-full border-collapse border-spacing-0", className)}
+    className={cn("w-full border-collapse", className)}
     {...props}
   />
 ))
@@ -231,7 +252,19 @@ DatePickerTable.displayName = "DatePickerTable"
 
 const DatePickerTableHead = DatePickerPrimitive.TableHead
 const DatePickerTableBody = DatePickerPrimitive.TableBody
-const DatePickerTableRow = DatePickerPrimitive.TableRow
+
+const DatePickerTableRow = React.forwardRef<
+  HTMLTableRowElement,
+  React.ComponentProps<typeof DatePickerPrimitive.TableRow>
+>(({ className, ...props }, ref) => (
+  <DatePickerPrimitive.TableRow
+    ref={ref}
+    data-slot="date-picker-table-row"
+    className={cn("mt-2 flex w-full", className)}
+    {...props}
+  />
+))
+DatePickerTableRow.displayName = "DatePickerTableRow"
 
 const DatePickerTableHeader = React.forwardRef<
   HTMLTableCellElement,
@@ -241,7 +274,7 @@ const DatePickerTableHeader = React.forwardRef<
     ref={ref}
     data-slot="date-picker-table-header"
     className={cn(
-      "py-2 text-center text-xs font-medium tracking-wide text-muted-foreground uppercase select-none",
+      "flex-1 rounded-(--cell-radius) text-[0.8rem] font-normal text-muted-foreground select-none",
       className
     )}
     {...props}
@@ -256,7 +289,12 @@ const DatePickerTableCell = React.forwardRef<
   <DatePickerPrimitive.TableCell
     ref={ref}
     data-slot="date-picker-table-cell"
-    className={cn("p-0 text-center", className)}
+    className={cn(
+      "group/day relative aspect-square h-full w-full flex-1 rounded-(--cell-radius) p-0 text-center select-none",
+      "[&:last-child[data-selected]_div]:rounded-r-(--cell-radius)",
+      "[&:first-child[data-selected]_div]:rounded-l-(--cell-radius)",
+      className
+    )}
     {...props}
   />
 ))
@@ -270,18 +308,17 @@ const DatePickerTableCellTrigger = React.forwardRef<
     ref={ref}
     data-slot="date-picker-table-cell-trigger"
     className={cn(
-      "inline-flex size-9 items-center justify-center rounded-md text-sm font-normal outline-none select-none",
-      "hover:bg-accent hover:not-data-selected:not-data-in-range:text-accent-foreground",
-      "focus-visible:relative focus-visible:z-[1] focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-primary",
-      "data-[today]:font-semibold data-[today]:text-primary",
-      "data-[selected]:bg-primary data-[selected]:font-medium data-[selected]:text-primary-foreground",
+      "relative isolate z-10 flex aspect-square size-auto w-full min-w-(--cell-size) items-center justify-center gap-1 rounded-(--cell-radius) border-0 text-sm leading-none font-normal",
+      "hover:bg-accent hover:text-accent-foreground",
+      "data-[today]:bg-accent data-[today]:text-accent-foreground",
+      "data-[selected]:bg-primary data-[selected]:text-primary-foreground",
       "data-[in-range]:rounded-none data-[in-range]:bg-accent data-[in-range]:text-accent-foreground",
-      "data-[range-start]:rounded-none data-[range-start]:rounded-s-md data-[range-start]:bg-primary data-[range-start]:text-primary-foreground",
-      "data-[range-end]:rounded-none data-[range-end]:rounded-e-md data-[range-end]:bg-primary data-[range-end]:text-primary-foreground",
-      "data-[range-start][data-range-end]:rounded-md",
-      "data-[outside-range]:text-muted-foreground data-[outside-range]:opacity-50",
-      "data-[disabled]:cursor-not-allowed data-[disabled]:text-muted-foreground data-[disabled]:opacity-40",
+      "data-[range-start]:rounded-l-(--cell-radius) data-[range-start]:bg-primary data-[range-start]:text-primary-foreground",
+      "data-[range-end]:rounded-r-(--cell-radius) data-[range-end]:bg-primary data-[range-end]:text-primary-foreground",
+      "data-[outside-range]:text-muted-foreground/50",
+      "data-[disabled]:text-muted-foreground data-[disabled]:opacity-50",
       "data-[unavailable]:text-muted-foreground data-[unavailable]:line-through data-[unavailable]:opacity-40",
+      "focus-visible:relative focus-visible:z-10 focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-1",
       className
     )}
     {...props}
@@ -295,19 +332,43 @@ const DatePickerPresetTrigger = DatePickerPrimitive.PresetTrigger
 const DatePickerContext = DatePickerPrimitive.Context
 const DatePickerRootProvider = DatePickerPrimitive.RootProvider
 
+// --- Composed View Helpers ---
+
+function DatePickerSelectHeader({
+  className,
+}: {
+  className?: string
+}) {
+  return (
+    <DatePickerViewControl className={className}>
+      <DatePickerPrevTrigger />
+
+      <div className="flex items-center gap-1">
+        <span className="relative">
+          <DatePickerMonthSelect className="appearance-none rounded-md bg-transparent py-1 pr-6 pl-2 text-sm font-medium outline-none hover:bg-accent focus-visible:ring-[3px] focus-visible:ring-ring/50" />
+          <ChevronDownIcon className="pointer-events-none absolute top-1/2 right-1 size-3.5 -translate-y-1/2 text-muted-foreground" />
+        </span>
+        <span className="relative">
+          <DatePickerYearSelect className="appearance-none rounded-md bg-transparent py-1 pr-6 pl-2 text-sm font-medium outline-none hover:bg-accent focus-visible:ring-[3px] focus-visible:ring-ring/50" />
+          <ChevronDownIcon className="pointer-events-none absolute top-1/2 right-1 size-3.5 -translate-y-1/2 text-muted-foreground" />
+        </span>
+      </div>
+
+      <DatePickerNextTrigger />
+    </DatePickerViewControl>
+  )
+}
+
 function DatePickerDayView({ className }: { className?: string }) {
   return (
-    <DatePickerView view="day" className={cn("flex flex-col gap-3", className)}>
+    <DatePickerView
+      view="day"
+      className={cn("flex flex-col gap-4", className)}
+    >
       <DatePickerContext>
         {(api) => (
           <>
-            <DatePickerViewControl>
-              <DatePickerPrevTrigger />
-              <DatePickerViewTrigger>
-                <DatePickerRangeText />
-              </DatePickerViewTrigger>
-              <DatePickerNextTrigger />
-            </DatePickerViewControl>
+            <DatePickerSelectHeader />
             <DatePickerTable>
               <DatePickerTableHead>
                 <DatePickerTableRow>
@@ -343,7 +404,7 @@ function DatePickerMonthView({ className }: { className?: string }) {
   return (
     <DatePickerView
       view="month"
-      className={cn("flex flex-col gap-3", className)}
+      className={cn("flex flex-col gap-4", className)}
     >
       <DatePickerContext>
         {(api) => (
@@ -362,10 +423,19 @@ function DatePickerMonthView({ className }: { className?: string }) {
                   .map((months, i) => (
                     <DatePickerTableRow key={i}>
                       {months.map((month, j) => (
-                        <DatePickerTableCell key={j} value={month.value}>
-                          <DatePickerTableCellTrigger>
-                            {month.label}
-                          </DatePickerTableCellTrigger>
+                        <DatePickerTableCell
+                          key={j}
+                          value={month.value}
+                          className="flex-1 p-0 text-center"
+                        >
+                          <DatePickerPrimitive.TableCellTrigger asChild>
+                            <Button
+                              variant="ghost"
+                              className="w-full text-sm font-normal"
+                            >
+                              {month.label}
+                            </Button>
+                          </DatePickerPrimitive.TableCellTrigger>
                         </DatePickerTableCell>
                       ))}
                     </DatePickerTableRow>
@@ -383,7 +453,7 @@ function DatePickerYearView({ className }: { className?: string }) {
   return (
     <DatePickerView
       view="year"
-      className={cn("flex flex-col gap-3", className)}
+      className={cn("flex flex-col gap-4", className)}
     >
       <DatePickerContext>
         {(api) => (
@@ -400,10 +470,19 @@ function DatePickerYearView({ className }: { className?: string }) {
                 {api.getYearsGrid({ columns: 4 }).map((years, i) => (
                   <DatePickerTableRow key={i}>
                     {years.map((year, j) => (
-                      <DatePickerTableCell key={j} value={year.value}>
-                        <DatePickerTableCellTrigger>
-                          {year.label}
-                        </DatePickerTableCellTrigger>
+                      <DatePickerTableCell
+                        key={j}
+                        value={year.value}
+                        className="flex-1 p-0 text-center"
+                      >
+                        <DatePickerPrimitive.TableCellTrigger asChild>
+                          <Button
+                            variant="ghost"
+                            className="w-full text-sm font-normal"
+                          >
+                            {year.label}
+                          </Button>
+                        </DatePickerPrimitive.TableCellTrigger>
                       </DatePickerTableCell>
                     ))}
                   </DatePickerTableRow>
@@ -443,6 +522,7 @@ export {
   DatePickerMonthSelect,
   DatePickerYearSelect,
   DatePickerPresetTrigger,
+  DatePickerSelectHeader,
   DatePickerContext,
   DatePickerRootProvider,
   DatePickerDayView,
