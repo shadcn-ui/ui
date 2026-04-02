@@ -9,7 +9,7 @@ import {
 export function ContextMenuSides() {
   return (
     <div className="grid w-full max-w-sm grid-cols-2 gap-4">
-      <ContextMenu>
+      <ContextMenu positioning={{ placement: "top" }}>
         <ContextMenuTrigger className="flex aspect-video w-full max-w-xs items-center justify-center rounded-xl border border-dashed text-sm">
           <span className="hidden pointer-fine:inline-block">
             Right click (top)
@@ -18,7 +18,7 @@ export function ContextMenuSides() {
             Long press (top)
           </span>
         </ContextMenuTrigger>
-        <ContextMenuContent side="top">
+        <ContextMenuContent>
           <ContextMenuGroup>
             <ContextMenuItem value="1">Back</ContextMenuItem>
             <ContextMenuItem value="2">Forward</ContextMenuItem>
@@ -26,7 +26,7 @@ export function ContextMenuSides() {
           </ContextMenuGroup>
         </ContextMenuContent>
       </ContextMenu>
-      <ContextMenu>
+      <ContextMenu positioning={{ placement: "right" }}>
         <ContextMenuTrigger className="flex aspect-video w-full max-w-xs items-center justify-center rounded-xl border border-dashed text-sm">
           <span className="hidden pointer-fine:inline-block">
             Right click (right)
@@ -35,7 +35,7 @@ export function ContextMenuSides() {
             Long press (right)
           </span>
         </ContextMenuTrigger>
-        <ContextMenuContent side="right">
+        <ContextMenuContent>
           <ContextMenuGroup>
             <ContextMenuItem value="4">Back</ContextMenuItem>
             <ContextMenuItem value="5">Forward</ContextMenuItem>
@@ -43,7 +43,7 @@ export function ContextMenuSides() {
           </ContextMenuGroup>
         </ContextMenuContent>
       </ContextMenu>
-      <ContextMenu>
+      <ContextMenu positioning={{ placement: "bottom" }}>
         <ContextMenuTrigger className="flex aspect-video w-full max-w-xs items-center justify-center rounded-xl border border-dashed text-sm">
           <span className="hidden pointer-fine:inline-block">
             Right click (bottom)
@@ -52,7 +52,7 @@ export function ContextMenuSides() {
             Long press (bottom)
           </span>
         </ContextMenuTrigger>
-        <ContextMenuContent side="bottom">
+        <ContextMenuContent>
           <ContextMenuGroup>
             <ContextMenuItem value="7">Back</ContextMenuItem>
             <ContextMenuItem value="8">Forward</ContextMenuItem>
@@ -60,7 +60,7 @@ export function ContextMenuSides() {
           </ContextMenuGroup>
         </ContextMenuContent>
       </ContextMenu>
-      <ContextMenu>
+      <ContextMenu positioning={{ placement: "left" }}>
         <ContextMenuTrigger className="flex aspect-video w-full max-w-xs items-center justify-center rounded-xl border border-dashed text-sm">
           <span className="hidden pointer-fine:inline-block">
             Right click (left)
@@ -69,7 +69,7 @@ export function ContextMenuSides() {
             Long press (left)
           </span>
         </ContextMenuTrigger>
-        <ContextMenuContent side="left">
+        <ContextMenuContent>
           <ContextMenuGroup>
             <ContextMenuItem value="10">Back</ContextMenuItem>
             <ContextMenuItem value="11">Forward</ContextMenuItem>
