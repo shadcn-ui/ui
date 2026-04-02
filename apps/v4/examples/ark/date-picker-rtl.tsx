@@ -1,15 +1,17 @@
 "use client"
 
+import { Button } from "@/examples/ark/ui-rtl/button"
 import {
   DatePicker,
-  DatePickerControl,
-  DatePickerInput,
-  DatePickerTrigger,
   DatePickerContent,
+  DatePickerControl,
   DatePickerDayView,
   DatePickerMonthView,
+  DatePickerTrigger,
+  DatePickerValueText,
   DatePickerYearView,
-} from "@/examples/ark/ui/date-picker"
+} from "@/examples/ark/ui-rtl/date-picker"
+import { ChevronDownIcon } from "lucide-react"
 
 import {
   useTranslation,
@@ -50,10 +52,18 @@ export function DatePickerRtl() {
     <DatePicker
       locale={localeMap[language] || "en-US"}
       dir={dir as "ltr" | "rtl"}
+      closeOnSelect
     >
       <DatePickerControl>
-        <DatePickerInput placeholder={t.placeholder} />
-        <DatePickerTrigger />
+        <DatePickerTrigger asChild>
+          <Button
+            variant="outline"
+            className="w-[212px] justify-between text-left font-normal"
+          >
+            <DatePickerValueText placeholder={t.placeholder} />
+            <ChevronDownIcon className="size-4 text-muted-foreground" />
+          </Button>
+        </DatePickerTrigger>
       </DatePickerControl>
       <DatePickerContent>
         <DatePickerDayView />
