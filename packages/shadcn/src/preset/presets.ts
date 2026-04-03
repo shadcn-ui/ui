@@ -88,6 +88,21 @@ export const DEFAULT_PRESETS = {
     radius: "default",
     rtl: false,
   },
+  luma: {
+    title: "Luma",
+    description: "Lucide / Inter",
+    style: "luma",
+    baseColor: "neutral",
+    theme: "neutral",
+    iconLibrary: "lucide",
+    font: "inter",
+    fontHeading: "inherit",
+    menuAccent: "subtle" as const,
+    menuColor: "default" as const,
+
+    radius: "default",
+    rtl: false,
+  },
 }
 
 export function resolveCreateUrl(

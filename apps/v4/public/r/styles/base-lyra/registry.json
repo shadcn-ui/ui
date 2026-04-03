@@ -1994,6 +1994,50 @@
       "type": "registry:block"
     },
     {
+      "name": "preview-02",
+      "title": "Preview 02",
+      "dependencies": ["react-qr-code"],
+      "registryDependencies": [
+        "accordion",
+        "badge",
+        "breadcrumb",
+        "button",
+        "calendar",
+        "card",
+        "chart",
+        "checkbox",
+        "combobox",
+        "dropdown-menu",
+        "empty",
+        "field",
+        "input",
+        "input-group",
+        "item",
+        "label",
+        "native-select",
+        "progress",
+        "radio-group",
+        "select",
+        "separator",
+        "sidebar",
+        "skeleton",
+        "slider",
+        "spinner",
+        "switch",
+        "table",
+        "tabs",
+        "textarea",
+        "toggle-group"
+      ],
+      "files": [
+        {
+          "path": "registry/base-lyra/blocks/preview-02/index.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "type": "registry:block"
+    },
+    {
       "name": "login-01",
       "title": "Login 01",
       "description": "A simple login form.",

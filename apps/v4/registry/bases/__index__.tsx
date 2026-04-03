@@ -3640,6 +3640,64 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "preview-02": {
+      name: "preview-02",
+      title: "Preview 02",
+      description: "",
+      type: "registry:block",
+      registryDependencies: [
+        "accordion",
+        "badge",
+        "breadcrumb",
+        "button",
+        "calendar",
+        "card",
+        "chart",
+        "checkbox",
+        "combobox",
+        "dropdown-menu",
+        "empty",
+        "field",
+        "input",
+        "input-group",
+        "item",
+        "label",
+        "native-select",
+        "progress",
+        "radio-group",
+        "select",
+        "separator",
+        "sidebar",
+        "skeleton",
+        "slider",
+        "spinner",
+        "switch",
+        "table",
+        "tabs",
+        "textarea",
+        "toggle-group",
+      ],
+      files: [
+        {
+          path: "registry/bases/radix/blocks/preview-02/index.tsx",
+          type: "registry:block",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import(
+          "@/registry/bases/radix/blocks/preview-02/index"
+        )
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "preview-02"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     "login-01": {
       name: "login-01",
       title: "Login 01",
@@ -8471,6 +8529,64 @@ export const Index: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "preview"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "preview-02": {
+      name: "preview-02",
+      title: "Preview 02",
+      description: "",
+      type: "registry:block",
+      registryDependencies: [
+        "accordion",
+        "badge",
+        "breadcrumb",
+        "button",
+        "calendar",
+        "card",
+        "chart",
+        "checkbox",
+        "combobox",
+        "dropdown-menu",
+        "empty",
+        "field",
+        "input",
+        "input-group",
+        "item",
+        "label",
+        "native-select",
+        "progress",
+        "radio-group",
+        "select",
+        "separator",
+        "sidebar",
+        "skeleton",
+        "slider",
+        "spinner",
+        "switch",
+        "table",
+        "tabs",
+        "textarea",
+        "toggle-group",
+      ],
+      files: [
+        {
+          path: "registry/bases/base/blocks/preview-02/index.tsx",
+          type: "registry:block",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import(
+          "@/registry/bases/base/blocks/preview-02/index"
+        )
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "preview-02"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
