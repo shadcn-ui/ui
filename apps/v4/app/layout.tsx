@@ -1,4 +1,3 @@
-// trigger deploy
 import type { Metadata } from "next"
 import { NuqsAdapter } from "nuqs/adapters/next/app"
 
