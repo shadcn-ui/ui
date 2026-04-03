@@ -1000,5 +1000,11 @@
     "homepage": "https://www.openpolicy.sh",
     "url": "https://www.openpolicy.sh/r/{name}.json",
     "description": "Open-source components for building terms, privacy policies and cookie banners."
+  },
+  {
+    "name": "@flowkit-ui",
+    "homepage": "https://flowkit-ui.vzkiss.com",
+    "url": "https://flowkit-ui.vzkiss.com/r/{name}.json",
+    "description": "Opinionated, accessible components on Base UI and shadcn-style primitives — starting with a Creatable Combobox."
   }
 ]
