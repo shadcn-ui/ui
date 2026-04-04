@@ -8,6 +8,7 @@ import { Config, getConfig, resolveConfigPaths } from "@/src/utils/get-config"
 import { getPackageInfo } from "@/src/utils/get-package-info"
 import fg from "fast-glob"
 import fs from "fs-extra"
+import stripJsonComments from "strip-json-comments"
 import { loadConfig } from "tsconfig-paths"
 import { z } from "zod"
 
@@ -226,10 +227,47 @@ export async function getTailwindVersion(
     return "v4"
   }
 
-  if (
-    !packageInfo?.dependencies?.tailwindcss &&
-    !packageInfo?.devDependencies?.tailwindcss
-  ) {
+  // Check for Tailwind v4 ecosystem packages
+  const tailwindV4Packages = [
+    "@tailwindcss/vite",
+    "@tailwindcss/postcss",
+    "@tailwindcss/cli",
+  ]
+
+  const hasV4Package = tailwindV4Packages.some(
+    (pkg) =>
+      packageInfo?.dependencies?.[pkg] || packageInfo?.devDependencies?.[pkg]
+  )
+
+  if (hasV4Package) {
+    return "v4"
+  }
+
+  // Check if tailwindcss is installed
+  const hasTailwindcss =
+    packageInfo?.dependencies?.tailwindcss ||
+    packageInfo?.devDependencies?.tailwindcss
+
+  if (!hasTailwindcss) {
+    // Fallback: Check vite.config.ts for @tailwindcss/vite plugin
+    const viteConfigFiles = await fg.glob("vite.config.*", {
+      cwd,
+      deep: 1,
+      ignore: PROJECT_SHARED_IGNORE,
+    })
+
+    if (viteConfigFiles.length > 0) {
+      const viteConfigPath = path.resolve(cwd, viteConfigFiles[0])
+      try {
+        const contents = await fs.readFile(viteConfigPath, "utf8")
+        if (contents.includes("@tailwindcss/vite")) {
+          return "v4"
+        }
+      } catch {
+        // Ignore read errors
+      }
+    }
+
     return null
   }
 
@@ -302,26 +340,72 @@ export async function getTsConfigAliasPrefix(cwd: string) {
   const tsConfig = await loadConfig(cwd)
 
   if (
-    tsConfig?.resultType === "failed" ||
-    !Object.entries(tsConfig?.paths).length
+    tsConfig?.resultType !== "failed" &&
+    Object.entries(tsConfig?.paths || {}).length
   ) {
-    return null
+    return extractAliasPrefixFromPaths(tsConfig.paths)
   }
 
-  // This assume that the first alias is the prefix.
-  for (const [alias, paths] of Object.entries(tsConfig.paths)) {
+  // Fallback: parse references array from root tsconfig.json
+  const rootConfigPath = path.resolve(cwd, "tsconfig.json")
+  if (await fs.pathExists(rootConfigPath)) {
+    try {
+      const rootConfig = await readTsConfigFile(rootConfigPath)
+      if (rootConfig?.references?.length) {
+        for (const ref of rootConfig.references) {
+          const refPathValue = ref.path
+          const refPath = path.resolve(cwd, refPathValue)
+          // Handle both file and directory references
+          const configPath = refPathValue.endsWith(".json")
+            ? refPath
+            : path.join(refPath, "tsconfig.json")
+
+          if (await fs.pathExists(configPath)) {
+            const refConfig = await readTsConfigFile(configPath)
+            const paths = refConfig?.compilerOptions?.paths
+            if (paths && Object.keys(paths).length) {
+              return extractAliasPrefixFromPaths(paths)
+            }
+          }
+        }
+      }
+    } catch {
+      // Ignore parse errors
+    }
+  }
+
+  return null
+}
+
+// Helper to read tsconfig with comment stripping
+async function readTsConfigFile(filePath: string) {
+  const contents = await fs.readFile(filePath, "utf8")
+
+  try {
+    return JSON.parse(stripJsonComments(contents))
+  } catch {
+    return null
+  }
+}
+
+// Helper to extract alias prefix from paths object
+function extractAliasPrefixFromPaths(
+  paths: Record<string, string[]>
+): string | null {
+  // This assumes that the first matching alias is the prefix.
+  for (const [alias, pathValues] of Object.entries(paths)) {
     if (
-      paths.includes("./*") ||
-      paths.includes("./src/*") ||
-      paths.includes("./app/*") ||
-      paths.includes("./resources/js/*") // Laravel.
+      pathValues.includes("./*") ||
+      pathValues.includes("./src/*") ||
+      pathValues.includes("./app/*") ||
+      pathValues.includes("./resources/js/*") // Laravel.
     ) {
       return alias.replace(/\/\*$/, "") ?? null
     }
   }
 
   // Use the first alias as the prefix.
-  return Object.keys(tsConfig?.paths)?.[0].replace(/\/\*$/, "") ?? null
+  return Object.keys(paths)?.[0]?.replace(/\/\*$/, "") ?? null
 }
 
 export async function isTypeScriptProject(cwd: string) {
