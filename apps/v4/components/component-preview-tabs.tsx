@@ -2,11 +2,6 @@
 
 import * as React from "react"
 import Link from "next/link"
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/examples/base/ui/popover"
 import { IconAlertCircle } from "@tabler/icons-react"
 
 import { cn } from "@/lib/utils"
@@ -22,6 +17,11 @@ import { DirectionProvider as BaseDirectionProvider } from "@/registry/bases/bas
 import { DirectionProvider as RadixDirectionProvider } from "@/registry/bases/radix/ui/direction"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import { Separator } from "@/registry/new-york-v4/ui/separator"
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/styles/base-nova/ui/popover"
 
 export function ComponentPreviewTabs({
   className,
