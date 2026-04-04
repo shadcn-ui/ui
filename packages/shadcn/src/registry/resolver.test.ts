@@ -544,6 +544,105 @@ describe("resolveRegistryItems with URL dependencies", () => {
   })
 })
 
+describe("resolveRegistryTree - base color sources", () => {
+  test("uses legacy theme css vars for v3 projects", async () => {
+    const mockServer = setupServer(
+      http.get("https://ui.shadcn.com/r/styles/new-york/index.json", () => {
+        return HttpResponse.json({
+          name: "index",
+          type: "registry:style",
+        })
+      }),
+      http.get("https://ui.shadcn.com/r/colors/neutral.json", () => {
+        return HttpResponse.json({
+          cssVars: {
+            dark: {
+              background: "oklch(0.145 0 0)",
+              primary: "oklch(0.985 0 0)",
+            },
+          },
+          cssVarsV4: {
+            dark: {
+              background: "oklch(0.145 0 0)",
+              primary: "oklch(0.985 0 0)",
+            },
+          },
+          inlineColors: {
+            light: {},
+            dark: {},
+          },
+          inlineColorsTemplate: "",
+          cssVarsTemplate: "",
+        })
+      }),
+      http.get("https://ui.shadcn.com/r/themes/neutral.json", () => {
+        return HttpResponse.json({
+          name: "neutral",
+          label: "Neutral",
+          cssVars: {
+            dark: {
+              background: "0 0% 3.9%",
+              primary: "0 0% 98%",
+            },
+          },
+        })
+      })
+    )
+
+    mockServer.listen({ onUnhandledRequest: "bypass" })
+
+    try {
+      const result = await resolveRegistryTree(["index"], {
+        style: "new-york",
+        rsc: false,
+        tsx: false,
+        aliases: {
+          components: "./components",
+          utils: "./lib/utils",
+          ui: "./components/ui",
+        },
+        tailwind: {
+          config: "./tailwind.config.js",
+          baseColor: "neutral",
+          css: "globals.css",
+          cssVariables: true,
+        },
+        resolvedPaths: {
+          cwd: process.cwd(),
+          tailwindConfig: "./tailwind.config.js",
+          tailwindCss: "./globals.css",
+          utils: "./lib/utils",
+          components: "./components",
+          lib: "./lib",
+          hooks: "./hooks",
+          ui: "./components/ui",
+        },
+      } as any)
+
+      expect(result?.cssVars).toMatchObject({
+        dark: {
+          background: "0 0% 3.9%",
+          primary: "0 0% 98%",
+        },
+      })
+      expect(result?.tailwind).toMatchObject({
+        config: {
+          theme: {
+            extend: {
+              colors: {
+                background: "hsl(var(--background))",
+                primary: "hsl(var(--primary))",
+              },
+            },
+          },
+        },
+      })
+    } finally {
+      mockServer.close()
+    }
+  })
+})
+
 describe("resolveRegistryTree - dependency ordering", () => {
   let customRegistry: Awaited<ReturnType<typeof createRegistryServer>>
 
