@@ -3,7 +3,7 @@ import { initOptionsSchema } from "@/src/commands/init"
 import * as ERRORS from "@/src/utils/errors"
 import {
   formatMonorepoMessage,
-  getMonorepoTargets,
+  getMonorepoInitTargets,
   isMonorepoRoot,
 } from "@/src/utils/get-monorepo-info"
 import { getProjectInfo } from "@/src/utils/get-project-info"
@@ -72,7 +72,7 @@ export async function preFlightInit(
     // Check if we're in a monorepo root.
     // Skip when --monorepo is set.
     if (!options.monorepo && (await isMonorepoRoot(options.cwd))) {
-      const targets = await getMonorepoTargets(options.cwd)
+      const targets = await getMonorepoInitTargets(options.cwd)
       if (targets.length > 0) {
         formatMonorepoMessage("init", targets)
         process.exit(1)

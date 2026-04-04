@@ -48,6 +48,12 @@ export async function isMonorepoRoot(cwd: string) {
   return false
 }
 
+export type MonorepoTarget = {
+  name: string
+  hasConfig: boolean
+  hasFrameworkConfig: boolean
+}
+
 // Finds app directories in a monorepo that contain framework configs or components.json.
 export async function getMonorepoTargets(cwd: string) {
   const patterns = await getWorkspacePatterns(cwd)
@@ -63,7 +69,7 @@ export async function getMonorepoTargets(cwd: string) {
     ignore: ["**/node_modules/**"],
   })
 
-  const targets: { name: string; hasConfig: boolean }[] = []
+  const targets: MonorepoTarget[] = []
 
   for (const dir of dirs) {
     const fullPath = path.resolve(cwd, dir)
@@ -90,6 +96,7 @@ export async function getMonorepoTargets(cwd: string) {
       targets.push({
         name: dir,
         hasConfig: hasComponentsJson,
+        hasFrameworkConfig,
       })
     }
   }
@@ -97,10 +104,16 @@ export async function getMonorepoTargets(cwd: string) {
   return targets
 }
 
+export async function getMonorepoInitTargets(cwd: string) {
+  const targets = await getMonorepoTargets(cwd)
+
+  return targets.filter((target) => target.hasFrameworkConfig)
+}
+
 // Formats and logs the monorepo detection message.
 export function formatMonorepoMessage(
   command: string,
-  targets: { name: string; hasConfig: boolean }[]
+  targets: MonorepoTarget[]
 ) {
   logger.break()
   logger.log(

@@ -347,6 +347,30 @@ describe("resolveFilePath", () => {
     ).toBe("/foo/bar/src/lib/foo.ts")
   })
 
+  test("should resolve registry:lib utils.ts using the utils alias directory", () => {
+    expect(
+      resolveFilePath(
+        {
+          path: "hello-world/lib/utils.ts",
+          type: "registry:lib",
+        },
+        {
+          resolvedPaths: {
+            cwd: "/foo/bar",
+            components: "/foo/bar/components",
+            ui: "/packages/ui/src/components",
+            lib: "/foo/bar/lib",
+            hooks: "/foo/bar/hooks",
+            utils: "/packages/ui/src/lib/utils",
+          },
+        },
+        {
+          isSrcDir: false,
+        }
+      )
+    ).toBe(path.normalize("/packages/ui/src/lib/utils.ts"))
+  })
+
   test("should resolve registry:hook file types", () => {
     expect(
       resolveFilePath(
