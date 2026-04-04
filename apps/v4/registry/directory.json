@@ -1182,5 +1182,12 @@
     "url": "https://www.openpolicy.sh/r/{name}.json",
     "description": "Open-source components for building terms, privacy policies and cookie banners.",
     "logo": "<svg width='512' height='512' viewBox='0 0 512 512' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M443.149 364.523C493.245 295.546 493.245 217.003 443.149 148.025H470.085C525.972 215.492 525.972 297.057 470.085 364.523H443.149Z' fill='black'/><path d='M275.587 341.866V163.129H333.236C370.242 163.129 395.919 185.786 395.919 220.526C395.919 255.015 370.242 277.42 333.236 277.42H306.299V341.866H275.587ZM329.459 249.225C351.613 249.225 363.696 238.652 363.696 220.023C363.696 201.394 351.613 191.072 329.459 191.072H306.299V249.225H329.459Z' fill='black'/><path d='M180.527 345.894C137.227 345.894 113.06 311.154 113.06 252.75C113.06 194.345 137.227 159.102 180.527 159.102C223.826 159.102 247.993 194.345 247.993 252.75C247.993 311.154 223.826 345.894 180.527 345.894ZM180.527 317.447C203.435 317.447 215.77 295.294 215.77 252.75C215.77 210.205 203.435 187.548 180.527 187.548C157.618 187.548 145.283 210.205 145.283 252.75C145.283 295.294 157.618 317.447 180.527 317.447Z' fill='black'/><path d='M41.915 364.523C-13.9717 297.057 -13.9717 215.492 41.915 148.025H68.8514C18.7548 217.003 18.7548 295.546 68.8514 364.523H41.915Z' fill='black'/></svg>"
+  },
+  {
+    "name": "@mksingh",
+    "homepage": "https://mksingh.dev/docs",
+    "url": "https://mksingh.dev/r/{name}.json",
+    "description": "A personal registry of production-ready ShadCN components and utilities. Everything is built to drop into your existing ShadCN project with no extra setup.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' fill='none' class='size-10' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor'><title>MKSingh</title><style>path{stroke:#000}@media(prefers-color-scheme:dark){path{stroke:#fff}}</style><path stroke-linecap='round' stroke-linejoin='round' d='m21 7.5-2.25-1.313M21 7.5v2.25m0-2.25-2.25 1.313M3 7.5l2.25-1.313M3 7.5l2.25 1.313M3 7.5v2.25m9 3 2.25-1.313M12 12.75l-2.25-1.313M12 12.75V15m0 6.75 2.25-1.313M12 21.75V19.5m0 2.25-2.25-1.313m0-16.875L12 2.25l2.25 1.313M21 14.25v2.25l-2.25 1.313m-13.5 0L3 16.5v-2.25'></path></svg>"
   }
 ]
