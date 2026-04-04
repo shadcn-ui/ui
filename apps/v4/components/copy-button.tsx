@@ -92,7 +92,8 @@ export function CopyButton({
       size="icon"
       variant={variant}
       className={cn(
-        "absolute top-3 right-2 z-10 size-7 bg-code hover:opacity-100 focus-visible:opacity-100",
+        "absolute top-3 right-2 z-10 h-7 bg-code text-zinc-50 hover:bg-zinc-700 hover:text-zinc-50 hover:opacity-100 focus-visible:opacity-100",
+        hasCopied ? "w-auto px-2" : "w-7 px-0",
         className
       )}
       onClick={async () => {
@@ -114,8 +115,17 @@ export function CopyButton({
       }}
       {...props}
     >
-      <span className="sr-only">Copy</span>
-      {hasCopied ? <IconCheck /> : <IconCopy />}
+      {hasCopied ? (
+        <span className="flex items-center gap-1.5 text-xs">
+          <IconCheck stroke={2} className="size-3.5" />
+          Copied!
+        </span>
+      ) : (
+        <>
+          <span className="sr-only">Copy</span>
+          <IconCopy stroke={2} className="size-3.5" />
+        </>
+      )}
     </Button>
   )
 }
