@@ -91,7 +91,7 @@ function getRegistries(
   return result
 }
 
-function collectInfo(
+export function collectInfo(
   projectInfo: ProjectInfo | null,
   config: Awaited<ReturnType<typeof getConfig>>,
   components: string[],
