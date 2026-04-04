@@ -169,12 +169,13 @@ export async function findLayoutFile(
 ): Promise<string | null> {
   const cwd = config.resolvedPaths.cwd
   const isSrcDir = projectInfo.isSrcDir
-  const isTsx = projectInfo.isTsx
-  const ext = isTsx ? "tsx" : "jsx"
-
+  const possibleExtensions = projectInfo.isTsx ? ["tsx"] : ["js", "jsx"]
   const possiblePaths = isSrcDir
-    ? [`src/app/layout.${ext}`, `app/layout.${ext}`]
-    : [`app/layout.${ext}`]
+    ? possibleExtensions.flatMap((ext) => [
+        `src/app/layout.${ext}`,
+        `app/layout.${ext}`,
+      ])
+    : possibleExtensions.map((ext) => `app/layout.${ext}`)
 
   for (const relativePath of possiblePaths) {
     const fullPath = path.join(cwd, relativePath)
@@ -218,14 +219,10 @@ export async function transformLayoutFonts(
       const moduleSpecifier = decl.getModuleSpecifierValue()
       return moduleSpecifier === "next/font/google"
     })
-    let hasExistingImport = false
 
     if (existingImport) {
       const namedImports = existingImport.getNamedImports()
-      hasExistingImport = namedImports.some(
-        (imp) => imp.getName() === importName
-      )
-      if (!hasExistingImport) {
+      if (!namedImports.some((imp) => imp.getName() === importName)) {
         existingImport.addNamedImport(importName)
       }
     } else {
@@ -242,20 +239,25 @@ export async function transformLayoutFonts(
     const fontOptions = buildFontOptions(font)
 
     // Check if variable declaration already exists with same variable CSS property.
-    const existingVarDecl = findFontVariableDeclaration(
+    let existingVarDecl = findFontVariableDeclaration(
       sourceFile,
       font.font.variable
     )
-    let resolvedVarName = varName
 
-    if (
-      hasExistingImport &&
-      !existingVarDecl &&
-      isRootFontVariable(font.font.variable) &&
-      !hasHeadingFontDeclaration(sourceFile, importName)
-    ) {
-      continue
+    // For root variables, also match existing declarations by import name.
+    // This allows us to remap create-next-app defaults like --font-geist-sans
+    // to --font-sans instead of silently skipping updates.
+    if (!existingVarDecl && isRootFontVariable(font.font.variable)) {
+      existingVarDecl = findFontVariableDeclarationByImport(
+        sourceFile,
+        importName,
+        {
+          excludeVariables: ["--font-heading"],
+        }
+      )
     }
+
+    let resolvedVarName = varName
 
     if (existingVarDecl) {
       // Replace the initializer of the existing declaration.
@@ -407,10 +409,14 @@ function findFontVariableDeclaration(
   return null
 }
 
-function hasHeadingFontDeclaration(
+function findFontVariableDeclarationByImport(
   sourceFile: ReturnType<Project["createSourceFile"]>,
-  importName: string
+  importName: string,
+  options?: {
+    excludeVariables?: string[]
+  }
 ) {
+  const excludedVariables = new Set(options?.excludeVariables ?? [])
   const variableStatements = sourceFile.getVariableStatements()
 
   for (const statement of variableStatements) {
@@ -426,14 +432,21 @@ function hasHeadingFontDeclaration(
       const args = callExpr.getArguments()
       if (!args.length) continue
 
-      const argText = args[0].getText()
-      if (argText.includes(`variable:`) && argText.includes("--font-heading")) {
-        return true
+      const variable = getVariableOption(args[0].getText())
+      if (variable && excludedVariables.has(variable)) {
+        continue
       }
+
+      return declaration
     }
   }
 
-  return false
+  return null
+}
+
+function getVariableOption(argText: string) {
+  const match = argText.match(/variable\s*:\s*['"]([^'"]+)['"]/)
+  return match?.[1] ?? null
 }
 
 function findInsertPosition(

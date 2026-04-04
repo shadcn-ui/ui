@@ -193,6 +193,40 @@ describe("shadcn init - custom style", async () => {
           },
         },
       },
+      {
+        name: "font-geist",
+        type: "registry:font",
+        font: {
+          family: "'Geist Variable', sans-serif",
+          provider: "google",
+          import: "Geist",
+          variable: "--font-sans",
+          subsets: ["latin"],
+          dependency: "@fontsource-variable/geist",
+        },
+      },
+      {
+        name: "font-geist-mono",
+        type: "registry:font",
+        font: {
+          family: "'Geist Mono Variable', monospace",
+          provider: "google",
+          import: "Geist_Mono",
+          variable: "--font-mono",
+          subsets: ["latin"],
+          dependency: "@fontsource-variable/geist-mono",
+        },
+      },
+      {
+        name: "style-font-remap",
+        type: "registry:style",
+        registryDependencies: [
+          "http://localhost:4445/r/font-geist.json",
+          "http://localhost:4445/r/font-geist-mono.json",
+        ],
+        cssVars: {},
+        files: [],
+      },
     ],
     {
       port: 4445,
@@ -205,6 +239,75 @@ describe("shadcn init - custom style", async () => {
 
   afterAll(async () => {
     await customRegistry.stop()
+  })
+
+  it("should remap existing Geist variables when a style installs root font tokens", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app")
+
+    await Promise.all([
+      fs.writeFile(
+        path.join(fixturePath, "app/layout.tsx"),
+        `import { Geist, Geist_Mono } from "next/font/google"
+import "./globals.css"
+
+const geistSans = Geist({ subsets: ["latin"], variable: "--font-geist-sans" })
+const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono" })
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en" className={\`\${geistSans.variable} \${geistMono.variable}\`}>
+      <body>{children}</body>
+    </html>
+  )
+}
+`,
+        "utf-8"
+      ),
+      fs.writeFile(
+        path.join(fixturePath, "app/globals.css"),
+        `@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+`,
+        "utf-8"
+      ),
+    ])
+
+    await npxShadcn(fixturePath, [
+      "init",
+      "http://localhost:4445/r/style-font-remap.json",
+    ])
+
+    const layoutContent = await fs.readFile(
+      path.join(fixturePath, "app/layout.tsx"),
+      "utf-8"
+    )
+    const cssContent = await fs.readFile(
+      path.join(fixturePath, "app/globals.css"),
+      "utf-8"
+    )
+
+    expect(layoutContent).toMatch(/variable:\s*["']--font-sans["']/)
+    expect(layoutContent).toContain(`font-sans`)
+    expect(layoutContent).not.toContain(`--font-geist-sans`)
+    expect(
+      cssHasProperties(cssContent, [
+        {
+          selector: "@theme inline",
+          properties: {
+            "--font-sans": "var(--font-sans)",
+            "--font-mono": "var(--font-mono)",
+          },
+        },
+      ])
+    ).toBe(true)
   })
 
   it("should init with style that extends shadcn", async () => {

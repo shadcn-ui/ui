@@ -1,6 +1,13 @@
+import { mkdir, mkdtemp, rm, writeFile } from "fs/promises"
+import os from "os"
+import path from "path"
 import { describe, expect, it, vi } from "vitest"
 
-import { massageTreeForFonts, transformLayoutFonts } from "./update-fonts"
+import {
+  findLayoutFile,
+  massageTreeForFonts,
+  transformLayoutFonts,
+} from "./update-fonts"
 
 const mockConfig = {
   style: "new-york",
@@ -30,6 +37,77 @@ const mockConfig = {
     ui: "/test/components/ui",
   },
 } as any
+
+describe("findLayoutFile", () => {
+  it("should find app/layout.js in a javascript next app", async () => {
+    const cwd = await mkdtemp(path.join(os.tmpdir(), "find-layout-file-"))
+
+    try {
+      await mkdir(path.join(cwd, "app"), { recursive: true })
+      await writeFile(
+        path.join(cwd, "app/layout.js"),
+        "export default function RootLayout({ children }) { return <html>{children}</html> }"
+      )
+
+      const result = await findLayoutFile(
+        { resolvedPaths: { cwd } } as any,
+        { isSrcDir: false, isTsx: false } as any
+      )
+
+      expect(result).toBe(path.join(cwd, "app/layout.js"))
+    } finally {
+      await rm(cwd, { recursive: true, force: true })
+    }
+  })
+
+  it("should prefer src/app/layout.js in a javascript src project", async () => {
+    const cwd = await mkdtemp(path.join(os.tmpdir(), "find-layout-file-"))
+
+    try {
+      await mkdir(path.join(cwd, "src/app"), { recursive: true })
+      await mkdir(path.join(cwd, "app"), { recursive: true })
+
+      await writeFile(
+        path.join(cwd, "src/app/layout.js"),
+        "export default function RootLayout({ children }) { return <html>{children}</html> }"
+      )
+      await writeFile(
+        path.join(cwd, "app/layout.js"),
+        "export default function LegacyLayout({ children }) { return <html>{children}</html> }"
+      )
+
+      const result = await findLayoutFile(
+        { resolvedPaths: { cwd } } as any,
+        { isSrcDir: true, isTsx: false } as any
+      )
+
+      expect(result).toBe(path.join(cwd, "src/app/layout.js"))
+    } finally {
+      await rm(cwd, { recursive: true, force: true })
+    }
+  })
+
+  it("should fall back to layout.jsx in a javascript next app", async () => {
+    const cwd = await mkdtemp(path.join(os.tmpdir(), "find-layout-file-"))
+
+    try {
+      await mkdir(path.join(cwd, "app"), { recursive: true })
+      await writeFile(
+        path.join(cwd, "app/layout.jsx"),
+        "export default function RootLayout({ children }) { return <html>{children}</html> }"
+      )
+
+      const result = await findLayoutFile(
+        { resolvedPaths: { cwd } } as any,
+        { isSrcDir: false, isTsx: false } as any
+      )
+
+      expect(result).toBe(path.join(cwd, "app/layout.jsx"))
+    } finally {
+      await rm(cwd, { recursive: true, force: true })
+    }
+  })
+})
 
 describe("transformLayoutFonts", () => {
   it("should add a single Google font to empty layout", async () => {
@@ -565,7 +643,7 @@ export default function RootLayout({
     `)
   })
 
-  it("should skip Geist font if already imported (create-next-app scenario)", async () => {
+  it("should remap create-next-app Geist variable to root font token", async () => {
     // This simulates a fresh create-next-app project with Geist already set up.
     const input = `
 import type { Metadata } from "next";
@@ -619,8 +697,17 @@ export default function RootLayout({
 
     const result = await transformLayoutFonts(input, fonts, mockConfig)
 
-    // Geist is already imported, so the layout should remain unchanged.
-    expect(result).toBe(input)
+    expect(result).toContain(
+      `const geist = Geist({subsets:['latin'],variable:'--font-sans'})`
+    )
+    expect(result).toContain(`import { cn } from "@/lib/utils";`)
+    expect(result).toContain(
+      `<html lang="en" className={cn("font-sans", geist.variable)}>`
+    )
+    expect(result).toContain(
+      "${geist.variable} ${geistMono.variable} antialiased"
+    )
+    expect(result).not.toContain("--font-geist-sans")
   })
 
   it("should add to existing next/font/google import", async () => {
