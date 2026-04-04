@@ -7,6 +7,12 @@ import { NavigationMenu as NavigationMenuPrimitive } from "@ark-ui/react/navigat
 import { cn } from "@/registry/bases/ark/lib/utils"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
+function useIsClient() {
+  const [isClient, setIsClient] = React.useState(false)
+  React.useEffect(() => setIsClient(true), [])
+  return isClient
+}
+
 function NavigationMenu({
   className,
   children,
@@ -15,6 +21,9 @@ function NavigationMenu({
 }: React.ComponentProps<typeof NavigationMenuPrimitive.Root> & {
   viewport?: boolean
 }) {
+  const isClient = useIsClient()
+  if (!isClient) return null
+
   return (
     <NavigationMenuPrimitive.Root
       data-slot="navigation-menu"
