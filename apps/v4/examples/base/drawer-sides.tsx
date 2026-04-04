@@ -1,4 +1,4 @@
-import { Button } from "@/examples/base/ui/button"
+import { Button } from "@/styles/base-nova/ui/button"
 import {
   Drawer,
   DrawerClose,
@@ -8,7 +8,7 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "@/examples/base/ui/drawer"
+} from "@/styles/base-nova/ui/drawer"
 
 const DRAWER_SIDES = ["top", "right", "bottom", "left"] as const
 

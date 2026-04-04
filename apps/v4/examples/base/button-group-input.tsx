@@ -1,7 +1,8 @@
-import { Button } from "@/examples/base/ui/button"
-import { ButtonGroup } from "@/examples/base/ui/button-group"
-import { Input } from "@/examples/base/ui/input"
 import { SearchIcon } from "lucide-react"
+
+import { Button } from "@/styles/base-nova/ui/button"
+import { ButtonGroup } from "@/styles/base-nova/ui/button-group"
+import { Input } from "@/styles/base-nova/ui/input"
 
 export default function ButtonGroupInput() {
   return (

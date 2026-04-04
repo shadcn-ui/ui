@@ -240,6 +240,12 @@
     "description": "Build production-ready forms with a few clicks using shadcn components and modern tools."
   },
   {
+    "name": "@flightcn",
+    "homepage": "https://flightcn.yencheng.dev",
+    "url": "https://flightcn.yencheng.dev/r/{name}.json",
+    "description": "Flight routes on interactive maps with great-circle arcs, airport markers, multi-leg journeys, and optional animation, built for mapcn."
+  },
+  {
     "name": "@gaia",
     "homepage": "https://ui.heygaia.io",
     "url": "https://ui.heygaia.io/r/{name}.json",
@@ -648,6 +654,12 @@
     "description": "A starter collection of polished shadcn/ui components and blocks built to production standards. Part of a larger Figma + React system designed to scale with your product."
   },
   {
+    "name": "@shark",
+    "homepage": "https://shark.vini.one",
+    "url": "https://shark.vini.one/r/{name}.json",
+    "description": "shadcn/ui-style components built on Ark UI."
+  },
+  {
     "name": "@smoothui",
     "homepage": "https://smoothui.dev",
     "url": "https://smoothui.dev/r/{name}.json",
@@ -960,6 +972,12 @@
     "description": "A collection of customizable UI blocks with interactive live previews"
   },
   {
+    "name": "@tailgrids",
+    "homepage": "https://tailgrids.com",
+    "url": "https://tailgrids.com/docs/r/{name}.json",
+    "description": "React UI Components, Powered by Tailwind CSS"
+  },
+  {
     "name": "@nexus-ui",
     "homepage": "https://nexus-ui.dev",
     "url": "https://nexus-ui.dev/r/{name}.json",
@@ -988,5 +1006,17 @@
     "homepage": "https://rescript-shadcn.miriad.studio",
     "url": "https://rescript-shadcn.miriad.studio/r/{name}.json",
     "description": "Shadcn components rewritten in Rescript, compatible with shadcn CLI."
+  },
+  {
+    "name": "@openpolicy",
+    "homepage": "https://www.openpolicy.sh",
+    "url": "https://www.openpolicy.sh/r/{name}.json",
+    "description": "Open-source components for building terms, privacy policies and cookie banners."
+  },
+  {
+    "name": "@mksingh",
+    "homepage": "https://mksingh.dev/docs",
+    "url": "https://mksingh.dev/r/{name}.json",
+    "description": "A personal registry of production-ready ShadCN components and utilities. Everything is built to drop into your existing ShadCN project with no extra setup."
   }
 ]
