@@ -127,6 +127,11 @@ const nextConfig = {
         destination: "/docs/cli",
         permanent: true,
       },
+      {
+        source: "/themes",
+        destination: "/create",
+        permanent: true,
+      },
     ]
   },
   rewrites() {
