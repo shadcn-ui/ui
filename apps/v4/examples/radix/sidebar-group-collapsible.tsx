@@ -1,10 +1,12 @@
 "use client"
 
+import { ChevronDownIcon, LifeBuoyIcon, SendIcon } from "lucide-react"
+
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/examples/radix/ui/collapsible"
+} from "@/styles/radix-nova/ui/collapsible"
 import {
   Sidebar,
   SidebarContent,
@@ -15,8 +17,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarProvider,
-} from "@/examples/radix/ui/sidebar"
-import { ChevronDownIcon, LifeBuoyIcon, SendIcon } from "lucide-react"
+} from "@/styles/radix-nova/ui/sidebar"
 
 export default function AppSidebar() {
   return (

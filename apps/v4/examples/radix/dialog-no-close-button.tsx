@@ -1,4 +1,4 @@
-import { Button } from "@/examples/radix/ui/button"
+import { Button } from "@/styles/radix-nova/ui/button"
 import {
   Dialog,
   DialogContent,
@@ -6,7 +6,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/examples/radix/ui/dialog"
+} from "@/styles/radix-nova/ui/dialog"
 
 export function DialogNoCloseButton() {
   return (

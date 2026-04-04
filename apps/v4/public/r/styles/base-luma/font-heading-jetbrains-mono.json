@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "font-heading-jetbrains-mono",
+  "title": "JetBrains Mono (Heading)",
+  "type": "registry:font",
+  "font": {
+    "family": "'JetBrains Mono Variable', monospace",
+    "provider": "google",
+    "import": "JetBrains_Mono",
+    "variable": "--font-heading",
+    "subsets": [
+      "latin"
+    ],
+    "dependency": "@fontsource-variable/jetbrains-mono"
+  }
+}
