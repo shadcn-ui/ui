@@ -856,6 +856,14 @@
   .cn-pagination-next {
     @apply pr-1.5!;
   }
+  /* MARK: Carousel */
+  .cn-carousel-previous {
+    @apply after:content-[''] after:absolute after:-inset-4;
+  }
+
+  .cn-carousel-next {
+    @apply after:content-[''] after:absolute after:-inset-4;
+  }
 
   /* MARK: Popover */
   .cn-popover-content {
