@@ -16,6 +16,7 @@ import {
   DrawerDescription,
   DrawerFooter,
   DrawerHeader,
+  DrawerPopup,
   DrawerTitle,
   DrawerTrigger,
 } from "@/styles/base-nova/ui-rtl/drawer"
@@ -117,77 +118,77 @@ export function DrawerRtl() {
 
   return (
     <Drawer>
-      <DrawerTrigger asChild>
-        <Button variant="outline">{t.trigger}</Button>
-      </DrawerTrigger>
-      <DrawerContent dir={dir} data-lang={dir === "rtl" ? language : undefined}>
-        <div className="mx-auto w-full max-w-sm">
-          <DrawerHeader>
-            <DrawerTitle>{t.title}</DrawerTitle>
-            <DrawerDescription>{t.description}</DrawerDescription>
-          </DrawerHeader>
-          <div className="p-4 pb-0">
-            <div className="flex items-center justify-center space-x-2">
-              <Button
-                variant="outline"
-                size="icon"
-                className="h-8 w-8 shrink-0 rounded-full"
-                onClick={() => onClick(-10)}
-                disabled={goal <= 200}
-              >
-                <Minus />
-                <span className="sr-only">{t.decrease}</span>
-              </Button>
-              <div className="flex-1 text-center">
-                <div className="text-7xl font-bold tracking-tighter">
-                  {goal.toLocaleString(locale)}
+      <DrawerTrigger render={<Button variant="outline">{t.trigger}</Button>} />
+      <DrawerPopup dir={dir} data-lang={dir === "rtl" ? language : undefined}>
+        <DrawerContent>
+          <div className="mx-auto w-full max-w-sm">
+            <DrawerHeader>
+              <DrawerTitle>{t.title}</DrawerTitle>
+              <DrawerDescription>{t.description}</DrawerDescription>
+            </DrawerHeader>
+            <div className="p-4 pb-0">
+              <div className="flex items-center justify-center space-x-2">
+                <Button
+                  variant="outline"
+                  size="icon"
+                  className="h-8 w-8 shrink-0 rounded-full"
+                  onClick={() => onClick(-10)}
+                  disabled={goal <= 200}
+                >
+                  <Minus />
+                  <span className="sr-only">{t.decrease}</span>
+                </Button>
+                <div className="flex-1 text-center">
+                  <div className="text-7xl font-bold tracking-tighter">
+                    {goal.toLocaleString(locale)}
+                  </div>
+                  <div className="text-[0.70rem] text-muted-foreground uppercase">
+                    {t.caloriesPerDay}
+                  </div>
                 </div>
-                <div className="text-[0.70rem] text-muted-foreground uppercase">
-                  {t.caloriesPerDay}
-                </div>
+                <Button
+                  variant="outline"
+                  size="icon"
+                  className="h-8 w-8 shrink-0 rounded-full"
+                  onClick={() => onClick(10)}
+                  disabled={goal >= 400}
+                >
+                  <Plus />
+                  <span className="sr-only">{t.increase}</span>
+                </Button>
               </div>
-              <Button
-                variant="outline"
-                size="icon"
-                className="h-8 w-8 shrink-0 rounded-full"
-                onClick={() => onClick(10)}
-                disabled={goal >= 400}
-              >
-                <Plus />
-                <span className="sr-only">{t.increase}</span>
-              </Button>
+              <div className="mt-3 h-[120px]">
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart data={data}>
+                    <XAxis
+                      dataKey="goal"
+                      tickLine={false}
+                      tickMargin={10}
+                      axisLine={false}
+                      tickFormatter={(value) => value.toLocaleString(locale)}
+                      reversed={dir === "rtl"}
+                    />
+                    <Bar
+                      dataKey="goal"
+                      style={
+                        {
+                          fill: "var(--chart-2)",
+                        } as React.CSSProperties
+                      }
+                    />
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
             </div>
-            <div className="mt-3 h-[120px]">
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={data}>
-                  <XAxis
-                    dataKey="goal"
-                    tickLine={false}
-                    tickMargin={10}
-                    axisLine={false}
-                    tickFormatter={(value) => value.toLocaleString(locale)}
-                    reversed={dir === "rtl"}
-                  />
-                  <Bar
-                    dataKey="goal"
-                    style={
-                      {
-                        fill: "var(--chart-2)",
-                      } as React.CSSProperties
-                    }
-                  />
-                </BarChart>
-              </ResponsiveContainer>
-            </div>
+            <DrawerFooter>
+              <Button>{t.submit}</Button>
+              <DrawerClose
+                render={<Button variant="outline">{t.cancel}</Button>}
+              />
+            </DrawerFooter>
           </div>
-          <DrawerFooter>
-            <Button>{t.submit}</Button>
-            <DrawerClose asChild>
-              <Button variant="outline">{t.cancel}</Button>
-            </DrawerClose>
-          </DrawerFooter>
-        </div>
-      </DrawerContent>
+        </DrawerContent>
+      </DrawerPopup>
     </Drawer>
   )
 }
