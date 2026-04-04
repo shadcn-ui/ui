@@ -6,6 +6,12 @@ import { NavigationMenu as NavigationMenuPrimitive } from "@ark-ui/react/navigat
 import { cva } from "class-variance-authority"
 import { ChevronDownIcon } from "lucide-react"
 
+function useIsClient() {
+  const [isClient, setIsClient] = React.useState(false)
+  React.useEffect(() => setIsClient(true), [])
+  return isClient
+}
+
 function NavigationMenu({
   className,
   children,
@@ -14,6 +20,9 @@ function NavigationMenu({
 }: React.ComponentProps<typeof NavigationMenuPrimitive.Root> & {
   viewport?: boolean
 }) {
+  const isClient = useIsClient()
+  if (!isClient) return null
+
   return (
     <NavigationMenuPrimitive.Root
       data-slot="navigation-menu"
