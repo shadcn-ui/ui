@@ -1006,5 +1006,11 @@
     "homepage": "https://www.openpolicy.sh",
     "url": "https://www.openpolicy.sh/r/{name}.json",
     "description": "Open-source components for building terms, privacy policies and cookie banners."
+  },
+  {
+    "name": "@n-s-rdotdev",
+    "homepage": "https://www.n-s-r.dev",
+    "url": "https://www.n-s-r.dev/r/{name}.json",
+    "description": "A collection of quick setups of mostly used libraries for Next.js projects."
   }
 ]
