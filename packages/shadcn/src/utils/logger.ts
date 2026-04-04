@@ -19,4 +19,10 @@ export const logger = {
   break() {
     console.log("")
   },
+  // New: verbose logging that can be enabled via environment variable
+  verbose(...args: unknown[]) {
+    if (process.env["SHADCN_VERBOSE"] === "true") {
+      console.log(highlighter.info(`[verbose] ${args.join(" ")}`))
+    }
+  },
 }
