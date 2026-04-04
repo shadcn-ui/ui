@@ -35,11 +35,13 @@ export async function getPackageManager(
 }
 
 export async function getPackageRunner(cwd: string) {
-  const packageManager = await getPackageManager(cwd)
+  const packageManager = await detect({ programmatic: true, cwd })
 
-  if (packageManager === "pnpm") return "pnpm dlx"
+  if (packageManager === "pnpm" || packageManager === "pnpm@6") return "pnpm dlx"
 
   if (packageManager === "bun") return "bunx"
+
+  if (packageManager === "yarn@berry") return "yarn dlx"
 
   return "npx"
 }
