@@ -253,6 +253,15 @@
     @apply rounded-none border-t p-4 group-data-[size=sm]/card:p-3;
   }
 
+  /* MARK: Carousel */
+  .cn-carousel-previous {
+    @apply transition-transform duration-150 ease-out hover:scale-105 active:scale-95;
+  }
+
+  .cn-carousel-next {
+    @apply transition-transform duration-150 ease-out hover:scale-105 active:scale-95;
+  }
+
   /* MARK: Chart */
   .cn-chart-tooltip {
     @apply border-border/50 bg-background gap-1.5 rounded-none border px-2.5 py-1.5 text-xs shadow-xl;
