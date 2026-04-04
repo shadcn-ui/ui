@@ -54,6 +54,8 @@ export async function fetchRegistry(
           const response = await fetch(url, {
             agent,
             headers: {
+              Accept: "application/vnd.shadcn.v1+json, application/json;q=0.9",
+              "User-Agent": "shadcn-ui",
               ...headers,
             },
           })

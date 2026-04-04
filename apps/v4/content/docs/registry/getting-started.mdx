@@ -144,6 +144,46 @@ npm run dev
 
 Your files will now be served at `http://localhost:3000/r/[NAME].json` eg. `http://localhost:3000/r/hello-world.json`.
 
+## Content negotiation
+
+The `shadcn` CLI supports **HTTP Content Negotiation**. This allows you to host your registry at any endpoint (including the root of your domain) and serve different content based on the client.
+
+### Identity headers
+
+When the CLI makes a request to a registry, it sends the following headers:
+
+- **User-Agent**: `shadcn-ui`
+- **Accept**: `application/vnd.shadcn.v1+json, application/json;q=0.9`
+
+### Root hosting
+
+By checking these headers on your server, you can serve human-readable documentation (HTML) to browser users and the registry index (JSON) to the CLI—all from the exact same URL.
+
+Here's an example of how to implement this in an Express.js server:
+
+```javascript title="server.js" showLineNumbers
+app.get("/", (req, res) => {
+  // Check if the client prefers the Shadcn vendor type
+  if (req.accepts("application/vnd.shadcn.v1+json")) {
+    return res.json(registryData)
+  }
+
+  // Optional: Secondary check for the User-Agent
+  if (req.get("User-Agent") === "shadcn-ui") {
+    return res.json(registryData)
+  }
+
+  // Otherwise, serve your documentation or homepage
+  res.send(htmlContent)
+})
+```
+
+This enables:
+
+- **Branded Registry URLs**: `shadcn add https://ui.example.com`
+- **Shorter URLs**: No need for dedicated `/r/` or `/registry/` sub-paths.
+- **Easy Mnemonics**: Easier for users to remember and share your registry.
+
 ## Publish your registry
 
 To make your registry available to other developers, you can publish it by deploying your project to a public URL.
