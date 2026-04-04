@@ -170,8 +170,19 @@ export async function getWorkspaceConfig(config: Config) {
 }
 
 export async function findPackageRoot(cwd: string, resolvedPath: string) {
-  const commonRoot = findCommonRoot(cwd, resolvedPath)
-  const relativePath = path.relative(commonRoot, resolvedPath)
+  const absoluteCwd = path.resolve(cwd)
+  const absoluteResolvedPath = path.isAbsolute(resolvedPath)
+    ? resolvedPath
+    : path.resolve(absoluteCwd, resolvedPath)
+
+  const commonRoot = findCommonRoot(absoluteCwd, absoluteResolvedPath)
+
+  // Guard against mixed relative/absolute inputs that produce an empty root.
+  if (!commonRoot) {
+    return null
+  }
+
+  const relativePath = path.normalize(path.relative(commonRoot, absoluteResolvedPath))
 
   const packageRoots = await fg.glob("**/package.json", {
     cwd: commonRoot,
@@ -180,10 +191,29 @@ export async function findPackageRoot(cwd: string, resolvedPath: string) {
   })
 
   const matchingPackageRoot = packageRoots
-    .map((pkgPath) => path.dirname(pkgPath))
-    .find((pkgDir) => relativePath.startsWith(pkgDir))
+    .map((pkgPath) => path.normalize(path.dirname(pkgPath)))
+    // Prefer the deepest match first.
+    .sort((a, b) => b.split(path.sep).length - a.split(path.sep).length)
+    .find((pkgDir) => {
+      // package.json in commonRoot.
+      if (pkgDir === ".") {
+        return true
+      }
 
-  return matchingPackageRoot ? path.join(commonRoot, matchingPackageRoot) : null
+      // Match by path segment, not simple string prefix.
+      return (
+        relativePath === pkgDir ||
+        relativePath.startsWith(`${pkgDir}${path.sep}`)
+      )
+    })
+
+  if (!matchingPackageRoot) {
+    return null
+  }
+
+  return matchingPackageRoot === "."
+    ? commonRoot
+    : path.join(commonRoot, matchingPackageRoot)
 }
 
 function isAliasKey(
