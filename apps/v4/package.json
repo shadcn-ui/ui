@@ -22,6 +22,7 @@
     "postinstall": "fumadocs-mdx"
   },
   "dependencies": {
+    "@ark-ui/react": "5.34.1",
     "@base-ui/react": "1.1.0",
     "@dnd-kit/core": "^6.3.1",
     "@dnd-kit/modifiers": "^9.0.0",
@@ -31,6 +32,7 @@
     "@hookform/resolvers": "^3.10.0",
     "@hugeicons/core-free-icons": "^1.2.1",
     "@hugeicons/react": "^1.1.1",
+    "@internationalized/date": "^3.11.0",
     "@paper-design/shaders-react": "^0.0.72",
     "@phosphor-icons/react": "^2.1.10",
     "@remixicon/react": "^4.7.0",

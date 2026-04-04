@@ -57,6 +57,7 @@ export function Customizer({
       </CardHeader>
       <CardContent className="no-scrollbar min-h-0 flex-1 overflow-x-auto overflow-y-hidden md:overflow-y-auto">
         <FieldGroup className="flex-row gap-2.5 py-px **:data-[slot=field-separator]:-mx-4 **:data-[slot=field-separator]:w-auto md:flex-col md:gap-3.25">
+          <BasePicker isMobile={isMobile} anchorRef={anchorRef} />
           <StylePicker
             styles={STYLES}
             isMobile={isMobile}
