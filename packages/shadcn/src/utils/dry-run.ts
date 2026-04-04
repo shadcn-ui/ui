@@ -71,6 +71,7 @@ export async function dryRunComponents(
   config: Config,
   options: {
     overwrite?: boolean
+    noOverwrite?: boolean
     overwriteCssVars?: boolean
     skipFonts?: boolean
   } = {}
@@ -130,7 +131,7 @@ async function processFiles(
   tree: z.infer<typeof registryResolvedItemsTreeSchema>,
   config: Config,
   result: DryRunResult,
-  options: { overwrite?: boolean },
+  options: { overwrite?: boolean; noOverwrite?: boolean },
   supportedFontMarkers: string[]
 ) {
   const files = tree.files
@@ -212,7 +213,11 @@ async function processFiles(
       if (isContentSame(oldContent, content)) {
         action = "skip"
       } else {
-        action = "overwrite"
+        if (options.noOverwrite && !isEnvFile(filePath)) {
+          action = "skip"
+        } else {
+          action = "overwrite"
+        }
       }
     }
 

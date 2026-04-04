@@ -161,6 +161,41 @@ describe("dryRunComponents", () => {
     expect(result.devDependencies).toEqual([])
   })
 
+  test("should skip overwriting existing files when noOverwrite is enabled", async () => {
+    const config = createMockConfig()
+
+    vi.mocked(resolveRegistryTree).mockResolvedValue({
+      name: "button",
+      files: [
+        {
+          path: "registry/ui/button.tsx",
+          type: "registry:ui",
+          content: "export function Button() { return <button>New</button> }",
+        },
+      ],
+      dependencies: [],
+      devDependencies: [],
+    })
+
+    const fsModule = await import("fs")
+    vi.mocked(fsModule.existsSync).mockImplementation((p: unknown) => {
+      if (typeof p !== "string") return false
+      return p.endsWith("/components/ui/button.tsx")
+    })
+    vi.mocked(fsModule.promises.readFile).mockResolvedValueOnce(
+      "export function Button() { return <button>Old</button> }"
+    )
+
+    const result = await dryRunComponents(["button"], config, {
+      noOverwrite: true,
+    })
+
+    expect(result.files).toHaveLength(1)
+    expect(result.files[0].action).toBe("skip")
+
+    vi.mocked(fsModule.existsSync).mockReturnValue(false)
+  })
+
   test("should handle multiple files (ui + hook + lib)", async () => {
     const config = createMockConfig()
 
