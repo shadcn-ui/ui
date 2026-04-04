@@ -20,6 +20,7 @@ import {
   DrawerDescription,
   DrawerFooter,
   DrawerHeader,
+  DrawerPopup,
   DrawerTitle,
   DrawerTrigger,
 } from "@/styles/base-nova/ui/drawer"
@@ -52,23 +53,22 @@ export function DrawerDialogDemo() {
 
   return (
     <Drawer open={open} onOpenChange={setOpen}>
-      <DrawerTrigger asChild>
-        <Button variant="outline">Edit Profile</Button>
-      </DrawerTrigger>
-      <DrawerContent>
-        <DrawerHeader className="text-left">
-          <DrawerTitle>Edit profile</DrawerTitle>
-          <DrawerDescription>
-            Make changes to your profile here. Click save when you&apos;re done.
-          </DrawerDescription>
-        </DrawerHeader>
-        <ProfileForm className="px-4" />
-        <DrawerFooter className="pt-2">
-          <DrawerClose asChild>
-            <Button variant="outline">Cancel</Button>
-          </DrawerClose>
-        </DrawerFooter>
-      </DrawerContent>
+      <DrawerTrigger render={<Button variant="outline">Edit Profile</Button>} />
+      <DrawerPopup>
+        <DrawerContent>
+          <DrawerHeader className="text-left">
+            <DrawerTitle>Edit profile</DrawerTitle>
+            <DrawerDescription>
+              Make changes to your profile here. Click save when you&apos;re
+              done.
+            </DrawerDescription>
+          </DrawerHeader>
+          <ProfileForm className="px-4" />
+          <DrawerFooter className="pt-2">
+            <DrawerClose render={<Button variant="outline">Cancel</Button>} />
+          </DrawerFooter>
+        </DrawerContent>
+      </DrawerPopup>
     </Drawer>
   )
 }

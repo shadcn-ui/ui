@@ -4,14 +4,11 @@ description: A drawer component for React.
 base: base
 component: true
 links:
-  doc: https://vaul.emilkowal.ski/getting-started
+  doc: https://base-ui.com/react/components/drawer
+  api: https://base-ui.com/react/components/drawer#api-reference
 ---
 
 <ComponentPreview styleName="base-nova" name="drawer-demo" />
-
-## About
-
-Drawer is built on top of [Vaul](https://github.com/emilkowalski/vaul) by [emilkowalski](https://twitter.com/emilkowalski).
 
 ## Installation
 
@@ -36,7 +33,7 @@ npx shadcn@latest add drawer
 <Step>Install the following dependencies:</Step>
 
 ```bash
-npm install vaul
+npm install @base-ui/react
 ```
 
 <Step>Copy and paste the following code into your project.</Step>
@@ -65,6 +62,8 @@ import {
   DrawerDescription,
   DrawerFooter,
   DrawerHeader,
+  DrawerPopup,
+  DrawerSwipeArea,
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer"
@@ -72,19 +71,19 @@ import {
 
 ```tsx showLineNumbers
 <Drawer>
-  <DrawerTrigger>Open</DrawerTrigger>
-  <DrawerContent>
-    <DrawerHeader>
-      <DrawerTitle>Are you absolutely sure?</DrawerTitle>
-      <DrawerDescription>This action cannot be undone.</DrawerDescription>
-    </DrawerHeader>
-    <DrawerFooter>
-      <Button>Submit</Button>
-      <DrawerClose>
-        <Button variant="outline">Cancel</Button>
-      </DrawerClose>
-    </DrawerFooter>
-  </DrawerContent>
+  <DrawerTrigger render={<Button variant="outline">Open</Button>} />
+  <DrawerPopup>
+    <DrawerContent>
+      <DrawerHeader>
+        <DrawerTitle>Are you absolutely sure?</DrawerTitle>
+        <DrawerDescription>This action cannot be undone.</DrawerDescription>
+      </DrawerHeader>
+      <DrawerFooter>
+        <Button>Submit</Button>
+        <DrawerClose render={<Button variant="outline">Cancel</Button>} />
+      </DrawerFooter>
+    </DrawerContent>
+  </DrawerPopup>
 </Drawer>
 ```
 
@@ -98,7 +97,7 @@ Keep actions visible while the content scrolls.
 
 ### Sides
 
-Use the `direction` prop to set the side of the drawer. Available options are `top`, `right`, `bottom`, and `left`.
+Use the `swipeDirection` prop to set the side of the drawer. Available options are `up`, `right`, `down`, and `left`.
 
 <ComponentPreview styleName="base-nova" name="drawer-sides" />
 
@@ -116,4 +115,4 @@ To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl)
 
 ## API Reference
 
-See the [Vaul documentation](https://vaul.emilkowal.ski/getting-started) for the full API reference.
+See the [Base UI documentation](https://base-ui.com/react/components/drawer#api-reference) for the full API reference.

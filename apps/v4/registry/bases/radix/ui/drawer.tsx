@@ -36,7 +36,7 @@ function DrawerOverlay({
   return (
     <DrawerPrimitive.Overlay
       data-slot="drawer-overlay"
-      className={cn("cn-drawer-overlay fixed inset-0 z-50", className)}
+      className={cn("cn-radix-drawer-overlay fixed inset-0 z-50", className)}
       {...props}
     />
   )
@@ -53,12 +53,12 @@ function DrawerContent({
       <DrawerPrimitive.Content
         data-slot="drawer-content"
         className={cn(
-          "cn-drawer-content group/drawer-content fixed z-50",
+          "cn-radix-drawer-content group/drawer-content fixed z-50",
           className
         )}
         {...props}
       >
-        <div className="cn-drawer-handle mx-auto hidden shrink-0 group-data-[vaul-drawer-direction=bottom]/drawer-content:block" />
+        <div className="cn-radix-drawer-handle mx-auto hidden shrink-0 group-data-[vaul-drawer-direction=bottom]/drawer-content:block" />
         {children}
       </DrawerPrimitive.Content>
     </DrawerPortal>
@@ -69,7 +69,7 @@ function DrawerHeader({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="drawer-header"
-      className={cn("cn-drawer-header flex flex-col", className)}
+      className={cn("cn-radix-drawer-header flex flex-col", className)}
       {...props}
     />
   )
