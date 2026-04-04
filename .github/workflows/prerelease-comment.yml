@@ -42,7 +42,7 @@ jobs:
             }
 
       - name: "Comment on PR with Link"
-        uses: marocchino/sticky-pull-request-comment@v2
+        uses: marocchino/sticky-pull-request-comment@773744901bac0e8cbb5a0dc842800d45e9b2b405 # v2
         with:
           number: ${{ env.WORKFLOW_RUN_PR }}
           message: |
