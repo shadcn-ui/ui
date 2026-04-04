@@ -173,6 +173,24 @@ To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl)
   direction="rtl"
 />
 
+### Usage with React Router
+
+When using `DropdownMenuItem` with React Router's `Link` component,
+use the `asChild` prop to ensure the menu closes immediately after
+navigation and to preserve the `<a>` tag for SEO:
+```tsx
+import { Link } from "react-router-dom"
+
+<DropdownMenuItem asChild>
+  <Link to="/home">Home</Link>
+</DropdownMenuItem>
+\```
+
+Avoid placing `<Link>` inside `DropdownMenuItem` without `asChild` —
+this causes the menu to remain open after navigation,
+especially with lazy-loaded pages.
+```
+
 ## API Reference
 
 See the [Radix UI documentation](https://www.radix-ui.com/docs/primitives/components/dropdown-menu) for the full API reference.
