@@ -106,7 +106,7 @@ export default function ChangelogPage() {
           </div>
         </div>
       </div>
-      <div className="sticky top-[calc(var(--header-height)+1px)] z-30 ml-auto hidden h-[90svh] w-72 flex-col gap-4 overflow-hidden overscroll-none pb-8 lg:flex">
+      <div className="sticky top-[calc(var(--header-height)+1px)] z-30 ml-auto hidden h-[90svh] w-72 flex-col gap-4 overflow-hidden overscroll-none pb-8 xl:flex">
         <div className="h-(--top-spacing) shrink-0"></div>
         <div className="no-scrollbar flex flex-col gap-8 overflow-y-auto px-8">
           <div className="flex flex-col gap-2 p-4 pt-0 text-sm">
