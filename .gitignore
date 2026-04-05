@@ -17,6 +17,7 @@ build
 .DS_Store
 .eslintcache
 *.pem
+mise.local.toml
 
 # debug
 npm-debug.log*

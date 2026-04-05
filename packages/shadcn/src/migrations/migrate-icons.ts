@@ -10,7 +10,7 @@ import { LEGACY_ICON_LIBRARIES } from "@/src/utils/legacy-icon-libraries"
 import { logger } from "@/src/utils/logger"
 import { spinner } from "@/src/utils/spinner"
 import { updateDependencies } from "@/src/utils/updaters/update-dependencies"
-import fg from "fast-glob"
+import { glob } from "tinyglobby"
 import prompts from "prompts"
 import { Project, ScriptKind, SyntaxKind } from "ts-morph"
 import { z } from "zod"
@@ -24,7 +24,7 @@ export async function migrateIcons(config: Config) {
 
   const uiPath = config.resolvedPaths.ui
   const [files, registryIcons] = await Promise.all([
-    fg("**/*.{js,ts,jsx,tsx}", {
+    glob("**/*.{js,ts,jsx,tsx}", {
       cwd: uiPath,
     }),
     getRegistryIcons(),
