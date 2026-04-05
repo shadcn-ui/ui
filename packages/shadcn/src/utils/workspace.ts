@@ -9,7 +9,7 @@ import {
   type ImportResolutionEntry,
   type ImportResolutionMatch,
 } from "@/src/utils/import-matcher"
-import fg from "fast-glob"
+import { glob } from "tinyglobby"
 import fs from "fs-extra"
 
 type WorkspacePackageInfo = {
@@ -133,7 +133,7 @@ async function loadWorkspacePackages(root: string) {
     return packageMap
   }
 
-  const packageJsonPaths = await fg(
+  const packageJsonPaths = await glob(
     patterns.map((pattern) =>
       path.posix.join(pattern.split(path.sep).join("/"), "package.json")
     ),
