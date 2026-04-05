@@ -111,8 +111,8 @@
     "ts-morph": "^26.0.0",
     "tsconfig-paths": "^4.2.0",
     "validate-npm-package-name": "^7.0.1",
-    "zod": "^3.24.1",
-    "zod-to-json-schema": "^3.24.6"
+    "zod": "^4.3.6",
+    "zod-to-json-schema": "^3.25.2"
   },
   "devDependencies": {
     "@antfu/ni": "^25.0.0",
