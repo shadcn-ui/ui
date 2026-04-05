@@ -1,7 +1,7 @@
 import path from "path"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
-import fg from "fast-glob"
+import { glob, globSync } from "tinyglobby"
 import fs from "fs-extra"
 
 const FRAMEWORK_CONFIG_FILES = [
@@ -57,7 +57,7 @@ export async function getMonorepoTargets(cwd: string) {
   }
 
   // Resolve patterns to directories.
-  const dirs = await fg(patterns, {
+  const dirs = await glob(patterns, {
     cwd,
     onlyDirectories: true,
     ignore: ["**/node_modules/**"],
@@ -65,7 +65,10 @@ export async function getMonorepoTargets(cwd: string) {
 
   const targets: { name: string; hasConfig: boolean }[] = []
 
-  for (const dir of dirs) {
+  for (let dir of dirs) {
+    // Strip trailing slash added by tinyglobby (unlike fast-glob) for consistent directory names
+    dir = dir.replace(/\/$/, "")
+
     const fullPath = path.resolve(cwd, dir)
 
     // Check if it has a package.json (it's an actual workspace).
@@ -79,7 +82,7 @@ export async function getMonorepoTargets(cwd: string) {
 
     // Check for framework config files.
     const hasFrameworkConfig = FRAMEWORK_CONFIG_FILES.some((pattern) => {
-      const matches = fg.sync(pattern, {
+      const matches = globSync(pattern, {
         cwd: fullPath,
         dot: true,
       })
