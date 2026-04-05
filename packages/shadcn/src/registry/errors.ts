@@ -1,9 +1,5 @@
-import { SHADCN_URL } from "@/src/registry/constants";
-import { z } from "zod";
-
-
-
-
+import { SHADCN_URL } from "@/src/registry/constants"
+import { z } from "zod"
 
 // Error codes for programmatic error handling
 export const RegistryErrorCode = {
