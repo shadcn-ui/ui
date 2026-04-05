@@ -8,6 +8,7 @@ import {
   UNDO_FORWARD_TYPE,
 } from "@/app/(app)/create/components/history-buttons"
 import { DARK_MODE_FORWARD_TYPE } from "@/app/(app)/create/components/mode-switcher"
+import { PreviewSwitcher } from "@/app/(app)/create/components/preview-switcher"
 import { RANDOMIZE_FORWARD_TYPE } from "@/app/(app)/create/components/random-button"
 import { sendToIframe } from "@/app/(app)/create/hooks/use-iframe-sync"
 import { RESET_FORWARD_TYPE } from "@/app/(app)/create/hooks/use-reset"
@@ -147,6 +148,7 @@ export function Preview() {
           title="Preview"
         />
       </div>
+      <PreviewSwitcher />
     </div>
   )
 }
