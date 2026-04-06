@@ -1101,7 +1101,7 @@ describe("getRegistry", () => {
         expect(error.context?.item).toBe("@parsetest/registry")
         expect(error.parseError).toBeDefined()
         if (error.parseError instanceof z.ZodError) {
-          expect(error.parseError.errors.length).toBeGreaterThan(0)
+          expect(error.parseError.issues.length).toBeGreaterThan(0)
         }
       }
     }

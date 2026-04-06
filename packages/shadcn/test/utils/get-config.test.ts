@@ -22,9 +22,13 @@ test("get raw config", async () => {
       css: "./src/assets/css/tailwind.css",
       baseColor: "neutral",
       cssVariables: false,
+      prefix: "",
     },
     rsc: false,
     tsx: true,
+    rtl: false,
+    menuColor: "default",
+    menuAccent: "subtle",
     aliases: {
       components: "@/components",
       utils: "@/lib/utils",
@@ -54,40 +58,24 @@ test("get config", async () => {
       css: "./src/assets/css/tailwind.css",
       baseColor: "neutral",
       cssVariables: false,
+      prefix: "",
     },
     rsc: false,
     tsx: true,
+    rtl: false,
+    menuColor: "default",
+    menuAccent: "subtle",
     aliases: {
       components: "@/components",
       utils: "@/lib/utils",
     },
     resolvedPaths: {
       cwd: path.resolve(__dirname, "../fixtures/config-partial"),
-      tailwindConfig: path.resolve(
-        __dirname,
-        "../fixtures/config-partial",
-        "tailwind.config.ts"
-      ),
-      tailwindCss: path.resolve(
-        __dirname,
-        "../fixtures/config-partial",
-        "./src/assets/css/tailwind.css"
-      ),
-      components: path.resolve(
-        __dirname,
-        "../fixtures/config-partial",
-        "./components"
-      ),
-      utils: path.resolve(
-        __dirname,
-        "../fixtures/config-partial",
-        "./lib/utils"
-      ),
-      ui: path.resolve(
-        __dirname,
-        "../fixtures/config-partial",
-        "./components/ui"
-      ),
+      tailwindConfig: path.resolve(__dirname, "../fixtures/config-partial", "tailwind.config.ts"),
+      tailwindCss: path.resolve(__dirname, "../fixtures/config-partial", "./src/assets/css/tailwind.css"),
+      components: path.resolve(__dirname, "../fixtures/config-partial", "./components"),
+      utils: path.resolve(__dirname, "../fixtures/config-partial", "./lib/utils"),
+      ui: path.resolve(__dirname, "../fixtures/config-partial", "./components/ui"),
       hooks: path.resolve(__dirname, "../fixtures/config-partial", "./hooks"),
       lib: path.resolve(__dirname, "../fixtures/config-partial", "./lib"),
     },
@@ -103,6 +91,9 @@ test("get config", async () => {
     style: "new-york",
     rsc: false,
     tsx: true,
+    rtl: false,
+    menuColor: "default",
+    menuAccent: "subtle",
     tailwind: {
       config: "tailwind.config.ts",
       baseColor: "zinc",
@@ -162,9 +153,13 @@ test("get config", async () => {
       css: "./src/assets/css/tailwind.css",
       baseColor: "neutral",
       cssVariables: false,
+      prefix: "",
     },
     rsc: false,
     tsx: false,
+    rtl: false,
+    menuColor: "default",
+    menuAccent: "subtle",
     aliases: {
       components: "@/components",
       utils: "@/lib/utils",
