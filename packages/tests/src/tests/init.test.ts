@@ -1,6 +1,7 @@
 import os from "os"
+import * as fsPromises from "node:fs/promises"
 import path from "path"
-import fs from "fs-extra"
+import fsExtra from "fs-extra"
 import { afterAll, beforeAll, describe, expect, it } from "vitest"
 
 import {
@@ -16,9 +17,9 @@ describe("shadcn init - next-app", () => {
     await npxShadcn(fixturePath, ["init", "--defaults"])
 
     const componentsJsonPath = path.join(fixturePath, "components.json")
-    expect(await fs.pathExists(componentsJsonPath)).toBe(true)
+    expect(await fsExtra.pathExists(componentsJsonPath)).toBe(true)
 
-    const componentsJson = await fs.readJson(componentsJsonPath)
+    const componentsJson = await fsExtra.readJson(componentsJsonPath)
     expect(componentsJson).toMatchObject({
       style: "base-nova",
       rsc: true,
@@ -38,12 +39,12 @@ describe("shadcn init - next-app", () => {
       },
     })
 
-    expect(await fs.pathExists(path.join(fixturePath, "lib/utils.ts"))).toBe(
+    expect(await fsExtra.pathExists(path.join(fixturePath, "lib/utils.ts"))).toBe(
       true
     )
 
     const cssPath = path.join(fixturePath, "app/globals.css")
-    const cssContent = await fs.readFile(cssPath, "utf-8")
+    const cssContent = await fsPromises.readFile(cssPath, "utf-8")
     expect(cssContent).toContain("@layer base")
     expect(cssContent).toContain(":root")
     expect(cssContent).toContain(".dark")
@@ -56,7 +57,7 @@ describe("shadcn init - next-app", () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
     await npxShadcn(fixturePath, ["init", "--defaults", "--no-css-variables"])
 
-    const componentsJson = await fs.readJson(
+    const componentsJson = await fsExtra.readJson(
       path.join(fixturePath, "components.json")
     )
     expect(componentsJson.tailwind.cssVariables).toBe(false)
@@ -67,7 +68,7 @@ describe("shadcn init - next-app", () => {
     await npxShadcn(fixturePath, ["init", "--defaults", "button"])
 
     expect(
-      await fs.pathExists(path.join(fixturePath, "components/ui/button.tsx"))
+      await fsExtra.pathExists(path.join(fixturePath, "components/ui/button.tsx"))
     ).toBe(true)
   })
 })
@@ -77,7 +78,7 @@ describe("shadcn init - vite-app", () => {
     const fixturePath = await createFixtureTestDirectory("vite-app")
     await npxShadcn(fixturePath, ["init", "--defaults", "alert-dialog"])
 
-    const componentsJson = await fs.readJson(
+    const componentsJson = await fsExtra.readJson(
       path.join(fixturePath, "components.json")
     )
     expect(componentsJson.style).toBe("base-nova")
@@ -91,18 +92,18 @@ describe("shadcn init - vite-app", () => {
     })
 
     expect(
-      await fs.pathExists(
+      await fsExtra.pathExists(
         path.join(fixturePath, "src/components/ui/alert-dialog.tsx")
       )
     ).toBe(true)
 
     expect(
-      await fs.pathExists(
+      await fsExtra.pathExists(
         path.join(fixturePath, "src/components/ui/button.tsx")
       )
     ).toBe(true)
 
-    const alertDialogContent = await fs.readFile(
+    const alertDialogContent = await fsPromises.readFile(
       path.join(fixturePath, "src/components/ui/alert-dialog.tsx"),
       "utf-8"
     )
@@ -211,23 +212,23 @@ describe("shadcn init - custom style", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
     await npxShadcn(fixturePath, ["init", "http://localhost:4445/r/style.json"])
 
-    const componentsJson = await fs.readJson(
+    const componentsJson = await fsExtra.readJson(
       path.join(fixturePath, "components.json")
     )
     expect(componentsJson.style).toBe("new-york")
     expect(componentsJson.tailwind.baseColor).toBe("neutral")
 
     // Install utils from shadcn.
-    expect(await fs.pathExists(path.join(fixturePath, "lib/utils.ts"))).toBe(
+    expect(await fsExtra.pathExists(path.join(fixturePath, "lib/utils.ts"))).toBe(
       true
     )
 
     // Then add foo.ts from the custom registry.
     expect(
-      await fs.readFile(path.join(fixturePath, "lib/foo.ts"), "utf-8")
+      await fsPromises.readFile(path.join(fixturePath, "lib/foo.ts"), "utf-8")
     ).toBe("const foo = 'bar'")
 
-    const globalCssContent = await fs.readFile(
+    const globalCssContent = await fsPromises.readFile(
       path.join(fixturePath, "app/globals.css"),
       "utf-8"
     )
@@ -274,23 +275,23 @@ describe("shadcn init - custom style", async () => {
       "http://localhost:4445/r/style-extended.json",
     ])
 
-    const componentsJson = await fs.readJson(
+    const componentsJson = await fsExtra.readJson(
       path.join(fixturePath, "components.json")
     )
     expect(componentsJson.style).toBe("new-york")
     expect(componentsJson.tailwind.baseColor).toBe("neutral")
 
     // Install utils from shadcn.
-    expect(await fs.pathExists(path.join(fixturePath, "lib/utils.ts"))).toBe(
+    expect(await fsExtra.pathExists(path.join(fixturePath, "lib/utils.ts"))).toBe(
       true
     )
 
     // Then add foo.ts from the custom registry with overriden payload.
     expect(
-      await fs.readFile(path.join(fixturePath, "lib/foo.ts"), "utf-8")
+      await fsPromises.readFile(path.join(fixturePath, "lib/foo.ts"), "utf-8")
     ).toBe("const foo = 'baz-qux'")
 
-    const globalCssContent = await fs.readFile(
+    const globalCssContent = await fsPromises.readFile(
       path.join(fixturePath, "app/globals.css"),
       "utf-8"
     )
@@ -343,24 +344,24 @@ describe("shadcn init - custom style", async () => {
 
     // We still expect components.json to be created.
     // With some defaults.
-    const componentsJson = await fs.readJson(
+    const componentsJson = await fsExtra.readJson(
       path.join(fixturePath, "components.json")
     )
     expect(componentsJson.style).toBe("new-york")
     expect(componentsJson.tailwind.baseColor).toBe("neutral")
 
     // No utils should be installed.
-    expect(await fs.pathExists(path.join(fixturePath, "lib/utils.ts"))).toBe(
+    expect(await fsExtra.pathExists(path.join(fixturePath, "lib/utils.ts"))).toBe(
       false
     )
 
     // But we should have the foo.ts from the custom style.
     expect(
-      await fs.readFile(path.join(fixturePath, "lib/foo.ts"), "utf-8")
+      await fsPromises.readFile(path.join(fixturePath, "lib/foo.ts"), "utf-8")
     ).toBe("const foo = 'baz-qux'")
 
     expect(
-      await fs.readFile(path.join(fixturePath, "app/globals.css"), "utf-8")
+      await fsPromises.readFile(path.join(fixturePath, "app/globals.css"), "utf-8")
     ).toMatchInlineSnapshot(`
       "@import "tailwindcss";
 
@@ -396,9 +397,9 @@ describe("shadcn init - unsupported framework", () => {
     await npxShadcn(fixturePath, ["init", "--defaults"])
 
     const componentsJsonPath = path.join(fixturePath, "components.json")
-    expect(await fs.pathExists(componentsJsonPath)).toBe(true)
+    expect(await fsExtra.pathExists(componentsJsonPath)).toBe(true)
 
-    const componentsJson = await fs.readJson(componentsJsonPath)
+    const componentsJson = await fsExtra.readJson(componentsJsonPath)
     expect(componentsJson).toMatchObject({
       style: "base-nova",
       tailwind: {
@@ -407,7 +408,7 @@ describe("shadcn init - unsupported framework", () => {
       },
     })
 
-    expect(await fs.pathExists(path.join(fixturePath, "lib/utils.ts"))).toBe(
+    expect(await fsExtra.pathExists(path.join(fixturePath, "lib/utils.ts"))).toBe(
       true
     )
   })
@@ -417,11 +418,11 @@ describe("shadcn init - unsupported framework", () => {
     await npxShadcn(fixturePath, ["init", "--defaults", "button"])
 
     expect(
-      await fs.pathExists(path.join(fixturePath, "components/ui/button.tsx"))
+      await fsExtra.pathExists(path.join(fixturePath, "components/ui/button.tsx"))
     ).toBe(true)
 
     const cssPath = path.join(fixturePath, "app/globals.css")
-    const cssContent = await fs.readFile(cssPath, "utf-8")
+    const cssContent = await fsPromises.readFile(cssPath, "utf-8")
     expect(cssContent).toContain("@layer base")
     expect(cssContent).toContain("--background")
     expect(cssContent).toContain("--foreground")
@@ -442,9 +443,9 @@ describe("shadcn init - template flag", () => {
     await npxShadcn(fixturePath, ["init", "-t", "next", "--defaults"])
 
     const componentsJsonPath = path.join(fixturePath, "components.json")
-    expect(await fs.pathExists(componentsJsonPath)).toBe(true)
+    expect(await fsExtra.pathExists(componentsJsonPath)).toBe(true)
 
-    const componentsJson = await fs.readJson(componentsJsonPath)
+    const componentsJson = await fsExtra.readJson(componentsJsonPath)
     expect(componentsJson.style).toBe("base-nova")
     expect(componentsJson.tailwind.baseColor).toBe("neutral")
   })
@@ -457,17 +458,17 @@ describe("shadcn init - --name flag", () => {
 
   beforeAll(async () => {
     testBaseDir = path.join(os.tmpdir(), `shadcn-name-test-${process.pid}`)
-    await fs.ensureDir(testBaseDir)
+    await fsPromises.mkdir(testBaseDir, { recursive: true })
   })
 
   afterAll(async () => {
-    await fs.remove(testBaseDir)
+    await fsExtra.remove(testBaseDir)
   })
 
   it("should create a new project with the specified name", async () => {
     const projectName = "my-named-app"
     const emptyDir = path.join(testBaseDir, "empty-next")
-    await fs.ensureDir(emptyDir)
+    await fsPromises.mkdir(emptyDir, { recursive: true })
 
     await npxShadcn(emptyDir, ["init", "--defaults", "--name", projectName], {
       timeout: 120000,
@@ -476,18 +477,18 @@ describe("shadcn init - --name flag", () => {
     const projectPath = path.join(emptyDir, projectName)
 
     // Verify project was created with the correct name.
-    expect(await fs.pathExists(projectPath)).toBe(true)
-    expect(await fs.pathExists(path.join(projectPath, "package.json"))).toBe(
+    expect(await fsExtra.pathExists(projectPath)).toBe(true)
+    expect(await fsExtra.pathExists(path.join(projectPath, "package.json"))).toBe(
       true
     )
 
     // Verify components.json was created.
     const componentsJsonPath = path.join(projectPath, "components.json")
-    expect(await fs.pathExists(componentsJsonPath)).toBe(true)
+    expect(await fsExtra.pathExists(componentsJsonPath)).toBe(true)
 
     // Verify theme-provider is included from the template.
     expect(
-      await fs.pathExists(
+      await fsExtra.pathExists(
         path.join(projectPath, "components/theme-provider.tsx")
       )
     ).toBe(true)
@@ -496,7 +497,7 @@ describe("shadcn init - --name flag", () => {
   it("should create a new project with --name and -t vite", async () => {
     const projectName = "my-vite-app"
     const emptyDir = path.join(testBaseDir, "empty-vite")
-    await fs.ensureDir(emptyDir)
+    await fsPromises.mkdir(emptyDir, { recursive: true })
 
     await npxShadcn(
       emptyDir,
@@ -507,10 +508,10 @@ describe("shadcn init - --name flag", () => {
     const projectPath = path.join(emptyDir, projectName)
 
     // Verify project was created.
-    expect(await fs.pathExists(projectPath)).toBe(true)
+    expect(await fsExtra.pathExists(projectPath)).toBe(true)
 
     // Verify it's a vite project with the correct name.
-    const packageJson = await fs.readJson(
+    const packageJson = await fsExtra.readJson(
       path.join(projectPath, "package.json")
     )
     expect(packageJson.name).toBe(projectName)
@@ -526,11 +527,11 @@ describe("shadcn init - next-monorepo", () => {
 
   beforeAll(async () => {
     testBaseDir = path.join(os.tmpdir(), `shadcn-monorepo-test-${process.pid}`)
-    await fs.ensureDir(testBaseDir)
+    await fsPromises.mkdir(testBaseDir, { recursive: true })
   })
 
   afterAll(async () => {
-    await fs.remove(testBaseDir)
+    await fsExtra.remove(testBaseDir)
   })
 
   itIfNotCi(
@@ -559,18 +560,18 @@ describe("shadcn init - next-monorepo", () => {
       const projectPath = path.join(testBaseDir, projectName)
 
       // Verify project structure exists.
-      expect(await fs.pathExists(projectPath)).toBe(true)
+      expect(await fsExtra.pathExists(projectPath)).toBe(true)
       expect(
-        await fs.pathExists(
+        await fsExtra.pathExists(
           path.join(projectPath, "packages/ui/components.json")
         )
       ).toBe(true)
       expect(
-        await fs.pathExists(path.join(projectPath, "apps/web/components.json"))
+        await fsExtra.pathExists(path.join(projectPath, "apps/web/components.json"))
       ).toBe(true)
 
       // Verify packages/ui/components.json is updated with preset config.
-      const uiConfig = await fs.readJson(
+      const uiConfig = await fsExtra.readJson(
         path.join(projectPath, "packages/ui/components.json")
       )
       expect(uiConfig.style).toBe("radix-nova")
@@ -578,7 +579,7 @@ describe("shadcn init - next-monorepo", () => {
       expect(uiConfig.tailwind.baseColor).toBe("neutral")
 
       // Verify apps/web/components.json is updated with preset config.
-      const webConfig = await fs.readJson(
+      const webConfig = await fsExtra.readJson(
         path.join(projectPath, "apps/web/components.json")
       )
       expect(webConfig.style).toBe("radix-nova")
@@ -592,8 +593,8 @@ describe("shadcn init - next-monorepo", () => {
         projectPath,
         "packages/ui/src/styles/globals.css"
       )
-      expect(await fs.pathExists(cssPath)).toBe(true)
-      const cssContent = await fs.readFile(cssPath, "utf-8")
+      expect(await fsExtra.pathExists(cssPath)).toBe(true)
+      const cssContent = await fsPromises.readFile(cssPath, "utf-8")
       expect(cssContent).toContain("@layer base")
       expect(cssContent).toContain(":root")
       expect(cssContent).toContain(".dark")
@@ -631,17 +632,17 @@ describe("shadcn init - next-monorepo", () => {
       expect(result.exitCode).toBe(0)
 
       const projectPath = path.join(testBaseDir, projectName)
-      expect(await fs.pathExists(projectPath)).toBe(true)
+      expect(await fsExtra.pathExists(projectPath)).toBe(true)
 
       // Verify config reflects the custom URL params.
-      const uiConfig = await fs.readJson(
+      const uiConfig = await fsExtra.readJson(
         path.join(projectPath, "packages/ui/components.json")
       )
       expect(uiConfig.style).toBe("radix-nova")
       expect(uiConfig.iconLibrary).toBe("lucide")
       expect(uiConfig.tailwind.baseColor).toBe("neutral")
 
-      const webConfig = await fs.readJson(
+      const webConfig = await fsExtra.readJson(
         path.join(projectPath, "apps/web/components.json")
       )
       expect(webConfig.style).toBe("radix-nova")
@@ -652,7 +653,7 @@ describe("shadcn init - next-monorepo", () => {
         projectPath,
         "packages/ui/src/styles/globals.css"
       )
-      const cssContent = await fs.readFile(cssPath, "utf-8")
+      const cssContent = await fsPromises.readFile(cssPath, "utf-8")
       expect(cssContent).toContain(":root")
       expect(cssContent).toContain(".dark")
       expect(cssContent).toContain("--background")
@@ -678,7 +679,7 @@ describe("shadcn init - rtl flags", () => {
     await npxShadcn(fixturePath, ["init", "--defaults", "--rtl"])
 
     const componentsJsonPath = path.join(fixturePath, "components.json")
-    const componentsJson = await fs.readJson(componentsJsonPath)
+    const componentsJson = await fsExtra.readJson(componentsJsonPath)
     expect(componentsJson.rtl).toBe(true)
   })
 
@@ -687,7 +688,7 @@ describe("shadcn init - rtl flags", () => {
     await npxShadcn(fixturePath, ["init", "--defaults", "--no-rtl"])
 
     const componentsJsonPath = path.join(fixturePath, "components.json")
-    const componentsJson = await fs.readJson(componentsJsonPath)
+    const componentsJson = await fsExtra.readJson(componentsJsonPath)
     expect(componentsJson.rtl).toBe(false)
   })
 
@@ -696,7 +697,7 @@ describe("shadcn init - rtl flags", () => {
     await npxShadcn(fixturePath, ["init", "--defaults"])
 
     const componentsJsonPath = path.join(fixturePath, "components.json")
-    const componentsJson = await fs.readJson(componentsJsonPath)
+    const componentsJson = await fsExtra.readJson(componentsJsonPath)
     expect(componentsJson.rtl).toBe(false)
   })
 })
@@ -725,17 +726,17 @@ describe("shadcn init - existing components.json", () => {
 
     // Override style in components.json.
     const componentsJsonPath = path.join(fixturePath, "components.json")
-    const config = await fs.readJson(componentsJsonPath)
+    const config = await fsExtra.readJson(componentsJsonPath)
     config.style = "custom-style"
-    await fs.writeJson(componentsJsonPath, config)
+    await fsExtra.writeJson(componentsJsonPath, config)
 
     // Reinit with --force.
     await npxShadcn(fixturePath, ["init", "--force", "--defaults"])
 
-    const newConfig = await fs.readJson(componentsJsonPath)
+    const newConfig = await fsExtra.readJson(componentsJsonPath)
     expect(newConfig.style).toBe("new-york")
     expect(newConfig.tailwind.baseColor).toBe("neutral")
-    expect(await fs.pathExists(componentsJsonPath + ".bak")).toBe(false)
+    expect(await fsExtra.pathExists(componentsJsonPath + ".bak")).toBe(false)
   })
 
   it("should restore backup components.json on error", async () => {
@@ -757,7 +758,7 @@ describe("shadcn init - existing components.json", () => {
       },
     }
     const componentsJsonPath = path.join(fixturePath, "components.json")
-    await fs.writeJson(componentsJsonPath, existingConfig)
+    await fsExtra.writeJson(componentsJsonPath, existingConfig)
 
     // Run init with an invalid component - this should fail and restore.
     await npxShadcn(fixturePath, [
@@ -765,10 +766,10 @@ describe("shadcn init - existing components.json", () => {
       "invalid-component-that-does-not-exist",
     ])
 
-    expect(await fs.pathExists(componentsJsonPath)).toBe(true)
-    const newConfig = await fs.readJson(componentsJsonPath)
+    expect(await fsExtra.pathExists(componentsJsonPath)).toBe(true)
+    const newConfig = await fsExtra.readJson(componentsJsonPath)
     expect(newConfig).toMatchObject(existingConfig)
-    expect(await fs.pathExists(componentsJsonPath + ".bak")).toBe(false)
+    expect(await fsExtra.pathExists(componentsJsonPath + ".bak")).toBe(false)
   })
 
   it("should preserve registries in components.json when using --force", async () => {
@@ -779,21 +780,21 @@ describe("shadcn init - existing components.json", () => {
 
     // Inject a custom registries object into components.json.
     const componentsJsonPath = path.join(fixturePath, "components.json")
-    const config = await fs.readJson(componentsJsonPath)
+    const config = await fsExtra.readJson(componentsJsonPath)
     config.registries = {
       "my-registry": { url: "https://example.com/r" },
     }
-    await fs.writeJson(componentsJsonPath, config)
+    await fsExtra.writeJson(componentsJsonPath, config)
 
     // Reinit with --force.
     await npxShadcn(fixturePath, ["init", "--force", "--defaults"])
 
     // components.json should exist with no .bak leftover.
-    expect(await fs.pathExists(componentsJsonPath)).toBe(true)
-    expect(await fs.pathExists(componentsJsonPath + ".bak")).toBe(false)
+    expect(await fsExtra.pathExists(componentsJsonPath)).toBe(true)
+    expect(await fsExtra.pathExists(componentsJsonPath + ".bak")).toBe(false)
 
     // The custom registry should be preserved.
-    const newConfig = await fs.readJson(componentsJsonPath)
+    const newConfig = await fsExtra.readJson(componentsJsonPath)
     expect(newConfig.registries).toMatchObject({
       "my-registry": { url: "https://example.com/r" },
     })

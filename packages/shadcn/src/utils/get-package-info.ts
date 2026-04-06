@@ -1,5 +1,5 @@
 import path from "path"
-import fs from "fs-extra"
+import fsExtra from "fs-extra"
 import { type PackageJson } from "type-fest"
 
 export function getPackageInfo(
@@ -8,7 +8,7 @@ export function getPackageInfo(
 ): PackageJson | null {
   const packageJsonPath = path.join(cwd, "package.json")
 
-  return fs.readJSONSync(packageJsonPath, {
+  return fsExtra.readJSONSync(packageJsonPath, {
     throws: shouldThrow,
   }) as PackageJson
 }

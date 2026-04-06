@@ -1,4 +1,5 @@
 import path from "path"
+import * as fs from "node:fs"
 import { configWithDefaults } from "@/src/registry/config"
 import { clearRegistryContext } from "@/src/registry/context"
 import { searchRegistries } from "@/src/registry/search"
@@ -65,7 +66,7 @@ export const search = new Command()
 
       // Check if there's a components.json file (partial or complete).
       const componentsJsonPath = path.resolve(options.cwd, "components.json")
-      if (fsExtra.existsSync(componentsJsonPath)) {
+      if (fs.existsSync(componentsJsonPath)) {
         const existingConfig = await fsExtra.readJson(componentsJsonPath)
         const partialConfig = rawConfigSchema.partial().parse(existingConfig)
         shadowConfig = configWithDefaults({

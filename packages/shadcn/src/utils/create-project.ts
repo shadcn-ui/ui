@@ -1,10 +1,11 @@
+import * as fs from "node:fs"
+import * as fsPromises from "node:fs/promises"
 import path from "path"
 import { initOptionsSchema } from "@/src/commands/init"
 import { resolveTemplate, templates } from "@/src/templates/index"
 import { getPackageManager } from "@/src/utils/get-package-manager"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
-import fs from "fs-extra"
 import prompts from "prompts"
 import { z } from "zod"
 
@@ -78,7 +79,7 @@ export async function createProject(
 
   // Check if path is writable.
   try {
-    await fs.access(options.cwd, fs.constants.W_OK)
+    await fsPromises.access(options.cwd, fs.constants.W_OK)
   } catch (error) {
     logger.break()
     logger.error(`The path ${highlighter.info(options.cwd)} is not writable.`)

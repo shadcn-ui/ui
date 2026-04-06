@@ -10,7 +10,7 @@ import { getProjectInfo } from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import { spinner } from "@/src/utils/spinner"
-import fs from "fs-extra"
+import * as fs from "node:fs"
 import { z } from "zod"
 
 export async function preFlightInit(

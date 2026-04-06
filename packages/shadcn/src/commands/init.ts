@@ -1,5 +1,6 @@
-import { promises as fs } from "fs"
 import path from "path"
+import * as fs from "node:fs"
+import * as fsPromises from "node:fs/promises"
 import { preFlightInit } from "@/src/preflights/preflight-init"
 import { decodePreset, isPresetCode } from "@/src/preset/preset"
 import {
@@ -188,7 +189,7 @@ export const init = new Command()
       }
 
       const cwd = options.cwd
-      const hasExistingConfig = fsExtra.existsSync(
+      const hasExistingConfig = fs.existsSync(
         path.resolve(cwd, "components.json")
       )
 
@@ -283,7 +284,7 @@ export const init = new Command()
         !options.defaults
       ) {
         // Determine template for the create URL.
-        const hasPackageJson = fsExtra.existsSync(
+        const hasPackageJson = fs.existsSync(
           path.resolve(cwd, "package.json")
         )
 
@@ -583,7 +584,7 @@ export async function runInit(
   const hasExplicitMonorepoInit =
     options.monorepo &&
     resolvedTemplateConfig?.init &&
-    fsExtra.existsSync(path.resolve(options.cwd, "package.json"))
+    fs.existsSync(path.resolve(options.cwd, "package.json"))
 
   if (hasExplicitMonorepoInit) {
     projectInfo = await getProjectInfo(options.cwd)
@@ -686,8 +687,8 @@ export async function runInit(
   }
 
   // Merge with backup config if it exists.
-  if (fsExtra.existsSync(backupPath)) {
-    const existingConfig = await fsExtra.readJson(backupPath)
+  if (fs.existsSync(backupPath)) {
+    const existingConfig = await fsExtra.readJson(backupPath, "utf-8")
     if (options.force) {
       // With --force, only preserve registries from existing config.
       if (existingConfig.registries) {
@@ -720,7 +721,7 @@ export async function runInit(
   )
 
   // Write components.json.
-  await fs.writeFile(targetPath, `${JSON.stringify(config, null, 2)}\n`, "utf8")
+  await fsPromises.writeFile(targetPath, `${JSON.stringify(config, null, 2)}\n`, "utf8")
   componentSpinner.succeed()
 
   // Propagate design settings to workspace components.json files.
@@ -744,7 +745,7 @@ export async function runInit(
           wsConfig.resolvedPaths.cwd,
           "components.json"
         )
-        if (fsExtra.existsSync(wsConfigPath)) {
+        if (fs.existsSync(wsConfigPath)) {
           const wsRawConfig = await fsExtra.readJson(wsConfigPath)
           await fsExtra.writeJson(
             wsConfigPath,

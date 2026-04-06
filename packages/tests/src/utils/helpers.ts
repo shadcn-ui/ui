@@ -1,8 +1,9 @@
 import { randomUUID } from "crypto"
+import * as fsPromises from "node:fs/promises"
 import path from "path"
 import { fileURLToPath } from "url"
 import { execa } from "execa"
-import fs from "fs-extra"
+import fsExtra from "fs-extra"
 
 import { TEMP_DIR } from "./setup"
 
@@ -21,8 +22,8 @@ export async function createFixtureTestDirectory(fixtureName: string) {
   const uniqueId = `${process.pid}-${randomUUID().substring(0, 8)}`
   let testDir = path.join(TEMP_DIR, `test-${uniqueId}-${fixtureName}`)
 
-  await fs.ensureDir(testDir)
-  await fs.copy(fixturePath, testDir)
+  await fsPromises.mkdir(testDir, { recursive: true })
+  await fsExtra.copy(fixturePath, testDir)
 
   return testDir
 }

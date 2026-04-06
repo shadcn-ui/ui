@@ -1,4 +1,6 @@
 import path from "path"
+import * as fs from "node:fs"
+import * as fsPromises from "node:fs/promises"
 import { getRegistries } from "@/src/registry/api"
 import { BUILTIN_REGISTRIES } from "@/src/registry/constants"
 import { handleError } from "@/src/utils/handle-error"
@@ -6,7 +8,7 @@ import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import { spinner } from "@/src/utils/spinner"
 import { Command } from "commander"
-import fs from "fs-extra"
+import fsExtra from "fs-extra"
 import prompts from "prompts"
 import { z } from "zod"
 
@@ -140,7 +142,7 @@ async function addRegistriesToConfig(
     return { addedRegistries: [] }
   }
 
-  const existingConfig = await fs.readJson(configPath)
+  const existingConfig = await fsExtra.readJson(configPath)
   const existingRegistries = existingConfig.registries || {}
   const newRegistries: Record<string, string> = {}
   const skipped: string[] = []
@@ -182,7 +184,7 @@ async function addRegistriesToConfig(
   const writeSpinner = spinner("Updating components.json.", {
     silent: options.silent,
   }).start()
-  await fs.writeJson(configPath, updatedConfig, { spaces: 2 })
+  await fsExtra.writeJson(configPath, updatedConfig, { spaces: 2 })
   writeSpinner.succeed()
 
   if (!options.silent) {

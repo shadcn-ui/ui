@@ -1,15 +1,15 @@
-import fsExtra from "fs-extra"
+import * as fs from "node:fs"
 
 export const FILE_BACKUP_SUFFIX = ".bak"
 
 export function createFileBackup(filePath: string): string | null {
-  if (!fsExtra.existsSync(filePath)) {
+  if (!fs.existsSync(filePath)) {
     return null
   }
 
   const backupPath = `${filePath}${FILE_BACKUP_SUFFIX}`
   try {
-    fsExtra.renameSync(filePath, backupPath)
+    fs.renameSync(filePath, backupPath)
     return backupPath
   } catch (error) {
     console.error(`Failed to create backup of ${filePath}: ${error}`)
@@ -20,12 +20,12 @@ export function createFileBackup(filePath: string): string | null {
 export function restoreFileBackup(filePath: string): boolean {
   const backupPath = `${filePath}${FILE_BACKUP_SUFFIX}`
 
-  if (!fsExtra.existsSync(backupPath)) {
+  if (!fs.existsSync(backupPath)) {
     return false
   }
 
   try {
-    fsExtra.renameSync(backupPath, filePath)
+    fs.renameSync(backupPath, filePath)
     return true
   } catch (error) {
     console.error(
@@ -38,12 +38,12 @@ export function restoreFileBackup(filePath: string): boolean {
 export function deleteFileBackup(filePath: string): boolean {
   const backupPath = `${filePath}${FILE_BACKUP_SUFFIX}`
 
-  if (!fsExtra.existsSync(backupPath)) {
+  if (!fs.existsSync(backupPath)) {
     return false
   }
 
   try {
-    fsExtra.unlinkSync(backupPath)
+    fs.unlinkSync(backupPath)
     return true
   } catch (error) {
     // Best effort - don't log as this is just cleanup

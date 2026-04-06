@@ -1,10 +1,11 @@
+import * as fs from "node:fs"
+import * as fsPromises from "node:fs/promises"
 import path from "path"
 import { buildOptionsSchema } from "@/src/commands/build"
 import * as ERRORS from "@/src/utils/errors"
 import { getConfig } from "@/src/utils/get-config"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
-import fs from "fs-extra"
 import { z } from "zod"
 
 export async function preFlightRegistryBuild(
@@ -39,7 +40,7 @@ export async function preFlightRegistryBuild(
   }
 
   // Create output directory if it doesn't exist.
-  await fs.mkdir(resolvePaths.outputDir, { recursive: true })
+  await fsPromises.mkdir(resolvePaths.outputDir, { recursive: true })
 
   try {
     const config = await getConfig(options.cwd)

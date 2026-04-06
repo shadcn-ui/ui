@@ -1,8 +1,10 @@
+import * as fs from "node:fs"
+import * as fsPromises from "node:fs/promises"
 import path from "path"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import { glob, globSync } from "tinyglobby"
-import fs from "fs-extra"
+import fsExtra from "fs-extra"
 
 const FRAMEWORK_CONFIG_FILES = [
   "next.config.*",
@@ -26,7 +28,7 @@ export async function isMonorepoRoot(cwd: string) {
   const packageJsonPath = path.resolve(cwd, "package.json")
   if (fs.existsSync(packageJsonPath)) {
     try {
-      const packageJson = await fs.readJson(packageJsonPath)
+      const packageJson = await fsExtra.readJson(packageJsonPath)
       if (packageJson.workspaces) {
         return true
       }
@@ -131,7 +133,7 @@ async function getWorkspacePatterns(cwd: string) {
   // Read pnpm-workspace.yaml.
   const pnpmWorkspacePath = path.resolve(cwd, "pnpm-workspace.yaml")
   if (fs.existsSync(pnpmWorkspacePath)) {
-    const content = await fs.readFile(pnpmWorkspacePath, "utf8")
+    const content = await fsPromises.readFile(pnpmWorkspacePath, "utf8")
     // Simple regex parse to extract patterns from packages list.
     const matches = Array.from(
       content.matchAll(/^\s*-\s*["']?([^"'\n#]+)["']?\s*$/gm)
@@ -145,7 +147,7 @@ async function getWorkspacePatterns(cwd: string) {
   const packageJsonPath = path.resolve(cwd, "package.json")
   if (fs.existsSync(packageJsonPath)) {
     try {
-      const packageJson = await fs.readJson(packageJsonPath)
+      const packageJson = await fsExtra.readJson(packageJsonPath)
       const workspaces = Array.isArray(packageJson.workspaces)
         ? packageJson.workspaces
         : packageJson.workspaces?.packages

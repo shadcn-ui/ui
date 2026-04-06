@@ -1,6 +1,8 @@
+import * as fs from "node:fs"
+import * as fsPromises from "node:fs/promises"
 import path from "path"
 import { logger } from "@/src/utils/logger"
-import fs from "fs-extra"
+import fsExtra from "fs-extra"
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
 
 import {
@@ -13,19 +15,19 @@ let tmpDir: string
 
 beforeEach(async () => {
   tmpDir = path.join(
-    await fs.realpath(require("os").tmpdir()),
+    await fsPromises.realpath(require("os").tmpdir()),
     `shadcn-monorepo-test-${Date.now()}`
   )
-  await fs.ensureDir(tmpDir)
+  await fsPromises.mkdir(tmpDir, { recursive:true })
 })
 
 afterEach(async () => {
-  await fs.remove(tmpDir)
+  await fsExtra.remove(tmpDir)
 })
 
 describe("isMonorepoRoot", () => {
   it("should detect pnpm-workspace.yaml", async () => {
-    await fs.writeFile(
+    await fsPromises.writeFile(
       path.join(tmpDir, "pnpm-workspace.yaml"),
       "packages:\n  - apps/*\n"
     )
@@ -33,7 +35,7 @@ describe("isMonorepoRoot", () => {
   })
 
   it("should detect package.json with workspaces array", async () => {
-    await fs.writeJson(path.join(tmpDir, "package.json"), {
+    await fsExtra.writeJson(path.join(tmpDir, "package.json"), {
       name: "root",
       workspaces: ["apps/*", "packages/*"],
     })
@@ -41,7 +43,7 @@ describe("isMonorepoRoot", () => {
   })
 
   it("should detect package.json with workspaces.packages", async () => {
-    await fs.writeJson(path.join(tmpDir, "package.json"), {
+    await fsExtra.writeJson(path.join(tmpDir, "package.json"), {
       name: "root",
       workspaces: { packages: ["apps/*"] },
     })
@@ -49,17 +51,17 @@ describe("isMonorepoRoot", () => {
   })
 
   it("should detect lerna.json", async () => {
-    await fs.writeJson(path.join(tmpDir, "lerna.json"), { version: "0.0.0" })
+    await fsExtra.writeJson(path.join(tmpDir, "lerna.json"), { version: "0.0.0" })
     expect(await isMonorepoRoot(tmpDir)).toBe(true)
   })
 
   it("should detect nx.json", async () => {
-    await fs.writeJson(path.join(tmpDir, "nx.json"), {})
+    await fsExtra.writeJson(path.join(tmpDir, "nx.json"), {})
     expect(await isMonorepoRoot(tmpDir)).toBe(true)
   })
 
   it("should return false for a regular project", async () => {
-    await fs.writeJson(path.join(tmpDir, "package.json"), { name: "my-app" })
+    await fsExtra.writeJson(path.join(tmpDir, "package.json"), { name: "my-app" })
     expect(await isMonorepoRoot(tmpDir)).toBe(false)
   })
 
@@ -71,17 +73,17 @@ describe("isMonorepoRoot", () => {
 describe("getMonorepoTargets", () => {
   it("should find targets from pnpm-workspace.yaml", async () => {
     // Set up monorepo structure.
-    await fs.writeFile(
+    await fsPromises.writeFile(
       path.join(tmpDir, "pnpm-workspace.yaml"),
       "packages:\n  - 'apps/*'\n"
     )
-    await fs.writeJson(path.join(tmpDir, "package.json"), { name: "root" })
+    await fsExtra.writeJson(path.join(tmpDir, "package.json"), { name: "root" })
 
     // Create an app with a Next.js config.
     const webDir = path.join(tmpDir, "apps", "web")
-    await fs.ensureDir(webDir)
-    await fs.writeJson(path.join(webDir, "package.json"), { name: "web" })
-    await fs.writeFile(
+    await fsPromises.mkdir(webDir, { recursive: true })
+    await fsExtra.writeJson(path.join(webDir, "package.json"), { name: "web" })
+    await fsPromises.writeFile(
       path.join(webDir, "next.config.mjs"),
       "export default {}"
     )
@@ -91,61 +93,61 @@ describe("getMonorepoTargets", () => {
   })
 
   it("should find targets from package.json workspaces", async () => {
-    await fs.writeJson(path.join(tmpDir, "package.json"), {
+    await fsExtra.writeJson(path.join(tmpDir, "package.json"), {
       name: "root",
       workspaces: ["apps/*"],
     })
 
     const webDir = path.join(tmpDir, "apps", "web")
-    await fs.ensureDir(webDir)
-    await fs.writeJson(path.join(webDir, "package.json"), { name: "web" })
-    await fs.writeFile(path.join(webDir, "vite.config.ts"), "export default {}")
+    await fsPromises.mkdir(webDir, { recursive: true })
+    await fsExtra.writeJson(path.join(webDir, "package.json"), { name: "web" })
+    await fsPromises.writeFile(path.join(webDir, "vite.config.ts"), "export default {}")
 
     const targets = await getMonorepoTargets(tmpDir)
     expect(targets).toEqual([{ name: "apps/web", hasConfig: false }])
   })
 
   it("should set hasConfig when components.json exists", async () => {
-    await fs.writeFile(
+    await fsPromises.writeFile(
       path.join(tmpDir, "pnpm-workspace.yaml"),
       "packages:\n  - apps/*\n"
     )
-    await fs.writeJson(path.join(tmpDir, "package.json"), { name: "root" })
+    await fsExtra.writeJson(path.join(tmpDir, "package.json"), { name: "root" })
 
     const webDir = path.join(tmpDir, "apps", "web")
-    await fs.ensureDir(webDir)
-    await fs.writeJson(path.join(webDir, "package.json"), { name: "web" })
-    await fs.writeFile(
+    await fsPromises.mkdir(webDir, { recursive: true })
+    await fsExtra.writeJson(path.join(webDir, "package.json"), { name: "web" })
+    await fsPromises.writeFile(
       path.join(webDir, "next.config.mjs"),
       "export default {}"
     )
-    await fs.writeJson(path.join(webDir, "components.json"), {})
+    await fsExtra.writeJson(path.join(webDir, "components.json"), {})
 
     const targets = await getMonorepoTargets(tmpDir)
     expect(targets).toEqual([{ name: "apps/web", hasConfig: true }])
   })
 
   it("should find multiple targets", async () => {
-    await fs.writeFile(
+    await fsPromises.writeFile(
       path.join(tmpDir, "pnpm-workspace.yaml"),
       "packages:\n  - apps/*\n"
     )
-    await fs.writeJson(path.join(tmpDir, "package.json"), { name: "root" })
+    await fsExtra.writeJson(path.join(tmpDir, "package.json"), { name: "root" })
 
     // apps/web with Next.js.
     const webDir = path.join(tmpDir, "apps", "web")
-    await fs.ensureDir(webDir)
-    await fs.writeJson(path.join(webDir, "package.json"), { name: "web" })
-    await fs.writeFile(
+    await fsPromises.mkdir(webDir, { recursive: true })
+    await fsExtra.writeJson(path.join(webDir, "package.json"), { name: "web" })
+    await fsPromises.writeFile(
       path.join(webDir, "next.config.mjs"),
       "export default {}"
     )
 
     // apps/docs with Vite.
     const docsDir = path.join(tmpDir, "apps", "docs")
-    await fs.ensureDir(docsDir)
-    await fs.writeJson(path.join(docsDir, "package.json"), { name: "docs" })
-    await fs.writeFile(
+    await fsPromises.mkdir(docsDir, { recursive: true })
+    await fsExtra.writeJson(path.join(docsDir, "package.json"), { name: "docs" })
+    await fsPromises.writeFile(
       path.join(docsDir, "vite.config.ts"),
       "export default {}"
     )
@@ -156,16 +158,16 @@ describe("getMonorepoTargets", () => {
   })
 
   it("should skip directories without package.json", async () => {
-    await fs.writeFile(
+    await fsPromises.writeFile(
       path.join(tmpDir, "pnpm-workspace.yaml"),
       "packages:\n  - apps/*\n"
     )
-    await fs.writeJson(path.join(tmpDir, "package.json"), { name: "root" })
+    await fsExtra.writeJson(path.join(tmpDir, "package.json"), { name: "root" })
 
     // Directory without package.json.
     const libDir = path.join(tmpDir, "apps", "lib")
-    await fs.ensureDir(libDir)
-    await fs.writeFile(
+    await fsPromises.mkdir(libDir, { recursive: true })
+    await fsPromises.writeFile(
       path.join(libDir, "next.config.mjs"),
       "export default {}"
     )
@@ -175,40 +177,40 @@ describe("getMonorepoTargets", () => {
   })
 
   it("should skip directories without framework config or components.json", async () => {
-    await fs.writeFile(
+    await fsPromises.writeFile(
       path.join(tmpDir, "pnpm-workspace.yaml"),
       "packages:\n  - packages/*\n"
     )
-    await fs.writeJson(path.join(tmpDir, "package.json"), { name: "root" })
+    await fsExtra.writeJson(path.join(tmpDir, "package.json"), { name: "root" })
 
     // A utility package with no framework config.
     const utilsDir = path.join(tmpDir, "packages", "utils")
-    await fs.ensureDir(utilsDir)
-    await fs.writeJson(path.join(utilsDir, "package.json"), { name: "utils" })
+    await fsPromises.mkdir(utilsDir, { recursive: true })
+    await fsExtra.writeJson(path.join(utilsDir, "package.json"), { name: "utils" })
 
     const targets = await getMonorepoTargets(tmpDir)
     expect(targets).toEqual([])
   })
 
   it("should return empty for no workspace patterns", async () => {
-    await fs.writeJson(path.join(tmpDir, "package.json"), { name: "root" })
+    await fsExtra.writeJson(path.join(tmpDir, "package.json"), { name: "root" })
     const targets = await getMonorepoTargets(tmpDir)
     expect(targets).toEqual([])
   })
 
   it("should detect astro, remix, and svelte configs", async () => {
-    await fs.writeFile(
+    await fsPromises.writeFile(
       path.join(tmpDir, "pnpm-workspace.yaml"),
       "packages:\n  - apps/*\n"
     )
-    await fs.writeJson(path.join(tmpDir, "package.json"), { name: "root" })
+    await fsExtra.writeJson(path.join(tmpDir, "package.json"), { name: "root" })
 
     const astroDir = path.join(tmpDir, "apps", "astro-app")
-    await fs.ensureDir(astroDir)
-    await fs.writeJson(path.join(astroDir, "package.json"), {
+    await fsPromises.mkdir(astroDir, { recursive: true})
+    await fsExtra.writeJson(path.join(astroDir, "package.json"), {
       name: "astro-app",
     })
-    await fs.writeFile(
+    await fsPromises.writeFile(
       path.join(astroDir, "astro.config.mjs"),
       "export default {}"
     )
@@ -218,19 +220,19 @@ describe("getMonorepoTargets", () => {
   })
 
   it("should deduplicate patterns from both pnpm-workspace.yaml and package.json", async () => {
-    await fs.writeFile(
+    await fsPromises.writeFile(
       path.join(tmpDir, "pnpm-workspace.yaml"),
       "packages:\n  - apps/*\n"
     )
-    await fs.writeJson(path.join(tmpDir, "package.json"), {
+    await fsExtra.writeJson(path.join(tmpDir, "package.json"), {
       name: "root",
       workspaces: ["apps/*"],
     })
 
     const webDir = path.join(tmpDir, "apps", "web")
-    await fs.ensureDir(webDir)
-    await fs.writeJson(path.join(webDir, "package.json"), { name: "web" })
-    await fs.writeFile(
+    await fsPromises.mkdir(webDir, { recursive: true })
+    await fsExtra.writeJson(path.join(webDir, "package.json"), { name: "web" })
+    await fsPromises.writeFile(
       path.join(webDir, "next.config.mjs"),
       "export default {}"
     )

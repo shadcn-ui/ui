@@ -11,7 +11,7 @@ import { updateDependencies } from "@/src/utils/updaters/update-dependencies"
 import { updateFonts } from "@/src/utils/updaters/update-fonts"
 import dedent from "dedent"
 import deepmerge from "deepmerge"
-import fs from "fs-extra"
+import fsExtra from "fs-extra"
 
 import { createTemplate } from "./create-template"
 
@@ -48,7 +48,7 @@ export default function Page() {
         packagesUiPath,
         "components.json"
       )
-      let packagesUiConfig = await fs.readJson(packagesUiConfigPath)
+      let packagesUiConfig = await fsExtra.readJson(packagesUiConfigPath)
       if (options.registryBaseConfig) {
         packagesUiConfig = deepmerge(
           packagesUiConfig,
@@ -59,13 +59,13 @@ export default function Page() {
       if (options.rtl) {
         packagesUiConfig.rtl = true
       }
-      await fs.writeJson(packagesUiConfigPath, packagesUiConfig, {
+      await fsExtra.writeJson(packagesUiConfigPath, packagesUiConfig, {
         spaces: 2,
       })
 
       // Update apps/web/components.json.
       const appsWebConfigPath = path.resolve(appsWebPath, "components.json")
-      let appsWebConfig = await fs.readJson(appsWebConfigPath)
+      let appsWebConfig = await fsExtra.readJson(appsWebConfigPath)
       if (options.registryBaseConfig) {
         appsWebConfig = deepmerge(appsWebConfig, options.registryBaseConfig)
       }
@@ -73,7 +73,7 @@ export default function Page() {
       if (options.rtl) {
         appsWebConfig.rtl = true
       }
-      await fs.writeJson(appsWebConfigPath, appsWebConfig, { spaces: 2 })
+      await fsExtra.writeJson(appsWebConfigPath, appsWebConfig, { spaces: 2 })
 
       // Apply preset CSS/style to packages/ui directly.
       // We use the packages/ui config (not apps/web) so addProjectComponents runs

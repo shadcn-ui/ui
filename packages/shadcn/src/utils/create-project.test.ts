@@ -1,6 +1,8 @@
+import * as fs from "node:fs"
+import * as fsPromises from "node:fs/promises"
 import { spinner } from "@/src/utils/spinner"
 import { execa } from "execa"
-import fs from "fs-extra"
+import fsExtra from "fs-extra"
 import prompts from "prompts"
 import {
   afterEach,
@@ -15,6 +17,8 @@ import {
 import { createProject } from "./create-project"
 
 // Mock dependencies
+vi.mock("node:fs")
+vi.mock("node:fs/promises")
 vi.mock("fs-extra")
 vi.mock("execa")
 vi.mock("prompts")
@@ -36,13 +40,15 @@ describe("createProject", () => {
   beforeEach(() => {
     vi.clearAllMocks()
 
-    // Reset all fs mocks
-    vi.mocked(fs.access).mockResolvedValue(undefined)
+    // Reset all fs-extra mocks
+    vi.mocked(fsExtra.move).mockResolvedValue(undefined)
+    vi.mocked(fsExtra.remove).mockResolvedValue(undefined)
+
+    // Reset all node:fs mocks
     vi.mocked(fs.existsSync).mockReturnValue(false)
-    vi.mocked(fs.ensureDir).mockResolvedValue(undefined)
-    vi.mocked(fs.writeFile).mockResolvedValue(undefined)
-    vi.mocked(fs.move).mockResolvedValue(undefined)
-    vi.mocked(fs.remove).mockResolvedValue(undefined)
+    vi.mocked(fsPromises.writeFile).mockResolvedValue(undefined)
+    vi.mocked(fsPromises.mkdir).mockResolvedValue(undefined)
+    vi.mocked(fsPromises.access).mockResolvedValue(undefined)
 
     // Mock execa for git clone and package manager install.
     vi.mocked(execa).mockResolvedValue({
@@ -156,7 +162,7 @@ describe("createProject", () => {
   })
 
   it("should throw error if path is not writable", async () => {
-    vi.mocked(fs.access).mockRejectedValue(new Error("Permission denied"))
+    vi.mocked(fsPromises.access).mockRejectedValue(new Error("Permission denied"))
     vi.mocked(prompts).mockResolvedValue({ type: "next", name: "my-app" })
 
     mockExit = vi
