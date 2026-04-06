@@ -694,6 +694,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "button-submit": {
+      name: "button-submit",
+      filePath: "examples/radix/button-submit.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/button-submit")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "button-submit"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "button-group-demo": {
       name: "button-group-demo",
       filePath: "examples/radix/button-group-demo.tsx",
@@ -6309,6 +6322,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "button-ghost"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "button-submit": {
+      name: "button-submit",
+      filePath: "examples/base/button-submit.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/button-submit")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "button-submit"
         return { default: mod.default || mod[exportName] }
       }),
     },

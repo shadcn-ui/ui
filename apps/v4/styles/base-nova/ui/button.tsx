@@ -20,6 +20,7 @@ const buttonVariants = cva(
         destructive:
           "bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:hover:bg-destructive/30 dark:focus-visible:ring-destructive/40",
         link: "text-primary underline-offset-4 hover:underline",
+        submit: "bg-secondary text-primary hover:bg-primary-foreground",
       },
       size: {
         default:
@@ -44,16 +45,42 @@ const buttonVariants = cva(
 
 function Button({
   className,
+  loading = false,
   variant = "default",
+  children,
   size = "default",
   ...props
-}: ButtonPrimitive.Props & VariantProps<typeof buttonVariants>) {
+}: ButtonPrimitive.Props &
+  VariantProps<typeof buttonVariants> & { loading?: boolean }) {
   return (
     <ButtonPrimitive
       data-slot="button"
       className={cn(buttonVariants({ variant, size, className }))}
       {...props}
-    />
+    >
+      {loading && (
+        <svg
+          className="mr-2 h-3 w-3 animate-spin"
+          viewBox="0 0 24 24"
+          fill="none"
+        >
+          <circle
+            className="opacity-85"
+            cx="12"
+            cy="12"
+            r="8"
+            stroke="currentColor"
+            strokeWidth="5"
+          />
+          <path
+            className="opacity-75"
+            fill="currentColor"
+            d="M4 14a8 2 0 010-4v4z"
+          />
+        </svg>
+      )}
+      {children}
+    </ButtonPrimitive>
   )
 }
 
