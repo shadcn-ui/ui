@@ -18,12 +18,12 @@ export const registryConfigItemSchema = z.union([
   }),
 ])
 
-export const registryConfigSchema = z.object({})
+export const registryConfigSchema = z
+  .object({})
   .catchall(registryConfigItemSchema)
-  .refine(
-    (obj) => Object.keys(obj).every((key) => key.startsWith("@")),
-    { message: "Registry names must start with @ (e.g., @v0, @acme)" }
-  )
+  .refine((obj) => Object.keys(obj).every((key) => key.startsWith("@")), {
+    message: "Registry names must start with @ (e.g., @v0, @acme)",
+  })
 
 export const rawConfigSchema = z
   .object({
