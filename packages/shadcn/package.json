@@ -23,6 +23,7 @@
     "ui",
     "tailwind",
     "radix-ui",
+    "base-ui",
     "shadcn"
   ],
   "type": "module",
