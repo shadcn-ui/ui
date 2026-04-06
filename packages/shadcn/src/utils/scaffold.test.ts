@@ -1,12 +1,12 @@
 import path from "path"
 import { createTemplate } from "@/src/templates/create-template"
 import { spinner } from "@/src/utils/spinner"
-import { execa } from "execa"
 import fs from "fs-extra"
+import { x } from "tinyexec"
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
 
 vi.mock("fs-extra")
-vi.mock("execa")
+vi.mock("tinyexec")
 vi.mock("@/src/utils/spinner")
 vi.mock("@/src/utils/logger", () => ({
   logger: { break: vi.fn(), error: vi.fn(), info: vi.fn() },
@@ -28,7 +28,7 @@ function setupMocks() {
   vi.mocked(fs.existsSync).mockReturnValue(false)
   vi.mocked(fs.copy).mockResolvedValue(undefined)
 
-  vi.mocked(execa).mockResolvedValue({
+  vi.mocked(x).mockResolvedValue({
     stdout: "",
     stderr: "",
     exitCode: 0,
@@ -78,24 +78,32 @@ describe("defaultScaffold", () => {
     })
 
     // Should clone with --depth 1, --filter=blob:none, --sparse.
-    expect(vi.mocked(execa)).toHaveBeenCalledWith("git", [
-      "clone",
-      "--depth",
-      "1",
-      "--filter=blob:none",
-      "--sparse",
-      "https://github.com/shadcn-ui/ui.git",
-      expect.stringContaining("shadcn-template-"),
-    ])
+    expect(vi.mocked(x)).toHaveBeenCalledWith(
+      "git",
+      [
+        "clone",
+        "--depth",
+        "1",
+        "--filter=blob:none",
+        "--sparse",
+        "https://github.com/shadcn-ui/ui.git",
+        expect.stringContaining("shadcn-template-"),
+      ],
+      { throwOnError: true }
+    )
 
     // Should set sparse-checkout to the template directory.
-    expect(vi.mocked(execa)).toHaveBeenCalledWith("git", [
-      "-C",
-      expect.stringContaining("shadcn-template-"),
-      "sparse-checkout",
-      "set",
-      "templates/next-app",
-    ])
+    expect(vi.mocked(x)).toHaveBeenCalledWith(
+      "git",
+      [
+        "-C",
+        expect.stringContaining("shadcn-template-"),
+        "sparse-checkout",
+        "set",
+        "templates/next-app",
+      ],
+      { throwOnError: true }
+    )
   })
 
   it("should move template directory to project path", async () => {
@@ -139,9 +147,9 @@ describe("defaultScaffold", () => {
     })
 
     // Should not call git clone.
-    const execaCalls = vi.mocked(execa).mock.calls
+    const tinyexecCalls = vi.mocked(x).mock.calls
     expect(
-      execaCalls.some(
+      tinyexecCalls.some(
         (call) => call[0] === "git" && (call[1] as string[]).includes("clone")
       )
     ).toBe(false)
@@ -154,7 +162,7 @@ describe("defaultScaffold", () => {
   })
 
   it("should exit on git clone failure", async () => {
-    vi.mocked(execa).mockRejectedValueOnce(new Error("git clone failed"))
+    vi.mocked(x).mockRejectedValueOnce(new Error("git clone failed"))
 
     const template = createTestTemplate()
 
@@ -213,8 +221,11 @@ describe("defaultScaffold", () => {
       cwd: "/test",
     })
 
-    expect(vi.mocked(execa)).toHaveBeenCalledWith("bun", ["install"], {
-      cwd: "/test/my-app",
+    expect(vi.mocked(x)).toHaveBeenCalledWith("bun", ["install"], {
+      nodeOptions: {
+        cwd: "/test/my-app",
+      },
+      throwOnError: true,
     })
   })
 
@@ -227,10 +238,15 @@ describe("defaultScaffold", () => {
       cwd: "/test",
     })
 
-    expect(vi.mocked(execa)).toHaveBeenCalledWith(
+    expect(vi.mocked(x)).toHaveBeenCalledWith(
       "pnpm",
       ["install", "--no-frozen-lockfile"],
-      { cwd: "/test/my-app" }
+      {
+        nodeOptions: {
+          cwd: "/test/my-app",
+        },
+        throwOnError: true,
+      }
     )
   })
 
@@ -279,8 +295,8 @@ describe("defaultScaffold", () => {
       )
     }) as any)
 
-    // Mock execa to return a version for bun --version.
-    vi.mocked(execa).mockImplementation(((cmd: string, args: string[]) => {
+    // Mock tinyexec to return a version for bun --version.
+    vi.mocked(x).mockImplementation(((cmd: string, args: string[]) => {
       if (cmd === "bun" && args[0] === "--version") {
         return Promise.resolve({ stdout: "1.2.0" } as any)
       }
@@ -414,7 +430,7 @@ describe("defaultScaffold", () => {
       )
     }) as any)
 
-    vi.mocked(execa).mockImplementation(((cmd: string, args: string[]) => {
+    vi.mocked(x).mockImplementation(((cmd: string, args: string[]) => {
       if (cmd === "bun" && args[0] === "--version") {
         return Promise.resolve({ stdout: "1.2.5" } as any)
       }
@@ -456,7 +472,7 @@ describe("defaultScaffold", () => {
     // Mock readdir for rewriteWorkspaceProtocol.
     vi.mocked(fs.readdir).mockResolvedValue([] as any)
 
-    vi.mocked(execa).mockImplementation(((cmd: string, args: string[]) => {
+    vi.mocked(x).mockImplementation(((cmd: string, args: string[]) => {
       if (cmd === "npm" && args[0] === "--version") {
         return Promise.resolve({ stdout: "10.8.1" } as any)
       }
@@ -495,7 +511,7 @@ describe("defaultScaffold", () => {
       )
     }) as any)
 
-    vi.mocked(execa).mockImplementation(((cmd: string, args: string[]) => {
+    vi.mocked(x).mockImplementation(((cmd: string, args: string[]) => {
       if (cmd === "yarn" && args[0] === "--version") {
         return Promise.resolve({ stdout: "4.6.0" } as any)
       }
@@ -534,7 +550,7 @@ describe("defaultScaffold", () => {
       )
     }) as any)
 
-    vi.mocked(execa).mockImplementation(((cmd: string, args: string[]) => {
+    vi.mocked(x).mockImplementation(((cmd: string, args: string[]) => {
       if (args[0] === "--version") {
         return Promise.reject(new Error("command not found"))
       }

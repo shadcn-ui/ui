@@ -4,9 +4,9 @@ import {
   getPackageRunnerCommand,
 } from "@/src/utils/get-package-manager"
 import { spinner } from "@/src/utils/spinner"
-import { execa } from "execa"
 import fs from "fs-extra"
 import prompts from "prompts"
+import { x } from "tinyexec"
 import {
   afterEach,
   beforeEach,
@@ -21,7 +21,7 @@ import { createProject } from "./create-project"
 
 // Mock dependencies
 vi.mock("fs-extra")
-vi.mock("execa")
+vi.mock("tinyexec")
 vi.mock("prompts")
 vi.mock("@/src/utils/get-package-manager", () => ({
   getPackageManager: vi.fn().mockResolvedValue("npm"),
@@ -54,8 +54,8 @@ describe("createProject", () => {
     vi.mocked(fs.move).mockResolvedValue(undefined)
     vi.mocked(fs.remove).mockResolvedValue(undefined)
 
-    // Mock execa for git clone and package manager install.
-    vi.mocked(execa).mockResolvedValue({
+    // Mock tinyexec for git clone and package manager install.
+    vi.mocked(x).mockResolvedValue({
       stdout: "",
       stderr: "",
       exitCode: 0,

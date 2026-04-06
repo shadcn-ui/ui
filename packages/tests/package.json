@@ -11,12 +11,12 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "shadcn": "workspace:*"
+    "shadcn": "workspace:*",
+    "tinyexec": "^1.0.4"
   },
   "devDependencies": {
     "@types/fs-extra": "^11.0.1",
     "@types/node": "^20.11.27",
-    "execa": "^7.0.0",
     "fs-extra": "^11.1.0",
     "rimraf": "^6.0.1",
     "typescript": "^5.5.3",
