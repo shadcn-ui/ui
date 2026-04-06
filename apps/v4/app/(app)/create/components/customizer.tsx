@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import dynamic from "next/dynamic"
 import { type RegistryItem } from "shadcn/schema"
 
 import { useIsMobile } from "@/hooks/use-mobile"
@@ -22,7 +23,6 @@ import { FontPicker } from "@/app/(app)/create/components/font-picker"
 import { IconLibraryPicker } from "@/app/(app)/create/components/icon-library-picker"
 import { MainMenu } from "@/app/(app)/create/components/main-menu"
 import { MenuColorPicker } from "@/app/(app)/create/components/menu-picker"
-import { ProjectForm } from "@/app/(app)/create/components/project-form"
 import { RadiusPicker } from "@/app/(app)/create/components/radius-picker"
 import { RandomButton } from "@/app/(app)/create/components/random-button"
 import { ResetDialog } from "@/app/(app)/create/components/reset-button"
@@ -31,6 +31,13 @@ import { ThemePicker } from "@/app/(app)/create/components/theme-picker"
 import { V0Button } from "@/app/(app)/create/components/v0-button"
 import { FONT_HEADING_OPTIONS, FONTS } from "@/app/(app)/create/lib/fonts"
 import { useDesignSystemSearchParams } from "@/app/(app)/create/lib/search-params"
+
+// Only visible when user clicks "Create Project".
+const ProjectForm = dynamic(() =>
+  import("@/app/(app)/create/components/project-form").then(
+    (m) => m.ProjectForm
+  )
+)
 
 export function Customizer({
   itemsByBase,
