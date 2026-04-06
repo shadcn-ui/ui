@@ -79,9 +79,13 @@ export const initOptionsSchema = z.object({
   base: z.enum(["radix", "base"]).optional(),
   template: z.string().optional(),
   monorepo: z.boolean().optional(),
-  existingConfig: z.record(z.unknown()).optional(),
+  existingConfig: z.record(z.string(), z.unknown()).optional(),
   installStyleIndex: z.boolean().default(true),
-  registryBaseConfig: rawConfigSchema.deepPartial().optional(),
+  registryBaseConfig: z.object({
+    ...rawConfigSchema.shape,
+    tailwind: rawConfigSchema.shape.tailwind.optional(),
+    aliases: rawConfigSchema.shape.aliases.optional(),
+  }),
   menuColor: z
     .enum([
       "default",

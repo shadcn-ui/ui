@@ -17,7 +17,7 @@ export default function DocsLayout({
           } as React.CSSProperties
         }
       >
-        <DocsSidebar tree={source.pageTree} />
+        <DocsSidebar tree={source.getPageTree()} />
         <div className="h-full w-full">{children}</div>
       </SidebarProvider>
     </div>

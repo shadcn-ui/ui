@@ -1,5 +1,10 @@
-import { defineConfig, defineDocs } from "fumadocs-mdx/config"
+import {
+  defineConfig,
+  defineDocs,
+  frontmatterSchema,
+} from "fumadocs-mdx/config"
 import rehypePrettyCode from "rehype-pretty-code"
+import { z } from "zod"
 
 import { transformers } from "@/lib/highlight-code"
 
@@ -7,6 +12,7 @@ export default defineConfig({
   mdxOptions: {
     rehypePlugins: (plugins) => {
       plugins.shift()
+
       plugins.push([
         rehypePrettyCode,
         {
@@ -23,17 +29,23 @@ export default defineConfig({
   },
 })
 
+const frontmatter = frontmatterSchema.extend({
+  base: z.enum(["base", "radix"]).optional(),
+  date: z.date().optional(),
+  component: z.boolean().optional(),
+  links: z
+    .object({
+      doc: z.string().optional(),
+      api: z.string().optional(),
+    })
+    .optional(),
+})
+
+export type Frontmatter = z.infer<typeof frontmatter>
+
 export const docs = defineDocs({
   dir: "content/docs",
-  // TODO: Fix this when we upgrade to zod v4.
-  // docs: {
-  //   schema: frontmatterSchema.extend({
-  //     links: z.optional(
-  //       z.object({
-  //         doc: z.string().optional(),
-  //         api: z.string().optional(),
-  //       })
-  //     ),
-  //   }),
-  // },
+  docs: {
+    schema: frontmatter,
+  },
 })

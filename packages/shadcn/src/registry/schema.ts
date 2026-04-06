@@ -18,12 +18,12 @@ export const registryConfigItemSchema = z.union([
   }),
 ])
 
-export const registryConfigSchema = z.record(
-  z.string().refine((key) => key.startsWith("@"), {
+export const registryConfigSchema = z
+  .object({})
+  .catchall(registryConfigItemSchema)
+  .refine((obj) => Object.keys(obj).every((key) => key.startsWith("@")), {
     message: "Registry names must start with @ (e.g., @v0, @acme)",
-  }),
-  registryConfigItemSchema
-)
+  })
 
 export const rawConfigSchema = z
   .object({
@@ -74,9 +74,7 @@ export const configSchema = rawConfigSchema.extend({
   }),
 })
 
-// TODO: type the key.
-// Okay for now since I don't want a breaking change.
-export const workspaceConfigSchema = z.record(configSchema)
+export const workspaceConfigSchema = z.record(z.string(), configSchema)
 
 export const registryItemTypeSchema = z.enum([
   "registry:lib",
@@ -179,7 +177,14 @@ export const registryItemCommonSchema = z.object({
 export const registryItemSchema = z.discriminatedUnion("type", [
   registryItemCommonSchema.extend({
     type: z.literal("registry:base"),
-    config: rawConfigSchema.deepPartial().optional(),
+    config: z
+      .object({
+        ...rawConfigSchema.shape,
+        tailwind: rawConfigSchema.shape.tailwind.optional(),
+        aliases: rawConfigSchema.shape.aliases.optional(),
+      })
+      .partial()
+      .optional(),
   }),
   registryItemCommonSchema.extend({
     type: z.literal("registry:font"),
