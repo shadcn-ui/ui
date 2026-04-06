@@ -54,54 +54,6 @@ npx shadcn@latest create
 
 ---
 
-## apply
-
-Use the `apply` command to apply a preset to an existing project.
-
-`apply` overwrites preset-driven config, fonts, CSS variables, and detected installed UI components. Commit or stash your changes before continuing so you can easily go back.
-
-`apply` requires an existing `components.json`. If your project is not initialized yet, run `shadcn init --preset <preset>` first.
-
-```bash
-npx shadcn@latest apply --preset a2r6bw
-```
-
-You can also pass the preset as a positional argument:
-
-```bash
-npx shadcn@latest apply a2r6bw
-```
-
-Named presets work the same way:
-
-```bash
-npx shadcn@latest apply lyra
-```
-
-If no preset is provided, the CLI offers to open the custom preset builder on `ui.shadcn.com/create`.
-
-Use `apply` for overwrite/reinstall flows. If you want to refresh config and CSS without reinstalling existing components, use `init --force --no-reinstall` instead.
-
-**Options**
-
-```bash
-Usage: shadcn apply [options] [preset]
-
-apply a preset to an existing project
-
-Arguments:
-  preset             the preset to apply
-
-Options:
-  --preset <preset>  preset configuration to apply
-  -y, --yes          skip confirmation prompt. (default: false)
-  -c, --cwd <cwd>    the working directory. defaults to the current directory.
-  --silent           mute output. (default: false)
-  -h, --help         display help for command
-```
-
----
-
 ## add
 
 Use the `add` command to add components and dependencies to your project.
@@ -131,6 +83,34 @@ Options:
   --diff [path]        show diff for a file.
   --view [path]        show file contents.
   -h, --help           display help for command
+```
+
+---
+
+## apply
+
+Use the `apply` command to apply a preset to an existing project.
+
+```bash
+npx shadcn@latest apply --preset a2r6bw
+```
+
+**Options**
+
+```bash
+Usage: shadcn apply [options] [preset]
+
+apply a preset to an existing project
+
+Arguments:
+  preset             the preset to apply
+
+Options:
+  --preset <preset>  preset configuration to apply
+  -y, --yes          skip confirmation prompt. (default: false)
+  -c, --cwd <cwd>    the working directory. defaults to the current directory.
+  --silent           mute output. (default: false)
+  -h, --help         display help for command
 ```
 
 ---
