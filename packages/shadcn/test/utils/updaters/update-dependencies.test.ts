@@ -1,11 +1,11 @@
 import path from "path"
-import { execa } from "execa"
+import { x } from "tinyexec"
 import prompts from "prompts"
 import { afterEach, describe, expect, test, vi } from "vitest"
 
 import { updateDependencies } from "../../../src/utils/updaters/update-dependencies"
 
-vi.mock("execa")
+vi.mock("tinyexec")
 vi.mock("prompts")
 
 describe("updateDependencies", () => {
@@ -143,14 +143,17 @@ describe("updateDependencies", () => {
         expect(prompts).toHaveBeenCalled()
       }
 
-      expect(execa).toHaveBeenCalledWith(expectedPackageManager, expectedArgs, {
-        cwd: config?.resolvedPaths.cwd,
+      expect(x).toHaveBeenCalledWith(expectedPackageManager, [...expectedArgs], {
+        nodeOptions: {
+          cwd: config?.resolvedPaths.cwd,
+        },
+        throwOnError: true,
       })
 
-      expect(execa).toHaveBeenCalledWith(
+      expect(x).toHaveBeenCalledWith(
         expectedPackageManager,
         expectedDevArgs,
-        { cwd: config?.resolvedPaths.cwd }
+        { nodeOptions: { cwd: config?.resolvedPaths.cwd }, throwOnError: true }
       )
     }
   )
