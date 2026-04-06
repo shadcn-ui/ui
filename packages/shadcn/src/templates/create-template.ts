@@ -6,7 +6,7 @@ import type { RegistryItem } from "@/src/registry/schema"
 import type { Config } from "@/src/utils/get-config"
 import { handleError } from "@/src/utils/handle-error"
 import { spinner } from "@/src/utils/spinner"
-import { execa } from "execa"
+import { x } from "tinyexec"
 import fsExtra from "fs-extra"
 
 const GITHUB_REPO_URL =
@@ -173,7 +173,7 @@ async function adaptWorkspaceConfig(
 // Get the package manager name and version string (e.g. "bun@1.2.0").
 async function getPackageManagerVersion(packageManager: string) {
   try {
-    const { stdout } = await execa(packageManager, ["--version"])
+    const { stdout } = await x(packageManager, ["--version"], { throwOnError:true })
     return `${packageManager}@${stdout.trim()}`
   } catch {
     return `${packageManager}@*`
@@ -243,7 +243,7 @@ function defaultScaffold({
           os.tmpdir(),
           `shadcn-template-${Date.now()}`
         )
-        await execa("git", [
+        await x("git", [
           "clone",
           "--depth",
           "1",
@@ -251,14 +251,18 @@ function defaultScaffold({
           "--sparse",
           GITHUB_REPO_URL,
           templatePath,
-        ])
-        await execa("git", [
+        ], {
+          throwOnError: true,
+        })
+        await x("git", [
           "-C",
           templatePath,
           "sparse-checkout",
           "set",
           `templates/${templateDir}`,
-        ])
+        ], {
+          throwOnError: true,
+        })
 
         const extractedPath = path.resolve(
           templatePath,
@@ -275,8 +279,11 @@ function defaultScaffold({
       // Run install.
       const installArgs = getInstallArgs(packageManager)
       const args = ["install", ...installArgs]
-      await execa(packageManager, args, {
-        cwd: projectPath,
+      await x(packageManager, args, {
+        nodeOptions: {
+          cwd: projectPath,
+        },
+        throwOnError: true
       })
 
       // Write project name to the package.json.
@@ -305,10 +312,11 @@ function defaultScaffold({
 // Silently ignores failures (e.g. git not installed).
 async function defaultPostInit({ projectPath }: { projectPath: string }) {
   try {
-    await execa("git", ["init"], { cwd: projectPath })
-    await execa("git", ["add", "-A"], { cwd: projectPath })
-    await execa("git", ["commit", "-m", "feat: initial commit"], {
-      cwd: projectPath,
+    await x("git", ["init"], { nodeOptions: { cwd: projectPath }, throwOnError: true })
+    await x("git", ["add", "-A"], { nodeOptions: { cwd: projectPath }, throwOnError: true })
+    await x("git", ["commit", "-m", "feat: initial commit"], {
+      nodeOptions: { cwd: projectPath },
+      throwOnError: true,
     })
   } catch {}
 }

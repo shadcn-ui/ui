@@ -12,7 +12,7 @@ import { updateDependencies } from "@/src/utils/updaters/update-dependencies"
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
 import { Command } from "commander"
 import deepmerge from "deepmerge"
-import { execa } from "execa"
+import { x } from "tinyexec"
 import prompts from "prompts"
 import z from "zod"
 
@@ -162,11 +162,14 @@ mcp
           const devFlag = packageManager === "npm" ? "--save-dev" : "-D"
 
           const installSpinner = spinner("Installing dependencies...").start()
-          await execa(
+          await x(
             packageManager,
             [installCommand, devFlag, ...DEPENDENCIES],
             {
-              cwd: options.cwd,
+              nodeOptions: {
+                cwd: options.cwd,
+              },
+              throwOnError: true
             }
           )
           installSpinner.succeed("Installing dependencies.")
@@ -205,11 +208,14 @@ args = ["shadcn@${SHADCN_MCP_VERSION}", "mcp"]`)
         const devFlag = packageManager === "npm" ? "--save-dev" : "-D"
 
         const installSpinner = spinner("Installing dependencies...").start()
-        await execa(
+        await x(
           packageManager,
           [installCommand, devFlag, ...DEPENDENCIES],
           {
-            cwd: options.cwd,
+            nodeOptions: {
+              cwd: options.cwd,
+            },
+            throwOnError: true
           }
         )
         installSpinner.succeed("Installing dependencies.")

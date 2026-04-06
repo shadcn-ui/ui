@@ -1,7 +1,7 @@
 import * as fs from "node:fs"
 import * as fsPromises from "node:fs/promises"
 import { spinner } from "@/src/utils/spinner"
-import { execa } from "execa"
+import { x } from "tinyexec"
 import fsExtra from "fs-extra"
 import prompts from "prompts"
 import {
@@ -20,7 +20,7 @@ import { createProject } from "./create-project"
 vi.mock("node:fs")
 vi.mock("node:fs/promises")
 vi.mock("fs-extra")
-vi.mock("execa")
+vi.mock("tinyexec")
 vi.mock("prompts")
 vi.mock("@/src/utils/get-package-manager", () => ({
   getPackageManager: vi.fn().mockResolvedValue("npm"),
@@ -50,8 +50,8 @@ describe("createProject", () => {
     vi.mocked(fsPromises.mkdir).mockResolvedValue(undefined)
     vi.mocked(fsPromises.access).mockResolvedValue(undefined)
 
-    // Mock execa for git clone and package manager install.
-    vi.mocked(execa).mockResolvedValue({
+    // Mock tinyexec for git clone and package manager install.
+    vi.mocked(x).mockResolvedValue({
       stdout: "",
       stderr: "",
       exitCode: 0,

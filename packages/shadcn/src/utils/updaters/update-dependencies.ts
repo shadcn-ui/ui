@@ -5,7 +5,7 @@ import { getPackageInfo } from "@/src/utils/get-package-info"
 import { getPackageManager } from "@/src/utils/get-package-manager"
 import { logger } from "@/src/utils/logger"
 import { spinner } from "@/src/utils/spinner"
-import { execa } from "execa"
+import { x } from "tinyexec"
 import prompts from "prompts"
 
 export async function updateDependencies(
@@ -125,13 +125,21 @@ async function installWithPackageManager(
   }
 
   if (dependencies?.length) {
-    await execa(packageManager, ["add", ...dependencies], {
-      cwd,
+    await x(packageManager, ["add", ...dependencies], {
+      nodeOptions: {
+        cwd,
+      },
+      throwOnError: true,
     })
   }
 
   if (devDependencies?.length) {
-    await execa(packageManager, ["add", "-D", ...devDependencies], { cwd })
+    await x(packageManager, ["add", "-D", ...devDependencies], {
+      nodeOptions: {
+        cwd,
+      },
+      throwOnError: true,
+    })
   }
 }
 
@@ -142,18 +150,28 @@ async function installWithNpm(
   flag?: string
 ) {
   if (dependencies.length) {
-    await execa(
+    await x(
       "npm",
       ["install", ...(flag ? [`--${flag}`] : []), ...dependencies],
-      { cwd }
+      {
+        nodeOptions: {
+          cwd,
+        },
+        throwOnError: true,
+      }
     )
   }
 
   if (devDependencies.length) {
-    await execa(
+    await x(
       "npm",
       ["install", ...(flag ? [`--${flag}`] : []), "-D", ...devDependencies],
-      { cwd }
+      {
+        nodeOptions: {
+          cwd,
+        },
+        throwOnError: true,
+      }
     )
   }
 }
@@ -164,16 +182,24 @@ async function installWithDeno(
   cwd: string
 ) {
   if (dependencies?.length) {
-    await execa("deno", ["add", ...dependencies.map((dep) => `npm:${dep}`)], {
-      cwd,
+    await x("deno", ["add", ...dependencies.map((dep) => `npm:${dep}`)], {
+      nodeOptions: {
+        cwd,
+      },
+      throwOnError: true,
     })
   }
 
   if (devDependencies?.length) {
-    await execa(
+    await x(
       "deno",
       ["add", "-D", ...devDependencies.map((dep) => `npm:${dep}`)],
-      { cwd }
+      {
+        nodeOptions: {
+          cwd,
+        },
+        throwOnError: true,
+      }
     )
   }
 }
@@ -184,12 +210,20 @@ async function installWithExpo(
   cwd: string
 ) {
   if (dependencies.length) {
-    await execa("npx", ["expo", "install", ...dependencies], { cwd })
+    await x("npx", ["expo", "install", ...dependencies], {
+      nodeOptions: {
+        cwd,
+      },
+      throwOnError: true,
+    })
   }
 
   if (devDependencies.length) {
-    await execa("npx", ["expo", "install", "-- -D", ...devDependencies], {
-      cwd,
+    await x("npx", ["expo", "install", "-- -D", ...devDependencies], {
+      nodeOptions: {
+        cwd,
+      },
+      throwOnError: true,
     })
   }
 }
