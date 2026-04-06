@@ -24,7 +24,12 @@ import { addComponents } from "@/src/utils/add-components"
 import { createProject } from "@/src/utils/create-project"
 import { loadEnvFiles } from "@/src/utils/env-loader"
 import * as ERRORS from "@/src/utils/errors"
-import { FILE_BACKUP_SUFFIX, withFileBackup } from "@/src/utils/file-helper"
+import {
+  createFileBackup,
+  deleteFileBackup,
+  FILE_BACKUP_SUFFIX,
+  restoreFileBackup,
+} from "@/src/utils/file-helper"
 import {
   DEFAULT_COMPONENTS,
   DEFAULT_TAILWIND_CONFIG,
@@ -123,7 +128,17 @@ export const init = new Command()
   .option("--reinstall", "re-install existing UI components.")
   .option("--no-reinstall", "do not re-install existing UI components.")
   .action(async (components, opts) => {
+    let componentsJsonBackupPath: string | undefined
     let reinstallComponents: string[] = []
+
+    const restoreBackupOnExit = () => {
+      if (componentsJsonBackupPath) {
+        restoreFileBackup(
+          componentsJsonBackupPath.replace(FILE_BACKUP_SUFFIX, "")
+        )
+      }
+    }
+    process.on("exit", restoreBackupOnExit)
 
     try {
       const options = initOptionsSchema.parse({
@@ -164,7 +179,7 @@ export const init = new Command()
           logger.error(
             `Invalid preset: ${highlighter.info(
               options.preset
-            )}.\nUse one of the available presets: ${knownPresetNames.join(", ")} \nor build your own at ${highlighter.info(`${SHADCN_URL}/create`)}`
+            )}. Available presets: ${knownPresetNames.join(", ")}`
           )
           logger.break()
           process.exit(1)
@@ -480,53 +495,54 @@ export const init = new Command()
 
       await loadEnvFiles(options.cwd)
 
-      await withFileBackup(
-        path.resolve(cwd, "components.json"),
-        async () => {
-          // We need to check if we're initializing with a new style.
-          // This will allow us to determine if we need to install the base style.
-          if (components.length > 0) {
-            // Resolve registry:base config from the first component.
-            const {
-              registryBaseConfig,
-              installStyleIndex,
-              url: cleanUrl,
-            } = await resolveRegistryBaseConfig(components[0], cwd, {
-              registries: existingConfig?.registries as
-                | z.infer<typeof registryConfigSchema>
-                | undefined,
-            })
+      // We need to check if we're initializing with a new style.
+      // This will allow us to determine if we need to install the base style.
+      if (components.length > 0) {
+        const componentsJsonPath = path.resolve(cwd, "components.json")
 
-            // Use the clean URL (track param stripped) for subsequent fetches.
-            components[0] = cleanUrl
-
-            if (!installStyleIndex) {
-              options.installStyleIndex = false
-            }
-
-            if (registryBaseConfig) {
-              options.registryBaseConfig = registryBaseConfig
-            }
-          }
-
-          await runInit(options)
-        },
-        {
-          enabled: hasExistingConfig && components.length > 0,
-          onBackupFailure: () => {
+        if (hasExistingConfig) {
+          componentsJsonBackupPath =
+            createFileBackup(componentsJsonPath) ?? undefined
+          if (!componentsJsonBackupPath) {
             logger.warn(
               `Could not back up ${highlighter.info("components.json")}.`
             )
-          },
+          }
         }
-      )
+
+        const {
+          registryBaseConfig,
+          installStyleIndex,
+          url: cleanUrl,
+        } = await resolveRegistryBaseConfig(components[0], cwd, {
+          registries: existingConfig?.registries as
+            | z.infer<typeof registryConfigSchema>
+            | undefined,
+        })
+
+        components[0] = cleanUrl
+
+        if (!installStyleIndex) {
+          options.installStyleIndex = false
+        }
+
+        if (registryBaseConfig) {
+          options.registryBaseConfig = registryBaseConfig
+        }
+      }
+
+      await runInit(options)
 
       logger.break()
       logger.log(
         `Project initialization completed.\nYou may now add components.`
       )
+      process.removeListener("exit", restoreBackupOnExit)
+      deleteFileBackup(path.resolve(cwd, "components.json"))
       logger.break()
     } catch (error) {
+      process.removeListener("exit", restoreBackupOnExit)
+      restoreBackupOnExit()
       logger.break()
       handleError(error)
     } finally {
@@ -925,10 +941,7 @@ async function promptForMinimalConfig(
   })
 }
 
-export async function confirmBaseSwitch(
-  existingStyle: string,
-  resolvedBase: string
-) {
+async function confirmBaseSwitch(existingStyle: string, resolvedBase: string) {
   // Styles prefixed with "base-" use Base UI. Everything else is Radix.
   const oldBase = existingStyle.startsWith("base-") ? "base" : "radix"
   if (resolvedBase === oldBase) return resolvedBase
