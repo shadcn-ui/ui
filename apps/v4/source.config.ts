@@ -1,13 +1,17 @@
-import { defineConfig, defineDocs, frontmatterSchema } from "fumadocs-mdx/config";
-import rehypePrettyCode from "rehype-pretty-code";
-import { z } from "zod";
+import {
+  defineConfig,
+  defineDocs,
+  frontmatterSchema,
+} from "fumadocs-mdx/config"
+import rehypePrettyCode from "rehype-pretty-code"
+import { z } from "zod"
 
-import { transformers } from "@/lib/highlight-code";
+import { transformers } from "@/lib/highlight-code"
 
 export default defineConfig({
   mdxOptions: {
     rehypePlugins: (plugins) => {
-      plugins.shift();
+      plugins.shift()
 
       plugins.push([
         rehypePrettyCode,
@@ -18,9 +22,9 @@ export default defineConfig({
           },
           transformers,
         },
-      ]);
+      ])
 
-      return plugins;
+      return plugins
     },
   },
 })
