@@ -5,9 +5,11 @@ description: Use the shadcn CLI to add components to your project.
 
 ## init
 
-Use the `init` command to initialize configuration and dependencies for a new project.
+Use the `init` command to initialize configuration and dependencies for an existing project, or create a new project with `--name`.
 
 The `init` command installs dependencies, adds the `cn` util and configures CSS variables for the project.
+
+For preset reapplication in an existing project, use [`apply`](#apply) when you want to overwrite preset-driven files and reinstall detected UI components. Use `init --force --no-reinstall` when you want to update config and CSS without reinstalling existing components.
 
 ```bash
 npx shadcn@latest init
@@ -16,31 +18,31 @@ npx shadcn@latest init
 **Options**
 
 ```bash
-Usage: shadcn init [options] [components...]
+Usage: shadcn init|create [options] [components...]
 
 initialize your project and install dependencies
 
 Arguments:
-  components              name, url or local path to component
+  components                 names, url or local path to component
 
 Options:
   -t, --template <template>  the template to use. (next, vite, start, react-router, laravel, astro)
   -b, --base <base>          the component library to use. (radix, base)
-  -p, --preset [name]        use a preset configuration. (name, URL, or preset code)
-  -n, --name <name>          the name for the new project.
-  -d, --defaults             use default configuration. (default: false)
-  -y, --yes                  skip confirmation prompt. (default: true)
-  -f, --force                force overwrite of existing configuration. (default: false)
-  -c, --cwd <cwd>            the working directory. defaults to the current directory.
-  -s, --silent               mute output. (default: false)
   --monorepo                 scaffold a monorepo project.
   --no-monorepo              skip the monorepo prompt.
-  --reinstall                re-install existing UI components.
-  --no-reinstall             do not re-install existing UI components.
-  --rtl                      enable RTL support.
-  --no-rtl                   disable RTL support.
+  -p, --preset [name]        use a preset configuration
+  -y, --yes                  skip confirmation prompt. (default: true)
+  -d, --defaults             use default configuration: --template=next --preset=base-nova (default: false)
+  -f, --force                force overwrite of existing configuration. (default: false)
+  -c, --cwd <cwd>            the working directory. defaults to the current directory.
+  -n, --name <name>          the name for the new project.
+  -s, --silent               mute output. (default: false)
   --css-variables            use css variables for theming. (default: true)
   --no-css-variables         do not use css variables for theming.
+  --rtl                      enable RTL support.
+  --no-rtl                   disable RTL support.
+  --reinstall                re-install existing UI components.
+  --no-reinstall             do not re-install existing UI components.
   -h, --help                 display help for command
 ```
 
@@ -48,6 +50,54 @@ The `create` command is an alias for `init`:
 
 ```bash
 npx shadcn@latest create
+```
+
+---
+
+## apply
+
+Use the `apply` command to apply a preset to an existing project.
+
+`apply` overwrites preset-driven config, fonts, CSS variables, and detected installed UI components. Commit or stash your changes before continuing so you can easily go back.
+
+`apply` requires an existing `components.json`. If your project is not initialized yet, run `shadcn init --preset <preset>` first.
+
+```bash
+npx shadcn@latest apply --preset a2r6bw
+```
+
+You can also pass the preset as a positional argument:
+
+```bash
+npx shadcn@latest apply a2r6bw
+```
+
+Named presets work the same way:
+
+```bash
+npx shadcn@latest apply lyra
+```
+
+If no preset is provided, the CLI offers to open the custom preset builder on `ui.shadcn.com/create`.
+
+Use `apply` for overwrite/reinstall flows. If you want to refresh config and CSS without reinstalling existing components, use `init --force --no-reinstall` instead.
+
+**Options**
+
+```bash
+Usage: shadcn apply [options] [preset]
+
+apply a preset to an existing project
+
+Arguments:
+  preset             the preset to apply
+
+Options:
+  --preset <preset>  preset configuration to apply
+  -y, --yes          skip confirmation prompt. (default: false)
+  -c, --cwd <cwd>    the working directory. defaults to the current directory.
+  --silent           mute output. (default: false)
+  -h, --help         display help for command
 ```
 
 ---
