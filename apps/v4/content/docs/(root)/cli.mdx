@@ -9,8 +9,6 @@ Use the `init` command to initialize configuration and dependencies for an exist
 
 The `init` command installs dependencies, adds the `cn` util and configures CSS variables for the project.
 
-For preset reapplication in an existing project, use [`apply`](#apply) when you want to overwrite preset-driven files and reinstall detected UI components. Use `init --force --no-reinstall` when you want to update config and CSS without reinstalling existing components.
-
 ```bash
 npx shadcn@latest init
 ```
@@ -18,7 +16,7 @@ npx shadcn@latest init
 **Options**
 
 ```bash
-Usage: shadcn init|create [options] [components...]
+Usage: shadcn init [options] [components...]
 
 initialize your project and install dependencies
 
@@ -28,8 +26,6 @@ Arguments:
 Options:
   -t, --template <template>  the template to use. (next, vite, start, react-router, laravel, astro)
   -b, --base <base>          the component library to use. (radix, base)
-  --monorepo                 scaffold a monorepo project.
-  --no-monorepo              skip the monorepo prompt.
   -p, --preset [name]        use a preset configuration
   -y, --yes                  skip confirmation prompt. (default: true)
   -d, --defaults             use default configuration: --template=next --preset=base-nova (default: false)
@@ -39,6 +35,8 @@ Options:
   -s, --silent               mute output. (default: false)
   --css-variables            use css variables for theming. (default: true)
   --no-css-variables         do not use css variables for theming.
+  --monorepo                 scaffold a monorepo project.
+  --no-monorepo              skip the monorepo prompt.
   --rtl                      enable RTL support.
   --no-rtl                   disable RTL support.
   --reinstall                re-install existing UI components.
