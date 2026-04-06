@@ -1,5 +1,5 @@
 import path from "path"
-import { confirmBaseSwitch, runInit } from "@/src/commands/init"
+import { runInit } from "@/src/commands/init"
 import { preFlightApply } from "@/src/preflights/preflight-apply"
 import { decodePreset, isPresetCode } from "@/src/preset/preset"
 import {
@@ -322,4 +322,39 @@ function getInitCommand(preset?: string) {
   }
 
   return `shadcn init --preset ${quoteShellArg(preset)}`
+}
+
+async function confirmBaseSwitch(
+  existingStyle: string,
+  resolvedBase: "radix" | "base"
+) {
+  const oldBase = existingStyle.startsWith("base-") ? "base" : "radix"
+  if (resolvedBase === oldBase) return resolvedBase
+
+  logger.warn(
+    `  You are switching from ${highlighter.info(
+      oldBase
+    )} to ${highlighter.info(resolvedBase)}.`
+  )
+  logger.warn(
+    `  Components outside the ${highlighter.info(
+      "ui"
+    )} directory that depend on ${highlighter.info(
+      oldBase
+    )} primitives may need manual updates.`
+  )
+  logger.break()
+
+  const { proceed } = await prompts({
+    type: "confirm",
+    name: "proceed",
+    message: "Would you like to continue?",
+    initial: true,
+  })
+
+  if (!proceed) {
+    process.exit(1)
+  }
+
+  return resolvedBase
 }
