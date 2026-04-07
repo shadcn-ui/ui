@@ -349,6 +349,17 @@
   [data-slot="docs"] pre[data-language="plaintext"] code {
     display: block !important;
     white-space: pre;
+    line-height: 0.95;
+    font-family:
+      ui-monospace,
+      SFMono-Regular,
+      Menlo,
+      Monaco,
+      Consolas,
+      "Liberation Mono",
+      "Courier New",
+      monospace;
+    font-variant-ligatures: none;
   }
 
   [data-rehype-pretty-code-figure] pre[data-language="text"] [data-line],
@@ -360,7 +371,7 @@
     padding-top: 0;
     padding-bottom: 0;
     min-height: unset;
-    line-height: 1;
+    line-height: 0.95;
     display: block;
   }
 
