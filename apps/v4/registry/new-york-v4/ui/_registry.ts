@@ -302,6 +302,17 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "image-upload",
+    type: "registry:ui",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "ui/image-upload.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "input-otp",
     type: "registry:ui",
     dependencies: ["input-otp"],

@@ -350,6 +350,17 @@
       "type": "registry:ui"
     },
     {
+      "name": "image-upload",
+      "dependencies": ["lucide-react"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/image-upload.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
       "name": "input-otp",
       "dependencies": ["input-otp"],
       "files": [
@@ -4144,6 +4155,61 @@
       "files": [
         {
           "path": "registry/new-york-v4/examples/input-with-text.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "image-upload-demo",
+      "registryDependencies": ["image-upload"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/image-upload-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "image-upload-max-files",
+      "registryDependencies": ["image-upload"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/image-upload-max-files.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "image-upload-file-type",
+      "registryDependencies": ["image-upload"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/image-upload-file-type.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "image-upload-max-size",
+      "registryDependencies": ["image-upload"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/image-upload-max-size.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "image-upload-custom-preview",
+      "registryDependencies": ["image-upload"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/image-upload-custom-preview.tsx",
           "type": "registry:example"
         }
       ],

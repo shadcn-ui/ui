@@ -1,9 +1,16 @@
 {
   "eslint.workingDirectories": [
-    { "pattern": "apps/*/" },
-    { "pattern": "packages/*/" }
+    {
+      "pattern": "apps/*/"
+    },
+    {
+      "pattern": "packages/*/"
+    }
   ],
-  "tailwindCSS.classFunctions": ["cva", "cn"],
+  "tailwindCSS.classFunctions": [
+    "cva",
+    "cn"
+  ],
   "vitest.debugExclude": [
     "<node_internals>/**",
     "**/node_modules/**",
@@ -16,5 +23,14 @@
     "apps/v4/registry/radix-*": true,
     "apps/v4/public/r/*": true,
     "packages/shadcn/test/fixtures/*": true
+  },
+  "task.allowAutomaticTasks": true,
+  "debug.openDebug": "neverOpen",
+  "terminal.integrated.inheritEnv": false,
+  "tasks": {
+    "label": "lint on open",
+    "type": "shell",
+    "command": "npm run lint",
+    "runOn": "folderOpen"
   }
 }
