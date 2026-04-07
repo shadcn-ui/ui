@@ -1,0 +1,93 @@
+---
+title: Image Upload
+description: An image upload component with drag and drop, file type validation, size limits, and multi-image support.
+component: true
+---
+
+<ComponentPreview
+  name="image-upload-demo"
+  previewClassName="p-6"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add image-upload
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="image-upload"
+  title="components/ui/image-upload.tsx"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { ImageUpload } from "@/components/ui/image-upload"
+```
+
+```tsx
+<ImageUpload />
+```
+
+## Examples
+
+### Max files
+
+Use `maxFiles` to limit the number of images. The drop zone is hidden once the limit is reached.
+
+<ComponentPreview
+  name="image-upload-max-files"
+  previewClassName="p-6"
+/>
+
+### File type
+
+Use `accept` to restrict which image types are allowed. Rejected files show an inline error.
+
+<ComponentPreview
+  name="image-upload-file-type"
+  previewClassName="p-6"
+/>
+
+### Max size
+
+Use `maxSize` (in bytes) to reject files that are too large.
+
+<ComponentPreview
+  name="image-upload-max-size"
+  previewClassName="p-6"
+/>
+
+### Custom preview
+
+Use `renderPreview` to replace the default thumbnail grid with your own layout. The render prop receives `files`, `previews`, `onRemove`, and `disabled`.
+
+<ComponentPreview
+  name="image-upload-custom-preview"
+  previewClassName="p-6"
+/>
