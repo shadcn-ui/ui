@@ -77,6 +77,23 @@ export async function resolveConfigPaths(
     cwd,
     tsConfig
   )
+  const resolvedUi = config.aliases["ui"]
+    ? await resolveAliasPath("ui", config.aliases["ui"], cwd, tsConfig)
+    : path.resolve(resolvedComponents ?? cwd, "ui")
+  const resolvedLib = config.aliases["lib"]
+    ? await resolveAliasPath("lib", config.aliases["lib"], cwd, tsConfig)
+    : path.resolve(resolvedUtils ?? cwd, "..")
+  const resolvedHooks = config.aliases["hooks"]
+    ? await resolveAliasPath("hooks", config.aliases["hooks"], cwd, tsConfig)
+    : path.resolve(resolvedComponents ?? cwd, "..", "hooks")
+
+  assertResolvedAliases(cwd, {
+    components: resolvedComponents,
+    utils: resolvedUtils,
+    ui: resolvedUi,
+    lib: resolvedLib,
+    hooks: resolvedHooks,
+  })
 
   return configSchema.parse({
     ...config,
@@ -88,22 +105,11 @@ export async function resolveConfigPaths(
       tailwindCss: path.resolve(cwd, config.tailwind.css),
       utils: resolvedUtils,
       components: resolvedComponents,
-      ui: config.aliases["ui"]
-        ? await resolveAliasPath("ui", config.aliases["ui"], cwd, tsConfig)
-        : path.resolve(resolvedComponents ?? cwd, "ui"),
+      ui: resolvedUi,
       // TODO: Make this configurable.
       // For now, we assume the lib and hooks directories are one level up from the components directory.
-      lib: config.aliases["lib"]
-        ? await resolveAliasPath("lib", config.aliases["lib"], cwd, tsConfig)
-        : path.resolve(resolvedUtils ?? cwd, ".."),
-      hooks: config.aliases["hooks"]
-        ? await resolveAliasPath(
-            "hooks",
-            config.aliases["hooks"],
-            cwd,
-            tsConfig
-          )
-        : path.resolve(resolvedComponents ?? cwd, "..", "hooks"),
+      lib: resolvedLib,
+      hooks: resolvedHooks,
     },
   })
 }
@@ -120,6 +126,10 @@ async function resolveAliasPath(
   })
 
   if (!resolved?.path) {
+    return null
+  }
+
+  if (alias.startsWith("#") && resolved.path === path.resolve(cwd, alias)) {
     return null
   }
 
@@ -149,6 +159,35 @@ async function resolveAliasPath(
   }
 
   return resolved.path
+}
+
+function assertResolvedAliases(
+  cwd: string,
+  resolvedAliases: Record<
+    "components" | "utils" | "ui" | "lib" | "hooks",
+    string | null
+  >
+) {
+  const missingAliases = ["components", "ui", "lib", "hooks", "utils"].filter(
+    (key) => !resolvedAliases[key as keyof typeof resolvedAliases]
+  )
+
+  if (!missingAliases.length) {
+    return
+  }
+
+  throw new Error(
+    [
+      `Could not resolve the following aliases in ${highlighter.info(cwd)}: ${highlighter.info(
+        missingAliases.join(", ")
+      )}.`,
+      `Configure path aliases in ${highlighter.info(
+        "tsconfig.json"
+      )} or imports in ${highlighter.info(
+        "package.json"
+      )} for this workspace and try again.`,
+    ].join("\n")
+  )
 }
 
 export async function getRawConfig(
@@ -208,7 +247,20 @@ export async function getWorkspaceConfig(config: Config) {
       continue
     }
 
-    resolvedAliases[key] = await getConfig(packageRoot)
+    const workspaceConfig = await getConfig(packageRoot)
+
+    if (!workspaceConfig) {
+      throw new Error(
+        [
+          `Could not load the workspace config in ${highlighter.info(packageRoot)}.`,
+          `Add ${highlighter.info(
+            "components.json"
+          )} to this workspace and configure its path aliases or package imports, then try again.`,
+        ].join("\n")
+      )
+    }
+
+    resolvedAliases[key] = workspaceConfig
   }
 
   const result = workspaceConfigSchema.safeParse(resolvedAliases)
