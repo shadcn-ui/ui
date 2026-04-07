@@ -1,5 +1,4 @@
 import path from "path"
-import { applyOptionsSchema } from "@/src/commands/apply"
 import { SHADCN_URL } from "@/src/registry/constants"
 import * as ERRORS from "@/src/utils/errors"
 import { getConfig } from "@/src/utils/get-config"
@@ -11,11 +10,8 @@ import {
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import fs from "fs-extra"
-import { z } from "zod"
 
-export async function preFlightApply(
-  options: z.infer<typeof applyOptionsSchema>
-) {
+export async function preFlightApply(options: { cwd: string }) {
   const errors: Record<string, boolean> = {}
 
   if (
