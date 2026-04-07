@@ -52,11 +52,9 @@ describe("withFileBackup", () => {
     const consoleErrorSpy = vi
       .spyOn(console, "error")
       .mockImplementation(() => {})
-    const renameSyncSpy = vi
-      .spyOn(fs, "renameSync")
-      .mockImplementation(() => {
-        throw new Error("boom")
-      })
+    const renameSyncSpy = vi.spyOn(fs, "renameSync").mockImplementation(() => {
+      throw new Error("boom")
+    })
 
     await expect(
       withFileBackup(filePath, async () => {
