@@ -410,6 +410,10 @@ function resolveFileTargetDirectory(
   }
 
   if (file.type === "registry:lib") {
+    if (basename(file.path) === "utils.ts" && config.resolvedPaths.utils) {
+      return path.dirname(config.resolvedPaths.utils)
+    }
+
     return config.resolvedPaths.lib
   }
 

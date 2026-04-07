@@ -43,6 +43,7 @@ import {
 } from "@/src/utils/get-config"
 import {
   formatMonorepoMessage,
+  getMonorepoInitTargets,
   getMonorepoTargets,
   isMonorepoRoot,
 } from "@/src/utils/get-monorepo-info"
@@ -202,7 +203,7 @@ export const init = new Command()
       ) {
         const projectInfo = await getProjectInfo(cwd)
         if (!projectInfo || projectInfo.framework.name === "manual") {
-          const targets = await getMonorepoTargets(cwd)
+          const targets = await getMonorepoInitTargets(cwd)
           if (targets.length > 0) {
             formatMonorepoMessage("init", targets)
             process.exit(1)

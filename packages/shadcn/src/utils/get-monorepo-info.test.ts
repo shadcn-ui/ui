@@ -5,6 +5,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
 
 import {
   formatMonorepoMessage,
+  getMonorepoInitTargets,
   getMonorepoTargets,
   isMonorepoRoot,
 } from "./get-monorepo-info"
@@ -87,7 +88,9 @@ describe("getMonorepoTargets", () => {
     )
 
     const targets = await getMonorepoTargets(tmpDir)
-    expect(targets).toEqual([{ name: "apps/web", hasConfig: false }])
+    expect(targets).toEqual([
+      { name: "apps/web", hasConfig: false, hasFrameworkConfig: true },
+    ])
   })
 
   it("should find targets from package.json workspaces", async () => {
@@ -102,7 +105,9 @@ describe("getMonorepoTargets", () => {
     await fs.writeFile(path.join(webDir, "vite.config.ts"), "export default {}")
 
     const targets = await getMonorepoTargets(tmpDir)
-    expect(targets).toEqual([{ name: "apps/web", hasConfig: false }])
+    expect(targets).toEqual([
+      { name: "apps/web", hasConfig: false, hasFrameworkConfig: true },
+    ])
   })
 
   it("should set hasConfig when components.json exists", async () => {
@@ -122,7 +127,9 @@ describe("getMonorepoTargets", () => {
     await fs.writeJson(path.join(webDir, "components.json"), {})
 
     const targets = await getMonorepoTargets(tmpDir)
-    expect(targets).toEqual([{ name: "apps/web", hasConfig: true }])
+    expect(targets).toEqual([
+      { name: "apps/web", hasConfig: true, hasFrameworkConfig: true },
+    ])
   })
 
   it("should find multiple targets", async () => {
@@ -214,7 +221,9 @@ describe("getMonorepoTargets", () => {
     )
 
     const targets = await getMonorepoTargets(tmpDir)
-    expect(targets).toEqual([{ name: "apps/astro-app", hasConfig: false }])
+    expect(targets).toEqual([
+      { name: "apps/astro-app", hasConfig: false, hasFrameworkConfig: true },
+    ])
   })
 
   it("should deduplicate patterns from both pnpm-workspace.yaml and package.json", async () => {
@@ -237,7 +246,42 @@ describe("getMonorepoTargets", () => {
 
     const targets = await getMonorepoTargets(tmpDir)
     // Should not duplicate the target.
-    expect(targets).toEqual([{ name: "apps/web", hasConfig: false }])
+    expect(targets).toEqual([
+      { name: "apps/web", hasConfig: false, hasFrameworkConfig: true },
+    ])
+  })
+
+  it("should exclude config-only packages from init targets", async () => {
+    await fs.writeFile(
+      path.join(tmpDir, "pnpm-workspace.yaml"),
+      "packages:\n  - apps/*\n  - packages/*\n"
+    )
+    await fs.writeJson(path.join(tmpDir, "package.json"), { name: "root" })
+
+    const webDir = path.join(tmpDir, "apps", "web")
+    await fs.ensureDir(webDir)
+    await fs.writeJson(path.join(webDir, "package.json"), { name: "web" })
+    await fs.writeFile(
+      path.join(webDir, "next.config.mjs"),
+      "export default {}"
+    )
+    await fs.writeJson(path.join(webDir, "components.json"), {})
+
+    const uiDir = path.join(tmpDir, "packages", "ui")
+    await fs.ensureDir(uiDir)
+    await fs.writeJson(path.join(uiDir, "package.json"), { name: "ui" })
+    await fs.writeJson(path.join(uiDir, "components.json"), {})
+
+    const targets = await getMonorepoTargets(tmpDir)
+    expect(targets).toEqual([
+      { name: "apps/web", hasConfig: true, hasFrameworkConfig: true },
+      { name: "packages/ui", hasConfig: true, hasFrameworkConfig: false },
+    ])
+
+    const initTargets = await getMonorepoInitTargets(tmpDir)
+    expect(initTargets).toEqual([
+      { name: "apps/web", hasConfig: true, hasFrameworkConfig: true },
+    ])
   })
 })
 
@@ -247,8 +291,8 @@ describe("formatMonorepoMessage", () => {
     const breakSpy = vi.spyOn(logger, "break")
 
     formatMonorepoMessage("init", [
-      { name: "apps/web", hasConfig: false },
-      { name: "apps/docs", hasConfig: true },
+      { name: "apps/web", hasConfig: false, hasFrameworkConfig: true },
+      { name: "apps/docs", hasConfig: true, hasFrameworkConfig: true },
     ])
 
     expect(breakSpy).toHaveBeenCalled()
@@ -274,7 +318,7 @@ describe("formatMonorepoMessage", () => {
     const logSpy = vi.spyOn(logger, "log")
 
     formatMonorepoMessage("add [component]", [
-      { name: "apps/web", hasConfig: false },
+      { name: "apps/web", hasConfig: false, hasFrameworkConfig: true },
     ])
 
     const allLogCalls = logSpy.mock.calls.map((c) => c[0] as string)
