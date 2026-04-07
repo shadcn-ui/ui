@@ -1,25 +1,26 @@
 import {
-  Field,
-  FieldDescription,
-  FieldGroup,
-  FieldLabel,
-} from "@/examples/base/ui/field"
-import { Input } from "@/examples/base/ui/input"
-import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupButton,
-  InputGroupText,
-  InputGroupTextarea,
-} from "@/examples/base/ui/input-group"
-import { Textarea } from "@/examples/base/ui/textarea"
-import {
   ArrowUpIcon,
   CodeIcon,
   CopyIcon,
   InfoIcon,
   RefreshCwIcon,
 } from "lucide-react"
+
+import {
+  Field,
+  FieldDescription,
+  FieldGroup,
+  FieldLabel,
+} from "@/styles/base-nova/ui/field"
+import { Input } from "@/styles/base-nova/ui/input"
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButton,
+  InputGroupText,
+  InputGroupTextarea,
+} from "@/styles/base-nova/ui/input-group"
+import { Textarea } from "@/styles/base-nova/ui/textarea"
 
 export function InputGroupTextareaExamples() {
   return (
@@ -77,7 +78,7 @@ export function InputGroupTextareaExamples() {
           <InputGroupTextarea id="prompt-31" />
           <InputGroupAddon align="block-start">
             <InputGroupText>Ask, Search or Chat...</InputGroupText>
-            <InfoIcon className="text-muted-foreground ml-auto" />
+            <InfoIcon className="ml-auto text-muted-foreground" />
           </InputGroupAddon>
         </InputGroup>
         <FieldDescription>

@@ -1,4 +1,6 @@
-import { Button } from "@/examples/base/ui/button"
+import { RefreshCwIcon } from "lucide-react"
+
+import { Button } from "@/styles/base-nova/ui/button"
 import {
   Card,
   CardContent,
@@ -6,15 +8,18 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/examples/base/ui/card"
-import { Field, FieldDescription, FieldLabel } from "@/examples/base/ui/field"
+} from "@/styles/base-nova/ui/card"
+import {
+  Field,
+  FieldDescription,
+  FieldLabel,
+} from "@/styles/base-nova/ui/field"
 import {
   InputOTP,
   InputOTPGroup,
   InputOTPSeparator,
   InputOTPSlot,
-} from "@/examples/base/ui/input-otp"
-import { RefreshCwIcon } from "lucide-react"
+} from "@/styles/base-nova/ui/input-otp"
 
 export function InputOTPForm() {
   return (
@@ -60,11 +65,11 @@ export function InputOTPForm() {
           <Button type="submit" className="w-full">
             Verify
           </Button>
-          <div className="text-muted-foreground text-sm">
+          <div className="text-sm text-muted-foreground">
             Having trouble signing in?{" "}
             <a
               href="#"
-              className="hover:text-primary underline underline-offset-4 transition-colors"
+              className="underline underline-offset-4 transition-colors hover:text-primary"
             >
               Contact support
             </a>

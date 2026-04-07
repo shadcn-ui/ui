@@ -2,46 +2,6 @@
 
 import * as React from "react"
 import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/examples/radix/ui-rtl/avatar"
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/examples/radix/ui-rtl/collapsible"
-import { DirectionProvider } from "@/examples/radix/ui-rtl/direction"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/examples/radix/ui-rtl/dropdown-menu"
-import {
-  Sidebar,
-  SidebarContent,
-  SidebarFooter,
-  SidebarGroup,
-  SidebarGroupLabel,
-  SidebarHeader,
-  SidebarInset,
-  SidebarMenu,
-  SidebarMenuAction,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  SidebarMenuSub,
-  SidebarMenuSubButton,
-  SidebarMenuSubItem,
-  SidebarProvider,
-  SidebarRail,
-  SidebarTrigger,
-  useSidebar,
-} from "@/examples/radix/ui-rtl/sidebar"
-import {
   BadgeCheck,
   Bell,
   BookOpen,
@@ -69,6 +29,46 @@ import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/styles/radix-nova/ui-rtl/avatar"
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/styles/radix-nova/ui-rtl/collapsible"
+import { DirectionProvider } from "@/styles/radix-nova/ui-rtl/direction"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/styles/radix-nova/ui-rtl/dropdown-menu"
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarGroup,
+  SidebarGroupLabel,
+  SidebarHeader,
+  SidebarInset,
+  SidebarMenu,
+  SidebarMenuAction,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarMenuSub,
+  SidebarMenuSubButton,
+  SidebarMenuSubItem,
+  SidebarProvider,
+  SidebarRail,
+  SidebarTrigger,
+  useSidebar,
+} from "@/styles/radix-nova/ui-rtl/sidebar"
 
 const translations: Translations = {
   en: {
@@ -324,7 +324,7 @@ function SidebarContentInner({
             <SidebarMenuItem>
               <SidebarMenuButton size="lg" asChild>
                 <a href="#">
-                  <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
+                  <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
                     <GalleryVerticalEnd className="size-4" />
                   </div>
                   <div className="flex flex-col gap-0.5 leading-none">

@@ -1,9 +1,12 @@
+import { IconCheck, IconInfoCircle, IconPlus } from "@tabler/icons-react"
+import { ArrowUpIcon, Search } from "lucide-react"
+
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/examples/radix/ui/dropdown-menu"
+} from "@/styles/radix-nova/ui/dropdown-menu"
 import {
   InputGroup,
   InputGroupAddon,
@@ -11,15 +14,13 @@ import {
   InputGroupInput,
   InputGroupText,
   InputGroupTextarea,
-} from "@/examples/radix/ui/input-group"
-import { Separator } from "@/examples/radix/ui/separator"
+} from "@/styles/radix-nova/ui/input-group"
+import { Separator } from "@/styles/radix-nova/ui/separator"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/examples/radix/ui/tooltip"
-import { IconCheck, IconInfoCircle, IconPlus } from "@tabler/icons-react"
-import { ArrowUpIcon, Search } from "lucide-react"
+} from "@/styles/radix-nova/ui/tooltip"
 
 export function InputGroupDemo() {
   return (
@@ -32,7 +33,7 @@ export function InputGroupDemo() {
         <InputGroupAddon align="inline-end">12 results</InputGroupAddon>
       </InputGroup>
       <InputGroup>
-        <InputGroupInput placeholder="example.com" className="!pl-1" />
+        <InputGroupInput placeholder="example.com" className="pl-1!" />
         <InputGroupAddon>
           <InputGroupText>https://</InputGroupText>
         </InputGroupAddon>
@@ -73,7 +74,7 @@ export function InputGroupDemo() {
             </DropdownMenuContent>
           </DropdownMenu>
           <InputGroupText className="ml-auto">52% used</InputGroupText>
-          <Separator orientation="vertical" className="!h-4" />
+          <Separator orientation="vertical" className="h-4!" />
           <InputGroupButton
             variant="default"
             className="rounded-full"
@@ -87,8 +88,8 @@ export function InputGroupDemo() {
       <InputGroup>
         <InputGroupInput placeholder="@shadcn" />
         <InputGroupAddon align="inline-end">
-          <div className="bg-primary text-foreground flex size-4 items-center justify-center rounded-full">
-            <IconCheck className="size-3 text-white" />
+          <div className="flex size-4 items-center justify-center rounded-full bg-primary text-foreground">
+            <IconCheck className="size-3 text-background" />
           </div>
         </InputGroupAddon>
       </InputGroup>

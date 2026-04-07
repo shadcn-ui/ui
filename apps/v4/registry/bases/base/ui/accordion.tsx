@@ -1,5 +1,3 @@
-"use client"
-
 import { Accordion as AccordionPrimitive } from "@base-ui/react/accordion"
 
 import { cn } from "@/registry/bases/base/lib/utils"
@@ -77,7 +75,7 @@ function AccordionContent({
     >
       <div
         className={cn(
-          "cn-accordion-content-inner [&_a]:hover:text-foreground h-(--accordion-panel-height) data-ending-style:h-0 data-starting-style:h-0 [&_a]:underline [&_a]:underline-offset-3 [&_p:not(:last-child)]:mb-4",
+          "cn-accordion-content-inner h-(--accordion-panel-height) data-ending-style:h-0 data-starting-style:h-0 [&_a]:underline [&_a]:underline-offset-3 [&_a]:hover:text-foreground [&_p:not(:last-child)]:mb-4",
           className
         )}
       >

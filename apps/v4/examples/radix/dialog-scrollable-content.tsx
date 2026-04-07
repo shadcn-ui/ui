@@ -1,4 +1,4 @@
-import { Button } from "@/examples/radix/ui/button"
+import { Button } from "@/styles/radix-nova/ui/button"
 import {
   Dialog,
   DialogContent,
@@ -6,7 +6,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/examples/radix/ui/dialog"
+} from "@/styles/radix-nova/ui/dialog"
 
 export function DialogScrollableContent() {
   return (
@@ -21,7 +21,7 @@ export function DialogScrollableContent() {
             This is a dialog with scrollable content.
           </DialogDescription>
         </DialogHeader>
-        <div className="no-scrollbar -mx-4 max-h-[50vh] overflow-y-auto px-4">
+        <div className="-mx-4 no-scrollbar max-h-[50vh] overflow-y-auto px-4">
           {Array.from({ length: 10 }).map((_, index) => (
             <p key={index} className="mb-4 leading-normal">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do

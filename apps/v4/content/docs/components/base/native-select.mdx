@@ -7,7 +7,7 @@ component: true
 
 import { InfoIcon } from "lucide-react"
 
-<Callout variant="info" icon={<InfoIcon className="!translate-y-[3px]" />}>
+<Callout variant="info" icon={<InfoIcon className="translate-y-[3px]!" />}>
   For a styled select component, see the [Select](/docs/components/select)
   component.
 </Callout>
@@ -68,6 +68,34 @@ import {
   <NativeSelectOption value="blueberry">Blueberry</NativeSelectOption>
   <NativeSelectOption value="pineapple">Pineapple</NativeSelectOption>
 </NativeSelect>
+```
+
+## Composition
+
+### Simple
+
+Options placed directly under `NativeSelect` (no `NativeSelectOptGroup`).
+
+```text
+NativeSelect
+├── NativeSelectOption
+├── NativeSelectOption
+├── NativeSelectOption
+└── NativeSelectOption
+```
+
+### With groups
+
+Use `NativeSelectOptGroup` to organize options into categories.
+
+```text
+NativeSelect
+├── NativeSelectOptGroup
+│   ├── NativeSelectOption
+│   └── NativeSelectOption
+└── NativeSelectOptGroup
+    ├── NativeSelectOption
+    └── NativeSelectOption
 ```
 
 ## Examples

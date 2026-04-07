@@ -1,7 +1,13 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/radix/ui-rtl/button"
+import { BadgeCheckIcon, ChevronRightIcon } from "lucide-react"
+
+import {
+  useTranslation,
+  type Translations,
+} from "@/components/language-selector"
+import { Button } from "@/styles/radix-nova/ui-rtl/button"
 import {
   Item,
   ItemActions,
@@ -9,13 +15,7 @@ import {
   ItemDescription,
   ItemMedia,
   ItemTitle,
-} from "@/examples/radix/ui-rtl/item"
-import { BadgeCheckIcon, ChevronRightIcon } from "lucide-react"
-
-import {
-  useTranslation,
-  type Translations,
-} from "@/components/language-selector"
+} from "@/styles/radix-nova/ui-rtl/item"
 
 const translations: Translations = {
   en: {

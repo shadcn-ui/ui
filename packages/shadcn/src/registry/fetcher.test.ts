@@ -6,7 +6,7 @@ import {
   RegistryNotFoundError,
   RegistryUnauthorizedError,
 } from "@/src/registry/errors"
-import { HttpResponse, http } from "msw"
+import { http, HttpResponse } from "msw"
 import { setupServer } from "msw/node"
 import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest"
 
@@ -128,7 +128,9 @@ describe("fetchRegistry", () => {
   })
 
   it("should handle 410 errors", async () => {
-    await expect(fetchRegistry(["gone.json"])).rejects.toThrow(RegistryGoneError)
+    await expect(fetchRegistry(["gone.json"])).rejects.toThrow(
+      RegistryGoneError
+    )
   })
 
   it("should handle network errors", async () => {

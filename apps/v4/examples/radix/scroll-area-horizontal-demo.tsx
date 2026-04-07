@@ -1,6 +1,7 @@
 import * as React from "react"
 import Image from "next/image"
-import { ScrollArea, ScrollBar } from "@/examples/radix/ui/scroll-area"
+
+import { ScrollArea, ScrollBar } from "@/styles/radix-nova/ui/scroll-area"
 
 export interface Artwork {
   artist: string
@@ -37,9 +38,9 @@ export function ScrollAreaHorizontalDemo() {
                 height={400}
               />
             </div>
-            <figcaption className="text-muted-foreground pt-2 text-xs">
+            <figcaption className="pt-2 text-xs text-muted-foreground">
               Photo by{" "}
-              <span className="text-foreground font-semibold">
+              <span className="font-semibold text-foreground">
                 {artwork.artist}
               </span>
             </figcaption>

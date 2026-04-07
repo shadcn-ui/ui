@@ -40,7 +40,7 @@ export function DatePickerDemo() {
         <Button
           variant="outline"
           data-empty={!date}
-          className="data-[empty=true]:text-muted-foreground w-[280px] justify-start text-left font-normal"
+          className="w-[280px] justify-start text-left font-normal data-[empty=true]:text-muted-foreground"
         >
           <CalendarIcon />
           {date ? format(date, "PPP") : <span>Pick a date</span>}
@@ -55,6 +55,17 @@ export function DatePickerDemo() {
 ```
 
 See the [React DayPicker](https://react-day-picker.js.org) documentation for more information.
+
+## Composition
+
+A date picker is built from `Popover` and `Calendar` (there is no `DatePicker` root component):
+
+```text
+Popover
+├── PopoverTrigger
+└── PopoverContent
+    └── Calendar
+```
 
 ## Examples
 

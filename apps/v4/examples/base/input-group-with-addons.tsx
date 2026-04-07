@@ -1,19 +1,6 @@
 "use client"
 
 import {
-  Field,
-  FieldDescription,
-  FieldGroup,
-  FieldLabel,
-} from "@/examples/base/ui/field"
-import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupButton,
-  InputGroupInput,
-  InputGroupText,
-} from "@/examples/base/ui/input-group"
-import {
   CopyIcon,
   EyeOffIcon,
   InfoIcon,
@@ -23,6 +10,20 @@ import {
   StarIcon,
 } from "lucide-react"
 import { toast } from "sonner"
+
+import {
+  Field,
+  FieldDescription,
+  FieldGroup,
+  FieldLabel,
+} from "@/styles/base-nova/ui/field"
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButton,
+  InputGroupInput,
+  InputGroupText,
+} from "@/styles/base-nova/ui/input-group"
 
 export function InputGroupWithAddons() {
   return (
@@ -69,7 +70,7 @@ export function InputGroupWithAddons() {
           <InputGroupInput id="input-addon-20" />
           <InputGroupAddon align="block-start">
             <InputGroupText>First Name</InputGroupText>
-            <InfoIcon className="text-muted-foreground ml-auto" />
+            <InfoIcon className="ml-auto text-muted-foreground" />
           </InputGroupAddon>
         </InputGroup>
       </Field>
@@ -79,7 +80,7 @@ export function InputGroupWithAddons() {
           <InputGroupInput id="input-addon-21" />
           <InputGroupAddon align="block-end">
             <InputGroupText>20/240 characters</InputGroupText>
-            <InfoIcon className="text-muted-foreground ml-auto" />
+            <InfoIcon className="ml-auto text-muted-foreground" />
           </InputGroupAddon>
         </InputGroup>
       </Field>

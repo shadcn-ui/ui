@@ -211,7 +211,7 @@ function ToggleGroupWithIcons() {
         <ToggleGroupItem
           value="star"
           aria-label="Toggle star"
-          className="aria-pressed:*:[svg]:fill-foreground aria-pressed:*:[svg]:stroke-foregfill-foreground aria-pressed:bg-transparent"
+          className="aria-pressed:*:[svg]:stroke-foregfill-foreground aria-pressed:bg-transparent aria-pressed:*:[svg]:fill-foreground"
         >
           <IconPlaceholder
             lucide="StarIcon"
@@ -219,13 +219,14 @@ function ToggleGroupWithIcons() {
             hugeicons="StarIcon"
             phosphor="StarIcon"
             remixicon="RiStarLine"
+            data-icon="inline-start"
           />
           Star
         </ToggleGroupItem>
         <ToggleGroupItem
           value="heart"
           aria-label="Toggle heart"
-          className="aria-pressed:*:[svg]:fill-foreground aria-pressed:*:[svg]:stroke-foreground aria-pressed:bg-transparent"
+          className="aria-pressed:bg-transparent aria-pressed:*:[svg]:fill-foreground aria-pressed:*:[svg]:stroke-foreground"
         >
           <IconPlaceholder
             lucide="HeartIcon"
@@ -233,13 +234,14 @@ function ToggleGroupWithIcons() {
             hugeicons="FavouriteIcon"
             phosphor="HeartIcon"
             remixicon="RiHeartLine"
+            data-icon="inline-start"
           />
           Heart
         </ToggleGroupItem>
         <ToggleGroupItem
           value="bookmark"
           aria-label="Toggle bookmark"
-          className="aria-pressed:*:[svg]:fill-foreground aria-pressed:*:[svg]:stroke-foreground aria-pressed:bg-transparent"
+          className="aria-pressed:bg-transparent aria-pressed:*:[svg]:fill-foreground aria-pressed:*:[svg]:stroke-foreground"
         >
           <IconPlaceholder
             lucide="BookmarkIcon"
@@ -247,6 +249,7 @@ function ToggleGroupWithIcons() {
             hugeicons="BookmarkIcon"
             phosphor="BookmarkIcon"
             remixicon="RiBookmarkLine"
+            data-icon="inline-start"
           />
           Bookmark
         </ToggleGroupItem>
@@ -319,6 +322,7 @@ function ToggleGroupSort() {
             hugeicons="ArrowDownIcon"
             phosphor="ArrowDownIcon"
             remixicon="RiArrowDownLine"
+            data-icon="inline-start"
           />
           Newest
         </ToggleGroupItem>
@@ -329,6 +333,7 @@ function ToggleGroupSort() {
             hugeicons="ArrowUpIcon"
             phosphor="ArrowUpIcon"
             remixicon="RiArrowUpLine"
+            data-icon="inline-start"
           />
           Oldest
         </ToggleGroupItem>
@@ -339,6 +344,7 @@ function ToggleGroupSort() {
             hugeicons="TradeUpIcon"
             phosphor="TrendUpIcon"
             remixicon="RiLineChartLine"
+            data-icon="inline-start"
           />
           Popular
         </ToggleGroupItem>
@@ -501,7 +507,7 @@ function ToggleGroupFontWeightSelector() {
             className="flex size-16 flex-col items-center justify-center rounded-xl"
           >
             <span className="text-2xl leading-none font-light">Aa</span>
-            <span className="text-muted-foreground text-xs">Light</span>
+            <span className="text-xs text-muted-foreground">Light</span>
           </ToggleGroupItem>
           <ToggleGroupItem
             value="normal"
@@ -509,7 +515,7 @@ function ToggleGroupFontWeightSelector() {
             className="flex size-16 flex-col items-center justify-center rounded-xl"
           >
             <span className="text-2xl leading-none font-normal">Aa</span>
-            <span className="text-muted-foreground text-xs">Normal</span>
+            <span className="text-xs text-muted-foreground">Normal</span>
           </ToggleGroupItem>
           <ToggleGroupItem
             value="medium"
@@ -517,7 +523,7 @@ function ToggleGroupFontWeightSelector() {
             className="flex size-16 flex-col items-center justify-center rounded-xl"
           >
             <span className="text-2xl leading-none font-medium">Aa</span>
-            <span className="text-muted-foreground text-xs">Medium</span>
+            <span className="text-xs text-muted-foreground">Medium</span>
           </ToggleGroupItem>
           <ToggleGroupItem
             value="bold"
@@ -525,12 +531,12 @@ function ToggleGroupFontWeightSelector() {
             className="flex size-16 flex-col items-center justify-center rounded-xl"
           >
             <span className="text-2xl leading-none font-bold">Aa</span>
-            <span className="text-muted-foreground text-xs">Bold</span>
+            <span className="text-xs text-muted-foreground">Bold</span>
           </ToggleGroupItem>
         </ToggleGroup>
         <FieldDescription>
           Use{" "}
-          <code className="bg-muted rounded-md px-1 py-0.5 font-mono">
+          <code className="rounded-md bg-muted px-1 py-0.5 font-mono">
             font-{fontWeight}
           </code>{" "}
           to set the font weight.
