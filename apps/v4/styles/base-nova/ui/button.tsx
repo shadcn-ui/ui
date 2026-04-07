@@ -54,6 +54,8 @@ function Button({
   VariantProps<typeof buttonVariants> & { loading?: boolean }) {
   return (
     <ButtonPrimitive
+      disabled={loading || props.disabled}
+      aria-busy={loading}
       data-slot="button"
       className={cn(buttonVariants({ variant, size, className }))}
       {...props}
