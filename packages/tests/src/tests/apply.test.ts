@@ -23,6 +23,19 @@ async function createInitializedRtlProject() {
   return fixturePath
 }
 
+async function createInitializedViteRtlProject() {
+  const fixturePath = await createFixtureTestDirectory("vite-app")
+  await npxShadcn(fixturePath, ["init", "--defaults", "--rtl"])
+  await npxShadcn(
+    fixturePath,
+    ["add", "breadcrumb", "pagination", "sidebar", "-y"],
+    {
+      timeout: 120000,
+    }
+  )
+  return fixturePath
+}
+
 async function createInitializedRadixProject() {
   const fixturePath = await createFixtureTestDirectory("next-app")
   await npxShadcn(fixturePath, ["init", "--preset", "a0", "--base", "radix"])
@@ -328,5 +341,68 @@ describe("shadcn apply", () => {
     expect(updatedConfig.tailwind.prefix).toBe("tw-")
     expect(updatedConfig.style).toBe("base-lyra")
     expect(updatedConfig.iconLibrary).toBe("phosphor")
+  })
+
+  it("should keep vite component output rtl-aware when applying a new preset", async () => {
+    const fixturePath = await createInitializedViteRtlProject()
+    const componentsJsonPath = path.join(fixturePath, "components.json")
+    const breadcrumbPath = path.join(
+      fixturePath,
+      "src/components/ui/breadcrumb.tsx"
+    )
+    const paginationPath = path.join(
+      fixturePath,
+      "src/components/ui/pagination.tsx"
+    )
+    const sidebarPath = path.join(fixturePath, "src/components/ui/sidebar.tsx")
+
+    const initialConfig = await fs.readJson(componentsJsonPath)
+    const initialBreadcrumb = await fs.readFile(breadcrumbPath, "utf8")
+    const initialPagination = await fs.readFile(paginationPath, "utf8")
+    const initialSidebar = await fs.readFile(sidebarPath, "utf8")
+
+    expect(initialConfig.style).toBe("base-nova")
+    expect(initialConfig.iconLibrary).toBe("lucide")
+    expect(initialConfig.rtl).toBe(true)
+    expect(initialBreadcrumb).toContain("rtl:rotate-180")
+    expect(initialPagination).toContain("ps-1.5!")
+    expect(initialPagination).toContain("pe-1.5!")
+    expect(initialPagination).toContain("rtl:rotate-180")
+    expect(initialSidebar).toContain("start-")
+    expect(initialSidebar).toContain("end-")
+    expect(initialSidebar).toContain("ms-")
+    expect(initialSidebar).toContain("pe-")
+    expect(initialSidebar).toContain("rtl:")
+
+    const result = await npxShadcn(
+      fixturePath,
+      ["apply", "--preset", "lyra", "-y"],
+      {
+        timeout: 120000,
+      }
+    )
+
+    expect(result.exitCode).toBe(0)
+
+    const updatedConfig = await fs.readJson(componentsJsonPath)
+    const updatedBreadcrumb = await fs.readFile(breadcrumbPath, "utf8")
+    const updatedPagination = await fs.readFile(paginationPath, "utf8")
+    const updatedSidebar = await fs.readFile(sidebarPath, "utf8")
+
+    expect(updatedConfig.style).toBe("base-lyra")
+    expect(updatedConfig.iconLibrary).toBe("phosphor")
+    expect(updatedConfig.rtl).toBe(true)
+    expect(updatedBreadcrumb).toContain("rtl:rotate-180")
+    expect(updatedPagination).toContain("ps-1.5!")
+    expect(updatedPagination).toContain("pe-1.5!")
+    expect(updatedPagination).toContain("rtl:rotate-180")
+    expect(updatedSidebar).toContain("start-")
+    expect(updatedSidebar).toContain("end-")
+    expect(updatedSidebar).toContain("ms-")
+    expect(updatedSidebar).toContain("pe-")
+    expect(updatedSidebar).toContain("rtl:")
+    expect(updatedBreadcrumb).not.toBe(initialBreadcrumb)
+    expect(updatedPagination).not.toBe(initialPagination)
+    expect(updatedSidebar).not.toBe(initialSidebar)
   })
 })
