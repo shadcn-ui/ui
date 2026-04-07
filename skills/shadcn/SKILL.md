@@ -204,7 +204,7 @@ npx shadcn@latest init --name my-app --preset base-nova --template next --monore
 
 # Initialize existing project.
 npx shadcn@latest init --preset base-nova
-npx shadcn@latest init --defaults  # shortcut: --template=next --preset=base-nova
+npx shadcn@latest init --defaults  # shortcut: --template=next --preset=nova (base style implied)
 
 # Apply a preset to an existing project.
 npx shadcn@latest apply --preset a2r6bw
