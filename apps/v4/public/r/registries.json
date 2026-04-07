@@ -1024,5 +1024,11 @@
     "homepage": "https://flowkit-ui.vzkiss.com",
     "url": "https://flowkit-ui.vzkiss.com/r/{name}.json",
     "description": "Opinionated, accessible components on Base UI and shadcn-style primitives — starting with a Creatable Combobox."
+  },  
+  {
+    "name": "@shadcn-dashboard",
+    "homepage": "https://shadcndashboard.dev",
+    "url": "https://shadcndashboard.dev/r/{name}.json",
+    "description": "ShadcnDashboard is a collection of modern, production-ready dashboard layouts, components, and UI patterns built on top of shadcn/ui and Tailwind CSS. It’s designed to help developers build clean, scalable, and data-driven dashboards faster—without compromising on performance, accessibility, or customization."
   }
 ]
