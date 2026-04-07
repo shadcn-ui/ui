@@ -1,7 +1,9 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/radix/ui/button"
+import { BellIcon, MailIcon, MessageSquareIcon } from "lucide-react"
+
+import { Button } from "@/styles/radix-nova/ui/button"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -9,8 +11,7 @@ import {
   DropdownMenuGroup,
   DropdownMenuLabel,
   DropdownMenuTrigger,
-} from "@/examples/radix/ui/dropdown-menu"
-import { BellIcon, MailIcon, MessageSquareIcon } from "lucide-react"
+} from "@/styles/radix-nova/ui/dropdown-menu"
 
 export function DropdownMenuCheckboxesIcons() {
   const [notifications, setNotifications] = React.useState({

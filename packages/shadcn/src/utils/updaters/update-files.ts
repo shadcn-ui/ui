@@ -25,6 +25,7 @@ import { transform } from "@/src/utils/transformers"
 import { transformAsChild } from "@/src/utils/transformers/transform-aschild"
 import { transformCleanup } from "@/src/utils/transformers/transform-cleanup"
 import { transformCssVars } from "@/src/utils/transformers/transform-css-vars"
+import { transformFont } from "@/src/utils/transformers/transform-font"
 import { transformIcons } from "@/src/utils/transformers/transform-icons"
 import { transformImport } from "@/src/utils/transformers/transform-import"
 import { transformMenu } from "@/src/utils/transformers/transform-menu"
@@ -50,6 +51,7 @@ export async function updateFiles(
     isRemote?: boolean
     isWorkspace?: boolean
     path?: string
+    supportedFontMarkers?: string[]
   }
 ) {
   if (!files?.length) {
@@ -167,6 +169,7 @@ export async function updateFiles(
               baseColor,
               transformJsx: !config.tsx,
               isRemote: options.isRemote,
+              supportedFontMarkers: options.supportedFontMarkers,
             },
             [
               transformImport,
@@ -180,6 +183,7 @@ export async function updateFiles(
               ...(_isNext16Middleware(filePath, projectInfo, config)
                 ? [transformNext]
                 : []),
+              transformFont,
               transformCleanup,
             ]
           )
