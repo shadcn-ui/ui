@@ -55,7 +55,7 @@ Applies a preset to an existing project, overwriting preset-driven config, fonts
 | `--preset <preset>` | —     | Preset configuration (named, code, or URL) | —       |
 | `--yes`             | `-y`  | Skip confirmation prompt                   | `false` |
 | `--cwd <cwd>`       | `-c`  | Working directory                          | current |
-| `--silent`          | —     | Mute output                                | `false` |
+| `--silent`          | `-s`  | Mute output                                | `false` |
 
 `[preset]` is a shorthand for `--preset <preset>`. If both are provided, they must match.
 If no preset is provided, the CLI offers to open the custom preset builder on `ui.shadcn.com/create`.

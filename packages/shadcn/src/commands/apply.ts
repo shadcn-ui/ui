@@ -48,7 +48,7 @@ export const apply = new Command()
     "the working directory. defaults to the current directory.",
     process.cwd()
   )
-  .option("--silent", "mute output.", false)
+  .option("-s, --silent", "mute output.", false)
   .action(async (positionalPreset, opts) => {
     try {
       const options = applyOptionsSchema.parse({
@@ -153,15 +153,10 @@ export const apply = new Command()
       await loadEnvFiles(options.cwd)
 
       const currentBase = getBase(existingConfig.style)
-      const { initUrl, presetBase } = resolveApplyInitUrl(preset, currentBase, {
+      const initUrl = resolveApplyInitUrl(preset, currentBase, {
         template,
         rtl,
       })
-
-      let resolvedBase = presetBase ?? currentBase
-      resolvedBase = await confirmBaseSwitch(existingConfig.style, resolvedBase)
-
-      const nextInitUrl = setApplyInitUrlBase(initUrl, resolvedBase)
 
       await withFileBackup(
         path.resolve(options.cwd, "components.json"),
@@ -170,7 +165,7 @@ export const apply = new Command()
             registryBaseConfig,
             installStyleIndex,
             url: cleanUrl,
-          } = await resolveRegistryBaseConfig(nextInitUrl, options.cwd, {
+          } = await resolveRegistryBaseConfig(initUrl, options.cwd, {
             registries: existingConfig.registries as
               | z.infer<typeof registryConfigSchema>
               | undefined,
@@ -179,7 +174,7 @@ export const apply = new Command()
           await runInit({
             cwd: options.cwd,
             yes: true,
-            force: true,
+            force: false,
             reinstall: true,
             defaults: false,
             silent: options.silent,
@@ -193,15 +188,17 @@ export const apply = new Command()
         },
         {
           onBackupFailure: () => {
-            logger.warn(
-              `Could not back up ${highlighter.info("components.json")}.`
+            logger.error(
+              `Could not back up ${highlighter.info(
+                "components.json"
+              )}. Aborting.`
             )
           },
         }
       )
 
       logger.break()
-      logger.log(`Preset applied successfully.`)
+      logger.log("Preset applied successfully.")
       logger.break()
     } catch (error) {
       logger.break()
@@ -263,11 +260,10 @@ export function resolveApplyInitUrl(
       url.searchParams.set("track", "1")
     }
 
-    return {
-      initUrl: url.toString(),
-      presetBase:
-        (url.searchParams.get("base") as "radix" | "base" | null) ?? undefined,
-    }
+    url.searchParams.set("base", currentBase)
+    url.searchParams.set("rtl", String(options.rtl ?? false))
+
+    return url.toString()
   }
 
   if (isPresetCode(preset)) {
@@ -278,38 +274,26 @@ export function resolveApplyInitUrl(
       process.exit(1)
     }
 
-    return {
-      initUrl: resolveInitUrl(
-        {
-          ...decoded,
-          base: "radix",
-          rtl: options.rtl ?? false,
-        },
-        { preset, template: options.template }
-      ),
-      presetBase: undefined,
-    }
+    return resolveInitUrl(
+      {
+        ...decoded,
+        base: currentBase,
+        rtl: options.rtl ?? false,
+      },
+      { preset, template: options.template }
+    )
   }
 
   const resolvedPreset = DEFAULT_PRESETS[preset as keyof typeof DEFAULT_PRESETS]
 
-  return {
-    initUrl: resolveInitUrl(
-      {
-        ...resolvedPreset,
-        base: currentBase,
-        rtl: options.rtl ?? resolvedPreset.rtl,
-      },
-      { template: options.template }
-    ),
-    presetBase: undefined,
-  }
-}
-
-function setApplyInitUrlBase(initUrl: string, base: "radix" | "base") {
-  const url = new URL(initUrl)
-  url.searchParams.set("base", base)
-  return url.toString()
+  return resolveInitUrl(
+    {
+      ...resolvedPreset,
+      base: currentBase,
+      rtl: options.rtl ?? resolvedPreset.rtl,
+    },
+    { template: options.template }
+  )
 }
 
 function quoteShellArg(value: string) {
@@ -322,39 +306,4 @@ function getInitCommand(preset?: string) {
   }
 
   return `shadcn init --preset ${quoteShellArg(preset)}`
-}
-
-async function confirmBaseSwitch(
-  existingStyle: string,
-  resolvedBase: "radix" | "base"
-) {
-  const oldBase = existingStyle.startsWith("base-") ? "base" : "radix"
-  if (resolvedBase === oldBase) return resolvedBase
-
-  logger.warn(
-    `  You are switching from ${highlighter.info(
-      oldBase
-    )} to ${highlighter.info(resolvedBase)}.`
-  )
-  logger.warn(
-    `  Components outside the ${highlighter.info(
-      "ui"
-    )} directory that depend on ${highlighter.info(
-      oldBase
-    )} primitives may need manual updates.`
-  )
-  logger.break()
-
-  const { proceed } = await prompts({
-    type: "confirm",
-    name: "proceed",
-    message: "Would you like to continue?",
-    initial: true,
-  })
-
-  if (!proceed) {
-    process.exit(1)
-  }
-
-  return resolvedBase
 }

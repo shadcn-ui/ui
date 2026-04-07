@@ -1,7 +1,7 @@
 import os from "os"
 import path from "path"
 import fs from "fs-extra"
-import { afterEach, describe, expect, it } from "vitest"
+import { afterEach, describe, expect, it, vi } from "vitest"
 
 import { FILE_BACKUP_SUFFIX, withFileBackup } from "./file-helper"
 
@@ -45,5 +45,28 @@ describe("withFileBackup", () => {
 
     expect(await fs.readFile(filePath, "utf8")).toBe('{"style":"after"}\n')
     expect(await fs.pathExists(`${filePath}${FILE_BACKUP_SUFFIX}`)).toBe(false)
+  })
+
+  it("should abort when backup creation fails", async () => {
+    const filePath = await createTempFile()
+    const consoleErrorSpy = vi
+      .spyOn(console, "error")
+      .mockImplementation(() => {})
+    const renameSyncSpy = vi
+      .spyOn(fs, "renameSync")
+      .mockImplementation(() => {
+        throw new Error("boom")
+      })
+
+    await expect(
+      withFileBackup(filePath, async () => {
+        await fs.writeFile(filePath, '{"style":"after"}\n', "utf8")
+      })
+    ).rejects.toThrow(`Could not back up ${filePath}.`)
+
+    expect(await fs.readFile(filePath, "utf8")).toBe('{"style":"before"}\n')
+
+    renameSyncSpy.mockRestore()
+    consoleErrorSpy.mockRestore()
   })
 })

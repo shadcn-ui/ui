@@ -7,7 +7,7 @@ const SHADCN_URL = REGISTRY_URL.replace(/\/r\/?$/, "")
 
 describe("resolveApplyInitUrl", () => {
   it("should include the inferred template for preset codes", () => {
-    const { initUrl, presetBase } = resolveApplyInitUrl("a0", "base", {
+    const initUrl = resolveApplyInitUrl("a0", "base", {
       template: "next",
       rtl: true,
     })
@@ -16,12 +16,12 @@ describe("resolveApplyInitUrl", () => {
     expect(parsed.origin + parsed.pathname).toBe(`${SHADCN_URL}/init`)
     expect(parsed.searchParams.get("template")).toBe("next")
     expect(parsed.searchParams.get("preset")).toBe("a0")
+    expect(parsed.searchParams.get("base")).toBe("base")
     expect(parsed.searchParams.get("rtl")).toBe("true")
-    expect(presetBase).toBeUndefined()
   })
 
   it("should include the inferred template for named presets", () => {
-    const { initUrl, presetBase } = resolveApplyInitUrl("lyra", "base", {
+    const initUrl = resolveApplyInitUrl("lyra", "base", {
       template: "next",
       rtl: true,
     })
@@ -31,17 +31,19 @@ describe("resolveApplyInitUrl", () => {
     expect(parsed.searchParams.get("template")).toBe("next")
     expect(parsed.searchParams.get("base")).toBe("base")
     expect(parsed.searchParams.get("rtl")).toBe("true")
-    expect(presetBase).toBeUndefined()
   })
 
-  it("should preserve raw preset URLs without injecting a template", () => {
+  it("should keep the current base for raw preset URLs without injecting a template", () => {
     const presetUrl = `${SHADCN_URL}/init?base=radix&style=nova&baseColor=neutral&theme=neutral&iconLibrary=lucide&font=inter&rtl=false&menuAccent=subtle&menuColor=default&radius=default`
-    const { initUrl } = resolveApplyInitUrl(presetUrl, "base", {
+    const initUrl = resolveApplyInitUrl(presetUrl, "base", {
       template: "next",
+      rtl: true,
     })
     const parsed = new URL(initUrl)
 
     expect(parsed.searchParams.get("template")).toBeNull()
     expect(parsed.searchParams.get("track")).toBe("1")
+    expect(parsed.searchParams.get("base")).toBe("base")
+    expect(parsed.searchParams.get("rtl")).toBe("true")
   })
 })

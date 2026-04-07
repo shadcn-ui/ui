@@ -23,6 +23,13 @@ async function createInitializedRtlProject() {
   return fixturePath
 }
 
+async function createInitializedRadixProject() {
+  const fixturePath = await createFixtureTestDirectory("next-app")
+  await npxShadcn(fixturePath, ["init", "--preset", "a0", "--base", "radix"])
+  await npxShadcn(fixturePath, ["add", "button"])
+  return fixturePath
+}
+
 describe("shadcn apply", () => {
   it("should apply a preset with --preset <code>", async () => {
     const fixturePath = await createInitializedProject()
@@ -259,5 +266,67 @@ describe("shadcn apply", () => {
       path.join(fixturePath, "components.json")
     )
     expect(componentsJson.rtl).toBe(true)
+  })
+
+  it("should preserve the current base for raw preset urls", async () => {
+    const fixturePath = await createInitializedRadixProject()
+    const presetUrl = `${getRegistryUrl().replace(/\/r\/?$/, "")}/init?base=base&style=lyra&baseColor=neutral&theme=neutral&iconLibrary=phosphor&font=manrope&rtl=false&menuAccent=subtle&menuColor=default&radius=default`
+
+    const result = await npxShadcn(fixturePath, [
+      "apply",
+      "--preset",
+      presetUrl,
+      "-y",
+    ])
+
+    expect(result.exitCode).toBe(0)
+
+    const componentsJson = await fs.readJson(
+      path.join(fixturePath, "components.json")
+    )
+    expect(componentsJson.style).toBe("radix-lyra")
+  })
+
+  it("should preserve rtl for raw preset urls", async () => {
+    const fixturePath = await createInitializedRtlProject()
+    const presetUrl = `${getRegistryUrl().replace(/\/r\/?$/, "")}/init?base=base&style=lyra&baseColor=neutral&theme=neutral&iconLibrary=phosphor&font=manrope&rtl=false&menuAccent=subtle&menuColor=default&radius=default`
+
+    const result = await npxShadcn(fixturePath, [
+      "apply",
+      "--preset",
+      presetUrl,
+      "-y",
+    ])
+
+    expect(result.exitCode).toBe(0)
+
+    const componentsJson = await fs.readJson(
+      path.join(fixturePath, "components.json")
+    )
+    expect(componentsJson.rtl).toBe(true)
+    expect(componentsJson.style).toBe("base-lyra")
+  })
+
+  it("should preserve non-preset config when applying a preset", async () => {
+    const fixturePath = await createInitializedProject()
+    const componentsJsonPath = path.join(fixturePath, "components.json")
+    const componentsJson = await fs.readJson(componentsJsonPath)
+
+    componentsJson.tailwind.prefix = "tw-"
+    await fs.writeJson(componentsJsonPath, componentsJson, { spaces: 2 })
+
+    const result = await npxShadcn(fixturePath, [
+      "apply",
+      "--preset",
+      "lyra",
+      "-y",
+    ])
+
+    expect(result.exitCode).toBe(0)
+
+    const updatedConfig = await fs.readJson(componentsJsonPath)
+    expect(updatedConfig.tailwind.prefix).toBe("tw-")
+    expect(updatedConfig.style).toBe("base-lyra")
+    expect(updatedConfig.iconLibrary).toBe("phosphor")
   })
 })
