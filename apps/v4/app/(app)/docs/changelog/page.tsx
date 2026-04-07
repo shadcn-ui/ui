@@ -10,7 +10,7 @@ import { Button } from "@/styles/radix-nova/ui/button"
 export const revalidate = false
 export const dynamic = "force-static"
 
-const NUMBER_OF_LATEST_PAGES = 1
+const NUMBER_OF_LATEST_PAGES = 2
 
 export function generateMetadata() {
   return {
