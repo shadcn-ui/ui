@@ -131,6 +131,7 @@ export const init = new Command()
     let componentsJsonBackupPath: string | undefined
     let reinstallComponents: string[] = []
 
+    // Restore components.json backup on unexpected exit (e.g. process.exit in preflight).
     const restoreBackupOnExit = () => {
       if (componentsJsonBackupPath) {
         restoreFileBackup(
@@ -498,6 +499,9 @@ export const init = new Command()
       // We need to check if we're initializing with a new style.
       // This will allow us to determine if we need to install the base style.
       if (components.length > 0) {
+        // Back up existing components.json if it exists.
+        // Since components.json might not be valid at this point,
+        // temporarily rename it to allow preflight to run.
         const componentsJsonPath = path.resolve(cwd, "components.json")
 
         if (hasExistingConfig) {
@@ -510,6 +514,7 @@ export const init = new Command()
           }
         }
 
+        // Resolve registry:base config from the first component.
         const {
           registryBaseConfig,
           installStyleIndex,
@@ -520,6 +525,7 @@ export const init = new Command()
             | undefined,
         })
 
+        // Use the clean URL (track param stripped) for subsequent fetches.
         components[0] = cleanUrl
 
         if (!installStyleIndex) {
@@ -537,10 +543,13 @@ export const init = new Command()
       logger.log(
         `Project initialization completed.\nYou may now add components.`
       )
+
+      // Success — remove the backup and exit listener.
       process.removeListener("exit", restoreBackupOnExit)
       deleteFileBackup(path.resolve(cwd, "components.json"))
       logger.break()
     } catch (error) {
+      // Restore handled by exit listener, but also do it here for non-exit errors.
       process.removeListener("exit", restoreBackupOnExit)
       restoreBackupOnExit()
       logger.break()
