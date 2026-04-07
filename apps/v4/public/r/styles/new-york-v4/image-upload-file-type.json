@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "image-upload-file-type",
+  "registryDependencies": [
+    "image-upload"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/image-upload-file-type.tsx",
+      "content": "import { ImageUpload } from \"@/registry/new-york-v4/ui/image-upload\"\n\nexport default function ImageUploadFileType() {\n  return <ImageUpload accept={[\"image/png\"]} />\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -680,6 +680,31 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "image-upload": {
+      name: "image-upload",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/new-york-v4/ui/image-upload.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/new-york-v4/ui/image-upload")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "image-upload"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     "input-otp": {
       name: "input-otp",
       title: "undefined",
@@ -7752,6 +7777,141 @@ export const Index: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "input-with-text"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "image-upload-demo": {
+      name: "image-upload-demo",
+      title: "undefined",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["image-upload"],
+      files: [
+        {
+          path: "registry/new-york-v4/examples/image-upload-demo.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import(
+          "@/registry/new-york-v4/examples/image-upload-demo"
+        )
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "image-upload-demo"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "image-upload-max-files": {
+      name: "image-upload-max-files",
+      title: "undefined",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["image-upload"],
+      files: [
+        {
+          path: "registry/new-york-v4/examples/image-upload-max-files.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import(
+          "@/registry/new-york-v4/examples/image-upload-max-files"
+        )
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "image-upload-max-files"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "image-upload-file-type": {
+      name: "image-upload-file-type",
+      title: "undefined",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["image-upload"],
+      files: [
+        {
+          path: "registry/new-york-v4/examples/image-upload-file-type.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import(
+          "@/registry/new-york-v4/examples/image-upload-file-type"
+        )
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "image-upload-file-type"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "image-upload-max-size": {
+      name: "image-upload-max-size",
+      title: "undefined",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["image-upload"],
+      files: [
+        {
+          path: "registry/new-york-v4/examples/image-upload-max-size.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import(
+          "@/registry/new-york-v4/examples/image-upload-max-size"
+        )
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "image-upload-max-size"
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "image-upload-custom-preview": {
+      name: "image-upload-custom-preview",
+      title: "undefined",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["image-upload"],
+      files: [
+        {
+          path: "registry/new-york-v4/examples/image-upload-custom-preview.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import(
+          "@/registry/new-york-v4/examples/image-upload-custom-preview"
+        )
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "image-upload-custom-preview"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
