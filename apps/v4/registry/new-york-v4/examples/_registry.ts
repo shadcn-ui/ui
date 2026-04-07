@@ -1380,6 +1380,61 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "image-upload-demo",
+    type: "registry:example",
+    registryDependencies: ["image-upload"],
+    files: [
+      {
+        path: "examples/image-upload-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "image-upload-max-files",
+    type: "registry:example",
+    registryDependencies: ["image-upload"],
+    files: [
+      {
+        path: "examples/image-upload-max-files.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "image-upload-file-type",
+    type: "registry:example",
+    registryDependencies: ["image-upload"],
+    files: [
+      {
+        path: "examples/image-upload-file-type.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "image-upload-max-size",
+    type: "registry:example",
+    registryDependencies: ["image-upload"],
+    files: [
+      {
+        path: "examples/image-upload-max-size.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "image-upload-custom-preview",
+    type: "registry:example",
+    registryDependencies: ["image-upload"],
+    files: [
+      {
+        path: "examples/image-upload-custom-preview.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "input-group-demo",
     type: "registry:example",
     registryDependencies: ["input-group"],

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "image-upload-custom-preview",
+  "registryDependencies": [
+    "image-upload"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/image-upload-custom-preview.tsx",
+      "content": "\"use client\"\n\nimport { XIcon } from \"lucide-react\"\n\nimport { ImageUpload } from \"@/registry/new-york-v4/ui/image-upload\"\n\nexport default function ImageUploadCustomPreview() {\n  return (\n    <ImageUpload\n      renderPreview={({ files, previews, onRemove, disabled }) => (\n        <ul className=\"flex flex-col gap-2\">\n          {files.map((file, i) => (\n            <li\n              key={`${file.name}-${i}`}\n              className=\"flex items-center gap-3 rounded-md border border-border bg-muted/40 px-3 py-2\"\n            >\n              <img\n                src={previews[i]}\n                alt={file.name}\n                className=\"size-10 shrink-0 rounded object-cover\"\n              />\n              <div className=\"flex min-w-0 flex-1 flex-col\">\n                <span className=\"truncate text-xs font-medium\">{file.name}</span>\n                <span className=\"text-[10px] text-muted-foreground\">\n                  {(file.size / 1024).toFixed(0)} KB\n                </span>\n              </div>\n              <button\n                type=\"button\"\n                onClick={() => onRemove(i)}\n                disabled={disabled}\n                className=\"shrink-0 rounded p-1 text-muted-foreground transition-colors hover:text-foreground disabled:pointer-events-none\"\n              >\n                <XIcon className=\"size-3.5\" />\n                <span className=\"sr-only\">Remove {file.name}</span>\n              </button>\n            </li>\n          ))}\n        </ul>\n      )}\n    />\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}
