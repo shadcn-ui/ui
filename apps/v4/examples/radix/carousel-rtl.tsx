@@ -1,18 +1,17 @@
 "use client"
 
-import { Card, CardContent } from "@/examples/radix/ui-rtl/card"
+import {
+  useTranslation,
+  type Translations,
+} from "@/components/language-selector"
+import { Card, CardContent } from "@/styles/radix-nova/ui-rtl/card"
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/examples/radix/ui-rtl/carousel"
-
-import {
-  useTranslation,
-  type Translations,
-} from "@/components/language-selector"
+} from "@/styles/radix-nova/ui-rtl/carousel"
 
 const translations: Translations = {
   en: {

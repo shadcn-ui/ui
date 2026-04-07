@@ -1,4 +1,4 @@
-import { Separator } from "@/examples/base/ui/separator"
+import { Separator } from "@/styles/base-nova/ui/separator"
 
 export function SeparatorMenu() {
   return (
