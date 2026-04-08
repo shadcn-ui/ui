@@ -1030,5 +1030,11 @@
     "homepage": "https://termcn.vercel.app",
     "url": "https://termcn.vercel.app/r/{name}.json",
     "description": "Beautiful terminal UIs, made simple. Ready to use, customizable terminal UI components for React."
+  },
+  {
+    "name": "@ratneshc",
+    "homepage": "https://ratneshc.com/components",
+    "url": "https://ratneshc.com/r/{name}.json",
+    "description": "A curated component registry built on shadcn/ui."
   }
 ]
