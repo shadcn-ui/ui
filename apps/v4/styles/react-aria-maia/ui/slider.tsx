@@ -1,0 +1,83 @@
+"use client"
+
+import {
+  Slider as SliderPrimitive,
+  SliderThumb,
+  SliderTrack,
+  type SliderProps as SliderPrimitiveProps,
+} from "react-aria-components"
+
+import { cn } from "@/lib/utils"
+
+type SliderValue = number | number[]
+type SliderProps<T extends SliderValue = SliderValue> = Omit<
+  SliderPrimitiveProps<T>,
+  "className"
+> & {
+  className?: string
+}
+
+function Slider<T extends SliderValue = SliderValue>({
+  className,
+  ...props
+}: SliderProps<T>) {
+  return (
+    <SliderPrimitive
+      className={cn(
+        "group relative flex w-full touch-none items-center select-none data-disabled:opacity-50 data-vertical:h-full data-vertical:min-h-40 data-vertical:w-auto data-vertical:flex-col",
+        className
+      )}
+      data-slot="slider"
+      {...props}
+    >
+      {({ isDisabled, orientation, state }) => {
+        const hasValues = state.values.length > 0
+        const startPercent =
+          hasValues && state.values.length > 1
+            ? state.getThumbPercent(0) * 100
+            : 0
+        const endPercent = hasValues
+          ? state.getThumbPercent(state.values.length - 1) * 100
+          : 0
+        const sizePercent = Math.max(0, endPercent - startPercent)
+
+        return (
+          <>
+            <SliderTrack
+              data-slot="slider-track"
+              className="relative grow overflow-hidden rounded-4xl bg-muted select-none data-horizontal:h-3 data-horizontal:w-full data-vertical:h-full data-vertical:w-3"
+            >
+              <div
+                data-slot="slider-range"
+                className="absolute bg-primary select-none data-horizontal:h-full data-vertical:w-full"
+                style={
+                  orientation === "vertical"
+                    ? {
+                        bottom: `${startPercent}%`,
+                        height: `${sizePercent}%`,
+                        width: "100%",
+                      }
+                    : {
+                        left: `${startPercent}%`,
+                        width: `${sizePercent}%`,
+                        height: "100%",
+                      }
+                }
+              />
+            </SliderTrack>
+            {state.values.map((_, index) => (
+              <SliderThumb
+                data-slot="slider-thumb"
+                key={index}
+                index={index}
+                className="block size-4 shrink-0 rounded-4xl border border-primary bg-white shadow-sm ring-ring/50 transition-colors select-none group-data-horizontal:top-[50%] group-data-vertical:left-[50%] hover:ring-4 focus-visible:ring-4 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50"
+              />
+            ))}
+          </>
+        )
+      }}
+    </SliderPrimitive>
+  )
+}
+
+export { Slider }

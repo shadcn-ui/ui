@@ -17,7 +17,9 @@ export function DocsBaseSwitcher({
 
   return (
     <div className={cn("inline-flex w-full items-center gap-6", className)}>
-      {BASES.filter(baseItem => source.getPage([`components/${baseItem.name}/${component}`])).map((baseItem) => (
+      {BASES.filter((baseItem) =>
+        source.getPage([`components/${baseItem.name}/${component}`])
+      ).map((baseItem) => (
         <Link
           key={baseItem.name}
           href={`/docs/components/${baseItem.name}/${component}`}
