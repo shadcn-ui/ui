@@ -1018,5 +1018,17 @@
     "homepage": "https://mksingh.dev/docs",
     "url": "https://mksingh.dev/r/{name}.json",
     "description": "A personal registry of production-ready ShadCN components and utilities. Everything is built to drop into your existing ShadCN project with no extra setup."
+  },
+  {
+    "name": "@flowkit-ui",
+    "homepage": "https://flowkit-ui.vzkiss.com",
+    "url": "https://flowkit-ui.vzkiss.com/r/{name}.json",
+    "description": "Opinionated, accessible components on Base UI and shadcn-style primitives — starting with a Creatable Combobox."
+  },
+  {
+    "name": "@termcn",
+    "homepage": "https://termcn.vercel.app",
+    "url": "https://termcn.vercel.app/r/{name}.json",
+    "description": "Beautiful terminal UIs, made simple. Ready to use, customizable terminal UI components for React."
   }
 ]

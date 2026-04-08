@@ -75,9 +75,11 @@ export async function npxShadcn(
   args: string[],
   {
     debug = false,
+    input,
     timeout,
   }: {
     debug?: boolean
+    input?: string
     timeout?: number
   } = {}
 ) {
@@ -86,6 +88,7 @@ export async function npxShadcn(
       REGISTRY_URL: getRegistryUrl(),
       SHADCN_TEMPLATE_DIR: TEMPLATES_DIR,
     },
+    input,
     timeout,
   })
 
