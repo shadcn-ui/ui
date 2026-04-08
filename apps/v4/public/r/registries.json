@@ -1024,5 +1024,11 @@
     "homepage": "https://flowkit-ui.vzkiss.com",
     "url": "https://flowkit-ui.vzkiss.com/r/{name}.json",
     "description": "Opinionated, accessible components on Base UI and shadcn-style primitives — starting with a Creatable Combobox."
+  },
+  {
+    "name": "@termcn",
+    "homepage": "https://termcn.vercel.app",
+    "url": "https://termcn.vercel.app/r/{name}.json",
+    "description": "Beautiful terminal UIs, made simple. Ready to use, customizable terminal UI components for React.",
   }
 ]
