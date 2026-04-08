@@ -1029,6 +1029,6 @@
     "name": "@termcn",
     "homepage": "https://termcn.vercel.app",
     "url": "https://termcn.vercel.app/r/{name}.json",
-    "description": "Beautiful terminal UIs, made simple. Ready to use, customizable terminal UI components for React.",
+    "description": "Beautiful terminal UIs, made simple. Ready to use, customizable terminal UI components for React."
   }
 ]
