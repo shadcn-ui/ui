@@ -56,6 +56,17 @@ export function DatePickerDemo() {
 
 See the [React DayPicker](https://react-day-picker.js.org) documentation for more information.
 
+## Composition
+
+A date picker is built from `Popover` and `Calendar` (there is no `DatePicker` root component):
+
+```text
+Popover
+├── PopoverTrigger
+└── PopoverContent
+    └── Calendar
+```
+
 ## Examples
 
 ### Basic
