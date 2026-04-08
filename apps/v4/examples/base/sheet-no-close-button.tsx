@@ -1,4 +1,4 @@
-import { Button } from "@/examples/base/ui/button"
+import { Button } from "@/styles/base-nova/ui/button"
 import {
   Sheet,
   SheetContent,
@@ -6,7 +6,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/examples/base/ui/sheet"
+} from "@/styles/base-nova/ui/sheet"
 
 export default function SheetNoCloseButton() {
   return (

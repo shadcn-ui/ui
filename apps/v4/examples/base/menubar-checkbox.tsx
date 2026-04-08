@@ -7,7 +7,7 @@ import {
   MenubarSeparator,
   MenubarShortcut,
   MenubarTrigger,
-} from "@/examples/base/ui/menubar"
+} from "@/styles/base-nova/ui/menubar"
 
 export function MenubarCheckbox() {
   return (

@@ -20,6 +20,16 @@ The `init` command installs dependencies, adds the `cn` util, configures Tailwin
 npx shadcn init
 ```
 
+## apply
+
+Use the `apply` command to apply a preset to an existing project.
+
+The `apply` command overwrites the current preset configuration, reinstalls detected UI components, and updates fonts and CSS variables to match the new preset.
+
+```bash
+npx shadcn apply --preset a2r6bw
+```
+
 ## add
 
 Use the `add` command to add components to your project.

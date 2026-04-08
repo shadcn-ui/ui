@@ -3,13 +3,17 @@ import dedent from "dedent"
 import { UI_COMPONENTS } from "@/lib/components"
 import {
   buildRegistryBase,
-  fonts,
+  getBodyFont,
+  getHeadingFont,
+  getInheritedHeadingFontValue,
   type DesignSystemConfig,
 } from "@/registry/config"
 
 // Builds step-by-step markdown instructions for manually setting up a project.
 export function buildInstructions(config: DesignSystemConfig) {
   const registryBase = buildRegistryBase(config)
+  const normalizedFontHeading =
+    config.fontHeading === config.font ? "inherit" : config.fontHeading
 
   const dependencies = [
     ...(registryBase.dependencies ?? []),
@@ -25,13 +29,23 @@ export function buildInstructions(config: DesignSystemConfig) {
     .map(([key, value]) => `  --${key}: ${value};`)
     .join("\n")
 
-  const font = fonts.find((f) => f.name === `font-${config.font}`)
+  const font = getBodyFont(config.font)
+  const headingFont =
+    normalizedFontHeading === "inherit"
+      ? undefined
+      : getHeadingFont(normalizedFontHeading)
 
   const sections = [
     buildDependenciesSection(dependencies),
     buildUtilsSection(),
-    buildCssSection(lightVars, darkVars),
-    buildFontSection(font),
+    buildCssSection(
+      lightVars,
+      darkVars,
+      normalizedFontHeading === "inherit"
+        ? getInheritedHeadingFontValue(config.font)
+        : "var(--font-heading)"
+    ),
+    buildFontSection(font, headingFont),
     buildComponentsJsonSection(config),
     buildAvailableComponentsSection(config),
     config.rtl ? buildRtlSection(config) : null,
@@ -67,7 +81,11 @@ function buildUtilsSection() {
   `
 }
 
-function buildCssSection(lightVars: string, darkVars: string) {
+function buildCssSection(
+  lightVars: string,
+  darkVars: string,
+  fontHeadingValue: string
+) {
   return dedent`
     ## Step 3: Set up CSS
 
@@ -80,6 +98,7 @@ function buildCssSection(lightVars: string, darkVars: string) {
 
     @theme inline {
       --font-sans: var(--font-sans);
+      --font-heading: ${fontHeadingValue};
       --font-mono: var(--font-mono);
       --color-background: var(--background);
       --color-foreground: var(--foreground);
@@ -142,40 +161,74 @@ function buildCssSection(lightVars: string, darkVars: string) {
   `
 }
 
-function buildFontSection(font: (typeof fonts)[number] | undefined) {
+function buildFontSection(
+  font: ReturnType<typeof getBodyFont>,
+  headingFont: ReturnType<typeof getHeadingFont>
+) {
   if (!font) {
     return null
   }
 
   const googleFontsUrl = `https://fonts.google.com/specimen/${font.font.import.replace(/_/g, "+")}`
+  const headingGoogleFontsUrl = headingFont
+    ? `https://fonts.google.com/specimen/${headingFont.font.import.replace(/_/g, "+")}`
+    : null
+  const nextImports = headingFont
+    ? `${font.font.import}, ${headingFont.font.import}`
+    : font.font.import
+  const nextDeclarations = [
+    `const fontSans = ${font.font.import}({`,
+    `  subsets: ["latin"],`,
+    `  variable: "${font.font.variable}",`,
+    `})`,
+    headingFont ? `const fontHeading = ${headingFont.font.import}({` : null,
+    headingFont ? `  subsets: ["latin"],` : null,
+    headingFont ? `  variable: "${headingFont.font.variable}",` : null,
+    headingFont ? `})` : null,
+  ]
+    .filter(Boolean)
+    .join("\n")
+  const nextHtmlClassName = headingFont
+    ? 'className={fontSans.variable + " " + fontHeading.variable}'
+    : `className={fontSans.variable}`
+  const otherFrameworkCss = [
+    ":root {",
+    `  ${font.font.variable}: ${font.font.family};`,
+    ...(headingFont
+      ? [`  ${headingFont.font.variable}: ${headingFont.font.family};`]
+      : []),
+    "}",
+  ].join("\n")
+  const headingSection = headingFont
+    ? dedent`
+
+      This config also uses **${headingFont.title.replace(" (Heading)", "")}** for headings (\`${headingFont.font.variable}\`).
+    `
+    : ""
 
   return dedent`
     ## Step 4: Set up the font
 
     This config uses **${font.title}** (\`${font.font.variable}\`).
+    ${headingSection}
 
     ### Next.js
 
     \`\`\`tsx
-    import { ${font.font.import} } from "next/font/google"
+    import { ${nextImports} } from "next/font/google"
 
-    const fontSans = ${font.font.import}({
-      subsets: ["latin"],
-      variable: "${font.font.variable}",
-    })
+    ${nextDeclarations}
 
-    // Add fontSans.variable to your <html> className.
-    // <html className={fontSans.variable}>
+    // Add the font variable classes to your <html> className.
+    // <html ${nextHtmlClassName}>
     \`\`\`
 
     ### Other frameworks
 
-    Add the font from [Google Fonts](${googleFontsUrl}) and set the \`${font.font.variable}\` CSS variable to the font family:
+    Add the font${headingFont ? "s" : ""} from [Google Fonts](${googleFontsUrl})${headingGoogleFontsUrl ? ` and [Google Fonts](${headingGoogleFontsUrl})` : ""} and set the CSS variable${headingFont ? "s" : ""} to the font famil${headingFont ? "ies" : "y"}:
 
     \`\`\`css
-    :root {
-      ${font.font.variable}: ${font.font.family};
-    }
+    ${otherFrameworkCss}
     \`\`\`
   `
 }

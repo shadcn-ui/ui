@@ -1,6 +1,12 @@
-import { Button } from "@/examples/base/ui/button"
-import { ButtonGroup } from "@/examples/base/ui/button-group"
-import { Field, FieldDescription, FieldLabel } from "@/examples/base/ui/field"
+import { BotIcon, ChevronDownIcon } from "lucide-react"
+
+import { Button } from "@/styles/base-nova/ui/button"
+import { ButtonGroup } from "@/styles/base-nova/ui/button-group"
+import {
+  Field,
+  FieldDescription,
+  FieldLabel,
+} from "@/styles/base-nova/ui/field"
 import {
   Popover,
   PopoverContent,
@@ -8,9 +14,8 @@ import {
   PopoverHeader,
   PopoverTitle,
   PopoverTrigger,
-} from "@/examples/base/ui/popover"
-import { Textarea } from "@/examples/base/ui/textarea"
-import { BotIcon, ChevronDownIcon } from "lucide-react"
+} from "@/styles/base-nova/ui/popover"
+import { Textarea } from "@/styles/base-nova/ui/textarea"
 
 export default function ButtonGroupPopover() {
   return (

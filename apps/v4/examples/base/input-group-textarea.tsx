@@ -1,16 +1,17 @@
 import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupButton,
-  InputGroupText,
-  InputGroupTextarea,
-} from "@/examples/base/ui/input-group"
-import {
   IconBrandJavascript,
   IconCopy,
   IconCornerDownLeft,
   IconRefresh,
 } from "@tabler/icons-react"
+
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButton,
+  InputGroupText,
+  InputGroupTextarea,
+} from "@/styles/base-nova/ui/input-group"
 
 export default function InputGroupTextareaExample() {
   return (

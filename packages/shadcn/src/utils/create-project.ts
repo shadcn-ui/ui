@@ -70,11 +70,9 @@ export async function createProject(
     monorepo: options.monorepo,
   })
 
-  const packageManager =
-    effectiveTemplate.packageManager ??
-    (await getPackageManager(options.cwd, {
-      withFallback: true,
-    }))
+  const packageManager = await getPackageManager(options.cwd, {
+    withFallback: true,
+  })
 
   const projectPath = path.join(options.cwd, projectName)
 

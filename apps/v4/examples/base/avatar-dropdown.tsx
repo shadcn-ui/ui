@@ -1,7 +1,11 @@
 "use client"
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/examples/base/ui/avatar"
-import { Button } from "@/examples/base/ui/button"
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/styles/base-nova/ui/avatar"
+import { Button } from "@/styles/base-nova/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -9,7 +13,7 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/examples/base/ui/dropdown-menu"
+} from "@/styles/base-nova/ui/dropdown-menu"
 
 export function AvatarDropdown() {
   return (

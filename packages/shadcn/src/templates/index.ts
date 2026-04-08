@@ -5,11 +5,7 @@ import { reactRouter } from "./react-router"
 import { start } from "./start"
 import { vite } from "./vite"
 
-export {
-  createTemplate,
-  resolveTemplate,
-  TEMPLATE_BASE_URL,
-} from "./create-template"
+export { createTemplate, resolveTemplate } from "./create-template"
 export type { TemplateInitOptions, TemplateOptions } from "./create-template"
 
 export const templates = {

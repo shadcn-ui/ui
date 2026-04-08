@@ -32,8 +32,6 @@ function App() {
   ],
   monorepo: {
     templateDir: "start-monorepo",
-    packageManager: "pnpm",
-    installArgs: ["--no-frozen-lockfile"],
     init: fontsourceMonorepoInit,
     files: [
       {

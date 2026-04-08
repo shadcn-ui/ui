@@ -44,7 +44,7 @@ The following registry item is a custom style that extends shadcn/ui. On `npx sh
 
 The following registry item is a custom style that doesn't extend shadcn/ui. See the `extends: none` field.
 
-It can be used to create a new style from scratch i.e custom components, css vars, dependencies, etc.
+It can be used to create a new style from scratch, i.e. custom components, css vars, dependencies, etc.
 
 On `npx shadcn add`, the following will:
 
@@ -69,21 +69,21 @@ On `npx shadcn add`, the following will:
   ],
   "cssVars": {
     "theme": {
-      "font-sans": "Inter, sans-serif",
-    }
+      "font-sans": "Inter, sans-serif"
+    },
     "light": {
       "main": "#88aaee",
       "bg": "#dfe5f2",
       "border": "#000",
       "text": "#000",
-      "ring": "#000",
+      "ring": "#000"
     },
     "dark": {
       "main": "#88aaee",
       "bg": "#272933",
       "border": "#000",
       "text": "#e6e6e6",
-      "ring": "#fff",
+      "ring": "#fff"
     }
   }
 }
@@ -147,7 +147,7 @@ The following style will init using shadcn/ui defaults and then add a custom `br
 
 ### Custom block
 
-This blocks installs the `login-01` block from the shadcn/ui registry.
+This block installs the `login-01` block from the shadcn/ui registry.
 
 ```json title="login-01.json" showLineNumbers
 {
@@ -174,7 +174,7 @@ This blocks installs the `login-01` block from the shadcn/ui registry.
 
 ### Install a block and override primitives
 
-You can install a block fromt the shadcn/ui registry and override the primitives using your custom ones.
+You can install a block from the shadcn/ui registry and override the primitives using your custom ones.
 
 On `npx shadcn add`, the following will:
 
@@ -325,7 +325,8 @@ A `registry:font` item installs a Google Font. The `font` field is required and 
     "provider": "google",
     "import": "Inter",
     "variable": "--font-sans",
-    "subsets": ["latin"]
+    "subsets": ["latin"],
+    "dependency": "@fontsource-variable/inter"
   }
 }
 ```
@@ -343,7 +344,8 @@ A `registry:font` item installs a Google Font. The `font` field is required and 
     "import": "JetBrains_Mono",
     "variable": "--font-mono",
     "weight": ["400", "500", "600", "700"],
-    "subsets": ["latin"]
+    "subsets": ["latin"],
+    "dependency": "@fontsource-variable/jetbrains-mono"
   }
 }
 ```
@@ -360,7 +362,8 @@ A `registry:font` item installs a Google Font. The `font` field is required and 
     "provider": "google",
     "import": "Lora",
     "variable": "--font-serif",
-    "subsets": ["latin"]
+    "subsets": ["latin"],
+    "dependency": "@fontsource-variable/lora"
   }
 }
 ```
@@ -380,7 +383,8 @@ Use the `selector` field to apply a font to specific CSS selectors instead of gl
     "import": "Playfair_Display",
     "variable": "--font-heading",
     "subsets": ["latin"],
-    "selector": "h1, h2, h3, h4, h5, h6"
+    "selector": "h1, h2, h3, h4, h5, h6",
+    "dependency": "@fontsource-variable/playfair-display"
   }
 }
 ```
@@ -395,24 +399,24 @@ A `registry:base` item is a complete design system base. It defines the full set
 
 The `config` field accepts the following properties (all optional):
 
-| Property             | Type                               | Description                                                     |
-| -------------------- | ---------------------------------- | --------------------------------------------------------------- |
-| `style`              | `string`                           | The style name for the base.                                    |
-| `iconLibrary`        | `string`                           | The icon library to use (e.g. `lucide`).                        |
-| `rsc`                | `boolean`                          | Whether to enable React Server Components. Defaults to `false`. |
-| `tsx`                | `boolean`                          | Whether to use TypeScript. Defaults to `true`.                  |
-| `rtl`                | `boolean`                          | Whether to enable right-to-left support. Defaults to `false`.   |
-| `menuColor`          | `"default" \| "inverted"`          | The menu color scheme. Defaults to `"default"`.                 |
-| `menuAccent`         | `"subtle" \| "bold"`               | The menu accent style. Defaults to `"subtle"`.                  |
-| `tailwind.baseColor` | `string`                           | The base color name (e.g. `neutral`, `slate`, `zinc`).          |
-| `tailwind.css`       | `string`                           | Path to the Tailwind CSS file.                                  |
-| `tailwind.prefix`    | `string`                           | A prefix to add to all Tailwind classes.                        |
-| `aliases.components` | `string`                           | Import alias for components.                                    |
-| `aliases.utils`      | `string`                           | Import alias for utilities.                                     |
-| `aliases.ui`         | `string`                           | Import alias for UI components.                                 |
-| `aliases.lib`        | `string`                           | Import alias for lib.                                           |
-| `aliases.hooks`      | `string`                           | Import alias for hooks.                                         |
-| `registries`         | `Record<string, string \| object>` | Custom registry URLs. Keys must start with `@`.                 |
+| Property             | Type                                                                         | Description                                                     |
+| -------------------- | ---------------------------------------------------------------------------- | --------------------------------------------------------------- |
+| `style`              | `string`                                                                     | The style name for the base.                                    |
+| `iconLibrary`        | `string`                                                                     | The icon library to use (e.g. `lucide`).                        |
+| `rsc`                | `boolean`                                                                    | Whether to enable React Server Components. Defaults to `false`. |
+| `tsx`                | `boolean`                                                                    | Whether to use TypeScript. Defaults to `true`.                  |
+| `rtl`                | `boolean`                                                                    | Whether to enable right-to-left support. Defaults to `false`.   |
+| `menuColor`          | `"default" \| "inverted" \| "default-translucent" \| "inverted-translucent"` | The menu color scheme. Defaults to `"default"`.                 |
+| `menuAccent`         | `"subtle" \| "bold"`                                                         | The menu accent style. Defaults to `"subtle"`.                  |
+| `tailwind.baseColor` | `string`                                                                     | The base color name (e.g. `neutral`, `slate`, `zinc`).          |
+| `tailwind.css`       | `string`                                                                     | Path to the Tailwind CSS file.                                  |
+| `tailwind.prefix`    | `string`                                                                     | A prefix to add to all Tailwind classes.                        |
+| `aliases.components` | `string`                                                                     | Import alias for components.                                    |
+| `aliases.utils`      | `string`                                                                     | Import alias for utilities.                                     |
+| `aliases.ui`         | `string`                                                                     | Import alias for UI components.                                 |
+| `aliases.lib`        | `string`                                                                     | Import alias for lib.                                           |
+| `aliases.hooks`      | `string`                                                                     | Import alias for hooks.                                         |
+| `registries`         | `Record<string, string \| object>`                                           | Custom registry URLs. Keys must start with `@`.                 |
 
 ```json title="custom-base.json" showLineNumbers
 {
@@ -873,7 +877,7 @@ Note: you need to define both `@keyframes` in css and `theme` in cssVars to use 
 You can add environment variables using the `envVars` field.
 
 ```json title="example-item.json" showLineNumbers {5-9}
-{»
+{
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "custom-item",
   "type": "registry:item",
@@ -917,7 +921,7 @@ Here's an example of a registry item that installs custom Cursor rules for _pyth
 }
 ```
 
-Here's another example for installation custom ESLint config:
+Here's another example for installing a custom ESLint config:
 
 ```json title=".eslintrc.json" showLineNumbers {9}
 {
@@ -940,7 +944,7 @@ You can also have a universal item that installs multiple files:
 ```json title="my-custom-starter-template.json" showLineNumbers {9}
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "my-custom-start-template",
+  "name": "my-custom-starter-template",
   "type": "registry:item",
   "dependencies": ["better-auth"],
   "files": [

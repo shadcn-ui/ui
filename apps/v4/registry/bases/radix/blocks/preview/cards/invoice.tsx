@@ -65,7 +65,7 @@ export function Invoice() {
           <TableBody>
             {INVOICE_ITEMS.map((row) => (
               <TableRow key={row.item}>
-                <TableCell className="text-sm">{row.item}</TableCell>
+                <TableCell>{row.item}</TableCell>
                 <TableCell className="text-right tabular-nums">
                   {row.qty}
                 </TableCell>

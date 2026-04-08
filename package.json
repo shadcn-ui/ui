@@ -15,10 +15,8 @@
   "scripts": {
     "build": "turbo run build",
     "registry:build": "pnpm --filter=v4 registry:build && pnpm lint:fix && pnpm format:write -- --loglevel silent",
-    "registry": "turbo run registry",
     "registry:capture": "pnpm --filter=v4 registry:capture",
     "explore:capture": "pnpm --filter=v4 explore:capture",
-    "examples:build": "pnpm --filter=v4 examples:build",
     "dev": "turbo run dev --parallel",
     "shadcn:dev": "turbo --filter=shadcn dev",
     "shadcn": "pnpm --filter=shadcn start:dev",
@@ -71,7 +69,7 @@
     "tailwindcss": "^3.4.18",
     "tsx": "^4.1.4",
     "turbo": "^1.9.9",
-    "vite": "^7.1.12",
+    "vite": "^7.3.2",
     "vite-tsconfig-paths": "^4.2.0",
     "vitest": "^2.1.9"
   },

@@ -187,8 +187,11 @@ export const add = new Command()
         })
 
         // Resolve registry:base config.
-        const { registryBaseConfig, installStyleIndex } =
-          await resolveRegistryBaseConfig(initUrl, options.cwd)
+        const {
+          registryBaseConfig,
+          installStyleIndex,
+          url: cleanInitUrl,
+        } = await resolveRegistryBaseConfig(initUrl, options.cwd)
 
         config = await runInit({
           cwd: options.cwd,
@@ -201,7 +204,7 @@ export const add = new Command()
           cssVariables: true,
           rtl: false,
           installStyleIndex,
-          components: [initUrl, ...(options.components ?? [])],
+          components: [cleanInitUrl, ...(options.components ?? [])],
           registryBaseConfig,
         })
         initHasRun = true
@@ -228,8 +231,11 @@ export const add = new Command()
           base: selectedBase,
           template,
         })
-        const { registryBaseConfig, installStyleIndex } =
-          await resolveRegistryBaseConfig(initUrl, options.cwd)
+        const {
+          registryBaseConfig,
+          installStyleIndex,
+          url: cleanInitUrl,
+        } = await resolveRegistryBaseConfig(initUrl, options.cwd)
 
         config = await runInit({
           cwd: options.cwd,
@@ -242,7 +248,7 @@ export const add = new Command()
           cssVariables: true,
           rtl: false,
           installStyleIndex,
-          components: [initUrl, ...(options.components ?? [])],
+          components: [cleanInitUrl, ...(options.components ?? [])],
           registryBaseConfig,
         })
         initHasRun = true

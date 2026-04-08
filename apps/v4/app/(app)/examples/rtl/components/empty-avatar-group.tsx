@@ -1,12 +1,15 @@
 "use client"
 
+import { PlusIcon } from "lucide-react"
+
+import { useLanguageContext } from "@/components/language-selector"
 import {
   Avatar,
   AvatarFallback,
   AvatarGroup,
   AvatarImage,
-} from "@/examples/base/ui-rtl/avatar"
-import { Button } from "@/examples/base/ui-rtl/button"
+} from "@/styles/base-nova/ui-rtl/avatar"
+import { Button } from "@/styles/base-nova/ui-rtl/button"
 import {
   Empty,
   EmptyContent,
@@ -14,10 +17,7 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@/examples/base/ui-rtl/empty"
-import { PlusIcon } from "lucide-react"
-
-import { useLanguageContext } from "@/components/language-selector"
+} from "@/styles/base-nova/ui-rtl/empty"
 
 const translations = {
   ar: {

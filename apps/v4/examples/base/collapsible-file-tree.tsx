@@ -1,12 +1,13 @@
-import { Button } from "@/examples/base/ui/button"
-import { Card, CardContent, CardHeader } from "@/examples/base/ui/card"
+import { ChevronRightIcon, FileIcon, FolderIcon } from "lucide-react"
+
+import { Button } from "@/styles/base-nova/ui/button"
+import { Card, CardContent, CardHeader } from "@/styles/base-nova/ui/card"
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/examples/base/ui/collapsible"
-import { Tabs, TabsList, TabsTrigger } from "@/examples/base/ui/tabs"
-import { ChevronRightIcon, FileIcon, FolderIcon } from "lucide-react"
+} from "@/styles/base-nova/ui/collapsible"
+import { Tabs, TabsList, TabsTrigger } from "@/styles/base-nova/ui/tabs"
 
 type FileTreeItem = { name: string } | { name: string; items: FileTreeItem[] }
 

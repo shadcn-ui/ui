@@ -133,7 +133,7 @@ function DialogScrollableContent() {
               This is a dialog with scrollable content.
             </DialogDescription>
           </DialogHeader>
-          <div className="no-scrollbar max-h-[70vh] overflow-y-auto style-vega:-mx-6 style-vega:px-6 style-nova:-mx-4 style-nova:px-4 style-lyra:-mx-4 style-lyra:px-4 style-maia:-mx-6 style-maia:px-6 style-mira:-mx-4 style-mira:px-4">
+          <div className="no-scrollbar max-h-[70vh] overflow-y-auto style-vega:-mx-6 style-vega:px-6 style-nova:-mx-4 style-nova:px-4 style-lyra:-mx-4 style-lyra:px-4 style-maia:-mx-6 style-maia:px-6 style-mira:-mx-4 style-mira:px-4 style-luma:-mx-6 style-luma:px-6">
             {Array.from({ length: 10 }).map((_, index) => (
               <p
                 key={index}
@@ -169,7 +169,7 @@ function DialogWithStickyFooter() {
               This is a dialog with scrollable content.
             </DialogDescription>
           </DialogHeader>
-          <div className="no-scrollbar max-h-[70vh] overflow-y-auto style-vega:-mx-6 style-vega:px-6 style-nova:-mx-4 style-nova:px-4 style-lyra:-mx-4 style-lyra:px-4 style-maia:-mx-6 style-maia:px-6 style-mira:-mx-4 style-mira:px-4">
+          <div className="no-scrollbar max-h-[70vh] overflow-y-auto style-vega:-mx-6 style-vega:px-6 style-nova:-mx-4 style-nova:px-4 style-lyra:-mx-4 style-lyra:px-4 style-maia:-mx-6 style-maia:px-6 style-mira:-mx-4 style-mira:px-4 style-luma:-mx-6 style-luma:px-6">
             {Array.from({ length: 10 }).map((_, index) => (
               <p
                 key={index}
@@ -298,7 +298,7 @@ function DialogChatSettings() {
                 </TabsTrigger>
                 <TabsTrigger value="security">Security</TabsTrigger>
               </TabsList>
-              <div className="border style-vega:min-h-[550px] style-vega:rounded-lg style-vega:p-6 style-nova:min-h-[460px] style-nova:rounded-lg style-nova:p-4 style-lyra:min-h-[450px] style-lyra:rounded-none style-lyra:p-4 style-maia:min-h-[550px] style-maia:rounded-xl style-maia:p-6 style-mira:min-h-[450px] style-mira:rounded-md style-mira:p-4 [&_[data-slot=select-trigger]]:min-w-[125px]">
+              <div className="border style-vega:min-h-[550px] style-vega:rounded-lg style-vega:p-6 style-nova:min-h-[460px] style-nova:rounded-lg style-nova:p-4 style-lyra:min-h-[450px] style-lyra:rounded-none style-lyra:p-4 style-maia:min-h-[550px] style-maia:rounded-xl style-maia:p-6 style-mira:min-h-[450px] style-mira:rounded-md style-mira:p-4 style-luma:min-h-[550px] style-luma:rounded-xl style-luma:p-6 [&_[data-slot=select-trigger]]:min-w-[125px]">
                 <TabsContent value="general">
                   <FieldSet>
                     <FieldGroup>

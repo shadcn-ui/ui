@@ -39,7 +39,7 @@ export default function ScrollAreaExample() {
 function ScrollAreaVertical() {
   return (
     <Example title="Vertical">
-      <ScrollArea className="mx-auto h-72 w-48 rounded-md border">
+      <ScrollArea className="mx-auto h-72 w-48 overflow-hidden rounded-md border style-maia:rounded-2xl style-luma:rounded-2xl">
         <div className="p-4">
           <h4 className="mb-4 text-sm leading-none font-medium">Tags</h4>
           {tags.map((tag) => (
@@ -57,7 +57,7 @@ function ScrollAreaVertical() {
 function ScrollAreaHorizontal() {
   return (
     <Example title="Horizontal">
-      <ScrollArea className="mx-auto w-full max-w-96 rounded-md border p-4">
+      <ScrollArea className="mx-auto w-full max-w-96 overflow-hidden rounded-md border p-4 **:data-[slot=scroll-area-viewport]:rounded-md style-maia:rounded-2xl style-luma:rounded-2xl">
         <div className="flex gap-4">
           {works.map((artwork) => (
             <figure key={artwork.artist} className="shrink-0">
@@ -65,7 +65,7 @@ function ScrollAreaHorizontal() {
                 <Image
                   src={artwork.art}
                   alt={`Photo by ${artwork.artist}`}
-                  className="aspect-[3/4] h-fit w-fit object-cover"
+                  className="aspect-3/4 h-fit w-fit object-cover"
                   width={300}
                   height={400}
                 />

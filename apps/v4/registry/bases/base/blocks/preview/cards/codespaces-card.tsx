@@ -87,26 +87,17 @@ export function CodespacesCard() {
                   </TooltipContent>
                 </Tooltip>
                 <DropdownMenu>
-                  <Tooltip>
-                    <TooltipTrigger
-                      render={
-                        <DropdownMenuTrigger
-                          render={<Button variant="ghost" size="icon-sm" />}
-                        />
-                      }
-                    >
-                      <IconPlaceholder
-                        lucide="MoreHorizontalIcon"
-                        tabler="IconDots"
-                        hugeicons="MoreHorizontalCircle01Icon"
-                        phosphor="DotsThreeOutlineIcon"
-                        remixicon="RiMoreLine"
-                      />
-                    </TooltipTrigger>
-                    <TooltipContent side="bottom">
-                      Codespace repository configuration
-                    </TooltipContent>
-                  </Tooltip>
+                  <DropdownMenuTrigger
+                    render={<Button variant="ghost" size="icon-sm" />}
+                  >
+                    <IconPlaceholder
+                      lucide="MoreHorizontalIcon"
+                      tabler="IconDots"
+                      hugeicons="MoreHorizontalCircle01Icon"
+                      phosphor="DotsThreeOutlineIcon"
+                      remixicon="RiMoreLine"
+                    />
+                  </DropdownMenuTrigger>
                   <DropdownMenuContent align="end" className="w-56">
                     <DropdownMenuGroup>
                       <DropdownMenuItem>

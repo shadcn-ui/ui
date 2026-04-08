@@ -1,9 +1,9 @@
-import { Button } from "@/examples/base/ui/button"
+import { Button } from "@/styles/base-nova/ui/button"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/examples/base/ui/tooltip"
+} from "@/styles/base-nova/ui/tooltip"
 
 export function TooltipDemo() {
   return (

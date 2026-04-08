@@ -28,7 +28,7 @@
     "@types/react-dom": "^19.2.3",
     "tailwindcss": "^4.1.18",
     "typescript": "^5.9.3",
-    "vite": "^7.2.4",
+    "vite": "^7.3.2",
     "vite-tsconfig-paths": "^5.1.4"
   }
 }

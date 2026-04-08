@@ -1,7 +1,17 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/base/ui/button"
+import {
+  FrameIcon,
+  LifeBuoyIcon,
+  MapIcon,
+  PanelLeftCloseIcon,
+  PanelLeftOpenIcon,
+  PieChartIcon,
+  SendIcon,
+} from "lucide-react"
+
+import { Button } from "@/styles/base-nova/ui/button"
 import {
   Sidebar,
   SidebarContent,
@@ -13,16 +23,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarProvider,
-} from "@/examples/base/ui/sidebar"
-import {
-  FrameIcon,
-  LifeBuoyIcon,
-  MapIcon,
-  PanelLeftCloseIcon,
-  PanelLeftOpenIcon,
-  PieChartIcon,
-  SendIcon,
-} from "lucide-react"
+} from "@/styles/base-nova/ui/sidebar"
 
 const projects = [
   {

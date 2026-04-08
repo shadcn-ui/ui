@@ -5,7 +5,7 @@ description: Use the shadcn CLI to add components to your project.
 
 ## init
 
-Use the `init` command to initialize configuration and dependencies for a new project.
+Use the `init` command to initialize configuration and dependencies for an existing project, or create a new project with `--name`.
 
 The `init` command installs dependencies, adds the `cn` util and configures CSS variables for the project.
 
@@ -21,26 +21,26 @@ Usage: shadcn init [options] [components...]
 initialize your project and install dependencies
 
 Arguments:
-  components              name, url or local path to component
+  components                 names, url or local path to component
 
 Options:
   -t, --template <template>  the template to use. (next, vite, start, react-router, laravel, astro)
   -b, --base <base>          the component library to use. (radix, base)
-  -p, --preset [name]        use a preset configuration. (name, URL, or preset code)
-  -n, --name <name>          the name for the new project.
-  -d, --defaults             use default configuration. (default: false)
+  -p, --preset [name]        use a preset configuration
   -y, --yes                  skip confirmation prompt. (default: true)
+  -d, --defaults             use default configuration: --template=next --preset=nova (default: false)
   -f, --force                force overwrite of existing configuration. (default: false)
   -c, --cwd <cwd>            the working directory. defaults to the current directory.
+  -n, --name <name>          the name for the new project.
   -s, --silent               mute output. (default: false)
-  --monorepo                 scaffold a monorepo project.
-  --no-monorepo              skip the monorepo prompt.
-  --reinstall                re-install existing UI components.
-  --no-reinstall             do not re-install existing UI components.
-  --rtl                      enable RTL support.
-  --no-rtl                   disable RTL support.
   --css-variables            use css variables for theming. (default: true)
   --no-css-variables         do not use css variables for theming.
+  --monorepo                 scaffold a monorepo project.
+  --no-monorepo              skip the monorepo prompt.
+  --rtl                      enable RTL support.
+  --no-rtl                   disable RTL support.
+  --reinstall                re-install existing UI components.
+  --no-reinstall             do not re-install existing UI components.
   -h, --help                 display help for command
 ```
 
@@ -81,6 +81,34 @@ Options:
   --diff [path]        show diff for a file.
   --view [path]        show file contents.
   -h, --help           display help for command
+```
+
+---
+
+## apply
+
+Use the `apply` command to apply a preset to an existing project.
+
+```bash
+npx shadcn@latest apply --preset a2r6bw
+```
+
+**Options**
+
+```bash
+Usage: shadcn apply [options] [preset]
+
+apply a preset to an existing project
+
+Arguments:
+  preset             the preset to apply
+
+Options:
+  --preset <preset>  preset configuration to apply
+  -y, --yes          skip confirmation prompt. (default: false)
+  -c, --cwd <cwd>    the working directory. defaults to the current directory.
+  -s, --silent       mute output. (default: false)
+  -h, --help         display help for command
 ```
 
 ---

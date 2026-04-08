@@ -7,6 +7,10 @@
     "family": "'Nunito Sans Variable', sans-serif",
     "provider": "google",
     "import": "Nunito_Sans",
-    "variable": "--font-sans"
+    "variable": "--font-sans",
+    "subsets": [
+      "latin"
+    ],
+    "dependency": "@fontsource-variable/nunito-sans"
   }
 }

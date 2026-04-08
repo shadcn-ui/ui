@@ -126,9 +126,9 @@ export function IconPreviewGrid() {
       <CardContent>
         <div className="grid grid-cols-8 place-items-center gap-4">
           {PREVIEW_ICONS.map((icon, index) => (
-            <Card
+            <div
               key={index}
-              className="flex size-8 items-center justify-center rounded-md p-0 ring ring-border *:[svg]:size-4"
+              className="flex size-8 items-center justify-center rounded-md ring ring-border *:[svg]:size-4"
             >
               <IconPlaceholder
                 lucide={icon.lucide}
@@ -137,7 +137,7 @@ export function IconPreviewGrid() {
                 phosphor={icon.phosphor}
                 remixicon={icon.remixicon}
               />
-            </Card>
+            </div>
           ))}
         </div>
       </CardContent>

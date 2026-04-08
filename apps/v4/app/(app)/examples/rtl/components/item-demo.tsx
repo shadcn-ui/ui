@@ -1,6 +1,9 @@
 "use client"
 
-import { Button } from "@/examples/base/ui-rtl/button"
+import { BadgeCheckIcon, ChevronRightIcon } from "lucide-react"
+
+import { useLanguageContext } from "@/components/language-selector"
+import { Button } from "@/styles/base-nova/ui-rtl/button"
 import {
   Item,
   ItemActions,
@@ -8,10 +11,7 @@ import {
   ItemDescription,
   ItemMedia,
   ItemTitle,
-} from "@/examples/base/ui-rtl/item"
-import { BadgeCheckIcon, ChevronRightIcon } from "lucide-react"
-
-import { useLanguageContext } from "@/components/language-selector"
+} from "@/styles/base-nova/ui-rtl/item"
 
 const translations = {
   ar: {

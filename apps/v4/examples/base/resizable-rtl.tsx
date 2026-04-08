@@ -1,16 +1,16 @@
 "use client"
 
 import * as React from "react"
-import {
-  ResizableHandle,
-  ResizablePanel,
-  ResizablePanelGroup,
-} from "@/examples/base/ui-rtl/resizable"
 
 import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
+import {
+  ResizableHandle,
+  ResizablePanel,
+  ResizablePanelGroup,
+} from "@/styles/base-nova/ui-rtl/resizable"
 
 const translations: Translations = {
   en: {

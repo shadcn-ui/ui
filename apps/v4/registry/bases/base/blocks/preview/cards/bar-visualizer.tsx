@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { useEffect, useMemo, useRef, useState } from "react"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/registry/bases/base/ui/button"
@@ -47,7 +46,9 @@ const multibandDefaults: MultiBandVolumeOptions = {
 }
 
 const normalizeDb = (value: number) => {
-  if (value === -Infinity) return 0
+  if (value === -Infinity) {
+    return 0
+  }
   const minDb = -100
   const maxDb = -10
   const db = 1 - (Math.max(minDb, Math.min(maxDb, value)) * -1) / 100
@@ -64,14 +65,18 @@ function createAudioAnalyser(
   const source = audioContext.createMediaStreamSource(mediaStream)
   const analyser = audioContext.createAnalyser()
 
-  if (options.fftSize) analyser.fftSize = options.fftSize
+  if (options.fftSize) {
+    analyser.fftSize = options.fftSize
+  }
   if (options.smoothingTimeConstant !== undefined) {
     analyser.smoothingTimeConstant = options.smoothingTimeConstant
   }
-  if (options.minDecibels !== undefined)
+  if (options.minDecibels !== undefined) {
     analyser.minDecibels = options.minDecibels
-  if (options.maxDecibels !== undefined)
+  }
+  if (options.maxDecibels !== undefined) {
     analyser.maxDecibels = options.maxDecibels
+  }
 
   source.connect(analyser)
 
@@ -87,46 +92,61 @@ function useMultibandVolume(
   mediaStream?: MediaStream | null,
   options: MultiBandVolumeOptions = {}
 ) {
-  const opts = useMemo(() => ({ ...multibandDefaults, ...options }), [options])
+  const bands = options.bands ?? multibandDefaults.bands ?? 5
+  const loPass = options.loPass ?? multibandDefaults.loPass ?? 100
+  const hiPass = options.hiPass ?? multibandDefaults.hiPass ?? 600
+  const updateInterval =
+    options.updateInterval ?? multibandDefaults.updateInterval ?? 32
+  const fftSize =
+    options.analyserOptions?.fftSize ??
+    multibandDefaults.analyserOptions?.fftSize
+  const smoothingTimeConstant =
+    options.analyserOptions?.smoothingTimeConstant ??
+    multibandDefaults.analyserOptions?.smoothingTimeConstant
+  const minDecibels =
+    options.analyserOptions?.minDecibels ??
+    multibandDefaults.analyserOptions?.minDecibels
+  const maxDecibels =
+    options.analyserOptions?.maxDecibels ??
+    multibandDefaults.analyserOptions?.maxDecibels
 
-  const [frequencyBands, setFrequencyBands] = useState<number[]>(() =>
-    new Array(opts.bands).fill(0)
+  const [frequencyBands, setFrequencyBands] = React.useState<number[]>(() =>
+    new Array(bands).fill(0)
   )
-  const bandsRef = useRef<number[]>(new Array(opts.bands).fill(0))
-  const frameId = useRef<number | undefined>(undefined)
+  const bandsRef = React.useRef<number[]>(new Array(bands).fill(0))
+  const frameId = React.useRef<number | undefined>(undefined)
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (!mediaStream) {
-      const emptyBands = new Array(opts.bands).fill(0)
-      setTimeout(() => {
-        setFrequencyBands(emptyBands)
-      }, 0)
+      const emptyBands = new Array(bands).fill(0)
       bandsRef.current = emptyBands
+      setFrequencyBands(emptyBands)
       return
     }
 
-    const { analyser, cleanup } = createAudioAnalyser(
-      mediaStream,
-      opts.analyserOptions
-    )
+    const { analyser, cleanup } = createAudioAnalyser(mediaStream, {
+      fftSize,
+      smoothingTimeConstant,
+      minDecibels,
+      maxDecibels,
+    })
 
     const bufferLength = analyser.frequencyBinCount
     const dataArray = new Float32Array(bufferLength)
-    const sliceStart = opts.loPass!
-    const sliceEnd = opts.hiPass!
+    const sliceStart = loPass
+    const sliceEnd = hiPass
     const sliceLength = sliceEnd - sliceStart
-    const chunkSize = Math.ceil(sliceLength / opts.bands!)
+    const chunkSize = Math.ceil(sliceLength / bands)
 
     let lastUpdate = 0
-    const updateInterval = opts.updateInterval!
 
     const updateVolume = (timestamp: number) => {
       if (timestamp - lastUpdate >= updateInterval) {
         analyser.getFloatFrequencyData(dataArray)
 
-        const chunks = new Array(opts.bands!)
+        const chunks = new Array(bands)
 
-        for (let i = 0; i < opts.bands!; i++) {
+        for (let i = 0; i < bands; i++) {
           let sum = 0
           let count = 0
           const startIdx = sliceStart + i * chunkSize
@@ -167,7 +187,17 @@ function useMultibandVolume(
         cancelAnimationFrame(frameId.current)
       }
     }
-  }, [mediaStream, opts])
+  }, [
+    bands,
+    fftSize,
+    hiPass,
+    loPass,
+    maxDecibels,
+    mediaStream,
+    minDecibels,
+    smoothingTimeConstant,
+    updateInterval,
+  ])
 
   return frequencyBands
 }
@@ -191,11 +221,11 @@ const useBarAnimator = (
   columns: number,
   interval: number
 ): number[] => {
-  const indexRef = useRef(0)
-  const [currentFrame, setCurrentFrame] = useState<number[]>([])
-  const animationFrameId = useRef<number | null>(null)
+  const indexRef = React.useRef(0)
+  const [currentFrame, setCurrentFrame] = React.useState<number[]>([])
+  const animationFrameId = React.useRef<number | null>(null)
 
-  const sequence = useMemo(() => {
+  const sequence = React.useMemo(() => {
     if (state === "thinking" || state === "listening") {
       return generateListeningSequenceBar(columns)
     } else if (state === "connecting" || state === "initializing") {
@@ -207,14 +237,12 @@ const useBarAnimator = (
     }
   }, [state, columns])
 
-  useEffect(() => {
+  React.useEffect(() => {
     indexRef.current = 0
-    setTimeout(() => {
-      setCurrentFrame(sequence[0] || [])
-    }, 0)
+    setCurrentFrame(sequence[0] || [])
   }, [sequence])
 
-  useEffect(() => {
+  React.useEffect(() => {
     let startTime = performance.now()
 
     const animate = (time: DOMHighResTimeStamp) => {
@@ -298,21 +326,23 @@ const BarVisualizerComponent = React.forwardRef<
       hiPass: 200,
     })
 
-    const fakeVolumeBandsRef = useRef<number[]>(new Array(barCount).fill(0.2))
-    const [fakeVolumeBands, setFakeVolumeBands] = useState<number[]>(() =>
+    const fakeVolumeBandsRef = React.useRef<number[]>(
       new Array(barCount).fill(0.2)
     )
-    const fakeAnimationRef = useRef<number | undefined>(undefined)
+    const [fakeVolumeBands, setFakeVolumeBands] = React.useState<number[]>(() =>
+      new Array(barCount).fill(0.2)
+    )
+    const fakeAnimationRef = React.useRef<number | undefined>(undefined)
 
-    useEffect(() => {
-      if (!demo) return
+    React.useEffect(() => {
+      if (!demo) {
+        return
+      }
 
       if (state !== "speaking" && state !== "listening") {
         const bands = new Array(barCount).fill(0.2)
         fakeVolumeBandsRef.current = bands
-        setTimeout(() => {
-          setFakeVolumeBands(bands)
-        }, 0)
+        setFakeVolumeBands(bands)
         return
       }
 
@@ -360,7 +390,7 @@ const BarVisualizerComponent = React.forwardRef<
       }
     }, [demo, state, barCount])
 
-    const volumeBands = useMemo(
+    const volumeBands = React.useMemo(
       () => (demo ? fakeVolumeBands : realVolumeBands),
       [demo, fakeVolumeBands, realVolumeBands]
     )
@@ -435,7 +465,7 @@ const BarVisualizer = React.memo(
 BarVisualizer.displayName = "BarVisualizer"
 
 export function BarVisualizerCard() {
-  const [state, setState] = useState<AgentState>("speaking")
+  const [state, setState] = React.useState<AgentState>("speaking")
 
   return (
     <Card>

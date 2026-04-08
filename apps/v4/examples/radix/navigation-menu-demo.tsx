@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import Link from "next/link"
+
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -10,7 +11,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "@/examples/radix/ui/navigation-menu"
+} from "@/styles/radix-nova/ui/navigation-menu"
 
 const components: { title: string; href: string; description: string }[] = [
   {

@@ -1,10 +1,11 @@
 "use client"
 
+import * as React from "react"
 import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
 
+import { Button } from "@/registry/bases/radix/ui/button"
 import {
   Card,
-  CardAction,
   CardContent,
   CardDescription,
   CardFooter,
@@ -19,10 +20,6 @@ import {
   ChartTooltipContent,
   type ChartConfig,
 } from "@/registry/bases/radix/ui/chart"
-import {
-  ToggleGroup,
-  ToggleGroupItem,
-} from "@/registry/bases/radix/ui/toggle-group"
 
 const barChartData = [
   { month: "January", desktop: 186, mobile: 80 },
@@ -55,24 +52,13 @@ export function BarChartCard() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Traffic Channels</CardTitle>
-        <CardDescription>
-          Desktop vs mobile over the last 6 months
+        <CardTitle className="text-lg">Traffic channels</CardTitle>
+        <CardDescription className="line-clamp-2 text-sm leading-snug">
+          Monthly desktop and mobile traffic for the last six months—compare
+          volume and mix across platforms and devices at a glance.
         </CardDescription>
-        <CardAction>
-          <ToggleGroup
-            type="single"
-            aria-label="Time range"
-            defaultValue="6m"
-            variant="outline"
-            size="sm"
-          >
-            <ToggleGroupItem value="6m">6M</ToggleGroupItem>
-            <ToggleGroupItem value="12m">12M</ToggleGroupItem>
-          </ToggleGroup>
-        </CardAction>
       </CardHeader>
-      <CardContent className="pt-0">
+      <CardContent className="flex flex-col gap-4 pt-0">
         <ChartContainer
           config={barChartConfig}
           className="max-h-[180px] w-full"
@@ -107,8 +93,6 @@ export function BarChartCard() {
             />
           </BarChart>
         </ChartContainer>
-      </CardContent>
-      <CardFooter>
         <div className="grid w-full grid-cols-3 divide-x divide-border/60">
           <div className="px-2 text-center">
             <div className="text-[0.65rem] text-muted-foreground uppercase">
@@ -136,6 +120,9 @@ export function BarChartCard() {
             </div>
           </div>
         </div>
+      </CardContent>
+      <CardFooter>
+        <Button className="w-full">View report</Button>
       </CardFooter>
     </Card>
   )

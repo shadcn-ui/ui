@@ -15,6 +15,7 @@ build
 
 # misc
 .DS_Store
+.eslintcache
 *.pem
 
 # debug
@@ -43,3 +44,4 @@ tsconfig.tsbuildinfo
 .notes
 .playwright-mcp
 shadcn-workspace
+.codex-artifacts

@@ -1,12 +1,13 @@
-import { Button } from "@/examples/radix/ui/button"
-import { Card, CardContent, CardHeader } from "@/examples/radix/ui/card"
+import { ChevronRightIcon, FileIcon, FolderIcon } from "lucide-react"
+
+import { Button } from "@/styles/radix-nova/ui/button"
+import { Card, CardContent, CardHeader } from "@/styles/radix-nova/ui/card"
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/examples/radix/ui/collapsible"
-import { Tabs, TabsList, TabsTrigger } from "@/examples/radix/ui/tabs"
-import { ChevronRightIcon, FileIcon, FolderIcon } from "lucide-react"
+} from "@/styles/radix-nova/ui/collapsible"
+import { Tabs, TabsList, TabsTrigger } from "@/styles/radix-nova/ui/tabs"
 
 type FileTreeItem = { name: string } | { name: string; items: FileTreeItem[] }
 

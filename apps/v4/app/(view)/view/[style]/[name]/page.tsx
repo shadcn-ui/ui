@@ -12,7 +12,7 @@ import {
 import { absoluteUrl } from "@/lib/utils"
 import { getStyle, legacyStyles, type Style } from "@/registry/_legacy-styles"
 
-import "@/styles/legacy-themes.css"
+import "@/app/legacy-themes.css"
 
 import { ComponentPreview } from "./component-preview"
 

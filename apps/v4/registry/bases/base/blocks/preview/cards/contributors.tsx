@@ -45,7 +45,7 @@ export function Contributors() {
       <CardContent>
         <div className="flex flex-wrap gap-2">
           {usernames.map((username) => (
-            <Avatar key={username}>
+            <Avatar key={username} className="grayscale">
               <AvatarImage
                 src={`https://github.com/${username}.png`}
                 alt={username}

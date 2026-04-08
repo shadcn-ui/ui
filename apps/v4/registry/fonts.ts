@@ -1,206 +1,34 @@
 import { type RegistryItem } from "shadcn/schema"
 
-export const fonts = [
-  {
-    name: "font-geist",
-    title: "Geist",
+import { FONT_DEFINITIONS, type FontDefinition } from "@/lib/font-definitions"
+
+function createFontItem(definition: FontDefinition, role: "body" | "heading") {
+  return {
+    name:
+      role === "body"
+        ? `font-${definition.name}`
+        : `font-heading-${definition.name}`,
+    title: role === "body" ? definition.title : `${definition.title} (Heading)`,
     type: "registry:font",
     font: {
-      family: "'Geist Variable', sans-serif",
-      provider: "google",
-      variable: "--font-sans",
-      subsets: ["latin"],
-      import: "Geist",
+      family: definition.family,
+      provider: definition.provider,
+      variable:
+        role === "body" ? definition.registryVariable : "--font-heading",
+      ...(definition.weight ? { weight: [...definition.weight] } : {}),
+      subsets: [...definition.subsets],
+      import: definition.import,
+      dependency: definition.dependency,
     },
-  },
-  {
-    name: "font-inter",
-    title: "Inter",
-    type: "registry:font",
-    font: {
-      family: "'Inter Variable', sans-serif",
-      provider: "google",
-      variable: "--font-sans",
-      subsets: ["latin"],
-      import: "Inter",
-    },
-  },
-  {
-    name: "font-noto-sans",
-    title: "Noto Sans",
-    type: "registry:font",
-    font: {
-      family: "'Noto Sans Variable', sans-serif",
-      provider: "google",
-      variable: "--font-sans",
-      import: "Noto_Sans",
-    },
-  },
-  {
-    name: "font-nunito-sans",
-    title: "Nunito Sans",
-    type: "registry:font",
-    font: {
-      family: "'Nunito Sans Variable', sans-serif",
-      provider: "google",
-      variable: "--font-sans",
-      import: "Nunito_Sans",
-    },
-  },
-  {
-    name: "font-figtree",
-    title: "Figtree",
-    type: "registry:font",
-    font: {
-      family: "'Figtree Variable', sans-serif",
-      provider: "google",
-      variable: "--font-sans",
-      subsets: ["latin"],
-      import: "Figtree",
-    },
-  },
-  {
-    name: "font-roboto",
-    title: "Roboto",
-    type: "registry:font",
-    font: {
-      family: "'Roboto Variable', sans-serif",
-      provider: "google",
-      variable: "--font-sans",
-      subsets: ["latin"],
-      import: "Roboto",
-    },
-  },
-  {
-    name: "font-raleway",
-    title: "Raleway",
-    type: "registry:font",
-    font: {
-      family: "'Raleway Variable', sans-serif",
-      provider: "google",
-      variable: "--font-sans",
-      subsets: ["latin"],
-      import: "Raleway",
-    },
-  },
-  {
-    name: "font-dm-sans",
-    title: "DM Sans",
-    type: "registry:font",
-    font: {
-      family: "'DM Sans Variable', sans-serif",
-      provider: "google",
-      variable: "--font-sans",
-      subsets: ["latin"],
-      import: "DM_Sans",
-    },
-  },
-  {
-    name: "font-public-sans",
-    title: "Public Sans",
-    type: "registry:font",
-    font: {
-      family: "'Public Sans Variable', sans-serif",
-      provider: "google",
-      variable: "--font-sans",
-      subsets: ["latin"],
-      import: "Public_Sans",
-    },
-  },
-  {
-    name: "font-outfit",
-    title: "Outfit",
-    type: "registry:font",
-    font: {
-      family: "'Outfit Variable', sans-serif",
-      provider: "google",
-      variable: "--font-sans",
-      subsets: ["latin"],
-      import: "Outfit",
-    },
-  },
-  {
-    name: "font-jetbrains-mono",
-    title: "JetBrains Mono",
-    type: "registry:font",
-    font: {
-      family: "'JetBrains Mono Variable', monospace",
-      provider: "google",
-      variable: "--font-mono",
-      subsets: ["latin"],
-      import: "JetBrains_Mono",
-    },
-  },
-  {
-    name: "font-geist-mono",
-    title: "Geist Mono",
-    type: "registry:font",
-    font: {
-      family: "'Geist Mono Variable', monospace",
-      provider: "google",
-      variable: "--font-mono",
-      subsets: ["latin"],
-      import: "Geist_Mono",
-    },
-  },
-  {
-    name: "font-noto-serif",
-    title: "Noto Serif",
-    type: "registry:font",
-    font: {
-      family: "'Noto Serif Variable', serif",
-      provider: "google",
-      variable: "--font-serif",
-      subsets: ["latin"],
-      import: "Noto_Serif",
-    },
-  },
-  {
-    name: "font-roboto-slab",
-    title: "Roboto Slab",
-    type: "registry:font",
-    font: {
-      family: "'Roboto Slab Variable', serif",
-      provider: "google",
-      variable: "--font-serif",
-      subsets: ["latin"],
-      import: "Roboto_Slab",
-    },
-  },
-  {
-    name: "font-merriweather",
-    title: "Merriweather",
-    type: "registry:font",
-    font: {
-      family: "'Merriweather Variable', serif",
-      provider: "google",
-      variable: "--font-serif",
-      subsets: ["latin"],
-      import: "Merriweather",
-    },
-  },
-  {
-    name: "font-lora",
-    title: "Lora",
-    type: "registry:font",
-    font: {
-      family: "'Lora Variable', serif",
-      provider: "google",
-      variable: "--font-serif",
-      subsets: ["latin"],
-      import: "Lora",
-    },
-  },
-  {
-    name: "font-playfair-display",
-    title: "Playfair Display",
-    type: "registry:font",
-    font: {
-      family: "'Playfair Display Variable', serif",
-      provider: "google",
-      variable: "--font-serif",
-      subsets: ["latin"],
-      import: "Playfair_Display",
-    },
-  },
-] satisfies RegistryItem[]
+  } satisfies RegistryItem
+}
+
+export const bodyFonts = FONT_DEFINITIONS.map((definition) =>
+  createFontItem(definition, "body")
+) satisfies RegistryItem[]
+
+export const headingFonts = FONT_DEFINITIONS.map((definition) =>
+  createFontItem(definition, "heading")
+) satisfies RegistryItem[]
+
+export const fonts = [...bodyFonts, ...headingFonts] satisfies RegistryItem[]

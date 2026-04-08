@@ -10,6 +10,7 @@
     "variable": "--font-serif",
     "subsets": [
       "latin"
-    ]
+    ],
+    "dependency": "@fontsource-variable/roboto-slab"
   }
 }

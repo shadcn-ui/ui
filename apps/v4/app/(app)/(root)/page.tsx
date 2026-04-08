@@ -63,11 +63,7 @@ export default function IndexPage() {
           </Button>
         </PageActions>
       </PageHeader>
-      <PageNav className="hidden md:flex">
-        <ExamplesNav className="flex-1 overflow-hidden [&>a:first-child]:text-primary" />
-        <ThemeSelector className="mr-4 hidden md:flex" />
-      </PageNav>
-      <div className="container-wrapper flex-1 section-soft pb-6">
+      <div className="container-wrapper flex-1 pb-6">
         <div className="container overflow-hidden">
           <section className="-mx-4 w-[160vw] overflow-hidden rounded-lg border border-border/50 md:hidden md:w-[150vw]">
             <Image
