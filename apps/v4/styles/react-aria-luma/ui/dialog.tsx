@@ -172,7 +172,10 @@ function DialogTitle({
     <Heading
       slot="title"
       data-slot="dialog-title"
-      className={cn("text-base leading-none font-medium", className)}
+      className={cn(
+        "cn-font-heading text-base leading-none font-medium",
+        className
+      )}
       {...props}
     />
   )

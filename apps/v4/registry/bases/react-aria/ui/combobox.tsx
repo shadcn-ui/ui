@@ -174,7 +174,7 @@ function ComboboxContent({
         />
       )}
       className={cn(
-        "cn-combobox-content cn-combobox-content-logical cn-menu-target relative isolate z-50 w-(--trigger-width) origin-(--trigger-anchor-point) data-[chips=true]:min-w-(--anchor-width)",
+        "cn-combobox-content cn-combobox-content-logical cn-menu-target cn-menu-translucent relative isolate z-50 w-(--trigger-width) origin-(--trigger-anchor-point) data-[chips=true]:min-w-(--anchor-width)",
         className
       )}
       {...props}

@@ -51,7 +51,10 @@ function SheetOverlay({
     <ModalOverlayPrimitive
       data-slot="sheet-overlay"
       isDismissable
-      className={cn("cn-sheet-overlay fixed inset-0 z-50", className)}
+      className={cn(
+        "cn-sheet-overlay fixed inset-0 z-50 transition-opacity duration-150 data-exiting:opacity-0 data-entering:opacity-0",
+        className
+      )}
       // Keep existing data-open/data-closed selectors working with RAC state.
       render={(renderProps, state: ModalRenderProps) => (
         <div
@@ -85,7 +88,10 @@ function Sheet({
       <ModalPrimitive
         data-slot="sheet-content"
         data-side={side}
-        className={cn("cn-sheet-content", className)}
+        className={cn(
+          "cn-sheet-content data-exiting:opacity-0 data-entering:opacity-0 data-[side=bottom]:data-exiting:translate-y-[2.5rem] data-[side=bottom]:data-entering:translate-y-[2.5rem] data-[side=left]:data-exiting:translate-x-[-2.5rem] data-[side=left]:data-entering:translate-x-[-2.5rem] data-[side=right]:data-exiting:translate-x-[2.5rem] data-[side=right]:data-entering:translate-x-[2.5rem] data-[side=top]:data-exiting:translate-y-[-2.5rem] data-[side=top]:data-entering:translate-y-[-2.5rem]",
+          className
+        )}
         // Keep existing data-open/data-closed selectors working with RAC state.
         render={(renderProps, state: ModalRenderProps) => (
           <div
@@ -172,7 +178,7 @@ function SheetTitle({
     <Heading
       slot="title"
       data-slot="sheet-title"
-      className={cn("cn-sheet-title", className)}
+      className={cn("cn-sheet-title cn-font-heading", className)}
       {...props}
     />
   )

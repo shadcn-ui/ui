@@ -74,7 +74,7 @@ export function AssignIssue() {
         >
           <ComboboxChips ref={anchor}>
             <ComboboxChipList<{ username: string }>>
-              {(value) => (
+              {(value: { username: string }) => (
                 <ComboboxChip id={value.username}>
                   <Avatar className="size-4">
                     <AvatarImage

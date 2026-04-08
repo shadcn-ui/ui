@@ -136,7 +136,7 @@ function SelectContent({
         />
       )}
       className={cn(
-        "cn-select-content cn-select-content-logical cn-menu-target relative isolate z-50 w-(--trigger-width) origin-(--trigger-anchor-point) overflow-hidden",
+        "cn-select-content cn-select-content-logical cn-menu-target cn-menu-translucent relative isolate z-50 w-(--trigger-width) origin-(--trigger-anchor-point) overflow-hidden",
         className
       )}
       {...props}
