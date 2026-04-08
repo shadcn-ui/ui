@@ -1030,5 +1030,11 @@
     "homepage": "https://www.remocn.dev/",
     "url": "https://www.remocn.dev/r/{name}.json",
     "description": "Production-ready components for Remotion - text animations, backgrounds, transitions, UI blocks, and full scene compositions"
+  },
+  {
+    "name": "@io",
+    "homepage": "https://www.shadcn.io/",
+    "url": "https://www.shadcn.io/r/{name}.json",
+    "description": "The AI-Native shadcn/ui Component Library for React."
   }
 ]
