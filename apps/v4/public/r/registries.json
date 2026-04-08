@@ -1030,5 +1030,11 @@
     "homepage": "https://termcn.vercel.app",
     "url": "https://termcn.vercel.app/r/{name}.json",
     "description": "Beautiful terminal UIs, made simple. Ready to use, customizable terminal UI components for React."
+  },
+  {
+    "name": "@remocn",
+    "homepage": "https://www.remocn.dev/",
+    "url": "https://www.remocn.dev/r/{name}.json",
+    "description": "Production-ready components for Remotion - text animations, backgrounds, transitions, UI blocks, and full scene compositions"
   }
 ]
