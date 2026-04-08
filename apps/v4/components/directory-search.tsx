@@ -1,23 +1,24 @@
-import * as React from "react"
+"use client"
+
 import { Search, X } from "lucide-react"
 
-import { useSearchRegistry } from "@/hooks/use-search-registry"
-import { Field } from "@/registry/new-york-v4/ui/field"
+import { Field } from "@/styles/base-nova/ui/field"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
-} from "@/registry/new-york-v4/ui/input-group"
+} from "@/styles/base-nova/ui/input-group"
 
-export const SearchDirectory = () => {
-  const { query, registries, setQuery } = useSearchRegistry()
-
-  const onQueryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value
-    setQuery(value)
-  }
-
+export function SearchDirectory({
+  query,
+  registriesCount,
+  setQuery,
+}: {
+  query: string
+  registriesCount: number
+  setQuery: (value: string | null) => void
+}) {
   return (
     <Field>
       <InputGroup>
@@ -25,14 +26,15 @@ export const SearchDirectory = () => {
           <Search />
         </InputGroupAddon>
         <InputGroupInput
+          className="h-full"
           placeholder="Search"
           value={query}
-          onChange={onQueryChange}
+          onChange={(e) => setQuery(e.target.value)}
         />
         <InputGroupAddon align="inline-end">
           <span className="text-muted-foreground tabular-nums sm:text-xs">
-            {registries.length}{" "}
-            {registries.length === 1 ? "registry" : "registries"}
+            {registriesCount}{" "}
+            {registriesCount === 1 ? "registry" : "registries"}
           </span>
         </InputGroupAddon>
         <InputGroupAddon
