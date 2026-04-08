@@ -1,10 +1,12 @@
-import { Button } from "@/examples/react-aria/ui/button"
+import { MoreHorizontalIcon } from "lucide-react"
+
+import { Button } from "@/styles/react-aria-nova/ui/button"
 import {
   DropdownMenu,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/examples/react-aria/ui/dropdown-menu"
+} from "@/styles/react-aria-nova/ui/dropdown-menu"
 import {
   Table,
   TableBody,
@@ -12,8 +14,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/examples/react-aria/ui/table"
-import { MoreHorizontalIcon } from "lucide-react"
+} from "@/styles/react-aria-nova/ui/table"
 
 export function TableActions() {
   return (

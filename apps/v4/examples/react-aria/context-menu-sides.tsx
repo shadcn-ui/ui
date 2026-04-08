@@ -1,12 +1,13 @@
 "use client"
 
+import { Pressable } from "react-aria-components"
+
 import {
   ContextMenu,
   ContextMenuGroup,
   ContextMenuItem,
   ContextMenuTrigger,
-} from "@/examples/react-aria/ui/context-menu"
-import { Pressable } from "react-aria-components"
+} from "@/styles/react-aria-nova/ui/context-menu"
 
 export function ContextMenuSides() {
   return (

@@ -1,9 +1,10 @@
-import { Button } from "@/examples/react-aria/ui/button"
+import { IconPlus } from "@tabler/icons-react"
+
+import { Button } from "@/styles/react-aria-nova/ui/button"
 import {
   ButtonGroup,
   ButtonGroupSeparator,
-} from "@/examples/react-aria/ui/button-group"
-import { IconPlus } from "@tabler/icons-react"
+} from "@/styles/react-aria-nova/ui/button-group"
 
 export default function ButtonGroupSplit() {
   return (

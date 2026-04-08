@@ -1,6 +1,7 @@
-import { Button } from "@/examples/react-aria/ui/button"
-import { ButtonGroup } from "@/examples/react-aria/ui/button-group"
 import { MinusIcon, PlusIcon } from "lucide-react"
+
+import { Button } from "@/styles/react-aria-nova/ui/button"
+import { ButtonGroup } from "@/styles/react-aria-nova/ui/button-group"
 
 export default function ButtonGroupOrientation() {
   return (

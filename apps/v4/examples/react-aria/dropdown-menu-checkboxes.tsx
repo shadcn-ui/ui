@@ -1,15 +1,16 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/react-aria/ui/button"
+import type { Selection } from "react-aria-components"
+
+import { Button } from "@/styles/react-aria-nova/ui/button"
 import {
   DropdownMenu,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuTrigger,
-} from "@/examples/react-aria/ui/dropdown-menu"
-import type { Selection } from "react-aria-components"
+} from "@/styles/react-aria-nova/ui/dropdown-menu"
 
 export function DropdownMenuCheckboxes() {
   const [selectedKeys, setSelectedKeys] = React.useState<Selection>(

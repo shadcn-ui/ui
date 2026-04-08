@@ -1,19 +1,19 @@
 "use client"
 
 import * as React from "react"
-import { Card, CardContent } from "@/examples/react-aria/ui-rtl/card"
+
+import {
+  useTranslation,
+  type Translations,
+} from "@/components/language-selector"
+import { Card, CardContent } from "@/styles/react-aria-nova/ui-rtl/card"
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/examples/react-aria/ui-rtl/carousel"
-
-import {
-  useTranslation,
-  type Translations,
-} from "@/components/language-selector"
+} from "@/styles/react-aria-nova/ui-rtl/carousel"
 
 const translations: Translations = {
   en: {

@@ -1,6 +1,6 @@
 "use client"
 
-import { buttonVariants } from "@/examples/react-aria/ui/button"
+import { buttonVariants } from "@/styles/react-aria-nova/ui/button"
 
 export default function ButtonRender() {
   return (

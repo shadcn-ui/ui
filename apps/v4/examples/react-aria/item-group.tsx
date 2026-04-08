@@ -1,10 +1,12 @@
 import * as React from "react"
+import { PlusIcon } from "lucide-react"
+
 import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "@/examples/react-aria/ui/avatar"
-import { Button } from "@/examples/react-aria/ui/button"
+} from "@/styles/react-aria-nova/ui/avatar"
+import { Button } from "@/styles/react-aria-nova/ui/button"
 import {
   Item,
   ItemActions,
@@ -14,8 +16,7 @@ import {
   ItemMedia,
   ItemSeparator,
   ItemTitle,
-} from "@/examples/react-aria/ui/item"
-import { PlusIcon } from "lucide-react"
+} from "@/styles/react-aria-nova/ui/item"
 
 const people = [
   {

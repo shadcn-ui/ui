@@ -1,4 +1,4 @@
-import { Button } from "@/examples/react-aria/ui/button"
+import { Button } from "@/styles/react-aria-nova/ui/button"
 import {
   Dialog,
   DialogClose,
@@ -7,10 +7,10 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/examples/react-aria/ui/dialog"
-import { Field, FieldGroup } from "@/examples/react-aria/ui/field"
-import { Input } from "@/examples/react-aria/ui/input"
-import { Label } from "@/examples/react-aria/ui/label"
+} from "@/styles/react-aria-nova/ui/dialog"
+import { Field, FieldGroup } from "@/styles/react-aria-nova/ui/field"
+import { Input } from "@/styles/react-aria-nova/ui/input"
+import { Label } from "@/styles/react-aria-nova/ui/label"
 
 export function DialogDemo() {
   return (

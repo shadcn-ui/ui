@@ -1,14 +1,15 @@
+import { Link2Icon } from "lucide-react"
+
 import {
   ButtonGroup,
   ButtonGroupText,
-} from "@/examples/react-aria/ui/button-group"
+} from "@/styles/react-aria-nova/ui/button-group"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
-} from "@/examples/react-aria/ui/input-group"
-import { Label } from "@/examples/react-aria/ui/label"
-import { Link2Icon } from "lucide-react"
+} from "@/styles/react-aria-nova/ui/input-group"
+import { Label } from "@/styles/react-aria-nova/ui/label"
 
 export default function InputGroupButtonGroup() {
   return (

@@ -1,8 +1,9 @@
+import { Bold, Italic, Underline } from "lucide-react"
+
 import {
   ToggleGroup,
   ToggleGroupItem,
-} from "@/examples/react-aria/ui/toggle-group"
-import { Bold, Italic, Underline } from "lucide-react"
+} from "@/styles/react-aria-nova/ui/toggle-group"
 
 export function ToggleGroupDisabled() {
   return (

@@ -2,7 +2,7 @@ import {
   NativeSelect,
   NativeSelectOptGroup,
   NativeSelectOption,
-} from "@/examples/react-aria/ui/native-select"
+} from "@/styles/react-aria-nova/ui/native-select"
 
 export default function NativeSelectGroups() {
   return (

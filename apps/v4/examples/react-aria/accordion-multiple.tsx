@@ -3,7 +3,7 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/examples/react-aria/ui/accordion"
+} from "@/styles/react-aria-nova/ui/accordion"
 
 const items = [
   {

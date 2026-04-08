@@ -1,4 +1,4 @@
-import { Button } from "@/examples/react-aria/ui/button"
+import { Button } from "@/styles/react-aria-nova/ui/button"
 import {
   Dialog,
   DialogClose,
@@ -7,7 +7,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/examples/react-aria/ui/dialog"
+} from "@/styles/react-aria-nova/ui/dialog"
 
 export function DialogStickyFooter() {
   return (

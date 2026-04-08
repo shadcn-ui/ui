@@ -2,7 +2,7 @@ import {
   Field,
   FieldDescription,
   FieldLabel,
-} from "@/examples/react-aria/ui/field"
+} from "@/styles/react-aria-nova/ui/field"
 import {
   Select,
   SelectContent,
@@ -10,7 +10,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/examples/react-aria/ui/select"
+} from "@/styles/react-aria-nova/ui/select"
 
 const items = [
   { label: "Engineering", value: "engineering" },

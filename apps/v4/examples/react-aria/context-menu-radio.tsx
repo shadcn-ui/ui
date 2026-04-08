@@ -1,6 +1,8 @@
 "use client"
 
 import * as React from "react"
+import { Pressable } from "react-aria-components"
+
 import {
   ContextMenu,
   ContextMenuGroup,
@@ -8,8 +10,7 @@ import {
   ContextMenuLabel,
   ContextMenuSeparator,
   ContextMenuTrigger,
-} from "@/examples/react-aria/ui/context-menu"
-import { Pressable } from "react-aria-components"
+} from "@/styles/react-aria-nova/ui/context-menu"
 
 export function ContextMenuRadio() {
   const [user, setUser] = React.useState("pedro")

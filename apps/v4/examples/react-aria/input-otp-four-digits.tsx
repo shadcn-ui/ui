@@ -1,11 +1,12 @@
 "use client"
 
+import { REGEXP_ONLY_DIGITS } from "input-otp"
+
 import {
   InputOTP,
   InputOTPGroup,
   InputOTPSlot,
-} from "@/examples/react-aria/ui/input-otp"
-import { REGEXP_ONLY_DIGITS } from "input-otp"
+} from "@/styles/react-aria-nova/ui/input-otp"
 
 export function InputOTPFourDigits() {
   return (

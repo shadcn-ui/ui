@@ -5,7 +5,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/examples/react-aria/ui/select"
+} from "@/styles/react-aria-nova/ui/select"
 
 export function SelectDisabled() {
   const items = [

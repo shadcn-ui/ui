@@ -1,8 +1,8 @@
-import { Label } from "@/examples/react-aria/ui/label"
+import { Label } from "@/styles/react-aria-nova/ui/label"
 import {
   RadioGroup,
   RadioGroupItem,
-} from "@/examples/react-aria/ui/radio-group"
+} from "@/styles/react-aria-nova/ui/radio-group"
 
 export function RadioGroupDemo() {
   return (

@@ -1,5 +1,11 @@
 "use client"
 
+import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
+
+import {
+  useTranslation,
+  type Translations,
+} from "@/components/language-selector"
 import {
   ChartContainer,
   ChartLegend,
@@ -7,13 +13,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
   type ChartConfig,
-} from "@/examples/react-aria/ui-rtl/chart"
-import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
-
-import {
-  useTranslation,
-  type Translations,
-} from "@/components/language-selector"
+} from "@/styles/react-aria-nova/ui-rtl/chart"
 
 const translations: Translations = {
   en: {

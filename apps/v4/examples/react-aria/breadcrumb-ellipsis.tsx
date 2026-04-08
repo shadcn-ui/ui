@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+
 import {
   Breadcrumb,
   BreadcrumbEllipsis,
@@ -8,7 +9,7 @@ import {
   BreadcrumbLink,
   BreadcrumbList,
   BreadcrumbPage,
-} from "@/examples/react-aria/ui/breadcrumb"
+} from "@/styles/react-aria-nova/ui/breadcrumb"
 
 export function BreadcrumbEllipsisDemo() {
   return (

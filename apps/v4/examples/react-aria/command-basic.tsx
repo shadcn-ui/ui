@@ -1,7 +1,8 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/react-aria/ui/button"
+
+import { Button } from "@/styles/react-aria-nova/ui/button"
 import {
   Command,
   CommandDialog,
@@ -10,7 +11,7 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@/examples/react-aria/ui/command"
+} from "@/styles/react-aria-nova/ui/command"
 
 export function CommandBasic() {
   const [open, setOpen] = React.useState(false)

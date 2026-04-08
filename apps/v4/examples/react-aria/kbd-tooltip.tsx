@@ -1,7 +1,7 @@
-import { Button } from "@/examples/react-aria/ui/button"
-import { ButtonGroup } from "@/examples/react-aria/ui/button-group"
-import { Kbd, KbdGroup } from "@/examples/react-aria/ui/kbd"
-import { Tooltip, TooltipTrigger } from "@/examples/react-aria/ui/tooltip"
+import { Button } from "@/styles/react-aria-nova/ui/button"
+import { ButtonGroup } from "@/styles/react-aria-nova/ui/button-group"
+import { Kbd, KbdGroup } from "@/styles/react-aria-nova/ui/kbd"
+import { Tooltip, TooltipTrigger } from "@/styles/react-aria-nova/ui/tooltip"
 
 export default function KbdTooltip() {
   return (

@@ -1,5 +1,5 @@
-import { Card, CardContent, CardHeader } from "@/examples/react-aria/ui/card"
-import { Skeleton } from "@/examples/react-aria/ui/skeleton"
+import { Card, CardContent, CardHeader } from "@/styles/react-aria-nova/ui/card"
+import { Skeleton } from "@/styles/react-aria-nova/ui/skeleton"
 
 export function SkeletonCard() {
   return (

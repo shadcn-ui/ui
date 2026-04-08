@@ -1,13 +1,14 @@
 "use client"
 
 import Link from "next/link"
+
 import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbList,
   BreadcrumbPage,
-} from "@/examples/react-aria/ui/breadcrumb"
+} from "@/styles/react-aria-nova/ui/breadcrumb"
 
 export function BreadcrumbSeparatorDemo() {
   return (

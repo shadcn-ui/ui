@@ -1,14 +1,5 @@
 "use client"
 
-import { Button } from "@/examples/react-aria/ui/button"
-import { ButtonGroup } from "@/examples/react-aria/ui/button-group"
-import {
-  DropdownMenu,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/examples/react-aria/ui/dropdown-menu"
 import {
   AlertTriangleIcon,
   CheckIcon,
@@ -19,6 +10,16 @@ import {
   UserRoundXIcon,
   VolumeOffIcon,
 } from "lucide-react"
+
+import { Button } from "@/styles/react-aria-nova/ui/button"
+import { ButtonGroup } from "@/styles/react-aria-nova/ui/button-group"
+import {
+  DropdownMenu,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/styles/react-aria-nova/ui/dropdown-menu"
 
 export default function ButtonGroupDropdown() {
   return (

@@ -1,12 +1,13 @@
 "use client"
 
 import * as React from "react"
+
 import {
   InputOTP,
   InputOTPGroup,
   InputOTPSeparator,
   InputOTPSlot,
-} from "@/examples/react-aria/ui/input-otp"
+} from "@/styles/react-aria-nova/ui/input-otp"
 
 export function InputOTPInvalid() {
   const [value, setValue] = React.useState("000000")

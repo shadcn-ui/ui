@@ -1,13 +1,13 @@
 "use client"
 
-import { Button } from "@/examples/react-aria/ui-rtl/button"
-import { Spinner } from "@/examples/react-aria/ui-rtl/spinner"
 import { ArrowRightIcon, PlusIcon } from "lucide-react"
 
 import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
+import { Button } from "@/styles/react-aria-nova/ui-rtl/button"
+import { Spinner } from "@/styles/react-aria-nova/ui-rtl/spinner"
 
 const translations: Translations = {
   en: {

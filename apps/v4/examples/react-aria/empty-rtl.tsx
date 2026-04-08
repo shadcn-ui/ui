@@ -1,15 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { Button, LinkButton } from "@/examples/react-aria/ui-rtl/button"
-import {
-  Empty,
-  EmptyContent,
-  EmptyDescription,
-  EmptyHeader,
-  EmptyMedia,
-  EmptyTitle,
-} from "@/examples/react-aria/ui-rtl/empty"
 import { IconFolderCode } from "@tabler/icons-react"
 import { ArrowUpRightIcon } from "lucide-react"
 
@@ -17,6 +8,15 @@ import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
+import { Button, LinkButton } from "@/styles/react-aria-nova/ui-rtl/button"
+import {
+  Empty,
+  EmptyContent,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyMedia,
+  EmptyTitle,
+} from "@/styles/react-aria-nova/ui-rtl/empty"
 
 const translations: Translations = {
   en: {

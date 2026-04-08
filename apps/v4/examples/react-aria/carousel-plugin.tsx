@@ -1,15 +1,16 @@
 "use client"
 
 import * as React from "react"
-import { Card, CardContent } from "@/examples/react-aria/ui/card"
+import Autoplay from "embla-carousel-autoplay"
+
+import { Card, CardContent } from "@/styles/react-aria-nova/ui/card"
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/examples/react-aria/ui/carousel"
-import Autoplay from "embla-carousel-autoplay"
+} from "@/styles/react-aria-nova/ui/carousel"
 
 export default function CarouselPlugin() {
   const plugin = React.useRef(

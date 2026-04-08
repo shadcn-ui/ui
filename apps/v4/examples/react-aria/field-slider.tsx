@@ -1,12 +1,13 @@
 "use client"
 
 import * as React from "react"
+
 import {
   Field,
   FieldDescription,
   FieldTitle,
-} from "@/examples/react-aria/ui/field"
-import { Slider } from "@/examples/react-aria/ui/slider"
+} from "@/styles/react-aria-nova/ui/field"
+import { Slider } from "@/styles/react-aria-nova/ui/slider"
 
 export default function FieldSlider() {
   const [value, setValue] = React.useState([200, 800])

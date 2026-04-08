@@ -1,8 +1,13 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/react-aria/ui-rtl/button"
-import { Checkbox } from "@/examples/react-aria/ui-rtl/checkbox"
+
+import {
+  useTranslation,
+  type Translations,
+} from "@/components/language-selector"
+import { Button } from "@/styles/react-aria-nova/ui-rtl/button"
+import { Checkbox } from "@/styles/react-aria-nova/ui-rtl/checkbox"
 import {
   Field,
   FieldDescription,
@@ -11,8 +16,8 @@ import {
   FieldLegend,
   FieldSeparator,
   FieldSet,
-} from "@/examples/react-aria/ui-rtl/field"
-import { Input } from "@/examples/react-aria/ui-rtl/input"
+} from "@/styles/react-aria-nova/ui-rtl/field"
+import { Input } from "@/styles/react-aria-nova/ui-rtl/input"
 import {
   Select,
   SelectContent,
@@ -20,13 +25,8 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/examples/react-aria/ui-rtl/select"
-import { Textarea } from "@/examples/react-aria/ui-rtl/textarea"
-
-import {
-  useTranslation,
-  type Translations,
-} from "@/components/language-selector"
+} from "@/styles/react-aria-nova/ui-rtl/select"
+import { Textarea } from "@/styles/react-aria-nova/ui-rtl/textarea"
 
 const months = [
   { label: "01", value: "01" },

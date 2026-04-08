@@ -1,12 +1,13 @@
-import { Button } from "@/examples/react-aria/ui/button"
-import { Card, CardContent, CardHeader } from "@/examples/react-aria/ui/card"
+import { ChevronRightIcon, FileIcon, FolderIcon } from "lucide-react"
+
+import { Button } from "@/styles/react-aria-nova/ui/button"
+import { Card, CardContent, CardHeader } from "@/styles/react-aria-nova/ui/card"
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/examples/react-aria/ui/collapsible"
-import { Tabs, TabsList, TabsTrigger } from "@/examples/react-aria/ui/tabs"
-import { ChevronRightIcon, FileIcon, FolderIcon } from "lucide-react"
+} from "@/styles/react-aria-nova/ui/collapsible"
+import { Tabs, TabsList, TabsTrigger } from "@/styles/react-aria-nova/ui/tabs"
 
 type FileTreeItem = { name: string } | { name: string; items: FileTreeItem[] }
 

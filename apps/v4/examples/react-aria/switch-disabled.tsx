@@ -1,5 +1,5 @@
-import { Field, FieldLabel } from "@/examples/react-aria/ui/field"
-import { Switch } from "@/examples/react-aria/ui/switch"
+import { Field, FieldLabel } from "@/styles/react-aria-nova/ui/field"
+import { Switch } from "@/styles/react-aria-nova/ui/switch"
 
 export function SwitchDisabled() {
   return (

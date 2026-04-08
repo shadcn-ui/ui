@@ -1,11 +1,12 @@
 "use client"
 
 import * as React from "react"
+
 import {
   InputOTP,
   InputOTPGroup,
   InputOTPSlot,
-} from "@/examples/react-aria/ui/input-otp"
+} from "@/styles/react-aria-nova/ui/input-otp"
 
 export default function InputOTPControlled() {
   const [value, setValue] = React.useState("")

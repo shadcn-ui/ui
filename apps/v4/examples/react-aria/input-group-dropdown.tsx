@@ -1,18 +1,19 @@
 "use client"
 
+import { ChevronDownIcon, MoreHorizontal } from "lucide-react"
+
 import {
   DropdownMenu,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/examples/react-aria/ui/dropdown-menu"
+} from "@/styles/react-aria-nova/ui/dropdown-menu"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
-} from "@/examples/react-aria/ui/input-group"
-import { ChevronDownIcon, MoreHorizontal } from "lucide-react"
+} from "@/styles/react-aria-nova/ui/input-group"
 
 export function InputGroupDropdown() {
   return (

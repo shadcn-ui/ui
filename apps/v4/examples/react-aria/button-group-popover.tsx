@@ -1,19 +1,20 @@
-import { Button } from "@/examples/react-aria/ui/button"
-import { ButtonGroup } from "@/examples/react-aria/ui/button-group"
+import { BotIcon, ChevronDownIcon } from "lucide-react"
+
+import { Button } from "@/styles/react-aria-nova/ui/button"
+import { ButtonGroup } from "@/styles/react-aria-nova/ui/button-group"
 import {
   Field,
   FieldDescription,
   FieldLabel,
-} from "@/examples/react-aria/ui/field"
+} from "@/styles/react-aria-nova/ui/field"
 import {
   Popover,
   PopoverDescription,
   PopoverHeader,
   PopoverTitle,
   PopoverTrigger,
-} from "@/examples/react-aria/ui/popover"
-import { Textarea } from "@/examples/react-aria/ui/textarea"
-import { BotIcon, ChevronDownIcon } from "lucide-react"
+} from "@/styles/react-aria-nova/ui/popover"
+import { Textarea } from "@/styles/react-aria-nova/ui/textarea"
 
 export default function ButtonGroupPopover() {
   return (

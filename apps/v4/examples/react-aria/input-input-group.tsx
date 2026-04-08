@@ -1,11 +1,12 @@
-import { Field, FieldLabel } from "@/examples/react-aria/ui/field"
+import { InfoIcon } from "lucide-react"
+
+import { Field, FieldLabel } from "@/styles/react-aria-nova/ui/field"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
   InputGroupText,
-} from "@/examples/react-aria/ui/input-group"
-import { InfoIcon } from "lucide-react"
+} from "@/styles/react-aria-nova/ui/input-group"
 
 export function InputInputGroup() {
   return (

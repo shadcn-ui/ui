@@ -1,25 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/react-aria/ui-rtl/button"
-import { Checkbox } from "@/examples/react-aria/ui-rtl/checkbox"
-import {
-  DropdownMenu,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/examples/react-aria/ui-rtl/dropdown-menu"
-import { Input } from "@/examples/react-aria/ui-rtl/input"
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/examples/react-aria/ui-rtl/table"
 import {
   flexRender,
   getCoreRowModel,
@@ -38,6 +19,25 @@ import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
+import { Button } from "@/styles/react-aria-nova/ui-rtl/button"
+import { Checkbox } from "@/styles/react-aria-nova/ui-rtl/checkbox"
+import {
+  DropdownMenu,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/styles/react-aria-nova/ui-rtl/dropdown-menu"
+import { Input } from "@/styles/react-aria-nova/ui-rtl/input"
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/styles/react-aria-nova/ui-rtl/table"
 
 const translations: Translations = {
   en: {

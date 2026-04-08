@@ -4,8 +4,8 @@ import {
   FieldGroup,
   FieldLabel,
   FieldSet,
-} from "@/examples/react-aria/ui/field"
-import { Input } from "@/examples/react-aria/ui/input"
+} from "@/styles/react-aria-nova/ui/field"
+import { Input } from "@/styles/react-aria-nova/ui/input"
 
 export default function FieldInput() {
   return (

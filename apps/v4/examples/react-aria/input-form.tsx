@@ -1,11 +1,11 @@
-import { Button } from "@/examples/react-aria/ui/button"
+import { Button } from "@/styles/react-aria-nova/ui/button"
 import {
   Field,
   FieldDescription,
   FieldGroup,
   FieldLabel,
-} from "@/examples/react-aria/ui/field"
-import { Input } from "@/examples/react-aria/ui/input"
+} from "@/styles/react-aria-nova/ui/field"
+import { Input } from "@/styles/react-aria-nova/ui/input"
 import {
   Select,
   SelectContent,
@@ -13,7 +13,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/examples/react-aria/ui/select"
+} from "@/styles/react-aria-nova/ui/select"
 
 export function InputForm() {
   const countries = [

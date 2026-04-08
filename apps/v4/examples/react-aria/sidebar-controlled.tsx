@@ -1,7 +1,17 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/react-aria/ui/button"
+import {
+  FrameIcon,
+  LifeBuoyIcon,
+  MapIcon,
+  PanelLeftCloseIcon,
+  PanelLeftOpenIcon,
+  PieChartIcon,
+  SendIcon,
+} from "lucide-react"
+
+import { Button } from "@/styles/react-aria-nova/ui/button"
 import {
   Sidebar,
   SidebarContent,
@@ -13,16 +23,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarProvider,
-} from "@/examples/react-aria/ui/sidebar"
-import {
-  FrameIcon,
-  LifeBuoyIcon,
-  MapIcon,
-  PanelLeftCloseIcon,
-  PanelLeftOpenIcon,
-  PieChartIcon,
-  SendIcon,
-} from "lucide-react"
+} from "@/styles/react-aria-nova/ui/sidebar"
 
 const projects = [
   {

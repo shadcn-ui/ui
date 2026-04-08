@@ -15323,19 +15323,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "select-align-item": {
-      name: "select-align-item",
-      filePath: "examples/react-aria/select-align-item.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./react-aria/select-align-item")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "select-align-item"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "select-demo": {
       name: "select-demo",
       filePath: "examples/react-aria/select-demo.tsx",

@@ -2,13 +2,6 @@
 
 import * as React from "react"
 import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupButton,
-  InputGroupInput,
-} from "@/examples/react-aria/ui/input-group"
-import { Popover, PopoverTrigger } from "@/examples/react-aria/ui/popover"
-import {
   IconCheck,
   IconCopy,
   IconInfoCircle,
@@ -16,6 +9,13 @@ import {
 } from "@tabler/icons-react"
 
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard"
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButton,
+  InputGroupInput,
+} from "@/styles/react-aria-nova/ui/input-group"
+import { Popover, PopoverTrigger } from "@/styles/react-aria-nova/ui/popover"
 
 export default function InputGroupButtonExample() {
   const { copyToClipboard, isCopied } = useCopyToClipboard()

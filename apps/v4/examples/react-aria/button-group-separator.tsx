@@ -1,8 +1,8 @@
-import { Button } from "@/examples/react-aria/ui/button"
+import { Button } from "@/styles/react-aria-nova/ui/button"
 import {
   ButtonGroup,
   ButtonGroupSeparator,
-} from "@/examples/react-aria/ui/button-group"
+} from "@/styles/react-aria-nova/ui/button-group"
 
 export default function ButtonGroupSeparatorDemo() {
   return (

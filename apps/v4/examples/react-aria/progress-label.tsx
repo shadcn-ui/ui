@@ -2,7 +2,7 @@ import {
   Progress,
   ProgressLabel,
   ProgressValue,
-} from "@/examples/react-aria/ui/progress"
+} from "@/styles/react-aria-nova/ui/progress"
 
 export function ProgressWithLabel() {
   return (

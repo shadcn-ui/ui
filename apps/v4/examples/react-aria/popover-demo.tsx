@@ -1,7 +1,7 @@
-import { Button } from "@/examples/react-aria/ui/button"
-import { Input } from "@/examples/react-aria/ui/input"
-import { Label } from "@/examples/react-aria/ui/label"
-import { Popover, PopoverTrigger } from "@/examples/react-aria/ui/popover"
+import { Button } from "@/styles/react-aria-nova/ui/button"
+import { Input } from "@/styles/react-aria-nova/ui/input"
+import { Label } from "@/styles/react-aria-nova/ui/label"
+import { Popover, PopoverTrigger } from "@/styles/react-aria-nova/ui/popover"
 
 export default function PopoverDemo() {
   return (

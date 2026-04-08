@@ -1,5 +1,5 @@
-import { Button } from "@/examples/react-aria/ui/button"
-import { Spinner } from "@/examples/react-aria/ui/spinner"
+import { Button } from "@/styles/react-aria-nova/ui/button"
+import { Spinner } from "@/styles/react-aria-nova/ui/spinner"
 
 export function SpinnerButton() {
   return (

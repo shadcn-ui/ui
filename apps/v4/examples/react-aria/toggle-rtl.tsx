@@ -1,13 +1,13 @@
 "use client"
 
 import * as React from "react"
-import { Toggle } from "@/examples/react-aria/ui-rtl/toggle"
 import { BookmarkIcon } from "lucide-react"
 
 import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
+import { Toggle } from "@/styles/react-aria-nova/ui-rtl/toggle"
 
 const translations: Translations = {
   en: {

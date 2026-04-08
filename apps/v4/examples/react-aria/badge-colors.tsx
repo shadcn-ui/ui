@@ -1,4 +1,4 @@
-import { Badge } from "@/examples/react-aria/ui/badge"
+import { Badge } from "@/styles/react-aria-nova/ui/badge"
 
 export function BadgeCustomColors() {
   return (

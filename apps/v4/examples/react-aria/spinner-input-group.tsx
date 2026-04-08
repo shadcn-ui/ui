@@ -1,12 +1,13 @@
+import { ArrowUpIcon } from "lucide-react"
+
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
   InputGroupTextarea,
-} from "@/examples/react-aria/ui/input-group"
-import { Spinner } from "@/examples/react-aria/ui/spinner"
-import { ArrowUpIcon } from "lucide-react"
+} from "@/styles/react-aria-nova/ui/input-group"
+import { Spinner } from "@/styles/react-aria-nova/ui/spinner"
 
 export function SpinnerInputGroup() {
   return (

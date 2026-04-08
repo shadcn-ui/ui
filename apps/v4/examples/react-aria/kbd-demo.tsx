@@ -1,4 +1,4 @@
-import { Kbd, KbdGroup } from "@/examples/react-aria/ui/kbd"
+import { Kbd, KbdGroup } from "@/styles/react-aria-nova/ui/kbd"
 
 export default function KbdDemo() {
   return (

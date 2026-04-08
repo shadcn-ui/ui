@@ -1,5 +1,6 @@
-import { Button } from "@/examples/react-aria/ui/button"
 import { ArrowUpRightIcon } from "lucide-react"
+
+import { Button } from "@/styles/react-aria-nova/ui/button"
 
 export default function ButtonSize() {
   return (

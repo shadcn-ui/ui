@@ -1,6 +1,6 @@
 "use client"
 
-import { Button } from "@/examples/react-aria/ui/button"
+import { Button } from "@/styles/react-aria-nova/ui/button"
 import {
   DropdownMenu,
   DropdownMenuGroup,
@@ -12,7 +12,7 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@/examples/react-aria/ui/dropdown-menu"
+} from "@/styles/react-aria-nova/ui/dropdown-menu"
 
 export function DropdownMenuDemo() {
   return (

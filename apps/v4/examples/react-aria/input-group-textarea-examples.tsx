@@ -1,25 +1,26 @@
 import {
-  Field,
-  FieldDescription,
-  FieldGroup,
-  FieldLabel,
-} from "@/examples/react-aria/ui/field"
-import { Input } from "@/examples/react-aria/ui/input"
-import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupButton,
-  InputGroupText,
-  InputGroupTextarea,
-} from "@/examples/react-aria/ui/input-group"
-import { Textarea } from "@/examples/react-aria/ui/textarea"
-import {
   ArrowUpIcon,
   CodeIcon,
   CopyIcon,
   InfoIcon,
   RefreshCwIcon,
 } from "lucide-react"
+
+import {
+  Field,
+  FieldDescription,
+  FieldGroup,
+  FieldLabel,
+} from "@/styles/react-aria-nova/ui/field"
+import { Input } from "@/styles/react-aria-nova/ui/input"
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButton,
+  InputGroupText,
+  InputGroupTextarea,
+} from "@/styles/react-aria-nova/ui/input-group"
+import { Textarea } from "@/styles/react-aria-nova/ui/textarea"
 
 export function InputGroupTextareaExamples() {
   return (

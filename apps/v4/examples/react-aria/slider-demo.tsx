@@ -1,4 +1,4 @@
-import { Slider } from "@/examples/react-aria/ui/slider"
+import { Slider } from "@/styles/react-aria-nova/ui/slider"
 
 export function SliderDemo() {
   return (

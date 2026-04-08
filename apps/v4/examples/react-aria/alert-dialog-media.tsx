@@ -1,3 +1,5 @@
+import { CircleFadingPlusIcon } from "lucide-react"
+
 import {
   AlertDialog,
   AlertDialogAction,
@@ -8,9 +10,8 @@ import {
   AlertDialogMedia,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/examples/react-aria/ui/alert-dialog"
-import { Button } from "@/examples/react-aria/ui/button"
-import { CircleFadingPlusIcon } from "lucide-react"
+} from "@/styles/react-aria-nova/ui/alert-dialog"
+import { Button } from "@/styles/react-aria-nova/ui/button"
 
 export function AlertDialogWithMedia() {
   return (

@@ -1,4 +1,4 @@
-import { Button } from "@/examples/react-aria/ui/button"
+import { Button } from "@/styles/react-aria-nova/ui/button"
 import {
   Empty,
   EmptyContent,
@@ -6,8 +6,8 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@/examples/react-aria/ui/empty"
-import { Spinner } from "@/examples/react-aria/ui/spinner"
+} from "@/styles/react-aria-nova/ui/empty"
+import { Spinner } from "@/styles/react-aria-nova/ui/spinner"
 
 export function SpinnerEmpty() {
   return (

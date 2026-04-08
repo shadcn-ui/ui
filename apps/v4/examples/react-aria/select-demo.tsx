@@ -6,7 +6,7 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from "@/examples/react-aria/ui/select"
+} from "@/styles/react-aria-nova/ui/select"
 
 const items = [
   { label: "Apple", value: "apple" },

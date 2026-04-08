@@ -1,15 +1,20 @@
 "use client"
 
 import * as React from "react"
-import { Calendar } from "@/examples/react-aria/ui/calendar"
-import { Card, CardContent, CardFooter } from "@/examples/react-aria/ui/card"
-import { Field, FieldGroup, FieldLabel } from "@/examples/react-aria/ui/field"
+import { Clock2Icon } from "lucide-react"
+
+import { Calendar } from "@/styles/react-aria-nova/ui/calendar"
+import { Card, CardContent, CardFooter } from "@/styles/react-aria-nova/ui/card"
+import {
+  Field,
+  FieldGroup,
+  FieldLabel,
+} from "@/styles/react-aria-nova/ui/field"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
-} from "@/examples/react-aria/ui/input-group"
-import { Clock2Icon } from "lucide-react"
+} from "@/styles/react-aria-nova/ui/input-group"
 
 export function CalendarWithTime() {
   const [date, setDate] = React.useState<Date | undefined>(

@@ -1,6 +1,6 @@
 "use client"
 
-import { Checkbox } from "@/examples/react-aria/ui/checkbox"
+import { Checkbox } from "@/styles/react-aria-nova/ui/checkbox"
 import {
   Field,
   FieldContent,
@@ -8,8 +8,8 @@ import {
   FieldGroup,
   FieldLabel,
   FieldTitle,
-} from "@/examples/react-aria/ui/field"
-import { Label } from "@/examples/react-aria/ui/label"
+} from "@/styles/react-aria-nova/ui/field"
+import { Label } from "@/styles/react-aria-nova/ui/label"
 
 export default function CheckboxDemo() {
   return (

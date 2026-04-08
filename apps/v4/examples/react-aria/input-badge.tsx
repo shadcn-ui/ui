@@ -1,6 +1,6 @@
-import { Badge } from "@/examples/react-aria/ui/badge"
-import { Field, FieldLabel } from "@/examples/react-aria/ui/field"
-import { Input } from "@/examples/react-aria/ui/input"
+import { Badge } from "@/styles/react-aria-nova/ui/badge"
+import { Field, FieldLabel } from "@/styles/react-aria-nova/ui/field"
+import { Input } from "@/styles/react-aria-nova/ui/input"
 
 export function InputBadge() {
   return (

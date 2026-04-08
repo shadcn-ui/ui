@@ -1,9 +1,11 @@
+import { PlusIcon } from "lucide-react"
+
 import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "@/examples/react-aria/ui/avatar"
-import { Button } from "@/examples/react-aria/ui/button"
+} from "@/styles/react-aria-nova/ui/avatar"
+import { Button } from "@/styles/react-aria-nova/ui/button"
 import {
   Empty,
   EmptyContent,
@@ -11,8 +13,7 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@/examples/react-aria/ui/empty"
-import { PlusIcon } from "lucide-react"
+} from "@/styles/react-aria-nova/ui/empty"
 
 export default function EmptyAvatarGroup() {
   return (

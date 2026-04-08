@@ -1,9 +1,10 @@
+import { CheckCircle2Icon, InfoIcon } from "lucide-react"
+
 import {
   Alert,
   AlertDescription,
   AlertTitle,
-} from "@/examples/react-aria/ui/alert"
-import { CheckCircle2Icon, InfoIcon } from "lucide-react"
+} from "@/styles/react-aria-nova/ui/alert"
 
 export default function AlertDemo() {
   return (

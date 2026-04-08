@@ -1,4 +1,6 @@
-import { Button } from "@/examples/react-aria/ui/button"
+import { RefreshCwIcon } from "lucide-react"
+
+import { Button } from "@/styles/react-aria-nova/ui/button"
 import {
   Card,
   CardContent,
@@ -6,19 +8,18 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/examples/react-aria/ui/card"
+} from "@/styles/react-aria-nova/ui/card"
 import {
   Field,
   FieldDescription,
   FieldLabel,
-} from "@/examples/react-aria/ui/field"
+} from "@/styles/react-aria-nova/ui/field"
 import {
   InputOTP,
   InputOTPGroup,
   InputOTPSeparator,
   InputOTPSlot,
-} from "@/examples/react-aria/ui/input-otp"
-import { RefreshCwIcon } from "lucide-react"
+} from "@/styles/react-aria-nova/ui/input-otp"
 
 export function InputOTPForm() {
   return (

@@ -1,10 +1,11 @@
 "use client"
 
+import { Bar, BarChart } from "recharts"
+
 import {
   ChartContainer,
   type ChartConfig,
-} from "@/examples/react-aria/ui/chart"
-import { Bar, BarChart } from "recharts"
+} from "@/styles/react-aria-nova/ui/chart"
 
 const chartData = [
   { month: "January", desktop: 186, mobile: 80 },

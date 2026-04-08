@@ -2,8 +2,8 @@ import {
   Field,
   FieldDescription,
   FieldLabel,
-} from "@/examples/react-aria/ui/field"
-import { Input } from "@/examples/react-aria/ui/input"
+} from "@/styles/react-aria-nova/ui/field"
+import { Input } from "@/styles/react-aria-nova/ui/input"
 
 export function InputFile() {
   return (

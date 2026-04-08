@@ -1,7 +1,10 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/react-aria/ui/button"
+import { Minus, Plus } from "lucide-react"
+import { Bar, BarChart, ResponsiveContainer } from "recharts"
+
+import { Button } from "@/styles/react-aria-nova/ui/button"
 import {
   Drawer,
   DrawerClose,
@@ -11,9 +14,7 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "@/examples/react-aria/ui/drawer"
-import { Minus, Plus } from "lucide-react"
-import { Bar, BarChart, ResponsiveContainer } from "recharts"
+} from "@/styles/react-aria-nova/ui/drawer"
 
 const data = [
   {

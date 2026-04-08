@@ -4,15 +4,15 @@ import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "@/examples/react-aria/ui/avatar"
-import { Button } from "@/examples/react-aria/ui/button"
+} from "@/styles/react-aria-nova/ui/avatar"
+import { Button } from "@/styles/react-aria-nova/ui/button"
 import {
   DropdownMenu,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/examples/react-aria/ui/dropdown-menu"
+} from "@/styles/react-aria-nova/ui/dropdown-menu"
 
 export function AvatarDropdown() {
   return (

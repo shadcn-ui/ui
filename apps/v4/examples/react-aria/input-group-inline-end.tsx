@@ -1,14 +1,15 @@
+import { EyeOffIcon } from "lucide-react"
+
 import {
   Field,
   FieldDescription,
   FieldLabel,
-} from "@/examples/react-aria/ui/field"
+} from "@/styles/react-aria-nova/ui/field"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
-} from "@/examples/react-aria/ui/input-group"
-import { EyeOffIcon } from "lucide-react"
+} from "@/styles/react-aria-nova/ui/input-group"
 
 export function InputGroupInlineEnd() {
   return (

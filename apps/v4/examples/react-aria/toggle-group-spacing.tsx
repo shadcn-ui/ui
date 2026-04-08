@@ -1,7 +1,7 @@
 import {
   ToggleGroup,
   ToggleGroupItem,
-} from "@/examples/react-aria/ui/toggle-group"
+} from "@/styles/react-aria-nova/ui/toggle-group"
 
 export function ToggleGroupSpacing() {
   return (

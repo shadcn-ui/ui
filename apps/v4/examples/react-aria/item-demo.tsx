@@ -1,4 +1,6 @@
-import { Button } from "@/examples/react-aria/ui/button"
+import { BadgeCheckIcon, ChevronRightIcon } from "lucide-react"
+
+import { Button } from "@/styles/react-aria-nova/ui/button"
 import {
   Item,
   ItemActions,
@@ -6,8 +8,7 @@ import {
   ItemDescription,
   ItemMedia,
   ItemTitle,
-} from "@/examples/react-aria/ui/item"
-import { BadgeCheckIcon, ChevronRightIcon } from "lucide-react"
+} from "@/styles/react-aria-nova/ui/item"
 
 export function ItemDemo() {
   return (

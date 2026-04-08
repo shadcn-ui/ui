@@ -1,7 +1,8 @@
 "use client"
 
-import { Button } from "@/examples/react-aria/ui/button"
 import { toast } from "sonner"
+
+import { Button } from "@/styles/react-aria-nova/ui/button"
 
 export function SonnerDemo() {
   return (

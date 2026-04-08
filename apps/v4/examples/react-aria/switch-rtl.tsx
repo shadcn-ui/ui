@@ -1,18 +1,18 @@
 "use client"
 
 import * as React from "react"
-import {
-  Field,
-  FieldContent,
-  FieldDescription,
-  FieldLabel,
-} from "@/examples/react-aria/ui-rtl/field"
-import { Switch } from "@/examples/react-aria/ui-rtl/switch"
 
 import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
+import {
+  Field,
+  FieldContent,
+  FieldDescription,
+  FieldLabel,
+} from "@/styles/react-aria-nova/ui-rtl/field"
+import { Switch } from "@/styles/react-aria-nova/ui-rtl/switch"
 
 const translations: Translations = {
   en: {

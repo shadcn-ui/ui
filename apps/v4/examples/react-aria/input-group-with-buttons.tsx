@@ -1,13 +1,18 @@
-import { Button } from "@/examples/react-aria/ui/button"
-import { Field, FieldGroup, FieldLabel } from "@/examples/react-aria/ui/field"
-import { Input } from "@/examples/react-aria/ui/input"
+import { CopyIcon, TrashIcon } from "lucide-react"
+
+import { Button } from "@/styles/react-aria-nova/ui/button"
+import {
+  Field,
+  FieldGroup,
+  FieldLabel,
+} from "@/styles/react-aria-nova/ui/field"
+import { Input } from "@/styles/react-aria-nova/ui/input"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
-} from "@/examples/react-aria/ui/input-group"
-import { CopyIcon, TrashIcon } from "lucide-react"
+} from "@/styles/react-aria-nova/ui/input-group"
 
 export function InputGroupWithButtons() {
   return (

@@ -1,5 +1,6 @@
 import Image from "next/image"
-import { AspectRatio } from "@/examples/react-aria/ui/aspect-ratio"
+
+import { AspectRatio } from "@/styles/react-aria-nova/ui/aspect-ratio"
 
 export function AspectRatioSquare() {
   return (

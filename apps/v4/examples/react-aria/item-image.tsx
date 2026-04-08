@@ -1,4 +1,5 @@
 import Image from "next/image"
+
 import {
   Item,
   ItemContent,
@@ -6,7 +7,7 @@ import {
   ItemGroup,
   ItemMedia,
   ItemTitle,
-} from "@/examples/react-aria/ui/item"
+} from "@/styles/react-aria-nova/ui/item"
 
 const music = [
   {

@@ -1,5 +1,6 @@
-import { Toggle } from "@/examples/react-aria/ui/toggle"
 import { BookmarkIcon } from "lucide-react"
+
+import { Toggle } from "@/styles/react-aria-nova/ui/toggle"
 
 export function ToggleDemo() {
   return (

@@ -1,13 +1,17 @@
-import { Button } from "@/examples/react-aria/ui/button"
-import { Field, FieldGroup, FieldLabel } from "@/examples/react-aria/ui/field"
-import { Input } from "@/examples/react-aria/ui/input"
+import { Button } from "@/styles/react-aria-nova/ui/button"
+import {
+  Field,
+  FieldGroup,
+  FieldLabel,
+} from "@/styles/react-aria-nova/ui/field"
+import { Input } from "@/styles/react-aria-nova/ui/input"
 import {
   Popover,
   PopoverDescription,
   PopoverHeader,
   PopoverTitle,
   PopoverTrigger,
-} from "@/examples/react-aria/ui/popover"
+} from "@/styles/react-aria-nova/ui/popover"
 
 export function PopoverForm() {
   return (

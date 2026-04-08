@@ -28,9 +28,7 @@ import InputOtpExample from "@/registry/bases/react-aria/examples/input-otp-exam
 import ItemExample from "@/registry/bases/react-aria/examples/item-example"
 import KbdExample from "@/registry/bases/react-aria/examples/kbd-example"
 import LabelExample from "@/registry/bases/react-aria/examples/label-example"
-import MenubarExample from "@/registry/bases/react-aria/examples/menubar-example"
 import NativeSelectExample from "@/registry/bases/react-aria/examples/native-select-example"
-import NavigationMenuExample from "@/registry/bases/react-aria/examples/navigation-menu-example"
 import PaginationExample from "@/registry/bases/react-aria/examples/pagination-example"
 import PopoverExample from "@/registry/bases/react-aria/examples/popover-example"
 import ProgressExample from "@/registry/bases/react-aria/examples/progress-example"
@@ -86,9 +84,7 @@ export default function Page() {
       <ItemExample />
       <KbdExample />
       <LabelExample />
-      <MenubarExample />
       <NativeSelectExample />
-      <NavigationMenuExample />
       <PaginationExample />
       <PopoverExample />
       <ProgressExample />

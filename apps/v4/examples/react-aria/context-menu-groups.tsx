@@ -1,5 +1,7 @@
 "use client"
 
+import { Pressable } from "react-aria-components"
+
 import {
   ContextMenu,
   ContextMenuGroup,
@@ -8,8 +10,7 @@ import {
   ContextMenuSeparator,
   ContextMenuShortcut,
   ContextMenuTrigger,
-} from "@/examples/react-aria/ui/context-menu"
-import { Pressable } from "react-aria-components"
+} from "@/styles/react-aria-nova/ui/context-menu"
 
 export function ContextMenuGroups() {
   return (

@@ -1,15 +1,15 @@
 "use client"
 
 import * as React from "react"
-import {
-  ToggleGroup,
-  ToggleGroupItem,
-} from "@/examples/react-aria/ui-rtl/toggle-group"
 
 import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
+import {
+  ToggleGroup,
+  ToggleGroupItem,
+} from "@/styles/react-aria-nova/ui-rtl/toggle-group"
 
 const translations: Translations = {
   en: {

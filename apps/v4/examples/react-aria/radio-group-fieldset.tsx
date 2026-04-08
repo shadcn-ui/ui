@@ -4,11 +4,11 @@ import {
   FieldLabel,
   FieldLegend,
   FieldSet,
-} from "@/examples/react-aria/ui/field"
+} from "@/styles/react-aria-nova/ui/field"
 import {
   RadioGroup,
   RadioGroupItem,
-} from "@/examples/react-aria/ui/radio-group"
+} from "@/styles/react-aria-nova/ui/radio-group"
 
 export function RadioGroupFieldset() {
   return (

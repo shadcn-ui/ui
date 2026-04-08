@@ -1,4 +1,8 @@
-import { Field, FieldError, FieldLabel } from "@/examples/react-aria/ui/field"
+import {
+  Field,
+  FieldError,
+  FieldLabel,
+} from "@/styles/react-aria-nova/ui/field"
 import {
   Select,
   SelectContent,
@@ -6,7 +10,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/examples/react-aria/ui/select"
+} from "@/styles/react-aria-nova/ui/select"
 
 const items = [
   { label: "Apple", value: "apple" },

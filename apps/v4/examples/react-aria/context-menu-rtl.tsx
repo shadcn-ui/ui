@@ -1,6 +1,13 @@
 "use client"
 
 import * as React from "react"
+import { ArrowLeftIcon, ArrowRightIcon, RotateCwIcon } from "lucide-react"
+import { Pressable, type Selection } from "react-aria-components"
+
+import {
+  useTranslation,
+  type Translations,
+} from "@/components/language-selector"
 import {
   ContextMenu,
   ContextMenuGroup,
@@ -12,14 +19,7 @@ import {
   ContextMenuSubContent,
   ContextMenuSubTrigger,
   ContextMenuTrigger,
-} from "@/examples/react-aria/ui-rtl/context-menu"
-import { ArrowLeftIcon, ArrowRightIcon, RotateCwIcon } from "lucide-react"
-import { Pressable, type Selection } from "react-aria-components"
-
-import {
-  useTranslation,
-  type Translations,
-} from "@/components/language-selector"
+} from "@/styles/react-aria-nova/ui-rtl/context-menu"
 
 const translations: Translations = {
   en: {

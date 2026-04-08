@@ -6,7 +6,7 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from "@/examples/react-aria/ui/pagination"
+} from "@/styles/react-aria-nova/ui/pagination"
 
 export default function PaginationDemo() {
   return (

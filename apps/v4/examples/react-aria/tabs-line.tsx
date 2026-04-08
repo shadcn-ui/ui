@@ -1,4 +1,4 @@
-import { Tabs, TabsList, TabsTrigger } from "@/examples/react-aria/ui/tabs"
+import { Tabs, TabsList, TabsTrigger } from "@/styles/react-aria-nova/ui/tabs"
 
 export function TabsLine() {
   return (

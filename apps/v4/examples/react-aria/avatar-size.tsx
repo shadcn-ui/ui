@@ -2,7 +2,7 @@ import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "@/examples/react-aria/ui/avatar"
+} from "@/styles/react-aria-nova/ui/avatar"
 
 export function AvatarSizeExample() {
   return (

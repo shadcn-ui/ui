@@ -1,4 +1,6 @@
-import { Button } from "@/examples/react-aria/ui/button"
+import { ExternalLinkIcon, MailIcon } from "lucide-react"
+
+import { Button } from "@/styles/react-aria-nova/ui/button"
 import {
   Card,
   CardContent,
@@ -6,17 +8,20 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/examples/react-aria/ui/card"
-import { Field, FieldGroup, FieldLabel } from "@/examples/react-aria/ui/field"
-import { Input } from "@/examples/react-aria/ui/input"
+} from "@/styles/react-aria-nova/ui/card"
+import {
+  Field,
+  FieldGroup,
+  FieldLabel,
+} from "@/styles/react-aria-nova/ui/field"
+import { Input } from "@/styles/react-aria-nova/ui/input"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
   InputGroupText,
   InputGroupTextarea,
-} from "@/examples/react-aria/ui/input-group"
-import { ExternalLinkIcon, MailIcon } from "lucide-react"
+} from "@/styles/react-aria-nova/ui/input-group"
 
 export function InputGroupInCard() {
   return (

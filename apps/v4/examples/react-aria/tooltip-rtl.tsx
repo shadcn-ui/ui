@@ -1,12 +1,14 @@
 "use client"
 
-import { Button } from "@/examples/react-aria/ui-rtl/button"
-import { Tooltip, TooltipTrigger } from "@/examples/react-aria/ui-rtl/tooltip"
-
 import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
+import { Button } from "@/styles/react-aria-nova/ui-rtl/button"
+import {
+  Tooltip,
+  TooltipTrigger,
+} from "@/styles/react-aria-nova/ui-rtl/tooltip"
 
 const translations: Translations = {
   en: {

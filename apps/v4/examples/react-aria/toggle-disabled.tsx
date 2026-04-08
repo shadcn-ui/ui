@@ -1,4 +1,4 @@
-import { Toggle } from "@/examples/react-aria/ui/toggle"
+import { Toggle } from "@/styles/react-aria-nova/ui/toggle"
 
 export function ToggleDisabled() {
   return (

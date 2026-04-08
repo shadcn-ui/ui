@@ -1,6 +1,6 @@
 "use client"
 
-import { Button } from "@/examples/react-aria/ui/button"
+import { Button } from "@/styles/react-aria-nova/ui/button"
 import {
   Combobox,
   ComboboxContent,
@@ -9,7 +9,7 @@ import {
   ComboboxItem,
   ComboboxList,
   ComboboxValue,
-} from "@/examples/react-aria/ui/combobox"
+} from "@/styles/react-aria-nova/ui/combobox"
 
 const countries = [
   { code: "", value: "", continent: "", label: "Select country" },

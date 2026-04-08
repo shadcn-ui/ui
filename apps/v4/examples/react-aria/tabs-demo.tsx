@@ -4,13 +4,13 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/examples/react-aria/ui/card"
+} from "@/styles/react-aria-nova/ui/card"
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@/examples/react-aria/ui/tabs"
+} from "@/styles/react-aria-nova/ui/tabs"
 
 export function TabsDemo() {
   return (

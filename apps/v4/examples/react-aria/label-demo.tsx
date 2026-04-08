@@ -1,5 +1,5 @@
-import { Checkbox } from "@/examples/react-aria/ui/checkbox"
-import { Label } from "@/examples/react-aria/ui/label"
+import { Checkbox } from "@/styles/react-aria-nova/ui/checkbox"
+import { Label } from "@/styles/react-aria-nova/ui/label"
 
 export default function LabelDemo() {
   return (

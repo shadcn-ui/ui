@@ -1,15 +1,16 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/react-aria/ui/button"
+import { Building2Icon, CreditCardIcon, WalletIcon } from "lucide-react"
+
+import { Button } from "@/styles/react-aria-nova/ui/button"
 import {
   DropdownMenu,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuTrigger,
-} from "@/examples/react-aria/ui/dropdown-menu"
-import { Building2Icon, CreditCardIcon, WalletIcon } from "lucide-react"
+} from "@/styles/react-aria-nova/ui/dropdown-menu"
 
 export function DropdownMenuRadioIcons() {
   const [paymentMethod, setPaymentMethod] = React.useState("card")

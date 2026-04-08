@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { ComboboxChipList } from "@/examples/react-aria/ui/combobox"
 
 import {
   Avatar,
@@ -20,13 +19,13 @@ import {
 import {
   Combobox,
   ComboboxChip,
+  ComboboxChipList,
   ComboboxChips,
   ComboboxChipsInput,
   ComboboxContent,
   ComboboxEmpty,
   ComboboxItem,
   ComboboxList,
-  ComboboxValue,
   useComboboxAnchor,
 } from "@/registry/bases/react-aria/ui/combobox"
 import { Tooltip, TooltipTrigger } from "@/registry/bases/react-aria/ui/tooltip"

@@ -1,9 +1,10 @@
+import { AlertTriangleIcon } from "lucide-react"
+
 import {
   Alert,
   AlertDescription,
   AlertTitle,
-} from "@/examples/react-aria/ui/alert"
-import { AlertTriangleIcon } from "lucide-react"
+} from "@/styles/react-aria-nova/ui/alert"
 
 export default function AlertColors() {
   return (

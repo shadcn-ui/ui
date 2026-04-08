@@ -1,10 +1,11 @@
+import { SearchIcon } from "lucide-react"
+
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
-} from "@/examples/react-aria/ui/input-group"
-import { Kbd } from "@/examples/react-aria/ui/kbd"
-import { SearchIcon } from "lucide-react"
+} from "@/styles/react-aria-nova/ui/input-group"
+import { Kbd } from "@/styles/react-aria-nova/ui/kbd"
 
 export function InputGroupKbd() {
   return (

@@ -1,7 +1,16 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/react-aria/ui/button"
+import {
+  CalculatorIcon,
+  CalendarIcon,
+  CreditCardIcon,
+  SettingsIcon,
+  SmileIcon,
+  UserIcon,
+} from "lucide-react"
+
+import { Button } from "@/styles/react-aria-nova/ui/button"
 import {
   Command,
   CommandDialog,
@@ -12,15 +21,7 @@ import {
   CommandList,
   CommandSeparator,
   CommandShortcut,
-} from "@/examples/react-aria/ui/command"
-import {
-  CalculatorIcon,
-  CalendarIcon,
-  CreditCardIcon,
-  SettingsIcon,
-  SmileIcon,
-  UserIcon,
-} from "lucide-react"
+} from "@/styles/react-aria-nova/ui/command"
 
 export function CommandWithGroups() {
   const [open, setOpen] = React.useState(false)

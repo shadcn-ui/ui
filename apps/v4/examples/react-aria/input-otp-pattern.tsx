@@ -1,12 +1,13 @@
 "use client"
 
-import { Field, FieldLabel } from "@/examples/react-aria/ui/field"
+import { REGEXP_ONLY_DIGITS } from "input-otp"
+
+import { Field, FieldLabel } from "@/styles/react-aria-nova/ui/field"
 import {
   InputOTP,
   InputOTPGroup,
   InputOTPSlot,
-} from "@/examples/react-aria/ui/input-otp"
-import { REGEXP_ONLY_DIGITS } from "input-otp"
+} from "@/styles/react-aria-nova/ui/input-otp"
 
 export function InputOTPPattern() {
   return (

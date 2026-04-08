@@ -3,7 +3,7 @@ import {
   InputOTPGroup,
   InputOTPSeparator,
   InputOTPSlot,
-} from "@/examples/react-aria/ui/input-otp"
+} from "@/styles/react-aria-nova/ui/input-otp"
 
 export default function InputOTPWithSeparator() {
   return (

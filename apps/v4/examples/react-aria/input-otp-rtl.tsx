@@ -1,17 +1,17 @@
 "use client"
 
 import * as React from "react"
-import { Field, FieldLabel } from "@/examples/react-aria/ui-rtl/field"
-import {
-  InputOTP,
-  InputOTPGroup,
-  InputOTPSlot,
-} from "@/examples/react-aria/ui-rtl/input-otp"
 
 import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
+import { Field, FieldLabel } from "@/styles/react-aria-nova/ui-rtl/field"
+import {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSlot,
+} from "@/styles/react-aria-nova/ui-rtl/input-otp"
 
 const translations: Translations = {
   en: {

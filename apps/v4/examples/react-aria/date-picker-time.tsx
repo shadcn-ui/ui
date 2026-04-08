@@ -1,13 +1,18 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/react-aria/ui/button"
-import { Calendar } from "@/examples/react-aria/ui/calendar"
-import { Field, FieldGroup, FieldLabel } from "@/examples/react-aria/ui/field"
-import { Input } from "@/examples/react-aria/ui/input"
-import { Popover, PopoverTrigger } from "@/examples/react-aria/ui/popover"
 import { format } from "date-fns"
 import { ChevronDownIcon } from "lucide-react"
+
+import { Button } from "@/styles/react-aria-nova/ui/button"
+import { Calendar } from "@/styles/react-aria-nova/ui/calendar"
+import {
+  Field,
+  FieldGroup,
+  FieldLabel,
+} from "@/styles/react-aria-nova/ui/field"
+import { Input } from "@/styles/react-aria-nova/ui/input"
+import { Popover, PopoverTrigger } from "@/styles/react-aria-nova/ui/popover"
 
 export function DatePickerTime() {
   const [open, setOpen] = React.useState(false)

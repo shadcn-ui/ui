@@ -1,18 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/react-aria/ui/button"
-import {
-  Command,
-  CommandDialog,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-  CommandSeparator,
-  CommandShortcut,
-} from "@/examples/react-aria/ui/command"
 import {
   BellIcon,
   CalculatorIcon,
@@ -38,6 +26,19 @@ import {
   ZoomInIcon,
   ZoomOutIcon,
 } from "lucide-react"
+
+import { Button } from "@/styles/react-aria-nova/ui/button"
+import {
+  Command,
+  CommandDialog,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+  CommandSeparator,
+  CommandShortcut,
+} from "@/styles/react-aria-nova/ui/command"
 
 export function CommandManyItems() {
   const [open, setOpen] = React.useState(false)

@@ -1,19 +1,20 @@
 "use client"
 
 import {
-  ContextMenu,
-  ContextMenuGroup,
-  ContextMenuItem,
-  ContextMenuSeparator,
-  ContextMenuTrigger,
-} from "@/examples/react-aria/ui/context-menu"
-import {
   ClipboardPasteIcon,
   CopyIcon,
   ScissorsIcon,
   TrashIcon,
 } from "lucide-react"
 import { Pressable } from "react-aria-components"
+
+import {
+  ContextMenu,
+  ContextMenuGroup,
+  ContextMenuItem,
+  ContextMenuSeparator,
+  ContextMenuTrigger,
+} from "@/styles/react-aria-nova/ui/context-menu"
 
 export function ContextMenuIcons() {
   return (

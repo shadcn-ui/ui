@@ -1,7 +1,7 @@
-import { Button } from "@/examples/react-aria/ui/button"
-import { ButtonGroup } from "@/examples/react-aria/ui/button-group"
-import { Field, FieldLabel } from "@/examples/react-aria/ui/field"
-import { Input } from "@/examples/react-aria/ui/input"
+import { Button } from "@/styles/react-aria-nova/ui/button"
+import { ButtonGroup } from "@/styles/react-aria-nova/ui/button-group"
+import { Field, FieldLabel } from "@/styles/react-aria-nova/ui/field"
+import { Input } from "@/styles/react-aria-nova/ui/input"
 
 export function InputButtonGroup() {
   return (

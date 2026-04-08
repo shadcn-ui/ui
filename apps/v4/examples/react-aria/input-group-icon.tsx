@@ -1,9 +1,4 @@
 import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupInput,
-} from "@/examples/react-aria/ui/input-group"
-import {
   CheckIcon,
   CreditCardIcon,
   InfoIcon,
@@ -11,6 +6,12 @@ import {
   SearchIcon,
   StarIcon,
 } from "lucide-react"
+
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+} from "@/styles/react-aria-nova/ui/input-group"
 
 export default function InputGroupIcon() {
   return (

@@ -1,4 +1,4 @@
-import { Skeleton } from "@/examples/react-aria/ui/skeleton"
+import { Skeleton } from "@/styles/react-aria-nova/ui/skeleton"
 
 export function SkeletonDemo() {
   return (

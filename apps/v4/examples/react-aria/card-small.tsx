@@ -1,4 +1,6 @@
-import { Button } from "@/examples/react-aria/ui/button"
+import { ChevronRightIcon } from "lucide-react"
+
+import { Button } from "@/styles/react-aria-nova/ui/button"
 import {
   Card,
   CardContent,
@@ -6,8 +8,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/examples/react-aria/ui/card"
-import { ChevronRightIcon } from "lucide-react"
+} from "@/styles/react-aria-nova/ui/card"
 
 export function CardSmall() {
   const featureName = "Scheduled reports"

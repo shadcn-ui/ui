@@ -1,13 +1,14 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/react-aria/ui/button"
+import { ChevronsUpDown } from "lucide-react"
+
+import { Button } from "@/styles/react-aria-nova/ui/button"
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/examples/react-aria/ui/collapsible"
-import { ChevronsUpDown } from "lucide-react"
+} from "@/styles/react-aria-nova/ui/collapsible"
 
 export default function CollapsibleDemo() {
   const [isOpen, setIsOpen] = React.useState(false)

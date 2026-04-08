@@ -1,17 +1,17 @@
 "use client"
 
 import * as React from "react"
-import {
-  Alert,
-  AlertDescription,
-  AlertTitle,
-} from "@/examples/react-aria/ui-rtl/alert"
 import { CheckCircle2Icon, InfoIcon } from "lucide-react"
 
 import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from "@/styles/react-aria-nova/ui-rtl/alert"
 
 const translations: Translations = {
   en: {

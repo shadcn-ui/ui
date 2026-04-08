@@ -1,17 +1,17 @@
 "use client"
 
 import * as React from "react"
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/examples/react-aria/ui-rtl/accordion"
 
 import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/styles/react-aria-nova/ui-rtl/accordion"
 
 const translations: Translations = {
   en: {

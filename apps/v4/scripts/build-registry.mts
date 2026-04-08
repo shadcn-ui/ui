@@ -131,7 +131,7 @@ function normalizeRegistryFiles(item: RegistryItem): Array<{
 }
 
 function shouldGenerateRtlStyles(styleName: string) {
-  return styleName === "base-nova" || styleName === "radix-nova"
+  return styleName === "base-nova" || styleName === "radix-nova" || styleName === "react-aria-nova"
 }
 
 function getTemporaryRegistryRoot(styleName: string) {

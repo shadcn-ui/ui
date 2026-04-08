@@ -7,7 +7,7 @@ import {
   ComboboxInput,
   ComboboxItem,
   ComboboxList,
-} from "@/examples/react-aria/ui/combobox"
+} from "@/styles/react-aria-nova/ui/combobox"
 
 const frameworks = [
   "Next.js",

@@ -2,13 +2,13 @@ import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "@/examples/react-aria/ui/avatar"
-import { Button } from "@/examples/react-aria/ui/button"
+} from "@/styles/react-aria-nova/ui/avatar"
+import { Button } from "@/styles/react-aria-nova/ui/button"
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from "@/examples/react-aria/ui/hover-card"
+} from "@/styles/react-aria-nova/ui/hover-card"
 
 export default function HoverCardDemo() {
   return (

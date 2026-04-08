@@ -1,12 +1,13 @@
+import { InfoIcon } from "lucide-react"
+
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
-} from "@/examples/react-aria/ui/input-group"
-import { Label } from "@/examples/react-aria/ui/label"
-import { Tooltip, TooltipTrigger } from "@/examples/react-aria/ui/tooltip"
-import { InfoIcon } from "lucide-react"
+} from "@/styles/react-aria-nova/ui/input-group"
+import { Label } from "@/styles/react-aria-nova/ui/label"
+import { Tooltip, TooltipTrigger } from "@/styles/react-aria-nova/ui/tooltip"
 
 export default function InputGroupLabel() {
   return (

@@ -1,15 +1,16 @@
 "use client"
 
 import * as React from "react"
+
 import {
   Field,
   FieldDescription,
   FieldLabel,
-} from "@/examples/react-aria/ui/field"
+} from "@/styles/react-aria-nova/ui/field"
 import {
   ToggleGroup,
   ToggleGroupItem,
-} from "@/examples/react-aria/ui/toggle-group"
+} from "@/styles/react-aria-nova/ui/toggle-group"
 
 export function ToggleGroupFontWeightSelector() {
   const [fontWeight, setFontWeight] = React.useState("normal")

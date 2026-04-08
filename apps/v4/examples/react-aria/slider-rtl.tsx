@@ -1,12 +1,12 @@
 "use client"
 
 import * as React from "react"
-import { Slider } from "@/examples/react-aria/ui-rtl/slider"
 
 import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
+import { Slider } from "@/styles/react-aria-nova/ui-rtl/slider"
 
 const translations: Translations = {
   en: {

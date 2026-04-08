@@ -1,25 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/react-aria/ui/button"
-import { Checkbox } from "@/examples/react-aria/ui/checkbox"
-import {
-  DropdownMenu,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/examples/react-aria/ui/dropdown-menu"
-import { Input } from "@/examples/react-aria/ui/input"
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/examples/react-aria/ui/table"
 import {
   flexRender,
   getCoreRowModel,
@@ -33,6 +14,26 @@ import {
   type VisibilityState,
 } from "@tanstack/react-table"
 import { ArrowUpDown, ChevronDown, MoreHorizontal } from "lucide-react"
+
+import { Button } from "@/styles/react-aria-nova/ui/button"
+import { Checkbox } from "@/styles/react-aria-nova/ui/checkbox"
+import {
+  DropdownMenu,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/styles/react-aria-nova/ui/dropdown-menu"
+import { Input } from "@/styles/react-aria-nova/ui/input"
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/styles/react-aria-nova/ui/table"
 
 const data: Payment[] = [
   {

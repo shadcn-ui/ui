@@ -1,7 +1,8 @@
-import { Button } from "@/examples/react-aria/ui/button"
-import { Kbd } from "@/examples/react-aria/ui/kbd"
-import { Tooltip, TooltipTrigger } from "@/examples/react-aria/ui/tooltip"
 import { SaveIcon } from "lucide-react"
+
+import { Button } from "@/styles/react-aria-nova/ui/button"
+import { Kbd } from "@/styles/react-aria-nova/ui/kbd"
+import { Tooltip, TooltipTrigger } from "@/styles/react-aria-nova/ui/tooltip"
 
 export function TooltipKeyboard() {
   return (

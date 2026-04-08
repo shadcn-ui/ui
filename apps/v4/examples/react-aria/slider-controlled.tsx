@@ -1,8 +1,9 @@
 "use client"
 
 import * as React from "react"
-import { Label } from "@/examples/react-aria/ui/label"
-import { Slider } from "@/examples/react-aria/ui/slider"
+
+import { Label } from "@/styles/react-aria-nova/ui/label"
+import { Slider } from "@/styles/react-aria-nova/ui/slider"
 
 export function SliderControlled() {
   const [value, setValue] = React.useState([0.3, 0.7])

@@ -1,6 +1,6 @@
-import { Button } from "@/examples/react-aria/ui/button"
-import { Input } from "@/examples/react-aria/ui/input"
-import { Label } from "@/examples/react-aria/ui/label"
+import { Button } from "@/styles/react-aria-nova/ui/button"
+import { Input } from "@/styles/react-aria-nova/ui/input"
+import { Label } from "@/styles/react-aria-nova/ui/label"
 import {
   Sheet,
   SheetClose,
@@ -9,7 +9,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/examples/react-aria/ui/sheet"
+} from "@/styles/react-aria-nova/ui/sheet"
 
 export default function SheetDemo() {
   return (

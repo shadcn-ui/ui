@@ -2,45 +2,6 @@
 
 import * as React from "react"
 import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/examples/react-aria/ui-rtl/avatar"
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/examples/react-aria/ui-rtl/collapsible"
-import { DirectionProvider } from "@/examples/react-aria/ui-rtl/direction"
-import {
-  DropdownMenu,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/examples/react-aria/ui-rtl/dropdown-menu"
-import {
-  Sidebar,
-  SidebarContent,
-  SidebarFooter,
-  SidebarGroup,
-  SidebarGroupLabel,
-  SidebarHeader,
-  SidebarInset,
-  SidebarMenu,
-  SidebarMenuAction,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  SidebarMenuSub,
-  SidebarMenuSubButton,
-  SidebarMenuSubItem,
-  SidebarProvider,
-  SidebarRail,
-  SidebarTrigger,
-  useSidebar,
-} from "@/examples/react-aria/ui-rtl/sidebar"
-import {
   BadgeCheck,
   Bell,
   BookOpen,
@@ -68,6 +29,44 @@ import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/styles/react-aria-nova/ui-rtl/avatar"
+import {
+  Collapsible,
+  CollapsibleContent,
+} from "@/styles/react-aria-nova/ui-rtl/collapsible"
+import { DirectionProvider } from "@/styles/react-aria-nova/ui-rtl/direction"
+import {
+  DropdownMenu,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/styles/react-aria-nova/ui-rtl/dropdown-menu"
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarGroup,
+  SidebarGroupLabel,
+  SidebarHeader,
+  SidebarInset,
+  SidebarMenu,
+  SidebarMenuAction,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarMenuSub,
+  SidebarMenuSubButton,
+  SidebarMenuSubItem,
+  SidebarProvider,
+  SidebarRail,
+  SidebarTrigger,
+  useSidebar,
+} from "@/styles/react-aria-nova/ui-rtl/sidebar"
 
 const translations: Translations = {
   en: {

@@ -2,7 +2,7 @@ import {
   InputOTP,
   InputOTPGroup,
   InputOTPSlot,
-} from "@/examples/react-aria/ui/input-otp"
+} from "@/styles/react-aria-nova/ui/input-otp"
 
 export function InputOTPDemo() {
   return (

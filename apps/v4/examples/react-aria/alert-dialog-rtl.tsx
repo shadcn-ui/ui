@@ -1,5 +1,11 @@
 "use client"
 
+import { BluetoothIcon } from "lucide-react"
+
+import {
+  useTranslation,
+  type Translations,
+} from "@/components/language-selector"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -10,14 +16,8 @@ import {
   AlertDialogMedia,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/examples/react-aria/ui-rtl/alert-dialog"
-import { Button } from "@/examples/react-aria/ui-rtl/button"
-import { BluetoothIcon } from "lucide-react"
-
-import {
-  useTranslation,
-  type Translations,
-} from "@/components/language-selector"
+} from "@/styles/react-aria-nova/ui-rtl/alert-dialog"
+import { Button } from "@/styles/react-aria-nova/ui-rtl/button"
 
 const translations: Translations = {
   en: {

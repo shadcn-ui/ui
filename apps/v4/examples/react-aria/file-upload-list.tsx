@@ -1,6 +1,8 @@
 "use client"
 
 import * as React from "react"
+import { FileIcon } from "lucide-react"
+
 import {
   Item,
   ItemActions,
@@ -8,9 +10,8 @@ import {
   ItemGroup,
   ItemMedia,
   ItemTitle,
-} from "@/examples/react-aria/ui/item"
-import { Progress } from "@/examples/react-aria/ui/progress"
-import { FileIcon } from "lucide-react"
+} from "@/styles/react-aria-nova/ui/item"
+import { Progress } from "@/styles/react-aria-nova/ui/progress"
 
 export function FileUploadList() {
   const files = React.useMemo(

@@ -1,16 +1,17 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/react-aria/ui/button"
-import { ButtonGroup } from "@/examples/react-aria/ui/button-group"
+import { AudioLinesIcon, PlusIcon } from "lucide-react"
+
+import { Button } from "@/styles/react-aria-nova/ui/button"
+import { ButtonGroup } from "@/styles/react-aria-nova/ui/button-group"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
-} from "@/examples/react-aria/ui/input-group"
-import { Tooltip, TooltipTrigger } from "@/examples/react-aria/ui/tooltip"
-import { AudioLinesIcon, PlusIcon } from "lucide-react"
+} from "@/styles/react-aria-nova/ui/input-group"
+import { Tooltip, TooltipTrigger } from "@/styles/react-aria-nova/ui/tooltip"
 
 export default function ButtonGroupInputGroup() {
   const [voiceEnabled, setVoiceEnabled] = React.useState(false)

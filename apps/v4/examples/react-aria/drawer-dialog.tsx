@@ -1,14 +1,17 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/react-aria/ui/button"
+
+import { cn } from "@/lib/utils"
+import { useMediaQuery } from "@/hooks/use-media-query"
+import { Button } from "@/styles/react-aria-nova/ui/button"
 import {
   Dialog,
   DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/examples/react-aria/ui/dialog"
+} from "@/styles/react-aria-nova/ui/dialog"
 import {
   Drawer,
   DrawerClose,
@@ -18,12 +21,9 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "@/examples/react-aria/ui/drawer"
-import { Input } from "@/examples/react-aria/ui/input"
-import { Label } from "@/examples/react-aria/ui/label"
-
-import { cn } from "@/lib/utils"
-import { useMediaQuery } from "@/hooks/use-media-query"
+} from "@/styles/react-aria-nova/ui/drawer"
+import { Input } from "@/styles/react-aria-nova/ui/input"
+import { Label } from "@/styles/react-aria-nova/ui/label"
 
 export function DrawerDialogDemo() {
   const [open, setOpen] = React.useState(false)

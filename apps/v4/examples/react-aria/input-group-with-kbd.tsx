@@ -1,18 +1,19 @@
+import { CheckIcon, InfoIcon, SearchIcon, SparklesIcon } from "lucide-react"
+
 import {
   Field,
   FieldDescription,
   FieldGroup,
   FieldLabel,
-} from "@/examples/react-aria/ui/field"
-import { Input } from "@/examples/react-aria/ui/input"
+} from "@/styles/react-aria-nova/ui/field"
+import { Input } from "@/styles/react-aria-nova/ui/input"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
-} from "@/examples/react-aria/ui/input-group"
-import { Kbd, KbdGroup } from "@/examples/react-aria/ui/kbd"
-import { Spinner } from "@/examples/react-aria/ui/spinner"
-import { CheckIcon, InfoIcon, SearchIcon, SparklesIcon } from "lucide-react"
+} from "@/styles/react-aria-nova/ui/input-group"
+import { Kbd, KbdGroup } from "@/styles/react-aria-nova/ui/kbd"
+import { Spinner } from "@/styles/react-aria-nova/ui/spinner"
 
 export function InputGroupWithKbd() {
   return (

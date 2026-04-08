@@ -1,12 +1,13 @@
 import * as React from "react"
-import { Card, CardContent } from "@/examples/react-aria/ui/card"
+
+import { Card, CardContent } from "@/styles/react-aria-nova/ui/card"
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/examples/react-aria/ui/carousel"
+} from "@/styles/react-aria-nova/ui/carousel"
 
 export default function CarouselDemo() {
   return (

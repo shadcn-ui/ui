@@ -1,5 +1,5 @@
-import { Badge } from "@/examples/react-aria/ui/badge"
-import { Button } from "@/examples/react-aria/ui/button"
+import { Badge } from "@/styles/react-aria-nova/ui/badge"
+import { Button } from "@/styles/react-aria-nova/ui/button"
 import {
   Card,
   CardAction,
@@ -7,7 +7,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/examples/react-aria/ui/card"
+} from "@/styles/react-aria-nova/ui/card"
 
 export function CardImage() {
   return (

@@ -1,9 +1,11 @@
+import { Plus } from "lucide-react"
+
 import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "@/examples/react-aria/ui/avatar"
-import { Button } from "@/examples/react-aria/ui/button"
+} from "@/styles/react-aria-nova/ui/avatar"
+import { Button } from "@/styles/react-aria-nova/ui/button"
 import {
   Item,
   ItemActions,
@@ -11,8 +13,7 @@ import {
   ItemDescription,
   ItemMedia,
   ItemTitle,
-} from "@/examples/react-aria/ui/item"
-import { Plus } from "lucide-react"
+} from "@/styles/react-aria-nova/ui/item"
 
 export function ItemAvatar() {
   return (

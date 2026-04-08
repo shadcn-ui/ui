@@ -1,13 +1,14 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/react-aria/ui/button"
-import { Calendar } from "@/examples/react-aria/ui/calendar"
-import { Field, FieldLabel } from "@/examples/react-aria/ui/field"
-import { Popover, PopoverTrigger } from "@/examples/react-aria/ui/popover"
 import { addDays, format } from "date-fns"
 import { CalendarIcon } from "lucide-react"
 import { type DateRange } from "react-day-picker"
+
+import { Button } from "@/styles/react-aria-nova/ui/button"
+import { Calendar } from "@/styles/react-aria-nova/ui/calendar"
+import { Field, FieldLabel } from "@/styles/react-aria-nova/ui/field"
+import { Popover, PopoverTrigger } from "@/styles/react-aria-nova/ui/popover"
 
 export function DatePickerWithRange() {
   const [date, setDate] = React.useState<DateRange | undefined>({

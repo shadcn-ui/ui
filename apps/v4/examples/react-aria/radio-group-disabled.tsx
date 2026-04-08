@@ -1,8 +1,8 @@
-import { Field, FieldLabel } from "@/examples/react-aria/ui/field"
+import { Field, FieldLabel } from "@/styles/react-aria-nova/ui/field"
 import {
   RadioGroup,
   RadioGroupItem,
-} from "@/examples/react-aria/ui/radio-group"
+} from "@/styles/react-aria-nova/ui/radio-group"
 
 export function RadioGroupDisabled() {
   return (

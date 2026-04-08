@@ -1,16 +1,15 @@
 "use client"
 
-import { Button } from "@/examples/react-aria/ui-rtl/button"
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "@/examples/react-aria/ui-rtl/hover-card"
-
 import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
+import { Button } from "@/styles/react-aria-nova/ui-rtl/button"
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/styles/react-aria-nova/ui-rtl/hover-card"
 
 const translations: Translations = {
   en: {

@@ -4,7 +4,7 @@ import {
   InputGroupInput,
   InputGroupText,
   InputGroupTextarea,
-} from "@/examples/react-aria/ui/input-group"
+} from "@/styles/react-aria-nova/ui/input-group"
 
 export default function InputGroupTextExample() {
   return (

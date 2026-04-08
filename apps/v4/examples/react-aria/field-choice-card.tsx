@@ -7,11 +7,11 @@ import {
   FieldLegend,
   FieldSet,
   FieldTitle,
-} from "@/examples/react-aria/ui/field"
+} from "@/styles/react-aria-nova/ui/field"
 import {
   RadioGroup,
   RadioGroupItem,
-} from "@/examples/react-aria/ui/radio-group"
+} from "@/styles/react-aria-nova/ui/radio-group"
 
 export default function FieldChoiceCard() {
   return (

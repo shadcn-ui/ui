@@ -1,11 +1,12 @@
+import { ChevronRightIcon, ExternalLinkIcon } from "lucide-react"
+
 import {
   Item,
   ItemActions,
   ItemContent,
   ItemDescription,
   ItemTitle,
-} from "@/examples/react-aria/ui/item"
-import { ChevronRightIcon, ExternalLinkIcon } from "lucide-react"
+} from "@/styles/react-aria-nova/ui/item"
 
 export function ItemLink() {
   return (

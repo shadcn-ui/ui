@@ -1,7 +1,7 @@
 import {
   NativeSelect,
   NativeSelectOption,
-} from "@/examples/react-aria/ui/native-select"
+} from "@/styles/react-aria-nova/ui/native-select"
 
 export default function NativeSelectDemo() {
   return (

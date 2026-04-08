@@ -1,4 +1,4 @@
-import { Separator } from "@/examples/react-aria/ui/separator"
+import { Separator } from "@/styles/react-aria-nova/ui/separator"
 
 export function SeparatorList() {
   return (

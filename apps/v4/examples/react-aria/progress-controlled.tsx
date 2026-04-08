@@ -1,8 +1,9 @@
 "use client"
 
 import * as React from "react"
-import { Progress } from "@/examples/react-aria/ui/progress"
-import { Slider } from "@/examples/react-aria/ui/slider"
+
+import { Progress } from "@/styles/react-aria-nova/ui/progress"
+import { Slider } from "@/styles/react-aria-nova/ui/slider"
 
 export function ProgressControlled() {
   const [value, setValue] = React.useState(50)

@@ -1,14 +1,15 @@
 "use client"
 
+import { ArchiveIcon, PencilIcon, ShareIcon, TrashIcon } from "lucide-react"
+import { Pressable } from "react-aria-components"
+
 import {
   ContextMenu,
   ContextMenuGroup,
   ContextMenuItem,
   ContextMenuSeparator,
   ContextMenuTrigger,
-} from "@/examples/react-aria/ui/context-menu"
-import { ArchiveIcon, PencilIcon, ShareIcon, TrashIcon } from "lucide-react"
-import { Pressable } from "react-aria-components"
+} from "@/styles/react-aria-nova/ui/context-menu"
 
 export function ContextMenuDestructive() {
   return (

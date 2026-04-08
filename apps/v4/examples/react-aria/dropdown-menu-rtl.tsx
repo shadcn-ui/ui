@@ -1,7 +1,14 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/react-aria/ui-rtl/button"
+import { CreditCardIcon, SettingsIcon, UserIcon } from "lucide-react"
+import type { Selection } from "react-aria-components"
+
+import {
+  useTranslation,
+  type Translations,
+} from "@/components/language-selector"
+import { Button } from "@/styles/react-aria-nova/ui-rtl/button"
 import {
   DropdownMenu,
   DropdownMenuGroup,
@@ -13,14 +20,7 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@/examples/react-aria/ui-rtl/dropdown-menu"
-import { CreditCardIcon, SettingsIcon, UserIcon } from "lucide-react"
-import type { Selection } from "react-aria-components"
-
-import {
-  useTranslation,
-  type Translations,
-} from "@/components/language-selector"
+} from "@/styles/react-aria-nova/ui-rtl/dropdown-menu"
 
 const translations: Translations = {
   en: {

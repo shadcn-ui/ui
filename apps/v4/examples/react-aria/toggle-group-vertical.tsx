@@ -1,8 +1,9 @@
+import { BoldIcon, ItalicIcon, UnderlineIcon } from "lucide-react"
+
 import {
   ToggleGroup,
   ToggleGroupItem,
-} from "@/examples/react-aria/ui/toggle-group"
-import { BoldIcon, ItalicIcon, UnderlineIcon } from "lucide-react"
+} from "@/styles/react-aria-nova/ui/toggle-group"
 
 export function ToggleGroupVertical() {
   return (

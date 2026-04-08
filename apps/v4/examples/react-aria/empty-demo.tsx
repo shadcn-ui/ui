@@ -1,4 +1,7 @@
-import { Button, LinkButton } from "@/examples/react-aria/ui/button"
+import { IconFolderCode } from "@tabler/icons-react"
+import { ArrowUpRightIcon } from "lucide-react"
+
+import { Button, LinkButton } from "@/styles/react-aria-nova/ui/button"
 import {
   Empty,
   EmptyContent,
@@ -6,9 +9,7 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@/examples/react-aria/ui/empty"
-import { IconFolderCode } from "@tabler/icons-react"
-import { ArrowUpRightIcon } from "lucide-react"
+} from "@/styles/react-aria-nova/ui/empty"
 
 export default function EmptyDemo() {
   return (

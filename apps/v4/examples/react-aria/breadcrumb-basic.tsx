@@ -4,7 +4,7 @@ import {
   BreadcrumbLink,
   BreadcrumbList,
   BreadcrumbPage,
-} from "@/examples/react-aria/ui/breadcrumb"
+} from "@/styles/react-aria-nova/ui/breadcrumb"
 
 export function BreadcrumbBasic() {
   return (

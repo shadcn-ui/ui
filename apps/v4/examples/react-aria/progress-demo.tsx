@@ -1,7 +1,8 @@
 "use client"
 
 import * as React from "react"
-import { Progress } from "@/examples/react-aria/ui/progress"
+
+import { Progress } from "@/styles/react-aria-nova/ui/progress"
 
 export default function ProgressDemo() {
   const [progress, setProgress] = React.useState(13)

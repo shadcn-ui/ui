@@ -1,5 +1,5 @@
-import { Button } from "@/examples/react-aria/ui/button"
-import { Checkbox } from "@/examples/react-aria/ui/checkbox"
+import { Button } from "@/styles/react-aria-nova/ui/button"
+import { Checkbox } from "@/styles/react-aria-nova/ui/checkbox"
 import {
   Field,
   FieldDescription,
@@ -8,8 +8,8 @@ import {
   FieldLegend,
   FieldSeparator,
   FieldSet,
-} from "@/examples/react-aria/ui/field"
-import { Input } from "@/examples/react-aria/ui/input"
+} from "@/styles/react-aria-nova/ui/field"
+import { Input } from "@/styles/react-aria-nova/ui/input"
 import {
   Select,
   SelectContent,
@@ -17,8 +17,8 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/examples/react-aria/ui/select"
-import { Textarea } from "@/examples/react-aria/ui/textarea"
+} from "@/styles/react-aria-nova/ui/select"
+import { Textarea } from "@/styles/react-aria-nova/ui/textarea"
 
 const months = [
   { label: "01", value: "01" },

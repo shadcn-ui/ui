@@ -1,9 +1,13 @@
-import { Field, FieldGroup, FieldLabel } from "@/examples/react-aria/ui/field"
-import { Input } from "@/examples/react-aria/ui/input"
+import {
+  Field,
+  FieldGroup,
+  FieldLabel,
+} from "@/styles/react-aria-nova/ui/field"
+import { Input } from "@/styles/react-aria-nova/ui/input"
 import {
   InputGroup,
   InputGroupInput,
-} from "@/examples/react-aria/ui/input-group"
+} from "@/styles/react-aria-nova/ui/input-group"
 
 export function InputGroupBasic() {
   return (

@@ -1,7 +1,9 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/react-aria/ui/button"
+import { CreditCardIcon, SettingsIcon, UserIcon } from "lucide-react"
+
+import { Button } from "@/styles/react-aria-nova/ui/button"
 import {
   Command,
   CommandDialog,
@@ -11,8 +13,7 @@ import {
   CommandItem,
   CommandList,
   CommandShortcut,
-} from "@/examples/react-aria/ui/command"
-import { CreditCardIcon, SettingsIcon, UserIcon } from "lucide-react"
+} from "@/styles/react-aria-nova/ui/command"
 
 export function CommandWithShortcuts() {
   const [open, setOpen] = React.useState(false)

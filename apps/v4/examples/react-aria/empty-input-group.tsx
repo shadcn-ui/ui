@@ -1,17 +1,18 @@
+import { SearchIcon } from "lucide-react"
+
 import {
   Empty,
   EmptyContent,
   EmptyDescription,
   EmptyHeader,
   EmptyTitle,
-} from "@/examples/react-aria/ui/empty"
+} from "@/styles/react-aria-nova/ui/empty"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
-} from "@/examples/react-aria/ui/input-group"
-import { Kbd } from "@/examples/react-aria/ui/kbd"
-import { SearchIcon } from "lucide-react"
+} from "@/styles/react-aria-nova/ui/input-group"
+import { Kbd } from "@/styles/react-aria-nova/ui/kbd"
 
 export default function EmptyInputGroup() {
   return (

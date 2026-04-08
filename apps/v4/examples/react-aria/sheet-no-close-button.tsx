@@ -1,11 +1,11 @@
-import { Button } from "@/examples/react-aria/ui/button"
+import { Button } from "@/styles/react-aria-nova/ui/button"
 import {
   Sheet,
   SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/examples/react-aria/ui/sheet"
+} from "@/styles/react-aria-nova/ui/sheet"
 
 export default function SheetNoCloseButton() {
   return (

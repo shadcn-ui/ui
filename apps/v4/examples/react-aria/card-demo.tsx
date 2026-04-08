@@ -1,4 +1,4 @@
-import { Button } from "@/examples/react-aria/ui/button"
+import { Button } from "@/styles/react-aria-nova/ui/button"
 import {
   Card,
   CardAction,
@@ -7,9 +7,9 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/examples/react-aria/ui/card"
-import { Input } from "@/examples/react-aria/ui/input"
-import { Label } from "@/examples/react-aria/ui/label"
+} from "@/styles/react-aria-nova/ui/card"
+import { Input } from "@/styles/react-aria-nova/ui/input"
+import { Label } from "@/styles/react-aria-nova/ui/label"
 
 export default function CardDemo() {
   return (

@@ -1,8 +1,9 @@
 "use client"
 
 import * as React from "react"
-import { Calendar } from "@/examples/react-aria/ui/calendar"
-import { Card, CardContent } from "@/examples/react-aria/ui/card"
+
+import { Calendar } from "@/styles/react-aria-nova/ui/calendar"
+import { Card, CardContent } from "@/styles/react-aria-nova/ui/card"
 
 export function CalendarWeekNumbers() {
   const [date, setDate] = React.useState<Date | undefined>(

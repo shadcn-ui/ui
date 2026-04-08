@@ -1,5 +1,6 @@
-import { Toggle } from "@/examples/react-aria/ui/toggle"
 import { BoldIcon, ItalicIcon } from "lucide-react"
+
+import { Toggle } from "@/styles/react-aria-nova/ui/toggle"
 
 export function ToggleOutline() {
   return (

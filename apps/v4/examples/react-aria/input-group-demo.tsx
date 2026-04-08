@@ -1,9 +1,10 @@
+import { Search } from "lucide-react"
+
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
-} from "@/examples/react-aria/ui/input-group"
-import { Search } from "lucide-react"
+} from "@/styles/react-aria-nova/ui/input-group"
 
 export function InputGroupDemo() {
   return (

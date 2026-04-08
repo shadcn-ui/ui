@@ -1,18 +1,17 @@
 "use client"
 
-import { Button } from "@/examples/react-aria/ui-rtl/button"
+import {
+  useTranslation,
+  type Translations,
+} from "@/components/language-selector"
+import { Button } from "@/styles/react-aria-nova/ui-rtl/button"
 import {
   Popover,
   PopoverDescription,
   PopoverHeader,
   PopoverTitle,
   PopoverTrigger,
-} from "@/examples/react-aria/ui-rtl/popover"
-
-import {
-  useTranslation,
-  type Translations,
-} from "@/components/language-selector"
+} from "@/styles/react-aria-nova/ui-rtl/popover"
 
 const translations: Translations = {
   en: {

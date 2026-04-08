@@ -1,12 +1,10 @@
-import { Button } from "@/examples/react-aria/ui/button"
-import { Card, CardContent } from "@/examples/react-aria/ui/card"
+import { ChevronDownIcon } from "@/registry/icons/__lucide__"
+import { Button } from "@/styles/react-aria-nova/ui/button"
+import { Card, CardContent } from "@/styles/react-aria-nova/ui/card"
 import {
   Collapsible,
   CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/examples/react-aria/ui/collapsible"
-
-import { ChevronDownIcon } from "@/registry/icons/__lucide__"
+} from "@/styles/react-aria-nova/ui/collapsible"
 
 export function CollapsibleBasic() {
   return (

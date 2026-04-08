@@ -1,5 +1,9 @@
-import { Checkbox } from "@/examples/react-aria/ui/checkbox"
-import { Field, FieldGroup, FieldLabel } from "@/examples/react-aria/ui/field"
+import { Checkbox } from "@/styles/react-aria-nova/ui/checkbox"
+import {
+  Field,
+  FieldGroup,
+  FieldLabel,
+} from "@/styles/react-aria-nova/ui/field"
 
 export function CheckboxInvalid() {
   return (

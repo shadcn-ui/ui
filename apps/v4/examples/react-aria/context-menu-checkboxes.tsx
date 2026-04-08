@@ -1,13 +1,14 @@
 "use client"
 
 import { useState } from "react"
+import { Pressable, type Selection } from "react-aria-components"
+
 import {
   ContextMenu,
   ContextMenuGroup,
   ContextMenuItem,
   ContextMenuTrigger,
-} from "@/examples/react-aria/ui/context-menu"
-import { Pressable, type Selection } from "react-aria-components"
+} from "@/styles/react-aria-nova/ui/context-menu"
 
 export function ContextMenuCheckboxes() {
   const [selectedKeys, setSelectedKeys] = useState<Selection>(

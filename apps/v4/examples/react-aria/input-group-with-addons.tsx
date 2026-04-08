@@ -1,19 +1,6 @@
 "use client"
 
 import {
-  Field,
-  FieldDescription,
-  FieldGroup,
-  FieldLabel,
-} from "@/examples/react-aria/ui/field"
-import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupButton,
-  InputGroupInput,
-  InputGroupText,
-} from "@/examples/react-aria/ui/input-group"
-import {
   CopyIcon,
   EyeOffIcon,
   InfoIcon,
@@ -23,6 +10,20 @@ import {
   StarIcon,
 } from "lucide-react"
 import { toast } from "sonner"
+
+import {
+  Field,
+  FieldDescription,
+  FieldGroup,
+  FieldLabel,
+} from "@/styles/react-aria-nova/ui/field"
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButton,
+  InputGroupInput,
+  InputGroupText,
+} from "@/styles/react-aria-nova/ui/input-group"
 
 export function InputGroupWithAddons() {
   return (

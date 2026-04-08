@@ -1,11 +1,12 @@
+import { InboxIcon } from "lucide-react"
+
 import {
   Item,
   ItemContent,
   ItemDescription,
   ItemMedia,
   ItemTitle,
-} from "@/examples/react-aria/ui/item"
-import { InboxIcon } from "lucide-react"
+} from "@/styles/react-aria-nova/ui/item"
 
 export function ItemVariant() {
   return (

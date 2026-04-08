@@ -1,17 +1,18 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/react-aria/ui/button"
-import { ButtonGroup } from "@/examples/react-aria/ui/button-group"
-import { Input } from "@/examples/react-aria/ui/input"
+import { ArrowRightIcon } from "lucide-react"
+
+import { Button } from "@/styles/react-aria-nova/ui/button"
+import { ButtonGroup } from "@/styles/react-aria-nova/ui/button-group"
+import { Input } from "@/styles/react-aria-nova/ui/input"
 import {
   Select,
   SelectContent,
   SelectGroup,
   SelectItem,
   SelectTrigger,
-} from "@/examples/react-aria/ui/select"
-import { ArrowRightIcon } from "lucide-react"
+} from "@/styles/react-aria-nova/ui/select"
 
 const CURRENCIES = [
   { label: "US Dollar", value: "$" },

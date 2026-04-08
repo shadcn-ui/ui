@@ -1,10 +1,12 @@
 "use client"
 
+import { ChevronDownIcon } from "lucide-react"
+
 import {
   DropdownMenu,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/examples/react-aria/ui/dropdown-menu"
+} from "@/styles/react-aria-nova/ui/dropdown-menu"
 import {
   Sidebar,
   SidebarHeader,
@@ -14,8 +16,7 @@ import {
   SidebarMenuItem,
   SidebarProvider,
   SidebarTrigger,
-} from "@/examples/react-aria/ui/sidebar"
-import { ChevronDownIcon } from "lucide-react"
+} from "@/styles/react-aria-nova/ui/sidebar"
 
 export default function AppSidebar() {
   return (

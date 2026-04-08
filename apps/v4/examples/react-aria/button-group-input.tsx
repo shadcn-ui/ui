@@ -1,7 +1,8 @@
-import { Button } from "@/examples/react-aria/ui/button"
-import { ButtonGroup } from "@/examples/react-aria/ui/button-group"
-import { Input } from "@/examples/react-aria/ui/input"
 import { SearchIcon } from "lucide-react"
+
+import { Button } from "@/styles/react-aria-nova/ui/button"
+import { ButtonGroup } from "@/styles/react-aria-nova/ui/button-group"
+import { Input } from "@/styles/react-aria-nova/ui/input"
 
 export default function ButtonGroupInput() {
   return (

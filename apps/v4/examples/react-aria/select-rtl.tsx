@@ -1,6 +1,13 @@
 "use client"
 
 import * as React from "react"
+import { type Key } from "react-aria-components"
+
+import {
+  useTranslation,
+  type Language,
+  type Translations,
+} from "@/components/language-selector"
 import {
   Select,
   SelectContent,
@@ -10,14 +17,7 @@ import {
   SelectSeparator,
   SelectTrigger,
   SelectValue,
-} from "@/examples/react-aria/ui-rtl/select"
-import { type Key } from "react-aria-components"
-
-import {
-  useTranslation,
-  type Language,
-  type Translations,
-} from "@/components/language-selector"
+} from "@/styles/react-aria-nova/ui-rtl/select"
 
 const translations: Translations = {
   en: {

@@ -1,6 +1,10 @@
 "use client"
 
-import { Button } from "@/examples/react-aria/ui-rtl/button"
+import {
+  useTranslation,
+  type Translations,
+} from "@/components/language-selector"
+import { Button } from "@/styles/react-aria-nova/ui-rtl/button"
 import {
   Dialog,
   DialogClose,
@@ -9,15 +13,10 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/examples/react-aria/ui-rtl/dialog"
-import { Field, FieldGroup } from "@/examples/react-aria/ui-rtl/field"
-import { Input } from "@/examples/react-aria/ui-rtl/input"
-import { Label } from "@/examples/react-aria/ui-rtl/label"
-
-import {
-  useTranslation,
-  type Translations,
-} from "@/components/language-selector"
+} from "@/styles/react-aria-nova/ui-rtl/dialog"
+import { Field, FieldGroup } from "@/styles/react-aria-nova/ui-rtl/field"
+import { Input } from "@/styles/react-aria-nova/ui-rtl/input"
+import { Label } from "@/styles/react-aria-nova/ui-rtl/label"
 
 const translations: Translations = {
   en: {

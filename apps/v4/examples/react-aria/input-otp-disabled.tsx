@@ -1,10 +1,10 @@
-import { Field, FieldLabel } from "@/examples/react-aria/ui/field"
+import { Field, FieldLabel } from "@/styles/react-aria-nova/ui/field"
 import {
   InputOTP,
   InputOTPGroup,
   InputOTPSeparator,
   InputOTPSlot,
-} from "@/examples/react-aria/ui/input-otp"
+} from "@/styles/react-aria-nova/ui/input-otp"
 
 export function InputOTPDisabled() {
   return (

@@ -1,12 +1,16 @@
 "use client"
 
-import { Button } from "@/examples/react-aria/ui-rtl/button"
+import {
+  useTranslation,
+  type Translations,
+} from "@/components/language-selector"
+import { Button } from "@/styles/react-aria-nova/ui-rtl/button"
 import {
   Field,
   FieldGroup,
   FieldLabel,
-} from "@/examples/react-aria/ui-rtl/field"
-import { Input } from "@/examples/react-aria/ui-rtl/input"
+} from "@/styles/react-aria-nova/ui-rtl/field"
+import { Input } from "@/styles/react-aria-nova/ui-rtl/input"
 import {
   Sheet,
   SheetClose,
@@ -15,12 +19,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/examples/react-aria/ui-rtl/sheet"
-
-import {
-  useTranslation,
-  type Translations,
-} from "@/components/language-selector"
+} from "@/styles/react-aria-nova/ui-rtl/sheet"
 
 const translations: Translations = {
   en: {

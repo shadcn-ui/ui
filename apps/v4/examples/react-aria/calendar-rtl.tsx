@@ -1,13 +1,13 @@
 "use client"
 
 import * as React from "react"
-import { Calendar } from "@/examples/react-aria/ui-rtl/calendar"
 import { arSA, he } from "react-day-picker/locale"
 
 import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
+import { Calendar } from "@/styles/react-aria-nova/ui-rtl/calendar"
 
 const translations: Translations = {
   en: {

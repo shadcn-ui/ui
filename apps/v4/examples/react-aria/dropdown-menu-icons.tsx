@@ -1,18 +1,19 @@
 "use client"
 
-import { Button } from "@/examples/react-aria/ui/button"
-import {
-  DropdownMenu,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/examples/react-aria/ui/dropdown-menu"
 import {
   CreditCardIcon,
   LogOutIcon,
   SettingsIcon,
   UserIcon,
 } from "lucide-react"
+
+import { Button } from "@/styles/react-aria-nova/ui/button"
+import {
+  DropdownMenu,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/styles/react-aria-nova/ui/dropdown-menu"
 
 export function DropdownMenuIcons() {
   return (

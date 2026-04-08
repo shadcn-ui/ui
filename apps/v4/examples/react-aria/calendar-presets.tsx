@@ -1,10 +1,11 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/react-aria/ui/button"
-import { Calendar } from "@/examples/react-aria/ui/calendar"
-import { Card, CardContent, CardFooter } from "@/examples/react-aria/ui/card"
 import { addDays } from "date-fns"
+
+import { Button } from "@/styles/react-aria-nova/ui/button"
+import { Calendar } from "@/styles/react-aria-nova/ui/calendar"
+import { Card, CardContent, CardFooter } from "@/styles/react-aria-nova/ui/card"
 
 export function CalendarWithPresets() {
   const [date, setDate] = React.useState<Date | undefined>(

@@ -1,5 +1,5 @@
-import { Button } from "@/examples/react-aria/ui/button"
-import { Tooltip, TooltipTrigger } from "@/examples/react-aria/ui/tooltip"
+import { Button } from "@/styles/react-aria-nova/ui/button"
+import { Tooltip, TooltipTrigger } from "@/styles/react-aria-nova/ui/tooltip"
 
 export function TooltipDemo() {
   return (

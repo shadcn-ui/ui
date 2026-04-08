@@ -1,7 +1,8 @@
 "use client"
 
 import * as React from "react"
-import { Checkbox } from "@/examples/react-aria/ui/checkbox"
+
+import { Checkbox } from "@/styles/react-aria-nova/ui/checkbox"
 import {
   Table,
   TableBody,
@@ -9,7 +10,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/examples/react-aria/ui/table"
+} from "@/styles/react-aria-nova/ui/table"
 
 const tableData = [
   {

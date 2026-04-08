@@ -1,17 +1,18 @@
 "use client"
 
 import * as React from "react"
-import { Calendar } from "@/examples/react-aria/ui/calendar"
-import { Field, FieldLabel } from "@/examples/react-aria/ui/field"
+import { parseDate } from "chrono-node"
+import { CalendarIcon } from "lucide-react"
+
+import { Calendar } from "@/styles/react-aria-nova/ui/calendar"
+import { Field, FieldLabel } from "@/styles/react-aria-nova/ui/field"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
-} from "@/examples/react-aria/ui/input-group"
-import { Popover, PopoverTrigger } from "@/examples/react-aria/ui/popover"
-import { parseDate } from "chrono-node"
-import { CalendarIcon } from "lucide-react"
+} from "@/styles/react-aria-nova/ui/input-group"
+import { Popover, PopoverTrigger } from "@/styles/react-aria-nova/ui/popover"
 
 function formatDate(date: Date | undefined) {
   if (!date) {

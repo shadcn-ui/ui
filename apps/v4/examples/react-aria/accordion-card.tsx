@@ -3,14 +3,14 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/examples/react-aria/ui/accordion"
+} from "@/styles/react-aria-nova/ui/accordion"
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/examples/react-aria/ui/card"
+} from "@/styles/react-aria-nova/ui/card"
 
 const items = [
   {
