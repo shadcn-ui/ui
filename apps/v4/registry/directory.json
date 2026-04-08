@@ -946,13 +946,6 @@
     "logo": "<svg width='40' height='40' viewBox='0 0 40 40' fill='none' xmlns='http://www.w3.org/2000/svg'><circle cx='19.9501' cy='20.05' r='18.35' fill='#FCEA4E'/><path d='M29.1156 27.4609C27.4484 27.4609 26.082 27.1 25.0164 26.3781C23.9508 25.6563 23.3062 24.625 23.0828 23.2844L26.0734 22.511C26.1937 23.1125 26.3914 23.5852 26.6664 23.9289C26.9586 24.2727 27.3109 24.5219 27.7234 24.6766C28.1531 24.8141 28.6172 24.8828 29.1156 24.8828C29.8718 24.8828 30.4304 24.7539 30.7914 24.4961C31.1523 24.2211 31.3328 23.886 31.3328 23.4906C31.3328 23.0953 31.1609 22.7946 30.8172 22.5883C30.4734 22.3649 29.9234 22.1844 29.1672 22.0469L28.4453 21.918C27.5515 21.7461 26.7351 21.5141 25.9961 21.2219C25.257 20.9125 24.6641 20.4914 24.2172 19.9586C23.7703 19.4258 23.5469 18.7383 23.5469 17.8961C23.5469 16.6243 24.0109 15.6532 24.9391 14.9829C25.8672 14.2954 27.0875 13.9516 28.6 13.9516C30.0265 13.9516 31.2125 14.2696 32.1578 14.9055C33.1031 15.5415 33.7218 16.375 34.014 17.4063L30.9976 18.3344C30.8601 17.6813 30.5765 17.2172 30.1468 16.9422C29.7343 16.6672 29.2187 16.5297 28.6 16.5297C27.9812 16.5297 27.5086 16.6415 27.182 16.8649C26.8555 17.0711 26.6922 17.3633 26.6922 17.7414C26.6922 18.1539 26.864 18.4633 27.2078 18.6696C27.5515 18.8586 28.0156 19.0047 28.6 19.1078L29.3218 19.2368C30.2843 19.4086 31.1523 19.6407 31.9257 19.9328C32.7164 20.2078 33.3351 20.6117 33.782 21.1446C34.246 21.6602 34.4781 22.3649 34.4781 23.2586C34.4781 24.5992 33.9882 25.6391 33.0086 26.3781C32.0461 27.1 30.7484 27.4609 29.1156 27.4609Z' fill='#222222'/></svg>"
   },
   {
-    "name": "@shadcn-dashboard",
-    "homepage": "https://shadcn-dashboard.com",
-    "url": "https://shadcn-dashboard.com/r/{name}.json",
-    "description": "ShadcnDashboard is a collection of modern, production-ready dashboard layouts, components, and UI patterns built on top of shadcn/ui and Tailwind CSS. It’s designed to help developers build clean, scalable, and data-driven dashboards faster—without compromising on performance, accessibility, or customization.",
-    "logo": "<svg width='40' height='40' viewBox='0 0 40 40' fill='none' xmlns='http://www.w3.org/2000/svg'><rect width='40' height='40' rx='20' fill='#053B25'/><path d='M32.1327 19.501C31.5178 19.6123 30.8844 19.6705 30.2375 19.6705C24.3886 19.6705 19.6471 14.9189 19.6471 9.05765C19.6471 8.89469 19.6507 8.73258 19.658 8.57141C13.8411 9.10533 9.28516 14.0074 9.28516 19.9759C9.28516 26.301 14.4019 31.4286 20.7137 31.4286C27.0256 31.4286 32.1423 26.301 32.1423 19.9759C32.1423 19.8168 32.1391 19.6585 32.1327 19.501Z' fill='#C2FD75'/></svg>"
-  },
-  {
     "name": "@icons-animated",
     "homepage": "https://icons.lndev.me",
     "url": "https://icons.lndev.me/r/{name}.json",
@@ -1205,10 +1198,18 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='256' height='256' viewBox='0 0 256 256'><script/><rect x='16' y='16' width='224' height='224' rx='28' stroke='#000' stroke-width='7'/><path d='m42 56 32 24-32 24' stroke='#fff' stroke-width='10' stroke-linecap='round' stroke-linejoin='round' fill='none'/><path d='m208.8 156.8-48 48M199.2 104 108 195.2' stroke='#fff' stroke-width='19.2' stroke-linecap='round' fill='none'/></svg>"
   },
   {
+<<<<<<< main
     "name": "@ratneshc",
     "homepage": "https://ratneshc.com/components",
     "url": "https://ratneshc.com/r/{name}.json",
     "description": "A curated component registry built on shadcn/ui.",
     "logo": "<svg width='79' height='79' viewBox='0 0 79 79' fill='none' xmlns='http://www.w3.org/2000/svg'><circle cx='39.5' cy='39.5' r='39.5' fill='url(#paint0_radial_76_2)'/><defs><radialGradient id='paint0_radial_76_2' cx='0' cy='0' r='1' gradientUnits='userSpaceOnUse' gradientTransform='translate(40 84.5) rotate(-90) scale(92)'><stop stop-color='white'/><stop offset='0.5' stop-color='#8932F8'/><stop offset='1'/></radialGradient></defs></svg>"
+=======
+    "name": "@remocn",
+    "homepage": "https://www.remocn.dev/",
+    "url": "https://www.remocn.dev/r/{name}.json",
+    "description": "Production-ready components for Remotion - text animations, backgrounds, transitions, UI blocks, and full scene compositions",
+    "logo": "<svg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'><rect width='100' height='100' rx='14' fill='black'/><path d='M83.9141 45.7661C86.9141 47.4982 86.9141 51.829 83.9141 53.561L31.4141 83.8716C28.4141 85.6036 24.6641 83.4382 24.6641 79.9741L24.6641 19.353C24.6641 15.8889 28.4141 13.7235 31.4141 15.4556L83.9141 45.7661Z' fill='white' stroke='white'/><path d='M68.998 31.3979C68.998 50.3798 68.998 63.307 68.998 67.3979' stroke='black' stroke-width='10'/><path d='M53.0625 16.75C53.0625 48.2803 53.0625 69.7535 53.0625 76.5488' stroke='black' stroke-width='10'/><path d='M37.127 9.88379C37.127 51.1081 37.127 79.1833 37.127 88.0679' stroke='black' stroke-width='10'/><path d='M31.1318 15.8618L43.1074 22.7646' stroke='white' stroke-width='2'/><path d='M63.291 34.439L75.2617 41.3579' stroke='white' stroke-width='2'/><path d='M46.6641 74.4712L59.208 67.2573' stroke='white' stroke-width='2'/><path d='M76.0205 57.5371L82.9848 53.5226' stroke='white' stroke-width='2'/></svg>"
+>>>>>>> main
   }
 ]
