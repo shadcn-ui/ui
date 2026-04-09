@@ -29,27 +29,29 @@ export async function formatSearchResultsWithPagination(
 ) {
   const { query, registries } = options || {}
 
-  const formattedItems = await Promise.all(results.items.map(async (item) => {
-    const parts: string[] = [`- ${item.name}`]
+  const formattedItems = await Promise.all(
+    results.items.map(async (item) => {
+      const parts: string[] = [`- ${item.name}`]
 
-    if (item.type) {
-      parts.push(`(${item.type})`)
-    }
+      if (item.type) {
+        parts.push(`(${item.type})`)
+      }
 
-    if (item.description) {
-      parts.push(`- ${item.description}`)
-    }
+      if (item.description) {
+        parts.push(`- ${item.description}`)
+      }
 
-    if (item.registry) {
-      parts.push(`[${item.registry}]`)
-    }
+      if (item.registry) {
+        parts.push(`[${item.registry}]`)
+      }
 
-    parts.push(
-      `\n  Add command: \`${await npxShadcn(`add ${item.addCommandArgument}`)}\``
-    )
+      parts.push(
+        `\n  Add command: \`${await npxShadcn(`add ${item.addCommandArgument}`)}\``
+      )
 
-    return parts.join(" ")
-  }))
+      return parts.join(" ")
+    })
+  )
 
   let header = `Found ${results.pagination.total} items`
   if (query) {
