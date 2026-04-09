@@ -20,7 +20,7 @@ export async function getMcpConfig(cwd = process.cwd()) {
   }
 }
 
-export function formatSearchResultsWithPagination(
+export async function formatSearchResultsWithPagination(
   results: z.infer<typeof searchResultsSchema>,
   options?: {
     query?: string
@@ -29,7 +29,7 @@ export function formatSearchResultsWithPagination(
 ) {
   const { query, registries } = options || {}
 
-  const formattedItems = results.items.map((item) => {
+  const formattedItems = await Promise.all(results.items.map(async (item) => {
     const parts: string[] = [`- ${item.name}`]
 
     if (item.type) {
@@ -45,11 +45,11 @@ export function formatSearchResultsWithPagination(
     }
 
     parts.push(
-      `\n  Add command: \`${npxShadcn(`add ${item.addCommandArgument}`)}\``
+      `\n  Add command: \`${await npxShadcn(`add ${item.addCommandArgument}`)}\``
     )
 
     return parts.join(" ")
-  })
+  }))
 
   let header = `Found ${results.pagination.total} items`
   if (query) {
