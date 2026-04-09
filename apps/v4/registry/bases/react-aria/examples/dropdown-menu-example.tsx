@@ -784,7 +784,9 @@ function DropdownMenuWithInset() {
 }
 
 function DropdownMenuComplex() {
-  const [selectedKeys, setSelectedKeys] = React.useState<Selection>(new Set(['sidebar']))
+  const [selectedKeys, setSelectedKeys] = React.useState<Selection>(
+    new Set(["sidebar"])
+  )
 
   return (
     <Example title="Complex">
@@ -830,7 +832,11 @@ function DropdownMenuComplex() {
             </DropdownMenuItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
-          <DropdownMenuGroup selectionMode="multiple" selectedKeys={selectedKeys} onSelectionChange={setSelectedKeys}>
+          <DropdownMenuGroup
+            selectionMode="multiple"
+            selectedKeys={selectedKeys}
+            onSelectionChange={setSelectedKeys}
+          >
             <DropdownMenuLabel>View</DropdownMenuLabel>
             <DropdownMenuItem id="sidebar">
               <IconPlaceholder
@@ -904,7 +910,6 @@ function DropdownMenuComplex() {
                   </DropdownMenuItem>
                 </DropdownMenuGroup>
               </DropdownMenuSubContent>
-
             </DropdownMenuSub>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
@@ -934,5 +939,5 @@ function DropdownMenuComplex() {
         </DropdownMenu>
       </DropdownMenuTrigger>
     </Example>
-  );
+  )
 }

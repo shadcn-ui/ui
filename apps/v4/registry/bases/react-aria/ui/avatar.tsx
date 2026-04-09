@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { Avatar as AvatarPrimitive } from "@base-ui/react/avatar"
 
 import { cn } from "@/registry/bases/react-aria/lib/utils"
 
@@ -9,11 +8,11 @@ function Avatar({
   className,
   size = "default",
   ...props
-}: AvatarPrimitive.Root.Props & {
+}: React.ComponentProps<"div"> & {
   size?: "default" | "sm" | "lg"
 }) {
   return (
-    <AvatarPrimitive.Root
+    <div
       data-slot="avatar"
       data-size={size}
       className={cn(
@@ -25,12 +24,21 @@ function Avatar({
   )
 }
 
-function AvatarImage({ className, ...props }: AvatarPrimitive.Image.Props) {
+type ImageState = "loading" | "loaded" | "error"
+
+function AvatarImage({ className, ...props }: React.ComponentProps<"img">) {
+  const [state, setState] = React.useState<ImageState>(
+    props.src ? "loading" : "error"
+  )
   return (
-    <AvatarPrimitive.Image
+    <img
       data-slot="avatar-image"
+      alt={props.alt || ""}
+      data-state={state}
+      onLoad={() => setState("loaded")}
+      onError={() => setState("error")}
       className={cn(
-        "cn-avatar-image aspect-square size-full object-cover",
+        "cn-avatar-image peer aspect-square size-full object-cover data-[state=error]:hidden",
         className
       )}
       {...props}
@@ -38,15 +46,12 @@ function AvatarImage({ className, ...props }: AvatarPrimitive.Image.Props) {
   )
 }
 
-function AvatarFallback({
-  className,
-  ...props
-}: AvatarPrimitive.Fallback.Props) {
+function AvatarFallback({ className, ...props }: React.ComponentProps<"div">) {
   return (
-    <AvatarPrimitive.Fallback
+    <div
       data-slot="avatar-fallback"
       className={cn(
-        "cn-avatar-fallback flex size-full items-center justify-center text-sm group-data-[size=sm]/avatar:text-xs",
+        "cn-avatar-fallback flex size-full items-center justify-center text-sm group-data-[size=sm]/avatar:text-xs peer-data-[state=error]:flex peer-[*]:hidden",
         className
       )}
       {...props}
