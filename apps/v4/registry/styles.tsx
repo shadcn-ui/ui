@@ -139,6 +139,31 @@ export const STYLES = [
       </svg>
     ),
   },
+  {
+    name: "sera",
+    title: "Sera",
+    description: "Editorial and typographic.",
+    icon: (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="128"
+        height="128"
+        viewBox="0 0 24 24"
+        fill="none"
+        role="img"
+        color="currentColor"
+      >
+        <rect
+          x="3"
+          y="3"
+          width="18"
+          height="18"
+          stroke="currentColor"
+          strokeWidth="2"
+        ></rect>
+      </svg>
+    ),
+  },
 ] as const
 
 export type Style = (typeof STYLES)[number]

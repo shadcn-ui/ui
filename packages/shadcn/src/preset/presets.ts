@@ -103,6 +103,21 @@ export const DEFAULT_PRESETS = {
     radius: "default",
     rtl: false,
   },
+  sera: {
+    title: "Sera",
+    description: "Lucide / Inter + Playfair Display",
+    style: "sera",
+    baseColor: "neutral",
+    theme: "neutral",
+    iconLibrary: "phosphor",
+    font: "inter",
+    fontHeading: "playfair-display",
+    menuAccent: "subtle" as const,
+    menuColor: "default" as const,
+
+    radius: "default",
+    rtl: false,
+  },
 }
 
 export function resolveCreateUrl(

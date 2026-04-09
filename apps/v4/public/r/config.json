@@ -215,6 +215,42 @@
       "menuAccent": "subtle",
       "menuColor": "default",
       "radius": "default"
+    },
+    {
+      "name": "radix-sera",
+      "title": "Sera (Radix)",
+      "description": "Sera / Lucide / Inter + Playfair Display",
+      "base": "radix",
+      "style": "sera",
+      "baseColor": "neutral",
+      "theme": "neutral",
+      "chartColor": "neutral",
+      "iconLibrary": "lucide",
+      "font": "inter",
+      "fontHeading": "playfair-display",
+      "item": "Item",
+      "rtl": false,
+      "menuAccent": "subtle",
+      "menuColor": "default",
+      "radius": "default"
+    },
+    {
+      "name": "base-sera",
+      "title": "Sera (Base)",
+      "description": "Sera / Lucide / Inter + Playfair Display",
+      "base": "base",
+      "style": "sera",
+      "baseColor": "neutral",
+      "theme": "neutral",
+      "chartColor": "neutral",
+      "iconLibrary": "lucide",
+      "font": "inter",
+      "fontHeading": "playfair-display",
+      "item": "Item",
+      "rtl": false,
+      "menuAccent": "subtle",
+      "menuColor": "default",
+      "radius": "default"
     }
   ]
 }
