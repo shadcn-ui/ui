@@ -1,5 +1,11 @@
 # @shadcn/ui
 
+## 4.2.0
+
+### Minor Changes
+
+- [#10313](https://github.com/shadcn-ui/ui/pull/10313) [`c1e29824cd7a6809448e45b6b7fe8f7be71ecb0f`](https://github.com/shadcn-ui/ui/commit/c1e29824cd7a6809448e45b6b7fe8f7be71ecb0f) Thanks [@shadcn](https://github.com/shadcn)! - add shadcn apply command
+
 ## 4.1.2
 
 ### Patch Changes

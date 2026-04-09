@@ -337,6 +337,44 @@
     display: inline-block;
   }
 
+  /*
+   * ```text composition trees use box-drawing characters; per-line padding makes
+   * vertical connectors look broken. rehype-pretty-code sets `data-language` on
+   * `pre`/`code` (not `language-*` classes). It also sets `code { display: grid }`,
+   * which can add visible row separation — reset to a normal pre stack for text.
+   */
+  [data-rehype-pretty-code-figure] pre[data-language="text"] code,
+  [data-rehype-pretty-code-figure] pre[data-language="plaintext"] code,
+  [data-slot="docs"] pre[data-language="text"] code,
+  [data-slot="docs"] pre[data-language="plaintext"] code {
+    display: block !important;
+    white-space: pre;
+    line-height: 0.95;
+    font-family:
+      ui-monospace,
+      SFMono-Regular,
+      Menlo,
+      Monaco,
+      Consolas,
+      "Liberation Mono",
+      "Courier New",
+      monospace;
+    font-variant-ligatures: none;
+  }
+
+  [data-rehype-pretty-code-figure] pre[data-language="text"] [data-line],
+  [data-rehype-pretty-code-figure] pre[data-language="plaintext"] [data-line],
+  [data-rehype-pretty-code-figure] code[data-language="text"] [data-line],
+  [data-rehype-pretty-code-figure] code[data-language="plaintext"] [data-line],
+  [data-slot="docs"] pre[data-language="text"] [data-line],
+  [data-slot="docs"] pre[data-language="plaintext"] [data-line] {
+    padding-top: 0;
+    padding-bottom: 0;
+    min-height: unset;
+    line-height: 0.95;
+    display: block;
+  }
+
   [data-line] span {
     color: var(--shiki-light);
 

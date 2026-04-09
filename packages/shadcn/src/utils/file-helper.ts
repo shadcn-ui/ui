@@ -2,6 +2,10 @@ import fsExtra from "fs-extra"
 
 export const FILE_BACKUP_SUFFIX = ".bak"
 
+type WithFileBackupOptions = {
+  onBackupFailure?: (filePath: string) => void
+}
+
 export function createFileBackup(filePath: string): string | null {
   if (!fsExtra.existsSync(filePath)) {
     return null
@@ -45,8 +49,40 @@ export function deleteFileBackup(filePath: string): boolean {
   try {
     fsExtra.unlinkSync(backupPath)
     return true
-  } catch (error) {
+  } catch {
     // Best effort - don't log as this is just cleanup
     return false
+  }
+}
+
+export async function withFileBackup<T>(
+  filePath: string,
+  task: () => Promise<T>,
+  options: WithFileBackupOptions = {}
+) {
+  if (!fsExtra.existsSync(filePath)) {
+    return task()
+  }
+
+  const backupPath = createFileBackup(filePath)
+
+  if (!backupPath) {
+    options.onBackupFailure?.(filePath)
+    throw new Error(`Could not back up ${filePath}.`)
+  }
+
+  const restoreBackupOnExit = () => restoreFileBackup(filePath)
+
+  process.on("exit", restoreBackupOnExit)
+
+  try {
+    const result = await task()
+    process.removeListener("exit", restoreBackupOnExit)
+    deleteFileBackup(filePath)
+    return result
+  } catch (error) {
+    process.removeListener("exit", restoreBackupOnExit)
+    restoreFileBackup(filePath)
+    throw error
   }
 }
