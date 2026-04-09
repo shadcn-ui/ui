@@ -240,6 +240,12 @@
     "description": "Build production-ready forms with a few clicks using shadcn components and modern tools."
   },
   {
+    "name": "@flightcn",
+    "homepage": "https://flightcn.yencheng.dev",
+    "url": "https://flightcn.yencheng.dev/r/{name}.json",
+    "description": "Flight routes on interactive maps with great-circle arcs, airport markers, multi-leg journeys, and optional animation, built for mapcn."
+  },
+  {
     "name": "@gaia",
     "homepage": "https://ui.heygaia.io",
     "url": "https://ui.heygaia.io/r/{name}.json",
@@ -648,6 +654,12 @@
     "description": "A starter collection of polished shadcn/ui components and blocks built to production standards. Part of a larger Figma + React system designed to scale with your product."
   },
   {
+    "name": "@shark",
+    "homepage": "https://shark.vini.one",
+    "url": "https://shark.vini.one/r/{name}.json",
+    "description": "shadcn/ui-style components built on Ark UI."
+  },
+  {
     "name": "@smoothui",
     "homepage": "https://smoothui.dev",
     "url": "https://smoothui.dev/r/{name}.json",
@@ -796,12 +808,6 @@
     "homepage": "https://shadcnspace.com",
     "url": "https://shadcnspace.com/r/{name}.json",
     "description": "ShadcnSpace is a collection of extra-ordinary, highly customizable shadcn/ui components, blocks, and themes to build modern UIs with speed and clarity."
-  },
-  {
-    "name": "@shadcn-dashboard",
-    "homepage": "https://shadcn-dashboard.com",
-    "url": "https://shadcn-dashboard.com/r/{name}.json",
-    "description": "ShadcnDashboard is a collection of modern, production-ready dashboard layouts, components, and UI patterns built on top of shadcn/ui and Tailwind CSS. It’s designed to help developers build clean, scalable, and data-driven dashboards faster—without compromising on performance, accessibility, or customization."
   },
   {
     "name": "@icons-animated",
@@ -1000,5 +1006,29 @@
     "homepage": "https://www.openpolicy.sh",
     "url": "https://www.openpolicy.sh/r/{name}.json",
     "description": "Open-source components for building terms, privacy policies and cookie banners."
+  },
+  {
+    "name": "@mksingh",
+    "homepage": "https://mksingh.dev/docs",
+    "url": "https://mksingh.dev/r/{name}.json",
+    "description": "A personal registry of production-ready ShadCN components and utilities. Everything is built to drop into your existing ShadCN project with no extra setup."
+  },
+  {
+    "name": "@flowkit-ui",
+    "homepage": "https://flowkit-ui.vzkiss.com",
+    "url": "https://flowkit-ui.vzkiss.com/r/{name}.json",
+    "description": "Opinionated, accessible components on Base UI and shadcn-style primitives — starting with a Creatable Combobox."
+  },
+  {
+    "name": "@termcn",
+    "homepage": "https://termcn.vercel.app",
+    "url": "https://termcn.vercel.app/r/{name}.json",
+    "description": "Beautiful terminal UIs, made simple. Ready to use, customizable terminal UI components for React."
+  },
+  {
+    "name": "@remocn",
+    "homepage": "https://www.remocn.dev/",
+    "url": "https://www.remocn.dev/r/{name}.json",
+    "description": "Production-ready components for Remotion - text animations, backgrounds, transitions, UI blocks, and full scene compositions"
   }
 ]
