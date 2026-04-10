@@ -233,12 +233,12 @@
   }
 
   .cn-calendar-caption-label {
-    @apply h-8 rounded-none pr-2 pl-3;
+    @apply h-8 pr-2 pl-3;
   }
 
   /* MARK: Card */
   .cn-card {
-    @apply bg-card text-card-foreground ring-foreground/10 gap-8 overflow-hidden rounded-none py-8 text-sm shadow-sm ring-1 has-[>img:first-child]:pt-0 data-[size=sm]:gap-5 data-[size=sm]:py-5 *:[img:first-child]:rounded-none *:[img:last-child]:rounded-none;
+    @apply bg-card text-card-foreground ring-foreground/5 gap-8 overflow-hidden py-8 text-sm shadow-sm ring-1 has-[>img:first-child]:pt-0 data-[size=sm]:gap-5 data-[size=sm]:py-5 *:[img:first-child]:rounded-none *:[img:last-child]:rounded-none;
   }
 
   .cn-card-header {
@@ -246,7 +246,7 @@
   }
 
   .cn-card-title {
-    @apply text-lg font-normal uppercase tracking-wider;
+    @apply text-lg tracking-wider uppercase;
   }
 
   .cn-card-description {
@@ -258,21 +258,12 @@
   }
 
   .cn-card-footer {
-    @apply rounded-none px-8 group-data-[size=sm]/card:px-5 [.border-t]:pt-8 group-data-[size=sm]/card:[.border-t]:pt-5;
-  }
-
-  /* MARK: Carousel */
-  .cn-carousel-previous {
-    @apply rounded-none;
-  }
-
-  .cn-carousel-next {
-    @apply rounded-none;
+    @apply px-8 group-data-[size=sm]/card:px-5 [.border-t]:pt-8 group-data-[size=sm]/card:[.border-t]:pt-5;
   }
 
   /* MARK: Chart */
   .cn-chart-tooltip {
-    @apply bg-popover text-popover-foreground ring-foreground/10 gap-1.5 rounded-none px-2.5 py-1.5 text-xs shadow-sm ring-1;
+    @apply bg-popover text-popover-foreground ring-foreground/10 gap-1.5 px-2.5 py-1.5 text-xs shadow-sm ring-1;
   }
 
   /* MARK: Checkbox */
@@ -548,7 +539,7 @@
 
   /* MARK: Empty */
   .cn-empty {
-    @apply gap-4 rounded-none border-dashed p-12;
+    @apply gap-4 border-dashed p-12;
   }
 
   .cn-empty-header {
@@ -568,7 +559,7 @@
   }
 
   .cn-empty-title {
-    @apply text-lg font-semibold tracking-wide uppercase;
+    @apply text-lg tracking-wider uppercase;
   }
 
   .cn-empty-description {
@@ -1184,11 +1175,11 @@
 
   /* MARK: Switch */
   .cn-switch {
-    @apply data-checked:bg-primary data-unchecked:bg-input data-checked:border-primary border data-unchecked:border-input/50 focus-visible:border-ring focus-visible:ring-ring/30 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 shrink-0 rounded-none focus-visible:ring-2 aria-invalid:ring-2 data-[size=default]:h-4.5 data-[size=default]:w-9 data-[size=sm]:h-3.5 data-[size=sm]:w-7;
+    @apply data-checked:bg-primary data-unchecked:bg-input data-checked:border-primary border data-unchecked:border-input/50 focus-visible:border-ring focus-visible:ring-ring/30 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 shrink-0 rounded-none focus-visible:ring-2 aria-invalid:ring-2 data-[size=default]:h-4.5 data-[size=default]:w-8.25 data-[size=sm]:h-3.5 data-[size=sm]:w-6.25;
   }
 
   .cn-switch-thumb {
-    @apply bg-background dark:data-unchecked:bg-foreground dark:data-checked:bg-primary-foreground group-data-[size=default]/switch:size-4 group-data-[size=sm]/switch:size-3 data-checked:translate-x-[calc(100%+2px)] data-unchecked:translate-x-0;
+    @apply bg-background dark:data-unchecked:bg-foreground dark:data-checked:bg-primary-foreground group-data-[size=default]/switch:size-3.5 group-data-[size=sm]/switch:size-2.5 data-checked:translate-x-[calc(100%+2px)] data-unchecked:translate-x-0.25;
   }
 
   /* MARK: Table */
@@ -1234,11 +1225,11 @@
   }
 
   .cn-tabs-list {
-    @apply rounded-none p-0.5 group-data-horizontal/tabs:h-10 group-data-vertical/tabs:rounded-none data-[variant=line]:rounded-none;
+    @apply p-1 group-data-horizontal/tabs:h-10;
   }
 
   .cn-tabs-trigger {
-    @apply gap-2 rounded-none border border-transparent! px-4 py-1.5 text-xs font-medium group-data-vertical/tabs:px-4 group-data-vertical/tabs:py-2 group-data-vertical/tabs:rounded-none [&_svg:not([class*='size-'])]:size-4 has-data-[icon=inline-end]:pr-2.5 has-data-[icon=inline-start]:pl-2.5;
+    @apply gap-2 border border-transparent px-4 py-1.5 text-xs font-semibold group-data-vertical/tabs:px-4 group-data-vertical/tabs:py-2 [&_svg:not([class*='size-'])]:size-4 has-data-[icon=inline-end]:pr-2.5 has-data-[icon=inline-start]:pl-2.5 uppercase tracking-wider;
   }
 
   .cn-tabs-content {

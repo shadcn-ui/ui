@@ -57,7 +57,7 @@ export function FeedbackForm() {
         </form>
       </CardContent>
       <CardFooter>
-        <Button type="submit" form="feedback-form">
+        <Button type="submit" form="feedback-form" className="style-sera:w-full">
           Submit
         </Button>
       </CardFooter>

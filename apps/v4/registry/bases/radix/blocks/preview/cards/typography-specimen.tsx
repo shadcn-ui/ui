@@ -52,7 +52,7 @@ export function TypographySpecimen() {
         <div className="text-xs font-medium tracking-wide text-muted-foreground uppercase">
           {headingLabel} - {bodyLabel}
         </div>
-        <p className="cn-font-heading text-2xl font-medium">
+        <p className="cn-font-heading text-2xl font-medium style-sera:text-lg style-sera:font-normal style-sera:tracking-wider style-sera:uppercase">
           Designing with rhythm and hierarchy.
         </p>
         <p className="text-sm leading-relaxed text-muted-foreground">

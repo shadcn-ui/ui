@@ -24,6 +24,7 @@ import {
   ItemContent,
   ItemDescription,
 } from "@/registry/bases/radix/ui/item"
+import { useDesignSystemSearchParams } from "@/app/(app)/create/lib/search-params"
 
 const chartData = [
   { month: "Dec", amount: 800 },
@@ -42,6 +43,9 @@ const chartConfig = {
 } satisfies ChartConfig
 
 export function ContributionHistory() {
+  const [params] = useDesignSystemSearchParams()
+  const isRounded = !["lyra", "sera"].includes(params.style)
+
   return (
     <Card>
       <CardHeader>
@@ -71,13 +75,13 @@ export function ContributionHistory() {
             <Bar
               dataKey="amount"
               fill="var(--color-amount)"
-              radius={[6, 6, 0, 0]}
+              radius={isRounded ? [6, 6, 0, 0] : 0}
               maxBarSize={40}
             />
           </BarChart>
         </ChartContainer>
       </CardContent>
-      <CardFooter className="flex-col gap-4">
+      <CardContent>
         <div className="grid w-full grid-cols-1 gap-3 md:grid-cols-2">
           <Item variant="muted" className="flex-col items-stretch">
             <ItemContent className="gap-1">
@@ -106,7 +110,9 @@ export function ContributionHistory() {
             </ItemContent>
           </Item>
         </div>
-        <Button className="w-full">View Full Report</Button>
+      </CardContent>
+      <CardFooter className="flex-col gap-4">
+        <Button className="style-sera:w-full">View Full Report</Button>
       </CardFooter>
     </Card>
   )

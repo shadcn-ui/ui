@@ -2,6 +2,8 @@
 
 import { Bar, BarChart, XAxis } from "recharts"
 
+import { useDesignSystemSearchParams } from "@/app/(app)/create/lib/search-params"
+
 import { Button } from "@/registry/bases/base/ui/button"
 import {
   Card,
@@ -81,6 +83,9 @@ const miniChartConfig = {
 } satisfies ChartConfig
 
 export function DividendIncome() {
+  const [params] = useDesignSystemSearchParams()
+  const isRounded = !["lyra", "sera"].includes(params.style)
+
   return (
     <Card>
       <CardHeader>
@@ -123,7 +128,7 @@ export function DividendIncome() {
                   <Bar
                     dataKey="value"
                     fill="var(--color-value)"
-                    radius={[3, 3, 0, 0]}
+                    radius={isRounded ? [3, 3, 0, 0] : 0}
                   />
                 </BarChart>
               </ChartContainer>
