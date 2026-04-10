@@ -40,7 +40,7 @@ export interface TemplateConfig {
   create: (options: TemplateOptions) => Promise<void>
   init?: (options: TemplateInitOptions) => Promise<Config>
   files?: RegistryItem["files"]
-  postInit?: (options: { projectPath: string }) => Promise<void>
+  postInit?: (options: { projectPath: string; skipGit?: boolean }) => Promise<void>
   // Monorepo overrides. When --monorepo is passed, these fields
   // are merged over the base template config.
   monorepo?: {
@@ -301,7 +301,16 @@ function defaultScaffold({
 
 // Initialize a git repository and create an initial commit.
 // Silently ignores failures (e.g. git not installed).
-async function defaultPostInit({ projectPath }: { projectPath: string }) {
+async function defaultPostInit({
+  projectPath,
+  skipGit,
+}: {
+  projectPath: string
+  skipGit?: boolean
+}) {
+  if (skipGit) {
+    return
+  }
   try {
     await execa("git", ["init"], { cwd: projectPath })
     await execa("git", ["add", "-A"], { cwd: projectPath })

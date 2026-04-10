@@ -73,6 +73,7 @@ export const initOptionsSchema = z.object({
   force: z.boolean(),
   reinstall: z.boolean().optional(),
   silent: z.boolean(),
+  skipGit: z.boolean().optional(),
   isNewProject: z.boolean().default(false),
   cssVariables: z.boolean().default(true),
   rtl: z.boolean().optional(),
@@ -127,6 +128,7 @@ export const init = new Command()
   .option("--no-rtl", "disable RTL support.")
   .option("--reinstall", "re-install existing UI components.")
   .option("--no-reinstall", "do not re-install existing UI components.")
+  .option("--skip-git", "skip git init and initial commit.")
   .action(async (components, opts) => {
     let componentsJsonBackupPath: string | undefined
     let reinstallComponents: string[] = []
@@ -633,7 +635,7 @@ export async function runInit(
     })
 
     // Run postInit for new projects (e.g. git init).
-    await selectedTemplate.postInit({ projectPath: options.cwd })
+    await selectedTemplate.postInit({ projectPath: options.cwd, skipGit: options.skipGit })
 
     return result
   }
@@ -772,7 +774,7 @@ export async function runInit(
 
   // Run postInit for new projects without a custom init (e.g. git init).
   if (selectedTemplate) {
-    await selectedTemplate.postInit({ projectPath: options.cwd })
+    await selectedTemplate.postInit({ projectPath: options.cwd, skipGit: options.skipGit })
   }
 
   return fullConfig
