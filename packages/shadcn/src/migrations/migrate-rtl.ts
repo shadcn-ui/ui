@@ -7,7 +7,7 @@ import { logger } from "@/src/utils/logger"
 import { spinner } from "@/src/utils/spinner"
 import { transformDirection } from "@/src/utils/transformers/transform-rtl"
 import fg from "fast-glob"
-import prompts from "prompts"
+import prompts from "@/src/utils/prompts"
 
 // Files that may need manual RTL adjustments.
 const FILES_NEEDING_MANUAL_REVIEW = [

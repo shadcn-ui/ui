@@ -9,7 +9,7 @@ import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import { ensureRegistriesInConfig } from "@/src/utils/registries"
 import open from "open"
-import prompts from "prompts"
+import prompts from "@/src/utils/prompts"
 import { type z } from "zod"
 
 export const DEFAULT_PRESETS = {
