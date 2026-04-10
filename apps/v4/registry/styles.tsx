@@ -1,5 +1,3 @@
-import * as React from "react"
-
 export const STYLES = [
   {
     name: "vega",
@@ -119,7 +117,7 @@ export const STYLES = [
   {
     name: "luma",
     title: "Luma",
-    description: "Fluid, luminous, and glassy.",
+    description: "Fluid, luminous, and soft.",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"

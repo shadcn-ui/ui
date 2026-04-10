@@ -109,6 +109,7 @@ export const PRESET_FONTS = [
   "ibm-plex-sans",
   "source-sans-3",
   "instrument-sans",
+  "eb-garamond",
 ] as const
 export const PRESET_FONT_HEADINGS = ["inherit", ...PRESET_FONTS] as const
 

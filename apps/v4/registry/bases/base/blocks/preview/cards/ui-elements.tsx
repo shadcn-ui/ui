@@ -135,7 +135,9 @@ export function UIElements() {
         <div className="flex items-center gap-4">
           <AlertDialog>
             <AlertDialogTrigger render={<Button variant="outline" />}>
-              <span className="hidden md:flex style-sera:md:hidden">Alert Dialog</span>
+              <span className="hidden md:flex style-sera:md:hidden">
+                Alert Dialog
+              </span>
               <span className="flex md:hidden style-sera:md:flex">Dialog</span>
             </AlertDialogTrigger>
             <AlertDialogContent size="sm">

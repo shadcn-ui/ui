@@ -301,6 +301,18 @@ export const FONT_DEFINITIONS = [
     dependency: "@fontsource-variable/playfair-display",
     subsets: ["latin"],
   },
+  {
+    name: "eb-garamond",
+    title: "EB Garamond",
+    type: "serif",
+    family: "'EB Garamond Variable', serif",
+    registryVariable: "--font-serif",
+    previewVariable: "--font-eb-garamond",
+    provider: "google",
+    import: "EB_Garamond",
+    dependency: "@fontsource-variable/eb-garamond",
+    subsets: ["latin"],
+  },
 ] as const satisfies readonly FontDefinition[]
 
 export type FontName = (typeof FONT_DEFINITIONS)[number]["name"]

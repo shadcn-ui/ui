@@ -112,7 +112,7 @@ export function ContributionHistory() {
         </div>
       </CardContent>
       <CardFooter>
-        <Button className="style-sera:w-full">View Full Report</Button>
+        <Button className="w-full">View Full Report</Button>
       </CardFooter>
     </Card>
   )

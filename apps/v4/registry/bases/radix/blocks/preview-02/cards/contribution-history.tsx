@@ -111,8 +111,8 @@ export function ContributionHistory() {
           </Item>
         </div>
       </CardContent>
-      <CardFooter className="flex-col gap-4">
-        <Button className="style-sera:w-full">View Full Report</Button>
+      <CardFooter>
+        <Button className="w-full">View Full Report</Button>
       </CardFooter>
     </Card>
   )

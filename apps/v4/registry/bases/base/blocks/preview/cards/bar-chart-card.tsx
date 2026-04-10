@@ -3,7 +3,6 @@
 import * as React from "react"
 import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
 
-import { useDesignSystemSearchParams } from "@/app/(app)/create/lib/search-params"
 import { Button } from "@/registry/bases/base/ui/button"
 import {
   Card,
@@ -21,6 +20,7 @@ import {
   ChartTooltipContent,
   type ChartConfig,
 } from "@/registry/bases/base/ui/chart"
+import { useDesignSystemSearchParams } from "@/app/(app)/create/lib/search-params"
 
 const barChartData = [
   { month: "January", desktop: 186, mobile: 80 },

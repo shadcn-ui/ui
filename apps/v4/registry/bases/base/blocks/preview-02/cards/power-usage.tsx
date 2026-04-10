@@ -2,8 +2,6 @@
 
 import { Bar, BarChart, XAxis } from "recharts"
 
-import { useDesignSystemSearchParams } from "@/app/(app)/create/lib/search-params"
-
 import {
   Card,
   CardContent,
@@ -20,6 +18,7 @@ import {
 } from "@/registry/bases/base/ui/chart"
 import { Progress } from "@/registry/bases/base/ui/progress"
 import { Separator } from "@/registry/bases/base/ui/separator"
+import { useDesignSystemSearchParams } from "@/app/(app)/create/lib/search-params"
 
 const chartData = [
   { hour: "6a", usage: 1.2 },

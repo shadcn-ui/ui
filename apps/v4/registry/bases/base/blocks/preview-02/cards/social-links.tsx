@@ -97,7 +97,9 @@ export function SocialLinks() {
         </FieldGroup>
       </CardContent>
       <CardFooter className="justify-end gap-2 style-sera:justify-center">
-        <Button variant="secondary" className="style-sera:flex-1">Discard</Button>
+        <Button variant="secondary" className="style-sera:flex-1">
+          Discard
+        </Button>
         <Button className="style-sera:flex-1">Save Changes</Button>
       </CardFooter>
     </Card>

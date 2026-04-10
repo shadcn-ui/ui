@@ -2,8 +2,6 @@
 
 import { Bar, BarChart, XAxis } from "recharts"
 
-import { useDesignSystemSearchParams } from "@/app/(app)/create/lib/search-params"
-
 import { Button } from "@/registry/bases/base/ui/button"
 import {
   Card,
@@ -26,6 +24,7 @@ import {
   ItemGroup,
   ItemTitle,
 } from "@/registry/bases/base/ui/item"
+import { useDesignSystemSearchParams } from "@/app/(app)/create/lib/search-params"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 const HOLDINGS = [

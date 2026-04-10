@@ -95,7 +95,9 @@ export function ActivateAgentDialog() {
         </Alert>
       </CardContent>
       <CardFooter className="justify-end gap-2">
-        <Button variant="outline" className="style-sera:hidden">Cancel</Button>
+        <Button variant="outline" className="style-sera:hidden">
+          Cancel
+        </Button>
         <Button className="style-sera:w-full">Enable with $100 credits</Button>
       </CardFooter>
     </Card>
