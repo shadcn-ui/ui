@@ -1,16 +1,15 @@
 "use client"
 
 import {
+  useTranslation,
+  type Translations,
+} from "@/components/language-selector"
+import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/examples/radix/ui-rtl/accordion"
-
-import {
-  useTranslation,
-  type Translations,
-} from "@/components/language-selector"
+} from "@/styles/radix-nova/ui-rtl/accordion"
 
 const translations: Translations = {
   en: {

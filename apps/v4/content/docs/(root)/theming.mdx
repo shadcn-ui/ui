@@ -1,46 +1,48 @@
 ---
 title: Theming
-description: Using CSS Variables and color utilities for theming.
+description: Using CSS variables and theme tokens.
 ---
 
-You can choose between using CSS variables (recommended) or utility classes for theming.
+<Callout>
 
-## CSS Variables
+Want to build your theme visually? Use [shadcn/create](/create) to preview colors, radius, fonts, and icons, then generate a preset for your project.
+
+</Callout>
+
+We use and recommend CSS variables for theming.
+
+This gives you semantic theme tokens like `background`, `foreground`, and `primary` that components use by default. Override those tokens in your CSS to change the look of your app without rewriting component classes.
 
 ```tsx /bg-background/ /text-foreground/
 <div className="bg-background text-foreground" />
 ```
 
-To use CSS variables for theming set `tailwind.cssVariables` to `true` in your `components.json` file.
+To use CSS variables for theming, set `tailwind.cssVariables` to `true` in your `components.json` file. This is the default.
 
 ```json {8} title="components.json" showLineNumbers
 {
-  "style": "new-york",
+  "style": "base-nova",
   "rsc": true,
   "tailwind": {
     "config": "",
     "css": "app/globals.css",
     "baseColor": "neutral",
     "cssVariables": true
-  },
-  "aliases": {
-    "components": "@/components",
-    "utils": "@/lib/utils",
-    "ui": "@/components/ui",
-    "lib": "@/lib",
-    "hooks": "@/hooks"
-  },
-  "iconLibrary": "lucide"
+  }
 }
 ```
 
-## Convention
+Tailwind maps these tokens into utilities like `bg-background`, `text-foreground`, `border-border`, and `ring-ring`.
 
-We use a simple `background` and `foreground` convention for colors. The `background` variable is used for the background color of the component and the `foreground` variable is used for the text color.
+Dark mode works by overriding the same tokens inside a `.dark` selector. See the [dark mode docs](/docs/dark-mode/next) for adding a theme provider and toggling the `.dark` class.
+
+## Token Convention
+
+We use semantic background and foreground pairs. The base token controls the surface color and the `-foreground` token controls the text and icon color that sits on that surface.
 
 <Callout className="mt-4">
 
-The `background` suffix is omitted when the variable is used for the background color of the component.
+The background suffix is omitted for the surface token. For example, `primary` pairs with `primary-foreground`.
 
 </Callout>
 
@@ -57,11 +59,148 @@ The `background` color of the following component will be `var(--primary)` and t
 <div className="bg-primary text-primary-foreground">Hello</div>
 ```
 
-## List of variables
+## Theme Tokens
 
-Here's the list of variables available for customization:
+These tokens live in your CSS file under `:root` and `.dark`.
+
+| Token                                            | What it controls                                       | Used by                                                                      |
+| ------------------------------------------------ | ------------------------------------------------------ | ---------------------------------------------------------------------------- |
+| `background` / `foreground`                      | The default app background and text color.             | The page shell, page sections, and default text.                             |
+| `card` / `card-foreground`                       | Elevated surfaces and the content inside them.         | `Card`, dashboard panels, settings panels.                                   |
+| `popover` / `popover-foreground`                 | Floating surfaces and the content inside them.         | `Popover`, `DropdownMenu`, `ContextMenu`, and other overlays.                |
+| `primary` / `primary-foreground`                 | High-emphasis actions and brand surfaces.              | Default `Button`, selected states, badges, and active accents.               |
+| `secondary` / `secondary-foreground`             | Lower-emphasis filled actions and supporting surfaces. | Secondary buttons, secondary badges, and supporting UI.                      |
+| `muted` / `muted-foreground`                     | Subtle surfaces and lower-emphasis content.            | Descriptions, placeholders, empty states, helper text, and subdued surfaces. |
+| `accent` / `accent-foreground`                   | Interactive hover, focus, and active surfaces.         | Ghost buttons, menu highlight states, hovered rows, and selected items.      |
+| `destructive`                                    | Destructive actions and error emphasis.                | Destructive buttons, invalid states, and destructive menu items.             |
+| `border`                                         | Default borders and separators.                        | Cards, menus, tables, separators, and layout dividers.                       |
+| `input`                                          | Form control borders and input surface treatment.      | `Input`, `Textarea`, `Select`, and outline-style controls.                   |
+| `ring`                                           | Focus rings and outlines.                              | Buttons, inputs, checkboxes, menus, and other focusable controls.            |
+| `chart-1` ... `chart-5`                          | The default chart palette.                             | Charts and chart-driven dashboard blocks.                                    |
+| `sidebar` / `sidebar-foreground`                 | The base sidebar surface and default sidebar text.     | The `Sidebar` container and its default content.                             |
+| `sidebar-primary` / `sidebar-primary-foreground` | High-emphasis actions inside the sidebar.              | Active items, icon tiles, badges, and sidebar CTAs.                          |
+| `sidebar-accent` / `sidebar-accent-foreground`   | Hover and selected states inside the sidebar.          | Sidebar menu hover states, open items, and interactive rows.                 |
+| `sidebar-border`                                 | Sidebar-specific borders and separators.               | Sidebar headers, groups, and internal dividers.                              |
+| `sidebar-ring`                                   | Sidebar-specific focus rings.                          | Focused controls inside the sidebar.                                         |
+| `radius`                                         | The base corner radius scale.                          | Cards, inputs, buttons, popovers, and the derived `radius-*` tokens.         |
+
+<Callout className="mt-4">
+
+The chart tokens are covered in more detail in the [Chart theming docs](/docs/components/chart#theming).
+
+</Callout>
+
+## Radius Scale
+
+`--radius` is the base radius token for your theme.
+
+We derive a small radius scale from it so components can use consistent corner sizes while still sharing a single source of truth.
 
 ```css title="app/globals.css" showLineNumbers
+@theme inline {
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+```
+
+This means:
+
+- `radius-lg` is the base value.
+- Smaller radii scale down from `--radius`.
+- Larger radii scale up from `--radius`.
+- Changing `--radius` updates the entire radius scale.
+
+## Adding New Tokens
+
+To add a new token, define it under `:root` and `.dark`, then expose it to Tailwind with `@theme inline`.
+
+```css title="app/globals.css" showLineNumbers
+:root {
+  --warning: oklch(0.84 0.16 84);
+  --warning-foreground: oklch(0.28 0.07 46);
+}
+
+.dark {
+  --warning: oklch(0.41 0.11 46);
+  --warning-foreground: oklch(0.99 0.02 95);
+}
+
+@theme inline {
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+}
+```
+
+You can now use `bg-warning` and `text-warning-foreground` in your components.
+
+```tsx /bg-warning/ /text-warning-foreground/
+<div className="bg-warning text-warning-foreground" />
+```
+
+## Base Colors
+
+`tailwind.baseColor` controls the default token values generated for your project when you run `init` or use a preset.
+
+The available base colors are: **Neutral**, **Stone**, **Zinc**, **Mauve**, **Olive**, **Mist**, and **Taupe**.
+
+## Default Theme CSS
+
+The following is the full default `neutral` theme scaffold. Copy it into your global CSS file and adjust the tokens as needed.
+
+<CodeCollapsibleWrapper>
+
+```css showLineNumbers title="app/globals.css"
+@import "tailwindcss";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
 :root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
@@ -79,7 +218,6 @@ Here's the list of variables available for customization:
   --accent: oklch(0.97 0 0);
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.985 0 0);
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
   --ring: oklch(0.708 0 0);
@@ -103,7 +241,7 @@ Here's the list of variables available for customization:
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
   --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.269 0 0);
+  --popover: oklch(0.205 0 0);
   --popover-foreground: oklch(0.985 0 0);
   --primary: oklch(0.922 0 0);
   --primary-foreground: oklch(0.205 0 0);
@@ -111,10 +249,9 @@ Here's the list of variables available for customization:
   --secondary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.269 0 0);
   --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.371 0 0);
+  --accent: oklch(0.269 0 0);
   --accent-foreground: oklch(0.985 0 0);
   --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.985 0 0);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
   --ring: oklch(0.556 0 0);
@@ -130,43 +267,38 @@ Here's the list of variables available for customization:
   --sidebar-accent: oklch(0.269 0 0);
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.439 0 0);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
 }
 ```
 
-## Adding new colors
+</CodeCollapsibleWrapper>
 
-To add new colors, you need to add them to your CSS file under the `:root` and `dark` pseudo-classes. Then, use the `@theme inline` directive to make the colors available as CSS variables.
+## Without CSS Variables
 
-```css title="app/globals.css" showLineNumbers
-:root {
-  --warning: oklch(0.84 0.16 84);
-  --warning-foreground: oklch(0.28 0.07 46);
-}
+If you do not want to use CSS variables, the CLI can generate components with inline Tailwind color utilities instead.
 
-.dark {
-  --warning: oklch(0.41 0.11 46);
-  --warning-foreground: oklch(0.99 0.02 95);
-}
-
-@theme inline {
-  --color-warning: var(--warning);
-  --color-warning-foreground: var(--warning-foreground);
-}
+```bash
+npx shadcn@latest init --no-css-variables
 ```
 
-You can now use the `warning` utility class in your components.
+This sets `tailwind.cssVariables` to `false` in your `components.json` file.
 
-```tsx /bg-warning/ /text-warning-foreground/
-<div className="bg-warning text-warning-foreground" />
+```tsx /bg-zinc-950/ /text-zinc-50/ /dark:bg-white/ /dark:text-zinc-950/
+<div className="bg-zinc-950 text-zinc-50 dark:bg-white dark:text-zinc-950" />
 ```
 
-## Other color formats
+<Callout className="mt-4">
 
-See the [Tailwind CSS documentation](https://tailwindcss.com/docs/colors) for more information on using colors in Tailwind CSS.
+This is an installation-time choice. To switch an existing project, delete and re-install your components.
 
-## Base Colors
-
-The available base colors are: **Neutral**, **Stone**, **Zinc**, **Mauve**, **Olive**, **Mist**, and **Taupe**.
-
-You can set the base color when initializing your project using a preset or by updating the `baseColor` field in your `components.json` file.
+</Callout>

@@ -1,15 +1,16 @@
 "use client"
 
 import * as React from "react"
-import { Card, CardContent } from "@/examples/radix/ui/card"
+import Autoplay from "embla-carousel-autoplay"
+
+import { Card, CardContent } from "@/styles/radix-nova/ui/card"
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/examples/radix/ui/carousel"
-import Autoplay from "embla-carousel-autoplay"
+} from "@/styles/radix-nova/ui/carousel"
 
 export default function CarouselPlugin() {
   const plugin = React.useRef(

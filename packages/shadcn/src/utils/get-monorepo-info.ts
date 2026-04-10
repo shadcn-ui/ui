@@ -100,8 +100,13 @@ export async function getMonorepoTargets(cwd: string) {
 // Formats and logs the monorepo detection message.
 export function formatMonorepoMessage(
   command: string,
-  targets: { name: string; hasConfig: boolean }[]
+  targets: { name: string; hasConfig: boolean }[],
+  options?: {
+    cwdFlag?: string
+  }
 ) {
+  const cwdFlag = options?.cwdFlag ?? "-c"
+
   logger.break()
   logger.log(
     `It looks like you are running ${highlighter.info(
@@ -110,13 +115,13 @@ export function formatMonorepoMessage(
   )
   logger.log(
     `To use shadcn in a specific workspace, use the ${highlighter.info(
-      "-c"
+      cwdFlag
     )} flag:`
   )
   logger.break()
 
   for (const target of targets) {
-    logger.log(`  shadcn ${command} -c ${target.name}`)
+    logger.log(`  shadcn ${command} ${cwdFlag} ${target.name}`)
   }
 
   logger.break()
