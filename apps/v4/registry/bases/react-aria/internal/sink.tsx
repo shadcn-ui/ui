@@ -21,7 +21,6 @@ import DrawerExample from "@/registry/bases/react-aria/examples/drawer-example"
 import DropdownMenuExample from "@/registry/bases/react-aria/examples/dropdown-menu-example"
 import EmptyExample from "@/registry/bases/react-aria/examples/empty-example"
 import FieldExample from "@/registry/bases/react-aria/examples/field-example"
-import HoverCardExample from "@/registry/bases/react-aria/examples/hover-card-example"
 import InputExample from "@/registry/bases/react-aria/examples/input-example"
 import InputGroupExample from "@/registry/bases/react-aria/examples/input-group-example"
 import InputOtpExample from "@/registry/bases/react-aria/examples/input-otp-example"
@@ -77,7 +76,6 @@ export default function Page() {
       <DropdownMenuExample />
       <EmptyExample />
       <FieldExample />
-      <HoverCardExample />
       <InputExample />
       <InputGroupExample />
       <InputOtpExample />

@@ -13945,45 +13945,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "hover-card-demo": {
-      name: "hover-card-demo",
-      filePath: "examples/react-aria/hover-card-demo.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./react-aria/hover-card-demo")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "hover-card-demo"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "hover-card-rtl": {
-      name: "hover-card-rtl",
-      filePath: "examples/react-aria/hover-card-rtl.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./react-aria/hover-card-rtl")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "hover-card-rtl"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "hover-card-sides": {
-      name: "hover-card-sides",
-      filePath: "examples/react-aria/hover-card-sides.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./react-aria/hover-card-sides")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "hover-card-sides"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "input-badge": {
       name: "input-badge",
       filePath: "examples/react-aria/input-badge.tsx",

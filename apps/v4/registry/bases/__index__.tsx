@@ -10356,31 +10356,6 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
-    "hover-card": {
-      name: "hover-card",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/bases/react-aria/ui/hover-card.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/bases/react-aria/ui/hover-card")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "hover-card"
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: undefined,
-      meta: undefined,
-    },
     input: {
       name: "input",
       title: "undefined",
@@ -11857,33 +11832,6 @@ export const Index: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "field-example"
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: undefined,
-      meta: undefined,
-    },
-    "hover-card-example": {
-      name: "hover-card-example",
-      title: "Hover Card",
-      description: "",
-      type: "registry:example",
-      registryDependencies: ["button", "dialog", "hover-card", "example"],
-      files: [
-        {
-          path: "registry/bases/react-aria/examples/hover-card-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      component: React.lazy(async () => {
-        const mod = await import(
-          "@/registry/bases/react-aria/examples/hover-card-example"
-        )
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "hover-card-example"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,

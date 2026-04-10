@@ -302,16 +302,6 @@
       "type": "registry:ui"
     },
     {
-      "name": "hover-card",
-      "files": [
-        {
-          "path": "registry/react-aria-luma/ui/hover-card.tsx",
-          "type": "registry:ui"
-        }
-      ],
-      "type": "registry:ui"
-    },
-    {
       "name": "input",
       "files": [
         {
@@ -1003,18 +993,6 @@
       "files": [
         {
           "path": "registry/react-aria-luma/examples/field-example.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "type": "registry:example"
-    },
-    {
-      "name": "hover-card-example",
-      "title": "Hover Card",
-      "registryDependencies": ["button", "dialog", "hover-card", "example"],
-      "files": [
-        {
-          "path": "registry/react-aria-luma/examples/hover-card-example.tsx",
           "type": "registry:example"
         }
       ],

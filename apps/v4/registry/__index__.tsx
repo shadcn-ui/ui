@@ -32244,31 +32244,6 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
-    "hover-card": {
-      name: "hover-card",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [
-        {
-          path: "styles/react-aria-vega/ui/hover-card.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      component: React.lazy(async () => {
-        const mod = await import("@/styles/react-aria-vega/ui/hover-card")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "hover-card"
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: undefined,
-      meta: undefined,
-    },
     input: {
       name: "input",
       title: "undefined",
@@ -33574,31 +33549,6 @@ export const Index: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "field"
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: undefined,
-      meta: undefined,
-    },
-    "hover-card": {
-      name: "hover-card",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [
-        {
-          path: "styles/react-aria-nova/ui/hover-card.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      component: React.lazy(async () => {
-        const mod = await import("@/styles/react-aria-nova/ui/hover-card")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "hover-card"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -34914,31 +34864,6 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
-    "hover-card": {
-      name: "hover-card",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [
-        {
-          path: "styles/react-aria-maia/ui/hover-card.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      component: React.lazy(async () => {
-        const mod = await import("@/styles/react-aria-maia/ui/hover-card")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "hover-card"
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: undefined,
-      meta: undefined,
-    },
     input: {
       name: "input",
       title: "undefined",
@@ -36244,31 +36169,6 @@ export const Index: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "field"
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: undefined,
-      meta: undefined,
-    },
-    "hover-card": {
-      name: "hover-card",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [
-        {
-          path: "styles/react-aria-lyra/ui/hover-card.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      component: React.lazy(async () => {
-        const mod = await import("@/styles/react-aria-lyra/ui/hover-card")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "hover-card"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
@@ -37584,31 +37484,6 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
-    "hover-card": {
-      name: "hover-card",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [
-        {
-          path: "styles/react-aria-mira/ui/hover-card.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      component: React.lazy(async () => {
-        const mod = await import("@/styles/react-aria-mira/ui/hover-card")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "hover-card"
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: undefined,
-      meta: undefined,
-    },
     input: {
       name: "input",
       title: "undefined",
@@ -38914,31 +38789,6 @@ export const Index: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "field"
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: undefined,
-      meta: undefined,
-    },
-    "hover-card": {
-      name: "hover-card",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: [
-        {
-          path: "styles/react-aria-luma/ui/hover-card.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      component: React.lazy(async () => {
-        const mod = await import("@/styles/react-aria-luma/ui/hover-card")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "hover-card"
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
