@@ -1,7 +1,26 @@
 "use client"
 
 import * as React from "react"
-import { Command as CommandPrimitive } from "cmdk"
+import {
+  Autocomplete,
+  Input,
+  Menu,
+  MenuItem,
+  Keyboard,
+  Separator,
+  MenuSection,
+  composeRenderProps,
+  type InputProps,
+  type AutocompleteProps,
+  type MenuItemProps,
+  type SeparatorProps,
+  type MenuSectionProps,
+  type MenuProps,
+  Header,
+  Collection,
+  useFilter,
+  SearchField
+} from "react-aria-components"
 
 import { cn } from "@/registry/bases/react-aria/lib/utils"
 import {
@@ -18,17 +37,22 @@ import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 function Command({
   className,
+  style,
   ...props
-}: React.ComponentProps<typeof CommandPrimitive>) {
+}: AutocompleteProps & React.HTMLAttributes<HTMLDivElement>) {
+  const {contains} = useFilter({sensitivity: 'base'});
   return (
-    <CommandPrimitive
+    <div
       data-slot="command"
       className={cn(
         "cn-command flex size-full flex-col overflow-hidden",
         className
       )}
-      {...props}
-    />
+      style={style}>
+      <Autocomplete {...props} filter={props.filter || contains}>
+        {props.children}
+      </Autocomplete>
+    </div>
   )
 }
 
@@ -62,6 +86,7 @@ function CommandDialog({
         className
       )}
       showCloseButton={showCloseButton}
+      isDismissable
       {...props}
     >
       <DialogHeader className="sr-only">
@@ -76,18 +101,17 @@ function CommandDialog({
 function CommandInput({
   className,
   ...props
-}: React.ComponentProps<typeof CommandPrimitive.Input>) {
+}: InputProps) {
   return (
-    <div data-slot="command-input-wrapper" className="cn-command-input-wrapper">
+    <SearchField autoFocus data-slot="command-input-wrapper" className="cn-command-input-wrapper">
       <InputGroup className="cn-command-input-group">
-        <CommandPrimitive.Input
+        <Input
+          {...props}
           data-slot="command-input"
-          autoFocus
           className={cn(
-            "cn-command-input outline-hidden disabled:cursor-not-allowed disabled:opacity-50",
+            "cn-command-input outline-hidden disabled:cursor-not-allowed disabled:opacity-50 [&::-webkit-search-cancel-button]:hidden",
             className
           )}
-          {...props}
         />
         <InputGroupAddon>
           <IconPlaceholder
@@ -100,22 +124,22 @@ function CommandInput({
           />
         </InputGroupAddon>
       </InputGroup>
-    </div>
+    </SearchField>
   )
 }
 
-function CommandList({
+function CommandList<T extends object>({
   className,
   ...props
-}: React.ComponentProps<typeof CommandPrimitive.List>) {
+}: MenuProps<T>) {
   return (
-    <CommandPrimitive.List
+    <Menu
+      {...props}
       data-slot="command-list"
       className={cn(
         "cn-command-list overflow-x-hidden overflow-y-auto",
         className
       )}
-      {...props}
     />
   )
 }
@@ -123,9 +147,9 @@ function CommandList({
 function CommandEmpty({
   className,
   ...props
-}: React.ComponentProps<typeof CommandPrimitive.Empty>) {
+}: React.ComponentProps<'div'>) {
   return (
-    <CommandPrimitive.Empty
+    <div
       data-slot="command-empty"
       className={cn("cn-command-empty", className)}
       {...props}
@@ -133,25 +157,32 @@ function CommandEmpty({
   )
 }
 
-function CommandGroup({
+function CommandGroup<T extends object>({
   className,
+  children,
+  items,
+  heading,
   ...props
-}: React.ComponentProps<typeof CommandPrimitive.Group>) {
+}: MenuSectionProps<T> & {heading?: string}) {
   return (
-    <CommandPrimitive.Group
+    <MenuSection
       data-slot="command-group"
       className={cn("cn-command-group", className)}
-      {...props}
-    />
+      {...props}>
+      {heading && <Header cmdk-group-heading="">{heading}</Header>}
+      <Collection items={items}>
+        {children}
+      </Collection>
+    </MenuSection>
   )
 }
 
 function CommandSeparator({
   className,
   ...props
-}: React.ComponentProps<typeof CommandPrimitive.Separator>) {
+}: SeparatorProps) {
   return (
-    <CommandPrimitive.Separator
+    <Separator
       data-slot="command-separator"
       className={cn("cn-command-separator", className)}
       {...props}
@@ -159,30 +190,40 @@ function CommandSeparator({
   )
 }
 
-function CommandItem({
+function CommandItem<T extends object>({
   className,
   children,
+  textValue,
   ...props
-}: React.ComponentProps<typeof CommandPrimitive.Item>) {
+}: MenuItemProps<T>) {
   return (
-    <CommandPrimitive.Item
+    <MenuItem
+      {...props}
       data-slot="command-item"
       className={cn(
         "cn-command-item group/command-item data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
         className
       )}
-      {...props}
+      textValue={textValue || (typeof children === 'string' ? children : undefined)}
+      // Add data-selected attribute for compatibility with cmdk
+      render={(props, {isFocused}) => (
+        'href' in props
+          ? <a {...props}  data-selected={isFocused || undefined} />
+          : <div {...props} data-selected={isFocused || undefined} />
+      )}
     >
-      {children}
-      <IconPlaceholder
-        lucide="CheckIcon"
-        tabler="IconCheck"
-        hugeicons="Tick02Icon"
-        phosphor="CheckIcon"
-        remixicon="RiCheckLine"
-        className="cn-command-item-indicator ml-auto opacity-0 group-has-data-[slot=command-shortcut]/command-item:hidden group-data-[checked=true]/command-item:opacity-100"
-      />
-    </CommandPrimitive.Item>
+      {composeRenderProps(children, (children) => (<>
+        {children}
+        <IconPlaceholder
+          lucide="CheckIcon"
+          tabler="IconCheck"
+          hugeicons="Tick02Icon"
+          phosphor="CheckIcon"
+          remixicon="RiCheckLine"
+          className="cn-command-item-indicator ml-auto opacity-0 group-has-data-[slot=command-shortcut]/command-item:hidden group-data-[checked=true]/command-item:opacity-100"
+        />
+      </>))}
+    </MenuItem>
   )
 }
 
@@ -191,7 +232,7 @@ function CommandShortcut({
   ...props
 }: React.ComponentProps<"span">) {
   return (
-    <span
+    <Keyboard
       data-slot="command-shortcut"
       className={cn("cn-command-shortcut", className)}
       {...props}

@@ -40,10 +40,9 @@ function CommandInline() {
         <CardContent className="p-0">
           <Command>
             <CommandInput placeholder="Type a command or search..." />
-            <CommandList>
-              <CommandEmpty>No results found.</CommandEmpty>
+            <CommandList renderEmptyState={() => <CommandEmpty>No results found.</CommandEmpty>}>
               <CommandGroup heading="Suggestions">
-                <CommandItem>
+                <CommandItem textValue="Calendar">
                   <IconPlaceholder
                     lucide="CalendarIcon"
                     tabler="IconCalendar"
@@ -53,7 +52,7 @@ function CommandInline() {
                   />
                   <span>Calendar</span>
                 </CommandItem>
-                <CommandItem>
+                <CommandItem textValue="Search Emoji">
                   <IconPlaceholder
                     lucide="SmileIcon"
                     tabler="IconMoodSmile"
@@ -63,7 +62,7 @@ function CommandInline() {
                   />
                   <span>Search Emoji</span>
                 </CommandItem>
-                <CommandItem>
+                <CommandItem textValue="Calculator">
                   <IconPlaceholder
                     lucide="CalculatorIcon"
                     tabler="IconCalculator"
@@ -76,7 +75,7 @@ function CommandInline() {
               </CommandGroup>
               <CommandSeparator />
               <CommandGroup heading="Settings">
-                <CommandItem>
+                <CommandItem textValue="Profile">
                   <IconPlaceholder
                     lucide="UserIcon"
                     tabler="IconUser"
@@ -87,7 +86,7 @@ function CommandInline() {
                   <span>Profile</span>
                   <CommandShortcut>⌘P</CommandShortcut>
                 </CommandItem>
-                <CommandItem>
+                <CommandItem textValue="Billing">
                   <IconPlaceholder
                     lucide="CreditCardIcon"
                     tabler="IconCreditCard"
@@ -98,7 +97,7 @@ function CommandInline() {
                   <span>Billing</span>
                   <CommandShortcut>⌘B</CommandShortcut>
                 </CommandItem>
-                <CommandItem>
+                <CommandItem textValue="Settings">
                   <IconPlaceholder
                     lucide="SettingsIcon"
                     tabler="IconSettings"
@@ -134,8 +133,7 @@ function CommandBasic() {
         <CommandDialog open={open} onOpenChange={setOpen}>
           <Command>
             <CommandInput placeholder="Type a command or search..." />
-            <CommandList>
-              <CommandEmpty>No results found.</CommandEmpty>
+            <CommandList renderEmptyState={() => <CommandEmpty>No results found.</CommandEmpty>}>
               <CommandGroup heading="Suggestions">
                 <CommandItem>Calendar</CommandItem>
                 <CommandItem>Search Emoji</CommandItem>
@@ -165,10 +163,9 @@ function CommandWithShortcuts() {
         <CommandDialog open={open} onOpenChange={setOpen}>
           <Command>
             <CommandInput placeholder="Type a command or search..." />
-            <CommandList>
-              <CommandEmpty>No results found.</CommandEmpty>
+            <CommandList renderEmptyState={() => <CommandEmpty>No results found.</CommandEmpty>}>
               <CommandGroup heading="Settings">
-                <CommandItem>
+                <CommandItem textValue="Profile">
                   <IconPlaceholder
                     lucide="UserIcon"
                     tabler="IconUser"
@@ -179,7 +176,7 @@ function CommandWithShortcuts() {
                   <span>Profile</span>
                   <CommandShortcut>⌘P</CommandShortcut>
                 </CommandItem>
-                <CommandItem>
+                <CommandItem textValue="Billing">
                   <IconPlaceholder
                     lucide="CreditCardIcon"
                     tabler="IconCreditCard"
@@ -190,7 +187,7 @@ function CommandWithShortcuts() {
                   <span>Billing</span>
                   <CommandShortcut>⌘B</CommandShortcut>
                 </CommandItem>
-                <CommandItem>
+                <CommandItem textValue="Settings">
                   <IconPlaceholder
                     lucide="SettingsIcon"
                     tabler="IconSettings"
@@ -226,10 +223,9 @@ function CommandWithGroups() {
         <CommandDialog open={open} onOpenChange={setOpen}>
           <Command>
             <CommandInput placeholder="Type a command or search..." />
-            <CommandList>
-              <CommandEmpty>No results found.</CommandEmpty>
+            <CommandList renderEmptyState={() => <CommandEmpty>No results found.</CommandEmpty>}>
               <CommandGroup heading="Suggestions">
-                <CommandItem>
+                <CommandItem textValue="Calendar">
                   <IconPlaceholder
                     lucide="CalendarIcon"
                     tabler="IconCalendar"
@@ -239,7 +235,7 @@ function CommandWithGroups() {
                   />
                   <span>Calendar</span>
                 </CommandItem>
-                <CommandItem>
+                <CommandItem textValue="Search Emoji">
                   <IconPlaceholder
                     lucide="SmileIcon"
                     tabler="IconMoodSmile"
@@ -249,7 +245,7 @@ function CommandWithGroups() {
                   />
                   <span>Search Emoji</span>
                 </CommandItem>
-                <CommandItem>
+                <CommandItem textValue="Calculator">
                   <IconPlaceholder
                     lucide="CalculatorIcon"
                     tabler="IconCalculator"
@@ -262,7 +258,7 @@ function CommandWithGroups() {
               </CommandGroup>
               <CommandSeparator />
               <CommandGroup heading="Settings">
-                <CommandItem>
+                <CommandItem textValue="Profile">
                   <IconPlaceholder
                     lucide="UserIcon"
                     tabler="IconUser"
@@ -273,7 +269,7 @@ function CommandWithGroups() {
                   <span>Profile</span>
                   <CommandShortcut>⌘P</CommandShortcut>
                 </CommandItem>
-                <CommandItem>
+                <CommandItem textValue="Billing">
                   <IconPlaceholder
                     lucide="CreditCardIcon"
                     tabler="IconCreditCard"
@@ -284,7 +280,7 @@ function CommandWithGroups() {
                   <span>Billing</span>
                   <CommandShortcut>⌘B</CommandShortcut>
                 </CommandItem>
-                <CommandItem>
+                <CommandItem textValue="Settings">
                   <IconPlaceholder
                     lucide="SettingsIcon"
                     tabler="IconSettings"
@@ -320,10 +316,9 @@ function CommandManyItems() {
         <CommandDialog open={open} onOpenChange={setOpen}>
           <Command>
             <CommandInput placeholder="Type a command or search..." />
-            <CommandList>
-              <CommandEmpty>No results found.</CommandEmpty>
+            <CommandList renderEmptyState={() => <CommandEmpty>No results found.</CommandEmpty>}>
               <CommandGroup heading="Navigation">
-                <CommandItem>
+                <CommandItem textValue="Home">
                   <IconPlaceholder
                     lucide="HomeIcon"
                     tabler="IconHome"
@@ -334,7 +329,7 @@ function CommandManyItems() {
                   <span>Home</span>
                   <CommandShortcut>⌘H</CommandShortcut>
                 </CommandItem>
-                <CommandItem>
+                <CommandItem textValue="Inbox">
                   <IconPlaceholder
                     lucide="InboxIcon"
                     tabler="IconInbox"
@@ -345,7 +340,7 @@ function CommandManyItems() {
                   <span>Inbox</span>
                   <CommandShortcut>⌘I</CommandShortcut>
                 </CommandItem>
-                <CommandItem>
+                <CommandItem textValue="Documents">
                   <IconPlaceholder
                     lucide="FileTextIcon"
                     tabler="IconFileText"
@@ -356,7 +351,7 @@ function CommandManyItems() {
                   <span>Documents</span>
                   <CommandShortcut>⌘D</CommandShortcut>
                 </CommandItem>
-                <CommandItem>
+                <CommandItem textValue="Folders">
                   <IconPlaceholder
                     lucide="FolderIcon"
                     tabler="IconFolder"
@@ -370,7 +365,7 @@ function CommandManyItems() {
               </CommandGroup>
               <CommandSeparator />
               <CommandGroup heading="Actions">
-                <CommandItem>
+                <CommandItem textValue="New File">
                   <IconPlaceholder
                     lucide="PlusIcon"
                     tabler="IconPlus"
@@ -381,7 +376,7 @@ function CommandManyItems() {
                   <span>New File</span>
                   <CommandShortcut>⌘N</CommandShortcut>
                 </CommandItem>
-                <CommandItem>
+                <CommandItem textValue="New Folder">
                   <IconPlaceholder
                     lucide="FolderPlusIcon"
                     tabler="IconFolderPlus"
@@ -392,7 +387,7 @@ function CommandManyItems() {
                   <span>New Folder</span>
                   <CommandShortcut>⇧⌘N</CommandShortcut>
                 </CommandItem>
-                <CommandItem>
+                <CommandItem textValue="Copy">
                   <IconPlaceholder
                     lucide="CopyIcon"
                     tabler="IconCopy"
@@ -403,7 +398,7 @@ function CommandManyItems() {
                   <span>Copy</span>
                   <CommandShortcut>⌘C</CommandShortcut>
                 </CommandItem>
-                <CommandItem>
+                <CommandItem textValue="Cut">
                   <IconPlaceholder
                     lucide="ScissorsIcon"
                     tabler="IconCut"
@@ -414,7 +409,7 @@ function CommandManyItems() {
                   <span>Cut</span>
                   <CommandShortcut>⌘X</CommandShortcut>
                 </CommandItem>
-                <CommandItem>
+                <CommandItem textValue="Paste">
                   <IconPlaceholder
                     lucide="ClipboardPasteIcon"
                     tabler="IconClipboard"
@@ -425,7 +420,7 @@ function CommandManyItems() {
                   <span>Paste</span>
                   <CommandShortcut>⌘V</CommandShortcut>
                 </CommandItem>
-                <CommandItem>
+                <CommandItem textValue="Delete">
                   <IconPlaceholder
                     lucide="TrashIcon"
                     tabler="IconTrash"
@@ -439,7 +434,7 @@ function CommandManyItems() {
               </CommandGroup>
               <CommandSeparator />
               <CommandGroup heading="View">
-                <CommandItem>
+                <CommandItem textValue="Grid View">
                   <IconPlaceholder
                     lucide="LayoutGridIcon"
                     tabler="IconLayoutGrid"
@@ -449,7 +444,7 @@ function CommandManyItems() {
                   />
                   <span>Grid View</span>
                 </CommandItem>
-                <CommandItem>
+                <CommandItem textValue="List View">
                   <IconPlaceholder
                     lucide="ListIcon"
                     tabler="IconList"
@@ -459,7 +454,7 @@ function CommandManyItems() {
                   />
                   <span>List View</span>
                 </CommandItem>
-                <CommandItem>
+                <CommandItem textValue="Zoom In">
                   <IconPlaceholder
                     lucide="ZoomInIcon"
                     tabler="IconZoomIn"
@@ -470,7 +465,7 @@ function CommandManyItems() {
                   <span>Zoom In</span>
                   <CommandShortcut>⌘+</CommandShortcut>
                 </CommandItem>
-                <CommandItem>
+                <CommandItem textValue="Zoom Out">
                   <IconPlaceholder
                     lucide="ZoomOutIcon"
                     tabler="IconZoomOut"
@@ -484,7 +479,7 @@ function CommandManyItems() {
               </CommandGroup>
               <CommandSeparator />
               <CommandGroup heading="Account">
-                <CommandItem>
+                <CommandItem textValue="Profile">
                   <IconPlaceholder
                     lucide="UserIcon"
                     tabler="IconUser"
@@ -495,7 +490,7 @@ function CommandManyItems() {
                   <span>Profile</span>
                   <CommandShortcut>⌘P</CommandShortcut>
                 </CommandItem>
-                <CommandItem>
+                <CommandItem textValue="Billing">
                   <IconPlaceholder
                     lucide="CreditCardIcon"
                     tabler="IconCreditCard"
@@ -506,7 +501,7 @@ function CommandManyItems() {
                   <span>Billing</span>
                   <CommandShortcut>⌘B</CommandShortcut>
                 </CommandItem>
-                <CommandItem>
+                <CommandItem textValue="Settings">
                   <IconPlaceholder
                     lucide="SettingsIcon"
                     tabler="IconSettings"
@@ -517,7 +512,7 @@ function CommandManyItems() {
                   <span>Settings</span>
                   <CommandShortcut>⌘S</CommandShortcut>
                 </CommandItem>
-                <CommandItem>
+                <CommandItem textValue="Notifications">
                   <IconPlaceholder
                     lucide="BellIcon"
                     tabler="IconBell"
@@ -527,7 +522,7 @@ function CommandManyItems() {
                   />
                   <span>Notifications</span>
                 </CommandItem>
-                <CommandItem>
+                <CommandItem textValue="Help & Support">
                   <IconPlaceholder
                     lucide="HelpCircleIcon"
                     tabler="IconHelpCircle"
@@ -540,7 +535,7 @@ function CommandManyItems() {
               </CommandGroup>
               <CommandSeparator />
               <CommandGroup heading="Tools">
-                <CommandItem>
+                <CommandItem textValue="Calculator">
                   <IconPlaceholder
                     lucide="CalculatorIcon"
                     tabler="IconCalculator"
@@ -550,7 +545,7 @@ function CommandManyItems() {
                   />
                   <span>Calculator</span>
                 </CommandItem>
-                <CommandItem>
+                <CommandItem textValue="Calendar">
                   <IconPlaceholder
                     lucide="CalendarIcon"
                     tabler="IconCalendar"
@@ -560,7 +555,7 @@ function CommandManyItems() {
                   />
                   <span>Calendar</span>
                 </CommandItem>
-                <CommandItem>
+                <CommandItem textValue="Image Editor">
                   <IconPlaceholder
                     lucide="ImageIcon"
                     tabler="IconPhoto"
@@ -570,7 +565,7 @@ function CommandManyItems() {
                   />
                   <span>Image Editor</span>
                 </CommandItem>
-                <CommandItem>
+                <CommandItem textValue="Code Editor">
                   <IconPlaceholder
                     lucide="CodeIcon"
                     tabler="IconCode"

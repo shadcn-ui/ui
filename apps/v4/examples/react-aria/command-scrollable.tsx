@@ -51,25 +51,24 @@ export function CommandManyItems() {
       <CommandDialog open={open} onOpenChange={setOpen}>
         <Command>
           <CommandInput placeholder="Type a command or search..." />
-          <CommandList>
-            <CommandEmpty>No results found.</CommandEmpty>
+          <CommandList renderEmptyState={() => <CommandEmpty>No results found.</CommandEmpty>}>
             <CommandGroup heading="Navigation">
-              <CommandItem>
+              <CommandItem textValue="Home">
                 <HomeIcon />
                 <span>Home</span>
                 <CommandShortcut>⌘H</CommandShortcut>
               </CommandItem>
-              <CommandItem>
+              <CommandItem textValue="Inbox">
                 <InboxIcon />
                 <span>Inbox</span>
                 <CommandShortcut>⌘I</CommandShortcut>
               </CommandItem>
-              <CommandItem>
+              <CommandItem textValue="Documents">
                 <FileTextIcon />
                 <span>Documents</span>
                 <CommandShortcut>⌘D</CommandShortcut>
               </CommandItem>
-              <CommandItem>
+              <CommandItem textValue="Folders">
                 <FolderIcon />
                 <span>Folders</span>
                 <CommandShortcut>⌘F</CommandShortcut>
@@ -77,32 +76,32 @@ export function CommandManyItems() {
             </CommandGroup>
             <CommandSeparator />
             <CommandGroup heading="Actions">
-              <CommandItem>
+              <CommandItem textValue="New File">
                 <PlusIcon />
                 <span>New File</span>
                 <CommandShortcut>⌘N</CommandShortcut>
               </CommandItem>
-              <CommandItem>
+              <CommandItem textValue="New Folder">
                 <FolderPlusIcon />
                 <span>New Folder</span>
                 <CommandShortcut>⇧⌘N</CommandShortcut>
               </CommandItem>
-              <CommandItem>
+              <CommandItem textValue="Copy">
                 <CopyIcon />
                 <span>Copy</span>
                 <CommandShortcut>⌘C</CommandShortcut>
               </CommandItem>
-              <CommandItem>
+              <CommandItem textValue="Cut">
                 <ScissorsIcon />
                 <span>Cut</span>
                 <CommandShortcut>⌘X</CommandShortcut>
               </CommandItem>
-              <CommandItem>
+              <CommandItem textValue="Paste">
                 <ClipboardPasteIcon />
                 <span>Paste</span>
                 <CommandShortcut>⌘V</CommandShortcut>
               </CommandItem>
-              <CommandItem>
+              <CommandItem textValue="Delete">
                 <TrashIcon />
                 <span>Delete</span>
                 <CommandShortcut>⌫</CommandShortcut>
@@ -110,20 +109,20 @@ export function CommandManyItems() {
             </CommandGroup>
             <CommandSeparator />
             <CommandGroup heading="View">
-              <CommandItem>
+              <CommandItem textValue="Grid View">
                 <LayoutGridIcon />
                 <span>Grid View</span>
               </CommandItem>
-              <CommandItem>
+              <CommandItem textValue="List View">
                 <ListIcon />
                 <span>List View</span>
               </CommandItem>
-              <CommandItem>
+              <CommandItem textValue="Zoom In">
                 <ZoomInIcon />
                 <span>Zoom In</span>
                 <CommandShortcut>⌘+</CommandShortcut>
               </CommandItem>
-              <CommandItem>
+              <CommandItem textValue="Zoom Out">
                 <ZoomOutIcon />
                 <span>Zoom Out</span>
                 <CommandShortcut>⌘-</CommandShortcut>
@@ -131,45 +130,45 @@ export function CommandManyItems() {
             </CommandGroup>
             <CommandSeparator />
             <CommandGroup heading="Account">
-              <CommandItem>
+              <CommandItem textValue="Profile">
                 <UserIcon />
                 <span>Profile</span>
                 <CommandShortcut>⌘P</CommandShortcut>
               </CommandItem>
-              <CommandItem>
+              <CommandItem textValue="Billing">
                 <CreditCardIcon />
                 <span>Billing</span>
                 <CommandShortcut>⌘B</CommandShortcut>
               </CommandItem>
-              <CommandItem>
+              <CommandItem textValue="Settings">
                 <SettingsIcon />
                 <span>Settings</span>
                 <CommandShortcut>⌘S</CommandShortcut>
               </CommandItem>
-              <CommandItem>
+              <CommandItem textValue="Notifications">
                 <BellIcon />
                 <span>Notifications</span>
               </CommandItem>
-              <CommandItem>
+              <CommandItem textValue="Help & Support">
                 <HelpCircleIcon />
                 <span>Help & Support</span>
               </CommandItem>
             </CommandGroup>
             <CommandSeparator />
             <CommandGroup heading="Tools">
-              <CommandItem>
+              <CommandItem textValue="Calculator">
                 <CalculatorIcon />
                 <span>Calculator</span>
               </CommandItem>
-              <CommandItem>
+              <CommandItem textValue="Calendar">
                 <CalendarIcon />
                 <span>Calendar</span>
               </CommandItem>
-              <CommandItem>
+              <CommandItem textValue="Image Editor">
                 <ImageIcon />
                 <span>Image Editor</span>
               </CommandItem>
-              <CommandItem>
+              <CommandItem textValue="Code Editor">
                 <CodeIcon />
                 <span>Code Editor</span>
               </CommandItem>

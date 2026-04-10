@@ -1,8 +1,27 @@
 "use client"
 
 import * as React from "react"
-import { Command as CommandPrimitive } from "cmdk"
 import { CheckIcon, SearchIcon } from "lucide-react"
+import {
+  Autocomplete,
+  Collection,
+  composeRenderProps,
+  Header,
+  Input,
+  Keyboard,
+  Menu,
+  MenuItem,
+  MenuSection,
+  SearchField,
+  Separator,
+  useFilter,
+  type AutocompleteProps,
+  type InputProps,
+  type MenuItemProps,
+  type MenuProps,
+  type MenuSectionProps,
+  type SeparatorProps,
+} from "react-aria-components"
 
 import { cn } from "@/lib/utils"
 import {
@@ -18,17 +37,23 @@ import {
 
 function Command({
   className,
+  style,
   ...props
-}: React.ComponentProps<typeof CommandPrimitive>) {
+}: AutocompleteProps & React.HTMLAttributes<HTMLDivElement>) {
+  const { contains } = useFilter({ sensitivity: "base" })
   return (
-    <CommandPrimitive
-      data-slot="command"
-      className={cn(
-        "flex size-full flex-col overflow-hidden rounded-4xl bg-popover p-1 text-popover-foreground",
-        className
-      )}
-      {...props}
-    />
+    <Autocomplete {...props} filter={props.filter || contains}>
+      <div
+        data-slot="command"
+        className={cn(
+          "flex size-full flex-col overflow-hidden rounded-4xl bg-popover p-1 text-popover-foreground",
+          className
+        )}
+        style={style}
+      >
+        {props.children}
+      </div>
+    </Autocomplete>
   )
 }
 
@@ -62,6 +87,7 @@ function CommandDialog({
         className
       )}
       showCloseButton={showCloseButton}
+      isDismissable
       {...props}
     >
       <DialogHeader className="sr-only">
@@ -73,36 +99,33 @@ function CommandDialog({
   )
 }
 
-function CommandInput({
-  className,
-  ...props
-}: React.ComponentProps<typeof CommandPrimitive.Input>) {
+function CommandInput({ className, ...props }: InputProps) {
   return (
-    <div data-slot="command-input-wrapper" className="p-1 pb-0">
+    <SearchField
+      autoFocus
+      data-slot="command-input-wrapper"
+      className="p-1 pb-0"
+    >
       <InputGroup className="h-9 bg-input/30">
-        <CommandPrimitive.Input
+        <Input
+          {...props}
           data-slot="command-input"
-          autoFocus
           className={cn(
-            "w-full text-sm outline-hidden disabled:cursor-not-allowed disabled:opacity-50",
+            "w-full text-sm outline-hidden disabled:cursor-not-allowed disabled:opacity-50 [&::-webkit-search-cancel-button]:hidden",
             className
           )}
-          {...props}
         />
         <InputGroupAddon>
           <SearchIcon className="size-4 shrink-0 opacity-50" />
         </InputGroupAddon>
       </InputGroup>
-    </div>
+    </SearchField>
   )
 }
 
-function CommandList({
-  className,
-  ...props
-}: React.ComponentProps<typeof CommandPrimitive.List>) {
+function CommandList<T extends object>({ className, ...props }: MenuProps<T>) {
   return (
-    <CommandPrimitive.List
+    <Menu
       data-slot="command-list"
       className={cn(
         "no-scrollbar max-h-72 scroll-py-1 overflow-x-hidden overflow-y-auto outline-none",
@@ -113,12 +136,9 @@ function CommandList({
   )
 }
 
-function CommandEmpty({
-  className,
-  ...props
-}: React.ComponentProps<typeof CommandPrimitive.Empty>) {
+function CommandEmpty({ className, ...props }: React.ComponentProps<"div">) {
   return (
-    <CommandPrimitive.Empty
+    <div
       data-slot="command-empty"
       className={cn("py-6 text-center text-sm", className)}
       {...props}
@@ -126,28 +146,31 @@ function CommandEmpty({
   )
 }
 
-function CommandGroup({
+function CommandGroup<T extends object>({
   className,
+  children,
+  items,
+  heading,
   ...props
-}: React.ComponentProps<typeof CommandPrimitive.Group>) {
+}: MenuSectionProps<T> & { heading?: string }) {
   return (
-    <CommandPrimitive.Group
+    <MenuSection
       data-slot="command-group"
       className={cn(
         "overflow-hidden p-1 text-foreground **:[[cmdk-group-heading]]:px-3 **:[[cmdk-group-heading]]:py-2 **:[[cmdk-group-heading]]:text-xs **:[[cmdk-group-heading]]:font-medium **:[[cmdk-group-heading]]:text-muted-foreground",
         className
       )}
       {...props}
-    />
+    >
+      {heading && <Header cmdk-group-heading="">{heading}</Header>}
+      <Collection items={items}>{children}</Collection>
+    </MenuSection>
   )
 }
 
-function CommandSeparator({
-  className,
-  ...props
-}: React.ComponentProps<typeof CommandPrimitive.Separator>) {
+function CommandSeparator({ className, ...props }: SeparatorProps) {
   return (
-    <CommandPrimitive.Separator
+    <Separator
       data-slot="command-separator"
       className={cn("my-1 h-px bg-border/50", className)}
       {...props}
@@ -155,23 +178,38 @@ function CommandSeparator({
   )
 }
 
-function CommandItem({
+function CommandItem<T extends object>({
   className,
   children,
+  textValue,
   ...props
-}: React.ComponentProps<typeof CommandPrimitive.Item>) {
+}: MenuItemProps<T>) {
   return (
-    <CommandPrimitive.Item
+    <MenuItem
+      {...props}
       data-slot="command-item"
       className={cn(
         "group/command-item relative flex cursor-default items-center gap-2 rounded-lg px-3 py-2 text-sm outline-hidden select-none in-data-[slot=dialog-content]:rounded-2xl data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 data-selected:bg-muted data-selected:text-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 data-selected:*:[svg]:text-foreground",
         className
       )}
-      {...props}
+      textValue={
+        textValue || (typeof children === "string" ? children : undefined)
+      }
+      render={(props, { isFocused }) =>
+        "href" in props ? (
+          <a {...props} data-selected={isFocused || undefined} />
+        ) : (
+          <div {...props} data-selected={isFocused || undefined} />
+        )
+      }
     >
-      {children}
-      <CheckIcon className="ml-auto opacity-0 group-has-data-[slot=command-shortcut]/command-item:hidden group-data-[checked=true]/command-item:opacity-100" />
-    </CommandPrimitive.Item>
+      {composeRenderProps(children, (children) => (
+        <>
+          {children}
+          <CheckIcon className="ml-auto opacity-0 group-has-data-[slot=command-shortcut]/command-item:hidden group-data-[checked=true]/command-item:opacity-100" />
+        </>
+      ))}
+    </MenuItem>
   )
 }
 
@@ -180,7 +218,7 @@ function CommandShortcut({
   ...props
 }: React.ComponentProps<"span">) {
   return (
-    <span
+    <Keyboard
       data-slot="command-shortcut"
       className={cn(
         "ml-auto text-xs tracking-widest text-muted-foreground group-data-selected/command-item:text-foreground",

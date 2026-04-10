@@ -46,35 +46,34 @@ export function CommandDialogDemo() {
       </p>
       <CommandDialog open={open} onOpenChange={setOpen}>
         <CommandInput placeholder="Type a command or search..." />
-        <CommandList>
-          <CommandEmpty>No results found.</CommandEmpty>
+        <CommandList renderEmptyState={() => <CommandEmpty>No results found.</CommandEmpty>}>
           <CommandGroup heading="Suggestions">
-            <CommandItem>
+            <CommandItem textValue="Calendar">
               <Calendar />
               <span>Calendar</span>
             </CommandItem>
-            <CommandItem>
+            <CommandItem textValue="Search Emoji">
               <Smile />
               <span>Search Emoji</span>
             </CommandItem>
-            <CommandItem>
+            <CommandItem textValue="Calculator">
               <Calculator />
               <span>Calculator</span>
             </CommandItem>
           </CommandGroup>
           <CommandSeparator />
           <CommandGroup heading="Settings">
-            <CommandItem>
+            <CommandItem textValue="Profile">
               <User />
               <span>Profile</span>
               <CommandShortcut>⌘P</CommandShortcut>
             </CommandItem>
-            <CommandItem>
+            <CommandItem textValue="Billing">
               <CreditCard />
               <span>Billing</span>
               <CommandShortcut>⌘B</CommandShortcut>
             </CommandItem>
-            <CommandItem>
+            <CommandItem textValue="Settings">
               <Settings />
               <span>Settings</span>
               <CommandShortcut>⌘S</CommandShortcut>

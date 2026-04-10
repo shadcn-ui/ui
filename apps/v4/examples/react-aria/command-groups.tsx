@@ -34,35 +34,34 @@ export function CommandWithGroups() {
       <CommandDialog open={open} onOpenChange={setOpen}>
         <Command>
           <CommandInput placeholder="Type a command or search..." />
-          <CommandList>
-            <CommandEmpty>No results found.</CommandEmpty>
+          <CommandList renderEmptyState={() => <CommandEmpty>No results found.</CommandEmpty>}>
             <CommandGroup heading="Suggestions">
-              <CommandItem>
+              <CommandItem textValue="Calendar">
                 <CalendarIcon />
                 <span>Calendar</span>
               </CommandItem>
-              <CommandItem>
+              <CommandItem textValue="Search Emoji">
                 <SmileIcon />
                 <span>Search Emoji</span>
               </CommandItem>
-              <CommandItem>
+              <CommandItem textValue="Calculator">
                 <CalculatorIcon />
                 <span>Calculator</span>
               </CommandItem>
             </CommandGroup>
             <CommandSeparator />
             <CommandGroup heading="Settings">
-              <CommandItem>
+              <CommandItem textValue="Profile">
                 <UserIcon />
                 <span>Profile</span>
                 <CommandShortcut>⌘P</CommandShortcut>
               </CommandItem>
-              <CommandItem>
+              <CommandItem textValue="Billing">
                 <CreditCardIcon />
                 <span>Billing</span>
                 <CommandShortcut>⌘B</CommandShortcut>
               </CommandItem>
-              <CommandItem>
+              <CommandItem textValue="Settings">
                 <SettingsIcon />
                 <span>Settings</span>
                 <CommandShortcut>⌘S</CommandShortcut>

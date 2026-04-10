@@ -76,35 +76,34 @@ export function CommandRtl() {
   return (
     <Command className="max-w-sm rounded-lg border" dir={dir}>
       <CommandInput placeholder={t.placeholder} dir={dir} />
-      <CommandList>
-        <CommandEmpty>{t.empty}</CommandEmpty>
+      <CommandList renderEmptyState={() => <CommandEmpty>{t.empty}</CommandEmpty>}>
         <CommandGroup heading={t.suggestions}>
-          <CommandItem>
+          <CommandItem textValue={t.calendar}>
             <Calendar />
             <span>{t.calendar}</span>
           </CommandItem>
-          <CommandItem>
+          <CommandItem textValue={t.searchEmoji}>
             <Smile />
             <span>{t.searchEmoji}</span>
           </CommandItem>
-          <CommandItem disabled>
+          <CommandItem textValue={t.calculator} isDisabled>
             <Calculator />
             <span>{t.calculator}</span>
           </CommandItem>
         </CommandGroup>
         <CommandSeparator />
         <CommandGroup heading={t.settings}>
-          <CommandItem>
+          <CommandItem textValue={t.profile}>
             <User />
             <span>{t.profile}</span>
             <CommandShortcut>⌘P</CommandShortcut>
           </CommandItem>
-          <CommandItem>
+          <CommandItem textValue={t.billing}>
             <CreditCard />
             <span>{t.billing}</span>
             <CommandShortcut>⌘B</CommandShortcut>
           </CommandItem>
-          <CommandItem>
+          <CommandItem textValue={t.settings}>
             <Settings />
             <span>{t.settings}</span>
             <CommandShortcut>⌘S</CommandShortcut>

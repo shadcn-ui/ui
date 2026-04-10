@@ -68,10 +68,10 @@ export function useReset() {
     const down = (e: KeyboardEvent) => {
       if (e.key === "R" && e.shiftKey && !e.metaKey && !e.ctrlKey) {
         if (
-          (e.target instanceof HTMLElement && e.target.isContentEditable) ||
-          e.target instanceof HTMLInputElement ||
-          e.target instanceof HTMLTextAreaElement ||
-          e.target instanceof HTMLSelectElement
+          (document.activeElement instanceof HTMLElement && document.activeElement.isContentEditable) ||
+          document.activeElement instanceof HTMLInputElement ||
+          document.activeElement instanceof HTMLTextAreaElement ||
+          document.activeElement instanceof HTMLSelectElement
         ) {
           return
         }
