@@ -130,6 +130,34 @@ export function resolveCreateUrl(
   return url.toString()
 }
 
+export async function promptToOpenPresetBuilder(options: {
+  createUrl: string
+  followUp: string
+  prompt?: boolean
+}) {
+  logger.break()
+  logger.log(
+    `  Build your custom preset on ${highlighter.info(options.createUrl)}`
+  )
+  logger.log(`  ${options.followUp}`)
+  logger.break()
+
+  if (options.prompt === false) {
+    return
+  }
+
+  const { proceed } = await prompts({
+    type: "confirm",
+    name: "proceed",
+    message: "Open in browser?",
+    initial: true,
+  })
+
+  if (proceed) {
+    await open(options.createUrl)
+  }
+}
+
 export function resolveInitUrl(
   preset: {
     base: string
@@ -234,25 +262,12 @@ export async function promptForPreset(options: {
       base: options.base,
       ...(options.template && { template: options.template }),
     })
-    logger.break()
-    logger.log(`  Build your custom preset on ${highlighter.info(createUrl)}`)
-    logger.log(
-      `  Then ${highlighter.info(
+    await promptToOpenPresetBuilder({
+      createUrl,
+      followUp: `Then ${highlighter.info(
         "copy and run the command"
-      )} from ui.shadcn.com.`
-    )
-    logger.break()
-
-    const { proceed } = await prompts({
-      type: "confirm",
-      name: "proceed",
-      message: "Open in browser?",
-      initial: true,
+      )} from ui.shadcn.com.`,
     })
-
-    if (proceed) {
-      await open(createUrl)
-    }
 
     process.exit(0)
   }
