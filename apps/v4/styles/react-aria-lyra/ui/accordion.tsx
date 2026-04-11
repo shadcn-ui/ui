@@ -74,7 +74,7 @@ function AccordionContent({
   return (
     <AccordionContentPrimitive
       data-slot="accordion-content"
-      className="h-(--disclosure-panel-height) overflow-clip text-xs transition-[height] data-open:animate-accordion-down data-closed:animate-accordion-up"
+      className="h-(--disclosure-panel-height) overflow-clip text-xs transition-[height] data-open:animate-accordion-down data-open:animate-none data-closed:animate-accordion-up data-closed:animate-none"
       {...props}
     >
       <div

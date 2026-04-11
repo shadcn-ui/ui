@@ -4,8 +4,8 @@ description: A vertically stacked set of interactive headings that each reveal a
 base: react-aria
 component: true
 links:
-  doc: https://base-ui.com/react/components/accordion
-  api: https://base-ui.com/react/components/accordion#api-reference
+  doc: https://react-aria.adobe.com/DisclosureGroup
+  api: https://react-aria.adobe.com/DisclosureGroup#api
 ---
 
 <ComponentPreview
@@ -70,8 +70,8 @@ import {
 ```
 
 ```tsx showLineNumbers
-<Accordion defaultValue={["item-1"]}>
-  <AccordionItem value="item-1">
+<Accordion defaultExpandedKeys={["item-1"]}>
+  <AccordionItem id="item-1">
     <AccordionTrigger>Is it accessible?</AccordionTrigger>
     <AccordionContent>
       Yes. It adheres to the WAI-ARIA design pattern.
@@ -95,7 +95,7 @@ A basic accordion that shows one item at a time. The first item is open by defau
 
 ### Multiple
 
-Use the `multiple` prop to allow multiple items to be open at the same time.
+Use the `allowsMultipleExpanded` prop to allow multiple items to be open at the same time.
 
 <ComponentPreview
   styleName="react-aria-nova"
@@ -106,7 +106,7 @@ Use the `multiple` prop to allow multiple items to be open at the same time.
 
 ### Disabled
 
-Use the `disabled` prop on `AccordionItem` to disable individual items.
+Use the `isDisabled` prop on `AccordionItem` to disable individual items.
 
 <ComponentPreview
   styleName="react-aria-nova"
@@ -150,4 +150,4 @@ To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl)
 
 ## API Reference
 
-See the [Base UI](https://base-ui.com/react/components/accordion#api-reference) documentation for more information.
+See the [React Aria](https://react-aria.adobe.com/DisclosureGroup#api) documentation for more information.
