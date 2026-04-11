@@ -1,30 +1,28 @@
 "use client"
 
 import * as React from "react"
-import { addDays } from "date-fns"
+import { CalendarDate, getLocalTimeZone, today } from "@internationalized/date"
 
 import { Button } from "@/styles/react-aria-nova/ui/button"
 import { Calendar } from "@/styles/react-aria-nova/ui/calendar"
 import { Card, CardContent, CardFooter } from "@/styles/react-aria-nova/ui/card"
 
 export function CalendarWithPresets() {
-  const [date, setDate] = React.useState<Date | undefined>(
-    new Date(new Date().getFullYear(), 1, 12)
+  const [date, setDate] = React.useState<CalendarDate | undefined>(
+    new CalendarDate(new Date().getFullYear(), 2, 12)
   )
-  const [currentMonth, setCurrentMonth] = React.useState<Date>(
-    new Date(new Date().getFullYear(), new Date().getMonth(), 1)
+  const [currentMonth, setCurrentMonth] = React.useState<CalendarDate>(
+    new CalendarDate(new Date().getFullYear(), new Date().getMonth() + 1, 1)
   )
 
   return (
     <Card className="mx-auto w-fit max-w-[300px]" size="sm">
       <CardContent>
         <Calendar
-          mode="single"
-          selected={date}
-          onSelect={setDate}
-          month={currentMonth}
-          onMonthChange={setCurrentMonth}
-          fixedWeeks
+          value={date}
+          onChange={setDate}
+          focusedValue={currentMonth}
+          onFocusChange={setCurrentMonth}
           className="p-0 [--cell-size:--spacing(9.5)]"
         />
       </CardContent>
@@ -41,12 +39,10 @@ export function CalendarWithPresets() {
             variant="outline"
             size="sm"
             className="flex-1"
-            onClick={() => {
-              const newDate = addDays(new Date(), preset.value)
+            onPress={() => {
+              const newDate = today(getLocalTimeZone()).add({days: preset.value})
               setDate(newDate)
-              setCurrentMonth(
-                new Date(newDate.getFullYear(), newDate.getMonth(), 1)
-              )
+              setCurrentMonth(newDate)
             }}
           >
             {preset.label}

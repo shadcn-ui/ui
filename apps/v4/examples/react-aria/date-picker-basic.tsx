@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { format } from "date-fns"
+import { getLocalTimeZone, type CalendarDate } from "@internationalized/date"
 
 import { Button } from "@/styles/react-aria-nova/ui/button"
 import { Calendar } from "@/styles/react-aria-nova/ui/calendar"
@@ -9,7 +9,7 @@ import { Field, FieldLabel } from "@/styles/react-aria-nova/ui/field"
 import { Popover, PopoverTrigger } from "@/styles/react-aria-nova/ui/popover"
 
 export function DatePickerSimple() {
-  const [date, setDate] = React.useState<Date>()
+  const [date, setDate] = React.useState<CalendarDate | null>(null)
 
   return (
     <Field className="mx-auto w-44">
@@ -20,14 +20,12 @@ export function DatePickerSimple() {
           id="date-picker-simple"
           className="justify-start font-normal"
         >
-          {date ? format(date, "PPP") : <span>Pick a date</span>}
+          {date ? date.toDate(getLocalTimeZone()).toLocaleDateString(undefined, {dateStyle: 'long'}) : <span>Pick a date</span>}
         </Button>
         <Popover className="w-auto p-0" align="start">
           <Calendar
-            mode="single"
-            selected={date}
-            onSelect={setDate}
-            defaultMonth={date}
+            value={date}
+            onChange={setDate}
           />
         </Popover>
       </PopoverTrigger>

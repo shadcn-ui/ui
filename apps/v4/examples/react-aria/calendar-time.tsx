@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import { Clock2Icon } from "lucide-react"
+import { CalendarDate } from "@internationalized/date"
 
 import { Calendar } from "@/styles/react-aria-nova/ui/calendar"
 import { Card, CardContent, CardFooter } from "@/styles/react-aria-nova/ui/card"
@@ -17,17 +18,16 @@ import {
 } from "@/styles/react-aria-nova/ui/input-group"
 
 export function CalendarWithTime() {
-  const [date, setDate] = React.useState<Date | undefined>(
-    new Date(new Date().getFullYear(), new Date().getMonth(), 12)
+  const [date, setDate] = React.useState<CalendarDate | undefined>(
+    new CalendarDate(new Date().getFullYear(), new Date().getMonth() + 1, 12)
   )
 
   return (
     <Card size="sm" className="mx-auto w-fit">
       <CardContent>
         <Calendar
-          mode="single"
-          selected={date}
-          onSelect={setDate}
+          value={date}
+          onChange={setDate}
           className="p-0"
         />
       </CardContent>

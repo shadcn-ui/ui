@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import { CalendarIcon } from "lucide-react"
+import { type CalendarDate, fromDate, getLocalTimeZone, parseDate, toCalendarDate } from "@internationalized/date"
 
 import { Calendar } from "@/styles/react-aria-nova/ui/calendar"
 import { Field, FieldLabel } from "@/styles/react-aria-nova/ui/field"
@@ -34,11 +35,11 @@ function isValidDate(date: Date | undefined) {
 
 export function DatePickerInput() {
   const [open, setOpen] = React.useState(false)
-  const [date, setDate] = React.useState<Date | undefined>(
-    new Date("2025-06-01")
+  const [date, setDate] = React.useState<CalendarDate | undefined>(
+    parseDate("2025-06-01")
   )
-  const [month, setMonth] = React.useState<Date | undefined>(date)
-  const [value, setValue] = React.useState(formatDate(date))
+  const [month, setMonth] = React.useState<CalendarDate>(date!)
+  const [value, setValue] = React.useState(formatDate(date?.toDate(getLocalTimeZone())))
 
   return (
     <Field className="mx-auto w-48">
@@ -52,8 +53,8 @@ export function DatePickerInput() {
             const date = new Date(e.target.value)
             setValue(e.target.value)
             if (isValidDate(date)) {
-              setDate(date)
-              setMonth(date)
+              setDate(toCalendarDate(fromDate(date, getLocalTimeZone())))
+              setMonth(toCalendarDate(fromDate(date, getLocalTimeZone())))
             }
           }}
           onKeyDown={(e) => {
@@ -81,13 +82,12 @@ export function DatePickerInput() {
               sideOffset={10}
             >
               <Calendar
-                mode="single"
-                selected={date}
-                month={month}
-                onMonthChange={setMonth}
-                onSelect={(date) => {
+                value={date}
+                focusedValue={month}
+                onFocusChange={setMonth}
+                onChange={(date) => {
                   setDate(date)
-                  setValue(formatDate(date))
+                  setValue(formatDate(date?.toDate(getLocalTimeZone())))
                   setOpen(false)
                 }}
               />

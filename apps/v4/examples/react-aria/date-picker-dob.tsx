@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { type CalendarDate, getLocalTimeZone } from "@internationalized/date"
 
 import { Button } from "@/styles/react-aria-nova/ui/button"
 import { Calendar } from "@/styles/react-aria-nova/ui/calendar"
@@ -9,7 +10,7 @@ import { Popover, PopoverTrigger } from "@/styles/react-aria-nova/ui/popover"
 
 export function DatePickerSimple() {
   const [open, setOpen] = React.useState(false)
-  const [date, setDate] = React.useState<Date | undefined>(undefined)
+  const [date, setDate] = React.useState<CalendarDate | null>(null)
 
   return (
     <Field className="mx-auto w-44">
@@ -20,15 +21,13 @@ export function DatePickerSimple() {
           id="date"
           className="justify-start font-normal"
         >
-          {date ? date.toLocaleDateString() : "Select date"}
+          {date ? date.toDate(getLocalTimeZone()).toLocaleDateString() : "Select date"}
         </Button>
         <Popover className="w-auto overflow-hidden p-0" align="start">
           <Calendar
-            mode="single"
-            selected={date}
-            defaultMonth={date}
+            value={date}
             captionLayout="dropdown"
-            onSelect={(date) => {
+            onChange={(date) => {
               setDate(date)
               setOpen(false)
             }}

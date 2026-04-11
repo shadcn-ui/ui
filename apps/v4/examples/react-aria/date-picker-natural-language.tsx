@@ -1,8 +1,9 @@
 "use client"
 
 import * as React from "react"
-import { parseDate } from "chrono-node"
+import { parseDate as parseNaturalLanguage } from "chrono-node"
 import { CalendarIcon } from "lucide-react"
+import { type CalendarDate, fromDate, getLocalTimeZone, toCalendarDate } from "@internationalized/date"
 
 import { Calendar } from "@/styles/react-aria-nova/ui/calendar"
 import { Field, FieldLabel } from "@/styles/react-aria-nova/ui/field"
@@ -14,11 +15,17 @@ import {
 } from "@/styles/react-aria-nova/ui/input-group"
 import { Popover, PopoverTrigger } from "@/styles/react-aria-nova/ui/popover"
 
-function formatDate(date: Date | undefined) {
-  if (!date) {
+function parseDate(value: string) {
+  const date = parseNaturalLanguage(value)
+    return date ? toCalendarDate(fromDate(date, getLocalTimeZone())) : undefined
+}
+
+function formatDate(calendarDate: CalendarDate | undefined) {
+  if (!calendarDate) {
     return ""
   }
 
+  const date = calendarDate?.toDate(getLocalTimeZone())
   return date.toLocaleDateString("en-US", {
     day: "2-digit",
     month: "long",
@@ -29,9 +36,7 @@ function formatDate(date: Date | undefined) {
 export function DatePickerNaturalLanguage() {
   const [open, setOpen] = React.useState(false)
   const [value, setValue] = React.useState("In 2 days")
-  const [date, setDate] = React.useState<Date | undefined>(
-    parseDate(value) || undefined
-  )
+  const [date, setDate] = React.useState<CalendarDate | undefined>(() => parseDate(value))
 
   return (
     <Field className="mx-auto max-w-xs">
@@ -72,11 +77,9 @@ export function DatePickerNaturalLanguage() {
               sideOffset={8}
             >
               <Calendar
-                mode="single"
-                selected={date}
+                value={date}
                 captionLayout="dropdown"
-                defaultMonth={date}
-                onSelect={(date) => {
+                onChange={(date) => {
                   setDate(date)
                   setValue(formatDate(date))
                   setOpen(false)

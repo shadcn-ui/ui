@@ -3,5 +3,5 @@
 import { Calendar } from "@/styles/react-aria-nova/ui/calendar"
 
 export default function CalendarBasic() {
-  return <Calendar mode="single" className="rounded-lg border" />
+  return <Calendar className="rounded-lg border" />
 }

@@ -1,52 +1,39 @@
 "use client"
 
 import * as React from "react"
-import { addDays } from "date-fns"
-import { type DateRange } from "react-day-picker"
+import { useLocale, type DateRange } from "react-aria-components"
 
 import {
-  Calendar,
-  CalendarDayButton,
+  RangeCalendar,
 } from "@/styles/react-aria-nova/ui/calendar"
 import { Card, CardContent } from "@/styles/react-aria-nova/ui/card"
+import { CalendarDate, isWeekend } from "@internationalized/date"
 
 export function CalendarCustomDays() {
+  const {locale} = useLocale();
   const [range, setRange] = React.useState<DateRange | undefined>({
-    from: new Date(new Date().getFullYear(), 11, 8),
-    to: addDays(new Date(new Date().getFullYear(), 11, 8), 10),
+    start: new CalendarDate(new Date().getFullYear(), 12, 8),
+    end: new CalendarDate(new Date().getFullYear(), 12, 8).add({days: 10}),
   })
 
   return (
     <Card className="mx-auto w-fit p-0">
       <CardContent className="p-0">
-        <Calendar
-          mode="range"
-          defaultMonth={range?.from}
-          selected={range}
-          onSelect={setRange}
+        <RangeCalendar
+          value={range}
+          onChange={setRange}
           numberOfMonths={1}
           captionLayout="dropdown"
           className="[--cell-size:--spacing(10)] md:[--cell-size:--spacing(12)]"
-          formatters={{
-            formatMonthDropdown: (date) => {
-              return date.toLocaleString("default", { month: "long" })
-            },
-          }}
-          components={{
-            DayButton: ({ children, modifiers, day, ...props }) => {
-              const isWeekend =
-                day.date.getDay() === 0 || day.date.getDay() === 6
-
-              return (
-                <CalendarDayButton day={day} modifiers={modifiers} {...props}>
-                  {children}
-                  {!modifiers.outside && (
-                    <span>{isWeekend ? "$120" : "$100"}</span>
-                  )}
-                </CalendarDayButton>
-              )
-            },
-          }}
+          headerFormat={{month: 'long'}}
+          renderCell={({isOutsideMonth, date, defaultChildren}) => (
+            <>
+              {defaultChildren}
+              {!isOutsideMonth && (
+                <span>{isWeekend(date, locale) ? "$120" : "$100"}</span>
+              )}
+            </>
+          )}
         />
       </CardContent>
     </Card>
