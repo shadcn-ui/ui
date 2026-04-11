@@ -9,7 +9,8 @@
 - [components.json](https://ui.shadcn.com/docs/components-json): Configuration file for customizing the CLI and component installation.
 - [Theming](https://ui.shadcn.com/docs/theming): Guide to customizing colors, typography, and design tokens.
 - [Changelog](https://ui.shadcn.com/docs/changelog): Release notes and version history.
-- [About](https://ui.shadcn.com/docs/about): Credits and project information.
+- [Skills](https://ui.shadcn.com/docs/skills): Deep shadcn/ui knowledge for AI assistants like Claude Code.
+- [Directory](https://ui.shadcn.com/docs/directory): Community registries built into the CLI.
 
 ## Installation
 
@@ -28,7 +29,6 @@
 
 ### Form & Input
 
-- [Form](https://ui.shadcn.com/docs/components/form): Building forms with React Hook Form and Zod validation.
 - [Field](https://ui.shadcn.com/docs/components/field): Field component for form inputs with labels and error messages.
 - [Button](https://ui.shadcn.com/docs/components/button): Button component with multiple variants.
 - [Button Group](https://ui.shadcn.com/docs/components/button-group): Group multiple buttons together.
@@ -39,6 +39,7 @@
 - [Checkbox](https://ui.shadcn.com/docs/components/checkbox): Checkbox input component.
 - [Radio Group](https://ui.shadcn.com/docs/components/radio-group): Radio button group component.
 - [Select](https://ui.shadcn.com/docs/components/select): Select dropdown component.
+- [Native Select](https://ui.shadcn.com/docs/components/native-select): Styled native HTML select element.
 - [Switch](https://ui.shadcn.com/docs/components/switch): Toggle switch component.
 - [Slider](https://ui.shadcn.com/docs/components/slider): Slider input component.
 - [Calendar](https://ui.shadcn.com/docs/components/calendar): Calendar component for date selection.
@@ -75,6 +76,7 @@
 
 - [Alert](https://ui.shadcn.com/docs/components/alert): Alert component for messages and notifications.
 - [Toast](https://ui.shadcn.com/docs/components/toast): Toast notification component using Sonner.
+- [Sonner](https://ui.shadcn.com/docs/components/sonner): Opinionated toast component for React.
 - [Progress](https://ui.shadcn.com/docs/components/progress): Progress bar component.
 - [Spinner](https://ui.shadcn.com/docs/components/spinner): Loading spinner component.
 - [Skeleton](https://ui.shadcn.com/docs/components/skeleton): Skeleton loading placeholder.
@@ -100,6 +102,7 @@
 - [Toggle](https://ui.shadcn.com/docs/components/toggle): Toggle button component.
 - [Toggle Group](https://ui.shadcn.com/docs/components/toggle-group): Group of toggle buttons.
 - [Pagination](https://ui.shadcn.com/docs/components/pagination): Pagination component for lists and tables.
+- [Direction](https://ui.shadcn.com/docs/components/direction): Text direction provider for RTL support.
 
 ## Dark Mode
 
@@ -108,6 +111,13 @@
 - [Dark Mode - Vite](https://ui.shadcn.com/docs/dark-mode/vite): Dark mode setup for Vite.
 - [Dark Mode - Astro](https://ui.shadcn.com/docs/dark-mode/astro): Dark mode setup for Astro.
 - [Dark Mode - Remix](https://ui.shadcn.com/docs/dark-mode/remix): Dark mode setup for Remix.
+
+## RTL
+
+- [RTL](https://ui.shadcn.com/docs/rtl): Overview of right-to-left language support.
+- [RTL - Next.js](https://ui.shadcn.com/docs/rtl/next): RTL setup for Next.js.
+- [RTL - Vite](https://ui.shadcn.com/docs/rtl/vite): RTL setup for Vite.
+- [RTL - TanStack Start](https://ui.shadcn.com/docs/rtl/start): RTL setup for TanStack Start.
 
 ## Forms
 
@@ -137,6 +147,11 @@
 - [FAQ](https://ui.shadcn.com/docs/registry/faq): Common questions about registries.
 - [Authentication](https://ui.shadcn.com/docs/registry/authentication): Adding authentication to your registry.
 - [Registry MCP](https://ui.shadcn.com/docs/registry/mcp): MCP integration for registries.
+- [Namespaces](https://ui.shadcn.com/docs/registry/namespace): Using multiple registries with namespace support.
+- [Add a Registry](https://ui.shadcn.com/docs/registry/registry-index): Open source registry index and how to submit yours.
+- [Open in v0](https://ui.shadcn.com/docs/registry/open-in-v0): Integrating your registry with Open in v0.
+- [registry.json](https://ui.shadcn.com/docs/registry/registry-json): `registry.json` schema for your own registry.
+- [registry-item.json](https://ui.shadcn.com/docs/registry/registry-item-json): `registry-item.json` specification for registry items.
 
 ### Registry Schemas
 

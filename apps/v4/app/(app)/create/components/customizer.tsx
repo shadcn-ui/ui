@@ -23,12 +23,12 @@ import { FontPicker } from "@/app/(app)/create/components/font-picker"
 import { IconLibraryPicker } from "@/app/(app)/create/components/icon-library-picker"
 import { MainMenu } from "@/app/(app)/create/components/main-menu"
 import { MenuColorPicker } from "@/app/(app)/create/components/menu-picker"
+import { OpenPreset } from "@/app/(app)/create/components/open-preset"
 import { RadiusPicker } from "@/app/(app)/create/components/radius-picker"
 import { RandomButton } from "@/app/(app)/create/components/random-button"
 import { ResetDialog } from "@/app/(app)/create/components/reset-button"
 import { StylePicker } from "@/app/(app)/create/components/style-picker"
 import { ThemePicker } from "@/app/(app)/create/components/theme-picker"
-import { V0Button } from "@/app/(app)/create/components/v0-button"
 import { FONT_HEADING_OPTIONS, FONTS } from "@/app/(app)/create/lib/fonts"
 import { useDesignSystemSearchParams } from "@/app/(app)/create/lib/search-params"
 
@@ -102,8 +102,12 @@ export function Customizer({
         </FieldGroup>
       </CardContent>
       <CardFooter className="flex min-w-0 gap-2 md:flex-col md:rounded-b-none md:**:[button,a]:w-full">
-        <CopyPreset className="flex-1 md:flex-none" />
-        <RandomButton className="flex-1 md:flex-none" />
+        <CopyPreset className="min-w-0 flex-1 md:flex-none" />
+        <OpenPreset
+          className="max-w-20 min-w-0 flex-1 sm:max-w-none md:flex-none"
+          label={isMobile ? "Open" : "Open Preset"}
+        />
+        <RandomButton className="max-w-20 min-w-0 flex-1 sm:max-w-none md:flex-none" />
         <ActionMenu itemsByBase={itemsByBase} />
         <ResetDialog />
       </CardFooter>

@@ -17,6 +17,7 @@ import {
 } from "@/app/(app)/create/components/picker"
 import { useActionMenuTrigger } from "@/app/(app)/create/hooks/use-action-menu"
 import { useHistory } from "@/app/(app)/create/hooks/use-history"
+import { useOpenPresetTrigger } from "@/app/(app)/create/hooks/use-open-preset"
 import { useRandom } from "@/app/(app)/create/hooks/use-random"
 import { useReset } from "@/app/(app)/create/hooks/use-reset"
 import { useThemeToggle } from "@/app/(app)/create/hooks/use-theme-toggle"
@@ -27,6 +28,7 @@ export function MainMenu({ className }: React.ComponentProps<typeof Button>) {
   const [isMac, setIsMac] = React.useState(false)
   const { canGoBack, canGoForward, goBack, goForward } = useHistory()
   const { openActionMenu } = useActionMenuTrigger()
+  const { openPreset } = useOpenPresetTrigger()
   const { randomize } = useRandom()
   const { toggleTheme } = useThemeToggle()
   const { setShowResetDialog } = useReset()
@@ -54,6 +56,9 @@ export function MainMenu({ className }: React.ComponentProps<typeof Button>) {
             <PickerItem onClick={openActionMenu}>
               Navigate...
               <PickerShortcut>{isMac ? "⌘P" : "Ctrl+P"}</PickerShortcut>
+            </PickerItem>
+            <PickerItem onClick={openPreset}>
+              Open Preset... <PickerShortcut>O</PickerShortcut>
             </PickerItem>
             <PickerItem onClick={randomize}>
               Shuffle <PickerShortcut>R</PickerShortcut>

@@ -810,12 +810,6 @@
     "description": "ShadcnSpace is a collection of extra-ordinary, highly customizable shadcn/ui components, blocks, and themes to build modern UIs with speed and clarity."
   },
   {
-    "name": "@shadcn-dashboard",
-    "homepage": "https://shadcn-dashboard.com",
-    "url": "https://shadcn-dashboard.com/r/{name}.json",
-    "description": "ShadcnDashboard is a collection of modern, production-ready dashboard layouts, components, and UI patterns built on top of shadcn/ui and Tailwind CSS. It’s designed to help developers build clean, scalable, and data-driven dashboards faster—without compromising on performance, accessibility, or customization."
-  },
-  {
     "name": "@icons-animated",
     "homepage": "https://icons.lndev.me",
     "url": "https://icons.lndev.me/r/{name}.json",
@@ -1024,5 +1018,17 @@
     "homepage": "https://flowkit-ui.vzkiss.com",
     "url": "https://flowkit-ui.vzkiss.com/r/{name}.json",
     "description": "Opinionated, accessible components on Base UI and shadcn-style primitives — starting with a Creatable Combobox."
+  },
+  {
+    "name": "@termcn",
+    "homepage": "https://termcn.vercel.app",
+    "url": "https://termcn.vercel.app/r/{name}.json",
+    "description": "Beautiful terminal UIs, made simple. Ready to use, customizable terminal UI components for React."
+  },
+  {
+    "name": "@remocn",
+    "homepage": "https://www.remocn.dev/",
+    "url": "https://www.remocn.dev/r/{name}.json",
+    "description": "Production-ready components for Remotion - text animations, backgrounds, transitions, UI blocks, and full scene compositions"
   }
 ]

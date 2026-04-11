@@ -28,7 +28,7 @@ export function RandomButton({
       )}
       {...props}
     >
-      <span className="w-full text-center font-medium">Shuffle</span>
+      <span className="w-full truncate text-center font-medium">Shuffle</span>
     </Button>
   )
 }

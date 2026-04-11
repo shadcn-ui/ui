@@ -11,6 +11,7 @@ import { DARK_MODE_FORWARD_TYPE } from "@/app/(app)/create/components/mode-switc
 import { PreviewSwitcher } from "@/app/(app)/create/components/preview-switcher"
 import { RANDOMIZE_FORWARD_TYPE } from "@/app/(app)/create/components/random-button"
 import { sendToIframe } from "@/app/(app)/create/hooks/use-iframe-sync"
+import { OPEN_PRESET_FORWARD_TYPE } from "@/app/(app)/create/hooks/use-open-preset"
 import { RESET_FORWARD_TYPE } from "@/app/(app)/create/hooks/use-reset"
 import {
   serializeDesignSystemSearchParams,
@@ -19,78 +20,6 @@ import {
 
 // Hoisted — avoids recreating on every message event. (js-hoist-regexp)
 const MAC_REGEX = /Mac|iPhone|iPad|iPod/
-
-// Hoisted — only uses module-level constants, no component state. (rendering-hoist-jsx)
-function handleMessage(event: MessageEvent) {
-  if (
-    typeof window === "undefined" ||
-    event.origin !== window.location.origin
-  ) {
-    return
-  }
-
-  const type = event.data.type
-  if (type === CMD_K_FORWARD_TYPE) {
-    const isMac = MAC_REGEX.test(navigator.userAgent)
-    document.dispatchEvent(
-      new KeyboardEvent("keydown", {
-        key: event.data.key || "k",
-        metaKey: isMac,
-        ctrlKey: !isMac,
-        bubbles: true,
-        cancelable: true,
-      })
-    )
-  } else if (type === RANDOMIZE_FORWARD_TYPE) {
-    document.dispatchEvent(
-      new KeyboardEvent("keydown", {
-        key: event.data.key || "r",
-        bubbles: true,
-        cancelable: true,
-      })
-    )
-  } else if (type === UNDO_FORWARD_TYPE) {
-    const isMac = MAC_REGEX.test(navigator.userAgent)
-    document.dispatchEvent(
-      new KeyboardEvent("keydown", {
-        key: "z",
-        metaKey: isMac,
-        ctrlKey: !isMac,
-        bubbles: true,
-        cancelable: true,
-      })
-    )
-  } else if (type === REDO_FORWARD_TYPE) {
-    const isMac = MAC_REGEX.test(navigator.userAgent)
-    document.dispatchEvent(
-      new KeyboardEvent("keydown", {
-        key: "z",
-        shiftKey: true,
-        metaKey: isMac,
-        ctrlKey: !isMac,
-        bubbles: true,
-        cancelable: true,
-      })
-    )
-  } else if (type === RESET_FORWARD_TYPE) {
-    document.dispatchEvent(
-      new KeyboardEvent("keydown", {
-        key: "R",
-        shiftKey: true,
-        bubbles: true,
-        cancelable: true,
-      })
-    )
-  } else if (type === DARK_MODE_FORWARD_TYPE) {
-    document.dispatchEvent(
-      new KeyboardEvent("keydown", {
-        key: event.data.key || "d",
-        bubbles: true,
-        cancelable: true,
-      })
-    )
-  }
-}
 
 export function Preview() {
   const [params] = useDesignSystemSearchParams()
@@ -117,6 +46,89 @@ export function Preview() {
   }, [params])
 
   React.useEffect(() => {
+    const handleMessage = (event: MessageEvent) => {
+      const iframeWindow = iframeRef.current?.contentWindow
+      if (
+        !iframeWindow ||
+        event.origin !== window.location.origin ||
+        event.source !== iframeWindow ||
+        !event.data ||
+        typeof event.data !== "object"
+      ) {
+        return
+      }
+
+      const type = event.data.type
+      if (type === CMD_K_FORWARD_TYPE) {
+        const isMac = MAC_REGEX.test(navigator.userAgent)
+        document.dispatchEvent(
+          new KeyboardEvent("keydown", {
+            key: event.data.key || "k",
+            metaKey: isMac,
+            ctrlKey: !isMac,
+            bubbles: true,
+            cancelable: true,
+          })
+        )
+      } else if (type === RANDOMIZE_FORWARD_TYPE) {
+        document.dispatchEvent(
+          new KeyboardEvent("keydown", {
+            key: event.data.key || "r",
+            bubbles: true,
+            cancelable: true,
+          })
+        )
+      } else if (type === OPEN_PRESET_FORWARD_TYPE) {
+        document.dispatchEvent(
+          new KeyboardEvent("keydown", {
+            key: event.data.key || "o",
+            bubbles: true,
+            cancelable: true,
+          })
+        )
+      } else if (type === UNDO_FORWARD_TYPE) {
+        const isMac = MAC_REGEX.test(navigator.userAgent)
+        document.dispatchEvent(
+          new KeyboardEvent("keydown", {
+            key: "z",
+            metaKey: isMac,
+            ctrlKey: !isMac,
+            bubbles: true,
+            cancelable: true,
+          })
+        )
+      } else if (type === REDO_FORWARD_TYPE) {
+        const isMac = MAC_REGEX.test(navigator.userAgent)
+        document.dispatchEvent(
+          new KeyboardEvent("keydown", {
+            key: "z",
+            shiftKey: true,
+            metaKey: isMac,
+            ctrlKey: !isMac,
+            bubbles: true,
+            cancelable: true,
+          })
+        )
+      } else if (type === RESET_FORWARD_TYPE) {
+        document.dispatchEvent(
+          new KeyboardEvent("keydown", {
+            key: "R",
+            shiftKey: true,
+            bubbles: true,
+            cancelable: true,
+          })
+        )
+      } else if (type === DARK_MODE_FORWARD_TYPE) {
+        document.dispatchEvent(
+          new KeyboardEvent("keydown", {
+            key: event.data.key || "d",
+            bubbles: true,
+            cancelable: true,
+          })
+        )
+      }
+    }
+
     window.addEventListener("message", handleMessage)
     return () => {
       window.removeEventListener("message", handleMessage)
