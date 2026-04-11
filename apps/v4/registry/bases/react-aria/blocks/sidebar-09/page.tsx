@@ -32,7 +32,7 @@ export default function Page() {
           />
           <Breadcrumb>
             <BreadcrumbList>
-              <BreadcrumbItem className="hidden md:block">
+              <BreadcrumbItem className="hidden md:inline-flex">
                 <BreadcrumbLink href="#">All Inboxes</BreadcrumbLink>
               </BreadcrumbItem>
 

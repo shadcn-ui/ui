@@ -42,18 +42,18 @@ function Command({
 }: AutocompleteProps & React.HTMLAttributes<HTMLDivElement>) {
   const { contains } = useFilter({ sensitivity: "base" })
   return (
-    <Autocomplete {...props} filter={props.filter || contains}>
-      <div
-        data-slot="command"
-        className={cn(
-          "flex size-full flex-col overflow-hidden rounded-4xl bg-popover p-1 text-popover-foreground",
-          className
-        )}
-        style={style}
-      >
+    <div
+      data-slot="command"
+      className={cn(
+        "flex size-full flex-col overflow-hidden rounded-4xl bg-popover p-1 text-popover-foreground",
+        className
+      )}
+      style={style}
+    >
+      <Autocomplete {...props} filter={props.filter || contains}>
         {props.children}
-      </div>
-    </Autocomplete>
+      </Autocomplete>
+    </div>
   )
 }
 
@@ -126,12 +126,12 @@ function CommandInput({ className, ...props }: InputProps) {
 function CommandList<T extends object>({ className, ...props }: MenuProps<T>) {
   return (
     <Menu
+      {...props}
       data-slot="command-list"
       className={cn(
         "no-scrollbar max-h-72 scroll-py-1 overflow-x-hidden overflow-y-auto outline-none",
         className
       )}
-      {...props}
     />
   )
 }
@@ -195,6 +195,7 @@ function CommandItem<T extends object>({
       textValue={
         textValue || (typeof children === "string" ? children : undefined)
       }
+      // Add data-selected attribute for compatibility with cmdk
       render={(props, { isFocused }) =>
         "href" in props ? (
           <a {...props} data-selected={isFocused || undefined} />

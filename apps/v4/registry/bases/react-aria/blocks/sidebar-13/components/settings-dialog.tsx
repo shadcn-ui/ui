@@ -214,7 +214,7 @@ export function SettingsDialog() {
               <div className="flex items-center gap-2 px-4">
                 <Breadcrumb>
                   <BreadcrumbList>
-                    <BreadcrumbItem className="hidden md:block">
+                    <BreadcrumbItem className="hidden md:inline-flex">
                       <BreadcrumbLink href="#">Settings</BreadcrumbLink>
                     </BreadcrumbItem>
                     <BreadcrumbItem>

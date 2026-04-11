@@ -27,7 +27,7 @@ export default function Page() {
             />
             <Breadcrumb>
               <BreadcrumbList>
-                <BreadcrumbItem className="hidden md:block">
+                <BreadcrumbItem className="hidden md:inline-flex">
                   <BreadcrumbLink href="#">
                     Build Your Application
                   </BreadcrumbLink>
