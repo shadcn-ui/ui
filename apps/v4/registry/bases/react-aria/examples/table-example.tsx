@@ -25,7 +25,6 @@ import {
   TableBody,
   TableCaption,
   TableCell,
-  TableFooter,
   TableHead,
   TableHeader,
   TableRow,
@@ -94,29 +93,29 @@ export default function TableExample() {
 function TableBasic() {
   return (
     <Example title="Basic">
-      <Table>
-        <TableCaption>A list of your recent invoices.</TableCaption>
-        <TableHeader>
-          <TableRow>
-            <TableHead className="w-[100px]">Invoice</TableHead>
+      <figure>
+        <Table>
+          <TableHeader>
+            <TableHead isRowHeader className="w-[100px]">Invoice</TableHead>
             <TableHead>Status</TableHead>
             <TableHead>Method</TableHead>
             <TableHead className="text-right">Amount</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {invoices.slice(0, 3).map((invoice) => (
-            <TableRow key={invoice.invoice}>
-              <TableCell className="font-medium">{invoice.invoice}</TableCell>
-              <TableCell>{invoice.paymentStatus}</TableCell>
-              <TableCell>{invoice.paymentMethod}</TableCell>
-              <TableCell className="text-right">
-                {invoice.totalAmount}
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+          </TableHeader>
+          <TableBody>
+            {invoices.slice(0, 3).map((invoice) => (
+              <TableRow key={invoice.invoice}>
+                <TableCell className="font-medium">{invoice.invoice}</TableCell>
+                <TableCell>{invoice.paymentStatus}</TableCell>
+                <TableCell>{invoice.paymentMethod}</TableCell>
+                <TableCell className="text-right">
+                  {invoice.totalAmount}
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+        <TableCaption>A list of your recent invoices.</TableCaption>
+      </figure>
     </Example>
   )
 }
@@ -124,35 +123,33 @@ function TableBasic() {
 function TableWithFooter() {
   return (
     <Example title="With Footer">
-      <Table>
-        <TableCaption>A list of your recent invoices.</TableCaption>
-        <TableHeader>
-          <TableRow>
-            <TableHead className="w-[100px]">Invoice</TableHead>
+      <figure>
+        <Table>
+          <TableHeader>
+            <TableHead isRowHeader className="w-[100px]">Invoice</TableHead>
             <TableHead>Status</TableHead>
             <TableHead>Method</TableHead>
             <TableHead className="text-right">Amount</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {invoices.slice(0, 3).map((invoice) => (
-            <TableRow key={invoice.invoice}>
-              <TableCell className="font-medium">{invoice.invoice}</TableCell>
-              <TableCell>{invoice.paymentStatus}</TableCell>
-              <TableCell>{invoice.paymentMethod}</TableCell>
-              <TableCell className="text-right">
-                {invoice.totalAmount}
-              </TableCell>
+          </TableHeader>
+          <TableBody>
+            {invoices.slice(0, 3).map((invoice) => (
+              <TableRow key={invoice.invoice}>
+                <TableCell className="font-medium">{invoice.invoice}</TableCell>
+                <TableCell>{invoice.paymentStatus}</TableCell>
+                <TableCell>{invoice.paymentMethod}</TableCell>
+                <TableCell className="text-right">
+                  {invoice.totalAmount}
+                </TableCell>
+              </TableRow>
+            ))}
+            <TableRow isFooter>
+              <TableCell colSpan={3}>Total</TableCell>
+              <TableCell className="text-right">$2,500.00</TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-        <TableFooter>
-          <TableRow>
-            <TableCell colSpan={3}>Total</TableCell>
-            <TableCell className="text-right">$2,500.00</TableCell>
-          </TableRow>
-        </TableFooter>
-      </Table>
+          </TableBody>
+        </Table>
+        <TableCaption>A list of your recent invoices.</TableCaption>
+      </figure>
     </Example>
   )
 }
@@ -162,11 +159,9 @@ function TableSimple() {
     <Example title="Simple">
       <Table>
         <TableHeader>
-          <TableRow>
-            <TableHead>Name</TableHead>
-            <TableHead>Email</TableHead>
-            <TableHead className="text-right">Role</TableHead>
-          </TableRow>
+          <TableHead isRowHeader>Name</TableHead>
+          <TableHead>Email</TableHead>
+          <TableHead className="text-right">Role</TableHead>
         </TableHeader>
         <TableBody>
           <TableRow>
@@ -195,11 +190,9 @@ function TableWithBadges() {
     <Example title="With Badges">
       <Table>
         <TableHeader>
-          <TableRow>
-            <TableHead>Task</TableHead>
-            <TableHead>Status</TableHead>
-            <TableHead className="text-right">Priority</TableHead>
-          </TableRow>
+          <TableHead isRowHeader>Task</TableHead>
+          <TableHead>Status</TableHead>
+          <TableHead className="text-right">Priority</TableHead>
         </TableHeader>
         <TableBody>
           <TableRow>
@@ -252,11 +245,9 @@ function TableWithActions() {
     <Example title="With Actions">
       <Table>
         <TableHeader>
-          <TableRow>
-            <TableHead>Product</TableHead>
-            <TableHead>Price</TableHead>
-            <TableHead className="text-right">Actions</TableHead>
-          </TableRow>
+          <TableHead isRowHeader>Product</TableHead>
+          <TableHead>Price</TableHead>
+          <TableHead className="text-right">Actions</TableHead>
         </TableHeader>
         <TableBody>
           <TableRow>
@@ -373,11 +364,9 @@ function TableWithSelect() {
     <Example title="With Select">
       <Table>
         <TableHeader>
-          <TableRow>
-            <TableHead>Task</TableHead>
-            <TableHead>Assignee</TableHead>
-            <TableHead>Status</TableHead>
-          </TableRow>
+          <TableHead isRowHeader>Task</TableHead>
+          <TableHead>Assignee</TableHead>
+          <TableHead>Status</TableHead>
         </TableHeader>
         <TableBody>
           {tasks.map((item) => (
@@ -413,11 +402,9 @@ function TableWithInput() {
     <Example title="With Input">
       <Table>
         <TableHeader>
-          <TableRow>
-            <TableHead>Product</TableHead>
-            <TableHead>Quantity</TableHead>
-            <TableHead>Price</TableHead>
-          </TableRow>
+          <TableHead isRowHeader>Product</TableHead>
+          <TableHead>Quantity</TableHead>
+          <TableHead>Price</TableHead>
         </TableHeader>
         <TableBody>
           <TableRow>

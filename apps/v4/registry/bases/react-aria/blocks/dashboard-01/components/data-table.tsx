@@ -2,25 +2,6 @@
 
 import * as React from "react"
 import {
-  closestCenter,
-  DndContext,
-  KeyboardSensor,
-  MouseSensor,
-  TouchSensor,
-  useSensor,
-  useSensors,
-  type DragEndEvent,
-  type UniqueIdentifier,
-} from "@dnd-kit/core"
-import { restrictToVerticalAxis } from "@dnd-kit/modifiers"
-import {
-  arrayMove,
-  SortableContext,
-  useSortable,
-  verticalListSortingStrategy,
-} from "@dnd-kit/sortable"
-import { CSS } from "@dnd-kit/utilities"
-import {
   flexRender,
   getCoreRowModel,
   getFacetedRowModel,
@@ -31,13 +12,13 @@ import {
   useReactTable,
   type ColumnDef,
   type ColumnFiltersState,
-  type Row,
   type SortingState,
   type VisibilityState,
 } from "@tanstack/react-table"
 import { Area, AreaChart, CartesianGrid, XAxis } from "recharts"
 import { toast } from "sonner"
 import { z } from "zod"
+import { DropIndicator, useDragAndDrop, useListData } from "react-aria-components"
 
 import { useIsMobile } from "@/registry/bases/react-aria/hooks/use-mobile"
 import { Badge } from "@/registry/bases/react-aria/ui/badge"
@@ -103,14 +84,10 @@ export const schema = z.object({
 })
 
 // Create a separate component for the drag handle
-function DragHandle({ id }: { id: number }) {
-  const { attributes, listeners } = useSortable({
-    id,
-  })
+function DragHandle() {
   return (
     <Button
-      {...attributes}
-      {...listeners}
+      slot="drag"
       variant="ghost"
       size="icon"
       className="size-7 text-muted-foreground hover:bg-transparent"
@@ -123,7 +100,6 @@ function DragHandle({ id }: { id: number }) {
         remixicon="RiDraggable"
         className="size-3 text-muted-foreground"
       />
-      <span className="sr-only">Drag to reorder</span>
     </Button>
   )
 }
@@ -131,30 +107,18 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
   {
     id: "drag",
     header: () => null,
-    cell: ({ row }) => <DragHandle id={row.original.id} />,
+    cell: ({ row }) => <DragHandle />,
   },
   {
     id: "select",
-    header: ({ table }) => (
+    header: () => (
       <div className="flex items-center justify-center">
-        <Checkbox
-          isSelected={table.getIsAllPageRowsSelected()}
-          isIndeterminate={
-            table.getIsSomePageRowsSelected() &&
-            !table.getIsAllPageRowsSelected()
-          }
-          onChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-          aria-label="Select all"
-        />
+        <Checkbox slot="selection" />
       </div>
     ),
-    cell: ({ row }) => (
+    cell: () => (
       <div className="flex items-center justify-center">
-        <Checkbox
-          isSelected={row.getIsSelected()}
-          onChange={(value) => row.toggleSelected(!!value)}
-          aria-label="Select row"
-        />
+        <Checkbox slot="selection" />
       </div>
     ),
     enableSorting: false,
@@ -319,35 +283,14 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
     ),
   },
 ]
-function DraggableRow({ row }: { row: Row<z.infer<typeof schema>> }) {
-  const { transform, transition, setNodeRef, isDragging } = useSortable({
-    id: row.original.id,
-  })
-  return (
-    <TableRow
-      data-state={row.getIsSelected() && "selected"}
-      data-dragging={isDragging}
-      ref={setNodeRef}
-      className="relative z-0 data-[dragging=true]:z-10 data-[dragging=true]:opacity-80"
-      style={{
-        transform: CSS.Transform.toString(transform),
-        transition: transition,
-      }}
-    >
-      {row.getVisibleCells().map((cell) => (
-        <TableCell key={cell.id}>
-          {flexRender(cell.column.columnDef.cell, cell.getContext())}
-        </TableCell>
-      ))}
-    </TableRow>
-  )
-}
+
 export function DataTable({
   data: initialData,
 }: {
   data: z.infer<typeof schema>[]
 }) {
-  const [data, setData] = React.useState(() => initialData)
+  const list = useListData({initialItems: initialData, getKey: item => String(item.id)})
+  const data = list.items;
   const [rowSelection, setRowSelection] = React.useState({})
   const [columnVisibility, setColumnVisibility] =
     React.useState<VisibilityState>({})
@@ -359,16 +302,6 @@ export function DataTable({
     pageIndex: 0,
     pageSize: 10,
   })
-  const sortableId = React.useId()
-  const sensors = useSensors(
-    useSensor(MouseSensor, {}),
-    useSensor(TouchSensor, {}),
-    useSensor(KeyboardSensor, {})
-  )
-  const dataIds = React.useMemo<UniqueIdentifier[]>(
-    () => data?.map(({ id }) => id) || [],
-    [data]
-  )
   const table = useReactTable({
     data,
     columns,
@@ -393,16 +326,23 @@ export function DataTable({
     getFacetedRowModel: getFacetedRowModel(),
     getFacetedUniqueValues: getFacetedUniqueValues(),
   })
-  function handleDragEnd(event: DragEndEvent) {
-    const { active, over } = event
-    if (active && over && active.id !== over.id) {
-      setData((data) => {
-        const oldIndex = dataIds.indexOf(active.id)
-        const newIndex = dataIds.indexOf(over.id)
-        return arrayMove(data, oldIndex, newIndex)
-      })
-    }
-  }
+  const {dragAndDropHooks} = useDragAndDrop({
+    getItems: (keys, items: z.infer<typeof schema>[]) => items.map(item => ({
+      'text/plain': item.header
+    })),
+    onReorder(e) {
+      console.log(e)
+      if (e.target.dropPosition === 'before') {
+        list.moveBefore(e.target.key, e.keys);
+      } else if (e.target.dropPosition === 'after') {
+        list.moveAfter(e.target.key, e.keys);
+      }
+    },
+    renderDropIndicator(target) {
+      return <DropIndicator target={target} className="data-drop-target:outline-1 outline-blue-400" />
+    },
+  })
+
   return (
     <Tabs
       defaultSelectedKey="outline"
@@ -412,7 +352,7 @@ export function DataTable({
         <Label htmlFor="view-selector" className="sr-only">
           View
         </Label>
-        <Select placeholder="Select a view" defaultValue="outline">
+        {/* <Select placeholder="Select a view" defaultValue="outline">
           <SelectTrigger
             className="flex w-fit @4xl/main:hidden"
             size="sm"
@@ -428,7 +368,7 @@ export function DataTable({
               <SelectItem id="focus-documents">Focus Documents</SelectItem>
             </SelectGroup>
           </SelectContent>
-        </Select>
+        </Select> */}
         <TabsList className="hidden **:data-[slot=badge]:size-5 **:data-[slot=badge]:rounded-full **:data-[slot=badge]:bg-muted-foreground/30 **:data-[slot=badge]:px-1 @4xl/main:flex">
           <TabsTrigger id="outline">Outline</TabsTrigger>
           <TabsTrigger id="past-performance">
@@ -440,7 +380,7 @@ export function DataTable({
           <TabsTrigger id="focus-documents">Focus Documents</TabsTrigger>
         </TabsList>
         <div className="flex items-center gap-2">
-          <DropdownMenuTrigger>
+          {/* <DropdownMenuTrigger>
             <Button variant="outline" size="sm">
               <IconPlaceholder
                 lucide="Columns3Icon"
@@ -464,18 +404,24 @@ export function DataTable({
               align="end"
               className="w-32"
               selectionMode="multiple"
-              selectedKeys={Object.keys(columnVisibility).filter(
-                (key) => columnVisibility[key]
-              )}
-              onSelectionChange={(keys) =>
-                setColumnVisibility(
+              selectedKeys={
+                table
+                  .getVisibleFlatColumns()
+                  .filter((column) => column.getCanHide())
+                  .map(column => column.id)
+              }
+              onSelectionChange={(keys) => {
+                table.setColumnVisibility(
                   Object.fromEntries(
-                    keys === "all"
-                      ? table.getAllColumns().map((column) => [column.id, true])
-                      : [...keys].map((key) => [key, true])
+                    table
+                      .getAllFlatColumns()
+                      .map((c) => [
+                        c.id,
+                        !c.getCanHide() || keys === "all" || keys.has(c.id),
+                      ])
                   )
                 )
-              }
+              }}
             >
               {table
                 .getAllColumns()
@@ -496,7 +442,7 @@ export function DataTable({
                   )
                 })}
             </DropdownMenu>
-          </DropdownMenuTrigger>
+          </DropdownMenuTrigger> */}
 
           <Button variant="outline" size="sm">
             <IconPlaceholder
@@ -515,55 +461,65 @@ export function DataTable({
         className="relative flex flex-col gap-4 overflow-auto px-4 lg:px-6"
       >
         <div className="overflow-hidden rounded-lg border">
-          <DndContext
-            collisionDetection={closestCenter}
-            modifiers={[restrictToVerticalAxis]}
-            onDragEnd={handleDragEnd}
-            sensors={sensors}
-            id={sortableId}
-          >
-            <Table>
-              <TableHeader className="sticky top-0 z-10 bg-muted">
-                {table.getHeaderGroups().map((headerGroup) => (
-                  <TableRow key={headerGroup.id}>
-                    {headerGroup.headers.map((header) => {
-                      return (
-                        <TableHead key={header.id} colSpan={header.colSpan}>
-                          {header.isPlaceholder
-                            ? null
-                            : flexRender(
-                                header.column.columnDef.header,
-                                header.getContext()
-                              )}
-                        </TableHead>
-                      )
-                    })}
-                  </TableRow>
-                ))}
-              </TableHeader>
-              <TableBody className="**:data-[slot=table-cell]:first:w-8">
-                {table.getRowModel().rows?.length ? (
-                  <SortableContext
-                    items={dataIds}
-                    strategy={verticalListSortingStrategy}
-                  >
-                    {table.getRowModel().rows.map((row) => (
-                      <DraggableRow key={row.id} row={row} />
-                    ))}
-                  </SortableContext>
-                ) : (
-                  <TableRow>
-                    <TableCell
-                      colSpan={columns.length}
-                      className="h-24 text-center"
-                    >
-                      No results.
+          <Table
+            aria-label="Tasks"
+            dragAndDropHooks={dragAndDropHooks}
+            selectionMode="multiple"
+            onSelectionChange={selection => {
+              if (selection === 'all') {
+                table.toggleAllRowsSelected()
+              } else {
+                table.setRowSelection(Object.fromEntries([...selection].map(key => [key, true])))
+              }
+            }}
+            sortDescriptor={
+              sorting.length
+                ? {
+                    column: sorting[0].id,
+                    direction: sorting[0].desc ? "descending" : "ascending",
+                  }
+                : undefined
+            }
+            onSortChange={(sortDescriptor) => {
+              table.setSorting([
+                {
+                  id: "" + sortDescriptor.column,
+                  desc: sortDescriptor.direction === "descending",
+                },
+              ]);
+            }}>
+            <TableHeader className="sticky top-0 z-10 bg-muted">
+              {table.getFlatHeaders().map((header) => (
+                <TableHead key={header.id} id={header.id} isRowHeader={header.index === 1} allowsSorting={header.column.getCanSort()}>
+                  {header.isPlaceholder
+                    ? null
+                    : flexRender(
+                        header.column.columnDef.header,
+                        header.getContext()
+                      )}
+                </TableHead>
+              ))}
+            </TableHeader>
+            <TableBody
+              className="**:data-[slot=table-cell]:first:w-8 data-empty:text-center data-empty:h-24"
+              renderEmptyState={() => 'No results.'}>
+              {table.getRowModel().rows.map((row) => (
+                <TableRow
+                  key={row.id}
+                  id={row.id}
+                  value={row.original}
+                  data-state={row.getIsSelected() && "selected"}
+                  className="relative z-0 data-[dragging=true]:z-10 data-[dragging=true]:opacity-80"
+                >
+                  {row.getVisibleCells().map((cell) => (
+                    <TableCell key={cell.id}>
+                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
                     </TableCell>
-                  </TableRow>
-                )}
-              </TableBody>
-            </Table>
-          </DndContext>
+                  ))}
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
         </div>
         <div className="flex items-center justify-between px-4">
           <div className="hidden flex-1 text-sm text-muted-foreground lg:flex">
@@ -576,6 +532,7 @@ export function DataTable({
                 Rows per page
               </Label>
               <Select
+                aria-label="Rows per page"
                 placeholder={`${table.getState().pagination.pageSize}`}
                 value={`${table.getState().pagination.pageSize}`}
                 onChange={(value) => {
@@ -811,7 +768,7 @@ function TableCellViewer({ item }: { item: z.infer<typeof schema> }) {
             <div className="grid grid-cols-2 gap-4">
               <div className="flex flex-col gap-3">
                 <Label htmlFor="type">Type</Label>
-                <Select placeholder="Select a type" defaultValue={item.type}>
+                <Select placeholder="Select a type" aria-label="Type" defaultValue={item.type}>
                   <SelectTrigger id="type" className="w-full">
                     <SelectValue />
                   </SelectTrigger>
@@ -840,6 +797,7 @@ function TableCellViewer({ item }: { item: z.infer<typeof schema> }) {
               <div className="flex flex-col gap-3">
                 <Label htmlFor="status">Status</Label>
                 <Select
+                  aria-label="Status"
                   placeholder="Select a status"
                   defaultValue={item.status}
                 >
@@ -869,6 +827,7 @@ function TableCellViewer({ item }: { item: z.infer<typeof schema> }) {
             <div className="flex flex-col gap-3">
               <Label htmlFor="reviewer">Reviewer</Label>
               <Select
+                aria-label="Reviewer"
                 placeholder="Select a reviewer"
                 defaultValue={item.reviewer}
               >

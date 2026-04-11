@@ -19,6 +19,8 @@ import {
 } from "@/registry/bases/react-aria/ui/dropdown-menu"
 import {
   Table,
+  TableHead,
+  TableHeader,
   TableBody,
   TableCell,
   TableRow,
@@ -39,6 +41,13 @@ export function RecentTransactions() {
       </CardHeader>
       <CardContent>
         <Table>
+          <TableHeader>
+            <TableHead />
+            <TableHead isRowHeader>Merchant</TableHead>
+            <TableHead>Date</TableHead>
+            <TableHead>Amount</TableHead>
+            <TableHead />
+          </TableHeader>
           <TableBody>
             <TableRow>
               <TableCell className="w-10">

@@ -11,7 +11,6 @@ import {
   TableBody,
   TableCaption,
   TableCell,
-  TableFooter,
   TableHead,
   TableHeader,
   TableRow,
@@ -120,32 +119,30 @@ export function TableRtl() {
   const { dir, t } = useTranslation(translations, "ar")
 
   return (
-    <Table dir={dir}>
-      <TableCaption>{t.caption}</TableCaption>
-      <TableHeader>
-        <TableRow>
-          <TableHead className="w-[100px]">{t.invoice}</TableHead>
+    <figure className="w-full">
+      <Table dir={dir} aria-label={t.caption}>
+        <TableHeader>
+          <TableHead isRowHeader className="w-[100px]">{t.invoice}</TableHead>
           <TableHead>{t.status}</TableHead>
           <TableHead>{t.method}</TableHead>
           <TableHead className="text-right">{t.amount}</TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        {invoices.map((invoice) => (
-          <TableRow key={invoice.invoice}>
-            <TableCell className="font-medium">{invoice.invoice}</TableCell>
-            <TableCell>{t[invoice.paymentStatus]}</TableCell>
-            <TableCell>{t[invoice.paymentMethod]}</TableCell>
-            <TableCell className="text-right">{invoice.totalAmount}</TableCell>
+        </TableHeader>
+        <TableBody>
+          {invoices.map((invoice) => (
+            <TableRow key={invoice.invoice}>
+              <TableCell className="font-medium">{invoice.invoice}</TableCell>
+              <TableCell>{t[invoice.paymentStatus]}</TableCell>
+              <TableCell>{t[invoice.paymentMethod]}</TableCell>
+              <TableCell className="text-right">{invoice.totalAmount}</TableCell>
+            </TableRow>
+          ))}
+          <TableRow isFooter>
+            <TableCell colSpan={3}>{t.total}</TableCell>
+            <TableCell className="text-right">$2,500.00</TableCell>
           </TableRow>
-        ))}
-      </TableBody>
-      <TableFooter>
-        <TableRow>
-          <TableCell colSpan={3}>{t.total}</TableCell>
-          <TableCell className="text-right">$2,500.00</TableCell>
-        </TableRow>
-      </TableFooter>
-    </Table>
+        </TableBody>
+      </Table>
+      <TableCaption>{t.caption}</TableCaption>
+    </figure>
   )
 }

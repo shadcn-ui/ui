@@ -67,19 +67,17 @@ export function CheckboxInTable() {
   return (
     <Table>
       <TableHeader>
-        <TableRow>
-          <TableHead className="w-8">
-            <Checkbox
-              id="select-all-checkbox"
-              name="select-all-checkbox"
-              isSelected={selectAll}
-              onChange={handleSelectAll}
-            />
-          </TableHead>
-          <TableHead>Name</TableHead>
-          <TableHead>Email</TableHead>
-          <TableHead>Role</TableHead>
-        </TableRow>
+        <TableHead className="w-8">
+          <Checkbox
+            id="select-all-checkbox"
+            name="select-all-checkbox"
+            isSelected={selectAll}
+            onChange={handleSelectAll}
+          />
+        </TableHead>
+        <TableHead isRowHeader>Name</TableHead>
+        <TableHead>Email</TableHead>
+        <TableHead>Role</TableHead>
       </TableHeader>
       <TableBody>
         {tableData.map((row) => (

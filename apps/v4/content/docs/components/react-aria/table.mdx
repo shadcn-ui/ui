@@ -66,7 +66,7 @@ import {
   <TableCaption>A list of your recent invoices.</TableCaption>
   <TableHeader>
     <TableRow>
-      <TableHead className="w-[100px]">Invoice</TableHead>
+      <TableHead isRowHeader className="w-[100px]">Invoice</TableHead>
       <TableHead>Status</TableHead>
       <TableHead>Method</TableHead>
       <TableHead className="text-right">Amount</TableHead>
@@ -87,7 +87,7 @@ import {
 
 ### Footer
 
-Use the `<TableFooter />` component to add a footer to the table.
+Use the `isFooter` prop mark a row as a footer.
 
 <ComponentPreview styleName="react-aria-nova" name="table-footer" />
 
@@ -115,3 +115,7 @@ To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl)
   direction="rtl"
   previewClassName="h-auto"
 />
+
+## API Reference
+
+See the [React Aria Table](https://react-aria.adobe.com/Table#api) documentation.

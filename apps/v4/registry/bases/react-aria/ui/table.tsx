@@ -1,13 +1,28 @@
 "use client"
 
 import * as React from "react"
+import {
+  Table as TablePrimitive,
+  TableHeader as TableHeaderPrimitive,
+  TableBody as TableBodyPrimitive,
+  Row as RowPrimitive,
+  Column as ColumnPrimitive,
+  Cell as CellPrimitive,
+  type TableProps,
+  type TableHeaderProps,
+  type TableBodyProps,
+  type RowProps,
+  type ColumnProps,
+  type CellProps
+} from "react-aria-components"
 
 import { cn } from "@/registry/bases/react-aria/lib/utils"
+import { cva } from "class-variance-authority"
 
-function Table({ className, ...props }: React.ComponentProps<"table">) {
+function Table({ className, ...props }: TableProps) {
   return (
     <div data-slot="table-container" className="cn-table-container">
-      <table
+      <TablePrimitive
         data-slot="table"
         className={cn("cn-table", className)}
         {...props}
@@ -16,9 +31,9 @@ function Table({ className, ...props }: React.ComponentProps<"table">) {
   )
 }
 
-function TableHeader({ className, ...props }: React.ComponentProps<"thead">) {
+function TableHeader<T extends object>({ className, ...props }: TableHeaderProps<T>) {
   return (
-    <thead
+    <TableHeaderPrimitive
       data-slot="table-header"
       className={cn("cn-table-header", className)}
       {...props}
@@ -26,39 +41,37 @@ function TableHeader({ className, ...props }: React.ComponentProps<"thead">) {
   )
 }
 
-function TableBody({ className, ...props }: React.ComponentProps<"tbody">) {
+function TableBody<T extends object>({ className, ...props }: TableBodyProps<T>) {
   return (
-    <tbody
+    <TableBodyPrimitive
       data-slot="table-body"
-      className={cn("cn-table-body", className)}
+      className={cn("cn-table-body data-empty:text-center data-empty:h-24", className)}
       {...props}
     />
   )
 }
 
-function TableFooter({ className, ...props }: React.ComponentProps<"tfoot">) {
-  return (
-    <tfoot
-      data-slot="table-footer"
-      className={cn("cn-table-footer", className)}
-      {...props}
-    />
-  )
-}
+const rowVariants = cva("cn-table-row has-aria-expanded:bg-muted/50", {
+  variants: {
+    isFooter: {
+      true: "cn-table-footer"
+    }
+  }
+});
 
-function TableRow({ className, ...props }: React.ComponentProps<"tr">) {
+function TableRow<T extends object>({ className, isFooter, ...props }: RowProps<T> & {isFooter?: boolean}) {
   return (
-    <tr
+    <RowPrimitive
       data-slot="table-row"
-      className={cn("cn-table-row has-aria-expanded:bg-muted/50", className)}
+      className={cn(rowVariants({isFooter}), className)}
       {...props}
     />
   )
 }
 
-function TableHead({ className, ...props }: React.ComponentProps<"th">) {
+function TableHead({ className, ...props }: ColumnProps) {
   return (
-    <th
+    <ColumnPrimitive
       data-slot="table-head"
       className={cn("cn-table-head", className)}
       {...props}
@@ -66,9 +79,9 @@ function TableHead({ className, ...props }: React.ComponentProps<"th">) {
   )
 }
 
-function TableCell({ className, ...props }: React.ComponentProps<"td">) {
+function TableCell({ className, ...props }: CellProps) {
   return (
-    <td
+    <CellPrimitive
       data-slot="table-cell"
       className={cn("cn-table-cell", className)}
       {...props}
@@ -79,11 +92,11 @@ function TableCell({ className, ...props }: React.ComponentProps<"td">) {
 function TableCaption({
   className,
   ...props
-}: React.ComponentProps<"caption">) {
+}: React.ComponentProps<"figcaption">) {
   return (
-    <caption
+    <figcaption
       data-slot="table-caption"
-      className={cn("cn-table-caption", className)}
+      className={cn("cn-table-caption text-center", className)}
       {...props}
     />
   )
@@ -93,7 +106,6 @@ export {
   Table,
   TableHeader,
   TableBody,
-  TableFooter,
   TableHead,
   TableRow,
   TableCell,

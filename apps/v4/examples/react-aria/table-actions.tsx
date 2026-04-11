@@ -20,11 +20,9 @@ export function TableActions() {
   return (
     <Table>
       <TableHeader>
-        <TableRow>
-          <TableHead>Product</TableHead>
-          <TableHead>Price</TableHead>
-          <TableHead className="text-right">Actions</TableHead>
-        </TableRow>
+        <TableHead isRowHeader>Product</TableHead>
+        <TableHead>Price</TableHead>
+        <TableHead className="text-right">Actions</TableHead>
       </TableHeader>
       <TableBody>
         <TableRow>

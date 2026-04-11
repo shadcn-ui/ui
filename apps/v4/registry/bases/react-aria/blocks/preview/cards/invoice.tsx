@@ -15,7 +15,6 @@ import {
   Table,
   TableBody,
   TableCell,
-  TableFooter,
   TableHead,
   TableHeader,
   TableRow,
@@ -55,12 +54,10 @@ export function Invoice() {
       <CardContent>
         <Table>
           <TableHeader>
-            <TableRow>
-              <TableHead>Item</TableHead>
-              <TableHead className="text-right">Qty</TableHead>
-              <TableHead className="text-right">Rate</TableHead>
-              <TableHead className="text-right">Amount</TableHead>
-            </TableRow>
+            <TableHead isRowHeader>Item</TableHead>
+            <TableHead className="text-right">Qty</TableHead>
+            <TableHead className="text-right">Rate</TableHead>
+            <TableHead className="text-right">Amount</TableHead>
           </TableHeader>
           <TableBody>
             {INVOICE_ITEMS.map((row) => (

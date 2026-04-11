@@ -182,7 +182,7 @@ function CheckboxInTable() {
                 onChange={handleSelectAll}
               />
             </TableHead>
-            <TableHead>Name</TableHead>
+            <TableHead isRowHeader>Name</TableHead>
             <TableHead>Email</TableHead>
             <TableHead>Role</TableHead>
           </TableRow>

@@ -38,6 +38,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/styles/react-aria-nova/ui-rtl/table"
+import { buttonVariants } from "@/styles/react-aria-nova/ui/button"
 
 const translations: Translations = {
   en: {
@@ -175,21 +176,10 @@ export function DataTableRtl() {
       {
         id: "select",
         header: ({ table }) => (
-          <Checkbox
-            isSelected={
-              table.getIsAllPageRowsSelected() ||
-              (table.getIsSomePageRowsSelected() ? true : false)
-            }
-            onChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-            aria-label={t.selectAll}
-          />
+          <Checkbox slot="selection" />
         ),
         cell: ({ row }) => (
-          <Checkbox
-            isSelected={row.getIsSelected()}
-            onChange={(value) => row.toggleSelected(!!value)}
-            aria-label={t.selectRow}
-          />
+          <Checkbox  slot="selection" />
         ),
         enableSorting: false,
         enableHiding: false,
@@ -210,17 +200,12 @@ export function DataTableRtl() {
       },
       {
         accessorKey: "email",
-        header: ({ column }) => {
+        header: () => {
           return (
-            <Button
-              variant="ghost"
-              onClick={() =>
-                column.toggleSorting(column.getIsSorted() === "asc")
-              }
-            >
+            <div className={buttonVariants({variant: 'ghost'})}>
               {t.email}
               <ArrowUpDown />
-            </Button>
+            </div>
           )
         },
         cell: ({ row }) => (
@@ -322,18 +307,24 @@ export function DataTableRtl() {
           >
             <DropdownMenuGroup
               selectionMode="multiple"
-              selectedKeys={Object.keys(columnVisibility).filter(
-                (key) => columnVisibility[key]
-              )}
-              onSelectionChange={(keys) =>
-                setColumnVisibility(
+              selectedKeys={
+                table
+                  .getVisibleFlatColumns()
+                  .filter((column) => column.getCanHide())
+                  .map(column => column.id)
+              }
+              onSelectionChange={(keys) => {
+                table.setColumnVisibility(
                   Object.fromEntries(
-                    keys === "all"
-                      ? table.getAllColumns().map((column) => [column.id, true])
-                      : [...keys].map((key) => [key, true])
+                    table
+                      .getAllFlatColumns()
+                      .map((c) => [
+                        c.id,
+                        !c.getCanHide() || keys === "all" || keys.has(c.id),
+                      ])
                   )
                 )
-              }
+              }}
             >
               {table
                 .getAllColumns()
@@ -354,52 +345,61 @@ export function DataTableRtl() {
         </DropdownMenuTrigger>
       </div>
       <div className="overflow-hidden rounded-md border">
-        <Table>
+        <Table
+          aria-label="Tasks"
+          selectionMode="multiple"
+          onSelectionChange={selection => {
+            if (selection === 'all') {
+              table.toggleAllRowsSelected()
+            } else {
+              table.setRowSelection(Object.fromEntries([...selection].map(key => [key, true])))
+            }
+          }}
+          sortDescriptor={
+            sorting.length
+              ? {
+                  column: sorting[0].id,
+                  direction: sorting[0].desc ? "descending" : "ascending",
+                }
+              : undefined
+          }
+          onSortChange={(sortDescriptor) => {
+            table.setSorting([
+              {
+                id: "" + sortDescriptor.column,
+                desc: sortDescriptor.direction === "descending",
+              },
+            ]);
+          }}>
           <TableHeader>
-            {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id}>
-                {headerGroup.headers.map((header) => {
-                  return (
-                    <TableHead key={header.id}>
-                      {header.isPlaceholder
-                        ? null
-                        : flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
-                          )}
-                    </TableHead>
-                  )
-                })}
-              </TableRow>
+            {table.getFlatHeaders().map((header) => (
+              <TableHead key={header.id} id={header.id} isRowHeader={header.index === 1} allowsSorting={header.column.getCanSort()}>
+                {header.isPlaceholder
+                  ? null
+                  : flexRender(
+                      header.column.columnDef.header,
+                      header.getContext()
+                    )}
+              </TableHead>
             ))}
           </TableHeader>
-          <TableBody>
-            {table.getRowModel().rows?.length ? (
-              table.getRowModel().rows.map((row) => (
-                <TableRow
-                  key={row.id}
-                  data-state={row.getIsSelected() && "selected"}
-                >
-                  {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext()
-                      )}
-                    </TableCell>
-                  ))}
-                </TableRow>
-              ))
-            ) : (
-              <TableRow>
-                <TableCell
-                  colSpan={columns.length}
-                  className="h-24 text-center"
-                >
-                  {t.noResults}
-                </TableCell>
+          <TableBody renderEmptyState={() => t.noResults}>
+            {table.getRowModel().rows.map((row) => (
+              <TableRow
+                key={row.id}
+                id={row.id}
+                data-state={row.getIsSelected() && "selected"}
+              >
+                {row.getVisibleCells().map((cell) => (
+                  <TableCell key={cell.id}>
+                    {flexRender(
+                      cell.column.columnDef.cell,
+                      cell.getContext()
+                    )}
+                  </TableCell>
+                ))}
               </TableRow>
-            )}
+            ))}
           </TableBody>
         </Table>
       </div>
