@@ -1,11 +1,11 @@
 "use client"
 
 import * as React from "react"
-import { Label as LabelPrimitive } from "react-aria-components"
+import { Label as LabelPrimitive, type LabelProps } from "react-aria-components"
 
 import { cn } from "@/lib/utils"
 
-function Label({ className, ...props }: React.ComponentProps<"label">) {
+function Label({ className, ...props }: LabelProps) {
   return (
     <LabelPrimitive
       data-slot="label"
@@ -14,6 +14,8 @@ function Label({ className, ...props }: React.ComponentProps<"label">) {
         className
       )}
       {...props}
+      // @ts-expect-error TODO: LabelProps are incorrect
+      slot={props.slot ?? (props.htmlFor ? null : undefined)}
     />
   )
 }

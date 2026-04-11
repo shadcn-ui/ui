@@ -12359,19 +12359,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "calendar-week-numbers": {
-      name: "calendar-week-numbers",
-      filePath: "examples/react-aria/calendar-week-numbers.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./react-aria/calendar-week-numbers")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "calendar-week-numbers"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "card-demo": {
       name: "card-demo",
       filePath: "examples/react-aria/card-demo.tsx",

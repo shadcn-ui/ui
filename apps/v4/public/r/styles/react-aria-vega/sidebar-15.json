@@ -27,7 +27,7 @@
     },
     {
       "path": "registry/react-aria-vega/blocks/sidebar-15/components/date-picker.tsx",
-      "content": "import * as React from \"react\"\n\nimport { Calendar } from \"@/registry/react-aria-vega/ui/calendar\"\nimport {\n  SidebarGroup,\n  SidebarGroupContent,\n} from \"@/registry/react-aria-vega/ui/sidebar\"\n\nexport function DatePicker() {\n  const [date, setDate] = React.useState<Date | undefined>(\n    new Date(new Date().getFullYear(), new Date().getMonth(), 12)\n  )\n  return (\n    <SidebarGroup className=\"px-0\">\n      <SidebarGroupContent>\n        <Calendar\n          mode=\"single\"\n          selected={date}\n          onSelect={setDate}\n          captionLayout=\"dropdown\"\n          className=\"bg-transparent [--cell-size:2.1rem]\"\n        />\n      </SidebarGroupContent>\n    </SidebarGroup>\n  )\n}\n",
+      "content": "import * as React from \"react\"\nimport { CalendarDate } from \"@internationalized/date\"\n\nimport { Calendar } from \"@/registry/react-aria-vega/ui/calendar\"\nimport {\n  SidebarGroup,\n  SidebarGroupContent,\n} from \"@/registry/react-aria-vega/ui/sidebar\"\n\nexport function DatePicker() {\n  const [date, setDate] = React.useState<CalendarDate | undefined>(\n    new CalendarDate(new Date().getFullYear(), new Date().getMonth() + 1, 12)\n  )\n  return (\n    <SidebarGroup className=\"px-0\">\n      <SidebarGroupContent>\n        <Calendar\n          value={date}\n          onChange={setDate}\n          captionLayout=\"dropdown\"\n          className=\"bg-transparent [--cell-size:2.1rem]\"\n        />\n      </SidebarGroupContent>\n    </SidebarGroup>\n  )\n}\n",
       "type": "registry:component"
     },
     {

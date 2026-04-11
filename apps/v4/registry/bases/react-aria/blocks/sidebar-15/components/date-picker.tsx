@@ -1,4 +1,5 @@
 import * as React from "react"
+import { CalendarDate } from "@internationalized/date"
 
 import { Calendar } from "@/registry/bases/react-aria/ui/calendar"
 import {
@@ -7,16 +8,15 @@ import {
 } from "@/registry/bases/react-aria/ui/sidebar"
 
 export function DatePicker() {
-  const [date, setDate] = React.useState<Date | undefined>(
-    new Date(new Date().getFullYear(), new Date().getMonth(), 12)
+  const [date, setDate] = React.useState<CalendarDate | undefined>(
+    new CalendarDate(new Date().getFullYear(), new Date().getMonth() + 1, 12)
   )
   return (
     <SidebarGroup className="px-0">
       <SidebarGroupContent>
         <Calendar
-          mode="single"
-          selected={date}
-          onSelect={setDate}
+          value={date}
+          onChange={setDate}
           captionLayout="dropdown"
           className="bg-transparent [--cell-size:2.1rem]"
         />
